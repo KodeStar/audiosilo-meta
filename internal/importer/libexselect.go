@@ -14,6 +14,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // libexselect.go is the BOUNDED-SUBSET selector that stands between libex's
@@ -449,6 +450,9 @@ type seriesIndex struct {
 	// positions maps a series slug to the positions its works already occupy
 	// (position -> work id). A position already taken cannot be completed into.
 	positions map[string]map[string]string
+	// retired is the catalogue's series tombstones (retired slug -> survivor),
+	// which find walks exactly as getOrCreateSeries does (tombstone.go).
+	retired map[string]string
 }
 
 // loadSeriesIndex reads the catalogue at dataDir. A tree with validation
@@ -473,6 +477,7 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 	if res.Catalog == nil {
 		return idx, warnings
 	}
+	idx.retired = res.Catalog.Redirects[model.RedirectSeries]
 	for _, s := range res.Catalog.Series {
 		idx.bySlug[s.ID] = s.Name
 		taken := make(map[string]string, len(s.Works))
@@ -516,20 +521,21 @@ func (idx seriesIndex) match(refs []seriesRef) (slug string, matched seriesRef, 
 // the same rule that will later place it there. Keying on the slug alone would
 // wrongly match a numeric-suffix collision between two different-named series.
 func (idx seriesIndex) find(name string) (string, bool) {
+	// A name with no addressable slug resolves to nothing, as it does in
+	// getOrCreateSeries (which refuses the claim): selecting a row into a series
+	// the import will then decline to place it in would be a selection nobody gets.
 	base := Slugify(name)
 	if base == "" {
-		base = "series"
+		return "", false
 	}
-	for i := 0; ; i++ {
-		slug := SeriesSlugAt(base, i)
+	ans := seriesChain(base, name, idx.retired, func(slug string) (string, bool) {
 		stored, exists := idx.bySlug[slug]
-		if !exists {
-			return "", false
-		}
-		if strings.EqualFold(stored, name) {
-			return slug, true
-		}
+		return stored, exists
+	})
+	if !ans.found {
+		return "", false
 	}
+	return ans.slug, true
 }
 
 // streamLibexRows decodes an export and calls fn for every row, handing over

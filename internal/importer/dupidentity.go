@@ -318,6 +318,11 @@ func (p *planner) slugChainReaches(want, workTitle, fullTitle, posSuffix string,
 			if c.slug == want {
 				return true
 			}
+			// A retired candidate is judged as its survivor (workAt), so reaching
+			// the survivor through it is reaching it.
+			if ws, via, _ := p.workAt(c.slug); via != "" && ws != nil && ws.slug == want {
+				return true
+			}
 		}
 	}
 	return false

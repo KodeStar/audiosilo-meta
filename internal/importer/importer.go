@@ -227,6 +227,11 @@ type planner struct {
 	// never written into p.people, so a credit minted under it has to be
 	// redirected here or it would name a record that does not exist.
 	initialsSurvivors initialsSurvivors
+	// redirects is the catalogue's slug TOMBSTONE table, off the same load as the
+	// identity maps, and tombstoneRides every retired slug this run resolved onto
+	// its survivor rather than minting there (tombstone.go).
+	redirects      model.Redirects
+	tombstoneRides map[string]bool
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -581,6 +586,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportLostSeriesClaims()
 	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
+	p.reportTombstoneRides()
 	if p.fatal != nil {
 		return p.fatal
 	}
@@ -838,6 +844,7 @@ func (p *planner) loadExisting() {
 	if cat == nil {
 		return
 	}
+	p.redirects = cat.Redirects
 	for _, person := range cat.People {
 		p.people[person.ID] = person.Name
 	}
@@ -1550,9 +1557,19 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 	if _, known := p.people[slug]; known {
 		return slug
 	}
+	// A retired slug names its survivor (tombstone.go): the person is never
+	// re-created at the address a merge took them off.
+	if to, retired := p.retiredPerson(slug); retired {
+		p.noteTombstone(model.RedirectPeople, slug, to)
+		return to
+	}
 	if survivor, merges := p.initialsMerge(name); merges {
 		if _, known := p.people[survivor.slug]; known {
 			return survivor.slug
+		}
+		if to, retired := p.retiredPerson(survivor.slug); retired {
+			p.noteTombstone(model.RedirectPeople, survivor.slug, to)
+			return to
 		}
 		return p.createPerson(survivor.slug, survivor.name)
 	}
@@ -1588,7 +1605,13 @@ func (p *planner) personSlugTarget(slug string) string {
 	if _, known := p.people[slug]; known {
 		return slug
 	}
+	if to, retired := p.retiredPerson(slug); retired {
+		return to
+	}
 	if survivor, decided := p.initialsSurvivors[slug]; decided {
+		if to, retired := p.retiredPerson(survivor.slug); retired {
+			return to
+		}
 		return survivor.slug
 	}
 	return slug
@@ -1743,16 +1766,26 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	// two candidates can both reduce to the row's identity set (the-iliad and
 	// the-iliad-robert-fitzgerald both reduce to Homer) and only the whole
 	// credit list says which of the two the row is.
+	//
+	// A RETIRED candidate is judged as its survivor (workAt, tombstone.go): the
+	// row merges into it on exactly the rules a live record there would get, and
+	// otherwise the candidate is occupied and the walk steps past it - a minter
+	// never claims a tombstoned slug.
 	best, bestKind, free, blocked := -1, matchNone, -1, false
+	var bestWS *workState
+	bestVia := ""
 	for i, cand := range cands {
-		ws, exists := p.works[cand.slug]
-		if !exists {
+		ws, via, occupied := p.workAt(cand.slug)
+		if !occupied {
 			if free < 0 && !cand.probeOnly {
 				free = i
 			}
 			if free >= 0 && i >= primary {
 				break
 			}
+			continue
+		}
+		if ws == nil {
 			continue
 		}
 		kind := matchWork(ws, authors)
@@ -1767,7 +1800,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 			continue
 		}
 		if kind > bestKind {
-			best, bestKind = i, kind
+			best, bestKind, bestWS, bestVia = i, kind, ws, via
 		}
 		if bestKind == matchExact {
 			break
@@ -1775,7 +1808,10 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	}
 
 	if best >= 0 {
-		ws := p.works[cands[best].slug]
+		ws := bestWS
+		if bestVia != "" {
+			p.noteTombstone(model.RedirectWorks, bestVia, ws.slug)
+		}
 		// A later row of this run, merging into a work the run created: its
 		// credits are not a second source's account of an existing work, they are
 		// more of the same import, so the pairs the entry does not carry yet are
@@ -1809,6 +1845,9 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	switch {
 	case model.IsReservedSlug(base):
 		warn("work slug %q is reserved for an API route; using %q for %q", base, slug, title)
+	case slug != base && p.redirects[model.RedirectWorks][base] != "":
+		warn("work slug %q was retired by a merge onto %q, which this row does not match; using %q for %q",
+			base, p.redirects[model.RedirectWorks][base], slug, title)
 	case slug != base:
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
 	}
@@ -1848,15 +1887,22 @@ func (p *planner) findSeries(name string) *seriesState {
 	if base == "" {
 		return nil
 	}
-	for i := 0; ; i++ {
-		ss, exists := p.series[SeriesSlugAt(base, i)]
-		if !exists {
-			return nil
-		}
-		if strings.EqualFold(ss.name, name) {
-			return ss
-		}
+	if ans := p.seriesChainFor(base, name); ans.found {
+		return p.series[ans.slug]
 	}
+	return nil
+}
+
+// seriesChainFor walks name's chain over the planner's series (tombstone.go's
+// seriesChain, the walker every twin shares).
+func (p *planner) seriesChainFor(base, name string) seriesChainAnswer {
+	return seriesChain(base, name, p.redirects[model.RedirectSeries], func(slug string) (string, bool) {
+		ss, exists := p.series[slug]
+		if !exists {
+			return "", false
+		}
+		return ss.name, true
+	})
 }
 
 // addRecording builds and emits the recording for a book under work ws. When an
@@ -2473,7 +2519,9 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 }
 
 // getOrCreateSeries returns the series for name, creating an in-memory record
-// when new. Numeric suffixes resolve a collision with a differently-named series.
+// when new. Numeric suffixes resolve a collision with a differently-named series,
+// and a name whose base slug a merge RETIRED joins the series it was merged into
+// (seriesChain, tombstone.go) - it never re-creates the retired duplicate.
 //
 // It returns nil when the name has NO addressable slug - a name written entirely
 // in a script Slugify keeps nothing of (Cyrillic, Japanese, Arabic; the same
@@ -2495,33 +2543,34 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 		p.noteUnaddressableSeries(name)
 		return nil
 	}
-	for i := 0; ; i++ {
-		slug := SeriesSlugAt(base, i)
-		ss, exists := p.series[slug]
-		if !exists {
-			switch {
-			case model.IsReservedSlug(base):
-				warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
-			case slug != base:
-				warn("series slug %q taken by a different series; using %q for %q", base, slug, name)
-			}
-			ss = &seriesState{
-				slug:      slug,
-				name:      name,
-				isNew:     true,
-				out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
-				members:   map[string]string{},
-				positions: map[string]string{},
-				claimed:   map[string]string{},
-			}
-			p.series[slug] = ss
-			p.summary.NewSeries++
-			return ss
+	// A tombstoned base joins the series it was merged into, and any other retired
+	// candidate is stepped past as occupied (tombstone.go).
+	ans := p.seriesChainFor(base, name)
+	if ans.found {
+		if ans.via != "" {
+			p.noteTombstone(model.RedirectSeries, ans.via, ans.slug)
 		}
-		if strings.EqualFold(ss.name, name) {
-			return ss
-		}
+		return p.series[ans.slug]
 	}
+	slug := ans.slug
+	switch {
+	case model.IsReservedSlug(base):
+		warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
+	case slug != base:
+		warn("series slug %q taken by a different series; using %q for %q", base, slug, name)
+	}
+	ss := &seriesState{
+		slug:      slug,
+		name:      name,
+		isNew:     true,
+		out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
+		members:   map[string]string{},
+		positions: map[string]string{},
+		claimed:   map[string]string{},
+	}
+	p.series[slug] = ss
+	p.summary.NewSeries++
+	return ss
 }
 
 // loadSeriesRaw reads an existing series entry into ss.raw the first time it is

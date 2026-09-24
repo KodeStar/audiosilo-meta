@@ -127,9 +127,19 @@ func (c *composer) addWork(s sections) {
 		c.note("work slug %q is reserved for an API route - using %q", workSlug, stepped)
 		workSlug = stepped
 	}
-	if _, exists := c.works[workSlug]; exists {
+	if live := c.liveWorkSlug(workSlug); live != "" {
 		// Tier-aware like the ASIN/ISBN and narrator-set gates: a work only the
 		// mirror has ever stated routes to a maintainer, not to a closed duplicate.
+		//
+		// A slug a merge RETIRED answers here as its survivor: the tombstone says the
+		// title names that work, so the gate that has always met a live record at
+		// this slug meets the survivor instead - and nothing is ever composed at the
+		// retired address (the bulk importer judges the same slug as the same work).
+		if live != workSlug {
+			c.failDuplicateWork(live, "the work slug %q was retired by a merge onto the work at %s; "+
+				"use the Add a recording form to add another narration", workSlug, c.entryLocation(pack.FamilyWorks, live, ""))
+			return
+		}
 		c.failDuplicateWork(workSlug, "a work already exists at %s; use the Add a recording form to add another narration",
 			c.entryLocation(pack.FamilyWorks, workSlug, ""))
 		return
@@ -423,6 +433,18 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		}
 		c.extendSeries(existing, seriesSlug, workSlug, pos)
 		return
+	}
+	// A name whose slug a merge RETIRED joins the series it was merged into, with
+	// no name comparison - the tombstone IS the decision, and the survivor usually
+	// carries the other spelling. The bulk importer's chain does the same for its
+	// first candidate (internal/importer/tombstone.go); this path only ever has
+	// that one candidate.
+	if to := c.retiredOnto(model.RedirectSeries, seriesSlug); to != "" {
+		if survivor, ok := c.series[to]; ok {
+			c.noteRetired(model.RedirectSeries, seriesSlug, to)
+			c.extendSeries(survivor, to, workSlug, pos)
+			return
+		}
 	}
 
 	// New series entry with this one work.

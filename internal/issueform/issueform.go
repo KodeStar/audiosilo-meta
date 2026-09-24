@@ -175,10 +175,11 @@ type composer struct {
 	// are one identifier.
 	isbnRec map[string]recRef
 
-	// redirects is the tree's own slug TOMBSTONE table, off the same load. Only
-	// resolveWorkKey reads it, and only where the works family is in the tree: a
-	// profile carrying no tombstone table leaves it empty, and the artifact
-	// carries the answer there instead.
+	// redirects is the tree's own slug TOMBSTONE table, off the same load. It is
+	// read through retiredOnto - by resolveWorkKey, and by every path that mints a
+	// person, work or series slug, none of which may compose at a retired one - and
+	// only where the works family is in the tree: a profile carrying no tombstone
+	// table leaves it empty, and the artifact carries the answer there instead.
 	redirects model.Redirects
 
 	// identity is the normalized-identity index over the catalogue, taken from the
@@ -750,6 +751,13 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 	}
 	if c.people[slug] {
 		return slug, true
+	}
+	// A slug a merge RETIRED names its survivor, exactly as the bulk importer
+	// resolves it (internal/importer/tombstone.go): the person is credited under
+	// the record they were merged into, never re-created at the retired address.
+	if to := c.retiredOnto(model.RedirectPeople, slug); to != "" && c.people[to] {
+		c.noteRetired(model.RedirectPeople, slug, to)
+		return to, true
 	}
 	c.people[slug] = true
 	// Kind comes from the NAME and only ever decides one record: the canonical

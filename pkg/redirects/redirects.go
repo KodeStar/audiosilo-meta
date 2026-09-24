@@ -19,22 +19,21 @@
 // not retrofitted - it is a documented one-off that has done its work, so
 // rewriting it would change nothing on disk.
 //
-// TWO GAPS ARE KNOWN AND DELIBERATELY LEFT OPEN, recorded here so neither is
-// rediscovered as a surprise:
+// ONE GAP IS KNOWN AND DELIBERATELY LEFT OPEN, recorded here so it is not
+// rediscovered as a surprise: the file has NO merge driver of its own. git's line
+// merge is sound-or-loud on it (unlike on a pack file, where it can duplicate a
+// key - see scripts/pack-union-merge.sh, which refuses this file), but it
+// conflicts on a large share of realistic two-PR append combinations, so the
+// intake rebase sweep can stall on it once redirects are being added regularly. A
+// union driver for this shape - a map of maps, no deletions to reason about - is
+// the fix when that starts happening.
 //
-//   - The file has NO merge driver of its own. git's line merge is sound-or-loud
-//     on it (unlike on a pack file, where it can duplicate a key - see
-//     scripts/pack-union-merge.sh, which refuses this file), but it conflicts on a
-//     large share of realistic two-PR append combinations, so the intake rebase
-//     sweep can stall on it once redirects are being added regularly. A union
-//     driver for this shape - a map of maps, no deletions to reason about - is the
-//     fix when that starts happening.
-//   - No minter steps OFF a tombstoned slug the way the work chain steps off a
-//     reserved one (internal/importer's workCandidates). A later import that
-//     re-creates a merged duplicate therefore lands on the retired slug and fails
-//     metacheck's live-source rule: loud and safe, but not resolvable
-//     mechanically. Teaching the importer and the issue forms to read the table is
-//     the fix.
+// The second gap this comment used to record is CLOSED: every minter reads the
+// table and never creates a record at a retired slug (internal/importer's
+// tombstone.go states the per-family rule; internal/issueform applies the same
+// one). Before that, a later import re-creating a merged duplicate landed on the
+// retired slug and failed metacheck's live-source rule - which stopped a whole
+// user library import on one series name (issue #2320).
 //
 // This package is PUBLIC API, like the pkg/* packages around it: the repair
 // tooling that consumes it may live in a sibling module.

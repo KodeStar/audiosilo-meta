@@ -351,12 +351,33 @@ func (c *composer) liveWorkSlug(slug string) string {
 	if _, exists := c.works[slug]; exists {
 		return slug
 	}
-	if to := c.redirects[model.RedirectWorks][slug]; to != "" && to != slug {
+	if to := c.retiredOnto(model.RedirectWorks, slug); to != "" {
 		if _, live := c.works[to]; live {
 			return to
 		}
 	}
 	return ""
+}
+
+// retiredOnto returns the survivor the tree's tombstone table names for a
+// retired slug of kind, or "". It is the one read of the table the MINTING paths
+// share (a person, a work slug, a series slug): a form never composes a record at
+// a slug a merge retired, which is the bulk importer's rule too
+// (internal/importer/tombstone.go), so the two doors cannot disagree about where
+// a name lands. Whether the survivor is live is the caller's question, asked of
+// the map it holds for that family.
+func (c *composer) retiredOnto(kind model.RedirectKind, slug string) string {
+	if to := c.redirects[kind][slug]; to != slug {
+		return to
+	}
+	return ""
+}
+
+// noteRetired says that a name the form spelled slugs to a retired record and
+// was resolved onto its survivor: a record composed under an address the form did
+// not spell is a decision a maintainer reading the pull request has to see.
+func (c *composer) noteRetired(kind model.RedirectKind, from, to string) {
+	c.note("%s slug %q was retired by a merge onto %q; the submission is recorded against %q", kind, from, to, to)
 }
 
 // noteRekey reports that the submission named a slug a core merge has retired and
