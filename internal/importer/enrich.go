@@ -155,7 +155,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestMerged && !overwrite {
 		return true
 	}
-	if p.recordingContradicts(b, ref, raw, warn, scope) {
+	if p.recordingContradicts(b, ref, raw, scope) {
 		return false
 	}
 	// An exact-ASIN row about a record it may not overwrite has already had its
@@ -260,9 +260,11 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // later run. The runtime half - the fact that actually distinguishes a
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
-func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, warn func(string, ...any), scope applyScope) bool {
+func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, scope applyScope) bool {
 	contradiction := func(field string, recorded, stated any, format string, args ...any) bool {
-		warn(format, args...)
+		// The CONFLICT tier, not the row sink: it ranks ahead of the ordinary
+		// row lines (planner.result), so a bounded report keeps it.
+		p.warnInto(b, &p.conflictWarnings)(format, args...)
 		// The durable twin of that warning, and the run's ONLY machine-readable
 		// account of the disagreement: one worklist row, written here rather than
 		// re-derived from the prose above, so the values it reports are the ones

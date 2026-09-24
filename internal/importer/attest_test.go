@@ -289,6 +289,31 @@ func TestSecondUserContradictionWarnsAndKeepsTheFirst(t *testing.T) {
 	assertTreeUnchanged(t, dataDir, before)
 }
 
+// TestConflictLinesRankAheadOfOrdinaryRowLines pins the middle tier of
+// Summary.Warnings' reporting order: a row refused for contradicting a recorded
+// value is reported ahead of an ordinary row line raised EARLIER in the export,
+// because the intake verdict's "disagreed ... see the warnings below" note sends
+// a maintainer to exactly that line, and a bounded report keeps only the head.
+func TestConflictLinesRankAheadOfOrdinaryRowLines(t *testing.T) {
+	dataDir := seedTierTree(t, nil)
+	runUserImport(t, dataDir, userRowFull)
+
+	// A row with no narrator first (an ordinary row line), then the contradiction.
+	books := `[{"asin":"B0NONARR001","title":"No Narrator Book","author":"Some Author","language":"english"},` +
+		strings.TrimPrefix(userRowConflicting, "[")
+	sum := runUserImport(t, dataDir, books)
+	if sum.Conflicts != 1 {
+		t.Fatalf("Conflicts = %d, want 1; warnings %v", sum.Conflicts, sum.Warnings)
+	}
+	rows := sum.RowWarnings()
+	if sum.RunLevelWarnings != 0 || len(rows) != 2 {
+		t.Fatalf("RunLevelWarnings = %d, RowWarnings = %v; want 0 and the two row lines", sum.RunLevelWarnings, rows)
+	}
+	if !strings.Contains(rows[0], "conflicts with the recorded") || !strings.Contains(rows[1], "B0NONARR001") {
+		t.Errorf("row lines = %v, want the conflict ahead of the earlier row's line", rows)
+	}
+}
+
 // TestUserImportIsIdempotent pins the second-run promise: attestation is a
 // one-way step, so re-importing the same library queues no write at all.
 func TestUserImportIsIdempotent(t *testing.T) {

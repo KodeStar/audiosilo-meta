@@ -103,3 +103,23 @@ func TestWireMessageIsCutAtARuneBoundary(t *testing.T) {
 		t.Error("all_messages must carry the message uncut")
 	}
 }
+
+// TestWireMessagesShowALoneOverflowMessage pins that the bound only truncates
+// when truncating saves something: with exactly one message past the count, the
+// "... and 1 more" line would cost a line and hide a message, so all of them
+// ship (and nothing was clipped, so no all_messages either).
+func TestWireMessagesShowALoneOverflowMessage(t *testing.T) {
+	msgs := numbered(maxWireMessages+1, 40)
+	got, all := wireResult(t, Result{Status: StatusOK, Messages: msgs})
+	if !slices.Equal(got, msgs) {
+		t.Errorf("a lone overflow message was replaced:\n got %v\nwant %v", got, msgs)
+	}
+	if all != nil {
+		t.Error("all_messages emitted although every message shipped")
+	}
+	// Two past the count is a saving again.
+	msgs = numbered(maxWireMessages+2, 40)
+	if got, _ := wireResult(t, Result{Status: StatusOK, Messages: msgs}); got[maxWireMessages] != "... and 2 more (full list in the run log)" {
+		t.Errorf("two past the count: last line = %q", got[maxWireMessages])
+	}
+}

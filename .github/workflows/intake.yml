@@ -194,8 +194,10 @@ jobs:
             # changes in the working tree, read AFTER the libex fill step, which
             # can rewrite packs metaissue never listed - not result.json's files.
             # Capped at 50 (an import can touch hundreds of packs; the full list
-            # is the pull request's own Files changed tab).
-            mapfile -t files < <(git -c core.quotePath=false status --porcelain --untracked-files=all -- data/ | cut -c4- | sort)
+            # is the pull request's own Files changed tab). NUL-delimited, as the
+            # rebase sweep's conflict listing is: porcelain v1 without -z C-quotes
+            # a path holding a quote, a backslash or a control character.
+            mapfile -d '' -t files < <(git status -z --porcelain --untracked-files=all -- data/ | cut -z -c4- | sort -z)
             echo "Files:"
             for f in "${files[@]:0:50}"; do echo "- \`${f}\`"; done
             if [ "${#files[@]}" -gt 50 ]; then

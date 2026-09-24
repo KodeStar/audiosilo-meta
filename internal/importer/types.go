@@ -343,9 +343,13 @@ type Summary struct {
 	// never fired.
 	CredentialMerges []string
 	// Warnings are informational lines for books or fields that could not be
-	// imported cleanly, run-level lines before per-row "asin/title: reason"
-	// ones (planner.result).
+	// imported cleanly, in REPORTING order (planner.result): the run-level lines
+	// first, then the per-row "asin/title: reason" ones - conflicts ahead of the
+	// rest.
 	Warnings []string
+	// RunLevelWarnings is how many leading Warnings are run-level; the rest are
+	// per-row (RowWarnings).
+	RunLevelWarnings int
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from
@@ -372,4 +376,10 @@ type Summary struct {
 func (s Summary) Produced() int {
 	return s.NewWorks + s.NewRecordings + s.NewPeople + s.NewSeries + s.MergedASINs +
 		s.AttestedWorks + s.AttestedRecordings
+}
+
+// RowWarnings is the per-row tail of Warnings: the lines that each name one
+// export row and why it fell out or was refused, conflicts first.
+func (s Summary) RowWarnings() []string {
+	return s.Warnings[min(s.RunLevelWarnings, len(s.Warnings)):]
 }

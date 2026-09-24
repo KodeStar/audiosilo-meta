@@ -22,16 +22,23 @@ const (
 // wireMessages is the head of msgs that fits the wire bounds, in order: the
 // first maxWireMessages, each cut to maxOneMessageBytes, for as long as the
 // total stays within maxWireMessageBytes, then ONE line saying how many were
-// left out. Keeping the head is sound because every producer puts the line a
-// maintainer acts on first (the verdict's reason, then the importer's run-level
-// warnings - see importer.planner.result).
+// left out - unless only ONE was, and showing it costs no more than the line
+// that would replace it (it fits the byte budget, or is no longer than that
+// line): truncating then saves nothing and hides a message. Keeping the head is
+// sound because every producer puts the line a maintainer acts on first (the
+// verdict's reason, then the importer's run-level and conflict warnings - see
+// importer.planner.result).
 func wireMessages(msgs []string) []string {
 	var head []string
 	used := 0
 	for i, m := range msgs {
 		m = clipMessage(m)
 		if i == maxWireMessages || used+len(m) > maxWireMessageBytes {
-			return append(head, fmt.Sprintf("... and %d more (full list in the run log)", len(msgs)-i))
+			more := fmt.Sprintf("... and %d more (full list in the run log)", len(msgs)-i)
+			if i == len(msgs)-1 && (used+len(m) <= maxWireMessageBytes || len(m) <= len(more)) {
+				more = m
+			}
+			return append(head, more)
 		}
 		used += len(m)
 		head = append(head, m)

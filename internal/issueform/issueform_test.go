@@ -2,6 +2,7 @@ package issueform
 
 import (
 	"encoding/json"
+	"slices"
 	"strings"
 	"testing"
 
@@ -826,6 +827,24 @@ func TestImportZeroParseNeedsHuman(t *testing.T) {
 	}
 	if !strings.Contains(joined, "no narrator") {
 		t.Errorf("importer warnings not surfaced: %v", res.Messages)
+	}
+}
+
+// TestFalloutExamplesAreTheRowReasons pins what backs the "may not match the
+// selected export type" verdict: the PER-ROW reasons entries fell out, not the
+// run-level summaries the importer ranks first - six summaries ahead of the row
+// lines must not push the evidence out of the five examples. A run that raised
+// no row line falls back to what it did raise.
+func TestFalloutExamplesAreTheRowReasons(t *testing.T) {
+	runLevel := []string{"r1", "r2", "r3", "r4", "r5", "r6"}
+	rows := []string{"B0A: no narrator", "B0B: no narrator"}
+	sum := importer.Summary{Warnings: slices.Concat(runLevel, rows), RunLevelWarnings: len(runLevel)}
+	if got := falloutExamples(sum); !slices.Equal(got, rows) {
+		t.Errorf("falloutExamples = %v, want the row lines %v", got, rows)
+	}
+	sum = importer.Summary{Warnings: runLevel, RunLevelWarnings: len(runLevel)}
+	if got := falloutExamples(sum); !slices.Equal(got, runLevel[:5]) {
+		t.Errorf("with no row lines, falloutExamples = %v, want the first five run-level lines", got)
 	}
 }
 

@@ -65,9 +65,10 @@ var utf8BOM = []byte{0xEF, 0xBB, 0xBF}
 // RunLibex imports exportPath (a libex export) into opts.DataDir. Rows are
 // normalized into the shared sourceBook, so behaviour is otherwise identical to
 // Run / RunLibation. Parse-time warnings (a row with no usable ASIN or no
-// marketplace, an invalid ISBN, an unusable cover URL) are prepended to the
-// run's warnings so the caller prints them together - per row when creating, in
-// aggregate in the catalogue-bounded modes (see libexParse.warningLines).
+// marketplace, an invalid ISBN, an unusable cover URL) are merged into the
+// run's warnings in REPORTING order: in the catalogue-bounded modes they are
+// aggregated (see libexParse.warningLines) and lead, as run-level lines; when
+// creating they are per-row lines and follow everything the run raised.
 func RunLibex(exportPath string, opts Options) (Summary, error) {
 	raw, err := os.ReadFile(exportPath)
 	if err != nil {
@@ -86,7 +87,9 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	// Aggregated parse lines are run-level and lead; a create run's per-row
 	// parse lines follow the run's own, keeping Summary.Warnings' order.
 	if bounded := opts.Mode.boundedByCatalogue(); bounded {
-		sum.Warnings = append(parsed.warningLines(bounded), sum.Warnings...)
+		lines := parsed.warningLines(bounded)
+		sum.Warnings = append(lines, sum.Warnings...)
+		sum.RunLevelWarnings += len(lines)
 	} else {
 		sum.Warnings = append(sum.Warnings, parsed.warningLines(bounded)...)
 	}

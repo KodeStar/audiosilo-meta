@@ -333,9 +333,12 @@ type planner struct {
 	conflicts io.Writer
 	fatal     error
 	summary   Summary
-	// rowWarnings are the lines bookWarn raised, one row each, kept apart from
-	// summary.Warnings (the run-level lines) so result() can order them last.
-	rowWarnings []string
+	// conflictWarnings and rowWarnings are the per-row lines, kept apart from
+	// summary.Warnings (the run-level lines) so result() can order the three
+	// tiers: conflicts are what recordingContradicts raised, rows everything
+	// else bookWarn did.
+	conflictWarnings []string
+	rowWarnings      []string
 }
 
 // setSource points the planner's provenance stamp at the row being planned. Every
@@ -357,23 +360,36 @@ func (p *planner) stampSource(raw map[string]any) {
 // names the row it came from. Row lines are held apart from the run-level ones
 // until result() puts them after them.
 func (p *planner) bookWarn(b sourceBook) func(string, ...any) {
+	return p.warnInto(b, &p.rowWarnings)
+}
+
+// warnInto is bookWarn over a chosen tier: the ordinary row lines, or the
+// conflict lines recordingContradicts raises (see result).
+func (p *planner) warnInto(b sourceBook, tier *[]string) func(string, ...any) {
 	label := bookLabel(b)
 	return func(format string, args ...any) {
-		p.rowWarnings = append(p.rowWarnings, label+": "+fmt.Sprintf(format, args...))
+		*tier = append(*tier, label+": "+fmt.Sprintf(format, args...))
 	}
 }
 
-// result is the run's Summary with its warnings in REPORTING order: every
-// run-level line first (the aggregated refusals, the duplicate-identity skips,
-// the catalogue's own collisions, the per-class reports), in the order they were
-// raised, and then the per-row lines in row order. A run-level line is the one a
-// maintainer acts on and there are a handful of them, where a run over a large
-// library can raise hundreds of row lines; a reader that shows only the head of
-// the list (the intake bot's bounded verdict) must never lose the summary to the
-// detail.
+// result is the run's Summary with its warnings in REPORTING order, three tiers
+// each in the order it was raised:
+//
+//   - the run-level lines (the aggregated refusals, the duplicate-identity
+//     skips, the catalogue's own collisions, the per-class reports);
+//   - the CONFLICT lines, one per row refused for contradicting a recorded
+//     runtime or release date - per-row, but the ones the intake verdict's
+//     "disagreed ... see the warnings below" note sends a maintainer to;
+//   - every other per-row line, in row order.
+//
+// A run-level or conflict line is one a maintainer acts on, where a run over a
+// large library can raise hundreds of ordinary row lines; a reader that shows
+// only the head of the list (the intake bot's bounded verdict) must never lose
+// them to the detail. Summary.RunLevelWarnings says where the first tier ends.
 func (p *planner) result() Summary {
 	sum := p.summary
-	sum.Warnings = slices.Concat(p.summary.Warnings, p.rowWarnings)
+	sum.RunLevelWarnings = len(p.summary.Warnings)
+	sum.Warnings = slices.Concat(p.summary.Warnings, p.conflictWarnings, p.rowWarnings)
 	return sum
 }
 
@@ -933,8 +949,9 @@ func (p *planner) seedDiskSeriesPositions(series []*model.Series) {
 }
 
 // locateASIN records which catalogued recording an ASIN sits on, for the
-// enrichment mode's identifier match. It is a no-op unless asinLoc was allocated
-// (create mode needs the p.asins membership test alone).
+// identifier match of enrichment and of a user-tier run's attestation. It is a
+// no-op unless asinLoc was allocated (any other run needs the p.asins
+// membership test alone).
 //
 // Uniqueness upstream is (region, ASIN), so one ASIN STRING can appear more than
 // once. On ONE recording, under several marketplaces, that is ordinary data, and
@@ -950,7 +967,7 @@ func (p *planner) locateASIN(asin, workSlug, recSlug string) {
 	}
 	if prev, taken := p.asinLoc[asin]; taken {
 		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
-			"catalogue: ASIN %s is recorded on both %s and %s; enrichment matched it to the first",
+			"catalogue: ASIN %s is recorded on both %s and %s; an export row naming it is matched to the first",
 			asin, recLabel(prev.Work, prev.Rec), recLabel(workSlug, recSlug)))
 		return
 	}
