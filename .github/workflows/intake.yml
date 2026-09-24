@@ -125,7 +125,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up Go
-        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           # .go-version holds the bare MINOR and check-latest resolves it to the
           # newest patch; go.mod's `go` line is a floor, not the toolchain
@@ -350,7 +350,7 @@ jobs:
           token: ${{ secrets.INTAKE_PAT || github.token }}
 
       - name: Set up Go
-        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           # .go-version holds the bare MINOR and check-latest resolves it to the
           # newest patch; go.mod's `go` line is a floor, not the toolchain
