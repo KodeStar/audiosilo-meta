@@ -241,12 +241,13 @@ func (p *planner) rowWorkAuthors(credits []credit, warn func(string, ...any)) wo
 }
 
 // rowWorkAuthorsRO is rowWorkAuthors' read-only twin: it resolves through the
-// same identity rules (personSlug plus the initials merge) but creates nothing,
-// for the batch pre-passes and for the recordings-only work matcher.
+// SAME decision (resolvePerson, which getOrCreatePerson acts on) but creates
+// nothing, for the duplicate-identity guard, the batch pre-passes and the
+// recordings-only work matcher - every one of them a prediction of the author set
+// the create path will build.
 func (p *planner) rowWorkAuthorsRO(credits []credit) workAuthors {
 	return splitWorkAuthors(credits, func(name string) string {
-		slug, _ := personSlug(name)
-		return p.personSlugTarget(slug)
+		return p.resolvePerson(name).slug
 	})
 }
 
@@ -330,7 +331,7 @@ func seriesScopedSuffix(series, pos string) string {
 // A row that states a series position can address the suffixed slugs itself:
 // the tail is a pure function of (series, position), both of which the row
 // carries. So the claim-bearing row PROBES them (posSuffixSlugs, wired into
-// workCandidates), and only a row that states the claim ever looks there - which
+// primaryWorkCandidates), and only a row that states the claim ever looks there - which
 // is what keeps the probe off the 258 works whose slug merely LOOKS suffixed
 // because their title ends "... Book 3".
 
@@ -350,22 +351,28 @@ type positionClaim struct {
 //
 // A tail that adds nothing (an unslugifiable position) and a slug equal to the
 // base or to an earlier probe are dropped: the base is already candidate zero.
-func posSuffixSlugs(base string, c positionClaim) []string {
+func posSuffixSlugs(base string, c positionClaim) []suffixedSlug {
 	if c.pos == "" {
 		return nil
 	}
-	out := make([]string, 0, 2)
+	out := make([]suffixedSlug, 0, 2)
 	for _, tail := range []string{serialPositionSuffix(c.pos), seriesScopedSuffix(c.series, c.pos)} {
 		if tail == "" {
 			continue
 		}
-		slug := BoundedSlugTail(base, "-"+tail)
-		if slug == base || slices.Contains(out, slug) {
+		slug, cut := boundedSlugTail(base, "-"+tail)
+		if slug == base || slices.ContainsFunc(out, func(s suffixedSlug) bool { return s.slug == slug }) {
 			continue
 		}
-		out = append(out, slug)
+		out = append(out, suffixedSlug{slug: slug, cut: cut})
 	}
 	return out
+}
+
+// suffixedSlug is one position probe and whether composing it cut the base.
+type suffixedSlug struct {
+	slug string
+	cut  bool
 }
 
 // serialTitleKey is the grouping key for the pre-pass: the resolved work title's

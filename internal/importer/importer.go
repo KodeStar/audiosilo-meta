@@ -111,6 +111,10 @@ type recInfo struct {
 // authors[] and credits[]; for one created this run, from the row's credits.
 type workState struct {
 	slug string
+	// title is the work's stored title. A walk reads it only when it hits a
+	// candidate the slug cap CUT (walkWorkChain), where the slug alone no longer
+	// says which book it is.
+	title string
 	// authors is the IDENTITY set; all is the record's whole credit list, which
 	// the subsumption half of matchWork compares against. Keeping both is what
 	// lets a work minted before the exclusion rule (no credits[], so its
@@ -231,10 +235,10 @@ type planner struct {
 	// run depends on row order, so two runs over the same rows in a different
 	// order (or one export split into chunks) would mint different ids.
 	//
-	// It is consulted BOTH where a person is created (getOrCreatePerson) and
-	// where a credit list resolves one (personSlugTarget): the variant slug is
-	// never written into p.people, so a credit minted under it has to be
-	// redirected here or it would name a record that does not exist.
+	// It is consulted wherever a credit is resolved, created or not
+	// (resolvePerson): the variant slug is never written into p.people, so a
+	// credit minted under it has to be redirected here or it would name a record
+	// that does not exist.
 	initialsSurvivors initialsSurvivors
 	// redirects is the catalogue's slug TOMBSTONE table, off the same load as the
 	// identity maps, and tombstoneRides every retired slug this run resolved onto
@@ -866,6 +870,7 @@ func (p *planner) loadExisting() {
 	for _, w := range cat.Works {
 		ws := &workState{
 			slug:    w.ID,
+			title:   w.Title,
 			authors: diskIdentityAuthors(w.Authors, w.Credits),
 			all:     ToSet(w.Authors),
 			lang:    w.Language,
@@ -1079,20 +1084,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// that sits in that series at a different position.
 	//
 	// Resolved BEFORE the row's people are, which it can be because findSeries only
-	// reads: the duplicate-identity guard below needs the claim (it walks the same
-	// slug candidates getOrCreateWork will), and the guard has to run before
+	// reads: the duplicate-identity guard below needs the claim (it asks
+	// resolveWork, as the create path does), and the guard has to run before
 	// anything is created or a refused row would leave orphan person records behind.
-	var claim *seriesClaim
-	prod := p.rowProductionOf(b, narratorNames)
-	for _, r := range b.series {
-		if !r.seqOK {
-			continue
-		}
-		if ss := p.findSeries(r.name); ss != nil {
-			claim = newSeriesClaim(ss, r, workTitle, prod)
-			break
-		}
-	}
+	claim := p.rowSeriesClaim(b, workTitle, narratorNames)
 
 	// The duplicate-identity guard: a row naming a book the catalogue already holds
 	// under a differently-spelled title is dropped and reported rather than minting a
@@ -1121,7 +1116,15 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := workFacts{genres: b.genres, credits: authorCredits}
-	ws := p.getOrCreateWork(workTitle, b.str("title"), authors, lang, claim, facts, posSuffix, warn)
+	walk := p.resolveWork(workTitle, b.str("title"), posSuffix, authors, lang, claim)
+	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
+	// The title the row was RESOLVED by - its own, or its full title when the
+	// work was found or created on the full title's chain - is the one the
+	// recording's serial guard and the series placement read a stated volume
+	// from, so all three judge the row's volume off the same title: a row
+	// "Towerbound" / "Towerbound, Book 6" that met volume 6 through its full title
+	// is volume 6 to the recording guard and to placement too.
+	resolvedTitle := walk.title
 	// The row's normalized identity now names a work this run knows about, so a LATER
 	// row of the same run carrying another spelling of this title meets it (see
 	// dupidentity.go's identityMatch). Registered whether the work was created or
@@ -1129,7 +1132,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if ws != nil {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
-	recorded := p.addRecording(ws, b, workTitle, asin, lang, narratorSlugs, warn)
+	recorded := p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
 
 	// Single owner of the global ASIN registry: whether addRecording created a
 	// new recording or merged the ASIN into an existing one, this tail records
@@ -1154,9 +1157,28 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 			// placementPosition is the title-versus-source arbitration
 			// (seriespos.go); it returns r.seq unchanged for every row whose title
 			// states no volume or states the same one, which is almost all of them.
-			p.addToSeries(r.name, ws.slug, p.placementPosition(r, ws.slug, workTitle, warn), warn)
+			p.addToSeries(r.name, ws.slug, p.placementPosition(r, ws.slug, resolvedTitle, warn), warn)
 		}
 	}
+}
+
+// rowSeriesClaim is the row's claim on the FIRST series it states (with a usable
+// position) that resolves to a series the planner already knows, or nil. It only
+// reads, so a caller may ask before anything is created. workTitle is the title
+// the claim's title arm reads a stated volume from, and narratorNames the row's
+// narrator credits the production it is corroborated by is resolved from.
+// (The recordings-only matcher deliberately asks no work-level claim; see
+// resolveExistingWork.)
+func (p *planner) rowSeriesClaim(b sourceBook, workTitle string, narratorNames []string) *seriesClaim {
+	for _, r := range b.series {
+		if !r.seqOK {
+			continue
+		}
+		if ss := p.findSeries(r.name); ss != nil {
+			return newSeriesClaim(ss, r, workTitle, p.rowProductionOf(b, narratorNames))
+		}
+	}
+	return nil
 }
 
 // dedupeByASIN is the first gate of every planner that CREATES a recording: a
@@ -1493,16 +1515,17 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 		if len(c.roles) == 0 {
 			continue
 		}
-		slug, fellBack := personSlug(c.name)
-		if fellBack {
+		// resolvePerson, not personSlug: the person may have been created under
+		// another spelling of their initials, which is a record this credit must
+		// NAME rather than miss - resolving "A.B. Kovacs" straight through
+		// personSlug lands on a slug nothing created, and the role credit was
+		// silently dropped.
+		r := p.resolvePerson(c.name)
+		if r.fellBack {
 			p.noteUnnamedCredit(c.name)
 			continue
 		}
-		// The person may have been created under another spelling of their
-		// initials, which is a record this credit must NAME rather than miss:
-		// resolving "A.B. Kovacs" straight through personSlug lands on a slug
-		// nothing created, and the role credit was silently dropped.
-		slug = p.personSlugTarget(slug)
+		slug := r.slug
 		if _, known := p.people[slug]; !known {
 			continue
 		}
@@ -1557,28 +1580,57 @@ func (p *planner) creditSlugs(names []string, warn func(string, ...any)) []strin
 // Otherwise the surviving name would be whichever row arrived first, which is
 // the order dependence the pre-pass exists to remove.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
-	slug, fellBack := personSlug(name)
-	if fellBack {
-		warn("name %q produced an empty slug; using %q", name, slug)
+	r := p.resolvePerson(name)
+	if r.fellBack {
+		warn("name %q produced an empty slug; using %q", name, r.slug)
 	}
+	if r.create {
+		return p.createPerson(r.slug, r.name)
+	}
+	if r.from != r.slug {
+		p.noteTombstone(model.RedirectPeople, r.from, r.slug)
+	}
+	return r.slug
+}
+
+// personResolution is resolvePerson's answer: the slug a credit lands on, and
+// whether getOrCreatePerson has to create the record there (under name) or found
+// it live (reached from the slug from, which differs from slug when a tombstone
+// was ridden).
+type personResolution struct {
+	slug     string
+	create   bool
+	name     string
+	from     string
+	fellBack bool
+}
+
+// resolvePerson is getOrCreatePerson's DECISION with none of its effects - the
+// one resolution the creating path and every read-only resolver of a credit
+// (rowWorkAuthorsRO, rowProductionOf, workCredits) go through, so a prediction of
+// who a credit names cannot disagree with the record the create path mints.
+//
+// A read-only answer and the created one agree across a run: resolving a credit
+// can only CREATE the very slug this function names for it, and any later credit
+// reaching that slug resolves to it either way (live, or named as the one to
+// create).
+func (p *planner) resolvePerson(name string) personResolution {
+	slug, fellBack := personSlug(name)
 	// livePerson also follows a retired slug to its survivor (tombstone.go): the
 	// person is never re-created at the address a merge took them off.
 	from := slug
 	live, ok := p.livePerson(from)
 	if !ok {
-		survivor, merges := p.initialsMerge(name)
+		survivor, merges := p.initialsMerge(name, slug, fellBack)
 		if !merges {
-			return p.createPerson(slug, name)
+			return personResolution{slug: slug, create: true, name: name, fellBack: fellBack}
 		}
 		from = survivor.slug
 		if live, ok = p.livePerson(from); !ok {
-			return p.createPerson(survivor.slug, survivor.name)
+			return personResolution{slug: survivor.slug, create: true, name: survivor.name, fellBack: fellBack}
 		}
 	}
-	if live != from {
-		p.noteTombstone(model.RedirectPeople, from, live)
-	}
-	return live
+	return personResolution{slug: live, from: from, fellBack: fellBack}
 }
 
 // createPerson emits a new person record. The caller has already established
@@ -1592,30 +1644,6 @@ func (p *planner) createPerson(slug, name string) string {
 		ID: slug, Name: name, Kind: PersonKindFor(name), License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
 	p.summary.NewPeople++
-	return slug
-}
-
-// personSlugTarget resolves a minted person slug onto the record that actually
-// holds that person. It is the read-only half of the initials merge: the variant
-// slug is deliberately never written into p.people (an id nothing created is a
-// dangling reference), so every path that RESOLVES a credit rather than creating
-// one has to ask here or it would drop the credit - the merged record is real,
-// but it sits at the other spelling's address.
-//
-// A slug that names an existing record is always returned as-is. That is the
-// guard that keeps the decision from redirecting credits away from a record the
-// catalogue already holds: a pre-existing pair of spellings stays a pair, each
-// serving its own credits, until a maintainer merges them.
-func (p *planner) personSlugTarget(slug string) string {
-	if live, ok := p.livePerson(slug); ok {
-		return live
-	}
-	if survivor, decided := p.initialsSurvivors[slug]; decided {
-		if live, ok := p.livePerson(survivor.slug); ok {
-			return live
-		}
-		return survivor.slug
-	}
 	return slug
 }
 
@@ -1647,6 +1675,9 @@ type seriesClaim struct {
 	// whose name is a different spelling, and the position probe must be composed
 	// from the spelling the serial pre-pass mints with, which is the row's.
 	name string
+	// ref is the row's own claim, kept so forTitle can read its position against
+	// another title.
+	ref seriesRef
 }
 
 // compatible reports whether merging the book into work ws is consistent with
@@ -1683,7 +1714,16 @@ func (c *seriesClaim) holds(ws *workState, pos string) bool {
 // title (which the title arm is read from) and its production (which that arm is
 // corroborated by) - the one constructor, so no claim can be built without them.
 func newSeriesClaim(ss *seriesState, r seriesRef, title string, prod *rowProduction) *seriesClaim {
-	return &seriesClaim{ss: ss, pos: rowPositionOf(r, title), prod: prod, name: r.name}
+	return &seriesClaim{ss: ss, pos: rowPositionOf(r, title), prod: prod, name: r.name, ref: r}
+}
+
+// forTitle is the same claim with its title arm read off another title - the
+// FULL title, when resolveWork walks it. nil stays nil.
+func (c *seriesClaim) forTitle(title string) *seriesClaim {
+	if c == nil {
+		return nil
+	}
+	return newSeriesClaim(c.ss, c.ref, title, c.prod)
 }
 
 // places is compatible's POSITIVE half: it reports whether the series says ws
@@ -1737,113 +1777,25 @@ type workFacts struct {
 	credits []credit
 }
 
-// getOrCreateWork returns the work identified by (title-slug, identity author
-// set), creating it when new. A same-author work that the book's series claim
-// rules out (same series, different position) is not a merge target: the slug is
-// re-derived from the full title, with the candidate chain (author suffix,
-// then numeric) only as the last-resort collision fallback. A collision with a
-// different author set appends the first author's slug, then numeric suffixes,
-// and warns. facts are the creation-only facts (genres, credits); they are
-// stored only on the branch that creates a work, which is the only place they
-// can be stored, and ride through the full-title retry unchanged.
-//
-// Three tests can rule a candidate out even when its authors answer, and each
-// one exists because it was measured firing the wrong way:
-//
-//   - the LANGUAGE test. A work is language-scoped, so a German translation may
-//     not merge into its English original however identical their credits are
-//     (langCompatible; a 20,000-row wave-6 simulation left 82 more
-//     cross-language recordings in the tree without it).
-//   - the SERIES CLAIM test. A same-author work the row's series claim rules out
-//     is a different volume sharing a short title; the slug is re-derived from
-//     the full title once, with the candidate chain only as the last resort.
-//   - the POSITION-SUFFIX test. See posSuffix below.
-//
-// posSuffix is the serial-disambiguation tail (workidentity.go): when the batch
-// pre-pass found that this row shares its title with a sibling volume, the tail
-// is appended to the title base BEFORE the collision chain, so each volume gets
-// its own slug instead of the chain merging them. It is empty for almost every
-// row.
-//
-// A SUFFIXED candidate - the row's own suffixed base, or one of the position
-// probes workCandidates adds for a claim-bearing row - may only be merged into
-// when something says its "book-<position>" tail means what it says: either THIS
-// RUN created the work on the suffixed path (workState.posSuffixed), or the
-// row's series claim PLACES that work at exactly the position it claims
-// (seriesClaim.places). The tree holds 258 works whose slug already looks like
-// "<something>-book-3" because their TITLE ends that way, and they are not
-// volume 3 of the row's serial - they are unrelated books that happen to spell
-// the slug the pre-pass mints. Neither test can reach one: no run created it,
-// and no series records it at that position. Merging into one silently files a
-// recording under a different book, which is exactly what the pre-pass exists to
-// prevent.
-//
-// The placement test is what makes the suffix survive its own run. A batch mints
-// "<title>-book-1" and records it in the series; the NEXT run's row for that
-// volume - alone, so the pre-pass never fires, or batched, so it composes the
-// same suffix - finds it, because the series says that work is volume 1. Without
-// it the second run mints a duplicate whichever path it takes.
-//
-// The full-title retry does NOT fire under a posSuffix, and that is structural
-// rather than an omission: a row only carries a suffix when resolveWorkTitles
-// left its resolved title equal to its full title (a suffix is minted precisely
-// for the rows the full-title fallback could not separate), so the retry's own
-// precondition - a full title that differs - can never hold. It is skipped
-// explicitly so that reading the code says so.
-func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, lang string, claim *seriesClaim, facts workFacts, posSuffix string, warn func(string, ...any)) *workState {
-	base, cands, primary := workChain(title, posSuffix, authors, claim)
-	if fellBack := Slugify(title) == ""; fellBack {
-		warn("title %q produced an empty slug; using %q", title, base)
+// getOrCreateWork acts on the decision resolveWork made for a row: it merges the
+// row into the existing work the walk found, or creates the work on the walk's
+// chain. facts are the creation-only facts (genres, credits); they are stored only
+// on the branch that creates a work, which is the only place they can be stored.
+// WHICH work a row belongs to, and why, is resolveWork's to say.
+func (p *planner) getOrCreateWork(walk workWalk, authors workAuthors, lang string, facts workFacts, warn func(string, ...any)) *workState {
+	ws := p.mergeOrCreate(walk, authors, lang, facts, warn)
+	// Said after the decision so it names the slug the row actually landed on,
+	// not the fallback base the chain composed for the unslugifiable title.
+	if ws != nil && walk.untitled != "" {
+		warn("title %q produced an empty slug; using %q", walk.untitled, ws.slug)
 	}
+	return ws
+}
 
-	// The walk grades every candidate rather than taking the first that answers:
-	// two candidates can both reduce to the row's identity set (the-iliad and
-	// the-iliad-robert-fitzgerald both reduce to Homer) and only the whole
-	// credit list says which of the two the row is.
-	//
-	// A RETIRED candidate is judged as its survivor (workAt, tombstone.go): the
-	// row merges into it on exactly the rules a live record there would get, and
-	// otherwise the candidate is occupied and the walk steps past it - a minter
-	// never claims a tombstoned slug.
-	best, bestKind, free, blocked := -1, matchNone, -1, false
-	var bestWS *workState
-	bestVia := ""
-	for i, cand := range cands {
-		ws, via := p.workAt(cand.slug)
-		if ws == nil {
-			if via == "" { // free: neither live nor retired
-				if free < 0 && !cand.probeOnly {
-					free = i
-				}
-				if free >= 0 && i >= primary {
-					break
-				}
-			}
-			continue
-		}
-		kind := matchWork(ws, authors)
-		if kind == matchNone || !langCompatible(ws.lang, lang) {
-			continue
-		}
-		if (posSuffix != "" || cand.posSuffixed) && !ws.posSuffixed && !claim.places(ws) {
-			continue
-		}
-		if !claim.compatible(ws) {
-			blocked = true
-			continue
-		}
-		if kind > bestKind {
-			best, bestKind, bestWS, bestVia = i, kind, ws, via
-		}
-		if bestKind == matchExact {
-			break
-		}
-	}
-
-	if best >= 0 {
-		ws := bestWS
-		if bestVia != "" {
-			p.noteTombstone(model.RedirectWorks, bestVia, ws.slug)
+func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string, facts workFacts, warn func(string, ...any)) *workState {
+	if ws := walk.ws; ws != nil {
+		if walk.via != "" {
+			p.noteTombstone(model.RedirectWorks, walk.via, ws.slug)
 		}
 		// A later row of this run, merging into a work the run created: its
 		// credits are not a second source's account of an existing work, they are
@@ -1851,30 +1803,17 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		// merged in (a no-op for a work loaded from disk, which is never in
 		// runCredits).
 		p.mergeCreatedWorkFacts(ws, facts)
-		// A merge onto a SHORTENED candidate is the one case where the slug no
-		// longer carries the whole title: two different long titles by one author
-		// agreeing up to the cut land here as a single work. The identity model
-		// accepts that collision risk, but it must not be silent - on the
-		// unbounded formula it surfaced as an invalid slug.
-		if !cands[best].probeOnly && workSlugTruncated(base, authors.first(), best) {
-			warn("work slug for %q was shortened to fit; merging into existing work %q - verify these are the same book", title, ws.slug)
-		}
 		return ws
 	}
 
-	// Nothing answered. A candidate the SERIES CLAIM ruled out means the row is
-	// a different volume that merely shares this short title, so re-derive from
-	// the full title once before minting anything.
-	if blocked && posSuffix == "" {
-		if full := Slugify(fullTitle); fullTitle != title && full != "" && full != base {
-			return p.getOrCreateWork(fullTitle, "", authors, lang, claim, facts, posSuffix, warn)
-		}
-	}
-	if free < 0 {
+	// Nothing answered: create on the chain resolveWork chose - the row's own
+	// title's, or the full title's when the series claim blocked the short one
+	// (then the work is also TITLED by the full title).
+	title, base, slug := walk.title, walk.chain.base, walk.free
+	if slug == "" {
 		// Unreachable in practice: 50 numeric candidates never all collide.
 		return nil
 	}
-	slug := cands[free].slug
 	survivor, retired := p.redirects.Survivor(model.RedirectWorks, base)
 	_, survivorHeld := p.works[survivor]
 	switch {
@@ -1890,8 +1829,8 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
 	}
 	ws := &workState{
-		slug: slug, authors: authors.set(), all: authors.allSet(), lang: lang,
-		posSuffixed: posSuffix != "", recs: map[string]*recInfo{},
+		slug: slug, title: title, authors: authors.set(), all: authors.allSet(), lang: lang,
+		posSuffixed: walk.chain.suffixed, recs: map[string]*recInfo{},
 	}
 	p.works[slug] = ws
 	// added_at is stamped here and only here for a work: this is the branch that
@@ -1977,6 +1916,213 @@ func unionRawGenres(raw map[string]any, add []string) []string {
 	}
 	raw["genres"] = out
 	return out
+}
+
+// workWalk is one walk of a title's candidate chain: the existing work it would
+// merge into (ws, found at candidate hit, through the retired candidate via when
+// that is non-empty), the first slug a new work could be created at (free, "" when
+// none), and whether a same-author candidate was ruled out by the row's series
+// claim (blocked). untitled is the row's title when it slugged to nothing, for the
+// warning only the creating caller can give.
+type workWalk struct {
+	title    string
+	chain    workChain
+	hit      workCandidate
+	ws       *workState
+	via      string
+	free     string
+	blocked  bool
+	untitled string
+}
+
+// walkWorkChain walks a title's candidate chain and grades every candidate
+// against the row. It only READS p.works: deciding and creating are the caller's.
+//
+// The walk grades every candidate rather than taking the first that answers:
+// two candidates can both reduce to the row's identity set (the-iliad and
+// the-iliad-robert-fitzgerald both reduce to Homer) and only the whole credit
+// list says which of the two the row is.
+//
+// Three tests can rule a candidate out even when its authors answer:
+//
+//   - the LANGUAGE test. A work is language-scoped, so a translation may not
+//     merge into its original however identical their credits are
+//     (langCompatible).
+//   - the SERIES CLAIM test. A same-author work the row's series claim places at
+//     a DIFFERENT position is a different volume sharing the title
+//     (seriesClaim.compatible); the walk reports it as blocked.
+//   - the SUFFIXED-SLUG test. A candidate carrying a serial-position tail - the
+//     row's own suffixed base, or a position probe - is a merge target only when
+//     something says its "book-<position>" tail means what it says: THIS run
+//     created the work on the suffixed path (workState.posSuffixed), or the row's
+//     series claim PLACES that work at exactly the position it claims
+//     (seriesClaim.places). A work whose slug looks like "<something>-book-3"
+//     because its TITLE ends that way is not volume 3 of the row's serial, and
+//     neither test can reach it.
+//
+// A CUT candidate (workCandidate.shortened) is a hit only when the work there
+// carries the walked title WHOLE (titlerule.CompareKeyWhole). The slug cap cuts a
+// long retail title's TAIL, which is exactly where "..., Book 3)" and "..., Book
+// 4)" differ, so two volumes by one author meet on one cut slug; a cut hit whose
+// titles differ is some other book, and the walk steps past it like any occupied
+// slug - a lower-ranked candidate can still answer, and a row nothing answers
+// creates. On every walk: the create path's, the blocked retry, the full-title
+// merge and the recordings-only matcher.
+//
+// A RETIRED candidate is judged as its survivor (workAt, tombstone.go): the row
+// merges into it on exactly the rules a live record there would get, and
+// otherwise the candidate is occupied and the walk steps past it - nothing is
+// ever created at a tombstoned slug.
+func (p *planner) walkWorkChain(title string, chain workChain, authors workAuthors, lang string, claim *seriesClaim) workWalk {
+	w := workWalk{title: title, chain: chain}
+	bestKind := matchNone
+	wholeKey := "" // the walked title's CompareKeyWhole, computed on the first cut hit
+	for i := 0; ; i++ {
+		cand, ok := chain.at(i)
+		if !ok {
+			break
+		}
+		ws, via := p.workAt(cand.slug)
+		if ws == nil {
+			if via == "" { // free: neither live nor retired
+				if w.free == "" && !cand.probeOnly {
+					w.free = cand.slug
+				}
+				if w.free != "" && i >= len(chain.primary) {
+					break
+				}
+			}
+			continue
+		}
+		if cand.shortened {
+			if wholeKey == "" {
+				wholeKey = titlerule.CompareKeyWhole(title)
+			}
+			if titlerule.CompareKeyWhole(ws.title) != wholeKey {
+				continue
+			}
+		}
+		kind := matchWork(ws, authors)
+		if kind == matchNone || !langCompatible(ws.lang, lang) {
+			continue
+		}
+		if (chain.suffixed || cand.posSuffixed) && !ws.posSuffixed && !claim.places(ws) {
+			continue
+		}
+		if !claim.compatible(ws) {
+			w.blocked = true
+			continue
+		}
+		if kind > bestKind {
+			bestKind, w.hit, w.ws, w.via = kind, cand, ws, via
+		}
+		if bestKind == matchExact {
+			break
+		}
+	}
+	return w
+}
+
+// resolveWork is THE answer to "which existing work does this row belong to, and
+// if none, on which chain is its work created" - read-only, so the create path and
+// the duplicate-identity guard ask the one question the same way.
+//
+// That is the guard/create agreement, and it rests on two things: both call this
+// function (the guard to learn whether the row would create a work, addBook to
+// act), and both hand it the row's authors resolved the same way (resolvePerson,
+// which getOrCreatePerson acts on and rowWorkAuthorsRO reads). addBook does not
+// reuse the guard's walk: it resolves again with the author set the create path
+// actually minted, so an in-row difference between the read-only and the created
+// resolution can never make the create path act on an answer it did not reach.
+//
+// The row's resolved title is walked first; that is where the overwhelming
+// majority of works are. When it holds no match, the FULL title's chain is walked
+// too, in one of two roles:
+//
+//   - as the CREATE chain, when the series claim BLOCKED a same-author candidate
+//     on the short chain (a different volume that merely shares the short
+//     title): the long-standing full-title retry.
+//   - otherwise as a MERGE TARGET only (mergeOnlyWalk): a user-library export
+//     titles a work by its short title ("Nightfall") where the bulk mirror
+//     created the same production under its full retailer title ("Nightfall - A
+//     Fantasy Adventure (Dragon Centurion, Book 4)"), and the short chain cannot
+//     see that work. A miss leaves the row on its own title's chain; nothing is
+//     ever created at a full-title slug by this role.
+//
+// Neither fires under a posSuffix, and that is structural rather than an
+// omission: a row only carries a suffix when resolveWorkTitles left its resolved
+// title equal to its full title (a suffix is minted precisely for the rows the
+// full-title fallback could not separate), so the precondition - a full title
+// that differs - can never hold. It is skipped explicitly so that reading the
+// code says so.
+func (p *planner) resolveWork(title, fullTitle, posSuffix string, authors workAuthors, lang string, claim *seriesClaim) workWalk {
+	ts := slugOfTitle(title)
+	short := p.walkWorkChain(title, newWorkChain(ts, posSuffix, authors, claim.position()), authors, lang, claim)
+	if ts.fellBack {
+		// Only the short walk can be on the "untitled" fallback, so only it
+		// carries the warning; a full-title walk is on a real slug.
+		short.untitled = title
+	}
+	if short.ws != nil || posSuffix != "" || fullTitle == title {
+		return short
+	}
+	fs := slugOfTitle(fullTitle)
+	if fs.fellBack || fs.slug == short.chain.base {
+		return short
+	}
+	// A walk of the FULL title is judged by a claim read off the full title, so
+	// the title arm (rowPositionOf) sees the volume the full title states: a row
+	// titled "Towerbound" / "Towerbound, Book 6" at the retailer's position 8 is
+	// volume 6, which only the full title says.
+	fullClaim := claim.forTitle(fullTitle)
+	if short.blocked {
+		return p.walkWorkChain(fullTitle, newWorkChain(fs, "", authors, fullClaim.position()), authors, lang, fullClaim)
+	}
+	if long, ok := p.mergeOnlyWalk(fullTitle, fs, authors, lang, fullClaim); ok {
+		return long
+	}
+	return short
+}
+
+// mergeOnlyWalk walks a title's chain as a place to LOOK, never to create: the
+// full-title merge (resolveWork) and every title candidate of the recordings-only
+// matcher (resolveExistingWork) go through it. It reports a walk only when the
+// walk found a work.
+//
+// The hit must clear every test walkWorkChain applies. Beyond those it is
+// narrower than a create walk in two ways:
+//
+//   - NO POSITION PROBES. A place to look is looked for under its own title;
+//     probing the serial pre-pass's "<title>-book-<n>" slugs on top of a title
+//     that already spells its volume addresses "...-book-4-book-4" shapes nothing
+//     ever created.
+//   - ONLY WHEN THE BARE SLUG IS OCCUPIED (bareSlugOccupied). A work sits on a
+//     suffixed candidate only because the bare one was taken when it was
+//     created, so a free bare slug means the chain holds nothing - and the gate
+//     keeps the walk off the overwhelming majority of titles, which name nothing
+//     we hold.
+//
+// A cut slug is judged as on every walk: a hit there counts only when the work
+// carries the walked title whole (walkWorkChain).
+//
+// It notes no tombstone ride: it is asked read-only (the guard asks resolveWork
+// without importing the row), so the ride is recorded by whoever acts on the walk.
+func (p *planner) mergeOnlyWalk(title string, ts titleSlug, authors workAuthors, lang string, claim *seriesClaim) (workWalk, bool) {
+	if ts.fellBack || !p.bareSlugOccupied(ts.slug) {
+		return workWalk{}, false
+	}
+	w := p.walkWorkChain(title, newWorkChain(ts, "", authors, positionClaim{}), authors, lang, claim)
+	return w, w.ws != nil
+}
+
+// bareSlugOccupied reports whether a title's bare slug is taken - by a live work,
+// by a tombstone, or by being an API route literal nothing may be created at (the
+// work then sits on the author-suffixed candidate while the bare slug stays
+// free). It is mergeOnlyWalk's gate and the recordings-only matcher's cheap
+// pre-check before it resolves a row's credits.
+func (p *planner) bareSlugOccupied(slug string) bool {
+	ws, via := p.workAt(slug)
+	return ws != nil || via != "" || model.IsReservedSlug(slug)
 }
 
 // findSeries returns the already-known series (existing on disk or created this
@@ -2815,59 +2961,105 @@ func runtimesCompatible(a, b int) bool {
 }
 
 // workCandidate is one slug a row's work may sit on. probeOnly marks a slug
-// that is a place to LOOK but never a place to create: see workCandidates.
+// that is a place to LOOK but never a place to create: see primaryWorkCandidates.
 // posSuffixed marks a slug that carries a serial-position tail, which is what
-// makes it subject to getOrCreateWork's suffixed-merge-target rule.
+// makes it subject to walkWorkChain's suffixed-slug test. shortened marks a slug
+// whose TITLE part was cut to fit MaxSlugLen - the chain's base was cut, or
+// composing this candidate cut it - so two long titles agreeing up to the cut
+// meet on it.
 type workCandidate struct {
 	slug        string
 	probeOnly   bool
 	posSuffixed bool
+	shortened   bool
 }
 
-// workChain composes the slug candidates a row's work is looked up and created on:
-// the base slug (the title, with the serial position tail appended when the row
-// carries one), and workCandidates over it with the position probe a claim-bearing
-// row is allowed.
-//
-// It is ONE function because TWO callers walk that chain - getOrCreateWork, which
-// resolves or mints the work, and the duplicate-identity guard's reachability test,
-// which asks whether the create path would find a work it already matched
-// (dupidentity.go). "The same chain in the same order" is that guard's whole
-// soundness argument, so it is structural here rather than a comment at two sites.
-//
-// A row that states a series position may LOOK at the suffixed slugs the serial
-// pre-pass mints for that position, so a lone volume finds the work an earlier batch
-// created there - but not when this row is itself suffixed: its base already carries
-// the tail, and probing a second one would address "<title>-book-1-book-1".
-//
-// An unslugifiable title falls back to "untitled" (the caller warns about it; only
-// the creating one has a warning sink).
-func workChain(title, posSuffix string, authors workAuthors, claim *seriesClaim) (base string, cands []workCandidate, primary int) {
-	base = Slugify(title)
-	if base == "" {
-		base = "untitled"
+// titleSlug is a title's slug as a work chain is built on it: the slug, whether
+// the MaxSlugLen cap cut it, and whether the title slugged to nothing (the slug is
+// then the "untitled" fallback, which the creating caller warns about).
+type titleSlug struct {
+	slug     string
+	cut      bool
+	fellBack bool
+}
+
+// slugOfTitle slugs a work title once, for every chain built on it.
+func slugOfTitle(title string) titleSlug {
+	slug, cut := model.SlugifyCut(title)
+	if slug == "" {
+		return titleSlug{slug: "untitled", fellBack: true}
 	}
-	probe := positionClaim{}
+	return titleSlug{slug: slug, cut: cut}
+}
+
+// workChain is the slug-candidate chain a row's work is looked up and created on:
+// the PRIMARY candidates (primaryWorkCandidates), built eagerly, and the numbered
+// collision candidates after them, composed on demand by at because a walk almost
+// never reaches them.
+//
+// It is ONE type because every walk of a work chain goes through it - the create
+// path, the duplicate-identity guard (through resolveWork) and the recordings-only
+// matcher (through mergeOnlyWalk) - so "the same chain in the same order" is
+// structural rather than a comment at three sites.
+type workChain struct {
+	base     string // the title's slug, with the serial-position tail when the row carries one
+	cut      bool   // base was cut to fit MaxSlugLen
+	suffixed bool   // base carries the serial-position tail
+	first    string // the first identity author, the numbered candidates' credit
+	primary  []workCandidate
+}
+
+// maxWorkCandidate is the last numbered collision suffix a chain composes.
+const maxWorkCandidate = 50
+
+// newWorkChain composes a chain over ts. posSuffix is the serial-disambiguation
+// tail (workidentity.go): when the batch pre-pass found that this row shares its
+// title with a sibling volume, the tail is appended to the title base BEFORE the
+// collision chain, so each volume gets its own slug instead of the chain merging
+// them. It is empty for almost every row.
+//
+// probe is the series position whose serial-suffixed slugs a row may LOOK at
+// (the zero positionClaim for none), so a lone volume finds the work an earlier
+// batch created there - but never for a row that is itself suffixed: its base
+// already carries the tail, and probing a second one would address
+// "<title>-book-1-book-1".
+func newWorkChain(ts titleSlug, posSuffix string, authors workAuthors, probe positionClaim) workChain {
+	c := workChain{base: ts.slug, cut: ts.cut, first: authors.first()}
 	if posSuffix != "" {
-		base = BoundedSlugTail(base, "-"+posSuffix)
-	} else {
-		probe = claim.position()
+		var cut bool
+		c.base, cut = boundedSlugTail(c.base, "-"+posSuffix)
+		c.cut = c.cut || cut
+		c.suffixed = true
+		probe = positionClaim{}
 	}
-	cands, primary = workCandidates(base, authors, probe)
-	return base, cands, primary
+	c.primary = primaryWorkCandidates(c.base, c.cut, authors, probe)
+	return c
 }
 
-// workCandidates yields the ordered slug candidates for a work, and how many of
-// them are PRIMARY (the non-numeric ones). Every candidate is a valid slug
-// (workSlugAt bounds it to model.MaxSlugLen); the bare base already is, coming
-// from Slugify. resolveExistingWork walks this same chain to FIND a work, so
-// the bound must live here rather than at either call site or the two would
-// stop agreeing on where a work sits.
+// at is the chain's i'th candidate: a primary one, then the numbered collision
+// candidates "<base>-<first author>-2" through "-50". ok is false past the end.
+func (c workChain) at(i int) (workCandidate, bool) {
+	if i < len(c.primary) {
+		return c.primary[i], true
+	}
+	n := i - len(c.primary) + 2
+	if n > maxWorkCandidate {
+		return workCandidate{}, false
+	}
+	slug, cut := workSlugAt(c.base, c.first, n)
+	return workCandidate{slug: slug, shortened: c.cut || cut}, true
+}
+
+// primaryWorkCandidates yields the chain's PRIMARY candidates, the ones every
+// walk probes before it may create at the first free slug. Every candidate is a
+// valid slug (workSlugAt bounds it to model.MaxSlugLen); the bare base already
+// is, coming from Slugify. baseCut marks every candidate shortened when the base
+// itself was cut.
 //
 // The chain is: the bare title slug, the title plus the first IDENTITY author,
-// the title plus EVERY OTHER author the row credits, then numeric suffixes on
-// the identity form. Only the first two are slugs a new work may be minted at;
-// the rest are probes, marked probeOnly.
+// the title plus EVERY OTHER author the row credits, then the position probes.
+// Only the first two are slugs a new work may be created at; the rest are probes,
+// marked probeOnly. The numbered candidates follow (workChain.at).
 //
 // Probing every author is what makes the chain independent of the ORDER a
 // source lists credits in. The suffix is built from the FIRST author, and two
@@ -2875,13 +3067,13 @@ func workChain(title, posSuffix string, authors workAuthors, claim *seriesClaim)
 // Holmes audio drama credited "Arthur Conan Doyle, S. Pomej" on one release and
 // "S. Pomej, Arthur Conan Doyle" on the next produced two works with byte-equal
 // author SETS, because each row looked only where its own first author would
-// have put it. Ten such pairs were minted by a single wave.
+// have put it.
 //
 // The POSITION probes are the third kind, and pos is what turns them on: a row
 // that states a series position looks at the slugs the serial pre-pass mints
 // for that position (posSuffixSlugs) as well as at the bare base, so a lone
 // volume of a serial finds the suffixed work an earlier BATCH created instead of
-// minting a duplicate beside it. They sit after the author probes because the
+// creating a duplicate beside it. They sit after the author probes because the
 // bare base is where the overwhelming majority of works are; a row that states
 // no claim passes the zero positionClaim and gets no position probe at all.
 //
@@ -2890,62 +3082,58 @@ func workChain(title, posSuffix string, authors workAuthors, claim *seriesClaim)
 // (workidentity.go) took its suffix from the first entry of the whole author
 // list, so a book whose edition listed its translator first sits at
 // "firstborn-julia-schwenk" while today's chain would only look at
-// "firstborn-m-j-hastings". The measured cost of not looking is both halves of
-// one defect: the create path mints a duplicate of a work it cannot see, and
-// --recordings-only silently drops the alternate narration of one.
+// "firstborn-m-j-hastings". Not looking costs both halves of one defect: the
+// create path creates a duplicate of a work it cannot see, and --recordings-only
+// silently drops the alternate narration of one.
 //
-// A probe can only ever FIND a work; nothing is minted at one, so the extra
+// A probe can only ever FIND a work; nothing is created at one, so the extra
 // locations do not grow, and a probe that hits still has to satisfy every merge
 // test (identity, language, series claim) before it is used.
 //
 // The PRIMARY count is what stops the walk from claiming a free slug too early:
-// a work can sit on a probe candidate while the mintable one is free, so all of
+// a work can sit on a probe candidate while the creatable one is free, so all of
 // the primaries must be probed before a new work is created at the first free
-// one. Past them, the first free slug ends the walk as it always did - the
-// chain beyond it can only be empty, because getOrCreateWork would have claimed
-// exactly that slug.
-func workCandidates(base string, authors workAuthors, pos positionClaim) (cands []workCandidate, primary int) {
-	cands = make([]workCandidate, 0, 55)
+// one. Past them, the first free slug ends the walk - the chain beyond it can
+// only be empty, because the create path would have claimed exactly that slug.
+func primaryWorkCandidates(base string, baseCut bool, authors workAuthors, pos positionClaim) []workCandidate {
+	cands := make([]workCandidate, 0, 4)
 	// A base that IS an API route literal ("search", "latest") is a place to
 	// LOOK and never a place to create: a work stored there is unreachable
 	// through /api/v1/works/{id} (pkg/check's checkReservedSlug refuses it), so
 	// the row steps onto the author-suffixed candidate exactly as it would for a
 	// slug another book had taken. Probing it still matters - the tree could hold
-	// a record minted before the rule, and merging into it beats forking beside
+	// a record created before the rule, and merging into it beats forking beside
 	// it.
-	cands = append(cands, workCandidate{slug: base, probeOnly: model.IsReservedSlug(base)})
-	mintable := workSlugAt(base, authors.first(), 1)
-	cands = append(cands, workCandidate{slug: mintable})
+	cands = append(cands, workCandidate{slug: base, probeOnly: model.IsReservedSlug(base), shortened: baseCut})
+	mintable, cut := workSlugAt(base, authors.first(), 1)
+	cands = append(cands, workCandidate{slug: mintable, shortened: baseCut || cut})
 	seen := map[string]bool{base: true, mintable: true}
 	// identity first, then the role-credited people the full list adds: a probe
 	// order that reads from the most likely location to the least.
 	for _, who := range append(append([]string{}, authors.identity...), authors.all...) {
-		slug := workSlugAt(base, who, 1)
+		slug, cut := workSlugAt(base, who, 1)
 		if seen[slug] {
 			continue
 		}
 		seen[slug] = true
-		cands = append(cands, workCandidate{slug: slug, probeOnly: true})
+		cands = append(cands, workCandidate{slug: slug, probeOnly: true, shortened: baseCut || cut})
 	}
-	for _, slug := range posSuffixSlugs(base, pos) {
-		if seen[slug] {
+	for _, probe := range posSuffixSlugs(base, pos) {
+		if seen[probe.slug] {
 			continue
 		}
-		seen[slug] = true
-		cands = append(cands, workCandidate{slug: slug, probeOnly: true, posSuffixed: true})
+		seen[probe.slug] = true
+		cands = append(cands, workCandidate{slug: probe.slug, probeOnly: true, posSuffixed: true, shortened: baseCut || probe.cut})
 	}
-	primary = len(cands)
-	for i := 2; i <= 50; i++ {
-		cands = append(cands, workCandidate{slug: workSlugAt(base, authors.first(), i)})
-	}
-	return cands, primary
+	return cands
 }
 
 // workSlugAt builds the i'th disambiguated work-slug candidate (i >= 1):
 // "<base>-<firstAuthor>" for i == 1, then "-2", "-3", ... appended for the
 // later ones, bounded to model.MaxSlugLen by BoundedSlugTail - so the TITLE is
-// what gets shortened. The author credit tells two books sharing a title apart
-// and the numeric suffix tells the candidates apart, so neither may be cut away.
+// what gets shortened, and cut says whether it was. The author credit tells two
+// books sharing a title apart and the numeric suffix tells the candidates apart,
+// so neither may be cut away.
 //
 // The work-specific policy sits on top: when no word boundary fits the pair, the
 // credit takes at most half of what the numeric suffix leaves. Otherwise a
@@ -2956,45 +3144,33 @@ func workCandidates(base string, authors workAuthors, pos positionClaim) (cands 
 // Like NumberedSlugAt's, the numbered candidates (i >= 2) are pairwise distinct
 // because each ends in its own "-<i>"; candidates 0 and 1 carry no number, so a
 // base or a digit-bearing author slug cut at just the wrong offset can make one
-// of them equal a later candidate. getOrCreateWork's walk absorbs that as one
-// wasted probe of a slug it has already tested.
-func workSlugAt(base, firstAuthor string, i int) string {
+// of them equal a later candidate. A walk absorbs that as one wasted probe of a
+// slug it has already tested.
+func workSlugAt(base, firstAuthor string, i int) (slug string, cut bool) {
 	numeric := ""
 	if i > 1 {
 		numeric = fmt.Sprintf("-%d", i)
 	}
 	credit := "-" + firstAuthor
 	if slug, ok := wordBoundedSlugTail(base, credit+numeric); ok {
-		return slug
+		return slug, len(base)+len(credit)+len(numeric) > model.MaxSlugLen
 	}
 	// TrimRight so a credit cut mid-hyphen cannot meet the numeric suffix as a
 	// doubled hyphen; firstAuthor is a valid slug, so a leading run survives.
 	if half := (model.MaxSlugLen - len(numeric)) / 2; len(credit) > half {
 		credit = strings.TrimRight(credit[:half], "-")
 	}
-	return BoundedSlugTail(base, credit+numeric)
+	return boundedSlugTail(base, credit+numeric)
 }
 
 // AuthorSuffixedWorkSlug is the FIRST disambiguated work-slug candidate -
 // "<base>-<firstAuthor>", bounded exactly as the bulk chain bounds it - exported
 // for internal/issueform, which steps a reserved title slug off the route
 // literal the same way this package does. One formula, so the two composers can
-// never mint two different answers to "where does the work titled Search go".
-func AuthorSuffixedWorkSlug(base, firstAuthor string) string { return workSlugAt(base, firstAuthor, 1) }
-
-// workSlugTruncated reports whether the i'th candidate had to shorten the title
-// to fit MaxSlugLen, i.e. whether the bounded candidate differs from the plain
-// "<base>-<author>(-<i>)" formula. Candidate 0 is never shortened here (Slugify
-// already bounded the bare base).
-func workSlugTruncated(base, firstAuthor string, i int) bool {
-	if i == 0 {
-		return false
-	}
-	n := len(base) + len("-"+firstAuthor)
-	if i > 1 {
-		n += len(fmt.Sprintf("-%d", i))
-	}
-	return n > model.MaxSlugLen
+// never compose two different answers to "where does the work titled Search go".
+func AuthorSuffixedWorkSlug(base, firstAuthor string) string {
+	slug, _ := workSlugAt(base, firstAuthor, 1)
+	return slug
 }
 
 func NormalizeASIN(s string) string {
