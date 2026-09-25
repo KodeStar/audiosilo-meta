@@ -7675,10 +7675,6 @@
         {
           "position": "3",
           "work": "damaged"
-        },
-        {
-          "position": "4",
-          "work": "waiting-on-forever"
         }
       ]
     },
@@ -9063,16 +9059,30 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "pit-bull"
-        },
-        {
           "position": "2",
           "work": "killing-titan"
         },
         {
           "position": "3",
           "work": "take-back-the-sky"
+        }
+      ]
+    },
+    "war-dogs-2": {
+      "id": "war-dogs-2",
+      "license": "CC0-1.0",
+      "name": "War Dogs",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B0GYTC2ZM2",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "pit-bull"
         }
       ]
     },
@@ -15120,16 +15130,30 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "the-breeder"
-        },
-        {
           "position": "2",
           "work": "traitor-devon-c-ford"
         },
         {
           "position": "3",
           "work": "fugitive-devon-c-ford"
+        }
+      ]
+    },
+    "wasteland-2": {
+      "id": "wasteland-2",
+      "license": "CC0-1.0",
+      "name": "Wasteland",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B0FNDMKXCY",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "the-breeder"
         }
       ]
     },
