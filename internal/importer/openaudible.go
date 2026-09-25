@@ -116,13 +116,10 @@ func openAudibleToBook(b rawBook) sourceBook {
 // openAudibleRuntime is THE rule for an OpenAudible row's runtime, in whole
 // minutes (0 = unknown), and site/src/lib/import-parse.ts's parseBook states the
 // same rule (the two share their test cases): the seconds field rounded half up
-// when that yields at least one whole minute, else the duration string. Real
-// exports differ here - older OpenAudible builds wrote both, the current one
-// writes only "duration", as "HH:MM" (hours and minutes: "13:25" on a 13h25m
-// book, "00:04" on a four-minute one; verified against two published books.json
-// exports) - and an "H:MM:SS" spelling is read too. A seconds value that rounds
-// to nothing is no runtime of its own, so it does not hide a duration that is
-// one.
+// when that yields at least one whole minute, else the "duration" string
+// (parseOpenAudibleDuration: "H:MM", the only runtime a current export carries,
+// or "H:MM:SS"). A seconds value that rounds to nothing is no runtime of its own,
+// so it does not hide a duration that is one.
 func openAudibleRuntime(b rawBook) int {
 	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
 		if mins := int((secs + 30) / 60); mins > 0 {

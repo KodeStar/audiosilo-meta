@@ -12,9 +12,16 @@
 //	by_path[region][path]  else  by_path["us"][path]  else  by_name[leaf]
 //
 // so for every path of every marketplace this writes an entry exactly where that
-// chain would otherwise give a different answer from the node - holding the
-// node's answer, or "" when the node maps to nothing (a suppression). US is
-// derived first because every other marketplace falls back to it.
+// chain would otherwise give a different answer from the node. The entry holds
+// the NODE ID, which the importer resolves like any node
+// (importer.ResolveGenreNode), so a later by_asin re-pin reaches the path with no
+// regeneration; a node that resolves to nothing is a suppression. US is derived
+// first because every other marketplace falls back to it.
+//
+// The rules it shares with the importer are the importer's own, not copies: the
+// marketplace list (importer.Marketplaces - a region with no taxonomy file is an
+// error, never a silently missing table), the path key (importer.GenrePathKey)
+// and a node's answer (importer.ResolveGenreNode).
 //
 // It is deterministic: the taxonomy files are walked in their own order,
 // marketplaces in a fixed order, and the JSON is written with sorted keys.
@@ -32,11 +39,9 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
-)
 
-// regions is the fixed derivation order: US first (every other marketplace
-// falls back to it), then the schema's region vocabulary.
-var regions = []string{"us", "uk", "ca", "au", "in", "de", "fr", "es", "it", "jp", "br"}
+	"github.com/kodestar/audiosilo-meta/internal/importer"
+)
 
 type category struct {
 	ID       string     `json:"id"`
@@ -51,9 +56,9 @@ type table struct {
 }
 
 type pathNode struct {
-	key  string // genrePathKey form
-	leaf string // lowercased, trimmed leaf name
-	root string // lowercased, trimmed root name
+	key  string // importer.GenrePathKey form
+	leaf string // the key's last segment, exactly what the importer's lookup resolves by
+	root string // the key's first segment
 	node string
 }
 
@@ -75,8 +80,9 @@ func main() {
 }
 
 func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
+	regions := importer.Marketplaces()
 	if fetch {
-		if err := fetchAll(catDir, base); err != nil {
+		if err := fetchAll(catDir, base, regions); err != nil {
 			return err
 		}
 	}
@@ -95,7 +101,7 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 	for _, r := range regions {
 		data, err := os.ReadFile(filepath.Join(catDir, r+".json"))
 		if errors.Is(err, os.ErrNotExist) {
-			continue // a marketplace with no taxonomy simply gets no entries
+			return fmt.Errorf("no %s.json taxonomy in %s: every marketplace the schema accepts needs one (-fetch downloads them)", r, catDir)
 		}
 		if err != nil {
 			return err
@@ -109,15 +115,11 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 		taxonomies[r] = out
 	}
 	if len(taxonomies["us"]) == 0 {
-		return errors.New("no us.json taxonomy: every marketplace falls back to US, so it is required")
+		return errors.New("empty us.json taxonomy: every marketplace falls back to US, so it is required")
 	}
 
-	nodeAnswer := func(p pathNode) string {
-		if g, ok := t.ByASIN[p.node]; ok {
-			return g
-		}
-		return t.ByName[p.leaf]
-	}
+	answer := func(node, leaf string) string { return importer.ResolveGenreNode(t.ByASIN, t.ByName, node, leaf) }
+	nodeAnswer := func(p pathNode) string { return answer(p.node, p.leaf) }
 
 	byPath := map[string]map[string]string{}
 	conflicts := 0
@@ -136,12 +138,12 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 			decided[p.key] = want
 			fallback := t.ByName[p.leaf]
 			if r != "us" {
-				if g, ok := byPath["us"][p.key]; ok {
-					fallback = g
+				if usNode, ok := byPath["us"][p.key]; ok {
+					fallback = answer(usNode, p.leaf)
 				}
 			}
 			if want != fallback {
-				entries[p.key] = want
+				entries[p.key] = p.node
 			}
 		}
 		if len(entries) > 0 {
@@ -199,36 +201,24 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 	return nil
 }
 
+// walk flattens a taxonomy into one pathNode per path. The key is the
+// importer's own (a name holding a ":" of its own is split, exactly as a
+// colon-joined source splits it), and the leaf and root are read OFF the key, so
+// what is derived here is what the lookup will see.
 func walk(nodes []category, prefix []string, out *[]pathNode) {
 	for _, n := range nodes {
 		p := append(append([]string(nil), prefix...), n.Name)
-		key := pathKey(p)
-		if key != "" {
+		if key := importer.GenrePathKey(strings.Join(p, ":")); key != "" {
+			root, _, _ := strings.Cut(key, ":")
 			*out = append(*out, pathNode{
 				key:  key,
-				leaf: strings.ToLower(strings.TrimSpace(n.Name)),
-				root: strings.ToLower(strings.TrimSpace(p[0])),
+				leaf: key[strings.LastIndex(key, ":")+1:],
+				root: root,
 				node: strings.TrimSpace(n.ID),
 			})
 		}
 		walk(n.Children, p, out)
 	}
-}
-
-// pathKey is internal/importer's genrePathKey over a slice of segments: each
-// trimmed and lowercased, empties dropped, joined with ":". A segment holding a
-// ":" of its own would be split by a colon-joined source, so it is split here
-// too.
-func pathKey(segs []string) string {
-	var out []string
-	for _, s := range segs {
-		for _, part := range strings.Split(s, ":") {
-			if part = strings.ToLower(strings.TrimSpace(part)); part != "" {
-				out = append(out, part)
-			}
-		}
-	}
-	return strings.Join(out, ":")
 }
 
 // writeJSON writes v with 2-space indentation, sorted keys (maps), literal
@@ -244,7 +234,7 @@ func writeJSON(path string, v any) error {
 	return os.WriteFile(path, buf.Bytes(), 0o644)
 }
 
-func fetchAll(dir, base string) error {
+func fetchAll(dir, base string, regions []string) error {
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
 	}

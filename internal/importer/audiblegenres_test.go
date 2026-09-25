@@ -53,16 +53,21 @@ func TestAudibleGenreTable(t *testing.T) {
 		if !marketplaces[region] {
 			t.Errorf("by_path region %q is not a marketplace", region)
 		}
-		for key, value := range paths {
+		for key, node := range paths {
 			pathEntries++
-			// "" is a suppression: the marketplace's own node maps to nothing, so
-			// the lookup must stop there rather than fall back to the US answer or
-			// the leaf name.
-			if value != "" && !enum[value] {
-				t.Errorf("by_path[%q][%q] = %q is not in the schema genre enum", region, key, value)
+			// A value is a browse-node id, resolved like any node. It may resolve to
+			// nothing - a suppression: the marketplace's own node maps to nothing,
+			// so the lookup must stop there rather than fall back to the US answer
+			// or the leaf name - but what it does resolve to must be vocabulary.
+			if node == "" || strings.Trim(node, "0123456789") != "" {
+				t.Errorf("by_path[%q][%q] = %q is not a browse-node id", region, key, node)
 			}
-			if key != genrePathKey(key) {
-				t.Errorf("by_path[%q] key %q must be in genrePathKey form (lookup normalizes that way)", region, key)
+			leaf := key[strings.LastIndex(key, ":")+1:]
+			if g := ResolveGenreNode(table.ByASIN, table.ByName, node, leaf); g != "" && !enum[g] {
+				t.Errorf("by_path[%q][%q] resolves to %q, which is not in the schema genre enum", region, key, g)
+			}
+			if key != GenrePathKey(key) {
+				t.Errorf("by_path[%q] key %q must be in GenrePathKey form (lookup normalizes that way)", region, key)
 			}
 		}
 	}
@@ -220,20 +225,20 @@ func loadGenrePaths(t *testing.T) map[string]map[string]string {
 	return v
 }
 
-// nodeAnswer is what a node-stating source gets for a node: the by_asin pin,
-// else the node's own (leaf) name through by_name, else nothing.
+// nodeAnswer is what a node-stating source gets for a node - the importer's own
+// ResolveGenreNode over the table.
 func nodeAnswer(table genreTable, node, leaf string) string {
-	if g, ok := table.ByASIN[node]; ok {
-		return g
-	}
-	return table.ByName[leaf]
+	return ResolveGenreNode(table.ByASIN, table.ByName, node, leaf)
 }
 
 // TestGenrePathsMatchTheirNodes is by_path's drift guard, and the whole contract
 // the generator implements: for every checked path of every marketplace, the
 // path lookup (the marketplace's table, then the US table, then the leaf name)
-// answers exactly what the path's NODE answers. A hand edit to by_path, or a
-// by_asin pin changed without regenerating, fails here naming the path.
+// answers exactly what the path's NODE answers. A by_path entry stores its node,
+// so re-pinning that node flows through; what fails here, naming the path, is a
+// hand edit to by_path or a by_asin/by_name change that makes a path with no
+// entry (or a US entry some marketplace falls back to) answer differently - the
+// cue to re-run scripts/genrepaths.
 func TestGenrePathsMatchTheirNodes(t *testing.T) {
 	table := audibleGenreTable()
 	checked := 0

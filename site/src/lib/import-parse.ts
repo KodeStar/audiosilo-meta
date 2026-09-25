@@ -110,7 +110,7 @@ function minutesFromSeconds(sec?: number): number | undefined {
 // export carries (no seconds field) - or "H:MM:SS", seconds rounded half up.
 // Any other shape, or a zero length, is no runtime at all (undefined), never a
 // guess.
-export function minutesFromDuration(raw: string): number | undefined {
+function minutesFromDuration(raw: string): number | undefined {
   const parts = raw.trim().split(':')
   if (parts.length !== 2 && parts.length !== 3) return undefined
   const nums: number[] = []
@@ -428,12 +428,7 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
   const seriesPosition = normalizeSequence(seqRaw)
   const languageRaw = coerceStr(raw['language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
-  // THE OpenAudible runtime rule, stated identically by the Go importer's
-  // openAudibleRuntime (internal/importer/openaudible.go) - the two share their
-  // test cases: seconds when it yields at least one whole minute (older builds
-  // write it), else the duration string (the only runtime a current export
-  // carries). A seconds value that rounds to nothing is no runtime of its own,
-  // so it does not hide a duration that is one.
+  // The Go importer's openAudibleRuntime rule (internal/importer/openaudible.go).
   const runtimeMin =
     minutesFromSeconds(coerceInt(raw['seconds'])) ?? minutesFromDuration(coerceStr(raw['duration']))
   const releaseRaw = coerceStr(raw['release_date'])

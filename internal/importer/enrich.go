@@ -351,33 +351,14 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 // belongs to: its genres, mapped from the source's own strings onto this
 // project's vocabulary (LICENSING.md forbids storing a retailer's taxonomy
 // verbatim), and its contributor credits, read from the role qualifiers on the
-// row's author names.
-//
-// Genres follow the source's tier, and NOTHING here ever removes one:
-//
-//   - a bulk-mirror row (libex enrichment) fills a work that has none, and
-//     accretes onto a set THIS RUN wrote (runGenreWorks - several ASINs of one
-//     book in one run are one account, like runCredits);
-//   - a user-library row's mapped genres are UNIONED into the work's set,
-//     whatever its attestation state. A user export states ONE category ladder
-//     per book (OpenAudible's genre field is the book's primary category) where
-//     the mirror states every ladder, so a user row is a partial statement:
-//     replacing the recorded set with it would throw away labels nothing could
-//     bring back once the work is attested. And because the union needs no
-//     overwrite permission, a row that maps no genre (and attests the work)
-//     cannot block a later row's genres, so the rows' order changes nothing.
-//     Trimming a noisy mirror set is a separate, undecided question.
-//
-// A row whose genres map to nothing never touches a recorded set - silence is
-// not an assertion. Credits fill-absent ACROSS runs, and accrete within one
-// (see addRunCredits at the write below).
+// row's author names. The genre rule is applyWorkGenres'; credits fill-absent
+// ACROSS runs and accrete within one (addRunCredits).
 //
 // Which fields a source can actually reach here differs by source, and neither
 // tier is inert: a libex row states genres and credits both; an OpenAudible
 // export states its genre ladder (openAudibleToBook) and a credit whenever one of
 // its credit names carries a role qualifier; a Libation or audiosilo-books export
-// states only the credits. So a user-tier attestation really does write
-// work.credits, and an OpenAudible row adds its genres to the work.
+// states only the credits.
 //
 // A user-library run attests a bulk-mirror-only work even when it changes no
 // field: the source entry is the attestation. That is also why the early return
@@ -403,60 +384,32 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 	if raw == nil {
 		return
 	}
+	ws := p.works[workSlug]
+	if ws == nil {
+		ws = &workState{slug: workSlug}
+	}
 	overwrite := p.overwrites(raw)
-	changed := false
-	// A user-library row's genres are additive (see above), so they are applied
-	// BEFORE the overwrite guard: on a work someone has already attested they
-	// still join the set, and they stamp the row's provenance because the set now
-	// records a fact that came from it.
-	if p.userTier && len(b.genres) > 0 {
-		changed = unionGenres(raw, p.genres.mapGenres(b.genres, p.unmappedGenres))
-	}
-	// Defense in depth, and load-bearing: only the enrichment scope may write to
-	// a work this run cannot overwrite, because an attestation's "a skip stays a
-	// skip" promise covers the work as well as the recording.
-	//
-	// This guard IS live behaviour, on the credits field: any user-library export
-	// states a credit whenever a credit name carries a role qualifier ("Rosa
-	// Vidal - Translator" in an OpenAudible row), so an attest-scope call really
-	// can arrive with something to write. The tier model then decides: on a
-	// bulk-mirror-only work the attestation records it, and on a work someone
-	// has already attested nothing else is written - first writer wins, which is
-	// the whole point of the rule.
-	if scope != scopeFill && !overwrite {
-		if changed || p.runAttestedWorks[workSlug] {
-			p.stampSource(raw)
-			p.putWorkEntry(workSlug, raw)
-		}
-		if changed && !p.runAttestedWorks[workSlug] {
-			p.summary.GenreWorks++
-		}
-		return
-	}
-	existing, _ := raw["genres"].([]any)
-	if !p.userTier && len(b.genres) > 0 && (len(existing) == 0 || p.runGenreWorks[workSlug]) {
-		// Mapped only on the branch that can store the result, so a row whose
-		// genres could never be recorded adds nothing to the unmapped-genre report.
-		if unionGenres(raw, p.genres.mapGenres(b.genres, p.unmappedGenres)) {
-			p.runGenreWorks[workSlug] = true
-			changed = true
-		}
-	}
-	// Credits fill on the same terms as genres: the whole list is written only
-	// when the work carries none. It is deliberately not merged entry by entry
-	// ACROSS runs - a work that already lists credits has been described by
-	// someone, and splicing a second source's roles into that list would
-	// silently mix two accounts of who did what with no way to tell them apart
-	// afterwards.
-	//
-	// Within ONE run the opposite holds, and addRunCredits is the exception: a
-	// list this run itself wrote is not somebody else's account, so a second row
-	// of the same run - the other ASIN of the same book, typically a second
-	// region - adds the pairs it states rather than being dropped for meeting a
-	// non-empty field. The run-touched case is tested FIRST so the run can never
-	// overwrite its own earlier rows on an attestation.
+	// Only the enrichment scope may write to a work this run cannot overwrite,
+	// because an attestation's "a skip stays a skip" promise covers the work as
+	// well as the recording. This is live on the credits field: any user-library
+	// export states a credit whenever a credit name carries a role qualifier
+	// ("Rosa Vidal - Translator" in an OpenAudible row), so an attest-scope call
+	// really can arrive with something to write - on a bulk-mirror-only work the
+	// attestation records it, and on a work someone has already attested nothing
+	// is written: first writer wins. Genres are the one exception, and
+	// applyWorkGenres states it.
+	writable := scope == scopeFill || overwrite
+	changed := p.applyWorkGenres(raw, b, ws, writable)
+	// Credits are written whole, and only onto a work that carries none: a work
+	// that already lists credits has been described by someone, and splicing a
+	// second source's roles into that list would mix two accounts of who did what
+	// with no way to tell them apart afterwards. Within ONE run a list this run
+	// itself wrote is not somebody else's account, so a later row of the run -
+	// the other ASIN of the same book, typically a second region - adds the pairs
+	// it states (addRunCredits). The run-touched case is tested FIRST so the run
+	// can never overwrite its own earlier rows on an attestation.
 	existingCredits, _ := raw["credits"].([]any)
-	if len(credits) > 0 {
+	if writable && len(credits) > 0 {
 		if merged, added := p.addRunCredits(workSlug, credits); added > 0 {
 			raw["credits"] = merged
 			p.summary.Credits += added
@@ -468,19 +421,72 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 			changed = true
 		}
 	}
-	if !changed && !overwrite {
-		return
+	// ONE write tail; the branch picks the counter. An attestation writes even
+	// when nothing changed (the stamp IS the attestation); a later row of the run
+	// meeting a work an earlier row attested stamps too (workState.runAttested);
+	// otherwise only a change is written.
+	var counter *int
+	switch {
+	case overwrite:
+		counter = &p.summary.AttestedWorks
+		ws.runAttested = true
+	case writable:
+		if !changed {
+			return
+		}
+		counter = &p.summary.EnrichedWorks
+	default:
+		if !changed && !ws.runAttested {
+			return
+		}
+		if changed && !ws.runAttested {
+			counter = &p.summary.GenreWorks
+		}
 	}
 	p.stampSource(raw)
 	// The read-modify-write is on the whole composite, so the work's recordings
 	// ride along untouched; added_at is left as found (nothing here creates).
 	p.putWorkEntry(workSlug, raw)
-	if overwrite {
-		p.summary.AttestedWorks++
-		p.runAttestedWorks[workSlug] = true
-	} else {
-		p.summary.EnrichedWorks++
+	if counter != nil {
+		*counter++
 	}
+}
+
+// applyWorkGenres is THE genre rule for a matched work, and reports whether it
+// changed raw's set. Nothing here ever removes a genre:
+//
+//   - a user-library row's mapped genres are UNIONED into the set, whatever the
+//     work's attestation state and whatever the scope: a user export states ONE
+//     category ladder per book (OpenAudible's genre field is the book's primary
+//     category) where the mirror states every ladder, so replacing the recorded
+//     set with it would throw away labels nothing could bring back once the work
+//     is attested - and because the union needs no overwrite permission, a row
+//     that maps no genre cannot block a later row's, so row order changes nothing;
+//   - a bulk-mirror row writes only where the work is writable, and then only
+//     onto a work that has no genres or whose set THIS RUN wrote (several ASINs
+//     of one book in one run are one account).
+//
+// A row whose genres map to nothing never touches a recorded set - silence is not
+// an assertion. The genres are mapped only on the branch that can store them, so
+// a row whose genres could never be recorded adds nothing to the unmapped report.
+func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workState, writable bool) bool {
+	if len(b.genres) == 0 {
+		return false
+	}
+	if !p.userTier {
+		existing, _ := raw["genres"].([]any)
+		if !writable || (len(existing) > 0 && !ws.runGenresOwned) {
+			return false
+		}
+	}
+	out := unionRawGenres(raw, p.genres.mapGenres(b.genres, p.unmappedGenres))
+	if out == nil {
+		return false
+	}
+	if !p.userTier || ws.runGenresOwned {
+		ws.runGenresOwned, ws.runGenres = true, out
+	}
+	return true
 }
 
 // enrichSeries places the matched work into the series it claims - but only

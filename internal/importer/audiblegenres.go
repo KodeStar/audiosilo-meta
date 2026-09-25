@@ -35,19 +35,22 @@ import (
 // node id: an OpenAudible books.json carries one colon-joined ladder per book
 // ("Romance:Contemporary"), and its leaf name alone cannot say what the node
 // would have said. It is keyed by MARKETPLACE, then by the lowercased, trimmed
-// segments joined with ":" (genrePathKey), and the path lookup is
+// segments joined with ":" (GenrePathKey), and the path lookup is
 //
 //	by_path[region][path]  else  by_path["us"][path]  else  by_name[leaf]
 //
-// with region the row's own marketplace. It is DERIVED, never hand-authored:
+// with region the row's own marketplace. An entry's value is the path's NODE ID,
+// resolved like any node (ResolveGenreNode: by_asin, else by_name of the leaf),
+// so re-pinning a node in by_asin reaches every path naming it with no
+// regeneration; a node that resolves to nothing stops the lookup there (a
+// suppression, so an English path the US pins cannot override a marketplace
+// whose own node is unmapped). It is DERIVED, never hand-authored:
 // scripts/genrepaths walks every marketplace's taxonomy (libex's /categories)
 // and writes an entry exactly where that chain would otherwise answer
-// differently from the path's NODE in that marketplace - holding the node's
-// answer, or "" where the node maps to nothing (a suppression, so an English
-// path the US pins cannot override a marketplace whose own node is unmapped).
-// So a path-stating source lands exactly where a node-stating one does for the
-// same marketplace, and a marketplace whose taxonomy lacks the path gets the US
-// answer. testdata/genrepaths.json is the generator's verification file, which
+// differently from the path's node in that marketplace. So a path-stating
+// source lands exactly where a node-stating one does for the same marketplace,
+// and a marketplace whose taxonomy lacks the path gets the US answer.
+// testdata/genrepaths.json is the generator's verification file, which
 // TestGenrePathsMatchTheirNodes re-checks against the node table.
 //
 // A CHILDREN'S category never produces adult ADVICE vocabulary. Audible files a
@@ -79,9 +82,9 @@ type genreTable struct {
 	// the exports use for the field).
 	ByASIN map[string]string `json:"by_asin"`
 	ByName map[string]string `json:"by_name"`
-	// ByPath is keyed by marketplace, then by genrePathKey (see the file
-	// comment): the category paths whose lookup chain would otherwise resolve
-	// differently from their node. A "" value is a suppression.
+	// ByPath is keyed by marketplace, then by GenrePathKey (see the file
+	// comment); a value is the browse-node id the path names, resolved through
+	// ResolveGenreNode.
 	ByPath map[string]map[string]string `json:"by_path"`
 	// memo caches name resolution keyed by the RAW claim name, so a bulk import
 	// lowercases/trims each distinct spelling once instead of once per book. It
@@ -96,7 +99,7 @@ type genreTable struct {
 // genreClaim is one raw genre claim from a source row: the retailer's
 // browse-node id (when it states one), and its display name. A source that
 // states the category LADDER rather than the node (pathGenreClaims) also sets
-// path (already in genrePathKey form, so a lookup never re-normalizes it),
+// path (already in GenrePathKey form, so a lookup never re-normalizes it),
 // region (the row's marketplace, which picks the by_path table) and ladder (the
 // whole ladder as the source spelled it, which is what the unmapped report
 // names). Both Audible "Genres" and "Tags" nodes are eligible claims - the
@@ -109,10 +112,11 @@ type genreClaim struct {
 	ladder string
 }
 
-// genrePathKey normalizes a category path for by_path: each ":"-separated
+// GenrePathKey normalizes a category path for by_path: each ":"-separated
 // segment trimmed and lowercased (the name rule), empty segments dropped,
-// rejoined with ":". "" when nothing is left.
-func genrePathKey(path string) string {
+// rejoined with ":". "" when nothing is left. Exported for scripts/genrepaths,
+// which must key the table exactly as the lookup does.
+func GenrePathKey(path string) string {
 	segs := strings.Split(path, ":")
 	out := segs[:0]
 	for _, s := range segs {
@@ -131,11 +135,10 @@ func genrePathKey(path string) string {
 // two resolve to the same set. Empty segments are dropped; an empty ladder
 // yields nil.
 func pathGenreClaims(ladder, region string) []genreClaim {
-	var segs, keys []string
+	var segs []string
 	for _, s := range strings.Split(ladder, ":") {
 		if s = strings.TrimSpace(s); s != "" {
 			segs = append(segs, s)
-			keys = append(keys, strings.ToLower(s))
 		}
 	}
 	if len(segs) == 0 {
@@ -145,10 +148,21 @@ func pathGenreClaims(ladder, region string) []genreClaim {
 	claims := make([]genreClaim, 0, len(segs))
 	for i := range segs {
 		claims = append(claims, genreClaim{
-			name: segs[i], path: strings.Join(keys[:i+1], ":"), region: region, ladder: display,
+			name: segs[i], path: GenrePathKey(strings.Join(segs[:i+1], ":")), region: region, ladder: display,
 		})
 	}
 	return claims
+}
+
+// ResolveGenreNode is what a browse node answers: its by_asin pin, else its own
+// (leaf) name through by_name, else "" (maps to nothing). leaf is the name in
+// lowercased, trimmed form. It is the ONE statement of a node's answer, shared by
+// the by_path lookup, scripts/genrepaths and the drift test.
+func ResolveGenreNode(byASIN, byName map[string]string, node, leaf string) string {
+	if g, ok := byASIN[node]; ok {
+		return g
+	}
+	return byName[leaf]
 }
 
 // audibleGenreTable returns the embedded mapping table, parsed once. A parse
@@ -208,17 +222,19 @@ func (t genreTable) lookup(c genreClaim) (string, bool) {
 
 // lookupPath is the by_path half of lookup: the claim's own marketplace first,
 // then the US table (the fallback the generator derives every other marketplace
-// against), key in genrePathKey form. found reports that the table DECIDED the
-// path - including a "" suppression, which must stop the lookup rather than fall
+// against), key in GenrePathKey form, the node found resolved through
+// ResolveGenreNode. found reports that the table DECIDED the path - including a
+// node that resolves to nothing, which must stop the lookup rather than fall
 // through to the leaf name.
 func (t genreTable) lookupPath(region, key string) (g string, found bool) {
-	if g, found = t.ByPath[region][key]; found {
-		return g, true
+	node, found := t.ByPath[region][key]
+	if !found && region != "us" {
+		node, found = t.ByPath["us"][key]
 	}
-	if region != "us" {
-		g, found = t.ByPath["us"][key]
+	if !found {
+		return "", false
 	}
-	return g, found
+	return ResolveGenreNode(t.ByASIN, t.ByName, node, key[strings.LastIndex(key, ":")+1:]), true
 }
 
 // lookupName resolves a raw display name, through the memo when the table has
@@ -259,15 +275,15 @@ func (t genreTable) mapGenres(claims []genreClaim, unmapped map[string]bool) []s
 		return nil
 	}
 	seen := map[string]bool{}
-	ladderMapped := map[string]bool{}
+	// A row states at most one ladder (every claim of a pathGenreClaims slice
+	// carries the same one), so one name and one hit flag cover it.
+	ladder, hit := "", false
 	var out []string
 	for _, c := range claims {
-		if c.ladder != "" {
-			if _, ok := ladderMapped[c.ladder]; !ok {
-				ladderMapped[c.ladder] = false
-			}
-		}
 		slug, ok := t.lookup(c)
+		if c.ladder != "" {
+			ladder, hit = c.ladder, hit || ok
+		}
 		if !ok {
 			if c.ladder == "" {
 				if label := strings.TrimSpace(firstNonEmpty(c.name, c.node)); label != "" {
@@ -276,19 +292,14 @@ func (t genreTable) mapGenres(claims []genreClaim, unmapped map[string]bool) []s
 			}
 			continue
 		}
-		if c.ladder != "" {
-			ladderMapped[c.ladder] = true
-		}
 		if seen[slug] {
 			continue
 		}
 		seen[slug] = true
 		out = append(out, slug)
 	}
-	for ladder, mapped := range ladderMapped {
-		if !mapped {
-			unmapped[ladder] = true
-		}
+	if ladder != "" && !hit {
+		unmapped[ladder] = true
 	}
 	sort.Strings(out)
 	return out

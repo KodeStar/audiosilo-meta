@@ -255,10 +255,8 @@ type Summary struct {
 	AttestedWorks      int
 	AttestedRecordings int
 	// GenreWorks counts ALREADY-ATTESTED works a user-library row added genres
-	// to. Genres are the one additive fact of that tier (applyToWork): a user
-	// export states one category ladder per book, so a later user's row adds
-	// its labels rather than meeting "first writer wins". Disjoint from
-	// Attested*/Enriched*, which count the other branches of the same call.
+	// to - the additive genre rule (applyWorkGenres). Disjoint from
+	// Attested*/Enriched*, which count the other branches of applyToWork.
 	GenreWorks int
 	// Conflicts counts rows a USER-library run refused because they contradicted
 	// what a record already states (see recordingContradicts). The recorded value

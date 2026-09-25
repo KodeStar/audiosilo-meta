@@ -1671,8 +1671,10 @@ note rather than a closed duplicate.
   of a node id (OpenAudible's `genre` field, "Romance:Contemporary"): keyed by
   MARKETPLACE then path, and DERIVED - never hand-authored - by
   `scripts/genrepaths` from libex's per-marketplace `/categories` taxonomies
-  (one entry, or a "" suppression, exactly where the chain below would answer
-  differently from the path's node in that marketplace), so a path-stating row
+  (one entry - holding the path's NODE ID, resolved like any node, so a by_asin
+  re-pin reaches it with no regeneration - exactly where the chain below would
+  answer differently from the path's node in that marketplace; a node that
+  resolves to nothing is a suppression), so a path-stating row
   lands where a node-stating one does for the same marketplace. Lookup is
   node, then `by_path[region]`, then `by_path["us"]`, then name, with region the
   row's own; `testdata/genrepaths.json` is the generator's verification file and
@@ -1786,9 +1788,10 @@ note rather than a closed duplicate.
   per book, so a user row's mapped genres are UNIONED into the work's set -
   mirror-only or attested, never removing one, counted as `Summary.GenreWorks`
   on an already-attested work - and within a run they accrete on every work the
-  run created or filled (`runGenreWorks`, the genre twin of `runCredits`), while
+  run created or filled (`workState.runGenres`, kept in memory so the common
+  nothing-new row costs no store read - the genre twin of `runCredits`), while
   a later row of the run meeting a work an earlier row attested stamps its
-  provenance too (`runAttestedWorks`), so row ORDER changes nothing
+  provenance too (`workState.runAttested`), so row ORDER changes nothing
   (`TestUserImportGenresDoNotDependOnRowOrder`). The ASIN-merge path still
   attests the recording only, so a merged row's ladder does not reach the work.
   `Summary.Credits` reports what a wave captured, and a run-level warning

@@ -461,10 +461,16 @@ name alone cannot say what the node would ("Contemporary", "Historical" and
 ladder level as `by_path[region][path]`, else `by_path["us"][path]`, else
 `by_name[leaf]`, with `region` the row's own marketplace. The generator walks
 every marketplace's taxonomy and writes an entry exactly where that chain would
-answer differently from the path's NODE in that marketplace - the node's
-answer, or `""` where the node maps to nothing (a suppression, so an English
-path the US pins cannot override a marketplace whose own node is unmapped). US
-is derived first, because every other marketplace falls back to it.
+answer differently from the path's NODE in that marketplace. The entry holds the
+node's ID, which the importer resolves like any node (`by_asin`, else `by_name`
+of the leaf), so re-pinning a node in `by_asin` reaches every path naming it
+with no regeneration; a node that resolves to nothing stops the lookup (a
+suppression, so an English path the US pins cannot override a marketplace whose
+own node is unmapped). US is derived first, because every other marketplace
+falls back to it. The marketplace list, the path key and a node's answer are the
+importer's own (`importer.Marketplaces`, `importer.GenrePathKey`,
+`importer.ResolveGenreNode`), and a marketplace with no taxonomy file is an
+error.
 
 **Inputs:**
 
@@ -482,8 +488,8 @@ the verification file: for each marketplace, the node each checked path names
 root, and every path under a children's root). `TestGenrePathsMatchTheirNodes`
 re-checks each of them against its node and
 `TestChildrensPathsAvoidAdultAdviceGenres` runs the children's rule over them,
-so **a `by_asin` or `by_name` edit fails the importer tests until this is
-re-run**.
+so **a `by_asin` or `by_name` edit that changes what some path must answer fails
+the importer tests until this is re-run**.
 
 ```sh
 go run ./scripts/genrepaths -categories /tmp/genre-taxonomies -fetch   # first time: download, then derive
