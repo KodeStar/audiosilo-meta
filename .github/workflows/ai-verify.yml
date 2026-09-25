@@ -31,6 +31,9 @@ on:
     types: [opened, synchronize, reopened, labeled]
     paths:
       - "data/**"
+      # data/go.mod is build plumbing, not a record (see that file); the Go
+      # gate reviews it, not the data reviewer.
+      - "!data/go.mod"
   workflow_dispatch:
     inputs:
       pr:

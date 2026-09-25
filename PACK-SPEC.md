@@ -77,6 +77,11 @@ needs - and the driver itself refuses any file with no top-level `entries` objec
 because reading a missing one as empty turned that file into `{"entries":{}}` and
 reported success.
 
+The accounting is over JSON files only, so the tree's one non-JSON file,
+`data/go.mod`, is invisible to every family and to every reader and writer that
+walks them. `metadiff`, which lists changed paths instead, names it in a "sits
+under no pack family" warning on a pull request that edits it.
+
 ### Tree profiles (which families a root holds)
 
 A data root need not hold all four. The CC BY-SA community layer moved to a
