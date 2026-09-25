@@ -539,21 +539,29 @@ var collectionWord = func() map[string]bool {
 
 // boxSetPhrase catches the collection shapes that are two words rather than one, so
 // "Box Set" and "Complete Series" count however they are spaced.
-//
-// The "N in 1" arms ("(2 in 1)", "3-in-1", "2 Books in 1", "Three Books in One") are a
-// bundle's own announcement and carry no collection WORD, so without them
-// "Rapid Extreme Weight Loss Hypnosis for Women (2 in 1)" read as the single title it
-// bundles and was proposed for a mechanical merge onto it. "in one" is read only after
-// "books": "6 In One Head and Out the Other" and "Chapter 21 - Three in One" are titles,
-// not bundles. Measured over the 278,914-work tree: 275 titles match, every one a
-// bundle, and 176 of them carried no collection word before.
-var boxSetPhrase = regexp.MustCompile(`(?i)\b(box\s*set|boxed\s*set|complete\s+(?:series|collection|trilogy|saga)|books?\s+\d+\s*-\s*\d+` +
-	`|[2-9]\s*-?\s*in\s*-?\s*1|(?:[2-9]|two|three|four|five|six|seven|eight|nine|ten)\s+books\s+in\s+(?:1|one))\b`)
+var boxSetPhrase = regexp.MustCompile(`(?i)\b(box\s*set|boxed\s*set|complete\s+(?:series|collection|trilogy|saga)|books?\s+\d+\s*-\s*\d+)\b`)
+
+// bundleCount is the N of an "N in 1" bundle: 2 to 99.
+const bundleCount = `(?:[2-9]|[1-9]\d)`
+
+// bundleAnnouncement catches the "N in 1" bundle, which carries no collection WORD - so
+// without it "Rapid Extreme Weight Loss Hypnosis for Women (2 in 1)" read as the single
+// title it bundles. It is read only where it ANNOUNCES the product, never as a phrase
+// anywhere ("Lose 5 in 1 Month", "Chapter 3 in 1 Corinthians"): hyphenated ("3-in-1"),
+// with "books" ("12 Books in 1", "Three Books in One"), bracketed ("(2 in 1)"), naming
+// the product it is ("2 in 1 Edition", "(3 In 1 Book)"), or as a whole segment's start
+// or end ("Witchcraft: 4 in 1", "3 IN 1: Fun Math for Kids", "... 6 in 1 - Dark ...").
+var bundleAnnouncement = regexp.MustCompile(`(?i)\b` + bundleCount + `\s*-\s*in\s*-\s*(?:1|one)\b` +
+	`|\b(?:` + bundleCount + `|two|three|four|five|six|seven|eight|nine|ten)\s+books\s+in\s+(?:1|one)\b` +
+	`|[(\[]\s*` + bundleCount + `\s+in\s+1\s*[)\]]` +
+	`|\b` + bundleCount + `\s+in\s+1\s+(?:books?|editions?|guides?|sets?|combos?|value|packs?|handbooks?|volumes?)\b` +
+	`|(?:^|[` + segmentPunct + `]\s*)` + bundleCount + `\s+in\s+1\b` +
+	`|\b` + bundleCount + `\s+in\s+1\s*(?:$|[` + segmentPunct + `]|\s[-–—]\s)`)
 
 // IsCollection reports whether a title announces itself as several books in one
 // product, in any of the languages the catalogue holds.
 func IsCollection(title string) bool {
-	if boxSetPhrase.MatchString(title) {
+	if boxSetPhrase.MatchString(title) || bundleAnnouncement.MatchString(title) {
 		return true
 	}
 	for _, w := range strings.FieldsFunc(strings.ToLower(model.Slugify(title)), notAlnum) {

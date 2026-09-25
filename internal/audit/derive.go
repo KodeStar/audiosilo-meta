@@ -68,6 +68,13 @@ type workDerived struct {
 	collection      bool
 	collectionKnown bool
 
+	// volHead is the title split at the marker its volume is read from
+	// (titlerule.VolumeHeadOf), asked LAZILY through index.volumeHead: only the
+	// one-sided statement vetoes read it, over the works a cluster holds.
+	volHead      titlerule.VolumeHead
+	volHeadOK    bool
+	volHeadKnown bool
+
 	// The article-plus-series prefix shape, if the title has it.
 	artArticle string
 	artSeries  string
@@ -133,6 +140,16 @@ func (ix *index) isCollection(w *model.Work) bool {
 		d.collection, d.collectionKnown = titlerule.IsCollectionIn(w.Title, d.seriesName), true
 	}
 	return d.collection
+}
+
+// volumeHead is the work's memoized titlerule.VolumeHeadOf - see workDerived.volHead.
+func (ix *index) volumeHead(w *model.Work) (titlerule.VolumeHead, bool) {
+	d := ix.derived(w)
+	if !d.volHeadKnown {
+		d.volHead, d.volHeadOK = titlerule.VolumeHeadOf(w.Title)
+		d.volHeadKnown = true
+	}
+	return d.volHead, d.volHeadOK
 }
 
 // resolveSeries is the index's titlerule.SeriesResolver: the spelling that matched

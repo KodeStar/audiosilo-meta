@@ -75,6 +75,7 @@ func TestWorkDupKeepsAPlainTitleBesideAFirstVolumeOrABookPosition(t *testing.T) 
 		{"Our Vietnam Wars", "Our Vietnam Wars, Volume 1"},
 		{"All In", "All In, Book 3"},
 		{"Z-Burbia 2: Parkway To Hell", "Z-Burbia 2: Parkway To Hell, Volume 2"},
+		{"Z-Burbia Two: Parkway To Hell", "Z-Burbia Two: Parkway To Hell, Volume 2"},
 	}
 	for _, c := range cases {
 		t.Run(c.stated, func(t *testing.T) {
@@ -147,7 +148,7 @@ func TestWorkDupVetoesAnAdaptedTextOnOneSide(t *testing.T) {
 				{"plain-record", c.plain, "ann-reader", 400},
 				{"adapted-record", c.adapted, "bob-reader", 410},
 			}, nil)
-			wantAdvisory(t, fd, "an adapted text is a different work")
+			wantAdvisory(t, fd, "not a second record of the original")
 		})
 	}
 }
@@ -190,4 +191,38 @@ func TestWorkDupVetoesAnNInOneBundleBesideItsSingleTitle(t *testing.T) {
 		{"rapid-extreme-weight-loss-hypnosis-2-in-1", "Rapid Extreme Weight Loss Hypnosis for Women (2 in 1)", "bob-reader", 692},
 	}, nil)
 	wantAdvisory(t, fd, "announce a collection")
+}
+
+// A DECORATED plain twin is still the plain title: its key is its cleaned title, not the
+// raw one, or the veto would skip the commonest W-DUP shape.
+func TestWorkDupVetoesALaterPartBesideADecoratedPlainTwin(t *testing.T) {
+	fd := statedPair(t, []statedWork{
+		{"our-vietnam-wars-unabridged", "Our Vietnam Wars (Unabridged)", "ann-reader", 890},
+		{"our-vietnam-wars-volume-2", "Our Vietnam Wars, Volume 2", "bob-reader", 948},
+	}, nil)
+	wantAdvisory(t, fd, "the whole work or its first part")
+}
+
+// A number that merely appears in the head is not a restatement: "2 States, Part 2" is
+// part 2 of "2 States".
+func TestWorkDupVetoesALaterPartWhoseHeadHoldsANumber(t *testing.T) {
+	fd := statedPair(t, []statedWork{
+		{"two-states", "2 States", "ann-reader", 500},
+		{"two-states-part-2", "2 States, Part 2", "bob-reader", 510},
+	}, nil)
+	wantAdvisory(t, fd, "the whole work or its first part")
+}
+
+// The stand-down reads the series the stated volume refers to: a plain member placed at
+// position 2 of an UNRELATED series says nothing about "Volume 2" of this title.
+func TestWorkDupStandDownIsScopedToTheStatedSeries(t *testing.T) {
+	fd := statedPair(t, []statedWork{
+		{"our-vietnam-wars", "Our Vietnam Wars", "ann-reader", 890},
+		{"our-vietnam-wars-volume-2", "Our Vietnam Wars, Volume 2", "bob-reader", 948},
+	}, map[string]string{
+		"works/fi/first-war/work.json":         workJSON(t, "first-war", "First War"),
+		"works/fi/first-war/recordings/r.json": recJSON(t, "r", "first-war"),
+		"series/hi/history-of-wars.json":       seriesJSON(t, "history-of-wars", "History of Wars", "first-war@1", "our-vietnam-wars@2"),
+	})
+	wantAdvisory(t, fd, "the whole work or its first part")
 }
