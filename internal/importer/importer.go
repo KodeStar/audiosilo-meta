@@ -155,6 +155,9 @@ type seriesState struct {
 	raw       map[string]any    // populated lazily for an existing series
 	members   map[string]string // work slug -> position
 	positions map[string]string // position -> work slug
+	// authors is the author evidence of the series' members, which decides
+	// whether a row naming the series may join it (seriesauthors.go). Never nil.
+	authors *SeriesAuthors
 	// claimed is every position a work has CLAIMED in this series this run,
 	// whether or not the claim became a membership. members only records the
 	// claims that landed, and a dropped claim used to make a work look absent
@@ -911,12 +914,14 @@ func (p *planner) loadExisting() {
 		}
 		p.works[w.ID] = ws
 	}
+	seriesAuthors := seriesAuthorsOf(cat)
 	for _, s := range cat.Series {
 		ss := &seriesState{
 			slug:      s.ID,
 			name:      s.Name,
 			members:   map[string]string{},
 			positions: map[string]string{},
+			authors:   seriesAuthors[s.ID],
 			claimed:   map[string]string{},
 		}
 		for _, sw := range s.Works {
@@ -1082,13 +1087,18 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// reads: the duplicate-identity guard below needs the claim (it walks the same
 	// slug candidates getOrCreateWork will), and the guard has to run before
 	// anything is created or a refused row would leave orphan person records behind.
+	//
+	// Every series lookup this row makes - the claim, the placement below - reads
+	// the ONE SeriesRow, so a name the row's authors cannot join (another author's
+	// same-named series, seriesauthors.go) is neither the claim nor the placement.
 	var claim *seriesClaim
 	prod := p.rowProductionOf(b, narratorNames)
+	seriesRow := p.seriesRowOf(authorCredits, b, workTitle)
 	for _, r := range b.series {
 		if !r.seqOK {
 			continue
 		}
-		if ss := p.findSeries(r.name); ss != nil {
+		if ss := p.findSeries(r.name, seriesRow); ss != nil {
 			claim = newSeriesClaim(ss, r, workTitle, prod)
 			break
 		}
@@ -1154,7 +1164,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 			// placementPosition is the title-versus-source arbitration
 			// (seriespos.go); it returns r.seq unchanged for every row whose title
 			// states no volume or states the same one, which is almost all of them.
-			p.addToSeries(r.name, ws.slug, p.placementPosition(r, ws.slug, workTitle, warn), warn)
+			p.addToSeries(r.name, ws.slug, p.placementPosition(r, ws.slug, workTitle, seriesRow, warn), seriesRow, warn)
 		}
 	}
 }
@@ -1980,31 +1990,72 @@ func unionRawGenres(raw map[string]any, add []string) []string {
 }
 
 // findSeries returns the already-known series (existing on disk or created this
-// run) that name resolves to, or nil - it never creates. It walks the same
-// candidate chain as getOrCreateSeries so both resolve a name identically,
-// including the refusal: a name with no addressable slug resolves to nothing,
-// because nothing was ever minted under it.
-func (p *planner) findSeries(name string) *seriesState {
+// run) that name resolves to for row's authors, or nil - it never creates. It
+// walks the same candidate chain as getOrCreateSeries so both resolve a name
+// identically, including the refusal: a name with no addressable slug resolves
+// to nothing, because nothing was ever minted under it.
+func (p *planner) findSeries(name string, row SeriesRow) *seriesState {
 	base := Slugify(name)
 	if base == "" {
 		return nil
 	}
-	if ans := p.seriesChainFor(base, name); ans.found {
+	if ans := p.seriesChainFor(base, name, row); ans.found {
 		return p.series[ans.slug]
 	}
 	return nil
 }
 
 // seriesChainFor walks name's chain over the planner's series (tombstone.go's
-// seriesChain, the walker every twin shares).
-func (p *planner) seriesChainFor(base, name string) seriesChainAnswer {
-	return seriesChain(base, name, p.redirects, func(slug string) (string, bool) {
+// seriesChain, the walker every twin shares), judging each same-named series for
+// row's authors (seriesauthors.go).
+func (p *planner) seriesChainFor(base, name string, row SeriesRow) seriesChainAnswer {
+	stored := func(slug string) (string, bool) {
 		ss, exists := p.series[slug]
 		if !exists {
 			return "", false
 		}
 		return ss.name, true
-	})
+	}
+	fit := func(slug string) SeriesFit {
+		return p.series[slug].authors.Fit(row, p.personName)
+	}
+	return seriesChain(base, name, p.redirects, stored, fit)
+}
+
+// personName is the name a person slug's record carries, "" when unknown.
+func (p *planner) personName(slug string) string { return p.people[slug] }
+
+// seriesRowOf is a row's SeriesRow on the paths that have not resolved its
+// people yet: its cleaned author credits, each at the slug the importer would
+// resolve it to (read-only, as rowWorkAuthorsRO does), its title spellings and
+// its publisher.
+func (p *planner) seriesRowOf(credits []credit, b sourceBook, titles ...string) SeriesRow {
+	row := SeriesRow{Titles: append(append([]string{}, titles...), b.str("title"), b.str("title_short"))}
+	for _, c := range credits {
+		slug, _ := personSlug(c.name)
+		row.Authors = append(row.Authors, SeriesPerson{Slug: p.personSlugTarget(slug), Name: c.name})
+	}
+	if pub := b.str("publisher"); pub != "" {
+		row.Publishers = []string{pub}
+	}
+	return row
+}
+
+// seriesRowOfWork is the SeriesRow for a row placing (or comparing claims on) a
+// work that already exists: the work's own author list, which is what a member
+// of the series will credit, with the row's titles and publisher.
+func (p *planner) seriesRowOfWork(ws *workState, b sourceBook, titles ...string) SeriesRow {
+	row := SeriesRow{Titles: append(append([]string{}, titles...), b.str("title"), b.str("title_short"))}
+	if ws != nil {
+		// Map order is harmless: Fit's answer does not depend on author order.
+		for slug := range ws.all {
+			row.Authors = append(row.Authors, SeriesPerson{Slug: slug, Name: p.people[slug]})
+		}
+	}
+	if pub := b.str("publisher"); pub != "" {
+		row.Publishers = []string{pub}
+	}
+	return row
 }
 
 // addRecording builds and emits the recording for a book under work ws. When an
@@ -2042,7 +2093,9 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	// of them before deciding to merge or to mint a distinct recording.
 	matches, freeSlug := sameNarratorRecs(ws, base, narrSet)
 	slug := freeSlug
-	claims := rowSeriesClaims(b, title)
+	// The claims resolve for the WORK's authors: the sibling recordings they are
+	// compared against are recordings of this same work.
+	claims := rowSeriesClaims(b, title, p.seriesRowOfWork(ws, b, title))
 	if len(matches) > 0 {
 		if asin == "" {
 			return false // nothing new to add (same production, no new ASIN)
@@ -2400,30 +2453,32 @@ func boolOrFalse(p *bool) bool { return p != nil && *p }
 
 // posClaim is one series position a recording sits at, for the serial guard. A
 // disk membership carries its series slug as key; a row's claim carries the
-// series name it stated and no key until keyClaims resolves it.
+// series name it stated, and the authors it resolves the name for (row), and no
+// key until keyClaims resolves it.
 type posClaim struct {
 	name, key string
 	pos       rowPosition
+	row       SeriesRow
 }
 
 // keyOf is the series a claim names: its key when resolved, else the series its
-// name resolves to. A row's claim is resolved when compared rather than when its
-// recording is made, because the row's own series may not exist yet at that
-// point (addRecording runs before addToSeries).
+// name resolves to for its row's authors. A row's claim is resolved when
+// compared rather than when its recording is made, because the row's own series
+// may not exist yet at that point (addRecording runs before addToSeries).
 func (c posClaim) keyOf(p *planner) string {
 	if c.key != "" {
 		return c.key
 	}
-	return p.seriesKeyOf(c.name)
+	return p.seriesKeyOf(c.name, c.row)
 }
 
 // rowSeriesClaims is a row's valid series claims, in the order it states them,
-// each at the positions rowPositionOf reads against title.
-func rowSeriesClaims(b sourceBook, title string) []posClaim {
+// each at the positions rowPositionOf reads against title and resolved for row.
+func rowSeriesClaims(b sourceBook, title string, row SeriesRow) []posClaim {
 	var out []posClaim
 	for _, r := range b.series {
 		if r.seqOK {
-			out = append(out, posClaim{name: r.name, pos: rowPositionOf(r, title)})
+			out = append(out, posClaim{name: r.name, pos: rowPositionOf(r, title), row: row})
 		}
 	}
 	return out
@@ -2434,16 +2489,17 @@ func rowSeriesClaims(b sourceBook, title string) []posClaim {
 func (p *planner) keyClaims(claims []posClaim) []posClaim {
 	out := make([]posClaim, len(claims))
 	for i, c := range claims {
-		out[i] = posClaim{name: c.name, key: c.keyOf(p), pos: c.pos}
+		out[i] = posClaim{name: c.name, key: c.keyOf(p), pos: c.pos, row: c.row}
 	}
 	return out
 }
 
-// seriesKeyOf is the slug of the series a name resolves to (findSeries, so a
-// retired spelling is its survivor), else the lowercased name in a form no slug
-// can take - which keeps two claims on a series nothing has minted comparable.
-func (p *planner) seriesKeyOf(name string) string {
-	if ss := p.findSeries(name); ss != nil {
+// seriesKeyOf is the slug of the series a name resolves to for row's authors
+// (findSeries, so a retired spelling is its survivor), else the lowercased name
+// in a form no slug can take - which keeps two claims on a series nothing has
+// minted comparable.
+func (p *planner) seriesKeyOf(name string, row SeriesRow) string {
+	if ss := p.findSeries(name, row); ss != nil {
 		return ss.slug
 	}
 	return "name:" + strings.ToLower(name)
@@ -2604,15 +2660,16 @@ func sourceMap(s OutSource) map[string]any {
 
 // addToSeries places work at position pos in the named series, creating the
 // series when new. Duplicate memberships and position clashes warn and leave the
-// existing entry.
-func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any)) {
+// existing entry. row is the row placing the work, which decides which of the
+// name's same-named series it may join (getOrCreateSeries).
+func (p *planner) addToSeries(name, work, pos string, row SeriesRow, warn func(string, ...any)) {
 	// Defense in depth: the parsers uphold the non-empty-name invariant, but a
 	// future source (or a direct caller) must never mint a nameless series.
 	if name == "" {
 		warn("empty series name; not placed in series")
 		return
 	}
-	ss := p.getOrCreateSeries(name, warn)
+	ss := p.getOrCreateSeries(name, row, warn)
 	if ss == nil {
 		// The name has no addressable slug (see getOrCreateSeries). The row still
 		// imports; the work is simply not placed in this series.
@@ -2638,6 +2695,15 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 	ss.members[work] = pos
 	ss.positions[pos] = work
 	ss.dirty = true
+	// The member's authors are evidence for the next row naming this series,
+	// within this run as across runs.
+	if ws := p.works[work]; ws != nil {
+		authors := make([]string, 0, len(ws.all))
+		for slug := range ws.all {
+			authors = append(authors, slug)
+		}
+		ss.authors.add(authors, row.Publishers)
+	}
 	if ss.isNew {
 		ss.out.Works = append(ss.out.Works, OutSeriesWork{Work: work, Position: pos})
 	} else {
@@ -2666,7 +2732,11 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 // identity this catalogue cannot address is not minted. The cost is bounded and
 // honest - the work still imports, it is simply not placed in the series, which
 // is true - and it is cheap to reverse the day Slugify learns to transliterate.
-func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *seriesState {
+//
+// row is the row naming the series: a same-named series is JOINED only when it
+// fits row's authors (seriesauthors.go), and otherwise stepped past like a
+// differently-named holder.
+func (p *planner) getOrCreateSeries(name string, row SeriesRow, warn func(string, ...any)) *seriesState {
 	base := Slugify(name)
 	if base == "" {
 		p.noteUnaddressableSeries(name)
@@ -2674,7 +2744,9 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 	}
 	// A tombstoned base joins the series it was merged into, and any other retired
 	// candidate is stepped past as occupied (tombstone.go).
-	ans := p.seriesChainFor(base, name)
+	// A same-named series belonging to other authors is stepped past the same way
+	// (seriesauthors.go), so the row never squats another author's slots.
+	ans := p.seriesChainFor(base, name, row)
 	if ans.found {
 		if ans.via != "" {
 			p.noteTombstone(model.RedirectSeries, ans.via, ans.slug)
@@ -2683,6 +2755,8 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 	}
 	slug := ans.slug
 	switch {
+	case len(ans.stepped) > 0:
+		warn("series %q: %s belongs to other authors; created %q", name, strings.Join(ans.stepped, ", "), slug)
 	case model.IsReservedSlug(base):
 		warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
 	case slug != base:
@@ -2695,6 +2769,7 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 		out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
 		members:   map[string]string{},
 		positions: map[string]string{},
+		authors:   &SeriesAuthors{},
 		claimed:   map[string]string{},
 	}
 	p.series[slug] = ss

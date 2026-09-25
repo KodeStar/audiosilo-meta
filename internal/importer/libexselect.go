@@ -63,6 +63,7 @@ const (
 	reasonAlreadyASIN   = "ASIN already in the catalogue"
 	reasonDuplicateASIN = "duplicate ASIN within the export"
 	reasonNoSeries      = "no catalogue series"
+	reasonSeriesAuthors = "catalogue series belongs to other authors"
 	reasonNoPosition    = "series position missing or unparseable"
 	reasonLanguage      = "unmapped language"
 	reasonRegion        = "unmapped region"
@@ -79,7 +80,7 @@ const (
 // rules are applied).
 var reasonOrder = []string{
 	reasonNoASIN, reasonAlreadyASIN, reasonDuplicateASIN,
-	reasonNoSeries, reasonNoPosition, reasonLanguage, reasonRegion,
+	reasonNoSeries, reasonSeriesAuthors, reasonNoPosition, reasonLanguage, reasonRegion,
 	reasonAINarrator, reasonJunkCredit, reasonListCredit, reasonPlaceholder, reasonUnnamedCredit,
 	reasonPositionTaken, reasonSeriesCap,
 }
@@ -278,8 +279,14 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	}
 	st.seenASIN[asin] = true
 
-	slug, ref, ok := idx.match(libexSeries(e["series"]))
+	// The series a row completes is one its authors may JOIN (seriesauthors.go):
+	// a same-named series of another author's is not a completion - the importer
+	// would mint a new series for the row - so it is reported as such.
+	slug, ref, ok, othersOnly := idx.match(libexSeries(e["series"]), libexSeriesRow(e))
 	if !ok {
+		if othersOnly {
+			return selectedRow{}, reasonSeriesAuthors
+		}
 		return selectedRow{}, reasonNoSeries
 	}
 	// A row that names a series but no usable position in it is not a
@@ -453,6 +460,9 @@ type seriesIndex struct {
 	// redirects is the catalogue's tombstone table, which find walks exactly as
 	// getOrCreateSeries does (tombstone.go).
 	redirects model.Redirects
+	// authors is the member-author evidence find judges a same-named series by,
+	// exactly as getOrCreateSeries does (seriesauthors.go). nil admits every one.
+	authors *SeriesAuthorIndex
 }
 
 // loadSeriesIndex reads the catalogue at dataDir. A tree with validation
@@ -478,6 +488,7 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 		return idx, warnings
 	}
 	idx.redirects = res.Catalog.Redirects
+	idx.authors = NewSeriesAuthorIndex(res.Catalog)
 	for _, s := range res.Catalog.Series {
 		idx.bySlug[s.ID] = s.Name
 		taken := make(map[string]string, len(s.Works))
@@ -503,39 +514,66 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 }
 
 // match resolves a row's series claims against the catalogue, returning the
-// catalogue slug of the first claim that names a series already in the tree,
-// together with that claim (the caller reads its position).
-func (idx seriesIndex) match(refs []seriesRef) (slug string, matched seriesRef, ok bool) {
+// catalogue slug of the first claim that names a series already in the tree and
+// row's authors may join, together with that claim (the caller reads its
+// position). othersOnly reports, when nothing matched, that some claim named a
+// catalogued series belonging to other authors.
+func (idx seriesIndex) match(refs []seriesRef, row SeriesRow) (slug string, matched seriesRef, ok, othersOnly bool) {
 	for _, ref := range refs {
-		if s, found := idx.find(ref.name); found {
-			return s, ref, true
+		s, found, stepped := idx.find(ref.name, row)
+		if found {
+			return s, ref, true, false
 		}
+		othersOnly = othersOnly || stepped
 	}
-	return "", seriesRef{}, false
+	return "", seriesRef{}, false, othersOnly
 }
 
-// find resolves a series NAME to the catalogue slug it would import into. It
+// find resolves a series NAME to the catalogue slug row would import into. It
 // walks exactly the candidate chain the importer's findSeries walks - the same
-// SeriesSlugAt formula, so the two cannot drift apart - matching on the stored
-// name case-insensitively, so a row is judged "completes a series we have" by
-// the same rule that will later place it there. Keying on the slug alone would
-// wrongly match a numeric-suffix collision between two different-named series.
-func (idx seriesIndex) find(name string) (string, bool) {
+// SeriesSlugAt formula and the same author fit (seriesauthors.go), so the two
+// cannot drift apart - matching on the stored name case-insensitively, so a row
+// is judged "completes a series we have" by the same rule that will later place
+// it there. Keying on the slug alone would wrongly match a numeric-suffix
+// collision between two different-named series. stepped reports that a
+// same-named series was passed over for belonging to other authors.
+func (idx seriesIndex) find(name string, row SeriesRow) (slug string, found, stepped bool) {
 	// A name with no addressable slug resolves to nothing, as it does in
 	// getOrCreateSeries (which refuses the claim): selecting a row into a series
 	// the import will then decline to place it in would be a selection nobody gets.
 	base := Slugify(name)
 	if base == "" {
-		return "", false
+		return "", false, false
 	}
-	ans := seriesChain(base, name, idx.redirects, func(slug string) (string, bool) {
+	stored := func(slug string) (string, bool) {
 		stored, exists := idx.bySlug[slug]
 		return stored, exists
-	})
-	if !ans.found {
-		return "", false
 	}
-	return ans.slug, true
+	fit := func(slug string) SeriesFit { return idx.authors.Fit(slug, row) }
+	ans := seriesChain(base, name, idx.redirects, stored, fit)
+	if !ans.found {
+		return "", false, len(ans.stepped) > 0
+	}
+	return ans.slug, true, false
+}
+
+// libexSeriesRow is a libex row's SeriesRow: its author credits cleaned by the
+// public door (CleanCreditName - the census-backed rules need a run, and the fit
+// compares spellings leniently anyway), its titles and its publisher.
+func libexSeriesRow(e rawBook) SeriesRow {
+	row := SeriesRow{Titles: []string{e.str("title"), e.str("subtitle")}}
+	for _, raw := range libexNames(e["authors"]) {
+		name := CleanCreditName(raw)
+		if name == "" {
+			continue
+		}
+		slug, _ := personSlug(name)
+		row.Authors = append(row.Authors, SeriesPerson{Slug: slug, Name: name})
+	}
+	if pub := e.str("publisher"); pub != "" {
+		row.Publishers = []string{pub}
+	}
+	return row
 }
 
 // streamLibexRows decodes an export and calls fn for every row, handing over

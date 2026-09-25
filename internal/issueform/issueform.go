@@ -190,6 +190,12 @@ type composer struct {
 	// cannot disagree about what one book is (dupidentity.go).
 	identity *check.WorkIdentity
 
+	// seriesAuthors is the member-author evidence of every catalogued series, off
+	// the same load: the importer's rule for which same-named series a book may
+	// join (importer.SeriesAuthorIndex), so the form and the importer place one
+	// book in one series. nil (no catalogue) admits every series.
+	seriesAuthors *importer.SeriesAuthorIndex
+
 	// submissionASINs is the set of normalized ASINs THIS submission stated in
 	// its own ASIN field, filled by parseASINs. provenance.go checks a libex
 	// marker against it, so a marker can only vouch for a book the submission
@@ -387,6 +393,7 @@ func (c *composer) loadExisting() {
 	for _, s := range cat.Series {
 		c.series[s.ID] = s
 	}
+	c.seriesAuthors = importer.NewSeriesAuthorIndex(cat)
 }
 
 // coreFamilies are the CC0 families every template may touch: a work, its

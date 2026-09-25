@@ -173,8 +173,12 @@ func TestImportBasic(t *testing.T) {
 	if sum.NewPeople != 6 {
 		t.Errorf("NewPeople = %d, want 6", sum.NewPeople)
 	}
-	if sum.NewSeries != 1 {
-		t.Errorf("NewSeries = %d, want 1", sum.NewSeries)
+	// Two: Grenzland names "The Ledger Wars" too, but it is Ingrid Falk's book
+	// from another publisher, and the series already holds two Quill/Ashe
+	// volumes - so it starts its own same-named series rather than squatting
+	// theirs (seriesauthors.go).
+	if sum.NewSeries != 2 {
+		t.Errorf("NewSeries = %d, want 2", sum.NewSeries)
 	}
 
 	// The whole tree must validate.
@@ -266,19 +270,26 @@ func TestImportBasic(t *testing.T) {
 		t.Errorf("abridged should be omitted for a null source value: %s", raw)
 	}
 
-	// Series: three works, one at the omnibus range position.
-	var series struct {
+	// Series: the two Ledger volumes, and Falk's omnibus at its range position in
+	// her own same-named series.
+	type seriesDoc struct {
+		Name  string `json:"name"`
 		Works []struct {
 			Work     string `json:"work"`
 			Position string `json:"position"`
 		} `json:"works"`
 	}
+	var series, falk seriesDoc
 	readEntity(t, dataDir, "series/th/the-ledger-wars.json", &series)
-	if len(series.Works) != 3 {
-		t.Fatalf("series works = %d, want 3", len(series.Works))
+	if len(series.Works) != 2 {
+		t.Fatalf("series works = %d, want 2", len(series.Works))
+	}
+	readEntity(t, dataDir, "series/th/the-ledger-wars-2.json", &falk)
+	if falk.Name != "The Ledger Wars" || len(falk.Works) != 1 {
+		t.Fatalf("Falk's series = %+v, want one work under the same name", falk)
 	}
 	foundRange := false
-	for _, sw := range series.Works {
+	for _, sw := range falk.Works {
 		if sw.Position == "1-3.5" && sw.Work == "grenzland" {
 			foundRange = true
 		}
@@ -642,14 +653,14 @@ func TestOverlongSeriesNameCollision(t *testing.T) {
 	}
 
 	idx, _ := loadSeriesIndex(dataDir)
-	slugB, found := idx.find(seriesB)
+	slugB, found, _ := idx.find(seriesB, SeriesRow{})
 	if !found {
 		t.Fatalf("seriesIndex.find does not resolve the suffixed series; index holds %v", idx.bySlug)
 	}
 	if !model.ValidSlug(slugB) {
 		t.Errorf("series id %q (%d chars) is not a valid slug", slugB, len(slugB))
 	}
-	if slugA, _ := idx.find(seriesA); slugA == slugB {
+	if slugA, _, _ := idx.find(seriesA, SeriesRow{}); slugA == slugB {
 		t.Errorf("both names resolved to %q", slugB)
 	}
 	// Both Beta volumes must have landed in the series find resolved to: that is
@@ -1427,7 +1438,7 @@ func TestAddToSeriesRejectsEmptyName(t *testing.T) {
 	p := &planner{series: map[string]*seriesState{}}
 	var warned []string
 	warn := func(format string, args ...any) { warned = append(warned, fmt.Sprintf(format, args...)) }
-	p.addToSeries("", "some-work", "1", warn)
+	p.addToSeries("", "some-work", "1", SeriesRow{}, warn)
 	if len(p.series) != 0 || p.summary.NewSeries != 0 {
 		t.Errorf("empty series name minted a series: %+v", p.summary)
 	}

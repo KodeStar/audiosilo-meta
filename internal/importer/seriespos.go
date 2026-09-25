@@ -176,13 +176,14 @@ func sameSeriesName(a, b string) bool {
 // entry (addToSeries reports that, as it always has), a title position another
 // work holds is not free to move into so the source's position stands, and a
 // source position that is taken too reaches addToSeries's own "position already
-// taken" warning by the same path it always did.
-func (p *planner) placementPosition(r seriesRef, work, title string, warn func(string, ...any)) string {
+// taken" warning by the same path it always did. row is the row being placed,
+// which decides which same-named series the work lands in (seriesauthors.go).
+func (p *planner) placementPosition(r seriesRef, work, title string, row SeriesRow, warn func(string, ...any)) string {
 	pos, ok := statedVolumePosition(r, title)
 	if !ok {
 		return r.seq
 	}
-	if ss := p.findSeries(r.name); ss != nil {
+	if ss := p.findSeries(r.name, row); ss != nil {
 		if _, member := ss.members[work]; member {
 			return r.seq
 		}
