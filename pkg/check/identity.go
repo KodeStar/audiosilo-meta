@@ -309,8 +309,9 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 		return nil
 	}
 	var out []IdentityMatch
+	var inColl collectionMemo // the incoming title's answer, asked at most once
 	for _, w := range ix.byKey[key] {
-		if !ix.matches(w, title, series, lang, all, identity) {
+		if !ix.matches(w, nil, title, series, lang, all, identity, &inColl) {
 			continue
 		}
 		out = append(out, IdentityMatch{Work: w, Series: ix.seriesOf[w.ID]})
@@ -329,9 +330,7 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 //   - neither side states a volume the other contradicts (SameStatedVolume);
 //   - exactly one side does not announce itself a COLLECTION
 //     (titlerule.SameCollectionStatus: each title read against its own series name,
-//     the predicate internal/audit's merge veto reads too, so a collection word that
-//     belongs to the series NAME - "Sanctuary: The Caretaker's Collection, Book One" -
-//     is not an omnibus here either). A boxed set and the volume it collects
+//     the predicate internal/audit's merge veto reads too). A boxed set and the volume it collects
 //     normalize alike once the packaging words come off - "Bravelands: Books 1-3"
 //     against "Bravelands", "Red Rising: The Complete Boxed Set" against "Red
 //     Rising" - and are not two records of one book. This lives in the predicate
@@ -362,11 +361,36 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 // wave cannot undo - the same trade that withdrew the welded-function-words layer from
 // the key itself (see titlerule.IdentityTitleKey). A wrong refusal here is recoverable
 // and is reported to a human either way, which is the posture stated above.
-func (ix *WorkIdentity) matches(w *model.Work, title, series, lang string, all, identity map[string]bool) bool {
+//
+// The two collection answers are MEMOS (collectionMemo): a caller asking one title
+// against many candidates, or many pairs of one key group, asks each side at most once,
+// and the rule runs last so a pair that fails a cheaper rule never asks it at all. wColl
+// may be nil, and is then asked afresh; it is never precomputed for the whole
+// catalogue, which would cost every load the question for 280k works to serve the few
+// that share a key.
+func (ix *WorkIdentity) matches(w *model.Work, wColl *collectionMemo, title, series, lang string,
+	all, identity map[string]bool, inColl *collectionMemo) bool {
+	if wColl == nil {
+		wColl = &collectionMemo{}
+	}
 	return languagesCompatible(w.Language, lang) &&
 		IdentityAuthorsMatch(w, all, identity) &&
 		titlerule.SameStatedVolume(title, series, w.Title, ix.seriesOf[w.ID]) &&
-		titlerule.SameCollectionStatus(title, series, w.Title, ix.seriesOf[w.ID])
+		inColl.get(title, series) == wColl.get(w.Title, ix.seriesOf[w.ID])
+}
+
+// collectionMemo is one title's titlerule.IsCollectionIn answer, asked on first use.
+// Comparing two of them is titlerule.SameCollectionStatus, spelled so each side is
+// asked once however many pairs it is part of.
+type collectionMemo struct {
+	known, value bool
+}
+
+func (m *collectionMemo) get(title, series string) bool {
+	if !m.known {
+		m.value, m.known = titlerule.IsCollectionIn(title, series), true
+	}
+	return m.value
 }
 
 // IdentityAuthorsMatch reports whether an incoming record's author sets meet a

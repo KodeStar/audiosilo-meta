@@ -546,49 +546,41 @@ func IsCollection(title string) bool {
 // a collection. "Sanctuary: The Caretaker's Collection, Book One" is volume one of a
 // series called "The Caretaker's Collection", and "Annihilation: The Southern Reach
 // Trilogy, Book 1" is volume one of that trilogy - neither is several books in one
-// product, and both used to veto the merge with their own plain twins.
+// product.
 //
-// It is deliberately narrower than "remove the series name and ask again". The word
-// is discounted only when the title ALSO states a volume of that series
+// The word is discounted only when the title ALSO states a volume of that series
 // (StatedVolume), because a title that names its series and states no volume is
 // exactly how an omnibus is titled ("The Southern Reach Trilogy: Annihilation,
-// Authority, Acceptance"), and removing the name there would hide the one word that
-// says so. Every other shape answers exactly as IsCollection does: a series name
-// that is no collection name contributes nothing to discount, a title whose residual
-// names no book of its own IS the series (so its packaging is the title's), and a
-// collection word or a box-set phrase OUTSIDE the name ("... Books 1-3") still fires.
-// Like IsCollection it is a refusal test's input, so an answer of true where false
-// was right costs a missed merge, never a wrong one - which is why every uncertain
-// shape keeps IsCollection's answer.
+// Authority, Acceptance"). The name comes off at a title BOUNDARY only - a whole
+// segment or a whole bracketed group, Clean's own mechanism - never from mid-title.
+// Every other shape answers exactly as IsCollection does: a series name that is no
+// collection name contributes nothing to discount, a title whose residual names no
+// book of its own IS the series (so its packaging is the title's), and a collection
+// word or a box-set phrase OUTSIDE the name ("... Books 1-3") still fires. It is a
+// refusal test's input, so an answer of true where false was right costs a missed
+// merge, never a wrong one - which is why every uncertain shape keeps IsCollection's
+// answer.
 //
 // It ADDS one shape IsCollection does not see: a title that ENUMERATES several volumes
 // ("Legend: The Legend Trilogy, Book 1 & 2", "Books One and Two") is a multi-volume
 // product whatever else it says - StatedVolume reads only its first number, so without
 // this the discount above would read a two-in-one as volume one.
 //
-// It is the ONE collection predicate every duplicate decision reads - the census and
-// both writer gates through SameCollectionStatus, internal/audit's merge vetoes
-// directly - so a pair the audit clusters is a pair the writers refuse to re-create.
+// The checks run cheapest first: StatedVolume, the one expensive question, is asked
+// only of a collection-worded title read against a collection-named series.
 func IsCollectionIn(title, series string) bool {
-	_, states := StatedVolume(title, series)
-	return CollectionIn(title, series, states)
-}
-
-// CollectionIn is IsCollectionIn for a caller that has already asked StatedVolume of the
-// same (title, series) pair - internal/audit memoizes it per work - so the volume is read
-// once. statesVolume MUST be StatedVolume(title, series)'s answer.
-func CollectionIn(title, series string, statesVolume bool) bool {
-	if enumeratedVolumes.MatchString(title) {
+	if mayEnumerate(title) && enumeratedVolumes.MatchString(title) {
 		return true
 	}
 	if !IsCollection(title) {
 		return false
 	}
-	if series == "" || !statesVolume || !IsCollection(series) {
+	if series == "" || !IsCollection(series) {
 		return true
 	}
-	// The series name comes off at a title BOUNDARY only - a whole segment or a whole
-	// bracketed group, Clean's own mechanism - never excised from mid-title.
+	if _, states := StatedVolume(title, series); !states {
+		return true
+	}
 	residual := stripSeriesAtBoundary(title, SeriesForms(series))
 	if tidyTitle(residual) == tidyTitle(title) || !CarriesIdentity(residual) {
 		return true
@@ -598,9 +590,10 @@ func CollectionIn(title, series string, statesVolume bool) bool {
 
 // SameCollectionStatus reports whether two titles, each read against its own series
 // name, agree about being a collection - the "a boxed set is not the volume it
-// collects" veto every duplicate decision applies (pkg/check's identity predicate,
-// internal/importer's run-local guard, internal/issueform's gates). One definition, so
-// the census, the writers and the audit cannot disagree about which pairs are one book.
+// collects" veto. It is the ONE collection rule every duplicate decision reads
+// (pkg/check's identity predicate, internal/importer's run-local guard,
+// internal/issueform's gates; internal/audit asks IsCollectionIn directly), so the
+// census, the writers and the audit cannot disagree about which pairs are one book.
 func SameCollectionStatus(aTitle, aSeries, bTitle, bSeries string) bool {
 	return IsCollectionIn(aTitle, aSeries) == IsCollectionIn(bTitle, bSeries)
 }
@@ -610,18 +603,53 @@ func SameCollectionStatus(aTitle, aSeries, bTitle, bSeries string) bool {
 // boxSetPhrase's; this is the enumerated spelling it cannot see. A digit list may be
 // joined by a comma, a word list only by a conjunction ("Book 1, Two Hearts" is a title,
 // not a list), and a digit is at most three long so "Book 1, 2020 Edition" is not one.
-//
-// The marker vocabulary is volumeMarkerWords WITHOUT "part": an English part list is as
-// often ONE book's own title ("Harry Potter and the Cursed Child: Parts One and Two",
-// "Dark Road Parts One and Two") as a bundle, and reading it as a collection would cost
-// the writers their refusal of a second record of that one book. The German "Teil 1+2"
-// of a two-part audio play is kept: it is the product's packaging, not its name.
-const enumeratedVolumeMarkers = `books?|bks?|vols?|volumes?|episodes?|eps?|b(?:a|ae|ä)nde?|teile?|tomes?|libros?`
-
+// Its markers are enumeratedVolumeMarkers (identity.go), which say why "part" is not
+// among them.
 var enumeratedVolumes = regexp.MustCompile(`(?i)\b(?:` + enumeratedVolumeMarkers + `)\s*#?\s*` +
 	`(?:\d{1,3}|` + volumeNumberWords + `)` +
-	`(?:\s*(?:,|&|\+|/|\band\b|\bund\b|\bet\b|\by\b|\be\b)\s*#?\s*\d{1,3}` +
-	`|\s*(?:&|\band\b|\bund\b|\bet\b|\by\b|\be\b)\s*(?:` + volumeNumberWords + `))+\b`)
+	`(?:\s*(?:,|\+|/|` + listConjunctions + `)\s*#?\s*\d{1,3}` +
+	`|\s*(?:` + listConjunctions + `)\s*(?:` + volumeNumberWords + `))+\b`)
+
+// listConjunctions joins the items of a volume list, in every language the vocabulary
+// is measured over.
+const listConjunctions = `&|\band\b|\bund\b|\bet\b|\by\b|\be\b`
+
+// listConjunctionWords are listConjunctions' word members, for mayEnumerate.
+var listConjunctionWords = []string{"and", "und", "et", "y", "e"}
+
+// mayEnumerate is enumeratedVolumes' NECESSARY condition, checked without the regexp:
+// every match holds a list separator - one of ",&+/" or a conjunction word standing on
+// ASCII word boundaries, exactly as the pattern's \b reads them. Most titles hold
+// neither, and the regexp costs about as much as the whole collection vocabulary.
+func mayEnumerate(title string) bool {
+	if strings.ContainsAny(title, ",&+/") {
+		return true
+	}
+	for i := 0; i < len(title); {
+		if !isASCIIWordByte(title[i]) {
+			i++
+			continue
+		}
+		j := i
+		for j < len(title) && isASCIIWordByte(title[j]) {
+			j++
+		}
+		if j-i <= 3 {
+			for _, w := range listConjunctionWords {
+				if strings.EqualFold(title[i:j], w) {
+					return true
+				}
+			}
+		}
+		i = j
+	}
+	return false
+}
+
+// isASCIIWordByte is the regexp package's \b word class: [0-9A-Za-z_].
+func isASCIIWordByte(c byte) bool {
+	return c == '_' || '0' <= c && c <= '9' || 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z'
+}
 
 // FoldKey is the identity key for a free-text name: the project's own diacritic
 // folding and punctuation rules (model.Slugify, the ONE definition of what text
@@ -1509,20 +1537,6 @@ func oneInsertion(short, long string) bool {
 // Garden" with forty-one. A sidecar is a REASON TO BE CAREFUL (REF-SIDECAR reports
 // exactly that) and not a reason to survive.
 type WorkRank struct {
-	// CleanTwin: this work's title IS what every decorated member of its cluster
-	// reduces to (ProposeTitle), under a slug that still agrees with that title. It
-	// is set by the caller, which alone sees the cluster, and it outranks everything
-	// else, including the series membership below it.
-	//
-	// It exists because the ladder otherwise hands the merge to the MODELED record
-	// even when that record is the decorated one - "Insurrection: The Lost Fleet,
-	// Book 2" holds the membership and "Insurrection" does not - and a decorated
-	// survivor can only be repaired by a retitle, which re-slugging makes a design
-	// question of its own. Choosing the clean twin needs no retitle at all: a merge
-	// moves the membership, the recordings and the sidecars onto it and tombstones
-	// the decorated slug, so the survivor carries the right title under the slug
-	// that title derives, and nothing is lost that a retitle would have kept.
-	CleanTwin bool
 	// InSeries: the work already has a series membership - it is the modeled one,
 	// and its memberships are the ones that would not have to move.
 	InSeries bool
@@ -1547,8 +1561,6 @@ type WorkRank struct {
 // same on every run and in every consumer.
 func (r WorkRank) Better(o WorkRank) bool {
 	switch {
-	case r.CleanTwin != o.CleanTwin:
-		return r.CleanTwin
 	case r.InSeries != o.InSeries:
 		return r.InSeries
 	case r.Decorations != o.Decorations:

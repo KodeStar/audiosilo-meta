@@ -23,11 +23,7 @@ func OnWorkSlugChain(w *model.Work) bool {
 	if base == "" {
 		return false
 	}
-	roleCredited := make(map[string]bool, len(w.Credits))
-	for _, c := range w.Credits {
-		roleCredited[c.Person] = true
-	}
-	authors := workAuthors{all: w.Authors, identity: identityAuthors(w.Authors, roleCredited)}
+	authors := workAuthors{all: w.Authors, identity: diskIdentityAuthorList(w.Authors, w.Credits)}
 	cands, _ := workCandidates(base, authors, positionClaim{})
 	for _, c := range cands {
 		if c.slug == w.ID {

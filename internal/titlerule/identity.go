@@ -316,7 +316,14 @@ func romanValue(s string) (float64, bool) {
 
 // volumeMarkerWords is wordVolumeMarker's marker half, named so the rule that STRIPS
 // this shape (rules.go) and the rules that READ it back here cannot drift apart.
-const volumeMarkerWords = `books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|b(?:a|ae|ä)nde?|teile?|tomes?|libros?`
+const volumeMarkerWords = enumeratedVolumeMarkers + `|parts?|pts?`
+
+// enumeratedVolumeMarkers is volumeMarkerWords WITHOUT "part", the markers after which
+// a LIST of volumes makes a title a collection (rules.go's enumeratedVolumes): an
+// English part list is as often ONE book's own title ("Harry Potter and the Cursed
+// Child: Parts One and Two", "Dark Road Parts One and Two") as a bundle. The German
+// "Teil 1+2" of a two-part audio play is kept: it is the product's packaging.
+const enumeratedVolumeMarkers = `books?|bks?|vols?|volumes?|episodes?|eps?|b(?:a|ae|ä)nde?|teile?|tomes?|libros?`
 
 // volumeNumberWordList is the ONE spelling of the word-number vocabulary: the
 // alternation wordVolumeMarker strips and the values wordValue reads back are both

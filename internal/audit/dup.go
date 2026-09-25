@@ -576,14 +576,11 @@ func sortedKeys(m map[string]bool) []string {
 // test let three different Tao Wong series' omnibuses merge.
 //
 // Each title is read against the series name it is cleaned against
-// (titlerule.IsCollectionIn), so a collection word that belongs to that NAME is not
-// the title announcing a collection: "Sanctuary: The Caretaker's Collection, Book
-// One" is volume one of a series called "The Caretaker's Collection", not an omnibus
-// beside its plain twin "Sanctuary".
+// (titlerule.IsCollectionIn, whose doc has the shape that makes the name matter).
 func vetoCollectionOneSide(ix *index, members []dupMember) (string, bool) {
 	var yes, no []string
 	for _, m := range members {
-		if ix.derived(m.work).collection {
+		if ix.isCollection(m.work) {
 			yes = append(yes, m.work.ID)
 		} else {
 			no = append(no, m.work.ID)
@@ -629,13 +626,11 @@ func vetoRuntimeRatio(members []dupMember) (string, bool) {
 }
 
 // vetoDecoratedTarget: the chosen target's title still carries decoration while a
-// loser's does not. The ladder puts Decorations above Recordings precisely so this
-// cannot normally happen; it still can when the decorated member is the MODELED one.
-// Where the undecorated member is that record's CLEAN TWIN (cleanTwins) the ladder
-// now picks the twin and this never fires; what is left here is the shape where it is
-// not - a clean title that is not what the decorated one reduces to, or a clean title
-// under a slug spelling something else - and there which record should survive is a
-// judgement.
+// loser's does not. The ladder puts Decorations above Recordings, and a cluster with a
+// CLEAN TWIN survives on it (canonicalMember), so this fires only when the decorated
+// member is the MODELED one and no undecorated member is its clean twin - a clean
+// title that is not what the decorated one reduces to, or one under a slug the
+// importer's chain would not compose - and there which record survives is a judgement.
 func vetoDecoratedTarget(ix *index, members []dupMember, canon dupMember) (string, bool) {
 	if len(ix.derived(canon.work).markers) == 0 {
 		return "", false
@@ -719,26 +714,31 @@ func sidecarCount(ix *index, members []dupMember) int {
 // canonicalMember picks the cluster member to keep, through titlerule's ladder -
 // the same values and the same comparison the repair pass will read, so a report
 // and a repair can never name different survivors.
+//
+// Where the cluster has CLEAN TWINS (cleanTwins) the ladder chooses among them alone.
+// Otherwise it hands the merge to the MODELED record even when that record is the
+// decorated one - "Insurrection: The Lost Fleet, Book 2" holds the membership and
+// "Insurrection" does not - and a decorated survivor could only be repaired by a
+// retitle, which the title-to-slug coupling makes a design question of its own. A
+// clean twin needs no retitle: the merge moves the membership, the recordings and the
+// sidecars onto it and tombstones the decorated slug, so the survivor carries the right
+// title under the slug that title derives.
 func canonicalMember(ix *index, members []dupMember) dupMember {
-	twins := cleanTwins(ix, members)
-	rank := func(w *model.Work) titlerule.WorkRank {
-		r := ix.workRank(w)
-		r.CleanTwin = twins[w.ID]
-		return r
+	if twins := cleanTwins(ix, members); len(twins) > 0 {
+		members = twins
 	}
 	best := members[0]
-	bestRank := rank(best.work)
+	bestRank := ix.workRank(best.work)
 	for _, m := range members[1:] {
-		if r := rank(m.work); r.Better(bestRank) {
+		if r := ix.workRank(m.work); r.Better(bestRank) {
 			best, bestRank = m, r
 		}
 	}
 	return best
 }
 
-// cleanTwins names the members that are the CLEAN TWIN of every decorated member of
-// the cluster (titlerule.WorkRank.CleanTwin), or nil when the cluster has no such
-// shape.
+// cleanTwins returns the members that are the CLEAN TWIN of every decorated member of
+// the cluster, in member order, or nil when the cluster has no such shape.
 //
 // The shape is narrow on purpose, and every condition is the absence of a doubt:
 //
@@ -760,7 +760,7 @@ func canonicalMember(ix *index, members []dupMember) dupMember {
 // Everything else in the cluster is still judged by mergeVetoes: the twin is only
 // the SURVIVOR, and a position conflict, a runtime contradiction or a collection on
 // one side refuses the merge exactly as before.
-func cleanTwins(ix *index, members []dupMember) map[string]bool {
+func cleanTwins(ix *index, members []dupMember) []dupMember {
 	want := ""
 	for _, m := range members {
 		d := ix.derived(m.work)
@@ -779,22 +779,18 @@ func cleanTwins(ix *index, members []dupMember) map[string]bool {
 	if want == "" {
 		return nil // nothing is decorated, so there is nothing to be the clean form of
 	}
-	var out map[string]bool
+	var out []dupMember
 	for _, m := range members {
 		w := m.work
 		if len(ix.derived(w).markers) > 0 || titlerule.CompareKey(w.Title) != want || !importer.OnWorkSlugChain(w) {
 			continue
 		}
-		if out == nil {
-			out = map[string]bool{}
-		}
-		out[w.ID] = true
+		out = append(out, m)
 	}
 	return out
 }
 
-// workRank fills titlerule's ranking evidence for one work. CleanTwin is a fact
-// about the CLUSTER, so canonicalMember sets it.
+// workRank fills titlerule's ranking evidence for one work.
 func (ix *index) workRank(w *model.Work) titlerule.WorkRank {
 	return titlerule.WorkRank{
 		InSeries:    len(ix.memberships[w.ID]) > 0,

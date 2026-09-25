@@ -64,9 +64,10 @@ type workDerived struct {
 	proposeOK bool
 
 	// collection is whether the title announces a collection when read against
-	// seriesName (titlerule.CollectionIn, fed the memoized hasStatedSeq so the volume is
-	// read once) - W-DUP's collection veto reads it.
-	collection bool
+	// seriesName (titlerule.IsCollectionIn), asked LAZILY through index.isCollection:
+	// only W-DUP's collection veto reads it, over the works a cluster holds.
+	collection      bool
+	collectionKnown bool
 
 	// The article-plus-series prefix shape, if the title has it.
 	artArticle string
@@ -114,8 +115,17 @@ func (ix *index) deriveTitle(w *model.Work) *workDerived {
 	if len(d.markers) > 0 {
 		d.proposed, d.proposeOK = titlerule.ProposeTitle(w.Title, d.seriesName)
 	}
-	d.collection = titlerule.CollectionIn(w.Title, d.seriesName, d.hasStatedSeq)
 	return d
+}
+
+// isCollection is the work's memoized titlerule.IsCollectionIn against the series name
+// its title is read against.
+func (ix *index) isCollection(w *model.Work) bool {
+	d := ix.derived(w)
+	if !d.collectionKnown {
+		d.collection, d.collectionKnown = titlerule.IsCollectionIn(w.Title, d.seriesName), true
+	}
+	return d.collection
 }
 
 // resolveSeries is the index's titlerule.SeriesResolver: the spelling that matched

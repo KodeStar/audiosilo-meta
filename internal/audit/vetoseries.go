@@ -61,11 +61,6 @@ type seriesMember struct {
 	title    string
 	authors  []string
 	language string
-	// collection: the title announces a collection when read against THIS series'
-	// name (titlerule.IsCollectionIn - the predicate W-DUP and the writers share), so
-	// "Annihilation: The Southern Reach Trilogy, Book 1" is a volume of the trilogy,
-	// not a box set of it.
-	collection bool
 }
 
 // seriesSides derives a cluster's sides in the cluster's own (catalogue) order.
@@ -84,11 +79,6 @@ func seriesSideOf(ix *index, s *model.Series) seriesSide {
 		m := seriesMember{work: sw.Work, position: sw.Position}
 		if w := ix.workByID[sw.Work]; w != nil {
 			m.title, m.authors, m.language = w.Title, sortedUnique(w.Authors), w.Language
-			if d := ix.derived(w); d.seriesName == s.Name {
-				m.collection = d.collection // the pair W-DUP already derived
-			} else {
-				m.collection = titlerule.IsCollectionIn(w.Title, s.Name)
-			}
 			authors = append(authors, w.Authors...)
 		}
 		side.members = append(side.members, m)
@@ -290,10 +280,8 @@ func foldedWords(name string) []string {
 //
 // TWO independent arms, because either is the evidence on its own:
 //
-//   - the member TITLES say collection (titlerule.IsCollectionIn, each title read
-//     against this series' own name - the predicate W-DUP's collection veto and the
-//     writers' duplicate gates share, so a volume titled "Annihilation: The Southern
-//     Reach Trilogy, Book 1" does not count as a box set of the trilogy it belongs to);
+//   - the member TITLES say collection, each read against this series' own name
+//     (titlerule.IsCollectionIn, whose doc has the shape that makes the name matter);
 //   - the member POSITIONS are RANGES on one side and single slots on the other. A range
 //     IS the statement "this product covers those volumes", which is why it reaches the
 //     three Bayne omnibuses whose titles the vocabulary would have had to guess at.
@@ -349,7 +337,7 @@ func allCollectionTitles(s seriesSide) bool {
 		return false
 	}
 	for _, m := range s.members {
-		if m.title == "" || !m.collection {
+		if !titlerule.IsCollectionIn(m.title, s.series.Name) {
 			return false
 		}
 	}

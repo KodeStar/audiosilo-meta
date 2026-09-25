@@ -315,9 +315,6 @@ func TestWorkRankLadder(t *testing.T) {
 	// Each rung beats everything below it. The order is the argument: what survives
 	// a merge should be the most canonical RECORD, because everything else moves
 	// onto it.
-	if !(WorkRank{CleanTwin: true, ID: "z"}).Better(WorkRank{InSeries: true, Recordings: 99, HasSidecar: true, ID: "a"}) {
-		t.Error("the clean twin of a decorated record must outrank even its series membership: the membership moves, the title cannot")
-	}
 	if !(WorkRank{InSeries: true, Decorations: 9, ID: "z"}).Better(WorkRank{Recordings: 99, HasSidecar: true, ID: "a"}) {
 		t.Error("a series membership must outrank everything below it")
 	}
@@ -433,6 +430,25 @@ func TestIsCollectionInDiscountsTheSeriesOwnName(t *testing.T) {
 	for _, c := range cases {
 		if got := IsCollectionIn(c.title, c.series); got != c.want {
 			t.Errorf("IsCollectionIn(%q, %q) = %v, want %v", c.title, c.series, got, c.want)
+		}
+	}
+}
+
+// mayEnumerate is only a shortcut: it must hold wherever enumeratedVolumes matches, in
+// every separator spelling and case the pattern accepts.
+func TestMayEnumerateIsNecessary(t *testing.T) {
+	for _, title := range []string{
+		"Book 1 & 2", "Books 1, 2 and 3", "BOOKS ONE AND TWO", "Band 1 und 2", "Tome 1 et 2",
+		"Libro 1 y 2", "Libro 1 e 2", "Vol 4+5", "Vol. 4/5", "Teil 1 + 2", "Book 1AND2",
+		"Episodes 1_and_2", "Book 1 and Two", "Volumes One & Two",
+	} {
+		if enumeratedVolumes.MatchString(title) && !mayEnumerate(title) {
+			t.Errorf("enumeratedVolumes matches %q but mayEnumerate refuses it", title)
+		}
+	}
+	for _, title := range []string{"Hammered", "Legend: Book One", "The Andes"} {
+		if mayEnumerate(title) {
+			t.Errorf("mayEnumerate(%q) = true, want false", title)
 		}
 	}
 }
