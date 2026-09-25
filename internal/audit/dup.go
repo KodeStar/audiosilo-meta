@@ -5,6 +5,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -425,7 +426,7 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoDisjointSeries(ix, members); ok {
 		out = append(out, s)
 	}
-	if s, ok := vetoCollectionOneSide(members); ok {
+	if s, ok := vetoCollectionOneSide(ix, members); ok {
 		out = append(out, s)
 	}
 	if s, ok := vetoRuntimeRatio(members); ok {
@@ -573,10 +574,13 @@ func sortedKeys(m map[string]bool) []string {
 // does not. A companion omnibus and the volume it collects are not two records of one
 // book. The vocabulary is multilingual (titlerule.IsCollection) - the English-only
 // test let three different Tao Wong series' omnibuses merge.
-func vetoCollectionOneSide(members []dupMember) (string, bool) {
+//
+// Each title is read against the series name it is cleaned against
+// (titlerule.IsCollectionIn, whose doc has the shape that makes the name matter).
+func vetoCollectionOneSide(ix *index, members []dupMember) (string, bool) {
 	var yes, no []string
 	for _, m := range members {
-		if titlerule.IsCollection(m.work.Title) {
+		if ix.isCollection(m.work) {
 			yes = append(yes, m.work.ID)
 		} else {
 			no = append(no, m.work.ID)
@@ -622,9 +626,11 @@ func vetoRuntimeRatio(members []dupMember) (string, bool) {
 }
 
 // vetoDecoratedTarget: the chosen target's title still carries decoration while a
-// loser's does not. The ladder puts Decorations above Recordings precisely so this
-// cannot normally happen; it still can when the decorated member is the MODELED one,
-// and then which record should survive is a judgement.
+// loser's does not. The ladder puts Decorations above Recordings, and a cluster with a
+// CLEAN TWIN survives on it (canonicalMember), so this fires only when the decorated
+// member is the MODELED one and no undecorated member is its clean twin - a clean
+// title that is not what the decorated one reduces to, or one under a slug the
+// importer's chain would not compose - and there which record survives is a judgement.
 func vetoDecoratedTarget(ix *index, members []dupMember, canon dupMember) (string, bool) {
 	if len(ix.derived(canon.work).markers) == 0 {
 		return "", false
@@ -704,7 +710,19 @@ func sidecarCount(ix *index, members []dupMember) int {
 // canonicalMember picks the cluster member to keep, through titlerule's ladder -
 // the same values and the same comparison the repair pass will read, so a report
 // and a repair can never name different survivors.
+//
+// Where the cluster has CLEAN TWINS (cleanTwins) the ladder chooses among them alone.
+// Otherwise it hands the merge to the MODELED record even when that record is the
+// decorated one - "Insurrection: The Lost Fleet, Book 2" holds the membership and
+// "Insurrection" does not - and a decorated survivor could only be repaired by a
+// retitle, which the title-to-slug coupling makes a design question of its own. A
+// clean twin needs no retitle: the merge moves the membership, the recordings and the
+// sidecars onto it and tombstones the decorated slug, so the survivor carries the right
+// title under the slug that title derives.
 func canonicalMember(ix *index, members []dupMember) dupMember {
+	if twins := cleanTwins(ix, members); len(twins) > 0 {
+		members = twins
+	}
 	best := members[0]
 	bestRank := ix.workRank(best.work)
 	for _, m := range members[1:] {
@@ -713,6 +731,59 @@ func canonicalMember(ix *index, members []dupMember) dupMember {
 		}
 	}
 	return best
+}
+
+// cleanTwins returns the members that are the CLEAN TWIN of every decorated member of
+// the cluster, in member order, or nil when the cluster has no such shape.
+//
+// The shape is narrow on purpose, and every condition is the absence of a doubt:
+//
+//   - every decorated member's title has a retitle proposal (titlerule.ProposeTitle,
+//     against the series name it is read against) and all of those proposals are ONE
+//     title under the comparison key. A proposal ProposeTitle refuses - a residual
+//     that names no book, reads as a fragment, or is the series' own name - is a
+//     title nobody can say the twin is the clean form of;
+//   - the twin's own title is undecorated and IS that title under the comparison key,
+//     rather than merely sharing the cluster, which a nested author set or an
+//     embedded series name can reach by other roads;
+//   - the twin sits at a slug the importer's own candidate chain composes for its
+//     title and credits (importer.OnWorkSlugChain: the title slug, "<title>-<author>"
+//     and its numbered collisions, shortened exactly as the chain shortens them). A
+//     clean title at a slug the chain never mints - a hand-made "emma-1996", a record
+//     retitled by hand under its old decorated slug - would trade one mismatch for
+//     another, and a re-import of the title would not land on it.
+//
+// Everything else in the cluster is still judged by mergeVetoes: the twin is only
+// the SURVIVOR, and a position conflict, a runtime contradiction or a collection on
+// one side refuses the merge exactly as before.
+func cleanTwins(ix *index, members []dupMember) []dupMember {
+	want := ""
+	for _, m := range members {
+		d := ix.derived(m.work)
+		if len(d.markers) == 0 {
+			continue
+		}
+		if !d.proposeOK {
+			return nil
+		}
+		k := titlerule.CompareKey(d.proposed)
+		if k == "" || (want != "" && k != want) {
+			return nil
+		}
+		want = k
+	}
+	if want == "" {
+		return nil // nothing is decorated, so there is nothing to be the clean form of
+	}
+	var out []dupMember
+	for _, m := range members {
+		w := m.work
+		if len(ix.derived(w).markers) > 0 || titlerule.CompareKey(w.Title) != want || !importer.OnWorkSlugChain(w) {
+			continue
+		}
+		out = append(out, m)
+	}
+	return out
 }
 
 // workRank fills titlerule's ranking evidence for one work.

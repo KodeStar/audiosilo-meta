@@ -383,3 +383,72 @@ func TestCountSignificantWords(t *testing.T) {
 		}
 	}
 }
+
+// A collection word that belongs to the series name a title is read against is not the
+// title announcing a collection - but only where the title also places itself at a volume
+// of that series, since naming the series and stating no volume is how an omnibus is
+// titled. Every uncertain shape keeps IsCollection's answer.
+func TestIsCollectionInDiscountsTheSeriesOwnName(t *testing.T) {
+	cases := []struct {
+		title, series string
+		want          bool
+	}{
+		// The measured false positives: volume one of a series whose NAME says collection.
+		{"Sanctuary: The Caretaker’s Collection, Book One", "The Caretaker’s Collection", false},
+		{"Annihilation: The Southern Reach Trilogy, Book 1", "The Southern Reach Trilogy", false},
+		{"Fever Crumb (The Fever Crumb Trilogy, Book 1)", "Fever Crumb Trilogy", false},
+		// Naming the series with no volume is how an omnibus is titled.
+		{"The Southern Reach Trilogy: Annihilation, Authority, Acceptance", "The Southern Reach Trilogy", true},
+		// A title that IS the series name carries the packaging itself.
+		{"The Caretaker’s Collection", "The Caretaker’s Collection", true},
+		{"The Caretaker’s Collection, Books 1-3", "The Caretaker’s Collection", true},
+		// A collection word OUTSIDE the series name still fires.
+		{"Sanctuary Omnibus: The Caretaker’s Collection, Book One", "The Caretaker’s Collection", true},
+		// A series name that is no collection name discounts nothing.
+		{"Ascend Online Omnibus", "Ascend Online", true},
+		{"Ascend Online Omnibus", "", true},
+		// Not a collection at all, with or without a series.
+		{"Sanctuary", "The Caretaker’s Collection", false},
+		{"Hammered: The Druid Tales, Book 3", "The Druid Tales", false},
+		// An ENUMERATED multi-volume statement is a collection: a volume reading takes only
+		// its first number, so without this a two-in-one would discount the series'
+		// collection word as volume one.
+		{"Legend: The Legend Trilogy, Book 1 & 2", "The Legend Trilogy", true},
+		{"Legend: The Legend Trilogy, Books 1 and 2", "The Legend Trilogy", true},
+		{"Legend, Books One and Two", "", true},
+		{"Rebel: Book 1, 2 & 3", "", true},
+		{"Die Chroniken, Band 1 und 2", "", true},
+		// ...but a title word after a comma is not a second volume, nor is a year.
+		{"Firstborn, Book 1, Two Hearts", "", false},
+		{"Firstborn, Book 1, 2020 Edition", "", false},
+		// An English PART list is as often one book's own title.
+		{"Harry Potter and the Cursed Child: Parts One and Two", "Harry Potter", false},
+		// The series name comes off at a BOUNDARY only: spelled mid-title it stays, so its
+		// collection word still speaks for the title.
+		{"The Last Trilogy Standing, Book 1", "Trilogy", true},
+	}
+	for _, c := range cases {
+		if got := IsCollectionIn(c.title, c.series); got != c.want {
+			t.Errorf("IsCollectionIn(%q, %q) = %v, want %v", c.title, c.series, got, c.want)
+		}
+	}
+}
+
+// mayEnumerate is only a shortcut: it must hold wherever enumeratedVolumes matches, in
+// every separator spelling and case the pattern accepts.
+func TestMayEnumerateIsNecessary(t *testing.T) {
+	for _, title := range []string{
+		"Book 1 & 2", "Books 1, 2 and 3", "BOOKS ONE AND TWO", "Band 1 und 2", "Tome 1 et 2",
+		"Libro 1 y 2", "Libro 1 e 2", "Vol 4+5", "Vol. 4/5", "Teil 1 + 2", "Book 1AND2",
+		"Episodes 1_and_2", "Book 1 and Two", "Volumes One & Two",
+	} {
+		if enumeratedVolumes.MatchString(title) && !mayEnumerate(title) {
+			t.Errorf("enumeratedVolumes matches %q but mayEnumerate refuses it", title)
+		}
+	}
+	for _, title := range []string{"Hammered", "Legend: Book One", "The Andes"} {
+		if mayEnumerate(title) {
+			t.Errorf("mayEnumerate(%q) = true, want false", title)
+		}
+	}
+}

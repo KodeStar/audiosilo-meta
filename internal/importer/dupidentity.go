@@ -241,7 +241,7 @@ func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, autho
 			row = &st
 		}
 		if !row.Agrees(was.statement) ||
-			titlerule.IsCollection(workTitle) != titlerule.IsCollection(was.title) {
+			!titlerule.SameCollectionStatus(workTitle, ident.series, was.title, was.series) {
 			continue
 		}
 		found = append(found, duplicateIdentityMatch{work: slug, title: was.title, series: was.series})

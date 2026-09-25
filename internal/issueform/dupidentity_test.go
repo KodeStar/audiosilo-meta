@@ -498,6 +498,33 @@ func TestAddWorkAcceptsACollection(t *testing.T) {
 	}
 }
 
+// ...but a collection word that belongs to the series NAME the title is read against is
+// not a collection (titlerule.SameCollectionStatus, the predicate internal/audit's merge
+// veto reads): "Hammered: The Druid Collection, Book 3" is volume 3 of a series called
+// "The Druid Collection", which the catalogue already holds - so the gate refuses the
+// second record the audit would otherwise have to merge away.
+func TestAddWorkRefusesAVolumeOfASeriesNamedCollection(t *testing.T) {
+	dir := t.TempDir()
+	files := dupSeedFiles()
+	files["series/th/the-druid-collection.json"] = `{
+  "id": "the-druid-collection",
+  "license": "CC0-1.0",
+  "name": "The Druid Collection",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "works": [{"position": "3", "work": "hammered"}]
+}`
+	testpack.Seed(t, dir, files)
+	res := processAddWork(t, dir, dupWorkBody(
+		"Hammered: The Druid Collection, Book 3", "Kevin Hearne", "Christopher Ragland", "The Druid Collection", "3"))
+
+	if res.Status != StatusDuplicate {
+		t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusDuplicate, res.Messages)
+	}
+	if !anyContains(res.Messages, "hammered") {
+		t.Errorf("the verdict must name the member: %v", res.Messages)
+	}
+}
+
 // F1 on the intake side: a sequel of a ONE-WORD series states its volume in a title
 // that reduces to the bare number. The key refuses it, so nothing collides - and the
 // STRIP must not turn it into a needs-human either (its residual names no book).

@@ -215,14 +215,20 @@ func identityAuthors(authors []string, roleCredited map[string]bool) []string {
 // the role credits are read from the record's own credits[] array, which is the
 // same fact a row states inline.
 func diskIdentityAuthors(authors []string, credits []model.Credit) map[string]bool {
+	return ToSet(diskIdentityAuthorList(authors, credits))
+}
+
+// diskIdentityAuthorList is diskIdentityAuthors as the ordered LIST, for a caller that
+// needs the first identity author (the slug chain's collision suffix).
+func diskIdentityAuthorList(authors []string, credits []model.Credit) []string {
 	if len(credits) == 0 {
-		return ToSet(authors)
+		return authors
 	}
 	roleCredited := make(map[string]bool, len(credits))
 	for _, c := range credits {
 		roleCredited[c.Person] = true
 	}
-	return ToSet(identityAuthors(authors, roleCredited))
+	return identityAuthors(authors, roleCredited)
 }
 
 // rowWorkAuthors resolves a row's author credits on the CREATE path, minting
