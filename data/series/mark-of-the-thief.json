@@ -523,10 +523,6 @@
         {
           "position": "3",
           "work": "stock-market-wizards"
-        },
-        {
-          "position": "1",
-          "work": "market-wizards-harold-russen"
         }
       ]
     },
@@ -1287,10 +1283,6 @@
       ],
       "works": [
         {
-          "position": "1-3",
-          "work": "mars-nation-the-complete-trilogy"
-        },
-        {
           "position": "3",
           "work": "blue-mars"
         },
@@ -1301,6 +1293,24 @@
         {
           "position": "1",
           "work": "red-mars"
+        }
+      ]
+    },
+    "mars-trilogy-2": {
+      "id": "mars-trilogy-2",
+      "license": "CC0-1.0",
+      "name": "Mars Trilogy",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B08GKCCSZH",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1-3",
+          "work": "mars-nation-the-complete-trilogy"
         }
       ]
     },
@@ -1729,7 +1739,21 @@
         {
           "position": "14",
           "work": "widows-wreath"
-        },
+        }
+      ]
+    },
+    "marthas-vineyard-mysteries-2": {
+      "id": "marthas-vineyard-mysteries-2",
+      "license": "CC0-1.0",
+      "name": "Martha's Vineyard Mysteries",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B0FW6STCJL",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
         {
           "position": "16",
           "work": "vineyard-prey"
@@ -14912,15 +14936,29 @@
         {
           "position": "3",
           "work": "beg-for-mercy"
-        },
-        {
-          "position": "2",
-          "work": "mercys-song"
         }
       ],
       "xref": {
         "goodreads": "151768"
       }
+    },
+    "mercy-2": {
+      "id": "mercy-2",
+      "license": "CC0-1.0",
+      "name": "Mercy",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B098FBDF68",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "2",
+          "work": "mercys-song"
+        }
+      ]
     },
     "mercy-academy": {
       "id": "mercy-academy",
@@ -19844,14 +19882,66 @@
         {
           "position": "3",
           "work": "the-bad-boys-secret-italian-edition"
+        }
+      ]
+    },
+    "midnight-2": {
+      "id": "midnight-2",
+      "license": "CC0-1.0",
+      "name": "Midnight",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B0178RFF34",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "midnight-vengeance"
         },
         {
-          "position": "4",
-          "work": "midnight-obsession-melinda-leigh"
+          "position": "2",
+          "work": "midnight-promises-lisa-marie-rice"
+        },
+        {
+          "position": "3",
+          "work": "midnight-secrets-lisa-marie-rice"
         },
         {
           "position": "6",
           "work": "midnight-renegade"
+        }
+      ]
+    },
+    "midnight-3": {
+      "id": "midnight-3",
+      "license": "CC0-1.0",
+      "name": "Midnight",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B01MSM3O0U",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "midnight-exposure"
+        },
+        {
+          "position": "2",
+          "work": "midnight-sacrifice"
+        },
+        {
+          "position": "3",
+          "work": "midnight-betrayal"
+        },
+        {
+          "position": "4",
+          "work": "midnight-obsession-melinda-leigh"
         }
       ]
     },
