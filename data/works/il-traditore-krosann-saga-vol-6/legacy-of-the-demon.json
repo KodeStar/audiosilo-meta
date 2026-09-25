@@ -9733,6 +9733,10 @@
             {
               "asin": "B07YX4HHYN",
               "region": "es"
+            },
+            {
+              "asin": "B07T1MR8ST",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -9962,6 +9966,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07YX4HHYN",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07T1MR8ST",
+              "type": "libex-import"
             }
           ],
           "work": "legado-en-los-huesos"
@@ -9973,81 +9982,7 @@
             {
               "asin": "B07YX2HR9N",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91pyIJzdZML.jpg",
-          "id": "rosa-lopez-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rosa-lopez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2016-09-21",
-          "runtime_min": 1035,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX2HR9N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "legado-en-los-huesos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX2HR9N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Legado en los huesos"
-    },
-    "legado-en-los-huesos-legacy-in-the-bones": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dolores-redondo"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "legado-en-los-huesos-legacy-in-the-bones",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lourdes-arruti-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07T1MR8ST",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91X+qS97gmL.jpg",
-          "id": "lourdes-arruti-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lourdes-arruti"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2019-06-17",
-          "runtime_min": 1037,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07T1MR8ST",
-              "type": "libex-import"
-            }
-          ],
-          "work": "legado-en-los-huesos-legacy-in-the-bones"
-        },
-        "rosa-lopez-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B01M06BEE8",
               "region": "us"
@@ -10293,21 +10228,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX2HR9N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01M06BEE8",
               "type": "libex-import"
             }
           ],
-          "work": "legado-en-los-huesos-legacy-in-the-bones"
+          "work": "legado-en-los-huesos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX2HR9N",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01M06BEE8",
           "type": "libex-import"
         }
       ],
-      "title": "Legado en los huesos [Legacy in the Bones]"
+      "title": "Legado en los huesos"
     },
     "legal-briefs": {
       "added_at": "2026-07-29",

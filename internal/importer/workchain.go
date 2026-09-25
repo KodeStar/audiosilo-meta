@@ -3,7 +3,7 @@ package importer
 import "github.com/kodestar/audiosilo-meta/pkg/model"
 
 // OnWorkSlugChain reports whether a catalogued work sits at a slug the CREATE path's
-// candidate chain (workCandidates) would probe or mint for its own title and credits:
+// candidate chain (newWorkChain) would probe or mint for its own title and credits:
 // the cleaned title's slug, "<title>-<author>" for its first identity author (or, probed
 // only, any other credited person), and "<title>-<author>-<n>" - each composed by
 // workSlugAt, so a chain slug the importer had to SHORTEN to fit MaxSlugLen is
@@ -19,16 +19,19 @@ func OnWorkSlugChain(w *model.Work) bool {
 	if len(w.Authors) == 0 {
 		return false
 	}
-	base := Slugify(cleanWorkTitle(w.Title))
-	if base == "" {
+	ts := slugOfTitle(cleanWorkTitle(w.Title))
+	if ts.fellBack {
 		return false
 	}
 	authors := workAuthors{all: w.Authors, identity: diskIdentityAuthorList(w.Authors, w.Credits)}
-	cands, _ := workCandidates(base, authors, positionClaim{})
-	for _, c := range cands {
+	chain := newWorkChain(ts, "", authors, positionClaim{})
+	for i := 0; ; i++ {
+		c, ok := chain.at(i)
+		if !ok {
+			return false
+		}
 		if c.slug == w.ID {
 			return true
 		}
 	}
-	return false
 }

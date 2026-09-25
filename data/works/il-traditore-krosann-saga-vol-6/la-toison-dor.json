@@ -17378,7 +17378,8 @@
       "genres": [
         "action-adventure",
         "historical-fiction",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "la-ultima-cripta",
       "language": "es",
@@ -17411,30 +17412,7 @@
             }
           ],
           "work": "la-ultima-cripta"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BQWR5SRT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La última cripta"
-    },
-    "la-ultima-cripta-the-last-crypt": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "fernando-gamboa"
-      ],
-      "genres": [
-        "action-adventure",
-        "thriller-suspense"
-      ],
-      "id": "la-ultima-cripta-the-last-crypt",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "pep-ribas-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -17738,17 +17716,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-ultima-cripta-the-last-crypt"
+          "work": "la-ultima-cripta"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BQWR5SRT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01C33LA5A",
           "type": "libex-import"
         }
       ],
-      "title": "La Última Cripta [The Last Crypt]"
+      "title": "La última cripta"
     },
     "la-ultima-cuentista-the-last-cuentista": {
       "added_at": "2026-07-29",

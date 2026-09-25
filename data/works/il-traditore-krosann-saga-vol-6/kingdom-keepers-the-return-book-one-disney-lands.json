@@ -13199,6 +13199,7 @@
         "nick-martell"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy",
         "historical-fiction",
@@ -13209,6 +13210,455 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alejandro-ruiz-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09LDDG6M2",
+              "region": "us"
+            },
+            {
+              "asin": "1648816045",
+              "region": "us"
+            },
+            {
+              "asin": "1648816177",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4357572,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4229282,
+              "start_ms": 4357572,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4261093,
+              "start_ms": 8586854,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3988956,
+              "start_ms": 12847947,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4376357,
+              "start_ms": 16836903,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 5481209,
+              "start_ms": 21213260,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4215838,
+              "start_ms": 26694469,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4093469,
+              "start_ms": 30910307,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4228493,
+              "start_ms": 35003776,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4150102,
+              "start_ms": 39232269,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4175156,
+              "start_ms": 43382371,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 5361277,
+              "start_ms": 47557527,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RGsPqKZ2L.jpg",
+          "id": "alejandro-ruiz-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "amanda-forstrom",
+            "bradley-smith",
+            "christopher-walker",
+            "eric-messner",
+            "ken-jackson",
+            "laura-c-harris",
+            "matthew-pauli",
+            "nora-achrati",
+            "richard-rohan",
+            "zeke-alton",
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 881,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09LDDG6M2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648816045",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648816045",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648816177",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648816177",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09LDDG6M2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kingdom-of-liars"
+        },
+        "joe-jameson-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1409184269",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 10679,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 868381,
+              "start_ms": 10679,
+              "title": "Prologue : The Trial of Michael Kingman"
+            },
+            {
+              "length_ms": 785135,
+              "start_ms": 879060,
+              "title": "1. An Audience"
+            },
+            {
+              "length_ms": 632976,
+              "start_ms": 1664195,
+              "title": "2. The Woman in the Asylum"
+            },
+            {
+              "length_ms": 638200,
+              "start_ms": 2297171,
+              "title": "3. The Hanged"
+            },
+            {
+              "length_ms": 908666,
+              "start_ms": 2935371,
+              "title": "4. The Visionary on the Wall"
+            },
+            {
+              "length_ms": 580707,
+              "start_ms": 3844037,
+              "title": "5. The Living Lantern"
+            },
+            {
+              "length_ms": 935369,
+              "start_ms": 4424744,
+              "title": "6. The Chained Executioner"
+            },
+            {
+              "length_ms": 104234,
+              "start_ms": 5360113,
+              "title": "7. Family"
+            },
+            {
+              "length_ms": 2342591,
+              "start_ms": 5464347,
+              "title": "8. Nobody"
+            },
+            {
+              "length_ms": 1080122,
+              "start_ms": 7806938,
+              "title": "9. The Forgotten Boy"
+            },
+            {
+              "length_ms": 1531030,
+              "start_ms": 8887060,
+              "title": "10. The Regretful Man"
+            },
+            {
+              "length_ms": 1755149,
+              "start_ms": 10418090,
+              "title": "11. The Man Who Came Through the Window"
+            },
+            {
+              "length_ms": 1441424,
+              "start_ms": 12173239,
+              "title": "12. Extended Family"
+            },
+            {
+              "length_ms": 1628253,
+              "start_ms": 13614663,
+              "title": "13. The Fabricator and the Historian"
+            },
+            {
+              "length_ms": 501830,
+              "start_ms": 15242916,
+              "title": "14. The Extinguished"
+            },
+            {
+              "length_ms": 1643809,
+              "start_ms": 15744746,
+              "title": "15. The Corrupt Prince"
+            },
+            {
+              "length_ms": 1124612,
+              "start_ms": 17388555,
+              "title": "16. The Reclaimer"
+            },
+            {
+              "length_ms": 1128142,
+              "start_ms": 18513167,
+              "title": "17. The Boy and the Wolf"
+            },
+            {
+              "length_ms": 830948,
+              "start_ms": 19641309,
+              "title": "18. A Gambler and His Folly"
+            },
+            {
+              "length_ms": 955501,
+              "start_ms": 20472257,
+              "title": "19. A Foster Father"
+            },
+            {
+              "length_ms": 1508298,
+              "start_ms": 21427758,
+              "title": "20. The Raven"
+            },
+            {
+              "length_ms": 1262143,
+              "start_ms": 22936056,
+              "title": "21. The King of Stories"
+            },
+            {
+              "length_ms": 2065507,
+              "start_ms": 24198199,
+              "title": "22. The Hunters"
+            },
+            {
+              "length_ms": 1741217,
+              "start_ms": 26263706,
+              "title": "23. The Sacrifices"
+            },
+            {
+              "length_ms": 396248,
+              "start_ms": 28004923,
+              "title": "24. She Who Would Be Queen"
+            },
+            {
+              "length_ms": 1229612,
+              "start_ms": 28401171,
+              "title": "25. The Man without His Memories"
+            },
+            {
+              "length_ms": 653246,
+              "start_ms": 29630783,
+              "title": "26. The Mercenary"
+            },
+            {
+              "length_ms": 745383,
+              "start_ms": 30284029,
+              "title": "27. The Mercenary’s Apprentice"
+            },
+            {
+              "length_ms": 703401,
+              "start_ms": 31029412,
+              "title": "28. The Redeemer"
+            },
+            {
+              "length_ms": 764239,
+              "start_ms": 31732813,
+              "title": "29. Musicians"
+            },
+            {
+              "length_ms": 468253,
+              "start_ms": 32497052,
+              "title": "30. Those Who Remain"
+            },
+            {
+              "length_ms": 1415441,
+              "start_ms": 32965305,
+              "title": "31. Rock"
+            },
+            {
+              "length_ms": 622224,
+              "start_ms": 34380746,
+              "title": "32. Tinder"
+            },
+            {
+              "length_ms": 119583,
+              "start_ms": 35002970,
+              "title": "33. Spark"
+            },
+            {
+              "length_ms": 109318,
+              "start_ms": 35122553,
+              "title": "34. Embers"
+            },
+            {
+              "length_ms": 837614,
+              "start_ms": 35231871,
+              "title": "35. Ashes"
+            },
+            {
+              "length_ms": 827721,
+              "start_ms": 36069485,
+              "title": "36. Nobility"
+            },
+            {
+              "length_ms": 744849,
+              "start_ms": 36897206,
+              "title": "37. Goodhearted"
+            },
+            {
+              "length_ms": 1601735,
+              "start_ms": 37642055,
+              "title": "38. Exposure"
+            },
+            {
+              "length_ms": 1299457,
+              "start_ms": 39243790,
+              "title": "39. Lawful"
+            },
+            {
+              "length_ms": 1485148,
+              "start_ms": 40543247,
+              "title": "40. Ovation"
+            },
+            {
+              "length_ms": 258577,
+              "start_ms": 42028395,
+              "title": "41. Standstill"
+            },
+            {
+              "length_ms": 1835421,
+              "start_ms": 42286972,
+              "title": "42. Lunacy"
+            },
+            {
+              "length_ms": 1065146,
+              "start_ms": 44122393,
+              "title": "43. Yearning"
+            },
+            {
+              "length_ms": 1188907,
+              "start_ms": 45187539,
+              "title": "44. Impasse"
+            },
+            {
+              "length_ms": 1072762,
+              "start_ms": 46376446,
+              "title": "45. Nuances"
+            },
+            {
+              "length_ms": 868495,
+              "start_ms": 47449208,
+              "title": "46. Gone"
+            },
+            {
+              "length_ms": 1547424,
+              "start_ms": 48317703,
+              "title": "47. Kingmaker"
+            },
+            {
+              "length_ms": 1406594,
+              "start_ms": 49865127,
+              "title": "48. Deep Breath in Deep Breath Out"
+            },
+            {
+              "length_ms": 1064542,
+              "start_ms": 51271721,
+              "title": "49. The Last Act of Michael Kingman"
+            },
+            {
+              "length_ms": 369684,
+              "start_ms": 52336263,
+              "title": "50. The Last Testimony of Michael Kingman"
+            },
+            {
+              "length_ms": 1093242,
+              "start_ms": 52705947,
+              "title": "51. The Life and Death of Michael Kingman"
+            },
+            {
+              "length_ms": 628122,
+              "start_ms": 53799189,
+              "title": "52. The Execution of Michael Kingman"
+            },
+            {
+              "length_ms": 1022304,
+              "start_ms": 54427311,
+              "title": "53. The Legacy of Michael Kingman"
+            },
+            {
+              "length_ms": 797841,
+              "start_ms": 55449615,
+              "title": "Epilogue: Dawn of a New Day"
+            },
+            {
+              "length_ms": 34339,
+              "start_ms": 56247456,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916B37FYiEL.jpg",
+          "id": "joe-jameson-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joe-jameson"
+          ],
+          "publisher": "Gollancz",
+          "release_date": "2020-05-07",
+          "runtime_min": 937,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1409184269",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kingdom-of-liars"
+        },
         "john-skelley-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13529,6 +13979,41 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1980003009",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1409184269",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09LDDG6M2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648816045",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648816045",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648816177",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648816177",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-06",
+          "ref": "B09LDDG6M2",
           "type": "libex-import"
         }
       ],

@@ -4524,30 +4524,7 @@
             }
           ],
           "work": "red-mountain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01NCUD8LM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Red Mountain"
-    },
-    "red-mountain-a-novel": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "boo-walker"
-      ],
-      "genres": [
-        "literary-fiction",
-        "parenting-relationships"
-      ],
-      "id": "red-mountain-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "brian-avers-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4866,17 +4843,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "red-mountain-a-novel"
+          "work": "red-mountain"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01NCUD8LM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B087HP3F6V",
           "type": "libex-import"
         }
       ],
-      "title": "Red Mountain: A Novel"
+      "title": "Red Mountain"
     },
     "red-mountain-burning-a-novel": {
       "added_at": "2026-07-29",

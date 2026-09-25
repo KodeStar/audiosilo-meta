@@ -4714,7 +4714,14 @@
     "kinder-des-nebels": {
       "added_at": "2026-08-02",
       "authors": [
-        "brandon-sanderson"
+        "brandon-sanderson",
+        "michael-siefener"
+      ],
+      "credits": [
+        {
+          "person": "michael-siefener",
+          "role": "translator"
+        }
       ],
       "genres": [
         "epic-fantasy",
@@ -5703,37 +5710,7 @@
             }
           ],
           "work": "kinder-des-nebels"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00TKMPA7C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Kinder des Nebels"
-    },
-    "kinder-des-nebels-die-nebelgeborenen-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "brandon-sanderson",
-        "michael-siefener"
-      ],
-      "credits": [
-        {
-          "person": "michael-siefener",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "kinder-des-nebels-die-nebelgeborenen-1",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "detlef-bierstedt-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6726,17 +6703,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "kinder-des-nebels-die-nebelgeborenen-1"
+          "work": "kinder-des-nebels"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TKMPA7C",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DD4DJ8V2",
           "type": "libex-import"
         }
       ],
-      "title": "Kinder des Nebels (Die Nebelgeborenen 1)"
+      "title": "Kinder des Nebels"
     },
     "kinder-des-nichts": {
       "added_at": "2026-08-02",

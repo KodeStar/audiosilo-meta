@@ -2777,9 +2777,12 @@
         "juliet-marillier"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "historical-romance",
+        "romance"
       ],
       "id": "a-song-of-flight",
       "language": "en",
@@ -3016,33 +3019,7 @@
             }
           ],
           "work": "a-song-of-flight"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1501992058",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Song of Flight"
-    },
-    "a-song-of-flight-a-warrior-bards-novel-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "juliet-marillier"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "a-song-of-flight-a-warrior-bards-novel-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "imogen-sage-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3281,17 +3258,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-song-of-flight-a-warrior-bards-novel-3"
+          "work": "a-song-of-flight"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1501992058",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1760988839",
           "type": "libex-import"
         }
       ],
-      "title": "A Song of Flight: A Warrior Bards Novel 3"
+      "title": "A Song of Flight"
     },
     "a-song-of-home": {
       "added_at": "2026-07-29",

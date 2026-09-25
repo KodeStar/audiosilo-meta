@@ -1785,87 +1785,13 @@
       "genres": [
         "action-adventure",
         "fantasy",
-        "romance",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "the-churn",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jefferson-mays-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09MR5BH9J",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 32066,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4147873,
-              "start_ms": 32066,
-              "title": "The Churn"
-            },
-            {
-              "length_ms": 3996293,
-              "start_ms": 4179939,
-              "title": "Bonus Material"
-            },
-            {
-              "length_ms": 111153,
-              "start_ms": 8176232,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/712OyF8bLVL.jpg",
-          "id": "jefferson-mays-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jefferson-mays"
-          ],
-          "publisher": "Little, Brown Audio",
-          "release_date": "2021-12-28",
-          "runtime_min": 138,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09MR5BH9J",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-churn"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09MR5BH9J",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Churn"
-    },
-    "the-churn-an-expanse-novella": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "james-s-a-corey"
-      ],
-      "genres": [
-        "action-adventure",
         "mystery",
+        "romance",
         "science-fiction",
         "short-stories",
         "space-opera"
       ],
-      "id": "the-churn-an-expanse-novella",
+      "id": "the-churn",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1912,12 +1838,16 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-churn-an-expanse-novella"
+          "work": "the-churn"
         },
         "jefferson-mays-2021": {
           "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
+          "added_at": "2026-08-02",
           "asin": [
+            {
+              "asin": "B09MR5BH9J",
+              "region": "us"
+            },
             {
               "asin": "B09JB2RSL3",
               "region": "us"
@@ -1925,54 +1855,64 @@
           ],
           "chapters": [
             {
-              "length_ms": 34457,
+              "length_ms": 32066,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
             },
             {
-              "length_ms": 4147803,
-              "start_ms": 34457,
-              "title": "Chapter 2"
+              "length_ms": 4147873,
+              "start_ms": 32066,
+              "title": "The Churn"
             },
             {
-              "length_ms": 3996223,
-              "start_ms": 4182260,
-              "title": "Chapter 3"
+              "length_ms": 3996293,
+              "start_ms": 4179939,
+              "title": "Bonus Material"
             },
             {
-              "length_ms": 112824,
-              "start_ms": 8178483,
-              "title": "Chapter 4"
+              "length_ms": 111153,
+              "start_ms": 8176232,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71FeUpaYOgL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/712OyF8bLVL.jpg",
           "id": "jefferson-mays-2021",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "jefferson-mays"
           ],
-          "publisher": "Orbit",
+          "publisher": "Little, Brown Audio",
           "release_date": "2021-12-28",
           "runtime_min": 138,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09MR5BH9J",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-30",
               "ref": "B09JB2RSL3",
               "type": "libex-import"
             }
           ],
-          "work": "the-churn-an-expanse-novella"
+          "work": "the-churn"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09MR5BH9J",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B00KW7RSM4",
           "type": "libex-import"
         }
       ],
-      "title": "The Churn: An Expanse Novella"
+      "title": "The Churn"
     },
     "the-cia-as-organized-crime": {
       "added_at": "2026-07-29",

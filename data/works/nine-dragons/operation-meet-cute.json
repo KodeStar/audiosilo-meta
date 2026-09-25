@@ -2697,7 +2697,8 @@
         "espionage",
         "literary-fiction",
         "military-history",
-        "thriller-suspense"
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "operation-rainbow",
       "language": "de",
@@ -2710,55 +2711,7 @@
             {
               "asin": "B00CI4AEE8",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Ge4Y8bpaL.jpg",
-          "id": "frank-arnold-2013",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "frank-arnold"
-          ],
-          "publisher": "Random House Audio, Deutschland",
-          "release_date": "2013-04-24",
-          "runtime_min": 2147,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00CI4AEE8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "operation-rainbow"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00CI4AEE8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Operation Rainbow"
-    },
-    "operation-rainbow-german-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "tom-clancy"
-      ],
-      "genres": [
-        "espionage",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "operation-rainbow-german-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "frank-arnold-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B00TKMKOGY",
               "region": "us"
@@ -4204,21 +4157,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B00CI4AEE8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00TKMKOGY",
               "type": "libex-import"
             }
           ],
-          "work": "operation-rainbow-german-edition"
+          "work": "operation-rainbow"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00CI4AEE8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00TKMKOGY",
           "type": "libex-import"
         }
       ],
-      "title": "Operation Rainbow [German Edition]"
+      "title": "Operation Rainbow"
     },
     "operation-red-dawn-and-the-siege-of-europe": {
       "added_at": "2026-08-01",

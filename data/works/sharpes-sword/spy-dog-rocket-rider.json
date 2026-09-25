@@ -11692,31 +11692,7 @@
             }
           ],
           "work": "squeeze-me"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0593295358",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Squeeze Me"
-    },
-    "squeeze-me-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "carl-hiaasen"
-      ],
-      "genres": [
-        "comedy-humor",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "squeeze-me-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "scott-brick-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11910,17 +11886,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "squeeze-me-a-novel"
+          "work": "squeeze-me"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0593295358",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1004032293",
           "type": "libex-import"
         }
       ],
-      "title": "Squeeze Me: A Novel"
+      "title": "Squeeze Me"
     },
     "squeeze-play": {
       "added_at": "2026-07-29",

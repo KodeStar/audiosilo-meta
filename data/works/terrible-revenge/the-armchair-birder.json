@@ -1944,12 +1944,73 @@
         "classics",
         "epic-fantasy",
         "fantasy",
-        "military-science-fiction"
+        "military-science-fiction",
+        "war-military-fiction"
       ],
       "id": "the-armored-saint",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648809715",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3435879,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3784132,
+              "start_ms": 3435879,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3628303,
+              "start_ms": 7220011,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3613884,
+              "start_ms": 10848314,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3552536,
+              "start_ms": 14462198,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ZHxWfjqcL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 300,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648809715",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648809715",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-armored-saint"
+        },
         "michi-barall-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2075,87 +2136,7 @@
           "imported_at": "2026-08-02",
           "ref": "152886462X",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Armored Saint"
-    },
-    "the-armored-saint-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "myke-cole"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "military-science-fiction",
-        "war-military-fiction"
-      ],
-      "id": "the-armored-saint-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648809715",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3435879,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3784132,
-              "start_ms": 3435879,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3628303,
-              "start_ms": 7220011,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3613884,
-              "start_ms": 10848314,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3552536,
-              "start_ms": 14462198,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ZHxWfjqcL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 300,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648809715",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648809715",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-armored-saint-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648809715",
@@ -2167,7 +2148,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Armored Saint [Dramatized Adaptation]"
+      "title": "The Armored Saint"
     },
     "the-armour-of-achilles": {
       "added_at": "2026-08-02",

@@ -8095,6 +8095,7 @@
       "genres": [
         "action-adventure",
         "historical-fiction",
+        "mystery",
         "thriller-suspense"
       ],
       "id": "the-hunt-for-atlantis",
@@ -8290,30 +8291,7 @@
             }
           ],
           "work": "the-hunt-for-atlantis"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004IB062Y",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Hunt for Atlantis"
-    },
-    "the-hunt-for-atlantis-wilde-chase-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andy-mcdermott"
-      ],
-      "genres": [
-        "action-adventure",
-        "mystery"
-      ],
-      "id": "the-hunt-for-atlantis-wilde-chase-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-mattacks-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8502,17 +8480,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-hunt-for-atlantis-wilde-chase-1"
+          "work": "the-hunt-for-atlantis"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004IB062Y",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1472279697",
           "type": "libex-import"
         }
       ],
-      "title": "The Hunt For Atlantis (Wilde/Chase 1)"
+      "title": "The Hunt for Atlantis"
     },
     "the-hunt-for-confederate-gold": {
       "added_at": "2026-08-02",

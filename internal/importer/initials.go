@@ -452,7 +452,8 @@ func topSpelling(spellings map[string]int) string {
 }
 
 // initialsMerge reports the record a name should resolve to, when the pre-pass
-// decided that its initials group merges.
+// decided that its initials group merges. slug and fellBack are the name's own
+// personSlug, which the caller (resolvePerson) has already computed.
 //
 // The decision is re-checked against the name's OWN variant spellings, which is
 // what keeps the marked key from being trusted further than it was measured: a
@@ -461,20 +462,20 @@ func topSpelling(spellings map[string]int) string {
 // the two are not in one group at all - "Em" is mixed-case and keys as a word -
 // and no future widening of the key can make the merge happen without the
 // respelling also lining up.
-func (p *planner) initialsMerge(name string) (initialsSurvivor, bool) {
-	if len(p.initialsSurvivors) == 0 {
-		return initialsSurvivor{}, false
-	}
-	tokens := parseNameTokens(name)
-	if _, ok := probeableGroups(tokens); !ok {
-		return initialsSurvivor{}, false
-	}
-	slug, fellBack := personSlug(name)
-	if fellBack {
+func (p *planner) initialsMerge(name, slug string, fellBack bool) (initialsSurvivor, bool) {
+	// Two cheap exits before the name is tokenized: a run whose batch decided
+	// nothing, and a name that slugs to nothing. Then the decision lookup, which is
+	// one probe - almost every name has no decision at all, and tokenizing it
+	// would be work spent to learn nothing.
+	if len(p.initialsSurvivors) == 0 || fellBack {
 		return initialsSurvivor{}, false
 	}
 	survivor, decided := p.initialsSurvivors[slug]
 	if !decided || survivor.slug == "" {
+		return initialsSurvivor{}, false
+	}
+	tokens := parseNameTokens(name)
+	if _, ok := probeableGroups(tokens); !ok {
 		return initialsSurvivor{}, false
 	}
 	if survivor.slug == slug {

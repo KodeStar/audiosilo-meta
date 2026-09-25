@@ -3686,6 +3686,8 @@
         "tim-winton"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "comedy-humor",
         "coming-of-age",
         "parenting-relationships",
@@ -3871,12 +3873,62 @@
             }
           ],
           "work": "human-torpedo"
+        },
+        "stig-wemyss-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0A872",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4007207,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2557817,
+              "start_ms": 4007207,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3350361,
+              "start_ms": 6565024,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+vtApPazL.jpg",
+          "id": "stig-wemyss-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stig-wemyss"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2008-10-29",
+          "runtime_min": 165,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0A872",
+              "type": "libex-import"
+            }
+          ],
+          "work": "human-torpedo"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B09WRRKZTF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0A872",
           "type": "libex-import"
         }
       ],

@@ -23,7 +23,7 @@ import (
 //
 //   - PEOPLE. The slug is the identity (model.PersonSlug), so a retired person slug
 //     resolves to its survivor outright (livePerson), on the creating path
-//     (getOrCreatePerson) and the resolving one (personSlugTarget) alike.
+//     (getOrCreatePerson) and every resolving one alike (resolvePerson).
 //   - SERIES. Only the chain's FIRST candidate is a statement about the name: a
 //     tombstoned base resolves to the survivor, with no name comparison (the
 //     tombstone IS the decision, and the survivor's name is usually the other

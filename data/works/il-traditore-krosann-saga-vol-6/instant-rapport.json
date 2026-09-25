@@ -8660,8 +8660,10 @@
         "ken-macleod"
       ],
       "genres": [
+        "action-adventure",
         "military-science-fiction",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "insurgence",
       "language": "en",
@@ -8673,6 +8675,10 @@
           "asin": [
             {
               "asin": "B01LX5S2G6",
+              "region": "us"
+            },
+            {
+              "asin": "B01N58Y9PG",
               "region": "us"
             }
           ],
@@ -8823,6 +8829,11 @@
               "imported_at": "2026-08-02",
               "ref": "B01LX5S2G6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01N58Y9PG",
+              "type": "libex-import"
             }
           ],
           "work": "insurgence"
@@ -8832,6 +8843,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B01LX5S2G6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N58Y9PG",
           "type": "libex-import"
         }
       ],

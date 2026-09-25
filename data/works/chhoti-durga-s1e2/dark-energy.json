@@ -5851,6 +5851,8 @@
       ],
       "genres": [
         "fantasy",
+        "historical-fiction",
+        "historical-romance",
         "paranormal",
         "romance",
         "urban-fantasy"
@@ -5988,34 +5990,7 @@
             }
           ],
           "work": "dark-fire-christine-feehan"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00H87E7NY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dark Fire"
-    },
-    "dark-fire-dark-series-book-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "christine-feehan"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction",
-        "historical-romance",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "dark-fire-dark-series-book-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rebecca-cook-2007": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6099,17 +6074,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "dark-fire-dark-series-book-6"
+          "work": "dark-fire-christine-feehan"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00H87E7NY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V1OMQY",
           "type": "libex-import"
         }
       ],
-      "title": "Dark Fire: Dark Series, Book 6"
+      "title": "Dark Fire"
     },
     "dark-fire-elizabeth-lowell": {
       "added_at": "2026-07-29",

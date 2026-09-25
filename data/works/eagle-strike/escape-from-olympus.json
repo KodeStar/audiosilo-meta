@@ -7005,6 +7005,7 @@
         "fantasy",
         "mystery",
         "nature",
+        "science-fiction",
         "thriller-suspense"
       ],
       "id": "escape-linwood-barclay",
@@ -7017,6 +7018,10 @@
           "asin": [
             {
               "asin": "0735268339",
+              "region": "us"
+            },
+            {
+              "asin": "1510107541",
               "region": "us"
             }
           ],
@@ -7272,6 +7277,11 @@
               "imported_at": "2026-08-02",
               "ref": "0735268339",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1510107541",
+              "type": "libex-import"
             }
           ],
           "work": "escape-linwood-barclay"
@@ -7281,6 +7291,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0735268339",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1510107541",
           "type": "libex-import"
         }
       ],

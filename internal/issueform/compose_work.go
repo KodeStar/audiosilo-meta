@@ -472,13 +472,14 @@ func (c *composer) seriesForForm(name string, row *importer.SeriesRow) formSerie
 // rule every other lookup here applies), its title spellings and its publisher
 // of record.
 func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
-	resolve := func(slug string) string {
+	slugOf := func(name string) string {
+		slug, _ := model.PersonSlug(name)
 		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
 			return to
 		}
 		return slug
 	}
-	return importer.SeriesRowFor(splitNames(s.get(fWorkAuthors)), []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}, s.get(fRecPublisher), resolve)
+	return importer.SeriesRowFor(splitNames(s.get(fWorkAuthors)), []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}, s.get(fRecPublisher), slugOf)
 }
 
 // placeInSeries adds the work to the named series (creating it or extending an

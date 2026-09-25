@@ -705,13 +705,14 @@ func (idx seriesIndex) libexSeriesRow(e rawBook) *SeriesRow {
 		full = title + ": " + sub
 	}
 	credits := sourceCredits(unescapeCredits(libexNames(e["authors"])), "", creditCensus{})
-	resolve := func(slug string) string {
+	slugOf := func(name string) string {
+		slug, _ := personSlug(name)
 		if to, retired := idx.redirects.Survivor(model.RedirectPeople, slug); retired {
 			return to
 		}
 		return slug
 	}
-	return SeriesRowFor(creditNamesOf(credits), []string{full, title}, e.str("publisher"), resolve)
+	return SeriesRowFor(creditNamesOf(credits), []string{full, title}, e.str("publisher"), slugOf)
 }
 
 // streamLibexRows decodes an export and calls fn for every row, handing over

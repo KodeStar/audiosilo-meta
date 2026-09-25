@@ -293,13 +293,13 @@ type rowProduction struct {
 }
 
 // rowProductionOf is b's production with its narrator names resolved lazily and
-// READ-ONLY, onto the slugs creditSlugs would give them (personSlug +
-// personSlugTarget - the same resolution rowWorkAuthorsRO reads authors through).
+// READ-ONLY, onto the slugs creditSlugs would give them (resolvePerson - the
+// decision getOrCreatePerson acts on, and the one rowWorkAuthorsRO reads authors
+// through).
 func (p *planner) rowProductionOf(b sourceBook, narratorNames []string) *rowProduction {
 	return &rowProduction{runtime: b.runtimeMin, abridged: b.abridged, names: narratorNames,
 		resolve: func(name string) string {
-			slug, _ := personSlug(name)
-			return p.personSlugTarget(slug)
+			return p.resolvePerson(name).slug
 		}}
 }
 

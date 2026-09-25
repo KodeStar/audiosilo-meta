@@ -10289,6 +10289,7 @@
       ],
       "genres": [
         "fantasy",
+        "mystery",
         "paranormal",
         "romance",
         "romantic-suspense",
@@ -10299,6 +10300,151 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "joyce-bean-2012": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B008H2WVZA",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 490963,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1467037,
+              "start_ms": 490963,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1525040,
+              "start_ms": 1958000,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1361014,
+              "start_ms": 3483040,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1583044,
+              "start_ms": 4844054,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1605056,
+              "start_ms": 6427098,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1438058,
+              "start_ms": 8032154,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1610025,
+              "start_ms": 9470212,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1268042,
+              "start_ms": 11080237,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1418043,
+              "start_ms": 12348279,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1203026,
+              "start_ms": 13766322,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1335055,
+              "start_ms": 14969348,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1146044,
+              "start_ms": 16304403,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1134016,
+              "start_ms": 17450447,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1327067,
+              "start_ms": 18584463,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1364033,
+              "start_ms": 19911530,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1435040,
+              "start_ms": 21275563,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1400024,
+              "start_ms": 22710603,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1322051,
+              "start_ms": 24110627,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1348058,
+              "start_ms": 25432678,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1430071,
+              "start_ms": 26780736,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1133041,
+              "start_ms": 28210807,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1245007,
+              "start_ms": 29343848,
+              "title": "Chapter 23"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hLOnUnwVL.jpg",
+          "id": "joyce-bean-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joyce-bean"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2012-07-31",
+          "runtime_min": 509,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B008H2WVZA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "haven-bishop-special-crimes-unit"
+        },
         "joyce-bean-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10460,182 +10606,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0FJ2Y7MP7",
           "type": "libex-import"
-        }
-      ],
-      "title": "Haven: Bishop/Special Crimes Unit"
-    },
-    "haven-bishop-special-crimes-unit-book-13": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kay-hooper"
-      ],
-      "genres": [
-        "fantasy",
-        "mystery",
-        "paranormal",
-        "romance",
-        "romantic-suspense",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "haven-bishop-special-crimes-unit-book-13",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joyce-bean-2012": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B008H2WVZA",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 490963,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1467037,
-              "start_ms": 490963,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1525040,
-              "start_ms": 1958000,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1361014,
-              "start_ms": 3483040,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1583044,
-              "start_ms": 4844054,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1605056,
-              "start_ms": 6427098,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1438058,
-              "start_ms": 8032154,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1610025,
-              "start_ms": 9470212,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1268042,
-              "start_ms": 11080237,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1418043,
-              "start_ms": 12348279,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1203026,
-              "start_ms": 13766322,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1335055,
-              "start_ms": 14969348,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1146044,
-              "start_ms": 16304403,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1134016,
-              "start_ms": 17450447,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1327067,
-              "start_ms": 18584463,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1364033,
-              "start_ms": 19911530,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1435040,
-              "start_ms": 21275563,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1400024,
-              "start_ms": 22710603,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1322051,
-              "start_ms": 24110627,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1348058,
-              "start_ms": 25432678,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1430071,
-              "start_ms": 26780736,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1133041,
-              "start_ms": 28210807,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1245007,
-              "start_ms": 29343848,
-              "title": "Chapter 23"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hLOnUnwVL.jpg",
-          "id": "joyce-bean-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joyce-bean"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2012-07-31",
-          "runtime_min": 509,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B008H2WVZA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "haven-bishop-special-crimes-unit-book-13"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B008H2WVZA",
           "type": "libex-import"
         }
       ],
-      "title": "Haven: Bishop/Special Crimes Unit, Book 13"
+      "title": "Haven: Bishop/Special Crimes Unit"
     },
     "haven-broken-wings-duet-book-2": {
       "added_at": "2026-08-01",

@@ -1165,7 +1165,9 @@
         "lewis-carroll"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
+        "classics",
         "fantasy",
         "literary-fiction"
       ],
@@ -1275,123 +1277,7 @@
             {
               "asin": "B07YX682R7",
               "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 147864,
-              "start_ms": 0,
-              "title": "Capítulo 1"
             },
-            {
-              "length_ms": 1426030,
-              "start_ms": 147864,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 1245936,
-              "start_ms": 1573894,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 1264698,
-              "start_ms": 2819830,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 1313320,
-              "start_ms": 4084528,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1369373,
-              "start_ms": 5397848,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1392454,
-              "start_ms": 6767221,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 1184031,
-              "start_ms": 8159675,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 2314797,
-              "start_ms": 9343706,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 1767781,
-              "start_ms": 11658503,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 51594,
-              "start_ms": 13426284,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 18250,
-              "start_ms": 13477878,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 347974,
-              "start_ms": 13496128,
-              "title": "Capítulo 13"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71L9yjErUlL.jpg",
-          "id": "joaquin-madrigal-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joaquin-madrigal"
-          ],
-          "publisher": "alberich ediciones mexico",
-          "release_date": "2018-10-04",
-          "runtime_min": 230,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07YX682R7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-a-traves-del-espejo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DLLHX3DL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alicia a través del espejo"
-    },
-    "alicia-a-traves-del-espejo-alice-through-the-looking-glass": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "alicia-a-traves-del-espejo-alice-through-the-looking-glass",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joaquin-madrigal-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
             {
               "asin": "B07HYBZP6V",
               "region": "us"
@@ -1477,35 +1363,17 @@
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B07YX682R7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
               "ref": "B07HYBZP6V",
               "type": "libex-import"
             }
           ],
-          "work": "alicia-a-traves-del-espejo-alice-through-the-looking-glass"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07HYBZP6V",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alicia a Traves del Espejo [Alice Through the Looking Glass]"
-    },
-    "alicia-a-traves-del-espejo-through-the-looking-glass": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "alicia-a-traves-del-espejo-through-the-looking-glass",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "alicia-a-traves-del-espejo"
+        },
         "marina-clyo-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1584,7 +1452,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "alicia-a-traves-del-espejo-through-the-looking-glass"
+          "work": "alicia-a-traves-del-espejo"
         },
         "vanesa-amezquita-2021": {
           "abridged": false,
@@ -1679,17 +1547,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "alicia-a-traves-del-espejo-through-the-looking-glass"
+          "work": "alicia-a-traves-del-espejo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DLLHX3DL",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07HYBZP6V",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1662169167",
           "type": "libex-import"
         }
       ],
-      "title": "Alicia a través del espejo [Through the Looking-Glass]"
+      "title": "Alicia a través del espejo"
     },
     "alicia-detras-del-espejo-through-the-looking-glass": {
       "added_at": "2026-08-02",

@@ -129,14 +129,16 @@ type SeriesRow struct {
 
 // SeriesRowFor is the one SeriesRow builder every writer uses: names are the
 // row's author credits (already cleaned by the caller's own credit pipeline),
-// each resolved to the person slug resolve maps it to (nil keeps the slug);
-// titles are its title spellings and publisher its publisher of record.
-func SeriesRowFor(names, titles []string, publisher string, resolve func(slug string) string) *SeriesRow {
+// each at the person slug slugOf resolves it to (nil: the name's own person
+// slug); titles are its title spellings and publisher its publisher of record.
+func SeriesRowFor(names, titles []string, publisher string, slugOf func(name string) string) *SeriesRow {
 	row := &SeriesRow{titles: titles}
 	for _, name := range names {
-		slug, _ := personSlug(name)
-		if resolve != nil {
-			slug = resolve(slug)
+		var slug string
+		if slugOf != nil {
+			slug = slugOf(name)
+		} else {
+			slug, _ = personSlug(name)
 		}
 		row.authors = append(row.authors, seriesPerson{slug: slug, name: name})
 	}

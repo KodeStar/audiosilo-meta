@@ -12695,12 +12695,68 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "fantasy",
         "nature"
       ],
       "id": "the-endings-and-beginnings-of-a-legend",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-van-der-molen-2019": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B07QS5QWQ7",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14953,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 23219,
+              "start_ms": 14953,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2096808,
+              "start_ms": 38172,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 32833,
+              "start_ms": 2134980,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 74118,
+              "start_ms": 2167813,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81swBKY+asL.jpg",
+          "id": "david-van-der-molen-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-van-der-molen"
+          ],
+          "publisher": "Sunshine Venture LLC",
+          "release_date": "2019-04-17",
+          "runtime_min": 37,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07QS5QWQ7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-endings-and-beginnings-of-a-legend"
+        },
         "david-van-der-molen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12761,6 +12817,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0DJDSKQ41",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07QS5QWQ7",
           "type": "libex-import"
         }
       ],

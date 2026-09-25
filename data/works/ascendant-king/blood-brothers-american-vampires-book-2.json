@@ -6314,6 +6314,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "horror",
         "lgbtq",
         "young-adult"
       ],
@@ -6321,6 +6322,181 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jennifer-mudge-2020": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "1419748661",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14326,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 903743,
+              "start_ms": 14326,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 4000,
+              "start_ms": 918069,
+              "title": "Part One: Summoned"
+            },
+            {
+              "length_ms": 1439398,
+              "start_ms": 922069,
+              "title": "Chapter One: The Thorn and the Taint"
+            },
+            {
+              "length_ms": 1083559,
+              "start_ms": 2361467,
+              "title": "Chapter Two: The Fever and the Coin"
+            },
+            {
+              "length_ms": 2009663,
+              "start_ms": 3445026,
+              "title": "Chapter Three: The Summons and the Nest"
+            },
+            {
+              "length_ms": 671660,
+              "start_ms": 5454689,
+              "title": "Chapter Four: The Web and the Tomb"
+            },
+            {
+              "length_ms": 2085128,
+              "start_ms": 6126349,
+              "title": "Chapter Five: The Journey and the Goblet"
+            },
+            {
+              "length_ms": 4000,
+              "start_ms": 8211477,
+              "title": "Part Two: Beguiled"
+            },
+            {
+              "length_ms": 885788,
+              "start_ms": 8215477,
+              "title": "Chapter Six: The Rats and the Maidens"
+            },
+            {
+              "length_ms": 872304,
+              "start_ms": 9101265,
+              "title": "Chapter Seven: The Toil and the Brace"
+            },
+            {
+              "length_ms": 1967380,
+              "start_ms": 9973569,
+              "title": "Chapter Eight: The Flux and the Tisane"
+            },
+            {
+              "length_ms": 1654421,
+              "start_ms": 11940949,
+              "title": "Chapter Nine: The Tonic and the Bath"
+            },
+            {
+              "length_ms": 2012078,
+              "start_ms": 13595370,
+              "title": "Chapter Ten: The Spheres and the Shards"
+            },
+            {
+              "length_ms": 1813664,
+              "start_ms": 15607448,
+              "title": "Chapter Eleven: The Salve and the Kiss"
+            },
+            {
+              "length_ms": 2466423,
+              "start_ms": 17421112,
+              "title": "Chapter Twelve: The Harp and the Switch"
+            },
+            {
+              "length_ms": 2059075,
+              "start_ms": 19887535,
+              "title": "Chapter Thirteen: The Pennyroyal and the Fléchette"
+            },
+            {
+              "length_ms": 766142,
+              "start_ms": 21946610,
+              "title": "Chapter Fourteen: The Angel and the Gripe"
+            },
+            {
+              "length_ms": 884331,
+              "start_ms": 22712752,
+              "title": "Chapter Fifteen: The Confession and the Malady"
+            },
+            {
+              "length_ms": 1286803,
+              "start_ms": 23597083,
+              "title": "Chapter Sixteen: The Shade and the Flower"
+            },
+            {
+              "length_ms": 1524761,
+              "start_ms": 24883886,
+              "title": "Chapter Seventeen: The Poison and the Elixir"
+            },
+            {
+              "length_ms": 1529475,
+              "start_ms": 26408647,
+              "title": "Chapter Eighteen: The Book and the Whip"
+            },
+            {
+              "length_ms": 2043588,
+              "start_ms": 27938122,
+              "title": "Chapter Nineteen: The Runes and the Peddler"
+            },
+            {
+              "length_ms": 4000,
+              "start_ms": 29981710,
+              "title": "Part Three: Sundered"
+            },
+            {
+              "length_ms": 820726,
+              "start_ms": 29985710,
+              "title": "Chapter Twenty: The School and the Sister"
+            },
+            {
+              "length_ms": 1107800,
+              "start_ms": 30806436,
+              "title": "Chapter Twenty-One: The Flight and the Sentence"
+            },
+            {
+              "length_ms": 1823997,
+              "start_ms": 31914236,
+              "title": "Chapter Twenty-Two: The Gaol and the Stratagem"
+            },
+            {
+              "length_ms": 210233,
+              "start_ms": 33738233,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 33551,
+              "start_ms": 33948466,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819Y2gCoqdL.jpg",
+          "id": "jennifer-mudge-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jennifer-mudge"
+          ],
+          "publisher": "Amulet Books",
+          "release_date": "2020-01-28",
+          "runtime_min": 566,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "1419748661",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blood-countess"
+        },
         "jenny-mudge-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6502,208 +6678,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0G59T1654",
           "type": "libex-import"
-        }
-      ],
-      "title": "Blood Countess"
-    },
-    "blood-countess-lady-slayers": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "lana-popovic"
-      ],
-      "genres": [
-        "historical-fiction",
-        "horror",
-        "young-adult"
-      ],
-      "id": "blood-countess-lady-slayers",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jennifer-mudge-2020": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "1419748661",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14326,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 903743,
-              "start_ms": 14326,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 4000,
-              "start_ms": 918069,
-              "title": "Part One: Summoned"
-            },
-            {
-              "length_ms": 1439398,
-              "start_ms": 922069,
-              "title": "Chapter One: The Thorn and the Taint"
-            },
-            {
-              "length_ms": 1083559,
-              "start_ms": 2361467,
-              "title": "Chapter Two: The Fever and the Coin"
-            },
-            {
-              "length_ms": 2009663,
-              "start_ms": 3445026,
-              "title": "Chapter Three: The Summons and the Nest"
-            },
-            {
-              "length_ms": 671660,
-              "start_ms": 5454689,
-              "title": "Chapter Four: The Web and the Tomb"
-            },
-            {
-              "length_ms": 2085128,
-              "start_ms": 6126349,
-              "title": "Chapter Five: The Journey and the Goblet"
-            },
-            {
-              "length_ms": 4000,
-              "start_ms": 8211477,
-              "title": "Part Two: Beguiled"
-            },
-            {
-              "length_ms": 885788,
-              "start_ms": 8215477,
-              "title": "Chapter Six: The Rats and the Maidens"
-            },
-            {
-              "length_ms": 872304,
-              "start_ms": 9101265,
-              "title": "Chapter Seven: The Toil and the Brace"
-            },
-            {
-              "length_ms": 1967380,
-              "start_ms": 9973569,
-              "title": "Chapter Eight: The Flux and the Tisane"
-            },
-            {
-              "length_ms": 1654421,
-              "start_ms": 11940949,
-              "title": "Chapter Nine: The Tonic and the Bath"
-            },
-            {
-              "length_ms": 2012078,
-              "start_ms": 13595370,
-              "title": "Chapter Ten: The Spheres and the Shards"
-            },
-            {
-              "length_ms": 1813664,
-              "start_ms": 15607448,
-              "title": "Chapter Eleven: The Salve and the Kiss"
-            },
-            {
-              "length_ms": 2466423,
-              "start_ms": 17421112,
-              "title": "Chapter Twelve: The Harp and the Switch"
-            },
-            {
-              "length_ms": 2059075,
-              "start_ms": 19887535,
-              "title": "Chapter Thirteen: The Pennyroyal and the Fléchette"
-            },
-            {
-              "length_ms": 766142,
-              "start_ms": 21946610,
-              "title": "Chapter Fourteen: The Angel and the Gripe"
-            },
-            {
-              "length_ms": 884331,
-              "start_ms": 22712752,
-              "title": "Chapter Fifteen: The Confession and the Malady"
-            },
-            {
-              "length_ms": 1286803,
-              "start_ms": 23597083,
-              "title": "Chapter Sixteen: The Shade and the Flower"
-            },
-            {
-              "length_ms": 1524761,
-              "start_ms": 24883886,
-              "title": "Chapter Seventeen: The Poison and the Elixir"
-            },
-            {
-              "length_ms": 1529475,
-              "start_ms": 26408647,
-              "title": "Chapter Eighteen: The Book and the Whip"
-            },
-            {
-              "length_ms": 2043588,
-              "start_ms": 27938122,
-              "title": "Chapter Nineteen: The Runes and the Peddler"
-            },
-            {
-              "length_ms": 4000,
-              "start_ms": 29981710,
-              "title": "Part Three: Sundered"
-            },
-            {
-              "length_ms": 820726,
-              "start_ms": 29985710,
-              "title": "Chapter Twenty: The School and the Sister"
-            },
-            {
-              "length_ms": 1107800,
-              "start_ms": 30806436,
-              "title": "Chapter Twenty-One: The Flight and the Sentence"
-            },
-            {
-              "length_ms": 1823997,
-              "start_ms": 31914236,
-              "title": "Chapter Twenty-Two: The Gaol and the Stratagem"
-            },
-            {
-              "length_ms": 210233,
-              "start_ms": 33738233,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 33551,
-              "start_ms": 33948466,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819Y2gCoqdL.jpg",
-          "id": "jennifer-mudge-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jennifer-mudge"
-          ],
-          "publisher": "Amulet Books",
-          "release_date": "2020-01-28",
-          "runtime_min": 566,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "1419748661",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blood-countess-lady-slayers"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "1419748661",
           "type": "libex-import"
         }
       ],
-      "title": "Blood Countess (Lady Slayers)"
+      "title": "Blood Countess"
     },
     "blood-country": {
       "added_at": "2026-07-29",

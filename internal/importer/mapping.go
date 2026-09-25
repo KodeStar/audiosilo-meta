@@ -1316,8 +1316,16 @@ func Slugify(s string) string { return model.Slugify(s) }
 // the cut produce the same candidate. Chain walkers are built for that - see
 // NumberedSlugAt and workSlugAt.
 func BoundedSlugTail(base, tail string) string {
+	slug, _ := boundedSlugTail(base, tail)
+	return slug
+}
+
+// boundedSlugTail is BoundedSlugTail reporting whether it had to SHORTEN base -
+// the signal a work-chain candidate carries (workCandidate.shortened), so "the
+// title was cut" is read off the one place that cuts it rather than re-derived.
+func boundedSlugTail(base, tail string) (slug string, cut bool) {
 	if slug, ok := wordBoundedSlugTail(base, tail); ok {
-		return slug
+		return slug, len(base)+len(tail) > model.MaxSlugLen
 	}
 	room := model.MaxSlugLen - len(tail)
 	if room <= 0 {
@@ -1326,13 +1334,13 @@ func BoundedSlugTail(base, tail string) string {
 		// that alone fills the cap leaves nothing of the base, and the suffix lives
 		// at the tail's END, so keep the END and drop the tail's own head - at a
 		// hyphen boundary when there is one.
-		cut := len(tail) - model.MaxSlugLen
-		if b := strings.IndexByte(tail[cut:], '-'); b >= 0 {
-			cut += b
+		at := len(tail) - model.MaxSlugLen
+		if b := strings.IndexByte(tail[at:], '-'); b >= 0 {
+			at += b
 		}
-		return strings.Trim(tail[cut:], "-")
+		return strings.Trim(tail[at:], "-"), true
 	}
-	return strings.TrimRight(base[:room], "-") + tail
+	return strings.TrimRight(base[:room], "-") + tail, true
 }
 
 // wordBoundedSlugTail is BoundedSlugTail's whole-words half: it reports the

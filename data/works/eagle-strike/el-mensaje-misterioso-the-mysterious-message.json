@@ -4976,6 +4976,10 @@
             {
               "asin": "B09FYMCWK5",
               "region": "es"
+            },
+            {
+              "asin": "B09FYN32XX",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5950,6 +5954,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09FYMCWK5",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09FYN32XX",
+              "type": "libex-import"
             }
           ],
           "work": "el-misterio-del-aguila"
@@ -5960,59 +5969,14 @@
           "imported_at": "2026-07-29",
           "ref": "B09FYMCWK5",
           "type": "libex-import"
-        }
-      ],
-      "title": "El misterio del águila"
-    },
-    "el-misterio-del-aguila-trilogia-de-la-independencia-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-miguel-zunzunegui"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "el-misterio-del-aguila-trilogia-de-la-independencia-1",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "juan-miguel-zunzunegui-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09FYN32XX",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PcYq44UEL.jpg",
-          "id": "juan-miguel-zunzunegui-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "juan-miguel-zunzunegui"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2021-09-29",
-          "runtime_min": 1587,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09FYN32XX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-misterio-del-aguila-trilogia-de-la-independencia-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09FYN32XX",
           "type": "libex-import"
         }
       ],
-      "title": "El misterio del águila (Trilogía de la Independencia 1)"
+      "title": "El misterio del águila"
     },
     "el-misterio-del-arco-iris-the-rainbow-mystery": {
       "added_at": "2026-08-02",
@@ -13641,6 +13605,7 @@
         "dave-pelzer"
       ],
       "genres": [
+        "biography-memoir",
         "parenting-relationships",
         "self-help"
       ],
@@ -13655,102 +13620,7 @@
             {
               "asin": "B07YX2ZCV8",
               "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1243614,
-              "start_ms": 0,
-              "title": "Capítulo 1"
             },
-            {
-              "length_ms": 975656,
-              "start_ms": 1243614,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 1336726,
-              "start_ms": 2219270,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 2961937,
-              "start_ms": 3555996,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 1455845,
-              "start_ms": 6517933,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 2528096,
-              "start_ms": 7973778,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 2087799,
-              "start_ms": 10501874,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 528765,
-              "start_ms": 12589673,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 1066864,
-              "start_ms": 13118438,
-              "title": "Capítulo 9"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81dMwBXK5UL.jpg",
-          "id": "jorge-tejedor-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jorge-tejedor"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2017-07-13",
-          "runtime_min": 236,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX2ZCV8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-nino-sin-nombre"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX2ZCV8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Nino Sin Nombre"
-    },
-    "el-nino-sin-nombre-the-child-without-a-name": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dave-pelzer"
-      ],
-      "genres": [
-        "biography-memoir",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "el-nino-sin-nombre-the-child-without-a-name",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jorge-tejedor-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B073WLD2HW",
               "region": "us"
@@ -13816,21 +13686,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX2ZCV8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B073WLD2HW",
               "type": "libex-import"
             }
           ],
-          "work": "el-nino-sin-nombre-the-child-without-a-name"
+          "work": "el-nino-sin-nombre"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX2ZCV8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B073WLD2HW",
           "type": "libex-import"
         }
       ],
-      "title": "El Nino Sin Nombre [The Child Without a Name]"
+      "title": "El Nino Sin Nombre"
     },
     "el-nivel-mas-alto-de-iluminacion": {
       "added_at": "2026-07-29",

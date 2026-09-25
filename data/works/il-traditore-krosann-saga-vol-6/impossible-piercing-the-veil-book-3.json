@@ -1642,8 +1642,54 @@
       ],
       "title": "Imposter"
     },
-    "imposter-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
+    "imposter-messiah": {
+      "added_at": "2026-09-24",
+      "authors": [
+        "m-w-davis"
+      ],
+      "id": "imposter-messiah",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tj-clark-2019": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B07RM6DK9P",
+              "region": "us"
+            }
+          ],
+          "id": "tj-clark-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tj-clark"
+          ],
+          "publisher": "M.W. Davis",
+          "release_date": "2019",
+          "runtime_min": 466,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B07RM6DK9P",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "imposter-messiah"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B07RM6DK9P",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "Imposter Messiah"
+    },
+    "imposter-william-w-johnstone": {
+      "added_at": "2026-07-29",
       "authors": [
         "william-w-johnstone"
       ],
@@ -1652,7 +1698,7 @@
         "historical-fiction",
         "westerns"
       ],
-      "id": "imposter-dramatized-adaptation",
+      "id": "imposter-william-w-johnstone",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1714,81 +1760,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "imposter-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "164879470X",
-          "type": "audiosilo-books-import"
+          "work": "imposter-william-w-johnstone"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "164879470X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Imposter [Dramatized Adaptation]"
-    },
-    "imposter-messiah": {
-      "added_at": "2026-09-24",
-      "authors": [
-        "m-w-davis"
-      ],
-      "id": "imposter-messiah",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tj-clark-2019": {
-          "abridged": false,
-          "added_at": "2026-09-24",
-          "asin": [
-            {
-              "asin": "B07RM6DK9P",
-              "region": "us"
-            }
-          ],
-          "id": "tj-clark-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tj-clark"
-          ],
-          "publisher": "M.W. Davis",
-          "release_date": "2019",
-          "runtime_min": 466,
-          "sources": [
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B07RM6DK9P",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "imposter-messiah"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-24",
-          "ref": "B07RM6DK9P",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Imposter Messiah"
-    },
-    "imposter-william-w-johnstone": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "westerns"
-      ],
-      "id": "imposter-william-w-johnstone",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "george-guidall-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1874,6 +1847,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8DJSE",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "164879470X",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "164879470X",
           "type": "libex-import"
         }
       ],
