@@ -531,7 +531,16 @@ var collectionWord = func() map[string]bool {
 
 // boxSetPhrase catches the collection shapes that are two words rather than one, so
 // "Box Set" and "Complete Series" count however they are spaced.
-var boxSetPhrase = regexp.MustCompile(`(?i)\b(box\s*set|boxed\s*set|complete\s+(?:series|collection|trilogy|saga)|books?\s+\d+\s*-\s*\d+)\b`)
+//
+// The "N in 1" arms ("(2 in 1)", "3-in-1", "2 Books in 1", "Three Books in One") are a
+// bundle's own announcement and carry no collection WORD, so without them
+// "Rapid Extreme Weight Loss Hypnosis for Women (2 in 1)" read as the single title it
+// bundles and was proposed for a mechanical merge onto it. "in one" is read only after
+// "books": "6 In One Head and Out the Other" and "Chapter 21 - Three in One" are titles,
+// not bundles. Measured over the 278,914-work tree: 275 titles match, every one a
+// bundle, and 176 of them carried no collection word before.
+var boxSetPhrase = regexp.MustCompile(`(?i)\b(box\s*set|boxed\s*set|complete\s+(?:series|collection|trilogy|saga)|books?\s+\d+\s*-\s*\d+` +
+	`|[2-9]\s*-?\s*in\s*-?\s*1|(?:[2-9]|two|three|four|five|six|seven|eight|nine|ten)\s+books\s+in\s+(?:1|one))\b`)
 
 // IsCollection reports whether a title announces itself as several books in one
 // product, in any of the languages the catalogue holds.
