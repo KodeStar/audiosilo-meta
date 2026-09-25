@@ -541,6 +541,42 @@ func IsCollection(title string) bool {
 	return false
 }
 
+// IsCollectionIn is IsCollection for a title READ AGAINST a series name: a
+// collection word that belongs to the series' own name is not the title announcing
+// a collection. "Sanctuary: The Caretaker's Collection, Book One" is volume one of a
+// series called "The Caretaker's Collection", and "Annihilation: The Southern Reach
+// Trilogy, Book 1" is volume one of that trilogy - neither is several books in one
+// product, and both used to veto the merge with their own plain twins.
+//
+// It is deliberately narrower than "remove the series name and ask again". The word
+// is discounted only when the title ALSO states a volume of that series
+// (StatedVolume), because a title that names its series and states no volume is
+// exactly how an omnibus is titled ("The Southern Reach Trilogy: Annihilation,
+// Authority, Acceptance"), and removing the name there would hide the one word that
+// says so. Every other shape answers exactly as IsCollection does: a series name
+// that is no collection name contributes nothing to discount, a title whose residual
+// names no book of its own IS the series (so its packaging is the title's), and a
+// collection word or a box-set phrase OUTSIDE the name ("... Books 1-3") still fires.
+// Like IsCollection it is a refusal test's input, so an answer of true where false
+// was right costs a missed merge, never a wrong one - which is why every uncertain
+// shape keeps IsCollection's answer.
+func IsCollectionIn(title, series string) bool {
+	if !IsCollection(title) {
+		return false
+	}
+	if series == "" || !IsCollection(series) {
+		return true
+	}
+	residual := tidyTitle(stripSeries(title, series))
+	if residual == tidyTitle(title) || !CarriesIdentity(residual) {
+		return true
+	}
+	if _, ok := StatedVolume(title, series); !ok {
+		return true
+	}
+	return IsCollection(residual)
+}
+
 // FoldKey is the identity key for a free-text name: the project's own diacritic
 // folding and punctuation rules (model.Slugify, the ONE definition of what text
 // becomes a slug) with the hyphens removed, so a difference that is only spacing or
@@ -1427,6 +1463,20 @@ func oneInsertion(short, long string) bool {
 // Garden" with forty-one. A sidecar is a REASON TO BE CAREFUL (REF-SIDECAR reports
 // exactly that) and not a reason to survive.
 type WorkRank struct {
+	// CleanTwin: this work's title IS what every decorated member of its cluster
+	// reduces to (ProposeTitle), under a slug that still agrees with that title. It
+	// is set by the caller, which alone sees the cluster, and it outranks everything
+	// else, including the series membership below it.
+	//
+	// It exists because the ladder otherwise hands the merge to the MODELED record
+	// even when that record is the decorated one - "Insurrection: The Lost Fleet,
+	// Book 2" holds the membership and "Insurrection" does not - and a decorated
+	// survivor can only be repaired by a retitle, which re-slugging makes a design
+	// question of its own. Choosing the clean twin needs no retitle at all: a merge
+	// moves the membership, the recordings and the sidecars onto it and tombstones
+	// the decorated slug, so the survivor carries the right title under the slug
+	// that title derives, and nothing is lost that a retitle would have kept.
+	CleanTwin bool
 	// InSeries: the work already has a series membership - it is the modeled one,
 	// and its memberships are the ones that would not have to move.
 	InSeries bool
@@ -1451,6 +1501,8 @@ type WorkRank struct {
 // same on every run and in every consumer.
 func (r WorkRank) Better(o WorkRank) bool {
 	switch {
+	case r.CleanTwin != o.CleanTwin:
+		return r.CleanTwin
 	case r.InSeries != o.InSeries:
 		return r.InSeries
 	case r.Decorations != o.Decorations:

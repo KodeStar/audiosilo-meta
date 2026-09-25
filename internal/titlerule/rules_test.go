@@ -315,6 +315,9 @@ func TestWorkRankLadder(t *testing.T) {
 	// Each rung beats everything below it. The order is the argument: what survives
 	// a merge should be the most canonical RECORD, because everything else moves
 	// onto it.
+	if !(WorkRank{CleanTwin: true, ID: "z"}).Better(WorkRank{InSeries: true, Recordings: 99, HasSidecar: true, ID: "a"}) {
+		t.Error("the clean twin of a decorated record must outrank even its series membership: the membership moves, the title cannot")
+	}
 	if !(WorkRank{InSeries: true, Decorations: 9, ID: "z"}).Better(WorkRank{Recordings: 99, HasSidecar: true, ID: "a"}) {
 		t.Error("a series membership must outrank everything below it")
 	}
@@ -380,6 +383,40 @@ func TestCountSignificantWords(t *testing.T) {
 	for _, c := range cases {
 		if got := CountSignificantWords(c.in); got != c.want {
 			t.Errorf("CountSignificantWords(%q) = %d, want %d", c.in, got, c.want)
+		}
+	}
+}
+
+// A collection word that belongs to the series name a title is read against is not the
+// title announcing a collection - but only where the title also places itself at a volume
+// of that series, since naming the series and stating no volume is how an omnibus is
+// titled. Every uncertain shape keeps IsCollection's answer.
+func TestIsCollectionInDiscountsTheSeriesOwnName(t *testing.T) {
+	cases := []struct {
+		title, series string
+		want          bool
+	}{
+		// The measured false positives: volume one of a series whose NAME says collection.
+		{"Sanctuary: The Caretaker’s Collection, Book One", "The Caretaker’s Collection", false},
+		{"Annihilation: The Southern Reach Trilogy, Book 1", "The Southern Reach Trilogy", false},
+		{"Fever Crumb (The Fever Crumb Trilogy, Book 1)", "Fever Crumb Trilogy", false},
+		// Naming the series with no volume is how an omnibus is titled.
+		{"The Southern Reach Trilogy: Annihilation, Authority, Acceptance", "The Southern Reach Trilogy", true},
+		// A title that IS the series name carries the packaging itself.
+		{"The Caretaker’s Collection", "The Caretaker’s Collection", true},
+		{"The Caretaker’s Collection, Books 1-3", "The Caretaker’s Collection", true},
+		// A collection word OUTSIDE the series name still fires.
+		{"Sanctuary Omnibus: The Caretaker’s Collection, Book One", "The Caretaker’s Collection", true},
+		// A series name that is no collection name discounts nothing.
+		{"Ascend Online Omnibus", "Ascend Online", true},
+		{"Ascend Online Omnibus", "", true},
+		// Not a collection at all, with or without a series.
+		{"Sanctuary", "The Caretaker’s Collection", false},
+		{"Hammered: The Druid Tales, Book 3", "The Druid Tales", false},
+	}
+	for _, c := range cases {
+		if got := IsCollectionIn(c.title, c.series); got != c.want {
+			t.Errorf("IsCollectionIn(%q, %q) = %v, want %v", c.title, c.series, got, c.want)
 		}
 	}
 }

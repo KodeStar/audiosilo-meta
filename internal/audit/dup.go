@@ -425,7 +425,7 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoDisjointSeries(ix, members); ok {
 		out = append(out, s)
 	}
-	if s, ok := vetoCollectionOneSide(members); ok {
+	if s, ok := vetoCollectionOneSide(ix, members); ok {
 		out = append(out, s)
 	}
 	if s, ok := vetoRuntimeRatio(members); ok {
@@ -573,10 +573,16 @@ func sortedKeys(m map[string]bool) []string {
 // does not. A companion omnibus and the volume it collects are not two records of one
 // book. The vocabulary is multilingual (titlerule.IsCollection) - the English-only
 // test let three different Tao Wong series' omnibuses merge.
-func vetoCollectionOneSide(members []dupMember) (string, bool) {
+//
+// Each title is read against the series name it is cleaned against
+// (titlerule.IsCollectionIn), so a collection word that belongs to that NAME is not
+// the title announcing a collection: "Sanctuary: The Caretaker's Collection, Book
+// One" is volume one of a series called "The Caretaker's Collection", not an omnibus
+// beside its plain twin "Sanctuary".
+func vetoCollectionOneSide(ix *index, members []dupMember) (string, bool) {
 	var yes, no []string
 	for _, m := range members {
-		if titlerule.IsCollection(m.work.Title) {
+		if titlerule.IsCollectionIn(m.work.Title, ix.derived(m.work).seriesName) {
 			yes = append(yes, m.work.ID)
 		} else {
 			no = append(no, m.work.ID)
@@ -623,8 +629,12 @@ func vetoRuntimeRatio(members []dupMember) (string, bool) {
 
 // vetoDecoratedTarget: the chosen target's title still carries decoration while a
 // loser's does not. The ladder puts Decorations above Recordings precisely so this
-// cannot normally happen; it still can when the decorated member is the MODELED one,
-// and then which record should survive is a judgement.
+// cannot normally happen; it still can when the decorated member is the MODELED one.
+// Where the undecorated member is that record's CLEAN TWIN (cleanTwins) the ladder
+// now picks the twin and this never fires; what is left here is the shape where it is
+// not - a clean title that is not what the decorated one reduces to, or a clean title
+// under a slug spelling something else - and there which record should survive is a
+// judgement.
 func vetoDecoratedTarget(ix *index, members []dupMember, canon dupMember) (string, bool) {
 	if len(ix.derived(canon.work).markers) == 0 {
 		return "", false
@@ -709,17 +719,124 @@ func sidecarCount(ix *index, members []dupMember) int {
 // the same values and the same comparison the repair pass will read, so a report
 // and a repair can never name different survivors.
 func canonicalMember(ix *index, members []dupMember) dupMember {
+	twins := cleanTwins(ix, members)
+	rank := func(w *model.Work) titlerule.WorkRank {
+		r := ix.workRank(w)
+		r.CleanTwin = twins[w.ID]
+		return r
+	}
 	best := members[0]
-	bestRank := ix.workRank(best.work)
+	bestRank := rank(best.work)
 	for _, m := range members[1:] {
-		if r := ix.workRank(m.work); r.Better(bestRank) {
+		if r := rank(m.work); r.Better(bestRank) {
 			best, bestRank = m, r
 		}
 	}
 	return best
 }
 
-// workRank fills titlerule's ranking evidence for one work.
+// cleanTwins names the members that are the CLEAN TWIN of every decorated member of
+// the cluster (titlerule.WorkRank.CleanTwin), or nil when the cluster has no such
+// shape.
+//
+// The shape is narrow on purpose, and every condition is the absence of a doubt:
+//
+//   - every decorated member's title has a retitle proposal (titlerule.ProposeTitle,
+//     against the series name it is read against) and all of those proposals are ONE
+//     title under the comparison key. A proposal ProposeTitle refuses - a residual
+//     that names no book, reads as a fragment, or is the series' own name - is a
+//     title nobody can say the twin is the clean form of;
+//   - the twin's own title is undecorated and IS that title under the comparison key,
+//     rather than merely sharing the cluster, which a nested author set or an
+//     embedded series name can reach by other roads;
+//   - the twin's slug is its title's slug, or that slug plus the disambiguating tail
+//     the importer's chain adds (one of its authors, a collision number, or both). A
+//     clean title sitting at a slug that spells something else - a record retitled
+//     by hand under its old decorated slug - would trade one mismatch for another.
+//
+// Everything else in the cluster is still judged by mergeVetoes: the twin is only
+// the SURVIVOR, and a position conflict, a runtime contradiction or a collection on
+// one side refuses the merge exactly as before.
+func cleanTwins(ix *index, members []dupMember) map[string]bool {
+	want := ""
+	for _, m := range members {
+		d := ix.derived(m.work)
+		if len(d.markers) == 0 {
+			continue
+		}
+		proposed, ok := titlerule.ProposeTitle(m.work.Title, d.seriesName)
+		if !ok {
+			return nil
+		}
+		k := titlerule.CompareKey(proposed)
+		if k == "" || (want != "" && k != want) {
+			return nil
+		}
+		want = k
+	}
+	if want == "" {
+		return nil // nothing is decorated, so there is nothing to be the clean form of
+	}
+	var out map[string]bool
+	for _, m := range members {
+		w := m.work
+		if len(ix.derived(w).markers) > 0 || titlerule.CompareKey(w.Title) != want || !slugSpellsTitle(w) {
+			continue
+		}
+		if out == nil {
+			out = map[string]bool{}
+		}
+		out[w.ID] = true
+	}
+	return out
+}
+
+// slugSpellsTitle reports whether a work's slug is the one the importer's candidate
+// chain composes for its title: the title's slug, optionally followed by one of the
+// work's authors (importer.AuthorSuffixedWorkSlug) and/or a collision number
+// (importer.NumberedSlugAt). A chain candidate the importer had to SHORTEN is not
+// recognized, which only means the rule does not fire.
+func slugSpellsTitle(w *model.Work) bool {
+	base := model.Slugify(w.Title)
+	if base == "" || !strings.HasPrefix(w.ID, base) {
+		return false
+	}
+	tail := strings.TrimPrefix(w.ID, base)
+	if tail == "" {
+		return true
+	}
+	if !strings.HasPrefix(tail, "-") {
+		return false
+	}
+	tail = tail[1:]
+	if isDigits(tail) {
+		return true
+	}
+	for _, a := range w.Authors {
+		if tail == a {
+			return true
+		}
+		if rest, ok := strings.CutPrefix(tail, a+"-"); ok && isDigits(rest) {
+			return true
+		}
+	}
+	return false
+}
+
+func isDigits(s string) bool {
+	if s == "" {
+		return false
+	}
+	for _, r := range s {
+		if r < '0' || r > '9' {
+			return false
+		}
+	}
+	return true
+}
+
+// workRank fills titlerule's ranking evidence for one work. CleanTwin is a fact
+// about the CLUSTER, so canonicalMember sets it.
 func (ix *index) workRank(w *model.Work) titlerule.WorkRank {
 	return titlerule.WorkRank{
 		InSeries:    len(ix.memberships[w.ID]) > 0,
