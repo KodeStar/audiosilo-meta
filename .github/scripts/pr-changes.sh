@@ -9,7 +9,8 @@
 #
 #   go=true|false       the diff reaches the GO GATE - build, vet, `go test
 #                       -race`, golangci-lint, govulncheck. TRUE unless every
-#                       changed file is data or prose (`data/**`, `*.md`).
+#                       changed file is data or prose (`data/**` bar
+#                       data/go.mod, `*.md`).
 #   compose=true|false  the diff can move the two-tree COMPOSE. TRUE when any
 #                       changed file is one the release build reads.
 #
@@ -71,6 +72,12 @@ total="$(printf '%s\n' "$files" | wc -l | tr -d ' ')"
 # a silently inverted answer here would skip the gate rather than fail loudly.
 # So the POSITIVE match is counted and compared against the total.
 dataprose="$(printf '%s\n' "$files" | grep -cE '^data/|\.md$' || true)"
+# data/go.mod sits under data/ but is Go, not data: it is what keeps the data
+# tree out of the module zip, and TestDataTreeIsANestedModule guards it - which
+# only helps if a pull request touching it runs the gate. Counted out the same
+# positive way.
+gomod="$(printf '%s\n' "$files" | grep -cxF 'data/go.mod' || true)"
+dataprose=$((dataprose - gomod))
 echo "${total} changed files, ${dataprose} of them data or prose"
 
 go=false

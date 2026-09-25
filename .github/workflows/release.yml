@@ -25,6 +25,9 @@ on:
     branches: [main]
     paths:
       - "data/**"
+      # data/go.mod is build plumbing, not data (see that file): editing it
+      # changes no byte of the artifact, so it cuts no release.
+      - "!data/go.mod"
       - "schema/**"
       - "internal/build/**"
       - "cmd/metabuild/**"
