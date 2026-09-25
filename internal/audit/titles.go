@@ -36,7 +36,7 @@ func detectWorkTitle(ix *index) *findings {
 		if len(d.markers) == 0 {
 			continue
 		}
-		want, ok := titlerule.ProposeTitle(w.Title, d.seriesName)
+		want, ok := d.proposed, d.proposeOK
 		if !ok {
 			continue
 		}

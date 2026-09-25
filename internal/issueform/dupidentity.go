@@ -133,14 +133,15 @@ func (ctx titleContext) placesMatch(workID string) bool {
 // sameBookAs reports whether this submission could be a second record of a
 // catalogued work, on the two TITLE-side rules the context can answer: the positive
 // volume test, and the collection veto (a boxed set is not the volume it collects -
-// titlerule.IsCollection, the same rule check.WorkIdentity.matches applies at the
-// identity gate).
+// titlerule.SameCollectionStatus, the same rule check.WorkIdentity.matches applies at
+// the identity gate, each title read against its own series name: wSeries is the one
+// the catalogue's identity index reads w's title against).
 //
 // It is what the STRIP consults before rewriting a title onto an existing work's
 // slug. Deliberately NOT the author rule: the slug gate that follows has been
 // author-blind since long before this change, and the two would then disagree.
-func (ctx titleContext) sameBookAs(w *model.Work) bool {
-	return ctx.placesMatch(w.ID) && titlerule.IsCollection(ctx.title) == titlerule.IsCollection(w.Title)
+func (ctx titleContext) sameBookAs(w *model.Work, wSeries string) bool {
+	return ctx.placesMatch(w.ID) && titlerule.SameCollectionStatus(ctx.title, ctx.series, w.Title, wSeries)
 }
 
 // titleContextFor resolves the context: the series the title is about, the record we
@@ -205,9 +206,9 @@ func (c *composer) checkSeriesVolume(ctx titleContext) bool {
 	}
 	// A COLLECTION is not the volume it collects: "Bravelands: Books 1-3" claiming
 	// position 1 is a boxed set beside book one, not a second record of it
-	// (titlerule.IsCollection, the audit's multilingual rule, and the same veto
-	// check.WorkIdentity.matches applies at the identity gate).
-	if titlerule.IsCollection(ctx.title) != titlerule.IsCollection(member.Title) {
+	// (titlerule.SameCollectionStatus, the same veto check.WorkIdentity.matches applies
+	// at the identity gate and internal/audit's merge veto reads).
+	if !titlerule.SameCollectionStatus(ctx.title, ctx.series, member.Title, c.identityIndex().SeriesNameOf(member.ID)) {
 		return false
 	}
 	c.failDuplicateWork(ctx.memberAt, "the title states %q volume %s, and %s is already recorded at that position (%s) - "+
@@ -275,7 +276,8 @@ func (c *composer) checkDecoratedTitle(ctx titleContext) (titleContext, bool) {
 		return ctx, true
 	}
 	// Read as the slug gate below reads it, retired slugs included.
-	if collides := c.works[c.liveWorkSlug(slugify(cleaned))]; collides != nil && !ctx.sameBookAs(collides) {
+	if collides := c.works[c.liveWorkSlug(slugify(cleaned))]; collides != nil &&
+		!ctx.sameBookAs(collides, c.identityIndex().SeriesNameOf(collides.ID)) {
 		// The residual names a work we already hold that this submission is NOT a second
 		// record of, so the title keeps the decoration that tells the two apart.
 		// Stripping here would hand the submitter the slug gate's duplicate verdict for a

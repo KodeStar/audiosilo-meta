@@ -5,6 +5,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -582,7 +583,7 @@ func sortedKeys(m map[string]bool) []string {
 func vetoCollectionOneSide(ix *index, members []dupMember) (string, bool) {
 	var yes, no []string
 	for _, m := range members {
-		if titlerule.IsCollectionIn(m.work.Title, ix.derived(m.work).seriesName) {
+		if ix.derived(m.work).collection {
 			yes = append(yes, m.work.ID)
 		} else {
 			no = append(no, m.work.ID)
@@ -749,10 +750,12 @@ func canonicalMember(ix *index, members []dupMember) dupMember {
 //   - the twin's own title is undecorated and IS that title under the comparison key,
 //     rather than merely sharing the cluster, which a nested author set or an
 //     embedded series name can reach by other roads;
-//   - the twin's slug is its title's slug, or that slug plus the disambiguating tail
-//     the importer's chain adds (one of its authors, a collision number, or both). A
-//     clean title sitting at a slug that spells something else - a record retitled
-//     by hand under its old decorated slug - would trade one mismatch for another.
+//   - the twin sits at a slug the importer's own candidate chain composes for its
+//     title and credits (importer.OnWorkSlugChain: the title slug, "<title>-<author>"
+//     and its numbered collisions, shortened exactly as the chain shortens them). A
+//     clean title at a slug the chain never mints - a hand-made "emma-1996", a record
+//     retitled by hand under its old decorated slug - would trade one mismatch for
+//     another, and a re-import of the title would not land on it.
 //
 // Everything else in the cluster is still judged by mergeVetoes: the twin is only
 // the SURVIVOR, and a position conflict, a runtime contradiction or a collection on
@@ -764,11 +767,10 @@ func cleanTwins(ix *index, members []dupMember) map[string]bool {
 		if len(d.markers) == 0 {
 			continue
 		}
-		proposed, ok := titlerule.ProposeTitle(m.work.Title, d.seriesName)
-		if !ok {
+		if !d.proposeOK {
 			return nil
 		}
-		k := titlerule.CompareKey(proposed)
+		k := titlerule.CompareKey(d.proposed)
 		if k == "" || (want != "" && k != want) {
 			return nil
 		}
@@ -780,7 +782,7 @@ func cleanTwins(ix *index, members []dupMember) map[string]bool {
 	var out map[string]bool
 	for _, m := range members {
 		w := m.work
-		if len(ix.derived(w).markers) > 0 || titlerule.CompareKey(w.Title) != want || !slugSpellsTitle(w) {
+		if len(ix.derived(w).markers) > 0 || titlerule.CompareKey(w.Title) != want || !importer.OnWorkSlugChain(w) {
 			continue
 		}
 		if out == nil {
@@ -789,50 +791,6 @@ func cleanTwins(ix *index, members []dupMember) map[string]bool {
 		out[w.ID] = true
 	}
 	return out
-}
-
-// slugSpellsTitle reports whether a work's slug is the one the importer's candidate
-// chain composes for its title: the title's slug, optionally followed by one of the
-// work's authors (importer.AuthorSuffixedWorkSlug) and/or a collision number
-// (importer.NumberedSlugAt). A chain candidate the importer had to SHORTEN is not
-// recognized, which only means the rule does not fire.
-func slugSpellsTitle(w *model.Work) bool {
-	base := model.Slugify(w.Title)
-	if base == "" || !strings.HasPrefix(w.ID, base) {
-		return false
-	}
-	tail := strings.TrimPrefix(w.ID, base)
-	if tail == "" {
-		return true
-	}
-	if !strings.HasPrefix(tail, "-") {
-		return false
-	}
-	tail = tail[1:]
-	if isDigits(tail) {
-		return true
-	}
-	for _, a := range w.Authors {
-		if tail == a {
-			return true
-		}
-		if rest, ok := strings.CutPrefix(tail, a+"-"); ok && isDigits(rest) {
-			return true
-		}
-	}
-	return false
-}
-
-func isDigits(s string) bool {
-	if s == "" {
-		return false
-	}
-	for _, r := range s {
-		if r < '0' || r > '9' {
-			return false
-		}
-	}
-	return true
 }
 
 // workRank fills titlerule's ranking evidence for one work. CleanTwin is a fact

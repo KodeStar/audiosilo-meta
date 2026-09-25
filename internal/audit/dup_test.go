@@ -401,7 +401,7 @@ func insurrectionPair(t *testing.T, clean string) map[string]string {
 // the recording move onto it, the decorated slug is tombstoned, and nothing needs a
 // retitle. Every slug the importer's chain composes for the title qualifies.
 func TestCanonicalMemberPrefersTheCleanTwinOfADecoratedModeledRecord(t *testing.T) {
-	for _, clean := range []string{"insurrection", "insurrection-jane-doe", "insurrection-jane-doe-2", "insurrection-2"} {
+	for _, clean := range []string{"insurrection", "insurrection-jane-doe", "insurrection-jane-doe-2"} {
 		t.Run(clean, func(t *testing.T) {
 			got := subclassOf(t, runFixture(t, insurrectionPair(t, clean)), ClassWorkDup, dupTitleAuthor)
 			if len(got) != 1 {
@@ -421,17 +421,24 @@ func TestCanonicalMemberPrefersTheCleanTwinOfADecoratedModeledRecord(t *testing.
 // A clean title under a slug that spells SOMETHING ELSE is not the clean twin: a record
 // retitled by hand under an older slug would trade one mismatch for another. The ladder's
 // choice stands, and so does the decorated-target veto.
+//
+// The chain is asked, not restated (importer.OnWorkSlugChain), so a hand-made slug the
+// chain never mints - a year, a bare collision number, a 0 or a 1 - is not crowned.
 func TestCleanTwinNeedsASlugThatSpellsItsTitle(t *testing.T) {
-	got := subclassOf(t, runFixture(t, insurrectionPair(t, "insurrection-lost-fleet")), ClassWorkDup, dupTitleAuthor)
-	if len(got) != 1 {
-		t.Fatalf("want one cluster, got %d: %+v", len(got), got)
-	}
-	p := got[0].Propose
-	if p.Target != "insurrection-the-lost-fleet-book-2" {
-		t.Errorf("target = %q, want the modeled record", p.Target)
-	}
-	if !p.Advisory || !strings.Contains(p.Reason, "retitle first") {
-		t.Errorf("propose = %+v, want the decorated-target veto", p)
+	for _, clean := range []string{"insurrection-lost-fleet", "insurrection-1996", "insurrection-2", "insurrection-0", "insurrection-1"} {
+		t.Run(clean, func(t *testing.T) {
+			got := subclassOf(t, runFixture(t, insurrectionPair(t, clean)), ClassWorkDup, dupTitleAuthor)
+			if len(got) != 1 {
+				t.Fatalf("want one cluster, got %d: %+v", len(got), got)
+			}
+			p := got[0].Propose
+			if p.Target != "insurrection-the-lost-fleet-book-2" {
+				t.Errorf("target = %q, want the modeled record", p.Target)
+			}
+			if !p.Advisory || !strings.Contains(p.Reason, "retitle first") {
+				t.Errorf("propose = %+v, want the decorated-target veto", p)
+			}
+		})
 	}
 }
 

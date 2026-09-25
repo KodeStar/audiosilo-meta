@@ -413,6 +413,22 @@ func TestIsCollectionInDiscountsTheSeriesOwnName(t *testing.T) {
 		// Not a collection at all, with or without a series.
 		{"Sanctuary", "The Caretaker’s Collection", false},
 		{"Hammered: The Druid Tales, Book 3", "The Druid Tales", false},
+		// An ENUMERATED multi-volume statement is a collection: StatedVolume reads only
+		// its first number, so without this a two-in-one would discount the series'
+		// collection word as volume one.
+		{"Legend: The Legend Trilogy, Book 1 & 2", "The Legend Trilogy", true},
+		{"Legend: The Legend Trilogy, Books 1 and 2", "The Legend Trilogy", true},
+		{"Legend, Books One and Two", "", true},
+		{"Rebel: Book 1, 2 & 3", "", true},
+		{"Die Chroniken, Band 1 und 2", "", true},
+		// ...but a title word after a comma is not a second volume, nor is a year.
+		{"Firstborn, Book 1, Two Hearts", "", false},
+		{"Firstborn, Book 1, 2020 Edition", "", false},
+		// An English PART list is as often one book's own title.
+		{"Harry Potter and the Cursed Child: Parts One and Two", "Harry Potter", false},
+		// The series name comes off at a BOUNDARY only: spelled mid-title it stays, so its
+		// collection word still speaks for the title.
+		{"The Last Trilogy Standing, Book 1", "Trilogy", true},
 	}
 	for _, c := range cases {
 		if got := IsCollectionIn(c.title, c.series); got != c.want {

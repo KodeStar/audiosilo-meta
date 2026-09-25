@@ -560,22 +560,68 @@ func IsCollection(title string) bool {
 // Like IsCollection it is a refusal test's input, so an answer of true where false
 // was right costs a missed merge, never a wrong one - which is why every uncertain
 // shape keeps IsCollection's answer.
+//
+// It ADDS one shape IsCollection does not see: a title that ENUMERATES several volumes
+// ("Legend: The Legend Trilogy, Book 1 & 2", "Books One and Two") is a multi-volume
+// product whatever else it says - StatedVolume reads only its first number, so without
+// this the discount above would read a two-in-one as volume one.
+//
+// It is the ONE collection predicate every duplicate decision reads - the census and
+// both writer gates through SameCollectionStatus, internal/audit's merge vetoes
+// directly - so a pair the audit clusters is a pair the writers refuse to re-create.
 func IsCollectionIn(title, series string) bool {
+	_, states := StatedVolume(title, series)
+	return CollectionIn(title, series, states)
+}
+
+// CollectionIn is IsCollectionIn for a caller that has already asked StatedVolume of the
+// same (title, series) pair - internal/audit memoizes it per work - so the volume is read
+// once. statesVolume MUST be StatedVolume(title, series)'s answer.
+func CollectionIn(title, series string, statesVolume bool) bool {
+	if enumeratedVolumes.MatchString(title) {
+		return true
+	}
 	if !IsCollection(title) {
 		return false
 	}
-	if series == "" || !IsCollection(series) {
+	if series == "" || !statesVolume || !IsCollection(series) {
 		return true
 	}
-	residual := tidyTitle(stripSeries(title, series))
-	if residual == tidyTitle(title) || !CarriesIdentity(residual) {
-		return true
-	}
-	if _, ok := StatedVolume(title, series); !ok {
+	// The series name comes off at a title BOUNDARY only - a whole segment or a whole
+	// bracketed group, Clean's own mechanism - never excised from mid-title.
+	residual := stripSeriesAtBoundary(title, SeriesForms(series))
+	if tidyTitle(residual) == tidyTitle(title) || !CarriesIdentity(residual) {
 		return true
 	}
 	return IsCollection(residual)
 }
+
+// SameCollectionStatus reports whether two titles, each read against its own series
+// name, agree about being a collection - the "a boxed set is not the volume it
+// collects" veto every duplicate decision applies (pkg/check's identity predicate,
+// internal/importer's run-local guard, internal/issueform's gates). One definition, so
+// the census, the writers and the audit cannot disagree about which pairs are one book.
+func SameCollectionStatus(aTitle, aSeries, bTitle, bSeries string) bool {
+	return IsCollectionIn(aTitle, aSeries) == IsCollectionIn(bTitle, bSeries)
+}
+
+// enumeratedVolumes matches a title that lists SEVERAL volumes after one marker: "Book
+// 1 & 2", "Books 1, 2 and 3", "Volumes One and Two", "Band 1 und 2". A dash range is
+// boxSetPhrase's; this is the enumerated spelling it cannot see. A digit list may be
+// joined by a comma, a word list only by a conjunction ("Book 1, Two Hearts" is a title,
+// not a list), and a digit is at most three long so "Book 1, 2020 Edition" is not one.
+//
+// The marker vocabulary is volumeMarkerWords WITHOUT "part": an English part list is as
+// often ONE book's own title ("Harry Potter and the Cursed Child: Parts One and Two",
+// "Dark Road Parts One and Two") as a bundle, and reading it as a collection would cost
+// the writers their refusal of a second record of that one book. The German "Teil 1+2"
+// of a two-part audio play is kept: it is the product's packaging, not its name.
+const enumeratedVolumeMarkers = `books?|bks?|vols?|volumes?|episodes?|eps?|b(?:a|ae|ä)nde?|teile?|tomes?|libros?`
+
+var enumeratedVolumes = regexp.MustCompile(`(?i)\b(?:` + enumeratedVolumeMarkers + `)\s*#?\s*` +
+	`(?:\d{1,3}|` + volumeNumberWords + `)` +
+	`(?:\s*(?:,|&|\+|/|\band\b|\bund\b|\bet\b|\by\b|\be\b)\s*#?\s*\d{1,3}` +
+	`|\s*(?:&|\band\b|\bund\b|\bet\b|\by\b|\be\b)\s*(?:` + volumeNumberWords + `))+\b`)
 
 // FoldKey is the identity key for a free-text name: the project's own diacritic
 // folding and punctuation rules (model.Slugify, the ONE definition of what text

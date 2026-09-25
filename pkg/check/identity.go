@@ -327,8 +327,11 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 //     language never separates);
 //   - the author sets are nested (IdentityAuthorsMatch);
 //   - neither side states a volume the other contradicts (SameStatedVolume);
-//   - exactly one side does not announce itself a COLLECTION (titlerule.IsCollection,
-//     the audit's multilingual rule). A boxed set and the volume it collects
+//   - exactly one side does not announce itself a COLLECTION
+//     (titlerule.SameCollectionStatus: each title read against its own series name,
+//     the predicate internal/audit's merge veto reads too, so a collection word that
+//     belongs to the series NAME - "Sanctuary: The Caretaker's Collection, Book One" -
+//     is not an omnibus here either). A boxed set and the volume it collects
 //     normalize alike once the packaging words come off - "Bravelands: Books 1-3"
 //     against "Bravelands", "Red Rising: The Complete Boxed Set" against "Red
 //     Rising" - and are not two records of one book. This lives in the predicate
@@ -363,7 +366,7 @@ func (ix *WorkIdentity) matches(w *model.Work, title, series, lang string, all, 
 	return languagesCompatible(w.Language, lang) &&
 		IdentityAuthorsMatch(w, all, identity) &&
 		titlerule.SameStatedVolume(title, series, w.Title, ix.seriesOf[w.ID]) &&
-		titlerule.IsCollection(title) == titlerule.IsCollection(w.Title)
+		titlerule.SameCollectionStatus(title, series, w.Title, ix.seriesOf[w.ID])
 }
 
 // IdentityAuthorsMatch reports whether an incoming record's author sets meet a
