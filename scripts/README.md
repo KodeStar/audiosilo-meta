@@ -446,3 +446,50 @@ author); a part carrying more than one recording (so which production it belongs
 to is not stated); a merged slug another work already holds; a book with more
 than one candidate plain edition; and any series whose repair would put two
 works on one position. Each is a maintainer's call, not a rule to relax.
+
+## genrepaths - derive the genre table's by_path half
+
+`internal/importer/audiblegenres.json` maps Audible categories onto the genre
+vocabulary in three tables. `by_asin` (browse-node id) and `by_name` (display
+name) are hand-authored decisions. `by_path` is **derived**, never
+hand-authored, and `scripts/genrepaths` is what derives it.
+
+`by_path` exists for sources that state a category as a LADDER of names instead
+of a node id - OpenAudible's `genre` field, `"Romance:Contemporary"` - whose leaf
+name alone cannot say what the node would ("Contemporary", "Historical" and
+"Military" all mean something else under Romance). The importer resolves a
+ladder level as `by_path[region][path]`, else `by_path["us"][path]`, else
+`by_name[leaf]`, with `region` the row's own marketplace. The generator walks
+every marketplace's taxonomy and writes an entry exactly where that chain would
+answer differently from the path's NODE in that marketplace - the node's
+answer, or `""` where the node maps to nothing (a suppression, so an English
+path the US pins cannot override a marketplace whose own node is unmapped). US
+is derived first, because every other marketplace falls back to it.
+
+**Inputs:**
+
+- libex's category taxonomy for each marketplace,
+  `GET https://libexdb.com/categories?region=<us|uk|ca|au|in|de|fr|es|it|jp|br>` -
+  one JSON tree of `{id, name, children}` per marketplace, saved as
+  `<region>.json` in one directory (`-fetch` downloads them, one paced request
+  at a time);
+- the table's own `by_asin` and `by_name`, read from the file it rewrites.
+
+**Outputs:** the `by_path` half of the table (the other two halves are rewritten
+byte-for-byte as they were), and `internal/importer/testdata/genrepaths.json`,
+the verification file: for each marketplace, the node each checked path names
+(every path whose node `by_asin` pins, every path any `by_path` carries, every
+root, and every path under a children's root). `TestGenrePathsMatchTheirNodes`
+re-checks each of them against its node and
+`TestChildrensPathsAvoidAdultAdviceGenres` runs the children's rule over them,
+so **a `by_asin` or `by_name` edit fails the importer tests until this is
+re-run**.
+
+```sh
+go run ./scripts/genrepaths -categories /tmp/genre-taxonomies -fetch   # first time: download, then derive
+go run ./scripts/genrepaths -categories /tmp/genre-taxonomies          # after a by_asin/by_name edit
+go test ./internal/importer/ -run 'Genre|Childrens'
+```
+
+A same-path conflict inside one marketplace (two nodes, one spelling) is printed
+to stderr, and the first node in the taxonomy's own order is kept.

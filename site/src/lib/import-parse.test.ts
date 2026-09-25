@@ -257,6 +257,25 @@ describe('parseExport - field mapping', () => {
     expect(parseOne(openAudibleEntry({})).runtimeMin).toBeUndefined()
   })
 
+  // The SAME cases as the Go importer's TestOpenAudibleRuntimeRule
+  // (internal/importer/openaudible_test.go): both sides state one rule.
+  it('the OpenAudible runtime rule', () => {
+    const cases: [Record<string, unknown>, number | undefined][] = [
+      [{ seconds: 3630, duration: '13:25' }, 61],
+      [{ seconds: '3630' }, 61],
+      [{ seconds: 10, duration: '13:25' }, 805],
+      [{ seconds: 0, duration: '13:25' }, 805],
+      [{ duration: '13:25' }, 805],
+      [{ duration: '12:03:40' }, 724],
+      [{ seconds: 10 }, undefined],
+      [{ duration: '13:75' }, undefined],
+      [{}, undefined],
+    ]
+    for (const [row, want] of cases) {
+      expect(parseOne(openAudibleEntry(row)).runtimeMin).toBe(want)
+    }
+  })
+
   it('falls back to the duration string a current export carries instead of seconds', () => {
     // "H:MM" is hours and minutes (a 13h25m book reads "13:25").
     expect(parseOne(openAudibleEntry({ duration: '13:25' })).runtimeMin).toBe(805)

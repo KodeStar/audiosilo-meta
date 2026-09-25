@@ -94,31 +94,45 @@ func parseOpenAudible(data []byte) ([]sourceBook, error) {
 // only for a non-empty name - the sourceBook invariant), the runtime, the
 // tri-state abridged flag, and the genre claims.
 //
-// Runtime: the seconds field rounded to whole minutes where the export carries
-// one, else the duration string. Real exports differ here - older OpenAudible
-// builds wrote both, the current one writes only "duration", as "HH:MM" (hours
-// and minutes: "13:25" on a 13h25m book, "00:04" on a four-minute one; verified
-// against two published books.json exports) - and an "H:MM:SS" spelling is read
-// too.
+// Runtime: see openAudibleRuntime.
 //
 // Genres: the genre field is the book's Audible category LADDER, joined with
 // ":" ("Romance:Contemporary", "Science Fiction & Fantasy:Fantasy:Epic"), and is
 // mapped through the same table as every other source (pathGenreClaims ->
-// audiblegenres.json, by path then by name) - never stored as itself
-// (LICENSING.md, "Genres").
+// audiblegenres.json, by path in the row's own marketplace, then by name) -
+// never stored as itself (LICENSING.md, "Genres").
 func openAudibleToBook(b rawBook) sourceBook {
 	sb := sourceBook{raw: b}
 	if name := b.str("series_name"); name != "" {
 		sb.series = []seriesRef{makeSeriesRef(name, b.str("series_sequence"))}
 	}
-	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
-		sb.runtimeMin = int((secs + 30) / 60)
-	} else if mins, ok := parseOpenAudibleDuration(b.str("duration")); ok {
-		sb.runtimeMin = mins
-	}
+	sb.runtimeMin = openAudibleRuntime(b)
 	sb.abridged = b.boolPtr("abridged")
-	sb.genres = pathGenreClaims(b.str("genre"))
+	region, _ := mapRegion(b.str("region")) // "" (unknown) falls back to the US path table
+	sb.genres = pathGenreClaims(b.str("genre"), region)
 	return sb
+}
+
+// openAudibleRuntime is THE rule for an OpenAudible row's runtime, in whole
+// minutes (0 = unknown), and site/src/lib/import-parse.ts's parseBook states the
+// same rule (the two share their test cases): the seconds field rounded half up
+// when that yields at least one whole minute, else the duration string. Real
+// exports differ here - older OpenAudible builds wrote both, the current one
+// writes only "duration", as "HH:MM" (hours and minutes: "13:25" on a 13h25m
+// book, "00:04" on a four-minute one; verified against two published books.json
+// exports) - and an "H:MM:SS" spelling is read too. A seconds value that rounds
+// to nothing is no runtime of its own, so it does not hide a duration that is
+// one.
+func openAudibleRuntime(b rawBook) int {
+	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
+		if mins := int((secs + 30) / 60); mins > 0 {
+			return mins
+		}
+	}
+	if mins, ok := parseOpenAudibleDuration(b.str("duration")); ok {
+		return mins
+	}
+	return 0
 }
 
 // parseOpenAudibleDuration reads OpenAudible's duration string as whole

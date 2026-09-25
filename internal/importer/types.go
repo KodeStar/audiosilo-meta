@@ -254,6 +254,12 @@ type Summary struct {
 	// 0 for a libex run.
 	AttestedWorks      int
 	AttestedRecordings int
+	// GenreWorks counts ALREADY-ATTESTED works a user-library row added genres
+	// to. Genres are the one additive fact of that tier (applyToWork): a user
+	// export states one category ladder per book, so a later user's row adds
+	// its labels rather than meeting "first writer wins". Disjoint from
+	// Attested*/Enriched*, which count the other branches of the same call.
+	GenreWorks int
 	// Conflicts counts rows a USER-library run refused because they contradicted
 	// what a record already states (see recordingContradicts). The recorded value
 	// stands - first writer wins - and this is the "flag for review" half of that
@@ -380,7 +386,7 @@ type Summary struct {
 // Enriched*/Matched/NotInCatalog family, which only a libex mode ever sets.
 func (s Summary) Produced() int {
 	return s.NewWorks + s.NewRecordings + s.NewPeople + s.NewSeries + s.MergedASINs +
-		s.AttestedWorks + s.AttestedRecordings
+		s.AttestedWorks + s.AttestedRecordings + s.GenreWorks
 }
 
 // RowWarnings is the per-row tail of Warnings: the lines that each name one

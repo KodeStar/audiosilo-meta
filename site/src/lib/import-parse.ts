@@ -428,8 +428,12 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
   const seriesPosition = normalizeSequence(seqRaw)
   const languageRaw = coerceStr(raw['language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
-  // seconds where the export has it (older OpenAudible builds), else the
-  // duration string (the only runtime a current export carries).
+  // THE OpenAudible runtime rule, stated identically by the Go importer's
+  // openAudibleRuntime (internal/importer/openaudible.go) - the two share their
+  // test cases: seconds when it yields at least one whole minute (older builds
+  // write it), else the duration string (the only runtime a current export
+  // carries). A seconds value that rounds to nothing is no runtime of its own,
+  // so it does not hide a duration that is one.
   const runtimeMin =
     minutesFromSeconds(coerceInt(raw['seconds'])) ?? minutesFromDuration(coerceStr(raw['duration']))
   const releaseRaw = coerceStr(raw['release_date'])

@@ -250,6 +250,14 @@ The rule, applied at **record** granularity (not per field):
    narrators, and the ASIN/ISBN identifier sets are corrections (the "Correct
    data" form), not imports. `added_at` is a creation stamp, never a fact from
    an export.
+5. **Genres are the one additive fact.** A user library states a book's genre
+   as ONE category (OpenAudible's `genre` field is the book's primary Audible
+   category), where the mirror states every category the retailer files the
+   book under - a partial statement, not a replacement for the whole set. So a
+   user-library row's mapped genres are **added** to the work's set, on a
+   mirror-only work and an already-attested one alike, and never remove a
+   genre. Nothing about rules 2-4 changes for any other field, and whether a
+   noisy mirror set should ever be trimmed is a separate, undecided question.
 
 The intake bot applies the same rule from the other side: a form submission that
 duplicates a bulk-mirror-only record is routed to a maintainer rather than
