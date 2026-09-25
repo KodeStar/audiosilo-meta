@@ -24,11 +24,24 @@ import (
 //
 // Lookup order for one claim is by browse-node id first (stable across locales,
 // so a German node maps without depending on its localized name), then by the
-// lowercased/trimmed name. by_asin (the on-disk key name; its keys are
-// browse-node ids, not product ASINs) carries the nodes whose NAME is ambiguous
-// in the taxonomy - "History" under Fiction is not the History genre - and the
+// category PATH, then by the lowercased/trimmed name. by_asin (the on-disk key
+// name; its keys are browse-node ids, not product ASINs) carries the nodes whose
+// NAME is ambiguous in the taxonomy - "History" under Fiction is not the History
+// genre, and "Contemporary" is contemporary-romance only under Romance - and the
 // localized nodes worth pinning; by_name carries the ~1,200 Audible category
 // strings observed across the marketplaces libex mirrors.
+//
+// by_path is for the sources that state a category by its NAMES rather than its
+// node id: an OpenAudible books.json carries one colon-joined ladder per book
+// ("Romance:Contemporary"), and its leaf name alone cannot say what the node
+// would have said. It is DERIVED, never hand-authored: every taxonomy path
+// (libex's per-marketplace /categories) whose node resolves differently from its
+// leaf name gets an entry holding the node's answer, keyed by the lowercased,
+// trimmed segments joined with ":" (genrePathKey) - so a path-stating source
+// resolves exactly the way a node-stating source does, and a path that needs no
+// disambiguation simply falls through to the name. Where one English path is
+// spelled identically in several marketplaces whose nodes disagree, the US
+// node's answer wins.
 //
 // A CHILDREN'S category never produces adult ADVICE vocabulary. Audible files a
 // children's book under subject tags that read like adult self-help when you
@@ -59,6 +72,9 @@ type genreTable struct {
 	// the exports use for the field).
 	ByASIN map[string]string `json:"by_asin"`
 	ByName map[string]string `json:"by_name"`
+	// ByPath is keyed by genrePathKey (see the file comment): the category
+	// paths whose leaf NAME alone would resolve differently from their node.
+	ByPath map[string]string `json:"by_path"`
 	// memo caches name resolution keyed by the RAW claim name, so a bulk import
 	// lowercases/trims each distinct spelling once instead of once per book. It
 	// is bounded by the number of distinct names in the input (a retailer
@@ -70,12 +86,49 @@ type genreTable struct {
 }
 
 // genreClaim is one raw genre claim from a source row: the retailer's
-// browse-node id (when it states one) and its display name. Both Audible
-// "Genres" and "Tags" nodes are eligible claims - the mapping table, not the
-// node type, decides what becomes a vocabulary genre.
+// browse-node id (when it states one), the category path from the taxonomy root
+// down to it (when the source states the ladder rather than the node - display
+// form, segments joined with ":"), and its display name (the path's leaf). Both
+// Audible "Genres" and "Tags" nodes are eligible claims - the mapping table, not
+// the node type, decides what becomes a vocabulary genre.
 type genreClaim struct {
 	node string
+	path string
 	name string
+}
+
+// genrePathKey normalizes a category path for by_path: each ":"-separated
+// segment trimmed and lowercased (the name rule), empty segments dropped,
+// rejoined with ":". "" when nothing is left.
+func genrePathKey(path string) string {
+	segs := strings.Split(path, ":")
+	out := segs[:0]
+	for _, s := range segs {
+		if s = strings.ToLower(strings.TrimSpace(s)); s != "" {
+			out = append(out, s)
+		}
+	}
+	return strings.Join(out, ":")
+}
+
+// pathGenreClaims lifts a colon-joined category ladder ("Science Fiction &
+// Fantasy:Fantasy:Epic", OpenAudible's genre field) into one claim per level -
+// the root, the root's child, ... the leaf - each carrying its path from the
+// root and its own name. Every level is a claim because a node-stating source
+// (libex) states every level too, so the two resolve to the same set. Empty
+// segments are dropped; an empty ladder yields nil.
+func pathGenreClaims(ladder string) []genreClaim {
+	var segs []string
+	for _, s := range strings.Split(ladder, ":") {
+		if s = strings.TrimSpace(s); s != "" {
+			segs = append(segs, s)
+		}
+	}
+	claims := make([]genreClaim, 0, len(segs))
+	for i := range segs {
+		claims = append(claims, genreClaim{path: strings.Join(segs[:i+1], ":"), name: segs[i]})
+	}
+	return claims
 }
 
 // audibleGenreTable returns the embedded mapping table, parsed once. A parse
@@ -116,11 +169,17 @@ func (t genreTable) withRunMemo() genreTable {
 
 // lookup resolves one genre claim to a vocabulary slug: the browse-node id
 // first (trimmed; node ids are numeric, so there is no case to fold), then the
-// lowercased/trimmed display name. ok is false for a claim that does not map -
-// the caller drops it (and reports the unmapped string once per run).
+// normalized category path, then the lowercased/trimmed display name. ok is
+// false for a claim that does not map - the caller drops it (and reports the
+// unmapped string once per run).
 func (t genreTable) lookup(c genreClaim) (string, bool) {
 	if node := strings.TrimSpace(c.node); node != "" {
 		if g, ok := t.ByASIN[node]; ok {
+			return g, true
+		}
+	}
+	if c.path != "" {
+		if g, ok := t.ByPath[genrePathKey(c.path)]; ok {
 			return g, true
 		}
 	}
@@ -147,9 +206,10 @@ func (t genreTable) lookupName(raw string) (string, bool) {
 
 // mapGenres resolves a row's genre claims to a sorted, deduplicated slice of
 // vocabulary slugs (sorted because checkGenresSorted pins the order). Every
-// claim that does not map is recorded in unmapped (keyed by its display name, or
-// its node id when it has no name) so the run can report each distinct unmapped
-// string exactly once. It is called only where the result is stored (a work this
+// claim that does not map is recorded in unmapped (keyed by its path when it has
+// one - "Contemporary" alone says nothing about where it sits - else its display
+// name, else its node id) so the run can report each distinct unmapped string
+// exactly once. It is called only where the result is stored (a work this
 // run creates), so a row whose genres would never persist adds no noise to that
 // report.
 func (t genreTable) mapGenres(claims []genreClaim, unmapped map[string]bool) []string {
@@ -161,7 +221,7 @@ func (t genreTable) mapGenres(claims []genreClaim, unmapped map[string]bool) []s
 	for _, c := range claims {
 		slug, ok := t.lookup(c)
 		if !ok {
-			if label := strings.TrimSpace(firstNonEmpty(c.name, c.node)); label != "" {
+			if label := strings.TrimSpace(firstNonEmpty(c.path, c.name, c.node)); label != "" {
 				unmapped[label] = true
 			}
 			continue

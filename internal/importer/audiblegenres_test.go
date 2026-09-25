@@ -45,6 +45,24 @@ func TestAudibleGenreTable(t *testing.T) {
 			t.Errorf("by_asin key %q must be trimmed (lookup normalizes that way)", key)
 		}
 	}
+	if len(table.ByPath) < 300 {
+		t.Errorf("by_path has %d entries, want at least 300", len(table.ByPath))
+	}
+	for key, value := range table.ByPath {
+		if !enum[value] {
+			t.Errorf("by_path[%q] = %q is not in the schema genre enum", key, value)
+		}
+		if key != genrePathKey(key) {
+			t.Errorf("by_path key %q must be in genrePathKey form (lookup normalizes that way)", key)
+		}
+		// by_path is DERIVED: it holds only the paths whose leaf name alone would
+		// say something else. An entry that agrees with its leaf is dead weight
+		// that hides the name mapping it duplicates from the next reviewer.
+		leaf := key[strings.LastIndex(key, ":")+1:]
+		if byName, ok := table.ByName[leaf]; ok && byName == value {
+			t.Errorf("by_path[%q] = %q restates by_name[%q]; the entry is redundant", key, value, leaf)
+		}
+	}
 
 	// The accessor used by the pipeline returns the same table (and does not panic).
 	if len(audibleGenreTable().ByName) != len(table.ByName) {
@@ -104,6 +122,30 @@ func TestAudibleGenreTableAnchors(t *testing.T) {
 		"16215169031": "science-fiction",
 		"16209803031": "horror",
 		"16206636031": "biography-memoir",
+		// Romance > Contemporary in every marketplace the table covers (issue
+		// #2337: the US node was unmapped, so 71k books lost the label). Its
+		// display name "Contemporary" is ambiguous - it is also a Fantasy and a
+		// Teen Fantasy node - so only the node can say it.
+		"18580522011": "contemporary-romance", // us Romance > Contemporary
+		"18581007011": "contemporary-romance", // us Teen & Young Adult > Romance > Contemporary
+		"19378423031": "contemporary-romance", // uk
+		"21073595011": "contemporary-romance", // ca
+		"8171261051":  "contemporary-romance", // au
+		"21882010031": "contemporary-romance", // in
+		"16245163031": "contemporary-romance", // de Liebesromane > Zeitgenössische Liebesromane
+		"18059979031": "contemporary-romance", // es Romántica > Contemporánea
+		"21838164031": "contemporary-romance", // it Romanzo d'amore > Contemporaneo
+		"8191869051":  "contemporary-romance", // jp
+		"41939661011": "contemporary-romance", // br Romance > Contemporâneo
+		// Nodes a subtree's genre is true of, pinned because their display names
+		// ("Literature & Fiction", "Americas", "Europe") are ambiguous on their own.
+		"18573352011": "erotica",            // Erotica > Literature & Fiction
+		"18573754011": "lgbtq",              // LGBTQ+ > Literature & Fiction
+		"18580894011": "young-adult",        // Teen & Young Adult > Literature & Fiction
+		"18580625011": "urban-fantasy",      // ... Fantasy > Paranormal & Urban > Urban
+		"18573526011": "history",            // History > Americas
+		"18581104011": "travel",             // Travel & Tourism > Europe
+		"18580525011": "historical-romance", // Romance > Historical > 20th Century
 	}
 	for node, want := range byNode {
 		// A deliberately wrong display name proves the node id wins.
@@ -111,6 +153,32 @@ func TestAudibleGenreTableAnchors(t *testing.T) {
 		if !ok || got != want {
 			t.Errorf("lookup(node %q) = %q,%v; want %q,true", node, got, ok, want)
 		}
+	}
+
+	// A PATH resolves the way its node does, whatever the leaf name says alone
+	// (the OpenAudible case: a ladder of names, no node ids). The name is the
+	// real leaf, so each row also proves the path outranks it.
+	byPath := map[string]string{
+		"Romance:Contemporary":                                              "contemporary-romance",
+		"Teen & Young Adult:Romance:Contemporary":                           "contemporary-romance",
+		"Romance:Historical":                                                "historical-romance",
+		"Romance:Military":                                                  "romance",
+		"Science Fiction & Fantasy:Science Fiction:Military":                "military-science-fiction",
+		"History:Military":                                                  "military-history",
+		"Literature & Fiction:Historical Fiction:20th Century":              "historical-fiction",
+		"Children's Audiobooks:Education & Learning:Social Studies:Careers": "childrens",
+	}
+	for p, want := range byPath {
+		leaf := p[strings.LastIndex(p, ":")+1:]
+		got, ok := table.lookup(genreClaim{path: p, name: leaf})
+		if !ok || got != want {
+			t.Errorf("lookup(path %q) = %q,%v; want %q,true", p, got, ok, want)
+		}
+	}
+	// A path that needs no disambiguation has no entry and falls through to its
+	// leaf name.
+	if got, ok := table.lookup(genreClaim{path: "Science Fiction & Fantasy:Fantasy:Epic", name: "Epic"}); !ok || got != "epic-fantasy" {
+		t.Errorf("lookup(path Science Fiction & Fantasy:Fantasy:Epic) = %q,%v; want epic-fantasy,true", got, ok)
 	}
 }
 
@@ -173,6 +241,22 @@ func TestChildrensClaimsAvoidAdultAdviceGenres(t *testing.T) {
 		if got, ok := table.lookup(genreClaim{name: c.claim.name}); ok && advice[got] {
 			t.Errorf("lookup(name %q) = %q; a children's category name (%s) must not map to an adult advice genre",
 				c.claim.name, got, c.where)
+		}
+		// The ladder, as OpenAudible states it ("<region> A/B/C" -> "A:B:C").
+		ladder := strings.ReplaceAll(c.where[strings.Index(c.where, " ")+1:], "/", ":")
+		if got, ok := table.lookup(genreClaim{path: ladder, name: c.claim.name}); ok && advice[got] {
+			t.Errorf("lookup(path %q) = %q; a children's category path must not map to an adult advice genre", ladder, got)
+		}
+	}
+	// And the derived path table as a whole: no entry rooted in a children's
+	// category may name an adult advice genre.
+	childrensRoots := map[string]bool{
+		"children's audiobooks": true, "kinder-hörbücher": true, "audiolibros infantiles": true, "jeunesse": true,
+	}
+	for key, value := range table.ByPath {
+		root, _, _ := strings.Cut(key, ":")
+		if childrensRoots[root] && advice[value] {
+			t.Errorf("by_path[%q] = %q; a children's category must not map to an adult advice genre", key, value)
 		}
 	}
 }

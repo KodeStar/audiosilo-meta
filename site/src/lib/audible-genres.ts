@@ -17,6 +17,10 @@
 // The lookup order MIRRORS Go's genreTable.lookup so a libex-seeded prefill and a
 // bulk `metaimport libex` of the same record resolve identically: browse-node id
 // first (stable across locales), then the lower-cased, trimmed display name.
+// (Go additionally consults the table's `by_path` between the two, for sources
+// that state a category ladder of names rather than a node id - OpenAudible's
+// `genre` field. A libex claim always carries its node, so that step never
+// decides anything here and is deliberately not mirrored.)
 
 import table from '../../../internal/importer/audiblegenres.json'
 import type { LibexGenreClaim } from './libex'

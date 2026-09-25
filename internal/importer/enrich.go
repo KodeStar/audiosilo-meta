@@ -359,11 +359,13 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 // assertion. Credits follow the same fill-absent rule ACROSS runs, and accrete
 // within one (see addRunCredits at the write below).
 //
-// Which fields a source can actually reach here differs by tier, and neither is
-// inert: a libex row states genres and credits both, while a user-library
-// export states no genres but does state a credit whenever one of its credit
-// names carries a role qualifier. So a user-tier attestation really does write
-// work.credits.
+// Which fields a source can actually reach here differs by source, and neither
+// tier is inert: a libex row states genres and credits both; an OpenAudible
+// export states its genre ladder (openAudibleToBook) and a credit whenever one of
+// its credit names carries a role qualifier; a Libation or audiosilo-books export
+// states only the credits. So a user-tier attestation really does write
+// work.credits, and - from an OpenAudible row - replaces a mirror-only work's
+// genres with the set the user's own export states.
 //
 // A user-library run attests a bulk-mirror-only work even when it changes no
 // field: the source entry is the attestation. That is also why the early return
@@ -394,10 +396,11 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 	// a work this run cannot overwrite, because an attestation's "a skip stays a
 	// skip" promise covers the work as well as the recording.
 	//
-	// This guard IS live behaviour, on the credits field. A user-library export
-	// states no genres, but it does state a credit whenever a credit name
-	// carries a role qualifier ("Rosa Vidal - Translator" in an OpenAudible
-	// row), so an attest-scope call really can arrive with something to write.
+	// This guard IS live behaviour, on both fields. An OpenAudible row states
+	// its genre ladder, and any user-library export states a credit whenever a
+	// credit name carries a role qualifier ("Rosa Vidal - Translator" in an
+	// OpenAudible row), so an attest-scope call really can arrive with
+	// something to write.
 	// The tier model then decides: on a bulk-mirror-only work the attestation
 	// records it, and on a work someone has already attested this returns
 	// without writing - first writer wins, which is the whole point of the rule.
