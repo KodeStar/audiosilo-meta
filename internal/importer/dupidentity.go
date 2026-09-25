@@ -234,7 +234,7 @@ func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, autho
 		// rather than against a catalogued record: no stated-volume disagreement, and
 		// a collection is not the volume it collects.
 		if !titlerule.SameStatedVolume(workTitle, ident.series, was.title, was.series) ||
-			titlerule.IsCollection(workTitle) != titlerule.IsCollection(was.title) {
+			!titlerule.SameCollectionStatus(workTitle, ident.series, was.title, was.series) {
 			continue
 		}
 		found = append(found, duplicateIdentityMatch{work: slug, title: was.title, series: was.series})

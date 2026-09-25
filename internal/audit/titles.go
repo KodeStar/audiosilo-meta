@@ -36,14 +36,13 @@ func detectWorkTitle(ix *index) *findings {
 		if len(d.markers) == 0 {
 			continue
 		}
-		want, ok := titlerule.ProposeTitle(w.Title, d.seriesName)
-		if !ok {
+		if !d.proposeOK {
 			continue
 		}
 		if titlerule.PrimaryDecoration(d.markers) == "" {
 			continue
 		}
-		cands = append(cands, candidate{work: w, markers: d.markers, want: want, inferred: d.embedded})
+		cands = append(cands, candidate{work: w, markers: d.markers, want: d.proposed, inferred: d.embedded})
 	}
 
 	// The title every member of a series would END UP with: its proposal if it has

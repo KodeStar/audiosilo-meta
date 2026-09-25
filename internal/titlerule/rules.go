@@ -541,6 +541,116 @@ func IsCollection(title string) bool {
 	return false
 }
 
+// IsCollectionIn is IsCollection for a title READ AGAINST a series name: a
+// collection word that belongs to the series' own name is not the title announcing
+// a collection. "Sanctuary: The Caretaker's Collection, Book One" is volume one of a
+// series called "The Caretaker's Collection", and "Annihilation: The Southern Reach
+// Trilogy, Book 1" is volume one of that trilogy - neither is several books in one
+// product.
+//
+// The word is discounted only when the title ALSO states a volume of that series
+// (StatedVolume), because a title that names its series and states no volume is
+// exactly how an omnibus is titled ("The Southern Reach Trilogy: Annihilation,
+// Authority, Acceptance"). The name comes off at a title BOUNDARY only - a whole
+// segment or a whole bracketed group, Clean's own mechanism - never from mid-title.
+// Every other shape answers exactly as IsCollection does: a series name that is no
+// collection name contributes nothing to discount, a title whose residual names no
+// book of its own IS the series (so its packaging is the title's), and a collection
+// word or a box-set phrase OUTSIDE the name ("... Books 1-3") still fires. It is a
+// refusal test's input, so an answer of true where false was right costs a missed
+// merge, never a wrong one - which is why every uncertain shape keeps IsCollection's
+// answer.
+//
+// It ADDS one shape IsCollection does not see: a title that ENUMERATES several volumes
+// ("Legend: The Legend Trilogy, Book 1 & 2", "Books One and Two") is a multi-volume
+// product whatever else it says - StatedVolume reads only its first number, so without
+// this the discount above would read a two-in-one as volume one.
+//
+// The checks run cheapest first: StatedVolume, the one expensive question, is asked
+// only of a collection-worded title read against a collection-named series.
+func IsCollectionIn(title, series string) bool {
+	if mayEnumerate(title) && enumeratedVolumes.MatchString(title) {
+		return true
+	}
+	if !IsCollection(title) {
+		return false
+	}
+	if series == "" || !IsCollection(series) {
+		return true
+	}
+	if _, states := StatedVolume(title, series); !states {
+		return true
+	}
+	residual := stripSeriesAtBoundary(title, SeriesForms(series))
+	if tidyTitle(residual) == tidyTitle(title) || !CarriesIdentity(residual) {
+		return true
+	}
+	return IsCollection(residual)
+}
+
+// SameCollectionStatus reports whether two titles, each read against its own series
+// name, agree about being a collection - the "a boxed set is not the volume it
+// collects" veto. It is the ONE collection rule every duplicate decision reads
+// (pkg/check's identity predicate, internal/importer's run-local guard,
+// internal/issueform's gates; internal/audit asks IsCollectionIn directly), so the
+// census, the writers and the audit cannot disagree about which pairs are one book.
+func SameCollectionStatus(aTitle, aSeries, bTitle, bSeries string) bool {
+	return IsCollectionIn(aTitle, aSeries) == IsCollectionIn(bTitle, bSeries)
+}
+
+// enumeratedVolumes matches a title that lists SEVERAL volumes after one marker: "Book
+// 1 & 2", "Books 1, 2 and 3", "Volumes One and Two", "Band 1 und 2". A dash range is
+// boxSetPhrase's; this is the enumerated spelling it cannot see. A digit list may be
+// joined by a comma, a word list only by a conjunction ("Book 1, Two Hearts" is a title,
+// not a list), and a digit is at most three long so "Book 1, 2020 Edition" is not one.
+// Its markers are enumeratedVolumeMarkers (identity.go), which say why "part" is not
+// among them.
+var enumeratedVolumes = regexp.MustCompile(`(?i)\b(?:` + enumeratedVolumeMarkers + `)\s*#?\s*` +
+	`(?:\d{1,3}|` + volumeNumberWords + `)` +
+	`(?:\s*(?:,|\+|/|` + listConjunctions + `)\s*#?\s*\d{1,3}` +
+	`|\s*(?:` + listConjunctions + `)\s*(?:` + volumeNumberWords + `))+\b`)
+
+// listConjunctions joins the items of a volume list, in every language the vocabulary
+// is measured over.
+const listConjunctions = `&|\band\b|\bund\b|\bet\b|\by\b|\be\b`
+
+// listConjunctionWords are listConjunctions' word members, for mayEnumerate.
+var listConjunctionWords = []string{"and", "und", "et", "y", "e"}
+
+// mayEnumerate is enumeratedVolumes' NECESSARY condition, checked without the regexp:
+// every match holds a list separator - one of ",&+/" or a conjunction word standing on
+// ASCII word boundaries, exactly as the pattern's \b reads them. Most titles hold
+// neither, and the regexp costs about as much as the whole collection vocabulary.
+func mayEnumerate(title string) bool {
+	if strings.ContainsAny(title, ",&+/") {
+		return true
+	}
+	for i := 0; i < len(title); {
+		if !isASCIIWordByte(title[i]) {
+			i++
+			continue
+		}
+		j := i
+		for j < len(title) && isASCIIWordByte(title[j]) {
+			j++
+		}
+		if j-i <= 3 {
+			for _, w := range listConjunctionWords {
+				if strings.EqualFold(title[i:j], w) {
+					return true
+				}
+			}
+		}
+		i = j
+	}
+	return false
+}
+
+// isASCIIWordByte is the regexp package's \b word class: [0-9A-Za-z_].
+func isASCIIWordByte(c byte) bool {
+	return c == '_' || '0' <= c && c <= '9' || 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z'
+}
+
 // FoldKey is the identity key for a free-text name: the project's own diacritic
 // folding and punctuation rules (model.Slugify, the ONE definition of what text
 // becomes a slug) with the hyphens removed, so a difference that is only spacing or

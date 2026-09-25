@@ -408,6 +408,9 @@ type dupCandidate struct {
 	// all and identity are the work's author sets, as the nesting rule reads them.
 	all      map[string]bool
 	identity map[string]bool
+	// coll is the work's collection answer, asked at most once however many pairs the
+	// member is part of.
+	coll collectionMemo
 }
 
 // normalizedDuplicateGroup returns the members of one key group that really are a
@@ -431,14 +434,14 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work) []*model.Wo
 	keep := map[string]*model.Work{}
 	for i := 0; i < len(cands); i++ {
 		for j := i + 1; j < len(cands); j++ {
-			a, b := cands[i], cands[j]
+			a, b := &cands[i], &cands[j]
 			if a.slug == b.slug {
 				continue // checkIdentityEqualWorks' finding, not this one
 			}
 			if differentVolumes(a.work, b.work) {
 				continue
 			}
-			if !ix.matches(b.work, a.work.Title, ix.SeriesNameOf(a.work.ID), a.work.Language, a.all, a.identity) {
+			if !ix.matches(b.work, &b.coll, a.work.Title, ix.SeriesNameOf(a.work.ID), a.work.Language, a.all, a.identity, &a.coll) {
 				continue
 			}
 			keep[a.work.ID], keep[b.work.ID] = a.work, b.work

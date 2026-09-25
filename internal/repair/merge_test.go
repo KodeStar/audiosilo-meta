@@ -353,6 +353,78 @@ func TestMergeWorksDedupesIdenticalMemberships(t *testing.T) {
 	}
 }
 
+// The CLEAN-TWIN survivor, end to end through the fresh audit: the decorated record
+// holds the series membership, the runtime and the chapter list, and its clean-titled
+// twin (a user import stating neither) is what the audit names as the target. Nothing
+// the decorated record carried may be lost by surviving on the other side: the
+// membership is re-pointed at the same position, the one production merges and takes
+// the runtime and the chapters the keeper lacked, and the decorated slug is tombstoned -
+// so no retitle is needed and the title-to-slug coupling is untouched.
+func TestMergeWorksOntoTheCleanTwinKeepsTheModeledRecordsFacts(t *testing.T) {
+	decorated := "insurrection-the-lost-fleet-book-2"
+	files := map[string]string{
+		"works/in/" + decorated + "/work.json": workJSON(t, decorated, "Insurrection: The Lost Fleet, Book 2",
+			withGenres("science-fiction")),
+		"works/in/" + decorated + "/recordings/raya-kane-2022.json": testpack.WithField(t,
+			recJSON(t, "raya-kane-2022", decorated, withNarrators("raya-kane"), withRuntime(693), withASIN("B0DECOR001")),
+			"chapters", chapterList(12)),
+		"works/in/insurrection/work.json": workJSON(t, "insurrection", "Insurrection"),
+		"works/in/insurrection/recordings/raya-kane-2022.json": recJSON(t, "raya-kane-2022", "insurrection",
+			withNarrators("raya-kane"), withASIN("B0CLEAN001")),
+		"people/ja/jane-doe.json":   personJSON(t, "jane-doe", "Jane Doe"),
+		"people/ra/raya-kane.json":  personJSON(t, "raya-kane", "Raya Kane"),
+		"series/lo/lost-fleet.json": seriesJSON(t, "lost-fleet", "The Lost Fleet", decorated+"@2"),
+	}
+	data := seedTree(t, files)
+
+	rep := run(t, Options{DataDir: data, Ops: []string{"merge-works"}, Write: true})
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	if got := rep.Applied[0].Target; got != "insurrection" {
+		t.Fatalf("target = %q, want the clean twin", got)
+	}
+	if entryExists(t, data, pack.FamilyWorks, decorated) {
+		t.Errorf("the decorated record survived the merge")
+	}
+	if to := loadRedirects(t, data)[model.RedirectWorks][decorated]; to != "insurrection" {
+		t.Errorf("redirect for %s = %q, want insurrection", decorated, to)
+	}
+	want := []model.SeriesWork{{Work: "insurrection", Position: "2"}}
+	if got := readEntry(t, data, pack.FamilySeries, "lost-fleet").SeriesWorks(); !reflect.DeepEqual(got, want) {
+		t.Errorf("memberships = %+v, want %+v", got, want)
+	}
+	w := workEntry(t, data, "insurrection")
+	if got := w.Str("title"); got != "Insurrection" {
+		t.Errorf("title = %q, want the clean title untouched", got)
+	}
+	if want := []string{"science-fiction"}; !reflect.DeepEqual(w.Strs("genres"), want) {
+		t.Errorf("genres = %v, want %v", w.Strs("genres"), want)
+	}
+	recs, err := w.Recordings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(recs) != 1 {
+		t.Fatalf("recordings = %v, want the one merged production", rawentry.SortedKeys(recs))
+	}
+	rec := recs["raya-kane-2022"]
+	if n, _ := rec.IntAt("runtime_min"); n != 693 {
+		t.Errorf("runtime_min = %d, want the decorated record's 693 filled in", n)
+	}
+	if got := len(rec.Chapters()); got != 12 {
+		t.Errorf("chapters = %d, want the decorated record's 12", got)
+	}
+	var asins []string
+	for _, a := range rec.ASINs() {
+		asins = append(asins, a.ASIN)
+	}
+	slices.Sort(asins)
+	if want := []string{"B0CLEAN001", "B0DECOR001"}; !reflect.DeepEqual(asins, want) {
+		t.Errorf("ASINs = %v, want %v", asins, want)
+	}
+}
+
 // A merge onto a work an earlier proposal retired is refused: the record the proposal
 // was written against is gone, so nothing about it can be trusted.
 func TestASecondProposalNamingARetiredWorkIsRefused(t *testing.T) {

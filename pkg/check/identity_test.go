@@ -83,6 +83,25 @@ func TestWorkIdentityMatch(t *testing.T) {
 	}
 }
 
+// The collection veto reads each title against ITS OWN series name
+// (titlerule.SameCollectionStatus): a volume of a series NAMED "The Caretaker's
+// Collection" is not an omnibus, so its re-submission meets the plain record
+// internal/audit would merge it onto - the writers refuse exactly the pairs the audit
+// clusters. A real two-in-one is still a collection, and still no duplicate.
+func TestWorkIdentityCollectionVetoReadsTheSeriesName(t *testing.T) {
+	ix := NewWorkIdentity(&model.Catalog{
+		Works: []*model.Work{{ID: "sanctuary", Title: "Sanctuary", Language: "en", Authors: []string{"jake-daniel"}}},
+	})
+	got := ix.Match("Sanctuary: The Caretaker’s Collection, Book One", "The Caretaker’s Collection", "en",
+		set("jake-daniel"), set("jake-daniel"))
+	if len(got) != 1 || got[0].Work.ID != "sanctuary" {
+		t.Errorf("Match = %v, want the sanctuary record: the series' own name is not a collection", got)
+	}
+	if got := ix.Match("Sanctuary: Books 1 & 2", "", "en", set("jake-daniel"), set("jake-daniel")); len(got) != 0 {
+		t.Errorf("Match on an enumerated two-in-one = %v, want none", got)
+	}
+}
+
 // The derivations the index exposes: which series a work's title was read against,
 // and which catalogued series a free-text title names.
 func TestWorkIdentityDerivations(t *testing.T) {

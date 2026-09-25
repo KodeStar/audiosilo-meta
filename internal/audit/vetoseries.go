@@ -280,8 +280,8 @@ func foldedWords(name string) []string {
 //
 // TWO independent arms, because either is the evidence on its own:
 //
-//   - the member TITLES say collection (titlerule.IsCollection, the same multilingual
-//     vocabulary the name-level rule and W-DUP's collection veto read);
+//   - the member TITLES say collection, each read against this series' own name
+//     (titlerule.IsCollectionIn, whose doc has the shape that makes the name matter);
 //   - the member POSITIONS are RANGES on one side and single slots on the other. A range
 //     IS the statement "this product covers those volumes", which is why it reaches the
 //     three Bayne omnibuses whose titles the vocabulary would have had to guess at.
@@ -337,7 +337,7 @@ func allCollectionTitles(s seriesSide) bool {
 		return false
 	}
 	for _, m := range s.members {
-		if m.title == "" || !titlerule.IsCollection(m.title) {
+		if !titlerule.IsCollectionIn(m.title, s.series.Name) {
 			return false
 		}
 	}

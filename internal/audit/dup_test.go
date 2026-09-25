@@ -375,3 +375,106 @@ func TestCanonicalMemberPrefersTheModeledRecord(t *testing.T) {
 		t.Errorf("canonical = %q, want the record carrying the sidecar", got[0].Propose.Target)
 	}
 }
+
+// insurrectionPair is the measured shape the clean-twin rung exists for: a retailer
+// record whose title spells its series and volume out ("Insurrection: The Lost Fleet,
+// Book 2") and holds the series membership and the runtime, beside a user-import record
+// of the same production titled just "Insurrection" under the slug that title derives.
+// clean is the plain record's slug.
+func insurrectionPair(t *testing.T, clean string) map[string]string {
+	t.Helper()
+	decorated := "insurrection-the-lost-fleet-book-2"
+	return map[string]string{
+		"works/in/" + decorated + "/work.json":                 workJSON(t, decorated, "Insurrection: The Lost Fleet, Book 2"),
+		"works/in/" + decorated + "/recordings/raya-kane.json": recJSON(t, "raya-kane", decorated, withRuntime(693)),
+		"works/in/" + clean + "/work.json":                     workJSON(t, clean, "Insurrection"),
+		"works/in/" + clean + "/recordings/raya-kane.json":     recJSON(t, "raya-kane", clean),
+		"people/ja/jane-doe.json":                              personJSON(t, "jane-doe", "Jane Doe"),
+		"people/na/nate-narrator.json":                         personJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/lo/lost-fleet.json":                            seriesJSON(t, "lost-fleet", "The Lost Fleet", decorated+"@2"),
+	}
+}
+
+// The ladder hands a merge to the MODELED record, which here is the decorated one, and
+// the decorated-target veto then withheld it ("retitle first") - but retitling in place
+// breaks the title-to-slug coupling. The clean twin survives instead: the membership and
+// the recording move onto it, the decorated slug is tombstoned, and nothing needs a
+// retitle. Every slug the importer's chain composes for the title qualifies.
+func TestCanonicalMemberPrefersTheCleanTwinOfADecoratedModeledRecord(t *testing.T) {
+	for _, clean := range []string{"insurrection", "insurrection-jane-doe", "insurrection-jane-doe-2"} {
+		t.Run(clean, func(t *testing.T) {
+			got := subclassOf(t, runFixture(t, insurrectionPair(t, clean)), ClassWorkDup, dupTitleAuthor)
+			if len(got) != 1 {
+				t.Fatalf("want one cluster, got %d: %+v", len(got), got)
+			}
+			p := got[0].Propose
+			if p.Target != clean || !reflect.DeepEqual(p.Others, []string{"insurrection-the-lost-fleet-book-2"}) {
+				t.Errorf("target = %q, others = %v; want the clean twin %q to survive", p.Target, p.Others, clean)
+			}
+			if p.Advisory {
+				t.Errorf("the clean-twin merge was withheld: %q", p.Reason)
+			}
+		})
+	}
+}
+
+// A clean title under a slug that spells SOMETHING ELSE is not the clean twin: a record
+// retitled by hand under an older slug would trade one mismatch for another. The ladder's
+// choice stands, and so does the decorated-target veto.
+//
+// The chain is asked, not restated (importer.OnWorkSlugChain), so a hand-made slug the
+// chain never mints - a year, a bare collision number, a 0 or a 1 - is not crowned.
+func TestCleanTwinNeedsASlugThatSpellsItsTitle(t *testing.T) {
+	for _, clean := range []string{"insurrection-lost-fleet", "insurrection-1996", "insurrection-2", "insurrection-0", "insurrection-1"} {
+		t.Run(clean, func(t *testing.T) {
+			got := subclassOf(t, runFixture(t, insurrectionPair(t, clean)), ClassWorkDup, dupTitleAuthor)
+			if len(got) != 1 {
+				t.Fatalf("want one cluster, got %d: %+v", len(got), got)
+			}
+			p := got[0].Propose
+			if p.Target != "insurrection-the-lost-fleet-book-2" {
+				t.Errorf("target = %q, want the modeled record", p.Target)
+			}
+			if !p.Advisory || !strings.Contains(p.Reason, "retitle first") {
+				t.Errorf("propose = %+v, want the decorated-target veto", p)
+			}
+		})
+	}
+}
+
+// Being the survivor is all the clean twin earns: every other veto still judges the
+// cluster. Here the runtimes are 3x apart, so the merge is withheld with the twin named.
+func TestCleanTwinDoesNotBypassTheOtherVetoes(t *testing.T) {
+	files := insurrectionPair(t, "insurrection")
+	files["works/in/insurrection/recordings/raya-kane.json"] = recJSON(t, "raya-kane", "insurrection", withRuntime(2100))
+	got := subclassOf(t, runFixture(t, files), ClassWorkDup, dupTitleAuthor)
+	if len(got) != 1 {
+		t.Fatalf("want one cluster, got %d: %+v", len(got), got)
+	}
+	if p := got[0].Propose; p.Target != "insurrection" || !p.Advisory || !strings.Contains(p.Reason, "runtimes differ") {
+		t.Errorf("propose = %+v, want the clean twin as target and the runtime veto", p)
+	}
+}
+
+// The false collection veto: "Sanctuary: The Caretaker's Collection, Book One" is volume
+// one of a series NAMED "The Caretaker's Collection", not an omnibus beside its plain
+// twin (titlerule.IsCollectionIn).
+func TestWorkDupDoesNotReadTheSeriesNameAsACollection(t *testing.T) {
+	decorated := "sanctuary-the-caretakers-collection-book-one"
+	got := subclassOf(t, runFixture(t, map[string]string{
+		"works/sa/" + decorated + "/work.json":          workJSON(t, decorated, "Sanctuary: The Caretaker’s Collection, Book One"),
+		"works/sa/" + decorated + "/recordings/a.json":  recJSON(t, "a", decorated, withRuntime(503)),
+		"works/sa/sanctuary-jane-doe/work.json":         workJSON(t, "sanctuary-jane-doe", "Sanctuary"),
+		"works/sa/sanctuary-jane-doe/recordings/b.json": recJSON(t, "b", "sanctuary-jane-doe"),
+		"people/ja/jane-doe.json":                       personJSON(t, "jane-doe", "Jane Doe"),
+		"people/na/nate-narrator.json":                  personJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/th/the-caretakers-collection.json": seriesJSON(t, "the-caretakers-collection",
+			"The Caretaker’s Collection", decorated+"@1"),
+	}), ClassWorkDup, dupTitleAuthor)
+	if len(got) != 1 {
+		t.Fatalf("want one cluster, got %d: %+v", len(got), got)
+	}
+	if p := got[0].Propose; p.Advisory || p.Target != "sanctuary-jane-doe" {
+		t.Errorf("propose = %+v, want a mechanical merge onto the clean twin", p)
+	}
+}
