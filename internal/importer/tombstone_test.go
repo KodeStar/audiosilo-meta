@@ -177,16 +177,16 @@ func TestSeriesWalkersAgreeOverTombstones(t *testing.T) {
 	} {
 		p := plannerOver(t, dataDir)
 		got := ""
-		if ss := p.findSeries(tc.name, SeriesRow{}); ss != nil {
+		if ss := p.seriesFor(p.refFor(tc.name, &SeriesRow{})); ss != nil {
 			got = ss.slug
 		}
 		if got != tc.want {
 			t.Errorf("findSeries(%q) = %q, want %q", tc.name, got, tc.want)
 		}
-		if sel, ok, _ := idx.find(tc.name, SeriesRow{}); sel != tc.want || ok != (tc.want != "") {
+		if sel, ok := findInIndex(idx, tc.name, &SeriesRow{}); sel != tc.want || ok != (tc.want != "") {
 			t.Errorf("seriesIndex.find(%q) = %q/%v, want %q", tc.name, sel, ok, tc.want)
 		}
-		ss := p.getOrCreateSeries(tc.name, SeriesRow{}, func(string, ...any) {})
+		ss := p.getOrCreateSeries(p.refFor(tc.name, &SeriesRow{}), func(string, ...any) {})
 		if tc.want != "" && (ss.isNew || ss.slug != tc.want) {
 			t.Errorf("getOrCreateSeries(%q) = %q (new %v), want the existing %q", tc.name, ss.slug, ss.isNew, tc.want)
 		}

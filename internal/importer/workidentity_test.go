@@ -221,27 +221,30 @@ func TestASINMergeBlockedByADifferentSeriesPosition(t *testing.T) {
 // VISIBLE. A guard that silently changes the shape of the output is how the
 // original defect stayed hidden for four waves.
 func TestSeriesPositionGuardReportsTheRefusal(t *testing.T) {
-	b := sourceBook{series: []seriesRef{makeSeriesRef("Bravelands", "4")}}
-	// A disk recording's claim carries the series SLUG, which the row's name
-	// resolves to; a this-run recording keeps its row's claim by name, resolved
-	// the same way - here onto a series nothing has minted, keyed by the name.
+	// A disk recording's claim carries the series SLUG, which the row's claim was
+	// resolved to by the batch pre-pass; a this-run recording's claim on a series
+	// nothing has minted is keyed by its name, as the row's is.
+	resolved := sourceBook{series: []seriesRef{makeSeriesRef("Bravelands", "4")}}
+	resolved.series[0].target = seriesTarget{slug: "bravelands", found: true}
+	unresolved := sourceBook{series: []seriesRef{makeSeriesRef("Bravelands", "4")}}
 	withSeries := &planner{series: map[string]*seriesState{"bravelands": {slug: "bravelands", name: "Bravelands"}}}
 	for _, tc := range []struct {
 		name string
 		p    *planner
+		b    sourceBook
 		ri   *recInfo
 	}{
-		{"disk", withSeries, &recInfo{claims: []posClaim{{key: "bravelands", pos: rowPosition{source: "1"}}}}},
-		{"this run", &planner{}, &recInfo{claims: []posClaim{{name: "BRAVELANDS", pos: rowPosition{source: "1"}}}}},
+		{"disk", withSeries, resolved, &recInfo{claims: []posClaim{{key: "bravelands", pos: rowPosition{source: "1"}}}}},
+		{"this run", &planner{}, unresolved, &recInfo{claims: []posClaim{{name: "BRAVELANDS", key: "name:bravelands", pos: rowPosition{source: "1"}}}}},
 	} {
-		series, incumbent, want, conflict := tc.p.seriesPosConflict(tc.ri, &workState{slug: "bravelands-book-1"}, tc.p.keyClaims(rowSeriesClaims(b, "Bravelands", SeriesRow{})), resolvedRowProduction(b, nil))
+		series, incumbent, want, conflict := tc.p.seriesPosConflict(tc.ri, &workState{slug: "bravelands-book-1"}, rowSeriesClaims(tc.b, "Bravelands"), resolvedRowProduction(tc.b, nil))
 		if !conflict || series != "Bravelands" || incumbent != "1" || want != "4" {
 			t.Fatalf("%s: seriesPosConflict = %q %q %q %v", tc.name, series, incumbent, want, conflict)
 		}
 	}
 	// A recording with no known position never blocks: the guard fires on
 	// evidence, never on absence.
-	if _, _, _, conflict := withSeries.seriesPosConflict(&recInfo{}, &workState{slug: "bravelands-book-1"}, withSeries.keyClaims(rowSeriesClaims(b, "Bravelands", SeriesRow{})), resolvedRowProduction(b, nil)); conflict {
+	if _, _, _, conflict := withSeries.seriesPosConflict(&recInfo{}, &workState{slug: "bravelands-book-1"}, rowSeriesClaims(resolved, "Bravelands"), resolvedRowProduction(resolved, nil)); conflict {
 		t.Error("a recording with no recorded claim must never block a merge")
 	}
 }

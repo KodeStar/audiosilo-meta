@@ -148,7 +148,7 @@ func (c *composer) sameBookAs(ctx titleContext, w *model.Work) bool {
 
 // titleContextFor resolves the context: the series the title is about, the record we
 // hold for it, and whether the title states a volume that record has no work at.
-func (c *composer) titleContextFor(title, formSeries string, row importer.SeriesRow) titleContext {
+func (c *composer) titleContextFor(title, formSeries string, row *importer.SeriesRow) titleContext {
 	ctx := titleContext{title: title}
 	if formSeries != "" {
 		// The record placeInSeries will extend (seriesForForm, for the same row),

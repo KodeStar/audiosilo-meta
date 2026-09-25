@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -173,61 +174,175 @@ func TestSelectorSkipsAnotherAuthorsSeries(t *testing.T) {
 		t.Errorf("kept %d into %+v; want the row completing lost-fleet-2", len(kept), res.PerSeries)
 	}
 
-	// And every walker agrees on which series that is.
+	// And the selector and the importer resolve the name to the same series.
 	p := plannerOver(t, dataDir)
-	seriesRow := SeriesRow{Authors: []SeriesPerson{{Slug: "jack-campbell", Name: "Jack Campbell"}}}
+	campbell := func() *SeriesRow {
+		return &SeriesRow{Authors: []SeriesPerson{{Slug: "jack-campbell", Name: "Jack Campbell"}}}
+	}
 	idx, _ := loadSeriesIndex(dataDir)
-	sel, _, _ := idx.find("Lost Fleet", seriesRow)
-	found := p.findSeries("Lost Fleet", seriesRow)
-	created := p.getOrCreateSeries("Lost Fleet", seriesRow, func(string, ...any) {})
-	if sel != "lost-fleet-2" || found == nil || found.slug != sel || created.slug != sel {
-		t.Errorf("walkers disagree: select %q, findSeries %v, getOrCreateSeries %q", sel, found, created.slug)
+	sel, _ := findInIndex(idx, "Lost Fleet", campbell())
+	ref := p.refFor("Lost Fleet", campbell())
+	created := p.getOrCreateSeries(ref, func(string, ...any) {})
+	if sel != "lost-fleet-2" || p.seriesFor(ref) == nil || ref.target.slug != sel || created.slug != sel {
+		t.Errorf("select %q and import %q disagree", sel, ref.target.slug)
+	}
+}
+
+// The selection is re-resolved as a BATCH, as the import of exactly those rows
+// will be: a one-member catalogue series is open to a stranger on its own, but
+// not once the other kept rows have made it their author's.
+func TestSelectorConfirmsTheBatch(t *testing.T) {
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/on/one/work.json":          testpack.WorkJSON(t, "one", "One", testpack.WithAuthors("ada-mapmaker")),
+		"works/on/one/recordings/r1.json": testpack.RecJSON(t, "r1", "one", testpack.WithNarrators("bea-reader")),
+		"series/sa/saga.json":             testpack.SeriesJSON(t, "saga", "Saga", "one@1"),
+	}, nil)
+	rows := []string{
+		tombRow("B0SAGA0002", "Two", "Ada Mapmaker", "Bea Reader", 600, "Saga", "2"),
+		tombRow("B0SAGA0003", "Three", "Ada Mapmaker", "Bea Reader", 600, "Saga", "3"),
+		tombRow("B0SAGA0009", "Stranger", "Zed Stranger", "Bea Reader", 600, "Saga", "9"),
+	}
+	res, kept := runSelect(t, dataDir, rows, 0)
+	if len(kept) != 2 || res.Excluded[reasonSeriesAuthors] != 1 {
+		t.Errorf("kept %d, excluded %v; want Ada's two volumes kept and the stranger dropped", len(kept), res.Excluded)
+	}
+}
+
+// An EXISTING squat does not make the squatter's next volume welcome: in a series
+// one author dominates, sharing only a minority author is no evidence.
+func TestAnExistingSquatterDoesNotKeepSquatting(t *testing.T) {
+	dataDir := lostFleetTree(t, map[string]string{
+		"works/re/renegade/work.json":           testpack.WorkJSON(t, "renegade", "Renegade", testpack.WithAuthors("sarah-hawke")),
+		"works/re/renegade/recordings/r1.json":  testpack.RecJSON(t, "r1", "renegade"),
+		"works/da/dauntless/work.json":          testpack.WorkJSON(t, "dauntless", "Dauntless", testpack.WithAuthors("jack-campbell")),
+		"works/da/dauntless/recordings/r1.json": testpack.RecJSON(t, "r1", "dauntless"),
+		"series/lo/lost-fleet.json": testpack.SeriesJSON(t, "lost-fleet", "Lost Fleet",
+			"incursion@1", "insurrection@2", "invasion@3", "renegade@4", "dauntless@5"),
+	})
+	runLibexOver(t, dataDir, tombRow("B0CAMPB006", "Victorious", "Jack Campbell", "Bea Reader", 600, "Lost Fleet", "6"))
+	if got := seriesWorks(t, dataDir, "lost-fleet"); got["victorious"] != "" {
+		t.Errorf("the squatter's next volume joined the squatted series: %v", got)
+	}
+	if got := seriesWorks(t, dataDir, "lost-fleet-2"); got["victorious"] != "6" {
+		t.Errorf("lost-fleet-2 = %v, want Victorious at 6", got)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// Resolution is a BATCH decision over a snapshot, so the rows' order changes
+// nothing: the seed-wave shape - Hawke's volumes and Campbell's in one batch with
+// no series catalogued yet - splits into the same two series either way round.
+func TestSeriesResolutionIsOrderIndependent(t *testing.T) {
+	rows := []string{
+		tombRow("B0HAWKE001", "Incursion", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "1"),
+		tombRow("B0HAWKE002", "Insurrection", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "2"),
+		tombRow("B0HAWKE003", "Invasion", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "3"),
+		tombRow("B0CAMPB004", "Valiant", "Jack Campbell", "Bea Reader", 600, "Lost Fleet", "4"),
+		tombRow("B0CAMPB005", "Relentless", "Jack Campbell", "Bea Reader", 600, "Lost Fleet", "5"),
+	}
+	membership := func(order []int) map[string]map[string]string {
+		dataDir := seedTombstoneTree(t, nil, nil)
+		var in []string
+		for _, i := range order {
+			in = append(in, rows[i])
+		}
+		runLibexOver(t, dataDir, in...)
+		out := map[string]map[string]string{}
+		for _, slug := range []string{"lost-fleet", "lost-fleet-2"} {
+			if entryExists(t, dataDir, seriesAddr(slug)) {
+				out[slug] = seriesWorks(t, dataDir, slug)
+			}
+		}
+		return out
+	}
+	forward := membership([]int{0, 1, 2, 3, 4})
+	reverse := membership([]int{4, 3, 2, 1, 0})
+	interleaved := membership([]int{3, 0, 4, 1, 2})
+	want := map[string]map[string]string{
+		"lost-fleet":   {"incursion": "1", "insurrection": "2", "invasion": "3"},
+		"lost-fleet-2": {"valiant": "4", "relentless": "5"},
+	}
+	for name, got := range map[string]map[string]map[string]string{"forward": forward, "reverse": reverse, "interleaved": interleaved} {
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("%s order: %v, want %v", name, got, want)
+		}
+	}
+}
+
+// TestUnplacedClaimsDoNotTakeTheBareSlug is the tranche replay's Oxford History
+// shape: the largest author group in a batch states no usable position, so it
+// never writes its series. Counted as evidence it founded the bare slug and
+// refused everyone else from it, leaving the bare slug empty and the real series
+// at "-2".
+func TestUnplacedClaimsDoNotTakeTheBareSlug(t *testing.T) {
+	dataDir := seedTombstoneTree(t, nil, nil)
+	runLibexOver(t, dataDir,
+		tombRow("B0HAWKE001", "Incursion", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "1: Part One"),
+		tombRow("B0HAWKE002", "Insurrection", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "1: Part One"),
+		tombRow("B0HAWKE003", "Invasion", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "1: Part One"),
+		tombRow("B0CAMPB004", "Valiant", "Jack Campbell", "Bea Reader", 600, "Lost Fleet", "4"),
+	)
+	if got, want := seriesWorks(t, dataDir, "lost-fleet"), map[string]string{"valiant": "4"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("lost-fleet = %v, want %v", got, want)
+	}
+	if entryExists(t, dataDir, seriesAddr("lost-fleet-2")) {
+		t.Error("lost-fleet-2 was created for claims that place nothing")
 	}
 }
 
 func TestSeriesAuthorsFit(t *testing.T) {
-	names := map[string]string{
-		"sarah-hawke": "Sarah Hawke", "ted-bell": "Ted Bell", "various": "Various",
-		"ann": "Ann Author", "bob": "Bob Author", "cat": "Cat Author",
+	person := func(slug string) SeriesPerson {
+		names := map[string]string{
+			"sarah-hawke": "Sarah Hawke", "ted-bell": "Ted Bell", "various": "Various",
+			"ann": "Ann Author", "bob": "Bob Author", "cat": "Cat Author", "jack-campbell": "Jack Campbell", "a-b-kovacs": "A.B. Kovacs",
+		}
+		return SeriesPerson{Slug: slug, Name: names[slug]}
 	}
-	nameOf := func(s string) string { return names[s] }
-	series := func(members ...[]string) *SeriesAuthors {
+	series := func(pub string, members ...[]string) *SeriesAuthors {
 		sa := &SeriesAuthors{}
 		for _, m := range members {
-			sa.add(m, []string{"Royal Guard Publishing LLC"})
+			var ps []SeriesPerson
+			for _, s := range m {
+				ps = append(ps, person(s))
+			}
+			sa.add(ps, []string{pub})
 		}
 		return sa
 	}
-	who := func(name string) SeriesRow {
+	who := func(name string) []SeriesPerson {
 		slug, _ := model.PersonSlug(name)
-		return SeriesRow{Authors: []SeriesPerson{{Slug: slug, Name: name}}}
+		return []SeriesPerson{{Slug: slug, Name: name}}
 	}
-	hawke := series([]string{"sarah-hawke"}, []string{"sarah-hawke"}, []string{"sarah-hawke"})
-	bell := series([]string{"ted-bell"}, []string{"ted-bell"})
+	hawke := series("Royal Guard Publishing LLC", []string{"sarah-hawke"}, []string{"sarah-hawke"}, []string{"sarah-hawke"})
+	squatted := series("Royal Guard Publishing LLC", []string{"sarah-hawke"}, []string{"sarah-hawke"}, []string{"sarah-hawke"}, []string{"jack-campbell"})
+	bell := series("Penguin", []string{"ted-bell"}, []string{"ted-bell"})
+	large := map[string]bool{publisherKey("Tantor Audio"): true}
+	tantor := series("Tantor Media", []string{"sarah-hawke"}, []string{"sarah-hawke"})
 	for _, tc := range []struct {
 		name string
 		sa   *SeriesAuthors
 		row  SeriesRow
 		want SeriesFit
 	}{
-		{"same author", hawke, who("Sarah Hawke"), SeriesShared},
-		{"spelling of the same author", hawke, who("S. Hawke"), SeriesShared},
-		{"another author", hawke, who("Jack Campbell"), SeriesClosed},
-		{"empty series", &SeriesAuthors{}, who("Jack Campbell"), SeriesOpen},
-		{"nil series", nil, who("Jack Campbell"), SeriesOpen},
-		{"one member", series([]string{"sarah-hawke"}), who("Jack Campbell"), SeriesOpen},
-		{"no dominant author", series([]string{"ann"}, []string{"bob"}, []string{"cat"}, []string{"ann"}), who("Dee Author"), SeriesOpen},
-		{"a collective row states nobody", hawke, who("Various"), SeriesOpen},
-		{"collective members are no evidence", series([]string{"various"}, []string{"various"}), who("Jack Campbell"), SeriesOpen},
-		{"the title names the series' author", bell,
-			SeriesRow{Authors: who("Ryan Steck").Authors, Titles: []string{"Ted Bell's Monarch"}}, SeriesOpen},
-		{"the row shares the publisher", hawke,
-			SeriesRow{Authors: who("Jack Campbell").Authors, Publishers: []string{"Royal Guard Publishing"}}, SeriesOpen},
-		{"another publisher", hawke,
-			SeriesRow{Authors: who("Jack Campbell").Authors, Publishers: []string{"Audible Studios"}}, SeriesClosed},
+		{"same author", hawke, SeriesRow{Authors: who("Sarah Hawke")}, SeriesShared},
+		{"initials spelling of the same author", series("x", []string{"a-b-kovacs"}, []string{"a-b-kovacs"}), SeriesRow{Authors: []SeriesPerson{{Slug: "ab-kovacs", Name: "AB Kovacs"}}}, SeriesShared},
+		{"another author", hawke, SeriesRow{Authors: who("Jack Campbell")}, SeriesClosed},
+		{"a minority author of a dominated series", squatted, SeriesRow{Authors: who("Jack Campbell")}, SeriesClosed},
+		{"the dominant author of a squatted series", squatted, SeriesRow{Authors: who("Sarah Hawke")}, SeriesShared},
+		{"empty series", &SeriesAuthors{}, SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
+		{"nil series", nil, SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
+		{"one member", series("x", []string{"sarah-hawke"}), SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
+		{"no dominant author", series("x", []string{"ann"}, []string{"bob"}, []string{"cat"}, []string{"ann"}), SeriesRow{Authors: who("Dee Author")}, SeriesOpen},
+		{"a collective row states nobody", hawke, SeriesRow{Authors: who("Various")}, SeriesOpen},
+		{"collective members are no evidence", series("x", []string{"various"}, []string{"various"}), SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
+		{"the title names the series' author", bell, SeriesRow{Authors: who("Ryan Steck"), Titles: []string{"Ted Bell's Monarch"}}, SeriesOpen},
+		{"the row shares a small publisher", hawke, SeriesRow{Authors: who("Jack Campbell"), Publishers: []string{"Royal Guard Publishing"}}, SeriesOpen},
+		{"another publisher", hawke, SeriesRow{Authors: who("Jack Campbell"), Publishers: []string{"Audible Studios"}}, SeriesClosed},
+		{"a catalogue-wide house is no evidence", tantor, SeriesRow{Authors: who("Jack Campbell"), Publishers: []string{"Tantor Audio"}}, SeriesClosed},
 	} {
-		if got := tc.sa.Fit(tc.row, nameOf); got != tc.want {
-			t.Errorf("%s: Fit = %v, want %v", tc.name, got, tc.want)
+		row := tc.row
+		if got := tc.sa.fit(&row, large); got != tc.want {
+			t.Errorf("%s: fit = %v, want %v", tc.name, got, tc.want)
 		}
 	}
 }
@@ -239,20 +354,19 @@ func TestSamePersonName(t *testing.T) {
 	}{
 		{"Sarah Hawke", "Sarah Hawke", true},
 		{"A.B. Kovacs", "AB Kovacs", true},
-		{"M.S. Olney", "Matthew Olney", true},
-		{"Doug Hirt", "Douglas Hirt", true},
-		{"Julian Gyll", "Julian Gyll-Murray", true},
 		{"Cheree Alsop", "Cheree Lynn Alsop", true},
-		{"Aijan", "Aijan Kashkaeva", true},
-		{"Lowe Key", "Lowe Keye", true},
 		{"Michael Salla PH.D.", "Michael Salla", true},
-		{"Dr. Samuel Li", "Samuel Xiangming Li", true},
+		{"Dr. Samuel Li", "Samuel Li", true},
 		{"Eric Flint - edited", "Eric Flint", true},
 		{"Innovative Language Learning LLC", "Innovative Language Learning", true},
+		{"Christopher Shevlin", "Christopher Shevlinn", true}, // one edit over the whole name
 		{"Jack Campbell", "Sarah Hawke", false},
+		{"Jack Campbell", "Joseph Campbell", false}, // surname and initial are not a person
+		{"James Patterson", "Jennifer Patterson", false},
+		{"Doug Hirt", "Douglas Hirt", false},
+		{"Aijan", "Aijan Kashkaeva", false}, // a one-word name matching an end is not a person
 		{"Sarah Maas", "Sarah Pinsker", false},
 		{"Marion Chesney", "M. C. Beaton", false}, // a pen name no spelling rule can see
-		{"Ed", "Ed Greenwood", false},             // a one-word name needs three letters
 	} {
 		if got := samePersonName(tc.a, tc.b); got != tc.want {
 			t.Errorf("samePersonName(%q, %q) = %v, want %v", tc.a, tc.b, got, tc.want)
@@ -277,4 +391,35 @@ func TestPublisherKey(t *testing.T) {
 	if publisherKey("Audio Books Ltd") != "" {
 		t.Errorf("a publisher name of generic words keyed as %q, want nothing distinctive", publisherKey("Audio Books Ltd"))
 	}
+}
+
+// A publisher above the catalogue share is a catalogue-wide house.
+func TestLargePublishersOf(t *testing.T) {
+	defer func(n int) { largePublisherShare = n }(largePublisherShare)
+	largePublisherShare = 2 // more than half of the four works
+	cat := &model.Catalog{}
+	for i, pub := range []string{"Tantor Audio", "Tantor Media", "Tantor Audio", "Royal Guard Publishing"} {
+		cat.Works = append(cat.Works, &model.Work{ID: string(rune('a' + i)), Recordings: []*model.Recording{{Publisher: pub}}})
+	}
+	large := largePublishersOf(cat)
+	if !large[publisherKey("Tantor Audio")] || large[publisherKey("Royal Guard Publishing")] {
+		t.Errorf("large = %v, want tantor only", large)
+	}
+}
+
+// refFor is a claim to name resolved for row over the planner's catalogue, as
+// the batch pre-pass would resolve a one-row batch.
+func (p *planner) refFor(name string, row *SeriesRow) seriesRef {
+	r := seriesRef{name: name}
+	r.target = resolveSeriesClaims(p.seriesCatalogue(), []nameClaim{{name: name, row: row, order: claimOrder(row, ""), evidence: true}})[0]
+	return r
+}
+
+// findInIndex is libex-select's resolution of name for row alone.
+func findInIndex(idx seriesIndex, name string, row *SeriesRow) (string, bool) {
+	t := resolveSeriesClaims(idx.catalogue(), []nameClaim{{name: name, row: row, order: claimOrder(row, ""), evidence: true}})[0]
+	if !t.found {
+		return "", false
+	}
+	return t.slug, true
 }

@@ -104,7 +104,10 @@ func (c *composer) addWork(s sections) {
 	//     work-SLUG gate below see the collision at all - a decorated title slugs to
 	//     an address no work occupies, which is exactly how a second record of a
 	//     catalogued book used to get composed.
-	ctx := c.titleContextFor(title, s.get(fWorkSeriesName), c.formSeriesRow(s))
+	// One series row for every lookup the submission makes, so the gates and the
+	// placement judge the same authors.
+	seriesRow := c.formSeriesRow(s)
+	ctx := c.titleContextFor(title, s.get(fWorkSeriesName), seriesRow)
 	if c.checkSeriesVolume(ctx) {
 		return
 	}
@@ -185,7 +188,7 @@ func (c *composer) addWork(s sections) {
 	c.emitRecording(workSlug, lang, narratorSlugs, asins, recISBNs, publishers, s, sourceRef)
 
 	// Optional series placement.
-	c.placeInSeries(s, workSlug, sourceRef)
+	c.placeInSeries(s, seriesRow, workSlug, sourceRef)
 }
 
 // unreservedWorkSlug steps a reserved title slug off the route literal, exactly
@@ -412,8 +415,10 @@ type formSeries struct {
 	// the retired base slug it was reached through, or "".
 	rec     *model.Series
 	id, via string
-	// taken is set when rec is nil and slug is held by a differently-named
-	// series - a maintainer's call, since the form never mints a numbered series.
+	// taken is set when rec is nil, no same-named series was stepped past, and
+	// slug is held by a differently-named series - a maintainer's call: the form
+	// mints a numbered series only for the author case below, where the
+	// importer's own rule has decided the name belongs to other authors.
 	taken *model.Series
 	// otherAuthors are the same-named series the submission's authors cannot
 	// join (importer seriesauthors.go), set only when none on the chain fits;
@@ -425,15 +430,14 @@ type formSeries struct {
 
 // seriesForForm resolves a form's series name for the submission row - the one
 // lookup placeInSeries places by and titleContextFor's gates read, so both see
-// the same record. The name is FOUND by the importer's own chain walk
-// (importer.ResolveSeries: a retired base reaches its survivor, a
+// the same record. The name is FOUND by the importer's own resolution
+// (importer.SeriesAuthorIndex.Resolve: a retired base reaches its survivor, a
 // differently-named holder is stepped past and a later candidate carrying the
 // name answers) under the importer's own AUTHOR rule (a same-named series of
-// other authors is stepped past too), so the form and the importer agree which
-// series a name is for a given book. When the chain holds no series of that name
-// the form stays conservative: a slug held by another series is taken, not
-// stepped.
-func (c *composer) seriesForForm(name string, row importer.SeriesRow) formSeries {
+// other authors is not joined), so the form and the importer agree which series
+// a name is for a given book. When the chain holds no series of that name the
+// form stays conservative: a slug held by another series is taken, not stepped.
+func (c *composer) seriesForForm(name string, row *importer.SeriesRow) formSeries {
 	fs := formSeries{}
 	fs.slug, fs.base = seriesSlugOf(name)
 	if fs.slug == "" {
@@ -446,8 +450,7 @@ func (c *composer) seriesForForm(name string, row importer.SeriesRow) formSeries
 		}
 		return s.Name, true
 	}
-	fit := func(slug string) importer.SeriesFit { return c.seriesAuthors.Fit(slug, row) }
-	m := importer.ResolveSeries(name, c.redirects, stored, fit)
+	m := c.seriesAuthors.Resolve(name, c.redirects, stored, row)
 	if m.Found {
 		fs.rec, fs.id, fs.via = c.series[m.Slug], m.Slug, m.Via
 		return fs
@@ -463,8 +466,8 @@ func (c *composer) seriesForForm(name string, row importer.SeriesRow) formSeries
 // formSeriesRow is the submission as the series author rule reads it: the
 // form's authors (each at the person slug it resolves to, a retired one at its
 // survivor), its title spellings and its publisher of record.
-func (c *composer) formSeriesRow(s sections) importer.SeriesRow {
-	row := importer.SeriesRow{Titles: []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}}
+func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
+	row := &importer.SeriesRow{Titles: []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}}
 	for _, name := range splitNames(s.get(fWorkAuthors)) {
 		slug, _ := model.PersonSlug(name)
 		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired {
@@ -480,7 +483,7 @@ func (c *composer) formSeriesRow(s sections) importer.SeriesRow {
 
 // placeInSeries adds the work to the named series (creating it or extending an
 // existing one). It is a no-op when no series name is given.
-func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
+func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, sourceRef string) {
 	name := s.get(fWorkSeriesName)
 	if name == "" {
 		return
@@ -495,7 +498,7 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		c.note("series position %q is not a number or omnibus range - work not placed in the series", posRaw)
 		return
 	}
-	fs := c.seriesForForm(name, c.formSeriesRow(s))
+	fs := c.seriesForForm(name, row)
 	if fs.slug == "" {
 		c.note("series name %q produced an empty slug - work not placed in the series", name)
 		return
@@ -506,6 +509,9 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		// the next free candidate, exactly where the bulk importer would.
 		c.note("series %q at %s belongs to other authors - composed a new series at %q",
 			name, strings.Join(fs.otherAuthors, ", "), fs.mint)
+		if fs.slug != fs.base {
+			c.note("series slug %q is reserved for an API route - using %q", fs.base, fs.mint)
+		}
 		c.putNewEntry(pack.FamilySeries, fs.mint, outSeries{
 			ID: fs.mint, Name: name, License: licenseCC0,
 			Works:   []outSeriesWork{{Work: workSlug, Position: pos}},

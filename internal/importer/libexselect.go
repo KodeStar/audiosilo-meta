@@ -187,6 +187,11 @@ type selectedRow struct {
 	seriesSlug string
 	workKey    string
 	pos        float64
+	// asin, refs and row are what the batch re-check (confirmBatch) resolves
+	// the kept rows by, as the import of exactly those rows will.
+	asin string
+	refs []seriesRef
+	row  *SeriesRow
 }
 
 // selectState is the within-export memory the per-row rules keep: the ASINs
@@ -251,9 +256,54 @@ func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedR
 		return res, nil, err
 	}
 
+	kept = confirmBatch(kept, idx, &res)
 	kept, cuts := applySeriesCap(kept, opts.MaxPerSeries, &res)
 	summarize(kept, cuts, idx, &res)
 	return res, kept, nil
+}
+
+// confirmBatch re-resolves the kept rows TOGETHER, as the import of exactly
+// this selection will (the importer resolves a batch from the catalogue plus a
+// census of the batch's own rows, seriesresolve.go): a row whose series the
+// batch as a whole sends elsewhere - a catalogued series the other kept rows'
+// authors close to it - is not a completion after all and is dropped under the
+// same reason as a stream-time refusal. Dropping a row can change the others'
+// evidence, so it repeats until nothing more is dropped. A dropped row's
+// position claim is not handed back: a sibling that lost the slot to it stays
+// excluded, which only ever narrows a tranche.
+func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []selectedRow {
+	cat := idx.catalogue()
+	for {
+		var claims []nameClaim
+		var owner []int
+		for i, r := range kept {
+			for _, c := range claimsOf(r.refs, r.row, r.asin) {
+				claims = append(claims, c)
+				owner = append(owner, i)
+			}
+		}
+		targets := resolveSeriesClaims(cat, claims)
+		ok := make([]bool, len(kept))
+		for k, t := range targets {
+			if t.found && t.slug == kept[owner[k]].seriesSlug {
+				ok[owner[k]] = true
+			}
+		}
+		out := kept[:0:0]
+		dropped := 0
+		for i, r := range kept {
+			if ok[i] {
+				out = append(out, r)
+				continue
+			}
+			dropped++
+			res.Excluded[reasonSeriesAuthors]++
+		}
+		kept = out
+		if dropped == 0 {
+			return kept
+		}
+	}
 }
 
 // selectLibexRow applies the per-row rules to one decoded row, returning the
@@ -282,7 +332,13 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	// The series a row completes is one its authors may JOIN (seriesauthors.go):
 	// a same-named series of another author's is not a completion - the importer
 	// would mint a new series for the row - so it is reported as such.
-	slug, ref, ok, othersOnly := idx.match(libexSeries(e["series"]), libexSeriesRow(e))
+	// A row naming no series the catalogue's chains could hold is out before its
+	// book is composed - the whole dump streams through here.
+	if !idx.namesACatalogueChain(libexSeries(e["series"])) {
+		return selectedRow{}, reasonNoSeries
+	}
+	row, b := idx.libexSeriesRow(e, asin)
+	slug, ref, ok, othersOnly := idx.match(b.series, row, asin)
 	if !ok {
 		if othersOnly {
 			return selectedRow{}, reasonSeriesAuthors
@@ -322,7 +378,7 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	if !st.claimPosition(idx, slug, ref.seq, workKey) {
 		return selectedRow{}, reasonPositionTaken
 	}
-	return selectedRow{seriesSlug: slug, workKey: workKey, pos: pos}, ""
+	return selectedRow{seriesSlug: slug, workKey: workKey, pos: pos, asin: asin, refs: b.series, row: row}, ""
 }
 
 // seriesPositionValue reduces a matched series claim to the numeric value the
@@ -513,67 +569,87 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 	return idx, warnings
 }
 
-// match resolves a row's series claims against the catalogue, returning the
-// catalogue slug of the first claim that names a series already in the tree and
-// row's authors may join, together with that claim (the caller reads its
-// position). othersOnly reports, when nothing matched, that some claim named a
-// catalogued series belonging to other authors.
-func (idx seriesIndex) match(refs []seriesRef, row SeriesRow) (slug string, matched seriesRef, ok, othersOnly bool) {
-	for _, ref := range refs {
-		s, found, stepped := idx.find(ref.name, row)
-		if found {
-			return s, ref, true, false
+// match resolves a row's series claims against the catalogue exactly as the
+// importer's batch pre-pass would for this row alone (seriesresolve.go):
+// returning the catalogue slug of the first claim that lands in a series the
+// tree already holds, together with that claim (the caller reads its position).
+// othersOnly reports, when nothing matched, that some claim named a catalogued
+// series belonging to other authors.
+func (idx seriesIndex) match(refs []seriesRef, row *SeriesRow, asin string) (slug string, matched seriesRef, ok, othersOnly bool) {
+	targets := resolveSeriesClaims(idx.catalogue(), claimsOf(refs, row, asin))
+	for i, t := range targets {
+		if t.found {
+			return t.slug, refs[i], true, false
 		}
-		othersOnly = othersOnly || stepped
+		othersOnly = othersOnly || len(t.stepped) > 0
 	}
 	return "", seriesRef{}, false, othersOnly
 }
 
-// find resolves a series NAME to the catalogue slug row would import into. It
-// walks exactly the candidate chain the importer's findSeries walks - the same
-// SeriesSlugAt formula and the same author fit (seriesauthors.go), so the two
-// cannot drift apart - matching on the stored name case-insensitively, so a row
-// is judged "completes a series we have" by the same rule that will later place
-// it there. Keying on the slug alone would wrongly match a numeric-suffix
-// collision between two different-named series. stepped reports that a
-// same-named series was passed over for belonging to other authors.
-func (idx seriesIndex) find(name string, row SeriesRow) (slug string, found, stepped bool) {
-	// A name with no addressable slug resolves to nothing, as it does in
-	// getOrCreateSeries (which refuses the claim): selecting a row into a series
-	// the import will then decline to place it in would be a selection nobody gets.
-	base := Slugify(name)
-	if base == "" {
-		return "", false, false
-	}
-	stored := func(slug string) (string, bool) {
-		stored, exists := idx.bySlug[slug]
-		return stored, exists
-	}
-	fit := func(slug string) SeriesFit { return idx.authors.Fit(slug, row) }
-	ans := seriesChain(base, name, idx.redirects, stored, fit)
-	if !ans.found {
-		return "", false, len(ans.stepped) > 0
-	}
-	return ans.slug, true, false
-}
-
-// libexSeriesRow is a libex row's SeriesRow: its author credits cleaned by the
-// public door (CleanCreditName - the census-backed rules need a run, and the fit
-// compares spellings leniently anyway), its titles and its publisher.
-func libexSeriesRow(e rawBook) SeriesRow {
-	row := SeriesRow{Titles: []string{e.str("title"), e.str("subtitle")}}
-	for _, raw := range libexNames(e["authors"]) {
-		name := CleanCreditName(raw)
-		if name == "" {
+// namesACatalogueChain reports whether any claim's name has a catalogue series
+// (or a retired one) at the first slug of its chain - the cheap necessary
+// condition for resolving into a series the tree holds, since a chain's first
+// free slug ends it.
+func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
+	for _, r := range refs {
+		base := Slugify(r.name)
+		if base == "" {
 			continue
 		}
-		slug, _ := personSlug(name)
-		row.Authors = append(row.Authors, SeriesPerson{Slug: slug, Name: name})
+		first := SeriesSlugAt(base, 0)
+		if _, held := idx.bySlug[first]; held {
+			return true
+		}
+		if _, retired := idx.redirects.Survivor(model.RedirectSeries, first); retired {
+			return true
+		}
 	}
-	if pub := e.str("publisher"); pub != "" {
-		row.Publishers = []string{pub}
+	return false
+}
+
+// claimsOf is one row's claims as the resolution reads them.
+func claimsOf(refs []seriesRef, row *SeriesRow, asin string) []nameClaim {
+	order := claimOrder(row, asin)
+	out := make([]nameClaim, len(refs))
+	for i, r := range refs {
+		out[i] = nameClaim{name: r.name, row: row, order: order, evidence: r.seqOK}
 	}
-	return row
+	return out
+}
+
+// catalogue is the index as the series resolution reads it.
+func (idx seriesIndex) catalogue() seriesCatalogue {
+	cat := seriesCatalogue{
+		stored: func(slug string) (string, bool) {
+			stored, exists := idx.bySlug[slug]
+			return stored, exists
+		},
+		redirects: idx.redirects,
+	}
+	if idx.authors != nil {
+		cat.evidence = func(slug string) *SeriesAuthors { return idx.authors.series[slug] }
+		cat.large = idx.authors.large
+	}
+	return cat
+}
+
+// libexSeriesRow is a libex row's SeriesRow, built through the importer's own
+// path: the row becomes the sourceBook libexToBook makes of it, its credits are
+// cleaned by sourceCredits and the row is composed by seriesRowOf, with a person
+// slug resolved through the tombstone table as the importer resolves it. The one
+// difference is the credit census (a selection has no run): the census-backed
+// folds it skips are spelling variants personForm.same reads as one person.
+func (idx seriesIndex) libexSeriesRow(e rawBook, asin string) (*SeriesRow, sourceBook) {
+	authors := unescapeCredits(libexNames(e["authors"]))
+	narrators := unescapeCredits(libexNames(e["narrators"]))
+	b := libexToBook(e, asin, "", authors, narrators, &libexParse{})
+	resolve := func(slug string) string {
+		if to, retired := idx.redirects.Survivor(model.RedirectPeople, slug); retired {
+			return to
+		}
+		return slug
+	}
+	return seriesRowOf(sourceCredits(b.authors, "", creditCensus{}), b, resolve), b
 }
 
 // streamLibexRows decodes an export and calls fn for every row, handing over

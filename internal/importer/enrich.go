@@ -497,10 +497,11 @@ func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workStat
 // work's authors cannot join (seriesauthors.go) is not the series it claims, so
 // a claim that finds only another author's series places nothing.
 func (p *planner) enrichSeries(b sourceBook, workSlug string, warn func(string, ...any)) {
-	row := p.seriesRowOfWork(p.works[workSlug], b)
 	for _, r := range b.series {
-		ss := p.findSeries(r.name, row)
-		if ss == nil {
+		// The series the batch resolved the claim to, and only if it already
+		// exists: enrichment never creates one.
+		ss := p.seriesFor(r)
+		if ss == nil || ss.isNew {
 			continue
 		}
 		if _, member := ss.members[workSlug]; member {
@@ -511,7 +512,7 @@ func (p *planner) enrichSeries(b sourceBook, workSlug string, warn func(string, 
 			continue
 		}
 		before := len(ss.members)
-		p.addToSeries(r.name, workSlug, r.seq, row, warn)
+		p.addToSeries(r, workSlug, r.seq, warn)
 		if len(ss.members) == before {
 			continue // a position clash; addToSeries already warned
 		}

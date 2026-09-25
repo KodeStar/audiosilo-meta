@@ -653,14 +653,14 @@ func TestOverlongSeriesNameCollision(t *testing.T) {
 	}
 
 	idx, _ := loadSeriesIndex(dataDir)
-	slugB, found, _ := idx.find(seriesB, SeriesRow{})
+	slugB, found := findInIndex(idx, seriesB, &SeriesRow{})
 	if !found {
 		t.Fatalf("seriesIndex.find does not resolve the suffixed series; index holds %v", idx.bySlug)
 	}
 	if !model.ValidSlug(slugB) {
 		t.Errorf("series id %q (%d chars) is not a valid slug", slugB, len(slugB))
 	}
-	if slugA, _, _ := idx.find(seriesA, SeriesRow{}); slugA == slugB {
+	if slugA, _ := findInIndex(idx, seriesA, &SeriesRow{}); slugA == slugB {
 		t.Errorf("both names resolved to %q", slugB)
 	}
 	// Both Beta volumes must have landed in the series find resolved to: that is
@@ -1438,7 +1438,7 @@ func TestAddToSeriesRejectsEmptyName(t *testing.T) {
 	p := &planner{series: map[string]*seriesState{}}
 	var warned []string
 	warn := func(format string, args ...any) { warned = append(warned, fmt.Sprintf(format, args...)) }
-	p.addToSeries("", "some-work", "1", SeriesRow{}, warn)
+	p.addToSeries(seriesRef{}, "some-work", "1", warn)
 	if len(p.series) != 0 || p.summary.NewSeries != 0 {
 		t.Errorf("empty series name minted a series: %+v", p.summary)
 	}

@@ -116,7 +116,7 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 // hide a work we already have.
 //
 // Each title candidate walks the SAME slug-candidate chain getOrCreateWork
-// walks (workCandidates), the way findSeries mirrors getOrCreateSeries: a work
+// walks (workCandidates), the way every series caller reads one chain walk: a work
 // whose bare title slug was taken by a different author's book is stored under
 // "<title>-<author>", and probing only the bare slug would make that work - and
 // every alternate narration of it - invisible. The walk stops at the first slug
