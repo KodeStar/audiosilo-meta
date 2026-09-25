@@ -148,12 +148,13 @@ func (c *composer) sameBookAs(ctx titleContext, w *model.Work) bool {
 
 // titleContextFor resolves the context: the series the title is about, the record we
 // hold for it, and whether the title states a volume that record has no work at.
-func (c *composer) titleContextFor(title, formSeries string) titleContext {
+func (c *composer) titleContextFor(title, formSeries string, row *importer.SeriesRow) titleContext {
 	ctx := titleContext{title: title}
 	if formSeries != "" {
-		// The record placeInSeries will extend (seriesForForm), so the position
-		// gate reads the series the work actually lands in.
-		ctx.seriesRec = c.seriesForForm(formSeries).rec
+		// The record placeInSeries will extend (seriesForForm, for the same row),
+		// so the position gate reads the series the work actually lands in - never
+		// another author's same-named series.
+		ctx.seriesRec = c.seriesForForm(formSeries, row).rec
 		// A name the INDEX would not read a title against is not read against one
 		// here either (WorkIdentity.Admits): a one-word series name strips its own
 		// titles down to their volume number, and a fold-ambiguous one would make

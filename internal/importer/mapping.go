@@ -1364,9 +1364,9 @@ func wordBoundedSlugTail(base, tail string) (string, bool) {
 // NumberedSlugAt is the numeric collision-suffix formula shared by the recording
 // and series candidate chains: base for the first candidate, then base-2,
 // base-3, ... with the suffix bounded to MaxSlugLen. Every walker of a chain
-// (getOrCreateSeries and its read-only twins findSeries and seriesIndex.find,
-// through SeriesSlugAt) must go through this one implementation, or two of them
-// would disagree about which slug a name resolves to.
+// (the series walk seriesCandidates and its slug allocation mintSlug, through
+// SeriesSlugAt) must go through this one implementation, or two of them would
+// disagree about which slug a name resolves to.
 //
 // The NUMBERED candidates are pairwise distinct: each ends in its own "-<n>", so
 // two of them could only match if a hyphen matched a digit. Candidate 0 (the
@@ -1388,10 +1388,11 @@ func NumberedSlugAt(base string, i int) string {
 // resolves to latest-2 while every walker keeps its "the first FREE slug ends
 // the walk" invariant, which skipping a candidate mid-chain would have broken.
 //
-// All three walkers go through it - getOrCreateSeries and its read-only twins
-// findSeries and libexselect's seriesIndex.find - because a name has to resolve
-// to ONE slug whether the caller is minting, resolving, or deciding a row is
-// worth selecting.
+// Both walkers go through it - seriesCandidates, which every series caller
+// (the importer, libex-select, the issue forms) reads, and mintSlug, which
+// allocates a new series its slug - because a name has to resolve to ONE slug
+// whether the caller is minting, resolving, or deciding a row is worth
+// selecting.
 func SeriesSlugAt(base string, i int) string {
 	if model.IsReservedSlug(base) {
 		return NumberedSlugAt(base, i+1)

@@ -151,9 +151,9 @@ func lookedUpPosition(refs []SeriesPosition, name string) (string, bool) {
 }
 
 // sameSeriesName reports whether two series names are ONE series, by the
-// importer's own rule rather than a looser one invented here: findSeries and
-// getOrCreateSeries both bucket a name by its slug (which folds case, diacritics
-// and punctuation) and then require a case-insensitive name match inside that
+// importer's own rule rather than a looser one invented here: the series chain
+// walk (seriesCandidates) buckets a name by its slug (which folds case, diacritics
+// and punctuation) and then requires a case-insensitive name match inside that
 // bucket. A name with no addressable slug is no series at all
 // (getOrCreateSeries refuses to mint one), so it matches nothing.
 func sameSeriesName(a, b string) bool {
@@ -182,7 +182,7 @@ func (p *planner) placementPosition(r seriesRef, work, title string, warn func(s
 	if !ok {
 		return r.seq
 	}
-	if ss := p.findSeries(r.name); ss != nil {
+	if ss := p.seriesFor(r); ss != nil {
 		if _, member := ss.members[work]; member {
 			return r.seq
 		}

@@ -17,7 +17,7 @@ import (
 // removed - and minting there fails metacheck's live-source rule for the WHOLE run.
 // Every lookup goes through model.Redirects.Survivor. internal/issueform applies
 // the same rule at the intake door (one candidate per family, except a series,
-// which it FINDS through this package's own chain walk, FindSeriesSlug).
+// which it FINDS through this package's own resolution, SeriesAuthorIndex.Resolve).
 //
 // The rule per family follows what the family's slug MEANS:
 //
@@ -30,8 +30,10 @@ import (
 //     spelling). A tombstoned NUMBERED candidate is treated as OCCUPIED by a
 //     different series and stepped past - which name that "-3" once carried is not
 //     recorded, and joining the wrong series is worse than minting a new one.
-//     seriesChain is the one walker, so getOrCreateSeries, findSeries,
-//     libex-select's seriesIndex.find and the intake form (FindSeriesSlug)
+//     A survivor is judged by the row's AUTHORS like every other candidate
+//     (seriesauthors.go): a merge said which series the name means, not that
+//     every author's book belongs in it. seriesCandidates (seriesresolve.go) is
+//     the one chain walk, so the importer, libex-select and the intake form
 //     cannot disagree.
 //   - WORKS. A tombstoned candidate is judged as the SURVIVOR: the row merges into
 //     it exactly when the importer's identity rules would merge the row into a live
@@ -95,62 +97,4 @@ func (p *planner) workAt(slug string) (ws *workState, via string) {
 		return p.works[to], slug
 	}
 	return nil, ""
-}
-
-// seriesChainAnswer is what a walk of a series name's candidate chain concluded.
-type seriesChainAnswer struct {
-	// slug is the series the name resolves to when found, else the first slug a
-	// new series for the name may be minted at.
-	slug  string
-	found bool
-	// via is the retired base slug the answer was reached through, or "".
-	via string
-}
-
-// FindSeriesSlug is seriesChain's read-only answer for a writer outside this
-// package (internal/issueform): the slug of the series name resolves to, found
-// false when no series on the chain carries it, and via naming the retired base
-// the answer was reached through. stored reports the name a slug holds.
-func FindSeriesSlug(name string, reds model.Redirects, stored func(slug string) (string, bool)) (slug, via string, found bool) {
-	base := Slugify(name)
-	if base == "" {
-		return "", "", false
-	}
-	ans := seriesChain(base, name, reds, stored)
-	if !ans.found {
-		return "", "", false
-	}
-	return ans.slug, ans.via, true
-}
-
-// seriesChain walks a series name's candidate chain (SeriesSlugAt over base, the
-// name's Slugify) and is the ONE walker behind getOrCreateSeries and its read-only
-// twins findSeries and seriesIndex.find. stored reports the name of the series a
-// slug holds; reds is the tombstone table.
-//
-// A held slug answers when its stored name matches case-insensitively and is
-// stepped past otherwise, as it always was. A tombstoned slug answers ONLY at
-// index 0 and only when stored holds its survivor; everywhere else it is occupied.
-// Counting it occupied keeps the walkers' invariant - the first FREE slug ends the
-// walk, because nothing beyond it can have been minted - true of a chain with a
-// retired "-2" in it, where stopping there would miss a live "-3".
-func seriesChain(base, name string, reds model.Redirects, stored func(slug string) (string, bool)) seriesChainAnswer {
-	for i := 0; ; i++ {
-		slug := SeriesSlugAt(base, i)
-		if held, exists := stored(slug); exists {
-			if strings.EqualFold(held, name) {
-				return seriesChainAnswer{slug: slug, found: true}
-			}
-			continue
-		}
-		to, retired := reds.Survivor(model.RedirectSeries, slug)
-		if !retired {
-			return seriesChainAnswer{slug: slug}
-		}
-		if i == 0 {
-			if _, live := stored(to); live {
-				return seriesChainAnswer{slug: to, found: true, via: slug}
-			}
-		}
-	}
 }

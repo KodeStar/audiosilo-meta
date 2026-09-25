@@ -224,34 +224,9 @@ func samePersonSpelling(ix *index, a, b string) bool {
 	if len(fa) >= minEditDistanceLen && len(fb) >= minEditDistanceLen && titlerule.OneEditApart(fa, fb) {
 		return true
 	}
-	return middleNameVariant(pa.Name, pb.Name)
-}
-
-// middleNameVariant reports whether two names differ only by MIDDLE words: they open and
-// close on the same word and one's word sequence is the other's with extra words in
-// between ("Cheree Alsop" / "Cheree Lynn Alsop", "J K Rowling" / "J K J Rowling").
-//
-// The first and last word must both match, which is what keeps it off the resemblance a
-// surname alone is: "Sarah Maas" and "Sarah J Maas" are one person, "Sarah Maas" and
-// "Sarah Pinsker" are two.
-func middleNameVariant(a, b string) bool {
-	wa, wb := foldedWords(a), foldedWords(b)
-	if len(wa) < 2 || len(wb) < 2 || len(wa) == len(wb) {
-		return false
-	}
-	if len(wa) > len(wb) {
-		wa, wb = wb, wa
-	}
-	if wa[0] != wb[0] || wa[len(wa)-1] != wb[len(wb)-1] {
-		return false
-	}
-	i := 0
-	for _, w := range wb {
-		if i < len(wa) && wa[i] == w {
-			i++
-		}
-	}
-	return i == len(wa)
+	// The middle-name insertion ("Cheree Alsop" / "Cheree Lynn Alsop", "J K Rowling"
+	// / "J K J Rowling") is the importer's own rule, over this package's words.
+	return importer.MiddleNameVariant(foldedWords(pa.Name), foldedWords(pb.Name))
 }
 
 // foldedWords is a name's words, each folded through titlerule.FoldKey so a diacritic or

@@ -439,7 +439,7 @@ func TestEnrichISBNGlobalDuplicateGuard(t *testing.T) {
 	}
 }
 
-// TestEnrichFindsSuffixedLongNameSeries is findSeries' own lock: enrichment is
+// TestEnrichFindsSuffixedLongNameSeries is seriesFor's own lock: enrichment is
 // the only caller that MUST walk past candidate 0 to do anything (it never
 // creates a series, so a walk that stops at the bare slug silently places
 // nothing). The two series here have long names colliding on one bounded base,
