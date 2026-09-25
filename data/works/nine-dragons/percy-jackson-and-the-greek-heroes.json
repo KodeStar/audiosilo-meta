@@ -4865,7 +4865,9 @@
         "china-mieville"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
+        "hard-science-fiction",
         "literary-fiction",
         "science-fiction",
         "steampunk",
@@ -5228,35 +5230,7 @@
             }
           ],
           "work": "perdido-street-station"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G5PXSKP9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Perdido Street Station"
-    },
-    "perdido-street-station-new-crobuzon-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "china-mieville"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "hard-science-fiction",
-        "literary-fiction",
-        "science-fiction",
-        "steampunk",
-        "urban-fantasy"
-      ],
-      "id": "perdido-street-station-new-crobuzon-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jonathan-oliver-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5595,17 +5569,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "perdido-street-station-new-crobuzon-book-1"
+          "work": "perdido-street-station"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G5PXSKP9",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B005LR941I",
           "type": "libex-import"
         }
       ],
-      "title": "Perdido Street Station: New Crobuzon, Book 1"
+      "title": "Perdido Street Station"
     },
     "perdiendo-el-control-caught-up": {
       "added_at": "2026-08-02",

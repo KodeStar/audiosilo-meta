@@ -1639,6 +1639,96 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "mikael-naramore-2019": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B07SV51L7B",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19063,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2101313,
+              "start_ms": 19063,
+              "title": "Sector 1"
+            },
+            {
+              "length_ms": 1574150,
+              "start_ms": 2120376,
+              "title": "Sector 2"
+            },
+            {
+              "length_ms": 2130755,
+              "start_ms": 3694526,
+              "title": "Sector 3"
+            },
+            {
+              "length_ms": 1457446,
+              "start_ms": 5825281,
+              "title": "Sector 4"
+            },
+            {
+              "length_ms": 2287119,
+              "start_ms": 7282727,
+              "title": "Sector 5"
+            },
+            {
+              "length_ms": 1663245,
+              "start_ms": 9569846,
+              "title": "Sector 6"
+            },
+            {
+              "length_ms": 2026893,
+              "start_ms": 11233091,
+              "title": "Sector 7"
+            },
+            {
+              "length_ms": 1870483,
+              "start_ms": 13259984,
+              "title": "Sector 8"
+            },
+            {
+              "length_ms": 2301469,
+              "start_ms": 15130467,
+              "title": "Sector 9"
+            },
+            {
+              "length_ms": 21106,
+              "start_ms": 17431936,
+              "title": "More Black Ocean books"
+            },
+            {
+              "length_ms": 31949,
+              "start_ms": 17453042,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91VnaMG2+FL.jpg",
+          "id": "mikael-naramore-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mikael-naramore"
+          ],
+          "publisher": "Magical Scrivener Press",
+          "release_date": "2019-06-25",
+          "runtime_min": 291,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07SV51L7B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "systemic-treachery-mission-5"
+        },
         "mikael-naramore-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1735,124 +1825,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0D7WFQNN1",
           "type": "libex-import"
-        }
-      ],
-      "title": "Systemic Treachery: Mission 5"
-    },
-    "systemic-treachery-mission-5-black-ocean-astral-prime": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "j-s-morin",
-        "m-a-larkin"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "systemic-treachery-mission-5-black-ocean-astral-prime",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "mikael-naramore-2019": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07SV51L7B",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19063,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2101313,
-              "start_ms": 19063,
-              "title": "Sector 1"
-            },
-            {
-              "length_ms": 1574150,
-              "start_ms": 2120376,
-              "title": "Sector 2"
-            },
-            {
-              "length_ms": 2130755,
-              "start_ms": 3694526,
-              "title": "Sector 3"
-            },
-            {
-              "length_ms": 1457446,
-              "start_ms": 5825281,
-              "title": "Sector 4"
-            },
-            {
-              "length_ms": 2287119,
-              "start_ms": 7282727,
-              "title": "Sector 5"
-            },
-            {
-              "length_ms": 1663245,
-              "start_ms": 9569846,
-              "title": "Sector 6"
-            },
-            {
-              "length_ms": 2026893,
-              "start_ms": 11233091,
-              "title": "Sector 7"
-            },
-            {
-              "length_ms": 1870483,
-              "start_ms": 13259984,
-              "title": "Sector 8"
-            },
-            {
-              "length_ms": 2301469,
-              "start_ms": 15130467,
-              "title": "Sector 9"
-            },
-            {
-              "length_ms": 21106,
-              "start_ms": 17431936,
-              "title": "More Black Ocean books"
-            },
-            {
-              "length_ms": 31949,
-              "start_ms": 17453042,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91VnaMG2+FL.jpg",
-          "id": "mikael-naramore-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mikael-naramore"
-          ],
-          "publisher": "Magical Scrivener Press",
-          "release_date": "2019-06-25",
-          "runtime_min": 291,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07SV51L7B",
-              "type": "libex-import"
-            }
-          ],
-          "work": "systemic-treachery-mission-5-black-ocean-astral-prime"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B07SV51L7B",
           "type": "libex-import"
         }
       ],
-      "title": "Systemic Treachery: Mission 5 (Black Ocean: Astral Prime)"
+      "title": "Systemic Treachery: Mission 5"
     },
     "systemische-fuhrungskrafte-entwicklung": {
       "added_at": "2026-07-29",

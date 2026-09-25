@@ -11481,101 +11481,6 @@
       ],
       "title": "A Stranger in Town"
     },
-    "a-stranger-in-town-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "a-stranger-in-town-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648804306",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3530013,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3339609,
-              "start_ms": 3530013,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3456568,
-              "start_ms": 6869622,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3254601,
-              "start_ms": 10326190,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3332597,
-              "start_ms": 13580791,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3679549,
-              "start_ms": 16913388,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+OaxiJ4tL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 343,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648804306",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648804306",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-stranger-in-town-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648804306",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648804306",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Stranger In Town [Dramatized Adaptation]"
-    },
     "a-stranger-in-town-william-w-johnstone": {
       "added_at": "2026-07-29",
       "authors": [
@@ -11715,12 +11620,87 @@
             }
           ],
           "work": "a-stranger-in-town-william-w-johnstone"
+        },
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648804306",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3530013,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3339609,
+              "start_ms": 3530013,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3456568,
+              "start_ms": 6869622,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3254601,
+              "start_ms": 10326190,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3332597,
+              "start_ms": 13580791,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3679549,
+              "start_ms": 16913388,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+OaxiJ4tL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648804306",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648804306",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-stranger-in-town-william-w-johnstone"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "1977334601",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648804306",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648804306",
           "type": "libex-import"
         }
       ],

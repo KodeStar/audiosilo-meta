@@ -13089,6 +13089,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eric-conger-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B074F3TJQ1",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91unMGWT13L.jpg",
+          "id": "eric-conger-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-conger"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2017-10-17",
+          "runtime_min": 602,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B074F3TJQ1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "deep-freeze-john-sandford"
+        },
         "eric-conger-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -13280,6 +13308,11 @@
           "imported_at": "2026-07-29",
           "ref": "B0799QMGFM",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B074F3TJQ1",
+          "type": "libex-import"
         }
       ],
       "title": "Deep Freeze"
@@ -13403,81 +13436,7 @@
             }
           ],
           "work": "deep-freeze-lisa-jackson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0038AAVZ8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Deep Freeze"
-    },
-    "deep-freeze-virgil-flowers-book-10": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-sandford"
-      ],
-      "genres": [
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "deep-freeze-virgil-flowers-book-10",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eric-conger-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B074F3TJQ1",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91unMGWT13L.jpg",
-          "id": "eric-conger-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eric-conger"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2017-10-17",
-          "runtime_min": 602,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B074F3TJQ1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "deep-freeze-virgil-flowers-book-10"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B074F3TJQ1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Deep Freeze: Virgil Flowers, Book 10"
-    },
-    "deep-freeze-west-coast-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "lisa-jackson"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "deep-freeze-west-coast-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "christina-traister-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -13756,17 +13715,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "deep-freeze-west-coast-book-1"
+          "work": "deep-freeze-lisa-jackson"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0038AAVZ8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1713507153",
           "type": "libex-import"
         }
       ],
-      "title": "Deep Freeze: West Coast, Book 1"
+      "title": "Deep Freeze"
     }
   }
 }

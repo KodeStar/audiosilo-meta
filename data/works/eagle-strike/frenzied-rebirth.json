@@ -10336,6 +10336,7 @@
         "melissa-wright"
       ],
       "genres": [
+        "childrens",
         "epic-fantasy",
         "fantasy",
         "young-adult"
@@ -10468,12 +10469,142 @@
             }
           ],
           "work": "frey"
+        },
+        "heidi-baker-2012": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B00ANON0YQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 7988,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 848132,
+              "start_ms": 7988,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1202561,
+              "start_ms": 856120,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 895083,
+              "start_ms": 2058681,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1078474,
+              "start_ms": 2953764,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 755484,
+              "start_ms": 4032238,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 806336,
+              "start_ms": 4787722,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1835305,
+              "start_ms": 5594058,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2471439,
+              "start_ms": 7429363,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2595527,
+              "start_ms": 9900802,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2351067,
+              "start_ms": 12496329,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1808742,
+              "start_ms": 14847396,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2106236,
+              "start_ms": 16656138,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1007885,
+              "start_ms": 18762374,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1497501,
+              "start_ms": 19770259,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3610796,
+              "start_ms": 21267760,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1172097,
+              "start_ms": 24878556,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 595963,
+              "start_ms": 26050653,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 19365,
+              "start_ms": 26646616,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TJTpd+CrL.jpg",
+          "id": "heidi-baker-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "heidi-baker"
+          ],
+          "publisher": "Melissa Wright",
+          "release_date": "2012-12-14",
+          "runtime_min": 444,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B00ANON0YQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "frey"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B09W81RW3Z",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00ANON0YQ",
           "type": "libex-import"
         }
       ],

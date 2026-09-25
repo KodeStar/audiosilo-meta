@@ -1734,6 +1734,10 @@
             {
               "asin": "849105409X",
               "region": "es"
+            },
+            {
+              "asin": "B07C65QX4Q",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -1823,6 +1827,11 @@
               "imported_at": "2026-07-29",
               "ref": "849105409X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07C65QX4Q",
+              "type": "libex-import"
             }
           ],
           "work": "el-signo-de-los-cuatro"
@@ -1832,6 +1841,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "849105409X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07C65QX4Q",
           "type": "libex-import"
         }
       ],
@@ -1958,58 +1972,6 @@
         }
       ],
       "title": "El signo de los cuatro (Narración en Castellano) [The Sign of the Four]"
-    },
-    "el-signo-de-los-cuatro-the-sign-of-the-four": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arthur-conan-doyle",
-        "esther-tusquets-guillen"
-      ],
-      "genres": [
-        "classics",
-        "mystery"
-      ],
-      "id": "el-signo-de-los-cuatro-the-sign-of-the-four",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jordi-salas-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07C65QX4Q",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/717tPpJn-7L.jpg",
-          "id": "jordi-salas-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jordi-salas"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-04-26",
-          "runtime_min": 280,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07C65QX4Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-signo-de-los-cuatro-the-sign-of-the-four"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07C65QX4Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El signo de los cuatro [The Sign of the Four]"
     },
     "el-silencio-de-la-ciudad-blanca": {
       "added_at": "2026-07-29",
@@ -2407,6 +2369,7 @@
       "genres": [
         "hard-boiled",
         "mystery",
+        "psychological-thriller",
         "thriller-suspense"
       ],
       "id": "el-silencio-de-los-corderos",
@@ -2420,388 +2383,7 @@
             {
               "asin": "B085P1YRSL",
               "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17159,
-              "start_ms": 0,
-              "title": "Capítulo 1"
             },
-            {
-              "length_ms": 5456,
-              "start_ms": 17159,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 23312,
-              "start_ms": 22615,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 856003,
-              "start_ms": 45927,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 822381,
-              "start_ms": 901930,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1517098,
-              "start_ms": 1724311,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 499693,
-              "start_ms": 3241409,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 233174,
-              "start_ms": 3741102,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 730058,
-              "start_ms": 3974276,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 360048,
-              "start_ms": 4704334,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 1996358,
-              "start_ms": 5064382,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 767837,
-              "start_ms": 7060740,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 834385,
-              "start_ms": 7828577,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 1094170,
-              "start_ms": 8662962,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 1741682,
-              "start_ms": 9757132,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 698224,
-              "start_ms": 11498814,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 1405387,
-              "start_ms": 12197038,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 465769,
-              "start_ms": 13602425,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 361999,
-              "start_ms": 14068194,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 1203490,
-              "start_ms": 14430193,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 523586,
-              "start_ms": 15633683,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 663556,
-              "start_ms": 16157269,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 435815,
-              "start_ms": 16820825,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 359212,
-              "start_ms": 17256640,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 1308815,
-              "start_ms": 17615852,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 575204,
-              "start_ms": 18924667,
-              "title": "Capítulo 26"
-            },
-            {
-              "length_ms": 335667,
-              "start_ms": 19499871,
-              "title": "Capítulo 27"
-            },
-            {
-              "length_ms": 1367492,
-              "start_ms": 19835538,
-              "title": "Capítulo 28"
-            },
-            {
-              "length_ms": 618788,
-              "start_ms": 21203030,
-              "title": "Capítulo 29"
-            },
-            {
-              "length_ms": 588254,
-              "start_ms": 21821818,
-              "title": "Capítulo 30"
-            },
-            {
-              "length_ms": 776730,
-              "start_ms": 22410072,
-              "title": "Capítulo 31"
-            },
-            {
-              "length_ms": 244761,
-              "start_ms": 23186802,
-              "title": "Capítulo 32"
-            },
-            {
-              "length_ms": 270791,
-              "start_ms": 23431563,
-              "title": "Capítulo 33"
-            },
-            {
-              "length_ms": 631118,
-              "start_ms": 23702354,
-              "title": "Capítulo 34"
-            },
-            {
-              "length_ms": 883890,
-              "start_ms": 24333472,
-              "title": "Capítulo 35"
-            },
-            {
-              "length_ms": 583587,
-              "start_ms": 25217362,
-              "title": "Capítulo 36"
-            },
-            {
-              "length_ms": 2065461,
-              "start_ms": 25800949,
-              "title": "Capítulo 37"
-            },
-            {
-              "length_ms": 1460790,
-              "start_ms": 27866410,
-              "title": "Capítulo 38"
-            },
-            {
-              "length_ms": 1087529,
-              "start_ms": 29327200,
-              "title": "Capítulo 39"
-            },
-            {
-              "length_ms": 1282507,
-              "start_ms": 30414729,
-              "title": "Capítulo 40"
-            },
-            {
-              "length_ms": 180976,
-              "start_ms": 31697236,
-              "title": "Capítulo 41"
-            },
-            {
-              "length_ms": 878364,
-              "start_ms": 31878212,
-              "title": "Capítulo 42"
-            },
-            {
-              "length_ms": 643494,
-              "start_ms": 32756576,
-              "title": "Capítulo 43"
-            },
-            {
-              "length_ms": 777543,
-              "start_ms": 33400070,
-              "title": "Capítulo 44"
-            },
-            {
-              "length_ms": 334320,
-              "start_ms": 34177613,
-              "title": "Capítulo 45"
-            },
-            {
-              "length_ms": 274645,
-              "start_ms": 34511933,
-              "title": "Capítulo 46"
-            },
-            {
-              "length_ms": 255767,
-              "start_ms": 34786578,
-              "title": "Capítulo 47"
-            },
-            {
-              "length_ms": 233453,
-              "start_ms": 35042345,
-              "title": "Capítulo 48"
-            },
-            {
-              "length_ms": 1277585,
-              "start_ms": 35275798,
-              "title": "Capítulo 49"
-            },
-            {
-              "length_ms": 1398839,
-              "start_ms": 36553383,
-              "title": "Capítulo 50"
-            },
-            {
-              "length_ms": 233267,
-              "start_ms": 37952222,
-              "title": "Capítulo 51"
-            },
-            {
-              "length_ms": 709996,
-              "start_ms": 38185489,
-              "title": "Capítulo 52"
-            },
-            {
-              "length_ms": 390884,
-              "start_ms": 38895485,
-              "title": "Capítulo 53"
-            },
-            {
-              "length_ms": 447866,
-              "start_ms": 39286369,
-              "title": "Capítulo 54"
-            },
-            {
-              "length_ms": 1180038,
-              "start_ms": 39734235,
-              "title": "Capítulo 55"
-            },
-            {
-              "length_ms": 890601,
-              "start_ms": 40914273,
-              "title": "Capítulo 56"
-            },
-            {
-              "length_ms": 701939,
-              "start_ms": 41804874,
-              "title": "Capítulo 57"
-            },
-            {
-              "length_ms": 276108,
-              "start_ms": 42506813,
-              "title": "Capítulo 58"
-            },
-            {
-              "length_ms": 2047558,
-              "start_ms": 42782921,
-              "title": "Capítulo 59"
-            },
-            {
-              "length_ms": 404607,
-              "start_ms": 44830479,
-              "title": "Capítulo 60"
-            },
-            {
-              "length_ms": 493215,
-              "start_ms": 45235086,
-              "title": "Capítulo 61"
-            },
-            {
-              "length_ms": 604624,
-              "start_ms": 45728301,
-              "title": "Capítulo 62"
-            },
-            {
-              "length_ms": 165488,
-              "start_ms": 46332925,
-              "title": "Capítulo 63"
-            },
-            {
-              "length_ms": 427084,
-              "start_ms": 46498413,
-              "title": "Capítulo 64"
-            },
-            {
-              "length_ms": 26006,
-              "start_ms": 46925497,
-              "title": "Capítulo 65"
-            },
-            {
-              "length_ms": 49341,
-              "start_ms": 46951503,
-              "title": "Capítulo 66"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/814dHhgbDpL.jpg",
-          "id": "pau-ferrer-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pau-ferrer"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2020-03-26",
-          "runtime_min": 783,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085P1YRSL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-silencio-de-los-corderos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085P1YRSL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El silencio de los corderos"
-    },
-    "el-silencio-de-los-corderos-the-silence-of-the-lambs": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "montserrat-conill-marfa",
-        "thomas-harris"
-      ],
-      "genres": [
-        "mystery",
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "el-silencio-de-los-corderos-the-silence-of-the-lambs",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "pau-ferrer-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "8466352198",
               "region": "us"
@@ -3152,21 +2734,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B085P1YRSL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "8466352198",
               "type": "libex-import"
             }
           ],
-          "work": "el-silencio-de-los-corderos-the-silence-of-the-lambs"
+          "work": "el-silencio-de-los-corderos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085P1YRSL",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "8466352198",
           "type": "libex-import"
         }
       ],
-      "title": "El silencio de los corderos [The Silence of the Lambs]"
+      "title": "El silencio de los corderos"
     },
     "el-silencio-en-sus-ojos-the-silence-in-her-eyes": {
       "added_at": "2026-07-29",

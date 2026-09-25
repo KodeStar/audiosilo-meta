@@ -3505,7 +3505,8 @@
       "genres": [
         "childrens",
         "fantasy",
-        "horror"
+        "horror",
+        "paranormal"
       ],
       "id": "the-creeper",
       "language": "en",
@@ -3705,12 +3706,197 @@
             }
           ],
           "work": "the-creeper"
+        },
+        "simon-shepherd-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00O1GBTCC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 808820,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1199310,
+              "start_ms": 808820,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 663440,
+              "start_ms": 2008130,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 365900,
+              "start_ms": 2671570,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 857745,
+              "start_ms": 3037470,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 471550,
+              "start_ms": 3895215,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 754927,
+              "start_ms": 4366765,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1129186,
+              "start_ms": 5121692,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 440064,
+              "start_ms": 6250878,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 512000,
+              "start_ms": 6690942,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 195140,
+              "start_ms": 7202942,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1422547,
+              "start_ms": 7398082,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 462727,
+              "start_ms": 8820629,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 363670,
+              "start_ms": 9283356,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 888720,
+              "start_ms": 9647026,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 579477,
+              "start_ms": 10535746,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1064960,
+              "start_ms": 11115223,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 495699,
+              "start_ms": 12180183,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 684477,
+              "start_ms": 12675882,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 412618,
+              "start_ms": 13360359,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 541303,
+              "start_ms": 13772977,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 296565,
+              "start_ms": 14314280,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 585885,
+              "start_ms": 14610845,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 341333,
+              "start_ms": 15196730,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 592387,
+              "start_ms": 15538063,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 468160,
+              "start_ms": 16130450,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 558579,
+              "start_ms": 16598610,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 883101,
+              "start_ms": 17157189,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1768338,
+              "start_ms": 18040290,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 491124,
+              "start_ms": 19808628,
+              "title": "Chapter 30"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/918AGqJS7lL.jpg",
+          "id": "simon-shepherd-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-shepherd"
+          ],
+          "publisher": "Audible Studios for Bloomsbury",
+          "release_date": "2014-09-30",
+          "runtime_min": 338,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00O1GBTCC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-creeper"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0G3PRSKPV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00O1GBTCC",
           "type": "libex-import"
         }
       ],

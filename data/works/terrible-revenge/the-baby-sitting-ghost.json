@@ -5196,6 +5196,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "angela-dawe-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "166502254X",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OzWgi3OlL.jpg",
+          "id": "angela-dawe-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angela-dawe"
+          ],
+          "publisher": "CP Publishing LLC",
+          "release_date": "2021-02-16",
+          "runtime_min": 508,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "166502254X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-bachelor-carly-phillips"
+        },
         "william-dufris-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5302,6 +5330,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002UZN2WQ",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "166502254X",
+          "type": "libex-import"
         }
       ],
       "title": "The Bachelor"
@@ -5357,56 +5390,6 @@
         }
       ],
       "title": "The Bachelor Contract"
-    },
-    "the-bachelor-the-chandler-brothers-series-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carly-phillips"
-      ],
-      "genres": [
-        "romance"
-      ],
-      "id": "the-bachelor-the-chandler-brothers-series-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "angela-dawe-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "166502254X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91OzWgi3OlL.jpg",
-          "id": "angela-dawe-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "angela-dawe"
-          ],
-          "publisher": "CP Publishing LLC",
-          "release_date": "2021-02-16",
-          "runtime_min": 508,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "166502254X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-bachelor-the-chandler-brothers-series-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "166502254X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Bachelor: The Chandler Brothers Series, Book 1"
     },
     "the-bachelors": {
       "added_at": "2026-07-29",

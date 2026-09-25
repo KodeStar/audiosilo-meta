@@ -4751,6 +4751,7 @@
         "juliet-marillier"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy",
         "historical-fiction",
@@ -5011,30 +5012,7 @@
             }
           ],
           "work": "the-harp-of-kings"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1501992074",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Harp of Kings"
-    },
-    "the-harp-of-kings-a-warrior-bards-novel-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "juliet-marillier"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "the-harp-of-kings-a-warrior-bards-novel-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "imogen-sage-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5298,17 +5276,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-harp-of-kings-a-warrior-bards-novel-1"
+          "work": "the-harp-of-kings"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1501992074",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1760788937",
           "type": "libex-import"
         }
       ],
-      "title": "The Harp of Kings: A Warrior Bards Novel 1"
+      "title": "The Harp of Kings"
     },
     "the-harp-of-power": {
       "added_at": "2026-08-02",

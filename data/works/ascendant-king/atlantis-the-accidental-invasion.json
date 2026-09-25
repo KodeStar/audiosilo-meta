@@ -4674,6 +4674,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "historical-romance",
         "romance",
         "romantic-suspense"
       ],
@@ -4688,76 +4689,7 @@
             {
               "asin": "B0C9K6SWHD",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81JWWIulpuL.jpg",
-          "id": "anna-palleja-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anna-palleja",
-            "luis-grau",
-            "marcel-navarro"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-06-29",
-          "runtime_min": 1570,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0C9K6SWHD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "atlas-la-historia-de-pa-salt"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0C9K6SWHD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Atlas. La historia de Pa Salt"
-    },
-    "atlas-la-historia-de-pa-salt-atlas-the-story-of-pa-salt": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "lucinda-riley",
-        "harry-whittaker",
-        "ana-isabel-sanchez-diez",
-        "teofilo-de-lozoya",
-        "juan-rabasseda-gascon"
-      ],
-      "credits": [
-        {
-          "person": "ana-isabel-sanchez-diez",
-          "role": "translator"
-        },
-        {
-          "person": "juan-rabasseda-gascon",
-          "role": "translator"
-        },
-        {
-          "person": "teofilo-de-lozoya",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "atlas-la-historia-de-pa-salt-atlas-the-story-of-pa-salt",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anna-palleja-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0C9K3PZ9W",
               "region": "us"
@@ -4778,21 +4710,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0C9K6SWHD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0C9K3PZ9W",
               "type": "libex-import"
             }
           ],
-          "work": "atlas-la-historia-de-pa-salt-atlas-the-story-of-pa-salt"
+          "work": "atlas-la-historia-de-pa-salt"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0C9K6SWHD",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0C9K3PZ9W",
           "type": "libex-import"
         }
       ],
-      "title": "Atlas. La historia de Pa Salt [Atlas: The Story of Pa Salt]"
+      "title": "Atlas. La historia de Pa Salt"
     },
     "atlas-lhistoire-de-pa-salt": {
       "added_at": "2026-07-29",

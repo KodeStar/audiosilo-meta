@@ -16259,10 +16259,12 @@
       ],
       "genres": [
         "comedy-humor",
+        "fantasy",
         "mystery",
         "paranormal",
         "romance",
-        "thriller-suspense"
+        "thriller-suspense",
+        "womens-fiction"
       ],
       "id": "wicked-business",
       "language": "en",
@@ -16274,6 +16276,10 @@
           "asin": [
             {
               "asin": "B0089O4J3I",
+              "region": "us"
+            },
+            {
+              "asin": "B008FCVEQY",
               "region": "us"
             }
           ],
@@ -16434,6 +16440,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0089O4J3I",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B008FCVEQY",
+              "type": "libex-import"
             }
           ],
           "work": "wicked-business"
@@ -16444,193 +16455,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0089O4J3I",
           "type": "libex-import"
-        }
-      ],
-      "title": "Wicked Business"
-    },
-    "wicked-business-wicked-series-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "janet-evanovich"
-      ],
-      "genres": [
-        "fantasy",
-        "mystery",
-        "womens-fiction"
-      ],
-      "id": "wicked-business-wicked-series-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lorelei-king-2012": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B008FCVEQY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 736630,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 947792,
-              "start_ms": 736630,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 659818,
-              "start_ms": 1684422,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 595824,
-              "start_ms": 2344240,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 722326,
-              "start_ms": 2940064,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 600932,
-              "start_ms": 3662390,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 648580,
-              "start_ms": 4263322,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 846878,
-              "start_ms": 4911902,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 563641,
-              "start_ms": 5758780,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1003752,
-              "start_ms": 6322421,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1017080,
-              "start_ms": 7326173,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 765144,
-              "start_ms": 8343253,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1199450,
-              "start_ms": 9108397,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 784649,
-              "start_ms": 10307847,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 729664,
-              "start_ms": 11092496,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 827513,
-              "start_ms": 11822160,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1288429,
-              "start_ms": 12649673,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 629307,
-              "start_ms": 13938102,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 858210,
-              "start_ms": 14567409,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 881197,
-              "start_ms": 15425619,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 915516,
-              "start_ms": 16306816,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 583192,
-              "start_ms": 17222332,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 949418,
-              "start_ms": 17805524,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 861321,
-              "start_ms": 18754942,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 718750,
-              "start_ms": 19616263,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1312020,
-              "start_ms": 20335013,
-              "title": "Chapter 26"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51MtTDG4X1L.jpg",
-          "id": "lorelei-king-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lorelei-king"
-          ],
-          "publisher": "Review",
-          "release_date": "2012-06-28",
-          "runtime_min": 360,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B008FCVEQY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "wicked-business-wicked-series-book-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B008FCVEQY",
           "type": "libex-import"
         }
       ],
-      "title": "Wicked Business (Wicked Series, Book 2)"
+      "title": "Wicked Business"
     },
     "wicked-by-design": {
       "added_at": "2026-08-02",

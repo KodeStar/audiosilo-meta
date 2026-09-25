@@ -6488,6 +6488,8 @@
         "rj-blain"
       ],
       "genres": [
+        "classics",
+        "comedy-humor",
         "fantasy",
         "paranormal",
         "romance",
@@ -6498,6 +6500,91 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "courtney-holly-2019": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B07MMP29LC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16068,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 747171,
+              "start_ms": 16068,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 627170,
+              "start_ms": 763239,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 747171,
+              "start_ms": 1390409,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 923178,
+              "start_ms": 2137580,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 887188,
+              "start_ms": 3060758,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 635158,
+              "start_ms": 3947946,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1109170,
+              "start_ms": 4583104,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1043179,
+              "start_ms": 5692274,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 714152,
+              "start_ms": 6735453,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 25123,
+              "start_ms": 7449605,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914SzIJYumL.jpg",
+          "id": "courtney-holly-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "courtney-holly"
+          ],
+          "publisher": "Pen & Page Publishing",
+          "release_date": "2019-01-16",
+          "runtime_min": 124,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07MMP29LC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hearth-home-and-havoc"
+        },
         "courtney-holly-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6589,120 +6676,14 @@
           "imported_at": "2026-08-01",
           "ref": "B0CDFC62QT",
           "type": "libex-import"
-        }
-      ],
-      "title": "Hearth, Home, and Havoc"
-    },
-    "hearth-home-and-havoc-a-magical-romantic-comedy-with-a-body-count": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "rj-blain"
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "hearth-home-and-havoc-a-magical-romantic-comedy-with-a-body-count",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "courtney-holly-2019": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07MMP29LC",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16068,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 747171,
-              "start_ms": 16068,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 627170,
-              "start_ms": 763239,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 747171,
-              "start_ms": 1390409,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 923178,
-              "start_ms": 2137580,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 887188,
-              "start_ms": 3060758,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 635158,
-              "start_ms": 3947946,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1109170,
-              "start_ms": 4583104,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1043179,
-              "start_ms": 5692274,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 714152,
-              "start_ms": 6735453,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 25123,
-              "start_ms": 7449605,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/914SzIJYumL.jpg",
-          "id": "courtney-holly-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "courtney-holly"
-          ],
-          "publisher": "Pen & Page Publishing",
-          "release_date": "2019-01-16",
-          "runtime_min": 124,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07MMP29LC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hearth-home-and-havoc-a-magical-romantic-comedy-with-a-body-count"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B07MMP29LC",
           "type": "libex-import"
         }
       ],
-      "title": "Hearth, Home, and Havoc: A Magical Romantic Comedy (With a Body Count)"
+      "title": "Hearth, Home, and Havoc"
     },
     "hearth-home-witchcraft": {
       "added_at": "2026-07-29",

@@ -5048,7 +5048,8 @@
         "action-adventure",
         "childrens",
         "coming-of-age",
-        "fantasy"
+        "fantasy",
+        "mystery"
       ],
       "id": "the-monster",
       "language": "en",
@@ -5060,6 +5061,10 @@
           "asin": [
             {
               "asin": "B00875CNOG",
+              "region": "us"
+            },
+            {
+              "asin": "B008FPLAS8",
               "region": "us"
             }
           ],
@@ -5205,6 +5210,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00875CNOG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B008FPLAS8",
+              "type": "libex-import"
             }
           ],
           "work": "the-monster"
@@ -5214,6 +5224,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00875CNOG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B008FPLAS8",
           "type": "libex-import"
         }
       ],

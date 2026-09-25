@@ -8970,6 +8970,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648805655",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3562335,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3274106,
+              "start_ms": 3562335,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3296769,
+              "start_ms": 6836441,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3081658,
+              "start_ms": 10133210,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EHibXcNmL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 221,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648805655",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648805655",
+              "type": "libex-import"
+            }
+          ],
+          "work": "return-of-the-mountain-man"
+        },
         "j-rodney-turner-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9121,81 +9176,7 @@
           "imported_at": "2026-07-29",
           "ref": "1541432592",
           "type": "libex-import"
-        }
-      ],
-      "title": "Return of the Mountain Man"
-    },
-    "return-of-the-mountain-man-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "return-of-the-mountain-man-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648805655",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3562335,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3274106,
-              "start_ms": 3562335,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3296769,
-              "start_ms": 6836441,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3081658,
-              "start_ms": 10133210,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81EHibXcNmL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 221,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648805655",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648805655",
-              "type": "libex-import"
-            }
-          ],
-          "work": "return-of-the-mountain-man-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648805655",
@@ -9207,7 +9188,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Return of the Mountain Man [Dramatized Adaptation]"
+      "title": "Return of the Mountain Man"
     },
     "return-of-the-paladin": {
       "added_at": "2026-08-01",

@@ -3299,150 +3299,11 @@
       ],
       "genres": [
         "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "the-sky-liners",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jason-culp-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA8NRY",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1369931,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1304172,
-              "start_ms": 1369931,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1429142,
-              "start_ms": 2674103,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1014805,
-              "start_ms": 4103245,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1308026,
-              "start_ms": 5118050,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1306773,
-              "start_ms": 6426076,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1191277,
-              "start_ms": 7732849,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1483244,
-              "start_ms": 8924126,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1168382,
-              "start_ms": 10407370,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1043876,
-              "start_ms": 11575752,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 910408,
-              "start_ms": 12619628,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 999898,
-              "start_ms": 13530036,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1415303,
-              "start_ms": 14529934,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1221834,
-              "start_ms": 15945237,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1326092,
-              "start_ms": 17167071,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1522904,
-              "start_ms": 18493163,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 974681,
-              "start_ms": 20016067,
-              "title": "Chapter 17"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91J-hqHGjiL.jpg",
-          "id": "jason-culp-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jason-culp"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2008-08-25",
-          "runtime_min": 349,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA8NRY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sky-liners"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA8NRY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Sky-liners"
-    },
-    "the-sky-liners-the-sacketts": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "louis-lamour"
-      ],
-      "genres": [
-        "action-adventure",
         "education",
         "historical-fiction",
         "westerns"
       ],
-      "id": "the-sky-liners-the-sacketts",
+      "id": "the-sky-liners",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -3569,17 +3430,137 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sky-liners-the-sacketts"
+          "work": "the-sky-liners"
+        },
+        "jason-culp-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA8NRY",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1369931,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1304172,
+              "start_ms": 1369931,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1429142,
+              "start_ms": 2674103,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1014805,
+              "start_ms": 4103245,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1308026,
+              "start_ms": 5118050,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1306773,
+              "start_ms": 6426076,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1191277,
+              "start_ms": 7732849,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1483244,
+              "start_ms": 8924126,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1168382,
+              "start_ms": 10407370,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1043876,
+              "start_ms": 11575752,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 910408,
+              "start_ms": 12619628,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 999898,
+              "start_ms": 13530036,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1415303,
+              "start_ms": 14529934,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1221834,
+              "start_ms": 15945237,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1326092,
+              "start_ms": 17167071,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1522904,
+              "start_ms": 18493163,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 974681,
+              "start_ms": 20016067,
+              "title": "Chapter 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91J-hqHGjiL.jpg",
+          "id": "jason-culp-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jason-culp"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2008-08-25",
+          "runtime_min": 349,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA8NRY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-sky-liners"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA8NRY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002VAA10G",
           "type": "libex-import"
         }
       ],
-      "title": "The Sky-liners: The Sacketts"
+      "title": "The Sky-liners"
     },
     "the-sky-of-endless-blue": {
       "added_at": "2026-07-29",

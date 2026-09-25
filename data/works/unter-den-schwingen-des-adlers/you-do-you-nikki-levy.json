@@ -8325,8 +8325,10 @@
         "michael-anderle"
       ],
       "genres": [
+        "legal-thriller",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "thriller-suspense"
       ],
       "id": "you-have-been-judged",
       "language": "en",
@@ -8486,33 +8488,7 @@
             }
           ],
           "work": "you-have-been-judged"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BRLBMC1S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "You Have Been Judged"
-    },
-    "you-have-been-judged-a-space-opera": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "craig-martelle",
-        "michael-anderle"
-      ],
-      "genres": [
-        "legal-thriller",
-        "science-fiction",
-        "space-opera",
-        "thriller-suspense"
-      ],
-      "id": "you-have-been-judged-a-space-opera",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "katharine-mcewan-2019": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -8666,17 +8642,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "you-have-been-judged-a-space-opera"
+          "work": "you-have-been-judged"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BRLBMC1S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B07ML4TW3Y",
           "type": "libex-import"
         }
       ],
-      "title": "You Have Been Judged: A Space Opera"
+      "title": "You Have Been Judged"
     },
     "you-have-come-so-far": {
       "added_at": "2026-07-29",

@@ -5559,7 +5559,9 @@
         "coming-of-age",
         "epic-fantasy",
         "fantasy",
-        "sword-sorcery"
+        "sword-sorcery",
+        "urban-fantasy",
+        "young-adult"
       ],
       "id": "queenslayer",
       "language": "en",
@@ -5571,6 +5573,10 @@
           "asin": [
             {
               "asin": "1549153668",
+              "region": "us"
+            },
+            {
+              "asin": "1471408566",
               "region": "us"
             }
           ],
@@ -5936,6 +5942,11 @@
               "imported_at": "2026-08-02",
               "ref": "1549153668",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1471408566",
+              "type": "libex-import"
             }
           ],
           "work": "queenslayer"
@@ -5945,6 +5956,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1549153668",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1471408566",
           "type": "libex-import"
         }
       ],

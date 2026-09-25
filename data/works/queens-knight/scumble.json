@@ -239,6 +239,11 @@
       "authors": [
         "tim-winton"
       ],
+      "genres": [
+        "arts-entertainment",
+        "childrens",
+        "music"
+      ],
       "id": "scumbuster",
       "language": "en",
       "license": "CC0-1.0",
@@ -437,12 +442,62 @@
             }
           ],
           "work": "scumbuster"
+        },
+        "stig-wemyss-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5GPVA",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3607127,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3612607,
+              "start_ms": 3607127,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3172357,
+              "start_ms": 7219734,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wS-Paha1L.jpg",
+          "id": "stig-wemyss-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stig-wemyss"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2008-10-31",
+          "runtime_min": 173,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5GPVA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "scumbuster"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B09WRTNPWD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5GPVA",
           "type": "libex-import"
         }
       ],
@@ -2994,7 +3049,9 @@
       "genres": [
         "espionage",
         "hard-boiled",
-        "mystery"
+        "mystery",
+        "politics",
+        "thriller-suspense"
       ],
       "id": "se-lo-decimos-a-la-presidenta",
       "language": "es",
@@ -3007,6 +3064,10 @@
             {
               "asin": "B09LFTHCGP",
               "region": "es"
+            },
+            {
+              "asin": "B09LG4Z9KM",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -3131,6 +3192,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09LFTHCGP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09LG4Z9KM",
+              "type": "libex-import"
             }
           ],
           "work": "se-lo-decimos-a-la-presidenta"
@@ -3141,61 +3207,14 @@
           "imported_at": "2026-07-29",
           "ref": "B09LFTHCGP",
           "type": "libex-import"
-        }
-      ],
-      "title": "¿Se lo decimos a la presidenta?"
-    },
-    "se-lo-decimos-a-la-presidenta-do-we-tell-the-president": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jeffrey-archer"
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "se-lo-decimos-a-la-presidenta-do-we-tell-the-president",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "montserrat-castro-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09LG4Z9KM",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81toKGajzTL.jpg",
-          "id": "montserrat-castro-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "montserrat-castro"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2021-11-11",
-          "runtime_min": 526,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09LG4Z9KM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "se-lo-decimos-a-la-presidenta-do-we-tell-the-president"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09LG4Z9KM",
           "type": "libex-import"
         }
       ],
-      "title": "¿Se lo decimos a la presidenta? [Do We Tell the President?]"
+      "title": "¿Se lo decimos a la presidenta?"
     },
     "se-ntilde-or-knightsbridge-mister-knightsbridge": {
       "added_at": "2026-07-29",

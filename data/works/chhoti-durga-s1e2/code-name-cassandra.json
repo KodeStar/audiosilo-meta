@@ -224,12 +224,159 @@
         "action-adventure",
         "childrens",
         "comedy-humor",
-        "nature"
+        "fantasy",
+        "nature",
+        "science-fiction"
       ],
       "id": "code-name-flood",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "caitlin-davies-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B06Y4BHWT1",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19132,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1140842,
+              "start_ms": 19132,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1647734,
+              "start_ms": 1159974,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2010848,
+              "start_ms": 2807708,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1600783,
+              "start_ms": 4818556,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 987312,
+              "start_ms": 6419339,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1362918,
+              "start_ms": 7406651,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1464459,
+              "start_ms": 8769569,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2152861,
+              "start_ms": 10234028,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1246400,
+              "start_ms": 12386889,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1191973,
+              "start_ms": 13633289,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2325757,
+              "start_ms": 14825262,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 842396,
+              "start_ms": 17151019,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 819525,
+              "start_ms": 17993415,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2266383,
+              "start_ms": 18812940,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1839484,
+              "start_ms": 21079323,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 703425,
+              "start_ms": 22918807,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 915702,
+              "start_ms": 23622232,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 867009,
+              "start_ms": 24537934,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 483184,
+              "start_ms": 25404943,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 919695,
+              "start_ms": 25888127,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1526642,
+              "start_ms": 26807822,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 38079,
+              "start_ms": 28334464,
+              "title": "Chapter 23"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81dIAgQAtCL.jpg",
+          "id": "caitlin-davies-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "caitlin-davies"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2017-05-30",
+          "runtime_min": 472,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B06Y4BHWT1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "code-name-flood"
+        },
         "penelope-rawlins-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -370,6 +517,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B06XRZMX3V",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B06Y4BHWT1",
           "type": "libex-import"
         }
       ],

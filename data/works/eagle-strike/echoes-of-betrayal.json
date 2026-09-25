@@ -2813,33 +2813,8 @@
             }
           ],
           "work": "echoes-of-enmity"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D345NYVM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Echoes of Enmity"
-    },
-    "echoes-of-enmity-alliance": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "stefanie-chu"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "self-help",
-        "young-adult"
-      ],
-      "id": "echoes-of-enmity-alliance",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-robert-2024": {
+        },
+        "andy-robert-2024-2": {
           "abridged": false,
           "added_at": "2026-08-01",
           "asin": [
@@ -2956,7 +2931,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81NzsnUiX3L.jpg",
-          "id": "andy-robert-2024",
+          "id": "andy-robert-2024-2",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -2972,17 +2947,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "echoes-of-enmity-alliance"
+          "work": "echoes-of-enmity"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D345NYVM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CS77936J",
           "type": "libex-import"
         }
       ],
-      "title": "Echoes of Enmity (Alliance)"
+      "title": "Echoes of Enmity"
     },
     "echoes-of-eras": {
       "added_at": "2026-07-29",

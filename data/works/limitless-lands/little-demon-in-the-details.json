@@ -4576,6 +4576,7 @@
         "h-beam-piper"
       ],
       "genres": [
+        "action-adventure",
         "science-fiction"
       ],
       "id": "little-fuzzy",
@@ -4692,6 +4693,121 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B074SXVWNQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "little-fuzzy"
+        },
+        "jim-roberts-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003MB94D8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1649174,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1916436,
+              "start_ms": 1649174,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1201726,
+              "start_ms": 3565610,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 840980,
+              "start_ms": 4767336,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2311314,
+              "start_ms": 5608316,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2024176,
+              "start_ms": 7919630,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1826110,
+              "start_ms": 9943806,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1680707,
+              "start_ms": 11769916,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1224899,
+              "start_ms": 13450623,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1467362,
+              "start_ms": 14675522,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1042297,
+              "start_ms": 16142884,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1699236,
+              "start_ms": 17185181,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 575019,
+              "start_ms": 18884417,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2220385,
+              "start_ms": 19459436,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 673843,
+              "start_ms": 21679821,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1172143,
+              "start_ms": 22353664,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 559972,
+              "start_ms": 23525807,
+              "title": "Chapter 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81qNIqWLQZL.jpg",
+          "id": "jim-roberts-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jim-roberts"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2009-12-27",
+          "runtime_min": 401,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003MB94D8",
               "type": "libex-import"
             }
           ],
@@ -4936,30 +5052,7 @@
             }
           ],
           "work": "little-fuzzy"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B074SXVWNQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Little Fuzzy"
-    },
-    "little-fuzzy-audible": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "h-beam-piper"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction"
-      ],
-      "id": "little-fuzzy-audible",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "peter-ganim-2008": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5033,154 +5126,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "little-fuzzy-audible"
+          "work": "little-fuzzy"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
+          "ref": "B074SXVWNQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
           "ref": "B002V0A8PE",
           "type": "libex-import"
-        }
-      ],
-      "title": "Little Fuzzy [Audible]"
-    },
-    "little-fuzzy-jimcin": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "h-beam-piper"
-      ],
-      "genres": [
-        "science-fiction"
-      ],
-      "id": "little-fuzzy-jimcin",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jim-roberts-2009": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B003MB94D8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1649174,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1916436,
-              "start_ms": 1649174,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1201726,
-              "start_ms": 3565610,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 840980,
-              "start_ms": 4767336,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2311314,
-              "start_ms": 5608316,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2024176,
-              "start_ms": 7919630,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1826110,
-              "start_ms": 9943806,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1680707,
-              "start_ms": 11769916,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1224899,
-              "start_ms": 13450623,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1467362,
-              "start_ms": 14675522,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1042297,
-              "start_ms": 16142884,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1699236,
-              "start_ms": 17185181,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 575019,
-              "start_ms": 18884417,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2220385,
-              "start_ms": 19459436,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 673843,
-              "start_ms": 21679821,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1172143,
-              "start_ms": 22353664,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 559972,
-              "start_ms": 23525807,
-              "title": "Chapter 17"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81qNIqWLQZL.jpg",
-          "id": "jim-roberts-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jim-roberts"
-          ],
-          "publisher": "Jimcin Recordings",
-          "release_date": "2009-12-27",
-          "runtime_min": 401,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B003MB94D8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "little-fuzzy-jimcin"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B003MB94D8",
           "type": "libex-import"
         }
       ],
-      "title": "Little Fuzzy [Jimcin]"
+      "title": "Little Fuzzy"
     },
     "little-gem": {
       "added_at": "2026-08-02",

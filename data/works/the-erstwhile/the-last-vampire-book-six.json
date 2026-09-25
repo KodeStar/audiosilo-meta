@@ -10214,199 +10214,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "laurence-bouvard-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1460794214",
-              "region": "us"
-            },
-            {
-              "asin": "000830341X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 26377,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 617465,
-              "start_ms": 26377,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1832890,
-              "start_ms": 643842,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3372094,
-              "start_ms": 2476732,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2246577,
-              "start_ms": 5848826,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3724132,
-              "start_ms": 8095403,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2804877,
-              "start_ms": 11819535,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3660300,
-              "start_ms": 14624412,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3526159,
-              "start_ms": 18284712,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2764010,
-              "start_ms": 21810871,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2849576,
-              "start_ms": 24574881,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3367915,
-              "start_ms": 27424457,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2932494,
-              "start_ms": 30792372,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 4074359,
-              "start_ms": 33724866,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 3976835,
-              "start_ms": 37799225,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 2366693,
-              "start_ms": 41776060,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 4187115,
-              "start_ms": 44142753,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 3219980,
-              "start_ms": 48329868,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 2407653,
-              "start_ms": 51549848,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 461891,
-              "start_ms": 53957501,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1253970,
-              "start_ms": 54419392,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1147181,
-              "start_ms": 55673362,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 793286,
-              "start_ms": 56820543,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 895454,
-              "start_ms": 57613829,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1885367,
-              "start_ms": 58509283,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1760303,
-              "start_ms": 60394650,
-              "title": "Chapter 26"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81YJDQBqgrL.jpg",
-          "id": "laurence-bouvard-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laurence-bouvard"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2019-06-17",
-          "runtime_min": 1035,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1460794214",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "000830341X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-last-widow"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1460794214",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Last Widow"
-    },
-    "the-last-widow-a-novel": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "karin-slaughter"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "the-last-widow-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "kathleen-early-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10605,17 +10412,191 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-last-widow-a-novel"
+          "work": "the-last-widow"
+        },
+        "laurence-bouvard-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1460794214",
+              "region": "us"
+            },
+            {
+              "asin": "000830341X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 26377,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 617465,
+              "start_ms": 26377,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1832890,
+              "start_ms": 643842,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3372094,
+              "start_ms": 2476732,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2246577,
+              "start_ms": 5848826,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3724132,
+              "start_ms": 8095403,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2804877,
+              "start_ms": 11819535,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3660300,
+              "start_ms": 14624412,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3526159,
+              "start_ms": 18284712,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2764010,
+              "start_ms": 21810871,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2849576,
+              "start_ms": 24574881,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3367915,
+              "start_ms": 27424457,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2932494,
+              "start_ms": 30792372,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4074359,
+              "start_ms": 33724866,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3976835,
+              "start_ms": 37799225,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2366693,
+              "start_ms": 41776060,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 4187115,
+              "start_ms": 44142753,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 3219980,
+              "start_ms": 48329868,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2407653,
+              "start_ms": 51549848,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 461891,
+              "start_ms": 53957501,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1253970,
+              "start_ms": 54419392,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1147181,
+              "start_ms": 55673362,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 793286,
+              "start_ms": 56820543,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 895454,
+              "start_ms": 57613829,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1885367,
+              "start_ms": 58509283,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1760303,
+              "start_ms": 60394650,
+              "title": "Chapter 26"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81YJDQBqgrL.jpg",
+          "id": "laurence-bouvard-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "laurence-bouvard"
+          ],
+          "publisher": "HarperAudio",
+          "release_date": "2019-06-17",
+          "runtime_min": 1035,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1460794214",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "000830341X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-last-widow"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1460794214",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1504780159",
           "type": "libex-import"
         }
       ],
-      "title": "The Last Widow: A Novel"
+      "title": "The Last Widow"
     },
     "the-last-wife": {
       "added_at": "2026-07-29",

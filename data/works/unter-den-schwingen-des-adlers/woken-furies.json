@@ -7564,6 +7564,7 @@
         "michelle-paver"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "fantasy",
         "historical-fiction",
@@ -7574,6 +7575,196 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ian-mckellen-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8LAFS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1140100,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 654617,
+              "start_ms": 1140100,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 769602,
+              "start_ms": 1794717,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 377603,
+              "start_ms": 2564319,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 753998,
+              "start_ms": 2941922,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1008071,
+              "start_ms": 3695920,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 591784,
+              "start_ms": 4703991,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 477217,
+              "start_ms": 5295775,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1067793,
+              "start_ms": 5772992,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 772667,
+              "start_ms": 6840785,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 628518,
+              "start_ms": 7613452,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 492588,
+              "start_ms": 8241970,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 944123,
+              "start_ms": 8734558,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 938829,
+              "start_ms": 9678681,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 373795,
+              "start_ms": 10617510,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 486690,
+              "start_ms": 10991305,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 708998,
+              "start_ms": 11477995,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1221416,
+              "start_ms": 12186993,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 806243,
+              "start_ms": 13408409,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 624570,
+              "start_ms": 14214652,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 763193,
+              "start_ms": 14839222,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 652945,
+              "start_ms": 15602415,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 560112,
+              "start_ms": 16255360,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 512325,
+              "start_ms": 16815472,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 560483,
+              "start_ms": 17327797,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 747404,
+              "start_ms": 17888280,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 538053,
+              "start_ms": 18635684,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 893782,
+              "start_ms": 19173737,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1115765,
+              "start_ms": 20067519,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 854912,
+              "start_ms": 21183284,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 446705,
+              "start_ms": 22038196,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 683735,
+              "start_ms": 22484901,
+              "title": "Chapter 32"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-Lw2bmHLL.jpg",
+          "id": "ian-mckellen-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ian-mckellen"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-02-17",
+          "runtime_min": 386,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8LAFS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wolf-brother"
+        },
         "ian-mckellen-2006": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7644,6 +7835,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0032N2T5Q",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8LAFS",
           "type": "libex-import"
         }
       ],

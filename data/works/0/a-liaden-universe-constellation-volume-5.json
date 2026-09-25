@@ -6336,6 +6336,7 @@
         "tracy-hewitt-meyer"
       ],
       "genres": [
+        "childrens",
         "coming-of-age",
         "parenting-relationships"
       ],
@@ -6507,30 +6508,7 @@
             }
           ],
           "work": "a-life-redefined"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09JTJZ333",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Life, Redefined"
-    },
-    "a-life-redefined-a-rowan-slone-novel": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "tracy-hewitt-meyer"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age"
-      ],
-      "id": "a-life-redefined-a-rowan-slone-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "becca-ballenger-2014": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6674,17 +6652,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-life-redefined-a-rowan-slone-novel"
+          "work": "a-life-redefined"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09JTJZ333",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B00K23Z91A",
           "type": "libex-import"
         }
       ],
-      "title": "A Life, Redefined (A Rowan Slone Novel)"
+      "title": "A Life, Redefined"
     },
     "a-life-that-matters": {
       "added_at": "2026-07-29",
