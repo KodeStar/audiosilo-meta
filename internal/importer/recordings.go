@@ -115,13 +115,12 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 // (workTitleCandidates), so a retailer's volume/production decoration cannot
 // hide a work we already have.
 //
-// Each title candidate walks the SAME slug-candidate chain getOrCreateWork
-// walks (workCandidates), the way findSeries mirrors getOrCreateSeries: a work
-// whose bare title slug was taken by a different author's book is stored under
+// Each title candidate is walked by mergeOnlyWalk, the create path's own
+// merge-only walk (the one resolveWork's full-title merge uses): a work whose bare
+// title slug was taken by a different author's book is stored under
 // "<title>-<author>", and probing only the bare slug would make that work - and
-// every alternate narration of it - invisible. The walk stops at the first slug
-// that does not exist, because getOrCreateWork would have claimed exactly that
-// slug, so nothing beyond it can be in the catalogue.
+// every alternate narration of it - invisible; and a title cut to fit MaxSlugLen
+// is no match, because the cut may have taken the volume number with it.
 //
 // The author set (and the CleanCreditName pass behind it) is built LAZILY, only
 // once a title candidate's bare slug actually hits: on an unfiltered dump the
@@ -149,14 +148,11 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 	// deliberately says nothing about.
 	rowLang, _ := mapLanguage(b.str("language"))
 	for _, title := range workTitleCandidates(b) {
-		base := Slugify(title)
-		if base == "" {
-			continue
-		}
-		// A RETIRED bare slug enters the chain too: getOrCreateWork judges it as
+		ts := slugOfTitle(title)
+		// A RETIRED bare slug enters the chain too: the create path judges it as
 		// its survivor (workAt), and this resolver may only ever attach to the work
 		// that path would have chosen.
-		if ws, via := p.workAt(base); ws == nil && via == "" {
+		if ts.fellBack || !p.bareSlugOccupied(ts.slug) {
 			continue
 		}
 		if !resolved {
@@ -171,40 +167,19 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 			resolved = true
 		}
 		titleHit = true
-		// No position probe: this resolver enters the chain only once the BARE
-		// title slug is taken (the gate above), so a work that sits solely on a
-		// suffixed slug is out of its reach either way. Giving it the probe without
-		// moving that gate would only look like it covers the case.
-		cands, primary := workCandidates(base, authors, positionClaim{})
-		var best *workState
-		bestKind, bestVia := matchNone, ""
-		for i, cand := range cands {
-			w, via := p.workAt(cand.slug)
-			if w == nil {
-				if via == "" && i >= primary { // free, and nothing beyond it was minted
-					break
-				}
-				continue
+		// NO WORK-LEVEL SERIES CLAIM (nil), deliberately and not by omission: the
+		// volume question is answered one level down, by addRecording's serial
+		// guard (seriesPosConflict), which compares the row's claim with the claims
+		// the work's RECORDINGS carry. Asking the create path's work-level veto here
+		// as well refuses the retailer-renumbered volume the title arbitration
+		// exists for - "Towerbound, Book 6" at Audible's position 8, a second
+		// narration of the work the catalogue places at 6, which this mode must
+		// attach (TestSerialGuardAgreesWithTheWorksPlacementInOneRun).
+		if w, ok := p.mergeOnlyWalk(title, ts, authors, rowLang, nil); ok {
+			if w.via != "" {
+				p.noteTombstone(model.RedirectWorks, w.via, w.ws.slug)
 			}
-			// The same grading the create path uses, so the mode can only ever
-			// attach a narration to the work getOrCreateWork would have chosen -
-			// language included, since a translation is a different work.
-			kind := matchWork(w, authors)
-			if kind == matchNone || !langCompatible(w.lang, rowLang) {
-				continue
-			}
-			if kind > bestKind {
-				best, bestKind, bestVia = w, kind, via
-			}
-			if bestKind == matchExact {
-				break
-			}
-		}
-		if best != nil {
-			if bestVia != "" {
-				p.noteTombstone(model.RedirectWorks, bestVia, best.slug)
-			}
-			return best, true
+			return w.ws, true
 		}
 	}
 	return nil, titleHit

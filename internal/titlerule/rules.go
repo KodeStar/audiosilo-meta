@@ -363,6 +363,14 @@ func trimStopwordTail(s string) string {
 // value a repair pass would write back.
 func CompareKey(cleaned string) string { return FoldKey(dropLeadingArticle(cleaned)) }
 
+// CompareKeyWhole is CompareKey over the WHOLE title: the same fold, without the
+// slug cap FoldKey inherits from Slugify. Two long titles that differ only past
+// the cap ("..., Book 3)" against "..., Book 4)") share a CompareKey and differ
+// here, which is what a caller judging a slug the cap cut has to ask.
+func CompareKeyWhole(title string) string {
+	return strings.ReplaceAll(model.SlugifyWhole(dropLeadingArticle(title)), "-", "")
+}
+
 // packagingWord is the vocabulary of words that describe a book's PACKAGING rather
 // than name it, in every language the catalogue holds. It is wideGenreFluff plus two
 // groups that must NOT be in that list:
