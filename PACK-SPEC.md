@@ -77,6 +77,12 @@ needs - and the driver itself refuses any file with no top-level `entries` objec
 because reading a missing one as empty turned that file into `{"entries":{}}` and
 reported success.
 
+The accounting is over JSON files only, which is what lets the core tree's one
+NON-JSON file, `data/go.mod`, sit at the data root unaccounted: it is a
+code-free nested Go module whose only job is to keep the catalogue out of the
+code module's zip (see that file's comment and CLAUDE.md's `data/` entry). No
+family, no reader and no writer sees it.
+
 ### Tree profiles (which families a root holds)
 
 A data root need not hold all four. The CC BY-SA community layer moved to a
