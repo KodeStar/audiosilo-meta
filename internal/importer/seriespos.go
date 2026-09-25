@@ -165,7 +165,7 @@ func sameSeriesName(a, b string) bool {
 // the source's, unless the row's own TITLE states a different volume for that
 // series, in which case the title wins (Part 2).
 //
-// The title is read through titlerule.StatedVolume against the series NAME the
+// The title is read through titlerule.ClaimedVolume against the series NAME the
 // row states - the same call, on the same two strings, that the
 // duplicate-identity guard's positive volume test makes (dupidentity.go), so the
 // two readings of one title cannot disagree about which volume it claims to be.
@@ -218,7 +218,7 @@ func statedVolumePosition(r seriesRef, title string) (string, bool) {
 	if !titlerule.HasVolumeMarker(title) {
 		return "", false
 	}
-	v, stated := titlerule.StatedVolume(title, r.name)
+	v, stated := titlerule.ClaimedVolume(title, r.name)
 	if !stated {
 		return "", false
 	}

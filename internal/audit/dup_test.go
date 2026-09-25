@@ -301,8 +301,10 @@ func TestWorkDupWithholdsAMergeWhenTheTitlesStateWordVolumes(t *testing.T) {
 // numbered in words used to conflict through the division sequence while the primary
 // probe read neither, and the note rendered as "volume numbers stated in the titles: "
 // with nothing after the colon. A title the primary probe cannot read at all (a plural
-// "Books 1-3") is labelled by its sequence instead, and a NESTED sequence is shown whole,
-// since its first number is exactly what the siblings share.
+// "Books 1-3") is labelled by its sequence instead, a NESTED sequence is shown whole beside
+// the primary, and two members that conflict never collapse onto one label - the last case
+// is one sequence spelled two ways, whose PRIMARIES differ (the digit tier reads "Episode 2"
+// before the word "Part One").
 func TestWorkDupVolumeConflictNoteNamesTheVolumes(t *testing.T) {
 	for _, c := range []struct {
 		name         string
@@ -311,8 +313,9 @@ func TestWorkDupVolumeConflictNoteNamesTheVolumes(t *testing.T) {
 		wantA, wantB string
 	}{
 		{"word-numbered seasons", "Wildwood (Season One)", "Wildwood (Season Two)", "1 (wildwood-a)", "2 (wildwood-b)"},
-		{"nested divisions", "Wildwood (Part One, Episode 2)", "Wildwood (Part One, Episode 3)", "1/2 (wildwood-a)", "1/3 (wildwood-b)"},
-		{"plural marker only", "Wildwood (Books 1-3)", "Wildwood (Books 4-6)", "1 (wildwood-a)", "4 (wildwood-b)"},
+		{"nested divisions", "Wildwood (Part One, Episode 2)", "Wildwood (Part One, Episode 3)", "2 [1/2] (wildwood-a)", "3 [1/3] (wildwood-b)"},
+		{"plural marker only", "Wildwood (Books 1-3)", "Wildwood (Books 4-6)", "[1] (wildwood-a)", "[4] (wildwood-b)"},
+		{"one sequence, two primaries", "Wildwood (Part One, Episode 2)", "Wildwood (Part 1, Episode 2)", "2 [1/2] (wildwood-a)", "1 [1/2] (wildwood-b)"},
 	} {
 		t.Run(c.name, func(t *testing.T) {
 			rep := runFixture(t, map[string]string{

@@ -275,6 +275,35 @@ func TestTitleVolumeBeatsADisagreeingSourcePosition(t *testing.T) {
 	}
 }
 
+// WHICH marker a title states as its volume is titlerule.StatedVolume's TIER order
+// (issue #2258), and placement reads it: a volume marker outranks a division marker
+// in any spelling. Two pins, both deliberate:
+//
+//   - "Season 1 - Ep. 3" is volume 3 - the nested serial shape the tiers were kept
+//     for (the flat "earliest marker wins" read 1 and would have moved a correctly
+//     placed episode 3 to slot 1);
+//   - "Book Two, Season 3" is volume 2 - a reading the tier order CHANGED from main's
+//     arm order, which tried the division digits before the word arm and read 3. No
+//     title on the tree carries that combination; this pins where such a row lands.
+func TestTitleVolumeTierDecidesPlacement(t *testing.T) {
+	sum, dataDir := runSeriesBooks(t, towerboundExport("Towerbound: Season 1 - Ep. 3", "3"), Options{})
+	if line, found := warningWith(sum, "disagrees with the title"); found {
+		t.Errorf("the episode agrees with the source, so nothing is arbitrated: %q", line)
+	}
+	if got := seriesSlots(t, dataDir, towerboundSeriesFile)["towerbound-season-1-ep-3"]; got != "3" {
+		t.Errorf("episode placed at %q, want 3", got)
+	}
+
+	sum, dataDir = runSeriesBooks(t, towerboundExport("Towerbound, Book Two, Season 3", "3"), Options{})
+	want := `series "Towerbound": source position "3" disagrees with the title's Book 2; placed at 2`
+	if line, found := warningWith(sum, "disagrees with the title"); !found || !strings.HasSuffix(line, want) {
+		t.Errorf("warning = %q, want one ending %q", line, want)
+	}
+	if got := seriesSlots(t, dataDir, towerboundSeriesFile)["towerbound-book-two-season-3"]; got != "2" {
+		t.Errorf("placed at %q, want 2", got)
+	}
+}
+
 // Agreement is not news: the two say the same thing, so nothing is warned about
 // and the position is the one it always was.
 func TestTitleVolumeAgreeingWithTheSourceIsSilent(t *testing.T) {

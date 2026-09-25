@@ -72,7 +72,8 @@ import (
 //     of them (the bare-series-name serial shape);
 //   - the POSITIVE VOLUME test: a title that STATES which volume it is is only a
 //     duplicate of a work the catalogue places at that volume - silence is a veto, not
-//     agreement (placesMatch here, seriesClaim.places there);
+//     agreement (placesMatch here, seriesClaim.places there), and on both sides the
+//     title is read through titlerule.ClaimedVolume, the writers' reading;
 //   - COLLECTION: a boxed set is not the volume it collects (applied inside
 //     check.WorkIdentity.matches, so both writers and the census inherit it).
 //
@@ -103,7 +104,7 @@ type titleContext struct {
 	// seriesRec is the catalogued series record, or nil - the positions half of the
 	// series-volume gate, which only a record we hold can answer.
 	seriesRec *model.Series
-	// statesVolume: the title itself says which volume it is (titlerule.StatedVolume,
+	// statesVolume: the title itself says which volume it is (titlerule.ClaimedVolume,
 	// against series when one resolved and against nothing when none did). A title
 	// that states a volume is making a claim, and the catalogue can only confirm it
 	// through a series record - so the two gates below treat an UNCONFIRMED claim as a
@@ -177,7 +178,7 @@ func (c *composer) titleContextFor(title, formSeries string) titleContext {
 	// The volume the title states - against the series it is read against, which may
 	// be nothing at all: "Hammered, Book 7" states volume 7 whether or not a series
 	// resolved, and that claim is exactly what the gates must not ignore.
-	ctx.volume, ctx.statesVolume = titlerule.StatedVolume(title, ctx.series)
+	ctx.volume, ctx.statesVolume = titlerule.ClaimedVolume(title, ctx.series)
 	if ctx.statesVolume && ctx.seriesRec != nil {
 		ctx.memberAt, _ = workAtPosition(ctx.seriesRec, ctx.volume)
 	}

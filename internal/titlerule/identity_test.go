@@ -305,6 +305,10 @@ func TestStatedVolumeReadsWordVolumes(t *testing.T) {
 // it all along while StatedVolume stated nothing, so a volume-conflict cluster of
 // such titles was filed with a note naming no volume at all - and every gate that
 // asks StatedVolume for a volume was blind to it.
+//
+// It is read only in MARKER POSITION: the division words are ordinary title words,
+// and a reading is not free - the writers' positive test turns a stated volume into
+// a CREATE (see TestStatedVolumeReadsNoOrdinaryTitleWordAsAVolume).
 func TestStatedVolumeReadsWordNumberedDivisions(t *testing.T) {
 	for _, c := range []struct {
 		title, series string
@@ -315,24 +319,23 @@ func TestStatedVolumeReadsWordNumberedDivisions(t *testing.T) {
 		{"Wildwood, Level Three", "", 3},
 		{"Powder River - Season Four", "Powder River", 4},
 		{"Jago & Litefoot: Series Seven", "Jago & Litefoot", 7},
-		{"Dad's Army: Complete Radio Series Two", "Dad's Army", 2},
+		{"Stranger Things, Season One: The Junior Novelization", "", 1},
+		{"The Lucid - Season One: The Beginning", "The Lucid", 1},
+		{"Supermind: Season One - The Brain Drain", "Supermind", 1},
+		{"Nameless: Season One (Unabridged)", "", 1},
 		{"Pimsleur Albanian, Unit Twelve", "", 12},
-		{"Chronicle, Season One Hundred", "", 0}, // a composite number is refused, as in the volume arm
+		{"Wildwood \u2013 Season Two \u2013 The Return", "", 2}, // an en dash is a separator too
+		// The removed series name opens the segment: stripSeries leaves its space.
+		{"Junkers Season Two", "Junkers", 2},
 	} {
 		got, ok := StatedVolume(c.title, c.series)
-		if c.want == 0 {
-			if ok {
-				t.Errorf("StatedVolume(%q) = (%v, true), want no statement", c.title, got)
-			}
-			continue
-		}
 		if !ok || got != c.want {
 			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
 		}
 		// The invariant divisionWords states: a title whose markers are all division
-		// markers states the sequence's first element.
-		if seq := DivisionSequence(c.title, c.series); len(seq) == 0 || seq[0] != got {
-			t.Errorf("%q: StatedVolume %v, DivisionSequence %v - one division read two ways", c.title, got, seq)
+		// markers, read in marker position, states the sequence's first element.
+		if seq := divisionSequence(c.title, c.series); len(seq) == 0 || seq[0] != got {
+			t.Errorf("%q: StatedVolume %v, divisionSequence %v - one division read two ways", c.title, got, seq)
 		}
 	}
 	if SameStatedVolume("Wildwood (Season One)", "", "Wildwood (Season Two)", "") {
@@ -343,12 +346,44 @@ func TestStatedVolumeReadsWordNumberedDivisions(t *testing.T) {
 	}
 }
 
+// The review of issue #2258's first fix: the division words are ordinary title
+// words, and reading "Level One Dropout" as volume 1 is not merely extra caution. The
+// writers' POSITIVE test (a title stating a volume must be positively placed at it)
+// turns a reading into a CREATE, so a decorated duplicate of the catalogued "Level One
+// Dropout" was minted as a sibling work where main refused it. Only the WORD spelling
+// is bounded this way - the digit spelling reads as it always did.
+func TestStatedVolumeReadsNoOrdinaryTitleWordAsAVolume(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64 // 0 = no statement
+	}{
+		{"Level One Dropout", "", 0},    // the title begins with it
+		{"Level One God", "", 0},        // ... and runs on after it
+		{"A Series Two-Step", "", 0},    // mid-phrase on both sides
+		{"Foo: Level One God", "", 0},   // opens a segment, runs on into the title
+		{"Foo: Series Two-Step", "", 0}, // a hyphen welded on is no separator
+		{"Kingdom of Ara: Season Four Complete", "", 0},
+		{"Dad's Army: Complete Radio Series Two", "Dad's Army", 0},
+		{"Series One Collection, Season 3", "", 3}, // the digit marker still reads
+		{"Level 1 Dropout", "", 1},                 // main's digit reading, unchanged
+	} {
+		got, ok := StatedVolume(c.title, c.series)
+		switch {
+		case c.want == 0 && ok:
+			t.Errorf("StatedVolume(%q) = (%v, true), want no statement", c.title, got)
+		case c.want != 0 && (!ok || got != c.want):
+			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+}
+
 // Issue #2258, finding 2, and the tier order it was fixed inside. Within a tier the
 // EARLIEST marker answers whatever spells it - the roman arm used to be tried before
 // the word arm, so "Book Two, Part V" read volume 5 - while ACROSS tiers a volume
 // marker in digits outranks one in words or roman numerals, which outranks a
 // division marker. Every cross-tier case below is a recorded series position the
-// flat "earliest marker wins" order got wrong (see StatedVolume).
+// flat "earliest marker wins" order got wrong (see StatedVolume), or a reading the
+// tier order CHANGES from main's arm order, pinned so the change is deliberate.
 func TestStatedVolumeTierOrder(t *testing.T) {
 	for _, c := range []struct {
 		title, series string
@@ -364,14 +399,80 @@ func TestStatedVolumeTierOrder(t *testing.T) {
 		{"Criminal Intentions: Season One, Episode Three", "", 3},
 		{"Level One Dropout, Book Two", "", 2},
 		{"Season 2, Book Three", "", 3},
+		// CHANGED from main, which tried the division ordinal before the word arm
+		// and read 3. No title on the tree carries this combination.
+		{"Book Two, Season 3", "", 2},
 		// A digit volume marker outranks a word one: the retailer's own trailing
 		// "(Series, Book N)" behind a leading subseries part.
 		{"Ghosts: Adrian's March, Part Five (Adrian's Undead Diary, Book 13)", "Adrian's Undead Diary", 13},
-		// An unreadable marker is no candidate, as before.
+		// An unreadable match is passed over for the arm's NEXT match, never ending
+		// the arm: a composite word number cannot hide a readable marker after it.
 		{"The Saga, Book One Hundred, Part 2", "The Saga", 2},
+		{"The Saga, Book One Hundred, Part Two", "The Saga", 2},
+		{"Chronicles: Unit One Hundred and Level 4", "", 4},
+		{"Season One Hundred, Season 3", "", 3},
+		// A roman numeral needs a separator: "Parti" is a word, not "Part i".
+		{"Parti Animals: Season 3", "", 3},
+		{"Vol.II", "", 2},
 	} {
 		if got, ok := StatedVolume(c.title, c.series); !ok || got != c.want {
 			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+	for _, title := range []string{"Parti Animals", "Chronicle, Season One Hundred", "The Saga, Book One Hundred"} {
+		if v, ok := StatedVolume(title, ""); ok {
+			t.Errorf("StatedVolume(%q) = (%v, true), want no statement", title, v)
+		}
+	}
+}
+
+// ClaimedVolume is the writers' reading: StatedVolume minus the word-numbered
+// division, and otherwise identical - every other spelling, the tier order and the
+// unreadable-match rule included.
+func TestClaimedVolumeLeavesOutOnlyTheWordNumberedDivision(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64 // 0 = no claim
+	}{
+		{"Locked In: Season One", "", 0},
+		{"Powder River - Season Four", "Powder River", 0},
+		{"Wildwood, Level Three", "", 0},
+		{"Locked In: Season 1", "", 1},
+		{"Locked In: Season II", "", 2},
+		{"Hammered, Book 7", "", 7},
+		{"Wildwood (Book Two)", "", 2},
+		{"Book Two, Part V", "", 2},
+		{"Criminal Intentions: Season One, Episode Three", "", 3},
+		{"Chronicles: Unit One Hundred and Level 4", "", 4},
+	} {
+		got, ok := ClaimedVolume(c.title, c.series)
+		switch {
+		case c.want == 0 && ok:
+			t.Errorf("ClaimedVolume(%q) = (%v, true), want no claim", c.title, got)
+		case c.want != 0 && (!ok || got != c.want):
+			t.Errorf("ClaimedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+		if c.want != 0 {
+			if sv, sok := StatedVolume(c.title, c.series); !sok || sv != got {
+				t.Errorf("%q: ClaimedVolume %v but StatedVolume (%v, %v) - they may differ only on a word-numbered division", c.title, got, sv, sok)
+			}
+		}
+	}
+}
+
+// StatementOf/Agrees is SameStatedVolume split in two, so a caller comparing many
+// pairs derives each title once; the two spellings must answer alike.
+func TestStatementAgreesIsSameStatedVolume(t *testing.T) {
+	titles := []string{
+		"Wildwood (Season One)", "Wildwood (Season 2)", "Wildwood (Part One, Episode 2)",
+		"Wildwood (Part 1, Episode 2)", "Wildwood (Books 1-3)", "Wildwood", "Level 1 Lessons 1-5",
+		"Level 1 Lessons 6-10", "Book Two, Part V",
+	}
+	for _, a := range titles {
+		for _, b := range titles {
+			if got, want := StatementOf(a, "").Agrees(StatementOf(b, "")), SameStatedVolume(a, "", b, ""); got != want {
+				t.Errorf("%q vs %q: Agrees %v, SameStatedVolume %v", a, b, got, want)
+			}
 		}
 	}
 }

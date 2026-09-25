@@ -176,8 +176,11 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 	// "Circus of the Dead" whenever the series was not in the tree, or the matched
 	// work had no membership, or the row stated no series at all - three ways to
 	// lose a book we do not hold. A title that states a number is making a claim
-	// the catalogue can confirm or cannot; only confirmation counts.
-	if _, stated := titlerule.StatedVolume(workTitle, ident.series); stated {
+	// the catalogue can confirm or cannot; only confirmation counts. The claim is
+	// read through ClaimedVolume, not StatedVolume: this test turns a reading into a
+	// CREATE, and the one reading StatedVolume makes that ClaimedVolume does not (a
+	// division word numbered in words, issue #2258) is too uncertain to do that.
+	if _, stated := titlerule.ClaimedVolume(workTitle, ident.series); stated {
 		if ws == nil || !claim.places(ws) {
 			return false
 		}

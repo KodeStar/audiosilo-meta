@@ -48,13 +48,17 @@ type workDerived struct {
 	seq    float64
 	hasSeq bool
 
-	// statedSeq is the same question asked through titlerule.StatedVolume, which reads the
-	// DIVISION-class ordinals (season/level/lesson/unit/year) and ROMAN numerals that
-	// BareSeq does not. Only the volume-CONFLICT rule reads it, because that rule's job is
-	// to withhold a merge and a wider vocabulary can only withhold more - see
-	// statedVolumes.
-	statedSeq    float64
-	hasStatedSeq bool
+	// stated is the same question asked through titlerule.StatementOf: the volume
+	// StatedVolume reads (its own vocabulary and tier order, which also reads the
+	// division markers, roman numerals and word numbers BareSeq does not - and so can
+	// answer a DIFFERENT number than seq for a title carrying several markers) plus the
+	// whole division sequence. Two rules read it, both of which withhold a merge: the
+	// volume-CONFLICT rule (statedVolumes, through titlerule's Agrees) and
+	// vetoStatedVolumeElsewhere (vetostrip.go). A change to what StatedVolume reads
+	// moves both, in either direction - a reading gained can withhold a merge, a
+	// reading lost or changed can release one - so it is measured over W-DUP, not
+	// assumed safe. Computed once per work, not per compared pair.
+	stated titlerule.VolumeStatement
 
 	// The article-plus-series prefix shape, if the title has it.
 	artArticle string
@@ -92,7 +96,7 @@ func (ix *index) deriveTitle(w *model.Work) *workDerived {
 		d.plainKey = titlerule.IdentityTitleKey(w.Title, "")
 	}
 	d.seq, d.hasSeq = titlerule.BareSeq(w.Title, d.seriesName)
-	d.statedSeq, d.hasStatedSeq = titlerule.StatedVolume(w.Title, d.seriesName)
+	d.stated = titlerule.StatementOf(w.Title, d.seriesName)
 	d.artArticle, d.artSeries, d.artRest, d.artOK = titlerule.ArticleSeriesPrefix(w.Title, ix.resolveSeries)
 	d.markers = titlerule.Decorations(titlerule.TitleFacts{
 		Title:   w.Title,
