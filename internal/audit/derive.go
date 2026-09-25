@@ -48,13 +48,12 @@ type workDerived struct {
 	seq    float64
 	hasSeq bool
 
-	// statedSeq is the same question asked through titlerule.StatedVolume, which reads the
-	// DIVISION-class ordinals (season/level/lesson/unit/year) and ROMAN numerals that
-	// BareSeq does not. Only the volume-CONFLICT rule reads it, because that rule's job is
-	// to withhold a merge and a wider vocabulary can only withhold more - see
-	// statedVolumes.
-	statedSeq    float64
-	hasStatedSeq bool
+	// stated is the title's titlerule.VolumeStatement under ReaderPolicy (see
+	// titlerule's VOLUME STATEMENTS), LAZY: only W-DUP's cluster members and
+	// vetoStatedVolumeElsewhere read it, so it is derived by index.statement on first
+	// use rather than for every work.
+	stated    titlerule.VolumeStatement
+	hasStated bool
 
 	// proposed is the retitle W-TITLE would propose (titlerule.ProposeTitle against
 	// seriesName) and proposeOK whether it proposes one at all - asked only of a title
@@ -86,6 +85,15 @@ func (ix *index) derived(w *model.Work) *workDerived {
 	return d
 }
 
+// statement returns a work's memoized titlerule.VolumeStatement - see workDerived.stated.
+func (ix *index) statement(w *model.Work) titlerule.VolumeStatement {
+	d := ix.derived(w)
+	if !d.hasStated {
+		d.stated, d.hasStated = titlerule.StatementOf(w.Title, d.seriesName, titlerule.ReaderPolicy), true
+	}
+	return d.stated
+}
+
 // deriveTitle is the derivation itself: the ONE place the audit decides which
 // series name a title is read against and what it therefore carries.
 func (ix *index) deriveTitle(w *model.Work) *workDerived {
@@ -105,7 +113,6 @@ func (ix *index) deriveTitle(w *model.Work) *workDerived {
 		d.plainKey = titlerule.IdentityTitleKey(w.Title, "")
 	}
 	d.seq, d.hasSeq = titlerule.BareSeq(w.Title, d.seriesName)
-	d.statedSeq, d.hasStatedSeq = titlerule.StatedVolume(w.Title, d.seriesName)
 	d.artArticle, d.artSeries, d.artRest, d.artOK = titlerule.ArticleSeriesPrefix(w.Title, ix.resolveSeries)
 	d.markers = titlerule.Decorations(titlerule.TitleFacts{
 		Title:   w.Title,

@@ -106,7 +106,7 @@ func TestIdentityTitleKeyRefusesDegenerateResiduals(t *testing.T) {
 		t.Fatalf("keys = %q and %q, want one shared key", a, b)
 	}
 	if SameStatedVolume("Unintended Cultivator: Volume 9", "Unintended Cultivator",
-		"Unintended Cultivator: Volume 3", "Unintended Cultivator") {
+		"Unintended Cultivator: Volume 3", "Unintended Cultivator", ReaderPolicy) {
 		t.Error("volumes 9 and 3 must state different volumes, which is what keeps them apart")
 	}
 }
@@ -216,27 +216,27 @@ func TestStatedVolumeReadsOrdinalsAndRomanNumerals(t *testing.T) {
 		{"Faraway Paladin: Volume I", "Faraway Paladin", 1},
 		{"Discworld, Book IX", "Discworld", 9},
 	} {
-		got, ok := StatedVolume(c.title, c.series)
+		got, ok := ReaderPolicy.Volume(c.title, c.series)
 		if !ok || got != c.want {
-			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
 		}
 	}
 	// The pair that must therefore disagree - the whole point of reading them.
-	if SameStatedVolume("The Inn: Season 1", "The Inn", "The Inn: Season 2", "The Inn") {
+	if SameStatedVolume("The Inn: Season 1", "The Inn", "The Inn: Season 2", "The Inn", ReaderPolicy) {
 		t.Error("two seasons must state different volumes")
 	}
-	if SameStatedVolume("Paladin: Volume I", "Paladin", "Paladin: Volume II", "Paladin") {
+	if SameStatedVolume("Paladin: Volume I", "Paladin", "Paladin: Volume II", "Paladin", ReaderPolicy) {
 		t.Error("two roman-numbered volumes must state different volumes")
 	}
 	// And an ordinary title states nothing, so it is not accidentally a volume.
-	if _, ok := StatedVolume("A Season for Ravens", ""); ok {
+	if _, ok := ReaderPolicy.Volume("A Season for Ravens", ""); ok {
 		t.Error("an ordinary title must not read as a stated volume")
 	}
 }
 
 // The third spelling BareSeq cannot read: a WORD volume number. The key loses it in
 // exactly two shapes - inside a decorative bracket group, and left dangling by the
-// series strip - and both collapsed a serial onto a sibling until StatedVolume read
+// series strip - and both collapsed a serial onto a sibling until the volume reading read
 // the words back.
 func TestStatedVolumeReadsWordVolumes(t *testing.T) {
 	for _, c := range []struct {
@@ -257,23 +257,23 @@ func TestStatedVolumeReadsWordVolumes(t *testing.T) {
 		{"The Saga, Book One Hundred", "The Saga", 0},
 		{"Chronicle, Volume Two Thousand", "Chronicle", 0},
 	} {
-		got, ok := StatedVolume(c.title, c.series)
+		got, ok := ReaderPolicy.Volume(c.title, c.series)
 		if c.want == 0 {
 			if ok {
-				t.Errorf("StatedVolume(%q) = (%v, true), want no statement", c.title, got)
+				t.Errorf("ReaderPolicy.Volume(%q) = (%v, true), want no statement", c.title, got)
 			}
 			continue
 		}
 		if !ok || got != c.want {
-			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
 		}
 	}
 	// The pair that must therefore disagree - the whole point of reading them.
-	if SameStatedVolume("Wildwood (Book One)", "", "Wildwood (Book Two)", "") {
+	if SameStatedVolume("Wildwood (Book One)", "", "Wildwood (Book Two)", "", ReaderPolicy) {
 		t.Error("two word-numbered volumes must state different volumes")
 	}
 	// One spelling never contradicts the other: they are one vocabulary.
-	if !SameStatedVolume("Wildwood (Book Two)", "", "Wildwood (Book 2)", "") {
+	if !SameStatedVolume("Wildwood (Book Two)", "", "Wildwood (Book 2)", "", ReaderPolicy) {
 		t.Error("the same volume spelled two ways must not read as a contradiction")
 	}
 	// A word that merely FOLLOWS a marker is not a number, and a marker welded into a
@@ -282,8 +282,8 @@ func TestStatedVolumeReadsWordVolumes(t *testing.T) {
 		"Parts Unknown", "The Book Thief", "Book of One Thousand Nights",
 		"The Chosen One", "The Partone Affair", "Book Thirteen",
 	} {
-		if v, ok := StatedVolume(title, ""); ok {
-			t.Errorf("StatedVolume(%q) = (%v, true), want no statement", title, v)
+		if v, ok := ReaderPolicy.Volume(title, ""); ok {
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, true), want no statement", title, v)
 		}
 	}
 	// The digit, ordinal and roman readings are untouched by the widening.
@@ -295,8 +295,227 @@ func TestStatedVolumeReadsWordVolumes(t *testing.T) {
 		{"The Wandering Inn: Season 2", "The Wandering Inn", 2},
 		{"Faraway Paladin: Volume II", "Faraway Paladin", 2},
 	} {
-		if got, ok := StatedVolume(c.title, c.series); !ok || got != c.want {
-			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		if got, ok := ReaderPolicy.Volume(c.title, c.series); !ok || got != c.want {
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+}
+
+// Issue #2258, finding 1: a DIVISION marker numbered in WORDS. divisionSequence read
+// it all along while the volume reading stated nothing, so a volume-conflict cluster of
+// such titles was filed with a note naming no volume at all - and every gate that
+// asks for a volume was blind to it.
+//
+// It is read only in MARKER POSITION: the division words are ordinary title words,
+// and a reading is not free - the writers' positive test turns a stated volume into
+// a CREATE (see TestStatedVolumeReadsNoOrdinaryTitleWordAsAVolume).
+func TestStatedVolumeReadsWordNumberedDivisions(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64
+	}{
+		{"Wildwood (Season One)", "", 1},
+		{"Wildwood (Season Two)", "", 2},
+		{"Wildwood, Level Three", "", 3},
+		{"Powder River - Season Four", "Powder River", 4},
+		{"Jago & Litefoot: Series Seven", "Jago & Litefoot", 7},
+		{"Stranger Things, Season One: The Junior Novelization", "", 1},
+		{"The Lucid - Season One: The Beginning", "The Lucid", 1},
+		{"Supermind: Season One - The Brain Drain", "Supermind", 1},
+		{"Nameless: Season One (Unabridged)", "", 1},
+		{"Pimsleur Albanian, Unit Twelve", "", 12},
+		{"Wildwood \u2013 Season Two \u2013 The Return", "", 2}, // an en dash is a separator too
+		// The removed series name opens the segment: stripSeries leaves its space.
+		{"Junkers Season Two", "Junkers", 2},
+	} {
+		got, ok := ReaderPolicy.Volume(c.title, c.series)
+		if !ok || got != c.want {
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+		// The invariant divisionWords states: a title whose markers are all division
+		// markers, read in marker position, states the sequence's first element.
+		if seq := divisionSequence(c.title, c.series); len(seq) == 0 || seq[0] != got {
+			t.Errorf("%q: volume %v, divisionSequence %v - one division read two ways", c.title, got, seq)
+		}
+	}
+	if SameStatedVolume("Wildwood (Season One)", "", "Wildwood (Season Two)", "", ReaderPolicy) {
+		t.Error("two word-numbered seasons must state different volumes")
+	}
+	if !SameStatedVolume("Wildwood (Season Two)", "", "Wildwood (Season 2)", "", ReaderPolicy) {
+		t.Error("one season spelled two ways must not read as a contradiction")
+	}
+}
+
+// The review of issue #2258's first fix: the division words are ordinary title
+// words, and reading "Level One Dropout" as volume 1 is not merely extra caution. The
+// writers' POSITIVE test (a title stating a volume must be positively placed at it)
+// turns a reading into a CREATE, so a decorated duplicate of the catalogued "Level One
+// Dropout" was minted as a sibling work where main refused it. Only the WORD spelling
+// is bounded this way - the digit spelling reads as it always did.
+func TestStatedVolumeReadsNoOrdinaryTitleWordAsAVolume(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64 // 0 = no statement
+	}{
+		{"Level One Dropout", "", 0},    // the title begins with it
+		{"Level One God", "", 0},        // ... and runs on after it
+		{"A Series Two-Step", "", 0},    // mid-phrase on both sides
+		{"Foo: Level One God", "", 0},   // opens a segment, runs on into the title
+		{"Foo: Series Two-Step", "", 0}, // a hyphen welded on is no separator
+		{"Kingdom of Ara: Season Four Complete", "", 0},
+		{"Dad's Army: Complete Radio Series Two", "Dad's Army", 0},
+		{"Series One Collection, Season 3", "", 3}, // the digit marker still reads
+		{"Level 1 Dropout", "", 1},                 // main's digit reading, unchanged
+	} {
+		got, ok := ReaderPolicy.Volume(c.title, c.series)
+		switch {
+		case c.want == 0 && ok:
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, true), want no statement", c.title, got)
+		case c.want != 0 && (!ok || got != c.want):
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+}
+
+// Issue #2258, finding 2, and the tier order it was fixed inside. Within a tier the
+// EARLIEST marker answers whatever spells it - the roman arm used to be tried before
+// the word arm, so "Book Two, Part V" read volume 5 - while ACROSS tiers a volume
+// marker in digits outranks one in words or roman numerals, which outranks a
+// division marker. Every cross-tier case below is a recorded series position the
+// flat "earliest marker wins" order got wrong (see VOLUME STATEMENTS), or a reading the
+// tier order CHANGES from main's arm order, pinned so the change is deliberate.
+func TestStatedVolumeTierOrder(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64
+	}{
+		// Finding 2: one tier, two spellings - position decides.
+		{"Book Two, Part V", "", 2},
+		{"Volume One, Part II", "", 1},
+		{"Part II, Book Three", "", 2},
+		{"Season II, Level Three", "", 2},
+		// A volume marker outranks a division marker, in any spelling.
+		{"Yesterday's Gone: Season 1 - Ep. 3", "Yesterday's Gone", 3},
+		{"Criminal Intentions: Season One, Episode Three", "", 3},
+		{"Level One Dropout, Book Two", "", 2},
+		{"Season 2, Book Three", "", 3},
+		// CHANGED from main, which tried the division ordinal before the word arm
+		// and read 3. No title on the tree carries this combination.
+		{"Book Two, Season 3", "", 2},
+		// A digit volume marker outranks a word one: the retailer's own trailing
+		// "(Series, Book N)" behind a leading subseries part.
+		{"Ghosts: Adrian's March, Part Five (Adrian's Undead Diary, Book 13)", "Adrian's Undead Diary", 13},
+		// An unreadable match is passed over for the arm's NEXT match, never ending
+		// the arm: a composite word number cannot hide a readable marker after it.
+		{"The Saga, Book One Hundred, Part 2", "The Saga", 2},
+		{"The Saga, Book One Hundred, Part Two", "The Saga", 2},
+		{"Chronicles: Unit One Hundred and Level 4", "", 4},
+		{"Season One Hundred, Season 3", "", 3},
+		// A roman numeral needs a separator: "Parti" is a word, not "Part i".
+		{"Parti Animals: Season 3", "", 3},
+		{"Vol.II", "", 2},
+	} {
+		if got, ok := ReaderPolicy.Volume(c.title, c.series); !ok || got != c.want {
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+	for _, title := range []string{"Parti Animals", "Chronicle, Season One Hundred", "The Saga, Book One Hundred"} {
+		if v, ok := ReaderPolicy.Volume(title, ""); ok {
+			t.Errorf("ReaderPolicy.Volume(%q) = (%v, true), want no statement", title, v)
+		}
+	}
+}
+
+// WriterPolicy is the writers' reading: ReaderPolicy minus the word-numbered
+// division, and otherwise identical - every other spelling, the tier order and the
+// unreadable-match rule included.
+func TestWriterPolicyLeavesOutOnlyTheWordNumberedDivision(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64 // 0 = no claim
+	}{
+		{"Locked In: Season One", "", 0},
+		{"Powder River - Season Four", "Powder River", 0},
+		{"Wildwood, Level Three", "", 0},
+		{"Locked In: Season 1", "", 1},
+		{"Locked In: Season II", "", 2},
+		{"Hammered, Book 7", "", 7},
+		{"Wildwood (Book Two)", "", 2},
+		{"Book Two, Part V", "", 2},
+		{"Criminal Intentions: Season One, Episode Three", "", 3},
+		{"Chronicles: Unit One Hundred and Level 4", "", 4},
+	} {
+		got, ok := WriterPolicy.Volume(c.title, c.series)
+		switch {
+		case c.want == 0 && ok:
+			t.Errorf("WriterPolicy.Volume(%q) = (%v, true), want no claim", c.title, got)
+		case c.want != 0 && (!ok || got != c.want):
+			t.Errorf("WriterPolicy.Volume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+		if c.want != 0 {
+			if sv, sok := ReaderPolicy.Volume(c.title, c.series); !sok || sv != got {
+				t.Errorf("%q: WriterPolicy %v but ReaderPolicy (%v, %v) - they may differ only on a word-numbered division", c.title, got, sv, sok)
+			}
+		}
+	}
+}
+
+// The CONTRADICTION test follows the policy as the positive test does. A writer turns a
+// contradiction into a create (the match is vetoed, the row is minted), so a volume only
+// ReaderPolicy reads - a word-numbered division - may not contradict anything for a
+// writer: "Nameless (Season One)" against "Nameless (Volume II)" (one key) disagrees 1 vs
+// 2 for the audit and agrees for the writers, whose reading of the first is silent.
+func TestContradictionFollowsThePolicy(t *testing.T) {
+	a, b := "Nameless (Season One)", "Nameless (Volume II)"
+	if IdentityTitleKey(a, "") == "" || IdentityTitleKey(a, "") != IdentityTitleKey(b, "") {
+		t.Fatalf("the pair must share a key: %q, %q", IdentityTitleKey(a, ""), IdentityTitleKey(b, ""))
+	}
+	if SameStatedVolume(a, "", b, "", ReaderPolicy) {
+		t.Error("ReaderPolicy: season 1 and volume 2 must contradict")
+	}
+	if !SameStatedVolume(a, "", b, "", WriterPolicy) {
+		t.Error("WriterPolicy: a word-numbered season states nothing, so nothing contradicts")
+	}
+	if got := StatementOf(a, "", WriterPolicy).Agrees(StatementOf(b, "", WriterPolicy)); !got {
+		t.Error("Agrees must answer as SameStatedVolume does")
+	}
+}
+
+// Label is injective over what Agrees compares: statements that disagree never share a
+// label.
+func TestLabelSeparatesWhatAgreesSeparates(t *testing.T) {
+	for _, c := range []struct {
+		title string
+		want  string // "" = no label
+	}{
+		{"Wildwood (Season One)", "1"},
+		{"Wildwood (Part One, Episode 2)", "2 [1/2]"},
+		{"Wildwood (Part 1, Episode 2)", "1 [1/2]"},
+		{"Wildwood (Books 1-3)", "[1]"},
+		{"Wildwood", ""},
+	} {
+		got, ok := StatementOf(c.title, "", ReaderPolicy).Label()
+		if got != c.want || ok != (c.want != "") {
+			t.Errorf("Label(%q) = (%q, %v), want %q", c.title, got, ok, c.want)
+		}
+	}
+}
+
+// StatementOf/Agrees is SameStatedVolume split in two, so a caller comparing many
+// pairs derives each title once; the two spellings must answer alike.
+func TestStatementAgreesIsSameStatedVolume(t *testing.T) {
+	titles := []string{
+		"Wildwood (Season One)", "Wildwood (Season 2)", "Wildwood (Part One, Episode 2)",
+		"Wildwood (Part 1, Episode 2)", "Wildwood (Books 1-3)", "Wildwood", "Level 1 Lessons 1-5",
+		"Level 1 Lessons 6-10", "Book Two, Part V",
+	}
+	for _, a := range titles {
+		for _, b := range titles {
+			for _, p := range []VolumePolicy{ReaderPolicy, WriterPolicy} {
+				if got, want := StatementOf(a, "", p).Agrees(StatementOf(b, "", p)), SameStatedVolume(a, "", b, "", p); got != want {
+					t.Errorf("%q vs %q: Agrees %v, SameStatedVolume %v", a, b, got, want)
+				}
+			}
 		}
 	}
 }
@@ -322,8 +541,8 @@ func TestSameStatedVolumeComparesNestedDivisions(t *testing.T) {
 		{"Wildwood, Part One", "Wildwood, Part 1", true},
 		{"Ranger's Apprentice: Part Two, Episode 2", "Ranger's Apprentice: Part One, Episode 2", false},
 	} {
-		if got := SameStatedVolume(c.a, "", c.b, ""); got != c.same {
-			t.Errorf("SameStatedVolume(%q, %q) = %v, want %v", c.a, c.b, got, c.same)
+		if got := SameStatedVolume(c.a, "", c.b, "", ReaderPolicy); got != c.same {
+			t.Errorf("SameStatedVolume(%q, %q, ReaderPolicy) = %v, want %v", c.a, c.b, got, c.same)
 		}
 	}
 }
@@ -342,8 +561,8 @@ func TestSameStatedVolume(t *testing.T) {
 		{"Hammered", "", "Hounded", "", true},
 	}
 	for _, c := range cases {
-		if got := SameStatedVolume(c.a, c.sa, c.b, c.sb); got != c.want {
-			t.Errorf("SameStatedVolume(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		if got := SameStatedVolume(c.a, c.sa, c.b, c.sb, ReaderPolicy); got != c.want {
+			t.Errorf("SameStatedVolume(%q, %q, ReaderPolicy) = %v, want %v", c.a, c.b, got, c.want)
 		}
 	}
 }

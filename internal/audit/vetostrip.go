@@ -94,7 +94,11 @@ func vetoStrippedSeriesDiffers(members []dupMember) (string, bool) {
 func vetoStatedVolumeElsewhere(ix *index, members []dupMember) (string, bool) {
 	for _, m := range members {
 		d := ix.derived(m.work)
-		if d.seriesID == "" || !d.hasStatedSeq {
+		if d.seriesID == "" {
+			continue
+		}
+		st := ix.statement(m.work)
+		if !st.States {
 			continue
 		}
 		for _, other := range members {
@@ -102,12 +106,12 @@ func vetoStatedVolumeElsewhere(ix *index, members []dupMember) (string, bool) {
 				continue
 			}
 			span, placed := ix.positionSpans(other.work.ID)[d.seriesID]
-			if !placed || (span[0] <= d.statedSeq && d.statedSeq <= span[1]) {
+			if !placed || (span[0] <= st.Volume && st.Volume <= span[1]) {
 				continue
 			}
 			return fmt.Sprintf("%s states volume %s of series %s in its own title and the catalogue places %s at %s in that series: "+
 				"the title and the catalogue agree that these are two volumes",
-				m.work.ID, formatSeq(d.statedSeq), d.seriesID, other.work.ID, renderSpan(span)), true
+				m.work.ID, formatSeq(st.Volume), d.seriesID, other.work.ID, renderSpan(span)), true
 		}
 	}
 	return "", false

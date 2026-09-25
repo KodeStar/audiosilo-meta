@@ -353,6 +353,37 @@ func TestAddWorkKeepsAStatedVolumeNothingPlaces(t *testing.T) {
 	}
 }
 
+// Issue #2258's review, on the intake side: a title that BEGINS with a division word
+// and a word number states no volume. Read as volume 1, "Level One Dropout" made the
+// positive test (placesMatch) veto its own decorated twin - the strip kept the
+// decoration and the identity gate stood down - so a second record of a catalogued
+// book was composed where main answered duplicate.
+func TestAddWorkRefusesADecoratedDuplicateWhoseTitleBeginsWithADivisionWord(t *testing.T) {
+	for _, title := range []string{"Level One Dropout (Unabridged)", "Level One Dropout: A LitRPG Adventure"} {
+		t.Run(title, func(t *testing.T) {
+			dir := t.TempDir()
+			files := dupSeedFiles()
+			files["works/le/level-one-dropout/work.json"] = testpack.WithField(t,
+				testpack.WorkJSON(t, "level-one-dropout", "Level One Dropout", testpack.WithAuthors("kevin-hearne")),
+				"sources", []map[string]string{{"type": "user", "imported_at": "2026-07-01"}})
+			files["works/le/level-one-dropout/recordings/luke-daniels-2020.json"] = testpack.RecJSON(t,
+				"luke-daniels-2020", "level-one-dropout", testpack.WithNarrators("luke-daniels"), testpack.WithRuntime(600))
+			testpack.Seed(t, dir, files)
+			if res := check.Load(dir); !res.OK() {
+				t.Fatalf("seed tree does not validate: %v", res.Problems)
+			}
+
+			res := processAddWork(t, dir, dupWorkBody(title, "Kevin Hearne", "Christopher Ragland", "", ""))
+			if res.Status != StatusDuplicate {
+				t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusDuplicate, res.Messages)
+			}
+			if !anyContains(res.Messages, "level-one-dropout") {
+				t.Errorf("the verdict must name the catalogued work: %v", res.Messages)
+			}
+		})
+	}
+}
+
 // The series-volume gate reads the record the work would be PLACED into, and a
 // series named "Latest" is placed at latest-2 (the reserved-slug step). Reading the
 // plain slugify of the name instead left the gate looking at no record at all, so a

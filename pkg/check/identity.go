@@ -71,6 +71,10 @@ type WorkIdentity struct {
 	// seriesOf is the series name each work's title was read against, by work id,
 	// so a caller that has a work in hand pays nothing to ask.
 	seriesOf map[string]string
+	// statementOf is each KEYED work's titlerule.VolumeStatement under WriterPolicy,
+	// read against seriesOf, derived once here because every pairwise comparison
+	// against that work - a row per probe, a pair per census group - needs it.
+	statementOf map[string]titlerule.VolumeStatement
 	// seriesNames are the catalogue's series that SeriesNameIn may match, already
 	// narrowed at build time (see newSeriesNameList) and sorted by id, so every
 	// derivation over them is deterministic and no lookup re-applies the filters.
@@ -96,6 +100,7 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 	ix := &WorkIdentity{
 		byKey:        map[string][]*model.Work{},
 		seriesOf:     map[string]string{},
+		statementOf:  map[string]titlerule.VolumeStatement{},
 		droppedFolds: map[string]bool{},
 	}
 	if cat == nil {
@@ -119,6 +124,7 @@ func NewWorkIdentity(cat *model.Catalog) *WorkIdentity {
 			// A title that normalizes to nothing is no identity: it is keyed by
 			// nobody and collides with nobody.
 			ix.byKey[key] = append(ix.byKey[key], w)
+			ix.statementOf[w.ID] = titlerule.StatementOf(w.Title, series, titlerule.WriterPolicy)
 		}
 	}
 	return ix
@@ -308,10 +314,15 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 	if key == "" {
 		return nil
 	}
+	cands := ix.byKey[key]
+	if len(cands) == 0 {
+		return nil
+	}
+	st := titlerule.StatementOf(title, series, titlerule.WriterPolicy)
 	var out []IdentityMatch
 	var inColl collectionMemo // the incoming title's answer, asked at most once
-	for _, w := range ix.byKey[key] {
-		if !ix.matches(w, nil, title, series, lang, all, identity, &inColl) {
+	for _, w := range cands {
+		if !ix.matches(w, nil, title, series, st, lang, all, identity, &inColl) {
 			continue
 		}
 		out = append(out, IdentityMatch{Work: w, Series: ix.seriesOf[w.ID]})
@@ -327,7 +338,9 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 //   - the languages are compatible (a translation is a different work; an unknown
 //     language never separates);
 //   - the author sets are nested (IdentityAuthorsMatch);
-//   - neither side states a volume the other contradicts (SameStatedVolume);
+//   - neither side states a volume the other contradicts (VolumeStatement.Agrees,
+//     under titlerule.WriterPolicy - the writers' reading, since every consumer of
+//     this predicate decides or counts whether a record is created);
 //   - exactly one side does not announce itself a COLLECTION
 //     (titlerule.SameCollectionStatus: each title read against its own series name,
 //     the predicate internal/audit's merge veto reads too). A boxed set and the volume it collects
@@ -368,14 +381,17 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 // may be nil, and is then asked afresh; it is never precomputed for the whole
 // catalogue, which would cost every load the question for 280k works to serve the few
 // that share a key.
-func (ix *WorkIdentity) matches(w *model.Work, wColl *collectionMemo, title, series, lang string,
-	all, identity map[string]bool, inColl *collectionMemo) bool {
+//
+// st is the incoming side's statement (titlerule.StatementOf under WriterPolicy),
+// derived once by the caller rather than once per candidate.
+func (ix *WorkIdentity) matches(w *model.Work, wColl *collectionMemo, title, series string,
+	st titlerule.VolumeStatement, lang string, all, identity map[string]bool, inColl *collectionMemo) bool {
 	if wColl == nil {
 		wColl = &collectionMemo{}
 	}
 	return languagesCompatible(w.Language, lang) &&
 		IdentityAuthorsMatch(w, all, identity) &&
-		titlerule.SameStatedVolume(title, series, w.Title, ix.seriesOf[w.ID]) &&
+		st.Agrees(ix.statementOf[w.ID]) &&
 		inColl.get(title, series) == wColl.get(w.Title, ix.seriesOf[w.ID])
 }
 

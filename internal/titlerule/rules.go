@@ -204,7 +204,13 @@ func Clean(title, series string) string {
 //
 // The dangling-segment peels cannot fix it: the segment they would judge is the one
 // AFTER the run, which here holds a real word.
-var separatorRun = regexp.MustCompile(`[:,;|]\s*([:,;|])`)
+var separatorRun = regexp.MustCompile(`[` + segmentPunct + `]\s*([` + segmentPunct + `])`)
+
+// segmentPunct is the punctuation that ends one title segment and opens the next -
+// the separators an empty segment collapses between (separatorRun) and the ones a
+// word-numbered division marker must stand between (divisionMarkerAt). Inside a
+// character class every one of them is literal.
+const segmentPunct = `:,;|`
 
 // collapseSeparatorRuns drops the leading separator of every empty segment, keeping
 // the one that introduces the surviving text.
@@ -549,7 +555,8 @@ func IsCollection(title string) bool {
 // product.
 //
 // The word is discounted only when the title ALSO states a volume of that series
-// (StatedVolume), because a title that names its series and states no volume is
+// (under WriterPolicy - this predicate feeds the writers' duplicate decisions, see
+// VOLUME STATEMENTS), because a title that names its series and states no volume is
 // exactly how an omnibus is titled ("The Southern Reach Trilogy: Annihilation,
 // Authority, Acceptance"). The name comes off at a title BOUNDARY only - a whole
 // segment or a whole bracketed group, Clean's own mechanism - never from mid-title.
@@ -563,10 +570,10 @@ func IsCollection(title string) bool {
 //
 // It ADDS one shape IsCollection does not see: a title that ENUMERATES several volumes
 // ("Legend: The Legend Trilogy, Book 1 & 2", "Books One and Two") is a multi-volume
-// product whatever else it says - StatedVolume reads only its first number, so without
+// product whatever else it says - a volume reading takes only its first number, so without
 // this the discount above would read a two-in-one as volume one.
 //
-// The checks run cheapest first: StatedVolume, the one expensive question, is asked
+// The checks run cheapest first: the volume reading, the one expensive question, is asked
 // only of a collection-worded title read against a collection-named series.
 func IsCollectionIn(title, series string) bool {
 	if mayEnumerate(title) && enumeratedVolumes.MatchString(title) {
@@ -578,7 +585,7 @@ func IsCollectionIn(title, series string) bool {
 	if series == "" || !IsCollection(series) {
 		return true
 	}
-	if _, states := StatedVolume(title, series); !states {
+	if _, states := WriterPolicy.Volume(title, series); !states {
 		return true
 	}
 	residual := stripSeriesAtBoundary(title, SeriesForms(series))
@@ -1322,7 +1329,7 @@ func ArticleSeriesPrefix(title string, resolve SeriesResolver) (article, series,
 // ("Book Two", "Part One"), which markerSeq cannot see because it requires \d.
 //
 // Its two halves are named constants (identity.go) and the number is a CAPTURE,
-// because this rule STRIPS the shape and StatedVolume READS it back through the same
+// because this rule STRIPS the shape and the volume statements READ it back through the same
 // match: one vocabulary and one separator, or a title states a volume the key never
 // lost - or worse, loses one nothing can state. A ROMAN capture simply misses
 // wordValue - romanVolume's own arm has already read it, since that rule's markers,
@@ -1331,7 +1338,7 @@ func ArticleSeriesPrefix(title string, resolve SeriesResolver) (article, series,
 // The whitespace is REQUIRED, unlike markerSeq's optional "Book.3" separator: with
 // \s* the leading \b would let the surname "Partone" read as "Part One".
 var wordVolumeMarker = regexp.MustCompile(`(?i)\b(?:` + volumeMarkerWords + `)\s+` +
-	`(` + volumeNumberWords + `|i{1,3}|iv|v|vi{1,3}|ix|x)\b`)
+	`(` + volumeNumberWords + `|` + romanCore + `)\b`)
 
 // hasVolumeMarker reports whether a text states a volume, in digits or in words.
 func hasVolumeMarker(s string) bool {

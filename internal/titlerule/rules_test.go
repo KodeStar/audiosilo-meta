@@ -410,7 +410,7 @@ func TestIsCollectionInDiscountsTheSeriesOwnName(t *testing.T) {
 		// Not a collection at all, with or without a series.
 		{"Sanctuary", "The Caretaker’s Collection", false},
 		{"Hammered: The Druid Tales, Book 3", "The Druid Tales", false},
-		// An ENUMERATED multi-volume statement is a collection: StatedVolume reads only
+		// An ENUMERATED multi-volume statement is a collection: a volume reading takes only
 		// its first number, so without this a two-in-one would discount the series'
 		// collection word as volume one.
 		{"Legend: The Legend Trilogy, Book 1 & 2", "The Legend Trilogy", true},

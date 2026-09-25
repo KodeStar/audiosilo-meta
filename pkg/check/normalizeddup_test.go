@@ -87,7 +87,7 @@ func TestAdvisoryNormalizedDuplicateSkipsStatedVolumes(t *testing.T) {
 // The same, for the two volume spellings markerSeq cannot read: a SEASON ordinal
 // (wideGenreFluff strips it from the key as packaging) and a ROMAN numeral
 // (wordVolumeMarker strips it as a marker). Both collapsed onto their season-1 and
-// volume-I siblings until titlerule.StatedVolume learned to read them.
+// volume-I siblings until titlerule's volume statements learned to read them.
 func TestAdvisoryNormalizedDuplicateSkipsOrdinalAndRomanVolumes(t *testing.T) {
 	if got := dupTwin(t, dupBase("The Wandering Inn: Season 1"), "the-wandering-inn-season-2",
 		"The Wandering Inn: Season 2"); len(got) != 0 {
@@ -106,6 +106,18 @@ func TestAdvisoryNormalizedDuplicateSkipsWordVolumes(t *testing.T) {
 	if got := dupTwin(t, dupBase("Wildwood (Book One)"), "wildwood-book-two",
 		"Wildwood (Book Two)"); len(got) != 0 {
 		t.Errorf("two word-numbered volumes were reported as one book: %v", got)
+	}
+}
+
+// The census reads the WRITERS' policy (titlerule.WriterPolicy), so it counts exactly
+// what the intake gate and the create guard would refuse to create again: a
+// word-numbered season states no volume to a writer and so contradicts nothing, and
+// "Nameless (Season One)" beside "Nameless (Volume II)" is a group - where the
+// audit, reading ReaderPolicy, files the same pair as a volume conflict.
+func TestAdvisoryNormalizedDuplicateReadsTheWriterPolicy(t *testing.T) {
+	if got := dupTwin(t, dupBase("Nameless (Volume II)"), "nameless-season-one",
+		"Nameless (Season One)"); len(got) != 1 {
+		t.Errorf("normalized-duplicate advisories = %v, want the pair the writers would refuse", got)
 	}
 }
 

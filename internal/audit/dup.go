@@ -662,24 +662,23 @@ func dupViaNote(members []dupMember) string {
 // statedVolumes returns the volume numbers the cluster's own TITLES spell out, and whether
 // two members CONTRADICT each other about one.
 //
-// The contradiction is titlerule.SameStatedVolume's, not this package's: that rule reads the
-// primary number a title states (StatedVolume, which knows the division-class ordinals -
-// season, level, lesson, unit, year - and roman numerals that BareSeq does not) AND the whole
-// SEQUENCE of division markers a title nests, which is what separates "Level 1 Lessons 1-5"
-// from "Level 1 Lessons 6-10" - 36 units of one Pimsleur course whose first stated number is
-// identical. Consuming it here is the resolution of the three-layer TODO this function
-// carried: a number a title states, a number a slug preserves (vetoSlugOrdinal) and the
-// division sequence are now read by ONE vocabulary rather than three.
+// The contradiction is titlerule's (VolumeStatement.Agrees under ReaderPolicy), not this
+// package's: the volume each title states AND the whole SEQUENCE of division markers it
+// nests, which is what separates "Level 1 Lessons 1-5" from "Level 1 Lessons 6-10" - 36 units
+// of one Pimsleur course whose first stated number is identical. A member stating no number is
+// not a disagreement: "Hammered" beside "Hammered: The Iron Druid Chronicles, Book 3" is the
+// pair the class exists to find.
 //
-// A member stating no number is not a disagreement: "Hammered" beside "Hammered: The Iron
-// Druid Chronicles, Book 3" is the pair the class exists to find.
+// Each member is labelled by VolumeStatement.Label, which is injective over what Agrees
+// compares, so two members that conflict never share a label and the note always names what
+// they disagree about.
 func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool) {
-	for i := range members {
-		a := members[i].work
+	for i := 0; i < len(members) && !conflict; i++ {
+		a := ix.statement(members[i].work)
 		for j := i + 1; j < len(members); j++ {
-			b := members[j].work
-			if !titlerule.SameStatedVolume(a.Title, ix.derived(a).seriesName, b.Title, ix.derived(b).seriesName) {
+			if !a.Agrees(ix.statement(members[j].work)) {
 				conflict = true
+				break
 			}
 		}
 	}
@@ -688,12 +687,9 @@ func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool
 	}
 	byNum := map[string][]string{}
 	for _, m := range members {
-		d := ix.derived(m.work)
-		if !d.hasStatedSeq {
-			continue
+		if k, ok := ix.statement(m.work).Label(); ok {
+			byNum[k] = append(byNum[k], m.work.ID)
 		}
-		k := formatSeq(d.statedSeq)
-		byNum[k] = append(byNum[k], m.work.ID)
 	}
 	for k, ids := range byNum {
 		vols = append(vols, k+" ("+truncateList(sortedUnique(ids), 3)+")")

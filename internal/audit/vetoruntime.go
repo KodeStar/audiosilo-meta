@@ -122,7 +122,7 @@ func narratorKey(narrators []string) string {
 //     which says "two different works met on one slug") out of this veto's reach.
 //
 // WHY THE TABLE BELOW IS ITS OWN. The title-side vocabulary is titlerule's
-// (StatedVolume/SameStatedVolume, which statedVolumes now consumes), and this rule reads
+// (StatementOf/VolumeStatement.Agrees, which statedVolumes consumes), and this rule reads
 // SLUGS: a slug is `model.Slugify`'s output, so it is lowercase ASCII segments with no
 // punctuation and no roman numerals to speak of, and the words below are the segment forms
 // that survive that fold. Sharing titlerule's regexp vocabulary here would mean matching

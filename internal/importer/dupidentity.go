@@ -176,8 +176,10 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 	// "Circus of the Dead" whenever the series was not in the tree, or the matched
 	// work had no membership, or the row stated no series at all - three ways to
 	// lose a book we do not hold. A title that states a number is making a claim
-	// the catalogue can confirm or cannot; only confirmation counts.
-	if _, stated := titlerule.StatedVolume(workTitle, ident.series); stated {
+	// the catalogue can confirm or cannot; only confirmation counts. (Read under
+	// titlerule.WriterPolicy - see its VOLUME STATEMENTS for why a writer's reading is
+	// narrower.)
+	if _, stated := titlerule.WriterPolicy.Volume(workTitle, ident.series); stated {
 		if ws == nil || !claim.places(ws) {
 			return false
 		}
@@ -223,6 +225,7 @@ const conflictFieldWorkIdentity = "work_identity"
 // work) and the resulting cluster is what metacheck's census reports.
 func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, authors workAuthors) (duplicateIdentityMatch, bool) {
 	var found []duplicateIdentityMatch
+	var row *titlerule.VolumeStatement // the row's statement, derived on first use
 	for _, slug := range p.runIdentity[ident.key] {
 		ws, ok := p.works[slug]
 		if !ok || !langCompatible(ws.lang, lang) || matchWork(ws, authors) == matchNone {
@@ -233,7 +236,11 @@ func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, autho
 		// half, spelled here because this half compares against the run's own state
 		// rather than against a catalogued record: no stated-volume disagreement, and
 		// a collection is not the volume it collects.
-		if !titlerule.SameStatedVolume(workTitle, ident.series, was.title, was.series) ||
+		if row == nil {
+			st := titlerule.StatementOf(workTitle, ident.series, titlerule.WriterPolicy)
+			row = &st
+		}
+		if !row.Agrees(was.statement) ||
 			!titlerule.SameCollectionStatus(workTitle, ident.series, was.title, was.series) {
 			continue
 		}
@@ -268,10 +275,13 @@ func againstSeries(series string) string {
 
 // runWorkIdentity is what the run remembers about a work it has written to, for the
 // run half of the probe: the title and series name its identity key was derived
-// from, which is what the stated-volume test needs on that side.
+// from, and the volume statement they make (under titlerule.WriterPolicy, as the
+// disk half's check.WorkIdentity derives it), which is what the stated-volume test
+// needs on that side.
 type runWorkIdentity struct {
-	title  string
-	series string
+	title     string
+	series    string
+	statement titlerule.VolumeStatement
 }
 
 // rememberIdentity records the normalized identity of a work this run created (or
@@ -288,7 +298,8 @@ func (p *planner) rememberIdentity(ident rowIdentity, slug, title string) {
 		return
 	}
 	if _, seen := p.runIdentified[slug]; !seen {
-		p.runIdentified[slug] = runWorkIdentity{title: title, series: ident.series}
+		p.runIdentified[slug] = runWorkIdentity{title: title, series: ident.series,
+			statement: titlerule.StatementOf(title, ident.series, titlerule.WriterPolicy)}
 	}
 	for _, have := range p.runIdentity[ident.key] {
 		if have == slug {

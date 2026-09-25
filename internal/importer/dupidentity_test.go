@@ -280,6 +280,90 @@ func TestCreateAcceptsAStatedVolumeNothingPlaces(t *testing.T) {
 	}
 }
 
+// Issue #2258's review: a title word is not a stated volume. "Level One Dropout"
+// begins with a division word and a word number, and had the stated-volume rule read
+// it as volume 1, the positive test above would have fired on a decorated second
+// listing of it (nothing places a series-less work at volume 1) and MINTED the
+// duplicate as a sibling work - exactly what main refused. The division word's word
+// number is read only in marker position, so this row is refused as it always was.
+func TestCreateRefusesADecoratedDuplicateWhoseTitleBeginsWithADivisionWord(t *testing.T) {
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0LEVEL001", title: "Level One Dropout", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 600},
+	)); sum.NewWorks != 1 {
+		t.Fatalf("seed run: NewWorks = %d, want 1", sum.NewWorks)
+	}
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0LEVEL002", title: "Level One Dropout: A LitRPG Adventure", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Bob Reader"}`, minutes: 610},
+	))
+	if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+		t.Errorf("SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0: the decorated listing is the catalogued book; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+	// The edition-marker spelling never reaches the guard at all - cleanWorkTitle
+	// strips it and the row's own slug chain lands on the catalogued work - but it
+	// must not mint a work either.
+	sum = runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0LEVEL003", title: "Level One Dropout (Unabridged)", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Cy Reader"}`, minutes: 605},
+	))
+	if sum.NewWorks != 0 {
+		t.Errorf("(Unabridged): NewWorks = %d, want 0; warnings = %v", sum.NewWorks, sum.Warnings)
+	}
+}
+
+// The same guard for a word-numbered division IN marker position, which the audit's
+// reading does count ("Locked In: Season One" states season 1): the positive test
+// reads titlerule.WriterPolicy, which leaves that reading out, so a decorated second
+// listing is refused exactly as main refused it rather than minted beside the work
+// no series places.
+func TestCreateRefusesADecoratedDuplicateOfAWordNumberedSeason(t *testing.T) {
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0LOCKED01", title: "Locked In: Season One", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 600},
+	)); sum.NewWorks != 1 {
+		t.Fatalf("seed run: NewWorks = %d, want 1", sum.NewWorks)
+	}
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0LOCKED02", title: "Locked In: Season One: A LitRPG Adventure", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Bob Reader"}`, minutes: 610},
+	))
+	if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+		t.Errorf("SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
+// The CONTRADICTION half of the same rule: a word-numbered division states nothing to a
+// writer, so it cannot contradict a catalogued volume either. "Nameless (Season One)"
+// against "Nameless (Volume II)" is 1 against 2 for the audit, and a match the create
+// guard vetoed on that reading would mint the row as a sibling work. Both halves of the
+// probe - the catalogued work, and a work this run wrote - read the writer policy.
+func TestCreateGuardReadsNoContradictionFromAWordNumberedSeason(t *testing.T) {
+	seed := libexRow{asin: "B0NAMELES1", title: "Nameless (Volume II)", authors: `{"name":"Ada One"}`,
+		narrators: `{"name":"Ann Reader"}`, minutes: 600}
+	row := libexRow{asin: "B0NAMELES2", title: "Nameless (Season One)", authors: `{"name":"Ada One"}`,
+		narrators: `{"name":"Bob Reader"}`, minutes: 610}
+
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(seed)); sum.NewWorks != 1 {
+		t.Fatalf("seed run: NewWorks = %d, want 1", sum.NewWorks)
+	}
+	if sum := runLibexInto(t, dataDir, rows(row)); sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+		t.Errorf("catalogued: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+
+	dataDir = t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(seed, row)); sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 1 {
+		t.Errorf("one run: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 1; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
 // F3: a COLLECTION is not the volume it collects. Both spellings the audit measured -
 // a "Books 1-3" range and a "Complete Boxed Set" - reduce to the plain title once the
 // packaging comes off.

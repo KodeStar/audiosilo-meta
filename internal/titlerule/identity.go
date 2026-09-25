@@ -5,6 +5,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 // identity.go holds the NORMALIZED WORK IDENTITY key: the one answer to "do these
@@ -221,82 +222,342 @@ func SeriesNameFor(title string, names []string) string {
 	return names[0]
 }
 
-// StatedVolume is the volume number a title spells out against a series name, and
-// whether it states one at all - "does this title say which volume it is", the
-// question that separates two records of one book from two volumes of one serial.
+// VOLUME STATEMENTS. A title can say which volume of something it is - "Hammered,
+// Book 3", "The Wandering Inn: Season 2", "Faraway Paladin: Volume II", "Wildwood
+// (Book Two)" - and that statement is the one piece of evidence separating two records
+// of one book from two volumes of one serial, because the KEY throws every such marker
+// away (wideGenreFluff drops "Season 2" as packaging, wordVolumeMarker strips "Book
+// Two" and "Volume II"). What is read here is what the key removes: a marker the key
+// loses stays a marker something can state.
 //
-// It is BareSeq (markerSeq's book/vol/part/episode vocabulary, plus a residual that
-// is nothing but a number) WIDENED by three forms markerSeq cannot see, every one of
-// them a residual the KEY throws away and therefore a hazard if nothing states it:
+// A title is read against a series name, which is stripped first so a number in the
+// series' own name is not read as a volume. Two readings come out, in a
+// VolumeStatement:
 //
-//   - the DIVISION-class ordinals (ordinalVolume). wideGenreFluff drops a trailing
-//     ": Season 2" or "- Level 3" as packaging, so "Foo: Season 1" and "Foo: Season
-//     2" reduce to one key - and markerSeq knows none of those words, so the pair
-//     read as two records of one book rather than as two seasons.
-//   - a ROMAN volume number (romanVolume). wordVolumeMarker already recognizes
-//     "Volume II" as a marker to STRIP, so the key loses it; without a number to
-//     compare, "Volume I" and "Volume II" reduced to one identity too.
-//   - a WORD volume number, read back through wordVolumeMarker's own capture (the
-//     rule that strips the shape). markerSeq requires a digit, so until this arm
-//     existed a serial
-//     numbering its volumes in words stated no volume at all - while the key lost
-//     those words in the two places it takes a whole segment: inside a decorative
-//     group ("Wildwood (Book One)" and "Wildwood (Book Two)" both reduce to
-//     "Wildwood") and in the tail the series strip leaves dangling ("Hellmervick,
-//     Book Two: The Black Forest" against that series reduces to "Hellmervick").
+//   - the VOLUME, decided in tiers - the first tier that reads anything answers, and
+//     inside a tier the EARLIEST marker wins whatever its spelling:
+//     1. BareSeq: a book/vol/part/episode marker in DIGITS (markerSeq), else a
+//     residual that is nothing but a number;
+//     2. a book/vol/part/episode marker in ROMAN numerals or WORDS;
+//     3. a DIVISION marker (season, series, level, lesson, unit, year), in the
+//     spellings the VolumePolicy reads.
+//     A volume marker outranks a division marker and digits outrank words because a
+//     nested serial's volume is its INNER number ("Yesterday's Gone: Season 1 - Ep. 3"
+//     is volume 3), while a word volume marker ahead of a digit one is usually a
+//     subseries part in front of the retailer's own "(Series, Book 13)". An arm's match
+//     it cannot read (a composite word number, "Book One Hundred") is passed over for
+//     the arm's next match, so it never hides a readable marker after it.
+//   - the DIVISIONS, every division marker the title states in order (divisionSequence,
+//     digits and words alike), for a title that NESTS them: "Level 1 Lessons 1-5" and
+//     "Level 1 Lessons 6-10" share their first number and are two products.
 //
-// The widening is layered HERE rather than in markerSeq/bareSeq, which are copied
-// from audiosilo-server's pkg/match (see match.go's delta list): the copy stays
-// re-diffable, and internal/audit's own volume-conflict measurement - taken with
-// BareSeq - is left exactly as it was measured.
-//
-// The vocabulary can only make a duplicate gate MORE conservative, which is what
-// makes a generous list safe: a title that states a volume is refused only when the
-// catalogue positively places the matched work at that volume (the positive test in
-// both writers), so a false positive here costs a missed duplicate refusal, never a
-// wrong one.
-func StatedVolume(title, series string) (float64, bool) {
-	if v, ok := BareSeq(title, series); ok {
-		return v, true
-	}
-	residual := stripSeries(title, series)
-	if m := ordinalVolume.FindStringSubmatch(residual); m != nil {
-		if v, err := strconv.ParseFloat(m[1], 64); err == nil {
-			return v, true
-		}
-	}
-	if m := romanVolume.FindStringSubmatch(residual); m != nil {
-		if v, ok := romanValue(m[1]); ok {
-			return v, true
-		}
-	}
-	if m := wordVolumeMarker.FindStringSubmatchIndex(residual); m != nil {
-		if word := groupAt(residual, m, 1); word != "" && !compositeNumberTail.MatchString(residual[m[3]:]) {
-			if v, ok := wordValue(word); ok {
-				return v, true
-			}
-		}
-	}
-	return 0, false
+// WHO READS WHICH is the VolumePolicy, and the split is set by the cost of being
+// wrong. A division word numbered in WORDS ("Season One", "Level Three") is the least
+// certain reading here - "Season", "Series", "Level", "Unit" and "Lesson" are ordinary
+// title words - so it is read only in marker position (divisionMarkerAt), and only by
+// a caller for whom a reading can do nothing worse than withhold a MERGE. A WRITER
+// turns a reading into a CREATE twice over: its positive test refuses a row as a
+// duplicate only when the catalogue places the matched work at the stated volume, and
+// its contradiction test lets two stated volumes that differ keep the row apart. So
+// the writers - and the census that counts what they would refuse - read the
+// narrower policy.
+
+// VolumePolicy is which spellings of a marker a caller reads - see VOLUME STATEMENTS.
+// Its two values are the whole set; a caller picks one, it never builds one. They
+// differ in tier 3 alone, so that is all a policy holds.
+type VolumePolicy struct {
+	division []volumeArm
 }
 
+var (
+	// ReaderPolicy reads every spelling, a word-numbered division in marker position
+	// included. It is for the rules that can only WITHHOLD a merge: internal/audit.
+	ReaderPolicy = VolumePolicy{division: []volumeArm{{ordinalVolume, readDivision}, {romanDivision, readRoman}}}
+	// WriterPolicy reads divisions in digits and roman numerals only. It is for every
+	// rule that decides whether a record is CREATED - the importer's create guard, the
+	// intake gates - and for metacheck's census, so the three defences agree about
+	// what one book is.
+	WriterPolicy = VolumePolicy{division: []volumeArm{{ordinalDigits, readDigits}, {romanDivision, readRoman}}}
+)
+
+// Volume is the volume a title states against a series name under this policy, and
+// whether it states one at all.
+func (p VolumePolicy) Volume(title, series string) (float64, bool) {
+	return p.volumeOf(stripSeries(title, series))
+}
+
+// volumeOf is the tier walk over a residual the series name is already stripped from.
+func (p VolumePolicy) volumeOf(residual string) (float64, bool) {
+	// The residual is already stripped, and a series name of "" strips nothing, so this
+	// is BareSeq's reading of the title without a second strip.
+	if v, ok := BareSeq(residual, ""); ok {
+		return v, true
+	}
+	if v, ok := earliestVolume(residual, volumeRomanOrWord); ok {
+		return v, true
+	}
+	return earliestVolume(residual, p.division)
+}
+
+// VolumeStatement is everything a title says about which volume it is, against one
+// series name under one policy (see VOLUME STATEMENTS). Derive it once per title and
+// compare with Agrees, rather than re-reading two titles per compared pair.
+type VolumeStatement struct {
+	Volume    float64   // the volume, meaningful only when States
+	States    bool      // whether the title states a volume
+	Divisions []float64 // every division marker, in title order
+}
+
+// StatementOf is a title's VolumeStatement against a series name under a policy.
+func StatementOf(title, series string, p VolumePolicy) VolumeStatement {
+	residual := stripSeries(title, series)
+	v, ok := p.volumeOf(residual)
+	return VolumeStatement{Volume: v, States: ok, Divisions: divisionSequenceOf(residual)}
+}
+
+// Agrees reports whether two statements are of the same volume - or, either way, do
+// not contradict each other. A statement of nothing is not a disagreement: "Hammered"
+// beside "Hammered: The Iron Druid Chronicles, Book 3" is the duplicate the gates
+// exist to catch, and only two titles that BOTH state something, differently, are
+// siblings. Two things are compared, because one number is not always the whole
+// statement: the two volumes, and the two division sequences.
+//
+// The volume is spelling-dependent ACROSS tiers - "Part One, Episode 2" is volume 2
+// (a digit marker outranks a word one) where "Part 1, Episode 2" is volume 1 - so one
+// nested sequence spelled two ways reads as a contradiction. That errs the safe way:
+// a false contradiction withholds a merge (or, at a writer, a refusal of a row).
+func (a VolumeStatement) Agrees(b VolumeStatement) bool {
+	if a.States && b.States && a.Volume != b.Volume {
+		return false
+	}
+	if len(a.Divisions) == 0 || len(b.Divisions) == 0 {
+		return true
+	}
+	return slices.Equal(a.Divisions, b.Divisions)
+}
+
+// Label renders a statement for a report: the volume, then the division sequence in
+// brackets ("2 [1/2]" is volume 2 over Part 1, Episode 2) unless the sequence says
+// nothing the volume does not (empty, or exactly [volume]). A statement with no
+// volume is its sequence alone ("[1]" for "Books 1-3"); one stating neither has no
+// label.
+//
+// It is injective over what Agrees compares - a volume and a sequence - so two
+// statements that disagree never share a label, which is what lets a volume-conflict
+// report always name the volumes it conflicts over.
+func (a VolumeStatement) Label() (string, bool) {
+	var parts []string
+	if a.States {
+		parts = append(parts, formatVolume(a.Volume))
+	}
+	if n := len(a.Divisions); n > 0 && !(a.States && n == 1 && a.Divisions[0] == a.Volume) {
+		seq := make([]string, n)
+		for i, v := range a.Divisions {
+			seq[i] = formatVolume(v)
+		}
+		parts = append(parts, "["+strings.Join(seq, "/")+"]")
+	}
+	return strings.Join(parts, " "), len(parts) > 0
+}
+
+func formatVolume(v float64) string { return strconv.FormatFloat(v, 'f', -1, 64) }
+
 // divisionWords is the DIVISION-class marker vocabulary - a season, a level, a
-// lesson, a unit, a numbered year. One spelling shared by ordinalVolume (the
-// primary-number probe) and divisionMarker (the sequence), so a word added to one
-// cannot make StatedVolume and divisionSequence answer differently about one title.
+// lesson, a unit, a numbered year. It is the one spelling the volume's division tier
+// (ordinalVolume, ordinalDigits) and the division sequence (divisionMarker) share, and
+// both read the number after it the same way (divisionNumberArms), so no word and no
+// number spelling can reach one and miss the other.
+//
+// The two still read different things on purpose. The sequence reads a word-numbered
+// division ANYWHERE, while the volume reads it only in marker position and only under
+// ReaderPolicy: "Level One Dropout" has the sequence [1] and states no volume, and
+// "Wildwood (Season One)" has both. A title whose sequence is non-empty and whose
+// volume is silent contradicts nothing through its volume - its sequence still
+// compares.
 const divisionWords = `seasons?|staffel|temporadas?|saisons?|series|levels?|lessons?|units?|jahr`
 
-// ordinalVolume matches a DIVISION-class marker - a season, a level, a lesson, a
-// unit, a numbered year - which names WHICH PART of a product this is exactly as
-// "Book 3" does. Every word here is in wideGenreFluff, which is precisely the
-// problem: the key drops them.
-var ordinalVolume = regexp.MustCompile(`(?i)\b(?:` + divisionWords + `)\s*\.?\s*(\d+(?:\.\d+)?)\b`)
+// divisionNumberArms is the number half of a division marker: a DIGIT (group 1,
+// markerSeq's optional separator) or a WORD (group 2, wordVolumeMarker's REQUIRED
+// whitespace - see that rule for why it is not cosmetic), then a word boundary. One
+// alternation rather than two regexes, because divisionSequence is ORDERED and has to
+// know which spelling came first. readDivisionNumber is its one reader.
+var divisionNumberArms = `(?:\s*\.?\s*(\d+(?:\.\d+)?)|\s+(` + volumeNumberWords + `))\b`
 
-// romanVolume matches a volume marker whose number is a ROMAN numeral. The keyword
-// list is wordVolumeMarker's (the rule that already strips this shape) plus the two
-// division words measured with roman numbering, and the numeral alternation is its
-// too, so what the key removes is exactly what this can read back.
-var romanVolume = regexp.MustCompile(`(?i)\b(?:` + volumeMarkerWords + `|seasons?|levels?)\s*\.?\s*(x{0,2}(?:ix|iv|vi{1,3}|i{1,3}|v|x))\b`)
+// ordinalVolume matches a DIVISION-class marker numbered in digits or in words, which
+// names WHICH PART of a product this is exactly as "Book 3" does. Every word here is in
+// wideGenreFluff, which is precisely the problem: the key drops them.
+var ordinalVolume = regexp.MustCompile(`(?i)\b(?:` + divisionWords + `)` + divisionNumberArms)
+
+// ordinalDigits is ordinalVolume's DIGIT arm alone, for WriterPolicy's division tier -
+// a policy that reads no word-numbered division has no use for matching one.
+var ordinalDigits = regexp.MustCompile(`(?i)\b(?:` + divisionWords + `)\s*\.?\s*(\d+(?:\.\d+)?)\b`)
+
+// romanCore is the numeral alternation I-X, the one wordVolumeMarker strips (rules.go)
+// and the roman rules read back. Its order is wordVolumeMarker's: every consumer ends
+// the numeral at a word boundary, so each input matches exactly one alternative
+// whatever the order, and keeping that order keeps wordVolumeMarker - which feeds the
+// identity key - the same pattern byte for byte.
+const romanCore = `i{1,3}|iv|v|vi{1,3}|ix|x`
+
+// romanNumeral is the numeral half of a ROMAN-numbered marker, with its separator:
+// romanCore widened to xxx. The separator is REQUIRED (whitespace, or a dot as in
+// "Vol.II"): with markerSeq's optional one the leading \b let "Parti Animals" read as
+// "Part i" - the surname hazard wordVolumeMarker's required whitespace already guards
+// against ("Partone").
+const romanNumeral = `(?:\s+|\s*\.\s*)(x{0,2}(?:` + romanCore + `))\b`
+
+// romanVolume matches a VOLUME marker whose number is a ROMAN numeral. The keyword
+// list is wordVolumeMarker's (the rule that already strips this shape).
+var romanVolume = regexp.MustCompile(`(?i)\b(?:` + volumeMarkerWords + `)` + romanNumeral)
+
+// romanDivision is romanVolume for the two DIVISION words measured with roman
+// numbering ("Season II", "Level III") - a rule of its own because divisions are a
+// different tier.
+var romanDivision = regexp.MustCompile(`(?i)\b(?:seasons?|levels?)` + romanNumeral)
+
+// volumeArm is one spelling of a marker: the rule that finds it, and how its number
+// is read off one match (false: this match states nothing this arm can read).
+type volumeArm struct {
+	re   *regexp.Regexp
+	read func(s string, m []int) (float64, bool)
+}
+
+// volumeRomanOrWord is tier 2, the same under every policy. A ROMAN capture of
+// wordVolumeMarker misses wordValue; romanVolume reads that very marker at the same
+// start.
+var volumeRomanOrWord = []volumeArm{
+	{romanVolume, readRoman},
+	{wordVolumeMarker, func(s string, m []int) (float64, bool) { return readWordNumber(s, m, 1) }},
+}
+
+// earliestVolume is the number of the earliest marker any of arms reads in s. Each
+// arm contributes the first of its matches it can READ: an unreadable first match (a
+// composite word number, a division word out of marker position) is passed over for
+// the arm's next one rather than ending the arm, so "Unit One Hundred and Level 4"
+// still states 4. The later matches are only looked for when the first is unreadable.
+func earliestVolume(s string, arms []volumeArm) (float64, bool) {
+	at, vol := -1, 0.0
+	for _, a := range arms {
+		m := a.re.FindStringSubmatchIndex(s)
+		if m == nil || (at >= 0 && m[0] >= at) {
+			continue
+		}
+		v, ok := a.read(s, m)
+		if !ok {
+			for _, n := range a.re.FindAllStringSubmatchIndex(s, -1)[1:] {
+				if at >= 0 && n[0] >= at {
+					break
+				}
+				if v, ok = a.read(s, n); ok {
+					m = n
+					break
+				}
+			}
+		}
+		if ok {
+			at, vol = m[0], v
+		}
+	}
+	return vol, at >= 0
+}
+
+func readRoman(s string, m []int) (float64, bool) { return romanValue(groupAt(s, m, 1)) }
+
+// readDigits reads capture group 1 as a decimal number.
+func readDigits(s string, m []int) (float64, bool) {
+	v, err := strconv.ParseFloat(groupAt(s, m, 1), 64)
+	return v, err == nil
+}
+
+// readDivisionNumber is the one reader of a divisionNumberArms match: its digits, else
+// its word number (refused when composite).
+func readDivisionNumber(s string, m []int) (float64, bool) {
+	if groupAt(s, m, 1) != "" {
+		return readDigits(s, m)
+	}
+	return readWordNumber(s, m, 2)
+}
+
+// readDivision reads an ordinalVolume match for ReaderPolicy: its digits wherever they
+// stand, its word number only in marker position (divisionMarkerAt).
+func readDivision(s string, m []int) (float64, bool) {
+	if groupAt(s, m, 2) != "" && !divisionMarkerAt(s, m[0], m[1]) {
+		return 0, false
+	}
+	return readDivisionNumber(s, m)
+}
+
+// divisionMarkerAt reports whether s[start:end] - a division word and its WORD
+// number - stands as a MARKER rather than as words of the title: it opens a title
+// segment and closes one, at the separators the title rules split segments at
+// (divisionSeparators, plus brackets and a whitespace-bounded dash).
+//
+// It OPENS one when what precedes it ends in a separator, or is nothing but the space
+// a removed series name left (stripSeries replaces the name with a space, so "Junkers
+// Season Two" against "Junkers" is " Season Two"). A title that simply BEGINS with the
+// words - "Level One Dropout", "Series One Collection" - is the title, not a marker on
+// it. It CLOSES one when nothing follows, or a separator does: "Season Four Complete",
+// "Level One God" and "Series Two-Step" run on into the title and state nothing.
+func divisionMarkerAt(s string, start, end int) bool {
+	if start == 0 {
+		return false // the title begins with it
+	}
+	before := s[:start]
+	if tb := strings.TrimRight(before, " \t"); tb != "" && !endsSegment(tb, len(tb) < len(before)) {
+		return false
+	}
+	after := s[end:]
+	ta := strings.TrimLeft(after, " \t")
+	if ta == "" {
+		return true
+	}
+	r, _ := utf8.DecodeRuneInString(ta)
+	switch {
+	case strings.ContainsRune(divisionSeparators, r), r == ')', r == ']':
+		return true
+	case r == '(', r == '[', isDash(r):
+		// "Season One (Unabridged)", "Season One - The Brain Drain" - but not the
+		// hyphen welded onto "Series Two-Step".
+		return len(ta) < len(after)
+	}
+	return false
+}
+
+// endsSegment reports whether text ending in tb (trailing whitespace trimmed; spaced
+// says whether there was any) ends a title segment, so what follows opens one: a
+// separator, an opening bracket, or a dash with whitespace on both sides.
+func endsSegment(tb string, spaced bool) bool {
+	r, size := utf8.DecodeLastRuneInString(tb)
+	switch {
+	case strings.ContainsRune(divisionSeparators, r), r == '(', r == '[':
+		return true
+	case isDash(r):
+		prev, _ := utf8.DecodeLastRuneInString(tb[:len(tb)-size])
+		return spaced && (prev == ' ' || prev == '\t')
+	}
+	return false
+}
+
+// divisionSeparators is the punctuation a word-numbered division marker must stand
+// between: the title rules' own segment punctuation (segmentPunct) plus the slash,
+// which the rules do not split a title on but which does set a level apart from the
+// course it belongs to ("Automatic Fluency: ... Conversation/Level One").
+const divisionSeparators = segmentPunct + "/"
+
+// isDash reports a hyphen, an en dash or an em dash - the three a title writes a
+// segment break with.
+func isDash(r rune) bool { return r == '-' || r == '\u2013' || r == '\u2014' }
+
+// readWordNumber reads capture group g as a word number, refusing one that is only
+// the first word of a COMPOSITE number ("Book One Hundred") - reading it would state
+// a volume the title does not.
+func readWordNumber(s string, m []int, g int) (float64, bool) {
+	word := groupAt(s, m, g)
+	if word == "" || compositeNumberTail.MatchString(s[m[2*g+1]:]) {
+		return 0, false
+	}
+	return wordValue(word)
+}
 
 // romanNumerals is the value of every numeral romanVolume can match. A table rather
 // than a subtractive algorithm: the alternation admits twenty-odd forms and a table
@@ -376,94 +637,55 @@ func groupAt(s string, m []int, g int) string {
 	return s[m[2*g]:m[2*g+1]]
 }
 
-// SameStatedVolume reports whether two titles state the SAME volume - or, either
-// way, do not contradict each other - against their series names. A contradiction is
-// the one piece of evidence that turns a normalized identity collision from a
-// duplicate into a pair of siblings.
-//
-// A title stating nothing is not a disagreement: "Hammered" beside "Hammered: The
-// Iron Druid Chronicles, Book 3" is precisely the duplicate the gates exist to
-// catch, and only two titles that BOTH state a division, differently, are siblings.
-//
-// It compares two things, because one number is not always the whole statement:
-//
-//   - the volume each title states (StatedVolume), the primary number a gate also
-//     uses for its positive test;
-//   - the whole SEQUENCE of division markers (divisionSequence), for a title that
-//     nests them - word and digit spellings read into one vocabulary, so "Part One,
-//     Episode 2" and "Part Two, Episode 3" compare as the nested statements they
-//     are. NOTE the primary probe stays spelling-DEPENDENT for a nested title
-//     (BareSeq reads the first DIGIT marker, so "Part One, Episode 2" has primary 2
-//     where "Part 1, Episode 2" has primary 1) and it short-circuits first, so one
-//     nested sequence spelled two ways still reads as a contradiction. That
-//     asymmetry predates the word widening and is kept: relaxing it - equal
-//     sequences overriding a primary disagreement - widens the duplicate gates,
-//     which is a measured change of its own. The measured population is the
-//     Pimsleur language courses: "Level 1
-//     Lessons 1-5" and "Level 1 Lessons 6-10" are different products whose FIRST
-//     stated number is identical, so a single-number comparison read 36 units of one
-//     course as 36 records of one book. Comparing the sequence separates them, and
-//     separates "Level 1 Lessons 1-5" from "Level 2 Lessons 1-5" too.
-func SameStatedVolume(titleA, seriesA, titleB, seriesB string) bool {
-	if a, okA := StatedVolume(titleA, seriesA); okA {
-		if b, okB := StatedVolume(titleB, seriesB); okB && a != b {
+// SameStatedVolume reports whether two titles state the same volume, or do not
+// contradict each other, under a policy: StatementOf(A).Agrees(StatementOf(B)),
+// deriving only what the answer needs - B's volume only when A states one, B's
+// sequence only when A's is non-empty. A caller comparing one title against many
+// derives each statement once and calls Agrees instead.
+func SameStatedVolume(titleA, seriesA, titleB, seriesB string, p VolumePolicy) bool {
+	ra, rb := stripSeries(titleA, seriesA), stripSeries(titleB, seriesB)
+	if a, ok := p.volumeOf(ra); ok {
+		if b, ok := p.volumeOf(rb); ok && a != b {
 			return false
 		}
 	}
-	sa, sb := divisionSequence(titleA, seriesA), divisionSequence(titleB, seriesB)
-	if len(sa) == 0 || len(sb) == 0 {
+	sa := divisionSequenceOf(ra)
+	if len(sa) == 0 {
 		return true
 	}
-	return slices.Equal(sa, sb)
+	sb := divisionSequenceOf(rb)
+	return len(sb) == 0 || slices.Equal(sa, sb)
 }
 
 // divisionMarker matches any keyword that names WHICH PART of a product a title is,
-// with its number - markerSeq's vocabulary (pluralized) plus ordinalVolume's
-// division words. It is the union on purpose: a title can nest two of them, and
-// which family each keyword belongs to says nothing about whether the pair agrees.
-//
-// The number is a DIGIT (group 1) or a WORD (group 2), one alternation rather than a
-// second regex, because the sequence is ORDERED: "Part Two, Episode 3" states two
-// divisions and a rule reading the two spellings separately could not say which came
-// first. The digit arm is markerSeq's separator and the word arm is
-// wordVolumeMarker's required whitespace - see that rule for why it is not cosmetic.
+// with its number - markerSeq's vocabulary (pluralized) plus the division words. It is
+// the union on purpose: a title can nest two of them, and which family each keyword
+// belongs to says nothing about whether the pair agrees.
 var divisionMarker = regexp.MustCompile(`(?i)\b(?:books?|bks?|vols?|volumes?|parts?|pts?|episodes?|eps?|#|` + divisionWords + `)` +
-	`(?:\s*\.?\s*(\d+(?:\.\d+)?)|\s+(` + volumeNumberWords + `))\b`)
+	divisionNumberArms)
 
 // divisionSequence is every division number a title states, in the order it states
 // them, with the series name removed first (so a digit in the series' own name is not
 // read as a division).
 func divisionSequence(title, series string) []float64 {
-	residual := stripSeries(title, series)
+	return divisionSequenceOf(stripSeries(title, series))
+}
+
+// divisionSequenceOf is divisionSequence over an already-stripped residual. A marker
+// it cannot read (a composite word number) makes it state nothing rather than half a
+// sequence.
+func divisionSequenceOf(residual string) []float64 {
 	ms := divisionMarker.FindAllStringSubmatchIndex(residual, -1)
 	if len(ms) == 0 {
 		return nil
 	}
 	out := make([]float64, 0, len(ms))
 	for _, m := range ms {
-		word := groupAt(residual, m, 2)
-		if word != "" && compositeNumberTail.MatchString(residual[m[5]:]) {
-			return nil // "Part One Hundred": a number this vocabulary cannot read
-		}
-		v, ok := divisionNumber(groupAt(residual, m, 1), word)
+		v, ok := readDivisionNumber(residual, m)
 		if !ok {
-			return nil // unreadable: state nothing rather than half a sequence
+			return nil
 		}
 		out = append(out, v)
 	}
 	return out
-}
-
-// divisionNumber reads whichever of divisionMarker's two number arms matched. Exactly
-// one of them is ever non-empty, so an empty pair is a match with no number in it,
-// which the regex cannot produce and which this refuses rather than reads as zero.
-func divisionNumber(digits, word string) (float64, bool) {
-	if digits != "" {
-		v, err := strconv.ParseFloat(digits, 64)
-		return v, err == nil
-	}
-	if word != "" {
-		return wordValue(word)
-	}
-	return 0, false
 }
