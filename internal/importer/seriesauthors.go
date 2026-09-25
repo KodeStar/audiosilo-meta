@@ -3,6 +3,7 @@ package importer
 import (
 	"slices"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -16,12 +17,10 @@ import (
 // an identity: "Lost Fleet" is Jack Campbell's military SF and Sarah Hawke's space
 // opera, "Heart of Stone", "Midnight" and "Legacy" are a dozen romance franchises
 // each. Joining the first same-named series on the chain is what let an unrelated
-// author's books SQUAT another author's slots - Campbell's Lost Fleet 4-6 sat at
-// Hawke's positions 4-6 and pushed her real volumes out, and the 2026-08 sweeps
-// (Omega Force, Quantum, Reawakened, Wicked Fae, Delirium, Das Marsprojekt, Carlisle
-// Emergency, Conan, smoke, tangled, ...) were all this one mechanism.
+// author's books SQUAT another author's slots: Campbell's Lost Fleet 4-6 sat at
+// Hawke's positions 4-6 and pushed her real volumes out.
 //
-// So a same-named series is JOINED only when it FITS the row (SeriesAuthors.fit):
+// So a same-named series is JOINED only when it FITS the row (seriesAuthors.fit):
 //
 //   - SHARED: a row author credits a member work - by slug, or by a spelling of the
 //     same name (personForm.same). When one author DOMINATES the series (credits at
@@ -30,7 +29,9 @@ import (
 //     beside the series' own author is exactly what an earlier squatter looks like,
 //     and counting it would let every later volume by the squatter keep squatting,
 //     while a co-author (Patterson beside Karp in NYPD Red, a shared world's
-//     anthology) has written into the series with its author's own hand.
+//     anthology) has written into the series with its author's own hand. An author
+//     is every spelling of one name at once (authorGroup), so a person whose records
+//     forked into two slugs is not split into two minorities.
 //   - OPEN: nothing counts as shared, but the series gives no evidence it belongs
 //     to anyone else: fewer than seriesClosedMinMembers members credit an
 //     individual, or no author dominates it (a shared universe, an anthology line, a
@@ -38,13 +39,12 @@ import (
 //     ("Robert Ludlum's The Janson Equation", "Ted Bell's Monarch" - a licensed
 //     continuation says whose series it is), or a member was released by the row's
 //     own PUBLISHER - unless that publisher is a catalogue-wide house
-//     (largePublishersOf), which releases everybody's books and so says nothing.
+//     (largeHouses), which releases everybody's books and so says nothing.
 //   - CLOSED otherwise: the row does not join, exactly as it would not join a
 //     differently-named holder of the slug.
 //
-// The rule was chosen by MEASUREMENT over the 2026-09-25 tree - see the PR that
-// introduced it (#2371) for the full tables and the hand-labelled sample; the
-// numbers the thresholds rest on are quoted beside each constant.
+// The thresholds were chosen by measurement over the 2026-09-25 tree; the numbers
+// each rests on are quoted beside it.
 //
 // Refusing a legitimate member costs a same-named sibling series a human can
 // merge; admitting a squatter costs a wrong book in another author's series that
@@ -79,137 +79,236 @@ const (
 // 2026-09-25 tree (279k works) that is the twelve national houses (Tantor,
 // Audible Studios, Recorded Books, Podium, Blackstone, Brilliance, Random House,
 // Simon & Schuster, Penguin, Macmillan, Listening Library, Dreamscape), and the
-// band it closes is measured two thirds squatters; lowering it to 0.4% reaches
-// the genre houses whose lines are real shared series (Lubbe's John Sinclair,
-// Harlequin, Eins A Medien's Warhammer), where the next band is one third. A
-// share rather than a count, so the line tracks a growing catalogue.
-var largePublisherShare = 100
+// refusals that line adds are measured two thirds squatters; lowering it to 0.4%
+// reaches the genre houses whose lines are real shared series (Lubbe's John
+// Sinclair, Harlequin, Eins A Medien's Warhammer), where the next band is one
+// third. A share rather than a count, so the line tracks a growing catalogue.
+const largePublisherShare = 100
 
-// SeriesFit is how a series' existing membership receives a row naming it.
-type SeriesFit int
+// minLargePublisherWorks is the fewest works a publisher needs before it can be
+// a catalogue-wide house at all: in a catalogue of a few thousand works the 1%
+// line falls to a handful of books, which is a small press's own series, not a
+// house that releases everybody's.
+const minLargePublisherWorks = 100
+
+// seriesFit is how a series' existing membership receives a row naming it.
+type seriesFit int
 
 const (
-	// SeriesClosed: the series belongs to other authors; the row does not join.
-	SeriesClosed SeriesFit = iota
-	// SeriesOpen: nothing is shared, but nothing says the series is anyone
+	// seriesClosed: the series belongs to other authors; the row does not join.
+	seriesClosed seriesFit = iota
+	// seriesOpen: nothing is shared, but nothing says the series is anyone
 	// else's either.
-	SeriesOpen
-	// SeriesShared: a row author is one of the series' own authors.
-	SeriesShared
+	seriesOpen
+	// seriesShared: a row author is one of the series' own authors.
+	seriesShared
 )
 
-// SeriesPerson is one author a row credits: the person slug it resolves to and
+// seriesPerson is one author a row credits: the person slug it resolves to and
 // the name it was spelled with.
-type SeriesPerson struct {
-	Slug, Name string
+type seriesPerson struct {
+	slug, name string
 }
 
 // SeriesRow is what the fit reads about a row naming a series. Build it with
-// SeriesRowOf (the importer and libex-select) or by hand (the intake form).
+// SeriesRowFor.
 type SeriesRow struct {
-	Authors []SeriesPerson
-	// Titles are the row's title spellings, read for a member author's name.
-	Titles []string
-	// Publishers are the row's publisher names.
-	Publishers []string
+	authors []seriesPerson
+	// titles are the row's title spellings, read for a member author's name.
+	titles []string
+	// publishers are the row's publisher names.
+	publishers []string
 
-	forms    []personForm // the individual authors' comparison forms, once
-	prepared bool
+	// The comparison forms, computed once per row however many series it is
+	// judged against (prepare).
+	prepared   bool
+	forms      []personForm // the individual authors
+	titleSlugs []string     // each title slugged and hyphen-fenced
+	pubKeys    []string     // each publisher's publisherKey
 }
 
-// individuals is the row's individual authors in comparison form, computed once
-// per row however many series it is judged against.
-func (r *SeriesRow) individuals() []personForm {
-	if !r.prepared {
-		for _, a := range r.Authors {
-			if individualAuthor(a.Slug) {
-				r.forms = append(r.forms, formOf(a.Slug, a.Name))
-			}
+// SeriesRowFor is the one SeriesRow builder every writer uses: names are the
+// row's author credits (already cleaned by the caller's own credit pipeline),
+// each resolved to the person slug resolve maps it to (nil keeps the slug);
+// titles are its title spellings and publisher its publisher of record.
+func SeriesRowFor(names, titles []string, publisher string, resolve func(slug string) string) *SeriesRow {
+	row := &SeriesRow{titles: titles}
+	for _, name := range names {
+		slug, _ := personSlug(name)
+		if resolve != nil {
+			slug = resolve(slug)
 		}
-		r.prepared = true
+		row.authors = append(row.authors, seriesPerson{slug: slug, name: name})
 	}
+	if publisher != "" {
+		row.publishers = []string{publisher}
+	}
+	return row
+}
+
+// prepare computes the row's comparison forms once.
+func (r *SeriesRow) prepare() {
+	if r.prepared {
+		return
+	}
+	r.prepared = true
+	for _, a := range r.authors {
+		if individualAuthor(a.slug) {
+			r.forms = append(r.forms, formOf(a.slug, a.name))
+		}
+	}
+	for _, t := range r.titles {
+		if t != "" {
+			r.titleSlugs = append(r.titleSlugs, "-"+model.Slugify(t)+"-")
+		}
+	}
+	for _, p := range r.publishers {
+		if k := publisherKey(p); k != "" {
+			r.pubKeys = append(r.pubKeys, k)
+		}
+	}
+}
+
+// individuals is the row's individual authors in comparison form.
+func (r *SeriesRow) individuals() []personForm {
+	r.prepare()
 	return r.forms
 }
 
-// SeriesAuthors is the author evidence one series' members carry.
-type SeriesAuthors struct {
+// seriesAuthors is the author evidence one series' members carry.
+type seriesAuthors struct {
 	// members counts the members that credit at least one individual.
 	members int
-	// credits maps an individual author slug to the members crediting it.
-	credits map[string]int
-	// forms is each credited slug's comparison form, computed when it is added.
-	forms map[string]personForm
+	// works are the keys of the members counted (a catalogued work's id, or a
+	// batch row's work identity), so one book is one member however many rows
+	// state it.
+	works map[string]bool
+	// groups are the credited authors, every spelling of one person in one group;
+	// bySlug places a credited slug in its group.
+	groups []authorGroup
+	bySlug map[string]int
+	// top is the most members any one group credits.
+	top int
 	// publishers is every member recording's publisher key (publisherKey).
 	publishers map[string]bool
-	// memberAuthors is each member's individual author slugs, which is what the
-	// co-credit test reads.
-	memberAuthors [][]string
+	// memberGroups is each member's distinct groups and memberKeys its key, which
+	// is what the co-credit test and a merge read.
+	memberGroups [][]int
+	memberKeys   []string
 }
 
-// add records one member work: its authors and its recordings' publishers.
-func (sa *SeriesAuthors) add(authors []SeriesPerson, publishers []string) {
-	if sa.credits == nil {
-		sa.credits = map[string]int{}
-		sa.forms = map[string]personForm{}
+// authorGroup is one person as a series credits them: every spelling seen, and
+// the members crediting any of them.
+type authorGroup struct {
+	forms   []personForm
+	credits int
+}
+
+// add records one member: its key ("" for a member counted however often it is
+// stated), its individual authors' forms and its publisher keys.
+func (sa *seriesAuthors) add(key string, people []personForm, publisherKeys []string) {
+	if sa.works == nil {
+		sa.works = map[string]bool{}
+		sa.bySlug = map[string]int{}
 		sa.publishers = map[string]bool{}
 	}
-	seen := map[string]bool{}
-	var member []string
-	for _, a := range authors {
-		if !individualAuthor(a.Slug) || seen[a.Slug] {
-			continue
+	if key != "" {
+		if sa.works[key] {
+			return
 		}
-		seen[a.Slug] = true
-		member = append(member, a.Slug)
-		sa.credits[a.Slug]++
-		if _, known := sa.forms[a.Slug]; !known {
-			sa.forms[a.Slug] = formOf(a.Slug, a.Name)
+		sa.works[key] = true
+	}
+	var gs []int
+	for _, f := range people {
+		if g := sa.groupOf(f); !slices.Contains(gs, g) {
+			gs = append(gs, g)
 		}
 	}
-	if len(member) > 0 {
+	if len(gs) > 0 {
 		sa.members++
-		sa.memberAuthors = append(sa.memberAuthors, member)
-	}
-	for _, p := range publishers {
-		if k := publisherKey(p); k != "" {
-			sa.publishers[k] = true
+		for _, g := range gs {
+			sa.groups[g].credits++
+			sa.top = max(sa.top, sa.groups[g].credits)
 		}
+		sa.memberGroups = append(sa.memberGroups, gs)
+		sa.memberKeys = append(sa.memberKeys, key)
+	}
+	for _, k := range publisherKeys {
+		sa.publishers[k] = true
+	}
+}
+
+// groupOf is the group f belongs to, joining a group holding a spelling of the
+// same person or starting its own.
+func (sa *seriesAuthors) groupOf(f personForm) int {
+	if g, ok := sa.bySlug[f.slug]; ok {
+		return g
+	}
+	g := -1
+	for i := range sa.groups {
+		if slices.ContainsFunc(sa.groups[i].forms, f.same) {
+			g = i
+			break
+		}
+	}
+	if g < 0 {
+		g = len(sa.groups)
+		sa.groups = append(sa.groups, authorGroup{})
+	}
+	sa.groups[g].forms = append(sa.groups[g].forms, f)
+	sa.bySlug[f.slug] = g
+	return g
+}
+
+// merge adds every member of other that sa does not already count.
+func (sa *seriesAuthors) merge(other *seriesAuthors) {
+	for i, gs := range other.memberGroups {
+		var people []personForm
+		for _, g := range gs {
+			people = append(people, other.groups[g].forms[0])
+		}
+		sa.add(other.memberKeys[i], people, nil)
 	}
 }
 
 // clone is an independent copy, for evidence a batch extends without touching
 // the catalogue's.
-func (sa *SeriesAuthors) clone() *SeriesAuthors {
-	out := &SeriesAuthors{}
+func (sa *seriesAuthors) clone() *seriesAuthors {
+	out := &seriesAuthors{}
 	if sa == nil {
 		return out
 	}
-	out.members = sa.members
-	out.credits = make(map[string]int, len(sa.credits))
-	for k, v := range sa.credits {
-		out.credits[k] = v
+	out.members, out.top = sa.members, sa.top
+	out.works = make(map[string]bool, len(sa.works))
+	for k := range sa.works {
+		out.works[k] = true
 	}
-	out.forms = make(map[string]personForm, len(sa.forms))
-	for k, v := range sa.forms {
-		out.forms[k] = v
+	out.groups = make([]authorGroup, len(sa.groups))
+	for i, g := range sa.groups {
+		out.groups[i] = authorGroup{forms: slices.Clone(g.forms), credits: g.credits}
+	}
+	out.bySlug = make(map[string]int, len(sa.bySlug))
+	for k, v := range sa.bySlug {
+		out.bySlug[k] = v
 	}
 	out.publishers = make(map[string]bool, len(sa.publishers))
 	for k := range sa.publishers {
 		out.publishers[k] = true
 	}
-	out.memberAuthors = append([][]string(nil), sa.memberAuthors...)
+	out.memberGroups = slices.Clone(sa.memberGroups)
+	out.memberKeys = slices.Clone(sa.memberKeys)
 	return out
 }
 
-// coCredits reports whether slug shares a member with an author holding a
+// coCredits reports whether group g shares a member with a group holding a
 // dominating share of the series.
-func (sa *SeriesAuthors) coCredits(slug string) bool {
-	for _, m := range sa.memberAuthors {
-		if !slices.Contains(m, slug) {
+func (sa *seriesAuthors) coCredits(g int) bool {
+	for _, m := range sa.memberGroups {
+		if !slices.Contains(m, g) {
 			continue
 		}
 		for _, other := range m {
-			if other != slug && sa.dominant(sa.credits[other]) {
+			if other != g && sa.dominant(sa.groups[other].credits) {
 				return true
 			}
 		}
@@ -218,47 +317,83 @@ func (sa *SeriesAuthors) coCredits(slug string) bool {
 }
 
 // dominant reports whether n of the members is a dominating share.
-func (sa *SeriesAuthors) dominant(n int) bool {
+func (sa *seriesAuthors) dominant(n int) bool {
 	return n*seriesDominantDen >= sa.members*seriesDominantNum
 }
 
 // fit judges the series for row; large is the set of catalogue-wide publisher
 // keys the publisher arm ignores. A nil receiver is a series with no members.
-func (sa *SeriesAuthors) fit(row *SeriesRow, large map[string]bool) SeriesFit {
+func (sa *seriesAuthors) fit(row *SeriesRow, large map[string]bool) seriesFit {
 	mine := row.individuals()
 	if sa == nil || sa.members == 0 || len(mine) == 0 {
-		return SeriesOpen
+		return seriesOpen
 	}
-	top := 0
-	for _, n := range sa.credits {
-		top = max(top, n)
-	}
-	dominated := sa.members >= seriesClosedMinMembers && sa.dominant(top)
-	for slug, n := range sa.credits {
-		f := sa.forms[slug]
-		for _, a := range mine {
-			// In a dominated series a minority author counts as shared only when
-			// it co-credits a member with a dominant one: a minority author who
-			// never did is what an earlier squatter looks like.
-			if a.same(f) && (!dominated || sa.dominant(n) || sa.coCredits(slug)) {
-				return SeriesShared
-			}
+	dominated := sa.members >= seriesClosedMinMembers && sa.dominant(sa.top)
+	for g, grp := range sa.groups {
+		if !credits(grp, mine) {
+			continue
+		}
+		// In a dominated series a minority author counts as shared only when it
+		// co-credits a member with a dominant one: a minority author who never did
+		// is what an earlier squatter looks like.
+		if !dominated || sa.dominant(grp.credits) || sa.coCredits(g) {
+			return seriesShared
 		}
 	}
 	if !dominated {
-		return SeriesOpen
+		return seriesOpen
 	}
-	for slug := range sa.credits {
-		if titleNamesPerson(row.Titles, sa.forms[slug].words) {
-			return SeriesOpen
+	for _, grp := range sa.groups {
+		for _, f := range grp.forms {
+			if titleNamesPerson(row.titleSlugs, f.words) {
+				return seriesOpen
+			}
 		}
 	}
-	for _, p := range row.Publishers {
-		if k := publisherKey(p); k != "" && !large[k] && sa.publishers[k] {
-			return SeriesOpen
+	for _, k := range row.pubKeys {
+		if !large[k] && sa.publishers[k] {
+			return seriesOpen
 		}
 	}
-	return SeriesClosed
+	return seriesClosed
+}
+
+// admits reports whether a batch cluster whose own evidence is add may join the
+// series: the fit is not closed, and the join does not hand the series to an
+// author it has never credited. The second test is what the fit cannot ask of
+// one row alone: a series of one Sarah Hawke volume is OPEN to any one row, but
+// six Jack Campbell rows arriving together would make Campbell its dominant
+// author - the squat, arriving in one batch rather than one row at a time.
+func (sa *seriesAuthors) admits(row *SeriesRow, add *seriesAuthors, large map[string]bool) bool {
+	if sa.fit(row, large) == seriesClosed {
+		return false
+	}
+	if sa == nil || sa.members == 0 || add == nil || add.members == 0 {
+		return true
+	}
+	merged := sa.clone()
+	merged.merge(add)
+	if merged.members < seriesClosedMinMembers {
+		return true
+	}
+	for g := len(sa.groups); g < len(merged.groups); g++ {
+		if merged.dominant(merged.groups[g].credits) {
+			return false
+		}
+	}
+	return true
+}
+
+// credits reports whether any of mine is a spelling of the group's person.
+func credits(grp authorGroup, mine []personForm) bool {
+	for _, f := range grp.forms {
+		for _, a := range mine {
+			if a.same(f) {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // nonIndividualAuthors are the person slugs that state no individual: the five
@@ -275,69 +410,120 @@ var nonIndividualAuthors = func() map[string]bool {
 
 func individualAuthor(slug string) bool { return slug != "" && !nonIndividualAuthors[slug] }
 
-// seriesAuthorsOf reads every catalogued series' author evidence.
-func seriesAuthorsOf(cat *model.Catalog) map[string]*SeriesAuthors {
-	names := make(map[string]string, len(cat.People))
-	for _, p := range cat.People {
-		names[p.ID] = p.Name
+// SeriesAuthorIndex is the catalogue's series evidence: every series' member
+// authors, and the catalogue-wide publishers the publisher arm ignores. Every
+// writer resolves through one (catalogue).
+type SeriesAuthorIndex struct {
+	series map[string]*seriesAuthors
+	large  map[string]bool
+}
+
+// NewSeriesAuthorIndex builds the index over cat. A nil catalogue is an empty
+// index, under which every series is open.
+func NewSeriesAuthorIndex(cat *model.Catalog) *SeriesAuthorIndex {
+	return newSeriesAuthorIndex(cat, nil)
+}
+
+// newSeriesAuthorIndex builds the index in one pass over the catalogue; names
+// maps a person slug to its record's name (nil reads cat.People).
+func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAuthorIndex {
+	ix := &SeriesAuthorIndex{series: map[string]*seriesAuthors{}}
+	if cat == nil {
+		return ix
 	}
+	if names == nil {
+		names = make(map[string]string, len(cat.People))
+		for _, p := range cat.People {
+			names[p.ID] = p.Name
+		}
+	}
+	keyOf := map[string]string{}
+	pubKey := func(name string) string {
+		k, ok := keyOf[name]
+		if !ok {
+			k = publisherKey(name)
+			keyOf[name] = k
+		}
+		return k
+	}
+	counts := map[string]int{}
+	forms := map[string]personForm{}
 	works := make(map[string]*model.Work, len(cat.Works))
+	pubs := make(map[string][]string, len(cat.Works))
 	for _, w := range cat.Works {
 		works[w.ID] = w
-	}
-	out := make(map[string]*SeriesAuthors, len(cat.Series))
-	for _, s := range cat.Series {
-		sa := &SeriesAuthors{}
-		for _, sw := range s.Works {
-			if w := works[sw.Work]; w != nil {
-				sa.add(peopleOf(w.Authors, names), workPublishers(w))
-			}
+		keys := workPublisherKeys(w, pubKey)
+		pubs[w.ID] = keys
+		for _, k := range keys {
+			counts[k]++
 		}
-		out[s.ID] = sa
 	}
-	return out
+	for _, s := range cat.Series {
+		sa := &seriesAuthors{}
+		for _, sw := range s.Works {
+			w := works[sw.Work]
+			if w == nil {
+				continue
+			}
+			var people []personForm
+			for _, a := range w.Authors {
+				if !individualAuthor(a) {
+					continue
+				}
+				f, ok := forms[a]
+				if !ok {
+					f = formOf(a, names[a])
+					forms[a] = f
+				}
+				people = append(people, f)
+			}
+			sa.add(w.ID, people, pubs[w.ID])
+		}
+		ix.series[s.ID] = sa
+	}
+	ix.large = largeHouses(counts, len(cat.Works))
+	return ix
 }
 
-// peopleOf pairs author slugs with the names their records carry.
-func peopleOf(slugs []string, names map[string]string) []SeriesPerson {
-	out := make([]SeriesPerson, len(slugs))
-	for i, s := range slugs {
-		out[i] = SeriesPerson{Slug: s, Name: names[s]}
+// catalogue is the resolution's view of the catalogue: stored reports the name a
+// series slug holds and reds is the tombstone table. A nil index judges no
+// authors (the name-only walk).
+func (ix *SeriesAuthorIndex) catalogue(stored func(slug string) (string, bool), reds model.Redirects) seriesCatalogue {
+	cat := seriesCatalogue{stored: stored, redirects: reds}
+	if ix != nil {
+		cat.evidence = func(slug string) *seriesAuthors { return ix.series[slug] }
+		cat.large = ix.large
 	}
-	return out
+	return cat
 }
 
-// workPublishers is every publisher a catalogued work's recordings name.
-func workPublishers(w *model.Work) []string {
+// workPublisherKeys is every distinct publisher key a catalogued work's
+// recordings name.
+func workPublisherKeys(w *model.Work, key func(string) string) []string {
 	var out []string
+	add := func(name string) {
+		if k := key(name); k != "" && !slices.Contains(out, k) {
+			out = append(out, k)
+		}
+	}
 	for _, r := range w.Recordings {
 		if r.Publisher != "" {
-			out = append(out, r.Publisher)
+			add(r.Publisher)
 		}
 		for _, rp := range r.Publishers {
-			out = append(out, rp.Publisher)
+			add(rp.Publisher)
 		}
 	}
 	return out
 }
 
-// largePublishersOf is the set of publisher keys holding more than one work in
-// largePublisherShare of the catalogue: the catalogue-wide houses.
-func largePublishersOf(cat *model.Catalog) map[string]bool {
-	counts := map[string]int{}
-	for _, w := range cat.Works {
-		seen := map[string]bool{}
-		for _, p := range workPublishers(w) {
-			if k := publisherKey(p); k != "" && !seen[k] {
-				seen[k] = true
-				counts[k]++
-			}
-		}
-	}
-	limit := len(cat.Works) / largePublisherShare
+// largeHouses is the set of publisher keys holding at least
+// minLargePublisherWorks works and more than one work in largePublisherShare of
+// the total: the catalogue-wide houses.
+func largeHouses(counts map[string]int, total int) map[string]bool {
 	out := map[string]bool{}
 	for k, n := range counts {
-		if n > limit {
+		if n >= minLargePublisherWorks && n*largePublisherShare > total {
 			out[k] = true
 		}
 	}
@@ -370,22 +556,18 @@ func publisherKey(name string) string {
 	return strings.Join(kept, " ")
 }
 
-// titleNamesPerson reports whether any of titles spells the whole of a
-// multi-word person name ("Robert Ludlum's The Janson Equation" names Robert
-// Ludlum). One-word names are never read: a title holding "Tiye" or "Drako" says
-// nothing about who wrote it.
-func titleNamesPerson(titles []string, words []string) bool {
+// titleNamesPerson reports whether any of the hyphen-fenced title slugs spells
+// the whole of a multi-word person name ("Robert Ludlum's The Janson Equation"
+// names Robert Ludlum). One-word names are never read: a title holding "Tiye" or
+// "Drako" says nothing about who wrote it.
+func titleNamesPerson(titleSlugs []string, words []string) bool {
 	if len(words) < 2 {
 		return false
 	}
 	// Slugify drops an apostrophe rather than splitting on it, so the possessive
 	// the continuations are titled with reads "robert-blochs".
 	joined := "-" + strings.Join(words, "-")
-	for _, t := range titles {
-		if t == "" {
-			continue
-		}
-		slug := "-" + model.Slugify(t) + "-"
+	for _, slug := range titleSlugs {
 		if strings.Contains(slug, joined+"-") || strings.Contains(slug, joined+"s-") {
 			return true
 		}
@@ -404,33 +586,39 @@ type personForm struct {
 // leading courtesy title and every credential, generational or legal-entity
 // suffix - the same folds the importer's credit cleaning applies to a name
 // (honorific.go, credential.go, suffixpiece.go), so the fit never tells apart two
-// spellings the importer would have made one.
+// spellings the importer would have made one. The fold is titlerule.FoldKey of
+// the cleaned name, read off the one Slugify the words are split from.
 func formOf(slug, name string) personForm {
 	cleaned := cleanedPersonName(name)
-	words := nameWords(cleaned)
-	f := personForm{slug: slug, fold: strings.Join(words, ""), words: words, tokens: parseNameTokens(cleaned)}
+	slugged := model.Slugify(cleaned)
+	f := personForm{
+		slug:   slug,
+		fold:   strings.ReplaceAll(slugged, "-", ""),
+		words:  strings.FieldsFunc(slugged, func(r rune) bool { return r == '-' }),
+		tokens: parseNameTokens(cleaned),
+	}
 	if name != "" {
 		f.marked = markedKey(name)
 	}
 	return f
 }
 
-// minPersonEditLen is P-DUP's floor for a one-edit match between two folded
-// names (internal/audit minEditDistanceLen): below it, one edit is a different
-// short name more often than a typo.
-const minPersonEditLen = 8
+// MinPersonEditLen is the floor for a one-edit match between two folded names:
+// below it, one edit is a different short name more often than a typo. It is
+// P-DUP's floor too (internal/audit).
+const MinPersonEditLen = 8
 
 // same reports whether two authors may be one person. It reads the identity rungs
 // the codebase already trusts: one person slug, one initials key (MarkedNameKey -
 // "A.B. Kovacs" / "AB Kovacs"), one folded spelling, a one-edit typo over the
 // WHOLE folded name (internal/audit's P-DUP rung), and a middle-name insertion
-// with the first and last words fixed (internal/audit's middleNameVariant:
-// "Cheree Alsop" / "Cheree Lynn Alsop"); and one more, measured over the tree:
-// an INITIAL standing for a word it begins ("J.F. Holmes" / "John Holmes", "L.
-// Frank Baum" / "Lyman Frank Baum", "Robert E. Howard" / "Robert Ervin Howard" -
-// initialExpansion). Two WORDS sharing an initial ("Jack Campbell" / "Joseph
-// Campbell", "James Patterson" / "Jennifer Patterson") and a one-word name
-// matching an end of another are deliberately NOT rungs: they admitted strangers.
+// with the first and last words fixed (MiddleNameVariant: "Cheree Alsop" /
+// "Cheree Lynn Alsop"); and one more: INITIALS standing for the words they begin
+// ("L. Frank Baum" / "Lyman Frank Baum", "Robert E. Howard" / "Robert Ervin
+// Howard" - initialExpansion). Two WORDS sharing an initial ("Jack Campbell" /
+// "Joseph Campbell", "James Patterson" / "Jennifer Patterson") and a one-word
+// name matching an end of another are deliberately NOT rungs: they admitted
+// strangers.
 func (a personForm) same(b personForm) bool {
 	if a.slug != "" && a.slug == b.slug {
 		return true
@@ -444,21 +632,21 @@ func (a personForm) same(b personForm) bool {
 	if a.fold == b.fold {
 		return true
 	}
-	if len(a.fold) >= minPersonEditLen && len(b.fold) >= minPersonEditLen && titlerule.OneEditApart(a.fold, b.fold) {
+	if len(a.fold) >= MinPersonEditLen && len(b.fold) >= MinPersonEditLen && titlerule.OneEditApart(a.fold, b.fold) {
 		return true
 	}
-	return middleNameVariant(a.words, b.words) || initialExpansion(a.tokens, b.tokens) || initialExpansion(b.tokens, a.tokens)
+	return MiddleNameVariant(a.words, b.words) || initialExpansion(a.tokens, b.tokens) || initialExpansion(b.tokens, a.tokens)
 }
 
-// initialExpansion reports whether a spells b with an INITIAL where b has a
-// word beginning with that letter, the surname identical: a leading initials
-// group against b's first word ("J.F. Holmes" / "John Holmes", "SJ Bennett" /
-// "Sophia Bennett"), or, with the first and last words identical, middle
-// initials against middle words ("Robert E. Howard" / "Robert Ervin Howard").
-// Measured over the 2026-09-25 tree: of the 14 spellings of one author that
-// dropping the surname-plus-initial rung split apart, it reads 10 back, and it
-// re-admits none of the squatters the stricter rungs caught. It never makes two
-// different WORDS one person.
+// initialExpansion reports whether a spells b with INITIALS where b has words.
+// Every token before the surname is read as a sequence of units - each letter of
+// an initials group one unit, each word one unit - and the two sequences must
+// line up one to one: a unit is either identical on both sides or an initial of
+// a's standing for a word of b's beginning with that letter, at least one unit is
+// such an expansion, and the surnames are the same word. So "L. Frank Baum" is
+// "Lyman Frank Baum" and "J.F. Holmes" is "John F. Holmes", but "J.F. Holmes" is
+// not "Jane Holmes" (the F consumes nothing) and "SJ Bennett" is not "Sophia
+// Bennett". It never makes two different WORDS one person.
 func initialExpansion(a, b []nameToken) bool {
 	if len(a) < 2 || len(b) < 2 {
 		return false
@@ -467,17 +655,15 @@ func initialExpansion(a, b []nameToken) bool {
 	if la.initials || lb.initials || la.letters != lb.letters {
 		return false
 	}
-	if a[0].initials && !b[0].initials {
-		return a[0].letters[0] == b[0].letters[0]
-	}
-	if len(a) != len(b) || len(a) < 3 || a[0].initials || b[0].initials || a[0].letters != b[0].letters {
+	ua, ub := nameUnits(a[:len(a)-1]), nameUnits(b[:len(b)-1])
+	if len(ua) != len(ub) {
 		return false
 	}
 	expanded := false
-	for i := 1; i < len(a)-1; i++ {
+	for i := range ua {
 		switch {
-		case a[i].letters == b[i].letters && a[i].initials == b[i].initials:
-		case a[i].initials && !b[i].initials && len(a[i].letters) == 1 && a[i].letters[0] == b[i].letters[0]:
+		case ua[i] == ub[i]:
+		case ua[i].initial && !ub[i].initial && firstRune(ub[i].text) == firstRune(ua[i].text):
 			expanded = true
 		default:
 			return false
@@ -486,11 +672,38 @@ func initialExpansion(a, b []nameToken) bool {
 	return expanded
 }
 
-// middleNameVariant reports whether two word lists differ only by MIDDLE words:
-// both open and close on the same word and the shorter's words appear in order
-// in the longer. It is internal/audit's rule of the same name over the same
-// folded words.
-func middleNameVariant(wa, wb []string) bool {
+// nameUnit is one letter of an initials group, or one word.
+type nameUnit struct {
+	text    string
+	initial bool
+}
+
+// nameUnits splits name tokens into units: an initials group into its letters.
+func nameUnits(toks []nameToken) []nameUnit {
+	var out []nameUnit
+	for _, t := range toks {
+		if !t.initials {
+			out = append(out, nameUnit{text: t.letters})
+			continue
+		}
+		for _, r := range t.letters {
+			out = append(out, nameUnit{text: string(r), initial: true})
+		}
+	}
+	return out
+}
+
+func firstRune(s string) rune {
+	r, _ := utf8.DecodeRuneInString(s)
+	return r
+}
+
+// MiddleNameVariant reports whether two word lists differ only by MIDDLE words:
+// both open and close on the same word and the shorter's words appear in order in
+// the longer ("Cheree Alsop" / "Cheree Lynn Alsop"). The first and last word must
+// both match, which is what keeps it off the resemblance a surname alone is. It is
+// the one rule internal/audit's series vetoes read too, over their own words.
+func MiddleNameVariant(wa, wb []string) bool {
 	if len(wa) < 2 || len(wb) < 2 || len(wa) == len(wb) {
 		return false
 	}
@@ -509,6 +722,9 @@ func middleNameVariant(wa, wb []string) bool {
 	return i == len(wa)
 }
 
+// nameSeparators turns the punctuation that separates a name's words into spaces.
+var nameSeparators = strings.NewReplacer(",", " ", "&", " ", "/", " ")
+
 // cleanedPersonName is a name with a " - role" tail, a leading courtesy title
 // (deHonorified: "Dr. Samuel Li") and every suffix word dropped; commas,
 // ampersands and slashes separate words.
@@ -520,34 +736,10 @@ func cleanedPersonName(name string) string {
 		name = bare
 	}
 	var kept []string
-	for _, tok := range strings.Fields(strings.NewReplacer(",", " ", "&", " ", "/", " ").Replace(name)) {
+	for _, tok := range strings.Fields(nameSeparators.Replace(name)) {
 		if !isSuffixPiece(tok) {
 			kept = append(kept, tok)
 		}
 	}
 	return strings.Join(kept, " ")
-}
-
-// nameWords is a cleaned name's words in slug form; dots and hyphens separate
-// words too.
-func nameWords(name string) []string {
-	var out []string
-	for _, tok := range strings.Fields(name) {
-		for _, w := range strings.Split(model.Slugify(tok), "-") {
-			if w != "" {
-				out = append(out, w)
-			}
-		}
-	}
-	return out
-}
-
-// samePersonName is personForm.same over two bare names.
-func samePersonName(a, b string) bool {
-	if a == "" || b == "" {
-		return false
-	}
-	sa, _ := model.PersonSlug(a)
-	sb, _ := model.PersonSlug(b)
-	return formOf(sa, a).same(formOf(sb, b))
 }

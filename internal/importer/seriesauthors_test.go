@@ -1,7 +1,9 @@
 package importer
 
 import (
+	"fmt"
 	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -176,9 +178,7 @@ func TestSelectorSkipsAnotherAuthorsSeries(t *testing.T) {
 
 	// And the selector and the importer resolve the name to the same series.
 	p := plannerOver(t, dataDir)
-	campbell := func() *SeriesRow {
-		return &SeriesRow{Authors: []SeriesPerson{{Slug: "jack-campbell", Name: "Jack Campbell"}}}
-	}
+	campbell := func() *SeriesRow { return testRow("Jack Campbell") }
 	idx, _ := loadSeriesIndex(dataDir)
 	sel, _ := findInIndex(idx, "Lost Fleet", campbell())
 	ref := p.refFor("Lost Fleet", campbell())
@@ -205,6 +205,40 @@ func TestSelectorConfirmsTheBatch(t *testing.T) {
 	res, kept := runSelect(t, dataDir, rows, 0)
 	if len(kept) != 2 || res.Excluded[reasonSeriesAuthors] != 1 {
 		t.Errorf("kept %d, excluded %v; want Ada's two volumes kept and the stranger dropped", len(kept), res.Excluded)
+	}
+}
+
+// The batch can send a kept row to ANOTHER catalogued series of the same name -
+// still a completion - and the selection follows it there: alone, a stranger's
+// row fits Hawke's one-volume "Lost Fleet"; with her own next two volumes in the
+// batch that series is hers, and the row completes the other "Lost Fleet" instead.
+// A row whose position the new series already fills is not a completion there.
+func TestSelectorFollowsTheBatchToAnotherSeries(t *testing.T) {
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"people/sa/sarah-hawke.json":            testpack.PersonJSON(t, "sarah-hawke", "Sarah Hawke"),
+		"people/ja/jack-campbell.json":          testpack.PersonJSON(t, "jack-campbell", "Jack Campbell"),
+		"people/na/nate-narrator.json":          testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"works/in/incursion/work.json":          testpack.WorkJSON(t, "incursion", "Incursion", testpack.WithAuthors("sarah-hawke")),
+		"works/in/incursion/recordings/r1.json": testpack.RecJSON(t, "r1", "incursion"),
+		"works/da/dauntless/work.json":          testpack.WorkJSON(t, "dauntless", "Dauntless", testpack.WithAuthors("jack-campbell")),
+		"works/da/dauntless/recordings/r1.json": testpack.RecJSON(t, "r1", "dauntless"),
+		"series/lo/lost-fleet.json":             testpack.SeriesJSON(t, "lost-fleet", "Lost Fleet", "incursion@1"),
+		"series/lo/lost-fleet-2.json":           testpack.SeriesJSON(t, "lost-fleet-2", "Lost Fleet", "dauntless@1"),
+	}, nil)
+	rows := []string{
+		tombRow("B0HAWKE002", "Insurrection", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "2"),
+		tombRow("B0HAWKE003", "Invasion", "Sarah Hawke", "Bea Reader", 600, "Lost Fleet", "3"),
+		tombRow("B0STRANG09", "Stranger", "Zed Stranger", "Bea Reader", 600, "Lost Fleet", "9"),
+		tombRow("B0OTHER001", "Other", "Yan Other", "Bea Reader", 600, "Lost Fleet", "1"),
+	}
+	res, kept := runSelect(t, dataDir, rows, 0)
+	got := map[string]int{}
+	for _, c := range res.PerSeries {
+		got[c.Series] = c.Rows
+	}
+	want := map[string]int{"lost-fleet": 2, "lost-fleet-2": 1}
+	if len(kept) != 3 || !reflect.DeepEqual(got, want) || res.Excluded[reasonPositionTaken] != 1 || res.Excluded[reasonSeriesAuthors] != 0 {
+		t.Errorf("per series %v, excluded %v; want the stranger completing lost-fleet-2 and the row at its taken 1 dropped", got, res.Excluded)
 	}
 }
 
@@ -290,60 +324,90 @@ func TestUnplacedClaimsDoNotTakeTheBareSlug(t *testing.T) {
 	}
 }
 
-func TestSeriesAuthorsFit(t *testing.T) {
-	person := func(slug string) SeriesPerson {
-		names := map[string]string{
-			"sarah-hawke": "Sarah Hawke", "ted-bell": "Ted Bell", "various": "Various",
-			"ann": "Ann Author", "bob": "Bob Author", "cat": "Cat Author", "jack-campbell": "Jack Campbell", "a-b-kovacs": "A.B. Kovacs",
-		}
-		return SeriesPerson{Slug: slug, Name: names[slug]}
+// testRow is a SeriesRow crediting names, with no title or publisher.
+func testRow(names ...string) *SeriesRow { return SeriesRowFor(names, nil, "", nil) }
+
+// samePersonName is personForm.same over two bare names.
+func samePersonName(a, b string) bool {
+	if a == "" || b == "" {
+		return false
 	}
-	series := func(pub string, members ...[]string) *SeriesAuthors {
-		sa := &SeriesAuthors{}
-		for _, m := range members {
-			var ps []SeriesPerson
-			for _, s := range m {
-				ps = append(ps, person(s))
+	sa, _ := model.PersonSlug(a)
+	sb, _ := model.PersonSlug(b)
+	return formOf(sa, a).same(formOf(sb, b))
+}
+
+func TestSeriesAuthorsFit(t *testing.T) {
+	names := map[string]string{
+		"sarah-hawke": "Sarah Hawke", "ted-bell": "Ted Bell", "various": "Various",
+		"ann": "Ann Author", "bob": "Bob Author", "cat": "Cat Author", "jack-campbell": "Jack Campbell",
+		"a-b-kovacs": "A.B. Kovacs", "cheree-alsop": "Cheree Alsop", "cheree-lynn-alsop": "Cheree Lynn Alsop",
+		"guest": "Guest Writer",
+	}
+	series := func(pub string, members ...[]string) *seriesAuthors {
+		sa := &seriesAuthors{}
+		for i, m := range members {
+			var people []personForm
+			for _, slug := range m {
+				if individualAuthor(slug) {
+					people = append(people, formOf(slug, names[slug]))
+				}
 			}
-			sa.add(ps, []string{pub})
+			sa.add(string(rune('a'+i)), people, []string{publisherKey(pub)})
 		}
 		return sa
 	}
-	who := func(name string) []SeriesPerson {
-		slug, _ := model.PersonSlug(name)
-		return []SeriesPerson{{Slug: slug, Name: name}}
-	}
+	withTitle := func(r *SeriesRow, title string) *SeriesRow { r.titles = []string{title}; return r }
+	withPub := func(r *SeriesRow, pub string) *SeriesRow { r.publishers = []string{pub}; return r }
 	hawke := series("Royal Guard Publishing LLC", []string{"sarah-hawke"}, []string{"sarah-hawke"}, []string{"sarah-hawke"})
 	squatted := series("Royal Guard Publishing LLC", []string{"sarah-hawke"}, []string{"sarah-hawke"}, []string{"sarah-hawke"}, []string{"jack-campbell"})
 	bell := series("Penguin", []string{"ted-bell"}, []string{"ted-bell"})
 	large := map[string]bool{publisherKey("Tantor Audio"): true}
 	tantor := series("Tantor Media", []string{"sarah-hawke"}, []string{"sarah-hawke"})
+	// One person whose records forked into two slugs: by slug neither holds three
+	// quarters, as one author they do.
+	forked := series("x", []string{"cheree-alsop"}, []string{"cheree-alsop"}, []string{"cheree-lynn-alsop"}, []string{"guest"})
+	// A guest co-crediting a member with the author a forked person is.
+	coWritten := series("x", []string{"cheree-alsop"}, []string{"cheree-lynn-alsop"}, []string{"cheree-alsop", "guest"}, []string{"cheree-alsop"})
 	for _, tc := range []struct {
 		name string
-		sa   *SeriesAuthors
-		row  SeriesRow
-		want SeriesFit
+		sa   *seriesAuthors
+		row  *SeriesRow
+		want seriesFit
 	}{
-		{"same author", hawke, SeriesRow{Authors: who("Sarah Hawke")}, SeriesShared},
-		{"initials spelling of the same author", series("x", []string{"a-b-kovacs"}, []string{"a-b-kovacs"}), SeriesRow{Authors: []SeriesPerson{{Slug: "ab-kovacs", Name: "AB Kovacs"}}}, SeriesShared},
-		{"another author", hawke, SeriesRow{Authors: who("Jack Campbell")}, SeriesClosed},
-		{"a minority author of a dominated series", squatted, SeriesRow{Authors: who("Jack Campbell")}, SeriesClosed},
-		{"the dominant author of a squatted series", squatted, SeriesRow{Authors: who("Sarah Hawke")}, SeriesShared},
-		{"empty series", &SeriesAuthors{}, SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
-		{"nil series", nil, SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
-		{"one member", series("x", []string{"sarah-hawke"}), SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
-		{"no dominant author", series("x", []string{"ann"}, []string{"bob"}, []string{"cat"}, []string{"ann"}), SeriesRow{Authors: who("Dee Author")}, SeriesOpen},
-		{"a collective row states nobody", hawke, SeriesRow{Authors: who("Various")}, SeriesOpen},
-		{"collective members are no evidence", series("x", []string{"various"}, []string{"various"}), SeriesRow{Authors: who("Jack Campbell")}, SeriesOpen},
-		{"the title names the series' author", bell, SeriesRow{Authors: who("Ryan Steck"), Titles: []string{"Ted Bell's Monarch"}}, SeriesOpen},
-		{"the row shares a small publisher", hawke, SeriesRow{Authors: who("Jack Campbell"), Publishers: []string{"Royal Guard Publishing"}}, SeriesOpen},
-		{"another publisher", hawke, SeriesRow{Authors: who("Jack Campbell"), Publishers: []string{"Audible Studios"}}, SeriesClosed},
-		{"a catalogue-wide house is no evidence", tantor, SeriesRow{Authors: who("Jack Campbell"), Publishers: []string{"Tantor Audio"}}, SeriesClosed},
+		{"same author", hawke, testRow("Sarah Hawke"), seriesShared},
+		{"initials spelling of the same author", series("x", []string{"a-b-kovacs"}, []string{"a-b-kovacs"}), testRow("AB Kovacs"), seriesShared},
+		{"another author", hawke, testRow("Jack Campbell"), seriesClosed},
+		{"a minority author of a dominated series", squatted, testRow("Jack Campbell"), seriesClosed},
+		{"the dominant author of a squatted series", squatted, testRow("Sarah Hawke"), seriesShared},
+		{"empty series", &seriesAuthors{}, testRow("Jack Campbell"), seriesOpen},
+		{"nil series", nil, testRow("Jack Campbell"), seriesOpen},
+		{"one member", series("x", []string{"sarah-hawke"}), testRow("Jack Campbell"), seriesOpen},
+		{"no dominant author", series("x", []string{"ann"}, []string{"bob"}, []string{"cat"}, []string{"ann"}), testRow("Dee Author"), seriesOpen},
+		{"a collective row states nobody", hawke, testRow("Various"), seriesOpen},
+		{"collective members are no evidence", series("x", []string{"various"}, []string{"various"}), testRow("Jack Campbell"), seriesOpen},
+		{"the title names the series' author", bell, withTitle(testRow("Ryan Steck"), "Ted Bell's Monarch"), seriesOpen},
+		{"the row shares a small publisher", hawke, withPub(testRow("Jack Campbell"), "Royal Guard Publishing"), seriesOpen},
+		{"another publisher", hawke, withPub(testRow("Jack Campbell"), "Audible Studios"), seriesClosed},
+		{"a catalogue-wide house is no evidence", tantor, withPub(testRow("Jack Campbell"), "Tantor Audio"), seriesClosed},
+		{"a person split across two slugs still dominates", forked, testRow("Jack Campbell"), seriesClosed},
+		{"either spelling of a forked person shares", forked, testRow("Cheree Lynn Alsop"), seriesShared},
+		{"a co-author of a forked dominant person shares", coWritten, testRow("Guest Writer"), seriesShared},
 	} {
-		row := tc.row
-		if got := tc.sa.fit(&row, large); got != tc.want {
+		if got := tc.sa.fit(tc.row, large); got != tc.want {
 			t.Errorf("%s: fit = %v, want %v", tc.name, got, tc.want)
 		}
+	}
+}
+
+// One book stated by several rows is one member, however many rows state it.
+func TestSeriesEvidenceCountsWorks(t *testing.T) {
+	sa := &seriesAuthors{}
+	hawke := []personForm{formOf("sarah-hawke", "Sarah Hawke")}
+	sa.add("incursion", hawke, nil)
+	sa.add("incursion", hawke, nil) // the same book's other region
+	if sa.members != 1 {
+		t.Errorf("members = %d, want 1: one book is one member", sa.members)
 	}
 }
 
@@ -360,6 +424,14 @@ func TestSamePersonName(t *testing.T) {
 		{"Eric Flint - edited", "Eric Flint", true},
 		{"Innovative Language Learning LLC", "Innovative Language Learning", true},
 		{"Christopher Shevlin", "Christopher Shevlinn", true}, // one edit over the whole name
+		{"L. Frank Baum", "Lyman Frank Baum", true},           // an initial for a word
+		{"Robert E. Howard", "Robert Ervin Howard", true},
+		{"J.F. Holmes", "John F. Holmes", true},
+		{"J. Campbell", "Jack Campbell", true},
+		{"J.F. Holmes", "John Holmes", false},   // the F consumes no word
+		{"J.F. Holmes", "Jane F. Holmes", true}, // a letter says only which word it begins
+		{"SJ Bennett", "Sophia Bennett", false}, // two initials are not one word
+		{"S.J. Bennett", "Sophia Bennett", false},
 		{"Jack Campbell", "Sarah Hawke", false},
 		{"Jack Campbell", "Joseph Campbell", false}, // surname and initial are not a person
 		{"James Patterson", "Jennifer Patterson", false},
@@ -393,18 +465,103 @@ func TestPublisherKey(t *testing.T) {
 	}
 }
 
-// A publisher above the catalogue share is a catalogue-wide house.
-func TestLargePublishersOf(t *testing.T) {
-	defer func(n int) { largePublisherShare = n }(largePublisherShare)
-	largePublisherShare = 2 // more than half of the four works
-	cat := &model.Catalog{}
-	for i, pub := range []string{"Tantor Audio", "Tantor Media", "Tantor Audio", "Royal Guard Publishing"} {
-		cat.Works = append(cat.Works, &model.Work{ID: string(rune('a' + i)), Recordings: []*model.Recording{{Publisher: pub}}})
+// A publisher is a catalogue-wide house above the catalogue share AND the
+// minimum count: in a small catalogue a small press's own series stays a small
+// press's.
+func TestLargeHouses(t *testing.T) {
+	counts := map[string]int{"tantor": 3000, "podium": 2700, "royal guard": 60}
+	if got := largeHouses(counts, 279000); !got["tantor"] || got["podium"] || got["royal guard"] {
+		t.Errorf("279k works: large = %v, want tantor only (podium is under 1%%)", got)
 	}
-	large := largePublishersOf(cat)
-	if !large[publisherKey("Tantor Audio")] || large[publisherKey("Royal Guard Publishing")] {
-		t.Errorf("large = %v, want tantor only", large)
+	if got := largeHouses(counts, 1000); got["royal guard"] {
+		t.Errorf("1k works: large = %v, want no small press counted however large its share", got)
 	}
+}
+
+// The publisher arm works in a small catalogue: a row from the press that
+// released the series' volumes may join it.
+func TestSmallPressJoinsItsOwnLine(t *testing.T) {
+	dataDir := lostFleetTree(t, nil)
+	row := tombRow("B0CAMPB004", "Valiant", "Jack Campbell", "Bea Reader", 600, "Lost Fleet", "4")
+	row = strings.TrimSuffix(row, "}") + `,"publisher":"Fixture Audio"}`
+	runLibexOver(t, dataDir, row)
+	if got := seriesWorks(t, dataDir, "lost-fleet"); got["valiant"] != "4" {
+		t.Errorf("lost-fleet = %v, want the press's own row at 4", got)
+	}
+}
+
+// A catalogue series of ONE volume is open to any one row, but not to a batch
+// that would arrive as its dominant author: Campbell's six Lost Fleet rows do not
+// take over Hawke's one-volume series.
+func TestABatchDoesNotTakeOverAnOpenSeries(t *testing.T) {
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"people/sa/sarah-hawke.json":            testpack.PersonJSON(t, "sarah-hawke", "Sarah Hawke"),
+		"people/na/nate-narrator.json":          testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"works/in/incursion/work.json":          testpack.WorkJSON(t, "incursion", "Incursion", testpack.WithAuthors("sarah-hawke")),
+		"works/in/incursion/recordings/r1.json": testpack.RecJSON(t, "r1", "incursion"),
+		"series/lo/lost-fleet.json":             testpack.SeriesJSON(t, "lost-fleet", "Lost Fleet", "incursion@1"),
+	}, nil)
+	var rows []string
+	for i, title := range []string{"Dauntless", "Fearless", "Courageous", "Valiant", "Relentless", "Victorious"} {
+		rows = append(rows, tombRow("B0CAMPB00"+string(rune('1'+i)), title, "Jack Campbell", "Bea Reader", 600, "Lost Fleet", string(rune('1'+i))))
+	}
+	runLibexOver(t, dataDir, rows...)
+	if got := seriesWorks(t, dataDir, "lost-fleet"); len(got) != 1 {
+		t.Errorf("lost-fleet = %v, want Hawke's one volume alone", got)
+	}
+	if got := seriesWorks(t, dataDir, "lost-fleet-2"); len(got) != 6 {
+		t.Errorf("lost-fleet-2 = %v, want Campbell's six volumes", got)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// A group of rows the run drops founds no series: rows refused at admission are
+// no evidence, and a series founded for rows a later guard refuses gives its slug
+// back, so the surviving series takes the bare slug rather than leaving a gap the
+// next run would fill with a second series of the name.
+func TestDroppedRowsLeaveNoGapInTheChain(t *testing.T) {
+	// Rows the run refuses at admission are no evidence: two of Ada's volumes in a
+	// language the schema does not know would, counted, make her one-volume series
+	// hers and close it to the one row that is written.
+	t.Run("admission", func(t *testing.T) {
+		dataDir := seedTombstoneTree(t, map[string]string{
+			"works/on/one/work.json":          testpack.WorkJSON(t, "one", "One", testpack.WithAuthors("ada-mapmaker")),
+			"works/on/one/recordings/r1.json": testpack.RecJSON(t, "r1", "one", testpack.WithNarrators("bea-reader")),
+			"series/sa/saga.json":             testpack.SeriesJSON(t, "saga", "Saga", "one@1"),
+		}, nil)
+		runLibexOver(t, dataDir,
+			libexRow{asin: "B0DROP0002", title: "Two", authors: `{"name":"Ada Mapmaker"}`, language: "klingon",
+				series: `{"name":"Saga","position":"2"}`}.render(),
+			libexRow{asin: "B0DROP0003", title: "Three", authors: `{"name":"Ada Mapmaker"}`, language: "klingon",
+				series: `{"name":"Saga","position":"3"}`}.render(),
+			libexRow{asin: "B0KEEP0009", title: "Stranger", authors: `{"name":"Zed Stranger"}`,
+				series: `{"name":"Saga","position":"9"}`}.render(),
+		)
+		if got := seriesWorks(t, dataDir, "saga"); got["stranger"] != "9" {
+			t.Errorf("saga = %v, want the one written row in the one-volume series", got)
+		}
+		if entryExists(t, dataDir, seriesAddr("saga-2")) {
+			t.Error("rows that were never written closed the series to the one that was")
+		}
+	})
+	// A drop the pre-pass cannot foresee - the duplicate-identity guard reads the
+	// resolved claim - leaves the series founded for it unwritten: the series the
+	// batch minted after it closes up onto its slug.
+	t.Run("unforeseen drop", func(t *testing.T) {
+		p := plannerOver(t, seedTombstoneTree(t, nil, nil))
+		var warnings []string
+		warn := func(f string, a ...any) { warnings = append(warnings, fmt.Sprintf(f, a...)) }
+		r := seriesRef{name: "Druid Saga", seq: "2", seqOK: true, target: seriesTarget{slug: "druid-saga-2"}}
+		p.addToSeries(r, "other-book", "2", warn)
+		p.finalizeSeries()
+		if ss := p.series["druid-saga"]; ss == nil || ss.members["other-book"] != "2" || ss.out.ID != "druid-saga" {
+			t.Errorf("the written series did not close up onto the bare slug: %v", p.series)
+		}
+		if p.series["druid-saga-2"] != nil || len(warnings) != 0 {
+			t.Errorf("druid-saga-2 kept, or a slug note for a slug not taken: %v", warnings)
+		}
+	})
+
 }
 
 // refFor is a claim to name resolved for row over the planner's catalogue, as

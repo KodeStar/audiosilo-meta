@@ -624,10 +624,10 @@ func TestReimportOverlongSlugsIsNoop(t *testing.T) {
 	}
 }
 
-// TestOverlongSeriesNameCollision pins the series chain's bound AND that all
-// three walkers of it agree: getOrCreateSeries places the second series on the
-// suffixed slug, findSeries puts a later volume in that same series, and
-// libexselect's seriesIndex.find resolves the name to the slug on disk.
+// TestOverlongSeriesNameCollision pins the series chain's bound AND that every
+// reader of the one resolution agrees: the planner places the second series on
+// the suffixed slug and a later volume in that same series, and libex-select's
+// seriesIndex resolves the name to the slug on disk.
 func TestOverlongSeriesNameCollision(t *testing.T) {
 	// Two different names whose slugs truncate to the same MaxSlugLen-bounded
 	// base: the second series can only exist on a numeric candidate.
@@ -655,7 +655,7 @@ func TestOverlongSeriesNameCollision(t *testing.T) {
 	idx, _ := loadSeriesIndex(dataDir)
 	slugB, found := findInIndex(idx, seriesB, &SeriesRow{})
 	if !found {
-		t.Fatalf("seriesIndex.find does not resolve the suffixed series; index holds %v", idx.bySlug)
+		t.Fatalf("libex-select does not resolve the suffixed series; index holds %v", idx.bySlug)
 	}
 	if !model.ValidSlug(slugB) {
 		t.Errorf("series id %q (%d chars) is not a valid slug", slugB, len(slugB))
@@ -663,8 +663,8 @@ func TestOverlongSeriesNameCollision(t *testing.T) {
 	if slugA, _ := findInIndex(idx, seriesA, &SeriesRow{}); slugA == slugB {
 		t.Errorf("both names resolved to %q", slugB)
 	}
-	// Both Beta volumes must have landed in the series find resolved to: that is
-	// getOrCreateSeries and findSeries agreeing with the selector's chain.
+	// Both Beta volumes must have landed in the series the selector resolved to:
+	// the planner agreeing with the selector's chain.
 	var series struct {
 		Works []struct{ Work string } `json:"works"`
 	}

@@ -154,9 +154,9 @@ func TestNumberedTombstoneMintsBeyondIt(t *testing.T) {
 	assertTreeValid(t, dataDir)
 }
 
-// TestSeriesWalkersAgreeOverTombstones pins the three walkers of one chain -
-// getOrCreateSeries, findSeries and libex-select's seriesIndex.find - to one
-// answer over a tree with a tombstone at both kinds of chain index. A selection
+// TestSeriesWalkersAgreeOverTombstones pins the three readers of one resolution -
+// getOrCreateSeries, seriesFor and libex-select's seriesIndex - to one answer
+// over a tree with a tombstone at both kinds of chain index. A selection
 // that disagreed with the import would select rows into series they then fork.
 func TestSeriesWalkersAgreeOverTombstones(t *testing.T) {
 	dataDir := numberedTombstoneTree(t, model.Redirects{model.RedirectSeries: {"saga-2": "saga", "old-saga": "saga-3"}})
@@ -181,10 +181,10 @@ func TestSeriesWalkersAgreeOverTombstones(t *testing.T) {
 			got = ss.slug
 		}
 		if got != tc.want {
-			t.Errorf("findSeries(%q) = %q, want %q", tc.name, got, tc.want)
+			t.Errorf("seriesFor(%q) = %q, want %q", tc.name, got, tc.want)
 		}
 		if sel, ok := findInIndex(idx, tc.name, &SeriesRow{}); sel != tc.want || ok != (tc.want != "") {
-			t.Errorf("seriesIndex.find(%q) = %q/%v, want %q", tc.name, sel, ok, tc.want)
+			t.Errorf("libex-select resolved %q to %q/%v, want %q", tc.name, sel, ok, tc.want)
 		}
 		ss := p.getOrCreateSeries(p.refFor(tc.name, &SeriesRow{}), func(string, ...any) {})
 		if tc.want != "" && (ss.isNew || ss.slug != tc.want) {

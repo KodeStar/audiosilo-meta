@@ -22,8 +22,8 @@ const (
 // minEditDistanceLen is the name-length floor for the edit-distance rule. Short
 // names one edit apart ("Jon Ray"/"Jan Ray") are far more often two people than
 // one, so the rule only speaks about names long enough for a typo to be the
-// likelier explanation.
-const minEditDistanceLen = 8
+// likelier explanation. It is the importer's floor for the same rung.
+const minEditDistanceLen = importer.MinPersonEditLen
 
 // personKeys is one person's three derived keys. Each folds their name through
 // model.Slugify, so computing them once per person rather than at each of the three

@@ -155,11 +155,9 @@ type seriesState struct {
 	raw       map[string]any    // populated lazily for an existing series
 	members   map[string]string // work slug -> position
 	positions map[string]string // position -> work slug
-	// authors is the CATALOGUE's author evidence for the series - the snapshot
-	// the batch resolution judges a claim against (seriesresolve.go). It is never
-	// extended mid-run: a placement this run makes is part of the batch census,
-	// not of this, so no row's series depends on the order rows arrive in.
-	authors *SeriesAuthors
+	// announce says, once a NEW series' slug is final (settleNewSeriesSlugs), why
+	// it was minted where it was.
+	announce func(slug string)
 	// claimed is every position a work has CLAIMED in this series this run,
 	// whether or not the claim became a membership. members only records the
 	// claims that landed, and a dropped claim used to make a work look absent
@@ -179,10 +177,10 @@ type planner struct {
 	people map[string]string
 	works  map[string]*workState
 	series map[string]*seriesState
-	// largePublishers are the catalogue-wide publisher keys the series fit's
-	// publisher arm ignores (largePublishersOf), off the catalogue load.
-	largePublishers map[string]bool
-	asins           map[string]bool
+	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
+	// resolution judges every claim against, off the catalogue load.
+	seriesIndex *SeriesAuthorIndex
+	asins       map[string]bool
 	// isbns is the set of ISBNs already recorded on some recording (seeded from
 	// disk in loadExisting, then extended as recordings are emitted), so an
 	// emitted tree can never violate checkUniqueness's global ISBN rule. Keys are
@@ -454,6 +452,11 @@ type sourceBook struct {
 	// one person. Empty means the source only has the joined string.
 	authors   []string
 	narrators []string
+	// authorCredits caches rowAuthorCredits once the series pre-pass has
+	// computed it (the censuses it reads are fixed by then); creditsCached says
+	// it is set.
+	authorCredits []credit
+	creditsCached bool
 	// chapters is the source's own chapter rows, read when non-nil instead of
 	// raw's chapters array. buildChapters accepts either documented offset
 	// spelling (see rawChapter.startMS), so a parser hands its rows over
@@ -920,15 +923,13 @@ func (p *planner) loadExisting() {
 		}
 		p.works[w.ID] = ws
 	}
-	seriesAuthors := seriesAuthorsOf(cat)
-	p.largePublishers = largePublishersOf(cat)
+	p.seriesIndex = newSeriesAuthorIndex(cat, p.people)
 	for _, s := range cat.Series {
 		ss := &seriesState{
 			slug:      s.ID,
 			name:      s.Name,
 			members:   map[string]string{},
 			positions: map[string]string{},
-			authors:   seriesAuthors[s.ID],
 			claimed:   map[string]string{},
 		}
 		for _, sw := range s.Works {
@@ -1224,6 +1225,9 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 // vocabulary refuses anyway. Recording-level credits stay unmodeled until
 // there is evidence worth modeling.
 func (p *planner) rowAuthorCredits(b sourceBook) []credit {
+	if b.creditsCached {
+		return b.authorCredits
+	}
 	return sourceCredits(b.authors, b.str("author"), p.authorCensus)
 }
 
@@ -2022,19 +2026,20 @@ func (p *planner) resolveSeriesTargets(books []sourceBook) {
 	type at struct{ book, ref int }
 	var where []at
 	for i := range books {
-		b := books[i]
+		b := &books[i]
+		// Every row's cleaned credits, computed here once for the planning that
+		// follows too (rowAuthorCredits): the censuses they read are fixed by now.
+		b.authorCredits, b.creditsCached = p.rowAuthorCredits(*b), true
 		if len(b.series) == 0 {
 			continue
 		}
 		asin := NormalizeASIN(b.str("asin"))
-		row := seriesRowOf(p.rowAuthorCredits(b), b, p.personSlugTarget)
-		places := p.claimPlaces(asin)
-		order := claimOrder(row, asin)
-		for j := range b.series {
-			// A claim with no usable position is placed only if a lookup later
-			// fills one, so it is not counted on as evidence.
-			evidence := places && b.series[j].seqOK
-			claims = append(claims, nameClaim{name: b.series[j].name, row: row, order: order, evidence: evidence})
+		row := SeriesRowFor(creditNamesOf(b.authorCredits), []string{b.str("title"), b.str("title_short")}, b.str("publisher"), p.personSlugTarget)
+		places, work := p.claimPlaces(*b, asin)
+		// A claim with no usable position is placed only if a lookup later fills
+		// one, so claimsOf does not count it on as evidence.
+		for j, c := range claimsOf(b.series, row, asin, places, work) {
+			claims = append(claims, c)
 			where = append(where, at{i, j})
 		}
 	}
@@ -2049,37 +2054,46 @@ func (p *planner) resolveSeriesTargets(books []sourceBook) {
 // seriesCatalogue is the planner's series as the resolution reads them: the
 // names, the tombstone table and each series' catalogue evidence.
 func (p *planner) seriesCatalogue() seriesCatalogue {
-	return seriesCatalogue{
-		stored: func(slug string) (string, bool) {
-			ss, exists := p.series[slug]
-			if !exists {
-				return "", false
-			}
-			return ss.name, true
-		},
-		redirects: p.redirects,
-		evidence: func(slug string) *SeriesAuthors {
-			if ss := p.series[slug]; ss != nil {
-				return ss.authors
-			}
-			return nil
-		},
-		large: p.largePublishers,
+	stored := func(slug string) (string, bool) {
+		ss, exists := p.series[slug]
+		if !exists {
+			return "", false
+		}
+		return ss.name, true
 	}
+	return p.seriesIndex.catalogue(stored, p.redirects)
 }
 
 // claimPlaces reports whether a row's series claims will place a member this
-// run, which is what makes them evidence for the batch: a create row the
-// catalogue already holds by ASIN is skipped, an enrichment row places only the
-// work its ASIN matched, and the recordings-only pass places nothing.
-func (p *planner) claimPlaces(asin string) bool {
+// run, which is what makes them evidence for the batch, and names the book when
+// the catalogue already holds it ("" lets claimsOf read it off the row). A create
+// row is written only if it survives addBook's admission tests - an ASIN the
+// catalogue already holds, a language the schema does not know, no narrator, no
+// author, no title - and those are asked here, before anything is planned; an
+// enrichment row places only the work its ASIN matched, and the recordings-only
+// pass places nothing. The one drop this cannot foresee (the duplicate-identity
+// guard, which reads the resolved claim) can leave a founded series unwritten,
+// and settleNewSeriesSlugs closes the gap that would leave in the chain.
+func (p *planner) claimPlaces(b sourceBook, asin string) (places bool, work string) {
 	switch p.mode {
 	case ModeCreate:
-		return asin == "" || !p.asins[asin]
+		if asin != "" && p.asins[asin] {
+			return false, ""
+		}
+		if _, ok := mapLanguage(b.str("language")); !ok || len(p.rowNarratorNames(b)) == 0 {
+			return false, ""
+		}
+		return len(b.authorCredits) > 0 && (b.str("title") != "" || b.str("title_short") != ""), ""
 	case ModeEnrich:
-		return asin != "" && p.asins[asin]
+		if asin == "" || !p.asins[asin] {
+			return false, ""
+		}
+		if loc, ok := p.asinLoc[asin]; ok {
+			return true, loc.Work
+		}
+		return true, ""
 	default:
-		return false
+		return false, ""
 	}
 }
 
@@ -2134,7 +2148,6 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		// compatible sibling. If none is compatible it is a genuinely different
 		// production (a distinct runtime, or a known-abridged edition), so fall
 		// through to a distinct slug under the same work.
-		rowKeyed := claims
 		prod := resolvedRowProduction(b, narrSet)
 		for _, m := range matches {
 			// A sibling recording whose row claimed a DIFFERENT position in a
@@ -2142,7 +2155,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 			// two productions look. Checked before the runtime and abridged guards
 			// because it is the only one that can tell two volumes of a serial
 			// apart.
-			if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, rowKeyed, prod); conflict {
+			if series, incumbent, want, conflict := p.seriesPosConflict(m.info, ws, claims, prod); conflict {
 				warn("recording %q is at position %q of series %q; this row claims %q - not merging its ASIN",
 					m.slug, incumbent, series, want)
 				continue
@@ -2743,15 +2756,6 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 		return ss
 	}
 	slug := t.slug
-	if len(t.stepped) > 0 {
-		warn("series %q: %s belongs to other authors; created %q", name, strings.Join(t.stepped, ", "), slug)
-	}
-	switch {
-	case model.IsReservedSlug(base):
-		warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
-	case len(t.stepped) == 0 && slug != base:
-		warn("series slug %q taken by a different series; using %q for %q", base, slug, name)
-	}
 	ss := &seriesState{
 		slug:      slug,
 		name:      name,
@@ -2759,12 +2763,81 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 		out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
 		members:   map[string]string{},
 		positions: map[string]string{},
-		authors:   &SeriesAuthors{},
 		claimed:   map[string]string{},
+		announce: func(slug string) {
+			if len(t.stepped) > 0 {
+				warn("series %q: %s belongs to other authors; created %q", name, strings.Join(t.stepped, ", "), slug)
+			}
+			switch {
+			case model.IsReservedSlug(base):
+				warn("series slug %q is reserved for an API route; using %q for %q", base, slug, name)
+			case len(t.stepped) == 0 && slug != base:
+				warn("series slug %q taken by a different series; using %q for %q", base, slug, name)
+			}
+		},
 	}
 	p.series[slug] = ss
 	p.summary.NewSeries++
 	return ss
+}
+
+// settleNewSeriesSlugs gives every new series this run wrote its final slug. The
+// batch pre-pass allocated each founded series a chain slug in founding order
+// (seriesresolve.go), but a founded series none of whose rows survived planning
+// is never written, and its slug would be a gap in the chain the next run fills
+// with a second series of that name. So the series actually written take the
+// chain's free slugs again, in the order they were allocated: with no series
+// dropped this is the allocation exactly, and with one dropped the ones after it
+// close up. Why each slug was chosen is announced here, once it is final.
+func (p *planner) settleNewSeriesSlugs() {
+	byBase := map[string][]*seriesState{}
+	for _, ss := range p.series {
+		if ss.isNew && ss.dirty {
+			base := Slugify(ss.name)
+			byBase[base] = append(byBase[base], ss)
+		}
+	}
+	bases := make([]string, 0, len(byBase))
+	for base := range byBase {
+		bases = append(bases, base)
+	}
+	sort.Strings(bases)
+	for _, base := range bases {
+		list := byBase[base]
+		sort.Slice(list, func(i, j int) bool { return chainIndex(base, list[i].slug) < chainIndex(base, list[j].slug) })
+		for _, ss := range list {
+			delete(p.series, ss.slug)
+		}
+		i := 0
+		for _, ss := range list {
+			for ; ; i++ {
+				slug := SeriesSlugAt(base, i)
+				if held := p.series[slug]; held != nil {
+					continue
+				}
+				if _, retired := p.redirects.Survivor(model.RedirectSeries, slug); retired {
+					continue
+				}
+				break
+			}
+			ss.slug = SeriesSlugAt(base, i)
+			ss.out.ID = ss.slug
+			p.series[ss.slug] = ss
+			i++
+			if ss.announce != nil {
+				ss.announce(ss.slug)
+			}
+		}
+	}
+}
+
+// chainIndex is where slug sits on base's chain (SeriesSlugAt).
+func chainIndex(base, slug string) int {
+	for i := 0; ; i++ {
+		if SeriesSlugAt(base, i) == slug {
+			return i
+		}
+	}
 }
 
 // loadSeriesRaw reads an existing series entry into ss.raw the first time it is
@@ -2777,8 +2850,10 @@ func (p *planner) loadSeriesRaw(ss *seriesState) {
 	ss.raw = p.entryRaw(pack.FamilySeries, ss.slug)
 }
 
-// finalizeSeries queues the entry for every new or extended series.
+// finalizeSeries settles the new series' slugs and queues the entry for every
+// new or extended series.
 func (p *planner) finalizeSeries() {
+	p.settleNewSeriesSlugs()
 	for _, ss := range p.series {
 		if !ss.dirty {
 			continue

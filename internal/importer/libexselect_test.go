@@ -237,7 +237,7 @@ func TestLibexSelectRowIdentityRules(t *testing.T) {
 }
 
 // TestLibexSelectSeriesNameCollision pins the match rule to the importer's own
-// findSeries: a numeric-suffix slug belongs to whichever series NAME claimed
+// chain walk (seriesCandidates): a numeric-suffix slug belongs to whichever series NAME claimed
 // it, so a differently-named series that merely slugs onto a taken base is not
 // a completion target.
 func TestLibexSelectSeriesNameCollision(t *testing.T) {

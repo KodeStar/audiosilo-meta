@@ -422,10 +422,9 @@ type formSeries struct {
 	taken *model.Series
 	// otherAuthors are the same-named series the submission's authors cannot
 	// join (importer seriesauthors.go), set only when none on the chain fits;
-	// mint is then the first free chain slug, where the importer would mint the
+	// slug is then the first free chain slug, where the importer would mint the
 	// submitting author's own series and the form composes it too.
 	otherAuthors []string
-	mint         string
 }
 
 // seriesForForm resolves a form's series name for the submission row - the one
@@ -438,47 +437,48 @@ type formSeries struct {
 // a name is for a given book. When the chain holds no series of that name the
 // form stays conservative: a slug held by another series is taken, not stepped.
 func (c *composer) seriesForForm(name string, row *importer.SeriesRow) formSeries {
+	if fs, ok := c.formSeries[name]; ok {
+		return fs
+	}
 	fs := formSeries{}
 	fs.slug, fs.base = seriesSlugOf(name)
-	if fs.slug == "" {
-		return fs
-	}
-	stored := func(slug string) (string, bool) {
-		s := c.series[slug]
-		if s == nil {
-			return "", false
+	if fs.slug != "" {
+		stored := func(slug string) (string, bool) {
+			s := c.series[slug]
+			if s == nil {
+				return "", false
+			}
+			return s.Name, true
 		}
-		return s.Name, true
+		switch m := c.seriesIndex().Resolve(name, c.redirects, stored, row); {
+		case m.Found:
+			fs.rec, fs.id, fs.via = c.series[m.Slug], m.Slug, m.Via
+		case len(m.Stepped) > 0:
+			fs.otherAuthors, fs.slug = m.Stepped, m.Slug
+		default:
+			fs.taken = c.series[fs.slug]
+		}
 	}
-	m := c.seriesAuthors.Resolve(name, c.redirects, stored, row)
-	if m.Found {
-		fs.rec, fs.id, fs.via = c.series[m.Slug], m.Slug, m.Via
-		return fs
+	if c.formSeries == nil {
+		c.formSeries = map[string]formSeries{}
 	}
-	if len(m.Stepped) > 0 {
-		fs.otherAuthors, fs.mint = m.Stepped, m.Slug
-		return fs
-	}
-	fs.taken = c.series[fs.slug]
+	c.formSeries[name] = fs
 	return fs
 }
 
-// formSeriesRow is the submission as the series author rule reads it: the
-// form's authors (each at the person slug it resolves to, a retired one at its
-// survivor), its title spellings and its publisher of record.
+// formSeriesRow is the submission as the series author rule reads it, through
+// the importer's one row builder: the form's authors (each at the person slug it
+// resolves to - a retired one at its survivor when the catalogue holds it, the
+// rule every other lookup here applies), its title spellings and its publisher
+// of record.
 func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
-	row := &importer.SeriesRow{Titles: []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}}
-	for _, name := range splitNames(s.get(fWorkAuthors)) {
-		slug, _ := model.PersonSlug(name)
-		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired {
-			slug = to
+	resolve := func(slug string) string {
+		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
+			return to
 		}
-		row.Authors = append(row.Authors, importer.SeriesPerson{Slug: slug, Name: name})
+		return slug
 	}
-	if pub := s.get(fRecPublisher); pub != "" {
-		row.Publishers = []string{pub}
-	}
-	return row
+	return importer.SeriesRowFor(splitNames(s.get(fWorkAuthors)), []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}, s.get(fRecPublisher), resolve)
 }
 
 // placeInSeries adds the work to the named series (creating it or extending an
@@ -508,18 +508,9 @@ func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, 
 		// work does not squat their slots: it starts its own author's series at
 		// the next free candidate, exactly where the bulk importer would.
 		c.note("series %q at %s belongs to other authors - composed a new series at %q",
-			name, strings.Join(fs.otherAuthors, ", "), fs.mint)
-		if fs.slug != fs.base {
-			c.note("series slug %q is reserved for an API route - using %q", fs.base, fs.mint)
-		}
-		c.putNewEntry(pack.FamilySeries, fs.mint, outSeries{
-			ID: fs.mint, Name: name, License: licenseCC0,
-			Works:   []outSeriesWork{{Work: workSlug, Position: pos}},
-			Sources: c.sources(sourceRef),
-		})
-		return
+			name, strings.Join(fs.otherAuthors, ", "), fs.slug)
 	}
-	if fs.slug != fs.base {
+	if model.IsReservedSlug(fs.base) {
 		c.note("series slug %q is reserved for an API route - using %q", fs.base, fs.slug)
 	}
 	if fs.taken != nil {

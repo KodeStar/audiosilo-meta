@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"slices"
 	"sort"
 	"strings"
 
@@ -17,29 +18,30 @@ import (
 // It decides from a SNAPSHOT - the catalogue's evidence plus a census of the
 // whole batch - and never from evidence a run accumulates row by row, so no
 // answer depends on the order the rows arrive in (the same discipline as the
-// initials decision, initials.go). Per series name, in four steps over the
-// catalogue's same-named candidates (chain order):
+// initials decision, initials.go). A book counts once however many rows state it
+// (nameClaim.work), and a claim that places nothing is no evidence at all. Per
+// series name, in three steps over the catalogue's same-named candidates (chain
+// order):
 //
 //  1. ANCHOR: a claim whose authors a candidate SHARES joins it, and its authors
 //     become that candidate's evidence; repeated until nothing more anchors, each
 //     round judged against the evidence as it stood when the round began.
-//  2. OPEN: a claim still unplaced joins the first candidate that is OPEN to it,
-//     judged against the anchored evidence.
-//  3. CLUSTER: the rest will found new series. They are grouped by shared author
-//     (personForm.same, transitively), and the groups are taken largest first
-//     (ties by their smallest canonical key): each joins the first new series
-//     OPEN to it, or founds the next one. A claim that places nothing adds no
-//     evidence, so a group whose claims state no usable position founds a series
-//     every later group is OPEN to, rather than one that refuses them from a
-//     slug it will never write.
-//  4. MINT: the new series take the chain's free slugs in the order they were
+//  2. CLUSTER: the rest are grouped by shared author (personForm.same,
+//     transitively) and the groups taken largest first (ties by their smallest
+//     canonical key). A group joins the first catalogued candidate that ADMITS it
+//     (seriesAuthors.admits: open to the group, and not handed to the group's
+//     authors by its arrival), else the first series this batch founded that
+//     admits it, else founds the next one.
+//  3. MINT: the new series take the chain's free slugs in the order they were
 //     founded, skipping every held, retired or already-allocated candidate - a
 //     series two names share a base with ("Saga" and "Saga!!") included.
 //
 // That is what separates the seed-wave shape the importer used to get wrong
 // whatever the order: Hawke's Lost Fleet 1-3 and Campbell's 4-6 in ONE batch with
-// no catalogue series found two groups; Hawke's (four rows) founds `lost-fleet`
-// and Campbell's is refused by it and founds `lost-fleet-2`.
+// no catalogue series found two groups; Hawke's founds `lost-fleet` and
+// Campbell's is refused by it and founds `lost-fleet-2`. And a catalogue holding
+// only Hawke's first volume - OPEN to any one row - is still not handed to a
+// batch of six Campbell rows, which would make him its dominant author.
 
 // nameClaim is one row's claim to a named series, as the resolution reads it.
 type nameClaim struct {
@@ -49,9 +51,13 @@ type nameClaim struct {
 	// facts (never its input position), so every ordering of one batch resolves
 	// alike.
 	order string
+	// work is the book the claim is for: rows sharing it (a title's per-region
+	// sibling rows, an in-batch duplicate) are one member of the evidence, as the
+	// catalogue counts one work once.
+	work string
 	// evidence says whether the claim will place a member if it lands - a row
-	// the run deduplicates away, a claim stating no usable position, or a mode
-	// that places nothing, is no evidence.
+	// the run drops, a claim stating no usable position, or a mode that places
+	// nothing, is no evidence.
 	evidence bool
 }
 
@@ -69,35 +75,79 @@ type seriesTarget struct {
 	stepped []string
 }
 
-// seriesCatalogue is what the resolution reads about the catalogue.
+// seriesCatalogue is what the resolution reads about the catalogue
+// (SeriesAuthorIndex.catalogue builds it).
 type seriesCatalogue struct {
 	stored    func(slug string) (string, bool)
 	redirects model.Redirects
-	evidence  func(slug string) *SeriesAuthors
+	evidence  func(slug string) *seriesAuthors
 	large     map[string]bool
 }
 
 // claimOrder is a claim's canonical key: its authors, titles and publishers and
 // an identifier, none of which depends on where the row sat in its input.
 func claimOrder(row *SeriesRow, id string) string {
-	slugs := make([]string, 0, len(row.Authors))
-	for _, a := range row.Authors {
-		slugs = append(slugs, a.Slug)
+	slugs := make([]string, 0, len(row.authors))
+	for _, a := range row.authors {
+		slugs = append(slugs, a.slug)
 	}
 	sort.Strings(slugs)
-	return strings.Join(slugs, ",") + "\x00" + strings.Join(row.Titles, "|") + "\x00" +
-		strings.Join(row.Publishers, "|") + "\x00" + id
+	return strings.Join(slugs, ",") + "\x00" + strings.Join(row.titles, "|") + "\x00" +
+		strings.Join(row.publishers, "|") + "\x00" + id
+}
+
+// claimsOf is one row's claims as the resolution reads them: id is the row's
+// identifier (the canonical tie-break), places whether the row will be written,
+// and work the book it is for ("" reads it off the row: its first title and its
+// individual authors).
+func claimsOf(refs []seriesRef, row *SeriesRow, id string, places bool, work string) []nameClaim {
+	order := claimOrder(row, id)
+	if work == "" {
+		work = rowWork(row)
+	}
+	out := make([]nameClaim, len(refs))
+	for i, r := range refs {
+		out[i] = nameClaim{name: r.name, row: row, order: order, work: work, evidence: places && r.seqOK}
+	}
+	return out
+}
+
+// rowWork is a row's book as far as its own facts say: its first title's slug
+// and its individual authors, which a title's sibling rows share.
+func rowWork(row *SeriesRow) string {
+	var slugs []string
+	for _, f := range row.individuals() {
+		slugs = append(slugs, f.slug)
+	}
+	sort.Strings(slugs)
+	title := ""
+	if len(row.titles) > 0 {
+		title = model.Slugify(row.titles[0])
+	}
+	return "row:" + title + "\x00" + strings.Join(slugs, ",")
 }
 
 // resolveSeriesClaims resolves every claim of a batch; the result is parallel to
 // claims.
 func resolveSeriesClaims(cat seriesCatalogue, claims []nameClaim) []seriesTarget {
 	out := make([]seriesTarget, len(claims))
+	groups, keys := claimGroups(claims)
+	allocated := map[string]map[string]bool{} // base -> slugs minted this batch
+	for _, k := range keys {
+		resolveSeriesGroup(cat, claims, groups[k], out, allocated)
+	}
+	return out
+}
+
+// claimGroups groups the claims (indexes) by the series name they state, the
+// unit resolveSeriesGroup resolves, with the group keys sorted. A claim whose
+// name has no addressable slug is in no group: its zero target is a refusal.
+func claimGroups(claims []nameClaim) (map[string][]int, []string) {
 	groups := map[string][]int{}
 	for i, c := range claims {
 		base := Slugify(c.name)
 		if base == "" {
-			continue // unaddressable: the zero target, a refused claim
+			continue
 		}
 		key := base + "\x00" + strings.ToLower(c.name)
 		groups[key] = append(groups[key], i)
@@ -107,17 +157,28 @@ func resolveSeriesClaims(cat seriesCatalogue, claims []nameClaim) []seriesTarget
 		keys = append(keys, k)
 	}
 	sort.Strings(keys)
-	allocated := map[string]map[string]bool{} // base -> slugs minted this batch
-	for _, k := range keys {
-		resolveSeriesGroup(cat, claims, groups[k], out, allocated)
-	}
-	return out
+	return groups, keys
 }
 
-// seriesCandidate is a catalogued same-named series on a name's chain.
+// seriesCandidate is a series a name's claims may land in: a catalogued one on
+// its chain, or one the batch founds. Its evidence is the catalogue's own until
+// the batch first extends it, and a private copy after (owned).
 type seriesCandidate struct {
 	slug, via string
-	ev        *SeriesAuthors
+	ev        *seriesAuthors
+	owned     bool
+}
+
+// extend adds a claim's book to the candidate's evidence, when it places one.
+func (c *seriesCandidate) extend(cl nameClaim) {
+	if !cl.evidence {
+		return
+	}
+	if !c.owned {
+		c.ev, c.owned = c.ev.clone(), true
+	}
+	cl.row.prepare()
+	c.ev.add(cl.work, cl.row.forms, cl.row.pubKeys)
 }
 
 // seriesCandidates walks a name's chain over the catalogue: every held slug whose
@@ -126,17 +187,15 @@ type seriesCandidate struct {
 // can have been minted - and every other held or retired slug is occupied.
 func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate {
 	var out []seriesCandidate
-	seen := map[string]bool{}
 	add := func(slug, via string) {
-		if seen[slug] {
+		if slices.ContainsFunc(out, func(c seriesCandidate) bool { return c.slug == slug }) {
 			return
 		}
-		seen[slug] = true
-		var ev *SeriesAuthors
+		var ev *seriesAuthors
 		if cat.evidence != nil {
 			ev = cat.evidence(slug)
 		}
-		out = append(out, seriesCandidate{slug: slug, via: via, ev: ev.clone()})
+		out = append(out, seriesCandidate{slug: slug, via: via, ev: ev})
 	}
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
@@ -194,11 +253,6 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 	for i := range placed {
 		placed[i] = unplaced
 	}
-	addEvidence := func(ev *SeriesAuthors, c nameClaim) {
-		if c.evidence {
-			ev.add(c.row.Authors, c.row.Publishers)
-		}
-	}
 
 	// 1. Anchor, in rounds judged against the evidence at the round's start.
 	for {
@@ -209,7 +263,7 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 				continue
 			}
 			for c := range cands {
-				if cands[c].ev.fit(claims[ci].row, cat.large) == SeriesShared {
+				if cands[c].ev.fit(claims[ci].row, cat.large) == seriesShared {
 					round = append(round, anchor{k, c})
 					break
 				}
@@ -220,65 +274,59 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 		}
 		for _, a := range round {
 			placed[a.k] = a.cand
-			addEvidence(cands[a.cand].ev, claims[idx[a.k]])
+			cands[a.cand].extend(claims[idx[a.k]])
 		}
 	}
-
-	// 2. Open catalogued candidates, against the anchored evidence.
-	for k, ci := range idx {
-		if placed[k] != unplaced {
-			continue
-		}
-		for c := range cands {
-			if cands[c].ev.fit(claims[ci].row, cat.large) == SeriesOpen {
-				placed[k] = c
-				break
-			}
-		}
-	}
-	for k, ci := range idx {
-		if placed[k] != unplaced {
-			c := cands[placed[k]]
-			out[ci] = seriesTarget{slug: c.slug, found: true, via: c.via}
-		}
-	}
-
-	// 3. Cluster what is left by shared author, and found new series.
 	var rest []int // positions in idx
-	for k := range idx {
+	for k, ci := range idx {
 		if placed[k] == unplaced {
 			rest = append(rest, k)
+			continue
 		}
+		c := cands[placed[k]]
+		out[ci] = seriesTarget{slug: c.slug, found: true, via: c.via}
 	}
 	if len(rest) == 0 {
 		return
 	}
+
+	// 2. Cluster what is left by shared author: each cluster joins the first
+	// catalogued candidate, or series this batch founded, that admits it.
 	var stepped []string
 	for _, c := range cands {
 		stepped = append(stepped, c.slug)
 	}
-	clusters := authorClusters(claims, idx, rest)
-	type newSeries struct {
-		slug string
-		ev   *SeriesAuthors
-	}
-	var founded []*newSeries
-	for _, cl := range clusters {
-		combined := combinedRow(claims, idx, cl)
-		var home *newSeries
-		for _, ns := range founded {
-			if ns.ev.fit(combined, cat.large) != SeriesClosed {
-				home = ns
+	var founded []*seriesCandidate
+	for _, cl := range authorClusters(claims, idx, rest) {
+		combined, add := clusterEvidence(claims, idx, cl)
+		var home *seriesCandidate
+		found := false
+		for c := range cands {
+			if cands[c].ev.admits(combined, add, cat.large) {
+				home, found = &cands[c], true
 				break
 			}
 		}
 		if home == nil {
-			home = &newSeries{slug: mintSlug(cat, base, allocated), ev: &SeriesAuthors{}}
+			for _, ns := range founded {
+				if ns.ev.admits(combined, add, cat.large) {
+					home = ns
+					break
+				}
+			}
+		}
+		if home == nil {
+			// 3. Mint.
+			home = &seriesCandidate{slug: mintSlug(cat, base, allocated), ev: &seriesAuthors{}, owned: true}
 			founded = append(founded, home)
 		}
 		for _, k := range cl {
-			addEvidence(home.ev, claims[idx[k]])
-			out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped}
+			home.extend(claims[idx[k]])
+			if found {
+				out[idx[k]] = seriesTarget{slug: home.slug, found: true, via: home.via}
+			} else {
+				out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped}
+			}
 		}
 	}
 }
@@ -346,59 +394,30 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 	return out
 }
 
-// combinedRow is a cluster's claims read as one row: every author, title and
-// publisher any of them states.
-func combinedRow(claims []nameClaim, idx, cluster []int) *SeriesRow {
+// clusterEvidence is a cluster's claims read as one row - every author, title and
+// publisher any of them states - and as the evidence the cluster would bring to
+// a series it joins.
+func clusterEvidence(claims []nameClaim, idx, cluster []int) (*SeriesRow, *seriesAuthors) {
 	row := &SeriesRow{}
+	add := &seriesAuthors{}
 	seen := map[string]bool{}
 	for _, k := range cluster {
-		r := claims[idx[k]].row
-		for _, a := range r.Authors {
-			if !seen[a.Slug] {
-				seen[a.Slug] = true
-				row.Authors = append(row.Authors, a)
+		cl := claims[idx[k]]
+		r := cl.row
+		for _, a := range r.authors {
+			if !seen[a.slug] {
+				seen[a.slug] = true
+				row.authors = append(row.authors, a)
 			}
 		}
-		row.Titles = append(row.Titles, r.Titles...)
-		row.Publishers = append(row.Publishers, r.Publishers...)
-	}
-	return row
-}
-
-// seriesRowOf is a source row's SeriesRow: its cleaned author credits, each at
-// the person slug resolve maps it to, its title spellings and its publisher. The
-// importer and libex-select both build rows here, so the two cannot judge one row
-// differently.
-func seriesRowOf(credits []credit, b sourceBook, resolve func(slug string) string) *SeriesRow {
-	row := &SeriesRow{Titles: []string{b.str("title"), b.str("title_short")}}
-	for _, c := range credits {
-		slug, _ := personSlug(c.name)
-		if resolve != nil {
-			slug = resolve(slug)
+		row.titles = append(row.titles, r.titles...)
+		row.publishers = append(row.publishers, r.publishers...)
+		if cl.evidence {
+			r.prepare()
+			add.add(cl.work, r.forms, r.pubKeys)
 		}
-		row.Authors = append(row.Authors, SeriesPerson{Slug: slug, Name: c.name})
 	}
-	if pub := b.str("publisher"); pub != "" {
-		row.Publishers = []string{pub}
-	}
-	return row
-}
-
-// SeriesAuthorIndex is the catalogue's series evidence for a writer that keeps no
-// planner of its own (the intake form): every series' member authors, and the
-// catalogue-wide publishers the publisher arm ignores.
-type SeriesAuthorIndex struct {
-	series map[string]*SeriesAuthors
-	large  map[string]bool
-}
-
-// NewSeriesAuthorIndex builds the index over cat. A nil catalogue is an empty
-// index, under which every series is open.
-func NewSeriesAuthorIndex(cat *model.Catalog) *SeriesAuthorIndex {
-	if cat == nil {
-		return &SeriesAuthorIndex{}
-	}
-	return &SeriesAuthorIndex{series: seriesAuthorsOf(cat), large: largePublishersOf(cat)}
+	return row, add
 }
 
 // SeriesMatch is where a series name resolves for one row.
@@ -418,14 +437,9 @@ type SeriesMatch struct {
 // name a series slug holds, reds is the tombstone table. A nil index judges no
 // authors (the name-only walk).
 func (ix *SeriesAuthorIndex) Resolve(name string, reds model.Redirects, stored func(slug string) (string, bool), row *SeriesRow) SeriesMatch {
-	cat := seriesCatalogue{stored: stored, redirects: reds}
-	if ix != nil {
-		cat.evidence = func(slug string) *SeriesAuthors { return ix.series[slug] }
-		cat.large = ix.large
-	}
 	if row == nil {
 		row = &SeriesRow{}
 	}
-	t := resolveSeriesClaims(cat, []nameClaim{{name: name, row: row, order: claimOrder(row, "")}})[0]
+	t := resolveSeriesClaims(ix.catalogue(stored, reds), []nameClaim{{name: name, row: row, order: claimOrder(row, "")}})[0]
 	return SeriesMatch{Slug: t.slug, Found: t.found, Via: t.via, Stepped: t.stepped}
 }
