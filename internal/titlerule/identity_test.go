@@ -301,6 +301,81 @@ func TestStatedVolumeReadsWordVolumes(t *testing.T) {
 	}
 }
 
+// Issue #2258, finding 1: a DIVISION marker numbered in WORDS. divisionSequence read
+// it all along while StatedVolume stated nothing, so a volume-conflict cluster of
+// such titles was filed with a note naming no volume at all - and every gate that
+// asks StatedVolume for a volume was blind to it.
+func TestStatedVolumeReadsWordNumberedDivisions(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64
+	}{
+		{"Wildwood (Season One)", "", 1},
+		{"Wildwood (Season Two)", "", 2},
+		{"Wildwood, Level Three", "", 3},
+		{"Powder River - Season Four", "Powder River", 4},
+		{"Jago & Litefoot: Series Seven", "Jago & Litefoot", 7},
+		{"Dad's Army: Complete Radio Series Two", "Dad's Army", 2},
+		{"Pimsleur Albanian, Unit Twelve", "", 12},
+		{"Chronicle, Season One Hundred", "", 0}, // a composite number is refused, as in the volume arm
+	} {
+		got, ok := StatedVolume(c.title, c.series)
+		if c.want == 0 {
+			if ok {
+				t.Errorf("StatedVolume(%q) = (%v, true), want no statement", c.title, got)
+			}
+			continue
+		}
+		if !ok || got != c.want {
+			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+		// The invariant divisionWords states: a title whose markers are all division
+		// markers states the sequence's first element.
+		if seq := DivisionSequence(c.title, c.series); len(seq) == 0 || seq[0] != got {
+			t.Errorf("%q: StatedVolume %v, DivisionSequence %v - one division read two ways", c.title, got, seq)
+		}
+	}
+	if SameStatedVolume("Wildwood (Season One)", "", "Wildwood (Season Two)", "") {
+		t.Error("two word-numbered seasons must state different volumes")
+	}
+	if !SameStatedVolume("Wildwood (Season Two)", "", "Wildwood (Season 2)", "") {
+		t.Error("one season spelled two ways must not read as a contradiction")
+	}
+}
+
+// Issue #2258, finding 2, and the tier order it was fixed inside. Within a tier the
+// EARLIEST marker answers whatever spells it - the roman arm used to be tried before
+// the word arm, so "Book Two, Part V" read volume 5 - while ACROSS tiers a volume
+// marker in digits outranks one in words or roman numerals, which outranks a
+// division marker. Every cross-tier case below is a recorded series position the
+// flat "earliest marker wins" order got wrong (see StatedVolume).
+func TestStatedVolumeTierOrder(t *testing.T) {
+	for _, c := range []struct {
+		title, series string
+		want          float64
+	}{
+		// Finding 2: one tier, two spellings - position decides.
+		{"Book Two, Part V", "", 2},
+		{"Volume One, Part II", "", 1},
+		{"Part II, Book Three", "", 2},
+		{"Season II, Level Three", "", 2},
+		// A volume marker outranks a division marker, in any spelling.
+		{"Yesterday's Gone: Season 1 - Ep. 3", "Yesterday's Gone", 3},
+		{"Criminal Intentions: Season One, Episode Three", "", 3},
+		{"Level One Dropout, Book Two", "", 2},
+		{"Season 2, Book Three", "", 3},
+		// A digit volume marker outranks a word one: the retailer's own trailing
+		// "(Series, Book N)" behind a leading subseries part.
+		{"Ghosts: Adrian's March, Part Five (Adrian's Undead Diary, Book 13)", "Adrian's Undead Diary", 13},
+		// An unreadable marker is no candidate, as before.
+		{"The Saga, Book One Hundred, Part 2", "The Saga", 2},
+	} {
+		if got, ok := StatedVolume(c.title, c.series); !ok || got != c.want {
+			t.Errorf("StatedVolume(%q) = (%v, %v), want %v", c.title, got, ok, c.want)
+		}
+	}
+}
+
 // A title can NEST division markers, and then the first number is not the whole
 // statement. The measured population is the Pimsleur courses: 36 units of one course
 // agreed on "Level 1" and differed only in their lessons, so a single-number

@@ -297,6 +297,52 @@ func TestWorkDupWithholdsAMergeWhenTheTitlesStateWordVolumes(t *testing.T) {
 	}
 }
 
+// Issue #2258: a volume-conflict note always NAMES what the titles state. Two seasons
+// numbered in words used to conflict through the division sequence while the primary
+// probe read neither, and the note rendered as "volume numbers stated in the titles: "
+// with nothing after the colon. A title the primary probe cannot read at all (a plural
+// "Books 1-3") is labelled by its sequence instead, and a NESTED sequence is shown whole,
+// since its first number is exactly what the siblings share.
+func TestWorkDupVolumeConflictNoteNamesTheVolumes(t *testing.T) {
+	for _, c := range []struct {
+		name         string
+		titleA       string
+		titleB       string
+		wantA, wantB string
+	}{
+		{"word-numbered seasons", "Wildwood (Season One)", "Wildwood (Season Two)", "1 (wildwood-a)", "2 (wildwood-b)"},
+		{"nested divisions", "Wildwood (Part One, Episode 2)", "Wildwood (Part One, Episode 3)", "1/2 (wildwood-a)", "1/3 (wildwood-b)"},
+		{"plural marker only", "Wildwood (Books 1-3)", "Wildwood (Books 4-6)", "1 (wildwood-a)", "4 (wildwood-b)"},
+	} {
+		t.Run(c.name, func(t *testing.T) {
+			rep := runFixture(t, map[string]string{
+				"works/wi/wildwood-a/work.json":         workJSON(t, "wildwood-a", c.titleA),
+				"works/wi/wildwood-a/recordings/a.json": recJSON(t, "a", "wildwood-a"),
+				"works/wi/wildwood-b/work.json":         workJSON(t, "wildwood-b", c.titleB),
+				"works/wi/wildwood-b/recordings/b.json": recJSON(t, "b", "wildwood-b"),
+				"people/ja/jane-doe.json":               personJSON(t, "jane-doe", "Jane Doe"),
+				"people/na/nate-narrator.json":          personJSON(t, "nate-narrator", "Nate Narrator"),
+			})
+			if got := subclassOf(t, rep, ClassWorkDup, dupTitleAuthor); len(got) != 0 {
+				t.Errorf("two stated divisions were proposed for merge: %+v", got)
+			}
+			got := subclassOf(t, rep, ClassWorkDup, dupVolumeConflict)
+			if len(got) != 1 {
+				t.Fatalf("want one volume-conflict record, got %d", len(got))
+			}
+			note := ""
+			for _, n := range got[0].Notes {
+				if strings.HasPrefix(n, "volume numbers stated in the titles: ") {
+					note = n
+				}
+			}
+			if !strings.Contains(note, c.wantA) || !strings.Contains(note, c.wantB) {
+				t.Errorf("the note does not name both volumes (%q, %q): %q", c.wantA, c.wantB, note)
+			}
+		})
+	}
+}
+
 // The second duplicate shape: a series-less work whose title states a series and a
 // volume that the series already fills with a DIFFERENT work, where the residual
 // titles do not agree.

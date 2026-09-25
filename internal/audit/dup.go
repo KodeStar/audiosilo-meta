@@ -667,6 +667,13 @@ func dupViaNote(members []dupMember) string {
 //
 // A member stating no number is not a disagreement: "Hammered" beside "Hammered: The Iron
 // Druid Chronicles, Book 3" is the pair the class exists to find.
+//
+// Each member is LABELLED by what its title states: the primary number, or - when the title
+// nests divisions, or states only markers the primary probe does not read ("Books 1-3") - the
+// division sequence, joined by "/" ("1/6" is Level 1, Lessons 6). A conflict is two primaries
+// or two sequences disagreeing, so every conflict labels at least two members and the note
+// can never be the bare "volume numbers stated in the titles: " it once rendered, when the
+// primary probe could not read a word-numbered season the sequence could (issue #2258).
 func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool) {
 	for i := range members {
 		a := members[i].work
@@ -683,10 +690,18 @@ func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool
 	byNum := map[string][]string{}
 	for _, m := range members {
 		d := ix.derived(m.work)
-		if !d.hasStatedSeq {
+		k := ""
+		if seq := titlerule.DivisionSequence(m.work.Title, d.seriesName); len(seq) > 1 || (!d.hasStatedSeq && len(seq) > 0) {
+			parts := make([]string, len(seq))
+			for i, v := range seq {
+				parts[i] = formatSeq(v)
+			}
+			k = strings.Join(parts, "/")
+		} else if d.hasStatedSeq {
+			k = formatSeq(d.statedSeq)
+		} else {
 			continue
 		}
-		k := formatSeq(d.statedSeq)
 		byNum[k] = append(byNum[k], m.work.ID)
 	}
 	for k, ids := range byNum {
