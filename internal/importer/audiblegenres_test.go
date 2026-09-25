@@ -1,7 +1,10 @@
 package importer
 
 import (
+	"encoding/json"
+	"os"
 	"reflect"
+	"sort"
 	"strings"
 	"testing"
 
@@ -44,6 +47,32 @@ func TestAudibleGenreTable(t *testing.T) {
 		if key != strings.TrimSpace(key) {
 			t.Errorf("by_asin key %q must be trimmed (lookup normalizes that way)", key)
 		}
+	}
+	pathEntries := 0
+	for region, paths := range table.ByPath {
+		if !marketplaces[region] {
+			t.Errorf("by_path region %q is not a marketplace", region)
+		}
+		for key, node := range paths {
+			pathEntries++
+			// A value is a browse-node id, resolved like any node. It may resolve to
+			// nothing - a suppression: the marketplace's own node maps to nothing,
+			// so the lookup must stop there rather than fall back to the US answer
+			// or the leaf name - but what it does resolve to must be vocabulary.
+			if node == "" || strings.Trim(node, "0123456789") != "" {
+				t.Errorf("by_path[%q][%q] = %q is not a browse-node id", region, key, node)
+			}
+			leaf := key[strings.LastIndex(key, ":")+1:]
+			if g := ResolveGenreNode(table.ByASIN, table.ByName, node, leaf); g != "" && !enum[g] {
+				t.Errorf("by_path[%q][%q] resolves to %q, which is not in the schema genre enum", region, key, g)
+			}
+			if key != GenrePathKey(key) {
+				t.Errorf("by_path[%q] key %q must be in GenrePathKey form (lookup normalizes that way)", region, key)
+			}
+		}
+	}
+	if pathEntries < 400 || len(table.ByPath["us"]) < 200 {
+		t.Errorf("by_path has %d entries (%d us), want at least 400 (200 us)", pathEntries, len(table.ByPath["us"]))
 	}
 
 	// The accessor used by the pipeline returns the same table (and does not panic).
@@ -104,6 +133,30 @@ func TestAudibleGenreTableAnchors(t *testing.T) {
 		"16215169031": "science-fiction",
 		"16209803031": "horror",
 		"16206636031": "biography-memoir",
+		// Romance > Contemporary in every marketplace the table covers (issue
+		// #2337: the US node was unmapped, so 71k books lost the label). Its
+		// display name "Contemporary" is ambiguous - it is also a Fantasy and a
+		// Teen Fantasy node - so only the node can say it.
+		"18580522011": "contemporary-romance", // us Romance > Contemporary
+		"18581007011": "contemporary-romance", // us Teen & Young Adult > Romance > Contemporary
+		"19378423031": "contemporary-romance", // uk
+		"21073595011": "contemporary-romance", // ca
+		"8171261051":  "contemporary-romance", // au
+		"21882010031": "contemporary-romance", // in
+		"16245163031": "contemporary-romance", // de Liebesromane > Zeitgenössische Liebesromane
+		"18059979031": "contemporary-romance", // es Romántica > Contemporánea
+		"21838164031": "contemporary-romance", // it Romanzo d'amore > Contemporaneo
+		"8191869051":  "contemporary-romance", // jp
+		"41939661011": "contemporary-romance", // br Romance > Contemporâneo
+		// Nodes a subtree's genre is true of, pinned because their display names
+		// ("Literature & Fiction", "Americas", "Europe") are ambiguous on their own.
+		"18573352011": "erotica",            // Erotica > Literature & Fiction
+		"18573754011": "lgbtq",              // LGBTQ+ > Literature & Fiction
+		"18580894011": "young-adult",        // Teen & Young Adult > Literature & Fiction
+		"18580625011": "urban-fantasy",      // ... Fantasy > Paranormal & Urban > Urban
+		"18573526011": "history",            // History > Americas
+		"18581104011": "travel",             // Travel & Tourism > Europe
+		"18580525011": "historical-romance", // Romance > Historical > 20th Century
 	}
 	for node, want := range byNode {
 		// A deliberately wrong display name proves the node id wins.
@@ -111,6 +164,98 @@ func TestAudibleGenreTableAnchors(t *testing.T) {
 		if !ok || got != want {
 			t.Errorf("lookup(node %q) = %q,%v; want %q,true", node, got, ok, want)
 		}
+	}
+
+	// A PATH resolves the way its node does IN THAT MARKETPLACE, whatever the
+	// leaf name says alone (the OpenAudible case: a ladder of names, no node
+	// ids). The claims are built the way the parser builds them, so each row
+	// also proves the path outranks the leaf name.
+	for _, tc := range []struct {
+		region, ladder, want string
+	}{
+		{"us", "Romance:Contemporary", "contemporary-romance"},
+		{"au", "Romance:Contemporary", "contemporary-romance"},
+		{"us", "Teen & Young Adult:Romance:Contemporary", "contemporary-romance"},
+		{"us", "Romance:Military", "romance"},
+		{"us", "Science Fiction & Fantasy:Science Fiction:Military", "military-science-fiction"},
+		{"us", "History:Military", "military-history"},
+		{"us", "Literature & Fiction:Historical Fiction:20th Century", "historical-fiction"},
+		{"us", "Children's Audiobooks:Education & Learning:Social Studies:Careers", "childrens"},
+		// Marketplace-aware: the US node for Romance > Historical is pinned to
+		// historical-romance, while the uk/ca/au nodes libex states for the same
+		// books answer historical-fiction - a path-stating row lands where a
+		// node-stating one does for ITS marketplace. (That the marketplaces
+		// disagree at all is a table inconsistency tracked separately.)
+		{"us", "Romance:Historical", "historical-romance"},
+		{"uk", "Romance:Historical", "historical-fiction"},
+		{"au", "Romance:Historical", "historical-fiction"},
+		// A marketplace we know nothing about falls back to the US table.
+		{"", "Romance:Historical", "historical-romance"},
+	} {
+		claims := pathGenreClaims(tc.ladder, tc.region)
+		got, ok := table.lookup(claims[len(claims)-1])
+		if !ok || got != tc.want {
+			t.Errorf("lookup(%s path %q) = %q,%v; want %q,true", tc.region, tc.ladder, got, ok, tc.want)
+		}
+	}
+	// A path that needs no disambiguation has no entry and falls through to its
+	// leaf name.
+	claims := pathGenreClaims("Science Fiction & Fantasy:Fantasy:Epic", "us")
+	if got, ok := table.lookup(claims[2]); !ok || got != "epic-fantasy" {
+		t.Errorf("lookup(path Science Fiction & Fantasy:Fantasy:Epic) = %q,%v; want epic-fantasy,true", got, ok)
+	}
+}
+
+// genrePathsFile is scripts/genrepaths' verification output: for each
+// marketplace, the category paths the generator checked (every path whose node
+// the table pins, every path some marketplace's by_path carries, every root and
+// every path under a children's root) and the browse-node id each one names.
+const genrePathsFile = "testdata/genrepaths.json"
+
+func loadGenrePaths(t *testing.T) map[string]map[string]string {
+	t.Helper()
+	raw, err := os.ReadFile(genrePathsFile)
+	if err != nil {
+		t.Fatalf("%s: %v (regenerate with scripts/genrepaths)", genrePathsFile, err)
+	}
+	var v map[string]map[string]string
+	if err := json.Unmarshal(raw, &v); err != nil {
+		t.Fatalf("%s: %v", genrePathsFile, err)
+	}
+	return v
+}
+
+// nodeAnswer is what a node-stating source gets for a node - the importer's own
+// ResolveGenreNode over the table.
+func nodeAnswer(table genreTable, node, leaf string) string {
+	return ResolveGenreNode(table.ByASIN, table.ByName, node, leaf)
+}
+
+// TestGenrePathsMatchTheirNodes is by_path's drift guard, and the whole contract
+// the generator implements: for every checked path of every marketplace, the
+// path lookup (the marketplace's table, then the US table, then the leaf name)
+// answers exactly what the path's NODE answers. A by_path entry stores its node,
+// so re-pinning that node flows through; what fails here, naming the path, is a
+// hand edit to by_path or a by_asin/by_name change that makes a path with no
+// entry (or a US entry some marketplace falls back to) answer differently - the
+// cue to re-run scripts/genrepaths.
+func TestGenrePathsMatchTheirNodes(t *testing.T) {
+	table := audibleGenreTable()
+	checked := 0
+	for region, paths := range loadGenrePaths(t) {
+		for key, node := range paths {
+			checked++
+			leaf := key[strings.LastIndex(key, ":")+1:]
+			want := nodeAnswer(table, node, leaf)
+			got, _ := table.lookup(genreClaim{path: key, region: region, name: leaf})
+			if got != want {
+				t.Errorf("%s path %q (node %s): path lookup = %q, node answers %q - regenerate by_path with scripts/genrepaths",
+					region, key, node, got, want)
+			}
+		}
+	}
+	if checked < 3000 {
+		t.Errorf("verification file checks %d paths, want at least 3000 (truncated?)", checked)
 	}
 }
 
@@ -152,19 +297,32 @@ var childrensClaims = []struct {
 // to an adult ADVICE genre. Both halves of a claim are checked, because a leaf
 // with no node override falls through to its display NAME - which is how a
 // children's tag reached self-help in the first place.
+// adultAdviceGenres is the vocabulary a children's category must never produce.
+var adultAdviceGenres = map[string]bool{
+	"self-help":               true,
+	"parenting-relationships": true,
+	"business":                true,
+	"finance":                 true,
+	"home-garden":             true,
+}
+
 func TestChildrensClaimsAvoidAdultAdviceGenres(t *testing.T) {
-	advice := map[string]bool{
-		"self-help":               true,
-		"parenting-relationships": true,
-		"business":                true,
-		"finance":                 true,
-		"home-garden":             true,
-	}
+	advice := adultAdviceGenres
 	table := audibleGenreTable()
 	for _, c := range childrensClaims {
 		if got, ok := table.lookup(c.claim); ok && advice[got] {
 			t.Errorf("lookup(node %q, name %q) = %q; a children's category (%s) must not map to an adult advice genre",
 				c.claim.node, c.claim.name, got, c.where)
+		}
+		// The ladder, as OpenAudible states it ("<region> A/B/C" -> "A:B:C"),
+		// at EVERY level - shared entries included, since the path (unlike the
+		// bare name) is the children's node's own.
+		region, where, _ := strings.Cut(c.where, " ")
+		for _, level := range pathGenreClaims(strings.ReplaceAll(where, "/", ":"), region) {
+			if got, ok := table.lookup(level); ok && advice[got] {
+				t.Errorf("lookup(%s path %q) = %q; a children's category path must not map to an adult advice genre",
+					region, level.path, got)
+			}
 		}
 		if c.shared {
 			continue // the bare name belongs to the adult node; only the ids are ours
@@ -173,6 +331,57 @@ func TestChildrensClaimsAvoidAdultAdviceGenres(t *testing.T) {
 		if got, ok := table.lookup(genreClaim{name: c.claim.name}); ok && advice[got] {
 			t.Errorf("lookup(name %q) = %q; a children's category name (%s) must not map to an adult advice genre",
 				c.claim.name, got, c.where)
+		}
+	}
+}
+
+// TestChildrensPathsAvoidAdultAdviceGenres extends the children's rule to EVERY
+// children's path of every marketplace the generator saw - it, jp and br
+// included - rather than to a hand-kept list of localized roots: a children's
+// root is a root the table itself answers "childrens" for, and every path under
+// one, at every level, must stay clear of adult advice vocabulary both through
+// the path lookup and through its node.
+func TestChildrensPathsAvoidAdultAdviceGenres(t *testing.T) {
+	table := audibleGenreTable()
+	all := loadGenrePaths(t)
+	regions := make([]string, 0, len(all))
+	for r := range all {
+		regions = append(regions, r)
+	}
+	sort.Strings(regions)
+	rootsSeen := map[string]bool{}
+	for _, region := range regions {
+		paths := all[region]
+		roots := map[string]bool{}
+		for key, node := range paths {
+			if !strings.Contains(key, ":") && nodeAnswer(table, node, key) == "childrens" {
+				roots[key] = true
+			}
+		}
+		if len(roots) == 0 {
+			t.Errorf("%s: no children's root found in %s", region, genrePathsFile)
+		}
+		for key, node := range paths {
+			root, _, _ := strings.Cut(key, ":")
+			if !roots[root] {
+				continue
+			}
+			rootsSeen[region] = true
+			leaf := key[strings.LastIndex(key, ":")+1:]
+			if g := nodeAnswer(table, node, leaf); adultAdviceGenres[g] {
+				t.Errorf("%s node %s (%q) = %q; a children's category must not map to an adult advice genre", region, node, key, g)
+			}
+			for _, level := range pathGenreClaims(key, region) {
+				if got, ok := table.lookup(level); ok && adultAdviceGenres[got] {
+					t.Errorf("lookup(%s path %q) = %q; a children's category must not map to an adult advice genre",
+						region, level.path, got)
+				}
+			}
+		}
+	}
+	for _, r := range []string{"us", "uk", "de", "es", "it", "jp", "br"} {
+		if !rootsSeen[r] {
+			t.Errorf("no children's paths checked for %s", r)
 		}
 	}
 }

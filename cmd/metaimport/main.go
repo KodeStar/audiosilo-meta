@@ -372,6 +372,9 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 		fmt.Printf("  attested %d works and %d recordings that were previously libex-only; %d rows conflicted with a recorded value and were not applied\n",
 			s.AttestedWorks, s.AttestedRecordings, s.Conflicts)
 	}
+	if s.GenreWorks > 0 {
+		fmt.Printf("  added genres to %d already-attested works\n", s.GenreWorks)
+	}
 	// The name merges are listed in FULL rather than counted. Every line is
 	// the run deciding that two spellings are one human, which is the least
 	// reversible thing an import does and the one an operator should read before

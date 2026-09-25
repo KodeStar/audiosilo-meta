@@ -17,8 +17,16 @@
 // The lookup order MIRRORS Go's genreTable.lookup so a libex-seeded prefill and a
 // bulk `metaimport libex` of the same record resolve identically: browse-node id
 // first (stable across locales), then the lower-cased, trimmed display name.
+// (Go additionally consults the table's `by_path` between the two, for sources
+// that state a category ladder of names rather than a node id - OpenAudible's
+// `genre` field. A libex claim always carries its node, so that step never
+// decides anything here and is deliberately not mirrored.)
 
-import table from '../../../internal/importer/audiblegenres.json'
+// NAMED imports, not the default: Vite exposes a JSON file's top-level keys as
+// tree-shakeable named exports, so the bundle carries the two tables this module
+// reads and never the by_path table (Go-only - see below), which a default
+// import would ship in every client chunk that maps a genre.
+import { by_asin, by_name } from '../../../internal/importer/audiblegenres.json'
 import type { LibexGenreClaim } from './libex'
 
 // The table's on-disk key is "by_asin" - its keys are Audible browse-node ids,
@@ -33,11 +41,11 @@ import type { LibexGenreClaim } from './libex'
 // claim is undefined whatever it is called.
 const BY_NODE: Record<string, string | undefined> = Object.assign(
   Object.create(null),
-  table.by_asin
+  by_asin
 )
 const BY_NAME: Record<string, string | undefined> = Object.assign(
   Object.create(null),
-  table.by_name
+  by_name
 )
 
 /**

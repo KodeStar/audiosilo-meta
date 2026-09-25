@@ -88,7 +88,9 @@ surfaced in the pull request for a maintainer to adjudicate **when the import
 rules detect it** - a runtime more than 10% apart, or a release date that is not
 the same date at another precision. A differing publisher spelling, cover URL or
 chapter table is not detected: the recorded value stands silently and a
-correction is the route to changing it. Either way the review step is never
+correction is the route to changing it. Genres are the one exception to
+"replace": a user library states one category per book, so its genres are
+added to the recorded set rather than replacing it (LICENSING.md, rule 5). Either way the review step is never
 bypassed, and the catalogue never churns between contributors. A form
 submission that duplicates a mirror-seeded record is routed to a maintainer
 (`data:needs-human`) rather than closed as a duplicate, because the bot can only

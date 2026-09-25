@@ -410,6 +410,8 @@ describe('factualSubset - the privacy contract', () => {
       image_url: 'https://img.example/cover.jpg',
       region: 'US',
       seconds: 36600,
+      duration: '10:10',
+      genre: 'Romance:Contemporary',
       abridged: false,
       // personal / marketing (must be dropped)
       purchase_date: '2020-01-01',
@@ -434,6 +436,8 @@ describe('factualSubset - the privacy contract', () => {
       image_url: 'https://img.example/cover.jpg',
       region: 'US',
       seconds: 36600,
+      duration: '10:10',
+      genre: 'Romance:Contemporary',
       abridged: false,
     })
     for (const personal of ['purchase_date', 'rating', 'filename', 'description', 'summary']) {

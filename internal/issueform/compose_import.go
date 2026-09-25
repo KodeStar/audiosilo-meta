@@ -149,6 +149,9 @@ func (c *composer) importLibrary(s sections) {
 		c.note("attested %d work(s) and %d recording(s) that were previously seeded from the libex mirror - your library's values replaced the mirror's",
 			sum.AttestedWorks, sum.AttestedRecordings)
 	}
+	if sum.GenreWorks > 0 {
+		c.note("added your library's genres to %d work(s) another library had already described", sum.GenreWorks)
+	}
 	c.noteConflicts(sum)
 	c.noteImportWarnings(sum)
 	// The importer wrote and validated the tree itself, so the file list is the

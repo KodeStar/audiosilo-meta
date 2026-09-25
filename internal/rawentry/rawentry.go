@@ -262,13 +262,10 @@ func UnionCredits(dst, src []model.Credit) []model.Credit {
 	return out
 }
 
-// UnionGenres unions two genre lists and sorts them ascending, which is the form
-// pkg/check's checkGenresSorted requires.
-func UnionGenres(dst, src []string) []string {
-	out := AppendUnique(dst, src)
-	slices.Sort(out)
-	return out
-}
+// UnionGenres unions two genre lists into the ascending, duplicate-free form
+// pkg/check's checkGenresSorted requires. It is the importer's own rule
+// (importer.UnionGenres), so a merge and an import combine two sets the one way.
+func UnionGenres(dst, src []string) []string { return importer.UnionGenres(dst, src) }
 
 // SetListOrDrop stores a list member, or removes it when the list is empty: an absent
 // member is how this schema spells "unstated", and an empty array would say something

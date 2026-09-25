@@ -91,18 +91,78 @@ func parseOpenAudible(data []byte) ([]sourceBook, error) {
 
 // openAudibleToBook derives one OpenAudible entry's parse-time facts: the
 // single series claim from series_name/series_sequence (a seriesRef is emitted
-// only for a non-empty name - the sourceBook invariant), the runtime from the
-// seconds field rounded to whole minutes, and the tri-state abridged flag.
+// only for a non-empty name - the sourceBook invariant), the runtime, the
+// tri-state abridged flag, and the genre claims.
+//
+// Runtime: see openAudibleRuntime.
+//
+// Genres: the genre field is the book's Audible category LADDER, joined with
+// ":" ("Romance:Contemporary", "Science Fiction & Fantasy:Fantasy:Epic"), and is
+// mapped through the same table as every other source (pathGenreClaims ->
+// audiblegenres.json, by path in the row's own marketplace, then by name) -
+// never stored as itself (LICENSING.md, "Genres").
 func openAudibleToBook(b rawBook) sourceBook {
 	sb := sourceBook{raw: b}
 	if name := b.str("series_name"); name != "" {
 		sb.series = []seriesRef{makeSeriesRef(name, b.str("series_sequence"))}
 	}
-	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
-		sb.runtimeMin = int((secs + 30) / 60)
-	}
+	sb.runtimeMin = openAudibleRuntime(b)
 	sb.abridged = b.boolPtr("abridged")
+	region, _ := mapRegion(b.str("region")) // "" (unknown) falls back to the US path table
+	sb.genres = pathGenreClaims(b.str("genre"), region)
 	return sb
+}
+
+// openAudibleRuntime is THE rule for an OpenAudible row's runtime, in whole
+// minutes (0 = unknown), and site/src/lib/import-parse.ts's parseBook states the
+// same rule (the two share their test cases): the seconds field rounded half up
+// when that yields at least one whole minute, else the "duration" string
+// (parseOpenAudibleDuration: "H:MM", the only runtime a current export carries,
+// or "H:MM:SS"). A seconds value that rounds to nothing is no runtime of its own,
+// so it does not hide a duration that is one.
+func openAudibleRuntime(b rawBook) int {
+	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
+		if mins := int((secs + 30) / 60); mins > 0 {
+			return mins
+		}
+	}
+	if mins, ok := parseOpenAudibleDuration(b.str("duration")); ok {
+		return mins
+	}
+	return 0
+}
+
+// parseOpenAudibleDuration reads OpenAudible's duration string as whole
+// minutes: "H:MM" (hours and minutes, the current export's form) or "H:MM:SS"
+// (seconds rounded half up). Anything else - an empty field, a non-number, a
+// minute or second field out of range, a zero length - is not a runtime, and ok
+// is false rather than a guessed value.
+func parseOpenAudibleDuration(s string) (int, bool) {
+	parts := strings.Split(strings.TrimSpace(s), ":")
+	if len(parts) != 2 && len(parts) != 3 {
+		return 0, false
+	}
+	nums := make([]int, len(parts))
+	for i, p := range parts {
+		p = strings.TrimSpace(p)
+		// Digits only: Atoi alone would also take a sign ("+5", "-1").
+		if p == "" || strings.Trim(p, "0123456789") != "" {
+			return 0, false
+		}
+		n, err := strconv.Atoi(p)
+		if err != nil || (i > 0 && n > 59) {
+			return 0, false
+		}
+		nums[i] = n
+	}
+	mins := nums[0]*60 + nums[1]
+	if len(nums) == 3 && nums[2] >= 30 {
+		mins++
+	}
+	if mins <= 0 {
+		return 0, false
+	}
+	return mins, true
 }
 
 // str returns the field as a trimmed string. Numbers render via their literal

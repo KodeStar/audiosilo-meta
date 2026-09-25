@@ -129,6 +129,18 @@ type workState struct {
 	// a merge target for a suffixed row. See getOrCreateWork.
 	posSuffixed bool
 	recs        map[string]*recInfo
+	// runGenresOwned says THIS RUN wrote the work's genre set (created the work,
+	// or filled an empty set), which is the permission for a later row of the
+	// same run to add the genres it maps - several rows of one book in one run
+	// are one account of it. runGenres is that set as written, sorted, kept in
+	// memory so the common "nothing new" row is decided without a store read.
+	runGenresOwned bool
+	runGenres      []string
+	// runAttested says a user-library row of THIS RUN attested the work. A later
+	// row of the run meeting it is part of the same account, so it stamps its
+	// provenance too even when it changes nothing - otherwise which rows a
+	// work's sources name would depend on which row came first.
+	runAttested bool
 }
 
 // seriesState tracks a series' membership so works dedupe and positions never
@@ -1838,7 +1850,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 		// more of the same import, so the pairs the entry does not carry yet are
 		// merged in (a no-op for a work loaded from disk, which is never in
 		// runCredits).
-		p.mergeCreatedWorkCredits(ws.slug, facts.credits)
+		p.mergeCreatedWorkFacts(ws, facts)
 		// A merge onto a SHORTENED candidate is the one case where the slug no
 		// longer carries the whole title: two different long titles by one author
 		// agreeing up to the cut land here as a single work. The identity model
@@ -1890,10 +1902,12 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	// so a work the loader could not decode looks free here, and a plain upsert
 	// would replace its whole composite entry - every recording included.
 	credits := p.workCredits(facts.credits)
+	ws.runGenresOwned = true
+	ws.runGenres = p.genres.mapGenres(facts.genres, p.unmappedGenres)
 	p.putNewEntry(pack.FamilyWorks, slug, outWork{
 		ID: slug, Title: title, Authors: authors.all, Language: lang,
 		Credits: credits,
-		Genres:  p.genres.mapGenres(facts.genres, p.unmappedGenres),
+		Genres:  ws.runGenres,
 		AddedAt: p.importDate,
 		License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
@@ -1901,6 +1915,68 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authors workAuthors, 
 	p.summary.Credits += len(credits)
 	p.recordRunCredits(slug, credits)
 	return ws
+}
+
+// mergeCreatedWorkFacts is the create path's half of the in-run merge: a later
+// row that resolved onto a work THIS RUN created contributes the (person, role)
+// pairs and the genres the work does not carry yet. Nothing is removed.
+//
+// Both questions are answered from what the run already holds in memory
+// (runCredits, workState.runGenres), so it is a no-op - and costs no store read -
+// for a work loaded from disk and for a row that adds nothing, which is the
+// overwhelming majority of rows. A row that does add something is written with
+// one read and one put, and stamps its provenance on the work, because the work
+// now records a fact that came from it. (A store read that fails is fatal to the
+// whole run, so the tracked state having moved ahead of the record is never
+// observable.)
+func (p *planner) mergeCreatedWorkFacts(ws *workState, facts workFacts) {
+	var credits []model.Credit
+	added := 0
+	if _, touched := p.runCredits[ws.slug]; touched {
+		credits, added = p.addRunCredits(ws.slug, p.workCredits(facts.credits))
+	}
+	var genres []string
+	if ws.runGenresOwned && len(facts.genres) > 0 {
+		if g := UnionGenres(ws.runGenres, p.genres.mapGenres(facts.genres, p.unmappedGenres)); len(g) > len(ws.runGenres) {
+			genres = g
+		}
+	}
+	if added == 0 && genres == nil {
+		return
+	}
+	raw := p.workEntryRaw(ws.slug)
+	if raw == nil {
+		return
+	}
+	if added > 0 {
+		raw["credits"] = credits
+		p.summary.Credits += added
+	}
+	if genres != nil {
+		ws.runGenres = genres
+		raw["genres"] = genres
+	}
+	p.stampSource(raw)
+	p.putWorkEntry(ws.slug, raw)
+}
+
+// unionRawGenres unions add into raw's genre set (UnionGenres, so it stays
+// sorted and duplicate-free, and nothing is ever removed), and returns the new
+// set, or nil when nothing was added.
+func unionRawGenres(raw map[string]any, add []string) []string {
+	var cur []string
+	arr, _ := raw["genres"].([]any)
+	for _, g := range arr {
+		if s, ok := g.(string); ok {
+			cur = append(cur, s)
+		}
+	}
+	out := UnionGenres(cur, add)
+	if len(out) == len(cur) {
+		return nil
+	}
+	raw["genres"] = out
+	return out
 }
 
 // findSeries returns the already-known series (existing on disk or created this
@@ -2293,34 +2369,6 @@ func (p *planner) addRunCredits(workSlug string, stated []model.Credit) (merged 
 	}
 	sortCredits(merged)
 	return merged, added
-}
-
-// mergeCreatedWorkCredits is the create path's half of the in-run merge: a row
-// that resolved onto a work THIS RUN created contributes the (person, role)
-// pairs the work does not carry yet.
-//
-// It is a no-op - and costs no store read - for a work loaded from disk, for a
-// row that states no role, and for a row whose every pair is already there,
-// which is the overwhelming majority of rows. A row that does add one stamps
-// its provenance on the work, because the work now records a fact that came
-// from it. (A store read that fails is fatal to the whole run, so the tracked
-// set having moved ahead of the record is never observable.)
-func (p *planner) mergeCreatedWorkCredits(workSlug string, stated []credit) {
-	if _, touched := p.runCredits[workSlug]; !touched {
-		return
-	}
-	merged, added := p.addRunCredits(workSlug, p.workCredits(stated))
-	if added == 0 {
-		return
-	}
-	raw := p.workEntryRaw(workSlug)
-	if raw == nil {
-		return
-	}
-	raw["credits"] = merged
-	p.summary.Credits += added
-	p.stampSource(raw)
-	p.putWorkEntry(workSlug, raw)
 }
 
 // sortCredits orders credits by (person, role), which is the ONE byte-form a

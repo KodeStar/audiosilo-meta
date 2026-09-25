@@ -1,6 +1,9 @@
 package importer
 
 import (
+	"slices"
+	"sort"
+
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -30,6 +33,64 @@ func ISODatePart(ts string) string { return isoDatePart(ts) }
 // SortCredits puts a work's credits in the canonical (person, role) order, the
 // one byte-form a given set of credits ever has on disk.
 func SortCredits(credits []model.Credit) { sortCredits(credits) }
+
+// Marketplaces lists the region codes the schema accepts (the importer's
+// drift-guarded mirror of common.schema.json #/$defs/region), "us" first and the
+// rest in ascending order. scripts/genrepaths derives one by_path table per
+// entry, US first because every other marketplace falls back to it.
+func Marketplaces() []string {
+	out := make([]string, 0, len(marketplaces))
+	for r := range marketplaces {
+		if r != "us" {
+			out = append(out, r)
+		}
+	}
+	sort.Strings(out)
+	return append([]string{"us"}, out...)
+}
+
+// UnionGenres is THE genre-union rule: the ascending, duplicate-free union of two
+// genre lists - the form pkg/check's checkGenresSorted requires, and the only way
+// any writer combines two sets (every writer of a genre set is additive; none
+// removes one). A record's set is sorted and duplicate-free, so both inputs
+// usually are and the union is a linear merge; an input that is not falls back to
+// sort-and-compact, so the result never depends on that. internal/rawentry's
+// UnionGenres delegates here.
+func UnionGenres(dst, src []string) []string {
+	if !sortedUnique(dst) || !sortedUnique(src) {
+		out := slices.Concat(dst, src)
+		slices.Sort(out)
+		return slices.Compact(out)
+	}
+	out := make([]string, 0, len(dst)+len(src))
+	i, j := 0, 0
+	for i < len(dst) && j < len(src) {
+		switch {
+		case dst[i] < src[j]:
+			out = append(out, dst[i])
+			i++
+		case dst[i] > src[j]:
+			out = append(out, src[j])
+			j++
+		default:
+			out = append(out, dst[i])
+			i++
+			j++
+		}
+	}
+	out = append(out, dst[i:]...)
+	return append(out, src[j:]...)
+}
+
+// sortedUnique reports whether s is strictly ascending.
+func sortedUnique(s []string) bool {
+	for i := 1; i < len(s); i++ {
+		if s[i-1] >= s[i] {
+			return false
+		}
+	}
+	return true
+}
 
 // RuntimesCompatible reports whether two recording runtimes (whole minutes; 0 or
 // negative = unknown) are close enough to be the same production: an unknown on

@@ -105,6 +105,27 @@ function minutesFromSeconds(sec?: number): number | undefined {
   return minutes > 0 ? minutes : undefined
 }
 
+// OpenAudible's "duration" string as whole minutes (mirrors the Go importer's
+// parseOpenAudibleDuration): "H:MM" - hours and minutes, which is all a current
+// export carries (no seconds field) - or "H:MM:SS", seconds rounded half up.
+// Any other shape, or a zero length, is no runtime at all (undefined), never a
+// guess.
+function minutesFromDuration(raw: string): number | undefined {
+  const parts = raw.trim().split(':')
+  if (parts.length !== 2 && parts.length !== 3) return undefined
+  const nums: number[] = []
+  for (const [i, p] of parts.entries()) {
+    const t = p.trim()
+    if (!/^\d+$/.test(t)) return undefined
+    const n = Number(t)
+    if (i > 0 && n > 59) return undefined
+    nums.push(n)
+  }
+  let minutes = nums[0] * 60 + nums[1]
+  if (nums.length === 3 && nums[2] >= 30) minutes++
+  return minutes > 0 ? minutes : undefined
+}
+
 // A positive number, else undefined - the two minutes-based formats (Libation,
 // folder-scan) both drop a 0/negative runtime rather than assert it.
 function positiveOrUndefined(n?: number): number | undefined {
@@ -407,7 +428,9 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
   const seriesPosition = normalizeSequence(seqRaw)
   const languageRaw = coerceStr(raw['language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
-  const runtimeMin = minutesFromSeconds(coerceInt(raw['seconds']))
+  // The Go importer's openAudibleRuntime rule (internal/importer/openaudible.go).
+  const runtimeMin =
+    minutesFromSeconds(coerceInt(raw['seconds'])) ?? minutesFromDuration(coerceStr(raw['duration']))
   const releaseRaw = coerceStr(raw['release_date'])
   const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
   const publisher = coerceStr(raw['publisher'])
@@ -959,6 +982,13 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
       'image_url',
       'region',
       'seconds',
+      // A current export's only runtime ("H:MM"); see minutesFromDuration.
+      'duration',
+      // The book's Audible category ladder ("Romance:Contemporary"). It rides
+      // to the Go importer only as INPUT: the importer maps it onto the
+      // project's own genre vocabulary and never stores the string itself
+      // (LICENSING.md, "Genres").
+      'genre',
       'abridged',
     ],
   },

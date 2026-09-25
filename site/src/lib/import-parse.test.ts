@@ -257,6 +257,37 @@ describe('parseExport - field mapping', () => {
     expect(parseOne(openAudibleEntry({})).runtimeMin).toBeUndefined()
   })
 
+  // The SAME cases as the Go importer's TestOpenAudibleRuntimeRule
+  // (internal/importer/openaudible_test.go): both sides state one rule.
+  it('the OpenAudible runtime rule', () => {
+    const cases: [Record<string, unknown>, number | undefined][] = [
+      [{ seconds: 3630, duration: '13:25' }, 61],
+      [{ seconds: '3630' }, 61],
+      [{ seconds: 10, duration: '13:25' }, 805],
+      [{ seconds: 0, duration: '13:25' }, 805],
+      [{ duration: '13:25' }, 805],
+      [{ duration: '12:03:40' }, 724],
+      [{ seconds: 10 }, undefined],
+      [{ duration: '13:75' }, undefined],
+      [{}, undefined],
+    ]
+    for (const [row, want] of cases) {
+      expect(parseOne(openAudibleEntry(row)).runtimeMin).toBe(want)
+    }
+  })
+
+  it('falls back to the duration string a current export carries instead of seconds', () => {
+    // "H:MM" is hours and minutes (a 13h25m book reads "13:25").
+    expect(parseOne(openAudibleEntry({ duration: '13:25' })).runtimeMin).toBe(805)
+    expect(parseOne(openAudibleEntry({ duration: '00:04' })).runtimeMin).toBe(4)
+    expect(parseOne(openAudibleEntry({ duration: '12:03:40' })).runtimeMin).toBe(724)
+    // seconds wins where both are present.
+    expect(parseOne(openAudibleEntry({ seconds: 3630, duration: '13:25' })).runtimeMin).toBe(61)
+    for (const bad of ['', '00:00', '13', '13:75', 'ab:cd', '1:2:3:4']) {
+      expect(parseOne(openAudibleEntry({ duration: bad })).runtimeMin).toBeUndefined()
+    }
+  })
+
   it('keeps releaseDate for YYYY, YYYY-MM, and YYYY-MM-DD (Go datePattern parity)', () => {
     expect(parseOne(openAudibleEntry({ release_date: '2021-05-04' })).releaseDate).toBe(
       '2021-05-04'
