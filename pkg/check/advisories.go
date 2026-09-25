@@ -438,7 +438,7 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work) []*model.Wo
 			if differentVolumes(a.work, b.work) {
 				continue
 			}
-			if !ix.matches(b.work, a.work.Title, ix.SeriesNameOf(a.work.ID), a.work.Language, a.all, a.identity) {
+			if !ix.matches(b.work, a.work.Title, ix.statementOf[a.work.ID], a.work.Language, a.all, a.identity) {
 				continue
 			}
 			keep[a.work.ID], keep[b.work.ID] = a.work, b.work

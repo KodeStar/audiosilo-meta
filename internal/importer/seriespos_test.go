@@ -275,7 +275,7 @@ func TestTitleVolumeBeatsADisagreeingSourcePosition(t *testing.T) {
 	}
 }
 
-// WHICH marker a title states as its volume is titlerule.StatedVolume's TIER order
+// WHICH marker a title states as its volume is the volume statements' TIER order (titlerule)
 // (issue #2258), and placement reads it: a volume marker outranks a division marker
 // in any spelling. Two pins, both deliberate:
 //

@@ -656,29 +656,23 @@ func dupViaNote(members []dupMember) string {
 // statedVolumes returns the volume numbers the cluster's own TITLES spell out, and whether
 // two members CONTRADICT each other about one.
 //
-// The contradiction is titlerule.SameStatedVolume's, not this package's: that rule reads the
-// primary number a title states (StatedVolume, which knows the division-class ordinals -
-// season, level, lesson, unit, year - and roman numerals that BareSeq does not) AND the whole
-// SEQUENCE of division markers a title nests, which is what separates "Level 1 Lessons 1-5"
-// from "Level 1 Lessons 6-10" - 36 units of one Pimsleur course whose first stated number is
-// identical. Consuming it here is the resolution of the three-layer TODO this function
-// carried: a number a title states, a number a slug preserves (vetoSlugOrdinal) and the
-// division sequence are now read by ONE vocabulary rather than three.
+// The contradiction is titlerule's (VolumeStatement.Agrees under ReaderPolicy), not this
+// package's: the volume each title states AND the whole SEQUENCE of division markers it
+// nests, which is what separates "Level 1 Lessons 1-5" from "Level 1 Lessons 6-10" - 36 units
+// of one Pimsleur course whose first stated number is identical. A member stating no number is
+// not a disagreement: "Hammered" beside "Hammered: The Iron Druid Chronicles, Book 3" is the
+// pair the class exists to find.
 //
-// A member stating no number is not a disagreement: "Hammered" beside "Hammered: The Iron
-// Druid Chronicles, Book 3" is the pair the class exists to find.
-//
-// Each member is LABELLED by everything the conflict can rest on (volumeLabel), so two members
-// that conflict never share a label and the note always names what they disagree about - it
-// once rendered as the bare "volume numbers stated in the titles: ", when the primary probe
-// could not read a word-numbered season the sequence could (issue #2258).
+// Each member is labelled by VolumeStatement.Label, which is injective over what Agrees
+// compares, so two members that conflict never share a label and the note always names what
+// they disagree about.
 func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool) {
-	for i := range members {
-		a := members[i].work
+	for i := 0; i < len(members) && !conflict; i++ {
+		a := ix.statement(members[i].work)
 		for j := i + 1; j < len(members); j++ {
-			b := members[j].work
-			if !ix.derived(a).stated.Agrees(ix.derived(b).stated) {
+			if !a.Agrees(ix.statement(members[j].work)) {
 				conflict = true
+				break
 			}
 		}
 	}
@@ -687,7 +681,7 @@ func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool
 	}
 	byNum := map[string][]string{}
 	for _, m := range members {
-		if k, ok := volumeLabel(ix.derived(m.work).stated); ok {
+		if k, ok := ix.statement(m.work).Label(); ok {
 			byNum[k] = append(byNum[k], m.work.ID)
 		}
 	}
@@ -695,36 +689,6 @@ func statedVolumes(ix *index, members []dupMember) (vols []string, conflict bool
 		vols = append(vols, k+" ("+truncateList(sortedUnique(ids), 3)+")")
 	}
 	return sortedUnique(vols), true
-}
-
-// volumeLabel renders what a title states about its volume: the primary number, then the
-// division sequence in brackets ("2 [1/2]" is primary 2 over the sequence Part 1, Episode 2)
-// unless the sequence says nothing the primary does not (empty, or exactly [primary]). A title
-// with no primary is labelled by its sequence alone ("[1]" for "Books 1-3"), one stating
-// neither is not labelled.
-//
-// It is injective over the two things titlerule.VolumeStatement.Agrees compares, which is the
-// whole requirement: a conflict is two primaries that differ or two sequences that differ, and
-// either difference shows up in the label - "X (Part One, Episode 2)" (primary 2) and "X (Part
-// 1, Episode 2)" (primary 1) share a sequence and label "2 [1/2]" and "1 [1/2]".
-func volumeLabel(st titlerule.VolumeStatement) (string, bool) {
-	seq := ""
-	if n := len(st.Divisions); n > 0 && !(st.States && n == 1 && st.Divisions[0] == st.Volume) {
-		parts := make([]string, n)
-		for i, v := range st.Divisions {
-			parts[i] = formatSeq(v)
-		}
-		seq = "[" + strings.Join(parts, "/") + "]"
-	}
-	switch {
-	case st.States && seq != "":
-		return formatSeq(st.Volume) + " " + seq, true
-	case st.States:
-		return formatSeq(st.Volume), true
-	case seq != "":
-		return seq, true
-	}
-	return "", false
 }
 
 func sidecarCount(ix *index, members []dupMember) int {

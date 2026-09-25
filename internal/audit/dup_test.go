@@ -274,7 +274,7 @@ func TestWorkDupWithholdsAMergeWhenTheTitlesStateDifferentVolumes(t *testing.T) 
 
 // The same, for volumes numbered in WORDS. The decorative group comes off the key
 // whole, so the pair meets on "Wildwood" exactly as the digit-numbered pair meets on
-// its title - and until titlerule.StatedVolume read the words back, the cluster was a
+// its title - and until titlerule's volume statements read the words back, the cluster was a
 // non-advisory merge proposal that a repair pass would have applied.
 func TestWorkDupWithholdsAMergeWhenTheTitlesStateWordVolumes(t *testing.T) {
 	rep := runFixture(t, map[string]string{

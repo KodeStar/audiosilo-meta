@@ -48,17 +48,12 @@ type workDerived struct {
 	seq    float64
 	hasSeq bool
 
-	// stated is the same question asked through titlerule.StatementOf: the volume
-	// StatedVolume reads (its own vocabulary and tier order, which also reads the
-	// division markers, roman numerals and word numbers BareSeq does not - and so can
-	// answer a DIFFERENT number than seq for a title carrying several markers) plus the
-	// whole division sequence. Two rules read it, both of which withhold a merge: the
-	// volume-CONFLICT rule (statedVolumes, through titlerule's Agrees) and
-	// vetoStatedVolumeElsewhere (vetostrip.go). A change to what StatedVolume reads
-	// moves both, in either direction - a reading gained can withhold a merge, a
-	// reading lost or changed can release one - so it is measured over W-DUP, not
-	// assumed safe. Computed once per work, not per compared pair.
-	stated titlerule.VolumeStatement
+	// stated is the title's titlerule.VolumeStatement under ReaderPolicy (see
+	// titlerule's VOLUME STATEMENTS), LAZY: only W-DUP's cluster members and
+	// vetoStatedVolumeElsewhere read it, so it is derived by index.statement on first
+	// use rather than for every work.
+	stated    titlerule.VolumeStatement
+	hasStated bool
 
 	// The article-plus-series prefix shape, if the title has it.
 	artArticle string
@@ -75,6 +70,15 @@ func (ix *index) derived(w *model.Work) *workDerived {
 	d := ix.deriveTitle(w)
 	ix.derivedCache[w.ID] = d
 	return d
+}
+
+// statement returns a work's memoized titlerule.VolumeStatement - see workDerived.stated.
+func (ix *index) statement(w *model.Work) titlerule.VolumeStatement {
+	d := ix.derived(w)
+	if !d.hasStated {
+		d.stated, d.hasStated = titlerule.StatementOf(w.Title, d.seriesName, titlerule.ReaderPolicy), true
+	}
+	return d.stated
 }
 
 // deriveTitle is the derivation itself: the ONE place the audit decides which
@@ -96,7 +100,6 @@ func (ix *index) deriveTitle(w *model.Work) *workDerived {
 		d.plainKey = titlerule.IdentityTitleKey(w.Title, "")
 	}
 	d.seq, d.hasSeq = titlerule.BareSeq(w.Title, d.seriesName)
-	d.stated = titlerule.StatementOf(w.Title, d.seriesName)
 	d.artArticle, d.artSeries, d.artRest, d.artOK = titlerule.ArticleSeriesPrefix(w.Title, ix.resolveSeries)
 	d.markers = titlerule.Decorations(titlerule.TitleFacts{
 		Title:   w.Title,

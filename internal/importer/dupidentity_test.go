@@ -316,7 +316,7 @@ func TestCreateRefusesADecoratedDuplicateWhoseTitleBeginsWithADivisionWord(t *te
 
 // The same guard for a word-numbered division IN marker position, which the audit's
 // reading does count ("Locked In: Season One" states season 1): the positive test
-// reads titlerule.ClaimedVolume, which leaves that reading out, so a decorated second
+// reads titlerule.WriterPolicy, which leaves that reading out, so a decorated second
 // listing is refused exactly as main refused it rather than minted beside the work
 // no series places.
 func TestCreateRefusesADecoratedDuplicateOfAWordNumberedSeason(t *testing.T) {
@@ -333,6 +333,33 @@ func TestCreateRefusesADecoratedDuplicateOfAWordNumberedSeason(t *testing.T) {
 	))
 	if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
 		t.Errorf("SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
+// The CONTRADICTION half of the same rule: a word-numbered division states nothing to a
+// writer, so it cannot contradict a catalogued volume either. "Nameless (Season One)"
+// against "Nameless (Volume II)" is 1 against 2 for the audit, and a match the create
+// guard vetoed on that reading would mint the row as a sibling work. Both halves of the
+// probe - the catalogued work, and a work this run wrote - read the writer policy.
+func TestCreateGuardReadsNoContradictionFromAWordNumberedSeason(t *testing.T) {
+	seed := libexRow{asin: "B0NAMELES1", title: "Nameless (Volume II)", authors: `{"name":"Ada One"}`,
+		narrators: `{"name":"Ann Reader"}`, minutes: 600}
+	row := libexRow{asin: "B0NAMELES2", title: "Nameless (Season One)", authors: `{"name":"Ada One"}`,
+		narrators: `{"name":"Bob Reader"}`, minutes: 610}
+
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(seed)); sum.NewWorks != 1 {
+		t.Fatalf("seed run: NewWorks = %d, want 1", sum.NewWorks)
+	}
+	if sum := runLibexInto(t, dataDir, rows(row)); sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+		t.Errorf("catalogued: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+
+	dataDir = t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(seed, row)); sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 1 {
+		t.Errorf("one run: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 1; warnings = %v",
 			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
 	}
 }

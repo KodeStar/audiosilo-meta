@@ -204,7 +204,13 @@ func Clean(title, series string) string {
 //
 // The dangling-segment peels cannot fix it: the segment they would judge is the one
 // AFTER the run, which here holds a real word.
-var separatorRun = regexp.MustCompile(`[:,;|]\s*([:,;|])`)
+var separatorRun = regexp.MustCompile(`[` + segmentPunct + `]\s*([` + segmentPunct + `])`)
+
+// segmentPunct is the punctuation that ends one title segment and opens the next -
+// the separators an empty segment collapses between (separatorRun) and the ones a
+// word-numbered division marker must stand between (divisionMarkerAt). Inside a
+// character class every one of them is literal.
+const segmentPunct = `:,;|`
 
 // collapseSeparatorRuns drops the leading separator of every empty segment, keeping
 // the one that introduces the surviving text.
@@ -1212,7 +1218,7 @@ func ArticleSeriesPrefix(title string, resolve SeriesResolver) (article, series,
 // ("Book Two", "Part One"), which markerSeq cannot see because it requires \d.
 //
 // Its two halves are named constants (identity.go) and the number is a CAPTURE,
-// because this rule STRIPS the shape and StatedVolume READS it back through the same
+// because this rule STRIPS the shape and the volume statements READ it back through the same
 // match: one vocabulary and one separator, or a title states a volume the key never
 // lost - or worse, loses one nothing can state. A ROMAN capture simply misses
 // wordValue - romanVolume's own arm has already read it, since that rule's markers,
@@ -1221,7 +1227,7 @@ func ArticleSeriesPrefix(title string, resolve SeriesResolver) (article, series,
 // The whitespace is REQUIRED, unlike markerSeq's optional "Book.3" separator: with
 // \s* the leading \b would let the surname "Partone" read as "Part One".
 var wordVolumeMarker = regexp.MustCompile(`(?i)\b(?:` + volumeMarkerWords + `)\s+` +
-	`(` + volumeNumberWords + `|i{1,3}|iv|v|vi{1,3}|ix|x)\b`)
+	`(` + volumeNumberWords + `|` + romanCore + `)\b`)
 
 // hasVolumeMarker reports whether a text states a volume, in digits or in words.
 func hasVolumeMarker(s string) bool {

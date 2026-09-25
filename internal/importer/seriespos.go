@@ -165,7 +165,7 @@ func sameSeriesName(a, b string) bool {
 // the source's, unless the row's own TITLE states a different volume for that
 // series, in which case the title wins (Part 2).
 //
-// The title is read through titlerule.ClaimedVolume against the series NAME the
+// The title is read under titlerule.WriterPolicy against the series NAME the
 // row states - the same call, on the same two strings, that the
 // duplicate-identity guard's positive volume test makes (dupidentity.go), so the
 // two readings of one title cannot disagree about which volume it claims to be.
@@ -205,7 +205,7 @@ func (p *planner) placementPosition(r seriesRef, work, title string, warn func(s
 //     which volumes it collects, and a title's single number does not contradict
 //     it.
 //   - the TITLE must carry a VOLUME MARKER (titlerule.HasVolumeMarker: "Book 6",
-//     "Vol 2", "Book One"). StatedVolume also reads a residual that is nothing
+//     "Vol 2", "Book One"). The volume reading also takes a residual that is nothing
 //     but a number, which is right for the duplicate gates - a false positive
 //     there only costs a missed refusal - and wrong here: a work titled "1984" or
 //     "2001" would otherwise be placed at position 1984. A year is not a series
@@ -218,7 +218,7 @@ func statedVolumePosition(r seriesRef, title string) (string, bool) {
 	if !titlerule.HasVolumeMarker(title) {
 		return "", false
 	}
-	v, stated := titlerule.ClaimedVolume(title, r.name)
+	v, stated := titlerule.WriterPolicy.Volume(title, r.name)
 	if !stated {
 		return "", false
 	}
