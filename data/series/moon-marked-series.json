@@ -4645,11 +4645,6 @@
       "sources": [
         {
           "imported_at": "2026-08-02",
-          "ref": "B00IRIWNUM",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
           "ref": "1648805779",
           "type": "libex-import"
         },
@@ -4856,46 +4851,6 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "mountain-man"
-        },
-        {
-          "position": "3",
-          "work": "hellifax"
-        },
-        {
-          "position": "2",
-          "work": "safari"
-        },
-        {
-          "position": "4",
-          "work": "well-fed"
-        },
-        {
-          "position": "1-3",
-          "work": "the-mountain-man-omnibus"
-        },
-        {
-          "position": "0",
-          "work": "mountain-man-prequel"
-        },
-        {
-          "position": "5",
-          "work": "make-me-king"
-        },
-        {
-          "position": "6",
-          "work": "mindless"
-        },
-        {
-          "position": "0.5",
-          "work": "mountain-man-2nd-prequel"
-        },
-        {
-          "position": "7",
-          "work": "skull-road"
-        },
-        {
           "position": "8",
           "work": "code-of-the-mountain-man-dramatized-adaptation"
         },
@@ -5070,6 +5025,60 @@
         {
           "position": "50",
           "work": "cruel-winter-of-the-mountain-man"
+        }
+      ]
+    },
+    "mountain-man-2": {
+      "id": "mountain-man-2",
+      "license": "CC0-1.0",
+      "name": "Mountain Man",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B00JLKUOUG",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "0",
+          "work": "mountain-man-prequel"
+        },
+        {
+          "position": "0.5",
+          "work": "mountain-man-2nd-prequel"
+        },
+        {
+          "position": "1",
+          "work": "mountain-man"
+        },
+        {
+          "position": "1-3",
+          "work": "the-mountain-man-omnibus"
+        },
+        {
+          "position": "2",
+          "work": "safari"
+        },
+        {
+          "position": "3",
+          "work": "hellifax"
+        },
+        {
+          "position": "4",
+          "work": "well-fed"
+        },
+        {
+          "position": "5",
+          "work": "make-me-king"
+        },
+        {
+          "position": "6",
+          "work": "mindless"
+        },
+        {
+          "position": "7",
+          "work": "skull-road"
         }
       ]
     },
@@ -9135,10 +9144,6 @@
         }
       ],
       "works": [
-        {
-          "position": "1",
-          "work": "my-little-town-stories-from-lake-wobegon"
-        },
         {
           "position": "2",
           "work": "a-perfect-moment"
