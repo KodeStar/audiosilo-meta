@@ -1432,6 +1432,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "coming-of-age",
         "fantasy"
       ],
       "id": "clash-of-the-worlds",
@@ -1444,6 +1445,10 @@
           "asin": [
             {
               "asin": "B01F3UNFIU",
+              "region": "us"
+            },
+            {
+              "asin": "B01CF46M1O",
               "region": "us"
             }
           ],
@@ -1989,6 +1994,11 @@
               "imported_at": "2026-08-02",
               "ref": "B01F3UNFIU",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01CF46M1O",
+              "type": "libex-import"
             }
           ],
           "work": "clash-of-the-worlds"
@@ -1998,6 +2008,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B01F3UNFIU",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01CF46M1O",
           "type": "libex-import"
         }
       ],

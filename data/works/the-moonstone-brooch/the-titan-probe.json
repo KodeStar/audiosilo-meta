@@ -9478,6 +9478,7 @@
       "genres": [
         "action-adventure",
         "historical-fiction",
+        "mystery",
         "thriller-suspense"
       ],
       "id": "the-tomb-of-hercules",
@@ -9673,30 +9674,7 @@
             }
           ],
           "work": "the-tomb-of-hercules"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004N71J6U",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Tomb of Hercules"
-    },
-    "the-tomb-of-hercules-wilde-chase-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andy-mcdermott"
-      ],
-      "genres": [
-        "action-adventure",
-        "mystery"
-      ],
-      "id": "the-tomb-of-hercules-wilde-chase-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-mattacks-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9885,17 +9863,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-tomb-of-hercules-wilde-chase-2"
+          "work": "the-tomb-of-hercules"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004N71J6U",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1472279700",
           "type": "libex-import"
         }
       ],
-      "title": "The Tomb of Hercules (Wilde/Chase 2)"
+      "title": "The Tomb of Hercules"
     },
     "the-tomb-of-horrors": {
       "added_at": "2026-08-02",
@@ -10115,6 +10098,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "fairy-tales-folklore",
         "fantasy",
         "historical-fiction",
         "history"
@@ -10123,6 +10107,291 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "johnathan-mcclain-2014": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00JLOEA7K",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 916631,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 266147,
+              "start_ms": 916631,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 542372,
+              "start_ms": 1182778,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 606691,
+              "start_ms": 1725150,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 660468,
+              "start_ms": 2331841,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 588487,
+              "start_ms": 2992309,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 530715,
+              "start_ms": 3580796,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 602001,
+              "start_ms": 4111511,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 301627,
+              "start_ms": 4713512,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 331813,
+              "start_ms": 5015139,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 536752,
+              "start_ms": 5346952,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 820918,
+              "start_ms": 5883704,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 157989,
+              "start_ms": 6704622,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 659818,
+              "start_ms": 6862611,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 788689,
+              "start_ms": 7522429,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 805965,
+              "start_ms": 8311118,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 751630,
+              "start_ms": 9117083,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 120372,
+              "start_ms": 9868713,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 259042,
+              "start_ms": 9989085,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 984340,
+              "start_ms": 10248127,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 763008,
+              "start_ms": 11232467,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 470854,
+              "start_ms": 11995475,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 468532,
+              "start_ms": 12466329,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 512046,
+              "start_ms": 12934861,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 412804,
+              "start_ms": 13446907,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 832668,
+              "start_ms": 13859711,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 483161,
+              "start_ms": 14692379,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 901677,
+              "start_ms": 15175540,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 363392,
+              "start_ms": 16077217,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 633022,
+              "start_ms": 16440609,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 673611,
+              "start_ms": 17073631,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 715035,
+              "start_ms": 17747242,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 505638,
+              "start_ms": 18462277,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 244042,
+              "start_ms": 18967915,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 601675,
+              "start_ms": 19211957,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 436907,
+              "start_ms": 19813632,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 127060,
+              "start_ms": 20250539,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 290110,
+              "start_ms": 20377599,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 370869,
+              "start_ms": 20667709,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 799045,
+              "start_ms": 21038578,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 337479,
+              "start_ms": 21837623,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 452418,
+              "start_ms": 22175102,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 592062,
+              "start_ms": 22627520,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 769463,
+              "start_ms": 23219582,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 207819,
+              "start_ms": 23989045,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 212230,
+              "start_ms": 24196864,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 499090,
+              "start_ms": 24409094,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 554632,
+              "start_ms": 24908184,
+              "title": "Chapter 48"
+            },
+            {
+              "length_ms": 437464,
+              "start_ms": 25462816,
+              "title": "Chapter 49"
+            },
+            {
+              "length_ms": 342587,
+              "start_ms": 25900280,
+              "title": "Chapter 50"
+            },
+            {
+              "length_ms": 708952,
+              "start_ms": 26242867,
+              "title": "Chapter 51"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FADL1ugNL.jpg",
+          "id": "johnathan-mcclain-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johnathan-mcclain"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2014-05-13",
+          "runtime_min": 449,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00JLOEA7K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-tomb-of-shadows"
+        },
         "johnathan-mcclain-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10418,6 +10687,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00TRL4022",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00JLOEA7K",
           "type": "libex-import"
         }
       ],

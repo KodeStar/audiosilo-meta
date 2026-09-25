@@ -5322,100 +5322,6 @@
       ],
       "title": "Manhunt [Dramatized Adaptation]: .45-Caliber, Book 3"
     },
-    "manhunt-dramatized-adaptation-the-last-gunfighter-book-10": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "manhunt-dramatized-adaptation-the-last-gunfighter-book-10",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648794785",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3830293,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3459123,
-              "start_ms": 3830293,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3082031,
-              "start_ms": 7289416,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2970017,
-              "start_ms": 10371447,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3036984,
-              "start_ms": 13341464,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3965688,
-              "start_ms": 16378448,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81YtHUUnNqL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 340,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648794785",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648794785",
-              "type": "libex-import"
-            }
-          ],
-          "work": "manhunt-dramatized-adaptation-the-last-gunfighter-book-10"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648794785",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648794785",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Manhunt [Dramatized Adaptation]: The Last Gunfighter, Book 10"
-    },
     "manhunt-gretchen-felker-martin": {
       "added_at": "2026-07-29",
       "authors": [
@@ -6643,6 +6549,8 @@
         "william-w-johnstone"
       ],
       "genres": [
+        "action-adventure",
+        "historical-fiction",
         "literary-fiction",
         "westerns"
       ],
@@ -6650,6 +6558,71 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648794785",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3830293,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3459123,
+              "start_ms": 3830293,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3082031,
+              "start_ms": 7289416,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2970017,
+              "start_ms": 10371447,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3036984,
+              "start_ms": 13341464,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3965688,
+              "start_ms": 16378448,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81YtHUUnNqL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 340,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648794785",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648794785",
+              "type": "libex-import"
+            }
+          ],
+          "work": "manhunt-william-w-johnstone"
+        },
         "george-guidall-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6745,6 +6718,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002VA9I14",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648794785",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648794785",
           "type": "libex-import"
         }
       ],

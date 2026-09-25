@@ -10931,6 +10931,71 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "164880571X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4172556,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3825162,
+              "start_ms": 4172556,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3413611,
+              "start_ms": 7997718,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3501963,
+              "start_ms": 11411329,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3619619,
+              "start_ms": 14913292,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4237106,
+              "start_ms": 18532911,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PVM87pHFL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 380,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164880571X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164880571X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "journey-of-the-mountain-man"
+        },
         "j-rodney-turner-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11142,91 +11207,7 @@
           "imported_at": "2026-07-29",
           "ref": "1541432665",
           "type": "libex-import"
-        }
-      ],
-      "title": "Journey of the Mountain Man"
-    },
-    "journey-of-the-mountain-man-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "journey-of-the-mountain-man-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "164880571X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4172556,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3825162,
-              "start_ms": 4172556,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3413611,
-              "start_ms": 7997718,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3501963,
-              "start_ms": 11411329,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3619619,
-              "start_ms": 14913292,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4237106,
-              "start_ms": 18532911,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PVM87pHFL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 380,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164880571X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164880571X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "journey-of-the-mountain-man-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "164880571X",
@@ -11238,7 +11219,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Journey of the Mountain Man [Dramatized Adaptation]"
+      "title": "Journey of the Mountain Man"
     },
     "journey-of-the-pharaohs": {
       "added_at": "2026-08-02",

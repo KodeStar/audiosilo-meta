@@ -8578,9 +8578,11 @@
         "hilary-mantel"
       ],
       "genres": [
+        "alternate-history",
         "historical-fiction",
         "history",
-        "literary-fiction"
+        "literary-fiction",
+        "science-fiction"
       ],
       "id": "bring-up-the-bodies",
       "language": "en",
@@ -8593,62 +8595,76 @@
             {
               "asin": "1250774020",
               "region": "us"
+            },
+            {
+              "asin": "1004014759",
+              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 48390,
+              "length_ms": 19393,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 893,
-              "start_ms": 48390,
-              "title": "Part One"
+              "length_ms": 9142,
+              "start_ms": 19393,
+              "title": "Dedication"
             },
             {
-              "length_ms": 3990477,
-              "start_ms": 49283,
-              "title": "Chapter 1: Falcons: Wiltshire, September 1535"
+              "length_ms": 17486,
+              "start_ms": 28535,
+              "title": "Epigraph"
             },
             {
-              "length_ms": 10396687,
-              "start_ms": 4039760,
-              "title": "Chapter 2: Crows: London and Kimbolton, Autumn 1535"
+              "length_ms": 11,
+              "start_ms": 46021,
+              "title": "Part 1"
             },
             {
-              "length_ms": 7861324,
-              "start_ms": 14436447,
-              "title": "Chapter 3: Angels: Stepney and Greenwich, Christmas 1535-New Year 1536"
+              "length_ms": 3991267,
+              "start_ms": 46032,
+              "title": "I. Falcons: Wiltshire September 1535"
             },
             {
-              "length_ms": 880000,
-              "start_ms": 22297771,
-              "title": "Part Two"
+              "length_ms": 10396431,
+              "start_ms": 4037299,
+              "title": "II. Crows: London and Kimbolton Autumn 1535"
             },
             {
-              "length_ms": 11490569,
-              "start_ms": 23177771,
-              "title": "Chapter 1: The Black Book: London, January-April 1536"
+              "length_ms": 7861138,
+              "start_ms": 14433730,
+              "title": "III. Angels: Stepney and Greenwich Christmas 1535–New Year 1536"
             },
             {
-              "length_ms": 23396377,
-              "start_ms": 34668340,
-              "title": "Chapter 2: Master of Phantoms: London, April-May 1536"
+              "length_ms": 156,
+              "start_ms": 22294868,
+              "title": "Part 2"
             },
             {
-              "length_ms": 682573,
-              "start_ms": 58064717,
-              "title": "Chapter 3: Spoils: London, Summer 1536"
+              "length_ms": 12370111,
+              "start_ms": 22295024,
+              "title": "I. The Black Book: London January–April 1536"
             },
             {
-              "length_ms": 188708,
-              "start_ms": 58747290,
-              "title": "Author's Note"
+              "length_ms": 23395796,
+              "start_ms": 34665135,
+              "title": "II. Master of Phantoms: London April–May 1536"
             },
             {
-              "length_ms": 51106,
-              "start_ms": 58935998,
+              "length_ms": 682597,
+              "start_ms": 58060931,
+              "title": "III. Spoils: London Summer 1536"
+            },
+            {
+              "length_ms": 188731,
+              "start_ms": 58743528,
+              "title": "Author’s Note"
+            },
+            {
+              "length_ms": 49388,
+              "start_ms": 58932259,
               "title": "End Credits"
             }
           ],
@@ -8666,6 +8682,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "1250774020",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1004014759",
               "type": "libex-import"
             }
           ],
@@ -9044,30 +9065,7 @@
             }
           ],
           "work": "bring-up-the-bodies"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B007WU26KI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bring Up the Bodies"
-    },
-    "bring-up-the-bodies-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hilary-mantel"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction"
-      ],
-      "id": "bring-up-the-bodies-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "simon-vance-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9166,136 +9164,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "bring-up-the-bodies-a-novel"
+          "work": "bring-up-the-bodies"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
+          "ref": "B007WU26KI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
           "ref": "1443459895",
           "type": "libex-import"
-        }
-      ],
-      "title": "Bring Up The Bodies: A Novel"
-    },
-    "bring-up-the-bodies-the-wolf-hall-trilogy-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hilary-mantel"
-      ],
-      "genres": [
-        "alternate-history",
-        "historical-fiction",
-        "science-fiction"
-      ],
-      "id": "bring-up-the-bodies-the-wolf-hall-trilogy-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ben-miles-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1004014759",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19393,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 9142,
-              "start_ms": 19393,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 17486,
-              "start_ms": 28535,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 11,
-              "start_ms": 46021,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3991267,
-              "start_ms": 46032,
-              "title": "I. Falcons: Wiltshire September 1535"
-            },
-            {
-              "length_ms": 10396431,
-              "start_ms": 4037299,
-              "title": "II. Crows: London and Kimbolton Autumn 1535"
-            },
-            {
-              "length_ms": 7861138,
-              "start_ms": 14433730,
-              "title": "III. Angels: Stepney and Greenwich Christmas 1535–New Year 1536"
-            },
-            {
-              "length_ms": 156,
-              "start_ms": 22294868,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 12370111,
-              "start_ms": 22295024,
-              "title": "I. The Black Book: London January–April 1536"
-            },
-            {
-              "length_ms": 23395796,
-              "start_ms": 34665135,
-              "title": "II. Master of Phantoms: London April–May 1536"
-            },
-            {
-              "length_ms": 682597,
-              "start_ms": 58060931,
-              "title": "III. Spoils: London Summer 1536"
-            },
-            {
-              "length_ms": 188731,
-              "start_ms": 58743528,
-              "title": "Author’s Note"
-            },
-            {
-              "length_ms": 49388,
-              "start_ms": 58932259,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kmMMgjR7L.jpg",
-          "id": "ben-miles-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ben-miles"
-          ],
-          "publisher": "W. F. Howes Ltd",
-          "release_date": "2020-06-25",
-          "runtime_min": 982,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1004014759",
-              "type": "libex-import"
-            }
-          ],
-          "work": "bring-up-the-bodies-the-wolf-hall-trilogy-book-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1004014759",
           "type": "libex-import"
         }
       ],
-      "title": "Bring Up the Bodies: The Wolf Hall Trilogy, Book 2"
+      "title": "Bring Up the Bodies"
     },
     "bring-your-baggage-and-dont-pack-light": {
       "added_at": "2026-07-29",

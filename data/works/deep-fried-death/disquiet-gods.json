@@ -5216,8 +5216,10 @@
         "ken-macleod"
       ],
       "genres": [
+        "action-adventure",
         "military-science-fiction",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "dissidence",
       "language": "en",
@@ -5229,6 +5231,10 @@
           "asin": [
             {
               "asin": "B01EYT2PIW",
+              "region": "us"
+            },
+            {
+              "asin": "B01N40YXG5",
               "region": "us"
             }
           ],
@@ -5374,6 +5380,11 @@
               "imported_at": "2026-08-02",
               "ref": "B01EYT2PIW",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01N40YXG5",
+              "type": "libex-import"
             }
           ],
           "work": "dissidence"
@@ -5383,6 +5394,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B01EYT2PIW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01N40YXG5",
           "type": "libex-import"
         }
       ],

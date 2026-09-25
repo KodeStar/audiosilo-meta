@@ -10234,12 +10234,103 @@
       "genres": [
         "action-adventure",
         "historical-fiction",
+        "history",
         "thriller-suspense"
       ],
       "id": "pharaoh",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "mike-grady-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01J1YK2Z8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4222688,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4466358,
+              "start_ms": 4222688,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3602808,
+              "start_ms": 8689046,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3827113,
+              "start_ms": 12291854,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4304283,
+              "start_ms": 16118967,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3984405,
+              "start_ms": 20423250,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 5095340,
+              "start_ms": 24407655,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 5017461,
+              "start_ms": 29502995,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4462550,
+              "start_ms": 34520456,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3712267,
+              "start_ms": 38983006,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3220004,
+              "start_ms": 42695273,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3833940,
+              "start_ms": 45915277,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1BvGiksfsL.jpg",
+          "id": "mike-grady-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mike-grady"
+          ],
+          "publisher": "William Morrow",
+          "release_date": "2016-10-18",
+          "runtime_min": 829,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01J1YK2Z8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pharaoh"
+        },
         "mike-grady-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10345,124 +10436,14 @@
           "imported_at": "2026-08-02",
           "ref": "1460793595",
           "type": "libex-import"
-        }
-      ],
-      "title": "Pharaoh"
-    },
-    "pharaoh-a-novel-of-ancient-egypt": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "wilbur-smith"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "history",
-        "thriller-suspense"
-      ],
-      "id": "pharaoh-a-novel-of-ancient-egypt",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "mike-grady-2016": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01J1YK2Z8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4222688,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4466358,
-              "start_ms": 4222688,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3602808,
-              "start_ms": 8689046,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3827113,
-              "start_ms": 12291854,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4304283,
-              "start_ms": 16118967,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3984405,
-              "start_ms": 20423250,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 5095340,
-              "start_ms": 24407655,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 5017461,
-              "start_ms": 29502995,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4462550,
-              "start_ms": 34520456,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3712267,
-              "start_ms": 38983006,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3220004,
-              "start_ms": 42695273,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3833940,
-              "start_ms": 45915277,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1BvGiksfsL.jpg",
-          "id": "mike-grady-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mike-grady"
-          ],
-          "publisher": "William Morrow",
-          "release_date": "2016-10-18",
-          "runtime_min": 829,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01J1YK2Z8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pharaoh-a-novel-of-ancient-egypt"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01J1YK2Z8",
           "type": "libex-import"
         }
       ],
-      "title": "Pharaoh: A Novel of Ancient Egypt"
+      "title": "Pharaoh"
     },
     "pharaoh-david-gibbins": {
       "added_at": "2026-08-02",

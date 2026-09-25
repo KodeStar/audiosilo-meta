@@ -11140,12 +11140,59 @@
         "classics",
         "epic-fantasy",
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "short-stories",
+        "urban-fantasy"
       ],
       "id": "perfect-shadow",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648809596",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4239893,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3106829,
+              "start_ms": 4239893,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tXIviWpbL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 122,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648809596",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648809596",
+              "type": "libex-import"
+            }
+          ],
+          "work": "perfect-shadow"
+        },
         "james-langton-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11205,6 +11252,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0053ZUL9C",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648809596",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648809596",
           "type": "libex-import"
         }
       ],

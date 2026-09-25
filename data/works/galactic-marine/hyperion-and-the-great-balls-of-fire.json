@@ -4443,13 +4443,161 @@
       "genres": [
         "fantasy",
         "mystery",
+        "paranormal",
         "police-procedural",
+        "post-apocalyptic",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "hypnos",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "nicole-blessing-2019": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B07XLP2PHH",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14535,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1176299,
+              "start_ms": 14535,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1585667,
+              "start_ms": 1190834,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1912534,
+              "start_ms": 2776501,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1424985,
+              "start_ms": 4689035,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1559336,
+              "start_ms": 6114020,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1575334,
+              "start_ms": 7673356,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1865932,
+              "start_ms": 9248690,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1738501,
+              "start_ms": 11114622,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1669212,
+              "start_ms": 12853123,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1609328,
+              "start_ms": 14522335,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2508405,
+              "start_ms": 16131663,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1763694,
+              "start_ms": 18640068,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1392314,
+              "start_ms": 20403762,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1538716,
+              "start_ms": 21796076,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1278281,
+              "start_ms": 23334792,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1200494,
+              "start_ms": 24613073,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1405016,
+              "start_ms": 25813567,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1425264,
+              "start_ms": 27218583,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1597556,
+              "start_ms": 28643847,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 2206035,
+              "start_ms": 30241403,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1237716,
+              "start_ms": 32447438,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 24705,
+              "start_ms": 33685154,
+              "title": "Chapter 23"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91C1MUtyk4L.jpg",
+          "id": "nicole-blessing-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nicole-blessing"
+          ],
+          "publisher": "Pen & Page Publishing",
+          "release_date": "2019-09-14",
+          "runtime_min": 561,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07XLP2PHH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hypnos"
+        },
         "nicole-blessing-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -4600,6 +4748,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B0CCK29QQS",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07XLP2PHH",
           "type": "libex-import"
         }
       ],
@@ -5114,177 +5267,6 @@
         }
       ],
       "title": "Hypnos"
-    },
-    "hypnos-seeking-the-zodiacs-book-1": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "rj-blain"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "post-apocalyptic",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "hypnos-seeking-the-zodiacs-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nicole-blessing-2019": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07XLP2PHH",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14535,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1176299,
-              "start_ms": 14535,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1585667,
-              "start_ms": 1190834,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1912534,
-              "start_ms": 2776501,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1424985,
-              "start_ms": 4689035,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1559336,
-              "start_ms": 6114020,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1575334,
-              "start_ms": 7673356,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1865932,
-              "start_ms": 9248690,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1738501,
-              "start_ms": 11114622,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1669212,
-              "start_ms": 12853123,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1609328,
-              "start_ms": 14522335,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2508405,
-              "start_ms": 16131663,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1763694,
-              "start_ms": 18640068,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1392314,
-              "start_ms": 20403762,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1538716,
-              "start_ms": 21796076,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1278281,
-              "start_ms": 23334792,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1200494,
-              "start_ms": 24613073,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1405016,
-              "start_ms": 25813567,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1425264,
-              "start_ms": 27218583,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1597556,
-              "start_ms": 28643847,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 2206035,
-              "start_ms": 30241403,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1237716,
-              "start_ms": 32447438,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 24705,
-              "start_ms": 33685154,
-              "title": "Chapter 23"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91C1MUtyk4L.jpg",
-          "id": "nicole-blessing-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nicole-blessing"
-          ],
-          "publisher": "Pen & Page Publishing",
-          "release_date": "2019-09-14",
-          "runtime_min": 561,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07XLP2PHH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hypnos-seeking-the-zodiacs-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07XLP2PHH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hypnos: Seeking the Zodiacs, Book 1"
     },
     "hypnos-the-underworld-saga-book-7": {
       "added_at": "2026-08-01",

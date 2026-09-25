@@ -10885,9 +10885,14 @@
       "genres": [
         "action-adventure",
         "dark-fantasy",
+        "epic-fantasy",
         "fantasy",
         "historical-fiction",
         "history",
+        "lgbtq",
+        "parenting-relationships",
+        "romance",
+        "self-help",
         "young-adult"
       ],
       "id": "chain-of-gold-cassandra-clare",
@@ -10900,6 +10905,10 @@
           "asin": [
             {
               "asin": "B07L8PPVN6",
+              "region": "us"
+            },
+            {
+              "asin": "1528890078",
               "region": "us"
             }
           ],
@@ -11115,6 +11124,11 @@
               "imported_at": "2026-08-02",
               "ref": "B07L8PPVN6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1528890078",
+              "type": "libex-import"
             }
           ],
           "work": "chain-of-gold-cassandra-clare"
@@ -11124,6 +11138,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B07L8PPVN6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1528890078",
           "type": "libex-import"
         }
       ],
@@ -11191,6 +11210,10 @@
         "dark-fantasy",
         "fantasy",
         "historical-fiction",
+        "lgbtq",
+        "psychology",
+        "romance",
+        "self-help",
         "young-adult"
       ],
       "id": "chain-of-iron",
@@ -11204,193 +11227,252 @@
             {
               "asin": "1442386444",
               "region": "us"
+            },
+            {
+              "asin": "1004039344",
+              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 44767,
+              "length_ms": 16485,
               "start_ms": 0,
-              "title": "Opening Credits"
+              "title": "Chapter 1"
             },
             {
-              "length_ms": 9218,
-              "start_ms": 44767,
-              "title": "Dedication"
+              "length_ms": 9195,
+              "start_ms": 16485,
+              "title": "Chapter 2"
             },
             {
-              "length_ms": 165744,
-              "start_ms": 53985,
-              "title": "Part One: Little Games"
+              "length_ms": 165836,
+              "start_ms": 25680,
+              "title": "Chapter 3"
             },
             {
-              "length_ms": 3530036,
-              "start_ms": 219729,
-              "title": "Chapter 1: The Bright Web"
+              "length_ms": 3529990,
+              "start_ms": 191516,
+              "title": "Chapter 4"
             },
             {
-              "length_ms": 3148137,
-              "start_ms": 3749765,
-              "title": "Chapter 2: All That Turns"
+              "length_ms": 2414735,
+              "start_ms": 3721506,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 733355,
+              "start_ms": 6136241,
+              "title": "Chapter 6"
             },
             {
               "length_ms": 2925319,
-              "start_ms": 6897902,
-              "title": "Chapter 3: Bitter and Sweet"
+              "start_ms": 6869596,
+              "title": "Chapter 7"
             },
             {
-              "length_ms": 3020776,
-              "start_ms": 9823221,
-              "title": "Chapter 4: A Good Name"
+              "length_ms": 3020730,
+              "start_ms": 9794915,
+              "title": "Chapter 8"
             },
             {
-              "length_ms": 2319579,
-              "start_ms": 12843997,
-              "title": "Chapter 5: The King Is Dead"
+              "length_ms": 2255423,
+              "start_ms": 12815645,
+              "title": "Chapter 9"
             },
             {
-              "length_ms": 2775644,
-              "start_ms": 15163576,
-              "title": "Chapter 6: Things to Come"
+              "length_ms": 64110,
+              "start_ms": 15071068,
+              "title": "Chapter 10"
             },
             {
-              "length_ms": 2770906,
-              "start_ms": 17939220,
-              "title": "Chapter 7: Tread Lightly"
+              "length_ms": 1971049,
+              "start_ms": 15135178,
+              "title": "Chapter 11"
             },
             {
-              "length_ms": 2941991,
-              "start_ms": 20710126,
-              "title": "Chapter 8: To Bring a Fire"
+              "length_ms": 804571,
+              "start_ms": 17106227,
+              "title": "Chapter 12"
             },
             {
-              "length_ms": 2540076,
-              "start_ms": 23652117,
-              "title": "Chapter 9: The Scars Remaining"
+              "length_ms": 2529906,
+              "start_ms": 17910798,
+              "title": "Chapter 13"
             },
             {
-              "length_ms": 3980619,
-              "start_ms": 26192193,
-              "title": "Chapter 10: The Damned Earth"
+              "length_ms": 240953,
+              "start_ms": 20440704,
+              "title": "Chapter 14"
             },
             {
-              "length_ms": 3449463,
-              "start_ms": 30172812,
-              "title": "Chapter 11: Crowns and Pounds and Guineas"
+              "length_ms": 2942014,
+              "start_ms": 20681657,
+              "title": "Chapter 15"
             },
             {
-              "length_ms": 2953136,
-              "start_ms": 33622275,
-              "title": "Chapter 12: Requiem"
+              "length_ms": 2374960,
+              "start_ms": 23623671,
+              "title": "Chapter 16"
             },
             {
-              "length_ms": 2080763,
-              "start_ms": 36575411,
-              "title": "Chapter 13: The Wintry Wind"
+              "length_ms": 165070,
+              "start_ms": 25998631,
+              "title": "Chapter 17"
             },
             {
-              "length_ms": 2737469,
-              "start_ms": 38656174,
-              "title": "Chapter 14: The Flaming Forge"
+              "length_ms": 3363805,
+              "start_ms": 26163701,
+              "title": "Chapter 18"
             },
             {
-              "length_ms": 2352739,
-              "start_ms": 41393643,
-              "title": "Chapter 15: Walk by Daytime"
+              "length_ms": 616768,
+              "start_ms": 29527506,
+              "title": "Chapter 19"
             },
             {
-              "length_ms": 2781262,
-              "start_ms": 43746382,
-              "title": "Chapter 16: Dark Breaks to Dawn"
+              "length_ms": 3309400,
+              "start_ms": 30144274,
+              "title": "Chapter 20"
             },
             {
-              "length_ms": 2930,
-              "start_ms": 46527644,
-              "title": "Part Two: By the Sword"
+              "length_ms": 140062,
+              "start_ms": 33453674,
+              "title": "Chapter 21"
             },
             {
-              "length_ms": 3447206,
-              "start_ms": 46530574,
-              "title": "Chapter 17: Prophet of Evil"
+              "length_ms": 2590302,
+              "start_ms": 33593736,
+              "title": "Chapter 22"
             },
             {
-              "length_ms": 2767655,
-              "start_ms": 49977780,
-              "title": "Chapter 18: Goblin Market"
+              "length_ms": 362765,
+              "start_ms": 36184038,
+              "title": "Chapter 23"
             },
             {
-              "length_ms": 2066646,
-              "start_ms": 52745435,
-              "title": "Chapter 19: Thine Own Palace"
+              "length_ms": 2080740,
+              "start_ms": 36546803,
+              "title": "Chapter 24"
             },
             {
-              "length_ms": 2154950,
-              "start_ms": 54812081,
-              "title": "Chapter 20: Equal Temper"
+              "length_ms": 2737446,
+              "start_ms": 38627543,
+              "title": "Chapter 25"
             },
             {
-              "length_ms": 2043796,
-              "start_ms": 56967031,
-              "title": "Chapter 21: Hell’s Own Track"
+              "length_ms": 2352669,
+              "start_ms": 41364989,
+              "title": "Chapter 26"
             },
             {
-              "length_ms": 2395277,
-              "start_ms": 59010827,
-              "title": "Chapter 22: Heart of Iron"
+              "length_ms": 2688150,
+              "start_ms": 43717658,
+              "title": "Chapter 27"
             },
             {
-              "length_ms": 2534132,
-              "start_ms": 61406104,
-              "title": "Chapter 23: A Silken Thread"
+              "length_ms": 93088,
+              "start_ms": 46405808,
+              "title": "Chapter 28"
             },
             {
-              "length_ms": 2630913,
-              "start_ms": 63940236,
-              "title": "Chapter 24: He Shall Rise"
+              "length_ms": 3450113,
+              "start_ms": 46498896,
+              "title": "Chapter 29"
             },
             {
-              "length_ms": 3593682,
-              "start_ms": 66571149,
-              "title": "Chapter 25: Archangel Ruined"
+              "length_ms": 2767632,
+              "start_ms": 49949009,
+              "title": "Chapter 30"
             },
             {
-              "length_ms": 4217161,
-              "start_ms": 70164831,
-              "title": "Chapter 26: Older Than Gods"
+              "length_ms": 2066599,
+              "start_ms": 52716641,
+              "title": "Chapter 31"
             },
             {
-              "length_ms": 2279455,
-              "start_ms": 74381992,
-              "title": "Chapter 27: Wake with Wings"
+              "length_ms": 1684863,
+              "start_ms": 54783240,
+              "title": "Chapter 32"
             },
             {
-              "length_ms": 1764135,
-              "start_ms": 76661447,
-              "title": "Chapter 28: No Wise Man"
+              "length_ms": 470064,
+              "start_ms": 56468103,
+              "title": "Chapter 33"
             },
             {
-              "length_ms": 3311630,
-              "start_ms": 78425582,
-              "title": "Chapter 29: A Broken Mirror"
+              "length_ms": 2043750,
+              "start_ms": 56938167,
+              "title": "Chapter 34"
             },
             {
-              "length_ms": 228019,
-              "start_ms": 81737212,
-              "title": "Epilogue"
+              "length_ms": 2329332,
+              "start_ms": 58981917,
+              "title": "Chapter 35"
             },
             {
-              "length_ms": 59813,
-              "start_ms": 81965231,
-              "title": "Notes on the Text"
+              "length_ms": 65944,
+              "start_ms": 61311249,
+              "title": "Chapter 36"
             },
             {
-              "length_ms": 1451223,
-              "start_ms": 82025044,
-              "title": "One Must Always Be Careful of Books: A Bonus Story Featuring Magnus and Jem"
+              "length_ms": 2534109,
+              "start_ms": 61377193,
+              "title": "Chapter 37"
             },
             {
-              "length_ms": 90858,
-              "start_ms": 83476267,
-              "title": "End Credits"
+              "length_ms": 2630867,
+              "start_ms": 63911302,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 3593659,
+              "start_ms": 66542169,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 4217092,
+              "start_ms": 70135828,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 2250663,
+              "start_ms": 74352920,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 28769,
+              "start_ms": 76603583,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 1764136,
+              "start_ms": 76632352,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 3311583,
+              "start_ms": 78396488,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 227973,
+              "start_ms": 81708071,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 59744,
+              "start_ms": 81936044,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 1451177,
+              "start_ms": 81995788,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 29326,
+              "start_ms": 83446965,
+              "title": "Chapter 48"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91JTS64HUFL.jpg",
@@ -11408,6 +11490,11 @@
               "imported_at": "2026-08-02",
               "ref": "1442386444",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1004039344",
+              "type": "libex-import"
             }
           ],
           "work": "chain-of-iron"
@@ -11417,6 +11504,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1442386444",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1004039344",
           "type": "libex-import"
         }
       ],
@@ -13130,6 +13222,10 @@
             {
               "asin": "B09ZCNGWZ4",
               "region": "ca"
+            },
+            {
+              "asin": "B0BVD55W2D",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -13374,6 +13470,11 @@
               "imported_at": "2026-08-02",
               "ref": "B09ZCNGWZ4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BVD55W2D",
+              "type": "libex-import"
             }
           ],
           "work": "chain-of-thorns"
@@ -13383,6 +13484,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09ZCCPBB8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BVD55W2D",
           "type": "libex-import"
         }
       ],

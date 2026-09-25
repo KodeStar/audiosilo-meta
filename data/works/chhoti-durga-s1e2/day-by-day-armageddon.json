@@ -5811,13 +5811,167 @@
       ],
       "genres": [
         "action-adventure",
+        "alternate-history",
         "fantasy",
-        "superhero"
+        "paranormal",
+        "science-fiction",
+        "superhero",
+        "urban-fantasy"
       ],
       "id": "day-of-the-destroyer",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "leslie-howard-2017": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B074B99PLZ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19713,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2070662,
+              "start_ms": 19713,
+              "title": "Chapter 01"
+            },
+            {
+              "length_ms": 2131893,
+              "start_ms": 2090375,
+              "title": "Chapter 02"
+            },
+            {
+              "length_ms": 1656558,
+              "start_ms": 4222268,
+              "title": "Chapter 03"
+            },
+            {
+              "length_ms": 1580698,
+              "start_ms": 5878826,
+              "title": "Chapter 04"
+            },
+            {
+              "length_ms": 1468081,
+              "start_ms": 7459524,
+              "title": "Chapter 05"
+            },
+            {
+              "length_ms": 1458259,
+              "start_ms": 8927605,
+              "title": "Chapter 06"
+            },
+            {
+              "length_ms": 1551510,
+              "start_ms": 10385864,
+              "title": "Chapter 07"
+            },
+            {
+              "length_ms": 1550558,
+              "start_ms": 11937374,
+              "title": "Chapter 08"
+            },
+            {
+              "length_ms": 1558198,
+              "start_ms": 13487932,
+              "title": "Chapter 09"
+            },
+            {
+              "length_ms": 1472029,
+              "start_ms": 15046130,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1554738,
+              "start_ms": 16518159,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1524947,
+              "start_ms": 18072897,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1620567,
+              "start_ms": 19597844,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1512710,
+              "start_ms": 21218411,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1712285,
+              "start_ms": 22731121,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1695079,
+              "start_ms": 24443406,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1697007,
+              "start_ms": 26138485,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1583229,
+              "start_ms": 27835492,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1592192,
+              "start_ms": 29418721,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1382446,
+              "start_ms": 31010913,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 909734,
+              "start_ms": 32393359,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 576365,
+              "start_ms": 33303093,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 33807,
+              "start_ms": 33879458,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wzz10kJML.jpg",
+          "id": "leslie-howard-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "leslie-howard"
+          ],
+          "publisher": "Local Hero Press, LLC",
+          "release_date": "2017-07-31",
+          "runtime_min": 565,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B074B99PLZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "day-of-the-destroyer"
+        },
         "leslie-howard-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5974,186 +6128,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0FDBQCVTH",
           "type": "libex-import"
-        }
-      ],
-      "title": "Day of the Destroyer"
-    },
-    "day-of-the-destroyer-a-just-cause-universe-novel-volume-3": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "ian-thomas-healy"
-      ],
-      "genres": [
-        "alternate-history",
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "superhero",
-        "urban-fantasy"
-      ],
-      "id": "day-of-the-destroyer-a-just-cause-universe-novel-volume-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "leslie-howard-2017": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B074B99PLZ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19713,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2070662,
-              "start_ms": 19713,
-              "title": "Chapter 01"
-            },
-            {
-              "length_ms": 2131893,
-              "start_ms": 2090375,
-              "title": "Chapter 02"
-            },
-            {
-              "length_ms": 1656558,
-              "start_ms": 4222268,
-              "title": "Chapter 03"
-            },
-            {
-              "length_ms": 1580698,
-              "start_ms": 5878826,
-              "title": "Chapter 04"
-            },
-            {
-              "length_ms": 1468081,
-              "start_ms": 7459524,
-              "title": "Chapter 05"
-            },
-            {
-              "length_ms": 1458259,
-              "start_ms": 8927605,
-              "title": "Chapter 06"
-            },
-            {
-              "length_ms": 1551510,
-              "start_ms": 10385864,
-              "title": "Chapter 07"
-            },
-            {
-              "length_ms": 1550558,
-              "start_ms": 11937374,
-              "title": "Chapter 08"
-            },
-            {
-              "length_ms": 1558198,
-              "start_ms": 13487932,
-              "title": "Chapter 09"
-            },
-            {
-              "length_ms": 1472029,
-              "start_ms": 15046130,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1554738,
-              "start_ms": 16518159,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1524947,
-              "start_ms": 18072897,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1620567,
-              "start_ms": 19597844,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1512710,
-              "start_ms": 21218411,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1712285,
-              "start_ms": 22731121,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1695079,
-              "start_ms": 24443406,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1697007,
-              "start_ms": 26138485,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1583229,
-              "start_ms": 27835492,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1592192,
-              "start_ms": 29418721,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1382446,
-              "start_ms": 31010913,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 909734,
-              "start_ms": 32393359,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 576365,
-              "start_ms": 33303093,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 33807,
-              "start_ms": 33879458,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wzz10kJML.jpg",
-          "id": "leslie-howard-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "leslie-howard"
-          ],
-          "publisher": "Local Hero Press, LLC",
-          "release_date": "2017-07-31",
-          "runtime_min": 565,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B074B99PLZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "day-of-the-destroyer-a-just-cause-universe-novel-volume-3"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B074B99PLZ",
           "type": "libex-import"
         }
       ],
-      "title": "Day of the Destroyer: A Just Cause Universe Novel, Volume 3"
+      "title": "Day of the Destroyer"
     },
     "day-of-the-dove": {
       "added_at": "2026-07-29",
@@ -7541,143 +7523,13 @@
       ],
       "genres": [
         "action-adventure",
+        "classics",
         "fantasy",
         "paranormal",
         "thriller-suspense",
         "urban-fantasy"
       ],
       "id": "day-of-the-vikings",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "veronica-giguere-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0C4G3Z6SJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16973,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 385311,
-              "start_ms": 16973,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 733634,
-              "start_ms": 402284,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 315605,
-              "start_ms": 1135918,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 634253,
-              "start_ms": 1451523,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 775523,
-              "start_ms": 2085776,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 572952,
-              "start_ms": 2861299,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 942219,
-              "start_ms": 3434251,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 533315,
-              "start_ms": 4376470,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 664021,
-              "start_ms": 4909785,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 678788,
-              "start_ms": 5573806,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 530529,
-              "start_ms": 6252594,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 646745,
-              "start_ms": 6783123,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 305017,
-              "start_ms": 7429868,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 26585,
-              "start_ms": 7734885,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81S7w68Gh2L.jpg",
-          "id": "veronica-giguere-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "veronica-giguere"
-          ],
-          "publisher": "Curl Up Press",
-          "release_date": "2023-05-08",
-          "runtime_min": 129,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0C4G3Z6SJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "day-of-the-vikings"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0C4G3Z6SJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Day of the Vikings"
-    },
-    "day-of-the-vikings-a-thriller": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "j-f-penn"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "fantasy",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "day-of-the-vikings-a-thriller",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -7789,17 +7641,127 @@
               "type": "libex-import"
             }
           ],
-          "work": "day-of-the-vikings-a-thriller"
+          "work": "day-of-the-vikings"
+        },
+        "veronica-giguere-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0C4G3Z6SJ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16973,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 385311,
+              "start_ms": 16973,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 733634,
+              "start_ms": 402284,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 315605,
+              "start_ms": 1135918,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 634253,
+              "start_ms": 1451523,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 775523,
+              "start_ms": 2085776,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 572952,
+              "start_ms": 2861299,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 942219,
+              "start_ms": 3434251,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 533315,
+              "start_ms": 4376470,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 664021,
+              "start_ms": 4909785,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 678788,
+              "start_ms": 5573806,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 530529,
+              "start_ms": 6252594,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 646745,
+              "start_ms": 6783123,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 305017,
+              "start_ms": 7429868,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 26585,
+              "start_ms": 7734885,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81S7w68Gh2L.jpg",
+          "id": "veronica-giguere-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "veronica-giguere"
+          ],
+          "publisher": "Curl Up Press",
+          "release_date": "2023-05-08",
+          "runtime_min": 129,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0C4G3Z6SJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "day-of-the-vikings"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0C4G3Z6SJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B00NLK8RJ2",
           "type": "libex-import"
         }
       ],
-      "title": "Day of the Vikings: A Thriller"
+      "title": "Day of the Vikings"
     },
     "day-of-the-zha-rath": {
       "added_at": "2026-08-02",

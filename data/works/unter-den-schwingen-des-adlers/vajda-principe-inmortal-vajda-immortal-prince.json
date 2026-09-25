@@ -8540,6 +8540,7 @@
       ],
       "genres": [
         "action-adventure",
+        "military-science-fiction",
         "post-apocalyptic",
         "science-fiction"
       ],
@@ -8647,32 +8648,7 @@
             }
           ],
           "work": "valentines-exile"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V8KL5S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Valentine's Exile"
-    },
-    "valentines-exile-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "e-e-knight"
-      ],
-      "genres": [
-        "action-adventure",
-        "military-science-fiction",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "valentines-exile-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -8746,10 +8722,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "valentines-exile-dramatized-adaptation"
+          "work": "valentines-exile"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8KL5S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648815138",
@@ -8761,7 +8742,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Valentine's Exile [Dramatized Adaptation]"
+      "title": "Valentine's Exile"
     },
     "valentines-in-an-apocalypse-a-system-apocalypse-short-story": {
       "added_at": "2026-08-01",
@@ -8979,6 +8960,8 @@
       ],
       "genres": [
         "action-adventure",
+        "horror",
+        "military-science-fiction",
         "post-apocalyptic",
         "science-fiction"
       ],
@@ -9111,33 +9094,7 @@
             }
           ],
           "work": "valentines-resolve"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V0AAS4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Valentine's Resolve"
-    },
-    "valentines-resolve-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "e-e-knight"
-      ],
-      "genres": [
-        "action-adventure",
-        "horror",
-        "military-science-fiction",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "valentines-resolve-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9211,10 +9168,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "valentines-resolve-dramatized-adaptation"
+          "work": "valentines-resolve"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0AAS4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648815154",
@@ -9226,7 +9188,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Valentine's Resolve [Dramatized Adaptation]"
+      "title": "Valentine's Resolve"
     },
     "valentines-rising": {
       "added_at": "2026-08-02",

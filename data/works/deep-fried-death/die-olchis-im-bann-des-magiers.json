@@ -8447,8 +8447,12 @@
         "annabel-chase"
       ],
       "genres": [
+        "comedy-humor",
+        "cozy-mystery",
         "fantasy",
-        "thriller-suspense"
+        "mystery",
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "die-patenfurie",
       "language": "de",
@@ -8460,6 +8464,10 @@
           "asin": [
             {
               "asin": "B0H4SDPK6H",
+              "region": "us"
+            },
+            {
+              "asin": "B0GK9T2GZS",
               "region": "us"
             }
           ],
@@ -8580,6 +8588,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0H4SDPK6H",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GK9T2GZS",
+              "type": "libex-import"
             }
           ],
           "work": "die-patenfurie"
@@ -8590,165 +8603,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0H4SDPK6H",
           "type": "libex-import"
-        }
-      ],
-      "title": "Die Patenfurie"
-    },
-    "die-patenfurie-foderales-buro-fur-magie-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "annabel-chase"
-      ],
-      "genres": [
-        "comedy-humor",
-        "cozy-mystery",
-        "fantasy",
-        "mystery",
-        "urban-fantasy"
-      ],
-      "id": "die-patenfurie-foderales-buro-fur-magie-2",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "verena-geisser-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GK9T2GZS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17600,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 994301,
-              "start_ms": 17600,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 1133064,
-              "start_ms": 1011901,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 1205394,
-              "start_ms": 2144965,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 1411866,
-              "start_ms": 3350359,
-              "title": "Kapitel 4"
-            },
-            {
-              "length_ms": 1231539,
-              "start_ms": 4762225,
-              "title": "Kapitel 5"
-            },
-            {
-              "length_ms": 1592029,
-              "start_ms": 5993764,
-              "title": "Kapitel 6"
-            },
-            {
-              "length_ms": 1311300,
-              "start_ms": 7585793,
-              "title": "Kapitel 7"
-            },
-            {
-              "length_ms": 996623,
-              "start_ms": 8897093,
-              "title": "Kapitel 8"
-            },
-            {
-              "length_ms": 1202097,
-              "start_ms": 9893716,
-              "title": "Kapitel 9"
-            },
-            {
-              "length_ms": 1007397,
-              "start_ms": 11095813,
-              "title": "Kapitel 10"
-            },
-            {
-              "length_ms": 1575288,
-              "start_ms": 12103210,
-              "title": "Kapitel 11"
-            },
-            {
-              "length_ms": 1209109,
-              "start_ms": 13678498,
-              "title": "Kapitel 12"
-            },
-            {
-              "length_ms": 1295650,
-              "start_ms": 14887607,
-              "title": "Kapitel 13"
-            },
-            {
-              "length_ms": 979255,
-              "start_ms": 16183257,
-              "title": "Kapitel 14"
-            },
-            {
-              "length_ms": 1260402,
-              "start_ms": 17162512,
-              "title": "Kapitel 15"
-            },
-            {
-              "length_ms": 1281996,
-              "start_ms": 18422914,
-              "title": "Kapitel 16"
-            },
-            {
-              "length_ms": 637759,
-              "start_ms": 19704910,
-              "title": "Kapitel 17"
-            },
-            {
-              "length_ms": 1094635,
-              "start_ms": 20342669,
-              "title": "Kapitel 18"
-            },
-            {
-              "length_ms": 13490,
-              "start_ms": 21437304,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81OywVnbXNL.jpg",
-          "id": "verena-geisser-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "verena-geisser"
-          ],
-          "publisher": "Red Palm Press LLC",
-          "release_date": "2026-01-28",
-          "runtime_min": 357,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GK9T2GZS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-patenfurie-foderales-buro-fur-magie-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GK9T2GZS",
           "type": "libex-import"
         }
       ],
-      "title": "Die Patenfurie (Föderales Büro für Magie 2)"
+      "title": "Die Patenfurie"
     },
     "die-patin": {
       "added_at": "2026-07-29",
@@ -9246,54 +9108,7 @@
             {
               "asin": "B08XMXK8Z7",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41f5rl+JL4L.jpg",
-          "id": "ida-james-2021",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ida-james"
-          ],
-          "publisher": "Blake Pierce",
-          "release_date": "2021-03-01",
-          "runtime_min": 585,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08XMXK8Z7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "die-perfekte-nachbarin"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08XMXK8Z7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Die Perfekte Nachbarin"
-    },
-    "die-perfekte-nachbarin-the-perfect-neighbor": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "blake-pierce"
-      ],
-      "genres": [
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "die-perfekte-nachbarin-the-perfect-neighbor",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ida-james-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08XMWL1VD",
               "region": "us"
@@ -9509,21 +9324,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08XMXK8Z7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08XMWL1VD",
               "type": "libex-import"
             }
           ],
-          "work": "die-perfekte-nachbarin-the-perfect-neighbor"
+          "work": "die-perfekte-nachbarin"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08XMXK8Z7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08XMWL1VD",
           "type": "libex-import"
         }
       ],
-      "title": "Die Perfekte Nachbarin [The Perfect Neighbor]"
+      "title": "Die Perfekte Nachbarin"
     },
     "die-perfekte-welt": {
       "added_at": "2026-08-02",

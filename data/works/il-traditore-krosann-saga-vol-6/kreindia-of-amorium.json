@@ -7040,7 +7040,14 @@
     "krieger-des-feuers": {
       "added_at": "2026-08-02",
       "authors": [
-        "brandon-sanderson"
+        "brandon-sanderson",
+        "michael-siefener"
+      ],
+      "credits": [
+        {
+          "person": "michael-siefener",
+          "role": "translator"
+        }
       ],
       "genres": [
         "epic-fantasy",
@@ -8049,37 +8056,7 @@
             }
           ],
           "work": "krieger-des-feuers"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00TKMQ882",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Krieger des Feuers"
-    },
-    "krieger-des-feuers-die-nebelgeborenen-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "brandon-sanderson",
-        "michael-siefener"
-      ],
-      "credits": [
-        {
-          "person": "michael-siefener",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "krieger-des-feuers-die-nebelgeborenen-2",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "detlef-bierstedt-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9092,17 +9069,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "krieger-des-feuers-die-nebelgeborenen-2"
+          "work": "krieger-des-feuers"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TKMQ882",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DDYBDYR9",
           "type": "libex-import"
         }
       ],
-      "title": "Krieger des Feuers (Die Nebelgeborenen 2)"
+      "title": "Krieger des Feuers"
     },
     "kriegerin": {
       "added_at": "2026-08-02",

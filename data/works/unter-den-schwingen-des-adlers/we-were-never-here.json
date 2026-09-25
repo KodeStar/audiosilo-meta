@@ -3563,9 +3563,11 @@
       ],
       "genres": [
         "epic-fantasy",
+        "fairy-tales-folklore",
         "fantasy",
         "paranormal",
-        "romance"
+        "romance",
+        "womens-fiction"
       ],
       "id": "we-who-will-die",
       "language": "en",
@@ -3577,6 +3579,10 @@
           "asin": [
             {
               "asin": "B0F79H998R",
+              "region": "us"
+            },
+            {
+              "asin": "B0F6H5SMVK",
               "region": "us"
             }
           ],
@@ -3808,6 +3814,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0F79H998R",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F6H5SMVK",
+              "type": "libex-import"
             }
           ],
           "work": "we-who-will-die"
@@ -3818,276 +3829,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0F79H998R",
           "type": "libex-import"
-        }
-      ],
-      "title": "We Who Will Die"
-    },
-    "we-who-will-die-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "stacia-stark"
-      ],
-      "genres": [
-        "fairy-tales-folklore",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "we-who-will-die-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "meg-sylvan-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0F6H5SMVK",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18273,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 11075,
-              "start_ms": 18273,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 1614181,
-              "start_ms": 29348,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 1393174,
-              "start_ms": 1643529,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1112630,
-              "start_ms": 3036703,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 2190616,
-              "start_ms": 4149333,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 1783826,
-              "start_ms": 6339949,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 1881907,
-              "start_ms": 8123775,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 728944,
-              "start_ms": 10005682,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 2663653,
-              "start_ms": 10734626,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 1741241,
-              "start_ms": 13398279,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 1642742,
-              "start_ms": 15139520,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 1144186,
-              "start_ms": 16782262,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 1036515,
-              "start_ms": 17926448,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1280626,
-              "start_ms": 18962963,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 2409534,
-              "start_ms": 20243589,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 3408155,
-              "start_ms": 22653123,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 880152,
-              "start_ms": 26061278,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 1621519,
-              "start_ms": 26941430,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 2121560,
-              "start_ms": 28562949,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 963117,
-              "start_ms": 30684509,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 1749368,
-              "start_ms": 31647626,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 1061175,
-              "start_ms": 33396994,
-              "title": "Chapter Twenty-One"
-            },
-            {
-              "length_ms": 2646029,
-              "start_ms": 34458169,
-              "title": "Chapter Twenty-Two"
-            },
-            {
-              "length_ms": 1273150,
-              "start_ms": 37104198,
-              "title": "Chapter Twenty-Three"
-            },
-            {
-              "length_ms": 1541479,
-              "start_ms": 38377348,
-              "title": "Chapter Twenty-Four"
-            },
-            {
-              "length_ms": 1777835,
-              "start_ms": 39918827,
-              "title": "Chapter Twenty-Five"
-            },
-            {
-              "length_ms": 3812855,
-              "start_ms": 41696662,
-              "title": "Chapter Twenty-Six"
-            },
-            {
-              "length_ms": 1349334,
-              "start_ms": 45509517,
-              "title": "Chapter Twenty-Seven"
-            },
-            {
-              "length_ms": 984108,
-              "start_ms": 46858851,
-              "title": "Chapter Twenty-Eight"
-            },
-            {
-              "length_ms": 2197977,
-              "start_ms": 47842959,
-              "title": "Chapter Twenty-Nine"
-            },
-            {
-              "length_ms": 1209875,
-              "start_ms": 50040936,
-              "title": "Chapter Thirty"
-            },
-            {
-              "length_ms": 931096,
-              "start_ms": 51250811,
-              "title": "Chapter Thirty-One"
-            },
-            {
-              "length_ms": 889811,
-              "start_ms": 52181907,
-              "title": "Chapter Thirty-Two"
-            },
-            {
-              "length_ms": 893434,
-              "start_ms": 53071718,
-              "title": "Chapter Thirty-Three"
-            },
-            {
-              "length_ms": 1603639,
-              "start_ms": 53965152,
-              "title": "Chapter Thirty-Four"
-            },
-            {
-              "length_ms": 981879,
-              "start_ms": 55568791,
-              "title": "Chapter Thirty-Five"
-            },
-            {
-              "length_ms": 458245,
-              "start_ms": 56550670,
-              "title": "Chapter Thirty-Six"
-            },
-            {
-              "length_ms": 1129906,
-              "start_ms": 57008915,
-              "title": "Chapter Thirty-Seven"
-            },
-            {
-              "length_ms": 2942432,
-              "start_ms": 58138821,
-              "title": "Chapter Thirty-Eight"
-            },
-            {
-              "length_ms": 775082,
-              "start_ms": 61081253,
-              "title": "Chapter Thirty-Nine"
-            },
-            {
-              "length_ms": 80549,
-              "start_ms": 61856335,
-              "title": "Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81yroairCpL.jpg",
-          "id": "meg-sylvan-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "meg-sylvan",
-            "troy-duran"
-          ],
-          "publisher": "Avon",
-          "release_date": "2025-12-30",
-          "runtime_min": 1032,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F6H5SMVK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "we-who-will-die-a-novel"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F6H5SMVK",
           "type": "libex-import"
         }
       ],
-      "title": "We Who Will Die: A Novel"
+      "title": "We Who Will Die"
     },
     "we-who-will-die-the-vampire-diaries-meets-gladiator-in-einer-romantic-fantasy-voll-todlicher-wettkam": {
       "added_at": "2026-08-02",

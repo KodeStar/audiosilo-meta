@@ -1306,94 +1306,12 @@
         "louis-lamour"
       ],
       "genres": [
-        "historical-fiction"
-      ],
-      "id": "treasure-mountain",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-strathairn-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1BJEW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4318214,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4017516,
-              "start_ms": 4318214,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4065303,
-              "start_ms": 8335730,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3821261,
-              "start_ms": 12401033,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4595507,
-              "start_ms": 16222294,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2244672,
-              "start_ms": 20817801,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91P8piKyP5L.jpg",
-          "id": "david-strathairn-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-strathairn"
-          ],
-          "publisher": "RH Audio",
-          "release_date": "2008-01-08",
-          "runtime_min": 384,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1BJEW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "treasure-mountain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V1BJEW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Treasure Mountain"
-    },
-    "treasure-mountain-the-sacketts": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "louis-lamour"
-      ],
-      "genres": [
         "action-adventure",
         "education",
         "historical-fiction",
         "westerns"
       ],
-      "id": "treasure-mountain-the-sacketts",
+      "id": "treasure-mountain",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1575,17 +1493,82 @@
               "type": "libex-import"
             }
           ],
-          "work": "treasure-mountain-the-sacketts"
+          "work": "treasure-mountain"
+        },
+        "david-strathairn-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1BJEW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4318214,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4017516,
+              "start_ms": 4318214,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4065303,
+              "start_ms": 8335730,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3821261,
+              "start_ms": 12401033,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4595507,
+              "start_ms": 16222294,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2244672,
+              "start_ms": 20817801,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91P8piKyP5L.jpg",
+          "id": "david-strathairn-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-strathairn"
+          ],
+          "publisher": "RH Audio",
+          "release_date": "2008-01-08",
+          "runtime_min": 384,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1BJEW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "treasure-mountain"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1BJEW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZLB0Q",
           "type": "libex-import"
         }
       ],
-      "title": "Treasure Mountain: The Sacketts"
+      "title": "Treasure Mountain"
     },
     "treasure-octavia-randolph": {
       "added_at": "2026-07-29",

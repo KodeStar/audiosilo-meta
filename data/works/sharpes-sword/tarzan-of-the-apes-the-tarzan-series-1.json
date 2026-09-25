@@ -3778,6 +3778,7 @@
         "edgar-rice-burroughs"
       ],
       "genres": [
+        "action-adventure",
         "classics"
       ],
       "id": "tarzan-the-untamed",
@@ -4253,30 +4254,7 @@
             }
           ],
           "work": "tarzan-the-untamed"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V1OODK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tarzan the Untamed"
-    },
-    "tarzan-the-untamed-tarzan-series-7": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edgar-rice-burroughs"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "tarzan-the-untamed-tarzan-series-7",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "peter-silverleaf-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6005,17 +5983,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "tarzan-the-untamed-tarzan-series-7"
+          "work": "tarzan-the-untamed"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1OODK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0C2CYPBDB",
           "type": "libex-import"
         }
       ],
-      "title": "Tarzan the Untamed: Tarzan Series 7"
+      "title": "Tarzan the Untamed"
     },
     "tarzan-trilogy": {
       "added_at": "2026-08-02",

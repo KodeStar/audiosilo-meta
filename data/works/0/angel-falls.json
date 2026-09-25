@@ -8960,8 +8960,10 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
         "mystery",
-        "thriller-suspense"
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "angel-of-death-jack-higgins",
       "language": "en",
@@ -9076,33 +9078,7 @@
             }
           ],
           "work": "angel-of-death-jack-higgins"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01I5PALAA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Angel of Death"
-    },
-    "angel-of-death-sean-dillon-book-4": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jack-higgins"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "mystery",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "angel-of-death-sean-dillon-book-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "michael-page-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9211,17 +9187,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "angel-of-death-sean-dillon-book-4"
+          "work": "angel-of-death-jack-higgins"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01I5PALAA",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B003E1BSQM",
           "type": "libex-import"
         }
       ],
-      "title": "Angel of Death: Sean Dillon, Book 4"
+      "title": "Angel of Death"
     },
     "angel-of-embers-german-edition": {
       "added_at": "2026-08-02",

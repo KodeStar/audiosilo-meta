@@ -3070,7 +3070,9 @@
         "comedy-humor",
         "coming-of-age",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "urban-fantasy",
+        "young-adult"
       ],
       "id": "soulbinder",
       "language": "en",
@@ -3087,6 +3089,10 @@
             {
               "asin": "B07L4274G8",
               "region": "uk"
+            },
+            {
+              "asin": "1471408108",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -3471,6 +3477,11 @@
               "imported_at": "2026-08-02",
               "ref": "B07L4274G8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1471408108",
+              "type": "libex-import"
             }
           ],
           "work": "soulbinder"
@@ -3480,6 +3491,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B07L4BVKBR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1471408108",
           "type": "libex-import"
         }
       ],

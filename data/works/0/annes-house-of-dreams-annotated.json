@@ -9216,7 +9216,11 @@
       ],
       "genres": [
         "action-adventure",
+        "classics",
+        "dystopian",
+        "horror",
         "literary-fiction",
+        "post-apocalyptic",
         "science-fiction",
         "thriller-suspense"
       ],
@@ -9231,38 +9235,52 @@
             {
               "asin": "B00IEAPH4W",
               "region": "us"
+            },
+            {
+              "asin": "B00HYG9KMC",
+              "region": "us"
             }
           ],
           "chapters": [
             {
-              "length_ms": 11911,
+              "length_ms": 15359,
               "start_ms": 0,
               "title": "Opening Credits"
             },
             {
-              "length_ms": 3801038,
-              "start_ms": 11911,
-              "title": "01: Initiation"
+              "length_ms": 676595,
+              "start_ms": 15359,
+              "title": "Introduction"
             },
             {
-              "length_ms": 5603114,
-              "start_ms": 3812949,
-              "title": "02: Integration"
+              "length_ms": 3800944,
+              "start_ms": 691954,
+              "title": "1: Initiation"
             },
             {
-              "length_ms": 3630626,
-              "start_ms": 9416063,
-              "title": "03: Immolation"
+              "length_ms": 5603299,
+              "start_ms": 4492898,
+              "title": "2: Integration"
             },
             {
-              "length_ms": 3740502,
-              "start_ms": 13046689,
-              "title": "04: Immersion"
+              "length_ms": 3630764,
+              "start_ms": 10096197,
+              "title": "3: Immolation"
             },
             {
-              "length_ms": 4831329,
-              "start_ms": 16787191,
-              "title": "05: Dissolution"
+              "length_ms": 3740641,
+              "start_ms": 13726961,
+              "title": "4: Immersion"
+            },
+            {
+              "length_ms": 4774618,
+              "start_ms": 17467602,
+              "title": "5: Dissolution"
+            },
+            {
+              "length_ms": 58591,
+              "start_ms": 22242220,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51VOBJgsDmL.jpg",
@@ -9280,6 +9298,66 @@
               "imported_at": "2026-08-02",
               "ref": "B00IEAPH4W",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00HYG9KMC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "annihilation-jeff-vandermeer"
+        },
+        "carolyn-mccormick-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07CG9WXBF",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3813506,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 5603300,
+              "start_ms": 3813506,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3630811,
+              "start_ms": 9416806,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3740688,
+              "start_ms": 13047617,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4833280,
+              "start_ms": 16788305,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71zrhXAUHuL.jpg",
+          "id": "carolyn-mccormick-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carolyn-mccormick"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2018-04-17",
+          "runtime_min": 360,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07CG9WXBF",
+              "type": "libex-import"
             }
           ],
           "work": "annihilation-jeff-vandermeer"
@@ -9289,6 +9367,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00IEAPH4W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00HYG9KMC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07CG9WXBF",
           "type": "libex-import"
         }
       ],
@@ -9918,102 +10006,6 @@
       ],
       "title": "Annihilation Road"
     },
-    "annihilation-southern-reach-trilogy-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jeff-vandermeer"
-      ],
-      "genres": [
-        "dystopian",
-        "horror",
-        "literary-fiction",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "annihilation-southern-reach-trilogy-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carolyn-mccormick-2014": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00HYG9KMC",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15359,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 676595,
-              "start_ms": 15359,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 3800944,
-              "start_ms": 691954,
-              "title": "1: Initiation"
-            },
-            {
-              "length_ms": 5603299,
-              "start_ms": 4492898,
-              "title": "2: Integration"
-            },
-            {
-              "length_ms": 3630764,
-              "start_ms": 10096197,
-              "title": "3: Immolation"
-            },
-            {
-              "length_ms": 3740641,
-              "start_ms": 13726961,
-              "title": "4: Immersion"
-            },
-            {
-              "length_ms": 4774618,
-              "start_ms": 17467602,
-              "title": "5: Dissolution"
-            },
-            {
-              "length_ms": 58591,
-              "start_ms": 22242220,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Ss1m6iZKL.jpg",
-          "id": "carolyn-mccormick-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carolyn-mccormick"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2014-02-04",
-          "runtime_min": 371,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00HYG9KMC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "annihilation-southern-reach-trilogy-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00HYG9KMC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Annihilation: Southern Reach Trilogy, Book 1"
-    },
     "annihilation-star-force-book-7": {
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
@@ -10512,86 +10504,6 @@
         }
       ],
       "title": "Annihilation: Star Wars: The Old Republic, Book 4"
-    },
-    "annihilation-the-southern-reach-trilogy-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jeff-vandermeer"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "post-apocalyptic",
-        "science-fiction"
-      ],
-      "id": "annihilation-the-southern-reach-trilogy-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carolyn-mccormick-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07CG9WXBF",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3813506,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 5603300,
-              "start_ms": 3813506,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3630811,
-              "start_ms": 9416806,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3740688,
-              "start_ms": 13047617,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4833280,
-              "start_ms": 16788305,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71zrhXAUHuL.jpg",
-          "id": "carolyn-mccormick-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carolyn-mccormick"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2018-04-17",
-          "runtime_min": 360,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07CG9WXBF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "annihilation-the-southern-reach-trilogy-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07CG9WXBF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Annihilation: The Southern Reach Trilogy, Book 1"
     },
     "annihilation-tommys-tale": {
       "added_at": "2026-08-01",

@@ -4009,6 +4009,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648805736",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4415297,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4002284,
+              "start_ms": 4415297,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3969381,
+              "start_ms": 8417581,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4169026,
+              "start_ms": 12386962,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4462665,
+              "start_ms": 16555988,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91h4wiURv3L.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 351,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648805736",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648805736",
+              "type": "libex-import"
+            }
+          ],
+          "work": "law-of-the-mountain-man"
+        },
         "j-rodney-turner-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4185,86 +4245,7 @@
           "imported_at": "2026-07-29",
           "ref": "1541432681",
           "type": "libex-import"
-        }
-      ],
-      "title": "Law of the Mountain Man"
-    },
-    "law-of-the-mountain-man-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "law-of-the-mountain-man-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648805736",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4415297,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4002284,
-              "start_ms": 4415297,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3969381,
-              "start_ms": 8417581,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4169026,
-              "start_ms": 12386962,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4462665,
-              "start_ms": 16555988,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91h4wiURv3L.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 351,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648805736",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648805736",
-              "type": "libex-import"
-            }
-          ],
-          "work": "law-of-the-mountain-man-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648805736",
@@ -4276,7 +4257,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Law of the Mountain Man [Dramatized Adaptation]"
+      "title": "Law of the Mountain Man"
     },
     "law-school-for-everyone": {
       "added_at": "2026-07-29",

@@ -4402,12 +4402,203 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "young-adult"
       ],
       "id": "storms",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "tanya-eby-2018": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B079SFVS5N",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 13978,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 13653,
+              "start_ms": 13978,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 970966,
+              "start_ms": 27631,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1583229,
+              "start_ms": 998597,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1601666,
+              "start_ms": 2581826,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1458167,
+              "start_ms": 4183492,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1780553,
+              "start_ms": 5641659,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1575567,
+              "start_ms": 7422212,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1836884,
+              "start_ms": 8997779,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1429653,
+              "start_ms": 10834663,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2100570,
+              "start_ms": 12264316,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1019077,
+              "start_ms": 14364886,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1444885,
+              "start_ms": 15383963,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1576356,
+              "start_ms": 16828848,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1137313,
+              "start_ms": 18405204,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1235162,
+              "start_ms": 19542517,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 655639,
+              "start_ms": 20777679,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1292701,
+              "start_ms": 21433318,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1398399,
+              "start_ms": 22726019,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1149481,
+              "start_ms": 24124418,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1587502,
+              "start_ms": 25273899,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1098582,
+              "start_ms": 26861401,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1583462,
+              "start_ms": 27959983,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1466990,
+              "start_ms": 29543445,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1132948,
+              "start_ms": 31010435,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 939386,
+              "start_ms": 32143383,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1020192,
+              "start_ms": 33082769,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 915656,
+              "start_ms": 34102961,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1124589,
+              "start_ms": 35018617,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 814277,
+              "start_ms": 36143206,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 104072,
+              "start_ms": 36957483,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 39474,
+              "start_ms": 37061555,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A12rQX+WQKL.jpg",
+          "id": "tanya-eby-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tanya-eby"
+          ],
+          "publisher": "Blunder Woman Productions",
+          "release_date": "2018-02-15",
+          "runtime_min": 618,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B079SFVS5N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "storms"
+        },
         "tanya-eby-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4623,6 +4814,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0BH9H9SYZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B079SFVS5N",
           "type": "libex-import"
         }
       ],
@@ -8438,220 +8634,6 @@
         }
       ],
       "title": "Storms & Sacrifice"
-    },
-    "storms-sharani-series-book-2": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "kevin-l-nielsen"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "storms-sharani-series-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tanya-eby-2018": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B079SFVS5N",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 13978,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 13653,
-              "start_ms": 13978,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 970966,
-              "start_ms": 27631,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1583229,
-              "start_ms": 998597,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1601666,
-              "start_ms": 2581826,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1458167,
-              "start_ms": 4183492,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1780553,
-              "start_ms": 5641659,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1575567,
-              "start_ms": 7422212,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1836884,
-              "start_ms": 8997779,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1429653,
-              "start_ms": 10834663,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2100570,
-              "start_ms": 12264316,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1019077,
-              "start_ms": 14364886,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1444885,
-              "start_ms": 15383963,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1576356,
-              "start_ms": 16828848,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1137313,
-              "start_ms": 18405204,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1235162,
-              "start_ms": 19542517,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 655639,
-              "start_ms": 20777679,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1292701,
-              "start_ms": 21433318,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1398399,
-              "start_ms": 22726019,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1149481,
-              "start_ms": 24124418,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1587502,
-              "start_ms": 25273899,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1098582,
-              "start_ms": 26861401,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1583462,
-              "start_ms": 27959983,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1466990,
-              "start_ms": 29543445,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1132948,
-              "start_ms": 31010435,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 939386,
-              "start_ms": 32143383,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1020192,
-              "start_ms": 33082769,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 915656,
-              "start_ms": 34102961,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1124589,
-              "start_ms": 35018617,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 814277,
-              "start_ms": 36143206,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 104072,
-              "start_ms": 36957483,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 39474,
-              "start_ms": 37061555,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A12rQX+WQKL.jpg",
-          "id": "tanya-eby-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tanya-eby"
-          ],
-          "publisher": "Blunder Woman Productions",
-          "release_date": "2018-02-15",
-          "runtime_min": 618,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B079SFVS5N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "storms-sharani-series-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B079SFVS5N",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Storms: Sharani Series, Book 2"
     },
     "storms-the-black-tower-book-9": {
       "added_at": "2026-08-01",

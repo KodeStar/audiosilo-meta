@@ -5059,6 +5059,81 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648793460",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4351744,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3741408,
+              "start_ms": 4351744,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4123074,
+              "start_ms": 8093152,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3828622,
+              "start_ms": 12216226,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3786919,
+              "start_ms": 16044848,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3562359,
+              "start_ms": 19831767,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3436971,
+              "start_ms": 23394126,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3272758,
+              "start_ms": 26831097,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81t8X4qAsgL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 502,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648793460",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648793460",
+              "type": "libex-import"
+            }
+          ],
+          "work": "saint-city-sinners"
+        },
         "tanya-eby-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5270,101 +5345,7 @@
           "imported_at": "2026-08-02",
           "ref": "B008H2JFD6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Saint City Sinners"
-    },
-    "saint-city-sinners-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "lilith-saintcrow"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "saint-city-sinners-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648793460",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4351744,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3741408,
-              "start_ms": 4351744,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4123074,
-              "start_ms": 8093152,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3828622,
-              "start_ms": 12216226,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3786919,
-              "start_ms": 16044848,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3562359,
-              "start_ms": 19831767,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3436971,
-              "start_ms": 23394126,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3272758,
-              "start_ms": 26831097,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81t8X4qAsgL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 502,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648793460",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648793460",
-              "type": "libex-import"
-            }
-          ],
-          "work": "saint-city-sinners-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648793460",
@@ -5376,7 +5357,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Saint City Sinners [Dramatized Adaptation]"
+      "title": "Saint City Sinners"
     },
     "saint-death": {
       "added_at": "2026-08-01",

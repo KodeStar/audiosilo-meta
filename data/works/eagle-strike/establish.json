@@ -4900,6 +4900,10 @@
             {
               "asin": "8491054081",
               "region": "es"
+            },
+            {
+              "asin": "B07CB1ZFDD",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5009,6 +5013,11 @@
               "imported_at": "2026-07-29",
               "ref": "8491054081",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07CB1ZFDD",
+              "type": "libex-import"
             }
           ],
           "work": "estudio-en-escarlata"
@@ -5019,69 +5028,14 @@
           "imported_at": "2026-07-29",
           "ref": "8491054081",
           "type": "libex-import"
-        }
-      ],
-      "title": "Estudio en escarlata"
-    },
-    "estudio-en-escarlata-a-study-in-scarlet": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ignacio-gomez-calvo",
-        "arthur-conan-doyle",
-        "nestor-busquets-tusquets"
-      ],
-      "credits": [
-        {
-          "person": "nestor-busquets-tusquets",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "estudio-en-escarlata-a-study-in-scarlet",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jordi-salas-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07CB1ZFDD",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71gOa1j9mQL.jpg",
-          "id": "jordi-salas-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jordi-salas"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2018-04-12",
-          "runtime_min": 276,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07CB1ZFDD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "estudio-en-escarlata-a-study-in-scarlet"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07CB1ZFDD",
           "type": "libex-import"
         }
       ],
-      "title": "Estudio en escarlata [A Study in Scarlet]"
+      "title": "Estudio en escarlata"
     },
     "estupor-y-temblores": {
       "added_at": "2026-07-29",

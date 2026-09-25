@@ -12899,12 +12899,83 @@
         "epic-fantasy",
         "fantasy",
         "paranormal",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "spellsinger",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648810160",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4356736,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3857461,
+              "start_ms": 4356736,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4027059,
+              "start_ms": 8214197,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4242378,
+              "start_ms": 12241256,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4056456,
+              "start_ms": 16483634,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3991022,
+              "start_ms": 20540090,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4389801,
+              "start_ms": 24531112,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kOo6nlEbL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 482,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648810160",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648810160",
+              "type": "libex-import"
+            }
+          ],
+          "work": "spellsinger"
+        },
         "tim-campbell-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13061,98 +13132,7 @@
           "imported_at": "2026-08-02",
           "ref": "B09MG7VFNR",
           "type": "libex-import"
-        }
-      ],
-      "title": "Spellsinger"
-    },
-    "spellsinger-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "alan-dean-foster"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "spellsinger-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648810160",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4356736,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3857461,
-              "start_ms": 4356736,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4027059,
-              "start_ms": 8214197,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4242378,
-              "start_ms": 12241256,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4056456,
-              "start_ms": 16483634,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3991022,
-              "start_ms": 20540090,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4389801,
-              "start_ms": 24531112,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kOo6nlEbL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 482,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648810160",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648810160",
-              "type": "libex-import"
-            }
-          ],
-          "work": "spellsinger-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648810160",
@@ -13164,7 +13144,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Spellsinger [Dramatized Adaptation]"
+      "title": "Spellsinger"
     },
     "spellslinger": {
       "added_at": "2026-08-02",
@@ -13800,398 +13780,6 @@
         }
       ],
       "title": "Spellslinger 1"
-    },
-    "spellslinger-4-soulbinder": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sebastien-de-castell"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "epic-fantasy",
-        "fantasy",
-        "urban-fantasy",
-        "young-adult"
-      ],
-      "id": "spellslinger-4-soulbinder",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joe-jameson-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1471408108",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 810097,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 562131,
-              "start_ms": 810097,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1358390,
-              "start_ms": 1372228,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 279010,
-              "start_ms": 2730618,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 454228,
-              "start_ms": 3009628,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 507959,
-              "start_ms": 3463856,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 198716,
-              "start_ms": 3971815,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 905229,
-              "start_ms": 4170531,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 304204,
-              "start_ms": 5075760,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 272857,
-              "start_ms": 5379964,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 420048,
-              "start_ms": 5652821,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 300001,
-              "start_ms": 6072869,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 308639,
-              "start_ms": 6372870,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 284862,
-              "start_ms": 6681509,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 252493,
-              "start_ms": 6966371,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 944076,
-              "start_ms": 7218864,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 740809,
-              "start_ms": 8162940,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 528973,
-              "start_ms": 8903749,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 662674,
-              "start_ms": 9432722,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 402401,
-              "start_ms": 10095396,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 323384,
-              "start_ms": 10497797,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1078218,
-              "start_ms": 10821181,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 418957,
-              "start_ms": 11899399,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 511419,
-              "start_ms": 12318356,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 834525,
-              "start_ms": 12829775,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 843162,
-              "start_ms": 13664300,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 350899,
-              "start_ms": 14507462,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 749168,
-              "start_ms": 14858361,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1412423,
-              "start_ms": 15607529,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 588509,
-              "start_ms": 17019952,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 222238,
-              "start_ms": 17608461,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 462286,
-              "start_ms": 17830699,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 866870,
-              "start_ms": 18292985,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 874324,
-              "start_ms": 19159855,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 664880,
-              "start_ms": 20034179,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 705700,
-              "start_ms": 20699059,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 659353,
-              "start_ms": 21404759,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 1046546,
-              "start_ms": 22064112,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 635971,
-              "start_ms": 23110658,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 553424,
-              "start_ms": 23746629,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 917908,
-              "start_ms": 24300053,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 882265,
-              "start_ms": 25217961,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 430567,
-              "start_ms": 26100226,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 743084,
-              "start_ms": 26530793,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 412595,
-              "start_ms": 27273877,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 486458,
-              "start_ms": 27686472,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 1068628,
-              "start_ms": 28172930,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 739346,
-              "start_ms": 29241558,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 584678,
-              "start_ms": 29980904,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 906716,
-              "start_ms": 30565582,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 564012,
-              "start_ms": 31472298,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 650599,
-              "start_ms": 32036310,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 1447230,
-              "start_ms": 32686909,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 1105618,
-              "start_ms": 34134139,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 471945,
-              "start_ms": 35239757,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 158685,
-              "start_ms": 35711702,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 369475,
-              "start_ms": 35870387,
-              "title": "Chapter 57"
-            },
-            {
-              "length_ms": 790732,
-              "start_ms": 36239862,
-              "title": "Chapter 58"
-            },
-            {
-              "length_ms": 510955,
-              "start_ms": 37030594,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 536102,
-              "start_ms": 37541549,
-              "title": "Chapter 60"
-            },
-            {
-              "length_ms": 319297,
-              "start_ms": 38077651,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 879873,
-              "start_ms": 38396948,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 426550,
-              "start_ms": 39276821,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 851870,
-              "start_ms": 39703371,
-              "title": "Chapter 64"
-            },
-            {
-              "length_ms": 692372,
-              "start_ms": 40555241,
-              "title": "Chapter 65"
-            },
-            {
-              "length_ms": 478632,
-              "start_ms": 41247613,
-              "title": "Chapter 66"
-            },
-            {
-              "length_ms": 367107,
-              "start_ms": 41726245,
-              "title": "Chapter 67"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FTLEG1kES.jpg",
-          "id": "joe-jameson-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joe-jameson"
-          ],
-          "publisher": "Hot Key Books",
-          "release_date": "2018-10-04",
-          "runtime_min": 701,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1471408108",
-              "type": "libex-import"
-            }
-          ],
-          "work": "spellslinger-4-soulbinder"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1471408108",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Spellslinger 4: Soulbinder"
     }
   }
 }

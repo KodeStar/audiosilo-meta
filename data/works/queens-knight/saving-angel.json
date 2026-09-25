@@ -1175,12 +1175,126 @@
         "mark-mulle"
       ],
       "genres": [
-        "childrens"
+        "childrens",
+        "fairy-tales-folklore",
+        "fantasy",
+        "mythology",
+        "travel"
       ],
       "id": "saving-camelot",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-van-der-molen-2021": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B096H5ZK11",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15348,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 59234,
+              "start_ms": 15348,
+              "title": "Disclaimer"
+            },
+            {
+              "length_ms": 656544,
+              "start_ms": 74582,
+              "title": "Chapter 1: What's Minecraft?"
+            },
+            {
+              "length_ms": 1361014,
+              "start_ms": 731126,
+              "title": "Chapter 2: A True Hero"
+            },
+            {
+              "length_ms": 1921288,
+              "start_ms": 2092140,
+              "title": "Chapter 3: Arthur Steve"
+            },
+            {
+              "length_ms": 1708919,
+              "start_ms": 4013428,
+              "title": "Chapter 4: Pig-a-sode, The Sequel"
+            },
+            {
+              "length_ms": 523308,
+              "start_ms": 5722347,
+              "title": "Chapter 5: Trevor Trevor"
+            },
+            {
+              "length_ms": 1225595,
+              "start_ms": 6245655,
+              "title": "Chapter 6: Keenan's Report"
+            },
+            {
+              "length_ms": 549709,
+              "start_ms": 7471250,
+              "title": "Chapter 7: Before the Storm"
+            },
+            {
+              "length_ms": 633231,
+              "start_ms": 8020959,
+              "title": "Chapter 8: Looking Down"
+            },
+            {
+              "length_ms": 690561,
+              "start_ms": 8654190,
+              "title": "Chapter 9: A Chungus Amongus"
+            },
+            {
+              "length_ms": 1078125,
+              "start_ms": 9344751,
+              "title": "Chapter 10: The Assault"
+            },
+            {
+              "length_ms": 716730,
+              "start_ms": 10422876,
+              "title": "Chapter 11: Tulips and Daisies"
+            },
+            {
+              "length_ms": 322780,
+              "start_ms": 11139606,
+              "title": "Chapter 12: A Fond Farewell"
+            },
+            {
+              "length_ms": 24148,
+              "start_ms": 11462386,
+              "title": "Closing Announcement"
+            },
+            {
+              "length_ms": 17414,
+              "start_ms": 11486534,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912gqx96o3S.jpg",
+          "id": "david-van-der-molen-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-van-der-molen"
+          ],
+          "publisher": "Scroppkr LLC",
+          "release_date": "2021-06-03",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B096H5ZK11",
+              "type": "libex-import"
+            }
+          ],
+          "work": "saving-camelot"
+        },
         "david-van-der-molen-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1296,6 +1410,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0D1W7RYFH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B096H5ZK11",
           "type": "libex-import"
         }
       ],

@@ -2324,12 +2324,120 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
-        "science-fiction"
+        "paranormal",
+        "science-fiction",
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "barren",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "colin-mace-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07FTJTH1Y",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2565804,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3024538,
+              "start_ms": 2565804,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2799537,
+              "start_ms": 5590342,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2723654,
+              "start_ms": 8389879,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2404658,
+              "start_ms": 11113533,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Ru0d69eBL.jpg",
+          "id": "colin-mace-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "colin-mace"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2018-09-20",
+          "runtime_min": 225,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07FTJTH1Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "barren"
+        },
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1645418499",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3653659,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2876348,
+              "start_ms": 3653659,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4017051,
+              "start_ms": 6530007,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81kv6lL0v8L.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 176,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645418499",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645418499",
+              "type": "libex-import"
+            }
+          ],
+          "work": "barren"
+        },
         "xe-sands-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2391,77 +2499,7 @@
           "imported_at": "2026-08-02",
           "ref": "0062850768",
           "type": "libex-import"
-        }
-      ],
-      "title": "Barren"
-    },
-    "barren-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "peter-v-brett"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "barren-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1645418499",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3653659,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2876348,
-              "start_ms": 3653659,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4017051,
-              "start_ms": 6530007,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81kv6lL0v8L.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 176,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1645418499",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1645418499",
-              "type": "libex-import"
-            }
-          ],
-          "work": "barren-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1645418499",
@@ -2471,91 +2509,14 @@
           "imported_at": "2026-07-30",
           "ref": "1645418499",
           "type": "libex-import"
-        }
-      ],
-      "title": "Barren [Dramatized Adaptation]"
-    },
-    "barren-novella": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "peter-v-brett"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "paranormal",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "barren-novella",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "colin-mace-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07FTJTH1Y",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2565804,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3024538,
-              "start_ms": 2565804,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2799537,
-              "start_ms": 5590342,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2723654,
-              "start_ms": 8389879,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2404658,
-              "start_ms": 11113533,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Ru0d69eBL.jpg",
-          "id": "colin-mace-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "colin-mace"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2018-09-20",
-          "runtime_min": 225,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07FTJTH1Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "barren-novella"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07FTJTH1Y",
           "type": "libex-import"
         }
       ],
-      "title": "Barren (Novella)"
+      "title": "Barren"
     },
     "barrenlands": {
       "added_at": "2026-08-02",

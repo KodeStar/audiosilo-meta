@@ -2799,6 +2799,7 @@
       "authors": [
         "jeff-kinney"
       ],
+      "first_published": "2009",
       "genres": [
         "childrens",
         "comedy-humor",
@@ -3052,6 +3053,68 @@
             }
           ],
           "work": "the-last-straw-jeff-kinney"
+        },
+        "dan-russell-2020": {
+          "added_at": "2026-07-12T19:06:31+01:00",
+          "asin": [
+            {
+              "asin": "B07B7PV4ZT",
+              "region": "uk"
+            },
+            {
+              "asin": "B07B7QJH5W",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2631331,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1830939,
+              "start_ms": 2631331,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1496549,
+              "start_ms": 4462270,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1432183,
+              "start_ms": 5958819,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2091769,
+              "start_ms": 7391002,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/616A-AtSCSL._SL500_.jpg",
+          "id": "dan-russell-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-russell"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2020",
+          "runtime_min": 157,
+          "sources": [
+            {
+              "ref": "B07B7PV4ZT",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B07B7QJH5W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-last-straw-jeff-kinney"
         }
       },
       "sources": [
@@ -3059,6 +3122,10 @@
           "imported_at": "2026-07-29",
           "ref": "0143796151",
           "type": "libex-import"
+        },
+        {
+          "ref": "B07B7PV4ZT",
+          "type": "audible-lookup"
         }
       ],
       "title": "The Last Straw"
