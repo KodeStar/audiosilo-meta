@@ -136,8 +136,8 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 	if len(p.identity.Works(ident.key)) == 0 && len(p.runIdentity[ident.key]) == 0 {
 		return false
 	}
-	// The READ-ONLY author resolution: the same identity rules getOrCreateWork will
-	// apply (personSlug plus the initials merge) with nothing created.
+	// The READ-ONLY author resolution: resolvePerson, the decision the create path
+	// acts on, with nothing created.
 	authors := p.rowWorkAuthorsRO(credits)
 	if len(authors.identity) == 0 {
 		return false
@@ -147,12 +147,11 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 	if !found {
 		return false
 	}
-	// A match the row's OWN slug candidates reach is not a duplicate the guard has
-	// any business refusing: getOrCreateWork will merge the row into that very work,
-	// which is the behaviour that has always been correct. Only a match the chain
-	// CANNOT see - which is what a decorated title produces - would become a second
-	// record.
-	if p.slugChainReaches(match.work, workTitle, fullTitle, posSuffix, authors, claim) {
+	// A row the create path RESOLVES to an existing work creates nothing, so
+	// there is no duplicate for the guard to refuse; only a row it would create a
+	// work for can become a second record. resolveWork states why the guard and
+	// the create path cannot disagree about which that is.
+	if p.resolveWork(workTitle, fullTitle, posSuffix, authors, lang, claim).ws != nil {
 		return false
 	}
 	// The POSITION veto, the strongest of the five internal/audit measured, in its
@@ -307,36 +306,6 @@ func (p *planner) rememberIdentity(ident rowIdentity, slug, title string) {
 		}
 	}
 	p.runIdentity[ident.key] = append(p.runIdentity[ident.key], slug)
-}
-
-// slugChainReaches reports whether the row's own work-slug candidates include the
-// matched work - in which case getOrCreateWork will merge into it and no duplicate
-// can be minted.
-//
-// It walks the chain through workChain, the one composer getOrCreateWork walks too,
-// and over the same two titles in the same order (the resolved title, then the
-// FULL-title retry the create path falls back to): "would the create path find this
-// work" has exactly one answer, and the guard's whole soundness rests on asking it
-// the same way. A probe-only candidate counts - the row can merge into it, it simply
-// may not create there.
-func (p *planner) slugChainReaches(want, workTitle, fullTitle, posSuffix string, authors workAuthors, claim *seriesClaim) bool {
-	for _, title := range []string{workTitle, fullTitle} {
-		if Slugify(title) == "" {
-			continue
-		}
-		_, cands, _ := workChain(title, posSuffix, authors, claim)
-		for _, c := range cands {
-			if c.slug == want {
-				return true
-			}
-			// A retired candidate is judged as its survivor (workAt), so reaching
-			// the survivor through it is reaching it.
-			if ws, via := p.workAt(c.slug); via != "" && ws != nil && ws.slug == want {
-				return true
-			}
-		}
-	}
-	return false
 }
 
 // rowSeriesName is the series NAME a row states, or "" - the name its title is

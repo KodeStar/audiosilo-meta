@@ -549,12 +549,13 @@ func TestOverlongNarratorRecordingSlugs(t *testing.T) {
 	}
 }
 
-// TestOverlongTitleMergeWarnsOnConflation pins the one behaviour the bound
-// changes rather than fixes: two DIFFERENT long titles by one author that agree
-// up to the truncation point land on the same shortened candidate and merge as a
-// single work. The unbounded formula "reported" this by minting an invalid slug
-// for metacheck to reject, so the merge must not be silent.
-func TestOverlongTitleMergeWarnsOnConflation(t *testing.T) {
+// TestOverlongTitlesStayApartPastTheCut pins the rule for a slug the bound had to
+// SHORTEN: two DIFFERENT long titles by one author that agree up to the cut land
+// on the same shortened candidate, and the cut took exactly the words that tell
+// them apart. A hit on a cut candidate counts only when the work there carries
+// the walked title whole (walkWorkChain), so the second book steps past it and is
+// created at the next candidate instead of being merged into the first.
+func TestOverlongTitlesStayApartPastTheCut(t *testing.T) {
 	// Two 90-char bases sharing everything up to the cut at 84.
 	prefix := strings.Repeat("Saga ", 17)
 	titleA, titleO := prefix+"Alpha", prefix+"Omega"
@@ -562,20 +563,31 @@ func TestOverlongTitleMergeWarnsOnConflation(t *testing.T) {
 	// books fall through to the author-suffixed (and therefore shortened)
 	// candidate.
 	books := fmt.Sprintf(`[
-		{"asin":"B0CONFL001","title_short":%[1]q,"author":"Yuri Vale","narrated_by":"V One","language":"english","seconds":600},
-		{"asin":"B0CONFL002","title_short":%[2]q,"author":"Zara Nile","narrated_by":"V Two","language":"english","seconds":600},
-		{"asin":"B0CONFL003","title_short":%[1]q,"author":"Xavier Poe","narrated_by":"V Three","language":"english","seconds":600},
-		{"asin":"B0CONFL004","title_short":%[2]q,"author":"Xavier Poe","narrated_by":"V Four","language":"english","seconds":600}
+		{"asin":"B0CONFL001","title_short":%[1]q,"author":"Yuri Vale","narrated_by":"V One","language":"english","region":"US","seconds":600},
+		{"asin":"B0CONFL002","title_short":%[2]q,"author":"Zara Nile","narrated_by":"V Two","language":"english","region":"US","seconds":600},
+		{"asin":"B0CONFL003","title_short":%[1]q,"author":"Xavier Poe","narrated_by":"V Three","language":"english","region":"US","seconds":600},
+		{"asin":"B0CONFL004","title_short":%[2]q,"author":"Xavier Poe","narrated_by":"V Four","language":"english","region":"US","seconds":600},
+		{"asin":"B0CONFL005","title_short":%[2]q,"author":"Xavier Poe","narrated_by":"V Four","language":"english","region":"US","seconds":600}
 	]`, titleA, titleO)
 	sum, dataDir := runImport(t, books, false)
-	if sum.NewWorks != 3 {
-		t.Fatalf("expected 3 works (the two squatters plus one merged), got %d: %v", sum.NewWorks, listWorks(t, dataDir))
+	if sum.NewWorks != 4 {
+		t.Fatalf("expected 4 works (the two squatters plus Xavier Poe's two books), got %d: %v", sum.NewWorks, listWorks(t, dataDir))
 	}
-	if !hasWarning(sum.Warnings, "was shortened to fit") {
-		t.Errorf("a merge onto a truncated slug must warn, got %v", sum.Warnings)
+	// The same long title again IS the same book: the cut hit counts when the
+	// titles agree whole, so the third Xavier Poe row merges into Omega.
+	if sum.MergedASINs != 1 {
+		t.Errorf("MergedASINs = %d, want 1: the repeated Omega row is the same book; %+v", sum.MergedASINs, sum)
 	}
-	if !hasWarning(sum.Warnings, titleO) {
-		t.Errorf("the warning must name the incoming title, got %v", sum.Warnings)
+	var omega struct {
+		Title string `json:"title"`
+	}
+	slug := "saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-saga-xavier-poe-2"
+	readEntity(t, dataDir, workAddr(slug), &omega)
+	if omega.Title != titleO {
+		t.Errorf("%s title = %q, want %q", slug, omega.Title, titleO)
+	}
+	if hasWarning(sum.Warnings, "was shortened to fit") {
+		t.Errorf("nothing merged across a cut, so nothing may warn about one: %v", sum.Warnings)
 	}
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("imported tree failed validation:\n%v", res.Problems)

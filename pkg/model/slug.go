@@ -129,6 +129,29 @@ var transliterations = map[rune]string{
 // title in a non-Latin script that folds away entirely); callers substitute a
 // fallback token.
 func Slugify(s string) string {
+	slug, _ := SlugifyCut(s)
+	return slug
+}
+
+// SlugifyCut is Slugify reporting whether the MaxSlugLen cap CUT the slug - the
+// one signal a caller has that the tail of the text (for a long retail title, the
+// volume number) is not in the slug. It is the rule's own answer, not a guess
+// from the result's length: a slug that happens to be exactly MaxSlugLen long was
+// not cut.
+func SlugifyCut(s string) (slug string, cut bool) {
+	slug = SlugifyWhole(s)
+	if len(slug) > MaxSlugLen {
+		// The cut can land just after a hyphen, which is the one way a trailing
+		// separator can survive the loop.
+		return strings.Trim(slug[:MaxSlugLen], "-"), true
+	}
+	return slug, false
+}
+
+// SlugifyWhole is Slugify WITHOUT the MaxSlugLen cap: the slug form of the
+// whole text, for COMPARING two texts where a cut would hide exactly the tail
+// that tells them apart. It is never an id - only Slugify's result is.
+func SlugifyWhole(s string) string {
 	// Strip apostrophes first so "Philosopher's" -> "philosophers", not
 	// "philosopher-s".
 	s = apostrophes.Replace(s)
@@ -179,13 +202,7 @@ func Slugify(s string) string {
 		}
 	}
 
-	slug := b.String()
-	if len(slug) > MaxSlugLen {
-		// The cut can land just after a hyphen, which is the one way a trailing
-		// separator can survive the loop.
-		slug = strings.Trim(slug[:MaxSlugLen], "-")
-	}
-	return slug
+	return b.String()
 }
 
 // UnslugPersonID is the shared catch-all person id PersonSlug substitutes for a
