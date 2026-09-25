@@ -57,20 +57,103 @@
       "authors": [
         "misty-vixen"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "post-apocalyptic",
+        "romance",
+        "science-fiction"
+      ],
       "id": "haven-misty-vixen",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
         "ellory-lane-2022": {
           "abridged": false,
-          "added_at": "2026-09-24",
+          "added_at": "2026-08-01",
           "asin": [
+            {
+              "asin": "B0BGSYKSMS",
+              "region": "us"
+            },
             {
               "asin": "B0BGSZZWDF",
               "region": "au"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/41OltPi5gOL._SL500_.jpg",
+          "chapters": [
+            {
+              "length_ms": 18715,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2470487,
+              "start_ms": 18715,
+              "title": "CHAPTER ONE"
+            },
+            {
+              "length_ms": 2221476,
+              "start_ms": 2489202,
+              "title": "CHAPTER TWO"
+            },
+            {
+              "length_ms": 1710335,
+              "start_ms": 4710678,
+              "title": "CHAPTER THREE"
+            },
+            {
+              "length_ms": 1820815,
+              "start_ms": 6421013,
+              "title": "CHAPTER FOUR"
+            },
+            {
+              "length_ms": 1528778,
+              "start_ms": 8241828,
+              "title": "CHAPTER FIVE"
+            },
+            {
+              "length_ms": 1537787,
+              "start_ms": 9770606,
+              "title": "CHAPTER SIX"
+            },
+            {
+              "length_ms": 1621008,
+              "start_ms": 11308393,
+              "title": "CHAPTER SEVEN"
+            },
+            {
+              "length_ms": 2036018,
+              "start_ms": 12929401,
+              "title": "CHAPTER EIGHT"
+            },
+            {
+              "length_ms": 1682935,
+              "start_ms": 14965419,
+              "title": "CHAPTER NINE"
+            },
+            {
+              "length_ms": 1637053,
+              "start_ms": 16648354,
+              "title": "CHAPTER TEN"
+            },
+            {
+              "length_ms": 1577122,
+              "start_ms": 18285407,
+              "title": "CHAPTER ELEVEN"
+            },
+            {
+              "length_ms": 2025964,
+              "start_ms": 19862529,
+              "title": "CHAPTER TWELVE"
+            },
+            {
+              "length_ms": 55634,
+              "start_ms": 21888493,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81MYw3dLmaL.jpg",
           "id": "ellory-lane-2022",
           "language": "en",
           "license": "CC0-1.0",
@@ -79,7 +162,13 @@
           ],
           "publisher": "Royal Guard Publishing LLC",
           "release_date": "2022-10-29",
+          "runtime_min": 365,
           "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0BGSYKSMS",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-09-24",
               "ref": "B0BGSZZWDF",
@@ -94,6 +183,11 @@
           "imported_at": "2026-09-24",
           "ref": "B0BGSZZWDF",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BGSYKSMS",
+          "type": "libex-import"
         }
       ],
       "title": "Haven"

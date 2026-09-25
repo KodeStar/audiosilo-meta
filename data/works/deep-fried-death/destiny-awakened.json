@@ -6133,30 +6133,256 @@
       "authors": [
         "m-r-frost"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
       "id": "destiny-m-r-frost",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "sylvester-frost-2023": {
+        "ellory-lane-2023": {
           "abridged": false,
-          "added_at": "2026-09-24",
+          "added_at": "2026-08-02",
           "asin": [
+            {
+              "asin": "B0CN3Y194G",
+              "region": "us"
+            },
             {
               "asin": "B0CN3YQP3G",
               "region": "au"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/51ztGTp4f3L._SL500_.jpg",
-          "id": "sylvester-frost-2023",
+          "chapters": [
+            {
+              "length_ms": 16811,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 947188,
+              "start_ms": 16811,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 910477,
+              "start_ms": 963999,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 866661,
+              "start_ms": 1874476,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 900911,
+              "start_ms": 2741137,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 855237,
+              "start_ms": 3642048,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 633951,
+              "start_ms": 4497285,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 940524,
+              "start_ms": 5131236,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 785600,
+              "start_ms": 6071760,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 897335,
+              "start_ms": 6857360,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 867799,
+              "start_ms": 7754695,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 754160,
+              "start_ms": 8622494,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 836011,
+              "start_ms": 9376654,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 885678,
+              "start_ms": 10212665,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1086600,
+              "start_ms": 11098343,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 781397,
+              "start_ms": 12184943,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 776684,
+              "start_ms": 12966340,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 860601,
+              "start_ms": 13743024,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 812001,
+              "start_ms": 14603625,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 819153,
+              "start_ms": 15415626,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 772318,
+              "start_ms": 16234779,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 813534,
+              "start_ms": 17007097,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 819130,
+              "start_ms": 17820631,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 862690,
+              "start_ms": 18639761,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 841282,
+              "start_ms": 19502451,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 844022,
+              "start_ms": 20343733,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 840005,
+              "start_ms": 21187755,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 792125,
+              "start_ms": 22027760,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 830949,
+              "start_ms": 22819885,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 816158,
+              "start_ms": 23650834,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 926081,
+              "start_ms": 24466992,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 903813,
+              "start_ms": 25393073,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 951228,
+              "start_ms": 26296886,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 786506,
+              "start_ms": 27248114,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 770205,
+              "start_ms": 28034620,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 821870,
+              "start_ms": 28804825,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 826978,
+              "start_ms": 29626695,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 938086,
+              "start_ms": 30453673,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 845368,
+              "start_ms": 31391759,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 722535,
+              "start_ms": 32237127,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 504825,
+              "start_ms": 32959662,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 54867,
+              "start_ms": 33464487,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81witJrV00L.jpg",
+          "id": "ellory-lane-2023",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "sylvester-frost",
-            "ellory-lane"
+            "ellory-lane",
+            "sylvester-frost"
           ],
           "publisher": "Royal Guard Publishing LLC",
           "release_date": "2023-11-10",
+          "runtime_min": 558,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CN3Y194G",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-09-24",
               "ref": "B0CN3YQP3G",
@@ -6171,6 +6397,11 @@
           "imported_at": "2026-09-24",
           "ref": "B0CN3YQP3G",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CN3Y194G",
+          "type": "libex-import"
         }
       ],
       "title": "Destiny"
@@ -6589,270 +6820,6 @@
         }
       ],
       "title": "Destiny Mine"
-    },
-    "destiny-night-kissed-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "m-r-frost"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy"
-      ],
-      "id": "destiny-night-kissed-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ellory-lane-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CN3Y194G",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16811,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 947188,
-              "start_ms": 16811,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 910477,
-              "start_ms": 963999,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 866661,
-              "start_ms": 1874476,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 900911,
-              "start_ms": 2741137,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 855237,
-              "start_ms": 3642048,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 633951,
-              "start_ms": 4497285,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 940524,
-              "start_ms": 5131236,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 785600,
-              "start_ms": 6071760,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 897335,
-              "start_ms": 6857360,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 867799,
-              "start_ms": 7754695,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 754160,
-              "start_ms": 8622494,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 836011,
-              "start_ms": 9376654,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 885678,
-              "start_ms": 10212665,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1086600,
-              "start_ms": 11098343,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 781397,
-              "start_ms": 12184943,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 776684,
-              "start_ms": 12966340,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 860601,
-              "start_ms": 13743024,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 812001,
-              "start_ms": 14603625,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 819153,
-              "start_ms": 15415626,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 772318,
-              "start_ms": 16234779,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 813534,
-              "start_ms": 17007097,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 819130,
-              "start_ms": 17820631,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 862690,
-              "start_ms": 18639761,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 841282,
-              "start_ms": 19502451,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 844022,
-              "start_ms": 20343733,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 840005,
-              "start_ms": 21187755,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 792125,
-              "start_ms": 22027760,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 830949,
-              "start_ms": 22819885,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 816158,
-              "start_ms": 23650834,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 926081,
-              "start_ms": 24466992,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 903813,
-              "start_ms": 25393073,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 951228,
-              "start_ms": 26296886,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 786506,
-              "start_ms": 27248114,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 770205,
-              "start_ms": 28034620,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 821870,
-              "start_ms": 28804825,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 826978,
-              "start_ms": 29626695,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 938086,
-              "start_ms": 30453673,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 845368,
-              "start_ms": 31391759,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 722535,
-              "start_ms": 32237127,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 504825,
-              "start_ms": 32959662,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 54867,
-              "start_ms": 33464487,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81witJrV00L.jpg",
-          "id": "ellory-lane-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ellory-lane",
-            "sylvester-frost"
-          ],
-          "publisher": "Royal Guard Publishing LLC",
-          "release_date": "2023-11-10",
-          "runtime_min": 558,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CN3Y194G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "destiny-night-kissed-book-3"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CN3Y194G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Destiny: Night Kissed, Book 3"
     },
     "destiny-of-a-highlander": {
       "added_at": "2026-08-02",

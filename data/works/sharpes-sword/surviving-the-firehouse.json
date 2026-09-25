@@ -9357,59 +9357,13 @@
       "authors": [
         "timothy-zahn"
       ],
-      "id": "survivors-quest",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marc-thompson-2023": {
-          "abridged": false,
-          "added_at": "2026-09-24",
-          "asin": [
-            {
-              "asin": "B0CKS1QG63",
-              "region": "au"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/518DBbY3OlL._SL500_.jpg",
-          "id": "marc-thompson-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marc-thompson"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2023-12-19",
-          "sources": [
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B0CKS1QG63",
-              "type": "openaudible-import"
-            }
-          ],
-          "work": "survivors-quest"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-24",
-          "ref": "B0CKS1QG63",
-          "type": "openaudible-import"
-        }
-      ],
-      "title": "Survivor's Quest"
-    },
-    "survivors-quest-star-wars-legends": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "timothy-zahn"
-      ],
       "genres": [
         "action-adventure",
         "military-science-fiction",
         "science-fiction",
         "space-opera"
       ],
-      "id": "survivors-quest-star-wars-legends",
+      "id": "survivors-quest",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -9424,6 +9378,10 @@
             {
               "asin": "B0CKRXVMCL",
               "region": "ca"
+            },
+            {
+              "asin": "B0CKS1QG63",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -9603,19 +9561,29 @@
               "imported_at": "2026-08-02",
               "ref": "B0CKRXVMCL",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0CKS1QG63",
+              "type": "openaudible-import"
             }
           ],
-          "work": "survivors-quest-star-wars-legends"
+          "work": "survivors-quest"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0CKS1QG63",
+          "type": "openaudible-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CKRYRJ4D",
           "type": "libex-import"
         }
       ],
-      "title": "Survivor's Quest: Star Wars Legends"
+      "title": "Survivor's Quest"
     },
     "survivors-sci-fi-alien-invasion-romance-hell-squad-book-19": {
       "added_at": "2026-08-01",
