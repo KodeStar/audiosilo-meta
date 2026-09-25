@@ -3026,20 +3026,151 @@
       "authors": [
         "sarah-hawke"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
       "id": "insurrection",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
         "raya-kane-2022": {
           "abridged": false,
-          "added_at": "2026-09-24",
+          "added_at": "2026-08-01",
           "asin": [
+            {
+              "asin": "B0BKQXTC5V",
+              "region": "us"
+            },
             {
               "asin": "B0BKR1P8GC",
               "region": "au"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/61Pux0xQz6L._SL500_.jpg",
+          "chapters": [
+            {
+              "length_ms": 15998,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 18227,
+              "start_ms": 15998,
+              "title": "The Tartarus Cluster"
+            },
+            {
+              "length_ms": 1762626,
+              "start_ms": 34225,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 2431849,
+              "start_ms": 1796851,
+              "title": "1 The Promise"
+            },
+            {
+              "length_ms": 683154,
+              "start_ms": 4228700,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 1471007,
+              "start_ms": 4911854,
+              "title": "2 Ruminations"
+            },
+            {
+              "length_ms": 868681,
+              "start_ms": 6382861,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 2257699,
+              "start_ms": 7251542,
+              "title": "3 Hide and Seek"
+            },
+            {
+              "length_ms": 3263030,
+              "start_ms": 9509241,
+              "title": "4 Awakening"
+            },
+            {
+              "length_ms": 1137708,
+              "start_ms": 12772271,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 2692284,
+              "start_ms": 13909979,
+              "title": "5 Diplomacy"
+            },
+            {
+              "length_ms": 362602,
+              "start_ms": 16602263,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 2796866,
+              "start_ms": 16964865,
+              "title": "6 The Rendezvous"
+            },
+            {
+              "length_ms": 2399434,
+              "start_ms": 19761731,
+              "title": "7 A Short Goodbye"
+            },
+            {
+              "length_ms": 1139240,
+              "start_ms": 22161165,
+              "title": "Interlude"
+            },
+            {
+              "length_ms": 1959439,
+              "start_ms": 23300405,
+              "title": "8 Unto the Breach"
+            },
+            {
+              "length_ms": 2776340,
+              "start_ms": 25259844,
+              "title": "9 The Contact"
+            },
+            {
+              "length_ms": 3094058,
+              "start_ms": 28036184,
+              "title": "10 Rividian Nights"
+            },
+            {
+              "length_ms": 2888817,
+              "start_ms": 31130242,
+              "title": "11 Reconciliation"
+            },
+            {
+              "length_ms": 2890512,
+              "start_ms": 34019059,
+              "title": "12 Homecoming"
+            },
+            {
+              "length_ms": 2257838,
+              "start_ms": 36909571,
+              "title": "13 Fight or Flight"
+            },
+            {
+              "length_ms": 2362514,
+              "start_ms": 39167409,
+              "title": "14 The Sacrifice"
+            },
+            {
+              "length_ms": 60093,
+              "start_ms": 41529923,
+              "title": "About the Author"
+            },
+            {
+              "length_ms": 58002,
+              "start_ms": 41590016,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Qeaax-UpL.jpg",
           "id": "raya-kane-2022",
           "language": "en",
           "license": "CC0-1.0",
@@ -3049,7 +3180,13 @@
           ],
           "publisher": "Royal Guard Publishing LLC",
           "release_date": "2022-12-08",
+          "runtime_min": 693,
           "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0BKQXTC5V",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-09-24",
               "ref": "B0BKR1P8GC",
@@ -3064,6 +3201,11 @@
           "imported_at": "2026-09-24",
           "ref": "B0BKR1P8GC",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BKQXTC5V",
+          "type": "libex-import"
         }
       ],
       "title": "Insurrection"
@@ -6689,181 +6831,6 @@
         }
       ],
       "title": "Insurrection: The Interscission Project, Book 3"
-    },
-    "insurrection-the-lost-fleet-book-2": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "sarah-hawke"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "insurrection-the-lost-fleet-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "raya-kane-2022": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0BKQXTC5V",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15998,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 18227,
-              "start_ms": 15998,
-              "title": "The Tartarus Cluster"
-            },
-            {
-              "length_ms": 1762626,
-              "start_ms": 34225,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 2431849,
-              "start_ms": 1796851,
-              "title": "1 The Promise"
-            },
-            {
-              "length_ms": 683154,
-              "start_ms": 4228700,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1471007,
-              "start_ms": 4911854,
-              "title": "2 Ruminations"
-            },
-            {
-              "length_ms": 868681,
-              "start_ms": 6382861,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 2257699,
-              "start_ms": 7251542,
-              "title": "3 Hide and Seek"
-            },
-            {
-              "length_ms": 3263030,
-              "start_ms": 9509241,
-              "title": "4 Awakening"
-            },
-            {
-              "length_ms": 1137708,
-              "start_ms": 12772271,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 2692284,
-              "start_ms": 13909979,
-              "title": "5 Diplomacy"
-            },
-            {
-              "length_ms": 362602,
-              "start_ms": 16602263,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 2796866,
-              "start_ms": 16964865,
-              "title": "6 The Rendezvous"
-            },
-            {
-              "length_ms": 2399434,
-              "start_ms": 19761731,
-              "title": "7 A Short Goodbye"
-            },
-            {
-              "length_ms": 1139240,
-              "start_ms": 22161165,
-              "title": "Interlude"
-            },
-            {
-              "length_ms": 1959439,
-              "start_ms": 23300405,
-              "title": "8 Unto the Breach"
-            },
-            {
-              "length_ms": 2776340,
-              "start_ms": 25259844,
-              "title": "9 The Contact"
-            },
-            {
-              "length_ms": 3094058,
-              "start_ms": 28036184,
-              "title": "10 Rividian Nights"
-            },
-            {
-              "length_ms": 2888817,
-              "start_ms": 31130242,
-              "title": "11 Reconciliation"
-            },
-            {
-              "length_ms": 2890512,
-              "start_ms": 34019059,
-              "title": "12 Homecoming"
-            },
-            {
-              "length_ms": 2257838,
-              "start_ms": 36909571,
-              "title": "13 Fight or Flight"
-            },
-            {
-              "length_ms": 2362514,
-              "start_ms": 39167409,
-              "title": "14 The Sacrifice"
-            },
-            {
-              "length_ms": 60093,
-              "start_ms": 41529923,
-              "title": "About the Author"
-            },
-            {
-              "length_ms": 58002,
-              "start_ms": 41590016,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Qeaax-UpL.jpg",
-          "id": "raya-kane-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "raya-kane",
-            "wayne-kelly"
-          ],
-          "publisher": "Royal Guard Publishing LLC",
-          "release_date": "2022-12-08",
-          "runtime_min": 693,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0BKQXTC5V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "insurrection-the-lost-fleet-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BKQXTC5V",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Insurrection: The Lost Fleet, Book 2"
     },
     "intact": {
       "added_at": "2026-08-01",

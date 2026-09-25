@@ -11755,57 +11755,11 @@
       "authors": [
         "sarah-hawke"
       ],
-      "id": "resurgence",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "serena-moon-2026": {
-          "abridged": false,
-          "added_at": "2026-09-24",
-          "asin": [
-            {
-              "asin": "B0GQ6R79J4",
-              "region": "au"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Wi+rpHKZL._SL500_.jpg",
-          "id": "serena-moon-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "serena-moon"
-          ],
-          "publisher": "Royal Guard Publishing LLC",
-          "release_date": "2026-02-25",
-          "sources": [
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B0GQ6R79J4",
-              "type": "openaudible-import"
-            }
-          ],
-          "work": "resurgence"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-24",
-          "ref": "B0GQ6R79J4",
-          "type": "openaudible-import"
-        }
-      ],
-      "title": "Resurgence"
-    },
-    "resurgence-a-fantasy-adventure-dragon-centurion-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "sarah-hawke"
-      ],
       "genres": [
         "action-adventure",
         "fantasy"
       ],
-      "id": "resurgence-a-fantasy-adventure-dragon-centurion-book-3",
+      "id": "resurgence",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -11816,6 +11770,10 @@
             {
               "asin": "B0GQ7F3PMV",
               "region": "us"
+            },
+            {
+              "asin": "B0GQ6R79J4",
+              "region": "au"
             }
           ],
           "chapters": [
@@ -11955,19 +11913,29 @@
               "imported_at": "2026-08-02",
               "ref": "B0GQ7F3PMV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0GQ6R79J4",
+              "type": "openaudible-import"
             }
           ],
-          "work": "resurgence-a-fantasy-adventure-dragon-centurion-book-3"
+          "work": "resurgence"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0GQ6R79J4",
+          "type": "openaudible-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GQ7F3PMV",
           "type": "libex-import"
         }
       ],
-      "title": "Resurgence: A Fantasy Adventure (Dragon Centurion, Book 3)"
+      "title": "Resurgence"
     },
     "resurgence-after-the-apocalypse-book-3": {
       "added_at": "2026-08-02",
