@@ -1005,10 +1005,6 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "nightmares"
-        },
-        {
           "position": "2",
           "work": "siren-coven-book-2"
         },
@@ -1023,6 +1019,24 @@
         {
           "position": "5",
           "work": "sorcerer-coven-book-5"
+        }
+      ]
+    },
+    "coven-2": {
+      "id": "coven-2",
+      "license": "CC0-1.0",
+      "name": "Coven",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B07T5X9CVF",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "nightmares"
         }
       ]
     },
@@ -2885,16 +2899,30 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "crash-zoe-bell-kanapaux"
-        },
-        {
           "position": "2",
           "work": "clash-nicole-williams"
         },
         {
           "position": "3",
           "work": "crush-nicole-williams"
+        }
+      ]
+    },
+    "crash-2": {
+      "id": "crash-2",
+      "license": "CC0-1.0",
+      "name": "Crash",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B0D466ZPZJ",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "crash-zoe-bell-kanapaux"
         }
       ]
     },
@@ -12728,10 +12756,6 @@
       ],
       "works": [
         {
-          "position": "4",
-          "work": "misfit-hunt"
-        },
-        {
           "position": "1",
           "work": "world-of-blood"
         },
@@ -12742,6 +12766,24 @@
         {
           "position": "1.5",
           "work": "world-of-misery"
+        }
+      ]
+    },
+    "cursed-world-2": {
+      "id": "cursed-world-2",
+      "license": "CC0-1.0",
+      "name": "Cursed World",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B08H8F8Y2Z",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "4",
+          "work": "misfit-hunt"
         }
       ]
     },

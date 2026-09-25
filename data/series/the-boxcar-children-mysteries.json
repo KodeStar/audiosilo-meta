@@ -2039,16 +2039,34 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "the-hostage-bride"
-        },
-        {
           "position": "3",
           "work": "the-bartered-bride"
         },
         {
           "position": "2",
           "work": "the-china-bride"
+        }
+      ]
+    },
+    "the-bride-trilogy-2": {
+      "id": "the-bride-trilogy-2",
+      "license": "CC0-1.0",
+      "name": "The Bride Trilogy",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B00FJIFA30",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "the-hostage-bride"
+        },
+        {
+          "position": "3",
+          "work": "the-least-likely-bride"
         }
       ]
     },
@@ -3354,10 +3372,6 @@
         }
       ],
       "works": [
-        {
-          "position": "2",
-          "work": "mists-edge"
-        },
         {
           "position": "1",
           "work": "heart-of-the-empire"
@@ -15267,10 +15281,28 @@
         {
           "position": "1",
           "work": "chipless"
-        },
+        }
+      ]
+    },
+    "the-city-2": {
+      "id": "the-city-2",
+      "license": "CC0-1.0",
+      "name": "The City",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B071RPCCRW",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
         {
           "position": "0.5",
           "work": "the-neighbor-dean-koontz"
+        },
+        {
+          "position": "1",
+          "work": "the-city-dean-koontz"
         }
       ]
     },

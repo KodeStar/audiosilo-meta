@@ -1707,10 +1707,6 @@
       ],
       "works": [
         {
-          "position": "30",
-          "work": "dark-carousel"
-        },
-        {
           "position": "1",
           "work": "long-dark-night"
         },
@@ -2637,12 +2633,26 @@
           "work": "dawnbreaker"
         },
         {
-          "position": "1",
-          "work": "collapse-dark-days-book-1"
-        },
-        {
           "position": "5",
           "work": "wait-for-dusk"
+        }
+      ]
+    },
+    "dark-days-2": {
+      "id": "dark-days-2",
+      "license": "CC0-1.0",
+      "name": "Dark Days",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B0BVS9PZZ8",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "collapse-dark-days-book-1"
         }
       ]
     },
@@ -5635,6 +5645,28 @@
         {
           "position": "2",
           "work": "scorched-earth-dark-matter-book-2"
+        }
+      ]
+    },
+    "dark-matter-2": {
+      "id": "dark-matter-2",
+      "license": "CC0-1.0",
+      "name": "Dark Matter",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B07DJBD8V6",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "contagion-teri-terry"
+        },
+        {
+          "position": "2",
+          "work": "deception-teri-terry"
         },
         {
           "position": "3",
@@ -8269,10 +8301,6 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "westward-to-strange"
-        },
-        {
           "position": "2",
           "work": "ghost-eye"
         },
@@ -8287,6 +8315,24 @@
         {
           "position": "1-4",
           "work": "dark-water-the-complete-series-books-1-4"
+        }
+      ]
+    },
+    "dark-water-2": {
+      "id": "dark-water-2",
+      "license": "CC0-1.0",
+      "name": "Dark Water",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B0B594Z523",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "westward-to-strange"
         }
       ]
     },
