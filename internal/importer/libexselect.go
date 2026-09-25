@@ -13,8 +13,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // libexselect.go is the BOUNDED-SUBSET selector that stands between libex's
@@ -187,13 +187,12 @@ type selectedRow struct {
 	seriesSlug string
 	workKey    string
 	pos        float64
-	// refs and claims are the row's series claims, which the batch re-check
-	// (confirmBatch) resolves the kept rows by, as the import of exactly those
-	// rows will; title is its work title slug, which a re-targeted row's workKey
-	// is rebuilt from.
-	refs   []seriesRef
-	claims []nameClaim
-	title  string
+	// book is the row as the import reads it (libexToBook), which the batch
+	// re-check (confirmBatch) resolves the kept rows by through the importer's own
+	// planner, as the import of exactly those rows will; title is its work title
+	// slug, which a re-targeted row's workKey is rebuilt from.
+	book  sourceBook
+	title string
 }
 
 // selectState is the within-export memory the per-row rules keep: the ASINs
@@ -258,8 +257,30 @@ func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedR
 		return res, nil, err
 	}
 
-	kept = confirmBatch(kept, idx, &res)
-	kept, cuts := applySeriesCap(kept, opts.MaxPerSeries, &res)
+	// The cap and the batch re-check each change what the other sees: the cap can
+	// cut the row that let another anchor, and a re-check can move or drop rows
+	// the cap counted. So the two run to a fixpoint, which leaves exactly a set
+	// the import will resolve as confirmed and the cap no longer cuts.
+	cuts := map[string]SeriesCount{}
+	for {
+		kept = confirmBatch(kept, idx, &res)
+		n := len(kept)
+		var cut map[string]SeriesCount
+		kept, cut = applySeriesCap(kept, opts.MaxPerSeries, &res)
+		for slug, c := range cut {
+			t := cuts[slug]
+			t.Series = slug
+			t.CutWorks += c.CutWorks
+			t.CutRows += c.CutRows
+			cuts[slug] = t
+		}
+		if len(kept) == n {
+			break
+		}
+	}
+	if len(cuts) == 0 {
+		cuts = nil
+	}
 	summarize(kept, cuts, idx, &res)
 	return res, kept, nil
 }
@@ -278,15 +299,14 @@ func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedR
 // sibling that lost the slot to it was excluded then, which only ever narrows a
 // tranche.
 func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []selectedRow {
+	if len(kept) == 0 {
+		return kept
+	}
 	cat := idx.catalogue()
-	var claims []nameClaim
-	var owner, refOf []int
-	for i, r := range kept {
-		for j, c := range r.claims {
-			claims = append(claims, c)
-			owner = append(owner, i)
-			refOf = append(refOf, j)
-		}
+	claims, where := idx.batchClaims(kept)
+	owner, refOf := make([]int, len(claims)), make([]int, len(claims))
+	for ci, w := range where {
+		owner[ci], refOf[ci] = w.book, w.ref
 	}
 	groups, keys := claimGroups(claims)
 	groupOf := make([]string, len(claims))
@@ -347,7 +367,7 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []sele
 				drop(i, reasonSeriesAuthors)
 				continue
 			}
-			ref := r.refs[refOf[ci]]
+			ref := r.book.series[refOf[ci]]
 			pos, posOK := seriesPositionValue(ref)
 			if !posOK {
 				drop(i, reasonNoPosition)
@@ -411,8 +431,8 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	if !idx.namesACatalogueChain(refs) {
 		return selectedRow{}, reasonNoSeries
 	}
-	claims := claimsOf(refs, idx.libexSeriesRow(e), asin, true, "")
-	slug, ref, ok, othersOnly := idx.match(refs, claims)
+	book := idx.libexBook(e, asin)
+	slug, ref, ok, othersOnly := idx.match(book)
 	if !ok {
 		if othersOnly {
 			return selectedRow{}, reasonSeriesAuthors
@@ -453,7 +473,7 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	if !st.claimPosition(idx, slug, ref.seq, workKey) {
 		return selectedRow{}, reasonPositionTaken
 	}
-	return selectedRow{seriesSlug: slug, workKey: workKey, pos: pos, refs: refs, claims: claims, title: title}, ""
+	return selectedRow{seriesSlug: slug, workKey: workKey, pos: pos, book: book, title: title}, ""
 }
 
 // seriesPositionValue reduces a matched series claim to the numeric value the
@@ -580,7 +600,10 @@ func summarize(rows []selectedRow, cuts map[string]SeriesCount, idx seriesIndex,
 }
 
 // seriesIndex is the catalogue view a selection needs: the series a row's name
-// can complete, and the ASINs already recorded.
+// can complete, the ASINs already recorded, and the importer's own planner over
+// the same catalogue, through which every series claim is resolved - so a
+// selection and the import of what it selects judge a row by one rule, one
+// person resolution and one work identity.
 type seriesIndex struct {
 	bySlug map[string]string // slug -> series name
 	names  map[string]string // same map, read under its reporting name
@@ -588,18 +611,19 @@ type seriesIndex struct {
 	// positions maps a series slug to the positions its works already occupy
 	// (position -> work id). A position already taken cannot be completed into.
 	positions map[string]map[string]string
-	// redirects is the catalogue's tombstone table, which find walks exactly as
-	// getOrCreateSeries does (tombstone.go).
+	// redirects is the catalogue's tombstone table (tombstone.go).
 	redirects model.Redirects
-	// authors is the member-author evidence find judges a same-named series by,
-	// exactly as getOrCreateSeries does (seriesauthors.go). nil admits every one.
-	authors *SeriesAuthorIndex
+	// p is a planner loaded over the catalogue that plans nothing: the series
+	// resolution, the credit cleaning, the person resolution (resolvePerson,
+	// with the batch's initials decision) and the work identity (rowWorkKey) are
+	// all its own.
+	p *planner
 }
 
-// loadSeriesIndex reads the catalogue at dataDir. A tree with validation
-// problems is still used (best-effort, exactly like the importer's
-// loadExisting) but is warned about: selecting against a half-loaded catalogue
-// would silently re-import books that are already there.
+// loadSeriesIndex reads the catalogue at dataDir through an importer planner. A
+// tree with validation problems is still used (best-effort, exactly like the
+// importer's loadExisting) but is warned about: selecting against a half-loaded
+// catalogue would silently re-import books that are already there.
 // PROFILE: bare dataDir = ProfileAll by Options.Profile's own default rule
 // (types.go carries the full statement; adding a --profile flag to this CLI
 // means threading it here too).
@@ -610,38 +634,61 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 		positions: map[string]map[string]string{},
 	}
 	idx.names = idx.bySlug
-	res := check.Load(dataDir)
+	store, err := openStore(dataDir, pack.ProfileAll)
+	if err != nil {
+		return idx, []string{fmt.Sprintf("catalogue at %s: %v; selecting against nothing", dataDir, err)}
+	}
+	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir})
+	p.loadExisting()
+	p.identity = nil // a selection never asks the create guard
+	p.seriesAuthorIndex()
+	p.catalog = nil
+	idx.p, idx.asins, idx.redirects = p, p.asins, p.redirects
 	var warnings []string
-	if !res.OK() {
-		warnings = append(warnings, fmt.Sprintf("catalogue at %s has %d validation problem(s); selecting against it best-effort", dataDir, len(res.Problems)))
+	if p.loadProblems > 0 {
+		warnings = append(warnings, fmt.Sprintf("catalogue at %s has %d validation problem(s); selecting against it best-effort", dataDir, p.loadProblems))
 	}
-	if res.Catalog == nil {
-		return idx, warnings
-	}
-	idx.redirects = res.Catalog.Redirects
-	idx.authors = NewSeriesAuthorIndex(res.Catalog)
-	for _, s := range res.Catalog.Series {
-		idx.bySlug[s.ID] = s.Name
-		taken := make(map[string]string, len(s.Works))
-		for _, sw := range s.Works {
+	for slug, ss := range p.series {
+		idx.bySlug[slug] = ss.name
+		taken := make(map[string]string, len(ss.members))
+		for work, pos := range ss.members {
 			// Compare positions in the same canonical spelling a row's claim
 			// arrives in, so a stored "1.0" and a claimed "1" are one slot.
-			pos := sw.Position
 			if norm, ok := NormalizeSequence(pos); ok {
 				pos = norm
 			}
-			taken[pos] = sw.Work
+			taken[pos] = work
 		}
-		idx.positions[s.ID] = taken
-	}
-	for _, w := range res.Catalog.Works {
-		for _, rec := range w.Recordings {
-			for _, a := range rec.ASIN {
-				idx.asins[a.ASIN] = true
-			}
-		}
+		idx.positions[slug] = taken
 	}
 	return idx, warnings
+}
+
+// libexBook is a libex row as the import reads it: the sourceBook the parse
+// layer builds (libexToBook, with the credit lists unescaped and the row's
+// marketplace), which is what the planner resolves its series claims from.
+func (idx seriesIndex) libexBook(e rawBook, asin string) sourceBook {
+	region, _, _ := libexRegion(e)
+	authors, narrators := unescapeCredits(libexNames(e["authors"])), unescapeCredits(libexNames(e["narrators"]))
+	return libexToBook(e, asin, region, authors, narrators, &libexParse{})
+}
+
+// batchClaims is the kept rows' series claims as the import of exactly those
+// rows resolves them: the planner's credit censuses and initials decision over
+// the batch, then its own claim construction (planner.batchClaims).
+func (idx seriesIndex) batchClaims(kept []selectedRow) ([]nameClaim, []claimAt) {
+	books := make([]sourceBook, len(kept))
+	for i, r := range kept {
+		books[i] = r.book
+		books[i].authorCredits, books[i].creditsCached = nil, false
+	}
+	p := idx.p
+	p.authorCensus, p.narratorCensus = p.creditCensusesOf(books)
+	p.initialsSurvivors = p.decideInitialsOf(books)
+	defer func() {
+		p.authorCensus, p.narratorCensus, p.initialsSurvivors = creditCensus{}, creditCensus{}, nil
+	}()
+	return p.batchClaims(books)
 }
 
 // match resolves a row's series claims against the catalogue exactly as the
@@ -650,11 +697,12 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 // tree already holds, together with that claim's ref (the caller reads its
 // position). othersOnly reports, when nothing matched, that some claim named a
 // catalogued series belonging to other authors.
-func (idx seriesIndex) match(refs []seriesRef, claims []nameClaim) (slug string, matched seriesRef, ok, othersOnly bool) {
+func (idx seriesIndex) match(book sourceBook) (slug string, matched seriesRef, ok, othersOnly bool) {
+	claims, where := idx.p.batchClaims([]sourceBook{book})
 	targets := resolveSeriesClaims(idx.catalogue(), claims)
 	for i, t := range targets {
 		if t.found {
-			return t.slug, refs[i], true, false
+			return t.slug, book.series[where[i].ref], true, false
 		}
 		othersOnly = othersOnly || len(t.stepped) > 0
 	}
@@ -682,37 +730,12 @@ func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
 	return false
 }
 
-// catalogue is the index as the series resolution reads it.
+// catalogue is the index as the series resolution reads it: the planner's own.
 func (idx seriesIndex) catalogue() seriesCatalogue {
-	stored := func(slug string) (string, bool) {
-		stored, exists := idx.bySlug[slug]
-		return stored, exists
+	if idx.p == nil {
+		return seriesCatalogue{stored: func(string) (string, bool) { return "", false }}
 	}
-	return idx.authors.catalogue(stored, idx.redirects)
-}
-
-// libexSeriesRow is a libex row's SeriesRow, read straight off the row as the
-// importer reads the sourceBook libexToBook makes of it: the title and the
-// composed "Title: Subtitle", the publisher, and the credits cleaned by
-// sourceCredits, each at its person slug resolved through the tombstone table.
-// The one difference is the credit census (a selection has no run): the
-// census-backed folds it skips are spelling variants personForm.same reads as one
-// person.
-func (idx seriesIndex) libexSeriesRow(e rawBook) *SeriesRow {
-	title := e.str("title")
-	full := title
-	if sub := e.str("subtitle"); title != "" && sub != "" && !strings.Contains(title, sub) {
-		full = title + ": " + sub
-	}
-	credits := sourceCredits(unescapeCredits(libexNames(e["authors"])), "", creditCensus{})
-	slugOf := func(name string) string {
-		slug, _ := personSlug(name)
-		if to, retired := idx.redirects.Survivor(model.RedirectPeople, slug); retired {
-			return to
-		}
-		return slug
-	}
-	return SeriesRowFor(creditNamesOf(credits), []string{full, title}, e.str("publisher"), slugOf)
+	return idx.p.seriesCatalogue()
 }
 
 // streamLibexRows decodes an export and calls fn for every row, handing over

@@ -160,8 +160,11 @@ type seriesState struct {
 	members   map[string]string // work slug -> position
 	positions map[string]string // position -> work slug
 	// announce says, once a NEW series' slug is final (settleNewSeriesSlugs), why
-	// it was minted where it was.
+	// it was minted where it was; chain is where its slug sits on its name's chain.
+	// Every planning-time message names a series by its NAME, so this is the only
+	// one that names the slug.
 	announce func(slug string)
+	chain    int
 	// claimed is every position a work has CLAIMED in this series this run,
 	// whether or not the claim became a membership. members only records the
 	// claims that landed, and a dropped claim used to make a work look absent
@@ -182,9 +185,14 @@ type planner struct {
 	works  map[string]*workState
 	series map[string]*seriesState
 	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
-	// resolution judges every claim against, off the catalogue load.
+	// resolution judges every claim against, built on first use from catalog, the
+	// catalogue load, which resolveSeriesTargets then lets go.
 	seriesIndex *SeriesAuthorIndex
-	asins       map[string]bool
+	catalog     *model.Catalog
+	// loadProblems counts the validation problems the catalogue load reported,
+	// for a reader that selects against it best-effort (libex-select).
+	loadProblems int
+	asins        map[string]bool
 	// isbns is the set of ISBNs already recorded on some recording (seeded from
 	// disk in loadExisting, then extended as recordings are emitted), so an
 	// emitted tree can never violate checkUniqueness's global ISBN rule. Keys are
@@ -867,6 +875,7 @@ func normalizeEditionMarkers(books []sourceBook) {
 // composes into are already in hand rather than read a second time.
 func (p *planner) loadExisting() {
 	res := check.LoadStore(p.store)
+	p.loadProblems = len(res.Problems)
 	// The create path's duplicate-identity index, off the load that is already
 	// happening: it is the one index the guard probes per row (dupidentity.go), and
 	// building it anywhere else would mean a second pass over the catalogue.
@@ -928,7 +937,9 @@ func (p *planner) loadExisting() {
 		}
 		p.works[w.ID] = ws
 	}
-	p.seriesIndex = newSeriesAuthorIndex(cat, p.people)
+	// The series author index is built from this catalogue only if a claim needs
+	// it (seriesAuthorIndex): a run with no series claims never pays for it.
+	p.catalog = cat
 	for _, s := range cat.Series {
 		ss := &seriesState{
 			slug:      s.ID,
@@ -2168,13 +2179,30 @@ func (p *planner) seriesFor(r seriesRef) *seriesState {
 // guard reads, the serial guard's keys, placement, enrichment) reads that one
 // answer, so one row can never key a series name to two slugs.
 func (p *planner) resolveSeriesTargets(books []sourceBook) {
+	defer func() { p.catalog = nil }()
+	claims, where := p.batchClaims(books)
+	if len(claims) == 0 {
+		return
+	}
+	for k, t := range resolveSeriesClaims(p.seriesCatalogue(), claims) {
+		books[where[k].book].series[where[k].ref].target = t
+	}
+}
+
+// claimAt locates a batch claim: the book and the series ref it came from.
+type claimAt struct{ book, ref int }
+
+// batchClaims is every series claim of a batch as the resolution reads it,
+// parallel to where each came from. It is the one construction the import's
+// pre-pass and libex-select's batch re-check share, so the two judge one batch
+// by the same evidence. It also caches every row's cleaned author credits
+// (rowAuthorCredits) for the planning that follows: the censuses they read are
+// fixed by now.
+func (p *planner) batchClaims(books []sourceBook) ([]nameClaim, []claimAt) {
 	var claims []nameClaim
-	type at struct{ book, ref int }
-	var where []at
+	var where []claimAt
 	for i := range books {
 		b := &books[i]
-		// Every row's cleaned credits, computed here once for the planning that
-		// follows too (rowAuthorCredits): the censuses they read are fixed by now.
 		b.authorCredits, b.creditsCached = p.rowAuthorCredits(*b), true
 		if len(b.series) == 0 {
 			continue
@@ -2187,15 +2215,18 @@ func (p *planner) resolveSeriesTargets(books []sourceBook) {
 		// one, so claimsOf does not count it on as evidence.
 		for j, c := range claimsOf(b.series, row, asin, places, work) {
 			claims = append(claims, c)
-			where = append(where, at{i, j})
+			where = append(where, claimAt{i, j})
 		}
 	}
-	if len(claims) == 0 {
-		return
+	return claims, where
+}
+
+// seriesAuthorIndex is the catalogue's series evidence, built on first use.
+func (p *planner) seriesAuthorIndex() *SeriesAuthorIndex {
+	if p.seriesIndex == nil && p.catalog != nil {
+		p.seriesIndex = newSeriesAuthorIndex(p.catalog, p.people)
 	}
-	for k, t := range resolveSeriesClaims(p.seriesCatalogue(), claims) {
-		books[where[k].book].series[where[k].ref].target = t
-	}
+	return p.seriesIndex
 }
 
 // seriesCatalogue is the planner's series as the resolution reads them: the
@@ -2208,7 +2239,7 @@ func (p *planner) seriesCatalogue() seriesCatalogue {
 		}
 		return ss.name, true
 	}
-	return p.seriesIndex.catalogue(stored, p.redirects)
+	return p.seriesAuthorIndex().catalogue(stored, p.redirects)
 }
 
 // claimPlaces reports whether a row's series claims will place a member this
@@ -2227,10 +2258,15 @@ func (p *planner) claimPlaces(b sourceBook, asin string) (places bool, work stri
 		if asin != "" && p.asins[asin] {
 			return false, ""
 		}
-		if _, ok := mapLanguage(b.str("language")); !ok || len(p.rowNarratorNames(b)) == 0 {
+		lang, ok := mapLanguage(b.str("language"))
+		if !ok || len(p.rowNarratorNames(b)) == 0 || len(b.authorCredits) == 0 {
 			return false, ""
 		}
-		return len(b.authorCredits) > 0 && (b.str("title") != "" || b.str("title_short") != ""), ""
+		title := firstNonEmpty(b.str("title_short"), b.str("title"))
+		if title == "" {
+			return false, ""
+		}
+		return true, p.rowWorkKey(b, title, lang)
 	case ModeEnrich:
 		if asin == "" || !p.asins[asin] {
 			return false, ""
@@ -2242,6 +2278,23 @@ func (p *planner) claimPlaces(b sourceBook, asin string) (places bool, work stri
 	default:
 		return false, ""
 	}
+}
+
+// rowWorkKey is the book a create row is for, as the series evidence counts it:
+// the catalogued work the row merges into when the create path's own resolution
+// (resolveWork, asked read-only and without a series claim) finds one - which is
+// how the catalogue's evidence names that member - else the row's cleaned work
+// title (cleanWorkTitle, the title the create path resolves by) and its
+// identity authors, which a title's per-region sibling rows share.
+func (p *planner) rowWorkKey(b sourceBook, title, lang string) string {
+	title = cleanWorkTitle(title)
+	authors := p.rowWorkAuthorsRO(b.authorCredits)
+	if walk := p.resolveWork(title, cleanWorkTitle(b.str("title")), "", authors, lang, nil); walk.ws != nil {
+		return walk.ws.slug
+	}
+	ids := slices.Clone(authors.identity)
+	sort.Strings(ids)
+	return "row:" + Slugify(title) + "\x00" + strings.Join(ids, ",")
 }
 
 // addRecording builds and emits the recording for a book under work ws. When an
@@ -2905,6 +2958,7 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 	slug := t.slug
 	ss := &seriesState{
 		slug:      slug,
+		chain:     t.chain,
 		name:      name,
 		isNew:     true,
 		out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
@@ -2951,38 +3005,18 @@ func (p *planner) settleNewSeriesSlugs() {
 	sort.Strings(bases)
 	for _, base := range bases {
 		list := byBase[base]
-		sort.Slice(list, func(i, j int) bool { return chainIndex(base, list[i].slug) < chainIndex(base, list[j].slug) })
+		sort.Slice(list, func(i, j int) bool { return list[i].chain < list[j].chain })
 		for _, ss := range list {
 			delete(p.series, ss.slug)
 		}
-		i := 0
+		cat, allocated := p.seriesCatalogue(), map[string]map[string]bool{}
 		for _, ss := range list {
-			for ; ; i++ {
-				slug := SeriesSlugAt(base, i)
-				if held := p.series[slug]; held != nil {
-					continue
-				}
-				if _, retired := p.redirects.Survivor(model.RedirectSeries, slug); retired {
-					continue
-				}
-				break
-			}
-			ss.slug = SeriesSlugAt(base, i)
+			ss.slug, ss.chain = mintSlug(cat, base, allocated)
 			ss.out.ID = ss.slug
 			p.series[ss.slug] = ss
-			i++
 			if ss.announce != nil {
 				ss.announce(ss.slug)
 			}
-		}
-	}
-}
-
-// chainIndex is where slug sits on base's chain (SeriesSlugAt).
-func chainIndex(base, slug string) int {
-	for i := 0; ; i++ {
-		if SeriesSlugAt(base, i) == slug {
-			return i
 		}
 	}
 }

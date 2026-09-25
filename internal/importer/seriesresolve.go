@@ -70,9 +70,10 @@ type seriesTarget struct {
 	found bool
 	// via is the retired base slug a found series was reached through, or "".
 	via string
-	// stepped are the same-named catalogued series the claim did not fit, when it
-	// founds a new one.
+	// stepped are the same-named catalogued series the claim did not fit, and
+	// chain where slug sits on the name's chain, when it founds a new one.
 	stepped []string
+	chain   int
 }
 
 // seriesCatalogue is what the resolution reads about the catalogue
@@ -112,8 +113,10 @@ func claimsOf(refs []seriesRef, row *SeriesRow, id string, places bool, work str
 	return out
 }
 
-// rowWork is a row's book as far as its own facts say: its first title's slug
-// and its individual authors, which a title's sibling rows share.
+// rowWork is a row's book as far as its own facts say, for a caller that names
+// none (the create path names the work it resolves, planner.rowWorkKey): its
+// first stated title, cleaned as a work title is, and its individual authors,
+// which a title's sibling rows share.
 func rowWork(row *SeriesRow) string {
 	var slugs []string
 	for _, f := range row.individuals() {
@@ -121,8 +124,11 @@ func rowWork(row *SeriesRow) string {
 	}
 	sort.Strings(slugs)
 	title := ""
-	if len(row.titles) > 0 {
-		title = model.Slugify(row.titles[0])
+	for _, t := range row.titles {
+		if t != "" {
+			title = model.Slugify(cleanWorkTitle(t))
+			break
+		}
 	}
 	return "row:" + title + "\x00" + strings.Join(slugs, ",")
 }
@@ -165,6 +171,7 @@ func claimGroups(claims []nameClaim) (map[string][]int, []string) {
 // the batch first extends it, and a private copy after (owned).
 type seriesCandidate struct {
 	slug, via string
+	chain     int
 	ev        *seriesAuthors
 	owned     bool
 }
@@ -217,9 +224,9 @@ func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate 
 	}
 }
 
-// mintSlug is the next free slug on base's chain: not held, not retired, not
-// already minted by this batch.
-func mintSlug(cat seriesCatalogue, base string, allocated map[string]map[string]bool) string {
+// mintSlug is the next free slug on base's chain - not held, not retired, not
+// already minted by this batch - and where it sits on the chain.
+func mintSlug(cat seriesCatalogue, base string, allocated map[string]map[string]bool) (string, int) {
 	used := allocated[base]
 	if used == nil {
 		used = map[string]bool{}
@@ -237,7 +244,7 @@ func mintSlug(cat seriesCatalogue, base string, allocated map[string]map[string]
 			continue
 		}
 		used[slug] = true
-		return slug
+		return slug, i
 	}
 }
 
@@ -317,7 +324,8 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 		}
 		if home == nil {
 			// 3. Mint.
-			home = &seriesCandidate{slug: mintSlug(cat, base, allocated), ev: &seriesAuthors{}, owned: true}
+			slug, chain := mintSlug(cat, base, allocated)
+			home = &seriesCandidate{slug: slug, chain: chain, ev: &seriesAuthors{}, owned: true}
 			founded = append(founded, home)
 		}
 		for _, k := range cl {
@@ -325,7 +333,7 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 			if found {
 				out[idx[k]] = seriesTarget{slug: home.slug, found: true, via: home.via}
 			} else {
-				out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped}
+				out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped, chain: home.chain}
 			}
 		}
 	}

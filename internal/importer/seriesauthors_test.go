@@ -3,6 +3,7 @@ package importer
 import (
 	"fmt"
 	"reflect"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -208,6 +209,115 @@ func TestSelectorConfirmsTheBatch(t *testing.T) {
 	}
 }
 
+// A row's evidence key is the work the create path resolves it to: its title
+// cleaned of an edition marker, or the catalogued work it merges into, and an
+// empty full title reads the short one.
+func TestRowWorkKey(t *testing.T) {
+	p := plannerOver(t, lostFleetTree(t, nil))
+	key := func(title, short, author string) string {
+		b := sourceBook{raw: rawBook{"title": title, "title_short": short}, authors: []string{author}}
+		b.authorCredits = p.rowAuthorCredits(b)
+		return p.rowWorkKey(b, firstNonEmpty(short, title), "en")
+	}
+	if got := key("Incursion (Unabridged)", "", "Sarah Hawke"); got != "incursion" {
+		t.Errorf("a decorated row of a catalogued work keyed %q, want the work incursion", got)
+	}
+	if a, b := key("Dauntless (Unabridged)", "", "Jack Campbell"), key("Dauntless", "", "Jack Campbell"); a != b {
+		t.Errorf("an edition marker split one book: %q vs %q", a, b)
+	}
+	if a, b := key("", "Valiant", "Jack Campbell"), key("", "Relentless", "Jack Campbell"); a == b {
+		t.Errorf("two short-titled books of one author collapsed onto %q", a)
+	}
+}
+
+// An earlier squatter's one volume does not become the series' majority by a
+// batch of the squatter's rows arriving together, even where the fit is OPEN
+// to them (a shared small press).
+func TestABatchDoesNotHandASquattedSeriesToTheSquatter(t *testing.T) {
+	dataDir := lostFleetTree(t, map[string]string{
+		"works/da/dauntless/work.json":          testpack.WorkJSON(t, "dauntless", "Dauntless", testpack.WithAuthors("jack-campbell")),
+		"works/da/dauntless/recordings/r1.json": testpack.RecJSON(t, "r1", "dauntless"),
+		"series/lo/lost-fleet.json": testpack.SeriesJSON(t, "lost-fleet", "Lost Fleet",
+			"incursion@1", "insurrection@2", "invasion@3", "dauntless@4"),
+	})
+	var rows []string
+	for i, title := range []string{"Fearless", "Courageous", "Valiant", "Relentless", "Victorious", "Beyond", "Guardian", "Steadfast"} {
+		row := tombRow("B0CAMPB01"+strconv.Itoa(i), title, "Jack Campbell", "Bea Reader", 600, "Lost Fleet", strconv.Itoa(5+i))
+		rows = append(rows, strings.TrimSuffix(row, "}")+`,"publisher":"Fixture Audio"}`)
+	}
+	runLibexOver(t, dataDir, rows...)
+	if got := seriesWorks(t, dataDir, "lost-fleet"); len(got) != 4 {
+		t.Errorf("lost-fleet = %v, want Hawke's three and the one earlier squat only", got)
+	}
+	if got := seriesWorks(t, dataDir, "lost-fleet-2"); len(got) != 8 {
+		t.Errorf("lost-fleet-2 = %v, want the eight new Campbell volumes", got)
+	}
+}
+
+// The per-series cap and the batch re-check run to a fixpoint: a row confirmed
+// only because a co-credited row in the batch let its author share the series is
+// not selected once the cap cuts that row, since the import of what is left
+// would not place it there.
+func TestSelectorCapAndConfirmAgree(t *testing.T) {
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/on/one/work.json":          testpack.WorkJSON(t, "one", "One", testpack.WithAuthors("ada-mapmaker")),
+		"works/on/one/recordings/r1.json": testpack.RecJSON(t, "r1", "one", testpack.WithNarrators("bea-reader")),
+		"series/sa/saga.json":             testpack.SeriesJSON(t, "saga", "Saga", "one@1"),
+	}, nil)
+	row := func(asin, title, authors, pos string) string {
+		return libexRow{asin: asin, title: title, authors: authors, series: `{"name":"Saga","position":"` + pos + `"}`}.render()
+	}
+	rows := []string{
+		row("B0ADAMAP02", "Two", `{"name":"Ada Mapmaker"}`, "2"),
+		row("B0ADAMAP03", "Three", `{"name":"Ada Mapmaker"}`, "3"),
+		row("B0GUEST005", "Five", `{"name":"Gil Guest"}`, "5"),
+		row("B0COWRIT09", "Nine", `{"name":"Ada Mapmaker"},{"name":"Gil Guest"}`, "9"),
+	}
+	if res, kept := runSelect(t, dataDir, rows, 0); len(kept) != 4 {
+		t.Fatalf("uncapped: kept %d, excluded %v; want all four (the guest co-credits the series' author)", len(kept), res.Excluded)
+	}
+	res, kept := runSelect(t, dataDir, rows, 3)
+	if len(kept) != 2 || res.Excluded[reasonSeriesCap] != 1 || res.Excluded[reasonSeriesAuthors] != 1 {
+		t.Errorf("capped: kept %d, excluded %v; want the co-credited row cut and the guest's then dropped", len(kept), res.Excluded)
+	}
+}
+
+// libex-select and the import resolve a person the same way (the batch's
+// initials decision included), so two spellings of one book are one member for
+// both: Kovacs' two books, each listed as "A.B. Kovacs" and "AB Kovacs", are two
+// members - not four - and join a one-volume series both select and import agree
+// on.
+func TestSelectorAndImportCountOnePersonAlike(t *testing.T) {
+	seed := func() string {
+		return seedTombstoneTree(t, map[string]string{
+			"people/ze/zed-stranger.json":     testpack.PersonJSON(t, "zed-stranger", "Zed Stranger"),
+			"works/on/one/work.json":          testpack.WorkJSON(t, "one", "One", testpack.WithAuthors("zed-stranger")),
+			"works/on/one/recordings/r1.json": testpack.RecJSON(t, "r1", "one", testpack.WithNarrators("bea-reader")),
+			"series/sa/saga.json":             testpack.SeriesJSON(t, "saga", "Saga", "one@1"),
+		}, nil)
+	}
+	var rows []string
+	for i, r := range []struct{ asin, title, author, pos string }{
+		{"B0KOVAC021", "Two", "A.B. Kovacs", "2"},
+		{"B0KOVAC022", "Two", "AB Kovacs", "2"},
+		{"B0KOVAC031", "Three", "A.B. Kovacs", "3"},
+		{"B0KOVAC032", "Three", "AB Kovacs", "3"},
+	} {
+		_ = i
+		rows = append(rows, libexRow{asin: r.asin, title: r.title, authors: `{"name":"` + r.author + `"}`,
+			series: `{"name":"Saga","position":"` + r.pos + `"}`}.render())
+	}
+	res, kept := runSelect(t, seed(), rows, 0)
+	if len(kept) != 4 || res.Excluded[reasonSeriesAuthors] != 0 {
+		t.Errorf("select kept %d, excluded %v; want all four rows completing saga", len(kept), res.Excluded)
+	}
+	dataDir := seed()
+	runLibexOver(t, dataDir, rows...)
+	if got := seriesWorks(t, dataDir, "saga"); len(got) != 3 {
+		t.Errorf("import saga = %v, want Kovacs' two books in the one-volume series", got)
+	}
+}
+
 // The batch can send a kept row to ANOTHER catalogued series of the same name -
 // still a completion - and the selection follows it there: alone, a stranger's
 // row fits Hawke's one-volume "Lost Fleet"; with her own next two volumes in the
@@ -393,10 +503,46 @@ func TestSeriesAuthorsFit(t *testing.T) {
 		{"a person split across two slugs still dominates", forked, testRow("Jack Campbell"), seriesClosed},
 		{"either spelling of a forked person shares", forked, testRow("Cheree Lynn Alsop"), seriesShared},
 		{"a co-author of a forked dominant person shares", coWritten, testRow("Guest Writer"), seriesShared},
+		{"a title naming an earlier squatter opens nothing", squatted, withTitle(testRow("Zed Stranger"), "Jack Campbell's Lost Fleet"), seriesClosed},
 	} {
 		if got := tc.sa.fit(tc.row, large); got != tc.want {
 			t.Errorf("%s: fit = %v, want %v", tc.name, got, tc.want)
 		}
+	}
+}
+
+// A spelling that is one person with two groups' spellings bridges them, and a
+// merge carries every spelling a cluster credited, not one per person.
+func TestSeriesAuthorGroupsBridge(t *testing.T) {
+	a := formOf("cheree-alsop", "Cheree Alsop")
+	b := formOf("c-l-alsop", "C. L. Alsop")
+	c := formOf("cheree-l-alsop", "Cheree L. Alsop")
+	if a.same(b) || !a.same(c) || !b.same(c) {
+		t.Fatalf("fixture spellings: a~b %v, a~c %v, b~c %v", a.same(b), a.same(c), b.same(c))
+	}
+	roots := func(sa *seriesAuthors) int {
+		sa.refresh()
+		return len(sa.credits)
+	}
+	sa := &seriesAuthors{}
+	sa.add("one", []personForm{a}, nil)
+	sa.add("two", []personForm{b}, nil)
+	if roots(sa) != 2 {
+		t.Fatalf("two unbridged spellings are %d people, want 2", roots(sa))
+	}
+	sa.add("three", []personForm{c}, nil)
+	if roots(sa) != 1 || !sa.dominant(sa.top) {
+		t.Errorf("the bridging spelling left %d people (top %d of %d), want one dominant person", roots(sa), sa.top, sa.members)
+	}
+
+	cluster := &seriesAuthors{}
+	cluster.add("x", []personForm{a}, nil)
+	cluster.add("y", []personForm{c}, nil)
+	target := &seriesAuthors{}
+	target.add("z", []personForm{b}, nil)
+	target.merge(cluster)
+	if roots(target) != 1 {
+		t.Errorf("a merge carrying one spelling per person left %d people, want 1", roots(target))
 	}
 }
 
