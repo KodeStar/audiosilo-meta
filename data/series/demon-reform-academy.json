@@ -483,10 +483,6 @@
         {
           "position": "2",
           "work": "blood-of-the-witch"
-        },
-        {
-          "position": "1-3",
-          "work": "the-secret-book-of-john"
         }
       ]
     },
@@ -6452,10 +6448,36 @@
         {
           "position": "4",
           "work": "derelict-trident"
+        }
+      ]
+    },
+    "derelict-2": {
+      "id": "derelict-2",
+      "license": "CC0-1.0",
+      "name": "Derelict",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B08GC85J3T",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "derelict-book-1-repel-boarders-a-litrpg-dungeon-core-adventure"
         },
         {
           "position": "1-3",
           "work": "derelict-the-complete-series-books-1-3"
+        },
+        {
+          "position": "2",
+          "work": "derelict-book-2-counterattack"
+        },
+        {
+          "position": "3",
+          "work": "sarton-station"
         }
       ]
     },
@@ -7434,16 +7456,30 @@
       ],
       "works": [
         {
-          "position": "2",
-          "work": "the-promised-prince"
-        },
-        {
           "position": "1",
           "work": "become"
         },
         {
           "position": "3",
           "work": "destined-desolation-book-3"
+        }
+      ]
+    },
+    "desolation-2": {
+      "id": "desolation-2",
+      "license": "CC0-1.0",
+      "name": "Desolation",
+      "sources": [
+        {
+          "imported_at": "2026-09-25",
+          "ref": "B09HQJD6QS",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "2",
+          "work": "the-promised-prince"
         }
       ]
     },
