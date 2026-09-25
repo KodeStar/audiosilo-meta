@@ -450,6 +450,15 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoStatedVolumeElsewhere(ix, members); ok {
 		out = append(out, s)
 	}
+	if s, ok := vetoLaterVolumeOfPlainTitle(ix, members); ok {
+		out = append(out, s)
+	}
+	if s, ok := vetoEditionOrdinalDiffers(members); ok {
+		out = append(out, s)
+	}
+	if s, ok := vetoAdaptedEditionOneSide(members); ok {
+		out = append(out, s)
+	}
 	return out
 }
 
@@ -521,6 +530,10 @@ func vetoPositionConflict(ix *index, members []dupMember) (string, bool) {
 	return "", false
 }
 
+// spanCovers reports whether a series span (a single position, or an omnibus range)
+// covers volume v.
+func spanCovers(span [2]float64, v float64) bool { return span[0] <= v && v <= span[1] }
+
 func renderSpan(s [2]float64) string {
 	if s[0] == s[1] {
 		return formatSeq(s[0])
@@ -561,7 +574,7 @@ func vetoDisjointSeries(ix *index, members []dupMember) (string, bool) {
 	return "", false
 }
 
-func sortedKeys(m map[string]bool) []string {
+func sortedKeys[V any](m map[string]V) []string {
 	out := make([]string, 0, len(m))
 	for k := range m {
 		out = append(out, k)
@@ -577,20 +590,60 @@ func sortedKeys(m map[string]bool) []string {
 //
 // Each title is read against the series name it is cleaned against
 // (titlerule.IsCollectionIn, whose doc has the shape that makes the name matter).
+//
+// When EVERY member is a collection the question becomes whether they are one
+// selection - see collectionsDiffer.
 func vetoCollectionOneSide(ix *index, members []dupMember) (string, bool) {
-	var yes, no []string
+	yes, no := oneSided(members, func(m dupMember) bool { return ix.isCollection(m.work) })
+	switch {
+	case len(yes) == 0:
+		return "", false
+	case len(no) == 0:
+		return collectionsDiffer(members)
+	}
+	return fmt.Sprintf("%s announce a collection and %s do not: a companion collection is not a second record of the volume it collects",
+		truncateList(yes, 3), truncateList(no, 3)), true
+}
+
+// oneSided partitions a cluster's member ids by a predicate.
+func oneSided(members []dupMember, pred func(dupMember) bool) (yes, no []string) {
 	for _, m := range members {
-		if ix.isCollection(m.work) {
+		if pred(m) {
 			yes = append(yes, m.work.ID)
 		} else {
 			no = append(no, m.work.ID)
 		}
 	}
-	if len(yes) == 0 || len(no) == 0 {
-		return "", false
+	return yes, no
+}
+
+// collectionsDiffer: every member is a collection, and two of them hold no recording
+// pair the importer's same-production rule (importer.RuntimesCompatible) would call one
+// production. A collection's identity is its SELECTION, which a generic title ("The
+// Friedrich Nietzsche Collection") does not state - two compilations of one author at
+// 2,406 and 3,071 minutes are two selections. The runtime is asked only because the
+// title cannot answer.
+func collectionsDiffer(members []dupMember) (string, bool) {
+	for i := range members {
+		for j := i + 1; j < len(members); j++ {
+			a, b := members[i].work, members[j].work
+			known, compatible := false, false
+			for _, ra := range a.Recordings {
+				for _, rb := range b.Recordings {
+					if ra.RuntimeMin <= 0 || rb.RuntimeMin <= 0 {
+						continue
+					}
+					known = true
+					compatible = compatible || importer.RuntimesCompatible(ra.RuntimeMin, rb.RuntimeMin)
+				}
+			}
+			if known && !compatible {
+				return fmt.Sprintf("%s and %s are both collections and no recording of one is within 10%% of a recording of the other: "+
+					"a collection is its selection, and these are two selections", a.ID, b.ID), true
+			}
+		}
 	}
-	return fmt.Sprintf("%s announce a collection and %s do not: a companion collection is not a second record of the volume it collects",
-		truncateList(yes, 3), truncateList(no, 3)), true
+	return "", false
 }
 
 // vetoRuntimeRatio: one member's longest recording is more than runtimeRatioVeto

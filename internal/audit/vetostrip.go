@@ -106,7 +106,7 @@ func vetoStatedVolumeElsewhere(ix *index, members []dupMember) (string, bool) {
 				continue
 			}
 			span, placed := ix.positionSpans(other.work.ID)[d.seriesID]
-			if !placed || (span[0] <= st.Volume && st.Volume <= span[1]) {
+			if !placed || spanCovers(span, st.Volume) {
 				continue
 			}
 			return fmt.Sprintf("%s states volume %s of series %s in its own title and the catalogue places %s at %s in that series: "+

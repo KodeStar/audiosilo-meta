@@ -436,16 +436,25 @@ var volumeRomanOrWord = []volumeArm{
 // the arm's next one rather than ending the arm, so "Unit One Hundred and Level 4"
 // still states 4. The later matches are only looked for when the first is unreadable.
 func earliestVolume(s string, arms []volumeArm) (float64, bool) {
-	at, vol := -1, 0.0
+	vol, m := earliestVolumeMatch(s, arms)
+	return vol, m != nil
+}
+
+// earliestVolumeMatch is earliestVolume plus the match it read the number from (nil
+// when no arm reads one), for a caller that also needs WHERE the marker sits
+// (VolumeHeadOf).
+func earliestVolumeMatch(s string, arms []volumeArm) (float64, []int) {
+	var at []int
+	vol := 0.0
 	for _, a := range arms {
 		m := a.re.FindStringSubmatchIndex(s)
-		if m == nil || (at >= 0 && m[0] >= at) {
+		if m == nil || (at != nil && m[0] >= at[0]) {
 			continue
 		}
 		v, ok := a.read(s, m)
 		if !ok {
 			for _, n := range a.re.FindAllStringSubmatchIndex(s, -1)[1:] {
-				if at >= 0 && n[0] >= at {
+				if at != nil && n[0] >= at[0] {
 					break
 				}
 				if v, ok = a.read(s, n); ok {
@@ -455,10 +464,10 @@ func earliestVolume(s string, arms []volumeArm) (float64, bool) {
 			}
 		}
 		if ok {
-			at, vol = m[0], v
+			at, vol = m, v
 		}
 	}
-	return vol, at >= 0
+	return vol, at
 }
 
 func readRoman(s string, m []int) (float64, bool) { return romanValue(groupAt(s, m, 1)) }
