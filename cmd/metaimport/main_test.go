@@ -590,3 +590,34 @@ func TestPrintSummaryNotesComeBeforeWarnings(t *testing.T) {
 		t.Errorf("the note printed after the warning: %q", out)
 	}
 }
+
+// TestExistingSeriesOnlyFlagReachesTheImporter: the flag the series-completion
+// sync bot passes must land on Options.ExistingSeriesOnly for every source, and
+// be off without it - a dropped mapping would let the bot found series again.
+func TestExistingSeriesOnlyFlagReachesTheImporter(t *testing.T) {
+	var got importer.Options
+	run := func(_ string, opts importer.Options) (importer.Summary, error) {
+		got = opts
+		return importer.Summary{}, nil
+	}
+	for _, source := range []string{boundedSource, "openaudible"} {
+		got = importer.Options{}
+		captureStdout(t, func() {
+			if code := runSource(source, []string{"export.json", "--existing-series-only"}, run); code != 0 {
+				t.Errorf("%s: exit code = %d, want 0", source, code)
+			}
+		})
+		if !got.ExistingSeriesOnly {
+			t.Errorf("%s: --existing-series-only did not reach Options.ExistingSeriesOnly", source)
+		}
+		got = importer.Options{ExistingSeriesOnly: true}
+		captureStdout(t, func() {
+			if code := runSource(source, []string{"export.json"}, run); code != 0 {
+				t.Errorf("%s: exit code = %d, want 0", source, code)
+			}
+		})
+		if got.ExistingSeriesOnly {
+			t.Errorf("%s: Options.ExistingSeriesOnly is set without the flag", source)
+		}
+	}
+}

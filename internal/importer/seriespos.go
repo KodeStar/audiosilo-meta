@@ -93,7 +93,7 @@ func seriesLookupCap(limit int) int {
 // It is called only for a row the planner has already admitted (a language, a
 // narrator, an author and a title), so a dropped row never spends a lookup.
 func (p *planner) fillSeriesPositions(b sourceBook, asin, workTitle string) {
-	if p.seriesLookup == nil || asin == "" || !needsSeriesPosition(b) {
+	if p.seriesLookup == nil || asin == "" || !p.needsSeriesPosition(b) {
 		return
 	}
 	if p.seriesLookupLeft == 0 {
@@ -108,7 +108,7 @@ func (p *planner) fillSeriesPositions(b sourceBook, asin, workTitle string) {
 		return
 	}
 	for i := range b.series {
-		if b.series[i].seqOK {
+		if b.series[i].seqOK || p.refusesToFound(b.series[i]) {
 			continue
 		}
 		pos, ok := lookedUpPosition(refs, b.series[i].name)
@@ -123,9 +123,11 @@ func (p *planner) fillSeriesPositions(b sourceBook, asin, workTitle string) {
 // needsSeriesPosition reports whether any of the row's claims is missing its
 // position. It is what makes the cap count ROWS THAT NEED A LOOKUP rather than
 // rows: a library whose files are all tagged with a part number spends nothing.
-func needsSeriesPosition(b sourceBook) bool {
+// A claim an ExistingSeriesOnly run will drop needs no position, so it spends
+// nothing either.
+func (p *planner) needsSeriesPosition(b sourceBook) bool {
 	for _, r := range b.series {
-		if !r.seqOK {
+		if !r.seqOK && !p.refusesToFound(r) {
 			return true
 		}
 	}

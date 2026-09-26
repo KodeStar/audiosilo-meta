@@ -296,6 +296,12 @@ type planner struct {
 	// per-row lines would.
 	unaddressableSeries      int
 	unaddressableSeriesNames []string
+	// existingSeriesOnly is Options.ExistingSeriesOnly: getOrCreateSeries drops
+	// a claim that would found a series instead of creating it, and
+	// droppedSeriesExamples names a few for the aggregate warning (the COUNT is
+	// Summary.SeriesClaimsDropped).
+	existingSeriesOnly    bool
+	droppedSeriesExamples []string
 	// lostSeriesClaims counts the valid series placements that died with the ROW
 	// that claimed them (an unknown language, no narrator, no author, no title),
 	// and lostSeriesNames keeps a few series for the aggregate warning. See
@@ -580,25 +586,26 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 // that drives the planner directly builds it the way a run does.
 func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 	return &planner{
-		dataDir:        opts.DataDir,
-		people:         map[string]string{},
-		authorPeople:   map[string]bool{},
-		narratorPeople: map[string]bool{},
-		works:          map[string]*workState{},
-		series:         map[string]*seriesState{},
-		asins:          map[string]bool{},
-		isbns:          map[string]bool{},
-		store:          store,
-		genres:         audibleGenreTable().withRunMemo(),
-		unmappedGenres: map[string]bool{},
-		runCredits:     map[string]map[model.Credit]bool{},
-		runIdentity:    map[string][]string{},
-		runIdentified:  map[string]runWorkIdentity{},
-		sourceType:     sourceType,
-		importDate:     opts.ImportDate,
-		mode:           opts.Mode,
-		conflicts:      opts.Conflicts,
-		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
+		dataDir:            opts.DataDir,
+		people:             map[string]string{},
+		authorPeople:       map[string]bool{},
+		narratorPeople:     map[string]bool{},
+		works:              map[string]*workState{},
+		series:             map[string]*seriesState{},
+		asins:              map[string]bool{},
+		isbns:              map[string]bool{},
+		store:              store,
+		genres:             audibleGenreTable().withRunMemo(),
+		unmappedGenres:     map[string]bool{},
+		runCredits:         map[string]map[model.Credit]bool{},
+		runIdentity:        map[string][]string{},
+		runIdentified:      map[string]runWorkIdentity{},
+		sourceType:         sourceType,
+		importDate:         opts.ImportDate,
+		mode:               opts.Mode,
+		conflicts:          opts.Conflicts,
+		userTier:           model.TierOfSource(sourceType) == model.TierUserLibrary,
+		existingSeriesOnly: opts.ExistingSeriesOnly,
 	}
 }
 
@@ -628,6 +635,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportUnmappedGenres()
 	p.reportUnnamedCredits()
 	p.reportUnaddressableSeries()
+	p.reportDroppedSeriesClaims()
 	p.reportLostSeriesClaims()
 	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
@@ -1192,6 +1200,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// TestLibexSelectNeverCreatesASeries - so a change to WHICH claims this loop
 	// places has to be made there too.
 	for _, r := range b.series {
+		// Asked FIRST, so a claim this run may not found is reported as exactly
+		// that - not as a missing position, and not through placementPosition's
+		// "placed at" line for a placement that never happens.
+		if p.refusesToFound(r) {
+			p.noteDroppedSeriesClaim(r)
+			continue
+		}
 		if !r.seqOK {
 			warn("series %q: missing or invalid position %q; not placed in series", r.name, r.rawSeq)
 		} else {
@@ -2577,7 +2592,8 @@ func (p *planner) noteUnaddressableSeries(name string) {
 // reported on its own terms.
 func (p *planner) noteLostSeriesClaims(b sourceBook) {
 	for _, r := range b.series {
-		if !r.seqOK {
+		// A claim an ExistingSeriesOnly run would drop anyway lost nothing here.
+		if !r.seqOK || p.refusesToFound(r) {
 			continue
 		}
 		p.lostSeriesClaims++
@@ -2597,6 +2613,58 @@ func (p *planner) reportLostSeriesClaims() {
 		fmt.Sprintf("%d series placements lost: the row claiming the position could not be imported",
 			p.lostSeriesClaims),
 		p.lostSeriesNames))
+}
+
+// refusesToFound reports whether placing claim r would FOUND a series in a run
+// that may not (Options.ExistingSeriesOnly): an addressable name whose resolved
+// target the planner does not hold. It is getOrCreateSeries's own create test,
+// asked before placement so nothing downstream of it (the position lookup, the
+// title arbitration, the lost-claim count) acts on a claim that will be dropped.
+// Under the option no series is created, so the planner's series ARE the
+// catalogue's.
+func (p *planner) refusesToFound(r seriesRef) bool {
+	if !p.existingSeriesOnly || r.target.slug == "" || Slugify(r.name) == "" {
+		return false
+	}
+	_, exists := p.series[r.target.slug]
+	return !exists
+}
+
+// noteDroppedSeriesClaim records one series claim an ExistingSeriesOnly run
+// refused to found. The example names the series and the row (the ASIN the
+// provenance stamp carries), since the same series name can arrive on several
+// rows and a maintainer reading the line wants to find the row - and says when a
+// same-named series IS catalogued but belongs to other authors, since "not in the
+// catalogue" would then send the maintainer looking for a series that is there.
+func (p *planner) noteDroppedSeriesClaim(r seriesRef) {
+	p.summary.SeriesClaimsDropped++
+	if len(p.droppedSeriesExamples) >= maxWarnExamples {
+		return
+	}
+	ex := fmt.Sprintf("%q", r.name)
+	if ref := p.curSource.Ref; ref != "" {
+		ex += " (" + ref + ")"
+	}
+	if len(r.target.stepped) > 0 {
+		ex += " [" + strings.Join(r.target.stepped, ", ") + " belongs to other authors]"
+	}
+	if !slices.Contains(p.droppedSeriesExamples, ex) {
+		p.droppedSeriesExamples = append(p.droppedSeriesExamples, ex)
+	}
+}
+
+// reportDroppedSeriesClaims appends one run-level warning for those claims. A
+// warning rather than a note: each is a series membership a source stated and
+// the catalogue does not record, which is a gap a maintainer may want to close
+// by hand (founding the series deliberately), not something the run did.
+func (p *planner) reportDroppedSeriesClaims() {
+	if p.summary.SeriesClaimsDropped == 0 {
+		return
+	}
+	p.summary.Warnings = append(p.summary.Warnings, withExamples(
+		fmt.Sprintf("%d series claims dropped: no catalogued series fits the claim and this run founds none (existing-series-only)",
+			p.summary.SeriesClaimsDropped),
+		p.droppedSeriesExamples))
 }
 
 // reportUnaddressableSeries appends one run-level warning for the series claims
@@ -2966,6 +3034,14 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 			p.noteTombstone(model.RedirectSeries, t.via, t.slug)
 		}
 		return ss
+	}
+	// Past this point the claim FOUNDS a series. A run that may not found one
+	// drops the claim here - the one place a series is created, so NewSeries
+	// below is unreachable under the option by construction. The row is not
+	// touched: its work is written and its other claims placed as usual.
+	if p.existingSeriesOnly {
+		p.noteDroppedSeriesClaim(r)
+		return nil
 	}
 	slug := t.slug
 	ss := &seriesState{
