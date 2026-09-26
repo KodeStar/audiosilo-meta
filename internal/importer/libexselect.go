@@ -468,7 +468,7 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	// per-region sibling rows of one title therefore share a key and project
 	// ONE new work, which is what the importer's same-narrator ASIN merge
 	// actually does with them.
-	title := Slugify(e.str("title"))
+	title := Slugify(book.str("title_short"))
 	workKey := slug + "\x00" + title
 	if !st.claimPosition(idx, slug, ref.seq, workKey) {
 		return selectedRow{}, reasonPositionTaken
@@ -665,12 +665,15 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 }
 
 // libexBook is a libex row as the import reads it: the sourceBook the parse
-// layer builds (libexToBook, with the credit lists unescaped and the row's
-// marketplace), which is what the planner resolves its series claims from.
+// layer builds (libexToBook, with its text decoded as runBooks decodes it and
+// the row's marketplace), which is what the planner resolves its series claims from.
 func (idx seriesIndex) libexBook(e rawBook, asin string) sourceBook {
 	region, _, _ := libexRegion(e)
-	authors, narrators := unescapeCredits(libexNames(e["authors"])), unescapeCredits(libexNames(e["narrators"]))
-	return libexToBook(e, asin, region, authors, narrators, &libexParse{})
+	book := libexToBook(e, asin, region, libexNames(e["authors"]), libexNames(e["narrators"]), &libexParse{})
+	// This door composes a book runBooks never sees, so it decodes the book's
+	// text itself - exactly once, as runBooks does for the import (entities.go).
+	book.decodeText()
+	return book
 }
 
 // batchClaims is the kept rows' series claims as the import of exactly those

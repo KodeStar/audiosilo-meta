@@ -125,6 +125,21 @@ const (
 	seriesPack    = "data/series/0.json"
 )
 
+// TestParseBodyDecodesCharacterReferences: a title pasted from a retailer page
+// often arrives escaped, and GitHub renders the body as Markdown, where a
+// reference IS the character - so the value is read decoded, by the importer's
+// own rule, and a bare ampersand stays an ampersand.
+func TestParseBodyDecodesCharacterReferences(t *testing.T) {
+	s := parseBody(field("Title", "Vanish: A Rizzoli &amp; Isles Novel") +
+		field("Author(s)", "Jos&eacute; Rollins, Tom & Jerry"))
+	if got := s.get("Title"); got != "Vanish: A Rizzoli & Isles Novel" {
+		t.Errorf("Title = %q", got)
+	}
+	if got := s.get("Author(s)"); got != "José Rollins, Tom & Jerry" {
+		t.Errorf("Author(s) = %q", got)
+	}
+}
+
 func TestParseBody(t *testing.T) {
 	body := field("Title", "Hello World") +
 		field("Subtitle", "") +

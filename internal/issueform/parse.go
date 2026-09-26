@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/ghhost"
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
 
 // sections is the parsed issue-form body: each `### <label>` heading maps to
@@ -27,7 +28,8 @@ var headingRE = regexp.MustCompile(`^###\s+(.+?)\s*$`)
 // GitHub renders each form field (input/textarea/dropdown/checkboxes with an
 // id) as an `### <label>` heading followed by the value; type:markdown display
 // blocks carry no id and never render, so only real fields appear. Values are
-// trimmed; the "_No response_" sentinel becomes "".
+// trimmed, their HTML character references decoded (importer.DecodeHTMLEntities);
+// the "_No response_" sentinel becomes "".
 func parseBody(body string) sections {
 	out := sections{}
 	lines := strings.Split(strings.ReplaceAll(body, "\r\n", "\n"), "\n")
@@ -38,7 +40,12 @@ func parseBody(body string) sections {
 		if label == "" {
 			return
 		}
-		val := strings.TrimSpace(strings.Join(buf, "\n"))
+		// A value is read as GitHub SHOWS it: the body is Markdown, where a
+		// character reference is the character, and a title pasted from a
+		// retailer page often arrives escaped ("Rizzoli &amp; Isles"). Decoded
+		// with the importer's own rule, so a form and a bulk source cannot mint
+		// two slugs for one title.
+		val := strings.TrimSpace(importer.DecodeHTMLEntities(strings.Join(buf, "\n")))
 		if val == "_No response_" {
 			val = ""
 		}

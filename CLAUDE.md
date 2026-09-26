@@ -1328,7 +1328,17 @@ got.
 The importer maps one export entry to a work + recording (+ people + series),
 importing **factual fields only** (LICENSING.md): it drops publisher copy, raw
 retailer genre strings, ratings and personal state, deduplicates by ASIN against the catalogue,
-and writes canonical files, then runs `pkg/check`. Identity rules: a
+and writes canonical files, then runs `pkg/check`. Every book's free text (titles,
+subtitle, publisher, credit names, chapter titles, series names) has its HTML
+character references DECODED before anything reads it (`entities.go`,
+`DecodeHTMLEntities`: terminated references only, one pass, a decoded no-break
+space read as a space) - libex serves its text with literal `&quot;`/`&amp;`,
+and before the rule 969 works had minted slugs spelling the reference
+("shopaholic-amp-sister"). runBooks decodes for every source, libex-select at
+its own door, `makeSeriesRef` where a claim is built; the libex credit-side
+REFUSALS still read the escaped spelling (the list rule must tell an entity's
+';' from a separator), and internal/issueform's `parseBody` decodes an issue
+body with the same helper. Identity rules: a
 **person slug is the identity** (spelling/diacritic variants of one name merge
 into the existing record; no numbered duplicates) - with two rules closing the
 gaps that identity had, both measured over the full 1.13M-book dump

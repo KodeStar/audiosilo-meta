@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"html"
 	"io"
 	"os"
 	"regexp"
@@ -273,10 +272,10 @@ func parseLibex(data []byte) (libexParse, error) {
 			lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
 			continue
 		}
-		// Only now are the names unescaped: the list refusal above reads the
+		// The names stay escaped here: the list refusal above reads the
 		// SEPARATORS, and an entity reference is a place a ';' hides, so it has
-		// to see the escaped spelling. See unescapeCredits.
-		authors, narrators = unescapeCredits(authors), unescapeCredits(narrators)
+		// to see the escaped spelling. runBooks decodes them with the rest of the
+		// book's text (entities.go).
 		lp.books = append(lp.books, libexToBook(e, asin, region, authors, narrators, &lp))
 	}
 	return lp, nil
@@ -708,7 +707,10 @@ func firstUnnamedCredit(authors, narrators []string) (name string, unnamed bool)
 // refused for it (an absent author is addBook's rule to enforce, for every
 // source).
 func creditIdentifies(name string) bool {
-	for _, c := range sourceCredits([]string{name}, "", creditCensus{}) {
+	// Judged DECODED, as the import will read it: an escaped Cyrillic name
+	// ("&#1040;&#1085;&#1085;&#1072;") slugs to its digits, and only its decoded
+	// form reveals the name that would fall back to the catch-all.
+	for _, c := range sourceCredits([]string{DecodeHTMLEntities(name)}, "", creditCensus{}) {
 		if _, fellBack := personSlug(c.name); fellBack {
 			return false
 		}
@@ -1053,8 +1055,9 @@ func endsWord(s string) bool {
 //	                    terminates the entity.
 //
 // So the entity references are removed before the test. Escaped names are a
-// separate defect (they import under a mangled slug), and refusing them here
-// would hide it behind a rule about something else.
+// separate defect, fixed by reading the reference (DecodeHTMLEntities, which
+// matches references through this same pattern, so the two agree on what one
+// is), and refusing them here would hide it behind a rule about something else.
 //
 // Two of the ten are a person with a STRAY semicolon rather than a list
 // ("Morton Levell;", "Dr. Mohamed E;-Reedy", a typo for El-Reedy). Both are
@@ -1064,31 +1067,6 @@ func endsWord(s string) bool {
 // ';' is deliberately the ONLY separator refused. '&', '/' and ' und ' all
 // occur inside real names and real duo credits.
 var htmlEntityRE = regexp.MustCompile(`&(#[0-9]+|#x[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);`)
-
-// unescapeCredits resolves HTML entity references in a row's credit names.
-//
-// Seven of the dump's credit names reach it HTML-escaped - "Erika B&aacute;lint",
-// "Leo Kni&#382;ka", "Maxine Mitchell &amp; Jason Clarke" - and every one is a
-// real person whose record was minted under a slug spelling the ENTITY
-// ("erika-b-aacute-lint"). That is not a merge or a refusal, it is a name
-// written wrong, so the fix is to read the escape rather than to drop the row.
-//
-// It runs AFTER the credit-side refusals, which is load-bearing in one
-// direction only: the list rule reads the ';' an entity reference ends with, so
-// it must see the escaped spelling to tell that ';' from a list separator.
-// Nothing downstream depends on the escaped form.
-//
-// html.UnescapeString leaves an unknown reference exactly as it found it, so a
-// name that merely contains an ampersand ("Marley &Me Productions") is
-// untouched.
-func unescapeCredits(names []string) []string {
-	for i, n := range names {
-		if strings.ContainsRune(n, '&') {
-			names[i] = html.UnescapeString(n)
-		}
-	}
-	return names
-}
 
 // firstListCredit reports whether ANY credit in the row's author or narrator
 // list is a semicolon-joined list of people, naming the first one it finds.
