@@ -52,7 +52,7 @@ On top of a green pull request:
 |---|---|
 | `data/` only, opened by a **Trusted Contributor** | Auto-merges via GitHub-native auto-merge once required checks pass. No human step. |
 | `data/` only, opened by **anyone else** | One maintainer approval, then merge. |
-| `data/` only, opened by the **series-completion bot** (`bot-sync`) | Merges itself once required checks pass **and** `ai-verify` has applied `ai-verified`. The one automated exception, bounded by "Series-completion bot" below; anything else parks with `sync:needs-human` for a maintainer. |
+| `data/` only, opened by the **series-completion bot** (`bot-sync`) | Merges itself once required checks pass **and** `ai-verify` has applied `ai-verified`. The one automated exception, bounded by "Series-completion bot" below; a pull request that cannot reach that gate is closed by the bot (`sync:auto-excluded`), never merged. |
 | `schema/`, `cmd/`, `internal/`, or `.github/` | **Always** one maintainer approval - never auto-merge. Enforced by `CODEOWNERS`. |
 
 Auto-merge is GitHub's native feature (green required checks → merge), not a bot
@@ -209,15 +209,29 @@ record over.
 checks (`check`, `compose`) are green **and** the `ai-verify` workflow has
 applied `ai-verified`. Here - and only here - that verdict is not advisory: it
 is the review step standing in for the maintainer approval a batch import
-otherwise needs. A failed required check parks the pull request; so does an
-`ai-flagged` verdict, except that a resolver (a Claude or Codex CLI on a
-subscription login) may first amend it **at most twice**. The resolver edits
-`data/` only and only the records this pull request added - it may drop a
-flagged record entirely, and it never touches a record that was here before. If
-the flag survives two amendments the pull request is labelled `sync:needs-human`
-and left for a maintainer. The bot stops opening new pull requests while
-**three** parked ones are open, so a systematic fault produces a short queue
-rather than a backlog.
+otherwise needs, and nothing below relaxes it: a pull request merges only on
+that verdict for its exact head. What the bot does when the verdict does not
+come is an escalation ladder that ends in a decision it makes itself, never in
+a merge. A failed required check is re-run once (flaky CI), then treated like
+an `ai-flagged` verdict with the failed job's log as the evidence. A flag is
+handed to a resolver (a Claude or Codex CLI on a subscription login) for **at
+most three** fixing amendments, then one final amendment that may only REMOVE
+the flagged records. The resolver edits `data/` only and only the records this
+pull request added, and it never touches a record that was here before. If the
+flag survives that, the bot **excludes** the pull request: it closes it
+unmerged, labels it `sync:auto-excluded` (non-blocking, for a maintainer to
+review at leisure), refuses its rows for 45 days and re-queues the rest of
+their series. An exclusion caused by a failing check rather than a flag
+refuses nothing - the bot validates every tree before pushing, so such a
+failure is almost always systemic - and from the second exclusion in a row the
+bot stops starting the next cycle at once and reports itself degraded, so a
+systematic fault cannot churn through the queue. An `ai-verify` run that keeps failing, or no verdict at all for
+six hours, closes the pull request and re-runs the cycle on fresh main, with
+the pace throttled after three such closures in a row. Only a configuration
+fault - no resolver configured, or a token without the Actions permission -
+still parks a pull request as `sync:needs-human`, and the bot stops opening new
+pull requests while **three** parked ones are open, so a systematic fault
+produces a short queue rather than a backlog.
 
 **Accountability.** Every merge is a pull request, so the record is the ordinary
 reviewable one: labels `data`, `bot-intake` and `bot-sync`, a per-series table
