@@ -1004,7 +1004,7 @@
       ],
       "title": "Razzmatazz"
     },
-    "rbgs-brave-amp-brilliant-women": {
+    "rbgs-brave-brilliant-women": {
       "added_at": "2026-07-29",
       "authors": [
         "nadine-epstein",
@@ -1022,7 +1022,7 @@
         "coming-of-age",
         "religion-spirituality"
       ],
-      "id": "rbgs-brave-amp-brilliant-women",
+      "id": "rbgs-brave-brilliant-women",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1290,7 +1290,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "rbgs-brave-amp-brilliant-women"
+          "work": "rbgs-brave-brilliant-women"
         }
       },
       "sources": [
@@ -1300,7 +1300,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "RBG's Brave &amp; Brilliant Women"
+      "title": "RBG's Brave & Brilliant Women"
     },
     "rbt-registered-behavior-technician-exam": {
       "added_at": "2026-07-29",
@@ -7181,95 +7181,6 @@
       ],
       "title": "Reactive Design Patterns"
     },
-    "read-amp-listen-books-peter-pan": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-m-barrie",
-        "michael-johnstone"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "read-amp-listen-books-peter-pan",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dawn-french-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0241452309",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 706814,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 443152,
-              "start_ms": 706814,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 321410,
-              "start_ms": 1149966,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 491171,
-              "start_ms": 1471376,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 443338,
-              "start_ms": 1962547,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 333601,
-              "start_ms": 2405885,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 403330,
-              "start_ms": 2739486,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91zDyF--ZzL.jpg",
-          "id": "dawn-french-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dawn-french"
-          ],
-          "publisher": "DK Audio",
-          "release_date": "2020-12-03",
-          "runtime_min": 52,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0241452309",
-              "type": "libex-import"
-            }
-          ],
-          "work": "read-amp-listen-books-peter-pan"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0241452309",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Read &amp; Listen Books: Peter Pan"
-    },
     "read-and-buried": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8761,6 +8672,95 @@
         }
       ],
       "title": "Read Life Accurately"
+    },
+    "read-listen-books-peter-pan": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "j-m-barrie",
+        "michael-johnstone"
+      ],
+      "genres": [
+        "childrens",
+        "classics"
+      ],
+      "id": "read-listen-books-peter-pan",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dawn-french-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0241452309",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 706814,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 443152,
+              "start_ms": 706814,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 321410,
+              "start_ms": 1149966,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 491171,
+              "start_ms": 1471376,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 443338,
+              "start_ms": 1962547,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 333601,
+              "start_ms": 2405885,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 403330,
+              "start_ms": 2739486,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zDyF--ZzL.jpg",
+          "id": "dawn-french-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dawn-french"
+          ],
+          "publisher": "DK Audio",
+          "release_date": "2020-12-03",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0241452309",
+              "type": "libex-import"
+            }
+          ],
+          "work": "read-listen-books-peter-pan"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0241452309",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Read & Listen Books: Peter Pan"
     },
     "read-people-like-a-book-how-to-analyze-understand-and-predict-peoples-emotions-thoughts-intentions-a": {
       "added_at": "2026-07-29",
