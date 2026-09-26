@@ -296,6 +296,12 @@ type planner struct {
 	// per-row lines would.
 	unaddressableSeries      int
 	unaddressableSeriesNames []string
+	// existingSeriesOnly is Options.ExistingSeriesOnly: getOrCreateSeries drops
+	// a claim that would found a series instead of creating it, and
+	// droppedSeriesExamples names a few for the aggregate warning (the COUNT is
+	// Summary.SeriesClaimsDropped).
+	existingSeriesOnly    bool
+	droppedSeriesExamples []string
 	// lostSeriesClaims counts the valid series placements that died with the ROW
 	// that claimed them (an unknown language, no narrator, no author, no title),
 	// and lostSeriesNames keeps a few series for the aggregate warning. See
@@ -599,6 +605,8 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		mode:           opts.Mode,
 		conflicts:      opts.Conflicts,
 		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
+
+		existingSeriesOnly: opts.ExistingSeriesOnly,
 	}
 }
 
@@ -628,6 +636,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportUnmappedGenres()
 	p.reportUnnamedCredits()
 	p.reportUnaddressableSeries()
+	p.reportDroppedSeriesClaims()
 	p.reportLostSeriesClaims()
 	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
@@ -2593,6 +2602,38 @@ func (p *planner) reportLostSeriesClaims() {
 		p.lostSeriesNames))
 }
 
+// noteDroppedSeriesClaim records one series claim an ExistingSeriesOnly run
+// refused to found (getOrCreateSeries). The example names the series and the row
+// (the ASIN the provenance stamp carries), since the same series name can arrive
+// on several rows and a maintainer reading the line wants to find the row.
+func (p *planner) noteDroppedSeriesClaim(name string) {
+	p.summary.SeriesClaimsDropped++
+	if len(p.droppedSeriesExamples) >= maxWarnExamples {
+		return
+	}
+	ex := fmt.Sprintf("%q", name)
+	if ref := p.curSource.Ref; ref != "" {
+		ex += " (" + ref + ")"
+	}
+	if !slices.Contains(p.droppedSeriesExamples, ex) {
+		p.droppedSeriesExamples = append(p.droppedSeriesExamples, ex)
+	}
+}
+
+// reportDroppedSeriesClaims appends one run-level warning for those claims. A
+// warning rather than a note: each is a series membership a source stated and
+// the catalogue does not record, which is a gap a maintainer may want to close
+// by hand (founding the series deliberately), not something the run did.
+func (p *planner) reportDroppedSeriesClaims() {
+	if p.summary.SeriesClaimsDropped == 0 {
+		return
+	}
+	p.summary.Warnings = append(p.summary.Warnings, withExamples(
+		fmt.Sprintf("%d series claims dropped: the series is not in the catalogue and this run founds none (existing-series-only)",
+			p.summary.SeriesClaimsDropped),
+		p.droppedSeriesExamples))
+}
+
 // reportUnaddressableSeries appends one run-level warning for the series claims
 // dropped because their name has no addressable slug. Like reportUnnamedCredits
 // it is a warning and not a silent drop: these are real series the catalogue is
@@ -2960,6 +3001,14 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 			p.noteTombstone(model.RedirectSeries, t.via, t.slug)
 		}
 		return ss
+	}
+	// Past this point the claim FOUNDS a series. A run that may not found one
+	// drops the claim here - the one place a series is created, so NewSeries
+	// below is unreachable under the option by construction. The row is not
+	// touched: its work is written and its other claims placed as usual.
+	if p.existingSeriesOnly {
+		p.noteDroppedSeriesClaim(name)
+		return nil
 	}
 	slug := t.slug
 	ss := &seriesState{

@@ -223,6 +223,25 @@ type Options struct {
 	// (defaultSeriesLookupCap); a negative value is "no cap", which a caller has
 	// to ask for deliberately because libex is a free public service.
 	SeriesLookupLimit int
+	// ExistingSeriesOnly forbids the run from FOUNDING a series. A series claim
+	// the batch resolution sends to a series the catalogue does not already hold
+	// - a name nothing carries, a same-named series closed to the row's authors
+	// (the step to `<slug>-2`), a series another row of this batch would found -
+	// is DROPPED instead of created: the row still imports (work, recording,
+	// people) and is placed in every claim that lands in a catalogued series;
+	// only the founding claim is discarded, counted as
+	// Summary.SeriesClaimsDropped and named in one aggregated run-level warning.
+	// Summary.NewSeries is therefore 0 by construction (getOrCreateSeries, the
+	// one place a series is created, refuses before it counts one).
+	//
+	// It exists for the series-completion sync bot (audiosilo-meta-sync), whose
+	// contract is that it never adds a series: libex-select keeps a row for ONE
+	// catalogued claim, and a second, uncatalogued claim on the same row (a
+	// translated edition's own series name, a sub-series) would otherwise found
+	// a series on import. false is the default and the long-standing behaviour
+	// exactly. Only the create path can found a series at all - enrichment and
+	// the recordings-only pass never do - so the option changes nothing there.
+	ExistingSeriesOnly bool
 }
 
 // Summary is the outcome counts of a run.
@@ -317,6 +336,11 @@ type Summary struct {
 	// examples and writes a conflict-worklist row per refusal, because it is a
 	// review queue rather than a no-op.
 	SkippedDuplicateIdentity int
+	// SeriesClaimsDropped counts the series claims an ExistingSeriesOnly run
+	// discarded because they would have FOUNDED a series. The row itself is
+	// unaffected - it imports, and every other claim it makes is placed - so
+	// this is disjoint from every row-skip counter. Always 0 without the option.
+	SeriesClaimsDropped int
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the

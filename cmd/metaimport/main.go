@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]
 //
 // libex-select writes no records: it reduces a full libex export to the
@@ -45,6 +45,16 @@
 // default because it reaches the network: the flag is what an operator (or the
 // intake bot) opts in with. --series-lookup-limit caps the lookups per run,
 // counting only the rows that need one.
+//
+// --existing-series-only (every source) forbids the run from FOUNDING a series:
+// a series claim that would create one - a name the catalogue does not hold, or
+// a same-named series closed to the row's authors (the step to `<slug>-2`) - is
+// dropped instead, counted and named in one aggregated warning. The row itself
+// still imports and is placed in every claim that lands in a catalogued series,
+// so the run's "new series" count is 0 by construction. The series-completion
+// sync bot (audiosilo-meta-sync) passes it: its contract is that it never adds
+// a series, and a row libex-select kept for one catalogued claim can carry a
+// second, uncatalogued one (a translated edition's own series name).
 //
 // --enrich (libex only) switches from creating records to ENRICHING the ones
 // already here: a row whose ASIN the catalogue does not hold is counted and
@@ -138,6 +148,10 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	seriesLookup := fs.Bool("series-lookup", false, "fill a missing series position by looking the row's ASIN up on the live libex service (user-library sources; off by default because it reaches the network)")
 	seriesLookupLimit := fs.Int("series-lookup-limit", 0, "cap the series-position lookups per run, counting only the rows that need one (0 = the default cap, negative = no cap)")
 	libexBase := fs.String("libex", importer.LibexBase, "libex base URL for --series-lookup")
+	// Registered for every source because the rule is not a property of one: any
+	// create run can be told it may only complete series the catalogue holds.
+	// The catalogue-bounded modes never found a series, so it is inert there.
+	existingSeriesOnly := fs.Bool("existing-series-only", false, "never found a series: drop (and report) a series claim that would create one; the row still imports")
 
 	// Accept the positional export path either before or after the flags.
 	exportPath, err := parsePositional(fs, args, "<export.json>")
@@ -173,6 +187,8 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		DryRun:     *dryRun,
 		Mode:       mode,
 		Conflicts:  conflictLog,
+
+		ExistingSeriesOnly: *existingSeriesOnly,
 	}
 	if *seriesLookup {
 		client := importer.NewLibexClient()
@@ -432,7 +448,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
@@ -440,6 +456,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  --series-lookup (user-library sources) fills a series position the export did not state by")
 	fmt.Fprintln(os.Stderr, "    looking the row's ASIN up on the live libex service; it is used only when libex names the")
 	fmt.Fprintln(os.Stderr, "    same series. --series-lookup-limit N caps the lookups per run (0 = the default cap of 100).")
+	fmt.Fprintln(os.Stderr, "  --existing-series-only (every source) never founds a series: a claim that would create one is")
+	fmt.Fprintln(os.Stderr, "    dropped and reported, and the row still imports into every catalogued series it claims.")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
 	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
