@@ -1369,6 +1369,10 @@
       "authors": [
         "chase-kilgore"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
       "id": "ignite-chase-kilgore",
       "language": "en",
       "license": "CC0-1.0",
@@ -1391,11 +1395,17 @@
           ],
           "publisher": "Royal Guard Publishing LLC",
           "release_date": "2026-09-15",
+          "runtime_min": 663,
           "sources": [
             {
               "imported_at": "2026-09-24",
               "ref": "B0HJY3THDH",
               "type": "openaudible-import"
+            },
+            {
+              "imported_at": "2026-09-26",
+              "ref": "B0HJY3THDH",
+              "type": "libex-import"
             }
           ],
           "work": "ignite-chase-kilgore"
@@ -1406,6 +1416,11 @@
           "imported_at": "2026-09-24",
           "ref": "B0HJY3THDH",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-09-26",
+          "ref": "B0HJY3THDH",
+          "type": "libex-import"
         }
       ],
       "title": "Ignite"
