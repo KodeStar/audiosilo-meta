@@ -3,6 +3,8 @@ package importer
 import (
 	"html"
 	"strings"
+	"unicode"
+	"unicode/utf8"
 )
 
 // entities.go reads the HTML character references a source's free text arrives
@@ -33,10 +35,14 @@ import (
 //     source's parse layer and the live series lookup go through), because the
 //     claim is composed at parse time and its name cleaning has to read the
 //     decoded text.
-//   - the libex CREDIT-SIDE REFUSALS still read the escaped spelling, on purpose:
-//     the list rule has to tell the ';' that ends a reference from a list
-//     separator (see htmlEntityRE). The one refusal that judges a name's IDENTITY
-//     rather than its punctuation, creditIdentifies, decodes first.
+//   - a genre claim is decoded where it is BUILT too (libexGenreClaims,
+//     pathGenreClaims), for the same reason: the claim is composed at parse
+//     time, and a name or category path read escaped misses the vocabulary.
+//   - the libex CREDIT-LIST refusal still reads the escaped spelling, on purpose:
+//     it has to tell the ';' that ends a reference from a list separator (see
+//     htmlEntityRE). Every other credit-side refusal judges the name DECODED,
+//     as the import will read it (refuseLibexCredits; creditIdentifies decodes
+//     for itself).
 //
 // Decoding is ONE pass. A value escaped twice ("&amp;quot;") decodes to its
 // once-escaped spelling rather than being chased to a fixpoint: a source that
@@ -51,12 +57,14 @@ import (
 // references HTML accepts WITHOUT a semicolon, so "Rock&regular" would become
 // "Rock®ular" and "Fish&notes" "Fish¬es"; a retailer title is text, not an HTML
 // document, and a bare ampersand in it is an ampersand. An unknown name
-// ("AT&T;" reads "&T;") is left exactly as written, which is also
-// html.UnescapeString's own behaviour.
+// ("AT&T;" reads "&T;") is left exactly as written - INCLUDING one that merely
+// begins with a legacy name, which html.UnescapeString would decode as that
+// prefix ("&copyright;" -> "©right;"); see decodeEntity.
 //
-// A decoded NO-BREAK SPACE ("&nbsp;", "&#160;", "&#xa0;") becomes an ordinary
-// space: the reference is layout markup, not part of the name, and a U+00A0
-// stored inside a title is invisible to every reader while breaking every exact
+// A decoded WHITESPACE character - a no-break space ("&nbsp;", "&#160;",
+// "&#xa0;"), a newline, a tab - becomes an ordinary space: the reference is
+// layout markup, not part of the name, and a U+00A0 or a line break stored
+// inside a title is invisible to every reader while breaking every exact
 // comparison against the same title typed with a space.
 //
 // Exported because internal/issueform reads the same references out of an
@@ -69,11 +77,22 @@ func DecodeHTMLEntities(s string) string {
 }
 
 // decodeEntity decodes one terminated reference htmlEntityRE matched.
+// (pkg/extract's normalizeText makes the same no-break-space choice for epub
+// text.)
+//
+// A whole reference decodes to at most two runes (the longest HTML5 entities
+// are two code points). A longer result is html.UnescapeString decoding only a
+// legacy PREFIX of a name it does not know ("&copyright;" -> "©right;"), so the
+// reference is not one and stays as written.
 func decodeEntity(ref string) string {
-	if r := html.UnescapeString(ref); r != "\u00a0" {
-		return r
+	r := html.UnescapeString(ref)
+	if utf8.RuneCountInString(r) > 2 {
+		return ref
 	}
-	return " "
+	if c, size := utf8.DecodeRuneInString(r); size == len(r) && unicode.IsSpace(c) {
+		return " "
+	}
+	return r
 }
 
 // sourceTextKeys are the raw keys every parser leaves a book's FREE TEXT under
@@ -91,18 +110,51 @@ var sourceTextKeys = []string{"title", "title_short", "subtitle", "author", "nar
 // exactly once per book - see the file comment for the two doors that call it.
 func (s *sourceBook) decodeText() {
 	for _, key := range sourceTextKeys {
-		if v, ok := s.raw[key].(string); ok && strings.ContainsRune(v, '&') {
-			s.raw[key] = strings.TrimSpace(DecodeHTMLEntities(v))
+		if v, ok := s.raw[key].(string); ok {
+			s.raw[key] = decodeField(v)
 		}
 	}
 	for _, list := range [][]string{s.authors, s.narrators} {
 		for i, name := range list {
-			list[i] = strings.TrimSpace(DecodeHTMLEntities(name))
+			list[i] = decodeField(name)
 		}
 	}
-	for _, ch := range s.chapterRows() {
-		if v, ok := ch["title"].(string); ok && strings.ContainsRune(v, '&') {
-			ch["title"] = strings.TrimSpace(DecodeHTMLEntities(v))
+	// The rows are maps shared with the raw entry, so the decode is written
+	// through them; keeping the slice on the book only spares the record builder
+	// a second rawBook.chapters() walk.
+	s.chapters = s.chapterRows()
+	for _, ch := range s.chapters {
+		if v, ok := ch["title"].(string); ok {
+			ch["title"] = decodeField(v)
 		}
 	}
+}
+
+// decodeField is DecodeHTMLEntities plus the re-trim decodeText documents,
+// and leaves a value holding no reference exactly as it was.
+func decodeField(v string) string {
+	if !strings.ContainsRune(v, '&') {
+		return v
+	}
+	return strings.TrimSpace(DecodeHTMLEntities(v))
+}
+
+// decodeNames is decodeField over a credit list, returning a NEW slice (the
+// caller's escaped list is still read by the list rule); a list holding no
+// reference is returned as it is.
+func decodeNames(names []string) []string {
+	var out []string
+	for i, n := range names {
+		d := decodeField(n)
+		if d != n && out == nil {
+			out = append(make([]string, 0, len(names)), names[:i]...)
+		}
+		if out != nil {
+			out = append(out, d)
+		}
+	}
+	if out == nil {
+		return names
+	}
+	return out
 }

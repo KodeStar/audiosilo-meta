@@ -195,7 +195,7 @@ func parseLibationSeries(order, names string) []seriesRef {
 	refs = nil
 	for _, name := range strings.Split(strings.TrimSpace(names), ", ") {
 		if name = strings.TrimSpace(name); name != "" {
-			refs = append(refs, seriesRef{name: strings.TrimSpace(DecodeHTMLEntities(name))})
+			refs = append(refs, makeSeriesRef(name, ""))
 		}
 	}
 	return refs

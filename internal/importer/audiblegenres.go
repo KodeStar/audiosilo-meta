@@ -137,7 +137,9 @@ func GenrePathKey(path string) string {
 func pathGenreClaims(ladder, region string) []genreClaim {
 	var segs []string
 	for _, s := range strings.Split(ladder, ":") {
-		if s = strings.TrimSpace(s); s != "" {
+		// Each level is decoded AFTER the split, so an escaped colon cannot
+		// become a level boundary (entities.go).
+		if s = strings.TrimSpace(DecodeHTMLEntities(s)); s != "" {
 			segs = append(segs, s)
 		}
 	}

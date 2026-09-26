@@ -35,7 +35,7 @@ func (c *composer) importLibrary(s sections) {
 		return
 	}
 
-	raw, ok := c.attachmentBytes(s.first(fImportAttachment, fImportAttachmentLegacy), maxImportAttachmentBytes)
+	raw, ok := c.attachmentBytes(s.firstRaw(fImportAttachment, fImportAttachmentLegacy), maxImportAttachmentBytes)
 	if !ok {
 		return
 	}

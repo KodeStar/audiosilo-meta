@@ -509,13 +509,16 @@ func libexGenreClaims(v any) []genreClaim {
 	for _, el := range arr {
 		switch x := el.(type) {
 		case map[string]any:
-			c := genreClaim{node: coerceStr(x["asin"]), name: coerceStr(x["name"])}
+			// Names are decoded where the claim is built, as a series name is
+			// (entities.go): libex escapes its text, and "Science Fiction &amp;
+			// Fantasy" is in no vocabulary.
+			c := genreClaim{node: coerceStr(x["asin"]), name: DecodeHTMLEntities(coerceStr(x["name"]))}
 			if c.node == "" && c.name == "" {
 				continue
 			}
 			claims = append(claims, c)
 		default:
-			if name := coerceStr(el); name != "" {
+			if name := DecodeHTMLEntities(coerceStr(el)); name != "" {
 				claims = append(claims, genreClaim{name: name})
 			}
 		}
@@ -599,7 +602,13 @@ func (r creditRefusal) label(asin string) string {
 // refuseLibexCredits applies the credit-side row refusals in order and reports
 // the first one the row earns.
 func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
-	if role, name, why, isAI := firstAICredit(authors, narrators); isAI {
+	// The list rule reads the ESCAPED names (it has to tell an entity's ';' from
+	// a separator) and the unidentifiable-name rule decodes for itself
+	// (creditIdentifies); the vocabulary rules judge the name as the import will
+	// read it, or an escaped spelling of an AI voice or a placeholder would be
+	// selected here and refused by runBooks' own gate after the decode.
+	decAuthors, decNarrators := decodeNames(authors), decodeNames(narrators)
+	if role, name, why, isAI := firstAICredit(decAuthors, decNarrators); isAI {
 		return creditRefusal{
 			class:  warnAINarrator,
 			reason: reasonAINarrator,
@@ -607,7 +616,7 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 			detail: fmt.Sprintf("%s %q is %s", role, name, why),
 		}, true
 	}
-	if name, junk := firstJunkCredit(authors, narrators); junk {
+	if name, junk := firstJunkCredit(decAuthors, decNarrators); junk {
 		return creditRefusal{
 			class:  warnJunkCredit,
 			reason: reasonJunkCredit,
@@ -623,7 +632,7 @@ func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
 			detail: fmt.Sprintf("credit %q is a semicolon-joined list of people, not one person", name),
 		}, true
 	}
-	if name, placeholder := firstPlaceholderCredit(authors, narrators); placeholder {
+	if name, placeholder := firstPlaceholderCredit(decAuthors, decNarrators); placeholder {
 		return creditRefusal{
 			class:  warnPlaceholderCredit,
 			reason: reasonPlaceholder,

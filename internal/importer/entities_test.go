@@ -22,8 +22,16 @@ func TestDecodeHTMLEntities(t *testing.T) {
 		// in a title is an ampersand, whatever letters follow it.
 		{"Rock&regular", "Rock&regular"},
 		{"Fish&notes &amp chips", "Fish&notes &amp chips"},
-		// An unknown name is left exactly as written.
+		// An unknown name is left exactly as written - also one that begins
+		// with a legacy name html.UnescapeString would decode as a prefix.
 		{"AT&T; Stories", "AT&T; Stories"},
+		{"Fish&notes; Chips", "Fish&notes; Chips"},
+		{"All &copyright; Reserved", "All &copyright; Reserved"},
+		// A decoded line break or tab is a space, like a no-break space.
+		{"Line&#10;Break", "Line Break"},
+		{"Tab&Tab;Stop", "Tab Stop"},
+		// A two-code-point entity is whole, not a prefix.
+		{"a&ngE;b", "a\u2267\u0338b"},
 		// ONE pass: a doubly-escaped value decodes once.
 		{"Tom &amp;amp; Jerry", "Tom &amp; Jerry"},
 		{"", ""},
@@ -173,5 +181,35 @@ func TestLibexSelectReadsTheDecodedTitle(t *testing.T) {
 	}
 	if len(book.series) != 1 || book.series[0].name != "Crown & Key" {
 		t.Errorf("series = %+v", book.series)
+	}
+}
+
+// TestGenreClaimsAreDecoded: a genre claim is built at parse time, so its name
+// and category path are decoded there - an escaped name is in no vocabulary.
+func TestGenreClaimsAreDecoded(t *testing.T) {
+	claims := libexGenreClaims([]any{
+		map[string]any{"asin": "18580606011", "name": "Science Fiction &amp; Fantasy"},
+		"Mystery &amp; Thriller",
+	})
+	if len(claims) != 2 || claims[0].name != "Science Fiction & Fantasy" || claims[1].name != "Mystery & Thriller" {
+		t.Errorf("libex claims = %+v", claims)
+	}
+	path := pathGenreClaims("Science Fiction &amp; Fantasy:Epic", "us")
+	if len(path) != 2 || path[0].name != "Science Fiction & Fantasy" ||
+		path[1].path != GenrePathKey("Science Fiction & Fantasy:Epic") {
+		t.Errorf("path claims = %+v", path)
+	}
+}
+
+// TestEscapedAICreditIsRefusedAtTheParseLayer: the vocabulary refusals judge
+// the name decoded, so an escaped AI voice is refused where libex-select can see
+// it rather than only by runBooks' gate after the decode; the list rule still
+// reads the escaped spelling, so an entity's ';' is not a list separator.
+func TestEscapedAICreditIsRefusedAtTheParseLayer(t *testing.T) {
+	if r, refused := refuseLibexCredits([]string{"Ada One"}, []string{"Voz sint&eacute;tica"}); !refused || r.class != warnAINarrator {
+		t.Errorf("refusal = %+v, %v; want the AI-narrator refusal", r, refused)
+	}
+	if r, refused := refuseLibexCredits([]string{"Erika B&aacute;lint"}, []string{"Leo Kni&#382;ka"}); refused {
+		t.Errorf("escaped real names refused: %+v", r)
 	}
 }

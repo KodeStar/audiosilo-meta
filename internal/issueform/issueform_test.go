@@ -140,6 +140,19 @@ func TestParseBodyDecodesCharacterReferences(t *testing.T) {
 	}
 }
 
+// TestAttachmentFieldIsReadUndecoded: pasted JSON is a document with its own
+// escaping (and sits in a code fence, where Markdown decodes nothing), so the
+// attachment reader sees it exactly as submitted - a decoded "&quot;" would end
+// the JSON string, and an import's text is decoded by the importer itself.
+func TestAttachmentFieldIsReadUndecoded(t *testing.T) {
+	pasted := "```json\n[{\"title\":\"The Key &quot;Intl&quot;\"}]\n```"
+	s := parseBody(field(fImportAttachment, pasted))
+	_, inline, ok := extractAttachment(s.firstRaw(fImportAttachment, fImportAttachmentLegacy))
+	if !ok || string(inline) != `[{"title":"The Key &quot;Intl&quot;"}]` {
+		t.Errorf("inline = %q, ok = %v; want the pasted JSON verbatim", inline, ok)
+	}
+}
+
 func TestParseBody(t *testing.T) {
 	body := field("Title", "Hello World") +
 		field("Subtitle", "") +
