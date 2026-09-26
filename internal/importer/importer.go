@@ -529,6 +529,12 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	// synthetic narration under the canonical record, the bulk mirror may not.
 	// See the planner's userTier field and synthetic.go.
 	userTier := model.TierOfSource(sourceType) == model.TierUserLibrary
+	// The books' free text is decoded before anything else reads it - the AI
+	// gate included - so no source's HTML character references reach a credit,
+	// an identity comparison or a slug (entities.go).
+	for i := range books {
+		books[i].decodeText()
+	}
 	// Refused before ANYTHING reads the batch - before the censuses, before the
 	// title pre-pass, before planning - so an AI credit cannot reach the person
 	// table, the credit census or a title decision. See refuseAIBooks.
@@ -1474,7 +1480,7 @@ type seriesRef struct {
 // series per narrator.
 func makeSeriesRef(name, rawSeq string) seriesRef {
 	pos, ok := NormalizeSequence(rawSeq)
-	return seriesRef{name: cleanSeriesName(name), seq: pos, seqOK: ok, rawSeq: rawSeq}
+	return seriesRef{name: cleanSeriesName(DecodeHTMLEntities(name)), seq: pos, seqOK: ok, rawSeq: rawSeq}
 }
 
 // sourceCredits resolves one credit list (authors or narrators). A source that

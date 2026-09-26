@@ -125,6 +125,34 @@ const (
 	seriesPack    = "data/series/0.json"
 )
 
+// TestParseBodyDecodesCharacterReferences: a title pasted from a retailer page
+// often arrives escaped, and GitHub renders the body as Markdown, where a
+// reference IS the character - so the value is read decoded, by the importer's
+// own rule, and a bare ampersand stays an ampersand.
+func TestParseBodyDecodesCharacterReferences(t *testing.T) {
+	s := parseBody(field("Title", "Vanish: A Rizzoli &amp; Isles Novel") +
+		field("Author(s)", "Jos&eacute; Rollins, Tom & Jerry"))
+	if got := s.get("Title"); got != "Vanish: A Rizzoli & Isles Novel" {
+		t.Errorf("Title = %q", got)
+	}
+	if got := s.get("Author(s)"); got != "José Rollins, Tom & Jerry" {
+		t.Errorf("Author(s) = %q", got)
+	}
+}
+
+// TestAttachmentFieldIsReadUndecoded: pasted JSON is a document with its own
+// escaping (and sits in a code fence, where Markdown decodes nothing), so the
+// attachment reader sees it exactly as submitted - a decoded "&quot;" would end
+// the JSON string, and an import's text is decoded by the importer itself.
+func TestAttachmentFieldIsReadUndecoded(t *testing.T) {
+	pasted := "```json\n[{\"title\":\"The Key &quot;Intl&quot;\"}]\n```"
+	s := parseBody(field(fImportAttachment, pasted))
+	_, inline, ok := extractAttachment(s.firstRaw(fImportAttachment, fImportAttachmentLegacy))
+	if !ok || string(inline) != `[{"title":"The Key &quot;Intl&quot;"}]` {
+		t.Errorf("inline = %q, ok = %v; want the pasted JSON verbatim", inline, ok)
+	}
+}
+
 func TestParseBody(t *testing.T) {
 	body := field("Title", "Hello World") +
 		field("Subtitle", "") +

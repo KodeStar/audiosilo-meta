@@ -1049,6 +1049,64 @@
       ],
       "title": "Meditations"
     },
+    "meditations-affirmations": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "joseph-murphy"
+      ],
+      "genres": [
+        "health-wellness",
+        "religion-spirituality"
+      ],
+      "id": "meditations-affirmations",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tim-andres-pabon-2016": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01HDTQEHS",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3602390,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qTzGJAMCL.jpg",
+          "id": "tim-andres-pabon-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-andres-pabon"
+          ],
+          "publisher": "Ascent Audio",
+          "release_date": "2016-06-22",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01HDTQEHS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditations-affirmations"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01HDTQEHS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Meditations & Affirmations"
+    },
     "meditations-amazonclassics-edition": {
       "added_at": "2026-07-29",
       "authors": [
@@ -1190,64 +1248,6 @@
         }
       ],
       "title": "Meditations (AmazonClassics Edition)"
-    },
-    "meditations-amp-affirmations": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "joseph-murphy"
-      ],
-      "genres": [
-        "health-wellness",
-        "religion-spirituality"
-      ],
-      "id": "meditations-amp-affirmations",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tim-andres-pabon-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B01HDTQEHS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3602390,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91qTzGJAMCL.jpg",
-          "id": "tim-andres-pabon-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tim-andres-pabon"
-          ],
-          "publisher": "Ascent Audio",
-          "release_date": "2016-06-22",
-          "runtime_min": 60,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B01HDTQEHS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "meditations-amp-affirmations"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01HDTQEHS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Meditations &amp; Affirmations"
     },
     "meditations-essential-stoic-wisdom-on-self-discipline-resilience-mental-clarity": {
       "added_at": "2026-07-29",
@@ -6115,7 +6115,7 @@
       ],
       "title": "Mediumnidad [Mediumship]"
     },
-    "mediums-amp-murder": {
+    "mediums-murder": {
       "added_at": "2026-08-02",
       "authors": [
         "elle-wren-burke"
@@ -6124,7 +6124,7 @@
         "cozy-mystery",
         "mystery"
       ],
-      "id": "mediums-amp-murder",
+      "id": "mediums-murder",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -6261,7 +6261,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "mediums-amp-murder"
+          "work": "mediums-murder"
         }
       },
       "sources": [
@@ -6271,7 +6271,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Mediums &amp; Murder"
+      "title": "Mediums & Murder"
     },
     "mediums-psychics-and-channelers": {
       "added_at": "2026-07-29",

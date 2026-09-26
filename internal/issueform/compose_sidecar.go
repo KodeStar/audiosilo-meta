@@ -97,7 +97,7 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		}
 	}
 
-	raw, ok := c.attachmentBytes(s.get(attachLabel), maxAttachmentBytes)
+	raw, ok := c.attachmentBytes(s.raw(attachLabel), maxAttachmentBytes)
 	if !ok {
 		return
 	}

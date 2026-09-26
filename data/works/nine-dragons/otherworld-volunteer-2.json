@@ -1721,7 +1721,7 @@
       ],
       "title": "Otis Spofford"
     },
-    "oto-ntilde-o": {
+    "otono": {
       "added_at": "2026-07-29",
       "authors": [
         "ali-smith",
@@ -1737,7 +1737,65 @@
         "literary-fiction",
         "politics"
       ],
-      "id": "oto-ntilde-o",
+      "id": "otono",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "adrianna-sananes-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09QFZXH1T",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OhcczAAlL.jpg",
+          "id": "adrianna-sananes-2022",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adrianna-sananes"
+          ],
+          "publisher": "Booka",
+          "release_date": "2022-01-17",
+          "runtime_min": 350,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09QFZXH1T",
+              "type": "libex-import"
+            }
+          ],
+          "work": "otono"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09QFZXH1T",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Otoño"
+    },
+    "otono-ali-smith": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "ali-smith",
+        "magdalena-palmer"
+      ],
+      "credits": [
+        {
+          "person": "magdalena-palmer",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "literary-fiction",
+        "politics"
+      ],
+      "id": "otono-ali-smith",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -1809,71 +1867,13 @@
               "type": "libex-import"
             }
           ],
-          "work": "oto-ntilde-o"
+          "work": "otono-ali-smith"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B09QFX6BKN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Oto&ntilde;o"
-    },
-    "otono": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ali-smith",
-        "magdalena-palmer"
-      ],
-      "credits": [
-        {
-          "person": "magdalena-palmer",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "literary-fiction",
-        "politics"
-      ],
-      "id": "otono",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adrianna-sananes-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09QFZXH1T",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91OhcczAAlL.jpg",
-          "id": "adrianna-sananes-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adrianna-sananes"
-          ],
-          "publisher": "Booka",
-          "release_date": "2022-01-17",
-          "runtime_min": 350,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09QFZXH1T",
-              "type": "libex-import"
-            }
-          ],
-          "work": "otono"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09QFZXH1T",
           "type": "libex-import"
         }
       ],

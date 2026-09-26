@@ -2320,7 +2320,7 @@
       ],
       "title": "Brought to Light"
     },
-    "brown-bear-amp-friends": {
+    "brown-bear-brown-bear-what-do-you-see": {
       "added_at": "2026-07-29",
       "authors": [
         "bill-martin-jr"
@@ -2330,7 +2330,91 @@
         "classics",
         "nature"
       ],
-      "id": "brown-bear-amp-friends",
+      "id": "brown-bear-brown-bear-what-do-you-see",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "gwyneth-paltrow-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA3GI0",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12074,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 211626,
+              "start_ms": 12074,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 222540,
+              "start_ms": 223700,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 133050,
+              "start_ms": 446240,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 105047,
+              "start_ms": 579290,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 29117,
+              "start_ms": 684337,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81nBOehyVvL.jpg",
+          "id": "gwyneth-paltrow-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gwyneth-paltrow"
+          ],
+          "publisher": "Macmillan Young Listeners",
+          "release_date": "2009-08-04",
+          "runtime_min": 11,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA3GI0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "brown-bear-brown-bear-what-do-you-see"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA3GI0",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Brown Bear, Brown Bear, What Do You See?"
+    },
+    "brown-bear-friends": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "bill-martin-jr"
+      ],
+      "genres": [
+        "childrens",
+        "classics",
+        "nature"
+      ],
+      "id": "brown-bear-friends",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -2422,7 +2506,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "brown-bear-amp-friends"
+          "work": "brown-bear-friends"
         }
       },
       "sources": [
@@ -2432,91 +2516,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Brown Bear &amp; Friends"
-    },
-    "brown-bear-brown-bear-what-do-you-see": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "bill-martin-jr"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "brown-bear-brown-bear-what-do-you-see",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gwyneth-paltrow-2009": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA3GI0",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 12074,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 211626,
-              "start_ms": 12074,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 222540,
-              "start_ms": 223700,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 133050,
-              "start_ms": 446240,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 105047,
-              "start_ms": 579290,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 29117,
-              "start_ms": 684337,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81nBOehyVvL.jpg",
-          "id": "gwyneth-paltrow-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gwyneth-paltrow"
-          ],
-          "publisher": "Macmillan Young Listeners",
-          "release_date": "2009-08-04",
-          "runtime_min": 11,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA3GI0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "brown-bear-brown-bear-what-do-you-see"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA3GI0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Brown Bear, Brown Bear, What Do You See?"
+      "title": "Brown Bear & Friends"
     },
     "brown-church": {
       "added_at": "2026-07-29",

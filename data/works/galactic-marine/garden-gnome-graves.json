@@ -8383,72 +8383,6 @@
       ],
       "title": "Gargantis"
     },
-    "gargantua-amp-pantagruel-classic-serial": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "francois-rabelais"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "classics",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "gargantua-amp-pantagruel-classic-serial",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-troughton-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00CUG5FNE",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3401676,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3408387,
-              "start_ms": 3401676,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/912K1jNVgsL.jpg",
-          "id": "david-troughton-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-troughton",
-            "full-cast"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2013-05-20",
-          "runtime_min": 113,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00CUG5FNE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "gargantua-amp-pantagruel-classic-serial"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00CUG5FNE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Gargantua &amp; Pantagruel (Classic Serial)"
-    },
     "gargantua-french-version": {
       "added_at": "2026-07-29",
       "authors": [
@@ -8646,6 +8580,72 @@
         }
       ],
       "title": "Gargantua [French Version]"
+    },
+    "gargantua-pantagruel-classic-serial": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "francois-rabelais"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "classics",
+        "fairy-tales-folklore",
+        "fantasy"
+      ],
+      "id": "gargantua-pantagruel-classic-serial",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "david-troughton-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00CUG5FNE",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3401676,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3408387,
+              "start_ms": 3401676,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912K1jNVgsL.jpg",
+          "id": "david-troughton-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-troughton",
+            "full-cast"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2013-05-20",
+          "runtime_min": 113,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00CUG5FNE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "gargantua-pantagruel-classic-serial"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00CUG5FNE",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Gargantua & Pantagruel (Classic Serial)"
     },
     "gargoyle-rumble": {
       "added_at": "2026-08-02",

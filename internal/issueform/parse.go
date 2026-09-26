@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/ghhost"
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
 
 // sections is the parsed issue-form body: each `### <label>` heading maps to
@@ -27,7 +28,9 @@ var headingRE = regexp.MustCompile(`^###\s+(.+?)\s*$`)
 // GitHub renders each form field (input/textarea/dropdown/checkboxes with an
 // id) as an `### <label>` heading followed by the value; type:markdown display
 // blocks carry no id and never render, so only real fields appear. Values are
-// trimmed; the "_No response_" sentinel becomes "".
+// trimmed and the "_No response_" sentinel becomes "". Values are stored as the
+// body carries them; get decodes their HTML character references and
+// raw/firstRaw do not (an attachment field's pasted JSON).
 func parseBody(body string) sections {
 	out := sections{}
 	lines := strings.Split(strings.ReplaceAll(body, "\r\n", "\n"), "\n")
@@ -63,16 +66,30 @@ func parseBody(body string) sections {
 	return out
 }
 
-// get returns the trimmed value for a field label, or "".
-func (s sections) get(label string) string { return strings.TrimSpace(s[label]) }
+// get returns the trimmed value for a field label, or "", with its HTML
+// character references decoded. A value is read as GitHub SHOWS it: the body is
+// Markdown, where a character reference is the character, and a title pasted
+// from a retailer page often arrives escaped ("Rizzoli &amp; Isles"). Decoded
+// with the importer's own rule, so a form and a bulk source cannot mint two
+// slugs for one title.
+func (s sections) get(label string) string {
+	return strings.TrimSpace(importer.DecodeHTMLEntities(s.raw(label)))
+}
 
-// first returns the value of the first of labels the body carries, or "". It is
-// how a renamed field keeps reading issues opened under its old label: the
-// current label first, then the older spellings.
-func (s sections) first(labels ...string) string {
+// raw returns the trimmed value for a field label exactly as the body carries
+// it. An ATTACHMENT field is read this way: pasted JSON is usually fenced, where
+// Markdown decodes nothing, and it is a document with its own escaping - a
+// decoded "&quot;" inside a JSON string ends the string, and an import's text
+// is decoded by the importer itself, so decoding here would decode it twice.
+func (s sections) raw(label string) string { return strings.TrimSpace(s[label]) }
+
+// firstRaw returns the raw value (see raw) of the first of labels the body
+// carries, or "". It is how a renamed field keeps reading issues opened under
+// its old label: the current label first, then the older spellings.
+func (s sections) firstRaw(labels ...string) string {
 	for _, l := range labels {
 		if _, ok := s[l]; ok {
-			return s.get(l)
+			return s.raw(l)
 		}
 	}
 	return ""
