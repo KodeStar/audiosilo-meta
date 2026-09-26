@@ -2,7 +2,6 @@ package importer
 
 import (
 	"strconv"
-	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -50,11 +49,7 @@ func tombRow(asin, title, author, narrator string, minutes int, series, pos stri
 
 func runLibexOver(t *testing.T, dataDir string, rows ...string) Summary {
 	t.Helper()
-	sum, err := RunLibex(writeBooks(t, strings.Join(rows, "\n")+"\n"), Options{DataDir: dataDir, ImportDate: testImportDate})
-	if err != nil {
-		t.Fatalf("import run: %v", err)
-	}
-	return sum
+	return runLibexWith(t, dataDir, Options{}, rows...)
 }
 
 // TestSeriesBaseTombstoneJoinsTheSurvivor is issue #2320's own shape: a repair

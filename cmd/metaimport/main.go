@@ -182,12 +182,11 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	defer closeLog()
 
 	opts := importer.Options{
-		DataDir:    *data,
-		ImportDate: stamp,
-		DryRun:     *dryRun,
-		Mode:       mode,
-		Conflicts:  conflictLog,
-
+		DataDir:            *data,
+		ImportDate:         stamp,
+		DryRun:             *dryRun,
+		Mode:               mode,
+		Conflicts:          conflictLog,
 		ExistingSeriesOnly: *existingSeriesOnly,
 	}
 	if *seriesLookup {

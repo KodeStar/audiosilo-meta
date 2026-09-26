@@ -74,7 +74,7 @@ func TestExistingSeriesOnlyDropsTheFoundingClaim(t *testing.T) {
 	if entryExists(t, dataDir, seriesAddr("une-enquete-de-cordell-logan")) {
 		t.Error("a series was founded under ExistingSeriesOnly")
 	}
-	if n := countWarnings(sum.Warnings, "1 series claims dropped: the series is not in the catalogue"); n != 1 {
+	if n := countWarnings(sum.Warnings, "1 series claims dropped: no catalogued series fits the claim"); n != 1 {
 		t.Errorf("want ONE aggregated drop warning, got %d: %v", n, sum.Warnings)
 	}
 	if !hasWarning(sum.Warnings, `"Une Enquête de Cordell Logan" (B0GDJN7NZQ)`) {
@@ -157,8 +157,8 @@ func TestExistingSeriesOnlyDropsAClosedSeriesStep(t *testing.T) {
 		}
 		sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, in...)
 		assertTreeValid(t, dataDir)
-		if !hasWarning(sum.Warnings, `"Lost Fleet" (B0CAMPB004)`) {
-			t.Errorf("the drop warning does not name Campbell's row: %v", sum.Warnings)
+		if !hasWarning(sum.Warnings, `"Lost Fleet" (B0CAMPB004) [lost-fleet belongs to other authors]`) {
+			t.Errorf("the drop warning does not name Campbell's row and the series it did not fit: %v", sum.Warnings)
 		}
 		return outcome{
 			hawke:     seriesWorks(t, dataDir, "lost-fleet"),
@@ -176,5 +176,39 @@ func TestExistingSeriesOnlyDropsAClosedSeriesStep(t *testing.T) {
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("%s order: %+v, want %+v", name, got, want)
 		}
+	}
+}
+
+// A claim the run will drop is dropped BEFORE anything acts on it: no live
+// position lookup is spent on it, no "placed at" line reports a placement that
+// never happens, and it is counted once, as a dropped claim - not as a missing
+// position.
+func TestExistingSeriesOnlyDropsBeforeLookupAndArbitration(t *testing.T) {
+	lookup := warhammerLookup(SeriesPosition{Name: "Warhammer 40,000", Position: "3"})
+	sum, dataDir := runSeriesBooks(t, warhammerExport, Options{SeriesLookup: lookup, ExistingSeriesOnly: true})
+	if lookup.calls != 0 {
+		t.Errorf("lookups = %d, want 0 for a claim the run drops", lookup.calls)
+	}
+	if sum.SeriesClaimsDropped != 1 || sum.NewSeries != 0 {
+		t.Errorf("SeriesClaimsDropped/NewSeries = %d/%d, want 1/0", sum.SeriesClaimsDropped, sum.NewSeries)
+	}
+	for _, s := range []string{"missing or invalid position", "taken from libex"} {
+		if line, found := warningWith(sum, s); found {
+			t.Errorf("a dropped claim still reported %q: %q", s, line)
+		}
+	}
+	if entryExists(t, dataDir, seriesAddr("warhammer-40-000")) {
+		t.Error("a series was founded under ExistingSeriesOnly")
+	}
+
+	sum, dataDir = runSeriesBooks(t, towerboundExport("Towerbound, Book 6", "8"), Options{ExistingSeriesOnly: true})
+	if line, found := warningWith(sum, "disagrees with the title"); found {
+		t.Errorf("a dropped claim still reported a title arbitration: %q", line)
+	}
+	if sum.SeriesClaimsDropped != 1 || sum.NewSeries != 0 {
+		t.Errorf("SeriesClaimsDropped/NewSeries = %d/%d, want 1/0", sum.SeriesClaimsDropped, sum.NewSeries)
+	}
+	if entryExists(t, dataDir, seriesAddr("towerbound")) {
+		t.Error("a series was founded under ExistingSeriesOnly")
 	}
 }
