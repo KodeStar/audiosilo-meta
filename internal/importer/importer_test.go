@@ -748,6 +748,12 @@ func listWorks(t *testing.T, dataDir string) []string {
 	return testpack.Slugs(t, dataDir, pack.FamilyWorks)
 }
 
+// listSeries returns every series slug in the tree, sorted.
+func listSeries(t *testing.T, dataDir string) []string {
+	t.Helper()
+	return testpack.Slugs(t, dataDir, pack.FamilySeries)
+}
+
 func hasWarning(warnings []string, sub string) bool {
 	return countWarnings(warnings, sub) > 0
 }

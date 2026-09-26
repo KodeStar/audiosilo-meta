@@ -26,16 +26,43 @@ func seedSelectCatalogue(t *testing.T) string {
 	return dataDir
 }
 
+// seedTwoSeriesCatalogue is seedSelectCatalogue plus a SECOND catalogued series
+// of the same author ("Atlas Cycle", holding volume 1), so a row can claim two
+// series the catalogue already holds.
+func seedTwoSeriesCatalogue(t *testing.T) string {
+	t.Helper()
+	dataDir := seedSelectCatalogue(t)
+	seedTree(t, dataDir, map[string]string{
+		"series/at/atlas-cycle.json": `{"id":"atlas-cycle","license":"CC0-1.0","name":"Atlas Cycle",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"volume-one"}]}`,
+	})
+	return dataDir
+}
+
+// seriesClaim2 is one series claim of a test row: libex lists several per book,
+// and the importer acts on every one of them that states a position.
+type seriesClaim2 struct{ name, position string }
+
 // selectRow renders one compact libex row. Rows are written compact and on one
 // line so the byte-identity assertion is meaningful: the selector must pass a
 // row through verbatim, never re-render it.
 func selectRow(asin, title, region, language, series, position string) string {
-	seriesJSON := "[]"
+	var claims []seriesClaim2
 	if series != "" {
-		seriesJSON = `[{"name":"` + series + `","position":"` + position + `"}]`
+		claims = append(claims, seriesClaim2{series, position})
+	}
+	return selectRowClaiming(asin, title, region, language, claims...)
+}
+
+// selectRowClaiming is selectRow for a row claiming any number of series.
+func selectRowClaiming(asin, title, region, language string, claims ...seriesClaim2) string {
+	parts := make([]string, 0, len(claims))
+	for _, c := range claims {
+		parts = append(parts, `{"name":"`+c.name+`","position":"`+c.position+`"}`)
 	}
 	return `{"asin":"` + asin + `","title":"` + title + `","region":"` + region + `","language":"` + language +
-		`","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":` + seriesJSON + `}`
+		`","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[` +
+		strings.Join(parts, ",") + `]}`
 }
 
 const seriesName = "Cartographer Chronicles"
@@ -252,6 +279,112 @@ func TestLibexSelectSeriesNameCollision(t *testing.T) {
 	}
 	if res.Excluded[reasonNoSeries] != 1 {
 		t.Errorf("excluded[no catalogue series] = %d, want 1", res.Excluded[reasonNoSeries])
+	}
+}
+
+// TestLibexSelectSeriesClaimsMustAllBeCatalogued pins the OTHER half of "never a
+// new series": the importer places a new work in EVERY series claim it acts on,
+// creating any series the claim resolved to that the catalogue does not hold. So
+// a row is series-completing only when every claim with a usable position lands
+// in a catalogued series - not merely the first one that does. Accepting a row on
+// its first match is what made the series-completion bot refuse its own pull
+// request two cycles running ("the import would create 1 new series").
+func TestLibexSelectSeriesClaimsMustAllBeCatalogued(t *testing.T) {
+	dataDir := seedTwoSeriesCatalogue(t)
+	for _, tc := range []struct {
+		name   string
+		claims []seriesClaim2
+		reason string // "" = the row is kept
+	}{
+		{
+			name:   "uncatalogued claim first",
+			claims: []seriesClaim2{{"Unknown Saga", "1"}, {seriesName, "2"}},
+			reason: reasonOtherSeriesUncatalogued,
+		},
+		{
+			name:   "uncatalogued claim second",
+			claims: []seriesClaim2{{seriesName, "2"}, {"Unknown Saga", "1"}},
+			reason: reasonOtherSeriesUncatalogued,
+		},
+		{
+			// The importer only WARNS about a claim it cannot place, so it mints
+			// nothing and must not disqualify the row.
+			name:   "uncatalogued claim states no position",
+			claims: []seriesClaim2{{seriesName, "2"}, {"Unknown Saga", ""}},
+		},
+		{
+			name:   "both claims catalogued",
+			claims: []seriesClaim2{{seriesName, "2"}, {"Atlas Cycle", "2"}},
+		},
+		{
+			name:   "single catalogued claim",
+			claims: []seriesClaim2{{seriesName, "2"}},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			row := selectRowClaiming("B0SELECT02", "Volume Two", "us", "english", tc.claims...)
+			res, lines := runSelect(t, dataDir, []string{row}, 0)
+			assertPartition(t, res)
+			if tc.reason == "" {
+				if res.RowsSelected != 1 || len(lines) != 1 || lines[0] != row {
+					t.Fatalf("row was not kept verbatim: selected %d, lines %v", res.RowsSelected, lines)
+				}
+				return
+			}
+			if res.RowsSelected != 0 || len(lines) != 0 {
+				t.Fatalf("selected %d rows, want 0 (%s)", res.RowsSelected, tc.reason)
+			}
+			if res.Excluded[tc.reason] != 1 {
+				t.Errorf("excluded[%s] = %d, want 1 (counts: %v)", tc.reason, res.Excluded[tc.reason], res.Excluded)
+			}
+			if report := res.Report(); !strings.Contains(report, tc.reason) {
+				t.Errorf("report does not name the reason:\n%s", report)
+			}
+		})
+	}
+}
+
+// TestLibexSelectNeverCreatesASeries is the invariant end to end: whatever
+// libex-select keeps, importing exactly those rows leaves the catalogue's series
+// set untouched. That is the property the series-completion bot relies on - it
+// refuses a cycle whose import would create a series - so it is asserted over the
+// real create path rather than over the selector's report.
+func TestLibexSelectNeverCreatesASeries(t *testing.T) {
+	dataDir := seedTwoSeriesCatalogue(t)
+	before := listSeries(t, dataDir)
+
+	rows := append(selectExportRows(),
+		// One catalogued claim, one not: the row the live bug selected.
+		selectRowClaiming("B0TWOCLM08", "Volume Eight", "us", "english",
+			seriesClaim2{seriesName, "8"}, seriesClaim2{"Unknown Saga", "1"}),
+		// Two catalogued claims, and a third claim the importer cannot place.
+		selectRowClaiming("B0TWOCLM09", "Volume Nine", "us", "english",
+			seriesClaim2{seriesName, "9"}, seriesClaim2{"Atlas Cycle", "9"}, seriesClaim2{"Unknown Saga", ""}),
+		// A series of its own entirely, which is no completion at all.
+		selectRowClaiming("B0NEWSER10", "Foreign Volume", "us", "english", seriesClaim2{"Unknown Saga", "1"}),
+	)
+	_, lines := runSelect(t, dataDir, rows, 0)
+	if len(lines) == 0 {
+		t.Fatal("the selection is empty; the invariant would be vacuous")
+	}
+
+	subset := filepath.Join(t.TempDir(), "subset.ndjson")
+	if err := os.WriteFile(subset, []byte(strings.Join(lines, "\n")+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	sum, err := RunLibex(subset, Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("RunLibex over the selected rows: %v", err)
+	}
+	if sum.NewSeries != 0 {
+		t.Errorf("the import reported %d new series; the selection must never create one", sum.NewSeries)
+	}
+	if got := listSeries(t, dataDir); strings.Join(got, ",") != strings.Join(before, ",") {
+		t.Errorf("series changed from %v to %v", before, got)
+	}
+	// A selection that imported nothing would satisfy the above trivially.
+	if sum.NewWorks == 0 {
+		t.Error("the import created no works; the invariant would be vacuous")
 	}
 }
 

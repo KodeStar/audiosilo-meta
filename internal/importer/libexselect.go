@@ -24,6 +24,18 @@ import (
 // mechanically instead of by hand - it selects the rows that COMPLETE series
 // the catalogue already tracks, and refuses everything else.
 //
+// A row is series-completing only when EVERY series claim the importer would act
+// on - every claim with a usable position - resolves to a series the catalogue
+// already holds. Not the first such claim: the create path places the new work
+// in each of those claims and CREATES the series any of them resolved to but the
+// catalogue does not hold, so a row claiming one catalogued series and one
+// uncatalogued one would mint a series on import. Selecting it broke the
+// series-completion bot, whose whole bound is "never a mirror, never a new
+// series": it refuses its own pull request when the import would create one. A
+// claim the importer merely warns about disqualifies nothing - one with no
+// usable position is never placed, and one whose name has no addressable slug
+// has no identity to mint.
+//
 // It is a pure selection pass: it decides which rows to keep and re-emits them
 // VERBATIM as NDJSON for the normal create path (`metaimport libex
 // subset.ndjson`). It never reshapes a row, never writes into data/, and never
@@ -64,23 +76,28 @@ const (
 	reasonDuplicateASIN = "duplicate ASIN within the export"
 	reasonNoSeries      = "no catalogue series"
 	reasonSeriesAuthors = "catalogue series belongs to other authors"
-	reasonNoPosition    = "series position missing or unparseable"
-	reasonLanguage      = "unmapped language"
-	reasonRegion        = "unmapped region"
-	reasonAINarrator    = "narrated by an AI voice"
-	reasonJunkCredit    = "a credited name is a platform account"
-	reasonListCredit    = "a credited name is a list of people"
-	reasonPlaceholder   = "a credited name is a cast placeholder"
-	reasonUnnamedCredit = "a credited name does not identify a person"
-	reasonPositionTaken = "series position already claimed"
-	reasonSeriesCap     = "over the per-series cap"
+	// reasonOtherSeriesUncatalogued is the second half of "never a new series":
+	// the row DOES complete a catalogued series, but another of its claims would
+	// mint one (see selectLibexRow).
+	reasonOtherSeriesUncatalogued = "another claimed series is not in the catalogue"
+	reasonNoPosition              = "series position missing or unparseable"
+	reasonLanguage                = "unmapped language"
+	reasonRegion                  = "unmapped region"
+	reasonAINarrator              = "narrated by an AI voice"
+	reasonJunkCredit              = "a credited name is a platform account"
+	reasonListCredit              = "a credited name is a list of people"
+	reasonPlaceholder             = "a credited name is a cast placeholder"
+	reasonUnnamedCredit           = "a credited name does not identify a person"
+	reasonPositionTaken           = "series position already claimed"
+	reasonSeriesCap               = "over the per-series cap"
 )
 
 // reasonOrder is the report order for the exclusion counts (the order the
 // rules are applied).
 var reasonOrder = []string{
 	reasonNoASIN, reasonAlreadyASIN, reasonDuplicateASIN,
-	reasonNoSeries, reasonSeriesAuthors, reasonNoPosition, reasonLanguage, reasonRegion,
+	reasonNoSeries, reasonSeriesAuthors, reasonOtherSeriesUncatalogued,
+	reasonNoPosition, reasonLanguage, reasonRegion,
 	reasonAINarrator, reasonJunkCredit, reasonListCredit, reasonPlaceholder, reasonUnnamedCredit,
 	reasonPositionTaken, reasonSeriesCap,
 }
@@ -347,14 +364,26 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []sele
 			}
 		}
 		// Each row's first claim into a catalogued series, in the row's own ref
-		// order (match's order).
+		// order (match's order), and whether any of its claims would mint a series
+		// under the batch's resolution - the same two facts match reads, re-read
+		// here because the batch can move a claim.
 		first := make([]int, len(kept))
 		for i := range first {
 			first[i] = -1
 		}
+		mints := make([]bool, len(kept))
 		for ci, t := range targets {
-			if i := owner[ci]; alive[i] && t.found && first[i] < 0 {
-				first[i] = ci
+			i := owner[ci]
+			if !alive[i] {
+				continue
+			}
+			switch {
+			case t.found:
+				if first[i] < 0 {
+					first[i] = ci
+				}
+			case mintsSeries(t, kept[i].book.series[refOf[ci]]):
+				mints[i] = true
 			}
 		}
 		claimed := map[string]string{}
@@ -365,6 +394,10 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []sele
 			ci := first[i]
 			if ci < 0 {
 				drop(i, reasonSeriesAuthors)
+				continue
+			}
+			if mints[i] {
+				drop(i, reasonOtherSeriesUncatalogued)
 				continue
 			}
 			ref := r.book.series[refOf[ci]]
@@ -432,13 +465,25 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 		return selectedRow{}, reasonNoSeries
 	}
 	book := idx.libexBook(e, asin)
-	slug, ref, ok, othersOnly := idx.match(book)
-	if !ok {
-		if othersOnly {
+	v := idx.match(book)
+	if !v.ok {
+		if v.othersOnly {
 			return selectedRow{}, reasonSeriesAuthors
 		}
 		return selectedRow{}, reasonNoSeries
 	}
+	// A completion may not ALSO be a series creation, and that is a rule about
+	// EVERY claim the importer acts on, not just the first one that matched. The
+	// create path places the new work
+	// in every claim with a usable position, and getOrCreateSeries CREATES the
+	// series a claim resolved to when the catalogue does not hold it - so a row
+	// claiming one catalogued series and one uncatalogued one is a completion and
+	// a new series at once, which is exactly what this tool exists to make
+	// impossible (never a mirror, never a new series).
+	if v.mints {
+		return selectedRow{}, reasonOtherSeriesUncatalogued
+	}
+	slug, ref := v.slug, v.ref
 	// A row that names a series but no usable position in it is not a
 	// completion: the importer would create the work and then warn that it
 	// could not be placed, leaving an orphan work outside the series it was
@@ -694,22 +739,63 @@ func (idx seriesIndex) batchClaims(kept []selectedRow) ([]nameClaim, []claimAt) 
 	return p.batchClaims(books)
 }
 
+// seriesVerdict is where ALL of a row's series claims landed. A selection reads
+// two things off it: the completion it was selected for (the first claim that
+// found a catalogued series), and whether any OTHER claim the importer acts on
+// would mint a series - which a completion may not do.
+type seriesVerdict struct {
+	// slug and ref are the first claim that landed in a catalogued series, and
+	// the ref it came from (the caller reads its position); ok says there was one.
+	slug string
+	ref  seriesRef
+	ok   bool
+	// othersOnly reports, when nothing matched, that some claim named a
+	// catalogued series belonging to other authors.
+	othersOnly bool
+	// mints reports that some claim the importer would ACT on resolves to no
+	// catalogued series, so importing the row would create one.
+	mints bool
+}
+
 // match resolves a row's series claims against the catalogue exactly as the
-// importer's batch pre-pass would for this row alone (seriesresolve.go):
-// returning the catalogue slug of the first claim that lands in a series the
-// tree already holds, together with that claim's ref (the caller reads its
-// position). othersOnly reports, when nothing matched, that some claim named a
-// catalogued series belonging to other authors.
-func (idx seriesIndex) match(book sourceBook) (slug string, matched seriesRef, ok, othersOnly bool) {
+// importer's batch pre-pass would for this row alone (seriesresolve.go),
+// reporting EVERY claim's target rather than stopping at the first one that
+// landed: the create path places the new work in every claim it acts on, so one
+// unmatched claim is a new series however well the others match.
+func (idx seriesIndex) match(book sourceBook) seriesVerdict {
 	claims, where := idx.p.batchClaims([]sourceBook{book})
 	targets := resolveSeriesClaims(idx.catalogue(), claims)
+	var v seriesVerdict
 	for i, t := range targets {
-		if t.found {
-			return t.slug, book.series[where[i].ref], true, false
+		ref := book.series[where[i].ref]
+		switch {
+		case t.found:
+			if !v.ok {
+				v.slug, v.ref, v.ok = t.slug, ref, true
+			}
+		case mintsSeries(t, ref):
+			v.mints = true
 		}
-		othersOnly = othersOnly || len(t.stepped) > 0
+		if len(t.stepped) > 0 {
+			v.othersOnly = true
+		}
 	}
-	return "", seriesRef{}, false, othersOnly
+	if v.ok {
+		v.othersOnly = false
+	}
+	return v
+}
+
+// mintsSeries reports whether importing a row would CREATE a series for this
+// claim. The create path acts on every claim with a usable position (addBook's
+// loop over b.series) and getOrCreateSeries creates the series its target names
+// whenever the catalogue does not already hold it - so a target that is not
+// found, but has an addressable slug, is a new series. The two claims the
+// importer only warns about mint nothing and so disqualify nothing: one with no
+// usable position (`!seqOK`) is never placed, and one whose name has no
+// addressable slug at all (an empty target slug) has no identity to mint.
+func mintsSeries(t seriesTarget, ref seriesRef) bool {
+	return ref.seqOK && !t.found && t.slug != ""
 }
 
 // namesACatalogueChain reports whether any claim's name has a catalogue series

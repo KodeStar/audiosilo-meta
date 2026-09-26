@@ -179,7 +179,12 @@ completion the tranche cannot deliver, and would claim the series slot ahead of
 an importable sibling), and the row must claim a usable series position
 that nothing else already holds (a position the catalogue fills, or that an
 earlier row of the same run claimed, would import as a work stranded outside its
-series). Those rows are re-emitted verbatim as NDJSON. Then read the report:
+series). **Every** series claim the import would act on - every claim stating a
+usable position - must resolve to a catalogued series, not just the first one
+that does: the import places the new work in all of them and creates any series
+the catalogue does not already hold, so a row claiming one known series and one
+unknown one is refused as `another claimed series is not in the catalogue`. Those
+rows are re-emitted verbatim as NDJSON. Then read the report:
 rows read and selected, the projected new works (counted per title, so the
 per-region sibling rows of one title count once), the per-series breakdown, and
 the exclusion counts - one per rule, adding up with the selected rows to every
