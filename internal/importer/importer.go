@@ -1185,6 +1185,12 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.asins[asin] = true
 	}
 
+	// EVERY claim with a usable position is placed, and getOrCreateSeries CREATES
+	// the series it resolved to when the catalogue does not hold it. libex-select
+	// mirrors those two gates by hand to keep a series-completion tranche from
+	// minting a series (mintsSeries, libexselect.go), pinned end to end by
+	// TestLibexSelectNeverCreatesASeries - so a change to WHICH claims this loop
+	// places has to be made there too.
 	for _, r := range b.series {
 		if !r.seqOK {
 			warn("series %q: missing or invalid position %q; not placed in series", r.name, r.rawSeq)

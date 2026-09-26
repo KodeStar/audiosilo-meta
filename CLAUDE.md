@@ -1713,7 +1713,15 @@ note rather than a closed duplicate.
   exclusive with `--enrich`); `metaimport libex-select`
   (streams the full dump, keeps only series-completing rows with a free
   position slot and mappable language/region, per-series cap, verbatim-row
-  output, a report that partitions every row read; `scripts/
+  output, a report that partitions every row read. A row is series-completing
+  only when EVERY series claim the import would act on - every claim with a
+  usable position - resolves to a catalogued series: the create path places the
+  new work in each of them and `getOrCreateSeries` CREATES the series any of
+  them resolved to but the catalogue does not hold, so accepting a row on its
+  FIRST match minted a series and made the sync bot refuse its own pull request
+  ("the import would create 1 new series"). A claim the importer only warns
+  about - no usable position, or a name with no addressable slug - mints nothing
+  and disqualifies nothing; `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
   operator flow - the received dump is Postgres 16 custom format); the
   **AI-credit exclusion** (an AI is not a person, so a row crediting one is
