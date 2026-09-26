@@ -363,27 +363,13 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []sele
 				}
 			}
 		}
-		// Each row's first claim into a catalogued series, in the row's own ref
-		// order (match's order), and whether any of its claims would mint a series
-		// under the batch's resolution - the same two facts match reads, re-read
-		// here because the batch can move a claim.
-		first := make([]int, len(kept))
-		for i := range first {
-			first[i] = -1
-		}
-		mints := make([]bool, len(kept))
+		// Every live row's verdict under the BATCH's resolution, folded exactly as
+		// match folds a row's own claims (seriesVerdict.observe) - re-read here
+		// because the batch can move a claim.
+		verdicts := make([]seriesVerdict, len(kept))
 		for ci, t := range targets {
-			i := owner[ci]
-			if !alive[i] {
-				continue
-			}
-			switch {
-			case t.found:
-				if first[i] < 0 {
-					first[i] = ci
-				}
-			case mintsSeries(t, kept[i].book.series[refOf[ci]]):
-				mints[i] = true
+			if i := owner[ci]; alive[i] {
+				verdicts[i].observe(t, kept[i].book.series[refOf[ci]])
 			}
 		}
 		claimed := map[string]string{}
@@ -391,30 +377,28 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []sele
 			if !alive[i] {
 				continue
 			}
-			ci := first[i]
-			if ci < 0 {
+			v := verdicts[i]
+			if !v.ok {
 				drop(i, reasonSeriesAuthors)
 				continue
 			}
-			if mints[i] {
+			if v.mints {
 				drop(i, reasonOtherSeriesUncatalogued)
 				continue
 			}
-			ref := r.book.series[refOf[ci]]
-			pos, posOK := seriesPositionValue(ref)
+			pos, posOK := seriesPositionValue(v.ref)
 			if !posOK {
 				drop(i, reasonNoPosition)
 				continue
 			}
-			slug := targets[ci].slug
-			workKey := slug + "\x00" + r.title
-			key := slug + "\x00" + ref.seq
-			if owned, taken := claimed[key]; (taken && owned != workKey) || idx.positions[slug][ref.seq] != "" {
+			workKey := v.slug + "\x00" + r.title
+			key := v.slug + "\x00" + v.ref.seq
+			if owned, taken := claimed[key]; (taken && owned != workKey) || idx.positions[v.slug][v.ref.seq] != "" {
 				drop(i, reasonPositionTaken)
 				continue
 			}
 			claimed[key] = workKey
-			kept[i].seriesSlug, kept[i].workKey, kept[i].pos = slug, workKey, pos
+			kept[i].seriesSlug, kept[i].workKey, kept[i].pos = v.slug, workKey, pos
 		}
 		dirty = dirty[:0:0]
 		for _, k := range keys {
@@ -473,12 +457,9 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 		return selectedRow{}, reasonNoSeries
 	}
 	// A completion may not ALSO be a series creation, and that is a rule about
-	// EVERY claim the importer acts on, not just the first one that matched. The
-	// create path places the new work
-	// in every claim with a usable position, and getOrCreateSeries CREATES the
-	// series a claim resolved to when the catalogue does not hold it - so a row
-	// claiming one catalogued series and one uncatalogued one is a completion and
-	// a new series at once, which is exactly what this tool exists to make
+	// EVERY claim the importer acts on, not just the one that matched here
+	// (mintsSeries says which claims those are): a row that completes one
+	// catalogued series and mints another is exactly what this tool exists to make
 	// impossible (never a mirror, never a new series).
 	if v.mints {
 		return selectedRow{}, reasonOtherSeriesUncatalogued
@@ -767,23 +748,30 @@ func (idx seriesIndex) match(book sourceBook) seriesVerdict {
 	targets := resolveSeriesClaims(idx.catalogue(), claims)
 	var v seriesVerdict
 	for i, t := range targets {
-		ref := book.series[where[i].ref]
-		switch {
-		case t.found:
-			if !v.ok {
-				v.slug, v.ref, v.ok = t.slug, ref, true
-			}
-		case mintsSeries(t, ref):
-			v.mints = true
-		}
-		if len(t.stepped) > 0 {
-			v.othersOnly = true
-		}
+		v.observe(t, book.series[where[i].ref])
 	}
 	if v.ok {
 		v.othersOnly = false
 	}
 	return v
+}
+
+// observe folds one claim's target into the verdict: the FIRST claim that landed
+// in a catalogued series is the completion the row is selected for, any claim the
+// importer acts on that landed in no catalogued series would mint one, and a
+// same-named series the claim did not fit is what othersOnly reports. The batch
+// re-check folds the batch's own targets through this too (confirmBatch), so the
+// two passes cannot read one row's claims differently.
+func (v *seriesVerdict) observe(t seriesTarget, ref seriesRef) {
+	if t.found && !v.ok {
+		v.slug, v.ref, v.ok = t.slug, ref, true
+	}
+	if mintsSeries(t, ref) {
+		v.mints = true
+	}
+	if len(t.stepped) > 0 {
+		v.othersOnly = true
+	}
 }
 
 // mintsSeries reports whether importing a row would CREATE a series for this
@@ -794,6 +782,16 @@ func (idx seriesIndex) match(book sourceBook) seriesVerdict {
 // importer only warns about mint nothing and so disqualify nothing: one with no
 // usable position (`!seqOK`) is never placed, and one whose name has no
 // addressable slug at all (an empty target slug) has no identity to mint.
+//
+// The `!seqOK` half needs the series-position lookup never to fill a claim this
+// predicate cleared - fillSeriesPositions rewrites a missing position from the
+// live service BEFORE the series loop reads it, which would turn such a claim
+// into a placed, and so minting, one. Nothing about the operator's command line
+// decides that: the lookup is installed only for a USER-LIBRARY create run
+// (runBooks' `p.userTier` gate) and `libex-import` is bulk-mirror tier
+// (pkg/model/trust.go), so `metaimport libex --series-lookup` is a no-op over a
+// tranche. Opening the lookup to the bulk mirror is therefore a change to make
+// here too.
 func mintsSeries(t seriesTarget, ref seriesRef) bool {
 	return ref.seqOK && !t.found && t.slug != ""
 }

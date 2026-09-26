@@ -5,6 +5,9 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 )
 
 // seedSelectCatalogue writes the catalogue every selection test selects
@@ -39,23 +42,23 @@ func seedTwoSeriesCatalogue(t *testing.T) string {
 	return dataDir
 }
 
-// seriesClaim2 is one series claim of a test row: libex lists several per book,
+// claimSpec is one series claim of a test row: libex lists several per book,
 // and the importer acts on every one of them that states a position.
-type seriesClaim2 struct{ name, position string }
+type claimSpec struct{ name, position string }
 
 // selectRow renders one compact libex row. Rows are written compact and on one
 // line so the byte-identity assertion is meaningful: the selector must pass a
 // row through verbatim, never re-render it.
 func selectRow(asin, title, region, language, series, position string) string {
-	var claims []seriesClaim2
+	var claims []claimSpec
 	if series != "" {
-		claims = append(claims, seriesClaim2{series, position})
+		claims = append(claims, claimSpec{series, position})
 	}
 	return selectRowClaiming(asin, title, region, language, claims...)
 }
 
 // selectRowClaiming is selectRow for a row claiming any number of series.
-func selectRowClaiming(asin, title, region, language string, claims ...seriesClaim2) string {
+func selectRowClaiming(asin, title, region, language string, claims ...claimSpec) string {
 	parts := make([]string, 0, len(claims))
 	for _, c := range claims {
 		parts = append(parts, `{"name":"`+c.name+`","position":"`+c.position+`"}`)
@@ -293,32 +296,32 @@ func TestLibexSelectSeriesClaimsMustAllBeCatalogued(t *testing.T) {
 	dataDir := seedTwoSeriesCatalogue(t)
 	for _, tc := range []struct {
 		name   string
-		claims []seriesClaim2
+		claims []claimSpec
 		reason string // "" = the row is kept
 	}{
 		{
 			name:   "uncatalogued claim first",
-			claims: []seriesClaim2{{"Unknown Saga", "1"}, {seriesName, "2"}},
+			claims: []claimSpec{{"Unknown Saga", "1"}, {seriesName, "2"}},
 			reason: reasonOtherSeriesUncatalogued,
 		},
 		{
 			name:   "uncatalogued claim second",
-			claims: []seriesClaim2{{seriesName, "2"}, {"Unknown Saga", "1"}},
+			claims: []claimSpec{{seriesName, "2"}, {"Unknown Saga", "1"}},
 			reason: reasonOtherSeriesUncatalogued,
 		},
 		{
 			// The importer only WARNS about a claim it cannot place, so it mints
 			// nothing and must not disqualify the row.
 			name:   "uncatalogued claim states no position",
-			claims: []seriesClaim2{{seriesName, "2"}, {"Unknown Saga", ""}},
+			claims: []claimSpec{{seriesName, "2"}, {"Unknown Saga", ""}},
 		},
 		{
 			name:   "both claims catalogued",
-			claims: []seriesClaim2{{seriesName, "2"}, {"Atlas Cycle", "2"}},
+			claims: []claimSpec{{seriesName, "2"}, {"Atlas Cycle", "2"}},
 		},
 		{
 			name:   "single catalogued claim",
-			claims: []seriesClaim2{{seriesName, "2"}},
+			claims: []claimSpec{{seriesName, "2"}},
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -344,6 +347,56 @@ func TestLibexSelectSeriesClaimsMustAllBeCatalogued(t *testing.T) {
 	}
 }
 
+// TestLibexSelectMintGatesMirrorTheCreatePath pins the two mint gates the table
+// above does not exercise, which are the ones mintsSeries collapses into
+// `t.slug != ""` and a reader would otherwise take on trust. A claim whose name
+// slugs to a RETIRED series base is catalogued, not a mint: it rides the
+// tombstone into the survivor and getOrCreateSeries never re-creates the merged
+// duplicate. A claim whose name has NO addressable slug is not a mint either:
+// there is no identity to mint, so the importer refuses the placement and warns.
+// Both rows must be kept, and importing them must still create no series.
+func TestLibexSelectMintGatesMirrorTheCreatePath(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	if err := redirects.Write(dataDir, model.Redirects{
+		model.RedirectSeries: {"old-chronicles": "cartographer-chronicles"},
+	}); err != nil {
+		t.Fatalf("write redirects: %v", err)
+	}
+	before := listSeries(t, dataDir)
+
+	rows := []string{
+		// The retired spelling alone: a completion of the survivor.
+		selectRowClaiming("B0RETIRED2", "Volume Two", "us", "english", claimSpec{"Old Chronicles", "2"}),
+		// A second claim naming the retired spelling of the series the first
+		// claim already found.
+		selectRowClaiming("B0RETIRED3", "Volume Three", "us", "english",
+			claimSpec{seriesName, "3"}, claimSpec{"Old Chronicles", "3"}),
+		// A second claim Slugify keeps nothing of: unaddressable, so unmintable.
+		selectRowClaiming("B0NOSLUG04", "Volume Four", "us", "english",
+			claimSpec{seriesName, "4"}, claimSpec{"Сага", "1"}),
+	}
+	res, lines := runSelect(t, dataDir, rows, 0)
+	assertPartition(t, res)
+	if res.RowsSelected != len(rows) || len(lines) != len(rows) {
+		t.Fatalf("selected %d of %d rows, want all (excluded: %v)", res.RowsSelected, len(rows), res.Excluded)
+	}
+
+	sum, err := RunLibex(writeBooks(t, strings.Join(lines, "\n")+"\n"),
+		Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("RunLibex over the selected rows: %v", err)
+	}
+	if sum.NewSeries != 0 {
+		t.Errorf("the import reported %d new series; neither gate may mint one (%v)", sum.NewSeries, sum.Warnings)
+	}
+	if got := listSeries(t, dataDir); strings.Join(got, ",") != strings.Join(before, ",") {
+		t.Errorf("series changed from %v to %v", before, got)
+	}
+	if sum.NewWorks != len(rows) {
+		t.Errorf("NewWorks = %d, want %d; the invariant would be vacuous", sum.NewWorks, len(rows))
+	}
+}
+
 // TestLibexSelectNeverCreatesASeries is the invariant end to end: whatever
 // libex-select keeps, importing exactly those rows leaves the catalogue's series
 // set untouched. That is the property the series-completion bot relies on - it
@@ -356,22 +409,20 @@ func TestLibexSelectNeverCreatesASeries(t *testing.T) {
 	rows := append(selectExportRows(),
 		// One catalogued claim, one not: the row the live bug selected.
 		selectRowClaiming("B0TWOCLM08", "Volume Eight", "us", "english",
-			seriesClaim2{seriesName, "8"}, seriesClaim2{"Unknown Saga", "1"}),
+			claimSpec{seriesName, "8"}, claimSpec{"Unknown Saga", "1"}),
 		// Two catalogued claims, and a third claim the importer cannot place.
 		selectRowClaiming("B0TWOCLM09", "Volume Nine", "us", "english",
-			seriesClaim2{seriesName, "9"}, seriesClaim2{"Atlas Cycle", "9"}, seriesClaim2{"Unknown Saga", ""}),
+			claimSpec{seriesName, "9"}, claimSpec{"Atlas Cycle", "9"}, claimSpec{"Unknown Saga", ""}),
 		// A series of its own entirely, which is no completion at all.
-		selectRowClaiming("B0NEWSER10", "Foreign Volume", "us", "english", seriesClaim2{"Unknown Saga", "1"}),
+		selectRowClaiming("B0NEWSER10", "Foreign Volume", "us", "english", claimSpec{"Unknown Saga", "1"}),
 	)
-	_, lines := runSelect(t, dataDir, rows, 0)
+	res, lines := runSelect(t, dataDir, rows, 0)
+	assertPartition(t, res)
 	if len(lines) == 0 {
 		t.Fatal("the selection is empty; the invariant would be vacuous")
 	}
 
-	subset := filepath.Join(t.TempDir(), "subset.ndjson")
-	if err := os.WriteFile(subset, []byte(strings.Join(lines, "\n")+"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	subset := writeBooks(t, strings.Join(lines, "\n")+"\n")
 	sum, err := RunLibex(subset, Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
 		t.Fatalf("RunLibex over the selected rows: %v", err)
