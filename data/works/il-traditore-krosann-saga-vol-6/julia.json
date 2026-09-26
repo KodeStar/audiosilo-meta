@@ -10964,8 +10964,12 @@
         "jilly-cooper"
       ],
       "genres": [
+        "erotica",
         "literary-fiction",
-        "romance"
+        "parenting-relationships",
+        "romance",
+        "sports",
+        "womens-fiction"
       ],
       "id": "jump-jilly-cooper",
       "language": "en",
@@ -11740,33 +11744,7 @@
             }
           ],
           "work": "jump-jilly-cooper"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-26",
-          "ref": "B004FTZNNQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Jump!"
-    },
-    "jump-jilly-cooper-obe": {
-      "added_at": "2026-09-26",
-      "authors": [
-        "jilly-cooper-obe"
-      ],
-      "genres": [
-        "erotica",
-        "parenting-relationships",
-        "romance",
-        "sports",
-        "womens-fiction"
-      ],
-      "id": "jump-jilly-cooper-obe",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "samantha-bond-2010": {
           "abridged": true,
           "added_at": "2026-09-26",
@@ -11885,13 +11863,18 @@
               "type": "libex-import"
             }
           ],
-          "work": "jump-jilly-cooper-obe"
+          "work": "jump-jilly-cooper"
         }
       },
       "sources": [
         {
           "imported_at": "2026-09-26",
           "ref": "B004EXJ6BI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-09-26",
+          "ref": "B004FTZNNQ",
           "type": "libex-import"
         }
       ],
