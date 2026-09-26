@@ -5151,14 +5151,63 @@
       "authors": [
         "louise-penny"
       ],
+      "genres": [
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
+      ],
       "id": "miss-wolcotts-ghost",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "adam-sims-2026": {
+          "abridged": false,
+          "added_at": "2026-09-26",
+          "asin": [
+            {
+              "asin": "B0GNZRLRG7",
+              "region": "us"
+            },
+            {
+              "asin": "B0GNZRMGPV",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/814SkolZmbL.jpg",
+          "id": "adam-sims-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adam-sims"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2026-10-20",
+          "runtime_min": 600,
+          "sources": [
+            {
+              "imported_at": "2026-09-26",
+              "ref": "B0GNZRLRG7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-26",
+              "ref": "B0GNZRMGPV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "miss-wolcotts-ghost"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/247128839-miss-wolcott-s-ghost",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-09-26",
+          "ref": "B0GNZRLRG7",
+          "type": "libex-import"
         }
       ],
       "title": "Miss Wolcott's Ghost",

@@ -10479,14 +10479,55 @@
       "authors": [
         "alan-bradley"
       ],
+      "genres": [
+        "cozy-mystery",
+        "historical-fiction",
+        "mystery",
+        "thriller-suspense"
+      ],
       "id": "numb-were-the-beadsmans-fingers",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "jayne-entwistle-2026": {
+          "abridged": false,
+          "added_at": "2026-09-26",
+          "asin": [
+            {
+              "asin": "B0GS4KV9PD",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71GH-vRexxL.jpg",
+          "id": "jayne-entwistle-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jayne-entwistle"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2026-11-03",
+          "runtime_min": 360,
+          "sources": [
+            {
+              "imported_at": "2026-09-26",
+              "ref": "B0GS4KV9PD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "numb-were-the-beadsmans-fingers"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/196312522-numb-were-the-beadsman-s-fingers",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-09-26",
+          "ref": "B0GS4KV9PD",
+          "type": "libex-import"
         }
       ],
       "title": "Numb Were the Beadsman's Fingers",
