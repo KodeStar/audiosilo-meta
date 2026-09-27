@@ -36,24 +36,301 @@ func seedTierTree(t *testing.T) string {
 	return dir
 }
 
-// TestAddWorkDuplicateOfLibexOnlyRecordNeedsHuman is the intake side of the
-// user-overwrite rule: the submitter is the first person to attest a book only
-// the mirror has ever stated, so their data should replace what is recorded.
-// The bot only composes NEW records, so it hands the takeover to a maintainer
-// instead of closing the submission as a duplicate.
-func TestAddWorkDuplicateOfLibexOnlyRecordNeedsHuman(t *testing.T) {
+// setField replaces one field's value in a rendered form body, whatever it held
+// (withField only fills an empty one).
+func setField(t *testing.T, body, label, value string) string {
+	t.Helper()
+	head := "### " + label + "\n\n"
+	i := strings.Index(body, head)
+	if i < 0 {
+		t.Fatalf("the body has no %q field", label)
+	}
+	rest := body[i+len(head):]
+	j := strings.Index(rest, "\n\n")
+	return body[:i] + field(label, value) + rest[j+2:]
+}
+
+// TestAddWorkASINOfLibexOnlyRecordTakesItOver is the intake side of the
+// user-overwrite rule: the submitter names, BY ASIN, a recording only the
+// mirror has ever stated, so their stated facts replace the mirror's and their
+// submission takes over its provenance - an ordinary bot pull request carrying
+// a MODIFIED record, applied through the importer's own attestation.
+func TestAddWorkASINOfLibexOnlyRecordTakesItOver(t *testing.T) {
 	dir := seedTierTree(t)
-	body := addWorkBody("Whatever Title", "Some Author", "en", "Some Narrator", "US: B000000001", "web", true)
+	// The record's own authors, narrators and language; a title the record does
+	// not match is only a note (identity is never rewritten).
+	body := addWorkBody("Existing Work Revisited", "Jane Doe", "en-gb", "John Smith", "US: B000000001", "my own copy", true)
+	body = setField(t, body, fRecRuntime, "410") // within 10% of the recorded 400
 	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !hasFile(res.Files, worksPack) {
+		t.Errorf("files = %v, want the works pack the takeover rewrote", res.Files)
+	}
+	if !anyContains(res.Messages, "replaced the mirror's") {
+		t.Errorf("the takeover must be reported: %v", res.Messages)
+	}
+	rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json")
+	for _, want := range []string{
+		`"runtime_min": 410`, `"release_date": "1999-11-01"`, `"publisher": "Acme Audio"`,
+		`"cover_url": "https://example.com/cover.jpg"`, `"ref": "my own copy"`, `"type": "user"`,
+	} {
+		if !strings.Contains(rec, want) {
+			t.Errorf("the taken-over recording must carry %s:\n%s", want, rec)
+		}
+	}
+	// Identity is never rewritten, and nothing is composed beside the record.
+	if !strings.Contains(rec, `"narrators": [`+"\n"+`    "john-smith"`) {
+		t.Errorf("narrators must be untouched:\n%s", rec)
+	}
+	if recordExists(t, dir, "works/ex/existing-work-revisited/work.json") {
+		t.Error("a takeover must not compose a new work")
+	}
+	// What the takeover left behind is named, not dropped silently.
+	if !anyContains(res.Messages, "not applied") || !anyContains(res.Messages, fWorkFirstPublished) {
+		t.Errorf("the unapplied fields must be named: %v", res.Messages)
+	}
+	if !anyContains(res.Messages, "your Title differs from the record's") {
+		t.Errorf("the differing title must be noted: %v", res.Messages)
+	}
+}
+
+// TestAddWorkASINTakeoverRefusesAnotherBook: an ASIN is a strong claim, but a
+// mistyped one would overwrite - and permanently attest - somebody else's
+// record. A submission whose authors, narrators or language differ from the
+// record its ASIN names is a maintainer's to check, and nothing is written.
+func TestAddWorkASINTakeoverRefusesAnotherBook(t *testing.T) {
+	cases := []struct {
+		name, authors, lang, narrators, want string
+	}{
+		{"authors", "Some Author", "en", "John Smith", "authors (Some Author; recorded Jane Doe)"},
+		{"narrators", "Jane Doe", "en", "Some Narrator", "narrators (Some Narrator; recorded John Smith)"},
+		{"language", "Jane Doe", "de", "John Smith", "language (de; recorded en)"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			dir := seedTierTree(t)
+			body := addWorkBody("Existing Work", tc.authors, tc.lang, tc.narrators, "US: B000000001", "web", true)
+			body = setField(t, body, fRecRuntime, "400")
+			res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+			if res.Status != StatusNeedsHuman {
+				t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+			}
+			if !anyContains(res.Messages, tc.want) || !anyContains(res.Messages, "may be mistyped") {
+				t.Errorf("the message must name the mismatch %q: %v", tc.want, res.Messages)
+			}
+			if rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json"); strings.Contains(rec, `"type": "user"`) {
+				t.Errorf("nothing may be applied:\n%s", rec)
+			}
+		})
+	}
+}
+
+// TestTakeoverRefusesAnISBNOfAnotherRecording: the ASIN names one recording and
+// a submitted ISBN another - conflicting evidence about which edition this is.
+func TestTakeoverRefusesAnISBNOfAnotherRecording(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+	files["works/ex/existing-work/recordings/john-smith-2021.json"] = `{"id": "john-smith-2021", "isbn": ["9781473647633"], ` +
+		`"language": "en", "license": "CC0-1.0", "narrators": ["john-smith"], ` +
+		`"sources": [{"type": "user", "imported_at": "2026-07-01"}], "work": "existing-work"}`
+	testpack.Seed(t, dir, files)
+	body := setField(t, addRecordingBody("existing-work", "John Smith", "US: B000000001", true), fRecISBNs, "9781473647633")
+	res := Process(Options{DataDir: dir, Template: "add-recording", Body: body})
 	if res.Status != StatusNeedsHuman {
 		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
 	}
-	if !anyContains(res.Messages, "seeded from the libex mirror") {
-		t.Errorf("the message must say why a maintainer is needed: %v", res.Messages)
+	if !anyContains(res.Messages, "your ISBN 9781473647633 is recorded at "+worksPack+": entry existing-work: recording john-smith-2021") {
+		t.Errorf("the message must name both recordings: %v", res.Messages)
 	}
-	// It still locates the incumbent so the maintainer knows what to rewrite.
+}
+
+// TestASINVerdictIsOrderIndependent: every matched ASIN is classified before the
+// verdict, so listing them in another order cannot change it.
+func TestASINVerdictIsOrderIndependent(t *testing.T) {
+	second := func(sources string) string {
+		return `{"asin": [{"asin": "B000000002", "region": "uk"}], "id": "john-smith-2021", "language": "en", ` +
+			`"license": "CC0-1.0", "narrators": ["john-smith"], "sources": ` + sources + `, "work": "existing-work"}`
+	}
+	cases := []struct {
+		name, sources string
+		want          Status
+	}{
+		{"one attested", `[{"type": "user", "imported_at": "2026-07-01"}]`, StatusDuplicate},
+		{"two mirror seeds", `[{"type": "libex-import", "ref": "B000000002", "imported_at": "2026-07-01"}]`, StatusNeedsHuman},
+	}
+	for _, tc := range cases {
+		for _, asins := range []string{"US: B000000001\nUK: B000000002", "UK: B000000002\nUS: B000000001"} {
+			t.Run(tc.name+"/"+asins[:2], func(t *testing.T) {
+				dir := t.TempDir()
+				files := seedFiles()
+				files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+				files["works/ex/existing-work/recordings/john-smith-2021.json"] = second(tc.sources)
+				testpack.Seed(t, dir, files)
+				res := Process(Options{DataDir: dir, Template: "add-recording",
+					Body: addRecordingBody("existing-work", "John Smith", asins, true)})
+				if res.Status != tc.want {
+					t.Fatalf("status = %q, want %q; messages = %v", res.Status, tc.want, res.Messages)
+				}
+			})
+		}
+	}
+}
+
+// TestComposeAndTakeoverDecodeAPublisherOnce: the form door decodes a field once
+// as it reads it, so a double-escaped value is stored the same whether the
+// submission is composed as a new record or applied over a mirror seed.
+func TestComposeAndTakeoverDecodeAPublisherOnce(t *testing.T) {
+	const submitted, stored = "Lost Press &amp;amp; Co", `"publisher": "Lost Press &amp; Co"`
+	dir := seedTierTree(t)
+	composed := setField(t, addRecordingBody("existing-work", "New Voice", "US: B0NEWVOICE", true), fRecPublisher, submitted)
+	if res := Process(Options{DataDir: dir, Template: "add-recording", Body: composed}); res.Status != StatusOK {
+		t.Fatalf("compose: status = %q; messages = %v", res.Status, res.Messages)
+	}
+	takeover := setField(t, addRecordingBody("existing-work", "John Smith", "US: B000000001", true), fRecPublisher, submitted)
+	if res := Process(Options{DataDir: dir, Template: "add-recording", Body: takeover}); res.Status != StatusOK {
+		t.Fatalf("takeover: status = %q; messages = %v", res.Status, res.Messages)
+	}
+	for _, rec := range []string{"new-voice-2021", "john-smith-2020"} {
+		if got := readFile(t, dir, "works/ex/existing-work/recordings/"+rec+".json"); !strings.Contains(got, stored) {
+			t.Errorf("%s must store the once-decoded publisher %s:\n%s", rec, stored, got)
+		}
+	}
+}
+
+// TestAddWorkTakeoverAttestsAMirrorWorkAndAddsGenres: when the WORK is a mirror
+// seed too it is taken over with the recording, and the form's genres are added
+// to its set rather than replacing it (LICENSING.md rule 5).
+func TestAddWorkTakeoverAttestsAMirrorWorkAndAddsGenres(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/work.json"] = `{
+  "authors": ["jane-doe"],
+  "genres": ["fantasy"],
+  "id": "existing-work",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "libex-import", "ref": "B000000001", "imported_at": "2026-07-01"}],
+  "title": "Existing Work"
+}`
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+	testpack.Seed(t, dir, files)
+
+	body := addWorkBody("Existing Work", "Jane Doe", "en", "John Smith", "US: B000000001", "my own copy", true)
+	body = setField(t, body, fRecRuntime, "400")
+	body = setField(t, body, fWorkGenres, "horror")
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	work := readFile(t, dir, "works/ex/existing-work/work.json")
+	if !strings.Contains(work, `"fantasy",`+"\n"+`    "horror"`) {
+		t.Errorf("the form's genre must be ADDED to the mirror's:\n%s", work)
+	}
+	if !strings.Contains(work, `"type": "user"`) {
+		t.Errorf("the mirror-seed work must be attested too:\n%s", work)
+	}
+	if anyContains(res.Messages, "never rewrites identity") {
+		t.Errorf("matching identity must not be reported as differing: %v", res.Messages)
+	}
+}
+
+// TestAddWorkASINTakeoverDisagreementNeedsHuman: a runtime more than 10% apart
+// is the disagreement GOVERNANCE.md routes to a maintainer. Nothing is written -
+// not even the stamp that would end the record's mirror-only status.
+func TestAddWorkASINTakeoverDisagreementNeedsHuman(t *testing.T) {
+	dir := seedTierTree(t)
+	body := addWorkBody("Existing Work", "Jane Doe", "en", "John Smith", "US: B000000001", "web", true)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body}) // 500 min against 400
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "a maintainer adjudicates") ||
+		!anyContains(res.Messages, "runtime 500 min conflicts with the recorded 400 min") {
+		t.Errorf("the message must name the disagreement and both values: %v", res.Messages)
+	}
 	if !anyContains(res.Messages, worksPack+": entry existing-work: recording john-smith-2020") {
 		t.Errorf("the message must locate the record: %v", res.Messages)
+	}
+	rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json")
+	if !strings.Contains(rec, `"runtime_min": 400`) || strings.Contains(rec, `"type": "user"`) {
+		t.Errorf("a refused takeover must write nothing:\n%s", rec)
+	}
+}
+
+// TestAddRecordingASINTakeoverDateDisagreementNeedsHuman: a release date that is
+// not the same date at another precision disagrees too.
+func TestAddRecordingASINTakeoverDateDisagreementNeedsHuman(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = strings.Replace(
+		libexOnlyRecording, `"runtime_min": 400,`, `"release_date": "2020", "runtime_min": 400,`, 1)
+	testpack.Seed(t, dir, files)
+	res := Process(Options{DataDir: dir, Template: "add-recording",
+		Body: addRecordingBody("existing-work", "John Smith", "US: B000000001", true)}) // states 2021-01-01
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "release date 2021-01-01 conflicts with the recorded 2020") {
+		t.Errorf("the message must name both dates: %v", res.Messages)
+	}
+}
+
+// TestAddRecordingASINOfLibexOnlyRecordTakesItOver: the add-recording form takes
+// a mirror seed over the same way, and a date at another precision agrees.
+func TestAddRecordingASINOfLibexOnlyRecordTakesItOver(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = strings.Replace(
+		libexOnlyRecording, `"runtime_min": 400,`, `"release_date": "2021", "runtime_min": 400,`, 1)
+	testpack.Seed(t, dir, files)
+	res := Process(Options{DataDir: dir, Template: "add-recording",
+		Body: addRecordingBody("existing-work", "John Smith", "US: B000000001", true)})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json")
+	for _, want := range []string{`"release_date": "2021-01-01"`, `"publisher": "Other Audio"`, `"runtime_min": 410`} {
+		if !strings.Contains(rec, want) {
+			t.Errorf("the taken-over recording must carry %s:\n%s", want, rec)
+		}
+	}
+}
+
+// TestAddRecordingASINUnderAnotherWorkNeedsHuman: the form names one work and the
+// ASIN is recorded under another - a disagreement about what the book is, which
+// no takeover settles.
+func TestAddRecordingASINUnderAnotherWorkNeedsHuman(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+	files["works/ot/other-work/work.json"] = `{"authors": ["jane-doe"], "id": "other-work", "language": "en", ` +
+		`"license": "CC0-1.0", "sources": [{"type": "user", "imported_at": "2026-07-01"}], "title": "Other Work"}`
+	testpack.Seed(t, dir, files)
+	res := Process(Options{DataDir: dir, Template: "add-recording",
+		Body: addRecordingBody("other-work", "John Smith", "US: B000000001", true)})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, `not of the work this submission names ("other-work")`) {
+		t.Errorf("the message must say the ASIN belongs to another work: %v", res.Messages)
+	}
+}
+
+// TestTakeoverRefusesAnASINTheRecordDoesNotCarry: an attestation never adds an
+// identifier, so a second, unrecorded ASIN goes to a maintainer rather than
+// being dropped silently.
+func TestTakeoverRefusesAnASINTheRecordDoesNotCarry(t *testing.T) {
+	dir := seedTierTree(t)
+	res := Process(Options{DataDir: dir, Template: "add-recording",
+		Body: addRecordingBody("existing-work", "John Smith", "US: B000000001\nUK: B0NEWASIN1", true)})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "B0NEWASIN1, which that recording does not carry") {
+		t.Errorf("the message must name the unrecorded ASIN: %v", res.Messages)
 	}
 }
 
@@ -142,7 +419,10 @@ func TestImportConflictIsFlaggedNotRejected(t *testing.T) {
 }
 
 // TestAddRecordingDuplicateNarratorOnLibexOnlyRecordNeedsHuman covers the other
-// duplicate gate: the narrator-set match on the add-recording form.
+// duplicate gate: the narrator-set match on the add-recording form. A narrator
+// set is not the ASIN match the takeover is keyed on (issue #2406's shape), so a
+// maintainer decides - and the message names the record's ASIN, the one edit
+// that would make it a takeover the bot applies.
 func TestAddRecordingDuplicateNarratorOnLibexOnlyRecordNeedsHuman(t *testing.T) {
 	dir := seedTierTree(t)
 	body := addRecordingBody("existing-work", "John Smith", "", true)
@@ -150,8 +430,32 @@ func TestAddRecordingDuplicateNarratorOnLibexOnlyRecordNeedsHuman(t *testing.T) 
 	if res.Status != StatusNeedsHuman {
 		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
 	}
-	if !anyContains(res.Messages, "seeded from the libex mirror") {
-		t.Errorf("the message must say why a maintainer is needed: %v", res.Messages)
+	if !anyContains(res.Messages, "matched it by its narrators, not by an ASIN it carries") {
+		t.Errorf("the message must say why it is not a takeover: %v", res.Messages)
+	}
+	if !anyContains(res.Messages, "add its ASIN (B000000001 (us))") {
+		t.Errorf("the message must name the ASIN that would make it one: %v", res.Messages)
+	}
+	rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json")
+	if strings.Contains(rec, `"type": "user"`) {
+		t.Errorf("nothing may be applied:\n%s", rec)
+	}
+}
+
+// TestAddISBNOnlyMatchOfLibexOnlyRecordNeedsHuman: an ISBN is not an ASIN either.
+func TestAddISBNOnlyMatchOfLibexOnlyRecordNeedsHuman(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = strings.Replace(
+		libexOnlyRecording, `"id": "john-smith-2020",`, `"id": "john-smith-2020", "isbn": ["9781473647633"],`, 1)
+	testpack.Seed(t, dir, files)
+	body := setField(t, addRecordingBody("existing-work", "Somebody New", "", true), fRecISBNs, "9781473647633")
+	res := Process(Options{DataDir: dir, Template: "add-recording", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "matched it by ISBN 9781473647633, not by an ASIN it carries") {
+		t.Errorf("the message must say what it matched by: %v", res.Messages)
 	}
 }
 
@@ -221,12 +525,43 @@ func TestAddWorkSlugDuplicateOfMirrorOnlyWorkNeedsHuman(t *testing.T) {
 	if res.Status != StatusNeedsHuman {
 		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
 	}
-	if !anyContains(res.Messages, "seeded from the libex mirror") {
-		t.Errorf("the message must say why a maintainer is needed: %v", res.Messages)
+	if !anyContains(res.Messages, "matched it by its title, not by an ASIN it carries") {
+		t.Errorf("the message must say why it is not a takeover: %v", res.Messages)
 	}
-	// It locates the WORK entry - what the maintainer has to rewrite here.
+	// It locates the WORK entry - what the maintainer has to look at here.
 	if !anyContains(res.Messages, worksPack+": entry existing-work") {
 		t.Errorf("the message must locate the work: %v", res.Messages)
+	}
+}
+
+// TestAddWorkSlugHeldByAnotherAuthorsMirrorSeedComposes is issue #2408's shape:
+// the title's slug is held by a mirror seed of ANOTHER author's book of the same
+// name. That is neither a duplicate nor a takeover - it is another book - so it
+// is composed at the author-suffixed slug, the mirror seed untouched.
+func TestAddWorkSlugHeldByAnotherAuthorsMirrorSeedComposes(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/work.json"] = `{
+  "authors": ["jane-doe"],
+  "id": "existing-work",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "libex-import", "ref": "B000000001", "imported_at": "2026-07-01"}],
+  "title": "Existing Work"
+}`
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+	testpack.Seed(t, dir, files)
+
+	body := addWorkBody("Existing Work", "Somebody Else", "en", "Different Narrator", "US: B0FRESH001", "web", true)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !recordExists(t, dir, "works/ex/existing-work-somebody-else/work.json") {
+		t.Errorf("the other author's book must be composed at its own slug; messages = %v", res.Messages)
+	}
+	if work := readFile(t, dir, "works/ex/existing-work/work.json"); strings.Contains(work, `"type": "user"`) {
+		t.Errorf("the mirror seed must be untouched:\n%s", work)
 	}
 }
 

@@ -726,3 +726,23 @@ func findInIndex(idx seriesIndex, name string, row *SeriesRow) (string, bool) {
 	}
 	return t.slug, true
 }
+
+// NearPerson is the "cannot tell a misspelling from another author" test the
+// intake work-slug gate asks: allowed and denied pairs.
+func TestNearPerson(t *testing.T) {
+	cases := []struct {
+		a, b string
+		want bool
+	}{
+		{"Jane Doe", "John Doe", true},                   // same surname
+		{"Jane Doe", "Jane Dee", true},                   // one edit over the whole name
+		{"Brandon Sanderson", "Brendan Sandersen", true}, // one edit over the surname
+		{"C.S. Forester", "Kenneth E. Bailey", false},
+		{"Some Author", "Jane Doe", false},
+	}
+	for _, tc := range cases {
+		if got := NearPerson(tc.a, tc.b); got != tc.want {
+			t.Errorf("NearPerson(%q, %q) = %v, want %v", tc.a, tc.b, got, tc.want)
+		}
+	}
+}

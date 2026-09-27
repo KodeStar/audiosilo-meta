@@ -415,9 +415,8 @@ func TestCorrectISBNAlreadyRecordedIsANoOp(t *testing.T) {
 }
 
 // TestCorrectISBNOnAnotherRecordingKeepsItsDuplicateRouting proves the existing
-// global gate still fires ahead of the additive op, and - because it goes
-// through failDuplicate - that a bulk-mirror-only incumbent still routes to a
-// maintainer rather than being closed as a duplicate.
+// global gate still fires ahead of the additive op, and that a bulk-mirror-only
+// incumbent still routes to a maintainer rather than being closed as a duplicate.
 func TestCorrectISBNOnAnotherRecordingKeepsItsDuplicateRouting(t *testing.T) {
 	dir := t.TempDir()
 	files := seedFiles()

@@ -675,3 +675,12 @@ func refPath(rel string) (recordRef, bool) {
 	}
 	return recordRef{}, false
 }
+
+// joinCapped joins items with ", ", listing at most shown of them and saying how
+// many more there are, so a long list still reads as one sentence.
+func joinCapped(items []string, shown int) string {
+	if len(items) <= shown {
+		return strings.Join(items, ", ")
+	}
+	return strings.Join(items[:shown], ", ") + fmt.Sprintf(" (and %d more)", len(items)-shown)
+}

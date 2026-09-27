@@ -470,7 +470,7 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 // an assertion. The genres are mapped only on the branch that can store them, so
 // a row whose genres could never be recorded adds nothing to the unmapped report.
 func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workState, writable bool) bool {
-	if len(b.genres) == 0 {
+	if len(b.genres) == 0 && len(b.vocabGenres) == 0 {
 		return false
 	}
 	if !p.userTier {
@@ -479,7 +479,10 @@ func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workStat
 			return false
 		}
 	}
-	out := unionRawGenres(raw, p.genres.mapGenres(b.genres, p.unmappedGenres))
+	// A hand submission's genres are already vocabulary values
+	// (sourceBook.vocabGenres) and join the mapped claims unchanged: one union,
+	// one rule, whichever door the book came in by.
+	out := unionRawGenres(raw, UnionGenres(p.genres.mapGenres(b.genres, p.unmappedGenres), b.vocabGenres))
 	if out == nil {
 		return false
 	}

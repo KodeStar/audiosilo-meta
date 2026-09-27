@@ -1,6 +1,12 @@
 package importer
 
-import "github.com/kodestar/audiosilo-meta/pkg/model"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
+)
 
 // attest.go is the importer's half of the TRUST-TIER / user-overwrite policy
 // (LICENSING.md, "Trust tiers and the user-overwrite rule"; the tier model
@@ -71,6 +77,126 @@ func (p *planner) attestExisting(b sourceBook, asin string) {
 	if p.applyToRecording(b, ref, warn, scopeAttestExact) {
 		p.applyToWork(b, ref.Work, scopeAttestExact)
 	}
+}
+
+// Attestation is ONE hand submission - an intake issue form - stated as the
+// facts the takeover reads. It is the form's counterpart of an export row, and
+// deliberately carries only what an export row can state about an edition the
+// catalogue already holds: identity (title, authors, narrators, the identifier
+// sets) is never rewritten by an attestation, so it has no field here.
+type Attestation struct {
+	// ASIN is the catalogued ASIN the submission names. It IS the match:
+	// LICENSING.md's rule takes over a mirror seed a user names BY ASIN, so
+	// there is no second way to say which record this is.
+	ASIN string
+	// Source is the provenance entry the takeover stamps: the submission's own
+	// entry, which must be user-library tier (a form stamps `user`). A source
+	// with no overwrite authority is refused rather than run as an enrichment.
+	Source OutSource
+	// The stated facts, each empty or zero when the submission did not state it -
+	// silence is not an assertion, so an unstated fact keeps the mirror's value.
+	RuntimeMin  int
+	ReleaseDate string
+	Publisher   string
+	CoverURL    string
+	ISBNs       []string
+	// Genres are values of the project's own vocabulary (the form validates them
+	// against the schema enum), unioned into the work's set - LICENSING.md rule 5.
+	Genres []string
+}
+
+// AttestAt applies the user-overwrite rule (LICENSING.md, "Trust tiers and the
+// user-overwrite rule") for ONE hand submission naming, by ASIN, a book the
+// catalogue holds, and writes and validates the tree exactly as a run does. It
+// is the intake bot's door onto the rule; the library import's door is the
+// create path itself.
+//
+// It is not a second implementation of the rule: it plans the submission as a
+// one-row user-library run and hands it to the same hook the create path calls
+// at its ASIN-dedup skip (attestExisting), so the two doors cannot disagree about
+// what a takeover is. Against a bulk-mirror-only record the stated facts replace
+// the recorded ones (an ISBN is appended when no recording claims it) and Source
+// is appended (Summary.Attested*); against an attested record nothing is
+// written, first writer wins. Either way a runtime more than 10% apart, or a
+// release date that is not the same date at another precision, refuses the row
+// whole and is counted in Summary.Conflicts, with the warning naming both values
+// - the disagreement a maintainer adjudicates.
+//
+// The caller holds the tree's store already and has matched the ASIN itself:
+// ref is the recording a.ASIN names, and taken lists those of a.ISBNs the
+// catalogue records ANYWHERE. a's text is taken as ALREADY DECODED - the form
+// door decodes a field once as it reads it (issueform's sections.get), so a run's
+// decodeText here would decode a submitted "&amp;amp;" twice. It loads no
+// catalogue, which is sound because attestExisting's call graph reads exactly
+// three pieces of planner state beyond the store and the run's own fields, and
+// this seeds each of them from what the caller already knows:
+//
+//   - asinLoc, for the one ASIN: where the record it attests sits;
+//   - isbns, for the submitted ISBNs already taken: the global-uniqueness set
+//     claimISBNs refuses a duplicate identifier against (claimISBNsFor drops the
+//     record's OWN ISBNs first, so seeding one of those changes nothing);
+//   - works, left EMPTY: applyToWork reads a work's run state (runGenresOwned,
+//     runAttested), which is zero for every record on disk, and builds that zero
+//     state itself when the map has none.
+//
+// Everything else a whole-catalogue load fills (people, series, the identity
+// index, the credit censuses) serves the create path, which an attestation never
+// reaches. TestAttestAtMatchesAWholeLoad pins the equivalence.
+//
+// An ASIN the catalogue does not hold is the caller's error: this entry point
+// takes over records, it never mints them.
+func AttestAt(store *pack.Store, ref RecRef, taken []string, a Attestation, opts Options) (Summary, error) {
+	asin, err := a.check()
+	if err != nil {
+		return Summary{}, err
+	}
+	p := plannerOn(store, a.Source.Type, opts)
+	p.asinLoc[asin] = ref
+	for _, isbn := range taken {
+		p.isbns[strings.ToUpper(isbn)] = true
+	}
+	return p.attest(a, asin, opts)
+}
+
+// check refuses an attestation no run could apply, returning its normalized ASIN.
+func (a Attestation) check() (string, error) {
+	if model.TierOfSource(a.Source.Type) != model.TierUserLibrary {
+		return "", fmt.Errorf("attest: source type %q has no overwrite authority", a.Source.Type)
+	}
+	asin := NormalizeASIN(a.ASIN)
+	if asin == "" {
+		return "", fmt.Errorf("attest: %q is not an ASIN", a.ASIN)
+	}
+	return asin, nil
+}
+
+// attest is the attestation's body over a seeded planner: the submission as a
+// row (its text already decoded - see AttestAt), the create path's attestation
+// hook, and the run's write tail.
+func (p *planner) attest(a Attestation, asin string, opts Options) (Summary, error) {
+	b := sourceBook{
+		raw: rawBook{
+			"asin": asin, "release_date": a.ReleaseDate,
+			"publisher": a.Publisher, "image_url": a.CoverURL,
+		},
+		runtimeMin:  a.RuntimeMin,
+		isbns:       a.ISBNs,
+		vocabGenres: a.Genres,
+	}
+	// The submission's own entry, not setSource's: a run stamps the row's ASIN as
+	// its ref, where a hand submission's provenance is what the submitter cited.
+	p.curSource = a.Source
+	p.attestExisting(b, asin)
+	if p.fatal != nil {
+		return p.result(), p.fatal
+	}
+	// A refused or no-op attestation queued nothing, so there is no tree to write
+	// or re-validate.
+	if p.summary.Produced() == 0 {
+		return p.result(), nil
+	}
+	err := p.commit(opts)
+	return p.result(), err
 }
 
 // attestOnMerge is the ASIN-MERGE path's tier hook: a user's row is about to

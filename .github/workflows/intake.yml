@@ -17,18 +17,22 @@ name: intake
 # branch is checked out, never run out of a swept branch's tree - and the only
 # branches it rewrites (force-push included) are this repository's own
 # bot-intake branches whose change is confined to data/ (see that job).
-# The `labeled` trigger is load-bearing: the GitHub API silently DROPS labels on
-# issues opened by non-collaborators (the sibling audiosilo-sidecars contributor
-# tool creates add-work intake issues over the API; its characters/recaps issues
-# now go to KodeStar/audiosilo-meta-community, which runs its own intake), so
-# such an issue arrives label-less and the `opened`/`edited` runs skip it. When a
-# maintainer later applies the routing label, that fires neither `opened` nor
-# `edited` - only `labeled` - so without this trigger the tool's issues could
-# never be admitted. The job-level `if` below narrows `labeled` to genuine routing
-# labels.
+# A submission is admitted by `labeled`, for its ROUTING label, and re-run by
+# `edited`; `opened` is deliberately not a trigger. An issue opened WITH its
+# routing label (every issue form, and an API client that may set labels) fires
+# that label's `labeled` event as well as `opened`, so admitting both ran intake
+# twice per submission and posted every verdict twice (#2406, #2408). And an
+# issue opened WITHOUT one has nothing for `opened` to act on: the GitHub API
+# silently DROPS labels on issues opened by non-collaborators (the sibling
+# audiosilo-sidecars contributor tool creates add-work intake issues over the
+# API; its characters/recaps issues now go to KodeStar/audiosilo-meta-community,
+# which runs its own intake), so such an issue arrives label-less, and it is the
+# maintainer applying the routing label later - a `labeled` event, never an
+# `opened` or `edited` one - that admits it. The job-level `if` below narrows
+# `labeled` to genuine routing labels.
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [edited, labeled]
   # A merge to main can leave an already-open intake PR conflicting in a pack
   # file, which only a data change can do - but the series-completion bot
   # (GOVERNANCE.md, "Series-completion bot") merges its own pull request ONLY
@@ -51,9 +55,9 @@ permissions: {}
 # issue-number expression is empty for a push, so without the conditional both
 # would share one accidental "intake-" group.
 # Nothing is ever cancelled in flight: creating an issue with both `data` and
-# `data:<template>` emits several events at once, and the generic `data` event is
-# intentionally skipped by the job-level guard below - with cancel-in-progress it
-# would cancel the run that opens the pull request.
+# `data:<template>` emits a `labeled` event for each at once, and the generic
+# `data` one is intentionally skipped by the job-level guard below - with
+# cancel-in-progress it would cancel the run that opens the pull request.
 #
 # That is not the whole of it, because GitHub keeps at most ONE PENDING run per
 # group and a newer arrival replaces it, in-progress cancellation or not. So an
@@ -69,7 +73,7 @@ concurrency:
     ${{ github.event_name == 'push' && 'intake-rebase' || format('intake-{0}-{1}', github.event.issue.number,
     (
       (
-        github.event.action != 'labeled' &&
+        github.event.action == 'edited' &&
         contains(join(github.event.issue.labels.*.name), 'data:')
       ) || (
         github.event.action == 'labeled' &&
@@ -93,7 +97,7 @@ jobs:
       pull-requests: write
       issues: write
     # Only act on issues carrying a data-routing label (data:add-work, etc.).
-    # For opened/edited we check the issue's current label set; for a `labeled`
+    # For an edit we check the issue's current label set; for a `labeled`
     # event we instead gate on the label just added (github.event.label.name), and
     # EXCLUDE the three outcome labels this workflow applies at the end
     # (data:invalid / data:needs-human / data:duplicate). Without that exclusion the
@@ -105,7 +109,7 @@ jobs:
     if: >-
       github.event_name == 'issues' && (
       (
-        github.event.action != 'labeled' &&
+        github.event.action == 'edited' &&
         contains(join(github.event.issue.labels.*.name), 'data:')
       ) || (
         github.event.action == 'labeled' &&

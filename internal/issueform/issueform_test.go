@@ -356,12 +356,82 @@ func TestAddWorkDuplicateISBNIsCaseInsensitive(t *testing.T) {
 	}
 }
 
+// The work-slug gate is AUTHOR-AWARE: a taken title slug is a duplicate only when
+// the work there is the submitting author's, judged by the importer's same-person
+// rule - so another spelling of the same author is still a duplicate ...
 func TestAddWorkDuplicateSlug(t *testing.T) {
+	for _, author := range []string{"Jane Doe", "J. Doe"} {
+		t.Run(author, func(t *testing.T) {
+			dir := seedTree(t)
+			body := addWorkBody("Existing Work", author, "en", "Some Narrator", "", "web", true)
+			res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+			if res.Status != StatusDuplicate {
+				t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+			}
+		})
+	}
+}
+
+// ... while a CLEARLY different author's book of the same title is another book,
+// composed at the author-suffixed slug the bulk importer's chain would mint for
+// it - past an incumbent a user has ATTESTED (seedTree's records are all
+// user-sourced), not only past a mirror seed.
+func TestAddWorkSameTitleByAnotherAuthorStepsToTheAuthorSlug(t *testing.T) {
 	dir := seedTree(t)
+	if work := readFile(t, dir, "works/ex/existing-work/work.json"); !strings.Contains(work, `"type": "user"`) {
+		t.Fatalf("the incumbent must be an attested record:\n%s", work)
+	}
 	body := addWorkBody("Existing Work", "Some Author", "en", "Some Narrator", "", "web", true)
 	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
-	if res.Status != StatusDuplicate {
-		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if want := importer.AuthorSuffixedWorkSlug("existing-work", "some-author"); !recordExists(t, dir, "works/ex/"+want+"/work.json") {
+		t.Fatalf("the book was not composed at %q; messages = %v", want, res.Messages)
+	}
+	if !anyContains(res.Messages, `held by "Existing Work" by Jane Doe, another author's book`) {
+		t.Errorf("the step must be reported: %v", res.Messages)
+	}
+	if work := readFile(t, dir, "works/ex/existing-work/work.json"); strings.Contains(work, "some-author") {
+		t.Errorf("the incumbent must be untouched:\n%s", work)
+	}
+}
+
+// An author NEAR the incumbent's - the same surname, or one edit apart - may be a
+// misspelling of the same author, and composing it at the suffixed slug would mint
+// a second record of the book. The gate cannot tell, so a maintainer decides.
+func TestAddWorkSameTitleByANearAuthorNeedsHuman(t *testing.T) {
+	for _, author := range []string{"John Doe", "Jane Dee"} {
+		t.Run(author, func(t *testing.T) {
+			dir := seedTree(t)
+			res := Process(Options{DataDir: dir, Template: "add-work",
+				Body: addWorkBody("Existing Work", author, "en", "Some Narrator", "", "web", true)})
+			if res.Status != StatusNeedsHuman {
+				t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+			}
+			if !anyContains(res.Messages, "the same author spelled differently, or another author?") {
+				t.Errorf("the message must ask the question: %v", res.Messages)
+			}
+		})
+	}
+}
+
+// When the author-suffixed slug is held by ANOTHER author's book too, there is no
+// candidate left the form may take, and a maintainer chooses the slug.
+func TestAddWorkBothSlugCandidatesHeldByOtherAuthorsNeedsHuman(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	suffixed := importer.AuthorSuffixedWorkSlug("existing-work", "some-author")
+	files["works/ex/"+suffixed+"/work.json"] = `{"authors": ["john-smith"], "id": "` + suffixed + `", "language": "en", ` +
+		`"license": "CC0-1.0", "sources": [{"type": "user", "imported_at": "2026-07-01"}], "title": "Existing Work"}`
+	testpack.Seed(t, dir, files)
+	res := Process(Options{DataDir: dir, Template: "add-work",
+		Body: addWorkBody("Existing Work", "Some Author", "en", "Some Narrator", "", "web", true)})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "are both held by other authors' books") {
+		t.Errorf("the message must say both candidates are taken: %v", res.Messages)
 	}
 }
 

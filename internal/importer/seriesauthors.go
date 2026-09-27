@@ -710,6 +710,31 @@ func (a personForm) same(b personForm) bool {
 	return MiddleNameVariant(a.words, b.words) || initialExpansion(a.tokens, b.tokens) || initialExpansion(b.tokens, a.tokens)
 }
 
+// SamePerson is personForm.same over two credited names, each with the slug it
+// is recorded or would be minted under: whether the two may be one person. It is
+// exported for internal/issueform's work-slug gate, which must decide as the
+// importer does whether a taken title slug is the submitting author's book or
+// another author's - one rule, so the two doors never split one author's books.
+func SamePerson(slugA, nameA, slugB, nameB string) bool {
+	return formOf(slugA, nameA).same(formOf(slugB, nameB))
+}
+
+// NearPerson reports whether two names that are NOT one person by SamePerson are
+// still close enough that a reader cannot tell a misspelling from a different
+// author: the same surname (the last word of the cleaned name), or a single edit
+// apart over the whole folded name or over the surname alone (titlerule.
+// OneEditApart - SamePerson's typo rung, without its length floor). It never
+// merges anything; internal/issueform's work-slug gate asks it to decide when a
+// taken title slug is safe to step past rather than a question for a maintainer.
+func NearPerson(nameA, nameB string) bool {
+	a, b := formOf("", nameA), formOf("", nameB)
+	if len(a.words) == 0 || len(b.words) == 0 {
+		return false
+	}
+	sa, sb := a.words[len(a.words)-1], b.words[len(b.words)-1]
+	return sa == sb || titlerule.OneEditApart(a.fold, b.fold) || titlerule.OneEditApart(sa, sb)
+}
+
 // initialExpansion reports whether a spells b with INITIALS where b has words.
 // Every token before the surname is read as a sequence of units - each letter of
 // an initials group one unit, each word one unit - and the two sequences must

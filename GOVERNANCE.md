@@ -92,9 +92,16 @@ correction is the route to changing it. Genres are the one exception to
 "replace": a user library states one category per book, so its genres are
 added to the recorded set rather than replacing it (LICENSING.md, rule 5). Either way the review step is never
 bypassed, and the catalogue never churns between contributors. A form
-submission that duplicates a mirror-seeded record is routed to a maintainer
-(`data:needs-human`) rather than closed as a duplicate, because the bot can only
-compose new records and the submitter's data should win.
+submission (Add a work, Add a recording) that names a mirror-seeded recording
+BY ASIN is applied by the intake bot itself, through the same attestation a
+library import performs: its pull request carries the modified record, and a
+maintainer still approves it like any other `bot-intake` pull request. A
+submission that disagrees with the seed on runtime or release date, that
+describes a different book than the record its ASIN names (authors, narrators or
+language, or an ISBN another recording carries), or that meets a mirror-seeded
+record only by title, ISBN or narrator set (not an ASIN match, so not the
+rule's), is routed to a maintainer (`data:needs-human`) with a message saying
+which, rather than closed as a duplicate.
 
 ## Automated intake and AI verification
 

@@ -84,7 +84,13 @@ func (c *composer) addWork(s sections) {
 	// this book (or edition) is already in the catalog.
 	asins := c.parseASINs(s.get(fRecASINs))
 	recISBNs := c.parseISBNs(s.get(fRecISBNs))
-	if c.dedupIdentifiers(asins, recISBNs, "; use the Add a recording form for another narration") {
+	// An ASIN naming a mirror-seed recording is a planned takeover (takeover.go),
+	// which also stops the compose.
+	t, dup := c.dedupIdentifiers(asins, recISBNs, "; use the Add a recording form for another narration")
+	if t != nil {
+		c.applyTakeover(s, t, genres, "")
+	}
+	if dup {
 		return
 	}
 	// Parsed here rather than inside emitRecording so a refusal lands before any
@@ -131,16 +137,8 @@ func (c *composer) addWork(s sections) {
 		c.note("work slug %q is reserved for an API route - using %q", workSlug, stepped)
 		workSlug = stepped
 	}
-	if live := c.liveWorkSlug(workSlug); live != "" {
-		// Tier-aware like the ASIN/ISBN and narrator-set gates: a work only the
-		// mirror has ever stated routes to a maintainer, not to a closed duplicate.
-		// A retired slug meets its survivor here (internal/importer/tombstone.go).
-		lead := "a work already exists"
-		if live != workSlug {
-			lead = fmt.Sprintf("the work slug %q was retired by a merge onto the work", workSlug)
-		}
-		c.failDuplicateWork(live, "%s at %s; use the Add a recording form to add another narration",
-			lead, c.entryLocation(pack.FamilyWorks, live, ""))
+	workSlug, slugOK := c.gateWorkSlug(workSlug, authorNames)
+	if !slugOK {
 		return
 	}
 
@@ -198,13 +196,121 @@ func (c *composer) addWork(s sections) {
 // - which is the same last resort the chain ends in. A retired author slug is
 // read as its survivor, as the importer's chain reads the author it resolved.
 func (c *composer) unreservedWorkSlug(base, firstAuthor string) string {
-	if slug, fellBack := model.PersonSlug(firstAuthor); !fellBack {
-		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
-			slug = to
-		}
+	if slug, ok := c.personSlugOf(firstAuthor); ok {
 		return importer.AuthorSuffixedWorkSlug(base, slug)
 	}
 	return importer.NumberedSlugAt(base, 1)
+}
+
+// gateWorkSlug is the WORK-SLUG gate: it returns the slug the work is composed
+// at, or ok=false with the verdict set.
+//
+// A title's slug held by another work is a duplicate only when that work is the
+// SUBMITTING author's (sameAuthorAs - the importer's same-person rule, so "J.
+// Doe" meets "Jane Doe"). A CLEARLY different author's book of the same title is
+// another book: it steps to the author-suffixed slug, the bulk chain's next
+// candidate (unreservedWorkSlug, the formula a reserved title steps by), so the
+// form and an import put it in one place. An author NEAR the incumbent's
+// (nearAuthorOf - a likely misspelling) and two other authors' books on both
+// candidates are a maintainer's call.
+//
+// A duplicate is tier-aware like the ASIN/ISBN and narrator-set gates: a work
+// only the mirror has ever stated routes to a maintainer, not to a closed
+// duplicate (failDuplicateWork). A retired slug meets its survivor here
+// (internal/importer/tombstone.go).
+func (c *composer) gateWorkSlug(slug string, authorNames []string) (string, bool) {
+	live := c.liveWorkSlug(slug)
+	if w := c.works[live]; w != nil && !c.sameAuthorAs(w, authorNames) {
+		// Stepping past is only safe when the authors are CLEARLY different: a
+		// misspelled author ("Brandon Sandersen") must not compose a second record
+		// of the book at the suffixed slug.
+		if c.nearAuthorOf(w, authorNames) {
+			c.fail(StatusNeedsHuman, "the work slug %q is held by %q by %s at %s, and your submission names %s - "+
+				"the same author spelled differently, or another author? A maintainer decides (if it is a "+
+				"misspelling, correcting the author makes this a duplicate; if not, the book needs its own slug)",
+				slug, w.Title, c.personNames(w.Authors), c.entryLocation(pack.FamilyWorks, live, ""),
+				strings.Join(authorNames, ", "))
+			return "", false
+		}
+		stepped := c.unreservedWorkSlug(slug, authorNames[0])
+		if other := c.works[c.liveWorkSlug(stepped)]; other != nil && !c.sameAuthorAs(other, authorNames) {
+			c.fail(StatusNeedsHuman, "the work slug %q and its author-suffixed form %q are both held by other "+
+				"authors' books; a maintainer chooses this book's slug", slug, stepped)
+			return "", false
+		}
+		c.note("the work slug %q is held by %q by %s, another author's book of the same title - "+
+			"this one is composed at %q", slug, w.Title, c.personNames(w.Authors), stepped)
+		slug, live = stepped, c.liveWorkSlug(stepped)
+	}
+	if live == "" {
+		return slug, true
+	}
+	lead := "a work already exists"
+	if live != slug {
+		lead = fmt.Sprintf("the work slug %q was retired by a merge onto the work", slug)
+	}
+	c.failDuplicateWork(live, "its title", "%s at %s; use the Add a recording form to add another narration",
+		lead, c.entryLocation(pack.FamilyWorks, live, ""))
+	return "", false
+}
+
+// sameAuthorAs reports whether any of the submitted author names may be one of
+// w's authors, by the importer's same-person rule (importer.SamePerson). A work
+// or a submission with no author to compare reads as the same author - the
+// conservative answer, which keeps the duplicate verdict.
+func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
+	if len(w.Authors) == 0 || len(names) == 0 {
+		return true
+	}
+	for _, id := range w.Authors {
+		for _, n := range names {
+			if slug, _ := c.personSlugOf(n); importer.SamePerson(id, c.nameOf(id), slug, n) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// nearAuthorOf reports whether any submitted author is NEAR one of w's authors
+// without being the same person (importer.NearPerson: the same surname, or one
+// edit apart) - a name the gate cannot tell a misspelling from another author by.
+func (c *composer) nearAuthorOf(w *model.Work, names []string) bool {
+	for _, id := range w.Authors {
+		for _, n := range names {
+			if importer.NearPerson(c.nameOf(id), n) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// nameOf is a catalogued person's recorded name, or the id itself when the
+// catalogue holds no such record. The index is built on first use: only the
+// work-slug gate and a few messages ask.
+func (c *composer) nameOf(id string) string {
+	if c.personName == nil {
+		c.personName = map[string]string{}
+		if c.catalog != nil {
+			for _, p := range c.catalog.People {
+				c.personName[p.ID] = p.Name
+			}
+		}
+	}
+	if name, ok := c.personName[id]; ok {
+		return name
+	}
+	return id
+}
+
+// personNames renders person ids as their recorded names, joined for a message.
+func (c *composer) personNames(ids []string) string {
+	out := make([]string, 0, len(ids))
+	for _, id := range ids {
+		out = append(out, c.nameOf(id))
+	}
+	return strings.Join(out, ", ")
 }
 
 // slugsFor resolves a list of person names to slugs, creating person records,
@@ -298,20 +404,7 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 		Abridged: abridgedFromForm(s.get(fRecAbridged)),
 		License:  licenseCC0, Sources: c.sources(sourceRef),
 	}
-	if rt := s.get(fRecRuntime); rt != "" {
-		if n, err := strconv.Atoi(rt); err == nil && n > 0 {
-			rec.RuntimeMin = n
-		} else {
-			c.note("Runtime %q is not a positive whole number of minutes - dropped", rt)
-		}
-	}
-	if rd := s.get(fRecRelease); rd != "" {
-		if dateFlexRE.MatchString(rd) {
-			rec.ReleaseDate = rd
-		} else {
-			c.note("Release date %q is not YYYY, YYYY-MM, or YYYY-MM-DD - dropped", rd)
-		}
-	}
+	rec.RuntimeMin, rec.ReleaseDate, rec.CoverURL = c.recordingFacts(s)
 	rec.Publisher = s.get(fRecPublisher)
 	if len(publishers) > 0 {
 		rec.Publishers = publishers
@@ -322,17 +415,39 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 	if len(isbns) > 0 {
 		rec.ISBN = isbns
 	}
-	if cover := s.get(fRecCoverURL); cover != "" {
-		if strings.HasPrefix(cover, "https://") {
-			rec.CoverURL = cover
-		} else {
-			c.note("Cover image URL %q must start with https:// - dropped", cover)
-		}
-	}
 	// Both issue-form recording paths (a work's first recording and an added
 	// narration) create a recording, so both stamp added_at.
 	rec.AddedAt = c.date
 	c.putRecording(workSlug, recSlug, rec)
+}
+
+// recordingFacts reads the three recording facts a form states as free text -
+// runtime, release date and cover URL - dropping (with a note) a value that is
+// not well-formed. It is shared by the compose path and the takeover
+// (takeover.go), so a stated value means the same whichever of the two uses it.
+func (c *composer) recordingFacts(s sections) (runtimeMin int, releaseDate, coverURL string) {
+	if rt := s.get(fRecRuntime); rt != "" {
+		if n, err := strconv.Atoi(rt); err == nil && n > 0 {
+			runtimeMin = n
+		} else {
+			c.note("Runtime %q is not a positive whole number of minutes - dropped", rt)
+		}
+	}
+	if rd := s.get(fRecRelease); rd != "" {
+		if dateFlexRE.MatchString(rd) {
+			releaseDate = rd
+		} else {
+			c.note("Release date %q is not YYYY, YYYY-MM, or YYYY-MM-DD - dropped", rd)
+		}
+	}
+	if cover := s.get(fRecCoverURL); cover != "" {
+		if strings.HasPrefix(cover, "https://") {
+			coverURL = cover
+		} else {
+			c.note("Cover image URL %q must start with https:// - dropped", cover)
+		}
+	}
+	return runtimeMin, releaseDate, coverURL
 }
 
 // putRecording splices a recording into its work's composite entry. The entry is
@@ -473,10 +588,7 @@ func (c *composer) seriesForForm(name string, row *importer.SeriesRow) formSerie
 // of record.
 func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
 	slugOf := func(name string) string {
-		slug, _ := model.PersonSlug(name)
-		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
-			return to
-		}
+		slug, _ := c.personSlugOf(name)
 		return slug
 	}
 	return importer.SeriesRowFor(splitNames(s.get(fWorkAuthors)), []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}, s.get(fRecPublisher), slugOf)
