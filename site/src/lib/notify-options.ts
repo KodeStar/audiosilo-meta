@@ -65,7 +65,8 @@ export const NOTIFY_OPTIONS: readonly NotifyOption[] = [
     label: 'Calendar',
     needsAccount: false,
     feed: 'webcal',
-    blurb: 'Subscribe to a calendar and see every release date in the app you already check daily.',
+    blurb:
+      'Release dates in the calendar you already use, but no alert when a book is added - pair it with an option below for that.',
     steps: [
       'Copy the Calendar link from the Get notified tab on the Watching page.',
       'Google Calendar: in the left sidebar, open the "+" beside Other calendars, choose From URL, paste the link and click Add calendar.',
@@ -74,6 +75,7 @@ export const NOTIFY_OPTIONS: readonly NotifyOption[] = [
       'Outlook: Add calendar > Subscribe from web, paste the link and add it.',
     ],
     notes: [
+      'Why there is no alert when a book is added: a subscribed calendar is re-downloaded and merged in silently, and no calendar app announces a new event in one.',
       'Each release date becomes one all-day event; any alert or reminder is the calendar app’s own setting, not ours.',
       'Google refreshes a subscribed calendar roughly every 12 to 24 hours; Apple refreshes at the interval you pick.',
       'A book with no announced release date has no date to put in a calendar, so it is not in this feed. The Atom feed still lists it.',
