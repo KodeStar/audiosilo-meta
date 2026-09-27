@@ -85,6 +85,9 @@ func (c *composer) addWork(s sections) {
 	asins := c.parseASINs(s.get(fRecASINs))
 	recISBNs := c.parseISBNs(s.get(fRecISBNs))
 	if c.dedupIdentifiers(asins, recISBNs, "; use the Add a recording form for another narration") {
+		// An ASIN naming a mirror-seed recording is a takeover, not a verdict
+		// (takeover.go); a no-op for every other way the gate stopped.
+		c.applyTakeover(s, genres, "")
 		return
 	}
 	// Parsed here rather than inside emitRecording so a refusal lands before any
@@ -135,11 +138,14 @@ func (c *composer) addWork(s sections) {
 		// Tier-aware like the ASIN/ISBN and narrator-set gates: a work only the
 		// mirror has ever stated routes to a maintainer, not to a closed duplicate.
 		// A retired slug meets its survivor here (internal/importer/tombstone.go).
+		if c.failAnotherAuthorsSeed(live, workSlug, authorNames) {
+			return
+		}
 		lead := "a work already exists"
 		if live != workSlug {
 			lead = fmt.Sprintf("the work slug %q was retired by a merge onto the work", workSlug)
 		}
-		c.failDuplicateWork(live, "%s at %s; use the Add a recording form to add another narration",
+		c.failDuplicateWork(live, "its title", "%s at %s; use the Add a recording form to add another narration",
 			lead, c.entryLocation(pack.FamilyWorks, live, ""))
 		return
 	}
@@ -298,20 +304,7 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 		Abridged: abridgedFromForm(s.get(fRecAbridged)),
 		License:  licenseCC0, Sources: c.sources(sourceRef),
 	}
-	if rt := s.get(fRecRuntime); rt != "" {
-		if n, err := strconv.Atoi(rt); err == nil && n > 0 {
-			rec.RuntimeMin = n
-		} else {
-			c.note("Runtime %q is not a positive whole number of minutes - dropped", rt)
-		}
-	}
-	if rd := s.get(fRecRelease); rd != "" {
-		if dateFlexRE.MatchString(rd) {
-			rec.ReleaseDate = rd
-		} else {
-			c.note("Release date %q is not YYYY, YYYY-MM, or YYYY-MM-DD - dropped", rd)
-		}
-	}
+	rec.RuntimeMin, rec.ReleaseDate, rec.CoverURL = c.recordingFacts(s)
 	rec.Publisher = s.get(fRecPublisher)
 	if len(publishers) > 0 {
 		rec.Publishers = publishers
@@ -322,17 +315,39 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 	if len(isbns) > 0 {
 		rec.ISBN = isbns
 	}
-	if cover := s.get(fRecCoverURL); cover != "" {
-		if strings.HasPrefix(cover, "https://") {
-			rec.CoverURL = cover
-		} else {
-			c.note("Cover image URL %q must start with https:// - dropped", cover)
-		}
-	}
 	// Both issue-form recording paths (a work's first recording and an added
 	// narration) create a recording, so both stamp added_at.
 	rec.AddedAt = c.date
 	c.putRecording(workSlug, recSlug, rec)
+}
+
+// recordingFacts reads the three recording facts a form states as free text -
+// runtime, release date and cover URL - dropping (with a note) a value that is
+// not well-formed. It is shared by the compose path and the takeover
+// (takeover.go), so a stated value means the same whichever of the two uses it.
+func (c *composer) recordingFacts(s sections) (runtimeMin int, releaseDate, coverURL string) {
+	if rt := s.get(fRecRuntime); rt != "" {
+		if n, err := strconv.Atoi(rt); err == nil && n > 0 {
+			runtimeMin = n
+		} else {
+			c.note("Runtime %q is not a positive whole number of minutes - dropped", rt)
+		}
+	}
+	if rd := s.get(fRecRelease); rd != "" {
+		if dateFlexRE.MatchString(rd) {
+			releaseDate = rd
+		} else {
+			c.note("Release date %q is not YYYY, YYYY-MM, or YYYY-MM-DD - dropped", rd)
+		}
+	}
+	if cover := s.get(fRecCoverURL); cover != "" {
+		if strings.HasPrefix(cover, "https://") {
+			coverURL = cover
+		} else {
+			c.note("Cover image URL %q must start with https:// - dropped", cover)
+		}
+	}
+	return runtimeMin, releaseDate, coverURL
 }
 
 // putRecording splices a recording into its work's composite entry. The entry is

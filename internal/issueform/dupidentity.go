@@ -55,8 +55,9 @@ import (
 // VERDICT DISCIPLINE is the existing one, not a new one. The two DUPLICATE gates go
 // through failDuplicateWork - failDuplicate's sibling for a work record - so a
 // collision with a record that is still nothing but a bulk-mirror seed is
-// StatusNeedsHuman (the submitter's data should REPLACE the seed and the bot only
-// composes new records) exactly as it is at the three older gates. The strip is not a
+// StatusNeedsHuman (a title match is not the ASIN match the user-overwrite rule
+// takes a record over on, so a maintainer decides) exactly as it is at the older
+// work-slug gate. The strip is not a
 // duplicate verdict at all: it either rewrites the title or refuses the submission on
 // its own terms.
 //
@@ -213,7 +214,7 @@ func (c *composer) checkSeriesVolume(ctx titleContext) bool {
 	if !c.sameBookAs(ctx, member) {
 		return false
 	}
-	c.failDuplicateWork(ctx.memberAt, "the title states %q volume %s, and %s is already recorded at that position (%s) - "+
+	c.failDuplicateWork(ctx.memberAt, "its series position", "the title states %q volume %s, and %s is already recorded at that position (%s) - "+
 		"use the Add a recording form if this is another narration of it, or correct the title if it is a different book",
 		ctx.seriesRec.Name, formatVolume(ctx.volume), ctx.memberAt,
 		c.entryLocation(pack.FamilyWorks, ctx.memberAt, ""))
@@ -363,7 +364,7 @@ func (c *composer) checkNormalizedIdentity(ctx titleContext, lang string, author
 	if !ctx.placesMatch(m.Work.ID) {
 		return false
 	}
-	c.failDuplicateWork(m.Work.ID, "%q normalizes to the same title and authors as the catalogued work %q (%q%s) at %s - "+
+	c.failDuplicateWork(m.Work.ID, "its normalized title and authors", "%q normalizes to the same title and authors as the catalogued work %q (%q%s) at %s - "+
 		"use the Add a recording form if this is another narration of it, or a correct-data form if its title needs fixing",
 		ctx.title, m.Work.ID, m.Work.Title, againstSeries(m.Series), c.entryLocation(pack.FamilyWorks, m.Work.ID, ""))
 	return true

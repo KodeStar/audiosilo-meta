@@ -259,10 +259,14 @@ The rule, applied at **record** granularity (not per field):
    genre. Nothing about rules 2-4 changes for any other field, and whether a
    noisy mirror set should ever be trimmed is a separate, undecided question.
 
-The intake bot applies the same rule from the other side: a form submission that
-duplicates a bulk-mirror-only record is routed to a maintainer rather than
-closed as a duplicate, because the submitter's data should replace the seed and
-the bot can only compose new records.
+The intake bot applies the same rule, through the same code: a form submission
+(Add a work, Add a recording) that names a bulk-mirror-only recording by ASIN
+takes it over exactly as a library import's row would - rules 2 to 5 unchanged,
+including the disagreement guard, which routes the submission to a maintainer
+with nothing applied. A submission that meets such a record only by title, ISBN
+or narrator set is not an ASIN match, so it goes to a maintainer rather than
+being applied or closed as a duplicate; its message names the record's ASINs,
+and adding the matching one to the issue turns it into a takeover.
 
 **A known gap, accepted deliberately.** Provenance is per record, so "remove
 everything the mirror gave us" cleanly deletes bulk-mirror-only records, but on

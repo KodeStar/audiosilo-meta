@@ -48,6 +48,9 @@ func (c *composer) addRecording(s sections) {
 	asins := c.parseASINs(s.get(fRecASINs))
 	isbns := c.parseISBNs(s.get(fRecISBNs))
 	if c.dedupIdentifiers(asins, isbns, "") {
+		// An ASIN naming a mirror-seed recording is a takeover, not a verdict
+		// (takeover.go); a no-op for every other way the gate stopped.
+		c.applyTakeover(s, nil, workSlug)
 		return
 	}
 	publishers := c.parsePublishers(s.get(fRecPublishers), s.get(fRecPublisher))
@@ -62,13 +65,15 @@ func (c *composer) addRecording(s sections) {
 
 	// A recording with the same narrator set already present is a duplicate -
 	// unless it is still a bulk-mirror seed, in which case this submission is the
-	// first person to attest that narration and a maintainer applies it over the
-	// seed (see dedupIdentifiers).
+	// first person to attest that narration, but by its NARRATORS rather than by an
+	// ASIN it carries, which the takeover is not keyed on: a maintainer decides
+	// (failDuplicate). An ASIN of that recording never reaches here - the
+	// identifier gate above took the submission over.
 	want := importer.ToSet(narratorSlugs)
 	for _, r := range work.Recordings {
 		if importer.SameSet(importer.ToSet(r.Narrators), want) {
 			ref := recRef{Work: workSlug, Rec: r.ID}
-			c.failDuplicate(ref, "a recording with these narrators already exists at %s", c.recLocation(ref))
+			c.failDuplicate(ref, matchedByNarrators(asins), "a recording with these narrators already exists at %s", c.recLocation(ref))
 			return
 		}
 	}

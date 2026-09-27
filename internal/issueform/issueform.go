@@ -37,7 +37,8 @@ const (
 	// StatusDuplicate means the submission's ASIN/ISBN/slug already exists.
 	StatusDuplicate Status = "duplicate"
 	// StatusNeedsHuman means the submission is well-formed but cannot be applied
-	// mechanically (an unresolved reference, a complex correction, an overwrite).
+	// mechanically (an unresolved reference, a complex correction, a disagreement
+	// with a recorded value).
 	StatusNeedsHuman Status = "needs-human"
 	// StatusInvalid means the submission is malformed (missing required field,
 	// unchecked license box, bad JSON, failed validation).
@@ -208,6 +209,11 @@ type composer struct {
 	// fine), so a form with no ASIN field never mints a typed libex source.
 	submissionASINs map[string]bool
 
+	// takeover is set by the ASIN gate when a submission names a recording that is
+	// still bulk-mirror-only (takeover.go): the submission is applied over that
+	// record through the importer's attestation instead of being composed.
+	takeover *takeover
+
 	// queued counts the entries this submission wrote through the store. The
 	// store's queue is not introspectable, and "nothing to write" is a verdict,
 	// so the count is kept here.
@@ -347,6 +353,11 @@ func process(opts Options) Result {
 	// write partial records for a submission we are not accepting.
 	if c.failed() {
 		return Result{Status: c.status, Messages: c.messages}
+	}
+	// A takeover wrote through the importer, which flushed and validated the tree
+	// itself - as the import template does - so there is nothing left to flush.
+	if c.takeover != nil {
+		return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages}
 	}
 	if c.queued == 0 {
 		return Result{Status: StatusInvalid, Messages: appendIfEmpty(c.messages, "nothing to write")}
@@ -567,22 +578,26 @@ func (c *composer) recLocation(ref recRef) string {
 
 // dedupIdentifiers fails when any of the submission's ASINs or ISBNs already
 // resolves to a recording in the catalog, returning true so the caller stops
-// before writing anything. asinHint is appended to the ASIN-duplicate message:
+// before composing anything. asinHint is appended to the ASIN-duplicate message:
 // the add-work path steers the submitter to the add-recording form,
 // add-recording passes "".
 //
 // The verdict depends on the matched record's TRUST TIER (LICENSING.md). An
-// ordinary duplicate is StatusDuplicate, as it always was. A duplicate of a
-// record that is still bulk-mirror-only is StatusNeedsHuman instead: the
-// submitter is a person attesting a book nobody has attested yet, so their data
-// should take over the mirror seed - but the compose paths only ever CREATE
-// records, so the bot cannot apply it mechanically and a maintainer does. That
-// is the intake-side expression of the same rule the bulk importer applies
-// automatically for a whole library export.
+// ordinary duplicate is StatusDuplicate, as it always was. An ASIN naming a
+// recording that is still bulk-mirror-only is the case the user-overwrite rule
+// is written for - a person attesting, by ASIN, a book nobody has attested yet -
+// so it is not a verdict at all: the gate plans a TAKEOVER (takeover.go), which
+// the calling compose path applies through the bulk importer's own attestation.
+// An ISBN match on such a record is not an ASIN match, and routes to a
+// maintainer saying so (failDuplicate).
 func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asinHint string) bool {
 	for _, a := range asins {
 		if ref, ok := c.asinRec[a.ASIN]; ok {
-			c.failDuplicate(ref, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
+			if c.bulkMirrorOnly(ref) {
+				c.planTakeover(ref, a.ASIN, asins, isbns)
+				return true
+			}
+			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
 			return true
 		}
 	}
@@ -592,7 +607,7 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asin
 	// way.
 	for _, isbn := range isbns {
 		if ref, ok := c.isbnRec[isbnKey(isbn.ISBN)]; ok {
-			c.failDuplicate(ref, "ISBN %s already exists (duplicate of %s)", isbn.ISBN, c.recLocation(ref))
+			c.failDuplicate(ref, "ISBN "+isbn.ISBN, "ISBN %s already exists (duplicate of %s)", isbn.ISBN, c.recLocation(ref))
 			return true
 		}
 	}
@@ -612,13 +627,14 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asin
 func isbnKey(isbn string) string { return strings.ToUpper(isbn) }
 
 // failDuplicate records the terminal verdict for a submission that collides with
-// the catalogued recording at ref, choosing the status by that record's trust
-// tier (see dedupIdentifiers). The duplicate message is the caller's; the
-// bulk-mirror case replaces it with one that tells the submitter their data is
-// wanted rather than that they duplicated something.
-func (c *composer) failDuplicate(ref recRef, format string, args ...any) {
+// the catalogued recording at ref by something OTHER than an ASIN - how names
+// what it matched by, for the message. The status is chosen by that record's
+// trust tier: an attested record is a plain duplicate (the caller's message),
+// and a bulk-mirror-only one goes to a maintainer, because the takeover the
+// user-overwrite rule grants is keyed on an ASIN match alone (failMirrorSeed).
+func (c *composer) failDuplicate(ref recRef, how, format string, args ...any) {
 	if c.bulkMirrorOnly(ref) {
-		c.failMirrorSeed(c.recLocation(ref))
+		c.failMirrorSeed(c.recLocation(ref), how, c.recordingASINs(ref))
 		return
 	}
 	c.fail(StatusDuplicate, format, args...)
@@ -629,42 +645,54 @@ func (c *composer) failDuplicate(ref recRef, format string, args ...any) {
 // that is the whole point of its existing separately from failDuplicate.
 //
 // failDuplicate's tier branch answers "you are the first person to attest a
-// record only the mirror has stated, so your data should REPLACE what is there,
-// and the bot only composes new records" - true and useful when the collision is
-// with a DIFFERENT record. Asked of the record the submitter is correcting, it
-// is false twice over: nothing needs replacing (the fact is identical), and the
-// correction path can rewrite a record, which is exactly what it does. Since the
-// bulk-mirror seed is the dominant population, routing every such no-op to a
-// maintainer with an untrue explanation would be the common case, not the edge.
+// record only the mirror has stated, so your data is wanted there, but a
+// maintainer decides" - true and useful when the collision is with a DIFFERENT
+// record. Asked of the record the submitter is correcting, it is false twice
+// over: nothing needs replacing (the fact is identical), and the correction path
+// can rewrite a record, which is exactly what it does. Since the bulk-mirror seed
+// is the dominant population, routing every such no-op to a maintainer with an
+// untrue explanation would be the common case, not the edge.
 func (c *composer) failNoop(format string, args ...any) {
 	c.fail(StatusDuplicate, format+" - nothing to change", args...)
 }
 
-// failDuplicateWork is failDuplicate for the WORK-slug collision on the add-work
-// form - the third duplicate gate, and the one that fires when a submission
-// names a book the catalogue holds under a DIFFERENT edition (a fresh ASIN and a
-// different narrator set pass the identifier and narrator gates). The tier
-// question is the same one, asked of the work record rather than a recording: a
-// work nobody but the mirror has ever stated is a takeover a maintainer applies,
-// not a duplicate to close.
+// failDuplicateWork is failDuplicate for a WORK-level collision on the add-work
+// form - the slug gate and the two title-identity gates (dupidentity.go), which
+// fire when a submission names a book the catalogue holds under a DIFFERENT
+// edition (a fresh ASIN and a different narrator set pass the identifier gate).
+// how names what the collision was found by. The tier question is the same one,
+// asked of the work record rather than a recording, and so is the answer: a
+// title match is not an ASIN match, so a work only the mirror has ever stated
+// goes to a maintainer rather than being closed as a duplicate or taken over.
 //
 // A work the catalogue load could not decode is absent from c.works and reads as
 // not-overwritable, the same safe answer bulkMirrorOnly gives.
-func (c *composer) failDuplicateWork(workSlug, format string, args ...any) {
+func (c *composer) failDuplicateWork(workSlug, how, format string, args ...any) {
 	if w := c.works[workSlug]; w != nil && model.BulkMirrorOnly(w.Sources) {
-		c.failMirrorSeed(c.entryLocation(pack.FamilyWorks, workSlug, ""))
+		c.failMirrorSeed(c.entryLocation(pack.FamilyWorks, workSlug, ""), how, workASINs(w))
 		return
 	}
 	c.fail(StatusDuplicate, format, args...)
 }
 
-// failMirrorSeed is the verdict every duplicate gate shares for a record that is
-// still nothing but a bulk-mirror seed: the submitter's data is wanted, and the
-// message says so rather than telling them they duplicated something.
-func (c *composer) failMirrorSeed(location string) {
-	c.fail(StatusNeedsHuman, "%s was seeded from the libex mirror and no user has attested it yet, "+
-		"so your submission should replace what is recorded there - a maintainer will apply it "+
-		"(the intake bot only composes new records, it cannot rewrite one)", location)
+// failMirrorSeed is the verdict for a submission that meets a record which is
+// still nothing but a bulk-mirror seed, but meets it by something other than an
+// ASIN it carries (how). The submitter's data is wanted, and the message says so
+// rather than calling it a duplicate - but the user-overwrite rule takes a record
+// over on an ASIN match and on nothing weaker (LICENSING.md, rule 2): a title,
+// an ISBN or a narrator set can meet a record that is not this edition at all.
+// asins are the record's own ASINs, named so a submitter holding the same
+// edition can add the one that turns this into a takeover the bot applies.
+func (c *composer) failMirrorSeed(location, how string, asins []string) {
+	msg := fmt.Sprintf("%s was seeded from the libex mirror and no user has attested it yet, but your submission "+
+		"matched it by %s, not by an ASIN it carries - the intake bot applies a submission over a mirror seed only "+
+		"when the submission names one of that record's ASINs (LICENSING.md, \"Trust tiers and the user-overwrite "+
+		"rule\"), so a maintainer decides this one", location, how)
+	if len(asins) > 0 {
+		msg += fmt.Sprintf("; if it is the same edition, edit the issue to add its ASIN (%s) and the bot will "+
+			"apply your data over the seed", strings.Join(asins, ", "))
+	}
+	c.fail(StatusNeedsHuman, "%s", msg)
 }
 
 // bulkMirrorOnly reports whether the catalogued recording at ref is still

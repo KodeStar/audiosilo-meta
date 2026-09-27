@@ -461,7 +461,12 @@ type sourceBook struct {
 	runtimeMin int          // whole minutes; 0 = unknown
 	abridged   *bool        // tri-state: nil = the source did not state it
 	genres     []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
-	isbns      []string     // well-formed ISBNs the source stated (validated at parse)
+	// vocabGenres are genres ALREADY in this project's vocabulary, which no export
+	// states: only a hand submission does (Attest - an issue form validates its
+	// genres against the schema enum), so there is nothing to map. Read by
+	// applyWorkGenres alone, beside the mapped claims.
+	vocabGenres []string
+	isbns       []string // well-formed ISBNs the source stated (validated at parse)
 	// authors / narrators are the source's STRUCTURED credit lists, set when it
 	// provides one name per element. They are used verbatim (each still passed
 	// through CreditWithRoles, which cleans the name and keeps the roles its
@@ -643,11 +648,16 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	if p.fatal != nil {
 		return p.fatal
 	}
+	return p.commit(opts)
+}
 
+// commit is every run's write tail: nothing on a dry run, otherwise the queued
+// writes are flushed and the WHOLE tree re-validated, so a run can never leave a
+// tree it did not check. Shared by run and Attest.
+func (p *planner) commit(opts Options) error {
 	if opts.DryRun {
 		return nil
 	}
-
 	if err := p.flush(); err != nil {
 		return err
 	}

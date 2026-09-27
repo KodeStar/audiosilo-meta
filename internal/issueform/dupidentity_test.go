@@ -616,8 +616,9 @@ func TestEveryStripRefusalIsClassified(t *testing.T) {
 }
 
 // The tier discipline every duplicate gate shares: a collision with a record that is
-// still nothing but a libex mirror seed is needs-human (the submitter's data should
-// replace the seed and the bot only composes new records), not a closed duplicate.
+// still nothing but a libex mirror seed is needs-human (the submitter's data is
+// wanted, but a title match is not the ASIN match a takeover needs), not a closed
+// duplicate.
 func TestNormalizedIdentityDuplicateOfAMirrorSeedNeedsAHuman(t *testing.T) {
 	dir := t.TempDir()
 	files := dupSeedFiles()

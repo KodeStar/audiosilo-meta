@@ -1,6 +1,10 @@
 package importer
 
-import "github.com/kodestar/audiosilo-meta/pkg/model"
+import (
+	"fmt"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
 
 // attest.go is the importer's half of the TRUST-TIER / user-overwrite policy
 // (LICENSING.md, "Trust tiers and the user-overwrite rule"; the tier model
@@ -71,6 +75,94 @@ func (p *planner) attestExisting(b sourceBook, asin string) {
 	if p.applyToRecording(b, ref, warn, scopeAttestExact) {
 		p.applyToWork(b, ref.Work, scopeAttestExact)
 	}
+}
+
+// Attestation is ONE hand submission - an intake issue form - stated as the
+// facts the takeover reads. It is the form's counterpart of an export row, and
+// deliberately carries only what an export row can state about an edition the
+// catalogue already holds: identity (title, authors, narrators, the identifier
+// sets) is never rewritten by an attestation, so it has no field here.
+type Attestation struct {
+	// ASIN is the catalogued ASIN the submission names. It IS the match:
+	// LICENSING.md's rule takes over a mirror seed a user names BY ASIN, so
+	// there is no second way to say which record this is.
+	ASIN string
+	// Title labels a warning only when ASIN is empty (bookLabel), which Attest
+	// refuses - carried so a label never reads "(unknown book)".
+	Title string
+	// Source is the provenance entry the takeover stamps: the submission's own
+	// entry, which must be user-library tier (a form stamps `user`). A source
+	// with no overwrite authority is refused rather than run as an enrichment.
+	Source OutSource
+	// The stated facts, each empty or zero when the submission did not state it -
+	// silence is not an assertion, so an unstated fact keeps the mirror's value.
+	RuntimeMin  int
+	ReleaseDate string
+	Publisher   string
+	CoverURL    string
+	ISBNs       []string
+	// Genres are values of the project's own vocabulary (the form validates them
+	// against the schema enum), unioned into the work's set - LICENSING.md rule 5.
+	Genres []string
+}
+
+// Attest applies the user-overwrite rule (LICENSING.md, "Trust tiers and the
+// user-overwrite rule") for ONE hand submission naming, by ASIN, a book the
+// catalogue holds, and writes and validates the tree exactly as a run does.
+//
+// It is not a second implementation of the rule: it plans the submission as a
+// one-row user-library run and hands it to the same hook the create path calls
+// at its ASIN-dedup skip (attestExisting), so the two doors cannot disagree about
+// what a takeover is. Against a bulk-mirror-only record the stated facts replace
+// the recorded ones and Source is appended (Summary.Attested*); against an
+// attested record nothing is written, first writer wins. Either way a runtime
+// more than 10% apart, or a release date that is not the same date at another
+// precision, refuses the row whole and is counted in Summary.Conflicts, with the
+// warning naming both values - the disagreement a maintainer adjudicates.
+//
+// An ASIN the catalogue does not hold is an error rather than a create: this
+// entry point takes over records, it never mints them.
+func Attest(a Attestation, opts Options) (Summary, error) {
+	if model.TierOfSource(a.Source.Type) != model.TierUserLibrary {
+		return Summary{}, fmt.Errorf("attest: source type %q has no overwrite authority", a.Source.Type)
+	}
+	asin := NormalizeASIN(a.ASIN)
+	if asin == "" {
+		return Summary{}, fmt.Errorf("attest: %q is not an ASIN", a.ASIN)
+	}
+	store, err := openStore(opts.DataDir, opts.Profile)
+	if err != nil {
+		return Summary{}, err
+	}
+	p := newPlanner(store, a.Source.Type, opts)
+	p.asinLoc = map[string]RecRef{}
+	p.loadExisting()
+	b := sourceBook{
+		raw: rawBook{
+			"asin": asin, "title": a.Title, "release_date": a.ReleaseDate,
+			"publisher": a.Publisher, "image_url": a.CoverURL,
+		},
+		runtimeMin:  a.RuntimeMin,
+		isbns:       a.ISBNs,
+		vocabGenres: a.Genres,
+	}
+	// The submission's own entry, not setSource's: a run stamps the row's ASIN as
+	// its ref, where a hand submission's provenance is what the submitter cited.
+	p.curSource = a.Source
+	if !p.dedupeByASIN(asin) {
+		return p.result(), fmt.Errorf("attest: ASIN %s is not in the catalogue", asin)
+	}
+	p.attestExisting(b, asin)
+	if p.fatal != nil {
+		return p.result(), p.fatal
+	}
+	// A refused or no-op attestation queued nothing, so there is no tree to write
+	// or re-validate.
+	if p.summary.Produced() == 0 {
+		return p.result(), nil
+	}
+	err = p.commit(opts)
+	return p.result(), err
 }
 
 // attestOnMerge is the ASIN-MERGE path's tier hook: a user's row is about to
