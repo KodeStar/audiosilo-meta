@@ -16397,6 +16397,76 @@
         }
       ],
       "title": "Salvage Right"
+    },
+    "salvage-rights": {
+      "added_at": "2026-09-27",
+      "authors": [
+        "a-t-michaels",
+        "michael-anderle"
+      ],
+      "genres": [
+        "science",
+        "science-fiction"
+      ],
+      "id": "salvage-rights",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "sierra-kline-2027": {
+          "abridged": false,
+          "added_at": "2026-09-27",
+          "asin": [
+            {
+              "asin": "B0H2NDBC71",
+              "region": "de"
+            },
+            {
+              "asin": "B0H2NJ32HN",
+              "region": "us"
+            },
+            {
+              "asin": "B0H2NJD3QP",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71XUerTh8mL.jpg",
+          "id": "sierra-kline-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sierra-kline"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2027-01-19",
+          "runtime_min": 675,
+          "sources": [
+            {
+              "imported_at": "2026-09-27",
+              "ref": "B0H2NDBC71",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-27",
+              "ref": "B0H2NJ32HN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-09-27",
+              "ref": "B0H2NJD3QP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "salvage-rights"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-09-27",
+          "ref": "B0H2NDBC71",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Salvage Rights"
     }
   }
 }
