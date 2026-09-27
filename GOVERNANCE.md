@@ -51,7 +51,7 @@ On top of a green pull request:
 | Change touches | Who can merge |
 |---|---|
 | `data/` only, opened by a **Trusted Contributor** | Auto-merges via GitHub-native auto-merge once required checks pass. No human step. |
-| `data/` only, opened by **anyone else** | One maintainer approval, then merge. |
+| `data/` only, opened by **anyone else** | One maintainer approval, then merge. For a pull request from a branch of this repository into `main` (intake, steward and contributor branches alike) that approval is given by the maintainer's **steward** once required checks pass **and** `ai-verify` has applied `ai-verified` to its exact head - see "The steward" below. A fork pull request, or one larger than the steward's review bound, still waits for a person. |
 | `data/` only, opened by the **series-completion bot** (`bot-sync`) | Merges itself once required checks pass **and** `ai-verify` has applied `ai-verified`. The one automated exception, bounded by "Series-completion bot" below; a pull request that cannot reach that gate is closed by the bot (`sync:auto-excluded`), never merged. |
 | `schema/`, `cmd/`, `internal/`, or `.github/` | **Always** one maintainer approval - never auto-merge. Enforced by `CODEOWNERS`. |
 
@@ -176,14 +176,15 @@ Two automations sit in front of the human review step. Neither bypasses it.
 **Merge policy is unchanged by these automations.** A `bot-intake` pull request
 is treated exactly like one "opened by anyone else": it must pass CI, and it
 still requires **one maintainer approval** before it merges. A green
-`ai-verified` label does **not** enable auto-merge. Auto-merge for bot-drafted or
-AI-verified pull requests was a **deliberate future toggle**, and it has since
-been turned on for **exactly one** automation - the series-completion bot in the
-next section, which buys it with a bound a machine enforces rather than with a
-track record. For every other bot-drafted or AI-verified pull request the toggle
-stays off until the pipeline has earned trust through a record of clean,
-correctly-composed submissions, and widening it any further (like the Trusted
-Contributor ladder) is a maintainer decision made openly.
+`ai-verified` label does **not** by itself enable auto-merge. Auto-merge for
+bot-drafted or AI-verified pull requests was a **deliberate future toggle**, and
+it has since been turned on for **exactly one** automation - the
+series-completion bot in the next section, which buys it with a bound a machine
+enforces rather than with a track record. The maintainer approval every other
+data pull request needs is given by the maintainer's steward (the section after
+that one): a reviewer acting for the maintainer, not a widening of the toggle.
+Widening the toggle itself (like the Trusted Contributor ladder) is a maintainer
+decision made openly.
 
 ## Series-completion bot (audiosilo-meta-sync)
 
@@ -257,6 +258,55 @@ larger cap, or the same automation pointed at
 [audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community)
 (whose review bar is prose a human has to judge, which is why the repositories
 split) is a change to this document first and a change to the bot second.
+
+## The steward (the maintainer's reviewer)
+
+The maintainer's review of data pull requests and data issues is carried out by
+a **steward**: a second service inside the same
+[`KodeStar/audiosilo-meta-sync`](https://github.com/KodeStar/audiosilo-meta-sync)
+container, acting for the maintainer with the maintainer's own token. It is how
+a contributor's submission reaches `main` without waiting for a person, and it
+is bounded as follows.
+
+**What it merges.** A pull request whose whole change is under `data/`, from a
+branch of this repository, into `main`, no larger than its review bound (about
+a hundred catalogue entries - the size a verifier can read whole). It merges
+only on exactly the gate the series-completion bot uses: every required check
+concluded well on the exact head, `ai-verify` has applied `ai-verified` for that
+head, the branch is not behind `main`, and the merge is pinned to the head it
+judged. It never merges anything touching `schema/`, `cmd/`, `internal/`,
+`.github/` or any other path - a code pull request gets a written review from
+it as a comment, and a maintainer decides. It never touches the
+series-completion bot's own pull request.
+
+**What it fixes.** A data pull request that is flagged or red is not left
+waiting and is never closed unmerged. A failed check is re-run once; after
+that the steward amends the data (on `intake/issue-*` and its own `steward/*`
+branches, or on a superseding `steward/pr-*` pull request for anyone else's
+branch) with an agent, and the amended head goes back through `ai-verify` and
+the same gate. Attempts back off (hours, then a day) and never end in a
+closure; one that keeps failing is listed on the steward's report for the
+maintainer. A superseded pull request is closed only once its content is
+verified to be on `main`.
+
+**Issues.** A data issue the intake bot could not finish (`data:needs-human`,
+invalid, or no pull request) is researched by the steward, which either opens a
+`steward/issue-*` pull request (capped at a few dozen entries; it then goes
+through the gate above like any other), closes the issue with evidence that
+the data is already present, declines it with a reason, or asks the reporter
+one specific question. Issues without a `data` label are never touched.
+
+**The agent is contained.** Issue and pull request text is untrusted, so the
+agent that reads it runs as a separate unprivileged user without the
+maintainer's token, cannot read the service's state or credentials, and cannot
+push anything itself: the service verifies its change (data-only,
+`metafmt --write`, `metacheck --profile core`, a secret scan) and pushes it.
+
+**Kill switch.** The steward is off unless `SYNC_STEWARD=on`; turning it off,
+revoking the token, or stopping the container stops it. **Widening** it - a
+larger bound, merging code, merging fork pull requests, or pointing it at
+[audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community)
+- is a change to this document first.
 
 ## Disputes
 
