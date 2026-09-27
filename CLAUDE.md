@@ -1741,7 +1741,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   and dropped, so the mode never creates a work and never touches a series file.
   It closes the gap the other modes leave: a second narration matches no ASIN, so
   `--enrich` ignores it, fills no free series position, so `libex-select`
-  excludes it, and would mint a duplicate work on the create path. Mutually
+  excludes it (unless it can prove the row IS the work at that position - the
+  attach rule below), and would mint a duplicate work on the create path. Mutually
   exclusive with `--enrich`); `metaimport libex-select`
   (streams the full dump, keeps only series-completing rows with a free
   position slot and mappable language/region, per-series cap, verbatim-row
@@ -1753,7 +1754,29 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   FIRST match minted a series and made the sync bot refuse its own pull request
   ("the import would create 1 new series"). A claim the importer only warns
   about - no usable position, or a name with no addressable slug - mints nothing
-  and disqualifies nothing; `scripts/
+  and disqualifies nothing. A row whose position the catalogue already FILLS is
+  refused unless it is another edition of the very work there - same series and
+  position, authors covering each other under `SamePerson`, titles equal under
+  `titlerule` (`StripDecoration` against the series name when it proposes a
+  title, then `CompareKeyWhole`), a compatible language, a narrator, no title
+  volume contradicting the position and no one-sided product statement (a
+  split-release part, a collection, a young-readers adaptation) - in which case
+  it is SELECTED FOR ATTACHMENT
+  (`internal/importer/attach.go`, the one decision both sides ask): the create
+  path under `--existing-series-only` writes it as a new recording of that work,
+  or merges its ASIN onto the recording whose narrators match (addRecording's
+  same-narrator merge), and never creates a work, places a claim or changes the
+  incumbent. Attachments count in the summary line's new recordings / merged
+  asins, and in neither tool's per-series or work counts; each tool prints one
+  extra line only when it attached something, so a run that attached nothing
+  prints exactly what it always did. A translated title, and a same title in
+  another language, stay refused: a work is language-scoped here (metacheck's
+  cross-language advisory) and a translation cannot be verified by its title.
+  `--refusals <path>` writes the per-row worklist, one NDJSON line
+  `{"asin","reason"}` per refused row, the codes the stable constants of
+  `internal/importer/refusalcodes.go` (a contract with the sync bot, pinned by
+  `TestRefusalCodesAreStable`; one code per report reason, and the report's
+  wording is untouched); `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
   operator flow - the received dump is Postgres 16 custom format); the
   **AI-credit exclusion** (an AI is not a person, so a row crediting one is

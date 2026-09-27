@@ -1135,6 +1135,16 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 
+	// A row claiming a position the catalogue already fills, that is another
+	// edition of the work there, is ATTACHED to that work rather than planned as
+	// a new one (attach.go; ExistingSeriesOnly runs only). Asked before anything
+	// below can create a work, resolve a title or place a claim: an attachment
+	// does none of those.
+	if ws := p.attachTarget(b); ws != nil {
+		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
+		return
+	}
+
 	// A series claim the row states with NO position is filled from the lookup
 	// here, before anything reads one (seriespos.go). It has to happen at this
 	// point rather than at placement: a filled position is a membership, and the

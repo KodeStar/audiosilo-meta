@@ -7,12 +7,19 @@
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only]
-//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]
+//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--refusals <path>]
 //
 // libex-select writes no records: it reduces a full libex export to the
 // bounded, series-completing subset LICENSING.md's import posture allows, and
 // prints a report for review; the subset is then imported with the normal
-// `metaimport libex` create path.
+// `metaimport libex` create path. A row claiming a position the catalogue
+// already fills is selected only when it is another edition of the work there
+// (same series, position, authors and title) - the import under
+// --existing-series-only ATTACHES it to that work as a recording, or as an ASIN
+// on one, and never creates a work for it. --refusals <path> writes one NDJSON
+// line per refused row, {"asin":"<ASIN>","reason":"<code>"}, with the stable
+// codes internal/importer/refusalcodes.go defines (a contract with the
+// series-completion sync bot).
 //
 // --dry-run prints the plan without writing. A real run writes the new/changed
 // files, then validates the whole tree and exits non-zero if that fails. Import
@@ -74,7 +81,8 @@
 // counted and dropped - the mode never creates a work and never touches a series
 // file. It is what closes the gap the other modes leave: a second narration of a
 // catalogued book matches no ASIN (so --enrich ignores it), fills no free series
-// position (so libex-select excludes it), and would mint a duplicate work on the
+// position (so libex-select excludes it unless it can prove the row is the work at
+// that position), and would mint a duplicate work on the
 // create path. Mutually exclusive with --enrich.
 package main
 
@@ -273,6 +281,7 @@ func runLibexSelect(args []string) int {
 	data := fs.String("data", "data", "path to the data directory")
 	out := fs.String("o", "", "path to write the selected rows to (NDJSON)")
 	maxPerSeries := fs.Int("max-per-series", 0, "cap the new works selected per catalogue series (0 = unlimited)")
+	refusals := fs.String("refusals", "", "write one NDJSON line per refused row ({\"asin\",\"reason\"}, stable reason codes) to this file")
 	// Registered here for the same reason --enrich is registered for every
 	// source: a flag pointed at the wrong subcommand should say why, not produce
 	// flag's bare "not defined" line. Selection imports nothing, so there is no
@@ -303,6 +312,7 @@ func runLibexSelect(args []string) int {
 	res, err := importer.SelectLibex(exportPath, *out, importer.SelectOptions{
 		DataDir:      *data,
 		MaxPerSeries: *maxPerSeries,
+		RefusalsPath: *refusals,
 	})
 	if err != nil {
 		// The report is deliberately NOT printed here. A run that aborted
@@ -390,6 +400,14 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	if s.GenreWorks > 0 {
 		fmt.Printf("  added genres to %d already-attested works\n", s.GenreWorks)
 	}
+	// Printed only when a run attached something (--existing-series-only, the
+	// attach rule in internal/importer/attach.go), so every other summary reads
+	// exactly as it did. The attached rows are already inside the summary line's
+	// "new recordings" and "asins merged" counts; this says which of those were
+	// attachments.
+	if s.Attached > 0 {
+		fmt.Printf("  attached %d rows to the catalogued work already at their series position (counted above as new recordings or merged asins)\n", s.Attached)
+	}
 	// The name merges are listed in FULL rather than counted. Every line is
 	// the run deciding that two spellings are one human, which is the least
 	// reversible thing an import does and the one an operator should read before
@@ -448,7 +466,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--refusals <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")

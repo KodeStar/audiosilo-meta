@@ -22,7 +22,10 @@ import (
 //   - enrich (enrich.go): matches by ASIN, so a narration the catalogue has
 //     never seen matches nothing and is ignored.
 //   - libex-select (libexselect.go): keeps only rows that fill a FREE series
-//     position, so a second narration of book 2 is excluded by construction.
+//     position, or that attach.go can prove are another edition of the work at
+//     the position they claim (same series, position, authors and title), so a
+//     second narration under a different title, or of a book in no series, is
+//     still excluded.
 //
 // The mode is deliberately narrow, and its bound is the same one enrichment
 // relies on (LICENSING.md's import posture): it is scoped by THIS catalogue, not

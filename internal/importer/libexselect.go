@@ -64,6 +64,11 @@ type SelectOptions struct {
 	// MaxPerSeries caps how many NEW distinct works may be selected per
 	// catalogue series. 0 means unlimited.
 	MaxPerSeries int
+	// RefusalsPath, when set, is where the per-row refusal worklist is written:
+	// one NDJSON line per refused row, {"asin":"<ASIN>","reason":"<code>"}, the
+	// code one of RefusalCodes (refusalcodes.go - a contract with the sync bot).
+	// Written atomically, and only when the run succeeds, like the subset.
+	RefusalsPath string
 }
 
 // SelectReasonAlreadyPresent and its siblings name the rules a row can fail.
@@ -114,6 +119,14 @@ type SeriesCount struct {
 	CutRows  int
 }
 
+// Attachment is one row selected for attachment to a catalogued work.
+type Attachment struct {
+	ASIN     string
+	Work     string // the incumbent work's slug
+	Series   string // the catalogue series slug
+	Position string // the position the row and the work share
+}
+
 // SelectResult is everything a selection run learned, for the report.
 type SelectResult struct {
 	RowsRead     int
@@ -131,6 +144,12 @@ type SelectResult struct {
 	PerSeries []SeriesCount
 	// Excluded counts rows per reason (keys are the reason constants).
 	Excluded map[string]int
+	// Attachments are the selected rows that complete nothing: each claims a
+	// position the catalogue already fills and is another edition of the work
+	// there (attach.go), so the import makes it a recording of that work, or an
+	// ASIN on one. They are part of RowsSelected and of no per-series count, in
+	// input order.
+	Attachments []Attachment
 	// Warnings are informational lines (a catalogue that did not fully
 	// validate) that do not stop the run. A malformed row is NOT a warning: it
 	// is an exclusion, counted like every other one.
@@ -147,20 +166,49 @@ func SelectLibex(exportPath, outPath string, opts SelectOptions) (SelectResult, 
 	if err := refuseSelfOverwrite(exportPath, outPath); err != nil {
 		return SelectResult{}, err
 	}
+	if opts.RefusalsPath != "" {
+		if err := refuseSelfOverwrite(exportPath, opts.RefusalsPath); err != nil {
+			return SelectResult{}, fmt.Errorf("--refusals: %w", err)
+		}
+		if err := refuseSameOutput(outPath, opts.RefusalsPath); err != nil {
+			return SelectResult{}, err
+		}
+	}
 	in, err := os.Open(exportPath) //nolint:gosec // an operator-supplied export path is the whole point of the tool
 	if err != nil {
 		return SelectResult{}, fmt.Errorf("read %s: %w", exportPath, err)
 	}
 	defer func() { _ = in.Close() }()
 
-	res, rows, err := selectLibexRows(in, opts)
+	refusals, err := openRefusalLog(opts.RefusalsPath)
+	if err != nil {
+		return SelectResult{}, err
+	}
+	defer refusals.abort() // a no-op once committed
+
+	res, rows, err := selectLibexRows(in, opts, refusals)
 	if err != nil {
 		return res, err
 	}
 	if err := writeNDJSON(outPath, rows); err != nil {
 		return res, err
 	}
+	if err := refusals.commit(); err != nil {
+		return res, err
+	}
 	return res, nil
+}
+
+// refuseSameOutput fails when the subset and the refusal worklist would be one
+// file: the second write would replace the first, and a tranche with its rows
+// swapped for refusal lines is still a file the import would read.
+func refuseSameOutput(outPath, refusalsPath string) error {
+	a, aErr := filepath.Abs(outPath)
+	b, bErr := filepath.Abs(refusalsPath)
+	if aErr == nil && bErr == nil && a == b {
+		return fmt.Errorf("--refusals names the same file as -o (%s)", outPath)
+	}
+	return nil
 }
 
 // refuseSelfOverwrite fails when the output would land on the input export.
@@ -191,6 +239,112 @@ func refuseSelfOverwrite(exportPath, outPath string) error {
 	return nil
 }
 
+// refusalLog is the --refusals worklist: one NDJSON line per refused row, written
+// as the rows are refused into a temp file beside the destination and renamed
+// into place only when the whole run succeeded (the subset's own posture - a
+// half-written worklist would read as a complete one). A nil log is "not asked
+// for", and every method is a no-op on it.
+type refusalLog struct {
+	path string
+	tmp  *os.File
+	w    *bufio.Writer
+	err  error
+	done bool
+}
+
+// refusalLine is one worklist line. The field order is the line's key order.
+type refusalLine struct {
+	ASIN   string `json:"asin"`
+	Reason string `json:"reason"`
+}
+
+func openRefusalLog(path string) (*refusalLog, error) {
+	if path == "" {
+		return nil, nil
+	}
+	dir := filepath.Dir(path)
+	if dir != "" && dir != "." {
+		if err := os.MkdirAll(dir, 0o755); err != nil {
+			return nil, fmt.Errorf("--refusals: mkdir %s: %w", dir, err)
+		}
+	}
+	tmp, err := os.CreateTemp(dir, ".metaimport-refusals-*.tmp")
+	if err != nil {
+		return nil, fmt.Errorf("--refusals: %w", err)
+	}
+	return &refusalLog{path: path, tmp: tmp, w: bufio.NewWriterSize(tmp, 1<<20)}, nil
+}
+
+// add writes one refused row, under the contract code of its report reason. The
+// first write error is kept and returned by commit.
+func (l *refusalLog) add(asin, reason string) {
+	if l == nil || l.err != nil {
+		return
+	}
+	code, ok := refusalCodeOf[reason]
+	if !ok {
+		l.err = fmt.Errorf("--refusals: no refusal code for reason %q", reason)
+		return
+	}
+	line, err := json.Marshal(refusalLine{ASIN: asin, Reason: code})
+	if err == nil {
+		_, err = l.w.Write(append(line, '\n'))
+	}
+	if err != nil {
+		l.err = fmt.Errorf("--refusals: %w", err)
+	}
+}
+
+// commit flushes the worklist and renames it into place.
+func (l *refusalLog) commit() error {
+	if l == nil {
+		return nil
+	}
+	l.done = true
+	name := l.tmp.Name()
+	defer func() { _ = os.Remove(name) }() // a no-op once the rename succeeded
+	err := l.err
+	if err == nil {
+		err = l.w.Flush()
+	}
+	if err == nil {
+		err = l.tmp.Chmod(0o644)
+	}
+	if cerr := l.tmp.Close(); err == nil {
+		err = cerr
+	}
+	if err == nil {
+		err = os.Rename(name, l.path)
+	}
+	if err != nil {
+		return fmt.Errorf("write %s: %w", l.path, err)
+	}
+	return nil
+}
+
+// abort discards an uncommitted worklist.
+func (l *refusalLog) abort() {
+	if l == nil || l.done {
+		return
+	}
+	l.done = true
+	_ = l.tmp.Close()
+	_ = os.Remove(l.tmp.Name())
+}
+
+// exclusions is a run's exclusion accounting: a refused row is counted under
+// its reason and, when the worklist was asked for, written to it - one call, so
+// the counts and the worklist cannot disagree.
+type exclusions struct {
+	res *SelectResult
+	log *refusalLog
+}
+
+func (x exclusions) add(asin, reason string) {
+	x.res.Excluded[reason]++
+	x.log.add(asin, reason)
+}
+
 // selectedRow is a kept row plus the facts the cap and the report need. raw is
 // the row's own JSON bytes, never re-marshalled from the decoded map: the
 // output of a selection pass must be the input row, not this package's
@@ -210,6 +364,14 @@ type selectedRow struct {
 	// slug, which a re-targeted row's workKey is rebuilt from.
 	book  sourceBook
 	title string
+	// asin is the row's normalized ASIN, which a later exclusion names.
+	asin string
+	// attach is the catalogued work the row is ATTACHED to (attach.go), or "":
+	// such a row completes nothing, so it claims no slot, is never cut by the cap
+	// and counts in no per-series tally. seq is the position it shares with that
+	// work.
+	attach string
+	seq    string
 }
 
 // selectState is the within-export memory the per-row rules keep: the ASINs
@@ -252,8 +414,9 @@ func (st *selectState) claimPosition(idx seriesIndex, slug, seq, workKey string)
 // selectLibexRows streams the export, applies the selection rules, and returns
 // the report plus the kept rows in INPUT order (so the per-region sibling rows
 // the export SQL made adjacent stay adjacent for the importer's batch pre-pass).
-func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedRow, error) {
+func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (SelectResult, []selectedRow, error) {
 	res := SelectResult{Excluded: map[string]int{}}
+	x := exclusions{res: &res, log: refusals}
 	idx, warnings := loadSeriesIndex(opts.DataDir)
 	res.Warnings = append(res.Warnings, warnings...)
 
@@ -264,7 +427,14 @@ func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedR
 		res.RowsRead++
 		row, reason := selectLibexRow(e, idx, st)
 		if reason != "" {
-			res.Excluded[reason]++
+			// The worklist names the row by the ASIN it states: normalized when it
+			// is one, verbatim (trimmed) when it is malformed, so the line still
+			// points at the row it came from.
+			asin := NormalizeASIN(e.str("asin"))
+			if asin == "" {
+				asin = strings.TrimSpace(e.str("asin"))
+			}
+			x.add(asin, reason)
 			return
 		}
 		row.raw = raw
@@ -280,10 +450,10 @@ func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedR
 	// the import will resolve as confirmed and the cap no longer cuts.
 	cuts := map[string]SeriesCount{}
 	for {
-		kept = confirmBatch(kept, idx, &res)
+		kept = confirmBatch(kept, idx, x)
 		n := len(kept)
 		var cut map[string]SeriesCount
-		kept, cut = applySeriesCap(kept, opts.MaxPerSeries, &res)
+		kept, cut = applySeriesCap(kept, opts.MaxPerSeries, x)
 		for slug, c := range cut {
 			t := cuts[slug]
 			t.Series = slug
@@ -310,17 +480,22 @@ func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedR
 // same name, which is still a completion, and the row then claims its position
 // there. A row the batch sends to no catalogued series is dropped under the
 // stream-time reason, and one whose position in its new series is already taken
-// under that reason. Dropping a row can change the others' evidence, so the
-// groups a dropped row claimed into are resolved again until nothing more is
-// dropped. A slot a dropped row held at STREAM time is not handed back: a
-// sibling that lost the slot to it was excluded then, which only ever narrows a
-// tranche.
-func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []selectedRow {
+// under that reason - unless it is another edition of the work that holds the
+// position (attach.go), which is decided here again under the batch's own
+// resolution and credit censuses, as the import of this selection decides it:
+// such a row is kept for ATTACHMENT, and a row kept for attachment that the batch
+// sends to a free position is an ordinary completion candidate again. Dropping a
+// row can change the others' evidence, so the groups a dropped row claimed into
+// are resolved again until nothing more is dropped. A slot a dropped row held at
+// STREAM time is not handed back: a sibling that lost the slot to it was excluded
+// then, which only ever narrows a tranche.
+func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions) []selectedRow {
 	if len(kept) == 0 {
 		return kept
 	}
 	cat := idx.catalogue()
-	claims, where := idx.batchClaims(kept)
+	claims, where, books, done := idx.batchClaims(kept)
+	defer done()
 	owner, refOf := make([]int, len(claims)), make([]int, len(claims))
 	for ci, w := range where {
 		owner[ci], refOf[ci] = w.book, w.ref
@@ -356,7 +531,7 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []sele
 		dropped := map[string]bool{}
 		drop := func(i int, reason string) {
 			alive[i] = false
-			res.Excluded[reason]++
+			x.add(kept[i].asin, reason)
 			for ci := range claims {
 				if owner[ci] == i {
 					dropped[groupOf[ci]] = true
@@ -391,14 +566,24 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, res *SelectResult) []sele
 				drop(i, reasonNoPosition)
 				continue
 			}
+			if idx.positions[v.slug][v.ref.seq] != "" {
+				ws := idx.p.attachWork(books[i], v.slug, v.ref)
+				if ws == nil {
+					drop(i, reasonPositionTaken)
+					continue
+				}
+				kept[i].seriesSlug, kept[i].workKey, kept[i].pos = v.slug, attachKey(ws.slug), pos
+				kept[i].attach, kept[i].seq = ws.slug, v.ref.seq
+				continue
+			}
 			workKey := v.slug + "\x00" + r.title
 			key := v.slug + "\x00" + v.ref.seq
-			if owned, taken := claimed[key]; (taken && owned != workKey) || idx.positions[v.slug][v.ref.seq] != "" {
+			if owned, taken := claimed[key]; taken && owned != workKey {
 				drop(i, reasonPositionTaken)
 				continue
 			}
 			claimed[key] = workKey
-			kept[i].seriesSlug, kept[i].workKey, kept[i].pos = v.slug, workKey, pos
+			kept[i].seriesSlug, kept[i].workKey, kept[i].pos, kept[i].attach = v.slug, workKey, pos, ""
 		}
 		dirty = dirty[:0:0]
 		for _, k := range keys {
@@ -495,12 +680,29 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	// ONE new work, which is what the importer's same-narrator ASIN merge
 	// actually does with them.
 	title := Slugify(book.str("title_short"))
+	// A position the CATALOGUE already fills is not a completion - but a row
+	// that is another edition of the very work there (same series, position,
+	// authors and title, attach.go) is kept for ATTACHMENT: the import makes it a
+	// recording of that work, or an ASIN on one. It reserves no slot, since the
+	// slot is the incumbent's already.
+	if idx.positions[slug][ref.seq] != "" {
+		if ws := idx.p.attachWork(book, slug, ref); ws != nil {
+			return selectedRow{
+				seriesSlug: slug, workKey: attachKey(ws.slug), pos: pos, book: book, title: title,
+				asin: asin, attach: ws.slug, seq: ref.seq,
+			}, ""
+		}
+	}
 	workKey := slug + "\x00" + title
 	if !st.claimPosition(idx, slug, ref.seq, workKey) {
 		return selectedRow{}, reasonPositionTaken
 	}
-	return selectedRow{seriesSlug: slug, workKey: workKey, pos: pos, book: book, title: title}, ""
+	return selectedRow{seriesSlug: slug, workKey: workKey, pos: pos, book: book, title: title, asin: asin}, ""
 }
+
+// attachKey is the work key a row kept for attachment carries: the incumbent's
+// own slug, in a namespace no completion's "<series>\x00<title>" key can share.
+func attachKey(work string) string { return "attach:" + work }
 
 // seriesPositionValue reduces a matched series claim to the numeric value the
 // cap orders by. An omnibus range ("1-3.5") sorts by its first volume. A claim
@@ -522,7 +724,10 @@ func seriesPositionValue(ref seriesRef) (float64, bool) {
 // cut, never individual rows of one - a half-selected title would import as a
 // work missing a region's ASIN. The cut is returned per series (and counted as
 // an exclusion in res), so the cap is never a silent truncation.
-func applySeriesCap(rows []selectedRow, maxPerSeries int, res *SelectResult) ([]selectedRow, map[string]SeriesCount) {
+//
+// A row kept for ATTACHMENT is outside the cap: it adds no work, so it is
+// neither counted against a series nor cut.
+func applySeriesCap(rows []selectedRow, maxPerSeries int, x exclusions) ([]selectedRow, map[string]SeriesCount) {
 	if maxPerSeries <= 0 {
 		return rows, nil
 	}
@@ -535,6 +740,9 @@ func applySeriesCap(rows []selectedRow, maxPerSeries int, res *SelectResult) ([]
 	bySeries := map[string][]*workEntry{}
 	byKey := map[string]*workEntry{}
 	for i, row := range rows {
+		if row.attach != "" {
+			continue
+		}
 		w, ok := byKey[row.workKey]
 		if !ok {
 			w = &workEntry{key: row.workKey, pos: row.pos, order: i}
@@ -571,8 +779,8 @@ func applySeriesCap(rows []selectedRow, maxPerSeries int, res *SelectResult) ([]
 
 	out := rows[:0]
 	for _, row := range rows {
-		if cut[row.workKey] {
-			res.Excluded[reasonSeriesCap]++
+		if row.attach == "" && cut[row.workKey] {
+			x.add(row.asin, reasonSeriesCap)
 			continue
 		}
 		out = append(out, row)
@@ -586,7 +794,14 @@ func summarize(rows []selectedRow, cuts map[string]SeriesCount, idx seriesIndex,
 	res.RowsSelected = len(rows)
 	tallies := map[string]*SeriesCount{}
 	works := map[string]bool{}
+	res.Attachments = nil
 	for _, row := range rows {
+		if row.attach != "" {
+			res.Attachments = append(res.Attachments, Attachment{
+				ASIN: row.asin, Work: row.attach, Series: row.seriesSlug, Position: row.seq,
+			})
+			continue
+		}
 		t := tallies[row.seriesSlug]
 		if t == nil {
 			t = &SeriesCount{Series: row.seriesSlug, Name: idx.names[row.seriesSlug]}
@@ -704,9 +919,14 @@ func (idx seriesIndex) libexBook(e rawBook, asin string) sourceBook {
 
 // batchClaims is the kept rows' series claims as the import of exactly those
 // rows resolves them: the planner's credit censuses and initials decision over
-// the batch, then its own claim construction (planner.batchClaims).
-func (idx seriesIndex) batchClaims(kept []selectedRow) ([]nameClaim, []claimAt) {
-	books := make([]sourceBook, len(kept))
+// the batch, then its own claim construction (planner.batchClaims). It also
+// returns the rows as that construction left them (their author credits cleaned
+// under the batch's censuses, as the import caches them), and done, which ends
+// the batch's credit decisions: until it is called the planner resolves people
+// as the import of this batch will, which is what the attach rule (attach.go)
+// has to be asked under.
+func (idx seriesIndex) batchClaims(kept []selectedRow) (claims []nameClaim, where []claimAt, books []sourceBook, done func()) {
+	books = make([]sourceBook, len(kept))
 	for i, r := range kept {
 		books[i] = r.book
 		books[i].authorCredits, books[i].creditsCached = nil, false
@@ -714,10 +934,11 @@ func (idx seriesIndex) batchClaims(kept []selectedRow) ([]nameClaim, []claimAt) 
 	p := idx.p
 	p.authorCensus, p.narratorCensus = p.creditCensusesOf(books)
 	p.initialsSurvivors = p.decideInitialsOf(books)
-	defer func() {
+	done = func() {
 		p.authorCensus, p.narratorCensus, p.initialsSurvivors = creditCensus{}, creditCensus{}, nil
-	}()
-	return p.batchClaims(books)
+	}
+	claims, where = p.batchClaims(books)
+	return claims, where, books, done
 }
 
 // seriesVerdict is where ALL of a row's series claims landed. A selection reads
@@ -1116,9 +1337,21 @@ func (r SelectResult) Report() string {
 		fmt.Fprintf(&b, "  ... %d more series: %d %s, %d %s\n",
 			len(r.PerSeries)-shown, works, plural(works, "work"), rows, plural(rows, "row"))
 	}
+	// The total counts the COMPLETION rows; a row kept for attachment adds no
+	// work and is reported on its own line, printed only when there is one, so a
+	// selection that attached nothing reads exactly as it always has.
+	completions := r.RowsSelected - len(r.Attachments)
 	fmt.Fprintf(&b, "  total: %d series, %d %s, %d %s\n",
 		len(r.PerSeries), r.ProjectedWorks, plural(r.ProjectedWorks, "work"),
-		r.RowsSelected, plural(r.RowsSelected, "row"))
+		completions, plural(completions, "row"))
+	if n := len(r.Attachments); n > 0 {
+		works := map[string]bool{}
+		for _, a := range r.Attachments {
+			works[a.Work] = true
+		}
+		fmt.Fprintf(&b, "  attached: %d %s to %d catalogued %s already at the position claimed (another recording, or another ASIN on one)\n",
+			n, plural(n, "row"), len(works), plural(len(works), "work"))
+	}
 
 	fmt.Fprintf(&b, "excluded %d rows:\n", r.RowsRead-r.RowsSelected)
 	for _, reason := range reasonOrder {

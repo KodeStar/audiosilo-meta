@@ -241,6 +241,12 @@ type Options struct {
 	// a series on import. false is the default and the long-standing behaviour
 	// exactly. Only the create path can found a series at all - enrichment and
 	// the recordings-only pass never do - so the option changes nothing there.
+	//
+	// The option also turns on the create path's ATTACHMENT of a row claiming an
+	// occupied position that is another edition of the work there (attach.go):
+	// libex-select selects such rows, and without this the create path would plan
+	// them as new works. Attaching never creates a work and never places one in a
+	// series, so it cannot move the "never a new series" count either.
 	ExistingSeriesOnly bool
 }
 
@@ -341,6 +347,13 @@ type Summary struct {
 	// unaffected - it imports, and every other claim it makes is placed - so
 	// this is disjoint from every row-skip counter. Always 0 without the option.
 	SeriesClaimsDropped int
+	// Attached counts the rows an ExistingSeriesOnly create run ATTACHED to the
+	// catalogued work already at the series position they claim, because they
+	// are another edition of that same book (attach.go). An attachment is also
+	// counted as the NewRecordings or MergedASINs addRecording made of it (unless
+	// one of its guards refused the ASIN, a region that does not map), so the
+	// summary line reads exactly as before. Always 0 without the option.
+	Attached int
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the

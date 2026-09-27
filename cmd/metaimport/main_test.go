@@ -621,3 +621,53 @@ func TestExistingSeriesOnlyFlagReachesTheImporter(t *testing.T) {
 		}
 	}
 }
+
+// --refusals reaches the selector: the worklist lands where the flag says, one
+// line per refused row in the contract's shape.
+func TestLibexSelectRefusalsFlag(t *testing.T) {
+	dataDir, export, _ := seedSelectFixture(t)
+	body := `{"asin":"B0OTHER001","title":"Unrelated","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[{"name":"Elsewhere","position":"1"}]}` + "\n"
+	f, err := os.OpenFile(export, os.O_APPEND|os.O_WRONLY, 0o644)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := f.WriteString(body); err != nil {
+		t.Fatal(err)
+	}
+	_ = f.Close()
+	dir := t.TempDir()
+	out, refusals := filepath.Join(dir, "subset.ndjson"), filepath.Join(dir, "refusals.ndjson")
+	var code int
+	stdout := captureStdout(t, func() {
+		code = runLibexSelect([]string{export, "--data", dataDir, "-o", out, "--refusals", refusals})
+	})
+	if code != 0 {
+		t.Fatalf("exit code = %d (%s)", code, stdout)
+	}
+	got, err := os.ReadFile(refusals)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(got) != `{"asin":"B0OTHER001","reason":"no-catalogue-series"}`+"\n" {
+		t.Errorf("refusals = %q", got)
+	}
+}
+
+// The attach line is printed only when a run attached something, so every other
+// create summary - and the line the sync bot parses - reads exactly as before.
+func TestPrintSummaryAttachLine(t *testing.T) {
+	const head = "imported: 0 new works, 1 new recordings, 0 new people, 0 new series; 0 skipped (already present); 1 asins merged into existing recordings; 0 warnings\n"
+	out := captureStdout(t, func() {
+		printSummary(importer.Summary{NewRecordings: 1, MergedASINs: 1}, false, importer.ModeCreate)
+	})
+	if out != head {
+		t.Errorf("summary without attachments = %q, want %q", out, head)
+	}
+	out = captureStdout(t, func() {
+		printSummary(importer.Summary{NewRecordings: 1, MergedASINs: 1, Attached: 2}, false, importer.ModeCreate)
+	})
+	if !strings.HasPrefix(out, head) || !strings.Contains(out, "  attached 2 rows to the catalogued work already at their series position") {
+		t.Errorf("summary with attachments = %q", out)
+	}
+}
