@@ -1,6 +1,10 @@
 package importer
 
 import (
+	"io/fs"
+	"os"
+	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 
@@ -24,7 +28,7 @@ func TestAttestOverwritesAMirrorSeedAndTakesOverItsProvenance(t *testing.T) {
 			`"genres":["fantasy"],"id":"the-lost-cartographer"`, 1),
 	})
 	sum, err := Attest(Attestation{
-		ASIN: "b0libex001", Title: "The Lost Cartographer", Source: formSource,
+		ASIN: "b0libex001", Source: formSource,
 		RuntimeMin: 605, ReleaseDate: "2019-05-04", Publisher: "Lost Press",
 		CoverURL: "https://m.media-amazon.com/images/I/user.jpg",
 		ISBNs:    []string{"9780000000019"}, Genres: []string{"action-adventure"},
@@ -146,4 +150,78 @@ func TestAttestRefusesWhatItCannotAttest(t *testing.T) {
 	if _, err := Attest(Attestation{ASIN: "not-an-asin", Source: formSource}, opts); err == nil {
 		t.Error("a malformed ASIN must be refused")
 	}
+}
+
+// TestAttestAtMatchesAttest pins AttestAt's seeding against Attest's whole
+// catalogue load: over the same fixture - an overwrite, a genre union, and one
+// submitted ISBN another recording already carries - both entry points must
+// report the same Summary and write the same tree.
+func TestAttestAtMatchesAttest(t *testing.T) {
+	const takenISBN, freshISBN = "9781473647633", "9780000000019"
+	overrides := map[string]string{
+		tierWorkRel: strings.Replace(tierWork, `"id":"the-lost-cartographer"`,
+			`"genres":["fantasy"],"id":"the-lost-cartographer"`, 1),
+		"works/an/another-map/work.json": `{"authors":["ada-mapmaker"],"id":"another-map","language":"en",` +
+			`"license":"CC0-1.0","sources":[{"type":"user"}],"title":"Another Map"}`,
+		"works/an/another-map/recordings/bea-reader-2020.json": `{"id":"bea-reader-2020","isbn":["` + takenISBN + `"],` +
+			`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"another-map"}`,
+	}
+	a := Attestation{
+		ASIN: "B0LIBEX001", Source: formSource, RuntimeMin: 605, ReleaseDate: "2019-05-04",
+		Publisher: "Lost Press &amp; Co", ISBNs: []string{takenISBN, freshISBN}, Genres: []string{"horror"},
+	}
+
+	whole := seedTierTree(t, overrides)
+	wantSum, err := Attest(a, Options{DataDir: whole, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("Attest: %v", err)
+	}
+
+	seeded := seedTierTree(t, overrides)
+	store, err := openStore(seeded, "")
+	if err != nil {
+		t.Fatalf("open store: %v", err)
+	}
+	gotSum, err := AttestAt(store, RecRef{Work: "the-lost-cartographer", Rec: "bea-reader-2019"},
+		[]string{takenISBN}, a, Options{DataDir: seeded, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("AttestAt: %v", err)
+	}
+
+	if !reflect.DeepEqual(gotSum, wantSum) {
+		t.Errorf("summaries differ:\nAttestAt %+v\nAttest   %+v", gotSum, wantSum)
+	}
+	if wantSum.AttestedRecordings != 1 || !strings.Contains(strings.Join(wantSum.Warnings, "\n"), takenISBN) {
+		t.Errorf("the fixture must exercise the overwrite and the taken ISBN: %+v", wantSum)
+	}
+	if got, want := treeFiles(t, seeded), treeFiles(t, whole); !reflect.DeepEqual(got, want) {
+		t.Errorf("the two entry points wrote different trees")
+	}
+	var rec recordingFile
+	readEntity(t, seeded, tierRecRel, &rec)
+	if rec.Publisher != "Lost Press & Co" {
+		t.Errorf("publisher = %q, want the submitted text decoded as every run's is", rec.Publisher)
+	}
+}
+
+// treeFiles reads every file under dir, keyed by its relative path.
+func treeFiles(t *testing.T, dir string) map[string]string {
+	t.Helper()
+	out := map[string]string{}
+	err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		b, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		rel, _ := filepath.Rel(dir, path)
+		out[rel] = string(b)
+		return nil
+	})
+	if err != nil {
+		t.Fatalf("walk %s: %v", dir, err)
+	}
+	return out
 }

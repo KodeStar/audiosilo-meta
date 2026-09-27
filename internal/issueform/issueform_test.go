@@ -356,12 +356,39 @@ func TestAddWorkDuplicateISBNIsCaseInsensitive(t *testing.T) {
 	}
 }
 
+// The work-slug gate is AUTHOR-AWARE: a taken title slug is a duplicate only when
+// the work there is the submitting author's, judged by the importer's same-person
+// rule - so another spelling of the same author is still a duplicate ...
 func TestAddWorkDuplicateSlug(t *testing.T) {
+	for _, author := range []string{"Jane Doe", "J. Doe"} {
+		t.Run(author, func(t *testing.T) {
+			dir := seedTree(t)
+			body := addWorkBody("Existing Work", author, "en", "Some Narrator", "", "web", true)
+			res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+			if res.Status != StatusDuplicate {
+				t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+			}
+		})
+	}
+}
+
+// ... while ANOTHER author's book of the same title is another book, composed at
+// the author-suffixed slug the bulk importer's chain would mint for it.
+func TestAddWorkSameTitleByAnotherAuthorStepsToTheAuthorSlug(t *testing.T) {
 	dir := seedTree(t)
 	body := addWorkBody("Existing Work", "Some Author", "en", "Some Narrator", "", "web", true)
 	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
-	if res.Status != StatusDuplicate {
-		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if want := importer.AuthorSuffixedWorkSlug("existing-work", "some-author"); !recordExists(t, dir, "works/ex/"+want+"/work.json") {
+		t.Fatalf("the book was not composed at %q; messages = %v", want, res.Messages)
+	}
+	if !anyContains(res.Messages, `held by "Existing Work" by Jane Doe, another author's book`) {
+		t.Errorf("the step must be reported: %v", res.Messages)
+	}
+	if work := readFile(t, dir, "works/ex/existing-work/work.json"); strings.Contains(work, "some-author") {
+		t.Errorf("the incumbent must be untouched:\n%s", work)
 	}
 }
 

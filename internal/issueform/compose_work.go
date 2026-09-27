@@ -84,10 +84,13 @@ func (c *composer) addWork(s sections) {
 	// this book (or edition) is already in the catalog.
 	asins := c.parseASINs(s.get(fRecASINs))
 	recISBNs := c.parseISBNs(s.get(fRecISBNs))
-	if c.dedupIdentifiers(asins, recISBNs, "; use the Add a recording form for another narration") {
-		// An ASIN naming a mirror-seed recording is a takeover, not a verdict
-		// (takeover.go); a no-op for every other way the gate stopped.
-		c.applyTakeover(s, genres, "")
+	// An ASIN naming a mirror-seed recording is a planned takeover (takeover.go),
+	// which also stops the compose.
+	t, dup := c.dedupIdentifiers(asins, recISBNs, "; use the Add a recording form for another narration")
+	if t != nil {
+		c.applyTakeover(s, t, genres, "")
+	}
+	if dup {
 		return
 	}
 	// Parsed here rather than inside emitRecording so a refusal lands before any
@@ -134,19 +137,8 @@ func (c *composer) addWork(s sections) {
 		c.note("work slug %q is reserved for an API route - using %q", workSlug, stepped)
 		workSlug = stepped
 	}
-	if live := c.liveWorkSlug(workSlug); live != "" {
-		// Tier-aware like the ASIN/ISBN and narrator-set gates: a work only the
-		// mirror has ever stated routes to a maintainer, not to a closed duplicate.
-		// A retired slug meets its survivor here (internal/importer/tombstone.go).
-		if c.failAnotherAuthorsSeed(live, workSlug, authorNames) {
-			return
-		}
-		lead := "a work already exists"
-		if live != workSlug {
-			lead = fmt.Sprintf("the work slug %q was retired by a merge onto the work", workSlug)
-		}
-		c.failDuplicateWork(live, "its title", "%s at %s; use the Add a recording form to add another narration",
-			lead, c.entryLocation(pack.FamilyWorks, live, ""))
+	workSlug, slugOK := c.gateWorkSlug(workSlug, authorNames)
+	if !slugOK {
 		return
 	}
 
@@ -204,13 +196,95 @@ func (c *composer) addWork(s sections) {
 // - which is the same last resort the chain ends in. A retired author slug is
 // read as its survivor, as the importer's chain reads the author it resolved.
 func (c *composer) unreservedWorkSlug(base, firstAuthor string) string {
-	if slug, fellBack := model.PersonSlug(firstAuthor); !fellBack {
-		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
-			slug = to
-		}
+	if slug, ok := c.personSlugOf(firstAuthor); ok {
 		return importer.AuthorSuffixedWorkSlug(base, slug)
 	}
 	return importer.NumberedSlugAt(base, 1)
+}
+
+// gateWorkSlug is the WORK-SLUG gate: it returns the slug the work is composed
+// at, or ok=false with the verdict set.
+//
+// A title's slug held by another work is a duplicate only when that work is the
+// SUBMITTING author's (sameAuthorAs - the importer's same-person rule, so "J.
+// Doe" meets "Jane Doe"). A different author's book of the same title is
+// another book: it steps to the author-suffixed slug, the bulk chain's next
+// candidate (unreservedWorkSlug, the formula a reserved title steps by), so the
+// form and an import put it in one place. Two other authors' books on both
+// candidates is a maintainer's call.
+//
+// A duplicate is tier-aware like the ASIN/ISBN and narrator-set gates: a work
+// only the mirror has ever stated routes to a maintainer, not to a closed
+// duplicate (failDuplicateWork). A retired slug meets its survivor here
+// (internal/importer/tombstone.go).
+func (c *composer) gateWorkSlug(slug string, authorNames []string) (string, bool) {
+	live := c.liveWorkSlug(slug)
+	if w := c.works[live]; w != nil && !c.sameAuthorAs(w, authorNames) {
+		stepped := c.unreservedWorkSlug(slug, authorNames[0])
+		if other := c.works[c.liveWorkSlug(stepped)]; other != nil && !c.sameAuthorAs(other, authorNames) {
+			c.fail(StatusNeedsHuman, "the work slug %q and its author-suffixed form %q are both held by other "+
+				"authors' books; a maintainer chooses this book's slug", slug, stepped)
+			return "", false
+		}
+		c.note("the work slug %q is held by %q by %s, another author's book of the same title - "+
+			"this one is composed at %q", slug, w.Title, c.personNames(w.Authors), stepped)
+		slug, live = stepped, c.liveWorkSlug(stepped)
+	}
+	if live == "" {
+		return slug, true
+	}
+	lead := "a work already exists"
+	if live != slug {
+		lead = fmt.Sprintf("the work slug %q was retired by a merge onto the work", slug)
+	}
+	c.failDuplicateWork(live, "its title", "%s at %s; use the Add a recording form to add another narration",
+		lead, c.entryLocation(pack.FamilyWorks, live, ""))
+	return "", false
+}
+
+// sameAuthorAs reports whether any of the submitted author names may be one of
+// w's authors, by the importer's same-person rule (importer.SamePerson). A work
+// or a submission with no author to compare reads as the same author - the
+// conservative answer, which keeps the duplicate verdict.
+func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
+	if len(w.Authors) == 0 || len(names) == 0 {
+		return true
+	}
+	for _, id := range w.Authors {
+		for _, n := range names {
+			if slug, _ := c.personSlugOf(n); importer.SamePerson(id, c.nameOf(id), slug, n) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// nameOf is a catalogued person's recorded name, or the id itself when the
+// catalogue holds no such record. The index is built on first use: only the
+// work-slug gate and a few messages ask.
+func (c *composer) nameOf(id string) string {
+	if c.personName == nil {
+		c.personName = map[string]string{}
+		if c.catalog != nil {
+			for _, p := range c.catalog.People {
+				c.personName[p.ID] = p.Name
+			}
+		}
+	}
+	if name, ok := c.personName[id]; ok {
+		return name
+	}
+	return id
+}
+
+// personNames renders person ids as their recorded names, joined for a message.
+func (c *composer) personNames(ids []string) string {
+	out := make([]string, 0, len(ids))
+	for _, id := range ids {
+		out = append(out, c.nameOf(id))
+	}
+	return strings.Join(out, ", ")
 }
 
 // slugsFor resolves a list of person names to slugs, creating person records,
@@ -488,10 +562,7 @@ func (c *composer) seriesForForm(name string, row *importer.SeriesRow) formSerie
 // of record.
 func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
 	slugOf := func(name string) string {
-		slug, _ := model.PersonSlug(name)
-		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
-			return to
-		}
+		slug, _ := c.personSlugOf(name)
 		return slug
 	}
 	return importer.SeriesRowFor(splitNames(s.get(fWorkAuthors)), []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}, s.get(fRecPublisher), slugOf)

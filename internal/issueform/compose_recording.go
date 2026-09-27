@@ -47,10 +47,13 @@ func (c *composer) addRecording(s sections) {
 
 	asins := c.parseASINs(s.get(fRecASINs))
 	isbns := c.parseISBNs(s.get(fRecISBNs))
-	if c.dedupIdentifiers(asins, isbns, "") {
-		// An ASIN naming a mirror-seed recording is a takeover, not a verdict
-		// (takeover.go); a no-op for every other way the gate stopped.
-		c.applyTakeover(s, nil, workSlug)
+	// An ASIN naming a mirror-seed recording is a planned takeover (takeover.go),
+	// which also stops the compose.
+	t, dup := c.dedupIdentifiers(asins, isbns, "")
+	if t != nil {
+		c.applyTakeover(s, t, nil, workSlug)
+	}
+	if dup {
 		return
 	}
 	publishers := c.parsePublishers(s.get(fRecPublishers), s.get(fRecPublisher))

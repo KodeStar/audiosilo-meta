@@ -198,6 +198,9 @@ type composer struct {
 	// catalog, since most templates never make one; nil admits every series.
 	seriesAuthors *importer.SeriesAuthorIndex
 	catalog       *model.Catalog
+	// personName indexes the catalogue's person names by id, built on first use
+	// (nameOf).
+	personName map[string]string
 	// formSeries memoizes seriesForForm per series name: one submission is one
 	// row, so a name resolves once however many gates ask.
 	formSeries map[string]formSeries
@@ -208,11 +211,6 @@ type composer struct {
 	// actually identifies. Nil until an ASIN is parsed (lookups on a nil map are
 	// fine), so a form with no ASIN field never mints a typed libex source.
 	submissionASINs map[string]bool
-
-	// takeover is set by the ASIN gate when a submission names a recording that is
-	// still bulk-mirror-only (takeover.go): the submission is applied over that
-	// record through the importer's attestation instead of being composed.
-	takeover *takeover
 
 	// queued counts the entries this submission wrote through the store. The
 	// store's queue is not introspectable, and "nothing to write" is a verdict,
@@ -356,7 +354,7 @@ func process(opts Options) Result {
 	}
 	// A takeover wrote through the importer, which flushed and validated the tree
 	// itself - as the import template does - so there is nothing left to flush.
-	if c.takeover != nil {
+	if len(c.wrote) > 0 {
 		return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages}
 	}
 	if c.queued == 0 {
@@ -396,7 +394,12 @@ func (c *composer) loadExisting() {
 		for _, r := range w.Recordings {
 			ref := recRef{Work: w.ID, Rec: r.ID}
 			for _, a := range r.ASIN {
-				c.asinRec[a.ASIN] = ref
+				// FIRST wins, as the importer's locateASIN decides it, so an ASIN a
+				// broken tree records twice names the same record on both sides of
+				// the takeover.
+				if _, taken := c.asinRec[a.ASIN]; !taken {
+					c.asinRec[a.ASIN] = ref
+				}
 			}
 			for _, isbn := range r.ISBN {
 				// Indexed by the ISBN value: a submitted identifier is a
@@ -577,7 +580,7 @@ func (c *composer) recLocation(ref recRef) string {
 }
 
 // dedupIdentifiers fails when any of the submission's ASINs or ISBNs already
-// resolves to a recording in the catalog, returning true so the caller stops
+// resolves to a recording in the catalog, returning dup=true so the caller stops
 // before composing anything. asinHint is appended to the ASIN-duplicate message:
 // the add-work path steers the submitter to the add-recording form,
 // add-recording passes "".
@@ -586,19 +589,17 @@ func (c *composer) recLocation(ref recRef) string {
 // ordinary duplicate is StatusDuplicate, as it always was. An ASIN naming a
 // recording that is still bulk-mirror-only is the case the user-overwrite rule
 // is written for - a person attesting, by ASIN, a book nobody has attested yet -
-// so it is not a verdict at all: the gate plans a TAKEOVER (takeover.go), which
-// the calling compose path applies through the bulk importer's own attestation.
-// An ISBN match on such a record is not an ASIN match, and routes to a
-// maintainer saying so (failDuplicate).
-func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asinHint string) bool {
+// so it is not a verdict at all: the gate returns the planned TAKEOVER
+// (takeover.go), which the caller applies. An ISBN match on such a record is not
+// an ASIN match, and routes to a maintainer saying so (failDuplicate).
+func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asinHint string) (t *takeover, dup bool) {
 	for _, a := range asins {
 		if ref, ok := c.asinRec[a.ASIN]; ok {
 			if c.bulkMirrorOnly(ref) {
-				c.planTakeover(ref, a.ASIN, asins, isbns)
-				return true
+				return c.planTakeover(ref, a.ASIN, asins, isbns), true
 			}
 			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
-			return true
+			return nil, true
 		}
 	}
 	// Keyed on the ISBN VALUE, so a submission that scopes its ISBN to a region
@@ -608,10 +609,10 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asin
 	for _, isbn := range isbns {
 		if ref, ok := c.isbnRec[isbnKey(isbn.ISBN)]; ok {
 			c.failDuplicate(ref, "ISBN "+isbn.ISBN, "ISBN %s already exists (duplicate of %s)", isbn.ISBN, c.recLocation(ref))
-			return true
+			return nil, true
 		}
 	}
-	return false
+	return nil, false
 }
 
 // isbnKey folds an ISBN to the form the dedup index compares on. NormalizeISBN
@@ -626,15 +627,29 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asin
 // Same fold, same reason, as the importer's claimISBNs.
 func isbnKey(isbn string) string { return strings.ToUpper(isbn) }
 
-// failDuplicate records the terminal verdict for a submission that collides with
-// the catalogued recording at ref by something OTHER than an ASIN - how names
-// what it matched by, for the message. The status is chosen by that record's
-// trust tier: an attested record is a plain duplicate (the caller's message),
-// and a bulk-mirror-only one goes to a maintainer, because the takeover the
-// user-overwrite rule grants is keyed on an ASIN match alone (failMirrorSeed).
+// failDuplicate records the terminal verdict for an ADD-FORM submission that
+// collides with the catalogued recording at ref by something OTHER than an
+// ASIN - how names what it matched by, for the message. The status is chosen by
+// that record's trust tier: an attested record is a plain duplicate (the
+// caller's message), and a bulk-mirror-only one goes to a maintainer, because
+// the takeover the user-overwrite rule grants is keyed on an ASIN match alone
+// (failMirrorSeed) - with the record's ASINs named, since adding one to the
+// submission turns it into a takeover.
 func (c *composer) failDuplicate(ref recRef, how, format string, args ...any) {
+	c.failDuplicateOf(ref, how, c.recordingASINs(ref), format, args...)
+}
+
+// failDuplicateUnhinted is failDuplicate for a submission no ASIN could turn
+// into a takeover - a correction, which is about ANOTHER record - so the
+// mirror-seed verdict carries no "add its ASIN" advice.
+func (c *composer) failDuplicateUnhinted(ref recRef, how, format string, args ...any) {
+	c.failDuplicateOf(ref, how, "", format, args...)
+}
+
+// failDuplicateOf is the one body of both: asins is the advice to name, or "".
+func (c *composer) failDuplicateOf(ref recRef, how, asins, format string, args ...any) {
 	if c.bulkMirrorOnly(ref) {
-		c.failMirrorSeed(c.recLocation(ref), how, c.recordingASINs(ref))
+		c.failMirrorSeed(c.recLocation(ref), how, asins)
 		return
 	}
 	c.fail(StatusDuplicate, format, args...)
@@ -675,6 +690,11 @@ func (c *composer) failDuplicateWork(workSlug, how, format string, args ...any) 
 	c.fail(StatusDuplicate, format, args...)
 }
 
+// mirrorSeedLead is the sentence every mirror-seed verdict opens with.
+func mirrorSeedLead(location string) string {
+	return location + " was seeded from the libex mirror and no user has attested it yet"
+}
+
 // failMirrorSeed is the verdict for a submission that meets a record which is
 // still nothing but a bulk-mirror seed, but meets it by something other than an
 // ASIN it carries (how). The submitter's data is wanted, and the message says so
@@ -682,15 +702,15 @@ func (c *composer) failDuplicateWork(workSlug, how, format string, args ...any) 
 // over on an ASIN match and on nothing weaker (LICENSING.md, rule 2): a title,
 // an ISBN or a narrator set can meet a record that is not this edition at all.
 // asins are the record's own ASINs, named so a submitter holding the same
-// edition can add the one that turns this into a takeover the bot applies.
-func (c *composer) failMirrorSeed(location, how string, asins []string) {
-	msg := fmt.Sprintf("%s was seeded from the libex mirror and no user has attested it yet, but your submission "+
-		"matched it by %s, not by an ASIN it carries - the intake bot applies a submission over a mirror seed only "+
-		"when the submission names one of that record's ASINs (LICENSING.md, \"Trust tiers and the user-overwrite "+
-		"rule\"), so a maintainer decides this one", location, how)
-	if len(asins) > 0 {
-		msg += fmt.Sprintf("; if it is the same edition, edit the issue to add its ASIN (%s) and the bot will "+
-			"apply your data over the seed", strings.Join(asins, ", "))
+// edition can add the one that turns this into a takeover the bot applies; ""
+// leaves that advice out.
+func (c *composer) failMirrorSeed(location, how, asins string) {
+	msg := mirrorSeedLead(location) + ", but your submission matched it by " + how + ", not by an ASIN it " +
+		"carries - the intake bot applies a submission over a mirror seed only when the submission names one of " +
+		"that record's ASINs (LICENSING.md, \"Trust tiers and the user-overwrite rule\"), so a maintainer decides this one"
+	if asins != "" {
+		msg += "; if it is the same edition, edit the issue to add its ASIN (" + asins + ") and the bot will " +
+			"apply your data over the seed"
 	}
 	c.fail(StatusNeedsHuman, "%s", msg)
 }
@@ -703,16 +723,23 @@ func (c *composer) failMirrorSeed(location, how string, asins []string) {
 // reads as false: not overwritable, which is the safe answer for a record whose
 // provenance we cannot see.
 func (c *composer) bulkMirrorOnly(ref recRef) bool {
+	r := c.recordingAt(ref)
+	return r != nil && model.BulkMirrorOnly(r.Sources)
+}
+
+// recordingAt is the catalogued recording at ref, or nil when the loaded
+// catalogue does not hold it.
+func (c *composer) recordingAt(ref recRef) *model.Recording {
 	w := c.works[ref.Work]
 	if w == nil {
-		return false
+		return nil
 	}
 	for _, r := range w.Recordings {
 		if r.ID == ref.Rec {
-			return model.BulkMirrorOnly(r.Sources)
+			return r
 		}
 	}
-	return false
+	return nil
 }
 
 // flush writes every queued entry, performing any due pack or directory splits.
@@ -794,18 +821,17 @@ func (c *composer) source(ref string) outSource {
 // this path still REFUSES rather than folding onto the shared catch-all: a form
 // names one person, and the submitter can respell them.
 func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
-	slug, fellBack := model.PersonSlug(name)
-	if fellBack {
+	slug, ok := c.personSlugOf(name)
+	if !ok {
 		c.fail(StatusInvalid, "name %q produced an empty slug", name)
 		return "", false
 	}
 	if c.people[slug] {
+		// A retired slug names its survivor (personSlugOf), and says so.
+		if base, _ := model.PersonSlug(name); base != slug {
+			c.noteRetired(model.RedirectPeople, base, slug)
+		}
 		return slug, true
-	}
-	// A retired slug names its survivor (internal/importer/tombstone.go).
-	if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
-		c.noteRetired(model.RedirectPeople, slug, to)
-		return to, true
 	}
 	c.people[slug] = true
 	// Kind comes from the NAME and only ever decides one record: the canonical
@@ -818,6 +844,24 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 		License: licenseCC0, Sources: c.sources(sourceRef),
 	}) {
 		return "", false
+	}
+	return slug, true
+}
+
+// personSlugOf is the READ-ONLY half of person resolution: the slug name
+// resolves to without creating anything - model.PersonSlug's, or, when that slug
+// was RETIRED onto a live record, the survivor (internal/importer/tombstone.go).
+// ok is false when the name has no slug of its own (slug is then PersonSlug's
+// fallback). Every lookup that must agree with getOrCreatePerson asks it.
+func (c *composer) personSlugOf(name string) (slug string, ok bool) {
+	slug, fellBack := model.PersonSlug(name)
+	if fellBack {
+		return slug, false
+	}
+	if !c.people[slug] {
+		if to, retired := c.redirects.Survivor(model.RedirectPeople, slug); retired && c.people[to] {
+			return to, true
+		}
 	}
 	return slug, true
 }

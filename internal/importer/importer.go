@@ -550,16 +550,10 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	// title pre-pass, before planning - so an AI credit cannot reach the person
 	// table, the credit census or a title decision. See refuseAIBooks.
 	books, aiRefused, synthetic := refuseAIBooks(books, userTier)
-	// Opened before anything is planned: a tree still in the file-per-entity
-	// layout is refused here, having written nothing and read nothing it could
-	// misinterpret.
-	store, err := openStore(opts.DataDir, opts.Profile)
+	// Opened before anything is planned (openPlanner).
+	p, err := openPlanner(sourceType, opts)
 	if err != nil {
 		return Summary{}, err
-	}
-	p := newPlanner(store, sourceType, opts)
-	if opts.Mode == ModeEnrich || p.userTier {
-		p.asinLoc = map[string]RecRef{}
 	}
 	// The series-position lookup is a USER-LIBRARY CREATE rule (seriespos.go),
 	// and it is off unless the caller supplied one. The gap it fills belongs to a
@@ -584,6 +578,29 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	err = p.run(books, opts)
 	return p.result(), err
+}
+
+// openPlanner opens opts.DataDir's store and returns a planner over it - the
+// one setup every run shares (runBooks, Attest). A tree still in the
+// file-per-entity layout is refused here, having written nothing and read nothing
+// it could misinterpret.
+func openPlanner(sourceType string, opts Options) (*planner, error) {
+	store, err := openStore(opts.DataDir, opts.Profile)
+	if err != nil {
+		return nil, err
+	}
+	return plannerOn(store, sourceType, opts), nil
+}
+
+// plannerOn is openPlanner over a store the caller already holds (AttestAt): the
+// planner, plus the ASIN LOCATION index a run that can attest or enrich needs
+// (the other runs never ask where an ASIN sits, so they never pay for it).
+func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
+	p := newPlanner(store, sourceType, opts)
+	if opts.Mode == ModeEnrich || p.userTier {
+		p.asinLoc = map[string]RecRef{}
+	}
+	return p
 }
 
 // newPlanner returns an empty planner for a run of sourceType writing through

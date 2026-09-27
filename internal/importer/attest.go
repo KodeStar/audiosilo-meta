@@ -2,8 +2,10 @@ package importer
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // attest.go is the importer's half of the TRUST-TIER / user-overwrite policy
@@ -87,9 +89,6 @@ type Attestation struct {
 	// LICENSING.md's rule takes over a mirror seed a user names BY ASIN, so
 	// there is no second way to say which record this is.
 	ASIN string
-	// Title labels a warning only when ASIN is empty (bookLabel), which Attest
-	// refuses - carried so a label never reads "(unknown book)".
-	Title string
 	// Source is the provenance entry the takeover stamps: the submission's own
 	// entry, which must be user-library tier (a form stamps `user`). A source
 	// with no overwrite authority is refused rather than run as an enrichment.
@@ -122,36 +121,85 @@ type Attestation struct {
 //
 // An ASIN the catalogue does not hold is an error rather than a create: this
 // entry point takes over records, it never mints them.
+//
+// Attest loads the whole catalogue to find the ASIN. A caller that has already
+// loaded it and matched the ASIN (the intake bot) uses AttestAt instead.
 func Attest(a Attestation, opts Options) (Summary, error) {
-	if model.TierOfSource(a.Source.Type) != model.TierUserLibrary {
-		return Summary{}, fmt.Errorf("attest: source type %q has no overwrite authority", a.Source.Type)
-	}
-	asin := NormalizeASIN(a.ASIN)
-	if asin == "" {
-		return Summary{}, fmt.Errorf("attest: %q is not an ASIN", a.ASIN)
-	}
-	store, err := openStore(opts.DataDir, opts.Profile)
+	asin, err := a.check()
 	if err != nil {
 		return Summary{}, err
 	}
-	p := newPlanner(store, a.Source.Type, opts)
-	p.asinLoc = map[string]RecRef{}
+	p, err := openPlanner(a.Source.Type, opts)
+	if err != nil {
+		return Summary{}, err
+	}
 	p.loadExisting()
+	if _, located := p.asinLoc[asin]; !located {
+		return p.result(), fmt.Errorf("attest: ASIN %s is not in the catalogue", asin)
+	}
+	return p.attest(a, asin, opts)
+}
+
+// AttestAt is Attest for a caller that holds the tree's store already and has
+// matched the ASIN itself: ref is the recording a.ASIN names, and taken lists
+// those of a.ISBNs the catalogue records ANYWHERE. It loads no catalogue.
+//
+// That is sound because attestExisting's call graph reads exactly three pieces of
+// planner state beyond the store and the run's own fields, and this seeds each of
+// them from what the caller already knows:
+//
+//   - asinLoc, for the one ASIN: where the record it attests sits;
+//   - isbns, for the submitted ISBNs already taken: the global-uniqueness set
+//     claimISBNs refuses a duplicate identifier against (claimISBNsFor drops the
+//     record's OWN ISBNs first, so seeding one of those changes nothing);
+//   - works, left EMPTY: applyToWork reads a work's run state (runGenresOwned,
+//     runAttested), which is zero for every record on disk, and builds that zero
+//     state itself when the map has none.
+//
+// Everything else a whole-catalogue load fills (people, series, the identity
+// index, the credit censuses) serves the create path, which an attestation never
+// reaches. TestAttestAtMatchesAttest pins the equivalence.
+func AttestAt(store *pack.Store, ref RecRef, taken []string, a Attestation, opts Options) (Summary, error) {
+	asin, err := a.check()
+	if err != nil {
+		return Summary{}, err
+	}
+	p := plannerOn(store, a.Source.Type, opts)
+	p.asinLoc[asin] = ref
+	for _, isbn := range taken {
+		p.isbns[strings.ToUpper(isbn)] = true
+	}
+	return p.attest(a, asin, opts)
+}
+
+// check refuses an attestation no run could apply, returning its normalized ASIN.
+func (a Attestation) check() (string, error) {
+	if model.TierOfSource(a.Source.Type) != model.TierUserLibrary {
+		return "", fmt.Errorf("attest: source type %q has no overwrite authority", a.Source.Type)
+	}
+	asin := NormalizeASIN(a.ASIN)
+	if asin == "" {
+		return "", fmt.Errorf("attest: %q is not an ASIN", a.ASIN)
+	}
+	return asin, nil
+}
+
+// attest is Attest's and AttestAt's shared tail: the submission as a row, its text
+// decoded as every run's is (runBooks), the attestation, and the run's write tail.
+func (p *planner) attest(a Attestation, asin string, opts Options) (Summary, error) {
 	b := sourceBook{
 		raw: rawBook{
-			"asin": asin, "title": a.Title, "release_date": a.ReleaseDate,
+			"asin": asin, "release_date": a.ReleaseDate,
 			"publisher": a.Publisher, "image_url": a.CoverURL,
 		},
 		runtimeMin:  a.RuntimeMin,
 		isbns:       a.ISBNs,
 		vocabGenres: a.Genres,
 	}
+	b.decodeText()
 	// The submission's own entry, not setSource's: a run stamps the row's ASIN as
 	// its ref, where a hand submission's provenance is what the submitter cited.
 	p.curSource = a.Source
-	if !p.dedupeByASIN(asin) {
-		return p.result(), fmt.Errorf("attest: ASIN %s is not in the catalogue", asin)
-	}
 	p.attestExisting(b, asin)
 	if p.fatal != nil {
 		return p.result(), p.fatal
@@ -161,7 +209,7 @@ func Attest(a Attestation, opts Options) (Summary, error) {
 	if p.summary.Produced() == 0 {
 		return p.result(), nil
 	}
-	err = p.commit(opts)
+	err := p.commit(opts)
 	return p.result(), err
 }
 

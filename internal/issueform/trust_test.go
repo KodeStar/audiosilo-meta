@@ -428,12 +428,11 @@ func TestAddWorkSlugDuplicateOfMirrorOnlyWorkNeedsHuman(t *testing.T) {
 	}
 }
 
-// TestAddWorkSlugHeldByAnotherAuthorsMirrorSeedIsNotATakeover is issue #2408's
-// shape: the title's slug is held by a mirror seed of ANOTHER author's book of
-// the same name. That is neither a duplicate nor a takeover - telling the
-// submitter their data should replace that record would put one book's facts on
-// another's - so the verdict says it is a different book needing its own slug.
-func TestAddWorkSlugHeldByAnotherAuthorsMirrorSeedIsNotATakeover(t *testing.T) {
+// TestAddWorkSlugHeldByAnotherAuthorsMirrorSeedComposes is issue #2408's shape:
+// the title's slug is held by a mirror seed of ANOTHER author's book of the same
+// name. That is neither a duplicate nor a takeover - it is another book - so it
+// is composed at the author-suffixed slug, the mirror seed untouched.
+func TestAddWorkSlugHeldByAnotherAuthorsMirrorSeedComposes(t *testing.T) {
 	dir := t.TempDir()
 	files := seedFiles()
 	files["works/ex/existing-work/work.json"] = `{
@@ -449,14 +448,14 @@ func TestAddWorkSlugHeldByAnotherAuthorsMirrorSeedIsNotATakeover(t *testing.T) {
 
 	body := addWorkBody("Existing Work", "Somebody Else", "en", "Different Narrator", "US: B0FRESH001", "web", true)
 	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
-	if res.Status != StatusNeedsHuman {
-		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
 	}
-	if !anyContains(res.Messages, `held by a different book - "Existing Work" by Jane Doe`) {
-		t.Errorf("the message must say it is another author's book: %v", res.Messages)
+	if !recordExists(t, dir, "works/ex/existing-work-somebody-else/work.json") {
+		t.Errorf("the other author's book must be composed at its own slug; messages = %v", res.Messages)
 	}
-	if anyContains(res.Messages, "should replace") || anyContains(res.Messages, "edit the issue to add its ASIN") {
-		t.Errorf("another book must not be offered as a takeover: %v", res.Messages)
+	if work := readFile(t, dir, "works/ex/existing-work/work.json"); strings.Contains(work, `"type": "user"`) {
+		t.Errorf("the mirror seed must be untouched:\n%s", work)
 	}
 }
 

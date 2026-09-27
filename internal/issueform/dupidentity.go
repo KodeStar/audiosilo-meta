@@ -40,13 +40,11 @@ import (
 //     job: "Mageling (Unabridged)" cleaned to "Mageling" collides with the work
 //     already stored there, where the decorated spelling did not.
 //
-//     ONE consequence is deliberate and worth stating: the slug gate is
-//     author-blind (a taken slug is a duplicate verdict whoever wrote the book),
-//     so a decorated title for a DIFFERENT book that cleans onto a taken slug now
-//     reaches that verdict instead of being composed. It is the conservative
-//     failure - nothing is written and the submitter is told which record we hold -
-//     and making that gate author-aware would change a verdict that predates this
-//     change, so it is left exactly as it is.
+//     The slug gate is AUTHOR-AWARE (gateWorkSlug): a taken slug is a duplicate
+//     only when the work there is the submitting author's, and another author's
+//     book of the same title steps to the author-suffixed slug. So a decorated
+//     title that cleans onto another author's work is composed beside it, and the
+//     strip only has to rule out the same author's DIFFERENT book (sameBookAs).
 //  3. the NORMALIZED-IDENTITY gate. The submitted title's normalized identity
 //     (check.WorkIdentity, the same index the bulk importer's create guard and
 //     metacheck's census read) against the catalogue, with the language and
@@ -140,8 +138,10 @@ func (ctx titleContext) placesMatch(workID string) bool {
 // against).
 //
 // It is what the STRIP consults before rewriting a title onto an existing work's
-// slug. Deliberately NOT the author rule: the slug gate that follows has been
-// author-blind since long before this change, and the two would then disagree.
+// slug. Deliberately NOT the author rule: that is the slug gate's own question
+// (gateWorkSlug), asked right after with the same answer for a stripped title
+// and a plain one - another author's book steps to its author-suffixed slug -
+// so asking it here too would only be a second place to keep in step.
 func (c *composer) sameBookAs(ctx titleContext, w *model.Work) bool {
 	return ctx.placesMatch(w.ID) &&
 		titlerule.SameCollectionStatus(ctx.title, ctx.series, w.Title, c.identityIndex().SeriesNameOf(w.ID))
@@ -283,8 +283,8 @@ func (c *composer) checkDecoratedTitle(ctx titleContext) (titleContext, bool) {
 		// The residual names a work we already hold that this submission is NOT a second
 		// record of, so the title keeps the decoration that tells the two apart.
 		// Stripping here would hand the submitter the slug gate's duplicate verdict for a
-		// book we do not hold, which is the one failure a gate must not have - and that
-		// gate is author-blind, so its message would not even be about their book.
+		// book we do not hold (when the work there is the same author's), which is the
+		// one failure a gate must not have.
 		//
 		// Two shapes reach it, and both were measured as wrong verdicts: a title stating
 		// a volume nothing places ("Hammered, Book 7" on a form whose series fields are

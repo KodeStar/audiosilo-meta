@@ -17,18 +17,22 @@ name: intake
 # branch is checked out, never run out of a swept branch's tree - and the only
 # branches it rewrites (force-push included) are this repository's own
 # bot-intake branches whose change is confined to data/ (see that job).
-# The `labeled` trigger is load-bearing: the GitHub API silently DROPS labels on
-# issues opened by non-collaborators (the sibling audiosilo-sidecars contributor
-# tool creates add-work intake issues over the API; its characters/recaps issues
-# now go to KodeStar/audiosilo-meta-community, which runs its own intake), so
-# such an issue arrives label-less and the `opened`/`edited` runs skip it. When a
-# maintainer later applies the routing label, that fires neither `opened` nor
-# `edited` - only `labeled` - so without this trigger the tool's issues could
-# never be admitted. The job-level `if` below narrows `labeled` to genuine routing
-# labels.
+# A submission is admitted by `labeled`, for its ROUTING label, and re-run by
+# `edited`; `opened` is deliberately not a trigger. An issue opened WITH its
+# routing label (every issue form, and an API client that may set labels) fires
+# that label's `labeled` event as well as `opened`, so admitting both ran intake
+# twice per submission and posted every verdict twice (#2406, #2408). And an
+# issue opened WITHOUT one has nothing for `opened` to act on: the GitHub API
+# silently DROPS labels on issues opened by non-collaborators (the sibling
+# audiosilo-sidecars contributor tool creates add-work intake issues over the
+# API; its characters/recaps issues now go to KodeStar/audiosilo-meta-community,
+# which runs its own intake), so such an issue arrives label-less, and it is the
+# maintainer applying the routing label later - a `labeled` event, never an
+# `opened` or `edited` one - that admits it. The job-level `if` below narrows
+# `labeled` to genuine routing labels.
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [edited, labeled]
   # A merge to main can leave an already-open intake PR conflicting in a pack
   # file, which only a data change can do - but the series-completion bot
   # (GOVERNANCE.md, "Series-completion bot") merges its own pull request ONLY
@@ -51,9 +55,9 @@ permissions: {}
 # issue-number expression is empty for a push, so without the conditional both
 # would share one accidental "intake-" group.
 # Nothing is ever cancelled in flight: creating an issue with both `data` and
-# `data:<template>` emits several events at once, and the generic `data` event is
-# intentionally skipped by the job-level guard below - with cancel-in-progress it
-# would cancel the run that opens the pull request.
+# `data:<template>` emits a `labeled` event for each at once, and the generic
+# `data` one is intentionally skipped by the job-level guard below - with
+# cancel-in-progress it would cancel the run that opens the pull request.
 #
 # That is not the whole of it, because GitHub keeps at most ONE PENDING run per
 # group and a newer arrival replaces it, in-progress cancellation or not. So an
@@ -69,7 +73,7 @@ concurrency:
     ${{ github.event_name == 'push' && 'intake-rebase' || format('intake-{0}-{1}', github.event.issue.number,
     (
       (
-        github.event.action != 'labeled' &&
+        github.event.action == 'edited' &&
         contains(join(github.event.issue.labels.*.name), 'data:')
       ) || (
         github.event.action == 'labeled' &&
@@ -93,7 +97,7 @@ jobs:
       pull-requests: write
       issues: write
     # Only act on issues carrying a data-routing label (data:add-work, etc.).
-    # For opened/edited we check the issue's current label set; for a `labeled`
+    # For an edit we check the issue's current label set; for a `labeled`
     # event we instead gate on the label just added (github.event.label.name), and
     # EXCLUDE the three outcome labels this workflow applies at the end
     # (data:invalid / data:needs-human / data:duplicate). Without that exclusion the
@@ -105,7 +109,7 @@ jobs:
     if: >-
       github.event_name == 'issues' && (
       (
-        github.event.action != 'labeled' &&
+        github.event.action == 'edited' &&
         contains(join(github.event.issue.labels.*.name), 'data:')
       ) || (
         github.event.action == 'labeled' &&
@@ -282,28 +286,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE: ${{ github.event.issue.number }}
           STATUS: ${{ steps.run.outputs.status }}
-        # ONE comment per distinct verdict. An issue opened WITH its labels (the
-        # issue forms apply them) fires `opened` AND one `labeled` event per
-        # label, and the job-level `if` admits `opened` and the routing label's
-        # `labeled` both - the `labeled` trigger is load-bearing (see the header),
-        # and a run cannot tell an issue that was opened labelled from one a
-        # maintainer labelled later. So two runs compose the same verdict for the
-        # same body, one after the other in the issue's concurrency group, and each
-        # used to post it: #2406 and #2408 carry the identical comment twice.
-        #
-        # The comment therefore carries a hidden marker digesting the VERDICT -
-        # the status and every message - and is not posted again while a comment of
-        # the bot's own bears it: the second run of a pair stays silent, while an
-        # edit that changes the verdict is news and is posted. This is the rebase
-        # sweep's comment_once (below), with one rule turned round: a comment
-        # listing that cannot be read posts anyway, because here the failure to
-        # avoid is a submitter never hearing back, and a duplicate is the lesser
-        # harm. The label is applied either way (it is idempotent).
         run: |
-          digest="$(jq -c '[.status, .messages]' result.json | sha256sum | cut -c 1-16)"
-          marker="<!-- intake-verdict:${digest} -->"
           {
-            echo "$marker"
             case "$STATUS" in
               duplicate)   echo "This looks like it's **already in the database**." ;;
               needs-human) echo "Thanks! This needs a **maintainer** to finish - it can't be applied mechanically." ;;
@@ -314,27 +298,7 @@ jobs:
             echo
             echo "_Posted by the intake bot._"
           } > comment.md
-
-          # The bot's own login, so only a marker it posted counts - anyone can
-          # paste one into a comment. Resolved as the sweep resolves it (GraphQL's
-          # viewer, "[bot]" dropped on both sides); unresolved, the marker alone
-          # decides.
-          self_login="$(gh api graphql -f query='query { viewer { login } }' --jq '.data.viewer.login')" || self_login=""
-          self_login="${self_login%"[bot]"}"
-          already=false
-          if comments="$(gh issue view "$ISSUE" --json comments)"; then
-            if printf '%s' "$comments" | jq -e --arg me "$self_login" --arg marker "$marker" \
-              'any(.comments[]; ($me == "" or ((.author.login // "") | sub("\\[bot\\]$"; "")) == $me) and ((.body // "") | contains($marker)))' > /dev/null; then
-              already=true
-            fi
-          else
-            echo "::warning::could not read the comments on issue #${ISSUE}; posting the verdict anyway"
-          fi
-          if [ "$already" = true ]; then
-            echo "this verdict is already on issue #${ISSUE}; not posting it again"
-          else
-            gh issue comment "$ISSUE" --body-file comment.md
-          fi
+          gh issue comment "$ISSUE" --body-file comment.md
           gh issue edit "$ISSUE" --add-label "data:${STATUS}" || true
 
   # Keep the bot's own open pull requests mergeable after a merge to main.

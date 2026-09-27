@@ -335,8 +335,8 @@ func TestAddWorkAcceptsATitleThatIsItsSeriesName(t *testing.T) {
 
 // F2 on the intake side: a submitted title that STATES a volume nothing places is a
 // book we may not hold. The measured shape is a blank series field - "Hammered, Book
-// 7" cleans to "Hammered", which is a work we have, and the author-blind slug gate
-// would have called it a duplicate. The marker survives and the record is composed.
+// 7" cleans to "Hammered", which is a work we have by the same author, and the slug
+// gate would have called it a duplicate. The marker survives and the record is composed.
 func TestAddWorkKeepsAStatedVolumeNothingPlaces(t *testing.T) {
 	dir := dupSeedTree(t)
 	res := processAddWork(t, dir, dupWorkBody(

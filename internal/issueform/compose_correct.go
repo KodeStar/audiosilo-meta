@@ -255,16 +255,11 @@ func (c *composer) recordingChoices(workSlug string) string {
 		ids = append(ids, r.ID)
 	}
 	sort.Strings(ids)
-	const shown = 5
-	refs := make([]string, 0, shown)
-	for _, id := range ids[:min(shown, len(ids))] {
+	refs := make([]string, 0, len(ids))
+	for _, id := range ids {
 		refs = append(refs, recordingRef(workSlug, id))
 	}
-	more := ""
-	if len(ids) > shown {
-		more = fmt.Sprintf(" (and %d more)", len(ids)-shown)
-	}
-	return " - this work's recordings are " + strings.Join(refs, ", ") + more
+	return " - this work's recordings are " + joinCapped(refs, 5)
 }
 
 // workPageURL is a work's page on the site - the reference the correction form
@@ -324,10 +319,9 @@ func (c *composer) correctionTarget(addr entryAddr) (entry, record map[string]an
 // TIER POLICY IS UNCHANGED HERE. Corrections have never carried a trust-tier
 // gate of their own - a correction is a correction whoever seeded the record -
 // and this change does not add one. The gate that DOES fire is the existing
-// duplicate routing: an ISBN already recorded on a different recording is a
-// duplicate, except that a bulk-mirror-only incumbent routes to a maintainer
-// rather than being closed (correctISBN) - which of two recordings an identifier
-// belongs to is not something a correction of the OTHER one can settle.
+// duplicate routing: an ISBN already recorded on a different recording goes
+// through failDuplicateUnhinted, so a bulk-mirror-only incumbent still routes to
+// a maintainer rather than being closed as a duplicate.
 func (c *composer) correctAdditive(addr entryAddr, add func(*composer, entryAddr, map[string]any, string) (string, bool), corrected, evidence string) {
 	entry, record, ok := c.correctionTarget(addr)
 	if !ok {
@@ -369,13 +363,7 @@ func (c *composer) correctISBN(addr entryAddr, record map[string]any, corrected 
 	// The global gate first, with its existing verdict: an identifier that
 	// belongs to another recording is not this record's to gain.
 	if other, dup := c.isbnRec[key]; dup && other != self {
-		if c.bulkMirrorOnly(other) {
-			c.fail(StatusNeedsHuman, "ISBN %s is already recorded on %s, which was seeded from the libex mirror and "+
-				"no user has attested yet - which of the two recordings it belongs to is a maintainer's call",
-				stated.ISBN, c.recLocation(other))
-			return "", false
-		}
-		c.fail(StatusDuplicate, "ISBN %s is already recorded on %s", stated.ISBN, c.recLocation(other))
+		c.failDuplicateUnhinted(other, "ISBN "+stated.ISBN, "ISBN %s is already recorded on %s", stated.ISBN, c.recLocation(other))
 		return "", false
 	}
 
