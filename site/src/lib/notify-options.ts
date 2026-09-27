@@ -75,7 +75,7 @@ export const NOTIFY_OPTIONS: readonly NotifyOption[] = [
       'Outlook: Add calendar > Subscribe from web, paste the link and add it.',
     ],
     notes: [
-      'Why there is no alert: a subscribed calendar is re-downloaded and merged in silently, and no calendar app announces a new event in one.',
+      'Why there is no alert when a book is added: a subscribed calendar is re-downloaded and merged in silently, and no calendar app announces a new event in one.',
       'Each release date becomes one all-day event; any alert or reminder is the calendar app’s own setting, not ours.',
       'Google refreshes a subscribed calendar roughly every 12 to 24 hours; Apple refreshes at the interval you pick.',
       'A book with no announced release date has no date to put in a calendar, so it is not in this feed. The Atom feed still lists it.',
