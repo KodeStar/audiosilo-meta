@@ -2,6 +2,7 @@ package issueform
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 
@@ -69,16 +70,33 @@ func (c *composer) applyTakeover(s sections, t *takeover, genres []string, named
 			"names (%q); a maintainer checks which is right before anything is applied", t.asin, loc, t.ref.Work, namedWork)
 		return
 	}
-	runtimeMin, releaseDate, coverURL := c.recordingFacts(s)
-	srcs := c.sources(s.get(fSources))
+	// An ISBN the submission states that another recording carries is evidence
+	// that the submission is about THAT edition, against the ASIN's: conflicting
+	// evidence, which no takeover settles.
 	var isbns, taken []string
 	for _, ref := range t.isbns {
 		isbns = append(isbns, ref.ISBN)
-		if _, recorded := c.isbnRec[isbnKey(ref.ISBN)]; recorded {
+		if at, recorded := c.isbnRec[isbnKey(ref.ISBN)]; recorded {
+			if at != t.ref {
+				c.fail(StatusNeedsHuman, "your ASIN %s names %s, but your ISBN %s is recorded at %s - a different "+
+					"recording; a maintainer checks which edition this submission is before anything is applied",
+					t.asin, loc, ref.ISBN, c.recLocation(at))
+				return
+			}
 			taken = append(taken, ref.ISBN)
 		}
 	}
-	unapplied, identity := c.outsideTakeover(s, t)
+	// A mistyped ASIN would otherwise overwrite - and permanently attest - somebody
+	// else's book, so the submission must describe the record its ASIN names.
+	if differ := c.identityMismatch(s, t); len(differ) > 0 {
+		c.fail(StatusNeedsHuman, "your ASIN %s names %s, but your submission's %s differ from that record's, so the "+
+			"ASIN may be mistyped rather than this edition's; nothing was applied, and a maintainer checks it",
+			t.asin, loc, strings.Join(differ, "; "))
+		return
+	}
+	runtimeMin, releaseDate, coverURL := c.recordingFacts(s)
+	srcs := c.sources(s.get(fSources))
+	unapplied, titleDiffers := c.outsideTakeover(s, t)
 	// Nothing below reads the catalogue again, and the importer's post-write
 	// validation loads its own.
 	c.releaseCatalogue()
@@ -124,9 +142,9 @@ func (c *composer) applyTakeover(s sections, t *takeover, genres []string, named
 		c.note("not applied - a takeover replaces a recording's facts, not the rest of the form: %s. "+
 			"The Correct data form adds these", strings.Join(unapplied, ", "))
 	}
-	if len(identity) > 0 {
-		c.note("your %s differ from the record's, and a takeover never rewrites identity; if the record is "+
-			"wrong, the Correct data form fixes it", strings.Join(identity, ", "))
+	if titleDiffers {
+		c.note("your Title differs from the record's, and a takeover never rewrites identity; if the record's " +
+			"title is wrong, the Correct data form fixes it")
 	}
 	c.noteAttestWarnings(sum)
 	c.wrote = sum.Files
@@ -149,13 +167,12 @@ var takeoverUnapplied = []string{
 }
 
 // outsideTakeover reports the stated fields the takeover leaves alone: unapplied
-// are facts the form states that the attestation does not write, identity the
-// identity fields that differ from the record's (never rewritten by a takeover),
-// judged by the catalogue's own identity rules - the author-nesting rule
-// (check.IdentityAuthorsMatch) and the title comparison key with retailer
-// decoration stripped. It reads the composer's catalogue, so it runs before
-// releaseCatalogue.
-func (c *composer) outsideTakeover(s sections, t *takeover) (unapplied, identity []string) {
+// are facts the form states that the attestation does not write, and
+// titleDiffers is a submitted title the record's does not match even with
+// retailer decoration stripped (titleKey) - a note, since a takeover never
+// rewrites identity and a title is the one identity field a retailer decorates.
+// It reads the composer's catalogue, so it runs before releaseCatalogue.
+func (c *composer) outsideTakeover(s sections, t *takeover) (unapplied []string, titleDiffers bool) {
 	for _, label := range takeoverUnapplied {
 		if s.get(label) != "" {
 			unapplied = append(unapplied, label)
@@ -168,24 +185,68 @@ func (c *composer) outsideTakeover(s sections, t *takeover) (unapplied, identity
 	}
 	rec := c.recordingAt(t.ref)
 	if rec == nil {
-		return unapplied, nil
+		return unapplied, false
 	}
 	if stated := abridgedFromForm(s.get(fRecAbridged)); stated != nil && *stated != rec.Abridged {
 		unapplied = append(unapplied, fRecAbridged)
 	}
-	w := c.works[t.ref.Work]
-	if title := s.get(fWorkTitle); title != "" && titleKey(title, s.get(fWorkSeriesName)) != titleKey(w.Title, "") {
-		identity = append(identity, fWorkTitle)
+	title := s.get(fWorkTitle)
+	return unapplied, title != "" && titleKey(title, s.get(fWorkSeriesName)) != titleKey(c.works[t.ref.Work].Title, "")
+}
+
+// identityMismatch lists how the submission describes a different book or
+// edition than the recording its ASIN names: authors by the catalogue's
+// author-nesting rule (check.IdentityAuthorsMatch), narrators by the importer's
+// same-person rule (samePeople), and the language by its primary subtag (en and
+// en-gb are one language; a regional tag is not a different book). A form that
+// does not state a field (add-recording states no authors or language) is not
+// compared on it.
+func (c *composer) identityMismatch(s sections, t *takeover) []string {
+	rec, w := c.recordingAt(t.ref), c.works[t.ref.Work]
+	if rec == nil || w == nil {
+		return nil
 	}
-	if names := s.get(fWorkAuthors); names != "" {
-		if authors := c.personSlugs(splitNames(names)); !check.IdentityAuthorsMatch(w, authors, authors) {
-			identity = append(identity, fWorkAuthors)
+	var out []string
+	if names := splitNames(s.get(fWorkAuthors)); len(names) > 0 {
+		if set := c.personSlugs(names); !check.IdentityAuthorsMatch(w, set, set) {
+			out = append(out, fmt.Sprintf("authors (%s; recorded %s)", strings.Join(names, ", "), c.personNames(w.Authors)))
 		}
 	}
-	if !importer.SameSet(c.personSlugs(splitNarratorNames(s.get(fRecNarrators))), importer.ToSet(rec.Narrators)) {
-		identity = append(identity, fRecNarrators)
+	if names := splitNarratorNames(s.get(fRecNarrators)); len(names) > 0 && !c.samePeople(names, rec.Narrators) {
+		out = append(out, fmt.Sprintf("narrators (%s; recorded %s)", strings.Join(names, ", "), c.personNames(rec.Narrators)))
 	}
-	return unapplied, identity
+	if raw := s.get(fWorkLanguage); raw != "" {
+		if lang, ok := normalizeLanguage(raw); ok && primarySubtag(lang) != primarySubtag(rec.Language) {
+			out = append(out, fmt.Sprintf("language (%s; recorded %s)", lang, rec.Language))
+		}
+	}
+	return out
+}
+
+// samePeople reports whether names and the person ids credit the same people,
+// each side matched against the other by the importer's same-person rule.
+func (c *composer) samePeople(names, ids []string) bool {
+	matches := func(name, id string) bool {
+		slug, _ := c.personSlugOf(name)
+		return importer.SamePerson(id, c.nameOf(id), slug, name)
+	}
+	for _, n := range names {
+		if !slices.ContainsFunc(ids, func(id string) bool { return matches(n, id) }) {
+			return false
+		}
+	}
+	for _, id := range ids {
+		if !slices.ContainsFunc(names, func(n string) bool { return matches(n, id) }) {
+			return false
+		}
+	}
+	return true
+}
+
+// primarySubtag is a BCP-47 tag's language, without its region or script.
+func primarySubtag(tag string) string {
+	lang, _, _ := strings.Cut(strings.ToLower(tag), "-")
+	return lang
 }
 
 // titleKey is a title's comparison identity: retailer decoration stripped where
@@ -229,12 +290,15 @@ func (c *composer) recordingASINs(ref recRef) string {
 	return strings.Join(asinLabels(r), ", ")
 }
 
-// workASINs lists the ASINs of every recording of w, capped so a work with a
-// dozen regional recordings still gets a readable sentence.
+// workASINs lists the ASINs of w's recordings that are still bulk-mirror-only -
+// the only ones a submission could take over - capped so a work with a dozen
+// regional recordings still gets a readable sentence.
 func workASINs(w *model.Work) string {
 	var out []string
 	for _, r := range w.Recordings {
-		out = append(out, asinLabels(r)...)
+		if model.BulkMirrorOnly(r.Sources) {
+			out = append(out, asinLabels(r)...)
+		}
 	}
 	sort.Strings(out)
 	return joinCapped(out, 6)

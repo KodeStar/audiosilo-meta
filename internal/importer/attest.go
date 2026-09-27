@@ -105,48 +105,31 @@ type Attestation struct {
 	Genres []string
 }
 
-// Attest applies the user-overwrite rule (LICENSING.md, "Trust tiers and the
+// AttestAt applies the user-overwrite rule (LICENSING.md, "Trust tiers and the
 // user-overwrite rule") for ONE hand submission naming, by ASIN, a book the
-// catalogue holds, and writes and validates the tree exactly as a run does.
+// catalogue holds, and writes and validates the tree exactly as a run does. It
+// is the intake bot's door onto the rule; the library import's door is the
+// create path itself.
 //
 // It is not a second implementation of the rule: it plans the submission as a
 // one-row user-library run and hands it to the same hook the create path calls
 // at its ASIN-dedup skip (attestExisting), so the two doors cannot disagree about
 // what a takeover is. Against a bulk-mirror-only record the stated facts replace
-// the recorded ones and Source is appended (Summary.Attested*); against an
-// attested record nothing is written, first writer wins. Either way a runtime
-// more than 10% apart, or a release date that is not the same date at another
-// precision, refuses the row whole and is counted in Summary.Conflicts, with the
-// warning naming both values - the disagreement a maintainer adjudicates.
+// the recorded ones (an ISBN is appended when no recording claims it) and Source
+// is appended (Summary.Attested*); against an attested record nothing is
+// written, first writer wins. Either way a runtime more than 10% apart, or a
+// release date that is not the same date at another precision, refuses the row
+// whole and is counted in Summary.Conflicts, with the warning naming both values
+// - the disagreement a maintainer adjudicates.
 //
-// An ASIN the catalogue does not hold is an error rather than a create: this
-// entry point takes over records, it never mints them.
-//
-// Attest loads the whole catalogue to find the ASIN. A caller that has already
-// loaded it and matched the ASIN (the intake bot) uses AttestAt instead.
-func Attest(a Attestation, opts Options) (Summary, error) {
-	asin, err := a.check()
-	if err != nil {
-		return Summary{}, err
-	}
-	p, err := openPlanner(a.Source.Type, opts)
-	if err != nil {
-		return Summary{}, err
-	}
-	p.loadExisting()
-	if _, located := p.asinLoc[asin]; !located {
-		return p.result(), fmt.Errorf("attest: ASIN %s is not in the catalogue", asin)
-	}
-	return p.attest(a, asin, opts)
-}
-
-// AttestAt is Attest for a caller that holds the tree's store already and has
-// matched the ASIN itself: ref is the recording a.ASIN names, and taken lists
-// those of a.ISBNs the catalogue records ANYWHERE. It loads no catalogue.
-//
-// That is sound because attestExisting's call graph reads exactly three pieces of
-// planner state beyond the store and the run's own fields, and this seeds each of
-// them from what the caller already knows:
+// The caller holds the tree's store already and has matched the ASIN itself:
+// ref is the recording a.ASIN names, and taken lists those of a.ISBNs the
+// catalogue records ANYWHERE. a's text is taken as ALREADY DECODED - the form
+// door decodes a field once as it reads it (issueform's sections.get), so a run's
+// decodeText here would decode a submitted "&amp;amp;" twice. It loads no
+// catalogue, which is sound because attestExisting's call graph reads exactly
+// three pieces of planner state beyond the store and the run's own fields, and
+// this seeds each of them from what the caller already knows:
 //
 //   - asinLoc, for the one ASIN: where the record it attests sits;
 //   - isbns, for the submitted ISBNs already taken: the global-uniqueness set
@@ -158,7 +141,10 @@ func Attest(a Attestation, opts Options) (Summary, error) {
 //
 // Everything else a whole-catalogue load fills (people, series, the identity
 // index, the credit censuses) serves the create path, which an attestation never
-// reaches. TestAttestAtMatchesAttest pins the equivalence.
+// reaches. TestAttestAtMatchesAWholeLoad pins the equivalence.
+//
+// An ASIN the catalogue does not hold is the caller's error: this entry point
+// takes over records, it never mints them.
 func AttestAt(store *pack.Store, ref RecRef, taken []string, a Attestation, opts Options) (Summary, error) {
 	asin, err := a.check()
 	if err != nil {
@@ -184,8 +170,9 @@ func (a Attestation) check() (string, error) {
 	return asin, nil
 }
 
-// attest is Attest's and AttestAt's shared tail: the submission as a row, its text
-// decoded as every run's is (runBooks), the attestation, and the run's write tail.
+// attest is the attestation's body over a seeded planner: the submission as a
+// row (its text already decoded - see AttestAt), the create path's attestation
+// hook, and the run's write tail.
 func (p *planner) attest(a Attestation, asin string, opts Options) (Summary, error) {
 	b := sourceBook{
 		raw: rawBook{
@@ -196,7 +183,6 @@ func (p *planner) attest(a Attestation, asin string, opts Options) (Summary, err
 		isbns:       a.ISBNs,
 		vocabGenres: a.Genres,
 	}
-	b.decodeText()
 	// The submission's own entry, not setSource's: a run stamps the row's ASIN as
 	// its ref, where a hand submission's provenance is what the submitter cited.
 	p.curSource = a.Source

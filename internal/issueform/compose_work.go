@@ -207,11 +207,12 @@ func (c *composer) unreservedWorkSlug(base, firstAuthor string) string {
 //
 // A title's slug held by another work is a duplicate only when that work is the
 // SUBMITTING author's (sameAuthorAs - the importer's same-person rule, so "J.
-// Doe" meets "Jane Doe"). A different author's book of the same title is
+// Doe" meets "Jane Doe"). A CLEARLY different author's book of the same title is
 // another book: it steps to the author-suffixed slug, the bulk chain's next
 // candidate (unreservedWorkSlug, the formula a reserved title steps by), so the
-// form and an import put it in one place. Two other authors' books on both
-// candidates is a maintainer's call.
+// form and an import put it in one place. An author NEAR the incumbent's
+// (nearAuthorOf - a likely misspelling) and two other authors' books on both
+// candidates are a maintainer's call.
 //
 // A duplicate is tier-aware like the ASIN/ISBN and narrator-set gates: a work
 // only the mirror has ever stated routes to a maintainer, not to a closed
@@ -220,6 +221,17 @@ func (c *composer) unreservedWorkSlug(base, firstAuthor string) string {
 func (c *composer) gateWorkSlug(slug string, authorNames []string) (string, bool) {
 	live := c.liveWorkSlug(slug)
 	if w := c.works[live]; w != nil && !c.sameAuthorAs(w, authorNames) {
+		// Stepping past is only safe when the authors are CLEARLY different: a
+		// misspelled author ("Brandon Sandersen") must not compose a second record
+		// of the book at the suffixed slug.
+		if c.nearAuthorOf(w, authorNames) {
+			c.fail(StatusNeedsHuman, "the work slug %q is held by %q by %s at %s, and your submission names %s - "+
+				"the same author spelled differently, or another author? A maintainer decides (if it is a "+
+				"misspelling, correcting the author makes this a duplicate; if not, the book needs its own slug)",
+				slug, w.Title, c.personNames(w.Authors), c.entryLocation(pack.FamilyWorks, live, ""),
+				strings.Join(authorNames, ", "))
+			return "", false
+		}
 		stepped := c.unreservedWorkSlug(slug, authorNames[0])
 		if other := c.works[c.liveWorkSlug(stepped)]; other != nil && !c.sameAuthorAs(other, authorNames) {
 			c.fail(StatusNeedsHuman, "the work slug %q and its author-suffixed form %q are both held by other "+
@@ -253,6 +265,20 @@ func (c *composer) sameAuthorAs(w *model.Work, names []string) bool {
 	for _, id := range w.Authors {
 		for _, n := range names {
 			if slug, _ := c.personSlugOf(n); importer.SamePerson(id, c.nameOf(id), slug, n) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// nearAuthorOf reports whether any submitted author is NEAR one of w's authors
+// without being the same person (importer.NearPerson: the same surname, or one
+// edit apart) - a name the gate cannot tell a misspelling from another author by.
+func (c *composer) nearAuthorOf(w *model.Work, names []string) bool {
+	for _, id := range w.Authors {
+		for _, n := range names {
+			if importer.NearPerson(c.nameOf(id), n) {
 				return true
 			}
 		}

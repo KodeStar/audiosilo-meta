@@ -581,7 +581,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 }
 
 // openPlanner opens opts.DataDir's store and returns a planner over it - the
-// one setup every run shares (runBooks, Attest). A tree still in the
+// one setup every run shares. A tree still in the
 // file-per-entity layout is refused here, having written nothing and read nothing
 // it could misinterpret.
 func openPlanner(sourceType string, opts Options) (*planner, error) {

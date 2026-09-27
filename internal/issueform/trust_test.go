@@ -57,7 +57,9 @@ func setField(t *testing.T, body, label, value string) string {
 // a MODIFIED record, applied through the importer's own attestation.
 func TestAddWorkASINOfLibexOnlyRecordTakesItOver(t *testing.T) {
 	dir := seedTierTree(t)
-	body := addWorkBody("Whatever Title", "Some Author", "en", "Some Narrator", "US: B000000001", "my own copy", true)
+	// The record's own authors, narrators and language; a title the record does
+	// not match is only a note (identity is never rewritten).
+	body := addWorkBody("Existing Work Revisited", "Jane Doe", "en-gb", "John Smith", "US: B000000001", "my own copy", true)
 	body = setField(t, body, fRecRuntime, "410") // within 10% of the recorded 400
 	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
 	if res.Status != StatusOK {
@@ -82,15 +84,119 @@ func TestAddWorkASINOfLibexOnlyRecordTakesItOver(t *testing.T) {
 	if !strings.Contains(rec, `"narrators": [`+"\n"+`    "john-smith"`) {
 		t.Errorf("narrators must be untouched:\n%s", rec)
 	}
-	if recordExists(t, dir, "works/wh/whatever-title/work.json") {
+	if recordExists(t, dir, "works/ex/existing-work-revisited/work.json") {
 		t.Error("a takeover must not compose a new work")
 	}
 	// What the takeover left behind is named, not dropped silently.
 	if !anyContains(res.Messages, "not applied") || !anyContains(res.Messages, fWorkFirstPublished) {
 		t.Errorf("the unapplied fields must be named: %v", res.Messages)
 	}
-	if !anyContains(res.Messages, "never rewrites identity") {
-		t.Errorf("the differing identity must be named: %v", res.Messages)
+	if !anyContains(res.Messages, "your Title differs from the record's") {
+		t.Errorf("the differing title must be noted: %v", res.Messages)
+	}
+}
+
+// TestAddWorkASINTakeoverRefusesAnotherBook: an ASIN is a strong claim, but a
+// mistyped one would overwrite - and permanently attest - somebody else's
+// record. A submission whose authors, narrators or language differ from the
+// record its ASIN names is a maintainer's to check, and nothing is written.
+func TestAddWorkASINTakeoverRefusesAnotherBook(t *testing.T) {
+	cases := []struct {
+		name, authors, lang, narrators, want string
+	}{
+		{"authors", "Some Author", "en", "John Smith", "authors (Some Author; recorded Jane Doe)"},
+		{"narrators", "Jane Doe", "en", "Some Narrator", "narrators (Some Narrator; recorded John Smith)"},
+		{"language", "Jane Doe", "de", "John Smith", "language (de; recorded en)"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			dir := seedTierTree(t)
+			body := addWorkBody("Existing Work", tc.authors, tc.lang, tc.narrators, "US: B000000001", "web", true)
+			body = setField(t, body, fRecRuntime, "400")
+			res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+			if res.Status != StatusNeedsHuman {
+				t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+			}
+			if !anyContains(res.Messages, tc.want) || !anyContains(res.Messages, "may be mistyped") {
+				t.Errorf("the message must name the mismatch %q: %v", tc.want, res.Messages)
+			}
+			if rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json"); strings.Contains(rec, `"type": "user"`) {
+				t.Errorf("nothing may be applied:\n%s", rec)
+			}
+		})
+	}
+}
+
+// TestTakeoverRefusesAnISBNOfAnotherRecording: the ASIN names one recording and
+// a submitted ISBN another - conflicting evidence about which edition this is.
+func TestTakeoverRefusesAnISBNOfAnotherRecording(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+	files["works/ex/existing-work/recordings/john-smith-2021.json"] = `{"id": "john-smith-2021", "isbn": ["9781473647633"], ` +
+		`"language": "en", "license": "CC0-1.0", "narrators": ["john-smith"], ` +
+		`"sources": [{"type": "user", "imported_at": "2026-07-01"}], "work": "existing-work"}`
+	testpack.Seed(t, dir, files)
+	body := setField(t, addRecordingBody("existing-work", "John Smith", "US: B000000001", true), fRecISBNs, "9781473647633")
+	res := Process(Options{DataDir: dir, Template: "add-recording", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "your ISBN 9781473647633 is recorded at "+worksPack+": entry existing-work: recording john-smith-2021") {
+		t.Errorf("the message must name both recordings: %v", res.Messages)
+	}
+}
+
+// TestASINVerdictIsOrderIndependent: every matched ASIN is classified before the
+// verdict, so listing them in another order cannot change it.
+func TestASINVerdictIsOrderIndependent(t *testing.T) {
+	second := func(sources string) string {
+		return `{"asin": [{"asin": "B000000002", "region": "uk"}], "id": "john-smith-2021", "language": "en", ` +
+			`"license": "CC0-1.0", "narrators": ["john-smith"], "sources": ` + sources + `, "work": "existing-work"}`
+	}
+	cases := []struct {
+		name, sources string
+		want          Status
+	}{
+		{"one attested", `[{"type": "user", "imported_at": "2026-07-01"}]`, StatusDuplicate},
+		{"two mirror seeds", `[{"type": "libex-import", "ref": "B000000002", "imported_at": "2026-07-01"}]`, StatusNeedsHuman},
+	}
+	for _, tc := range cases {
+		for _, asins := range []string{"US: B000000001\nUK: B000000002", "UK: B000000002\nUS: B000000001"} {
+			t.Run(tc.name+"/"+asins[:2], func(t *testing.T) {
+				dir := t.TempDir()
+				files := seedFiles()
+				files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+				files["works/ex/existing-work/recordings/john-smith-2021.json"] = second(tc.sources)
+				testpack.Seed(t, dir, files)
+				res := Process(Options{DataDir: dir, Template: "add-recording",
+					Body: addRecordingBody("existing-work", "John Smith", asins, true)})
+				if res.Status != tc.want {
+					t.Fatalf("status = %q, want %q; messages = %v", res.Status, tc.want, res.Messages)
+				}
+			})
+		}
+	}
+}
+
+// TestComposeAndTakeoverDecodeAPublisherOnce: the form door decodes a field once
+// as it reads it, so a double-escaped value is stored the same whether the
+// submission is composed as a new record or applied over a mirror seed.
+func TestComposeAndTakeoverDecodeAPublisherOnce(t *testing.T) {
+	const submitted, stored = "Lost Press &amp;amp; Co", `"publisher": "Lost Press &amp; Co"`
+	dir := seedTierTree(t)
+	composed := setField(t, addRecordingBody("existing-work", "New Voice", "US: B0NEWVOICE", true), fRecPublisher, submitted)
+	if res := Process(Options{DataDir: dir, Template: "add-recording", Body: composed}); res.Status != StatusOK {
+		t.Fatalf("compose: status = %q; messages = %v", res.Status, res.Messages)
+	}
+	takeover := setField(t, addRecordingBody("existing-work", "John Smith", "US: B000000001", true), fRecPublisher, submitted)
+	if res := Process(Options{DataDir: dir, Template: "add-recording", Body: takeover}); res.Status != StatusOK {
+		t.Fatalf("takeover: status = %q; messages = %v", res.Status, res.Messages)
+	}
+	for _, rec := range []string{"new-voice-2021", "john-smith-2020"} {
+		if got := readFile(t, dir, "works/ex/existing-work/recordings/"+rec+".json"); !strings.Contains(got, stored) {
+			t.Errorf("%s must store the once-decoded publisher %s:\n%s", rec, stored, got)
+		}
 	}
 }
 
@@ -136,7 +242,7 @@ func TestAddWorkTakeoverAttestsAMirrorWorkAndAddsGenres(t *testing.T) {
 // not even the stamp that would end the record's mirror-only status.
 func TestAddWorkASINTakeoverDisagreementNeedsHuman(t *testing.T) {
 	dir := seedTierTree(t)
-	body := addWorkBody("Whatever Title", "Some Author", "en", "Some Narrator", "US: B000000001", "web", true)
+	body := addWorkBody("Existing Work", "Jane Doe", "en", "John Smith", "US: B000000001", "web", true)
 	res := Process(Options{DataDir: dir, Template: "add-work", Body: body}) // 500 min against 400
 	if res.Status != StatusNeedsHuman {
 		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)

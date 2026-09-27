@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -11,11 +12,32 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
-// Attest is the hand-submission door onto the user-overwrite rule: the intake
+// AttestAt is the hand-submission door onto the user-overwrite rule: the intake
 // bot's add-work / add-recording forms naming a catalogued ASIN. These tests pin
 // that it IS the create path's attestation (attestExisting), not a copy of it:
 // the same overwrite on a mirror seed, the same refusal on a disagreement, the
-// same silence on an attested record.
+// same silence on an attested record. Most drive it through attestWholeLoad, which
+// finds the ASIN by loading the catalogue; TestAttestAtMatchesAWholeLoad pins that
+// AttestAt's seeding reaches the same result without that load.
+
+// attestWholeLoad is AttestAt with the catalogue loaded to find the ASIN's
+// recording and every taken ISBN - the whole-load reference AttestAt's seeding is
+// pinned against.
+func attestWholeLoad(a Attestation, opts Options) (Summary, error) {
+	asin, err := a.check()
+	if err != nil {
+		return Summary{}, err
+	}
+	p, err := openPlanner(a.Source.Type, opts)
+	if err != nil {
+		return Summary{}, err
+	}
+	p.loadExisting()
+	if _, located := p.asinLoc[asin]; !located {
+		return p.result(), fmt.Errorf("attest: ASIN %s is not in the catalogue", asin)
+	}
+	return p.attest(a, asin, opts)
+}
 
 // formSource is the provenance a form submission stamps: `user`, citing what the
 // submitter wrote in the Sources field.
@@ -27,14 +49,14 @@ func TestAttestOverwritesAMirrorSeedAndTakesOverItsProvenance(t *testing.T) {
 		tierWorkRel: strings.Replace(tierWork, `"id":"the-lost-cartographer"`,
 			`"genres":["fantasy"],"id":"the-lost-cartographer"`, 1),
 	})
-	sum, err := Attest(Attestation{
+	sum, err := attestWholeLoad(Attestation{
 		ASIN: "b0libex001", Source: formSource,
 		RuntimeMin: 605, ReleaseDate: "2019-05-04", Publisher: "Lost Press",
 		CoverURL: "https://m.media-amazon.com/images/I/user.jpg",
 		ISBNs:    []string{"9780000000019"}, Genres: []string{"action-adventure"},
 	}, Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
-		t.Fatalf("Attest: %v", err)
+		t.Fatalf("attest: %v", err)
 	}
 	if sum.AttestedRecordings != 1 || sum.AttestedWorks != 1 || sum.Conflicts != 0 {
 		t.Fatalf("Attested recordings/works/conflicts = %d/%d/%d, want 1/1/0",
@@ -83,11 +105,11 @@ func TestAttestOverwritesAMirrorSeedAndTakesOverItsProvenance(t *testing.T) {
 func TestAttestDisagreementWritesNothingAndIsCounted(t *testing.T) {
 	dataDir := seedTierTree(t, nil)
 	before := readRaw(t, dataDir, tierRecRel)
-	sum, err := Attest(Attestation{
+	sum, err := attestWholeLoad(Attestation{
 		ASIN: "B0LIBEX001", Source: formSource, RuntimeMin: 400, Publisher: "Somebody Else",
 	}, Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
-		t.Fatalf("Attest: %v", err)
+		t.Fatalf("attest: %v", err)
 	}
 	if sum.Conflicts != 1 || sum.Produced() != 0 {
 		t.Fatalf("conflicts/produced = %d/%d, want 1/0", sum.Conflicts, sum.Produced())
@@ -104,10 +126,10 @@ func TestAttestDisagreementWritesNothingAndIsCounted(t *testing.T) {
 // the same date at another precision does not.
 func TestAttestReleaseDateDisagreement(t *testing.T) {
 	dataDir := seedTierTree(t, nil) // recorded "2019"
-	sum, err := Attest(Attestation{ASIN: "B0LIBEX001", Source: formSource, ReleaseDate: "2020-01-01"},
+	sum, err := attestWholeLoad(Attestation{ASIN: "B0LIBEX001", Source: formSource, ReleaseDate: "2020-01-01"},
 		Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
-		t.Fatalf("Attest: %v", err)
+		t.Fatalf("attest: %v", err)
 	}
 	if sum.Conflicts != 1 || sum.Produced() != 0 {
 		t.Fatalf("conflicts/produced = %d/%d, want 1/0", sum.Conflicts, sum.Produced())
@@ -122,10 +144,10 @@ func TestAttestLeavesAnAttestedRecordAlone(t *testing.T) {
 		tierWorkRel: tierWorkAttested,
 	})
 	before := readRaw(t, dataDir, tierRecRel)
-	sum, err := Attest(Attestation{ASIN: "B0LIBEX001", Source: formSource, Publisher: "A Third Imprint"},
+	sum, err := attestWholeLoad(Attestation{ASIN: "B0LIBEX001", Source: formSource, Publisher: "A Third Imprint"},
 		Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
-		t.Fatalf("Attest: %v", err)
+		t.Fatalf("attest: %v", err)
 	}
 	if sum.Produced() != 0 || sum.Conflicts != 0 {
 		t.Fatalf("produced/conflicts = %d/%d, want 0/0", sum.Produced(), sum.Conflicts)
@@ -135,28 +157,34 @@ func TestAttestLeavesAnAttestedRecordAlone(t *testing.T) {
 	}
 }
 
-// Attest takes records over; it never mints one, and only a user-library source
-// carries the authority to overwrite.
+// AttestAt refuses what no attestation may apply - a source without overwrite
+// authority, a malformed ASIN - before it touches the tree; the whole-load
+// reference refuses an uncatalogued ASIN rather than creating anything.
 func TestAttestRefusesWhatItCannotAttest(t *testing.T) {
 	dataDir := seedTierTree(t, nil)
 	opts := Options{DataDir: dataDir, ImportDate: testImportDate}
-	if _, err := Attest(Attestation{ASIN: "B0NOTHERE1", Source: formSource}, opts); err == nil {
+	if _, err := attestWholeLoad(Attestation{ASIN: "B0NOTHERE1", Source: formSource}, opts); err == nil {
 		t.Error("an uncatalogued ASIN must be refused, not created")
 	}
+	store, err := openStore(dataDir, "")
+	if err != nil {
+		t.Fatalf("open store: %v", err)
+	}
+	ref := RecRef{Work: "the-lost-cartographer", Rec: "bea-reader-2019"}
 	libex := OutSource{Type: "libex-import", Ref: "B0LIBEX001", ImportedAt: testImportDate}
-	if _, err := Attest(Attestation{ASIN: "B0LIBEX001", Source: libex, Publisher: "X"}, opts); err == nil {
+	if _, err := AttestAt(store, ref, nil, Attestation{ASIN: "B0LIBEX001", Source: libex, Publisher: "X"}, opts); err == nil {
 		t.Error("a bulk-mirror source has no overwrite authority")
 	}
-	if _, err := Attest(Attestation{ASIN: "not-an-asin", Source: formSource}, opts); err == nil {
+	if _, err := AttestAt(store, ref, nil, Attestation{ASIN: "not-an-asin", Source: formSource}, opts); err == nil {
 		t.Error("a malformed ASIN must be refused")
 	}
 }
 
-// TestAttestAtMatchesAttest pins AttestAt's seeding against Attest's whole
+// TestAttestAtMatchesAWholeLoad pins AttestAt's seeding against a whole
 // catalogue load: over the same fixture - an overwrite, a genre union, and one
 // submitted ISBN another recording already carries - both entry points must
 // report the same Summary and write the same tree.
-func TestAttestAtMatchesAttest(t *testing.T) {
+func TestAttestAtMatchesAWholeLoad(t *testing.T) {
 	const takenISBN, freshISBN = "9781473647633", "9780000000019"
 	overrides := map[string]string{
 		tierWorkRel: strings.Replace(tierWork, `"id":"the-lost-cartographer"`,
@@ -172,9 +200,9 @@ func TestAttestAtMatchesAttest(t *testing.T) {
 	}
 
 	whole := seedTierTree(t, overrides)
-	wantSum, err := Attest(a, Options{DataDir: whole, ImportDate: testImportDate})
+	wantSum, err := attestWholeLoad(a, Options{DataDir: whole, ImportDate: testImportDate})
 	if err != nil {
-		t.Fatalf("Attest: %v", err)
+		t.Fatalf("attest: %v", err)
 	}
 
 	seeded := seedTierTree(t, overrides)
@@ -189,7 +217,7 @@ func TestAttestAtMatchesAttest(t *testing.T) {
 	}
 
 	if !reflect.DeepEqual(gotSum, wantSum) {
-		t.Errorf("summaries differ:\nAttestAt %+v\nAttest   %+v", gotSum, wantSum)
+		t.Errorf("summaries differ:\nAttestAt   %+v\nwhole load %+v", gotSum, wantSum)
 	}
 	if wantSum.AttestedRecordings != 1 || !strings.Contains(strings.Join(wantSum.Warnings, "\n"), takenISBN) {
 		t.Errorf("the fixture must exercise the overwrite and the taken ISBN: %+v", wantSum)
@@ -199,8 +227,8 @@ func TestAttestAtMatchesAttest(t *testing.T) {
 	}
 	var rec recordingFile
 	readEntity(t, seeded, tierRecRel, &rec)
-	if rec.Publisher != "Lost Press & Co" {
-		t.Errorf("publisher = %q, want the submitted text decoded as every run's is", rec.Publisher)
+	if rec.Publisher != "Lost Press &amp; Co" {
+		t.Errorf("publisher = %q, want the submitted text stored as given: the form door decoded it already", rec.Publisher)
 	}
 }
 

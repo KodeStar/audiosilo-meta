@@ -96,10 +96,12 @@ submission (Add a work, Add a recording) that names a mirror-seeded recording
 BY ASIN is applied by the intake bot itself, through the same attestation a
 library import performs: its pull request carries the modified record, and a
 maintainer still approves it like any other `bot-intake` pull request. A
-submission that disagrees with the seed on runtime or release date, or that
-meets a mirror-seeded record only by title, ISBN or narrator set (not an ASIN
-match, so not the rule's), is routed to a maintainer (`data:needs-human`) with
-a message saying which, rather than closed as a duplicate.
+submission that disagrees with the seed on runtime or release date, that
+describes a different book than the record its ASIN names (authors, narrators or
+language, or an ISBN another recording carries), or that meets a mirror-seeded
+record only by title, ISBN or narrator set (not an ASIN match, so not the
+rule's), is routed to a maintainer (`data:needs-human`) with a message saying
+which, rather than closed as a duplicate.
 
 ## Automated intake and AI verification
 

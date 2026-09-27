@@ -263,7 +263,9 @@ The intake bot applies the same rule, through the same code: a form submission
 (Add a work, Add a recording) that names a bulk-mirror-only recording by ASIN
 takes it over exactly as a library import's row would - rules 2 to 5 unchanged,
 including the disagreement guard, which routes the submission to a maintainer
-with nothing applied. A submission that meets such a record only by title, ISBN
+with nothing applied. So does a submission whose authors, narrators or language
+differ from the record its ASIN names, or whose ISBN another recording carries:
+a mistyped ASIN must not attest somebody else's book. A submission that meets such a record only by title, ISBN
 or narrator set is not an ASIN match, so it goes to a maintainer rather than
 being applied or closed as a duplicate; its message names the record's ASINs,
 and adding the matching one to the issue turns it into a takeover.

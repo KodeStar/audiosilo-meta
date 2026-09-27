@@ -585,22 +585,45 @@ func (c *composer) recLocation(ref recRef) string {
 // the add-work path steers the submitter to the add-recording form,
 // add-recording passes "".
 //
-// The verdict depends on the matched record's TRUST TIER (LICENSING.md). An
-// ordinary duplicate is StatusDuplicate, as it always was. An ASIN naming a
-// recording that is still bulk-mirror-only is the case the user-overwrite rule
-// is written for - a person attesting, by ASIN, a book nobody has attested yet -
-// so it is not a verdict at all: the gate returns the planned TAKEOVER
-// (takeover.go), which the caller applies. An ISBN match on such a record is not
-// an ASIN match, and routes to a maintainer saying so (failDuplicate).
+// The verdict depends on the matched records' TRUST TIER (LICENSING.md), and it
+// is decided over EVERY matched ASIN at once, so the order a submitter listed
+// them in cannot change it: any matched recording someone has attested makes the
+// submission an ordinary duplicate (StatusDuplicate, as it always was); matches
+// on two different recordings are conflicting evidence for a maintainer; and
+// matches that all name ONE recording that is still bulk-mirror-only are the case
+// the user-overwrite rule is written for - a person attesting, by ASIN, a book
+// nobody has attested yet - so the gate returns the planned TAKEOVER
+// (takeover.go) for the caller to apply. An ISBN match on a mirror-only record is
+// not an ASIN match, and routes to a maintainer saying so (failDuplicate).
 func (c *composer) dedupIdentifiers(asins []outASIN, isbns []model.ISBNRef, asinHint string) (t *takeover, dup bool) {
+	matched := map[string]recRef{}
+	var keys []string
 	for _, a := range asins {
 		if ref, ok := c.asinRec[a.ASIN]; ok {
-			if c.bulkMirrorOnly(ref) {
-				return c.planTakeover(ref, a.ASIN, asins, isbns), true
+			if _, seen := matched[a.ASIN]; !seen {
+				matched[a.ASIN] = ref
+				keys = append(keys, a.ASIN)
 			}
-			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
-			return nil, true
 		}
+	}
+	if len(keys) > 0 {
+		sort.Strings(keys)
+		for _, k := range keys {
+			if ref := matched[k]; !c.bulkMirrorOnly(ref) {
+				c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", k, c.recLocation(ref), asinHint)
+				return nil, true
+			}
+		}
+		first := matched[keys[0]]
+		for _, k := range keys[1:] {
+			if other := matched[k]; other != first {
+				c.fail(StatusNeedsHuman, "your ASINs name two different recordings, both seeded from the libex mirror: "+
+					"%s is recorded at %s and %s at %s - a maintainer checks which edition this submission is",
+					keys[0], c.recLocation(first), k, c.recLocation(other))
+				return nil, true
+			}
+		}
+		return c.planTakeover(first, keys[0], asins, isbns), true
 	}
 	// Keyed on the ISBN VALUE, so a submission that scopes its ISBN to a region
 	// still collides with a recorded bare one: they are one identifier in two
