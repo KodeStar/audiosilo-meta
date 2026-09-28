@@ -304,13 +304,33 @@ one specific question. Issues without a `data` label are never touched.
 agent that reads it runs as a separate unprivileged user without the
 maintainer's token, cannot read the service's state or credentials, and cannot
 push anything itself: the service verifies its change (data-only,
-`metafmt --write`, `metacheck --profile core`, a secret scan) and pushes it.
+`metafmt --write`, `metacheck` with the repository's profile, a secret scan)
+and pushes it.
 
-**Kill switch.** The steward is off unless `SYNC_STEWARD=on`; turning it off,
-revoking the token, or stopping the container stops it. **Widening** it - a
-larger bound, merging code, merging fork pull requests, or pointing it at
-[audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community)
-- is a change to this document first.
+**The community layer.** By the maintainer's decision of 2026-09-28 the
+steward also looks after
+[audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community),
+on the same terms and with that repository's own gate. Its prose is judged by
+its own `ai-verify`, a reviewer written to
+[AUTHORING.md](https://github.com/KodeStar/audiosilo-meta-community/blob/main/AUTHORING.md):
+the spoiler model, own words, the neutral reference-guide voice, the
+description contract and provenance. A community data pull request is merged
+only when `keys`, `structure` and `verify` have concluded well on its exact
+head and it carries `ai-verified`, it is not behind `main`, and it is within the
+same review bound; a flagged one is amended by the contained agent under those
+same rules and goes back through the gate. On that repository the steward
+**writes no prose from an issue**: a characters or recaps submission reaches a
+pull request through the intake bot, from a contributor's own text, and the
+steward only closes an issue once the pull request that answers it has merged.
+Composing recaps or character cards itself would be writing CC BY-SA prose from
+recollection, which the grounding rule there does not accept.
+
+**Kill switch.** The steward is off unless `SYNC_STEWARD=on`, and each
+repository it looks after is named in its configuration (the community layer
+only when listed there); turning it off, revoking the token, or stopping the
+container stops it. **Widening** it - a larger bound, merging code, merging fork
+pull requests, writing community prose, or pointing it at any further
+repository - is a change to this document first.
 
 ## Disputes
 
