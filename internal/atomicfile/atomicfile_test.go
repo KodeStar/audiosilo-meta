@@ -69,3 +69,31 @@ func TestNilFileIsANoOp(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+// The last file is the commit marker: its previous destination is removed before
+// anything is renamed, so a commit that fails part-way leaves no marker - never
+// a stale one beside new or missing companions.
+func TestCommitRemovesTheOldMarkerFirst(t *testing.T) {
+	dir := t.TempDir()
+	list, marker := filepath.Join(dir, "list"), filepath.Join(dir, "marker")
+	for _, p := range []string{list, marker} {
+		if err := os.WriteFile(p, []byte("previous run\n"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	fl, _ := Stage(list)
+	fm, _ := Stage(marker)
+	rename = func(from, to string) error {
+		if to == list {
+			return errors.New("injected")
+		}
+		return os.Rename(from, to)
+	}
+	t.Cleanup(func() { rename = os.Rename })
+	if err := CommitInOrder(fl, fm); err == nil {
+		t.Fatal("the injected rename must fail the commit")
+	}
+	if _, err := os.Stat(marker); !os.IsNotExist(err) {
+		t.Errorf("a failed commit left the previous marker behind: %v", err)
+	}
+}

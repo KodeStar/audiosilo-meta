@@ -180,7 +180,7 @@ func TestSelectorSkipsAnotherAuthorsSeries(t *testing.T) {
 	// And the selector and the importer resolve the name to the same series.
 	p := plannerOver(t, dataDir)
 	campbell := func() *SeriesRow { return testRow("Jack Campbell") }
-	idx, _ := loadSeriesIndex(dataDir)
+	idx, _ := loadSeriesIndex(dataDir, false)
 	sel, _ := findInIndex(idx, "Lost Fleet", campbell())
 	ref := p.refFor("Lost Fleet", campbell())
 	created := p.getOrCreateSeries(ref, func(string, ...any) {})

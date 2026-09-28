@@ -5,20 +5,21 @@ import (
 	"strconv"
 )
 
-// product.go is the ONE set of PRODUCT statements a title can make about which
+// product.go is the set of PRODUCT statements a title can make about which
 // product of a book it is - one part of a split release, a derived edition (a
 // young-readers adaptation or a "<title>: The Series" edition), a collection of
-// several books - and the rule every writer applies to them: two records whose
-// titles say different things here are not one book, however their titles
-// otherwise reduce. pkg/check's identity predicate (the census, the intake gate,
-// the importer's create guard) and the importer's attach rule all compare
-// ProductOf, so none of them can call one book what another calls two.
+// several books. It is the vocabulary of the importer's ATTACH rule
+// (internal/importer/attach.go), which refuses to attach a row to a work whose
+// titles say something different here. The duplicate decisions (pkg/check's
+// identity predicate, the intake gate, the create guard) keep their own measured
+// collection rule (SameCollectionStatus) and internal/remediate its own measured
+// part markers: widening them to this vocabulary lost real duplicates.
 
 // splitPartMarkers are the title forms a SPLIT RELEASE's parts are recorded with,
-// each capturing the part number and the part count. Measured over the whole
-// catalogue (GraphicAudio's part products, internal/remediate), plus the German
-// "Teil N von M" and the square-bracket group a retailer uses as often as the
-// round one:
+// each capturing the part number and the part count: internal/remediate's
+// measured GraphicAudio forms, widened by the German "Teil N von M" and the
+// square-bracket group a retailer uses as often as the round one (remediate keeps
+// its own, narrower list):
 //
 //	(N of M)          "The Blood Mirror (2 of 2) [Dramatized Adaptation]"
 //	(Part N of M)     "Morning Star (Part 1 of 2) (Dramatized Adaptation)"
@@ -53,17 +54,6 @@ func PartOf(title string) (num, total int, ok bool) {
 		return n, t, true
 	}
 	return 0, 0, false
-}
-
-// StripPartMarker removes the first part marker PartOf reads, or returns the
-// title unchanged.
-func StripPartMarker(title string) string {
-	for _, re := range splitPartMarkers {
-		if re.MatchString(title) {
-			return re.ReplaceAllString(title, "")
-		}
-	}
-	return title
 }
 
 // IsSplitPart reports whether a title names itself one PART of a split release:
@@ -102,14 +92,4 @@ func ProductOf(series string, titles ...string) Product {
 		p.Collection = p.Collection || IsCollectionIn(t, series)
 	}
 	return p
-}
-
-// ComparableKey is a title's comparison identity where retailer decoration is
-// removable: StripDecoration against the series name when it proposes a title
-// (the gate the add-work form applies), then CompareKeyWhole.
-func ComparableKey(title, series string) string {
-	if cleaned, _, ok := StripDecoration(title, series); ok {
-		title = cleaned
-	}
-	return CompareKeyWhole(title)
 }

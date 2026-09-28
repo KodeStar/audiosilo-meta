@@ -1,6 +1,10 @@
 package importer
 
 import (
+	"regexp"
+	"strconv"
+	"strings"
+
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 )
 
@@ -25,10 +29,11 @@ import (
 // (resolveWork, matchWork for authors) or the duplicate-identity guard's
 // normalized title identity (dupidentity.go, check.WorkIdentity) must resolve
 // the row to exactly that occupant. What this file adds is only the evidence a
-// title cannot give and a position can: the vetoes below, which are the shared
-// titlerule set every duplicate decision reads (titlerule.ProductOf), plus the
-// one only a positioned claim can ask - a title stating a volume that
-// contradicts the claimed position.
+// title cannot give and a position can: the vetoes below - titlerule.ProductOf's
+// product statements over both sides' title and subtitle, read SERIES-AWARE
+// (productAt), plus the one only a positioned claim can ask, a title stating a
+// volume that contradicts the claimed position. They are this rule's alone: the
+// duplicate decisions keep their own measured collection rule.
 //
 // THE DECISION IS SPLIT IN TWO, by what it depends on. attachCandidate is
 // CENSUS-INDEPENDENT - the occupant, a title the machinery could resolve to it,
@@ -39,8 +44,9 @@ import (
 // every row, the fall-through included.
 //
 // A translated edition is never attached: a work is language-scoped here (a
-// translation is a different work - metacheck's cross-language advisory), and a
-// translated title is a different key anyway.
+// translation is a different work - metacheck's cross-language advisory), so
+// both languages must be KNOWN and EQUAL - an unknown on either side is no
+// evidence the two are one edition's language, and attaches nothing.
 
 // attachCandidate is the census-independent half of the rule: the loaded work
 // occupant, when the row could be another edition of it - a title the identity
@@ -53,10 +59,10 @@ func (p *planner) attachCandidate(b sourceBook, seriesName, occupant string, ref
 		return nil
 	}
 	lang, ok := mapLanguage(b.str("language"))
-	if !ok || !langCompatible(ws.lang, lang) || len(rowNarratorNamesIn(creditContext{}, b)) == 0 {
+	if !ok || lang == "" || ws.lang != lang || len(rowNarratorNamesIn(creditContext{}, b)) == 0 {
 		return nil
 	}
-	if vetoed(b, p.incumbentProduct(ws, seriesName), seriesName, ref) {
+	if vetoed(b, p.incumbentProduct(ws, seriesName, ref.seq), seriesName, ref) {
 		return nil
 	}
 	return ws
@@ -137,28 +143,66 @@ func (p *planner) attachFor(ctx creditContext, b sourceBook, workTitle string) (
 	return nil, occupant
 }
 
-// incumbentProduct is a work's product statements (titlerule.ProductOf over its
-// title and subtitle) read against a series, computed once per (work, series)
+// incumbentProduct is a work's product statements (productAt over its title and
+// subtitle) at a series position, computed once per (work, series, position)
 // for the run: every regional sibling row of a volume asks it again.
-func (p *planner) incumbentProduct(ws *workState, seriesName string) titlerule.Product {
-	k := ws.slug + "\x00" + seriesName
+func (p *planner) incumbentProduct(ws *workState, seriesName, seq string) titlerule.Product {
+	k := ws.slug + "\x00" + seriesName + "\x00" + seq
 	if pr, ok := p.attachProducts[k]; ok {
 		return pr
 	}
 	if p.attachProducts == nil {
 		p.attachProducts = map[string]titlerule.Product{}
 	}
-	pr := titlerule.ProductOf(seriesName, ws.title, ws.subtitle)
+	pr := productAt(seriesName, seq, "", ws.title, ws.subtitle)
 	p.attachProducts[k] = pr
 	return pr
+}
+
+// productAt is titlerule.ProductOf read SERIES-AWARE: a part count "(N of M)"
+// whose N is the position the record sits at can be the retailer counting the
+// SERIES ("Dragon Wars: Blood Brothers (1 of 10)" is volume 1 of Craig Halloran's
+// ten-volume series), not a split release, and then states no part by itself.
+// It is read that way only when nothing says split release - no dramatization
+// marker and no GraphicAudio imprint (internal/remediate measured both: the
+// catalogue's part products are GraphicAudio's, most of them marked
+// dramatized) - because "The Way of Kings (1 of 5)" from GraphicAudio at
+// Stormlight 1 is part 1 of five. Any other part marker - a count naming a
+// different number, or "Part N" - still states a part.
+func productAt(seriesName, seq, publisher string, titles ...string) titlerule.Product {
+	pr := titlerule.ProductOf(seriesName, titles...)
+	pr.Part = false
+	for _, t := range titles {
+		if t == "" {
+			continue
+		}
+		if n, _, ok := titlerule.PartOf(t); ok {
+			if !SameSlot(strconv.Itoa(n), seq) || dramatized.MatchString(t) || isGraphicAudio(publisher) {
+				pr.Part = true
+			}
+			continue
+		}
+		pr.Part = pr.Part || titlerule.IsSplitPart(t)
+	}
+	return pr
+}
+
+// dramatized is the dramatization marker a split release's part titles carry,
+// in both bracket styles and both spellings (internal/remediate's measured form).
+var dramatized = regexp.MustCompile(`(?i)[\[(]\s*dramati[sz]ed(?:\s+adaptation)?\s*[\])]`)
+
+// isGraphicAudio reports whether an imprint is GraphicAudio's, however spaced
+// ("GraphicAudio", "Graphic Audio LLC").
+func isGraphicAudio(publisher string) bool {
+	return strings.Contains(strings.ReplaceAll(strings.ToLower(publisher), " ", ""), "graphicaudio")
 }
 
 // vetoed reports whether a title statement refuses the attachment, read over
 // EVERY title the row states (short, full, subtitle - a retailer puts
 // "Young Readers Edition" in whichever field it likes): a stated volume that
 // contradicts the claimed position (statedVolumePosition, seriespos.go's
-// reading), or product statements (titlerule.ProductOf - a split-release part,
-// a derived edition, a collection) that differ from the incumbent's.
+// reading), or product statements (productAt - a split-release part, a derived
+// edition, a collection) that differ from the incumbent's title and subtitle.
 func vetoed(b sourceBook, incumbent titlerule.Product, seriesName string, ref seriesRef) bool {
 	variants := []string{b.str("title_short"), b.str("title"), b.str("subtitle")}
 	for _, t := range variants {
@@ -169,7 +213,7 @@ func vetoed(b sourceBook, incumbent titlerule.Product, seriesName string, ref se
 			return true
 		}
 	}
-	return titlerule.ProductOf(seriesName, variants...) != incumbent
+	return productAt(seriesName, ref.seq, b.str("publisher"), variants...) != incumbent
 }
 
 // completionClaim is the claim a row completes a series with: the FIRST of its

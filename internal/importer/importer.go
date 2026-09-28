@@ -1153,12 +1153,14 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	authorCredits := p.rowAuthorCredits(b)
 	if len(authorCredits) == 0 {
 		warn("no author; a work requires an author; skipped")
+		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonMissingAuthor)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
 
 	if workTitle == "" {
 		warn("no title; skipped")
+		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonMissingTitle)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
@@ -1213,6 +1215,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// refused row is re-importable, a wrong merge is not.
 	ident := p.rowIdentityOf(b, workTitle)
 	if p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
+		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonIdentityDuplicate)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
@@ -1333,6 +1336,7 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 	narratorNames = p.rowNarratorNames(b)
 	if len(narratorNames) == 0 {
 		warn("no narrator; a recording requires narrators; skipped")
+		p.summary.Skips = appendSkip(p.summary.Skips, NormalizeASIN(b.str("asin")), reasonMissingNarrator)
 		return "", nil, false
 	}
 	return lang, narratorNames, true

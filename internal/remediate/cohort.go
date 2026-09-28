@@ -3,9 +3,9 @@ package remediate
 import (
 	"regexp"
 	"slices"
+	"strconv"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -31,8 +31,23 @@ var graphicAudioPublishers = map[string]bool{
 	"Graphic Audio":     true,
 }
 
-// The part markers GraphicAudio's part products are recorded with are
-// titlerule's (PartOf, StripPartMarker): the one list every writer reads.
+// partMarkers are the title forms GraphicAudio's part products are recorded
+// with. Measured over the whole catalogue, the parenthesized marker has four
+// spellings and there is exactly one unparenthesized one:
+//
+//	(N of M)        290 works   "The Blood Mirror (2 of 2) [Dramatized Adaptation]"
+//	(Part N of M)    93 works   "Morning Star (Part 1 of 2) (Dramatized Adaptation)"
+//	( N of M)         3 works   "The Broken Eye ( 1 of 3) [Dramatized Adaptation]" - a stray space
+//	, Vol. N of M     2 works   "The Earth Died Screaming, Vol. 1 of 2 (Dramatized Adaptation)"
+//
+// The "(Book N of M)" form is deliberately NOT here: its single occurrence is
+// Lone Ghost Publishing's "Blood Stained: The Legend of Andrew Rufus (Book 3 of
+// 7)", a series volume rather than a part of one production. The publisher gate
+// would reject it anyway; leaving the form out says why.
+var partMarkers = []*regexp.Regexp{
+	regexp.MustCompile(`\s*\(\s*(?:Part\s+)?([0-9]+)\s+of\s+([0-9]+)\s*\)`),
+	regexp.MustCompile(`,?\s*Vol\.\s*([0-9]+)\s+of\s+([0-9]+)`),
+}
 
 // dramatizedMarker is the edition marker a dramatization's title carries, in
 // both bracket styles and both spellings, with or without the word
@@ -55,18 +70,38 @@ type partRef struct {
 	Total int
 }
 
-// partOf reads the part marker out of a title (titlerule.PartOf). ok is false
-// for a title that states none, which is every whole-book product.
+// partOf reads the part marker out of a title. ok is false for a title that
+// states none, which is every whole-book product.
 func partOf(title string) (partRef, bool) {
-	num, total, ok := titlerule.PartOf(title)
-	return partRef{Num: num, Total: total}, ok
+	for _, re := range partMarkers {
+		m := re.FindStringSubmatch(title)
+		if m == nil {
+			continue
+		}
+		num, err := strconv.Atoi(m[1])
+		if err != nil {
+			continue
+		}
+		total, err := strconv.Atoi(m[2])
+		if err != nil || num < 1 || total < 1 || num > total {
+			continue
+		}
+		return partRef{Num: num, Total: total}, true
+	}
+	return partRef{}, false
 }
 
 // baseTitle strips the part marker and the dramatized edition marker, leaving
 // the title of the BOOK. It is the identity half of a part group's key (the
 // author set is the other half).
 func baseTitle(title string) string {
-	title = dramatizedMarker.ReplaceAllString(titlerule.StripPartMarker(title), "")
+	for _, re := range partMarkers {
+		if re.MatchString(title) {
+			title = re.ReplaceAllString(title, "")
+			break
+		}
+	}
+	title = dramatizedMarker.ReplaceAllString(title, "")
 	return strings.TrimSpace(whitespaceRun.ReplaceAllString(title, " "))
 }
 

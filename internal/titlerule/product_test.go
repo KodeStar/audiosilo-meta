@@ -47,10 +47,3 @@ func TestProductOf(t *testing.T) {
 		t.Errorf("a box set is a collection: %+v", p)
 	}
 }
-
-// ComparableKey sees through removable retailer decoration.
-func TestComparableKey(t *testing.T) {
-	if ComparableKey("The Lost Coast: Cartographer Chronicles, Book 1", "Cartographer Chronicles") != ComparableKey("The Lost Coast", "") {
-		t.Error("a decorated title and its book share a key")
-	}
-}

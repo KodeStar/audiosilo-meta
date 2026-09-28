@@ -219,9 +219,11 @@ func (x exclusions) add(asin string, r refusal) {
 	x.log.add(asin, r)
 }
 
-// hold is add for a duplicate-asin refusal whose first copy was KEPT at stream
-// time: its line waits for the end, because it names an ASIN the subset may
-// still carry (refusalLog.flush).
+// hold is add for a duplicate-asin refusal: its line waits for the end, because
+// it names an ASIN the subset may still carry or the first copy's own rule
+// names already (refusalLog.flush). One is held per repeated row of a KEPT
+// ASIN at most - a repeat of a refused ASIN has its line already, so hold drops
+// it at once.
 func (x exclusions) hold(asin string) {
 	x.res.Excluded[reasonDuplicateASIN.report]++
 	x.log.hold(asin)
@@ -254,12 +256,11 @@ type selectedRow struct {
 }
 
 // selectState is the within-export memory the per-row rules keep: the ASINs
-// already seen (and which of them a kept row carries), and the (series,
+// already seen, and the (series,
 // position) slots already claimed by a selected row. All first-seen-wins, so a
 // run is deterministic in input order.
 type selectState struct {
 	seenASIN map[string]bool
-	keptASIN map[string]bool
 	// claimed maps "<series slug>\x00<position>" to the work key holding it.
 	// The value matters because the per-region sibling rows of ONE title
 	// legitimately claim the same slot - they are one work.
@@ -267,7 +268,7 @@ type selectState struct {
 }
 
 func newSelectState() *selectState {
-	return &selectState{seenASIN: map[string]bool{}, keptASIN: map[string]bool{}, claimed: map[string]string{}}
+	return &selectState{seenASIN: map[string]bool{}, claimed: map[string]string{}}
 }
 
 // claimPosition reserves (series, position) for workKey, reporting false when
@@ -291,7 +292,7 @@ func (st *selectState) claimPosition(slug, seq, workKey string) bool {
 func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (SelectResult, []selectedRow, error) {
 	res := SelectResult{Excluded: map[string]int{}}
 	x := exclusions{res: &res, log: refusals}
-	idx, warnings := loadSeriesIndex(opts.DataDir)
+	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions)
 	res.Warnings = append(res.Warnings, warnings...)
 
 	st := newSelectState()
@@ -301,13 +302,12 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 		res.RowsRead++
 		row, asin, reason := selectLibexRow(e, idx, st, opts.AttachEditions)
 		switch {
-		case reason == reasonDuplicateASIN && st.keptASIN[asin]:
+		case reason == reasonDuplicateASIN:
 			x.hold(asin)
 		case reason != refusal{}:
 			x.add(asin, reason)
 		default:
 			row.raw = raw
-			st.keptASIN[asin] = true
 			kept = append(kept, row)
 		}
 	})
@@ -370,14 +370,18 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 	}
 	ctx := idx.p.creditContextOf(books)
 	claims, where := idx.p.batchClaimsIn(ctx, books)
-	// The titles the import resolves each row's work by: its edition-cleaned
-	// titles (on a copy of the decoded row - the next pass must see the row the
-	// import sees) and the batch title pre-pass over them.
-	for i := range books {
-		books[i].raw = maps.Clone(books[i].raw)
+	// With attachEditions, the titles the import resolves each row's work by:
+	// its edition-cleaned titles (on a copy of the decoded row - the next pass
+	// must see the row the import sees) and the batch title pre-pass over them.
+	// A plain selection never asks.
+	var titles []string
+	if attachEditions {
+		for i := range books {
+			books[i].raw = maps.Clone(books[i].raw)
+		}
+		normalizeEditionMarkers(books)
+		titles = resolveWorkTitles(books)
 	}
-	normalizeEditionMarkers(books)
-	titles := resolveWorkTitles(books)
 
 	owner := make([]int, len(claims))
 	for ci, w := range where {
@@ -447,8 +451,12 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 				continue
 			}
 			if occupant := idx.positions[v.slug][v.ref.seq]; occupant != "" {
+				if !attachEditions {
+					drop(i, reasonPositionTaken)
+					continue
+				}
 				ws, _ := idx.p.attachFor(ctx, books[i], titles[i])
-				if !attachEditions || ws == nil {
+				if ws == nil {
 					drop(i, reasonPositionTaken)
 					continue
 				}
@@ -757,7 +765,10 @@ type seriesIndex struct {
 // PROFILE: bare dataDir = ProfileAll by Options.Profile's own default rule
 // (types.go carries the full statement; adding a --profile flag to this CLI
 // means threading it here too).
-func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
+//
+// attach says the run applies the attach rule; without it the planner lets go
+// of the normalized-identity index, exactly as a plain selection always has.
+func loadSeriesIndex(dataDir string, attach bool) (seriesIndex, []string) {
 	idx := seriesIndex{
 		bySlug:    map[string]string{},
 		asins:     map[string]bool{},
@@ -770,9 +781,10 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 	}
 	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir})
 	p.loadedPositions = true
-	// The normalized-identity index stays: the attach rule resolves a row
-	// through it as the import does (attach.go).
 	p.loadExisting()
+	if !attach {
+		p.identity = nil // only the attach rule asks it (attach.go)
+	}
 	p.seriesAuthorIndex()
 	p.catalog = nil
 	idx.p, idx.asins, idx.redirects = p, p.asins, p.redirects

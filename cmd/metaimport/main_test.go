@@ -760,3 +760,17 @@ func TestSkippedFlagIsStagedBeforeTheRun(t *testing.T) {
 		t.Errorf("exit %d, stdout %q: a completed import prints its summary even when the worklist fails", code, out)
 	}
 }
+
+// --attach-editions is a create-path option: with --enrich or --recordings-only
+// it is refused before anything runs.
+func TestAttachEditionsRejectsTheBoundedModes(t *testing.T) {
+	run := func(string, importer.Options) (importer.Summary, error) {
+		t.Error("the import must not run")
+		return importer.Summary{}, nil
+	}
+	for _, mode := range []string{"--enrich", "--recordings-only"} {
+		if code := runSource(boundedSource, []string{"export.json", "--attach-editions", mode}, run); code != 2 {
+			t.Errorf("--attach-editions %s: exit %d, want 2", mode, code)
+		}
+	}
+}

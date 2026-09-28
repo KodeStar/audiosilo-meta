@@ -48,6 +48,7 @@ func TestRefusalCodesAreStable(t *testing.T) {
 		"ai-narrator", "credit-platform-account", "credit-list-of-people",
 		"credit-cast-placeholder", "credit-not-a-person",
 		"position-claimed", "over-series-cap",
+		"identity-duplicate", "missing-author", "missing-title", "missing-narrator",
 	}
 	if got := RefusalCodes(); !reflect.DeepEqual(got, want) {
 		t.Errorf("RefusalCodes() = %q\nwant %q", got, want)
@@ -58,7 +59,7 @@ func TestRefusalCodesAreStable(t *testing.T) {
 // every refusal the report counts, and the report never folds two together.
 func TestEveryRuleHasItsOwnCodeAndWording(t *testing.T) {
 	codes, reports := map[string]bool{}, map[string]bool{}
-	for _, r := range refusals {
+	for _, r := range append(append([]refusal{}, refusals...), importRefusals...) {
 		if r.code == "" || r.report == "" || codes[r.code] || reports[r.report] {
 			t.Errorf("rule %+v: empty or shared code or wording", r)
 		}
@@ -120,14 +121,14 @@ func TestRefusalsWorklist(t *testing.T) {
 		// A duplicate of a SELECTED ASIN: its line would name a row the subset
 		// carries, so the worklist omits it.
 		selectRow("B0SELECT02", "Volume Two", "gb", "english", seriesName, "2"),
-		// A duplicate of a REFUSED one names nothing selected, so it is listed.
+		// A duplicate of a REFUSED one: its ASIN already has a line (one per ASIN).
 		selectRow("B0OTHER001", "Unrelated Book", "gb", "english", "Some Other Series", "1"),
 	)
 	res, subset, lines := selectInto(t, dataDir, rows)
 
-	// Every refused row but the unnamed one and the duplicate of a selected ASIN.
-	if len(lines) != res.RowsRead-res.RowsSelected-2 {
-		t.Fatalf("%d refusal lines for %d refused rows (2 omitted)", len(lines), res.RowsRead-res.RowsSelected)
+	// Every refused row but the unnamed one and the two duplicates.
+	if len(lines) != res.RowsRead-res.RowsSelected-3 {
+		t.Fatalf("%d refusal lines for %d refused rows (3 omitted)", len(lines), res.RowsRead-res.RowsSelected)
 	}
 	body, _ := os.ReadFile(subset)
 	for _, l := range lines {
@@ -155,7 +156,6 @@ func TestRefusalsWorklist(t *testing.T) {
 		"B0LANG0003 " + RefusalUnmappedLanguage,
 		"B0REGION04 " + RefusalUnmappedRegion,
 		"not-an-asin " + RefusalMalformedASIN,
-		"B0OTHER001 " + RefusalDuplicateASIN,
 	}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("refusals = %q\nwant %q", got, want)
@@ -230,6 +230,9 @@ func TestLibexSelectAttachRule(t *testing.T) {
 		{"the title's own volume agrees", attachExportRow("B0ATTACH06", "The Lost Coast, Book 1", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), true},
 		{"the title states another volume", attachExportRow("B0DENY0005", "The Lost Coast, Book 2", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), false},
 		{"one part of a split release", attachExportRow("B0DENY0008", "The Lost Coast (1 of 2) [Dramatized Adaptation]", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), false},
+		{"a GraphicAudio part at the claimed number", `{"asin":"B0DENY0015","title":"The Lost Coast (1 of 2)","publisher":"GraphicAudio",` +
+			`"region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],` +
+			`"series":[{"name":"` + seriesName + `","position":"1"}]}`, false},
 		{"a part marker", attachExportRow("B0DENY0009", "The Lost Coast, Part 1", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), false},
 		{"a young-readers adaptation", attachExportRow("B0DENY0010", "The Lost Coast (Young Readers Edition)", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), false},
 		{"the retailer's series count", attachExportRow("B0ATTACH07", "The Lost Coast (Book 1 of 3)", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), true},
@@ -641,11 +644,17 @@ func TestImportSkipsCarryRefusalCodes(t *testing.T) {
 		attachExportRow("B0REGION04", "Volume Four", "zz", "english", "Ada Mapmaker", "Cal Voice", "4"),
 		attachExportRow("B0LANG0003", "Volume Three", "us", "klingon", "Ada Mapmaker", "Cal Voice", "3"),
 		attachExportRow("", "Volume Five", "us", "english", "Ada Mapmaker", "Cal Voice", "5"),
+		`{"asin":"B0NONARR06","title":"Volume Six","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],`+
+			`"narrators":[],"series":[{"name":"`+seriesName+`","position":"6"}]}`,
+		`{"asin":"B0NOAUTH07","title":"Volume Seven","region":"us","language":"english","authors":[],`+
+			`"narrators":[{"name":"Cal Voice"}],"series":[{"name":"`+seriesName+`","position":"7"}]}`,
 	)
 	want := []RowSkip{
 		{"B0REGION04", RefusalUnmappedRegion},
 		{"B0DENY0001", RefusalPositionClaimed},
 		{"B0LANG0003", RefusalUnmappedLanguage},
+		{"B0NONARR06", RefusalMissingNarrator},
+		{"B0NOAUTH07", RefusalMissingAuthor},
 	}
 	if !reflect.DeepEqual(sum.Skips, want) {
 		t.Errorf("Skips = %+v\nwant %+v", sum.Skips, want)
@@ -802,5 +811,96 @@ func TestAttachThatWritesNothingIsASkip(t *testing.T) {
 	}
 	if want := []RowSkip{{"B0ATTACH13", RefusalPositionClaimed}}; !reflect.DeepEqual(p.summary.Skips, want) {
 		t.Errorf("Skips = %+v, want %+v", p.summary.Skips, want)
+	}
+}
+
+// The duplicate-identity guard's refusal is an import-side skip the bot can
+// memoize: identity-duplicate.
+func TestImportSkipsNameADuplicateIdentity(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	// The same book under a decorated title, claiming no series at all: the
+	// create guard refuses it as a duplicate of the-lost-coast.
+	row := `{"asin":"B0DUPID001","title":"The Lost Coast: A Novel","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}]}`
+	sum := runLibexWith(t, dataDir, Options{}, row)
+	if want := []RowSkip{{"B0DUPID001", RefusalIdentityDuplicate}}; sum.SkippedDuplicateIdentity != 1 || !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("SkippedDuplicateIdentity = %d, Skips = %+v; want %+v", sum.SkippedDuplicateIdentity, sum.Skips, want)
+	}
+}
+
+// Craig Halloran's Dragon Wars titles count the SERIES in a part-count form -
+// "Dragon Wars: Blood Brothers (1 of 10)" is volume 1 of ten - so a count whose
+// number is the claimed position states no split part: the row attaches to the
+// catalogued "Blood Brothers" at Dragon Wars 1. A count naming another number
+// is still a part.
+func TestAttachReadsASeriesCountAsNoPart(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/cr/craig-halloran.json": `{"id":"craig-halloran","license":"CC0-1.0","name":"Craig Halloran","sources":[{"type":"user"}]}`,
+		"people/be/bea-reader.json":     `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
+		"works/bl/blood-brothers/work.json": `{"authors":["craig-halloran"],"id":"blood-brothers","language":"en","license":"CC0-1.0",` +
+			`"sources":[{"type":"user"}],"title":"Blood Brothers"}`,
+		"works/bl/blood-brothers/recordings/bea-reader-2024.json": `{"asin":[{"asin":"B0PRESENT9","region":"us"}],"id":"bea-reader-2024",` +
+			`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"blood-brothers"}`,
+		"series/dr/dragon-wars.json": `{"id":"dragon-wars","license":"CC0-1.0","name":"Dragon Wars",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"blood-brothers"}]}`,
+	})
+	row := func(asin, title string) string {
+		return `{"asin":"` + asin + `","title":"` + title + `","region":"uk","language":"english",` +
+			`"authors":[{"name":"Craig Halloran"}],"narrators":[{"name":"Cal Voice"}],"series":[{"name":"Dragon Wars","position":"1"}]}`
+	}
+	res, _, lines := selectInto(t, dataDir, []string{
+		row("B0DRAGON01", "Dragon Wars: Blood Brothers (1 of 10)"),
+		row("B0DRAGON02", "Blood Brothers (2 of 2)"),
+	})
+	if len(res.Attachments) != 1 || res.Attachments[0].ASIN != "B0DRAGON01" || res.Attachments[0].Work != "blood-brothers" {
+		t.Errorf("attachments = %+v, want the series-count row on blood-brothers", res.Attachments)
+	}
+	if len(lines) != 1 || lines[0].ASIN != "B0DRAGON02" || lines[0].Reason != RefusalPositionClaimed {
+		t.Errorf("refusals = %+v, want the real part refused", lines)
+	}
+}
+
+// Both languages must be known and equal: a catalogued work with no language is
+// no evidence a German row is its edition.
+func TestAttachNeedsBothLanguagesKnown(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/ch/christopher-paolini.json": `{"id":"christopher-paolini","license":"CC0-1.0","name":"Christopher Paolini","sources":[{"type":"user"}]}`,
+		"works/er/eragon/work.json": `{"authors":["christopher-paolini"],"id":"eragon","language":"","license":"CC0-1.0",` +
+			`"sources":[{"type":"user"}],"title":"Eragon"}`,
+		"series/th/the-inheritance-cycle.json": `{"id":"the-inheritance-cycle","license":"CC0-1.0","name":"The Inheritance Cycle",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"eragon"}]}`,
+	})
+	res, _, lines := selectInto(t, dataDir, []string{
+		`{"asin":"B0ERAGON01","title":"Eragon","region":"de","language":"german","authors":[{"name":"Christopher Paolini"}],` +
+			`"narrators":[{"name":"Andreas Fröhlich"}],"series":[{"name":"The Inheritance Cycle","position":"1"}]}`,
+	})
+	if len(res.Attachments) != 0 || len(lines) != 1 || lines[0].Reason != RefusalPositionClaimed {
+		t.Errorf("attachments %+v, refusals %+v; want the row refused as position-claimed", res.Attachments, lines)
+	}
+}
+
+// --refusals holds at most one line per ASIN, the first real rule's, and never
+// a duplicate-asin line for an ASIN already named or selected.
+func TestRefusalsHaveOneLinePerASIN(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	_, _, lines := selectInto(t, dataDir, []string{
+		selectRow("B0PRESENT1", "Volume One", "us", "english", seriesName, "1"), // in the catalogue
+		selectRow("B0PRESENT1", "Volume One", "gb", "english", seriesName, "1"), // ... twice
+		selectRow("B0LANG0003", "Volume Three", "us", "klingon", seriesName, "3"),
+		selectRow("B0LANG0003", "Volume Three", "gb", "english", seriesName, "3"), // a duplicate of a refused row
+		selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2"),
+		selectRow("B0SELECT02", "Volume Two", "gb", "english", seriesName, "2"), // a duplicate of a selected row
+		selectRow("not-an-asin", "Volume Eight", "us", "english", seriesName, "8"),
+		selectRow("not-an-asin", "Volume Eight", "gb", "english", seriesName, "8"), // one malformed value twice
+	})
+	want := []RowSkip{
+		{"B0PRESENT1", RefusalASINInCatalogue},
+		{"B0LANG0003", RefusalUnmappedLanguage},
+		{"not-an-asin", RefusalMalformedASIN},
+	}
+	if !reflect.DeepEqual(lines, want) {
+		t.Errorf("refusals = %+v\nwant %+v", lines, want)
 	}
 }

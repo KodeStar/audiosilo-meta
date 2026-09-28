@@ -53,11 +53,12 @@ import (
 // the catalogue already fills, and which this guard's identity (or the create
 // path's slug chain) resolves to exactly the work at that position, is attached
 // to that work as a recording. The position is the evidence a title alone cannot
-// give - it is the same slot of the same series - and the shared product vetoes
-// (titlerule.ProductOf) plus a stated volume contradicting the position still
-// refuse. Every other refused row stays refused here, for the reason above: a
-// title match alone asserts "this IS that book" on exactly the evidence the audit
-// found insufficient to merge on. The worklist keeps the rest measurable.
+// give - it is the same slot of the same series - and attach's own product
+// vetoes (titlerule.ProductOf, read series-aware) plus a stated volume
+// contradicting the position still refuse. Every other refused row stays
+// refused here, for the reason above: a title match alone asserts "this IS that
+// book" on exactly the evidence the audit found insufficient to merge on. The
+// worklist keeps the rest measurable.
 //
 // COST. The probe is a map lookup per row against ONE index, and the run does not
 // even build it: it comes out of the catalogue load the planner already performs
@@ -236,14 +237,13 @@ func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, autho
 		// The same two title-side rules check.WorkIdentity.matches applies to the disk
 		// half, spelled here because this half compares against the run's own state
 		// rather than against a catalogued record: no stated-volume disagreement, and
-		// no disagreement about which PRODUCT of the book it is (titlerule.ProductOf:
-		// a collection, a split-release part, a derived edition).
+		// a collection is not the volume it collects.
 		if row == nil {
 			st := titlerule.StatementOf(workTitle, ident.series, titlerule.WriterPolicy)
 			row = &st
 		}
 		if !row.Agrees(was.statement) ||
-			titlerule.ProductOf(ident.series, workTitle) != titlerule.ProductOf(was.series, was.title) {
+			!titlerule.SameCollectionStatus(workTitle, ident.series, was.title, was.series) {
 			continue
 		}
 		found = append(found, duplicateIdentityMatch{work: slug, title: was.title, series: was.series})

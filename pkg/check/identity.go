@@ -395,20 +395,16 @@ func (ix *WorkIdentity) matches(w *model.Work, wColl *collectionMemo, title, ser
 		inColl.get(title, series) == wColl.get(w.Title, ix.seriesOf[w.ID])
 }
 
-// collectionMemo is one title's PRODUCT statements (titlerule.ProductOf: a
-// split-release part, a derived edition, a collection), asked on first use - the
-// one shared set every duplicate decision compares, so "a boxed set is not the
-// volume it collects" and "part 1 of 2 is not the whole book" are one rule.
-// Comparing two of them is spelled so each side is asked once however many pairs it
-// is part of.
+// collectionMemo is one title's titlerule.IsCollectionIn answer, asked on first use.
+// Comparing two of them is titlerule.SameCollectionStatus, spelled so each side is
+// asked once however many pairs it is part of.
 type collectionMemo struct {
-	known bool
-	value titlerule.Product
+	known, value bool
 }
 
-func (m *collectionMemo) get(title, series string) titlerule.Product {
+func (m *collectionMemo) get(title, series string) bool {
 	if !m.known {
-		m.value, m.known = titlerule.ProductOf(series, title), true
+		m.value, m.known = titlerule.IsCollectionIn(title, series), true
 	}
 	return m.value
 }

@@ -193,6 +193,10 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
 	}
+	if *attachEditions && mode != importer.ModeCreate {
+		fmt.Fprintln(os.Stderr, "metaimport: --attach-editions attaches rows the CREATE path would plan; it cannot be combined with --enrich or --recordings-only")
+		return 2
+	}
 
 	for _, f := range []struct {
 		name string

@@ -41,6 +41,12 @@ const (
 	RefusalCreditNotAPerson        = "credit-not-a-person"
 	RefusalPositionClaimed         = "position-claimed"
 	RefusalOverSeriesCap           = "over-series-cap"
+	// The IMPORT-side codes: rows `metaimport libex` itself skips, which only
+	// its --skipped worklist carries (libex-select never refuses for these).
+	RefusalIdentityDuplicate = "identity-duplicate"
+	RefusalMissingAuthor     = "missing-author"
+	RefusalMissingTitle      = "missing-title"
+	RefusalMissingNarrator   = "missing-narrator"
 )
 
 // The rules, in the order selectLibexRow applies them. A row is counted under
@@ -65,9 +71,19 @@ var (
 	reasonUnnamedCredit           = refusal{RefusalCreditNotAPerson, "a credited name does not identify a person"}
 	reasonPositionTaken           = refusal{RefusalPositionClaimed, "series position already claimed"}
 	reasonSeriesCap               = refusal{RefusalOverSeriesCap, "over the per-series cap"}
+
+	// Import-only rules (Summary.Skips): the create path's duplicate-identity
+	// guard (dupidentity.go) and the admission tests a row with no author, no
+	// title or no narrator fails (addBook, admitRecordingFacts).
+	reasonIdentityDuplicate = refusal{RefusalIdentityDuplicate, "the catalogue holds the book under another title"}
+	reasonMissingAuthor     = refusal{RefusalMissingAuthor, "no author"}
+	reasonMissingTitle      = refusal{RefusalMissingTitle, "no title"}
+	reasonMissingNarrator   = refusal{RefusalMissingNarrator, "no narrator"}
 )
 
-// refusals is every rule in report order (the order they are applied).
+// refusals is every SELECTOR rule in report order (the order libex-select
+// applies them): the libex-select report prints one line per entry, so an
+// import-only rule is never added here.
 var refusals = []refusal{
 	reasonNoASIN, reasonAlreadyASIN, reasonDuplicateASIN,
 	reasonNoSeries, reasonSeriesAuthors, reasonOtherSeriesUncatalogued,
@@ -76,11 +92,17 @@ var refusals = []refusal{
 	reasonPositionTaken, reasonSeriesCap,
 }
 
-// RefusalCodes lists every code a worklist line can carry, in report order.
+// importRefusals are the rules only the import applies (--skipped).
+var importRefusals = []refusal{
+	reasonIdentityDuplicate, reasonMissingAuthor, reasonMissingTitle, reasonMissingNarrator,
+}
+
+// RefusalCodes lists every code a worklist line can carry: the selector's rules
+// in report order, then the import's own.
 func RefusalCodes() []string {
-	out := make([]string, len(refusals))
-	for i, r := range refusals {
-		out[i] = r.code
+	out := make([]string, 0, len(refusals)+len(importRefusals))
+	for _, r := range append(append([]refusal{}, refusals...), importRefusals...) {
+		out = append(out, r.code)
 	}
 	return out
 }
