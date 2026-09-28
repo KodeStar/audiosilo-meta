@@ -219,11 +219,9 @@ func (x exclusions) add(asin string, r refusal) {
 	x.log.add(asin, r)
 }
 
-// hold is add for a duplicate-asin refusal: its line waits for the end, because
-// it names an ASIN the subset may still carry or the first copy's own rule
-// names already (refusalLog.flush). One is held per repeated row of a KEPT
-// ASIN at most - a repeat of a refused ASIN has its line already, so hold drops
-// it at once.
+// hold is add for a duplicate-asin refusal whose first copy was KEPT at stream
+// time: its line waits for the end, because it names an ASIN the subset may
+// still carry (refusalLog.flush).
 func (x exclusions) hold(asin string) {
 	x.res.Excluded[reasonDuplicateASIN.report]++
 	x.log.hold(asin)
@@ -261,6 +259,9 @@ type selectedRow struct {
 // run is deterministic in input order.
 type selectState struct {
 	seenASIN map[string]bool
+	// keptASIN is the ASINs a row was kept for at stream time: a later copy's
+	// duplicate-asin line is held until the subset is known (refusalLog.flush).
+	keptASIN map[string]bool
 	// claimed maps "<series slug>\x00<position>" to the work key holding it.
 	// The value matters because the per-region sibling rows of ONE title
 	// legitimately claim the same slot - they are one work.
@@ -268,7 +269,7 @@ type selectState struct {
 }
 
 func newSelectState() *selectState {
-	return &selectState{seenASIN: map[string]bool{}, claimed: map[string]string{}}
+	return &selectState{seenASIN: map[string]bool{}, keptASIN: map[string]bool{}, claimed: map[string]string{}}
 }
 
 // claimPosition reserves (series, position) for workKey, reporting false when
@@ -302,12 +303,13 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 		res.RowsRead++
 		row, asin, reason := selectLibexRow(e, idx, st, opts.AttachEditions)
 		switch {
-		case reason == reasonDuplicateASIN:
+		case reason == reasonDuplicateASIN && st.keptASIN[asin]:
 			x.hold(asin)
 		case reason != refusal{}:
 			x.add(asin, reason)
 		default:
 			row.raw = raw
+			st.keptASIN[asin] = true
 			kept = append(kept, row)
 		}
 	})
@@ -745,8 +747,10 @@ type seriesIndex struct {
 	names  map[string]string // same map, read under its reporting name
 	asins  map[string]bool
 	// positions maps a series slug to the positions its works occupied when the
-	// catalogue was loaded (canonical position -> work id): seriesState.loaded,
-	// the very map the import's attach rule reads.
+	// catalogue was loaded (canonical position -> work id). With the attach rule
+	// it is seriesState.loaded, the very map the import's attach rule reads (every
+	// listed position); a plain selection keeps its long-standing one position per
+	// work.
 	positions map[string]map[string]string
 	// redirects is the catalogue's tombstone table (tombstone.go).
 	redirects model.Redirects
@@ -780,7 +784,7 @@ func loadSeriesIndex(dataDir string, attach bool) (seriesIndex, []string) {
 		return idx, []string{fmt.Sprintf("catalogue at %s: %v; selecting against nothing", dataDir, err)}
 	}
 	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir})
-	p.loadedPositions = true
+	p.loadedPositions = attach
 	p.loadExisting()
 	if !attach {
 		p.identity = nil // only the attach rule asks it (attach.go)
@@ -794,7 +798,23 @@ func loadSeriesIndex(dataDir string, attach bool) (seriesIndex, []string) {
 	}
 	for slug, ss := range p.series {
 		idx.bySlug[slug] = ss.name
-		idx.positions[slug] = ss.loaded
+		if attach {
+			// Every position the series lists, as the attach rule reads it
+			// (seriesState.loaded).
+			idx.positions[slug] = ss.loaded
+			continue
+		}
+		// A plain selection's long-standing reading: one position per work (the
+		// series' members map), compared in the canonical spelling a row's claim
+		// arrives in, so a stored "1.0" and a claimed "1" are one slot.
+		taken := make(map[string]string, len(ss.members))
+		for work, pos := range ss.members {
+			if norm, ok := NormalizeSequence(pos); ok {
+				pos = norm
+			}
+			taken[pos] = work
+		}
+		idx.positions[slug] = taken
 	}
 	return idx, warnings
 }

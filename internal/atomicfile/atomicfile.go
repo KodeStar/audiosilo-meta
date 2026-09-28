@@ -103,10 +103,13 @@ var rename = os.Rename
 // CommitInOrder finishes every file and, only when all of them were written,
 // renames them into place IN THE ORDER GIVEN - a caller puts the file its readers
 // act on last (the COMMIT MARKER), so its presence means the others are there
-// too. Before anything is renamed the marker's previous destination is removed,
-// so a commit that fails part-way leaves NO marker on disk - never a stale one
-// beside new or missing companions. nil files are skipped. A failure discards
-// every temp file and removes the files this commit already renamed into place.
+// too. In a commit of SEVERAL files the marker's previous destination is
+// removed before anything is renamed, so a commit that fails part-way leaves NO
+// marker on disk - never a stale one beside new or missing companions. A
+// commit of ONE file is a plain atomic replace: the rename swaps it in, and a
+// failure leaves the previous file exactly as it was, with no moment at which
+// the path is missing. nil files are skipped. A failure discards every temp file
+// and removes the files this commit already renamed into place.
 func CommitInOrder(files ...*File) error {
 	fail := func(renamed []*File, err error) error {
 		for _, f := range files {
@@ -126,12 +129,14 @@ func CommitInOrder(files ...*File) error {
 		}
 	}
 	var marker *File
+	count := 0
 	for _, f := range files {
 		if f != nil {
 			marker = f
+			count++
 		}
 	}
-	if marker != nil {
+	if count > 1 {
 		if err := os.Remove(marker.path); err != nil && !os.IsNotExist(err) {
 			return fail(nil, fmt.Errorf("write %s: %w", marker.path, err))
 		}

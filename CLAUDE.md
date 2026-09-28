@@ -1762,15 +1762,18 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   ASIN on one - iff the importer's own identity machinery (resolveWork, or the
   duplicate guard's check.WorkIdentity) resolves it to exactly that LOADED
   occupant, both languages are known and equal, and none of attach's own title
-  vetoes applies (titlerule.ProductOf read series-aware over both sides' title
-  and subtitle, a stated volume against the position - the duplicate decisions
-  and internal/remediate keep their own measured rules); every other such row is
+  vetoes applies (product statements over both sides' title and subtitle - any
+  part marker unless both name the same part, a derived edition, a collection -
+  and a stated volume against the position; the duplicate decisions and
+  internal/remediate keep their own measured rules); every other such row is
   refused by both, never a second work. The sync bot's contract is three NDJSON worklists with the stable codes of
   `internal/importer/refusalcodes.go` (the import adds identity-duplicate and
-  missing-author/title/narrator): `--refusals` (one line per ASIN) and
-  `--attachments` (libex-select) and `--skipped` (libex), all written through
-  `internal/atomicfile`, the subset committed last after its old copy is
-  removed. Summary and head lines are byte-identical when
+  missing-author/title/narrator): `--refusals` and `--attachments`
+  (libex-select) and `--skipped` (libex). `--refusals` and `--skipped` stream one
+  line per refused COPY, so an ASIN may repeat and one carrying a duplicate-asin
+  line is not a clean refusal; neither names an ASIN the subset carries or the
+  run imported. All are written through `internal/atomicfile`, the subset
+  committed last after its old copy is removed. Summary and head lines are byte-identical when
   nothing attaches. `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
   operator flow - the received dump is Postgres 16 custom format); the

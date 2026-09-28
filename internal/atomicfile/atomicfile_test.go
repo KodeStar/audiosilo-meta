@@ -97,3 +97,23 @@ func TestCommitRemovesTheOldMarkerFirst(t *testing.T) {
 		t.Errorf("a failed commit left the previous marker behind: %v", err)
 	}
 }
+
+// A single-file commit is a plain atomic replace: a failed rename leaves the
+// previous file in place.
+func TestSingleFileCommitKeepsThePreviousFile(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "skipped")
+	if err := os.WriteFile(path, []byte("previous run\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	f, _ := Stage(path)
+	f.Write([]byte("new run\n"))
+	rename = func(string, string) error { return errors.New("injected") }
+	t.Cleanup(func() { rename = os.Rename })
+	if err := CommitInOrder(f); err == nil {
+		t.Fatal("the injected rename must fail the commit")
+	}
+	if got, _ := os.ReadFile(path); string(got) != "previous run\n" {
+		t.Errorf("the previous file = %q, want it kept", got)
+	}
+}

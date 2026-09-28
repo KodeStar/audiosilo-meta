@@ -105,27 +105,28 @@ func refuseOverlappingOutputs(exportPath, outPath, refusalsPath, attachmentsPath
 	return nil
 }
 
-// refusalLog is the --refusals worklist: one RowSkip line per refused row. A nil
-// log is "not asked for", and every method is a no-op on it.
+// refusalLog is the --refusals worklist: one RowSkip line per refused COPY of a
+// row, streamed as the rows are refused, so every count the report prints has
+// its lines and memory stays bounded however large the export. A nil log is
+// "not asked for", and every method is a no-op on it.
 //
-// Three rules keep every line one a reader can act on. There is AT MOST ONE
-// line per ASIN, and the first real rule wins: a repeated row of an ASIN the
-// worklist already names (the catalogue's ASIN twice, one malformed value twice,
-// a copy the batch re-check dropped after its duplicate was refused) writes
-// nothing more. A line never names an ASIN the subset carries: the only refusal
-// that can share an ASIN with a selected row is duplicate-asin whose FIRST copy
-// was kept at stream time, so only those are held (bounded by the kept rows) and
-// written at the end (flush), minus every ASIN the subset carries or a line
-// already names. And a line never carries an empty ASIN: a row stating none
-// cannot be named, so it is counted (unnamed, printed by the report) instead.
+// THE CONTRACT (with audiosilo-meta-sync): an ASIN may appear on more than one
+// line - one per refused copy, each under the rule that copy failed - and a
+// reader treats an ASIN carrying any duplicate-asin line as NOT a clean
+// refusal (another copy of it may have been kept, or refused for another
+// reason). Two rules still hold: no line names an ASIN the subset carries - the
+// only refusal that can is duplicate-asin whose FIRST copy was kept at stream
+// time, so only those are held (bounded by the kept rows) and written at the end
+// (flush), minus every ASIN the subset carries - and no line carries an empty
+// ASIN: a row stating none cannot be named, so it is counted (unnamed, printed
+// by the report) instead.
 type refusalLog struct {
 	f       *atomicfile.File
-	written map[string]bool
 	held    []string
 	unnamed int
 }
 
-// add writes one refused row under its rule, unless its ASIN has a line.
+// add writes one refused copy under its rule.
 func (l *refusalLog) add(asin string, r refusal) {
 	if l == nil {
 		return
@@ -134,19 +135,12 @@ func (l *refusalLog) add(asin string, r refusal) {
 		l.unnamed++
 		return
 	}
-	if l.written[asin] {
-		return
-	}
-	if l.written == nil {
-		l.written = map[string]bool{}
-	}
-	l.written[asin] = true
 	l.f.Encode(RowSkip{ASIN: asin, Reason: r.code})
 }
 
-// hold keeps a duplicate-asin line for flush, unless the ASIN already has one.
+// hold keeps a duplicate-asin line whose first copy was kept, for flush.
 func (l *refusalLog) hold(asin string) {
-	if l != nil && !l.written[asin] {
+	if l != nil {
 		l.held = append(l.held, asin)
 	}
 }

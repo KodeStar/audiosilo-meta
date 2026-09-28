@@ -121,14 +121,15 @@ func TestRefusalsWorklist(t *testing.T) {
 		// A duplicate of a SELECTED ASIN: its line would name a row the subset
 		// carries, so the worklist omits it.
 		selectRow("B0SELECT02", "Volume Two", "gb", "english", seriesName, "2"),
-		// A duplicate of a REFUSED one: its ASIN already has a line (one per ASIN).
+		// A duplicate of a REFUSED one names nothing selected, so it is listed:
+		// one line per refused copy.
 		selectRow("B0OTHER001", "Unrelated Book", "gb", "english", "Some Other Series", "1"),
 	)
 	res, subset, lines := selectInto(t, dataDir, rows)
 
-	// Every refused row but the unnamed one and the two duplicates.
-	if len(lines) != res.RowsRead-res.RowsSelected-3 {
-		t.Fatalf("%d refusal lines for %d refused rows (3 omitted)", len(lines), res.RowsRead-res.RowsSelected)
+	// Every refused row but the unnamed one and the duplicate of a selected ASIN.
+	if len(lines) != res.RowsRead-res.RowsSelected-2 {
+		t.Fatalf("%d refusal lines for %d refused rows (2 omitted)", len(lines), res.RowsRead-res.RowsSelected)
 	}
 	body, _ := os.ReadFile(subset)
 	for _, l := range lines {
@@ -156,6 +157,7 @@ func TestRefusalsWorklist(t *testing.T) {
 		"B0LANG0003 " + RefusalUnmappedLanguage,
 		"B0REGION04 " + RefusalUnmappedRegion,
 		"not-an-asin " + RefusalMalformedASIN,
+		"B0OTHER001 " + RefusalDuplicateASIN,
 	}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("refusals = %q\nwant %q", got, want)
@@ -828,36 +830,91 @@ func TestImportSkipsNameADuplicateIdentity(t *testing.T) {
 	}
 }
 
-// Craig Halloran's Dragon Wars titles count the SERIES in a part-count form -
-// "Dragon Wars: Blood Brothers (1 of 10)" is volume 1 of ten - so a count whose
-// number is the claimed position states no split part: the row attaches to the
-// catalogued "Blood Brothers" at Dragon Wars 1. A count naming another number
-// is still a part.
-func TestAttachReadsASeriesCountAsNoPart(t *testing.T) {
+// ANY part marker is a product statement, whatever the series: Craig
+// Halloran's "Dragon Wars: Blood Brothers (1 of 10)" counts the series, but a
+// count cannot say whether it counts volumes or parts, so it is refused beside
+// the plain "Blood Brothers" (a missing recording beats a wrong one) - as is a
+// real split part. Only the SAME part on both sides attaches.
+func TestAttachRefusesAnyPartMarkerUnlessBothSidesAgree(t *testing.T) {
 	dataDir := t.TempDir()
 	seedTree(t, dataDir, map[string]string{
 		"people/cr/craig-halloran.json": `{"id":"craig-halloran","license":"CC0-1.0","name":"Craig Halloran","sources":[{"type":"user"}]}`,
 		"people/be/bea-reader.json":     `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
 		"works/bl/blood-brothers/work.json": `{"authors":["craig-halloran"],"id":"blood-brothers","language":"en","license":"CC0-1.0",` +
 			`"sources":[{"type":"user"}],"title":"Blood Brothers"}`,
-		"works/bl/blood-brothers/recordings/bea-reader-2024.json": `{"asin":[{"asin":"B0PRESENT9","region":"us"}],"id":"bea-reader-2024",` +
-			`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"blood-brothers"}`,
+		"works/ma/marked-dragon-1-of-2/work.json": `{"authors":["craig-halloran"],"id":"marked-dragon-1-of-2","language":"en","license":"CC0-1.0",` +
+			`"sources":[{"type":"user"}],"title":"Marked Dragon (1 of 2)"}`,
 		"series/dr/dragon-wars.json": `{"id":"dragon-wars","license":"CC0-1.0","name":"Dragon Wars",` +
-			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"blood-brothers"}]}`,
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"blood-brothers"},{"position":"2","work":"marked-dragon-1-of-2"}]}`,
 	})
-	row := func(asin, title string) string {
+	row := func(asin, title, pos string) string {
 		return `{"asin":"` + asin + `","title":"` + title + `","region":"uk","language":"english",` +
-			`"authors":[{"name":"Craig Halloran"}],"narrators":[{"name":"Cal Voice"}],"series":[{"name":"Dragon Wars","position":"1"}]}`
+			`"authors":[{"name":"Craig Halloran"}],"narrators":[{"name":"Cal Voice"}],"series":[{"name":"Dragon Wars","position":"` + pos + `"}]}`
 	}
 	res, _, lines := selectInto(t, dataDir, []string{
-		row("B0DRAGON01", "Dragon Wars: Blood Brothers (1 of 10)"),
-		row("B0DRAGON02", "Blood Brothers (2 of 2)"),
+		row("B0DRAGON01", "Dragon Wars: Blood Brothers (1 of 10)", "1"),
+		row("B0DRAGON02", "Blood Brothers (Part 1 of 2)", "1"),
+		row("B0DRAGON03", "Blood Brothers [Teil 1 von 2]", "1"),
+		row("B0DRAGON04", "Marked Dragon (1 of 2)", "2"), // the same part as the incumbent
+		row("B0DRAGON05", "Marked Dragon", "2"),          // the whole book beside a part
 	})
-	if len(res.Attachments) != 1 || res.Attachments[0].ASIN != "B0DRAGON01" || res.Attachments[0].Work != "blood-brothers" {
-		t.Errorf("attachments = %+v, want the series-count row on blood-brothers", res.Attachments)
+	if len(res.Attachments) != 1 || res.Attachments[0].ASIN != "B0DRAGON04" {
+		t.Errorf("attachments = %+v, want only the row naming the incumbent's own part", res.Attachments)
 	}
-	if len(lines) != 1 || lines[0].ASIN != "B0DRAGON02" || lines[0].Reason != RefusalPositionClaimed {
-		t.Errorf("refusals = %+v, want the real part refused", lines)
+	for _, l := range lines {
+		if l.Reason != RefusalPositionClaimed {
+			t.Errorf("line %+v, want position-claimed", l)
+		}
+	}
+	if len(lines) != 4 {
+		t.Errorf("refusals = %+v, want the four other rows", lines)
+	}
+}
+
+// A GraphicAudio part product in the catalogue is not the whole book: a plain
+// row at its position is refused.
+func TestAttachRefusesAPlainRowBesideAPartProduct(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/br/brandon-sanderson.json": `{"id":"brandon-sanderson","license":"CC0-1.0","name":"Brandon Sanderson","sources":[{"type":"user"}]}`,
+		"works/th/the-way-of-kings-1-of-5/work.json": `{"authors":["brandon-sanderson"],"id":"the-way-of-kings-1-of-5","language":"en","license":"CC0-1.0",` +
+			`"sources":[{"type":"user"}],"title":"The Way of Kings (1 of 5)"}`,
+		"series/th/the-stormlight-archive.json": `{"id":"the-stormlight-archive","license":"CC0-1.0","name":"The Stormlight Archive",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"the-way-of-kings-1-of-5"}]}`,
+	})
+	res, _, lines := selectInto(t, dataDir, []string{
+		`{"asin":"B0STORM001","title":"The Way of Kings","region":"us","language":"english","authors":[{"name":"Brandon Sanderson"}],` +
+			`"narrators":[{"name":"Michael Kramer"}],"series":[{"name":"The Stormlight Archive","position":"1"}]}`,
+	})
+	if len(res.Attachments) != 0 || len(lines) != 1 || lines[0].Reason != RefusalPositionClaimed {
+		t.Errorf("attachments %+v, refusals %+v; want the plain row refused", res.Attachments, lines)
+	}
+}
+
+// A plain selection reads a work listed at TWO positions exactly as it always
+// has - one position per work (the series' members map, the last listing wins)
+// - so its output is unchanged; only --attach-editions reads every listing.
+func TestPlainSelectionReadsOnePositionPerWork(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/ad/ada-mapmaker.json": `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"user"}]}`,
+		"people/be/bea-reader.json":   `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
+		"works/vo/volume-one/work.json": `{"authors":["ada-mapmaker"],"id":"volume-one","language":"en","license":"CC0-1.0",` +
+			`"sources":[{"type":"user"}],"title":"Volume One"}`,
+		"series/ca/cartographer-chronicles.json": `{"id":"cartographer-chronicles","license":"CC0-1.0","name":"Cartographer Chronicles",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"volume-one"},{"position":"2","work":"volume-one"}]}`,
+	})
+	rows := []string{
+		selectRow("B0DUALPOS1", "Volume Uno", "us", "english", seriesName, "1"),
+		selectRow("B0DUALPOS2", "Volume Two", "us", "english", seriesName, "2"),
+	}
+	plain, lines := runSelect(t, dataDir, rows, 0)
+	if plain.RowsSelected != 1 || len(lines) != 1 || !strings.Contains(lines[0], "B0DUALPOS1") {
+		t.Errorf("plain: selected %d %v; want the row at the position the members map leaves free", plain.RowsSelected, lines)
+	}
+	attach, _, _ := selectInto(t, dataDir, rows)
+	if attach.RowsSelected != 0 {
+		t.Errorf("--attach-editions: selected %d; every listed position is taken", attach.RowsSelected)
 	}
 }
 
@@ -881,9 +938,10 @@ func TestAttachNeedsBothLanguagesKnown(t *testing.T) {
 	}
 }
 
-// --refusals holds at most one line per ASIN, the first real rule's, and never
-// a duplicate-asin line for an ASIN already named or selected.
-func TestRefusalsHaveOneLinePerASIN(t *testing.T) {
+// --refusals streams one line per refused COPY: an ASIN may appear more than
+// once (a reader treats one carrying a duplicate-asin line as not a clean
+// refusal), but never when the subset carries it.
+func TestRefusalsStreamEveryCopy(t *testing.T) {
 	dataDir := seedSelectCatalogue(t)
 	_, _, lines := selectInto(t, dataDir, []string{
 		selectRow("B0PRESENT1", "Volume One", "us", "english", seriesName, "1"), // in the catalogue
@@ -897,7 +955,10 @@ func TestRefusalsHaveOneLinePerASIN(t *testing.T) {
 	})
 	want := []RowSkip{
 		{"B0PRESENT1", RefusalASINInCatalogue},
+		{"B0PRESENT1", RefusalASINInCatalogue},
 		{"B0LANG0003", RefusalUnmappedLanguage},
+		{"B0LANG0003", RefusalDuplicateASIN},
+		{"not-an-asin", RefusalMalformedASIN},
 		{"not-an-asin", RefusalMalformedASIN},
 	}
 	if !reflect.DeepEqual(lines, want) {

@@ -1,9 +1,7 @@
 package importer
 
 import (
-	"regexp"
 	"strconv"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 )
@@ -29,10 +27,11 @@ import (
 // (resolveWork, matchWork for authors) or the duplicate-identity guard's
 // normalized title identity (dupidentity.go, check.WorkIdentity) must resolve
 // the row to exactly that occupant. What this file adds is only the evidence a
-// title cannot give and a position can: the vetoes below - titlerule.ProductOf's
-// product statements over both sides' title and subtitle, read SERIES-AWARE
-// (productAt), plus the one only a positioned claim can ask, a title stating a
-// volume that contradicts the claimed position. They are this rule's alone: the
+// title cannot give and a position can: the vetoes below - product statements
+// over both sides' title and subtitle (productOf: a split-release part, which
+// must be the SAME part on both sides, a derived edition, a collection), plus
+// the one only a positioned claim can ask, a title stating a volume that
+// contradicts the claimed position. They are this rule's alone: the
 // duplicate decisions keep their own measured collection rule.
 //
 // THE DECISION IS SPLIT IN TWO, by what it depends on. attachCandidate is
@@ -62,7 +61,7 @@ func (p *planner) attachCandidate(b sourceBook, seriesName, occupant string, ref
 	if !ok || lang == "" || ws.lang != lang || len(rowNarratorNamesIn(creditContext{}, b)) == 0 {
 		return nil
 	}
-	if vetoed(b, p.incumbentProduct(ws, seriesName, ref.seq), seriesName, ref) {
+	if vetoed(b, p.incumbentProduct(ws, seriesName), seriesName, ref) {
 		return nil
 	}
 	return ws
@@ -143,67 +142,61 @@ func (p *planner) attachFor(ctx creditContext, b sourceBook, workTitle string) (
 	return nil, occupant
 }
 
-// incumbentProduct is a work's product statements (productAt over its title and
-// subtitle) at a series position, computed once per (work, series, position)
-// for the run: every regional sibling row of a volume asks it again.
-func (p *planner) incumbentProduct(ws *workState, seriesName, seq string) titlerule.Product {
-	k := ws.slug + "\x00" + seriesName + "\x00" + seq
+// incumbentProduct is a work's product statements (productOf over its title and
+// subtitle) in a series, computed once per (work, series) for the run: every
+// regional sibling row of a volume asks it again.
+func (p *planner) incumbentProduct(ws *workState, seriesName string) product {
+	k := ws.slug + "\x00" + seriesName
 	if pr, ok := p.attachProducts[k]; ok {
 		return pr
 	}
 	if p.attachProducts == nil {
-		p.attachProducts = map[string]titlerule.Product{}
+		p.attachProducts = map[string]product{}
 	}
-	pr := productAt(seriesName, seq, "", ws.title, ws.subtitle)
+	pr := productOf(seriesName, ws.title, ws.subtitle)
 	p.attachProducts[k] = pr
 	return pr
 }
 
-// productAt is titlerule.ProductOf read SERIES-AWARE: a part count "(N of M)"
-// whose N is the position the record sits at can be the retailer counting the
-// SERIES ("Dragon Wars: Blood Brothers (1 of 10)" is volume 1 of Craig Halloran's
-// ten-volume series), not a split release, and then states no part by itself.
-// It is read that way only when nothing says split release - no dramatization
-// marker and no GraphicAudio imprint (internal/remediate measured both: the
-// catalogue's part products are GraphicAudio's, most of them marked
-// dramatized) - because "The Way of Kings (1 of 5)" from GraphicAudio at
-// Stormlight 1 is part 1 of five. Any other part marker - a count naming a
-// different number, or "Part N" - still states a part.
-func productAt(seriesName, seq, publisher string, titles ...string) titlerule.Product {
-	pr := titlerule.ProductOf(seriesName, titles...)
-	pr.Part = false
-	for _, t := range titles {
-		if t == "" {
-			continue
-		}
-		if n, _, ok := titlerule.PartOf(t); ok {
-			if !SameSlot(strconv.Itoa(n), seq) || dramatized.MatchString(t) || isGraphicAudio(publisher) {
-				pr.Part = true
-			}
-			continue
-		}
-		pr.Part = pr.Part || titlerule.IsSplitPart(t)
-	}
-	return pr
+// product is what one side's titles say about which product of the book it is:
+// titlerule.ProductOf's derived-edition and collection statements, and WHICH
+// split-release part it names (part: "N/M" for a part count, "part N" for a
+// part marker, "" for none) - two sides are one product only when they name the
+// same part or none.
+type product struct {
+	adapted, collection bool
+	part                string
 }
 
-// dramatized is the dramatization marker a split release's part titles carry,
-// in both bracket styles and both spellings (internal/remediate's measured form).
-var dramatized = regexp.MustCompile(`(?i)[\[(]\s*dramati[sz]ed(?:\s+adaptation)?\s*[\])]`)
-
-// isGraphicAudio reports whether an imprint is GraphicAudio's, however spaced
-// ("GraphicAudio", "Graphic Audio LLC").
-func isGraphicAudio(publisher string) bool {
-	return strings.Contains(strings.ReplaceAll(strings.ToLower(publisher), " ", ""), "graphicaudio")
+// productOf reads a side's product statements over all its titles. ANY part
+// marker in titlerule's vocabulary is a statement, whatever the series: "Dragon
+// Wars: Blood Brothers (1 of 10)" names a part count exactly as a split release
+// does, and a count cannot say which it means - so it is refused beside a plain
+// "Blood Brothers" (a missing recording beats a wrong one).
+func productOf(seriesName string, titles ...string) product {
+	pr := titlerule.ProductOf(seriesName, titles...)
+	out := product{adapted: pr.Adapted, collection: pr.Collection}
+	for _, t := range titles {
+		if t == "" || out.part != "" {
+			continue
+		}
+		if n, m, ok := titlerule.PartOf(t); ok {
+			out.part = strconv.Itoa(n) + "/" + strconv.Itoa(m)
+		} else if titlerule.IsSplitPart(t) {
+			h, _ := titlerule.VolumeHeadOf(t)
+			out.part = "part " + strconv.FormatFloat(h.Volume, 'f', -1, 64)
+		}
+	}
+	return out
 }
 
 // vetoed reports whether a title statement refuses the attachment, read over
 // EVERY title the row states (short, full, subtitle - a retailer puts
 // "Young Readers Edition" in whichever field it likes): a stated volume that
 // contradicts the claimed position (statedVolumePosition, seriespos.go's
-// reading), or product statements (productAt - a split-release part, a derived
+// reading), or product statements (productOf - a split-release part, a derived
 // edition, a collection) that differ from the incumbent's title and subtitle.
-func vetoed(b sourceBook, incumbent titlerule.Product, seriesName string, ref seriesRef) bool {
+func vetoed(b sourceBook, incumbent product, seriesName string, ref seriesRef) bool {
 	variants := []string{b.str("title_short"), b.str("title"), b.str("subtitle")}
 	for _, t := range variants {
 		if t == "" {
@@ -213,7 +206,7 @@ func vetoed(b sourceBook, incumbent titlerule.Product, seriesName string, ref se
 			return true
 		}
 	}
-	return productAt(seriesName, ref.seq, b.str("publisher"), variants...) != incumbent
+	return productOf(seriesName, variants...) != incumbent
 }
 
 // completionClaim is the claim a row completes a series with: the FIRST of its

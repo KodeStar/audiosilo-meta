@@ -366,12 +366,15 @@ type Summary struct {
 	// off Skips (their position-claimed entries), so the printed count and the
 	// --skipped worklist cannot disagree. Always 0 without the option.
 	SkippedOccupied int
-	// Skips names the rows the run refused for a reason that has a
-	// libex-select refusal code (refusalcodes.go), one entry per row with an
-	// ASIN: the parse layer's malformed-ASIN, unmapped-region and credit
-	// refusals, an unmapped language, and SkippedOccupied's position-claimed.
-	// It is what `metaimport libex --skipped` writes; a skip with no code (no
-	// narrator, no author, a duplicate identity) or no ASIN is not listed.
+	// Skips names the rows the run refused for a reason that has a refusal
+	// code (refusalcodes.go), one entry per refused COPY with an ASIN: the parse
+	// layer's malformed-ASIN, unmapped-region and credit refusals, an unmapped
+	// language, SkippedOccupied's position-claimed, and the import-only codes -
+	// identity-duplicate (the create path's duplicate-identity guard),
+	// missing-author, missing-title and missing-narrator. An entry whose ASIN
+	// the run recorded after all (a sibling copy imported) is dropped. It is
+	// what `metaimport libex --skipped` writes; an ASIN may appear more than
+	// once, and a row stating no ASIN is not listed.
 	Skips []RowSkip
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).

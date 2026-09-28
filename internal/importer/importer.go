@@ -199,7 +199,7 @@ type planner struct {
 	// series for it, built on first use. loadedPositions says the load builds
 	// seriesState.loaded, which only the attach rule and libex-select read.
 	attachEditions  bool
-	attachProducts  map[string]titlerule.Product
+	attachProducts  map[string]product
 	loadedPositions bool
 	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
 	// resolution judges every claim against, built on first use from catalog, the
