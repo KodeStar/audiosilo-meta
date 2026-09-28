@@ -190,7 +190,7 @@ func TestRefusalsWorklistIsNotWrittenOnFailure(t *testing.T) {
 	if _, err := os.Stat(refusals); !os.IsNotExist(err) {
 		t.Errorf("a failed run left a worklist behind: %v", err)
 	}
-	if left, _ := filepath.Glob(filepath.Join(dir, ".metaimport-refusals-*")); len(left) > 0 {
+	if left, _ := filepath.Glob(filepath.Join(dir, ".metaimport-*")); len(left) > 0 {
 		t.Errorf("a failed run left a temp file behind: %v", left)
 	}
 	if _, err := SelectLibex(in, filepath.Join(dir, "subset.ndjson"), SelectOptions{DataDir: dataDir, RefusalsPath: in}); err == nil {
@@ -227,7 +227,19 @@ func TestLibexSelectAttachRule(t *testing.T) {
 		{"a co-author the work does not credit", `{"asin":"B0DENY0006","title":"The Lost Coast","region":"us","language":"english",` +
 			`"authors":[{"name":"Ada Mapmaker"},{"name":"Zed Otherhand"}],"narrators":[{"name":"Cal Voice"}],` +
 			`"series":[{"name":"` + seriesName + `","position":"1"}]}`, false},
-		{"initials of the same author", attachExportRow("B0ATTACH05", "The Lost Coast", "ca", "english", "A. Mapmaker", "Bea Reader", "1"), true},
+		// The author test is the importer's own work identity (matchWork over
+		// resolvePerson): a spelling it does not fold onto the catalogued person
+		// is another author as far as any work match is concerned.
+		{"an author spelling the importer does not fold", attachExportRow("B0DENY0011", "The Lost Coast", "ca", "english", "A. Mapmaker", "Bea Reader", "1"), false},
+		{"a translator credit the work lacks", `{"asin":"B0ATTACH09","title":"The Lost Coast","region":"us","language":"english",` +
+			`"authors":[{"name":"Ada Mapmaker"},{"name":"Tess Translator - translator"}],"narrators":[{"name":"Cal Voice"}],` +
+			`"series":[{"name":"` + seriesName + `","position":"1"}]}`, true},
+		{"a young-readers subtitle", `{"asin":"B0DENY0012","title":"The Lost Coast","subtitle":"Young Readers Edition","region":"us","language":"english",` +
+			`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],` +
+			`"series":[{"name":"` + seriesName + `","position":"1"}]}`, false},
+		{"a subtitle naming another volume", `{"asin":"B0DENY0013","title":"The Lost Coast","subtitle":"Cartographer Chronicles, Book 2","region":"us","language":"english",` +
+			`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],` +
+			`"series":[{"name":"` + seriesName + `","position":"1"}]}`, false},
 		{"different title", attachExportRow("B0DENY0001", "The Lost Coast Redux", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), false},
 		{"different author", attachExportRow("B0DENY0002", "The Lost Coast", "us", "english", "Zed Otherhand", "Cal Voice", "1"), false},
 		{"translated title", attachExportRow("B0DENY0003", "Band Eins", "de", "german", "Ada Mapmaker", "Dora Sprecher", "1"), false},
@@ -417,5 +429,143 @@ excluded 4 rows:
 `
 	if got := res.Report(); got != want {
 		t.Errorf("report changed:\n got:\n%s\nwant:\n%s", got, want)
+	}
+}
+
+// A regional sibling of a volume this RUN creates is not an attachment: the
+// position was free when the catalogue was loaded, so both rows go through the
+// create path exactly as before - one new work, the sibling's ASIN merged onto
+// its recording - and nothing is counted as attached or refused.
+func TestAttachNeverTargetsAWorkThisRunCreated(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	res, subset, lines := selectInto(t, dataDir, []string{
+		attachExportRow("B0SELECT02", "Volume Two", "us", "english", "Ada Mapmaker", "Bea Reader", "2"),
+		attachExportRow("B0SELECT2B", "Volume Two", "gb", "english", "Ada Mapmaker", "Bea Reader", "2"),
+	})
+	if res.RowsSelected != 2 || res.ProjectedWorks != 1 || len(res.Attachments) != 0 || len(lines) != 0 {
+		t.Fatalf("selected %d / works %d / attachments %d / refusals %v, want 2/1/0/none",
+			res.RowsSelected, res.ProjectedWorks, len(res.Attachments), lines)
+	}
+	sum, err := RunLibex(subset, Options{DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.MergedASINs != 1 || sum.Attached != 0 || sum.SkippedOccupied != 0 {
+		t.Errorf("NewWorks/NewRecordings/MergedASINs/Attached/SkippedOccupied = %d/%d/%d/%d/%d, want 1/1/1/0/0",
+			sum.NewWorks, sum.NewRecordings, sum.MergedASINs, sum.Attached, sum.SkippedOccupied)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// The import's own fall-through: under ExistingSeriesOnly a row claiming an
+// occupied catalogued position that is not another edition of the work there is
+// REFUSED with a warning, never planned as a sibling work - whatever subset the
+// caller hands it, selected or not.
+func TestExistingSeriesOnlyRefusesARowAtAnOccupiedPosition(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	coAuthored := `{"asin":"B0DENY0006","title":"The Lost Coast","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"},{"name":"Zed Otherhand"}],"narrators":[{"name":"Cal Voice"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"1"}]}`
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, coAuthored,
+		attachExportRow("B0DENY0001", "The Lost Coast Redux", "us", "english", "Ada Mapmaker", "Cal Voice", "1"))
+	if sum.NewWorks != 0 || sum.NewRecordings != 0 || sum.Attached != 0 || sum.SkippedOccupied != 2 || sum.NewPeople != 0 {
+		t.Errorf("NewWorks/NewRecordings/Attached/SkippedOccupied/NewPeople = %d/%d/%d/%d/%d, want 0/0/0/2/0",
+			sum.NewWorks, sum.NewRecordings, sum.Attached, sum.SkippedOccupied, sum.NewPeople)
+	}
+	if n := countWarnings(sum.Warnings, `already held by "the-lost-coast"`); n != 2 {
+		t.Errorf("want a warning per refused row, got %d: %v", n, sum.Warnings)
+	}
+	if got := seriesWorks(t, dataDir, "cartographer-chronicles"); !reflect.DeepEqual(got, map[string]string{"the-lost-coast": "1.0"}) {
+		t.Errorf("series = %v", got)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// --attachments lists exactly the attached rows, in the contract's shape, and
+// is committed with the subset.
+func TestAttachmentsWorklist(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	dir := t.TempDir()
+	in := filepath.Join(dir, "export.ndjson")
+	rows := []string{
+		attachExportRow("B0ATTACH01", "The Lost Coast", "us", "english", "Ada Mapmaker", "Cal Voice", "1"),
+		attachExportRow("B0SELECT02", "Volume Two", "us", "english", "Ada Mapmaker", "Bea Reader", "2"),
+	}
+	if err := os.WriteFile(in, []byte(strings.Join(rows, "\n")+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	att := filepath.Join(dir, "attachments.ndjson")
+	if _, err := SelectLibex(in, filepath.Join(dir, "subset.ndjson"), SelectOptions{DataDir: dataDir, AttachmentsPath: att}); err != nil {
+		t.Fatal(err)
+	}
+	got, err := os.ReadFile(att)
+	if err != nil {
+		t.Fatal(err)
+	}
+	const want = `{"asin":"B0ATTACH01","work":"the-lost-coast","series":"cartographer-chronicles","position":"1"}` + "\n"
+	if string(got) != want {
+		t.Errorf("attachments = %q, want %q", got, want)
+	}
+}
+
+// No output may land on the input or on another output - by name or through a
+// link - and the message names the flags involved.
+func TestSelectOutputsMayNotOverlap(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	dir := t.TempDir()
+	in := filepath.Join(dir, "export.ndjson")
+	if err := os.WriteFile(in, []byte(selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2")+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	sub := filepath.Join(dir, "subset.ndjson")
+	if err := os.WriteFile(sub, nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	link := filepath.Join(dir, "link.ndjson")
+	if err := os.Symlink(sub, link); err != nil {
+		t.Fatal(err)
+	}
+	for _, tc := range []struct {
+		name string
+		opts SelectOptions
+		want string
+	}{
+		{"--refusals over the input", SelectOptions{RefusalsPath: in}, "refusing to write --refusals over the input export"},
+		{"--attachments over the input", SelectOptions{AttachmentsPath: in}, "refusing to write --attachments over the input export"},
+		{"--refusals over -o", SelectOptions{RefusalsPath: sub}, "refusing to write -o and --refusals to one file"},
+		{"--refusals linked to -o", SelectOptions{RefusalsPath: link}, "refusing to write -o and --refusals to one file"},
+		{"--attachments over --refusals", SelectOptions{RefusalsPath: filepath.Join(dir, "r"), AttachmentsPath: filepath.Join(dir, "r")},
+			"refusing to write --refusals and --attachments to one file"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			tc.opts.DataDir = dataDir
+			_, err := SelectLibex(in, sub, tc.opts)
+			if err == nil || !strings.Contains(err.Error(), tc.want) {
+				t.Errorf("err = %v, want %q", err, tc.want)
+			}
+		})
+	}
+}
+
+// All three outputs are committed together: a failed run leaves none of them
+// and no temp file.
+func TestSelectOutputsAreAllOrNothing(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	dir := t.TempDir()
+	in := filepath.Join(dir, "export.json")
+	if err := os.WriteFile(in, []byte(`[`+selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2")), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	opts := SelectOptions{DataDir: dataDir, RefusalsPath: filepath.Join(dir, "r.ndjson"), AttachmentsPath: filepath.Join(dir, "a.ndjson")}
+	if _, err := SelectLibex(in, filepath.Join(dir, "s.ndjson"), opts); err == nil {
+		t.Fatal("a truncated export must fail")
+	}
+	entries, _ := os.ReadDir(dir)
+	if len(entries) != 1 {
+		var names []string
+		for _, e := range entries {
+			names = append(names, e.Name())
+		}
+		t.Errorf("a failed run left files behind: %v", names)
 	}
 }

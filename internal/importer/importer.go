@@ -159,6 +159,12 @@ type seriesState struct {
 	raw       map[string]any    // populated lazily for an existing series
 	members   map[string]string // work slug -> position
 	positions map[string]string // position -> work slug
+	// loaded is the series' positions as the catalogue was LOADED, in the
+	// canonical spelling a claim arrives in (a stored "1.0" is "1"), each naming
+	// the work there. Unlike positions it never grows during the run: the attach
+	// rule (attach.go) and libex-select's position test read "occupied in the
+	// catalogue" off it, never "placed by this run".
+	loaded map[string]string
 	// announce says, once a NEW series' slug is final (settleNewSeriesSlugs), why
 	// it was minted where it was; chain is where its slug sits on its name's chain.
 	// Every planning-time message names a series by its NAME, so this is the only
@@ -184,6 +190,9 @@ type planner struct {
 	people map[string]string
 	works  map[string]*workState
 	series map[string]*seriesState
+	// attachKeys caches each incumbent's title key per series for the attach
+	// rule (attach.go, incumbentTitleKey), built on first use.
+	attachKeys map[string]string
 	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
 	// resolution judges every claim against, built on first use from catalog, the
 	// catalogue load, which resolveSeriesTargets then lets go.
@@ -989,9 +998,15 @@ func (p *planner) loadExisting() {
 			positions: map[string]string{},
 			claimed:   map[string]string{},
 		}
+		ss.loaded = make(map[string]string, len(s.Works))
 		for _, sw := range s.Works {
 			ss.members[sw.Work] = sw.Position
 			ss.positions[sw.Position] = sw.Work
+			pos := sw.Position
+			if norm, ok := NormalizeSequence(pos); ok {
+				pos = norm
+			}
+			ss.loaded[pos] = sw.Work
 		}
 		p.series[s.ID] = ss
 	}
@@ -1135,13 +1150,18 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 
-	// A row claiming a position the catalogue already fills, that is another
-	// edition of the work there, is ATTACHED to that work rather than planned as
-	// a new one (attach.go; ExistingSeriesOnly runs only). Asked before anything
-	// below can create a work, resolve a title or place a claim: an attachment
-	// does none of those.
-	if ws := p.attachTarget(b); ws != nil {
+	// A row claiming a position the catalogue already fills (ExistingSeriesOnly
+	// runs only, attach.go) is ATTACHED to the work there when it is another
+	// edition of it, and otherwise REFUSED: such a run never plans a sibling work
+	// at an occupied position, whatever subset it was handed. Asked before
+	// anything below can create a person or a work, resolve a title or place a
+	// claim.
+	if ws, occupant := p.attachTarget(b); ws != nil {
 		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
+		return
+	} else if occupant != "" {
+		p.summary.SkippedOccupied++
+		warn("its series position is already held by %q, and it is not another edition of that work; skipped (--existing-series-only never adds a second work at an occupied position)", occupant)
 		return
 	}
 

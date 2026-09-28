@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"path/filepath"
 	"sort"
 	"strconv"
 	"strings"
@@ -67,8 +66,17 @@ type SelectOptions struct {
 	// RefusalsPath, when set, is where the per-row refusal worklist is written:
 	// one NDJSON line per refused row, {"asin":"<ASIN>","reason":"<code>"}, the
 	// code one of RefusalCodes (refusalcodes.go - a contract with the sync bot).
-	// Written atomically, and only when the run succeeds, like the subset.
 	RefusalsPath string
+	// AttachmentsPath, when set, is where the selected rows kept for ATTACHMENT
+	// are listed (attach.go): one NDJSON line per row,
+	// {"asin","work","series","position"} - the incumbent work's slug, the
+	// catalogue series slug and the position they share. It is how a caller
+	// tells an attachment from a completion in the subset, which holds both; a
+	// contract with the sync bot like the refusal codes.
+	//
+	// The subset and both worklists are committed together: each is written to
+	// a temp file and all are renamed into place only when the run succeeded.
+	AttachmentsPath string
 }
 
 // SelectReasonAlreadyPresent and its siblings name the rules a row can fail.
@@ -119,12 +127,14 @@ type SeriesCount struct {
 	CutRows  int
 }
 
-// Attachment is one row selected for attachment to a catalogued work.
+// Attachment is one row selected for attachment to a catalogued work. Its JSON
+// form, in this field order, is one --attachments line - a contract with the
+// sync bot (SelectOptions.AttachmentsPath).
 type Attachment struct {
-	ASIN     string
-	Work     string // the incumbent work's slug
-	Series   string // the catalogue series slug
-	Position string // the position the row and the work share
+	ASIN     string `json:"asin"`
+	Work     string `json:"work"`     // the incumbent work's slug
+	Series   string `json:"series"`   // the catalogue series slug
+	Position string `json:"position"` // the position the row and the work share
 }
 
 // SelectResult is everything a selection run learned, for the report.
@@ -163,16 +173,15 @@ type SelectResult struct {
 // reached and NO output file exists (the write is atomic) - so a caller must not
 // present a failed run's report as a tranche.
 func SelectLibex(exportPath, outPath string, opts SelectOptions) (SelectResult, error) {
-	if err := refuseSelfOverwrite(exportPath, outPath); err != nil {
-		return SelectResult{}, err
-	}
+	outputs := []selectOutput{{"-o", outPath}}
 	if opts.RefusalsPath != "" {
-		if err := refuseSelfOverwrite(exportPath, opts.RefusalsPath); err != nil {
-			return SelectResult{}, fmt.Errorf("--refusals: %w", err)
-		}
-		if err := refuseSameOutput(outPath, opts.RefusalsPath); err != nil {
-			return SelectResult{}, err
-		}
+		outputs = append(outputs, selectOutput{"--refusals", opts.RefusalsPath})
+	}
+	if opts.AttachmentsPath != "" {
+		outputs = append(outputs, selectOutput{"--attachments", opts.AttachmentsPath})
+	}
+	if err := refuseOverlappingOutputs(exportPath, outputs); err != nil {
+		return SelectResult{}, err
 	}
 	in, err := os.Open(exportPath) //nolint:gosec // an operator-supplied export path is the whole point of the tool
 	if err != nil {
@@ -180,156 +189,51 @@ func SelectLibex(exportPath, outPath string, opts SelectOptions) (SelectResult, 
 	}
 	defer func() { _ = in.Close() }()
 
-	refusals, err := openRefusalLog(opts.RefusalsPath)
+	// Every output is STAGED: written into a temp file beside its destination
+	// and renamed into place only once all of them were written, so a failed run
+	// leaves none of them and a successful one leaves all of them (commitAll).
+	subset, err := stage(outPath, "-o")
 	if err != nil {
 		return SelectResult{}, err
 	}
-	defer refusals.abort() // a no-op once committed
+	defer subset.discard() // each discard is a no-op once committed
+	var refusals *refusalLog
+	var attachments *stagedFile
+	if opts.RefusalsPath != "" {
+		f, err := stage(opts.RefusalsPath, "--refusals")
+		if err != nil {
+			return SelectResult{}, err
+		}
+		defer f.discard()
+		refusals = &refusalLog{f: f}
+	}
+	if opts.AttachmentsPath != "" {
+		if attachments, err = stage(opts.AttachmentsPath, "--attachments"); err != nil {
+			return SelectResult{}, err
+		}
+		defer attachments.discard()
+	}
 
 	res, rows, err := selectLibexRows(in, opts, refusals)
 	if err != nil {
 		return res, err
 	}
-	if err := writeNDJSON(outPath, rows); err != nil {
-		return res, err
+	subset.fail(writeRows(subset.w, rows))
+	if attachments != nil {
+		for _, a := range res.Attachments {
+			line, err := json.Marshal(a)
+			attachments.fail(err)
+			attachments.write(append(line, '\n'))
+		}
 	}
-	if err := refusals.commit(); err != nil {
+	files := []*stagedFile{subset, attachments}
+	if refusals != nil {
+		files = append(files, refusals.f)
+	}
+	if err := commitAll(files...); err != nil {
 		return res, err
 	}
 	return res, nil
-}
-
-// refuseSameOutput fails when the subset and the refusal worklist would be one
-// file: the second write would replace the first, and a tranche with its rows
-// swapped for refusal lines is still a file the import would read.
-func refuseSameOutput(outPath, refusalsPath string) error {
-	a, aErr := filepath.Abs(outPath)
-	b, bErr := filepath.Abs(refusalsPath)
-	if aErr == nil && bErr == nil && a == b {
-		return fmt.Errorf("--refusals names the same file as -o (%s)", outPath)
-	}
-	return nil
-}
-
-// refuseSelfOverwrite fails when the output would land on the input export.
-// The subset is always a strict reduction of its input, so this can only ever
-// be a mistake - and the mistake it guards is destructive: `-o subset.ndjson
-// full.ndjson` under a naive argument split once read subset.ndjson as the
-// input and truncated the operator's multi-GB dump to nothing, reporting
-// success. Distinct names can still be one file, so a symlink or hard link is
-// caught too.
-func refuseSelfOverwrite(exportPath, outPath string) error {
-	same := filepath.Clean(exportPath) == filepath.Clean(outPath)
-	if !same {
-		inAbs, inErr := filepath.Abs(exportPath)
-		outAbs, outErr := filepath.Abs(outPath)
-		same = inErr == nil && outErr == nil && inAbs == outAbs
-	}
-	if !same {
-		inInfo, inErr := os.Stat(exportPath)
-		outInfo, outErr := os.Stat(outPath)
-		same = inErr == nil && outErr == nil && os.SameFile(inInfo, outInfo)
-	}
-	switch {
-	case same && outPath == exportPath:
-		return fmt.Errorf("refusing to write the subset over the input export: -o names the same file (%s)", exportPath)
-	case same:
-		return fmt.Errorf("refusing to write the subset over the input export: -o %s and %s are the same file", outPath, exportPath)
-	}
-	return nil
-}
-
-// refusalLog is the --refusals worklist: one NDJSON line per refused row, written
-// as the rows are refused into a temp file beside the destination and renamed
-// into place only when the whole run succeeded (the subset's own posture - a
-// half-written worklist would read as a complete one). A nil log is "not asked
-// for", and every method is a no-op on it.
-type refusalLog struct {
-	path string
-	tmp  *os.File
-	w    *bufio.Writer
-	err  error
-	done bool
-}
-
-// refusalLine is one worklist line. The field order is the line's key order.
-type refusalLine struct {
-	ASIN   string `json:"asin"`
-	Reason string `json:"reason"`
-}
-
-func openRefusalLog(path string) (*refusalLog, error) {
-	if path == "" {
-		return nil, nil
-	}
-	dir := filepath.Dir(path)
-	if dir != "" && dir != "." {
-		if err := os.MkdirAll(dir, 0o755); err != nil {
-			return nil, fmt.Errorf("--refusals: mkdir %s: %w", dir, err)
-		}
-	}
-	tmp, err := os.CreateTemp(dir, ".metaimport-refusals-*.tmp")
-	if err != nil {
-		return nil, fmt.Errorf("--refusals: %w", err)
-	}
-	return &refusalLog{path: path, tmp: tmp, w: bufio.NewWriterSize(tmp, 1<<20)}, nil
-}
-
-// add writes one refused row, under the contract code of its report reason. The
-// first write error is kept and returned by commit.
-func (l *refusalLog) add(asin, reason string) {
-	if l == nil || l.err != nil {
-		return
-	}
-	code, ok := refusalCodeOf[reason]
-	if !ok {
-		l.err = fmt.Errorf("--refusals: no refusal code for reason %q", reason)
-		return
-	}
-	line, err := json.Marshal(refusalLine{ASIN: asin, Reason: code})
-	if err == nil {
-		_, err = l.w.Write(append(line, '\n'))
-	}
-	if err != nil {
-		l.err = fmt.Errorf("--refusals: %w", err)
-	}
-}
-
-// commit flushes the worklist and renames it into place.
-func (l *refusalLog) commit() error {
-	if l == nil {
-		return nil
-	}
-	l.done = true
-	name := l.tmp.Name()
-	defer func() { _ = os.Remove(name) }() // a no-op once the rename succeeded
-	err := l.err
-	if err == nil {
-		err = l.w.Flush()
-	}
-	if err == nil {
-		err = l.tmp.Chmod(0o644)
-	}
-	if cerr := l.tmp.Close(); err == nil {
-		err = cerr
-	}
-	if err == nil {
-		err = os.Rename(name, l.path)
-	}
-	if err != nil {
-		return fmt.Errorf("write %s: %w", l.path, err)
-	}
-	return nil
-}
-
-// abort discards an uncommitted worklist.
-func (l *refusalLog) abort() {
-	if l == nil || l.done {
-		return
-	}
-	l.done = true
-	_ = l.tmp.Close()
-	_ = os.Remove(l.tmp.Name())
 }
 
 // exclusions is a run's exclusion accounting: a refused row is counted under
@@ -566,8 +470,8 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions) []selectedR
 				drop(i, reasonNoPosition)
 				continue
 			}
-			if idx.positions[v.slug][v.ref.seq] != "" {
-				ws := idx.p.attachWork(books[i], v.slug, v.ref)
+			if occupant := idx.positions[v.slug][v.ref.seq]; occupant != "" {
+				ws := idx.p.attachWork(books[i], idx.names[v.slug], occupant, v.ref)
 				if ws == nil {
 					drop(i, reasonPositionTaken)
 					continue
@@ -685,8 +589,8 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	// authors and title, attach.go) is kept for ATTACHMENT: the import makes it a
 	// recording of that work, or an ASIN on one. It reserves no slot, since the
 	// slot is the incumbent's already.
-	if idx.positions[slug][ref.seq] != "" {
-		if ws := idx.p.attachWork(book, slug, ref); ws != nil {
+	if occupant := idx.positions[slug][ref.seq]; occupant != "" {
+		if ws := idx.p.attachWork(book, idx.names[slug], occupant, ref); ws != nil {
 			return selectedRow{
 				seriesSlug: slug, workKey: attachKey(ws.slug), pos: pos, book: book, title: title,
 				asin: asin, attach: ws.slug, seq: ref.seq,
@@ -891,16 +795,10 @@ func loadSeriesIndex(dataDir string) (seriesIndex, []string) {
 	}
 	for slug, ss := range p.series {
 		idx.bySlug[slug] = ss.name
-		taken := make(map[string]string, len(ss.members))
-		for work, pos := range ss.members {
-			// Compare positions in the same canonical spelling a row's claim
-			// arrives in, so a stored "1.0" and a claimed "1" are one slot.
-			if norm, ok := NormalizeSequence(pos); ok {
-				pos = norm
-			}
-			taken[pos] = work
-		}
-		idx.positions[slug] = taken
+		// The loaded positions, compared in the canonical spelling a row's claim
+		// arrives in (a stored "1.0" and a claimed "1" are one slot) - the very
+		// map the import's attach rule reads (seriesState.loaded).
+		idx.positions[slug] = ss.loaded
 	}
 	return idx, warnings
 }
@@ -1239,49 +1137,6 @@ func skipBOMAndSpace(br *bufio.Reader) error {
 			return nil
 		}
 	}
-}
-
-// writeNDJSON writes the selected rows, one compacted JSON object per line.
-// Each row is its own bytes from the export (only insignificant whitespace is
-// removed), so `metaimport libex` sees exactly the facts the dump stated - a
-// selection pass must never become a second mapping layer.
-//
-// The write is atomic (temp file + rename in the destination's directory, the
-// repo's convention - see internal/serve installVerified): an interrupted or
-// failed run must leave NO subset file rather than a partial one, because a
-// truncated NDJSON subset is still a perfectly importable file and would land
-// as a silently half-sized tranche.
-func writeNDJSON(path string, rows []selectedRow) error {
-	dir := filepath.Dir(path)
-	if dir != "" && dir != "." {
-		if err := os.MkdirAll(dir, 0o755); err != nil {
-			return fmt.Errorf("mkdir %s: %w", dir, err)
-		}
-	}
-	tmp, err := os.CreateTemp(dir, ".metaimport-subset-*.tmp")
-	if err != nil {
-		return fmt.Errorf("write %s: %w", path, err)
-	}
-	tmpName := tmp.Name()
-	defer func() { _ = os.Remove(tmpName) }() // a no-op once the rename succeeded
-
-	if err := writeRows(tmp, rows); err != nil {
-		_ = tmp.Close()
-		return fmt.Errorf("write %s: %w", path, err)
-	}
-	// 0600 from CreateTemp would make the subset unreadable to anything but the
-	// operator; it is ordinary data, so match the create-mode the plain path had.
-	if err := tmp.Chmod(0o644); err != nil {
-		_ = tmp.Close()
-		return fmt.Errorf("write %s: %w", path, err)
-	}
-	if err := tmp.Close(); err != nil {
-		return fmt.Errorf("write %s: %w", path, err)
-	}
-	if err := os.Rename(tmpName, path); err != nil {
-		return fmt.Errorf("write %s: %w", path, err)
-	}
-	return nil
 }
 
 // writeRows compacts each row onto its own line of w.

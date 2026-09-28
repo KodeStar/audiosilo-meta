@@ -19,7 +19,22 @@ import (
 //
 // Both ask the same function over the same batch resolution, so a row the
 // selector keeps for attachment is attached by the import of exactly that
-// selection, and a row it refuses is never attached.
+// selection, and a row it refuses is never attached. The FALL-THROUGH agrees
+// too: a row whose completion claim lands on an occupied position and does not
+// attach is refused by both - libex-select as position-claimed, and the import
+// (under ExistingSeriesOnly) skips it with a warning rather than planning a
+// sibling work beside the incumbent, whatever subset the caller passes.
+//
+// Why a title key and not the create path's slug-chain walk (resolveWork /
+// mergeOnlyWalk): the walk finds a work by its title's SLUG CHAIN, and the rows
+// this rule exists for are exactly the ones whose retailer title decorates the
+// catalogued one ("Lord of The System" beside "Lord of The System: Book 7", "The
+// Hunter's Code" beside "The Hunter's Code: Book 13") - their slugs differ, the
+// walk cannot see the occupant, and the create path would have planned them as
+// sibling works. The occupant is already known here (the position names it), so
+// the only title question is "do these two titles name one book", which is the
+// titlerule question the intake gate asks. The AUTHOR question is the
+// importer's own (matchWork); only the title reading is this file's.
 //
 // Measured on the live sync bot (2026-09-21..27), the selector's biggest refusal
 // class was a claimed position, and many of those rows were the SAME book under
@@ -29,18 +44,28 @@ import (
 //
 //   - SERIES and POSITION: the row's completion claim (the first claim the batch
 //     sends to a catalogued series) names the position the incumbent occupies;
-//   - AUTHORS: the row's identity authors and the incumbent's cover each other
-//     under the importer's same-person rule (SamePerson) - every author on each
-//     side is one person with some author on the other;
+//   - OCCUPANT: the work held the position when the catalogue was LOADED - a
+//     work this run created is never an attachment target, so a same-run
+//     sibling row of a new completion goes through the create path exactly as
+//     it always did;
+//   - AUTHORS: the importer's own work-identity test (matchWork, the one
+//     walkWorkChain and the recordings-only resolver apply to a candidate), asked
+//     of the occupant alone: identity sets nested both ways, persons resolved by
+//     resolvePerson, so a translator's role credit and a spelling the person
+//     rules fold do not block and an extra or a different author does;
 //   - TITLE: the row's title (short or full) and the incumbent's reduce to one
 //     titlerule compare key (StripDecoration against the series name when it
 //     proposes a title, then CompareKeyWhole) - the gate internal/issueform's
 //     decorated-title check applies. A title that differs, a translated one
 //     included, is refused: it may well be the same book, but nothing here can
-//     verify a translation - and no row title may state a VOLUME contradicting
-//     the claimed position (statedVolumePosition, seriespos.go's reading), nor
-//     say it is a different product of the book than the incumbent's does (a
-//     split-release part, a collection, a young-readers adaptation);
+//     verify a translation;
+//   - NO VETO in ANY of the row's title variants (short title, full title,
+//     subtitle), not only the one that matched: none may state a VOLUME
+//     contradicting the claimed position (statedVolumePosition, seriespos.go's
+//     reading), and none may say the row is a different PRODUCT of the book than
+//     the incumbent's title says it is (a split-release part, a collection, a
+//     young-readers adaptation) - the statements the decoration strip removes
+//     along with the retailer noise;
 //   - a NARRATOR: a row the import cannot record attaches nothing;
 //   - LANGUAGE: compatible under the importer's langCompatible. A work is
 //     language-scoped in this catalogue (a translation is a different work,
@@ -54,50 +79,25 @@ import (
 // rewrites a recorded value - addRecording writes a new recording or appends an
 // ASIN (and any unclaimed ISBN) with this run's provenance, nothing else.
 
-// attachWork returns the catalogued work a row is another edition of, when the
-// row's claim ref lands in the catalogued series seriesSlug (the batch's
-// resolution of it) and the work at ref's position there is that same book by
-// the rule above; nil otherwise.
-func (p *planner) attachWork(b sourceBook, seriesSlug string, ref seriesRef) *workState {
-	ss := p.series[seriesSlug]
-	if ss == nil || ss.isNew || !ref.seqOK {
-		return nil
-	}
-	occupant := ss.occupantAt(ref.seq)
-	if occupant == "" {
+// attachWork returns the work the row is another edition of, when occupant - the
+// work the catalogue held at the position the row's claim ref names, as the
+// catalogue was LOADED (seriesState.loaded; libex-select's positions are the
+// same map) - is that same book by the rule above; nil otherwise. seriesName is
+// the catalogued series' name, the title rule's context.
+func (p *planner) attachWork(b sourceBook, seriesName, occupant string, ref seriesRef) *workState {
+	if occupant == "" || !ref.seqOK {
 		return nil
 	}
 	ws := p.works[occupant]
-	if ws == nil || !p.sameBookAs(ws, b, ss.name, ref) {
+	if ws == nil || !p.sameBookAs(ws, b, seriesName, ref) {
 		return nil
 	}
 	return ws
 }
 
-// occupantAt is the work the series lists at position seq, comparing positions
-// in the canonical spelling a claim arrives in (a stored "1.0" is position "1"),
-// or "".
-func (ss *seriesState) occupantAt(seq string) string {
-	if w := ss.positions[seq]; w != "" {
-		return w
-	}
-	for w, pos := range ss.members {
-		if norm, ok := NormalizeSequence(pos); ok && norm == seq {
-			return w
-		}
-	}
-	return ""
-}
-
 // sameBookAs reports whether row b is another edition of work ws, which sits in
-// the series named seriesName at the position claim ref names: language, title
-// and authors, as attach.go's header states.
-//
-// A row title that states a VOLUME contradicting the claimed position (the
-// seriespos.go reading, statedVolumePosition: "The Lost Coast, Book 2" claimed at
-// 1) is never an attachment, whatever the rest says: the decoration strip would
-// otherwise remove the one part of the title that disagrees, and a row that
-// contradicts itself about which volume it is cannot be asserted to be this one.
+// the series named seriesName at the position claim ref names, as attach.go's
+// header states.
 func (p *planner) sameBookAs(ws *workState, b sourceBook, seriesName string, ref seriesRef) bool {
 	lang, ok := mapLanguage(b.str("language"))
 	if !ok || !langCompatible(ws.lang, lang) {
@@ -109,26 +109,36 @@ func (p *planner) sameBookAs(ws *workState, b sourceBook, seriesName string, ref
 	if len(p.rowNarratorNames(b)) == 0 {
 		return false
 	}
-	want := attachTitleKey(ws.title, seriesName)
+	want := p.incumbentTitleKey(ws, seriesName)
 	if want == "" {
 		return false
 	}
 	titled := false
 	for _, t := range []string{b.str("title_short"), b.str("title")} {
-		if t == "" {
-			continue
-		}
-		if _, contradicts := statedVolumePosition(ref, t); contradicts {
-			return false
-		}
-		if attachTitleKey(t, seriesName) == want {
-			if productStatementsDiffer(t, ws.title, seriesName) {
-				return false
-			}
+		if t != "" && attachTitleKey(t, seriesName) == want {
 			titled = true
 		}
 	}
-	return titled && p.authorsCover(ws, p.rowAuthorCredits(b))
+	if !titled || vetoed(rowTitleVariants(b), ws.title, seriesName, ref) {
+		return false
+	}
+	return matchWork(ws, p.rowWorkAuthorsRO(p.rowAuthorCredits(b))) != matchNone
+}
+
+// incumbentTitleKey is a work's attachTitleKey within a series, computed once
+// per (work, series) for the run: every regional sibling row of a volume asks
+// it again.
+func (p *planner) incumbentTitleKey(ws *workState, seriesName string) string {
+	k := ws.slug + "\x00" + seriesName
+	if key, ok := p.attachKeys[k]; ok {
+		return key
+	}
+	if p.attachKeys == nil {
+		p.attachKeys = map[string]string{}
+	}
+	key := attachTitleKey(ws.title, seriesName)
+	p.attachKeys[k] = key
+	return key
 }
 
 // attachTitleKey is a title's comparison key for the attach rule: the edition
@@ -143,16 +153,37 @@ func attachTitleKey(title, seriesName string) string {
 	return titlerule.CompareKeyWhole(t)
 }
 
-// productStatementsDiffer reports whether one of two titles that reduce to one
-// key says it is a different PRODUCT of the book than the other does - the
-// statements the decoration strip removes along with the retailer noise: a split
-// release's part ("(2 of 2)", "Part 2"), a collection (titlerule's collection
-// status), a young-readers adaptation. Each is a one-sided statement that the row
-// is not the whole work the incumbent is, so it refuses the attachment.
-func productStatementsDiffer(rowTitle, workTitle, seriesName string) bool {
-	return splitPart(rowTitle) != splitPart(workTitle) ||
-		!titlerule.SameCollectionStatus(rowTitle, seriesName, workTitle, seriesName) ||
-		titlerule.IsYoungReadersAdaptation(rowTitle) != titlerule.IsYoungReadersAdaptation(workTitle)
+// rowTitleVariants is every title a row states: the short title, the full
+// "Title: Subtitle" and the subtitle on its own.
+func rowTitleVariants(b sourceBook) []string {
+	var out []string
+	for _, key := range []string{"title_short", "title", "subtitle"} {
+		if t := b.str(key); t != "" {
+			out = append(out, t)
+		}
+	}
+	return out
+}
+
+// vetoed reports whether any of the row's title variants refuses the attachment:
+// a stated volume contradicting the claimed position, or a one-sided PRODUCT
+// statement - a split-release part, a collection, a young-readers adaptation -
+// that the row makes and the incumbent's title does not, or the other way round.
+// Each is read over every variant, since a retailer puts it in whichever field
+// it likes ("The Lost Coast" with the subtitle "Young Readers Edition").
+func vetoed(variants []string, workTitle, seriesName string, ref seriesRef) bool {
+	var part, coll, young bool
+	for _, t := range variants {
+		if _, contradicts := statedVolumePosition(ref, t); contradicts {
+			return true
+		}
+		part = part || splitPart(t)
+		coll = coll || titlerule.IsCollectionIn(t, seriesName)
+		young = young || titlerule.IsYoungReadersAdaptation(t)
+	}
+	return part != splitPart(workTitle) ||
+		coll != titlerule.IsCollectionIn(workTitle, seriesName) ||
+		young != titlerule.IsYoungReadersAdaptation(workTitle)
 }
 
 // splitOfRE is a split release's bracketed part count - "(1 of 2)", "[Part 2 of
@@ -173,52 +204,6 @@ func splitPart(title string) bool {
 	return ok && (h.Marker == "part" || h.Marker == "parts" || h.Marker == "pt" || h.Marker == "pts")
 }
 
-// authorsCover reports whether a row's IDENTITY authors (its credits without a
-// stated contributor role, or all of them when every one carries a role - the
-// identityAuthors rule) and a work's identity authors cover each other under
-// SamePerson: every author on either side is one person with an author on the
-// other.
-func (p *planner) authorsCover(ws *workState, credits []credit) bool {
-	type person struct{ slug, name string }
-	var row []person
-	for _, c := range credits {
-		if len(c.roles) == 0 {
-			row = append(row, person{p.resolvePerson(c.name).slug, c.name})
-		}
-	}
-	if len(row) == 0 {
-		for _, c := range credits {
-			row = append(row, person{p.resolvePerson(c.name).slug, c.name})
-		}
-	}
-	if len(row) == 0 || len(ws.authors) == 0 {
-		return false
-	}
-	work := make([]person, 0, len(ws.authors))
-	for slug := range ws.authors {
-		work = append(work, person{slug, p.people[slug]})
-	}
-	covered := func(a person, side []person) bool {
-		for _, o := range side {
-			if SamePerson(a.slug, a.name, o.slug, o.name) {
-				return true
-			}
-		}
-		return false
-	}
-	for _, a := range row {
-		if !covered(a, work) {
-			return false
-		}
-	}
-	for _, a := range work {
-		if !covered(a, row) {
-			return false
-		}
-	}
-	return true
-}
-
 // completionClaim is the claim a row completes a series with, as libex-select
 // reads it (seriesVerdict.observe): the FIRST of its claims the batch resolution
 // sent to a series the catalogue holds. ok is false when there is none.
@@ -231,20 +216,26 @@ func completionClaim(b sourceBook) (seriesRef, bool) {
 	return seriesRef{}, false
 }
 
-// attachTarget is the create path's side of the rule: under
-// Options.ExistingSeriesOnly, the catalogued work this row is to be ATTACHED to
-// instead of planned as a new work, or nil. The claim is the batch's resolution
-// (seriesRef.target, decided before any row was planned), so it is the claim
-// libex-select's batch re-check judged.
-func (p *planner) attachTarget(b sourceBook) *workState {
+// attachTarget is the create path's side of the rule, under
+// Options.ExistingSeriesOnly: the loaded work at the position the row's
+// completion claim names (occupant, "" when the position was free at load), and
+// the work the row is to be ATTACHED to (nil when it is not another edition of
+// it). The claim is the batch's resolution (seriesRef.target, decided before any
+// row was planned), so it is the claim libex-select's batch re-check judged.
+func (p *planner) attachTarget(b sourceBook) (ws *workState, occupant string) {
 	if !p.existingSeriesOnly || p.mode != ModeCreate {
-		return nil
+		return nil, ""
 	}
 	r, ok := completionClaim(b)
-	if !ok {
-		return nil
+	if !ok || !r.seqOK {
+		return nil, ""
 	}
-	return p.attachWork(b, r.target.slug, r)
+	ss := p.series[r.target.slug]
+	if ss == nil {
+		return nil, ""
+	}
+	occupant = ss.loaded[r.seq]
+	return p.attachWork(b, ss.name, occupant, r), occupant
 }
 
 // attachRow writes an attached row onto its work: a new recording, or its ASIN

@@ -354,6 +354,12 @@ type Summary struct {
 	// one of its guards refused the ASIN, a region that does not map), so the
 	// summary line reads exactly as before. Always 0 without the option.
 	Attached int
+	// SkippedOccupied counts the rows an ExistingSeriesOnly create run REFUSED
+	// because the position their completion claim names was already held in the
+	// catalogue by a work they are not another edition of (attach.go): each is
+	// skipped with a warning rather than planned as a sibling work. Always 0
+	// without the option.
+	SkippedOccupied int
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the

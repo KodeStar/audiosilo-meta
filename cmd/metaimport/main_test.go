@@ -638,9 +638,10 @@ func TestLibexSelectRefusalsFlag(t *testing.T) {
 	_ = f.Close()
 	dir := t.TempDir()
 	out, refusals := filepath.Join(dir, "subset.ndjson"), filepath.Join(dir, "refusals.ndjson")
+	attachments := filepath.Join(dir, "attachments.ndjson")
 	var code int
 	stdout := captureStdout(t, func() {
-		code = runLibexSelect([]string{export, "--data", dataDir, "-o", out, "--refusals", refusals})
+		code = runLibexSelect([]string{export, "--data", dataDir, "-o", out, "--refusals", refusals, "--attachments", attachments})
 	})
 	if code != 0 {
 		t.Fatalf("exit code = %d (%s)", code, stdout)
@@ -651,6 +652,11 @@ func TestLibexSelectRefusalsFlag(t *testing.T) {
 	}
 	if string(got) != `{"asin":"B0OTHER001","reason":"no-catalogue-series"}`+"\n" {
 		t.Errorf("refusals = %q", got)
+	}
+	// Asked for, the attachment worklist is written even when it is empty, so a
+	// reader can tell "none" from "not produced".
+	if got, err := os.ReadFile(attachments); err != nil || len(got) != 0 {
+		t.Errorf("attachments = %q, %v; want an empty file", got, err)
 	}
 }
 
@@ -669,5 +675,11 @@ func TestPrintSummaryAttachLine(t *testing.T) {
 	})
 	if !strings.HasPrefix(out, head) || !strings.Contains(out, "  attached 2 rows to the catalogued work already at their series position") {
 		t.Errorf("summary with attachments = %q", out)
+	}
+	out = captureStdout(t, func() {
+		printSummary(importer.Summary{NewRecordings: 1, MergedASINs: 1, Attached: 1}, false, importer.ModeCreate)
+	})
+	if !strings.Contains(out, "  attached 1 row to the catalogued work already at its series position") {
+		t.Errorf("summary with one attachment = %q", out)
 	}
 }

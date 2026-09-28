@@ -1754,29 +1754,45 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   FIRST match minted a series and made the sync bot refuse its own pull request
   ("the import would create 1 new series"). A claim the importer only warns
   about - no usable position, or a name with no addressable slug - mints nothing
-  and disqualifies nothing. A row whose position the catalogue already FILLS is
-  refused unless it is another edition of the very work there - same series and
-  position, authors covering each other under `SamePerson`, titles equal under
-  `titlerule` (`StripDecoration` against the series name when it proposes a
-  title, then `CompareKeyWhole`), a compatible language, a narrator, no title
-  volume contradicting the position and no one-sided product statement (a
-  split-release part, a collection, a young-readers adaptation) - in which case
-  it is SELECTED FOR ATTACHMENT
-  (`internal/importer/attach.go`, the one decision both sides ask): the create
-  path under `--existing-series-only` writes it as a new recording of that work,
-  or merges its ASIN onto the recording whose narrators match (addRecording's
+  and disqualifies nothing. A row whose position the catalogue already FILLS (as
+  LOADED - `seriesState.loaded`; a work this run created is never a target, so a
+  same-run regional sibling of a new completion goes through the create path as
+  it always did) is refused unless it is another edition of the very work there
+  - same series and position, the importer's own work-identity test
+  (`matchWork` over `resolvePerson`, asked of that occupant alone), titles equal
+  under `titlerule` (`StripDecoration` against the series name when it proposes
+  a title, then `CompareKeyWhole` - the slug-chain walk cannot see a decorated
+  retailer title, which is the population this exists for), a compatible
+  language, a narrator, and no veto in ANY title variant (short, full,
+  subtitle): no stated volume contradicting the position, no one-sided product
+  statement (a split-release part, a collection, a young-readers adaptation) -
+  in which case it is SELECTED FOR ATTACHMENT (`internal/importer/attach.go`,
+  the one decision both sides ask): the create path under
+  `--existing-series-only` writes it as a new recording of that work, or merges
+  its ASIN onto the recording whose narrators match (addRecording's
   same-narrator merge), and never creates a work, places a claim or changes the
-  incumbent. Attachments count in the summary line's new recordings / merged
-  asins, and in neither tool's per-series or work counts; each tool prints one
-  extra line only when it attached something, so a run that attached nothing
-  prints exactly what it always did. A translated title, and a same title in
-  another language, stay refused: a work is language-scoped here (metacheck's
-  cross-language advisory) and a translation cannot be verified by its title.
-  `--refusals <path>` writes the per-row worklist, one NDJSON line
-  `{"asin","reason"}` per refused row, the codes the stable constants of
-  `internal/importer/refusalcodes.go` (a contract with the sync bot, pinned by
-  `TestRefusalCodesAreStable`; one code per report reason, and the report's
-  wording is untouched); `scripts/
+  incumbent. The FALL-THROUGH agrees on both sides: a row at an occupied
+  position that does not attach is `position-claimed` in the selector, and the
+  import under `--existing-series-only` SKIPS it with a warning
+  (`Summary.SkippedOccupied`) - never a sibling work at an occupied position,
+  whatever subset it is handed. Attachments count in the summary line's new
+  recordings / merged asins, and in neither tool's per-series or work counts;
+  each tool prints one extra line only when it attached something, so a run
+  that attached nothing prints exactly what it always did. A translated title,
+  and a same title in another language, stay refused: a work is
+  language-scoped here (metacheck's cross-language advisory) and a translation
+  cannot be verified by its title. Two worklists are the sync bot's CONTRACT,
+  beside the report: `--refusals <path>`, one NDJSON line `{"asin","reason"}`
+  per refused row, the codes the stable constants of
+  `internal/importer/refusalcodes.go` (pinned by `TestRefusalCodesAreStable`;
+  one code per report reason, and the report's wording is untouched), and
+  `--attachments <path>`, one line `{"asin","work","series","position"}` per
+  row selected for attachment (the incumbent's slug, the series slug and the
+  shared position), which is how a reader tells those rows from completions in
+  the subset. The subset and both worklists are staged and renamed into place
+  together, only once all were written (`selectoutputs.go`), and no two of them
+  - nor any of them and the input - may be one file (`sameFile`, links
+  included); `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
   operator flow - the received dump is Postgres 16 custom format); the
   **AI-credit exclusion** (an AI is not a person, so a row crediting one is
