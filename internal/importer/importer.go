@@ -115,6 +115,10 @@ type workState struct {
 	// candidate the slug cap CUT (walkWorkChain), where the slug alone no longer
 	// says which book it is.
 	title string
+	// subtitle is the work's stored subtitle, which the attach rule's product
+	// vetoes read beside the title (attach.go): "Young Readers Edition" there is
+	// as much a statement about the product as in the title.
+	subtitle string
 	// authors is the IDENTITY set; all is the record's whole credit list, which
 	// the subsumption half of matchWork compares against. Keeping both is what
 	// lets a work minted before the exclusion rule (no credits[], so its
@@ -940,12 +944,13 @@ func (p *planner) loadExisting() {
 	}
 	for _, w := range cat.Works {
 		ws := &workState{
-			slug:    w.ID,
-			title:   w.Title,
-			authors: diskIdentityAuthors(w.Authors, w.Credits),
-			all:     ToSet(w.Authors),
-			lang:    w.Language,
-			recs:    map[string]*recInfo{},
+			slug:     w.ID,
+			title:    w.Title,
+			subtitle: w.Subtitle,
+			authors:  diskIdentityAuthors(w.Authors, w.Credits),
+			all:      ToSet(w.Authors),
+			lang:     w.Language,
+			recs:     map[string]*recInfo{},
 		}
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
@@ -1158,10 +1163,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// claim.
 	if ws, occupant := p.attachTarget(b); ws != nil {
 		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
+		p.noteOtherLostSeriesClaims(b)
 		return
 	} else if occupant != "" {
 		p.summary.SkippedOccupied++
+		p.noteSkip(asin, reasonPositionTaken)
 		warn("its series position is already held by %q, and it is not another edition of that work; skipped (--existing-series-only never adds a second work at an occupied position)", occupant)
+		p.noteOtherLostSeriesClaims(b)
 		return
 	}
 
@@ -1318,6 +1326,7 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 	lang, ok = mapLanguage(b.str("language"))
 	if !ok {
 		warn("unknown language %q; skipped", b.str("language"))
+		p.noteSkip(NormalizeASIN(b.str("asin")), reasonLanguage)
 		return "", nil, false
 	}
 	narratorNames = p.rowNarratorNames(b)
@@ -2648,7 +2657,25 @@ func (p *planner) noteUnaddressableSeries(name string) {
 // cause is never the series, it is always the row, which has already been
 // reported on its own terms.
 func (p *planner) noteLostSeriesClaims(b sourceBook) {
-	for _, r := range b.series {
+	p.noteLostSeriesClaimsExcept(b, -1)
+}
+
+// noteOtherLostSeriesClaims is noteLostSeriesClaims for a row the attach rule
+// decided (attach.go): its COMPLETION claim names the position the incumbent
+// already holds, so that one lost nothing; every other positioned claim is a
+// placement the row asked for and did not get.
+func (p *planner) noteOtherLostSeriesClaims(b sourceBook) {
+	_, at, _ := completionClaim(b)
+	p.noteLostSeriesClaimsExcept(b, at)
+}
+
+// noteLostSeriesClaimsExcept notes every positioned claim of b but the one at
+// index skip (-1: none).
+func (p *planner) noteLostSeriesClaimsExcept(b sourceBook, skip int) {
+	for i, r := range b.series {
+		if i == skip {
+			continue
+		}
 		// A claim an ExistingSeriesOnly run would drop anyway lost nothing here.
 		if !r.seqOK || p.refusesToFound(r) {
 			continue

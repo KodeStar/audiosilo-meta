@@ -25,7 +25,15 @@
 // {"asin":"<ASIN>","work":"<incumbent slug>","series":"<slug>","position":"<pos>"},
 // which is how a reader tells those rows from completions in the subset. Both
 // shapes are a contract with the series-completion sync bot, and the subset and
-// both worklists are committed together or not at all.
+// both worklists are committed together or not at all, the subset last.
+//
+// --skipped <path> (libex only) writes the IMPORT's twin of --refusals: one
+// {"asin","reason"} line per row the run refused for a reason that has a
+// libex-select refusal code - a malformed ASIN, an unmapped region or language,
+// a refused credit, and position-claimed for a row --existing-series-only turned
+// away at an occupied position - written atomically when the run succeeds. The
+// sync bot memoizes those rows as refusals, so a row the selector kept and the
+// import refused is not selected again every cycle.
 //
 // --dry-run prints the plan without writing. A real run writes the new/changed
 // files, then validates the whole tree and exits non-zero if that fails. Import
@@ -93,11 +101,14 @@
 package main
 
 import (
+	"bufio"
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -166,6 +177,8 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// create run can be told it may only complete series the catalogue holds.
 	// The catalogue-bounded modes never found a series, so it is inert there.
 	existingSeriesOnly := fs.Bool("existing-series-only", false, "never found a series: drop (and report) a series claim that would create one; the row still imports")
+	// Registered for every source so the wrong one is refused with a reason.
+	skipped := fs.String("skipped", "", "write one NDJSON line per row the run refused for a reason with a libex-select refusal code ({\"asin\",\"reason\"}) to this file (libex only)")
 
 	// Accept the positional export path either before or after the flags.
 	exportPath, err := parsePositional(fs, args, "<export.json>")
@@ -177,6 +190,11 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	mode, err := selectMode(name, *enrich, *recordingsOnly)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
+		return 2
+	}
+
+	if *skipped != "" && name != boundedSource {
+		fmt.Fprintf(os.Stderr, "metaimport: --skipped is only supported for the %s source, not %q\n", boundedSource, name)
 		return 2
 	}
 
@@ -220,8 +238,47 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 1
 	}
+	if *skipped != "" {
+		if err := writeSkipped(*skipped, sum.Skips); err != nil {
+			fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
+			return 1
+		}
+	}
 	printSummary(sum, *dryRun, mode)
 	return 0
+}
+
+// writeSkipped writes the --skipped worklist atomically (a temp file beside it,
+// renamed into place): one {"asin","reason"} line per refused row, the reason a
+// libex-select refusal code - the --refusals shape, so the sync bot reads both
+// with one reader. It is written, empty or not, only when the run succeeded.
+func writeSkipped(path string, skips []importer.RowSkip) error {
+	dir := filepath.Dir(path)
+	tmp, err := os.CreateTemp(dir, ".metaimport-skipped-*.tmp")
+	if err != nil {
+		return err
+	}
+	defer func() { _ = os.Remove(tmp.Name()) }() // a no-op once renamed
+	w := bufio.NewWriter(tmp)
+	enc := json.NewEncoder(w)
+	for _, s := range skips {
+		if err := enc.Encode(s); err != nil {
+			_ = tmp.Close()
+			return err
+		}
+	}
+	if err := w.Flush(); err != nil {
+		_ = tmp.Close()
+		return err
+	}
+	if err := tmp.Chmod(0o644); err != nil {
+		_ = tmp.Close()
+		return err
+	}
+	if err := tmp.Close(); err != nil {
+		return err
+	}
+	return os.Rename(tmp.Name(), path)
 }
 
 // openConflictLog opens the --conflicts worklist for APPEND, returning the sink
@@ -413,6 +470,12 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	// exactly as it did. The attached rows are already inside the summary line's
 	// "new recordings" and "asins merged" counts; this says which of those were
 	// attachments.
+	// Printed only when a run refused one (--existing-series-only), and on a
+	// line of its own: the create summary line's shape is parsed by the sync bot.
+	if s.SkippedOccupied > 0 {
+		fmt.Printf("  skipped %d %s claiming a series position the catalogue already holds with another work (--existing-series-only)\n",
+			s.SkippedOccupied, pluralRows(s.SkippedOccupied))
+	}
 	if s.Attached > 0 {
 		fmt.Printf("  attached %d %s to the catalogued work already at %s series position (counted above as new recordings or merged asins)\n",
 			s.Attached, pluralRows(s.Attached), pluralTheir(s.Attached))

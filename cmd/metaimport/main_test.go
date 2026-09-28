@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"io"
 	"os"
@@ -681,5 +682,48 @@ func TestPrintSummaryAttachLine(t *testing.T) {
 	})
 	if !strings.Contains(out, "  attached 1 row to the catalogued work already at its series position") {
 		t.Errorf("summary with one attachment = %q", out)
+	}
+}
+
+// --skipped writes the run's Skips as {"asin","reason"} lines, atomically and
+// only on success, and is refused for any source but libex.
+func TestSkippedFlagWritesTheWorklist(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "skipped.ndjson")
+	run := func(string, importer.Options) (importer.Summary, error) {
+		return importer.Summary{SkippedOccupied: 1, Skips: []importer.RowSkip{
+			{ASIN: "B0DENY0001", Reason: importer.RefusalPositionClaimed},
+			{ASIN: "B0REGION04", Reason: importer.RefusalUnmappedRegion},
+		}}, nil
+	}
+	var code int
+	out := captureStdout(t, func() { code = runSource(boundedSource, []string{"export.json", "--skipped", path}, run) })
+	if code != 0 {
+		t.Fatalf("exit code = %d", code)
+	}
+	got, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	const want = `{"asin":"B0DENY0001","reason":"position-claimed"}` + "\n" + `{"asin":"B0REGION04","reason":"unmapped-region"}` + "\n"
+	if string(got) != want {
+		t.Errorf("skipped = %q, want %q", got, want)
+	}
+	if !strings.Contains(out, "  skipped 1 row claiming a series position the catalogue already holds with another work") {
+		t.Errorf("summary does not report the refused row on its own line:\n%s", out)
+	}
+	if !strings.HasPrefix(out, "imported: 0 new works, 0 new recordings, 0 new people, 0 new series; 0 skipped (already present); 0 asins merged into existing recordings; 0 warnings\n") {
+		t.Errorf("the create summary line changed:\n%s", out)
+	}
+
+	failing := func(string, importer.Options) (importer.Summary, error) {
+		return importer.Summary{}, errors.New("boom")
+	}
+	failed := filepath.Join(t.TempDir(), "skipped.ndjson")
+	captureStdout(t, func() { _ = runSource(boundedSource, []string{"export.json", "--skipped", failed}, failing) })
+	if _, err := os.Stat(failed); !os.IsNotExist(err) {
+		t.Errorf("a failed run wrote the worklist: %v", err)
+	}
+	if code := runSource("openaudible", []string{"books.json", "--skipped", path}, run); code != 2 {
+		t.Errorf("--skipped on openaudible: exit %d, want 2", code)
 	}
 }

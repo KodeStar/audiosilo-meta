@@ -360,6 +360,13 @@ type Summary struct {
 	// skipped with a warning rather than planned as a sibling work. Always 0
 	// without the option.
 	SkippedOccupied int
+	// Skips names the rows the run refused for a reason that has a
+	// libex-select refusal code (refusalcodes.go), one entry per row with an
+	// ASIN: the parse layer's malformed-ASIN, unmapped-region and credit
+	// refusals, an unmapped language, and SkippedOccupied's position-claimed.
+	// It is what `metaimport libex --skipped` writes; a skip with no code (no
+	// narrator, no author, a duplicate identity) or no ASIN is not listed.
+	Skips []RowSkip
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the
@@ -434,4 +441,13 @@ func (s Summary) Produced() int {
 // export row and why it fell out or was refused, conflicts first.
 func (s Summary) RowWarnings() []string {
 	return s.Warnings[min(s.RunLevelWarnings, len(s.Warnings)):]
+}
+
+// RowSkip is one row a run refused, as the --skipped worklist states it: the
+// row's ASIN and a libex-select refusal code. Its JSON form, in this field
+// order, is one line - the same shape as a --refusals line, a contract with the
+// series-completion sync bot.
+type RowSkip struct {
+	ASIN   string `json:"asin"`
+	Reason string `json:"reason"`
 }

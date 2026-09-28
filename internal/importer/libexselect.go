@@ -160,6 +160,15 @@ type SelectResult struct {
 	// ASIN on one. They are part of RowsSelected and of no per-series count, in
 	// input order.
 	Attachments []Attachment
+	// UnnamedRefusals counts the refused rows the --refusals worklist could not
+	// name because they state no ASIN (still counted under their reason above);
+	// always 0 when no worklist was asked for.
+	UnnamedRefusals int
+	// CutOnly are series the per-series cap cut works from and for which no
+	// completion row was finally kept (a later pass of the cap/re-check fixpoint
+	// dropped the rest), so they have no PerSeries entry; the report lists them
+	// with the other capped series.
+	CutOnly []SeriesCount
 	// Warnings are informational lines (a catalogue that did not fully
 	// validate) that do not stop the run. A malformed row is NOT a warning: it
 	// is an exclusion, counted like every other one.
@@ -226,11 +235,12 @@ func SelectLibex(exportPath, outPath string, opts SelectOptions) (SelectResult, 
 			attachments.write(append(line, '\n'))
 		}
 	}
-	files := []*stagedFile{subset, attachments}
+	var refusalFile *stagedFile
 	if refusals != nil {
-		files = append(files, refusals.f)
+		refusalFile = refusals.f
+		res.UnnamedRefusals = refusals.flush(rows)
 	}
-	if err := commitAll(files...); err != nil {
+	if err := commitAll(subset, refusalFile, attachments); err != nil {
 		return res, err
 	}
 	return res, nil
@@ -717,12 +727,20 @@ func summarize(rows []selectedRow, cuts map[string]SeriesCount, idx seriesIndex,
 			t.Works++
 		}
 	}
-	// The cap only ever cuts a series down to maxPerSeries (>= 1) works, so
-	// every cut series still has kept rows and therefore a tally already.
+	// The cap cuts a series down to maxPerSeries (>= 1) works, but the cap and
+	// the batch re-check run to a fixpoint, and a later re-check can drop the
+	// works the cap kept - so a cut series need not have a tally. Such a series
+	// is reported on its own (CutOnly), never dereferenced as though it did.
+	res.CutOnly = nil
 	for slug, cut := range cuts {
 		t := tallies[slug]
+		if t == nil {
+			res.CutOnly = append(res.CutOnly, SeriesCount{Series: slug, Name: idx.names[slug], CutWorks: cut.CutWorks, CutRows: cut.CutRows})
+			continue
+		}
 		t.CutWorks, t.CutRows = cut.CutWorks, cut.CutRows
 	}
+	sort.Slice(res.CutOnly, func(i, j int) bool { return res.CutOnly[i].Series < res.CutOnly[j].Series })
 	res.ProjectedWorks = len(works)
 	// A tally exists only because a row was kept for it, and a kept row always
 	// contributes a work, so every listed series is a matched one.
@@ -1212,6 +1230,12 @@ func (r SelectResult) Report() string {
 	for _, reason := range reasonOrder {
 		fmt.Fprintf(&b, "  %-38s %d\n", reason, r.Excluded[reason])
 	}
+	// Printed only when a --refusals worklist was asked for and could not name a
+	// row, so every other report reads exactly as it did.
+	if r.UnnamedRefusals > 0 {
+		fmt.Fprintf(&b, "  (the --refusals worklist omits %d refused %s that state no ASIN)\n",
+			r.UnnamedRefusals, plural(r.UnnamedRefusals, "row"))
+	}
 	if capped := r.cappedSeries(); len(capped) > 0 {
 		fmt.Fprintf(&b, "the per-series cap cut works from %d series:\n", len(capped))
 		for _, s := range capped {
@@ -1229,7 +1253,8 @@ func (r SelectResult) Report() string {
 	return b.String()
 }
 
-// cappedSeries lists every series the cap cut from, in report order.
+// cappedSeries lists every series the cap cut from, in report order, then the
+// ones it cut from that kept no completion at all.
 func (r SelectResult) cappedSeries() []SeriesCount {
 	var out []SeriesCount
 	for _, s := range r.PerSeries {
@@ -1237,7 +1262,7 @@ func (r SelectResult) cappedSeries() []SeriesCount {
 			out = append(out, s)
 		}
 	}
-	return out
+	return append(out, r.CutOnly...)
 }
 
 // plural renders "1 work" / "2 works" without a separate format string per

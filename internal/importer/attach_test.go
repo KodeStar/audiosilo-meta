@@ -116,37 +116,49 @@ func TestRefusalsWorklist(t *testing.T) {
 	dataDir := seedSelectCatalogue(t)
 	rows := append(selectExportRows(),
 		selectRow("not-an-asin", "Volume Eight", "us", "english", seriesName, "8"),
-		selectRow("B0SELECT02", "Volume Two", "gb", "english", seriesName, "2"), // a duplicate ASIN
+		selectRow("", "Volume Nine", "us", "english", seriesName, "9"), // no ASIN at all
+		// A duplicate of a SELECTED ASIN: its line would name a row the subset
+		// carries, so the worklist omits it.
+		selectRow("B0SELECT02", "Volume Two", "gb", "english", seriesName, "2"),
+		// A duplicate of a REFUSED one names nothing selected, so it is listed.
+		selectRow("B0OTHER001", "Unrelated Book", "gb", "english", "Some Other Series", "1"),
 	)
-	res, _, lines := selectInto(t, dataDir, rows)
+	res, subset, lines := selectInto(t, dataDir, rows)
 
-	if len(lines) != res.RowsRead-res.RowsSelected {
-		t.Fatalf("%d refusal lines for %d refused rows", len(lines), res.RowsRead-res.RowsSelected)
+	// Every refused row but the unnamed one and the duplicate of a selected ASIN.
+	if len(lines) != res.RowsRead-res.RowsSelected-2 {
+		t.Fatalf("%d refusal lines for %d refused rows (2 omitted)", len(lines), res.RowsRead-res.RowsSelected)
 	}
-	perCode := map[string]int{}
-	byASIN := map[string]string{}
+	body, _ := os.ReadFile(subset)
+	for _, l := range lines {
+		if l.ASIN == "" {
+			t.Errorf("a line with no ASIN: %+v", l)
+		}
+		if strings.Contains(string(body), `"asin":"`+l.ASIN+`"`) {
+			t.Errorf("line %+v names an ASIN the subset carries", l)
+		}
+	}
+	if res.UnnamedRefusals != 1 || !strings.Contains(res.Report(), "the --refusals worklist omits 1 refused row that state no ASIN") {
+		t.Errorf("UnnamedRefusals = %d; report:\n%s", res.UnnamedRefusals, res.Report())
+	}
+	var got []string
 	for _, l := range lines {
 		if !slices.Contains(RefusalCodes(), l.Reason) {
 			t.Errorf("line %+v carries a code outside the contract", l)
 		}
-		perCode[l.Reason]++
-		byASIN[l.ASIN] = l.Reason
+		got = append(got, l.ASIN+" "+l.Reason)
 	}
-	for reason, n := range res.Excluded {
-		if perCode[refusalCodeOf[reason]] != n {
-			t.Errorf("code %s: %d lines, report counts %d", refusalCodeOf[reason], perCode[refusalCodeOf[reason]], n)
-		}
+	// Stream order, the held duplicate-asin lines last.
+	want := []string{
+		"B0OTHER001 " + RefusalNoCatalogueSeries,
+		"B0PRESENT1 " + RefusalASINInCatalogue,
+		"B0LANG0003 " + RefusalUnmappedLanguage,
+		"B0REGION04 " + RefusalUnmappedRegion,
+		"not-an-asin " + RefusalMalformedASIN,
+		"B0OTHER001 " + RefusalDuplicateASIN,
 	}
-	want := map[string]string{
-		"B0OTHER001":  RefusalNoCatalogueSeries,
-		"B0PRESENT1":  RefusalASINInCatalogue,
-		"B0LANG0003":  RefusalUnmappedLanguage,
-		"B0REGION04":  RefusalUnmappedRegion,
-		"not-an-asin": RefusalMalformedASIN,
-		"B0SELECT02":  RefusalDuplicateASIN,
-	}
-	if !reflect.DeepEqual(byASIN, want) {
-		t.Errorf("refusals = %v\nwant %v", byASIN, want)
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("refusals = %q\nwant %q", got, want)
 	}
 	raw, _ := json.Marshal(refusalLine{ASIN: "B0X", Reason: RefusalPositionClaimed})
 	if string(raw) != `{"asin":"B0X","reason":"position-claimed"}` {
@@ -567,5 +579,155 @@ func TestSelectOutputsAreAllOrNothing(t *testing.T) {
 			names = append(names, e.Name())
 		}
 		t.Errorf("a failed run left files behind: %v", names)
+	}
+}
+
+// The incumbent's own SUBTITLE is read by the product vetoes too, both ways: a
+// young-readers edition in the catalogue is not the adult book, whatever field
+// said so.
+func TestAttachReadsTheIncumbentsSubtitle(t *testing.T) {
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/ad/ada-mapmaker.json": `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"user"}]}`,
+		"works/th/the-lost-coast/work.json": `{"authors":["ada-mapmaker"],"id":"the-lost-coast","language":"en","license":"CC0-1.0",` +
+			`"sources":[{"type":"user"}],"subtitle":"Young Readers Edition","title":"The Lost Coast"}`,
+		"series/ca/cartographer-chronicles.json": `{"id":"cartographer-chronicles","license":"CC0-1.0","name":"Cartographer Chronicles",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"the-lost-coast"}]}`,
+	})
+	res, _, lines := selectInto(t, dataDir, []string{
+		attachExportRow("B0DENY0014", "The Lost Coast", "us", "english", "Ada Mapmaker", "Cal Voice", "1"),
+		`{"asin":"B0ATTACH10","title":"The Lost Coast","subtitle":"Young Readers Edition","region":"us","language":"english",` +
+			`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],"series":[{"name":"` + seriesName + `","position":"1"}]}`,
+	})
+	if len(res.Attachments) != 1 || res.Attachments[0].ASIN != "B0ATTACH10" {
+		t.Errorf("attachments = %+v, want only the young-readers row", res.Attachments)
+	}
+	if len(lines) != 1 || lines[0].ASIN != "B0DENY0014" || lines[0].Reason != RefusalPositionClaimed {
+		t.Errorf("refusals = %+v, want the adult row refused as position-claimed", lines)
+	}
+}
+
+// An attached or refused row's OTHER positioned claims are placements it asked
+// for and did not get, so they are reported as lost, like any row that could
+// not be imported.
+func TestAttachReportsTheRowsOtherClaimsAsLost(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	seedTree(t, dataDir, map[string]string{
+		"series/at/atlas-cycle.json": `{"id":"atlas-cycle","license":"CC0-1.0","name":"Atlas Cycle",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"the-lost-coast"}]}`,
+	})
+	row := `{"asin":"B0ATTACH11","title":"The Lost Coast","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"1"},{"name":"Atlas Cycle","position":"4"}]}`
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, row)
+	if sum.Attached != 1 {
+		t.Fatalf("Attached = %d", sum.Attached)
+	}
+	if !hasWarning(sum.Warnings, "1 series placements lost") {
+		t.Errorf("the second claim is not reported lost: %v", sum.Warnings)
+	}
+	if got := seriesWorks(t, dataDir, "atlas-cycle"); !reflect.DeepEqual(got, map[string]string{"the-lost-coast": "1"}) {
+		t.Errorf("atlas-cycle = %v - an attachment placed the incumbent", got)
+	}
+}
+
+// The --skipped worklist's source: every refused row with an ASIN and a code,
+// position-claimed for a row --existing-series-only turned away.
+func TestImportSkipsCarryRefusalCodes(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true},
+		attachExportRow("B0DENY0001", "The Lost Coast Redux", "us", "english", "Ada Mapmaker", "Cal Voice", "1"),
+		attachExportRow("B0REGION04", "Volume Four", "zz", "english", "Ada Mapmaker", "Cal Voice", "4"),
+		attachExportRow("B0LANG0003", "Volume Three", "us", "klingon", "Ada Mapmaker", "Cal Voice", "3"),
+		attachExportRow("", "Volume Five", "us", "english", "Ada Mapmaker", "Cal Voice", "5"),
+	)
+	want := []RowSkip{
+		{"B0REGION04", RefusalUnmappedRegion},
+		{"B0DENY0001", RefusalPositionClaimed},
+		{"B0LANG0003", RefusalUnmappedLanguage},
+	}
+	if !reflect.DeepEqual(sum.Skips, want) {
+		t.Errorf("Skips = %+v\nwant %+v", sum.Skips, want)
+	}
+}
+
+// summarize must not assume every series the cap cut still has a kept
+// completion: the cap and the batch re-check run to a fixpoint, and a later
+// re-check can drop what the cap kept.
+func TestSummarizeACutSeriesWithNoKeptRows(t *testing.T) {
+	var res SelectResult
+	idx := seriesIndex{names: map[string]string{"gone": "Gone Series", "kept": "Kept Series"}}
+	rows := []selectedRow{{seriesSlug: "kept", workKey: "kept\x00a"}}
+	cuts := map[string]SeriesCount{"gone": {Series: "gone", CutWorks: 2, CutRows: 3}, "kept": {Series: "kept", CutWorks: 1, CutRows: 1}}
+	res.Excluded = map[string]int{}
+	summarize(rows, cuts, idx, &res)
+	if len(res.PerSeries) != 1 || res.PerSeries[0].CutWorks != 1 {
+		t.Errorf("PerSeries = %+v", res.PerSeries)
+	}
+	if len(res.CutOnly) != 1 || res.CutOnly[0].Name != "Gone Series" || res.CutOnly[0].CutWorks != 2 {
+		t.Errorf("CutOnly = %+v", res.CutOnly)
+	}
+	if r := res.Report(); !strings.Contains(r, "the per-series cap cut works from 2 series") || !strings.Contains(r, "Gone Series") {
+		t.Errorf("report:\n%s", r)
+	}
+}
+
+// Two outputs that do not exist yet are still one file when their names differ
+// only in case (APFS, NTFS) or reach one directory through a symlinked parent.
+func TestSelectOutputsCatchAliasesOfNewFiles(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	dir := t.TempDir()
+	in := filepath.Join(dir, "export.ndjson")
+	if err := os.WriteFile(in, []byte(selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2")+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	out := filepath.Join(dir, "out")
+	if err := os.Mkdir(out, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	alias := filepath.Join(dir, "alias")
+	if err := os.Symlink(out, alias); err != nil {
+		t.Fatal(err)
+	}
+	sub := filepath.Join(out, "subset.ndjson")
+	for _, tc := range []struct{ name, refusals string }{
+		{"case only", filepath.Join(out, "Subset.NDJSON")},
+		{"symlinked parent", filepath.Join(alias, "subset.ndjson")},
+		{"input, case only", filepath.Join(dir, "EXPORT.ndjson")},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := SelectLibex(in, sub, SelectOptions{DataDir: dataDir, RefusalsPath: tc.refusals})
+			if err == nil || !strings.Contains(err.Error(), "refusing to write") {
+				t.Errorf("err = %v, want a refusal", err)
+			}
+		})
+	}
+}
+
+// The subset is renamed LAST: when it cannot be placed, the worklists already
+// renamed are removed again, so no output of a failed run survives.
+func TestSelectOutputsCommitTheSubsetLast(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	dir := t.TempDir()
+	in := filepath.Join(dir, "export.ndjson")
+	if err := os.WriteFile(in, []byte(selectRow("B0OTHER001", "Unrelated", "us", "english", "Elsewhere", "1")+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	// A non-empty directory where the subset goes: its rename must fail.
+	sub := filepath.Join(dir, "subset.ndjson")
+	if err := os.MkdirAll(filepath.Join(sub, "x"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	refusals, attachments := filepath.Join(dir, "r.ndjson"), filepath.Join(dir, "a.ndjson")
+	if _, err := SelectLibex(in, sub, SelectOptions{DataDir: dataDir, RefusalsPath: refusals, AttachmentsPath: attachments}); err == nil {
+		t.Fatal("the subset's rename must fail")
+	}
+	for _, p := range []string{refusals, attachments} {
+		if _, err := os.Stat(p); !os.IsNotExist(err) {
+			t.Errorf("%s survived a failed commit: %v", p, err)
+		}
+	}
+	if left, _ := filepath.Glob(filepath.Join(dir, ".metaimport-*")); len(left) > 0 {
+		t.Errorf("temp files left: %v", left)
 	}
 }

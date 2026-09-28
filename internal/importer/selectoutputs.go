@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 // selectoutputs.go is how libex-select writes what it writes: the subset (-o)
@@ -20,21 +21,41 @@ import (
 // refusals' messages.
 type selectOutput struct{ flag, path string }
 
-// sameFile reports whether two paths name one file: the same spelling, the same
-// absolute path, or - since distinct names can still be one file - a symlink or
-// hard link to it (os.SameFile, asked only when both exist).
+// sameFile reports whether two paths may name one file, erring toward yes: the
+// same spelling, or - since distinct names can still be one file - a symlink or
+// hard link to it (os.SameFile, asked when both exist), or, for a path that does
+// not exist yet, the same file once written: the two parent directories resolved
+// through their symlinks (filepath.EvalSymlinks) and the base names compared
+// CASE-INSENSITIVELY, because the default filesystems of macOS (APFS) and Windows
+// (NTFS) are, and "Subset.ndjson" beside "subset.ndjson" is one file there. On a
+// case-sensitive filesystem that refuses a pair that would have been two files,
+// which costs a rename; the other error costs the subset.
 func sameFile(a, b string) bool {
 	if filepath.Clean(a) == filepath.Clean(b) {
 		return true
 	}
-	aAbs, aErr := filepath.Abs(a)
-	bAbs, bErr := filepath.Abs(b)
-	if aErr == nil && bErr == nil && aAbs == bAbs {
-		return true
-	}
 	aInfo, aErr := os.Stat(a)
 	bInfo, bErr := os.Stat(b)
-	return aErr == nil && bErr == nil && os.SameFile(aInfo, bInfo)
+	if aErr == nil && bErr == nil && os.SameFile(aInfo, bInfo) {
+		return true
+	}
+	aDir, aBase, aOK := resolvedLocation(a)
+	bDir, bBase, bOK := resolvedLocation(b)
+	return aOK && bOK && strings.EqualFold(aDir, bDir) && strings.EqualFold(aBase, bBase)
+}
+
+// resolvedLocation is where a path's file is or would be written: its parent
+// directory, absolute and resolved through every symlink, and its base name.
+func resolvedLocation(path string) (dir, base string, ok bool) {
+	abs, err := filepath.Abs(path)
+	if err != nil {
+		return "", "", false
+	}
+	dir, err = filepath.EvalSymlinks(filepath.Dir(abs))
+	if err != nil {
+		return "", "", false
+	}
+	return dir, filepath.Base(abs), true
 }
 
 // refuseSelfOverwrite fails when the subset would land on the input export.
@@ -147,38 +168,58 @@ func (f *stagedFile) discard() {
 }
 
 // commitAll finishes every staged output and, only when all of them were
-// written, renames each into place. A failure discards every temp file, so the
-// outputs are all-or-nothing up to the renames themselves.
-func commitAll(files ...*stagedFile) error {
-	for _, f := range files {
+// written, renames them into place: the worklists first and the SUBSET LAST, so
+// a subset on disk means everything this run wrote is there with it - the
+// subset is what a caller acts on. A failure discards every temp file, and a
+// worklist rename that fails (or a subset rename after the worklists landed)
+// also removes the worklists already renamed, so no half of a run is left.
+func commitAll(subset *stagedFile, worklists ...*stagedFile) error {
+	all := append([]*stagedFile{subset}, worklists...)
+	fail := func(renamed []*stagedFile, err error) error {
+		for _, g := range all {
+			g.discard()
+		}
+		for _, g := range renamed {
+			_ = os.Remove(g.path)
+		}
+		return err
+	}
+	for _, f := range all {
 		if f == nil {
 			continue
 		}
 		if err := f.finish(); err != nil {
-			for _, g := range files {
-				g.discard()
-			}
-			return err
+			return fail(nil, err)
 		}
 	}
-	for _, f := range files {
+	var renamed []*stagedFile
+	for _, f := range append(worklists, subset) {
 		if f == nil {
 			continue
 		}
 		if err := os.Rename(f.tmp.Name(), f.path); err != nil {
-			for _, g := range files {
-				g.discard()
-			}
-			return fmt.Errorf("write %s: %w", f.path, err)
+			return fail(renamed, fmt.Errorf("write %s: %w", f.path, err))
 		}
 		f.done = true
+		renamed = append(renamed, f)
 	}
 	return nil
 }
 
 // refusalLog is the --refusals worklist over its staged file. A nil log is "not
 // asked for".
-type refusalLog struct{ f *stagedFile }
+//
+// Two rules keep every line one a reader can act on. A line never names an ASIN
+// the subset carries: the only refusal that can share an ASIN with a selected
+// row is duplicate-asin (the other copy was kept), so those lines are HELD and
+// written at the end (flush), minus every ASIN the subset carries. And a line
+// never carries an empty ASIN: a row stating none cannot be named, so it is
+// counted (unnamed, printed by the report) instead of written.
+type refusalLog struct {
+	f          *stagedFile
+	duplicates []string
+	unnamed    int
+}
 
 // refusalLine is one --refusals line. The field order is the line's key order.
 type refusalLine struct {
@@ -191,6 +232,17 @@ func (l *refusalLog) add(asin, reason string) {
 	if l == nil {
 		return
 	}
+	switch {
+	case asin == "":
+		l.unnamed++
+	case reason == reasonDuplicateASIN:
+		l.duplicates = append(l.duplicates, asin)
+	default:
+		l.line(asin, reason)
+	}
+}
+
+func (l *refusalLog) line(asin, reason string) {
 	code, ok := refusalCodeOf[reason]
 	if !ok {
 		l.f.fail(fmt.Errorf("--refusals: no refusal code for reason %q", reason))
@@ -199,4 +251,22 @@ func (l *refusalLog) add(asin, reason string) {
 	line, err := json.Marshal(refusalLine{ASIN: asin, Reason: code})
 	l.f.fail(err)
 	l.f.write(append(line, '\n'))
+}
+
+// flush writes the held duplicate-asin lines whose ASIN the subset does not
+// carry, and returns how many refused rows the worklist could not name.
+func (l *refusalLog) flush(selected []selectedRow) int {
+	if l == nil {
+		return 0
+	}
+	kept := make(map[string]bool, len(selected))
+	for _, r := range selected {
+		kept[r.asin] = true
+	}
+	for _, asin := range l.duplicates {
+		if !kept[asin] {
+			l.line(asin, reasonDuplicateASIN)
+		}
+	}
+	return l.unnamed
 }

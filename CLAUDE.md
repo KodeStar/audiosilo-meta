@@ -1763,9 +1763,11 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   under `titlerule` (`StripDecoration` against the series name when it proposes
   a title, then `CompareKeyWhole` - the slug-chain walk cannot see a decorated
   retailer title, which is the population this exists for), a compatible
-  language, a narrator, and no veto in ANY title variant (short, full,
-  subtitle): no stated volume contradicting the position, no one-sided product
-  statement (a split-release part, a collection, a young-readers adaptation) -
+  language, a narrator, and no veto in ANY title variant (the row's short,
+  full and subtitle; the incumbent's title, subtitle and both joined): no row
+  volume contradicting the position, no one-sided product statement (a
+  split-release part, a collection, a young-readers adaptation) made by one
+  side and not the other -
   in which case it is SELECTED FOR ATTACHMENT (`internal/importer/attach.go`,
   the one decision both sides ask): the create path under
   `--existing-series-only` writes it as a new recording of that work, or merges
@@ -1774,25 +1776,38 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   incumbent. The FALL-THROUGH agrees on both sides: a row at an occupied
   position that does not attach is `position-claimed` in the selector, and the
   import under `--existing-series-only` SKIPS it with a warning
-  (`Summary.SkippedOccupied`) - never a sibling work at an occupied position,
-  whatever subset it is handed. Attachments count in the summary line's new
-  recordings / merged asins, and in neither tool's per-series or work counts;
-  each tool prints one extra line only when it attached something, so a run
-  that attached nothing prints exactly what it always did. A translated title,
+  (`Summary.SkippedOccupied`, printed on its own line only when non-zero) -
+  never a sibling work at an occupied position, whatever subset it is handed.
+  An attached or skipped row's OTHER positioned claims are reported as lost
+  placements. Attachments count in the summary line's new recordings / merged
+  asins (and in `Summary.Attached` only when a recording or an ASIN was really
+  written), and in neither tool's per-series or work counts; each tool prints
+  one extra line only when it attached something, so a run that attached
+  nothing prints exactly what it always did. A translated title,
   and a same title in another language, stay refused: a work is
   language-scoped here (metacheck's cross-language advisory) and a translation
-  cannot be verified by its title. Two worklists are the sync bot's CONTRACT,
-  beside the report: `--refusals <path>`, one NDJSON line `{"asin","reason"}`
-  per refused row, the codes the stable constants of
+  cannot be verified by its title. Three worklists are the sync bot's
+  CONTRACT, beside the report: `--refusals <path>`, one NDJSON line
+  `{"asin","reason"}` per refused row, the codes the stable constants of
   `internal/importer/refusalcodes.go` (pinned by `TestRefusalCodesAreStable`;
-  one code per report reason, and the report's wording is untouched), and
+  one code per report reason, and the report's wording is untouched) - never
+  naming an ASIN the subset carries (a duplicate-asin line whose other copy was
+  kept is omitted) and never an empty ASIN (such rows are counted in one report
+  line, printed only when non-zero); `metaimport libex --skipped <path>`, the
+  IMPORT's twin in the same shape, one line per row the run refused for a
+  reason with a code (malformed ASIN, unmapped region or language, a refused
+  credit, and `position-claimed` for `SkippedOccupied`), written atomically on
+  success so the bot can memoize a row the selector kept and the import
+  refused; and
   `--attachments <path>`, one line `{"asin","work","series","position"}` per
   row selected for attachment (the incumbent's slug, the series slug and the
   shared position), which is how a reader tells those rows from completions in
-  the subset. The subset and both worklists are staged and renamed into place
-  together, only once all were written (`selectoutputs.go`), and no two of them
-  - nor any of them and the input - may be one file (`sameFile`, links
-  included); `scripts/
+  the subset. The subset and both select worklists are staged and renamed into
+  place only once all were written, the worklists first and the SUBSET LAST
+  (`selectoutputs.go`), so a subset on disk means the worklists are there too;
+  and no two of them - nor any of them and the input - may be one file
+  (`sameFile`: links, and for a file not written yet its symlink-resolved
+  parent plus a case-insensitive base name); `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
   operator flow - the received dump is Postgres 16 custom format); the
   **AI-credit exclusion** (an AI is not a person, so a row crediting one is

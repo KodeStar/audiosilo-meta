@@ -83,6 +83,7 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	// already dropped those rows - but the two counts are of the same thing, and
 	// clobbering would be a bug the day that stops being true.
 	sum.SkippedRows += parsed.skipped
+	sum.Skips = append(parsed.skips, sum.Skips...)
 	// Aggregated parse lines are run-level and lead; a create run's per-row
 	// parse lines follow the run's own, keeping Summary.Warnings' order.
 	if bounded := opts.Mode.boundedByCatalogue(); bounded {
@@ -154,6 +155,17 @@ type libexParse struct {
 	books    []sourceBook
 	skipped  int
 	warnings []libexWarning
+	// skips names each refused row that has an ASIN to name it by, under its
+	// refusal code (Summary.Skips, the --skipped worklist).
+	skips []RowSkip
+}
+
+// skip records one refused row for Summary.Skips; a row with no ASIN is not
+// listed.
+func (lp *libexParse) skip(asin, reason string) {
+	if asin != "" {
+		lp.skips = append(lp.skips, RowSkip{ASIN: asin, Reason: refusalCodeOf[reason]})
+	}
 }
 
 // add records a parse-layer warning. label names the row (its ASIN, else its
@@ -246,6 +258,7 @@ func parseLibex(data []byte) (libexParse, error) {
 		if asin == "" {
 			label := firstNonEmpty(e.str("title"), e.str("asin"), "(unknown row)")
 			lp.skipped++
+			lp.skip(strings.TrimSpace(e.str("asin")), reasonNoASIN)
 			lp.add(warnNoASIN, label, "row %q has no well-formed ASIN (%q); skipped", label, e.str("asin"))
 			continue
 		}
@@ -257,6 +270,7 @@ func parseLibex(data []byte) (libexParse, error) {
 		region, rawRegion, ok := libexRegion(e)
 		if !ok {
 			lp.skipped++
+			lp.skip(asin, reasonRegion)
 			lp.add(warnUnknownRegion, asin, "%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
 			continue
 		}
@@ -269,6 +283,7 @@ func parseLibex(data []byte) (libexParse, error) {
 		authors, narrators := libexNames(e["authors"]), libexNames(e["narrators"])
 		if r, refused := refuseLibexCredits(authors, narrators); refused {
 			lp.skipped++
+			lp.skip(asin, r.reason)
 			lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
 			continue
 		}

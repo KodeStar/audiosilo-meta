@@ -119,7 +119,7 @@ func (p *planner) sameBookAs(ws *workState, b sourceBook, seriesName string, ref
 			titled = true
 		}
 	}
-	if !titled || vetoed(rowTitleVariants(b), ws.title, seriesName, ref) {
+	if !titled || vetoed(rowTitleVariants(b), workTitleVariants(ws), seriesName, ref) {
 		return false
 	}
 	return matchWork(ws, p.rowWorkAuthorsRO(p.rowAuthorCredits(b))) != matchNone
@@ -153,6 +153,15 @@ func attachTitleKey(title, seriesName string) string {
 	return titlerule.CompareKeyWhole(t)
 }
 
+// workTitleVariants is every title the incumbent states: its title, its
+// subtitle, and the two joined as a retailer would print them.
+func workTitleVariants(ws *workState) []string {
+	if ws.subtitle == "" {
+		return []string{ws.title}
+	}
+	return []string{ws.title, ws.subtitle, ws.title + ": " + ws.subtitle}
+}
+
 // rowTitleVariants is every title a row states: the short title, the full
 // "Title: Subtitle" and the subtitle on its own.
 func rowTitleVariants(b sourceBook) []string {
@@ -165,25 +174,32 @@ func rowTitleVariants(b sourceBook) []string {
 	return out
 }
 
-// vetoed reports whether any of the row's title variants refuses the attachment:
-// a stated volume contradicting the claimed position, or a one-sided PRODUCT
-// statement - a split-release part, a collection, a young-readers adaptation -
-// that the row makes and the incumbent's title does not, or the other way round.
-// Each is read over every variant, since a retailer puts it in whichever field
-// it likes ("The Lost Coast" with the subtitle "Young Readers Edition").
-func vetoed(variants []string, workTitle, seriesName string, ref seriesRef) bool {
-	var part, coll, young bool
-	for _, t := range variants {
+// vetoed reports whether the attachment is refused by a title statement: a row
+// variant stating a volume that contradicts the claimed position, or a
+// one-sided PRODUCT statement - a split-release part, a collection, a
+// young-readers adaptation - that one side makes in any of its variants and the
+// other makes in none, in either direction. Every variant is read on both
+// sides, since a retailer or a contributor puts it in whichever field they like
+// ("The Lost Coast" with the subtitle "Young Readers Edition").
+func vetoed(rowVariants, workVariants []string, seriesName string, ref seriesRef) bool {
+	for _, t := range rowVariants {
 		if _, contradicts := statedVolumePosition(ref, t); contradicts {
 			return true
 		}
-		part = part || splitPart(t)
-		coll = coll || titlerule.IsCollectionIn(t, seriesName)
-		young = young || titlerule.IsYoungReadersAdaptation(t)
 	}
-	return part != splitPart(workTitle) ||
-		coll != titlerule.IsCollectionIn(workTitle, seriesName) ||
-		young != titlerule.IsYoungReadersAdaptation(workTitle)
+	row, work := productStatements(rowVariants, seriesName), productStatements(workVariants, seriesName)
+	return row != work
+}
+
+// productStatements is which one-sided product statements any of a side's
+// title variants makes.
+func productStatements(variants []string, seriesName string) (s struct{ part, coll, young bool }) {
+	for _, t := range variants {
+		s.part = s.part || splitPart(t)
+		s.coll = s.coll || titlerule.IsCollectionIn(t, seriesName)
+		s.young = s.young || titlerule.IsYoungReadersAdaptation(t)
+	}
+	return s
 }
 
 // splitOfRE is a split release's bracketed part count - "(1 of 2)", "[Part 2 of
@@ -206,14 +222,15 @@ func splitPart(title string) bool {
 
 // completionClaim is the claim a row completes a series with, as libex-select
 // reads it (seriesVerdict.observe): the FIRST of its claims the batch resolution
-// sent to a series the catalogue holds. ok is false when there is none.
-func completionClaim(b sourceBook) (seriesRef, bool) {
-	for _, r := range b.series {
+// sent to a series the catalogue holds, and its index in b.series. ok is false
+// (and at -1) when there is none.
+func completionClaim(b sourceBook) (r seriesRef, at int, ok bool) {
+	for i, r := range b.series {
 		if r.target.found {
-			return r, true
+			return r, i, true
 		}
 	}
-	return seriesRef{}, false
+	return seriesRef{}, -1, false
 }
 
 // attachTarget is the create path's side of the rule, under
@@ -226,7 +243,7 @@ func (p *planner) attachTarget(b sourceBook) (ws *workState, occupant string) {
 	if !p.existingSeriesOnly || p.mode != ModeCreate {
 		return nil, ""
 	}
-	r, ok := completionClaim(b)
+	r, _, ok := completionClaim(b)
 	if !ok || !r.seqOK {
 		return nil, ""
 	}
@@ -243,12 +260,29 @@ func (p *planner) attachTarget(b sourceBook) (ws *workState, occupant string) {
 // guard it applies to any recording - the same-production runtime and abridged
 // tests, the serial guard, the region and ISBN rules). Nothing else is written:
 // no work fact, no series placement.
+//
+// Summary.Attached counts the row only when addRecording actually wrote
+// something - a recording, or the ASIN merged onto one - so a row one of its
+// guards turned away is not reported as attached.
 func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang string, narratorNames []string, warn func(string, ...any)) {
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
+	recs, merged := p.summary.NewRecordings, p.summary.MergedASINs
 	if p.addRecording(ws, b, workTitle, asin, lang, narratorSlugs, warn) && asin != "" {
 		// addBook's single-owner rule for the ASIN registry: claimed only once
 		// the ASIN actually landed on a recording.
 		p.asins[asin] = true
 	}
-	p.summary.Attached++
+	if p.summary.NewRecordings > recs || p.summary.MergedASINs > merged {
+		p.summary.Attached++
+	}
+}
+
+// noteSkip records a row the run refused for a reason with a refusal code, for
+// the --skipped worklist (Summary.Skips). A row with no ASIN cannot be named
+// and is not listed.
+func (p *planner) noteSkip(asin, reason string) {
+	if asin == "" {
+		return
+	}
+	p.summary.Skips = append(p.summary.Skips, RowSkip{ASIN: asin, Reason: refusalCodeOf[reason]})
 }
