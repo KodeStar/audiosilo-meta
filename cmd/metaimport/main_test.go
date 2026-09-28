@@ -727,3 +727,36 @@ func TestSkippedFlagWritesTheWorklist(t *testing.T) {
 		t.Errorf("--skipped on openaudible: exit %d, want 2", code)
 	}
 }
+
+// A --skipped path that cannot be written fails BEFORE the import runs; a
+// worklist that cannot be committed after a completed import still leaves the
+// summary printed, since the tree was written.
+func TestSkippedFlagIsStagedBeforeTheRun(t *testing.T) {
+	dir := t.TempDir()
+	blocker := filepath.Join(dir, "file")
+	if err := os.WriteFile(blocker, nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	ran := false
+	run := func(string, importer.Options) (importer.Summary, error) {
+		ran = true
+		return importer.Summary{}, nil
+	}
+	var code int
+	captureStdout(t, func() {
+		code = runSource(boundedSource, []string{"export.json", "--skipped", filepath.Join(blocker, "skipped.ndjson")}, run)
+	})
+	if code == 0 || ran {
+		t.Errorf("exit %d, ran %v: a bad --skipped path must fail before the import", code, ran)
+	}
+
+	// A directory where the worklist goes: staging works, the commit cannot.
+	dest := filepath.Join(dir, "skipped.ndjson")
+	if err := os.MkdirAll(filepath.Join(dest, "x"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	out := captureStdout(t, func() { code = runSource(boundedSource, []string{"export.json", "--skipped", dest}, run) })
+	if code != 1 || !strings.HasPrefix(out, "imported: ") {
+		t.Errorf("exit %d, stdout %q: a completed import prints its summary even when the worklist fails", code, out)
+	}
+}

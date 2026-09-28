@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--refusals <path>] [--attachments <path>]
 //
 // libex-select writes no records: it reduces a full libex export to the
@@ -31,9 +31,12 @@
 // {"asin","reason"} line per row the run refused for a reason that has a
 // libex-select refusal code - a malformed ASIN, an unmapped region or language,
 // a refused credit, and position-claimed for a row --existing-series-only turned
-// away at an occupied position - written atomically when the run succeeds. The
+// away at an occupied position (or attached without anything being written) -
+// written atomically when the run succeeds. The
 // sync bot memoizes those rows as refusals, so a row the selector kept and the
-// import refused is not selected again every cycle.
+// import refused is not selected again every cycle. The file is staged before
+// the run (a bad path fails before the tree is touched) and never names an ASIN
+// the run imported after all.
 //
 // --dry-run prints the plan without writing. A real run writes the new/changed
 // files, then validates the whole tree and exits non-zero if that fails. Import
@@ -101,14 +104,11 @@
 package main
 
 import (
-	"bufio"
 	"context"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
 	"os"
-	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -228,6 +228,20 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		opts.SeriesLookupLimit = *seriesLookupLimit
 	}
 
+	// The --skipped worklist is staged BEFORE the run, so a path that cannot be
+	// written fails here, before the import touches the tree; it is committed
+	// (renamed into place, the previous file kept on failure) only once the run
+	// completed. One {"asin","reason"} line per refused row with a refusal code -
+	// the --refusals shape and writer, so the sync bot reads both with one reader.
+	var skippedLog *importer.Worklist
+	if *skipped != "" {
+		if skippedLog, err = importer.OpenWorklist(*skipped, "--skipped"); err != nil {
+			fmt.Fprintln(os.Stderr, "metaimport:", err)
+			return 2
+		}
+		defer skippedLog.Discard() // a no-op once committed
+	}
+
 	sum, err := run(exportPath, opts)
 
 	// The summary prints only on success. A run can fail BEFORE it plans anything
@@ -238,47 +252,18 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 1
 	}
-	if *skipped != "" {
-		if err := writeSkipped(*skipped, sum.Skips); err != nil {
-			fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
+	// The import completed, so its summary prints whatever happens to the
+	// worklist after it: the tree is written, and the summary is the record of
+	// what was.
+	printSummary(sum, *dryRun, mode)
+	if skippedLog != nil {
+		skippedLog.Write(sum.Skips)
+		if err := skippedLog.Commit(); err != nil {
+			fmt.Fprintln(os.Stderr, "metaimport:", err)
 			return 1
 		}
 	}
-	printSummary(sum, *dryRun, mode)
 	return 0
-}
-
-// writeSkipped writes the --skipped worklist atomically (a temp file beside it,
-// renamed into place): one {"asin","reason"} line per refused row, the reason a
-// libex-select refusal code - the --refusals shape, so the sync bot reads both
-// with one reader. It is written, empty or not, only when the run succeeded.
-func writeSkipped(path string, skips []importer.RowSkip) error {
-	dir := filepath.Dir(path)
-	tmp, err := os.CreateTemp(dir, ".metaimport-skipped-*.tmp")
-	if err != nil {
-		return err
-	}
-	defer func() { _ = os.Remove(tmp.Name()) }() // a no-op once renamed
-	w := bufio.NewWriter(tmp)
-	enc := json.NewEncoder(w)
-	for _, s := range skips {
-		if err := enc.Encode(s); err != nil {
-			_ = tmp.Close()
-			return err
-		}
-	}
-	if err := w.Flush(); err != nil {
-		_ = tmp.Close()
-		return err
-	}
-	if err := tmp.Chmod(0o644); err != nil {
-		_ = tmp.Close()
-		return err
-	}
-	if err := tmp.Close(); err != nil {
-		return err
-	}
-	return os.Rename(tmp.Name(), path)
 }
 
 // openConflictLog opens the --conflicts worklist for APPEND, returning the sink
@@ -465,17 +450,17 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	if s.GenreWorks > 0 {
 		fmt.Printf("  added genres to %d already-attested works\n", s.GenreWorks)
 	}
-	// Printed only when a run attached something (--existing-series-only, the
-	// attach rule in internal/importer/attach.go), so every other summary reads
-	// exactly as it did. The attached rows are already inside the summary line's
-	// "new recordings" and "asins merged" counts; this says which of those were
-	// attachments.
 	// Printed only when a run refused one (--existing-series-only), and on a
 	// line of its own: the create summary line's shape is parsed by the sync bot.
 	if s.SkippedOccupied > 0 {
 		fmt.Printf("  skipped %d %s claiming a series position the catalogue already holds with another work (--existing-series-only)\n",
 			s.SkippedOccupied, pluralRows(s.SkippedOccupied))
 	}
+	// Printed only when a run attached something (--existing-series-only, the
+	// attach rule in internal/importer/attach.go), so every other summary reads
+	// exactly as it did. The attached rows are already inside the summary line's
+	// "new recordings" and "asins merged" counts; this says which of those were
+	// attachments.
 	if s.Attached > 0 {
 		fmt.Printf("  attached %d %s to the catalogued work already at %s series position (counted above as new recordings or merged asins)\n",
 			s.Attached, pluralRows(s.Attached), pluralTheir(s.Attached))
@@ -537,7 +522,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--refusals <path>] [--attachments <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")

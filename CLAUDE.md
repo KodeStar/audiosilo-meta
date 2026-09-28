@@ -1778,10 +1778,11 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   import under `--existing-series-only` SKIPS it with a warning
   (`Summary.SkippedOccupied`, printed on its own line only when non-zero) -
   never a sibling work at an occupied position, whatever subset it is handed.
-  An attached or skipped row's OTHER positioned claims are reported as lost
-  placements. Attachments count in the summary line's new recordings / merged
+  A skipped row's OTHER positioned claims are reported as lost placements, and
+  an attached row's too unless the incumbent already sits at that series and
+  position, so a clean attachment raises no warning. Attachments count in the summary line's new recordings / merged
   asins (and in `Summary.Attached` only when a recording or an ASIN was really
-  written), and in neither tool's per-series or work counts; each tool prints
+  written - an attached row that wrote nothing is a `position-claimed` skip), and in neither tool's per-series or work counts; each tool prints
   one extra line only when it attached something, so a run that attached
   nothing prints exactly what it always did. A translated title,
   and a same title in another language, stay refused: a work is
@@ -1796,15 +1797,21 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   line, printed only when non-zero); `metaimport libex --skipped <path>`, the
   IMPORT's twin in the same shape, one line per row the run refused for a
   reason with a code (malformed ASIN, unmapped region or language, a refused
-  credit, and `position-claimed` for `SkippedOccupied`), written atomically on
-  success so the bot can memoize a row the selector kept and the import
-  refused; and
+  credit, and `position-claimed` for `SkippedOccupied`), never naming an ASIN
+  the run recorded after all (a sibling row of that ASIN imported), staged
+  BEFORE the run so a bad path fails before the tree is touched and committed
+  once the run completed (the summary prints either way), so the bot can
+  memoize a row the selector kept and the import refused; and
   `--attachments <path>`, one line `{"asin","work","series","position"}` per
   row selected for attachment (the incumbent's slug, the series slug and the
   shared position), which is how a reader tells those rows from completions in
   the subset. The subset and both select worklists are staged and renamed into
   place only once all were written, the worklists first and the SUBSET LAST
-  (`selectoutputs.go`), so a subset on disk means the worklists are there too;
+  (`selectoutputs.go`), so a subset on disk means the worklists are there too,
+  and a failed commit restores the previous run's files (each existing
+  destination is moved aside first); every `{"asin","reason"}` line of
+  `--refusals` and `--skipped` goes through one writer that refuses a reason
+  outside the contract, so no line carries an empty reason;
   and no two of them - nor any of them and the input - may be one file
   (`sameFile`: links, and for a file not written yet its symlink-resolved
   parent plus a case-insensitive base name); `scripts/

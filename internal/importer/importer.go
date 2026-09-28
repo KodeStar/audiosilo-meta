@@ -439,6 +439,15 @@ func (p *planner) warnInto(b sourceBook, tier *[]string) func(string, ...any) {
 // them to the detail. Summary.RunLevelWarnings says where the first tier ends.
 func (p *planner) result() Summary {
 	sum := p.summary
+	// A refused row whose ASIN the run recorded after all - a sibling row of the
+	// same ASIN that did import, or one the catalogue already holds - is not a
+	// refusal worth memoizing, so the --skipped worklist never names it.
+	sum.Skips = nil
+	for _, s := range p.summary.Skips {
+		if !p.asins[s.ASIN] {
+			sum.Skips = append(sum.Skips, s)
+		}
+	}
 	sum.RunLevelWarnings = len(p.summary.Warnings)
 	sum.Warnings = slices.Concat(p.summary.Warnings, p.conflictWarnings, p.rowWarnings)
 	return sum
@@ -583,6 +592,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	// The synthetic-narration note rides along for the same reason: a run that
 	// fails later still says what it admitted.
 	p.summary.SkippedRows = aiRefused.n
+	p.summary.Skips = append([]RowSkip(nil), opts.parseSkips...)
 	if line, warned := aiRefused.warning(); warned {
 		p.summary.Warnings = append(p.summary.Warnings, line)
 	}
@@ -1163,13 +1173,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// claim.
 	if ws, occupant := p.attachTarget(b); ws != nil {
 		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
-		p.noteOtherLostSeriesClaims(b)
+		p.noteOtherLostSeriesClaims(b, ws)
 		return
 	} else if occupant != "" {
 		p.summary.SkippedOccupied++
 		p.noteSkip(asin, reasonPositionTaken)
 		warn("its series position is already held by %q, and it is not another edition of that work; skipped (--existing-series-only never adds a second work at an occupied position)", occupant)
-		p.noteOtherLostSeriesClaims(b)
+		p.noteOtherLostSeriesClaims(b, nil)
 		return
 	}
 
@@ -2657,23 +2667,44 @@ func (p *planner) noteUnaddressableSeries(name string) {
 // cause is never the series, it is always the row, which has already been
 // reported on its own terms.
 func (p *planner) noteLostSeriesClaims(b sourceBook) {
-	p.noteLostSeriesClaimsExcept(b, -1)
+	p.noteLostSeriesClaimsExcept(b, -1, nil)
+}
+
+// workHolds reports whether ws already sits in the series claim r resolved to,
+// at r's position.
+func (p *planner) workHolds(ws *workState, r seriesRef) bool {
+	ss := p.series[r.target.slug]
+	if ss == nil || !r.seqOK {
+		return false
+	}
+	pos, ok := ss.members[ws.slug]
+	if !ok {
+		return false
+	}
+	if norm, ok := NormalizeSequence(pos); ok {
+		pos = norm
+	}
+	return pos == r.seq
 }
 
 // noteOtherLostSeriesClaims is noteLostSeriesClaims for a row the attach rule
 // decided (attach.go): its COMPLETION claim names the position the incumbent
-// already holds, so that one lost nothing; every other positioned claim is a
-// placement the row asked for and did not get.
-func (p *planner) noteOtherLostSeriesClaims(b sourceBook) {
+// already holds, so that one lost nothing. For an ATTACHED row (ws, the work it
+// was attached to) a claim the incumbent already answers - the same series at
+// the same position - lost nothing either, so only a genuinely missing
+// placement is noted and a clean attachment adds no warning. A refused row (ws
+// nil) is another book, so every other positioned claim it made is lost.
+func (p *planner) noteOtherLostSeriesClaims(b sourceBook, ws *workState) {
 	_, at, _ := completionClaim(b)
-	p.noteLostSeriesClaimsExcept(b, at)
+	p.noteLostSeriesClaimsExcept(b, at, ws)
 }
 
 // noteLostSeriesClaimsExcept notes every positioned claim of b but the one at
-// index skip (-1: none).
-func (p *planner) noteLostSeriesClaimsExcept(b sourceBook, skip int) {
+// index skip (-1: none) and, when held is non-nil, any the work held already
+// sits at.
+func (p *planner) noteLostSeriesClaimsExcept(b sourceBook, skip int, held *workState) {
 	for i, r := range b.series {
-		if i == skip {
+		if i == skip || (held != nil && p.workHolds(held, r)) {
 			continue
 		}
 		// A claim an ExistingSeriesOnly run would drop anyway lost nothing here.

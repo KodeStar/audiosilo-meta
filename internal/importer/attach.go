@@ -262,8 +262,8 @@ func (p *planner) attachTarget(b sourceBook) (ws *workState, occupant string) {
 // no work fact, no series placement.
 //
 // Summary.Attached counts the row only when addRecording actually wrote
-// something - a recording, or the ASIN merged onto one - so a row one of its
-// guards turned away is not reported as attached.
+// something - a recording, or the ASIN merged onto one; a row one of its guards
+// turned away is not reported as attached but listed in Summary.Skips.
 func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang string, narratorNames []string, warn func(string, ...any)) {
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
 	recs, merged := p.summary.NewRecordings, p.summary.MergedASINs
@@ -274,15 +274,30 @@ func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang s
 	}
 	if p.summary.NewRecordings > recs || p.summary.MergedASINs > merged {
 		p.summary.Attached++
+		return
 	}
+	// A guard turned the row away and nothing was written: it is listed as a
+	// position-claimed skip, so the sync bot memoizes it rather than the
+	// selector keeping it for attachment every cycle.
+	p.noteSkip(asin, reasonPositionTaken)
 }
 
 // noteSkip records a row the run refused for a reason with a refusal code, for
 // the --skipped worklist (Summary.Skips). A row with no ASIN cannot be named
 // and is not listed.
+//
+// A reason with no code is a programming error and fails the run (p.fatal)
+// rather than list a line with an empty reason.
 func (p *planner) noteSkip(asin, reason string) {
 	if asin == "" {
 		return
 	}
-	p.summary.Skips = append(p.summary.Skips, RowSkip{ASIN: asin, Reason: refusalCodeOf[reason]})
+	code, err := refusalCodeFor(reason)
+	if err != nil {
+		if p.fatal == nil {
+			p.fatal = err
+		}
+		return
+	}
+	p.summary.Skips = append(p.summary.Skips, RowSkip{ASIN: asin, Reason: code})
 }

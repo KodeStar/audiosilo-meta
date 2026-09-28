@@ -248,6 +248,11 @@ type Options struct {
 	// them as new works. Attaching never creates a work and never places one in a
 	// series, so it cannot move the "never a new series" count either.
 	ExistingSeriesOnly bool
+
+	// parseSkips are the source parse layer's refusals (RunLibex), seeded into
+	// Summary.Skips before planning so the run's end can drop any whose ASIN it
+	// imported after all.
+	parseSkips []RowSkip
 }
 
 // Summary is the outcome counts of a run.

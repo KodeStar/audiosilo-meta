@@ -74,16 +74,22 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 		return Summary{}, fmt.Errorf("read %s: %w", exportPath, err)
 	}
 	parsed, err := parseLibex(raw)
+	if err == nil {
+		err = parsed.err
+	}
 	if err != nil {
 		return Summary{}, err
 	}
+	// The parse layer's refusals join the planner's own, which drops every one
+	// whose ASIN the run then imported after all (a sibling row of the same
+	// ASIN that did map) - see planner.result.
+	opts.parseSkips = parsed.skips
 	sum, runErr := runBooks(parsed.books, sourceLibex, opts)
 	// += rather than =: runBooks has its own parse-layer refusal (the shared
 	// AI-credit gate), which is a no-op for libex because refuseLibexCredits has
 	// already dropped those rows - but the two counts are of the same thing, and
 	// clobbering would be a bug the day that stops being true.
 	sum.SkippedRows += parsed.skipped
-	sum.Skips = append(parsed.skips, sum.Skips...)
 	// Aggregated parse lines are run-level and lead; a create run's per-row
 	// parse lines follow the run's own, keeping Summary.Warnings' order.
 	if bounded := opts.Mode.boundedByCatalogue(); bounded {
@@ -156,16 +162,27 @@ type libexParse struct {
 	skipped  int
 	warnings []libexWarning
 	// skips names each refused row that has an ASIN to name it by, under its
-	// refusal code (Summary.Skips, the --skipped worklist).
+	// refusal code (Summary.Skips, the --skipped worklist); err is a refusal
+	// reason with no code, which fails the run rather than write a line with an
+	// empty reason.
 	skips []RowSkip
+	err   error
 }
 
 // skip records one refused row for Summary.Skips; a row with no ASIN is not
 // listed.
 func (lp *libexParse) skip(asin, reason string) {
-	if asin != "" {
-		lp.skips = append(lp.skips, RowSkip{ASIN: asin, Reason: refusalCodeOf[reason]})
+	if asin == "" {
+		return
 	}
+	code, err := refusalCodeFor(reason)
+	if err != nil {
+		if lp.err == nil {
+			lp.err = err
+		}
+		return
+	}
+	lp.skips = append(lp.skips, RowSkip{ASIN: asin, Reason: code})
 }
 
 // add records a parse-layer warning. label names the row (its ASIN, else its

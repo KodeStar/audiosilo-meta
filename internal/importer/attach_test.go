@@ -2,12 +2,15 @@ package importer
 
 import (
 	"encoding/json"
+	"errors"
 	"os"
 	"path/filepath"
 	"reflect"
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // The --refusals contract and the attach rule (attach.go). The worklist tests
@@ -76,7 +79,7 @@ func attachExportRow(asin, title, region, language, author, narrator, position s
 
 // selectInto runs libex-select over rows with a --refusals worklist and returns
 // the result, the subset path and the worklist's decoded lines.
-func selectInto(t *testing.T, dataDir string, rows []string) (SelectResult, string, []refusalLine) {
+func selectInto(t *testing.T, dataDir string, rows []string) (SelectResult, string, []RowSkip) {
 	t.Helper()
 	dir := t.TempDir()
 	in := filepath.Join(dir, "export.ndjson")
@@ -92,12 +95,12 @@ func selectInto(t *testing.T, dataDir string, rows []string) (SelectResult, stri
 	if err != nil {
 		t.Fatalf("read refusals: %v", err)
 	}
-	var lines []refusalLine
+	var lines []RowSkip
 	for _, l := range strings.Split(strings.TrimSuffix(string(raw), "\n"), "\n") {
 		if l == "" {
 			continue
 		}
-		var r refusalLine
+		var r RowSkip
 		dec := json.NewDecoder(strings.NewReader(l))
 		dec.DisallowUnknownFields()
 		if err := dec.Decode(&r); err != nil {
@@ -160,7 +163,7 @@ func TestRefusalsWorklist(t *testing.T) {
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("refusals = %q\nwant %q", got, want)
 	}
-	raw, _ := json.Marshal(refusalLine{ASIN: "B0X", Reason: RefusalPositionClaimed})
+	raw, _ := json.Marshal(RowSkip{ASIN: "B0X", Reason: RefusalPositionClaimed})
 	if string(raw) != `{"asin":"B0X","reason":"position-claimed"}` {
 		t.Errorf("line shape = %s", raw)
 	}
@@ -729,5 +732,114 @@ func TestSelectOutputsCommitTheSubsetLast(t *testing.T) {
 	}
 	if left, _ := filepath.Glob(filepath.Join(dir, ".metaimport-*")); len(left) > 0 {
 		t.Errorf("temp files left: %v", left)
+	}
+}
+
+// A path and its absolute spelling are one output even before their directory
+// exists (stage creates it): the nearest existing ancestor is resolved and the
+// rest appended.
+func TestSameFileBeforeTheDirectoryExists(t *testing.T) {
+	dir := t.TempDir()
+	t.Chdir(dir)
+	if !sameFile("out/s.ndjson", filepath.Join(dir, "out", "s.ndjson")) {
+		t.Error("out/s.ndjson and $PWD/out/s.ndjson are one file")
+	}
+	if !sameFile("out/s.ndjson", filepath.Join(dir, "out", "S.NDJSON")) {
+		t.Error("a case-only difference under a missing directory is one file on APFS/NTFS")
+	}
+	if sameFile("out/s.ndjson", filepath.Join(dir, "out", "t.ndjson")) {
+		t.Error("two names are two files")
+	}
+}
+
+// A refused row whose ASIN a sibling row then imported is no refusal: the
+// --skipped worklist never names an ASIN the run recorded.
+func TestSkipsDropAnASINTheRunImported(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true},
+		attachExportRow("B0SIBLING2", "Volume Two", "zz", "english", "Ada Mapmaker", "Bea Reader", "2"),
+		attachExportRow("B0SIBLING2", "Volume Two", "us", "english", "Ada Mapmaker", "Bea Reader", "2"),
+	)
+	if sum.NewWorks != 1 || len(sum.Skips) != 0 {
+		t.Errorf("NewWorks = %d, Skips = %+v; want the work imported and no skip", sum.NewWorks, sum.Skips)
+	}
+}
+
+// A clean attachment whose other claim the incumbent already answers (the same
+// series, the same position) lost nothing, so it raises no warning.
+func TestAttachDoesNotReportAClaimTheIncumbentHolds(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	seedTree(t, dataDir, map[string]string{
+		"series/at/atlas-cycle.json": `{"id":"atlas-cycle","license":"CC0-1.0","name":"Atlas Cycle",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"the-lost-coast"}]}`,
+	})
+	row := `{"asin":"B0ATTACH12","title":"The Lost Coast","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],` +
+		`"series":[{"name":"` + seriesName + `","position":"1"},{"name":"Atlas Cycle","position":"1"}]}`
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, row)
+	if sum.Attached != 1 || len(sum.Warnings) != 0 {
+		t.Errorf("Attached = %d, warnings = %v; want a clean attachment", sum.Attached, sum.Warnings)
+	}
+}
+
+// An attached row that addRecording writes nothing for - here the merge bails
+// because the recording it would merge onto cannot be read - is not counted as
+// attached; it is listed as a position-claimed skip, so the bot memoizes it
+// instead of the selector keeping it every cycle.
+func TestAttachThatWritesNothingIsASkip(t *testing.T) {
+	dataDir := seedAttachCatalogue(t)
+	store, err := openStore(dataDir, pack.ProfileAll)
+	if err != nil {
+		t.Fatal(err)
+	}
+	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ExistingSeriesOnly: true})
+	p.loadExisting()
+	ws := p.works["the-lost-coast"]
+	// A same-narrator recording the planner knows of but the tree does not hold.
+	ws.recs["ghost"] = &recInfo{narrators: map[string]bool{"cal-voice": true}, asins: map[string]bool{}}
+	p.people["cal-voice"] = "Cal Voice"
+	b := sourceBook{raw: rawBook{"asin": "B0ATTACH13", "title": "The Lost Coast", "region": "us"}}
+	p.attachRow(ws, b, "The Lost Coast", "B0ATTACH13", "en", []string{"Cal Voice"}, func(string, ...any) {})
+	if p.summary.Attached != 0 || p.summary.MergedASINs != 0 {
+		t.Errorf("Attached/MergedASINs = %d/%d, want 0/0", p.summary.Attached, p.summary.MergedASINs)
+	}
+	if want := []RowSkip{{"B0ATTACH13", RefusalPositionClaimed}}; !reflect.DeepEqual(p.summary.Skips, want) {
+		t.Errorf("Skips = %+v, want %+v", p.summary.Skips, want)
+	}
+}
+
+// A failed commit leaves the PREVIOUS run's outputs exactly as they were: an
+// existing destination is moved aside first and moved back on rollback.
+func TestFailedCommitKeepsThePreviousOutputs(t *testing.T) {
+	dataDir := seedSelectCatalogue(t)
+	dir := t.TempDir()
+	in := filepath.Join(dir, "export.ndjson")
+	if err := os.WriteFile(in, []byte(selectRow("B0OTHER001", "Unrelated", "us", "english", "Elsewhere", "1")+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	sub, ref, att := filepath.Join(dir, "s.ndjson"), filepath.Join(dir, "r.ndjson"), filepath.Join(dir, "a.ndjson")
+	prev := map[string]string{sub: "previous subset\n", ref: "previous refusals\n", att: "previous attachments\n"}
+	for p, body := range prev {
+		if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	renameFile = func(from, to string) error {
+		if to == sub {
+			return errors.New("injected")
+		}
+		return os.Rename(from, to)
+	}
+	t.Cleanup(func() { renameFile = os.Rename })
+	if _, err := SelectLibex(in, sub, SelectOptions{DataDir: dataDir, RefusalsPath: ref, AttachmentsPath: att}); err == nil {
+		t.Fatal("the injected rename must fail the commit")
+	}
+	for p, body := range prev {
+		if got, _ := os.ReadFile(p); string(got) != body {
+			t.Errorf("%s = %q after a failed commit, want the previous %q", p, got, body)
+		}
+	}
+	if left, _ := filepath.Glob(filepath.Join(dir, ".metaimport-*")); len(left) > 0 {
+		t.Errorf("temp or side files left: %v", left)
 	}
 }
