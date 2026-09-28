@@ -159,6 +159,18 @@ jobs:
           fi
           echo "pr=$PR" >> "$GITHUB_OUTPUT"
 
+          # WHO OPENED IT decides what a retailer ASIN proves (the prompt's first
+          # caution): only the series-completion bot imports straight from the
+          # retailer's feed. Its pull requests carry `bot-sync`, which only the
+          # maintainer's token applies (a fork cannot label, and this job does
+          # not run for one). A label not on yet reads as a contributor's - the
+          # stricter reading.
+          if gh pr view "$PR" --json labels -q '.labels[].name' | grep -qx bot-sync; then
+            echo "origin=sync-bot" >> "$GITHUB_OUTPUT"
+          else
+            echo "origin=contributor" >> "$GITHUB_OUTPUT"
+          fi
+
           # Nothing to verify unless data/** actually changed. Decided BEFORE the
           # summary is built, because a metadiff over an empty tranche still
           # prints its header and would read as "there are changes".
@@ -268,6 +280,8 @@ jobs:
           # summary in front of a unified diff would tell the model it is reading
           # the whole change when it is reading a truncated part of one.
           CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
+          # sync-bot or contributor: what a retailer ASIN in it proves.
+          PR_ORIGIN: ${{ steps.gather.outputs.origin }}
         run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
 
       # Runs even when the verification step FAILED (a skip), so the skip keeps
