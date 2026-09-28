@@ -193,8 +193,8 @@ func TestSelectExcludesJunkCredit(t *testing.T) {
 
 	res, lines := runSelect(t, dataDir, []string{junkRow, goodRow}, 0)
 
-	if res.Excluded[reasonJunkCredit] != 1 {
-		t.Errorf("Excluded[%q] = %d, want 1", reasonJunkCredit, res.Excluded[reasonJunkCredit])
+	if res.Excluded[reasonJunkCredit.report] != 1 {
+		t.Errorf("Excluded[%q] = %d, want 1", reasonJunkCredit, res.Excluded[reasonJunkCredit.report])
 	}
 	if res.RowsSelected != 1 || len(lines) != 1 || !strings.Contains(lines[0], "B0GOODROW2") {
 		t.Errorf("selected %d rows (%v), want only the importable one", res.RowsSelected, lines)

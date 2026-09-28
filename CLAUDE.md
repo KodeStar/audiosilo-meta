@@ -571,6 +571,7 @@ internal/rawentry   the RAW-MEMBER pack-entry editor (Obj: members kept as bytes
 internal/recorddiff metadiff's business logic: the entry-level comparison itself (Compute over a pair of Sources, so the command diffs two git revisions through one long-lived `git cat-file --batch` while the tests diff two fixture trees on disk), the per-family one-line summaries, the STRUCTURAL field diff of a modified entry (arrays as added/removed items, the recordings map walked one level down, a chapter list collapsed to a count WHETHER OR NOT both sides carry one - a backfill ADDS the array, which is the case the rule exists for) and the budgeted render - which fits `--max-bytes` by dropping WHOLE entries and saying how many, never by cutting a line, and never drops the header or the per-family counts, because the counts are how a reader knows the tranche was larger than the summary. Two properties carry more weight than they look. ONE RECORD IS ONE LINE, structurally: a title is free text whose length is all the schema caps, so every line the render emits goes through `oneLine`, and a record cannot open a second line and forge a count, a warning or an omission line claiming nothing was dropped (the model is told to read the summary BY its shape, so a data-controlled shape is a data-controlled instruction). And the ENTRY COMPARISON IS RAW-BYTES-FIRST: every writer renders a pack through pkg/canonical, so an entry nobody edited is byte-identical on both sides and a memcmp settles it, with `canonical.Format` reserved for the pair that really differs (where it still answers "a re-indentation is not a change" for a hand-edited pull request) - measured 12.5s -> 5.3s on a 150-file chapter batch and 27.8s -> 15.6s on a 561-file intake import, with byte-identical output. Two git-level contracts are load-bearing and easy to get wrong: the changed-path listing passes `--no-renames` (a pack REBIND renames the file, since a pack's bound is its name, and rename detection reports only the destination - so the old path never reaches the comparison and every record in an untouched pack reads as ADDED, the exact storage-churn lie the tool exists to end), and the base side's CONTENT is read at the MERGE BASE, the same revision the three-dot path listing is taken against (a pull request's base sha is the base BRANCH's tip and moves while the branch sits open, so reading the bytes there would report every record another pull request merged in the meantime as removed by this one). The `git cat-file --batch` reader is strictly request/response, so a reply is always consumed WHOLE (a "missing" one-liner as much as an object), a failed read LATCHES the reader broken rather than answering from a desynchronized stream, and Close drains stdout before Wait - closing stdin alone would hang forever on a git blocked writing into a full pipe
 internal/sqlitedsn  the read-only `file:` DSN a SQLite artifact path is opened with (`ReadOnly`) - a LEAF, shared by internal/serve's snapshot loader and internal/issueform's works-artifact stand-in because a spliced `file:`+path is not a URI and a second spelling of that rule is a second chance to lose mode=ro silently (the package doc has the three characters and why)
 internal/ghhost     the two rules its callers apply to a URL that arrived as DATA - a LEAF, shared by internal/serve's release-asset downloader and internal/issueform's attachment fetcher. `Allowed` is the strict GitHub host allowlist and is asked of the INITIAL URL alone (each caller keeping its own extra hosts: serve adds api.github.com); `HopPolicy` is what every REDIRECT hop is judged by and is deliberately NOT the allowlist - https and never an IP literal (the SSRF guard), but no host pinning, because GitHub chooses the CDN a download 302s to, has moved it before, and net/http already strips Authorization on a cross-host hop, so a hop allowlist would trade a guarantee we already have for an outage the day it moves again. `CheckRedirect` composes them with the hop bound (`DefaultMaxRedirects`, used when a caller passes 0 - never "unbounded", and the reason neither caller carries a constant of its own) and an `exempt` predicate that is nil in production and is how a test admits its own local server
+internal/atomicfile staged output files: `Stage`/`StageIf` write beside the destination, `CommitInOrder` renames a set only once all were written, in the order given (libex-select commits its subset last); a failed run leaves none of them, and its non-zero exit is the rest of the contract
 internal/reportdir  the shared plumbing of the two tools that write a REPORT DIRECTORY beside the data tree (internal/audit, internal/repair): the containment guard that refuses an -o inside the data root (with the SYMLINK resolution the comparison needs - a link outside the tree pointing into it defeats a lexical test), the buffered NDJSON writer both reports are made of, the thousands-separator renderer and the two-column table their markdown summaries read better for, and the one-line "first problem" of a failed load. None of it is a rule about data, which is why the two tools can share it without either reaching into the other
 internal/remediate  metaremediate's business logic: the ONE-OFF repair that folds GraphicAudio's multi-part dramatized products back into one work per book and gives the series slots those parts hijacked back to the plain text editions. Cohort gate is the PUBLISHER, not the title marker (other publishers really do spell a series volume "Book 1 of 10"); it plans the whole change - merges, same-ASIN twin collapses, series repairs - before writing a byte, and a book it cannot resolve unambiguously is left exactly as it was and named in the report (author splits, a part with several recordings, a slug another work holds, an ambiguous plain twin, a series position two works would share). Reads the tree ONCE outside the store's parse cache, writes through pkg/pack, deterministic and idempotent. See scripts/README.md for the operator flow
 internal/titlerule  the RULE PRIMITIVES the audit (and, next, the repair pass) judge titles, series names and person names by: what a retailer's decoration looks like (`Decorations` over a priority-ordered table), what a title reduces to once it is removed (`Clean`), the comparison keys (`CompareKey`, `FoldKey`, `SeriesKey`/`SeriesSagaKey`), the slug-shape predicates, `OneEditApart`, and the CANONICAL-CHOICE ladders (`WorkRank`/`SeriesRank`) - so a report and a repair can never name different survivors. A LEAF on purpose: these rules were born inside internal/audit, which imports pkg/check, so nothing pkg/check could reach was able to call them and every other consumer would have needed a copy. It is now a TRUE leaf - pkg/model and nothing else - which is what the intake-time duplicate prevention needed: `IdentityTitleKey` (the normalized work identity, `CompareKey` over `Clean`) is read by internal/issueform, internal/importer AND pkg/check, and the old arrangement (reaching internal/importer for the edition marker and the initials key) made those last two impossible to serve. So the edition-marker rule MOVED down here (edition.go records the move; internal/importer strips through `StripEditionMarkers`) and the `MarkedNameKey` re-export went away (internal/audit, its only caller, asks the importer directly). `IdentityTitleKey` returns NO IDENTITY for a title whose cleaned residual does not name a book (`CarriesIdentity`), which is the guard that makes it usable as a duplicate key at all: the packaging residuals ("the", "boxset", "omnibus") name no book, and a one-word series name used to be excised from its own titles, so "Cars 2" and "Hawk 2" both reduced to "2" - 199 purely numeric keys over 3,287 works in the tree (the boundary anchoring below is what retired that half of the hazard: a name mid-title is no longer removed at all). Beside it lives the key's SOUNDNESS CONDITION, `SameTitleUnderCommonSeries`: the key is one-sided (one title, one series name), so two records meeting on it is evidence only when the decoration each of them shed was the SAME decoration - read both titles against ONE name, either side's, and the keys must still agree. Two different books whose subjects were each removed as somebody else's series name meet on the template that is left ("Cold War: A History from Beginning to End" against "The Hundred Years War:" the same), which is how a live wave proposed 5 wrong merges non-advisory. It is read by the MERGE path only (internal/audit's `vetoStrippedSeriesDiffers`) and deliberately NOT by pkg/check's pairwise predicate: in the census direction the same rule costs 58 groups to gain 3, and about half of what it removes is a real duplicate under a series with two names, whose duplicate PREVENTION the two writer gates rest on - a refusal is recoverable, a deletion is not (the trade that withdrew the welded-function-words layer; the measurement is recorded on both sides).
@@ -1754,67 +1755,19 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   FIRST match minted a series and made the sync bot refuse its own pull request
   ("the import would create 1 new series"). A claim the importer only warns
   about - no usable position, or a name with no addressable slug - mints nothing
-  and disqualifies nothing. A row whose position the catalogue already FILLS (as
-  LOADED - `seriesState.loaded`; a work this run created is never a target, so a
-  same-run regional sibling of a new completion goes through the create path as
-  it always did) is refused unless it is another edition of the very work there
-  - same series and position, the importer's own work-identity test
-  (`matchWork` over `resolvePerson`, asked of that occupant alone), titles equal
-  under `titlerule` (`StripDecoration` against the series name when it proposes
-  a title, then `CompareKeyWhole` - the slug-chain walk cannot see a decorated
-  retailer title, which is the population this exists for), a compatible
-  language, a narrator, and no veto in ANY title variant (the row's short,
-  full and subtitle; the incumbent's title, subtitle and both joined): no row
-  volume contradicting the position, no one-sided product statement (a
-  split-release part, a collection, a young-readers adaptation) made by one
-  side and not the other -
-  in which case it is SELECTED FOR ATTACHMENT (`internal/importer/attach.go`,
-  the one decision both sides ask): the create path under
-  `--existing-series-only` writes it as a new recording of that work, or merges
-  its ASIN onto the recording whose narrators match (addRecording's
-  same-narrator merge), and never creates a work, places a claim or changes the
-  incumbent. The FALL-THROUGH agrees on both sides: a row at an occupied
-  position that does not attach is `position-claimed` in the selector, and the
-  import under `--existing-series-only` SKIPS it with a warning
-  (`Summary.SkippedOccupied`, printed on its own line only when non-zero) -
-  never a sibling work at an occupied position, whatever subset it is handed.
-  A skipped row's OTHER positioned claims are reported as lost placements, and
-  an attached row's too unless the incumbent already sits at that series and
-  position, so a clean attachment raises no warning. Attachments count in the summary line's new recordings / merged
-  asins (and in `Summary.Attached` only when a recording or an ASIN was really
-  written - an attached row that wrote nothing is a `position-claimed` skip), and in neither tool's per-series or work counts; each tool prints
-  one extra line only when it attached something, so a run that attached
-  nothing prints exactly what it always did. A translated title,
-  and a same title in another language, stay refused: a work is
-  language-scoped here (metacheck's cross-language advisory) and a translation
-  cannot be verified by its title. Three worklists are the sync bot's
-  CONTRACT, beside the report: `--refusals <path>`, one NDJSON line
-  `{"asin","reason"}` per refused row, the codes the stable constants of
-  `internal/importer/refusalcodes.go` (pinned by `TestRefusalCodesAreStable`;
-  one code per report reason, and the report's wording is untouched) - never
-  naming an ASIN the subset carries (a duplicate-asin line whose other copy was
-  kept is omitted) and never an empty ASIN (such rows are counted in one report
-  line, printed only when non-zero); `metaimport libex --skipped <path>`, the
-  IMPORT's twin in the same shape, one line per row the run refused for a
-  reason with a code (malformed ASIN, unmapped region or language, a refused
-  credit, and `position-claimed` for `SkippedOccupied`), never naming an ASIN
-  the run recorded after all (a sibling row of that ASIN imported), staged
-  BEFORE the run so a bad path fails before the tree is touched and committed
-  once the run completed (the summary prints either way), so the bot can
-  memoize a row the selector kept and the import refused; and
-  `--attachments <path>`, one line `{"asin","work","series","position"}` per
-  row selected for attachment (the incumbent's slug, the series slug and the
-  shared position), which is how a reader tells those rows from completions in
-  the subset. The subset and both select worklists are staged and renamed into
-  place only once all were written, the worklists first and the SUBSET LAST
-  (`selectoutputs.go`), so a subset on disk means the worklists are there too,
-  and a failed commit restores the previous run's files (each existing
-  destination is moved aside first); every `{"asin","reason"}` line of
-  `--refusals` and `--skipped` goes through one writer that refuses a reason
-  outside the contract, so no line carries an empty reason;
-  and no two of them - nor any of them and the input - may be one file
-  (`sameFile`: links, and for a file not written yet its symlink-resolved
-  parent plus a case-insensitive base name); `scripts/
+  and disqualifies nothing. **`--attach-editions`** (libex-select and the libex
+  create path, `internal/importer/attach.go`) is the one exception to "a filled
+  position is refused": a row whose completion claim names a position the
+  catalogue already fills is attached to the work there - a new recording, or an
+  ASIN on one - iff the importer's own identity machinery (resolveWork, or the
+  duplicate guard's check.WorkIdentity) resolves it to exactly that LOADED
+  occupant and no shared title veto (titlerule.ProductOf, a stated volume against
+  the position) applies; every other such row is refused by both, never a second
+  work. The sync bot's contract is three NDJSON worklists with the stable codes of
+  `internal/importer/refusalcodes.go`: `--refusals` and `--attachments`
+  (libex-select) and `--skipped` (libex), all written through `internal/atomicfile`
+  with the subset committed last. Summary and head lines are byte-identical when
+  nothing attaches. `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
   operator flow - the received dump is Postgres 16 custom format); the
   **AI-credit exclusion** (an AI is not a person, so a row crediting one is
@@ -1926,8 +1879,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   **The SERIES-COMPLETION SYNC BOT is the standing consumer of these modes**:
   `KodeStar/audiosilo-meta-sync`, a private sibling repository holding a daily
   service that reads libex's new-releases and coming-soon feeds, runs
-  `libex-select` to keep only rows completing series this catalogue already
-  holds, imports them with `metaimport libex --existing-series-only` (plus
+  `libex-select --attach-editions` to keep only rows completing series this catalogue already
+  holds, imports them with `metaimport libex --existing-series-only --attach-editions` (plus
   `--enrich` over the touched series' existing members; the flag drops any claim
   that would FOUND a series, so a kept row's second, uncatalogued series claim
   cannot add one - see the importer section), and opens ONE self-merging pull request per cycle -
@@ -1943,12 +1896,12 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   closed the door on re-creating them - the intake gate, the importer's create
   guard and metacheck's advisory census (2,881 groups), all three over the one
   `titlerule.IdentityTitleKey`. Remaining: the REPAIR waves themselves (merges
-  through `pkg/redirects`, whose tombstone table was built ahead of exactly this),
-  and one deliberate follow-up on the guard - **routing a refused duplicate row to
-  recordings.go** as an alternate narration instead of skipping it. It is not done
-  because attaching a recording asserts "this IS that book" on the evidence the
-  audit measured five merge vetoes for; the `--conflicts` worklist the guard writes
-  is what makes the population measurable enough to decide about.
+  through `pkg/redirects`, whose tombstone table was built ahead of exactly this).
+  A refused duplicate row is attached as a recording in exactly one case - its
+  series claim names the position the matched work already fills
+  (`--attach-editions`, internal/importer/attach.go); every other one stays
+  refused, because a title match alone asserts "this IS that book" on the evidence
+  the audit measured five merge vetoes for.
 - **Serving at scale (pre-seed, landed)**: the measured serve/distribution fixes
   from the workspace's SCALE-RESEARCH.md (section D), all invisible at 9.5k works
   and real at 100k+. D1: the six covering indexes every request path was missing

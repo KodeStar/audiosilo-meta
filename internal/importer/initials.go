@@ -462,15 +462,15 @@ func topSpelling(spellings map[string]int) string {
 // the two are not in one group at all - "Em" is mixed-case and keys as a word -
 // and no future widening of the key can make the merge happen without the
 // respelling also lining up.
-func (p *planner) initialsMerge(name, slug string, fellBack bool) (initialsSurvivor, bool) {
+func initialsMerge(survivors initialsSurvivors, name, slug string, fellBack bool) (initialsSurvivor, bool) {
 	// Two cheap exits before the name is tokenized: a run whose batch decided
 	// nothing, and a name that slugs to nothing. Then the decision lookup, which is
 	// one probe - almost every name has no decision at all, and tokenizing it
 	// would be work spent to learn nothing.
-	if len(p.initialsSurvivors) == 0 || fellBack {
+	if len(survivors) == 0 || fellBack {
 		return initialsSurvivor{}, false
 	}
-	survivor, decided := p.initialsSurvivors[slug]
+	survivor, decided := survivors[slug]
 	if !decided || survivor.slug == "" {
 		return initialsSurvivor{}, false
 	}

@@ -6,37 +6,36 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--skipped <path>]
-//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--refusals <path>] [--attachments <path>]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--attach-editions] [--skipped <path>]
+//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]
 //
 // libex-select writes no records: it reduces a full libex export to the
 // bounded, series-completing subset LICENSING.md's import posture allows, and
 // prints a report for review; the subset is then imported with the normal
-// `metaimport libex` create path. A row claiming a position the catalogue
-// already fills is selected only when it is another edition of the work there
-// (same series, position, authors and title) - the import under
-// --existing-series-only ATTACHES it to that work as a recording, or as an ASIN
-// on one, and never creates a work for it (a row at an occupied position that
-// is NOT another edition is refused there too, never planned as a sibling
-// work). --refusals <path> writes one NDJSON line per refused row,
-// {"asin":"<ASIN>","reason":"<code>"}, with the stable codes
-// internal/importer/refusalcodes.go defines; --attachments <path> writes one
-// line per row selected for attachment,
-// {"asin":"<ASIN>","work":"<incumbent slug>","series":"<slug>","position":"<pos>"},
-// which is how a reader tells those rows from completions in the subset. Both
-// shapes are a contract with the series-completion sync bot, and the subset and
-// both worklists are committed together or not at all, the subset last.
+// `metaimport libex` create path.
 //
-// --skipped <path> (libex only) writes the IMPORT's twin of --refusals: one
-// {"asin","reason"} line per row the run refused for a reason that has a
-// libex-select refusal code - a malformed ASIN, an unmapped region or language,
-// a refused credit, and position-claimed for a row --existing-series-only turned
-// away at an occupied position (or attached without anything being written) -
-// written atomically when the run succeeds. The
-// sync bot memoizes those rows as refusals, so a row the selector kept and the
-// import refused is not selected again every cycle. The file is staged before
-// the run (a bad path fails before the tree is touched) and never names an ASIN
-// the run imported after all.
+// --attach-editions (libex-select, and libex's create mode) turns on the attach
+// rule (internal/importer/attach.go): a row claiming a series position the
+// catalogue already fills is kept, and imported as another recording of the
+// work there (or another ASIN on one), when the importer's identity machinery
+// resolves it to exactly that work; every other row at an occupied position is
+// refused - by the selector as position-claimed, and by the import too, which
+// then never plans a second work at an occupied position. Off, both behave as
+// they always have. The series-completion sync bot passes it to both.
+//
+// Three NDJSON worklists are a contract with the sync bot, all with the stable
+// reason codes internal/importer/refusalcodes.go defines:
+// libex-select --refusals <path> (one {"asin","reason"} line per refused row),
+// libex-select --attachments <path> (one {"asin","work","series","position"}
+// line per row kept for attachment - how a reader tells those rows from
+// completions in the subset) and libex --skipped <path> (the import's own
+// refusals in the --refusals shape - a malformed ASIN, an unmapped region or
+// language, a refused credit, and position-claimed for a row --attach-editions
+// turned away or attached without anything being written; the bot memoizes them,
+// so a row the selector kept and the import refused is not selected again every
+// cycle). Each is written atomically (internal/atomicfile): libex-select commits
+// the subset last, and --skipped is staged before the import runs, so a bad path
+// fails before the tree is touched.
 //
 // --dry-run prints the plan without writing. A real run writes the new/changed
 // files, then validates the whole tree and exits non-zero if that fails. Import
@@ -113,6 +112,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/atomicfile"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 )
 
@@ -179,6 +179,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	existingSeriesOnly := fs.Bool("existing-series-only", false, "never found a series: drop (and report) a series claim that would create one; the row still imports")
 	// Registered for every source so the wrong one is refused with a reason.
 	skipped := fs.String("skipped", "", "write one NDJSON line per row the run refused for a reason with a libex-select refusal code ({\"asin\",\"reason\"}) to this file (libex only)")
+	attachEditions := fs.Bool("attach-editions", false, "attach a row at a series position the catalogue already fills to the work there when it is another edition of it, and refuse it otherwise (libex only)")
 
 	// Accept the positional export path either before or after the flags.
 	exportPath, err := parsePositional(fs, args, "<export.json>")
@@ -193,9 +194,14 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 
-	if *skipped != "" && name != boundedSource {
-		fmt.Fprintf(os.Stderr, "metaimport: --skipped is only supported for the %s source, not %q\n", boundedSource, name)
-		return 2
+	for _, f := range []struct {
+		name string
+		set  bool
+	}{{"--skipped", *skipped != ""}, {"--attach-editions", *attachEditions}} {
+		if f.set && name != boundedSource {
+			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", f.name, boundedSource, name)
+			return 2
+		}
 	}
 
 	stamp := *date
@@ -220,6 +226,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		Mode:               mode,
 		Conflicts:          conflictLog,
 		ExistingSeriesOnly: *existingSeriesOnly,
+		AttachEditions:     *attachEditions,
 	}
 	if *seriesLookup {
 		client := importer.NewLibexClient()
@@ -233,14 +240,12 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// (renamed into place, the previous file kept on failure) only once the run
 	// completed. One {"asin","reason"} line per refused row with a refusal code -
 	// the --refusals shape and writer, so the sync bot reads both with one reader.
-	var skippedLog *importer.Worklist
-	if *skipped != "" {
-		if skippedLog, err = importer.OpenWorklist(*skipped, "--skipped"); err != nil {
-			fmt.Fprintln(os.Stderr, "metaimport:", err)
-			return 2
-		}
-		defer skippedLog.Discard() // a no-op once committed
+	skippedLog, err := atomicfile.StageIf(*skipped)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
+		return 2
 	}
+	defer skippedLog.Discard() // a no-op once committed
 
 	sum, err := run(exportPath, opts)
 
@@ -256,12 +261,12 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// worklist after it: the tree is written, and the summary is the record of
 	// what was.
 	printSummary(sum, *dryRun, mode)
-	if skippedLog != nil {
-		skippedLog.Write(sum.Skips)
-		if err := skippedLog.Commit(); err != nil {
-			fmt.Fprintln(os.Stderr, "metaimport:", err)
-			return 1
-		}
+	for _, s := range sum.Skips {
+		skippedLog.Encode(s)
+	}
+	if err := atomicfile.CommitInOrder(skippedLog); err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
+		return 1
 	}
 	return 0
 }
@@ -329,6 +334,7 @@ func runLibexSelect(args []string) int {
 	data := fs.String("data", "data", "path to the data directory")
 	out := fs.String("o", "", "path to write the selected rows to (NDJSON)")
 	maxPerSeries := fs.Int("max-per-series", 0, "cap the new works selected per catalogue series (0 = unlimited)")
+	attachEditions := fs.Bool("attach-editions", false, "keep a row at a series position the catalogue already fills when it is another edition of the work there, for `metaimport libex --attach-editions` to attach")
 	refusals := fs.String("refusals", "", "write one NDJSON line per refused row ({\"asin\",\"reason\"}, stable reason codes) to this file")
 	attachments := fs.String("attachments", "", "write one NDJSON line per row selected for ATTACHMENT ({\"asin\",\"work\",\"series\",\"position\"}) to this file")
 	// Registered here for the same reason --enrich is registered for every
@@ -361,6 +367,7 @@ func runLibexSelect(args []string) int {
 	res, err := importer.SelectLibex(exportPath, *out, importer.SelectOptions{
 		DataDir:         *data,
 		MaxPerSeries:    *maxPerSeries,
+		AttachEditions:  *attachEditions,
 		RefusalsPath:    *refusals,
 		AttachmentsPath: *attachments,
 	})
@@ -450,20 +457,20 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	if s.GenreWorks > 0 {
 		fmt.Printf("  added genres to %d already-attested works\n", s.GenreWorks)
 	}
-	// Printed only when a run refused one (--existing-series-only), and on a
+	// Printed only when a run refused one (--attach-editions), and on a
 	// line of its own: the create summary line's shape is parsed by the sync bot.
 	if s.SkippedOccupied > 0 {
-		fmt.Printf("  skipped %d %s claiming a series position the catalogue already holds with another work (--existing-series-only)\n",
-			s.SkippedOccupied, pluralRows(s.SkippedOccupied))
+		fmt.Printf("  skipped %d %s claiming a series position the catalogue already holds with another work (--attach-editions)\n",
+			s.SkippedOccupied, plural(s.SkippedOccupied, "row", "rows"))
 	}
-	// Printed only when a run attached something (--existing-series-only, the
+	// Printed only when a run attached something (--attach-editions, the
 	// attach rule in internal/importer/attach.go), so every other summary reads
 	// exactly as it did. The attached rows are already inside the summary line's
 	// "new recordings" and "asins merged" counts; this says which of those were
 	// attachments.
 	if s.Attached > 0 {
 		fmt.Printf("  attached %d %s to the catalogued work already at %s series position (counted above as new recordings or merged asins)\n",
-			s.Attached, pluralRows(s.Attached), pluralTheir(s.Attached))
+			s.Attached, plural(s.Attached, "row", "rows"), plural(s.Attached, "its", "their"))
 	}
 	// The name merges are listed in FULL rather than counted. Every line is
 	// the run deciding that two spellings are one human, which is the least
@@ -522,8 +529,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--skipped <path>]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--refusals <path>] [--attachments <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--attach-editions] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
@@ -532,6 +539,10 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    same series. --series-lookup-limit N caps the lookups per run (0 = the default cap of 100).")
 	fmt.Fprintln(os.Stderr, "  --existing-series-only (every source) never founds a series: a claim that would create one is")
 	fmt.Fprintln(os.Stderr, "    dropped and reported, and the row still imports into every catalogued series it claims.")
+	fmt.Fprintln(os.Stderr, "  --attach-editions (libex-select; libex create) attaches a row at a filled series position to the")
+	fmt.Fprintln(os.Stderr, "    work there when it is another edition of it, and refuses it otherwise; never a second work.")
+	fmt.Fprintln(os.Stderr, "  --refusals / --attachments (libex-select) and --skipped (libex) write NDJSON worklists with")
+	fmt.Fprintln(os.Stderr, "    stable reason codes, atomically.")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
 	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
@@ -638,17 +649,10 @@ func runLibexFill(args []string) int {
 	return 0
 }
 
-// pluralRows / pluralTheir agree the attach line with its count.
-func pluralRows(n int) string {
+// plural picks one or many by n, for the summary's additive lines.
+func plural(n int, one, many string) string {
 	if n == 1 {
-		return "row"
+		return one
 	}
-	return "rows"
-}
-
-func pluralTheir(n int) string {
-	if n == 1 {
-		return "its"
-	}
-	return "their"
+	return many
 }

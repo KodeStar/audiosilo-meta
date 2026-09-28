@@ -72,7 +72,7 @@ func RunAudiosiloBooks(exportPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, err
 	}
-	return runBooks(books, sourceAudiosiloBooks, opts)
+	return runBooks(books, sourceAudiosiloBooks, opts, nil)
 }
 
 // parseAudiosiloBooks decodes the envelope, validating its format/version marker

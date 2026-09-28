@@ -249,15 +249,8 @@ func primarySubtag(tag string) string {
 	return lang
 }
 
-// titleKey is a title's comparison identity: retailer decoration stripped where
-// that is safe (titlerule.StripDecoration, the gate the add-work form applies),
-// then titlerule.CompareKeyWhole.
-func titleKey(title, series string) string {
-	if cleaned, _, ok := titlerule.StripDecoration(title, series); ok {
-		title = cleaned
-	}
-	return titlerule.CompareKeyWhole(title)
-}
+// titleKey is a title's comparison identity (titlerule.ComparableKey).
+func titleKey(title, series string) string { return titlerule.ComparableKey(title, series) }
 
 // releaseCatalogue drops the composer's whole-catalogue state - the dedup maps
 // and the loaded catalogue - once nothing more will be asked of it. The store

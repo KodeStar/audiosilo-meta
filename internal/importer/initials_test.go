@@ -258,7 +258,7 @@ func probePlanner(t *testing.T, batch ...string) *planner {
 		c.addBatch(name)
 	}
 	p := newPlanner(store, sourceLibex, Options{DataDir: dir, ImportDate: testImportDate})
-	p.initialsSurvivors = c.decide()
+	p.credits.initials = c.decide()
 	p.curSource = OutSource{Type: sourceLibex, Ref: "B0TEST0000", ImportedAt: testImportDate}
 	return p
 }

@@ -241,18 +241,18 @@ type Options struct {
 	// a series on import. false is the default and the long-standing behaviour
 	// exactly. Only the create path can found a series at all - enrichment and
 	// the recordings-only pass never do - so the option changes nothing there.
-	//
-	// The option also turns on the create path's ATTACHMENT of a row claiming an
-	// occupied position that is another edition of the work there (attach.go):
-	// libex-select selects such rows, and without this the create path would plan
-	// them as new works. Attaching never creates a work and never places one in a
-	// series, so it cannot move the "never a new series" count either.
 	ExistingSeriesOnly bool
-
-	// parseSkips are the source parse layer's refusals (RunLibex), seeded into
-	// Summary.Skips before planning so the run's end can drop any whose ASIN it
-	// imported after all.
-	parseSkips []RowSkip
+	// AttachEditions (`metaimport libex --attach-editions`, create mode) turns on
+	// the attach rule (attach.go): a row whose completion claim names a position
+	// the catalogue already fills is ATTACHED to the work there - a new recording,
+	// or its ASIN merged onto the same-narrator recording - when the importer's
+	// identity machinery resolves it to exactly that work, and is otherwise
+	// REFUSED (Summary.SkippedOccupied, a position-claimed Summary.Skips entry)
+	// rather than planned as a second work at that position. It never creates a
+	// work or places one in a series. false is the default and the long-standing
+	// behaviour exactly. The series-completion bot passes it, with
+	// libex-select's own --attach-editions.
+	AttachEditions bool
 }
 
 // Summary is the outcome counts of a run.
@@ -352,18 +352,19 @@ type Summary struct {
 	// unaffected - it imports, and every other claim it makes is placed - so
 	// this is disjoint from every row-skip counter. Always 0 without the option.
 	SeriesClaimsDropped int
-	// Attached counts the rows an ExistingSeriesOnly create run ATTACHED to the
+	// Attached counts the rows an AttachEditions create run ATTACHED to the
 	// catalogued work already at the series position they claim, because they
-	// are another edition of that same book (attach.go). An attachment is also
-	// counted as the NewRecordings or MergedASINs addRecording made of it (unless
-	// one of its guards refused the ASIN, a region that does not map), so the
-	// summary line reads exactly as before. Always 0 without the option.
+	// are another edition of that same book (attach.go), counted only when a
+	// recording was written or the ASIN merged - which the summary line already
+	// counts as NewRecordings or MergedASINs, so that line reads exactly as
+	// before. Always 0 without the option.
 	Attached int
-	// SkippedOccupied counts the rows an ExistingSeriesOnly create run REFUSED
-	// because the position their completion claim names was already held in the
-	// catalogue by a work they are not another edition of (attach.go): each is
-	// skipped with a warning rather than planned as a sibling work. Always 0
-	// without the option.
+	// SkippedOccupied counts the rows an AttachEditions create run REFUSED at a
+	// position the catalogue already holds (attach.go): a row that is not another
+	// edition of the work there (skipped with a warning rather than planned as a
+	// sibling work), or one attached without anything being written. It is read
+	// off Skips (their position-claimed entries), so the printed count and the
+	// --skipped worklist cannot disagree. Always 0 without the option.
 	SkippedOccupied int
 	// Skips names the rows the run refused for a reason that has a
 	// libex-select refusal code (refusalcodes.go), one entry per row with an
@@ -446,13 +447,4 @@ func (s Summary) Produced() int {
 // export row and why it fell out or was refused, conflicts first.
 func (s Summary) RowWarnings() []string {
 	return s.Warnings[min(s.RunLevelWarnings, len(s.Warnings)):]
-}
-
-// RowSkip is one row a run refused, as the --skipped worklist states it: the
-// row's ASIN and a libex-select refusal code. Its JSON form, in this field
-// order, is one line - the same shape as a --refusals line, a contract with the
-// series-completion sync bot.
-type RowSkip struct {
-	ASIN   string `json:"asin"`
-	Reason string `json:"reason"`
 }

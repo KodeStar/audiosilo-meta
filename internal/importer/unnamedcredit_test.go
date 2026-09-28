@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"slices"
 	"strings"
 	"testing"
 
@@ -229,11 +230,11 @@ func TestSelectExcludesCreditRefusals(t *testing.T) {
 
 	res, lines := runSelect(t, dataDir, []string{unnamedRow, aiRow, goodRow}, 0)
 
-	if res.Excluded[reasonUnnamedCredit] != 1 {
-		t.Errorf("Excluded[%q] = %d, want 1", reasonUnnamedCredit, res.Excluded[reasonUnnamedCredit])
+	if res.Excluded[reasonUnnamedCredit.report] != 1 {
+		t.Errorf("Excluded[%q] = %d, want 1", reasonUnnamedCredit, res.Excluded[reasonUnnamedCredit.report])
 	}
-	if res.Excluded[reasonAINarrator] != 1 {
-		t.Errorf("Excluded[%q] = %d, want 1", reasonAINarrator, res.Excluded[reasonAINarrator])
+	if res.Excluded[reasonAINarrator.report] != 1 {
+		t.Errorf("Excluded[%q] = %d, want 1", reasonAINarrator, res.Excluded[reasonAINarrator.report])
 	}
 	if res.RowsSelected != 1 || len(lines) != 1 || !strings.Contains(lines[0], "B0GOODROW2") {
 		t.Errorf("selected %d rows (%v), want only the importable one", res.RowsSelected, lines)
@@ -249,17 +250,12 @@ func TestSelectExcludesCreditRefusals(t *testing.T) {
 }
 
 // TestSelectReasonsAreAllReportable guards the report's completeness: an
-// exclusion reason that is not in reasonOrder is counted and then never printed.
+// exclusion rule that is not in the refusals table is counted and then never
+// printed.
 func TestSelectReasonsAreAllReportable(t *testing.T) {
-	for _, reason := range []string{reasonAINarrator, reasonJunkCredit, reasonUnnamedCredit} {
-		found := false
-		for _, r := range reasonOrder {
-			if r == reason {
-				found = true
-			}
-		}
-		if !found {
-			t.Errorf("reason %q is not in reasonOrder; it would never be reported", reason)
+	for _, reason := range []refusal{reasonAINarrator, reasonJunkCredit, reasonUnnamedCredit} {
+		if !slices.Contains(refusals, reason) {
+			t.Errorf("rule %q is not in the refusals table; it would never be reported", reason.report)
 		}
 	}
 }

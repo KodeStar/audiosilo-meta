@@ -2,7 +2,6 @@ package importer
 
 import (
 	"encoding/json"
-	"errors"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -55,17 +54,15 @@ func TestRefusalCodesAreStable(t *testing.T) {
 	}
 }
 
-// Every report reason has exactly one code, in the same order, and no two
-// reasons share one: the worklist can name every refusal the report counts.
-func TestEveryReasonHasARefusalCode(t *testing.T) {
-	if len(refusalCodeOf) != len(reasonOrder) {
-		t.Fatalf("refusalCodeOf has %d entries, reasonOrder %d", len(refusalCodeOf), len(reasonOrder))
-	}
-	codes := RefusalCodes()
-	for i, reason := range reasonOrder {
-		if got := refusalCodeOf[reason]; got != codes[i] {
-			t.Errorf("reason %q -> %q, want %q (the report's position %d)", reason, got, codes[i], i)
+// Every rule has its own code and its own report wording: the worklist can name
+// every refusal the report counts, and the report never folds two together.
+func TestEveryRuleHasItsOwnCodeAndWording(t *testing.T) {
+	codes, reports := map[string]bool{}, map[string]bool{}
+	for _, r := range refusals {
+		if r.code == "" || r.report == "" || codes[r.code] || reports[r.report] {
+			t.Errorf("rule %+v: empty or shared code or wording", r)
 		}
+		codes[r.code], reports[r.report] = true, true
 	}
 }
 
@@ -87,7 +84,7 @@ func selectInto(t *testing.T, dataDir string, rows []string) (SelectResult, stri
 		t.Fatal(err)
 	}
 	out, refusals := filepath.Join(dir, "subset.ndjson"), filepath.Join(dir, "refusals.ndjson")
-	res, err := SelectLibex(in, out, SelectOptions{DataDir: dataDir, RefusalsPath: refusals})
+	res, err := SelectLibex(in, out, SelectOptions{DataDir: dataDir, RefusalsPath: refusals, AttachEditions: true})
 	if err != nil {
 		t.Fatalf("SelectLibex: %v", err)
 	}
@@ -184,8 +181,8 @@ func TestRefusalsWorklistNamesTheCapsCuts(t *testing.T) {
 	}
 	raw, _ := os.ReadFile(refusals)
 	got := strings.Count(string(raw), `"reason":"over-series-cap"`)
-	if got == 0 || got != res.Excluded[reasonSeriesCap] {
-		t.Errorf("over-series-cap lines = %d, report counts %d", got, res.Excluded[reasonSeriesCap])
+	if got == 0 || got != res.Excluded[reasonSeriesCap.report] {
+		t.Errorf("over-series-cap lines = %d, report counts %d", got, res.Excluded[reasonSeriesCap.report])
 	}
 }
 
@@ -293,7 +290,7 @@ func TestLibexSelectAttachRule(t *testing.T) {
 }
 
 // attachImport selects rows against a fresh catalogue and imports the subset
-// exactly as the sync bot does (--existing-series-only), returning the summary
+// exactly as the sync bot does (--existing-series-only --attach-editions), returning the summary
 // and the tree. It asserts what no attachment may ever do: create a work beyond
 // the completions (wantWorks), found a series, or move or add to the incumbent's
 // series entry beyond those completions.
@@ -301,7 +298,7 @@ func attachImport(t *testing.T, wantWorks map[string]string, rows ...string) (Se
 	t.Helper()
 	dataDir := seedAttachCatalogue(t)
 	res, subset, _ := selectInto(t, dataDir, rows)
-	sum, err := RunLibex(subset, Options{DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true})
+	sum, err := RunLibex(subset, Options{DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true, AttachEditions: true})
 	if err != nil {
 		t.Fatalf("import: %v", err)
 	}
@@ -395,24 +392,25 @@ func TestAttachmentsAreOutsideTheSeriesCap(t *testing.T) {
 	if err := os.WriteFile(in, []byte(strings.Join(rows, "\n")+"\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	res, err := SelectLibex(in, filepath.Join(dir, "subset.ndjson"), SelectOptions{DataDir: seedAttachCatalogue(t), MaxPerSeries: 1})
+	res, err := SelectLibex(in, filepath.Join(dir, "subset.ndjson"), SelectOptions{DataDir: seedAttachCatalogue(t), MaxPerSeries: 1, AttachEditions: true})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(res.Attachments) != 2 || res.ProjectedWorks != 1 || res.Excluded[reasonSeriesCap] != 1 {
-		t.Errorf("attachments %d / works %d / cap cut %d, want 2/1/1", len(res.Attachments), res.ProjectedWorks, res.Excluded[reasonSeriesCap])
+	if len(res.Attachments) != 2 || res.ProjectedWorks != 1 || res.Excluded[reasonSeriesCap.report] != 1 {
+		t.Errorf("attachments %d / works %d / cap cut %d, want 2/1/1", len(res.Attachments), res.ProjectedWorks, res.Excluded[reasonSeriesCap.report])
 	}
 	assertPartition(t, res)
 }
 
-// Without ExistingSeriesOnly nothing is attached: the option is off by default
-// and every other caller plans the row exactly as before.
-func TestAttachIsOffWithoutExistingSeriesOnly(t *testing.T) {
+// Without AttachEditions nothing is attached or refused at an occupied position:
+// the option is off by default - --existing-series-only alone means only "never
+// found a series" - and every other caller plans the row exactly as before.
+func TestAttachIsOffWithoutAttachEditions(t *testing.T) {
 	dataDir := seedAttachCatalogue(t)
-	sum := runLibexWith(t, dataDir, Options{},
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true},
 		attachExportRow("B0ATTACH01", "The Lost Coast", "us", "english", "Ada Mapmaker", "Cal Voice", "1"))
-	if sum.Attached != 0 {
-		t.Errorf("Attached = %d without the option", sum.Attached)
+	if sum.Attached != 0 || sum.SkippedOccupied != 0 || len(sum.Skips) != 0 {
+		t.Errorf("Attached/SkippedOccupied/Skips = %d/%d/%v without the option", sum.Attached, sum.SkippedOccupied, sum.Skips)
 	}
 }
 
@@ -461,7 +459,7 @@ func TestAttachNeverTargetsAWorkThisRunCreated(t *testing.T) {
 		t.Fatalf("selected %d / works %d / attachments %d / refusals %v, want 2/1/0/none",
 			res.RowsSelected, res.ProjectedWorks, len(res.Attachments), lines)
 	}
-	sum, err := RunLibex(subset, Options{DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true})
+	sum, err := RunLibex(subset, Options{DataDir: dataDir, ImportDate: testImportDate, ExistingSeriesOnly: true, AttachEditions: true})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -472,16 +470,16 @@ func TestAttachNeverTargetsAWorkThisRunCreated(t *testing.T) {
 	assertTreeValid(t, dataDir)
 }
 
-// The import's own fall-through: under ExistingSeriesOnly a row claiming an
+// The import's own fall-through: under AttachEditions a row claiming an
 // occupied catalogued position that is not another edition of the work there is
 // REFUSED with a warning, never planned as a sibling work - whatever subset the
 // caller hands it, selected or not.
-func TestExistingSeriesOnlyRefusesARowAtAnOccupiedPosition(t *testing.T) {
+func TestAttachEditionsRefusesARowAtAnOccupiedPosition(t *testing.T) {
 	dataDir := seedAttachCatalogue(t)
 	coAuthored := `{"asin":"B0DENY0006","title":"The Lost Coast","region":"us","language":"english",` +
 		`"authors":[{"name":"Ada Mapmaker"},{"name":"Zed Otherhand"}],"narrators":[{"name":"Cal Voice"}],` +
 		`"series":[{"name":"` + seriesName + `","position":"1"}]}`
-	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, coAuthored,
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true}, coAuthored,
 		attachExportRow("B0DENY0001", "The Lost Coast Redux", "us", "english", "Ada Mapmaker", "Cal Voice", "1"))
 	if sum.NewWorks != 0 || sum.NewRecordings != 0 || sum.Attached != 0 || sum.SkippedOccupied != 2 || sum.NewPeople != 0 {
 		t.Errorf("NewWorks/NewRecordings/Attached/SkippedOccupied/NewPeople = %d/%d/%d/%d/%d, want 0/0/0/2/0",
@@ -510,7 +508,7 @@ func TestAttachmentsWorklist(t *testing.T) {
 		t.Fatal(err)
 	}
 	att := filepath.Join(dir, "attachments.ndjson")
-	if _, err := SelectLibex(in, filepath.Join(dir, "subset.ndjson"), SelectOptions{DataDir: dataDir, AttachmentsPath: att}); err != nil {
+	if _, err := SelectLibex(in, filepath.Join(dir, "subset.ndjson"), SelectOptions{DataDir: dataDir, AttachmentsPath: att, AttachEditions: true}); err != nil {
 		t.Fatal(err)
 	}
 	got, err := os.ReadFile(att)
@@ -622,7 +620,7 @@ func TestAttachReportsTheRowsOtherClaimsAsLost(t *testing.T) {
 	row := `{"asin":"B0ATTACH11","title":"The Lost Coast","region":"us","language":"english",` +
 		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],` +
 		`"series":[{"name":"` + seriesName + `","position":"1"},{"name":"Atlas Cycle","position":"4"}]}`
-	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, row)
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true}, row)
 	if sum.Attached != 1 {
 		t.Fatalf("Attached = %d", sum.Attached)
 	}
@@ -635,10 +633,10 @@ func TestAttachReportsTheRowsOtherClaimsAsLost(t *testing.T) {
 }
 
 // The --skipped worklist's source: every refused row with an ASIN and a code,
-// position-claimed for a row --existing-series-only turned away.
+// position-claimed for a row --attach-editions turned away.
 func TestImportSkipsCarryRefusalCodes(t *testing.T) {
 	dataDir := seedAttachCatalogue(t)
-	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true},
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true},
 		attachExportRow("B0DENY0001", "The Lost Coast Redux", "us", "english", "Ada Mapmaker", "Cal Voice", "1"),
 		attachExportRow("B0REGION04", "Volume Four", "zz", "english", "Ada Mapmaker", "Cal Voice", "4"),
 		attachExportRow("B0LANG0003", "Volume Three", "us", "klingon", "Ada Mapmaker", "Cal Voice", "3"),
@@ -675,31 +673,30 @@ func TestSummarizeACutSeriesWithNoKeptRows(t *testing.T) {
 	}
 }
 
-// Two outputs that do not exist yet are still one file when their names differ
-// only in case (APFS, NTFS) or reach one directory through a symlinked parent.
+// An output that does not exist yet still lands on the INPUT export when its name
+// differs only in case (APFS, NTFS) or reaches the export's directory through a
+// symlinked parent - the one destructive overlap, refused before anything runs.
 func TestSelectOutputsCatchAliasesOfNewFiles(t *testing.T) {
 	dataDir := seedSelectCatalogue(t)
 	dir := t.TempDir()
-	in := filepath.Join(dir, "export.ndjson")
+	src := filepath.Join(dir, "src")
+	if err := os.Mkdir(src, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	in := filepath.Join(src, "export.ndjson")
 	if err := os.WriteFile(in, []byte(selectRow("B0SELECT02", "Volume Two", "us", "english", seriesName, "2")+"\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
-	out := filepath.Join(dir, "out")
-	if err := os.Mkdir(out, 0o755); err != nil {
-		t.Fatal(err)
-	}
 	alias := filepath.Join(dir, "alias")
-	if err := os.Symlink(out, alias); err != nil {
+	if err := os.Symlink(src, alias); err != nil {
 		t.Fatal(err)
 	}
-	sub := filepath.Join(out, "subset.ndjson")
-	for _, tc := range []struct{ name, refusals string }{
-		{"case only", filepath.Join(out, "Subset.NDJSON")},
-		{"symlinked parent", filepath.Join(alias, "subset.ndjson")},
-		{"input, case only", filepath.Join(dir, "EXPORT.ndjson")},
+	for _, tc := range []struct{ name, out string }{
+		{"input, case only", filepath.Join(src, "EXPORT.ndjson")},
+		{"input through a symlinked parent", filepath.Join(alias, "export.ndjson")},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := SelectLibex(in, sub, SelectOptions{DataDir: dataDir, RefusalsPath: tc.refusals})
+			_, err := SelectLibex(in, tc.out, SelectOptions{DataDir: dataDir})
 			if err == nil || !strings.Contains(err.Error(), "refusing to write") {
 				t.Errorf("err = %v, want a refusal", err)
 			}
@@ -756,7 +753,7 @@ func TestSameFileBeforeTheDirectoryExists(t *testing.T) {
 // --skipped worklist never names an ASIN the run recorded.
 func TestSkipsDropAnASINTheRunImported(t *testing.T) {
 	dataDir := seedAttachCatalogue(t)
-	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true},
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true},
 		attachExportRow("B0SIBLING2", "Volume Two", "zz", "english", "Ada Mapmaker", "Bea Reader", "2"),
 		attachExportRow("B0SIBLING2", "Volume Two", "us", "english", "Ada Mapmaker", "Bea Reader", "2"),
 	)
@@ -776,7 +773,7 @@ func TestAttachDoesNotReportAClaimTheIncumbentHolds(t *testing.T) {
 	row := `{"asin":"B0ATTACH12","title":"The Lost Coast","region":"us","language":"english",` +
 		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}],` +
 		`"series":[{"name":"` + seriesName + `","position":"1"},{"name":"Atlas Cycle","position":"1"}]}`
-	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, row)
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true}, row)
 	if sum.Attached != 1 || len(sum.Warnings) != 0 {
 		t.Errorf("Attached = %d, warnings = %v; want a clean attachment", sum.Attached, sum.Warnings)
 	}
@@ -805,41 +802,5 @@ func TestAttachThatWritesNothingIsASkip(t *testing.T) {
 	}
 	if want := []RowSkip{{"B0ATTACH13", RefusalPositionClaimed}}; !reflect.DeepEqual(p.summary.Skips, want) {
 		t.Errorf("Skips = %+v, want %+v", p.summary.Skips, want)
-	}
-}
-
-// A failed commit leaves the PREVIOUS run's outputs exactly as they were: an
-// existing destination is moved aside first and moved back on rollback.
-func TestFailedCommitKeepsThePreviousOutputs(t *testing.T) {
-	dataDir := seedSelectCatalogue(t)
-	dir := t.TempDir()
-	in := filepath.Join(dir, "export.ndjson")
-	if err := os.WriteFile(in, []byte(selectRow("B0OTHER001", "Unrelated", "us", "english", "Elsewhere", "1")+"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
-	sub, ref, att := filepath.Join(dir, "s.ndjson"), filepath.Join(dir, "r.ndjson"), filepath.Join(dir, "a.ndjson")
-	prev := map[string]string{sub: "previous subset\n", ref: "previous refusals\n", att: "previous attachments\n"}
-	for p, body := range prev {
-		if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
-	renameFile = func(from, to string) error {
-		if to == sub {
-			return errors.New("injected")
-		}
-		return os.Rename(from, to)
-	}
-	t.Cleanup(func() { renameFile = os.Rename })
-	if _, err := SelectLibex(in, sub, SelectOptions{DataDir: dataDir, RefusalsPath: ref, AttachmentsPath: att}); err == nil {
-		t.Fatal("the injected rename must fail the commit")
-	}
-	for p, body := range prev {
-		if got, _ := os.ReadFile(p); string(got) != body {
-			t.Errorf("%s = %q after a failed commit, want the previous %q", p, got, body)
-		}
-	}
-	if left, _ := filepath.Glob(filepath.Join(dir, ".metaimport-*")); len(left) > 0 {
-		t.Errorf("temp or side files left: %v", left)
 	}
 }

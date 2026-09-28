@@ -105,11 +105,8 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 		return
 	}
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
-	if p.addRecording(ws, b, firstNonEmpty(b.str("title_short"), b.str("title")), asin, lang, narratorSlugs, warn) && asin != "" {
-		// Single owner of the global ASIN registry, as in addBook: claim the ASIN
-		// only once it actually landed on a recording.
-		p.asins[asin] = true
-	}
+	// addRecording registers the ASIN itself, only once it landed on a recording.
+	p.addRecording(ws, b, firstNonEmpty(b.str("title_short"), b.str("title")), asin, lang, narratorSlugs, warn)
 }
 
 // resolveExistingWork returns the catalogued work a row belongs to, or nil. The

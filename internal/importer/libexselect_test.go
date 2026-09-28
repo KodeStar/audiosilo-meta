@@ -137,14 +137,14 @@ func TestLibexSelectSeriesCompletion(t *testing.T) {
 	}
 
 	want := map[string]int{
-		reasonAlreadyASIN: 1,
-		reasonNoSeries:    1,
-		reasonLanguage:    1,
-		reasonRegion:      1,
+		reasonAlreadyASIN.report: 1,
+		reasonNoSeries.report:    1,
+		reasonLanguage.report:    1,
+		reasonRegion.report:      1,
 	}
-	for _, reason := range reasonOrder {
-		if res.Excluded[reason] != want[reason] {
-			t.Errorf("excluded[%s] = %d, want %d", reason, res.Excluded[reason], want[reason])
+	for _, rule := range refusals {
+		if res.Excluded[rule.report] != want[rule.report] {
+			t.Errorf("excluded[%s] = %d, want %d", rule.report, res.Excluded[rule.report], want[rule.report])
 		}
 	}
 
@@ -218,8 +218,8 @@ func TestLibexSelectMaxPerSeries(t *testing.T) {
 	if res.RowsSelected != 3 {
 		t.Errorf("RowsSelected = %d, want 3", res.RowsSelected)
 	}
-	if res.Excluded[reasonSeriesCap] != 2 {
-		t.Errorf("excluded[cap] = %d, want 2", res.Excluded[reasonSeriesCap])
+	if res.Excluded[reasonSeriesCap.report] != 2 {
+		t.Errorf("excluded[cap] = %d, want 2", res.Excluded[reasonSeriesCap.report])
 	}
 	wantLines := []string{rows[0], rows[5], rows[6]}
 	for i, line := range lines {
@@ -258,11 +258,11 @@ func TestLibexSelectRowIdentityRules(t *testing.T) {
 	if res.RowsSelected != 1 || len(lines) != 1 {
 		t.Fatalf("RowsSelected = %d, lines = %v, want 1", res.RowsSelected, lines)
 	}
-	if res.Excluded[reasonDuplicateASIN] != 1 {
-		t.Errorf("excluded[duplicate] = %d, want 1", res.Excluded[reasonDuplicateASIN])
+	if res.Excluded[reasonDuplicateASIN.report] != 1 {
+		t.Errorf("excluded[duplicate] = %d, want 1", res.Excluded[reasonDuplicateASIN.report])
 	}
-	if res.Excluded[reasonNoASIN] != 1 {
-		t.Errorf("excluded[no asin] = %d, want 1", res.Excluded[reasonNoASIN])
+	if res.Excluded[reasonNoASIN.report] != 1 {
+		t.Errorf("excluded[no asin] = %d, want 1", res.Excluded[reasonNoASIN.report])
 	}
 }
 
@@ -280,8 +280,8 @@ func TestLibexSelectSeriesNameCollision(t *testing.T) {
 	if res.RowsSelected != 0 || len(lines) != 0 {
 		t.Fatalf("RowsSelected = %d, want 0 (a same-slug, different-name series is not a target)", res.RowsSelected)
 	}
-	if res.Excluded[reasonNoSeries] != 1 {
-		t.Errorf("excluded[no catalogue series] = %d, want 1", res.Excluded[reasonNoSeries])
+	if res.Excluded[reasonNoSeries.report] != 1 {
+		t.Errorf("excluded[no catalogue series] = %d, want 1", res.Excluded[reasonNoSeries.report])
 	}
 }
 
@@ -302,12 +302,12 @@ func TestLibexSelectSeriesClaimsMustAllBeCatalogued(t *testing.T) {
 		{
 			name:   "uncatalogued claim first",
 			claims: []claimSpec{{"Unknown Saga", "1"}, {seriesName, "2"}},
-			reason: reasonOtherSeriesUncatalogued,
+			reason: reasonOtherSeriesUncatalogued.report,
 		},
 		{
 			name:   "uncatalogued claim second",
 			claims: []claimSpec{{seriesName, "2"}, {"Unknown Saga", "1"}},
-			reason: reasonOtherSeriesUncatalogued,
+			reason: reasonOtherSeriesUncatalogued.report,
 		},
 		{
 			// The importer only WARNS about a claim it cannot place, so it mints
@@ -455,11 +455,11 @@ func TestLibexSelectRefusesPositionlessRow(t *testing.T) {
 	if res.RowsSelected != 1 || len(lines) != 1 || !strings.Contains(lines[0], "B0SELECT04") {
 		t.Fatalf("RowsSelected = %d, lines = %v, want only the positioned volume", res.RowsSelected, lines)
 	}
-	if res.Excluded[reasonNoPosition] != 2 {
-		t.Errorf("excluded[no position] = %d, want 2", res.Excluded[reasonNoPosition])
+	if res.Excluded[reasonNoPosition.report] != 2 {
+		t.Errorf("excluded[no position] = %d, want 2", res.Excluded[reasonNoPosition.report])
 	}
 	assertPartition(t, res)
-	if report := res.Report(); !strings.Contains(report, reasonNoPosition) {
+	if report := res.Report(); !strings.Contains(report, reasonNoPosition.report) {
 		t.Errorf("report does not name the reason:\n%s", report)
 	}
 }
@@ -483,8 +483,8 @@ func TestLibexSelectRefusesTakenPositions(t *testing.T) {
 	}
 	res, lines := runSelect(t, dataDir, rows, 0)
 
-	if res.Excluded[reasonPositionTaken] != 2 {
-		t.Errorf("excluded[position taken] = %d, want 2", res.Excluded[reasonPositionTaken])
+	if res.Excluded[reasonPositionTaken.report] != 2 {
+		t.Errorf("excluded[position taken] = %d, want 2", res.Excluded[reasonPositionTaken.report])
 	}
 	if res.RowsSelected != 2 || res.ProjectedWorks != 1 {
 		t.Errorf("selected %d rows / %d works, want the 2 sibling rows of 1 work", res.RowsSelected, res.ProjectedWorks)
@@ -503,8 +503,8 @@ func TestLibexSelectCatalogueNormalizesPositions(t *testing.T) {
 	res, _ := runSelect(t, dataDir, []string{
 		selectRow("B0RETAKE01", "Volume One Redux", "us", "english", seriesName, "1.0"),
 	}, 0)
-	if res.Excluded[reasonPositionTaken] != 1 {
-		t.Errorf("excluded[position taken] = %d, want 1 (\"1.0\" is position \"1\")", res.Excluded[reasonPositionTaken])
+	if res.Excluded[reasonPositionTaken.report] != 1 {
+		t.Errorf("excluded[position taken] = %d, want 1 (\"1.0\" is position \"1\")", res.Excluded[reasonPositionTaken.report])
 	}
 }
 
@@ -680,8 +680,8 @@ func TestLibexSelectCountsNonObjectElements(t *testing.T) {
 			if res.RowsRead != 2 || res.RowsSelected != 1 {
 				t.Errorf("read/selected = %d/%d, want 2/1", res.RowsRead, res.RowsSelected)
 			}
-			if res.Excluded[reasonNoASIN] != 1 {
-				t.Errorf("excluded[no asin] = %d, want 1", res.Excluded[reasonNoASIN])
+			if res.Excluded[reasonNoASIN.report] != 1 {
+				t.Errorf("excluded[no asin] = %d, want 1", res.Excluded[reasonNoASIN.report])
 			}
 			if len(lines) != 1 || !strings.Contains(lines[0], "B0SELECT02") {
 				t.Errorf("output = %v", lines)

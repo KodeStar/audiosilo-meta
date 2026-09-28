@@ -194,9 +194,13 @@ type planner struct {
 	people map[string]string
 	works  map[string]*workState
 	series map[string]*seriesState
-	// attachKeys caches each incumbent's title key per series for the attach
-	// rule (attach.go, incumbentTitleKey), built on first use.
-	attachKeys map[string]string
+	// attachEditions turns the attach rule on (Options.AttachEditions,
+	// attach.go); attachProducts caches each incumbent's product statements per
+	// series for it, built on first use. loadedPositions says the load builds
+	// seriesState.loaded, which only the attach rule and libex-select read.
+	attachEditions  bool
+	attachProducts  map[string]titlerule.Product
+	loadedPositions bool
 	// seriesIndex is the catalogue's series evidence (seriesauthors.go) the batch
 	// resolution judges every claim against, built on first use from catalog, the
 	// catalogue load, which resolveSeriesTargets then lets go.
@@ -228,17 +232,12 @@ type planner struct {
 	// per-record half is whether the record the row matched is still
 	// bulk-mirror-only. See attest.go and LICENSING.md's trust tiers.
 	userTier bool
-	// authorCensus / narratorCensus are the evidence universes the two
-	// census-consulting cleaning rules read, one per CREDIT SIDE. Both carry the
-	// same any-side universe for the studio-concatenation rule (studiotail.go) -
-	// the catalogue's person slugs as loaded, plus a census of every credit name
-	// the batch carries - and differ only in the side-scoped universe the
-	// honorific rule reads (honorific.go). They are SNAPSHOTS taken before any
-	// row is planned - see creditCensusesOf - so what a name cleans to cannot
-	// depend on the order the rows arrive in. Unrelated to the trust-tier sense
-	// of "attested" (attest.go), which is why they do not use that word.
-	authorCensus   creditCensus
-	narratorCensus creditCensus
+	// credits is the run's batch credit decisions (creditContext): the two
+	// censuses and the initials decision, taken once before planning. Every
+	// planning step reads them through here; libex-select, which judges several
+	// batches against one planner, passes its own creditContext explicitly
+	// instead of setting this.
+	credits creditContext
 	// authorPeople / narratorPeople are the catalogue's own answer to "which
 	// side is this person credited on": every person some catalogued work names
 	// as an author (or role credit), and every person some catalogued recording
@@ -254,19 +253,6 @@ type planner struct {
 	// (credential.go, Summary.CredentialMerges): the same kind of decision -
 	// two spellings are one human - made at the other end of the name.
 	credentialMerges map[string]string
-	// initialsSurvivors is the initials rule's decision for this run
-	// (initials.go): for every person slug whose initials group is written more
-	// than one way across the catalogue and the batch, the record that group
-	// resolves to. Like creditCensus it is a SNAPSHOT taken before planning, and
-	// for the same reason - a merge decided against a map that grows during the
-	// run depends on row order, so two runs over the same rows in a different
-	// order (or one export split into chunks) would mint different ids.
-	//
-	// It is consulted wherever a credit is resolved, created or not
-	// (resolvePerson): the variant slug is never written into p.people, so a
-	// credit minted under it has to be redirected here or it would name a record
-	// that does not exist.
-	initialsSurvivors initialsSurvivors
 	// redirects is the catalogue's slug TOMBSTONE table, off the same load as the
 	// identity maps, and tombstoneRides every retired slug this run resolved onto
 	// its survivor rather than minting there (tombstone.go).
@@ -441,11 +427,14 @@ func (p *planner) result() Summary {
 	sum := p.summary
 	// A refused row whose ASIN the run recorded after all - a sibling row of the
 	// same ASIN that did import, or one the catalogue already holds - is not a
-	// refusal worth memoizing, so the --skipped worklist never names it.
-	sum.Skips = nil
-	for _, s := range p.summary.Skips {
-		if !p.asins[s.ASIN] {
-			sum.Skips = append(sum.Skips, s)
+	// refusal worth memoizing, so the --skipped worklist never names it; and the
+	// printed count of rows refused at an occupied position is read off that
+	// same list, so the line and the worklist cannot disagree.
+	sum.Skips = dropRecorded(p.summary.Skips, func(asin string) bool { return p.asins[asin] })
+	sum.SkippedOccupied = 0
+	for _, s := range sum.Skips {
+		if s.Reason == reasonPositionTaken.code {
+			sum.SkippedOccupied++
 		}
 	}
 	sum.RunLevelWarnings = len(p.summary.Warnings)
@@ -466,7 +455,7 @@ func Run(booksPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, err
 	}
-	return runBooks(books, sourceOpenAud, opts)
+	return runBooks(books, sourceOpenAud, opts, nil)
 }
 
 // sourceBook is the parsed, source-independent view of one export entry. raw
@@ -546,7 +535,7 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, err
 	}
-	return runBooks(books, sourceLibation, opts)
+	return runBooks(books, sourceLibation, opts, nil)
 }
 
 // runBooks is the shared import core: it plans every book into records against
@@ -556,7 +545,11 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // The three planning modes are disjoint by design and selected by opts.Mode
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
-func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
+//
+// parseSkips are the source parse layer's refusals (RunLibex's), which join the
+// planner's own on Summary.Skips so the run's end can drop any whose ASIN it
+// imported after all; nil for every other source.
+func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []RowSkip) (Summary, error) {
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -592,7 +585,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	// The synthetic-narration note rides along for the same reason: a run that
 	// fails later still says what it admitted.
 	p.summary.SkippedRows = aiRefused.n
-	p.summary.Skips = append([]RowSkip(nil), opts.parseSkips...)
+	p.summary.Skips = append([]RowSkip(nil), parseSkips...)
 	if line, warned := aiRefused.warning(); warned {
 		p.summary.Warnings = append(p.summary.Warnings, line)
 	}
@@ -651,6 +644,8 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		conflicts:          opts.Conflicts,
 		userTier:           model.TierOfSource(sourceType) == model.TierUserLibrary,
 		existingSeriesOnly: opts.ExistingSeriesOnly,
+		attachEditions:     opts.AttachEditions,
+		loadedPositions:    opts.AttachEditions,
 	}
 }
 
@@ -660,8 +655,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 // the same order.
 func (p *planner) run(books []sourceBook, opts Options) error {
 	p.loadExisting()
-	p.authorCensus, p.narratorCensus = p.creditCensusesOf(books)
-	p.initialsSurvivors = p.decideInitialsOf(books)
+	p.credits = p.creditContextOf(books)
 	p.resolveSeriesTargets(books)
 
 	switch opts.Mode {
@@ -1013,15 +1007,19 @@ func (p *planner) loadExisting() {
 			positions: map[string]string{},
 			claimed:   map[string]string{},
 		}
-		ss.loaded = make(map[string]string, len(s.Works))
+		if p.loadedPositions {
+			ss.loaded = make(map[string]string, len(s.Works))
+		}
 		for _, sw := range s.Works {
 			ss.members[sw.Work] = sw.Position
 			ss.positions[sw.Position] = sw.Work
-			pos := sw.Position
-			if norm, ok := NormalizeSequence(pos); ok {
-				pos = norm
+			if ss.loaded != nil {
+				pos := sw.Position
+				if norm, ok := NormalizeSequence(pos); ok {
+					pos = norm
+				}
+				ss.loaded[pos] = sw.Work
 			}
-			ss.loaded[pos] = sw.Work
 		}
 		p.series[s.ID] = ss
 	}
@@ -1149,37 +1147,39 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 
 	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
-		p.noteLostSeriesClaims(b)
+		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
 	authorCredits := p.rowAuthorCredits(b)
 	if len(authorCredits) == 0 {
 		warn("no author; a work requires an author; skipped")
-		p.noteLostSeriesClaims(b)
+		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
 
 	if workTitle == "" {
 		warn("no title; skipped")
-		p.noteLostSeriesClaims(b)
+		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
 
-	// A row claiming a position the catalogue already fills (ExistingSeriesOnly
-	// runs only, attach.go) is ATTACHED to the work there when it is another
-	// edition of it, and otherwise REFUSED: such a run never plans a sibling work
-	// at an occupied position, whatever subset it was handed. Asked before
-	// anything below can create a person or a work, resolve a title or place a
-	// claim.
-	if ws, occupant := p.attachTarget(b); ws != nil {
+	// A row claiming a position the catalogue already fills (AttachEditions runs
+	// only, attach.go) is ATTACHED to the work there when it is another edition
+	// of it, and otherwise REFUSED: such a run never plans a sibling work at an
+	// occupied position, whatever subset it was handed. Asked before anything
+	// below can create a person or a work, resolve a title or place a claim; its
+	// COMPLETION claim lost nothing (the position is the incumbent's), so only
+	// the row's other claims are noted as lost.
+	if ws, occupant := p.attachTarget(b, workTitle); ws != nil {
 		p.attachRow(ws, b, workTitle, asin, lang, narratorNames, warn)
-		p.noteOtherLostSeriesClaims(b, ws)
+		_, at := completionClaim(b)
+		p.noteLostSeriesClaims(b, at, ws)
 		return
 	} else if occupant != "" {
-		p.summary.SkippedOccupied++
-		p.noteSkip(asin, reasonPositionTaken)
-		warn("its series position is already held by %q, and it is not another edition of that work; skipped (--existing-series-only never adds a second work at an occupied position)", occupant)
-		p.noteOtherLostSeriesClaims(b, nil)
+		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonPositionTaken)
+		warn("its series position is already held by %q, and it is not another edition of that work; skipped (--attach-editions never adds a second work at an occupied position)", occupant)
+		_, at := completionClaim(b)
+		p.noteLostSeriesClaims(b, at, nil)
 		return
 	}
 
@@ -1213,7 +1213,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// refused row is re-importable, a wrong merge is not.
 	ident := p.rowIdentityOf(b, workTitle)
 	if p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
-		p.noteLostSeriesClaims(b)
+		p.noteLostSeriesClaims(b, -1, nil)
 		return
 	}
 
@@ -1250,23 +1250,14 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if ws != nil {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
-	recorded := p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
 
-	// Single owner of the global ASIN registry: whether addRecording created a
-	// new recording or merged the ASIN into an existing one, this tail records
-	// it - but ONLY when the ASIN actually landed on a recording. An ASIN the
-	// region check rejected is nowhere in the tree, so claiming it would make a
-	// later, well-formed row for the same book dedupe against nothing and be
-	// skipped, losing the ASIN for the whole run.
-	//
+	// addRecording registers the ASIN (p.asins) itself, and only once it landed.
 	// What a merge carries is deliberately narrow: the ASIN, this run's
 	// provenance stamp, and any globally-unclaimed ISBN. The incumbent
 	// recording's cover, publisher, chapters and release date are left alone -
 	// backfilling absent facts onto records already in the catalogue is the
 	// separate enrichment mode's job, not a side effect of a new-books import.
-	if asin != "" && recorded {
-		p.asins[asin] = true
-	}
 
 	// EVERY claim with a usable position is placed, and getOrCreateSeries CREATES
 	// the series it resolved to when the catalogue does not hold it. libex-select
@@ -1336,7 +1327,7 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 	lang, ok = mapLanguage(b.str("language"))
 	if !ok {
 		warn("unknown language %q; skipped", b.str("language"))
-		p.noteSkip(NormalizeASIN(b.str("asin")), reasonLanguage)
+		p.summary.Skips = appendSkip(p.summary.Skips, NormalizeASIN(b.str("asin")), reasonLanguage)
 		return "", nil, false
 	}
 	narratorNames = p.rowNarratorNames(b)
@@ -1360,19 +1351,50 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 // same scraping junk - production-company names and bio fragments - that the
 // vocabulary refuses anyway. Recording-level credits stay unmodeled until
 // there is evidence worth modeling.
-func (p *planner) rowAuthorCredits(b sourceBook) []credit {
+func (p *planner) rowAuthorCredits(b sourceBook) []credit { return rowAuthorCreditsIn(p.credits, b) }
+
+// rowAuthorCreditsIn is rowAuthorCredits under an explicit batch context.
+func rowAuthorCreditsIn(ctx creditContext, b sourceBook) []credit {
 	if b.creditsCached {
 		return b.authorCredits
 	}
-	return sourceCredits(b.authors, b.str("author"), p.authorCensus)
+	return sourceCredits(b.authors, b.str("author"), ctx.author)
 }
 
 // rowNarratorNames is a row's cleaned narrator list, read from the source's
 // structured list when it has one and from its comma-joined string otherwise
 // (sourceCredits owns that choice). There is no author-side twin: every author
 // path needs the ROLES too, so it goes through rowAuthorCredits.
-func (p *planner) rowNarratorNames(b sourceBook) []string {
-	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), p.narratorCensus))
+func (p *planner) rowNarratorNames(b sourceBook) []string { return rowNarratorNamesIn(p.credits, b) }
+
+// rowNarratorNamesIn is rowNarratorNames under an explicit batch context.
+func rowNarratorNamesIn(ctx creditContext, b sourceBook) []string {
+	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), ctx.narrator))
+}
+
+// creditContext is ONE batch's credit decisions, taken before any row of it is
+// planned: the two credit censuses (the evidence universes the census-consulting
+// cleaning rules read, one per CREDIT SIDE - the catalogue's person slugs plus
+// every credit name the batch carries, the author and narrator sides differing
+// only in the side-scoped universe the honorific rule reads, honorific.go) and
+// the initials decision (initials.go: for every person slug whose initials group
+// is written more than one way across the catalogue and the batch, the record
+// that group resolves to). They are SNAPSHOTS so what a name cleans or resolves
+// to cannot depend on the order rows arrive in - a decision against a map that
+// grows during the run would mint different ids for the same rows reordered.
+//
+// It is a VALUE: the import takes one per run (planner.credits), and
+// libex-select, which re-judges shrinking batches against one planner, computes
+// one per batch and passes it explicitly, never by setting planner fields.
+type creditContext struct {
+	author, narrator creditCensus
+	initials         initialsSurvivors
+}
+
+// creditContextOf takes a batch's credit decisions.
+func (p *planner) creditContextOf(books []sourceBook) creditContext {
+	author, narrator := p.creditCensusesOf(books)
+	return creditContext{author: author, narrator: narrator, initials: p.decideInitialsOf(books, author, narrator)}
 }
 
 // creditCensusOf builds this run's credit census: the set of slugs a name must
@@ -1532,7 +1554,7 @@ func mergeLines(set map[string]string) []string {
 // narrator's spelling, not the concatenation's. That is also why this cannot be
 // folded into the census loop: the census has to be complete before a name can
 // be cleaned through it.
-func (p *planner) decideInitialsOf(books []sourceBook) initialsSurvivors {
+func (p *planner) decideInitialsOf(books []sourceBook, authorCensus, narratorCensus creditCensus) initialsSurvivors {
 	c := newInitialsCensus()
 	for slug, name := range p.people {
 		c.addCatalogue(slug, name)
@@ -1543,11 +1565,11 @@ func (p *planner) decideInitialsOf(books []sourceBook) initialsSurvivors {
 		// reading both sides through one census would decide an initials group
 		// against a spelling the import never produces.
 		for _, name := range sourceNames(b.authors, b.str("author")) {
-			cleaned, _ := creditWithRolesSided(name, p.authorCensus)
+			cleaned, _ := creditWithRolesSided(name, authorCensus)
 			c.addBatch(cleaned)
 		}
 		for _, name := range sourceNames(b.narrators, b.str("narrated_by")) {
-			cleaned, _ := creditWithRolesSided(name, p.narratorCensus)
+			cleaned, _ := creditWithRolesSided(name, narratorCensus)
 			c.addBatch(cleaned)
 		}
 	}
@@ -1754,13 +1776,19 @@ type personResolution struct {
 // reaching that slug resolves to it either way (live, or named as the one to
 // create).
 func (p *planner) resolvePerson(name string) personResolution {
+	return p.resolvePersonIn(p.credits, name)
+}
+
+// resolvePersonIn is resolvePerson under an explicit batch context (its initials
+// decision).
+func (p *planner) resolvePersonIn(ctx creditContext, name string) personResolution {
 	slug, fellBack := personSlug(name)
 	// livePerson also follows a retired slug to its survivor (tombstone.go): the
 	// person is never re-created at the address a merge took them off.
 	from := slug
 	live, ok := p.livePerson(from)
 	if !ok {
-		survivor, merges := p.initialsMerge(name, slug, fellBack)
+		survivor, merges := initialsMerge(ctx.initials, name, slug, fellBack)
 		if !merges {
 			return personResolution{slug: slug, create: true, name: name, fellBack: fellBack}
 		}
@@ -2302,18 +2330,23 @@ type claimAt struct{ book, ref int }
 // (rowAuthorCredits) for the planning that follows: the censuses they read are
 // fixed by now.
 func (p *planner) batchClaims(books []sourceBook) ([]nameClaim, []claimAt) {
+	return p.batchClaimsIn(p.credits, books)
+}
+
+// batchClaimsIn is batchClaims under an explicit batch context.
+func (p *planner) batchClaimsIn(ctx creditContext, books []sourceBook) ([]nameClaim, []claimAt) {
 	var claims []nameClaim
 	var where []claimAt
 	for i := range books {
 		b := &books[i]
-		b.authorCredits, b.creditsCached = p.rowAuthorCredits(*b), true
+		b.authorCredits, b.creditsCached = rowAuthorCreditsIn(ctx, *b), true
 		if len(b.series) == 0 {
 			continue
 		}
 		asin := NormalizeASIN(b.str("asin"))
 		row := SeriesRowFor(creditNamesOf(b.authorCredits), []string{b.str("title"), b.str("title_short")}, b.str("publisher"),
-			func(name string) string { return p.resolvePerson(name).slug })
-		places, work := p.claimPlaces(*b, asin)
+			func(name string) string { return p.resolvePersonIn(ctx, name).slug })
+		places, work := p.claimPlacesIn(ctx, *b, asin)
 		// A claim with no usable position is placed only if a lookup later fills
 		// one, so claimsOf does not count it on as evidence.
 		for j, c := range claimsOf(b.series, row, asin, places, work) {
@@ -2355,21 +2388,21 @@ func (p *planner) seriesCatalogue() seriesCatalogue {
 // pass places nothing. The one drop this cannot foresee (the duplicate-identity
 // guard, which reads the resolved claim) can leave a founded series unwritten,
 // and settleNewSeriesSlugs closes the gap that would leave in the chain.
-func (p *planner) claimPlaces(b sourceBook, asin string) (places bool, work string) {
+func (p *planner) claimPlacesIn(ctx creditContext, b sourceBook, asin string) (places bool, work string) {
 	switch p.mode {
 	case ModeCreate:
 		if asin != "" && p.asins[asin] {
 			return false, ""
 		}
 		lang, ok := mapLanguage(b.str("language"))
-		if !ok || len(p.rowNarratorNames(b)) == 0 || len(b.authorCredits) == 0 {
+		if !ok || len(rowNarratorNamesIn(ctx, b)) == 0 || len(b.authorCredits) == 0 {
 			return false, ""
 		}
 		title := firstNonEmpty(b.str("title_short"), b.str("title"))
 		if title == "" {
 			return false, ""
 		}
-		return true, p.rowWorkKey(b, title, lang)
+		return true, p.rowWorkKeyIn(ctx, b, title, lang)
 	case ModeEnrich:
 		if asin == "" || !p.asins[asin] {
 			return false, ""
@@ -2389,9 +2422,9 @@ func (p *planner) claimPlaces(b sourceBook, asin string) (places bool, work stri
 // how the catalogue's evidence names that member - else the row's cleaned work
 // title (cleanWorkTitle, the title the create path resolves by) and its
 // identity authors, which a title's per-region sibling rows share.
-func (p *planner) rowWorkKey(b sourceBook, title, lang string) string {
+func (p *planner) rowWorkKeyIn(ctx creditContext, b sourceBook, title, lang string) string {
 	title = cleanWorkTitle(title)
-	authors := p.rowWorkAuthorsRO(b.authorCredits)
+	authors := p.rowWorkAuthorsROIn(ctx, b.authorCredits)
 	if walk := p.resolveWork(title, cleanWorkTitle(b.str("title")), "", authors, lang, nil); walk.ws != nil {
 		return walk.ws.slug
 	}
@@ -2406,14 +2439,16 @@ func (p *planner) rowWorkKey(b sourceBook, title, lang string) string {
 // as a sibling work; a genuinely different production (both runtimes known and
 // diverging beyond 10 percent) becomes a distinct recording under the same work.
 //
-// asinRecorded reports whether asin ended up on a recording (newly attached,
-// merged, or already there). It is false when the region check rejected it, so
-// the caller does not claim an ASIN that is nowhere in the tree.
+// It is the single owner of the global ASIN registry for what it writes: asin is
+// registered (p.asins) whenever it ends up on a recording - newly attached,
+// merged, or already there - and never when the region check rejected it, so a
+// later, well-formed row for the same book does not dedupe against an ASIN that
+// is nowhere in the tree. The outcome says what it did (recOutcome).
 //
 // title is the row's work title, the one placement arbitrates a stated volume
 // against (rowPositionOf), so the serial guard reads the row's position as
 // placement does.
-func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang string, narratorSlugs []string, warn func(string, ...any)) (asinRecorded bool) {
+func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang string, narratorSlugs []string, warn func(string, ...any)) recOutcome {
 	// Defensive only: personSlug substitutes "person" for an unslugifiable name
 	// and admitRecordingFacts guarantees at least one narrator, so the slug is
 	// never empty. Checked before the year so the guard cannot produce "-2020".
@@ -2438,11 +2473,12 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	claims := rowSeriesClaims(b, title)
 	if len(matches) > 0 {
 		if asin == "" {
-			return false // nothing new to add (same production, no new ASIN)
+			return recNone // nothing new to add (same production, no new ASIN)
 		}
 		for _, m := range matches {
 			if m.info.asins[asin] {
-				return true // idempotent: this ASIN is already recorded
+				p.asins[asin] = true
+				return recAlready // idempotent: this ASIN is already recorded
 			}
 		}
 		// A new ASIN on this entry is a re-release of an existing production when
@@ -2466,7 +2502,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
-					return false
+					return recNone
 				}
 				// A user import merging into a BULK-MIRROR-ONLY recording attests
 				// it, and must do so BEFORE the merge stamps this run's source on
@@ -2482,8 +2518,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 				// earlier version did) loses a fact no later run would restore.
 				// The claim happens INSIDE the merge, which is where the target
 				// record's own isbn[] can be read - see claimISBNsFor.
-				p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, b.isbns, warn)
-				return true
+				if !p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, b.isbns, warn) {
+					return recNone
+				}
+				p.asins[asin] = true
+				return recMerged
 			}
 		}
 	}
@@ -2508,7 +2547,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	if asin != "" {
 		if region, ok := p.resolveASINRegion(b, warn); ok {
 			rec.ASIN = []OutASIN{{Region: region, ASIN: asin}}
-			asinRecorded = true
+			p.asins[asin] = true
 		}
 	}
 	rec.ISBN = p.claimISBNs(b.isbns, warn)
@@ -2529,8 +2568,18 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	ws.recs[slug] = ri
 	p.putRecording(ws.slug, slug, rec)
 	p.summary.NewRecordings++
-	return asinRecorded
+	return recNew
 }
+
+// recOutcome is what addRecording did with a row.
+type recOutcome int
+
+const (
+	recNone    recOutcome = iota // wrote nothing (no new ASIN, a refused region, a merge that could not be read)
+	recAlready                   // the ASIN was already on a same-narrator recording
+	recMerged                    // the ASIN was merged onto a same-narrator recording
+	recNew                       // a new recording was written
+)
 
 // resolveASINRegion maps the book's marketplace region to a canonical region
 // code, warning (and returning ok=false) when it is not a known marketplace so
@@ -2666,43 +2715,13 @@ func (p *planner) noteUnaddressableSeries(name string) {
 // It is deliberately a COUNT with examples rather than a line per claim: the
 // cause is never the series, it is always the row, which has already been
 // reported on its own terms.
-func (p *planner) noteLostSeriesClaims(b sourceBook) {
-	p.noteLostSeriesClaimsExcept(b, -1, nil)
-}
-
-// workHolds reports whether ws already sits in the series claim r resolved to,
-// at r's position.
-func (p *planner) workHolds(ws *workState, r seriesRef) bool {
-	ss := p.series[r.target.slug]
-	if ss == nil || !r.seqOK {
-		return false
-	}
-	pos, ok := ss.members[ws.slug]
-	if !ok {
-		return false
-	}
-	if norm, ok := NormalizeSequence(pos); ok {
-		pos = norm
-	}
-	return pos == r.seq
-}
-
-// noteOtherLostSeriesClaims is noteLostSeriesClaims for a row the attach rule
-// decided (attach.go): its COMPLETION claim names the position the incumbent
-// already holds, so that one lost nothing. For an ATTACHED row (ws, the work it
-// was attached to) a claim the incumbent already answers - the same series at
-// the same position - lost nothing either, so only a genuinely missing
-// placement is noted and a clean attachment adds no warning. A refused row (ws
-// nil) is another book, so every other positioned claim it made is lost.
-func (p *planner) noteOtherLostSeriesClaims(b sourceBook, ws *workState) {
-	_, at, _ := completionClaim(b)
-	p.noteLostSeriesClaimsExcept(b, at, ws)
-}
-
-// noteLostSeriesClaimsExcept notes every positioned claim of b but the one at
-// index skip (-1: none) and, when held is non-nil, any the work held already
-// sits at.
-func (p *planner) noteLostSeriesClaimsExcept(b sourceBook, skip int, held *workState) {
+//
+// skip is the index of a claim that lost nothing (-1: none) - an attach-rule
+// row's completion claim, whose position is the incumbent's - and held, when
+// non-nil, the work an attached row landed on: a claim that work already
+// answers (the same series at the same slot) lost nothing either, so a clean
+// attachment adds no warning.
+func (p *planner) noteLostSeriesClaims(b sourceBook, skip int, held *workState) {
 	for i, r := range b.series {
 		if i == skip || (held != nil && p.workHolds(held, r)) {
 			continue
@@ -2717,6 +2736,17 @@ func (p *planner) noteLostSeriesClaimsExcept(b sourceBook, skip int, held *workS
 		}
 		p.lostSeriesNames = append(p.lostSeriesNames, r.name)
 	}
+}
+
+// workHolds reports whether ws already sits in the series claim r resolved to,
+// at r's slot (SameSlot).
+func (p *planner) workHolds(ws *workState, r seriesRef) bool {
+	ss := p.series[r.target.slug]
+	if ss == nil || !r.seqOK {
+		return false
+	}
+	pos, ok := ss.members[ws.slug]
+	return ok && SameSlot(pos, r.seq)
 }
 
 // reportLostSeriesClaims appends one run-level warning for those claims.
@@ -2965,13 +2995,13 @@ func (p *planner) seriesPosConflict(ri *recInfo, ws *workState, row []posClaim, 
 // holds would otherwise be reported as a collision with "another recording"
 // (claimISBNsFor). Nothing is claimed on the bail path below either, which is
 // the right side to err on: an entry that could not be read was not written.
-func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string, isbns []string, warn func(string, ...any)) {
+func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string, isbns []string, warn func(string, ...any)) bool {
 	if p.fatal != nil {
-		return
+		return false
 	}
 	entry, raw := p.recordingRaw(workSlug, recSlug)
 	if raw == nil {
-		return
+		return false
 	}
 	arr, _ := raw["asin"].([]any)
 	raw["asin"] = append(arr, map[string]any{"region": region, "asin": asin})
@@ -2981,9 +3011,9 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asi
 	p.stampSource(raw)
 	p.putWorkEntry(workSlug, entry)
 	ri.asins[asin] = true
-	// p.asins is registered by addBook's tail for every path (merge and new
-	// recording alike), so it is intentionally NOT set here - one owner.
+	// p.asins is registered by addRecording, the one owner, once this returns.
 	p.summary.MergedASINs++
+	return true
 }
 
 // appendSourceUnique appends src to an existing record's raw sources[] array
