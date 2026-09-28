@@ -63,6 +63,13 @@ VERDICT_OUT="${2:?verdict output path required}"
 COMMENT_OUT="${3:?comment output path required}"
 
 CONTEXT_FORMAT="${CONTEXT_FORMAT:-summary}"
+# PR_ORIGIN (env, set by ai-verify.yml) is `sync-bot` for the series-completion
+# bot's pull requests and `contributor` for anything else - the default, and the
+# stricter reading: only the bot's rows come straight from a retailer's feed.
+PR_ORIGIN="${PR_ORIGIN:-contributor}"
+# The model has no clock of its own: "in the future" and "a year or two ahead"
+# are measured from this, not from its training cutoff.
+TODAY="$(date -u +%F)"
 
 MODEL="claude-sonnet-5"
 API_URL="https://api.anthropic.com/v1/messages"
@@ -135,8 +142,10 @@ Check the changed records for:
 - Fabrication signals: evidence INSIDE the records that something was invented - an ASIN or ISBN of the wrong shape, a narrator/author name that is plainly not a person, or fields that contradict each other. Not recognising a record is not such evidence (see the cautions below).
 - Optional contributor fields, NOT fabrication signals: a work may carry credits, an array of {person, role} objects whose role comes from the project's controlled vocabulary (adaptation, afterword, contributor, editor, foreword, illustrator, introduction, preface, translator); a person may carry a kind of person, group, publisher, or synthetic. A credit is legitimate when the source stated the role, and an absent kind means unclassified or an individual - neither is suspicious on its own. The kind synthetic belongs to exactly one record, virtual-voice / \"Virtual Voice\", which every AI-narration credit from a user's library folds onto; a recording narrated by it is expected, and a person record minted for a named AI voice or persona (\"AI Voice Nina\", \"X's Voice Replica\") is the finding.
 
+Today's date is $TODAY.
+
 Three cautions that are about the CATALOGUE rather than any one field:
-- YOUR KNOWLEDGE HAS A CUTOFF AND THIS CATALOGUE DOES NOT. It routinely receives books announced or released after your training data ends - new series volumes, preorders months ahead of release, retailer-exclusive editions. A recording whose sources name a retailer import (libex-import, audible, or similar) and which carries an ASIN was copied from that retailer's own listing: the listing is the evidence the book exists. So never flag a record as fabricated, fake, unannounced, unverifiable or 'not in the author's bibliography' because you do not know it, and never judge a title by whether it fits the naming pattern of the series' earlier volumes. You cannot look anything up, so 'I cannot confirm this exists' is never a finding. Flag such a record only for something the record itself shows: a contradiction between its fields, a malformed identifier, a credited name that is not a person, marketing copy in a title, or an author who does not match the series it is placed in.
+- YOUR KNOWLEDGE HAS A CUTOFF AND THIS CATALOGUE DOES NOT. It routinely receives books announced or released after your training data ends - new series volumes, preorders months ahead of release, retailer-exclusive editions. $([ "$PR_ORIGIN" = "sync-bot" ] && echo "THIS PULL REQUEST WAS OPENED BY THE SERIES-COMPLETION BOT, which imports straight from the retailer's own feed: a recording's retailer source and ASIN ARE that retailer's listing, and the listing is the evidence the book exists." || echo "THIS PULL REQUEST WAS NOT OPENED BY THE SERIES-COMPLETION BOT: a retailer source type and an ASIN in it are the submitter's claim, which nothing here has checked. A NEW volume of a real, well-known series that rests only on that claim is worth one check - flag it as 'verify ASIN <asin> against the retailer listing', worded as a check to run, not an accusation.") So never flag a record as fabricated, fake, unannounced, unverifiable or 'not in the author's bibliography' because you do not know it, and never judge a title by whether it fits the naming pattern of the series' earlier volumes. You cannot look anything up, so 'I cannot confirm this exists' is never a finding. Flag such a record only for something the record itself shows: a contradiction between its fields, a malformed identifier, a credited name that is not a person, marketing copy in a title, or an author who does not match the series it is placed in.
 - A minor unnamed contributor may legitimately be recorded under a concise descriptive label or a collective record (full-cast, various, anonymous, unknown). Do not treat the lack of a proper name alone as fabrication.
 - Curly punctuation, a familiar fictional/real-world name, or a title slug resembling another franchise is not by itself evidence of copying, fabrication, or wrong-work attachment.
 

@@ -159,6 +159,27 @@ jobs:
           fi
           echo "pr=$PR" >> "$GITHUB_OUTPUT"
 
+          # WHO OPENED IT decides what a retailer ASIN proves (the prompt's first
+          # caution): only the series-completion bot imports straight from the
+          # retailer's feed. Its pull requests carry `bot-sync` and a `sync/`
+          # branch - the rule audiosilo-meta-sync's metarepo.IsSyncPR applies -
+          # and only the maintainer's token can label one or push a same-repo
+          # branch (this job does not run for a fork). Either is enough, so a
+          # label that has not gone on yet cannot make the bot's rows a
+          # contributor's; neither reads as a contributor's, the stricter reading.
+          # Read into a variable, NOT piped into `grep -q`: under pipefail a grep
+          # that exits on its first match can SIGPIPE gh while it still writes
+          # later labels (ai-flagged after bot-sync), and the pipeline's 141
+          # would read a sync PR as a contributor's. A gh failure aborts the job
+          # (no verdict, re-dispatched) rather than silently picking an origin.
+          PR_LABELS="$(gh pr view "$PR" --json labels -q '.labels[].name')"
+          PR_BRANCH="$(gh pr view "$PR" --json headRefName -q .headRefName)"
+          if grep -qx bot-sync <<<"$PR_LABELS" || [[ "$PR_BRANCH" == sync/* ]]; then
+            echo "origin=sync-bot" >> "$GITHUB_OUTPUT"
+          else
+            echo "origin=contributor" >> "$GITHUB_OUTPUT"
+          fi
+
           # Nothing to verify unless data/** actually changed. Decided BEFORE the
           # summary is built, because a metadiff over an empty tranche still
           # prints its header and would read as "there are changes".
@@ -268,6 +289,8 @@ jobs:
           # summary in front of a unified diff would tell the model it is reading
           # the whole change when it is reading a truncated part of one.
           CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
+          # sync-bot or contributor: what a retailer ASIN in it proves.
+          PR_ORIGIN: ${{ steps.gather.outputs.origin }}
         run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
 
       # Runs even when the verification step FAILED (a skip), so the skip keeps
