@@ -77,7 +77,10 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, err
 	}
-	sum, runErr := runBooks(parsed.books, sourceLibex, opts)
+	// The parse layer's refusals join the planner's own, which drops every one
+	// whose ASIN the run then imported after all (a sibling row of the same
+	// ASIN that did map) - see planner.result.
+	sum, runErr := runBooks(parsed.books, sourceLibex, opts, parsed.skips)
 	// += rather than =: runBooks has its own parse-layer refusal (the shared
 	// AI-credit gate), which is a no-op for libex because refuseLibexCredits has
 	// already dropped those rows - but the two counts are of the same thing, and
@@ -154,6 +157,9 @@ type libexParse struct {
 	books    []sourceBook
 	skipped  int
 	warnings []libexWarning
+	// skips names each refused row that has an ASIN to name it by, under its
+	// rule (Summary.Skips, the --skipped worklist).
+	skips []RowSkip
 }
 
 // add records a parse-layer warning. label names the row (its ASIN, else its
@@ -246,6 +252,7 @@ func parseLibex(data []byte) (libexParse, error) {
 		if asin == "" {
 			label := firstNonEmpty(e.str("title"), e.str("asin"), "(unknown row)")
 			lp.skipped++
+			lp.skips = appendSkip(lp.skips, refusedRowASIN(e.str("asin")), reasonNoASIN)
 			lp.add(warnNoASIN, label, "row %q has no well-formed ASIN (%q); skipped", label, e.str("asin"))
 			continue
 		}
@@ -257,6 +264,7 @@ func parseLibex(data []byte) (libexParse, error) {
 		region, rawRegion, ok := libexRegion(e)
 		if !ok {
 			lp.skipped++
+			lp.skips = appendSkip(lp.skips, asin, reasonRegion)
 			lp.add(warnUnknownRegion, asin, "%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
 			continue
 		}
@@ -269,6 +277,7 @@ func parseLibex(data []byte) (libexParse, error) {
 		authors, narrators := libexNames(e["authors"]), libexNames(e["narrators"])
 		if r, refused := refuseLibexCredits(authors, narrators); refused {
 			lp.skipped++
+			lp.skips = appendSkip(lp.skips, asin, r.reason)
 			lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
 			continue
 		}
@@ -580,9 +589,9 @@ func libexISBNs(v any, asin string, warn func(string, ...any)) []string {
 // a further credit rule is named for both consumers or for neither.
 type creditRefusal struct {
 	class  libexWarnClass
-	reason string // the selector's exclusion reason (see reasonOrder)
-	name   string // the credit that earned the refusal
-	detail string // the middle clause of the parse layer's per-row line
+	reason refusal // the rule it is refused under (refusalcodes.go)
+	name   string  // the credit that earned the refusal
+	detail string  // the middle clause of the parse layer's per-row line
 }
 
 // label is what an aggregated warning names as an example of this refusal. For

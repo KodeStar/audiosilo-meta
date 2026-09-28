@@ -246,8 +246,13 @@ func (p *planner) rowWorkAuthors(credits []credit, warn func(string, ...any)) wo
 // recordings-only work matcher - every one of them a prediction of the author set
 // the create path will build.
 func (p *planner) rowWorkAuthorsRO(credits []credit) workAuthors {
+	return p.rowWorkAuthorsROIn(p.credits, credits)
+}
+
+// rowWorkAuthorsROIn is rowWorkAuthorsRO under an explicit batch context.
+func (p *planner) rowWorkAuthorsROIn(ctx creditContext, credits []credit) workAuthors {
 	return splitWorkAuthors(credits, func(name string) string {
-		return p.resolvePerson(name).slug
+		return p.resolvePersonIn(ctx, name).slug
 	})
 }
 

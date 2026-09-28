@@ -48,14 +48,17 @@ import (
 // when the run was given a worklist - writes a triageable NDJSON row naming both
 // titles.
 //
-// ROUTING IT TO THE ALTERNATE-NARRATION PASS is the obvious next step and is
-// deliberately NOT taken here. recordings.go could take such a row as a new
-// recording under the matched work, and for a true duplicate that is the right
-// outcome - but attaching a recording asserts "this IS that book" on exactly the
-// evidence the audit found insufficient to merge on, and it writes data rather than
-// declining to. The worklist is what makes the follow-up possible: a wave's refused
-// rows are a measurable population to decide about, not a guess. Recorded as a
-// follow-up in CLAUDE.md.
+// ATTACHING IT AS A RECORDING is done in exactly one case, and not here:
+// attach.go (Options.AttachEditions). A row whose series claim names a position
+// the catalogue already fills, and which this guard's identity (or the create
+// path's slug chain) resolves to exactly the work at that position, is attached
+// to that work as a recording. The position is the evidence a title alone cannot
+// give - it is the same slot of the same series - and attach's own product
+// vetoes (titlerule.ProductOf, read series-aware) plus a stated volume
+// contradicting the position still refuse. Every other refused row stays
+// refused here, for the reason above: a title match alone asserts "this IS that
+// book" on exactly the evidence the audit found insufficient to merge on. The
+// worklist keeps the rest measurable.
 //
 // COST. The probe is a map lookup per row against ONE index, and the run does not
 // even build it: it comes out of the catalogue load the planner already performs

@@ -242,6 +242,17 @@ type Options struct {
 	// exactly. Only the create path can found a series at all - enrichment and
 	// the recordings-only pass never do - so the option changes nothing there.
 	ExistingSeriesOnly bool
+	// AttachEditions (`metaimport libex --attach-editions`, create mode) turns on
+	// the attach rule (attach.go): a row whose completion claim names a position
+	// the catalogue already fills is ATTACHED to the work there - a new recording,
+	// or its ASIN merged onto the same-narrator recording - when the importer's
+	// identity machinery resolves it to exactly that work, and is otherwise
+	// REFUSED (Summary.SkippedOccupied, a position-claimed Summary.Skips entry)
+	// rather than planned as a second work at that position. It never creates a
+	// work or places one in a series. false is the default and the long-standing
+	// behaviour exactly. The series-completion bot passes it, with
+	// libex-select's own --attach-editions.
+	AttachEditions bool
 }
 
 // Summary is the outcome counts of a run.
@@ -341,6 +352,30 @@ type Summary struct {
 	// unaffected - it imports, and every other claim it makes is placed - so
 	// this is disjoint from every row-skip counter. Always 0 without the option.
 	SeriesClaimsDropped int
+	// Attached counts the rows an AttachEditions create run ATTACHED to the
+	// catalogued work already at the series position they claim, because they
+	// are another edition of that same book (attach.go), counted only when a
+	// recording was written or the ASIN merged - which the summary line already
+	// counts as NewRecordings or MergedASINs, so that line reads exactly as
+	// before. Always 0 without the option.
+	Attached int
+	// SkippedOccupied counts the rows an AttachEditions create run REFUSED at a
+	// position the catalogue already holds (attach.go): a row that is not another
+	// edition of the work there (skipped with a warning rather than planned as a
+	// sibling work), or one attached without anything being written. It is read
+	// off Skips (their position-claimed entries), so the printed count and the
+	// --skipped worklist cannot disagree. Always 0 without the option.
+	SkippedOccupied int
+	// Skips names the rows the run refused for a reason that has a refusal
+	// code (refusalcodes.go), one entry per refused COPY with an ASIN: the parse
+	// layer's malformed-ASIN, unmapped-region and credit refusals, an unmapped
+	// language, SkippedOccupied's position-claimed, and the import-only codes -
+	// identity-duplicate (the create path's duplicate-identity guard),
+	// missing-author, missing-title and missing-narrator. An entry whose ASIN
+	// the run recorded after all (a sibling copy imported) is dropped. It is
+	// what `metaimport libex --skipped` writes; an ASIN may appear more than
+	// once, and a row stating no ASIN is not listed.
+	Skips []RowSkip
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the

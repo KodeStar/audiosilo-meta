@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"io"
 	"os"
@@ -618,6 +619,158 @@ func TestExistingSeriesOnlyFlagReachesTheImporter(t *testing.T) {
 		})
 		if got.ExistingSeriesOnly {
 			t.Errorf("%s: Options.ExistingSeriesOnly is set without the flag", source)
+		}
+	}
+}
+
+// --refusals reaches the selector: the worklist lands where the flag says, one
+// line per refused row in the contract's shape.
+func TestLibexSelectRefusalsFlag(t *testing.T) {
+	dataDir, export, _ := seedSelectFixture(t)
+	body := `{"asin":"B0OTHER001","title":"Unrelated","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"series":[{"name":"Elsewhere","position":"1"}]}` + "\n"
+	f, err := os.OpenFile(export, os.O_APPEND|os.O_WRONLY, 0o644)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := f.WriteString(body); err != nil {
+		t.Fatal(err)
+	}
+	_ = f.Close()
+	dir := t.TempDir()
+	out, refusals := filepath.Join(dir, "subset.ndjson"), filepath.Join(dir, "refusals.ndjson")
+	attachments := filepath.Join(dir, "attachments.ndjson")
+	var code int
+	stdout := captureStdout(t, func() {
+		code = runLibexSelect([]string{export, "--data", dataDir, "-o", out, "--refusals", refusals, "--attachments", attachments})
+	})
+	if code != 0 {
+		t.Fatalf("exit code = %d (%s)", code, stdout)
+	}
+	got, err := os.ReadFile(refusals)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(got) != `{"asin":"B0OTHER001","reason":"no-catalogue-series"}`+"\n" {
+		t.Errorf("refusals = %q", got)
+	}
+	// Asked for, the attachment worklist is written even when it is empty, so a
+	// reader can tell "none" from "not produced".
+	if got, err := os.ReadFile(attachments); err != nil || len(got) != 0 {
+		t.Errorf("attachments = %q, %v; want an empty file", got, err)
+	}
+}
+
+// The attach line is printed only when a run attached something, so every other
+// create summary - and the line the sync bot parses - reads exactly as before.
+func TestPrintSummaryAttachLine(t *testing.T) {
+	const head = "imported: 0 new works, 1 new recordings, 0 new people, 0 new series; 0 skipped (already present); 1 asins merged into existing recordings; 0 warnings\n"
+	out := captureStdout(t, func() {
+		printSummary(importer.Summary{NewRecordings: 1, MergedASINs: 1}, false, importer.ModeCreate)
+	})
+	if out != head {
+		t.Errorf("summary without attachments = %q, want %q", out, head)
+	}
+	out = captureStdout(t, func() {
+		printSummary(importer.Summary{NewRecordings: 1, MergedASINs: 1, Attached: 2}, false, importer.ModeCreate)
+	})
+	if !strings.HasPrefix(out, head) || !strings.Contains(out, "  attached 2 rows to the catalogued work already at their series position") {
+		t.Errorf("summary with attachments = %q", out)
+	}
+	out = captureStdout(t, func() {
+		printSummary(importer.Summary{NewRecordings: 1, MergedASINs: 1, Attached: 1}, false, importer.ModeCreate)
+	})
+	if !strings.Contains(out, "  attached 1 row to the catalogued work already at its series position") {
+		t.Errorf("summary with one attachment = %q", out)
+	}
+}
+
+// --skipped writes the run's Skips as {"asin","reason"} lines, atomically and
+// only on success, and is refused for any source but libex.
+func TestSkippedFlagWritesTheWorklist(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "skipped.ndjson")
+	run := func(string, importer.Options) (importer.Summary, error) {
+		return importer.Summary{SkippedOccupied: 1, Skips: []importer.RowSkip{
+			{ASIN: "B0DENY0001", Reason: importer.RefusalPositionClaimed},
+			{ASIN: "B0REGION04", Reason: importer.RefusalUnmappedRegion},
+		}}, nil
+	}
+	var code int
+	out := captureStdout(t, func() { code = runSource(boundedSource, []string{"export.json", "--skipped", path}, run) })
+	if code != 0 {
+		t.Fatalf("exit code = %d", code)
+	}
+	got, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	const want = `{"asin":"B0DENY0001","reason":"position-claimed"}` + "\n" + `{"asin":"B0REGION04","reason":"unmapped-region"}` + "\n"
+	if string(got) != want {
+		t.Errorf("skipped = %q, want %q", got, want)
+	}
+	if !strings.Contains(out, "  skipped 1 row claiming a series position the catalogue already holds with another work") {
+		t.Errorf("summary does not report the refused row on its own line:\n%s", out)
+	}
+	if !strings.HasPrefix(out, "imported: 0 new works, 0 new recordings, 0 new people, 0 new series; 0 skipped (already present); 0 asins merged into existing recordings; 0 warnings\n") {
+		t.Errorf("the create summary line changed:\n%s", out)
+	}
+
+	failing := func(string, importer.Options) (importer.Summary, error) {
+		return importer.Summary{}, errors.New("boom")
+	}
+	failed := filepath.Join(t.TempDir(), "skipped.ndjson")
+	captureStdout(t, func() { _ = runSource(boundedSource, []string{"export.json", "--skipped", failed}, failing) })
+	if _, err := os.Stat(failed); !os.IsNotExist(err) {
+		t.Errorf("a failed run wrote the worklist: %v", err)
+	}
+	if code := runSource("openaudible", []string{"books.json", "--skipped", path}, run); code != 2 {
+		t.Errorf("--skipped on openaudible: exit %d, want 2", code)
+	}
+}
+
+// A --skipped path that cannot be written fails BEFORE the import runs; a
+// worklist that cannot be committed after a completed import still leaves the
+// summary printed, since the tree was written.
+func TestSkippedFlagIsStagedBeforeTheRun(t *testing.T) {
+	dir := t.TempDir()
+	blocker := filepath.Join(dir, "file")
+	if err := os.WriteFile(blocker, nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	ran := false
+	run := func(string, importer.Options) (importer.Summary, error) {
+		ran = true
+		return importer.Summary{}, nil
+	}
+	var code int
+	captureStdout(t, func() {
+		code = runSource(boundedSource, []string{"export.json", "--skipped", filepath.Join(blocker, "skipped.ndjson")}, run)
+	})
+	if code == 0 || ran {
+		t.Errorf("exit %d, ran %v: a bad --skipped path must fail before the import", code, ran)
+	}
+
+	// A directory where the worklist goes: staging works, the commit cannot.
+	dest := filepath.Join(dir, "skipped.ndjson")
+	if err := os.MkdirAll(filepath.Join(dest, "x"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	out := captureStdout(t, func() { code = runSource(boundedSource, []string{"export.json", "--skipped", dest}, run) })
+	if code != 1 || !strings.HasPrefix(out, "imported: ") {
+		t.Errorf("exit %d, stdout %q: a completed import prints its summary even when the worklist fails", code, out)
+	}
+}
+
+// --attach-editions is a create-path option: with --enrich or --recordings-only
+// it is refused before anything runs.
+func TestAttachEditionsRejectsTheBoundedModes(t *testing.T) {
+	run := func(string, importer.Options) (importer.Summary, error) {
+		t.Error("the import must not run")
+		return importer.Summary{}, nil
+	}
+	for _, mode := range []string{"--enrich", "--recordings-only"} {
+		if code := runSource(boundedSource, []string{"export.json", "--attach-editions", mode}, run); code != 2 {
+			t.Errorf("--attach-editions %s: exit %d, want 2", mode, code)
 		}
 	}
 }

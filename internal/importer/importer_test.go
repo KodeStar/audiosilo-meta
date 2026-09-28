@@ -664,7 +664,7 @@ func TestOverlongSeriesNameCollision(t *testing.T) {
 		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
 	}
 
-	idx, _ := loadSeriesIndex(dataDir)
+	idx, _ := loadSeriesIndex(dataDir, false)
 	slugB, found := findInIndex(idx, seriesB, &SeriesRow{})
 	if !found {
 		t.Fatalf("libex-select does not resolve the suffixed series; index holds %v", idx.bySlug)

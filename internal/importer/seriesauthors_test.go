@@ -163,7 +163,7 @@ func TestSelectorSkipsAnotherAuthorsSeries(t *testing.T) {
 	row := tombRow("B0CAMPB004", "Valiant", "Jack Campbell", "Bea Reader", 600, "Lost Fleet", "4")
 
 	res, kept := runSelect(t, lostFleetTree(t, nil), []string{row}, 0)
-	if len(kept) != 0 || res.Excluded[reasonSeriesAuthors] != 1 {
+	if len(kept) != 0 || res.Excluded[reasonSeriesAuthors.report] != 1 {
 		t.Errorf("kept %d, excluded %v; want the row excluded as another author's series", len(kept), res.Excluded)
 	}
 
@@ -180,7 +180,7 @@ func TestSelectorSkipsAnotherAuthorsSeries(t *testing.T) {
 	// And the selector and the importer resolve the name to the same series.
 	p := plannerOver(t, dataDir)
 	campbell := func() *SeriesRow { return testRow("Jack Campbell") }
-	idx, _ := loadSeriesIndex(dataDir)
+	idx, _ := loadSeriesIndex(dataDir, false)
 	sel, _ := findInIndex(idx, "Lost Fleet", campbell())
 	ref := p.refFor("Lost Fleet", campbell())
 	created := p.getOrCreateSeries(ref, func(string, ...any) {})
@@ -204,7 +204,7 @@ func TestSelectorConfirmsTheBatch(t *testing.T) {
 		tombRow("B0SAGA0009", "Stranger", "Zed Stranger", "Bea Reader", 600, "Saga", "9"),
 	}
 	res, kept := runSelect(t, dataDir, rows, 0)
-	if len(kept) != 2 || res.Excluded[reasonSeriesAuthors] != 1 {
+	if len(kept) != 2 || res.Excluded[reasonSeriesAuthors.report] != 1 {
 		t.Errorf("kept %d, excluded %v; want Ada's two volumes kept and the stranger dropped", len(kept), res.Excluded)
 	}
 }
@@ -217,7 +217,7 @@ func TestRowWorkKey(t *testing.T) {
 	key := func(title, short, author string) string {
 		b := sourceBook{raw: rawBook{"title": title, "title_short": short}, authors: []string{author}}
 		b.authorCredits = p.rowAuthorCredits(b)
-		return p.rowWorkKey(b, firstNonEmpty(short, title), "en")
+		return p.rowWorkKeyIn(p.credits, b, firstNonEmpty(short, title), "en")
 	}
 	if got := key("Incursion (Unabridged)", "", "Sarah Hawke"); got != "incursion" {
 		t.Errorf("a decorated row of a catalogued work keyed %q, want the work incursion", got)
@@ -277,7 +277,7 @@ func TestSelectorCapAndConfirmAgree(t *testing.T) {
 		t.Fatalf("uncapped: kept %d, excluded %v; want all four (the guest co-credits the series' author)", len(kept), res.Excluded)
 	}
 	res, kept := runSelect(t, dataDir, rows, 3)
-	if len(kept) != 2 || res.Excluded[reasonSeriesCap] != 1 || res.Excluded[reasonSeriesAuthors] != 1 {
+	if len(kept) != 2 || res.Excluded[reasonSeriesCap.report] != 1 || res.Excluded[reasonSeriesAuthors.report] != 1 {
 		t.Errorf("capped: kept %d, excluded %v; want the co-credited row cut and the guest's then dropped", len(kept), res.Excluded)
 	}
 }
@@ -308,7 +308,7 @@ func TestSelectorAndImportCountOnePersonAlike(t *testing.T) {
 			series: `{"name":"Saga","position":"` + r.pos + `"}`}.render())
 	}
 	res, kept := runSelect(t, seed(), rows, 0)
-	if len(kept) != 4 || res.Excluded[reasonSeriesAuthors] != 0 {
+	if len(kept) != 4 || res.Excluded[reasonSeriesAuthors.report] != 0 {
 		t.Errorf("select kept %d, excluded %v; want all four rows completing saga", len(kept), res.Excluded)
 	}
 	dataDir := seed()
@@ -347,7 +347,7 @@ func TestSelectorFollowsTheBatchToAnotherSeries(t *testing.T) {
 		got[c.Series] = c.Rows
 	}
 	want := map[string]int{"lost-fleet": 2, "lost-fleet-2": 1}
-	if len(kept) != 3 || !reflect.DeepEqual(got, want) || res.Excluded[reasonPositionTaken] != 1 || res.Excluded[reasonSeriesAuthors] != 0 {
+	if len(kept) != 3 || !reflect.DeepEqual(got, want) || res.Excluded[reasonPositionTaken.report] != 1 || res.Excluded[reasonSeriesAuthors.report] != 0 {
 		t.Errorf("per series %v, excluded %v; want the stranger completing lost-fleet-2 and the row at its taken 1 dropped", got, res.Excluded)
 	}
 }

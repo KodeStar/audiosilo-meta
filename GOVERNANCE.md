@@ -72,7 +72,8 @@ a maintainer approves each tranche, whoever opened it and however green it is.
 The single carve-out is the **series-completion bot** below, whose pull requests
 are batch imports by this definition: its selection rationale is enforced
 mechanically instead of merely stated - only works filling free positions in
-series the catalogue already holds, `data/` only, capped per cycle - and the
+series the catalogue already holds (plus other editions of the volumes already
+at those positions, attached as recordings), `data/` only, capped per cycle - and the
 automated verifier's `ai-verified` verdict is the review that bound pays for.
 Everything else in this paragraph applies to it unchanged.
 
@@ -198,9 +199,12 @@ merge policy moves.
 
 **The bound.** Selection is the existing `metaimport libex-select` tranche
 selector, which refuses any row whose series the catalogue does not already
-track and any row whose position in that series is already filled. So the bot
-can add a volume to a series we hold; it can never add a **series**, and it can
-never contest an occupied position. It writes under `data/` and nowhere else -
+track. So the bot can add a volume to a series we hold; it can never add a
+**series**. A row for a volume the catalogue already holds is ATTACHED to that
+work - as another recording, or as another ASIN on an existing recording - only
+when its series, position, authors and title match the incumbent; every other
+row at an occupied position is refused. It never adds a second work at an
+occupied position and never changes the incumbent. It writes under `data/` and nowhere else -
 never a schema, never the tooling, never a workflow (`CODEOWNERS` would stop it
 anyway). One pull request per cycle, capped at about 100 new works, so a cycle
 stays a thing a person can read. Alongside the new works it runs `metaimport

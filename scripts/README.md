@@ -168,7 +168,8 @@ aggregated warning line, but the export is the cheaper place to lose them.
 ### 3. Select a tranche
 
 ```sh
-go run ./cmd/metaimport libex-select full.ndjson --data data -o subset.ndjson [--max-per-series N]
+go run ./cmd/metaimport libex-select full.ndjson --data data -o subset.ndjson [--max-per-series N] \
+  [--attach-editions] [--refusals refusals.ndjson] [--attachments attachments.ndjson]
 ```
 
 This writes no records. It keeps only rows that genuinely complete a series
@@ -177,9 +178,15 @@ and marketplace must both map, the credits must pass both credit-side refusals
 above (a row the import will refuse must not be selected - it would promise a
 completion the tranche cannot deliver, and would claim the series slot ahead of
 an importable sibling), and the row must claim a usable series position
-that nothing else already holds (a position the catalogue fills, or that an
-earlier row of the same run claimed, would import as a work stranded outside its
-series). **Every** series claim the import would act on - every claim stating a
+that nothing else already holds. A position an earlier row of the same run
+claimed would import as a work stranded outside its series, so the later row is
+refused. A position the CATALOGUE already fills is refused too - unless
+`--attach-editions` is given and the row is another edition of the work there
+(the importer's identity machinery resolves it to exactly that work, and no
+title veto applies): such a row is kept for attachment and listed by
+`--attachments`, and `metaimport libex --attach-editions` then imports it as
+another recording of that work, or another ASIN on one, never as a second work.
+**Every** series claim the import would act on - every claim stating a
 usable position - must resolve to a catalogued series, not just the first one
 that does: the import places the new work in all of them and creates any series
 the catalogue does not already hold, so a row claiming one known series and one
@@ -188,7 +195,8 @@ rows are re-emitted verbatim as NDJSON. Then read the report:
 rows read and selected, the projected new works (counted per title, so the
 per-region sibling rows of one title count once), the per-series breakdown, and
 the exclusion counts - one per rule, adding up with the selected rows to every
-row read. `--max-per-series` caps the new works taken from any
+row read. `--refusals` lists every refused row by ASIN with its rule's stable
+code (internal/importer/refusalcodes.go), for a caller that acts on them. `--max-per-series` caps the new works taken from any
 one series, in series-position order, so a runaway franchise stays reviewable;
 whatever it cut is printed.
 
