@@ -5,6 +5,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -74,6 +75,12 @@ type seriesTarget struct {
 	// chain where slug sits on the name's chain, when it founds a new one.
 	stepped []string
 	chain   int
+	// name is the spelling a FOUNDED series is written under: the group's
+	// canonical claim's (its lowest claimOrder), so when one group holds several
+	// spellings of one name (case, or a respelled decoration - SameSeriesName) the
+	// record does not take whichever row happened to be placed first. "" on a
+	// joined or refused target.
+	name string
 }
 
 // seriesCatalogue is what the resolution reads about the catalogue
@@ -146,8 +153,12 @@ func resolveSeriesClaims(cat seriesCatalogue, claims []nameClaim) []seriesTarget
 }
 
 // claimGroups groups the claims (indexes) by the series name they state, the
-// unit resolveSeriesGroup resolves, with the group keys sorted. A claim whose
-// name has no addressable slug is in no group: its zero target is a refusal.
+// unit resolveSeriesGroup resolves, with the group keys sorted. Two claims share
+// a group exactly when titlerule.SameSeriesName calls their names one (the slug
+// plus titlerule.SeriesNameKey, its grouping form), so a respelled decoration -
+// "(German Edition)" beside "[German Edition]" - is one group rather than two
+// that would each found a series. A claim whose name has no addressable slug is
+// in no group: its zero target is a refusal.
 func claimGroups(claims []nameClaim) (map[string][]int, []string) {
 	groups := map[string][]int{}
 	for i, c := range claims {
@@ -155,7 +166,7 @@ func claimGroups(claims []nameClaim) (map[string][]int, []string) {
 		if base == "" {
 			continue
 		}
-		key := base + "\x00" + strings.ToLower(c.name)
+		key := base + "\x00" + titlerule.SeriesNameKey(c.name)
 		groups[key] = append(groups[key], i)
 	}
 	keys := make([]string, 0, len(groups))
@@ -189,11 +200,14 @@ func (c *seriesCandidate) extend(cl nameClaim) {
 }
 
 // seriesCandidates walks a name's chain over the catalogue: every held slug whose
-// name matches case-insensitively, and a retired BASE's live survivor, in chain
+// name is the same series name (titlerule.SameSeriesName: case, and a bracketed
+// decoration's bracket style and surrounding spacing, are not identity - a
+// different decoration still is), and a retired BASE's live survivor, in chain
 // order and each once. The walk ends at the first free slug - nothing beyond it
 // can have been minted - and every other held or retired slug is occupied.
 func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate {
 	var out []seriesCandidate
+	named := titlerule.NewSeriesName(name) // prepared once: every held name on the chain is compared to it
 	add := func(slug, via string) {
 		if slices.ContainsFunc(out, func(c seriesCandidate) bool { return c.slug == slug }) {
 			return
@@ -207,7 +221,7 @@ func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate 
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
 		if held, exists := cat.stored(slug); exists {
-			if strings.EqualFold(held, name) {
+			if named.Same(held) {
 				add(slug, "")
 			}
 			continue
@@ -333,7 +347,7 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 			if found {
 				out[idx[k]] = seriesTarget{slug: home.slug, found: true, via: home.via}
 			} else {
-				out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped, chain: home.chain}
+				out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped, chain: home.chain, name: name}
 			}
 		}
 	}

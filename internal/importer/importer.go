@@ -1113,7 +1113,7 @@ func resolveWorkTitles(books []sourceBook) []string {
 			if !ok {
 				continue
 			}
-			claims[strings.ToLower(name)+"\x00"+pos] = true
+			claims[titlerule.SeriesNameKey(name)+"\x00"+pos] = true
 		}
 		if len(claims) < 2 {
 			continue
@@ -3191,6 +3191,9 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 	if p.existingSeriesOnly {
 		p.noteDroppedSeriesClaim(r)
 		return nil
+	}
+	if t.name != "" {
+		name = t.name // the group's canonical spelling, whatever row placed first
 	}
 	slug := t.slug
 	ss := &seriesState{

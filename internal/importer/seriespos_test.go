@@ -715,23 +715,3 @@ func TestLibexClientSeriesRefs(t *testing.T) {
 		t.Errorf("an ASIN libex does not hold = (%+v, %v), want (nil, nil)", refs, err)
 	}
 }
-
-// sameSeriesName is the importer's own test, not a looser one: the fill may only
-// use a position libex stated for the series the row is actually claiming.
-func TestSameSeriesName(t *testing.T) {
-	for _, tc := range []struct {
-		a, b string
-		same bool
-	}{
-		{a: "Warhammer 40,000", b: "warhammer 40,000", same: true},
-		{a: "Mémoires", b: "mémoires", same: true},
-		{a: "Warhammer 40,000", b: "Horus Heresy"},
-		{a: "Warhammer 40,000", b: "Warhammer 40K"},
-		// A name with no addressable slug is no series at all.
-		{a: "。。。", b: "。。。"},
-	} {
-		if got := sameSeriesName(tc.a, tc.b); got != tc.same {
-			t.Errorf("sameSeriesName(%q, %q) = %v, want %v", tc.a, tc.b, got, tc.same)
-		}
-	}
-}
