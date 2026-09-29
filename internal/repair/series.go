@@ -86,9 +86,8 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 func mergeSeriesFields(merged, loser entry) []mergedFacts {
 	rawentry.SetListOrDrop(merged, "authors", rawentry.AppendUnique(merged.Strs("authors"), loser.Strs("authors")))
 	merged.Set("sources", rawentry.UnionSources(merged.Sources(), loser.Sources()))
-	var lost []mergedFacts
-	if v := loser.Str("name"); v != "" && v != merged.Str("name") {
-		lost = append(lost, mergedFacts{field: "name", kept: merged.Str("name"), dropped: v})
-	}
+	// name is schema-required, so the target always states one and fillStrings only
+	// ever reports it.
+	lost := fillStrings(merged, loser, "name")
 	return append(lost, fillXref(merged, loser)...)
 }
