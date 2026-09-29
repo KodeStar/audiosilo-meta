@@ -28,7 +28,16 @@ export interface SeriesRef {
   id: string
   name: string
   position?: string
+  /** Set only when this series is a VARIANT reading order (chronological,
+      recommended) of another series: that primary series' slug. Absent for the
+      series itself, and on a response from a metaserve serving an artifact older
+      than schema_version 7. */
+  ordering_of?: string
 }
+
+/** The reading order a series' positions state. Mirrors the schema's
+    `$defs/series_ordering` enum (pkg/model SeriesOrderings). */
+export type SeriesOrdering = 'publication' | 'chronological' | 'recommended'
 
 /** The compact card shape returned by search, latest, and person/series lists. */
 export interface WorkCard {
@@ -62,6 +71,14 @@ export interface Stats {
   total_runtime_min: number
   total_chapters: number
   built_at: string
+  /** Works per language, most works first. Absent before schema_version 7. */
+  languages?: LanguageCount[]
+}
+
+export interface LanguageCount {
+  /** A BCP 47 tag, exactly as the works carry it. */
+  language: string
+  works: number
 }
 
 /** A work hit COMPOSES the card rather than restating it (the server's
@@ -167,6 +184,11 @@ export interface Work {
   /** Genre slugs from the project's own normalized vocabulary; absent when unknown. */
   genres?: string[]
   series?: SeriesRef[]
+  /** The work(s) this one translates, and the works translating it - stated
+      links only, in work id order. Both absent when none (or before
+      schema_version 7). */
+  translation_of?: WorkTranslation[]
+  translations?: WorkTranslation[]
   recordings: Recording[]
   /** Print ISBNs attached to the work itself (not a recording). */
   isbn?: string[]
@@ -180,6 +202,13 @@ export interface Work {
       Distinct from `description` above, which is the CC0 record's own field -
       the two are separate keys because they carry different licences. */
   community_description?: CommunityDescription
+}
+
+/** The other end of a work's translation link. */
+export interface WorkTranslation {
+  id: string
+  title: string
+  language: string
 }
 
 /** A community-written, spoiler-free description of a work: what a stranger reads
@@ -227,11 +256,37 @@ export interface SeriesEntry {
 export interface Series {
   id: string
   name: string
+  /** DERIVED from the members (their majority language); absent on a tie. */
+  language?: string
+  ordering?: SeriesOrdering
+  /** Set only on a variant ordering: the primary series' slug. */
+  ordering_of?: string
   authors: PersonRef[]
   works: SeriesEntry[]
   works_total: number
   limit: number
   offset: number
+  translation_of?: SeriesTranslation[]
+  translations?: SeriesTranslation[]
+  /** The whole ordering family - the primary first, then its variants by id -
+      served identically on the primary and on every variant. Absent when the
+      series has no variant ordering. Every languages field here is absent before
+      schema_version 7. */
+  orderings?: SeriesOrderingRef[]
+}
+
+/** The other end of a series' translation link. */
+export interface SeriesTranslation {
+  id: string
+  name: string
+  language?: string
+}
+
+/** One member of a series' ordering family. */
+export interface SeriesOrderingRef {
+  id: string
+  name: string
+  ordering?: SeriesOrdering
 }
 
 export interface LookupResponse {

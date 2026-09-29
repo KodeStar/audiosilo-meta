@@ -4,7 +4,7 @@
     "title": "AudioSilo Meta API",
     "version": "1.0.0",
     "summary": "The read-only API over the AudioSilo community audiobook metadata database.",
-    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4, the community description version 6. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps, descriptions) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
+    "description": "A read-only API over a compiled snapshot of the community metadata database at https://github.com/kodestar/audiosilo-meta.\n\nEverything readable is public: no authentication, no API key and no rate-limit token, and no endpoint writes anything. (A production deployment may additionally register a release-notification hook at `/hooks/github/release`; that one route is HMAC-authenticated and is not part of the read surface.)\n\nThe API surface - `/api/v1/*` and `/abs/search` - carries permissive CORS headers (`Access-Control-Allow-Origin: *`), so a browser may call it directly. `/healthz` and the hook do not.\n\nThe server holds one compiled artifact at a time and swaps in a newer one without a restart, so a response is always a consistent view of a single release. While no artifact has loaded yet (a cold boot still fetching the newest release) every data route answers `503` with a `Retry-After` header; `/api/v1/openapi.json` and the static site are served regardless.\n\nSome fields on `GET /works/{id}` depend on the loaded artifact's internal schema version - characters and recaps need version 2, the whole-book recap summary version 3, genres version 4, the community description version 6. The languages layer needs version 7: the translation links on works and series, a series' derived `language`, `ordering`, `ordering_of` and `orderings`, the `ordering_of` on a series membership and the `languages` census on `/api/v1/stats`. A server briefly serving an older artifact omits them rather than failing, so treat every one of them as optional.\n\nSlugs are stable, and a slug a data-quality repair RETIRES keeps resolving: every route that takes an id answers `301` with a `Location` at the same route under the slug that replaced it, plus a body naming that slug so a stored id can be healed. The redirect is bounded by `Cache-Control` rather than permanent, because reversing a merge withdraws it. Redirects need artifact version 5; below it a retired slug is a `404`.\n\nLicensing: the factual core (works, recordings, people, series) is dedicated to the public domain under CC0-1.0 and the community layer (characters, recaps, descriptions) is CC BY-SA 4.0 - see LICENSING.md in the repository for what attribution the share-alike layer requires.",
     "license": {
       "name": "CC0-1.0 core with a CC BY-SA 4.0 community layer",
       "url": "https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md"
@@ -982,7 +982,20 @@
             "type": "string",
             "description": "When the loaded artifact was compiled (RFC 3339).",
             "examples": ["2026-07-11T00:00:00Z"]
+          },
+          "languages": {
+            "type": "array",
+            "description": "How many works each language holds, most works first (ties by tag). Omitted when the loaded artifact predates version 7.",
+            "items": { "$ref": "#/components/schemas/LanguageCount" }
           }
+        }
+      },
+      "LanguageCount": {
+        "type": "object",
+        "required": ["language", "works"],
+        "properties": {
+          "language": { "type": "string", "description": "A BCP 47 language tag, exactly as the works carry it.", "examples": ["en"] },
+          "works": { "type": "integer" }
         }
       },
       "PersonRef": {
@@ -1005,6 +1018,11 @@
             "type": "string",
             "description": "The volume position as a STRING, so \"2\", \"2.5\" and the omnibus range \"1-3.5\" stay distinct values. Never parse it as a number without preserving the original.",
             "examples": ["2.5"]
+          },
+          "ordering_of": {
+            "type": "string",
+            "description": "Present only when this series is a VARIANT reading order (a chronological or recommended listing) of another series: the slug of that primary series. Omitted for the series itself, and when the loaded artifact predates version 7.",
+            "examples": ["the-stormlight-archive"]
           }
         }
       },
@@ -1025,7 +1043,7 @@
             "examples": ["en"]
           },
           "series": {
-            "description": "The work's FIRST series membership, or null. A work in several series shows only one here; /api/v1/works/{id} lists them all.",
+            "description": "The work's FIRST series membership, or null. A work in several series shows only one here - a primary series before any variant reading order of it, then by series id - and /api/v1/works/{id} lists them all.",
             "oneOf": [{ "$ref": "#/components/schemas/SeriesRef" }, { "type": "null" }]
           },
           "release_date": {
@@ -1248,7 +1266,7 @@
       },
       "WorkDetail": {
         "type": "object",
-        "description": "The full work document. `characters`, `recaps`, `recap_summary`, `community_description` and `genres` are additionally gated on the loaded artifact's internal schema version: a server briefly serving an older artifact omits them rather than failing.",
+        "description": "The full work document. `characters`, `recaps`, `recap_summary`, `community_description`, `genres`, `translation_of` and `translations` are additionally gated on the loaded artifact's internal schema version: a server briefly serving an older artifact omits them rather than failing.",
         "required": ["id", "title", "authors", "language", "series", "recordings"],
         "properties": {
           "id": { "type": "string" },
@@ -1269,8 +1287,18 @@
           },
           "series": {
             "type": "array",
-            "description": "EVERY series this work belongs to (the work card carries only the first). Never null; empty for a standalone.",
+            "description": "EVERY series this work belongs to (the work card carries only the first). A primary series is listed before any variant reading order of it, then by series id. Never null; empty for a standalone.",
             "items": { "$ref": "#/components/schemas/SeriesRef" }
+          },
+          "translation_of": {
+            "type": "array",
+            "description": "The work(s) this one is a translation of, by id. Almost always one; a translated omnibus names every original it collects. Stated links only, never inferred. Omitted when none, or the loaded artifact predates version 7.",
+            "items": { "$ref": "#/components/schemas/WorkTranslation" }
+          },
+          "translations": {
+            "type": "array",
+            "description": "The works that are translations of this one, by id. Omitted when none, or the loaded artifact predates version 7.",
+            "items": { "$ref": "#/components/schemas/WorkTranslation" }
           },
           "xref": { "$ref": "#/components/schemas/WorkXref" },
           "recordings": {
@@ -1290,6 +1318,16 @@
           },
           "recap_summary": { "$ref": "#/components/schemas/RecapSummary" },
           "community_description": { "$ref": "#/components/schemas/CommunityDescription" }
+        }
+      },
+      "WorkTranslation": {
+        "type": "object",
+        "description": "The other end of a work's translation link.",
+        "required": ["id", "title", "language"],
+        "properties": {
+          "id": { "type": "string", "examples": ["la-voie-des-rois"] },
+          "title": { "type": "string", "examples": ["La Voie des rois"] },
+          "language": { "type": "string", "description": "BCP 47 language tag.", "examples": ["fr"] }
         }
       },
       "Chapter": {
@@ -1348,10 +1386,26 @@
       },
       "SeriesDetail": {
         "type": "object",
+        "description": "A series and its member works. `language`, `ordering`, `ordering_of`, `translation_of`, `translations` and `orderings` need artifact version 7; a server briefly serving an older artifact omits them rather than failing.",
         "required": ["id", "name", "authors", "works", "works_total", "limit", "offset"],
         "properties": {
           "id": { "type": "string" },
           "name": { "type": "string" },
+          "language": {
+            "type": "string",
+            "description": "DERIVED, not stated: the language most of the member works share (by primary subtag). Omitted when the members tie or none states a language.",
+            "examples": ["en"]
+          },
+          "ordering": {
+            "type": "string",
+            "enum": ["publication", "chronological", "recommended"],
+            "description": "Which reading order this series' positions state. An author's preferred order and a recommended listening order are both `recommended`; the series name keeps the exact wording. Omitted when unstated."
+          },
+          "ordering_of": {
+            "type": "string",
+            "description": "Set only on a VARIANT ordering: the slug of the franchise's primary series. Omitted for a primary.",
+            "examples": ["the-stormlight-archive"]
+          },
           "authors": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/PersonRef" }
@@ -1363,7 +1417,46 @@
           },
           "works_total": { "type": "integer", "description": "UNPAGED membership count." },
           "limit": { "type": "integer", "description": "The window that was applied. 0 means the whole series was returned - the default." },
-          "offset": { "type": "integer" }
+          "offset": { "type": "integer" },
+          "translation_of": {
+            "type": "array",
+            "description": "The series this one translates, by id. Omitted when none.",
+            "items": { "$ref": "#/components/schemas/SeriesTranslation" }
+          },
+          "translations": {
+            "type": "array",
+            "description": "The series that translate this one, by id. Omitted when none.",
+            "items": { "$ref": "#/components/schemas/SeriesTranslation" }
+          },
+          "orderings": {
+            "type": "array",
+            "description": "The whole ordering family this series belongs to: the primary first, then every variant ordering of it by id. The same list is served on the primary and on each variant, so a reader can switch between orders from any of them. Omitted when the series has no variant ordering.",
+            "items": { "$ref": "#/components/schemas/SeriesOrdering" }
+          }
+        }
+      },
+      "SeriesTranslation": {
+        "type": "object",
+        "description": "The other end of a series' translation link.",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string", "examples": ["die-sturmlicht-chroniken"] },
+          "name": { "type": "string", "examples": ["Die Sturmlicht-Chroniken"] },
+          "language": { "type": "string", "description": "That series' derived language. Omitted when its members tie.", "examples": ["de"] }
+        }
+      },
+      "SeriesOrdering": {
+        "type": "object",
+        "description": "One member of an ordering family.",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "ordering": {
+            "type": "string",
+            "enum": ["publication", "chronological", "recommended"],
+            "description": "The reading order that series states. Omitted when unstated."
+          }
         }
       },
       "LookupResult": {

@@ -46,6 +46,21 @@ type ldSeriesRef struct {
 	Position string `json:"position,omitempty"`
 }
 
+// ldTranslationRef is the other end of a translation link: schema.org's
+// translationOfWork (what this translates) and workTranslation (what translates
+// this), each a node reference carrying enough to be read on its own. Type is
+// "Book" for a work and "BookSeries" for a series. A work's @id is the Book node
+// its own page defines (workNodeID), so the two pages' graphs meet on one node; a
+// series page names no node id of its own, so a series reference is identified
+// by its page URL.
+type ldTranslationRef struct {
+	Type       string `json:"@type"`
+	ID         string `json:"@id"`
+	Name       string `json:"name"`
+	URL        string `json:"url"`
+	InLanguage string `json:"inLanguage,omitempty"`
+}
+
 // ldBook is the abstract work node of a work page's @graph. Its recordings hang
 // off it as Audiobook nodes cross-referenced by @id in both directions
 // (workExample down, exampleOfWork up), which is how schema.org models an
@@ -63,7 +78,12 @@ type ldBook struct {
 	Author      []ldPerson   `json:"author,omitempty"`
 	InLanguage  string       `json:"inLanguage,omitempty"`
 	IsPartOf    *ldSeriesRef `json:"isPartOf,omitempty"`
-	WorkExample []ldRef      `json:"workExample,omitempty"`
+	// TranslationOfWork and WorkTranslation are the work's stated translation
+	// links, in the order the detail carries them (work id order). Omitted when
+	// none is stated: a translation is never inferred.
+	TranslationOfWork []ldTranslationRef `json:"translationOfWork,omitempty"`
+	WorkTranslation   []ldTranslationRef `json:"workTranslation,omitempty"`
+	WorkExample       []ldRef            `json:"workExample,omitempty"`
 }
 
 // ldAudiobook is one recording: a specific narration/production of the book.
@@ -114,11 +134,15 @@ type ldListItem struct {
 // membership is emitted - a series list is bounded by what a series is (the
 // largest in the catalogue is a few hundred volumes), unlike a person's credits.
 type ldBookSeries struct {
-	Context         string       `json:"@context"`
-	Type            string       `json:"@type"`
-	Name            string       `json:"name"`
-	URL             string       `json:"url"`
-	ItemListElement []ldListItem `json:"itemListElement,omitempty"`
+	Context string `json:"@context"`
+	Type    string `json:"@type"`
+	Name    string `json:"name"`
+	URL     string `json:"url"`
+	// InLanguage is the series' DERIVED language, omitted where its members tie.
+	InLanguage        string             `json:"inLanguage,omitempty"`
+	TranslationOfWork []ldTranslationRef `json:"translationOfWork,omitempty"`
+	WorkTranslation   []ldTranslationRef `json:"workTranslation,omitempty"`
+	ItemListElement   []ldListItem       `json:"itemListElement,omitempty"`
 }
 
 // ldWebSite is the site a page belongs to. It carries no facts of its own - it
@@ -179,10 +203,17 @@ func workJSONLD(d *workDetail, siteURL, canonical string) []byte {
 		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + personPath + a.ID})
 	}
 	// The FIRST membership is the one the page presents as the series, matching
-	// the card rule (see snapshot.firstSeriesByWork).
+	// the card rule (see snapshot.firstSeriesByWork) - a primary ordering before
+	// any variant of it.
 	if len(d.Series) > 0 {
 		sr := d.Series[0]
 		book.IsPartOf = &ldSeriesRef{Type: "BookSeries", Name: sr.Name, URL: siteURL + seriesPath + sr.ID, Position: sr.Position}
+	}
+	for _, t := range d.TranslationOf {
+		book.TranslationOfWork = append(book.TranslationOfWork, workTranslationRef(siteURL, t))
+	}
+	for _, t := range d.Translations {
+		book.WorkTranslation = append(book.WorkTranslation, workTranslationRef(siteURL, t))
 	}
 
 	nodes := make([]any, 0, len(d.Recordings)+1)
@@ -225,8 +256,27 @@ func personJSONLD(d *personDetail, canonical string) []byte {
 	})
 }
 
+// workTranslationRef is a work's translation link as a JSON-LD reference to the
+// Book node the other work's page defines.
+func workTranslationRef(siteURL string, t workTranslation) ldTranslationRef {
+	url := siteURL + workPath + t.ID
+	return ldTranslationRef{Type: "Book", ID: workNodeID(url), Name: t.Title, URL: url, InLanguage: t.Language}
+}
+
+// seriesTranslationRef is its series twin, identified by the other series' page.
+func seriesTranslationRef(siteURL string, t seriesTranslation) ldTranslationRef {
+	url := siteURL + seriesPath + t.ID
+	return ldTranslationRef{Type: "BookSeries", ID: url, Name: t.Name, URL: url, InLanguage: t.Language}
+}
+
 func seriesJSONLD(d *seriesDetail, siteURL, canonical string) []byte {
-	doc := ldBookSeries{Context: ldContext, Type: "BookSeries", Name: d.Name, URL: canonical}
+	doc := ldBookSeries{Context: ldContext, Type: "BookSeries", Name: d.Name, URL: canonical, InLanguage: d.Language}
+	for _, t := range d.TranslationOf {
+		doc.TranslationOfWork = append(doc.TranslationOfWork, seriesTranslationRef(siteURL, t))
+	}
+	for _, t := range d.Translations {
+		doc.WorkTranslation = append(doc.WorkTranslation, seriesTranslationRef(siteURL, t))
+	}
 	for _, entry := range d.Works {
 		if entry.Work == nil {
 			continue
