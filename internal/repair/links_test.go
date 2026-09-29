@@ -112,10 +112,14 @@ func TestMergeWorksUnionsTheLosersTranslationOf(t *testing.T) {
 	}
 }
 
-// A link that the merge turns into a link to ITSELF is dropped and named: the loser
-// said it translates the very book it is a duplicate of.
+// A link that the merge turns into a link to ITSELF is dropped and named. From a
+// valid tree it takes a CROSS-LANGUAGE pair: the loser, a German record, says it
+// translates the English survivor - the two are merged directly here (the audit's
+// language veto keeps such a cluster out of a real run), and the link that would
+// then name the survivor itself goes.
 func TestMergeWorksDropsATranslationThatWouldNameItself(t *testing.T) {
 	files := hammeredCluster(t)
+	setField(t, files, "works/ha/hammered-book-3/work.json", "language", "de")
 	setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"hammered"})
 	rn, tx := planFixture(t, seedTree(t, files))
 	if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3")); err != nil {
@@ -129,30 +133,55 @@ func TestMergeWorksDropsATranslationThatWouldNameItself(t *testing.T) {
 	}
 }
 
-// The two shapes a translation re-point cannot settle: the survivor would be both a
-// translation and the original of one, or would name an original that is itself a
-// translation.
+// addWork seeds a work in a stated language with one recording, for the link
+// fixtures that need partners in other languages.
+func addWork(t testing.TB, files map[string]string, slug, lang string, opts ...workOpt) {
+	t.Helper()
+	files["works/"+slug[:2]+"/"+slug+"/work.json"] = workJSON(t, slug, slug, append([]workOpt{withWorkLanguage(lang)}, opts...)...)
+	files["works/"+slug[:2]+"/"+slug+"/recordings/luke-daniels-2020.json"] = recJSON(t, "luke-daniels-2020", slug,
+		withNarrators("luke-daniels"))
+}
+
+// A translation re-point the merge cannot settle: the survivor is a translation
+// (of the German zorn) and the loser is an original (the French marteau translates
+// it), so folding the loser in would make the survivor both - a two-hop chain the
+// merge itself creates, from a tree that is valid before it.
 func TestMergeWorksRefusesATranslationChain(t *testing.T) {
-	t.Run("survivor would carry translation_of and be a target of one", func(t *testing.T) {
-		files := translationCluster(t)
-		files["works/zo/zorn/work.json"] = workJSON(t, "zorn", "Zorn", withWorkLanguage("de"))
-		files["works/zo/zorn/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "zorn")
-		setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"zorn"})
-		rn, tx := planFixture(t, seedTree(t, files))
-		err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3"))
-		assertRefusal(t, err, CatTranslationLink, "gehammert, marteau names it as its original")
-	})
-	t.Run("survivor would name a translation as its original", func(t *testing.T) {
-		files := hammeredCluster(t)
-		files["works/zo/zorn/work.json"] = workJSON(t, "zorn", "Zorn", withWorkLanguage("de"), withTranslationOf("rage"))
-		files["works/zo/zorn/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "zorn")
-		files["works/ra/rage/work.json"] = workJSON(t, "rage", "Rage", withWorkLanguage("fr"))
-		files["works/ra/rage/recordings/nate-narrator-2017.json"] = recJSON(t, "nate-narrator-2017", "rage")
-		setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"zorn"})
-		rn, tx := planFixture(t, seedTree(t, files))
-		err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3"))
-		assertRefusal(t, err, CatTranslationLink, "zorn is itself a translation of [rage]")
-	})
+	files := hammeredCluster(t)
+	addWork(t, files, "zorn", "de")
+	addWork(t, files, "marteau", "fr", withTranslationOf("hammered-book-3"))
+	setField(t, files, "works/ha/hammered/work.json", "translation_of", []string{"zorn"})
+	rn, tx := planFixture(t, seedTree(t, files))
+	err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3"))
+	assertRefusal(t, err, CatTranslationLink, "would state translation_of [zorn] while marteau names it as its original")
+}
+
+// The planner's OTHER chain arm - the survivor would name an original that is itself
+// a translation - cannot arise from a VALID tree: every original the merged set names
+// was already some cluster member's original, and pkg/check holds an original to
+// carrying no translation_of of its own (and an earlier proposal that made one a
+// carrier would itself have been refused by the arm above). The arm stays because a
+// DRY run carries on over a tree that does not validate, and there it is what names
+// the chain; a --write refuses such a tree outright, before planning anything.
+func TestMergeWorksOverATranslationChainRefusesToWrite(t *testing.T) {
+	files := hammeredCluster(t)
+	addWork(t, files, "zorn", "de", withTranslationOf("rage"))
+	addWork(t, files, "rage", "fr")
+	setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"zorn"})
+	data := seedTreeAllowingProblems(t, files)
+	if res := check.Load(data); len(res.Problems) == 0 {
+		t.Fatal("the chained fixture validates: this test needs pkg/check's chain rule to refuse it")
+	}
+	before := treeBytes(t, data)
+	if _, err := Run(Options{DataDir: data, Write: true}); err == nil || !strings.Contains(err.Error(), "metacheck") {
+		t.Fatalf("a --write over a chained tree: err = %v, want the refusal naming metacheck", err)
+	}
+	if !equalTrees(before, treeBytes(t, data)) {
+		t.Error("a refused --write changed the tree")
+	}
+	rn, tx := planFixture(t, data)
+	err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3"))
+	assertRefusal(t, err, CatTranslationLink, "zorn is itself a translation of [rage]")
 }
 
 // The plan's link index is kept current as proposals commit: a later merge retiring
@@ -341,16 +370,22 @@ func TestMergeSeriesRefusesTwoVariantsOfOneOrderingInAFamily(t *testing.T) {
 }
 
 // Series translation_of follows the works' rules: a series translating the loser is
-// re-pointed, the loser's own set is unioned onto the survivor, and the two together -
-// a survivor that would be both a translation and an original - are refused.
+// re-pointed, the loser's own set is unioned onto the survivor, and a fold that would
+// make the survivor both a translation and an original is refused. Every partner is
+// in another language than the English pair (a series' language is its members'), so
+// each tree is valid before the merge and the merge is what re-points or chains.
 func TestMergeSeriesRepointsAndUnionsTranslations(t *testing.T) {
+	// chroniques-du-druide, a French series, translates the LOSER.
 	chroniques := func(t testing.TB, files map[string]string) {
+		addWork(t, files, "limier", "fr")
 		files["series/ch/chroniques-du-druide.json"] = testpack.WithField(t,
-			seriesJSON(t, "chroniques-du-druide", "Chroniques du druide", "hounded@1"), "translation_of", []string{druidLoser})
+			seriesJSON(t, "chroniques-du-druide", "Chroniques du druide", "limier@1"), "translation_of", []string{druidLoser})
 	}
-	chroniken := func(t testing.TB, files map[string]string) {
-		files["series/ch/chroniken-des-druiden.json"] = seriesJSON(t, "chroniken-des-druiden", "Chroniken des Druiden", "hexed@1")
-		setField(t, files, "series/ir/"+druidLoser+".json", "translation_of", []string{"chroniken-des-druiden"})
+	// chroniken-des-druiden is a German original, translated by the series named.
+	chroniken := func(t testing.TB, files map[string]string, translator string) {
+		addWork(t, files, "gehetzt", "de")
+		files["series/ch/chroniken-des-druiden.json"] = seriesJSON(t, "chroniken-des-druiden", "Chroniken des Druiden", "gehetzt@1")
+		setField(t, files, "series/ir/"+translator+".json", "translation_of", []string{"chroniken-des-druiden"})
 	}
 	t.Run("a translation of the loser is re-pointed", func(t *testing.T) {
 		files := seriesPair(t, "hounded@1", "hexed@2")
@@ -365,7 +400,7 @@ func TestMergeSeriesRepointsAndUnionsTranslations(t *testing.T) {
 	})
 	t.Run("the loser's own set is unioned", func(t *testing.T) {
 		files := seriesPair(t, "hounded@1", "hexed@2")
-		chroniken(t, files)
+		chroniken(t, files, druidLoser)
 		rn, tx := planFixture(t, seedTree(t, files))
 		if err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser)); err != nil {
 			t.Fatal(err)
@@ -374,10 +409,10 @@ func TestMergeSeriesRepointsAndUnionsTranslations(t *testing.T) {
 			t.Errorf("survivor translation_of = %v, want the loser's", got)
 		}
 	})
-	t.Run("both at once is a chain", func(t *testing.T) {
+	t.Run("a survivor translation folding in an original is a chain", func(t *testing.T) {
 		files := seriesPair(t, "hounded@1", "hexed@2")
 		chroniques(t, files)
-		chroniken(t, files)
+		chroniken(t, files, druidTarget)
 		rn, tx := planFixture(t, seedTree(t, files))
 		err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
 		assertRefusal(t, err, CatTranslationLink, "chroniques-du-druide names it as its original")
