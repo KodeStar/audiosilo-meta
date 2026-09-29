@@ -115,10 +115,16 @@ func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry
 			return err
 		}
 	}
-	for _, f := range mergeWorkFields(merged, lw) {
-		t.note("  %s: kept %s, dropped %s from %s", f.field, quoteFact(f.kept), quoteFact(f.dropped), loser)
-	}
+	t.noteLost(mergeWorkFields(merged, lw), loser)
 	return nil
+}
+
+// noteLost names every value a merge chose away, one indented line each, against the
+// record it came from - the one note format every merge op writes its audit trail in.
+func (t *txn) noteLost(lost []mergedFacts, from string) {
+	for _, f := range lost {
+		t.note("  %s: kept %s, dropped %s from %s", f.field, quoteFact(f.kept), quoteFact(f.dropped), from)
+	}
 }
 
 // factValue renders a raw member for a note: the VALUE of a JSON string, the bytes of
@@ -159,9 +165,7 @@ func (t *txn) moveRecording(target, loser, key string, recs map[string]entry, re
 		merged, lost := mergeRecordings(sibling, moved)
 		recs[key] = merged
 		t.note("merged recording %s/%s into %s/%s (same production: %s)", loser, key, target, key, why)
-		for _, f := range lost {
-			t.note("  %s: kept %s, dropped %s from %s/%s", f.field, quoteFact(f.kept), quoteFact(f.dropped), loser, key)
-		}
+		t.noteLost(lost, loser+"/"+key)
 		return nil
 	}
 	newKey, ok := freeRecordingKey(recs, key)
@@ -247,15 +251,7 @@ func mergeRecordings(keep, mover entry) (entry, []mergedFacts) {
 	out.Set("sources", rawentry.UnionSources(out.Sources(), mover.Sources()))
 	rawentry.SetListOrDrop(out, "narrators", rawentry.AppendUnique(out.Strs("narrators"), mover.Strs("narrators")))
 
-	var lost []mergedFacts
-	for _, field := range []string{"release_date", "publisher", "cover_url", "language"} {
-		if rawentry.FillAbsentString(out, mover, field) {
-			continue // the keeper stated nothing, so nothing was chosen away
-		}
-		if v := mover.Str(field); v != "" && v != out.Str(field) {
-			lost = append(lost, mergedFacts{field: field, kept: out.Str(field), dropped: v})
-		}
-	}
+	lost := fillStrings(out, mover, "release_date", "publisher", "cover_url", "language")
 	// The tri-state and byte-exact members: an absent abridged is "unknown" and a false one
 	// is a statement, and a chapter list is a timeline whose numbers must survive exactly as
 	// they were written, so it is moved as BYTES either way.
@@ -322,16 +318,25 @@ func mergeWorkFields(merged, lw entry) []mergedFacts {
 	rawentry.SetListOrDrop(merged, "genres", rawentry.UnionGenres(merged.Strs("genres"), lw.Strs("genres")))
 	rawentry.SetListOrDrop(merged, "credits", rawentry.UnionCredits(merged.Credits(), lw.Credits()))
 	merged.Set("sources", rawentry.UnionSources(merged.Sources(), lw.Sources()))
+	lost := fillStrings(merged, lw, "subtitle", "language", "first_published", "description")
+	return append(lost, fillXref(merged, lw)...)
+}
+
+// fillStrings is merge-works' rule for string scalars, field by field: a value only
+// `from` states is filled into `into`, and a value both state DIFFERENTLY (compared
+// exactly) stays as `into` has it and is returned, for the note naming what was chosen
+// away. Nothing is chosen when `from` states nothing or the two agree.
+func fillStrings(into, from entry, fields ...string) []mergedFacts {
 	var lost []mergedFacts
-	for _, field := range []string{"subtitle", "language", "first_published", "description"} {
-		if rawentry.FillAbsentString(merged, lw, field) {
-			continue
+	for _, field := range fields {
+		if rawentry.FillAbsentString(into, from, field) {
+			continue // the keeper stated nothing, so nothing was chosen away
 		}
-		if v := lw.Str(field); v != "" && v != merged.Str(field) {
-			lost = append(lost, mergedFacts{field: field, kept: merged.Str(field), dropped: v})
+		if v := from.Str(field); v != "" && v != into.Str(field) {
+			lost = append(lost, mergedFacts{field: field, kept: into.Str(field), dropped: v})
 		}
 	}
-	return append(lost, fillXref(merged, lw)...)
+	return lost
 }
 
 // fillXref fills the merged work's cross-references from a loser's, member by member

@@ -16,5 +16,83 @@ linters:
     - staticcheck
     - unused
   settings:
+    govet:
+      settings:
+        # unusedresult (on in govet's default set) refuses a call whose result is
+        # thrown away. Its `funcs` list REPLACES the analyzer's own default rather
+        # than adding to it, so the stdlib half below is x/tools v0.44.0's default
+        # (the version golangci-lint v2.12 bundles) restated verbatim; bump it
+        # with the linter pin. The repository half is internal/repair's
+        # LOSS-RETURNING helpers: each returns the values a merge chose away, and a
+        # call that discards that return deletes a fact with nothing in the applied
+        # record's notes to say so - the defect merge-series had with fillXref. A
+        # package-level function only (the analyzer reaches no method here), and a
+        # bare call statement only (`_ = f()` and `x, _ := f()` are assignments it
+        # never sees); TestLossHelpersAreLinted in internal/repair keeps the list
+        # complete and refuses those blank-identifier discards itself.
+        unusedresult:
+          funcs:
+            - context.WithCancel
+            - context.WithDeadline
+            - context.WithTimeout
+            - context.WithValue
+            - errors.New
+            - fmt.Append
+            - fmt.Appendf
+            - fmt.Appendln
+            - fmt.Errorf
+            - fmt.Sprint
+            - fmt.Sprintf
+            - fmt.Sprintln
+            - maps.All
+            - maps.Clone
+            - maps.Collect
+            - maps.Equal
+            - maps.EqualFunc
+            - maps.Keys
+            - maps.Values
+            - slices.All
+            - slices.AppendSeq
+            - slices.Backward
+            - slices.BinarySearch
+            - slices.BinarySearchFunc
+            - slices.Chunk
+            - slices.Clip
+            - slices.Clone
+            - slices.Collect
+            - slices.Compact
+            - slices.CompactFunc
+            - slices.Compare
+            - slices.CompareFunc
+            - slices.Concat
+            - slices.Contains
+            - slices.ContainsFunc
+            - slices.Delete
+            - slices.DeleteFunc
+            - slices.Equal
+            - slices.EqualFunc
+            - slices.Grow
+            - slices.Index
+            - slices.IndexFunc
+            - slices.Insert
+            - slices.IsSorted
+            - slices.IsSortedFunc
+            - slices.Max
+            - slices.MaxFunc
+            - slices.Min
+            - slices.MinFunc
+            - slices.Repeat
+            - slices.Replace
+            - slices.Sorted
+            - slices.SortedFunc
+            - slices.SortedStableFunc
+            - slices.Values
+            - sort.Reverse
+            - github.com/kodestar/audiosilo-meta/internal/repair.chooseChapters
+            - github.com/kodestar/audiosilo-meta/internal/repair.fillStrings
+            - github.com/kodestar/audiosilo-meta/internal/repair.fillXref
+            - github.com/kodestar/audiosilo-meta/internal/repair.mergeRecordings
+            - github.com/kodestar/audiosilo-meta/internal/repair.mergeSeriesFields
+            - github.com/kodestar/audiosilo-meta/internal/repair.mergeWorkFields
     staticcheck:
       checks: ["all", "-ST1000", "-ST1003", "-ST1016", "-ST1020", "-ST1021", "-ST1022"]

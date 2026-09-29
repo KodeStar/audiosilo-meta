@@ -57,7 +57,7 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 			byPosition[slotKey(sw.Position)] = sw.Work
 			moved++
 		}
-		mergeSeriesFields(merged, le)
+		t.noteLost(mergeSeriesFields(merged, le), slug)
 	}
 	if err := refuseDuplicatePositions(target, works); err != nil {
 		return err
@@ -72,11 +72,22 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 	return nil
 }
 
-// mergeSeriesFields folds a loser series' own facts into the surviving record. The
-// name is the target's - the ladder chose it - and everything else follows
-// merge-works' rule: union the lists, fill only what the target does not state.
-func mergeSeriesFields(merged, loser entry) {
+// mergeSeriesFields folds a loser series' own facts into the surviving record and returns
+// every value it could not keep, for the applied record's notes. The name is the
+// target's - the ladder chose it - and everything else follows merge-works' rule: union
+// the lists, fill only what the target does not state.
+//
+// A differing NAME is reported, compared exactly: a retired spelling is not cosmetic,
+// since the importer joins a series by its name, so a source still spelling it the
+// loser's way stops meeting the series once that spelling is gone - and a reviewer can
+// only weigh that if the note names it. A case-only difference is reported too; the note
+// is the audit trail, and saying less than what was deleted is what it exists to prevent.
+// A differing xref member is reported by fillXref, exactly as for a work.
+func mergeSeriesFields(merged, loser entry) []mergedFacts {
 	rawentry.SetListOrDrop(merged, "authors", rawentry.AppendUnique(merged.Strs("authors"), loser.Strs("authors")))
 	merged.Set("sources", rawentry.UnionSources(merged.Sources(), loser.Sources()))
-	fillXref(merged, loser)
+	// name is schema-required, so the target always states one and fillStrings only
+	// ever reports it.
+	lost := fillStrings(merged, loser, "name")
+	return append(lost, fillXref(merged, loser)...)
 }
