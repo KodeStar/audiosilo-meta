@@ -147,7 +147,8 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 // seriesMergeVetoes lists the reasons two same-looking series must not be folded
 // mechanically. Each one was a wrong proposal.
 //
-// The three NAME-level rules are here; the four MEMBER-level ones (author agreement,
+// The three NAME-level rules and the stated ordering-family rule are here; the four
+// MEMBER-level ones (author agreement,
 // member collection evidence, ordering agreement and the language rule on the merits) are
 // in vetoseries.go, which records the exhaustive review of all 694 non-advisory proposals
 // that found them. target is the spelling the proposal would keep, which the directional
@@ -155,6 +156,12 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 	var out []string
 	sides := seriesSides(ix, group)
+
+	// ORDERING FAMILY: two series the data STATES are orderings of one franchise are
+	// deliberately two records, however alike their names read.
+	if reason, vetoed := vetoSeriesOrderingFamily(group); vetoed {
+		out = append(out, reason)
+	}
 
 	// LANGUAGE, the same rule W-DUP has and for the same reason: a French and a
 	// Polish series are not the English one spelled differently. Asked of the MEMBERS'
