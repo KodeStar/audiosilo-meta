@@ -411,3 +411,97 @@ func TestAMergeOverATreeWithoutLinksIsUnchanged(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+// languageFold is a merge-series whose survivor is a translation: the Iron Druid
+// Chronicles (two English members, one German) name the German original
+// druiden-chroniken. The loser holds only German members, so the fold decides the
+// survivor's DERIVED language - which is what the translation rule judges.
+func languageFold(t testing.TB, loserMembers ...string) map[string]string {
+	t.Helper()
+	files := seriesPair(t, "hounded@1", "hexed@2")
+	for i, slug := range []string{"gehetzt", "verhext", "entfesselt"} {
+		files["works/"+slug[:2]+"/"+slug+"/work.json"] = workJSON(t, slug, slug, withWorkLanguage("de"))
+		rec := "nate-narrator-201" + string(rune('5'+i))
+		files["works/"+slug[:2]+"/"+slug+"/recordings/"+rec+".json"] = recJSON(t, rec, slug, withNarrators("luke-daniels"))
+	}
+	files["series/dr/druiden-chroniken.json"] = seriesJSON(t, "druiden-chroniken", "Die Chroniken des Eisernen Druiden",
+		"gehetzt@1", "verhext@2", "entfesselt@3")
+	files["series/ir/"+druidTarget+".json"] = testpack.WithField(t,
+		seriesJSON(t, druidTarget, "The Iron Druid Chronicles", "hounded@1", "hexed@2", "gehetzt@3"),
+		"translation_of", []string{"druiden-chroniken"})
+	files["series/ir/"+druidLoser+".json"] = seriesJSON(t, druidLoser, "Iron Druid Chronicles", loserMembers...)
+	return files
+}
+
+// planAndApply plans one proposal through planOne - the path that judges the staged
+// change before it commits - and then runs the write phase, returning the tree's
+// bytes before and after. The audit's own language veto keeps these folds out of a
+// real run's proposals, which is why the proposal is planned directly: the rule
+// under test is the plan-time backstop behind that veto.
+func planAndApply(t *testing.T, data string, fd audit.Finding, class string) (*runner, map[string]string, map[string]string) {
+	t.Helper()
+	rn, _ := planFixture(t, data)
+	rn.planOne(candidate{class: class, fd: fd})
+	if rn.fatal != nil {
+		t.Fatal(rn.fatal)
+	}
+	before := treeBytes(t, data)
+	if err := rn.apply(rn.plan.series.write); err != nil {
+		t.Fatalf("apply: %v (post-write problems %v)", err, rn.rep.PostProblems)
+	}
+	return rn, before, treeBytes(t, data)
+}
+
+// A fold that flips the survivor's majority onto its original's language (English
+// 2 / German 1 becomes English 2 / German 3) would leave a translation in the
+// language of its original: refused at plan time, and nothing is written.
+func TestMergeSeriesRefusesAFoldThatFlipsATranslationsLanguage(t *testing.T) {
+	data := seedTree(t, languageFold(t, "verhext@4", "entfesselt@5"))
+	rn, before, after := planAndApply(t, data, seriesFinding(druidTarget, druidLoser), audit.ClassSeriesDup)
+	if len(rn.rep.Applied) != 0 || len(rn.rep.Refused) != 1 {
+		t.Fatalf("applied %+v, refused %+v; want one refusal", rn.rep.Applied, rn.rep.Refused)
+	}
+	ref := rn.rep.Refused[0]
+	want := `series ` + druidTarget + ` would be in "de", the same language as series druiden-chroniken`
+	if ref.Category != CatTranslationLink || !strings.Contains(ref.Reason, want) {
+		t.Errorf("refusal = %s: %s; want %s mentioning %q", ref.Category, ref.Reason, CatTranslationLink, want)
+	}
+	if !equalTrees(before, after) {
+		t.Error("a refused proposal changed the tree")
+	}
+}
+
+// A fold that only produces a TIE (English 2 / German 2) leaves the survivor's
+// language unjudgeable, which pkg/check's rule skips - so it is applied.
+func TestMergeSeriesAppliesAFoldThatOnlyTies(t *testing.T) {
+	data := seedTree(t, languageFold(t, "verhext@4"))
+	rn, _, _ := planAndApply(t, data, seriesFinding(druidTarget, druidLoser), audit.ClassSeriesDup)
+	if len(rn.rep.Applied) != 1 || len(rn.rep.Refused) != 0 {
+		t.Fatalf("applied %+v, refused %+v; want the fold applied", rn.rep.Applied, rn.rep.Refused)
+	}
+	if got := readEntry(t, data, pack.FamilySeries, druidTarget).Strs("translation_of"); !slices.Equal(got, []string{"druiden-chroniken"}) {
+		t.Errorf("survivor translation_of = %v, want its link kept", got)
+	}
+	if entryExists(t, data, pack.FamilySeries, druidLoser) {
+		t.Error("the loser is still there")
+	}
+}
+
+// The work half of the same rule: a survivor whose own language is its new
+// original's (a cross-language merge the audit vetoes, planned directly) is refused.
+func TestMergeWorksRefusesATranslationInItsOriginalsLanguage(t *testing.T) {
+	files := hammeredCluster(t)
+	setField(t, files, "works/ha/hammered/work.json", "language", "de")
+	setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"zorn"})
+	files["works/zo/zorn/work.json"] = workJSON(t, "zorn", "Zorn", withWorkLanguage("de"))
+	files["works/zo/zorn/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "zorn")
+	data := seedTree(t, files)
+	rn, before, after := planAndApply(t, data, mergeFinding("hammered", "hammered-book-3"), audit.ClassWorkDup)
+	if len(rn.rep.Refused) != 1 || rn.rep.Refused[0].Category != CatTranslationLink ||
+		!strings.Contains(rn.rep.Refused[0].Reason, `work hammered would be in "de", the same language as work zorn`) {
+		t.Fatalf("refused %+v, applied %+v; want the language refusal", rn.rep.Refused, rn.rep.Applied)
+	}
+	if !equalTrees(before, after) {
+		t.Error("a refused proposal changed the tree")
+	}
+}

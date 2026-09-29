@@ -383,3 +383,97 @@ func mergeOrderingFields(merged, loser entry, retiring map[string]bool, target s
 	}
 	return lost
 }
+
+// judgeLinkLanguages re-asks pkg/check's translation LANGUAGE rule - a translation
+// and its original are never in one primary language - of everything the proposal
+// staged, before it commits. A merge moves no link across languages by itself, but
+// it can move the LANGUAGE under a link: a series' language is derived from its
+// members (model.SeriesLanguage), so a membership fold can flip a linked series'
+// majority onto its original's, and a merge-works survivor's language is what its
+// re-pointed translations are now judged against. Left to the post-write check,
+// either fails the whole wave with the tree already written, so a proposal that
+// would break the rule is refused here as CatTranslationLink instead.
+//
+// Every staged entry of both families is judged against the records it links to
+// and the records linking to it, all read through the STAGED view (so a re-point
+// this proposal made is judged as it will be written). A side whose language is ""
+// - a series tie, or nothing known - is not judged, exactly as pkg/check skips it.
+// Only an entry that carries or receives a link costs a read, so a tree without
+// links (every tree today) pays nothing.
+func (t *txn) judgeLinkLanguages() error {
+	if err := t.judgeFamilyLanguages(pack.FamilyWorks, "work", t.workLanguage); err != nil {
+		return err
+	}
+	return t.judgeFamilyLanguages(pack.FamilySeries, "series", t.seriesLanguage)
+}
+
+// judgeFamilyLanguages is judgeLinkLanguages for one family. lang answers a slug's
+// primary language over the staged view.
+func (t *txn) judgeFamilyLanguages(f pack.Family, noun string, lang func(string) (string, error)) error {
+	st := t.stageFor(f)
+	ix := t.p.linksFor(f)
+	for _, slug := range rawentry.SortedKeys(st.puts) {
+		type link struct{ from, to string }
+		var pairs []link
+		for _, to := range st.puts[slug].Strs(fieldTranslationOf) {
+			pairs = append(pairs, link{slug, to})
+		}
+		for _, src := range rawentry.SortedKeys(ix.translatedBy[slug]) {
+			// A staged source is judged as a key of its own (its staged links are the
+			// ones that count), and a deleted one links to nothing any more.
+			if _, staged := st.puts[src]; staged || st.dels[src] {
+				continue
+			}
+			pairs = append(pairs, link{src, slug})
+		}
+		for _, l := range pairs {
+			a, err := lang(l.from)
+			if err != nil {
+				return err
+			}
+			if a == "" {
+				continue
+			}
+			b, err := lang(l.to)
+			if err != nil {
+				return err
+			}
+			if a == b {
+				return refusef(CatTranslationLink,
+					"after this change %s %s would be in %q, the same language as %s %s, which it names in translation_of: "+
+						"a translation is in a different language from its original, so the link or the change needs a human",
+					noun, l.from, a, noun, l.to)
+			}
+		}
+	}
+	return nil
+}
+
+// workLanguage is a work's primary language subtag over the staged view, "" for a
+// work the plan does not hold or one stating none.
+func (t *txn) workLanguage(slug string) (string, error) {
+	e, ok, err := t.works.get(slug)
+	if err != nil || !ok {
+		return "", err
+	}
+	return model.PrimarySubtag(e.Str("language")), nil
+}
+
+// seriesLanguage is a series' DERIVED language over the staged view:
+// model.SeriesLanguage over its staged membership, each member's language read
+// through the staged works.
+func (t *txn) seriesLanguage(slug string) (string, error) {
+	e, ok, err := t.series.get(slug)
+	if err != nil || !ok {
+		return "", err
+	}
+	var firstErr error
+	lang := model.SeriesLanguage(&model.Series{Works: e.SeriesWorks()}, func(work string) string {
+		l, err := t.workLanguage(work)
+		if err != nil && firstErr == nil {
+			firstErr = err
+		}
+		return l
+	})
+	return lang, firstErr
+}

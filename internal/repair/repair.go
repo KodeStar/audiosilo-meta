@@ -448,6 +448,11 @@ func (rn *runner) planOne(c candidate) {
 		err = refusef(CatMalformed, "op %q has no planner", p.Op)
 	}
 	if err == nil {
+		// The one rule a proposal can break at a distance: a language moved under a
+		// translation link. Judged over the whole staged change, whatever the op.
+		err = t.judgeLinkLanguages()
+	}
+	if err == nil {
 		if cerr := t.commit(c.key()); cerr != nil {
 			// The only thing commit judges is the tombstone table, and it judges it
 			// over a copy - so a refusal here has changed nothing.
