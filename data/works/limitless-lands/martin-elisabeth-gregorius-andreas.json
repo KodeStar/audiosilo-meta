@@ -411,6 +411,9 @@
       "authors": [
         "scientific-american"
       ],
+      "genres": [
+        "science"
+      ],
       "id": "martin-gardner",
       "language": "en",
       "license": "CC0-1.0",
@@ -424,6 +427,134 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17101,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 266623,
+              "start_ms": 17101,
+              "title": "Introduction: \"Martin Gardner on Numbers\" by Kristin Ozelli"
+            },
+            {
+              "length_ms": 7797,
+              "start_ms": 283724,
+              "title": "Section 1: Numbers Real, Imaginary, and In-Between"
+            },
+            {
+              "length_ms": 1411616,
+              "start_ms": 291521,
+              "title": "Seeing the Integers Through the Trees"
+            },
+            {
+              "length_ms": 1604289,
+              "start_ms": 1703137,
+              "title": "Negative Numbers and Peg Boards"
+            },
+            {
+              "length_ms": 1535883,
+              "start_ms": 3307426,
+              "title": "The Imaginableness of Imaginary Numbers"
+            },
+            {
+              "length_ms": 1533189,
+              "start_ms": 4843309,
+              "title": "The Remarkable Lore of Prime Numbers"
+            },
+            {
+              "length_ms": 1479436,
+              "start_ms": 6376498,
+              "title": "A Surplus of Surreal Number Games"
+            },
+            {
+              "length_ms": 7106,
+              "start_ms": 7855934,
+              "title": "Section 2: Number Sequences, Series, and Patterns"
+            },
+            {
+              "length_ms": 1459674,
+              "start_ms": 7863040,
+              "title": "Playing Chess with Catalan Numbers"
+            },
+            {
+              "length_ms": 1157422,
+              "start_ms": 9322714,
+              "title": "Rhyming and Chiming Bell Numbers"
+            },
+            {
+              "length_ms": 1542640,
+              "start_ms": 10480136,
+              "title": "The Strong Law of Small Numbers"
+            },
+            {
+              "length_ms": 1330456,
+              "start_ms": 12022776,
+              "title": "The Figurate Numbers for a Chinese Checker Board"
+            },
+            {
+              "length_ms": 8674,
+              "start_ms": 13353232,
+              "title": "Section 3: Special Constants: Have Your Pi and E It Too"
+            },
+            {
+              "length_ms": 925417,
+              "start_ms": 13361906,
+              "title": "Slices of Pi"
+            },
+            {
+              "length_ms": 1010672,
+              "start_ms": 14287323,
+              "title": "Phi, Fibonacci, and Mollusks"
+            },
+            {
+              "length_ms": 985175,
+              "start_ms": 15297995,
+              "title": "Abracadabric \"e\""
+            },
+            {
+              "length_ms": 2134634,
+              "start_ms": 16283170,
+              "title": "Omega, the Ultimate Random Number"
+            },
+            {
+              "length_ms": 8682,
+              "start_ms": 18417804,
+              "title": "Section 4: Number Systems: Beyond \"the Tyranny of 10\""
+            },
+            {
+              "length_ms": 1333593,
+              "start_ms": 18426486,
+              "title": "Tricks with Ternary Numbers"
+            },
+            {
+              "length_ms": 1329064,
+              "start_ms": 19760079,
+              "title": "The Gray Code Beats Chinese Rings"
+            },
+            {
+              "length_ms": 1030918,
+              "start_ms": 21089143,
+              "title": "Binary Numbers and Mind Reading Cards"
+            },
+            {
+              "length_ms": 1531333,
+              "start_ms": 22120061,
+              "title": "Negabinary Numbers Power a Chessboard Computer"
+            },
+            {
+              "length_ms": 1490084,
+              "start_ms": 23651394,
+              "title": "Binary Numbers and the I Ching"
+            },
+            {
+              "length_ms": 68879,
+              "start_ms": 25141478,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1UW9wTBM5L.jpg",
           "id": "kate-mulligan-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -438,6 +569,10 @@
               "imported_at": "2026-09-24",
               "ref": "1094077380",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1094077380",
+              "type": "libex-import"
             }
           ],
           "work": "martin-gardner"
@@ -448,6 +583,10 @@
           "imported_at": "2026-09-24",
           "ref": "1094077380",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1094077380",
+          "type": "libex-import"
         }
       ],
       "title": "Martin Gardner"

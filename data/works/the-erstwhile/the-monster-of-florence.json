@@ -6050,6 +6050,12 @@
       "authors": [
         "mirah-bolender"
       ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "military-science-fiction"
+      ],
       "id": "the-monstrous-citadel",
       "language": "en",
       "license": "CC0-1.0",
@@ -6063,6 +6069,139 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 23823,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 382502,
+              "start_ms": 23823,
+              "title": "Chapter 1: Backlash"
+            },
+            {
+              "length_ms": 2412530,
+              "start_ms": 406325,
+              "title": "Chapter 2: Fools, Wary"
+            },
+            {
+              "length_ms": 2464891,
+              "start_ms": 2818855,
+              "title": "Chapter 3: The Sundown Showdown"
+            },
+            {
+              "length_ms": 3656423,
+              "start_ms": 5283746,
+              "title": "Chapter 4: Executrix"
+            },
+            {
+              "length_ms": 3011837,
+              "start_ms": 8940169,
+              "title": "Chapter 5: The Key Keeper"
+            },
+            {
+              "length_ms": 1135200,
+              "start_ms": 11952006,
+              "title": "Chapter 6: Chimney Smoking"
+            },
+            {
+              "length_ms": 1398352,
+              "start_ms": 13087206,
+              "title": "Chapter 7: Winter Jamboree"
+            },
+            {
+              "length_ms": 1748578,
+              "start_ms": 14485558,
+              "title": "Chapter 8: An Underyear Nightmare"
+            },
+            {
+              "length_ms": 1823579,
+              "start_ms": 16234136,
+              "title": "Chapter 9: Watcher"
+            },
+            {
+              "length_ms": 1267786,
+              "start_ms": 18057715,
+              "title": "Chapter 10: Warning"
+            },
+            {
+              "length_ms": 1244241,
+              "start_ms": 19325501,
+              "title": "Chapter 11: Breaking Point"
+            },
+            {
+              "length_ms": 1270642,
+              "start_ms": 20569742,
+              "title": "Chapter 12: The Wild Things"
+            },
+            {
+              "length_ms": 1723756,
+              "start_ms": 21840384,
+              "title": "Chapter 13: Fly Fleetly"
+            },
+            {
+              "length_ms": 2405564,
+              "start_ms": 23564140,
+              "title": "Chapter 14: Fell Beast"
+            },
+            {
+              "length_ms": 2008456,
+              "start_ms": 25969704,
+              "title": "Chapter 15: Sellout"
+            },
+            {
+              "length_ms": 2624551,
+              "start_ms": 27978160,
+              "title": "Chapter 16: Catch Him on the Run"
+            },
+            {
+              "length_ms": 1716883,
+              "start_ms": 30602711,
+              "title": "Chapter 17: Ditch Time"
+            },
+            {
+              "length_ms": 2528513,
+              "start_ms": 32319594,
+              "title": "Chapter 18: Treasure in the Labyrinth"
+            },
+            {
+              "length_ms": 1825738,
+              "start_ms": 34848107,
+              "title": "Chapter 19: Bad Road"
+            },
+            {
+              "length_ms": 2355200,
+              "start_ms": 36673845,
+              "title": "Chapter 20: Valens"
+            },
+            {
+              "length_ms": 3800502,
+              "start_ms": 39029045,
+              "title": "Chapter 21: Homecoming"
+            },
+            {
+              "length_ms": 2735914,
+              "start_ms": 42829547,
+              "title": "Chapter 22: Approaching Darkness"
+            },
+            {
+              "length_ms": 1089248,
+              "start_ms": 45565461,
+              "title": "Chapter 23: Juggernaut"
+            },
+            {
+              "length_ms": 2042236,
+              "start_ms": 46654709,
+              "title": "Chapter 24: Jailbirds Fly"
+            },
+            {
+              "length_ms": 3486921,
+              "start_ms": 48696945,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qit2nnchL.jpg",
           "id": "natalie-naudus-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -6077,6 +6216,10 @@
               "imported_at": "2026-09-24",
               "ref": "1250243602",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1250243602",
+              "type": "libex-import"
             }
           ],
           "work": "the-monstrous-citadel"
@@ -6087,6 +6230,10 @@
           "imported_at": "2026-09-24",
           "ref": "1250243602",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1250243602",
+          "type": "libex-import"
         }
       ],
       "title": "The Monstrous Citadel"
