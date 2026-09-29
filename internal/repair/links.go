@@ -212,6 +212,9 @@ func (t *txn) relinkTranslations(f pack.Family, target string, merged entry, los
 	st := t.stageFor(f)
 	ix := t.p.linksFor(f)
 	for _, src := range linkers(ix.translatedBy, retiring, cluster(target, losers)) {
+		if src == target {
+			continue // the survivor's own set was folded above, onto merged
+		}
 		if !slices.ContainsFunc(ix.translationOf[src], func(s string) bool { return retiring[s] }) {
 			continue // it names the survivor already, and nothing else in the cluster
 		}

@@ -88,6 +88,7 @@ func TestCorrectTranslationOfVerdicts(t *testing.T) {
 		{"same language", "https://meta.audiosilo.app/works/other-en", "existing-work", StatusInvalid, `are both in "en"`},
 		{"target is itself a translation", deWork, "l-oeuvre", StatusInvalid, `work "l-oeuvre" is itself a translation (of existing-work)`},
 		{"record is an original", "https://meta.audiosilo.app/works/existing-work", "das-werk", StatusInvalid, "is the original that l-oeuvre translate"},
+		{"the two would name each other", "https://meta.audiosilo.app/works/existing-work", "l-oeuvre", StatusInvalid, `work "l-oeuvre" already names existing-work as its original`},
 		{"already present", frWork, "https://meta.audiosilo.app/works/existing-work", StatusDuplicate, `already names "existing-work" in translation_of`},
 		{"not a work reference", deWork, "https://meta.audiosilo.app/series/existing-series", StatusInvalid, "is not a work reference"},
 	} {

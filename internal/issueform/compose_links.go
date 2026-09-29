@@ -83,7 +83,10 @@ func (c *composer) resolveLinkTarget(fam linkFamily, field, raw string) (string,
 		return "", false
 	}
 	if live != ref {
-		c.noteRetired(fam.kind, ref, live)
+		// Not noteRetired: its "the submission is recorded against" names the record a
+		// submission is filed under, and here that is the corrected record - the
+		// survivor is only what the link names.
+		c.note("%s slug %q was retired by a merge onto %q; %s names %q", fam.kind, ref, live, field, live)
 	}
 	return live, true
 }
@@ -264,6 +267,12 @@ func (c *composer) refuseLinkFaults(fam linkFamily, addr entryAddr, field, targe
 		c.fail(StatusNeedsHuman, "%s would then be in %q, the same language as %s %q, which names it as its original in translation_of - "+
 			"a translation is in a different language from its original, so the language or the link is wrong; a maintainer will decide which",
 			label, f.Language, fam.noun, f.From)
+	case f.Code == check.LinkChain && f.From == id && slices.Contains(f.Others, id):
+		// The target translates THIS record: "name its original instead" would name
+		// the record itself, so the verdict says the two links contradict each other.
+		c.fail(StatusInvalid, "%s %q already names %s as its original - the two records cannot each be a translation of the other, "+
+			"so if %s is really the translation, %q's translation_of is what is wrong, which a maintainer will sort out",
+			fam.noun, f.To, id, id, f.To)
 	case f.Code == check.LinkChain && f.From == id:
 		c.fail(StatusInvalid, "%s %q is itself a translation (of %s) - translation_of names the ORIGINAL, so name %s instead",
 			fam.noun, f.To, strings.Join(f.Others, ", "), strings.Join(f.Others, " or "))

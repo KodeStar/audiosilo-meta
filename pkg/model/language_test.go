@@ -40,6 +40,7 @@ func TestSeriesLanguage(t *testing.T) {
 		{"regions fold onto the primary subtag", []string{"en-gb", "de-1", "en-1"}, "en"},
 		{"a region on a minority member still counts for its language", []string{"de-1", "de-2", "en-1"}, "de"},
 		{"strict majority", []string{"en-1", "en-2", "de-1"}, "en"},
+		{"a strict plurality need not be over half", []string{"en-1", "en-2", "de-1", "fr-1"}, "en"},
 		{"a 1-1 tie has no majority", []string{"en-1", "de-1"}, ""},
 		{"a tie at the top ignores a smaller third", []string{"en-1", "en-2", "de-1", "de-2", "fr-1"}, ""},
 		{"a later, higher count clears a lower tie", []string{"de-1", "fr-1", "en-1", "en-2", "en-gb"}, "en"},

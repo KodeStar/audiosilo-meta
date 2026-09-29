@@ -20,9 +20,11 @@ func SameLanguage(a, b string) bool {
 }
 
 // SeriesLanguage is a series' language, DERIVED from its member list: the
-// STRICT majority of the members' primary subtags, or "" when no member's
-// language is known or the leading languages tie (a 1-1 split has no majority,
-// and a guess would be a fact nobody stated). A series has no language field
+// STRICT majority of the members' primary subtags - the one language more
+// members state than state any other (a strict plurality: 2 en, 1 fr and 1 de
+// is "en", though not over half) - or "" when no member's language is known or
+// the leading languages tie (a 1-1 split has no majority, and a guess would be a
+// fact nobody stated). A series has no language field
 // of its own, so this is the one definition every reader shares - pkg/check's
 // link rules, internal/repair's plan-time link judgement, internal/issueform's
 // link corrections and internal/audit's series index.

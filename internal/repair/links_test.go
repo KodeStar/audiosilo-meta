@@ -118,6 +118,36 @@ func TestMergeWorksDropsATranslationThatWouldNameItself(t *testing.T) {
 	}
 }
 
+// The other direction: the SURVIVOR names the loser. The survivor is also a record
+// whose link names a cluster member, but its set is folded onto the merged entry
+// once - it is not re-pointed a second time as though it sat outside the cluster,
+// which named the dropped self-link twice and reported a re-point onto itself.
+func TestMergeWorksSurvivorNamingTheLoserIsFoldedOnce(t *testing.T) {
+	files := hammeredCluster(t)
+	setField(t, files, "works/ha/hammered/work.json", "language", "de")
+	setField(t, files, "works/ha/hammered/work.json", "translation_of", []string{"hammered-book-3"})
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3")); err != nil {
+		t.Fatal(err)
+	}
+	if tx.works.puts["hammered"].Has("translation_of") {
+		t.Errorf("the self-link survived: %v", tx.works.puts["hammered"].Strs("translation_of"))
+	}
+	want := `translation_of: kept "", dropped "hammered-book-3" from hammered`
+	n := 0
+	for _, note := range tx.notes {
+		if strings.Contains(note, want) {
+			n++
+		}
+		if strings.Contains(note, "re-pointed translation_of of work hammered ") {
+			t.Errorf("the survivor was re-pointed as though it sat outside the cluster: %q", note)
+		}
+	}
+	if n != 1 {
+		t.Errorf("the dropped self-link is named %d times, want once: %v", n, tx.notes)
+	}
+}
+
 // addWork seeds a work in a stated language with one recording, for the link
 // fixtures that need partners in other languages.
 func addWork(t testing.TB, files map[string]string, slug, lang string, opts ...workOpt) {
