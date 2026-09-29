@@ -23,12 +23,12 @@ func TestSeriesLanguage(t *testing.T) {
 		"fr-1": "fr", "none": "",
 	}
 	langOf := func(id string) string { return langs[id] }
-	series := func(ids ...string) *Series {
-		s := &Series{ID: "s"}
+	series := func(ids ...string) []SeriesWork {
+		var works []SeriesWork
 		for _, id := range ids {
-			s.Works = append(s.Works, SeriesWork{Work: id})
+			works = append(works, SeriesWork{Work: id})
 		}
-		return s
+		return works
 	}
 	cases := []struct {
 		name  string
@@ -53,7 +53,26 @@ func TestSeriesLanguage(t *testing.T) {
 			t.Errorf("%s: SeriesLanguage(%v) = %q, want %q", c.name, c.works, got, c.want)
 		}
 	}
-	if got := SeriesLanguage(nil, langOf); got != "" {
-		t.Errorf("SeriesLanguage(nil) = %q, want \"\"", got)
+	byID := map[string]*Work{"en-1": {Language: "en"}, "de-1": {Language: "de-AT"}, "en-2": {Language: "en-GB"}}
+	if got := SeriesLanguageOf(series("en-1", "de-1", "en-2", "unknown-work"), byID); got != "en" {
+		t.Errorf("SeriesLanguageOf = %q, want \"en\"", got)
+	}
+}
+
+func TestSameLanguage(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		want bool
+	}{
+		{"en", "en", true},
+		{"en-GB", "EN-us", true},
+		{"en", "de", false},
+		{"", "", false},
+		{"en", "", false},
+		{"", "en", false},
+	} {
+		if got := SameLanguage(c.a, c.b); got != c.want {
+			t.Errorf("SameLanguage(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
 	}
 }

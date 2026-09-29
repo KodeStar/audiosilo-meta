@@ -29,22 +29,14 @@ import (
 func linkTree(t *testing.T) string {
 	t.Helper()
 	files := seedFiles()
-	work := func(id, title, lang string, translationOf ...string) {
-		body := testpack.WorkJSON(t, id, title, testpack.WithLanguage(lang))
-		if len(translationOf) > 0 {
-			body = testpack.WithField(t, body, "translation_of", translationOf)
-		}
-		files["works/"+id[:2]+"/"+id+"/work.json"] = body
+	work := func(id, title, lang string, opts ...testpack.WorkOpt) {
+		files["works/"+id[:2]+"/"+id+"/work.json"] = testpack.WorkJSON(t, id, title, append(opts, testpack.WithLanguage(lang))...)
 	}
 	work("das-werk", "Das Werk", "de")
 	work("other-en", "Other Work", "en")
-	work("l-oeuvre", "L'Oeuvre", "fr", "existing-work")
+	work("l-oeuvre", "L'Oeuvre", "fr", testpack.WithTranslationOf("existing-work"))
 	series := func(id string, fields map[string]any, members ...string) {
-		body := testpack.SeriesJSON(t, id, id, members...)
-		for k, v := range fields {
-			body = testpack.WithField(t, body, k, v)
-		}
-		files["series/"+id[:2]+"/"+id+".json"] = body
+		files["series/"+id[:2]+"/"+id+".json"] = testpack.WithFields(t, testpack.SeriesJSON(t, id, id, members...), fields)
 	}
 	series("die-serie", nil, "das-werk@1")
 	series("la-serie", map[string]any{"translation_of": []string{"existing-series"}}, "l-oeuvre@1")
@@ -120,7 +112,7 @@ func TestCorrectTranslationOfAddsToTheSet(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if got := linkField(t, dir, "works/l-/l-oeuvre/work.json", "translation_of"); !slicesEqualAny(got, "das-werk", "existing-work") {
+	if got := linkSet(t, dir, "works/l-/l-oeuvre/work.json"); !slices.Equal(got, []string{"das-werk", "existing-work"}) {
 		t.Errorf("translation_of = %v, want the sorted set [das-werk existing-work]", got)
 	}
 	if !anyContains(res.Messages, `added translation_of "das-werk"`) {
@@ -138,7 +130,7 @@ func TestCorrectTranslationOfResolvesARetiredSlug(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if got := linkField(t, dir, "works/da/das-werk/work.json", "translation_of"); !slicesEqualAny(got, "existing-work") {
+	if got := linkSet(t, dir, "works/da/das-werk/work.json"); !slices.Equal(got, []string{"existing-work"}) {
 		t.Errorf("translation_of = %v, want the survivor existing-work", got)
 	}
 	if !anyContains(res.Messages, `works slug "old-existing" was retired by a merge onto "existing-work"`) {
@@ -154,7 +146,7 @@ func TestCorrectSeriesTranslationOf(t *testing.T) {
 		if res.Status != StatusOK {
 			t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 		}
-		if got := linkField(t, dir, "series/di/die-serie.json", "translation_of"); !slicesEqualAny(got, "existing-series") {
+		if got := linkSet(t, dir, "series/di/die-serie.json"); !slices.Equal(got, []string{"existing-series"}) {
 			t.Errorf("translation_of = %v, want [existing-series]", got)
 		}
 		if !anyContains(res.Messages, `series slug "old-existing-series" was retired`) {
@@ -270,6 +262,38 @@ func TestCorrectSeriesOrderingOf(t *testing.T) {
 	}
 }
 
+// A work's LANGUAGE can break a translation link from a distance: a correction that
+// lands a work on the primary language of the work it translates, or of a work
+// translating it, is asked over the resulting state and goes to a maintainer (which
+// of the two statements is wrong is not the bot's call). A language that clashes with
+// nothing is applied as ever.
+func TestCorrectWorkLanguageAgainstItsTranslationLinks(t *testing.T) {
+	for _, tc := range []struct {
+		name, record, value string
+		status              Status
+		mention             string
+	}{
+		{"the translation lands on its original's language", "l-oeuvre", "en", StatusNeedsHuman,
+			`would then be in "en", the same language as work "existing-work", which it names in translation_of`},
+		{"the original lands on its translation's language", "existing-work", "fr", StatusNeedsHuman,
+			`would then be in "fr", the same language as work "l-oeuvre", which names it as its original`},
+		{"a region of the same language is the same language", "l-oeuvre", "en-GB", StatusNeedsHuman,
+			`the same language as work "existing-work"`},
+		{"a language clashing with nothing", "l-oeuvre", "de", StatusOK, "applied language = de"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dir := linkTree(t)
+			res := correctLink(t, dir, "https://meta.audiosilo.app/works/"+tc.record, "language", tc.value)
+			if res.Status != tc.status || !anyContains(res.Messages, tc.mention) {
+				t.Errorf("status = %q, messages = %v; want %q mentioning %q", res.Status, res.Messages, tc.status, tc.mention)
+			}
+			if tc.status != StatusOK && len(res.Files) != 0 {
+				t.Errorf("a refused correction wrote: %v", res.Files)
+			}
+		})
+	}
+}
+
 // translation_of against a RECORDING is the misaddressed-field verdict: the field is
 // the work's.
 func TestTranslationOfOnARecordingNamesTheWork(t *testing.T) {
@@ -280,16 +304,12 @@ func TestTranslationOfOnARecordingNamesTheWork(t *testing.T) {
 	}
 }
 
-// slicesEqualAny compares a decoded JSON array with a string list.
-func slicesEqualAny(v any, want ...string) bool {
-	arr, ok := v.([]any)
+// linkSet reads a composed record's link set as the string list it must be.
+func linkSet(t *testing.T, dir, address string) []string {
+	t.Helper()
+	got, ok := stringsOf(linkField(t, dir, address, "translation_of"))
 	if !ok {
-		return false
+		t.Fatalf("%s translation_of is not a string array", address)
 	}
-	got := make([]string, 0, len(arr))
-	for _, x := range arr {
-		s, _ := x.(string)
-		got = append(got, s)
-	}
-	return slices.Equal(got, want)
+	return got
 }

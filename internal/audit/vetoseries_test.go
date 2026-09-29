@@ -545,14 +545,14 @@ func TestSeriesDupVetoesAnOrderingFamily(t *testing.T) {
 				"series/aa/alpha.json": alpha(t),
 				"series/bb/beta.json":  orderingVariant(t, beta(t), "chronological", "alpha"),
 			},
-			want: "alpha and beta are two orderings of one franchise",
+			want: "alpha and beta are two orderings of the franchise whose primary is alpha",
 		},
 		"the survivor names the loser": {
 			files: map[string]string{
 				"series/aa/alpha.json": orderingVariant(t, alpha(t), "chronological", "beta"),
 				"series/bb/beta.json":  beta(t),
 			},
-			want: "alpha and beta are two orderings of one franchise",
+			want: "alpha and beta are two orderings of the franchise whose primary is beta",
 		},
 		"both name one primary": {
 			files: map[string]string{
@@ -560,7 +560,7 @@ func TestSeriesDupVetoesAnOrderingFamily(t *testing.T) {
 				"series/bb/beta.json":  orderingVariant(t, beta(t), "recommended", "gamma"),
 				"series/gg/gamma.json": seriesJSON(t, "gamma", "Wyvern Saga Publication Order", "one@1", "two@2"),
 			},
-			want: "alpha and beta are both orderings of gamma",
+			want: "alpha and beta are two orderings of the franchise whose primary is gamma",
 		},
 	}
 	for name, c := range cases {

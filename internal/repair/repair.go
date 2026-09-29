@@ -173,13 +173,13 @@ const (
 	// CatPositionConflict: the change would put one book at two positions in a series,
 	// or two books at one.
 	CatPositionConflict Category = "series-position-conflict"
-	// CatTranslationLink: re-pointing translation_of onto the survivor would leave it
-	// both a translation and the original of one (a two-hop chain), which no mechanical
-	// rule can settle.
+	// CatTranslationLink: the merge would leave a translation_of link breaking one of
+	// pkg/check's link rules (check.LinkFaults) - a two-hop chain, or a translation in
+	// its original's language - which no mechanical rule can settle.
 	CatTranslationLink Category = "translation-link-conflict"
-	// CatOrderingLink: re-pointing ordering_of onto the survivor would make a chain,
-	// promote or move a variant ordering out of its family, or put two series of one
-	// ordering in one family.
+	// CatOrderingLink: the merge would promote or move a variant ordering out of its
+	// family, or leave an ordering link breaking one of pkg/check's link rules - a
+	// second hop, or two series of one ordering in one family.
 	CatOrderingLink Category = "ordering-link-conflict"
 	// CatRecordingKey: a colliding recording key had no free numbered variant.
 	CatRecordingKey Category = "recording-key-exhausted"
@@ -446,11 +446,6 @@ func (rn *runner) planOne(c candidate) {
 		// silent, because a new op added to that map and not to this switch would
 		// otherwise be a proposal counted as applied and never carried out.
 		err = refusef(CatMalformed, "op %q has no planner", p.Op)
-	}
-	if err == nil {
-		// The one rule a proposal can break at a distance: a language moved under a
-		// translation link. Judged over the whole staged change, whatever the op.
-		err = t.judgeLinkLanguages()
 	}
 	if err == nil {
 		if cerr := t.commit(c.key()); cerr != nil {

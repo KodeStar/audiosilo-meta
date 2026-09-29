@@ -19,16 +19,6 @@ import (
 // link is left naming a retired slug, every value the merge could not keep is named,
 // and the shapes no mechanical rule can settle are refused under their own category.
 
-// withTranslationOf sets a work's translation_of set.
-func withTranslationOf(targets ...string) workOpt {
-	return func(m map[string]any) { m["translation_of"] = targets }
-}
-
-// withWorkLanguage sets a work's language.
-func withWorkLanguage(l string) workOpt {
-	return func(m map[string]any) { m["language"] = l }
-}
-
 // setField sets a member on an already-rendered fixture record.
 func setField(t testing.TB, files map[string]string, address, field string, v any) {
 	t.Helper()
@@ -45,12 +35,8 @@ func setField(t testing.TB, files map[string]string, address, field string, v an
 func translationCluster(t testing.TB) map[string]string {
 	t.Helper()
 	files := hammeredCluster(t)
-	files["works/ma/marteau/work.json"] = workJSON(t, "marteau", "Marteau",
-		withWorkLanguage("fr"), withTranslationOf("hammered-book-3"))
-	files["works/ma/marteau/recordings/nate-narrator-2015.json"] = recJSON(t, "nate-narrator-2015", "marteau")
-	files["works/ge/gehammert/work.json"] = workJSON(t, "gehammert", "Gehämmert",
-		withWorkLanguage("de"), withTranslationOf("hammered", "hammered-book-3"))
-	files["works/ge/gehammert/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "gehammert")
+	addWork(t, files, "marteau", "fr", withTranslationOf("hammered-book-3"))
+	addWork(t, files, "gehammert", "de", withTranslationOf("hammered", "hammered-book-3"))
 	return files
 }
 
@@ -96,8 +82,7 @@ func TestMergeWorksUnionsTheLosersTranslationOf(t *testing.T) {
 	files["works/ha/hammered-book-3/work.json"] = workJSON(t, "hammered-book-3", "Hammered: The Druid Tales, Book 3",
 		withGenres("action-adventure"), withSubtitle("An Iron Druid Adventure"), withTranslationOf("gehammert"))
 	for _, slug := range []string{"gehammert", "zertrummert"} {
-		files["works/"+slug[:2]+"/"+slug+"/work.json"] = workJSON(t, slug, slug, withWorkLanguage("de"))
-		files["works/"+slug[:2]+"/"+slug+"/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", slug)
+		addWork(t, files, slug, "de")
 	}
 	data := seedTree(t, files)
 	rep := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}, Write: true})
@@ -137,7 +122,7 @@ func TestMergeWorksDropsATranslationThatWouldNameItself(t *testing.T) {
 // fixtures that need partners in other languages.
 func addWork(t testing.TB, files map[string]string, slug, lang string, opts ...workOpt) {
 	t.Helper()
-	files["works/"+slug[:2]+"/"+slug+"/work.json"] = workJSON(t, slug, slug, append([]workOpt{withWorkLanguage(lang)}, opts...)...)
+	files["works/"+slug[:2]+"/"+slug+"/work.json"] = workJSON(t, slug, slug, append([]workOpt{withLanguage(lang)}, opts...)...)
 	files["works/"+slug[:2]+"/"+slug+"/recordings/luke-daniels-2020.json"] = recJSON(t, "luke-daniels-2020", slug,
 		withNarrators("luke-daniels"))
 }
@@ -217,9 +202,9 @@ func orderingFamily(t testing.TB) map[string]string {
 	files := seriesPair(t, "hounded@1", "hexed@2")
 	setField(t, files, "series/ir/iron-druid-chronicles.json", "ordering", model.OrderingPublication)
 	setField(t, files, "series/ir/iron-druid-chronicles-2.json", "ordering", model.OrderingPublication)
-	files["series/dr/druid-reading-order.json"] = testpack.WithField(t, testpack.WithField(t,
+	files["series/dr/druid-reading-order.json"] = testpack.WithFields(t,
 		seriesJSON(t, "druid-reading-order", "Druid Reading Order", "hexed@1", "hounded@2"),
-		"ordering", model.OrderingChronological), "ordering_of", "iron-druid-chronicles-2")
+		map[string]any{"ordering": model.OrderingChronological, "ordering_of": "iron-druid-chronicles-2"})
 	return files
 }
 
@@ -361,9 +346,9 @@ func TestMergeSeriesRefusesMovingAVariantOutOfItsFamily(t *testing.T) {
 // holding two series in one order - a duplicate to fold by hand, not a view.
 func TestMergeSeriesRefusesTwoVariantsOfOneOrderingInAFamily(t *testing.T) {
 	files := orderingFamily(t)
-	files["series/dr/druid-timeline.json"] = testpack.WithField(t, testpack.WithField(t,
+	files["series/dr/druid-timeline.json"] = testpack.WithFields(t,
 		seriesJSON(t, "druid-timeline", "Druid Timeline", "hounded@1"),
-		"ordering", model.OrderingChronological), "ordering_of", druidTarget)
+		map[string]any{"ordering": model.OrderingChronological, "ordering_of": druidTarget})
 	rn, tx := planFixture(t, seedTree(t, files))
 	err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
 	assertRefusal(t, err, CatOrderingLink, "would both state the chronological ordering")
@@ -454,10 +439,8 @@ func TestAMergeOverATreeWithoutLinksIsUnchanged(t *testing.T) {
 func languageFold(t testing.TB, loserMembers ...string) map[string]string {
 	t.Helper()
 	files := seriesPair(t, "hounded@1", "hexed@2")
-	for i, slug := range []string{"gehetzt", "verhext", "entfesselt"} {
-		files["works/"+slug[:2]+"/"+slug+"/work.json"] = workJSON(t, slug, slug, withWorkLanguage("de"))
-		rec := "nate-narrator-201" + string(rune('5'+i))
-		files["works/"+slug[:2]+"/"+slug+"/recordings/"+rec+".json"] = recJSON(t, rec, slug, withNarrators("luke-daniels"))
+	for _, slug := range []string{"gehetzt", "verhext", "entfesselt"} {
+		addWork(t, files, slug, "de")
 	}
 	files["series/dr/druiden-chroniken.json"] = seriesJSON(t, "druiden-chroniken", "Die Chroniken des Eisernen Druiden",
 		"gehetzt@1", "verhext@2", "entfesselt@3")
@@ -468,11 +451,12 @@ func languageFold(t testing.TB, loserMembers ...string) map[string]string {
 	return files
 }
 
-// planAndApply plans one proposal through planOne - the path that judges the staged
-// change before it commits - and then runs the write phase, returning the tree's
-// bytes before and after. The audit's own language veto keeps these folds out of a
-// real run's proposals, which is why the proposal is planned directly: the rule
-// under test is the plan-time backstop behind that veto.
+// planAndApply plans one proposal through planOne - the path a real run takes, whose
+// merge planners hold the staged change to pkg/check's link rules before it commits -
+// and then runs the write phase, returning the tree's bytes before and after. The
+// audit's own language veto keeps these folds out of a real run's proposals, which is
+// why the proposal is planned directly: the rule under test is the plan-time backstop
+// behind that veto.
 func planAndApply(t *testing.T, data string, fd audit.Finding, class string) (*runner, map[string]string, map[string]string) {
 	t.Helper()
 	rn, _ := planFixture(t, data)
@@ -488,21 +472,24 @@ func planAndApply(t *testing.T, data string, fd audit.Finding, class string) (*r
 }
 
 // A fold that flips the survivor's majority onto its original's language (English
-// 2 / German 1 becomes English 2 / German 3) would leave a translation in the
-// language of its original: refused at plan time, and nothing is written.
-func TestMergeSeriesRefusesAFoldThatFlipsATranslationsLanguage(t *testing.T) {
+// 2 / German 1 becomes English 2 / German 3) leaves a SERIES translation whose two
+// sides derive one language - which pkg/check reports as an ADVISORY (a misfiled
+// member, not a false link; DESIGN section 11), so the merge is applied and the
+// advisory is what the post-write load carries.
+func TestMergeSeriesAppliesAFoldThatFlipsATranslationsDerivedLanguage(t *testing.T) {
 	data := seedTree(t, languageFold(t, "verhext@4", "entfesselt@5"))
-	rn, before, after := planAndApply(t, data, seriesFinding(druidTarget, druidLoser), audit.ClassSeriesDup)
-	if len(rn.rep.Applied) != 0 || len(rn.rep.Refused) != 1 {
-		t.Fatalf("applied %+v, refused %+v; want one refusal", rn.rep.Applied, rn.rep.Refused)
+	rn, _, _ := planAndApply(t, data, seriesFinding(druidTarget, druidLoser), audit.ClassSeriesDup)
+	if len(rn.rep.Applied) != 1 || len(rn.rep.Refused) != 0 {
+		t.Fatalf("applied %+v, refused %+v; want the fold applied", rn.rep.Applied, rn.rep.Refused)
 	}
-	ref := rn.rep.Refused[0]
-	want := `series ` + druidTarget + ` would be in "de", the same language as series druiden-chroniken`
-	if ref.Category != CatTranslationLink || !strings.Contains(ref.Reason, want) {
-		t.Errorf("refusal = %s: %s; want %s mentioning %q", ref.Category, ref.Reason, CatTranslationLink, want)
+	res := check.Load(data)
+	if len(res.Problems) != 0 {
+		t.Fatalf("the applied fold left problems: %v", res.Problems)
 	}
-	if !equalTrees(before, after) {
-		t.Error("a refused proposal changed the tree")
+	if !slices.ContainsFunc(res.Warnings, func(w check.Problem) bool {
+		return check.AdvisoryClass(w) == check.AdvisorySeriesTranslationSameLanguage
+	}) {
+		t.Errorf("the flipped series link is not advised on: %v", res.Warnings)
 	}
 }
 
@@ -528,8 +515,7 @@ func TestMergeWorksRefusesATranslationInItsOriginalsLanguage(t *testing.T) {
 	files := hammeredCluster(t)
 	setField(t, files, "works/ha/hammered/work.json", "language", "de")
 	setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"zorn"})
-	files["works/zo/zorn/work.json"] = workJSON(t, "zorn", "Zorn", withWorkLanguage("de"))
-	files["works/zo/zorn/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "zorn")
+	addWork(t, files, "zorn", "de")
 	data := seedTree(t, files)
 	rn, before, after := planAndApply(t, data, mergeFinding("hammered", "hammered-book-3"), audit.ClassWorkDup)
 	if len(rn.rep.Refused) != 1 || rn.rep.Refused[0].Category != CatTranslationLink ||

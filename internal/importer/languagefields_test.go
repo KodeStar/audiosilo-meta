@@ -30,19 +30,11 @@ var langLinkMembers = []string{"translation_of", "ordering", "ordering_of"}
 //   - cycle-atlas, a translation_of atlas-cycle holding the French work.
 func langFieldTree(t *testing.T) string {
 	t.Helper()
-	work := func(id, title, lang string, extra map[string]any) string {
-		doc := testpack.WorkJSON(t, id, title, testpack.WithAuthors("ada-mapmaker"), testpack.WithLanguage(lang))
-		for k, v := range extra {
-			doc = testpack.WithField(t, doc, k, v)
-		}
-		return doc
+	work := func(id, title, lang string, opts ...testpack.WorkOpt) string {
+		return testpack.WorkJSON(t, id, title, append(opts, testpack.WithAuthors("ada-mapmaker"), testpack.WithLanguage(lang))...)
 	}
 	series := func(id, name string, extra map[string]any, members ...string) string {
-		doc := testpack.SeriesJSON(t, id, name, members...)
-		for k, v := range extra {
-			doc = testpack.WithField(t, doc, k, v)
-		}
-		return doc
+		return testpack.WithFields(t, testpack.SeriesJSON(t, id, name, members...), extra)
 	}
 	rec := func(work, asin, lang string, opts ...testpack.RecOpt) string {
 		opts = append([]testpack.RecOpt{testpack.WithNarrators("bea-reader"), testpack.WithASIN(asin), testpack.WithRuntime(600)}, opts...)
@@ -51,11 +43,11 @@ func langFieldTree(t *testing.T) string {
 	files := map[string]string{
 		"people/ad/ada-mapmaker.json":                 testpack.PersonJSON(t, "ada-mapmaker", "Ada Mapmaker"),
 		"people/be/bea-reader.json":                   testpack.PersonJSON(t, "bea-reader", "Bea Reader"),
-		workAddr("the-lost-coast"):                    work("the-lost-coast", "The Lost Coast", "en", nil),
+		workAddr("the-lost-coast"):                    work("the-lost-coast", "The Lost Coast", "en"),
 		recAddr("the-lost-coast", "r1"):               rec("the-lost-coast", "B0LANGEN01", "en"),
-		workAddr("the-far-shore"):                     work("the-far-shore", "The Far Shore", "en", nil),
+		workAddr("the-far-shore"):                     work("the-far-shore", "The Far Shore", "en"),
 		recAddr("the-far-shore", "r1"):                rec("the-far-shore", "B0LANGEN02", "en"),
-		workAddr("la-cote-perdue"):                    work("la-cote-perdue", "La Côte Perdue", "fr", map[string]any{"translation_of": []string{"the-lost-coast"}}),
+		workAddr("la-cote-perdue"):                    work("la-cote-perdue", "La Côte Perdue", "fr", testpack.WithTranslationOf("the-lost-coast")),
 		recAddr("la-cote-perdue", "r1"):               rec("la-cote-perdue", "B0LANGFR01", "fr", testpack.WithoutPublisher()),
 		seriesAddr("atlas-cycle"):                     series("atlas-cycle", "Atlas Cycle", map[string]any{"ordering": "publication"}, "the-lost-coast@1", "the-far-shore@2"),
 		seriesAddr("atlas-cycle-chronological-order"): series("atlas-cycle-chronological-order", "Atlas Cycle Chronological Order", map[string]any{"ordering": "chronological", "ordering_of": "atlas-cycle"}, "the-lost-coast@1"),

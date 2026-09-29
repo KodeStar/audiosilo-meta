@@ -65,6 +65,13 @@ func WithWorkXref(isbns ...string) WorkOpt {
 	return func(m map[string]any) { m["xref"] = map[string]any{"isbn": isbns} }
 }
 
+// WithTranslationOf sets the work's translation_of set - the originals it
+// translates. pkg/check requires the set sorted ascending, so a fixture meant to
+// validate passes them in order.
+func WithTranslationOf(originals ...string) WorkOpt {
+	return func(m map[string]any) { m["translation_of"] = originals }
+}
+
 // WithAddedAt overwrites the added_at stamp, so a fixture can carry the RFC 3339
 // spelling the storage migration's backfill wrote beside the plain date.
 func WithAddedAt(v string) WorkOpt {
@@ -266,6 +273,22 @@ func WithField(t testing.TB, record, field string, value any) string {
 	t.Helper()
 	m := decodeRecord(t, record)
 	m[field] = value
+	return mustJSON(t, m)
+}
+
+// WithFields is WithField for several members at once - the injector a fixture
+// uses to state fields no renderer here takes an option for (a series'
+// translation_of, ordering and ordering_of among them). A nil or empty map
+// returns the record unchanged.
+func WithFields(t testing.TB, record string, fields map[string]any) string {
+	t.Helper()
+	if len(fields) == 0 {
+		return record
+	}
+	m := decodeRecord(t, record)
+	for k, v := range fields {
+		m[k] = v
+	}
 	return mustJSON(t, m)
 }
 

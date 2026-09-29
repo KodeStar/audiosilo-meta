@@ -181,6 +181,10 @@ type composer struct {
 	// A profile carrying no tombstone table leaves it empty, and the artifact
 	// carries the answer there instead.
 	redirects model.Redirects
+	// links is the catalogue as pkg/check's link rules read it (check.NewLinkView),
+	// built on the first link judgement (compose_links.go), since most corrections
+	// never make one.
+	links check.LinkView
 	// retiredNoted is the set of retired slugs noteRetired has already reported, so
 	// a person the form names twice (an author who also narrates) is noted once.
 	retiredNoted map[string]bool

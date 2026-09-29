@@ -329,11 +329,9 @@ func checkGenresSorted(cat *model.Catalog, idx *pathIndex, add addFunc) {
 			continue
 		}
 		rel := idx.work[w]
-		for i := 1; i < len(w.Genres); i++ {
-			if w.Genres[i] < w.Genres[i-1] {
-				add(rel, "genres must be sorted: %q comes after %q", w.Genres[i], w.Genres[i-1])
-			}
-		}
+		forEachUnsorted(w.Genres, func(cur, prev string) {
+			add(rel, "genres must be sorted: %q comes after %q", cur, prev)
+		})
 	}
 }
 

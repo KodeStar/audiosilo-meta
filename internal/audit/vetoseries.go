@@ -488,20 +488,17 @@ func statedLanguages(s seriesSide) []string {
 // what must not be folded: the second list IS the fact. A fold would keep one ordering's
 // positions and discard the other's.
 //
-// It is stated evidence, not a measurement, so it reads the fields and nothing else; the
-// first pair in cluster order is named, which keeps the reason deterministic. No record
-// carried ordering_of when it landed, so it moved nothing on the tree that day.
+// It is stated evidence, not a measurement, so it reads the fields and nothing else
+// (model.Series.OrderingPrimary); the first pair in cluster order is named, which keeps
+// the reason deterministic. No record carried ordering_of when it landed, so it moved
+// nothing on the tree that day.
 func vetoSeriesOrderingFamily(group []seriesKeys) (string, bool) {
 	for i := range group {
 		for j := i + 1; j < len(group); j++ {
 			a, b := group[i].series, group[j].series
-			switch {
-			case a.OrderingOf == b.ID, b.OrderingOf == a.ID:
-				return fmt.Sprintf("%s and %s are two orderings of one franchise (ordering_of): "+
-					"a second reading order is a view to keep, not a spelling to fold", a.ID, b.ID), true
-			case a.OrderingOf != "" && a.OrderingOf == b.OrderingOf:
-				return fmt.Sprintf("%s and %s are both orderings of %s (ordering_of): "+
-					"a second reading order is a view to keep, not a spelling to fold", a.ID, b.ID, a.OrderingOf), true
+			if p := a.OrderingPrimary(); p == b.OrderingPrimary() {
+				return fmt.Sprintf("%s and %s are two orderings of the franchise whose primary is %s (ordering_of): "+
+					"a second reading order is a view to keep, not a spelling to fold", a.ID, b.ID, p), true
 			}
 		}
 	}

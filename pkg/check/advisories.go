@@ -508,7 +508,14 @@ const (
 	// primary ordering does not (languages.go) - legitimate for a chronological
 	// order holding a prequel novella, so never a failure.
 	AdvisoryOrderingNotSubset = "ordering-variant-not-subset"
-	AdvisoryUnclassified      = "unclassified"
+	// AdvisorySeriesTranslationSameLanguage is a series translation_of whose two
+	// sides DERIVE one primary language from their members (languages.go). The
+	// link is still a true statement - the defect is a misfiled member, which the
+	// audit's minority-language class is about - and a sync-bot volume must never
+	// turn red a link it did not write, so it is advisory where the work-level
+	// rule (a stated language on both sides) is a problem.
+	AdvisorySeriesTranslationSameLanguage = "series-translation-same-language"
+	AdvisoryUnclassified                  = "unclassified"
 )
 
 // advisoryMarkers maps each class to the marker its rule's message carries. It is
@@ -546,6 +553,9 @@ var advisoryMarkers = []struct {
 	// The series ordering variants (languages.go). Appended, like every class
 	// since the first: the census line is read by column position.
 	{AdvisoryOrderingNotSubset, orderingNotSubset, "ordering variants listing works their primary does not"},
+	// The series translation links whose sides derive one language (languages.go).
+	// Appended for the same reason.
+	{AdvisorySeriesTranslationSameLanguage, seriesSameLanguage, "series translation links whose two sides derive the same language"},
 }
 
 // AdvisoryClass names the advisory class a warning belongs to, or

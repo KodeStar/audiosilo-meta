@@ -370,15 +370,11 @@ func (ix *index) seriesRef(s *model.Series) SeriesRef {
 }
 
 // seriesLanguage is a series' majority member language, or "" when its members
-// do not agree on one strictly (a 1-1 split has no majority). The rule is
-// model.SeriesLanguage, the one definition pkg/check and internal/build share.
+// do not agree on one strictly (a 1-1 split has no majority): model.SeriesLanguage,
+// the one definition pkg/check's link rules, internal/repair and internal/issueform
+// share.
 func (ix *index) seriesLanguage(s *model.Series) string {
-	return model.SeriesLanguage(s, func(id string) string {
-		if w := ix.workByID[id]; w != nil {
-			return w.Language
-		}
-		return ""
-	})
+	return model.SeriesLanguageOf(s.Works, ix.workByID)
 }
 
 // languagesCompatible mirrors pkg/check's rule of the same name (and the
