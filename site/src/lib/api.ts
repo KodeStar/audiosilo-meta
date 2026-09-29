@@ -64,19 +64,11 @@ export interface Stats {
   built_at: string
 }
 
+/** A work hit COMPOSES the card rather than restating it (the server's
+    workResult embeds workCard the same way), so a field the card gains reaches
+    the search type too. */
 export type SearchResult =
-  | {
-      kind: 'work'
-      id: string
-      title: string
-      authors: PersonRef[]
-      /** See WorkCard.language - a work hit carries every card field. */
-      language?: string
-      series?: SeriesRef | null
-      release_date?: string
-      cover_url?: string | null
-      narrators?: PersonRef[]
-    }
+  | ({ kind: 'work' } & WorkCard & { narrators: PersonRef[] })
   | { kind: 'person'; id: string; name: string }
   | { kind: 'series'; id: string; name: string; works: number }
 

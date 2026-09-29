@@ -1,7 +1,6 @@
 package serve
 
 import (
-	"encoding/json"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -238,15 +237,9 @@ func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
 		"/api/v1/people/michael-kramer",
 		"/api/v1/lookup?asin=B0FRENCH01",
 	} {
-		resp, err := http.Get(ts.URL + path)
-		if err != nil {
-			t.Fatal(err)
-		}
-		var body any
-		err = json.NewDecoder(resp.Body).Decode(&body)
-		_ = resp.Body.Close()
-		if err != nil || resp.StatusCode != http.StatusOK {
-			t.Fatalf("GET %s: status %d, decode error %v", path, resp.StatusCode, err)
+		code, body := getJSON(t, ts.URL, path)
+		if code != http.StatusOK {
+			t.Fatalf("GET %s: status %d", path, code)
 		}
 		// Every card-shaped object on the page: an id, a title and an authors
 		// list. A work detail would match too, and carries the field as well.

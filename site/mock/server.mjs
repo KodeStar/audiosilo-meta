@@ -283,16 +283,9 @@ const server = createServer((req, res) => {
         w.authors.some((a) => a.name.toLowerCase().includes(q)) ||
         w.recordings.some((r) => r.narrators.some((n) => n.name.toLowerCase().includes(q)))
       ) {
-        results.push({
-          kind: 'work',
-          id: w.id,
-          title: w.title,
-          authors: w.authors,
-          language: w.language,
-          series: w.series && w.series[0] ? w.series[0] : null,
-          cover_url: (w.recordings.find((r) => r.cover_url) || {}).cover_url ?? null,
-          narrators: w.recordings[0]?.narrators ?? [],
-        })
+        // A work hit is the card plus kind and narrators, as on the real wire
+        // (cardOf already carries the narrators).
+        results.push({ kind: 'work', ...cardOf(w.id) })
       }
     }
     return send(res, 200, { results: results.slice(0, Number(url.searchParams.get('limit') || 20)) })
