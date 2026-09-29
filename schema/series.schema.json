@@ -6,6 +6,9 @@
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "name", "works", "license", "sources"],
+  "dependentRequired": {
+    "ordering_of": ["ordering"]
+  },
   "properties": {
     "id": {
       "$ref": "common.schema.json#/$defs/slug"
@@ -40,6 +43,18 @@
           }
         }
       }
+    },
+    "translation_of": {
+      "description": "A directed link from a TRANSLATED series to the series it translates (the original). A series-level claim, independent of any work-level pairing. Stated evidence only, never inferred.",
+      "$ref": "common.schema.json#/$defs/slug_set"
+    },
+    "ordering": {
+      "description": "Which reading order THIS series' positions state.",
+      "$ref": "common.schema.json#/$defs/series_ordering"
+    },
+    "ordering_of": {
+      "description": "The franchise's PRIMARY ordering, set only on a variant ordering of it. A variant must say what kind of order it is, so ordering is required beside it.",
+      "$ref": "common.schema.json#/$defs/slug"
     },
     "xref": {
       "type": "object",

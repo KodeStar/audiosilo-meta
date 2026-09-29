@@ -8,6 +8,20 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "maxLength": 100
     },
+    "slug_set": {
+      "description": "A set of slugs: at least one, no duplicates. pkg/check additionally requires ascending order, so one set has exactly one byte-form (as for genres).",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "common.schema.json#/$defs/slug"
+      }
+    },
+    "series_ordering": {
+      "description": "Which reading order a series' positions state. An author's preferred order and a recommended listening order are both recommended; the series NAME keeps the exact wording.",
+      "type": "string",
+      "enum": ["publication", "chronological", "recommended"]
+    },
     "license": {
       "type": "string",
       "enum": ["CC0-1.0"]

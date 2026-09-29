@@ -44,6 +44,10 @@
       "description": "The work's genres, drawn from this project's own normalized vocabulary (never a retailer's taxonomy). Optional: omit it rather than guess.",
       "$ref": "common.schema.json#/$defs/genre_list"
     },
+    "translation_of": {
+      "description": "A directed link from a TRANSLATION to the work or works it translates (the original). Stated evidence only, never inferred. An array so a translated omnibus of two originals is expressible; almost always one element.",
+      "$ref": "common.schema.json#/$defs/slug_set"
+    },
     "xref": {
       "type": "object",
       "additionalProperties": false,

@@ -120,16 +120,20 @@ type WorkXref struct {
 
 // Work is the abstract book.
 type Work struct {
-	ID             string    `json:"id"`
-	Title          string    `json:"title"`
-	Subtitle       string    `json:"subtitle,omitempty"`
-	Authors        []string  `json:"authors"`
-	Credits        []Credit  `json:"credits,omitempty"`
-	Language       string    `json:"language"`
-	FirstPublished string    `json:"first_published,omitempty"`
-	Description    string    `json:"description,omitempty"`
-	Genres         []string  `json:"genres,omitempty"`
-	Xref           *WorkXref `json:"xref,omitempty"`
+	ID             string   `json:"id"`
+	Title          string   `json:"title"`
+	Subtitle       string   `json:"subtitle,omitempty"`
+	Authors        []string `json:"authors"`
+	Credits        []Credit `json:"credits,omitempty"`
+	Language       string   `json:"language"`
+	FirstPublished string   `json:"first_published,omitempty"`
+	Description    string   `json:"description,omitempty"`
+	Genres         []string `json:"genres,omitempty"`
+	// TranslationOf links a TRANSLATION to the work(s) it translates, as a set
+	// of work slugs. Stated evidence only, never inferred; almost always one
+	// element (an array so a translated omnibus of two originals fits).
+	TranslationOf []string  `json:"translation_of,omitempty"`
+	Xref          *WorkXref `json:"xref,omitempty"`
 	// AddedAt is when the work entered the database, stamped at creation
 	// rather than derived from git history, which pack files cannot support
 	// (a pack's add-date is not its entries'). It is a plain YYYY-MM-DD date
@@ -299,9 +303,39 @@ type Series struct {
 	Name    string       `json:"name"`
 	Authors []string     `json:"authors,omitempty"`
 	Works   []SeriesWork `json:"works"`
-	Xref    *SeriesXref  `json:"xref,omitempty"`
-	License string       `json:"license"`
-	Sources []Source     `json:"sources"`
+	// TranslationOf links a TRANSLATED series to the series it translates, as
+	// a set of series slugs - a series-level claim, independent of any
+	// work-level pairing.
+	TranslationOf []string `json:"translation_of,omitempty"`
+	// Ordering is which reading order THIS series' positions state (one of
+	// SeriesOrderings). Empty means unstated.
+	Ordering string `json:"ordering,omitempty"`
+	// OrderingOf names the franchise's PRIMARY ordering, set only on a variant
+	// ordering of it. The schema requires Ordering beside it.
+	OrderingOf string      `json:"ordering_of,omitempty"`
+	Xref       *SeriesXref `json:"xref,omitempty"`
+	License    string      `json:"license"`
+	Sources    []Source    `json:"sources"`
+}
+
+// Series orderings: the controlled vocabulary of
+// schema/common.schema.json #/$defs/series_ordering. An author's preferred
+// order and a recommended listening order are both OrderingRecommended; the
+// series NAME keeps the exact wording.
+//
+// TestSeriesOrderingsCoverSchemaEnum pins these against the schema.
+const (
+	OrderingPublication   = "publication"
+	OrderingChronological = "chronological"
+	OrderingRecommended   = "recommended"
+)
+
+// SeriesOrderings is the series.ordering vocabulary, in the schema enum's own
+// order. Like PersonKinds it is the ONE list every consumer reads, so an
+// ordering added to the enum cannot be accepted in one door and rejected in
+// another.
+func SeriesOrderings() []string {
+	return []string{OrderingPublication, OrderingChronological, OrderingRecommended}
 }
 
 // Position is a spoiler position within a work's own timeline. Chapter is the
