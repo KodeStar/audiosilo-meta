@@ -6642,6 +6642,12 @@
       "authors": [
         "scientific-american"
       ],
+      "genres": [
+        "health-wellness",
+        "politics",
+        "psychology",
+        "social-sciences"
+      ],
       "id": "return-to-reason",
       "language": "en",
       "license": "CC0-1.0",
@@ -6655,6 +6661,134 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 19590,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 289212,
+              "start_ms": 19590,
+              "title": "Introduction \"Why Do Facts Fail?\" by Lisa Pallatroni"
+            },
+            {
+              "length_ms": 7391,
+              "start_ms": 308802,
+              "title": "Section 1: Thinking About Thinking"
+            },
+            {
+              "length_ms": 1926831,
+              "start_ms": 316193,
+              "title": "\"The Myth of Self-Knowledge: 10 Things You Don’t Know About Yourself\" by Steve Ayan"
+            },
+            {
+              "length_ms": 1385302,
+              "start_ms": 2243024,
+              "title": "\"Rational and Irrational Thought: The Thinking That IQ Tests Miss\" by Keith E. Stanovich"
+            },
+            {
+              "length_ms": 321201,
+              "start_ms": 3628326,
+              "title": "\"Why Do Smart People Do Foolish Things?\" by Heather A. Butler"
+            },
+            {
+              "length_ms": 929912,
+              "start_ms": 3949527,
+              "title": "\"The Roots of Science Denial\" by Katharine Hayhoe and Jen Schwartz"
+            },
+            {
+              "length_ms": 472247,
+              "start_ms": 4879439,
+              "title": "\"Why People 'Fly from Facts'\" by Troy Campbell and Justin Friesen"
+            },
+            {
+              "length_ms": 6666,
+              "start_ms": 5351686,
+              "title": "Section 2: Brain Biases"
+            },
+            {
+              "length_ms": 945955,
+              "start_ms": 5358352,
+              "title": "\"Why Good Thoughts Block Better Ones\" by Merim Bilalić and Peter McLeod"
+            },
+            {
+              "length_ms": 428292,
+              "start_ms": 6304307,
+              "title": "\"How to Think About 'Implicit Bias'\" by Keith Payne, Laura Niemi, and John M. Doris"
+            },
+            {
+              "length_ms": 215806,
+              "start_ms": 6732599,
+              "title": "\"What Is Cognitive Dissonance?\" by Keise Izuma"
+            },
+            {
+              "length_ms": 311495,
+              "start_ms": 6948405,
+              "title": "\"The Believing Brain\" by Michael Shermer"
+            },
+            {
+              "length_ms": 533455,
+              "start_ms": 7259900,
+              "title": "\"The Certainty Bias: A Potentially Dangerous Mental Flaw\" by Robert Burton and Jonah Lehrer"
+            },
+            {
+              "length_ms": 6666,
+              "start_ms": 7793355,
+              "title": "Section 3: Reinforcing Disbelief"
+            },
+            {
+              "length_ms": 785389,
+              "start_ms": 7800021,
+              "title": "\"Inside the Echo Chamber\" by Walter Quattrociocchi"
+            },
+            {
+              "length_ms": 382664,
+              "start_ms": 8585410,
+              "title": "\"Factiness\" by Michael Shermer"
+            },
+            {
+              "length_ms": 639686,
+              "start_ms": 8968074,
+              "title": "\"Cognitive Ability and Vulnerability to Fake News\" by David Z. Hambrick and Madeline Marquardt"
+            },
+            {
+              "length_ms": 7666,
+              "start_ms": 9607760,
+              "title": "Section 4: Solutions: Bridging the Gap"
+            },
+            {
+              "length_ms": 482832,
+              "start_ms": 9615426,
+              "title": "\"How to Talk to a Science Denier Without Arguing\" by Gleb Tsipursky"
+            },
+            {
+              "length_ms": 536822,
+              "start_ms": 10098258,
+              "title": "\"Message Control\" by Brooke Borel"
+            },
+            {
+              "length_ms": 459430,
+              "start_ms": 10635080,
+              "title": "\"How to Overcome Unconscious Bias\" by Jordan Axt"
+            },
+            {
+              "length_ms": 469321,
+              "start_ms": 11094510,
+              "title": "\"Understanding the Influential Mind\" by Tali Sharot and Gareth Cook"
+            },
+            {
+              "length_ms": 600666,
+              "start_ms": 11563831,
+              "title": "\"How to Combat Distrust of Science\" by Sander van der Linden and Stephan Lewandowsky"
+            },
+            {
+              "length_ms": 89848,
+              "start_ms": 12164497,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ut9GQtmgL.jpg",
           "id": "janet-metzger-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -6669,6 +6803,10 @@
               "imported_at": "2026-09-24",
               "ref": "1094076589",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1094076589",
+              "type": "libex-import"
             }
           ],
           "work": "return-to-reason"
@@ -6679,6 +6817,10 @@
           "imported_at": "2026-09-24",
           "ref": "1094076589",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1094076589",
+          "type": "libex-import"
         }
       ],
       "title": "Return to Reason"

@@ -11530,6 +11530,13 @@
       "authors": [
         "caroline-williams"
       ],
+      "genres": [
+        "health-wellness",
+        "medicine",
+        "parenting-relationships",
+        "science",
+        "self-help"
+      ],
       "id": "move-caroline-williams",
       "language": "en",
       "license": "CC0-1.0",
@@ -11543,6 +11550,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 19411,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 903349,
+              "start_ms": 19411,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 1613879,
+              "start_ms": 922760,
+              "title": "1. Why We Move"
+            },
+            {
+              "length_ms": 2558862,
+              "start_ms": 2536639,
+              "title": "2. The Joy of Steps"
+            },
+            {
+              "length_ms": 2564411,
+              "start_ms": 5095501,
+              "title": "3. Fighting Fit"
+            },
+            {
+              "length_ms": 2926921,
+              "start_ms": 7659912,
+              "title": "4. Slave to the Rhythm"
+            },
+            {
+              "length_ms": 2215322,
+              "start_ms": 10586833,
+              "title": "5. Core Benefits"
+            },
+            {
+              "length_ms": 2398783,
+              "start_ms": 12802155,
+              "title": "6. Stretch"
+            },
+            {
+              "length_ms": 2541911,
+              "start_ms": 15200938,
+              "title": "7. Breathless"
+            },
+            {
+              "length_ms": 650089,
+              "start_ms": 17742849,
+              "title": "8. And … Stop"
+            },
+            {
+              "length_ms": 1073899,
+              "start_ms": 18392938,
+              "title": "Summary: Move, Think, Feel"
+            },
+            {
+              "length_ms": 798116,
+              "start_ms": 19466837,
+              "title": "And Finally: A Movement Manifesto"
+            },
+            {
+              "length_ms": 39542,
+              "start_ms": 20264953,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71o5JF3FC1L.jpg",
           "id": "catrin-walker-booth-2022",
           "language": "en",
           "license": "CC0-1.0",
@@ -11557,6 +11632,10 @@
               "imported_at": "2026-09-24",
               "ref": "148821137X",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "148821137X",
+              "type": "libex-import"
             }
           ],
           "work": "move-caroline-williams"
@@ -11567,6 +11646,10 @@
           "imported_at": "2026-09-24",
           "ref": "148821137X",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "148821137X",
+          "type": "libex-import"
         }
       ],
       "title": "Move"

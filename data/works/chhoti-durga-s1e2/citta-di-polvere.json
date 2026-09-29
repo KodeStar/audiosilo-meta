@@ -9463,6 +9463,13 @@
       "authors": [
         "mirah-bolender"
       ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "military-science-fiction",
+        "science-fiction"
+      ],
       "id": "city-of-broken-magic",
       "language": "en",
       "license": "CC0-1.0",
@@ -9476,6 +9483,154 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 355868,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2246066,
+              "start_ms": 355868,
+              "title": "1. August 1233"
+            },
+            {
+              "length_ms": 2870125,
+              "start_ms": 2601934,
+              "title": "2. The Two-Monther"
+            },
+            {
+              "length_ms": 2430989,
+              "start_ms": 5472059,
+              "title": "3. (This Job Is) The Pits"
+            },
+            {
+              "length_ms": 2309224,
+              "start_ms": 7903048,
+              "title": "4. Silver-Coin Eyes"
+            },
+            {
+              "length_ms": 2518064,
+              "start_ms": 10212272,
+              "title": "5. What Do You Hate?"
+            },
+            {
+              "length_ms": 1480922,
+              "start_ms": 12730336,
+              "title": "6. Silver Is Not Gold"
+            },
+            {
+              "length_ms": 1386509,
+              "start_ms": 14211258,
+              "title": "7. Roots"
+            },
+            {
+              "length_ms": 2594737,
+              "start_ms": 15597767,
+              "title": "8. Stormy Sweeper"
+            },
+            {
+              "length_ms": 1806883,
+              "start_ms": 18192504,
+              "title": "9. Yesteryear"
+            },
+            {
+              "length_ms": 1773958,
+              "start_ms": 19999387,
+              "title": "10. Numberface"
+            },
+            {
+              "length_ms": 1950476,
+              "start_ms": 21773345,
+              "title": "11. Hitting the Grit"
+            },
+            {
+              "length_ms": 1735459,
+              "start_ms": 23723821,
+              "title": "12. Kaibutsu"
+            },
+            {
+              "length_ms": 1866141,
+              "start_ms": 25459280,
+              "title": "13. Two for One"
+            },
+            {
+              "length_ms": 1495225,
+              "start_ms": 27325421,
+              "title": "14. Castoffs"
+            },
+            {
+              "length_ms": 2444271,
+              "start_ms": 28820646,
+              "title": "15. Gods in the Rabble"
+            },
+            {
+              "length_ms": 1533492,
+              "start_ms": 31264917,
+              "title": "16. Falling Feet-First"
+            },
+            {
+              "length_ms": 1000594,
+              "start_ms": 32798409,
+              "title": "17. The Gin Cycle"
+            },
+            {
+              "length_ms": 1371045,
+              "start_ms": 33799003,
+              "title": "18. Airedale"
+            },
+            {
+              "length_ms": 959494,
+              "start_ms": 35170048,
+              "title": "19. Derailing"
+            },
+            {
+              "length_ms": 1493507,
+              "start_ms": 36129542,
+              "title": "20. Bone Polisher"
+            },
+            {
+              "length_ms": 1624189,
+              "start_ms": 37623049,
+              "title": "21. Gossipmongers"
+            },
+            {
+              "length_ms": 1700675,
+              "start_ms": 39247238,
+              "title": "22. The Family Business"
+            },
+            {
+              "length_ms": 2129409,
+              "start_ms": 40947913,
+              "title": "23. Sickness in the Earth"
+            },
+            {
+              "length_ms": 1548353,
+              "start_ms": 43077322,
+              "title": "24. Anselm"
+            },
+            {
+              "length_ms": 2423791,
+              "start_ms": 44625675,
+              "title": "25. A Light in the Dark"
+            },
+            {
+              "length_ms": 2013077,
+              "start_ms": 47049466,
+              "title": "26. Thunder Underground"
+            },
+            {
+              "length_ms": 1455827,
+              "start_ms": 49062543,
+              "title": "27. In the Wake"
+            },
+            {
+              "length_ms": 58346,
+              "start_ms": 50518370,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91v4q2o0INL.jpg",
           "id": "natalie-naudus-2018",
           "language": "en",
           "license": "CC0-1.0",
@@ -9490,6 +9645,10 @@
               "imported_at": "2026-09-24",
               "ref": "1250313139",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1250313139",
+              "type": "libex-import"
             }
           ],
           "work": "city-of-broken-magic"
@@ -9500,6 +9659,10 @@
           "imported_at": "2026-09-24",
           "ref": "1250313139",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1250313139",
+          "type": "libex-import"
         }
       ],
       "title": "City of Broken Magic"

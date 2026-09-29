@@ -3359,6 +3359,12 @@
       "authors": [
         "sue-burke"
       ],
+      "genres": [
+        "hard-science-fiction",
+        "post-apocalyptic",
+        "science",
+        "science-fiction"
+      ],
       "id": "immunity-index",
       "language": "en",
       "license": "CC0-1.0",
@@ -3372,6 +3378,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 28444,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4971,
+              "start_ms": 28444,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 17459,
+              "start_ms": 33415,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 3656098,
+              "start_ms": 50874,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4345614,
+              "start_ms": 3706972,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3877709,
+              "start_ms": 8052586,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4853923,
+              "start_ms": 11930295,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4151773,
+              "start_ms": 16784218,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3297814,
+              "start_ms": 20935991,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3482970,
+              "start_ms": 24233805,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4159088,
+              "start_ms": 27716775,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3250352,
+              "start_ms": 31875863,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1139588,
+              "start_ms": 35126215,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2323852,
+              "start_ms": 36265803,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 331813,
+              "start_ms": 38589655,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 48157,
+              "start_ms": 38921468,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sLncD+V2L.jpg",
           "id": "chloe-dolandis-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -3386,6 +3475,10 @@
               "imported_at": "2026-09-24",
               "ref": "1250813980",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1250813980",
+              "type": "libex-import"
             }
           ],
           "work": "immunity-index"
@@ -3396,6 +3489,10 @@
           "imported_at": "2026-09-24",
           "ref": "1250813980",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1250813980",
+          "type": "libex-import"
         }
       ],
       "title": "Immunity Index"

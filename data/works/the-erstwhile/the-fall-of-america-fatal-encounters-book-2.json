@@ -10027,6 +10027,9 @@
       "authors": [
         "bryan-ward-perkins"
       ],
+      "genres": [
+        "history"
+      ],
       "id": "the-fall-of-rome-bryan-ward-perkins",
       "language": "en",
       "license": "CC0-1.0",
@@ -10040,6 +10043,79 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 20828,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1191369,
+              "start_ms": 20828,
+              "title": "I. Did Rome Ever Fall?"
+            },
+            {
+              "length_ms": 6000,
+              "start_ms": 1212197,
+              "title": "Part One: The Fall of Rome"
+            },
+            {
+              "length_ms": 2976881,
+              "start_ms": 1218197,
+              "title": "II. The Horrors of War"
+            },
+            {
+              "length_ms": 4750036,
+              "start_ms": 4195078,
+              "title": "III. The Road to Defeat"
+            },
+            {
+              "length_ms": 3537026,
+              "start_ms": 8945114,
+              "title": "IV. Living under the New Masters"
+            },
+            {
+              "length_ms": 6000,
+              "start_ms": 12482140,
+              "title": "Part Two: The End of a Civilization"
+            },
+            {
+              "length_ms": 4713571,
+              "start_ms": 12488140,
+              "title": "V. The Disappearance of Comfort"
+            },
+            {
+              "length_ms": 2428110,
+              "start_ms": 17201711,
+              "title": "VI. Why the Demise of Comfort?"
+            },
+            {
+              "length_ms": 3949482,
+              "start_ms": 19629821,
+              "title": "VII. The Death of a Civilization?"
+            },
+            {
+              "length_ms": 2624783,
+              "start_ms": 23579303,
+              "title": "VIII. All for the Best in the Best of All Possible Worlds?"
+            },
+            {
+              "length_ms": 388098,
+              "start_ms": 26204086,
+              "title": "Appendix: From Potsherds to People"
+            },
+            {
+              "length_ms": 559208,
+              "start_ms": 26592184,
+              "title": "Chronology"
+            },
+            {
+              "length_ms": 40098,
+              "start_ms": 27151392,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91g6Uzg6+ML.jpg",
           "id": "roger-clark-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -10054,6 +10130,10 @@
               "imported_at": "2026-09-24",
               "ref": "1400171318",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1400171318",
+              "type": "libex-import"
             }
           ],
           "work": "the-fall-of-rome-bryan-ward-perkins"
@@ -10064,6 +10144,10 @@
           "imported_at": "2026-09-24",
           "ref": "1400171318",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1400171318",
+          "type": "libex-import"
         }
       ],
       "title": "The Fall of Rome"

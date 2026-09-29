@@ -1581,6 +1581,12 @@
       "authors": [
         "jory-fleming"
       ],
+      "genres": [
+        "biography-memoir",
+        "health-wellness",
+        "psychology",
+        "science"
+      ],
       "id": "how-to-be-human-jory-fleming",
       "language": "en",
       "license": "CC0-1.0",
@@ -1594,6 +1600,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 40824,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1624882,
+              "start_ms": 40824,
+              "title": "Chapter 1: Diagnosis: Autism"
+            },
+            {
+              "length_ms": 4983140,
+              "start_ms": 1665706,
+              "title": "Chapter 2: Brain Space"
+            },
+            {
+              "length_ms": 1834818,
+              "start_ms": 6648846,
+              "title": "Chapter 3: Energy and Memory"
+            },
+            {
+              "length_ms": 3161860,
+              "start_ms": 8483664,
+              "title": "Chapter 4: Emotional Distancing"
+            },
+            {
+              "length_ms": 1869392,
+              "start_ms": 11645524,
+              "title": "Chapter 5: Language Barriers"
+            },
+            {
+              "length_ms": 2113248,
+              "start_ms": 13514916,
+              "title": "Chapter 6: Language Disconnect"
+            },
+            {
+              "length_ms": 892993,
+              "start_ms": 15628164,
+              "title": "Chapter 7: Personality Is a Choice"
+            },
+            {
+              "length_ms": 1694035,
+              "start_ms": 16521157,
+              "title": "Chapter 8: Things That Matter"
+            },
+            {
+              "length_ms": 1938470,
+              "start_ms": 18215192,
+              "title": "Chapter 9: One Word: ‘LOVE’"
+            },
+            {
+              "length_ms": 76973,
+              "start_ms": 20153662,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71b6Q6iTHjL.jpg",
           "id": "jory-fleming-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -1609,6 +1673,10 @@
               "imported_at": "2026-09-24",
               "ref": "1508244839",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1508244839",
+              "type": "libex-import"
             }
           ],
           "work": "how-to-be-human-jory-fleming"
@@ -1619,6 +1687,10 @@
           "imported_at": "2026-09-24",
           "ref": "1508244839",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1508244839",
+          "type": "libex-import"
         }
       ],
       "title": "How to Be Human"
