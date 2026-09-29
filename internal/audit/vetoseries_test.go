@@ -1,7 +1,6 @@
 package audit
 
 import (
-	"maps"
 	"slices"
 	"strings"
 	"testing"
@@ -337,31 +336,11 @@ func TestSeriesDupIsSilentOnAnUnstatedLanguage(t *testing.T) {
 
 // ---- parenthetical decoration ------------------------------------------------
 
-// langWorks is works(...) with every work in one stated language.
-func langWorks(t testing.TB, lang string, ids ...string) map[string]string {
-	t.Helper()
-	out := map[string]string{}
-	for _, id := range ids {
-		out["works/xx/"+id+"/work.json"] = workJSON(t, id, strings.ToUpper(id[:1])+id[1:], withLanguage(lang))
-		out["works/xx/"+id+"/recordings/r-"+id+".json"] = recJSON(t, "r-"+id, id)
-	}
-	return out
-}
-
-// mergeFiles folds several fixture maps into one.
-func mergeFiles(parts ...map[string]string) map[string]string {
-	out := map[string]string{}
-	for _, p := range parts {
-		maps.Copy(out, p)
-	}
-	return out
-}
-
 // The SAME decoration on both sides is not what tells them apart: the live tree's
 // "Throne of Glass[French Edition]" and "Throne of Glass [French Edition]" differ by a
 // space, and "NOMADS Legacy [German Edition]" and "(German Edition)" by the bracket.
 func TestSeriesDupMergesTheSameDecorationSpelledTwice(t *testing.T) {
-	files := fixture(t, mergeFiles(langWorks(t, "fr", "un", "deux", "cinq"), map[string]string{
+	files := fixture(t, mergeFiles(works(t, []string{"un", "deux", "cinq"}, withLanguage("fr")), map[string]string{
 		"series/th/tog-fr.json":   seriesJSON(t, "tog-fr", "Throne of Glass[French Edition]", "un@1", "deux@2"),
 		"series/th/tog-fr-2.json": seriesJSON(t, "tog-fr-2", "Throne of Glass (French Edition)", "cinq@5"),
 	}))
@@ -384,7 +363,7 @@ func TestSeriesDupVetoesTwoDifferentDecorations(t *testing.T) {
 // The same decoration only stands the parenthetical veto down: two "[Special Edition]"
 // series in two languages are still two series, by the language veto.
 func TestSeriesDupVetoesTheSameDecorationInTwoLanguages(t *testing.T) {
-	files := fixture(t, mergeFiles(langWorks(t, "fr", "un"), langWorks(t, "de", "zwei"), map[string]string{
+	files := fixture(t, mergeFiles(works(t, []string{"un"}, withLanguage("fr")), works(t, []string{"zwei"}, withLanguage("de")), map[string]string{
 		"series/aa/alpha.json": seriesJSON(t, "alpha", "Dragon Heart [Special Edition]", "un@1"),
 		"series/bb/beta.json":  seriesJSON(t, "beta", "Dragon Heart (Special Edition)", "zwei@2"),
 	}))
@@ -400,9 +379,9 @@ func TestSeriesDupVetoesTheSameDecorationInTwoLanguages(t *testing.T) {
 // proposed again as a group of their own, which is the only fold the evidence supports.
 func TestSeriesDupProposesASameDecorationSubgroupApart(t *testing.T) {
 	files := fixture(t, mergeFiles(
-		works(t, "glass", "crown"),
-		langWorks(t, "fr", "verre", "couronne", "empire"),
-		langWorks(t, "de", "glas"),
+		works(t, []string{"glass", "crown"}),
+		works(t, []string{"verre", "couronne", "empire"}, withLanguage("fr")),
+		works(t, []string{"glas"}, withLanguage("de")),
 		map[string]string{
 			"series/th/tog.json":      seriesJSON(t, "tog", "Throne of Glass", "glass@1", "crown@2"),
 			"series/th/tog-fr.json":   seriesJSON(t, "tog-fr", "Throne of Glass[French Edition]", "verre@1", "couronne@2"),
@@ -433,10 +412,27 @@ func TestSeriesDupProposesASameDecorationSubgroupApart(t *testing.T) {
 	}
 }
 
+// An empty decoration is never one two members share: two PLAIN spellings beside a
+// decorated one, and two parentheticals that fold to nothing comparable, produce no
+// same-decoration subgroup - only the whole group's own (vetoed) record.
+func TestSeriesDupEmitsNoSubgroupForAnEmptyDecoration(t *testing.T) {
+	rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three", "four", "five"}, map[string]string{
+		"series/aa/alpha.json": seriesJSON(t, "alpha", "Dragon Heart", "one@1"),
+		"series/bb/beta.json":  seriesJSON(t, "beta", "Dragon Heart Series", "two@2"),
+		"series/cc/gamma.json": seriesJSON(t, "gamma", "Dragon Heart (German Edition)", "three@3"),
+		"series/dd/delta.json": seriesJSON(t, "delta", "Dragon Heart ( - )", "four@4"),
+		"series/ee/eps.json":   seriesJSON(t, "eps", "Dragon Heart (-)", "five@5"),
+	}))
+	assertVetoed(t, serDupMerge(t, rep), "SER-PAREN")
+	if subs := subclassOf(t, rep, ClassSeriesDup, serDupDecor); len(subs) != 0 {
+		t.Errorf("an empty decoration formed %d same-decoration subgroup(s): %+v", len(subs), subs)
+	}
+}
+
 // A subgroup is judged by every veto the whole group was: the same decoration on two
 // author-disjoint series is two franchises, and stays a reading-list entry.
 func TestSeriesDupSameDecorationSubgroupStillFacesTheOtherVetoes(t *testing.T) {
-	files := fixture(t, mergeFiles(works(t, "plain"), map[string]string{
+	files := fixture(t, mergeFiles(works(t, []string{"plain"}), map[string]string{
 		"works/al/alpha-one/work.json":         workJSON(t, "alpha-one", "Alpha One", withAuthors("ann-author")),
 		"works/al/alpha-one/recordings/a.json": recJSON(t, "a", "alpha-one"),
 		"works/be/beta-one/work.json":          workJSON(t, "beta-one", "Beta One", withAuthors("bob-writer")),

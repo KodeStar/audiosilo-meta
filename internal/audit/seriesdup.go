@@ -321,10 +321,20 @@ func orderingFoldMovesNothing(group []seriesKeys, sides []seriesSide, target str
 // group carry, those members - when they are not the whole group (a group that is all
 // one decoration is already judged whole). In decoration-key order, each subgroup in
 // the group's own order.
+//
+// An EMPTY decor is never a decoration two members share - decorClass's invariant.
+// It is what an undecorated name has, and what a paren name whose groups fold to
+// nothing comparable has, and neither is "the same decoration" as anything: two plain
+// spellings are the normalized-name group's own business, and two unreadable
+// parentheticals are not known to agree. So "" is skipped here by name rather than
+// left to groupBy's habit of dropping an empty key.
 func sameDecorationSubgroups(group []seriesKeys) [][]seriesKeys {
 	byDecor, order := groupBy(group, func(k seriesKeys) string { return k.decor })
 	var out [][]seriesKeys
 	for _, d := range order {
+		if d == "" {
+			continue
+		}
 		if sub := byDecor[d]; len(sub) >= 2 && len(sub) < len(group) {
 			out = append(out, sub)
 		}
@@ -373,7 +383,8 @@ func detectSeriesParen(ix *index, keys []seriesKeys) *findings {
 		if len(siblings) > 0 {
 			fd.Subclass = serParenPair
 			fd.Propose.Others = siblings
-			fd.Propose.Reason = "the parenthetical may be a deliberate alternative ordering of the sibling series - never merged automatically"
+			fd.Propose.Reason = "the parenthetical may be a deliberate alternative ordering of the sibling series - not merged automatically, " +
+				"except the one fold SER-DUP proposes: an ordering qualifier whose list IS the sibling's, slot for slot"
 			fd.Notes = []string{"undecorated sibling: " + truncateList(siblings, 8)}
 			for _, id := range siblings {
 				if sib := ix.seriesByID[id]; sib != nil {
