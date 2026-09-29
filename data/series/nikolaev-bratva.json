@@ -2455,11 +2455,16 @@
     "nomads-legacy-german-edition": {
       "id": "nomads-legacy-german-edition",
       "license": "CC0-1.0",
-      "name": "NOMADS Legacy [German Edition]",
+      "name": "NOMADS Legacy (German Edition)",
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0DWSG6LPC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0H9RJ84MQ",
           "type": "libex-import"
         }
       ],
@@ -2483,21 +2488,7 @@
         {
           "position": "24",
           "work": "der-weltenkiller"
-        }
-      ]
-    },
-    "nomads-legacy-german-edition-2": {
-      "id": "nomads-legacy-german-edition-2",
-      "license": "CC0-1.0",
-      "name": "NOMADS Legacy (German Edition)",
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B0H9RJ84MQ",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
+        },
         {
           "position": "22",
           "work": "collection-four"
