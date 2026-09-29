@@ -1113,7 +1113,7 @@ func resolveWorkTitles(books []sourceBook) []string {
 			if !ok {
 				continue
 			}
-			claims[strings.ToLower(name)+"\x00"+pos] = true
+			claims[titlerule.SeriesNameKey(name)+"\x00"+pos] = true
 		}
 		if len(claims) < 2 {
 			continue

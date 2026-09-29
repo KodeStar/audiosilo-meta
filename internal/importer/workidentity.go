@@ -4,6 +4,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -400,7 +401,8 @@ func (p *planner) serialPositionSuffixes(books []sourceBook, titles []string) []
 	suffixes := make([]string, len(books))
 	type rowClaim struct {
 		idx    int
-		series string
+		series string // the lowercased name the scoped suffix is slugged from
+		key    string // titlerule.SeriesNameKey: which claims name ONE series
 		pos    string
 	}
 	groups := map[string][]rowClaim{}
@@ -414,7 +416,7 @@ func (p *planner) serialPositionSuffixes(books []sourceBook, titles []string) []
 			continue
 		}
 		key := serialTitleKey(titles[i], p.rowWorkAuthorsRO(credits))
-		groups[key] = append(groups[key], rowClaim{idx: i, series: strings.ToLower(name), pos: pos})
+		groups[key] = append(groups[key], rowClaim{idx: i, series: strings.ToLower(name), key: titlerule.SeriesNameKey(name), pos: pos})
 	}
 	for _, rows := range groups {
 		if len(rows) < 2 {
@@ -422,10 +424,10 @@ func (p *planner) serialPositionSuffixes(books []sourceBook, titles []string) []
 		}
 		positions := map[string]map[string]bool{}
 		for _, r := range rows {
-			if positions[r.series] == nil {
-				positions[r.series] = map[string]bool{}
+			if positions[r.key] == nil {
+				positions[r.key] = map[string]bool{}
 			}
-			positions[r.series][r.pos] = true
+			positions[r.key][r.pos] = true
 		}
 		split := false
 		for _, seen := range positions {

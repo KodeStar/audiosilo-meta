@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -138,29 +137,19 @@ func (p *planner) needsSeriesPosition(b sourceBook) bool {
 //
 // Every candidate goes through makeSeriesRef first, so the name is cleaned and
 // the position validated by exactly the rules the row's own claim went through,
-// and the name comparison is sameSeriesName - the importer's own test for "these
-// two names are one series". A record that names a DIFFERENT series, or names
+// and the name comparison is titlerule.SameSeriesName - the one test the series
+// chain walk, the batch grouping and every other writer ask for "these two names
+// are one series". A record that names a DIFFERENT series, or names
 // this one with no usable position, states nothing about this row: the caller
 // leaves the claim as it found it and the row keeps its warning.
 func lookedUpPosition(refs []SeriesPosition, name string) (string, bool) {
 	for _, got := range refs {
 		cand := makeSeriesRef(got.Name, got.Position)
-		if cand.seqOK && sameSeriesName(cand.name, name) {
+		if cand.seqOK && titlerule.SameSeriesName(cand.name, name) {
 			return cand.seq, true
 		}
 	}
 	return "", false
-}
-
-// sameSeriesName reports whether two series names are ONE series, by the
-// importer's own rule rather than a looser one invented here: the series chain
-// walk (seriesCandidates) buckets a name by its slug (which folds case, diacritics
-// and punctuation) and then requires a case-insensitive name match inside that
-// bucket. A name with no addressable slug is no series at all
-// (getOrCreateSeries refuses to mint one), so it matches nothing.
-func sameSeriesName(a, b string) bool {
-	slug := Slugify(a)
-	return slug != "" && slug == Slugify(b) && strings.EqualFold(a, b)
 }
 
 // placementPosition is the position a row is actually placed at in series r:
