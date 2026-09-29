@@ -29,6 +29,8 @@ import (
 	"regexp"
 	"strings"
 	"sync"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -752,6 +754,49 @@ func BoundedAt(s string, start, end int) bool { return boundedAt(s, start, end) 
 
 // StripParenGroups removes parenthetical and bracketed groups from a name.
 func StripParenGroups(s string) string { return stripParenGroups(s) }
+
+// DecorationKey is the comparison identity of the parenthetical/bracketed groups
+// StripParenGroups removes: each group's contents in slug form, in order. So case,
+// spacing, punctuation runs and the BRACKET STYLE are not identity - "Throne of
+// Glass[French Edition]" and "Throne of Glass (French Edition)" carry one decoration
+// - while the words inside the groups, and the separators between them, are
+// ("Books 1-2" is not "Books 12").
+//
+// Empty when the name carries no complete group, or when ANY group cannot be compared
+// whole: it folds to nothing, or the fold drops a letter or digit (Slugify keeps only
+// what it can write in ASCII, so "(Книга 1)" and "(Том 1)" would otherwise both read
+// "1"). A caller must read empty as "no decoration it can compare", never as a
+// decoration of its own - this key decides what a mechanical fold may treat as the
+// SAME decoration, so a half-read one is not allowed to agree with anything.
+func DecorationKey(s string) string {
+	if !strings.ContainsAny(s, "([") {
+		return ""
+	}
+	var parts []string
+	for _, g := range parenGroup.FindAllString(s, -1) {
+		inner := g[1 : len(g)-1]
+		f := model.SlugifyWhole(inner)
+		if f == "" || !slugKeepsEveryAlnum(inner) {
+			return ""
+		}
+		parts = append(parts, f)
+	}
+	return strings.Join(parts, "+")
+}
+
+// slugKeepsEveryAlnum reports whether every letter and digit of s survives Slugify -
+// false for text in a script Slugify folds away (Cyrillic, CJK, Greek, ...).
+func slugKeepsEveryAlnum(s string) bool {
+	for _, r := range s {
+		if r < utf8.RuneSelf || (!unicode.IsLetter(r) && !unicode.IsDigit(r)) {
+			continue
+		}
+		if model.SlugifyWhole(string(r)) == "" {
+			return false
+		}
+	}
+	return true
+}
 
 // DropLeadingArticle removes a leading "the "/"a "/"an ", never emptying the
 // string. It is the ONE article vocabulary: the decoration detector's

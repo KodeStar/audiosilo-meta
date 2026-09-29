@@ -1,20 +1,33 @@
 package audit
 
 import (
+	"maps"
 	"reflect"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// works seeds n plainly-titled works, for the series rules that only need members.
-func works(t testing.TB, ids ...string) map[string]string {
+// works seeds plainly-titled works, for the series rules that only need members; opts
+// apply to every one of them (a stated language, say).
+func works(t testing.TB, ids []string, opts ...testpack.WorkOpt) map[string]string {
 	t.Helper()
 	out := map[string]string{}
 	for _, id := range ids {
-		out["works/xx/"+id+"/work.json"] = workJSON(t, id, strings.ToUpper(id[:1])+id[1:])
+		out["works/xx/"+id+"/work.json"] = workJSON(t, id, strings.ToUpper(id[:1])+id[1:], opts...)
 		out["works/xx/"+id+"/recordings/r-"+id+".json"] = recJSON(t, "r-"+id, id)
+	}
+	return out
+}
+
+// mergeFiles folds several fixture maps into one - the one merge primitive the
+// fixture builders share.
+func mergeFiles(parts ...map[string]string) map[string]string {
+	out := map[string]string{}
+	for _, p := range parts {
+		maps.Copy(out, p)
 	}
 	return out
 }
@@ -22,11 +35,7 @@ func works(t testing.TB, ids ...string) map[string]string {
 // seriesFixture merges the baseline, some works and the caller's extra files.
 func seriesFixture(t testing.TB, workIDs []string, extra map[string]string) map[string]string {
 	t.Helper()
-	out := fixture(t, works(t, workIDs...))
-	for k, v := range extra {
-		out[k] = v
-	}
-	return out
+	return mergeFiles(fixture(t, works(t, workIDs)), extra)
 }
 
 func TestSeriesIntegrityReportsADuplicatePosition(t *testing.T) {
@@ -136,7 +145,7 @@ func TestSeriesIntegrityFlagsAMinorityLanguageMember(t *testing.T) {
 
 // A one-to-one language split has no majority, so nothing is a minority OF it.
 func TestSeriesIntegrityNeedsAStrictMajorityToCallSomethingAMinority(t *testing.T) {
-	files := fixture(t, works(t, "one"))
+	files := fixture(t, works(t, []string{"one"}))
 	files["works/xx/zwei/work.json"] = workJSON(t, "zwei", "Zwei", withLanguage("de"))
 	files["works/xx/zwei/recordings/r-zwei.json"] = recJSON(t, "r-zwei", "zwei")
 	files["series/sp/split.json"] = seriesJSON(t, "split", "Split Chronicles", "one@1", "zwei@2")
@@ -250,7 +259,7 @@ func TestSeriesParenReportsADecoratedNameWithASibling(t *testing.T) {
 	if !strings.Contains(strings.Join(got[0].Notes, " "), "vork") {
 		t.Errorf("the undecorated sibling is not named: %v", got[0].Notes)
 	}
-	if !strings.Contains(got[0].Action, "never merged automatically") {
+	if !strings.Contains(got[0].Action, "not merged automatically") {
 		t.Errorf("action = %q, want it to refuse an automatic merge", got[0].Action)
 	}
 }

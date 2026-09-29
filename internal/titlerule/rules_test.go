@@ -257,6 +257,45 @@ func TestSeriesKeyPeelsCatalogueDecoration(t *testing.T) {
 	}
 }
 
+func TestDecorationKey(t *testing.T) {
+	// The bracket style, the spacing before it and the case are not identity: these
+	// are the live tree's two same-decoration pairs.
+	same := [][2]string{
+		{"Throne of Glass[French Edition]", "Throne of Glass [French Edition]"},
+		{"NOMADS Legacy [German Edition]", "NOMADS Legacy (German Edition)"},
+		{"Ascend Online (Chronological Order)", "Ascend Online [chronological order]"},
+	}
+	for _, c := range same {
+		if DecorationKey(c[0]) == "" || DecorationKey(c[0]) != DecorationKey(c[1]) {
+			t.Errorf("DecorationKey(%q)=%q, DecorationKey(%q)=%q, want one non-empty key",
+				c[0], DecorationKey(c[0]), c[1], DecorationKey(c[1]))
+		}
+	}
+	// The words inside the group are.
+	differ := [][2]string{
+		{"Throne of Glass[French Edition]", "Throne of Glass[German Edition]"},
+		{"Ascend Online [chronological]", "Ascend Online [publication order]"},
+		{"X (a) (b)", "X (ab)"},
+		{"X (Books 1-2)", "X (Books 12)"},
+		{"X (Chronological Order)", "X (ChronologicalOrder)"},
+	}
+	for _, c := range differ {
+		if DecorationKey(c[0]) == DecorationKey(c[1]) {
+			t.Errorf("DecorationKey(%q) == DecorationKey(%q) = %q, want them apart", c[0], c[1], DecorationKey(c[0]))
+		}
+	}
+	// No complete group, or any group that folds to nothing or loses a letter to the
+	// fold, is no decoration at all: "(Книга 1)" and "(Том 1)" must not both read "1".
+	for _, name := range []string{
+		"Throne of Glass", "Broken (open", "Odd ( - )", "Odd ( - ) (French Edition)",
+		"X (Книга 1)", "X (Том 1)", "X (第1部)", "X (French Edition) (Русское издание)",
+	} {
+		if got := DecorationKey(name); got != "" {
+			t.Errorf("DecorationKey(%q) = %q, want empty", name, got)
+		}
+	}
+}
+
 func TestSlugShapePredicates(t *testing.T) {
 	if art, ok := LeadingSlugArticle("a-mageling"); !ok || art != "a" {
 		t.Errorf("LeadingSlugArticle = (%q, %v)", art, ok)
