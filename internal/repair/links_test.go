@@ -1,0 +1,413 @@
+package repair
+
+import (
+	"os"
+	"path/filepath"
+	"reflect"
+	"slices"
+	"strings"
+	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
+)
+
+// links_test.go pins the translation_of / ordering_of half of a merge (links.go): no
+// link is left naming a retired slug, every value the merge could not keep is named,
+// and the shapes no mechanical rule can settle are refused under their own category.
+
+// withTranslationOf sets a work's translation_of set.
+func withTranslationOf(targets ...string) workOpt {
+	return func(m map[string]any) { m["translation_of"] = targets }
+}
+
+// withWorkLanguage sets a work's language.
+func withWorkLanguage(l string) workOpt {
+	return func(m map[string]any) { m["language"] = l }
+}
+
+// setField sets a member on an already-rendered fixture record.
+func setField(t testing.TB, files map[string]string, address, field string, v any) {
+	t.Helper()
+	body, ok := files[address]
+	if !ok {
+		t.Fatalf("fixture has no %s", address)
+	}
+	files[address] = testpack.WithField(t, body, field, v)
+}
+
+// translationCluster is the calibration cluster plus translations of its halves: a
+// French edition naming the LOSER, and a German one naming BOTH halves (which the
+// re-point collapses onto one survivor).
+func translationCluster(t testing.TB) map[string]string {
+	t.Helper()
+	files := hammeredCluster(t)
+	files["works/ma/marteau/work.json"] = workJSON(t, "marteau", "Marteau",
+		withWorkLanguage("fr"), withTranslationOf("hammered-book-3"))
+	files["works/ma/marteau/recordings/nate-narrator-2015.json"] = recJSON(t, "nate-narrator-2015", "marteau")
+	files["works/ge/gehammert/work.json"] = workJSON(t, "gehammert", "Gehämmert",
+		withWorkLanguage("de"), withTranslationOf("hammered", "hammered-book-3"))
+	files["works/ge/gehammert/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "gehammert")
+	return files
+}
+
+// A merge-works re-points every translation naming a loser onto the survivor - on
+// records that are not part of the merge at all - dedupes the set that then names the
+// survivor twice, and leaves the tree green. The dry run plans exactly what the write
+// applies.
+func TestMergeWorksRepointsTranslationsOfTheLoser(t *testing.T) {
+	data := seedTree(t, translationCluster(t))
+	dry := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}})
+	rep := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}, Write: true})
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	if !reflect.DeepEqual(dry.Applied, rep.Applied) {
+		t.Errorf("the dry run planned something else than the write applied:\ndry:   %+v\nwrite: %+v", dry.Applied, rep.Applied)
+	}
+	for slug, want := range map[string][]string{"marteau": {"hammered"}, "gehammert": {"hammered"}} {
+		if got := workEntry(t, data, slug).Strs("translation_of"); !slices.Equal(got, want) {
+			t.Errorf("%s translation_of = %v, want %v", slug, got, want)
+		}
+	}
+	if workEntry(t, data, "hammered").Has("translation_of") {
+		t.Error("the survivor gained a translation_of it never stated")
+	}
+	for _, want := range []string{"re-pointed translation_of of work marteau onto hammered",
+		"re-pointed translation_of of work gehammert onto hammered"} {
+		if !noteMentions(rep.Applied[0].Notes, want) {
+			t.Errorf("notes do not say %q: %v", want, rep.Applied[0].Notes)
+		}
+	}
+	if len(rep.PostProblems) != 0 {
+		t.Errorf("post-write problems: %v", rep.PostProblems)
+	}
+}
+
+// The loser's own translation_of is a set-valued fact, so it is UNIONED onto the
+// survivor rather than chosen away, and the union is in ascending order.
+func TestMergeWorksUnionsTheLosersTranslationOf(t *testing.T) {
+	files := hammeredCluster(t)
+	files["works/ha/hammered/work.json"] = workJSON(t, "hammered", "Hammered",
+		withGenres("fantasy"), withTranslationOf("zertrummert"))
+	files["works/ha/hammered-book-3/work.json"] = workJSON(t, "hammered-book-3", "Hammered: The Druid Tales, Book 3",
+		withGenres("action-adventure"), withSubtitle("An Iron Druid Adventure"), withTranslationOf("gehammert"))
+	for _, slug := range []string{"gehammert", "zertrummert"} {
+		files["works/"+slug[:2]+"/"+slug+"/work.json"] = workJSON(t, slug, slug, withWorkLanguage("de"))
+		files["works/"+slug[:2]+"/"+slug+"/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", slug)
+	}
+	data := seedTree(t, files)
+	rep := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeWorks}, Write: true})
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	if got, want := workEntry(t, data, "hammered").Strs("translation_of"), []string{"gehammert", "zertrummert"}; !slices.Equal(got, want) {
+		t.Errorf("survivor translation_of = %v, want the sorted union %v", got, want)
+	}
+	if noteMentions(rep.Applied[0].Notes, "translation_of:") {
+		t.Errorf("a union dropped nothing, yet the notes report a loss: %v", rep.Applied[0].Notes)
+	}
+}
+
+// A link that the merge turns into a link to ITSELF is dropped and named: the loser
+// said it translates the very book it is a duplicate of.
+func TestMergeWorksDropsATranslationThatWouldNameItself(t *testing.T) {
+	files := hammeredCluster(t)
+	setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"hammered"})
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3")); err != nil {
+		t.Fatal(err)
+	}
+	if tx.works.puts["hammered"].Has("translation_of") {
+		t.Errorf("the self-link survived: %v", tx.works.puts["hammered"].Strs("translation_of"))
+	}
+	if want := `translation_of: kept "", dropped "hammered" from hammered-book-3`; !noteMentions(tx.notes, want) {
+		t.Errorf("notes do not name the dropped self-link %q: %v", want, tx.notes)
+	}
+}
+
+// The two shapes a translation re-point cannot settle: the survivor would be both a
+// translation and the original of one, or would name an original that is itself a
+// translation.
+func TestMergeWorksRefusesATranslationChain(t *testing.T) {
+	t.Run("survivor would carry translation_of and be a target of one", func(t *testing.T) {
+		files := translationCluster(t)
+		files["works/zo/zorn/work.json"] = workJSON(t, "zorn", "Zorn", withWorkLanguage("de"))
+		files["works/zo/zorn/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "zorn")
+		setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"zorn"})
+		rn, tx := planFixture(t, seedTree(t, files))
+		err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3"))
+		assertRefusal(t, err, CatTranslationLink, "gehammert, marteau names it as its original")
+	})
+	t.Run("survivor would name a translation as its original", func(t *testing.T) {
+		files := hammeredCluster(t)
+		files["works/zo/zorn/work.json"] = workJSON(t, "zorn", "Zorn", withWorkLanguage("de"), withTranslationOf("rage"))
+		files["works/zo/zorn/recordings/nate-narrator-2016.json"] = recJSON(t, "nate-narrator-2016", "zorn")
+		files["works/ra/rage/work.json"] = workJSON(t, "rage", "Rage", withWorkLanguage("fr"))
+		files["works/ra/rage/recordings/nate-narrator-2017.json"] = recJSON(t, "nate-narrator-2017", "rage")
+		setField(t, files, "works/ha/hammered-book-3/work.json", "translation_of", []string{"zorn"})
+		rn, tx := planFixture(t, seedTree(t, files))
+		err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3"))
+		assertRefusal(t, err, CatTranslationLink, "zorn is itself a translation of [rage]")
+	})
+}
+
+// The plan's link index is kept current as proposals commit: a later merge retiring
+// the survivor of an earlier one re-points the link the earlier one moved.
+func TestALaterMergeSeesTheLinksAnEarlierOneRepointed(t *testing.T) {
+	files := translationCluster(t)
+	files["works/ha/hammered-2/work.json"] = workJSON(t, "hammered-2", "Hammered")
+	files["works/ha/hammered-2/recordings/luke-daniels-2019.json"] = recJSON(t, "luke-daniels-2019", "hammered-2",
+		withNarrators("luke-daniels"))
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3")); err != nil {
+		t.Fatal(err)
+	}
+	if err := tx.commit("first"); err != nil {
+		t.Fatal(err)
+	}
+	if got := rn.plan.workLinks.translatedBy["hammered"]; !got["marteau"] || !got["gehammert"] {
+		t.Fatalf("the index does not see the re-pointed links: %v", got)
+	}
+	tx = rn.plan.begin()
+	if err := rn.mergeWorks(tx, mergeFinding("hammered-2", "hammered")); err != nil {
+		t.Fatal(err)
+	}
+	if got := tx.works.puts["marteau"].Strs("translation_of"); !slices.Equal(got, []string{"hammered-2"}) {
+		t.Errorf("marteau translation_of = %v, want it re-pointed again onto hammered-2", got)
+	}
+}
+
+// orderingFamily is seriesPair plus a THIRD series, a chronological variant of the
+// loser: the MaddAddam shape a merge has to keep pointing somewhere live.
+func orderingFamily(t testing.TB) map[string]string {
+	t.Helper()
+	files := seriesPair(t, "hounded@1", "hexed@2")
+	setField(t, files, "series/ir/iron-druid-chronicles.json", "ordering", model.OrderingPublication)
+	setField(t, files, "series/ir/iron-druid-chronicles-2.json", "ordering", model.OrderingPublication)
+	files["series/dr/druid-reading-order.json"] = testpack.WithField(t, testpack.WithField(t,
+		seriesJSON(t, "druid-reading-order", "Druid Reading Order", "hexed@1", "hounded@2"),
+		"ordering", model.OrderingChronological), "ordering_of", "iron-druid-chronicles-2")
+	return files
+}
+
+const druidTarget, druidLoser = "iron-druid-chronicles", "iron-druid-chronicles-2"
+
+// (b) a variant OUTSIDE the cluster naming the loser is re-pointed onto the survivor,
+// end to end, and the dry run plans what the write applies.
+func TestMergeSeriesRepointsAVariantOfTheLoser(t *testing.T) {
+	data := seedTree(t, orderingFamily(t))
+	dry := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeSeries}})
+	rep := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeSeries}, Write: true})
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+		t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	if rep.Applied[0].Target != druidTarget {
+		t.Fatalf("target = %s, want %s", rep.Applied[0].Target, druidTarget)
+	}
+	if !reflect.DeepEqual(dry.Applied, rep.Applied) {
+		t.Errorf("the dry run planned something else than the write applied:\ndry:   %+v\nwrite: %+v", dry.Applied, rep.Applied)
+	}
+	if got := readEntry(t, data, pack.FamilySeries, "druid-reading-order").Str("ordering_of"); got != druidTarget {
+		t.Errorf("variant ordering_of = %q, want it re-pointed onto %s", got, druidTarget)
+	}
+	want := "re-pointed ordering_of of series druid-reading-order from " + druidLoser + " onto " + druidTarget
+	if !noteMentions(rep.Applied[0].Notes, want) {
+		t.Errorf("notes do not say %q: %v", want, rep.Applied[0].Notes)
+	}
+	if res := check.Load(data); len(res.Problems) > 0 {
+		t.Errorf("the tree does not validate after the merge: %v", res.Problems)
+	}
+}
+
+// (b) refused: the survivor is itself a variant, so re-pointing a variant onto it
+// would make a two-hop chain - including the survivor being a variant of the LOSER,
+// where the fold would promote the variant to primary.
+func TestMergeSeriesRefusesAVariantChain(t *testing.T) {
+	t.Run("survivor is a variant of another primary", func(t *testing.T) {
+		files := orderingFamily(t)
+		files["series/pr/primary-druid.json"] = testpack.WithField(t,
+			seriesJSON(t, "primary-druid", "Primary Druid", "hounded@1"), "ordering", model.OrderingRecommended)
+		setField(t, files, "series/ir/"+druidTarget+".json", "ordering_of", "primary-druid")
+		rn, tx := planFixture(t, seedTree(t, files))
+		err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
+		assertRefusal(t, err, CatOrderingLink, "would make a chain")
+	})
+	t.Run("survivor is a variant of the loser", func(t *testing.T) {
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		setField(t, files, "series/ir/"+druidLoser+".json", "ordering", model.OrderingPublication)
+		setField(t, files, "series/ir/"+druidTarget+".json", "ordering", model.OrderingChronological)
+		setField(t, files, "series/ir/"+druidTarget+".json", "ordering_of", druidLoser)
+		rn, tx := planFixture(t, seedTree(t, files))
+		err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
+		assertRefusal(t, err, CatOrderingLink, "would promote the variant")
+	})
+}
+
+// (c) a variant folded into its own primary: its link goes with it, and the notes
+// name it - and its differing `ordering` - as chosen away.
+func TestMergeSeriesDropsTheLinkOfAVariantFoldedIntoItsPrimary(t *testing.T) {
+	files := seriesPair(t, "hounded@1", "hexed@2")
+	setField(t, files, "series/ir/"+druidTarget+".json", "ordering", model.OrderingPublication)
+	setField(t, files, "series/ir/"+druidLoser+".json", "ordering", model.OrderingChronological)
+	setField(t, files, "series/ir/"+druidLoser+".json", "ordering_of", druidTarget)
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser)); err != nil {
+		t.Fatal(err)
+	}
+	merged := tx.series.puts[druidTarget]
+	if merged.Has("ordering_of") || merged.Str("ordering") != model.OrderingPublication {
+		t.Errorf("survivor ordering = %q, ordering_of = %q; want its own publication and no link",
+			merged.Str("ordering"), merged.Str("ordering_of"))
+	}
+	for _, want := range []string{
+		`ordering_of: kept "", dropped "` + druidTarget + `" from ` + druidLoser,
+		`ordering: kept "publication", dropped "chronological" from ` + druidLoser,
+	} {
+		if !noteMentions(tx.notes, want) {
+			t.Errorf("notes do not report %q: %v", want, tx.notes)
+		}
+	}
+}
+
+// (d) two variants of one primary: the survivor keeps its link, which is also the
+// loser's, so nothing is chosen away but the differing ordering.
+func TestMergeSeriesKeepsTheSharedPrimaryOfTwoVariants(t *testing.T) {
+	files := seriesPair(t, "hounded@1", "hexed@2")
+	files["series/pr/primary-druid.json"] = testpack.WithField(t,
+		seriesJSON(t, "primary-druid", "Primary Druid", "hounded@1", "hexed@2"), "ordering", model.OrderingPublication)
+	for slug, o := range map[string]string{druidTarget: model.OrderingChronological, druidLoser: model.OrderingRecommended} {
+		setField(t, files, "series/ir/"+slug+".json", "ordering", o)
+		setField(t, files, "series/ir/"+slug+".json", "ordering_of", "primary-druid")
+	}
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser)); err != nil {
+		t.Fatal(err)
+	}
+	if got := tx.series.puts[druidTarget].Str("ordering_of"); got != "primary-druid" {
+		t.Errorf("survivor ordering_of = %q, want primary-druid kept", got)
+	}
+	if noteMentions(tx.notes, "ordering_of:") {
+		t.Errorf("a shared primary is not a loss: %v", tx.notes)
+	}
+	if !noteMentions(tx.notes, `ordering: kept "chronological", dropped "recommended" from `+druidLoser) {
+		t.Errorf("the differing ordering is not noted: %v", tx.notes)
+	}
+}
+
+// (e) the loser is a variant of a primary the survivor does not share: the fold would
+// move it out of its family (the survivor a primary, or a variant of another).
+func TestMergeSeriesRefusesMovingAVariantOutOfItsFamily(t *testing.T) {
+	primary := func(t testing.TB, files map[string]string, slug string) {
+		files["series/pr/"+slug+".json"] = testpack.WithField(t,
+			seriesJSON(t, slug, slug, "hounded@1"), "ordering", model.OrderingPublication)
+	}
+	t.Run("survivor is a primary", func(t *testing.T) {
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		primary(t, files, "primary-druid")
+		setField(t, files, "series/ir/"+druidLoser+".json", "ordering", model.OrderingChronological)
+		setField(t, files, "series/ir/"+druidLoser+".json", "ordering_of", "primary-druid")
+		rn, tx := planFixture(t, seedTree(t, files))
+		err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
+		assertRefusal(t, err, CatOrderingLink, "is a variant ordering of primary-druid but "+druidTarget+" is not")
+	})
+	t.Run("survivor is a variant of another primary", func(t *testing.T) {
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		primary(t, files, "primary-druid")
+		primary(t, files, "primary-other")
+		setField(t, files, "series/ir/"+druidLoser+".json", "ordering", model.OrderingChronological)
+		setField(t, files, "series/ir/"+druidLoser+".json", "ordering_of", "primary-druid")
+		setField(t, files, "series/ir/"+druidTarget+".json", "ordering", model.OrderingChronological)
+		setField(t, files, "series/ir/"+druidTarget+".json", "ordering_of", "primary-other")
+		rn, tx := planFixture(t, seedTree(t, files))
+		err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
+		assertRefusal(t, err, CatOrderingLink, "would move a variant out of its ordering family")
+	})
+}
+
+// Folding two primaries that each head a chronological variant would leave one family
+// holding two series in one order - a duplicate to fold by hand, not a view.
+func TestMergeSeriesRefusesTwoVariantsOfOneOrderingInAFamily(t *testing.T) {
+	files := orderingFamily(t)
+	files["series/dr/druid-timeline.json"] = testpack.WithField(t, testpack.WithField(t,
+		seriesJSON(t, "druid-timeline", "Druid Timeline", "hounded@1"),
+		"ordering", model.OrderingChronological), "ordering_of", druidTarget)
+	rn, tx := planFixture(t, seedTree(t, files))
+	err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
+	assertRefusal(t, err, CatOrderingLink, "would both state the chronological ordering")
+}
+
+// Series translation_of follows the works' rules: a series translating the loser is
+// re-pointed, the loser's own set is unioned onto the survivor, and the two together -
+// a survivor that would be both a translation and an original - are refused.
+func TestMergeSeriesRepointsAndUnionsTranslations(t *testing.T) {
+	chroniques := func(t testing.TB, files map[string]string) {
+		files["series/ch/chroniques-du-druide.json"] = testpack.WithField(t,
+			seriesJSON(t, "chroniques-du-druide", "Chroniques du druide", "hounded@1"), "translation_of", []string{druidLoser})
+	}
+	chroniken := func(t testing.TB, files map[string]string) {
+		files["series/ch/chroniken-des-druiden.json"] = seriesJSON(t, "chroniken-des-druiden", "Chroniken des Druiden", "hexed@1")
+		setField(t, files, "series/ir/"+druidLoser+".json", "translation_of", []string{"chroniken-des-druiden"})
+	}
+	t.Run("a translation of the loser is re-pointed", func(t *testing.T) {
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		chroniques(t, files)
+		rn, tx := planFixture(t, seedTree(t, files))
+		if err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser)); err != nil {
+			t.Fatal(err)
+		}
+		if got := tx.series.puts["chroniques-du-druide"].Strs("translation_of"); !slices.Equal(got, []string{druidTarget}) {
+			t.Errorf("chroniques translation_of = %v, want it re-pointed onto %s", got, druidTarget)
+		}
+	})
+	t.Run("the loser's own set is unioned", func(t *testing.T) {
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		chroniken(t, files)
+		rn, tx := planFixture(t, seedTree(t, files))
+		if err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser)); err != nil {
+			t.Fatal(err)
+		}
+		if got := tx.series.puts[druidTarget].Strs("translation_of"); !slices.Equal(got, []string{"chroniken-des-druiden"}) {
+			t.Errorf("survivor translation_of = %v, want the loser's", got)
+		}
+	})
+	t.Run("both at once is a chain", func(t *testing.T) {
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		chroniques(t, files)
+		chroniken(t, files)
+		rn, tx := planFixture(t, seedTree(t, files))
+		err := rn.mergeSeries(tx, seriesFinding(druidTarget, druidLoser))
+		assertRefusal(t, err, CatTranslationLink, "chroniques-du-druide names it as its original")
+	})
+}
+
+// The two new categories are part of the published triage list.
+func TestLinkConflictCategoriesArePublished(t *testing.T) {
+	for _, c := range []Category{CatTranslationLink, CatOrderingLink} {
+		if !slices.Contains(Categories(), c) {
+			t.Errorf("Categories() lacks %q", c)
+		}
+	}
+}
+
+// A tree carrying no link at all - every tree today - plans a merge byte for byte as
+// it did before links.go existed: nothing is re-set on the survivor, nothing extra is
+// staged, and no note mentions a link.
+func TestAMergeOverATreeWithoutLinksIsUnchanged(t *testing.T) {
+	data := seedTree(t, hammeredCluster(t))
+	one := filepath.Join(t.TempDir(), "out")
+	rep := run(t, Options{DataDir: data, OutDir: one})
+	for _, a := range rep.Applied {
+		for _, n := range a.Notes {
+			if strings.Contains(n, "translation_of") || strings.Contains(n, "ordering") {
+				t.Errorf("a link note on a tree without links: %q", n)
+			}
+		}
+	}
+	if _, err := os.Stat(filepath.Join(one, appliedFile)); err != nil {
+		t.Fatal(err)
+	}
+}

@@ -45,6 +45,10 @@ import (
 //     catalogue itself is then saying they are different volumes.
 //   - a record the proposal names was retired by an earlier proposal in this run.
 //
+// A translation_of link that re-pointing would turn into a two-hop chain refuses it too
+// (CatTranslationLink) - see links.go, which also re-points the links OTHER works hold
+// onto a loser, so none is left naming a retired slug.
+//
 // A recording-key collision refuses NOTHING: two colliding recordings either merge
 // (same narrators, no contradicting runtime) or the mover is re-keyed through the
 // project's own numbered-slug chain and moved intact. Both outcomes keep every
@@ -88,6 +92,11 @@ func (rn *runner) mergeWorks(t *txn, fd audit.Finding) error {
 	}
 	if err := merged.SetRecordings(recs); err != nil {
 		return fmt.Errorf("work %q: %w", target, err)
+	}
+	// translation_of: the losers' links union onto the survivor and every work naming a
+	// loser is re-pointed (links.go), so no link is left naming a retired slug.
+	if err := t.relinkTranslations(pack.FamilyWorks, "work", target, merged, sorted, loserEntries); err != nil {
+		return err
 	}
 	t.works.put(target, merged)
 
