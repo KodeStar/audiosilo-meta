@@ -20,7 +20,9 @@ import (
 // listed name that no longer exists is caught too (it would guard nothing).
 //
 // The analyzer reaches package-level functions only, so a METHOD returning losses
-// is refused outright: it could never be linted.
+// is refused outright: it could never be linted. And it sees only a bare call
+// STATEMENT - `_ = f()` and `x, _ := f()` are assignments it never looks at - so
+// this test refuses a loss result assigned to the blank identifier itself.
 func TestLossHelpersAreLinted(t *testing.T) {
 	const pkgPath = "github.com/kodestar/audiosilo-meta/internal/repair"
 
@@ -30,6 +32,9 @@ func TestLossHelpersAreLinted(t *testing.T) {
 		t.Fatal(err)
 	}
 	var helpers []string
+	// lossAt maps a helper to the result positions that carry a mergedFacts.
+	lossAt := map[string][]int{}
+	var parsed []*ast.File
 	for _, path := range files {
 		if strings.HasSuffix(path, "_test.go") {
 			continue
@@ -38,6 +43,7 @@ func TestLossHelpersAreLinted(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
+		parsed = append(parsed, f)
 		for _, d := range f.Decls {
 			fn, ok := d.(*ast.FuncDecl)
 			if !ok || fn.Type.Results == nil || !mentionsIdent(fn.Type.Results, "mergedFacts") {
@@ -48,7 +54,42 @@ func TestLossHelpersAreLinted(t *testing.T) {
 				continue
 			}
 			helpers = append(helpers, fn.Name.Name)
+			i := 0
+			for _, field := range fn.Type.Results.List {
+				n := max(len(field.Names), 1)
+				if mentionsIdent(field.Type, "mergedFacts") {
+					for j := range n {
+						lossAt[fn.Name.Name] = append(lossAt[fn.Name.Name], i+j)
+					}
+				}
+				i += n
+			}
 		}
+	}
+	for _, f := range parsed {
+		ast.Inspect(f, func(n ast.Node) bool {
+			as, ok := n.(*ast.AssignStmt)
+			if !ok || len(as.Rhs) != 1 {
+				return true
+			}
+			call, ok := as.Rhs[0].(*ast.CallExpr)
+			if !ok {
+				return true
+			}
+			id, ok := call.Fun.(*ast.Ident)
+			if !ok {
+				return true
+			}
+			for _, i := range lossAt[id.Name] {
+				if i < len(as.Lhs) {
+					if lhs, ok := as.Lhs[i].(*ast.Ident); ok && lhs.Name == "_" {
+						t.Errorf("%s: the losses %s returns are assigned to _ - name them in the notes (txn.noteLost)",
+							fset.Position(as.Pos()), id.Name)
+					}
+				}
+			}
+			return true
+		})
 	}
 	if len(helpers) == 0 {
 		t.Fatal("found no loss-returning helper: the scan is broken")

@@ -26,9 +26,10 @@ linters:
         # LOSS-RETURNING helpers: each returns the values a merge chose away, and a
         # call that discards that return deletes a fact with nothing in the applied
         # record's notes to say so - the defect merge-series had with fillXref. A
-        # package-level function only (the analyzer does not reach unexported
-        # methods); TestLossHelpersAreLinted in internal/repair keeps the list
-        # complete.
+        # package-level function only (the analyzer reaches no method here), and a
+        # bare call statement only (`_ = f()` and `x, _ := f()` are assignments it
+        # never sees); TestLossHelpersAreLinted in internal/repair keeps the list
+        # complete and refuses those blank-identifier discards itself.
         unusedresult:
           funcs:
             - context.WithCancel
