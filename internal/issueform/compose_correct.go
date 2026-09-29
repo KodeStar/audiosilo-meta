@@ -34,17 +34,27 @@ const (
 	kindHTTPSURL
 )
 
-// correctOp is what a correction DOES to one field. Exactly one of the two is
-// set: kind names the coercion for a scalar the correction REPLACES, and add
-// names the routine for a field the correction CONTRIBUTES ONE ENTRY TO.
+// correctOp is what a correction DOES to one field. Exactly one of kind and add
+// is in charge: kind names the coercion for a scalar the correction REPLACES, and
+// add names the routine for a field the correction CONTRIBUTES ONE ENTRY TO.
+//
+// A scalar may additionally carry resolve, which judges the coerced value
+// against the RECORD and the CATALOGUE before it is compared or written - and may
+// replace it, as a series reference resolves to the live slug it names
+// (compose_links.go). It fails the run itself and reports false when the value
+// cannot be written. It runs before the no-op test, so each hook must pass a value
+// the record already carries (a valid tree's own value always does: a person's
+// name slugs to its id, a publisher of record is not a regional imprint, a link
+// already written introduces no fault), and that one no-op rule stays the verdict.
 //
 // Two shapes, one table, one lookup: a field named here is always applied by the
 // op recorded beside it, so a name can never be reachable with nothing to do -
 // which would stamp the correction's provenance onto a record it left otherwise
 // unchanged, a silent write with no fact in it.
 type correctOp struct {
-	kind fieldKind
-	add  func(*composer, entryAddr, map[string]any, string) (applied string, ok bool)
+	kind    fieldKind
+	resolve func(*composer, entryAddr, map[string]any, any) (value any, ok bool)
+	add     func(*composer, entryAddr, map[string]any, string) (applied string, ok bool)
 }
 
 // correctableFields is the allowlist of fields a correction may touch per entity
@@ -52,27 +62,34 @@ type correctOp struct {
 // works) needs a human. Keys are the schema field names; synonyms are resolved
 // by normalizeFieldName.
 //
-// The two ADD ops are recordings-only, and the outer key is what says so: a
-// work's xref.isbn is a different field with a different shape (flat print
-// ISBNs) and keeps its existing needs-human verdict.
+// The recording ADD ops are recordings-only, and the outer key is what says so:
+// a work's xref.isbn is a different field with a different shape (flat print
+// ISBNs) and keeps its existing needs-human verdict. translation_of is an ADD op
+// on a work and on a series alike: it is a SET of originals, and a correction
+// contributes one of them (compose_links.go, which also holds the two series
+// ordering fields' compose-time checks).
 var correctableFields = map[model.Kind]map[string]correctOp{
 	model.KindWork: {
 		"title": {kind: kindString}, "subtitle": {kind: kindString},
-		"language": {kind: kindLanguage}, "first_published": {kind: kindDateYear},
+		"language": {kind: kindLanguage, resolve: (*composer).checkWorkLanguage}, "first_published": {kind: kindDateYear},
+		"translation_of": {add: (*composer).correctTranslationOf},
 	},
 	model.KindRecording: {
-		"publisher": {kind: kindString}, "runtime_min": {kind: kindInt},
+		"publisher": {kind: kindString, resolve: (*composer).publisherFreeOfRegionalImprint}, "runtime_min": {kind: kindInt},
 		"release_date": {kind: kindDateFlex}, "cover_url": {kind: kindHTTPSURL},
 		"abridged": {kind: kindBool}, "language": {kind: kindLanguage},
 		"isbn":       {add: (*composer).correctISBN},
 		"publishers": {add: (*composer).correctPublishers},
 	},
 	model.KindPerson: {
-		"name": {kind: kindString}, "sort_name": {kind: kindString},
+		"name": {kind: kindString, resolve: (*composer).renameableInPlace}, "sort_name": {kind: kindString},
 		"description": {kind: kindString}, "kind": {kind: kindString},
 	},
 	model.KindSeries: {
-		"name": {kind: kindString},
+		"name":           {kind: kindString},
+		"translation_of": {add: (*composer).correctTranslationOf},
+		"ordering":       {kind: kindString, resolve: (*composer).checkOrdering},
+		"ordering_of":    {kind: kindString, resolve: (*composer).resolveOrderingOf},
 	},
 }
 
@@ -85,6 +102,7 @@ var fieldSynonyms = map[string]string{
 	"isbns":                "isbn",
 	"audiobook_isbn":       "isbn", "audiobook_isbns": "isbn",
 	"regional_publisher": "publishers", "regional_publishers": "publishers",
+	"translated_from": "translation_of",
 }
 
 // The two additive fields are most likely to be named by copying the FORM LABEL
@@ -168,13 +186,15 @@ func (c *composer) correctData(s sections) {
 	}
 
 	entry, record, ok := c.correctionTarget(addr)
-	if !ok || c.unchanged(addr, record, fieldName, value) {
+	if !ok {
 		return
 	}
-	if !c.renameableInPlace(addr, ref.kind, fieldName, value) {
-		return
+	if op.resolve != nil {
+		if value, ok = op.resolve(c, addr, record, value); !ok {
+			return
+		}
 	}
-	if !c.publisherFreeOfRegionalImprint(addr, record, fieldName, value) {
+	if c.unchanged(addr, record, fieldName, value) {
 		return
 	}
 	record[fieldName] = value
@@ -507,15 +527,12 @@ func readRegionPublishers(v any) ([]model.RegionPublisher, bool) {
 // It is needs-human rather than invalid: the submitter has stated something true
 // about the publisher, and which of the two fields should change is a judgement
 // nothing mechanical can make.
-func (c *composer) publisherFreeOfRegionalImprint(addr entryAddr, record map[string]any, field string, value any) bool {
-	if field != "publisher" {
-		return true
-	}
+func (c *composer) publisherFreeOfRegionalImprint(addr entryAddr, record map[string]any, value any) (any, bool) {
 	name, _ := value.(string)
 	existing, ok := readRegionPublishers(record["publishers"])
 	if !ok {
 		c.fail(StatusNeedsHuman, "the publishers[] already on %s is not in the expected shape - a maintainer will apply this", addr.label(c))
-		return false
+		return nil, false
 	}
 	for _, p := range existing {
 		if p.Publisher != name {
@@ -523,9 +540,9 @@ func (c *composer) publisherFreeOfRegionalImprint(addr entryAddr, record map[str
 		}
 		c.fail(StatusNeedsHuman, "%s already lists %q as the imprint for region %q, and publishers[] holds the OTHER regions' imprints - so it cannot also be the publisher of record; a maintainer will decide which of the two fields is wrong",
 			addr.label(c), name, p.Region)
-		return false
+		return nil, false
 	}
-	return true
+	return value, true
 }
 
 // renameableInPlace reports whether a correction can be applied where the record
@@ -538,17 +555,14 @@ func (c *composer) publisherFreeOfRegionalImprint(addr entryAddr, record map[str
 // submitter their correction was invalid when it is simply beyond automation:
 // left to fall through, the write lands and the metacheck rule reports its own
 // message under the contributor-fault verdict.
-func (c *composer) renameableInPlace(addr entryAddr, kind model.Kind, field string, value any) bool {
-	if kind != model.KindPerson || field != "name" {
-		return true
-	}
+func (c *composer) renameableInPlace(addr entryAddr, _ map[string]any, value any) (any, bool) {
 	name, _ := value.(string)
 	want, _ := model.PersonSlug(name)
 	if want == addr.slug {
-		return true
+		return value, true
 	}
 	c.fail(StatusNeedsHuman, "renaming %s to %q changes its id to %q - a person's id IS the slug of their name, so the record has to move and every work crediting it has to be rewritten; a maintainer will do it", addr.label(c), name, want)
-	return false
+	return nil, false
 }
 
 // entryAddr is an entity's address in the pack layout: the family and entry key

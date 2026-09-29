@@ -45,6 +45,11 @@ import (
 //     catalogue itself is then saying they are different volumes.
 //   - a record the proposal names was retired by an earlier proposal in this run.
 //
+// A merge that would leave a translation_of link breaking pkg/check's rules - a two-hop
+// chain, a translation in its original's language - refuses it too (CatTranslationLink):
+// see links.go, which also re-points the links OTHER works hold onto a loser, so none is
+// left naming a retired slug.
+//
 // A recording-key collision refuses NOTHING: two colliding recordings either merge
 // (same narrators, no contradicting runtime) or the mover is re-keyed through the
 // project's own numbered-slug chain and moved intact. Both outcomes keep every
@@ -72,7 +77,8 @@ func (rn *runner) mergeWorks(t *txn, fd audit.Finding) error {
 	if err := t.mergeSidecars(target, sorted); err != nil {
 		return err
 	}
-	if err := t.rewriteMemberships(target, sorted); err != nil {
+	retiring := importer.ToSet(sorted)
+	if err := t.rewriteMemberships(target, sorted, retiring); err != nil {
 		return err
 	}
 
@@ -89,6 +95,11 @@ func (rn *runner) mergeWorks(t *txn, fd audit.Finding) error {
 	if err := merged.SetRecordings(recs); err != nil {
 		return fmt.Errorf("work %q: %w", target, err)
 	}
+	// translation_of: the losers' links union onto the survivor and every work naming a
+	// loser is re-pointed (links.go), so no link is left naming a retired slug.
+	if err := t.relinkTranslations(pack.FamilyWorks, target, merged, sorted, loserEntries, retiring); err != nil {
+		return err
+	}
 	t.works.put(target, merged)
 
 	for _, slug := range sorted {
@@ -101,7 +112,9 @@ func (rn *runner) mergeWorks(t *txn, fd audit.Finding) error {
 		t.redirect(model.RedirectWorks, slug, target)
 	}
 	t.note("retired %d work slug(s) with a redirect onto %s: %s", len(sorted), target, joinList(sorted))
-	return nil
+	// The staged merge is held to pkg/check's link rules (links.go): a re-point can chain
+	// a translation, and a survivor's language is what its new links are judged in.
+	return t.refuseLinkFaults(target)
 }
 
 // foldWork folds one loser into the merged work entry and its recordings map.
@@ -470,11 +483,7 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 // rewriteMemberships re-points every series membership naming a loser at the target,
 // dedupes the memberships that then say the same thing, and refuses a series where
 // the cluster holds two different positions.
-func (t *txn) rewriteMemberships(target string, losers []string) error {
-	loser := make(map[string]bool, len(losers))
-	for _, l := range losers {
-		loser[l] = true
-	}
+func (t *txn) rewriteMemberships(target string, losers []string, loser map[string]bool) error {
 	for _, sid := range t.p.seriesNaming(cluster(target, losers)...) {
 		se, ok, err := t.series.get(sid)
 		if err != nil {

@@ -504,7 +504,18 @@ const (
 	// slug tombstone table (compose.go). Its count is the size of the open re-key
 	// sweep, which is why it is an advisory at all rather than silence.
 	AdvisoryRetiredSidecarKey = "retired-sidecar-key"
-	AdvisoryUnclassified      = "unclassified"
+	// AdvisoryOrderingNotSubset is a series ordering VARIANT listing a work its
+	// primary ordering does not (languages.go) - legitimate for a chronological
+	// order holding a prequel novella, so never a failure.
+	AdvisoryOrderingNotSubset = "ordering-variant-not-subset"
+	// AdvisorySeriesTranslationSameLanguage is a series translation_of whose two
+	// sides DERIVE one primary language from their members (languages.go). The
+	// link is still a true statement - the defect is a misfiled member, which the
+	// audit's minority-language class is about - and a sync-bot volume must never
+	// turn red a link it did not write, so it is advisory where the work-level
+	// rule (a stated language on both sides) is a problem.
+	AdvisorySeriesTranslationSameLanguage = "series-translation-same-language"
+	AdvisoryUnclassified                  = "unclassified"
 )
 
 // advisoryMarkers maps each class to the marker its rule's message carries. It is
@@ -539,6 +550,12 @@ var advisoryMarkers = []struct {
 	// The composed build's tombstone rides (compose.go). Appended for the same
 	// reason as its predecessors: the census line is read by column position.
 	{AdvisoryRetiredSidecarKey, "the community re-key sweep is pending", "sidecar keys riding a redirect"},
+	// The series ordering variants (languages.go). Appended, like every class
+	// since the first: the census line is read by column position.
+	{AdvisoryOrderingNotSubset, orderingNotSubset, "ordering variants listing works their primary does not"},
+	// The series translation links whose sides derive one language (languages.go).
+	// Appended for the same reason.
+	{AdvisorySeriesTranslationSameLanguage, seriesSameLanguage, "series translation links whose two sides derive the same language"},
 }
 
 // AdvisoryClass names the advisory class a warning belongs to, or

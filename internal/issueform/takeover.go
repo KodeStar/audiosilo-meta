@@ -216,7 +216,7 @@ func (c *composer) identityMismatch(s sections, t *takeover) []string {
 		out = append(out, fmt.Sprintf("narrators (%s; recorded %s)", strings.Join(names, ", "), c.personNames(rec.Narrators)))
 	}
 	if raw := s.get(fWorkLanguage); raw != "" {
-		if lang, ok := normalizeLanguage(raw); ok && primarySubtag(lang) != primarySubtag(rec.Language) {
+		if lang, ok := normalizeLanguage(raw); ok && model.PrimarySubtag(lang) != model.PrimarySubtag(rec.Language) {
 			out = append(out, fmt.Sprintf("language (%s; recorded %s)", lang, rec.Language))
 		}
 	}
@@ -241,12 +241,6 @@ func (c *composer) samePeople(names, ids []string) bool {
 		}
 	}
 	return true
-}
-
-// primarySubtag is a BCP-47 tag's language, without its region or script.
-func primarySubtag(tag string) string {
-	lang, _, _ := strings.Cut(strings.ToLower(tag), "-")
-	return lang
 }
 
 // titleKey is a title's comparison identity: retailer decoration stripped where

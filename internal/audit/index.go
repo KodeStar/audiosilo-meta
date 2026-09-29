@@ -370,39 +370,11 @@ func (ix *index) seriesRef(s *model.Series) SeriesRef {
 }
 
 // seriesLanguage is a series' majority member language, or "" when its members
-// do not agree on one strictly (a 1-1 split has no majority).
+// do not agree on one strictly (a 1-1 split has no majority): model.SeriesLanguage,
+// the one definition pkg/check's link rules, internal/repair and internal/issueform
+// share.
 func (ix *index) seriesLanguage(s *model.Series) string {
-	counts := map[string]int{}
-	for _, sw := range s.Works {
-		if w := ix.workByID[sw.Work]; w != nil && w.Language != "" {
-			counts[w.Language]++
-		}
-	}
-	return strictMajority(counts)
-}
-
-// strictMajority returns the key with the highest count when it is STRICTLY
-// higher than every other, else "". Ties are deliberately no answer: reporting a
-// minority language needs a majority to be a minority OF.
-func strictMajority(counts map[string]int) string {
-	best, bestN, tied := "", 0, false
-	keys := make([]string, 0, len(counts))
-	for k := range counts {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
-	for _, k := range keys {
-		switch n := counts[k]; {
-		case n > bestN:
-			best, bestN, tied = k, n, false
-		case n == bestN:
-			tied = true
-		}
-	}
-	if tied {
-		return ""
-	}
-	return best
+	return model.SeriesLanguageOf(s.Works, ix.workByID)
 }
 
 // languagesCompatible mirrors pkg/check's rule of the same name (and the

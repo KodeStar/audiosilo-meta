@@ -30,24 +30,26 @@ type (
 )
 
 var (
-	workJSON         = testpack.WorkJSON
-	recJSON          = testpack.RecJSON
-	personJSON       = testpack.PersonJSON
-	seriesJSON       = testpack.SeriesJSON
-	charactersJSON   = testpack.CharactersJSON
-	recapsJSON       = testpack.RecapsJSON
-	descriptionJSON  = testpack.DescriptionJSON
-	withAuthors      = testpack.WithAuthors
-	withGenres       = testpack.WithGenres
-	withCredits      = testpack.WithCredits
-	withSubtitle     = testpack.WithSubtitle
-	withWorkXref     = testpack.WithWorkXref
-	withRuntime      = testpack.WithRuntime
-	withNarrators    = testpack.WithNarrators
-	withASIN         = testpack.WithASIN
-	withISBN         = testpack.WithISBN
-	withAbridged     = testpack.WithAbridged
-	withoutPublisher = testpack.WithoutPublisher
+	workJSON          = testpack.WorkJSON
+	recJSON           = testpack.RecJSON
+	personJSON        = testpack.PersonJSON
+	seriesJSON        = testpack.SeriesJSON
+	charactersJSON    = testpack.CharactersJSON
+	recapsJSON        = testpack.RecapsJSON
+	descriptionJSON   = testpack.DescriptionJSON
+	withAuthors       = testpack.WithAuthors
+	withGenres        = testpack.WithGenres
+	withCredits       = testpack.WithCredits
+	withSubtitle      = testpack.WithSubtitle
+	withWorkXref      = testpack.WithWorkXref
+	withRuntime       = testpack.WithRuntime
+	withNarrators     = testpack.WithNarrators
+	withASIN          = testpack.WithASIN
+	withISBN          = testpack.WithISBN
+	withAbridged      = testpack.WithAbridged
+	withoutPublisher  = testpack.WithoutPublisher
+	withLanguage      = testpack.WithLanguage
+	withTranslationOf = testpack.WithTranslationOf
 )
 
 // withoutLanguage removes the work language, which is the only way to seed the tree
