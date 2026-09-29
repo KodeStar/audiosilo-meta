@@ -52,6 +52,13 @@ type plan struct {
 	// rewrote rather than the ones the tree held at load.
 	seriesMembers map[string]map[string]bool
 	seriesOf      map[string]map[string]bool
+
+	// workLinks and seriesLinks index the translation_of and ordering_of links, forward
+	// and inverse, for the same reason: a merge re-points links on records OUTSIDE its
+	// cluster (see links.go), so "who links to this record" has to be answered against
+	// what earlier proposals re-pointed. Both are updated as a txn commits.
+	workLinks   *linkIndex
+	seriesLinks *linkIndex
 }
 
 // newPlan builds the plan over a store and the catalogue that was loaded from it.
@@ -69,6 +76,7 @@ func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, tab
 		seriesMembers: make(map[string]map[string]bool, len(cat.Series)),
 		seriesOf:      map[string]map[string]bool{},
 	}
+	p.workLinks, p.seriesLinks = newLinkIndexes(cat)
 	for _, s := range cat.Series {
 		set := make(map[string]bool, len(s.Works))
 		for _, sw := range s.Works {
@@ -428,6 +436,8 @@ func (t *txn) commit(key string) error {
 		t.p.redirects = table
 		t.p.tombs += len(t.tombs)
 	}
+	t.works.reindexLinks(t.p.workLinks)
+	t.series.reindexLinks(t.p.seriesLinks)
 	t.works.commit()
 	t.community.commit()
 	t.series.commit()

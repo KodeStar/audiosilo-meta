@@ -91,6 +91,8 @@ linters:
             - github.com/kodestar/audiosilo-meta/internal/repair.chooseChapters
             - github.com/kodestar/audiosilo-meta/internal/repair.fillStrings
             - github.com/kodestar/audiosilo-meta/internal/repair.fillXref
+            - github.com/kodestar/audiosilo-meta/internal/repair.foldTranslationOf
+            - github.com/kodestar/audiosilo-meta/internal/repair.mergeOrderingFields
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeRecordings
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeSeriesFields
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeWorkFields
