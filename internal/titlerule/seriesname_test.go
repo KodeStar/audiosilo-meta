@@ -36,6 +36,12 @@ func TestSameSeriesName(t *testing.T) {
 		{a: "Vorkosigan Saga (Published Order)", b: "Vorkosigan Saga (Chronological Order)"},
 		{a: "X (A) (B)", b: "X (B) (A)"},
 		{a: "X (Books 1-2)", b: "X (Books 12)"},
+		// Inside a group only case and the spacing touching the brackets are
+		// forgiven: punctuation and diacritics a slug would fold stay identity.
+		{a: "X (Books 1.5)", b: "X (Books 1-5)"},
+		{a: "X (Édition)", b: "X (Edition)"},
+		{a: "X (German Edition)", b: "X (German, Edition)"},
+		{a: "X (A.B.)", b: "X [A B]"},
 		// Only spacing that TOUCHES a bracket is forgiven; punctuation outside the
 		// groups stays identity even where the slug agrees.
 		{a: "Mr. X (A)", b: "Mr X (A)"},

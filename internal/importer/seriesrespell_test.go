@@ -122,6 +122,7 @@ func TestRespelledClaimsInOneBatchFoundOneSeries(t *testing.T) {
 		tombRow("B0NEWSER01", "Harbour One", "Ada Mapmaker", "Bea Reader", 300, "Harbour Saga [German Edition]", "1"),
 		tombRow("B0NEWSER02", "Harbour Two", "Ada Mapmaker", "Bea Reader", 300, "Harbour Saga (German Edition)", "2"),
 	}
+	names := map[string]string{}
 	for name, order := range map[string][]int{"forward": {0, 1}, "reverse": {1, 0}} {
 		dataDir := seedTombstoneTree(t, nil, nil)
 		var in []string
@@ -136,7 +137,17 @@ func TestRespelledClaimsInOneBatchFoundOneSeries(t *testing.T) {
 		if got := seriesWorks(t, dataDir, "harbour-saga-german-edition"); !reflect.DeepEqual(got, want) {
 			t.Errorf("%s: harbour-saga-german-edition = %v, want %v", name, got, want)
 		}
+		var ser struct {
+			Name string `json:"name"`
+		}
+		readEntity(t, dataDir, seriesAddr("harbour-saga-german-edition"), &ser)
+		names[name] = ser.Name
 		assertTreeValid(t, dataDir)
+	}
+	// The spelling the founded series is written under is the group's canonical
+	// claim's, never whichever row happened to be placed first.
+	if names["forward"] != names["reverse"] {
+		t.Errorf("the founded series' name depends on row order: forward %q, reverse %q", names["forward"], names["reverse"])
 	}
 }
 

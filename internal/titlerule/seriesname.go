@@ -19,10 +19,11 @@ import (
 // SeriesNameKey. The key is the name with case folded (exactly strings.EqualFold's
 // equivalence), so two names that differ only in case compare as they always have.
 // It widens that in ONE way: a name whose bracketed decoration DecorationKey can read
-// whole is keyed by its decoration and by what is left around it, with the
-// whitespace AROUND each bracketed group collapsed - so "NOMADS Legacy (German
-// Edition)" and "NOMADS Legacy [German Edition]", or "Throne of Glass[French
-// Edition]" and "Throne of Glass [French Edition]", are one name. That is the respell
+// whole is keyed with its bracket characters, and the whitespace touching them,
+// removed - each group's own text is kept (case folded), and so is everything around
+// it - so "NOMADS Legacy (German Edition)" and "NOMADS Legacy [German Edition]", or
+// "Throne of Glass[French Edition]" and "Throne of Glass [French Edition]", are one
+// name. That is the respell
 // Audible makes under an unchanged series ASIN, and the chain walk's plain EqualFold
 // stepped past it and founded a numbered duplicate.
 //
@@ -33,6 +34,9 @@ import (
 //   - anything outside the groups beyond case and the spacing that touches a
 //     bracket ("Mr. X (A)" / "Mr X (A)", "X - (A)" / "X (A)"), even where the slug
 //     agrees;
+//   - anything INSIDE a group beyond the same two ("(Books 1.5)" / "(Books 1-5)",
+//     "(Édition)" / "(Edition)"): DecorationKey's slug form folds punctuation and
+//     diacritics, so it gates the rule but is not the key;
 //   - a decoration DecorationKey cannot read whole (a script Slugify folds away,
 //     "(Книга 1)"): the name falls back to exact case-insensitive equality, because
 //     a half-read decoration must never agree with anything;
@@ -49,12 +53,19 @@ var spacedParenGroup = regexp.MustCompile(`\s*` + bracketGroup + `\s*`)
 // their keys are equal. See the block comment above for what it folds.
 func SeriesNameKey(name string) string {
 	folded := foldCase(name)
-	if dk := DecorationKey(folded); dk != "" {
-		if rest := spacedParenGroup.ReplaceAllString(folded, "\x1f"); hasAlnum(rest) {
-			return "\x01" + rest + "\x00" + dk
-		}
+	if DecorationKey(folded) == "" || !hasAlnum(spacedParenGroup.ReplaceAllString(folded, "")) {
+		return folded
 	}
-	return folded
+	// Each group becomes its own case-folded text, trimmed, between markers: the
+	// bracket characters and the spacing touching them go, and nothing else does.
+	// DecorationKey is only the GATE (every group readable whole); its slug form is
+	// not the key, since it also folds punctuation and diacritics inside a group -
+	// "(Books 1.5)" and "(Books 1-5)", "(Édition)" and "(Edition)" - which is wider
+	// than the respell this rule exists for.
+	return "\x01" + spacedParenGroup.ReplaceAllStringFunc(folded, func(g string) string {
+		g = strings.TrimSpace(g)
+		return "\x1f" + strings.TrimSpace(g[1:len(g)-1]) + "\x1f"
+	})
 }
 
 // SameSeriesName reports whether a and b name one series: an addressable slug they

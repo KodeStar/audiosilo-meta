@@ -75,6 +75,12 @@ type seriesTarget struct {
 	// chain where slug sits on the name's chain, when it founds a new one.
 	stepped []string
 	chain   int
+	// name is the spelling a FOUNDED series is written under: the group's
+	// canonical claim's (its lowest claimOrder), so when one group holds several
+	// spellings of one name (case, or a respelled decoration - SameSeriesName) the
+	// record does not take whichever row happened to be placed first. "" on a
+	// joined or refused target.
+	name string
 }
 
 // seriesCatalogue is what the resolution reads about the catalogue
@@ -341,7 +347,7 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 			if found {
 				out[idx[k]] = seriesTarget{slug: home.slug, found: true, via: home.via}
 			} else {
-				out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped, chain: home.chain}
+				out[idx[k]] = seriesTarget{slug: home.slug, stepped: stepped, chain: home.chain, name: name}
 			}
 		}
 	}

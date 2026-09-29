@@ -3192,6 +3192,9 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 		p.noteDroppedSeriesClaim(r)
 		return nil
 	}
+	if t.name != "" {
+		name = t.name // the group's canonical spelling, whatever row placed first
+	}
 	slug := t.slug
 	ss := &seriesState{
 		slug:      slug,
