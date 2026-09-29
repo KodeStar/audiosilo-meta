@@ -461,6 +461,7 @@ func load(lst *pack.Listing, rdr *pack.Reader) (Result, *pathIndex) {
 	checkPersonSlug(cat, idx, add)
 	checkReservedSlug(cat, idx, add)
 	checkRedirects(cat, workByID, peopleIDs, add)
+	checkLanguageLinks(profile, cat, workByID, idx, add, warn)
 	checkSidecarUniqueness(cat, idx, add)
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)

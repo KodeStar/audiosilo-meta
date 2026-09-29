@@ -342,19 +342,23 @@ func (c *composer) retiredKeysFor(key string) ([]string, bool) {
 
 // liveWorkSlug is the works-holding half of resolveWorkKey with no verdict
 // attached: slug itself when the catalogue holds it, the survivor when the tree's
-// own tombstone table retires it onto a live work, else "". The table is read
-// exactly as the artifact branch reads the artifact's: one lookup, and the target
-// must be a live work (pkg/check enforces that, so a table that fails it is a red
-// tree rather than something to resolve against). Only meaningful on a root that
-// holds the works family.
+// own tombstone table retires it onto a live work, else "". Only meaningful on a
+// root that holds the works family.
 func (c *composer) liveWorkSlug(slug string) string {
-	if _, exists := c.works[slug]; exists {
+	return c.liveSlug(model.RedirectWorks, c.holdsWork, slug)
+}
+
+// liveSlug is liveWorkSlug for any family: slug itself when holds says the
+// catalogue has it, the survivor when the tree's tombstone table retires it onto a
+// live record, else "". The table is read exactly as the artifact branch reads the
+// artifact's: one lookup, and the target must be live (pkg/check enforces that, so
+// a table that fails it is a red tree rather than something to resolve against).
+func (c *composer) liveSlug(kind model.RedirectKind, holds func(string) bool, slug string) string {
+	if holds(slug) {
 		return slug
 	}
-	if to, retired := c.redirects.Survivor(model.RedirectWorks, slug); retired {
-		if _, live := c.works[to]; live {
-			return to
-		}
+	if to, retired := c.redirects.Survivor(kind, slug); retired && holds(to) {
+		return to
 	}
 	return ""
 }

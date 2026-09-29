@@ -13,9 +13,12 @@ import (
 //
 // It rewrites nothing outside the series family, and that is a property of the data
 // model rather than an omission: a work does not reference its series, a series
-// references its works. So folding two spellings of one series is exactly a union of
-// two membership lists - which is also why it is a much smaller change than
-// merge-works, with one refusal instead of three.
+// references its works. So folding two spellings of one series is a union of two
+// membership lists - plus the series-to-series links (translation_of, ordering_of),
+// which links.go re-points on every OTHER series naming a loser, and then holds the
+// staged merge to pkg/check's link rules (a chain, a second hop, two series of one
+// ordering in a family are refused; a merge that promotes or moves a variant is refused
+// before anything is re-pointed).
 func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 	target := fd.Propose.Target
 	te, sorted, loserEntries, err := t.loadCluster(pack.FamilySeries, "series", fd.Propose)
@@ -62,6 +65,13 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 	if err := refuseDuplicatePositions(target, works); err != nil {
 		return err
 	}
+	retiring := importer.ToSet(sorted)
+	if err := t.relinkTranslations(pack.FamilySeries, target, merged, sorted, loserEntries, retiring); err != nil {
+		return err
+	}
+	if err := t.relinkOrderings(target, merged, sorted, loserEntries, retiring); err != nil {
+		return err
+	}
 	t.setSeries(target, merged, works)
 	for _, slug := range sorted {
 		t.series.remove(slug)
@@ -69,7 +79,7 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 		t.redirect(model.RedirectSeries, slug, target)
 	}
 	t.note("folded %d membership(s) onto %s and retired %s with a redirect", moved, target, joinList(sorted))
-	return nil
+	return t.refuseLinkFaults(target)
 }
 
 // mergeSeriesFields folds a loser series' own facts into the surviving record and returns

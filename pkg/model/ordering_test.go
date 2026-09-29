@@ -54,3 +54,12 @@ func TestSeriesOrderingsCoverSchemaEnum(t *testing.T) {
 		}
 	}
 }
+
+func TestOrderingPrimary(t *testing.T) {
+	if got := (&Series{ID: "saga"}).OrderingPrimary(); got != "saga" {
+		t.Errorf("a primary's OrderingPrimary = %q, want itself", got)
+	}
+	if got := (&Series{ID: "saga-chrono", OrderingOf: "saga"}).OrderingPrimary(); got != "saga" {
+		t.Errorf("a variant's OrderingPrimary = %q, want the series it names", got)
+	}
+}

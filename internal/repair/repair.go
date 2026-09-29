@@ -173,6 +173,14 @@ const (
 	// CatPositionConflict: the change would put one book at two positions in a series,
 	// or two books at one.
 	CatPositionConflict Category = "series-position-conflict"
+	// CatTranslationLink: the merge would leave a translation_of link breaking one of
+	// pkg/check's link rules (check.LinkFaults) - a two-hop chain, or a translation in
+	// its original's language - which no mechanical rule can settle.
+	CatTranslationLink Category = "translation-link-conflict"
+	// CatOrderingLink: the merge would promote or move a variant ordering out of its
+	// family, or leave an ordering link breaking one of pkg/check's link rules - a
+	// second hop, or two series of one ordering in one family.
+	CatOrderingLink Category = "ordering-link-conflict"
 	// CatRecordingKey: a colliding recording key had no free numbered variant.
 	CatRecordingKey Category = "recording-key-exhausted"
 	// CatStaleValue: the record no longer states the value the proposal was written
@@ -192,7 +200,7 @@ const (
 func Categories() []Category {
 	return []Category{
 		CatStaleProposal, CatNotProposed, CatCommunityRequired, CatMissing, CatRetired,
-		CatSidecarCollision, CatPositionConflict, CatRecordingKey, CatStaleValue,
+		CatSidecarCollision, CatPositionConflict, CatTranslationLink, CatOrderingLink, CatRecordingKey, CatStaleValue,
 		CatNoValue, CatMalformed, CatRedirect,
 	}
 }

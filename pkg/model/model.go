@@ -338,6 +338,19 @@ func SeriesOrderings() []string {
 	return []string{OrderingPublication, OrderingChronological, OrderingRecommended}
 }
 
+// OrderingPrimary is the id of the PRIMARY ordering of the family the series
+// states it belongs to: the series its ordering_of names, else the series
+// itself. Two series with one OrderingPrimary are two reading orders of one
+// franchise by their own statement. It reads the field and nothing else - it
+// does not follow a chain or check the target is live (pkg/check's link rules
+// do).
+func (s *Series) OrderingPrimary() string {
+	if s.OrderingOf != "" {
+		return s.OrderingOf
+	}
+	return s.ID
+}
+
 // Position is a spoiler position within a work's own timeline. Chapter is the
 // logical (edition-independent) work chapter, 1-based; 0 means front matter or
 // knowledge carried from earlier books in a series.

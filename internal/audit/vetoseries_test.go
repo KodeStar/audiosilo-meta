@@ -520,3 +520,66 @@ func TestSeriesDupVetoesANonOrderingDecorationThatMovesNothing(t *testing.T) {
 	})))
 	assertVetoed(t, fd, "SER-PAREN")
 }
+
+// ---- ordering families -------------------------------------------------------
+
+// orderingVariant marks a rendered series as a variant ordering of primary.
+func orderingVariant(t testing.TB, series, ordering, primary string) string {
+	t.Helper()
+	return withField(t, withField(t, series, "ordering", ordering), "ordering_of", primary)
+}
+
+// Two series the data STATES are orderings of one franchise are two reading orders, not
+// one series spelled twice - whichever way round the link runs, and whether one names the
+// other or both name a third primary. The same fixture without the link is the mechanical
+// merge TestSeriesDupMergesTwoSpellingsOfOneAuthorsSeries pins.
+func TestSeriesDupVetoesAnOrderingFamily(t *testing.T) {
+	alpha := func(t testing.TB) string { return seriesJSON(t, "alpha", "Dragon Heart", "one@1") }
+	beta := func(t testing.TB) string { return seriesJSON(t, "beta", "Dragon Heart Series", "two@2") }
+	cases := map[string]struct {
+		files map[string]string
+		want  string
+	}{
+		"the loser names the survivor": {
+			files: map[string]string{
+				"series/aa/alpha.json": alpha(t),
+				"series/bb/beta.json":  orderingVariant(t, beta(t), "chronological", "alpha"),
+			},
+			want: "alpha and beta are two orderings of the franchise whose primary is alpha",
+		},
+		"the survivor names the loser": {
+			files: map[string]string{
+				"series/aa/alpha.json": orderingVariant(t, alpha(t), "chronological", "beta"),
+				"series/bb/beta.json":  beta(t),
+			},
+			want: "alpha and beta are two orderings of the franchise whose primary is beta",
+		},
+		"both name one primary": {
+			files: map[string]string{
+				"series/aa/alpha.json": orderingVariant(t, alpha(t), "chronological", "gamma"),
+				"series/bb/beta.json":  orderingVariant(t, beta(t), "recommended", "gamma"),
+				"series/gg/gamma.json": seriesJSON(t, "gamma", "Wyvern Saga Publication Order", "one@1", "two@2"),
+			},
+			want: "alpha and beta are two orderings of the franchise whose primary is gamma",
+		},
+	}
+	for name, c := range cases {
+		t.Run(name, func(t *testing.T) {
+			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, c.files)))
+			assertVetoed(t, fd, c.want)
+		})
+	}
+}
+
+// The negative: two variants of DIFFERENT primaries are not one family, so the link says
+// nothing about the pair and the merge stays whatever the other rules make it -
+// mechanical here, as the unlinked fixture is.
+func TestSeriesDupOrderingVetoNeedsOneFamily(t *testing.T) {
+	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/aa/alpha.json": orderingVariant(t, seriesJSON(t, "alpha", "Dragon Heart", "one@1"), "chronological", "gamma"),
+		"series/bb/beta.json":  orderingVariant(t, seriesJSON(t, "beta", "Dragon Heart Series", "two@2"), "chronological", "delta"),
+		"series/gg/gamma.json": seriesJSON(t, "gamma", "Wyvern Saga Publication Order", "one@1"),
+		"series/dd/delta.json": seriesJSON(t, "delta", "Griffin Cycle Reading List", "two@1"),
+	})))
+	assertMechanical(t, fd)
+}
