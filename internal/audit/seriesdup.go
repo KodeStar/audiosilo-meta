@@ -229,17 +229,20 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 // same three works at the same slots as "The MaddAddam Trilogy", and an ordering whose
 // list is identical to its plain sibling's is not a second ordering. It stands down
 // only when every decoration is in orderingDecorations, the survivor is UNDECORATED,
-// and every decorated member's memberships are already in it at the same slots
-// (foldMovesNothing, the collection veto's own "nothing moves" test) - so the fold
-// retires a spelling and changes no order. Any other one-sided decoration still
+// and every decorated member's list IS the survivor's: the same number of memberships,
+// each already in it at the same slot (foldMovesNothing, the collection veto's own
+// "nothing moves" test, plus the count) - so the fold retires a spelling and changes no
+// order. A SUBSET is not enough: a partial ordering that agrees on the volumes it has
+// listed so far is still a list nobody has shown to be the plain one. Any other one-sided decoration still
 // vetoes, even where nothing moves: an edition, an author or a format qualifier says
 // something about the series that the plain name does not.
 func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string) (string, bool) {
-	var decorated, plain []string
+	var decorated []string
+	plain := 0
 	classes := map[string]bool{}
 	for _, k := range group {
 		if !k.paren {
-			plain = append(plain, k.series.ID)
+			plain++
 			continue
 		}
 		decorated = append(decorated, k.series.ID)
@@ -251,13 +254,13 @@ func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string)
 	case len(classes) >= 2:
 		return truncateList(decorated, 4) + " carry different parenthetical decorations: that decoration is what " +
 			"tells them apart (an alternative ordering, an edition, or an author disambiguator) - see SER-PAREN", true
-	case len(plain) == 0:
+	case plain == 0:
 		return "", false // one decoration, carried by every member: it tells none of them apart
 	case orderingFoldMovesNothing(group, sides, target):
 		return "", false
 	}
 	return truncateList(decorated, 4) + " carry a parenthetical decoration the others do not: folding would erase " +
-		"the decoration that distinguishes it - see SER-PAREN", true
+		"the decoration that distinguishes them - see SER-PAREN", true
 }
 
 // decorClass is the class a decorated member's decoration puts it in: its
@@ -291,8 +294,9 @@ var orderingDecorations = func() map[string]bool {
 }()
 
 // orderingFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
-// is undecorated, every decorated member carries an ordering qualifier, and folding
-// each of them into the survivor moves no membership.
+// is undecorated, every decorated member carries an ordering qualifier, and each of
+// their lists is the survivor's list over again - as many memberships, none of which
+// the fold would move.
 func orderingFoldMovesNothing(group []seriesKeys, sides []seriesSide, target string) bool {
 	tgt, losers, ok := splitSides(sides, target)
 	if !ok {
@@ -310,7 +314,7 @@ func orderingFoldMovesNothing(group []seriesKeys, sides []seriesSide, target str
 		if !k.paren {
 			continue
 		}
-		if !orderingDecorations[k.decor] || !foldMovesNothing(tgt, l) {
+		if !orderingDecorations[k.decor] || len(l.members) != len(tgt.members) || !foldMovesNothing(tgt, l) {
 			return false
 		}
 	}

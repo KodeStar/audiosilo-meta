@@ -351,6 +351,17 @@ func TestSeriesDupMergesTheSameDecorationSpelledTwice(t *testing.T) {
 	}
 }
 
+// Two decorations that differ only in text Slugify cannot write are not the same
+// decoration: "(Книга 1)" and "(Том 1)" both fold to "1" through the ASCII slug, and
+// must never meet on it.
+func TestSeriesDupVetoesDecorationsItCannotRead(t *testing.T) {
+	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/aa/alpha.json": seriesJSON(t, "alpha", "Dragon Heart (Книга 1)", "one@1"),
+		"series/bb/beta.json":  seriesJSON(t, "beta", "Dragon Heart (Том 1)", "two@2"),
+	})))
+	assertVetoed(t, fd, "carry different parenthetical decorations")
+}
+
 // Two DIFFERENT decorations are still what tells two series apart, whatever else agrees.
 func TestSeriesDupVetoesTwoDifferentDecorations(t *testing.T) {
 	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
@@ -407,7 +418,7 @@ func TestSeriesDupProposesASameDecorationSubgroupApart(t *testing.T) {
 	if sub.Propose.Target != "tog-fr" || !slices.Equal(sub.Propose.Others, []string{"tog-fr-2"}) {
 		t.Errorf("subgroup proposes %s <- %v, want tog-fr <- [tog-fr-2]", sub.Propose.Target, sub.Propose.Others)
 	}
-	if sub.Key != "throneofglass[frenchedition]" {
+	if sub.Key != "throneofglass[french-edition]" {
 		t.Errorf("subgroup key = %q, want the group key plus the decoration", sub.Key)
 	}
 }
@@ -475,6 +486,7 @@ func TestSeriesDupVetoesAnOrderingThatDiffers(t *testing.T) {
 	for name, pub := range map[string][]string{
 		"a membership the plain series lacks": {"one@1", "three@3"},
 		"a membership at another slot":        {"one@1", "two@3"},
+		"a partial list":                      {"one@1"},
 	} {
 		t.Run(name, func(t *testing.T) {
 			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
