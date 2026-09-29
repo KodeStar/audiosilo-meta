@@ -34,17 +34,23 @@ const (
 	kindHTTPSURL
 )
 
-// correctOp is what a correction DOES to one field. Exactly one of the two is
-// set: kind names the coercion for a scalar the correction REPLACES, and add
-// names the routine for a field the correction CONTRIBUTES ONE ENTRY TO.
+// correctOp is what a correction DOES to one field. Exactly one of kind and add
+// is in charge: kind names the coercion for a scalar the correction REPLACES, and
+// add names the routine for a field the correction CONTRIBUTES ONE ENTRY TO.
+//
+// A scalar may additionally carry resolve, which judges the coerced value
+// against the CATALOGUE before it is compared or written - and may replace it,
+// as a series reference resolves to the live slug it names (compose_links.go).
+// It fails the run itself and reports false when the value cannot be written.
 //
 // Two shapes, one table, one lookup: a field named here is always applied by the
 // op recorded beside it, so a name can never be reachable with nothing to do -
 // which would stamp the correction's provenance onto a record it left otherwise
 // unchanged, a silent write with no fact in it.
 type correctOp struct {
-	kind fieldKind
-	add  func(*composer, entryAddr, map[string]any, string) (applied string, ok bool)
+	kind    fieldKind
+	resolve func(*composer, entryAddr, map[string]any, any) (value any, ok bool)
+	add     func(*composer, entryAddr, map[string]any, string) (applied string, ok bool)
 }
 
 // correctableFields is the allowlist of fields a correction may touch per entity
@@ -52,13 +58,17 @@ type correctOp struct {
 // works) needs a human. Keys are the schema field names; synonyms are resolved
 // by normalizeFieldName.
 //
-// The two ADD ops are recordings-only, and the outer key is what says so: a
-// work's xref.isbn is a different field with a different shape (flat print
-// ISBNs) and keeps its existing needs-human verdict.
+// The recording ADD ops are recordings-only, and the outer key is what says so:
+// a work's xref.isbn is a different field with a different shape (flat print
+// ISBNs) and keeps its existing needs-human verdict. translation_of is an ADD op
+// on a work and on a series alike: it is a SET of originals, and a correction
+// contributes one of them (compose_links.go, which also holds the two series
+// ordering fields' compose-time checks).
 var correctableFields = map[model.Kind]map[string]correctOp{
 	model.KindWork: {
 		"title": {kind: kindString}, "subtitle": {kind: kindString},
 		"language": {kind: kindLanguage}, "first_published": {kind: kindDateYear},
+		"translation_of": {add: (*composer).correctTranslationOf},
 	},
 	model.KindRecording: {
 		"publisher": {kind: kindString}, "runtime_min": {kind: kindInt},
@@ -72,7 +82,10 @@ var correctableFields = map[model.Kind]map[string]correctOp{
 		"description": {kind: kindString}, "kind": {kind: kindString},
 	},
 	model.KindSeries: {
-		"name": {kind: kindString},
+		"name":           {kind: kindString},
+		"translation_of": {add: (*composer).correctTranslationOf},
+		"ordering":       {kind: kindString, resolve: (*composer).checkOrdering},
+		"ordering_of":    {kind: kindString, resolve: (*composer).resolveOrderingOf},
 	},
 }
 
@@ -85,6 +98,7 @@ var fieldSynonyms = map[string]string{
 	"isbns":                "isbn",
 	"audiobook_isbn":       "isbn", "audiobook_isbns": "isbn",
 	"regional_publisher": "publishers", "regional_publishers": "publishers",
+	"translated_from": "translation_of",
 }
 
 // The two additive fields are most likely to be named by copying the FORM LABEL
@@ -168,7 +182,15 @@ func (c *composer) correctData(s sections) {
 	}
 
 	entry, record, ok := c.correctionTarget(addr)
-	if !ok || c.unchanged(addr, record, fieldName, value) {
+	if !ok {
+		return
+	}
+	if op.resolve != nil {
+		if value, ok = op.resolve(c, addr, record, value); !ok {
+			return
+		}
+	}
+	if c.unchanged(addr, record, fieldName, value) {
 		return
 	}
 	if !c.renameableInPlace(addr, ref.kind, fieldName, value) {
