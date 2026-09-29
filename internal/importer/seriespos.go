@@ -143,9 +143,10 @@ func (p *planner) needsSeriesPosition(b sourceBook) bool {
 // this one with no usable position, states nothing about this row: the caller
 // leaves the claim as it found it and the row keeps its warning.
 func lookedUpPosition(refs []SeriesPosition, name string) (string, bool) {
+	named := titlerule.NewSeriesName(name) // prepared once: every stated series is compared to it
 	for _, got := range refs {
 		cand := makeSeriesRef(got.Name, got.Position)
-		if cand.seqOK && titlerule.SameSeriesName(cand.name, name) {
+		if cand.seqOK && named.Same(cand.name) {
 			return cand.seq, true
 		}
 	}

@@ -60,16 +60,38 @@ func SeriesNameKey(name string) string {
 // SameSeriesName reports whether a and b name one series: an addressable slug they
 // share (a name with none is no series at all, so it matches nothing) and one
 // SeriesNameKey.
-func SameSeriesName(a, b string) bool {
-	slug := model.Slugify(a)
-	return slug != "" && slug == model.Slugify(b) && SeriesNameKey(a) == SeriesNameKey(b)
+func SameSeriesName(a, b string) bool { return NewSeriesName(a).Same(b) }
+
+// SeriesName is one side of SameSeriesName with its slug and key computed once,
+// for a caller comparing ONE name against many candidates (the chain walk, the
+// libex position lookup). It is the rule itself, not a second spelling of it:
+// SameSeriesName is built on it.
+type SeriesName struct{ slug, key string }
+
+// NewSeriesName prepares name for repeated SameSeriesName comparisons.
+func NewSeriesName(name string) SeriesName {
+	slug := model.Slugify(name)
+	if slug == "" {
+		return SeriesName{}
+	}
+	return SeriesName{slug: slug, key: SeriesNameKey(name)}
+}
+
+// Same reports SameSeriesName(n's name, other). The candidate's key is computed
+// only once its slug agrees, which on a chain walk it nearly always does, but
+// which a lookup over another source's series list mostly does not.
+func (n SeriesName) Same(other string) bool {
+	return n.slug != "" && n.slug == model.Slugify(other) && n.key == SeriesNameKey(other)
 }
 
 // foldCase maps every rune to the smallest member of its simple case-folding orbit,
 // so foldCase(a) == foldCase(b) exactly when strings.EqualFold(a, b): the key cannot
 // be narrower (or wider) than the case-insensitive comparison it replaced. The key
 // derives everything else from the folded string, so two names EqualFold calls equal
-// always get one key.
+// always get one key. It is SIMPLE folding on purpose, not golang.org/x/text/cases.Fold:
+// full folding (ß -> ss) would widen which names join beyond the measured change, and a
+// wrong series join is worse than a duplicate, so parity with the EqualFold rule it
+// replaced is the requirement rather than an accident.
 func foldCase(s string) string {
 	ascii := true
 	for i := 0; i < len(s); i++ {

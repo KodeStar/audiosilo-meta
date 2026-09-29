@@ -201,6 +201,7 @@ func (c *seriesCandidate) extend(cl nameClaim) {
 // can have been minted - and every other held or retired slug is occupied.
 func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate {
 	var out []seriesCandidate
+	named := titlerule.NewSeriesName(name) // prepared once: every held name on the chain is compared to it
 	add := func(slug, via string) {
 		if slices.ContainsFunc(out, func(c seriesCandidate) bool { return c.slug == slug }) {
 			return
@@ -214,7 +215,7 @@ func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate 
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
 		if held, exists := cat.stored(slug); exists {
-			if titlerule.SameSeriesName(held, name) {
+			if named.Same(held) {
 				add(slug, "")
 			}
 			continue
