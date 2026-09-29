@@ -244,7 +244,13 @@ type workCard struct {
 	ID      string      `json:"id"`
 	Title   string      `json:"title"`
 	Authors []personRef `json:"authors"`
-	Series  *seriesRef  `json:"series"`
+	// Language is the work's BCP 47 language tag, ALWAYS present: every work
+	// has one (the schema requires it and works.language is NOT NULL), so an
+	// omitempty would only ever hide a corrupt artifact. It is what lets a
+	// reader tell a work from its translations on a list - "Throne of Glass"
+	// and its French and German editions otherwise read as one book three times.
+	Language string     `json:"language"`
+	Series   *seriesRef `json:"series"`
 	// ReleaseDate is the EARLIEST release date across the work's recordings -
 	// `YYYY`, `YYYY-MM` or `YYYY-MM-DD`, the precision the source stated. See
 	// cardFactsByWork for how the winner is chosen.
@@ -318,7 +324,7 @@ func dedupeIDs(ids []string) []string {
 // EXPLAIN exactly what runs instead of a hand-copied lookalike that silently
 // drifts.
 func worksByIDSQL(ph string) string {
-	return `SELECT id, title, added_at FROM works WHERE id IN (` + ph + `)`
+	return `SELECT id, title, language, added_at FROM works WHERE id IN (` + ph + `)`
 }
 
 func authorsByWorkSQL(ph string) string {
@@ -374,7 +380,7 @@ func seriesSummariesByIDSQL(ph string) string {
 }
 
 // cardsByID builds the work cards for a whole id set in a FIXED number of
-// queries per chunk (works + authors + series + covers), instead of the four
+// queries per chunk (works + authors + series + recording facts), instead of the four
 // queries per work a workCard loop costs. That is what keeps a prolific
 // narrator's page from issuing thousands of sequential round-trips. Ids absent
 // from the catalogue are simply missing from the map.
@@ -394,12 +400,12 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 		}
 		defer func() { _ = rows.Close() }()
 		for rows.Next() {
-			var id, title string
+			var id, title, language string
 			var addedAt sql.NullString
-			if err := rows.Scan(&id, &title, &addedAt); err != nil {
+			if err := rows.Scan(&id, &title, &language, &addedAt); err != nil {
 				return err
 			}
-			wc := &workCard{ID: id, Title: title, Authors: []personRef{}}
+			wc := &workCard{ID: id, Title: title, Language: language, Authors: []personRef{}}
 			if addedAt.Valid {
 				wc.AddedAt = &addedAt.String
 			}

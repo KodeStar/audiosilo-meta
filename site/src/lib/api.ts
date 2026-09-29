@@ -35,6 +35,12 @@ export interface WorkCard {
   id: string
   title: string
   authors: PersonRef[]
+  /** The work's BCP 47 language tag ("en", "fr"). The API always sends it -
+      every work states one - but it is optional here for the same reason
+      release_date is: a response from a metaserve that predates the field, or
+      an embedded payload cached before it, carries none. Nothing renders it
+      yet; it is what lets a list tell a work from its translations. */
+  language?: string
   series?: SeriesRef | null
   /** The EARLIEST release date across the work's recordings, at whatever
       precision the source stated (`YYYY`, `YYYY-MM`, `YYYY-MM-DD`). Omitted by
@@ -58,17 +64,11 @@ export interface Stats {
   built_at: string
 }
 
+/** A work hit COMPOSES the card rather than restating it (the server's
+    workResult embeds workCard the same way), so a field the card gains reaches
+    the search type too. */
 export type SearchResult =
-  | {
-      kind: 'work'
-      id: string
-      title: string
-      authors: PersonRef[]
-      series?: SeriesRef | null
-      release_date?: string
-      cover_url?: string | null
-      narrators?: PersonRef[]
-    }
+  | ({ kind: 'work' } & WorkCard & { narrators: PersonRef[] })
   | { kind: 'person'; id: string; name: string }
   | { kind: 'series'; id: string; name: string; works: number }
 

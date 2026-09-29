@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"net/http"
 	"os"
 	"path/filepath"
 	"slices"
@@ -194,5 +195,79 @@ func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
 	// ever going to exist and the check passes whatever the DSN did.
 	if _, err := os.Stat(filepath.Join(base, "a")); err == nil {
 		t.Error("a truncated artifact path was created")
+	}
+}
+
+// TestCardCarriesLanguageOnEverySurface pins the card's `language` field
+// wherever a card reaches the wire: the four searches, works/latest, a series'
+// entries, a person's two credit lists and lookup. The card is composed ONCE
+// (cardsByID) and every one of those surfaces embeds it, so this is the test
+// that fails if a surface ever grows a hand-restated card again - the search
+// hit did, until it embedded the card.
+//
+// The fixture adds a FRENCH edition beside English works of the same author and
+// series, which is the case the field exists for: without it the two read as
+// one book twice on every list.
+func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
+	cat := fixtureCatalog()
+	cat.Works = append(cat.Works, &model.Work{
+		ID: "la-voie-des-rois", Title: "La Voie des rois", Language: "fr",
+		Authors: []string{"brandon-sanderson"}, License: "CC0-1.0",
+		AddedAt: "2026-07-11",
+		Recordings: []*model.Recording{{
+			ID: "kramer-fr", Work: "la-voie-des-rois", Language: "fr", License: "CC0-1.0",
+			Narrators: []string{"michael-kramer"},
+			ASIN:      []model.ASIN{{Region: "fr", ASIN: "B0FRENCH01"}},
+		}},
+	})
+	cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: "la-voie-des-rois", Position: "11"})
+	_, ts := newTestServerForCatalog(t, cat)
+
+	want := map[string]string{
+		"project-hail-mary": "en", "the-way-of-kings": "en", "words-of-radiance": "en",
+		"edgedancer": "en", "la-voie-des-rois": "fr",
+	}
+	for _, path := range []string{
+		"/api/v1/search?q=voie",
+		"/api/v1/works/search?q=voie",
+		"/api/v1/search?q=kings",
+		"/api/v1/works/latest",
+		"/api/v1/series/the-stormlight-archive",
+		"/api/v1/people/brandon-sanderson",
+		"/api/v1/people/michael-kramer",
+		"/api/v1/lookup?asin=B0FRENCH01",
+	} {
+		code, body := getJSON(t, ts.URL, path)
+		if code != http.StatusOK {
+			t.Fatalf("GET %s: status %d", path, code)
+		}
+		// Every card-shaped object on the page: an id, a title and an authors
+		// list. A work detail would match too, and carries the field as well.
+		var cards int
+		var walk func(v any)
+		walk = func(v any) {
+			switch v := v.(type) {
+			case map[string]any:
+				_, hasTitle := v["title"]
+				_, hasAuthors := v["authors"]
+				if id, ok := v["id"].(string); ok && hasTitle && hasAuthors {
+					cards++
+					if got, ok := v["language"]; !ok || got != want[id] {
+						t.Errorf("GET %s: card %q language = %v (present %v), want %q", path, id, got, ok, want[id])
+					}
+				}
+				for _, child := range v {
+					walk(child)
+				}
+			case []any:
+				for _, child := range v {
+					walk(child)
+				}
+			}
+		}
+		walk(body)
+		if cards == 0 {
+			t.Errorf("GET %s: no work card on the page", path)
+		}
 	}
 }

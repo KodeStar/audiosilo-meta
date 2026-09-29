@@ -7,17 +7,16 @@ import (
 )
 
 // workResult is a search hit that is a work: the card fields inline, plus the
-// kind discriminator and the work's narrators.
+// kind discriminator and the work's narrators. The card is EMBEDDED rather than
+// restated field by field, so a field the card gains reaches every search hit
+// by construction (encoding/json flattens an embedded struct's fields in
+// place, between kind and narrators) - the Go twin of the OpenAPI WorkResult,
+// which composes WorkCard for the same reason. The pointer is never nil: the
+// one composer skips a hit whose card is missing.
 type workResult struct {
-	Kind        searchKind  `json:"kind"`
-	ID          string      `json:"id"`
-	Title       string      `json:"title"`
-	Authors     []personRef `json:"authors"`
-	Series      *seriesRef  `json:"series"`
-	ReleaseDate string      `json:"release_date,omitempty"`
-	CoverURL    *string     `json:"cover_url"`
-	AddedAt     *string     `json:"added_at"`
-	Narrators   []personRef `json:"narrators"`
+	Kind searchKind `json:"kind"`
+	*workCard
+	Narrators []personRef `json:"narrators"`
 }
 
 type personResult struct {
@@ -594,12 +593,7 @@ func (s *snapshot) results(hits []searchHit) ([]any, error) {
 			if ns == nil {
 				ns = []personRef{}
 			}
-			out = append(out, workResult{
-				Kind: kindWork, ID: card.ID, Title: card.Title, Authors: card.Authors,
-				Series: card.Series, ReleaseDate: card.ReleaseDate,
-				CoverURL: card.CoverURL, AddedAt: card.AddedAt,
-				Narrators: ns,
-			})
+			out = append(out, workResult{Kind: kindWork, workCard: card, Narrators: ns})
 		case kindPerson:
 			name, ok := names[h.id]
 			if !ok {

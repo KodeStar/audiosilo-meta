@@ -1206,6 +1206,18 @@ facts come from the same rows, by the same primary-key prefix), so
 `TestBatchLookupsAreIndexed` covers it and the card's "which value wins" rules
 still live in exactly one place. A future date is a catalogued PREORDER, not an
 error - the coming-soon import puts real ones in the catalogue.
+The card also carries the work's `language` (a BCP 47 tag), ALWAYS present
+rather than `omitempty`, since every work states one (`works.language` is NOT
+NULL) - it is what lets a list tell "Throne of Glass" from its French and
+German editions, and it is the first step toward a `lang=` filter. It too costs
+NO extra query: it rides the `worksByIDSQL` read `cardsByID` already makes,
+which `TestBatchLookupsAreIndexed` EXPLAINs. It reaches every card surface
+(the four searches, `works/latest`, `series/{id}` entries, both `people/{id}`
+credit lists, `lookup`, and the `#entity-data` payloads of the person and
+series pages), pinned by `TestCardCarriesLanguageOnEverySurface`; the watch
+feeds read cards but serialize none of their fields, so they are unchanged. A
+search hit EMBEDS the card (`workResult`) rather than restating its fields, so
+a field the card gains reaches every search surface by construction.
 
 **The SITE has a `/watching` page** (`site/src/pages/watching.astro` +
 `components/watching/`): a reader watches a series from its detail page and
