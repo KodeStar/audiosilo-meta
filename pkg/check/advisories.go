@@ -504,6 +504,10 @@ const (
 	// slug tombstone table (compose.go). Its count is the size of the open re-key
 	// sweep, which is why it is an advisory at all rather than silence.
 	AdvisoryRetiredSidecarKey = "retired-sidecar-key"
+	// AdvisoryOrderingNotSubset is a series ordering VARIANT listing a work its
+	// primary ordering does not (languages.go) - legitimate for a chronological
+	// order holding a prequel novella, so never a failure.
+	AdvisoryOrderingNotSubset = "ordering-variant-not-subset"
 	AdvisoryUnclassified      = "unclassified"
 )
 
@@ -539,6 +543,9 @@ var advisoryMarkers = []struct {
 	// The composed build's tombstone rides (compose.go). Appended for the same
 	// reason as its predecessors: the census line is read by column position.
 	{AdvisoryRetiredSidecarKey, "the community re-key sweep is pending", "sidecar keys riding a redirect"},
+	// The series ordering variants (languages.go). Appended, like every class
+	// since the first: the census line is read by column position.
+	{AdvisoryOrderingNotSubset, orderingNotSubset, "ordering variants listing works their primary does not"},
 }
 
 // AdvisoryClass names the advisory class a warning belongs to, or
