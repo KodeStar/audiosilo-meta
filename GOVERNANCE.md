@@ -317,11 +317,17 @@ the spoiler model, own words, the neutral reference-guide voice, the
 description contract and provenance. A community data pull request is merged
 only when `keys`, `structure` and `verify` have concluded well on its exact
 head and it carries `ai-verified`, it is not behind `main`, and it is within the
-same review bound; a flagged one is amended by the contained agent under those
-same rules and goes back through the gate. On that repository the steward
-**writes no prose from an issue**: a characters or recaps submission reaches a
-pull request through the intake bot, from a contributor's own text, and the
-steward only closes an issue once the pull request that answers it has merged.
+same review bound. A flagged one is amended by the contained agent BY DELETION
+ONLY (the maintainer's decision of 2026-09-28): it may cut words or sentences
+from a contributor's text, or remove a character card, a recap entry or a
+member, and never writes, rephrases or moves prose - the agent has not read the
+book, so nothing it composed could be grounded in it. A spoiler is cut rather
+than moved, and a mechanical check refuses any amendment whose text is not the
+contributor's own with words removed. The amended head goes back through the
+gate. The steward **writes no prose from an issue** either: a characters or
+recaps submission reaches a pull request through the intake bot, from a
+contributor's own text, and the steward only closes an issue once the pull
+request that answers it has merged.
 Composing recaps or character cards itself would be writing CC BY-SA prose from
 recollection, which the grounding rule there does not accept.
 
