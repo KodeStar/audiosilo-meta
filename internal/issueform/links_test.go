@@ -87,8 +87,8 @@ func TestCorrectTranslationOfVerdicts(t *testing.T) {
 		{"self", deWork, "das-werk", StatusInvalid, "cannot be a translation of itself"},
 		{"same language", "https://meta.audiosilo.app/works/other-en", "existing-work", StatusInvalid, `are both in "en"`},
 		{"target is itself a translation", deWork, "l-oeuvre", StatusInvalid, `work "l-oeuvre" is itself a translation (of existing-work)`},
-		{"record is an original", "https://meta.audiosilo.app/works/existing-work", "das-werk", StatusInvalid, "is the original that l-oeuvre translate"},
-		{"the two would name each other", "https://meta.audiosilo.app/works/existing-work", "l-oeuvre", StatusInvalid, `work "l-oeuvre" already names existing-work as its original`},
+		{"record is an original", "https://meta.audiosilo.app/works/existing-work", "das-werk", StatusNeedsHuman, "is the original that l-oeuvre translate"},
+		{"the two would name each other", "https://meta.audiosilo.app/works/existing-work", "l-oeuvre", StatusNeedsHuman, `work "l-oeuvre" already names existing-work as its original`},
 		{"already present", frWork, "https://meta.audiosilo.app/works/existing-work", StatusDuplicate, `already names "existing-work" in translation_of`},
 		{"not a work reference", deWork, "https://meta.audiosilo.app/series/existing-series", StatusInvalid, "is not a work reference"},
 	} {
@@ -161,19 +161,22 @@ func TestCorrectSeriesTranslationOf(t *testing.T) {
 			t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 		}
 	})
+	// A conflict in the submitter's OWN input is invalid; one that lies in OTHER
+	// records (this series is already an original) is a maintainer's.
 	for _, tc := range []struct {
 		name, record, value, mention string
+		status                       Status
 	}{
-		{"same derived language", "saga-pub", "existing-series", `are both in "en"`},
-		{"unknown", "die-serie", "no-such-series", `series "no-such-series" is not in the catalogue`},
-		{"target is a translation", "die-serie", "la-serie", `series "la-serie" is itself a translation (of existing-series)`},
-		{"record is an original", "existing-series", "die-serie", "is the original that la-serie translate"},
+		{"same derived language", "saga-pub", "existing-series", `are both in "en"`, StatusInvalid},
+		{"unknown", "die-serie", "no-such-series", `series "no-such-series" is not in the catalogue`, StatusInvalid},
+		{"target is a translation", "die-serie", "la-serie", `series "la-serie" is itself a translation (of existing-series)`, StatusInvalid},
+		{"record is an original", "existing-series", "die-serie", "is the original that la-serie translate", StatusNeedsHuman},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			dir := linkTree(t)
 			res := correctLink(t, dir, "https://meta.audiosilo.app/series/"+tc.record, "translation_of", tc.value)
-			if res.Status != StatusInvalid || !anyContains(res.Messages, tc.mention) {
-				t.Errorf("status = %q, messages = %v; want invalid mentioning %q", res.Status, res.Messages, tc.mention)
+			if res.Status != tc.status || !anyContains(res.Messages, tc.mention) {
+				t.Errorf("status = %q, messages = %v; want %q mentioning %q", res.Status, res.Messages, tc.status, tc.mention)
 			}
 		})
 	}
@@ -240,21 +243,24 @@ func TestCorrectSeriesOrderingOf(t *testing.T) {
 			t.Errorf("status = %q, messages = %v; want the no-op duplicate", res.Status, res.Messages)
 		}
 	})
+	// A conflict in the submitter's OWN input is invalid; one that lies in OTHER
+	// records (this series is already a primary) is a maintainer's.
 	for _, tc := range []struct {
 		name, record, value, mention string
+		status                       Status
 	}{
-		{"no ordering stated", "saga-plain", "saga-pub", "state this series' ordering first"},
-		{"self", "saga-rec", "saga-rec", "cannot be a variant ordering of itself"},
-		{"unknown", "saga-rec", "no-such-series", `series "no-such-series" is not in the catalogue`},
-		{"target is a variant", "saga-rec", "saga-chrono", `series "saga-chrono" is itself a variant ordering of "saga-pub"`},
-		{"record is a primary", "saga-pub", "saga-rec", "is the primary ordering that saga-chrono name"},
-		{"duplicate ordering in the family", "saga-chrono-2", "saga-pub", `series "saga-chrono" already states the "chronological" ordering of saga-pub's family`},
+		{"no ordering stated", "saga-plain", "saga-pub", "state this series' ordering first", StatusInvalid},
+		{"self", "saga-rec", "saga-rec", "cannot be a variant ordering of itself", StatusInvalid},
+		{"unknown", "saga-rec", "no-such-series", `series "no-such-series" is not in the catalogue`, StatusInvalid},
+		{"target is a variant", "saga-rec", "saga-chrono", `series "saga-chrono" is itself a variant ordering of "saga-pub"`, StatusInvalid},
+		{"record is a primary", "saga-pub", "saga-rec", "is the primary ordering that saga-chrono name", StatusNeedsHuman},
+		{"duplicate ordering in the family", "saga-chrono-2", "saga-pub", `series "saga-chrono" already states the "chronological" ordering of saga-pub's family`, StatusInvalid},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			dir := linkTree(t)
 			res := correctLink(t, dir, "https://meta.audiosilo.app/series/"+tc.record, "ordering_of", tc.value)
-			if res.Status != StatusInvalid || !anyContains(res.Messages, tc.mention) {
-				t.Errorf("status = %q, messages = %v; want invalid mentioning %q", res.Status, res.Messages, tc.mention)
+			if res.Status != tc.status || !anyContains(res.Messages, tc.mention) {
+				t.Errorf("status = %q, messages = %v; want %q mentioning %q", res.Status, res.Messages, tc.status, tc.mention)
 			}
 			if len(res.Files) != 0 {
 				t.Errorf("a refused correction wrote: %v", res.Files)
