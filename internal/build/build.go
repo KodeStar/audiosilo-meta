@@ -592,9 +592,10 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 
 // insertSeries writes the series rows. langByWork answers a member's language
 // tag, which is what the series' DERIVED language is computed from
-// (model.SeriesLanguage, the one definition pkg/check and internal/audit read
-// too) - a series states no language of its own, so the artifact is where the
-// derivation is written down for a reader. A tie, or no member whose language is
+// (model.SeriesLanguage, the one definition pkg/check's link rules,
+// internal/repair, internal/issueform and internal/audit read too) - a series
+// states no language of its own, so the artifact is where the derivation is
+// written down for a reader. A tie, or no member whose language is
 // known, is NULL in the table and the empty string in the search row.
 func insertSeries(st *stmts, series []*model.Series, langByWork map[string]string) error {
 	langOf := func(workID string) string { return langByWork[workID] }
@@ -603,7 +604,7 @@ func insertSeries(st *stmts, series []*model.Series, langByWork map[string]strin
 		if s.Xref != nil {
 			wiki, gr = s.Xref.Wikidata, s.Xref.Goodreads
 		}
-		lang := model.SeriesLanguage(s, langOf)
+		lang := model.SeriesLanguage(s.Works, langOf)
 		if _, err := st.series.Exec(
 			s.ID, s.Name, nullStr(wiki), nullStr(gr), s.License, nullStr(lang), nullStr(s.Ordering), nullStr(s.OrderingOf),
 		); err != nil {

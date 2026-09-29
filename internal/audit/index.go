@@ -371,8 +371,8 @@ func (ix *index) seriesRef(s *model.Series) SeriesRef {
 
 // seriesLanguage is a series' majority member language, or "" when its members
 // do not agree on one strictly (a 1-1 split has no majority): model.SeriesLanguage,
-// the one definition pkg/check's link rules, internal/repair and internal/issueform
-// share.
+// the one definition pkg/check's link rules, internal/repair, internal/issueform
+// and internal/build (the artifact's series.language column) share.
 func (ix *index) seriesLanguage(s *model.Series) string {
 	return model.SeriesLanguageOf(s.Works, ix.workByID)
 }

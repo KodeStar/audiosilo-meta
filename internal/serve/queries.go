@@ -1245,10 +1245,10 @@ func (s *snapshot) orderingFamily(d *seriesDetail) ([]seriesOrdering, error) {
 	if !s.hasOrderings {
 		return nil, nil
 	}
-	primary := d.ID
-	if d.OrderingOf != "" {
-		primary = d.OrderingOf
-	}
+	// The family's primary is model.Series.OrderingPrimary's answer, asked of the
+	// two fields the header read, so "which series heads the family" has one
+	// definition across check, repair and serve.
+	primary := (&model.Series{ID: d.ID, OrderingOf: d.OrderingOf}).OrderingPrimary()
 	rows, err := s.db.Query(seriesOrderingFamilySQL, primary, primary)
 	if err != nil {
 		return nil, err
