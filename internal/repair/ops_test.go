@@ -2,9 +2,12 @@ package repair
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -232,6 +235,62 @@ func TestMergeSeriesUnionsTheMembershipsAndTombstonesTheSlug(t *testing.T) {
 	if w := workEntry(t, data, "hexed"); w.Has("series") {
 		t.Error("a work gained a series member; works do not reference series")
 	}
+}
+
+// A merge-series names every series-level value it chose away, in merge-works' note
+// format: the retired spelling of the NAME (the importer joins a series by name, so a
+// source still spelling it that way stops meeting it) and a differing xref member.
+// Values that agree, or that only the loser states (filled onto the survivor), are not
+// a choice and add no line.
+func TestMergeSeriesNotesTheValuesItChoseAway(t *testing.T) {
+	const keeper, loser = "iron-druid-chronicles", "iron-druid-chronicles-2"
+	set := func(files map[string]string, slug, field string, v any) {
+		path := "series/ir/" + slug + ".json"
+		files[path] = testpack.WithField(t, files[path], field, v)
+	}
+	apply := func(t *testing.T, data string) (target, notes string) {
+		t.Helper()
+		rep := run(t, Options{DataDir: data, Ops: []string{audit.OpMergeSeries}, Write: true})
+		if len(rep.Applied) != 1 || len(rep.Refused) != 0 {
+			t.Fatalf("applied %+v, refused %+v", rep.Applied, rep.Refused)
+		}
+		return rep.Applied[0].Target, strings.Join(rep.Applied[0].Notes, "\n")
+	}
+
+	t.Run("a differing name and QID are named", func(t *testing.T) {
+		// seriesPair spells the two "The Iron Druid Chronicles" and "Iron Druid Chronicles".
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		set(files, keeper, "xref", map[string]any{"wikidata": "Q111"})
+		set(files, loser, "xref", map[string]any{"wikidata": "Q222"})
+		target, notes := apply(t, seedTree(t, files))
+		if target != keeper {
+			t.Fatalf("target = %s, want %s", target, keeper)
+		}
+		for _, want := range []string{
+			`name: kept "The Iron Druid Chronicles", dropped "Iron Druid Chronicles" from ` + loser,
+			`xref.wikidata: kept "Q111", dropped "Q222" from ` + loser,
+		} {
+			if !strings.Contains(notes, want) {
+				t.Errorf("notes do not report %q:\n%s", want, notes)
+			}
+		}
+	})
+	t.Run("an identical name and a filled QID add no line", func(t *testing.T) {
+		// Two series cannot share a QID (pkg/check), so the xref side of "nothing chosen
+		// away" is a QID only the loser states: it is FILLED onto the survivor.
+		files := seriesPair(t, "hounded@1", "hexed@2")
+		set(files, loser, "name", "The Iron Druid Chronicles")
+		set(files, loser, "xref", map[string]any{"wikidata": "Q222"})
+		data := seedTree(t, files)
+		target, notes := apply(t, data)
+		if strings.Contains(notes, "dropped") {
+			t.Errorf("a fold that chose nothing away reports a dropped value:\n%s", notes)
+		}
+		xref, err := rawentry.Decode(readEntry(t, data, pack.FamilySeries, target)["xref"])
+		if err != nil || xref.Str("wikidata") != "Q222" {
+			t.Errorf("survivor xref = %v (%v), want the loser's QID filled in", xref, err)
+		}
+	})
 }
 
 // A work the two spellings place at different positions is two orderings, not one
