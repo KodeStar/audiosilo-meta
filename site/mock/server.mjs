@@ -212,8 +212,15 @@ function cardOf(workId) {
     series: w.series && w.series[0] ? w.series[0] : null,
     cover_url: (w.recordings.find((r) => r.cover_url) || {}).cover_url ?? null,
     added_at: w.added_at ?? null,
-    narrators: w.recordings[0]?.narrators ?? [],
   }
+}
+
+/** The DISTINCT narrators across every recording of a work - what a search
+    hit's `narrators` carries on the real wire (the card itself has none). */
+function narratorsOf(w) {
+  const seen = new Map()
+  for (const r of w.recordings) for (const n of r.narrators) if (!seen.has(n.id)) seen.set(n.id, n)
+  return [...seen.values()]
 }
 
 const server = createServer((req, res) => {
@@ -283,9 +290,8 @@ const server = createServer((req, res) => {
         w.authors.some((a) => a.name.toLowerCase().includes(q)) ||
         w.recordings.some((r) => r.narrators.some((n) => n.name.toLowerCase().includes(q)))
       ) {
-        // A work hit is the card plus kind and narrators, as on the real wire
-        // (cardOf already carries the narrators).
-        results.push({ kind: 'work', ...cardOf(w.id) })
+        // A work hit is the card plus kind and narrators, as on the real wire.
+        results.push({ kind: 'work', ...cardOf(w.id), narrators: narratorsOf(w) })
       }
     }
     return send(res, 200, { results: results.slice(0, Number(url.searchParams.get('limit') || 20)) })
