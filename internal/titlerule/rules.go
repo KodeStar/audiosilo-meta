@@ -753,6 +753,26 @@ func BoundedAt(s string, start, end int) bool { return boundedAt(s, start, end) 
 // StripParenGroups removes parenthetical and bracketed groups from a name.
 func StripParenGroups(s string) string { return stripParenGroups(s) }
 
+// DecorationKey is the comparison identity of the parenthetical/bracketed groups
+// StripParenGroups removes: each group's contents folded through FoldKey, in order.
+// So case, spacing, punctuation and the BRACKET STYLE are not identity - "Throne of
+// Glass[French Edition]" and "Throne of Glass (French Edition)" carry one decoration
+// - while the words inside the groups are. Empty when the name carries no complete
+// group, or when every group folds to nothing, which a caller must read as "no
+// decoration it can compare" rather than as a decoration of its own.
+func DecorationKey(s string) string {
+	if !strings.ContainsAny(s, "([") {
+		return ""
+	}
+	var parts []string
+	for _, g := range parenGroup.FindAllString(s, -1) {
+		if f := FoldKey(g[1 : len(g)-1]); f != "" {
+			parts = append(parts, f)
+		}
+	}
+	return strings.Join(parts, "+")
+}
+
 // DropLeadingArticle removes a leading "the "/"a "/"an ", never emptying the
 // string. It is the ONE article vocabulary: the decoration detector's
 // article-plus-series rule and the series-name comparison key both read it, so

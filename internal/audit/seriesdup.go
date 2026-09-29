@@ -10,20 +10,27 @@ import (
 // SER-DUP / SER-PAREN subclasses.
 const (
 	serDupName   = "normalized-name" // the names differ only by case, diacritics, articles or a decoration suffix
+	serDupDecor  = "same-decoration" // ...the members of a vetoed normalized-name group sharing ONE decoration
 	serDupSaga   = "suffix-saga"     // ...and the only difference is a trailing " Saga"
 	serParenSolo = "decorated-only"  // a parenthetical-decorated name with no undecorated sibling
 	serParenPair = "decorated-pair"  // ...with one, which may well be a deliberate second ordering
 )
 
 // seriesKeys is one series' two comparison keys plus whether its name carries a
-// parenthetical. Both detectors read it, and it is computed ONCE per series: the
-// keys fold through model.Slugify (NFD normalization plus a builder) and were being
-// computed four times over 45k series across two detectors and their tie-breaks.
+// parenthetical and what that parenthetical says. Both detectors read it, and it is
+// computed ONCE per series: the keys fold through model.Slugify (NFD normalization
+// plus a builder) and were being computed four times over 45k series across two
+// detectors and their tie-breaks.
 type seriesKeys struct {
 	series *model.Series
 	tight  string
 	saga   string
 	paren  bool
+	// decor is titlerule.DecorationKey of the name: what the parenthetical SAYS, with
+	// the bracket style, spacing and case folded away. Empty for an undecorated name
+	// and for a paren name whose groups say nothing comparable (an unclosed bracket),
+	// which decorClass keeps apart from every other member.
+	decor string
 }
 
 // seriesKeyIndex is every series' keys, in catalogue order.
@@ -35,6 +42,7 @@ func seriesKeyIndex(all []*model.Series) []seriesKeys {
 			tight:  titlerule.SeriesKey(s.Name),
 			saga:   titlerule.SeriesSagaKey(s.Name),
 			paren:  strings.ContainsAny(s.Name, "(["),
+			decor:  titlerule.DecorationKey(s.Name),
 		})
 	}
 	return out
@@ -44,11 +52,39 @@ func seriesKeyIndex(all []*model.Series) []seriesKeys {
 func detectSeriesDup(ix *index, keys []seriesKeys) *findings {
 	f := &findings{class: ClassSeriesDup}
 
+	const foldReason = "fold the members onto the canonical name, then delete the empty spelling"
 	byTight, tightOrder := groupBy(keys, func(k seriesKeys) string { return k.tight })
 	for _, key := range tightOrder {
-		if group := byTight[key]; len(group) >= 2 {
-			f.add(seriesDupFinding(ix, serDupName, key, group,
-				"fold the members onto the canonical name, then delete the empty spelling"))
+		group := byTight[key]
+		if len(group) < 2 {
+			continue
+		}
+		fd := seriesDupFinding(ix, serDupName, key, group, foldReason)
+		f.add(fd)
+		if !fd.Propose.Advisory {
+			continue // the whole group folds onto one survivor, so no part of it needs a proposal of its own
+		}
+		// SAME-DECORATION SUBGROUPS. The tight key strips parentheticals, so "Throne of
+		// Glass" (en), "Throne of Glass[French Edition]", "Throne of Glass [French
+		// Edition]" and "Throne of Glass[German Edition]" are ONE group - and that group
+		// is rightly vetoed, since a plain series and its language editions are not one
+		// series. But the two French spellings are one series spelled twice, and a veto
+		// over the whole group withheld that fold too. So the members that carry ONE
+		// decoration are proposed again as a group of their own, judged by every veto
+		// exactly as the whole group was (a same-decoration pair in two languages still
+		// stops on the language veto), while the whole group's record is left as it was.
+		//
+		// Sub-grouping rather than a veto that only fires ACROSS differing decorations,
+		// because a merge-series names ONE target for the whole group: the canonical
+		// choice over {plain, fr, fr-2, de} is the plain series, and no veto adjustment
+		// can turn "fold everything onto the English series" into "fold fr-2 onto fr".
+		// The subgroup gets its own survivor from the same SeriesRank ladder, its own
+		// key (the group's key plus the decoration, so a report or --only file addresses
+		// it apart from the group) and its own subclass. It is emitted only under a
+		// vetoed group, which is what keeps the non-advisory set consistent: a mechanical
+		// whole-group fold would already fold these members onto a different survivor.
+		for _, sub := range sameDecorationSubgroups(group) {
+			f.add(seriesDupFinding(ix, serDupDecor, key+"["+sub[0].decor+"]", sub, foldReason))
 		}
 	}
 
@@ -160,24 +196,138 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 			" do not: a series of collections is not the same series as the books it collects")
 	}
 
-	// PARENTHETICAL decoration is SER-PAREN's whole subject: a parenthetical is
-	// often a deliberate alternative ordering ("Ascend Online [chronological]" beside
-	// "[publication order]") or an author disambiguator that five different
-	// "Atlantis" series depend on. Two decorated members are two orderings, and a
-	// fold that ERASES a decoration erases the thing telling them apart.
-	var decorated []string
+	// PARENTHETICAL decoration is SER-PAREN's whole subject - see vetoSeriesDecoration.
+	if reason, vetoed := vetoSeriesDecoration(group, sides, target); vetoed {
+		out = append(out, reason)
+	}
+	return out
+}
+
+// vetoSeriesDecoration: the members carry parentheticals that tell them apart, so a fold
+// would erase the one thing distinguishing two series.
+//
+// A parenthetical is often a deliberate alternative ordering ("Ascend Online
+// [chronological order]" beside "[publication order]"), an edition ("[French
+// Edition]") or an author disambiguator that five different "Atlantis" series depend
+// on. What distinguishes is what the decoration SAYS, compared through
+// titlerule.DecorationKey, so the veto fires in exactly two shapes:
+//
+//   - two DIFFERENT decorations in one group: two orderings, two editions or two
+//     authors' series, which is what the decorations are there to say;
+//   - a decoration on ONE side only: folding the decorated spelling into the plain
+//     one erases the decoration.
+//
+// It does NOT fire on a group whose members all carry the SAME decoration: "Throne of
+// Glass[French Edition]" and "Throne of Glass [French Edition]" differ by a space and
+// a bracket, and the decoration they share is not what tells them apart - so every
+// other veto judges them as it would two plain spellings (the same decoration in two
+// languages still stops on the language veto). A member whose parenthetical folds to
+// nothing comparable is a decoration of its own, never equal to another's.
+//
+// The one-sided shape has ONE narrow exemption: an ORDERING qualifier whose series is
+// the plain one's list over again. "The MaddAddam Trilogy (Published Order)" holds the
+// same three works at the same slots as "The MaddAddam Trilogy", and an ordering whose
+// list is identical to its plain sibling's is not a second ordering. It stands down
+// only when every decoration is in orderingDecorations, the survivor is UNDECORATED,
+// and every decorated member's memberships are already in it at the same slots
+// (foldMovesNothing, the collection veto's own "nothing moves" test) - so the fold
+// retires a spelling and changes no order. Any other one-sided decoration still
+// vetoes, even where nothing moves: an edition, an author or a format qualifier says
+// something about the series that the plain name does not.
+func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string) (string, bool) {
+	var decorated, plain []string
+	classes := map[string]bool{}
 	for _, k := range group {
-		if k.paren {
-			decorated = append(decorated, k.series.ID)
+		if !k.paren {
+			plain = append(plain, k.series.ID)
+			continue
 		}
+		decorated = append(decorated, k.series.ID)
+		classes[decorClass(k)] = true
 	}
 	switch {
-	case len(decorated) >= 2:
-		out = append(out, truncateList(decorated, 4)+" are all parenthetical-decorated: that decoration is what tells them "+
-			"apart (an alternative ordering, or an author disambiguator) - see SER-PAREN")
-	case len(decorated) == 1:
-		out = append(out, decorated[0]+" is parenthetical-decorated and the others are not: folding it would erase the "+
-			"decoration that distinguishes it - see SER-PAREN")
+	case len(decorated) == 0:
+		return "", false
+	case len(classes) >= 2:
+		return truncateList(decorated, 4) + " carry different parenthetical decorations: that decoration is what " +
+			"tells them apart (an alternative ordering, an edition, or an author disambiguator) - see SER-PAREN", true
+	case len(plain) == 0:
+		return "", false // one decoration, carried by every member: it tells none of them apart
+	case orderingFoldMovesNothing(group, sides, target):
+		return "", false
+	}
+	return truncateList(decorated, 4) + " carry a parenthetical decoration the others do not: folding would erase " +
+		"the decoration that distinguishes it - see SER-PAREN", true
+}
+
+// decorClass is the class a decorated member's decoration puts it in: its
+// DecorationKey, or - where the parenthetical folds to nothing comparable - a class of
+// its own, so an unreadable decoration never counts as agreeing with another.
+func decorClass(k seriesKeys) string {
+	if k.decor == "" {
+		return "\x00" + k.series.ID
+	}
+	return k.decor
+}
+
+// orderingDecorations are the parentheticals that state an ORDERING of a series and
+// nothing else, as titlerule.DecorationKey folds them. A closed vocabulary, measured
+// over the tree's bracketed series names (every group there saying "order",
+// "chronolog" or "reihenfolge"): chronological order 16, publication order 12,
+// published order 6, chronological 2, and one each of recommended listening order,
+// author's preferred order, in chronologischer Reihenfolge and in
+// Veroeffentlichungsreihenfolge. Reading order is the one entry the tree does not
+// carry yet.
+var orderingDecorations = func() map[string]bool {
+	out := map[string]bool{}
+	for _, phrase := range []string{
+		"chronological", "chronological order", "publication order", "published order",
+		"reading order", "recommended listening order", "author's preferred order",
+		"in chronologischer Reihenfolge", "in Veröffentlichungsreihenfolge",
+	} {
+		out[titlerule.DecorationKey("("+phrase+")")] = true
+	}
+	return out
+}()
+
+// orderingFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
+// is undecorated, every decorated member carries an ordering qualifier, and folding
+// each of them into the survivor moves no membership.
+func orderingFoldMovesNothing(group []seriesKeys, sides []seriesSide, target string) bool {
+	tgt, losers, ok := splitSides(sides, target)
+	if !ok {
+		return false
+	}
+	decor := make(map[string]seriesKeys, len(group))
+	for _, k := range group {
+		decor[k.series.ID] = k
+	}
+	if decor[target].paren {
+		return false
+	}
+	for _, l := range losers {
+		k := decor[l.series.ID]
+		if !k.paren {
+			continue
+		}
+		if !orderingDecorations[k.decor] || !foldMovesNothing(tgt, l) {
+			return false
+		}
+	}
+	return true
+}
+
+// sameDecorationSubgroups is, for each comparable decoration at least two members of a
+// group carry, those members - when they are not the whole group (a group that is all
+// one decoration is already judged whole). In decoration-key order, each subgroup in
+// the group's own order.
+func sameDecorationSubgroups(group []seriesKeys) [][]seriesKeys {
+	byDecor, order := groupBy(group, func(k seriesKeys) string { return k.decor })
+	var out [][]seriesKeys
+	for _, d := range order {
+		if sub := byDecor[d]; len(sub) >= 2 && len(sub) < len(group) {
+			out = append(out, sub)
+		}
 	}
 	return out
 }
@@ -185,7 +335,10 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 // detectSeriesParen reports series names carrying a parenthetical decoration. It
 // proposes nothing: "Vorkosigan Saga (chronological)" beside "Vorkosigan Saga" is
 // very likely a DELIBERATE second ordering of one series, which the data model has
-// no other way to express, so the only honest output is "a human should look".
+// no other way to express, so the only honest output is "a human should look". (The
+// one fold SER-DUP makes over such a pair is an ordering whose list IS the plain
+// series' list - see vetoSeriesDecoration - and that is SER-DUP's proposal, not this
+// class's.)
 //
 // It reads the SAME key index detectSeriesDup does, and in ONE pass: the plain
 // siblings are collected as the loop goes rather than in a first loop of their own,

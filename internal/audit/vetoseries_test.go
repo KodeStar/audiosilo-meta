@@ -1,6 +1,8 @@
 package audit
 
 import (
+	"maps"
+	"slices"
 	"strings"
 	"testing"
 
@@ -331,4 +333,182 @@ func TestSeriesDupIsSilentOnAnUnstatedLanguage(t *testing.T) {
 	// pointed at.
 	rep, _ := runFixtureAllowingProblems(t, files)
 	assertMechanical(t, serDupMerge(t, rep))
+}
+
+// ---- parenthetical decoration ------------------------------------------------
+
+// langWorks is works(...) with every work in one stated language.
+func langWorks(t testing.TB, lang string, ids ...string) map[string]string {
+	t.Helper()
+	out := map[string]string{}
+	for _, id := range ids {
+		out["works/xx/"+id+"/work.json"] = workJSON(t, id, strings.ToUpper(id[:1])+id[1:], withLanguage(lang))
+		out["works/xx/"+id+"/recordings/r-"+id+".json"] = recJSON(t, "r-"+id, id)
+	}
+	return out
+}
+
+// mergeFiles folds several fixture maps into one.
+func mergeFiles(parts ...map[string]string) map[string]string {
+	out := map[string]string{}
+	for _, p := range parts {
+		maps.Copy(out, p)
+	}
+	return out
+}
+
+// The SAME decoration on both sides is not what tells them apart: the live tree's
+// "Throne of Glass[French Edition]" and "Throne of Glass [French Edition]" differ by a
+// space, and "NOMADS Legacy [German Edition]" and "(German Edition)" by the bracket.
+func TestSeriesDupMergesTheSameDecorationSpelledTwice(t *testing.T) {
+	files := fixture(t, mergeFiles(langWorks(t, "fr", "un", "deux", "cinq"), map[string]string{
+		"series/th/tog-fr.json":   seriesJSON(t, "tog-fr", "Throne of Glass[French Edition]", "un@1", "deux@2"),
+		"series/th/tog-fr-2.json": seriesJSON(t, "tog-fr-2", "Throne of Glass (French Edition)", "cinq@5"),
+	}))
+	fd := serDupMerge(t, runFixture(t, files))
+	assertMechanical(t, fd)
+	if fd.Propose.Target != "tog-fr" {
+		t.Errorf("target = %q, want the spelling holding more works", fd.Propose.Target)
+	}
+}
+
+// Two DIFFERENT decorations are still what tells two series apart, whatever else agrees.
+func TestSeriesDupVetoesTwoDifferentDecorations(t *testing.T) {
+	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/aa/alpha.json": seriesJSON(t, "alpha", "Dragon Heart [French Edition]", "one@1"),
+		"series/bb/beta.json":  seriesJSON(t, "beta", "Dragon Heart [German Edition]", "two@2"),
+	})))
+	assertVetoed(t, fd, "carry different parenthetical decorations")
+}
+
+// The same decoration only stands the parenthetical veto down: two "[Special Edition]"
+// series in two languages are still two series, by the language veto.
+func TestSeriesDupVetoesTheSameDecorationInTwoLanguages(t *testing.T) {
+	files := fixture(t, mergeFiles(langWorks(t, "fr", "un"), langWorks(t, "de", "zwei"), map[string]string{
+		"series/aa/alpha.json": seriesJSON(t, "alpha", "Dragon Heart [Special Edition]", "un@1"),
+		"series/bb/beta.json":  seriesJSON(t, "beta", "Dragon Heart (Special Edition)", "zwei@2"),
+	}))
+	fd := serDupMerge(t, runFixture(t, files))
+	assertVetoed(t, fd, "a translation is a different series")
+	if strings.Contains(fd.Propose.Reason, "SER-PAREN") {
+		t.Errorf("the shared decoration still vetoed: %s", fd.Propose.Reason)
+	}
+}
+
+// The live shape: the plain English series and three language editions share one tight
+// key, so the whole group is rightly vetoed - and the two French spellings inside it are
+// proposed again as a group of their own, which is the only fold the evidence supports.
+func TestSeriesDupProposesASameDecorationSubgroupApart(t *testing.T) {
+	files := fixture(t, mergeFiles(
+		works(t, "glass", "crown"),
+		langWorks(t, "fr", "verre", "couronne", "empire"),
+		langWorks(t, "de", "glas"),
+		map[string]string{
+			"series/th/tog.json":      seriesJSON(t, "tog", "Throne of Glass", "glass@1", "crown@2"),
+			"series/th/tog-fr.json":   seriesJSON(t, "tog-fr", "Throne of Glass[French Edition]", "verre@1", "couronne@2"),
+			"series/th/tog-fr-2.json": seriesJSON(t, "tog-fr-2", "Throne of Glass [French Edition]", "empire@5"),
+			"series/th/tog-de.json":   seriesJSON(t, "tog-de", "Throne of Glass[German Edition]", "glas@1"),
+		}))
+	rep := runFixture(t, files)
+	assertProposalsConsistent(t, rep)
+
+	// The whole group is unchanged: advisory, onto the plain series.
+	whole := serDupMerge(t, rep)
+	assertVetoed(t, whole, "SER-PAREN")
+	if whole.Propose.Target != "tog" {
+		t.Errorf("whole-group target = %q, want tog", whole.Propose.Target)
+	}
+
+	subs := subclassOf(t, rep, ClassSeriesDup, serDupDecor)
+	if len(subs) != 1 {
+		t.Fatalf("want one same-decoration subgroup, got %d: %+v", len(subs), subs)
+	}
+	sub := subs[0]
+	assertMechanical(t, sub)
+	if sub.Propose.Target != "tog-fr" || !slices.Equal(sub.Propose.Others, []string{"tog-fr-2"}) {
+		t.Errorf("subgroup proposes %s <- %v, want tog-fr <- [tog-fr-2]", sub.Propose.Target, sub.Propose.Others)
+	}
+	if sub.Key != "throneofglass[frenchedition]" {
+		t.Errorf("subgroup key = %q, want the group key plus the decoration", sub.Key)
+	}
+}
+
+// A subgroup is judged by every veto the whole group was: the same decoration on two
+// author-disjoint series is two franchises, and stays a reading-list entry.
+func TestSeriesDupSameDecorationSubgroupStillFacesTheOtherVetoes(t *testing.T) {
+	files := fixture(t, mergeFiles(works(t, "plain"), map[string]string{
+		"works/al/alpha-one/work.json":         workJSON(t, "alpha-one", "Alpha One", withAuthors("ann-author")),
+		"works/al/alpha-one/recordings/a.json": recJSON(t, "a", "alpha-one"),
+		"works/be/beta-one/work.json":          workJSON(t, "beta-one", "Beta One", withAuthors("bob-writer")),
+		"works/be/beta-one/recordings/b.json":  recJSON(t, "b", "beta-one"),
+		"people/an/ann-author.json":            personJSON(t, "ann-author", "Ann Author"),
+		"people/bo/bob-writer.json":            personJSON(t, "bob-writer", "Bob Writer"),
+		"series/dh/dh.json":                    seriesJSON(t, "dh", "Dragon Heart", "plain@1"),
+		"series/aa/alpha.json":                 seriesJSON(t, "alpha", "Dragon Heart [Large Print]", "alpha-one@1"),
+		"series/bb/beta.json":                  seriesJSON(t, "beta", "Dragon Heart (Large Print)", "beta-one@2"),
+	}))
+	rep := runFixture(t, files)
+	assertProposalsConsistent(t, rep)
+	subs := subclassOf(t, rep, ClassSeriesDup, serDupDecor)
+	if len(subs) != 1 {
+		t.Fatalf("want one same-decoration subgroup, got %d", len(subs))
+	}
+	assertVetoed(t, subs[0], "share no member-work author")
+}
+
+// An ORDERING qualifier whose list is the plain series' list over again is not a second
+// ordering: "The MaddAddam Trilogy (Published Order)" holds the same three works at the
+// same slots as "The MaddAddam Trilogy".
+func TestSeriesDupMergesAnOrderingThatRepeatsThePlainList(t *testing.T) {
+	rep := runFixture(t, seriesFixture(t, []string{"oryx", "flood", "madd"}, map[string]string{
+		"series/ma/maddaddam.json": seriesJSON(t, "maddaddam", "The MaddAddam Trilogy", "oryx@1", "flood@2", "madd@3"),
+		"series/ma/maddaddam-published.json": seriesJSON(t, "maddaddam-published", "The MaddAddam Trilogy (Published Order)",
+			"oryx@1", "flood@2", "madd@3"),
+	}))
+	assertProposalsConsistent(t, rep)
+	fd := serDupMerge(t, rep)
+	assertMechanical(t, fd)
+	if fd.Propose.Target != "maddaddam" {
+		t.Errorf("target = %q, want the undecorated series", fd.Propose.Target)
+	}
+}
+
+// The exemption is "nothing moves", in both its halves: a membership the plain series
+// does not hold, or one it holds at another slot, is a second ordering after all.
+func TestSeriesDupVetoesAnOrderingThatDiffers(t *testing.T) {
+	for name, pub := range map[string][]string{
+		"a membership the plain series lacks": {"one@1", "three@3"},
+		"a membership at another slot":        {"one@1", "two@3"},
+	} {
+		t.Run(name, func(t *testing.T) {
+			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
+				"series/dh/dh.json":       seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+				"series/dh/dh-chron.json": seriesJSON(t, "dh-chron", "Dragon Heart (Chronological Order)", pub...),
+			})))
+			assertVetoed(t, fd, "SER-PAREN")
+		})
+	}
+}
+
+// The survivor must be the UNDECORATED series: an ordering that holds more than the plain
+// one wins the ladder, and folding the plain name into it would erase that name.
+func TestSeriesDupVetoesAnOrderingThatWouldSurvive(t *testing.T) {
+	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/dh/dh.json":       seriesJSON(t, "dh", "Dragon Heart", "one@1"),
+		"series/dh/dh-chron.json": seriesJSON(t, "dh-chron", "Dragon Heart (Chronological Order)", "one@1", "two@2"),
+	})))
+	if fd.Propose.Target != "dh-chron" {
+		t.Fatalf("target = %q; the fixture is not the shape this rule is about", fd.Propose.Target)
+	}
+	assertVetoed(t, fd, "SER-PAREN")
+}
+
+// Any OTHER one-sided decoration still vetoes, even where nothing moves: an edition says
+// something about the series that the plain name does not.
+func TestSeriesDupVetoesANonOrderingDecorationThatMovesNothing(t *testing.T) {
+	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+		"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1", "two@2"),
+	})))
+	assertVetoed(t, fd, "SER-PAREN")
 }
