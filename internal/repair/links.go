@@ -3,6 +3,7 @@ package repair
 import (
 	"slices"
 
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -132,28 +133,15 @@ func newLinkIndexes(cat *model.Catalog) (works, series *linkIndex) {
 	return works, series
 }
 
-// linkedMemberLanguages is the primary language subtag of every work a series on EITHER
-// end of a translation link lists, read off the loaded catalogue - so judging a linked
-// series' derived language never parses a pack for a member the run has not touched.
-// Empty (and free) on a tree carrying no series translation.
-func linkedMemberLanguages(cat *model.Catalog, series *linkIndex) map[string]string {
-	if len(series.translationOf) == 0 {
-		return map[string]string{}
-	}
-	want := map[string]bool{}
-	for _, s := range cat.Series {
-		if _, states := series.translationOf[s.ID]; states || len(series.translatedBy[s.ID]) > 0 {
-			for _, sw := range s.Works {
-				want[sw.Work] = true
-			}
-		}
-	}
-	out := make(map[string]string, len(want))
+// workLanguages is the primary language subtag of every work, read off the loaded
+// catalogue (the first record of an id, as every whole-catalogue reader keys it), so
+// judging a linked series' derived language never parses a pack for a member the run
+// has not touched - whichever series a merge re-points or a link op names.
+func workLanguages(cat *model.Catalog) map[string]string {
+	out := make(map[string]string, len(cat.Works))
 	for _, w := range cat.Works {
-		if want[w.ID] {
-			if _, seen := out[w.ID]; !seen {
-				out[w.ID] = model.PrimarySubtag(w.Language)
-			}
+		if _, seen := out[w.ID]; !seen {
+			out[w.ID] = model.PrimarySubtag(w.Language)
 		}
 	}
 	return out
@@ -184,10 +172,18 @@ func (s *stage) reindexLinks(ix *linkIndex) {
 
 // linkFamily is the one mapping from a pack family to what the link rules call it.
 func linkFamily(f pack.Family) (kind model.RedirectKind, noun string) {
+	kind = model.RedirectWorks
 	if f == pack.FamilySeries {
-		return model.RedirectSeries, "series"
+		kind = model.RedirectSeries
 	}
-	return model.RedirectWorks, "work"
+	return kind, check.FamilyNoun(kind)
+}
+
+// linkOpFamily is the pack family each link-adding op writes: the op names its family,
+// so the family is read off it rather than off a field of the proposal.
+var linkOpFamily = map[string]pack.Family{
+	audit.OpAddWorkLink:   pack.FamilyWorks,
+	audit.OpAddSeriesLink: pack.FamilySeries,
 }
 
 // relinkTranslations is the translation_of half of a merge, for either family (a work
@@ -346,10 +342,11 @@ func mergeOrderingFields(merged, loser entry, retiring map[string]bool, target s
 // for a translation_of fault and ordering-link-conflict for an ordering one. An advisory
 // never refuses. target is the merge's survivor, which the refusal's wording turns on.
 //
-// It is asked at the end of each merge planner, once everything is staged. A tree stating
-// no link at all - every tree today - returns before building anything.
+// It is asked at the end of each merge planner and of add-link, once everything is
+// staged. A tree stating no link at all, under a txn that stages none, returns before
+// building anything - a merge cannot create a link the tree does not already state.
 func (t *txn) refuseLinkFaults(target string) error {
-	if t.p.workLinks.empty() && t.p.seriesLinks.empty() {
+	if t.p.workLinks.empty() && t.p.seriesLinks.empty() && !t.works.statesLink() && !t.series.statesLink() {
 		return nil
 	}
 	v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
@@ -370,6 +367,16 @@ func (t *txn) refuseLinkFaults(target string) error {
 	return nil
 }
 
+// statesLink reports whether any entry the stage puts states a link member.
+func (s *stage) statesLink() bool {
+	for _, e := range s.puts {
+		if len(e.Strs(fieldTranslationOf)) > 0 || e.Str(fieldOrderingOf) != "" {
+			return true
+		}
+	}
+	return false
+}
+
 // linkRefusal words a link fault as a repair refusal.
 func linkRefusal(f check.LinkFault, noun, target string) error {
 	cat := CatOrderingLink
@@ -379,11 +386,11 @@ func linkRefusal(f check.LinkFault, noun, target string) error {
 	switch f.Code {
 	case check.LinkChain:
 		if f.To == target {
-			return refusef(cat, "after the merge %s %s would state translation_of [%s] while %s names it as its original: "+
+			return refusef(cat, "after this change %s %s would state translation_of [%s] while %s names it as its original: "+
 				"a translation is one hop from its original, so which link is wrong has to be decided by hand",
 				noun, f.To, joinList(f.Others), f.From)
 		}
-		return refusef(cat, "after the merge %s %s would name %s as its original, and %s is itself a translation of [%s]: "+
+		return refusef(cat, "after this change %s %s would name %s as its original, and %s is itself a translation of [%s]: "+
 			"a translation is one hop from its original", noun, f.From, f.To, f.To, joinList(f.Others))
 	case check.LinkSameLanguage:
 		return refusef(cat, "after this change %s %s would be in %q, the same language as %s %s, which it names in translation_of: "+
@@ -396,7 +403,7 @@ func linkRefusal(f check.LinkFault, noun, target string) error {
 		return refusef(cat, "after the merge series %s and %s would both state the %s ordering of %s's family: a second series "+
 			"in one order is a duplicate to fold by hand, not a view", f.Others[0], f.From, f.Ordering, f.To)
 	}
-	return refusef(cat, "after the merge %s %s would break the %s rule on its %s naming %s", noun, f.From, f.Code, f.Field, f.To)
+	return refusef(cat, "after this change %s %s would break the %s rule on its %s naming %s", noun, f.From, f.Code, f.Field, f.To)
 }
 
 // stagedLinkView is the plan as one txn would leave it, as the link rules read it: every
@@ -461,12 +468,12 @@ func (v *stagedLinkView) Language(kind model.RedirectKind, id string) string {
 }
 
 // workLanguage is a work's primary language subtag over the staged view. A work neither
-// this txn nor an earlier proposal has touched reads from the load's member-language map
-// when it is there, so deriving a linked series' language parses no pack for it.
+// this txn nor an earlier proposal has touched reads from the load's language map
+// (workLanguages), so deriving a linked series' language parses no pack for it.
 func (v *stagedLinkView) workLanguage(id string) string {
 	st, p := v.t.works, v.t.p
 	if _, staged := st.puts[id]; !staged && !st.dels[id] && !p.works.dirty[id] && !p.works.gone[id] {
-		if lang, ok := p.memberLang[id]; ok {
+		if lang, ok := p.workLang[id]; ok {
 			return lang
 		}
 	}

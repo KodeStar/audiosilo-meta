@@ -66,7 +66,10 @@ type Options struct {
 type Report struct {
 	classes []*findings
 	Stats   hygieneStats
-	Totals  Totals
+	// Links are T-LINK's count-only tallies: the decorated records that yielded no
+	// proposal, and why.
+	Links  linkStats
+	Totals Totals
 	// LoaderProblems and LoaderWarnings are pkg/check's own counts, carried so a
 	// caller can see whether the tree it audited was valid in the first place.
 	LoaderProblems int
@@ -172,12 +175,14 @@ func analyze(res check.Result) *Report {
 	// takes the inverse index it built rather than rebuilding it.
 	dup, clusterWorks, clustersOf := detectWorkDup(ix)
 	hyg, stats := detectHygiene(ix)
-	// The two series-name detectors share one key index; computing it twice would
+	// The series-name detectors share one key index; computing it again would
 	// fold 45k names through model.Slugify twice over.
 	skeys := seriesKeyIndex(cat.Series)
+	links, linkTally := detectTranslationLinks(ix, res.Identity, skeys)
 
 	rep := &Report{
 		Stats:          stats,
+		Links:          linkTally,
 		LoaderProblems: len(res.Problems),
 		LoaderWarnings: len(res.Warnings),
 		Totals: Totals{
@@ -197,6 +202,7 @@ func analyze(res check.Result) *Report {
 		detectSeriesIntegrity(ix),
 		detectSeriesDup(ix, skeys),
 		detectSeriesParen(ix, skeys),
+		links,
 		detectPersonDup(ix),
 		detectRefSidecar(ix, clusterWorks, clustersOf),
 		hyg,

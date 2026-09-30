@@ -12,63 +12,11 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-// languageMap turns a source's language word into an ISO 639-1 code. A word
-// that is not here is unknown and the caller skips the book, so a wrong entry
-// is worse than a missing one - every entry is a language whose 639-1 code is
-// unambiguous.
-//
-// The second block was added after seed wave 5 refused 241 rows purely for
-// want of a mapping. Counts are books in the full libex dump. The schema
-// accepts any two-letter code, so nothing else had to change.
-//
-// Deliberately NOT mapped, though measured and available:
-//
-//   - "mandarin_chinese" (440), "simplified_chinese" (4), "traditional_chinese"
-//     (3). All three would land on the "zh" that "chinese" already has, and the
-//     last two are SCRIPT distinctions rather than languages. Collapsing four
-//     source spellings onto one code is a call for a maintainer, not a mapping
-//     table entry.
-//   - "luo" (1). It has no ISO 639-1 code at all, only 639-3.
-//   - "unknown" (643) and the empty value (22,428). Neither is a language.
-//   - "ukranian" (6). A misspelling of "ukrainian", and every one of the six
-//     rows is outside the importable universe, so the alias would be dead code.
-//   - the remaining long tail (tamil, korean, catalan, indonesian, urdu, ...).
-//     Each is unambiguous and each is a one-line addition when a wave needs it;
-//     they are left out because nothing has asked for them and an unexercised
-//     mapping is an untested one.
-var languageMap = map[string]string{
-	"english":    "en",
-	"turkish":    "tr",
-	"german":     "de",
-	"french":     "fr",
-	"spanish":    "es",
-	"italian":    "it",
-	"japanese":   "ja",
-	"portuguese": "pt",
-	"dutch":      "nl",
-	"polish":     "pl",
-	"russian":    "ru",
-	"chinese":    "zh",
-
-	"danish":    "da", // 7,342
-	"swedish":   "sv", // 4,864
-	"arabic":    "ar", // 4,869
-	"hindi":     "hi", // 2,305
-	"hebrew":    "he", // 968
-	"czech":     "cs", // 495
-	"hungarian": "hu", // 252
-	"finnish":   "fi", // 171
-	"norwegian": "no", // 154
-	"greek":     "el", // 153
-
-	// The third block, added after the seed's create phase: the three languages
-	// the waves refused most rows for (~239 of them, recoverable by a later
-	// backfill import of exactly those rows). Each 639-1 code is unambiguous,
-	// and the dump spells each language with the one word listed.
-	"marathi":   "mr", // 2,186
-	"romanian":  "ro", // 591
-	"malayalam": "ml", // 456
-}
+// languageMap turns a source's language word into an ISO 639-1 code: the
+// project's one word-to-code table, model.LanguageWords, whose comment carries
+// what is and is not mapped and why. A word that is not here is unknown and the
+// caller skips the book.
+var languageMap = model.LanguageWords()
 
 // isoCodes is the set of ISO 639-1 codes languageMap produces, so a source that
 // already carries a code (the audiosilo-books projection stores the mapped code,

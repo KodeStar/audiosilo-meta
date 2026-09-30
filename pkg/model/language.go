@@ -10,6 +10,77 @@ func PrimarySubtag(tag string) string {
 	return lang
 }
 
+// languageWords maps a language's English NAME, lowercased, to its ISO 639-1
+// code - the one word-to-code table. The importer maps a source's language word
+// through it (internal/importer's mapLanguage, where a word that is not here makes
+// the book unknown and skipped, so a wrong entry is worse than a missing one), and
+// internal/titlerule reads an own-language edition decoration ("(Finnish
+// Edition)") through it. Every entry is a language whose 639-1 code is
+// unambiguous; counts are books in the full libex dump.
+//
+// The second block was added after seed wave 5 refused 241 rows purely for want
+// of a mapping. The schema accepts any two-letter code, so nothing else had to
+// change.
+//
+// Deliberately NOT mapped, though measured and available:
+//
+//   - "mandarin_chinese" (440), "simplified_chinese" (4), "traditional_chinese"
+//     (3). All three would land on the "zh" that "chinese" already has, and the
+//     last two are SCRIPT distinctions rather than languages. Collapsing four
+//     source spellings onto one code is a call for a maintainer, not a mapping
+//     table entry.
+//   - "luo" (1). It has no ISO 639-1 code at all, only 639-3.
+//   - "unknown" (643) and the empty value (22,428). Neither is a language.
+//   - "ukranian" (6). A misspelling of "ukrainian", and every one of the six
+//     rows is outside the importable universe, so the alias would be dead code.
+//   - the remaining long tail (tamil, korean, catalan, indonesian, urdu, ...).
+//     Each is unambiguous and each is a one-line addition when a wave needs it;
+//     they are left out because nothing has asked for them and an unexercised
+//     mapping is an untested one.
+var languageWords = map[string]string{
+	"english":    "en",
+	"turkish":    "tr",
+	"german":     "de",
+	"french":     "fr",
+	"spanish":    "es",
+	"italian":    "it",
+	"japanese":   "ja",
+	"portuguese": "pt",
+	"dutch":      "nl",
+	"polish":     "pl",
+	"russian":    "ru",
+	"chinese":    "zh",
+
+	"danish":    "da", // 7,342
+	"swedish":   "sv", // 4,864
+	"arabic":    "ar", // 4,869
+	"hindi":     "hi", // 2,305
+	"hebrew":    "he", // 968
+	"czech":     "cs", // 495
+	"hungarian": "hu", // 252
+	"finnish":   "fi", // 171
+	"norwegian": "no", // 154
+	"greek":     "el", // 153
+
+	// The third block, added after the seed's create phase: the three languages
+	// the waves refused most rows for (~239 of them, recoverable by a later
+	// backfill import of exactly those rows). Each 639-1 code is unambiguous,
+	// and the dump spells each language with the one word listed.
+	"marathi":   "mr", // 2,186
+	"romanian":  "ro", // 591
+	"malayalam": "ml", // 456
+}
+
+// LanguageWords returns a copy of the word-to-code table (languageWords): each
+// language's English name, lowercased, mapped to its ISO 639-1 code.
+func LanguageWords() map[string]string {
+	out := make(map[string]string, len(languageWords))
+	for w, c := range languageWords {
+		out[w] = c
+	}
+	return out
+}
+
 // SameLanguage reports whether two language tags are KNOWN to be one language:
 // both state one and their primary subtags agree. An unknown side ("" - a
 // series tie, a work stating nothing) is never the same language as anything,

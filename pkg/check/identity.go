@@ -1,6 +1,7 @@
 package check
 
 import (
+	"slices"
 	"sort"
 	"strings"
 
@@ -393,6 +394,33 @@ func (ix *WorkIdentity) matches(w *model.Work, wColl *collectionMemo, title, ser
 		IdentityAuthorsMatch(w, all, identity) &&
 		st.Agrees(ix.statementOf[w.ID]) &&
 		inColl.get(title, series) == wColl.get(w.Title, ix.seriesOf[w.ID])
+}
+
+// SameBookInAnyLanguage returns the OTHER catalogued works a catalogued work is one
+// book with under the identity rule with its LANGUAGE rule removed: the same
+// normalized title key, nested author sets, no stated-volume disagreement and the same
+// collection status. It is MatchKey asked with the work's own title, series derivation
+// and author sets and NO language - an unknown language is compatible with every
+// other, so that is exactly matches' other three rules - minus the work itself.
+// Results are in work-id order and include works in the work's own language; the
+// caller decides what a language difference means.
+//
+// It exists for internal/audit's translation-link candidates (T-LINK), where a title a
+// retailer left untranslated ("Families First (German Edition)" beside "Families
+// First") is the one shape the key can pair across two languages. Every other consumer
+// of the index passes a language, which is exactly what keeps a translation from
+// reading as a duplicate - so nothing here changes what the census counts or what the
+// two writers refuse.
+//
+// A work the index was not built over (no derivation recorded) yields nothing.
+func (ix *WorkIdentity) SameBookInAnyLanguage(w *model.Work) []IdentityMatch {
+	series, catalogued := ix.seriesOf[w.ID]
+	if !catalogued {
+		return nil
+	}
+	all, identity := identitySets(w)
+	out := ix.MatchKey(ix.Key(w.Title, series), w.Title, series, "", all, identity)
+	return slices.DeleteFunc(out, func(m IdentityMatch) bool { return m.Work.ID == w.ID })
 }
 
 // collectionMemo is one title's titlerule.IsCollectionIn answer, asked on first use.

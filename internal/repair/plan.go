@@ -59,10 +59,10 @@ type plan struct {
 	// what earlier proposals re-pointed. Both are updated as a txn commits.
 	workLinks   *linkIndex
 	seriesLinks *linkIndex
-	// memberLang is the primary language of every work a translation-linked series
-	// lists, off the load (linkedMemberLanguages), so a derived series language is judged
-	// without parsing a pack for a work the run has not touched.
-	memberLang map[string]string
+	// workLang is the primary language of every work, off the load (workLanguages),
+	// so a derived series language is judged without parsing a pack for a work the run
+	// has not touched.
+	workLang map[string]string
 }
 
 // newPlan builds the plan over a store and the catalogue that was loaded from it.
@@ -81,7 +81,7 @@ func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, tab
 		seriesOf:      map[string]map[string]bool{},
 	}
 	p.workLinks, p.seriesLinks = newLinkIndexes(cat)
-	p.memberLang = linkedMemberLanguages(cat, p.seriesLinks)
+	p.workLang = workLanguages(cat)
 	for _, s := range cat.Series {
 		set := make(map[string]bool, len(s.Works))
 		for _, sw := range s.Works {

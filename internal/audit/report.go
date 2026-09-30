@@ -57,6 +57,12 @@ var opPhrase = map[string]func(Proposal) string{
 	OpRepointSidecar: func(p Proposal) string {
 		return "re-point the works-community sidecar keyed by " + p.Target
 	},
+	OpAddWorkLink: func(p Proposal) string {
+		return fmt.Sprintf("state work %s %s as including %s", p.Target, p.Field, p.To)
+	},
+	OpAddSeriesLink: func(p Proposal) string {
+		return fmt.Sprintf("state series %s %s as including %s", p.Target, p.Field, p.To)
+	},
 	OpReview: func(Proposal) string { return "review by hand" },
 }
 
@@ -95,10 +101,13 @@ var classDoc = map[string]string{
 	ClassSeriesInteg:  "per-series problems: shared, malformed or non-canonically spelled positions, dangling members, sequence gaps (advisory), a minority-language member, an omnibus sitting on a single slot.",
 	ClassSeriesDup:    "series whose names are one name spelled two ways.",
 	ClassSeriesParen:  "series names carrying a parenthetical. Reported, never merged: a parenthetical is often a deliberate alternative ordering the data model cannot otherwise express.",
-	ClassPersonDup:    "possible duplicate people. ADVISORY throughout, high false-positive rate: two real people can share a name or sit one typo apart, so nothing here proposes an action.",
-	ClassRefSidecar:   "works-community sidecar hazards: a spoiler-gated sidecar attached to a work that turns out to be one of a duplicate pair, or keyed by a work slug nothing holds.",
-	ClassHygiene:      "field-level gaps and slug-convention oddities.",
-	ClassLoader:       "pkg/check's own problems and advisories over the same load, carried through unchanged and filed under the loader's own advisory class names.",
+	ClassTransLink: "translation links a record's own-language edition decoration states: a series named \"<name> [<Language> Edition]\" " +
+		"linked to the one same-author series of that name in another language, and a work titled \"(<Language> Edition)\" in that " +
+		"language linked to the one same book in another language. Stated evidence only: exactly one original, or no proposal.",
+	ClassPersonDup:  "possible duplicate people. ADVISORY throughout, high false-positive rate: two real people can share a name or sit one typo apart, so nothing here proposes an action.",
+	ClassRefSidecar: "works-community sidecar hazards: a spoiler-gated sidecar attached to a work that turns out to be one of a duplicate pair, or keyed by a work slug nothing holds.",
+	ClassHygiene:    "field-level gaps and slug-convention oddities.",
+	ClassLoader:     "pkg/check's own problems and advisories over the same load, carried through unchanged and filed under the loader's own advisory class names.",
 }
 
 // sampleCount is how many example records SUMMARY.md prints per subclass. Small
@@ -280,6 +289,20 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 		{Label: "recordings with no `added_at`", N: st.Recordings.None},
 		{Label: "recordings with no runtime", N: st.RecordingsNoRun},
 		{Label: "chapters across all recordings", N: st.Chapters},
+	})
+	b.WriteString("\n")
+
+	lk := rep.Links
+	b.WriteString("T-LINK candidates that yielded no proposal. A decorated record is proposed only with EXACTLY ONE\n")
+	b.WriteString("original; the rest are counted here rather than guessed at.\n\n")
+	reportdir.Table(b, "measure", []reportdir.Row{
+		{Label: "series named as a language edition", N: lk.SeriesDecorated},
+		{Label: "... naming no same-author series", N: lk.SeriesNoCandidate},
+		{Label: "... naming two or more (ambiguous)", N: lk.SeriesAmbiguous},
+		{Label: "... whose one candidate fails the language test", N: lk.SeriesLanguageSkips},
+		{Label: "works whose title states their own language's edition", N: lk.WorksDecorated},
+		{Label: "... with no same-book work in another language", N: lk.WorksNoCandidate},
+		{Label: "... with two or more candidate originals (ambiguous)", N: lk.WorksAmbiguous},
 	})
 	b.WriteString("\n")
 }

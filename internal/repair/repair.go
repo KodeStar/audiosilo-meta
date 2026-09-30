@@ -135,6 +135,8 @@ var appliableOps = map[string]bool{
 	audit.OpAddSeriesMember: true,
 	audit.OpRestatePosition: true,
 	audit.OpFillField:       true,
+	audit.OpAddWorkLink:     true,
+	audit.OpAddSeriesLink:   true,
 }
 
 // AppliableOps returns the ops --op accepts, sorted. The CLI prints it, so the flag's
@@ -441,6 +443,8 @@ func (rn *runner) planOne(c candidate) {
 		err = rn.addSeriesMember(t, c.fd)
 	case audit.OpFillField:
 		err = rn.fillField(t, c.fd)
+	case audit.OpAddWorkLink, audit.OpAddSeriesLink:
+		err = rn.addLink(t, c.fd)
 	default:
 		// Unreachable: selectProposals only yields appliableOps. Loud rather than
 		// silent, because a new op added to that map and not to this switch would
