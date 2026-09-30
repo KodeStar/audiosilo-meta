@@ -2348,7 +2348,10 @@ func (p *planner) batchClaimsIn(ctx creditContext, books []sourceBook) ([]nameCl
 			continue
 		}
 		asin := NormalizeASIN(b.str("asin"))
-		row := SeriesRowFor(creditNamesOf(b.authorCredits), []string{b.str("title"), b.str("title_short")}, b.str("publisher"),
+		// The row's language as the create path maps it: a word the importer
+		// does not know is an unknown language, which the resolution never judges.
+		lang, _ := mapLanguage(b.str("language"))
+		row := SeriesRowFor(creditNamesOf(b.authorCredits), []string{b.str("title"), b.str("title_short")}, b.str("publisher"), lang,
 			func(name string) string { return p.resolvePersonIn(ctx, name).slug })
 		places, work := p.claimPlacesIn(ctx, *b, asin)
 		// A claim with no usable position is placed only if a lookup later fills
@@ -2795,7 +2798,7 @@ func (p *planner) noteDroppedSeriesClaim(r seriesRef) {
 		ex += " (" + ref + ")"
 	}
 	if len(r.target.stepped) > 0 {
-		ex += " [" + strings.Join(r.target.stepped, ", ") + " belongs to other authors]"
+		ex += " [" + describeStepped(r.target.stepped) + "]"
 	}
 	if !slices.Contains(p.droppedSeriesExamples, ex) {
 		p.droppedSeriesExamples = append(p.droppedSeriesExamples, ex)
@@ -3207,7 +3210,7 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 		claimed:   map[string]string{},
 		announce: func(slug string) {
 			if len(t.stepped) > 0 {
-				warn("series %q: %s belongs to other authors; created %q", name, strings.Join(t.stepped, ", "), slug)
+				warn("series %q: %s; created %q", name, describeStepped(t.stepped), slug)
 			}
 			switch {
 			case model.IsReservedSlug(base):

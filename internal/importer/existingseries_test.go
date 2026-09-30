@@ -30,8 +30,18 @@ func multiSeriesRow(asin, title, author, narrator, language string, series ...[2
 	return row + "}"
 }
 
-// cordellLoganTree is David Freed's catalogued series, volumes 1-2.
+// cordellLoganTree is David Freed's catalogued series, volumes 1-2, in the
+// French edition the Chute Libre row belongs to. The real catalogue holds the
+// ENGLISH series, which the language rule closes to that French row
+// (TestExistingSeriesOnlyDropsACrossLanguageClaim); this fixture keeps the
+// completion the sync bot was stopped on, in the row's own language.
 func cordellLoganTree(t *testing.T) string {
+	t.Helper()
+	return cordellLoganTreeIn(t, "fr")
+}
+
+// cordellLoganTreeIn is cordellLoganTree with its works in language lang.
+func cordellLoganTreeIn(t *testing.T, lang string) string {
 	t.Helper()
 	files := map[string]string{
 		"people/da/david-freed.json": testpack.PersonJSON(t, "david-freed", "David Freed"),
@@ -39,7 +49,7 @@ func cordellLoganTree(t *testing.T) string {
 			"The Cordell Logan Mysteries", "flat-spin@1", "fangs-out@2"),
 	}
 	for _, w := range []string{"flat-spin", "fangs-out"} {
-		files["works/"+shard(w)+"/"+w+"/work.json"] = testpack.WorkJSON(t, w, w, testpack.WithAuthors("david-freed"))
+		files["works/"+shard(w)+"/"+w+"/work.json"] = testpack.WorkJSON(t, w, w, testpack.WithAuthors("david-freed"), testpack.WithLanguage(lang))
 		files["works/"+shard(w)+"/"+w+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", w, testpack.WithNarrators("bea-reader"))
 	}
 	return seedTombstoneTree(t, files, nil)
@@ -103,6 +113,39 @@ func TestExistingSeriesOnlyOffFoundsTheSeries(t *testing.T) {
 	}
 	if hasWarning(sum.Warnings, "series claims dropped") {
 		t.Errorf("a run without the option reported a drop: %v", sum.Warnings)
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// The REAL Chute Libre shape: the catalogued "The Cordell Logan Mysteries" is
+// English, and the French edition's claim to #8 is a cross-language join the
+// language rule closes (seriesresolve.go's languageCloses). Under the option both
+// claims are dropped - the catalogued one naming why - and without it the
+// claim founds the French row's own series one step down the chain.
+func TestExistingSeriesOnlyDropsACrossLanguageClaim(t *testing.T) {
+	dataDir := cordellLoganTreeIn(t, "en")
+	sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true}, chuteLibre)
+	if sum.NewWorks != 1 || sum.NewSeries != 0 || sum.SeriesClaimsDropped != 2 {
+		t.Errorf("NewWorks/NewSeries/SeriesClaimsDropped = %d/%d/%d, want 1/0/2", sum.NewWorks, sum.NewSeries, sum.SeriesClaimsDropped)
+	}
+	if got := seriesWorks(t, dataDir, "the-cordell-logan-mysteries"); got["chute-libre"] != "" {
+		t.Errorf("the French edition joined the English series: %v", got)
+	}
+	if !hasWarning(sum.Warnings, `"The Cordell Logan Mysteries" (B0GDJN7NZQ) [the-cordell-logan-mysteries is in another language (en)]`) {
+		t.Errorf("the drop does not say the series is in another language: %v", sum.Warnings)
+	}
+	assertTreeValid(t, dataDir)
+
+	dataDir = cordellLoganTreeIn(t, "en")
+	sum = runLibexWith(t, dataDir, Options{}, chuteLibre)
+	if got := seriesWorks(t, dataDir, "the-cordell-logan-mysteries-2"); got["chute-libre"] != "8" {
+		t.Errorf("the-cordell-logan-mysteries-2 = %v, want the French edition's own series with Chute Libre at 8", got)
+	}
+	if got := seriesWorks(t, dataDir, "the-cordell-logan-mysteries"); len(got) != 2 {
+		t.Errorf("the English series changed: %v", got)
+	}
+	if !hasWarning(sum.Warnings, `series "The Cordell Logan Mysteries": the-cordell-logan-mysteries is in another language (en); created "the-cordell-logan-mysteries-2"`) {
+		t.Errorf("the mint does not say why: %v", sum.Warnings)
 	}
 	assertTreeValid(t, dataDir)
 }
