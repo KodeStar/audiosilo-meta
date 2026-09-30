@@ -176,6 +176,17 @@ func RecJSON(t testing.TB, id, work string, opts ...RecOpt) string {
 	return mustJSON(t, m)
 }
 
+// WorkFiles renders a work and one recording in lang, with an explicit narrator.
+func WorkFiles(t testing.TB, id, lang, narrator string, opts ...WorkOpt) map[string]string {
+	t.Helper()
+	return map[string]string{
+		"works/xx/" + id + "/work.json": WorkJSON(t, id, strings.ToUpper(id[:1])+id[1:],
+			append([]WorkOpt{WithLanguage(lang)}, opts...)...),
+		"works/xx/" + id + "/recordings/r-" + id + ".json": RecJSON(t, "r-"+id, id,
+			WithNarrators(narrator), WithRecLanguage(lang)),
+	}
+}
+
 // ASIN derives a unique, schema-valid ASIN from a seed string.
 func ASIN(seed string) string {
 	var h uint64 = 14695981039346656037

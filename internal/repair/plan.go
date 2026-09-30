@@ -312,7 +312,7 @@ func (t *txn) loadCluster(f pack.Family, noun string, p audit.Proposal) (target 
 		return nil, nil, nil, refusef(CatMalformed, "the proposal names no target or no other members")
 	}
 	st := t.stageFor(f)
-	for _, slug := range cluster(p.Target, p.Others) {
+	for _, slug := range audit.Cluster(p.Target, p.Others) {
 		if by, ok := t.p.retiredBy(f, slug); ok {
 			return nil, nil, nil, refusef(CatRetired, "%s %q was retired by an earlier proposal in this run (%s)", noun, slug, by)
 		}
@@ -355,12 +355,6 @@ func (t *txn) stageFor(f pack.Family) *stage {
 		return t.series
 	}
 	panic("repair: no stage for family " + f.Root())
-}
-
-// cluster is a proposal's whole membership: its target first, then the others. Four sites
-// spelled the same append.
-func cluster(target string, others []string) []string {
-	return append([]string{target}, others...)
 }
 
 // tomb is a redirect a txn intends to record.

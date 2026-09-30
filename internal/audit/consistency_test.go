@@ -63,7 +63,7 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 				if p.Op == OpMergeSeries {
 					merged = mergedSeries
 				}
-				for _, id := range cluster(p.Target, p.Others) {
+				for _, id := range Cluster(p.Target, p.Others) {
 					merged[id] = r.Key
 				}
 				if p.Target != "" {

@@ -364,3 +364,8 @@ func truncateList(ss []string, max int) string {
 	}
 	return strings.Join(ss[:max], ", ") + ", ... (+" + strconv.Itoa(len(ss)-max) + " more)"
 }
+
+// Cluster returns a proposal's target first, followed by its other members.
+func Cluster(target string, others []string) []string {
+	return append([]string{target}, others...)
+}

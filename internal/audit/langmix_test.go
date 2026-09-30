@@ -26,24 +26,14 @@ func mixPeople(t testing.TB) map[string]string {
 }
 
 // mixWork seeds a work in lang with one recording in the same language, by narrator.
-func mixWork(t testing.TB, id, lang, narrator string, opts ...testpack.WorkOpt) map[string]string {
-	t.Helper()
-	return map[string]string{
-		"works/xx/" + id + "/work.json": workJSON(t, id, strings.ToUpper(id[:1])+id[1:],
-			append([]testpack.WorkOpt{withLanguage(lang)}, opts...)...),
-		"works/xx/" + id + "/recordings/r-" + id + ".json": recJSON(t, "r-"+id, id,
-			withNarrators(narrator), testpack.WithRecLanguage(lang)),
-	}
-}
-
 // sagaTree is the split shape: an English series holding two German volumes, with no
 // German series of the name anywhere.
 func mixSagaTree(t testing.TB) map[string]string {
 	t.Helper()
 	return mergeFiles(mixPeople(t),
-		mixWork(t, "dawn", "en", "nate-narrator"), mixWork(t, "dusk", "en", "nate-narrator"),
-		mixWork(t, "noon", "en", "nate-narrator"),
-		mixWork(t, "morgen", "de", "anna-sprecher"), mixWork(t, "abend", "de", "anna-sprecher"),
+		testpack.WorkFiles(t, "dawn", "en", "nate-narrator"), testpack.WorkFiles(t, "dusk", "en", "nate-narrator"),
+		testpack.WorkFiles(t, "noon", "en", "nate-narrator"),
+		testpack.WorkFiles(t, "morgen", "de", "anna-sprecher"), testpack.WorkFiles(t, "abend", "de", "anna-sprecher"),
 		map[string]string{"series/sa/the-saga.json": seriesJSON(t, "the-saga", "The Saga",
 			"dawn@1", "dusk@2", "noon@3", "morgen@4", "abend@5")},
 	)
@@ -86,7 +76,7 @@ func TestLangMixSplitsTheMinorityLanguage(t *testing.T) {
 // A de+en+fr series yields one split per minority language.
 func TestLangMixSplitsEachMinorityLanguageApart(t *testing.T) {
 	files := mixSagaTree(t)
-	files = mergeFiles(files, mixWork(t, "aube", "fr", "nate-narrator"), map[string]string{
+	files = mergeFiles(files, testpack.WorkFiles(t, "aube", "fr", "nate-narrator"), map[string]string{
 		"series/sa/the-saga.json": seriesJSON(t, "the-saga", "The Saga",
 			"dawn@1", "dusk@2", "noon@3", "morgen@4", "abend@5", "aube@6"),
 	})
@@ -98,8 +88,8 @@ func TestLangMixSplitsEachMinorityLanguageApart(t *testing.T) {
 
 func TestLangMixDropsAMemberAlreadyHomed(t *testing.T) {
 	files := mergeFiles(mixPeople(t),
-		mixWork(t, "c1", "en", "nate-narrator"), mixWork(t, "c2", "en", "nate-narrator"),
-		mixWork(t, "chronik", "de", "anna-sprecher"), mixWork(t, "chronik-zwei", "de", "anna-sprecher"),
+		testpack.WorkFiles(t, "c1", "en", "nate-narrator"), testpack.WorkFiles(t, "c2", "en", "nate-narrator"),
+		testpack.WorkFiles(t, "chronik", "de", "anna-sprecher"), testpack.WorkFiles(t, "chronik-zwei", "de", "anna-sprecher"),
 		map[string]string{
 			"series/ch/chronicle.json":   seriesJSON(t, "chronicle", "The Chronicle", "c1@1", "c2@2", "chronik@3"),
 			"series/di/die-chronik.json": seriesJSON(t, "die-chronik", "Die Chronik", "chronik@1", "chronik-zwei@2"),
@@ -122,9 +112,9 @@ func TestLangMixDropsAMemberAlreadyHomed(t *testing.T) {
 func moveTree(t testing.TB, germanMembers ...string) map[string]string {
 	t.Helper()
 	return mergeFiles(mixPeople(t),
-		mixWork(t, "f1", "en", "nate-narrator"), mixWork(t, "f2", "en", "nate-narrator"),
-		mixWork(t, "schicksal-3", "de", "anna-sprecher"),
-		mixWork(t, "s1", "de", "anna-sprecher"), mixWork(t, "s2", "de", "anna-sprecher"),
+		testpack.WorkFiles(t, "f1", "en", "nate-narrator"), testpack.WorkFiles(t, "f2", "en", "nate-narrator"),
+		testpack.WorkFiles(t, "schicksal-3", "de", "anna-sprecher"),
+		testpack.WorkFiles(t, "s1", "de", "anna-sprecher"), testpack.WorkFiles(t, "s2", "de", "anna-sprecher"),
 		map[string]string{
 			"series/fa/fate.json":        seriesJSON(t, "fate", "Fate", "f1@1", "f2@2", "schicksal-3@3"),
 			"series/fa/fate-german.json": seriesJSON(t, "fate-german", "Fate [German Edition]", germanMembers...),
@@ -153,7 +143,7 @@ func TestLangMixMoveIntoATakenSlotIsAdvisory(t *testing.T) {
 // A translation_of link reaches a target of another name; two targets are a review.
 func TestLangMixTranslationLinkedTargetsAndSeveral(t *testing.T) {
 	files := moveTree(t, "s1@1")
-	files = mergeFiles(files, mixWork(t, "g1", "de", "anna-sprecher"), map[string]string{
+	files = mergeFiles(files, testpack.WorkFiles(t, "g1", "de", "anna-sprecher"), map[string]string{
 		"series/sc/schicksal.json": testpack.WithFields(t, seriesJSON(t, "schicksal", "Schicksal", "g1@1"),
 			map[string]any{"translation_of": []string{"fate"}}),
 	})
@@ -187,8 +177,8 @@ func TestLangMixCoupledMemberIsAdvisory(t *testing.T) {
 func narratedTree(t testing.TB) map[string]string {
 	t.Helper()
 	return mergeFiles(mixPeople(t),
-		mixWork(t, "r1", "de", "anna-sprecher"), mixWork(t, "r2", "de", "anna-sprecher"),
-		mixWork(t, "r3", "de", "anna-sprecher"), mixWork(t, "imperium", "en", "anna-sprecher"),
+		testpack.WorkFiles(t, "r1", "de", "anna-sprecher"), testpack.WorkFiles(t, "r2", "de", "anna-sprecher"),
+		testpack.WorkFiles(t, "r3", "de", "anna-sprecher"), testpack.WorkFiles(t, "imperium", "en", "anna-sprecher"),
 		map[string]string{"series/re/reihe.json": seriesJSON(t, "reihe", "Reihe", "r1@1", "r2@2", "r3@3", "imperium@4")})
 }
 
@@ -213,7 +203,7 @@ func TestLangMixNarratorContradictionWithholdsTheSplitAndProposesTheLanguage(t *
 // The Rubinrot shape: a work whose every recording states another language, in no
 // mixed series at all.
 func TestLangMixProposesTheRecordingsLanguageForTheRubinrotShape(t *testing.T) {
-	files := mergeFiles(mixPeople(t), mixWork(t, "r1", "de", "anna-sprecher"), mixWork(t, "r2", "de", "anna-sprecher"),
+	files := mergeFiles(mixPeople(t), testpack.WorkFiles(t, "r1", "de", "anna-sprecher"), testpack.WorkFiles(t, "r2", "de", "anna-sprecher"),
 		map[string]string{
 			"works/xx/rubinrot/work.json": workJSON(t, "rubinrot", "Rubinrot"),
 			"works/xx/rubinrot/recordings/r.json": recJSON(t, "r", "rubinrot", withNarrators("anna-sprecher"),
@@ -239,8 +229,8 @@ func TestLangMixProposesTheRecordingsLanguageForTheRubinrotShape(t *testing.T) {
 // A tie is decided by the incumbent - the member catalogued first - and is advisory.
 func TestLangMixTieByIncumbencyIsAdvisory(t *testing.T) {
 	files := mergeFiles(mixPeople(t),
-		mixWork(t, "t-en", "en", "nate-narrator", testpack.WithAddedAt("2026-02-01")),
-		mixWork(t, "t-de", "de", "anna-sprecher", testpack.WithAddedAt("2026-01-01")),
+		testpack.WorkFiles(t, "t-en", "en", "nate-narrator", testpack.WithAddedAt("2026-02-01")),
+		testpack.WorkFiles(t, "t-de", "de", "anna-sprecher", testpack.WithAddedAt("2026-01-01")),
 		map[string]string{"series/ti/tie.json": seriesJSON(t, "tie", "Tie", "t-en@1", "t-de@2")})
 	rep := runFixture(t, files)
 	fd := onlyMix(t, rep, lMixSplit)
@@ -258,14 +248,14 @@ func TestLangMixTieByIncumbencyIsAdvisory(t *testing.T) {
 // works of another language, is not.
 func TestLangMixTieByDecoration(t *testing.T) {
 	base := mergeFiles(mixPeople(t),
-		mixWork(t, "t-en", "en", "nate-narrator", testpack.WithAddedAt("2025-01-01")),
-		mixWork(t, "t-de", "de", "anna-sprecher"),
+		testpack.WorkFiles(t, "t-en", "en", "nate-narrator", testpack.WithAddedAt("2025-01-01")),
+		testpack.WorkFiles(t, "t-de", "de", "anna-sprecher"),
 		map[string]string{"series/ti/tie.json": seriesJSON(t, "tie", "Tie [German Edition]", "t-en@1", "t-de@2")})
 	split := onlyMix(t, runFixture(t, base), lMixSplit)
 	if split.Propose.From != "de" || !split.Propose.Advisory || !strings.Contains(split.Propose.Reason, "would be named") {
 		t.Fatalf("split = %+v", split.Propose)
 	}
-	homed := mergeFiles(base, mixWork(t, "t-en-2", "en", "nate-narrator"), map[string]string{
+	homed := mergeFiles(base, testpack.WorkFiles(t, "t-en-2", "en", "nate-narrator"), map[string]string{
 		"series/ti/tie-en.json": seriesJSON(t, "tie-en", "Tie", "t-en@1", "t-en-2@2"),
 	})
 	rep := runFixture(t, homed)
@@ -319,7 +309,7 @@ func TestLangMixSlugVetoes(t *testing.T) {
 // A series in an ordering family: the new series would state no ordering.
 func TestLangMixOrderingFamilyIsAdvisory(t *testing.T) {
 	files := mixSagaTree(t)
-	files = mergeFiles(files, mixWork(t, "prequel", "en", "nate-narrator"), map[string]string{
+	files = mergeFiles(files, testpack.WorkFiles(t, "prequel", "en", "nate-narrator"), map[string]string{
 		"series/sa/the-saga.json": testpack.WithFields(t, seriesJSON(t, "the-saga", "The Saga",
 			"dawn@1", "dusk@2", "noon@3", "morgen@4", "abend@5"),
 			map[string]any{"ordering": "chronological", "ordering_of": "the-saga-pub"}),
@@ -382,7 +372,7 @@ func TestLangMixIsDeterministicAndTallied(t *testing.T) {
 // importer's chain does.
 func TestLangMixNamesTheSlugTheImporterChainGives(t *testing.T) {
 	files := mixSagaTree(t)
-	files = mergeFiles(files, mixWork(t, "other", "en", "nate-narrator"), map[string]string{
+	files = mergeFiles(files, testpack.WorkFiles(t, "other", "en", "nate-narrator"), map[string]string{
 		"series/sa/the-saga-2.json": seriesJSON(t, "the-saga-2", "The Saga", "other@1"),
 	})
 	rep := runFixtureRejectingWith(t, files, `{"people":{},"series":{"the-saga-3":"the-saga"},"works":{}}`)
@@ -394,8 +384,8 @@ func TestLangMixNamesTheSlugTheImporterChainGives(t *testing.T) {
 
 // Two series moving works into one slot of one target contend: both are withheld.
 func TestLangMixContestedMovesAreAdvisory(t *testing.T) {
-	files := mergeFiles(moveTree(t, "s1@1", "s2@2"), mixWork(t, "g1", "en", "nate-narrator"),
-		mixWork(t, "g2", "en", "nate-narrator"), mixWork(t, "anderes-3", "de", "anna-sprecher"),
+	files := mergeFiles(moveTree(t, "s1@1", "s2@2"), testpack.WorkFiles(t, "g1", "en", "nate-narrator"),
+		testpack.WorkFiles(t, "g2", "en", "nate-narrator"), testpack.WorkFiles(t, "anderes-3", "de", "anna-sprecher"),
 		map[string]string{
 			"series/fa/fate-2.json": seriesJSON(t, "fate-2", "Fate", "g1@1", "g2@2", "anderes-3@3"),
 		})
@@ -410,4 +400,25 @@ func TestLangMixContestedMovesAreAdvisory(t *testing.T) {
 		}
 	}
 	assertProposalsConsistent(t, rep)
+}
+
+// Membership order must not choose a different position or narration explanation,
+// even in an invalid series that lists a work more than once.
+func TestLangMixMemberOrderDoesNotChangeFindings(t *testing.T) {
+	_, res := runFixtureAllowingProblems(t, mergeFiles(mixSagaTree(t), narratedTree(t)))
+	for _, s := range res.Catalog.Series {
+		if s.ID == "the-saga" {
+			duplicate := s.Works[len(s.Works)-1]
+			duplicate.Position = "99"
+			s.Works = append(s.Works, duplicate)
+		}
+	}
+	a := analyze(res)
+	for _, s := range res.Catalog.Series {
+		slices.Reverse(s.Works)
+	}
+	b := analyze(res)
+	if !reflect.DeepEqual(a.Findings(ClassLangMix), b.Findings(ClassLangMix)) || a.LangMix != b.LangMix {
+		t.Fatal("reversing membership order changed L-MIX findings or tallies")
+	}
 }

@@ -49,15 +49,8 @@ func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 		return refusef(CatMalformed, "drop-membership names no work, no series or no position to remove (a dangling-member "+
 			"record is advisory and names none)")
 	}
-	se, works, err := rn.liveSeries(t, p.Series)
-	if err != nil {
-		return err
-	}
-	at, err := membershipAt(works, p.Series, p.Target, p.From)
-	if err != nil {
-		return err
-	}
-	lang, err := rn.leavingLanguage(t, p.Series, works, p.Target)
+	v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
+	se, works, at, lang, err := rn.leavingMembership(t, v, p)
 	if err != nil {
 		return err
 	}
@@ -68,7 +61,7 @@ func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 			continue // a home an earlier proposal retired is no home; the next may still be
 		}
 		if slices.ContainsFunc(hw, func(sw model.SeriesWork) bool { return sw.Work == p.Target }) &&
-			rn.seriesLanguage(t, hw) == lang {
+			v.Language(model.RedirectSeries, h) == lang {
 			home = h
 			break
 		}
@@ -100,15 +93,8 @@ func (rn *runner) moveMembership(t *txn, fd audit.Finding) error {
 	if dest == p.Series {
 		return refusef(CatMalformed, "move-membership would move %s from %s to itself", p.Target, dest)
 	}
-	se, works, err := rn.liveSeries(t, p.Series)
-	if err != nil {
-		return err
-	}
-	at, err := membershipAt(works, p.Series, p.Target, p.From)
-	if err != nil {
-		return err
-	}
-	lang, err := rn.leavingLanguage(t, p.Series, works, p.Target)
+	v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
+	se, works, at, lang, err := rn.leavingMembership(t, v, p)
 	if err != nil {
 		return err
 	}
@@ -116,15 +102,18 @@ func (rn *runner) moveMembership(t *txn, fd audit.Finding) error {
 	if err != nil {
 		return err
 	}
-	if got := rn.seriesLanguage(t, dworks); got != lang {
+	if got := v.Language(model.RedirectSeries, dest); got != lang {
 		return refusef(CatStaleValue, "series %s now derives %q, not %s, the language of %s", dest, got, lang, p.Target)
 	}
+	byPosition := map[string]string{}
+	slot := slotKey(p.To)
 	for _, sw := range dworks {
 		if sw.Work == p.Target {
 			return refusef(CatStaleValue, "series %s already lists %s at position %q", dest, p.Target, sw.Position)
 		}
-		if importer.SameSlot(sw.Position, p.To) {
-			return refusef(CatPositionConflict, "position %q of series %s is held by %s", p.To, dest, sw.Work)
+		byPosition[slotKey(sw.Position)] = sw.Work
+		if other, taken := byPosition[slot]; taken {
+			return refusef(CatPositionConflict, "position %q of series %s is held by %s", p.To, dest, other)
 		}
 	}
 	t.setSeries(p.Series, se.Clone(), slices.Delete(slices.Clone(works), at, at+1))
@@ -148,6 +137,7 @@ func (rn *runner) splitSeries(t *txn, fd audit.Finding) error {
 	if err != nil {
 		return err
 	}
+	v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
 	moving := importer.ToSet(p.Others)
 	var moved, kept []model.SeriesWork
 	for _, sw := range works {
@@ -161,14 +151,14 @@ func (rn *runner) splitSeries(t *txn, fd audit.Finding) error {
 		if !slices.ContainsFunc(moved, func(sw model.SeriesWork) bool { return sw.Work == id }) {
 			return refusef(CatStaleValue, "series %s no longer lists %s", p.Target, id)
 		}
-		if lang := rn.workLanguage(t, id); lang != p.To {
+		if lang := v.workLanguage(id); lang != p.To {
 			return refusef(CatStaleValue, "work %s now states %q, not the %s the split was proposed for", id, lang, p.To)
 		}
 	}
 	if len(kept) == 0 {
 		return refusef(CatStaleValue, "series %s would be left with no members: every member states %s now", p.Target, p.To)
 	}
-	if got := rn.seriesLanguage(t, kept); got == p.To {
+	if got := model.SeriesLanguage(kept, v.workLanguage); got == p.To {
 		return refusef(CatStaleValue, "the members of %s that stay would derive %s, the language moving out", p.Target, got)
 	}
 	name := se.Str("name")
@@ -261,29 +251,25 @@ func membershipAt(works []model.SeriesWork, series, work, pos string) (int, erro
 	return at, nil
 }
 
-// leavingLanguage is the language a work leaving a series states, refusing the move
-// when the work states none or the series now derives that very language - the work is
-// no longer a minority there, which is the only thing the proposal was about.
-func (rn *runner) leavingLanguage(t *txn, series string, works []model.SeriesWork, work string) (string, error) {
-	lang := rn.workLanguage(t, work)
+// leavingMembership re-reads the source and verifies the membership and its minority
+// language before either a drop or a move plans any writes.
+func (rn *runner) leavingMembership(t *txn, v *stagedLinkView, p audit.Proposal) (entry, []model.SeriesWork, int, string, error) {
+	se, works, err := rn.liveSeries(t, p.Series)
+	if err != nil {
+		return nil, nil, 0, "", err
+	}
+	at, err := membershipAt(works, p.Series, p.Target, p.From)
+	if err != nil {
+		return nil, nil, 0, "", err
+	}
+	lang := v.workLanguage(p.Target)
 	if lang == "" {
-		return "", refusef(CatStaleValue, "work %s states no language now", work)
+		return nil, nil, 0, "", refusef(CatStaleValue, "work %s states no language now", p.Target)
 	}
-	if got := rn.seriesLanguage(t, works); got == lang {
-		return "", refusef(CatStaleValue, "series %s now derives %s, the language of %s, so it is no misfile there", series, got, work)
+	if got := v.Language(model.RedirectSeries, p.Series); got == lang {
+		return nil, nil, 0, "", refusef(CatStaleValue, "series %s now derives %s, the language of %s, so it is no misfile there", p.Series, got, p.Target)
 	}
-	return lang, nil
-}
-
-// workLanguage is a work's primary language subtag as the txn sees it (a language an
-// earlier proposal set is the one judged), read the way the link rules read it.
-func (rn *runner) workLanguage(t *txn, id string) string {
-	return (&stagedLinkView{t: t, seriesLang: map[string]string{}}).workLanguage(id)
-}
-
-// seriesLanguage is a membership list's derived language over the txn's view.
-func (rn *runner) seriesLanguage(t *txn, works []model.SeriesWork) string {
-	return model.SeriesLanguage(works, func(id string) string { return rn.workLanguage(t, id) })
+	return se, works, at, lang, nil
 }
 
 func memberStrings(ws []model.SeriesWork) []string {

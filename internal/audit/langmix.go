@@ -136,11 +136,11 @@ func newMixLocks(classes ...*findings) mixLocks {
 			label := c.class + " " + r.Key
 			switch p.Op {
 			case OpMergeWorks:
-				for _, id := range cluster(p.Target, p.Others) {
+				for _, id := range Cluster(p.Target, p.Others) {
 					l.works[id] = label
 				}
 			case OpMergeSeries:
-				for _, id := range cluster(p.Target, p.Others) {
+				for _, id := range Cluster(p.Target, p.Others) {
 					l.series[id] = label
 				}
 			case OpRestatePosition:
@@ -155,10 +155,6 @@ func newMixLocks(classes ...*findings) mixLocks {
 		}
 	}
 	return l
-}
-
-func cluster(target string, others []string) []string {
-	return append([]string{target}, others...)
 }
 
 // langMix is one run's L-MIX state: the index, the locks, and the lookups built once.
@@ -177,7 +173,23 @@ type langMix struct {
 	st        langMixStats
 	// wantLanguage collects each work's set-work-language candidates (the To it would
 	// be reset to, and why), so a work that is a minority in two series is one finding.
-	wantLanguage map[string]map[string]string
+	wantLanguage map[string]*languageCandidate
+}
+
+// languageCandidate retains narration evidence even when it yields no proposed
+// language, so a work appearing in several series is profiled only once.
+type languageCandidate struct {
+	evidence check.NarrationEvidence
+	reasons  map[string]string
+}
+
+func (m *langMix) languageCandidate(w *model.Work) *languageCandidate {
+	if c := m.wantLanguage[w.ID]; c != nil {
+		return c
+	}
+	c := &languageCandidate{evidence: m.prof.OfWork(w), reasons: map[string]string{}}
+	m.wantLanguage[w.ID] = c
+	return c
 }
 
 // detectLanguageMix runs L-MIX. locks are the mechanical proposals of the classes
@@ -190,7 +202,7 @@ func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 		neighbours:   map[string][]string{},
 		primaries:    map[string]bool{},
 		f:            &findings{class: ClassLangMix},
-		wantLanguage: map[string]map[string]string{},
+		wantLanguage: map[string]*languageCandidate{},
 	}
 	for _, s := range ix.cat.Series {
 		if k := seriesBaseKey(s.Name); k != "" {
@@ -243,14 +255,22 @@ type mixMember struct {
 // series reads one series.
 func (m *langMix) series(s *model.Series) {
 	byLang := map[string][]model.SeriesWork{}
-	seen := map[string]bool{}
-	for _, sw := range sortedMembers(s.Works) {
+	seen := map[string]int{}
+	for _, sw := range s.Works {
 		w := m.ix.workByID[sw.Work]
-		if w == nil || seen[w.ID] {
+		if w == nil {
 			continue
 		}
 		if lang := model.PrimarySubtag(w.Language); lang != "" {
-			seen[w.ID] = true
+			if at, duplicate := seen[w.ID]; duplicate {
+				// Retain the same position sortedMembers would visit first, even
+				// when auditing an invalid series that lists one work twice.
+				if sw.Position < byLang[lang][at].Position {
+					byLang[lang][at] = sw
+				}
+				continue
+			}
+			seen[w.ID] = len(byLang[lang])
 			byLang[lang] = append(byLang[lang], sw)
 		}
 	}
@@ -278,7 +298,7 @@ func (m *langMix) series(s *model.Series) {
 	for _, lang := range langs {
 		targets := m.targets(s, lang)
 		var split []*mixMember
-		for _, sw := range byLang[lang] {
+		for _, sw := range sortedMembers(byLang[lang]) {
 			mm := m.member(s, sw, keeper, lang)
 			m.noteLanguageCandidate(mm, keeper)
 			if homed := m.homedIn(s, mm.w, lang); len(homed) > 0 {
@@ -363,7 +383,7 @@ func (m *langMix) seriesVetoes(s *model.Series, byLang map[string][]model.Series
 // member gathers the evidence about one minority membership.
 func (m *langMix) member(s *model.Series, sw model.SeriesWork, keeper, lang string) *mixMember {
 	w := m.ix.workByID[sw.Work]
-	mm := &mixMember{w: w, sw: sw, ev: m.prof.OfWork(w)}
+	mm := &mixMember{w: w, sw: sw, ev: m.languageCandidate(w).evidence}
 	m.st.Minority++
 	for _, r := range w.Recordings {
 		if model.PrimarySubtag(r.Language) == keeper {
@@ -622,26 +642,17 @@ func (m *langMix) slugVetoes(s *model.Series, members []*mixMember, keepers []mo
 // Lauren's romance beside Tim Lebbon's franchise novel, two series the split would
 // found as one.
 func authorGroups(ix *index, members []*mixMember) int {
-	group := make([]int, len(members))
-	for i := range group {
-		group[i] = i
-	}
-	find := func(i int) int {
-		for group[i] != i {
-			i = group[i]
-		}
-		return i
-	}
+	groups := newUnionFind(len(members))
 	for i := range members {
 		for j := i + 1; j < len(members); j++ {
 			if len(sharedAuthors(ix, sortedUnique(members[i].w.Authors), sortedUnique(members[j].w.Authors))) > 0 {
-				group[find(j)] = find(i)
+				groups.union(i, j)
 			}
 		}
 	}
 	n := 0
-	for i := range group {
-		if find(i) == i {
+	for i := range groups {
+		if groups.find(i) == i {
 			n++
 		}
 	}
@@ -697,32 +708,20 @@ func statesTranslation(w *model.Work) bool { return isStatedTranslation(w) || le
 // minority in two series that both have it). Which one lands depends on the order they
 // are applied in, and the set a repair applies must not.
 func (m *langMix) settleContestedMoves() {
-	claims := map[string][]int{}
-	for i, r := range m.f.rows {
-		p := r.Propose
+	settleContestedClaims(m.f, func(p Proposal) []string {
 		if p.Op != OpMoveMembership || p.Advisory {
-			continue
+			return nil
 		}
 		dest := p.Others[0]
-		claims[dest+"@"+p.Target] = append(claims[dest+"@"+p.Target], i)
+		keys := []string{dest + "@" + p.Target}
 		if slot := positionKey(p.To); slot != "" {
-			claims[dest+"#"+slot] = append(claims[dest+"#"+slot], i)
+			keys = append(keys, dest+"#"+slot)
 		}
-	}
-	for _, key := range sortedKeys(claims) {
-		idx := claims[key]
-		if len(idx) < 2 {
-			continue
-		}
-		var keys []string
-		for _, i := range idx {
-			keys = append(keys, m.f.rows[i].Key)
-		}
-		for _, i := range idx {
-			settleMix(&m.f.rows[i], []string{"another move in this audit claims the same place in " +
-				m.f.rows[i].Propose.Others[0] + " (" + strings.Join(keys, ", ") + ")"})
-		}
-	}
+		return keys
+	}, func(fd *Finding, claimants []string) {
+		settleMix(fd, []string{"another move in this audit claims the same place in " +
+			fd.Propose.Others[0] + " (" + strings.Join(claimants, ", ") + ")"})
+	})
 }
 
 // settleMix turns a proposal advisory when anything vetoes it.
@@ -751,11 +750,9 @@ func (m *langMix) noteLanguageCandidate(mm *mixMember, keeper string) {
 }
 
 func (m *langMix) wantLanguageFor(work, to, why string) {
-	if m.wantLanguage[work] == nil {
-		m.wantLanguage[work] = map[string]string{}
-	}
-	if _, have := m.wantLanguage[work][to]; !have {
-		m.wantLanguage[work][to] = why
+	want := m.wantLanguage[work].reasons
+	if _, have := want[to]; !have {
+		want[to] = why
 	}
 }
 
@@ -806,7 +803,7 @@ func (m *langMix) otherLanguageWorks() {
 			continue
 		}
 		m.st.AllOther++
-		ev := m.prof.OfWork(w)
+		ev := m.languageCandidate(w).evidence
 		if !ev.Contradicts(w.Language) {
 			continue
 		}
@@ -820,9 +817,12 @@ func (m *langMix) otherLanguageWorks() {
 func (m *langMix) languageFindings() {
 	for _, id := range sortedKeys(m.wantLanguage) {
 		w := m.ix.workByID[id]
-		want := m.wantLanguage[id]
+		want := m.wantLanguage[id].reasons
+		if len(want) == 0 {
+			continue
+		}
 		tos := sortedKeys(want)
-		ev := m.prof.OfWork(w)
+		ev := m.languageCandidate(w).evidence
 		fd := Finding{
 			Subclass: lMixNarration,
 			Key:      id,

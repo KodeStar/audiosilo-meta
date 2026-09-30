@@ -36,11 +36,7 @@ func mixWorkFiles(t testing.TB, id, lang string, opts ...workOpt) map[string]str
 	if lang != "en" {
 		narrator = "anna-sprecher"
 	}
-	return map[string]string{
-		"works/xx/" + id + "/work.json": workJSON(t, id, strings.ToUpper(id[:1])+id[1:], append([]workOpt{withLanguage(lang)}, opts...)...),
-		"works/xx/" + id + "/recordings/r-" + id + ".json": recJSON(t, "r-"+id, id, withNarrators(narrator),
-			testpack.WithRecLanguage(lang)),
-	}
+	return testpack.WorkFiles(t, id, lang, narrator, opts...)
 }
 
 func mergeMaps(parts ...map[string]string) map[string]string {
