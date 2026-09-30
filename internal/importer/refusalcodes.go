@@ -44,10 +44,17 @@ const (
 	RefusalOverSeriesCap           = "over-series-cap"
 	// The IMPORT-side codes: rows `metaimport libex` itself skips, which only
 	// its --skipped worklist carries (libex-select never refuses for these).
-	RefusalIdentityDuplicate = "identity-duplicate"
-	RefusalMissingAuthor     = "missing-author"
-	RefusalMissingTitle      = "missing-title"
-	RefusalMissingNarrator   = "missing-narrator"
+	RefusalIdentityDuplicate         = "identity-duplicate"
+	RefusalMissingAuthor             = "missing-author"
+	RefusalMissingTitle              = "missing-title"
+	RefusalMissingNarrator           = "missing-narrator"
+	RefusalRelocateRowsLanguage      = "relocate-rows-language"
+	RefusalRelocateRecordingLanguage = "relocate-recording-language"
+	RefusalRelocateWorkLanguage      = "relocate-work-language"
+	RefusalRelocateNoHomeRecording   = "relocate-no-home-recording"
+	RefusalRelocateNarration         = "relocate-narration-contradicts"
+	RefusalRelocateDestination       = "relocate-destination-conflict"
+	RefusalRelocateRowUnusable       = "relocate-row-unusable"
 )
 
 // The rules, in the order selectLibexRow applies them. A row is counted under
@@ -100,6 +107,13 @@ var refusals = []refusal{
 // importRefusals are the rules only the import applies (--skipped).
 var importRefusals = []refusal{
 	reasonIdentityDuplicate, reasonMissingAuthor, reasonMissingTitle, reasonMissingNarrator,
+	reasonRelocateRowsLanguage,
+	reasonRelocateRecordingLanguage,
+	reasonRelocateWorkLanguage,
+	reasonRelocateNoHomeRecording,
+	reasonRelocateNarration,
+	reasonRelocateDestination,
+	reasonRelocateRowUnusable,
 }
 
 // RefusalCodes lists every code a worklist line can carry: the selector's rules
@@ -152,3 +166,13 @@ func refusedRowASIN(stated string) string {
 	}
 	return strings.TrimSpace(stated)
 }
+
+var (
+	reasonRelocateRowsLanguage      = refusal{RefusalRelocateRowsLanguage, "source rows do not agree on one known language"}
+	reasonRelocateRecordingLanguage = refusal{RefusalRelocateRecordingLanguage, "source language does not match the recording"}
+	reasonRelocateWorkLanguage      = refusal{RefusalRelocateWorkLanguage, "work must state a different primary language"}
+	reasonRelocateNoHomeRecording   = refusal{RefusalRelocateNoHomeRecording, "old work would retain no recording in its own language"}
+	reasonRelocateNarration         = refusal{RefusalRelocateNarration, "narrators of other works contradict the stated language"}
+	reasonRelocateDestination       = refusal{RefusalRelocateDestination, "source rows do not resolve to one compatible destination"}
+	reasonRelocateRowUnusable       = refusal{RefusalRelocateRowUnusable, "a source row naming the recording was refused at parse time"}
+)

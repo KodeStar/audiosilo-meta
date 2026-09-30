@@ -774,3 +774,52 @@ func TestAttachEditionsRejectsTheBoundedModes(t *testing.T) {
 		}
 	}
 }
+
+func TestRelocateModeFlags(t *testing.T) {
+	for _, tc := range []struct {
+		source                       string
+		enrich, recordings, relocate bool
+		want                         importer.Mode
+		bad                          bool
+	}{
+		{"libex", false, false, true, importer.ModeRelocate, false},
+		{"libex", true, false, true, 0, true},
+		{"libex", false, true, true, 0, true},
+		{"openaudible", false, false, true, 0, true},
+	} {
+		mode, err := selectMode(tc.source, tc.enrich, tc.recordings, tc.relocate)
+		if (err != nil) != tc.bad || !tc.bad && mode != tc.want {
+			t.Fatalf("selectMode(%+v) = %v, %v", tc, mode, err)
+		}
+	}
+}
+
+func TestRelocateCLIRefusalsAreWrittenAtomically(t *testing.T) {
+	dir, export, _ := seedSelectFixture(t)
+	work, _ := testpack.Raw(t, dir, "works/vo/volume-one/work.json")
+	recording, _ := testpack.Raw(t, dir, "works/vo/volume-one/recordings/bea-reader-2024.json")
+	testpack.Seed(t, dir, map[string]string{
+		"works/vo/volume-one/work.json":                       string(work),
+		"works/vo/volume-one/recordings/bea-reader-2024.json": string(recording),
+		"works/vo/volume-one/recordings/cross.json":           `{"id":"cross","work":"volume-one","language":"de","narrators":["bea-reader"],"asin":[{"region":"de","asin":"B0SELECT02"}],"license":"CC0-1.0","sources":[{"type":"user"}]}`,
+	})
+	skipped := filepath.Join(t.TempDir(), "skipped.ndjson")
+	var code int
+	out := captureStdout(t, func() {
+		code = runSource("libex", []string{export, "--relocate", "--data", dir, "--skipped", skipped}, importer.RunLibex)
+	})
+	if code != 0 {
+		t.Fatal(code, out)
+	}
+	raw, err := os.ReadFile(skipped)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := "{\"asin\":\"B0SELECT02\",\"reason\":\"relocate-recording-language\"}\n"
+	if string(raw) != want {
+		t.Fatalf("worklist = %q", raw)
+	}
+	if !strings.Contains(out, "relocate-recording-language: 1 recordings refused") {
+		t.Fatal(out)
+	}
+}

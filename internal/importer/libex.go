@@ -73,6 +73,13 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, fmt.Errorf("read %s: %w", exportPath, err)
 	}
+	var entries []rawBook
+	if opts.Mode == ModeRelocate {
+		entries, raw, err = sortedRelocationRows(raw)
+		if err != nil {
+			return Summary{}, err
+		}
+	}
 	parsed, err := parseLibex(raw)
 	if err != nil {
 		return Summary{}, err
@@ -80,7 +87,13 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	// The parse layer's refusals join the planner's own, which drops every one
 	// whose ASIN the run then imported after all (a sibling row of the same
 	// ASIN that did map) - see planner.result.
-	sum, runErr := runBooks(parsed.books, sourceLibex, opts, parsed.skips)
+	var sum Summary
+	var runErr error
+	if opts.Mode == ModeRelocate {
+		sum, runErr = runRelocate(parsed.books, entries, parsed.skips, opts)
+	} else {
+		sum, runErr = runBooks(parsed.books, sourceLibex, opts, parsed.skips)
+	}
 	// += rather than =: runBooks has its own parse-layer refusal (the shared
 	// AI-credit gate), which is a no-op for libex because refuseLibexCredits has
 	// already dropped those rows - but the two counts are of the same thing, and

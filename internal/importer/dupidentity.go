@@ -351,7 +351,7 @@ func (p *planner) reportDuplicateIdentities() {
 // indexes would be identical by construction. nil for the other two modes and for a
 // load that produced no catalogue, which the guard reads as "no guard".
 func runWorkIdentityIndex(res check.Result, mode Mode) *check.WorkIdentity {
-	if mode != ModeCreate {
+	if mode != ModeCreate && mode != ModeRelocate {
 		return nil
 	}
 	return res.Identity

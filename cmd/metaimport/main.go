@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--attach-editions] [--skipped <path>]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate] [--existing-series-only] [--attach-editions] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]
 //
 // libex-select writes no records: it reduces a full libex export to the
@@ -163,6 +163,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// Registered for every source so pointing one at the wrong one produces a
 	// clear refusal instead of flag's bare "not defined" line.
 	enrich := fs.Bool("enrich", false, "fill absent facts on ASIN-matched existing records instead of creating any (libex only)")
+	relocate := fs.Bool("relocate", false, "move cross-language recordings to their stated-language work (libex only)")
 	recordingsOnly := fs.Bool("recordings-only", false, "add alternate narrations to works already in the catalogue; never create a work or touch a series (libex only)")
 	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file (a durable worklist; the run is unchanged)")
 	// Registered for every source, like --enrich, so pointing it at the wrong one
@@ -188,13 +189,13 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		usage()
 		return 2
 	}
-	mode, err := selectMode(name, *enrich, *recordingsOnly)
+	mode, err := selectMode(name, *enrich, *recordingsOnly, *relocate)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
 	}
 	if *attachEditions && mode != importer.ModeCreate {
-		fmt.Fprintln(os.Stderr, "metaimport: --attach-editions attaches rows the CREATE path would plan; it cannot be combined with --enrich or --recordings-only")
+		fmt.Fprintln(os.Stderr, "metaimport: --attach-editions attaches rows the CREATE path would plan; it cannot be combined with --enrich, --recordings-only or --relocate")
 		return 2
 	}
 
@@ -299,13 +300,16 @@ func openConflictLog(path string) (io.Writer, func(), error) {
 	return f, func() { _ = f.Close() }, nil
 }
 
-// selectMode maps the two mode flags onto the importer's single Mode, which is
+// selectMode maps the mode flags onto the importer's single Mode, which is
 // where their exclusivity stops being a rule and becomes a type: past this
 // point there is one mode, so no layer downstream has a combination to police.
-// Both flags are catalogue-bounded passes permitted for boundedSource alone, so
+// These flags are catalogue-bounded passes permitted for boundedSource alone, so
 // pointing either at another source is refused here rather than silently
 // honoured.
-func selectMode(source string, enrich, recordingsOnly bool) (importer.Mode, error) {
+func selectMode(source string, enrich, recordingsOnly, relocate bool) (importer.Mode, error) {
+	if relocate && (enrich || recordingsOnly) {
+		return 0, fmt.Errorf("--relocate, --enrich and --recordings-only are mutually exclusive")
+	}
 	if enrich && recordingsOnly {
 		return 0, fmt.Errorf("--enrich and --recordings-only are different modes; pass one or the other")
 	}
@@ -314,6 +318,8 @@ func selectMode(source string, enrich, recordingsOnly bool) (importer.Mode, erro
 		mode     importer.Mode
 	)
 	switch {
+	case relocate:
+		flagName, mode = "--relocate", importer.ModeRelocate
 	case enrich:
 		flagName, mode = "--enrich", importer.ModeEnrich
 	case recordingsOnly:
@@ -431,6 +437,13 @@ func parsePositional(fs *flag.FlagSet, args []string, label string) (string, err
 // at parse - so a row can never go missing without the line failing to add up.
 func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	switch mode {
+	case importer.ModeRelocate:
+		fmt.Printf("%s: %d relocated-to-existing, %d relocated-to-new-work, %d merged-into-sibling; %d memberships re-pointed\n", summaryHead(mode, dryRun), s.RelocatedToExisting, s.RelocatedToNewWork, s.MergedIntoSibling, s.MembershipsRepointed)
+		for _, code := range importer.RefusalCodes() {
+			if n := s.RelocationRefusals[code]; n > 0 {
+				fmt.Printf("  %s: %d recordings refused\n", code, n)
+			}
+		}
 	case importer.ModeEnrich:
 		rows := s.Matched + s.NotInCatalog + s.SkippedRows
 		fmt.Printf("%s: %d works, %d recordings; %d works placed in a series; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
@@ -510,6 +523,11 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 // recognizes, so it stays exactly as it was.
 func summaryHead(mode importer.Mode, dryRun bool) string {
 	switch mode {
+	case importer.ModeRelocate:
+		if dryRun {
+			return "relocation plan (dry run, no files written)"
+		}
+		return "relocated"
 	case importer.ModeEnrich:
 		if dryRun {
 			return "enrichment plan (dry run, no files written)"
@@ -533,7 +551,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only] [--existing-series-only] [--attach-editions] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate] [--existing-series-only] [--attach-editions] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
@@ -550,6 +568,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
 	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
+	fmt.Fprintln(os.Stderr, "  --relocate (libex only) moves cross-language recordings using all their source rows;")
+	fmt.Fprintln(os.Stderr, "    it may create a work, never a series; --skipped records relocation refusals.")
 	fmt.Fprintln(os.Stderr, "  libex-fill looks up the recordings that carry an ASIN but no cover (or no chapters) and")
 	fmt.Fprintln(os.Stderr, "    enriches them from the live libex service. It covers USER-LIBRARY imports only unless")
 	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids.")

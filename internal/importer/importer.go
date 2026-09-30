@@ -15,6 +15,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -186,6 +187,8 @@ type seriesState struct {
 
 // planner accumulates the writes and warnings for a run.
 type planner struct {
+	relocation *relocationPlan
+
 	dataDir string
 	// people maps every known person slug to the NAME its record carries. The
 	// slug is the normalized identity (two names that slug the same are the same
@@ -430,7 +433,9 @@ func (p *planner) result() Summary {
 	// refusal worth memoizing, so the --skipped worklist never names it; and the
 	// printed count of rows refused at an occupied position is read off that
 	// same list, so the line and the worklist cannot disagree.
-	sum.Skips = dropRecorded(p.summary.Skips, func(asin string) bool { return p.asins[asin] })
+	if p.mode != ModeRelocate {
+		sum.Skips = dropRecorded(p.summary.Skips, func(asin string) bool { return p.asins[asin] })
+	}
 	sum.SkippedOccupied = 0
 	for _, s := range sum.Skips {
 		if s.Reason == reasonPositionTaken.code {
@@ -550,6 +555,9 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // planner's own on Summary.Skips so the run's end can drop any whose ASIN it
 // imported after all; nil for every other source.
 func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []RowSkip) (Summary, error) {
+	if opts.Mode == ModeRelocate {
+		return Summary{}, fmt.Errorf("relocation requires libex rows; use RunLibex")
+	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -656,6 +664,12 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 func (p *planner) run(books []sourceBook, opts Options) error {
 	p.loadExisting()
 	p.credits = p.creditContextOf(books)
+	if p.mode == ModeRelocate {
+		p.prepareRelocation()
+		if p.fatal != nil {
+			return p.fatal
+		}
+	}
 	p.resolveSeriesTargets(books)
 
 	switch opts.Mode {
@@ -665,6 +679,8 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.planRecordings(books)
 	case ModeCreate:
 		p.planCreate(books)
+	case ModeRelocate:
+		p.planRelocate(books)
 	}
 	if p.fatal != nil {
 		return p.fatal
@@ -2898,14 +2914,7 @@ func (p *planner) addRunCredits(workSlug string, stated []model.Credit) (merged 
 // about billing, while a credit list is a set of independent (person, role)
 // facts, so a total order is what keeps two runs that state the same facts in a
 // different sequence from producing two different files.
-func sortCredits(credits []model.Credit) {
-	sort.Slice(credits, func(i, j int) bool {
-		if credits[i].Person != credits[j].Person {
-			return credits[i].Person < credits[j].Person
-		}
-		return credits[i].Role < credits[j].Role
-	})
-}
+func sortCredits(credits []model.Credit) { rawentry.SortCredits(credits) }
 
 // abridgedConflict reports whether two recording abridged tri-states are
 // incompatible enough to block a merge. An absent flag is read as "unabridged"
