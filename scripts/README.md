@@ -190,8 +190,14 @@ another recording of that work, or another ASIN on one, never as a second work.
 usable position - must resolve to a catalogued series, not just the first one
 that does: the import places the new work in all of them and creates any series
 the catalogue does not already hold, so a row claiming one known series and one
-unknown one is refused as `another claimed series is not in the catalogue`. Those
-rows are re-emitted verbatim as NDJSON. Then read the report:
+unknown one is refused as `another claimed series is not in the catalogue`. A
+series the row names is only one it may JOIN: a same-named series of other
+authors is refused as `catalogue series belongs to other authors`, and one whose
+derived language (the strict majority of its members' languages) is known and
+not the row's as `catalogue series is in another language` (code
+`series-other-language`) - an Italian edition does not complete the Spanish
+series, it would found its own. The selected rows are re-emitted verbatim as
+NDJSON. Then read the report:
 rows read and selected, the projected new works (counted per title, so the
 per-region sibling rows of one title count once), the per-series breakdown, and
 the exclusion counts - one per rule, adding up with the selected rows to every
