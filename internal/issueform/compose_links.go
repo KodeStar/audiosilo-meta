@@ -2,7 +2,6 @@ package issueform
 
 import (
 	"fmt"
-	"reflect"
 	"slices"
 	"strings"
 
@@ -99,115 +98,29 @@ func (c *composer) linkView() check.LinkView {
 	return c.links
 }
 
-// linkOverlay is the catalogue with ONE record's link-bearing members replaced by
-// what the correction would write - the state a correction is judged in.
-type linkOverlay struct {
-	check.LinkView
-	series        map[string]*model.Series
-	kind          model.RedirectKind
-	id            string
-	translationOf []string
-	language      string // a work's own; unused for a series
-	ordering      string // a series' own; unused for a work
-	orderingOf    string
-}
-
-// overlayOf reads the corrected record's current link members into an overlay, for
-// the caller to change the one it corrects. ok is false (and the run failed) when
-// the stored translation_of is not a string array: that is escalated, never
-// overwritten (correctISBN's rule).
-func (c *composer) overlayOf(fam linkFamily, addr entryAddr, record map[string]any) (*linkOverlay, bool) {
+// overlayOf reads the corrected record's current link members into an overlay of the
+// catalogue (check.LinkOverlay, the state a correction is judged in), for the caller
+// to change the one it corrects. ok is false (and the run failed) when the stored
+// translation_of is not a string array: that is escalated, never overwritten
+// (correctISBN's rule).
+func (c *composer) overlayOf(fam linkFamily, addr entryAddr, record map[string]any) (*check.LinkOverlay, bool) {
 	have, shaped := stringsOf(record[check.FieldTranslationOf])
 	if !shaped {
 		c.fail(StatusNeedsHuman, "the translation_of already on %s is not in the expected shape - a maintainer will apply this", addr.label(c))
 		return nil, false
 	}
-	o := &linkOverlay{LinkView: c.linkView(), series: c.series, kind: fam.kind, id: addr.slug, translationOf: have}
-	o.language, _ = record["language"].(string)
-	o.ordering, _ = record[check.FieldOrdering].(string)
-	o.orderingOf, _ = record[check.FieldOrderingOf].(string)
-	return o, true
+	rec := check.LinkRecord{TranslationOf: have}
+	rec.Language, _ = record["language"].(string)
+	rec.Ordering, _ = record[check.FieldOrdering].(string)
+	rec.OrderingOf, _ = record[check.FieldOrderingOf].(string)
+	return check.NewLinkOverlay(c.linkView(), fam.kind, addr.slug, rec), true
 }
 
-func (o *linkOverlay) is(kind model.RedirectKind, id string) bool {
-	return kind == o.kind && id == o.id
-}
-
-func (o *linkOverlay) Language(kind model.RedirectKind, id string) string {
-	switch {
-	case o.is(kind, id) && kind == model.RedirectWorks:
-		return o.language
-	case kind == model.RedirectSeries && o.kind == model.RedirectWorks:
-		// The overlaid work may be a member: derive over the overlay, not the memo.
-		if s := o.series[id]; s != nil {
-			return model.SeriesLanguage(s.Works, func(w string) string { return o.Language(model.RedirectWorks, w) })
-		}
-		return ""
-	}
-	return o.LinkView.Language(kind, id)
-}
-
-func (o *linkOverlay) TranslationOf(kind model.RedirectKind, id string) []string {
-	if o.is(kind, id) {
-		return o.translationOf
-	}
-	return o.LinkView.TranslationOf(kind, id)
-}
-
-func (o *linkOverlay) TranslatedBy(kind model.RedirectKind, id string) []string {
-	if kind != o.kind {
-		return o.LinkView.TranslatedBy(kind, id)
-	}
-	return o.relink(o.LinkView.TranslatedBy(kind, id), slices.Contains(o.translationOf, id))
-}
-
-func (o *linkOverlay) Ordering(id string) string {
-	if o.is(model.RedirectSeries, id) {
-		return o.ordering
-	}
-	return o.LinkView.Ordering(id)
-}
-
-func (o *linkOverlay) OrderingOf(id string) string {
-	if o.is(model.RedirectSeries, id) {
-		return o.orderingOf
-	}
-	return o.LinkView.OrderingOf(id)
-}
-
-func (o *linkOverlay) Variants(id string) []string {
-	if o.kind != model.RedirectSeries {
-		return o.LinkView.Variants(id)
-	}
-	return o.relink(o.LinkView.Variants(id), o.orderingOf == id)
-}
-
-// relink is an inverse list with the overlaid record's catalogue entry replaced by
-// its overlaid one: removed, and put back (sorted) when the overlay names the id.
-func (o *linkOverlay) relink(base []string, names bool) []string {
-	out := slices.DeleteFunc(slices.Clone(base), func(s string) bool { return s == o.id })
-	if names {
-		out = append(out, o.id)
-		slices.Sort(out)
-	}
-	return out
-}
-
-// introducedFaults is every fault of the link rules involving the corrected record
-// that the overlaid state has and the catalogue does not, minus the one the form
-// never refuses (a variant listing works its primary does not).
-func (c *composer) introducedFaults(o *linkOverlay) []check.LinkFault {
-	before := check.LinkFaults(c.linkView(), o.kind, o.id)
-	var out []check.LinkFault
-	for _, f := range check.LinkFaults(o, o.kind, o.id) {
-		if f.Code == check.LinkNotSubset {
-			continue
-		}
-		if !slices.ContainsFunc(before, func(b check.LinkFault) bool { return reflect.DeepEqual(b, f) }) {
-			out = append(out, f)
-		}
-	}
-	return out
+// introducedFaults is every fault the correction would introduce
+// (check.LinkOverlay.IntroducedFaults), minus the one the form never refuses (a
+// variant listing works its primary does not).
+func introducedFaults(o *check.LinkOverlay) []check.LinkFault {
+	return slices.DeleteFunc(o.IntroducedFaults(), func(f check.LinkFault) bool { return f.Code == check.LinkNotSubset })
 }
 
 // refuseLinkFaults fails the run on the first introduced fault, in the order the
@@ -319,14 +232,14 @@ func (c *composer) correctTranslationOf(addr entryAddr, record map[string]any, c
 	if !ok {
 		return "", false
 	}
-	if slices.Contains(o.translationOf, target) {
+	if slices.Contains(o.Record.TranslationOf, target) {
 		c.failNoop("%s already names %q in translation_of", addr.label(c), target)
 		return "", false
 	}
-	next := append(slices.Clone(o.translationOf), target)
+	next := append(slices.Clone(o.Record.TranslationOf), target)
 	slices.Sort(next)
-	o.translationOf = next
-	if c.refuseLinkFaults(fam, addr, check.FieldTranslationOf, target, c.introducedFaults(o)) {
+	o.Record.TranslationOf = next
+	if c.refuseLinkFaults(fam, addr, check.FieldTranslationOf, target, introducedFaults(o)) {
 		return "", false
 	}
 	record[check.FieldTranslationOf] = next
@@ -369,8 +282,8 @@ func (c *composer) checkWorkLanguage(addr entryAddr, record map[string]any, valu
 	if !ok {
 		return nil, false
 	}
-	o.language, _ = value.(string)
-	if c.refuseLinkFaults(fam, addr, "language", "", c.introducedFaults(o)) {
+	o.Record.Language, _ = value.(string)
+	if c.refuseLinkFaults(fam, addr, "language", "", introducedFaults(o)) {
 		return nil, false
 	}
 	return value, true
@@ -386,8 +299,8 @@ func (c *composer) checkOrdering(addr entryAddr, record map[string]any, value an
 	if !ok {
 		return nil, false
 	}
-	o.ordering, _ = value.(string)
-	if c.refuseLinkFaults(fam, addr, check.FieldOrdering, "", c.introducedFaults(o)) {
+	o.Record.Ordering, _ = value.(string)
+	if c.refuseLinkFaults(fam, addr, check.FieldOrdering, "", introducedFaults(o)) {
 		return nil, false
 	}
 	return value, true
@@ -415,8 +328,8 @@ func (c *composer) resolveOrderingOf(addr entryAddr, record map[string]any, valu
 	if !ok {
 		return nil, false
 	}
-	o.orderingOf = target
-	if c.refuseLinkFaults(fam, addr, check.FieldOrderingOf, target, c.introducedFaults(o)) {
+	o.Record.OrderingOf = target
+	if c.refuseLinkFaults(fam, addr, check.FieldOrderingOf, target, introducedFaults(o)) {
 		return nil, false
 	}
 	return target, true

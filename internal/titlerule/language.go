@@ -16,35 +16,24 @@ import (
 // names, and on a work's title (in the work's own language) it says the work is a
 // translation. Stated evidence only - nothing here guesses a language from words.
 //
-// The vocabulary is CLOSED and measured over the tree's bracketed series names and
-// work titles (2026-09-30): the "<Language> Edition" spellings of fourteen languages
-// plus Japanese, the German "Deutsche Ausgabe", and the two own-language phrases the
-// work titles carry ("edición en español" 12, "edizione italiana" 1). "Castilian
-// Spanish" is one series name and six titles; "Fench" is a real misspelling, carried
-// by ONE series name in the tree ("[Fench Edition]"), and read as French because the
-// decoration states nothing else. A bilingual statement ("English and Spanish
-// Edition", seven titles) names no one language and is deliberately absent, as is
-// every non-language edition ("AmazonClassics Edition", "Second Edition").
+// The vocabulary is CLOSED. Its language words are the project's one word-to-code
+// table (model.LanguageWords, the importer's language mapping), so a language the
+// catalogue can hold is a language whose "<Language> Edition" is read. Layered on
+// top are the spellings measured over the tree's bracketed series names and work
+// titles (2026-09-30) that the importer's table has no business accepting: the
+// German "Deutsche Ausgabe", the two own-language phrases the work titles carry
+// ("edición en español" 12, "edizione italiana" 1), "Castilian Spanish" (one series
+// name and six titles) and "Fench" - a real misspelling, carried by ONE series name
+// in the tree ("[Fench Edition]"), and read as French because the decoration states
+// nothing else. A bilingual statement ("English and Spanish Edition", seven titles)
+// names no one language and is deliberately absent, as is every non-language
+// edition ("AmazonClassics Edition", "Second Edition").
 
-// editionLanguageWords are the language words a "<word> Edition" decoration may
-// carry, in slug form, mapped to a primary subtag.
-var editionLanguageWords = map[string]string{
-	"german":            "de",
-	"spanish":           "es",
+// editionOnlyWords are the "<word> Edition" language words, in slug form, that are
+// not in model.LanguageWords: the edition reader accepts them, the importer does not.
+var editionOnlyWords = map[string]string{
 	"castilian-spanish": "es",
-	"french":            "fr",
 	"fench":             "fr", // one series name in the tree; see the file comment
-	"italian":           "it",
-	"portuguese":        "pt",
-	"russian":           "ru",
-	"danish":            "da",
-	"dutch":             "nl",
-	"polish":            "pl",
-	"swedish":           "sv",
-	"turkish":           "tr",
-	"hindi":             "hi",
-	"english":           "en",
-	"japanese":          "ja",
 }
 
 // editionLanguagePhrases is every decoration the rule reads, keyed by the slug of the
@@ -56,8 +45,10 @@ var editionLanguagePhrases = func() map[string]string {
 		"edicion-en-espanol": "es",
 		"edizione-italiana":  "it",
 	}
-	for word, tag := range editionLanguageWords {
-		out[word+"-edition"] = tag
+	for _, words := range []map[string]string{model.LanguageWords(), editionOnlyWords} {
+		for word, tag := range words {
+			out[model.SlugifyWhole(word)+"-edition"] = tag
+		}
 	}
 	return out
 }()
@@ -67,26 +58,39 @@ func groupLanguage(group string) string {
 	return editionLanguagePhrases[model.SlugifyWhole(group[1:len(group)-1])]
 }
 
-// EditionLanguage is the primary language subtag a text's own-language edition
-// decoration states, and whether it states exactly one. Every bracketed group is read;
-// two groups naming DIFFERENT languages state nothing (a text cannot be two languages'
-// edition at once, so neither reading is safe).
-func EditionLanguage(text string) (string, bool) {
-	if !strings.ContainsAny(text, "([") {
-		return "", false
-	}
+// EditionLanguage is the primary language subtag the own-language edition
+// decorations of texts state - a record's title and subtitle, each read on its own -
+// and whether they state exactly one. Every bracketed group is read; two groups naming
+// DIFFERENT languages state nothing (a record cannot be two languages' edition at
+// once, so neither reading is safe).
+func EditionLanguage(texts ...string) (string, bool) {
 	lang := ""
-	for _, g := range parenGroup.FindAllString(text, -1) {
-		l := groupLanguage(g)
-		switch {
-		case l == "":
+	for _, text := range texts {
+		if !strings.ContainsAny(text, "([") {
 			continue
-		case lang != "" && l != lang:
-			return "", false
 		}
-		lang = l
+		for _, g := range parenGroup.FindAllString(text, -1) {
+			l := groupLanguage(g)
+			switch {
+			case l == "":
+				continue
+			case lang != "" && l != lang:
+				return "", false
+			}
+			lang = l
+		}
 	}
 	return lang, lang != ""
+}
+
+// EditionLanguageOfDecoration is the language a series name's LAST bracketed group
+// states, read off its DecorationKey (the slugs of every group, joined by "+") - the
+// cheap gate a caller already holding that key asks before SplitEditionName.
+func EditionLanguageOfDecoration(decor string) string {
+	if i := strings.LastIndexByte(decor, '+'); i >= 0 {
+		decor = decor[i+1:]
+	}
+	return editionLanguagePhrases[decor]
 }
 
 // StripEditionLanguage removes every own-language edition decoration EditionLanguage
@@ -141,7 +145,7 @@ func SplitEditionName(name string) (base, lang string, ok bool) {
 	if lang = groupLanguage(m[2]); lang == "" {
 		return "", "", false
 	}
-	base = strings.TrimRight(strings.TrimSpace(m[1]), " -:,;|")
+	base = strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(m[1], ""))
 	if !hasAlnum(base) {
 		return "", "", false
 	}

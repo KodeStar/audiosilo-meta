@@ -174,7 +174,7 @@ func planFixture(t testing.TB, data string) (*runner, *txn) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	rn := &runner{opts: Options{DataDir: data}, plan: newPlan(store, nil, res.Catalog, table, nil), rep: &Report{DataDir: data}, filter: &filter{}}
+	rn := &runner{opts: Options{DataDir: data}, plan: newPlan(store, nil, res.Catalog, table), rep: &Report{DataDir: data}, filter: &filter{}}
 	return rn, rn.plan.begin()
 }
 

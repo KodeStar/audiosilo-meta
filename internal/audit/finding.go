@@ -49,13 +49,15 @@ const (
 	OpFillField       = "fill-field"        // state a fact the record is missing
 	OpRenameCandidate = "rename-candidate"  // a slug a rename pass should consider; never applied on this evidence alone
 	OpRepointSidecar  = "repoint-sidecar"   // move a works-community entry onto the right work
-	// OpAddLink states a LINK the record is missing: Target's Field (translation_of) gains
-	// To, in the id namespace Kind names. It adds a positive fact from stated evidence,
-	// as add-series-member does, and From is what the record states now, so a repair
-	// can refuse a record that has moved since the proposal was written.
-	OpAddLink = "add-link"
-	OpReview  = "review" // no mechanical action: a human decides
-	OpNone    = ""       // a pass-through record (LOADER)
+	// OpAddWorkLink and OpAddSeriesLink state a LINK the record is missing: Target's
+	// Field (translation_of) gains To, both in the family the op names. They add a
+	// positive fact from stated evidence, as add-series-member does, and From is what
+	// the record states now, so a repair can refuse a record that has moved since the
+	// proposal was written.
+	OpAddWorkLink   = "add-work-link"
+	OpAddSeriesLink = "add-series-link"
+	OpReview        = "review" // no mechanical action: a human decides
+	OpNone          = ""       // a pass-through record (LOADER)
 )
 
 // Proposal is the typed repair a finding proposes.
@@ -75,10 +77,6 @@ type Proposal struct {
 	Others []string `json:"others,omitempty"`
 	// Series names the series a membership op concerns.
 	Series string `json:"series,omitempty"`
-	// Kind is the id namespace Target and To live in ("works" or "series", the
-	// model.RedirectKind spelling), for an op that works over either family - add-link.
-	// Empty for every op whose family is its name.
-	Kind string `json:"kind,omitempty"`
 	// Field/From/To describe a single-field change. To is empty when the detector
 	// deliberately proposes no replacement value.
 	Field string `json:"field,omitempty"`

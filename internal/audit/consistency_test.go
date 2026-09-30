@@ -26,8 +26,8 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 	mergeTarget := map[string]string{} // work -> the target it was told to fold onto
 	isTarget := map[string]string{}    // work -> the record naming it as a target
 	slot := map[string]string{}        // "<series>@<pos>" -> the record claiming it
-	linkedTo := map[string]string{}    // "<kind>/<translation>" -> the original it is linked to
-	original := map[string]string{}    // "<kind>/<original>" -> the record naming it
+	linkedTo := map[string]string{}    // "<op>/<translation>" -> the original it is linked to
+	original := map[string]string{}    // "<op>/<original>" -> the record naming it
 
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -55,16 +55,16 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 					t.Errorf("%s and %s both claim series slot %s", prev, r.Key, key)
 				}
 				slot[key] = r.Key
-			case OpAddLink:
+			case OpAddWorkLink, OpAddSeriesLink:
 				// A translation gains ONE original per run, and no record is both a
 				// translation and an original across the set: applied in either order,
 				// the second would chain onto the first.
-				tr := p.Kind + "/" + p.Target
+				tr := p.Op + "/" + p.Target
 				if prev, dup := linkedTo[tr]; dup && prev != p.To {
 					t.Errorf("%s is linked to both %s and %s", r.Key, prev, p.To)
 				}
 				linkedTo[tr] = p.To
-				original[p.Kind+"/"+p.To] = r.Key
+				original[p.Op+"/"+p.To] = r.Key
 			}
 		}
 	}

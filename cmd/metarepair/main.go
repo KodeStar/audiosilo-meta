@@ -1,10 +1,11 @@
 // Command metarepair applies the NON-ADVISORY proposals of a metaaudit report to the
 // data tree: it merges duplicate works and series, retitles decorated titles, models
 // the series memberships a title states, restates non-canonical positions, and adds the
-// translation links a record's own-language edition decoration states (add-link, the
-// T-LINK class - a core-only op that needs no --community):
+// translation links a record's own-language edition decoration states (add-work-link and
+// add-series-link, the T-LINK class, each op naming the family it links - core-only ops
+// that need no --community):
 //
-//	go run ./cmd/metarepair -data data --op add-link --subclass series-edition
+//	go run ./cmd/metarepair -data data --op add-series-link
 //
 // The default is a DRY RUN that writes nothing and reports the whole plan:
 //

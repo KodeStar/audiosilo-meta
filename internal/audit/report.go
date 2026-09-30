@@ -57,8 +57,11 @@ var opPhrase = map[string]func(Proposal) string{
 	OpRepointSidecar: func(p Proposal) string {
 		return "re-point the works-community sidecar keyed by " + p.Target
 	},
-	OpAddLink: func(p Proposal) string {
-		return fmt.Sprintf("state %s %s %s as including %s", p.Kind, p.Target, p.Field, p.To)
+	OpAddWorkLink: func(p Proposal) string {
+		return fmt.Sprintf("state work %s %s as including %s", p.Target, p.Field, p.To)
+	},
+	OpAddSeriesLink: func(p Proposal) string {
+		return fmt.Sprintf("state series %s %s as including %s", p.Target, p.Field, p.To)
 	},
 	OpReview: func(Proposal) string { return "review by hand" },
 }

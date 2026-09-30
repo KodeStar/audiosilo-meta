@@ -48,7 +48,7 @@ func TestFindingsMatchTheWrittenReportFiles(t *testing.T) {
 		t.Fatal("the fixture produced no findings at all, so the comparison proves nothing")
 	}
 	if len(rep.Findings(ClassTransLink)) == 0 {
-		t.Fatal("the fixture produced no T-LINK proposal, so the proposal's namespace never made the round trip")
+		t.Fatal("the fixture produced no T-LINK proposal, so the link op never made the round trip")
 	}
 }
 
@@ -95,7 +95,7 @@ func seedDoorFixture(t testing.TB, data string) {
 		"people/ja/jane-doe.json":                        personJSON(t, "jane-doe", "Jane Doe"),
 		"people/na/nate-narrator.json":                   personJSON(t, "nate-narrator", "Nate Narrator"),
 		"series/dr/druid-tales.json":                     seriesJSON(t, "druid-tales", "The Druid Tales", "hammered@3"),
-		// A T-LINK proposal, so the proposal's namespace (Kind) makes the round trip too.
+		// A T-LINK proposal, so the link op makes the round trip too.
 		"works/tr/tricked/work.json":    workJSON(t, "tricked", "Tricked"),
 		"works/tr/tricked-de/work.json": workJSON(t, "tricked-de", "Tricked (German Edition)", withLanguage("de")),
 	})

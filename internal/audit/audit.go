@@ -175,10 +175,10 @@ func analyze(res check.Result) *Report {
 	// takes the inverse index it built rather than rebuilding it.
 	dup, clusterWorks, clustersOf := detectWorkDup(ix)
 	hyg, stats := detectHygiene(ix)
-	// The two series-name detectors share one key index; computing it twice would
+	// The series-name detectors share one key index; computing it again would
 	// fold 45k names through model.Slugify twice over.
 	skeys := seriesKeyIndex(cat.Series)
-	links, linkTally := detectTranslationLinks(ix, res.Identity)
+	links, linkTally := detectTranslationLinks(ix, res.Identity, skeys)
 
 	rep := &Report{
 		Stats:          stats,

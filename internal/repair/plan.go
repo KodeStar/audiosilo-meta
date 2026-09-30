@@ -59,11 +59,10 @@ type plan struct {
 	// what earlier proposals re-pointed. Both are updated as a txn commits.
 	workLinks   *linkIndex
 	seriesLinks *linkIndex
-	// memberLang is the primary language of every work a translation-linked series
-	// lists - linked in the tree, or by an add-link this run will plan - off the load
-	// (linkedMemberLanguages), so a derived series language is judged without parsing a
-	// pack for a work the run has not touched.
-	memberLang map[string]string
+	// workLang is the primary language of every work, off the load (workLanguages),
+	// so a derived series language is judged without parsing a pack for a work the run
+	// has not touched.
+	workLang map[string]string
 }
 
 // newPlan builds the plan over a store and the catalogue that was loaded from it.
@@ -71,10 +70,7 @@ type plan struct {
 // communityRO is the READ-ONLY community root (metarepair --community), nil unless
 // one was given. It exists because the sidecar-collision refusal is a question
 // about data this repository no longer holds - see sidecarSource.
-//
-// pendingSeries names the series the run's add-link proposals will link (either end),
-// so their members' languages are indexed with the linked ones; nil for none.
-func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, table model.Redirects, pendingSeries map[string]bool) *plan {
+func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, table model.Redirects) *plan {
 	p := &plan{
 		works:         newView(store, pack.FamilyWorks),
 		community:     newCommunityView(store, communityRO),
@@ -85,7 +81,7 @@ func newPlan(store *pack.Store, communityRO *pack.Store, cat *model.Catalog, tab
 		seriesOf:      map[string]map[string]bool{},
 	}
 	p.workLinks, p.seriesLinks = newLinkIndexes(cat)
-	p.memberLang = linkedMemberLanguages(cat, p.seriesLinks, pendingSeries)
+	p.workLang = workLanguages(cat)
 	for _, s := range cat.Series {
 		set := make(map[string]bool, len(s.Works))
 		for _, sw := range s.Works {

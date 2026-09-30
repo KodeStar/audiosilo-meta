@@ -66,7 +66,7 @@ func TestSeriesEditionProposesTheOneSameAuthorSeries(t *testing.T) {
 		t.Fatalf("no proposal for the German edition: %+v", classOf(t, rep, ClassTransLink))
 	}
 	p := fd.Propose
-	if fd.Subclass != tLinkSeries || p.Op != OpAddLink || p.Kind != "series" || p.Target != "the-saga-german" ||
+	if fd.Subclass != tLinkSeries || p.Op != OpAddSeriesLink || p.Target != "the-saga-german" ||
 		p.To != "the-saga" || p.Field != "translation_of" || p.From != "" || p.Advisory {
 		t.Errorf("proposal = %+v (subclass %s), want a mechanical series add-link onto the-saga", p, fd.Subclass)
 	}
@@ -169,7 +169,7 @@ func TestSeriesEditionOntoATranslationIsAdvisory(t *testing.T) {
 		map[string]any{"translation_of": []string{"el-origen"}})
 	rep := runFixture(t, files)
 	fd := linkFinding(t, rep, "the-saga-german")
-	if fd == nil || !fd.Propose.Advisory || !strings.Contains(fd.Propose.Reason, "itself a translation") {
+	if fd == nil || !fd.Propose.Advisory || !strings.Contains(fd.Propose.Reason, "chain rule") {
 		t.Fatalf("proposal = %+v, want an advisory naming the chain", fd)
 	}
 }
@@ -192,7 +192,7 @@ func TestWorkEditionProposesTheOneSameBookInAnotherLanguage(t *testing.T) {
 		t.Fatalf("no proposal: %+v", classOf(t, rep, ClassTransLink))
 	}
 	p := fd.Propose
-	if fd.Subclass != tLinkWork || p.Op != OpAddLink || p.Kind != "works" || p.To != "a-game-of-fate" || p.Advisory {
+	if fd.Subclass != tLinkWork || p.Op != OpAddWorkLink || p.To != "a-game-of-fate" || p.Advisory {
 		t.Errorf("proposal = %+v (subclass %s), want a mechanical works add-link onto a-game-of-fate", p, fd.Subclass)
 	}
 	assertProposalsConsistent(t, rep)

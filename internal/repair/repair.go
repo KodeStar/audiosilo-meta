@@ -135,7 +135,8 @@ var appliableOps = map[string]bool{
 	audit.OpAddSeriesMember: true,
 	audit.OpRestatePosition: true,
 	audit.OpFillField:       true,
-	audit.OpAddLink:         true,
+	audit.OpAddWorkLink:     true,
+	audit.OpAddSeriesLink:   true,
 }
 
 // AppliableOps returns the ops --op accepts, sorted. The CLI prints it, so the flag's
@@ -257,7 +258,6 @@ type Applied struct {
 	Subclass string   `json:"subclass,omitempty"`
 	Key      string   `json:"key"`
 	Op       string   `json:"op"`
-	Kind     string   `json:"kind,omitempty"`
 	Target   string   `json:"target,omitempty"`
 	Others   []string `json:"others,omitempty"`
 	Series   string   `json:"series,omitempty"`
@@ -401,10 +401,8 @@ func Run(opts Options) (*Report, error) {
 			opts.DataDir, len(res.Problems), opts.Profile, firstProblem(res))
 	}
 
-	rn := &runner{opts: opts, rep: rep, filter: f}
-	selected := rn.selectProposals(fresh)
-	rn.plan = newPlan(store, communityRO, res.Catalog, table, pendingLinkedSeries(selected))
-	for _, c := range selected {
+	rn := &runner{opts: opts, plan: newPlan(store, communityRO, res.Catalog, table), rep: rep, filter: f}
+	for _, c := range rn.selectProposals(fresh) {
 		if rn.fatal != nil {
 			break
 		}
@@ -445,7 +443,7 @@ func (rn *runner) planOne(c candidate) {
 		err = rn.addSeriesMember(t, c.fd)
 	case audit.OpFillField:
 		err = rn.fillField(t, c.fd)
-	case audit.OpAddLink:
+	case audit.OpAddWorkLink, audit.OpAddSeriesLink:
 		err = rn.addLink(t, c.fd)
 	default:
 		// Unreachable: selectProposals only yields appliableOps. Loud rather than
@@ -471,7 +469,7 @@ func (rn *runner) planOne(c candidate) {
 	}
 	rn.rep.Applied = append(rn.rep.Applied, Applied{
 		Class: c.class, Subclass: c.fd.Subclass, Key: c.fd.Key,
-		Op: p.Op, Kind: p.Kind, Target: p.Target, Others: p.Others, Series: p.Series,
+		Op: p.Op, Target: p.Target, Others: p.Others, Series: p.Series,
 		Field: p.Field, From: p.From, To: p.To,
 		Notes: t.notes,
 	})

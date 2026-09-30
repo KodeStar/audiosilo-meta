@@ -6,14 +6,14 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
-// addlink.go applies add-link, the audit's T-LINK proposals: a translation_of link a
-// record's own-language edition decoration states. It is the smallest write this pass
-// makes - one member of one entry, no slug touched, nothing retired - and it is held
-// to the same two rules as every other op here.
+// addlink.go applies add-work-link and add-series-link, the audit's T-LINK proposals:
+// a translation_of link a record's own-language edition decoration states, in the
+// family the op names. It is the smallest write this pass makes - one member of one
+// entry, no slug touched, nothing retired - and it is held to the same two rules as
+// every other op here.
 //
 // The RECORD is re-read and its translation_of compared with the proposal's FROM (what
 // the record stated when the audit proposed the link): a record that has moved since
@@ -31,26 +31,21 @@ import (
 // addLink states Target's translation_of as including To.
 func (rn *runner) addLink(t *txn, fd audit.Finding) error {
 	p := fd.Propose
+	f, ok := linkOpFamily[p.Op]
+	if !ok {
+		return refusef(CatMalformed, "%s is not a link op", p.Op)
+	}
 	if p.Field != fieldTranslationOf {
-		return refusef(CatMalformed, "add-link names field %q; this pass adds translation_of links only", p.Field)
+		return refusef(CatMalformed, "%s names field %q; this pass adds translation_of links only", p.Op, p.Field)
 	}
 	if p.Target == "" {
-		return refusef(CatMalformed, "add-link names no record to link")
+		return refusef(CatMalformed, "%s names no record to link", p.Op)
 	}
 	if p.To == "" {
 		return refusef(CatNoValue, "the proposal names no original to link %s to", p.Target)
 	}
 	if p.To == p.Target {
-		return refusef(CatMalformed, "add-link would link %s to itself", p.Target)
-	}
-	var f pack.Family
-	switch model.RedirectKind(p.Kind) {
-	case model.RedirectWorks:
-		f = pack.FamilyWorks
-	case model.RedirectSeries:
-		f = pack.FamilySeries
-	default:
-		return refusef(CatMalformed, "add-link names the id namespace %q; want works or series", p.Kind)
+		return refusef(CatMalformed, "%s would link %s to itself", p.Op, p.Target)
 	}
 	e, err := rn.liveLinkRecord(t, f, p.Target)
 	if err != nil {
@@ -59,15 +54,15 @@ func (rn *runner) addLink(t *txn, fd audit.Finding) error {
 	if _, err := rn.liveLinkRecord(t, f, p.To); err != nil {
 		return err
 	}
+	_, noun := linkFamily(f)
 	have := e.Strs(fieldTranslationOf)
 	if got := strings.Join(have, ","); got != p.From {
 		return refusef(CatStaleValue, "%s %s now states translation_of [%s], not the [%s] the proposal was written against",
-			p.Kind, p.Target, strings.Join(have, ", "), strings.ReplaceAll(p.From, ",", ", "))
+			noun, p.Target, strings.Join(have, ", "), strings.ReplaceAll(p.From, ",", ", "))
 	}
 	next := e.Clone()
 	rawentry.SetListOrDrop(next, fieldTranslationOf, slices.Compact(slices.Sorted(slices.Values(append(slices.Clone(have), p.To)))))
 	t.stageFor(f).put(p.Target, next)
-	_, noun := linkFamily(f)
 	t.note("linked %s %s as a translation of %s", noun, p.Target, p.To)
 	return t.refuseLinkFaults(p.Target)
 }
@@ -80,22 +75,4 @@ func (rn *runner) liveLinkRecord(t *txn, f pack.Family, slug string) (entry, err
 		return e, err
 	}
 	return rn.liveWork(t, slug)
-}
-
-// pendingLinkedSeries is every series id a selected SERIES add-link names, at either
-// end, so the plan indexes their members' languages before the first link is judged
-// (see linkedMemberLanguages). nil when there is none.
-func pendingLinkedSeries(selected []candidate) map[string]bool {
-	var out map[string]bool
-	for _, c := range selected {
-		p := c.fd.Propose
-		if p.Op != audit.OpAddLink || p.Kind != string(model.RedirectSeries) {
-			continue
-		}
-		if out == nil {
-			out = map[string]bool{}
-		}
-		out[p.Target], out[p.To] = true, true
-	}
-	return out
 }

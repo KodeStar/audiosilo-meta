@@ -1,6 +1,10 @@
 package titlerule
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
 
 func TestEditionLanguage(t *testing.T) {
 	for _, tc := range []struct {
@@ -16,6 +20,8 @@ func TestEditionLanguage(t *testing.T) {
 		{"Die Saga (Deutsche Ausgabe)", "de"},
 		{"The Saga [Fench Edition]", "fr"},
 		{"Hurricane Wars (Japanese Edition)", "ja"},
+		// A language the importer maps is a language whose edition is read.
+		{"Kuolema (Finnish Edition)", "fi"},
 		// Not a language edition: nothing is stated.
 		{"Fifteen Dogs (Tenth Anniversary Edition)", ""},
 		{"Pride and Prejudice (AmazonClassics Edition)", ""},
@@ -34,6 +40,40 @@ func TestEditionLanguage(t *testing.T) {
 	}
 }
 
+// Every language the project's word-to-code table maps is readable as an edition
+// language, so the importer's table and the edition reader cannot drift apart.
+func TestEveryMappedLanguageReadsAsAnEdition(t *testing.T) {
+	for word, code := range model.LanguageWords() {
+		if got, ok := EditionLanguage("X (" + word + " Edition)"); !ok || got != code {
+			t.Errorf("EditionLanguage(%q Edition) = %q, %v; want %q", word, got, ok, code)
+		}
+	}
+}
+
+// A title and a subtitle are read as one record: two languages across them state
+// nothing, one language in either states it.
+func TestEditionLanguageReadsTitleAndSubtitleTogether(t *testing.T) {
+	if got, ok := EditionLanguage("A Game of Fate", "(French Edition)"); !ok || got != "fr" {
+		t.Errorf("subtitle decoration = %q, %v", got, ok)
+	}
+	if _, ok := EditionLanguage("X (German Edition)", "[French Edition]"); ok {
+		t.Error("two languages across title and subtitle stated one")
+	}
+}
+
+func TestEditionLanguageOfDecoration(t *testing.T) {
+	for decor, want := range map[string]string{
+		DecorationKey("Throne of Glass [French Edition]"):         "fr",
+		DecorationKey("Foo (Book Club) [German Edition]"):         "de",
+		DecorationKey("Foo [German Edition] (Publication Order)"): "",
+		"": "",
+	} {
+		if got := EditionLanguageOfDecoration(decor); got != want {
+			t.Errorf("EditionLanguageOfDecoration(%q) = %q, want %q", decor, got, want)
+		}
+	}
+}
+
 func TestSplitEditionName(t *testing.T) {
 	for _, tc := range []struct {
 		name, base, lang string
@@ -41,6 +81,7 @@ func TestSplitEditionName(t *testing.T) {
 		{"Throne of Glass[French Edition]", "Throne of Glass", "fr"},
 		{"NOMADS Legacy (German Edition)", "NOMADS Legacy", "de"},
 		{"Harry Hole - [Spanish Edition]", "Harry Hole", "es"},
+		{"Harry Hole\t- [Spanish Edition]", "Harry Hole", "es"},
 		{"Vernon Subutex [English Edition]", "Vernon Subutex", "en"},
 		// The decoration must END the name.
 		{"The Saga [German Edition] Book One", "", ""},

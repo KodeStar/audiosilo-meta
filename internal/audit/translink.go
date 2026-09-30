@@ -14,14 +14,16 @@ import (
 // translink.go is T-LINK: TRANSLATION LINK candidates, proposed from STATED evidence
 // only - the one statement a record makes about its own language, a bracketed
 // own-language edition decoration (titlerule.EditionLanguage / SplitEditionName). It is
-// the audit half of the Languages Phase 3 link waves; internal/repair's add-link op is
-// the write half, and every proposal here is one pkg/check's link rules
-// (check.LinkFaults) accept, or it is advisory.
+// the audit half of the Languages Phase 3 link waves; internal/repair's add-work-link
+// and add-series-link ops are the write half, and every proposal here is one pkg/check's
+// link rules (check.LinkFaults) accept, or it is advisory.
 //
-// Two subclasses, one op (add-link: state Target's translation_of as including To):
+// Two subclasses, one per op (each op names its family, and states Target's
+// translation_of as including To):
 //
-//   - SERIES-EDITION. A series named "<base> [<Language> Edition]" whose derived language
-//     IS that language, and exactly one OTHER series named <base> (the importer's own
+//   - SERIES-EDITION (add-series-link). A series named "<base> [<Language> Edition]"
+//     whose derived language IS that language, and exactly one OTHER series named <base>
+//     (the importer's own
 //     SeriesNameKey equality) sharing a member-work author (through samePersonSpelling,
 //     so a forked person record is not a miss) and deriving a different, known
 //     language. The decoration is the US Audible marketplace's convention for a series
@@ -35,8 +37,9 @@ import (
 //     own title carries an own-language edition decoration, is likewise advisory: its
 //     members say it is a translation.
 //
-//   - WORK-EDITION. A work whose title (or subtitle) carries an own-language edition
-//     decoration - "(German Edition)" on a `de` work - states that it is a translation;
+//   - WORK-EDITION (add-work-link). A work whose title (or subtitle) carries an
+//     own-language edition decoration - "(German Edition)" on a `de` work - states that
+//     it is a translation;
 //     its original is the ONE work in another language that is the same book by the
 //     project's own identity rule with the language test removed
 //     (check.WorkIdentity.SameBookInAnyLanguage: the normalized title key, author
@@ -62,15 +65,23 @@ import (
 // the count of such ambiguous records (and of records whose candidate fails the language
 // test) is reported in SUMMARY.md, never guessed at. A link the record already states
 // is never proposed again - that is what makes a repair wave idempotent through the
-// fresh-audit gate - and a record already stating a DIFFERENT original, or an original
-// that is itself a translation (a chain), is advisory. So is any proposal pkg/check's
-// link rules would refuse, asked of the catalogue with the proposed link overlaid.
+// fresh-audit gate - and a record already stating a DIFFERENT original is advisory. So
+// is any proposal that would INTRODUCE a fault of pkg/check's link rules - a chain, a
+// same-language link, a retired original - asked through check.LinkOverlay, the same
+// one-record overlay the correct-data form judges a correction by, so a proposal the
+// audit calls clean is one the form would accept too.
 
 // T-LINK subclasses.
 const (
 	tLinkSeries = "series-edition"
 	tLinkWork   = "work-edition"
 )
+
+// linkOps is the op that adds a translation_of link in each family's namespace.
+var linkOps = map[model.RedirectKind]string{
+	model.RedirectWorks:  OpAddWorkLink,
+	model.RedirectSeries: OpAddSeriesLink,
+}
 
 // linkStats are T-LINK's count-only tallies: the candidates that yielded no proposal,
 // by why. They are the numbers a reviewer needs to read the class in proportion (a
@@ -86,77 +97,96 @@ type linkStats struct {
 }
 
 // detectTranslationLinks runs both subclasses. identity is the load's normalized work
-// identity index (check.Result.Identity); nil (a failed load) runs the series half alone.
-func detectTranslationLinks(ix *index, identity *check.WorkIdentity) (*findings, linkStats) {
+// identity index (check.Result.Identity); nil (a failed load) runs the series half
+// alone. skeys is the series key index the SER-DUP detectors share.
+func detectTranslationLinks(ix *index, identity *check.WorkIdentity, skeys []seriesKeys) (*findings, linkStats) {
 	f := &findings{class: ClassTransLink}
 	var st linkStats
-	lv := newLinkOverlay(ix)
-	detectSeriesEditionLinks(ix, lv, f, &st)
+	base := check.NewLinkView(ix.workByID, ix.seriesByID, ix.cat.Redirects)
+	detectSeriesEditionLinks(ix, skeys, base, f, &st)
 	if identity != nil {
-		detectWorkEditionLinks(ix, identity, lv, f, &st)
+		detectWorkEditionLinks(ix, identity, base, f, &st)
 	}
 	return f, st
 }
 
+// onlyOne is the one element of xs, or false after counting xs as none or many.
+func onlyOne[T any](xs []T, none, many *int) (T, bool) {
+	switch len(xs) {
+	case 1:
+		return xs[0], true
+	case 0:
+		*none++
+	default:
+		*many++
+	}
+	var zero T
+	return zero, false
+}
+
 // ---- series-edition -------------------------------------------------------------
 
-func detectSeriesEditionLinks(ix *index, lv *linkOverlay, f *findings, st *linkStats) {
-	byKey := make(map[string][]*model.Series, len(ix.cat.Series))
+func detectSeriesEditionLinks(ix *index, skeys []seriesKeys, base check.LinkView, f *findings, st *linkStats) {
+	// Candidates are bucketed by the SER-DUP tight key, which strips every bracketed
+	// group: an edition's key is its base's, and SameSeriesName below is the precise
+	// filter inside the bucket.
+	byTight, _ := groupBy(skeys, func(k seriesKeys) string { return k.tight })
 	type edition struct {
-		s          *model.Series
+		k          seriesKeys
 		base, lang string
 	}
 	var editions []edition
-	for _, s := range ix.cat.Series {
-		k := titlerule.SeriesNameKey(s.Name)
-		byKey[k] = append(byKey[k], s)
-		if base, lang, ok := titlerule.SplitEditionName(s.Name); ok {
-			editions = append(editions, edition{s: s, base: base, lang: lang})
+	for _, k := range skeys {
+		if titlerule.EditionLanguageOfDecoration(k.decor) == "" {
+			continue
+		}
+		if b, lang, ok := titlerule.SplitEditionName(k.series.Name); ok {
+			editions = append(editions, edition{k: k, base: b, lang: lang})
 		}
 	}
-	sort.Slice(editions, func(i, j int) bool { return editions[i].s.ID < editions[j].s.ID })
+	sort.Slice(editions, func(i, j int) bool { return editions[i].k.series.ID < editions[j].k.series.ID })
 	st.SeriesDecorated = len(editions)
 
+	type candidate struct {
+		s      *model.Series
+		shared []string // the member-work authors it shares with the edition
+	}
 	for _, e := range editions {
+		s := e.k.series
 		name := titlerule.NewSeriesName(e.base)
-		side := seriesSideOf(ix, e.s)
-		var cands []*model.Series
-		for _, c := range byKey[titlerule.SeriesNameKey(e.base)] {
-			if c.ID == e.s.ID || !name.Same(c.Name) {
+		authors := seriesSideOf(ix, s).authors
+		var cands []candidate
+		for _, c := range byTight[e.k.tight] {
+			if c.series.ID == s.ID || !name.Same(c.series.Name) {
 				continue
 			}
-			if anySamePerson(ix, side.authors, seriesSideOf(ix, c).authors) {
-				cands = append(cands, c)
+			if shared := sharedAuthors(ix, authors, seriesSideOf(ix, c.series).authors); len(shared) > 0 {
+				cands = append(cands, candidate{s: c.series, shared: shared})
 			}
 		}
-		switch len(cands) {
-		case 0:
-			st.SeriesNoCandidate++
-			continue
-		case 1:
-		default:
-			st.SeriesAmbiguous++
+		c, ok := onlyOne(cands, &st.SeriesNoCandidate, &st.SeriesAmbiguous)
+		if !ok {
 			continue
 		}
-		o := cands[0]
-		lt, lo := ix.seriesLanguage(e.s), ix.seriesLanguage(o)
+		o := c.s
+		lt, lo := ix.seriesLanguage(s), ix.seriesLanguage(o)
 		if lt == "" || lo == "" || lt == lo || lt != e.lang {
 			st.SeriesLanguageSkips++
 			continue
 		}
-		if slices.Contains(e.s.TranslationOf, o.ID) {
+		if slices.Contains(s.TranslationOf, o.ID) {
 			continue // already stated: nothing to propose, which is what makes a wave idempotent
 		}
 		fd := Finding{
 			Subclass: tLinkSeries,
-			Key:      e.s.ID,
-			Series:   []SeriesRef{ix.seriesRef(e.s), ix.seriesRef(o)},
-			Propose:  linkProposal(model.RedirectSeries, e.s.ID, e.s.TranslationOf, o.ID),
+			Key:      s.ID,
+			Series:   []SeriesRef{ix.seriesRef(s), ix.seriesRef(o)},
+			Propose:  linkProposal(model.RedirectSeries, s.ID, s.TranslationOf, o.ID),
 		}
 		fd.Notes = []string{
 			fmt.Sprintf("the name %q states the %s edition of %q; %s derives %s, %s derives %s",
-				e.s.Name, e.lang, e.base, e.s.ID, lt, o.ID, lo),
-			"shared member-work author: " + truncateList(sharedAuthors(ix, side.authors, seriesSideOf(ix, o).authors), 4),
+				s.Name, e.lang, e.base, s.ID, lt, o.ID, lo),
+			"shared member-work author: " + truncateList(c.shared, 4),
 		}
 		var vetoes []string
 		if lo != "en" {
@@ -166,45 +196,34 @@ func detectSeriesEditionLinks(ix *index, lv *linkOverlay, f *findings, st *linkS
 		if _, ol, edited := titlerule.SplitEditionName(o.Name); edited {
 			vetoes = append(vetoes, fmt.Sprintf("the base series %s is itself named as the %s edition of another series", o.ID, ol))
 		}
-		if n := translatorCredited(ix, o); n > 0 {
+		if n := countMembers(ix, o, hasTranslator); n > 0 {
 			vetoes = append(vetoes, fmt.Sprintf("%s has %s credited to a translator: its members say it is a translation",
 				o.ID, joinCount(n, "member")))
 		}
-		if n := editionDecorated(ix, o); n > 0 {
+		if n := countMembers(ix, o, func(w *model.Work) bool { return ownEditionLanguage(w) != "" }); n > 0 {
 			vetoes = append(vetoes, fmt.Sprintf("%s has %s whose title states its own language's edition: its members say "+
 				"it is a translation", o.ID, joinCount(n, "member")))
 		}
-		vetoes = append(vetoes, linkVetoes(lv, model.RedirectSeries, e.s.ID, e.s.TranslationOf, o.ID)...)
+		vetoes = append(vetoes, linkVetoes(base, model.RedirectSeries, s.ID, s.TranslationOf, o.ID)...)
 		settleLink(&fd, vetoes)
 		f.add(fd)
 	}
 }
 
-// translatorCredited counts a series' member works carrying a translator credit.
-func translatorCredited(ix *index, s *model.Series) int {
+// countMembers counts a series' member works pred holds for.
+func countMembers(ix *index, s *model.Series, pred func(*model.Work) bool) int {
 	n := 0
 	for _, sw := range s.Works {
-		if w := ix.workByID[sw.Work]; w != nil && hasTranslator(w) {
+		if w := ix.workByID[sw.Work]; w != nil && pred(w) {
 			n++
 		}
 	}
 	return n
 }
 
-// editionDecorated counts a series' member works whose title states their own
-// language's edition.
-func editionDecorated(ix *index, s *model.Series) int {
-	n := 0
-	for _, sw := range s.Works {
-		if w := ix.workByID[sw.Work]; w != nil && ownEditionLanguage(w) != "" {
-			n++
-		}
-	}
-	return n
-}
-
-// sharedAuthors is the authors two lists have in common by id, else the first side's
-// authors that are a spelling of one on the other side - the evidence note's content.
+// sharedAuthors is the authors of a that are one person with an author of b under
+// samePersonSpelling (an identical id included), sorted - the candidate test and the
+// evidence note's content at once.
 func sharedAuthors(ix *index, a, b []string) []string {
 	var out []string
 	for _, x := range a {
@@ -220,7 +239,7 @@ func sharedAuthors(ix *index, a, b []string) []string {
 
 // ---- work-edition ---------------------------------------------------------------
 
-func detectWorkEditionLinks(ix *index, identity *check.WorkIdentity, lv *linkOverlay, f *findings, st *linkStats) {
+func detectWorkEditionLinks(ix *index, identity *check.WorkIdentity, base check.LinkView, f *findings, st *linkStats) {
 	for _, t := range ix.cat.Works {
 		lang := ownEditionLanguage(t)
 		if lang == "" {
@@ -235,16 +254,10 @@ func detectWorkEditionLinks(ix *index, identity *check.WorkIdentity, lv *linkOve
 			}
 			origs = append(origs, m.Work)
 		}
-		switch len(origs) {
-		case 0:
-			st.WorksNoCandidate++
-			continue
-		case 1:
-		default:
-			st.WorksAmbiguous++
+		o, ok := onlyOne(origs, &st.WorksNoCandidate, &st.WorksAmbiguous)
+		if !ok {
 			continue
 		}
-		o := origs[0]
 		if slices.Contains(t.TranslationOf, o.ID) {
 			continue
 		}
@@ -257,7 +270,8 @@ func detectWorkEditionLinks(ix *index, identity *check.WorkIdentity, lv *linkOve
 		fd.Notes = []string{fmt.Sprintf("%q states the %s edition on a %s work; %s (%s) is the one same-book work in another language",
 			editionText(t), lang, t.Language, o.ID, o.Language)}
 		var vetoes []string
-		if isDramatizedOrAdapted(o) {
+		if p := titlerule.ProductOf("", o.Title, o.Subtitle); p.Adapted ||
+			titlerule.IsDramatization(o.Title) || titlerule.IsDramatization(o.Subtitle) {
 			vetoes = append(vetoes, fmt.Sprintf("the original %s is a dramatized or adapted production (%q): a translation "+
 				"is of the text", o.ID, o.Title))
 		}
@@ -266,13 +280,13 @@ func detectWorkEditionLinks(ix *index, identity *check.WorkIdentity, lv *linkOve
 				"normalized key met, but only an untranslated title is the retailer's own statement that these are one book",
 				t.Title, o.Title))
 		}
-		vetoes = append(vetoes, linkVetoes(lv, model.RedirectWorks, t.ID, t.TranslationOf, o.ID)...)
+		vetoes = append(vetoes, linkVetoes(base, model.RedirectWorks, t.ID, t.TranslationOf, o.ID)...)
 		settleLink(&fd, vetoes)
 		f.add(fd)
 	}
 }
 
-// ownEditionLanguage is the language a work's title or subtitle states its OWN edition
+// ownEditionLanguage is the language a work's title and subtitle state its OWN edition
 // in - the decoration's language, when it is the work's own primary language - or "".
 // A title and subtitle naming two languages state nothing.
 func ownEditionLanguage(w *model.Work) string {
@@ -280,11 +294,10 @@ func ownEditionLanguage(w *model.Work) string {
 	if lang == "" {
 		return ""
 	}
-	l, ok := titlerule.EditionLanguage(w.Title + " " + w.Subtitle)
-	if !ok || l != lang {
-		return ""
+	if l, ok := titlerule.EditionLanguage(w.Title, w.Subtitle); ok && l == lang {
+		return l
 	}
-	return l
+	return ""
 }
 
 // editionText is the title (and subtitle) a work-edition note quotes.
@@ -303,48 +316,24 @@ func isStatedTranslation(w *model.Work) bool {
 }
 
 func hasTranslator(w *model.Work) bool {
-	for _, c := range w.Credits {
-		if c.Role == "translator" {
-			return true
-		}
-	}
-	return false
-}
-
-// isDramatizedOrAdapted reports whether a work's title or subtitle announces a
-// dramatized production or a derived edition (titlerule's product vocabulary).
-func isDramatizedOrAdapted(w *model.Work) bool {
-	for _, t := range []string{w.Title, w.Subtitle} {
-		if t != "" && (titlerule.IsDramatization(t) || titlerule.IsYoungReadersAdaptation(t) || titlerule.IsSeriesEdition(t)) {
-			return true
-		}
-	}
-	return false
+	return slices.ContainsFunc(w.Credits, func(c model.Credit) bool { return c.Role == model.RoleTranslator })
 }
 
 // ---- the shared proposal and its link checks ----------------------------------
 
-// linkProposal is the add-link proposal: state target's translation_of as including
+// linkProposal is the link op's proposal: state target's translation_of as including
 // to. From is what the record states now (comma-joined, "" for none), which is what
 // the repair checks the tree against before it writes.
 func linkProposal(kind model.RedirectKind, target string, have []string, to string) Proposal {
 	return Proposal{
-		Op:     OpAddLink,
-		Kind:   string(kind),
+		Op:     linkOps[kind],
 		Target: target,
 		Field:  check.FieldTranslationOf,
 		From:   strings.Join(have, ","),
 		To:     to,
 		Reason: "the record states its own language's edition, and exactly one record in another language is the " +
-			"same " + nounOf(kind) + " by the project's own rules",
+			"same " + check.FamilyNoun(kind) + " by the project's own rules",
 	}
-}
-
-func nounOf(kind model.RedirectKind) string {
-	if kind == model.RedirectSeries {
-		return "series"
-	}
-	return "book"
 }
 
 // settleLink turns a proposal advisory when anything vetoes it.
@@ -356,78 +345,22 @@ func settleLink(fd *Finding, vetoes []string) {
 	fd.Propose.Reason = "a human should confirm: " + truncateList(vetoes, 4)
 }
 
-// linkVetoes are the reasons the link itself may not be added mechanically: the
-// record already states a different original (a second one is an omnibus claim a
-// human makes), the original is itself a translation (a chain), or pkg/check's link
-// rules - asked of the catalogue with this one link overlaid - report a problem.
-func linkVetoes(lv *linkOverlay, kind model.RedirectKind, id string, have []string, to string) []string {
+// linkVetoes are the reasons the link itself may not be added mechanically: the record
+// already states a different original (a second one is an omnibus claim a human
+// makes), or the link would introduce a fault of pkg/check's link rules - asked over
+// the catalogue with this one link overlaid (check.LinkOverlay.IntroducedFaults), so a
+// chain in either direction, a same-language link or a retired original is seen as the
+// rule of record words it.
+func linkVetoes(base check.LinkView, kind model.RedirectKind, id string, have []string, to string) []string {
 	var out []string
-	noun := string(kind)
 	if len(have) > 0 {
 		out = append(out, fmt.Sprintf("%s already states translation_of [%s]", id, strings.Join(have, ", ")))
 	}
-	if originals := lv.base.TranslationOf(kind, to); len(originals) > 0 {
-		out = append(out, fmt.Sprintf("%s is itself a translation of [%s]: link to the original instead",
-			to, strings.Join(originals, ", ")))
-	}
-	lv.set(kind, id, to)
-	defer lv.clear()
-	for _, fault := range check.LinkFaults(lv, kind, id) {
-		if fault.Severity == check.LinkProblem {
-			out = append(out, fmt.Sprintf("pkg/check would refuse the link (%s %s: %s rule on %s naming %s)",
-				noun, fault.From, fault.Code, fault.Field, fault.To))
-		}
+	rec := check.LinkRecordOf(base, kind, id)
+	rec.TranslationOf = slices.Sorted(slices.Values(append(slices.Clone(have), to)))
+	for _, fault := range check.NewLinkOverlay(base, kind, id, rec).IntroducedFaults() {
+		out = append(out, fmt.Sprintf("pkg/check would refuse the link (%s %s: %s rule on %s naming %s)",
+			kind, fault.From, fault.Code, fault.Field, fault.To))
 	}
 	return sortedUnique(out)
 }
-
-// linkOverlay is the catalogue's check.LinkView with ONE proposed link added: id's
-// translation_of gains to, and to's inverse gains id. It is built once per run over
-// the index's id maps and re-pointed per proposal (set/clear), so asking the rule of
-// record costs a handful of map reads per candidate.
-//
-// The tombstone table is empty here: the audit never reads data/redirects.json, and a
-// proposal only ever names live ids. An existing link naming a retired id reads as
-// dead rather than retired - a different wording of the same problem.
-type linkOverlay struct {
-	base check.LinkView
-	kind model.RedirectKind
-	id   string
-	to   string
-}
-
-func newLinkOverlay(ix *index) *linkOverlay {
-	return &linkOverlay{base: check.NewLinkView(ix.workByID, ix.seriesByID, model.NewRedirects())}
-}
-
-func (o *linkOverlay) set(kind model.RedirectKind, id, to string) { o.kind, o.id, o.to = kind, id, to }
-func (o *linkOverlay) clear()                                     { o.id, o.to = "", "" }
-
-func (o *linkOverlay) Holds(kind model.RedirectKind, id string) bool { return o.base.Holds(kind, id) }
-func (o *linkOverlay) Survivor(kind model.RedirectKind, id string) (string, bool) {
-	return o.base.Survivor(kind, id)
-}
-func (o *linkOverlay) Language(kind model.RedirectKind, id string) string {
-	return o.base.Language(kind, id)
-}
-
-func (o *linkOverlay) TranslationOf(kind model.RedirectKind, id string) []string {
-	have := o.base.TranslationOf(kind, id)
-	if o.id == "" || kind != o.kind || id != o.id || slices.Contains(have, o.to) {
-		return have
-	}
-	return slices.Sorted(slices.Values(append(slices.Clone(have), o.to)))
-}
-
-func (o *linkOverlay) TranslatedBy(kind model.RedirectKind, id string) []string {
-	have := o.base.TranslatedBy(kind, id)
-	if o.id == "" || kind != o.kind || id != o.to || slices.Contains(have, o.id) {
-		return have
-	}
-	return slices.Sorted(slices.Values(append(slices.Clone(have), o.id)))
-}
-
-func (o *linkOverlay) Ordering(series string) string   { return o.base.Ordering(series) }
-func (o *linkOverlay) OrderingOf(series string) string { return o.base.OrderingOf(series) }
-func (o *linkOverlay) Variants(series string) []string { return o.base.Variants(series) }
-func (o *linkOverlay) Members(series string) []string  { return o.base.Members(series) }

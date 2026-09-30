@@ -498,7 +498,7 @@ func reportLinkFaults(faults []LinkFault, rel string, add, warn addFunc) {
 
 // linkFaultMessage is the load's sentence for a fault.
 func linkFaultMessage(f LinkFault) string {
-	noun := familyNoun(f.Kind)
+	noun := FamilyNoun(f.Kind)
 	switch f.Code {
 	case LinkUnsorted:
 		return fmt.Sprintf("%s must be sorted: %q comes after %q", f.Field, f.To, f.Others[0])
@@ -546,8 +546,9 @@ const orderingNotSubset = "a variant listing works its primary does not (legitim
 const seriesSameLanguage = "the link stands, so a member is probably filed under the wrong language " +
 	"(a series' language is its members' majority)"
 
-// familyNoun is the singular noun a message names a record of kind by.
-func familyNoun(kind model.RedirectKind) string {
+// FamilyNoun is the singular noun a message names a record of a link-bearing kind
+// by ("work", "series"): the one spelling every link door words a record with.
+func FamilyNoun(kind model.RedirectKind) string {
 	if kind == model.RedirectWorks {
 		return "work"
 	}

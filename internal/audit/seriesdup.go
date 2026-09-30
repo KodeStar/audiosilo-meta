@@ -17,10 +17,10 @@ const (
 )
 
 // seriesKeys is one series' two comparison keys plus whether its name carries a
-// parenthetical and what that parenthetical says. Both detectors read it, and it is
-// computed ONCE per series: the keys fold through model.Slugify (NFD normalization
-// plus a builder) and were being computed four times over 45k series across two
-// detectors and their tie-breaks.
+// parenthetical and what that parenthetical says. SER-DUP, SER-PAREN and T-LINK's
+// series-edition half read it, and it is computed ONCE per series: the keys fold
+// through model.Slugify (NFD normalization plus a builder) and were being computed four
+// times over 45k series across two detectors and their tie-breaks.
 type seriesKeys struct {
 	series *model.Series
 	tight  string

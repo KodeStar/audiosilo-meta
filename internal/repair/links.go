@@ -3,6 +3,7 @@ package repair
 import (
 	"slices"
 
+	"github.com/kodestar/audiosilo-meta/internal/audit"
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -132,30 +133,15 @@ func newLinkIndexes(cat *model.Catalog) (works, series *linkIndex) {
 	return works, series
 }
 
-// linkedMemberLanguages is the primary language subtag of every work a series on EITHER
-// end of a translation link lists - one the tree states, or one a selected add-link
-// proposal will state (pending, the series ids those proposals name) - read off the
-// loaded catalogue, so judging a linked series' derived language never parses a pack
-// for a member the run has not touched. Empty (and free) on a tree carrying no series
-// translation and a run adding none.
-func linkedMemberLanguages(cat *model.Catalog, series *linkIndex, pending map[string]bool) map[string]string {
-	if len(series.translationOf) == 0 && len(pending) == 0 {
-		return map[string]string{}
-	}
-	want := map[string]bool{}
-	for _, s := range cat.Series {
-		if _, states := series.translationOf[s.ID]; states || len(series.translatedBy[s.ID]) > 0 || pending[s.ID] {
-			for _, sw := range s.Works {
-				want[sw.Work] = true
-			}
-		}
-	}
-	out := make(map[string]string, len(want))
+// workLanguages is the primary language subtag of every work, read off the loaded
+// catalogue (the first record of an id, as every whole-catalogue reader keys it), so
+// judging a linked series' derived language never parses a pack for a member the run
+// has not touched - whichever series a merge re-points or a link op names.
+func workLanguages(cat *model.Catalog) map[string]string {
+	out := make(map[string]string, len(cat.Works))
 	for _, w := range cat.Works {
-		if want[w.ID] {
-			if _, seen := out[w.ID]; !seen {
-				out[w.ID] = model.PrimarySubtag(w.Language)
-			}
+		if _, seen := out[w.ID]; !seen {
+			out[w.ID] = model.PrimarySubtag(w.Language)
 		}
 	}
 	return out
@@ -186,10 +172,18 @@ func (s *stage) reindexLinks(ix *linkIndex) {
 
 // linkFamily is the one mapping from a pack family to what the link rules call it.
 func linkFamily(f pack.Family) (kind model.RedirectKind, noun string) {
+	kind = model.RedirectWorks
 	if f == pack.FamilySeries {
-		return model.RedirectSeries, "series"
+		kind = model.RedirectSeries
 	}
-	return model.RedirectWorks, "work"
+	return kind, check.FamilyNoun(kind)
+}
+
+// linkOpFamily is the pack family each link-adding op writes: the op names its family,
+// so the family is read off it rather than off a field of the proposal.
+var linkOpFamily = map[string]pack.Family{
+	audit.OpAddWorkLink:   pack.FamilyWorks,
+	audit.OpAddSeriesLink: pack.FamilySeries,
 }
 
 // relinkTranslations is the translation_of half of a merge, for either family (a work
@@ -474,12 +468,12 @@ func (v *stagedLinkView) Language(kind model.RedirectKind, id string) string {
 }
 
 // workLanguage is a work's primary language subtag over the staged view. A work neither
-// this txn nor an earlier proposal has touched reads from the load's member-language map
-// when it is there, so deriving a linked series' language parses no pack for it.
+// this txn nor an earlier proposal has touched reads from the load's language map
+// (workLanguages), so deriving a linked series' language parses no pack for it.
 func (v *stagedLinkView) workLanguage(id string) string {
 	st, p := v.t.works, v.t.p
 	if _, staged := st.puts[id]; !staged && !st.dels[id] && !p.works.dirty[id] && !p.works.gone[id] {
-		if lang, ok := p.memberLang[id]; ok {
+		if lang, ok := p.workLang[id]; ok {
 			return lang
 		}
 	}
