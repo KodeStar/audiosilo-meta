@@ -576,7 +576,7 @@ func (ix *SeriesAuthorIndex) catalogue(stored func(slug string) (string, bool), 
 	cat := seriesCatalogue{stored: stored, redirects: reds}
 	if ix != nil {
 		cat.evidence = func(slug string) *seriesAuthors { return ix.series[slug] }
-		cat.language = func(slug string) string { return ix.language[slug] }
+		cat.language = ix.language
 		cat.large = ix.large
 	}
 	return cat

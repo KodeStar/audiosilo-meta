@@ -156,9 +156,9 @@ type seriesCatalogue struct {
 	stored    func(slug string) (string, bool)
 	redirects model.Redirects
 	evidence  func(slug string) *seriesAuthors
-	// language is a catalogued series' derived language, "" when unknown or a
-	// tie; nil judges no languages.
-	language func(slug string) string
+	// language is each catalogued series' derived language, holding only the
+	// known ones; nil (a lookup answers "") judges no languages.
+	language map[string]string
 	large    map[string]bool
 }
 
@@ -258,11 +258,12 @@ type seriesCandidate struct {
 	// lang is a catalogued candidate's derived language, fixed at the snapshot.
 	lang string
 	// founded marks a series this batch founds, whose language is derived from
-	// the books that founded or joined it instead: members (one per book, as the
-	// evidence counts them) and each one's language.
+	// the books that founded or joined it instead: each one's language, keyed by
+	// book (one entry per book, as the evidence counts them).
 	founded   bool
-	members   []model.SeriesWork
 	languages map[string]string
+	// foundedLang memoizes language() for a founded candidate; extend clears it.
+	foundedLang *string
 }
 
 // language is the candidate's derived language: the snapshot's for a
@@ -272,7 +273,15 @@ func (c *seriesCandidate) language() string {
 	if !c.founded {
 		return c.lang
 	}
-	return model.SeriesLanguage(c.members, func(work string) string { return c.languages[work] })
+	if c.foundedLang == nil {
+		members := make([]model.SeriesWork, 0, len(c.languages))
+		for w := range c.languages {
+			members = append(members, model.SeriesWork{Work: w})
+		}
+		lang := model.SeriesLanguage(members, func(work string) string { return c.languages[work] })
+		c.foundedLang = &lang
+	}
+	return *c.foundedLang
 }
 
 // closedTo reports whether the candidate's language closes it to cl
@@ -292,10 +301,8 @@ func (c *seriesCandidate) extend(cl nameClaim) {
 	cl.row.prepare()
 	c.ev.add(cl.work, cl.row.forms, cl.row.pubKeys)
 	if c.founded {
-		if _, seen := c.languages[cl.work]; !seen {
-			c.members = append(c.members, model.SeriesWork{Work: cl.work})
-			c.languages[cl.work] = cl.row.language
-		}
+		c.languages[cl.work] = cl.row.language
+		c.foundedLang = nil
 	}
 }
 
@@ -316,11 +323,7 @@ func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate 
 		if cat.evidence != nil {
 			ev = cat.evidence(slug)
 		}
-		var lang string
-		if cat.language != nil {
-			lang = cat.language(slug)
-		}
-		out = append(out, seriesCandidate{slug: slug, via: via, ev: ev, lang: lang})
+		out = append(out, seriesCandidate{slug: slug, via: via, ev: ev, lang: cat.language[slug]})
 	}
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
