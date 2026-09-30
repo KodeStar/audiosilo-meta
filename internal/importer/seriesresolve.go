@@ -43,6 +43,22 @@ import (
 // Campbell's is refused by it and founds `lost-fleet-2`. And a catalogue holding
 // only Hawke's first volume - OPEN to any one row - is still not handed to a
 // batch of six Campbell rows, which would make him its dominant author.
+//
+// LANGUAGE is judged before authors, at every step (languageCloses): a candidate
+// whose DERIVED language is known and is not the claim's is CLOSED to it, exactly
+// as a series its authors do not fit is, whatever the authors say - Hurwitz's
+// English "Orphan X" volume is not a member of the German "Orphan X", which is
+// his series too. A catalogued candidate's language is the snapshot's
+// (model.SeriesLanguageOf over its catalogued members, SeriesAuthorIndex), so no
+// batch can flip it by arriving; a series the batch founds takes the language
+// of the claims that founded or joined it (seriesCandidate.language, the same
+// model.SeriesLanguage). Clusters are formed within one language, so German rows
+// of one author claiming an English-catalogued name found ONE German series
+// together rather than one each, and never share it with the English rows of the
+// same batch. A tie ("") and a claim of unknown language are never judged. The
+// rule was measured over the libex dump when it landed (see CLAUDE.md): the
+// cross-language joins it refuses were the eight September sync-bot memberships
+// that grew the mixed-language series L-MIX repairs.
 
 // nameClaim is one row's claim to a named series, as the resolution reads it.
 type nameClaim struct {
@@ -72,8 +88,8 @@ type seriesTarget struct {
 	// via is the retired base slug a found series was reached through, or "".
 	via string
 	// stepped are the same-named catalogued series the claim did not fit, and
-	// chain where slug sits on the name's chain, when it founds a new one.
-	stepped []string
+	// why, and chain where slug sits on the name's chain, when it founds a new one.
+	stepped []steppedSeries
 	chain   int
 	// name is the spelling a FOUNDED series is written under: the group's
 	// canonical claim's (its lowest claimOrder), so when one group holds several
@@ -83,13 +99,67 @@ type seriesTarget struct {
 	name string
 }
 
+// steppedSeries is a same-named catalogued series a claim did not join.
+type steppedSeries struct {
+	slug string
+	// language is the series' derived language when THAT closed it to the claim
+	// (languageCloses), "" when its authors did.
+	language string
+}
+
+// steppedSlugs is the stepped series' slugs, in chain order.
+func steppedSlugs(st []steppedSeries) []string {
+	var out []string
+	for _, s := range st {
+		out = append(out, s.slug)
+	}
+	return out
+}
+
+// describeStepped says why a claim stepped past its same-named series, for the
+// warnings and notes that report it: "a, b belongs to other authors" (the
+// wording the author rule has always used), "c is in another language (de)",
+// or both, separated by "; ".
+func describeStepped(st []steppedSeries) string {
+	var authors, langSlugs, langs []string
+	for _, s := range st {
+		if s.language == "" {
+			authors = append(authors, s.slug)
+			continue
+		}
+		langSlugs = append(langSlugs, s.slug)
+		if !slices.Contains(langs, s.language) {
+			langs = append(langs, s.language)
+		}
+	}
+	var parts []string
+	if len(authors) > 0 {
+		parts = append(parts, strings.Join(authors, ", ")+" belongs to other authors")
+	}
+	if len(langSlugs) > 0 {
+		parts = append(parts, strings.Join(langSlugs, ", ")+" is in another language ("+strings.Join(langs, ", ")+")")
+	}
+	return strings.Join(parts, "; ")
+}
+
+// languageCloses is the LANGUAGE half of series resolution: a series whose
+// derived language is series is closed to a claim in language row iff both are
+// known and their primary subtags differ (model.SameLanguage). A tie or an
+// unknown series language ("") and an unknown row language are never judged.
+func languageCloses(series, row string) bool {
+	return series != "" && row != "" && !model.SameLanguage(series, row)
+}
+
 // seriesCatalogue is what the resolution reads about the catalogue
 // (SeriesAuthorIndex.catalogue builds it).
 type seriesCatalogue struct {
 	stored    func(slug string) (string, bool)
 	redirects model.Redirects
 	evidence  func(slug string) *seriesAuthors
-	large     map[string]bool
+	// language is a catalogued series' derived language, "" when unknown or a
+	// tie; nil judges no languages.
+	language func(slug string) string
+	large    map[string]bool
 }
 
 // claimOrder is a claim's canonical key: its authors, titles and publishers and
@@ -185,6 +255,30 @@ type seriesCandidate struct {
 	chain     int
 	ev        *seriesAuthors
 	owned     bool
+	// lang is a catalogued candidate's derived language, fixed at the snapshot.
+	lang string
+	// founded marks a series this batch founds, whose language is derived from
+	// the books that founded or joined it instead: members (one per book, as the
+	// evidence counts them) and each one's language.
+	founded   bool
+	members   []model.SeriesWork
+	languages map[string]string
+}
+
+// language is the candidate's derived language: the snapshot's for a
+// catalogued series (a batch never flips it), and model.SeriesLanguage over its
+// own books for a founded one.
+func (c *seriesCandidate) language() string {
+	if !c.founded {
+		return c.lang
+	}
+	return model.SeriesLanguage(c.members, func(work string) string { return c.languages[work] })
+}
+
+// closedTo reports whether the candidate's language closes it to cl
+// (languageCloses).
+func (c *seriesCandidate) closedTo(cl nameClaim) bool {
+	return languageCloses(c.language(), cl.row.language)
 }
 
 // extend adds a claim's book to the candidate's evidence, when it places one.
@@ -197,6 +291,12 @@ func (c *seriesCandidate) extend(cl nameClaim) {
 	}
 	cl.row.prepare()
 	c.ev.add(cl.work, cl.row.forms, cl.row.pubKeys)
+	if c.founded {
+		if _, seen := c.languages[cl.work]; !seen {
+			c.members = append(c.members, model.SeriesWork{Work: cl.work})
+			c.languages[cl.work] = cl.row.language
+		}
+	}
 }
 
 // seriesCandidates walks a name's chain over the catalogue: every held slug whose
@@ -216,7 +316,11 @@ func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate 
 		if cat.evidence != nil {
 			ev = cat.evidence(slug)
 		}
-		out = append(out, seriesCandidate{slug: slug, via: via, ev: ev})
+		var lang string
+		if cat.language != nil {
+			lang = cat.language(slug)
+		}
+		out = append(out, seriesCandidate{slug: slug, via: via, ev: ev, lang: lang})
 	}
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
@@ -284,6 +388,9 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 				continue
 			}
 			for c := range cands {
+				if cands[c].closedTo(claims[ci]) {
+					continue
+				}
 				if cands[c].ev.fit(claims[ci].row, cat.large) == seriesShared {
 					round = append(round, anchor{k, c})
 					break
@@ -311,35 +418,44 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 		return
 	}
 
-	// 2. Cluster what is left by shared author: each cluster joins the first
-	// catalogued candidate, or series this batch founded, that admits it.
-	var stepped []string
-	for _, c := range cands {
-		stepped = append(stepped, c.slug)
-	}
+	// 2. Cluster what is left by shared author, within one language: each
+	// cluster joins the first catalogued candidate, or series this batch
+	// founded, that its language does not close and that admits it.
 	var founded []*seriesCandidate
 	for _, cl := range authorClusters(claims, idx, rest) {
 		combined, add := clusterEvidence(claims, idx, cl)
+		lead := claims[idx[cl[0]]] // every claim of a cluster states one language
 		var home *seriesCandidate
 		found := false
 		for c := range cands {
-			if cands[c].ev.admits(combined, add, cat.large) {
+			if !cands[c].closedTo(lead) && cands[c].ev.admits(combined, add, cat.large) {
 				home, found = &cands[c], true
 				break
 			}
 		}
 		if home == nil {
 			for _, ns := range founded {
-				if ns.ev.admits(combined, add, cat.large) {
+				if !ns.closedTo(lead) && ns.ev.admits(combined, add, cat.large) {
 					home = ns
 					break
 				}
 			}
 		}
+		var stepped []steppedSeries
+		if !found {
+			for c := range cands {
+				s := steppedSeries{slug: cands[c].slug}
+				if cands[c].closedTo(lead) {
+					s.language = cands[c].language()
+				}
+				stepped = append(stepped, s)
+			}
+		}
 		if home == nil {
 			// 3. Mint.
 			slug, chain := mintSlug(cat, base, allocated)
-			home = &seriesCandidate{slug: slug, chain: chain, ev: &seriesAuthors{}, owned: true}
+			home = &seriesCandidate{slug: slug, chain: chain, ev: &seriesAuthors{}, owned: true,
+				founded: true, languages: map[string]string{}}
 			founded = append(founded, home)
 		}
 		for _, k := range cl {
@@ -355,7 +471,8 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 
 // authorClusters groups the claims at positions rest (into idx) by shared author,
 // transitively, and orders the groups largest first, ties by their smallest
-// canonical key. A claim with no individual author is a group of its own.
+// canonical key. A claim with no individual author is a group of its own, and
+// claims of different languages are never grouped.
 func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 	parent := make(map[int]int, len(rest))
 	find := func(x int) int {
@@ -373,27 +490,37 @@ func authorClusters(claims []nameClaim, idx, rest []int) [][]int {
 	for _, k := range rest {
 		parent[k] = k
 	}
-	// One representative claim per author slug, then the spelling rungs across
-	// the distinct slugs.
-	bySlug := map[string]int{}
-	var slugs []string
-	forms := map[string]personForm{}
+	// One representative claim per author slug IN ONE LANGUAGE, then the
+	// spelling rungs across the distinct slugs of that language: a cluster never
+	// spans two languages (languageCloses judges it by its lead claim), so one
+	// author's German and English rows are two clusters.
+	type authorKey struct{ lang, slug string }
+	bySlug := map[authorKey]int{}
+	var keys []authorKey
+	forms := map[authorKey]personForm{}
 	for _, k := range rest {
+		lang := claims[idx[k]].row.language
 		for _, f := range claims[idx[k]].row.individuals() {
-			if first, ok := bySlug[f.slug]; ok {
+			key := authorKey{lang, f.slug}
+			if first, ok := bySlug[key]; ok {
 				union(k, first)
 				continue
 			}
-			bySlug[f.slug] = k
-			slugs = append(slugs, f.slug)
-			forms[f.slug] = f
+			bySlug[key] = k
+			keys = append(keys, key)
+			forms[key] = f
 		}
 	}
-	sort.Strings(slugs)
-	for i := range slugs {
-		for j := i + 1; j < len(slugs); j++ {
-			if forms[slugs[i]].same(forms[slugs[j]]) {
-				union(bySlug[slugs[i]], bySlug[slugs[j]])
+	sort.Slice(keys, func(a, b int) bool {
+		if keys[a].lang != keys[b].lang {
+			return keys[a].lang < keys[b].lang
+		}
+		return keys[a].slug < keys[b].slug
+	})
+	for i := range keys {
+		for j := i + 1; j < len(keys) && keys[j].lang == keys[i].lang; j++ {
+			if forms[keys[i]].same(forms[keys[j]]) {
+				union(bySlug[keys[i]], bySlug[keys[j]])
 			}
 		}
 	}
@@ -453,15 +580,22 @@ type SeriesMatch struct {
 	Via string
 	// Stepped are the same-named series the row did not fit, in chain order.
 	Stepped []string
+	// stepped carries why each was stepped past (Why).
+	stepped []steppedSeries
 }
+
+// Why says why the row stepped past its same-named series, in the words the
+// importer's own warnings use: "a, b belongs to other authors", "c is in
+// another language (de)", or both; "" when nothing was stepped past.
+func (m SeriesMatch) Why() string { return describeStepped(m.stepped) }
 
 // Resolve is resolveSeriesClaims for one row's claim to name: stored reports the
 // name a series slug holds, reds is the tombstone table. A nil index judges no
-// authors (the name-only walk).
+// authors and no languages (the name-only walk).
 func (ix *SeriesAuthorIndex) Resolve(name string, reds model.Redirects, stored func(slug string) (string, bool), row *SeriesRow) SeriesMatch {
 	if row == nil {
 		row = &SeriesRow{}
 	}
 	t := resolveSeriesClaims(ix.catalogue(stored, reds), []nameClaim{{name: name, row: row, order: claimOrder(row, "")}})[0]
-	return SeriesMatch{Slug: t.slug, Found: t.found, Via: t.via, Stepped: t.stepped}
+	return SeriesMatch{Slug: t.slug, Found: t.found, Via: t.via, Stepped: steppedSlugs(t.stepped), stepped: t.stepped}
 }

@@ -30,6 +30,7 @@ const (
 	RefusalDuplicateASIN           = "duplicate-asin"
 	RefusalNoCatalogueSeries       = "no-catalogue-series"
 	RefusalSeriesOtherAuthors      = "series-other-authors"
+	RefusalSeriesOtherLanguage     = "series-other-language"
 	RefusalExtraSeriesUncatalogued = "extra-series-uncatalogued"
 	RefusalPositionUnparseable     = "position-unparseable"
 	RefusalUnmappedLanguage        = "unmapped-language"
@@ -57,6 +58,10 @@ var (
 	reasonDuplicateASIN = refusal{RefusalDuplicateASIN, "duplicate ASIN within the export"}
 	reasonNoSeries      = refusal{RefusalNoCatalogueSeries, "no catalogue series"}
 	reasonSeriesAuthors = refusal{RefusalSeriesOtherAuthors, "catalogue series belongs to other authors"}
+	// reasonSeriesLanguage is the language half of the same resolution: the
+	// same-named catalogue series is in another language (seriesresolve.go's
+	// languageCloses), so the row is not a completion of it.
+	reasonSeriesLanguage = refusal{RefusalSeriesOtherLanguage, "catalogue series is in another language"}
 	// reasonOtherSeriesUncatalogued is the second half of "never a new series":
 	// the row DOES complete a catalogued series, but another of its claims would
 	// mint one (see selectLibexRow).
@@ -86,7 +91,7 @@ var (
 // import-only rule is never added here.
 var refusals = []refusal{
 	reasonNoASIN, reasonAlreadyASIN, reasonDuplicateASIN,
-	reasonNoSeries, reasonSeriesAuthors, reasonOtherSeriesUncatalogued,
+	reasonNoSeries, reasonSeriesAuthors, reasonSeriesLanguage, reasonOtherSeriesUncatalogued,
 	reasonNoPosition, reasonLanguage, reasonRegion,
 	reasonAINarrator, reasonJunkCredit, reasonListCredit, reasonPlaceholder, reasonUnnamedCredit,
 	reasonPositionTaken, reasonSeriesCap,

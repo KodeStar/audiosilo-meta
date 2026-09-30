@@ -43,7 +43,7 @@ func seedAttachCatalogue(t *testing.T) string {
 func TestRefusalCodesAreStable(t *testing.T) {
 	want := []string{
 		"malformed-asin", "asin-in-catalogue", "duplicate-asin",
-		"no-catalogue-series", "series-other-authors", "extra-series-uncatalogued",
+		"no-catalogue-series", "series-other-authors", "series-other-language", "extra-series-uncatalogued",
 		"position-unparseable", "unmapped-language", "unmapped-region",
 		"ai-narrator", "credit-platform-account", "credit-list-of-people",
 		"credit-cast-placeholder", "credit-not-a-person",
@@ -220,6 +220,11 @@ func TestRefusalsWorklistIsNotWrittenOnFailure(t *testing.T) {
 // denied: only a row that is The Lost Coast - by title, authors and language - is
 // kept at The Lost Coast's position.
 func TestLibexSelectAttachRule(t *testing.T) {
+	// The code a denied row is refused under, when it is not position-claimed.
+	refusedAs := map[string]string{
+		"translated title":             RefusalSeriesOtherLanguage,
+		"same title, another language": RefusalSeriesOtherLanguage,
+	}
 	for _, tc := range []struct {
 		name   string
 		row    string
@@ -259,14 +264,20 @@ func TestLibexSelectAttachRule(t *testing.T) {
 			`"series":[{"name":"` + seriesName + `","position":"1"}]}`, false},
 		{"different title", attachExportRow("B0DENY0001", "The Lost Coast Redux", "us", "english", "Ada Mapmaker", "Cal Voice", "1"), false},
 		{"different author", attachExportRow("B0DENY0002", "The Lost Coast", "us", "english", "Zed Otherhand", "Cal Voice", "1"), false},
+		// Another language never reaches the attach rule: the English series is
+		// closed to a German row before any position is asked (languageCloses).
 		{"translated title", attachExportRow("B0DENY0003", "Band Eins", "de", "german", "Ada Mapmaker", "Dora Sprecher", "1"), false},
 		{"same title, another language", attachExportRow("B0DENY0004", "The Lost Coast", "de", "german", "Ada Mapmaker", "Dora Sprecher", "1"), false},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			res, subset, lines := selectInto(t, seedAttachCatalogue(t), []string{tc.row})
 			if !tc.attach {
-				if res.RowsSelected != 0 || len(lines) != 1 || lines[0].Reason != RefusalPositionClaimed {
-					t.Errorf("selected %d, refusals %+v; want one position-claimed refusal", res.RowsSelected, lines)
+				want := RefusalPositionClaimed
+				if code, ok := refusedAs[tc.name]; ok {
+					want = code
+				}
+				if res.RowsSelected != 0 || len(lines) != 1 || lines[0].Reason != want {
+					t.Errorf("selected %d, refusals %+v; want one %s refusal", res.RowsSelected, lines, want)
 				}
 				if len(res.Attachments) != 0 {
 					t.Errorf("attachments = %+v", res.Attachments)
@@ -433,6 +444,7 @@ excluded 4 rows:
   duplicate ASIN within the export       0
   no catalogue series                    1
   catalogue series belongs to other authors 0
+  catalogue series is in another language 0
   another claimed series is not in the catalogue 0
   series position missing or unparseable 0
   unmapped language                      1
