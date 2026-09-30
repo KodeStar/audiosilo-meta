@@ -8,6 +8,7 @@ import {
   FEED_LABELS,
   NOTIFY_INTRO_NOTES,
   NOTIFY_OPTIONS,
+  optionTags,
   type FeedKind,
 } from '../../lib/notify-options'
 
@@ -35,6 +36,10 @@ const links: { kind: FeedKind; blurb: string }[] = [
   },
 ]
 
+// The intro names whichever option the list recommends, so reordering or
+// renaming it cannot leave the intro stale.
+const recommended = NOTIFY_OPTIONS.find((option) => option.recommended)
+
 const PLACEHOLDER = 'your feed URL from the Watching page'
 
 const link = 'text-pink-400 transition-colors hover:text-pink-300'
@@ -44,7 +49,7 @@ const tag =
 
 <Base
   title="Get notified about new releases - AudioSilo Meta"
-  description="Step by step instructions for turning your AudioSilo Meta watch feed into a notification: a calendar subscription, an RSS app, email, Telegram, Slack, Discord, a self-hosted reader or an automation service. No account here, and no contact detail of yours stored."
+  description="Step by step instructions for turning your AudioSilo Meta watch feed into a notification: the AudioSilo Discord bot, a calendar subscription, an RSS app, email, Telegram, Slack, your own Discord server, a self-hosted reader or an automation service. No account here."
 >
   <section class="relative pb-20">
     <Backdrop variant="page" />
@@ -64,9 +69,17 @@ const tag =
           ordinary access logs - see the <a class={link} href="/privacy">privacy policy</a>.
           Copy your URL from the
           <a class={link} href="/watching#notify">Get notified tab</a> on the Watching page, then
-          pick one of the options below and follow its steps. The first three need no account
-          anywhere; the ones marked <span class="text-hi">needs an account</span> sign you in to a
-          service that is not us.
+          pick one of the options below and follow its steps.
+          {
+            recommended && (
+              <Fragment>
+                We recommend <a class={link} href={`#${recommended.id}`}>{recommended.label}</a>:
+                <Inline text={recommended.blurb} />
+              </Fragment>
+            )
+          }
+          The ones marked <span class="text-hi">needs an account</span> sign you in to a service
+          that is not us.
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-3">
           <Button href="/watching#notify" variant="primary">Get your feed URL</Button>
@@ -138,7 +151,9 @@ const tag =
                     href={`#${option.id}`}
                   >
                     {option.label}
-                    {option.needsAccount && <span class={tag}>needs an account</span>}
+                    {optionTags(option).map((label) => (
+                      <span class={tag}>{label}</span>
+                    ))}
                   </a>
                 </li>
               ))
@@ -161,12 +176,21 @@ const tag =
                         {option.label}
                       </a>
                     </h2>
-                    {option.needsAccount && <span class={tag}>needs an account</span>}
+                    {optionTags(option).map((label) => (
+                      <span class={tag}>{label}</span>
+                    ))}
                     <span class={`${CHIP} text-xs text-dim`}>{FEED_LABELS[option.feed]}</span>
                   </div>
                   <p class="mt-2 text-sm leading-relaxed text-body">
                     <Inline text={option.blurb} />
                   </p>
+                  {option.action && (
+                    <div class="mt-4">
+                      <Button href={option.action.href} variant="primary" external>
+                        {option.action.label}
+                      </Button>
+                    </div>
+                  )}
                 </header>
 
                 <div class="px-5 py-5">

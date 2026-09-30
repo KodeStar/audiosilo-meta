@@ -1,5 +1,6 @@
 ---
 import Icon from '../Icon.astro'
+import { DISCORD_INVITE } from '../../lib/community'
 
 const REPO = 'https://github.com/kodestar/audiosilo-meta'
 
@@ -41,7 +42,7 @@ const cards = [
     title: 'Join the community',
     body: 'Coordinate contributions, ask for help, and help shape the schema on the AudioSilo Discord and in GitHub Discussions.',
     cta: 'Join the Discord',
-    href: 'https://discord.gg/nFFqRbkRn6',
+    href: DISCORD_INVITE,
     external: true,
   },
 ] as const
