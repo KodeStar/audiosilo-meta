@@ -209,6 +209,22 @@ func TestWorkEditionReadsTheSubtitle(t *testing.T) {
 	}
 }
 
+// The identity key and its volume statement read the title alone, so a subtitle
+// stating a volume - on either side - keeps the link advisory.
+func TestWorkEditionSubtitleVolumeIsAdvisory(t *testing.T) {
+	files := fateTree(t)
+	files["works/ag/a-game-of-fate-fr/work.json"] = workJSON(t, "a-game-of-fate-fr", "A Game of Fate",
+		withLanguage("fr"), withSubtitleOpt("Volume 2 (French Edition)"))
+	if fd := linkFinding(t, runFixture(t, files), "a-game-of-fate-fr"); fd == nil || !fd.Propose.Advisory {
+		t.Errorf("translation subtitle states a volume: proposal = %+v, want an advisory one", fd)
+	}
+	files = fateTree(t)
+	files["works/ag/a-game-of-fate/work.json"] = workJSON(t, "a-game-of-fate", "A Game of Fate", withSubtitleOpt("Book 2"))
+	if fd := linkFinding(t, runFixture(t, files), "a-game-of-fate-fr"); fd == nil || !fd.Propose.Advisory {
+		t.Errorf("original subtitle states a volume: proposal = %+v, want an advisory one", fd)
+	}
+}
+
 // A decoration naming ANOTHER language than the work's own states nothing about it.
 func TestWorkEditionDecorationMustBeTheWorksOwnLanguage(t *testing.T) {
 	files := fateTree(t)

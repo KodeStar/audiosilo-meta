@@ -50,7 +50,9 @@ import (
 //     the credit because it is itself a translation from French) - and it can never make
 //     a work an original. MECHANICAL only where the translation's title is the original's
 //     title left untranslated (titlerule.SameUntranslatedTitle: the original's title plus
-//     the decoration, articles, case and punctuation aside), which is the retailer
+//     the decoration, articles, case and punctuation aside - and the subtitles likewise,
+//     titlerule.SameUntranslatedSubtitle, since the key reads the title alone and a
+//     "Volume 2" subtitle would otherwise pass unseen), which is the retailer
 //     convention the decoration itself comes from. The normalized key is wider than that
 //     on purpose - it strips volumes, collections and series names - and a link asserts
 //     more than "not contradicted": "Families First, Volume 2 (German Edition)" met
@@ -275,10 +277,12 @@ func detectWorkEditionLinks(ix *index, identity *check.WorkIdentity, base check.
 			vetoes = append(vetoes, fmt.Sprintf("the original %s is a dramatized or adapted production (%q): a translation "+
 				"is of the text", o.ID, o.Title))
 		}
-		if !titlerule.SameUntranslatedTitle(t.Title, o.Title) {
+		// The subtitles too: the identity key and its volume statement read the TITLE
+		// alone, so "A Game of Fate: Volume 2 (French Edition)" met "A Game of Fate".
+		if !titlerule.SameUntranslatedTitle(t.Title, o.Title) || !titlerule.SameUntranslatedSubtitle(t.Subtitle, o.Subtitle) {
 			vetoes = append(vetoes, fmt.Sprintf("the titles differ beyond the edition decoration (%q against %q): the "+
 				"normalized key met, but only an untranslated title is the retailer's own statement that these are one book",
-				t.Title, o.Title))
+				editionText(t), editionText(o)))
 		}
 		vetoes = append(vetoes, linkVetoes(base, model.RedirectWorks, t.ID, t.TranslationOf, o.ID)...)
 		settleLink(&fd, vetoes)

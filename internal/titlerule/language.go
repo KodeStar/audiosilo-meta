@@ -128,6 +128,21 @@ func SameUntranslatedTitle(translation, original string) bool {
 	return ka == kb
 }
 
+// SameUntranslatedSubtitle is SameUntranslatedTitle for the SUBTITLES of the same two
+// records, where both sides may be empty: two subtitles that are nothing once the
+// edition decorations and markers are gone ("" beside "(French Edition)") agree, and
+// otherwise the subtitles must be one text by SameUntranslatedTitle's rule. A subtitle
+// only one side carries is a difference - "Volume 2 (French Edition)" beside no
+// subtitle is a volume the title comparison never saw.
+func SameUntranslatedSubtitle(translation, original string) bool {
+	a := StripEditionMarkers(StripEditionLanguage(translation))
+	b := StripEditionMarkers(tidyTitle(original))
+	if a == "" || b == "" {
+		return a == b
+	}
+	return SameUntranslatedTitle(translation, original)
+}
+
 // trailingGroup is a series name's LAST bracketed group, anchored at the end of the
 // name (trailing whitespace allowed), with what precedes it captured.
 var trailingGroup = regexp.MustCompile(`^(.*?)\s*(` + bracketGroup + `)\s*$`)

@@ -135,6 +135,25 @@ func TestSameUntranslatedTitle(t *testing.T) {
 	}
 }
 
+func TestSameUntranslatedSubtitle(t *testing.T) {
+	for _, tc := range []struct {
+		translation, original string
+		want                  bool
+	}{
+		{"", "", true},
+		{"(French Edition)", "", true},
+		{"(French Edition)", "(Unabridged)", true},
+		{"A Novel (French Edition)", "A Novel", true},
+		{"Volume 2 (French Edition)", "", false},
+		{"(French Edition)", "Book 2", false},
+		{"Volume 2", "Volume 3", false},
+	} {
+		if got := SameUntranslatedSubtitle(tc.translation, tc.original); got != tc.want {
+			t.Errorf("SameUntranslatedSubtitle(%q, %q) = %v, want %v", tc.translation, tc.original, got, tc.want)
+		}
+	}
+}
+
 func TestIsDramatization(t *testing.T) {
 	for _, tc := range []struct {
 		title string
