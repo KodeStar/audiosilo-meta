@@ -68,8 +68,11 @@ type Report struct {
 	Stats   hygieneStats
 	// Links are T-LINK's count-only tallies: the decorated records that yielded no
 	// proposal, and why.
-	Links  linkStats
-	Totals Totals
+	Links linkStats
+	// LinkRejections is how T-LINK's reviewed-rejection list met this tree: the
+	// entries that turned a proposal advisory, and the stale ones that matched none.
+	LinkRejections linkRejectionTally
+	Totals         Totals
 	// LoaderProblems and LoaderWarnings are pkg/check's own counts, carried so a
 	// caller can see whether the tree it audited was valid in the first place.
 	LoaderProblems int
@@ -167,7 +170,11 @@ func checkOutDir(opts Options) error {
 }
 
 // analyze is Run without the I/O, which is what the tests drive.
-func analyze(res check.Result) *Report {
+func analyze(res check.Result) *Report { return analyzeWith(res, linkRejections) }
+
+// analyzeWith is analyze over a given T-LINK rejection list rather than the embedded
+// one, which is how a fixture names a rejection of its own records.
+func analyzeWith(res check.Result, rejections []linkRejection) *Report {
 	cat := res.Catalog
 	ix := newIndex(cat)
 
@@ -179,10 +186,12 @@ func analyze(res check.Result) *Report {
 	// fold 45k names through model.Slugify twice over.
 	skeys := seriesKeyIndex(cat.Series)
 	links, linkTally := detectTranslationLinks(ix, res.Identity, skeys)
+	rejected := applyLinkRejections(links, rejections)
 
 	rep := &Report{
 		Stats:          stats,
 		Links:          linkTally,
+		LinkRejections: rejected,
 		LoaderProblems: len(res.Problems),
 		LoaderWarnings: len(res.Warnings),
 		Totals: Totals{
