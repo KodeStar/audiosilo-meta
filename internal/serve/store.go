@@ -54,15 +54,18 @@ type snapshot struct {
 	// trip to learn there is nothing to find.
 	hasDescriptions bool
 
-	// hasTranslations and hasOrderings are the LANGUAGES layer's twins of the two
-	// memos above, asked once at load for both of their reasons: the translations
-	// table and the series ordering_of column are EMPTY in every release until
-	// the first link lands, and the reads sit on ordinary 200 paths (every work
-	// page and every series page), so without them each of those would pay a
-	// round trip to learn there is nothing there. hasOrderings is "any series
-	// names a primary ordering" - with none, no series has an ordering family.
-	hasTranslations bool
-	hasOrderings    bool
+	// hasTranslations and orderingPrimaries are the LANGUAGES layer's twins of
+	// the two memos above, settled once at load for both of their reasons: the
+	// translations table and the series ordering_of column are EMPTY in every
+	// release until the first link lands, and the reads sit on ordinary 200 paths
+	// (every work page and every series page), so without them each of those
+	// would pay a round trip to learn there is nothing there. orderingPrimaries is
+	// the set of series some variant names as its primary - a series in it, or
+	// one naming a primary itself, is the only kind with an ordering family, so
+	// every other series page skips the family query; and the set being empty is
+	// "no orderings at all" (hasOrderings).
+	hasTranslations   bool
+	orderingPrimaries map[string]bool
 
 	// log is the Server's injected logger, for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing). It is
@@ -250,7 +253,7 @@ func (s *snapshot) loadStats() error {
 			return fmt.Errorf("%s: artifact schema_version %d requires the translations table: %w",
 				s.path, s.schemaVersion, err)
 		}
-		if err := s.db.QueryRow(anyOrderingSQL).Scan(&s.hasOrderings); err != nil {
+		if err := s.loadOrderingPrimaries(); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the series ordering columns: %w",
 				s.path, s.schemaVersion, err)
 		}
@@ -263,6 +266,37 @@ func (s *snapshot) loadStats() error {
 	s.stats = st
 	return nil
 }
+
+// loadOrderingPrimaries proves the series columns a version 7 artifact claims
+// (seriesShapeSQL: every column the gated reads name, so a missing language or
+// ordering fails here rather than on a series page) and settles
+// snapshot.orderingPrimaries.
+func (s *snapshot) loadOrderingPrimaries() error {
+	shape, err := s.db.Query(seriesShapeSQL)
+	if err != nil {
+		return err
+	}
+	if err := shape.Close(); err != nil {
+		return err
+	}
+	rows, err := s.db.Query(orderingPrimariesSQL)
+	if err != nil {
+		return err
+	}
+	ids, err := scanIDs(rows)
+	if err != nil {
+		return err
+	}
+	s.orderingPrimaries = make(map[string]bool, len(ids))
+	for _, id := range ids {
+		s.orderingPrimaries[id] = true
+	}
+	return nil
+}
+
+// hasOrderings reports whether any series in the artifact names a primary
+// ordering - false on every artifact older than languagesSchemaVersion.
+func (s *snapshot) hasOrderings() bool { return len(s.orderingPrimaries) > 0 }
 
 // languageCensus reads the stats languages census (languageCensusSQL). Only
 // loadStats calls it, once per snapshot, behind the version gate.
@@ -400,20 +434,33 @@ func authorsByWorkSQL(ph string) string {
 		`WHERE wa.work_id IN (` + ph + `) ORDER BY wa.work_id, wa.ord`
 }
 
-func firstSeriesByWorkSQL(ph string) string {
-	return `SELECT sw.work_id, s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id ` +
-		`WHERE sw.work_id IN (` + ph + `) ORDER BY sw.work_id, s.id`
+// primaryFirst is the order a work's series memberships take once any series
+// names a primary ordering: a PRIMARY ordering before every variant of it
+// ((ordering_of IS NOT NULL) is 0 for a primary), then series id - so a work
+// listed in both "The Saga" and "The Saga (Chronological)" is carded under the
+// series itself however the two ids happen to sort.
+const primaryFirst = `(s.ordering_of IS NOT NULL), s.id`
+
+// membershipColumns is the ONE choice between the two ways a work's series
+// memberships are read, shared by firstSeriesByWorkSQL and seriesOfSQL: the
+// ordering_of select expression and the ORDER BY. It is chosen by whether the
+// artifact carries any ordering at all (snapshot.hasOrderings) rather than by its
+// version, because ordering_of is the only value the primary-first text adds: an
+// artifact whose layer is empty - every release until the first variant lands, and
+// every artifact older than languagesSchemaVersion, which has no such column -
+// reads the plain id order and selects NULL in its place, so both texts scan into
+// one shape.
+func membershipColumns(orderings bool) (orderingOf, order string) {
+	if !orderings {
+		return "NULL", "s.id"
+	}
+	return "s.ordering_of", primaryFirst
 }
 
-// firstSeriesByWorkV7SQL is firstSeriesByWorkSQL over a languages-era artifact:
-// it reads the series' ordering_of too, and a PRIMARY ordering sorts before
-// every variant of it ((ordering_of IS NOT NULL) is 0 for a primary), so a work
-// listed in both "The Saga" and "The Saga (Chronological)" is carded under the
-// series itself however the two ids happen to sort. The v6 text stays
-// byte-identical beside it, because an older artifact has no such column.
-func firstSeriesByWorkV7SQL(ph string) string {
-	return `SELECT sw.work_id, s.id, s.name, sw.position, s.ordering_of FROM series_works sw JOIN series s ON s.id = sw.series_id ` +
-		`WHERE sw.work_id IN (` + ph + `) ORDER BY sw.work_id, (s.ordering_of IS NOT NULL), s.id`
+func firstSeriesByWorkSQL(ph string, orderings bool) string {
+	orderingOf, order := membershipColumns(orderings)
+	return `SELECT sw.work_id, s.id, s.name, sw.position, ` + orderingOf + ` FROM series_works sw JOIN series s ON s.id = sw.series_id ` +
+		`WHERE sw.work_id IN (` + ph + `) ORDER BY sw.work_id, ` + order
 }
 
 // cardFactsByWorkSQL reads the two per-work RECORDING facts a card carries: the
@@ -561,14 +608,10 @@ func (s *snapshot) authorsByWork(ids []string) (map[string][]personRef, error) {
 // "the card's series" - workCard goes through it too, and so do works/latest's
 // per-series cap and the coverage browser.
 func (s *snapshot) firstSeriesByWork(ids []string) (map[string]*seriesRef, error) {
-	v7 := s.schemaVersion >= languagesSchemaVersion
-	query := firstSeriesByWorkSQL
-	if v7 {
-		query = firstSeriesByWorkV7SQL
-	}
+	orderings := s.hasOrderings()
 	out := map[string]*seriesRef{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(query(ph), args...)
+		rows, err := s.db.Query(firstSeriesByWorkSQL(ph, orderings), args...)
 		if err != nil {
 			return err
 		}
@@ -576,12 +619,8 @@ func (s *snapshot) firstSeriesByWork(ids []string) (map[string]*seriesRef, error
 		for rows.Next() {
 			var workID string
 			var sr seriesRef
-			dst := []any{&workID, &sr.ID, &sr.Name, &sr.Position}
 			var orderingOf sql.NullString
-			if v7 {
-				dst = append(dst, &orderingOf)
-			}
-			if err := rows.Scan(dst...); err != nil {
+			if err := rows.Scan(&workID, &sr.ID, &sr.Name, &sr.Position, &orderingOf); err != nil {
 				return err
 			}
 			sr.OrderingOf = orderingOf.String

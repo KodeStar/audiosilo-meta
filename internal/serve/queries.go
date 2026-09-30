@@ -370,45 +370,48 @@ const (
 	// on the miss path of every id route without costing anything measurable.
 	redirectTargetSQL = `SELECT new_slug FROM redirects WHERE kind=? AND old_slug=?`
 
-	// anyTranslationSQL and anyOrderingSQL settle snapshot.hasTranslations and
-	// snapshot.hasOrderings once per snapshot, and prove the table and the
-	// columns a version 7 artifact claims. The second reads idx_series_ordering_of
-	// (a NOT NULL range over it), not the series table.
+	// anyTranslationSQL settles snapshot.hasTranslations once per snapshot and
+	// proves the table a version 7 artifact claims.
 	anyTranslationSQL = `SELECT EXISTS(SELECT 1 FROM translations)`
-	anyOrderingSQL    = `SELECT EXISTS(SELECT 1 FROM series WHERE ordering_of IS NOT NULL)`
+	// seriesShapeSQL proves the three series columns a version 7 artifact claims -
+	// every one the gated reads name - and reads no row (LIMIT 0): a column that is
+	// missing fails the PREPARE, which is the whole check.
+	seriesShapeSQL = `SELECT language, ordering, ordering_of FROM series LIMIT 0`
+	// orderingPrimariesSQL is the set of series some variant names as its primary,
+	// read once per snapshot (snapshot.orderingPrimaries) as a NOT NULL range over
+	// idx_series_ordering_of, never a read of the series table.
+	orderingPrimariesSQL = `SELECT DISTINCT ordering_of FROM series WHERE ordering_of IS NOT NULL`
 	// languageCensusSQL is the stats languages census, read once per snapshot. It
 	// walks idx_works_language as a covering index; only the handful of result
 	// rows are sorted.
 	languageCensusSQL = `SELECT language, COUNT(*) FROM works GROUP BY language ORDER BY COUNT(*) DESC, language`
 )
 
-// The translations reads. The table's id is always the TRANSLATION and target
-// the original, so "what does this translate" walks the primary key (kind, id,
-// target) and "what translates this" walks idx_translations_target (kind,
-// target). kind is the family spelling, as in the redirects table. Each joins
-// the family it names, so a row pointing at a record the artifact does not carry
-// (which pkg/check refuses, but an artifact is data) is dropped rather than
+// The translations reads, ONE query per record for both directions of its links:
+// the first arm is "what does this translate" (direction 0) and walks the primary
+// key (kind, id, target); the second is "what translates this" (direction 1) and
+// walks idx_translations_target (kind, target, id), which COVERS it. kind is the
+// family spelling, as in the redirects table, and ?1 is the record's id. Each arm
+// joins the family it names, so a row pointing at a record the artifact does not
+// carry (which pkg/check refuses, but an artifact is data) is dropped rather than
 // served as a link to nothing.
 //
-// The reverse reads NAME their index (INDEXED BY). Left to itself the planner -
-// which has no sqlite_stat1 in a built artifact - prefers the primary key as a
-// COVERING index on its kind prefix alone over idx_translations_target, which
-// covers the target but not the id, and that walks every link of the family to
-// answer for one record (measured with EXPLAIN QUERY PLAN; pinned by
-// TestReverseTranslationsUseTheTargetIndex). The index ships in the same build
-// as the table, and every read here sits behind the version gate that proves the
-// table exists.
+// The second column is the OTHER record's id read off the translations row (t.target
+// in the first arm, t.id in the second) rather than off the joined record, because
+// that is what each arm's index is already ordered by: ORDER BY 2 then merges the
+// two arms with no sort at all (MERGE (UNION ALL), pinned by
+// TestReverseTranslationsUseTheTargetIndex), and each direction comes out in id
+// order once translationLinks splits them. A series' derived language is NULL on a
+// tie, so its arm COALESCEs it and both families scan three plain strings.
 const (
-	workTranslationOfSQL = `SELECT w.id, w.title, w.language FROM translations t JOIN works w ON w.id = t.target ` +
-		`WHERE t.kind = 'works' AND t.id = ? ORDER BY w.id`
-	workTranslationsSQL = `SELECT w.id, w.title, w.language FROM translations t INDEXED BY idx_translations_target ` +
-		`JOIN works w ON w.id = t.id ` +
-		`WHERE t.kind = 'works' AND t.target = ? ORDER BY w.id`
-	seriesTranslationOfSQL = `SELECT s.id, s.name, s.language FROM translations t JOIN series s ON s.id = t.target ` +
-		`WHERE t.kind = 'series' AND t.id = ? ORDER BY s.id`
-	seriesTranslationsSQL = `SELECT s.id, s.name, s.language FROM translations t INDEXED BY idx_translations_target ` +
-		`JOIN series s ON s.id = t.id ` +
-		`WHERE t.kind = 'series' AND t.target = ? ORDER BY s.id`
+	workTranslationsSQL = `SELECT 0, t.target, w.title, w.language FROM translations t JOIN works w ON w.id = t.target ` +
+		`WHERE t.kind = 'works' AND t.id = ?1 ` +
+		`UNION ALL SELECT 1, t.id, w.title, w.language FROM translations t JOIN works w ON w.id = t.id ` +
+		`WHERE t.kind = 'works' AND t.target = ?1 ORDER BY 2`
+	seriesTranslationsSQL = `SELECT 0, t.target, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.target ` +
+		`WHERE t.kind = 'series' AND t.id = ?1 ` +
+		`UNION ALL SELECT 1, t.id, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.id ` +
+		`WHERE t.kind = 'series' AND t.target = ?1 ORDER BY 2`
 )
 
 // workTranslation is one end of a work's translation link: the other work, its
@@ -427,68 +430,47 @@ type seriesTranslation struct {
 	Language string `json:"language,omitempty"`
 }
 
-// workTranslations returns both directions of a work's translation links, or
+// translationLinks runs one family's translations query for id and splits it by
+// direction: of is what id translates, by is what translates id, each in id order.
+// mk builds the family's own shape from (id, title or name, language). It answers
 // nil, nil without a query while the artifact holds no translation at all (which
 // includes every artifact older than languagesSchemaVersion).
-func (s *snapshot) workTranslations(workID string) (of, by []workTranslation, err error) {
+func translationLinks[T any](s *snapshot, query, id string, mk func(id, label, language string) T) (of, by []T, err error) {
 	if !s.hasTranslations {
 		return nil, nil, nil
 	}
-	scan := func(query string) ([]workTranslation, error) {
-		rows, err := s.db.Query(query, workID)
-		if err != nil {
-			return nil, err
-		}
-		defer func() { _ = rows.Close() }()
-		var out []workTranslation
-		for rows.Next() {
-			var t workTranslation
-			if err := rows.Scan(&t.ID, &t.Title, &t.Language); err != nil {
-				return nil, err
-			}
-			out = append(out, t)
-		}
-		return out, rows.Err()
-	}
-	if of, err = scan(workTranslationOfSQL); err != nil {
+	rows, err := s.db.Query(query, id)
+	if err != nil {
 		return nil, nil, err
 	}
-	if by, err = scan(workTranslationsSQL); err != nil {
-		return nil, nil, err
+	defer func() { _ = rows.Close() }()
+	for rows.Next() {
+		var dir int
+		var other, label, lang string
+		if err := rows.Scan(&dir, &other, &label, &lang); err != nil {
+			return nil, nil, err
+		}
+		if dir == 0 {
+			of = append(of, mk(other, label, lang))
+		} else {
+			by = append(by, mk(other, label, lang))
+		}
 	}
-	return of, by, nil
+	return of, by, rows.Err()
+}
+
+// workTranslations returns both directions of a work's translation links.
+func (s *snapshot) workTranslations(workID string) (of, by []workTranslation, err error) {
+	return translationLinks(s, workTranslationsSQL, workID, func(id, title, lang string) workTranslation {
+		return workTranslation{ID: id, Title: title, Language: lang}
+	})
 }
 
 // seriesTranslations is workTranslations for a series.
 func (s *snapshot) seriesTranslations(seriesID string) (of, by []seriesTranslation, err error) {
-	if !s.hasTranslations {
-		return nil, nil, nil
-	}
-	scan := func(query string) ([]seriesTranslation, error) {
-		rows, err := s.db.Query(query, seriesID)
-		if err != nil {
-			return nil, err
-		}
-		defer func() { _ = rows.Close() }()
-		var out []seriesTranslation
-		for rows.Next() {
-			var t seriesTranslation
-			var lang sql.NullString
-			if err := rows.Scan(&t.ID, &t.Name, &lang); err != nil {
-				return nil, err
-			}
-			t.Language = lang.String
-			out = append(out, t)
-		}
-		return out, rows.Err()
-	}
-	if of, err = scan(seriesTranslationOfSQL); err != nil {
-		return nil, nil, err
-	}
-	if by, err = scan(seriesTranslationsSQL); err != nil {
-		return nil, nil, err
-	}
-	return of, by, nil
+	return translationLinks(s, seriesTranslationsSQL, seriesID, func(id, name, lang string) seriesTranslation {
+		return seriesTranslation{ID: id, Name: name, Language: lang}
+	})
 }
 
 // redirectTarget returns the live slug that the retired slug id now stands for
@@ -679,25 +661,18 @@ func (s *snapshot) descriptionsForWorks(workIDs []string) (map[string]*descripti
 	return out, rows.Err()
 }
 
-// A work's series memberships, for the work detail. seriesOfSQL is the text every
-// artifact before languagesSchemaVersion is read with, byte for byte;
-// seriesOfV7SQL reads ordering_of too and lists a PRIMARY ordering before its
-// variants, the order firstSeriesByWorkV7SQL cards by - so series[0] of the work
-// page, its JSON-LD isPartOf and the card agree about which series a work is in.
-const (
-	seriesOfSQL = `SELECT s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id WHERE sw.work_id=? ORDER BY s.id`
-
-	seriesOfV7SQL = `SELECT s.id, s.name, sw.position, s.ordering_of FROM series_works sw JOIN series s ON s.id = sw.series_id ` +
-		`WHERE sw.work_id=? ORDER BY (s.ordering_of IS NOT NULL), s.id`
-)
+// seriesOfSQL is a work's series memberships, for the work detail, in the order
+// membershipColumns chooses - the order firstSeriesByWorkSQL cards by, so series[0]
+// of the work page, its JSON-LD isPartOf and the card agree about which series a
+// work is in.
+func seriesOfSQL(orderings bool) string {
+	orderingOf, order := membershipColumns(orderings)
+	return `SELECT s.id, s.name, sw.position, ` + orderingOf + ` FROM series_works sw JOIN series s ON s.id = sw.series_id ` +
+		`WHERE sw.work_id=? ORDER BY ` + order
+}
 
 func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {
-	v7 := s.schemaVersion >= languagesSchemaVersion
-	query := seriesOfSQL
-	if v7 {
-		query = seriesOfV7SQL
-	}
-	rows, err := s.db.Query(query, workID)
+	rows, err := s.db.Query(seriesOfSQL(s.hasOrderings()), workID)
 	if err != nil {
 		return nil, err
 	}
@@ -705,12 +680,8 @@ func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {
 	out := []seriesRef{}
 	for rows.Next() {
 		var sr seriesRef
-		dst := []any{&sr.ID, &sr.Name, &sr.Position}
 		var orderingOf sql.NullString
-		if v7 {
-			dst = append(dst, &orderingOf)
-		}
-		if err := rows.Scan(dst...); err != nil {
+		if err := rows.Scan(&sr.ID, &sr.Name, &sr.Position, &orderingOf); err != nil {
 			return nil, err
 		}
 		sr.OrderingOf = orderingOf.String
@@ -1069,7 +1040,6 @@ type seriesOrdering struct {
 // the artifact does not carry is dropped from the list, so counting it in the
 // total would report a page shorter than it claims.
 const (
-	seriesHeaderSQL = `SELECT id, name FROM series WHERE id=?`
 	// seriesNameSQL is the header without the id, for the caller that already
 	// holds it (see seriesName). Reading a column back to discard it is a scan
 	// target a reader has to stop and account for.
@@ -1078,17 +1048,23 @@ const (
 		`WHERE sa.series_id=? ORDER BY sa.ord`
 	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
 		`WHERE sw.series_id=?`
-	// seriesHeaderV7SQL is the header on a languages-era artifact: the same
-	// primary-key row, three more columns. seriesHeaderSQL stays byte-identical for
-	// the artifacts that have none of them.
-	seriesHeaderV7SQL = `SELECT id, name, language, ordering, ordering_of FROM series WHERE id=?`
 	// seriesOrderingFamilySQL reads a whole ordering family from its PRIMARY's id
-	// (bound twice): the primary by its primary key and every variant naming it
-	// through idx_series_ordering_of, the primary first (its ordering_of is NULL -
+	// (?1): the primary by its primary key and every variant naming it through
+	// idx_series_ordering_of, the primary first (its ordering_of is NULL -
 	// pkg/check keeps a family one hop deep), then the variants in id order.
-	seriesOrderingFamilySQL = `SELECT id, name, ordering FROM series WHERE id = ? OR ordering_of = ? ` +
+	seriesOrderingFamilySQL = `SELECT id, name, ordering FROM series WHERE id = ?1 OR ordering_of = ?1 ` +
 		`ORDER BY (ordering_of IS NOT NULL), id`
 )
+
+// seriesHeaderSQL is the series page's header row. A languages-era artifact
+// carries three more columns on the same primary-key row; an older one has none of
+// them, so its text selects NULL in their place and both scan into one shape.
+func seriesHeaderSQL(languages bool) string {
+	if !languages {
+		return `SELECT id, name, NULL, NULL, NULL FROM series WHERE id=?`
+	}
+	return `SELECT id, name, language, ordering, ordering_of FROM series WHERE id=?`
+}
 
 // seriesName reads a series' name and nothing else, reporting whether the series
 // exists at all. It is what a caller that does not want the MEMBERSHIP asks (the
@@ -1168,14 +1144,10 @@ func (s *snapshot) watchMembers(seriesID, seriesName string) ([]watchMember, err
 // so a window is applied AFTER sorting, not by SQL.
 func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 	var d seriesDetail
-	var err error
-	if s.schemaVersion >= languagesSchemaVersion {
-		var lang, ordering, orderingOf sql.NullString
-		err = s.db.QueryRow(seriesHeaderV7SQL, id).Scan(&d.ID, &d.Name, &lang, &ordering, &orderingOf)
-		d.Language, d.Ordering, d.OrderingOf = lang.String, ordering.String, orderingOf.String
-	} else {
-		err = s.db.QueryRow(seriesHeaderSQL, id).Scan(&d.ID, &d.Name)
-	}
+	var lang, ordering, orderingOf sql.NullString
+	err := s.db.QueryRow(seriesHeaderSQL(s.schemaVersion >= languagesSchemaVersion), id).
+		Scan(&d.ID, &d.Name, &lang, &ordering, &orderingOf)
+	d.Language, d.Ordering, d.OrderingOf = lang.String, ordering.String, orderingOf.String
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
@@ -1238,18 +1210,19 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 }
 
 // orderingFamily returns the ordering family d belongs to (see seriesDetail), or
-// nil when it has no variant ordering - including, without a query, whenever the
-// artifact carries no ordering_of anywhere (snapshot.hasOrderings), which also
-// covers every artifact older than languagesSchemaVersion.
+// nil when it has none. Only a variant (one naming a primary) or a series some
+// variant names (snapshot.orderingPrimaries) HAS a family, so every other series -
+// all of them on an artifact carrying no ordering, and on every artifact older than
+// languagesSchemaVersion - is answered without a query.
 func (s *snapshot) orderingFamily(d *seriesDetail) ([]seriesOrdering, error) {
-	if !s.hasOrderings {
+	if d.OrderingOf == "" && !s.orderingPrimaries[d.ID] {
 		return nil, nil
 	}
 	// The family's primary is model.Series.OrderingPrimary's answer, asked of the
 	// two fields the header read, so "which series heads the family" has one
 	// definition across check, repair and serve.
 	primary := (&model.Series{ID: d.ID, OrderingOf: d.OrderingOf}).OrderingPrimary()
-	rows, err := s.db.Query(seriesOrderingFamilySQL, primary, primary)
+	rows, err := s.db.Query(seriesOrderingFamilySQL, primary)
 	if err != nil {
 		return nil, err
 	}

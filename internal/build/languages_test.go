@@ -56,54 +56,19 @@ func languagesCatalog() *model.Catalog {
 	}
 }
 
-func buildLanguages(t *testing.T) *sql.DB {
-	t.Helper()
-	out := filepath.Join(t.TempDir(), "meta.sqlite")
-	if err := Build(languagesCatalog(), out, time.Date(2026, 9, 29, 0, 0, 0, 0, time.UTC)); err != nil {
-		t.Fatal(err)
-	}
-	db, err := sql.Open("sqlite", out)
-	if err != nil {
-		t.Fatal(err)
-	}
-	t.Cleanup(func() { _ = db.Close() })
-	return db
-}
-
 // TestBuildTranslations pins the translations table: one row per (translation,
 // original) pair, in primary-key order (namespace, translation, target) - so a
 // record's set is sorted here even when it arrived out of order.
 func TestBuildTranslations(t *testing.T) {
-	db := buildLanguages(t)
-	rows, err := db.Query(`SELECT kind, id, target FROM translations`)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { _ = rows.Close() }()
-	var got [][3]string
-	for rows.Next() {
-		var r [3]string
-		if err := rows.Scan(&r[0], &r[1], &r[2]); err != nil {
-			t.Fatal(err)
-		}
-		got = append(got, r)
-	}
-	if err := rows.Err(); err != nil {
-		t.Fatal(err)
-	}
+	got := triples(t, buildDB(t, languagesCatalog()), `SELECT kind, id, target FROM translations`)
 	want := [][3]string{
 		{"series", "saga-de", "saga"},
 		{"works", "buch-eins", "book-one"},
 		{"works", "sammelband", "book-one"},
 		{"works", "sammelband", "book-two"},
 	}
-	if len(got) != len(want) {
-		t.Fatalf("translations = %v, want %v", got, want)
-	}
-	for i := range want {
-		if got[i] != want[i] {
-			t.Errorf("translations[%d] = %v, want %v", i, got[i], want[i])
-		}
+	if !slices.Equal(got, want) {
+		t.Errorf("translations = %v, want %v", got, want)
 	}
 }
 
@@ -111,7 +76,7 @@ func TestBuildTranslations(t *testing.T) {
 // DERIVED language (model.SeriesLanguage - NULL on a tie), and the ordering and
 // ordering_of the record states (NULL when it states none).
 func TestBuildSeriesLanguagesAndOrderings(t *testing.T) {
-	db := buildLanguages(t)
+	db := buildDB(t, languagesCatalog())
 	want := map[string][3]sql.NullString{
 		"saga":               {valid("en"), valid(model.OrderingPublication), {}},
 		"saga-chronological": {valid("en"), valid(model.OrderingChronological), valid("saga")},
@@ -137,7 +102,7 @@ func valid(s string) sql.NullString { return sql.NullString{String: s, Valid: tr
 // empty one. It is the LAST column, so the four columns every existing reader
 // names are where they always were.
 func TestBuildSearchLanguage(t *testing.T) {
-	db := buildLanguages(t)
+	db := buildDB(t, languagesCatalog())
 	want := map[[2]string]string{
 		{"work", "buch-eins"}:  "de",
 		{"work", "livre-un"}:   "fr",
@@ -172,18 +137,34 @@ func TestBuildSearchLanguage(t *testing.T) {
 	}
 }
 
-// TestBuildLanguageIndexesExist pins the three indexes the v7 readers rely on.
-// internal/serve EXPLAINs its own queries against them; this is the builder's
-// half, so an index dropped from the DDL fails here by name.
-func TestBuildLanguageIndexesExist(t *testing.T) {
-	db := buildLanguages(t)
-	for _, idx := range []string{"idx_series_ordering_of", "idx_translations_target", "idx_works_language"} {
-		var n int
-		if err := db.QueryRow(`SELECT COUNT(*) FROM sqlite_master WHERE type='index' AND name=?`, idx).Scan(&n); err != nil {
+// TestBuildLanguageIndexes pins the three indexes the v7 readers rely on, by
+// their COLUMNS: internal/serve EXPLAINs its own queries against them, and this is
+// the builder's half. The shapes are the point - idx_translations_target carries
+// the id so it covers the reverse translation read (without it the planner walks
+// the primary key's kind prefix instead), and idx_works_language is the language
+// alone, all the stats census reads.
+func TestBuildLanguageIndexes(t *testing.T) {
+	db := buildDB(t, languagesCatalog())
+	for idx, want := range map[string][]string{
+		"idx_series_ordering_of":  {"ordering_of"},
+		"idx_translations_target": {"kind", "target", "id"},
+		"idx_works_language":      {"language"},
+	} {
+		rows, err := db.Query(`SELECT name FROM pragma_index_info(?) ORDER BY seqno`, idx)
+		if err != nil {
 			t.Fatal(err)
 		}
-		if n != 1 {
-			t.Errorf("index %s missing from the artifact", idx)
+		var cols []string
+		for rows.Next() {
+			var c string
+			if err := rows.Scan(&c); err != nil {
+				t.Fatal(err)
+			}
+			cols = append(cols, c)
+		}
+		_ = rows.Close()
+		if !slices.Equal(cols, want) {
+			t.Errorf("index %s columns = %v, want %v", idx, cols, want)
 		}
 	}
 }
@@ -206,12 +187,8 @@ func TestBuildLanguagesIsDeterministic(t *testing.T) {
 	}
 	first := render(languagesCatalog())
 	rev := languagesCatalog()
-	for i, j := 0, len(rev.Works)-1; i < j; i, j = i+1, j-1 {
-		rev.Works[i], rev.Works[j] = rev.Works[j], rev.Works[i]
-	}
-	for i, j := 0, len(rev.Series)-1; i < j; i, j = i+1, j-1 {
-		rev.Series[i], rev.Series[j] = rev.Series[j], rev.Series[i]
-	}
+	slices.Reverse(rev.Works)
+	slices.Reverse(rev.Series)
 	if !bytes.Equal(first, render(rev)) {
 		t.Error("the artifact depends on the catalogue's input order")
 	}

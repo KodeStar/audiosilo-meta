@@ -1397,9 +1397,8 @@
             "examples": ["en"]
           },
           "ordering": {
-            "type": "string",
-            "enum": ["publication", "chronological", "recommended"],
-            "description": "Which reading order this series' positions state. An author's preferred order and a recommended listening order are both `recommended`; the series name keeps the exact wording. Omitted when unstated."
+            "$ref": "#/components/schemas/Ordering",
+            "description": "Which reading order this series' positions state. Omitted when unstated."
           },
           "ordering_of": {
             "type": "string",
@@ -1453,11 +1452,15 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "ordering": {
-            "type": "string",
-            "enum": ["publication", "chronological", "recommended"],
+            "$ref": "#/components/schemas/Ordering",
             "description": "The reading order that series states. Omitted when unstated."
           }
         }
+      },
+      "Ordering": {
+        "type": "string",
+        "enum": ["publication", "chronological", "recommended"],
+        "description": "A series' reading order. An author's preferred order and a recommended listening order are both `recommended`; the series name keeps the exact wording."
       },
       "LookupResult": {
         "type": "object",

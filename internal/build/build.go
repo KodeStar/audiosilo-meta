@@ -59,9 +59,10 @@ CREATE INDEX idx_work_isbns_isbn ON work_isbns(isbn);
 CREATE TABLE work_genres (work_id TEXT NOT NULL, genre TEXT NOT NULL);
 CREATE INDEX idx_work_genres_work ON work_genres(work_id);
 -- The stats languages census (GROUP BY language, read once per snapshot at
--- load) walks this as a covering index; added_at rides along so a later
--- language-scoped works/latest has its order in the same index.
-CREATE INDEX idx_works_language ON works(language, added_at);
+-- load) walks this as a covering index. It is deliberately the language alone:
+-- works/latest orders by (added_at IS NULL), which no index column can serve, so
+-- a language-scoped latest designs its own index when it lands (Phase 4).
+CREATE INDEX idx_works_language ON works(language);
 
 CREATE TABLE recordings (
   work_id      TEXT NOT NULL,
@@ -223,14 +224,17 @@ CREATE TABLE redirects (
 -- original) pair. kind is the FAMILY spelling ('works' | 'series'), exactly as
 -- redirects.kind, and id is always the TRANSLATION: the primary key answers "what
 -- does this translate" and idx_translations_target the reverse, "what translates
--- this".
+-- this". The reverse index carries id as well, so it COVERS that read: with no
+-- sqlite_stat1 in a built artifact the planner otherwise prefers the primary key
+-- as a covering index on its kind prefix alone, which walks every link of the
+-- family to answer for one record.
 CREATE TABLE translations (
   kind   TEXT NOT NULL,
   id     TEXT NOT NULL,
   target TEXT NOT NULL,
   PRIMARY KEY (kind, id, target)
 );
-CREATE INDEX idx_translations_target ON translations(kind, target);
+CREATE INDEX idx_translations_target ON translations(kind, target, id);
 
 -- language is the LAST column so no existing column index moves: a work row
 -- carries its language, a series row its derived language (or ''), a person ''.
@@ -307,11 +311,11 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 	if err = insertWorks(st, works, nameByID, seriesNamesByWork); err != nil {
 		return err
 	}
-	langByWork := make(map[string]string, len(works))
+	workByID := make(map[string]*model.Work, len(works))
 	for _, w := range works {
-		langByWork[w.ID] = w.Language
+		workByID[w.ID] = w
 	}
-	if err = insertSeries(st, series, langByWork); err != nil {
+	if err = insertSeries(st, series, workByID); err != nil {
 		return err
 	}
 	if err = insertTranslations(st, works, series); err != nil {
@@ -590,21 +594,20 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 	return nil
 }
 
-// insertSeries writes the series rows. langByWork answers a member's language
-// tag, which is what the series' DERIVED language is computed from
-// (model.SeriesLanguage, the one definition pkg/check's link rules,
-// internal/repair, internal/issueform and internal/audit read too) - a series
-// states no language of its own, so the artifact is where the derivation is
-// written down for a reader. A tie, or no member whose language is
-// known, is NULL in the table and the empty string in the search row.
-func insertSeries(st *stmts, series []*model.Series, langByWork map[string]string) error {
-	langOf := func(workID string) string { return langByWork[workID] }
+// insertSeries writes the series rows. workByID is the catalogue the series'
+// DERIVED language is computed over (model.SeriesLanguageOf, the one definition
+// pkg/check's link rules, internal/repair, internal/issueform and internal/audit
+// read too) - a series states no language of its own, so the artifact is where
+// the derivation is written down for a reader. A tie, or no member whose
+// language is known, is NULL in the table and the empty string in the search
+// row.
+func insertSeries(st *stmts, series []*model.Series, workByID map[string]*model.Work) error {
 	for _, s := range series {
 		var wiki, gr string
 		if s.Xref != nil {
 			wiki, gr = s.Xref.Wikidata, s.Xref.Goodreads
 		}
-		lang := model.SeriesLanguage(s.Works, langOf)
+		lang := model.SeriesLanguageOf(s.Works, workByID)
 		if _, err := st.series.Exec(
 			s.ID, s.Name, nullStr(wiki), nullStr(gr), s.License, nullStr(lang), nullStr(s.Ordering), nullStr(s.OrderingOf),
 		); err != nil {

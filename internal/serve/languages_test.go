@@ -1,15 +1,10 @@
 package serve
 
 import (
-	"database/sql"
 	"encoding/json"
 	"net/http"
-	"net/http/httptest"
-	"os"
-	"path/filepath"
 	"strings"
 	"testing"
-	"time"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -237,28 +232,14 @@ func TestPrimaryOrderingWinsTheSeriesChoice(t *testing.T) {
 // harmless, since no serve query reads it.
 func v6ShapedDB(t *testing.T, cat *model.Catalog) string {
 	t.Helper()
-	dbPath := buildFixtureDB(t, cat)
-	db, err := sql.Open("sqlite", dbPath)
-	if err != nil {
-		t.Fatal(err)
-	}
-	for _, stmt := range []string{
+	return alteredDB(t, cat, 6,
 		"DROP TABLE translations",
 		"DROP INDEX idx_series_ordering_of",
 		"DROP INDEX idx_works_language",
 		"ALTER TABLE series DROP COLUMN ordering_of",
 		"ALTER TABLE series DROP COLUMN ordering",
 		"ALTER TABLE series DROP COLUMN language",
-		"UPDATE meta SET value='6' WHERE key='schema_version'",
-	} {
-		if _, err := db.Exec(stmt); err != nil {
-			t.Fatalf("%s: %v", stmt, err)
-		}
-	}
-	if err := db.Close(); err != nil {
-		t.Fatal(err)
-	}
-	return dbPath
+	)
 }
 
 // TestLanguagesTolerateAV6Artifact serves a v6-SHAPED artifact - no translations
@@ -268,12 +249,7 @@ func v6ShapedDB(t *testing.T, cat *model.Catalog) string {
 // stats census, and a work's series in plain id order (the v6 query, whose text
 // is unchanged).
 func TestLanguagesTolerateAV6Artifact(t *testing.T) {
-	srv, err := New(Config{DBPath: v6ShapedDB(t, languagesCatalog()), Logger: testLogger(), swapGrace: time.Minute})
-	if err != nil {
-		t.Fatal(err)
-	}
-	ts := httptest.NewServer(srv.Handler())
-	t.Cleanup(ts.Close)
+	ts := downgradedServer(t, v6ShapedDB(t, languagesCatalog()))
 
 	get := func(route string) map[string]any {
 		t.Helper()
@@ -325,24 +301,15 @@ func TestLanguagesRefuseAVersion7ArtifactWithoutTheTable(t *testing.T) {
 		want  string
 	}{
 		{"no translations table", []string{"DROP TABLE translations"}, "translations table"},
-		{"no ordering columns", []string{"DROP INDEX idx_series_ordering_of", "ALTER TABLE series DROP COLUMN ordering_of"}, "series ordering columns"},
+		{"no ordering_of column", []string{"DROP INDEX idx_series_ordering_of", "ALTER TABLE series DROP COLUMN ordering_of"}, "series ordering columns"},
+		// The two columns only the series header reads: the load proves every
+		// column a gated read names, not just the one the memos walk.
+		{"no ordering column", []string{"ALTER TABLE series DROP COLUMN ordering"}, "series ordering columns"},
+		{"no language column", []string{"ALTER TABLE series DROP COLUMN language"}, "series ordering columns"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			dbPath := buildFixtureDB(t, languagesCatalog())
-			db, err := sql.Open("sqlite", dbPath)
-			if err != nil {
-				t.Fatal(err)
-			}
-			for _, stmt := range tc.stmts {
-				if _, err := db.Exec(stmt); err != nil {
-					t.Fatal(err)
-				}
-			}
-			if err := db.Close(); err != nil {
-				t.Fatal(err)
-			}
-			_, err = openSnapshot(dbPath, "")
+			_, err := openSnapshot(alteredDB(t, languagesCatalog(), 7, tc.stmts...), "")
 			if err == nil {
 				t.Fatal("a version 7 artifact missing its languages shape opened cleanly")
 			}
@@ -355,14 +322,15 @@ func TestLanguagesRefuseAVersion7ArtifactWithoutTheTable(t *testing.T) {
 	}
 }
 
-// TestLanguageMemosSkipTheQueriesWhenEmpty pins the two load-time memos: over a
-// catalogue with no translation and no variant ordering - every release until
-// the first link lands - the work and series pages do not touch the translations
-// table or the family query at all.
-func TestLanguageMemosSkipTheQueriesWhenEmpty(t *testing.T) {
+// TestLanguageMemosSkipTheQueries pins the two load-time memos: over a catalogue
+// with no translation and no variant ordering - every release until the first
+// link lands - the work and series pages do not touch the translations table or
+// the family query at all, and over one that HAS a family only its members pay
+// for the family query.
+func TestLanguageMemosSkipTheQueries(t *testing.T) {
 	empty := snapshotFor(t, fixtureCatalog())
-	if empty.hasTranslations || empty.hasOrderings {
-		t.Errorf("memos = %v/%v for a catalogue with no links", empty.hasTranslations, empty.hasOrderings)
+	if empty.hasTranslations || empty.hasOrderings() {
+		t.Errorf("memos = %v/%v for a catalogue with no links", empty.hasTranslations, empty.hasOrderings())
 	}
 	// Close the handle: a query would now fail, so a nil error proves none ran.
 	empty.close()
@@ -374,8 +342,15 @@ func TestLanguageMemosSkipTheQueriesWhenEmpty(t *testing.T) {
 	}
 
 	full := snapshotFor(t, languagesCatalog())
-	if !full.hasTranslations || !full.hasOrderings {
-		t.Errorf("memos = %v/%v for a catalogue holding both", full.hasTranslations, full.hasOrderings)
+	if !full.hasTranslations || !full.hasOrderings() {
+		t.Errorf("memos = %v/%v for a catalogue holding both", full.hasTranslations, full.hasOrderings())
+	}
+	if len(full.orderingPrimaries) != 1 || !full.orderingPrimaries["the-saga"] {
+		t.Errorf("orderingPrimaries = %v, want exactly the-saga", full.orderingPrimaries)
+	}
+	full.close()
+	if fam, err := full.orderingFamily(&seriesDetail{ID: "die-saga"}); err != nil || fam != nil {
+		t.Errorf("orderingFamily(die-saga) = %v, %v; want no query for a series outside every family", fam, err)
 	}
 }
 
@@ -396,20 +371,7 @@ func TestLanguagePagesGolden(t *testing.T) {
 			if code != http.StatusOK {
 				t.Fatalf("status = %d", code)
 			}
-			golden := filepath.Join("testdata", "golden", tc.name+".html")
-			if *updateGolden {
-				if err := os.WriteFile(golden, []byte(page), 0o644); err != nil {
-					t.Fatal(err)
-				}
-				return
-			}
-			want, err := os.ReadFile(golden)
-			if err != nil {
-				t.Fatalf("%v (regenerate with -update-golden)", err)
-			}
-			if page != string(want) {
-				t.Errorf("rendered %s page differs from %s (regenerate with -update-golden)", tc.name, golden)
-			}
+			assertGolden(t, tc.name+".html", []byte(page))
 		})
 	}
 }
