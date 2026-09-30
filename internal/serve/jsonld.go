@@ -210,8 +210,8 @@ func workJSONLD(d *workDetail, siteURL, canonical string) []byte {
 		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + personPath + a.ID})
 	}
 	// The FIRST membership is the one the page presents as the series, matching
-	// the card rule (see snapshot.firstSeriesByWork) - a primary ordering before
-	// any variant of it.
+	// the card rule (see snapshot.firstSeriesByWork) - any series that is not a
+	// variant ordering before every variant.
 	if len(d.Series) > 0 {
 		sr := d.Series[0]
 		url := siteURL + seriesPath + sr.ID

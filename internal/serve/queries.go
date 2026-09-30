@@ -1004,7 +1004,7 @@ type seriesEntry struct {
 //
 // The LANGUAGES fields are additive and all omitempty, and every one is absent on
 // an artifact older than languagesSchemaVersion: Language is DERIVED at build
-// (the strict majority of the members' languages, absent on a tie), Ordering and
+// (the strict plurality of the members' primary subtags, absent on a tie), Ordering and
 // OrderingOf are what the record states, TranslationOf/Translations are the two
 // directions of the series' translation links, and Orderings is the whole
 // ordering FAMILY this series belongs to - the primary first, then its variants

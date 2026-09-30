@@ -435,8 +435,9 @@ func authorsByWorkSQL(ph string) string {
 }
 
 // primaryFirst is the order a work's series memberships take once any series
-// names a primary ordering: a PRIMARY ordering before every variant of it
-// ((ordering_of IS NOT NULL) is 0 for a primary), then series id - so a work
+// names a primary ordering: every series that is NOT a variant ordering before
+// every variant ((ordering_of IS NOT NULL) is 0 for a non-variant, whichever
+// family the variant belongs to), then series id - so a work
 // listed in both "The Saga" and "The Saga (Chronological)" is carded under the
 // series itself however the two ids happen to sort.
 const primaryFirst = `(s.ordering_of IS NOT NULL), s.id`
@@ -602,8 +603,8 @@ func (s *snapshot) authorsByWork(ids []string) (map[string][]personRef, error) {
 	return out, nil
 }
 
-// firstSeriesByWork returns each work's FIRST series membership - a primary
-// ordering before any variant of it, then series id order - keyed by work id.
+// firstSeriesByWork returns each work's FIRST series membership - any series
+// that is not a variant ordering before every variant, then series id order - keyed by work id.
 // Works with no series are absent from the map. This is the only definition of
 // "the card's series" - workCard goes through it too, and so do works/latest's
 // per-series cap and the coverage browser.

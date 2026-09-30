@@ -246,8 +246,8 @@ func v6ShapedDB(t *testing.T, cat *model.Catalog) string {
 // table and no series ordering columns - to the v7 binary. Every read the
 // languages layer added gates on the version, so every route still answers 200
 // with the v6 payload: no translation lists, no series language or family, no
-// stats census, and a work's series in plain id order (the v6 query, whose text
-// is unchanged).
+// stats census, and a work's series in plain id order (the v6 ORDER BY, with NULL
+// selected in place of ordering_of).
 func TestLanguagesTolerateAV6Artifact(t *testing.T) {
 	ts := downgradedServer(t, v6ShapedDB(t, languagesCatalog()))
 

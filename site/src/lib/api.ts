@@ -35,9 +35,13 @@ export interface SeriesRef {
   ordering_of?: string
 }
 
-/** The reading order a series' positions state. Mirrors the schema's
-    `$defs/series_ordering` enum (pkg/model SeriesOrderings). */
-export type SeriesOrdering = 'publication' | 'chronological' | 'recommended'
+/** The reading orders a series' positions can state, in the schema's own order.
+    Mirrors the schema's `$defs/series_ordering` enum (pkg/model SeriesOrderings);
+    api.test.ts pins the two equal, as the Go side pins the OpenAPI spec's copy. */
+export const SERIES_ORDERINGS = ['publication', 'chronological', 'recommended'] as const
+
+/** The reading order a series' positions state. */
+export type SeriesOrdering = (typeof SERIES_ORDERINGS)[number]
 
 /** The compact card shape returned by search, latest, and person/series lists. */
 export interface WorkCard {
@@ -256,7 +260,8 @@ export interface SeriesEntry {
 export interface Series {
   id: string
   name: string
-  /** DERIVED from the members (their majority language); absent on a tie. */
+  /** DERIVED from the members: the primary language subtag more of them state
+      than any other (a plurality, not necessarily over half); absent on a tie. */
   language?: string
   ordering?: SeriesOrdering
   /** Set only on a variant ordering: the primary series' slug. */

@@ -130,8 +130,8 @@ CREATE TABLE series (
   wikidata TEXT,
   goodreads TEXT,
   license  TEXT NOT NULL,
-  -- DERIVED at build (model.SeriesLanguage: the strict majority of the members'
-  -- primary subtags), NULL on a tie or when no member's language is known. A
+  -- DERIVED at build (model.SeriesLanguage: the strict PLURALITY of the members'
+  -- primary subtags, which need not be over half), NULL on a tie or when no member's language is known. A
   -- series states no language in the data; this is the one place it is written.
   language    TEXT,
   -- Which reading order this series' positions state; NULL when unstated.
