@@ -310,7 +310,8 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 	b.WriteString("T-LINK reviewed rejections (`" + linkRejectionsPath + "`): a link a maintainer reviewed and\n")
 	b.WriteString("rejected stays in T-LINK.ndjson, ADVISORY, with the review's reason; a slug since retired is read\n")
 	b.WriteString("through the tombstone table first. An entry matching no proposal is STALE - the link was applied by\n")
-	b.WriteString("hand, the evidence moved - and is listed below so a cleanup can remove it; it fails nothing.\n\n")
+	b.WriteString("hand, a side is gone, or the candidate is only ambiguous this run - and is listed below for review;\n")
+	b.WriteString("remove one only once its link is stated or a side no longer exists. It fails nothing.\n\n")
 	reportdir.Table(b, "measure", []reportdir.Row{
 		{Label: "reviewed rejections on the list", N: rj.Entries()},
 		{Label: "... matching a proposal (made advisory)", N: rj.Matched},

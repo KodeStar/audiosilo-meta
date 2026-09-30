@@ -223,3 +223,32 @@ func TestSummaryReportsReviewedRejections(t *testing.T) {
 		t.Error("SUMMARY.md lists a matched entry as stale")
 	}
 }
+
+// encoding/json matches keys case-insensitively, so a case-variant key is a second,
+// hidden value for one field; the round-trip refuses it.
+func TestParseLinkRejectionsRefusesACaseVariantKey(t *testing.T) {
+	raw, err := canonical.Format([]byte(`[{"Target":"c-german","op":"add-work-link",` +
+		`"reason":"why","target":"b-german","to":"b"}]`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := parseLinkRejections(raw); err == nil || !strings.Contains(err.Error(), "exactly the keys") {
+		t.Fatalf("err = %v, want the case-variant key refused", err)
+	}
+}
+
+// Two entries meeting on one key once a merge retires a side keep both reviews' reasons.
+func TestRejectionsMeetingOnOneKeyKeepEveryReason(t *testing.T) {
+	rep := runFixtureRejectingWith(t, sagaTree(t),
+		`{"people":{},"series":{"saga-old":"the-saga"},"works":{}}`,
+		linkRejection{Op: OpAddSeriesLink, Target: "the-saga-german", To: "saga-old", Reason: "first review"},
+		linkRejection{Op: OpAddSeriesLink, Target: "the-saga-german", To: "the-saga", Reason: "second review"},
+	)
+	fd := linkFinding(t, rep, "the-saga-german")
+	if fd == nil || !fd.Propose.Advisory || !strings.Contains(fd.Propose.Reason, "first review; second review") {
+		t.Fatalf("proposal = %+v, want both reasons", fd)
+	}
+	if got := rep.LinkRejections; got.Matched != 2 || len(got.Stale) != 0 {
+		t.Errorf("tally = %+v, want both matched", got)
+	}
+}

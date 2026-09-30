@@ -6,6 +6,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
@@ -47,8 +48,11 @@ import (
 // THE EFFECT is advisory, never absence: a matching proposal stays in T-LINK.ndjson,
 // turned advisory, its reason saying it was reviewed and rejected and why. An entry
 // matching no proposal, even after resolving, is STALE and SUMMARY.md lists it by name
-// for a cleanup - it fails nothing, since an entry goes stale legitimately when the tree
-// moves (the link applied by hand, the evidence changed).
+// for a reviewer - it fails nothing, since an entry goes stale legitimately when the tree
+// moves (the link applied by hand, the evidence changed). Stale is not the same as
+// obsolete: a candidate that is merely AMBIGUOUS this run (a second original appeared)
+// proposes nothing, and becomes the same rejected link again the day the ambiguity is
+// folded away, so an entry is removed only once its link is stated or a side is gone.
 
 //go:embed tlink_rejected.json
 var linkRejectionsFile []byte
@@ -130,6 +134,20 @@ func parseLinkRejections(raw []byte) ([]linkRejection, error) {
 				"(op, target, to) with no duplicates", i, r.Op, r.Target, r.To)
 		}
 	}
+	// encoding/json matches a key to a field CASE-INSENSITIVELY, so "Target" beside
+	// "target" is two distinct keys to the canonical check above and one field to the
+	// decoder, the later silently winning. Re-rendering what was decoded and requiring
+	// the file's own bytes back closes that: every entry carries exactly the four keys,
+	// spelled as the struct tags spell them.
+	back, err := json.Marshal(rs)
+	if err != nil {
+		return nil, err
+	}
+	if back, err = canonical.Format(back); err != nil {
+		return nil, err
+	} else if !bytes.Equal(back, raw) {
+		return nil, fmt.Errorf("an entry does not carry exactly the keys op, reason, target and to, in lower case")
+	}
 	return rs, nil
 }
 
@@ -172,10 +190,16 @@ func applyLinkRejections(f *findings, rejections []linkRejection, reds model.Red
 		if !ok {
 			continue
 		}
+		// Two entries can meet on one key once a merge retires a side; each review's
+		// reason is kept, in the list's order.
+		var reasons []string
 		for _, j := range js {
 			matched[j] = true
+			if !slices.Contains(reasons, rejections[j].Reason) {
+				reasons = append(reasons, rejections[j].Reason)
+			}
 		}
-		reason := "reviewed and rejected (" + linkRejectionsPath + "): " + rejections[js[0]].Reason
+		reason := "reviewed and rejected (" + linkRejectionsPath + "): " + strings.Join(reasons, "; ")
 		if p.Advisory {
 			reason += "; " + p.Reason
 		}
