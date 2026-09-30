@@ -1,8 +1,8 @@
 package check
 
 import (
-	"reflect"
 	"slices"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -135,13 +135,47 @@ func (o *LinkOverlay) relink(base []string, names bool) []string {
 // that the overlay has and its base does not - the faults the change would
 // INTRODUCE. A fault the base already carries is not the change's to answer for.
 // Order is LinkFaults' over the overlay.
+//
+// Two faults are the same fault when their faultKeys are equal - NOT when they are
+// deep-equal: a related-records list is a set, and a view that answers an empty
+// list where another answers nil (or the same ids in another order) must not turn a
+// pre-existing fault into an introduced one.
 func (o *LinkOverlay) IntroducedFaults() []LinkFault {
-	before := LinkFaults(o.base, o.kind, o.id)
+	before := make(map[faultKey]bool)
+	for _, f := range LinkFaults(o.base, o.kind, o.id) {
+		before[keyOf(f)] = true
+	}
 	var out []LinkFault
 	for _, f := range LinkFaults(o, o.kind, o.id) {
-		if !slices.ContainsFunc(before, func(b LinkFault) bool { return reflect.DeepEqual(b, f) }) {
+		if !before[keyOf(f)] {
 			out = append(out, f)
 		}
 	}
 	return out
+}
+
+// faultKey is a LinkFault's identity: every scalar member as is, and each id list
+// as a SET (sorted, deduplicated, nil and empty alike) joined into one string.
+type faultKey struct {
+	code                         LinkFaultCode
+	severity                     LinkSeverity
+	kind                         model.RedirectKind
+	from, field, to              string
+	survivor, language, ordering string
+	others, works                string
+}
+
+func keyOf(f LinkFault) faultKey {
+	return faultKey{
+		code: f.Code, severity: f.Severity, kind: f.Kind,
+		from: f.From, field: f.Field, to: f.To,
+		survivor: f.Survivor, language: f.Language, ordering: f.Ordering,
+		others: idSetKey(f.Others), works: idSetKey(f.Works),
+	}
+}
+
+// idSetKey spells an id list as a set: sorted, deduplicated, and "" for nil and
+// empty alike. A slug never holds the NUL byte, so the join is unambiguous.
+func idSetKey(ids []string) string {
+	return strings.Join(slices.Compact(slices.Sorted(slices.Values(ids))), "\x00")
 }

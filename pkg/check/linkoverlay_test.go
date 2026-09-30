@@ -74,6 +74,61 @@ func TestLinkOverlayIntroducedFaults(t *testing.T) {
 	}
 }
 
+// TestIntroducedFaultsComparesRelatedRecordsAsASet: a fault's related-records lists
+// (Others, Works) are sets, so a pre-existing fault whose list another view spells
+// nil where this one spells empty, or in another order, is the SAME fault - never
+// one the change introduced. Distinct sets, and any differing scalar, still differ.
+func TestIntroducedFaultsComparesRelatedRecordsAsASet(t *testing.T) {
+	f := LinkFault{Code: LinkChain, Kind: model.RedirectWorks, From: "n", Field: FieldTranslationOf, To: "x"}
+	withOthers := func(others, works []string) LinkFault {
+		g := f
+		g.Others, g.Works = others, works
+		return g
+	}
+
+	// Passing: nil and empty, and one set in two orders, are one key.
+	for name, pair := range map[string][2]LinkFault{
+		"nil vs empty Others": {withOthers(nil, nil), withOthers([]string{}, nil)},
+		"nil vs empty Works":  {withOthers(nil, []string{}), withOthers(nil, nil)},
+		"Others order":        {withOthers([]string{"c", "a"}, nil), withOthers([]string{"a", "c"}, nil)},
+	} {
+		if keyOf(pair[0]) != keyOf(pair[1]) {
+			t.Errorf("%s: %+v and %+v keyed apart", name, pair[0], pair[1])
+		}
+	}
+	// Violating: a different set, or any differing scalar, is a different fault.
+	for name, pair := range map[string][2]LinkFault{
+		"different Others": {withOthers([]string{"a"}, nil), withOthers([]string{"a", "c"}, nil)},
+		"empty vs one":     {withOthers([]string{}, nil), withOthers([]string{"a"}, nil)},
+		"different To":     {f, func() LinkFault { g := f; g.To = "y"; return g }()},
+		"different code":   {f, func() LinkFault { g := f; g.Code = LinkDead; return g }()},
+		"severity":         {f, func() LinkFault { g := f; g.Severity = LinkAdvisory; return g }()},
+	} {
+		if keyOf(pair[0]) == keyOf(pair[1]) {
+			t.Errorf("%s: %+v and %+v keyed together", name, pair[0], pair[1])
+		}
+	}
+
+	// Through the overlay: x states [c, a] (a pre-existing unsorted fault) and n
+	// translates x (a pre-existing chain, Others [c, a]). Sorting x's set fixes the
+	// one and re-spells the other's Others as [a, c]: nothing is introduced.
+	works := map[string]*model.Work{
+		"a": {ID: "a", Language: "en"},
+		"c": {ID: "c", Language: "de"},
+		"x": {ID: "x", Language: "fr", TranslationOf: []string{"c", "a"}},
+		"n": {ID: "n", Language: "it", TranslationOf: []string{"x"}},
+	}
+	base := NewLinkView(works, nil, model.NewRedirects())
+	if got := faultCodes(LinkFaults(base, model.RedirectWorks, "x")); !slices.Contains(got, "chain:n>x") {
+		t.Fatalf("fixture carries no pre-existing chain: %v", got)
+	}
+	rec := LinkRecordOf(base, model.RedirectWorks, "x")
+	rec.TranslationOf = []string{"a", "c"}
+	if got := NewLinkOverlay(base, model.RedirectWorks, "x", rec).IntroducedFaults(); len(got) != 0 {
+		t.Errorf("a pre-existing fault re-spelled as a set was reported as introduced: %v", faultCodes(got))
+	}
+}
+
 // TestLinkOverlayRederivesASeriesLanguage: a work's language moves the derived
 // language of every series listing it, so an overlaid work language is read by the
 // series side too - and an unchanged one reads the base's memo.
