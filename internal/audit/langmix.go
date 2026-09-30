@@ -476,6 +476,11 @@ func (m *langMix) emitDrop(s *model.Series, mm *mixMember, homed []string, keepe
 	var homes []*model.Series
 	for _, id := range homed {
 		homes = append(homes, m.ix.seriesByID[id])
+		// A home a merge retires in this audit is no home once that merge lands, so the
+		// drop would apply or go stale by the order the two are run in.
+		if by, locked := m.locks.series[id]; locked {
+			vetoes = append(vetoes, fmt.Sprintf("%s is merged by %s in this audit", id, by))
+		}
 	}
 	fd := m.memberFinding(lMixHomed, s, mm, keeper, homes...)
 	fd.Propose = Proposal{

@@ -71,6 +71,9 @@ func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 			"a misfile to drop", p.Target, lang, joinList(p.Others), p.Series)
 	}
 	next := slices.Delete(slices.Clone(works), at, at+1)
+	if len(next) == 0 {
+		return refusef(CatStaleValue, "dropping %s would leave series %s with no members", p.Target, p.Series)
+	}
 	t.setSeries(p.Series, se.Clone(), next)
 	t.note("dropped %s (position %q) from series %s: it is a member of %s, which derives %s", p.Target, p.From, p.Series, home, lang)
 	return t.refuseLinkFaults(p.Series)
@@ -116,7 +119,11 @@ func (rn *runner) moveMembership(t *txn, fd audit.Finding) error {
 			return refusef(CatPositionConflict, "position %q of series %s is held by %s", p.To, dest, other)
 		}
 	}
-	t.setSeries(p.Series, se.Clone(), slices.Delete(slices.Clone(works), at, at+1))
+	left := slices.Delete(slices.Clone(works), at, at+1)
+	if len(left) == 0 {
+		return refusef(CatStaleValue, "moving %s would leave series %s with no members", p.Target, p.Series)
+	}
+	t.setSeries(p.Series, se.Clone(), left)
 	t.setSeries(dest, de.Clone(), append(slices.Clone(dworks), model.SeriesWork{Work: p.Target, Position: p.To}))
 	t.note("moved %s from series %s (position %q) to %s at position %q, the series of its language (%s)",
 		p.Target, p.Series, p.From, dest, p.To, lang)
@@ -167,11 +174,15 @@ func (rn *runner) splitSeries(t *txn, fd audit.Finding) error {
 		if _, retired := t.p.retiredBy(pack.FamilySeries, slug); retired {
 			return true
 		}
-		_, held, gerr := t.series.get(slug)
-		if gerr != nil && lookupErr == nil {
-			lookupErr = gerr
+		if lookupErr != nil {
+			return false // stop the walk: the error is returned below, whatever slug it ends on
 		}
-		return held || gerr != nil
+		_, held, gerr := t.series.get(slug)
+		if gerr != nil {
+			lookupErr = gerr
+			return false
+		}
+		return held
 	}, t.p.redirects)
 	if lookupErr != nil {
 		return lookupErr
