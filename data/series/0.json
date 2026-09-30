@@ -14301,6 +14301,8 @@
       "id": "a-jack-ryan-novel-chronological-order",
       "license": "CC0-1.0",
       "name": "A Jack Ryan Novel (chronological order)",
+      "ordering": "chronological",
+      "ordering_of": "a-jack-ryan-novel-publication-order",
       "sources": [
         {
           "imported_at": "2026-07-17",
@@ -14419,6 +14421,7 @@
       "id": "a-jack-ryan-novel-publication-order",
       "license": "CC0-1.0",
       "name": "A Jack Ryan Novel (publication order)",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-30",

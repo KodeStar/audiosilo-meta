@@ -4848,6 +4848,8 @@
       "id": "drenai-chronological-order",
       "license": "CC0-1.0",
       "name": "Drenai [chronological order]",
+      "ordering": "chronological",
+      "ordering_of": "drenai-publication-order",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -4906,6 +4908,7 @@
       "id": "drenai-publication-order",
       "license": "CC0-1.0",
       "name": "Drenai [publication order]",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-08-02",

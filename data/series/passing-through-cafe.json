@@ -6686,6 +6686,8 @@
       "id": "pern-novels-chronological-order",
       "license": "CC0-1.0",
       "name": "Pern Novels [chronological order]",
+      "ordering": "chronological",
+      "ordering_of": "pern-novels-publication-order",
       "sources": [
         {
           "imported_at": "2026-07-25",
@@ -6807,6 +6809,7 @@
       "id": "pern-novels-publication-order",
       "license": "CC0-1.0",
       "name": "Pern Novels [publication order]",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-25",
@@ -17664,6 +17667,8 @@
       "id": "pip-flinx-chronological-order",
       "license": "CC0-1.0",
       "name": "Pip & Flinx (chronological order)",
+      "ordering": "chronological",
+      "ordering_of": "pip-flinx-published-order",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -17738,6 +17743,7 @@
       "id": "pip-flinx-published-order",
       "license": "CC0-1.0",
       "name": "Pip & Flinx (published order)",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-08-02",
