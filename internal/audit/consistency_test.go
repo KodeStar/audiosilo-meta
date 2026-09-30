@@ -26,6 +26,8 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 	mergeTarget := map[string]string{} // work -> the target it was told to fold onto
 	isTarget := map[string]string{}    // work -> the record naming it as a target
 	slot := map[string]string{}        // "<series>@<pos>" -> the record claiming it
+	linkedTo := map[string]string{}    // "<kind>/<translation>" -> the original it is linked to
+	original := map[string]string{}    // "<kind>/<original>" -> the record naming it
 
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -53,7 +55,22 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 					t.Errorf("%s and %s both claim series slot %s", prev, r.Key, key)
 				}
 				slot[key] = r.Key
+			case OpAddLink:
+				// A translation gains ONE original per run, and no record is both a
+				// translation and an original across the set: applied in either order,
+				// the second would chain onto the first.
+				tr := p.Kind + "/" + p.Target
+				if prev, dup := linkedTo[tr]; dup && prev != p.To {
+					t.Errorf("%s is linked to both %s and %s", r.Key, prev, p.To)
+				}
+				linkedTo[tr] = p.To
+				original[p.Kind+"/"+p.To] = r.Key
 			}
+		}
+	}
+	for tr := range linkedTo {
+		if by, both := original[tr]; both {
+			t.Errorf("%s is a translation in one link proposal and the original %s names in another", tr, by)
 		}
 	}
 	for w, by := range mergeTarget {
@@ -116,6 +133,7 @@ func TestProposalsAreConsistentAcrossTheFixtures(t *testing.T) {
 			"series/aa/alpha.json":           seriesJSON(t, "alpha", "Dragon Heart", "one@1"),
 			"series/bb/beta.json":            seriesJSON(t, "beta", "Dragon Heart Series", "two@1"),
 		}),
+		"translation editions": fixture(t, mergeFiles(sagaTree(t), fateTree(t))),
 	} {
 		t.Run(name, func(t *testing.T) {
 			assertProposalsConsistent(t, runFixture(t, files))

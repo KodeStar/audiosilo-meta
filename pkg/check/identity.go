@@ -386,13 +386,62 @@ func (ix *WorkIdentity) MatchKey(key, title, series, lang string, all, identity 
 // derived once by the caller rather than once per candidate.
 func (ix *WorkIdentity) matches(w *model.Work, wColl *collectionMemo, title, series string,
 	st titlerule.VolumeStatement, lang string, all, identity map[string]bool, inColl *collectionMemo) bool {
+	return languagesCompatible(w.Language, lang) && ix.sameBook(w, wColl, title, series, st, all, identity, inColl)
+}
+
+// sameBook is matches without its LANGUAGE rule: the other three rules, in the same
+// order, so matches is exactly "compatible languages, and sameBook". It is split out
+// for SameBookInAnyLanguage, the one caller that asks the question across languages,
+// so that caller cannot drift from the predicate the census and both writers read.
+func (ix *WorkIdentity) sameBook(w *model.Work, wColl *collectionMemo, title, series string,
+	st titlerule.VolumeStatement, all, identity map[string]bool, inColl *collectionMemo) bool {
 	if wColl == nil {
 		wColl = &collectionMemo{}
 	}
-	return languagesCompatible(w.Language, lang) &&
-		IdentityAuthorsMatch(w, all, identity) &&
+	return IdentityAuthorsMatch(w, all, identity) &&
 		st.Agrees(ix.statementOf[w.ID]) &&
 		inColl.get(title, series) == wColl.get(w.Title, ix.seriesOf[w.ID])
+}
+
+// SameBookInAnyLanguage returns the OTHER catalogued works a catalogued work is one
+// book with under the identity rule with its LANGUAGE rule removed: the same
+// normalized title key, nested author sets, no stated-volume disagreement and the same
+// collection status - matches' other three rules, through sameBook. Results are in
+// work-id order and include works in the work's own language; the caller decides what
+// a language difference means.
+//
+// It exists for internal/audit's translation-link candidates (T-LINK), where a title a
+// retailer left untranslated ("Families First (German Edition)" beside "Families
+// First") is the one shape the key can pair across two languages. Every other consumer
+// of the index asks matches, whose language rule is exactly what keeps a translation
+// from reading as a duplicate - so nothing here changes what the census counts or what
+// the two writers refuse.
+//
+// A work the index was not built over (no derivation recorded) or whose title carries
+// no identity yields nothing.
+func (ix *WorkIdentity) SameBookInAnyLanguage(w *model.Work) []IdentityMatch {
+	series, catalogued := ix.seriesOf[w.ID]
+	if !catalogued {
+		return nil
+	}
+	st, keyed := ix.statementOf[w.ID]
+	if !keyed {
+		return nil
+	}
+	cands := ix.byKey[ix.Key(w.Title, series)]
+	all, identity := identitySets(w)
+	var out []IdentityMatch
+	var inColl collectionMemo
+	for _, c := range cands {
+		if c == w || c.ID == w.ID {
+			continue
+		}
+		if ix.sameBook(c, nil, w.Title, series, st, all, identity, &inColl) {
+			out = append(out, IdentityMatch{Work: c, Series: ix.seriesOf[c.ID]})
+		}
+	}
+	sort.Slice(out, func(i, j int) bool { return out[i].Work.ID < out[j].Work.ID })
+	return out
 }
 
 // collectionMemo is one title's titlerule.IsCollectionIn answer, asked on first use.

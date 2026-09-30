@@ -18,6 +18,7 @@ const (
 	ClassSeriesInteg  = "S-INTEGRITY"
 	ClassSeriesDup    = "SER-DUP"     // near-duplicate series
 	ClassSeriesParen  = "SER-PAREN"   // parenthetical-decorated series names
+	ClassTransLink    = "T-LINK"      // translation links a record's own edition decoration states
 	ClassPersonDup    = "P-DUP"       // near-duplicate people (advisory)
 	ClassRefSidecar   = "REF-SIDECAR" // sidecar hazards
 	ClassHygiene      = "F-HYGIENE"   // field hygiene
@@ -27,7 +28,7 @@ const (
 // classOrder is every class, in report order.
 var classOrder = []string{
 	ClassWorkDup, ClassWorkTitle, ClassWorkNoSeries, ClassSeriesInteg,
-	ClassSeriesDup, ClassSeriesParen, ClassPersonDup, ClassRefSidecar,
+	ClassSeriesDup, ClassSeriesParen, ClassTransLink, ClassPersonDup, ClassRefSidecar,
 	ClassHygiene, ClassLoader,
 }
 
@@ -48,8 +49,13 @@ const (
 	OpFillField       = "fill-field"        // state a fact the record is missing
 	OpRenameCandidate = "rename-candidate"  // a slug a rename pass should consider; never applied on this evidence alone
 	OpRepointSidecar  = "repoint-sidecar"   // move a works-community entry onto the right work
-	OpReview          = "review"            // no mechanical action: a human decides
-	OpNone            = ""                  // a pass-through record (LOADER)
+	// OpAddLink states a LINK the record is missing: Target's Field (translation_of) gains
+	// To, in the id namespace Kind names. It adds a positive fact from stated evidence,
+	// as add-series-member does, and From is what the record states now, so a repair
+	// can refuse a record that has moved since the proposal was written.
+	OpAddLink = "add-link"
+	OpReview  = "review" // no mechanical action: a human decides
+	OpNone    = ""       // a pass-through record (LOADER)
 )
 
 // Proposal is the typed repair a finding proposes.
@@ -69,6 +75,10 @@ type Proposal struct {
 	Others []string `json:"others,omitempty"`
 	// Series names the series a membership op concerns.
 	Series string `json:"series,omitempty"`
+	// Kind is the id namespace Target and To live in ("works" or "series", the
+	// model.RedirectKind spelling), for an op that works over either family - add-link.
+	// Empty for every op whose family is its name.
+	Kind string `json:"kind,omitempty"`
 	// Field/From/To describe a single-field change. To is empty when the detector
 	// deliberately proposes no replacement value.
 	Field string `json:"field,omitempty"`

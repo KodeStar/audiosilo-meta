@@ -66,7 +66,7 @@ func findingID(class string, fd audit.Finding) string {
 // Reason is excluded: it is prose for a human, and rewording a sentence must not
 // invalidate a worklist a maintainer has already reviewed.
 func sameProposal(a, b audit.Proposal) bool {
-	return a.Op == b.Op && a.Target == b.Target && a.Series == b.Series &&
+	return a.Op == b.Op && a.Kind == b.Kind && a.Target == b.Target && a.Series == b.Series &&
 		a.Field == b.Field && a.From == b.From && a.To == b.To &&
 		a.Advisory == b.Advisory && slices.Equal(a.Others, b.Others)
 }
@@ -370,6 +370,9 @@ func splitID(id string) (class, subclass, key string) {
 func renderProposal(p audit.Proposal) string {
 	var b strings.Builder
 	b.WriteString(p.Op)
+	if p.Kind != "" {
+		b.WriteString(" " + p.Kind)
+	}
 	if p.Target != "" {
 		b.WriteString(" " + p.Target)
 	}
