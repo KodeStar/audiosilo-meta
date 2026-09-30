@@ -24,13 +24,16 @@ import (
 // table (per-work in_short / ending) was added; bumped to 4 when work genres
 // arrived in the work_genres table; bumped to 5 when the slug redirect
 // (tombstone) table arrived; bumped to 6 when the community work_descriptions
-// table (the spoiler-free per-work description) arrived.
+// table (the spoiler-free per-work description) arrived; bumped to 7 when the
+// LANGUAGES layer arrived - the translations table (translation_of links, works
+// and series), three series columns (the DERIVED language, ordering and
+// ordering_of) and search_fts.language.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 6
+const SchemaVersion = 7
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -55,6 +58,11 @@ CREATE TABLE work_isbns (work_id TEXT NOT NULL, isbn TEXT NOT NULL);
 CREATE INDEX idx_work_isbns_isbn ON work_isbns(isbn);
 CREATE TABLE work_genres (work_id TEXT NOT NULL, genre TEXT NOT NULL);
 CREATE INDEX idx_work_genres_work ON work_genres(work_id);
+-- The stats languages census (GROUP BY language, read once per snapshot at
+-- load) walks this as a covering index. It is deliberately the language alone:
+-- works/latest orders by (added_at IS NULL), which no index column can serve, so
+-- a language-scoped latest designs its own index when it lands (Phase 4).
+CREATE INDEX idx_works_language ON works(language);
 
 CREATE TABLE recordings (
   work_id      TEXT NOT NULL,
@@ -121,8 +129,19 @@ CREATE TABLE series (
   name     TEXT NOT NULL,
   wikidata TEXT,
   goodreads TEXT,
-  license  TEXT NOT NULL
+  license  TEXT NOT NULL,
+  -- DERIVED at build (model.SeriesLanguage: the strict PLURALITY of the members'
+  -- primary subtags, which need not be over half), NULL on a tie or when no member's language is known. A
+  -- series states no language in the data; this is the one place it is written.
+  language    TEXT,
+  -- Which reading order this series' positions state; NULL when unstated.
+  ordering    TEXT,
+  -- The franchise's PRIMARY ordering, set only on a variant; NULL for a primary.
+  ordering_of TEXT
 );
+-- A series page lists its whole ordering family: the primary plus every series
+-- whose ordering_of names it, which is this index.
+CREATE INDEX idx_series_ordering_of ON series(ordering_of);
 CREATE TABLE series_works (series_id TEXT NOT NULL, work_id TEXT NOT NULL, position TEXT NOT NULL);
 CREATE INDEX idx_series_works_work ON series_works(work_id);
 -- GET /series/{id} reads both of these by series_id; measurement found the same
@@ -201,7 +220,25 @@ CREATE TABLE redirects (
   PRIMARY KEY (kind, old_slug)
 );
 
-CREATE VIRTUAL TABLE search_fts USING fts5(kind UNINDEXED, id UNINDEXED, title, names);
+-- The translation_of links of works AND series, one row per (translation,
+-- original) pair. kind is the FAMILY spelling ('works' | 'series'), exactly as
+-- redirects.kind, and id is always the TRANSLATION: the primary key answers "what
+-- does this translate" and idx_translations_target the reverse, "what translates
+-- this". The reverse index carries id as well, so it COVERS that read: with no
+-- sqlite_stat1 in a built artifact the planner otherwise prefers the primary key
+-- as a covering index on its kind prefix alone, which walks every link of the
+-- family to answer for one record.
+CREATE TABLE translations (
+  kind   TEXT NOT NULL,
+  id     TEXT NOT NULL,
+  target TEXT NOT NULL,
+  PRIMARY KEY (kind, id, target)
+);
+CREATE INDEX idx_translations_target ON translations(kind, target, id);
+
+-- language is the LAST column so no existing column index moves: a work row
+-- carries its language, a series row its derived language (or ''), a person ''.
+CREATE VIRTUAL TABLE search_fts USING fts5(kind UNINDEXED, id UNINDEXED, title, names, language UNINDEXED);
 `
 
 // Build writes the SQLite artifact for cat to outPath. builtAt is recorded in
@@ -274,7 +311,14 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 	if err = insertWorks(st, works, nameByID, seriesNamesByWork); err != nil {
 		return err
 	}
-	if err = insertSeries(st, series); err != nil {
+	workByID := make(map[string]*model.Work, len(works))
+	for _, w := range works {
+		workByID[w.ID] = w
+	}
+	if err = insertSeries(st, series, workByID); err != nil {
+		return err
+	}
+	if err = insertTranslations(st, works, series); err != nil {
 		return err
 	}
 
@@ -368,6 +412,8 @@ type stmts struct {
 	workDescription *sql.Stmt
 
 	redirect *sql.Stmt
+
+	translation *sql.Stmt
 }
 
 // prepareStmts prepares every insert statement on tx and returns the set plus a
@@ -389,13 +435,13 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		query string
 	}{
 		{&s.person, `INSERT INTO people(id, name, sort_name, description, wikidata, openlibrary, audible, license) VALUES(?,?,?,?,?,?,?,?)`},
-		{&s.personFTS, `INSERT INTO search_fts(kind, id, title, names) VALUES('person', ?, ?, '')`},
+		{&s.personFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('person', ?, ?, '', '')`},
 
 		{&s.work, `INSERT INTO works(id, title, subtitle, language, first_published, description, added_at, wikidata, openlibrary, goodreads, license) VALUES(?,?,?,?,?,?,?,?,?,?,?)`},
 		{&s.workAuthor, `INSERT INTO work_authors(work_id, person_id, ord) VALUES(?,?,?)`},
 		{&s.workISBN, `INSERT INTO work_isbns(work_id, isbn) VALUES(?,?)`},
 		{&s.workGenre, `INSERT INTO work_genres(work_id, genre) VALUES(?,?)`},
-		{&s.workFTS, `INSERT INTO search_fts(kind, id, title, names) VALUES('work', ?, ?, ?)`},
+		{&s.workFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('work', ?, ?, ?, ?)`},
 
 		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license) VALUES(?,?,?,?,?,?,?,?,?)`},
 		{&s.recNarrator, `INSERT INTO recording_narrators(work_id, recording_id, person_id, ord) VALUES(?,?,?,?)`},
@@ -403,10 +449,10 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		{&s.recISBN, `INSERT INTO recording_isbns(work_id, recording_id, isbn) VALUES(?,?,?)`},
 		{&s.chapter, `INSERT INTO chapters(work_id, recording_id, idx, title, start_ms, length_ms) VALUES(?,?,?,?,?,?)`},
 
-		{&s.series, `INSERT INTO series(id, name, wikidata, goodreads, license) VALUES(?,?,?,?,?)`},
+		{&s.series, `INSERT INTO series(id, name, wikidata, goodreads, license, language, ordering, ordering_of) VALUES(?,?,?,?,?,?,?,?)`},
 		{&s.seriesWork, `INSERT INTO series_works(series_id, work_id, position) VALUES(?,?,?)`},
 		{&s.seriesAuthor, `INSERT INTO series_authors(series_id, person_id, ord) VALUES(?,?,?)`},
-		{&s.seriesFTS, `INSERT INTO search_fts(kind, id, title, names) VALUES('series', ?, ?, '')`},
+		{&s.seriesFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('series', ?, ?, '', ?)`},
 
 		{&s.character, `INSERT INTO characters(work_id, id, name, role, reveal_chapter, description, wikidata, goodreads, ord, license) VALUES(?,?,?,?,?,?,?,?,?,?)`},
 		{&s.characterAlias, `INSERT INTO character_aliases(work_id, character_id, alias, ord) VALUES(?,?,?,?)`},
@@ -417,6 +463,8 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		{&s.workDescription, `INSERT INTO work_descriptions(work_id, text, license) VALUES(?,?,?)`},
 
 		{&s.redirect, `INSERT INTO redirects(kind, old_slug, new_slug) VALUES(?,?,?)`},
+
+		{&s.translation, `INSERT INTO translations(kind, id, target) VALUES(?,?,?)`},
 	} {
 		st, err := tx.Prepare(spec.query)
 		if err != nil {
@@ -498,7 +546,7 @@ func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, ser
 		}
 
 		ftsTitle := strings.TrimSpace(w.Title + " " + w.Subtitle)
-		if _, err := st.workFTS.Exec(w.ID, ftsTitle, strings.Join(names, " ")); err != nil {
+		if _, err := st.workFTS.Exec(w.ID, ftsTitle, strings.Join(names, " "), w.Language); err != nil {
 			return err
 		}
 	}
@@ -546,13 +594,23 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 	return nil
 }
 
-func insertSeries(st *stmts, series []*model.Series) error {
+// insertSeries writes the series rows. workByID is the catalogue the series'
+// DERIVED language is computed over (model.SeriesLanguageOf, the one definition
+// pkg/check's link rules, internal/repair, internal/issueform and internal/audit
+// read too) - a series states no language of its own, so the artifact is where
+// the derivation is written down for a reader. A tie, or no member whose
+// language is known, is NULL in the table and the empty string in the search
+// row.
+func insertSeries(st *stmts, series []*model.Series, workByID map[string]*model.Work) error {
 	for _, s := range series {
 		var wiki, gr string
 		if s.Xref != nil {
 			wiki, gr = s.Xref.Wikidata, s.Xref.Goodreads
 		}
-		if _, err := st.series.Exec(s.ID, s.Name, nullStr(wiki), nullStr(gr), s.License); err != nil {
+		lang := model.SeriesLanguageOf(s.Works, workByID)
+		if _, err := st.series.Exec(
+			s.ID, s.Name, nullStr(wiki), nullStr(gr), s.License, nullStr(lang), nullStr(s.Ordering), nullStr(s.OrderingOf),
+		); err != nil {
 			return err
 		}
 		for _, sw := range s.Works {
@@ -565,7 +623,7 @@ func insertSeries(st *stmts, series []*model.Series) error {
 				return err
 			}
 		}
-		if _, err := st.seriesFTS.Exec(s.ID, s.Name); err != nil {
+		if _, err := st.seriesFTS.Exec(s.ID, s.Name, lang); err != nil {
 			return err
 		}
 	}
@@ -660,6 +718,38 @@ func insertRedirects(st *stmts, reds model.Redirects) error {
 			if _, err := st.redirect.Exec(string(kind), old, table[old]); err != nil {
 				return err
 			}
+		}
+	}
+	return nil
+}
+
+// insertTranslations writes the translation_of links of both families, one row
+// per (translation, original) pair, in primary-key order: namespace, then the
+// translation's id (both slices arrive sorted by id), then the target. The
+// targets are sorted here rather than trusted to the file order pkg/check pins,
+// so the rows are deterministic even for a catalogue that was never checked.
+//
+// Like insertRedirects it writes what the data SAYS: that a target is live, in
+// another language and not itself a translation are pkg/check's rules, and
+// metabuild refuses to build data that failed them.
+func insertTranslations(st *stmts, works []*model.Work, series []*model.Series) error {
+	write := func(kind model.RedirectKind, id string, targets []string) error {
+		for _, target := range slices.Sorted(slices.Values(targets)) {
+			if _, err := st.translation.Exec(string(kind), id, target); err != nil {
+				return err
+			}
+		}
+		return nil
+	}
+	// "series" sorts before "works", so this is the primary key's own order.
+	for _, s := range series {
+		if err := write(model.RedirectSeries, s.ID, s.TranslationOf); err != nil {
+			return err
+		}
+	}
+	for _, w := range works {
+		if err := write(model.RedirectWorks, w.ID, w.TranslationOf); err != nil {
+			return err
 		}
 	}
 	return nil

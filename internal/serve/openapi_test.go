@@ -5,10 +5,13 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // servedPaths is the API surface the embedded spec must describe, EXACTLY - read
@@ -388,4 +391,27 @@ func TestOpenAPIWildcardStillRevalidates(t *testing.T) {
 		t.Fatalf("If-None-Match: * on the spec = %d, want 304", resp.StatusCode)
 	}
 	wantBodyless(t, resp)
+}
+
+// TestOpenAPIOrderingIsTheModelVocabulary is the drift guard for the one
+// vocabulary the spec restates: the Ordering component's enum must BE
+// model.SeriesOrderings(), same values, same order - which pkg/model's own guard
+// in turn pins to the schema - so the documented contract cannot offer or omit an
+// ordering the data does not.
+func TestOpenAPIOrderingIsTheModelVocabulary(t *testing.T) {
+	var doc struct {
+		Components struct {
+			Schemas struct {
+				Ordering struct {
+					Enum []string `json:"enum"`
+				} `json:"Ordering"`
+			} `json:"schemas"`
+		} `json:"components"`
+	}
+	if err := json.Unmarshal(openAPISpec, &doc); err != nil {
+		t.Fatal(err)
+	}
+	if got, want := doc.Components.Schemas.Ordering.Enum, model.SeriesOrderings(); !slices.Equal(got, want) {
+		t.Errorf("openapi Ordering enum = %v, want model.SeriesOrderings() %v", got, want)
+	}
 }

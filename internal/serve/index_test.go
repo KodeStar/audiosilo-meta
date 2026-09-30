@@ -86,7 +86,8 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"authors of a work", authorsOfSQL, []any{work}},
 		{"character aliases of a work", characterAliasSQL, []any{work}},
 		// Series detail.
-		{"series header", seriesHeaderSQL, []any{series}},
+		{"series header", seriesHeaderSQL(false), []any{series}},
+		{"series header, v7", seriesHeaderSQL(true), []any{series}},
 		{"series name", seriesNameSQL, []any{series}},
 		{"works of a series", seriesWorksSQL, []any{series}},
 		{"authors of a series", seriesAuthorsSQL, []any{series}},
@@ -124,6 +125,26 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		// steps that matter instead.)
 		{"recap page count, pre-summaries", recapWorksOnlyCountSQL, nil},
 		{"character page count", characterWorksCountSQL, nil},
+		// The languages layer (schema_version 7). A work's series memberships in
+		// BOTH texts membershipColumns can choose - the plain id order and the
+		// primary-first one - then each family's translation links (both
+		// directions in one query; TestReverseTranslationsUseTheTargetIndex pins
+		// the plan positively too), the ordering-family read, which must reach the
+		// variants through idx_series_ordering_of rather than a scan of every
+		// series, and the two reads run once per snapshot: the primaries set (a
+		// range over idx_series_ordering_of) and the census (a walk of
+		// idx_works_language), neither of which may read its table on every
+		// artifact swap. Not here, like anyRedirectSQL and anyDescriptionSQL before
+		// them: anyTranslationSQL, an EXISTS that stops at the first row whatever
+		// it walks, and seriesShapeSQL, whose "SCAN series" reads no row at all
+		// (LIMIT 0 - its whole job is to fail the prepare on a missing column).
+		{"series of a work", seriesOfSQL(false), []any{wok}},
+		{"series of a work, primary first", seriesOfSQL(true), []any{wok}},
+		{"translations of a work", workTranslationsSQL, []any{work}},
+		{"translations of a series", seriesTranslationsSQL, []any{series}},
+		{"ordering family", seriesOrderingFamilySQL, []any{series}},
+		{"ordering primaries", orderingPrimariesSQL, nil},
+		{"languages census", languageCensusSQL, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -150,7 +171,8 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 	}{
 		{"works by id", ids, worksByIDSQL},
 		{"authors by work", ids, authorsByWorkSQL},
-		{"first series by work", ids, firstSeriesByWorkSQL},
+		{"first series by work", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, false) }},
+		{"first series by work, primary first", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, true) }},
 		{"card facts by work", ids, cardFactsByWorkSQL},
 		// One search page's per-kind reads: a scoped page is 100% one kind, so a
 		// per-hit query here would be a whole page of sequential round-trips.
@@ -277,4 +299,31 @@ func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
 		}
 	}
 	t.Errorf("no indexed SEARCH of works in the exact-title plan: %s", joined)
+}
+
+// TestReverseTranslationsUseTheTargetIndex pins the translation reads POSITIVELY.
+// assertNoFullScan cannot see their failure mode: with idx_translations_target
+// not covering the id, the planner (no sqlite_stat1 in a built artifact) reads
+// the primary key as a covering index on its KIND prefix alone - a SEARCH, so the
+// guard passes - which walks every translation link of the family to answer for
+// one record. What must hold is that the reverse arm looks the target up in the
+// covering index, and that the two arms MERGE in index order rather than sorting.
+func TestReverseTranslationsUseTheTargetIndex(t *testing.T) {
+	snap := snapshotFor(t, languagesCatalog())
+	for name, query := range map[string]string{
+		"translations of a work":   workTranslationsSQL,
+		"translations of a series": seriesTranslationsSQL,
+	} {
+		t.Run(name, func(t *testing.T) {
+			plan := queryPlan(t, snap, query, "book-one")
+			joined := strings.Join(plan, " | ")
+			if !strings.Contains(joined, "SEARCH t USING COVERING INDEX idx_translations_target (kind=? AND target=?)") {
+				t.Errorf("the reverse translation arm does not look the target up in its covering index: %s", joined)
+			}
+			if !strings.Contains(joined, "MERGE (UNION ALL)") || strings.Contains(joined, "TEMP B-TREE") {
+				t.Errorf("the two directions are sorted rather than merged in index order: %s", joined)
+			}
+			t.Logf("plan -> %s", joined)
+		})
+	}
 }

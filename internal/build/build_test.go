@@ -121,8 +121,15 @@ func fixtureCatalog() *model.Catalog {
 
 func buildFixture(t *testing.T) *sql.DB {
 	t.Helper()
+	return buildDB(t, fixtureCatalog())
+}
+
+// buildDB builds cat's artifact at a fixed timestamp and opens it, closing the
+// handle when the test ends.
+func buildDB(t *testing.T, cat *model.Catalog) *sql.DB {
+	t.Helper()
 	out := filepath.Join(t.TempDir(), "meta.sqlite")
-	if err := Build(fixtureCatalog(), out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)); err != nil {
+	if err := Build(cat, out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)); err != nil {
 		t.Fatal(err)
 	}
 	db, err := sql.Open("sqlite", out)
@@ -133,10 +140,34 @@ func buildFixture(t *testing.T) *sql.DB {
 	return db
 }
 
+// triples reads every row of a three-string-column query, in the order the
+// query returns them - which, with no ORDER BY, is the order the rows were
+// inserted in: what the determinism tests pin.
+func triples(t *testing.T, db *sql.DB, query string) [][3]string {
+	t.Helper()
+	rows, err := db.Query(query)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	var got [][3]string
+	for rows.Next() {
+		var r [3]string
+		if err := rows.Scan(&r[0], &r[1], &r[2]); err != nil {
+			t.Fatal(err)
+		}
+		got = append(got, r)
+	}
+	if err := rows.Err(); err != nil {
+		t.Fatal(err)
+	}
+	return got
+}
+
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":     "6",
+		"schema_version":     "7",
 		"built_at":           "2026-07-11T00:00:00Z",
 		"count_works":        "2",
 		"count_recordings":   "2",
@@ -631,36 +662,15 @@ func TestBuildIgnoresWorkCredits(t *testing.T) {
 // unchanged table produces byte-identical rows however the map was walked. That
 // determinism is what makes the binary delta between two releases small.
 func TestBuildRedirects(t *testing.T) {
-	db := buildFixture(t)
-	rows, err := db.Query(`SELECT kind, old_slug, new_slug FROM redirects`)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { _ = rows.Close() }()
-	var got [][3]string
-	for rows.Next() {
-		var r [3]string
-		if err := rows.Scan(&r[0], &r[1], &r[2]); err != nil {
-			t.Fatal(err)
-		}
-		got = append(got, r)
-	}
-	if err := rows.Err(); err != nil {
-		t.Fatal(err)
-	}
+	got := triples(t, buildFixture(t), `SELECT kind, old_slug, new_slug FROM redirects`)
 	want := [][3]string{
 		{"people", "andy-weir-author", "andy-weir"},
 		{"series", "stormlight-archive", "the-stormlight-archive"},
 		{"works", "project-hail-mary-2", "project-hail-mary"},
 		{"works", "the-way-of-kings-audiobook", "the-way-of-kings"},
 	}
-	if len(got) != len(want) {
-		t.Fatalf("redirects = %v, want %v", got, want)
-	}
-	for i := range want {
-		if got[i] != want[i] {
-			t.Errorf("redirects[%d] = %v, want %v", i, got[i], want[i])
-		}
+	if !slices.Equal(got, want) {
+		t.Errorf("redirects = %v, want %v", got, want)
 	}
 }
 

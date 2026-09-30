@@ -453,7 +453,7 @@ func TestGuideSitemapsSkipACatalogueWithNoSidecars(t *testing.T) {
 // advertises no guide shards at all.
 func TestGuideSitemapsTolerateOlderArtifacts(t *testing.T) {
 	t.Run("v2, before recap summaries", func(t *testing.T) {
-		ts := downgradedServer(t, guideCatalog(), 2, "work_genres", "recap_summaries", "redirects")
+		ts := downgradedServer(t, downgradedDB(t, guideCatalog(), 2, "work_genres", "recap_summaries", "redirects"))
 		code, body, _ := getSitemap(t, ts.URL, "/sitemaps/recaps-0.xml")
 		if code != http.StatusOK {
 			t.Fatalf("recaps shard on a v2 artifact = %d, want 200\n%s", code, body)
@@ -474,8 +474,8 @@ func TestGuideSitemapsTolerateOlderArtifacts(t *testing.T) {
 	})
 
 	t.Run("v1, before the sidecars", func(t *testing.T) {
-		ts := downgradedServer(t, guideCatalog(), 1,
-			"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "redirects")
+		ts := downgradedServer(t, downgradedDB(t, guideCatalog(), 1,
+			"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "redirects"))
 		_, index, _ := getSitemap(t, ts.URL, sitemapIndexPath)
 		for _, absent := range []string{"/sitemaps/recaps-", "/sitemaps/characters-"} {
 			if strings.Contains(index, absent) {

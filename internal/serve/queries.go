@@ -38,6 +38,11 @@ const latestSeriesCap = 2
 // latestWorks returns up to limit work cards ordered by added_at DESC (NULLS
 // LAST), then title, with at most latestSeriesCap works from any one series
 // (keyed by the work's first series membership, the one the card carries).
+// The key is that membership's ordering FAMILY - its ordering_of where it is a
+// variant, else its own id (model.Series.OrderingPrimary) - so two reading
+// orders of one franchise count as ONE series: a prequel that sits only in the
+// chronological variant shares the cap with the primary's volumes rather than
+// opening a bucket of its own.
 // Works with no series are each their own bucket and are never capped. It
 // over-fetches candidate rows so capped skips still leave enough to fill the
 // page; the SQL ordering (id as the final tie-break) keeps the walk
@@ -73,10 +78,11 @@ func (s *snapshot) latestWorks(limit int) ([]*workCard, error) {
 			break
 		}
 		if sr := series[id]; sr != nil {
-			if perSeries[sr.ID] >= latestSeriesCap {
+			family := (&model.Series{ID: sr.ID, OrderingOf: sr.OrderingOf}).OrderingPrimary()
+			if perSeries[family] >= latestSeriesCap {
 				continue
 			}
-			perSeries[sr.ID]++
+			perSeries[family]++
 		}
 		winners = append(winners, id)
 	}
@@ -176,20 +182,27 @@ type descriptionOut struct {
 }
 
 type workDetail struct {
-	ID             string            `json:"id"`
-	Title          string            `json:"title"`
-	Subtitle       string            `json:"subtitle,omitempty"`
-	Authors        []personRef       `json:"authors"`
-	Language       string            `json:"language"`
-	FirstPublished string            `json:"first_published,omitempty"`
-	Description    string            `json:"description,omitempty"`
-	Genres         []string          `json:"genres,omitempty"`
-	Series         []seriesRef       `json:"series"`
-	Xref           *workXref         `json:"xref,omitempty"`
-	Recordings     []recordingDetail `json:"recordings"`
-	Characters     []characterOut    `json:"characters,omitempty"`
-	Recaps         []recapOut        `json:"recaps,omitempty"`
-	RecapSummary   *recapSummaryOut  `json:"recap_summary,omitempty"`
+	ID             string      `json:"id"`
+	Title          string      `json:"title"`
+	Subtitle       string      `json:"subtitle,omitempty"`
+	Authors        []personRef `json:"authors"`
+	Language       string      `json:"language"`
+	FirstPublished string      `json:"first_published,omitempty"`
+	Description    string      `json:"description,omitempty"`
+	Genres         []string    `json:"genres,omitempty"`
+	Series         []seriesRef `json:"series"`
+	// TranslationOf is the work(s) this one translates, and Translations the
+	// works that translate it - the two directions of the translations table,
+	// each in work id order and omitted when empty (or the artifact predates
+	// languagesSchemaVersion). A translated omnibus names every original it
+	// collects, so TranslationOf is a list even though it almost always holds one.
+	TranslationOf []workTranslation `json:"translation_of,omitempty"`
+	Translations  []workTranslation `json:"translations,omitempty"`
+	Xref          *workXref         `json:"xref,omitempty"`
+	Recordings    []recordingDetail `json:"recordings"`
+	Characters    []characterOut    `json:"characters,omitempty"`
+	Recaps        []recapOut        `json:"recaps,omitempty"`
+	RecapSummary  *recapSummaryOut  `json:"recap_summary,omitempty"`
 	// CommunityDescription is the CC BY-SA spoiler-free description. Named apart
 	// from Description above, which is the CC0 work record's own field - see
 	// descriptionOut.
@@ -220,6 +233,9 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 		return nil, err
 	}
 	if d.Series, err = s.seriesOf(id); err != nil {
+		return nil, err
+	}
+	if d.TranslationOf, d.Translations, err = s.workTranslations(id); err != nil {
 		return nil, err
 	}
 
@@ -335,6 +351,16 @@ const redirectSchemaVersion = 5
 // without the table fails to open (loadStats, the redirects precedent).
 const descriptionSchemaVersion = 6
 
+// languagesSchemaVersion is the artifact schema_version that first carried the
+// LANGUAGES layer: the translations table (translation_of links, works and
+// series), the series table's derived language, ordering and ordering_of
+// columns, and idx_works_language. A newer binary serving an older release must
+// degrade to "no data" - no translation lists, no series language or ordering
+// family, no stats census, series memberships in plain id order - so every read
+// of those gates on this version, and an artifact CLAIMING it without the table
+// or the columns fails to open (loadStats, the redirects precedent).
+const languagesSchemaVersion = 7
+
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
 	// snapshot (see snapshot.hasRedirects).
@@ -349,7 +375,109 @@ const (
 	// artifact's primary key, so it is a point lookup - which is what lets it sit
 	// on the miss path of every id route without costing anything measurable.
 	redirectTargetSQL = `SELECT new_slug FROM redirects WHERE kind=? AND old_slug=?`
+
+	// anyTranslationSQL settles snapshot.hasTranslations once per snapshot and
+	// proves the table a version 7 artifact claims.
+	anyTranslationSQL = `SELECT EXISTS(SELECT 1 FROM translations)`
+	// seriesShapeSQL proves the three series columns a version 7 artifact claims -
+	// every one the gated reads name - and reads no row (LIMIT 0): a column that is
+	// missing fails the PREPARE, which is the whole check.
+	seriesShapeSQL = `SELECT language, ordering, ordering_of FROM series LIMIT 0`
+	// orderingPrimariesSQL is the set of series some variant names as its primary,
+	// read once per snapshot (snapshot.orderingPrimaries) as a NOT NULL range over
+	// idx_series_ordering_of, never a read of the series table.
+	orderingPrimariesSQL = `SELECT DISTINCT ordering_of FROM series WHERE ordering_of IS NOT NULL`
+	// languageCensusSQL is the stats languages census, read once per snapshot. It
+	// walks idx_works_language as a covering index; only the handful of result
+	// rows are sorted.
+	languageCensusSQL = `SELECT language, COUNT(*) FROM works GROUP BY language ORDER BY COUNT(*) DESC, language`
 )
+
+// The translations reads, ONE query per record for both directions of its links:
+// the first arm is "what does this translate" (direction 0) and walks the primary
+// key (kind, id, target); the second is "what translates this" (direction 1) and
+// walks idx_translations_target (kind, target, id), which COVERS it. kind is the
+// family spelling, as in the redirects table, and ?1 is the record's id. Each arm
+// joins the family it names, so a row pointing at a record the artifact does not
+// carry (which pkg/check refuses, but an artifact is data) is dropped rather than
+// served as a link to nothing.
+//
+// The second column is the OTHER record's id read off the translations row (t.target
+// in the first arm, t.id in the second) rather than off the joined record, because
+// that is what each arm's index is already ordered by: ORDER BY 2 then merges the
+// two arms with no sort at all (MERGE (UNION ALL), pinned by
+// TestReverseTranslationsUseTheTargetIndex), and each direction comes out in id
+// order once translationLinks splits them. A series' derived language is NULL on a
+// tie, so its arm COALESCEs it and both families scan three plain strings.
+const (
+	workTranslationsSQL = `SELECT 0, t.target, w.title, w.language FROM translations t JOIN works w ON w.id = t.target ` +
+		`WHERE t.kind = 'works' AND t.id = ?1 ` +
+		`UNION ALL SELECT 1, t.id, w.title, w.language FROM translations t JOIN works w ON w.id = t.id ` +
+		`WHERE t.kind = 'works' AND t.target = ?1 ORDER BY 2`
+	seriesTranslationsSQL = `SELECT 0, t.target, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.target ` +
+		`WHERE t.kind = 'series' AND t.id = ?1 ` +
+		`UNION ALL SELECT 1, t.id, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.id ` +
+		`WHERE t.kind = 'series' AND t.target = ?1 ORDER BY 2`
+)
+
+// workTranslation is one end of a work's translation link: the other work, its
+// title and its language tag (always present - every work states one).
+type workTranslation struct {
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	Language string `json:"language"`
+}
+
+// seriesTranslation is one end of a series' translation link. Language is the
+// other series' DERIVED language, omitted where its members tie.
+type seriesTranslation struct {
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	Language string `json:"language,omitempty"`
+}
+
+// translationLinks runs one family's translations query for id and splits it by
+// direction: of is what id translates, by is what translates id, each in id order.
+// mk builds the family's own shape from (id, title or name, language). It answers
+// nil, nil without a query while the artifact holds no translation at all (which
+// includes every artifact older than languagesSchemaVersion).
+func translationLinks[T any](s *snapshot, query, id string, mk func(id, label, language string) T) (of, by []T, err error) {
+	if !s.hasTranslations {
+		return nil, nil, nil
+	}
+	rows, err := s.db.Query(query, id)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	for rows.Next() {
+		var dir int
+		var other, label, lang string
+		if err := rows.Scan(&dir, &other, &label, &lang); err != nil {
+			return nil, nil, err
+		}
+		if dir == 0 {
+			of = append(of, mk(other, label, lang))
+		} else {
+			by = append(by, mk(other, label, lang))
+		}
+	}
+	return of, by, rows.Err()
+}
+
+// workTranslations returns both directions of a work's translation links.
+func (s *snapshot) workTranslations(workID string) (of, by []workTranslation, err error) {
+	return translationLinks(s, workTranslationsSQL, workID, func(id, title, lang string) workTranslation {
+		return workTranslation{ID: id, Title: title, Language: lang}
+	})
+}
+
+// seriesTranslations is workTranslations for a series.
+func (s *snapshot) seriesTranslations(seriesID string) (of, by []seriesTranslation, err error) {
+	return translationLinks(s, seriesTranslationsSQL, seriesID, func(id, name, lang string) seriesTranslation {
+		return seriesTranslation{ID: id, Name: name, Language: lang}
+	})
+}
 
 // redirectTarget returns the live slug that the retired slug id now stands for
 // in namespace kind, or "" when nothing does - including on any artifact older
@@ -539,9 +667,18 @@ func (s *snapshot) descriptionsForWorks(workIDs []string) (map[string]*descripti
 	return out, rows.Err()
 }
 
+// seriesOfSQL is a work's series memberships, for the work detail, in the order
+// membershipColumns chooses - the order firstSeriesByWorkSQL cards by, so series[0]
+// of the work page, its JSON-LD isPartOf and the card agree about which series a
+// work is in.
+func seriesOfSQL(orderings bool) string {
+	orderingOf, order := membershipColumns(orderings)
+	return `SELECT s.id, s.name, sw.position, ` + orderingOf + ` FROM series_works sw JOIN series s ON s.id = sw.series_id ` +
+		`WHERE sw.work_id=? ORDER BY ` + order
+}
+
 func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {
-	rows, err := s.db.Query(
-		`SELECT s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id WHERE sw.work_id=? ORDER BY s.id`, workID)
+	rows, err := s.db.Query(seriesOfSQL(s.hasOrderings()), workID)
 	if err != nil {
 		return nil, err
 	}
@@ -549,9 +686,11 @@ func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {
 	out := []seriesRef{}
 	for rows.Next() {
 		var sr seriesRef
-		if err := rows.Scan(&sr.ID, &sr.Name, &sr.Position); err != nil {
+		var orderingOf sql.NullString
+		if err := rows.Scan(&sr.ID, &sr.Name, &sr.Position, &orderingOf); err != nil {
 			return nil, err
 		}
+		sr.OrderingOf = orderingOf.String
 		out = append(out, sr)
 	}
 	return out, rows.Err()
@@ -868,14 +1007,38 @@ type seriesEntry struct {
 // is the unpaged membership count and Limit/Offset echo the window that was
 // applied (Limit 0 = the whole series, the default - see snapshot.series). The
 // three fields are additive; a consumer reading only works is unaffected.
+//
+// The LANGUAGES fields are additive and all omitempty, and every one is absent on
+// an artifact older than languagesSchemaVersion: Language is DERIVED at build
+// (the strict plurality of the members' primary subtags, absent on a tie), Ordering and
+// OrderingOf are what the record states, TranslationOf/Translations are the two
+// directions of the series' translation links, and Orderings is the whole
+// ordering FAMILY this series belongs to - the primary first, then its variants
+// in id order - present on the primary and on every variant alike, and omitted
+// when the series has no variant ordering at all.
 type seriesDetail struct {
-	ID         string        `json:"id"`
-	Name       string        `json:"name"`
-	Authors    []personRef   `json:"authors"`
-	Works      []seriesEntry `json:"works"`
-	WorksTotal int           `json:"works_total"`
-	Limit      int           `json:"limit"`
-	Offset     int           `json:"offset"`
+	ID            string              `json:"id"`
+	Name          string              `json:"name"`
+	Language      string              `json:"language,omitempty"`
+	Ordering      string              `json:"ordering,omitempty"`
+	OrderingOf    string              `json:"ordering_of,omitempty"`
+	Authors       []personRef         `json:"authors"`
+	Works         []seriesEntry       `json:"works"`
+	WorksTotal    int                 `json:"works_total"`
+	Limit         int                 `json:"limit"`
+	Offset        int                 `json:"offset"`
+	TranslationOf []seriesTranslation `json:"translation_of,omitempty"`
+	Translations  []seriesTranslation `json:"translations,omitempty"`
+	Orderings     []seriesOrdering    `json:"orderings,omitempty"`
+}
+
+// seriesOrdering is one member of a series' ordering family: the series and the
+// reading order its positions state (omitted where the record states none - a
+// primary need not say it is the publication order).
+type seriesOrdering struct {
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	Ordering string `json:"ordering,omitempty"`
 }
 
 // The series detail queries. seriesWorksSQL joins works so WorksTotal counts
@@ -883,7 +1046,6 @@ type seriesDetail struct {
 // the artifact does not carry is dropped from the list, so counting it in the
 // total would report a page shorter than it claims.
 const (
-	seriesHeaderSQL = `SELECT id, name FROM series WHERE id=?`
 	// seriesNameSQL is the header without the id, for the caller that already
 	// holds it (see seriesName). Reading a column back to discard it is a scan
 	// target a reader has to stop and account for.
@@ -892,7 +1054,23 @@ const (
 		`WHERE sa.series_id=? ORDER BY sa.ord`
 	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
 		`WHERE sw.series_id=?`
+	// seriesOrderingFamilySQL reads a whole ordering family from its PRIMARY's id
+	// (?1): the primary by its primary key and every variant naming it through
+	// idx_series_ordering_of, the primary first (its ordering_of is NULL -
+	// pkg/check keeps a family one hop deep), then the variants in id order.
+	seriesOrderingFamilySQL = `SELECT id, name, ordering FROM series WHERE id = ?1 OR ordering_of = ?1 ` +
+		`ORDER BY (ordering_of IS NOT NULL), id`
 )
+
+// seriesHeaderSQL is the series page's header row. A languages-era artifact
+// carries three more columns on the same primary-key row; an older one has none of
+// them, so its text selects NULL in their place and both scan into one shape.
+func seriesHeaderSQL(languages bool) string {
+	if !languages {
+		return `SELECT id, name, NULL, NULL, NULL FROM series WHERE id=?`
+	}
+	return `SELECT id, name, language, ordering, ordering_of FROM series WHERE id=?`
+}
 
 // seriesName reads a series' name and nothing else, reporting whether the series
 // exists at all. It is what a caller that does not want the MEMBERSHIP asks (the
@@ -972,7 +1150,10 @@ func (s *snapshot) watchMembers(seriesID, seriesName string) ([]watchMember, err
 // so a window is applied AFTER sorting, not by SQL.
 func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 	var d seriesDetail
-	err := s.db.QueryRow(seriesHeaderSQL, id).Scan(&d.ID, &d.Name)
+	var lang, ordering, orderingOf sql.NullString
+	err := s.db.QueryRow(seriesHeaderSQL(s.schemaVersion >= languagesSchemaVersion), id).
+		Scan(&d.ID, &d.Name, &lang, &ordering, &orderingOf)
+	d.Language, d.Ordering, d.OrderingOf = lang.String, ordering.String, orderingOf.String
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
@@ -980,6 +1161,12 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 		return nil, err
 	}
 	d.Limit, d.Offset = limit, offset
+	if d.TranslationOf, d.Translations, err = s.seriesTranslations(id); err != nil {
+		return nil, err
+	}
+	if d.Orderings, err = s.orderingFamily(&d); err != nil {
+		return nil, err
+	}
 
 	arows, err := s.db.Query(seriesAuthorsSQL, id)
 	if err != nil {
@@ -1026,6 +1213,44 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 		}
 	}
 	return &d, nil
+}
+
+// orderingFamily returns the ordering family d belongs to (see seriesDetail), or
+// nil when it has none. Only a variant (one naming a primary) or a series some
+// variant names (snapshot.orderingPrimaries) HAS a family, so every other series -
+// all of them on an artifact carrying no ordering, and on every artifact older than
+// languagesSchemaVersion - is answered without a query.
+func (s *snapshot) orderingFamily(d *seriesDetail) ([]seriesOrdering, error) {
+	if d.OrderingOf == "" && !s.orderingPrimaries[d.ID] {
+		return nil, nil
+	}
+	// The family's primary is model.Series.OrderingPrimary's answer, asked of the
+	// two fields the header read, so "which series heads the family" has one
+	// definition across check, repair and serve.
+	primary := (&model.Series{ID: d.ID, OrderingOf: d.OrderingOf}).OrderingPrimary()
+	rows, err := s.db.Query(seriesOrderingFamilySQL, primary)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	var out []seriesOrdering
+	for rows.Next() {
+		var o seriesOrdering
+		var ordering sql.NullString
+		if err := rows.Scan(&o.ID, &o.Name, &ordering); err != nil {
+			return nil, err
+		}
+		o.Ordering = ordering.String
+		out = append(out, o)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	// A primary alone is no family: the list exists to offer another order.
+	if len(out) < 2 {
+		return nil, nil
+	}
+	return out, nil
 }
 
 // parsePositionRange reads a series position's numeric span. It is

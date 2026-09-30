@@ -27,7 +27,9 @@ func SameLanguage(a, b string) bool {
 // fact nobody stated). A series has no language field
 // of its own, so this is the one definition every reader shares - pkg/check's
 // link rules, internal/repair's plan-time link judgement, internal/issueform's
-// link corrections and internal/audit's series index.
+// link corrections, internal/audit's series index and internal/build, which
+// writes it into the artifact's series.language column for every reader of the
+// artifact.
 //
 // langOf answers a work id's language tag, "" when the work is unknown or
 // states none. Every membership counts, so a work listed at two positions
