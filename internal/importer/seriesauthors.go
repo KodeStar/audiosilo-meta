@@ -120,6 +120,10 @@ type SeriesRow struct {
 	titles []string
 	// publishers are the row's publisher names.
 	publishers []string
+	// language is the row's language as a primary subtag (model.PrimarySubtag),
+	// "" when the row states none the importer knows: the language half of the
+	// resolution (languageCloses) never judges an unknown.
+	language string
 
 	// The comparison forms, computed once per row however many series it is
 	// judged against (prepare).
@@ -132,9 +136,10 @@ type SeriesRow struct {
 // SeriesRowFor is the one SeriesRow builder every writer uses: names are the
 // row's author credits (already cleaned by the caller's own credit pipeline),
 // each at the person slug slugOf resolves it to (nil: the name's own person
-// slug); titles are its title spellings and publisher its publisher of record.
-func SeriesRowFor(names, titles []string, publisher string, slugOf func(name string) string) *SeriesRow {
-	row := &SeriesRow{titles: titles}
+// slug); titles are its title spellings, publisher its publisher of record and
+// language its BCP-47 language tag ("" when it states none).
+func SeriesRowFor(names, titles []string, publisher, language string, slugOf func(name string) string) *SeriesRow {
+	row := &SeriesRow{titles: titles, language: model.PrimarySubtag(language)}
 	for _, name := range names {
 		var slug string
 		if slugOf != nil {
@@ -483,11 +488,15 @@ var nonIndividualAuthors = func() map[string]bool {
 func individualAuthor(slug string) bool { return slug != "" && !nonIndividualAuthors[slug] }
 
 // SeriesAuthorIndex is the catalogue's series evidence: every series' member
-// authors, and the catalogue-wide publishers the publisher arm ignores. Every
-// writer resolves through one (catalogue).
+// authors, its derived language, and the catalogue-wide publishers the
+// publisher arm ignores. Every writer resolves through one (catalogue).
 type SeriesAuthorIndex struct {
 	series map[string]*seriesAuthors
 	large  map[string]bool
+	// language is each series' DERIVED language (model.SeriesLanguageOf over its
+	// catalogued members - the one definition pkg/check, internal/build and
+	// internal/audit read), holding only the series whose language is known.
+	language map[string]string
 }
 
 // NewSeriesAuthorIndex builds the index over cat. A nil catalogue is an empty
@@ -499,7 +508,7 @@ func NewSeriesAuthorIndex(cat *model.Catalog) *SeriesAuthorIndex {
 // newSeriesAuthorIndex builds the index in one pass over the catalogue; names
 // maps a person slug to its record's name (nil reads cat.People).
 func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAuthorIndex {
-	ix := &SeriesAuthorIndex{series: map[string]*seriesAuthors{}}
+	ix := &SeriesAuthorIndex{series: map[string]*seriesAuthors{}, language: map[string]string{}}
 	if cat == nil {
 		return ix
 	}
@@ -552,6 +561,9 @@ func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAu
 			sa.add(w.ID, people, pubs[w.ID])
 		}
 		ix.series[s.ID] = sa
+		if lang := model.SeriesLanguageOf(s.Works, works); lang != "" {
+			ix.language[s.ID] = lang
+		}
 	}
 	ix.large = largeHouses(counts, len(cat.Works))
 	return ix
@@ -559,11 +571,12 @@ func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAu
 
 // catalogue is the resolution's view of the catalogue: stored reports the name a
 // series slug holds and reds is the tombstone table. A nil index judges no
-// authors (the name-only walk).
+// authors and no languages (the name-only walk).
 func (ix *SeriesAuthorIndex) catalogue(stored func(slug string) (string, bool), reds model.Redirects) seriesCatalogue {
 	cat := seriesCatalogue{stored: stored, redirects: reds}
 	if ix != nil {
 		cat.evidence = func(slug string) *seriesAuthors { return ix.series[slug] }
+		cat.language = ix.language
 		cat.large = ix.large
 	}
 	return cat

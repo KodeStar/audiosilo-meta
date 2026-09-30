@@ -435,7 +435,7 @@ func TestUnplacedClaimsDoNotTakeTheBareSlug(t *testing.T) {
 }
 
 // testRow is a SeriesRow crediting names, with no title or publisher.
-func testRow(names ...string) *SeriesRow { return SeriesRowFor(names, nil, "", nil) }
+func testRow(names ...string) *SeriesRow { return SeriesRowFor(names, nil, "", "", nil) }
 
 // samePersonName is personForm.same over two bare names.
 func samePersonName(a, b string) bool {

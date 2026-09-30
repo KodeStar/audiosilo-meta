@@ -87,3 +87,33 @@ func TestAddWorkFindsTheAuthorsOwnSeries(t *testing.T) {
 		t.Error("Hawke's own volume did not extend her series")
 	}
 }
+
+// The resolution's LANGUAGE half reaches the form too (importer seriesresolve.go's
+// languageCloses): a German submission of Hawke's own next volume does not extend
+// her English "Lost Fleet" - it composes the German series at the next free
+// chain slug, where the bulk importer would mint it, and says why; the same
+// submission in English extends hers.
+func TestAddWorkDoesNotExtendAnotherLanguagesSeries(t *testing.T) {
+	dir := formLostFleetTree(t, nil)
+	body := strings.Replace(dupWorkBody("Die Abtrünnige", "Sarah Hawke", "Nate Narrator", "Lost Fleet", "4"),
+		field(fWorkLanguage, "en"), field(fWorkLanguage, "de"), 1)
+	res := processAddWork(t, dir, body)
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if strings.Contains(readFile(t, dir, "series/lo/lost-fleet.json"), "die-abtrunnige") {
+		t.Error("the English lost-fleet was extended with a German book")
+	}
+	if mint := readFile(t, dir, "series/lo/lost-fleet-2.json"); !strings.Contains(mint, `"work": "die-abtrunnige"`) {
+		t.Errorf("the German series was not composed at lost-fleet-2:\n%s", mint)
+	}
+	if !anyContains(res.Messages, "lost-fleet is in another language (en)") {
+		t.Errorf("the verdict does not say why a new series was composed: %v", res.Messages)
+	}
+
+	dir = formLostFleetTree(t, nil)
+	res = processAddWork(t, dir, dupWorkBody("Renegade", "Sarah Hawke", "Nate Narrator", "Lost Fleet", "4"))
+	if res.Status != StatusOK || !strings.Contains(readFile(t, dir, "series/lo/lost-fleet.json"), `"work": "renegade"`) {
+		t.Errorf("the English volume did not extend the English series: %v", res.Messages)
+	}
+}

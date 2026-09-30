@@ -477,7 +477,9 @@ func TestLibexSelectRefusesTakenPositions(t *testing.T) {
 		selectRow("B0RETAKE01", "Volume One Redux", "us", "english", seriesName, "1"),
 		// First-seen wins position 9; the different-titled row behind it loses.
 		selectRow("B0FIRST009", "Volume Nine", "us", "english", seriesName, "9"),
-		selectRow("B0SECOND09", "Neunter Band", "de", "german", seriesName, "9"),
+		// (English, so the language rule - TestLibexSelectRefusesAnotherLanguagesSeries -
+		// does not decide it first.)
+		selectRow("B0SECOND09", "The Ninth Volume", "de", "english", seriesName, "9"),
 		// The sibling row of the SAME title shares the slot legitimately.
 		selectRow("B0FIRST09B", "Volume Nine", "gb", "english", seriesName, "9"),
 	}

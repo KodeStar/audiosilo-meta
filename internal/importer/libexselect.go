@@ -525,9 +525,14 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState, attachEditions 
 	if !idx.namesACatalogueChain(refs) {
 		return selectedRow{}, asin, reasonNoSeries
 	}
+	// So is one in another language (languageCloses): the German "Orphan X" is
+	// not completed by an English volume of it.
 	v, book := idx.match(idx.libexBook(e, asin))
 	if !v.ok {
-		if v.othersOnly {
+		switch {
+		case v.otherLanguage:
+			return selectedRow{}, asin, reasonSeriesLanguage
+		case v.othersOnly:
 			return selectedRow{}, asin, reasonSeriesAuthors
 		}
 		return selectedRow{}, asin, reasonNoSeries
@@ -842,8 +847,10 @@ type seriesVerdict struct {
 	ref  seriesRef
 	ok   bool
 	// othersOnly reports, when nothing matched, that some claim named a
-	// catalogued series belonging to other authors.
-	othersOnly bool
+	// catalogued series belonging to other authors or in another language, and
+	// otherLanguage that at least one of those was closed by its language - the
+	// more specific reason, so it is the one reported.
+	othersOnly, otherLanguage bool
 	// mints reports that some claim the importer would ACT on resolves to no
 	// catalogued series, so importing the row would create one.
 	mints bool
@@ -881,6 +888,11 @@ func verdictOf(b sourceBook) seriesVerdict {
 		}
 		if !v.ok && len(r.target.stepped) > 0 {
 			v.othersOnly = true
+			for _, s := range r.target.stepped {
+				if s.language != "" {
+					v.otherLanguage = true
+				}
+			}
 		}
 	}
 	return v
