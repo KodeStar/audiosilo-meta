@@ -29,6 +29,7 @@ import {
   NOTIFY_INTRO_NOTES,
   NOTIFY_OPTIONS,
   notifyDocHref,
+  optionTags,
 } from '../../lib/notify-options'
 import { runPool, SERIES_POOL } from '../../lib/resolve-books'
 import { flattenAcrossSeries, type FlatEntry } from '../../lib/watch-flat'
@@ -59,7 +60,7 @@ import {
   type WatchlistRow,
 } from '../../lib/watchlist'
 import { useHashTab } from '../use-hash-tab'
-import { Badge, BTN_SECONDARY, Icon, TabButton, TEXT_LINK } from '../ui'
+import { Badge, BTN_PRIMARY, BTN_SECONDARY, Icon, TabButton, TEXT_LINK } from '../ui'
 import { NewPill, OwnCheckbox, ReleaseLine, SkipButton } from './entry-ui'
 import LibraryImport from './LibraryImport'
 import { useWatchlist, type WatchlistHandle } from './use-watchlist'
@@ -563,15 +564,32 @@ function NotificationFeed({
       </h3>
       <ul className="mt-3 space-y-3">
         {NOTIFY_OPTIONS.map((option) => (
-          <li key={option.id} className="rounded-xl border border-edge bg-raised p-4">
+          <li
+            key={option.id}
+            className={`rounded-xl border bg-raised p-4 ${option.recommended ? 'border-pink-500' : 'border-edge'}`}
+          >
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-medium text-hi">{option.label}</span>
-              {option.needsAccount ? <Badge>needs an account</Badge> : null}
+              {optionTags(option).map((tag) => (
+                <Badge key={tag}>{tag}</Badge>
+              ))}
             </div>
             <p className="mt-1 text-sm leading-relaxed text-body">{option.blurb}</p>
-            <a href={notifyDocHref(option.id)} className={`${TEXT_LINK} mt-2 inline-block text-sm`}>
-              Steps
-            </a>
+            <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+              {option.action ? (
+                <a
+                  href={option.action.href}
+                  target="_blank"
+                  rel="noopener"
+                  className={`${BTN_PRIMARY} text-sm`}
+                >
+                  {option.action.label}
+                </a>
+              ) : null}
+              <a href={notifyDocHref(option.id)} className={`${TEXT_LINK} text-sm`}>
+                Steps
+              </a>
+            </div>
           </li>
         ))}
       </ul>

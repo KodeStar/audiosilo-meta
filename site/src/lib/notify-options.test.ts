@@ -1,9 +1,11 @@
 import { describe, it, expect } from 'vitest'
+import { DISCORD_INVITE } from './community'
 import {
   FEED_LABELS,
   NOTIFY_INTRO_NOTES,
   NOTIFY_OPTIONS,
   notifyDocHref,
+  optionTags,
   type NotifyOption,
 } from './notify-options'
 
@@ -13,6 +15,7 @@ function everyString(): string[] {
   const out: string[] = [...NOTIFY_INTRO_NOTES]
   for (const option of NOTIFY_OPTIONS) {
     out.push(option.id, option.label, option.blurb, ...option.steps, ...(option.notes ?? []))
+    if (option.action) out.push(option.action.label)
   }
   return out
 }
@@ -33,9 +36,22 @@ describe('NOTIFY_OPTIONS', () => {
     for (const option of NOTIFY_OPTIONS) expect(option.id).toMatch(/^[a-z-]+$/)
   })
 
-  it('leads with the option that needs no account and no app', () => {
-    expect(NOTIFY_OPTIONS[0].id).toBe('calendar')
-    expect(NOTIFY_OPTIONS[0].needsAccount).toBe(false)
+  it('leads with the one recommended option, the Discord bot we run', () => {
+    const recommended = NOTIFY_OPTIONS.filter((option) => option.recommended)
+    expect(recommended.map((option) => option.id)).toEqual(['audiosilo-discord'])
+    expect(NOTIFY_OPTIONS[0].id).toBe('audiosilo-discord')
+    expect(NOTIFY_OPTIONS[0].action?.href).toBe(DISCORD_INVITE)
+  })
+
+  it('follows it with the option that needs no account and no app', () => {
+    expect(NOTIFY_OPTIONS[1].id).toBe('calendar')
+    expect(NOTIFY_OPTIONS[1].needsAccount).toBe(false)
+  })
+
+  it('links every action to an https page', () => {
+    for (const option of NOTIFY_OPTIONS) {
+      if (option.action) expect(option.action.href, option.id).toMatch(/^https:\/\//)
+    }
   })
 
   it('gives every option a blurb for the picker and at least two concrete steps', () => {
@@ -59,17 +75,20 @@ describe('NOTIFY_OPTIONS', () => {
     for (const id of ['calendar', 'rss-app', 'email', 'self-hosted'] as const) {
       expect(byID(id).needsAccount, id).toBe(false)
     }
-    for (const id of ['telegram', 'slack', 'discord', 'automation'] as const) {
+    for (const id of ['audiosilo-discord', 'telegram', 'slack', 'discord', 'automation'] as const) {
       expect(byID(id).needsAccount, id).toBe(true)
     }
   })
 
   it('keeps the simple account-free options first, self-hosted being the deliberate exception', () => {
-    const firstAccount = NOTIFY_OPTIONS.findIndex((option) => option.needsAccount)
-    const lastFree = NOTIFY_OPTIONS.map((option) => option.needsAccount).lastIndexOf(false)
+    // The recommended option leads whatever it needs, so the ordering rule is
+    // about the rest.
+    const rest = NOTIFY_OPTIONS.filter((option) => !option.recommended)
+    const firstAccount = rest.findIndex((option) => option.needsAccount)
+    const lastFree = rest.map((option) => option.needsAccount).lastIndexOf(false)
     // self-hosted is the one deliberate exception: it needs no account, but it
     // needs a server, so it sits with the advanced options at the end.
-    expect(NOTIFY_OPTIONS[lastFree].id).toBe('self-hosted')
+    expect(rest[lastFree].id).toBe('self-hosted')
     expect(firstAccount).toBeGreaterThan(0)
   })
 
@@ -82,6 +101,14 @@ describe('NOTIFY_OPTIONS', () => {
     for (const text of everyString()) {
       expect(text, text).not.toMatch(/[\u2013\u2014]/)
     }
+  })
+})
+
+describe('optionTags', () => {
+  it('puts recommended before needs an account', () => {
+    expect(optionTags(byID('audiosilo-discord'))).toEqual(['recommended', 'needs an account'])
+    expect(optionTags(byID('telegram'))).toEqual(['needs an account'])
+    expect(optionTags(byID('calendar'))).toEqual([])
   })
 })
 

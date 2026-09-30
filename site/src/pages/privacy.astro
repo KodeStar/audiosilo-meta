@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro'
 import { LIBEX_BASE } from '../lib/libex'
+import { DISCORD_INVITE } from '../lib/community'
 
 const link = 'text-pink-500 underline underline-offset-2 transition-colors hover:text-pink-400'
 const code =
@@ -14,7 +15,7 @@ const code =
   <div class="container py-14 sm:py-16">
     <div class="reveal mx-auto max-w-3xl text-body">
       <h1 class="mb-1 text-4xl font-black tracking-tight text-hi">Privacy Policy</h1>
-      <p class="mb-8 text-dim">Last updated: 22 September 2026</p>
+      <p class="mb-8 text-dim">Last updated: 30 September 2026</p>
 
       <p class="mb-6 text-lg leading-relaxed">
         AudioSilo Meta is a <strong class="text-hi">public, open source audiobook metadata
@@ -51,7 +52,8 @@ const code =
           </li>
           <li>
             Your watchlist stays in <strong class="text-hi">your browser</strong> -
-            <span class={code}>/watching</span> sends nothing to the server.
+            <span class={code}>/watching</span> sends nothing to the server. The optional AudioSilo
+            Discord bot keeps only what you choose to send it.
           </li>
           <li>
             The database holds bibliographic facts about published books and the people credited on
@@ -113,6 +115,15 @@ const code =
         subscription, and appear in ordinary access logs like any other request. Whatever service
         you subscribe with - a feed reader, a calendar app, an automation service - sees that URL
         and the series it lists, and so does our access log each time that service fetches it.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        The one notification service we run ourselves is the bot on the
+        <a class={link} href={DISCORD_INVITE} target="_blank" rel="noopener">AudioSilo Discord</a>.
+        If you send it your feed URL, it stores your Discord user ID, that URL, whether you have
+        paused it, and the feed entries it has already sent you or is waiting to send, so it knows
+        what is new. Send it
+        <span class={code}>stop</span> to delete all of it; leaving the server removes it too. Your
+        messages are handled by Discord under its own privacy policy.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">

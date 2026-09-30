@@ -8,15 +8,21 @@
  * offer an option the docs page has no instructions for, which is the shape of
  * every "how do I actually use this" complaint the vague list it replaced got.
  *
- * The order is the recommendation order: simplest first, and everything that
- * needs no third-party account before everything that does. `needsAccount`
- * means an account with SOMEBODY ELSE (Telegram, Slack, Discord, IFTTT) - it is
- * never an account here, because there is no account here. Blogtrottr takes an
- * email address without one, so it is false.
+ * The order is the recommendation order. The ONE `recommended` option leads:
+ * the AudioSilo Discord bot (audiosilo-meta-bot), because it is the only option
+ * we run ourselves and it needs nothing set up beyond joining the server and
+ * sending it a DM. After it: simplest first, and everything that needs no
+ * third-party account before everything that does. `needsAccount` means an
+ * account with SOMEBODY ELSE (Discord, Telegram, Slack, IFTTT) - it is never an
+ * account here, because there is no account here. Blogtrottr takes an email
+ * address without one, so it is false.
  *
  * Facts verified 2026-09; the cadence numbers are the providers' own published
- * free-tier behaviour and are stated rather than estimated.
+ * free-tier behaviour and are stated rather than estimated. The bot's behaviour
+ * is audiosilo-meta-bot's README.
  */
+
+import { DISCORD_INVITE } from './community'
 
 /** Which of the page's URLs a set of steps pastes. */
 export type FeedKind = 'webcal' | 'atom' | 'json'
@@ -34,6 +40,7 @@ export const FEED_LABELS: Record<FeedKind, string> = {
 
 /** The id is also the docs page's anchor, so it is slug-shaped. */
 export type NotifyOptionID =
+  | 'audiosilo-discord'
   | 'calendar'
   | 'rss-app'
   | 'email'
@@ -51,6 +58,11 @@ export interface NotifyOption {
   needsAccount: boolean
   /** Which URL the steps paste. */
   feed: FeedKind
+  /** The one option both surfaces put first and mark as recommended. */
+  recommended?: boolean
+  /** A link the steps need that the step text cannot carry (it renders code
+      spans only), shown as a button beside the option. */
+  action?: { label: string; href: string }
   /** One sentence, for the tab's picker. */
   blurb: string
   /** Concrete, numbered steps for the docs page. */
@@ -60,6 +72,30 @@ export interface NotifyOption {
 }
 
 export const NOTIFY_OPTIONS: readonly NotifyOption[] = [
+  {
+    id: 'audiosilo-discord',
+    label: 'AudioSilo Discord',
+    needsAccount: true,
+    feed: 'atom',
+    recommended: true,
+    action: { label: 'Join the AudioSilo Discord', href: DISCORD_INVITE },
+    blurb:
+      'Run by us, with nothing to set up: join the AudioSilo Discord, send our bot your feed link, and new releases arrive as direct messages.',
+    steps: [
+      'Copy the Atom feed link from the Get notified tab on the Watching page.',
+      'Join the AudioSilo Discord server with the invite link.',
+      'Allow direct messages from the server: open the server menu, choose Privacy Settings and turn on Direct Messages.',
+      'Open a direct message with the AudioSilo bot from the server’s member list and paste the feed link. It replies with how many series it is now watching.',
+      'Send `help` at any time for the commands: `status`, `pause`, `resume` and `stop`.',
+    ],
+    notes: [
+      'The list you paste is saved as a starting point without messaging you about it; from then on each new or changed entry in your feed arrives as a DM, a preorder and its later release included.',
+      'When your watchlist changes, paste the new feed link to the bot. It replaces the old one.',
+      'The bot keeps your Discord ID, your feed link, whether you paused it, and the entries it has already sent you or is waiting to send, so it knows what is new. Send `stop` to delete all of it; leaving the server removes it too.',
+      'If Discord refuses a DM, the bot pauses your subscription. Allow direct messages from the server again, then send `resume`.',
+      'The bot checks every few minutes, and the feed itself can be up to an hour behind the catalogue.',
+    ],
+  },
   {
     id: 'calendar',
     label: 'Calendar',
@@ -148,10 +184,10 @@ export const NOTIFY_OPTIONS: readonly NotifyOption[] = [
   },
   {
     id: 'discord',
-    label: 'Discord',
+    label: 'Your own Discord server',
     needsAccount: true,
     feed: 'atom',
-    blurb: 'A Discord bot posts new releases into a channel on a server you manage.',
+    blurb: 'A third-party bot posts new releases into a channel on a server you manage.',
     steps: [
       'Copy the Atom feed link from the Get notified tab on the Watching page.',
       'Open monitorss.xyz and choose Log in with Discord.',
@@ -209,9 +245,17 @@ export const NOTIFY_OPTIONS: readonly NotifyOption[] = [
 export const NOTIFY_INTRO_NOTES: readonly string[] = [
   'The URL is the subscription. It carries the series you watch, so whenever you add or remove one, copy the new URL and paste it into whatever you set up below.',
   'Anyone who has the URL can see which series it lists, so treat it like a private link: share it only if you mean to.',
-  'This site never stores an email address, a phone number or any other contact detail. Whatever you set up below is between you and that service.',
+  'This site never stores an email address, a phone number or any other contact detail. The AudioSilo Discord bot is the one option we run, and its notes say what it keeps. Every other option below is between you and that service.',
   'A book you marked "not interested" on the Watching page still appears in the feed, because the URL carries only the list of series, not your per-book marks.',
 ]
+
+/** The tags an option wears, in the order both surfaces show them. */
+export function optionTags(option: NotifyOption): string[] {
+  const tags: string[] = []
+  if (option.recommended) tags.push('recommended')
+  if (option.needsAccount) tags.push('needs an account')
+  return tags
+}
 
 /** Where the docs page documents one option. */
 export function notifyDocHref(id: NotifyOptionID): string {

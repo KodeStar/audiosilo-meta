@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro'
 import { HERO, HERO_IS_SHARE_ALIKE } from '../lib/hero'
+import { DISCORD_INVITE } from '../lib/community'
 
 const img = HERO.attribution
 
@@ -25,7 +26,7 @@ const columns = [
   {
     title: 'Community',
     links: [
-      { label: 'Discord', href: 'https://discord.gg/nFFqRbkRn6', external: true },
+      { label: 'Discord', href: DISCORD_INVITE, external: true },
       {
         label: 'Discussions',
         href: 'https://github.com/kodestar/audiosilo-meta/discussions',
