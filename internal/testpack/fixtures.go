@@ -136,6 +136,11 @@ func WithoutPublisher() RecOpt {
 	return func(m map[string]any) { delete(m, "publisher") }
 }
 
+// WithRecLanguage sets the recording's language (the fixture default is en).
+func WithRecLanguage(l string) RecOpt {
+	return func(m map[string]any) { m["language"] = l }
+}
+
 // WithRecAddedAt overwrites the recording's added_at stamp.
 func WithRecAddedAt(v string) RecOpt {
 	return func(m map[string]any) { m["added_at"] = v }

@@ -124,38 +124,6 @@ func TestSeriesIntegrityFlagsAnOmnibusOnASingleSlot(t *testing.T) {
 	}
 }
 
-func TestSeriesIntegrityFlagsAMinorityLanguageMember(t *testing.T) {
-	files := seriesFixture(t, []string{"one", "two"}, map[string]string{})
-	files["works/xx/drei/work.json"] = workJSON(t, "drei", "Drei", withLanguage("de"))
-	files["works/xx/drei/recordings/r-drei.json"] = recJSON(t, "r-drei", "drei")
-	files["series/mo/mostly-en.json"] = seriesJSON(t, "mostly-en", "Mostly English", "one@1", "two@2", "drei@3")
-
-	rep := runFixture(t, files)
-	got := subclassOf(t, rep, ClassSeriesInteg, sMinorityLanguage)
-	if len(got) != 1 {
-		t.Fatalf("want one minority-language record, got %d", len(got))
-	}
-	if got[0].Propose.To != "en" || got[0].Propose.From != "de" {
-		t.Errorf("record = have %q want %q, expected de -> en", got[0].Propose.From, got[0].Propose.To)
-	}
-	if want := []string{"drei"}; !reflect.DeepEqual(workIDs(got[0]), want) {
-		t.Errorf("works = %v, want %v", workIDs(got[0]), want)
-	}
-}
-
-// A one-to-one language split has no majority, so nothing is a minority OF it.
-func TestSeriesIntegrityNeedsAStrictMajorityToCallSomethingAMinority(t *testing.T) {
-	files := fixture(t, works(t, []string{"one"}))
-	files["works/xx/zwei/work.json"] = workJSON(t, "zwei", "Zwei", withLanguage("de"))
-	files["works/xx/zwei/recordings/r-zwei.json"] = recJSON(t, "r-zwei", "zwei")
-	files["series/sp/split.json"] = seriesJSON(t, "split", "Split Chronicles", "one@1", "zwei@2")
-
-	rep := runFixture(t, files)
-	if got := subclassOf(t, rep, ClassSeriesInteg, sMinorityLanguage); len(got) != 0 {
-		t.Errorf("a tied language split was reported as a minority: %+v", got)
-	}
-}
-
 // A range whose bounds are the same NUMBER spans nothing: "2.1-2.10" reads as 2.1
 // to 2.1, the shape a season/episode numbering takes when written as a decimal.
 func TestSeriesIntegrityFlagsARangeThatSpansNothing(t *testing.T) {

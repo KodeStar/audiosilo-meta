@@ -18,6 +18,11 @@ import (
 //   - a work that is a target in one merge and a loser in another (9 were);
 //   - two proposals claiming one series slot.
 //
+// L-MIX adds three more, which its detector withholds by construction (the locks it
+// reads off the other classes) and this pins: a membership moved by two proposals, a
+// work moved into one series twice, and a work or series an L-MIX op changes that a
+// merge in the same audit retires or rewrites.
+//
 // It is asserted over every fixture that produces proposals, and over the real tree
 // by the sampling run, because it is a property of the SET and no single detector
 // can see it.
@@ -28,6 +33,23 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 	slot := map[string]string{}        // "<series>@<pos>" -> the record claiming it
 	linkedTo := map[string]string{}    // "<op>/<translation>" -> the original it is linked to
 	original := map[string]string{}    // "<op>/<original>" -> the record naming it
+	// The L-MIX membership ops: a membership leaves its series once, a work joins a series
+	// once, and neither the works moved nor the series touched are in a merge - a merge
+	// retires what the move was checked against, so the two would not commute.
+	leaves := map[string]string{}       // "<series>@<work>" -> the record moving it out
+	joins := map[string]string{}        // "<series>@<work>" -> the record moving it in
+	mixWorks := map[string]string{}     // work -> an L-MIX record moving it
+	mixSeries := map[string]string{}    // series -> an L-MIX record touching it
+	mergedWorks := map[string]string{}  // work -> the merge-works record naming it
+	mergedSeries := map[string]string{} // series -> the merge-series record naming it
+	leave := func(series, work, key string) {
+		if prev, dup := leaves[series+"@"+work]; dup {
+			t.Errorf("%s and %s both move %s out of %s", prev, key, work, series)
+		}
+		leaves[series+"@"+work] = key
+		mixWorks[work] = key
+		mixSeries[series] = key
+	}
 
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -37,6 +59,13 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 			}
 			switch p.Op {
 			case OpMergeWorks, OpMergeSeries:
+				merged := mergedWorks
+				if p.Op == OpMergeSeries {
+					merged = mergedSeries
+				}
+				for _, id := range cluster(p.Target, p.Others) {
+					merged[id] = r.Key
+				}
 				if p.Target != "" {
 					isTarget[p.Target] = r.Key
 				}
@@ -65,7 +94,36 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 				}
 				linkedTo[tr] = p.To
 				original[p.Op+"/"+p.To] = r.Key
+			case OpDropMembership:
+				leave(p.Series, p.Target, r.Key)
+			case OpMoveMembership:
+				leave(p.Series, p.Target, r.Key)
+				dest := p.Others[0]
+				if prev, dup := joins[dest+"@"+p.Target]; dup {
+					t.Errorf("%s and %s both move %s into %s", prev, r.Key, p.Target, dest)
+				}
+				joins[dest+"@"+p.Target] = r.Key
+				mixSeries[dest] = r.Key
+				key := dest + "@" + p.To
+				if prev, dup := slot[key]; dup {
+					t.Errorf("%s and %s both claim series slot %s", prev, r.Key, key)
+				}
+				slot[key] = r.Key
+			case OpSplitSeries:
+				for _, w := range p.Others {
+					leave(p.Target, w, r.Key)
+				}
 			}
+		}
+	}
+	for w, by := range mixWorks {
+		if m, both := mergedWorks[w]; both {
+			t.Errorf("%s moves %s, which %s merges", by, w, m)
+		}
+	}
+	for s, by := range mixSeries {
+		if m, both := mergedSeries[s]; both {
+			t.Errorf("%s changes series %s, which %s merges", by, s, m)
 		}
 	}
 	for tr := range linkedTo {
@@ -134,6 +192,7 @@ func TestProposalsAreConsistentAcrossTheFixtures(t *testing.T) {
 			"series/bb/beta.json":            seriesJSON(t, "beta", "Dragon Heart Series", "two@1"),
 		}),
 		"translation editions": fixture(t, mergeFiles(sagaTree(t), fateTree(t))),
+		"language mix":         mergeFiles(mixSagaTree(t), moveTree(t, "s1@1", "s2@2"), narratedTree(t)),
 	} {
 		t.Run(name, func(t *testing.T) {
 			assertProposalsConsistent(t, runFixture(t, files))

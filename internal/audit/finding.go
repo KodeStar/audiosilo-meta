@@ -19,6 +19,7 @@ const (
 	ClassSeriesDup    = "SER-DUP"     // near-duplicate series
 	ClassSeriesParen  = "SER-PAREN"   // parenthetical-decorated series names
 	ClassTransLink    = "T-LINK"      // translation links a record's own edition decoration states
+	ClassLangMix      = "L-MIX"       // series whose members state two or more languages
 	ClassPersonDup    = "P-DUP"       // near-duplicate people (advisory)
 	ClassRefSidecar   = "REF-SIDECAR" // sidecar hazards
 	ClassHygiene      = "F-HYGIENE"   // field hygiene
@@ -28,7 +29,7 @@ const (
 // classOrder is every class, in report order.
 var classOrder = []string{
 	ClassWorkDup, ClassWorkTitle, ClassWorkNoSeries, ClassSeriesInteg,
-	ClassSeriesDup, ClassSeriesParen, ClassTransLink, ClassPersonDup, ClassRefSidecar,
+	ClassSeriesDup, ClassSeriesParen, ClassTransLink, ClassLangMix, ClassPersonDup, ClassRefSidecar,
 	ClassHygiene, ClassLoader,
 }
 
@@ -56,8 +57,19 @@ const (
 	// proposal was written.
 	OpAddWorkLink   = "add-work-link"
 	OpAddSeriesLink = "add-series-link"
-	OpReview        = "review" // no mechanical action: a human decides
-	OpNone          = ""       // a pass-through record (LOADER)
+	// The L-MIX ops. A membership op names Target (the work), Series (the series it
+	// leaves) and Field "position" with From its position there, which is what a repair
+	// checks the tree still states: drop-membership removes it (Others: the series of
+	// the work's language it already sits in, as evidence), move-membership moves it to
+	// Others[0] at To. split-series moves Others, the members of Target stating To, to a
+	// NEW series of Target's name, the language From keeping Target's slug.
+	// set-work-language sets Target's language (and every recording stating From) from
+	// From to To - always advisory at source (see langmix.go).
+	OpMoveMembership  = "move-membership"
+	OpSplitSeries     = "split-series"
+	OpSetWorkLanguage = "set-work-language"
+	OpReview          = "review" // no mechanical action: a human decides
+	OpNone            = ""       // a pass-through record (LOADER)
 )
 
 // Proposal is the typed repair a finding proposes.

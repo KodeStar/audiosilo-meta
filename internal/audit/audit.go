@@ -72,7 +72,10 @@ type Report struct {
 	// LinkRejections is how T-LINK's reviewed-rejection list met this tree: the
 	// entries that turned a proposal advisory, and the stale ones that matched none.
 	LinkRejections linkRejectionTally
-	Totals         Totals
+	// LangMix is L-MIX's count-only tallies: the mixed-language series and the
+	// memberships and works behind the class's proposals, and why some are advisory.
+	LangMix langMixStats
+	Totals  Totals
 	// LoaderProblems and LoaderWarnings are pkg/check's own counts, carried so a
 	// caller can see whether the tree it audited was valid in the first place.
 	LoaderProblems int
@@ -187,11 +190,18 @@ func analyzeWith(res check.Result, rejections []linkRejection) *Report {
 	skeys := seriesKeyIndex(cat.Series)
 	links, linkTally := detectTranslationLinks(ix, res.Identity, skeys)
 	rejected := applyLinkRejections(links, rejections, cat.Redirects)
+	// L-MIX runs after every class whose mechanical proposals could touch the same
+	// records (a merge, a restated position, a filled slot), and reads them as locks:
+	// a membership move that would not commute with one of them is advisory.
+	noSeries, integrity := detectWorkNoSeries(ix), detectSeriesIntegrity(ix)
+	serDup := detectSeriesDup(ix, skeys)
+	mix, mixTally := detectLanguageMix(ix, newMixLocks(dup, noSeries, integrity, serDup))
 
 	rep := &Report{
 		Stats:          stats,
 		Links:          linkTally,
 		LinkRejections: rejected,
+		LangMix:        mixTally,
 		LoaderProblems: len(res.Problems),
 		LoaderWarnings: len(res.Warnings),
 		Totals: Totals{
@@ -207,11 +217,12 @@ func analyzeWith(res check.Result, rejections []linkRejection) *Report {
 	rep.classes = []*findings{
 		dup,
 		detectWorkTitle(ix),
-		detectWorkNoSeries(ix),
-		detectSeriesIntegrity(ix),
-		detectSeriesDup(ix, skeys),
+		noSeries,
+		integrity,
+		serDup,
 		detectSeriesParen(ix, skeys),
 		links,
+		mix,
 		detectPersonDup(ix),
 		detectRefSidecar(ix, clusterWorks, clustersOf),
 		hyg,
