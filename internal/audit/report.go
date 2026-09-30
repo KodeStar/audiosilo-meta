@@ -308,11 +308,11 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 
 	rj := rep.LinkRejections
 	b.WriteString("T-LINK reviewed rejections (`" + linkRejectionsPath + "`): a link a maintainer reviewed and\n")
-	b.WriteString("rejected stays in T-LINK.ndjson, ADVISORY, with the review's reason. An entry matching no proposal is\n")
-	b.WriteString("STALE - the link was applied by hand, a record was merged, the evidence moved - and is listed below\n")
-	b.WriteString("so a cleanup can remove it; it fails nothing.\n\n")
+	b.WriteString("rejected stays in T-LINK.ndjson, ADVISORY, with the review's reason; a slug since retired is read\n")
+	b.WriteString("through the tombstone table first. An entry matching no proposal is STALE - the link was applied by\n")
+	b.WriteString("hand, the evidence moved - and is listed below so a cleanup can remove it; it fails nothing.\n\n")
 	reportdir.Table(b, "measure", []reportdir.Row{
-		{Label: "reviewed rejections on the list", N: rj.Entries},
+		{Label: "reviewed rejections on the list", N: rj.Entries()},
 		{Label: "... matching a proposal (made advisory)", N: rj.Matched},
 		{Label: "... matching no proposal (stale)", N: len(rj.Stale)},
 	})
@@ -320,7 +320,7 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 	if len(rj.Stale) > 0 {
 		b.WriteString("Stale entries:\n\n")
 		for _, r := range rj.Stale {
-			fmt.Fprintf(b, "- `%s` `%s` -> `%s`\n", r.Op, r.ID, r.Target)
+			fmt.Fprintf(b, "- `%s` `%s` -> `%s`\n", r.Op, r.Target, r.To)
 		}
 		b.WriteString("\n")
 	}

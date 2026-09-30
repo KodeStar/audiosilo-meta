@@ -186,7 +186,7 @@ func analyzeWith(res check.Result, rejections []linkRejection) *Report {
 	// fold 45k names through model.Slugify twice over.
 	skeys := seriesKeyIndex(cat.Series)
 	links, linkTally := detectTranslationLinks(ix, res.Identity, skeys)
-	rejected := applyLinkRejections(links, rejections)
+	rejected := applyLinkRejections(links, rejections, cat.Redirects)
 
 	rep := &Report{
 		Stats:          stats,
