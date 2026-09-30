@@ -1281,7 +1281,10 @@ pure choice, `membershipColumns(orderings)`, made by whether the artifact carrie
 any ordering at all rather than by its version: `ordering_of` is the only value the
 primary-first text adds, so an empty layer (and every pre-v7 artifact) runs the
 plain id order selecting NULL in its place, and both texts scan into one shape.
-`/api/v1/stats` gains `languages: [{language, works}]` (works desc, then tag),
+works/latest's cap keys that choice by its ordering FAMILY (`OrderingPrimary` over
+the card's `seriesRef`), so two reading orders of one franchise count as one series
+- a prequel only the chronological variant lists shares the primary's two slots
+(`TestLatestCapsAnOrderingFamilyAsOneSeries`). `/api/v1/stats` gains `languages: [{language, works}]` (works desc, then tag),
 computed ONCE in `loadStats` over `idx_works_language(language)` - the language
 alone, since works/latest's `(added_at IS NULL)` order is no index column's to
 serve; a language-scoped latest designs its own index (Phase 4). Two load-time

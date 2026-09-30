@@ -375,3 +375,38 @@ func TestLanguagePagesGolden(t *testing.T) {
 		})
 	}
 }
+
+// TestLatestCapsAnOrderingFamilyAsOneSeries pins works/latest's per-series cap
+// on the ordering FAMILY: three works catalogued on one date, two carded under
+// the primary and a prequel that only the variant orderings list (so its card's
+// series is a variant), are one franchise and share one cap of latestSeriesCap.
+// Keyed on the card's series id, the prequel opened a bucket of its own and all
+// three filled the grid.
+func TestLatestCapsAnOrderingFamilyAsOneSeries(t *testing.T) {
+	cat := languagesCatalog()
+	for _, w := range cat.Works {
+		switch w.ID {
+		case "book-one", "book-two", "the-prequel":
+			w.AddedAt = "2026-09-30"
+		}
+	}
+	snap := snapshotFor(t, cat)
+	cards, err := snap.latestWorks(12)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var family []string
+	for _, c := range cards {
+		switch c.ID {
+		case "book-one", "book-two", "the-prequel":
+			family = append(family, c.ID+"@"+c.Series.ID)
+		}
+	}
+	if len(family) > latestSeriesCap {
+		t.Errorf("works/latest carries %d works of one ordering family (%v), want at most %d",
+			len(family), family, latestSeriesCap)
+	}
+	if len(family) == 0 {
+		t.Error("works/latest carries none of the family's works")
+	}
+}

@@ -272,7 +272,7 @@
         "tags": ["Works"],
         "operationId": "latestWorks",
         "summary": "Recently added works",
-        "description": "Work cards ordered by when they entered the database, newest first, with at most two works from any one series so a bulk import cannot fill the whole page with one series' volumes. Works with no recorded date sort last.",
+        "description": "Work cards ordered by when they entered the database, newest first, with at most two works from any one series so a bulk import cannot fill the whole page with one series' volumes. Two reading orders of one franchise (a series and a chronological or recommended variant of it) count as one series for that cap. Works with no recorded date sort last.",
         "parameters": [
           {
             "name": "limit",

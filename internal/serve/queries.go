@@ -38,6 +38,11 @@ const latestSeriesCap = 2
 // latestWorks returns up to limit work cards ordered by added_at DESC (NULLS
 // LAST), then title, with at most latestSeriesCap works from any one series
 // (keyed by the work's first series membership, the one the card carries).
+// The key is that membership's ordering FAMILY - its ordering_of where it is a
+// variant, else its own id (model.Series.OrderingPrimary) - so two reading
+// orders of one franchise count as ONE series: a prequel that sits only in the
+// chronological variant shares the cap with the primary's volumes rather than
+// opening a bucket of its own.
 // Works with no series are each their own bucket and are never capped. It
 // over-fetches candidate rows so capped skips still leave enough to fill the
 // page; the SQL ordering (id as the final tie-break) keeps the walk
@@ -73,10 +78,11 @@ func (s *snapshot) latestWorks(limit int) ([]*workCard, error) {
 			break
 		}
 		if sr := series[id]; sr != nil {
-			if perSeries[sr.ID] >= latestSeriesCap {
+			family := (&model.Series{ID: sr.ID, OrderingOf: sr.OrderingOf}).OrderingPrimary()
+			if perSeries[family] >= latestSeriesCap {
 				continue
 			}
-			perSeries[sr.ID]++
+			perSeries[family]++
 		}
 		winners = append(winners, id)
 	}
