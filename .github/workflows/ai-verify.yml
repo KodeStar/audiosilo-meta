@@ -250,6 +250,31 @@ jobs:
             git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/redirects.json'
           } >> context.txt
 
+      # A rebase over an unrelated merge leaves the judged context byte for byte
+      # the same: its verdict stands, re-applied without a model call (see the
+      # script). A dispatch, a re-run and the opt-in label always judge afresh -
+      # audiosilo-meta-sync re-runs verify to have a failed run or a disputed
+      # flag judged again. The context format, the pull request's origin and the
+      # day also decide the verdict (they shape the prompt), so they are hashed
+      # with it.
+      - name: Reuse the verdict for unchanged content
+        id: reuse
+        if: steps.gather.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          ATTEMPT: ${{ github.run_attempt }}
+          PR: ${{ steps.gather.outputs.pr }}
+          CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
+          PR_ORIGIN: ${{ steps.gather.outputs.origin }}
+        run: |
+          # The prompt states today's date (release-date plausibility is judged
+          # against it), so a verdict is reused within its UTC day only.
+          printf 'format=%s origin=%s day=%s\n' "$CONTEXT_FORMAT" "$PR_ORIGIN" "$(date -u +%F)" > verify-inputs.txt
+          bash .github/scripts/ai-verify-reuse.sh context.txt "$PR" verify-inputs.txt \
+            .github/scripts/ai-verify.sh .github/scripts/ai-verify-reuse.sh .github/workflows/ai-verify.yml
+
       # Only needed for the preferred CLAUDE_CODE_OAUTH_TOKEN transport (a
       # subscription token authenticates through the CLI, not the raw API). When
       # only ANTHROPIC_API_KEY is set the script uses curl and this is skipped.
@@ -274,13 +299,13 @@ jobs:
       # or `next`, which move daily. Dependabot does not see a version inside a
       # `run:` string.
       - name: Install Claude Code CLI
-        if: steps.gather.outputs.has_changes == 'true' && env.HAS_OAUTH == 'true'
+        if: steps.gather.outputs.has_changes == 'true' && steps.reuse.outputs.reuse != 'true' && env.HAS_OAUTH == 'true'
         run: |
           npm install -g @anthropic-ai/claude-code@2.1.273
           claude --version
 
       - name: Run AI verification
-        if: steps.gather.outputs.has_changes == 'true'
+        if: steps.gather.outputs.has_changes == 'true' && steps.reuse.outputs.reuse != 'true'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -302,13 +327,28 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ steps.gather.outputs.pr }}
+          REUSED: ${{ steps.reuse.outputs.reuse }}
+          REUSED_VERDICT: ${{ steps.reuse.outputs.verdict }}
+          KEY: ${{ steps.reuse.outputs.key }}
         run: |
-          if [ ! -s comment.md ]; then
-            echo "::warning::ai-verify produced no comment - verification did not reach a verdict; see the log above"
-            exit 0
+          if [ "$REUSED" = "true" ]; then
+            # The newest verdict already judged exactly this content: its
+            # comment stands, and only the label is made to match it.
+            verdict="$REUSED_VERDICT"
+          else
+            if [ ! -s comment.md ]; then
+              echo "::warning::ai-verify produced no comment - verification did not reach a verdict; see the log above"
+              exit 0
+            fi
+            verdict="$(jq -r '.verdict // "skip"' verdict.json 2>/dev/null || echo skip)"
+            # The key goes on the comment's LAST line, after everything the
+            # model wrote: the next run reuses this verdict only while the
+            # content it judged is unchanged (ai-verify-reuse.sh).
+            if [ -n "$KEY" ] && { [ "$verdict" = pass ] || [ "$verdict" = flag ]; }; then
+              printf '\n<!-- ai-verify-key: %s verdict: %s -->\n' "$KEY" "$verdict" >> comment.md
+            fi
+            gh pr comment "$PR" --body-file comment.md || echo "::warning::could not post the ai-verify comment on PR $PR"
           fi
-          gh pr comment "$PR" --body-file comment.md || echo "::warning::could not post the ai-verify comment on PR $PR"
-          verdict="$(jq -r '.verdict // "skip"' verdict.json 2>/dev/null || echo skip)"
           # A skip CLEARS both outcome labels rather than leaving the previous
           # push's. The label is the same claim as the tick: a PR that passed
           # yesterday and cannot be verified today must not keep a green
