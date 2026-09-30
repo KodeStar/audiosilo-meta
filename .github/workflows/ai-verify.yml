@@ -254,8 +254,9 @@ jobs:
       # the same: its verdict stands, re-applied without a model call (see the
       # script). A dispatch, a re-run and the opt-in label always judge afresh -
       # audiosilo-meta-sync re-runs verify to have a failed run or a disputed
-      # flag judged again. The context format and the pull request's origin also
-      # decide the verdict (they pick the prompt), so they are hashed with it.
+      # flag judged again. The context format, the pull request's origin and the
+      # day also decide the verdict (they shape the prompt), so they are hashed
+      # with it.
       - name: Reuse the verdict for unchanged content
         id: reuse
         if: steps.gather.outputs.has_changes == 'true'
@@ -268,7 +269,9 @@ jobs:
           CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
           PR_ORIGIN: ${{ steps.gather.outputs.origin }}
         run: |
-          printf 'format=%s origin=%s\n' "$CONTEXT_FORMAT" "$PR_ORIGIN" > verify-inputs.txt
+          # The prompt states today's date (release-date plausibility is judged
+          # against it), so a verdict is reused within its UTC day only.
+          printf 'format=%s origin=%s day=%s\n' "$CONTEXT_FORMAT" "$PR_ORIGIN" "$(date -u +%F)" > verify-inputs.txt
           bash .github/scripts/ai-verify-reuse.sh context.txt "$PR" verify-inputs.txt \
             .github/scripts/ai-verify.sh .github/scripts/ai-verify-reuse.sh .github/workflows/ai-verify.yml
 

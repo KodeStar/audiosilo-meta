@@ -29,11 +29,13 @@
 # any newest verdict that is not a pass or a flag (a skip, or a comment from
 # before this key existed).
 #
-# TRUST. Only a comment by github-actions[bot] that starts with the verdict
-# heading counts, and only its LAST line is read: the key is appended after
-# everything the model wrote, so text the model echoed from the pull request can
-# never stand in for it. COMMENTS_FILE (a JSON array of issue comments) replaces
-# the API read, for testing.
+# TRUST. Only a comment by github-actions[bot] that starts with a verdict
+# heading counts (a skip's "### AI verification skipped" included, so a skip
+# after a pass is the newest verdict and is never looked past), and only its
+# LAST line is read: the key is appended after everything the model wrote, so
+# text the model echoed from the pull request can never stand in for it.
+# COMMENTS_FILE (a JSON array of issue comments) replaces the API read, for
+# testing.
 set -uo pipefail
 
 CONTEXT="${1:?context file required}"
@@ -62,7 +64,7 @@ else
     fresh "the comments could not be read"
 fi
 body="$(printf '%s\n' "$comments" | jq -rs '
-  map(select(.user.login == "github-actions[bot]" and (.body | startswith("### AI verification:"))))
+  map(select(.user.login == "github-actions[bot]" and (.body | startswith("### AI verification"))))
   | sort_by(.created_at) | last | .body // empty')" || fresh "the comments could not be parsed"
 [ -n "$body" ] || fresh "no earlier verdict"
 
