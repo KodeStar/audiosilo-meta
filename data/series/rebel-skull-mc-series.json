@@ -15253,6 +15253,8 @@
       "id": "riftwar-cycle-chronological-order",
       "license": "CC0-1.0",
       "name": "Riftwar Cycle [Chronological Order]",
+      "ordering": "chronological",
+      "ordering_of": "riftwar-cycle-publication-order",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -15395,6 +15397,7 @@
       "id": "riftwar-cycle-publication-order",
       "license": "CC0-1.0",
       "name": "Riftwar Cycle [Publication Order]",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-08-02",

@@ -2970,6 +2970,8 @@
       "id": "kingsbridge",
       "license": "CC0-1.0",
       "name": "Kingsbridge",
+      "ordering": "chronological",
+      "ordering_of": "kingsbridge-publication-order",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -3004,6 +3006,7 @@
       "id": "kingsbridge-publication-order",
       "license": "CC0-1.0",
       "name": "Kingsbridge (Publication Order)",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-29",

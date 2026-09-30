@@ -3552,6 +3552,8 @@
       "id": "sinners-of-saint-chronological-order",
       "license": "CC0-1.0",
       "name": "Sinners of Saint [chronological order]",
+      "ordering": "chronological",
+      "ordering_of": "sinners-of-saint-publication-order",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -3586,6 +3588,7 @@
       "id": "sinners-of-saint-publication-order",
       "license": "CC0-1.0",
       "name": "Sinners of Saint [Publication Order]",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -7068,6 +7071,8 @@
       "id": "skolian-empire-chronological-order",
       "license": "CC0-1.0",
       "name": "Skolian Empire (chronological order)",
+      "ordering": "chronological",
+      "ordering_of": "skolian-empire-published-order",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -7142,6 +7147,7 @@
       "id": "skolian-empire-published-order",
       "license": "CC0-1.0",
       "name": "Skolian Empire (published order)",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-08-02",

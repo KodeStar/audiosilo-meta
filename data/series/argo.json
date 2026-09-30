@@ -3729,6 +3729,8 @@
       "id": "ascend-online-chronological-order",
       "license": "CC0-1.0",
       "name": "Ascend Online [chronological order]",
+      "ordering": "chronological",
+      "ordering_of": "ascend-online-publication-order",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -3781,6 +3783,7 @@
       "id": "ascend-online-publication-order",
       "license": "CC0-1.0",
       "name": "Ascend Online [publication order]",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-08-02",

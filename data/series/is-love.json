@@ -4712,6 +4712,7 @@
       "id": "jack-ryan-chronological-order",
       "license": "CC0-1.0",
       "name": "Jack Ryan (chronological order)",
+      "ordering": "chronological",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -4730,6 +4731,8 @@
       "id": "jack-ryan-in-chronologischer-reihenfolge",
       "license": "CC0-1.0",
       "name": "Jack Ryan (in chronologischer Reihenfolge)",
+      "ordering": "chronological",
+      "ordering_of": "erweitertes-jack-ryan-universum-in-veroffentlichungsreihenfolge",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -5723,6 +5726,7 @@
       "id": "jackman-evans-published-order",
       "license": "CC0-1.0",
       "name": "Jackman & Evans (Published Order)",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -5781,6 +5785,8 @@
       "id": "jackman-evans-recommended-listening-order",
       "license": "CC0-1.0",
       "name": "Jackman & Evans (Recommended Listening Order)",
+      "ordering": "recommended",
+      "ordering_of": "jackman-evans-published-order",
       "sources": [
         {
           "imported_at": "2026-07-29",

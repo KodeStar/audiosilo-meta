@@ -8411,6 +8411,7 @@
       "id": "rangers-apprentice",
       "license": "CC0-1.0",
       "name": "Ranger's Apprentice",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-25",
@@ -8508,6 +8509,8 @@
       "id": "rangers-apprentice-chronological-order",
       "license": "CC0-1.0",
       "name": "Ranger's Apprentice (chronological order)",
+      "ordering": "chronological",
+      "ordering_of": "rangers-apprentice",
       "sources": [
         {
           "imported_at": "2026-07-25",
@@ -8599,6 +8602,7 @@
       "id": "rangers-apprentice-published-order",
       "license": "CC0-1.0",
       "name": "Ranger's Apprentice (published order)",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-25",

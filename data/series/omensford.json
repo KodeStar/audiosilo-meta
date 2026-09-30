@@ -12015,6 +12015,7 @@
       "id": "oxford-history-of-the-united-states",
       "license": "CC0-1.0",
       "name": "Oxford History of the United States",
+      "ordering": "chronological",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -12061,6 +12062,8 @@
       "id": "oxford-history-of-the-united-states-publication-order",
       "license": "CC0-1.0",
       "name": "Oxford History of the United States [Publication Order]",
+      "ordering": "publication",
+      "ordering_of": "oxford-history-of-the-united-states",
       "sources": [
         {
           "imported_at": "2026-07-29",

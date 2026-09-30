@@ -3222,6 +3222,8 @@
       "id": "woolsey-ferriday-chronological-order",
       "license": "CC0-1.0",
       "name": "Woolsey-Ferriday [chronological order]",
+      "ordering": "chronological",
+      "ordering_of": "woolsey-ferriday-published-order",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -3248,6 +3250,7 @@
       "id": "woolsey-ferriday-published-order",
       "license": "CC0-1.0",
       "name": "Woolsey-Ferriday [published order]",
+      "ordering": "publication",
       "sources": [
         {
           "imported_at": "2026-07-29",
