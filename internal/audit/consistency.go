@@ -10,14 +10,14 @@ import (
 type proposalConflictState struct {
 	conflicts []string
 
-	mergeTarget, isTarget     map[string]string // op/id -> survivor or finding
-	slot                      map[string]string // series@position -> finding
-	linkedTo, original        map[string]string // op/id -> original or finding
-	leaves, joins, restated   map[string]string // series@work -> finding
-	mixWorks, mixSeries       map[string]string // work or series -> finding
-	mergedWorks, mergedSeries map[string]string // work or series -> finding
-	languages                 map[string]string // work -> finding
-	homes                     map[string]string // series a drop relies on as the work's home -> finding
+	mergeTarget, isTarget     map[string]string   // op/id -> survivor or finding
+	slot                      map[string]string   // series@position -> finding
+	linkedTo, original        map[string]string   // op/id -> original or finding
+	leaves, joins, restated   map[string]string   // series@work -> finding
+	mixWorks, mixSeries       map[string]string   // work or series -> finding
+	mergedWorks, mergedSeries map[string]string   // work or series -> finding
+	languages                 map[string]string   // work -> finding
+	homes                     map[string][]string // series a drop relies on as the work's home -> every such drop
 }
 
 // proposalConflicts is the shared set invariant used by reviewed acceptances and
@@ -30,7 +30,7 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{},
 		mixWorks: map[string]string{}, mixSeries: map[string]string{},
 		mergedWorks: map[string]string{}, mergedSeries: map[string]string{}, languages: map[string]string{},
-		homes: map[string]string{},
+		homes: map[string][]string{},
 	}
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -129,8 +129,10 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 				if by, both := s.languages[id]; both {
 					report("%s sets the language of %s, which %s merges", by, id, r.Key)
 				}
-			} else if by, both := s.homes[id]; both {
-				homeMerged(by, id, r.Key)
+			} else {
+				for _, by := range s.homes[id] {
+					homeMerged(by, id, r.Key)
+				}
 			}
 			put(merged, id, r.Key)
 		}
@@ -196,7 +198,17 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 			if m, both := s.mergedSeries[h]; both {
 				homeMerged(r.Key, h, m)
 			}
-			put(s.homes, h, r.Key)
+			prev, had := s.homes[h]
+			if !keepConflicts {
+				undo = append(undo, func() {
+					if had {
+						s.homes[h] = prev
+					} else {
+						delete(s.homes, h)
+					}
+				})
+			}
+			s.homes[h] = append(slices.Clone(prev), r.Key)
 		}
 	case OpMoveMembership:
 		leave(p.Series, p.Target)

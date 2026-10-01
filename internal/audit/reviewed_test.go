@@ -612,3 +612,14 @@ func TestReviewedIndexesReviewByClass(t *testing.T) {
 		}
 	}
 }
+
+// Ops is a SET: opPhrase already renders review, so seeding it again listed it twice.
+func TestOpsListsEachOpOnce(t *testing.T) {
+	ops := Ops()
+	if !slices.IsSorted(ops) || len(slices.Compact(slices.Clone(ops))) != len(ops) {
+		t.Fatalf("Ops() = %v, want sorted and unique", ops)
+	}
+	if !slices.Contains(ops, OpReview) {
+		t.Fatalf("Ops() = %v, want it to hold %q", ops, OpReview)
+	}
+}

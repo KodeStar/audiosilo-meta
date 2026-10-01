@@ -80,7 +80,7 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 
 func knownReviewOp(op string) bool {
 	_, ok := opPhrase[op]
-	return op == OpReview || (op != OpNone && ok)
+	return op != OpNone && ok
 }
 
 // unappliableOps are the ops the audit emits that no repair carries out (a review, a
@@ -94,9 +94,10 @@ var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, Op
 // Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
 func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
 
-// Ops returns every op the audit emits, sorted.
+// Ops returns every op the audit emits, sorted. opPhrase renders every one of them,
+// review included, so it is the list.
 func Ops() []string {
-	out := []string{OpReview}
+	var out []string
 	for op := range opPhrase {
 		if op != OpNone {
 			out = append(out, op)
