@@ -22,8 +22,8 @@ func TestReviewedDecisionsReachMetarepair(t *testing.T) {
 		"people/xx/nate-narrator.json":        testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
 		"people/xx/anna-sprecher.json":        testpack.PersonJSON(t, "anna-sprecher", "Anna Sprecher"),
 		"series/xx/saga.json":                 testpack.SeriesJSON(t, "saga", "Saga", "a@1", "b@2", "c@3", "d@4", "e@5"),
-		"works/xx/rubinrot/work.json":         testpack.WorkJSON(t, "rubinrot", "Rubinrot"),
-		"works/xx/rubinrot/recordings/r.json": testpack.RecJSON(t, "r", "rubinrot", testpack.WithRecLanguage("de"), testpack.WithNarrators("anna-sprecher")),
+		"works/xx/fixture-gem-red/work.json":         testpack.WorkJSON(t, "fixture-gem-red", "Fixture Gem Red"),
+		"works/xx/fixture-gem-red/recordings/r.json": testpack.RecJSON(t, "r", "fixture-gem-red", testpack.WithRecLanguage("de"), testpack.WithNarrators("anna-sprecher")),
 	}
 	for id, lang := range map[string]string{"a": "en", "b": "en", "c": "en", "d": "de", "e": "de"} {
 		narrator := "nate-narrator"
@@ -103,7 +103,7 @@ func TestReviewedDecisionsReachMetarepair(t *testing.T) {
 		t.Fatalf("after repair: %v", after.Problems)
 	}
 	for _, w := range after.Catalog.Works {
-		if w.ID == "rubinrot" {
+		if w.ID == "fixture-gem-red" {
 			if w.Language != "de" || w.Recordings[0].Language != "de" {
 				t.Fatalf("language correction not written: %+v", w)
 			}
