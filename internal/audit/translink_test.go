@@ -288,11 +288,16 @@ func TestWorkEditionTitleMustBeTheOriginalsUntranslated(t *testing.T) {
 			files["works/fa/families-first/work.json"] = workJSON(t, "families-first", "Families First")
 			files["works/fa/families-first-de/work.json"] = workJSON(t, "families-first-de", tc.title, withLanguage("de"))
 			rep := runFixture(t, files)
+			// The proposal must EXIST: both titles meet the original on the identity key,
+			// and a detector that silently produced nothing would otherwise pass.
 			fd := linkFinding(t, rep, "families-first-de")
-			if fd != nil && !fd.Propose.Advisory {
+			if fd == nil {
+				t.Fatalf("no proposal for %q, want an advisory one", tc.title)
+			}
+			if !fd.Propose.Advisory {
 				t.Fatalf("mechanical proposal %+v for %q", fd.Propose, tc.title)
 			}
-			if fd != nil && !strings.Contains(fd.Propose.Reason, "differ beyond the edition decoration") {
+			if !strings.Contains(fd.Propose.Reason, "differ beyond the edition decoration") {
 				t.Errorf("reason = %q", fd.Propose.Reason)
 			}
 		})

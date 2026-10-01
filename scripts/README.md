@@ -542,7 +542,10 @@ go run ./cmd/metaimport libex /tmp/xrec-rows.ndjson --relocate \
 
 The optional `asins` variable (psql >= 10) makes `libex-export-rows.sql`
 export only those ASINs, without its content or credit filters: **every copy is language evidence**,
-including a copy the importer refuses at parse time. Supply all ASINs together;
+including a copy the importer refuses at parse time. The list names recordings
+the catalogue already holds, so an unfiltered row can supply facts only for a
+recording that was admitted before; a copy refused at parse (an AI or
+unidentifiable credit) refuses its recording as `relocate-row-unusable`. Supply all ASINs together;
 do not split a recording's rows across runs. No matching input row means no action.
 
 Every supplied row naming a recording must state the same known language as
@@ -574,7 +577,9 @@ and the old work's other fields stay unchanged.
 as `relocated-to-existing`, `relocated-to-new-work` (including destinations
 created earlier in this run), or `merged-into-sibling`, plus memberships
 re-pointed and recording refusals by code. `--skipped` remains an atomic NDJSON
-worklist of `{"asin","reason"}` rows. In relocation it deliberately includes
+worklist of `{"asin","reason"}` rows; a `relocate-ambiguous-home` row also
+carries `candidates` (omitted from every other row, so a create run's worklist is
+unchanged). In relocation it deliberately includes
 already-catalogued ASINs: those are the records needing review. Its new stable
 codes are `relocate-rows-language`, `relocate-recording-language`,
 `relocate-work-language`, `relocate-no-home-recording`,

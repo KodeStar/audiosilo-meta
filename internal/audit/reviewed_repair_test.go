@@ -18,10 +18,10 @@ import (
 // No repair code, options or worklist can bypass the embedded policy.
 func TestReviewedDecisionsReachMetarepair(t *testing.T) {
 	files := map[string]string{
-		"people/xx/jane-doe.json":             testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
-		"people/xx/nate-narrator.json":        testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
-		"people/xx/anna-sprecher.json":        testpack.PersonJSON(t, "anna-sprecher", "Anna Sprecher"),
-		"series/xx/saga.json":                 testpack.SeriesJSON(t, "saga", "Saga", "a@1", "b@2", "c@3", "d@4", "e@5"),
+		"people/xx/jane-doe.json":                    testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json":               testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"people/xx/anna-sprecher.json":               testpack.PersonJSON(t, "anna-sprecher", "Anna Sprecher"),
+		"series/xx/saga.json":                        testpack.SeriesJSON(t, "saga", "Saga", "a@1", "b@2", "c@3", "d@4", "e@5"),
 		"works/xx/fixture-gem-red/work.json":         testpack.WorkJSON(t, "fixture-gem-red", "Fixture Gem Red"),
 		"works/xx/fixture-gem-red/recordings/r.json": testpack.RecJSON(t, "r", "fixture-gem-red", testpack.WithRecLanguage("de"), testpack.WithNarrators("anna-sprecher")),
 	}

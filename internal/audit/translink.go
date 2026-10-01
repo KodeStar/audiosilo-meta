@@ -61,7 +61,9 @@ import (
 //     met "Mia & Korum" because the collection vocabulary is English. Both are advisory
 //     here. So is an original that is a dramatized or adapted production (a translation
 //     is of the text, and the one English record of "City of Thorns" is its dramatized
-//     adaptation).
+//     adaptation). Unlike series-edition, a non-en original is not a veto (a
+//     deliberate trade: a translation that states nothing can still pass as an
+//     original; measured, one non-en original was linked, correctly).
 //
 // EXACTLY ONE original, in both subclasses: two candidates are no proposal at all, and
 // the count of such ambiguous records (and of records whose candidate fails the language
