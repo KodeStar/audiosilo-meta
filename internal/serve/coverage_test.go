@@ -287,7 +287,7 @@ func TestCoverageWorksSearch(t *testing.T) {
 // request).
 func TestCoverageSearchIsIndexed(t *testing.T) {
 	snap := snapshotFor(t, coverageCatalog())
-	where, args, ok := snap.coverageWhere(filterMissing, "multi")
+	where, args, ok := snap.coverageWhere(filterMissing, "multi", nil)
 	if !ok {
 		t.Fatal("coverage filter unexpectedly unavailable")
 	}

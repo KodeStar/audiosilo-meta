@@ -25,11 +25,16 @@ type personResult struct {
 	Name string     `json:"name"`
 }
 
+// seriesResult is a search hit that is a series. Language is the series' DERIVED
+// language (the strict majority of its members', read at build), so a list
+// filtered or badged by language can say which a series is in; it is omitted on
+// a tie and on any artifact older than languagesSchemaVersion.
 type seriesResult struct {
-	Kind  searchKind `json:"kind"`
-	ID    string     `json:"id"`
-	Name  string     `json:"name"`
-	Works int        `json:"works"`
+	Kind     searchKind `json:"kind"`
+	ID       string     `json:"id"`
+	Name     string     `json:"name"`
+	Works    int        `json:"works"`
+	Language string     `json:"language,omitempty"`
 }
 
 // ftsQuery turns a raw user query into a safe FTS5 MATCH expression: every
@@ -445,12 +450,40 @@ const (
 // The two FTS queries behind every search endpoint. They differ only in the kind
 // predicate, so a scoped page is filtered at the source rather than after the
 // fact: ?limit=20 on works/search returns 20 works, not the works among 20 mixed
-// hits. ftsHits is the one place either is issued, so the SQL and its arguments
-// are chosen together and can never be paired wrongly.
+// hits. ftsSearchQuery is the one place either is chosen, so the SQL and its
+// arguments are chosen together and can never be paired wrongly.
 const (
 	searchSQL     = `SELECT kind, id FROM search_fts WHERE search_fts MATCH ? ORDER BY bm25(search_fts) LIMIT ?`
 	searchKindSQL = `SELECT kind, id FROM search_fts WHERE search_fts MATCH ? AND kind = ? ORDER BY bm25(search_fts) LIMIT ?`
 )
+
+// ftsSearchQuery picks the search SQL for kind and a (live) language filter and
+// builds its arguments in the same breath. With no filter it returns the two
+// constants above UNCHANGED - an unfiltered request issues exactly the SQL it
+// always did, which TestFTSSearchQueryWithoutAFilterIsUnchanged pins. A filter is
+// the same query with the language predicate beside the kind one, so a filtered
+// page is filtered at the source exactly as a scoped one is: ?lang=de&limit=20
+// returns 20 German hits, not the German ones among 20.
+//
+// The predicate lets a row with NO language through (predicate's unknownPasses):
+// a person row carries ” on the combined search, and so does a series whose
+// members tie - an unknown side is never judged.
+func ftsSearchQuery(kind searchKind, match string, limit int, lang langFilter) (string, []any) {
+	if len(lang) == 0 {
+		if kind == kindAny {
+			return searchSQL, []any{match, limit}
+		}
+		return searchKindSQL, []any{match, string(kind), limit}
+	}
+	pred, predArgs := lang.predicate("language", true)
+	where, args := `search_fts MATCH ?`, []any{match}
+	if kind != kindAny {
+		where += ` AND kind = ?`
+		args = append(args, string(kind))
+	}
+	args = append(append(args, predArgs...), limit)
+	return `SELECT kind, id FROM search_fts WHERE ` + where + ` AND ` + pred + ` ORDER BY bm25(search_fts) LIMIT ?`, args
+}
 
 // workIDsInFTSSQL is the id-only kind-scoped subquery the coverage browser
 // narrows with. The kind literal is composed from the constant at COMPILE time,
@@ -475,14 +508,27 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 // Both apply to the combined page and to the WORK scope only. The ids they
 // resolve are always works, so prepending them on a people or series page would
 // put a work where the endpoint promises neither.
-func (s *snapshot) search(kind searchKind, q string, limit int) ([]any, error) {
-	hits, err := s.ftsHits(kind, ftsQuery(q), limit)
+//
+// lang narrows every hit to the languages it names (langfilter.go), the boosts
+// included: they resolve works outside the FTS query, so its predicate never saw
+// them, and a boosted work in another language is dropped before mergeHits rather
+// than leading a page the reader asked to exclude it from. The people scope
+// ignores lang - a person has no language, so there is nothing to narrow by.
+func (s *snapshot) search(kind searchKind, q string, limit int, lang langFilter) ([]any, error) {
+	lang = s.liveLang(lang)
+	if kind == kindPerson {
+		lang = nil
+	}
+	hits, err := s.ftsHits(kind, ftsQuery(q), limit, lang)
 	if err != nil {
 		return nil, err
 	}
 	var boosted []string
 	if kind == kindAny || kind == kindWork {
 		boosted = s.boostedWorks(q)
+		if boosted, err = s.worksInLanguages(boosted, lang); err != nil {
+			return nil, err
+		}
 	}
 	return s.results(mergeHits(boosted, hits, limit))
 }
@@ -494,12 +540,9 @@ func (s *snapshot) search(kind searchKind, q string, limit int) ([]any, error) {
 //
 // The hits are collected FIRST so the whole page's cards, names and summaries
 // can be resolved in one batch each (see results) rather than inside the scan
-// loop.
-func (s *snapshot) ftsHits(kind searchKind, match string, limit int) ([]searchHit, error) {
-	query, args := searchSQL, []any{match, limit}
-	if kind != kindAny {
-		query, args = searchKindSQL, []any{match, string(kind), limit}
-	}
+// loop. lang must already be live (snapshot.liveLang); nil is no filter.
+func (s *snapshot) ftsHits(kind searchKind, match string, limit int, lang langFilter) ([]searchHit, error) {
+	query, args := ftsSearchQuery(kind, match, limit, lang)
 	rows, err := s.db.Query(query, args...)
 	if err != nil {
 		return nil, err
@@ -605,7 +648,7 @@ func (s *snapshot) results(hits []searchHit) ([]any, error) {
 			if !ok {
 				continue
 			}
-			out = append(out, seriesResult{Kind: kindSeries, ID: h.id, Name: sum.name, Works: sum.works})
+			out = append(out, seriesResult{Kind: kindSeries, ID: h.id, Name: sum.name, Works: sum.works, Language: sum.language})
 		}
 	}
 	return out, nil

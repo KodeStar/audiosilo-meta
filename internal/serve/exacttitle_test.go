@@ -130,7 +130,7 @@ func TestExactTitleBoost(t *testing.T) {
 func TestExactTitleBoostFixesTheRanking(t *testing.T) {
 	snap := snapshotFor(t, exactTitleCatalog())
 
-	hits, err := snap.ftsHits(kindWork, ftsQuery("spare"), 20)
+	hits, err := snap.ftsHits(kindWork, ftsQuery("spare"), 20, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -186,7 +186,7 @@ func TestExactTitleMisses(t *testing.T) {
 
 	// And the page a miss produces is exactly the FTS page, hit for hit.
 	const q = "spare room"
-	hits, err := snap.ftsHits(kindAny, ftsQuery(q), 20)
+	hits, err := snap.ftsHits(kindAny, ftsQuery(q), 20, nil)
 	if err != nil {
 		t.Fatal(err)
 	}

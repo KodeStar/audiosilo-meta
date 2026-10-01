@@ -24,6 +24,26 @@ import (
 // A match is one BookMetadata per RECORDING, since a recording is what ABS is
 // matching a local audiobook against. Business logic lives in testable methods
 // on *snapshot; the handler is transport-only.
+//
+// A PER-LANGUAGE provider is the same endpoint under a language segment: an admin
+// whose library is German configures https://meta.audiosilo.app/abs/de, and ABS
+// calls /abs/de/search. ABS builds that URL by plain concatenation
+// (CustomProviderAdapter.js: `${provider.url}/search?...`, the configured string
+// kept as typed), which is why the language rides in the PATH - ABS sends only
+// its four query parameters and there is nowhere else to put it. A base URL
+// configured with a trailing slash arrives as /abs/de//search, which ServeMux's
+// path cleaning answers with a 307 to /abs/de/search (query kept), and ABS's axios
+// follows a redirected GET.
+//
+// The segment RANKS, it never filters. ABS asks "which book is this file", and
+// the answer may be a German library's English original; a filter would turn
+// that into "no results". So the candidates are the language-matched hits
+// followed by the unfiltered ones, and the author - evidence about THIS book -
+// still dominates the language, which is only a library-wide default:
+// (author + language, author, language, the rest).
+
+// absLangWildcard is the path wildcard /abs/{lang}/search reads its filter from.
+const absLangWildcard = "lang"
 
 // absMaxMatches caps the number of BookMetadata entries returned. ABS shows the
 // admin a short pick-list, so a large result set is noise.
@@ -66,6 +86,25 @@ type absBook struct {
 // sends a query; a missing/empty one is a 400. It never 404s: a no-match is a
 // 200 with an empty array.
 func (s *Server) handleABSSearch(w http.ResponseWriter, r *http.Request) {
+	s.serveABS(w, r, nil)
+}
+
+// handleABSLangSearch is GET /abs/{lang}/search: the same search ranked toward
+// the languages the segment names. A segment that is not a language list is a
+// 404 - it names no provider this server offers, and ABS shows "no results"
+// either way - rather than the 400 a malformed ?lang= is.
+func (s *Server) handleABSLangSearch(w http.ResponseWriter, r *http.Request) {
+	lang, err := parseLangFilter(r.PathValue(absLangWildcard))
+	if err != nil || len(lang) == 0 {
+		writeErr(w, http.StatusNotFound, "unknown provider language")
+		return
+	}
+	s.serveABS(w, r, lang)
+}
+
+// serveABS is the transport both ABS routes share: lang is nil on the unscoped
+// one.
+func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, lang langFilter) {
 	q := strings.TrimSpace(r.URL.Query().Get("query"))
 	if q == "" {
 		writeErr(w, http.StatusBadRequest, "query is required")
@@ -78,7 +117,7 @@ func (s *Server) handleABSSearch(w http.ResponseWriter, r *http.Request) {
 	// search. Normalize to the bare form here so the exact-lookup path fires.
 	isbn := normalizeISBN(r.URL.Query().Get("isbn"))
 
-	matches, err := s.current().absSearch(q, author, isbn, absMaxMatches)
+	matches, err := s.current().absSearch(q, author, isbn, absMaxMatches, lang)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -100,11 +139,18 @@ func (s *Server) handleABSSearch(w http.ResponseWriter, r *http.Request) {
 //  3. Emit one BookMetadata per recording of each matched work, best-ranked
 //     first, capped at limit.
 //
+// lang (the /abs/{lang}/search segment, nil on /abs/search) widens step 2 into
+// two windows - the language-matched hits, then the unfiltered ones - and ranks
+// the language second to the author (see the file header). An exact ISBN is not
+// re-ranked: it names one recording outright. Below languagesSchemaVersion lang
+// is ignored, and the answer is the unscoped one.
+//
 // It always returns a non-nil slice.
-func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, error) {
+func (s *snapshot) absSearch(query, author, isbn string, limit int, lang langFilter) ([]absBook, error) {
 	if limit <= 0 {
 		limit = absMaxMatches
 	}
+	lang = s.liveLang(lang)
 
 	if isbn != "" {
 		res, err := s.lookup("", isbn)
@@ -127,12 +173,12 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 		// isbn missed: fall through to a title search.
 	}
 
-	workIDs, err := s.absWorkSearch(query, limit*3)
+	workIDs, inLang, err := s.absCandidates(query, limit*3, lang)
 	if err != nil {
 		return nil, err
 	}
-	if author != "" {
-		workIDs, err = s.rankByAuthor(workIDs, author)
+	if author != "" || inLang != nil {
+		workIDs, err = s.rankByAuthor(workIDs, author, inLang)
 		if err != nil {
 			return nil, err
 		}
@@ -159,16 +205,49 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 	return capABS(out, limit), nil
 }
 
+// absCandidates is step 2's candidate list. With no language it is the one
+// unfiltered window it always was, and inLang is nil. With one it is the
+// language-matched window followed by the unfiltered window, deduplicated (each
+// limit long, so a language-matched work outranked by limit others still makes
+// the list, and an original in another language is never lost to the preference),
+// and inLang is the set the first window found - what the ranking reads.
+//
+// Membership is read off the filtered query rather than off each work's tag: a
+// work in the unfiltered window that matches the language is, by bm25 order,
+// already in the filtered one.
+func (s *snapshot) absCandidates(query string, limit int, lang langFilter) (ids []string, inLang map[string]bool, err error) {
+	all, err := s.absWorkSearch(query, limit, nil)
+	if err != nil || lang == nil {
+		return all, nil, err
+	}
+	matched, err := s.absWorkSearch(query, limit, lang)
+	if err != nil {
+		return nil, nil, err
+	}
+	inLang = make(map[string]bool, len(matched))
+	for _, id := range matched {
+		inLang[id] = true
+	}
+	ids = matched
+	for _, id := range all {
+		if !inLang[id] {
+			ids = append(ids, id)
+		}
+	}
+	return ids, inLang, nil
+}
+
 // absWorkSearch runs the FTS query restricted to works and returns matched work
 // ids best-ranked first. It goes through the same ftsHits the JSON search
 // endpoints use - one SQL constant, one escaping, one ranking - and keeps only
 // the ids, the kind being kindWork by construction. A ranking change therefore
 // lands on both surfaces at once rather than on whichever one was remembered.
-func (s *snapshot) absWorkSearch(query string, limit int) ([]string, error) {
+// lang must be live; nil is the unfiltered search.
+func (s *snapshot) absWorkSearch(query string, limit int, lang langFilter) ([]string, error) {
 	if limit <= 0 {
 		limit = absMaxMatches
 	}
-	hits, err := s.ftsHits(kindWork, ftsQuery(query), limit)
+	hits, err := s.ftsHits(kindWork, ftsQuery(query), limit, lang)
 	if err != nil {
 		return nil, err
 	}
@@ -182,21 +261,36 @@ func (s *snapshot) absWorkSearch(query string, limit int) ([]string, error) {
 // rankByAuthor is a stable partition: works whose authors match the author query
 // loosely come first (preserving FTS order within each group), the rest follow.
 // It boosts rather than filters, so a wrong author never empties the results.
-func (s *snapshot) rankByAuthor(workIDs []string, author string) ([]string, error) {
-	namesByWork, err := s.authorNamesForWorks(workIDs)
-	if err != nil {
-		return nil, err
-	}
-	matched := make([]string, 0, len(workIDs))
-	rest := make([]string, 0, len(workIDs))
-	for _, id := range workIDs {
-		if authorMatches(namesByWork[id], author) {
-			matched = append(matched, id)
-		} else {
-			rest = append(rest, id)
+//
+// inLang, when the request named a language, splits each of those two groups
+// again - the language-matched works first - so the order is (author + language,
+// author, language, the rest): the author is evidence about this one book, the
+// language a library-wide default, so the author dominates. With inLang nil the
+// partition is the author one alone, byte for byte what /abs/search always did.
+func (s *snapshot) rankByAuthor(workIDs []string, author string, inLang map[string]bool) ([]string, error) {
+	var namesByWork map[string][]string
+	if author != "" {
+		var err error
+		if namesByWork, err = s.authorNamesForWorks(workIDs); err != nil {
+			return nil, err
 		}
 	}
-	return append(matched, rest...), nil
+	var groups [4][]string
+	for _, id := range workIDs {
+		g := 0
+		if !authorMatches(namesByWork[id], author) {
+			g += 2
+		}
+		if inLang != nil && !inLang[id] {
+			g++
+		}
+		groups[g] = append(groups[g], id)
+	}
+	out := make([]string, 0, len(workIDs))
+	for _, g := range groups {
+		out = append(out, g...)
+	}
+	return out, nil
 }
 
 // authorNamesForWorks fetches every author display name for the given works in

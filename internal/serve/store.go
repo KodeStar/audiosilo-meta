@@ -501,8 +501,16 @@ func namesByPersonIDSQL(ph string) string {
 // page is 100% series, so it is the join rather than a COUNT per row. The LEFT
 // JOIN keeps a series with no member works on the page, with a count of zero,
 // instead of dropping it.
-func seriesSummariesByIDSQL(ph string) string {
-	return `SELECT s.id, s.name, COUNT(sw.work_id) FROM series s LEFT JOIN series_works sw ON sw.series_id = s.id ` +
+//
+// A languages-era artifact also hands back the series' derived language from the
+// same primary-key row; an older one has no such column, so its text selects NULL
+// in its place and both scan into one shape (seriesHeaderSQL's two-text pattern).
+func seriesSummariesByIDSQL(ph string, languages bool) string {
+	lang := "NULL"
+	if languages {
+		lang = "s.language"
+	}
+	return `SELECT s.id, s.name, ` + lang + `, COUNT(sw.work_id) FROM series s LEFT JOIN series_works sw ON sw.series_id = s.id ` +
 		`WHERE s.id IN (` + ph + `) GROUP BY s.id, s.name`
 }
 
@@ -746,11 +754,12 @@ func (s *snapshot) namesByPersonID(ids []string) (map[string]string, error) {
 	return out, nil
 }
 
-// seriesSummary is a series' name plus how many works it holds - what a series
-// search hit carries.
+// seriesSummary is a series' name, how many works it holds and its derived
+// language ("" on a tie or an older artifact) - what a series search hit carries.
 type seriesSummary struct {
-	name  string
-	works int
+	name     string
+	works    int
+	language string
 }
 
 // seriesSummariesByID returns the name and member count of each series id, in
@@ -758,7 +767,7 @@ type seriesSummary struct {
 func (s *snapshot) seriesSummariesByID(ids []string) (map[string]seriesSummary, error) {
 	out := map[string]seriesSummary{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(seriesSummariesByIDSQL(ph), args...)
+		rows, err := s.db.Query(seriesSummariesByIDSQL(ph, s.schemaVersion >= languagesSchemaVersion), args...)
 		if err != nil {
 			return err
 		}
@@ -766,9 +775,11 @@ func (s *snapshot) seriesSummariesByID(ids []string) (map[string]seriesSummary, 
 		for rows.Next() {
 			var id string
 			var sum seriesSummary
-			if err := rows.Scan(&id, &sum.name, &sum.works); err != nil {
+			var lang sql.NullString
+			if err := rows.Scan(&id, &sum.name, &lang, &sum.works); err != nil {
 				return err
 			}
+			sum.language = lang.String
 			out[id] = sum
 		}
 		return rows.Err()

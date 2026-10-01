@@ -29,13 +29,15 @@ type coverageTotals struct {
 // characters/recaps/recap_summary/description the work still lacks (in that
 // fixed order - description last, so an existing consumer's prefix is unmoved);
 // for a "has X" filter it may be empty (the work is fully covered). Series is
-// omitted for standalone works.
+// omitted for standalone works. Language is the work's BCP 47 tag and, as on a
+// work card, always present - every work states one.
 type coverageWork struct {
-	ID      string      `json:"id"`
-	Title   string      `json:"title"`
-	Authors []personRef `json:"authors"`
-	Series  *seriesRef  `json:"series,omitempty"`
-	Missing []string    `json:"missing"`
+	ID       string      `json:"id"`
+	Title    string      `json:"title"`
+	Language string      `json:"language"`
+	Authors  []personRef `json:"authors"`
+	Series   *seriesRef  `json:"series,omitempty"`
+	Missing  []string    `json:"missing"`
 }
 
 // seriesGap reports the integer positions absent from a series between its
@@ -176,7 +178,11 @@ func boolSQL(evaluable bool, expr string) string {
 // the plan from the FTS hit set instead. The trade is match semantics -
 // token-prefix, exactly what /api/v1/search does, rather than mid-word
 // substring - which makes the two search surfaces behave the same way.
-func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string, args []any, available bool) {
+//
+// lang (already live - snapshot.liveLang) narrows by works.language through the
+// filter's RANGE predicate (worksPredicate), which SEARCHes idx_works_language
+// for a minority language, so it counts and pages only its own rows.
+func (s *snapshot) coverageWhere(filter coverageFilter, q string, lang langFilter) (where string, args []any, available bool) {
 	evalSidecars := s.schemaVersion >= sidecarSchemaVersion
 	evalSummary := s.schemaVersion >= summarySchemaVersion
 	evalDescription := s.schemaVersion >= descriptionSchemaVersion
@@ -220,6 +226,11 @@ func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string,
 		where += ` AND w.id IN (` + workIDsInFTSSQL + `)`
 		args = append(args, ftsQuery(q))
 	}
+	if len(lang) > 0 {
+		pred, predArgs := s.worksPredicate(lang, "w.language")
+		where += ` AND ` + pred
+		args = append(args, predArgs...)
+	}
 	return where, args, true
 }
 
@@ -238,12 +249,12 @@ func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string,
 // a dimension whose table is absent (recap_summary before v3; everything before
 // v2) returns Available=false with no rows, and the missing filter needs the
 // characters/recaps tables (v2+).
-func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset int) (*coverageWorksResult, error) {
+func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset int, lang langFilter) (*coverageWorksResult, error) {
 	res := &coverageWorksResult{Works: []coverageWork{}, Limit: limit, Offset: offset}
 	evalSummary := s.schemaVersion >= summarySchemaVersion
 	evalDescription := s.schemaVersion >= descriptionSchemaVersion
 
-	where, args, available := s.coverageWhere(filter, q)
+	where, args, available := s.coverageWhere(filter, q, s.liveLang(lang))
 	if !available {
 		return res, nil
 	}
@@ -264,7 +275,7 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 	// guards those two columns.
 	pageArgs := append(append([]any{}, args...), limit, offset)
 	rows, err := s.db.Query(
-		`SELECT w.id, w.title, `+hasCharsExpr+`, `+hasRecapsExpr+`, `+boolSQL(evalSummary, hasSummaryExpr)+
+		`SELECT w.id, w.title, w.language, `+hasCharsExpr+`, `+hasRecapsExpr+`, `+boolSQL(evalSummary, hasSummaryExpr)+
 			`, `+boolSQL(evalDescription, hasDescriptionExpr)+
 			` FROM works w WHERE `+where+` ORDER BY w.title, w.id LIMIT ? OFFSET ?`, pageArgs...)
 	if err != nil {
@@ -300,7 +311,7 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 	return res, nil
 }
 
-// scanCoveragePage reads the (id, title, has-flags) page rows into coverageWork
+// scanCoveragePage reads the (id, title, language, has-flags) page rows into coverageWork
 // values with their Missing lists filled, and closes rows. Authors and series
 // are attached by the caller in one batch.
 func scanCoveragePage(rows *sql.Rows, evalSummary, evalDescription bool) ([]coverageWork, error) {
@@ -309,7 +320,7 @@ func scanCoveragePage(rows *sql.Rows, evalSummary, evalDescription bool) ([]cove
 	for rows.Next() {
 		var cw coverageWork
 		var hasChars, hasRecaps, hasSummary, hasDescription int
-		if err := rows.Scan(&cw.ID, &cw.Title, &hasChars, &hasRecaps, &hasSummary, &hasDescription); err != nil {
+		if err := rows.Scan(&cw.ID, &cw.Title, &cw.Language, &hasChars, &hasRecaps, &hasSummary, &hasDescription); err != nil {
 			return nil, err
 		}
 		cw.Missing = []string{}

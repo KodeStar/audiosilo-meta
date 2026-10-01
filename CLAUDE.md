@@ -627,7 +627,7 @@ flavours: the combined `search?q=` plus the **type-scoped** `works/search`,
 `kind = ?` predicate (a stored UNINDEXED column - no new index, no artifact
 change, so they answer against every already-published release) returning the
 same per-kind result shapes. The kind travels as DATA - `kindAny` is the
-unscoped search - so ONE `snapshot.search(kind, q, limit)` and one
+unscoped search - so ONE `snapshot.search(kind, q, limit, lang)` and one
 `Server.searchHandler(kind)` serve all four, `ftsHits` picks the SQL constant
 and builds that constant's args together, and `snapshot.results` composes every
 page, batching EVERY per-hit read (cards, work narrators, person names, series
@@ -997,9 +997,10 @@ built as the wire string with each segment escaped exactly once - handing it to
 not escape at all. `TestEveryIDRouteResolvesRetiredSlugs` diffs that table
 against `Server.routes`, exactly as the OpenAPI guard does, with the candidates
 derived from each pattern's SHAPE rather than from that spelling
-(`redirectCoverageGaps`; a route may also be listed in `redirectExemptRoutes`,
-empty today, to say out loud that its wildcard is not a record), so a fifth
-family route cannot ship without redirect support whatever it calls its id. A row
+(`redirectCoverageGaps`; a route may also be listed in `redirectExemptRoutes` -
+today the sitemap shard file and the ABS language segment - to say out loud
+that its wildcard is not a record), so a fifth family route cannot ship without
+redirect support whatever it calls its id. A row
 pointing a slug at ITSELF is ignored rather than served, so the resolver cannot
 loop even on an artifact `pkg/check` never saw. Cost is bounded at LOAD: the version gate
 (schema_version >= 5) and "does the table hold anything at all" are both asked
@@ -1287,7 +1288,8 @@ the card's `seriesRef`), so two reading orders of one franchise count as one ser
 (`TestLatestCapsAnOrderingFamilyAsOneSeries`). `/api/v1/stats` gains `languages: [{language, works}]` (works desc, then tag),
 computed ONCE in `loadStats` over `idx_works_language(language)` - the language
 alone, since works/latest's `(added_at IS NULL)` order is no index column's to
-serve; a language-scoped latest designs its own index (Phase 4). Two load-time
+serve; the language-scoped latest needed no index of its own (see the language
+filter below). Two load-time
 memos keep an empty layer - every release until Phase 3 data lands - free on the
 work and series pages: `hasTranslations` (the table holds anything) and
 `orderingPrimaries`, the SET of series some variant names (`orderingPrimariesSQL`, a
@@ -1305,8 +1307,60 @@ same pair; every reference names the NODE the other page defines - `workNodeID`
 series page's own BookSeries and a work page's `isPartOf` carry too - so one record
 is one node across every page that mentions it. Goldens `work-translations`,
 `work-translation-of` and `series-orderings`, all through the package's one
-`assertGolden`. `search_fts.language` is written but read by nothing yet - it is
-the `lang=` filter's column, not this change's.
+`assertGolden`.
+
+**The LANGUAGE FILTER (`?lang=`, `langfilter.go`)** narrows the list surfaces -
+the combined, work and series searches (both boosts included), `works/latest` and
+`coverage/works` - and nothing that names a record (`works/{id}`, `series/{id}`,
+`people/{id}`, the pages, sitemaps, feeds, lookup). ONE parser,
+`parseLangFilter`: a comma list (a repeated parameter is the same list), each item
+the schema's tag pattern, reduced to `model.PrimarySubtag`, deduped and sorted, at
+most 8; a non-tag item is a 400 naming it, a language the catalogue does not hold
+filters to nothing, and `people/search` validates and then ignores it (a person
+has no language). Matching is RFC 4647 basic filtering on the primary subtag
+through ONE SQL spelling, `langFilter.predicate`: per language `(col = ? OR (col >
+? AND col < ?))` with the bounds `de-`/`de.`, so `de` matches `de-at` and the
+works-table form stays index-friendly (LIKE defeats `idx_works_language`). On the
+FTS side the predicate adds `language = ''`, so a person row and a TIED series
+(derived language NULL, '' in the FTS row) pass every filter - an unknown side is
+never judged. It is a plain predicate on the v7 columns (`search_fts.language`,
+UNINDEXED; `works.language`), so no artifact or SchemaVersion change, and THE gate
+is `snapshot.liveLang`: below `languagesSchemaVersion` the parsed filter becomes
+nil, i.e. validated then ignored. An absent filter emits EXACTLY the old SQL
+(`ftsSearchQuery` returns `searchSQL`/`searchKindSQL` unchanged, pinned by
+`TestFTSSearchQueryWithoutAFilterIsUnchanged`; works/latest's phase one is now the
+named constant `latestCandidatesSQL`). The two boosts resolve works OUTSIDE the
+FTS query, so their ids go through `worksInLanguages` (a primary-key read, only
+when a boost fired under a live filter) before `mergeHits` - a page never carries
+a work outside the filter. The works-table surfaces read the predicate through
+`snapshot.worksPredicate`, which picks the planner's path off the in-memory stats
+census: through `idx_works_language` when the filter selects at most half the
+catalogue, with the index switched off (`+col`) when it selects more, because a
+built artifact has no sqlite_stat1 and walking the index over most of the table
+then reading every row loses to one read of it. A series search hit gains its
+derived `language` (`seriesSummariesByIDSQL(ph, languages)`, the two-text
+pattern) and a coverage row the work's `language`. Measured over the 281k-work
+artifact (median ms, base / head no-lang / `lang=en` / `lang=de`): `search?q=the`
+196 / 181 / 336 / 223, `works/search?q=the` 327 / 318 / 333 / 220, `search?q=book`
+46 / 50 / 75 / 58, `harry` 3.7 / 3.9 / 5.6 / 3.7, `spare` 0.9 / 0.9 / 1.1 / 0.4,
+`works/latest` 88 / 85 / 92 / 21 (en through the index measured 135),
+`coverage/works` 453 / 459 / 423 / 58 - no-lang within noise, and the FTS
+premium is the language column read per MATCHED row, so it scales with the match
+set ("the" on the combined search is the worst case; the site sends nothing under
+2 characters). The rejected alternative - language as an INDEXED FTS token
+(artifact v8) - is recorded in the plan as the option if broad-query latency ever
+matters. **`GET /abs/{lang}/search`** is the per-language Audiobookshelf provider
+(an admin configures `https://meta.audiosilo.app/abs/de`; ABS concatenates
+`/search` and sends only its own parameters, so the language rides in the path,
+and a trailing-slash base arrives as `/abs/de//search`, which ServeMux's path
+cleaning 307s to the clean path with the query kept). It RANKS, never filters:
+`absCandidates` is the language-matched FTS window followed by the unfiltered one
+(each `limit*3`, deduped), and `rankByAuthor` partitions (author + language,
+author, language, rest) - the author is evidence about this book, the language a
+library default. A segment that is not a language list is a 404, the route is in
+`redirectExemptRoutes` (its wildcard is a filter, not a record), and the unscoped
+`/abs/search` is byte-identical to before (`TestUnscopedABSSearchIsUnchanged`,
+goldens captured on the base code).
 
 **The SITE has a `/watching` page** (`site/src/pages/watching.astro` +
 `components/watching/`): a reader watches a series from its detail page and
