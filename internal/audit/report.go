@@ -123,7 +123,7 @@ var classDoc = map[string]string{
 		"language is dropped, one with exactly one same-name or translation-linked series of its language is moved there, and the " +
 		"rest move to a new series of the same name. A coupled member, a narrator contradiction, a tie by incumbency, a " +
 		"CONTESTED majority (a keeper member states a translation, the halves share no author, or the principal author writes mostly in " +
-		"a minority language) or a conflicting proposal of another class makes a proposal advisory; a contested or tied series' " +
+		"a minority language) or a conflicting proposal of another class makes a proposal advisory; every mixed series' " +
 		"split is also proposed in every other orientation (other-keeper), for a reviewer to accept exactly one. A work whose " +
 		"language its narrators contradict is a set-work-language review, never applied mechanically.",
 	ClassPersonDup:  "possible duplicate people. ADVISORY throughout, high false-positive rate: two real people can share a name or sit one typo apart, so nothing here proposes an action.",
@@ -345,7 +345,7 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 		{Label: "... a keeper-language member states a translation (stated)", N: mx.ContestedStated},
 		{Label: "... the keeper and minority halves share no author (collision)", N: mx.ContestedCollision},
 		{Label: "... the principal author writes mostly in a minority language (home)", N: mx.ContestedHome},
-		{Label: "split proposals in another orientation (contested or tied)", N: mx.OtherKeeperSplits},
+		{Label: "split proposals in another orientation", N: mx.OtherKeeperSplits},
 		{Label: "recordings stating a language their work does not", N: mx.CrossRecordings},
 		{Label: "... over this many works", N: mx.CrossWorks},
 		{Label: "works whose every recording states one other language", N: mx.AllOther},

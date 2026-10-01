@@ -337,7 +337,8 @@ func TestLangMixRespectsTheOtherClassesLocks(t *testing.T) {
 	} {
 		t.Run(name, func(t *testing.T) {
 			f, _ := detectLanguageMix(ix, locks)
-			if len(f.rows) != 1 || !f.rows[0].Propose.Advisory || !strings.Contains(f.rows[0].Propose.Reason, "in this audit") {
+			rows := slices.DeleteFunc(slices.Clone(f.rows), func(fd Finding) bool { return fd.Subclass == lMixOtherKeeper })
+			if len(rows) != 1 || !rows[0].Propose.Advisory || !strings.Contains(rows[0].Propose.Reason, "in this audit") {
 				t.Fatalf("rows = %+v", f.rows)
 			}
 		})
@@ -542,8 +543,11 @@ func TestLangMixUncontestedMajorityIsMechanical(t *testing.T) {
 			if fd := onlyMix(t, rep, lMixSplit); fd.Propose.Advisory {
 				t.Fatalf("split = %+v, want mechanical", fd.Propose)
 			}
-			if got := subclassOf(t, rep, ClassLangMix, lMixOtherKeeper); len(got) != 0 || rep.LangMix.Contested != 0 {
-				t.Fatalf("an uncontested series proposed another orientation: %+v, tally %+v", got, rep.LangMix)
+			// The other orientation is still on offer, advisory, for a reviewer who
+			// knows the minority half is the original.
+			got := subclassOf(t, rep, ClassLangMix, lMixOtherKeeper)
+			if len(got) != 1 || !got[0].Propose.Advisory || got[0].Key != "the-saga/en/keep-de" || rep.LangMix.Contested != 0 {
+				t.Fatalf("other orientation = %+v, tally %+v", got, rep.LangMix)
 			}
 		})
 	}

@@ -357,19 +357,22 @@ func (m *langMix) series(s *model.Series) {
 			fd.Notes = append(fd.Notes, ct.notes...)
 		}
 	}
-	// A contested series and a tie by incumbency are proposed in EVERY orientation:
-	// each other language keeping the slug in turn, so a reviewer accepts exactly one
-	// (the reviewed-decision consistency check refuses two orientations of one series).
-	if ct.contested() || how == keepIncumbent {
-		var why string
-		if how == keepIncumbent {
-			why = fmt.Sprintf("the languages of %s tie (%s), so which half keeps its slug is a human decision", s.ID, languageCounts(byLang))
-		} else {
-			why = ct.veto(s, keeper)
-		}
-		for _, other := range otherLanguages(byLang, keeper) {
-			m.emitOtherKeeper(s, byLang, other, why, ct.notes)
-		}
+	// Every mixed series is proposed in EVERY orientation, each other language keeping
+	// the slug in turn: a count is no evidence of which half is the original, and no
+	// signal sees every case (smoky-barrett: one author, nothing stated). The rule's
+	// own choice stays mechanical only when uncontested; a reviewer who rejects it
+	// accepts exactly one other (the consistency check refuses two orientations).
+	var why string
+	switch {
+	case how == keepIncumbent:
+		why = fmt.Sprintf("the languages of %s tie (%s), so which half keeps its slug is a human decision", s.ID, languageCounts(byLang))
+	case ct.contested():
+		why = ct.veto(s, keeper)
+	default:
+		why = fmt.Sprintf("%s keeps the slug by %s, which says nothing about which half is the original", keeper, how)
+	}
+	for _, other := range otherLanguages(byLang, keeper) {
+		m.emitOtherKeeper(s, byLang, other, why, ct.notes)
 	}
 }
 

@@ -46,7 +46,7 @@ func TestReviewedDecisionsReachMetarepair(t *testing.T) {
 	for _, op := range []string{audit.OpSetWorkLanguage, audit.OpSplitSeries} {
 		found := false
 		for _, fd := range fresh.Findings(audit.ClassLangMix) {
-			if fd.Propose.Op != op {
+			if fd.Propose.Op != op || fd.Subclass == "other-keeper" {
 				continue
 			}
 			found = true

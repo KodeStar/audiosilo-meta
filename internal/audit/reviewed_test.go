@@ -606,3 +606,18 @@ func TestReviewedIndexesReviewByClass(t *testing.T) {
 		}
 	}
 }
+
+// An uncontested majority split is mechanical; a reviewer who knows the minority is
+// the original rejects it and accepts the other orientation in the same list.
+func TestReviewedRejectsTheMajorityAndAcceptsTheOtherOrientation(t *testing.T) {
+	majority := Proposal{Op: OpSplitSeries, Target: "saga", Others: []string{"d"}, Field: fieldLanguage, From: "de", To: "en"}
+	other := Proposal{Op: OpSplitSeries, Target: "saga", Others: []string{"a", "b"}, Field: fieldLanguage, From: "en", To: "de", Advisory: true}
+	rep := proposalReport(majority, other)
+	rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(majority, "reject"), review(other, "accept")}, nil)
+	rows := rep.classes[0].rows
+	if !rows[0].Propose.Advisory || rows[1].Propose.Advisory {
+		t.Fatalf("majority advisory=%v, other advisory=%v; want the majority withheld and the other applied (%+v)",
+			rows[0].Propose.Advisory, rows[1].Propose.Advisory, rep.Reviewed)
+	}
+	assertProposalsConsistent(t, rep)
+}
