@@ -1,6 +1,7 @@
 package audit
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 
@@ -345,8 +346,12 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 	})
 	b.WriteString("\n")
 
-	rj := rep.LinkRejections
-	b.WriteString("T-LINK reviewed rejections (`" + linkRejectionsPath + "`): a link a maintainer reviewed and\n")
+	rj := rep.Reviewed
+	if !rj.Legacy {
+		writeReviewedSummary(b, rj)
+		return
+	}
+	b.WriteString("T-LINK reviewed rejections (`" + legacyRejectionsPath + "`): a link a maintainer reviewed and\n")
 	b.WriteString("rejected stays in T-LINK.ndjson, ADVISORY, with the review's reason; a slug since retired is read\n")
 	b.WriteString("through the tombstone table first. An entry matching no proposal is STALE - the link was applied by\n")
 	b.WriteString("hand, a side is gone, or the candidate is only ambiguous this run - and is listed below for review;\n")
@@ -364,4 +369,44 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 		}
 		b.WriteString("\n")
 	}
+}
+
+// The legacy-only rejection view above preserves the migration's report bytes.
+// New decisions and no-ops use this general view and name the current source file.
+func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
+	b.WriteString("Reviewed decisions (`" + reviewedPath + "`), matched against fresh proposals after all classes.\n")
+	b.WriteString("Accept promotes to mechanical; reject makes advisory. No-op decisions leave the status unchanged.\n")
+	b.WriteString("Refused acceptances stay advisory; STALE decisions match no fresh proposal and are never applied.\n\n")
+	counts := map[string]int{}
+	for _, o := range t.Outcomes {
+		counts[o.Status]++
+	}
+	reportdir.Table(b, "measure", []reportdir.Row{
+		{Label: "reviewed decisions on the list", N: t.Entries()},
+		{Label: "... accepted (made mechanical)", N: counts["accepted"]},
+		{Label: "... rejected (made advisory)", N: counts["rejected"]},
+		{Label: "... no-op", N: counts["no-op"]},
+		{Label: "... acceptances refused", N: counts["refused"]},
+		{Label: "... matching no proposal (STALE)", N: len(t.Stale)},
+	})
+	b.WriteString("\n")
+	for _, o := range t.Outcomes {
+		if o.Status != "no-op" && o.Status != "refused" {
+			continue
+		}
+		fmt.Fprintf(b, "- %s `%s`: %s", o.Status, decisionIdentity(o.Entry), o.Entry.Reason)
+		if o.Why != "" {
+			fmt.Fprintf(b, "; %s", o.Why)
+		}
+		b.WriteString("\n")
+	}
+	for _, r := range t.Stale {
+		fmt.Fprintf(b, "- STALE `%s`: %s: %s\n", decisionIdentity(r), r.Decision, r.Reason)
+	}
+	b.WriteString("\n")
+}
+
+func decisionIdentity(r reviewedDecision) string {
+	raw, _ := json.Marshal(r.proposal())
+	return string(raw)
 }

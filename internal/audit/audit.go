@@ -69,9 +69,8 @@ type Report struct {
 	// Links are T-LINK's count-only tallies: the decorated records that yielded no
 	// proposal, and why.
 	Links linkStats
-	// LinkRejections is how T-LINK's reviewed-rejection list met this tree: the
-	// entries that turned a proposal advisory, and the stale ones that matched none.
-	LinkRejections linkRejectionTally
+	// Reviewed reports how the embedded decisions met this fresh audit.
+	Reviewed reviewedTally
 	// LangMix is L-MIX's count-only tallies: the mixed-language series and the
 	// memberships and works behind the class's proposals, and why some are advisory.
 	LangMix langMixStats
@@ -173,11 +172,10 @@ func checkOutDir(opts Options) error {
 }
 
 // analyze is Run without the I/O, which is what the tests drive.
-func analyze(res check.Result) *Report { return analyzeWith(res, linkRejections) }
+func analyze(res check.Result) *Report { return analyzeWith(res, reviewedDecisions) }
 
-// analyzeWith is analyze over a given T-LINK rejection list rather than the embedded
-// one, which is how a fixture names a rejection of its own records.
-func analyzeWith(res check.Result, rejections []linkRejection) *Report {
+// analyzeWith lets fixtures supply reviewed decisions without changing the embedded list.
+func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 	cat := res.Catalog
 	ix := newIndex(cat)
 
@@ -189,7 +187,6 @@ func analyzeWith(res check.Result, rejections []linkRejection) *Report {
 	// fold 45k names through model.Slugify twice over.
 	skeys := seriesKeyIndex(cat.Series)
 	links, linkTally := detectTranslationLinks(ix, res.Identity, skeys)
-	rejected := applyLinkRejections(links, rejections, cat.Redirects)
 	// L-MIX runs after every class whose mechanical proposals could touch the same
 	// records (a merge, a restated position, a filled slot), and reads them as locks:
 	// a membership move that would not commute with one of them is advisory.
@@ -200,7 +197,6 @@ func analyzeWith(res check.Result, rejections []linkRejection) *Report {
 	rep := &Report{
 		Stats:          stats,
 		Links:          linkTally,
-		LinkRejections: rejected,
 		LangMix:        mixTally,
 		LoaderProblems: len(res.Problems),
 		LoaderWarnings: len(res.Warnings),
@@ -228,6 +224,7 @@ func analyzeWith(res check.Result, rejections []linkRejection) *Report {
 		hyg,
 		loaderFindings(res),
 	}
+	rep.Reviewed = applyReviewed(rep, decisions, cat.Redirects)
 	// Sort in place and render each record's action prose from its proposal, ONCE:
 	// the writer and the summary then read the same ordered slice.
 	for _, c := range rep.classes {
