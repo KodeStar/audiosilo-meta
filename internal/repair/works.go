@@ -56,7 +56,7 @@ import (
 // recording.
 //
 // The same-production evidence a colliding recording key is judged by is the
-// IMPORTER's, called rather than restated (see sameProduction).
+// IMPORTER's, called rather than restated (see rawentry.SameProduction).
 
 // maxRecordingRekeys bounds the numbered-slug walk for a colliding recording key. A
 // work with this many recordings of one name is a data problem, not a merge to press on
@@ -164,159 +164,35 @@ func quoteFact(v string) string {
 // into a colliding sibling when they are the same production, else moved intact -
 // under a new key when the old one is taken.
 func (t *txn) moveRecording(target, loser, key string, recs map[string]entry, rec entry) error {
-	moved := rec.Clone()
-	moved.Set("work", target)
-
-	sibling, taken := recs[key]
-	if !taken {
-		recs[key] = moved
-		t.note("moved recording %s/%s to %s/%s", loser, key, target, key)
-		return nil
-	}
-	why, same := sameProduction(sibling, moved)
-	if same {
-		merged, lost := mergeRecordings(sibling, moved)
-		recs[key] = merged
-		t.note("merged recording %s/%s into %s/%s (same production: %s)", loser, key, target, key, why)
-		t.noteLost(lost, loser+"/"+key)
-		return nil
-	}
-	newKey, ok := freeRecordingKey(recs, key)
+	move, ok := rawentry.MoveRecording(recs, rec, target, key, []string{key}, func() (string, bool) {
+		return freeRecordingKey(recs, key)
+	})
 	if !ok {
 		return refusef(CatRecordingKey,
 			"recording %q of %s cannot be moved onto %s: the key is taken and no numbered variant is free within %d tries",
 			key, loser, target, maxRecordingRekeys)
 	}
-	moved.Set("id", newKey)
-	recs[newKey] = moved
-	t.note("re-keyed recording %s/%s as %s/%s and moved it intact (%s)", loser, key, target, newKey, why)
+	switch {
+	case move.Merged:
+		t.note("merged recording %s/%s into %s/%s (same production: %s)", loser, key, target, key, move.Why)
+		for _, f := range move.Lost {
+			t.noteLost([]mergedFacts{{field: f.Field, kept: f.Kept, dropped: f.Dropped}}, loser+"/"+key)
+		}
+	case move.ID != key:
+		t.note("re-keyed recording %s/%s as %s/%s and moved it intact (%s)", loser, key, target, move.ID, move.Why)
+	default:
+		t.note("moved recording %s/%s to %s/%s", loser, key, target, key)
+	}
 	return nil
 }
 
-// sameProduction reports whether two recordings that collide on one key are the same
-// production, and says why in either direction.
-//
-// EVERY RULE HERE IS THE IMPORTER'S, called rather than restated. That is not tidiness:
-// this pass asks the very question the ASIN-merge guard asks, and the first draft
-// restated both halves and got both boundaries wrong - "the larger is at most 1.1x the
-// smaller" instead of within-10%-of-the-larger, and an abridged refusal that needed
-// BOTH sides to state the flag, where the importer reads an ABSENT flag as unabridged
-// so an abridgement never folds into an unstated recording. Where the evidence does not
-// agree the mover is re-keyed, which loses nothing, so the conservative branch is also
-// the cheap one.
-func sameProduction(a, b entry) (string, bool) {
-	na, nb := a.Strs("narrators"), b.Strs("narrators")
-	if !importer.SameSet(importer.ToSet(na), importer.ToSet(nb)) {
-		return fmt.Sprintf("narrators differ: [%s] vs [%s]", joinList(na), joinList(nb)), false
-	}
-	ra, _ := a.IntAt("runtime_min")
-	rb, _ := b.IntAt("runtime_min")
-	if !importer.RuntimesCompatible(ra, rb) {
-		return fmt.Sprintf("runtimes %d and %d min are more than 10%% apart", ra, rb), false
-	}
-	if importer.AbridgedConflict(a.BoolPtr("abridged"), b.BoolPtr("abridged")) {
-		return "the abridged flags disagree (an absent flag reads as unabridged, so an abridgement never folds into one)", false
-	}
-	return "same narrators" + runtimeEvidence(ra, rb), true
-}
-
-// runtimeEvidence renders what the runtimes contributed to a sameProduction answer, so
-// a merge note says whether they agreed or were simply unstated. A runtime of 0 or less
-// is "unknown", which is the same reading RuntimesCompatible gives it.
-func runtimeEvidence(ra, rb int) string {
-	switch {
-	case ra > 0 && rb > 0:
-		return fmt.Sprintf(", runtimes %d and %d min within 10%%", ra, rb)
-	case ra > 0 || rb > 0:
-		return ", one runtime stated and the other unstated"
-	default:
-		return ", no runtime stated on either"
-	}
-}
-
-// mergedFacts are the values a recording merge could not keep both of, for the note the
-// applied record carries. Kept is what the surviving recording states, Dropped what the
-// mover stated and the merge let go.
 type mergedFacts struct {
 	field   string
 	kept    string
 	dropped string
 }
 
-// mergeRecordings folds mover into keep: identifiers and provenance unioned, every field the
-// keeper does not state filled from the mover, and every value that could not survive
-// REPORTED rather than silently discarded.
-//
-// The chapter list is the one field chosen by CONTENT rather than by side: both recordings
-// describe the same production (the same-production evidence is what got them here), so the
-// LONGER list is strictly more of the same truth - a keeper with 3 chapters and a mover with
-// 42 used to keep the 3. Measured over a 386-merge wave, 4 of 40 dropped lists were richer
-// than the one kept, and a full wave discarded about 7,198 chapter entries.
-//
-// added_at is deliberately not filled, on either record kind. It records when THIS record
-// entered the database; the mover's own date belongs to a record that no longer exists, and
-// the provenance that dates it survives in the unioned sources[], which is what metabuild
-// falls back to when added_at is absent.
-func mergeRecordings(keep, mover entry) (entry, []mergedFacts) {
-	out := keep.Clone()
-	rawentry.SetListOrDrop(out, "asin", rawentry.UnionASINs(out.ASINs(), mover.ASINs()))
-	rawentry.SetListOrDrop(out, "isbn", rawentry.UnionISBNs(out.ISBNs(), mover.ISBNs()))
-	out.Set("sources", rawentry.UnionSources(out.Sources(), mover.Sources()))
-	rawentry.SetListOrDrop(out, "narrators", rawentry.AppendUnique(out.Strs("narrators"), mover.Strs("narrators")))
-
-	lost := fillStrings(out, mover, "release_date", "publisher", "cover_url", "language")
-	// The tri-state and byte-exact members: an absent abridged is "unknown" and a false one
-	// is a statement, and a chapter list is a timeline whose numbers must survive exactly as
-	// they were written, so it is moved as BYTES either way.
-	for _, field := range []string{"abridged", "runtime_min", "publishers"} {
-		if rawentry.FillAbsentRaw(out, mover, field) {
-			continue
-		}
-		if mover.Has(field) && !sameRawMember(out, mover, field) {
-			lost = append(lost, mergedFacts{field: field, kept: factValue(out[field]), dropped: factValue(mover[field])})
-		}
-	}
-	if f, ok := chooseChapters(out, mover); ok {
-		lost = append(lost, f)
-	}
-	return out, lost
-}
-
-// chooseChapters keeps the longer of the two chapter lists and reports the choice. A list
-// only the mover carries is simply taken (no choice was made); equal lengths keep the
-// keeper's, which is arbitrary between two equally rich timelines and is still reported when
-// the bytes differ.
-func chooseChapters(out, mover entry) (mergedFacts, bool) {
-	if !mover.Has("chapters") {
-		return mergedFacts{}, false
-	}
-	if !out.Has("chapters") {
-		out.SetRaw("chapters", mover["chapters"])
-		return mergedFacts{}, false
-	}
-	kept, moved := len(out.Chapters()), len(mover.Chapters())
-	f := mergedFacts{
-		field:   "chapters",
-		kept:    fmt.Sprintf("%d chapters", kept),
-		dropped: fmt.Sprintf("%d chapters", moved),
-	}
-	if moved > kept {
-		out.SetRaw("chapters", mover["chapters"])
-		f.kept, f.dropped = f.dropped, f.kept
-		return f, true
-	}
-	if sameRawMember(out, mover, "chapters") {
-		return mergedFacts{}, false // the same timeline written twice
-	}
-	return f, true
-}
-
-// sameRawMember reports whether two entries carry byte-identical values for a member. Both
-// sides came off disk through the same canonical renderer, so a byte comparison is a value
-// comparison for anything this function is asked about.
-func sameRawMember(a, b entry, field string) bool {
-	return string(a[field]) == string(b[field])
-}
+func sameRawMember(a, b entry, field string) bool { return string(a[field]) == string(b[field]) }
 
 // mergeWorkFields folds a loser's work-level facts into the merged work.
 //

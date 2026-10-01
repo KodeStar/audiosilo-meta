@@ -119,7 +119,7 @@ type OutSeries struct {
 	Sources []OutSource     `json:"sources"`
 }
 
-// Mode selects a run's planning pass. The three passes are disjoint by design,
+// Mode selects a run's planning pass. The passes are disjoint by design,
 // and making the choice ONE field is what makes that structural: a run cannot be
 // asked for two of them, so there is no combination to police at each layer.
 type Mode int
@@ -139,19 +139,20 @@ const (
 	// counted and dropped. It never creates a work and never touches a series.
 	// See recordings.go.
 	ModeRecordingsOnly
+	// ModeRelocate moves cross-language recordings using libex source evidence.
+	ModeRelocate
 )
 
 // boundedByCatalogue reports whether the mode's run is bounded by THIS
-// catalogue rather than by the source's - true for enrichment and
-// recordings-only, both of which do nothing at all for a row the catalogue does
-// not already match.
+// catalogue rather than by the source's. These modes do nothing for a row
+// the catalogue does not already match.
 //
-// It is why those two modes report the parse layer's warnings in AGGREGATE:
+// It is why these modes report the parse layer's warnings in AGGREGATE:
 // their natural input is a large export whose rows are overwhelmingly
 // irrelevant here, so a per-row line for each of a million rows the run was
 // never going to touch buries the output it exists to produce.
 func (m Mode) boundedByCatalogue() bool {
-	return m == ModeEnrich || m == ModeRecordingsOnly
+	return m == ModeEnrich || m == ModeRecordingsOnly || m == ModeRelocate
 }
 
 // runName is the mode's name in a conflict worklist row's "run" field
@@ -162,6 +163,8 @@ func (m Mode) boundedByCatalogue() bool {
 // nothing to do with the worklist.
 func (m Mode) runName() string {
 	switch m {
+	case ModeRelocate:
+		return "relocate"
 	case ModeEnrich:
 		return "enrich"
 	case ModeRecordingsOnly:
@@ -257,6 +260,14 @@ type Options struct {
 
 // Summary is the outcome counts of a run.
 type Summary struct {
+	RelocatedToExisting  int
+	RelocatedToNewWork   int
+	MergedIntoSibling    int
+	MembershipsRepointed int
+	// RelocationRefusals counts recordings, while RelocationSkips names their input rows.
+	RelocationRefusals map[string]int
+	Relocations        []Relocation
+
 	NewWorks      int
 	NewRecordings int
 	NewPeople     int
@@ -376,6 +387,10 @@ type Summary struct {
 	// what `metaimport libex --skipped` writes; an ASIN may appear more than
 	// once, and a row stating no ASIN is not listed.
 	Skips []RowSkip
+
+	// RelocationSkips records relocation refusals independently of ASIN admission.
+	// It includes parse refusals outside the candidate set, preserving input copies.
+	RelocationSkips []RowSkip
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the
