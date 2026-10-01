@@ -22,7 +22,7 @@ linters:
         # thrown away. Its `funcs` list REPLACES the analyzer's own default rather
         # than adding to it, so the stdlib half below is x/tools v0.44.0's default
         # (the version golangci-lint v2.12 bundles) restated verbatim; bump it
-        # with the linter pin. The repository half is internal/repair's
+        # with the linter pin. The repository half is internal/repair and rawentry's
         # LOSS-RETURNING helpers: each returns the values a merge chose away, and a
         # call that discards that return deletes a fact with nothing in the applied
         # record's notes to say so - the defect merge-series had with fillXref. A
@@ -88,12 +88,14 @@ linters:
             - slices.SortedStableFunc
             - slices.Values
             - sort.Reverse
-            - github.com/kodestar/audiosilo-meta/internal/repair.chooseChapters
+            - github.com/kodestar/audiosilo-meta/internal/rawentry.MergeRecordings
+            - github.com/kodestar/audiosilo-meta/internal/rawentry.MoveRecording
+            - github.com/kodestar/audiosilo-meta/internal/rawentry.chooseChapters
+            - github.com/kodestar/audiosilo-meta/internal/rawentry.fillRecordingStrings
             - github.com/kodestar/audiosilo-meta/internal/repair.fillStrings
             - github.com/kodestar/audiosilo-meta/internal/repair.fillXref
             - github.com/kodestar/audiosilo-meta/internal/repair.foldTranslationOf
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeOrderingFields
-            - github.com/kodestar/audiosilo-meta/internal/repair.mergeRecordings
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeSeriesFields
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeWorkFields
     staticcheck:

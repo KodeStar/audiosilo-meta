@@ -48,7 +48,7 @@ import (
 // when the run was given a worklist - writes a triageable NDJSON row naming both
 // titles.
 //
-// ATTACHING IT AS A RECORDING is done in exactly one case, and not here:
+// In create mode, ATTACHING IT AS A RECORDING is done in one case, and not here:
 // attach.go (Options.AttachEditions). A row whose series claim names a position
 // the catalogue already fills, and which this guard's identity (or the create
 // path's slug chain) resolves to exactly the work at that position, is attached
@@ -58,7 +58,9 @@ import (
 // contradicting the position still refuse. Every other refused row stays
 // refused here, for the reason above: a title match alone asserts "this IS that
 // book" on exactly the evidence the audit found insufficient to merge on. The
-// worklist keeps the rest measurable.
+// worklist keeps the rest measurable. Relocation has its own destination rule:
+// relocate.go consumes the shared probe below, attaching to one identity home
+// and refusing multiple homes, while retaining the same candidate vetoes.
 //
 // COST. The probe is a map lookup per row against ONE index, and the run does not
 // even build it: it comes out of the catalogue load the planner already performs
@@ -226,6 +228,16 @@ const conflictFieldWorkIdentity = "work_identity"
 // volume. So the row proceeds on the long-standing behaviour (it mints its own
 // work) and the resulting cluster is what metacheck's census reports.
 func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, authors workAuthors) (duplicateIdentityMatch, bool) {
+	found := p.identityMatches(ident, workTitle, lang, authors)
+	if len(found) != 1 {
+		return duplicateIdentityMatch{}, false
+	}
+	return found[0], true
+}
+
+// identityMatches is the shared normalized-identity probe. Callers decide what
+// zero, one or multiple matches mean for their mode.
+func (p *planner) identityMatches(ident rowIdentity, workTitle, lang string, authors workAuthors) []duplicateIdentityMatch {
 	var found []duplicateIdentityMatch
 	var row *titlerule.VolumeStatement // the row's statement, derived on first use
 	for _, slug := range p.runIdentity[ident.key] {
@@ -254,10 +266,7 @@ func (p *planner) identityMatch(ident rowIdentity, workTitle, lang string, autho
 		// cannot be a repeat of one the run half already named.
 		found = append(found, duplicateIdentityMatch{work: m.Work.ID, title: m.Work.Title, series: m.Series})
 	}
-	if len(found) != 1 {
-		return duplicateIdentityMatch{}, false
-	}
-	return found[0], true
+	return found
 }
 
 // againstSeries renders the series a matched work's title was read against, for the
@@ -351,7 +360,7 @@ func (p *planner) reportDuplicateIdentities() {
 // indexes would be identical by construction. nil for the other two modes and for a
 // load that produced no catalogue, which the guard reads as "no guard".
 func runWorkIdentityIndex(res check.Result, mode Mode) *check.WorkIdentity {
-	if mode != ModeCreate {
+	if mode != ModeCreate && mode != ModeRelocate {
 		return nil
 	}
 	return res.Identity

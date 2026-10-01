@@ -44,10 +44,18 @@ const (
 	RefusalOverSeriesCap           = "over-series-cap"
 	// The IMPORT-side codes: rows `metaimport libex` itself skips, which only
 	// its --skipped worklist carries (libex-select never refuses for these).
-	RefusalIdentityDuplicate = "identity-duplicate"
-	RefusalMissingAuthor     = "missing-author"
-	RefusalMissingTitle      = "missing-title"
-	RefusalMissingNarrator   = "missing-narrator"
+	RefusalIdentityDuplicate         = "identity-duplicate"
+	RefusalMissingAuthor             = "missing-author"
+	RefusalMissingTitle              = "missing-title"
+	RefusalMissingNarrator           = "missing-narrator"
+	RefusalRelocateRowsLanguage      = "relocate-rows-language"
+	RefusalRelocateRecordingLanguage = "relocate-recording-language"
+	RefusalRelocateWorkLanguage      = "relocate-work-language"
+	RefusalRelocateNoHomeRecording   = "relocate-no-home-recording"
+	RefusalRelocateNarration         = "relocate-narration-contradicts"
+	RefusalRelocateDestination       = "relocate-destination-conflict"
+	RefusalRelocateRowUnusable       = "relocate-row-unusable"
+	RefusalRelocateAmbiguousHome     = "relocate-ambiguous-home"
 )
 
 // The rules, in the order selectLibexRow applies them. A row is counted under
@@ -77,13 +85,20 @@ var (
 	reasonPositionTaken           = refusal{RefusalPositionClaimed, "series position already claimed"}
 	reasonSeriesCap               = refusal{RefusalOverSeriesCap, "over the per-series cap"}
 
-	// Import-only rules (Summary.Skips): the create path's duplicate-identity
-	// guard (dupidentity.go) and the admission tests a row with no author, no
-	// title or no narrator fails (addBook, admitRecordingFacts).
-	reasonIdentityDuplicate = refusal{RefusalIdentityDuplicate, "the catalogue holds the book under another title"}
-	reasonMissingAuthor     = refusal{RefusalMissingAuthor, "no author"}
-	reasonMissingTitle      = refusal{RefusalMissingTitle, "no title"}
-	reasonMissingNarrator   = refusal{RefusalMissingNarrator, "no narrator"}
+	// Import-only rules: create admission and duplicate identity (Summary.Skips),
+	// plus recording relocation refusals (Summary.RelocationSkips).
+	reasonIdentityDuplicate         = refusal{RefusalIdentityDuplicate, "the catalogue holds the book under another title"}
+	reasonMissingAuthor             = refusal{RefusalMissingAuthor, "no author"}
+	reasonMissingTitle              = refusal{RefusalMissingTitle, "no title"}
+	reasonMissingNarrator           = refusal{RefusalMissingNarrator, "no narrator"}
+	reasonRelocateRowsLanguage      = refusal{RefusalRelocateRowsLanguage, "source rows do not agree on one known language"}
+	reasonRelocateRecordingLanguage = refusal{RefusalRelocateRecordingLanguage, "source language does not match the recording"}
+	reasonRelocateWorkLanguage      = refusal{RefusalRelocateWorkLanguage, "work must state a different primary language"}
+	reasonRelocateNoHomeRecording   = refusal{RefusalRelocateNoHomeRecording, "old work would retain no recording in its own language"}
+	reasonRelocateNarration         = refusal{RefusalRelocateNarration, "narrators of other works contradict the stated language"}
+	reasonRelocateDestination       = refusal{RefusalRelocateDestination, "source rows do not resolve to one compatible destination"}
+	reasonRelocateAmbiguousHome     = refusal{RefusalRelocateAmbiguousHome, "multiple same-language identity homes"}
+	reasonRelocateRowUnusable       = refusal{RefusalRelocateRowUnusable, "a source row naming the recording was refused at parse time"}
 )
 
 // refusals is every SELECTOR rule in report order (the order libex-select
@@ -100,6 +115,14 @@ var refusals = []refusal{
 // importRefusals are the rules only the import applies (--skipped).
 var importRefusals = []refusal{
 	reasonIdentityDuplicate, reasonMissingAuthor, reasonMissingTitle, reasonMissingNarrator,
+	reasonRelocateRowsLanguage,
+	reasonRelocateRecordingLanguage,
+	reasonRelocateWorkLanguage,
+	reasonRelocateNoHomeRecording,
+	reasonRelocateNarration,
+	reasonRelocateDestination,
+	reasonRelocateRowUnusable,
+	reasonRelocateAmbiguousHome,
 }
 
 // RefusalCodes lists every code a worklist line can carry: the selector's rules
@@ -115,10 +138,12 @@ func RefusalCodes() []string {
 // RowSkip is one refused row as a worklist states it: the row's ASIN and its
 // rule's code. Its JSON form, in this field order, is one line of
 // `libex-select --refusals` and of `metaimport libex --skipped` - one shape, a
-// contract with the series-completion sync bot.
+// contract with the series-completion sync bot. Ambiguous relocation homes also
+// carry sorted candidate work IDs; other refusals retain the two-field shape.
 type RowSkip struct {
-	ASIN   string `json:"asin"`
-	Reason string `json:"reason"`
+	ASIN       string   `json:"asin"`
+	Reason     string   `json:"reason"`
+	Candidates []string `json:"candidates,omitempty"`
 }
 
 // appendSkip records one refused row under its rule, unless the row states no

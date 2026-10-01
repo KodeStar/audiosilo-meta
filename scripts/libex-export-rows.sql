@@ -1,5 +1,7 @@
 -- Export libex books as NDJSON rows in the shape `metaimport libex` parses.
 -- Run: psql -d libex -tA -f libex-export-rows.sql > rows.ndjson
+-- Optional (psql >= 10): -v asins="B000000001,B000000002" exports EVERY
+-- matching copy without credit/content filters, for relocation evidence.
 -- Ordered by sku_group so regional editions of one title are adjacent
 -- (the importer folds them into one recording via the same-narrator ASIN merge).
 -- Excludes everything that is not a book (content_delivery_type
@@ -67,6 +69,9 @@ SELECT json_build_object(
   'chapters', (SELECT t.chapters->'chapters' FROM tracks t WHERE t.asin = b.asin LIMIT 1)
 )
 FROM books b
+\if :{?asins}
+WHERE b.asin = ANY(string_to_array(:'asins', ','))
+\else
 WHERE b.is_vvab IS NOT TRUE
   AND b.content_delivery_type IN ('SinglePartBook', 'MultiPartBook')
   -- ANY AI credit disqualifies the row (the Go side matches: see
@@ -209,4 +214,9 @@ WHERE b.is_vvab IS NOT TRUE
         OR lower(btrim(a.name)) ~
              '(^|[^[:alnum:]])to be (announced|confirmed)([^[:alnum:]]|$)')
   )
+\endif
+\if :{?asins}
+ORDER BY b.asin, b.region;
+\else
 ORDER BY COALESCE(b.sku_group, b.asin), b.region, b.asin;
+\endif

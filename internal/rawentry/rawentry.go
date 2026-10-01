@@ -32,8 +32,8 @@ import (
 	"fmt"
 	"maps"
 	"slices"
+	"sort"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -254,18 +254,61 @@ func UnionSources(dst, src []model.Source) []model.Source {
 }
 
 // UnionCredits unions two credit lists on (person, role) - the pair pkg/check's credit
-// rule refuses a repeat of - and restores the canonical order through the importer's own
+// rule refuses a repeat of - and restores the canonical order through the shared
 // comparator, so one set of credits has one byte-form however it was assembled.
 func UnionCredits(dst, src []model.Credit) []model.Credit {
 	out := Union(slices.Clone(dst), src, func(c model.Credit) string { return c.Person + "\x00" + c.Role })
-	importer.SortCredits(out)
+	SortCredits(out)
 	return out
 }
 
 // UnionGenres unions two genre lists into the ascending, duplicate-free form
-// pkg/check's checkGenresSorted requires. It is the importer's own rule
-// (importer.UnionGenres), so a merge and an import combine two sets the one way.
-func UnionGenres(dst, src []string) []string { return importer.UnionGenres(dst, src) }
+// pkg/check's checkGenresSorted requires. The importer delegates to this same rule.
+func UnionGenres(dst, src []string) []string {
+	if !sortedUnique(dst) || !sortedUnique(src) {
+		out := slices.Concat(dst, src)
+		slices.Sort(out)
+		return slices.Compact(out)
+	}
+	out := make([]string, 0, len(dst)+len(src))
+	i, j := 0, 0
+	for i < len(dst) && j < len(src) {
+		switch {
+		case dst[i] < src[j]:
+			out = append(out, dst[i])
+			i++
+		case dst[i] > src[j]:
+			out = append(out, src[j])
+			j++
+		default:
+			out = append(out, dst[i])
+			i++
+			j++
+		}
+	}
+	out = append(out, dst[i:]...)
+	return append(out, src[j:]...)
+}
+
+// sortedUnique reports whether s is strictly ascending.
+func sortedUnique(s []string) bool {
+	for i := 1; i < len(s); i++ {
+		if s[i-1] >= s[i] {
+			return false
+		}
+	}
+	return true
+}
+
+// SortCredits puts credits in canonical (person, role) order.
+func SortCredits(credits []model.Credit) {
+	sort.Slice(credits, func(i, j int) bool {
+		if credits[i].Person != credits[j].Person {
+			return credits[i].Person < credits[j].Person
+		}
+		return credits[i].Role < credits[j].Role
+	})
+}
 
 // SetListOrDrop stores a list member, or removes it when the list is empty: an absent
 // member is how this schema spells "unstated", and an empty array would say something

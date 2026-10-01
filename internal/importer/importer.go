@@ -15,6 +15,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -186,6 +187,8 @@ type seriesState struct {
 
 // planner accumulates the writes and warnings for a run.
 type planner struct {
+	relocation *relocationPlan
+
 	dataDir string
 	// people maps every known person slug to the NAME its record carries. The
 	// slug is the normalized identity (two names that slug the same are the same
@@ -542,14 +545,19 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // the existing catalog, then (on a real run) writes and re-validates the tree.
 // sourceType is the provenance stamped on every created (or enriched) record.
 //
-// The three planning modes are disjoint by design and selected by opts.Mode
+// The planning modes are disjoint by design and selected by opts.Mode
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 //
 // parseSkips are the source parse layer's refusals (RunLibex's), which join the
 // planner's own on Summary.Skips so the run's end can drop any whose ASIN it
-// imported after all; nil for every other source.
-func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []RowSkip) (Summary, error) {
+// imported after all; nil for every other source. The optional setup hook installs
+// source-specific planner state before planning (relocation needs all libex rows,
+// including parse refusals, as evidence).
+func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []RowSkip, setup ...func(*planner)) (Summary, error) {
+	if opts.Mode == ModeRelocate && (sourceType != sourceLibex || len(setup) == 0) {
+		return Summary{}, fmt.Errorf("relocation requires libex rows; use RunLibex")
+	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -591,6 +599,9 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	}
 	if line, noted := synthetic.note(); noted {
 		p.summary.Notes = append(p.summary.Notes, line)
+	}
+	for _, configure := range setup {
+		configure(p)
 	}
 	err = p.run(books, opts)
 	return p.result(), err
@@ -656,6 +667,12 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 func (p *planner) run(books []sourceBook, opts Options) error {
 	p.loadExisting()
 	p.credits = p.creditContextOf(books)
+	if p.mode == ModeRelocate {
+		p.prepareRelocation()
+		if p.fatal != nil {
+			return p.fatal
+		}
+	}
 	p.resolveSeriesTargets(books)
 
 	switch opts.Mode {
@@ -665,6 +682,8 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.planRecordings(books)
 	case ModeCreate:
 		p.planCreate(books)
+	case ModeRelocate:
+		p.planRelocate(books)
 	}
 	if p.fatal != nil {
 		return p.fatal
@@ -2898,14 +2917,7 @@ func (p *planner) addRunCredits(workSlug string, stated []model.Credit) (merged 
 // about billing, while a credit list is a set of independent (person, role)
 // facts, so a total order is what keeps two runs that state the same facts in a
 // different sequence from producing two different files.
-func sortCredits(credits []model.Credit) {
-	sort.Slice(credits, func(i, j int) bool {
-		if credits[i].Person != credits[j].Person {
-			return credits[i].Person < credits[j].Person
-		}
-		return credits[i].Role < credits[j].Role
-	})
-}
+func sortCredits(credits []model.Credit) { rawentry.SortCredits(credits) }
 
 // abridgedConflict reports whether two recording abridged tri-states are
 // incompatible enough to block a merge. An absent flag is read as "unabridged"
@@ -2914,10 +2926,8 @@ func sortCredits(credits []model.Credit) {
 // unstated - an abridged edition is a distinct production and earns its own
 // recording. Two unknown/unabridged sides merge freely.
 func abridgedConflict(a, b *bool) bool {
-	return boolOrFalse(a) != boolOrFalse(b)
+	return rawentry.AbridgedConflict(a, b)
 }
-
-func boolOrFalse(p *bool) bool { return p != nil && *p }
 
 // posClaim is one series position a recording sits at, for the serial guard. A
 // disk membership carries its series slug as key; a row's claim carries the
@@ -3367,16 +3377,7 @@ func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (ma
 // negative = unknown) are close enough to be the same production. An unknown on
 // either side is compatible; two known runtimes must be within 10 percent of the
 // larger.
-func runtimesCompatible(a, b int) bool {
-	if a <= 0 || b <= 0 {
-		return true
-	}
-	hi, lo := a, b
-	if lo > hi {
-		hi, lo = lo, hi
-	}
-	return float64(hi-lo) <= 0.10*float64(hi)
-}
+func runtimesCompatible(a, b int) bool { return rawentry.RuntimesCompatible(a, b) }
 
 // workCandidate is one slug a row's work may sit on. probeOnly marks a slug
 // that is a place to LOOK but never a place to create: see primaryWorkCandidates.

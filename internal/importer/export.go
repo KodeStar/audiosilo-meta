@@ -1,9 +1,9 @@
 package importer
 
 import (
-	"slices"
 	"sort"
 
+	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -54,43 +54,9 @@ func Marketplaces() []string {
 // any writer combines two sets (every writer of a genre set is additive; none
 // removes one). A record's set is sorted and duplicate-free, so both inputs
 // usually are and the union is a linear merge; an input that is not falls back to
-// sort-and-compact, so the result never depends on that. internal/rawentry's
-// UnionGenres delegates here.
-func UnionGenres(dst, src []string) []string {
-	if !sortedUnique(dst) || !sortedUnique(src) {
-		out := slices.Concat(dst, src)
-		slices.Sort(out)
-		return slices.Compact(out)
-	}
-	out := make([]string, 0, len(dst)+len(src))
-	i, j := 0, 0
-	for i < len(dst) && j < len(src) {
-		switch {
-		case dst[i] < src[j]:
-			out = append(out, dst[i])
-			i++
-		case dst[i] > src[j]:
-			out = append(out, src[j])
-			j++
-		default:
-			out = append(out, dst[i])
-			i++
-			j++
-		}
-	}
-	out = append(out, dst[i:]...)
-	return append(out, src[j:]...)
-}
-
-// sortedUnique reports whether s is strictly ascending.
-func sortedUnique(s []string) bool {
-	for i := 1; i < len(s); i++ {
-		if s[i-1] >= s[i] {
-			return false
-		}
-	}
-	return true
-}
+// sort-and-compact, so the result never depends on that. The implementation
+// lives in internal/rawentry so raw writers and imports share it without a cycle.
+func UnionGenres(dst, src []string) []string { return rawentry.UnionGenres(dst, src) }
 
 // RuntimesCompatible reports whether two recording runtimes (whole minutes; 0 or
 // negative = unknown) are close enough to be the same production: an unknown on

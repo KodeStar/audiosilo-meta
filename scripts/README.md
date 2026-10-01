@@ -518,3 +518,69 @@ go test ./internal/importer/ -run 'Genre|Childrens'
 
 A same-path conflict inside one marketplace (two nodes, one spelling) is printed
 to stderr, and the first node in the taxonomy's own order is kept.
+
+### Relocate cross-language recordings
+
+`metaimport libex --relocate` moves a recording filed under a work in another
+language, using rows for that recording's ASINs. Generate the ASIN list directly
+from the pack tree (requires `rg`, `jq`, and `sort`):
+
+```sh
+rg --files data/works -g '*.json' | xargs jq -r '
+  .entries[] | .language as $work_language | .recordings[]? |
+  select((.language | split("-")[0]) != ($work_language | split("-")[0])) |
+  .asin[]?.asin' | LC_ALL=C sort -u > /tmp/xrec-asins.txt
+
+docker exec -i libex-pg psql -X -U postgres -d libex -tA \
+  -v ON_ERROR_STOP=1 -v asins="$(paste -sd, /tmp/xrec-asins.txt)" \
+  < scripts/libex-export-rows.sql > /tmp/xrec-rows.ndjson
+
+go run ./cmd/metaimport libex /tmp/xrec-rows.ndjson --relocate \
+  --dry-run --skipped /tmp/relocate-skipped.ndjson
+# Review the notes and refusals, then repeat without --dry-run.
+```
+
+The optional `asins` variable (psql >= 10) makes `libex-export-rows.sql`
+export only those ASINs, without its content or credit filters: **every copy is language evidence**,
+including a copy the importer refuses at parse time. Supply all ASINs together;
+do not split a recording's rows across runs. No matching input row means no action.
+
+Every supplied row naming a recording must state the same known language as
+that recording; its work must have a different primary language subtag and keep
+at least one recording in its own language. The shared `pkg/check` narration
+profile vetoes contradictory narrator evidence, excluding the originating work.
+Unknown or mixed evidence does not veto. First the create guard's normalized
+identity probe is asked in the recording's language with the row's author sets.
+Exactly one same-language match other than the old work is the destination;
+two or more refuse with `relocate-ambiguous-home` and sorted `candidates` in the
+`--skipped` row. Collection, stated-volume contradiction and serial-suffix
+vetoes still exclude matches. No match falls through to ordinary language-gated
+work resolution and creation, including the slug chain, credit cleaning and
+genre mapping. Rows resolving to different destinations are
+refused together. No translation link is inferred.
+
+Recordings move raw, retaining chapters, cover, `added_at`, identifiers and old
+sources, with the run's libex provenance appended. A recording-id collision gets
+the ordinary numbered slug. A same-narrator sibling with compatible runtime and
+abridgement absorbs identifiers and sources, fills absent fields from the mover,
+and keeps the longer chapter list (ties keep the sibling's); each discarded field
+and value is named in a note. Series claims have `--existing-series-only`
+semantics. A claimed slot on a catalogued series deriving the recording's
+language is re-pointed from the old work when `SameSlot` agrees. Other memberships
+and the old work's other fields stay unchanged.
+
+`--relocate`, `--enrich` and `--recordings-only` are mutually exclusive;
+`--attach-editions` is create-only. The summary counts moved recordings separately
+as `relocated-to-existing`, `relocated-to-new-work` (including destinations
+created earlier in this run), or `merged-into-sibling`, plus memberships
+re-pointed and recording refusals by code. `--skipped` remains an atomic NDJSON
+worklist of `{"asin","reason"}` rows. In relocation it deliberately includes
+already-catalogued ASINs: those are the records needing review. Its new stable
+codes are `relocate-rows-language`, `relocate-recording-language`,
+`relocate-work-language`, `relocate-no-home-recording`,
+`relocate-narration-contradicts`, `relocate-destination-conflict` and
+`relocate-row-unusable`, plus `relocate-ambiguous-home`; ordinary create admission
+codes also apply.
+The worklist counts input copies; the refusal summary counts recordings.
+A second run moves nothing already relocated and repeats any outstanding refusals.
+Every real run validates the written tree through `pkg/check`.
