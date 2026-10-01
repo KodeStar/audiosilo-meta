@@ -4213,7 +4213,31 @@
             }
           ],
           "work": "patch-17"
-        },
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0C9JSMFKX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Patch 17"
+    },
+    "patch-17-g-akella": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "g-akella"
+      ],
+      "genres": [
+        "cyberpunk",
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "patch-17-g-akella",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "zach-villa-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4290,15 +4314,20 @@
               "imported_at": "2026-08-02",
               "ref": "B01NCIIBDV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B01NCIIBDV",
+              "type": "libex-import"
             }
           ],
-          "work": "patch-17"
+          "work": "patch-17-g-akella"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-08-01",
-          "ref": "B0C9JSMFKX",
+          "imported_at": "2026-10-01",
+          "ref": "B01NCIIBDV",
           "type": "libex-import"
         }
       ],

@@ -8114,7 +8114,36 @@
             }
           ],
           "work": "sharpes-gold"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-11",
+          "ref": "B00MGU3752",
+          "type": "openaudible-import"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUKM0G",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Sharpe’s Gold"
+    },
+    "sharpes-gold-bernard-cornwell": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "bernard-cornwell"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "war-military-fiction"
+      ],
+      "id": "sharpes-gold-bernard-cornwell",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "torsten-michaelis-2022": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -9036,24 +9065,24 @@
               "imported_at": "2026-07-30",
               "ref": "B0BFWK3PZF",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0BFWK3PZF",
+              "type": "libex-import"
             }
           ],
-          "work": "sharpes-gold"
+          "work": "sharpes-gold-bernard-cornwell"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-11",
-          "ref": "B00MGU3752",
-          "type": "openaudible-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UUKM0G",
+          "imported_at": "2026-10-01",
+          "ref": "B0BFWK3PZF",
           "type": "libex-import"
         }
       ],
-      "title": "Sharpe’s Gold"
+      "title": "Sharpes Gold"
     },
     "sharpes-havoc": {
       "added_at": "2026-07-11T17:30:05+01:00",

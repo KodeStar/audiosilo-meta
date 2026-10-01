@@ -9393,7 +9393,36 @@
             }
           ],
           "work": "pageboy"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B0BBKPCL42",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C69GVQJY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pageboy"
+    },
+    "pageboy-elliot-page": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "elliot-page"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "lgbtq"
+      ],
+      "id": "pageboy-elliot-page",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "jonathan-perleth-2023": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -9418,10 +9447,37 @@
               "imported_at": "2026-07-30",
               "ref": "B0C69GVQJY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0C69GVQJY",
+              "type": "libex-import"
             }
           ],
-          "work": "pageboy"
-        },
+          "work": "pageboy-elliot-page"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B0C69GVQJY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pageboy"
+    },
+    "pageboy-elliot-page-2": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "elliot-page"
+      ],
+      "genres": [
+        "biography-memoir"
+      ],
+      "id": "pageboy-elliot-page-2",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
         "miguel-vegas-2026": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -9622,20 +9678,25 @@
               "imported_at": "2026-07-30",
               "ref": "B0H6PXJKBS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0H6PXJKBS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0H6Q1S4K6",
+              "type": "libex-import"
             }
           ],
-          "work": "pageboy"
+          "work": "pageboy-elliot-page-2"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-17",
-          "ref": "B0BBKPCL42",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0C69GVQJY",
+          "imported_at": "2026-10-01",
+          "ref": "B0H6PXJKBS",
           "type": "libex-import"
         }
       ],

@@ -7351,121 +7351,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "fabrizio-rocchi-2020": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "8852153128",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 5730962,
-              "start_ms": 0,
-              "title": "Capitolo 1"
-            },
-            {
-              "length_ms": 6982519,
-              "start_ms": 5730962,
-              "title": "Capitolo 2"
-            },
-            {
-              "length_ms": 6075500,
-              "start_ms": 12713481,
-              "title": "Capitolo 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/7154p+8YuHL.jpg",
-          "id": "fabrizio-rocchi-2020",
-          "language": "it",
-          "license": "CC0-1.0",
-          "narrators": [
-            "fabrizio-rocchi"
-          ],
-          "publisher": "Mondadori Libri S.p.A.",
-          "release_date": "2020-08-05",
-          "runtime_min": 312,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "8852153128",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fahrenheit-451"
-        },
-        "ingo-ostrovsky-2023": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0CCW9L19H",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22610,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 8266,
-              "start_ms": 22610,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 12051,
-              "start_ms": 30876,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 4615105,
-              "start_ms": 42927,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 4359918,
-              "start_ms": 4658032,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 5559809,
-              "start_ms": 9017950,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 3423108,
-              "start_ms": 14577759,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 4210658,
-              "start_ms": 18000867,
-              "title": "Capítulo 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71UCyTAt4hL.jpg",
-          "id": "ingo-ostrovsky-2023",
-          "language": "pt",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ingo-ostrovsky"
-          ],
-          "publisher": "Biblioteca Azul",
-          "release_date": "2023-07-26",
-          "runtime_min": 369,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0CCW9L19H",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fahrenheit-451"
-        },
         "penn-badgley-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -7544,7 +7429,212 @@
             }
           ],
           "work": "fahrenheit-451"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/13079982-fahrenheit-451",
+          "type": "community"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TPKCAMC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fahrenheit 451",
+      "xref": {
+        "goodreads": "13079982"
+      }
+    },
+    "fahrenheit-451-ray-bradbury": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "ray-bradbury"
+      ],
+      "genres": [
+        "classics",
+        "dystopian",
+        "fantasy",
+        "science-fiction",
+        "urban-fantasy"
+      ],
+      "id": "fahrenheit-451-ray-bradbury",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
+        "fabrizio-rocchi-2020": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "8852153128",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 5730962,
+              "start_ms": 0,
+              "title": "Capitolo 1"
+            },
+            {
+              "length_ms": 6982519,
+              "start_ms": 5730962,
+              "title": "Capitolo 2"
+            },
+            {
+              "length_ms": 6075500,
+              "start_ms": 12713481,
+              "title": "Capitolo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7154p+8YuHL.jpg",
+          "id": "fabrizio-rocchi-2020",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fabrizio-rocchi"
+          ],
+          "publisher": "Mondadori Libri S.p.A.",
+          "release_date": "2020-08-05",
+          "runtime_min": 312,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "8852153128",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "8852153128",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fahrenheit-451-ray-bradbury"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "8852153128",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fahrenheit 451"
+    },
+    "fahrenheit-451-ray-bradbury-2": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "ray-bradbury"
+      ],
+      "genres": [
+        "dystopian",
+        "politics",
+        "science-fiction"
+      ],
+      "id": "fahrenheit-451-ray-bradbury-2",
+      "language": "pt",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ingo-ostrovsky-2023": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0CCW9L19H",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22610,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 8266,
+              "start_ms": 22610,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 12051,
+              "start_ms": 30876,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 4615105,
+              "start_ms": 42927,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 4359918,
+              "start_ms": 4658032,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 5559809,
+              "start_ms": 9017950,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 3423108,
+              "start_ms": 14577759,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 4210658,
+              "start_ms": 18000867,
+              "title": "Capítulo 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71UCyTAt4hL.jpg",
+          "id": "ingo-ostrovsky-2023",
+          "language": "pt",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ingo-ostrovsky"
+          ],
+          "publisher": "Biblioteca Azul",
+          "release_date": "2023-07-26",
+          "runtime_min": 369,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0CCW9L19H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0CCW9L19H",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fahrenheit-451-ray-bradbury-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B0CCW9L19H",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Fahrenheit 451"
+    },
+    "fahrenheit-451-ray-bradbury-3": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "ray-bradbury"
+      ],
+      "genres": [
+        "literary-fiction"
+      ],
+      "id": "fahrenheit-451-ray-bradbury-3",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "rufus-beck-2008": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -7930,27 +8020,29 @@
               "imported_at": "2026-07-30",
               "ref": "B004V42XH4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B004V42XH4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B00TPKCAMC",
+              "type": "libex-import"
             }
           ],
-          "work": "fahrenheit-451"
+          "work": "fahrenheit-451-ray-bradbury-3"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/13079982-fahrenheit-451",
-          "type": "community"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00TPKCAMC",
+          "imported_at": "2026-10-01",
+          "ref": "B004V42XH4",
           "type": "libex-import"
         }
       ],
-      "title": "Fahrenheit 451",
-      "xref": {
-        "goodreads": "13079982"
-      }
+      "title": "Fahrenheit 451"
     },
     "fahrenheits-ghost": {
       "added_at": "2026-08-01",

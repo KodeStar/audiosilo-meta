@@ -14217,7 +14217,36 @@
             }
           ],
           "work": "orphan-x"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0198MEIOO",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0198MEIOO",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Orphan X"
+    },
+    "orphan-x-gregg-hurwitz": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "gregg-hurwitz"
+      ],
+      "genres": [
+        "espionage",
+        "politics",
+        "thriller-suspense"
+      ],
+      "id": "orphan-x-gregg-hurwitz",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "stefan-lehnen-2017": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -14549,20 +14578,20 @@
               "imported_at": "2026-07-30",
               "ref": "B0744GB357",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0744GB357",
+              "type": "libex-import"
             }
           ],
-          "work": "orphan-x"
+          "work": "orphan-x-gregg-hurwitz"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "B0198MEIOO",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0198MEIOO",
+          "imported_at": "2026-10-01",
+          "ref": "B0744GB357",
           "type": "libex-import"
         }
       ],

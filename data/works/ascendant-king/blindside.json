@@ -3985,101 +3985,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "alexander-bolte-2021": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09NMFG863",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 29999,
-              "start_ms": 0,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 1794716,
-              "start_ms": 29999,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 3486058,
-              "start_ms": 1824715,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 2913477,
-              "start_ms": 5310773,
-              "title": "Kapitel 4"
-            },
-            {
-              "length_ms": 2740720,
-              "start_ms": 8224250,
-              "title": "Kapitel 5"
-            },
-            {
-              "length_ms": 2890559,
-              "start_ms": 10964970,
-              "title": "Kapitel 6"
-            },
-            {
-              "length_ms": 2360424,
-              "start_ms": 13855529,
-              "title": "Kapitel 7"
-            },
-            {
-              "length_ms": 2456949,
-              "start_ms": 16215953,
-              "title": "Kapitel 8"
-            },
-            {
-              "length_ms": 2380393,
-              "start_ms": 18672902,
-              "title": "Kapitel 9"
-            },
-            {
-              "length_ms": 2852130,
-              "start_ms": 21053295,
-              "title": "Kapitel 10"
-            },
-            {
-              "length_ms": 3521097,
-              "start_ms": 23905425,
-              "title": "Kapitel 11"
-            },
-            {
-              "length_ms": 1332360,
-              "start_ms": 27426522,
-              "title": "Kapitel 12"
-            },
-            {
-              "length_ms": 81524,
-              "start_ms": 28758882,
-              "title": "Kapitel 13"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/617qFGOt5hL.jpg",
-          "id": "alexander-bolte-2021",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alexander-bolte"
-          ],
-          "publisher": "ABP Verlag",
-          "release_date": "2021-12-14",
-          "runtime_min": 480,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09NMFG863",
-              "type": "libex-import"
-            }
-          ],
-          "work": "blink"
-        },
         "malcolm-gladwell-2005": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5187,6 +5092,131 @@
         }
       ],
       "title": "Blink"
+    },
+    "blink-malcolm-gladwell": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "malcolm-gladwell"
+      ],
+      "genres": [
+        "health-wellness",
+        "parenting-relationships",
+        "psychology",
+        "self-help"
+      ],
+      "id": "blink-malcolm-gladwell",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alexander-bolte-2021": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B09NMFG863",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 29999,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 1794716,
+              "start_ms": 29999,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 3486058,
+              "start_ms": 1824715,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 2913477,
+              "start_ms": 5310773,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 2740720,
+              "start_ms": 8224250,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 2890559,
+              "start_ms": 10964970,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 2360424,
+              "start_ms": 13855529,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 2456949,
+              "start_ms": 16215953,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 2380393,
+              "start_ms": 18672902,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 2852130,
+              "start_ms": 21053295,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 3521097,
+              "start_ms": 23905425,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 1332360,
+              "start_ms": 27426522,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 81524,
+              "start_ms": 28758882,
+              "title": "Kapitel 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/617qFGOt5hL.jpg",
+          "id": "alexander-bolte-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexander-bolte"
+          ],
+          "publisher": "ABP Verlag",
+          "release_date": "2021-12-14",
+          "runtime_min": 480,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09NMFG863",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B09NMFG863",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blink-malcolm-gladwell"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B09NMFG863",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Blink!"
     },
     "blink-of-an-eye": {
       "added_at": "2026-07-25T17:12:12+01:00",

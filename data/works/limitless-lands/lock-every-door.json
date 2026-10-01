@@ -6441,81 +6441,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "claude-albert-heinrich-2016": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B01BI370NM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22400,
-              "start_ms": 0,
-              "title": "Vorspann"
-            },
-            {
-              "length_ms": 7500446,
-              "start_ms": 22400,
-              "title": "Episode 1: Willkommen in Lovecraft"
-            },
-            {
-              "length_ms": 8296605,
-              "start_ms": 7522846,
-              "title": "Episode 2: Psychospiele"
-            },
-            {
-              "length_ms": 7477845,
-              "start_ms": 15819451,
-              "title": "Episode 3: Die Schattenkrone"
-            },
-            {
-              "length_ms": 9967466,
-              "start_ms": 23297296,
-              "title": "Episode 4: Schlüssel zum Königreich"
-            },
-            {
-              "length_ms": 9716016,
-              "start_ms": 33264762,
-              "title": "Episode 5: Uhrwerke"
-            },
-            {
-              "length_ms": 10474908,
-              "start_ms": 42980778,
-              "title": "Episode 6: Alpha & Omega"
-            },
-            {
-              "length_ms": 262090,
-              "start_ms": 53455686,
-              "title": "Abspann"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91zBA9qm6gL.jpg",
-          "id": "claude-albert-heinrich-2016",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "claude-albert-heinrich",
-            "max-mauff",
-            "oliver-wnuk",
-            "patrick-molleken",
-            "vera-molitor",
-            "vera-teltz"
-          ],
-          "publisher": "Audible Originals",
-          "release_date": "2016-02-18",
-          "runtime_min": 895,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B01BI370NM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "locke-key"
-        },
         "haley-joel-osment-2015": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -6779,6 +6704,112 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00YI1CTVU",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Locke & Key"
+    },
+    "locke-key-joe-hill": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "joe-hill",
+        "gabriel-rodriguez"
+      ],
+      "genres": [
+        "arts-entertainment",
+        "fantasy",
+        "paranormal",
+        "urban-fantasy"
+      ],
+      "id": "locke-key-joe-hill",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "claude-albert-heinrich-2016": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B01BI370NM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22400,
+              "start_ms": 0,
+              "title": "Vorspann"
+            },
+            {
+              "length_ms": 7500446,
+              "start_ms": 22400,
+              "title": "Episode 1: Willkommen in Lovecraft"
+            },
+            {
+              "length_ms": 8296605,
+              "start_ms": 7522846,
+              "title": "Episode 2: Psychospiele"
+            },
+            {
+              "length_ms": 7477845,
+              "start_ms": 15819451,
+              "title": "Episode 3: Die Schattenkrone"
+            },
+            {
+              "length_ms": 9967466,
+              "start_ms": 23297296,
+              "title": "Episode 4: Schlüssel zum Königreich"
+            },
+            {
+              "length_ms": 9716016,
+              "start_ms": 33264762,
+              "title": "Episode 5: Uhrwerke"
+            },
+            {
+              "length_ms": 10474908,
+              "start_ms": 42980778,
+              "title": "Episode 6: Alpha & Omega"
+            },
+            {
+              "length_ms": 262090,
+              "start_ms": 53455686,
+              "title": "Abspann"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zBA9qm6gL.jpg",
+          "id": "claude-albert-heinrich-2016",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "claude-albert-heinrich",
+            "max-mauff",
+            "oliver-wnuk",
+            "patrick-molleken",
+            "vera-molitor",
+            "vera-teltz"
+          ],
+          "publisher": "Audible Originals",
+          "release_date": "2016-02-18",
+          "runtime_min": 895,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B01BI370NM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B01BI370NM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "locke-key-joe-hill"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B01BI370NM",
           "type": "libex-import"
         }
       ],

@@ -11052,7 +11052,29 @@
             }
           ],
           "work": "mavericks"
-        },
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1772306932",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Mavericks"
+    },
+    "mavericks-craig-alanson": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "craig-alanson"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "mavericks-craig-alanson",
+      "language": "pl",
+      "license": "CC0-1.0",
+      "recordings": {
         "wojciech-masiak-2023": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11254,15 +11276,20 @@
               "imported_at": "2026-07-30",
               "ref": "B0C9TS1VTY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0C9TS1VTY",
+              "type": "libex-import"
             }
           ],
-          "work": "mavericks"
+          "work": "mavericks-craig-alanson"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-30",
-          "ref": "1772306932",
+          "imported_at": "2026-10-01",
+          "ref": "B0C9TS1VTY",
           "type": "libex-import"
         }
       ],

@@ -8328,7 +8328,33 @@
             }
           ],
           "work": "project-hail-mary"
+        }
+      },
+      "sources": [
+        {
+          "type": "user"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B08G9PRS1K",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Project Hail Mary"
+    },
+    "project-hail-mary-andy-weir": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "andy-weir"
+      ],
+      "genres": [
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "project-hail-mary-andy-weir",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
         "william-angiuli-2024": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -8362,18 +8388,25 @@
               "imported_at": "2026-07-30",
               "ref": "B0CTZYCZW7",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0CTZXKN3N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0CTZYCZW7",
+              "type": "libex-import"
             }
           ],
-          "work": "project-hail-mary"
+          "work": "project-hail-mary-andy-weir"
         }
       },
       "sources": [
         {
-          "type": "user"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B08G9PRS1K",
+          "imported_at": "2026-10-01",
+          "ref": "B0CTZXKN3N",
           "type": "libex-import"
         }
       ],

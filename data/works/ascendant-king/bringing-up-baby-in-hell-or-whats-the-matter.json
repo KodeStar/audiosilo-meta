@@ -6213,7 +6213,39 @@
             }
           ],
           "work": "brisingr"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/2248573.Brisingr",
+          "type": "community"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0739368052",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Brisingr",
+      "xref": {
+        "goodreads": "2248573"
+      }
+    },
+    "brisingr-christopher-paolini": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "christopher-paolini"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "brisingr-christopher-paolini",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
         "olivier-chauvel-2019": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -6699,27 +6731,29 @@
               "imported_at": "2026-07-30",
               "ref": "B0813W8D9F",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0813W254T",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0813W8D9F",
+              "type": "libex-import"
             }
           ],
-          "work": "brisingr"
+          "work": "brisingr-christopher-paolini"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/2248573.Brisingr",
-          "type": "community"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0739368052",
+          "imported_at": "2026-10-01",
+          "ref": "B0813W254T",
           "type": "libex-import"
         }
       ],
-      "title": "Brisingr",
-      "xref": {
-        "goodreads": "2248573"
-      }
+      "title": "Brisingr"
     },
     "brisingr-the-inheritance-cycle-book-3-part-2": {
       "added_at": "2026-08-02",
