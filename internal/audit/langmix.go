@@ -422,12 +422,12 @@ func (m *langMix) contest(s *model.Series, byLang map[string][]model.SeriesWork,
 		if statesTranslation(w) {
 			stating = append(stating, w.ID)
 		}
-		keptAuthors = append(keptAuthors, w.Authors...)
+		keptAuthors = append(keptAuthors, m.individuals(w.Authors)...)
 	}
 	minority := otherLanguages(byLang, keeper)
 	for _, lang := range minority {
 		for _, w := range m.worksOf(byLang[lang]) {
-			minorityAuthors = append(minorityAuthors, w.Authors...)
+			minorityAuthors = append(minorityAuthors, m.individuals(w.Authors)...)
 		}
 	}
 	keptAuthors, minorityAuthors = sortedUnique(keptAuthors), sortedUnique(minorityAuthors)
@@ -455,6 +455,15 @@ func (m *langMix) contest(s *model.Series, byLang map[string][]model.SeriesWork,
 // plus the catch-all `person`): every language's books credit them, so their works say
 // nothing about where an author writes. A record whose kind is set (a group, a
 // publisher, the synthetic `virtual-voice`) is left out for the same reason.
+// individuals drops the collective and kind-classified credits from ids: they are no
+// evidence of who wrote a series or where its author writes.
+func (m *langMix) individuals(ids []string) []string {
+	return slices.DeleteFunc(slices.Clone(ids), func(a string) bool {
+		p := m.ix.personByID[a]
+		return collectiveCredits[a] || (p != nil && p.Kind != "")
+	})
+}
+
 var collectiveCredits = func() map[string]bool {
 	ids := importer.CollectiveIDs()
 	ids["person"] = true
@@ -474,13 +483,7 @@ func (m *langMix) personLanguages() map[string]map[string]int {
 		if lang == "" {
 			continue
 		}
-		for _, a := range sortedUnique(w.Authors) {
-			if collectiveCredits[a] {
-				continue
-			}
-			if p := m.ix.personByID[a]; p != nil && p.Kind != "" {
-				continue
-			}
+		for _, a := range m.individuals(sortedUnique(w.Authors)) {
 			if m.personLangs[a] == nil {
 				m.personLangs[a] = map[string]int{}
 			}

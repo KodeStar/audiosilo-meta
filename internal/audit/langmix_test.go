@@ -468,6 +468,17 @@ func TestLangMixContestSignals(t *testing.T) {
 			}
 			return f
 		}, signalCollision},
+		"collision through a shared collective credit": {func(t testing.TB) map[string]string {
+			f := mixSagaTree(t)
+			f["people/va/various.json"] = personJSON(t, "various", "Various")
+			for _, id := range []string{"dawn", "dusk", "noon"} {
+				f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withAuthors("jane-doe", "various"))
+			}
+			for _, id := range []string{"morgen", "abend"} {
+				f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withLanguage("de"), withAuthors("otto-autor", "various"))
+			}
+			return f
+		}, signalCollision},
 		"home": {func(t testing.TB) map[string]string { return homeTree(t, "jane-doe") }, signalHome},
 	} {
 		t.Run(name, func(t *testing.T) {
