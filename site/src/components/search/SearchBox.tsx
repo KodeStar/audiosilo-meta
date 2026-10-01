@@ -11,7 +11,6 @@ import {
   type LookupResponse,
 } from '../../lib/api'
 import { addFromLibexUrl, addWorkFromQueryUrl } from '../../lib/search-cta'
-import { joinNames, languageName } from '../../lib/languages'
 import { Icon } from '../ui'
 import LanguageChip from '../cards/LanguageChip'
 import { useLanguages } from '../languages/use-languages'
@@ -64,6 +63,10 @@ interface Grouped {
 }
 
 const EMPTY: Grouped = { exact: null, work: [], person: [], series: [] }
+
+/** The filter a bypassed search sends: none. One constant, so the search effect
+    that depends on the filter sees the same array on every render. */
+const NO_FILTER: readonly string[] = []
 const KINDS: Kind[] = ['work', 'person', 'series']
 const TAB_LABEL: Record<Tab, string> = {
   all: 'All',
@@ -166,18 +169,12 @@ export default function SearchBox({
 
   const languages = useLanguages()
   /** "Search all languages" from the panel's filter line: this box only, for
-      as long as the page is open or until the reader's filter changes. The
+      as long as the page is open or until the reader's filter changes - it
+      names the filter it set aside, so a different filter is not bypassed. The
       stored preference is not touched - that is the selector's job. */
-  const [allLanguages, setAllLanguages] = useState(false)
-  const [bypassedKey, setBypassedKey] = useState(languages.key)
-  if (bypassedKey !== languages.key) {
-    setBypassedKey(languages.key)
-    setAllLanguages(false)
-  }
-  const filter = allLanguages ? [] : languages.active
-  const filterKey = allLanguages ? '' : languages.key
-  /** Names of the filtered-to languages, for the panel's filter line. */
-  const filterNames = joinNames(languages.active.map(languageName))
+  const [bypassKey, setBypassKey] = useState<string | null>(null)
+  const allLanguages = bypassKey === languages.key
+  const filter = allLanguages ? NO_FILTER : languages.active
 
   const listboxId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -243,10 +240,7 @@ export default function SearchBox({
       ctrl.abort()
       clearTimeout(timer)
     }
-    // `filterKey` is `filter` in canonical form; the array is a new object on
-    // every read of the preference.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trimmed, hasQuery, languages.ready, filterKey])
+  }, [trimmed, hasQuery, languages.ready, filter])
 
   // Seed from `?q=` once, after hydration - the island is prerendered, so there
   // is no `window` to read at build time. Setting the query is the whole of it:
@@ -518,7 +512,7 @@ export default function SearchBox({
               <li className="px-4 py-5 text-center" role="presentation">
                 <p className="text-sm text-dim">
                   No matches for &ldquo;{trimmed}&rdquo;
-                  {filterKey ? ` in ${filterNames}` : ''}.
+                  {filter.length > 0 ? ` in ${languages.names}` : ''}.
                 </p>
                 <p className="mt-1 text-sm font-medium text-hi">Not in the database yet.</p>
                 <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
@@ -607,18 +601,18 @@ export default function SearchBox({
             <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-edge px-3 py-2 text-xs text-dim">
               <span className="inline-flex items-center gap-1.5">
                 <Icon name="language" className="h-3.5 w-3.5" />
-                {allLanguages ? 'Showing every language' : `Showing ${filterNames} only`}
+                {allLanguages ? 'Showing every language' : `Showing ${languages.names} only`}
               </span>
               <button
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => {
-                  setAllLanguages((v) => !v)
+                  setBypassKey(allLanguages ? null : languages.key)
                   inputRef.current?.focus()
                 }}
                 className="font-medium text-pink-400 transition-colors hover:text-pink-300"
               >
-                {allLanguages ? `Only ${filterNames}` : 'Search all languages'}
+                {allLanguages ? `Only ${languages.names}` : 'Search all languages'}
               </button>
             </div>
           ) : null}

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { getStats, getCoverage, type Stats, type CoverageResponse } from '../../lib/api'
+import { getStatsShared, getCoverage, type Stats, type CoverageResponse } from '../../lib/api'
 import { formatStat, statFontSize } from '../../lib/stat-size'
 
 /** Which arrangement of the band to render. Three different answers to "make
@@ -167,10 +167,14 @@ export default function StatsBand({ layout = 'tiers' }: Props) {
 
   useEffect(() => {
     const ctrl = new AbortController()
-    getStats(ctrl.signal)
-      .then(setStats)
-      .catch((err) => {
-        if ((err as Error).name !== 'AbortError') setError(true)
+    // The shared /stats read (also the language selector's census): it cannot
+    // be aborted, so an unmounted band simply stops listening.
+    getStatsShared()
+      .then((s) => {
+        if (!ctrl.signal.aborted) setStats(s)
+      })
+      .catch(() => {
+        if (!ctrl.signal.aborted) setError(true)
       })
     // Coverage is a SEPARATE endpoint and a softer failure: if it cannot be
     // read we still show the catalogue totals rather than blanking the band.

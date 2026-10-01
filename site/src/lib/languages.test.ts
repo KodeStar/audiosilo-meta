@@ -16,13 +16,13 @@ import {
   normalizeLanguages,
   parsePrefs,
   primarySubtag,
+  promptEligible,
   readLanguagePrefs,
   selectorSummary,
   suggestion,
   toParam,
   withEnglish,
   writeLanguagePrefs,
-  type LanguagePrefs,
 } from './languages'
 import { stubStorage } from './test-support'
 
@@ -140,20 +140,26 @@ describe('censusOptions', () => {
 
 describe('suggestion', () => {
   it('offers the browser’s non-English languages the catalogue holds', () => {
-    expect(suggestion(null, ['de', 'en'], census)).toEqual(['de'])
-    expect(suggestion(null, ['fr', 'de', 'en'], census)).toEqual(['fr', 'de'])
+    expect(suggestion(['de', 'en'], census)).toEqual(['de'])
+    expect(suggestion(['fr', 'de', 'en'], census)).toEqual(['fr', 'de'])
   })
 
   it('never offers English, nor a language the catalogue does not hold', () => {
-    expect(suggestion(null, ['en'], census)).toEqual([])
-    expect(suggestion(null, ['ja', 'en'], census)).toEqual([])
+    expect(suggestion(['en'], census)).toEqual([])
+    expect(suggestion(['ja', 'en'], census)).toEqual([])
   })
 
-  it('is silent once anything is stored - a choice or a dismissal', () => {
-    expect(suggestion(chosenPrefs([]), ['de'], census)).toEqual([])
-    expect(suggestion(chosenPrefs(['fr']), ['de'], census)).toEqual([])
-    const dismissed: LanguagePrefs = { version: 1, languages: [], promptDismissed: true }
-    expect(suggestion(dismissed, ['de'], census)).toEqual([])
+  it('is asked only while nothing is stored', () => {
+    expect(promptEligible(null, false, ['de'])).toBe(true)
+    // A choice, or a "No thanks" (which stores all languages), silences it.
+    expect(promptEligible(chosenPrefs([]), false, ['de'])).toBe(false)
+    expect(promptEligible(chosenPrefs(['fr']), false, ['de'])).toBe(false)
+  })
+
+  it('is not asked on a shared link, nor of an English-only browser', () => {
+    expect(promptEligible(null, true, ['de'])).toBe(false)
+    expect(promptEligible(null, false, ['en'])).toBe(false)
+    expect(promptEligible(null, false, [])).toBe(false)
   })
 
   it('adds English for the second choice', () => {
@@ -164,6 +170,9 @@ describe('suggestion', () => {
 describe('names', () => {
   it('labels in English and asks in the language itself', () => {
     expect(languageName('de')).toBe('German')
+    // Memoized: a second ask is the same answer.
+    expect(languageName('de')).toBe('German')
+    expect(languageName('not a code')).toBe('not a code')
     expect(nativeLanguageName('de')).toBe('Deutsch')
     expect(nativeLanguageName('fr')).toBe('Français')
   })
@@ -188,7 +197,6 @@ describe('storage', () => {
     expect(JSON.parse(map.get(LANGUAGES_STORAGE_KEY) ?? '')).toEqual({
       version: 1,
       languages: ['de', 'en'],
-      promptDismissed: true,
     })
     expect(readLanguagePrefs()).toEqual(chosenPrefs(['de', 'en']))
   })
@@ -204,8 +212,13 @@ describe('storage', () => {
     expect(parsePrefs('{"version":1,"languages":["de", 7, "??"]}')).toEqual({
       version: 1,
       languages: ['de'],
-      promptDismissed: false,
     })
+  })
+
+  it('ignores fields it does not know, such as the unreleased promptDismissed', () => {
+    expect(parsePrefs('{"version":1,"languages":[],"promptDismissed":true}')).toEqual(
+      chosenPrefs([])
+    )
   })
 
   it('degrades when storage is blocked', () => {

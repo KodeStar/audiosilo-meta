@@ -94,7 +94,7 @@ const ogImage = new URL('/android-chrome-512x512.png', Astro.site).href
     <!-- The one-line language suggestion. Renders nothing unless the browser
          states a non-English language the catalogue holds and the reader has
          never answered it - see LanguagePrompt.tsx. -->
-    <LanguagePrompt client:load />
+    <LanguagePrompt client:idle />
     <main id="main" class:list={['flex-grow', !hasHero && 'pt-10 sm:pt-14']}>
       <slot />
     </main>

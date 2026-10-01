@@ -5,6 +5,7 @@ import {
   selectorSummary,
   type LanguageOption,
 } from '../../lib/languages'
+import { formatStat } from '../../lib/stat-size'
 import { Icon } from '../ui'
 import { chooseLanguages, loadLanguageCensus, useLanguages } from './use-languages'
 
@@ -13,6 +14,44 @@ interface Props {
       full-width row in the phone menu that expands the list in place. The
       choices and their effect are identical. */
   variant?: 'bar' | 'menu'
+}
+
+/** What differs between the two variants - everything else is one markup path. */
+interface VariantStyle {
+  /** The list opens as a floating popover that closes on an outside click or
+      Escape (bar), or expands in place inside the phone menu, which owns
+      closing (menu). */
+  popover: boolean
+  wrapper: string
+  trigger: string
+  /** The trigger's text colour while a filter is on, and while none is. */
+  filtered: string
+  unfiltered: string
+  icon: string
+  list: string
+}
+
+const VARIANTS: Record<NonNullable<Props['variant']>, VariantStyle> = {
+  bar: {
+    popover: true,
+    wrapper: 'relative',
+    trigger:
+      'flex items-center gap-1.5 rounded-md text-sm font-medium transition-colors hover:text-pink-500',
+    filtered: 'text-pink-400',
+    unfiltered: 'text-body',
+    icon: 'h-5 w-5',
+    list: 'p-2',
+  },
+  menu: {
+    popover: false,
+    wrapper: '',
+    trigger:
+      'flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors hover:bg-raised hover:text-hi',
+    filtered: 'text-body',
+    unfiltered: 'text-body',
+    icon: 'h-4 w-4',
+    list: 'px-1 pb-2',
+  },
 }
 
 /**
@@ -29,6 +68,7 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
   const [open, setOpen] = useState(false)
   const [census, setCensus] = useState<LanguageOption[] | null>(null)
   const rootRef = useRef<HTMLDivElement>(null)
+  const style = VARIANTS[variant]
 
   // The census is fetched on first open, and shared with the suggestion prompt
   // (one /stats request a page, whoever asks first).
@@ -46,7 +86,7 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
   // The popover closes on an outside click or Escape; the phone menu's inline
   // list stays put (the menu itself owns closing).
   useEffect(() => {
-    if (!open || variant !== 'bar') return
+    if (!open || !style.popover) return
     const onDown = (e: MouseEvent) => {
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false)
     }
@@ -59,7 +99,7 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
       document.removeEventListener('mousedown', onDown)
       document.removeEventListener('keydown', onKey)
     }
-  }, [open, variant])
+  }, [open, style.popover])
 
   const active = languages.active
   const summary = selectorSummary(active)
@@ -81,7 +121,7 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
   }
 
   const list = (
-    <div className={variant === 'bar' ? 'p-2' : 'px-1 pb-2'}>
+    <div className={style.list}>
       {languages.fromUrl ? (
         <p className="mb-2 rounded-lg bg-raised px-3 py-2 text-xs leading-relaxed text-dim">
           Set by the link you opened. Changing it here saves your own choice.
@@ -128,7 +168,7 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
                 <span className="min-w-0 flex-1 truncate">{languageName(o.language)}</span>
                 {o.works > 0 ? (
                   <span className="shrink-0 text-xs tabular-nums text-dim">
-                    {o.works.toLocaleString()}
+                    {formatStat(o.works)}
                   </span>
                 ) : null}
               </label>
@@ -145,47 +185,36 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
     </div>
   )
 
-  if (variant === 'menu') {
-    return (
-      <div ref={rootRef}>
-        <button
-          type="button"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium text-body transition-colors hover:bg-raised hover:text-hi"
-        >
-          <Icon name="language" className="h-4 w-4" />
-          <span className="flex-1">Languages</span>
-          <span className="text-xs text-dim">{summary}</span>
-        </button>
-        {open ? list : null}
-      </div>
-    )
-  }
-
   return (
-    <div ref={rootRef} className="relative">
+    <div ref={rootRef} className={style.wrapper}>
       <button
         type="button"
         aria-expanded={open}
-        aria-haspopup="true"
+        aria-haspopup={style.popover ? 'true' : undefined}
         aria-label={label}
         title={label}
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1.5 rounded-md text-sm font-medium transition-colors hover:text-pink-500 ${
-          active.length > 0 ? 'text-pink-400' : 'text-body'
-        }`}
+        className={`${style.trigger} ${active.length > 0 ? style.filtered : style.unfiltered}`}
       >
-        <Icon name="language" className="h-5 w-5" />
-        <span className="max-w-[7rem] truncate">{summary}</span>
+        <Icon name="language" className={style.icon} />
+        {style.popover ? (
+          <span className="max-w-[7rem] truncate">{summary}</span>
+        ) : (
+          <>
+            <span className="flex-1">Languages</span>
+            <span className="text-xs text-dim">{summary}</span>
+          </>
+        )}
       </button>
-      {open ? (
+      {open && style.popover ? (
         <div className="absolute right-0 top-full z-50 mt-3 w-64 rounded-xl border border-edge bg-surface shadow-2xl shadow-black/40">
           <p className="border-b border-edge px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-dim">
             Show audiobooks in
           </p>
           {list}
         </div>
+      ) : open ? (
+        list
       ) : null}
     </div>
   )

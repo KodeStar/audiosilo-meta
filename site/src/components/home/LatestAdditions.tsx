@@ -2,31 +2,30 @@ import { useEffect, useState } from 'react'
 import { getLatestWorks, type WorkCard as WorkCardData } from '../../lib/api'
 import WorkCard from '../cards/WorkCard'
 import { useLanguages } from '../languages/use-languages'
-import { joinNames, languageName } from '../../lib/languages'
 
 export default function LatestAdditions({ limit = 12 }: { limit?: number }) {
   const [works, setWorks] = useState<WorkCardData[] | null>(null)
   const [error, setError] = useState(false)
-  const { ready, active, key, context } = useLanguages()
+  const { ready, active, names, context } = useLanguages()
 
   // Refetch whenever the reader's language filter changes (the header
   // selector, the suggestion prompt, another tab) - and not before the filter
-  // has been read, so the first request is already the right one.
+  // has been read, so the first request is already the right one. A refetch
+  // keeps the current cards until the new ones arrive: the skeleton is for the
+  // very first load only.
   useEffect(() => {
     if (!ready) return
     const ctrl = new AbortController()
-    setWorks(null)
-    setError(false)
     getLatestWorks(limit, ctrl.signal, active)
-      .then((res) => setWorks(res.works ?? []))
+      .then((res) => {
+        setWorks(res.works ?? [])
+        setError(false)
+      })
       .catch((err) => {
         if ((err as Error).name !== 'AbortError') setError(true)
       })
     return () => ctrl.abort()
-    // `key` is `active` in canonical form; the array itself is a new object on
-    // every read.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [limit, ready, key])
+  }, [limit, ready, active])
 
   if (error) {
     return (
@@ -53,7 +52,7 @@ export default function LatestAdditions({ limit = 12 }: { limit?: number }) {
     return (
       <p className="rounded-xl border border-edge bg-surface px-6 py-10 text-center text-sm text-dim">
         {active.length > 0
-          ? `No recent additions in ${joinNames(active.map(languageName))}. Change the language filter under Languages in the header to see more.`
+          ? `No recent additions in ${names}. Change the language filter under Languages in the header to see more.`
           : 'No entries yet - be the first to contribute one.'}
       </p>
     )

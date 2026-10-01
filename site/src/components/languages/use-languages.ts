@@ -8,10 +8,12 @@
 // localStorage, a change made in this tab dispatches LANGUAGES_CHANGED_EVENT on
 // window, and the `storage` event carries a change made in another tab. Every
 // listener RE-READS rather than trusting an event payload, so a page can never
-// hold two opinions about which filter is on.
+// hold two opinions about which filter is on - and a re-read that finds nothing
+// changed hands back the SAME state object, so an island re-renders (and its
+// effects re-run) only when its filter really moved.
 
 import { useEffect, useState } from 'react'
-import { getStats } from '../../lib/api'
+import { getStatsShared } from '../../lib/api'
 import {
   LANGUAGES_CHANGED_EVENT,
   LANGUAGES_STORAGE_KEY,
@@ -21,6 +23,8 @@ import {
   browserLanguages,
   censusOptions,
   chosenPrefs,
+  joinNames,
+  languageName,
   languagesFromSearch,
   readLanguagePrefs,
   toParam,
@@ -36,8 +40,11 @@ export interface LanguageState {
   ready: boolean
   /** The filter this view applies (empty = all languages). */
   active: string[]
-  /** `active` as the canonical `lang` value - a stable dependency for effects. */
+  /** `active` as the canonical `lang` value. */
   key: string
+  /** `active`'s English names joined for a sentence ("German and French"),
+      '' for none. */
+  names: string
   /** True when `active` came from a shared link's `?lang=` rather than from the
       reader's own stored choice. */
   fromUrl: boolean
@@ -53,33 +60,45 @@ const INITIAL: LanguageState = {
   ready: false,
   active: [],
   key: '',
+  names: '',
   fromUrl: false,
   context: [],
   prefs: null,
   browser: [],
 }
 
-function readState(): LanguageState {
+/** Everything a consumer can observe of a state, as one string: two reads with
+    the same signature are the same state. */
+function signature(s: LanguageState): string {
+  return [s.ready, s.key, s.context.join(','), s.fromUrl, s.prefs === null, s.browser.join(',')].join('|')
+}
+
+/** The current state, or `prev` itself when nothing a consumer reads has
+    changed - so setState bails out and every array keeps its identity, and
+    consumers can depend on `active`/`context` directly. */
+function readState(prev: LanguageState): LanguageState {
   const prefs = readLanguagePrefs()
   const search = window.location.search
   const active = activeLanguages(search, prefs)
   const browser = browserLanguages(navigator.languages ?? [navigator.language])
-  return {
+  const next: LanguageState = {
     ready: true,
     active,
     key: toParam(active),
+    names: joinNames(active.map(languageName)),
     fromUrl: languagesFromSearch(search) !== null,
     context: badgeContext(active, browser),
     prefs,
     browser,
   }
+  return signature(next) === signature(prev) ? prev : next
 }
 
 /** The reader's language filter, kept current across islands and tabs. */
 export function useLanguages(): LanguageState {
   const [state, setState] = useState<LanguageState>(INITIAL)
   useEffect(() => {
-    const refresh = () => setState(readState())
+    const refresh = () => setState(readState)
     refresh()
     const onStorage = (e: StorageEvent) => {
       // A null key is a whole-origin clear.
@@ -106,12 +125,6 @@ export function chooseLanguages(languages: readonly string[]): void {
   window.dispatchEvent(new CustomEvent(LANGUAGES_CHANGED_EVENT))
 }
 
-/** Record a "No thanks" to the suggestion prompt: all languages, and do not
-    ask again. */
-export function dismissSuggestion(): void {
-  chooseLanguages([])
-}
-
 function clearUrlLanguages(): void {
   const url = new URL(window.location.href)
   if (!url.searchParams.has(LANG_PARAM)) return
@@ -121,13 +134,14 @@ function clearUrlLanguages(): void {
 
 let censusMemo: Promise<LanguageOption[]> | null = null
 
-/** The catalogue's languages, from `/stats`, fetched at most once per page
-    whichever islands ask (the selector, the prompt). A failure resolves to an
-    empty census - the selector says the list is unavailable, the prompt stays
-    away - and is not memoized, so a later ask may succeed. */
+/** The catalogue's languages, from the page's one shared `/stats` read
+    (api.ts getStatsShared - the homepage stats band reads the same response).
+    A failure resolves to an empty census - the selector says the list is
+    unavailable, the prompt stays away - and is not memoized, so a later ask may
+    succeed. */
 export function loadLanguageCensus(): Promise<LanguageOption[]> {
   if (!censusMemo) {
-    censusMemo = getStats()
+    censusMemo = getStatsShared()
       .then((stats) => censusOptions(stats.languages))
       .catch(() => {
         censusMemo = null

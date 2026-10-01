@@ -36,15 +36,14 @@ export const LANG_PARAM = 'lang'
     with a 400, so the site never builds a request it would refuse. */
 export const MAX_LANGUAGES = 8
 
-/** The stored preference. `languages` empty means ALL languages, chosen; the
-    document's ABSENCE means the reader has never said anything, which is the
-    one state the suggestion prompt may appear in. `promptDismissed` records a
-    "No thanks" (and is set by every explicit choice, so the prompt never
-    reappears after one). */
+/** The stored preference. `languages` empty means ALL languages, chosen - which
+    is also what a "No thanks" to the suggestion prompt stores. The document's
+    ABSENCE means the reader has never said anything, which is the one state the
+    suggestion prompt may appear in: its existence IS the answer, so the prompt
+    never reappears after any choice. */
 export interface LanguagePrefs {
   version: 1
   languages: string[]
-  promptDismissed: boolean
 }
 
 // The schema's tag pattern (common.schema.json), lowercased: a 2-3 letter
@@ -62,9 +61,9 @@ export function primarySubtag(tag: string | null | undefined): string {
 }
 
 /** Primary subtags, deduplicated, invalid ones dropped, in the order given. */
-function primaries(tags: readonly string[]): string[] {
+function primaries(tags: readonly string[] | null | undefined): string[] {
   const out: string[] = []
-  for (const tag of tags) {
+  for (const tag of tags ?? []) {
     const p = primarySubtag(tag)
     if (p && !out.includes(p)) out.push(p)
   }
@@ -80,9 +79,7 @@ export function normalizeLanguages(tags: readonly string[]): string[] {
 
 /** The reader's languages from `navigator.languages`, reduced to primary
     subtags in their own preference order ("de-DE, de, en-US" -> de, en). */
-export function browserLanguages(languages: readonly string[] | null | undefined): string[] {
-  return primaries(languages ?? [])
-}
+export const browserLanguages = primaries
 
 /** The `lang` parameter value for a filter, '' for none (the caller then sends
     no parameter at all, so an unfiltered request is the request it always was). */
@@ -153,19 +150,27 @@ export function censusOptions(census: readonly LanguageCount[] | null | undefine
     .sort((a, b) => b.works - a.works || a.language.localeCompare(b.language))
 }
 
+/** Whether the suggestion prompt may be asked at all, before the census is
+    fetched: only while nothing is stored (no choice, no "No thanks"), not on a
+    shared link that already names a filter, and only when the browser states a
+    language other than English. Cheap on purpose - a reader it rules out costs
+    no request. */
+export function promptEligible(
+  prefs: LanguagePrefs | null,
+  fromUrl: boolean,
+  browser: readonly string[]
+): boolean {
+  return prefs === null && !fromUrl && browser.some((l) => l !== 'en')
+}
+
 /** The languages the suggestion prompt offers: the browser's languages OTHER
     than English that the catalogue holds, in the browser's order. Empty -
-    meaning no prompt - when the reader has stored anything (a choice or a
-    dismissal), when the browser states only English, or when the catalogue
-    holds none of them. English is left out because nearly the whole catalogue
-    is English, so "show only English?" would be offering to hide almost
-    nothing from a reader who did not ask. */
-export function suggestion(
-  prefs: LanguagePrefs | null,
-  browser: readonly string[],
-  census: readonly LanguageOption[]
-): string[] {
-  if (prefs) return []
+    meaning no prompt - when the browser states only English, or when the
+    catalogue holds none of them. English is left out because nearly the whole
+    catalogue is English, so "show only English?" would be offering to hide
+    almost nothing from a reader who did not ask. (Whether the prompt is asked
+    at all is promptEligible's question.) */
+export function suggestion(browser: readonly string[], census: readonly LanguageOption[]): string[] {
   const held = new Set(census.filter((c) => c.works > 0).map((c) => c.language))
   return primaries(browser)
     .filter((l) => l !== 'en' && held.has(l))
@@ -178,27 +183,59 @@ export function withEnglish(languages: readonly string[]): string[] {
   return normalizeLanguages([...languages, 'en'])
 }
 
-/** A language's name in English ("de" -> "German"), the selector's label. Falls
-    back to the code itself where Intl cannot name it. */
-export function languageName(code: string): string {
-  try {
-    return new Intl.DisplayNames(['en'], { type: 'language' }).of(code) || code
-  } catch {
-    return code
+// Display names are asked for on every render of every chip and selector row,
+// so each Intl.DisplayNames is constructed once (lazily, since a runtime without
+// Intl.DisplayNames must still render) and each code's answer is memoized.
+let englishNames: Intl.DisplayNames | null | undefined
+const englishMemo = new Map<string, string>()
+const nativeMemo = new Map<string, string>()
+
+function englishDisplayNames(): Intl.DisplayNames | null {
+  if (englishNames === undefined) {
+    try {
+      englishNames = new Intl.DisplayNames(['en'], { type: 'language' })
+    } catch {
+      englishNames = null
+    }
   }
+  return englishNames
+}
+
+/** A language's name in English ("de" -> "German"), the selector's label and
+    the one implementation behind api.ts's formatLanguage. Falls back to the
+    code itself where Intl cannot name it (an invalid code, or older data that
+    already carries a display name). */
+export function languageName(code: string): string {
+  let name = englishMemo.get(code)
+  if (name === undefined) {
+    try {
+      name = englishDisplayNames()?.of(code) || code
+    } catch {
+      name = code
+    }
+    englishMemo.set(code, name)
+  }
+  return name
 }
 
 /** A language's name in ITSELF ("de" -> "Deutsch", "fr" -> "Français"),
     capitalized, for the suggestion prompt: a German reader is asked about
     Deutsch. Falls back to the English name. */
 export function nativeLanguageName(code: string): string {
-  try {
-    const name = new Intl.DisplayNames([code], { type: 'language' }).of(code)
-    if (!name || name === code) return languageName(code)
-    return name.charAt(0).toLocaleUpperCase(code) + name.slice(1)
-  } catch {
-    return languageName(code)
+  let name = nativeMemo.get(code)
+  if (name === undefined) {
+    try {
+      const own = new Intl.DisplayNames([code], { type: 'language' }).of(code)
+      name =
+        !own || own === code
+          ? languageName(code)
+          : own.charAt(0).toLocaleUpperCase(code) + own.slice(1)
+    } catch {
+      name = languageName(code)
+    }
+    nativeMemo.set(code, name)
   }
+  return name
 }
 
 /** "A", "A and B", "A, B and C" - the one list-joining rule the prompt and the
@@ -217,8 +254,8 @@ export function selectorSummary(languages: readonly string[]): string {
 }
 
 /** Parse a stored document, tolerating anything: a malformed or foreign value
-    is "nothing stored" rather than an exception, and the languages it names
-    are normalized as if typed. */
+    is "nothing stored" rather than an exception, fields it does not know are
+    ignored, and the languages it names are normalized as if typed. */
 export function parsePrefs(raw: string | null): LanguagePrefs | null {
   if (!raw) return null
   try {
@@ -227,20 +264,16 @@ export function parsePrefs(raw: string | null): LanguagePrefs | null {
     const langs = Array.isArray(doc.languages)
       ? doc.languages.filter((l): l is string => typeof l === 'string')
       : []
-    return {
-      version: 1,
-      languages: normalizeLanguages(langs),
-      promptDismissed: doc.promptDismissed === true,
-    }
+    return { version: 1, languages: normalizeLanguages(langs) }
   } catch {
     return null
   }
 }
 
-/** A preference document for an explicit choice. Any choice dismisses the
-    prompt: a reader who has answered the question is not asked it again. */
+/** A preference document for an explicit choice. Storing any choice dismisses
+    the prompt: a reader who has answered the question is not asked it again. */
 export function chosenPrefs(languages: readonly string[]): LanguagePrefs {
-  return { version: 1, languages: normalizeLanguages(languages), promptDismissed: true }
+  return { version: 1, languages: normalizeLanguages(languages) }
 }
 
 /** The stored preference, or null. Every failure - private mode, blocked

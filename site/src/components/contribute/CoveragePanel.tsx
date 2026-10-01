@@ -22,7 +22,6 @@ import {
   type CoverageWorkRow,
 } from '../../lib/coverage'
 import { addWorkIssueFormUrl } from '../../lib/github-prefill'
-import { joinNames, languageName } from '../../lib/languages'
 import { PILL_LINK } from '../ui'
 import { useEntity, DetailSpinner } from '../detail/detail-common'
 import LanguageChip from '../cards/LanguageChip'
@@ -42,12 +41,18 @@ type Async<T> = { status: 'loading' } | { status: 'error' } | { status: 'ready';
 
 /** Run an abortable fetch, re-running whenever `deps` change (the previous
     request is aborted). `deps` are the fetch inputs, so the closed-over fetcher
-    always reads current values. */
-function useAsync<T>(fetcher: (signal: AbortSignal) => Promise<T>, deps: unknown[]): Async<T> {
+    always reads current values. While `enabled` is false the fetcher is not
+    called and the state stays `loading` (an input it needs is not known yet). */
+function useAsync<T>(
+  fetcher: (signal: AbortSignal) => Promise<T>,
+  deps: unknown[],
+  enabled = true
+): Async<T> {
   const [state, setState] = useState<Async<T>>({ status: 'loading' })
   useEffect(() => {
-    const ctrl = new AbortController()
     setState({ status: 'loading' })
+    if (!enabled) return
+    const ctrl = new AbortController()
     fetcher(ctrl.signal)
       .then((data) => {
         if (!ctrl.signal.aborted) setState({ status: 'ready', data })
@@ -58,7 +63,7 @@ function useAsync<T>(fetcher: (signal: AbortSignal) => Promise<T>, deps: unknown
       })
     return () => ctrl.abort()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
+  }, [...deps, enabled])
   return state
 }
 
@@ -330,20 +335,19 @@ function WorksList({
   onOffset: (o: number) => void
   languages: LanguageState
 }) {
-  const state = useAsync<CoverageWorksResponse | null>(
+  const state = useAsync<CoverageWorksResponse>(
+    (signal) =>
+      getCoverageWorks(
+        { filter, q: query, limit: PAGE_SIZE, offset, lang: languages.active },
+        signal
+      ),
+    [filter, query, offset, languages.active],
     // Nothing is fetched until the reader's filter has been read, so the first
     // request is already the filtered one.
-    (signal) =>
-      languages.ready
-        ? getCoverageWorks(
-            { filter, q: query, limit: PAGE_SIZE, offset, lang: languages.active },
-            signal
-          )
-        : Promise.resolve(null),
-    [filter, query, offset, languages.ready, languages.key]
+    languages.ready
   )
 
-  if (state.status === 'loading' || (state.status === 'ready' && state.data === null)) {
+  if (state.status === 'loading') {
     return <DetailSpinner label="Loading books..." className="py-12 text-center" />
   }
   if (state.status === 'error') {
@@ -353,7 +357,7 @@ function WorksList({
       </ListMessage>
     )
   }
-  const { works, total, available } = state.data as CoverageWorksResponse
+  const { works, total, available } = state.data
   if (!available) {
     return (
       <ListMessage>
@@ -363,11 +367,10 @@ function WorksList({
     )
   }
   if (total === 0) {
-    const names = joinNames(languages.active.map(languageName))
     return (
       <ListMessage>
         {query ? `No books match "${query}".` : FILTER_EMPTY[filter]}
-        {languages.active.length > 0 ? ` Only books in ${names} are shown.` : ''}
+        {languages.active.length > 0 ? ` Only books in ${languages.names} are shown.` : ''}
       </ListMessage>
     )
   }
@@ -438,7 +441,7 @@ function WorksBrowser({
 
       {languages.active.length > 0 ? (
         <p className="mt-3 text-xs text-dim">
-          Showing books in {joinNames(languages.active.map(languageName))} only - change it under
+          Showing books in {languages.names} only - change it under
           Languages in the header. The counts above cover every language.
         </p>
       ) : null}

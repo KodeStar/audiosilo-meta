@@ -3,16 +3,12 @@ import {
   joinNames,
   languageName,
   nativeLanguageName,
+  promptEligible,
   suggestion,
   withEnglish,
 } from '../../lib/languages'
 import { Icon } from '../ui'
-import {
-  chooseLanguages,
-  dismissSuggestion,
-  loadLanguageCensus,
-  useLanguages,
-} from './use-languages'
+import { chooseLanguages, loadLanguageCensus, useLanguages } from './use-languages'
 
 /**
  * The one-line suggestion under the header: "Show only Deutsch audiobooks?"
@@ -28,15 +24,10 @@ import {
  * browser states only English costs no request at all.
  */
 export default function LanguagePrompt() {
-  const languages = useLanguages()
+  const { ready, prefs, fromUrl, browser } = useLanguages()
   const [offer, setOffer] = useState<string[]>([])
 
-  const eligible =
-    languages.ready &&
-    languages.prefs === null &&
-    !languages.fromUrl &&
-    languages.browser.some((l) => l !== 'en')
-  const browserKey = languages.browser.join(',')
+  const eligible = ready && promptEligible(prefs, fromUrl, browser)
 
   useEffect(() => {
     if (!eligible) {
@@ -45,13 +36,12 @@ export default function LanguagePrompt() {
     }
     let live = true
     void loadLanguageCensus().then((census) => {
-      if (live) setOffer(suggestion(null, languages.browser, census))
+      if (live) setOffer(suggestion(browser, census))
     })
     return () => {
       live = false
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [eligible, browserKey])
+  }, [eligible, browser])
 
   if (!eligible || offer.length === 0) return null
 
@@ -99,7 +89,7 @@ export default function LanguagePrompt() {
           </button>
           <button
             type="button"
-            onClick={dismissSuggestion}
+            onClick={() => chooseLanguages([])}
             className={`${btn} border-transparent text-dim hover:text-hi`}
           >
             No thanks

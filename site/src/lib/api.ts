@@ -12,7 +12,7 @@
 // guide pages exist" - the one that BUILDS a guide URL and the one that READS
 // one back - a single definition, with no cycle.
 import type { WorkGuide } from './entity-url'
-import { LANG_PARAM, toParam } from './languages'
+import { LANG_PARAM, languageName, toParam } from './languages'
 
 const RAW_BASE = import.meta.env.PUBLIC_API_BASE ?? ''
 // Trim a trailing slash so `${BASE}/api/...` never doubles up.
@@ -415,6 +415,23 @@ export function getStats(signal?: AbortSignal): Promise<Stats> {
   return getJSON<Stats>('/api/v1/stats', signal)
 }
 
+let statsShared: Promise<Stats> | null = null
+
+/** `/stats`, fetched at most once per page whichever island asks first (the
+    homepage stats band, the language selector, the suggestion prompt). It takes
+    no abort signal - the request is shared, so one caller unmounting must not
+    cancel it for the rest; a caller that goes away just stops listening. A
+    failure is not memoized, so a later call retries. */
+export function getStatsShared(): Promise<Stats> {
+  if (!statsShared) {
+    statsShared = getStats().catch((err: unknown) => {
+      statsShared = null
+      throw err
+    })
+  }
+  return statsShared
+}
+
 /** Set `lang` on a request's parameters when a filter is given, and leave it
     off otherwise - so an unfiltered request is byte for byte the request it
     always was. The fetchers take the filter as an EXPLICIT argument and never
@@ -598,17 +615,12 @@ export function formatYear(date?: string | null): string | null {
   return m ? m[1] : date
 }
 
-/** A readable language name from a BCP-47 code ("en" -> "English") via
-    Intl.DisplayNames, falling back to the raw value when it is not a valid
-    code (older data may already carry a display name). */
+/** A readable language name from a BCP-47 code ("en" -> "English"), falling
+    back to the raw value when it is not a valid code (older data may already
+    carry a display name). lib/languages.ts languageName is the one
+    implementation; this is its nullable spelling. */
 export function formatLanguage(code?: string | null): string | null {
-  if (!code) return null
-  try {
-    const name = new Intl.DisplayNames(['en'], { type: 'language' }).of(code)
-    return name || code
-  } catch {
-    return code
-  }
+  return code ? languageName(code) : null
 }
 
 /** "Ann Leckie, Jane Doe" - the comma join used wherever a people list

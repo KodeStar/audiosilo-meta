@@ -221,6 +221,14 @@ function langFilter(url) {
   return out.size > 0 ? out : null
 }
 
+/** Answer a route that takes `lang`: a 400 for a value the server refuses, else
+    `handle(filter)` with the parsed filter (null = none). */
+function withLang(res, url, handle) {
+  const lang = langFilter(url)
+  if (typeof lang === 'string') return send(res, 400, { error: `invalid lang: ${lang}` })
+  return handle(lang)
+}
+
 /** Whether a language passes a filter. An unknown language (a TIED series) is
     never judged, so it passes every filter - the server's rule. */
 function langPasses(filter, language) {
@@ -277,32 +285,32 @@ const server = createServer((req, res) => {
   if (p === '/api/v1/coverage') return send(res, 200, coverage)
 
   if (p === '/api/v1/coverage/works') {
-    const lang = langFilter(url)
-    if (typeof lang === 'string') return send(res, 400, { error: `invalid lang: ${lang}` })
-    const filter = url.searchParams.get('filter') || 'missing'
-    const q = (url.searchParams.get('q') || '').toLowerCase().trim()
-    const limit = Number(url.searchParams.get('limit') || 25)
-    const offset = Number(url.searchParams.get('offset') || 0)
-    let rows = coverWorks.filter(
-      (w) => matchesFilter(w, filter) && langPasses(lang, w.language ?? 'en')
-    )
-    if (q) {
-      rows = rows.filter(
-        (w) =>
-          w.title.toLowerCase().includes(q) ||
-          w.authors.some((a) => a.name.toLowerCase().includes(q))
+    return withLang(res, url, (lang) => {
+      const filter = url.searchParams.get('filter') || 'missing'
+      const q = (url.searchParams.get('q') || '').toLowerCase().trim()
+      const limit = Number(url.searchParams.get('limit') || 25)
+      const offset = Number(url.searchParams.get('offset') || 0)
+      let rows = coverWorks.filter(
+        (w) => matchesFilter(w, filter) && langPasses(lang, w.language ?? 'en')
       )
-    }
-    rows.sort((a, b) => a.title.localeCompare(b.title) || a.id.localeCompare(b.id))
-    const page = rows.slice(offset, offset + limit).map((w) => ({
-      id: w.id,
-      title: w.title,
-      authors: w.authors,
-      ...(w.series ? { series: w.series } : {}),
-      language: w.language ?? 'en',
-      missing: missingDims(w),
-    }))
-    return send(res, 200, { works: page, total: rows.length, limit, offset, available: true })
+      if (q) {
+        rows = rows.filter(
+          (w) =>
+            w.title.toLowerCase().includes(q) ||
+            w.authors.some((a) => a.name.toLowerCase().includes(q))
+        )
+      }
+      rows.sort((a, b) => a.title.localeCompare(b.title) || a.id.localeCompare(b.id))
+      const page = rows.slice(offset, offset + limit).map((w) => ({
+        id: w.id,
+        title: w.title,
+        authors: w.authors,
+        ...(w.series ? { series: w.series } : {}),
+        language: w.language ?? 'en',
+        missing: missingDims(w),
+      }))
+      return send(res, 200, { works: page, total: rows.length, limit, offset, available: true })
+    })
   }
 
   if (p === '/api/v1/coverage/series-gaps') {
@@ -320,48 +328,48 @@ const server = createServer((req, res) => {
   }
 
   if (p === '/api/v1/search') {
-    const lang = langFilter(url)
-    if (typeof lang === 'string') return send(res, 400, { error: `invalid lang: ${lang}` })
-    const q = (url.searchParams.get('q') || '').toLowerCase().trim()
-    const results = []
-    // Series and people are DELIBERATELY emitted before works: the real API
-    // ranks across kinds (bm25), so kind order is not guaranteed - this makes
-    // the mock exercise the UI's fixed group order (Works, People, Series).
-    for (const s of Object.values(db.series)) {
-      if (s.name.toLowerCase().includes(q) && langPasses(lang, s.language))
-        results.push({
-          kind: 'series',
-          id: s.id,
-          name: s.name,
-          works: s.works.length,
-          ...(s.language ? { language: s.language } : {}),
-        })
-    }
-    for (const person of Object.values(db.people)) {
-      if (person.name.toLowerCase().includes(q))
-        results.push({ kind: 'person', id: person.id, name: person.name })
-    }
-    for (const w of Object.values(db.works)) {
-      if (!langPasses(lang, w.language)) continue
-      if (
-        w.title.toLowerCase().includes(q) ||
-        w.authors.some((a) => a.name.toLowerCase().includes(q)) ||
-        w.recordings.some((r) => r.narrators.some((n) => n.name.toLowerCase().includes(q)))
-      ) {
-        // A work hit is the card plus kind and narrators, as on the real wire.
-        results.push({ kind: 'work', ...cardOf(w.id), narrators: narratorsOf(w) })
+    return withLang(res, url, (lang) => {
+      const q = (url.searchParams.get('q') || '').toLowerCase().trim()
+      const results = []
+      // Series and people are DELIBERATELY emitted before works: the real API
+      // ranks across kinds (bm25), so kind order is not guaranteed - this makes
+      // the mock exercise the UI's fixed group order (Works, People, Series).
+      for (const s of Object.values(db.series)) {
+        if (s.name.toLowerCase().includes(q) && langPasses(lang, s.language))
+          results.push({
+            kind: 'series',
+            id: s.id,
+            name: s.name,
+            works: s.works.length,
+            ...(s.language ? { language: s.language } : {}),
+          })
       }
-    }
-    return send(res, 200, { results: results.slice(0, Number(url.searchParams.get('limit') || 20)) })
+      for (const person of Object.values(db.people)) {
+        if (person.name.toLowerCase().includes(q))
+          results.push({ kind: 'person', id: person.id, name: person.name })
+      }
+      for (const w of Object.values(db.works)) {
+        if (!langPasses(lang, w.language)) continue
+        if (
+          w.title.toLowerCase().includes(q) ||
+          w.authors.some((a) => a.name.toLowerCase().includes(q)) ||
+          w.recordings.some((r) => r.narrators.some((n) => n.name.toLowerCase().includes(q)))
+        ) {
+          // A work hit is the card plus kind and narrators, as on the real wire.
+          results.push({ kind: 'work', ...cardOf(w.id), narrators: narratorsOf(w) })
+        }
+      }
+      return send(res, 200, { results: results.slice(0, Number(url.searchParams.get('limit') || 20)) })
+    })
   }
 
   if (p === '/api/v1/works/latest') {
-    const lang = langFilter(url)
-    if (typeof lang === 'string') return send(res, 400, { error: `invalid lang: ${lang}` })
-    const works = Object.values(db.works)
-      .filter((w) => langPasses(lang, w.language))
-      .map((w) => cardOf(w.id))
-    return send(res, 200, { works: works.slice(0, Number(url.searchParams.get('limit') || 12)) })
+    return withLang(res, url, (lang) => {
+      const works = Object.values(db.works)
+        .filter((w) => langPasses(lang, w.language))
+        .map((w) => cardOf(w.id))
+      return send(res, 200, { works: works.slice(0, Number(url.searchParams.get('limit') || 12)) })
+    })
   }
 
   let m

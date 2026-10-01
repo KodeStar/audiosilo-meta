@@ -1,6 +1,13 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { readFileSync } from 'node:fs'
-import { SERIES_ORDERINGS, getCoverageWorks, getLatestWorks, search } from './api'
+import {
+  SERIES_ORDERINGS,
+  formatLanguage,
+  getCoverageWorks,
+  getLatestWorks,
+  getStatsShared,
+  search,
+} from './api'
 import { chosenPrefs } from './languages'
 import { stubStorage } from './test-support'
 
@@ -58,5 +65,37 @@ describe('the lang argument', () => {
       '/api/v1/works/latest?limit=12',
       '/api/v1/coverage/works?filter=missing',
     ])
+  })
+})
+
+describe('formatLanguage', () => {
+  it('names a code in English and passes a non-code through', () => {
+    expect(formatLanguage('de')).toBe('German')
+    expect(formatLanguage('not a code')).toBe('not a code')
+    expect(formatLanguage(null)).toBeNull()
+    expect(formatLanguage('')).toBeNull()
+  })
+})
+
+// One /stats request per page, whichever island asks first (the stats band and
+// the language census) - and a failure is retried by the next caller rather
+// than remembered.
+describe('getStatsShared', () => {
+  afterEach(() => vi.unstubAllGlobals())
+
+  it('fetches once for every caller, and again after a failure', async () => {
+    let calls = 0
+    let fail = true
+    vi.stubGlobal('fetch', async () => {
+      calls++
+      if (fail) return { ok: false, status: 503, json: async () => ({}) }
+      return { ok: true, status: 200, json: async () => ({ works: 1 }) }
+    })
+    await expect(getStatsShared()).rejects.toThrow()
+    fail = false
+    const [a, b] = await Promise.all([getStatsShared(), getStatsShared()])
+    expect(a).toBe(b)
+    await getStatsShared()
+    expect(calls).toBe(2)
   })
 })
