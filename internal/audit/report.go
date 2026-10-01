@@ -42,7 +42,20 @@ var opPhrase = map[string]func(Proposal) string{
 		return s + ": " + quoteOrDash(p.From)
 	},
 	OpDropMembership: func(p Proposal) string {
+		if p.Target != "" {
+			return fmt.Sprintf("drop %s (position %s) from series %s", p.Target, quoteOrDash(p.From), p.Series)
+		}
 		return fmt.Sprintf("drop the membership naming %s from series %s", quoteOrDash(p.From), p.Series)
+	},
+	OpMoveMembership: func(p Proposal) string {
+		return fmt.Sprintf("move %s from series %s to %s at position %s", p.Target, p.Series, truncateList(p.Others, 2), quoteOrDash(p.To))
+	},
+	OpSplitSeries: func(p Proposal) string {
+		return fmt.Sprintf("split series %s: move its %s members (%s) to a new series of the same name, %s keeping the slug",
+			p.Target, p.To, truncateList(p.Others, 8), p.From)
+	},
+	OpSetWorkLanguage: func(p Proposal) string {
+		return fmt.Sprintf("set the language of %s (and of every recording stating it): %s -> %s", p.Target, quoteOrDash(p.From), quoteOrDash(p.To))
 	},
 	OpFillField: func(p Proposal) string {
 		return fmt.Sprintf("state %s on %s", p.Field, p.Target)
@@ -98,12 +111,18 @@ var classDoc = map[string]string{
 		"Works in incompatible languages are never clustered together.",
 	ClassWorkTitle:    "titles still carrying retailer decoration (edition markers, volume markers, an embedded series name, a genre subtitle). Title-only: no slug is ever proposed for change.",
 	ClassWorkNoSeries: "works belonging to no series whose title names one, states a volume number, or both.",
-	ClassSeriesInteg:  "per-series problems: shared, malformed or non-canonically spelled positions, dangling members, sequence gaps (advisory), a minority-language member, an omnibus sitting on a single slot.",
+	ClassSeriesInteg:  "per-series problems: shared, malformed or non-canonically spelled positions, dangling members, sequence gaps (advisory), an omnibus sitting on a single slot.",
 	ClassSeriesDup:    "series whose names are one name spelled two ways.",
 	ClassSeriesParen:  "series names carrying a parenthetical. Reported, never merged: a parenthetical is often a deliberate alternative ordering the data model cannot otherwise express.",
 	ClassTransLink: "translation links a record's own-language edition decoration states: a series named \"<name> [<Language> Edition]\" " +
 		"linked to the one same-author series of that name in another language, and a work titled \"(<Language> Edition)\" in that " +
 		"language linked to the one same book in another language. Stated evidence only: exactly one original, or no proposal.",
+	ClassLangMix: "series whose members state two or more languages, read against ONE keeper language (the derived one, or for a tie the " +
+		"name's edition decoration, else the incumbent half): a member of another language that already sits in a series of its own " +
+		"language is dropped, one with exactly one same-name or translation-linked series of its language is moved there, and the " +
+		"rest move to a new series of the same name. A coupled member, a narrator contradiction, a tie by incumbency or a " +
+		"conflicting proposal of another class makes a proposal advisory; a work whose language its narrators contradict is a " +
+		"set-work-language review, never applied mechanically.",
 	ClassPersonDup:  "possible duplicate people. ADVISORY throughout, high false-positive rate: two real people can share a name or sit one typo apart, so nothing here proposes an action.",
 	ClassRefSidecar: "works-community sidecar hazards: a spoiler-gated sidecar attached to a work that turns out to be one of a duplicate pair, or keyed by a work slug nothing holds.",
 	ClassHygiene:    "field-level gaps and slug-convention oddities.",
@@ -303,6 +322,26 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 		{Label: "works whose title states their own language's edition", N: lk.WorksDecorated},
 		{Label: "... with no same-book work in another language", N: lk.WorksNoCandidate},
 		{Label: "... with two or more candidate originals (ambiguous)", N: lk.WorksAmbiguous},
+	})
+	b.WriteString("\n")
+
+	mx := rep.LangMix
+	b.WriteString("L-MIX in proportion: the mixed-language series, the minority memberships behind the class's\n")
+	b.WriteString("proposals and why some are advisory, and the works whose recordings state another language\n")
+	b.WriteString("(the recording relocation pass's population; the ones whose every recording states one other\n")
+	b.WriteString("language are the set-work-language candidates where the narrators agree).\n\n")
+	reportdir.Table(b, "measure", []reportdir.Row{
+		{Label: "series whose members state two or more languages", N: mx.MixedSeries},
+		{Label: "... tied (no strict plurality)", N: mx.TieSeries},
+		{Label: "... tied, decided by the name's edition decoration", N: mx.TieByDecoration},
+		{Label: "memberships outside the keeper language", N: mx.Minority},
+		{Label: "... coupled (carrying a recording in the keeper language)", N: mx.Coupled},
+		{Label: "... whose narrators contradict the member's language", N: mx.NarratorContradicted},
+		{Label: "... withheld by another class's proposal on the same record", N: mx.CrossClass},
+		{Label: "recordings stating a language their work does not", N: mx.CrossRecordings},
+		{Label: "... over this many works", N: mx.CrossWorks},
+		{Label: "works whose every recording states one other language", N: mx.AllOther},
+		{Label: "... whose narrators contradict the work's language", N: mx.AllOtherContradicted},
 	})
 	b.WriteString("\n")
 

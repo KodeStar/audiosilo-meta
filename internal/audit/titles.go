@@ -150,14 +150,11 @@ func detectWorkNoSeries(ix *index) *findings {
 	f := &findings{class: ClassWorkNoSeries}
 
 	type candidate struct {
-		work     *model.Work
-		d        *workDerived
 		slot     string
 		vetoes   []string
 		subclass string
 	}
-	var cands []candidate
-	claims := map[string][]string{} // "<series>@<slot>" -> work ids claiming it
+	vetoesByWork := map[string][]string{}
 
 	for _, w := range ix.cat.Works {
 		if len(ix.memberships[w.ID]) > 0 {
@@ -181,23 +178,13 @@ func detectWorkNoSeries(ix *index) *findings {
 			}
 			continue
 		}
-		c := candidate{work: w, d: d}
+		c := candidate{}
 		if !d.hasSeq {
 			c.subclass = noSeriesOnly
-			cands = append(cands, c)
-			continue
+		} else {
+			c.subclass, c.slot = noSeriesAndPosition, formatSeq(d.seq)
+			c.vetoes = ix.membershipVetoes(w, d)
 		}
-		c.subclass, c.slot = noSeriesAndPosition, formatSeq(d.seq)
-		c.vetoes = ix.membershipVetoes(w, d)
-		if len(c.vetoes) == 0 {
-			key := d.seriesID + "@" + c.slot
-			claims[key] = append(claims[key], w.ID)
-		}
-		cands = append(cands, c)
-	}
-
-	for _, c := range cands {
-		w, d := c.work, c.d
 		fd := Finding{
 			Subclass: c.subclass,
 			Key:      w.ID,
@@ -217,22 +204,29 @@ func detectWorkNoSeries(ix *index) *findings {
 			continue
 		}
 		vetoes := c.vetoes
-		// Consistency as a SET: a slot two proposals both claim is a slot neither
-		// may take mechanically.
-		if others := claims[d.seriesID+"@"+c.slot]; len(others) > 1 {
-			vetoes = append(vetoes, "slot "+c.slot+" of "+d.seriesID+" is claimed by "+
-				truncateList(sortedUnique(others), 4)+", so no claimant may take it mechanically")
-		}
 		fd.Propose = Proposal{
 			Op: OpAddSeriesMember, Target: w.ID, Series: d.seriesID, Field: "series", To: c.slot,
 		}
 		if len(vetoes) > 0 {
+			vetoesByWork[w.ID] = vetoes
 			fd.Propose.Op = OpReview
 			fd.Propose.Advisory = true
 			fd.Propose.Reason = "do not add this membership on this evidence: " + truncateList(vetoes, 4)
 		}
 		f.add(fd)
 	}
+	settleContestedClaims(f, func(p Proposal) []string {
+		if p.Series == "" || p.To == "" {
+			return nil
+		}
+		return []string{p.Series + "@" + p.To}
+	}, func(fd *Finding, claimants []string) {
+		p := &fd.Propose
+		why := "slot " + p.To + " of " + p.Series + " is claimed by " +
+			truncateList(sortedUnique(claimants), 4) + ", so no claimant may take it mechanically"
+		p.Op = OpReview
+		p.Reason = "do not add this membership on this evidence: " + truncateList(append(vetoesByWork[p.Target], why), 4)
+	})
 	return f
 }
 

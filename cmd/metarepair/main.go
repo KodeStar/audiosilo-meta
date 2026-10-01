@@ -3,9 +3,14 @@
 // the series memberships a title states, restates non-canonical positions, and adds the
 // translation links a record's own-language edition decoration states (add-work-link and
 // add-series-link, the T-LINK class, each op naming the family it links - core-only ops
-// that need no --community):
+// that need no --community), and repairs the memberships of a series whose members
+// state two or more languages (drop-membership, move-membership and split-series, the
+// L-MIX class; set-work-language is its fourth op, which the audit never proposes
+// mechanically - a language is set only by a reviewed decision). None of the L-MIX ops
+// reads the works-community layer either:
 //
 //	go run ./cmd/metarepair -data data --op add-series-link
+//	go run ./cmd/metarepair -data data --op split-series
 //
 // The default is a DRY RUN that writes nothing and reports the whole plan:
 //

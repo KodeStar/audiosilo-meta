@@ -511,7 +511,7 @@ const (
 	// AdvisorySeriesTranslationSameLanguage is a series translation_of whose two
 	// sides DERIVE one primary language from their members (languages.go). The
 	// link is still a true statement - the defect is a misfiled member, which the
-	// audit's minority-language class is about - and a sync-bot volume must never
+	// audit's L-MIX class (langmix.go) is about - and a sync-bot volume must never
 	// turn red a link it did not write, so it is advisory where the work-level
 	// rule (a stated language on both sides) is a problem.
 	AdvisorySeriesTranslationSameLanguage = "series-translation-same-language"

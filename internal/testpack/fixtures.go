@@ -136,6 +136,11 @@ func WithoutPublisher() RecOpt {
 	return func(m map[string]any) { delete(m, "publisher") }
 }
 
+// WithRecLanguage sets the recording's language (the fixture default is en).
+func WithRecLanguage(l string) RecOpt {
+	return func(m map[string]any) { m["language"] = l }
+}
+
 // WithRecAddedAt overwrites the recording's added_at stamp.
 func WithRecAddedAt(v string) RecOpt {
 	return func(m map[string]any) { m["added_at"] = v }
@@ -169,6 +174,17 @@ func RecJSON(t testing.TB, id, work string, opts ...RecOpt) string {
 		o(m)
 	}
 	return mustJSON(t, m)
+}
+
+// WorkFiles renders a work and one recording in lang, with an explicit narrator.
+func WorkFiles(t testing.TB, id, lang, narrator string, opts ...WorkOpt) map[string]string {
+	t.Helper()
+	return map[string]string{
+		"works/xx/" + id + "/work.json": WorkJSON(t, id, strings.ToUpper(id[:1])+id[1:],
+			append([]WorkOpt{WithLanguage(lang)}, opts...)...),
+		"works/xx/" + id + "/recordings/r-" + id + ".json": RecJSON(t, "r-"+id, id,
+			WithNarrators(narrator), WithRecLanguage(lang)),
+	}
 }
 
 // ASIN derives a unique, schema-valid ASIN from a seed string.

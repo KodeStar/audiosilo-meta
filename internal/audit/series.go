@@ -13,14 +13,13 @@ import (
 
 // S-INTEGRITY subclasses.
 const (
-	sDupPosition      = "duplicate-position"
-	sGap              = "position-gap"
-	sMalformed        = "malformed-position"
-	sNonCanonical     = "non-canonical-position"
-	sDanglingWork     = "dangling-work"
-	sMinorityLanguage = "minority-language"
-	sOmnibusSlot      = "omnibus-in-a-slot"
-	sEmpty            = "empty-series"
+	sDupPosition  = "duplicate-position"
+	sGap          = "position-gap"
+	sMalformed    = "malformed-position"
+	sNonCanonical = "non-canonical-position"
+	sDanglingWork = "dangling-work"
+	sOmnibusSlot  = "omnibus-in-a-slot"
+	sEmpty        = "empty-series"
 )
 
 // omnibusTitle marks a title that announces itself as a collection of several
@@ -83,8 +82,8 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 
 	// ONE pass over the members for the three per-member checks. They were three
 	// loops over three sortedMembers calls, which is three sorts of the same slice.
-	majority := ref.Language
-	var minority []string
+	// A member stating another language than the series' is L-MIX's (langmix.go),
+	// which replaced the minority-language review this class used to file.
 	for _, sw := range sortedMembers(s.Works) {
 		member := func(sub string) Finding {
 			fd := base(sub)
@@ -163,10 +162,6 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 			continue
 		}
 
-		if majority != "" && w.Language != "" && w.Language != majority {
-			minority = append(minority, sw.Work)
-		}
-
 		// A work announcing itself as an omnibus while sitting on a single slot.
 		if omnibusTitle.MatchString(w.Title) {
 			if _, _, isRange := importer.PositionRange(sw.Position); !isRange {
@@ -179,19 +174,6 @@ func checkOneSeries(ix *index, f *findings, s *model.Series) {
 				f.add(fd)
 			}
 		}
-	}
-
-	if len(minority) > 0 {
-		fd := base(sMinorityLanguage)
-		fd.Works = ix.worksBrief(minority)
-		fd.Propose = Proposal{
-			Op: OpReview, Series: s.ID, Field: "language",
-			From: strings.Join(languagesOf(ix, minority), ","), To: majority,
-			Others:   sortedUnique(minority),
-			Advisory: true,
-			Reason:   "move the translated volumes to their own series, or correct the work language",
-		}
-		f.add(fd)
 	}
 
 	// Integer-sequence gaps, advisory: a real series is often missing volumes
@@ -253,14 +235,4 @@ func integerGaps(s *model.Series) (missing []string, top int) {
 		}
 	}
 	return missing, top
-}
-
-func languagesOf(ix *index, workIDs []string) []string {
-	var out []string
-	for _, id := range workIDs {
-		if w := ix.workByID[id]; w != nil {
-			out = append(out, w.Language)
-		}
-	}
-	return sortedUnique(out)
 }

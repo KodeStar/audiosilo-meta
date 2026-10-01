@@ -126,8 +126,10 @@ func writeFamiliesIn(p pack.Profile) []pack.Family {
 }
 
 // appliableOps are the ops this pass can carry out. Every other op the audit emits
-// (review, drop-membership, rename-candidate, repoint-sidecar) is advisory by
-// construction and is not a gap here: each names a decision a rule may not make.
+// (review, rename-candidate, repoint-sidecar) is advisory by construction and is not a
+// gap here: each names a decision a rule may not make. set-work-language is appliable
+// although the audit never proposes it mechanically: a language is only ever set by a
+// reviewed decision, and the op exists so that decision has a writer (membership.go).
 var appliableOps = map[string]bool{
 	audit.OpMergeWorks:      true,
 	audit.OpMergeSeries:     true,
@@ -137,6 +139,10 @@ var appliableOps = map[string]bool{
 	audit.OpFillField:       true,
 	audit.OpAddWorkLink:     true,
 	audit.OpAddSeriesLink:   true,
+	audit.OpDropMembership:  true,
+	audit.OpMoveMembership:  true,
+	audit.OpSplitSeries:     true,
+	audit.OpSetWorkLanguage: true,
 }
 
 // AppliableOps returns the ops --op accepts, sorted. The CLI prints it, so the flag's
@@ -445,6 +451,14 @@ func (rn *runner) planOne(c candidate) {
 		err = rn.fillField(t, c.fd)
 	case audit.OpAddWorkLink, audit.OpAddSeriesLink:
 		err = rn.addLink(t, c.fd)
+	case audit.OpDropMembership:
+		err = rn.dropMembership(t, c.fd)
+	case audit.OpMoveMembership:
+		err = rn.moveMembership(t, c.fd)
+	case audit.OpSplitSeries:
+		err = rn.splitSeries(t, c.fd)
+	case audit.OpSetWorkLanguage:
+		err = rn.setWorkLanguage(t, c.fd)
 	default:
 		// Unreachable: selectProposals only yields appliableOps. Loud rather than
 		// silent, because a new op added to that map and not to this switch would

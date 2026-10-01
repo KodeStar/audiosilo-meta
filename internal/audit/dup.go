@@ -264,32 +264,12 @@ func statedLangs(l string) map[string]bool {
 // would produce a different catalogue than one applying them in reverse, which is not
 // a repair. Union-find over the shared works, then one record per closed component.
 func closeClusters(cs []dupCluster) []dupCluster {
-	parent := make([]int, len(cs))
-	for i := range parent {
-		parent[i] = i
-	}
-	find := func(x int) int {
-		for parent[x] != x {
-			parent[x] = parent[parent[x]]
-			x = parent[x]
-		}
-		return x
-	}
-	union := func(a, b int) {
-		ra, rb := find(a), find(b)
-		if ra != rb {
-			// Lower index wins, so the component's identity is deterministic.
-			if rb < ra {
-				ra, rb = rb, ra
-			}
-			parent[rb] = ra
-		}
-	}
+	groups := newUnionFind(len(cs))
 	seen := map[string]int{}
 	for i, c := range cs {
 		for _, m := range c.members {
 			if j, dup := seen[m.work.ID]; dup {
-				union(i, j)
+				groups.union(i, j)
 			} else {
 				seen[m.work.ID] = i
 			}
@@ -298,7 +278,7 @@ func closeClusters(cs []dupCluster) []dupCluster {
 	byRoot := map[int][]int{}
 	var roots []int
 	for i := range cs {
-		r := find(i)
+		r := groups.find(i)
 		if _, ok := byRoot[r]; !ok {
 			roots = append(roots, r)
 		}

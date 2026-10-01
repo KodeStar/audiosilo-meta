@@ -417,7 +417,7 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 		e    entry
 	}
 	var holders []holder
-	for _, slug := range cluster(target, losers) {
+	for _, slug := range audit.Cluster(target, losers) {
 		e, ok, err := t.community.get(slug)
 		if err != nil {
 			return err
@@ -484,7 +484,7 @@ func (t *txn) mergeSidecars(target string, losers []string) error {
 // dedupes the memberships that then say the same thing, and refuses a series where
 // the cluster holds two different positions.
 func (t *txn) rewriteMemberships(target string, losers []string, loser map[string]bool) error {
-	for _, sid := range t.p.seriesNaming(cluster(target, losers)...) {
+	for _, sid := range t.p.seriesNaming(audit.Cluster(target, losers)...) {
 		se, ok, err := t.series.get(sid)
 		if err != nil {
 			return err
