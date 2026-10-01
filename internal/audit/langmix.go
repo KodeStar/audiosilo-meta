@@ -47,6 +47,11 @@ import (
 // named in its reason. The vetoes are the evidence a stated language cannot settle:
 //
 //   - a TIE decided by incumbency (a rule picked the keeper, a human confirms it);
+//   - a CONTESTED majority (contest: a keeper member states a translation, the halves
+//     share no author, or the principal author writes mostly in a minority language) -
+//     the count names the default keeper, not the series. A contested or tied series'
+//     split is also proposed in every OTHER orientation (the other-keeper subclass,
+//     always advisory), so a reviewer accepts exactly one in reviewed.json;
 //   - a name whose edition decoration states a language other than the keeper;
 //   - a COUPLED member: it carries a recording in the keeper language, which is
 //     usually why it is in this series at all (English `dune` at `der-wustenplanet`
@@ -80,6 +85,18 @@ const (
 	lMixTargets   = "several-targets"
 	lMixSplit     = "no-target"
 	lMixNarration = "narration-contradicts"
+	// lMixOtherKeeper is a split's ALTERNATE orientation: another language keeping the
+	// slug of a contested (or tied) series, always advisory, so a reviewer accepts
+	// exactly one orientation of the series.
+	lMixOtherKeeper = "other-keeper"
+)
+
+// The CONTEST signals: why which language keeps a majority series' slug is a human
+// call (contest, below).
+const (
+	signalStated    = "stated"
+	signalCollision = "collision"
+	signalHome      = "home"
 )
 
 // fieldPosition and fieldLanguage are the Field a membership op and a language op
@@ -107,6 +124,11 @@ type langMixStats struct {
 	Coupled              int // ...carrying a recording in the keeper language
 	NarratorContradicted int // ...whose narrators contradict the member's language
 	CrossClass           int // ...withheld because another class changes the same record
+	Contested            int // majority series whose keeper is contested (any signal)
+	ContestedStated      int // ...a keeper-language member states a translation
+	ContestedCollision   int // ...the keeper and minority halves share no author
+	ContestedHome        int // ...the principal author writes mostly in a minority language
+	OtherKeeperSplits    int // alternate-orientation split proposals emitted
 	CrossRecordings      int // recordings whose language differs from their work's
 	CrossWorks           int // ...over this many works
 	AllOther             int // works whose every recording states one other language
@@ -169,8 +191,11 @@ type langMix struct {
 	neighbours map[string][]string
 	// primaries are the series some variant names as its ordering_of.
 	primaries map[string]bool
-	f         *findings
-	st        langMixStats
+	// personLangs is each author's works per primary language over the whole
+	// catalogue, the HOME signal's evidence, built on first use.
+	personLangs map[string]map[string]int
+	f           *findings
+	st          langMixStats
 	// wantLanguage collects each work's set-work-language candidates (the To it would
 	// be reset to, and why), so a work that is a minority in two series is one finding.
 	wantLanguage map[string]*languageCandidate
@@ -181,6 +206,8 @@ type langMix struct {
 type languageCandidate struct {
 	evidence check.NarrationEvidence
 	reasons  map[string]string
+	// contested names the contested series the work is a minority member of.
+	contested []string
 }
 
 func (m *langMix) languageCandidate(w *model.Work) *languageCandidate {
@@ -249,6 +276,7 @@ type mixMember struct {
 	coupled  []string // recordings in the keeper language
 	ev       check.NarrationEvidence
 	contrary bool // the narrators contradict the member's language
+	locked   bool // another class changes the work or the membership in this audit
 	vetoes   []string
 }
 
@@ -287,20 +315,25 @@ func (m *langMix) series(s *model.Series) {
 		}
 	}
 	seriesVetoes := m.seriesVetoes(s, byLang, keeper, how)
-
-	langs := slices.Sorted(func(yield func(string) bool) {
-		for l := range byLang {
-			if l != keeper && !yield(l) {
-				return
-			}
+	var ct contest
+	if how == keepMajority {
+		ct = m.contest(s, byLang, keeper)
+		if ct.contested() {
+			seriesVetoes = append(seriesVetoes, ct.veto(s, keeper))
 		}
-	})
-	for _, lang := range langs {
+	}
+	start := len(m.f.rows)
+
+	for _, lang := range otherLanguages(byLang, keeper) {
 		targets := m.targets(s, lang)
 		var split []*mixMember
 		for _, sw := range sortedMembers(byLang[lang]) {
 			mm := m.member(s, sw, keeper, lang)
 			m.noteLanguageCandidate(mm, keeper)
+			if ct.contested() {
+				c := m.languageCandidate(mm.w)
+				c.contested = append(c.contested, s.ID+" ("+strings.Join(ct.signals, ", ")+")")
+			}
 			if homed := m.homedIn(s, mm.w, lang); len(homed) > 0 {
 				m.emitDrop(s, mm, homed, keeper, append(slices.Clone(seriesVetoes), mm.vetoes...))
 				continue
@@ -318,6 +351,198 @@ func (m *langMix) series(s *model.Series) {
 			m.emitSplit(s, split, byLang[keeper], keeper, lang, how, seriesVetoes)
 		}
 	}
+	if ct.contested() {
+		for i := range m.f.rows[start:] {
+			fd := &m.f.rows[start+i]
+			fd.Notes = append(fd.Notes, ct.notes...)
+		}
+	}
+	// A contested series and a tie by incumbency are proposed in EVERY orientation:
+	// each other language keeping the slug in turn, so a reviewer accepts exactly one
+	// (the reviewed-decision consistency check refuses two orientations of one series).
+	if ct.contested() || how == keepIncumbent {
+		why := ct.veto(s, keeper)
+		if how == keepIncumbent {
+			why = fmt.Sprintf("the languages of %s tie (%s), so which half keeps its slug is a human decision", s.ID, languageCounts(byLang))
+		}
+		for _, other := range otherLanguages(byLang, keeper) {
+			m.emitOtherKeeper(s, byLang, other, why, ct.notes)
+		}
+	}
+}
+
+// otherLanguages is the languages of byLang other than keeper, sorted.
+func otherLanguages(byLang map[string][]model.SeriesWork, keeper string) []string {
+	return slices.Sorted(func(yield func(string) bool) {
+		for l := range byLang {
+			if l != keeper && !yield(l) {
+				return
+			}
+		}
+	})
+}
+
+// contest is why which language keeps a MAJORITY series' slug is a human call rather
+// than the count's: the majority is only mechanical uncontested. The three signals
+// each come from a wrong-way split wave 4.2 applied:
+//
+//   - STATED: a keeper-language member states that it is a translation (statesTranslation:
+//     a translation_of link, an own-language edition decoration, a translator credit) -
+//     the German Horus Heresy translations kept the slug from their English originals;
+//   - COLLISION: no author of a keeper-language member is the same person
+//     (samePersonSpelling) as an author of a minority member - two franchises of one
+//     name, Amber Auburn's German Zodiac Academy beside Peckham and Valenti's English one;
+//   - HOME: the works of the series' principal author (principalAuthors) across the
+//     whole catalogue are mostly in a minority language of the series (a strict
+//     plurality, personLanguages) - Orphan X's German majority under an author who
+//     writes in English.
+type contest struct {
+	signals []string // in signal order: stated, collision, home
+	notes   []string // the evidence, one note per signal
+}
+
+func (c contest) contested() bool { return len(c.signals) > 0 }
+
+// veto is the contest as a proposal's veto reason.
+func (c contest) veto(s *model.Series, keeper string) string {
+	return fmt.Sprintf("which language keeps %s's slug is contested (%s): the %s majority is only the default, and every "+
+		"orientation is proposed for review", s.ID, strings.Join(c.signals, ", "), keeper)
+}
+
+// contest reads the three signals over one majority series.
+func (m *langMix) contest(s *model.Series, byLang map[string][]model.SeriesWork, keeper string) contest {
+	var c contest
+	var stating, keptAuthors, minorityAuthors []string
+	for _, w := range m.worksOf(byLang[keeper]) {
+		if statesTranslation(w) {
+			stating = append(stating, w.ID)
+		}
+		keptAuthors = append(keptAuthors, w.Authors...)
+	}
+	minority := otherLanguages(byLang, keeper)
+	for _, lang := range minority {
+		for _, w := range m.worksOf(byLang[lang]) {
+			minorityAuthors = append(minorityAuthors, w.Authors...)
+		}
+	}
+	keptAuthors, minorityAuthors = sortedUnique(keptAuthors), sortedUnique(minorityAuthors)
+	if stating = sortedUnique(stating); len(stating) > 0 {
+		m.st.ContestedStated++
+		c.signals = append(c.signals, signalStated)
+		c.notes = append(c.notes, fmt.Sprintf("contested, %s: %s of the %s members state a translation (%s)",
+			signalStated, joinCount(len(stating), "work"), keeper, truncateList(stating, 6)))
+	}
+	if len(keptAuthors) > 0 && len(minorityAuthors) > 0 && len(sharedAuthors(m.ix, keptAuthors, minorityAuthors)) == 0 {
+		m.st.ContestedCollision++
+		c.signals = append(c.signals, signalCollision)
+		c.notes = append(c.notes, fmt.Sprintf("contested, %s: the %s members (by %s) share no author with the %s members (by %s): "+
+			"two series of one name", signalCollision, keeper, truncateList(keptAuthors, 4), strings.Join(minority, ", "),
+			truncateList(minorityAuthors, 4)))
+	}
+	principal := m.principalAuthors(byLang)
+	if home, counts := m.homeLanguage(principal); home != "" && home != keeper && len(byLang[home]) > 0 {
+		m.st.ContestedHome++
+		c.signals = append(c.signals, signalHome)
+		c.notes = append(c.notes, fmt.Sprintf("contested, %s: the works of the series' principal author (%s) across the catalogue "+
+			"are mostly %s (%s), a minority language here", signalHome, truncateList(principal, 4), home, counts))
+	}
+	if c.contested() {
+		m.st.Contested++
+	}
+	return c
+}
+
+// collectiveCredits are the canonical records a nameless credit folds onto
+// (internal/importer/collective.go, plus the catch-all `person` and the synthetic
+// `virtual-voice`): every language's books credit them, so their works say nothing
+// about where an author writes. A record whose kind is set (a group, a publisher, a
+// synthetic voice) is left out for the same reason.
+var collectiveCredits = map[string]bool{
+	"anonymous": true, "full-cast": true, "person": true, "uncredited": true, "unknown": true, "various": true,
+	"virtual-voice": true,
+}
+
+// personLanguages is each individual author's works per primary language over the
+// whole catalogue, built once per run on first use. A collective or a classified
+// record has no entry.
+func (m *langMix) personLanguages() map[string]map[string]int {
+	if m.personLangs != nil {
+		return m.personLangs
+	}
+	m.personLangs = map[string]map[string]int{}
+	for _, w := range m.ix.cat.Works {
+		lang := model.PrimarySubtag(w.Language)
+		if lang == "" {
+			continue
+		}
+		for _, a := range sortedUnique(w.Authors) {
+			if collectiveCredits[a] {
+				continue
+			}
+			if p := m.ix.personByID[a]; p != nil && p.Kind != "" {
+				continue
+			}
+			if m.personLangs[a] == nil {
+				m.personLangs[a] = map[string]int{}
+			}
+			m.personLangs[a][lang]++
+		}
+	}
+	return m.personLangs
+}
+
+// principalAuthors is the individual authors credited on the most members of the
+// series, ties all kept. Not every author: a translation credits its translators as
+// authors often enough (Eddie Flynn's German volume names two) that their all-German
+// catalogues outvote the author whose series it is.
+func (m *langMix) principalAuthors(byLang map[string][]model.SeriesWork) []string {
+	langs := m.personLanguages()
+	credits := map[string]int{}
+	for _, members := range byLang {
+		for _, w := range m.worksOf(members) {
+			for _, a := range sortedUnique(w.Authors) {
+				if langs[a] != nil {
+					credits[a]++
+				}
+			}
+		}
+	}
+	best := 0
+	for _, n := range credits {
+		best = max(best, n)
+	}
+	var out []string
+	for _, a := range sortedKeys(credits) {
+		if credits[a] == best {
+			out = append(out, a)
+		}
+	}
+	return out
+}
+
+// homeLanguage is the strict plurality of the authors' works per language summed over
+// them, "" on a tie or with no evidence, and the counts rendered "en 40, de 12".
+func (m *langMix) homeLanguage(authors []string) (string, string) {
+	langs := m.personLanguages()
+	sum := map[string]int{}
+	for _, a := range authors {
+		for l, n := range langs[a] {
+			sum[l] += n
+		}
+	}
+	home, best, tied := "", 0, false
+	for _, l := range sortedKeys(sum) {
+		switch n := sum[l]; {
+		case n > best:
+			home, best, tied = l, n, false
+		case n == best:
+			tied = true
+		}
+	}
+	if tied {
+		return "", ""
+	}
+	return home, evidenceText(check.NarrationEvidence{Counts: sum})
 }
 
 // tieKeeper decides which language keeps a tied series' slug: the language its name's
@@ -380,11 +605,27 @@ func (m *langMix) seriesVetoes(s *model.Series, byLang map[string][]model.Series
 	return out
 }
 
-// member gathers the evidence about one minority membership.
+// member gathers the evidence about one minority membership, and counts it.
 func (m *langMix) member(s *model.Series, sw model.SeriesWork, keeper, lang string) *mixMember {
+	mm := m.memberEvidence(s, sw, keeper, lang)
+	m.st.Minority++
+	if len(mm.coupled) > 0 {
+		m.st.Coupled++
+	}
+	if mm.contrary {
+		m.st.NarratorContradicted++
+	}
+	if mm.locked {
+		m.st.CrossClass++
+	}
+	return mm
+}
+
+// memberEvidence is member without the tallies: an alternate orientation reads the
+// same evidence against another keeper and must not count the membership twice.
+func (m *langMix) memberEvidence(s *model.Series, sw model.SeriesWork, keeper, lang string) *mixMember {
 	w := m.ix.workByID[sw.Work]
 	mm := &mixMember{w: w, sw: sw, ev: m.languageCandidate(w).evidence}
-	m.st.Minority++
 	for _, r := range w.Recordings {
 		if model.PrimarySubtag(r.Language) == keeper {
 			mm.coupled = append(mm.coupled, r.ID)
@@ -392,27 +633,21 @@ func (m *langMix) member(s *model.Series, sw model.SeriesWork, keeper, lang stri
 	}
 	slices.Sort(mm.coupled)
 	if len(mm.coupled) > 0 {
-		m.st.Coupled++
 		mm.vetoes = append(mm.vetoes, fmt.Sprintf("%s carries a recording in %s (%s): relocating that recording to a work in "+
 			"its own language comes first, and the membership is judged after", w.ID, keeper, strings.Join(mm.coupled, ", ")))
 	}
 	if mm.ev.Contradicts(lang) {
 		mm.contrary = true
-		m.st.NarratorContradicted++
 		mm.vetoes = append(mm.vetoes, fmt.Sprintf("the narrators of %s record in %s (%s): its stated %s may be the error",
 			w.ID, mm.ev.Dominant(), evidenceText(mm.ev), w.Language))
 	}
-	crossClass := false
 	if by, locked := m.locks.works[w.ID]; locked {
-		crossClass = true
+		mm.locked = true
 		mm.vetoes = append(mm.vetoes, fmt.Sprintf("%s is merged by %s in this audit", w.ID, by))
 	}
 	if by, locked := m.locks.memberships[s.ID+"@"+w.ID]; locked {
-		crossClass = true
+		mm.locked = true
 		mm.vetoes = append(mm.vetoes, fmt.Sprintf("the membership's position is restated by %s in this audit", by))
-	}
-	if crossClass {
-		m.st.CrossClass++
 	}
 	return mm
 }
@@ -537,6 +772,48 @@ func (m *langMix) emitSeveral(s *model.Series, mm *mixMember, targets []*model.S
 }
 
 func (m *langMix) emitSplit(s *model.Series, members []*mixMember, keepers []model.SeriesWork, keeper, lang, how string, seriesVetoes []string) {
+	fd, vetoes := m.splitFinding(s, members, keepers, keeper, lang, how, seriesVetoes)
+	settleMix(&fd, vetoes)
+	m.f.add(fd)
+}
+
+// emitOtherKeeper proposes, for a contested or tied series, the orientation in which
+// keeper (not the language the class reads the series against) keeps the slug: one
+// split per other language, of its members the majority reading would split too -
+// not those already homed in a series of their language, and no split at all for a
+// language that has a target series (its members would move, not found a series).
+// Always advisory: it exists to be accepted, or not, by a reviewed decision.
+func (m *langMix) emitOtherKeeper(s *model.Series, byLang map[string][]model.SeriesWork, keeper, why string, notes []string) {
+	for _, lang := range otherLanguages(byLang, keeper) {
+		if len(m.targets(s, lang)) > 0 {
+			continue
+		}
+		var members []*mixMember
+		for _, sw := range sortedMembers(byLang[lang]) {
+			if w := m.ix.workByID[sw.Work]; len(m.homedIn(s, w, lang)) == 0 {
+				members = append(members, m.memberEvidence(s, sw, keeper, lang))
+			}
+		}
+		if len(members) == 0 {
+			continue
+		}
+		fd, vetoes := m.splitFinding(s, members, byLang[keeper], keeper, lang, "the other orientation", nil)
+		fd.Subclass = lMixOtherKeeper
+		fd.Key = s.ID + "/" + lang + "/keep-" + keeper
+		fd.Notes = append(fd.Notes, notes...)
+		fd.Propose.Advisory = true
+		fd.Propose.Reason = "the other orientation, for review: " + why
+		if vetoes = sortedUnique(vetoes); len(vetoes) > 0 {
+			fd.Propose.Reason += "; were it chosen, still to confirm: " + truncateList(vetoes, 3)
+		}
+		m.st.OtherKeeperSplits++
+		m.f.add(fd)
+	}
+}
+
+// splitFinding is the split-series record moving members (stating lang) out of s while
+// keeper keeps its slug, and the vetoes standing against it.
+func (m *langMix) splitFinding(s *model.Series, members []*mixMember, keepers []model.SeriesWork, keeper, lang, how string, seriesVetoes []string) (Finding, []string) {
 	vetoes := append(slices.Clone(seriesVetoes), m.slugVetoes(s, members, keepers, keeper)...)
 	works := make([]*model.Work, 0, len(members))
 	ids := make([]string, 0, len(members))
@@ -581,8 +858,7 @@ func (m *langMix) emitSplit(s *model.Series, members []*mixMember, keepers []mod
 	if len(s.TranslationOf) > 0 || len(m.neighbours[s.ID]) > 0 {
 		fd.Notes = append(fd.Notes, fmt.Sprintf("%s's translation links stay on %s; the new series states none", s.ID, s.ID))
 	}
-	settleMix(&fd, vetoes)
-	m.f.add(fd)
+	return fd, vetoes
 }
 
 // slugVetoes are the reasons a split's two halves are not simply one franchise in two
@@ -835,6 +1111,9 @@ func (m *langMix) languageFindings() {
 		}
 		for _, to := range tos {
 			fd.Notes = append(fd.Notes, "-> "+to+": "+want[to])
+		}
+		if c := m.wantLanguage[id].contested; len(c) > 0 {
+			fd.Notes = append(fd.Notes, "a minority member of a series whose keeper language is contested: "+strings.Join(sortedUnique(c), "; "))
 		}
 		dominant := ev.Dominant()
 		switch {

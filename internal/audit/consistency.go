@@ -17,6 +17,7 @@ type proposalConflictState struct {
 	mixWorks, mixSeries       map[string]string // work or series -> finding
 	mergedWorks, mergedSeries map[string]string // work or series -> finding
 	languages                 map[string]string // work -> finding
+	splitKeeper, splitBy      map[string]string // series -> the language a split keeps it for, and that split
 }
 
 // proposalConflicts is the shared set invariant used by reviewed acceptances and
@@ -29,6 +30,7 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{},
 		mixWorks: map[string]string{}, mixSeries: map[string]string{},
 		mergedWorks: map[string]string{}, mergedSeries: map[string]string{}, languages: map[string]string{},
+		splitKeeper: map[string]string{}, splitBy: map[string]string{},
 	}
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -190,6 +192,14 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		touchSeries(dest)
 		claimSlot(dest + "@" + p.To)
 	case OpSplitSeries:
+		// Every split of one series must keep it for the SAME language: a contested
+		// series is proposed in each orientation, and only one of them can be the series.
+		if prev, dup := s.splitKeeper[p.Target]; dup && prev != p.From {
+			report("%s and %s split %s in two orientations (%s keeps it, and %s keeps it)", s.splitBy[p.Target], r.Key,
+				p.Target, orDash(prev), orDash(p.From))
+		}
+		put(s.splitKeeper, p.Target, p.From)
+		put(s.splitBy, p.Target, r.Key)
 		for _, w := range p.Others {
 			leave(p.Target, w)
 		}
