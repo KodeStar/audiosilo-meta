@@ -12,6 +12,7 @@
 // guide pages exist" - the one that BUILDS a guide URL and the one that READS
 // one back - a single definition, with no cycle.
 import type { WorkGuide } from './entity-url'
+import { LANG_PARAM, toParam } from './languages'
 
 const RAW_BASE = import.meta.env.PUBLIC_API_BASE ?? ''
 // Trim a trailing slash so `${BASE}/api/...` never doubles up.
@@ -51,8 +52,9 @@ export interface WorkCard {
   /** The work's BCP 47 language tag ("en", "fr"). The API always sends it -
       every work states one - but it is optional here for the same reason
       release_date is: a response from a metaserve that predates the field, or
-      an embedded payload cached before it, carries none. Nothing renders it
-      yet; it is what lets a list tell a work from its translations. */
+      an embedded payload cached before it, carries none. It is what lets a list tell a work from its translations:
+      a card in a language outside the reader's own wears a language chip
+      (lib/languages.ts needsBadge). */
   language?: string
   series?: SeriesRef | null
   /** The EARLIEST release date across the work's recordings, at whatever
@@ -91,7 +93,16 @@ export interface LanguageCount {
 export type SearchResult =
   | ({ kind: 'work' } & WorkCard & { narrators: PersonRef[] })
   | { kind: 'person'; id: string; name: string }
-  | { kind: 'series'; id: string; name: string; works: number }
+  | {
+      kind: 'series'
+      id: string
+      name: string
+      works: number
+      /** The series' DERIVED primary language subtag. Absent on a tie (the
+          members split evenly), and on a response from a metaserve that
+          predates the field. */
+      language?: string
+    }
 
 export interface SearchResponse {
   results: SearchResult[]
@@ -325,6 +336,9 @@ export interface CoverageWork {
   title: string
   authors: PersonRef[]
   series?: SeriesRef | null
+  /** The work's language tag. Absent on a response from a metaserve that
+      predates the field. */
+  language?: string
   missing: CoverageDimension[]
 }
 
@@ -401,20 +415,35 @@ export function getStats(signal?: AbortSignal): Promise<Stats> {
   return getJSON<Stats>('/api/v1/stats', signal)
 }
 
+/** Set `lang` on a request's parameters when a filter is given, and leave it
+    off otherwise - so an unfiltered request is byte for byte the request it
+    always was. The fetchers take the filter as an EXPLICIT argument and never
+    read the reader's stored preference themselves: some callers (the import
+    sweep in resolve-books.ts) must search the whole catalogue whatever the
+    reader prefers, and a default read from storage would filter them silently. */
+function setLang(params: URLSearchParams, lang?: readonly string[]): void {
+  const value = lang ? toParam(lang) : ''
+  if (value) params.set(LANG_PARAM, value)
+}
+
 export function search(
   q: string,
   limit = 20,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  lang?: readonly string[]
 ): Promise<SearchResponse> {
   const params = new URLSearchParams({ q, limit: String(limit) })
+  setLang(params, lang)
   return getJSON<SearchResponse>(`/api/v1/search?${params.toString()}`, signal)
 }
 
 export function getLatestWorks(
   limit = 12,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  lang?: readonly string[]
 ): Promise<{ works: WorkCard[] }> {
   const params = new URLSearchParams({ limit: String(limit) })
+  setLang(params, lang)
   return getJSON<{ works: WorkCard[] }>(
     `/api/v1/works/latest?${params.toString()}`,
     signal
@@ -476,15 +505,22 @@ export function getCoverage(signal?: AbortSignal): Promise<CoverageResponse> {
 }
 
 /** One page of the coverage browser: works filtered by expressive-layer status,
-    optionally narrowed by a title/author query, paginated. */
+    optionally narrowed by a title/author query and by language, paginated. */
 export function getCoverageWorks(
-  opts: { filter: CoverageFilter; q?: string; limit?: number; offset?: number },
+  opts: {
+    filter: CoverageFilter
+    q?: string
+    limit?: number
+    offset?: number
+    lang?: readonly string[]
+  },
   signal?: AbortSignal
 ): Promise<CoverageWorksResponse> {
   const params = new URLSearchParams({ filter: opts.filter })
   if (opts.q) params.set('q', opts.q)
   if (opts.limit !== undefined) params.set('limit', String(opts.limit))
   if (opts.offset) params.set('offset', String(opts.offset))
+  setLang(params, opts.lang)
   return getJSON<CoverageWorksResponse>(`/api/v1/coverage/works?${params.toString()}`, signal)
 }
 

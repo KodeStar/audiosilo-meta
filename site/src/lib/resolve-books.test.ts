@@ -1,6 +1,8 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import type { ParsedBook } from './import-parse'
 import { groupBySeries, ownedWorks, resolveLibrary, type ResolvedLibrary } from './resolve-books'
+import { LANGUAGES_STORAGE_KEY, chosenPrefs } from './languages'
+import { stubStorage } from './test-support'
 
 // A book as the parsers produce one. Only the fields the sweep reads matter.
 function book(p: Partial<ParsedBook> & { title: string }): ParsedBook {
@@ -81,6 +83,30 @@ describe('resolveLibrary', () => {
     expect(got.newBooks).toHaveLength(1)
     expect(got.newBooks[0].existingWork?.id).toBe('the-way-of-kings')
     expect(got.newBooks[0].series?.id).toBe('the-stormlight-archive')
+  })
+
+  it('searches the WHOLE catalogue whatever language the reader prefers', async () => {
+    // The import sweep decides "is this book already here?", and a book in a
+    // language the reader has filtered out is still here - so its author search
+    // must never carry a lang parameter, stored preference or not.
+    const map = stubStorage()
+    map.set(LANGUAGES_STORAGE_KEY, JSON.stringify(chosenPrefs(['de'])))
+    const urls: string[] = []
+    vi.stubGlobal('fetch', async (url: string) => {
+      urls.push(String(url))
+      return { ok: false, status: 404, json: async () => ({}) }
+    })
+    await resolve([
+      book({
+        title: 'The Way of Kings',
+        asin: 'B0041OTH2E',
+        authors: ['Brandon Sanderson'],
+        language: 'en',
+      }),
+    ])
+    const searches = urls.filter((u) => u.startsWith('/api/v1/search'))
+    expect(searches.length).toBeGreaterThan(0)
+    for (const u of searches) expect(new URL(u, 'http://x').searchParams.has('lang')).toBe(false)
   })
 
   it('counts a book with no identifier as unchecked rather than new', async () => {

@@ -63,6 +63,22 @@ const coverWorks = [
     has: has(true, true, true),
   },
   {
+    id: 'harry-potter-und-der-stein-der-weisen',
+    title: 'Harry Potter und der Stein der Weisen',
+    language: 'de',
+    authors: [{ id: 'jk-rowling', name: 'J.K. Rowling' }],
+    series: { id: 'harry-potter-de', name: 'Harry Potter', position: '1' },
+    has: has(false, false, false),
+  },
+  {
+    id: 'harry-potter-a-lecole-des-sorciers',
+    title: "Harry Potter à l'école des sorciers",
+    language: 'fr',
+    authors: [{ id: 'jk-rowling', name: 'J.K. Rowling' }],
+    series: null,
+    has: has(false, false, false),
+  },
+  {
     id: 'the-final-empire',
     title: 'The Final Empire',
     authors: [{ id: 'brandon-sanderson', name: 'Brandon Sanderson' }],
@@ -77,6 +93,9 @@ for (let i = 1; i <= 45; i++) {
     title: `Sample Story ${String(i).padStart(2, '0')}`,
     authors: [{ id: `author-${i % 7}`, name: `Author ${(i % 7) + 1}` }],
     series: i % 3 === 0 ? { id: `sample-series-${i % 5}`, name: `Sample Series ${i % 5}`, position: String((i % 4) + 1) } : null,
+    // Every seventh filler work is German, so the coverage browser's language
+    // filter has something to narrow.
+    language: i % 7 === 0 ? 'de' : 'en',
     has: has(i % 2 === 0, i % 3 === 0, i % 5 === 0),
   })
 }
@@ -184,6 +203,31 @@ function sendICS(res, site, requestURL, items) {
   res.end(lines.join('\r\n') + '\r\n')
 }
 
+/** The `lang` parameter, as the Go server reads it (parseLangFilter): a comma
+    list of language tags, each reduced to its primary subtag. Returns null for
+    "no filter", a Set of subtags otherwise, or a string naming the first
+    invalid item (which the server answers with a 400). */
+function langFilter(url) {
+  const raw = url.searchParams.get('lang')
+  if (!raw) return null
+  const out = new Set()
+  for (const item of raw.split(',')) {
+    const t = item.trim().toLowerCase()
+    if (!t) continue
+    if (!/^[a-z]{2,3}(-[a-z0-9]{2,8})*$/.test(t)) return t
+    out.add(t.split('-')[0])
+  }
+  if (out.size > 8) return raw
+  return out.size > 0 ? out : null
+}
+
+/** Whether a language passes a filter. An unknown language (a TIED series) is
+    never judged, so it passes every filter - the server's rule. */
+function langPasses(filter, language) {
+  if (!filter || !language) return true
+  return filter.has(String(language).toLowerCase().split('-')[0])
+}
+
 function send(res, status, body) {
   res.writeHead(status, {
     'content-type': 'application/json',
@@ -233,11 +277,15 @@ const server = createServer((req, res) => {
   if (p === '/api/v1/coverage') return send(res, 200, coverage)
 
   if (p === '/api/v1/coverage/works') {
+    const lang = langFilter(url)
+    if (typeof lang === 'string') return send(res, 400, { error: `invalid lang: ${lang}` })
     const filter = url.searchParams.get('filter') || 'missing'
     const q = (url.searchParams.get('q') || '').toLowerCase().trim()
     const limit = Number(url.searchParams.get('limit') || 25)
     const offset = Number(url.searchParams.get('offset') || 0)
-    let rows = coverWorks.filter((w) => matchesFilter(w, filter))
+    let rows = coverWorks.filter(
+      (w) => matchesFilter(w, filter) && langPasses(lang, w.language ?? 'en')
+    )
     if (q) {
       rows = rows.filter(
         (w) =>
@@ -251,6 +299,7 @@ const server = createServer((req, res) => {
       title: w.title,
       authors: w.authors,
       ...(w.series ? { series: w.series } : {}),
+      language: w.language ?? 'en',
       missing: missingDims(w),
     }))
     return send(res, 200, { works: page, total: rows.length, limit, offset, available: true })
@@ -271,20 +320,29 @@ const server = createServer((req, res) => {
   }
 
   if (p === '/api/v1/search') {
+    const lang = langFilter(url)
+    if (typeof lang === 'string') return send(res, 400, { error: `invalid lang: ${lang}` })
     const q = (url.searchParams.get('q') || '').toLowerCase().trim()
     const results = []
     // Series and people are DELIBERATELY emitted before works: the real API
     // ranks across kinds (bm25), so kind order is not guaranteed - this makes
     // the mock exercise the UI's fixed group order (Works, People, Series).
     for (const s of Object.values(db.series)) {
-      if (s.name.toLowerCase().includes(q))
-        results.push({ kind: 'series', id: s.id, name: s.name, works: s.works.length })
+      if (s.name.toLowerCase().includes(q) && langPasses(lang, s.language))
+        results.push({
+          kind: 'series',
+          id: s.id,
+          name: s.name,
+          works: s.works.length,
+          ...(s.language ? { language: s.language } : {}),
+        })
     }
     for (const person of Object.values(db.people)) {
       if (person.name.toLowerCase().includes(q))
         results.push({ kind: 'person', id: person.id, name: person.name })
     }
     for (const w of Object.values(db.works)) {
+      if (!langPasses(lang, w.language)) continue
       if (
         w.title.toLowerCase().includes(q) ||
         w.authors.some((a) => a.name.toLowerCase().includes(q)) ||
@@ -298,7 +356,11 @@ const server = createServer((req, res) => {
   }
 
   if (p === '/api/v1/works/latest') {
-    const works = Object.values(db.works).map((w) => cardOf(w.id))
+    const lang = langFilter(url)
+    if (typeof lang === 'string') return send(res, 400, { error: `invalid lang: ${lang}` })
+    const works = Object.values(db.works)
+      .filter((w) => langPasses(lang, w.language))
+      .map((w) => cardOf(w.id))
     return send(res, 200, { works: works.slice(0, Number(url.searchParams.get('limit') || 12)) })
   }
 

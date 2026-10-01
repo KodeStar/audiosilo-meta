@@ -1,0 +1,202 @@
+---
+import Base from '../../layouts/Base.astro'
+import Backdrop from '../../components/Backdrop.astro'
+import Button from '../../components/Button.astro'
+import { CHIP } from '../../components/docs/chip'
+import { LANGUAGES_STORAGE_KEY, MAX_LANGUAGES } from '../../lib/languages'
+
+// What the language filter narrows and what it never touches, in the reader's
+// terms. The server-side contract (which API routes take `lang`, how a tied
+// series is judged) is the API reference's; this is the same table told from
+// the site.
+const filtered: { surface: string; how: string }[] = [
+  {
+    surface: 'Search',
+    how: 'Works and series in the header and home page search. People are never filtered - a person has no language, and a translator or narrator works in several.',
+  },
+  {
+    surface: 'Latest additions',
+    how: 'The newest books on the home page.',
+  },
+  {
+    surface: 'Contribute',
+    how: 'The "browse books by coverage" list. The coverage counts above it still cover every language.',
+  },
+]
+
+const unfiltered: { surface: string; how: string }[] = [
+  {
+    surface: 'Book, series and person pages',
+    how: 'Everything about a record is shown, including its translations. A book in another language is marked with a small language chip instead.',
+  },
+  {
+    surface: 'Lookups by ASIN or ISBN',
+    how: 'An exact product code always finds its book, in whatever language it is.',
+  },
+  {
+    surface: 'Import and the Watching page',
+    how: 'Checking which of your books are catalogued always searches every language - a book you own is catalogued whatever you prefer to browse.',
+  },
+  {
+    surface: 'Watch feeds, the calendar and Audiobookshelf',
+    how: 'Feeds carry the series you watch, and the Audiobookshelf provider has its own per-language setting (below).',
+  },
+]
+
+const ABS_EXAMPLE = 'https://meta.audiosilo.app/abs/de'
+
+const link = 'text-pink-400 transition-colors hover:text-pink-300'
+const card = 'reveal rounded-2xl border border-edge bg-surface p-5 sm:p-6'
+---
+
+<Base
+  title="Languages - AudioSilo Meta"
+  description="How the AudioSilo Meta language filter works: every language by default, choosing one or several languages, what is and is not filtered, the lang API parameter, and a per-language Audiobookshelf provider URL."
+>
+  <section class="relative pb-20">
+    <Backdrop variant="page" />
+    <div class="container relative z-10">
+      <!-- Intro -->
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
+          Docs
+        </span>
+        <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">Languages</h1>
+        <p class="mt-4 text-base leading-relaxed text-body">
+          The catalogue holds audiobooks in many languages, and by default the site shows
+          <span class="text-hi">all of them</span>. If you only want to see some, choose them under
+          <span class="text-hi">Languages</span> in the header (in the menu on a phone). Your choice
+          is kept in this browser and applies to search, the latest additions and the contribute
+          list until you change it.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-3xl space-y-8">
+        <section class={card}>
+          <h2 class="text-lg font-semibold text-hi">Choosing languages</h2>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-body">
+            <li>
+              Tick one or several languages, up to {MAX_LANGUAGES}. The list shows only languages
+              the catalogue has books in, with how many. Each change applies straight away.
+            </li>
+            <li>
+              <span class="text-hi">All languages</span> clears the filter and shows everything
+              again.
+            </li>
+            <li>
+              If your browser prefers a language other than English, the site may ask once, in a
+              line under the header, whether to show only that language. It never filters
+              anything until you answer, and <span class="text-hi">No thanks</span> means it will
+              not ask again.
+            </li>
+            <li>
+              Languages match by their main language: choosing German includes books tagged as
+              Austrian or Swiss German too.
+            </li>
+          </ul>
+        </section>
+
+        <section class={card}>
+          <h2 class="text-lg font-semibold text-hi">What is filtered</h2>
+          <dl class="mt-4 space-y-3">
+            {
+              filtered.map((row) => (
+                <div class="rounded-xl border border-edge bg-raised/40 p-4">
+                  <dt class="text-sm font-semibold text-hi">{row.surface}</dt>
+                  <dd class="mt-1 text-sm leading-relaxed text-body">{row.how}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="mt-4 text-sm leading-relaxed text-dim">
+            A series counts as the language most of its books are in. A series split evenly
+            between two languages is shown whatever you choose, rather than guessed at.
+          </p>
+        </section>
+
+        <section class={card}>
+          <h2 class="text-lg font-semibold text-hi">What is never filtered</h2>
+          <dl class="mt-4 space-y-3">
+            {
+              unfiltered.map((row) => (
+                <div class="rounded-xl border border-edge bg-raised/40 p-4">
+                  <dt class="text-sm font-semibold text-hi">{row.surface}</dt>
+                  <dd class="mt-1 text-sm leading-relaxed text-body">{row.how}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </section>
+
+        <section class={card}>
+          <h2 class="text-lg font-semibold text-hi">Language chips</h2>
+          <p class="mt-3 text-sm leading-relaxed text-body">
+            A book or series in a language outside the ones you chose - or, if you have not chosen,
+            outside your browser's languages - wears a small chip with its language code, such as
+            <span class={`${CHIP} text-xs`}>DE</span>. A chip only marks a book; it never hides
+            one.
+          </p>
+        </section>
+
+        <section class={card}>
+          <h2 class="text-lg font-semibold text-hi">Sharing a filtered search</h2>
+          <p class="mt-3 text-sm leading-relaxed text-body">
+            A link can name languages with <code class={`${CHIP} text-xs`}>lang</code>, for
+            example <code class={`${CHIP} text-xs`}>/?q=harry+potter&amp;lang=de</code>. Opening
+            it shows that search in German and the selector says so, but it does not change your
+            own choice - that only happens if you change the selector yourself.
+          </p>
+        </section>
+
+        <section class={card}>
+          <h2 class="text-lg font-semibold text-hi">The API parameter</h2>
+          <p class="mt-3 text-sm leading-relaxed text-body">
+            The same filter is the <code class={`${CHIP} text-xs`}>lang</code> query parameter
+            on <code class={`${CHIP} text-xs`}>/api/v1/search</code>,
+            <code class={`${CHIP} text-xs`}>works/search</code>,
+            <code class={`${CHIP} text-xs`}>series/search</code>,
+            <code class={`${CHIP} text-xs`}>works/latest</code> and
+            <code class={`${CHIP} text-xs`}>coverage/works</code>: a comma-separated list of up
+            to {MAX_LANGUAGES} language tags, such as <code class={`${CHIP} text-xs`}>lang=de,en</code>,
+            matched by their main language. Leave it out for every language.
+            <code class={`${CHIP} text-xs`}>people/search</code> accepts it and ignores it. The
+            details are in the <a class={link} href="/docs/api">API reference</a>.
+          </p>
+        </section>
+
+        <section class={card} id="audiobookshelf">
+          <h2 class="text-lg font-semibold text-hi">Audiobookshelf in your language</h2>
+          <p class="mt-3 text-sm leading-relaxed text-body">
+            The Audiobookshelf provider has a per-language address: add the language to the
+            provider URL, for example
+          </p>
+          <pre
+            class="mt-3 overflow-x-auto rounded-lg border border-edge bg-raised px-3 py-2 text-sm text-body"><code>{ABS_EXAMPLE}</code></pre>
+          <p class="mt-3 text-sm leading-relaxed text-body">
+            It ranks matches in that language first rather than leaving the others out, so a book
+            whose only catalogued edition is in another language is still found. A book by the
+            author you searched for still comes before a language match by somebody else. Setup
+            steps are on the
+            <a class={link} href="/audiobookshelf">Audiobookshelf page</a>.
+          </p>
+        </section>
+
+        <section class={card}>
+          <h2 class="text-lg font-semibold text-hi">Where your choice is kept</h2>
+          <p class="mt-3 text-sm leading-relaxed text-body">
+            Only in this browser, in local storage under
+            <code class={`${CHIP} text-xs`}>{LANGUAGES_STORAGE_KEY}</code>. There is no account,
+            and nothing about it is sent anywhere except the
+            <code class={`${CHIP} text-xs`}>lang</code> parameter on the requests the filter
+            narrows. See the <a class={link} href="/privacy">privacy policy</a>.
+          </p>
+        </section>
+
+        <div class="reveal flex flex-wrap justify-center gap-3">
+          <Button href="/" variant="primary">Search the catalogue</Button>
+          <Button href="/docs/api" variant="secondary">API reference</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

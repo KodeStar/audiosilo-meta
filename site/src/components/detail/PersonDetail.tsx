@@ -6,6 +6,7 @@ import {
   workCount,
 } from '../../lib/person-credits'
 import WorkCard from '../cards/WorkCard'
+import { useLanguages } from '../languages/use-languages'
 import {
   useEntitySlug,
   useEmbeddedEntity,
@@ -18,10 +19,13 @@ import {
 } from './detail-common'
 
 function WorkGrid({ works }: { works: WorkCardData[] }) {
+  // A person page is never FILTERED by language (a credit list is a fact about
+  // the person), but a work outside the reader's languages is marked.
+  const { context } = useLanguages()
   return (
     <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
       {works.map((w) => (
-        <WorkCard key={w.id} work={w} />
+        <WorkCard key={w.id} work={w} languageContext={context} />
       ))}
     </div>
   )
