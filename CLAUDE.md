@@ -1325,11 +1325,19 @@ FTS side the predicate adds `language = ''`, so a person row and a TIED series
 (derived language NULL, '' in the FTS row) pass every filter - an unknown side is
 never judged. It is a plain predicate on the v7 columns (`search_fts.language`,
 UNINDEXED; `works.language`), so no artifact or SchemaVersion change, and THE gate
-is `snapshot.liveLang`: below `languagesSchemaVersion` the parsed filter becomes
-nil, i.e. validated then ignored. An absent filter emits EXACTLY the old SQL
-(`ftsSearchQuery` returns `searchSQL`/`searchKindSQL` unchanged, pinned by
+is `snapshot.liveLang`, asked ONCE per request at the transport (`langParam` ->
+`snapshot.langFilterFor`, or the ABS language handler) against the snapshot the
+handler then queries: below `languagesSchemaVersion` the parsed filter becomes
+nil, i.e. validated then ignored, and the people scope drops it too, so every
+snapshot method takes an already-live filter. The tag pattern is
+`model.ValidLanguageTag`, the one copy of the schema's `$defs/language` pattern
+(issueform reads it too; `pkg/model`'s `TestLanguageTagPatternIsTheSchemas` is
+the drift guard). An absent filter emits EXACTLY the old SQL
+(`ftsSearchQuery` composes `searchSQL`/`searchKindSQL` from the same pieces a
+filtered query is built from and yields them unchanged, pinned by
 `TestFTSSearchQueryWithoutAFilterIsUnchanged`; works/latest's phase one is now the
-named constant `latestCandidatesSQL`). The two boosts resolve works OUTSIDE the
+named constant `latestCandidatesSQL`, composed with its filtered twin from one
+`latestOrderSQL`). The two boosts resolve works OUTSIDE the
 FTS query, so their ids go through `worksInLanguages` (a primary-key read, only
 when a boost fired under a live filter) before `mergeHits` - a page never carries
 a work outside the filter. The works-table surfaces read the predicate through
@@ -1337,7 +1345,10 @@ a work outside the filter. The works-table surfaces read the predicate through
 census: through `idx_works_language` when the filter selects at most half the
 catalogue, with the index switched off (`+col`) when it selects more, because a
 built artifact has no sqlite_stat1 and walking the index over most of the table
-then reading every row loses to one read of it. A series search hit gains its
+then reading every row loses to one read of it. ANALYZE would not fix it:
+sqlite_stat1 stores an AVERAGE rows-per-key, so `en` at 87% and `de` at 7.6% look
+the same to the planner, and only sqlite_stat4 samples (an artifact change) see
+the skew - the census switch is the design, not a stopgap. A series search hit gains its
 derived `language` (`seriesSummariesByIDSQL(ph, languages)`, the two-text
 pattern) and a coverage row the work's `language`. Measured over the 281k-work
 artifact (median ms, base / head no-lang / `lang=en` / `lang=de`): `search?q=the`
@@ -1355,7 +1366,9 @@ matters. **`GET /abs/{lang}/search`** is the per-language Audiobookshelf provide
 and a trailing-slash base arrives as `/abs/de//search`, which ServeMux's path
 cleaning 307s to the clean path with the query kept). It RANKS, never filters:
 `absCandidates` is the language-matched FTS window followed by the unfiltered one
-(each `limit*3`, deduped), and `rankByAuthor` partitions (author + language,
+(each `limit*3`, deduped; with no author and a language window already holding
+`limit` works the unfiltered one is skipped, since it can never reach the page),
+and `rankByAuthor` partitions (author + language,
 author, language, rest) - the author is evidence about this book, the language a
 library default. A segment that is not a language list is a 404, the route is in
 `redirectExemptRoutes` (its wildcard is a filter, not a record), and the unscoped

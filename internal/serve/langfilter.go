@@ -2,7 +2,6 @@ package serve
 
 import (
 	"fmt"
-	"regexp"
 	"slices"
 	"strings"
 
@@ -41,10 +40,6 @@ import (
 // who wants more than 8 of them wants no filter.
 const maxLangFilter = 8
 
-// langTagRE is the schema's language tag pattern (common.schema.json
-// #/$defs/language), so a filter item is spelled exactly as a record's tag is.
-var langTagRE = regexp.MustCompile(`^[a-z]{2,3}(-[a-z0-9]{2,8})*$`)
-
 // langFilter is a parsed language filter: primary subtags, deduplicated and
 // sorted, so one set of languages has one spelling (and one SQL text). nil is no
 // filter at all, which is what every caller passes when the request named none.
@@ -52,19 +47,23 @@ type langFilter []string
 
 // parseLangFilter reads a ?lang= value (or an /abs/{lang}/search segment): a
 // comma-separated list, each item trimmed and lowercased, matched against the
-// schema's tag pattern and reduced to its primary subtag. Empty items are skipped,
+// schema's tag pattern (model.ValidLanguageTag, so a filter item is spelled
+// exactly as a record's tag is) and reduced to its primary subtag. Empty items are skipped,
 // so an absent or empty value is no filter; any item that is not a tag is an
 // error naming it, because a typo that silently filtered to nothing would read as
 // "the catalogue holds no such books". A language the catalogue does not hold is
 // NOT an error - it is a valid tag that filters to nothing.
 func parseLangFilter(raw string) (langFilter, error) {
+	if raw == "" {
+		return nil, nil
+	}
 	var out langFilter
 	for _, item := range strings.Split(raw, ",") {
 		tag := strings.ToLower(strings.TrimSpace(item))
 		if tag == "" {
 			continue
 		}
-		if !langTagRE.MatchString(tag) {
+		if !model.ValidLanguageTag(tag) {
 			return nil, fmt.Errorf("lang: %q is not a language tag (expected a code like de or pt-br)", strings.TrimSpace(item))
 		}
 		out = append(out, model.PrimarySubtag(tag))
@@ -118,6 +117,14 @@ func (f langFilter) predicate(col string, unknownPasses bool) (string, []any) {
 // under half the catalogue, so the rule is "more than half": the share is read
 // off the stats census the snapshot already holds, matched by primary subtag as
 // the predicate matches.
+//
+// A plain ANALYZE at build time would not retire this. sqlite_stat1 records an
+// AVERAGE rows-per-key for the index, so en at 87% and de at 7.6% look identical
+// to the planner; only sqlite_stat4's per-key samples capture the skew. The
+// driver is compiled with SQLITE_ENABLE_STAT4, but writing those samples is an
+// artifact change (internal/build, so a data release) to have the planner
+// estimate what the census in memory already states exactly. The census-driven
+// switch is the design, not a stopgap.
 func (s *snapshot) worksPredicate(f langFilter, col string) (string, []any) {
 	if 2*s.worksInFilter(f) > s.stats.Works {
 		col = "+" + col
@@ -125,28 +132,51 @@ func (s *snapshot) worksPredicate(f langFilter, col string) (string, []any) {
 	return f.predicate(col, false)
 }
 
+// has reports whether f admits a record tagged tag: the filter's one membership
+// rule, primary subtag against primary subtag, which is what predicate spells in
+// SQL. f is sorted (parseLangFilter), so it is a binary search.
+func (f langFilter) has(tag string) bool {
+	_, found := slices.BinarySearch(f, model.PrimarySubtag(tag))
+	return found
+}
+
 // worksInFilter counts the works f admits, off the stats languages census.
 func (s *snapshot) worksInFilter(f langFilter) int {
 	n := 0
 	for _, lc := range s.stats.Languages {
-		if _, found := slices.BinarySearch(f, model.PrimarySubtag(lc.Language)); found {
+		if f.has(lc.Language) {
 			n += lc.Works
 		}
 	}
 	return n
 }
 
-// liveLang is THE version gate for the filter, asked by every surface it narrows
-// and nowhere else: below languagesSchemaVersion the filter has been parsed (so
-// garbage is still a 400) and is then IGNORED. An older search_fts has no language
-// column to filter on, and dropping the filter is the "degrade to no data"
-// every other languages read already does - the reader gets the unfiltered page
-// the server could always serve, never a 500.
-func (s *snapshot) liveLang(f langFilter) langFilter {
-	if s.schemaVersion < languagesSchemaVersion || len(f) == 0 {
+// liveLang is THE version gate for the filter, applied once per request at the
+// transport (langFilterFor, or the ABS language route) and nowhere else: every
+// snapshot method below it takes a filter that is already live, nil meaning none.
+// Below languagesSchemaVersion the filter has been parsed (so garbage is still a
+// 400) and is then IGNORED. An older search_fts has no language column to filter
+// on, and dropping the filter is the "degrade to no data" every other languages
+// read already does - the reader gets the unfiltered page the server could always
+// serve, never a 500. The people scope drops it too: a person has no language, so
+// there is nothing to narrow by.
+func (s *snapshot) liveLang(f langFilter, kind searchKind) langFilter {
+	if s.schemaVersion < languagesSchemaVersion || len(f) == 0 || kind == kindPerson {
 		return nil
 	}
 	return f
+}
+
+// langFilterFor is a request's ?lang= value as this snapshot can apply it to kind:
+// parsed (an error is the caller's 400) and then put through liveLang. The caller
+// must issue its query against the SAME snapshot, since the gate is that
+// snapshot's schema_version.
+func (s *snapshot) langFilterFor(raw string, kind searchKind) (langFilter, error) {
+	f, err := parseLangFilter(raw)
+	if err != nil {
+		return nil, err
+	}
+	return s.liveLang(f, kind), nil
 }
 
 // worksInLanguagesSQL keeps the ids of a set that a language predicate admits,
@@ -156,13 +186,15 @@ func worksInLanguagesSQL(ph, pred string) string {
 	return `SELECT id FROM works WHERE id IN (` + ph + `) AND ` + pred
 }
 
-// worksInLanguages filters ids to the works f admits, preserving their order. It
-// costs one primary-key read per id and runs only when a boost fired under a
-// live filter - a handful of ids on a rare path.
+// worksInLanguages filters ids to the works f (already live) admits, preserving
+// their order. It costs one primary-key read per id and runs only when a boost
+// fired under a filter - a handful of ids on a rare path.
 func (s *snapshot) worksInLanguages(ids []string, f langFilter) ([]string, error) {
 	if f == nil || len(ids) == 0 {
 		return ids, nil
 	}
+	// The plain predicate, not worksPredicate: this reads a handful of ids by
+	// primary key, so which index the language test could use does not arise.
 	pred, predArgs := f.predicate("language", false)
 	keep := map[string]bool{}
 	err := eachChunk(ids, func(ph string, args []any) error {

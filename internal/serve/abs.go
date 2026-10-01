@@ -86,25 +86,30 @@ type absBook struct {
 // sends a query; a missing/empty one is a 400. It never 404s: a no-match is a
 // 200 with an empty array.
 func (s *Server) handleABSSearch(w http.ResponseWriter, r *http.Request) {
-	s.serveABS(w, r, nil)
+	s.serveABS(w, r, s.current(), nil)
 }
 
 // handleABSLangSearch is GET /abs/{lang}/search: the same search ranked toward
 // the languages the segment names. A segment that is not a language list is a
 // 404 - it names no provider this server offers, and ABS shows "no results"
 // either way - rather than the 400 a malformed ?lang= is.
+//
+// The segment is validated BEFORE the version gate, so a bad one is a 404 on
+// every artifact; below languagesSchemaVersion a good one is then dropped and the
+// answer is the unscoped one.
 func (s *Server) handleABSLangSearch(w http.ResponseWriter, r *http.Request) {
 	lang, err := parseLangFilter(r.PathValue(absLangWildcard))
 	if err != nil || len(lang) == 0 {
 		writeErr(w, http.StatusNotFound, "unknown provider language")
 		return
 	}
-	s.serveABS(w, r, lang)
+	snap := s.current()
+	s.serveABS(w, r, snap, snap.liveLang(lang, kindWork))
 }
 
-// serveABS is the transport both ABS routes share: lang is nil on the unscoped
-// one.
-func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, lang langFilter) {
+// serveABS is the transport both ABS routes share, over the snapshot the
+// language gate was asked of: lang is live, and nil on the unscoped route.
+func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, snap *snapshot, lang langFilter) {
 	q := strings.TrimSpace(r.URL.Query().Get("query"))
 	if q == "" {
 		writeErr(w, http.StatusBadRequest, "query is required")
@@ -117,7 +122,7 @@ func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, lang langFilte
 	// search. Normalize to the bare form here so the exact-lookup path fires.
 	isbn := normalizeISBN(r.URL.Query().Get("isbn"))
 
-	matches, err := s.current().absSearch(q, author, isbn, absMaxMatches, lang)
+	matches, err := snap.absSearch(q, author, isbn, absMaxMatches, lang)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -142,15 +147,14 @@ func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, lang langFilte
 // lang (the /abs/{lang}/search segment, nil on /abs/search) widens step 2 into
 // two windows - the language-matched hits, then the unfiltered ones - and ranks
 // the language second to the author (see the file header). An exact ISBN is not
-// re-ranked: it names one recording outright. Below languagesSchemaVersion lang
-// is ignored, and the answer is the unscoped one.
+// re-ranked: it names one recording outright. lang is already live (the handler
+// put it through snapshot.liveLang).
 //
 // It always returns a non-nil slice.
 func (s *snapshot) absSearch(query, author, isbn string, limit int, lang langFilter) ([]absBook, error) {
 	if limit <= 0 {
 		limit = absMaxMatches
 	}
-	lang = s.liveLang(lang)
 
 	if isbn != "" {
 		res, err := s.lookup("", isbn)
@@ -173,7 +177,7 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int, lang langFil
 		// isbn missed: fall through to a title search.
 	}
 
-	workIDs, inLang, err := s.absCandidates(query, limit*3, lang)
+	workIDs, inLang, err := s.absCandidates(query, author, limit, lang)
 	if err != nil {
 		return nil, err
 	}
@@ -205,28 +209,43 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int, lang langFil
 	return capABS(out, limit), nil
 }
 
-// absCandidates is step 2's candidate list. With no language it is the one
-// unfiltered window it always was, and inLang is nil. With one it is the
-// language-matched window followed by the unfiltered window, deduplicated (each
-// limit long, so a language-matched work outranked by limit others still makes
-// the list, and an original in another language is never lost to the preference),
-// and inLang is the set the first window found - what the ranking reads.
+// absCandidates is step 2's candidate list, a window of limit*3 works. With no
+// language it is the one unfiltered window it always was, and inLang is nil. With
+// one it is the language-matched window followed by the unfiltered window,
+// deduplicated (each the full window, so a language-matched work outranked by
+// window others still makes the list, and an original in another language is
+// never lost to the preference), and inLang is the set the first window found -
+// what the ranking reads.
 //
 // Membership is read off the filtered query rather than off each work's tag: a
 // work in the unfiltered window that matches the language is, by bm25 order,
 // already in the filtered one.
-func (s *snapshot) absCandidates(query string, limit int, lang langFilter) (ids []string, inLang map[string]bool, err error) {
-	all, err := s.absWorkSearch(query, limit, nil)
-	if err != nil || lang == nil {
-		return all, nil, err
+//
+// The unfiltered window is skipped when it cannot reach the page: with NO author
+// the ranking is (language, the rest), every work yields at least one match
+// (absBooksFor) and the page holds limit matches, so once the language window
+// holds limit works nothing after it is ever read. An author can lift an
+// other-language work above them, so with one both windows are always run.
+func (s *snapshot) absCandidates(query, author string, limit int, lang langFilter) (ids []string, inLang map[string]bool, err error) {
+	window := limit * 3
+	if lang == nil {
+		ids, err = s.absWorkSearch(query, window, nil)
+		return ids, nil, err
 	}
-	matched, err := s.absWorkSearch(query, limit, lang)
+	matched, err := s.absWorkSearch(query, window, lang)
 	if err != nil {
 		return nil, nil, err
 	}
 	inLang = make(map[string]bool, len(matched))
 	for _, id := range matched {
 		inLang[id] = true
+	}
+	if author == "" && len(matched) >= limit {
+		return matched, inLang, nil
+	}
+	all, err := s.absWorkSearch(query, window, nil)
+	if err != nil {
+		return nil, nil, err
 	}
 	ids = matched
 	for _, id := range all {
@@ -242,7 +261,7 @@ func (s *snapshot) absCandidates(query string, limit int, lang langFilter) (ids 
 // endpoints use - one SQL constant, one escaping, one ranking - and keeps only
 // the ids, the kind being kindWork by construction. A ranking change therefore
 // lands on both surfaces at once rather than on whichever one was remembered.
-// lang must be live; nil is the unfiltered search.
+// lang is live; nil is the unfiltered search.
 func (s *snapshot) absWorkSearch(query string, limit int, lang langFilter) ([]string, error) {
 	if limit <= 0 {
 		limit = absMaxMatches

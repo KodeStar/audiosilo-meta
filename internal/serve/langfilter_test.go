@@ -1,10 +1,10 @@
 package serve
 
 import (
-	"encoding/json"
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"slices"
 	"strings"
 	"testing"
@@ -379,29 +379,24 @@ func TestLangIsIgnoredBelowTheLanguagesLayer(t *testing.T) {
 		t.Errorf("v6 garbage lang: status %d, want 400", code)
 	}
 	// The ABS language route ranks as the unscoped one does.
-	_, plain := getRaw(t, ts.URL, "/abs/search?query=saga+tales&author=Max+Muster")
-	_, scoped := getRaw(t, ts.URL, "/abs/fr/search?query=saga+tales&author=Max+Muster")
-	if string(plain) != string(scoped) {
-		t.Errorf("v6 /abs/fr/search differs from /abs/search:\n%s\n%s", scoped, plain)
+	_, plain := absMatches(t, ts.URL, "/abs/search?query=saga+tales&author=Max+Muster")
+	_, scoped := absMatches(t, ts.URL, "/abs/fr/search?query=saga+tales&author=Max+Muster")
+	if !reflect.DeepEqual(plain, scoped) {
+		t.Errorf("v6 /abs/fr/search differs from /abs/search:\n%v\n%v", scoped, plain)
 	}
 }
 
 // absOrder is the (author, language) of every match, in order.
 func absOrder(t *testing.T, base, path string) []string {
 	t.Helper()
-	code, raw := getRaw(t, base, path)
+	code, matches := absMatches(t, base, path)
 	if code != http.StatusOK {
-		t.Fatalf("GET %s: status %d, body %s", path, code, raw)
+		t.Fatalf("GET %s: status %d", path, code)
 	}
-	var body struct {
-		Matches []absBook `json:"matches"`
-	}
-	if err := json.Unmarshal(raw, &body); err != nil {
-		t.Fatal(err)
-	}
-	out := make([]string, len(body.Matches))
-	for i, m := range body.Matches {
-		out[i] = m.Author + "/" + m.Language
+	out := make([]string, len(matches))
+	for i, m := range matches {
+		book := m.(map[string]any)
+		out[i] = book["author"].(string) + "/" + book["language"].(string)
 	}
 	return out
 }
@@ -463,11 +458,11 @@ func TestABSLanguageRouteEdges(t *testing.T) {
 	}
 
 	for _, seg := range []string{"english", "de_at", "de,english", "%20"} {
-		if code, _ := getRaw(t, ts.URL, "/abs/"+seg+"/search?query=saga"); code != http.StatusNotFound {
+		if code, _ := getJSON(t, ts.URL, "/abs/"+seg+"/search?query=saga"); code != http.StatusNotFound {
 			t.Errorf("/abs/%s/search: status %d, want 404", seg, code)
 		}
 	}
-	if code, _ := getRaw(t, ts.URL, "/abs/de/search"); code != http.StatusBadRequest {
+	if code, _ := getJSON(t, ts.URL, "/abs/de/search"); code != http.StatusBadRequest {
 		t.Errorf("/abs/de/search with no query: status %d, want 400", code)
 	}
 }
@@ -518,6 +513,76 @@ func TestLanguageFilteredQueriesUseTheLanguageIndex(t *testing.T) {
 			case n != 0:
 				t.Errorf("%s %v selects most of the catalogue but walks idx_works_language: %v", name, tc.f, plan)
 			}
+		}
+	}
+}
+
+// TestLangFilterForIsTheOneGate pins the request-level gate every surface goes
+// through: garbage is an error on every artifact and every scope, a live filter
+// comes back as parsed, and it is dropped below languagesSchemaVersion and on the
+// people scope (a person has no language).
+func TestLangFilterForIsTheOneGate(t *testing.T) {
+	v7 := &snapshot{schemaVersion: languagesSchemaVersion}
+	v6 := &snapshot{schemaVersion: languagesSchemaVersion - 1}
+	for _, snap := range []*snapshot{v6, v7} {
+		for _, kind := range []searchKind{kindAny, kindWork, kindPerson, kindSeries} {
+			if _, err := snap.langFilterFor("english", kind); err == nil {
+				t.Errorf("v%d %q: garbage accepted", snap.schemaVersion, kind)
+			}
+			got, err := snap.langFilterFor("de,EN", kind)
+			if err != nil {
+				t.Fatal(err)
+			}
+			live := snap == v7 && kind != kindPerson
+			if want := (langFilter{"de", "en"}); live && !slices.Equal(got, want) {
+				t.Errorf("v%d %q = %v, want %v", snap.schemaVersion, kind, got, want)
+			} else if !live && got != nil {
+				t.Errorf("v%d %q = %v, want the filter dropped", snap.schemaVersion, kind, got)
+			}
+		}
+	}
+}
+
+// TestABSSkipsTheUnfilteredWindowWhenItCannotReachThePage pins absCandidates'
+// short cut: with no author and a language window already holding limit works,
+// the unfiltered window is never read - and the matches are exactly what running
+// both windows gives. An author that matches nobody is how the comparison runs
+// both: it keeps both windows, and with every work in its "author missed" half the
+// order it ranks is (language, the rest), the no-author order.
+func TestABSSkipsTheUnfilteredWindowWhenItCannotReachThePage(t *testing.T) {
+	snap := snapshotFor(t, langFilterCatalog())
+	de := langFilter{"de"} // two German "Saga Tales" of four
+
+	ids, _, err := snap.absCandidates("saga tales", "", 2, de)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !sameSet(ids, "saga-tales-de", "saga-tales-jane-de") {
+		t.Errorf("no author, full language window: candidates %v, want the two German works alone", ids)
+	}
+	both, _, err := snap.absCandidates("saga tales", "Nobody At All", 2, de)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(both) != 4 {
+		t.Fatalf("with an author: candidates %v, want both windows (four works)", both)
+	}
+	// A language window SHORT of limit still reads the unfiltered one.
+	if short, _, err := snap.absCandidates("saga tales", "", 3, de); err != nil || len(short) != 4 {
+		t.Errorf("no author, language window short of limit: candidates %v (%v), want four", short, err)
+	}
+
+	for _, limit := range []int{1, 2} {
+		skipped, err := snap.absSearch("saga tales", "", "", limit, de)
+		if err != nil {
+			t.Fatal(err)
+		}
+		full, err := snap.absSearch("saga tales", "Nobody At All", "", limit, de)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if !reflect.DeepEqual(skipped, full) {
+			t.Errorf("limit %d: skipping the unfiltered window changed the matches:\n%v\n%v", limit, skipped, full)
 		}
 	}
 }

@@ -673,12 +673,15 @@ func (s *Server) handleStats(w http.ResponseWriter, _ *http.Request) {
 	writeJSON(w, http.StatusOK, s.current().stats)
 }
 
-// langParam reads a request's language filter (langfilter.go), answering the 400
-// itself when an item is not a language tag. Repeated parameters are one list, so
-// `lang=de&lang=en` reads as `lang=de,en`. Every handler a filter narrows reads it
-// here, so the spelling of the parameter and its error have one home.
-func langParam(w http.ResponseWriter, r *http.Request) (langFilter, bool) {
-	f, err := parseLangFilter(strings.Join(r.URL.Query()["lang"], ","))
+// langParam reads a request's language filter from its already-parsed query
+// values, as snap can apply it to kind (snapshot.langFilterFor - the one version
+// gate), answering the 400 itself when an item is not a language tag. Repeated
+// parameters are one list, so `lang=de&lang=en` reads as `lang=de,en`. Every
+// handler a filter narrows reads it here, so the spelling of the parameter and
+// its error have one home; the handler must then query snap itself, the snapshot
+// the gate was asked of.
+func langParam(w http.ResponseWriter, snap *snapshot, q url.Values, kind searchKind) (langFilter, bool) {
+	f, err := snap.langFilterFor(strings.Join(q["lang"], ","), kind)
 	if err != nil {
 		writeErr(w, http.StatusBadRequest, err.Error())
 		return nil, false
@@ -687,12 +690,14 @@ func langParam(w http.ResponseWriter, r *http.Request) (langFilter, bool) {
 }
 
 func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
-	limit := clampLimit(r.URL.Query().Get("limit"), 12, 50)
-	lang, ok := langParam(w, r)
+	q := r.URL.Query()
+	limit := clampLimit(q.Get("limit"), 12, 50)
+	snap := s.current()
+	lang, ok := langParam(w, snap, q, kindWork)
 	if !ok {
 		return
 	}
-	cards, err := s.current().latestWorks(limit, lang)
+	cards, err := snap.latestWorks(limit, lang)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -915,20 +920,22 @@ const (
 // near-identical handlers.
 func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		q := strings.TrimSpace(r.URL.Query().Get("q"))
+		params := r.URL.Query()
+		q := strings.TrimSpace(params.Get("q"))
 		if q == "" {
 			writeErr(w, http.StatusBadRequest, "q is required")
 			return
 		}
-		limit := clampLimit(r.URL.Query().Get("limit"), searchPageDefault, searchPageMax)
+		limit := clampLimit(params.Get("limit"), searchPageDefault, searchPageMax)
 		// Validated on every scope, people/search included: the parameter means one
 		// thing on all four, and the people scope ignoring it (a person has no
-		// language) is the snapshot's decision, not a reason to accept garbage.
-		lang, ok := langParam(w, r)
+		// language) is the gate's decision, not a reason to accept garbage.
+		snap := s.current()
+		lang, ok := langParam(w, snap, params, kind)
 		if !ok {
 			return
 		}
-		results, err := s.current().search(kind, q, limit, lang)
+		results, err := snap.search(kind, q, limit, lang)
 		if err != nil {
 			s.fail(w, r, err)
 			return
@@ -964,13 +971,14 @@ func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
 		writeErr(w, http.StatusBadRequest, "unknown filter")
 		return
 	}
-	lang, ok := langParam(w, r)
+	snap := s.current()
+	lang, ok := langParam(w, snap, q, kindWork)
 	if !ok {
 		return
 	}
 	limit := clampLimit(q.Get("limit"), 25, 100)
 	offset := clampOffset(q.Get("offset"))
-	res, err := s.current().coverageWorks(filter, strings.TrimSpace(q.Get("q")), limit, offset, lang)
+	res, err := snap.coverageWorks(filter, strings.TrimSpace(q.Get("q")), limit, offset, lang)
 	if err != nil {
 		s.fail(w, r, err)
 		return

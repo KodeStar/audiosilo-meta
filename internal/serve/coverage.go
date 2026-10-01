@@ -254,7 +254,7 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 	evalSummary := s.schemaVersion >= summarySchemaVersion
 	evalDescription := s.schemaVersion >= descriptionSchemaVersion
 
-	where, args, available := s.coverageWhere(filter, q, s.liveLang(lang))
+	where, args, available := s.coverageWhere(filter, q, lang)
 	if !available {
 		return res, nil
 	}

@@ -451,38 +451,41 @@ const (
 // predicate, so a scoped page is filtered at the source rather than after the
 // fact: ?limit=20 on works/search returns 20 works, not the works among 20 mixed
 // hits. ftsSearchQuery is the one place either is chosen, so the SQL and its
-// arguments are chosen together and can never be paired wrongly.
+// arguments are chosen together and can never be paired wrongly. Both are
+// composed from the three pieces ftsSearchQuery also builds a FILTERED query
+// from, so the filtered text cannot drift from the unfiltered one.
 const (
-	searchSQL     = `SELECT kind, id FROM search_fts WHERE search_fts MATCH ? ORDER BY bm25(search_fts) LIMIT ?`
-	searchKindSQL = `SELECT kind, id FROM search_fts WHERE search_fts MATCH ? AND kind = ? ORDER BY bm25(search_fts) LIMIT ?`
+	searchSelectSQL = `SELECT kind, id FROM search_fts WHERE search_fts MATCH ?`
+	searchKindArm   = ` AND kind = ?`
+	searchOrderSQL  = ` ORDER BY bm25(search_fts) LIMIT ?`
+
+	searchSQL     = searchSelectSQL + searchOrderSQL
+	searchKindSQL = searchSelectSQL + searchKindArm + searchOrderSQL
 )
 
-// ftsSearchQuery picks the search SQL for kind and a (live) language filter and
-// builds its arguments in the same breath. With no filter it returns the two
-// constants above UNCHANGED - an unfiltered request issues exactly the SQL it
-// always did, which TestFTSSearchQueryWithoutAFilterIsUnchanged pins. A filter is
-// the same query with the language predicate beside the kind one, so a filtered
-// page is filtered at the source exactly as a scoped one is: ?lang=de&limit=20
-// returns 20 German hits, not the German ones among 20.
+// ftsSearchQuery builds the search SQL for kind and a (live) language filter and
+// its arguments in the same breath. With no filter the text is EXACTLY one of the
+// two constants above - an unfiltered request issues the SQL it always did, which
+// TestFTSSearchQueryWithoutAFilterIsUnchanged pins. A filter is the same query
+// with the language predicate beside the kind one, so a filtered page is filtered
+// at the source exactly as a scoped one is: ?lang=de&limit=20 returns 20 German
+// hits, not the German ones among 20.
 //
 // The predicate lets a row with NO language through (predicate's unknownPasses):
-// a person row carries ” on the combined search, and so does a series whose
-// members tie - an unknown side is never judged.
+// a person row carries an empty language on the combined search, and so does a
+// series whose members tie - an unknown side is never judged.
 func ftsSearchQuery(kind searchKind, match string, limit int, lang langFilter) (string, []any) {
-	if len(lang) == 0 {
-		if kind == kindAny {
-			return searchSQL, []any{match, limit}
-		}
-		return searchKindSQL, []any{match, string(kind), limit}
-	}
-	pred, predArgs := lang.predicate("language", true)
-	where, args := `search_fts MATCH ?`, []any{match}
+	query, args := searchSelectSQL, []any{match}
 	if kind != kindAny {
-		where += ` AND kind = ?`
+		query += searchKindArm
 		args = append(args, string(kind))
 	}
-	args = append(append(args, predArgs...), limit)
-	return `SELECT kind, id FROM search_fts WHERE ` + where + ` AND ` + pred + ` ORDER BY bm25(search_fts) LIMIT ?`, args
+	if len(lang) > 0 {
+		pred, predArgs := lang.predicate("language", true)
+		query += ` AND ` + pred
+		args = append(args, predArgs...)
+	}
+	return query + searchOrderSQL, append(args, limit)
 }
 
 // workIDsInFTSSQL is the id-only kind-scoped subquery the coverage browser
@@ -509,16 +512,12 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 // resolve are always works, so prepending them on a people or series page would
 // put a work where the endpoint promises neither.
 //
-// lang narrows every hit to the languages it names (langfilter.go), the boosts
+// lang (already live - langFilterFor, which drops it for the people scope)
+// narrows every hit to the languages it names (langfilter.go), the boosts
 // included: they resolve works outside the FTS query, so its predicate never saw
 // them, and a boosted work in another language is dropped before mergeHits rather
-// than leading a page the reader asked to exclude it from. The people scope
-// ignores lang - a person has no language, so there is nothing to narrow by.
+// than leading a page the reader asked to exclude it from.
 func (s *snapshot) search(kind searchKind, q string, limit int, lang langFilter) ([]any, error) {
-	lang = s.liveLang(lang)
-	if kind == kindPerson {
-		lang = nil
-	}
 	hits, err := s.ftsHits(kind, ftsQuery(q), limit, lang)
 	if err != nil {
 		return nil, err
@@ -540,7 +539,7 @@ func (s *snapshot) search(kind searchKind, q string, limit int, lang langFilter)
 //
 // The hits are collected FIRST so the whole page's cards, names and summaries
 // can be resolved in one batch each (see results) rather than inside the scan
-// loop. lang must already be live (snapshot.liveLang); nil is no filter.
+// loop. lang is already live (snapshot.liveLang); nil is no filter.
 func (s *snapshot) ftsHits(kind searchKind, match string, limit int, lang langFilter) ([]searchHit, error) {
 	query, args := ftsSearchQuery(kind, match, limit, lang)
 	rows, err := s.db.Query(query, args...)

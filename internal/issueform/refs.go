@@ -63,7 +63,6 @@ func splitList(joined string) []string {
 }
 
 var (
-	languageRE  = regexp.MustCompile(`^[a-z]{2,3}(-[a-z0-9]{2,8})*$`)
 	dateYearRE  = regexp.MustCompile(`^\d{4}(-\d{2}-\d{2})?$`)
 	dateFlexRE  = regexp.MustCompile(`^\d{4}(-\d{2}(-\d{2})?)?$`)
 	wikidataRE  = regexp.MustCompile(`^Q\d+$`)
@@ -114,7 +113,7 @@ var pageKinds = map[string]model.Kind{
 // subtag to lowercase) and reports whether it matches the schema pattern.
 func normalizeLanguage(raw string) (string, bool) {
 	lang := strings.ToLower(strings.TrimSpace(raw))
-	if lang == "" || !languageRE.MatchString(lang) {
+	if lang == "" || !model.ValidLanguageTag(lang) {
 		return "", false
 	}
 	return lang, true
