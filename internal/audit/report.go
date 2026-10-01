@@ -346,33 +346,9 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 	})
 	b.WriteString("\n")
 
-	rj := rep.Reviewed
-	if !rj.Legacy {
-		writeReviewedSummary(b, rj)
-		return
-	}
-	b.WriteString("T-LINK reviewed rejections (`" + legacyRejectionsPath + "`): a link a maintainer reviewed and\n")
-	b.WriteString("rejected stays in T-LINK.ndjson, ADVISORY, with the review's reason; a slug since retired is read\n")
-	b.WriteString("through the tombstone table first. An entry matching no proposal is STALE - the link was applied by\n")
-	b.WriteString("hand, a side is gone, or the candidate is only ambiguous this run - and is listed below for review;\n")
-	b.WriteString("remove one only once its link is stated or a side no longer exists. It fails nothing.\n\n")
-	reportdir.Table(b, "measure", []reportdir.Row{
-		{Label: "reviewed rejections on the list", N: rj.Entries()},
-		{Label: "... matching a proposal (made advisory)", N: rj.Matched},
-		{Label: "... matching no proposal (stale)", N: len(rj.Stale)},
-	})
-	b.WriteString("\n")
-	if len(rj.Stale) > 0 {
-		b.WriteString("Stale entries:\n\n")
-		for _, r := range rj.Stale {
-			fmt.Fprintf(b, "- `%s` `%s` -> `%s`\n", r.Op, r.Target, r.To)
-		}
-		b.WriteString("\n")
-	}
+	writeReviewedSummary(b, rep.Reviewed)
 }
 
-// The legacy-only rejection view above preserves the migration's report bytes.
-// New decisions and no-ops use this general view and name the current source file.
 func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 	b.WriteString("Reviewed decisions (`" + reviewedPath + "`), matched against fresh proposals after all classes.\n")
 	b.WriteString("Accept promotes to mechanical; reject makes advisory. No-op decisions leave the status unchanged.\n")

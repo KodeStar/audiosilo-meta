@@ -37,10 +37,6 @@ var reviewedFile []byte
 
 const reviewedPath = "internal/audit/reviewed.json"
 
-// Kept only as a report-format compatibility label for migrated link rejections.
-// There is no second file, loader or decision list at this path.
-const legacyRejectionsPath = "internal/audit/tlink_rejected.json"
-
 type reviewedDecision struct {
 	Op       string   `json:"op"`
 	Target   string   `json:"target,omitempty"`
@@ -56,12 +52,8 @@ type reviewedDecision struct {
 type proposalKey struct{ op, target, series, field, from, to, others string }
 
 func keyOf(p Proposal) proposalKey {
-	// JSON encoding is unambiguous even if an identity string contains delimiters.
-	others, _ := json.Marshal(p.Others)
-	if len(p.Others) == 0 {
-		others = nil
-	}
-	return proposalKey{p.Op, p.Target, p.Series, p.Field, p.From, p.To, string(others)}
+	// Others contains slugs, which cannot contain commas.
+	return proposalKey{p.Op, p.Target, p.Series, p.Field, p.From, p.To, strings.Join(p.Others, ",")}
 }
 
 func (r reviewedDecision) proposal() Proposal {
@@ -84,13 +76,8 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 }
 
 func knownReviewOp(op string) bool {
-	switch op {
-	case OpMergeWorks, OpMergeSeries, OpRetitle, OpAddSeriesMember, OpRestatePosition,
-		OpDropMembership, OpFillField, OpRenameCandidate, OpRepointSidecar, OpAddWorkLink,
-		OpAddSeriesLink, OpMoveMembership, OpSplitSeries, OpSetWorkLanguage, OpReview:
-		return true
-	}
-	return false
+	_, ok := opPhrase[op]
+	return op == OpReview || (op != OpNone && ok)
 }
 
 func parseReviewed(raw []byte) ([]reviewedDecision, error) {
@@ -162,7 +149,7 @@ func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
 	}
 	kind := model.RedirectWorks
 	switch p.Op {
-	case OpMergeSeries, OpAddSeriesLink, OpSplitSeries:
+	case OpMergeSeries, OpSplitSeries:
 		kind = model.RedirectSeries
 	case OpReview:
 		switch class {
@@ -175,6 +162,9 @@ func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
 				kind = model.RedirectSeries
 			}
 		}
+	}
+	if linkKind, ok := linkOpKind(p.Op); ok {
+		kind = linkKind
 	}
 	// Recording IDs are not work slugs and have no tombstone namespace.
 	if p.Op != OpFillField || (p.Field != "narrators" && p.Field != "asin") {
@@ -223,39 +213,57 @@ type decisionOutcome struct {
 	Status, Why string
 }
 type reviewedTally struct {
-	Matched  int
 	Stale    []reviewedDecision
 	Outcomes []decisionOutcome
-	Legacy   bool
 }
 
-func (t reviewedTally) Entries() int { return t.Matched + len(t.Stale) }
-
-func legacyRejection(r reviewedDecision) bool {
-	return r.Decision == "reject" && (r.Op == OpAddWorkLink || r.Op == OpAddSeriesLink) &&
-		r.Field == "translation_of" && r.From == "" && r.Series == "" && len(r.Others) == 0
-}
+func (t reviewedTally) Entries() int { return len(t.Outcomes) + len(t.Stale) }
 
 // applyReviewed runs ONCE over all classes, after detection and before rendering.
 // Rejections run first to release conflicts. Acceptances run in file order and may
-// only extend a consistent mechanical set. Each promotion is tentative: if it adds
-// a conflict, restore advisory and report why. Repair's plan-time rules still apply.
+// only extend a consistent mechanical set. Conflicting promotions stay advisory
+// and report why. Repair's plan-time rules still apply.
 func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) reviewedTally {
+	// Only OpReview depends on the finding's class. Resolve all other decisions
+	// once, retaining file order when redirects make several keys converge.
+	byKey := make(map[proposalKey][]int, len(rs))
+	byClass := make(map[string]map[proposalKey][]int)
+	for j, r := range rs {
+		if r.Op != OpReview {
+			key := keyOf(resolvedProposal(r.proposal(), "", reds))
+			byKey[key] = append(byKey[key], j)
+		}
+	}
 	matches := make([][]*Finding, len(rs))
 	byFinding := map[*Finding][]int{}
 	for _, c := range rep.classes {
 		for i := range c.rows {
 			fd := &c.rows[i]
-			key := keyOf(resolvedProposal(fd.Propose, c.class, reds))
-			for j, r := range rs {
-				if r.Op == fd.Propose.Op && keyOf(resolvedProposal(r.proposal(), c.class, reds)) == key {
-					matches[j] = append(matches[j], fd)
-					byFinding[fd] = append(byFinding[fd], j)
+			index := byKey
+			if fd.Propose.Op == OpReview {
+				index = byClass[c.class]
+				if index == nil {
+					index = make(map[proposalKey][]int)
+					for j, r := range rs {
+						if r.Op == OpReview {
+							key := keyOf(resolvedProposal(r.proposal(), c.class, reds))
+							index[key] = append(index[key], j)
+						}
+					}
+					byClass[c.class] = index
 				}
+			}
+			key := keyOf(resolvedProposal(fd.Propose, c.class, reds))
+			js := index[key]
+			for _, j := range js {
+				matches[j] = append(matches[j], fd)
+			}
+			if len(js) > 0 {
+				byFinding[fd] = js
 			}
 		}
 	}
-	t := reviewedTally{Legacy: true}
+	var t reviewedTally
 	statuses := make([]string, len(rs))
 	whys := make([]string, len(rs))
 	// Iterate findings in report order, not pointer-map order.
@@ -265,11 +273,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) rev
 			js := byFinding[fd]
 			var reasons []string
 			var rejects []int
-			legacy := true
 			for _, j := range js {
 				if rs[j].Decision == "reject" {
 					rejects = append(rejects, j)
-					legacy = legacy && legacyRejection(rs[j])
 					if !slices.Contains(reasons, rs[j].Reason) {
 						reasons = append(reasons, rs[j].Reason)
 					}
@@ -286,11 +292,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) rev
 				statuses[j] = status
 			}
 			note := "reviewed and rejected: " + strings.Join(reasons, "; ")
-			if legacy {
-				note = "reviewed and rejected (" + legacyRejectionsPath + "): " + strings.Join(reasons, "; ")
-			} else {
-				fd.Notes = append(fd.Notes, note)
-			}
+			fd.Notes = append(fd.Notes, note)
 			if fd.Propose.Advisory && fd.Propose.Reason != "" {
 				note += "; " + fd.Propose.Reason
 			}
@@ -298,6 +300,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) rev
 			fd.Propose.Reason = note
 		}
 	}
+	var conflictState *proposalConflictState
 	for j, r := range rs {
 		if r.Decision != "accept" {
 			continue
@@ -310,12 +313,13 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) rev
 				}
 			}
 			if why == "" && fd.Propose.Advisory {
-				fd.Propose.Advisory = false
-				if conflicts := proposalConflicts(rep); len(conflicts) > 0 {
-					why = strings.Join(conflicts, "; ")
-					fd.Propose.Advisory = true
+				if conflictState == nil {
+					conflictState = proposalConflicts(rep)
 				}
-				if why == "" {
+				if conflicts := conflictState.promote(*fd); len(conflicts) > 0 {
+					why = strings.Join(conflicts, "; ")
+				} else {
+					fd.Propose.Advisory = false
 					statuses[j] = "accepted"
 				}
 			} else if why == "" {
@@ -335,11 +339,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) rev
 		}
 	}
 	for j, r := range rs {
-		t.Legacy = t.Legacy && legacyRejection(r) && (statuses[j] == "rejected" || len(matches[j]) == 0)
 		if len(matches[j]) == 0 {
 			t.Stale = append(t.Stale, r)
 		} else {
-			t.Matched++
 			t.Outcomes = append(t.Outcomes, decisionOutcome{r, statuses[j], whys[j]})
 		}
 	}

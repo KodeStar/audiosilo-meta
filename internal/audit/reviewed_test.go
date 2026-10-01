@@ -16,7 +16,7 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// reviewed_test.go pins T-LINK's reviewed-rejection list: the embedded file's
+// reviewed_test.go pins the shared reviewed-decision list: the embedded file's
 // validity, what a matching entry does to a proposal, what a non-matching one does not,
 // and the stale count SUMMARY.md reports.
 
@@ -122,7 +122,7 @@ func TestRejectionNamingRetiredSlugsStillSuppresses(t *testing.T) {
 		!strings.Contains(fd.Propose.Reason, "reviewed under the old slugs") {
 		t.Fatalf("proposal = %+v, want the survivors' link advisory with the review's reason", fd)
 	}
-	if got := rep.Reviewed; got.Matched != 1 || len(got.Stale) != 0 {
+	if got := rep.Reviewed; len(got.Outcomes) != 1 || len(got.Stale) != 0 {
 		t.Errorf("tally = %+v, want the retired entry matched, none stale", got)
 	}
 
@@ -133,7 +133,7 @@ func TestRejectionNamingRetiredSlugsStillSuppresses(t *testing.T) {
 	if fd := linkFinding(t, rep, "the-saga-german"); fd == nil || fd.Propose.Advisory {
 		t.Fatalf("proposal = %+v, want it mechanical: a works tombstone says nothing of a series", fd)
 	}
-	if got := rep.Reviewed; got.Matched != 0 || len(got.Stale) != 1 {
+	if got := rep.Reviewed; len(got.Outcomes) != 0 || len(got.Stale) != 1 {
 		t.Errorf("tally = %+v, want the entry stale", got)
 	}
 }
@@ -148,13 +148,13 @@ func TestReviewedRejectionTurnsTheProposalAdvisory(t *testing.T) {
 	}
 	p := fd.Propose
 	if !p.Advisory || p.To != "the-saga" ||
-		!strings.HasPrefix(p.Reason, "reviewed and rejected ("+legacyRejectionsPath+"): the base is itself a translation") {
+		!strings.HasPrefix(p.Reason, "reviewed and rejected: the base is itself a translation") {
 		t.Errorf("proposal = %+v, want an advisory carrying the review's reason", p)
 	}
 	if !strings.HasPrefix(fd.Action, "do NOT apply mechanically") {
 		t.Errorf("action = %q", fd.Action)
 	}
-	if got := rep.Reviewed; got.Entries() != 1 || got.Matched != 1 || len(got.Stale) != 0 {
+	if got := rep.Reviewed; got.Entries() != 1 || len(got.Outcomes) != 1 || len(got.Stale) != 0 {
 		t.Errorf("tally = %+v, want 1 entry, 1 matched, none stale", got)
 	}
 	assertProposalsConsistent(t, rep)
@@ -183,7 +183,7 @@ func TestRejectionOfAnotherTargetLeavesTheProposalMechanical(t *testing.T) {
 	if fd == nil || fd.Propose.Advisory || fd.Propose.To != "the-saga" {
 		t.Fatalf("proposal = %+v, want the mechanical link onto the-saga", fd)
 	}
-	if got := rep.Reviewed; got.Matched != 0 || len(got.Stale) != 2 || !reflect.DeepEqual(got.Stale[0], stale) {
+	if got := rep.Reviewed; len(got.Outcomes) != 0 || len(got.Stale) != 2 || !reflect.DeepEqual(got.Stale[0], stale) {
 		t.Errorf("tally = %+v, want both entries stale, in the list's order", got)
 	}
 	assertProposalsConsistent(t, rep)
@@ -198,11 +198,11 @@ func TestRejectionOfAnAdvisoryProposalKeepsItsVeto(t *testing.T) {
 		reviewedDecision{Decision: "reject", Field: "translation_of", Op: OpAddSeriesLink, Target: "the-saga-german", To: "the-saga", Reason: "reviewed"})
 	fd := linkFinding(t, rep, "the-saga-german")
 	if fd == nil || !fd.Propose.Advisory ||
-		!strings.Contains(fd.Propose.Reason, "): reviewed; a human should confirm: ") ||
+		!strings.Contains(fd.Propose.Reason, ": reviewed; a human should confirm: ") ||
 		!strings.Contains(fd.Propose.Reason, "derives fr, not en") {
 		t.Fatalf("proposal = %+v, want the review's reason followed by the veto's", fd)
 	}
-	if rep.Reviewed.Matched != 1 {
+	if len(rep.Reviewed.Outcomes) != 1 {
 		t.Errorf("tally = %+v, want the advisory proposal counted as matched", rep.Reviewed)
 	}
 }
@@ -214,17 +214,17 @@ func TestSummaryReportsReviewedRejections(t *testing.T) {
 	)
 	md := summary(rep)
 	for _, want := range []string{
-		"T-LINK reviewed rejections (`" + legacyRejectionsPath + "`)",
-		"reviewed rejections on the list | 2",
-		"... matching a proposal (made advisory) | 1",
-		"... matching no proposal (stale) | 1",
-		"- `add-work-link` `gone-german` -> `gone`\n",
+		"Reviewed decisions (`" + reviewedPath + "`)",
+		"reviewed decisions on the list | 2",
+		"... rejected (made advisory) | 1",
+		"... matching no proposal (STALE) | 1",
+		"- STALE `" + decisionIdentity(rep.Reviewed.Stale[0]) + "`: reject: why\n",
 	} {
 		if !strings.Contains(md, want) {
 			t.Errorf("SUMMARY.md lacks %q:\n%s", want, md)
 		}
 	}
-	if strings.Contains(md, "`the-saga-german` -> `the-saga`") {
+	if strings.Contains(md, "- STALE `"+decisionIdentity(rep.Reviewed.Outcomes[0].Entry)+"`") {
 		t.Error("SUMMARY.md lists a matched entry as stale")
 	}
 }
@@ -253,7 +253,7 @@ func TestRejectionsMeetingOnOneKeyKeepEveryReason(t *testing.T) {
 	if fd == nil || !fd.Propose.Advisory || !strings.Contains(fd.Propose.Reason, "first review; second review") {
 		t.Fatalf("proposal = %+v, want both reasons", fd)
 	}
-	if got := rep.Reviewed; got.Matched != 2 || len(got.Stale) != 0 {
+	if got := rep.Reviewed; len(got.Outcomes) != 2 || len(got.Stale) != 0 {
 		t.Errorf("tally = %+v, want both matched", got)
 	}
 }
@@ -390,23 +390,34 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 		{"slot twice", move, Proposal{Op: OpAddSeriesMember, Target: "other", Series: "dest", To: "1"}, "both claim"},
 		{"work merged", move, Proposal{Op: OpMergeWorks, Target: "work", Others: []string{"other"}}, "merges"},
 		{"series merged", move, Proposal{Op: OpMergeSeries, Target: "source", Others: []string{"other"}}, "merges"},
+		{"destination merged", move, Proposal{Op: OpMergeSeries, Target: "dest", Others: []string{"other"}}, "merges"},
+		{"split membership", Proposal{Op: OpSplitSeries, Target: "source", Others: []string{"work"}}, move, "both move"},
+		{"joins twice", move, Proposal{Op: OpMoveMembership, Target: "work", Series: "elsewhere", To: "2", Others: []string{"dest"}}, "both move"},
+		{"language twice", Proposal{Op: OpSetWorkLanguage, Target: "work", To: "de"}, Proposal{Op: OpSetWorkLanguage, Target: "work", To: "fr"}, "both set"},
+		{"language of merged work", Proposal{Op: OpSetWorkLanguage, Target: "work", To: "de"}, Proposal{Op: OpMergeWorks, Target: "other", Others: []string{"work"}}, "merges"},
 		{"merge overlap", Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"b"}}, Proposal{Op: OpMergeWorks, Target: "c", Others: []string{"b"}}, "fold onto both"},
 		{"merge target loser", Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"b"}}, Proposal{Op: OpMergeWorks, Target: "b", Others: []string{"c"}}, "merge target"},
 		{"link chain", Proposal{Op: OpAddWorkLink, Target: "a", To: "b"}, Proposal{Op: OpAddWorkLink, Target: "b", To: "c"}, "translation in one"},
 		{"link two originals", Proposal{Op: OpAddWorkLink, Target: "a", To: "b"}, Proposal{Op: OpAddWorkLink, Target: "a", To: "c"}, "linked to both"},
 	} {
-		t.Run(tc.name, func(t *testing.T) {
-			tc.accept.Advisory = true
-			rep := proposalReport(tc.existing, tc.accept)
-			rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(tc.accept, "accept")}, nil)
-			if !rep.classes[0].rows[1].Propose.Advisory || rep.Reviewed.Outcomes[0].Status != "refused" || !strings.Contains(rep.Reviewed.Outcomes[0].Why, tc.why) {
-				t.Fatalf("outcome = %+v", rep.Reviewed)
-			}
-			if !strings.Contains(summary(rep), tc.why) {
-				t.Fatal("refusal missing from summary")
-			}
-			assertProposalsConsistent(t, rep)
-		})
+		for _, reverse := range []bool{false, true} {
+			t.Run(fmt.Sprintf("%s/reverse=%v", tc.name, reverse), func(t *testing.T) {
+				existing, accept := tc.existing, tc.accept
+				if reverse {
+					existing, accept = accept, existing
+				}
+				accept.Advisory = true
+				rep := proposalReport(existing, accept)
+				rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(accept, "accept")}, nil)
+				if !rep.classes[0].rows[1].Propose.Advisory || rep.Reviewed.Outcomes[0].Status != "refused" || !strings.Contains(rep.Reviewed.Outcomes[0].Why, tc.why) {
+					t.Fatalf("outcome = %+v", rep.Reviewed)
+				}
+				if !strings.Contains(summary(rep), tc.why) {
+					t.Fatal("refusal missing from summary")
+				}
+				assertProposalsConsistent(t, rep)
+			})
+		}
 	}
 	// Two accepted advisory moves compete too; the later decision is refused.
 	other := move
@@ -448,7 +459,7 @@ func TestReviewedMembershipTombstonesAndSharedDecisions(t *testing.T) {
 		first.Reason = "first"
 		second.Reason = "second"
 		tally := applyReviewed(rep, []reviewedDecision{first, second}, reds)
-		if tally.Matched != 2 || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "first") || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "second") {
+		if len(tally.Outcomes) != 2 || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "first") || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "second") {
 			t.Fatalf("tally=%+v, proposal=%+v", tally, rep.classes[0].rows[0])
 		}
 	}
@@ -531,4 +542,53 @@ func TestReviewedMergeNamespacesStaySeparate(t *testing.T) {
 		t.Fatalf("independent namespaces refused: %+v", tally)
 	}
 	assertProposalsConsistent(t, rep)
+}
+
+// A failed move has already touched membership, work, series and join indexes by
+// the time its occupied slot is found. None of those claims may block a later review.
+func TestReviewedRefusedPromotionLeavesNoClaims(t *testing.T) {
+	occupied := Proposal{Op: OpAddSeriesMember, Target: "holder", Series: "dest", To: "1"}
+	refused := Proposal{Op: OpMoveMembership, Target: "work", Series: "source", To: "1", Others: []string{"dest"}, Advisory: true}
+	accepted := refused
+	accepted.To = "2"
+	stillRefused := Proposal{Op: OpAddSeriesMember, Target: "another", Series: "dest", To: "1", Advisory: true}
+	rep := proposalReport(occupied, refused, accepted, stillRefused)
+	tally := applyReviewed(rep, []reviewedDecision{review(refused, "accept"), review(accepted, "accept"), review(stillRefused, "accept")}, nil)
+	for i, want := range []string{"refused", "accepted", "refused"} {
+		if tally.Outcomes[i].Status != want {
+			t.Fatalf("outcomes = %+v", tally.Outcomes)
+		}
+	}
+	if !strings.Contains(tally.Outcomes[2].Why, "proposal-0") || strings.Contains(tally.Outcomes[2].Why, "proposal-1") {
+		t.Fatalf("original slot claimant was not restored: %+v", tally.Outcomes[2])
+	}
+	assertProposalsConsistent(t, rep)
+}
+
+func TestReviewedIndexesReviewByClass(t *testing.T) {
+	reds := model.NewRedirects()
+	rep := &Report{}
+	for _, tc := range []struct {
+		class string
+		kind  model.RedirectKind
+	}{
+		{ClassPersonDup, model.RedirectPeople},
+		{ClassSeriesDup, model.RedirectSeries},
+		{ClassWorkDup, model.RedirectWorks},
+	} {
+		live := string(tc.kind) + "-survivor"
+		reds[tc.kind]["old"] = live
+		f := &findings{class: tc.class}
+		f.add(Finding{Key: live, Propose: Proposal{Op: OpReview, Target: live, Advisory: true}})
+		rep.classes = append(rep.classes, f)
+	}
+	tally := applyReviewed(rep, []reviewedDecision{review(Proposal{Op: OpReview, Target: "old"}, "accept")}, reds)
+	if len(tally.Outcomes) != 1 || len(tally.Stale) != 0 {
+		t.Fatalf("tally = %+v", tally)
+	}
+	for _, c := range rep.classes {
+		if c.rows[0].Propose.Advisory {
+			t.Errorf("review did not resolve in %s", c.class)
+		}
+	}
 }

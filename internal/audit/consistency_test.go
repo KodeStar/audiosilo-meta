@@ -28,7 +28,7 @@ import (
 // can see it.
 func assertProposalsConsistent(t testing.TB, rep *Report) {
 	t.Helper()
-	for _, conflict := range proposalConflicts(rep) {
+	for _, conflict := range proposalConflicts(rep).conflicts {
 		t.Error(conflict)
 	}
 }
