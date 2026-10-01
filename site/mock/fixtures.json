@@ -6,7 +6,26 @@
     "series": 159,
     "total_runtime_min": 612480,
     "total_chapters": 41230,
-    "built_at": "2026-07-11T09:00:00Z"
+    "built_at": "2026-07-11T09:00:00Z",
+    "languages": [
+      { "language": "en", "works": 244625 },
+      { "language": "de", "works": 21512 },
+      { "language": "es", "works": 7660 },
+      { "language": "fr", "works": 4338 },
+      { "language": "it", "works": 1815 },
+      { "language": "ru", "works": 561 },
+      { "language": "da", "works": 376 },
+      { "language": "pt", "works": 240 },
+      { "language": "pl", "works": 153 },
+      { "language": "hi", "works": 142 },
+      { "language": "sv", "works": 141 },
+      { "language": "nl", "works": 85 },
+      { "language": "tr", "works": 14 },
+      { "language": "fi", "works": 7 },
+      { "language": "no", "works": 7 },
+      { "language": "cs", "works": 3 },
+      { "language": "ja", "works": 1 }
+    ]
   },
   "works": {
     "project-hail-mary": {
@@ -151,6 +170,46 @@
           "chapter_count": 0
         }
       ]
+    },
+    "harry-potter-und-der-stein-der-weisen": {
+      "id": "harry-potter-und-der-stein-der-weisen",
+      "title": "Harry Potter und der Stein der Weisen",
+      "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+      "language": "de",
+      "series": [{ "id": "harry-potter-de", "name": "Harry Potter", "position": "1" }],
+      "added_at": "2026-07-09T12:00:00Z",
+      "recordings": [
+        {
+          "id": "rufus-beck",
+          "narrators": [{ "id": "rufus-beck", "name": "Rufus Beck" }],
+          "runtime_min": 594,
+          "publisher": "Der Hörverlag",
+          "asin": [{ "region": "DE", "asin": "B015NTJTHA" }],
+          "isbn": [],
+          "cover_url": null,
+          "chapter_count": 0
+        }
+      ]
+    },
+    "harry-potter-a-lecole-des-sorciers": {
+      "id": "harry-potter-a-lecole-des-sorciers",
+      "title": "Harry Potter à l'école des sorciers",
+      "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+      "language": "fr",
+      "series": [],
+      "added_at": "2026-07-08T12:00:00Z",
+      "recordings": [
+        {
+          "id": "bernard-giraudeau",
+          "narrators": [{ "id": "bernard-giraudeau", "name": "Bernard Giraudeau" }],
+          "runtime_min": 513,
+          "publisher": "Gallimard Jeunesse",
+          "asin": [{ "region": "FR", "asin": "B017WJ4ZH6" }],
+          "isbn": [],
+          "cover_url": null,
+          "chapter_count": 0
+        }
+      ]
     }
   },
   "people": {
@@ -204,7 +263,37 @@
       ]
     },
     "jim-dale": { "id": "jim-dale", "name": "Jim Dale", "authored": [], "narrated": [] },
-    "jk-rowling": { "id": "jk-rowling", "name": "J.K. Rowling", "authored": [], "narrated": [] },
+    "jk-rowling": {
+      "id": "jk-rowling",
+      "name": "J.K. Rowling",
+      "authored": [
+        {
+          "id": "philosophers-stone",
+          "title": "Harry Potter and the Philosopher's Stone",
+          "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+          "language": "en",
+          "series": { "id": "harry-potter", "name": "Harry Potter", "position": "1" },
+          "cover_url": null
+        },
+        {
+          "id": "harry-potter-und-der-stein-der-weisen",
+          "title": "Harry Potter und der Stein der Weisen",
+          "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+          "language": "de",
+          "series": { "id": "harry-potter-de", "name": "Harry Potter", "position": "1" },
+          "cover_url": null
+        },
+        {
+          "id": "harry-potter-a-lecole-des-sorciers",
+          "title": "Harry Potter à l'école des sorciers",
+          "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+          "language": "fr",
+          "series": null,
+          "cover_url": null
+        }
+      ],
+      "narrated": []
+    },
     "brandon-sanderson": {
       "id": "brandon-sanderson",
       "name": "Brandon Sanderson",
@@ -227,12 +316,20 @@
       "narrated": []
     },
     "michael-kramer": { "id": "michael-kramer", "name": "Michael Kramer", "authored": [], "narrated": [] },
-    "kate-reading": { "id": "kate-reading", "name": "Kate Reading", "authored": [], "narrated": [] }
+    "kate-reading": { "id": "kate-reading", "name": "Kate Reading", "authored": [], "narrated": [] },
+    "rufus-beck": { "id": "rufus-beck", "name": "Rufus Beck", "authored": [], "narrated": [] },
+    "bernard-giraudeau": {
+      "id": "bernard-giraudeau",
+      "name": "Bernard Giraudeau",
+      "authored": [],
+      "narrated": []
+    }
   },
   "series": {
     "stormlight-archive": {
       "id": "stormlight-archive",
       "name": "The Stormlight Archive",
+      "language": "en",
       "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
       "works": [
         {
@@ -258,6 +355,7 @@
     "harry-potter": {
       "id": "harry-potter",
       "name": "Harry Potter",
+      "language": "en",
       "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
       "works": [
         {
@@ -266,6 +364,24 @@
             "id": "philosophers-stone",
             "title": "Harry Potter and the Philosopher's Stone",
             "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+            "cover_url": null
+          }
+        }
+      ]
+    },
+    "harry-potter-de": {
+      "id": "harry-potter-de",
+      "name": "Harry Potter",
+      "language": "de",
+      "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+      "works": [
+        {
+          "position": "1",
+          "work": {
+            "id": "harry-potter-und-der-stein-der-weisen",
+            "title": "Harry Potter und der Stein der Weisen",
+            "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+            "language": "de",
             "cover_url": null
           }
         }

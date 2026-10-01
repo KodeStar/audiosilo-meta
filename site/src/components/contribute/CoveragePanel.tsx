@@ -24,6 +24,8 @@ import {
 import { addWorkIssueFormUrl } from '../../lib/github-prefill'
 import { PILL_LINK } from '../ui'
 import { useEntity, DetailSpinner } from '../detail/detail-common'
+import LanguageChip from '../cards/LanguageChip'
+import { useLanguages, type LanguageState } from '../languages/use-languages'
 
 // One page of the coverage/gap browsers. The full data lives server-side; each
 // page is a bounded request, so the payload never grows with the catalogue.
@@ -39,12 +41,18 @@ type Async<T> = { status: 'loading' } | { status: 'error' } | { status: 'ready';
 
 /** Run an abortable fetch, re-running whenever `deps` change (the previous
     request is aborted). `deps` are the fetch inputs, so the closed-over fetcher
-    always reads current values. */
-function useAsync<T>(fetcher: (signal: AbortSignal) => Promise<T>, deps: unknown[]): Async<T> {
+    always reads current values. While `enabled` is false the fetcher is not
+    called and the state stays `loading` (an input it needs is not known yet). */
+function useAsync<T>(
+  fetcher: (signal: AbortSignal) => Promise<T>,
+  deps: unknown[],
+  enabled = true
+): Async<T> {
   const [state, setState] = useState<Async<T>>({ status: 'loading' })
   useEffect(() => {
-    const ctrl = new AbortController()
     setState({ status: 'loading' })
+    if (!enabled) return
+    const ctrl = new AbortController()
     fetcher(ctrl.signal)
       .then((data) => {
         if (!ctrl.signal.aborted) setState({ status: 'ready', data })
@@ -55,7 +63,7 @@ function useAsync<T>(fetcher: (signal: AbortSignal) => Promise<T>, deps: unknown
       })
     return () => ctrl.abort()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
+  }, [...deps, enabled])
   return state
 }
 
@@ -272,7 +280,7 @@ function BuildLinks({ row }: { row: CoverageWorkRow }) {
   )
 }
 
-function WorkRow({ work }: { work: CoverageWork }) {
+function WorkRow({ work, languageContext }: { work: CoverageWork; languageContext: string[] }) {
   const row = toWorkRow(work)
   return (
     <li className="flex flex-col gap-3 rounded-xl border border-edge bg-raised p-4 sm:flex-row sm:items-center sm:justify-between">
@@ -283,6 +291,7 @@ function WorkRow({ work }: { work: CoverageWork }) {
         >
           {row.title}
         </a>
+        <LanguageChip language={row.language} context={languageContext} className="ml-2 align-middle" />
         {row.series ? (
           <p className="mt-1 text-sm text-dim">
             {row.position ? (
@@ -318,15 +327,24 @@ function WorksList({
   query,
   offset,
   onOffset,
+  languages,
 }: {
   filter: CoverageFilter
   query: string
   offset: number
   onOffset: (o: number) => void
+  languages: LanguageState
 }) {
   const state = useAsync<CoverageWorksResponse>(
-    (signal) => getCoverageWorks({ filter, q: query, limit: PAGE_SIZE, offset }, signal),
-    [filter, query, offset]
+    (signal) =>
+      getCoverageWorks(
+        { filter, q: query, limit: PAGE_SIZE, offset, lang: languages.active },
+        signal
+      ),
+    [filter, query, offset, languages.active],
+    // Nothing is fetched until the reader's filter has been read, so the first
+    // request is already the filtered one.
+    languages.ready
   )
 
   if (state.status === 'loading') {
@@ -349,13 +367,18 @@ function WorksList({
     )
   }
   if (total === 0) {
-    return <ListMessage>{query ? `No books match "${query}".` : FILTER_EMPTY[filter]}</ListMessage>
+    return (
+      <ListMessage>
+        {query ? `No books match "${query}".` : FILTER_EMPTY[filter]}
+        {languages.active.length > 0 ? ` Only books in ${languages.names} are shown.` : ''}
+      </ListMessage>
+    )
   }
   return (
     <>
       <ul className="space-y-3">
         {works.map((w) => (
-          <WorkRow key={w.id} work={w} />
+          <WorkRow key={w.id} work={w} languageContext={languages.context} />
         ))}
       </ul>
       <Pager total={total} offset={offset} onOffset={onOffset} />
@@ -372,8 +395,12 @@ function WorksBrowser({
   onFilter: (f: CoverageFilter) => void
   browserRef: React.RefObject<HTMLDivElement | null>
 }) {
-  // Filter (from a tab or a stat card) and search both reset to page 1.
-  const { rawQuery, setRawQuery, query, offset, setOffset } = usePagedSearch(filter)
+  // Filter (from a tab or a stat card), search and the reader's language filter
+  // all reset to page 1.
+  const languages = useLanguages()
+  const { rawQuery, setRawQuery, query, offset, setOffset } = usePagedSearch(
+    `${filter} ${languages.key}`
+  )
 
   return (
     <section ref={browserRef} className="scroll-mt-24">
@@ -412,8 +439,21 @@ function WorksBrowser({
         />
       </div>
 
+      {languages.active.length > 0 ? (
+        <p className="mt-3 text-xs text-dim">
+          Showing books in {languages.names} only - change it under
+          Languages in the header. The counts above cover every language.
+        </p>
+      ) : null}
+
       <div className="mt-6">
-        <WorksList filter={filter} query={query} offset={offset} onOffset={setOffset} />
+        <WorksList
+          filter={filter}
+          query={query}
+          offset={offset}
+          onOffset={setOffset}
+          languages={languages}
+        />
       </div>
     </section>
   )

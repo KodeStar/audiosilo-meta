@@ -109,6 +109,10 @@ const ICON_PATHS = {
   down: 'M19.5 8.25l-7.5 7.5-7.5-7.5',
   wand: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09z',
   x: 'M6 18 18 6M6 6l12 12',
+  // The header's language selector and the suggestion prompt (heroicons
+  // outline "language").
+  language:
+    'm10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802',
   // The expressive layer's two glyphs, mirrored from Icon.astro so the React
   // islands can render them too (same heroicons outline set, same 24 viewBox).
   users:

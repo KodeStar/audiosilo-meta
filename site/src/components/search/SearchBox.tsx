@@ -12,6 +12,8 @@ import {
 } from '../../lib/api'
 import { addFromLibexUrl, addWorkFromQueryUrl } from '../../lib/search-cta'
 import { Icon } from '../ui'
+import LanguageChip from '../cards/LanguageChip'
+import { useLanguages } from '../languages/use-languages'
 
 interface Props {
   /** Quiet example queries shown below the box; a tap fills and runs a search. */
@@ -42,6 +44,9 @@ interface Option {
   seriesName?: string
   seriesPosition?: string
   worksCount?: number
+  /** The work's language tag, or a series' derived primary language (absent
+      on a tie). People have none. Drives the row's language chip. */
+  language?: string
   /** An ASIN/ISBN lookup hit: pinned to the top of every tab. */
   exact?: boolean
 }
@@ -58,6 +63,10 @@ interface Grouped {
 }
 
 const EMPTY: Grouped = { exact: null, work: [], person: [], series: [] }
+
+/** The filter a bypassed search sends: none. One constant, so the search effect
+    that depends on the filter sees the same array on every render. */
+const NO_FILTER: readonly string[] = []
 const KINDS: Kind[] = ['work', 'person', 'series']
 const TAB_LABEL: Record<Tab, string> = {
   all: 'All',
@@ -99,6 +108,7 @@ function resultsToGroups(results: SearchResult[], pinned: LookupResponse | null)
       coverUrl: w.cover_url,
       seriesName: w.series?.name,
       seriesPosition: w.series?.position,
+      language: w.language,
       exact: true,
     }
   }
@@ -115,6 +125,7 @@ function resultsToGroups(results: SearchResult[], pinned: LookupResponse | null)
         coverUrl: r.cover_url,
         seriesName: r.series?.name,
         seriesPosition: r.series?.position ?? undefined,
+        language: r.language,
       })
     } else if (r.kind === 'person') {
       out.person.push({
@@ -130,6 +141,7 @@ function resultsToGroups(results: SearchResult[], pinned: LookupResponse | null)
         href: href.series(r.id),
         primary: r.name,
         worksCount: r.works,
+        language: r.language,
       })
     }
   }
@@ -155,6 +167,18 @@ export default function SearchBox({
   const [open, setOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(-1)
 
+  const languages = useLanguages()
+  /** "Search all languages" from the panel's filter line: this box only, for
+      as long as the page is open or until the reader's filter changes - it
+      names the filter it set aside, so a different filter is not bypassed. The
+      stored preference is not touched - that is the selector's job. */
+  const [bypassKey, setBypassKey] = useState<string | null>(null)
+  // The bypass ENDS when the filter it set aside changes, so choosing that
+  // filter again later starts filtered rather than reviving a stale bypass.
+  if (bypassKey !== null && bypassKey !== languages.key) setBypassKey(null)
+  const allLanguages = bypassKey === languages.key
+  const filter = allLanguages ? NO_FILTER : languages.active
+
   const listboxId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
@@ -177,6 +201,9 @@ export default function SearchBox({
     setLoading(true)
     setError(false)
     setExactMissed(false)
+    // The filter is read from the browser after mount; until then a search
+    // (a seeded `?q=`) waits rather than going out unfiltered first.
+    if (!languages.ready) return
     const timer = setTimeout(async () => {
       try {
         const wantLookup = looksLikeAsin(trimmed) || looksLikeIsbn(trimmed)
@@ -192,7 +219,9 @@ export default function SearchBox({
         // reader a product code is not catalogued on no evidence at all.
         let lookupAnswered = true
         const [res, pinned] = await Promise.all([
-          search(trimmed, 20, ctrl.signal),
+          // The ASIN/ISBN lookup above is deliberately NOT filtered: it is an
+          // exact match on a product code, and the row says its language.
+          search(trimmed, 20, ctrl.signal, filter),
           lookupPromise.catch(() => {
             lookupAnswered = false
             return null
@@ -214,7 +243,7 @@ export default function SearchBox({
       ctrl.abort()
       clearTimeout(timer)
     }
-  }, [trimmed, hasQuery])
+  }, [trimmed, hasQuery, languages.ready, filter])
 
   // Seed from `?q=` once, after hydration - the island is prerendered, so there
   // is no `window` to read at build time. Setting the query is the whole of it:
@@ -484,7 +513,10 @@ export default function SearchBox({
                  one straight to that record. Typing it all in by hand stays
                  available as the secondary route. */
               <li className="px-4 py-5 text-center" role="presentation">
-                <p className="text-sm text-dim">No matches for &ldquo;{trimmed}&rdquo;.</p>
+                <p className="text-sm text-dim">
+                  No matches for &ldquo;{trimmed}&rdquo;
+                  {filter.length > 0 ? ` in ${languages.names}` : ''}.
+                </p>
                 <p className="mt-1 text-sm font-medium text-hi">Not in the database yet.</p>
                 <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
                   <a
@@ -522,6 +554,7 @@ export default function SearchBox({
                 onActivate={setActiveIndex}
                 onChoose={navigate}
                 compact={compact}
+                languageContext={languages.context}
                 className="border-b border-edge"
               />
             ) : null}
@@ -537,6 +570,7 @@ export default function SearchBox({
                 onActivate={setActiveIndex}
                 onChoose={navigate}
                 compact={compact}
+                languageContext={languages.context}
                 className={row.divider ? 'mt-1 border-t border-edge/70 pt-1' : undefined}
               />
             ))}
@@ -561,6 +595,30 @@ export default function SearchBox({
               </li>
             ) : null}
           </ul>
+
+          {/* The filter line: whenever the reader has a language filter, the
+              panel says so and offers this one search across every language -
+              a reader who filtered to German and types an English title must
+              be able to see why nothing came back, and get past it. */}
+          {languages.active.length > 0 ? (
+            <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-edge px-3 py-2 text-xs text-dim">
+              <span className="inline-flex items-center gap-1.5">
+                <Icon name="language" className="h-3.5 w-3.5" />
+                {allLanguages ? 'Showing every language' : `Showing ${languages.names} only`}
+              </span>
+              <button
+                type="button"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => {
+                  setBypassKey(allLanguages ? null : languages.key)
+                  inputRef.current?.focus()
+                }}
+                className="font-medium text-pink-400 transition-colors hover:text-pink-300"
+              >
+                {allLanguages ? `Only ${languages.names}` : 'Search all languages'}
+              </button>
+            </div>
+          ) : null}
         </div>
       ) : null}
 
@@ -597,13 +655,26 @@ interface RowProps {
   compact?: boolean
   onActivate: (index: number) => void
   onChoose: (href: string) => void
+  /** What a row's language chip is judged against (use-languages.ts). */
+  languageContext: readonly string[]
   className?: string
 }
 
 /** One result. Every kind uses the SAME geometry - a 40px leading slot, a title
     line, a secondary line, an optional right-hand chip - so titles share one
     left edge and rows share one height all the way down the list. */
-function Row({ opt, q, id, index, active, onActivate, onChoose, className, compact }: RowProps) {
+function Row({
+  opt,
+  q,
+  id,
+  index,
+  active,
+  onActivate,
+  onChoose,
+  className,
+  compact,
+  languageContext,
+}: RowProps) {
   /* The secondary line is rendered only when the record actually carries one.
      A person result is just {id, name} - it states no role, and this repo does
      not invent facts, so nothing goes here rather than a guessed "narrator". */
@@ -634,6 +705,7 @@ function Row({ opt, q, id, index, active, onActivate, onChoose, className, compa
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2">
           <span className="truncate text-sm font-medium text-hi">{highlight(opt.primary, q)}</span>
+          <LanguageChip language={opt.language} context={languageContext} />
           {opt.exact ? (
             <span className="shrink-0 rounded-full bg-pink-600/15 px-2 py-0.5 text-[0.65rem] font-semibold text-pink-300">
               Exact match

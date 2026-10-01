@@ -2,6 +2,7 @@
 import Logo from './Logo.astro'
 import Icon from './Icon.astro'
 import HeaderSearch from './search/HeaderSearch.tsx'
+import LanguageMenu from './languages/LanguageMenu.tsx'
 import { DISCORD_INVITE as DISCORD } from '../lib/community'
 
 interface Props {
@@ -74,6 +75,12 @@ const WATCH_BADGE_CLASS =
           </a>
         ))
       }
+      <!-- The language filter ("Languages: All" until the reader chooses).
+           A React island because its list is the live /stats census; the
+           rules are lib/languages.ts. Hydrated when the browser is idle: it
+           is a closed button until clicked, so it need not compete with the
+           page's own islands. -->
+      <LanguageMenu client:idle />
       <a
         class="text-dim transition-colors hover:text-hi"
         href={DISCORD}
@@ -104,8 +111,11 @@ const WATCH_BADGE_CLASS =
         <Icon name="x" class="menu-close hidden h-6 w-6" />
       </summary>
       <div
-        class="absolute right-0 top-12 z-50 w-56 rounded-xl border border-edge bg-surface p-2 shadow-2xl shadow-black/40"
+        class="absolute right-0 top-12 z-50 w-64 rounded-xl border border-edge bg-surface p-2 shadow-2xl shadow-black/40"
       >
+        <!-- Inside the closed <details>: hydrated only once the phone menu
+             is opened and the row becomes visible. -->
+        <LanguageMenu client:visible variant="menu" />
         {
           nav.map((item) => (
             <a

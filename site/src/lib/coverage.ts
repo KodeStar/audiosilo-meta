@@ -23,6 +23,8 @@ export interface CoverageWorkRow {
   authors: CoverageWork['authors']
   series?: CoverageWork['series']
   position?: string
+  /** The work's language tag, for the row's language chip. */
+  language?: string
   ctas: CoverageCtas
 }
 
@@ -56,6 +58,7 @@ export function toWorkRow(row: CoverageWork): CoverageWorkRow {
     authors: row.authors ?? [],
     series: row.series ?? null,
     position: row.series?.position,
+    language: row.language,
     ctas: ctasFor(row.missing ?? []),
   }
 }

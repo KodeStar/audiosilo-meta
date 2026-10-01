@@ -1,20 +1,31 @@
 import { useEffect, useState } from 'react'
 import { getLatestWorks, type WorkCard as WorkCardData } from '../../lib/api'
 import WorkCard from '../cards/WorkCard'
+import { useLanguages } from '../languages/use-languages'
 
 export default function LatestAdditions({ limit = 12 }: { limit?: number }) {
   const [works, setWorks] = useState<WorkCardData[] | null>(null)
   const [error, setError] = useState(false)
+  const { ready, active, names, context } = useLanguages()
 
+  // Refetch whenever the reader's language filter changes (the header
+  // selector, the suggestion prompt, another tab) - and not before the filter
+  // has been read, so the first request is already the right one. A refetch
+  // keeps the current cards until the new ones arrive: the skeleton is for the
+  // very first load only.
   useEffect(() => {
+    if (!ready) return
     const ctrl = new AbortController()
-    getLatestWorks(limit, ctrl.signal)
-      .then((res) => setWorks(res.works ?? []))
+    getLatestWorks(limit, ctrl.signal, active)
+      .then((res) => {
+        setWorks(res.works ?? [])
+        setError(false)
+      })
       .catch((err) => {
         if ((err as Error).name !== 'AbortError') setError(true)
       })
     return () => ctrl.abort()
-  }, [limit])
+  }, [limit, ready, active])
 
   if (error) {
     return (
@@ -40,7 +51,9 @@ export default function LatestAdditions({ limit = 12 }: { limit?: number }) {
   if (works.length === 0) {
     return (
       <p className="rounded-xl border border-edge bg-surface px-6 py-10 text-center text-sm text-dim">
-        No entries yet - be the first to contribute one.
+        {active.length > 0
+          ? `No recent additions in ${names}. Change the language filter under Languages in the header to see more.`
+          : 'No entries yet - be the first to contribute one.'}
       </p>
     )
   }
@@ -48,7 +61,7 @@ export default function LatestAdditions({ limit = 12 }: { limit?: number }) {
   return (
     <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
       {works.map((w) => (
-        <WorkCard key={w.id} work={w} />
+        <WorkCard key={w.id} work={w} languageContext={context} />
       ))}
     </div>
   )

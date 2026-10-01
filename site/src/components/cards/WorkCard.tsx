@@ -3,15 +3,21 @@ import { href } from '../../lib/api'
 import CoverImage from './CoverImage'
 import PersonLinks from './PersonLinks'
 import SeriesBadge from './SeriesBadge'
+import LanguageChip from './LanguageChip'
 
 interface Props {
   work: WorkCardData
+  /** The languages a language chip is judged against (use-languages.ts
+      `context`). Absent means no chip: a grid that has not read the reader's
+      languages has nothing to compare with. */
+  languageContext?: readonly string[]
 }
 
 /** A cover-led card for a work: cover, title, authors, optional series badge.
     The whole cover + title links to the work; authors/series are their own
-    links. Used by search, latest additions, and the person/series grids. */
-export default function WorkCard({ work }: Props) {
+    links, and a work in a language outside the reader's own wears a language
+    chip under its title. Used by latest additions and the person grids. */
+export default function WorkCard({ work, languageContext }: Props) {
   return (
     <article className="group flex flex-col gap-2">
       <a
@@ -35,6 +41,9 @@ export default function WorkCard({ work }: Props) {
             {work.title}
           </a>
         </h3>
+        {languageContext ? (
+          <LanguageChip language={work.language} context={languageContext} className="self-start" />
+        ) : null}
         {work.authors && work.authors.length > 0 ? (
           <p className="line-clamp-1 text-xs text-dim">
             <PersonLinks people={work.authors} srLabel="By" />

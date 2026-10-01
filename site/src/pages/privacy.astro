@@ -15,7 +15,7 @@ const code =
   <div class="container py-14 sm:py-16">
     <div class="reveal mx-auto max-w-3xl text-body">
       <h1 class="mb-1 text-4xl font-black tracking-tight text-hi">Privacy Policy</h1>
-      <p class="mb-8 text-dim">Last updated: 30 September 2026</p>
+      <p class="mb-8 text-dim">Last updated: 1 October 2026</p>
 
       <p class="mb-6 text-lg leading-relaxed">
         AudioSilo Meta is a <strong class="text-hi">public, open source audiobook metadata
@@ -76,6 +76,16 @@ const code =
         Search queries go to this site's own API, on the same origin as the page you are reading.
         They are handled like any other request - the ordinary logs described above, nothing more.
         There is no search history, because there is nobody to attach one to.
+      </p>
+
+      <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">Language filter</h2>
+      <p class="mb-4 leading-relaxed">
+        The languages you choose under "Languages" in the header, and whether you have answered the
+        one-line language suggestion, are stored <strong class="text-hi">only in your browser</strong>
+        (in local storage on this device). To decide whether to offer that suggestion, the page reads
+        the languages your browser already states; they are not sent anywhere. The languages you
+        choose are sent only as the <span class={code}>lang</span> parameter on the search, latest
+        additions and contribute-list requests they narrow.
       </p>
 
       <h2 class="mb-3 mt-10 text-2xl font-bold text-pink-400">

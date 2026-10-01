@@ -191,6 +191,9 @@ export async function resolveLibrary(
   const authorNames = authorSearchKeys(misses)
   await runPool([...authorNames], POOL_SIZE, signal, async ([key, name]) => {
     try {
+      // Deliberately NO language filter, whatever the reader prefers: this asks
+      // whether a book is already catalogued, and a book in a language the
+      // reader has filtered out still is (resolve-books.test.ts pins it).
       const res = await search(name, AUTHOR_WORKS_LIMIT, signal)
       let works: WorkCandidate[] = res.results
         .filter((r): r is Extract<SearchResult, { kind: 'work' }> => r.kind === 'work')
