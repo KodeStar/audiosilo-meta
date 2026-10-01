@@ -127,6 +127,8 @@ func (rn *runner) moveMembership(t *txn, fd audit.Finding) error {
 	t.setSeries(dest, de.Clone(), append(slices.Clone(dworks), model.SeriesWork{Work: p.Target, Position: p.To}))
 	t.note("moved %s from series %s (position %q) to %s at position %q, the series of its language (%s)",
 		p.Target, p.Series, p.From, dest, p.To, lang)
+	// refuseLinkFaults judges EVERY series this txn staged, dest included; the
+	// argument only names the record a refusal is about.
 	return t.refuseLinkFaults(p.Series)
 }
 
@@ -165,6 +167,12 @@ func (rn *runner) splitSeries(t *txn, fd audit.Finding) error {
 	if len(kept) == 0 {
 		return refusef(CatStaleValue, "series %s would be left with no members: every member states %s now", p.Target, p.To)
 	}
+	// Kept members need not derive From: a tie decided by decoration or incumbency can
+	// leave them a tie. What must not happen is the language moving out staying behind.
+	// Nor is "no series of this name derives To" re-asked: two same-named series split
+	// in one run mint two series (TestSplitSeriesRederivesTheSlugAgainstThePlan) - their
+	// sources were already two series of one name, and whether the halves are one is
+	// SER-DUP's question on the next audit.
 	if got := model.SeriesLanguage(kept, v.workLanguage); got == p.To {
 		return refusef(CatStaleValue, "the members of %s that stay would derive %s, the language moving out", p.Target, got)
 	}
@@ -194,6 +202,8 @@ func (rn *runner) splitSeries(t *txn, fd audit.Finding) error {
 	ne.Set("id", slug)
 	ne.Set("name", name)
 	ne.Set("license", licenseCC0)
+	// The new series' name and memberships come from the same sources as the series
+	// it splits from, so it cites them; nothing is stated that they do not.
 	if raw, ok := se["sources"]; ok {
 		ne.SetRaw("sources", raw)
 	}

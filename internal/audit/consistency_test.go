@@ -20,8 +20,8 @@ import (
 //
 // L-MIX adds three more, which its detector withholds by construction (the locks it
 // reads off the other classes) and this pins: a membership moved by two proposals, a
-// work moved into one series twice, and a work or series an L-MIX op changes that a
-// merge in the same audit retires or rewrites.
+// work moved into one series twice, and a work or series an L-MIX op changes (or a
+// drop relies on as the work's home) that a merge in the same audit retires or rewrites.
 //
 // It is asserted over every fixture that produces proposals, and over the real tree
 // by the sampling run, because it is a property of the SET and no single detector

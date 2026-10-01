@@ -359,12 +359,17 @@ func (p *planner) moveRawRecording(rec *model.Recording, target string, indices 
 		sources = rawentry.UnionSources(sources, []model.Source{{Type: sourceLibex, Ref: NormalizeASIN(books[i].str("asin")), ImportedAt: p.importDate}})
 	}
 	raw.Set("sources", sources)
+	// Every same-language recording of the destination is a merge candidate (repair
+	// offers only the colliding key), and MoveRecording takes the FIRST same production
+	// in key order - two qualifying siblings are one production recorded twice, and key
+	// order keeps the choice deterministic.
 	var candidates []string
 	for _, key := range rawentry.SortedKeys(toRecs) {
 		if model.SameLanguage(toRecs[key].Str("language"), rec.Language) {
 			candidates = append(candidates, key)
 		}
 	}
+	// ok is false only when freeKey gives up, and this freeKey never does.
 	landedMove, _ := rawentry.MoveRecording(toRecs, raw, target, rec.ID, candidates, func() (string, bool) {
 		for n := 1; ; n++ {
 			key := NumberedSlugAt(rec.ID, n)

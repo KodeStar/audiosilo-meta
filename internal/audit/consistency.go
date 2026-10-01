@@ -17,6 +17,7 @@ type proposalConflictState struct {
 	mixWorks, mixSeries       map[string]string // work or series -> finding
 	mergedWorks, mergedSeries map[string]string // work or series -> finding
 	languages                 map[string]string // work -> finding
+	homes                     map[string]string // series a drop relies on as the work's home -> finding
 }
 
 // proposalConflicts is the shared set invariant used by reviewed acceptances and
@@ -29,6 +30,7 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{},
 		mixWorks: map[string]string{}, mixSeries: map[string]string{},
 		mergedWorks: map[string]string{}, mergedSeries: map[string]string{}, languages: map[string]string{},
+		homes: map[string]string{},
 	}
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -41,7 +43,12 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 	return s
 }
 
-// promote adds a candidate only when the resulting set is consistent.
+// promote adds a candidate only when the resulting set is consistent. A mechanical
+// set that is ALREADY inconsistent promotes nothing (fail safe; assertProposalsConsistent
+// pins the detectors to a consistent set, and the real tree's has none). Ops add does not
+// index - retitle-work, fill-field - make no claim another proposal can contradict that
+// the repair does not re-check itself: a retitle is refused as stale-value once the title
+// is not the one it was written against, and a fill-field states no value.
 func (s *proposalConflictState) promote(r Finding) []string {
 	if len(s.conflicts) > 0 {
 		return s.conflicts
@@ -119,6 +126,8 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 				if by, both := s.languages[id]; both {
 					report("%s sets the language of %s, which %s merges", by, id, r.Key)
 				}
+			} else if by, both := s.homes[id]; both {
+				report("%s relies on %s as its work's home, which %s merges", by, id, r.Key)
 			}
 			put(merged, id, r.Key)
 		}
@@ -180,6 +189,16 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		put(s.languages, p.Target, r.Key)
 	case OpDropMembership:
 		leave(p.Series, p.Target)
+		// A drop READS its homes (Others) rather than changing them, but a home a
+		// series merge retires is no home once that merge lands, so the drop would
+		// apply or go stale by run order - L-MIX's emitDrop veto, restated here so an
+		// accepted drop is held to it too.
+		for _, h := range p.Others {
+			if m, both := s.mergedSeries[h]; both {
+				report("%s relies on %s as its work's home, which %s merges", r.Key, h, m)
+			}
+			put(s.homes, h, r.Key)
+		}
 	case OpMoveMembership:
 		leave(p.Series, p.Target)
 		dest := p.Others[0]

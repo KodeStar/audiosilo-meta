@@ -61,7 +61,12 @@ import (
 //     met "Mia & Korum" because the collection vocabulary is English. Both are advisory
 //     here. So is an original that is a dramatized or adapted production (a translation
 //     is of the text, and the one English record of "City of Thorns" is its dramatized
-//     adaptation).
+//     adaptation). Unlike series-edition, an original in a language other than en
+//     is NOT itself a veto: the untranslated-title test is the retailer's own
+//     statement, and a candidate that states a translation (decoration or translator
+//     credit) was already excluded, so the series rule's "a non-US base is often a
+//     translation" has nothing left to catch (Louis Vuitton, l'audacieux, fr, was the
+//     one non-en original the waves linked, correctly).
 //
 // EXACTLY ONE original, in both subclasses: two candidates are no proposal at all, and
 // the count of such ambiguous records (and of records whose candidate fails the language

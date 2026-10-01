@@ -330,3 +330,18 @@ func TestSetWorkLanguageRefuses(t *testing.T) {
 		})
 	}
 }
+
+// A reviewed decision may ACCEPT exactly the ops this pass can apply: an accepted op
+// with no planner would be counted as made mechanical while nothing carries it out.
+func TestAcceptableOpsAreAppliable(t *testing.T) {
+	for _, op := range AppliableOps() {
+		if !audit.AcceptableOp(op) {
+			t.Errorf("%s is appliable but a reviewed decision may not accept it", op)
+		}
+	}
+	for _, op := range []string{audit.OpReview, audit.OpRenameCandidate, audit.OpRepointSidecar} {
+		if appliableOps[op] || audit.AcceptableOp(op) {
+			t.Errorf("%s: appliable=%v, acceptable=%v; want neither", op, appliableOps[op], audit.AcceptableOp(op))
+		}
+	}
+}

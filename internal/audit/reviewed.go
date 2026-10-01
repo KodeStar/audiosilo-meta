@@ -23,7 +23,10 @@ import (
 // and membership destinations/evidence. Advisory and Reason are judgements, not
 // identity. Empty fields are omitted, never wildcards. Others is the sorted set the
 // detectors emit, re-sorted after redirects.
-// Class, subclass, finding key and notes are evidence, not proposal identity.
+// Class, subclass, finding key and notes are evidence, not proposal identity - so a
+// `review` rejection meets every class's review finding of the same identity (the
+// class only picks the slug namespace). That is harmless: a review is advisory already,
+// the match only adds the note, and a review can never be accepted.
 //
 // Slug-valued fields resolve through the appropriate tombstone namespace; literal
 // titles, positions and languages never do. Entries retain the reviewed spelling.
@@ -80,6 +83,16 @@ func knownReviewOp(op string) bool {
 	return op == OpReview || (op != OpNone && ok)
 }
 
+// unappliableOps are the ops the audit emits that no repair carries out (a review, a
+// rename candidate, a sidecar re-point: each names a decision a rule may not make). An
+// acceptance of one would be counted as made mechanical while nothing applies it, so
+// it is refused at parse. internal/repair's TestAcceptableOpsAreAppliable pins this set
+// against the ops the repair can apply.
+var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true}
+
+// AcceptableOp reports whether a reviewed decision may ACCEPT a proposal of op.
+func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
+
 func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 	if ok, err := canonical.IsCanonical(raw); err != nil {
 		return nil, err
@@ -102,10 +115,10 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		if r.Decision != "accept" && r.Decision != "reject" {
 			return nil, fmt.Errorf("entry %d: bad decision %q", i, r.Decision)
 		}
-		// A review proposal carries no mechanical action, so promoting one would be
-		// counted as made mechanical while no repair can apply it.
-		if r.Op == OpReview && r.Decision == "accept" {
-			return nil, fmt.Errorf("entry %d: a review proposal has nothing to apply, so it cannot be accepted", i)
+		// A review (or any op no repair carries out) has no mechanical action, so
+		// promoting one would be counted as made mechanical while nothing applies it.
+		if r.Decision == "accept" && !AcceptableOp(r.Op) {
+			return nil, fmt.Errorf("entry %d: no repair applies a %q proposal, so it cannot be accepted", i, r.Op)
 		}
 		if r.Reason == "" || strings.TrimSpace(r.Reason) != r.Reason || strings.ContainsAny(r.Reason, "\n\r\u2013\u2014") {
 			return nil, fmt.Errorf("entry %d: the reason must be a one-line, trimmed reason in hyphens", i)
