@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"sort"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -182,12 +183,15 @@ func (p *planner) relocationVeto(rec *model.Recording, asins map[string]bool) re
 	return refusal{}
 }
 
-func (p *planner) refuseRelocation(rec *model.Recording, asins map[string]bool, reason refusal) {
+func (p *planner) refuseRelocation(rec *model.Recording, asins map[string]bool, reason refusal, candidates ...string) {
 	p.summary.RelocationRefusals[reason.code]++
 	for _, asin := range rawentry.SortedKeys(asins) {
 		for range p.relocation.evidence[asin] {
-			p.summary.Skips = appendSkip(p.summary.Skips, asin, reason)
+			p.summary.Skips = append(p.summary.Skips, RowSkip{ASIN: asin, Reason: reason.code, Candidates: candidates})
 		}
+	}
+	if len(candidates) > 0 {
+		reason.report += ": " + strings.Join(candidates, ", ")
 	}
 	p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf("%s: %s (%s)", recLabel(rec.Work, rec.ID), reason.report, reason.code))
 }
@@ -196,6 +200,7 @@ func (p *planner) refuseRelocation(rec *model.Recording, asins map[string]bool, 
 // one destination. Work creation itself remains the ordinary create path.
 func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool, indices []int, books []sourceBook, titles, suffixes []string) {
 	target := ""
+	identityHomes := map[int]string{}
 	for _, i := range indices {
 		b := books[i]
 		credits := p.rowAuthorCredits(b)
@@ -213,17 +218,24 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 		}
 		claim := p.rowSeriesClaim(b, titles[i], p.rowNarratorNames(b))
 		lang, _ := mapLanguage(b.str("language"))
-		ident := p.rowIdentityOf(b, titles[i])
-		if p.refuseDuplicateIdentity(b, ident, titles[i], b.str("title"), suffixes[i], lang, credits, claim) {
-			p.refuseRelocation(rec, asins, reasonIdentityDuplicate)
+		authors := p.rowWorkAuthorsRO(credits)
+		homes := p.relocationHomes(b, titles[i], suffixes[i], rec.Work, lang, authors)
+		if len(homes) > 1 {
+			p.refuseRelocation(rec, asins, reasonRelocateAmbiguousHome, homes...)
 			return
 		}
-		walk := p.resolveWork(titles[i], b.str("title"), suffixes[i], p.rowWorkAuthorsRO(credits), lang, claim)
-		slug := walk.free
-		if walk.ws != nil {
-			slug = walk.ws.slug
-			if !model.SameLanguage(walk.ws.lang, lang) {
-				slug = ""
+		slug := ""
+		if len(homes) == 1 {
+			slug = homes[0]
+			identityHomes[i] = slug
+		} else {
+			walk := p.resolveWork(titles[i], b.str("title"), suffixes[i], authors, lang, claim)
+			slug = walk.free
+			if walk.ws != nil {
+				slug = walk.ws.slug
+				if !model.SameLanguage(walk.ws.lang, lang) {
+					slug = ""
+				}
 			}
 		}
 		if slug == "" || slug == rec.Work || (target != "" && target != slug) || p.repointConflict(b, rec.Work, slug, lang) {
@@ -239,7 +251,10 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 		authors := p.rowWorkAuthors(credits, p.bookWarn(b))
 		lang, _ := mapLanguage(b.str("language"))
 		claim := p.rowSeriesClaim(b, titles[i], p.rowNarratorNames(b))
-		walk := p.resolveWork(titles[i], b.str("title"), suffixes[i], authors, lang, claim)
+		walk := workWalk{ws: p.works[identityHomes[i]]}
+		if walk.ws == nil {
+			walk = p.resolveWork(titles[i], b.str("title"), suffixes[i], authors, lang, claim)
+		}
 		if walk.ws == nil {
 			p.relocation.newWorks[target] = true
 		}
@@ -282,6 +297,24 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 		p.summary.RelocatedToExisting++
 	}
 	p.summary.Notes = append(p.summary.Notes, fmt.Sprintf("relocated %s -> %s/%s (new work: %t, merged: %t, re-pointed: %v)", recLabel(rec.Work, rec.ID), target, move.DestinationRecording, move.NewWork, move.Merged, move.Repointed))
+}
+
+// relocationHomes asks the create guard's probe in the recording's language.
+// A vetoed candidate is not a home; repeated hits name only one destination.
+func (p *planner) relocationHomes(b sourceBook, title, suffix, old, lang string, authors workAuthors) []string {
+	ident := p.rowIdentityOf(b, title)
+	if ident.key == "" || suffix != "" || len(authors.identity) == 0 {
+		return nil
+	}
+	homes := map[string]bool{}
+	for _, match := range p.identityMatches(ident, title, lang, authors) {
+		ws := p.works[match.work]
+		if ws == nil || ws.slug == old || !model.SameLanguage(ws.lang, lang) {
+			continue
+		}
+		homes[ws.slug] = true
+	}
+	return rawentry.SortedKeys(homes)
 }
 
 func (p *planner) relocationEntry(work string) rawentry.Obj {

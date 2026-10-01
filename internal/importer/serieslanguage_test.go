@@ -219,7 +219,7 @@ func TestSelectorSkipsAnotherLanguagesSeries(t *testing.T) {
 		t.Errorf("selected %d, excluded %v; want the English row kept and the German one refused as another language",
 			res.RowsSelected, res.Excluded)
 	}
-	if len(lines) != 1 || lines[0] != (RowSkip{ASIN: "B0SELDE002", Reason: RefusalSeriesOtherLanguage}) {
+	if len(lines) != 1 || !reflect.DeepEqual(lines[0], RowSkip{ASIN: "B0SELDE002", Reason: RefusalSeriesOtherLanguage}) {
 		t.Errorf("refusals = %+v, want the German row under %s", lines, RefusalSeriesOtherLanguage)
 	}
 	if body, _ := os.ReadFile(subset); !strings.Contains(string(body), "B0SELEN003") {

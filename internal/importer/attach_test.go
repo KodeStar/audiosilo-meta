@@ -49,7 +49,7 @@ func TestRefusalCodesAreStable(t *testing.T) {
 		"credit-cast-placeholder", "credit-not-a-person",
 		"position-claimed", "over-series-cap",
 		"identity-duplicate", "missing-author", "missing-title", "missing-narrator",
-		"relocate-rows-language", "relocate-recording-language", "relocate-work-language", "relocate-no-home-recording", "relocate-narration-contradicts", "relocate-destination-conflict", "relocate-row-unusable",
+		"relocate-rows-language", "relocate-recording-language", "relocate-work-language", "relocate-no-home-recording", "relocate-narration-contradicts", "relocate-destination-conflict", "relocate-row-unusable", "relocate-ambiguous-home",
 	}
 	if got := RefusalCodes(); !reflect.DeepEqual(got, want) {
 		t.Errorf("RefusalCodes() = %q\nwant %q", got, want)
@@ -665,11 +665,11 @@ func TestImportSkipsCarryRefusalCodes(t *testing.T) {
 			`"narrators":[{"name":"Cal Voice"}],"series":[{"name":"`+seriesName+`","position":"7"}]}`,
 	)
 	want := []RowSkip{
-		{"B0REGION04", RefusalUnmappedRegion},
-		{"B0DENY0001", RefusalPositionClaimed},
-		{"B0LANG0003", RefusalUnmappedLanguage},
-		{"B0NONARR06", RefusalMissingNarrator},
-		{"B0NOAUTH07", RefusalMissingAuthor},
+		{ASIN: "B0REGION04", Reason: RefusalUnmappedRegion},
+		{ASIN: "B0DENY0001", Reason: RefusalPositionClaimed},
+		{ASIN: "B0LANG0003", Reason: RefusalUnmappedLanguage},
+		{ASIN: "B0NONARR06", Reason: RefusalMissingNarrator},
+		{ASIN: "B0NOAUTH07", Reason: RefusalMissingAuthor},
 	}
 	if !reflect.DeepEqual(sum.Skips, want) {
 		t.Errorf("Skips = %+v\nwant %+v", sum.Skips, want)
@@ -824,7 +824,7 @@ func TestAttachThatWritesNothingIsASkip(t *testing.T) {
 	if p.summary.Attached != 0 || p.summary.MergedASINs != 0 {
 		t.Errorf("Attached/MergedASINs = %d/%d, want 0/0", p.summary.Attached, p.summary.MergedASINs)
 	}
-	if want := []RowSkip{{"B0ATTACH13", RefusalPositionClaimed}}; !reflect.DeepEqual(p.summary.Skips, want) {
+	if want := []RowSkip{{ASIN: "B0ATTACH13", Reason: RefusalPositionClaimed}}; !reflect.DeepEqual(p.summary.Skips, want) {
 		t.Errorf("Skips = %+v, want %+v", p.summary.Skips, want)
 	}
 }
@@ -838,7 +838,7 @@ func TestImportSkipsNameADuplicateIdentity(t *testing.T) {
 	row := `{"asin":"B0DUPID001","title":"The Lost Coast: A Novel","region":"us","language":"english",` +
 		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Cal Voice"}]}`
 	sum := runLibexWith(t, dataDir, Options{}, row)
-	if want := []RowSkip{{"B0DUPID001", RefusalIdentityDuplicate}}; sum.SkippedDuplicateIdentity != 1 || !reflect.DeepEqual(sum.Skips, want) {
+	if want := []RowSkip{{ASIN: "B0DUPID001", Reason: RefusalIdentityDuplicate}}; sum.SkippedDuplicateIdentity != 1 || !reflect.DeepEqual(sum.Skips, want) {
 		t.Errorf("SkippedDuplicateIdentity = %d, Skips = %+v; want %+v", sum.SkippedDuplicateIdentity, sum.Skips, want)
 	}
 }
@@ -967,12 +967,12 @@ func TestRefusalsStreamEveryCopy(t *testing.T) {
 		selectRow("not-an-asin", "Volume Eight", "gb", "english", seriesName, "8"), // one malformed value twice
 	})
 	want := []RowSkip{
-		{"B0PRESENT1", RefusalASINInCatalogue},
-		{"B0PRESENT1", RefusalASINInCatalogue},
-		{"B0LANG0003", RefusalUnmappedLanguage},
-		{"B0LANG0003", RefusalDuplicateASIN},
-		{"not-an-asin", RefusalMalformedASIN},
-		{"not-an-asin", RefusalMalformedASIN},
+		{ASIN: "B0PRESENT1", Reason: RefusalASINInCatalogue},
+		{ASIN: "B0PRESENT1", Reason: RefusalASINInCatalogue},
+		{ASIN: "B0LANG0003", Reason: RefusalUnmappedLanguage},
+		{ASIN: "B0LANG0003", Reason: RefusalDuplicateASIN},
+		{ASIN: "not-an-asin", Reason: RefusalMalformedASIN},
+		{ASIN: "not-an-asin", Reason: RefusalMalformedASIN},
 	}
 	if !reflect.DeepEqual(lines, want) {
 		t.Errorf("refusals = %+v\nwant %+v", lines, want)

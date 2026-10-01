@@ -1,7 +1,6 @@
 package importer
 
 import (
-	"encoding/json"
 	"fmt"
 	"reflect"
 	"strings"
@@ -334,13 +333,118 @@ func TestRelocateNeverFoundsSeries(t *testing.T) {
 	}
 }
 
-func TestRelocateIdentityGuard(t *testing.T) {
+func TestRelocateIdentityHomes(t *testing.T) {
+	for _, homes := range []int{0, 1, 2} {
+		t.Run(fmt.Sprint(homes), func(t *testing.T) {
+			dir := relocationFixture(t, false)
+			ids := []string{"das-buch-german-edition", "das-buch-unabridged"}
+			if homes == 2 {
+				// Even a reachable slug cannot choose among identity homes.
+				ids = []string{"das-buch", "das-buch-german-edition"}
+			}
+			for _, id := range ids[:homes] {
+				seedTree(t, dir, map[string]string{"works/da/" + id + "/work.json": fmt.Sprintf(`{"id":%q,"title":"Das Buch [German Edition]","language":"de","authors":["anne-author"],"license":"CC0-1.0","sources":[{"type":"user"}]}`, id)})
+			}
+			before := snapshotTree(t, dir)
+			// Repeated source copies must count works, not identity hits.
+			sum := runRelocationTest(t, dir, relocateRow+"\n"+relocateRow)
+			if sum.SkippedDuplicateIdentity != 0 {
+				t.Fatal("relocation used create refusal", sum)
+			}
+			if homes == 2 {
+				if sum.RelocationRefusals[RefusalRelocateAmbiguousHome] != 1 || len(sum.Relocations) != 0 || len(sum.Skips) != 2 {
+					t.Fatal(sum)
+				}
+				for _, skip := range sum.Skips {
+					if skip.Reason != RefusalRelocateAmbiguousHome || !reflect.DeepEqual(skip.Candidates, ids) {
+						t.Fatal("missing candidates", skip)
+					}
+				}
+				if !reflect.DeepEqual(before, snapshotTree(t, dir)) {
+					t.Fatal("ambiguous refusal changed tree")
+				}
+				return
+			}
+			want := "das-buch"
+			if homes == 1 {
+				want = ids[0]
+				if sum.RelocatedToExisting != 1 || sum.NewWorks != 0 {
+					t.Fatal(sum)
+				}
+			} else if sum.RelocatedToNewWork != 1 || sum.NewWorks != 1 {
+				t.Fatal(sum)
+			}
+			if len(sum.Relocations) != 1 || sum.Relocations[0].Destination != want || len(sum.Skips) != 0 || sum.MembershipsRepointed != 1 {
+				t.Fatal(sum)
+			}
+			rs, _ := relocationObjects(t, dir)[want].Recordings()
+			if rs["nora-reader-2020"].Str("work") != want {
+				t.Fatal("recording did not reach identity home", rs)
+			}
+		})
+	}
+}
+
+// A numeric book title is a normalized identity even though the create guard's
+// later positive placement test reads the bare number as a volume statement.
+func TestRelocateNumericIdentityHome(t *testing.T) {
 	dir := relocationFixture(t, false)
-	seedTree(t, dir, map[string]string{"works/da/das-buch-german-edition/work.json": `{"id":"das-buch-german-edition","title":"Das Buch [German Edition]","language":"de","authors":["anne-author"],"license":"CC0-1.0","sources":[{"type":"user"}]}`})
-	sum := runRelocationTest(t, dir, relocateRow)
-	if sum.RelocationRefusals[RefusalIdentityDuplicate] != 1 {
-		b, _ := json.Marshal(sum)
-		t.Fatal(string(b))
+	seedTree(t, dir, map[string]string{"works/19/1984-german-edition/work.json": `{"id":"1984-german-edition","title":"1984 [German Edition]","language":"de","authors":["anne-author"],"license":"CC0-1.0","sources":[{"type":"user"}]}`})
+	row := strings.Replace(relocateRow, "Das Buch", "1984", 1)
+	row = strings.Replace(row, `[{"name":"German Saga","position":"1"}]`, `[]`, 1)
+	sum := runRelocationTest(t, dir, row)
+	if sum.RelocatedToExisting != 1 || sum.NewWorks != 0 || sum.Relocations[0].Destination != "1984-german-edition" {
+		t.Fatal(sum)
+	}
+}
+
+func TestRelocateIdentityVetoes(t *testing.T) {
+	for _, tt := range []struct{ name, title, language, suffix string }{
+		{"collection", "Das Buch: Complete Collection", "de", ""},
+		{"volume", "Das Buch: German Saga, Book 2", "de", ""},
+		{"other language", "Das Buch [German Edition]", "fr", ""},
+		{"serial suffix", "Das Buch [German Edition]", "de", "1"},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			dir := relocationFixture(t, false)
+			seedTree(t, dir, map[string]string{"works/da/das-buch-edition/work.json": fmt.Sprintf(`{"id":"das-buch-edition","title":%q,"language":%q,"authors":["anne-author"],"license":"CC0-1.0","sources":[{"type":"user"}]}`, tt.title, tt.language)})
+			if tt.name == "volume" {
+				seedTree(t, dir, map[string]string{"series/ge/german-saga.json": `{"id":"german-saga","name":"German Saga","license":"CC0-1.0","sources":[{"type":"user"}],"works":[{"work":"the-book","position":"1"},{"work":"das-buch-edition","position":"2"},{"work":"volume-three","position":"3"}]}`})
+			}
+			ix := check.Load(dir).Identity
+			key := ix.Key("Das Buch", "German Saga")
+			found := false
+			for _, w := range ix.Works(key) {
+				found = found || w.ID == "das-buch-edition"
+			}
+			if !found {
+				t.Fatal("fixture does not collide on normalized identity")
+			}
+			if tt.suffix == "" {
+				row := relocateRow
+				if tt.name == "volume" {
+					row = strings.Replace(row, "Das Buch", "Das Buch: German Saga, Book 1", 1)
+				}
+				sum := runRelocationTest(t, dir, row)
+				if sum.RelocatedToNewWork != 1 || len(sum.RelocationRefusals) != 0 {
+					t.Fatal("vetoed identity counted as home", sum)
+				}
+				return
+			}
+			p, err := openPlanner(sourceLibex, Options{DataDir: dir, Mode: ModeRelocate})
+			if err != nil {
+				t.Fatal(err)
+			}
+			p.loadExisting()
+			b := sourceBook{}
+			authors := workAuthors{identity: []string{"anne-author"}, all: []string{"anne-author"}}
+			if got := p.relocationHomes(b, "Das Buch", "", "the-book", "de", authors); len(got) != 1 {
+				t.Fatal("fixture has no identity match", got)
+			}
+			if got := p.relocationHomes(b, "Das Buch", tt.suffix, "the-book", "de", authors); len(got) != 0 {
+				t.Fatal("serial suffix matched", got)
+			}
+		})
 	}
 }
 

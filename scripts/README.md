@@ -549,9 +549,14 @@ Every supplied row naming a recording must state the same known language as
 that recording; its work must have a different primary language subtag and keep
 at least one recording in its own language. The shared `pkg/check` narration
 profile vetoes contradictory narrator evidence, excluding the originating work.
-Unknown or mixed evidence does not veto. The destination is the ordinary create
-path's language-gated work resolution, including its identity guard, slug chain,
-credit cleaning and genre mapping. Rows resolving to different destinations are
+Unknown or mixed evidence does not veto. First the create guard's normalized
+identity probe is asked in the recording's language with the row's author sets.
+Exactly one same-language match other than the old work is the destination;
+two or more refuse with `relocate-ambiguous-home` and sorted `candidates` in the
+`--skipped` row. Collection, stated-volume contradiction and serial-suffix
+vetoes still exclude matches. No match falls through to ordinary language-gated
+work resolution and creation, including the slug chain, credit cleaning and
+genre mapping. Rows resolving to different destinations are
 refused together. No translation link is inferred.
 
 Recordings move raw, retaining chapters, cover, `added_at`, identifiers and old
@@ -573,7 +578,8 @@ already-catalogued ASINs: those are the records needing review. Its new stable
 codes are `relocate-rows-language`, `relocate-recording-language`,
 `relocate-work-language`, `relocate-no-home-recording`,
 `relocate-narration-contradicts`, `relocate-destination-conflict` and
-`relocate-row-unusable`; ordinary create admission and identity codes also apply.
+`relocate-row-unusable`, plus `relocate-ambiguous-home`; ordinary create admission
+codes also apply.
 The worklist counts input copies; the refusal summary counts recordings.
 A second run moves nothing already relocated and repeats any outstanding refusals.
 Every real run validates the written tree through `pkg/check`.

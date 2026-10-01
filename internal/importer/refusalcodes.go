@@ -55,6 +55,7 @@ const (
 	RefusalRelocateNarration         = "relocate-narration-contradicts"
 	RefusalRelocateDestination       = "relocate-destination-conflict"
 	RefusalRelocateRowUnusable       = "relocate-row-unusable"
+	RefusalRelocateAmbiguousHome     = "relocate-ambiguous-home"
 )
 
 // The rules, in the order selectLibexRow applies them. A row is counted under
@@ -114,6 +115,7 @@ var importRefusals = []refusal{
 	reasonRelocateNarration,
 	reasonRelocateDestination,
 	reasonRelocateRowUnusable,
+	reasonRelocateAmbiguousHome,
 }
 
 // RefusalCodes lists every code a worklist line can carry: the selector's rules
@@ -129,10 +131,12 @@ func RefusalCodes() []string {
 // RowSkip is one refused row as a worklist states it: the row's ASIN and its
 // rule's code. Its JSON form, in this field order, is one line of
 // `libex-select --refusals` and of `metaimport libex --skipped` - one shape, a
-// contract with the series-completion sync bot.
+// contract with the series-completion sync bot. Ambiguous relocation homes also
+// carry sorted candidate work IDs; other refusals retain the two-field shape.
 type RowSkip struct {
-	ASIN   string `json:"asin"`
-	Reason string `json:"reason"`
+	ASIN       string   `json:"asin"`
+	Reason     string   `json:"reason"`
+	Candidates []string `json:"candidates,omitempty"`
 }
 
 // appendSkip records one refused row under its rule, unless the row states no
@@ -174,5 +178,6 @@ var (
 	reasonRelocateNoHomeRecording   = refusal{RefusalRelocateNoHomeRecording, "old work would retain no recording in its own language"}
 	reasonRelocateNarration         = refusal{RefusalRelocateNarration, "narrators of other works contradict the stated language"}
 	reasonRelocateDestination       = refusal{RefusalRelocateDestination, "source rows do not resolve to one compatible destination"}
+	reasonRelocateAmbiguousHome     = refusal{RefusalRelocateAmbiguousHome, "multiple same-language identity homes"}
 	reasonRelocateRowUnusable       = refusal{RefusalRelocateRowUnusable, "a source row naming the recording was refused at parse time"}
 )
