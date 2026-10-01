@@ -611,3 +611,32 @@ func TestReviewedRefusesTwoOrientationsOfOneSeries(t *testing.T) {
 	}
 	assertProposalsConsistent(t, rep)
 }
+
+// Accepting a tie's drop (the incumbent orientation) beside the split that keeps the
+// series for the dropped member's language (the other orientation) is refused: between
+// them the two would empty the series (the Antonia Scott shape).
+func TestReviewedRefusesADropAgainstTheOrientationItContradicts(t *testing.T) {
+	files := mergeFiles(mixPeople(t),
+		testpack.WorkFiles(t, "x-en", "en", "nate-narrator", testpack.WithAddedAt("2026-01-01")),
+		testpack.WorkFiles(t, "x-es", "es", "anna-sprecher", testpack.WithAddedAt("2026-02-01")),
+		testpack.WorkFiles(t, "y-es", "es", "anna-sprecher"),
+		map[string]string{
+			"series/ti/tie.json":      seriesJSON(t, "tie", "Tie", "x-en@1", "x-es@2"),
+			"series/se/serie-es.json": seriesJSON(t, "serie-es", "Serie", "x-es@1", "y-es@2"),
+		})
+	fresh := runFixture(t, files)
+	drop, alt := onlyMix(t, fresh, lMixHomed), onlyMix(t, fresh, lMixOtherKeeper)
+	if alt.Propose.From != "es" || !slices.Equal(alt.Propose.Others, []string{"x-en"}) {
+		t.Fatalf("other orientation = %+v", alt.Propose)
+	}
+	rep := runFixtureRejectingWith(t, files, "", review(alt.Propose, "accept"), review(drop.Propose, "accept"))
+	byOp := map[string]decisionOutcome{}
+	for _, o := range rep.Reviewed.Outcomes {
+		byOp[o.Entry.Op] = o
+	}
+	if byOp[OpSplitSeries].Status != "accepted" || byOp[OpDropMembership].Status != "refused" ||
+		!strings.Contains(byOp[OpDropMembership].Why, "keeps for es") {
+		t.Fatalf("outcomes = %+v", rep.Reviewed.Outcomes)
+	}
+	assertProposalsConsistent(t, rep)
+}

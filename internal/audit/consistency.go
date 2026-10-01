@@ -3,6 +3,8 @@ package audit
 import (
 	"fmt"
 	"slices"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // proposalConflictState indexes the mechanical set. Checking a promotion touches
@@ -18,6 +20,7 @@ type proposalConflictState struct {
 	mergedWorks, mergedSeries map[string]string // work or series -> finding
 	languages                 map[string]string // work -> finding
 	splitKeeper, splitBy      map[string]string // series -> the language a split keeps it for, and that split
+	mixLeftLang               map[string]string // series/language -> an L-MIX drop or move taking a member of it out
 }
 
 // proposalConflicts is the shared set invariant used by reviewed acceptances and
@@ -30,7 +33,7 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{},
 		mixWorks: map[string]string{}, mixSeries: map[string]string{},
 		mergedWorks: map[string]string{}, mergedSeries: map[string]string{}, languages: map[string]string{},
-		splitKeeper: map[string]string{}, splitBy: map[string]string{},
+		splitKeeper: map[string]string{}, splitBy: map[string]string{}, mixLeftLang: map[string]string{},
 	}
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -100,6 +103,20 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		put(s.leaves, membership, r.Key)
 		put(s.mixWorks, work, r.Key)
 		touchSeries(series)
+	}
+	// mixOrientation: an L-MIX drop or move takes a member out of a series because its
+	// language is NOT the one the series is kept for, so it contradicts a split keeping
+	// the series for that very language (a tie's drop beside its other orientation would
+	// empty the series between them).
+	mixOrientation := func(series string) {
+		if r.Class != ClassLangMix || len(r.Works) == 0 {
+			return
+		}
+		lang := model.PrimarySubtag(r.Works[0].Language)
+		if keeper, split := s.splitKeeper[series]; split && keeper == lang {
+			report("%s takes a %s member out of %s, which %s keeps for %s", r.Key, lang, series, s.splitBy[series], keeper)
+		}
+		put(s.mixLeftLang, series+"/"+lang, r.Key)
 	}
 
 	p := r.Propose
@@ -182,8 +199,10 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		put(s.languages, p.Target, r.Key)
 	case OpDropMembership:
 		leave(p.Series, p.Target)
+		mixOrientation(p.Series)
 	case OpMoveMembership:
 		leave(p.Series, p.Target)
+		mixOrientation(p.Series)
 		dest := p.Others[0]
 		if prev, dup := s.joins[dest+"@"+p.Target]; dup {
 			report("%s and %s both move %s into %s", prev, r.Key, p.Target, dest)
@@ -197,6 +216,9 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		if prev, dup := s.splitKeeper[p.Target]; dup && prev != p.From {
 			report("%s and %s split %s in two orientations (%s keeps it, and %s keeps it)", s.splitBy[p.Target], r.Key,
 				p.Target, orDash(prev), orDash(p.From))
+		}
+		if by, out := s.mixLeftLang[p.Target+"/"+p.From]; out {
+			report("%s takes a %s member out of %s, which %s keeps for %s", by, p.From, p.Target, r.Key, p.From)
 		}
 		put(s.splitKeeper, p.Target, p.From)
 		put(s.splitBy, p.Target, r.Key)

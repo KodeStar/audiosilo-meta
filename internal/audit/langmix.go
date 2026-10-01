@@ -796,7 +796,11 @@ func (m *langMix) emitOtherKeeper(s *model.Series, byLang map[string][]model.Ser
 		if len(members) == 0 {
 			continue
 		}
-		fd, vetoes := m.splitFinding(s, members, byLang[keeper], keeper, lang, "the other orientation", nil)
+		// The series-level vetoes read against THIS keeper (its name's edition, an
+		// ordering family, a merge of the series in this audit) - never the tie's
+		// incumbency veto, which is the reason this orientation exists at all.
+		fd, vetoes := m.splitFinding(s, members, byLang[keeper], keeper, lang, "the other orientation",
+			m.seriesVetoes(s, byLang, keeper, keepMajority))
 		fd.Subclass = lMixOtherKeeper
 		fd.Key = s.ID + "/" + lang + "/keep-" + keeper
 		fd.Notes = append(fd.Notes, notes...)
