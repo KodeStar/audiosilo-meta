@@ -412,6 +412,11 @@ func (c contest) veto(s *model.Series, keeper string) string {
 // contest reads the three signals over one majority series.
 func (m *langMix) contest(s *model.Series, byLang map[string][]model.SeriesWork, keeper string) contest {
 	var c contest
+	fire := func(counter *int, signal, format string, args ...any) {
+		*counter++
+		c.signals = append(c.signals, signal)
+		c.notes = append(c.notes, fmt.Sprintf("contested, %s: "+format, append([]any{signal}, args...)...))
+	}
 	var stating, keptAuthors, minorityAuthors []string
 	for _, w := range m.worksOf(byLang[keeper]) {
 		if statesTranslation(w) {
@@ -427,24 +432,18 @@ func (m *langMix) contest(s *model.Series, byLang map[string][]model.SeriesWork,
 	}
 	keptAuthors, minorityAuthors = sortedUnique(keptAuthors), sortedUnique(minorityAuthors)
 	if stating = sortedUnique(stating); len(stating) > 0 {
-		m.st.ContestedStated++
-		c.signals = append(c.signals, signalStated)
-		c.notes = append(c.notes, fmt.Sprintf("contested, %s: %s of the %s members state a translation (%s)",
-			signalStated, joinCount(len(stating), "work"), keeper, truncateList(stating, 6)))
+		fire(&m.st.ContestedStated, signalStated, "%s of the %s members state a translation (%s)",
+			joinCount(len(stating), "work"), keeper, truncateList(stating, 6))
 	}
 	if len(keptAuthors) > 0 && len(minorityAuthors) > 0 && len(sharedAuthors(m.ix, keptAuthors, minorityAuthors)) == 0 {
-		m.st.ContestedCollision++
-		c.signals = append(c.signals, signalCollision)
-		c.notes = append(c.notes, fmt.Sprintf("contested, %s: the %s members (by %s) share no author with the %s members (by %s): "+
-			"two series of one name", signalCollision, keeper, truncateList(keptAuthors, 4), strings.Join(minority, ", "),
-			truncateList(minorityAuthors, 4)))
+		fire(&m.st.ContestedCollision, signalCollision, "the %s members (by %s) share no author with the %s members (by %s): "+
+			"two series of one name", keeper, truncateList(keptAuthors, 4), strings.Join(minority, ", "),
+			truncateList(minorityAuthors, 4))
 	}
 	principal := m.principalAuthors(byLang)
 	if home, counts := m.homeLanguage(principal); home != "" && home != keeper && len(byLang[home]) > 0 {
-		m.st.ContestedHome++
-		c.signals = append(c.signals, signalHome)
-		c.notes = append(c.notes, fmt.Sprintf("contested, %s: the works of the series' principal author (%s) across the catalogue "+
-			"are mostly %s (%s), a minority language here", signalHome, truncateList(principal, 4), home, counts))
+		fire(&m.st.ContestedHome, signalHome, "the works of the series' principal author (%s) across the catalogue "+
+			"are mostly %s (%s), a minority language here", truncateList(principal, 4), home, counts)
 	}
 	if c.contested() {
 		m.st.Contested++
@@ -452,15 +451,15 @@ func (m *langMix) contest(s *model.Series, byLang map[string][]model.SeriesWork,
 	return c
 }
 
-// collectiveCredits are the canonical records a nameless credit folds onto
-// (internal/importer/collective.go, plus the catch-all `person` and the synthetic
-// `virtual-voice`): every language's books credit them, so their works say nothing
-// about where an author writes. A record whose kind is set (a group, a publisher, a
-// synthetic voice) is left out for the same reason.
-var collectiveCredits = map[string]bool{
-	"anonymous": true, "full-cast": true, "person": true, "uncredited": true, "unknown": true, "various": true,
-	"virtual-voice": true,
-}
+// collectiveCredits are the records a nameless credit folds onto (importer.CollectiveIDs,
+// plus the catch-all `person`): every language's books credit them, so their works say
+// nothing about where an author writes. A record whose kind is set (a group, a
+// publisher, the synthetic `virtual-voice`) is left out for the same reason.
+var collectiveCredits = func() map[string]bool {
+	ids := importer.CollectiveIDs()
+	ids["person"] = true
+	return ids
+}()
 
 // personLanguages is each individual author's works per primary language over the
 // whole catalogue, built once per run on first use. A collective or a classified
