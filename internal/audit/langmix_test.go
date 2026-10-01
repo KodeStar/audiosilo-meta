@@ -651,3 +651,24 @@ func TestReviewedRefusesADropAgainstTheOrientationItContradicts(t *testing.T) {
 	}
 	assertProposalsConsistent(t, rep)
 }
+
+// A same-name series in the language an alternate would move out does not withhold
+// that orientation: under a contest the halves may be two franchises, so the split is
+// offered and the existing series is named (the zodiac-academy shape).
+func TestLangMixOtherKeeperIsOfferedBesideATarget(t *testing.T) {
+	f := mixSagaTree(t)
+	for _, id := range []string{"morgen", "abend"} {
+		f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withLanguage("de"), withAuthors("otto-autor"))
+	}
+	f = mergeFiles(f, testpack.WorkFiles(t, "eve", "en", "nate-narrator"),
+		map[string]string{"series/sa/the-saga-english-edition.json": seriesJSON(t, "the-saga-english-edition", "The Saga [English Edition]", "eve@9")})
+	rep := runFixture(t, f)
+	alt := onlyMix(t, rep, lMixOtherKeeper)
+	if alt.Key != "the-saga/en/keep-de" || !alt.Propose.Advisory {
+		t.Fatalf("other orientation = %s %+v", alt.Key, alt.Propose)
+	}
+	if !strings.Contains(strings.Join(alt.Notes, " "), "the-saga-english-edition") {
+		t.Errorf("notes = %v, want the existing en series named", alt.Notes)
+	}
+	assertProposalsConsistent(t, rep)
+}

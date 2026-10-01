@@ -361,9 +361,11 @@ func (m *langMix) series(s *model.Series) {
 	// each other language keeping the slug in turn, so a reviewer accepts exactly one
 	// (the reviewed-decision consistency check refuses two orientations of one series).
 	if ct.contested() || how == keepIncumbent {
-		why := ct.veto(s, keeper)
+		var why string
 		if how == keepIncumbent {
 			why = fmt.Sprintf("the languages of %s tie (%s), so which half keeps its slug is a human decision", s.ID, languageCounts(byLang))
+		} else {
+			why = ct.veto(s, keeper)
 		}
 		for _, other := range otherLanguages(byLang, keeper) {
 			m.emitOtherKeeper(s, byLang, other, why, ct.notes)
@@ -787,17 +789,35 @@ func (m *langMix) emitSplit(s *model.Series, members []*mixMember, keepers []mod
 // Always advisory: it exists to be accepted, or not, by a reviewed decision.
 func (m *langMix) emitOtherKeeper(s *model.Series, byLang map[string][]model.SeriesWork, keeper, why string, notes []string) {
 	for _, lang := range otherLanguages(byLang, keeper) {
-		if len(m.targets(s, lang)) > 0 {
-			continue
-		}
+		// A same-name series in lang is NOT a reason to skip: under a contested keeper
+		// the halves may be two franchises, and moving one into the other's edition is
+		// the very claim under review (zodiac-academy). The split is always on offer;
+		// the target is named for the reviewer. Members homed elsewhere stay out of the
+		// split, and their drops follow on the next audit.
 		var members []*mixMember
+		var homed []string
 		for _, sw := range sortedMembers(byLang[lang]) {
 			if w := m.ix.workByID[sw.Work]; len(m.homedIn(s, w, lang)) == 0 {
 				members = append(members, m.memberEvidence(s, sw, keeper, lang))
+			} else {
+				homed = append(homed, sw.Work)
 			}
 		}
 		if len(members) == 0 {
 			continue
+		}
+		var extra []string
+		if targets := m.targets(s, lang); len(targets) > 0 {
+			ids := make([]string, len(targets))
+			for i, t := range targets {
+				ids[i] = t.ID
+			}
+			extra = append(extra, fmt.Sprintf("a %s series of this name already exists (%s): this orientation splits rather than moves, "+
+				"since whether they are one series is the question under review", lang, strings.Join(ids, ", ")))
+		}
+		if len(homed) > 0 {
+			extra = append(extra, fmt.Sprintf("%s already in a %s series of their own stay out of this split (%s); "+
+				"their drops follow on the next audit", joinCount(len(homed), "member"), lang, truncateList(homed, 4)))
 		}
 		// The series-level vetoes read against THIS keeper (its name's edition, an
 		// ordering family, a merge of the series in this audit) - never the tie's
@@ -806,7 +826,7 @@ func (m *langMix) emitOtherKeeper(s *model.Series, byLang map[string][]model.Ser
 			m.seriesVetoes(s, byLang, keeper, keepMajority))
 		fd.Subclass = lMixOtherKeeper
 		fd.Key = s.ID + "/" + lang + "/keep-" + keeper
-		fd.Notes = append(fd.Notes, notes...)
+		fd.Notes = append(append(fd.Notes, notes...), extra...)
 		fd.Propose.Advisory = true
 		fd.Propose.Reason = "the other orientation, for review: " + why
 		if vetoes = sortedUnique(vetoes); len(vetoes) > 0 {
