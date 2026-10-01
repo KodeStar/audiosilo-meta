@@ -290,6 +290,18 @@
   {
     "decision": "reject",
     "field": "language",
+    "from": "es",
+    "op": "split-series",
+    "others": [
+      "tagebuch-eines-ninja-kindes-buch-1-diary-of-a-ninja-kid-book-1"
+    ],
+    "reason": "the new series would carry the Spanish name onto a German book; the German member is misfiled and needs its own series, not this name",
+    "target": "diario-de-un-nino-ninja-3-una-invasion-extraterrestre-diary-of-a-ninja-boy",
+    "to": "de"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
     "from": "en",
     "op": "split-series",
     "others": [
@@ -298,6 +310,30 @@
     "reason": "the series name is German (Die Racher): the German volume belongs here and the English members are the misfiled half, already listed in reckoners",
     "target": "die-racher",
     "to": "de"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "iliada-the-iliad"
+    ],
+    "reason": "La Odisea [The Odyssey] is a Spanish title tagged English: the work language is the error, not the membership",
+    "target": "iliada-odisea-iliad-odyssey",
+    "to": "es"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "la-mano-cinerea-di-kessrin"
+    ],
+    "reason": "Il Cuore Spezzato Di Arelium is an Italian title tagged English: the work language is the error, not the membership",
+    "target": "la-guerra-dei-dodici",
+    "to": "it"
   },
   {
     "decision": "reject",
@@ -315,6 +351,18 @@
   {
     "decision": "reject",
     "field": "language",
+    "from": "de",
+    "op": "split-series",
+    "others": [
+      "learn-german-by-reading-urban-fantasy-lesend-englisch-lernen-mit-einem-urban-fantasy-1-german-editio"
+    ],
+    "reason": "a language-learning series: its books teach one language through another, so a language split separates one series by its subject",
+    "target": "learn-german-by-reading-urban-fantasy",
+    "to": "en"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
     "from": "en",
     "op": "split-series",
     "others": [
@@ -324,6 +372,55 @@
     "reason": "a language-learning series: its books teach one language through another, so a language split separates one series by its subject",
     "target": "learn-german-with-stories",
     "to": "de"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "de",
+    "op": "split-series",
+    "others": [
+      "english-vocabulary-master-300-idioms-for-intermediate-advanced-learners-proficiency-level-b2-c1"
+    ],
+    "reason": "a language-learning series: its books teach one language through another, so a language split separates one series by its subject",
+    "target": "listen-learn-english-for-all",
+    "to": "en"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "posse-de-um-guardiao"
+    ],
+    "reason": "Anjo Negro Alado [Winged Black Angel] is a Portuguese title tagged English: the work language is the error, not the membership",
+    "target": "o-cristal-do-coracao-guardiao",
+    "to": "pt"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "pt",
+    "op": "split-series",
+    "others": [
+      "ciudad-de-las-almas-perdidas",
+      "ciudad-de-los-angeles-caidos"
+    ],
+    "reason": "the new series would carry the Portuguese name onto Spanish books; the Spanish members are misfiled and need their own series, not this name",
+    "target": "os-instrumentos-mortais-the-mortal-instruments",
+    "to": "es"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "sabina-salva-el-futuro-trilogia-completa-sabrina-saves-the-future-complete-trilogy"
+    ],
+    "reason": "La Expedicion de Sabina para Detener el Apocalipsis is a Spanish title tagged English: the work language is the error, not the membership",
+    "target": "sabina-salva-el-futuro",
+    "to": "es"
   },
   {
     "decision": "reject",
