@@ -12655,7 +12655,39 @@
             }
           ],
           "work": "american-gods"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B007ZT599Q",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0055274U2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00354ZTDG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "American Gods"
+    },
+    "american-gods-neil-gaiman": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "neil-gaiman"
+      ],
+      "genres": [
+        "thriller-suspense"
+      ],
+      "id": "american-gods-neil-gaiman",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "stefan-kaminski-2015": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -12680,10 +12712,37 @@
               "imported_at": "2026-07-30",
               "ref": "B00V5948A8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B00V5948A8",
+              "type": "libex-import"
             }
           ],
-          "work": "american-gods"
-        },
+          "work": "american-gods-neil-gaiman"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B00V5948A8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "American Gods"
+    },
+    "american-gods-neil-gaiman-2": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "neil-gaiman"
+      ],
+      "genres": [
+        "science-fiction"
+      ],
+      "id": "american-gods-neil-gaiman-2",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
         "valentin-merlet-2018": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -13010,25 +13069,20 @@
               "imported_at": "2026-07-30",
               "ref": "B07C4YG8JL",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B07C4YG8JL",
+              "type": "libex-import"
             }
           ],
-          "work": "american-gods"
+          "work": "american-gods-neil-gaiman-2"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-17",
-          "ref": "B007ZT599Q",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0055274U2",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00354ZTDG",
+          "imported_at": "2026-10-01",
+          "ref": "B07C4YG8JL",
           "type": "libex-import"
         }
       ],

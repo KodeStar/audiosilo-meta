@@ -4802,7 +4802,30 @@
             }
           ],
           "work": "broken-by-daylight"
-        },
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DRLDNPP1",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Broken by Daylight"
+    },
+    "broken-by-daylight-elizabeth-helen": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "elizabeth-helen"
+      ],
+      "genres": [
+        "fantasy",
+        "romance"
+      ],
+      "id": "broken-by-daylight-elizabeth-helen",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
         "suzanne-krep-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5519,15 +5542,20 @@
               "imported_at": "2026-08-02",
               "ref": "B0GL8PZ6K2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0GL8PZ6K2",
+              "type": "libex-import"
             }
           ],
-          "work": "broken-by-daylight"
+          "work": "broken-by-daylight-elizabeth-helen"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-08-02",
-          "ref": "B0DRLDNPP1",
+          "imported_at": "2026-10-01",
+          "ref": "B0GL8PZ6K2",
           "type": "libex-import"
         }
       ],

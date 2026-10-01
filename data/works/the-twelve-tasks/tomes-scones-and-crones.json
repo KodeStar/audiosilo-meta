@@ -2556,7 +2556,35 @@
             }
           ],
           "work": "tomorrow-and-tomorrow-and-tomorrow"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B09KD2RJ5H",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09KD2RJ5H",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tomorrow, and Tomorrow, and Tomorrow"
+    },
+    "tomorrow-and-tomorrow-and-tomorrow-gabrielle-zevin": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "gabrielle-zevin"
+      ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction"
+      ],
+      "id": "tomorrow-and-tomorrow-and-tomorrow-gabrielle-zevin",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
         "riccardo-bocci-2023": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -2823,20 +2851,20 @@
               "imported_at": "2026-07-30",
               "ref": "B0CPFVCVTS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0CPFVCVTS",
+              "type": "libex-import"
             }
           ],
-          "work": "tomorrow-and-tomorrow-and-tomorrow"
+          "work": "tomorrow-and-tomorrow-and-tomorrow-gabrielle-zevin"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-17",
-          "ref": "B09KD2RJ5H",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09KD2RJ5H",
+          "imported_at": "2026-10-01",
+          "ref": "B0CPFVCVTS",
           "type": "libex-import"
         }
       ],

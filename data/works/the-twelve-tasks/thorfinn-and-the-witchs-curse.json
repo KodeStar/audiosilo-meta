@@ -10243,7 +10243,32 @@
             }
           ],
           "work": "thorns-of-frost"
-        },
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CQ387M5G",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Thorns of Frost"
+    },
+    "thorns-of-frost-krista-street": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "krista-street"
+      ],
+      "genres": [
+        "dark-fantasy",
+        "fantasy",
+        "romance",
+        "young-adult"
+      ],
+      "id": "thorns-of-frost-krista-street",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "michelle-tafelmayer-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10445,15 +10470,20 @@
               "imported_at": "2026-08-02",
               "ref": "B0FRMKSLWL",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0FRMKSLWL",
+              "type": "libex-import"
             }
           ],
-          "work": "thorns-of-frost"
+          "work": "thorns-of-frost-krista-street"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-08-01",
-          "ref": "B0CQ387M5G",
+          "imported_at": "2026-10-01",
+          "ref": "B0FRMKSLWL",
           "type": "libex-import"
         }
       ],

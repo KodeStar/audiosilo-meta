@@ -9549,7 +9549,39 @@
             }
           ],
           "work": "middlesex"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/2187.Middlesex",
+          "type": "community"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUFUSU",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Middlesex",
+      "xref": {
+        "goodreads": "2187"
+      }
+    },
+    "middlesex-jeffrey-eugenides": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "jeffrey-eugenides"
+      ],
+      "genres": [
+        "coming-of-age",
+        "lgbtq",
+        "literary-fiction"
+      ],
+      "id": "middlesex-jeffrey-eugenides",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "torben-kessler-2026": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -9574,27 +9606,24 @@
               "imported_at": "2026-07-30",
               "ref": "B0H7BRTL41",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0H7BRTL41",
+              "type": "libex-import"
             }
           ],
-          "work": "middlesex"
+          "work": "middlesex-jeffrey-eugenides"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/2187.Middlesex",
-          "type": "community"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UUFUSU",
+          "imported_at": "2026-10-01",
+          "ref": "B0H7BRTL41",
           "type": "libex-import"
         }
       ],
-      "title": "Middlesex",
-      "xref": {
-        "goodreads": "2187"
-      }
+      "title": "Middlesex"
     },
     "middletide": {
       "added_at": "2026-07-29",

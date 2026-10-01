@@ -309,34 +309,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "david-nathan-2017": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B071YGR9T7",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/911sIpOfozL.jpg",
-          "id": "david-nathan-2017",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-nathan"
-          ],
-          "publisher": "Argon Verlag",
-          "release_date": "2017-04-27",
-          "runtime_min": 889,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B071YGR9T7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "ready-player-one"
-        },
         "wil-wheaton-2012": {
           "abridged": false,
           "added_at": "2026-07-17T09:27:30+00:00",
@@ -963,6 +935,10 @@
             {
               "asin": "B07111GGKJ",
               "region": "us"
+            },
+            {
+              "asin": "B071YGR9T7",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -1206,6 +1182,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07111GGKJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B071YGR9T7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B071YGR9T7",
               "type": "libex-import"
             }
           ],

@@ -13633,7 +13633,32 @@
             }
           ],
           "work": "court-of-winter"
-        },
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0CNJ46BHC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Court of Winter"
+    },
+    "court-of-winter-krista-street": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "krista-street"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
+      "id": "court-of-winter-krista-street",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "michelle-tafelmayer-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13795,15 +13820,20 @@
               "imported_at": "2026-08-02",
               "ref": "B0FHWTS4NQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0FHWTS4NQ",
+              "type": "libex-import"
             }
           ],
-          "work": "court-of-winter"
+          "work": "court-of-winter-krista-street"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-08-01",
-          "ref": "B0CNJ46BHC",
+          "imported_at": "2026-10-01",
+          "ref": "B0FHWTS4NQ",
           "type": "libex-import"
         }
       ],

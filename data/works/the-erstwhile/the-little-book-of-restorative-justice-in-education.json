@@ -16775,81 +16775,6 @@
           ],
           "work": "the-little-prince"
         },
-        "petr-filin-2025": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0FKPL225M",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 75000,
-              "start_ms": 0,
-              "title": "глава 1"
-            },
-            {
-              "length_ms": 2002117,
-              "start_ms": 75000,
-              "title": "глава 2"
-            },
-            {
-              "length_ms": 1427098,
-              "start_ms": 2077117,
-              "title": "глава 3"
-            },
-            {
-              "length_ms": 414104,
-              "start_ms": 3504215,
-              "title": "глава 4"
-            },
-            {
-              "length_ms": 740112,
-              "start_ms": 3918319,
-              "title": "глава 5"
-            },
-            {
-              "length_ms": 1402090,
-              "start_ms": 4658431,
-              "title": "глава 6"
-            },
-            {
-              "length_ms": 876088,
-              "start_ms": 6060521,
-              "title": "глава 7"
-            },
-            {
-              "length_ms": 699083,
-              "start_ms": 6936609,
-              "title": "глава 8"
-            },
-            {
-              "length_ms": 255047,
-              "start_ms": 7635692,
-              "title": "глава 9"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81bltojnjDL.jpg",
-          "id": "petr-filin-2025",
-          "language": "ru",
-          "license": "CC0-1.0",
-          "narrators": [
-            "petr-filin"
-          ],
-          "publisher": "AB Publishing",
-          "release_date": "2025-08-01",
-          "runtime_min": 131,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0FKPL225M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-little-prince"
-        },
         "richard-burton-2020": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -17536,6 +17461,108 @@
         }
       ],
       "title": "The Little Prince & A Little Princess"
+    },
+    "the-little-prince-antoine-de-saint-exupery": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "antoine-de-saint-exupery"
+      ],
+      "genres": [
+        "classics"
+      ],
+      "id": "the-little-prince-antoine-de-saint-exupery",
+      "language": "ru",
+      "license": "CC0-1.0",
+      "recordings": {
+        "petr-filin-2025": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0FKPL225M",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 75000,
+              "start_ms": 0,
+              "title": "глава 1"
+            },
+            {
+              "length_ms": 2002117,
+              "start_ms": 75000,
+              "title": "глава 2"
+            },
+            {
+              "length_ms": 1427098,
+              "start_ms": 2077117,
+              "title": "глава 3"
+            },
+            {
+              "length_ms": 414104,
+              "start_ms": 3504215,
+              "title": "глава 4"
+            },
+            {
+              "length_ms": 740112,
+              "start_ms": 3918319,
+              "title": "глава 5"
+            },
+            {
+              "length_ms": 1402090,
+              "start_ms": 4658431,
+              "title": "глава 6"
+            },
+            {
+              "length_ms": 876088,
+              "start_ms": 6060521,
+              "title": "глава 7"
+            },
+            {
+              "length_ms": 699083,
+              "start_ms": 6936609,
+              "title": "глава 8"
+            },
+            {
+              "length_ms": 255047,
+              "start_ms": 7635692,
+              "title": "глава 9"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81bltojnjDL.jpg",
+          "id": "petr-filin-2025",
+          "language": "ru",
+          "license": "CC0-1.0",
+          "narrators": [
+            "petr-filin"
+          ],
+          "publisher": "AB Publishing",
+          "release_date": "2025-08-01",
+          "runtime_min": 131,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0FKPL225M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0FKPL225M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-little-prince-antoine-de-saint-exupery"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B0FKPL225M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Маленький принц [The Little Prince]"
     },
     "the-little-prince-bbc-childrens-classics": {
       "added_at": "2026-08-02",

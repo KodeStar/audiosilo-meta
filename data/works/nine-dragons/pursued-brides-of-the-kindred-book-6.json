@@ -3576,7 +3576,36 @@
             }
           ],
           "work": "pursuit-of-honor"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V0RKRI",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V0RKRI",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Pursuit of Honor"
+    },
+    "pursuit-of-honor-vince-flynn": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "vince-flynn"
+      ],
+      "genres": [
+        "espionage",
+        "politics",
+        "thriller-suspense"
+      ],
+      "id": "pursuit-of-honor-vince-flynn",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "stefan-lehnen-2017": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -3972,20 +4001,25 @@
               "imported_at": "2026-07-30",
               "ref": "B073WWXT7B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B073WWXT7B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B073WY64DH",
+              "type": "libex-import"
             }
           ],
-          "work": "pursuit-of-honor"
+          "work": "pursuit-of-honor-vince-flynn"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "B002V0RKRI",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V0RKRI",
+          "imported_at": "2026-10-01",
+          "ref": "B073WWXT7B",
           "type": "libex-import"
         }
       ],

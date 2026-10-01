@@ -3099,96 +3099,6 @@
           ],
           "work": "paradise-lost"
         },
-        "petr-filin-2025": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0FKQDQCB5",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3665083,
-              "start_ms": 0,
-              "title": "глава 1"
-            },
-            {
-              "length_ms": 5587812,
-              "start_ms": 3665083,
-              "title": "глава 2"
-            },
-            {
-              "length_ms": 3437040,
-              "start_ms": 9252895,
-              "title": "глава 3"
-            },
-            {
-              "length_ms": 5408995,
-              "start_ms": 12689935,
-              "title": "глава 4"
-            },
-            {
-              "length_ms": 4027431,
-              "start_ms": 18098930,
-              "title": "глава 5"
-            },
-            {
-              "length_ms": 4684068,
-              "start_ms": 22126361,
-              "title": "глава 6"
-            },
-            {
-              "length_ms": 3144840,
-              "start_ms": 26810429,
-              "title": "глава 7"
-            },
-            {
-              "length_ms": 3219353,
-              "start_ms": 29955269,
-              "title": "глава 8"
-            },
-            {
-              "length_ms": 5884656,
-              "start_ms": 33174622,
-              "title": "глава 9"
-            },
-            {
-              "length_ms": 5548199,
-              "start_ms": 39059278,
-              "title": "глава 10"
-            },
-            {
-              "length_ms": 4505158,
-              "start_ms": 44607477,
-              "title": "глава 11"
-            },
-            {
-              "length_ms": 3525461,
-              "start_ms": 49112635,
-              "title": "глава 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9175LxUJtmL.jpg",
-          "id": "petr-filin-2025",
-          "language": "ru",
-          "license": "CC0-1.0",
-          "narrators": [
-            "petr-filin"
-          ],
-          "publisher": "AB Publishing",
-          "release_date": "2025-08-14",
-          "runtime_min": 877,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0FKQDQCB5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "paradise-lost"
-        },
         "ralph-cosham-2008": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -5523,6 +5433,123 @@
         }
       ],
       "title": "Paradise Lost"
+    },
+    "paradise-lost-john-milton": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "john-milton"
+      ],
+      "genres": [
+        "classics"
+      ],
+      "id": "paradise-lost-john-milton",
+      "language": "ru",
+      "license": "CC0-1.0",
+      "recordings": {
+        "petr-filin-2025": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0FKQDQCB5",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3665083,
+              "start_ms": 0,
+              "title": "глава 1"
+            },
+            {
+              "length_ms": 5587812,
+              "start_ms": 3665083,
+              "title": "глава 2"
+            },
+            {
+              "length_ms": 3437040,
+              "start_ms": 9252895,
+              "title": "глава 3"
+            },
+            {
+              "length_ms": 5408995,
+              "start_ms": 12689935,
+              "title": "глава 4"
+            },
+            {
+              "length_ms": 4027431,
+              "start_ms": 18098930,
+              "title": "глава 5"
+            },
+            {
+              "length_ms": 4684068,
+              "start_ms": 22126361,
+              "title": "глава 6"
+            },
+            {
+              "length_ms": 3144840,
+              "start_ms": 26810429,
+              "title": "глава 7"
+            },
+            {
+              "length_ms": 3219353,
+              "start_ms": 29955269,
+              "title": "глава 8"
+            },
+            {
+              "length_ms": 5884656,
+              "start_ms": 33174622,
+              "title": "глава 9"
+            },
+            {
+              "length_ms": 5548199,
+              "start_ms": 39059278,
+              "title": "глава 10"
+            },
+            {
+              "length_ms": 4505158,
+              "start_ms": 44607477,
+              "title": "глава 11"
+            },
+            {
+              "length_ms": 3525461,
+              "start_ms": 49112635,
+              "title": "глава 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9175LxUJtmL.jpg",
+          "id": "petr-filin-2025",
+          "language": "ru",
+          "license": "CC0-1.0",
+          "narrators": [
+            "petr-filin"
+          ],
+          "publisher": "AB Publishing",
+          "release_date": "2025-08-14",
+          "runtime_min": 877,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0FKQDQCB5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0FKQDQCB5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "paradise-lost-john-milton"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B0FKQDQCB5",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Потерянный рай [Paradise Lost]"
     },
     "paradise-lost-paradise-regained": {
       "added_at": "2026-08-08",

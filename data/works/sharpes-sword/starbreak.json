@@ -8733,34 +8733,6 @@
             }
           ],
           "work": "stardust"
-        },
-        "pere-molina-2022": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09STZRT8Z",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81s6B8elHXL.jpg",
-          "id": "pere-molina-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "pere-molina"
-          ],
-          "publisher": "SAGA Egmont",
-          "release_date": "2022-02-24",
-          "runtime_min": 360,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09STZRT8Z",
-              "type": "libex-import"
-            }
-          ],
-          "work": "stardust"
         }
       },
       "sources": [
@@ -9804,6 +9776,61 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B004JNPQLW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Stardust"
+    },
+    "stardust-neil-gaiman": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "neil-gaiman"
+      ],
+      "genres": [
+        "fantasy"
+      ],
+      "id": "stardust-neil-gaiman",
+      "language": "es",
+      "license": "CC0-1.0",
+      "recordings": {
+        "pere-molina-2022": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B09STZRT8Z",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81s6B8elHXL.jpg",
+          "id": "pere-molina-2022",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "pere-molina"
+          ],
+          "publisher": "SAGA Egmont",
+          "release_date": "2022-02-24",
+          "runtime_min": 360,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B09STZRT8Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B09STZRT8Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "stardust-neil-gaiman"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B09STZRT8Z",
           "type": "libex-import"
         }
       ],

@@ -3098,7 +3098,35 @@
             }
           ],
           "work": "blade-runner"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B004FTYR2O",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B074SQWLQC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Blade Runner"
+    },
+    "blade-runner-philip-k-dick": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "philip-k-dick"
+      ],
+      "genres": [
+        "cyberpunk",
+        "science-fiction"
+      ],
+      "id": "blade-runner-philip-k-dick",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "torben-kessler-2017": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -3649,19 +3677,24 @@
               "imported_at": "2026-07-30",
               "ref": "B074ST3KF8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B074SQWLQC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B074ST3KF8",
+              "type": "libex-import"
             }
           ],
-          "work": "blade-runner"
+          "work": "blade-runner-philip-k-dick"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-17",
-          "ref": "B004FTYR2O",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-08-02",
+          "imported_at": "2026-10-01",
           "ref": "B074SQWLQC",
           "type": "libex-import"
         }

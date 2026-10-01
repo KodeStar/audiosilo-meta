@@ -8857,34 +8857,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "burghart-klau-ner-2022": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0B46PZTZV",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9123+4cRUlL.jpg",
-          "id": "burghart-klau-ner-2022",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "burghart-klaussner"
-          ],
-          "publisher": "Der Audio Verlag",
-          "release_date": "2022-07-01",
-          "runtime_min": 602,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0B46PZTZV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "stoner"
-        },
         "robin-field-1965": {
           "abridged": false,
           "added_at": "2026-07-17T09:27:30+00:00",
@@ -9027,7 +8999,92 @@
             }
           ],
           "work": "stoner"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B01DCAF02C",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B46PZTZV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Stoner"
+    },
+    "stoner-john-williams": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "john-williams"
+      ],
+      "genres": [
+        "coming-of-age",
+        "literary-fiction"
+      ],
+      "id": "stoner-john-williams",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "burghart-klau-ner-2022": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0B46PZTZV",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9123+4cRUlL.jpg",
+          "id": "burghart-klau-ner-2022",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "burghart-klaussner"
+          ],
+          "publisher": "Der Audio Verlag",
+          "release_date": "2022-07-01",
+          "runtime_min": 602,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0B46PZTZV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B0B46PZTZV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "stoner-john-williams"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-01",
+          "ref": "B0B46PZTZV",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Stoner"
+    },
+    "stoner-john-williams-2": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "john-williams"
+      ],
+      "genres": [
+        "historical-fiction",
+        "literary-fiction",
+        "romance"
+      ],
+      "id": "stoner-john-williams-2",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
         "sergio-rubini-2020": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -9274,20 +9331,20 @@
               "imported_at": "2026-07-30",
               "ref": "B08NK3X57Z",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B08NK3X57Z",
+              "type": "libex-import"
             }
           ],
-          "work": "stoner"
+          "work": "stoner-john-williams-2"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-17",
-          "ref": "B01DCAF02C",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0B46PZTZV",
+          "imported_at": "2026-10-01",
+          "ref": "B08NK3X57Z",
           "type": "libex-import"
         }
       ],

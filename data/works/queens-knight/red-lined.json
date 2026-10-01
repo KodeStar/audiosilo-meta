@@ -6321,7 +6321,36 @@
             }
           ],
           "work": "red-notice"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B00T3OCE1W",
+          "type": "audiosilo-books-import"
         },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B00T3OCE1W",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Red Notice"
+    },
+    "red-notice-bill-browder": {
+      "added_at": "2026-10-01",
+      "authors": [
+        "bill-browder"
+      ],
+      "genres": [
+        "biography-memoir",
+        "politics",
+        "social-sciences"
+      ],
+      "id": "red-notice-bill-browder",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
         "jurgen-holdorf-2015": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -7118,20 +7147,20 @@
               "imported_at": "2026-07-30",
               "ref": "B00TIY59TQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-01",
+              "ref": "B00TIY59TQ",
+              "type": "libex-import"
             }
           ],
-          "work": "red-notice"
+          "work": "red-notice-bill-browder"
         }
       },
       "sources": [
         {
-          "imported_at": "2026-07-25",
-          "ref": "B00T3OCE1W",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B00T3OCE1W",
+          "imported_at": "2026-10-01",
+          "ref": "B00TIY59TQ",
           "type": "libex-import"
         }
       ],
