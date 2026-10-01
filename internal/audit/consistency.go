@@ -43,12 +43,9 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 	return s
 }
 
-// promote adds a candidate only when the resulting set is consistent. A mechanical
-// set that is ALREADY inconsistent promotes nothing (fail safe; assertProposalsConsistent
-// pins the detectors to a consistent set, and the real tree's has none). Ops add does not
-// index - retitle-work, fill-field - make no claim another proposal can contradict that
-// the repair does not re-check itself: a retitle is refused as stale-value once the title
-// is not the one it was written against, and a fill-field states no value.
+// promote adds a candidate only when the resulting set is consistent; an already
+// inconsistent mechanical set promotes nothing (fail safe). Ops add does not index
+// (retitle-work, fill-field) are re-checked by the repair itself (stale-value).
 func (s *proposalConflictState) promote(r Finding) []string {
 	if len(s.conflicts) > 0 {
 		return s.conflicts
@@ -75,6 +72,12 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 			})
 		}
 		index[key] = value
+	}
+	// A drop READS its homes (Others): a home a series merge retires is no home once
+	// that merge lands, so the drop would apply or go stale by run order (L-MIX's
+	// emitDrop veto, held here for accepted drops too).
+	homeMerged := func(drop, home, merger string) {
+		report("%s relies on %s as its work's home, which %s merges", drop, home, merger)
 	}
 	claimSlot := func(key string) {
 		if prev, dup := s.slot[key]; dup {
@@ -127,7 +130,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 					report("%s sets the language of %s, which %s merges", by, id, r.Key)
 				}
 			} else if by, both := s.homes[id]; both {
-				report("%s relies on %s as its work's home, which %s merges", by, id, r.Key)
+				homeMerged(by, id, r.Key)
 			}
 			put(merged, id, r.Key)
 		}
@@ -189,13 +192,9 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		put(s.languages, p.Target, r.Key)
 	case OpDropMembership:
 		leave(p.Series, p.Target)
-		// A drop READS its homes (Others) rather than changing them, but a home a
-		// series merge retires is no home once that merge lands, so the drop would
-		// apply or go stale by run order - L-MIX's emitDrop veto, restated here so an
-		// accepted drop is held to it too.
 		for _, h := range p.Others {
 			if m, both := s.mergedSeries[h]; both {
-				report("%s relies on %s as its work's home, which %s merges", r.Key, h, m)
+				homeMerged(r.Key, h, m)
 			}
 			put(s.homes, h, r.Key)
 		}

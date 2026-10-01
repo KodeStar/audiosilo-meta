@@ -91,7 +91,20 @@ func knownReviewOp(op string) bool {
 var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true}
 
 // AcceptableOp reports whether a reviewed decision may ACCEPT a proposal of op.
+// Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
 func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
+
+// Ops returns every op the audit emits, sorted.
+func Ops() []string {
+	out := []string{OpReview}
+	for op := range opPhrase {
+		if op != OpNone {
+			out = append(out, op)
+		}
+	}
+	slices.Sort(out)
+	return out
+}
 
 func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 	if ok, err := canonical.IsCanonical(raw); err != nil {
