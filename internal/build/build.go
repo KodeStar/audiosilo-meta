@@ -60,8 +60,9 @@ CREATE TABLE work_genres (work_id TEXT NOT NULL, genre TEXT NOT NULL);
 CREATE INDEX idx_work_genres_work ON work_genres(work_id);
 -- The stats languages census (GROUP BY language, read once per snapshot at
 -- load) walks this as a covering index. It is deliberately the language alone:
--- works/latest orders by (added_at IS NULL), which no index column can serve, so
--- a language-scoped latest designs its own index when it lands (Phase 4).
+-- works/latest orders by (added_at IS NULL), which no index column can serve. The
+-- language-scoped latest (internal/serve's lang filter) needed no index of its own:
+-- it narrows through this one for a minority language and scans for a majority one.
 CREATE INDEX idx_works_language ON works(language);
 
 CREATE TABLE recordings (
