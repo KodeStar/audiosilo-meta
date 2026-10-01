@@ -283,6 +283,8 @@ func TestReviewedValidation(t *testing.T) {
 		{"null", `null`, "array"},
 		{"case decision", `[{"op":"retitle-work","decision":"reject","Decision":"accept","reason":"why"}]`, "exactly the keys"},
 		{"duplicate opposite decisions", `[{"op":"retitle-work","decision":"accept","reason":"why"},{"op":"retitle-work","decision":"reject","reason":"why"}]`, "no duplicates"},
+		{"no record", `[{"op":"review","decision":"reject","reason":"why"}]`, "names no record"},
+		{"accepted review", `[{"decision":"accept","op":"review","reason":"why","target":"a"}]`, "cannot be accepted"},
 		{"others unsorted", `[{"op":"merge-works","target":"a","others":["c","b"],"decision":"accept","reason":"why"}]`, "others must be sorted"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -579,15 +581,15 @@ func TestReviewedIndexesReviewByClass(t *testing.T) {
 		live := string(tc.kind) + "-survivor"
 		reds[tc.kind]["old"] = live
 		f := &findings{class: tc.class}
-		f.add(Finding{Key: live, Propose: Proposal{Op: OpReview, Target: live, Advisory: true}})
+		f.add(Finding{Key: live, Propose: Proposal{Op: OpReview, Target: live}})
 		rep.classes = append(rep.classes, f)
 	}
-	tally := applyReviewed(rep, []reviewedDecision{review(Proposal{Op: OpReview, Target: "old"}, "accept")}, reds)
+	tally := applyReviewed(rep, []reviewedDecision{review(Proposal{Op: OpReview, Target: "old"}, "reject")}, reds)
 	if len(tally.Outcomes) != 1 || len(tally.Stale) != 0 {
 		t.Fatalf("tally = %+v", tally)
 	}
 	for _, c := range rep.classes {
-		if c.rows[0].Propose.Advisory {
+		if !c.rows[0].Propose.Advisory {
 			t.Errorf("review did not resolve in %s", c.class)
 		}
 	}

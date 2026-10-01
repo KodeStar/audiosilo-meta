@@ -102,6 +102,11 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		if r.Decision != "accept" && r.Decision != "reject" {
 			return nil, fmt.Errorf("entry %d: bad decision %q", i, r.Decision)
 		}
+		// A review proposal carries no mechanical action, so promoting one would be
+		// counted as made mechanical while no repair can apply it.
+		if r.Op == OpReview && r.Decision == "accept" {
+			return nil, fmt.Errorf("entry %d: a review proposal has nothing to apply, so it cannot be accepted", i)
+		}
 		if r.Reason == "" || strings.TrimSpace(r.Reason) != r.Reason || strings.ContainsAny(r.Reason, "\n\r\u2013\u2014") {
 			return nil, fmt.Errorf("entry %d: the reason must be a one-line, trimmed reason in hyphens", i)
 		}
@@ -136,6 +141,14 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 	// encoding/json otherwise silently accepts case-variant field names.
 	if !bytes.Equal(raw, back) {
 		return nil, fmt.Errorf("entries must carry exactly the keys declared in reviewed.go, in lower case, omitting empty optional fields")
+	}
+	// A decision naming no record matches EVERY proposal of its op that names none
+	// either (W-DUP's volume-conflict reviews carry no identity at all), so it can
+	// never mean the one finding that was reviewed.
+	for i, r := range rs {
+		if r.Target == "" && r.Series == "" && len(r.Others) == 0 {
+			return nil, fmt.Errorf("entry %d: names no record (target, series or others): it would match every such %q proposal", i, r.Op)
+		}
 	}
 	return rs, nil
 }
@@ -300,6 +313,13 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) rev
 			fd.Propose.Reason = note
 		}
 	}
+	// One decision can meet several findings: the tally reports a refusal on any
+	// of them, then an acceptance, rather than whichever finding came last.
+	setStatus := func(j int, status string) {
+		if statuses[j] != "refused" && (statuses[j] != "accepted" || status == "refused") {
+			statuses[j] = status
+		}
+	}
 	var conflictState *proposalConflictState
 	for j, r := range rs {
 		if r.Decision != "accept" {
@@ -320,10 +340,10 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects) rev
 					why = strings.Join(conflicts, "; ")
 				} else {
 					fd.Propose.Advisory = false
-					statuses[j] = "accepted"
+					setStatus(j, "accepted")
 				}
 			} else if why == "" {
-				statuses[j] = "no-op"
+				setStatus(j, "no-op")
 			}
 			note := "reviewed and accepted: " + r.Reason
 			if why != "" {
