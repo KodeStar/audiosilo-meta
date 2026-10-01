@@ -238,5 +238,103 @@
     "reason": "Mabel Katz writes in both languages (en 5 / es 5), the editions were released a day apart and she narrates the Spanish herself: direction is not established",
     "target": "zero-frequency-spanish-edition",
     "to": "zero-frequency"
+  },
+  {
+    "decision": "reject",
+    "field": "position",
+    "from": "7",
+    "op": "drop-membership",
+    "others": [
+      "the-last-kingdom-series-danish-edition"
+    ],
+    "reason": "the series name is Danish (Saksernes fortaellinger): the Danish volume belongs here and the two Dutch volumes are the misfiled half",
+    "series": "saksernes-fortaellinger",
+    "target": "den-hedenske-herre"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "pt",
+    "op": "split-series",
+    "others": [
+      "desespero-despair"
+    ],
+    "reason": "the moving member Desespero [Despair] is a Portuguese book tagged English: the work language is the error, not the membership",
+    "target": "a-modern-age-fairytale-portuguese-edition",
+    "to": "en"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "mord-am-morgen-learning-german-through-storytelling-a-detective-story-for-german-learners"
+    ],
+    "reason": "a language-learning series: its books teach one language through another, so a language split separates one series by its subject",
+    "target": "baumgartner-momsen-mystery",
+    "to": "de"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "es",
+    "op": "split-series",
+    "others": [
+      "the-privilege-of-youth"
+    ],
+    "reason": "the new series would carry the Spanish-edition name onto an English book; the English member is misfiled and needs its own series, not this name",
+    "target": "dave-pelzer-spanish-edition",
+    "to": "en"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "steelheart-german-edition"
+    ],
+    "reason": "the series name is German (Die Racher): the German volume belongs here and the English members are the misfiled half, already listed in reckoners",
+    "target": "die-racher",
+    "to": "de"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "fr",
+    "op": "split-series",
+    "others": [
+      "learn-french-with-short-stories-parallel-french-english-vocabulary-for-beginners-french-hacking",
+      "learn-french-with-short-stories-parallel-french-english-vocabulary-for-beginners-learn-french-with-t"
+    ],
+    "reason": "a language-learning series: its books teach one language through another, so a language split separates one series by its subject",
+    "target": "learn-french-with-the-adventures-of-clara",
+    "to": "en"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "learn-german-with-stories-digital-in-dresden-10-short-stories-for-beginners-dino-lernt-deutsch-volum",
+      "learn-german-with-stories-schlamassel-in-stuttgart"
+    ],
+    "reason": "a language-learning series: its books teach one language through another, so a language split separates one series by its subject",
+    "target": "learn-german-with-stories",
+    "to": "de"
+  },
+  {
+    "decision": "reject",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "merde-im-in-paris-french-edition"
+    ],
+    "reason": "a language-learning series (my adventure en francais): a language split separates one series by its subject",
+    "target": "the-merde-trilogy-my-adventure-en-francais",
+    "to": "fr"
   }
 ]

@@ -205,8 +205,8 @@ func TestLangMixNarratorContradictionWithholdsTheSplitAndProposesTheLanguage(t *
 func TestLangMixProposesTheRecordingsLanguageForTheRubinrotShape(t *testing.T) {
 	files := mergeFiles(mixPeople(t), testpack.WorkFiles(t, "r1", "de", "anna-sprecher"), testpack.WorkFiles(t, "r2", "de", "anna-sprecher"),
 		map[string]string{
-			"works/xx/rubinrot/work.json": workJSON(t, "rubinrot", "Rubinrot"),
-			"works/xx/rubinrot/recordings/r.json": recJSON(t, "r", "rubinrot", withNarrators("anna-sprecher"),
+			"works/xx/fixture-gem-red/work.json": workJSON(t, "fixture-gem-red", "Rubinrot"),
+			"works/xx/fixture-gem-red/recordings/r.json": recJSON(t, "r", "fixture-gem-red", withNarrators("anna-sprecher"),
 				testpack.WithRecLanguage("de")),
 		})
 	rep := runFixture(t, files)
