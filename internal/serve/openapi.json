@@ -157,7 +157,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -193,7 +196,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -232,7 +238,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -268,7 +277,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }

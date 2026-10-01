@@ -73,8 +73,14 @@ const maxPositionToken = 8
 // no extra query. The kind literal is composed from the searchKind constant at
 // COMPILE time, so the value vocabulary has one home and this is still a
 // constant string.
-const seriesMatchSQL = `SELECT id, title FROM search_fts WHERE search_fts MATCH ? AND kind='` +
-	string(kindSeries) + `' ORDER BY bm25(search_fts) LIMIT ?`
+const seriesMatchSQL = seriesMatchHeadSQL + seriesMatchTailSQL
+
+// The two halves seriesMatchSQL is composed from, so seriesMatching's filtered
+// text is the same query with the language predicate between them.
+const (
+	seriesMatchHeadSQL = `SELECT id, title FROM search_fts WHERE search_fts MATCH ? AND kind='` + string(kindSeries) + `'`
+	seriesMatchTailSQL = ` ORDER BY bm25(search_fts) LIMIT ?`
+)
 
 // seriesMembersSQL reads the membership of every probed series in ONE query
 // rather than one per candidate. It joins works, so a membership row pointing at
@@ -208,7 +214,7 @@ func preferWholeName(cands []seriesCandidate, residual string) []seriesCandidate
 // ranked results; the works are known to exist (seriesMembersSQL joins works),
 // so a hit is never a dangling membership row. Repeats are left to the caller's
 // merge, which owns dedupe.
-func (s *snapshot) seriesPositionHits(q string) ([]string, error) {
+func (s *snapshot) seriesPositionHits(q string, lang langFilter) ([]string, error) {
 	pq, ok := parseSeriesPositionQuery(q)
 	if !ok {
 		return nil, nil
@@ -217,7 +223,7 @@ func (s *snapshot) seriesPositionHits(q string) ([]string, error) {
 		if !worthProbing(residual) {
 			continue
 		}
-		cands, err := s.seriesMatching(residual, seriesProbeLimit)
+		cands, err := s.seriesMatching(residual, seriesProbeLimit, lang)
 		if err != nil {
 			return nil, err
 		}
@@ -328,8 +334,20 @@ func probeMatch(residual string) string {
 // goes through ftsPhrase, so no user input can break the MATCH - and
 // deliberately not through ftsQuery: see the prefix-star note in the file
 // header.
-func (s *snapshot) seriesMatching(query string, limit int) ([]seriesCandidate, error) {
-	rows, err := s.db.Query(seriesMatchSQL, probeMatch(query), limit)
+//
+// lang (live, nil for none) is applied INSIDE the probe, as on series/search: a
+// series is judged by its derived language and a tied one passes. The probe is
+// seriesProbeLimit rows wide, so filtering afterwards would let a franchise's
+// same-named series in other languages take every slot and leave the reader's
+// own edition unresolved. With no filter the text is exactly seriesMatchSQL.
+func (s *snapshot) seriesMatching(query string, limit int, lang langFilter) ([]seriesCandidate, error) {
+	sqlText, args := seriesMatchSQL, []any{probeMatch(query)}
+	if len(lang) > 0 {
+		pred, predArgs := lang.predicate("language", true)
+		sqlText = seriesMatchHeadSQL + ` AND ` + pred + seriesMatchTailSQL
+		args = append(args, predArgs...)
+	}
+	rows, err := s.db.Query(sqlText, append(args, limit)...)
 	if err != nil {
 		return nil, err
 	}

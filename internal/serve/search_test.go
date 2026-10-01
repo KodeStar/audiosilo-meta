@@ -776,7 +776,7 @@ func TestExactTitleIgnoresAFreeStandingS(t *testing.T) {
 	})
 	snap := snapshotFor(t, cat)
 	for q, want := range map[string]string{"models": "", "Model S": "model-s", "enders game": "enders-game"} {
-		ids, err := snap.exactTitleHits(q)
+		ids, err := snap.exactTitleHits(q, nil)
 		if err != nil {
 			t.Fatalf("exactTitleHits(%q): %v", q, err)
 		}

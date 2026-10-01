@@ -1338,9 +1338,16 @@ filtered query is built from and yields them unchanged, pinned by
 `TestFTSSearchQueryWithoutAFilterIsUnchanged`; works/latest's phase one is now the
 named constant `latestCandidatesSQL`, composed with its filtered twin from one
 `latestOrderSQL`). The two boosts resolve works OUTSIDE the
-FTS query, so their ids go through `worksInLanguages` (a primary-key read, only
-when a boost fired under a live filter) before `mergeHits` - a page never carries
-a work outside the filter. The works-table surfaces read the predicate through
+FTS query, so each probe applies the filter INSIDE its own bounded window
+(`exactTitleQuery`, `seriesMatching` - the exact-title window is 20 rows and the
+series one 3, so filtering afterwards let a franchise's other-language records
+crowd the reader's own out of the boost; with no filter both issue exactly their
+old SQL), and the ids then also go through `worksInLanguages` (a primary-key
+read, only when a boost fired under a live filter) before `mergeHits`, since a
+series judged by its derived language can hold a member in another - a page
+never carries a work outside the filter. `parseLangFilter` bounds the RAW item
+count (`maxLangItems`) before validating any, since the 8-language cap is taken
+after deduplication. The works-table surfaces read the predicate through
 `snapshot.worksPredicate`, which picks the planner's path off the in-memory stats
 census: through `idx_works_language` when the filter selects at most half the
 catalogue, with the index switched off (`+col`) when it selects more, because a

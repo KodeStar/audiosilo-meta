@@ -514,9 +514,13 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 //
 // lang (already live - langFilterFor, which drops it for the people scope)
 // narrows every hit to the languages it names (langfilter.go), the boosts
-// included: they resolve works outside the FTS query, so its predicate never saw
-// them, and a boosted work in another language is dropped before mergeHits rather
-// than leading a page the reader asked to exclude it from.
+// included. Each boost probe applies the filter INSIDE its own bounded window
+// (boostedWorks), so same-titled or same-named records in other languages cannot
+// crowd the reader's own out of it; the ids are then put through
+// worksInLanguages as well, because a series-volume boost resolves a SERIES by
+// its derived language and a member at that position may still be in another
+// one - a boosted work outside the filter is dropped before mergeHits rather than
+// leading a page the reader asked to exclude it from.
 func (s *snapshot) search(kind searchKind, q string, limit int, lang langFilter) ([]any, error) {
 	hits, err := s.ftsHits(kind, ftsQuery(q), limit, lang)
 	if err != nil {
@@ -524,7 +528,7 @@ func (s *snapshot) search(kind searchKind, q string, limit int, lang langFilter)
 	}
 	var boosted []string
 	if kind == kindAny || kind == kindWork {
-		boosted = s.boostedWorks(q)
+		boosted = s.boostedWorks(q, lang)
 		if boosted, err = s.worksInLanguages(boosted, lang); err != nil {
 			return nil, err
 		}
@@ -566,12 +570,15 @@ func (s *snapshot) ftsHits(kind searchKind, match string, limit int, lang langFi
 // on a search the user could otherwise have had is the worse outcome. Each probe
 // is judged on its own, so one broken probe does not cost the other's answer,
 // and both are logged rather than silent.
-func (s *snapshot) boostedWorks(q string) []string {
-	titles, err := s.exactTitleHits(q)
+//
+// lang (live, nil for none) is handed to both probes, which filter inside their
+// windows; with none each issues exactly the SQL it always did.
+func (s *snapshot) boostedWorks(q string, lang langFilter) []string {
+	titles, err := s.exactTitleHits(q, lang)
 	if err != nil {
 		s.logf("serve: exact-title probe for %q failed, serving the plain search page: %v", q, err)
 	}
-	positions, err := s.seriesPositionHits(q)
+	positions, err := s.seriesPositionHits(q, lang)
 	if err != nil {
 		s.logf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
 	}

@@ -40,6 +40,13 @@ import (
 // who wants more than 8 of them wants no filter.
 const maxLangFilter = 8
 
+// maxLangItems bounds the RAW items a value may carry before any is validated.
+// The 8-language cap is taken after deduplication, so without this a request
+// repeating `lang=de` a hundred thousand times (a megabyte of query string) ran
+// the tag pattern a hundred thousand times to arrive at one language. It is wide
+// enough for any honest spelling of eight languages.
+const maxLangItems = 4 * maxLangFilter
+
 // langFilter is a parsed language filter: primary subtags, deduplicated and
 // sorted, so one set of languages has one spelling (and one SQL text). nil is no
 // filter at all, which is what every caller passes when the request named none.
@@ -57,8 +64,12 @@ func parseLangFilter(raw string) (langFilter, error) {
 	if raw == "" {
 		return nil, nil
 	}
+	items := strings.Split(raw, ",")
+	if len(items) > maxLangItems {
+		return nil, fmt.Errorf("lang: at most %d languages, got %d items", maxLangFilter, len(items))
+	}
 	var out langFilter
-	for _, item := range strings.Split(raw, ",") {
+	for _, item := range items {
 		tag := strings.ToLower(strings.TrimSpace(item))
 		if tag == "" {
 			continue
@@ -88,9 +99,11 @@ func parseLangFilter(raw string) (langFilter, error) {
 // the range), while the equality and the range each SEARCH the index. On the FTS
 // column the two forms cost the same - nothing there is indexed either way.
 //
-// unknownPasses adds the `col = ”` arm the FTS column needs: a person row and a
-// tied series row carry ” there, and an unknown side is never judged. The works
-// table needs no such arm - works.language is NOT NULL and schema-patterned.
+// unknownPasses adds the empty-string arm the FTS column needs: a person row and
+// a tied series row carry an empty language there, and an unknown side is never
+// judged. The works table needs no such arm - works.language is NOT NULL and
+// schema-patterned. (Spelled out in words because gofmt rewrites a pair of
+// single quotes in a doc comment into a typographic quote.)
 func (f langFilter) predicate(col string, unknownPasses bool) (string, []any) {
 	arms := make([]string, 0, len(f)+1)
 	args := make([]any, 0, 3*len(f))

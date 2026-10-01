@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -109,6 +110,9 @@ func TestParseLangFilter(t *testing.T) {
 		{"de-", `"de-"`},
 		{"'de'", `"'de'"`},
 		{"aa,ab,ac,ad,ae,af,ag,ah,ai", "at most 8"},
+		// The raw item count is bounded BEFORE validation, so a value repeating
+		// one language past maxLangItems is refused without matching every item.
+		{strings.Repeat("de,", maxLangItems), "at most 8"},
 	} {
 		_, err := parseLangFilter(tc.raw)
 		if err == nil || !strings.Contains(err.Error(), tc.names) {
@@ -584,5 +588,46 @@ func TestABSSkipsTheUnfilteredWindowWhenItCannotReachThePage(t *testing.T) {
 		if !reflect.DeepEqual(skipped, full) {
 			t.Errorf("limit %d: skipping the unfiltered window changed the matches:\n%v\n%v", limit, skipped, full)
 		}
+	}
+}
+
+// TestBoostProbesFilterInsideTheirWindows pins that both boost probes apply the
+// language filter INSIDE their bounded windows rather than to what the window
+// returned: more same-titled (or same-named) records in other languages than the
+// window holds must not crowd the reader's own language out of the boost.
+func TestBoostProbesFilterInsideTheirWindows(t *testing.T) {
+	cat := langFilterCatalog()
+	work := func(id, title, lang string) *model.Work {
+		return &model.Work{ID: id, Title: title, Language: lang, Authors: []string{"jane-doe"}, License: "CC0-1.0"}
+	}
+	// exactTitleProbeLimit English "Dune"s sort ahead of the German one by id.
+	for i := 0; i < exactTitleProbeLimit; i++ {
+		cat.Works = append(cat.Works, work(fmt.Sprintf("dune-en-%02d", i), "Dune", "en"))
+	}
+	cat.Works = append(cat.Works, work("zz-dune-de", "Dune", "de"))
+	// seriesProbeLimit English series named "Saga Chronicles" beside a German one.
+	for i := 0; i < seriesProbeLimit; i++ {
+		id := fmt.Sprintf("saga-chronicles-en-%d", i)
+		cat.Works = append(cat.Works, work(id+"-vol", "Volume "+id, "en"))
+		cat.Series = append(cat.Series, &model.Series{ID: id, Name: "Saga Chronicles", License: "CC0-1.0",
+			Works: []model.SeriesWork{{Work: id + "-vol", Position: "4"}}})
+	}
+	cat.Works = append(cat.Works, work("saga-chronicles-de-vol", "Band vier", "de"))
+	cat.Series = append(cat.Series, &model.Series{ID: "zz-saga-chronicles-de", Name: "Saga Chronicles", License: "CC0-1.0",
+		Works: []model.SeriesWork{{Work: "saga-chronicles-de-vol", Position: "4"}}})
+	snap := snapshotFor(t, cat)
+	de := langFilter{"de"}
+
+	if q, args := exactTitleQuery("dune", nil); q != exactTitleSQL || len(args) != 2 {
+		t.Errorf("unfiltered exact-title probe = %q %v, want exactTitleSQL unchanged", q, args)
+	}
+	if got, err := snap.exactTitleHits("dune", nil); err != nil || slices.Contains(got, "zz-dune-de") {
+		t.Fatalf("fixture: unfiltered exact-title window = %v (%v), want it full without the German Dune", got, err)
+	}
+	if got, err := snap.exactTitleHits("dune", de); err != nil || !slices.Equal(got, []string{"zz-dune-de"}) {
+		t.Errorf("exact-title probe under lang=de = %v (%v), want [zz-dune-de]", got, err)
+	}
+	if got, err := snap.seriesPositionHits("saga chronicles 4", de); err != nil || !slices.Equal(got, []string{"saga-chronicles-de-vol"}) {
+		t.Errorf("series probe under lang=de = %v (%v), want [saga-chronicles-de-vol]", got, err)
 	}
 }
