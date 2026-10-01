@@ -366,6 +366,9 @@ func (s *Server) routes() []route {
 		// Audiobookshelf custom metadata provider (ABS appends /search to the
 		// configured base URL). Outside /api/v1; the specific pattern wins over "/".
 		route{"GET /abs/search", s.api(s.handleABSSearch)},
+		// The same provider with a language preference: configured as /abs/de, ABS
+		// calls /abs/de/search. It ranks rather than filters - see abs.go.
+		route{"GET /abs/{" + absLangWildcard + "}/search", s.api(s.handleABSLangSearch)},
 	)
 }
 
@@ -414,8 +417,12 @@ var redirectNamespaces = func() map[string]model.RedirectKind {
 // The sitemap shard's wildcard is a FILE NAME (works-3.xml), not a slug: it names
 // a window over a family, so there is no retired id for it to resolve and an
 // unknown one is the 404 parseShardFile already gives it.
+//
+// The Audiobookshelf provider's language segment is a FILTER (de, or de,en), not
+// a record: there is nothing it could have been retired from.
 var redirectExemptRoutes = map[string]bool{
 	"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}": true,
+	"GET /abs/{" + absLangWildcard + "}/search":                   true,
 }
 
 // redirectCoverageGaps returns the patterns that address a record by a wildcard
@@ -666,9 +673,31 @@ func (s *Server) handleStats(w http.ResponseWriter, _ *http.Request) {
 	writeJSON(w, http.StatusOK, s.current().stats)
 }
 
+// langParam reads a request's language filter from its already-parsed query
+// values, as snap can apply it to kind (snapshot.langFilterFor - the one version
+// gate), answering the 400 itself when an item is not a language tag. Repeated
+// parameters are one list, so `lang=de&lang=en` reads as `lang=de,en`. Every
+// handler a filter narrows reads it here, so the spelling of the parameter and
+// its error have one home; the handler must then query snap itself, the snapshot
+// the gate was asked of.
+func langParam(w http.ResponseWriter, snap *snapshot, q url.Values, kind searchKind) (langFilter, bool) {
+	f, err := snap.langFilterFor(strings.Join(q["lang"], ","), kind)
+	if err != nil {
+		writeErr(w, http.StatusBadRequest, err.Error())
+		return nil, false
+	}
+	return f, true
+}
+
 func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
-	limit := clampLimit(r.URL.Query().Get("limit"), 12, 50)
-	cards, err := s.current().latestWorks(limit)
+	q := r.URL.Query()
+	limit := clampLimit(q.Get("limit"), 12, 50)
+	snap := s.current()
+	lang, ok := langParam(w, snap, q, kindWork)
+	if !ok {
+		return
+	}
+	cards, err := snap.latestWorks(limit, lang)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -891,13 +920,22 @@ const (
 // near-identical handlers.
 func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		q := strings.TrimSpace(r.URL.Query().Get("q"))
+		params := r.URL.Query()
+		q := strings.TrimSpace(params.Get("q"))
 		if q == "" {
 			writeErr(w, http.StatusBadRequest, "q is required")
 			return
 		}
-		limit := clampLimit(r.URL.Query().Get("limit"), searchPageDefault, searchPageMax)
-		results, err := s.current().search(kind, q, limit)
+		limit := clampLimit(params.Get("limit"), searchPageDefault, searchPageMax)
+		// Validated on every scope, people/search included: the parameter means one
+		// thing on all four, and the people scope ignoring it (a person has no
+		// language) is the gate's decision, not a reason to accept garbage.
+		snap := s.current()
+		lang, ok := langParam(w, snap, params, kind)
+		if !ok {
+			return
+		}
+		results, err := snap.search(kind, q, limit, lang)
 		if err != nil {
 			s.fail(w, r, err)
 			return
@@ -922,7 +960,8 @@ func (s *Server) handleCoverage(w http.ResponseWriter, r *http.Request) {
 // handleCoverageWorks serves one filtered, searchable, paginated page of works
 // for the contribute-page coverage browser. ?filter selects the dimension
 // (missing|has_characters|has_recaps|has_recap_summary), ?q is a full-text query
-// over title/authors/narrators/series (word prefixes), ?limit/?offset paginate. It always returns 200 and degrades to an
+// over title/authors/narrators/series (word prefixes), ?lang narrows by language,
+// ?limit/?offset paginate. It always returns 200 and degrades to an
 // empty page with available:false when the filter's dimension is unevaluable at
 // the current artifact schema_version (see snapshot.coverageWorks).
 func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
@@ -932,9 +971,14 @@ func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
 		writeErr(w, http.StatusBadRequest, "unknown filter")
 		return
 	}
+	snap := s.current()
+	lang, ok := langParam(w, snap, q, kindWork)
+	if !ok {
+		return
+	}
 	limit := clampLimit(q.Get("limit"), 25, 100)
 	offset := clampOffset(q.Get("offset"))
-	res, err := s.current().coverageWorks(filter, strings.TrimSpace(q.Get("q")), limit, offset)
+	res, err := snap.coverageWorks(filter, strings.TrimSpace(q.Get("q")), limit, offset, lang)
 	if err != nil {
 		s.fail(w, r, err)
 		return

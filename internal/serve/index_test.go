@@ -62,6 +62,10 @@ func assertNoFullScan(t *testing.T, plan []string) {
 // every hit.
 func TestServeLookupsAreIndexed(t *testing.T) {
 	snap := snapshotFor(t, fixtureCatalog())
+	// Minority languages of an all-English fixture, so worksPredicate takes the
+	// index form - the majority form is a deliberate scan (see its comment).
+	latestOne, latestOneArgs := snap.latestCandidatesQuery(langFilter{"de"}, 200)
+	latestTwo, latestTwoArgs := snap.latestCandidatesQuery(langFilter{"de", "fr"}, 200)
 
 	const (
 		work      = "project-hail-mary"
@@ -145,6 +149,14 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		{"ordering family", seriesOrderingFamilySQL, []any{series}},
 		{"ordering primaries", orderingPrimariesSQL, nil},
 		{"languages census", languageCensusSQL, nil},
+		// works/latest's phase one under a minority language filter, one language
+		// and two: the RANGE predicate reaches works through idx_works_language
+		// rather than reading every row (TestLanguageFilteredQueriesUseTheLanguageIndex
+		// pins the index by name, and the majority form's deliberate scan). The UNFILTERED phase one (latestCandidatesSQL) is
+		// deliberately not here: it reads and sorts the whole table, which no
+		// index serves - see its comment.
+		{"latest candidates, one language", latestOne, latestOneArgs},
+		{"latest candidates, two languages", latestTwo, latestTwoArgs},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -178,7 +190,8 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		// per-hit query here would be a whole page of sequential round-trips.
 		{"narrators by work", ids, narratorsByWorkSQL},
 		{"names by person id", personIDs, namesByPersonIDSQL},
-		{"summaries by series id", seriesIDs, seriesSummariesByIDSQL},
+		{"summaries by series id", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, false) }},
+		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true) }},
 		{"members of the probed series", seriesIDs, seriesMembersSQL},
 	}
 	for _, tc := range cases {

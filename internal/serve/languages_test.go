@@ -391,7 +391,7 @@ func TestLatestCapsAnOrderingFamilyAsOneSeries(t *testing.T) {
 		}
 	}
 	snap := snapshotFor(t, cat)
-	cards, err := snap.latestWorks(12)
+	cards, err := snap.latestWorks(12, nil)
 	if err != nil {
 		t.Fatal(err)
 	}

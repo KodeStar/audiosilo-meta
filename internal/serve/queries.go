@@ -30,6 +30,29 @@ func scanIDs(rows *sql.Rows) ([]string, error) {
 	return out, rows.Err()
 }
 
+// latestOrderSQL is works/latest's phase-one order and window, the one spelling
+// both phase-one texts below are composed from.
+const latestOrderSQL = ` ORDER BY (added_at IS NULL) ASC, added_at DESC, title ASC, id ASC LIMIT ?`
+
+// latestCandidatesSQL is works/latest's phase one: every work, newest first. It
+// reads the whole works table and sorts it - (added_at IS NULL) is no index
+// column's to serve, measured at ~88ms over the 281k-work artifact - so it is
+// deliberately NOT in TestServeLookupsAreIndexed; its filtered twin is.
+const latestCandidatesSQL = `SELECT id FROM works` + latestOrderSQL
+
+// latestCandidatesQuery is phase one for a (live) language filter: the constant
+// above unchanged with none, else the same query over the works the filter
+// admits - through idx_works_language for a minority language, so it sorts only
+// its own rows, and by one read of the table for a majority (worksPredicate has
+// the measurement).
+func (s *snapshot) latestCandidatesQuery(lang langFilter, fetch int) (string, []any) {
+	if len(lang) == 0 {
+		return latestCandidatesSQL, []any{fetch}
+	}
+	pred, args := s.worksPredicate(lang, "language")
+	return `SELECT id FROM works WHERE ` + pred + latestOrderSQL, append(args, fetch)
+}
+
 // latestSeriesCap is the per-series diversity cap for the latest-works list: a
 // bulk import shares one added_at date, so without a cap the title tie-break
 // clusters one series' volumes and fills the whole grid with them.
@@ -53,13 +76,16 @@ const latestSeriesCap = 2
 // builds full cards for the <=limit survivors. Building cards for every
 // candidate would mean authors, series and covers for 200 works to return 12 -
 // on the home page, the most-hit endpoint there is.
-func (s *snapshot) latestWorks(limit int) ([]*workCard, error) {
+//
+// lang (already live) narrows phase one to the works in the languages it names,
+// so the cap and the page are taken over those alone (latestCandidatesQuery).
+func (s *snapshot) latestWorks(limit int, lang langFilter) ([]*workCard, error) {
 	fetch := limit * 4
 	if fetch < 200 {
 		fetch = 200
 	}
-	rows, err := s.db.Query(
-		`SELECT id FROM works ORDER BY (added_at IS NULL) ASC, added_at DESC, title ASC, id ASC LIMIT ?`, fetch)
+	query, args := s.latestCandidatesQuery(lang, fetch)
+	rows, err := s.db.Query(query, args...)
 	if err != nil {
 		return nil, err
 	}

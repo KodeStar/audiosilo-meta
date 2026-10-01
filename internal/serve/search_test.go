@@ -306,7 +306,7 @@ func TestSearchInitialisms(t *testing.T) {
 
 	// The series-position boost too - and here the plain FTS page is empty, so
 	// the boost is the ONLY source of the answer.
-	hits, err := snap.ftsHits(kindAny, ftsQuery("N.E.R.D.S. 2"), 20)
+	hits, err := snap.ftsHits(kindAny, ftsQuery("N.E.R.D.S. 2"), 20, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -685,7 +685,7 @@ func TestSearchPossessivesWithoutApostrophe(t *testing.T) {
 
 	// The bug, pinned on the fixture: the expression the builder used to emit
 	// matches nothing at all.
-	if hits, err := snap.ftsHits(kindAny, `"enders" "game"*`, 20); err != nil || len(hits) != 0 {
+	if hits, err := snap.ftsHits(kindAny, `"enders" "game"*`, 20, nil); err != nil || len(hits) != 0 {
 		t.Fatalf("the fixture no longer reproduces the bug: %v %v", hits, err)
 	}
 
@@ -776,7 +776,7 @@ func TestExactTitleIgnoresAFreeStandingS(t *testing.T) {
 	})
 	snap := snapshotFor(t, cat)
 	for q, want := range map[string]string{"models": "", "Model S": "model-s", "enders game": "enders-game"} {
-		ids, err := snap.exactTitleHits(q)
+		ids, err := snap.exactTitleHits(q, nil)
 		if err != nil {
 			t.Fatalf("exactTitleHits(%q): %v", q, err)
 		}

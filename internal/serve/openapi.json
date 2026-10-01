@@ -132,10 +132,11 @@
         "tags": ["Search"],
         "operationId": "search",
         "summary": "Search works, people and series together",
-        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last word of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series. Punctuation is a word boundary on both sides, so \"Halo: Primordium\", \"Halo.Primordium\" and \"Halo Primordium\" are the same query - except that a run of single-letter fragments (an initialism) stays one adjacent phrase, so \"Q&A\" and \"M*A*S*H\" keep their selectivity rather than matching every row holding those letters apart. A possessive matches in either spelling: a word of four or more characters ending in a single s also matches the possessive it may be with its apostrophe dropped, so \"enders game\" finds \"Ender's Game\", and a possessive written with its apostrophe also matches the word stored without one, so \"finnegan's wake\" finds \"Finnegans Wake\".\n\nTwo boosts run ahead of the relevance hits. A query that IS a work's title - compared whole, ignoring case, spacing and punctuation, including a possessive's apostrophe - returns that work FIRST; several works sharing the title all lead, in id order. A query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - resolves that volume and returns it next. An exact title leads a resolved volume, since the title is an equality and the volume an inference. The page stays exactly `limit` long, so a boost costs the last hit rather than widening the response, and a query that resolves neither returns the plain relevance page.",
+        "description": "One ranked page mixing all three kinds, ordered by full-text relevance. Every result carries a `kind` discriminator.\n\nMatching is by whole word or word prefix (the last word of the query is treated as a prefix), over work titles and subtitles and the names of authors, narrators and series. Punctuation is a word boundary on both sides, so \"Halo: Primordium\", \"Halo.Primordium\" and \"Halo Primordium\" are the same query - except that a run of single-letter fragments (an initialism) stays one adjacent phrase, so \"Q&A\" and \"M*A*S*H\" keep their selectivity rather than matching every row holding those letters apart. A possessive matches in either spelling: a word of four or more characters ending in a single s also matches the possessive it may be with its apostrophe dropped, so \"enders game\" finds \"Ender's Game\", and a possessive written with its apostrophe also matches the word stored without one, so \"finnegan's wake\" finds \"Finnegans Wake\".\n\nTwo boosts run ahead of the relevance hits. A query that IS a work's title - compared whole, ignoring case, spacing and punctuation, including a possessive's apostrophe - returns that work FIRST; several works sharing the title all lead, in id order. A query that names a series and a number - \"jack reacher 2\", \"jack reacher book 2\", \"jack reacher #2\" - resolves that volume and returns it next. An exact title leads a resolved volume, since the title is an equality and the volume an inference. The page stays exactly `limit` long, so a boost costs the last hit rather than widening the response, and a query that resolves neither returns the plain relevance page.\n\n`lang` narrows the page to works in the named languages, inside the query - so `?lang=de&limit=20` returns up to 20 German hits - and the boosts obey it too: a work outside the filter never leads. People always pass (a person has no language), and so does a series whose members tie between languages.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
-          { "$ref": "#/components/parameters/SearchLimit" }
+          { "$ref": "#/components/parameters/SearchLimit" },
+          { "$ref": "#/components/parameters/Language" }
         ],
         "responses": {
           "200": {
@@ -156,7 +157,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -170,7 +174,8 @@
         "description": "The combined search restricted to works. Results are `WorkResult` objects, identical to the work entries of `/api/v1/search`, and the filter is applied inside the query - so `?limit=20` returns up to 20 works rather than the works among 20 mixed hits.\n\nBoth search boosts apply here too: a query that is a work's title returns that work first, and \"jack reacher 2\" returns volume 2, exactly as on the combined search.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
-          { "$ref": "#/components/parameters/SearchLimit" }
+          { "$ref": "#/components/parameters/SearchLimit" },
+          { "$ref": "#/components/parameters/Language" }
         ],
         "responses": {
           "200": {
@@ -191,7 +196,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -205,7 +213,11 @@
         "description": "The combined search restricted to people (authors and narrators share one record, so a person may be either or both). Results are `PersonResult` objects. Neither search boost applies - what they resolve is always a work.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
-          { "$ref": "#/components/parameters/SearchLimit" }
+          { "$ref": "#/components/parameters/SearchLimit" },
+          {
+            "$ref": "#/components/parameters/Language",
+            "description": "Accepted and IGNORED: a person has no language, so there is nothing to narrow by. It is still validated, so a value that is not a language list is a 400 here as on the other searches - one request shape serves all four."
+          }
         ],
         "responses": {
           "200": {
@@ -226,7 +238,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -237,10 +252,11 @@
         "tags": ["Search"],
         "operationId": "searchSeries",
         "summary": "Search series only",
-        "description": "The combined search restricted to series. Results are `SeriesResult` objects, each carrying the series' member count. Neither search boost applies - what they resolve is always a work.",
+        "description": "The combined search restricted to series. Results are `SeriesResult` objects, each carrying the series' member count and its derived language. Neither search boost applies - what they resolve is always a work.\n\n`lang` matches a series by its DERIVED language - the language most of its members are in. A series whose members tie derives none and passes every filter: it is the series that holds volumes in the language asked for.",
         "parameters": [
           { "$ref": "#/components/parameters/SearchQuery" },
-          { "$ref": "#/components/parameters/SearchLimit" }
+          { "$ref": "#/components/parameters/SearchLimit" },
+          { "$ref": "#/components/parameters/Language" }
         ],
         "responses": {
           "200": {
@@ -261,7 +277,10 @@
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`q` was missing, empty or whitespace only, or a `lang` item is not a language tag."
+          },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
         }
@@ -272,7 +291,7 @@
         "tags": ["Works"],
         "operationId": "latestWorks",
         "summary": "Recently added works",
-        "description": "Work cards ordered by when they entered the database, newest first, with at most two works from any one series so a bulk import cannot fill the whole page with one series' volumes. Two reading orders of one franchise (a series and a chronological or recommended variant of it) count as one series for that cap. Works with no recorded date sort last.",
+        "description": "Work cards ordered by when they entered the database, newest first, with at most two works from any one series so a bulk import cannot fill the whole page with one series' volumes. Two reading orders of one franchise (a series and a chronological or recommended variant of it) count as one series for that cap. Works with no recorded date sort last.\n\n`lang` lists only works in the named languages, and the series cap is taken over those.",
         "parameters": [
           {
             "name": "limit",
@@ -280,7 +299,8 @@
             "required": false,
             "description": "How many works to return. Capped at 50; a non-numeric or non-positive value falls back to the default (12) rather than being clamped to 1.",
             "schema": { "type": "integer", "default": 12, "minimum": 1, "maximum": 50 }
-          }
+          },
+          { "$ref": "#/components/parameters/Language" }
         ],
         "responses": {
           "200": {
@@ -299,6 +319,10 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "A `lang` item is not a language tag."
           },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
@@ -619,6 +643,7 @@
             "description": "Narrow by full-text query over the work's title and subtitle and the names of its authors, narrators and series. Whole word or word prefix, the same matching as /api/v1/search.",
             "schema": { "type": "string" }
           },
+          { "$ref": "#/components/parameters/Language" },
           { "$ref": "#/components/parameters/PageLimit" },
           { "$ref": "#/components/parameters/Offset" }
         ],
@@ -633,7 +658,7 @@
           },
           "400": {
             "$ref": "#/components/responses/BadRequest",
-            "description": "Unrecognized `filter` value."
+            "description": "Unrecognized `filter` value, or a `lang` item that is not a language tag."
           },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
@@ -676,7 +701,7 @@
         "tags": ["Audiobookshelf provider"],
         "operationId": "absSearch",
         "summary": "Audiobookshelf custom metadata provider",
-        "description": "OUTSIDE /api/v1. This is the endpoint an Audiobookshelf server calls when https://meta.audiosilo.app/abs is configured as a custom metadata provider - Audiobookshelf appends `/search` to that base URL and sends its own parameters.\n\nThe response speaks Audiobookshelf's BookMetadata shape, not this API's: one match per RECORDING (a recording is what a local audiobook is matched against), capped at 10. A matched work that has no recordings yet still answers, as a single work-level match with no narrator, duration or ASIN. Only `title` is guaranteed; `duration` is in MINUTES; `genres` are human-facing labels from this project's own vocabulary; `tags` is never populated, since the data model has no tag concept.\n\nAn `isbn` is resolved exactly first (hyphens are tolerated); otherwise the query is a full-text work search, with `author` used to boost - never to filter, so a mismatched author never empties the results. No match is an empty array, never a 404.\n\nAttribution: `description` is the community's own-words, spoiler-free paragraph where the work carries one, else the CC0 record's own field. A COMMUNITY description ends with a plain-text line - `(Description CC BY-SA 4.0, AudioSilo Meta community)` - because Audiobookshelf's shape carries no license field and the text is share-alike; the CC0 fallback carries no such line. `GET /api/v1/works/{id}` returns the same text and its license as separate fields.",
+        "description": "OUTSIDE /api/v1. This is the endpoint an Audiobookshelf server calls when https://meta.audiosilo.app/abs is configured as a custom metadata provider - Audiobookshelf appends `/search` to that base URL and sends its own parameters.\n\nThe response speaks Audiobookshelf's BookMetadata shape, not this API's: one match per RECORDING (a recording is what a local audiobook is matched against), capped at 10. A matched work that has no recordings yet still answers, as a single work-level match with no narrator, duration or ASIN. Only `title` is guaranteed; `duration` is in MINUTES; `genres` are human-facing labels from this project's own vocabulary; `tags` is never populated, since the data model has no tag concept.\n\nAn `isbn` is resolved exactly first (hyphens are tolerated); otherwise the query is a full-text work search, with `author` used to boost - never to filter, so a mismatched author never empties the results. No match is an empty array, never a 404.\n\nAttribution: `description` is the community's own-words, spoiler-free paragraph where the work carries one, else the CC0 record's own field. A COMMUNITY description ends with a plain-text line - `(Description CC BY-SA 4.0, AudioSilo Meta community)` - because Audiobookshelf's shape carries no license field and the text is share-alike; the CC0 fallback carries no such line. `GET /api/v1/works/{id}` returns the same text and its license as separate fields.\n\nA library in one language can rank its own language first through `/abs/{lang}/search` instead.",
         "parameters": [
           {
             "name": "query",
@@ -719,6 +744,71 @@
           "400": {
             "$ref": "#/components/responses/BadRequest",
             "description": "`query` was missing or empty."
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": { "$ref": "#/components/responses/NoData" }
+        }
+      }
+    },
+    "/abs/{lang}/search": {
+      "get": {
+        "tags": ["Audiobookshelf provider"],
+        "operationId": "absSearchLanguage",
+        "summary": "Audiobookshelf provider, ranked toward a language",
+        "description": "OUTSIDE /api/v1. The same provider as `/abs/search`, for a library in one language: configure https://meta.audiosilo.app/abs/de as the custom metadata provider and Audiobookshelf calls `/abs/de/search`. Audiobookshelf builds the URL by appending `/search` to the configured base and sends only its own parameters, which is why the language rides in the path. A base configured with a trailing slash (`/abs/de/`) arrives as `/abs/de//search` and is answered with a 307 redirect to the cleaned path, which Audiobookshelf follows.\n\nThe language RANKS, it never filters - a German library may still hold an English original, and no match would be the worse answer. The candidates are the works in the named languages followed by the rest, and the author still comes first: works by the given `author` in the language, then works by the author in any language, then the rest in the language, then everything else. Everything else - the shape, the ISBN shortcut, the attribution line - is exactly `/abs/search`'s.",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "path",
+            "required": true,
+            "description": "One language code, or several separated by commas (`de`, `de,en`). Matched by primary subtag, so `de` also ranks works tagged `de-at` first. A segment that is not a language list is a 404.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "description": "The title Audiobookshelf is matching. Required. Matched exactly as on `/abs/search`.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "author",
+            "in": "query",
+            "required": false,
+            "description": "The author string Audiobookshelf holds. Loosely matched, used only to rank, and ranked ahead of the language.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "isbn",
+            "in": "query",
+            "required": false,
+            "description": "An ISBN, hyphenated or bare. When it resolves exactly, that recording's work is returned and neither ranking applies.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "mediaType",
+            "in": "query",
+            "required": false,
+            "description": "Always `book` when Audiobookshelf sends it. Accepted and ignored.",
+            "schema": { "type": "string", "enum": ["book"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The matches, best first. Always an array, possibly empty.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ABSSearchResult" }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "`query` was missing or empty."
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "The path segment is not a language list."
           },
           "500": { "$ref": "#/components/responses/ServerError" },
           "503": { "$ref": "#/components/responses/NoData" }
@@ -789,6 +879,13 @@
         "required": false,
         "description": "How many results to return. Capped at 50; a non-numeric or non-positive value falls back to the default (20) rather than being clamped to 1.",
         "schema": { "type": "integer", "default": 20, "minimum": 1, "maximum": 50 }
+      },
+      "Language": {
+        "name": "lang",
+        "in": "query",
+        "required": false,
+        "description": "Only works in these languages: one code or several separated by commas (`de`, `de,en`); a repeated parameter reads as one list. Matched by primary subtag, so `de` also matches a work tagged `de-at`, and a regional item (`pt-br`) matches as its primary subtag. Absent or empty means every language. At most 8 codes; an item that is not a language tag is a 400, while a code the catalogue holds no works in simply matches nothing. A record with no language - a person, or a series whose members tie - is never excluded. Against an artifact older than the languages layer the value is validated and then ignored.",
+        "schema": { "type": "string", "examples": ["de", "de,en"] }
       },
       "PageLimit": {
         "name": "limit",
@@ -1103,7 +1200,12 @@
           "kind": { "type": "string", "const": "series" },
           "id": { "type": "string" },
           "name": { "type": "string" },
-          "works": { "type": "integer", "description": "How many works the series holds." }
+          "works": { "type": "integer", "description": "How many works the series holds." },
+          "language": {
+            "type": "string",
+            "description": "The series' DERIVED language: the primary subtag most of its members share. Omitted when they tie, and against an artifact older than the languages layer.",
+            "examples": ["en"]
+          }
         }
       },
       "SearchResult": {
@@ -1494,10 +1596,15 @@
       },
       "CoverageWork": {
         "type": "object",
-        "required": ["id", "title", "authors", "missing"],
+        "required": ["id", "title", "language", "authors", "missing"],
         "properties": {
           "id": { "type": "string" },
           "title": { "type": "string" },
+          "language": {
+            "type": "string",
+            "description": "BCP 47 language tag. Always present - every work states one.",
+            "examples": ["en"]
+          },
           "authors": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/PersonRef" }

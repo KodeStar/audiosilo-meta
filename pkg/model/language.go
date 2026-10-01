@@ -1,6 +1,22 @@
 package model
 
-import "strings"
+import (
+	"regexp"
+	"strings"
+)
+
+// languageTagRE is common.schema.json's #/$defs/language pattern, verbatim -
+// TestLanguageTagPatternIsTheSchemas reads the embedded schema and fails if the
+// two ever differ.
+var languageTagRE = regexp.MustCompile(`^[a-z]{2,3}(-[a-z0-9]{2,8})*$`)
+
+// ValidLanguageTag reports whether s is a language tag as the schema spells one
+// (common.schema.json #/$defs/language): a lowercase primary subtag of two or
+// three letters, then lowercase alphanumeric subtags. It does not fold case, so a
+// caller normalizing user input lowercases first. It is the one copy every door
+// that judges a typed tag reads, so a form, a filter and a record cannot disagree
+// about what a tag is.
+func ValidLanguageTag(s string) bool { return languageTagRE.MatchString(s) }
 
 // PrimarySubtag is a BCP-47 tag's language alone, lower-cased and without its
 // script or region ("en-GB" -> "en"). Two records are in one language iff their
