@@ -425,30 +425,6 @@
   {
     "decision": "reject",
     "field": "language",
-    "from": "de",
-    "op": "split-series",
-    "others": [
-      "the-darker-side"
-    ],
-    "reason": "Cody McFadyen writes in English: the German volumes are translations",
-    "target": "smoky-barrett",
-    "to": "en"
-  },
-  {
-    "decision": "reject",
-    "field": "language",
-    "from": "fr",
-    "op": "split-series",
-    "others": [
-      "furysong"
-    ],
-    "reason": "Rosaria Munda writes in English: the French editions keep the English titles",
-    "target": "the-aurelian-cycle",
-    "to": "en"
-  },
-  {
-    "decision": "reject",
-    "field": "language",
     "from": "en",
     "op": "split-series",
     "others": [
