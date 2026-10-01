@@ -283,3 +283,33 @@ func TestResolveReadsTheSeriesLanguage(t *testing.T) {
 		}
 	}
 }
+
+// resolveSeriesGroup judges a cluster's language by its LEAD claim alone, which is
+// sound only because authorClusters never groups two languages - by slug or through
+// a spelling rung. One author in German (two spellings), English and no language is
+// three clusters, each one language.
+func TestAuthorClustersNeverSpanTwoLanguages(t *testing.T) {
+	row := func(author, lang string) *SeriesRow {
+		return SeriesRowFor([]string{author}, []string{"Lost Fleet"}, "", lang, nil)
+	}
+	claims := []nameClaim{
+		{name: "Lost Fleet", row: row("Sarah Hawke", "en"), order: "a"},
+		{name: "Lost Fleet", row: row("Sarah Hawke", "de"), order: "b"},
+		{name: "Lost Fleet", row: row("Sara Hawke", "de"), order: "c"},
+		{name: "Lost Fleet", row: row("Sara Hawke", "en-GB"), order: "d"}, // SeriesRowFor keeps the primary subtag: en
+		{name: "Lost Fleet", row: row("Sarah Hawke", ""), order: "e"},
+	}
+	idx := []int{0, 1, 2, 3, 4}
+	clusters := authorClusters(claims, idx, idx)
+	for _, cl := range clusters {
+		lead := claims[idx[cl[0]]].row.language
+		for _, k := range cl {
+			if got := claims[idx[k]].row.language; got != lead {
+				t.Errorf("cluster %v mixes %q and %q", cl, lead, got)
+			}
+		}
+	}
+	if len(clusters) != 3 {
+		t.Errorf("clusters = %v, want three (en, de, unknown)", clusters)
+	}
+}

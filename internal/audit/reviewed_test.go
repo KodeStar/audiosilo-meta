@@ -276,6 +276,20 @@ func review(p Proposal, decision string) reviewedDecision {
 		Others: p.Others, Decision: decision, Reason: "stated source reviewed"}
 }
 
+// The round-trip check re-encodes through encoding/json, which escapes &, < and > -
+// canonical.Format decodes and re-renders without HTML escaping, so a reason naming
+// "Fate & Flame" is not refused as a key mismatch.
+func TestReviewedReasonKeepsHTMLCharacters(t *testing.T) {
+	raw, err := canonical.Format([]byte(`[{"decision":"reject","op":"add-series-link","reason":"Fate & Flame <mixed> franchises","target":"a","to":"b"}]`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	rs, err := parseReviewed(raw)
+	if err != nil || len(rs) != 1 || rs[0].Reason != "Fate & Flame <mixed> franchises" {
+		t.Fatalf("parse = %+v, %v", rs, err)
+	}
+}
+
 func TestReviewedValidation(t *testing.T) {
 	for _, tc := range []struct{ name, raw, want string }{
 		{"bad decision", `[{"op":"retitle-work","decision":"maybe","reason":"why"}]`, "bad decision"},
@@ -285,6 +299,8 @@ func TestReviewedValidation(t *testing.T) {
 		{"duplicate opposite decisions", `[{"op":"retitle-work","decision":"accept","reason":"why"},{"op":"retitle-work","decision":"reject","reason":"why"}]`, "no duplicates"},
 		{"no record", `[{"op":"review","decision":"reject","reason":"why"}]`, "names no record"},
 		{"accepted review", `[{"decision":"accept","op":"review","reason":"why","target":"a"}]`, "cannot be accepted"},
+		{"accepted rename candidate", `[{"decision":"accept","op":"rename-candidate","reason":"why","target":"a"}]`, "cannot be accepted"},
+		{"accepted sidecar re-point", `[{"decision":"accept","op":"repoint-sidecar","reason":"why","target":"a"}]`, "cannot be accepted"},
 		{"others unsorted", `[{"op":"merge-works","target":"a","others":["c","b"],"decision":"accept","reason":"why"}]`, "others must be sorted"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -393,6 +409,8 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 		{"work merged", move, Proposal{Op: OpMergeWorks, Target: "work", Others: []string{"other"}}, "merges"},
 		{"series merged", move, Proposal{Op: OpMergeSeries, Target: "source", Others: []string{"other"}}, "merges"},
 		{"destination merged", move, Proposal{Op: OpMergeSeries, Target: "dest", Others: []string{"other"}}, "merges"},
+		{"drop home merged", Proposal{Op: OpDropMembership, Target: "work", Series: "source", Field: "position", From: "1", Others: []string{"home"}},
+			Proposal{Op: OpMergeSeries, Target: "other", Others: []string{"home"}}, "as its work's home"},
 		{"split membership", Proposal{Op: OpSplitSeries, Target: "source", Others: []string{"work"}}, move, "both move"},
 		{"joins twice", move, Proposal{Op: OpMoveMembership, Target: "work", Series: "elsewhere", To: "2", Others: []string{"dest"}}, "both move"},
 		{"language twice", Proposal{Op: OpSetWorkLanguage, Target: "work", To: "de"}, Proposal{Op: OpSetWorkLanguage, Target: "work", To: "fr"}, "both set"},
@@ -620,4 +638,39 @@ func TestReviewedRejectsTheMajorityAndAcceptsTheOtherOrientation(t *testing.T) {
 			rows[0].Propose.Advisory, rows[1].Propose.Advisory, rep.Reviewed)
 	}
 	assertProposalsConsistent(t, rep)
+}
+
+// Ops is a SET: opPhrase already renders review, so seeding it again listed it twice.
+func TestOpsListsEachOpOnce(t *testing.T) {
+	ops := Ops()
+	if !slices.IsSorted(ops) || len(slices.Compact(slices.Clone(ops))) != len(ops) {
+		t.Fatalf("Ops() = %v, want sorted and unique", ops)
+	}
+	if !slices.Contains(ops, OpReview) {
+		t.Fatalf("Ops() = %v, want it to hold %q", ops, OpReview)
+	}
+}
+
+// A merge of a home names EVERY drop relying on it, and a refused drop leaves no
+// claim on the home behind (the undo path).
+func TestHomeMergeNamesEveryDropAndUndoesARefusal(t *testing.T) {
+	drop := func(work string) Proposal {
+		return Proposal{Op: OpDropMembership, Target: work, Series: "source", Field: "position", From: "1", Others: []string{"home"}}
+	}
+	merge := Proposal{Op: OpMergeSeries, Target: "other", Others: []string{"home"}}
+	s := proposalConflicts(proposalReport(drop("w1"), drop("w2"), merge))
+	got := strings.Join(s.conflicts, "\n")
+	for _, key := range []string{"proposal-0", "proposal-1"} {
+		if !strings.Contains(got, key+" relies on home") {
+			t.Errorf("conflicts %q do not name %s", got, key)
+		}
+	}
+
+	s = proposalConflicts(proposalReport(merge))
+	if conflicts := s.add(Finding{Key: "late", Propose: drop("w3")}, false); len(conflicts) == 0 {
+		t.Fatal("a drop relying on a merged home was not refused")
+	}
+	if len(s.homes["home"]) != 0 {
+		t.Errorf("refused drop left homes[home] = %v", s.homes["home"])
+	}
 }
