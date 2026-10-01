@@ -85,6 +85,16 @@ var linkOps = map[model.RedirectKind]string{
 	model.RedirectSeries: OpAddSeriesLink,
 }
 
+// linkOpKind reads the same family/op definition used when proposing links.
+func linkOpKind(op string) (model.RedirectKind, bool) {
+	for kind, linkOp := range linkOps {
+		if op == linkOp {
+			return kind, true
+		}
+	}
+	return "", false
+}
+
 // linkStats are T-LINK's count-only tallies: the candidates that yielded no proposal,
 // by why. They are the numbers a reviewer needs to read the class in proportion (a
 // low proposal count over many decorated records is a gap, not a clean catalogue).
