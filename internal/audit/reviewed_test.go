@@ -419,6 +419,8 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 		{"merge target loser", Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"b"}}, Proposal{Op: OpMergeWorks, Target: "b", Others: []string{"c"}}, "merge target"},
 		{"link chain", Proposal{Op: OpAddWorkLink, Target: "a", To: "b"}, Proposal{Op: OpAddWorkLink, Target: "b", To: "c"}, "translation in one"},
 		{"link two originals", Proposal{Op: OpAddWorkLink, Target: "a", To: "b"}, Proposal{Op: OpAddWorkLink, Target: "a", To: "c"}, "linked to both"},
+		{"split orientations", Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "en", To: "de", Others: []string{"w-de"}},
+			Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "de", To: "en", Others: []string{"w-en"}}, "two orientations"},
 	} {
 		for _, reverse := range []bool{false, true} {
 			t.Run(fmt.Sprintf("%s/reverse=%v", tc.name, reverse), func(t *testing.T) {
@@ -439,12 +441,22 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 			})
 		}
 	}
+	// Two splits of one series keeping it for ONE language (a de+en+fr series' two
+	// minority splits) are one orientation, and both are accepted.
+	de := Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "en", To: "de", Others: []string{"w-de"}, Advisory: true}
+	fr := Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "en", To: "fr", Others: []string{"w-fr"}, Advisory: true}
+	rep := proposalReport(de, fr)
+	if tally := applyReviewed(rep, []reviewedDecision{review(de, "accept"), review(fr, "accept")}, nil); tally.Outcomes[0].Status != "accepted" ||
+		tally.Outcomes[1].Status != "accepted" {
+		t.Fatalf("one orientation in two splits: tally=%+v", tally)
+	}
+	assertProposalsConsistent(t, rep)
 	// Two accepted advisory moves compete too; the later decision is refused.
 	other := move
 	other.Series = "elsewhere"
 	move.Advisory = true
 	other.Advisory = true
-	rep := proposalReport(move, other)
+	rep = proposalReport(move, other)
 	tally := applyReviewed(rep, []reviewedDecision{review(move, "accept"), review(other, "accept")}, nil)
 	if tally.Outcomes[0].Status != "accepted" || tally.Outcomes[1].Status != "refused" {
 		t.Fatalf("tally=%+v", tally)
@@ -611,6 +623,21 @@ func TestReviewedIndexesReviewByClass(t *testing.T) {
 			t.Errorf("review did not resolve in %s", c.class)
 		}
 	}
+}
+
+// An uncontested majority split is mechanical; a reviewer who knows the minority is
+// the original rejects it and accepts the other orientation in the same list.
+func TestReviewedRejectsTheMajorityAndAcceptsTheOtherOrientation(t *testing.T) {
+	majority := Proposal{Op: OpSplitSeries, Target: "saga", Others: []string{"d"}, Field: fieldLanguage, From: "de", To: "en"}
+	other := Proposal{Op: OpSplitSeries, Target: "saga", Others: []string{"a", "b"}, Field: fieldLanguage, From: "en", To: "de", Advisory: true}
+	rep := proposalReport(majority, other)
+	rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(majority, "reject"), review(other, "accept")}, nil)
+	rows := rep.classes[0].rows
+	if !rows[0].Propose.Advisory || rows[1].Propose.Advisory {
+		t.Fatalf("majority advisory=%v, other advisory=%v; want the majority withheld and the other applied (%+v)",
+			rows[0].Propose.Advisory, rows[1].Propose.Advisory, rep.Reviewed)
+	}
+	assertProposalsConsistent(t, rep)
 }
 
 // Ops is a SET: opPhrase already renders review, so seeding it again listed it twice.

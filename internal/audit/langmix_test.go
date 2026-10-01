@@ -108,10 +108,13 @@ func TestLangMixDropsAMemberAlreadyHomed(t *testing.T) {
 }
 
 // moveTree: an English series holding a German volume, and a German series of the same
-// name over the edition decoration's base.
+// name over the edition decoration's base. The author's three standalone English books
+// keep her catalogue English, so the HOME signal stays quiet.
 func moveTree(t testing.TB, germanMembers ...string) map[string]string {
 	t.Helper()
 	return mergeFiles(mixPeople(t),
+		testpack.WorkFiles(t, "solo-1", "en", "nate-narrator"), testpack.WorkFiles(t, "solo-2", "en", "nate-narrator"),
+		testpack.WorkFiles(t, "solo-3", "en", "nate-narrator"),
 		testpack.WorkFiles(t, "f1", "en", "nate-narrator"), testpack.WorkFiles(t, "f2", "en", "nate-narrator"),
 		testpack.WorkFiles(t, "schicksal-3", "de", "anna-sprecher"),
 		testpack.WorkFiles(t, "s1", "de", "anna-sprecher"), testpack.WorkFiles(t, "s2", "de", "anna-sprecher"),
@@ -334,7 +337,8 @@ func TestLangMixRespectsTheOtherClassesLocks(t *testing.T) {
 	} {
 		t.Run(name, func(t *testing.T) {
 			f, _ := detectLanguageMix(ix, locks)
-			if len(f.rows) != 1 || !f.rows[0].Propose.Advisory || !strings.Contains(f.rows[0].Propose.Reason, "in this audit") {
+			rows := slices.DeleteFunc(slices.Clone(f.rows), func(fd Finding) bool { return fd.Subclass == lMixOtherKeeper })
+			if len(rows) != 1 || !rows[0].Propose.Advisory || !strings.Contains(rows[0].Propose.Reason, "in this audit") {
 				t.Fatalf("rows = %+v", f.rows)
 			}
 		})
@@ -421,4 +425,254 @@ func TestLangMixMemberOrderDoesNotChangeFindings(t *testing.T) {
 	if !reflect.DeepEqual(a.Findings(ClassLangMix), b.Findings(ClassLangMix)) || a.LangMix != b.LangMix {
 		t.Fatal("reversing membership order changed L-MIX findings or tallies")
 	}
+}
+
+// homeTree is mixSagaTree under an author whose catalogue is mostly German: four
+// standalone German books beside the saga's three English and two German volumes.
+func homeTree(t testing.TB, author string) map[string]string {
+	t.Helper()
+	files := mixSagaTree(t)
+	for _, id := range []string{"buch-1", "buch-2", "buch-3", "buch-4"} {
+		files = mergeFiles(files, testpack.WorkFiles(t, id, "de", "anna-sprecher", withAuthors(author)))
+	}
+	return files
+}
+
+// Each CONTEST signal makes the majority split advisory, names itself in the reason and
+// the notes, and adds the other orientation: German keeping the slug, the English
+// members moving out.
+func TestLangMixContestSignals(t *testing.T) {
+	for name, tc := range map[string]struct {
+		files  func(t testing.TB) map[string]string
+		signal string
+	}{
+		"stated by a translator credit": {func(t testing.TB) map[string]string {
+			f := mixSagaTree(t)
+			f["works/xx/dawn/work.json"] = workJSON(t, "dawn", "Dawn", testpack.WithCredits("otto-autor", "translator"))
+			return f
+		}, signalStated},
+		"stated by an edition decoration": {func(t testing.TB) map[string]string {
+			f := mixSagaTree(t)
+			f["works/xx/dawn/work.json"] = workJSON(t, "dawn", "Dawn (English Edition)")
+			return f
+		}, signalStated},
+		"stated by a translation link": {func(t testing.TB) map[string]string {
+			f := mixSagaTree(t)
+			f["works/xx/dawn/work.json"] = testpack.WithFields(t, workJSON(t, "dawn", "Dawn"),
+				map[string]any{"translation_of": []string{"morgen"}})
+			return f
+		}, signalStated},
+		"collision": {func(t testing.TB) map[string]string {
+			f := mixSagaTree(t)
+			for _, id := range []string{"morgen", "abend"} {
+				f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withLanguage("de"), withAuthors("otto-autor"))
+			}
+			return f
+		}, signalCollision},
+		"collision through a shared collective credit": {func(t testing.TB) map[string]string {
+			f := mixSagaTree(t)
+			f["people/va/various.json"] = personJSON(t, "various", "Various")
+			for _, id := range []string{"dawn", "dusk", "noon"} {
+				f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withAuthors("jane-doe", "various"))
+			}
+			for _, id := range []string{"morgen", "abend"} {
+				f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withLanguage("de"), withAuthors("otto-autor", "various"))
+			}
+			return f
+		}, signalCollision},
+		"home": {func(t testing.TB) map[string]string { return homeTree(t, "jane-doe") }, signalHome},
+	} {
+		t.Run(name, func(t *testing.T) {
+			rep := runFixture(t, tc.files(t))
+			split := onlyMix(t, rep, lMixSplit)
+			if !split.Propose.Advisory || !strings.Contains(split.Propose.Reason, "contested ("+tc.signal+")") {
+				t.Fatalf("split = %+v, want advisory on the %s signal alone", split.Propose, tc.signal)
+			}
+			if !strings.Contains(strings.Join(split.Notes, " "), "contested, "+tc.signal+":") {
+				t.Errorf("notes = %v, want the %s evidence", split.Notes, tc.signal)
+			}
+			alt := onlyMix(t, rep, lMixOtherKeeper)
+			want := Proposal{Op: OpSplitSeries, Target: "the-saga", Others: []string{"dawn", "dusk", "noon"},
+				Field: fieldLanguage, From: "de", To: "en", Advisory: true}
+			got := alt.Propose
+			got.Reason = ""
+			if !reflect.DeepEqual(got, want) || alt.Key != "the-saga/en/keep-de" {
+				t.Fatalf("other orientation = %s %+v, want %+v", alt.Key, alt.Propose, want)
+			}
+			if !strings.HasPrefix(alt.Propose.Reason, "the other orientation, for review: ") {
+				t.Errorf("reason = %q", alt.Propose.Reason)
+			}
+			if rep.LangMix.Contested != 1 || rep.LangMix.OtherKeeperSplits != 1 {
+				t.Errorf("tally = %+v", rep.LangMix)
+			}
+			assertProposalsConsistent(t, rep)
+		})
+	}
+}
+
+// The passing side of each signal: nothing contests the majority, so the split stays
+// mechanical and no other orientation is proposed.
+func TestLangMixUncontestedMajorityIsMechanical(t *testing.T) {
+	for name, files := range map[string]func(t testing.TB) map[string]string{
+		"one franchise": mixSagaTree,
+		// A MOVING member stating a translation is what a translation looks like.
+		"the minority states a translation": func(t testing.TB) map[string]string {
+			f := mixSagaTree(t)
+			f["works/xx/morgen/work.json"] = workJSON(t, "morgen", "Morgen", withLanguage("de"),
+				testpack.WithCredits("otto-autor", "translator"))
+			return f
+		},
+		// A translator credited as an author on one volume, whose own catalogue is all
+		// German, does not outvote the author credited on every volume.
+		"a translator credited as an author": func(t testing.TB) map[string]string {
+			f := homeTree(t, "otto-autor")
+			f["works/xx/morgen/work.json"] = workJSON(t, "morgen", "Morgen", withLanguage("de"), withAuthors("jane-doe", "otto-autor"))
+			return f
+		},
+		// A collective credit's books say nothing about where an author writes.
+		"a collective's German books": func(t testing.TB) map[string]string {
+			f := mergeFiles(homeTree(t, "various"), map[string]string{"people/va/various.json": personJSON(t, "various", "Various")})
+			for _, id := range []string{"morgen", "abend"} {
+				f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withLanguage("de"), withAuthors("jane-doe", "various"))
+			}
+			return f
+		},
+	} {
+		t.Run(name, func(t *testing.T) {
+			rep := runFixture(t, files(t))
+			if fd := onlyMix(t, rep, lMixSplit); fd.Propose.Advisory {
+				t.Fatalf("split = %+v, want mechanical", fd.Propose)
+			}
+			// The other orientation is still on offer, advisory, for a reviewer who
+			// knows the minority half is the original.
+			got := subclassOf(t, rep, ClassLangMix, lMixOtherKeeper)
+			if len(got) != 1 || !got[0].Propose.Advisory || got[0].Key != "the-saga/en/keep-de" || rep.LangMix.Contested != 0 {
+				t.Fatalf("other orientation = %+v, tally %+v", got, rep.LangMix)
+			}
+		})
+	}
+}
+
+// A contested series withholds its drops and the set-work-language review says so; only
+// the split is proposed in another orientation.
+func TestLangMixContestWithholdsDropsAndNotesTheLanguageReview(t *testing.T) {
+	files := mergeFiles(mixPeople(t),
+		testpack.WorkFiles(t, "c1", "en", "nate-narrator", withAuthors("otto-autor")),
+		testpack.WorkFiles(t, "c2", "en", "nate-narrator", withAuthors("otto-autor")),
+		testpack.WorkFiles(t, "chronik", "de", "anna-sprecher"), testpack.WorkFiles(t, "chronik-zwei", "de", "anna-sprecher"),
+		map[string]string{
+			"series/ch/chronicle.json":   seriesJSON(t, "chronicle", "The Chronicle", "c1@1", "c2@2", "chronik@3"),
+			"series/di/die-chronik.json": seriesJSON(t, "die-chronik", "Die Chronik", "chronik@1", "chronik-zwei@2"),
+		})
+	rep := runFixture(t, files)
+	drop := onlyMix(t, rep, lMixHomed)
+	if !drop.Propose.Advisory || !strings.Contains(drop.Propose.Reason, "contested (collision)") {
+		t.Fatalf("drop = %+v, want advisory on the contest", drop.Propose)
+	}
+	// Only the split is proposed in another orientation: German keeping the slug moves
+	// the English members out, and the drop is not restated against that keeper.
+	alt := onlyMix(t, rep, lMixOtherKeeper)
+	if p := alt.Propose; p.From != "de" || p.To != "en" || !slices.Equal(p.Others, []string{"c1", "c2"}) {
+		t.Errorf("other orientation = %+v", p)
+	}
+
+	narrated := narratedTree(t)
+	narrated["works/xx/imperium/work.json"] = workJSON(t, "imperium", "Imperium", withAuthors("otto-autor"))
+	lang := onlyMix(t, runFixture(t, narrated), lMixNarration)
+	if !strings.Contains(strings.Join(lang.Notes, " "), "keeper language is contested: reihe (collision") {
+		t.Errorf("notes = %v, want the contested series named", lang.Notes)
+	}
+}
+
+// A tie decided by incumbency is proposed in the other orientation too.
+func TestLangMixTieProposesTheOtherOrientation(t *testing.T) {
+	files := mergeFiles(mixPeople(t),
+		testpack.WorkFiles(t, "t-en", "en", "nate-narrator", testpack.WithAddedAt("2026-02-01")),
+		testpack.WorkFiles(t, "t-de", "de", "anna-sprecher", testpack.WithAddedAt("2026-01-01")),
+		map[string]string{"series/ti/tie.json": seriesJSON(t, "tie", "Tie", "t-en@1", "t-de@2")})
+	rep := runFixture(t, files)
+	alt := onlyMix(t, rep, lMixOtherKeeper)
+	if p := alt.Propose; p.From != "en" || p.To != "de" || !slices.Equal(p.Others, []string{"t-de"}) || !p.Advisory ||
+		!strings.Contains(p.Reason, "tie") {
+		t.Fatalf("other orientation = %+v", p)
+	}
+	if rep.LangMix.Contested != 0 {
+		t.Errorf("a tie is not a contested majority: %+v", rep.LangMix)
+	}
+}
+
+// Accepting BOTH orientations of one series is refused: only one can be the series.
+func TestReviewedRefusesTwoOrientationsOfOneSeries(t *testing.T) {
+	files := mixSagaTree(t)
+	for _, id := range []string{"morgen", "abend"} {
+		files["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withLanguage("de"), withAuthors("otto-autor"))
+	}
+	fresh := runFixture(t, files)
+	split, alt := onlyMix(t, fresh, lMixSplit), onlyMix(t, fresh, lMixOtherKeeper)
+	rep := runFixtureRejectingWith(t, files, "", review(alt.Propose, "accept"), review(split.Propose, "accept"))
+	out := rep.Reviewed.Outcomes
+	if len(out) != 2 {
+		t.Fatalf("outcomes = %+v", out)
+	}
+	byFrom := map[string]decisionOutcome{}
+	for _, o := range out {
+		byFrom[o.Entry.From] = o
+	}
+	if byFrom["de"].Status != "accepted" || byFrom["en"].Status != "refused" || !strings.Contains(byFrom["en"].Why, "two orientations") {
+		t.Fatalf("outcomes = %+v", out)
+	}
+	if fd := onlyMix(t, rep, lMixOtherKeeper); fd.Propose.Advisory {
+		t.Errorf("the accepted orientation stayed advisory: %+v", fd.Propose)
+	}
+	assertProposalsConsistent(t, rep)
+}
+
+// Accepting a tie's drop (the incumbent orientation) beside the split that keeps the
+// series for the dropped member's language (the other orientation) is refused: between
+// them the two would empty the series (the Antonia Scott shape).
+func TestReviewedRefusesADropAgainstTheOrientationItContradicts(t *testing.T) {
+	files := mergeFiles(mixPeople(t),
+		testpack.WorkFiles(t, "x-en", "en", "nate-narrator", testpack.WithAddedAt("2026-01-01")),
+		testpack.WorkFiles(t, "x-es", "es", "anna-sprecher", testpack.WithAddedAt("2026-02-01")),
+		testpack.WorkFiles(t, "y-es", "es", "anna-sprecher"),
+		map[string]string{
+			"series/ti/tie.json":      seriesJSON(t, "tie", "Tie", "x-en@1", "x-es@2"),
+			"series/se/serie-es.json": seriesJSON(t, "serie-es", "Serie", "x-es@1", "y-es@2"),
+		})
+	fresh := runFixture(t, files)
+	drop, alt := onlyMix(t, fresh, lMixHomed), onlyMix(t, fresh, lMixOtherKeeper)
+	if alt.Propose.From != "es" || !slices.Equal(alt.Propose.Others, []string{"x-en"}) {
+		t.Fatalf("other orientation = %+v", alt.Propose)
+	}
+	rep := runFixtureRejectingWith(t, files, "", review(alt.Propose, "accept"), review(drop.Propose, "accept"))
+	byOp := map[string]decisionOutcome{}
+	for _, o := range rep.Reviewed.Outcomes {
+		byOp[o.Entry.Op] = o
+	}
+	if byOp[OpSplitSeries].Status != "accepted" || byOp[OpDropMembership].Status != "refused" ||
+		!strings.Contains(byOp[OpDropMembership].Why, "keeps for es") {
+		t.Fatalf("outcomes = %+v", rep.Reviewed.Outcomes)
+	}
+	assertProposalsConsistent(t, rep)
+}
+
+// A same-name series in the language an alternate would move out does not withhold
+// that orientation: under a contest the halves may be two franchises, so the split is
+// offered and the existing series is named (the zodiac-academy shape).
+func TestLangMixOtherKeeperIsOfferedBesideATarget(t *testing.T) {
+	f := mixSagaTree(t)
+	for _, id := range []string{"morgen", "abend"} {
+		f["works/xx/"+id+"/work.json"] = workJSON(t, id, id, withLanguage("de"), withAuthors("otto-autor"))
+	}
+	f = mergeFiles(f, testpack.WorkFiles(t, "eve", "en", "nate-narrator"),
+		map[string]string{"series/sa/the-saga-english-edition.json": seriesJSON(t, "the-saga-english-edition", "The Saga [English Edition]", "eve@9")})
+	rep := runFixture(t, f)
+	alt := onlyMix(t, rep, lMixOtherKeeper)
+	if alt.Key != "the-saga/en/keep-de" || !alt.Propose.Advisory {
+		t.Fatalf("other orientation = %s %+v", alt.Key, alt.Propose)
+	}
+	if !strings.Contains(strings.Join(alt.Notes, " "), "the-saga-english-edition") {
+		t.Errorf("notes = %v, want the existing en series named", alt.Notes)
+	}
+	assertProposalsConsistent(t, rep)
 }

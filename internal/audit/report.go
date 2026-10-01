@@ -121,9 +121,11 @@ var classDoc = map[string]string{
 	ClassLangMix: "series whose members state two or more languages, read against ONE keeper language (the derived one, or for a tie the " +
 		"name's edition decoration, else the incumbent half): a member of another language that already sits in a series of its own " +
 		"language is dropped, one with exactly one same-name or translation-linked series of its language is moved there, and the " +
-		"rest move to a new series of the same name. A coupled member, a narrator contradiction, a tie by incumbency or a " +
-		"conflicting proposal of another class makes a proposal advisory; a work whose language its narrators contradict is a " +
-		"set-work-language review, never applied mechanically.",
+		"rest move to a new series of the same name. A coupled member, a narrator contradiction, a tie by incumbency, a " +
+		"CONTESTED majority (a keeper member states a translation, the halves share no author, or the principal author writes mostly in " +
+		"a minority language) or a conflicting proposal of another class makes a proposal advisory; every mixed series' " +
+		"split is also proposed in every other orientation (other-keeper), for a reviewer to accept exactly one. A work whose " +
+		"language its narrators contradict is a set-work-language review, never applied mechanically.",
 	ClassPersonDup:  "possible duplicate people. ADVISORY throughout, high false-positive rate: two real people can share a name or sit one typo apart, so nothing here proposes an action.",
 	ClassRefSidecar: "works-community sidecar hazards: a spoiler-gated sidecar attached to a work that turns out to be one of a duplicate pair, or keyed by a work slug nothing holds.",
 	ClassHygiene:    "field-level gaps and slug-convention oddities.",
@@ -339,6 +341,11 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 		{Label: "... coupled (carrying a recording in the keeper language)", N: mx.Coupled},
 		{Label: "... whose narrators contradict the member's language", N: mx.NarratorContradicted},
 		{Label: "... withheld by another class's proposal on the same record", N: mx.CrossClass},
+		{Label: "majority series whose keeper is contested", N: mx.Contested},
+		{Label: "... a keeper-language member states a translation (stated)", N: mx.ContestedStated},
+		{Label: "... the keeper and minority halves share no author (collision)", N: mx.ContestedCollision},
+		{Label: "... the principal author writes mostly in a minority language (home)", N: mx.ContestedHome},
+		{Label: "split proposals in another orientation", N: mx.OtherKeeperSplits},
 		{Label: "recordings stating a language their work does not", N: mx.CrossRecordings},
 		{Label: "... over this many works", N: mx.CrossWorks},
 		{Label: "works whose every recording states one other language", N: mx.AllOther},
