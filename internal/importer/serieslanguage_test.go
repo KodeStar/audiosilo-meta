@@ -296,7 +296,7 @@ func TestAuthorClustersNeverSpanTwoLanguages(t *testing.T) {
 		{name: "Lost Fleet", row: row("Sarah Hawke", "en"), order: "a"},
 		{name: "Lost Fleet", row: row("Sarah Hawke", "de"), order: "b"},
 		{name: "Lost Fleet", row: row("Sara Hawke", "de"), order: "c"},
-		{name: "Lost Fleet", row: row("Sara Hawke", "en-GB"), order: "d"},
+		{name: "Lost Fleet", row: row("Sara Hawke", "en-GB"), order: "d"}, // SeriesRowFor keeps the primary subtag: en
 		{name: "Lost Fleet", row: row("Sarah Hawke", ""), order: "e"},
 	}
 	idx := []int{0, 1, 2, 3, 4}

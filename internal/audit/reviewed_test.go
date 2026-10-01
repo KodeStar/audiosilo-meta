@@ -623,3 +623,27 @@ func TestOpsListsEachOpOnce(t *testing.T) {
 		t.Fatalf("Ops() = %v, want it to hold %q", ops, OpReview)
 	}
 }
+
+// A merge of a home names EVERY drop relying on it, and a refused drop leaves no
+// claim on the home behind (the undo path).
+func TestHomeMergeNamesEveryDropAndUndoesARefusal(t *testing.T) {
+	drop := func(work string) Proposal {
+		return Proposal{Op: OpDropMembership, Target: work, Series: "source", Field: "position", From: "1", Others: []string{"home"}}
+	}
+	merge := Proposal{Op: OpMergeSeries, Target: "other", Others: []string{"home"}}
+	s := proposalConflicts(proposalReport(drop("w1"), drop("w2"), merge))
+	got := strings.Join(s.conflicts, "\n")
+	for _, key := range []string{"proposal-0", "proposal-1"} {
+		if !strings.Contains(got, key+" relies on home") {
+			t.Errorf("conflicts %q do not name %s", got, key)
+		}
+	}
+
+	s = proposalConflicts(proposalReport(merge))
+	if conflicts := s.add(Finding{Key: "late", Propose: drop("w3")}, false); len(conflicts) == 0 {
+		t.Fatal("a drop relying on a merged home was not refused")
+	}
+	if len(s.homes["home"]) != 0 {
+		t.Errorf("refused drop left homes[home] = %v", s.homes["home"])
+	}
+}
