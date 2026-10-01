@@ -85,13 +85,20 @@ var (
 	reasonPositionTaken           = refusal{RefusalPositionClaimed, "series position already claimed"}
 	reasonSeriesCap               = refusal{RefusalOverSeriesCap, "over the per-series cap"}
 
-	// Import-only rules (Summary.Skips): the create path's duplicate-identity
-	// guard (dupidentity.go) and the admission tests a row with no author, no
-	// title or no narrator fails (addBook, admitRecordingFacts).
-	reasonIdentityDuplicate = refusal{RefusalIdentityDuplicate, "the catalogue holds the book under another title"}
-	reasonMissingAuthor     = refusal{RefusalMissingAuthor, "no author"}
-	reasonMissingTitle      = refusal{RefusalMissingTitle, "no title"}
-	reasonMissingNarrator   = refusal{RefusalMissingNarrator, "no narrator"}
+	// Import-only rules: create admission and duplicate identity (Summary.Skips),
+	// plus recording relocation refusals (Summary.RelocationSkips).
+	reasonIdentityDuplicate         = refusal{RefusalIdentityDuplicate, "the catalogue holds the book under another title"}
+	reasonMissingAuthor             = refusal{RefusalMissingAuthor, "no author"}
+	reasonMissingTitle              = refusal{RefusalMissingTitle, "no title"}
+	reasonMissingNarrator           = refusal{RefusalMissingNarrator, "no narrator"}
+	reasonRelocateRowsLanguage      = refusal{RefusalRelocateRowsLanguage, "source rows do not agree on one known language"}
+	reasonRelocateRecordingLanguage = refusal{RefusalRelocateRecordingLanguage, "source language does not match the recording"}
+	reasonRelocateWorkLanguage      = refusal{RefusalRelocateWorkLanguage, "work must state a different primary language"}
+	reasonRelocateNoHomeRecording   = refusal{RefusalRelocateNoHomeRecording, "old work would retain no recording in its own language"}
+	reasonRelocateNarration         = refusal{RefusalRelocateNarration, "narrators of other works contradict the stated language"}
+	reasonRelocateDestination       = refusal{RefusalRelocateDestination, "source rows do not resolve to one compatible destination"}
+	reasonRelocateAmbiguousHome     = refusal{RefusalRelocateAmbiguousHome, "multiple same-language identity homes"}
+	reasonRelocateRowUnusable       = refusal{RefusalRelocateRowUnusable, "a source row naming the recording was refused at parse time"}
 )
 
 // refusals is every SELECTOR rule in report order (the order libex-select
@@ -170,14 +177,3 @@ func refusedRowASIN(stated string) string {
 	}
 	return strings.TrimSpace(stated)
 }
-
-var (
-	reasonRelocateRowsLanguage      = refusal{RefusalRelocateRowsLanguage, "source rows do not agree on one known language"}
-	reasonRelocateRecordingLanguage = refusal{RefusalRelocateRecordingLanguage, "source language does not match the recording"}
-	reasonRelocateWorkLanguage      = refusal{RefusalRelocateWorkLanguage, "work must state a different primary language"}
-	reasonRelocateNoHomeRecording   = refusal{RefusalRelocateNoHomeRecording, "old work would retain no recording in its own language"}
-	reasonRelocateNarration         = refusal{RefusalRelocateNarration, "narrators of other works contradict the stated language"}
-	reasonRelocateDestination       = refusal{RefusalRelocateDestination, "source rows do not resolve to one compatible destination"}
-	reasonRelocateAmbiguousHome     = refusal{RefusalRelocateAmbiguousHome, "multiple same-language identity homes"}
-	reasonRelocateRowUnusable       = refusal{RefusalRelocateRowUnusable, "a source row naming the recording was refused at parse time"}
-)

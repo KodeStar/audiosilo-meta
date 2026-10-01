@@ -199,7 +199,7 @@ func TestSameProductionUsesTheImportersRuntimeBoundary(t *testing.T) {
 		{"neither stated", 0, 0, true},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			why, same := sameProduction(rec(tc.a), rec(tc.b))
+			why, same := rawentry.SameProduction(rec(tc.a), rec(tc.b))
 			if same != tc.merge {
 				t.Errorf("sameProduction(%d, %d) = %v (%s), want %v", tc.a, tc.b, same, why, tc.merge)
 			}

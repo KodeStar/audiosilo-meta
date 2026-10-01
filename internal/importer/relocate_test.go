@@ -155,7 +155,7 @@ func TestRelocateRawAndRepoint(t *testing.T) {
 				t.Fatal(series.Works)
 			}
 			again := runRelocationTest(t, dir, relocateRow)
-			if len(again.Files) != 0 || len(again.Relocations) != 0 || len(again.Skips) != 0 {
+			if len(again.Files) != 0 || len(again.Relocations) != 0 || len(again.RelocationSkips) != 0 {
 				t.Fatalf("not idempotent: %+v", again)
 			}
 		})
@@ -195,13 +195,13 @@ func TestRelocateRefusals(t *testing.T) {
 				t.Fatalf("summary: %+v", sum)
 			}
 			found := false
-			for _, s := range sum.Skips {
+			for _, s := range sum.RelocationSkips {
 				if s.Reason == tt.code {
 					found = true
 				}
 			}
 			if !found {
-				t.Fatalf("missing worklist refusal: %+v", sum.Skips)
+				t.Fatalf("missing worklist refusal: %+v", sum.RelocationSkips)
 			}
 			if !reflect.DeepEqual(before, snapshotTree(t, dir)) {
 				t.Fatal("refusal changed tree")
@@ -266,7 +266,10 @@ func TestRelocateSiblingAndCollision(t *testing.T) {
 				if sum.MergedIntoSibling != 1 || len(rs) != 1 || len(r.ASINs()) != 2 || len(r.ISBNs()) != 1 {
 					t.Fatal(sum, rs)
 				}
-				for _, field := range []string{"cover_url=", "chapters=", "added_at="} {
+				if r.Str("cover_url") != "https://example.com/cover.jpg" || len(r.Chapters()) != 1 || r.Has("added_at") {
+					t.Fatal("merge did not fill absent facts or preserve the sibling's creation stamp", r)
+				}
+				for _, field := range []string{"added_at="} {
 					if !strings.Contains(strings.Join(sum.Notes, "\n"), field) {
 						t.Fatal("lost value not noted", field)
 					}
@@ -352,10 +355,10 @@ func TestRelocateIdentityHomes(t *testing.T) {
 				t.Fatal("relocation used create refusal", sum)
 			}
 			if homes == 2 {
-				if sum.RelocationRefusals[RefusalRelocateAmbiguousHome] != 1 || len(sum.Relocations) != 0 || len(sum.Skips) != 2 {
+				if sum.RelocationRefusals[RefusalRelocateAmbiguousHome] != 1 || len(sum.Relocations) != 0 || len(sum.RelocationSkips) != 2 {
 					t.Fatal(sum)
 				}
-				for _, skip := range sum.Skips {
+				for _, skip := range sum.RelocationSkips {
 					if skip.Reason != RefusalRelocateAmbiguousHome || !reflect.DeepEqual(skip.Candidates, ids) {
 						t.Fatal("missing candidates", skip)
 					}
@@ -374,7 +377,7 @@ func TestRelocateIdentityHomes(t *testing.T) {
 			} else if sum.RelocatedToNewWork != 1 || sum.NewWorks != 1 {
 				t.Fatal(sum)
 			}
-			if len(sum.Relocations) != 1 || sum.Relocations[0].Destination != want || len(sum.Skips) != 0 || sum.MembershipsRepointed != 1 {
+			if len(sum.Relocations) != 1 || sum.Relocations[0].Destination != want || len(sum.RelocationSkips) != 0 || sum.MembershipsRepointed != 1 {
 				t.Fatal(sum)
 			}
 			rs, _ := relocationObjects(t, dir)[want].Recordings()
@@ -531,7 +534,64 @@ func TestRelocateDryRunAndMissingRows(t *testing.T) {
 		t.Fatal("dry run wrote files")
 	}
 	sum = runRelocationTest(t, dir, strings.Replace(relocateRow, "B000000001", "B000000009", 1))
-	if len(sum.Relocations) != 0 || len(sum.Files) != 0 || len(sum.Skips) != 0 {
+	if len(sum.Relocations) != 0 || len(sum.Files) != 0 || len(sum.RelocationSkips) != 0 {
 		t.Fatal(sum)
+	}
+}
+
+func TestRelocateMergeKeepsRicherChaptersAndFillsAbsent(t *testing.T) {
+	for _, chapters := range []string{
+		`[{"title":"Sibling","start_ms":0,"length_ms":6000000}]`,
+		`[{"title":"Sibling one","start_ms":0,"length_ms":3000000},{"title":"Sibling two","start_ms":3000000,"length_ms":3000000}]`,
+	} {
+		t.Run(chapters, func(t *testing.T) {
+			dir := relocationFixture(t, true)
+			changeRelocationWork(t, dir, "the-book", func(o rawentry.Obj) {
+				rs, _ := o.Recordings()
+				r := rs["nora-reader-2020"]
+				r.Set("publisher", "Mover publisher")
+				r.Set("release_date", "2020-01-01")
+				r.Set("abridged", false)
+				r.SetRaw("chapters", []byte(`[{"title":"Mover one","start_ms":0,"length_ms":3000000},{"title":"Mover two","start_ms":3000000,"length_ms":3000000}]`))
+				if err := o.SetRecordings(rs); err != nil {
+					t.Fatal(err)
+				}
+			})
+			changeRelocationWork(t, dir, "das-buch", func(o rawentry.Obj) {
+				rs, _ := o.Recordings()
+				r := rs["other"]
+				r.Set("narrators", []string{"nora-reader"})
+				r.SetRaw("chapters", []byte(chapters))
+				r.Set("added_at", "2021-01-01")
+				if err := o.SetRecordings(rs); err != nil {
+					t.Fatal(err)
+				}
+			})
+			before := relocationObjects(t, dir)
+			old, _ := before["the-book"].Recordings()
+			siblings, _ := before["das-buch"].Recordings()
+			sum := runRelocationTest(t, dir, relocateRow)
+			rs, _ := relocationObjects(t, dir)["das-buch"].Recordings()
+			r := rs["other"]
+			if sum.MergedIntoSibling != 1 || sum.Relocations[0].DestinationRecording != "other" {
+				t.Fatal(sum)
+			}
+			for _, field := range []string{"publisher", "release_date", "abridged", "runtime_min", "cover_url"} {
+				if string(r[field]) != string(old["nora-reader-2020"][field]) {
+					t.Fatalf("%s not filled: %s", field, r[field])
+				}
+			}
+			wantChapters, dropped := siblings["other"]["chapters"], old["nora-reader-2020"]["chapters"]
+			if len(siblings["other"].Chapters()) == 1 {
+				wantChapters, dropped = dropped, wantChapters
+			}
+			if string(r["chapters"]) != string(wantChapters) || r.Str("added_at") != "2021-01-01" {
+				t.Fatal(r)
+			}
+			wantNote := fmt.Sprintf(`work "the-book" recording "nora-reader-2020" merged into das-buch/other: discarded chapters=%s`, dropped)
+			if !strings.Contains(strings.Join(sum.Notes, "\n"), wantNote) {
+				t.Fatalf("missing raw loss note %s in %v", wantNote, sum.Notes)
+			}
+		})
 	}
 }

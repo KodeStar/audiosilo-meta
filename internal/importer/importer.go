@@ -433,9 +433,7 @@ func (p *planner) result() Summary {
 	// refusal worth memoizing, so the --skipped worklist never names it; and the
 	// printed count of rows refused at an occupied position is read off that
 	// same list, so the line and the worklist cannot disagree.
-	if p.mode != ModeRelocate {
-		sum.Skips = dropRecorded(p.summary.Skips, func(asin string) bool { return p.asins[asin] })
-	}
+	sum.Skips = dropRecorded(p.summary.Skips, func(asin string) bool { return p.asins[asin] })
 	sum.SkippedOccupied = 0
 	for _, s := range sum.Skips {
 		if s.Reason == reasonPositionTaken.code {
@@ -547,15 +545,17 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // the existing catalog, then (on a real run) writes and re-validates the tree.
 // sourceType is the provenance stamped on every created (or enriched) record.
 //
-// The three planning modes are disjoint by design and selected by opts.Mode
+// The planning modes are disjoint by design and selected by opts.Mode
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 //
 // parseSkips are the source parse layer's refusals (RunLibex's), which join the
 // planner's own on Summary.Skips so the run's end can drop any whose ASIN it
-// imported after all; nil for every other source.
-func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []RowSkip) (Summary, error) {
-	if opts.Mode == ModeRelocate {
+// imported after all; nil for every other source. The optional setup hook installs
+// source-specific planner state before planning (relocation needs all libex rows,
+// including parse refusals, as evidence).
+func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []RowSkip, setup ...func(*planner)) (Summary, error) {
+	if opts.Mode == ModeRelocate && (sourceType != sourceLibex || len(setup) == 0) {
 		return Summary{}, fmt.Errorf("relocation requires libex rows; use RunLibex")
 	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
@@ -599,6 +599,9 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	}
 	if line, noted := synthetic.note(); noted {
 		p.summary.Notes = append(p.summary.Notes, line)
+	}
+	for _, configure := range setup {
+		configure(p)
 	}
 	err = p.run(books, opts)
 	return p.result(), err
@@ -2923,10 +2926,8 @@ func sortCredits(credits []model.Credit) { rawentry.SortCredits(credits) }
 // unstated - an abridged edition is a distinct production and earns its own
 // recording. Two unknown/unabridged sides merge freely.
 func abridgedConflict(a, b *bool) bool {
-	return boolOrFalse(a) != boolOrFalse(b)
+	return rawentry.AbridgedConflict(a, b)
 }
-
-func boolOrFalse(p *bool) bool { return p != nil && *p }
 
 // posClaim is one series position a recording sits at, for the serial guard. A
 // disk membership carries its series slug as key; a row's claim carries the
@@ -3376,16 +3377,7 @@ func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (ma
 // negative = unknown) are close enough to be the same production. An unknown on
 // either side is compatible; two known runtimes must be within 10 percent of the
 // larger.
-func runtimesCompatible(a, b int) bool {
-	if a <= 0 || b <= 0 {
-		return true
-	}
-	hi, lo := a, b
-	if lo > hi {
-		hi, lo = lo, hi
-	}
-	return float64(hi-lo) <= 0.10*float64(hi)
-}
+func runtimesCompatible(a, b int) bool { return rawentry.RuntimesCompatible(a, b) }
 
 // workCandidate is one slug a row's work may sit on. probeOnly marks a slug
 // that is a place to LOOK but never a place to create: see primaryWorkCandidates.

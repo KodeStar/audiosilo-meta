@@ -533,15 +533,15 @@ rg --files data/works -g '*.json' | xargs jq -r '
 
 docker exec -i libex-pg psql -X -U postgres -d libex -tA \
   -v ON_ERROR_STOP=1 -v asins="$(paste -sd, /tmp/xrec-asins.txt)" \
-  < scripts/libex-relocate-rows.sql > /tmp/xrec-rows.ndjson
+  < scripts/libex-export-rows.sql > /tmp/xrec-rows.ndjson
 
 go run ./cmd/metaimport libex /tmp/xrec-rows.ndjson --relocate \
   --dry-run --skipped /tmp/relocate-skipped.ndjson
 # Review the notes and refusals, then repeat without --dry-run.
 ```
 
-The ASIN-scoped SQL exports the same factual shape as `libex-export-rows.sql`,
-without its content or credit filters: **every copy is language evidence**,
+The optional `asins` variable (psql >= 10) makes `libex-export-rows.sql`
+export only those ASINs, without its content or credit filters: **every copy is language evidence**,
 including a copy the importer refuses at parse time. Supply all ASINs together;
 do not split a recording's rows across runs. No matching input row means no action.
 
@@ -562,7 +562,8 @@ refused together. No translation link is inferred.
 Recordings move raw, retaining chapters, cover, `added_at`, identifiers and old
 sources, with the run's libex provenance appended. A recording-id collision gets
 the ordinary numbered slug. A same-narrator sibling with compatible runtime and
-abridgement absorbs the identifiers and sources instead; each discarded field
+abridgement absorbs identifiers and sources, fills absent fields from the mover,
+and keeps the longer chapter list (ties keep the sibling's); each discarded field
 and value is named in a note. Series claims have `--existing-series-only`
 semantics. A claimed slot on a catalogued series deriving the recording's
 language is re-pointed from the old work when `SameSlot` agrees. Other memberships

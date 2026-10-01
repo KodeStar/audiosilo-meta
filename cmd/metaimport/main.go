@@ -266,8 +266,10 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	// worklist after it: the tree is written, and the summary is the record of
 	// what was.
 	printSummary(sum, *dryRun, mode)
-	for _, s := range sum.Skips {
-		skippedLog.Encode(s)
+	for _, rows := range [][]importer.RowSkip{sum.Skips, sum.RelocationSkips} {
+		for _, s := range rows {
+			skippedLog.Encode(s)
+		}
 	}
 	if err := atomicfile.CommitInOrder(skippedLog); err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)

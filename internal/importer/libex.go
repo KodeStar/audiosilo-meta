@@ -73,27 +73,20 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, fmt.Errorf("read %s: %w", exportPath, err)
 	}
-	var entries []rawBook
-	if opts.Mode == ModeRelocate {
-		entries, raw, err = sortedRelocationRows(raw)
-		if err != nil {
-			return Summary{}, err
-		}
-	}
-	parsed, err := parseLibex(raw)
+	entries, err := decodeLibexEntries(raw)
 	if err != nil {
 		return Summary{}, err
 	}
-	// The parse layer's refusals join the planner's own, which drops every one
-	// whose ASIN the run then imported after all (a sibling row of the same
-	// ASIN that did map) - see planner.result.
-	var sum Summary
-	var runErr error
+	var setup []func(*planner)
 	if opts.Mode == ModeRelocate {
-		sum, runErr = runRelocate(parsed.books, entries, parsed.skips, opts)
-	} else {
-		sum, runErr = runBooks(parsed.books, sourceLibex, opts, parsed.skips)
+		sortedRelocationRows(entries)
 	}
+	parsed := parseLibexEntries(entries)
+	if opts.Mode == ModeRelocate {
+		setup = append(setup, relocationSetup(entries, parsed.skips))
+	}
+	// All modes share decoding, admission, planner setup and reporting.
+	sum, runErr := runBooks(parsed.books, sourceLibex, opts, parsed.skips, setup...)
 	// += rather than =: runBooks has its own parse-layer refusal (the shared
 	// AI-credit gate), which is a no-op for libex because refuseLibexCredits has
 	// already dropped those rows - but the two counts are of the same thing, and
@@ -259,6 +252,10 @@ func parseLibex(data []byte) (libexParse, error) {
 	if err != nil {
 		return libexParse{}, err
 	}
+	return parseLibexEntries(entries), nil
+}
+
+func parseLibexEntries(entries []rawBook) libexParse {
 	lp := libexParse{books: make([]sourceBook, 0, len(entries))}
 	for _, e := range entries {
 		asin := NormalizeASIN(e.str("asin"))
@@ -300,7 +297,7 @@ func parseLibex(data []byte) (libexParse, error) {
 		// book's text (entities.go).
 		lp.books = append(lp.books, libexToBook(e, asin, region, authors, narrators, &lp))
 	}
-	return lp, nil
+	return lp
 }
 
 // decodeLibexEntries accepts the three shapes a libex export can arrive in: a

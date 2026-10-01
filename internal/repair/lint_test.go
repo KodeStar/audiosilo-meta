@@ -13,8 +13,8 @@ import (
 )
 
 // TestLossHelpersAreLinted keeps .golangci.yml's unusedresult list in step with the
-// code: every function in this package that RETURNS the values a merge chose away
-// (a mergedFacts, in any shape) must be listed there, so a call that discards that
+// code: every function in repair or rawentry that RETURNS the values a merge chose away
+// (mergedFacts, RecordingLoss or RecordingMove, in any shape) must be listed there, so a call that discards that
 // return fails the linter instead of deleting a fact with nothing in the notes to
 // say so. A helper added or renamed without the list edit is caught here, and a
 // listed name that no longer exists is caught too (it would guard nothing).
@@ -24,10 +24,30 @@ import (
 // STATEMENT - `_ = f()` and `x, _ := f()` are assignments it never looks at - so
 // this test refuses a loss result assigned to the blank identifier itself.
 func TestLossHelpersAreLinted(t *testing.T) {
-	const pkgPath = "github.com/kodestar/audiosilo-meta/internal/repair"
+	for _, pkg := range []struct {
+		name, dir string
+		losses    []string
+	}{
+		{"repair", ".", []string{"mergedFacts"}},
+		{"rawentry", "../rawentry", []string{"RecordingLoss", "RecordingMove"}},
+	} {
+		t.Run(pkg.name, func(t *testing.T) { checkLossHelpersLinted(t, pkg.name, pkg.dir, pkg.losses) })
+	}
+}
 
+func checkLossHelpersLinted(t *testing.T, pkg, dir string, lossTypes []string) {
+	t.Helper()
+	pkgPath := "github.com/kodestar/audiosilo-meta/internal/" + pkg
+	carriesLoss := func(n ast.Node) bool {
+		for _, name := range lossTypes {
+			if mentionsIdent(n, name) {
+				return true
+			}
+		}
+		return false
+	}
 	fset := token.NewFileSet()
-	files, err := filepath.Glob("*.go")
+	files, err := filepath.Glob(filepath.Join(dir, "*.go"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -46,7 +66,7 @@ func TestLossHelpersAreLinted(t *testing.T) {
 		parsed = append(parsed, f)
 		for _, d := range f.Decls {
 			fn, ok := d.(*ast.FuncDecl)
-			if !ok || fn.Type.Results == nil || !mentionsIdent(fn.Type.Results, "mergedFacts") {
+			if !ok || fn.Type.Results == nil || !carriesLoss(fn.Type.Results) {
 				continue
 			}
 			if fn.Recv != nil {
@@ -57,7 +77,7 @@ func TestLossHelpersAreLinted(t *testing.T) {
 			i := 0
 			for _, field := range fn.Type.Results.List {
 				n := max(len(field.Names), 1)
-				if mentionsIdent(field.Type, "mergedFacts") {
+				if carriesLoss(field.Type) {
 					for j := range n {
 						lossAt[fn.Name.Name] = append(lossAt[fn.Name.Name], i+j)
 					}

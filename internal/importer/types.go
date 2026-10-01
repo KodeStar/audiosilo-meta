@@ -264,7 +264,7 @@ type Summary struct {
 	RelocatedToNewWork   int
 	MergedIntoSibling    int
 	MembershipsRepointed int
-	// RelocationRefusals counts recordings, while Skips names their input rows.
+	// RelocationRefusals counts recordings, while RelocationSkips names their input rows.
 	RelocationRefusals map[string]int
 	Relocations        []Relocation
 
@@ -387,6 +387,10 @@ type Summary struct {
 	// what `metaimport libex --skipped` writes; an ASIN may appear more than
 	// once, and a row stating no ASIN is not listed.
 	Skips []RowSkip
+
+	// RelocationSkips records relocation refusals independently of ASIN admission.
+	// It includes parse refusals outside the candidate set, preserving input copies.
+	RelocationSkips []RowSkip
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the

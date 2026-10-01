@@ -32,32 +32,27 @@ type relocationPlan struct {
 	profile         *check.NarrationProfile
 	seriesLanguages map[string]string
 	newWorks        map[string]bool
+	homeRecordings  map[string]bool
 }
 
 // All rows are evidence, even ones the ordinary libex parser refuses. Otherwise
 // a bad-region copy could disappear before its contradictory language is read.
-func runRelocate(books []sourceBook, entries []rawBook, skips []RowSkip, opts Options) (Summary, error) {
-	p, err := openPlanner(sourceLibex, opts)
-	if err != nil {
-		return Summary{}, err
+func relocationSetup(entries []rawBook, skips []RowSkip) func(*planner) {
+	return func(p *planner) {
+		p.existingSeriesOnly = true
+		p.relocation = &relocationPlan{evidence: map[string][]string{}, unusable: map[string]bool{}, newWorks: map[string]bool{}}
+		for _, e := range entries {
+			asin := NormalizeASIN(e.str("asin"))
+			lang, _ := mapLanguage(e.str("language"))
+			p.relocation.evidence[asin] = append(p.relocation.evidence[asin], lang)
+		}
+		for _, s := range skips {
+			p.relocation.unusable[s.ASIN] = true
+		}
+		p.summary.RelocationSkips = skips
+		p.summary.Skips = nil
+		p.summary.RelocationRefusals = map[string]int{}
 	}
-	p.existingSeriesOnly = true
-	p.relocation = &relocationPlan{evidence: map[string][]string{}, unusable: map[string]bool{}, newWorks: map[string]bool{}}
-	for _, e := range entries {
-		asin := NormalizeASIN(e.str("asin"))
-		lang, _ := mapLanguage(e.str("language"))
-		p.relocation.evidence[asin] = append(p.relocation.evidence[asin], lang)
-	}
-	for _, s := range skips {
-		p.relocation.unusable[s.ASIN] = true
-	}
-	p.summary.Skips = skips
-	p.summary.RelocationRefusals = map[string]int{}
-	for i := range books {
-		books[i].decodeText()
-	}
-	err = p.run(books, opts)
-	return p.result(), err
 }
 
 func (p *planner) prepareRelocation() {
@@ -68,6 +63,7 @@ func (p *planner) prepareRelocation() {
 	r := p.relocation
 	r.profile = check.NewNarrationProfile(p.catalog)
 	r.seriesLanguages = map[string]string{}
+	r.homeRecordings = map[string]bool{}
 	for _, s := range p.catalog.Series {
 		r.seriesLanguages[s.ID] = model.SeriesLanguage(s.Works, func(id string) string { return p.works[id].lang })
 	}
@@ -75,6 +71,8 @@ func (p *planner) prepareRelocation() {
 		for _, rec := range w.Recordings {
 			if !model.SameLanguage(w.Language, rec.Language) {
 				r.candidates = append(r.candidates, rec)
+			} else {
+				r.homeRecordings[w.ID] = true
 			}
 		}
 	}
@@ -87,7 +85,13 @@ func (p *planner) prepareRelocation() {
 			candidateASINs[a.ASIN] = true
 		}
 	}
-	p.summary.Skips = dropRecorded(p.summary.Skips, func(asin string) bool { return candidateASINs[asin] })
+	var otherSkips []RowSkip
+	for _, skip := range p.summary.RelocationSkips {
+		if !candidateASINs[skip.ASIN] {
+			otherSkips = append(otherSkips, skip)
+		}
+	}
+	p.summary.RelocationSkips = otherSkips
 	sort.Slice(r.candidates, func(i, j int) bool {
 		a, b := r.candidates[i], r.candidates[j]
 		if a.Work != b.Work {
@@ -157,19 +161,9 @@ func (p *planner) relocationVeto(rec *model.Recording, asins map[string]bool) re
 	if ws.lang == "" || model.SameLanguage(ws.lang, lang) {
 		return reasonRelocateWorkLanguage
 	}
-	entry := p.relocationEntry(rec.Work)
-	recs, err := entry.Recordings()
-	if err != nil {
-		p.fatal = err
-		return reasonRelocateRowUnusable
-	}
-	home := false
-	for id, r := range recs {
-		if id != rec.ID && model.SameLanguage(r.Str("language"), ws.lang) {
-			home = true
-		}
-	}
-	if !home {
+	// Own-language recordings never move in this mode, so the catalogue
+	// snapshot remains valid throughout the run.
+	if !p.relocation.homeRecordings[rec.Work] {
 		return reasonRelocateNoHomeRecording
 	}
 	if p.relocation.profile.Of(rec.Narrators, rec.Work).Contradicts(lang) {
@@ -187,7 +181,7 @@ func (p *planner) refuseRelocation(rec *model.Recording, asins map[string]bool, 
 	p.summary.RelocationRefusals[reason.code]++
 	for _, asin := range rawentry.SortedKeys(asins) {
 		for range p.relocation.evidence[asin] {
-			p.summary.Skips = append(p.summary.Skips, RowSkip{ASIN: asin, Reason: reason.code, Candidates: candidates})
+			p.summary.RelocationSkips = append(p.summary.RelocationSkips, RowSkip{ASIN: asin, Reason: reason.code, Candidates: candidates})
 		}
 	}
 	if len(candidates) > 0 {
@@ -358,38 +352,24 @@ func (p *planner) moveRawRecording(rec *model.Recording, target string, indices 
 		sources = rawentry.UnionSources(sources, []model.Source{{Type: sourceLibex, Ref: NormalizeASIN(books[i].str("asin")), ImportedAt: p.importDate}})
 	}
 	raw.Set("sources", sources)
-	id := ""
+	var candidates []string
 	for _, key := range rawentry.SortedKeys(toRecs) {
-		sibling := toRecs[key]
-		runtime, _ := sibling.IntAt("runtime_min")
-		if model.SameLanguage(sibling.Str("language"), rec.Language) && SameSet(ToSet(sibling.Strs("narrators")), ToSet(rec.Narrators)) && RuntimesCompatible(rec.RuntimeMin, runtime) && !AbridgedConflict(raw.BoolPtr("abridged"), sibling.BoolPtr("abridged")) {
-			id = key
-			sibling.Set("asin", rawentry.UnionASINs(sibling.ASINs(), raw.ASINs()))
-			rawentry.SetListOrDrop(sibling, "isbn", rawentry.UnionISBNs(sibling.ISBNs(), raw.ISBNs()))
-			sibling.Set("sources", rawentry.UnionSources(sibling.Sources(), sources))
-			for _, field := range rawentry.SortedKeys(raw) {
-				switch field {
-				case "id", "work", "asin", "isbn", "sources":
-					continue
-				}
-				if !reflect.DeepEqual(rawentry.DecodeOr[any](raw[field]), rawentry.DecodeOr[any](sibling[field])) {
-					p.summary.Notes = append(p.summary.Notes, fmt.Sprintf("%s merged into %s/%s: discarded %s=%s", recLabel(rec.Work, rec.ID), target, id, field, raw[field]))
-				}
-			}
-			move.Merged = true
-			break
+		if model.SameLanguage(toRecs[key].Str("language"), rec.Language) {
+			candidates = append(candidates, key)
 		}
 	}
-	if id == "" {
-		for n := 0; ; n++ {
-			id = NumberedSlugAt(rec.ID, n)
-			if _, held := toRecs[id]; !held {
-				break
+	landedMove, _ := rawentry.MoveRecording(toRecs, raw, target, rec.ID, candidates, func() (string, bool) {
+		for n := 1; ; n++ {
+			key := NumberedSlugAt(rec.ID, n)
+			if _, held := toRecs[key]; !held {
+				return key, true
 			}
 		}
-		raw.Set("id", id)
-		raw.Set("work", target)
-		toRecs[id] = raw
+	})
+	id := landedMove.ID
+	move.Merged = landedMove.Merged
+	if move.Merged {
+		p.noteRelocationLosses(rec, target, id, raw, toRecs[id], landedMove.Lost)
 	}
 	delete(fromRecs, rec.ID)
 	if err = from.SetRecordings(fromRecs); err != nil {
@@ -468,18 +448,43 @@ func (p *planner) repointMembership(r seriesRef, old, target, lang string) bool 
 
 // Sorting the source objects before parsing makes titles, credits, notes and
 // source stamps independent of the order of duplicate and regional rows.
-func sortedRelocationRows(raw []byte) ([]rawBook, []byte, error) {
-	entries, err := decodeLibexEntries(raw)
-	if err != nil {
-		return nil, nil, err
+func sortedRelocationRows(entries []rawBook) {
+	type keyedRow struct {
+		row rawBook
+		key string
 	}
-	sort.SliceStable(entries, func(i, j int) bool {
-		a, _ := json.Marshal(entries[i])
-		b, _ := json.Marshal(entries[j])
-		return string(a) < string(b)
-	})
-	encoded, err := json.Marshal(entries)
-	return entries, encoded, err
+	rows := make([]keyedRow, len(entries))
+	for i, row := range entries {
+		key, _ := json.Marshal(row) // decoded JSON values are always marshalable
+		rows[i] = keyedRow{row: row, key: string(key)}
+	}
+	sort.SliceStable(rows, func(i, j int) bool { return rows[i].key < rows[j].key })
+	for i, row := range rows {
+		entries[i] = row.row
+	}
+}
+
+// Keep relocation's raw-value note format, including fields repair deliberately
+// leaves unstated (added_at). When the longer mover timeline wins, report the
+// sibling's discarded timeline instead.
+func (p *planner) noteRelocationLosses(rec *model.Recording, target, id string, mover, landed rawentry.Obj, losses []rawentry.RecordingLoss) {
+	lostRaw := map[string]json.RawMessage{}
+	for _, loss := range losses {
+		lostRaw[loss.Field] = loss.DroppedRaw
+	}
+	for _, field := range rawentry.SortedKeys(mover) {
+		switch field {
+		case "id", "work", "asin", "isbn", "sources":
+			continue
+		}
+		dropped := mover[field]
+		if value, lost := lostRaw[field]; lost {
+			dropped = value
+		}
+		if !reflect.DeepEqual(rawentry.DecodeOr[any](dropped), rawentry.DecodeOr[any](landed[field])) {
+			p.summary.Notes = append(p.summary.Notes, fmt.Sprintf("%s merged into %s/%s: discarded %s=%s", recLabel(rec.Work, rec.ID), target, id, field, dropped))
+		}
+	}
 }
 
 // SameSlot also sees numeric equivalents such as 1 and 1.0. Leave a held
