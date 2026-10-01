@@ -2167,10 +2167,6 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "genesis-inside-dweller-book-i"
-        },
-        {
           "position": "2",
           "work": "genesis-das-gen-515"
         },
@@ -2181,6 +2177,24 @@
         {
           "position": "4",
           "work": "next-genesis"
+        }
+      ]
+    },
+    "genesis-2": {
+      "id": "genesis-2",
+      "license": "CC0-1.0",
+      "name": "Genesis",
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DCDCNKJY",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "genesis-inside-dweller-book-i"
         }
       ]
     },
@@ -3629,24 +3643,8 @@
           "work": "olympia-die-gereon-rath-romane-8"
         },
         {
-          "position": "1",
-          "work": "babylon-berlin"
-        },
-        {
           "position": "6",
           "work": "lunapark"
-        },
-        {
-          "position": "3",
-          "work": "goldstein"
-        },
-        {
-          "position": "5",
-          "work": "the-march-fallen"
-        },
-        {
-          "position": "4",
-          "work": "the-fatherland-files"
         },
         {
           "position": "10",
@@ -3663,6 +3661,36 @@
         {
           "position": "9",
           "work": "transatlantik"
+        }
+      ]
+    },
+    "gereon-rath-2": {
+      "id": "gereon-rath-2",
+      "license": "CC0-1.0",
+      "name": "Gereon Rath",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "3844918981",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "babylon-berlin"
+        },
+        {
+          "position": "3",
+          "work": "goldstein"
+        },
+        {
+          "position": "5",
+          "work": "the-march-fallen"
+        },
+        {
+          "position": "4",
+          "work": "the-fatherland-files"
         }
       ]
     },
