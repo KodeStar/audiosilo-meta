@@ -1427,6 +1427,32 @@ the tab offer an option the docs page has no instructions for, which is the
 shape of every "how do I actually use this" complaint the vague list it replaced
 got.
 
+**The site's LANGUAGE SELECTOR** (Languages Phase 4) drives the server's `lang`
+parameter. Every rule is the pure, tested `site/src/lib/languages.ts`, and
+`components/languages/` (`use-languages.ts`, `LanguageMenu`, `LanguagePrompt`)
+is glue over it. THE DEFAULT IS ALL LANGUAGES, and nothing narrows a list on a
+guess. The browser's languages are only a SUGGESTION: a one-line prompt under
+the header ("Show only Deutsch audiobooks?"), shown only while nothing is
+stored (`promptEligible`). The stored record's EXISTENCE is the answer, so
+"No thanks" stores `languages: []` and the prompt never returns. A guess MAY
+decide a language CHIP (`needsBadge`, judged against the active filter or the
+browser languages), because a chip hides nothing. The preference lives under
+`audiosilo-meta:languages`, with every access in try/catch as in
+`marketplace.ts`. `LANGUAGES_CHANGED_EVENT` plus `storage` make every island
+refetch. A `?lang=` in a shared link applies to that view and shows in the
+selector, but is NEVER stored unless the reader changes the selector, which then
+removes it from the address bar. The `api.ts` fetchers take an explicit `lang`
+with no default read from storage, because `lib/resolve-books.ts` (the import
+dedupe sweep) must stay unfiltered, and a test pins that it passes none. Search
+(header and hero), latest additions and the coverage browser follow the
+preference. The ASIN/ISBN exact lookup and entity pages never do, and the search
+panel offers a per-box "Search all languages" bypass that stores nothing.
+`/stats` is read once per page through `getStatsShared` (shared with
+StatsBand), and only when the menu opens or the prompt is eligible. The
+selector and prompt hydrate `client:idle`, and the phone-menu copy is
+`client:visible` inside its closed `<details>`. `/docs/languages` is the reader
+guide, and `audiobookshelf.astro` documents the per-language provider URL.
+
 The importer maps one export entry to a work + recording (+ people + series),
 importing **factual fields only** (LICENSING.md): it drops publisher copy, raw
 retailer genre strings, ratings and personal state, deduplicates by ASIN against the catalogue,
