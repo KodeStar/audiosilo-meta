@@ -47,9 +47,12 @@ export interface LanguagePrefs {
 }
 
 // The schema's tag pattern (common.schema.json), lowercased: a 2-3 letter
-// language and optional subtags. A tag outside it is not a language this
-// catalogue can hold, so it is dropped rather than sent.
-const TAG = /^[a-z]{2,3}(-[a-z0-9]{2,8})*$/
+// language and optional subtags - widened to admit BCP 47's one-character
+// singletons ("en-us-u-ca-gregory", "de-x-private"), which a browser may report
+// and which say nothing about the primary subtag. Only that primary subtag is
+// ever kept or sent, so the widening cannot put a tag the server refuses on
+// the wire. A tag outside it is not a language, so it is dropped.
+const TAG = /^[a-z]{2,3}(-[a-z0-9]{1,8})*$/
 
 /** A tag's primary subtag ("de-AT" -> "de", "pt_BR" -> "pt"), or '' when the
     tag is not a language tag at all. Browsers really do report malformed tags,

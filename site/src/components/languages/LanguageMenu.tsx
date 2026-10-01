@@ -68,12 +68,16 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
   const [open, setOpen] = useState(false)
   const [census, setCensus] = useState<LanguageOption[] | null>(null)
   const rootRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
   const style = VARIANTS[variant]
 
-  // The census is fetched on first open, and shared with the suggestion prompt
-  // (one /stats request a page, whoever asks first).
+  // The census is read on EVERY open, from the page's one shared /stats read
+  // (also the suggestion prompt's; one request a page, whoever asks first). A
+  // reopen after a success is answered from that memo, and since it remembers
+  // only a success, a reopen after a transient failure asks again rather than
+  // keeping "not available" for the rest of the page's life.
   useEffect(() => {
-    if (!open || census !== null) return
+    if (!open) return
     let live = true
     void loadLanguageCensus().then((c) => {
       if (live) setCensus(c)
@@ -81,7 +85,7 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
     return () => {
       live = false
     }
-  }, [open, census])
+  }, [open])
 
   // The popover closes on an outside click or Escape; the phone menu's inline
   // list stays put (the menu itself owns closing).
@@ -91,7 +95,12 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false)
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === 'Escape') {
+        setOpen(false)
+        // Back to the button the popover hangs off, so keyboard focus is not
+        // left on a checkbox that no longer exists.
+        triggerRef.current?.focus()
+      }
     }
     document.addEventListener('mousedown', onDown)
     document.addEventListener('keydown', onKey)
@@ -188,6 +197,7 @@ export default function LanguageMenu({ variant = 'bar' }: Props) {
   return (
     <div ref={rootRef} className={style.wrapper}>
       <button
+        ref={triggerRef}
         type="button"
         aria-expanded={open}
         aria-haspopup={style.popover ? 'true' : undefined}

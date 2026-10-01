@@ -80,7 +80,11 @@ function readState(prev: LanguageState): LanguageState {
   const prefs = readLanguagePrefs()
   const search = window.location.search
   const active = activeLanguages(search, prefs)
-  const browser = browserLanguages(navigator.languages ?? [navigator.language])
+  // An EMPTY navigator.languages (some webviews and privacy modes) says
+  // nothing, so navigator.language answers then too, not only when it is absent.
+  const browser = browserLanguages(
+    navigator.languages?.length ? navigator.languages : [navigator.language]
+  )
   const next: LanguageState = {
     ready: true,
     active,
@@ -132,21 +136,13 @@ function clearUrlLanguages(): void {
   window.history.replaceState(window.history.state, '', url)
 }
 
-let censusMemo: Promise<LanguageOption[]> | null = null
-
 /** The catalogue's languages, from the page's one shared `/stats` read
-    (api.ts getStatsShared - the homepage stats band reads the same response).
-    A failure resolves to an empty census - the selector says the list is
-    unavailable, the prompt stays away - and is not memoized, so a later ask may
-    succeed. */
+    (api.ts getStatsShared - the homepage stats band reads the same response,
+    and that read is what is memoized). A failure resolves to an empty census -
+    the selector says the list is unavailable, the prompt stays away - and since
+    getStatsShared does not remember a failure, a later ask may succeed. */
 export function loadLanguageCensus(): Promise<LanguageOption[]> {
-  if (!censusMemo) {
-    censusMemo = getStatsShared()
-      .then((stats) => censusOptions(stats.languages))
-      .catch(() => {
-        censusMemo = null
-        return []
-      })
-  }
-  return censusMemo
+  return getStatsShared()
+    .then((stats) => censusOptions(stats.languages))
+    .catch(() => [])
 }

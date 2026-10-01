@@ -45,6 +45,11 @@ describe('primarySubtag', () => {
     expect(primarySubtag('zh-Hant-HK')).toBe('zh')
   })
 
+  it('reads through BCP 47 singleton subtags a browser may report', () => {
+    expect(primarySubtag('en-US-u-ca-gregory')).toBe('en')
+    expect(primarySubtag('de-x-private')).toBe('de')
+  })
+
   it('answers nothing for what is not a language tag', () => {
     expect(primarySubtag('')).toBe('')
     expect(primarySubtag(null)).toBe('')

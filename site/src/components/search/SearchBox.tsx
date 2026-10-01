@@ -173,6 +173,9 @@ export default function SearchBox({
       names the filter it set aside, so a different filter is not bypassed. The
       stored preference is not touched - that is the selector's job. */
   const [bypassKey, setBypassKey] = useState<string | null>(null)
+  // The bypass ENDS when the filter it set aside changes, so choosing that
+  // filter again later starts filtered rather than reviving a stale bypass.
+  if (bypassKey !== null && bypassKey !== languages.key) setBypassKey(null)
   const allLanguages = bypassKey === languages.key
   const filter = allLanguages ? NO_FILTER : languages.active
 
