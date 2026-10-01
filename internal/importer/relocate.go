@@ -246,6 +246,13 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 		lang, _ := mapLanguage(b.str("language"))
 		claim := p.rowSeriesClaim(b, titles[i], p.rowNarratorNames(b))
 		walk := workWalk{ws: p.works[identityHomes[i]]}
+		if walk.ws == nil && p.relocation.newWorks[target] && p.works[target] != nil {
+			// An earlier row of this recording minted the destination. Phase one
+			// already agreed every row names it, so a sibling row whose credits
+			// spell an author differently joins it rather than walking on to a
+			// second candidate slug (which would abort the whole run below).
+			walk = workWalk{ws: p.works[target]}
+		}
 		if walk.ws == nil {
 			walk = p.resolveWork(titles[i], b.str("title"), suffixes[i], authors, lang, claim)
 		}
@@ -474,7 +481,9 @@ func (p *planner) noteRelocationLosses(rec *model.Recording, target, id string, 
 	}
 	for _, field := range rawentry.SortedKeys(mover) {
 		switch field {
-		case "id", "work", "asin", "isbn", "sources":
+		case "id", "work", "asin", "isbn", "sources", "narrators":
+			// narrators: a same-production merge requires the same SET, so an
+			// order difference is not a discarded fact.
 			continue
 		}
 		dropped := mover[field]
