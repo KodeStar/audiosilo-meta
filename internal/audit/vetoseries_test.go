@@ -533,7 +533,7 @@ func TestSeriesDupVetoesANonExemptDecorationThatMovesNothing(t *testing.T) {
 				"series/dh/dh.json":       seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
 				"series/dh/dh-other.json": seriesJSON(t, "dh-other", name, "one@1", "two@2"),
 			})))
-			assertVetoed(t, fd, "SER-PAREN")
+			assertVetoed(t, fd, "folding would erase the decoration that distinguishes them")
 		})
 	}
 }
@@ -623,6 +623,20 @@ func TestSeriesDupVetoesAnAbridgedSpellingNoRecordingStates(t *testing.T) {
 	}
 }
 
+// Two abridged spellings of one group share a DecorationKey, so both fold one-sided -
+// and a work both of them list without a stated abridgement is still ONE work to name.
+func TestSeriesDupNamesAnUnstatedWorkOnce(t *testing.T) {
+	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/dh/dh.json":            seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+		"series/dh/dh-abridged.json":   seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1"),
+		"series/dh/dh-abridged-2.json": seriesJSON(t, "dh-abridged-2", "Dragon Heart [abridged]", "one@1"),
+	})))
+	if fd.Propose.Target != "dh" {
+		t.Fatalf("target = %q; the fixture is not the shape this rule is about", fd.Propose.Target)
+	}
+	assertVetoed(t, fd, "no recording of one states it is abridged")
+}
+
 // The abridged exemption is "nothing moves" too, and only onto the UNDECORATED
 // survivor: a membership the plain series does not hold, or holds at another slot, is a
 // list of its own and folding it would change the plain series; and an abridged series
@@ -639,14 +653,16 @@ func TestSeriesDupVetoesAnAbridgedSpellingThatMovesSomethingOrWouldSurvive(t *te
 		{"the abridged series would survive", []string{"one@1"}, []string{"one@1", "two@2"}, "dh-abridged"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
+			// Every work states its abridgement, so the recording guard cannot be what
+			// withholds the fold: only the moves-something rule is left to.
+			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, mergeFiles(map[string]string{
 				"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", tc.plain...),
 				"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", tc.abridged...),
-			})))
+			}, abridgedRecordings(t, true, "one", "two", "three")))))
 			if fd.Propose.Target != tc.target {
 				t.Fatalf("target = %q, want %q; the fixture is not the shape this case is about", fd.Propose.Target, tc.target)
 			}
-			assertVetoed(t, fd, "SER-PAREN")
+			assertVetoed(t, fd, "folding would erase the decoration that distinguishes them")
 		})
 	}
 }

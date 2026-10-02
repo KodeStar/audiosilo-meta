@@ -1,6 +1,7 @@
 package audit
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -346,9 +347,11 @@ const (
 // oneSidedFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
 // is undecorated, every decorated member carries an exempt qualifier, and none of their
 // memberships would move - each already in the survivor at the same slot, and for an
-// ordering as many of them as the survivor holds. unstated is, in series order, every
-// work an ABRIDGED spelling lists that no recording states is abridged: a fold that
-// moves nothing still stands only when it is empty.
+// ordering as many of them as the survivor holds. unstated is, in group then series
+// order and each work once, every work an ABRIDGED spelling lists that no recording
+// states is abridged: a fold that moves nothing still stands only when it is empty.
+// (Two abridged spellings in one group - "(Abridged)" and "[abridged]" share a
+// DecorationKey - may list the same work, which is still one work to name.)
 func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target string) (movesNothing bool, unstated []string) {
 	tgt, losers, ok := splitSides(sides, target)
 	if !ok {
@@ -372,7 +375,7 @@ func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target str
 		}
 		if cover == coverPart {
 			for _, m := range l.members {
-				if !m.abridged {
+				if !m.abridged && !slices.Contains(unstated, m.work) {
 					unstated = append(unstated, m.work)
 				}
 			}
@@ -411,7 +414,8 @@ func sameDecorationSubgroups(group []seriesKeys) [][]seriesKeys {
 // very likely a DELIBERATE second ordering of one series, which the data model has
 // no other way to express, so the only honest output is "a human should look". (The
 // folds SER-DUP makes over such a pair are an ordering whose list IS the plain series'
-// list and an abridged spelling whose list the plain series already holds - see
+// list and an abridged spelling whose list the plain series already holds, every work
+// of it with a recording stating the abridgement - see
 // vetoSeriesDecoration - and those are SER-DUP's proposals, not this class's.)
 //
 // It reads the SAME key index detectSeriesDup does, and in ONE pass: the plain
@@ -449,7 +453,8 @@ func detectSeriesParen(ix *index, keys []seriesKeys) *findings {
 			fd.Propose.Others = siblings
 			fd.Propose.Reason = "the parenthetical may be a deliberate alternative ordering of the sibling series - not merged automatically, " +
 				"except the folds SER-DUP proposes: an ordering qualifier whose list IS the sibling's, slot for slot, " +
-				"and an abridged spelling whose memberships the sibling already holds at the same slots"
+				"and an abridged spelling whose memberships the sibling already holds at the same slots, " +
+				"each of whose works has a recording stating it is abridged"
 			fd.Notes = []string{"undecorated sibling: " + truncateList(siblings, 8)}
 			for _, id := range siblings {
 				if sib := ix.seriesByID[id]; sib != nil {
