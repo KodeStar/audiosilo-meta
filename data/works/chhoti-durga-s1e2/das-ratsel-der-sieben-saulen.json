@@ -452,6 +452,10 @@
             {
               "asin": "B00TOAQV46",
               "region": "us"
+            },
+            {
+              "asin": "B00THFS3O4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1941,6 +1945,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00TOAQV46",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-02",
+              "ref": "B00THFS3O4",
+              "type": "libex-import"
             }
           ],
           "work": "das-ratsel-der-templer"
@@ -1954,6 +1963,58 @@
         }
       ],
       "title": "Das Rätsel der Templer"
+    },
+    "das-ratsel-der-templer-die-ruckkehr-der-templer": {
+      "added_at": "2026-10-02",
+      "authors": [
+        "martina-andre"
+      ],
+      "genres": [
+        "science-fiction",
+        "time-travel"
+      ],
+      "id": "das-ratsel-der-templer-die-ruckkehr-der-templer",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jurgen-holdorf-2026": {
+          "abridged": false,
+          "added_at": "2026-10-02",
+          "asin": [
+            {
+              "asin": "B0HKWDY54M",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cfMvmnYQL.jpg",
+          "id": "jurgen-holdorf-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jurgen-holdorf",
+            "siegfried-knecht"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2026-09-24",
+          "runtime_min": 3458,
+          "sources": [
+            {
+              "imported_at": "2026-10-02",
+              "ref": "B0HKWDY54M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "das-ratsel-der-templer-die-ruckkehr-der-templer"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-02",
+          "ref": "B0HKWDY54M",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Das Rätsel der Templer & Die Rückkehr der Templer"
     },
     "das-ratsel-der-zeitreise": {
       "added_at": "2026-08-02",
