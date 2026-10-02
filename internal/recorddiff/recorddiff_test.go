@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 
@@ -229,11 +230,35 @@ func TestRecordingTagNamesItsProvenanceOrItsAbsence(t *testing.T) {
 		"sources": []any{map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZL"},
 			map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZM"}},
 	})
-	for _, want := range []string{"3 chapters", "2 asin(s) (de, uk)", "release 2025-03-07",
-		"sources libex-import)"} {
+	for _, want := range []string{"narrators linus-konig", "3 chapters", "2 asin(s) (de, uk)",
+		"release 2025-03-07", "sources libex-import)"} {
 		if !strings.Contains(full, want) {
 			t.Errorf("full recording %q lacks %q", full, want)
 		}
+	}
+	// A recording that does not decode says so rather than rendering nothing,
+	// which would read as a narration with no provenance at all.
+	if got := recordingTag(map[string]any{"release_date": json.Number("2025")}); !strings.Contains(got, "could not be read") {
+		t.Errorf("undecodable recording = %q, want a could-not-be-read note", got)
+	}
+	if got := recordingTag(nil); !strings.Contains(got, "not an object") {
+		t.Errorf("null recording = %q, want a not-an-object note", got)
+	}
+}
+
+// A work with no recordings gaining its first gets the same provenance line as
+// one gaining another, not a bare slug list.
+func TestFirstRecordingOfAWorkCarriesItsProvenance(t *testing.T) {
+	base := json.RawMessage(`{"title":"T"}`)
+	head := json.RawMessage(`{"title":"T","recordings":{"new-2021":{"narrators":["nate-narrator"],` +
+		`"asin":[{"region":"us","asin":"B000000001"}],"release_date":"2021-01-01","sources":[{"type":"libex-import"}]}}}`)
+	want := "recordings.new-2021: recording ADDED (narrators nate-narrator, 1 asin(s) (us), release 2021-01-01, " +
+		"0 chapters, sources libex-import)"
+	if got := diffFields(base, head); !slices.Contains(got, want) {
+		t.Errorf("first recording = %q, want %q", got, want)
+	}
+	if got := diffFields(head, base); len(got) != 1 || !strings.HasPrefix(got[0], "recordings.new-2021: recording REMOVED (narrators") {
+		t.Errorf("last recording removed = %q", got)
 	}
 }
 

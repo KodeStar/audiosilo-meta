@@ -86,6 +86,15 @@ func diffMap(prefix string, a, b map[string]any, out *[]string, depth int) {
 		}
 		av, inA := a[k]
 		bv, inB := b[k]
+		if k == recordingsKey && inA != inB {
+			// A work that had no recordings gaining its first (or losing its
+			// last) is the same event as one more or one fewer: each narration
+			// is announced with its provenance, not as a bare slug list.
+			if aMap, bMap, ok := recordingMaps(av, bv, inA); ok {
+				diffRecordings(path, aMap, bMap, out, depth)
+				continue
+			}
+		}
 		switch {
 		case !inB:
 			*out = append(*out, path+": "+renderMember(k, av)+" -> (absent)")
@@ -98,22 +107,15 @@ func diffMap(prefix string, a, b map[string]any, out *[]string, depth int) {
 }
 
 // renderMember renders a member that is present on ONE side only. It is
-// name-aware for the same two members diffValue special-cases, because appearing
-// and disappearing are the common case for both and the generic rendering is
-// what the special case exists to avoid: a chapter backfill ADDS the chapters
-// array, so collapsing it to a count only when both sides carry one would let
-// the very change the rule was written for print 120 characters of clipped
-// chapter objects.
+// name-aware for chapters, because appearing is the common case for it and the
+// generic rendering is what the special case exists to avoid: a chapter backfill
+// ADDS the chapters array, so collapsing it to a count only when both sides
+// carry one would let the very change the rule was written for print 120
+// characters of clipped chapter objects. (A recordings map present on one side
+// never reaches here: diffMap walks it as against an empty map.)
 func renderMember(name string, v any) string {
-	switch name {
-	case chaptersKey:
-		if arr, ok := v.([]any); ok {
-			return fmt.Sprintf("%d chapters", len(arr))
-		}
-	case recordingsKey:
-		if m, ok := v.(map[string]any); ok {
-			return fmt.Sprintf("%d recording(s): %s", len(m), list(sortedKeys(m)))
-		}
+	if arr, ok := v.([]any); ok && name == chaptersKey {
+		return fmt.Sprintf("%d chapters", len(arr))
 	}
 	return renderValue(v)
 }
@@ -179,16 +181,35 @@ func diffRecordings(path string, a, b map[string]any, out *[]string, depth int) 
 // EXISTING work is rendered by this one line, and with only its narrators and
 // chapter count the reviewer read a complete libex edition as one with no ASIN,
 // release date or source and flagged it (audiosilo-meta #2477).
+//
+// A recording that does not decode as one says so rather than rendering nothing:
+// a bare "recording ADDED" reads as a narration with no provenance at all, which
+// is the very misreading this tag exists to prevent.
 func recordingTag(v any) string {
+	if _, ok := v.(map[string]any); !ok {
+		return " (recording is not an object: " + clip(plainString(v), maxFieldChars) + ")"
+	}
 	raw, err := json.Marshal(v)
 	if err != nil {
-		return ""
+		return " (recording could not be read)"
 	}
 	var r recView
-	if json.Unmarshal(raw, &r) != nil {
-		return ""
+	if err := json.Unmarshal(raw, &r); err != nil {
+		return " (recording could not be read: " + clip(err.Error(), maxFieldChars) + ")"
 	}
 	return " (" + recordingFacts(r) + ")"
+}
+
+// recordingMaps returns the two sides of a recordings member present on one
+// side only (inA says which), the absent side as an empty map, when the present
+// side is an object.
+func recordingMaps(a, b any, inA bool) (aMap, bMap map[string]any, ok bool) {
+	if inA {
+		m, ok := a.(map[string]any)
+		return m, map[string]any{}, ok
+	}
+	m, ok := b.(map[string]any)
+	return map[string]any{}, m, ok
 }
 
 // arrayDelta renders an array change as the items added and removed. Comparison
