@@ -921,10 +921,15 @@ func mintsSeries(t seriesTarget, ref seriesRef) bool {
 }
 
 // namesACatalogueChain reports whether any claim's name has a catalogue series
-// (or a retired one) at the first slug of its chain - the cheap necessary
-// condition for resolving into a series the tree holds, since a chain's first
-// free slug ends it.
+// (or a retired one) at the first slug of its chain, or names the BASE of one the
+// qualifier index holds (seriesqualified.go) - the cheap necessary condition for
+// resolving into a series the tree holds, since a chain's first free slug ends
+// it and the index is the only other way in.
 func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
+	var qualified *SeriesAuthorIndex
+	if idx.p != nil {
+		qualified = idx.p.seriesIndex
+	}
 	for _, r := range refs {
 		base := Slugify(r.name)
 		if base == "" {
@@ -935,6 +940,9 @@ func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
 			return true
 		}
 		if _, retired := idx.redirects.Survivor(model.RedirectSeries, first); retired {
+			return true
+		}
+		if qualified.reachesQualified(r.name) {
 			return true
 		}
 	}

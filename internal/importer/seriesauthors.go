@@ -497,6 +497,11 @@ type SeriesAuthorIndex struct {
 	// catalogued members - the one definition pkg/check, internal/build and
 	// internal/audit read), holding only the series whose language is known.
 	language map[string]string
+	// qualified is the QUALIFIER index (seriesqualified.go): every catalogued
+	// series under the (base, language facet, ordering facet) keys its name and
+	// its stated ordering reach it by, and bases every base key it holds.
+	qualified map[qualifierKey][]string
+	bases     map[string]bool
 }
 
 // NewSeriesAuthorIndex builds the index over cat. A nil catalogue is an empty
@@ -566,6 +571,7 @@ func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAu
 		}
 	}
 	ix.large = largeHouses(counts, len(cat.Works))
+	ix.indexQualified(cat.Series)
 	return ix
 }
 
@@ -578,6 +584,7 @@ func (ix *SeriesAuthorIndex) catalogue(stored func(slug string) (string, bool), 
 		cat.evidence = func(slug string) *seriesAuthors { return ix.series[slug] }
 		cat.language = ix.language
 		cat.large = ix.large
+		cat.qualified = ix.qualified
 	}
 	return cat
 }

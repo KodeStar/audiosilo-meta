@@ -160,6 +160,9 @@ type seriesCatalogue struct {
 	// known ones; nil (a lookup answers "") judges no languages.
 	language map[string]string
 	large    map[string]bool
+	// qualified is the qualifier index (seriesqualified.go); nil reaches nothing
+	// beyond the chain.
+	qualified map[qualifierKey][]string
 }
 
 // claimOrder is a claim's canonical key: its authors, titles and publishers and
@@ -264,6 +267,11 @@ type seriesCandidate struct {
 	languages map[string]string
 	// foundedLang memoizes language() for a founded candidate; extend clears it.
 	foundedLang *string
+	// reach is, for a catalogued series the qualifier index reached
+	// (seriesqualified.go), the row language a claim must state to reach it - ""
+	// when the claim's own name states the language, which every claim of the
+	// group shares, and for every chain candidate.
+	reach string
 }
 
 // language is the candidate's derived language: the snapshot's for a
@@ -285,8 +293,13 @@ func (c *seriesCandidate) language() string {
 }
 
 // closedTo reports whether the candidate's language closes it to cl
-// (languageCloses).
+// (languageCloses), or, for one the qualifier index reached, whether cl is not a
+// claim that reaches it at all (its row states another language than the facet
+// it was reached under).
 func (c *seriesCandidate) closedTo(cl nameClaim) bool {
+	if c.reach != "" && c.reach != cl.row.language {
+		return true
+	}
 	return languageCloses(c.language(), cl.row.language)
 }
 
@@ -422,8 +435,14 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 	}
 
 	// 2. Cluster what is left by shared author, within one language: each
-	// cluster joins the first catalogued candidate, or series this batch
+	// cluster joins the first catalogued candidate - the chain's, then the ones
+	// the qualifier index reaches (seriesqualified.go) - or series this batch
 	// founded, that its language does not close and that admits it.
+	var restIdx []int
+	for _, k := range rest {
+		restIdx = append(restIdx, idx[k])
+	}
+	reached := qualifiedCandidates(cat, name, claims, restIdx, cands)
 	var founded []*seriesCandidate
 	for _, cl := range authorClusters(claims, idx, rest) {
 		combined, add := clusterEvidence(claims, idx, cl)
@@ -436,6 +455,11 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 				break
 			}
 		}
+		for c := range reached {
+			if home == nil && !reached[c].closedTo(lead) && reached[c].ev.admits(combined, add, cat.large) {
+				home, found = &reached[c], true
+			}
+		}
 		if home == nil {
 			for _, ns := range founded {
 				if !ns.closedTo(lead) && ns.ev.admits(combined, add, cat.large) {
@@ -446,12 +470,24 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 		}
 		var stepped []steppedSeries
 		if !found {
-			for c := range cands {
-				s := steppedSeries{slug: cands[c].slug}
-				if cands[c].closedTo(lead) {
-					s.language = cands[c].language()
+			step := func(c *seriesCandidate) {
+				s := steppedSeries{slug: c.slug}
+				if c.closedTo(lead) {
+					s.language = c.language()
 				}
 				stepped = append(stepped, s)
+			}
+			for c := range cands {
+				step(&cands[c])
+			}
+			// A series the index reached by the claim's OWN edition decoration is
+			// the series the name spells, whatever its stored spelling, so it is
+			// stepped past as a chain candidate is; one reached only by the row's
+			// language was never the claim's name.
+			for c := range reached {
+				if reached[c].reach == "" {
+					step(&reached[c])
+				}
 			}
 		}
 		if home == nil {

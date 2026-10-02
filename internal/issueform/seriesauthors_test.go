@@ -117,3 +117,44 @@ func TestAddWorkDoesNotExtendAnotherLanguagesSeries(t *testing.T) {
 		t.Errorf("the English volume did not extend the English series: %v", res.Messages)
 	}
 }
+
+// The QUALIFIER reach (importer seriesqualified.go) reaches the form through the
+// same resolution: a German submission of Hawke's next volume naming the plain
+// "Lost Fleet" extends the German edition series the catalogue holds, rather than
+// composing a second German series at lost-fleet-2 - and a French one, for which
+// the catalogue holds no edition, still composes its own.
+func TestAddWorkExtendsItsLanguagesEditionSeries(t *testing.T) {
+	german := map[string]string{
+		"series/lo/lost-fleet-german-edition.json": testpack.SeriesJSON(t, "lost-fleet-german-edition",
+			"Lost Fleet [German Edition]", "einfall@1", "aufstand@2"),
+	}
+	for _, w := range []string{"einfall", "aufstand"} {
+		german["works/"+w[:2]+"/"+w+"/work.json"] = testpack.WorkJSON(t, w, w, testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de"))
+		german["works/"+w[:2]+"/"+w+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", w)
+	}
+	inLang := func(title, lang string) string {
+		return strings.Replace(dupWorkBody(title, "Sarah Hawke", "Nate Narrator", "Lost Fleet", "3"),
+			field(fWorkLanguage, "en"), field(fWorkLanguage, lang), 1)
+	}
+
+	dir := formLostFleetTree(t, german)
+	res := processAddWork(t, dir, inLang("Invasion Deutsch", "de"))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !strings.Contains(readFile(t, dir, "series/lo/lost-fleet-german-edition.json"), `"work": "invasion-deutsch"`) {
+		t.Error("the German edition series was not extended")
+	}
+	if fileExists(t, dir, "series/lo/lost-fleet-2.json") {
+		t.Error("a second German series was composed at lost-fleet-2")
+	}
+
+	dir = formLostFleetTree(t, german)
+	res = processAddWork(t, dir, inLang("Invasion Francais", "fr"))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if mint := readFile(t, dir, "series/lo/lost-fleet-2.json"); !strings.Contains(mint, `"work": "invasion-francais"`) {
+		t.Errorf("the French series was not composed at lost-fleet-2:\n%s", mint)
+	}
+}

@@ -153,15 +153,11 @@ var trailingGroup = regexp.MustCompile(`^(.*?)\s*(` + bracketGroup + `)\s*$`)
 // before it, with a trailing separator trimmed. base must carry a letter or digit - a
 // name that is nothing but its decoration names no series to be the edition of.
 func SplitEditionName(name string) (base, lang string, ok bool) {
-	m := trailingGroup.FindStringSubmatch(name)
-	if m == nil {
+	base, group, ok := peelTrailingGroup(name)
+	if !ok {
 		return "", "", false
 	}
-	if lang = groupLanguage(m[2]); lang == "" {
-		return "", "", false
-	}
-	base = strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(m[1], ""))
-	if !hasAlnum(base) {
+	if lang = groupLanguage(group); lang == "" {
 		return "", "", false
 	}
 	return base, lang, true
