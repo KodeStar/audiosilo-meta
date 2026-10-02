@@ -2,6 +2,7 @@ package audit
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 
@@ -61,6 +62,9 @@ type seriesMember struct {
 	title    string
 	authors  []string
 	language string
+	// abridged: some recording of the work states `abridged: true` - the one place the
+	// data records an abridgement other than a series name (vetoSeriesDecoration).
+	abridged bool
 }
 
 // seriesSides derives a cluster's sides in the cluster's own (catalogue) order.
@@ -79,6 +83,7 @@ func seriesSideOf(ix *index, s *model.Series) seriesSide {
 		m := seriesMember{work: sw.Work, position: sw.Position}
 		if w := ix.workByID[sw.Work]; w != nil {
 			m.title, m.authors, m.language = w.Title, sortedUnique(w.Authors), w.Language
+			m.abridged = slices.ContainsFunc(w.Recordings, func(r *model.Recording) bool { return r.Abridged })
 			authors = append(authors, w.Authors...)
 		}
 		side.members = append(side.members, m)

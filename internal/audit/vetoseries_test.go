@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -537,11 +538,35 @@ func TestSeriesDupVetoesANonExemptDecorationThatMovesNothing(t *testing.T) {
 	}
 }
 
+// abridgedRecordings gives each work a second recording stating `abridged` as given -
+// the statement the abridged exemption requires of every work the decorated series
+// lists.
+func abridgedRecordings(t testing.TB, abridged bool, ids ...string) map[string]string {
+	t.Helper()
+	out := map[string]string{}
+	for _, id := range ids {
+		out["works/xx/"+id+"/recordings/ab-"+id+".json"] = recJSON(t, "ab-"+id, id, testpack.WithAbridged(abridged))
+	}
+	return out
+}
+
+// memberWorks is the work ids of "<work>@<position>" members.
+func memberWorks(members []string) []string {
+	out := make([]string, 0, len(members))
+	for _, m := range members {
+		w, _, _ := strings.Cut(m, "@")
+		out = append(out, w)
+	}
+	return out
+}
+
 // An ABRIDGED spelling whose memberships the plain series already holds at the same
-// slots is the plain list a second time: abridgement is the recording's `abridged`
-// field, not a series of its own. A part of the plain list is enough - only some volumes
-// of a series are ever abridged - and the format word is read through DecorationKey, so
-// case, bracket style and the umlaut are not a difference.
+// slots, every work of which has a recording stating `abridged: true`, is the plain list
+// a second time: abridgement is the recording's `abridged` field, not a series of its
+// own. A part of the plain list is enough - only some volumes of a series are ever
+// abridged, and only the works the abridged spelling lists need the statement - and the
+// format word is read through DecorationKey, so case, bracket style and the umlaut are
+// not a difference.
 func TestSeriesDupMergesAnAbridgedSpellingThatMovesNothing(t *testing.T) {
 	for _, name := range []string{
 		"Dragon Heart (Abridged)",
@@ -555,10 +580,10 @@ func TestSeriesDupMergesAnAbridgedSpellingThatMovesNothing(t *testing.T) {
 			"a part of it":   {"one@1", "three@3"},
 		} {
 			t.Run(name+"/"+list, func(t *testing.T) {
-				rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
+				rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, mergeFiles(map[string]string{
 					"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2", "three@3"),
 					"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", name, members...),
-				}))
+				}, abridgedRecordings(t, true, memberWorks(members)...))))
 				assertProposalsConsistent(t, rep)
 				fd := serDupMerge(t, rep)
 				assertMechanical(t, fd)
@@ -567,6 +592,34 @@ func TestSeriesDupMergesAnAbridgedSpellingThatMovesNothing(t *testing.T) {
 				}
 			})
 		}
+	}
+}
+
+// Where no recording of a work the abridged spelling lists states `abridged: true`, the
+// series name is the only record that an abridged production exists, and folding it
+// away would erase that: the group stays vetoed, naming the works that lack the
+// statement - an unstated flag and a stated false alike, and only the works lacking it.
+func TestSeriesDupVetoesAnAbridgedSpellingNoRecordingStates(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		recordings map[string]string
+		want       string
+	}{
+		{"no recording states it", nil, "no recording of one, three states it is abridged"},
+		{"a recording states false", abridgedRecordings(t, false, "one", "three"), "no recording of one, three states it is abridged"},
+		{"one listed work states it", abridgedRecordings(t, true, "one"), "no recording of three states it is abridged"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, mergeFiles(map[string]string{
+				"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2", "three@3"),
+				"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1", "three@3"),
+			}, tc.recordings))))
+			if fd.Propose.Target != "dh" {
+				t.Fatalf("target = %q; the fixture is not the shape this rule is about", fd.Propose.Target)
+			}
+			assertVetoed(t, fd, tc.want)
+			assertVetoed(t, fd, "the name is the only record of the abridgement")
+		})
 	}
 }
 
@@ -626,7 +679,7 @@ func TestSeriesDupAbridgedExemptionLeavesTheOtherVetoes(t *testing.T) {
 		"series/dh/dh.json":                   seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
 		"series/dh/dh-abridged.json":          seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1"),
 		"series/bb/beta.json":                 seriesJSON(t, "beta", "Dragon Heart Series", "beta-one@3"),
-	}))
+	}, abridgedRecordings(t, true, "one")))
 	fd := serDupMerge(t, runFixture(t, files))
 	if fd.Propose.Target != "dh" {
 		t.Fatalf("target = %q; the fixture is not the shape this rule is about", fd.Propose.Target)

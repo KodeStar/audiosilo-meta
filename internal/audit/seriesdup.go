@@ -251,7 +251,12 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 //     ever abridged, and a part of the plain list at the plain slots states no order of
 //     its own. Only those two words: "unabridged"/"ungekürzt" is what the plain name
 //     already means, and a dramatization, a Hörspiel, a radio or full-cast production is
-//     a product line with its own numbering.
+//     a product line with its own numbering. And the recording must SAY it: every work
+//     the abridged spelling lists needs a recording stating `abridged: true`, or the
+//     series name is the only record that an abridged production exists and folding
+//     it away would erase that fact - so the group stays vetoed, naming those works
+//     (3 of the 47 folds the arm made when it landed, all carrying only unabridged or
+//     unstated recordings).
 //
 // Any other one-sided decoration still vetoes, even where nothing moves: an edition, an
 // author or any other qualifier says something about the series that the plain name
@@ -276,8 +281,15 @@ func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string)
 			"tells them apart (an alternative ordering, an edition, or an author disambiguator) - see SER-PAREN", true
 	case plain == 0:
 		return "", false // one decoration, carried by every member: it tells none of them apart
-	case oneSidedFoldMovesNothing(group, sides, target):
+	}
+	movesNothing, unstated := oneSidedFoldMovesNothing(group, sides, target)
+	switch {
+	case movesNothing && len(unstated) == 0:
 		return "", false
+	case movesNothing:
+		return truncateList(decorated, 4) + " carry a parenthetical decoration the others do not, and no recording of " +
+			truncateList(unstated, 4) + " states it is abridged, so the name is the only record of the abridgement: " +
+			"folding would erase it - see SER-PAREN", true
 	}
 	return truncateList(decorated, 4) + " carry a parenthetical decoration the others do not: folding would erase " +
 		"the decoration that distinguishes them - see SER-PAREN", true
@@ -334,18 +346,20 @@ const (
 // oneSidedFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
 // is undecorated, every decorated member carries an exempt qualifier, and none of their
 // memberships would move - each already in the survivor at the same slot, and for an
-// ordering as many of them as the survivor holds.
-func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target string) bool {
+// ordering as many of them as the survivor holds. unstated is, in series order, every
+// work an ABRIDGED spelling lists that no recording states is abridged: a fold that
+// moves nothing still stands only when it is empty.
+func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target string) (movesNothing bool, unstated []string) {
 	tgt, losers, ok := splitSides(sides, target)
 	if !ok {
-		return false
+		return false, nil
 	}
 	decor := make(map[string]seriesKeys, len(group))
 	for _, k := range group {
 		decor[k.series.ID] = k
 	}
 	if decor[target].paren {
-		return false
+		return false, nil
 	}
 	for _, l := range losers {
 		k := decor[l.series.ID]
@@ -354,10 +368,17 @@ func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target str
 		}
 		cover := oneSidedDecorations[k.decor]
 		if cover == 0 || (cover == coverWhole && len(l.members) != len(tgt.members)) || !foldMovesNothing(tgt, l) {
-			return false
+			return false, nil
+		}
+		if cover == coverPart {
+			for _, m := range l.members {
+				if !m.abridged {
+					unstated = append(unstated, m.work)
+				}
+			}
 		}
 	}
-	return true
+	return true, unstated
 }
 
 // sameDecorationSubgroups is, for each comparable decoration at least two members of a
