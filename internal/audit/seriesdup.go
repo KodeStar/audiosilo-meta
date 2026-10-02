@@ -296,8 +296,8 @@ func decorClass(k seriesKeys) string {
 // oneSidedDecorations are the one-sided decorations vetoSeriesDecoration may fold away
 // (which words are in and out, and why, is stated there), keyed by
 // titlerule.DecorationKey so case, bracket style and diacritics are not a difference.
-// The value is whether the decorated list must be the survivor's WHOLE list (an
-// ordering) rather than a part of it (abridged). Both are closed vocabularies measured
+// The value says how much of the survivor's list the decorated list must be: all of it
+// (an ordering) or any part of it (abridged). Both are closed vocabularies measured
 // over the tree's bracketed series names. Orderings, every group saying "order",
 // "chronolog" or "reihenfolge": chronological order 16, publication order 12, published
 // order 6, chronological 2, and one each of recommended listening order, author's
@@ -305,20 +305,31 @@ func decorClass(k seriesKeys) string {
 // (reading order is the one entry the tree does not carry yet). Abridged, from the
 // languages plan's Phase 6 census of the format-qualified series: abridged 179 and
 // gekürzt 27 of 254.
-var oneSidedDecorations = func() map[string]bool {
-	out := map[string]bool{}
+var oneSidedDecorations = func() map[string]listCover {
+	out := map[string]listCover{}
 	for _, phrase := range []string{
 		"chronological", "chronological order", "publication order", "published order",
 		"reading order", "recommended listening order", "author's preferred order",
 		"in chronologischer Reihenfolge", "in Veröffentlichungsreihenfolge",
 	} {
-		out[titlerule.DecorationKey("("+phrase+")")] = true
+		out[titlerule.DecorationKey("("+phrase+")")] = coverWhole
 	}
 	for _, phrase := range []string{"abridged", "gekürzt"} {
-		out[titlerule.DecorationKey("("+phrase+")")] = false
+		out[titlerule.DecorationKey("("+phrase+")")] = coverPart
 	}
 	return out
 }()
+
+// listCover is how much of the survivor's list an exempt one-sided decoration's list
+// must be. Its zero value is no rule at all, so a lookup that misses can never read as
+// either arm.
+type listCover int
+
+const (
+	_          listCover = iota
+	coverWhole           // every membership, and as many of them: an ordering
+	coverPart            // any part of it: an abridged spelling
+)
 
 // oneSidedFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
 // is undecorated, every decorated member carries an exempt qualifier, and none of their
@@ -341,8 +352,8 @@ func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target str
 		if !k.paren {
 			continue
 		}
-		whole, exempt := oneSidedDecorations[k.decor]
-		if !exempt || (whole && len(l.members) != len(tgt.members)) || !foldMovesNothing(tgt, l) {
+		cover := oneSidedDecorations[k.decor]
+		if cover == 0 || (cover == coverWhole && len(l.members) != len(tgt.members)) || !foldMovesNothing(tgt, l) {
 			return false
 		}
 	}
