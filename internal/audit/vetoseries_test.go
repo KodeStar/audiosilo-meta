@@ -1,6 +1,7 @@
 package audit
 
 import (
+	"reflect"
 	"slices"
 	"strings"
 	"testing"
@@ -511,14 +512,133 @@ func TestSeriesDupVetoesAnOrderingThatWouldSurvive(t *testing.T) {
 	assertVetoed(t, fd, "SER-PAREN")
 }
 
-// Any OTHER one-sided decoration still vetoes, even where nothing moves: an edition says
-// something about the series that the plain name does not.
-func TestSeriesDupVetoesANonOrderingDecorationThatMovesNothing(t *testing.T) {
+// Any OTHER one-sided decoration still vetoes, even where nothing moves: an edition, a
+// product line or "unabridged" (which the plain name already means) says something
+// about the series that the plain name does not, or nothing the fold may assume.
+func TestSeriesDupVetoesANonExemptDecorationThatMovesNothing(t *testing.T) {
+	for _, name := range []string{
+		"Dragon Heart (Large Print)",
+		"Dragon Heart (Unabridged)",
+		"Dragon Heart (ungekürzt)",
+		"Dragon Heart (Dramatized)",
+		"Dragon Heart (Dramatized Adaptation)",
+		"Dragon Heart (Hörspiel)",
+		"Dragon Heart (Full-Cast)",
+		"Dragon Heart (Radio Drama)",
+		"Dragon Heart (Abridged Edition)",
+		"Dragon Heart (Abridged) [German Edition]",
+	} {
+		t.Run(name, func(t *testing.T) {
+			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+				"series/dh/dh.json":       seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+				"series/dh/dh-other.json": seriesJSON(t, "dh-other", name, "one@1", "two@2"),
+			})))
+			assertVetoed(t, fd, "SER-PAREN")
+		})
+	}
+}
+
+// An ABRIDGED spelling whose memberships the plain series already holds at the same
+// slots is the plain list a second time: abridgement is the recording's `abridged`
+// field, not a series of its own. A part of the plain list is enough - only some volumes
+// of a series are ever abridged - and the format word is read through DecorationKey, so
+// case, bracket style and the umlaut are not a difference.
+func TestSeriesDupMergesAnAbridgedSpellingThatMovesNothing(t *testing.T) {
+	for _, name := range []string{
+		"Dragon Heart (Abridged)",
+		"Dragon Heart (abridged)",
+		"Dragon Heart [Abridged]",
+		"Dragon Heart (Gekürzt)",
+		"Dragon Heart (gekurzt)",
+	} {
+		for list, members := range map[string][]string{
+			"the whole list": {"one@1", "two@2", "three@3"},
+			"a part of it":   {"one@1", "three@3"},
+		} {
+			t.Run(name+"/"+list, func(t *testing.T) {
+				rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
+					"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2", "three@3"),
+					"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", name, members...),
+				}))
+				assertProposalsConsistent(t, rep)
+				fd := serDupMerge(t, rep)
+				assertMechanical(t, fd)
+				if fd.Propose.Target != "dh" || !reflect.DeepEqual(fd.Propose.Others, []string{"dh-abridged"}) {
+					t.Errorf("proposal = %+v, want dh-abridged folded onto the undecorated dh", fd.Propose)
+				}
+			})
+		}
+	}
+}
+
+// The abridged exemption is "nothing moves" too: a membership the plain series does not
+// hold, or holds at another slot, is a list of its own, and folding it would change the
+// plain series.
+func TestSeriesDupVetoesAnAbridgedSpellingThatMovesSomething(t *testing.T) {
+	for name, abridged := range map[string][]string{
+		"a membership the plain series lacks": {"one@1", "three@3"},
+		"a membership at another slot":        {"one@1", "two@3"},
+	} {
+		t.Run(name, func(t *testing.T) {
+			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
+				"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+				"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", abridged...),
+			})))
+			assertVetoed(t, fd, "SER-PAREN")
+		})
+	}
+}
+
+// The survivor must be the UNDECORATED series: an abridged series holding more than the
+// plain one wins the ladder, and folding the plain name into it would erase that name.
+func TestSeriesDupVetoesAnAbridgedSpellingThatWouldSurvive(t *testing.T) {
 	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
-		"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+		"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1"),
 		"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1", "two@2"),
 	})))
+	if fd.Propose.Target != "dh-abridged" {
+		t.Fatalf("target = %q; the fixture is not the shape this rule is about", fd.Propose.Target)
+	}
 	assertVetoed(t, fd, "SER-PAREN")
+}
+
+// Two-sided: an abridged spelling beside a DIFFERENT decoration is two decorations in
+// one group, which the exemption never reaches - including an ordering that is itself
+// exempt on its own.
+func TestSeriesDupVetoesAnAbridgedSpellingBesideAnotherDecoration(t *testing.T) {
+	for _, other := range []string{"Dragon Heart (Dramatized)", "Dragon Heart (Published Order)"} {
+		t.Run(other, func(t *testing.T) {
+			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+				"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+				"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1"),
+				"series/dh/dh-other.json":    seriesJSON(t, "dh-other", other, "one@1", "two@2"),
+			})))
+			assertVetoed(t, fd, "carry different parenthetical decorations")
+		})
+	}
+}
+
+// The exemption stands the DECORATION veto down and nothing else: an abridged spelling
+// that moves nothing, in a group with an author-disjoint third series, still stops on
+// the author rule.
+func TestSeriesDupAbridgedExemptionLeavesTheOtherVetoes(t *testing.T) {
+	files := fixture(t, mergeFiles(works(t, []string{"one", "two"}, withAuthors("ann-author")), map[string]string{
+		"works/be/beta-one/work.json":         workJSON(t, "beta-one", "Beta One", withAuthors("bob-writer")),
+		"works/be/beta-one/recordings/b.json": recJSON(t, "b", "beta-one"),
+		"people/an/ann-author.json":           personJSON(t, "ann-author", "Ann Author"),
+		"people/bo/bob-writer.json":           personJSON(t, "bob-writer", "Bob Writer"),
+		"series/dh/dh.json":                   seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
+		"series/dh/dh-abridged.json":          seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1"),
+		"series/bb/beta.json":                 seriesJSON(t, "beta", "Dragon Heart Series", "beta-one@3"),
+	}))
+	fd := serDupMerge(t, runFixture(t, files))
+	if fd.Propose.Target != "dh" {
+		t.Fatalf("target = %q; the fixture is not the shape this rule is about", fd.Propose.Target)
+	}
+	assertVetoed(t, fd, "share no member-work author")
+	if strings.Contains(fd.Propose.Reason, "SER-PAREN") {
+		t.Errorf("the abridged spelling moves nothing, so the decoration rule should stand down: %s", fd.Propose.Reason)
+	}
 }
 
 // ---- ordering families -------------------------------------------------------
