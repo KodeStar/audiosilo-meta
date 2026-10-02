@@ -160,9 +160,9 @@ type seriesCatalogue struct {
 	// known ones; nil (a lookup answers "") judges no languages.
 	language map[string]string
 	large    map[string]bool
-	// qualified is the qualifier index (seriesqualified.go); nil reaches nothing
-	// beyond the chain.
-	qualified map[qualifierKey][]string
+	// qualified is the qualifier index (seriesqualified.go), built on first
+	// call; nil reaches nothing beyond the chain.
+	qualified func() qualifiedIndex
 }
 
 // claimOrder is a claim's canonical key: its authors, titles and publishers and
@@ -235,11 +235,10 @@ func resolveSeriesClaims(cat seriesCatalogue, claims []nameClaim) []seriesTarget
 func claimGroups(claims []nameClaim) (map[string][]int, []string) {
 	groups := map[string][]int{}
 	for i, c := range claims {
-		base := Slugify(c.name)
-		if base == "" {
+		key := titlerule.SeriesNameGroupKey(c.name)
+		if key == "" {
 			continue
 		}
-		key := base + "\x00" + titlerule.SeriesNameKey(c.name)
 		groups[key] = append(groups[key], i)
 	}
 	keys := make([]string, 0, len(groups))
@@ -250,35 +249,61 @@ func claimGroups(claims []nameClaim) (map[string][]int, []string) {
 	return groups, keys
 }
 
+// candidateTier is a candidate's precedence: a cluster joins the first candidate
+// that admits it in tier order, so a tier is only ever tried when every earlier
+// one declined.
+type candidateTier int
+
+const (
+	// tierChain: a catalogued series on the name's own slug chain.
+	tierChain candidateTier = iota
+	// tierDecorated: a catalogued series the qualifier index reached under the
+	// claim's own edition decoration (seriesqualified.go).
+	tierDecorated
+	// tierLanguage: one it reached under a row's language (the facet).
+	tierLanguage
+	// tierFounded: a series this batch founds.
+	tierFounded
+)
+
 // seriesCandidate is a series a name's claims may land in: a catalogued one on
-// its chain, or one the batch founds. Its evidence is the catalogue's own until
-// the batch first extends it, and a private copy after (owned).
+// its chain or reached by its qualifiers, or one the batch founds. Its evidence
+// is the catalogue's own until the batch first extends it, and a private copy
+// after (owned).
 type seriesCandidate struct {
 	slug, via string
 	chain     int
-	ev        *seriesAuthors
-	owned     bool
+	tier      candidateTier
+	// facet is the row language a tierLanguage candidate serves: only a claim
+	// stating it reaches the candidate.
+	facet string
+	ev    *seriesAuthors
+	owned bool
 	// lang is a catalogued candidate's derived language, fixed at the snapshot.
 	lang string
-	// founded marks a series this batch founds, whose language is derived from
-	// the books that founded or joined it instead: each one's language, keyed by
-	// book (one entry per book, as the evidence counts them).
-	founded   bool
+	// languages is a founded series' books' languages, keyed by book (one entry
+	// per book, as the evidence counts them), which its language derives from.
 	languages map[string]string
 	// foundedLang memoizes language() for a founded candidate; extend clears it.
 	foundedLang *string
-	// reach is, for a catalogued series the qualifier index reached
-	// (seriesqualified.go), the row language a claim must state to reach it - ""
-	// when the claim's own name states the language, which every claim of the
-	// group shares, and for every chain candidate.
-	reach string
+}
+
+// named reports whether the claim's name spells the candidate - the chain's, or
+// one its own decoration reached - which is what a claim that founds instead
+// reports as stepped past.
+func (c *seriesCandidate) named() bool { return c.tier <= tierDecorated }
+
+// reaches reports whether cl reaches the candidate at all: a tierLanguage one
+// only by a claim in its facet.
+func (c *seriesCandidate) reaches(cl nameClaim) bool {
+	return c.tier != tierLanguage || c.facet == cl.row.language
 }
 
 // language is the candidate's derived language: the snapshot's for a
 // catalogued series (a batch never flips it), and model.SeriesLanguage over its
 // own books for a founded one.
 func (c *seriesCandidate) language() string {
-	if !c.founded {
+	if c.tier != tierFounded {
 		return c.lang
 	}
 	if c.foundedLang == nil {
@@ -293,14 +318,16 @@ func (c *seriesCandidate) language() string {
 }
 
 // closedTo reports whether the candidate's language closes it to cl
-// (languageCloses), or, for one the qualifier index reached, whether cl is not a
-// claim that reaches it at all (its row states another language than the facet
-// it was reached under).
+// (languageCloses).
 func (c *seriesCandidate) closedTo(cl nameClaim) bool {
-	if c.reach != "" && c.reach != cl.row.language {
-		return true
-	}
 	return languageCloses(c.language(), cl.row.language)
+}
+
+// admits reports whether a cluster led by lead may join the candidate: lead
+// reaches it, its language does not close it, and its evidence admits the
+// cluster.
+func (c *seriesCandidate) admits(lead nameClaim, row *SeriesRow, add *seriesAuthors, large map[string]bool) bool {
+	return c.reaches(lead) && !c.closedTo(lead) && c.ev.admits(row, add, large)
 }
 
 // extend adds a claim's book to the candidate's evidence, when it places one.
@@ -313,7 +340,7 @@ func (c *seriesCandidate) extend(cl nameClaim) {
 	}
 	cl.row.prepare()
 	c.ev.add(cl.work, cl.row.forms, cl.row.pubKeys)
-	if c.founded {
+	if c.tier == tierFounded {
 		c.languages[cl.work] = cl.row.language
 		c.foundedLang = nil
 	}
@@ -325,18 +352,18 @@ func (c *seriesCandidate) extend(cl nameClaim) {
 // different decoration still is), and a retired BASE's live survivor, in chain
 // order and each once. The walk ends at the first free slug - nothing beyond it
 // can have been minted - and every other held or retired slug is occupied.
-func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate {
-	var out []seriesCandidate
+func seriesCandidates(cat seriesCatalogue, base, name string) []*seriesCandidate {
+	var out []*seriesCandidate
 	named := titlerule.NewSeriesName(name) // prepared once: every held name on the chain is compared to it
 	add := func(slug, via string) {
-		if slices.ContainsFunc(out, func(c seriesCandidate) bool { return c.slug == slug }) {
+		if slices.ContainsFunc(out, func(c *seriesCandidate) bool { return c.slug == slug }) {
 			return
 		}
 		var ev *seriesAuthors
 		if cat.evidence != nil {
 			ev = cat.evidence(slug)
 		}
-		out = append(out, seriesCandidate{slug: slug, via: via, ev: ev, lang: cat.language[slug]})
+		out = append(out, &seriesCandidate{slug: slug, via: via, ev: ev, lang: cat.language[slug], tier: tierChain})
 	}
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
@@ -395,7 +422,8 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 		placed[i] = unplaced
 	}
 
-	// 1. Anchor, in rounds judged against the evidence at the round's start.
+	// 1. Anchor, in rounds judged against the evidence at the round's start. Only
+	// the chain anchors: every other tier is tried in the cluster step alone.
 	for {
 		type anchor struct{ k, cand int }
 		var round []anchor
@@ -403,11 +431,11 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 			if placed[k] != unplaced {
 				continue
 			}
-			for c := range cands {
-				if cands[c].closedTo(claims[ci]) {
+			for c, cand := range cands {
+				if cand.tier != tierChain || cand.closedTo(claims[ci]) {
 					continue
 				}
-				if cands[c].ev.fit(claims[ci].row, cat.large) == seriesShared {
+				if cand.ev.fit(claims[ci].row, cat.large) == seriesShared {
 					round = append(round, anchor{k, c})
 					break
 				}
@@ -435,67 +463,45 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 	}
 
 	// 2. Cluster what is left by shared author, within one language: each
-	// cluster joins the first catalogued candidate - the chain's, then the ones
-	// the qualifier index reaches (seriesqualified.go) - or series this batch
-	// founded, that its language does not close and that admits it.
-	var restIdx []int
-	for _, k := range rest {
-		restIdx = append(restIdx, idx[k])
-	}
-	reached := qualifiedCandidates(cat, name, claims, restIdx, cands)
-	var founded []*seriesCandidate
+	// cluster joins the first candidate, by tier, that admits it. What the
+	// qualifier index reaches (seriesqualified.go) is looked up once, by the
+	// first cluster the chain declines.
+	reached := false
 	for _, cl := range authorClusters(claims, idx, rest) {
 		combined, add := clusterEvidence(claims, idx, cl)
 		lead := claims[idx[cl[0]]] // every claim of a cluster states one language
-		var home *seriesCandidate
-		found := false
-		for c := range cands {
-			if !cands[c].closedTo(lead) && cands[c].ev.admits(combined, add, cat.large) {
-				home, found = &cands[c], true
-				break
+		home := admitting(cands, tierChain, tierChain, lead, combined, add, cat.large)
+		if home == nil && !reached {
+			reached = true
+			var restIdx []int
+			for _, k := range rest {
+				restIdx = append(restIdx, idx[k])
 			}
-		}
-		for c := range reached {
-			if home == nil && !reached[c].closedTo(lead) && reached[c].ev.admits(combined, add, cat.large) {
-				home, found = &reached[c], true
-			}
+			cands = append(cands, qualifiedCandidates(cat, name, claims, restIdx, cands)...)
 		}
 		if home == nil {
-			for _, ns := range founded {
-				if !ns.closedTo(lead) && ns.ev.admits(combined, add, cat.large) {
-					home = ns
-					break
-				}
-			}
+			home = admitting(cands, tierDecorated, tierFounded, lead, combined, add, cat.large)
 		}
+		found := home != nil && home.tier != tierFounded
 		var stepped []steppedSeries
 		if !found {
-			step := func(c *seriesCandidate) {
+			for _, c := range cands {
+				if !c.named() {
+					continue
+				}
 				s := steppedSeries{slug: c.slug}
 				if c.closedTo(lead) {
 					s.language = c.language()
 				}
 				stepped = append(stepped, s)
 			}
-			for c := range cands {
-				step(&cands[c])
-			}
-			// A series the index reached by the claim's OWN edition decoration is
-			// the series the name spells, whatever its stored spelling, so it is
-			// stepped past as a chain candidate is; one reached only by the row's
-			// language was never the claim's name.
-			for c := range reached {
-				if reached[c].reach == "" {
-					step(&reached[c])
-				}
-			}
 		}
 		if home == nil {
 			// 3. Mint.
 			slug, chain := mintSlug(cat, base, allocated)
-			home = &seriesCandidate{slug: slug, chain: chain, ev: &seriesAuthors{}, owned: true,
-				founded: true, languages: map[string]string{}}
-			founded = append(founded, home)
+			home = &seriesCandidate{slug: slug, chain: chain, tier: tierFounded, ev: &seriesAuthors{}, owned: true,
+				languages: map[string]string{}}
+			cands = append(cands, home)
 		}
 		for _, k := range cl {
 			home.extend(claims[idx[k]])
@@ -506,6 +512,19 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 			}
 		}
 	}
+}
+
+// admitting is the first candidate in tiers lo..hi, by tier and then list order,
+// that admits a cluster led by lead, or nil.
+func admitting(cands []*seriesCandidate, lo, hi candidateTier, lead nameClaim, row *SeriesRow, add *seriesAuthors, large map[string]bool) *seriesCandidate {
+	for t := lo; t <= hi; t++ {
+		for _, c := range cands {
+			if c.tier == t && c.admits(lead, row, add, large) {
+				return c
+			}
+		}
+	}
+	return nil
 }
 
 // authorClusters groups the claims at positions rest (into idx) by shared author,

@@ -926,10 +926,6 @@ func mintsSeries(t seriesTarget, ref seriesRef) bool {
 // resolving into a series the tree holds, since a chain's first free slug ends
 // it and the index is the only other way in.
 func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
-	var qualified *SeriesAuthorIndex
-	if idx.p != nil {
-		qualified = idx.p.seriesIndex
-	}
 	for _, r := range refs {
 		base := Slugify(r.name)
 		if base == "" {
@@ -942,11 +938,17 @@ func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
 		if _, retired := idx.redirects.Survivor(model.RedirectSeries, first); retired {
 			return true
 		}
-		if qualified.reachesQualified(r.name) {
+		if idx.holdsQualifiedBase(r.name, base) {
 			return true
 		}
 	}
 	return false
+}
+
+// holdsQualifiedBase is SeriesAuthorIndex.holdsQualifiedBase over the planner's
+// index; base is the name's own slug.
+func (idx seriesIndex) holdsQualifiedBase(name, base string) bool {
+	return idx.p != nil && idx.p.seriesIndex.holdsQualifiedBase(name, base)
 }
 
 // catalogue is the index as the series resolution reads it: the planner's own.

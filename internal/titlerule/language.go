@@ -55,7 +55,7 @@ var editionLanguagePhrases = func() map[string]string {
 
 // groupLanguage is the language a bracketed group's contents state, or "".
 func groupLanguage(group string) string {
-	return editionLanguagePhrases[model.SlugifyWhole(group[1:len(group)-1])]
+	return editionLanguagePhrases[model.SlugifyWhole(groupContents(group))]
 }
 
 // EditionLanguage is the primary language subtag the own-language edition

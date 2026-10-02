@@ -292,10 +292,8 @@ func TestATiedSeriesIsNotIndexed(t *testing.T) {
 	cat := gemmell(&model.Series{ID: "drenai-saga-2", Name: "Drenai Saga", Works: members()})
 	cat.Works[1].Language = "de" // one en, one de: a tie
 	ix := NewSeriesAuthorIndex(cat)
-	for k, slugs := range ix.qualified {
-		if strings.Contains(strings.Join(slugs, ","), "drenai-saga-2") {
-			t.Errorf("a tied series is indexed under %+v", k)
-		}
+	if got := ix.qualifiedIndex(); len(got) != 0 {
+		t.Errorf("a tied series is indexed: %v", got)
 	}
 	if m := resolveIn(cat, "Drenai Saga", "en"); m.Found {
 		t.Errorf("a claim reached the tied series off its chain: %+v", m)
@@ -320,5 +318,20 @@ func TestLibexSelectReachesAQualifiedSeries(t *testing.T) {
 	}
 	if res.Excluded[reasonNoSeries.report] != 1 {
 		t.Errorf("excluded = %v, want the French row as no catalogue series", res.Excluded)
+	}
+}
+
+// The index is built lazily: an index nothing asks never builds it, and a lookup
+// builds it once.
+func TestQualifiedIndexIsBuiltOnFirstUse(t *testing.T) {
+	ix := NewSeriesAuthorIndex(gemmell(&model.Series{ID: "drenai", Name: "Drenai", Works: members()}))
+	if ix.qualified != nil || ix.qualifiedFrom == nil {
+		t.Fatal("the qualifier index was built before anything asked for it")
+	}
+	if !ix.holdsQualifiedBase("Drenai (Published Order)", "drenai-published-order") || ix.qualifiedFrom != nil {
+		t.Error("a lookup did not build the index from the catalogue's series")
+	}
+	if ix.holdsQualifiedBase("Waylander", "waylander") {
+		t.Error("a base no series holds was reported held")
 	}
 }

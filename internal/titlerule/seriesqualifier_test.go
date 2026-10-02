@@ -23,6 +23,7 @@ func TestReadSeriesQualifiers(t *testing.T) {
 		{"Roma Sub Rosa (Chronological)", SeriesQualifiers{"Roma Sub Rosa", "", model.OrderingChronological}},
 		{"The Chronicles of Narnia (Author's Preferred Order)", SeriesQualifiers{"The Chronicles of Narnia", "", model.OrderingRecommended}},
 		{"Jackman & Evans (Recommended Listening Order)", SeriesQualifiers{"Jackman & Evans", "", model.OrderingRecommended}},
+		{"The Witcher (Reading Order)", SeriesQualifiers{"The Witcher", "", model.OrderingRecommended}},
 		{"Jack Ryan (in chronologischer Reihenfolge)", SeriesQualifiers{"Jack Ryan", "", model.OrderingChronological}},
 		{"Erweitertes Jack-Ryan-Universum (in Veröffentlichungsreihenfolge)", SeriesQualifiers{"Erweitertes Jack-Ryan-Universum", "", model.OrderingPublication}},
 		// Both, in either order.
@@ -88,5 +89,24 @@ func TestOrderingPhrasesMapOntoTheModelEnum(t *testing.T) {
 		if model.SlugifyWhole(phrase) != phrase {
 			t.Errorf("%q is not in slug form", phrase)
 		}
+	}
+}
+
+// OrderingOfDecoration classifies a single group's DecorationKey, the form
+// internal/audit reads decorations in; a key naming no ordering, or several
+// groups, states none.
+func TestOrderingOfDecoration(t *testing.T) {
+	for name, want := range map[string]string{
+		"Drenai (Publication Order)":            model.OrderingPublication,
+		"Narnia (Author's Preferred Order)":     model.OrderingRecommended,
+		"Drenai (Abridged)":                     "",
+		"Drenai (Publication Order) (Abridged)": "",
+	} {
+		if got := OrderingOfDecoration(DecorationKey(name)); got != want {
+			t.Errorf("OrderingOfDecoration(DecorationKey(%q) = %q) = %q, want %q", name, DecorationKey(name), got, want)
+		}
+	}
+	if groupOrdering("Publication Order") != "" || groupOrdering("(") != "" {
+		t.Error("a string that is not one bracketed group was read as an ordering")
 	}
 }

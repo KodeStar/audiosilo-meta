@@ -255,18 +255,14 @@ func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 }
 
 // seriesBaseKey is a series name's equality key over the base its edition decoration
-// leaves: the slug and titlerule.SeriesNameKey, the two halves of the importer's own
+// leaves: titlerule.SeriesNameGroupKey, the key of the importer's own
 // SameSeriesName, so "Throne of Glass" and "Throne of Glass [French Edition]" meet
 // and "Throne of Glass (Published Order)" does not. "" for a name with no slug.
 func seriesBaseKey(name string) string {
 	if b, _, ok := titlerule.SplitEditionName(name); ok {
 		name = b
 	}
-	slug := model.Slugify(name)
-	if slug == "" {
-		return ""
-	}
-	return slug + "\x00" + titlerule.SeriesNameKey(name)
+	return titlerule.SeriesNameGroupKey(name)
 }
 
 // mixMember is one minority membership and the evidence about it.
