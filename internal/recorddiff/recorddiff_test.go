@@ -200,8 +200,8 @@ func TestModifiedEntryIsDiffedFieldByField(t *testing.T) {
 		"recordings.nate-2020.runtime_min: 400 -> 420",
 		// The provenance is in the line: a recording added to an existing work
 		// is rendered by it alone (#2477).
-		"recordings.new-2021: recording ADDED (narrators nate-narrator, 0 chapters, ASIN BKHEX7OJ8H us, " +
-			"released 2020-01-01, source libex-import)",
+		"recordings.new-2021: recording ADDED (narrators nate-narrator, 1 asin(s) (us), release 2020-01-01, " +
+			"0 chapters, sources libex-import)",
 		"recordings.gone-2019: recording REMOVED",
 	} {
 		if !strings.Contains(fields, w) {
@@ -218,7 +218,7 @@ func TestModifiedEntryIsDiffedFieldByField(t *testing.T) {
 // sees a real provenance gap, and one reading an ASIN sees there is none.
 func TestRecordingTagNamesItsProvenanceOrItsAbsence(t *testing.T) {
 	bare := recordingTag(map[string]any{"narrators": []any{"nate-narrator"}})
-	if want := " (narrators nate-narrator, 0 chapters, ASIN (none), released (none), source (none))"; bare != want {
+	if want := " (narrators nate-narrator, 0 asin(s), release (none), 0 chapters, sources (none))"; bare != want {
 		t.Errorf("bare recording = %q, want %q", bare, want)
 	}
 	full := recordingTag(map[string]any{
@@ -229,8 +229,8 @@ func TestRecordingTagNamesItsProvenanceOrItsAbsence(t *testing.T) {
 		"sources": []any{map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZL"},
 			map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZM"}},
 	})
-	for _, want := range []string{"3 chapters", "ASIN B0DWSPY2ZL uk, B0DWSPY2ZM de", "released 2025-03-07",
-		"source libex-import)"} {
+	for _, want := range []string{"3 chapters", "2 asin(s) (de, uk)", "release 2025-03-07",
+		"sources libex-import)"} {
 		if !strings.Contains(full, want) {
 			t.Errorf("full recording %q lacks %q", full, want)
 		}

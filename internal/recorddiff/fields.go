@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
-	"slices"
 	"strconv"
 	"strings"
 
@@ -175,58 +174,21 @@ func diffRecordings(path string, a, b map[string]any, out *[]string, depth int) 
 }
 
 // recordingTag is the parenthetical that says what an added or removed narration
-// was, so the line stands on its own - provenance included: its ASINs with their
-// regions, its release date and its source types, each "(none)" when absent. A
-// recording newly added to an EXISTING work is rendered by this one line, and
-// without its provenance the reviewer read a complete libex edition as one with
-// no ASIN, release date or source and flagged it (audiosilo-meta #2477).
+// was, so the line stands on its own: the same facts an added work's bracket
+// gives (recordingFacts), provenance included. A recording newly added to an
+// EXISTING work is rendered by this one line, and with only its narrators and
+// chapter count the reviewer read a complete libex edition as one with no ASIN,
+// release date or source and flagged it (audiosilo-meta #2477).
 func recordingTag(v any) string {
-	m, ok := v.(map[string]any)
-	if !ok {
+	raw, err := json.Marshal(v)
+	if err != nil {
 		return ""
 	}
-	narrators := "(none)"
-	if arr, ok := m["narrators"].([]any); ok && len(arr) > 0 {
-		names := make([]string, 0, len(arr))
-		for _, n := range arr {
-			names = append(names, plainString(n))
-		}
-		narrators = list(names)
+	var r recView
+	if json.Unmarshal(raw, &r) != nil {
+		return ""
 	}
-	chapters := 0
-	if arr, ok := m[chaptersKey].([]any); ok {
-		chapters = len(arr)
-	}
-	asins := "(none)"
-	if arr, ok := m["asin"].([]any); ok && len(arr) > 0 {
-		ids := make([]string, 0, len(arr))
-		for _, a := range arr {
-			if am, ok := a.(map[string]any); ok {
-				ids = append(ids, strings.TrimSpace(plainString(am["asin"])+" "+plainString(am["region"])))
-			}
-		}
-		asins = list(ids)
-	}
-	released := "(none)"
-	if d, ok := m["release_date"].(string); ok && d != "" {
-		released = d
-	}
-	sources := "(none)"
-	if arr, ok := m["sources"].([]any); ok && len(arr) > 0 {
-		var types []string
-		for _, src := range arr {
-			if sm, ok := src.(map[string]any); ok {
-				if t := plainString(sm["type"]); t != "" && !slices.Contains(types, t) {
-					types = append(types, t)
-				}
-			}
-		}
-		if len(types) > 0 {
-			sources = list(types)
-		}
-	}
-	return fmt.Sprintf(" (narrators %s, %d chapters, ASIN %s, released %s, source %s)",
-		narrators, chapters, asins, released, sources)
+	return " (" + recordingFacts(r) + ")"
 }
 
 // arrayDelta renders an array change as the items added and removed. Comparison

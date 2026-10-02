@@ -173,6 +173,13 @@ func workSummary(slug string, raw json.RawMessage) string {
 
 // recordingSummary renders one narration's bracket.
 func recordingSummary(slug string, r recView) string {
+	return slug + ": " + recordingFacts(r)
+}
+
+// recordingFacts is what a narration is - its narrators, ASIN count and regions,
+// release date, chapter count and source types - for an added work's bracket and
+// for a recording added to or removed from an existing work alike (recordingTag).
+func recordingFacts(r recView) string {
 	regions := make([]string, 0, len(r.ASIN))
 	for _, a := range r.ASIN {
 		if a.Region != "" {
@@ -187,8 +194,8 @@ func recordingSummary(slug string, r recView) string {
 	for _, s := range r.Sources {
 		types = append(types, s.Type)
 	}
-	return fmt.Sprintf("%s: narrators %s, %s, release %s, %d chapters, sources %s",
-		slug, list(r.Narrators), asins, value(r.ReleaseDate), len(r.Chapters), list(unique(types)))
+	return fmt.Sprintf("narrators %s, %s, release %s, %d chapters, sources %s",
+		list(r.Narrators), asins, value(r.ReleaseDate), len(r.Chapters), list(unique(types)))
 }
 
 // personView is the subset of a person record a summary states.
