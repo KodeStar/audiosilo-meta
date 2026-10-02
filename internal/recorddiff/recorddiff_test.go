@@ -198,7 +198,10 @@ func TestModifiedEntryIsDiffedFieldByField(t *testing.T) {
 		"authors: +john-roe",
 		"genres: -horror",
 		"recordings.nate-2020.runtime_min: 400 -> 420",
-		"recordings.new-2021: recording ADDED (narrators nate-narrator, 0 chapters)",
+		// The provenance is in the line: a recording added to an existing work
+		// is rendered by it alone (#2477).
+		"recordings.new-2021: recording ADDED (narrators nate-narrator, 0 chapters, ASIN BKHEX7OJ8H us, " +
+			"released 2020-01-01, source libex-import)",
 		"recordings.gone-2019: recording REMOVED",
 	} {
 		if !strings.Contains(fields, w) {
@@ -208,6 +211,29 @@ func TestModifiedEntryIsDiffedFieldByField(t *testing.T) {
 	// The whole entry is never dumped: the diff is structural.
 	if strings.Contains(fields, "\"license\"") {
 		t.Errorf("an unchanged field leaked into the diff:\n%s", fields)
+	}
+}
+
+// A recording's line says outright what it lacks: a reviewer reading "(none)"
+// sees a real provenance gap, and one reading an ASIN sees there is none.
+func TestRecordingTagNamesItsProvenanceOrItsAbsence(t *testing.T) {
+	bare := recordingTag(map[string]any{"narrators": []any{"nate-narrator"}})
+	if want := " (narrators nate-narrator, 0 chapters, ASIN (none), released (none), source (none))"; bare != want {
+		t.Errorf("bare recording = %q, want %q", bare, want)
+	}
+	full := recordingTag(map[string]any{
+		"narrators":    []any{"linus-konig"},
+		"chapters":     []any{map[string]any{}, map[string]any{}, map[string]any{}},
+		"asin":         []any{map[string]any{"asin": "B0DWSPY2ZL", "region": "uk"}, map[string]any{"asin": "B0DWSPY2ZM", "region": "de"}},
+		"release_date": "2025-03-07",
+		"sources": []any{map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZL"},
+			map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZM"}},
+	})
+	for _, want := range []string{"3 chapters", "ASIN B0DWSPY2ZL uk, B0DWSPY2ZM de", "released 2025-03-07",
+		"source libex-import)"} {
+		if !strings.Contains(full, want) {
+			t.Errorf("full recording %q lacks %q", full, want)
+		}
 	}
 }
 
