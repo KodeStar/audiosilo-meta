@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 
@@ -198,7 +199,10 @@ func TestModifiedEntryIsDiffedFieldByField(t *testing.T) {
 		"authors: +john-roe",
 		"genres: -horror",
 		"recordings.nate-2020.runtime_min: 400 -> 420",
-		"recordings.new-2021: recording ADDED (narrators nate-narrator, 0 chapters)",
+		// The provenance is in the line: a recording added to an existing work
+		// is rendered by it alone (#2477).
+		"recordings.new-2021: recording ADDED (narrators nate-narrator, 1 asin(s) (us), release 2020-01-01, " +
+			"0 chapters, sources libex-import)",
 		"recordings.gone-2019: recording REMOVED",
 	} {
 		if !strings.Contains(fields, w) {
@@ -208,6 +212,53 @@ func TestModifiedEntryIsDiffedFieldByField(t *testing.T) {
 	// The whole entry is never dumped: the diff is structural.
 	if strings.Contains(fields, "\"license\"") {
 		t.Errorf("an unchanged field leaked into the diff:\n%s", fields)
+	}
+}
+
+// A recording's line says outright what it lacks: a reviewer reading "(none)"
+// sees a real provenance gap, and one reading an ASIN sees there is none.
+func TestRecordingTagNamesItsProvenanceOrItsAbsence(t *testing.T) {
+	bare := recordingTag(map[string]any{"narrators": []any{"nate-narrator"}})
+	if want := " (narrators nate-narrator, 0 asin(s), release (none), 0 chapters, sources (none))"; bare != want {
+		t.Errorf("bare recording = %q, want %q", bare, want)
+	}
+	full := recordingTag(map[string]any{
+		"narrators":    []any{"linus-konig"},
+		"chapters":     []any{map[string]any{}, map[string]any{}, map[string]any{}},
+		"asin":         []any{map[string]any{"asin": "B0DWSPY2ZL", "region": "uk"}, map[string]any{"asin": "B0DWSPY2ZM", "region": "de"}},
+		"release_date": "2025-03-07",
+		"sources": []any{map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZL"},
+			map[string]any{"type": "libex-import", "ref": "B0DWSPY2ZM"}},
+	})
+	for _, want := range []string{"narrators linus-konig", "3 chapters", "2 asin(s) (de, uk)",
+		"release 2025-03-07", "sources libex-import)"} {
+		if !strings.Contains(full, want) {
+			t.Errorf("full recording %q lacks %q", full, want)
+		}
+	}
+	// A recording that does not decode says so rather than rendering nothing,
+	// which would read as a narration with no provenance at all.
+	if got := recordingTag(map[string]any{"release_date": json.Number("2025")}); !strings.Contains(got, "could not be read") {
+		t.Errorf("undecodable recording = %q, want a could-not-be-read note", got)
+	}
+	if got := recordingTag(nil); !strings.Contains(got, "not an object") {
+		t.Errorf("null recording = %q, want a not-an-object note", got)
+	}
+}
+
+// A work with no recordings gaining its first gets the same provenance line as
+// one gaining another, not a bare slug list.
+func TestFirstRecordingOfAWorkCarriesItsProvenance(t *testing.T) {
+	base := json.RawMessage(`{"title":"T"}`)
+	head := json.RawMessage(`{"title":"T","recordings":{"new-2021":{"narrators":["nate-narrator"],` +
+		`"asin":[{"region":"us","asin":"B000000001"}],"release_date":"2021-01-01","sources":[{"type":"libex-import"}]}}}`)
+	want := "recordings.new-2021: recording ADDED (narrators nate-narrator, 1 asin(s) (us), release 2021-01-01, " +
+		"0 chapters, sources libex-import)"
+	if got := diffFields(base, head); !slices.Contains(got, want) {
+		t.Errorf("first recording = %q, want %q", got, want)
+	}
+	if got := diffFields(head, base); len(got) != 1 || !strings.HasPrefix(got[0], "recordings.new-2021: recording REMOVED (narrators") {
+		t.Errorf("last recording removed = %q", got)
 	}
 }
 
