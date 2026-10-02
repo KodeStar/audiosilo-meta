@@ -32,7 +32,7 @@
 # moving pointer, so an unpinned build is not reproducible and a compromised or
 # simply retagged upstream lands silently. .github/dependabot.yml owns keeping
 # these current - do not hand-edit a digest without the tag it belongs to.
-FROM node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 AS site
+FROM node:26-alpine@sha256:0b36e8c136b94cd4fcf02188228e76c31ad5872eef3fec8cbd2eee500cfd9e80 AS site
 WORKDIR /site
 # Enable Corepack so the repo's pinned yarn is used.
 RUN corepack enable
