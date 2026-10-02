@@ -1,7 +1,6 @@
 package audit
 
 import (
-	"reflect"
 	"slices"
 	"strings"
 	"testing"
@@ -563,7 +562,7 @@ func TestSeriesDupMergesAnAbridgedSpellingThatMovesNothing(t *testing.T) {
 				assertProposalsConsistent(t, rep)
 				fd := serDupMerge(t, rep)
 				assertMechanical(t, fd)
-				if fd.Propose.Target != "dh" || !reflect.DeepEqual(fd.Propose.Others, []string{"dh-abridged"}) {
+				if fd.Propose.Target != "dh" || !slices.Equal(fd.Propose.Others, []string{"dh-abridged"}) {
 					t.Errorf("proposal = %+v, want dh-abridged folded onto the undecorated dh", fd.Propose)
 				}
 			})
@@ -571,35 +570,32 @@ func TestSeriesDupMergesAnAbridgedSpellingThatMovesNothing(t *testing.T) {
 	}
 }
 
-// The abridged exemption is "nothing moves" too: a membership the plain series does not
-// hold, or holds at another slot, is a list of its own, and folding it would change the
-// plain series.
-func TestSeriesDupVetoesAnAbridgedSpellingThatMovesSomething(t *testing.T) {
-	for name, abridged := range map[string][]string{
-		"a membership the plain series lacks": {"one@1", "three@3"},
-		"a membership at another slot":        {"one@1", "two@3"},
+// The abridged exemption is "nothing moves" too, and only onto the UNDECORATED
+// survivor: a membership the plain series does not hold, or holds at another slot, is a
+// list of its own and folding it would change the plain series; and an abridged series
+// holding more than the plain one wins the ladder, so folding the plain name into it
+// would erase that name.
+func TestSeriesDupVetoesAnAbridgedSpellingThatMovesSomethingOrWouldSurvive(t *testing.T) {
+	for _, tc := range []struct {
+		name            string
+		plain, abridged []string
+		target          string
+	}{
+		{"a membership the plain series lacks", []string{"one@1", "two@2"}, []string{"one@1", "three@3"}, "dh"},
+		{"a membership at another slot", []string{"one@1", "two@2"}, []string{"one@1", "two@3"}, "dh"},
+		{"the abridged series would survive", []string{"one@1"}, []string{"one@1", "two@2"}, "dh-abridged"},
 	} {
-		t.Run(name, func(t *testing.T) {
+		t.Run(tc.name, func(t *testing.T) {
 			fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
-				"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2"),
-				"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", abridged...),
+				"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", tc.plain...),
+				"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", tc.abridged...),
 			})))
+			if fd.Propose.Target != tc.target {
+				t.Fatalf("target = %q, want %q; the fixture is not the shape this case is about", fd.Propose.Target, tc.target)
+			}
 			assertVetoed(t, fd, "SER-PAREN")
 		})
 	}
-}
-
-// The survivor must be the UNDECORATED series: an abridged series holding more than the
-// plain one wins the ladder, and folding the plain name into it would erase that name.
-func TestSeriesDupVetoesAnAbridgedSpellingThatWouldSurvive(t *testing.T) {
-	fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
-		"series/dh/dh.json":          seriesJSON(t, "dh", "Dragon Heart", "one@1"),
-		"series/dh/dh-abridged.json": seriesJSON(t, "dh-abridged", "Dragon Heart (Abridged)", "one@1", "two@2"),
-	})))
-	if fd.Propose.Target != "dh-abridged" {
-		t.Fatalf("target = %q; the fixture is not the shape this rule is about", fd.Propose.Target)
-	}
-	assertVetoed(t, fd, "SER-PAREN")
 }
 
 // Two-sided: an abridged spelling beside a DIFFERENT decoration is two decorations in

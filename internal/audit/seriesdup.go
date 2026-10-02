@@ -293,15 +293,19 @@ func decorClass(k seriesKeys) string {
 	return k.decor
 }
 
-// orderingDecorations are the parentheticals that state an ORDERING of a series and
-// nothing else, as titlerule.DecorationKey folds them. A closed vocabulary, measured
-// over the tree's bracketed series names (every group there saying "order",
-// "chronolog" or "reihenfolge"): chronological order 16, publication order 12,
-// published order 6, chronological 2, and one each of recommended listening order,
-// author's preferred order, in chronologischer Reihenfolge and in
-// Veroeffentlichungsreihenfolge. Reading order is the one entry the tree does not
-// carry yet.
-var orderingDecorations = func() map[string]bool {
+// oneSidedDecorations are the one-sided decorations vetoSeriesDecoration may fold away
+// (which words are in and out, and why, is stated there), keyed by
+// titlerule.DecorationKey so case, bracket style and diacritics are not a difference.
+// The value is whether the decorated list must be the survivor's WHOLE list (an
+// ordering) rather than a part of it (abridged). Both are closed vocabularies measured
+// over the tree's bracketed series names. Orderings, every group saying "order",
+// "chronolog" or "reihenfolge": chronological order 16, publication order 12, published
+// order 6, chronological 2, and one each of recommended listening order, author's
+// preferred order, in chronologischer Reihenfolge and in Veroeffentlichungsreihenfolge
+// (reading order is the one entry the tree does not carry yet). Abridged, from the
+// languages plan's Phase 6 census of the format-qualified series: abridged 179 and
+// gekürzt 27 of 254.
+var oneSidedDecorations = func() map[string]bool {
 	out := map[string]bool{}
 	for _, phrase := range []string{
 		"chronological", "chronological order", "publication order", "published order",
@@ -310,35 +314,11 @@ var orderingDecorations = func() map[string]bool {
 	} {
 		out[titlerule.DecorationKey("("+phrase+")")] = true
 	}
-	return out
-}()
-
-// formatDecorations are the FORMAT qualifiers vetoSeriesDecoration's one-sided exemption
-// admits, as titlerule.DecorationKey folds them (case and diacritics away, so
-// "(Gekürzt)" and "[gekurzt]" are one key). A closed vocabulary, from the languages
-// plan's Phase 6 census of the format-qualified series: abridged 179 and gekürzt 27 of
-// 254. The other format words that census found - dramatized, Hörspiel, radio,
-// full-cast, ungekürzt - are deliberately absent (see vetoSeriesDecoration).
-var formatDecorations = func() map[string]bool {
-	out := map[string]bool{}
 	for _, phrase := range []string{"abridged", "gekürzt"} {
-		out[titlerule.DecorationKey("("+phrase+")")] = true
+		out[titlerule.DecorationKey("("+phrase+")")] = false
 	}
 	return out
 }()
-
-// oneSidedDecoration reports whether a one-sided decoration may be folded away when it
-// moves nothing, and whether the decorated list must then be the survivor's WHOLE list
-// (an ordering) rather than a part of it (a format).
-func oneSidedDecoration(decor string) (exempt, whole bool) {
-	switch {
-	case orderingDecorations[decor]:
-		return true, true
-	case formatDecorations[decor]:
-		return true, false
-	}
-	return false, false
-}
 
 // oneSidedFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
 // is undecorated, every decorated member carries an exempt qualifier, and none of their
@@ -361,7 +341,7 @@ func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target str
 		if !k.paren {
 			continue
 		}
-		exempt, whole := oneSidedDecoration(k.decor)
+		whole, exempt := oneSidedDecorations[k.decor]
 		if !exempt || (whole && len(l.members) != len(tgt.members)) || !foldMovesNothing(tgt, l) {
 			return false
 		}
