@@ -338,3 +338,21 @@ func TestOrderingTwinNeedsExactlyOneTwin(t *testing.T) {
 		}
 	}
 }
+
+// Two orphans holding the same list are each other's twin: the fold is proposed once,
+// onto the better-ranked spelling, never both ways.
+func TestOrderingTwinIsProposedInOneDirection(t *testing.T) {
+	rep := runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/jr/novel.json": withOrdering(t, seriesJSON(t, "novel", "A Jack Ryan Novel (publication order)",
+			"two@2"), "publication"),
+		"series/jr/universe.json": withOrdering(t, seriesJSON(t, "universe", "The Jack Ryan Universe (publication order)",
+			"two@2"), "publication"),
+	}))
+	got := subclassOf(t, rep, ClassSeriesDup, serDupTwin)
+	if len(got) != 1 {
+		t.Fatalf("want one ordering-twin record, got %+v", got)
+	}
+	if p := got[0].Propose; p.Target != "novel" || !slices.Equal(p.Others, []string{"universe"}) {
+		t.Errorf("proposal = %+v, want universe folded onto novel", p)
+	}
+}

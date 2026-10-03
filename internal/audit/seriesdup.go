@@ -181,8 +181,13 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 // that found them. target is the spelling the proposal would keep, which the directional
 // rules need: folding a loser INTO it is what makes a claim.
 func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
+	return seriesMergeVetoesOver(ix, group, seriesSides(ix, group), target)
+}
+
+// seriesMergeVetoesOver is seriesMergeVetoes over sides the caller already holds,
+// one per group member in the group's order.
+func seriesMergeVetoesOver(ix *index, group []seriesKeys, sides []seriesSide, target string) []string {
 	var out []string
-	sides := seriesSides(ix, group)
 
 	// ORDERING FAMILY: two series the data STATES are orderings of one franchise are
 	// deliberately two records, however alike their names read.

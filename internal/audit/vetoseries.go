@@ -406,8 +406,8 @@ func memberPositions(s seriesSide) []string {
 //
 // One disagreement is classified apart: a loser STATING the target's ordering that lists
 // only the target's works in the same relative order under other numbers
-// (renumberedOnto). Its reason opens with renumberedVeto, which is how SER-DUP's
-// family-renumbered fold (seriesfamily.go) tells it from every other disagreement.
+// (renumberedOnto) gets a reason of its own; SER-DUP's family-renumbered fold
+// (seriesfamily.go) asks renumberedOnto itself rather than reading this text.
 func vetoSeriesOrderingDisagrees(sides []seriesSide, targetID string) (string, bool) {
 	target, losers, ok := splitSides(sides, targetID)
 	if !ok {
@@ -415,8 +415,8 @@ func vetoSeriesOrderingDisagrees(sides []seriesSide, targetID string) (string, b
 	}
 	for _, l := range losers {
 		if renumberedOnto(target, l) {
-			return fmt.Sprintf("%s%s states the %s order %s states and lists only its works, in the same relative order, "+
-				"under other numbers: two numberings are not one series", renumberedVeto, l.series.ID,
+			return fmt.Sprintf("two numberings of one order: %s states the %s order %s states and lists only its works, "+
+				"in the same relative order, under other numbers: two numberings are not one series", l.series.ID,
 				statedOrdering(l.series), target.series.ID), true
 		}
 		for _, a := range target.members {
@@ -437,9 +437,6 @@ func vetoSeriesOrderingDisagrees(sides []seriesSide, targetID string) (string, b
 	}
 	return "", false
 }
-
-// renumberedVeto opens the ordering-agreement reason for a renumbering.
-const renumberedVeto = "two numberings of one order: "
 
 // foldMovesNothing reports whether every membership of a loser is already in the target
 // at the same slot, so folding it changes no ordering - the pure duplicate-spelling

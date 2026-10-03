@@ -4,7 +4,6 @@ import (
 	"cmp"
 	"fmt"
 	"slices"
-	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -117,6 +116,8 @@ type foldVerdict struct {
 	kind    foldKind
 	target  seriesKeys
 	passers []seriesKeys
+	// vetoes are the pair vetoes against target, for the review that names them.
+	vetoes []string
 }
 
 // root is the candidate the loser resolves toward, for closesToRoot: none for an
@@ -136,6 +137,7 @@ func foldOnto(ix *index, loser seriesKeys, candidates []seriesKeys, sides map[st
 	v := foldVerdict{loser: loser}
 	var renumbered []seriesKeys
 	var affinity *seriesKeys
+	var affinityVetoes []string
 	bestShared := 0
 	ls := sides[loser.series.ID]
 	for i, c := range candidates {
@@ -148,14 +150,16 @@ func foldOnto(ix *index, loser seriesKeys, candidates []seriesKeys, sides map[st
 			v.passers = append(v.passers, c)
 			continue
 		}
-		if len(vetoes) == 1 && strings.HasPrefix(vetoes[0], renumberedVeto) {
+		// A renumbering always trips the ordering-agreement veto, so the ONLY veto it
+		// may carry is that one.
+		if len(vetoes) == 1 && renumberedOnto(cs, ls) {
 			renumbered = append(renumbered, c)
 		}
 		// The affinity ladder: most same-slot works, then titlerule's own series rank.
 		if n := sameSlotWorks(cs, ls); n > 0 && (n > bestShared || n == bestShared &&
 			(titlerule.SeriesRank{Works: len(c.series.Works), ID: c.series.ID}).Better(
 				titlerule.SeriesRank{Works: len(affinity.series.Works), ID: affinity.series.ID})) {
-			bestShared, affinity = n, &candidates[i]
+			bestShared, affinity, affinityVetoes = n, &candidates[i], vetoes
 		}
 	}
 	switch {
@@ -166,7 +170,7 @@ func foldOnto(ix *index, loser seriesKeys, candidates []seriesKeys, sides map[st
 	case len(renumbered) == 1:
 		v.kind, v.target = foldRenumbered, renumbered[0]
 	case affinity != nil:
-		v.kind, v.target = foldReview, *affinity
+		v.kind, v.target, v.vetoes = foldReview, *affinity, affinityVetoes
 	}
 	return v
 }
@@ -175,7 +179,8 @@ func foldOnto(ix *index, loser seriesKeys, candidates []seriesKeys, sides map[st
 // at the same slot and no veto fires. vetoes are returned for the caller that reads
 // them (a renumbering, a review).
 func retiresCleanly(ix *index, loser, c seriesKeys, sides map[string]seriesSide) (bool, []string) {
-	vetoes := seriesMergeVetoes(ix, []seriesKeys{loser, c}, c.series.ID)
+	vetoes := seriesMergeVetoesOver(ix, []seriesKeys{loser, c},
+		[]seriesSide{sides[loser.series.ID], sides[c.series.ID]}, c.series.ID)
 	return len(vetoes) == 0 && foldMovesNothing(sides[c.series.ID], sides[loser.series.ID]), vetoes
 }
 
@@ -243,7 +248,7 @@ func familySpellingFolds(ix *index, key string, group []seriesKeys, sides map[st
 			fd.Propose = renumberedProposal(sides[t.series.ID], sides[l.series.ID], statedOrdering(t.series))
 		case foldReview:
 			var conflicts []string
-			fd.Propose, conflicts = familyReview(ix, t, l, sides, clustersOf)
+			fd.Propose, conflicts = familyReview(t, l, v.vetoes, sides, clustersOf)
 			notes = append(notes, conflicts...)
 		default:
 			continue // nothing in the family shares a slot with it: no evidence it is one of them
@@ -304,12 +309,11 @@ func closesToRoot(v foldVerdict, all []foldVerdict, sides map[string]seriesSide)
 }
 
 // familyReview is the review a plain spelling gets when no member passes: the member
-// it shares the most same-slot works with, the vetoes, and - per conflicting slot - the
-// W-DUP clusters holding the works there, since a duplicate work is usually all that
-// stands between the two lists. conflicts are the per-slot notes.
-func familyReview(ix *index, t, l seriesKeys, sides map[string]seriesSide, clustersOf map[string][]string) (Proposal, []string) {
+// it shares the most same-slot works with, the vetoes foldOnto judged the pair by, and -
+// per conflicting slot - the W-DUP clusters holding the works there, since a duplicate
+// work is usually all that stands between the two lists. conflicts are the per-slot notes.
+func familyReview(t, l seriesKeys, vetoes []string, sides map[string]seriesSide, clustersOf map[string][]string) (Proposal, []string) {
 	ts, ls := sides[t.series.ID], sides[l.series.ID]
-	vetoes := seriesMergeVetoes(ix, []seriesKeys{l, t}, t.series.ID)
 	var conflicts, clusterKeys []string
 	for _, a := range ts.members {
 		for _, b := range ls.members {
@@ -364,7 +368,7 @@ func sameSlotWorks(target, loser seriesSide) int {
 // differs - which is what separates it from a pure retirement. Positions are read
 // through importer.PositionSpan, the package's one position grammar; a position it
 // rejects decides nothing. vetoSeriesOrderingDisagrees asks it, so a renumbering is a
-// veto of its own, distinguishable by renumberedVeto.
+// veto with a reason of its own.
 func renumberedOnto(target, loser seriesSide) bool {
 	ordering := statedOrdering(loser.series)
 	if ordering == "" || ordering != statedOrdering(target.series) || len(loser.members) == 0 {

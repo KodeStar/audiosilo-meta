@@ -26,6 +26,12 @@ import (
 // same slot (foldMovesNothing - a twin retires a spelling, never adds to an order), and
 // clears every pair veto. Exactly one twin, or no proposal.
 //
+// Two orphans holding the SAME list are each other's twin, so the fold is proposed in
+// one direction only, onto the spelling titlerule.SeriesRank prefers - two proposals
+// each retiring the other's target would be a contradiction a reviewer can only half
+// accept. And a twin a mechanical SER-DUP proposal already retires is no target: the
+// fold is judged again, against the survivor, once that merge lands.
+//
 // What must never fold is a SUB-SERIES onto its parent: Rincewind 1 is Discworld 1, so a
 // Rincewind publication order moves nothing into Discworld's - which is exactly why the
 // guard is not the slots but the NAME: O must state an ordering, the franchise keys must
@@ -40,6 +46,14 @@ func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 	grouped := map[string]int{}
 	for _, k := range keys {
 		grouped[k.tight]++
+	}
+	retired := map[string]bool{}
+	for _, fd := range f.rows {
+		if fd.Propose.Op == OpMergeSeries && !fd.Propose.Advisory {
+			for _, id := range fd.Propose.Others {
+				retired[id] = true
+			}
+		}
 	}
 	// ONE pass over the catalogue keeps what either side of a twin must be - a series
 	// stating an ordering that is no variant - so the franchise key, the sub-series head
@@ -75,7 +89,7 @@ func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 		var twins []seriesKeys
 		for _, t := range byFranchise[o.franchise] {
 			// A "<parent>: <sub-series>" name headed by the twin's own base is its sub-series.
-			if t.k.series.ID != s.ID && t.ordering == o.ordering && (o.headKey == "" || o.headKey != t.baseKey) {
+			if t.k.series.ID != s.ID && !retired[t.k.series.ID] && t.ordering == o.ordering && (o.headKey == "" || o.headKey != t.baseKey) {
 				twins = append(twins, t.k)
 			}
 		}
@@ -96,6 +110,11 @@ func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 			continue
 		}
 		t := v.target
+		// The same list both ways: one direction, onto the better-ranked spelling.
+		if foldMovesNothing(sides[s.ID], sides[t.series.ID]) &&
+			(titlerule.SeriesRank{Works: len(s.Works), ID: s.ID}).Better(titlerule.SeriesRank{Works: len(t.series.Works), ID: t.series.ID}) {
+			continue
+		}
 		f.add(Finding{
 			Subclass: serDupTwin,
 			Key:      s.ID,
