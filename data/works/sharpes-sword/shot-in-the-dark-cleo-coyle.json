@@ -3867,6 +3867,10 @@
             {
               "asin": "B0DY2NRSM3",
               "region": "us"
+            },
+            {
+              "asin": "B0DY2SL31B",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4055,10 +4059,16 @@
           ],
           "publisher": "Spotify Audiobooks",
           "release_date": "2026-06-16",
+          "runtime_min": 489,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0DY2NRSM3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0DY2SL31B",
               "type": "libex-import"
             }
           ],
