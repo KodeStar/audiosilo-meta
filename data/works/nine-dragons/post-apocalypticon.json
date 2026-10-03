@@ -5734,6 +5734,10 @@
             {
               "asin": "B004QYDP7Q",
               "region": "us"
+            },
+            {
+              "asin": "B078J9WH1L",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5848,6 +5852,11 @@
               "imported_at": "2026-07-29",
               "ref": "B004QYDP7Q",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B078J9WH1L",
+              "type": "libex-import"
             }
           ],
           "work": "postmortem"
@@ -5859,6 +5868,14 @@
             {
               "asin": "B007Y5SEPM",
               "region": "us"
+            },
+            {
+              "asin": "B007Y5RSS6",
+              "region": "uk"
+            },
+            {
+              "asin": "B00LI7U8M4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5957,6 +5974,16 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B007Y5SEPM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B007Y5RSS6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B00LI7U8M4",
               "type": "libex-import"
             }
           ],
@@ -17420,6 +17447,57 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B007TKI0KG",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Powder Burn"
+    },
+    "powder-burn-blake-banner": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "blake-banner"
+      ],
+      "genres": [
+        "espionage",
+        "thriller-suspense"
+      ],
+      "id": "powder-burn-blake-banner",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "adam-grupper-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0GGC3H9BV",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+N99VnPFL.jpg",
+          "id": "adam-grupper-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adam-grupper"
+          ],
+          "publisher": "Right House Audio",
+          "release_date": "2026-01-12",
+          "runtime_min": 439,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GGC3H9BV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "powder-burn-blake-banner"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0GGC3H9BV",
           "type": "libex-import"
         }
       ],
