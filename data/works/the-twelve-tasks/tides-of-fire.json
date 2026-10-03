@@ -23,6 +23,10 @@
             {
               "asin": "B0C69Z84XH",
               "region": "us"
+            },
+            {
+              "asin": "B0C6B2WKRK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -351,6 +355,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0C69Z84XH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0C6B2WKRK",
               "type": "libex-import"
             }
           ],
@@ -4111,6 +4120,58 @@
         }
       ],
       "title": "Tides of Time"
+    },
+    "tides-of-treachery": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "hanna-park"
+      ],
+      "genres": [
+        "fairy-tales-folklore",
+        "fantasy",
+        "romance"
+      ],
+      "id": "tides-of-treachery",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "veronique-ludique-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HJHH8MJK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vTshnwDTL.jpg",
+          "id": "veronique-ludique-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "veronique-ludique"
+          ],
+          "publisher": "Baisong Press",
+          "release_date": "2026-09-14",
+          "runtime_min": 731,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HJHH8MJK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tides-of-treachery"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0HJHH8MJK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tides of Treachery"
     },
     "tides-of-war": {
       "added_at": "2026-08-01",

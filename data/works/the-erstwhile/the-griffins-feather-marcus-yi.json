@@ -1330,6 +1330,10 @@
             {
               "asin": "B00F8LCAUY",
               "region": "us"
+            },
+            {
+              "asin": "B078SZQLV4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1569,6 +1573,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00F8LCAUY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B078SZQLV4",
+              "type": "libex-import"
             }
           ],
           "work": "the-grim-company"
@@ -1580,6 +1589,10 @@
             {
               "asin": "B00BM7GAUO",
               "region": "us"
+            },
+            {
+              "asin": "B00BM7DLW4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1823,6 +1836,38 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00BM7GAUO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B00BM7DLW4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-grim-company"
+        },
+        "mark-elstob-2027": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HKLCC29D",
+              "region": "uk"
+            }
+          ],
+          "id": "mark-elstob-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-elstob"
+          ],
+          "publisher": "Head of Zeus",
+          "release_date": "2027-02-15",
+          "runtime_min": 900,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HKLCC29D",
               "type": "libex-import"
             }
           ],
