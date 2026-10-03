@@ -156,7 +156,7 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 	// there is no duplicate for the guard to refuse; only a row it would create a
 	// work for can become a second record. resolveWork states why the guard and
 	// the create path cannot disagree about which that is.
-	if p.resolveWork(workTitle, fullTitle, posSuffix, authors, lang, claim).ws != nil {
+	if p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws != nil {
 		return false
 	}
 	// The POSITION veto, the strongest of the five internal/audit measured, in its

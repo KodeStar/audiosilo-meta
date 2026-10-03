@@ -15,6 +15,10 @@ import "github.com/kodestar/audiosilo-meta/pkg/model"
 // it - a slug the chain never mints ("emma-1996", "emma-1") is a hand-made address,
 // and asking the chain itself rather than a restatement of its formula is what keeps
 // the two from disagreeing about which is which.
+//
+// It reads the CLEANED title's chain (cleanWorkTitle, title qualifiers stripped), not
+// resolveWork's qualified-title merge fallback; its one caller (internal/audit's
+// cleanTwins) only asks it of an undecorated title, which the strip leaves unchanged.
 func OnWorkSlugChain(w *model.Work) bool {
 	if len(w.Authors) == 0 {
 		return false

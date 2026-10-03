@@ -233,6 +233,12 @@ func workTitleCandidates(b sourceBook) []string {
 			out = append(out, cand)
 		}
 	}
+	// The QUALIFIED title last, after every cleaned form, so a plain twin wins: a
+	// work catalogued under its qualified title alone is reachable only through it
+	// (sourceBook.qualifiedTitle).
+	if q := b.qualifiedTitle; q != "" && !seen[q] {
+		out = append(out, q)
+	}
 	return out
 }
 
