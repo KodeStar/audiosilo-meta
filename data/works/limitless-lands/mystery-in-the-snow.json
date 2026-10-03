@@ -7331,6 +7331,10 @@
             {
               "asin": "B0842Z59N1",
               "region": "us"
+            },
+            {
+              "asin": "B0843N7JTG",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7560,6 +7564,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0842Z59N1",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0843N7JTG",
+              "type": "libex-import"
             }
           ],
           "work": "mystery-on-hidden-lane-an-utterly-gripping-cozy-mystery-novel"
@@ -7573,6 +7582,58 @@
         }
       ],
       "title": "Mystery on Hidden Lane: An Utterly Gripping Cozy Mystery Novel"
+    },
+    "mystery-on-meadowsweet-grove": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "clare-chase"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "mystery",
+        "police-procedural"
+      ],
+      "id": "mystery-on-meadowsweet-grove",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "ashley-tucker-2024": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0D2S46N7J",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91jfT0qyyAL.jpg",
+          "id": "ashley-tucker-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ashley-tucker"
+          ],
+          "publisher": "Hachette UK - Bookouture",
+          "release_date": "2024-05-02",
+          "runtime_min": 520,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0D2S46N7J",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mystery-on-meadowsweet-grove"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0D2S46N7J",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Mystery on Meadowsweet Grove"
     },
     "mystery-on-the-bayou": {
       "added_at": "2026-07-29",

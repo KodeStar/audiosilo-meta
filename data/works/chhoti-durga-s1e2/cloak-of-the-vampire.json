@@ -301,6 +301,10 @@
             {
               "asin": "B0GQVNN6HT",
               "region": "us"
+            },
+            {
+              "asin": "B0GQVPMSNK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -460,6 +464,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0GQVNN6HT",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GQVPMSNK",
+              "type": "libex-import"
             }
           ],
           "work": "cloak-of-titans"
@@ -493,6 +502,10 @@
             {
               "asin": "B097CB5BYP",
               "region": "us"
+            },
+            {
+              "asin": "B097C78V8Q",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -627,6 +640,11 @@
               "imported_at": "2026-08-01",
               "ref": "B097CB5BYP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B097C78V8Q",
+              "type": "libex-import"
             }
           ],
           "work": "cloak-of-wolves"
@@ -640,6 +658,58 @@
         }
       ],
       "title": "Cloak of Wolves"
+    },
+    "cloak-of-worlds": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "jonathan-moeller"
+      ],
+      "genres": [
+        "dark-fantasy",
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "cloak-of-worlds",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "hollis-mccarthy-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HGGDKR36",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ilvWsDYSL.jpg",
+          "id": "hollis-mccarthy-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hollis-mccarthy"
+          ],
+          "publisher": "Azure Flame Media",
+          "release_date": "2026-08-26",
+          "runtime_min": 848,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HGGDKR36",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cloak-of-worlds"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0HGGDKR36",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Cloak of Worlds"
     },
     "cloak-silence": {
       "added_at": "2026-08-02",
