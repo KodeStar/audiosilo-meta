@@ -391,9 +391,6 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 		if o.Why != "" {
 			fmt.Fprintf(b, "; %s", o.Why)
 		}
-		if o.Status == statusRedundant {
-			b.WriteString(": rewrite it as an accept")
-		}
 		b.WriteString("\n")
 	}
 	for _, o := range t.Stale() {

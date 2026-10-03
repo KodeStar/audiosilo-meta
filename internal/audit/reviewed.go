@@ -201,6 +201,16 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 	if !bytes.Equal(raw, back) {
 		return nil, fmt.Errorf("entries must carry exactly the keys declared in reviewed.go, in lower case, omitting empty optional fields")
 	}
+	// An assertion may omit a membership's field, so two entries the sort tells apart
+	// can still be ONE proposal: refuse that as the duplicate it is.
+	seen := make(map[proposalKey]int, len(rs))
+	for i, r := range rs {
+		k := keyOf(r.proposal())
+		if prev, dup := seen[k]; dup {
+			return nil, fmt.Errorf("entry %d: the same proposal as entry %d", i, prev)
+		}
+		seen[k] = i
+	}
 	// A decision naming no record matches EVERY proposal of its op that names none
 	// either (W-DUP's volume-conflict reviews carry no identity at all), so it can
 	// never mean the one finding that was reviewed.
@@ -368,6 +378,12 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for j, r := range rs {
 		if r.Op != OpReview {
 			resolved[j] = resolvedProposal(r.proposal(), "", reds)
+			if r.Decision == "assert" {
+				// A loser an earlier wave retired onto the target is no longer folded: the
+				// assertion's proposal is the rest of its cluster, which is what a detector,
+				// a converging assertion and the sourced finding all spell.
+				resolved[j].Others = slices.DeleteFunc(resolved[j].Others, func(o string) bool { return o == resolved[j].Target })
+			}
 			key := keyOf(resolved[j])
 			byKey[key] = append(byKey[key], j)
 		}
@@ -521,9 +537,12 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			case statuses[j] == statusAsserted:
 				continue // the sourced finding's own reason and notes already say so
 			case r.Decision == "assert":
-				// SUMMARY.md says where, so the entry can be rewritten as an acceptance.
-				if whys[j] == "" {
-					whys[j] = "already proposed as " + fd.Class + " " + fd.Key
+				// SUMMARY.md says where and what to do. An acceptance meets only a
+				// detector's proposal, so a duplicate of another assertion is dropped.
+				if whys[j] == "" && sourced {
+					whys[j] = "another assertion already sources it as " + fd.Class + " " + fd.Key + ": drop one of them"
+				} else if whys[j] == "" {
+					whys[j] = "already proposed as " + fd.Class + " " + fd.Key + ": rewrite it as an accept"
 				}
 				note = "reviewed assertion, already proposed, taken as an acceptance: " + r.Reason
 			}
@@ -556,15 +575,15 @@ type sourcing struct {
 	keys map[string]bool // class + key of every finding, so a sourced key is unique
 }
 
-// source appends one assertion's proposal p (already resolved) to its op's class as an
-// ADVISORY finding the acceptance loop then promotes, returning where it sits; or, with
+// source appends one assertion's proposal p (resolved, its target out of its others)
+// to its op's class as an ADVISORY finding the acceptance loop then promotes,
+// returning where it sits; or, with
 // a nil class, why the assertion is STALE: a record it names is gone, or it has been
 // applied (a merge's others all resolve to its target, a membership is listed).
 func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, why string) {
 	if s.ix == nil {
 		return nil, 0, "no catalogue to find its records in"
 	}
-	p.Others = slices.DeleteFunc(slices.Clone(p.Others), func(o string) bool { return o == p.Target })
 	if p.Op != OpAddSeriesMember && len(p.Others) == 0 {
 		return nil, 0, "applied: every record it folds now resolves to " + p.Target
 	}

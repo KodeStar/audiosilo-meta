@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // reviewed_assert_test.go pins the third reviewed decision, assert: an entry that
@@ -198,6 +199,8 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 		{"merge naming a series", `[{"decision":"assert","op":"merge-works","others":["b"],"reason":"why","series":"s","target":"a"}]`, "a target and others"},
 		{"membership with another field", `[{"decision":"assert","field":"position","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"}]`, `field, if stated, "series"`},
 		{"membership without position", `[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a"}]`, "not a canonical series position"},
+		{"one proposal twice", `[{"decision":"assert","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"},` +
+			`{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"}]`, "the same proposal as entry 0"},
 		{"non-canonical position", `[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1 - 3"}]`, "not a canonical series position"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -238,5 +241,21 @@ func TestReviewedAssertsConvergingSourceOnce(t *testing.T) {
 	}
 	if o := rep.Reviewed.Outcomes(); len(o) != 2 || o[0].Status != "asserted" || o[1].Status != "redundant" {
 		t.Fatalf("outcomes = %+v", o)
+	}
+}
+
+// A merge assertion an earlier wave applied in part names the rest of its cluster:
+// a detector proposing exactly that rest makes it redundant rather than a second,
+// conflicting merge of the same records.
+func TestReviewedAssertPartlyAppliedMeetsTheDetector(t *testing.T) {
+	detector := Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"c"}, Advisory: true, Reason: "a veto"}
+	rep := proposalReport(detector)
+	partly := assertion(OpMergeWorks, "a", "", "", "", "b", "c")
+	rep.Reviewed = applyReviewed(rep, []reviewedDecision{partly}, model.Redirects{model.RedirectWorks: {"b": "a"}}, nil)
+	if rows := rep.classes[0].rows; len(rows) != 1 || rows[0].Propose.Advisory {
+		t.Fatalf("rows = %+v, want the detector's proposal made mechanical and nothing added", rows)
+	}
+	if o := rep.Reviewed.Outcomes(); len(o) != 1 || o[0].Status != statusRedundant {
+		t.Fatalf("outcomes = %+v", rep.Reviewed.All)
 	}
 }
