@@ -50,6 +50,7 @@ func TestTitleQualifiersMeetTheirPlainTwin(t *testing.T) {
 		{name: "no separator before the lead-in", plain: "A Christmas Carol: The Classic", decor: "A Christmas Carol: The Classic Narrated by Chandler Craig", same: false},
 		{name: "a credit naming nobody", plain: "The Life of Josiah Henson", decor: "The Life of Josiah Henson, as Narrated by Himself", same: false},
 		{name: "a credit carrying the volume number", plain: "Tarzan", decor: "Tarzan - Narrated by William Martin 2", same: false},
+		{name: "a volume in words after the credit", plain: "The Search", decor: "The Search, Read by Dee Reader, Book Two", same: false},
 		{name: "a lead-in inside a title", plain: "A Wedding Romance", decor: "A Read by the Sea Wedding Romance", same: false},
 		// A lead-in at a segment boundary followed by prose rather than a name.
 		{name: "read by an object, not a name", plain: "Murder", decor: "Murder: Read by Candlelight", same: false},

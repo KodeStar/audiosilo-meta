@@ -110,7 +110,7 @@ var nameConnectives = map[string]bool{
 // lead-in at its start, then a credit that LOOKS LIKE A NAME - two to
 // maxNarratorWords words, the first and last capitalized and every other one
 // capitalized or a name connective, the first no object lead - which opens no further
-// segment and holds no digit or bracket.
+// segment (opensSegment) and holds no digit or bracket.
 //
 // The name shape is what keeps the rule off prose: "Murder: Read by Candlelight",
 // "Stop. Read by Moonlight" and "The Book Thief: Narrated by Death" each carry a
@@ -135,11 +135,25 @@ func narratorCredit(text string) bool {
 		words := strings.Fields(credit)
 		if len(words) < 2 || len(words) > maxNarratorWords || !looksLikeAName(words) ||
 			NarratorObjectLead(strings.ToLower(words[0])) ||
-			!hasLetter(credit) || strings.Contains(credit, ": ") || strings.Contains(credit, " - ") ||
+			!hasLetter(credit) || opensSegment(credit) ||
 			strings.ContainsAny(credit, "0123456789()[]") {
 			continue
 		}
 		return true
+	}
+	return false
+}
+
+// opensSegment reports whether a credit opens a further title segment - ": ", " - ",
+// ", ", "; " or " | " inside it - which a name never does. The comma is the one that
+// matters most: "The Search, Read by Dee Reader, Book Two" carries its VOLUME after
+// the credit, and stripping "Read by Dee Reader, Book Two" whole would hand the
+// importer's work identity (cleanWorkTitle) the first volume's title.
+func opensSegment(credit string) bool {
+	for _, sep := range []string{": ", " - ", ", ", "; ", " | "} {
+		if strings.Contains(credit, sep) {
+			return true
+		}
 	}
 	return false
 }

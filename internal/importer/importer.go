@@ -52,9 +52,10 @@ func abridgedFromMarker(title string) *bool {
 }
 
 // cleanWorkTitle removes the decorations that are not part of a work's identity,
-// so two listings of one book resolve to one work. Two rules, in this order
+// so two listings of one book resolve to one work. Three rules, in this order
 // because the first is a TRAILING marker and the second reads what the title
-// ends with:
+// ends with (the markers are stripped again after it, since a qualifier may
+// stand AFTER one - "The Search (Unabridged), Read by Dee Reader"):
 //
 //  1. trailing (Unabridged)/(Abridged)/[Unabridged]/[Abridged] edition markers
 //     (all stacked markers in one pass), so "Mageling" and "Mageling
@@ -77,7 +78,10 @@ func cleanWorkTitle(title string) string {
 	if stripped == "" {
 		return cleaned
 	}
-	return stripTitleNarratorQualifier(titlerule.StripTitleQualifiers(stripped))
+	if q := titlerule.StripEditionMarkers(titlerule.StripTitleQualifiers(stripped)); q != "" {
+		stripped = q
+	}
+	return stripTitleNarratorQualifier(stripped)
 }
 
 // recInfo remembers enough about a recording under a work to detect a

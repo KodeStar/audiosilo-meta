@@ -489,6 +489,10 @@ func TestABareQualifierTitleKeepsItsTitle(t *testing.T) {
 		"The Search: International Edition (Unabridged)": "The Search",
 		"ESV Audio Bible, Read by Ray Ortlund":           "ESV Audio Bible",
 		"Murder: Read by Candlelight":                    "Murder: Read by Candlelight",
+		// A marker standing BEFORE the qualifier comes off once the qualifier has.
+		"The Search (Unabridged), Read by Dee Reader": "The Search",
+		// A volume riding after the credit keeps the credit: it is no name.
+		"The Search, Read by Dee Reader, Book Two": "The Search, Read by Dee Reader, Book Two",
 	} {
 		if got := cleanWorkTitle(title); got != want {
 			t.Errorf("cleanWorkTitle(%q) = %q, want %q", title, got, want)
