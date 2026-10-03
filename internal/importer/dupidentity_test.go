@@ -434,16 +434,16 @@ func TestQualifiedListingsAttachToTheCataloguedWork(t *testing.T) {
 		t.Fatalf("seed run: NewWorks = %d, want 2", sum.NewWorks)
 	}
 	for _, c := range []struct {
-		row                   libexRow
-		newRecording, mergeTo bool
+		row  libexRow
+		want string // "merge": the ASIN joins the same production; "recording": a new narration
 	}{
 		// The same narrator within the runtime tolerance is the same production.
 		{libexRow{asin: "B0QUALIF03", title: "The Search: International Edition", authors: `{"name":"Ada One"}`,
-			narrators: `{"name":"Ann Reader"}`, minutes: 527}, false, true},
+			narrators: `{"name":"Ann Reader"}`, minutes: 527}, "merge"},
 		{libexRow{asin: "B0QUALIF04", title: "The Search “International Edition”", authors: `{"name":"Ada One"}`,
-			narrators: `{"name":"Cy Reader"}`, minutes: 530}, true, false},
+			narrators: `{"name":"Cy Reader"}`, minutes: 530}, "recording"},
 		{libexRow{asin: "B0QUALIF05", title: "The Search, Read by Dee Reader", authors: `{"name":"Ada One"}`,
-			narrators: `{"name":"Dee Reader"}`, minutes: 560}, true, false},
+			narrators: `{"name":"Dee Reader"}`, minutes: 560}, "recording"},
 	} {
 		before := len(recSlugsOf(t, dataDir, "the-search"))
 		sum := runLibexInto(t, dataDir, rows(c.row))
@@ -451,10 +451,10 @@ func TestQualifiedListingsAttachToTheCataloguedWork(t *testing.T) {
 			t.Errorf("%q: NewWorks = %d, SkippedDuplicateIdentity = %d, want 0 and 0; warnings = %v",
 				c.row.title, sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
 		}
-		if c.newRecording && (sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "the-search")) != before+1) {
+		if c.want == "recording" && (sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "the-search")) != before+1) {
 			t.Errorf("%q: NewRecordings = %d, want a new recording under the-search", c.row.title, sum.NewRecordings)
 		}
-		if c.mergeTo && sum.MergedASINs != 1 {
+		if c.want == "merge" && sum.MergedASINs != 1 {
 			t.Errorf("%q: MergedASINs = %d, want the ASIN merged into the same production", c.row.title, sum.MergedASINs)
 		}
 	}

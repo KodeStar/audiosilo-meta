@@ -1726,22 +1726,9 @@ that forked three works out of one book (13 of the dump's 1,058,981 distinct
 titles, zero false positives) and reading the title lead-in vocabulary
 `titlerule.NarratorLeadIns`, a pinned SUBSET of the series narrator vocabulary
 (titlerule's title-only "read by" is deliberately not in it). It also strips the
-two title QUALIFIERS - a marketplace edition and a trailing narrator credit -
-through `titlerule.StripTitleQualifiers`, the very function the identity key cleans
-with, so "The Search: International Edition" or "The Search, Read by Dee Reader"
-resolves to the catalogued "The Search" and is judged by the recording rules
-below instead of being refused by the duplicate-identity guard (a title that is
-ONLY a qualifier keeps itself). Measured over the libex dump's 179 rows whose title
-carries one (dry-run planning against the 282,052-work tree): 119 already present
-by ASIN either way; base created 44 works and refused 9 as identity duplicates,
-head creates 27 (21 under the cleaned title: 14 marketplace editions with no
-catalogued twin, the five new ESV Audio Bible narrations as one work, two more
-Bible products, and four Voice Only Audio Bible parts each holding three
-narrations; 6 are titles that only use the words), ASIN-merges 10 rows
-into the catalogued twin's own production and attaches 1 as a new narration, and
-refuses 3 (each a twin the chain cannot reach: "Laughter of Dead Kings" without its
-article, "Jesus Listens (Narrated by Bill Russell)" catalogued under its decorated
-title, a dramatized edition beside the plain book). And a same-work, same-narrator entry whose
+two title QUALIFIERS through `titlerule.StripTitleQualifiers`, so a qualified row
+("The Search: International Edition", "The Search, Read by Dee Reader") attaches
+to the catalogued work; a title that is only a qualifier keeps itself. And a same-work, same-narrator entry whose
 only new fact is another ASIN **merges that ASIN into the existing recording**,
 with provenance (the merge appends a `sources[]` entry ref'ing the merged ASIN)
 and two guards - runtime (a >10% gap between two known runtimes is a genuinely

@@ -315,21 +315,23 @@ func dropsQualifier(title string, drop func(s, lower string) string) bool {
 // leadingNamePossessive matches a title that OPENS with a possessive of a name of two
 // or three capitalized words - the franchise BRAND a ghostwritten continuation is sold
 // under ("Tom Clancy's Oath of Office", "Clive Cussler's The Heist"). The first word
-// is captured on its own so an article can be refused (nameArticles).
+// is captured on its own so a title head can be refused (titleHeadWords).
 var leadingNamePossessive = regexp.MustCompile(`^(\p{Lu}[\p{L}.]*)((?:\s+\p{Lu}[\p{L}.]*){1,2})['’]s\s`)
 
-// nameArticles are the leading words that make a capitalized run a TITLE rather than a
-// name: "A Doll's House" and "The Pilgrim's Progress" open with an article, and "My
-// Sister's Keeper" with a possessive determiner, and a possessive after either is the
+// titleHeadWords are the leading words that make a capitalized run a TITLE rather
+// than a name - an article ("A Doll's House", "The Pilgrim's Progress") or a
+// possessive determiner ("My Sister's Keeper") - and a possessive after either is the
 // title's own grammar ("A Doll House" is a different translation's title, not a brand
 // spelled two ways).
-var nameArticles = map[string]bool{
-	"my": true, "his": true, "her": true, "its": true, "our": true, "your": true, "their": true,
+var titleHeadWords = map[string]bool{
+	// Articles.
 	"a": true, "an": true, "the": true,
 	"der": true, "die": true, "das": true, "ein": true, "eine": true,
 	"le": true, "la": true, "les": true, "un": true, "une": true,
 	"el": true, "los": true, "las": true, "il": true, "lo": true, "gli": true,
 	"het": true, "een": true,
+	// Possessive determiners.
+	"my": true, "his": true, "her": true, "its": true, "our": true, "your": true, "their": true,
 }
 
 // foldBrandPossessive drops the possessive from a leading brand name, so "Tom Clancy's
@@ -356,7 +358,7 @@ func foldBrandPossessive(s string) string {
 		return s // the common case, kept off the regexp: Clean runs on every title
 	}
 	m := leadingNamePossessive.FindStringSubmatchIndex(s)
-	if m == nil || nameArticles[strings.ToLower(s[m[2]:m[3]])] {
+	if m == nil || titleHeadWords[strings.ToLower(s[m[2]:m[3]])] {
 		return s
 	}
 	return s[:m[5]] + " " + s[m[1]:]

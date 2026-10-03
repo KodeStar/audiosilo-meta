@@ -59,13 +59,8 @@ func abridgedFromMarker(title string) *bool {
 //  1. trailing (Unabridged)/(Abridged)/[Unabridged]/[Abridged] edition markers
 //     (all stacked markers in one pass), so "Mageling" and "Mageling
 //     (Unabridged)" resolve to one work;
-//  2. the two title QUALIFIERS - a marketplace edition ("The Search:
-//     International Edition") and a trailing narrator credit ("The Search, Read by
-//     Dee Reader") - through titlerule.StripTitleQualifiers, the very function
-//     the identity key cleans with, so a row the duplicate-identity guard would
-//     otherwise refuse resolves to the catalogued work and is judged by the
-//     ordinary recording rules (a new narration, or an ASIN merge under the
-//     runtime and abridged guards);
+//  2. the two title QUALIFIERS (titlerule.StripTitleQualifiers, the function the
+//     identity key cleans with), so a qualified row attaches to the catalogued work;
 //  3. a mid-title NARRATOR qualifier in front of a volume marker
 //     (stripTitleNarratorQualifier), so "... - gelesen von Andreas Lange, Band
 //     11" and "... - gelesen von Peter Bocek, Band 11" resolve to the one work
