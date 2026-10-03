@@ -1234,6 +1234,22 @@ const (
 	// ("Scarlet and Ivy: Audio Collection Books 1-3" reduces to "Scarlet and
 	// Ivy"), which would make a collection indistinguishable from its series.
 	RefuseResultIsSeriesName = "result-is-the-series-name"
+	// RefuseUnnamedCollection: the strip removed the series name from the FRONT of the
+	// title and what is left is a COLLECTION statement (IsCollection) - "Charassi’s Fae Queen: Six Book World
+	// Boxset" reduces to "Six Book World Boxset". A box set is named by the series it
+	// collects, so the name is the part that has to stay.
+	RefuseUnnamedCollection = "residual-is-an-unnamed-collection"
+	// RefuseUnnamedVolume: the strip removed the series name from the FRONT of the title
+	// and what is left still states a division or volume of it (divisionSequenceOf) - "Hitchhiker’s Guide to
+	// Heaven and Hell: Compete Season One" reduces to "Compete Season One". The number
+	// belongs to the series that was just removed, so the residual is a PART of that
+	// series rather than the name of a book.
+	RefuseUnnamedVolume = "residual-is-an-unnamed-volume"
+	// RefuseCutsRange: the title states a numeric RANGE and the proposal keeps one end
+	// of it without the other - "Milf’s Threesomes 4-Pack: Books 13 - 16" became
+	// "...: Books 13", because the dangling-tail peel reads " - 16" as a stray volume
+	// segment. A range is one statement; half of it is a different, false one.
+	RefuseCutsRange = "proposal-cuts-a-range"
 )
 
 // RefusalCodes lists every code StripDecoration can refuse with.
@@ -1246,6 +1262,7 @@ func RefusalCodes() []string {
 	return []string{
 		RefuseNothingToStrip, RefuseNoIdentity, RefuseFragment,
 		RefuseIsSeriesName, RefuseResultIsSeriesName,
+		RefuseUnnamedCollection, RefuseUnnamedVolume, RefuseCutsRange,
 	}
 }
 
@@ -1268,11 +1285,25 @@ func ProposeTitle(title, series string) (string, bool) {
 func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 	orig := strings.TrimSpace(title)
 	s := dropWideGenreSubtitle(StripTitleQualifiers(orig))
+	stripped := false // whether a series name came off at a title boundary
 	if series != "" {
 		if SameModuloArticles(orig, series) {
 			return "", RefuseIsSeriesName, false
 		}
+		before := s
 		s = stripSeriesAtBoundary(s, SeriesForms(series))
+		stripped = s != before
+	}
+	// beheaded: the series name came off the FRONT, so what is left is whatever the
+	// title said after it - which is where a collection or a season of that series
+	// states itself. A name removed from the tail or a bracket leaves the title's own
+	// head ("First Command Box Set: Spacers, Books 1-6" is still "First Command Box
+	// Set"), and the two refusals below are not asked of it. The head is compared by its
+	// first two SIGNIFICANT words, so a shared article ("The History of Rome: The
+	// Complete Works") or a shared first word ("Rite World: Rite of the Wolf") is not
+	// mistaken for the title's own head surviving.
+	beheaded := func(residual string) bool {
+		return stripped && leadingWords(residual) != leadingWords(orig)
 	}
 	s = dropDecorativeGroups(s, SeriesForms(series))
 	s = tidyTitle(markerSeq.ReplaceAllString(s, " "))
@@ -1298,8 +1329,90 @@ func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 		// same test on the original catches only the titles that were already the
 		// series name; this one catches the ones the strip turns into it.
 		return "", RefuseResultIsSeriesName, false
+	case beheaded(s) && IsCollection(s):
+		return "", RefuseUnnamedCollection, false
+	case beheaded(s) && len(divisionSequenceOf(s)) > 0:
+		return "", RefuseUnnamedVolume, false
+	case cutsRange(orig, s):
+		return "", RefuseCutsRange, false
 	}
 	return s, "", true
+}
+
+// leadingWords is the first two significant words of s (identityWords filtered by
+// significantToken), joined - what a title's head is compared by.
+func leadingWords(s string) string {
+	var out []string
+	for _, w := range identityWords(s) {
+		if significantToken(w) {
+			if out = append(out, w); len(out) == 2 {
+				break
+			}
+		}
+	}
+	return strings.Join(out, " ")
+}
+
+// statedRange matches a numeric range as a title writes one, with or without spaces
+// around the dash.
+var statedRange = regexp.MustCompile(`(\d+)\s*[-–]\s*(\d+)`)
+
+// cutsRange reports whether a proposal keeps one END of a range the title states
+// without the range itself. Each end is recognized by its own context in the title, so
+// an unrelated number elsewhere is not mistaken for it: the LOW end with the word in
+// front of it ("Books 13" of "Books 13 - 16"), the HIGH end with the word after it
+// ("6: Scary" of "Books 1 - 6: Scary ...") or, at the end of the title, with the dash
+// in front of it ("-8" of "Star Wars Episode 1-8"). Dropping the whole range is not a
+// cut - "Omnibus 1: Books 1-3" to "Omnibus 1" is the existing collection shape, and
+// the "1" left in it is the omnibus' own number.
+func cutsRange(orig, proposed string) bool {
+	for _, m := range statedRange.FindAllStringSubmatchIndex(orig, -1) {
+		whole := orig[m[0]:m[1]]
+		if strings.Contains(proposed, whole) {
+			continue
+		}
+		if lo := orig[wordStartBefore(orig, m[2]):m[3]]; lo != orig[m[2]:m[3]] && strings.Contains(proposed, lo) {
+			return true
+		}
+		var hi string
+		if rest := orig[m[5]:]; strings.TrimSpace(rest) != "" {
+			hi = orig[m[4] : m[5]+wordEndAfter(rest)]
+		} else {
+			hi = orig[m[4]-1 : m[5]]
+		}
+		if strings.Contains(proposed, hi) {
+			return true
+		}
+	}
+	return false
+}
+
+// wordStartBefore is the offset of the word that precedes offset i in s (spaces
+// between skipped), or i when nothing does.
+func wordStartBefore(s string, i int) int {
+	j := i
+	for j > 0 && s[j-1] == ' ' {
+		j--
+	}
+	if j == 0 {
+		return i
+	}
+	for j > 0 && s[j-1] != ' ' {
+		j--
+	}
+	return j
+}
+
+// wordEndAfter is the length of rest through the end of its first word.
+func wordEndAfter(rest string) int {
+	j := 0
+	for j < len(rest) && (rest[j] == ' ' || !isASCIIWordByte(rest[j])) {
+		j++
+	}
+	for j < len(rest) && rest[j] != ' ' {
+		j++
+	}
+	return j
 }
 
 // ---- decoration detectors ----------------------------------------------------

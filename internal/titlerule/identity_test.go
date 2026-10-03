@@ -603,6 +603,44 @@ func TestStripDecorationRefusals(t *testing.T) {
 			title: "The Iron Druid Chronicles", series: "The Iron Druid Chronicles",
 			refusal: RefuseIsSeriesName,
 		},
+		{
+			name:  "a collection that loses the series naming it is refused",
+			title: "Charassi’s Fae Queen: Six Book World Boxset", series: "Charassi's Fae Queen",
+			refusal: RefuseUnnamedCollection,
+		},
+		{
+			name:  "a collection that keeps its own head still strips",
+			title: "First Command Box Set: Spacers, Books 1-6", series: "Spacers",
+			want: "First Command Box Set",
+		},
+		{
+			name:  "a shared article is not the head surviving",
+			title: "The History of Rome: The Complete Works", series: "The History of Rome",
+			refusal: RefuseUnnamedCollection,
+		},
+		{
+			name:  "a season left after the series came off the front is refused",
+			title: "Hitchhiker’s Guide to Heaven and Hell: Compete Season One", series: "Hitchhiker's Guide to Heaven and Hell",
+			refusal: RefuseUnnamedVolume,
+		},
+		{
+			name:  "a volume list left after the series came off the front is refused",
+			title: "Katie Kazoo, Switcheroo: Books 11 & 12", series: "Katie Kazoo",
+			refusal: RefuseUnnamedVolume,
+		},
+		{
+			name:  "a proposal keeping the low end of a range is refused",
+			title: "Milf’s Threesomes 4-Pack: Books 13 - 16", series: "MILF's Threesomes",
+			refusal: RefuseCutsRange,
+		},
+		{
+			name:  "a proposal keeping the high end of a range is refused",
+			title: "Star Wars Episode 1-8", refusal: RefuseCutsRange,
+		},
+		{
+			name:  "dropping a whole range is not a cut",
+			title: "Delta Force Heroes Box Set 1: Books 1-4", want: "Delta Force Heroes Box Set 1",
+		},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
