@@ -52,6 +52,15 @@ type index struct {
 	// alone - a series name is often two ordinary words.
 	seriesByAuthor map[string][]string
 
+	// variantsOf maps a series id to the series whose ordering_of names it, sorted:
+	// the inverse of the one link that makes a series a family's PRIMARY, which a record
+	// cannot see by reading itself. translationLinked is every series a translation_of
+	// link touches, from either end. SER-DUP's family-spelling folds read both
+	// (seriesfamily.go): a series either link reaches is a family member or a
+	// translation, never a plain spelling to retire.
+	variantsOf        map[string][]string
+	translationLinked map[string]bool
+
 	// derivedCache memoizes the per-work title derivation. Four detectors ask for
 	// it and the answer costs a series-name lookup, a clean and a volume probe, so
 	// deriving it once per work rather than once per question is most of the
@@ -67,17 +76,19 @@ type membership struct {
 
 func newIndex(cat *model.Catalog) *index {
 	ix := &index{
-		cat:          cat,
-		workByID:     make(map[string]*model.Work, len(cat.Works)),
-		personByID:   make(map[string]*model.Person, len(cat.People)),
-		seriesByID:   make(map[string]*model.Series, len(cat.Series)),
-		memberships:  map[string][]membership{},
-		sidecars:     map[string][]string{},
-		authorOf:     map[string]int{},
-		narratorOf:   map[string]int{},
-		creditedOn:   map[string]int{},
-		positions:    make(map[string]map[string]string, len(cat.Series)),
-		derivedCache: make(map[string]*workDerived, len(cat.Works)),
+		cat:               cat,
+		workByID:          make(map[string]*model.Work, len(cat.Works)),
+		personByID:        make(map[string]*model.Person, len(cat.People)),
+		seriesByID:        make(map[string]*model.Series, len(cat.Series)),
+		memberships:       map[string][]membership{},
+		sidecars:          map[string][]string{},
+		authorOf:          map[string]int{},
+		narratorOf:        map[string]int{},
+		creditedOn:        map[string]int{},
+		positions:         make(map[string]map[string]string, len(cat.Series)),
+		variantsOf:        map[string][]string{},
+		translationLinked: map[string]bool{},
+		derivedCache:      make(map[string]*workDerived, len(cat.Works)),
 	}
 	for _, w := range cat.Works {
 		ix.workByID[w.ID] = w
@@ -112,6 +123,16 @@ func newIndex(cat *model.Catalog) *index {
 			}
 		}
 		ix.positions[s.ID] = pos
+		if s.OrderingOf != "" {
+			ix.variantsOf[s.OrderingOf] = append(ix.variantsOf[s.OrderingOf], s.ID)
+		}
+		for _, o := range s.TranslationOf {
+			ix.translationLinked[o] = true
+			ix.translationLinked[s.ID] = true
+		}
+	}
+	for _, vs := range ix.variantsOf {
+		sort.Strings(vs)
 	}
 	for _, ms := range ix.memberships {
 		sort.Slice(ms, func(i, j int) bool {

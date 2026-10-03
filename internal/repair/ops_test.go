@@ -2,6 +2,7 @@ package repair
 
 import (
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -341,4 +342,100 @@ func seriesFinding(target string, losers ...string) audit.Finding {
 		Class: audit.ClassSeriesDup, Key: target, Subclass: "name-key",
 		Propose: audit.Proposal{Op: audit.OpMergeSeries, Target: target, Others: losers},
 	}
+}
+
+// familyTree is an ordering family over the two seriesPair works plus a third: a
+// publication-order primary and its chronological variant, beside a plain spelling the
+// caller lists.
+func familyTree(t testing.TB, plain ...string) map[string]string {
+	t.Helper()
+	files := seriesPair(t, "hounded@1", "hexed@2")
+	delete(files, "series/ir/iron-druid-chronicles-2.json")
+	files["works/tr/tricked/work.json"] = workJSON(t, "tricked", "Tricked")
+	files["works/tr/tricked/recordings/luke-daniels-2013.json"] = recJSON(t, "luke-daniels-2013", "tricked", withNarrators("luke-daniels"))
+	files["series/ir/iron-druid-chronicles.json"] = testpack.WithField(t,
+		seriesJSON(t, "iron-druid-chronicles", "The Iron Druid Chronicles", "hounded@1", "hexed@2", "tricked@4"),
+		"ordering", model.OrderingPublication)
+	files["series/ir/iron-druid-chronological.json"] = testpack.WithFields(t,
+		seriesJSON(t, "iron-druid-chronological", "The Iron Druid Chronicles (Chronological Order)", "hexed@1", "hounded@2", "tricked@3"),
+		map[string]any{"ordering": model.OrderingChronological, "ordering_of": "iron-druid-chronicles"})
+	files["series/ir/iron-druid-plain.json"] = seriesJSON(t, "iron-druid-plain", "Iron Druid Chronicles", plain...)
+	return files
+}
+
+// A family-spelling fold onto a VARIANT: the plain loser has nothing to say about the
+// family, so the survivor - cloned, never rebuilt - keeps its own ordering and ordering_of
+// and the plain slug is tombstoned onto it. Nothing in the audit applies this on its own
+// (it is advisory onto a variant); a reviewed acceptance does, and this is what it writes.
+func TestMergeSeriesKeepsTheVariantSurvivorsOrderingForAPlainLoser(t *testing.T) {
+	const variant = "iron-druid-chronological"
+	rn, tx := planFixture(t, seedTree(t, familyTree(t, "hexed@1", "hounded@2")))
+	if err := rn.mergeSeries(tx, seriesFinding(variant, "iron-druid-plain")); err != nil {
+		t.Fatal(err)
+	}
+	e, ok, err := tx.series.get(variant)
+	if err != nil || !ok {
+		t.Fatalf("staged variant: %v %v", ok, err)
+	}
+	if e.Str("ordering") != model.OrderingChronological || e.Str("ordering_of") != "iron-druid-chronicles" {
+		t.Errorf("survivor ordering = %q / ordering_of = %q, want the variant's own", e.Str("ordering"), e.Str("ordering_of"))
+	}
+	if got := len(e.SeriesWorks()); got != 3 {
+		t.Errorf("memberships = %d, want the variant's three unchanged", got)
+	}
+	if !slices.Contains(tx.retires, retiredKey(pack.FamilySeries, "iron-druid-plain")) {
+		t.Errorf("the plain spelling was not retired: %v", tx.retires)
+	}
+	if len(tx.tombs) != 1 || tx.tombs[0].from != "iron-druid-plain" || tx.tombs[0].to != variant {
+		t.Errorf("tombstones = %+v, want iron-druid-plain -> %s", tx.tombs, variant)
+	}
+}
+
+// renumberedFinding is a family-renumbered merge-series: Field "position".
+func renumberedFinding(target, loser string) audit.Finding {
+	fd := seriesFinding(target, loser)
+	fd.Subclass = "family-renumbered"
+	fd.Propose.Field = "position"
+	return fd
+}
+
+// A family-renumbered fold keeps the TARGET's numbering: a loser membership the target
+// lists at another slot is not a conflict, and its dropped number is named in the notes
+// in the one loss format. A loser membership the target does not list at all still
+// refuses - a renumbered fold only retires - and no other field names a merge-series.
+func TestFamilyRenumberedKeepsTheTargetsNumbering(t *testing.T) {
+	const primary = "iron-druid-chronicles"
+	t.Run("the target's numbers stand", func(t *testing.T) {
+		rn, tx := planFixture(t, seedTree(t, familyTree(t, "hounded@1", "hexed@2", "tricked@3")))
+		if err := rn.mergeSeries(tx, renumberedFinding(primary, "iron-druid-plain")); err != nil {
+			t.Fatal(err)
+		}
+		e, _, err := tx.series.get(primary)
+		if err != nil {
+			t.Fatal(err)
+		}
+		at := map[string]string{}
+		for _, sw := range e.SeriesWorks() {
+			at[sw.Work] = sw.Position
+		}
+		if want := map[string]string{"hounded": "1", "hexed": "2", "tricked": "4"}; !reflect.DeepEqual(at, want) {
+			t.Errorf("memberships = %v, want the primary's numbering %v", at, want)
+		}
+		if want := `position of tricked: kept "4", dropped "3" from iron-druid-plain`; !strings.Contains(strings.Join(tx.notes, "\n"), want) {
+			t.Errorf("notes = %v, want %q", tx.notes, want)
+		}
+	})
+	t.Run("a membership the target lacks refuses", func(t *testing.T) {
+		files := familyTree(t, "hounded@1", "extra@3")
+		files["works/ex/extra/work.json"] = workJSON(t, "extra", "Extra")
+		files["works/ex/extra/recordings/luke-daniels-2014.json"] = recJSON(t, "luke-daniels-2014", "extra", withNarrators("luke-daniels"))
+		rn, tx := planFixture(t, seedTree(t, files))
+		assertRefusal(t, rn.mergeSeries(tx, renumberedFinding(primary, "iron-druid-plain")), CatPositionConflict, "never adds a membership")
+	})
+	t.Run("an unknown field is malformed", func(t *testing.T) {
+		rn, tx := planFixture(t, seedTree(t, familyTree(t, "hounded@1")))
+		fd := seriesFinding(primary, "iron-druid-plain")
+		fd.Propose.Field = "name"
+		assertRefusal(t, rn.mergeSeries(tx, fd), CatMalformed, `names field "name"`)
+	})
 }

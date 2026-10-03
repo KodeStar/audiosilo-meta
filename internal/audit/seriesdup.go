@@ -50,7 +50,8 @@ func seriesKeyIndex(all []*model.Series) []seriesKeys {
 }
 
 // detectSeriesDup groups series whose names are the same name spelled two ways.
-func detectSeriesDup(ix *index, keys []seriesKeys) *findings {
+// clustersOf is W-DUP's work -> cluster keys, which a family review names.
+func detectSeriesDup(ix *index, keys []seriesKeys, clustersOf map[string][]string) *findings {
 	f := &findings{class: ClassSeriesDup}
 
 	const foldReason = "fold the members onto the canonical name, then delete the empty spelling"
@@ -84,8 +85,23 @@ func detectSeriesDup(ix *index, keys []seriesKeys) *findings {
 		// it apart from the group) and its own subclass. It is emitted only under a
 		// vetoed group, which is what keeps the non-advisory set consistent: a mechanical
 		// whole-group fold would already fold these members onto a different survivor.
+		claimed := map[string]bool{}
 		for _, sub := range sameDecorationSubgroups(group) {
-			f.add(seriesDupFinding(ix, serDupDecor, key+"["+sub[0].decor+"]", sub, foldReason))
+			sfd := seriesDupFinding(ix, serDupDecor, key+"["+sub[0].decor+"]", sub, foldReason)
+			f.add(sfd)
+			if !sfd.Propose.Advisory {
+				for _, id := range Cluster(sfd.Propose.Target, sfd.Propose.Others) {
+					claimed[id] = true
+				}
+			}
+		}
+		// FAMILY FOLDS (seriesfamily.go): a group withheld for holding a reading-order
+		// family or a translation may still hold plain spellings of ONE family member,
+		// each proposed apart - never a series a mechanical subgroup above already folds.
+		if familyVetoed(ix, group) {
+			for _, ffd := range familySpellingFolds(ix, key, group, claimed, clustersOf) {
+				f.add(ffd)
+			}
 		}
 	}
 
@@ -155,6 +171,26 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 // that found them. target is the spelling the proposal would keep, which the directional
 // rules need: folding a loser INTO it is what makes a claim.
 func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
+	return seriesMergeVetoesWith(ix, group, target, vetoOptions{})
+}
+
+// vetoOptions are the two narrow stand-downs the family folds (seriesfamily.go) ask of
+// the same veto list. The zero value is the list every whole-group proposal reads.
+type vetoOptions struct {
+	// restatedOrdering is the survivor's STATED ordering field. When set, the
+	// decoration veto stands down for a pair whose every decoration is an ordering
+	// qualifier naming exactly that ordering (decorationsRestate): "The Chronicles of
+	// Narnia (Author's Preferred Order)" stating ordering=recommended says nothing in
+	// its parenthetical the record does not already state, so retiring the plain
+	// "Chronicles of Narnia" into it erases no distinction.
+	restatedOrdering string
+	// renumbered skips the ordering-agreement veto: a family-renumbered fold is
+	// exactly a disagreement about the numbers, judged by its own rule instead
+	// (renumberedOnto) and never mechanical.
+	renumbered bool
+}
+
+func seriesMergeVetoesWith(ix *index, group []seriesKeys, target string, o vetoOptions) []string {
 	var out []string
 	sides := seriesSides(ix, group)
 
@@ -179,7 +215,7 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 
 	// ORDERING AGREEMENT: a fold either retires a spelling whose memberships the
 	// survivor already holds, or adds ones it has room for. Everything else needs a human.
-	if reason, vetoed := vetoSeriesOrderingDisagrees(sides, target); vetoed {
+	if reason, vetoed := vetoSeriesOrderingDisagrees(sides, target); vetoed && !o.renumbered {
 		out = append(out, reason)
 	}
 
@@ -205,10 +241,27 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 	}
 
 	// PARENTHETICAL decoration is SER-PAREN's whole subject - see vetoSeriesDecoration.
-	if reason, vetoed := vetoSeriesDecoration(group, sides, target); vetoed {
+	if reason, vetoed := vetoSeriesDecoration(group, sides, target); vetoed && !decorationsRestate(group, o.restatedOrdering) {
 		out = append(out, reason)
 	}
 	return out
+}
+
+// decorationsRestate reports whether every parenthetical in the group is an ordering
+// qualifier naming ordering - the model ordering the survivor STATES in its field - so
+// no decoration says anything the surviving record does not. An empty ordering never
+// restates anything, and neither does a decoration that is not one ordering group
+// (an edition, an author disambiguator, two groups at once).
+func decorationsRestate(group []seriesKeys, ordering string) bool {
+	if ordering == "" {
+		return false
+	}
+	for _, k := range group {
+		if k.paren && (k.decor == "" || titlerule.OrderingOfDecoration(k.decor) != ordering) {
+			return false
+		}
+	}
+	return true
 }
 
 // vetoSeriesDecoration: the members carry parentheticals that tell them apart, so a fold

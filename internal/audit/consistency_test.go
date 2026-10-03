@@ -90,6 +90,10 @@ func TestProposalsAreConsistentAcrossTheFixtures(t *testing.T) {
 		}),
 		"translation editions": fixture(t, mergeFiles(sagaTree(t), fateTree(t))),
 		"language mix":         mergeFiles(mixSagaTree(t), moveTree(t, "s1@1", "s2@2"), narratedTree(t)),
+		"family spellings": seriesFixture(t, []string{"one", "two", "three", "four"}, mergeFiles(dragonFamily(t), map[string]string{
+			"series/dh/dh.json":       seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2", "three@3", "four@4"),
+			"series/dh/dh-books.json": seriesJSON(t, "dh-books", "Dragon Heart Books", "one@1", "two@2"),
+		})),
 	} {
 		t.Run(name, func(t *testing.T) {
 			assertProposalsConsistent(t, runFixture(t, files))

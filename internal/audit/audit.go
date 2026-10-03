@@ -191,7 +191,8 @@ func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 	// records (a merge, a restated position, a filled slot), and reads them as locks:
 	// a membership move that would not commute with one of them is advisory.
 	noSeries, integrity := detectWorkNoSeries(ix), detectSeriesIntegrity(ix)
-	serDup := detectSeriesDup(ix, skeys)
+	serDup := detectSeriesDup(ix, skeys, clustersOf)
+	detectOrderingTwins(ix, skeys, serDup)
 	mix, mixTally := detectLanguageMix(ix, newMixLocks(dup, noSeries, integrity, serDup))
 
 	rep := &Report{
