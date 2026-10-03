@@ -4,6 +4,7 @@ import (
 	"regexp"
 	"slices"
 	"strings"
+	"unicode"
 	"unicode/utf8"
 )
 
@@ -29,7 +30,7 @@ import (
 //     Edition)" (3, which the comparison key's bracket rule already removed). The dump
 //     spells it in 108 titles, the same shapes plus "[International Edition]", and
 //     uses the phrase no other way.
-//   - the narrator lead-ins (NarratorLeadIns) stand as a qualifier in 27 tree titles:
+//   - the narrator lead-ins (NarratorLeadIns, TitleOnlyNarratorLeadIns) stand as a qualifier in 27 tree titles:
 //     15 bracketed (which the comparison key already removed) and 12 not - the seven
 //     German Harry Potter volumes "- Gesprochen von Rufus Beck", "Die Bibel. Gelesen von
 //     Rufus Beck" and four Crossway titles ", Read by <narrator>". Two titles use the
@@ -41,22 +42,14 @@ import (
 //     credit (21 distinct titles); narratorCredit's digit and bracket bounds come from
 //     the two shapes beside them that are not a credit alone (see there).
 
-// NarratorLeadIns are the narrator lead-ins a TITLE spells: the ONE vocabulary
-// internal/importer's mid-title strip (stripTitleNarratorQualifier, before a volume
-// marker) and this file's trailing strip both read, so "what introduces a narrator
-// credit in a title" has one definition. Every entry is lowercase ASCII (the form
-// internal/importer's foldCredit produces) and is matched at a word boundary.
-//
-// The first three moved here from internal/importer, where they were measured over the
-// full 1.13M-book dump (counts are books in the importer's mid-title shape); they
+// NarratorLeadIns are the narrator lead-ins a TITLE spells that internal/importer's
+// mid-title strip (stripTitleNarratorQualifier, before a volume marker) and this
+// file's trailing strip BOTH read, so "what introduces a narrator credit in a title"
+// has one definition. Every entry is lowercase ASCII (the form internal/importer's
+// foldCredit produces) and is matched at a word boundary. They moved here from
+// internal/importer, where they were measured over the full 1.13M-book dump (counts
+// are books in the importer's mid-title shape), unchanged and in their order; they
 // are a subset of the importer's SERIES vocabulary, which its drift guard pins.
-//
-// "read by" is the one entry the title position attests and the series position does
-// not: five titles in the tree spell it as a qualifier ("ESV Audio Bible, Read by Ray
-// Ortlund", "Just So Stories (Read by Tony Robinson)"). The importer's series
-// vocabulary refuses it because nothing attests it THERE and because "A Read by the
-// Sea Wedding Romance" is a title - which the segment bound keeps it off here, since
-// it does not open a segment.
 //
 // "horspiele von" is deliberately absent, though the series vocabulary has it: in the
 // series position it means "audio dramas read by", but in a title it is an AUTHORSHIP
@@ -66,8 +59,20 @@ var NarratorLeadIns = []string{
 	"gelesen von",    // 11 of the 13 dump books in the mid-title shape; "Die Bibel. Gelesen von Rufus Beck"
 	"narrated by",    // 2; 13 bracketed titles in the tree
 	"gesprochen von", // 0 mid-title; the seven German Harry Potter volumes
-	"read by",        // the title position only; 4 unbracketed and 2 bracketed titles in the tree
 }
+
+// TitleOnlyNarratorLeadIns are the lead-ins this file's TRAILING strip reads beside
+// NarratorLeadIns and the importer's mid-title strip does not, so the importer's
+// behaviour stays exactly what was measured for it. "read by" is attested as a title
+// qualifier (four unbracketed and two bracketed tree titles: "ESV Audio Bible, Read by
+// Ray Ortlund", "Just So Stories (Read by Tony Robinson)"; eleven distinct dump
+// titles) and nowhere in the series trailing-bracket position, where the importer's
+// series vocabulary refuses it; "A Read by the Sea Wedding Romance" is a title, which
+// the segment bound keeps it off.
+var TitleOnlyNarratorLeadIns = []string{"read by"}
+
+// trailingLeadIns is every lead-in the trailing strip reads.
+var trailingLeadIns = slices.Concat(NarratorLeadIns, TitleOnlyNarratorLeadIns)
 
 // narratorObjectLeads are the words that begin a narration credit naming NOBODY - a
 // reflexive or a generic object rather than a person ("as Narrated by Himself",
@@ -89,23 +94,42 @@ func NarratorObjectLead(word string) bool { return narratorObjectLeads[word] }
 // sentence with it.
 const maxNarratorWords = 6
 
+// nameConnectives are the lowercase words a credit of two narrators, or one name with
+// a particle, may hold between capitalized words.
+var nameConnectives = map[string]bool{
+	"and": true, "&": true, "und": true, "y": true, "et": true, "e": true,
+	"van": true, "von": true, "de": true, "der": true, "den": true, "da": true,
+	"di": true, "du": true, "le": true, "la": true,
+}
+
 // narratorCredit reports whether text is a narrator qualifier and nothing else: a
-// lead-in at its start, then a credit of one to maxNarratorWords words that names
-// somebody (its first word is no object lead), carries a letter, opens no further
-// segment and holds no digit or bracket. The last two were found in the libex dump
-// (2026-07-29 snapshot, 1,130,872 books): "Tarzan - Narrated by William Martin 0",
-// "... 2" and "... 4" are three volumes whose number rides on the credit, and
-// "Leopold Epstein. Poetry. Read By Mikhail Kozakov [Russian Edition]" carries a
-// language statement after it - neither is a credit and nothing else.
+// lead-in at its start, then a credit that LOOKS LIKE A NAME - two to
+// maxNarratorWords words, the first and last capitalized and every other one
+// capitalized or a name connective, the first no object lead - which opens no further
+// segment and holds no digit or bracket.
+//
+// The name shape is what keeps the rule off prose: "Murder: Read by Candlelight",
+// "Stop. Read by Moonlight" and "The Book Thief: Narrated by Death" each carry a
+// lead-in at a segment boundary followed by one capitalized word. Measured over every
+// tree and dump title holding a lead-in (29 and 64), every credit the rule exists for
+// is a full name of two or more capitalized words (Rufus Beck, Stephen Fry, Ray
+// Ortlund, Tinasha LaRay&eacute;, Jackie Hill Perry - 27 tree and 52 dump titles,
+// identical with and without the two-word floor), so the floor costs nothing measured;
+// the one-word credits that do exist ("Narrated by Declan", "Read by Amish") are
+// CHAPTER titles, which no identity reads. The digit and bracket bounds came from the
+// libex dump (2026-07-29 snapshot, 1,130,872 books): "Tarzan - Narrated by William
+// Martin 0", "... 2" and "... 4" are three volumes whose number rides on the credit,
+// and "Leopold Epstein. Poetry. Read By Mikhail Kozakov [Russian Edition]" carries a
+// language statement after it.
 func narratorCredit(text string) bool {
 	t := strings.TrimSpace(text)
-	for _, lead := range NarratorLeadIns {
+	for _, lead := range trailingLeadIns {
 		if len(t) <= len(lead) || !strings.EqualFold(t[:len(lead)], lead) || t[len(lead)] != ' ' {
 			continue
 		}
 		credit := strings.TrimSpace(t[len(lead):])
 		words := strings.Fields(credit)
-		if len(words) == 0 || len(words) > maxNarratorWords ||
+		if len(words) < 2 || len(words) > maxNarratorWords || !looksLikeAName(words) ||
 			NarratorObjectLead(strings.ToLower(words[0])) ||
 			!hasLetter(credit) || strings.Contains(credit, ": ") || strings.Contains(credit, " - ") ||
 			strings.ContainsAny(credit, "0123456789()[]") {
@@ -207,6 +231,21 @@ func dropNarratorQualifier(s, lower string) string {
 	return s
 }
 
+// looksLikeAName reports whether a credit's words read as a name: the first and last
+// capitalized, every word between capitalized or a name connective.
+func looksLikeAName(words []string) bool {
+	for i, w := range words {
+		r, _ := utf8.DecodeRuneInString(w)
+		if unicode.IsUpper(r) {
+			continue
+		}
+		if i == 0 || i == len(words)-1 || !nameConnectives[w] {
+			return false
+		}
+	}
+	return true
+}
+
 // opensTrailingSegment reports whether the text before a candidate lead-in ends in a
 // segment separator followed by a space. The set is its own: unlike rules.go's
 // subtitleSeps/segmentPunct and identity.go's endsSegment/divisionSeparators it takes
@@ -230,7 +269,7 @@ func opensTrailingSegment(head string) bool {
 // mentionsNarratorLeadIn is dropNarratorQualifier's cheap guard over an
 // already-lowercased title.
 func mentionsNarratorLeadIn(lower string) bool {
-	for _, lead := range NarratorLeadIns {
+	for _, lead := range trailingLeadIns {
 		if strings.Contains(lower, lead) {
 			return true
 		}
@@ -289,10 +328,16 @@ var nameArticles = map[string]bool{
 // The apostrophe is all it removes, and only at the title's head, after a two- or
 // three-word capitalized name. A possessive fold ANYWHERE was measured first and
 // declined: over same-author, same-language works it forms 22 new groups, 21 of them
-// this brand shape (fifteen Tom Clancy and Clive Cussler continuations, "Rudyard
+// this brand shape (nineteen Tom Clancy and Clive Cussler continuations, "Rudyard
 // Kipling's The Jungle Book", "George Washington's Farewell Address") and one a
 // different book ("Dragon Magic" beside "Dragon's Magic"), which a one-word head can
 // never reach here.
+//
+// Two accepted limits. The apostrophe-less spelling "Tom Clancys X" folds to nothing
+// and so misses the possessive record (the tree holds none today). And any title-case
+// possessive head folds, not only a brand ("My Sister's Keeper" compares as "My Sister
+// Keeper"): harmless, because a key collision is only a candidate and every consumer
+// also requires the authors to match.
 func foldBrandPossessive(s string) string {
 	if !strings.ContainsAny(s, "'’") {
 		return s // the common case, kept off the regexp: Clean runs on every title

@@ -51,6 +51,11 @@ func TestTitleQualifiersMeetTheirPlainTwin(t *testing.T) {
 		{name: "a credit naming nobody", plain: "The Life of Josiah Henson", decor: "The Life of Josiah Henson, as Narrated by Himself", same: false},
 		{name: "a credit carrying the volume number", plain: "Tarzan", decor: "Tarzan - Narrated by William Martin 2", same: false},
 		{name: "a lead-in inside a title", plain: "A Wedding Romance", decor: "A Read by the Sea Wedding Romance", same: false},
+		// A lead-in at a segment boundary followed by prose rather than a name.
+		{name: "read by an object, not a name", plain: "Murder", decor: "Murder: Read by Candlelight", same: false},
+		{name: "read by an object after a full stop", plain: "Stop", decor: "Stop. Read by Moonlight", same: false},
+		{name: "narrated by a character", plain: "The Book Thief", decor: "The Book Thief: Narrated by Death", same: false},
+		{name: "a lowercase credit is prose", plain: "Night Poems", decor: "Night Poems, Read by candle and lamp", same: false},
 		{name: "a credit too long to be one", plain: "Deutsche Gedichte", decor: "Deutsche Gedichte - Gelesen von Ulrich Tukur und Christian Redl am Klavier", same: false},
 
 		// The brand possessive.
@@ -110,6 +115,9 @@ func TestTitleQualifiersAreDecorations(t *testing.T) {
 		"Narrated by the Author: How to Produce an Audiobook on a Budget",
 		"Tarzan - Narrated by William Martin 2",
 		"The Times International Edition",
+		"Murder: Read by Candlelight",
+		"Stop. Read by Moonlight",
+		"The Book Thief: Narrated by Death",
 		"Tom Clancy's Oath of Office", // the brand fold is a comparison rule, never a retitle
 	} {
 		codes := Decorations(TitleFacts{Title: title})
@@ -123,7 +131,7 @@ func TestTitleQualifiersAreDecorations(t *testing.T) {
 // internal/importer in its foldCredit form, so every entry must already be lowercase
 // ASCII.
 func TestNarratorLeadInsAreFolded(t *testing.T) {
-	for _, lead := range NarratorLeadIns {
+	for _, lead := range trailingLeadIns {
 		if lead != strings.ToLower(lead) || strings.TrimSpace(lead) != lead {
 			t.Errorf("lead-in %q is not lowercase and trimmed", lead)
 		}
