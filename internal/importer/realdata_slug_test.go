@@ -23,6 +23,7 @@ import (
 	"testing"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
@@ -246,6 +247,13 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // was later corrected). Scoping the assertion to the characters a rule change
 // moved is what keeps this a proof of the two migrations rather than a standing
 // complaint about composed identity in general.
+//
+// The SERIES arm asks the importer's real reach question, not the chain alone:
+// a series off its name's chain is current when SeriesAuthorIndex.Resolve over
+// the loaded catalogue still joins it - which the qualifier index does for a
+// linked edition series renamed to its base name (seriesqualified.go). Only a
+// series nothing reaches fails, and the message carries the resolution's answer.
+// The catalogue load (~25s) runs only when some series is off its chain.
 func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 	claims := dataSeriesClaims(t)
 	walkEntries(t, "works", func(path, key string, e map[string]any) {
@@ -264,6 +272,8 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 			"an import of this title would mint a duplicate work", path, key, title)
 	})
 
+	type offChain struct{ path, key, name string }
+	var off []offChain
 	walkEntries(t, "series", func(path, key string, e map[string]any) {
 		name := str(e, "name")
 		if !movedByTransliteration(name) && !movedByApostrophe(name) {
@@ -275,7 +285,90 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 				return
 			}
 		}
-		t.Errorf("%s: series %q (name %q) is on no candidate of today's slug chain; "+
-			"an import naming this series would mint a duplicate", path, key, name)
+		off = append(off, offChain{path, key, name})
 	})
+	if len(off) == 0 {
+		return
+	}
+
+	// A series off its name's chain is still current when the importer's
+	// resolution REACHES it: a linked edition series renamed to its base name
+	// ("Dreamer's Throne" at dreamers-throne-german-edition) is joined through
+	// the qualifier index by a claim naming that base in its language. So the
+	// question is asked of the real resolution (SeriesAuthorIndex.Resolve over
+	// the loaded catalogue), with a row modeled on each member work - its
+	// credits, titles and publisher - in the series' DERIVED language, the facet
+	// the index files it under. One member's row reaching it is enough: that is
+	// an import of one of its books naming the series by its stored name.
+	res := check.Load(dataDir)
+	if !res.OK() {
+		t.Fatalf("loading %s: %d problem(s), first: %s", dataDir, len(res.Problems), res.Problems[0])
+	}
+	cat := res.Catalog
+	ix := NewSeriesAuthorIndex(cat)
+	works := make(map[string]*model.Work, len(cat.Works))
+	for _, w := range cat.Works {
+		works[w.ID] = w
+	}
+	series := make(map[string]*model.Series, len(cat.Series))
+	for _, s := range cat.Series {
+		series[s.ID] = s
+	}
+	names := make(map[string]string, len(cat.People))
+	for _, p := range cat.People {
+		names[p.ID] = p.Name
+	}
+	stored := func(slug string) (string, bool) {
+		if s := series[slug]; s != nil {
+			return s.Name, true
+		}
+		return "", false
+	}
+	for _, o := range off {
+		s := series[o.key]
+		if s == nil {
+			t.Errorf("%s: series %q is not in the loaded catalogue", o.path, o.key)
+			continue
+		}
+		lang := model.SeriesLanguageOf(s.Works, works)
+		var last SeriesMatch
+		reached := false
+		for _, sw := range s.Works {
+			w := works[sw.Work]
+			if w == nil {
+				continue
+			}
+			credits := make([]string, 0, len(w.Authors))
+			slugOf := map[string]string{}
+			for _, a := range w.Authors {
+				credits = append(credits, names[a])
+				slugOf[names[a]] = a
+			}
+			var publisher string
+			for _, r := range w.Recordings {
+				if r.Publisher != "" {
+					publisher = r.Publisher
+					break
+				}
+			}
+			row := SeriesRowFor(credits, []string{w.Title, w.Subtitle}, publisher, lang,
+				func(name string) string { return slugOf[name] })
+			last = ix.Resolve(o.name, cat.Redirects, stored, row)
+			if last.Found && last.Slug == o.key {
+				reached = true
+				break
+			}
+		}
+		if reached {
+			continue
+		}
+		why := last.Why()
+		if why == "" {
+			why = "nothing stepped past"
+		}
+		t.Errorf("%s: series %q (name %q, language %q) is on no candidate of today's slug chain "+
+			"and the importer's resolution does not reach it (a claim resolves to %q, found=%v: %s); "+
+			"an import naming this series would mint a duplicate",
+			o.path, o.key, o.name, lang, last.Slug, last.Found, why)
+	}
 }
