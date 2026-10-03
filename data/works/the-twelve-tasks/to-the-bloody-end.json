@@ -8758,6 +8758,10 @@
             {
               "asin": "B002V1PLE6",
               "region": "us"
+            },
+            {
+              "asin": "B0798K2GJ6",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8861,6 +8865,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B002V1PLE6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0798K2GJ6",
               "type": "libex-import"
             }
           ],
@@ -14560,6 +14569,67 @@
         }
       ],
       "title": "To tylko żart"
+    },
+    "to-unleash-a-darker-fate": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "brooke-fast"
+      ],
+      "genres": [
+        "dystopian",
+        "romance",
+        "science-fiction"
+      ],
+      "id": "to-unleash-a-darker-fate",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nikki-massoud-2027": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0GTRML1MM",
+              "region": "uk"
+            },
+            {
+              "asin": "B0GTS5NXNF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UUcHEo2NL.jpg",
+          "id": "nikki-massoud-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nikki-massoud"
+          ],
+          "publisher": "Avon",
+          "release_date": "2027-02-09",
+          "runtime_min": 855,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GTRML1MM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GTS5NXNF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "to-unleash-a-darker-fate"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0GTRML1MM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "To Unleash a Darker Fate"
     }
   }
 }

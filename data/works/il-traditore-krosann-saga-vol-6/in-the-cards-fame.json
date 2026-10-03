@@ -5411,6 +5411,10 @@
             {
               "asin": "B002VACDO8",
               "region": "us"
+            },
+            {
+              "asin": "B07982JJRX",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5735,6 +5739,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002VACDO8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B07982JJRX",
               "type": "libex-import"
             }
           ],
@@ -7632,6 +7641,35 @@
             {
               "imported_at": "2026-09-22",
               "ref": "B0GR6G6NP3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "in-the-dark-shain-rose"
+        },
+        "corvin-king-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0GR6JK369",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vnX2lstVL.jpg",
+          "id": "corvin-king-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "corvin-king",
+            "elena-wolfe"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2026-09-29",
+          "runtime_min": 592,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GR6JK369",
               "type": "libex-import"
             }
           ],
