@@ -67,6 +67,7 @@ func TestTitleQualifiersMeetTheirPlainTwin(t *testing.T) {
 			decor: "Tom Clancy's Oath of Office", same: true,
 		},
 		{name: "an article is no brand", plain: "A Doll House", decor: "A Doll's House", same: false},
+		{name: "a possessive determiner is no brand", plain: "My Sister Keeper", decor: "My Sister's Keeper", same: false},
 		{name: "one word is no brand", plain: "Dragon Magic", decor: "Dragon's Magic", same: false},
 		{name: "a possessive past the head is untouched", plain: "Old Man War", decor: "The Old Man's War", same: false},
 	}
@@ -147,8 +148,8 @@ func TestNarratorLeadInsAreFolded(t *testing.T) {
 // judges it, never an empty string.
 func TestTitleQualifiersNeverEmptyATitle(t *testing.T) {
 	for _, title := range []string{`"International Edition"`, "(Narrated by Jane Doe)"} {
-		if got := dropTitleQualifiers(title); got != title {
-			t.Errorf("dropTitleQualifiers(%q) = %q, want it unchanged", title, got)
+		if got := StripTitleQualifiers(title); got != title {
+			t.Errorf("StripTitleQualifiers(%q) = %q, want it unchanged", title, got)
 		}
 	}
 }

@@ -415,12 +415,15 @@ func TestOtherModesAreUntouchedByTheGuard(t *testing.T) {
 	}
 }
 
-// The two title QUALIFIERS (titlerule's qualifiers.go) are identity-free for the create
-// guard too: a marketplace-edition listing and a narrator-qualified listing of a
-// catalogued book are refused rather than minted beside it, and a brand spelled without
-// its possessive meets the possessive record. Before the rules each of these minted a
-// sibling work (the tree held 47 "International Edition" twins).
-func TestCreateRefusesQualifiedListingsOfACataloguedWork(t *testing.T) {
+// The two title QUALIFIERS (titlerule's qualifiers.go) are stripped before work
+// identity (cleanWorkTitle, through titlerule.StripTitleQualifiers), so a
+// marketplace-edition or narrator-qualified listing of a catalogued book RESOLVES to
+// it and is judged by the ordinary recording rules - attached as a new narration, or
+// merged by ASIN into the same production - rather than refused by the duplicate
+// guard or minted beside it (48 of the 51 tree titles carrying "International Edition" have such a twin). The
+// brand possessive is a comparison rule only, so a brand respelling still meets the
+// duplicate guard.
+func TestQualifiedListingsAttachToTheCataloguedWork(t *testing.T) {
 	dataDir := t.TempDir()
 	if sum := runLibexInto(t, dataDir, rows(
 		libexRow{asin: "B0QUALIF01", title: "The Search", authors: `{"name":"Ada One"}`,
@@ -430,29 +433,65 @@ func TestCreateRefusesQualifiedListingsOfACataloguedWork(t *testing.T) {
 	)); sum.NewWorks != 2 {
 		t.Fatalf("seed run: NewWorks = %d, want 2", sum.NewWorks)
 	}
-	for _, row := range []libexRow{
-		{asin: "B0QUALIF03", title: "The Search: International Edition", authors: `{"name":"Ada One"}`,
-			narrators: `{"name":"Ann Reader"}`, minutes: 527},
-		{asin: "B0QUALIF04", title: "The Search “International Edition”", authors: `{"name":"Ada One"}`,
-			narrators: `{"name":"Cy Reader"}`, minutes: 530},
-		{asin: "B0QUALIF05", title: "The Search, Read by Dee Reader", authors: `{"name":"Ada One"}`,
-			narrators: `{"name":"Dee Reader"}`, minutes: 560},
-		{asin: "B0QUALIF06", title: "Tom Clancy Oath of Office", authors: `{"name":"Bo Two"}`,
-			narrators: `{"name":"Eve Reader"}`, minutes: 905},
+	for _, c := range []struct {
+		row                   libexRow
+		newRecording, mergeTo bool
+	}{
+		// The same narrator within the runtime tolerance is the same production.
+		{libexRow{asin: "B0QUALIF03", title: "The Search: International Edition", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 527}, false, true},
+		{libexRow{asin: "B0QUALIF04", title: "The Search “International Edition”", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Cy Reader"}`, minutes: 530}, true, false},
+		{libexRow{asin: "B0QUALIF05", title: "The Search, Read by Dee Reader", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Dee Reader"}`, minutes: 560}, true, false},
 	} {
-		sum := runLibexInto(t, dataDir, rows(row))
-		if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
-			t.Errorf("%q: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
-				row.title, sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+		before := len(recSlugsOf(t, dataDir, "the-search"))
+		sum := runLibexInto(t, dataDir, rows(c.row))
+		if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 {
+			t.Errorf("%q: NewWorks = %d, SkippedDuplicateIdentity = %d, want 0 and 0; warnings = %v",
+				c.row.title, sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
+		}
+		if c.newRecording && (sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "the-search")) != before+1) {
+			t.Errorf("%q: NewRecordings = %d, want a new recording under the-search", c.row.title, sum.NewRecordings)
+		}
+		if c.mergeTo && sum.MergedASINs != 1 {
+			t.Errorf("%q: MergedASINs = %d, want the ASIN merged into the same production", c.row.title, sum.MergedASINs)
 		}
 	}
-	// A title that merely USES the words is no qualifier, and is its own book.
+	// The brand fold is the identity KEY's, not the work title's: refused, not attached.
 	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0QUALIF06", title: "Tom Clancy Oath of Office", authors: `{"name":"Bo Two"}`,
+			narrators: `{"name":"Eve Reader"}`, minutes: 905},
+	))
+	if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+		t.Errorf("brand respelling: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+	// A title that merely USES the words is no qualifier, and is its own book.
+	sum = runLibexInto(t, dataDir, rows(
 		libexRow{asin: "B0QUALIF07", title: "Narrated by the Author: The Search", authors: `{"name":"Ada One"}`,
 			narrators: `{"name":"Ann Reader"}`, minutes: 300},
 	))
 	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
 		t.Errorf("a lead-in opening a title: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
 			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
+// A title that is NOTHING but a qualifier keeps itself: stripping would leave no title.
+func TestABareQualifierTitleKeepsItsTitle(t *testing.T) {
+	for _, title := range []string{`"International Edition"`, "(Narrated by Jane Doe)"} {
+		if got := cleanWorkTitle(title); got != title {
+			t.Errorf("cleanWorkTitle(%q) = %q, want it unchanged", title, got)
+		}
+	}
+	for title, want := range map[string]string{
+		"The Search: International Edition (Unabridged)": "The Search",
+		"ESV Audio Bible, Read by Ray Ortlund":           "ESV Audio Bible",
+		"Murder: Read by Candlelight":                    "Murder: Read by Candlelight",
+	} {
+		if got := cleanWorkTitle(title); got != want {
+			t.Errorf("cleanWorkTitle(%q) = %q, want %q", title, got, want)
+		}
 	}
 }

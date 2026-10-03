@@ -192,7 +192,7 @@ func dropWideGenreSubtitle(s string) string {
 // Iron Druid Chronicles") no longer meets the plain twin it decorates. That is the
 // right way round - a refused cluster is re-findable, a wrong merge deletes a record.
 func Clean(title, series string) string {
-	s := dropWideGenreSubtitle(dropTitleQualifiers(title))
+	s := dropWideGenreSubtitle(StripTitleQualifiers(title))
 	if series != "" {
 		s = stripSeriesAtBoundary(s, SeriesForms(series))
 	}
@@ -1190,7 +1190,7 @@ func ProposeTitle(title, series string) (string, bool) {
 // codes for what each one is and why.
 func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 	orig := strings.TrimSpace(title)
-	s := dropWideGenreSubtitle(dropTitleQualifiers(orig))
+	s := dropWideGenreSubtitle(StripTitleQualifiers(orig))
 	if series != "" {
 		if SameModuloArticles(orig, series) {
 			return "", RefuseIsSeriesName, false

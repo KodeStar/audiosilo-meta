@@ -59,13 +59,20 @@ func abridgedFromMarker(title string) *bool {
 //  1. trailing (Unabridged)/(Abridged)/[Unabridged]/[Abridged] edition markers
 //     (all stacked markers in one pass), so "Mageling" and "Mageling
 //     (Unabridged)" resolve to one work;
-//  2. a mid-title NARRATOR qualifier in front of a volume marker
+//  2. the two title QUALIFIERS - a marketplace edition ("The Search:
+//     International Edition") and a trailing narrator credit ("The Search, Read by
+//     Dee Reader") - through titlerule.StripTitleQualifiers, the very function
+//     the identity key cleans with, so a row the duplicate-identity guard would
+//     otherwise refuse resolves to the catalogued work and is judged by the
+//     ordinary recording rules (a new narration, or an ASIN merge under the
+//     runtime and abridged guards);
+//  3. a mid-title NARRATOR qualifier in front of a volume marker
 //     (stripTitleNarratorQualifier), so "... - gelesen von Andreas Lange, Band
 //     11" and "... - gelesen von Peter Bocek, Band 11" resolve to the one work
 //     the undecorated "..., Band 11" already names.
 //
-// It never returns an empty string: a title that is ONLY a marker (or trims to
-// nothing) is returned unchanged.
+// It never returns an empty string: a title that is ONLY a marker or a
+// qualifier (or trims to nothing) is returned unchanged.
 //
 // The edition-marker half is titlerule.StripEditionMarkers, the ONE definition of
 // what such a marker is (see titlerule/edition.go for why it lives there).
@@ -75,7 +82,7 @@ func cleanWorkTitle(title string) string {
 	if stripped == "" {
 		return cleaned
 	}
-	return stripTitleNarratorQualifier(stripped)
+	return stripTitleNarratorQualifier(titlerule.StripTitleQualifiers(stripped))
 }
 
 // recInfo remembers enough about a recording under a work to detect a

@@ -23,24 +23,28 @@ import (
 // 282,052-work tree at c7ef08466 and the libex dump (2026-07-29 snapshot, 1,130,872
 // books):
 //
-//   - "International Edition" is carried by 51 tree titles, every one the marketplace
-//     marker, in four spellings: ": International Edition" (31, one more followed by
-//     ", Parts 1 and 2"), a quoted "International Edition"/"International Editions"
-//     (16, two of them followed by "[Dramatized Adaptation]") and "(International
-//     Edition)" (3, which the comparison key's bracket rule already removed). The dump
-//     spells it in 108 titles, the same shapes plus "[International Edition]", and
-//     uses the phrase no other way.
-//   - the narrator lead-ins (NarratorLeadIns, TitleOnlyNarratorLeadIns) stand as a qualifier in 27 tree titles:
-//     15 bracketed (which the comparison key already removed) and 12 not - the seven
-//     German Harry Potter volumes "- Gesprochen von Rufus Beck", "Die Bibel. Gelesen von
-//     Rufus Beck" and four Crossway titles ", Read by <narrator>". Two titles use the
-//     words otherwise and the bound leaves both alone: "Narrated by the Author: How to
-//     Produce an Audiobook on a Budget" (nothing before it, and it names nobody) and "A
-//     Christmas Carol: The Unabridged Classic Narrated by Chandler Craig" (no separator
-//     before it - a retailer's sentence, and one title is no basis for reading a bare
-//     space as a boundary). In the dump every title-position match is a real narrator
-//     credit (21 distinct titles); narratorCredit's digit and bracket bounds come from
-//     the two shapes beside them that are not a credit alone (see there).
+//   - 51 tree titles carry "International Edition", every one the marketplace marker,
+//     in four spellings: ": International Edition" (31, one more followed by ", Parts 1
+//     and 2"), a quoted "International Edition"/"International Editions" (16, two of
+//     them followed by "[Dramatized Adaptation]") and "(International Edition)" (3,
+//     which the comparison key's bracket rule already removed). 48 of the 51 have a
+//     same-author twin W-DUP clusters them with (47 newly, "Go Tell the Bees That I Am
+//     Gone" already through its brackets), 44 of those clusters enter its non-advisory
+//     merge set, and 3 have no twin. The dump spells the phrase in 108 titles, the same
+//     shapes plus "[International Edition]", and uses it no other way.
+//   - 29 tree titles hold a narrator lead-in (NarratorLeadIns,
+//     TitleOnlyNarratorLeadIns) and the rule strips 27 of them: 15 bracketed (which the
+//     comparison key already removed) and 12 not - the seven German Harry Potter
+//     volumes "- Gesprochen von Rufus Beck", "Die Bibel. Gelesen von Rufus Beck" and
+//     four Crossway titles ", Read by <narrator>". The other two use the words
+//     otherwise and the bound leaves both alone: "Narrated by the Author: How to
+//     Produce an Audiobook on a Budget" (nothing before it, and it names nobody) and
+//     "A Christmas Carol: The Unabridged Classic Narrated by Chandler Craig" (no
+//     separator before it - a retailer's sentence, and one title is no basis for
+//     reading a bare space as a boundary). Of the dump's 64 titles holding a lead-in
+//     the rule strips 52, every one a real narrator credit; narratorCredit's name,
+//     digit and bracket bounds come from the shapes beside them that are not a credit
+//     alone (see there).
 
 // NarratorLeadIns are the narrator lead-ins a TITLE spells that internal/importer's
 // mid-title strip (stripTitleNarratorQualifier, before a volume marker) and this
@@ -111,10 +115,10 @@ var nameConnectives = map[string]bool{
 // The name shape is what keeps the rule off prose: "Murder: Read by Candlelight",
 // "Stop. Read by Moonlight" and "The Book Thief: Narrated by Death" each carry a
 // lead-in at a segment boundary followed by one capitalized word. Measured over every
-// tree and dump title holding a lead-in (29 and 64), every credit the rule exists for
-// is a full name of two or more capitalized words (Rufus Beck, Stephen Fry, Ray
-// Ortlund, Tinasha LaRay&eacute;, Jackie Hill Perry - 27 tree and 52 dump titles,
-// identical with and without the two-word floor), so the floor costs nothing measured;
+// tree and dump title holding a lead-in (29 and 64), every credit the rule strips (27
+// tree and 52 dump titles) is a full name of two or more capitalized words (Rufus
+// Beck, Stephen Fry, Ray Ortlund, Tinasha LaRay&eacute;, Jackie Hill Perry - the same
+// titles with and without the two-word floor), so the floor costs nothing measured;
 // the one-word credits that do exist ("Narrated by Declan", "Read by Amish") are
 // CHAPTER titles, which no identity reads. The digit and bracket bounds came from the
 // libex dump (2026-07-29 snapshot, 1,130,872 books): "Tarzan - Narrated by William
@@ -277,10 +281,16 @@ func mentionsNarratorLeadIn(lower string) bool {
 	return false
 }
 
-// dropTitleQualifiers removes both qualifiers and settles the separators they leave.
+// StripTitleQualifiers removes both qualifiers and settles the separators they leave.
 // It never empties a title: a title that is nothing but a qualifier is returned as it
 // was, for the caller's own fallback to judge.
-func dropTitleQualifiers(title string) string {
+//
+// It is the ONE door to the two rules: Clean and StripDecoration call it, and so does
+// internal/importer's cleanWorkTitle, so a bulk row titled "The Search, Read by Dee
+// Reader" resolves to the catalogued "The Search" and is judged by the ordinary
+// recording rules (a new narration, an ASIN merge) rather than refused by the
+// duplicate-identity guard the key alone would trip.
+func StripTitleQualifiers(title string) string {
 	lower := strings.ToLower(title)
 	s := dropNarratorQualifier(dropMarketEdition(title, lower), lower)
 	if s == title {
@@ -295,7 +305,7 @@ func dropTitleQualifiers(title string) string {
 
 // dropsQualifier is the decoration table's test for one qualifier: drop removes
 // something AND leaves a title behind - the same never-empty fallback
-// dropTitleQualifiers applies, so a title that is nothing but a qualifier is not filed
+// StripTitleQualifiers applies, so a title that is nothing but a qualifier is not filed
 // as carrying a decoration no strip will ever take off.
 func dropsQualifier(title string, drop func(s, lower string) string) bool {
 	out := drop(title, strings.ToLower(title))
@@ -309,10 +319,12 @@ func dropsQualifier(title string, drop func(s, lower string) string) bool {
 var leadingNamePossessive = regexp.MustCompile(`^(\p{Lu}[\p{L}.]*)((?:\s+\p{Lu}[\p{L}.]*){1,2})['’]s\s`)
 
 // nameArticles are the leading words that make a capitalized run a TITLE rather than a
-// name: "A Doll's House" and "The Pilgrim's Progress" open with an article, and a
-// possessive after one is the title's own grammar ("A Doll House" is a different
-// translation's title, not a brand spelled two ways).
+// name: "A Doll's House" and "The Pilgrim's Progress" open with an article, and "My
+// Sister's Keeper" with a possessive determiner, and a possessive after either is the
+// title's own grammar ("A Doll House" is a different translation's title, not a brand
+// spelled two ways).
 var nameArticles = map[string]bool{
+	"my": true, "his": true, "her": true, "its": true, "our": true, "your": true, "their": true,
 	"a": true, "an": true, "the": true,
 	"der": true, "die": true, "das": true, "ein": true, "eine": true,
 	"le": true, "la": true, "les": true, "un": true, "une": true,
@@ -334,10 +346,11 @@ var nameArticles = map[string]bool{
 // never reach here.
 //
 // Two accepted limits. The apostrophe-less spelling "Tom Clancys X" folds to nothing
-// and so misses the possessive record (the tree holds none today). And any title-case
-// possessive head folds, not only a brand ("My Sister's Keeper" compares as "My Sister
-// Keeper"): harmless, because a key collision is only a candidate and every consumer
-// also requires the authors to match.
+// and so misses the possessive record (the tree holds none today). And any other
+// title-case possessive head folds, not only a brand ("Charlotte Holmes's Wedding"
+// compares as "Charlotte Holmes Wedding"; an article or a possessive determiner -
+// "The Pilgrim's", "My Sister's" - is excluded): harmless, because a key collision is
+// only a candidate and every consumer also requires the authors to match.
 func foldBrandPossessive(s string) string {
 	if !strings.ContainsAny(s, "'’") {
 		return s // the common case, kept off the regexp: Clean runs on every title
