@@ -5455,7 +5455,9 @@
         "classics",
         "epic-fantasy",
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "science-fiction",
+        "steampunk"
       ],
       "id": "cold-magic",
       "language": "en",
@@ -5660,34 +5662,7 @@
             }
           ],
           "work": "cold-magic"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00EHIDEUO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cold Magic"
-    },
-    "cold-magic-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kate-elliott"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "science-fiction",
-        "steampunk"
-      ],
-      "id": "cold-magic-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "charlotte-parry-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5896,17 +5871,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "cold-magic-international-edition"
+          "work": "cold-magic"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00EHIDEUO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1705033245",
           "type": "libex-import"
         }
       ],
-      "title": "Cold Magic \"International Edition\""
+      "title": "Cold Magic"
     },
     "cold-malice": {
       "added_at": "2026-07-29",
@@ -14294,34 +14274,7 @@
             }
           ],
           "work": "cold-steel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00HUVNYT6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cold Steel"
-    },
-    "cold-steel-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kate-elliott"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "science-fiction",
-        "steampunk"
-      ],
-      "id": "cold-steel-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "charlotte-parry-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14580,17 +14533,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "cold-steel-international-edition"
+          "work": "cold-steel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00HUVNYT6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1705033261",
           "type": "libex-import"
         }
       ],
-      "title": "Cold Steel \"International Edition\""
+      "title": "Cold Steel"
     },
     "cold-steel-joe-kassabian": {
       "added_at": "2026-08-02",

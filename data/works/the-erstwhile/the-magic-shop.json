@@ -10477,7 +10477,9 @@
         "action-adventure",
         "childrens",
         "classics",
+        "coming-of-age",
         "fantasy",
+        "nature",
         "religious-fiction"
       ],
       "id": "the-magicians-nephew",
@@ -10615,6 +10617,14 @@
             {
               "asin": "B079N9X9LF",
               "region": "uk"
+            },
+            {
+              "asin": "B0036GRMXS",
+              "region": "us"
+            },
+            {
+              "asin": "B004EEWWZ4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10713,6 +10723,56 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B079N9X9LF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GRMXS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004EEWWZ4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-magicians-nephew"
+        },
+        "michael-hordern-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GPOX8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4109328,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4034513,
+              "start_ms": 4109328,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81DP4Kb4s9L.jpg",
+          "id": "michael-hordern-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-hordern"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-09-02",
+          "runtime_min": 135,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GPOX8",
               "type": "libex-import"
             }
           ],
@@ -10839,76 +10899,19 @@
           "imported_at": "2026-08-02",
           "ref": "1662196903",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Magician's Nephew"
-    },
-    "the-magicians-nephew-abridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-magicians-nephew-abridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-hordern-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GPOX8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4109328,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4034513,
-              "start_ms": 4109328,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81DP4Kb4s9L.jpg",
-          "id": "michael-hordern-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-hordern"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-09-02",
-          "runtime_min": 135,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GPOX8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-magicians-nephew-abridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GPOX8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GRMXS",
+          "type": "libex-import"
         }
       ],
-      "title": "The Magician’s Nephew: Abridged"
+      "title": "The Magician's Nephew"
     },
     "the-magicians-nephew-chronicles-of-narnia-book-1": {
       "added_at": "2026-08-02",
@@ -11050,152 +11053,6 @@
         }
       ],
       "title": "The Magician's Nephew: Chronicles of Narnia, Book 1"
-    },
-    "the-magicians-nephew-unabridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-magicians-nephew-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kenneth-branagh-2005": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GRMXS",
-              "region": "us"
-            },
-            {
-              "asin": "B004EEWWZ4",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 34555,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1015220,
-              "start_ms": 34555,
-              "title": "One: The Wrong Door"
-            },
-            {
-              "length_ms": 971924,
-              "start_ms": 1049775,
-              "title": "Two: Digory and His Uncle"
-            },
-            {
-              "length_ms": 905502,
-              "start_ms": 2021699,
-              "title": "Three: The Wood Between the Worlds"
-            },
-            {
-              "length_ms": 951925,
-              "start_ms": 2927201,
-              "title": "Four: The Bell and the Hammer"
-            },
-            {
-              "length_ms": 957492,
-              "start_ms": 3879126,
-              "title": "Five: The Deplorable Word"
-            },
-            {
-              "length_ms": 944791,
-              "start_ms": 4836618,
-              "title": "Six: The Beginning of Uncle Andrew’s Troubles"
-            },
-            {
-              "length_ms": 929374,
-              "start_ms": 5781409,
-              "title": "Seven: What Happened at the Front Door"
-            },
-            {
-              "length_ms": 914325,
-              "start_ms": 6710783,
-              "title": "Eight: The Fight at the Lamp-Post"
-            },
-            {
-              "length_ms": 1051015,
-              "start_ms": 7625108,
-              "title": "Nine: The Founding of Narnia"
-            },
-            {
-              "length_ms": 920748,
-              "start_ms": 8676123,
-              "title": "Ten: The First Joke and Other Matters"
-            },
-            {
-              "length_ms": 950803,
-              "start_ms": 9596871,
-              "title": "Eleven: Digory and His Uncle are Both in Trouble"
-            },
-            {
-              "length_ms": 1012057,
-              "start_ms": 10547674,
-              "title": "Twelve: Strawberry’s Adventure"
-            },
-            {
-              "length_ms": 935894,
-              "start_ms": 11559731,
-              "title": "Thirteen: An Unexpected Meeting"
-            },
-            {
-              "length_ms": 875985,
-              "start_ms": 12495625,
-              "title": "Fourteen: The Planting of the Tree"
-            },
-            {
-              "length_ms": 779791,
-              "start_ms": 13371610,
-              "title": "Fifteen: The End of This Story and the Beginning of All the Others"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81DP4Kb4s9L.jpg",
-          "id": "kenneth-branagh-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kenneth-branagh"
-          ],
-          "publisher": "HarperCollinsChildren’sBooks",
-          "release_date": "2005-08-29",
-          "runtime_min": 235,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GRMXS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004EEWWZ4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-magicians-nephew-unabridged"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036GRMXS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Magician’s Nephew: Unabridged"
     },
     "the-magicians-of-caprona": {
       "added_at": "2026-08-02",

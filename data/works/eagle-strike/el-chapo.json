@@ -7168,6 +7168,7 @@
         "dan-brown"
       ],
       "genres": [
+        "espionage",
         "historical-fiction",
         "literary-fiction",
         "mystery",
@@ -7204,31 +7205,7 @@
             }
           ],
           "work": "el-codigo-da-vinci"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09MDQMHHC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El código Da Vinci"
-    },
-    "el-codigo-da-vinci-the-da-vinci-code": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dan-brown"
-      ],
-      "genres": [
-        "espionage",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "el-codigo-da-vinci-the-da-vinci-code",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "raul-amundaray-2007": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7352,17 +7329,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-codigo-da-vinci-the-da-vinci-code"
+          "work": "el-codigo-da-vinci"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09MDQMHHC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002VAA9JY",
           "type": "libex-import"
         }
       ],
-      "title": "El Codigo Da Vinci [The Da Vinci Code]"
+      "title": "El código Da Vinci"
     },
     "el-codigo-de-la-manifestacion": {
       "added_at": "2026-07-29",

@@ -14703,7 +14703,12 @@
         "c-s-lewis"
       ],
       "genres": [
-        "classics"
+        "action-adventure",
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "fantasy",
+        "nature"
       ],
       "id": "the-horse-and-his-boy",
       "language": "en",
@@ -14961,6 +14966,165 @@
           ],
           "work": "the-horse-and-his-boy"
         },
+        "alex-jennings-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GRMZG",
+              "region": "us"
+            },
+            {
+              "asin": "B004EEUZ80",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15000,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1330641,
+              "start_ms": 15000,
+              "title": "One: How Shasta Set Out on His Travels"
+            },
+            {
+              "length_ms": 1309005,
+              "start_ms": 1345641,
+              "title": "Two: A Wayside Adventure"
+            },
+            {
+              "length_ms": 1178198,
+              "start_ms": 2654646,
+              "title": "Three: At the Gates of Tashbaan"
+            },
+            {
+              "length_ms": 1167442,
+              "start_ms": 3832844,
+              "title": "Four: Shasta Falls in With the Narnians"
+            },
+            {
+              "length_ms": 1062587,
+              "start_ms": 5000286,
+              "title": "Five: Prince Corin"
+            },
+            {
+              "length_ms": 950435,
+              "start_ms": 6062873,
+              "title": "Six: Shasta Among the Tombs"
+            },
+            {
+              "length_ms": 1067866,
+              "start_ms": 7013308,
+              "title": "Seven: Aravis in Tashbaan"
+            },
+            {
+              "length_ms": 1074624,
+              "start_ms": 8081174,
+              "title": "Eight: In the House of the Tisroc"
+            },
+            {
+              "length_ms": 1127200,
+              "start_ms": 9155798,
+              "title": "Nine: Across the Desert"
+            },
+            {
+              "length_ms": 1143198,
+              "start_ms": 10282998,
+              "title": "Ten: The Hermit of the Southern March"
+            },
+            {
+              "length_ms": 1116945,
+              "start_ms": 11426196,
+              "title": "Eleven: The Unwelcome Fellow Traveller"
+            },
+            {
+              "length_ms": 992840,
+              "start_ms": 12543141,
+              "title": "Twelve: Shasta in Narnia"
+            },
+            {
+              "length_ms": 1081992,
+              "start_ms": 13535981,
+              "title": "Thirteen: The Fight at Anvard"
+            },
+            {
+              "length_ms": 1056116,
+              "start_ms": 14617973,
+              "title": "Fourteen: How Bree Became a Wiser Horse"
+            },
+            {
+              "length_ms": 1160239,
+              "start_ms": 15674089,
+              "title": "Fifteen: Rabadash the Ridiculous"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+zztfMVaL.jpg",
+          "id": "alex-jennings-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-jennings"
+          ],
+          "publisher": "HarperCollinsChildren’sBooks",
+          "release_date": "2005-08-29",
+          "runtime_min": 280,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GRMZG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004EEUZ80",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-horse-and-his-boy"
+        },
+        "michael-hordern-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GPOYM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3956727,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3936943,
+              "start_ms": 3956727,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+zztfMVaL.jpg",
+          "id": "michael-hordern-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-hordern"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-09-02",
+          "runtime_min": 131,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GPOYM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-horse-and-his-boy"
+        },
         "rupert-degas-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -15202,222 +15366,19 @@
           "imported_at": "2026-08-02",
           "ref": "1662184905",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Horse And His Boy"
-    },
-    "the-horse-and-his-boy-abridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-horse-and-his-boy-abridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-hordern-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GPOYM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3956727,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3936943,
-              "start_ms": 3956727,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+zztfMVaL.jpg",
-          "id": "michael-hordern-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-hordern"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-09-02",
-          "runtime_min": 131,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GPOYM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-horse-and-his-boy-abridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GPOYM",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Horse and His Boy: Abridged"
-    },
-    "the-horse-and-his-boy-unabridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-horse-and-his-boy-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-jennings-2005": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GRMZG",
-              "region": "us"
-            },
-            {
-              "asin": "B004EEUZ80",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15000,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1330641,
-              "start_ms": 15000,
-              "title": "One: How Shasta Set Out on His Travels"
-            },
-            {
-              "length_ms": 1309005,
-              "start_ms": 1345641,
-              "title": "Two: A Wayside Adventure"
-            },
-            {
-              "length_ms": 1178198,
-              "start_ms": 2654646,
-              "title": "Three: At the Gates of Tashbaan"
-            },
-            {
-              "length_ms": 1167442,
-              "start_ms": 3832844,
-              "title": "Four: Shasta Falls in With the Narnians"
-            },
-            {
-              "length_ms": 1062587,
-              "start_ms": 5000286,
-              "title": "Five: Prince Corin"
-            },
-            {
-              "length_ms": 950435,
-              "start_ms": 6062873,
-              "title": "Six: Shasta Among the Tombs"
-            },
-            {
-              "length_ms": 1067866,
-              "start_ms": 7013308,
-              "title": "Seven: Aravis in Tashbaan"
-            },
-            {
-              "length_ms": 1074624,
-              "start_ms": 8081174,
-              "title": "Eight: In the House of the Tisroc"
-            },
-            {
-              "length_ms": 1127200,
-              "start_ms": 9155798,
-              "title": "Nine: Across the Desert"
-            },
-            {
-              "length_ms": 1143198,
-              "start_ms": 10282998,
-              "title": "Ten: The Hermit of the Southern March"
-            },
-            {
-              "length_ms": 1116945,
-              "start_ms": 11426196,
-              "title": "Eleven: The Unwelcome Fellow Traveller"
-            },
-            {
-              "length_ms": 992840,
-              "start_ms": 12543141,
-              "title": "Twelve: Shasta in Narnia"
-            },
-            {
-              "length_ms": 1081992,
-              "start_ms": 13535981,
-              "title": "Thirteen: The Fight at Anvard"
-            },
-            {
-              "length_ms": 1056116,
-              "start_ms": 14617973,
-              "title": "Fourteen: How Bree Became a Wiser Horse"
-            },
-            {
-              "length_ms": 1160239,
-              "start_ms": 15674089,
-              "title": "Fifteen: Rabadash the Ridiculous"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+zztfMVaL.jpg",
-          "id": "alex-jennings-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-jennings"
-          ],
-          "publisher": "HarperCollinsChildren’sBooks",
-          "release_date": "2005-08-29",
-          "runtime_min": 280,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GRMZG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004EEUZ80",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-horse-and-his-boy-unabridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GRMZG",
           "type": "libex-import"
         }
       ],
-      "title": "The Horse and His Boy: Unabridged"
+      "title": "The Horse And His Boy"
     },
     "the-horse-dancer": {
       "added_at": "2026-07-29",

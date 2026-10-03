@@ -2182,7 +2182,8 @@
       "genres": [
         "epic-fantasy",
         "fantasy",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "the-world-wreckers",
       "language": "en",
@@ -2297,30 +2298,7 @@
             }
           ],
           "work": "the-world-wreckers"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0779LB5ZQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The World Wreckers"
-    },
-    "the-world-wreckers-international-editions": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "marion-zimmer-bradley"
-      ],
-      "genres": [
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "the-world-wreckers-international-editions",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jonathan-davis-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2439,17 +2417,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-world-wreckers-international-editions"
+          "work": "the-world-wreckers"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0779LB5ZQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09KWM874W",
           "type": "libex-import"
         }
       ],
-      "title": "The World Wreckers \"International Editions\""
+      "title": "The World Wreckers"
     },
     "the-worlds-20-worst-crimes": {
       "added_at": "2026-07-29",

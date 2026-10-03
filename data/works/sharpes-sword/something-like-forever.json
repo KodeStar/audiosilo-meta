@@ -10225,7 +10225,8 @@
       ],
       "genres": [
         "mystery",
-        "police-procedural"
+        "police-procedural",
+        "thriller-suspense"
       ],
       "id": "something-to-hide",
       "language": "en",
@@ -10390,31 +10391,7 @@
             }
           ],
           "work": "something-to-hide"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "0593394925",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Something to Hide"
-    },
-    "something-to-hide-an-inspector-lynley-novel-book-21": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "elizabeth-george"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "something-to-hide-an-inspector-lynley-novel-book-21",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "vivienne-rochester-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10558,17 +10535,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "something-to-hide-an-inspector-lynley-novel-book-21"
+          "work": "something-to-hide"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0593394925",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1529348633",
           "type": "libex-import"
         }
       ],
-      "title": "Something to Hide: An Inspector Lynley Novel, Book 21"
+      "title": "Something to Hide"
     },
     "something-to-live-for": {
       "added_at": "2026-07-29",

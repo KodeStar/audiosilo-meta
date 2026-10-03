@@ -13204,7 +13204,12 @@
         "c-s-lewis"
       ],
       "genres": [
-        "classics"
+        "action-adventure",
+        "childrens",
+        "classics",
+        "coming-of-age",
+        "fantasy",
+        "nature"
       ],
       "id": "the-last-battle",
       "language": "en",
@@ -13339,12 +13344,60 @@
           ],
           "work": "the-last-battle"
         },
+        "michael-hordern-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GMKS0",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4471977,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4254824,
+              "start_ms": 4471977,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Q6JtNAU3L.jpg",
+          "id": "michael-hordern-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-hordern"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-09-02",
+          "runtime_min": 145,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GMKS0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-last-battle"
+        },
         "patrick-stewart-2005": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
             {
               "asin": "B079VMXQLT",
+              "region": "uk"
+            },
+            {
+              "asin": "B0036GRN0U",
+              "region": "us"
+            },
+            {
+              "asin": "B004EETL58",
               "region": "uk"
             }
           ],
@@ -13449,6 +13502,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B079VMXQLT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GRN0U",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004EETL58",
               "type": "libex-import"
             }
           ],
@@ -13700,76 +13763,19 @@
           "imported_at": "2026-08-02",
           "ref": "1662193343",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Last Battle"
-    },
-    "the-last-battle-abridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-last-battle-abridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-hordern-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GMKS0",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4471977,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4254824,
-              "start_ms": 4471977,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Q6JtNAU3L.jpg",
-          "id": "michael-hordern-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-hordern"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-09-02",
-          "runtime_min": 145,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GMKS0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-last-battle-abridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GMKS0",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GRN0U",
+          "type": "libex-import"
         }
       ],
-      "title": "The Last Battle: Abridged"
+      "title": "The Last Battle"
     },
     "the-last-battle-cornelius-ryan": {
       "added_at": "2026-07-29",
@@ -14111,157 +14117,6 @@
         }
       ],
       "title": "The Last Battle"
-    },
-    "the-last-battle-unabridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-last-battle-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "patrick-stewart-2005": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GRN0U",
-              "region": "us"
-            },
-            {
-              "asin": "B004EETL58",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 32129,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 996092,
-              "start_ms": 32129,
-              "title": "One: By Caldron Pool"
-            },
-            {
-              "length_ms": 1106036,
-              "start_ms": 1028221,
-              "title": "Two: The Rashness of the King"
-            },
-            {
-              "length_ms": 1107164,
-              "start_ms": 2134257,
-              "title": "Three: The Ape in its Glory"
-            },
-            {
-              "length_ms": 1078419,
-              "start_ms": 3241421,
-              "title": "Four: What Happened that Night"
-            },
-            {
-              "length_ms": 972434,
-              "start_ms": 4319840,
-              "title": "Five: How Help Came to the King"
-            },
-            {
-              "length_ms": 1071923,
-              "start_ms": 5292274,
-              "title": "Six: A Good Night's Work"
-            },
-            {
-              "length_ms": 1154264,
-              "start_ms": 6364197,
-              "title": "Seven: Mainly About Dwarfs"
-            },
-            {
-              "length_ms": 1026511,
-              "start_ms": 7518461,
-              "title": "Eight: What News the Eagle Brought"
-            },
-            {
-              "length_ms": 1022692,
-              "start_ms": 8544972,
-              "title": "Nine: The Great Meeting on Stable Hill"
-            },
-            {
-              "length_ms": 1038650,
-              "start_ms": 9567664,
-              "title": "Ten: Who Will Go into the Stable?"
-            },
-            {
-              "length_ms": 1003031,
-              "start_ms": 10606314,
-              "title": "Eleven: The Pace Quickens"
-            },
-            {
-              "length_ms": 1059137,
-              "start_ms": 11609345,
-              "title": "Twelve: Through the Stable Door"
-            },
-            {
-              "length_ms": 1213498,
-              "start_ms": 12668482,
-              "title": "Thirteen: How the Dwarfs Refused to be Taken in"
-            },
-            {
-              "length_ms": 1183997,
-              "start_ms": 13881980,
-              "title": "Fourteen: Night Falls on Narnia"
-            },
-            {
-              "length_ms": 1130940,
-              "start_ms": 15065977,
-              "title": "Fifteen: Further up and Further in"
-            },
-            {
-              "length_ms": 1329180,
-              "start_ms": 16196917,
-              "title": "Sixteen: Farewell to Shadowlands"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Q6JtNAU3L.jpg",
-          "id": "patrick-stewart-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "patrick-stewart"
-          ],
-          "publisher": "HarperCollinsChildren’sBooks",
-          "release_date": "2005-08-29",
-          "runtime_min": 291,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GRN0U",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004EETL58",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-last-battle-unabridged"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036GRN0U",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Last Battle: Unabridged"
     },
     "the-last-battlefield": {
       "added_at": "2026-08-01",

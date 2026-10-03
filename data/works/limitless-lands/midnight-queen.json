@@ -1582,33 +1582,13 @@
       "authors": [
         "lara-adrian"
       ],
-      "id": "midnight-rising",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/1928873.Midnight_Rising",
-          "type": "community"
-        }
-      ],
-      "title": "Midnight Rising",
-      "xref": {
-        "goodreads": "1928873"
-      }
-    },
-    "midnight-rising-lara-adrian": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lara-adrian"
-      ],
       "genres": [
         "erotica",
         "fantasy",
         "paranormal",
         "romance"
       ],
-      "id": "midnight-rising-lara-adrian",
+      "id": "midnight-rising",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1820,17 +1800,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "midnight-rising-lara-adrian"
+          "work": "midnight-rising"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/1928873.Midnight_Rising",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00449TO28",
           "type": "libex-import"
         }
       ],
-      "title": "Midnight Rising"
+      "title": "Midnight Rising",
+      "xref": {
+        "goodreads": "1928873"
+      }
     },
     "midnight-rising-tony-horwitz": {
       "added_at": "2026-07-29",

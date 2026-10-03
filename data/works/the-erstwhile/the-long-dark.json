@@ -258,7 +258,9 @@
         "douglas-adams"
       ],
       "genres": [
+        "action-adventure",
         "comedy-humor",
+        "fantasy",
         "science-fiction"
       ],
       "id": "the-long-dark-tea-time-of-the-soul",
@@ -762,37 +764,7 @@
             }
           ],
           "work": "the-long-dark-tea-time-of-the-soul"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B09DRCHGPZ",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V0K548",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Long Dark Tea-Time of the Soul"
-    },
-    "the-long-dark-tea-time-of-the-soul-dirk-gently-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "douglas-adams"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "the-long-dark-tea-time-of-the-soul-dirk-gently-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "stephen-mangan-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1015,17 +987,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-long-dark-tea-time-of-the-soul-dirk-gently-2"
+          "work": "the-long-dark-tea-time-of-the-soul"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B09DRCHGPZ",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0K548",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DLBR3LCP",
           "type": "libex-import"
         }
       ],
-      "title": "The Long Dark Tea-Time of the Soul: Dirk Gently 2"
+      "title": "The Long Dark Tea-Time of the Soul"
     },
     "the-long-dead": {
       "added_at": "2026-07-29",

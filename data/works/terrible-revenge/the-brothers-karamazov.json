@@ -6501,6 +6501,7 @@
         "craig-johnson"
       ],
       "genres": [
+        "literary-fiction",
         "mystery",
         "westerns"
       ],
@@ -6514,6 +6515,10 @@
           "asin": [
             {
               "asin": "B0GQDS95TL",
+              "region": "us"
+            },
+            {
+              "asin": "B0GQCK3YZN",
               "region": "us"
             }
           ],
@@ -6624,6 +6629,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0GQDS95TL",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GQCK3YZN",
+              "type": "libex-import"
             }
           ],
           "work": "the-brothers-mckay"
@@ -6634,61 +6644,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0GQDS95TL",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Brothers McKay"
-    },
-    "the-brothers-mckay-international-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "craig-johnson"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery",
-        "westerns"
-      ],
-      "id": "the-brothers-mckay-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "george-guidall-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0GQCK3YZN",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ZXjO1LD8L.jpg",
-          "id": "george-guidall-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "george-guidall"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2026-05-26",
-          "runtime_min": 585,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0GQCK3YZN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-brothers-mckay-international-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0GQCK3YZN",
           "type": "libex-import"
         }
       ],
-      "title": "The Brothers McKay \"International Edition\""
+      "title": "The Brothers McKay"
     },
     "the-brothers-next-door": {
       "added_at": "2026-07-29",

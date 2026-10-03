@@ -7416,6 +7416,7 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
         "thriller-suspense"
       ],
       "id": "clive-cussler-cold-fire",
@@ -7428,6 +7429,10 @@
           "asin": [
             {
               "asin": "B0FXJ91QKS",
+              "region": "us"
+            },
+            {
+              "asin": "B0GS2SHZZS",
               "region": "us"
             }
           ],
@@ -7823,6 +7828,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FXJ91QKS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GS2SHZZS",
+              "type": "libex-import"
             }
           ],
           "work": "clive-cussler-cold-fire"
@@ -7832,6 +7842,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FXJ91QKS",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GS2SHZZS",
           "type": "libex-import"
         }
       ],
@@ -8252,6 +8267,8 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
+        "politics",
         "thriller-suspense"
       ],
       "id": "clive-cussler-desolation-code",
@@ -8264,6 +8281,10 @@
           "asin": [
             {
               "asin": "B0CXFJ1VBX",
+              "region": "us"
+            },
+            {
+              "asin": "B0D9HV394V",
               "region": "us"
             }
           ],
@@ -8659,6 +8680,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0CXFJ1VBX",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D9HV394V",
+              "type": "libex-import"
             }
           ],
           "work": "clive-cussler-desolation-code"
@@ -8669,467 +8695,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0CXFJ1VBX",
           "type": "libex-import"
-        }
-      ],
-      "title": "Clive Cussler Desolation Code"
-    },
-    "clive-cussler-fire-strike": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "mike-maden"
-      ],
-      "genres": [
-        "action-adventure",
-        "thriller-suspense"
-      ],
-      "id": "clive-cussler-fire-strike",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BBWNX5SS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16578,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 13839,
-              "start_ms": 16578,
-              "title": "Epigraph"
-            },
-            {
-              "length_ms": 987103,
-              "start_ms": 30417,
-              "title": "Prologue: Borneo, 1963"
-            },
-            {
-              "length_ms": 535359,
-              "start_ms": 1017520,
-              "title": "Chapter 1: Present Day: Gorno-Badakhshan: Autonomous Region, Tajikistan"
-            },
-            {
-              "length_ms": 831785,
-              "start_ms": 1552879,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 548199,
-              "start_ms": 2384664,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 400567,
-              "start_ms": 2932863,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 597495,
-              "start_ms": 3333430,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 564848,
-              "start_ms": 3930925,
-              "title": "Chapter 6: Vale Do Javari, Brazil"
-            },
-            {
-              "length_ms": 627774,
-              "start_ms": 4495773,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 999735,
-              "start_ms": 5123547,
-              "title": "Chapter 8: Riyadh, Saudi Arabia"
-            },
-            {
-              "length_ms": 653246,
-              "start_ms": 6123282,
-              "title": "Chapter 9: On Board the Oregon"
-            },
-            {
-              "length_ms": 785577,
-              "start_ms": 6776528,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 642774,
-              "start_ms": 7562105,
-              "title": "Chapter 11: Vale Do Javari, Brazil"
-            },
-            {
-              "length_ms": 503547,
-              "start_ms": 8204879,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 421488,
-              "start_ms": 8708426,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 466396,
-              "start_ms": 9129914,
-              "title": "Chapter 14: Gash-Barka Region, Eritrea"
-            },
-            {
-              "length_ms": 905253,
-              "start_ms": 9596310,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 592294,
-              "start_ms": 10501563,
-              "title": "Chapter 16: Vale Do Javari, Brazil"
-            },
-            {
-              "length_ms": 520823,
-              "start_ms": 11093857,
-              "title": "Chapter 17: On Board the Sekhmet"
-            },
-            {
-              "length_ms": 798464,
-              "start_ms": 11614680,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 606040,
-              "start_ms": 12413144,
-              "title": "Chapter 19: Vale Do Javari, Brazil"
-            },
-            {
-              "length_ms": 838240,
-              "start_ms": 13019184,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 375884,
-              "start_ms": 13857424,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 510467,
-              "start_ms": 14233308,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 699756,
-              "start_ms": 14743775,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 522263,
-              "start_ms": 15443531,
-              "title": "Chapter 24: Ashdod, Israel"
-            },
-            {
-              "length_ms": 672310,
-              "start_ms": 15965794,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 546528,
-              "start_ms": 16638104,
-              "title": "Chapter 26: Riyadh, Saudi Arabia"
-            },
-            {
-              "length_ms": 572418,
-              "start_ms": 17184632,
-              "title": "Chapter 27: The Persian Gulf"
-            },
-            {
-              "length_ms": 584144,
-              "start_ms": 17757050,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1053814,
-              "start_ms": 18341194,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 647000,
-              "start_ms": 19395008,
-              "title": "Chapter 30: Indian Naval Station Vajrakosh: Near Karwar in the State of Karnataka, India"
-            },
-            {
-              "length_ms": 431844,
-              "start_ms": 20042008,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 512650,
-              "start_ms": 20473852,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 799741,
-              "start_ms": 20986502,
-              "title": "Chapter 33: Nairobi, Kenya"
-            },
-            {
-              "length_ms": 824842,
-              "start_ms": 21786243,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 262222,
-              "start_ms": 22611085,
-              "title": "Chapter 35: On Board the USS Gerald R. Ford: The Red Sea"
-            },
-            {
-              "length_ms": 561295,
-              "start_ms": 22873307,
-              "title": "Chapter 36: Nairobi, Kenya: Kibera Slum"
-            },
-            {
-              "length_ms": 512859,
-              "start_ms": 23434602,
-              "title": "Chapter 37: On Board the Cloud Fortune: The Arabian Sea"
-            },
-            {
-              "length_ms": 912103,
-              "start_ms": 23947461,
-              "title": "Chapter 38: Nairobi, Kenya"
-            },
-            {
-              "length_ms": 922668,
-              "start_ms": 24859564,
-              "title": "Chapter 39: On Board the Sekhmet"
-            },
-            {
-              "length_ms": 409646,
-              "start_ms": 25782232,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 1195386,
-              "start_ms": 26191878,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 414778,
-              "start_ms": 27387264,
-              "title": "Chapter 42: Outside Riyadh, Saudi Arabia"
-            },
-            {
-              "length_ms": 491659,
-              "start_ms": 27802042,
-              "title": "Chapter 43: Ahvaz, Iran: Headquarters, the Quds Force"
-            },
-            {
-              "length_ms": 580916,
-              "start_ms": 28293701,
-              "title": "Chapter 44: The Ad-Dahna Desert, Saudi Arabia"
-            },
-            {
-              "length_ms": 618277,
-              "start_ms": 28874617,
-              "title": "Chapter 45: The Arabian Sea"
-            },
-            {
-              "length_ms": 699988,
-              "start_ms": 29492894,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 1091082,
-              "start_ms": 30192882,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 718239,
-              "start_ms": 31283964,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 765515,
-              "start_ms": 32002203,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 791382,
-              "start_ms": 32767718,
-              "title": "Chapter 50: On Board the Oregon"
-            },
-            {
-              "length_ms": 909386,
-              "start_ms": 33559100,
-              "title": "Chapter 51: On Board the Cloud Fortune"
-            },
-            {
-              "length_ms": 589043,
-              "start_ms": 34468486,
-              "title": "Chapter 52: On Board the Oregon"
-            },
-            {
-              "length_ms": 752489,
-              "start_ms": 35057529,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 433841,
-              "start_ms": 35810018,
-              "title": "Chapter 54: On Board the Cloud Fortune"
-            },
-            {
-              "length_ms": 309173,
-              "start_ms": 36243859,
-              "title": "Chapter 55: On Board the Oregon"
-            },
-            {
-              "length_ms": 608060,
-              "start_ms": 36553032,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 347556,
-              "start_ms": 37161092,
-              "title": "Chapter 57: On Board the Cloud Fortune"
-            },
-            {
-              "length_ms": 338570,
-              "start_ms": 37508648,
-              "title": "Chapter 58: On Board the Oregon"
-            },
-            {
-              "length_ms": 944912,
-              "start_ms": 37847218,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 896499,
-              "start_ms": 38792130,
-              "title": "Chapter 60: Off the Coast of Eritrea"
-            },
-            {
-              "length_ms": 621389,
-              "start_ms": 39688629,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 697248,
-              "start_ms": 40310018,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 1245332,
-              "start_ms": 41007266,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 1149062,
-              "start_ms": 42252598,
-              "title": "Chapter 64: On Board the Oregon"
-            },
-            {
-              "length_ms": 344700,
-              "start_ms": 43401660,
-              "title": "Chapter 65: The Op Center"
-            },
-            {
-              "length_ms": 594291,
-              "start_ms": 43746360,
-              "title": "Chapter 66: In the Air over Jordan"
-            },
-            {
-              "length_ms": 694857,
-              "start_ms": 44340651,
-              "title": "Chapter 67: Yemen"
-            },
-            {
-              "length_ms": 239792,
-              "start_ms": 45035508,
-              "title": "Chapter 68: On Board the USS Gerald R. Ford"
-            },
-            {
-              "length_ms": 488013,
-              "start_ms": 45275300,
-              "title": "Chapter 69: Bushehr, Iran"
-            },
-            {
-              "length_ms": 506798,
-              "start_ms": 45763313,
-              "title": "Chapter 70: On Board the Oregon"
-            },
-            {
-              "length_ms": 651807,
-              "start_ms": 46270111,
-              "title": "Chapter 71"
-            },
-            {
-              "length_ms": 394065,
-              "start_ms": 46921918,
-              "title": "Chapter 72"
-            },
-            {
-              "length_ms": 541280,
-              "start_ms": 47315983,
-              "title": "Chapter 73: In the Air over Yemen"
-            },
-            {
-              "length_ms": 610127,
-              "start_ms": 47857263,
-              "title": "Chapter 74"
-            },
-            {
-              "length_ms": 618533,
-              "start_ms": 48467390,
-              "title": "Chapter 75"
-            },
-            {
-              "length_ms": 540189,
-              "start_ms": 49085923,
-              "title": "Chapter 76"
-            },
-            {
-              "length_ms": 1448112,
-              "start_ms": 49626112,
-              "title": "Chapter 77: On Board the Oregon: Several Weeks Later"
-            },
-            {
-              "length_ms": 36872,
-              "start_ms": 51074224,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kpErXJ5UL.jpg",
-          "id": "scott-brick-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2023-06-06",
-          "runtime_min": 851,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BBWNX5SS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "clive-cussler-fire-strike"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
-          "ref": "B0BBWNX5SS",
+          "ref": "B0D9HV394V",
           "type": "libex-import"
         }
       ],
-      "title": "Clive Cussler Fire Strike"
+      "title": "Clive Cussler Desolation Code"
     },
     "clive-cussler-ghost-soldier": {
       "added_at": "2026-08-02",
@@ -9138,6 +8711,8 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
+        "mystery",
         "thriller-suspense"
       ],
       "id": "clive-cussler-ghost-soldier",
@@ -9150,6 +8725,10 @@
           "asin": [
             {
               "asin": "B0CR4BWZBW",
+              "region": "us"
+            },
+            {
+              "asin": "B0D81HN1B7",
               "region": "us"
             }
           ],
@@ -9590,6 +9169,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0CR4BWZBW",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D81HN1B7",
+              "type": "libex-import"
             }
           ],
           "work": "clive-cussler-ghost-soldier"
@@ -9599,6 +9183,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0CR4BWZBW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D81HN1B7",
           "type": "libex-import"
         }
       ],
@@ -9611,6 +9200,8 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
+        "mystery",
         "thriller-suspense"
       ],
       "id": "clive-cussler-quantum-tempest",
@@ -9623,6 +9214,10 @@
           "asin": [
             {
               "asin": "B0DVB2GSG7",
+              "region": "us"
+            },
+            {
+              "asin": "B0FQW3HH4Q",
               "region": "us"
             }
           ],
@@ -10078,6 +9673,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0DVB2GSG7",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FQW3HH4Q",
+              "type": "libex-import"
             }
           ],
           "work": "clive-cussler-quantum-tempest"
@@ -10088,897 +9688,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DVB2GSG7",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FQW3HH4Q",
+          "type": "libex-import"
         }
       ],
       "title": "Clive Cussler Quantum Tempest"
-    },
-    "clive-cussler-the-corsican-shadow": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dirk-cussler"
-      ],
-      "genres": [
-        "action-adventure",
-        "thriller-suspense"
-      ],
-      "id": "clive-cussler-the-corsican-shadow",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BXFM978F",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17229,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 7476,
-              "start_ms": 17229,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 1611441,
-              "start_ms": 24705,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 3748,
-              "start_ms": 1636146,
-              "title": "Part I"
-            },
-            {
-              "length_ms": 632292,
-              "start_ms": 1639894,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 634624,
-              "start_ms": 2272186,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 756390,
-              "start_ms": 2906810,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 694137,
-              "start_ms": 3663200,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 316975,
-              "start_ms": 4357337,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 339336,
-              "start_ms": 4674312,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1176090,
-              "start_ms": 5013648,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 611590,
-              "start_ms": 6189738,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 420257,
-              "start_ms": 6801328,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 313237,
-              "start_ms": 7221585,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 678951,
-              "start_ms": 7534822,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1096840,
-              "start_ms": 8213773,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 287091,
-              "start_ms": 9310613,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 251356,
-              "start_ms": 9597704,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 752930,
-              "start_ms": 9849060,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 439693,
-              "start_ms": 10601990,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 550429,
-              "start_ms": 11041683,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 653711,
-              "start_ms": 11592112,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 3932,
-              "start_ms": 12245823,
-              "title": "Part II"
-            },
-            {
-              "length_ms": 856599,
-              "start_ms": 12249755,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 615816,
-              "start_ms": 13106354,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1137174,
-              "start_ms": 13722170,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 584957,
-              "start_ms": 14859344,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 311054,
-              "start_ms": 15444301,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 784044,
-              "start_ms": 15755355,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 176425,
-              "start_ms": 16539399,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 792288,
-              "start_ms": 16715824,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 180697,
-              "start_ms": 17508112,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 601907,
-              "start_ms": 17688809,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 541884,
-              "start_ms": 18290716,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 280079,
-              "start_ms": 18832600,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 164234,
-              "start_ms": 19112679,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 662047,
-              "start_ms": 19276913,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 235566,
-              "start_ms": 19938960,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 528300,
-              "start_ms": 20174526,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 469902,
-              "start_ms": 20702826,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 507750,
-              "start_ms": 21172728,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 346163,
-              "start_ms": 21680478,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 220844,
-              "start_ms": 22026641,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 175264,
-              "start_ms": 22247485,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 402425,
-              "start_ms": 22422749,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 515924,
-              "start_ms": 22825174,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 402123,
-              "start_ms": 23341098,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 602534,
-              "start_ms": 23743221,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 483787,
-              "start_ms": 24345755,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 353732,
-              "start_ms": 24829542,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 402332,
-              "start_ms": 25183274,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 170295,
-              "start_ms": 25585606,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 259738,
-              "start_ms": 25755901,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 286812,
-              "start_ms": 26015639,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 534314,
-              "start_ms": 26302451,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 242578,
-              "start_ms": 26836765,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 456852,
-              "start_ms": 27079343,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 229668,
-              "start_ms": 27536195,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 445289,
-              "start_ms": 27765863,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 231595,
-              "start_ms": 28211152,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 634044,
-              "start_ms": 28442747,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 229691,
-              "start_ms": 29076791,
-              "title": "Chapter 57"
-            },
-            {
-              "length_ms": 217988,
-              "start_ms": 29306482,
-              "title": "Chapter 58"
-            },
-            {
-              "length_ms": 239908,
-              "start_ms": 29524470,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 209095,
-              "start_ms": 29764378,
-              "title": "Chapter 60"
-            },
-            {
-              "length_ms": 431008,
-              "start_ms": 29973473,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 291967,
-              "start_ms": 30404481,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 154250,
-              "start_ms": 30696448,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 293105,
-              "start_ms": 30850698,
-              "title": "Chapter 64"
-            },
-            {
-              "length_ms": 263871,
-              "start_ms": 31143803,
-              "title": "Chapter 65"
-            },
-            {
-              "length_ms": 176750,
-              "start_ms": 31407674,
-              "title": "Chapter 66"
-            },
-            {
-              "length_ms": 346882,
-              "start_ms": 31584424,
-              "title": "Chapter 67"
-            },
-            {
-              "length_ms": 300512,
-              "start_ms": 31931306,
-              "title": "Chapter 68"
-            },
-            {
-              "length_ms": 261897,
-              "start_ms": 32231818,
-              "title": "Chapter 69"
-            },
-            {
-              "length_ms": 309104,
-              "start_ms": 32493715,
-              "title": "Chapter 70"
-            },
-            {
-              "length_ms": 142013,
-              "start_ms": 32802819,
-              "title": "Chapter 71"
-            },
-            {
-              "length_ms": 377626,
-              "start_ms": 32944832,
-              "title": "Chapter 72"
-            },
-            {
-              "length_ms": 206239,
-              "start_ms": 33322458,
-              "title": "Chapter 73"
-            },
-            {
-              "length_ms": 282122,
-              "start_ms": 33528697,
-              "title": "Chapter 74"
-            },
-            {
-              "length_ms": 260109,
-              "start_ms": 33810819,
-              "title": "Chapter 75"
-            },
-            {
-              "length_ms": 731846,
-              "start_ms": 34070928,
-              "title": "Chapter 76"
-            },
-            {
-              "length_ms": 2320,
-              "start_ms": 34802774,
-              "title": "Part III"
-            },
-            {
-              "length_ms": 542071,
-              "start_ms": 34805094,
-              "title": "Chapter 77"
-            },
-            {
-              "length_ms": 317231,
-              "start_ms": 35347165,
-              "title": "Chapter 78"
-            },
-            {
-              "length_ms": 500738,
-              "start_ms": 35664396,
-              "title": "Chapter 79"
-            },
-            {
-              "length_ms": 317950,
-              "start_ms": 36165134,
-              "title": "Chapter 80"
-            },
-            {
-              "length_ms": 410412,
-              "start_ms": 36483084,
-              "title": "Chapter 81"
-            },
-            {
-              "length_ms": 130774,
-              "start_ms": 36893496,
-              "title": "Chapter 82"
-            },
-            {
-              "length_ms": 152090,
-              "start_ms": 37024270,
-              "title": "Chapter 83."
-            },
-            {
-              "length_ms": 266657,
-              "start_ms": 37176360,
-              "title": "Chapter 84"
-            },
-            {
-              "length_ms": 153321,
-              "start_ms": 37443017,
-              "title": "Chapter 85"
-            },
-            {
-              "length_ms": 172199,
-              "start_ms": 37596338,
-              "title": "Chapter 86"
-            },
-            {
-              "length_ms": 229157,
-              "start_ms": 37768537,
-              "title": "Chapter 87"
-            },
-            {
-              "length_ms": 282749,
-              "start_ms": 37997694,
-              "title": "Chapter 88"
-            },
-            {
-              "length_ms": 181603,
-              "start_ms": 38280443,
-              "title": "Chapter 89"
-            },
-            {
-              "length_ms": 197694,
-              "start_ms": 38462046,
-              "title": "Chapter 90"
-            },
-            {
-              "length_ms": 213112,
-              "start_ms": 38659740,
-              "title": "Chapter 91"
-            },
-            {
-              "length_ms": 481697,
-              "start_ms": 38872852,
-              "title": "Chapter 92"
-            },
-            {
-              "length_ms": 455830,
-              "start_ms": 39354549,
-              "title": "Chapter 93"
-            },
-            {
-              "length_ms": 253863,
-              "start_ms": 39810379,
-              "title": "Chapter 94"
-            },
-            {
-              "length_ms": 191587,
-              "start_ms": 40064242,
-              "title": "Chapter 95"
-            },
-            {
-              "length_ms": 174683,
-              "start_ms": 40255829,
-              "title": "Chapter 96"
-            },
-            {
-              "length_ms": 228530,
-              "start_ms": 40430512,
-              "title": "Chapter 97"
-            },
-            {
-              "length_ms": 185504,
-              "start_ms": 40659042,
-              "title": "Chapter 98"
-            },
-            {
-              "length_ms": 379483,
-              "start_ms": 40844546,
-              "title": "Chapter 99"
-            },
-            {
-              "length_ms": 308430,
-              "start_ms": 41224029,
-              "title": "Chapter 100"
-            },
-            {
-              "length_ms": 747543,
-              "start_ms": 41532459,
-              "title": "Chapter 101"
-            },
-            {
-              "length_ms": 587882,
-              "start_ms": 42280002,
-              "title": "Chapter 102"
-            },
-            {
-              "length_ms": 4000,
-              "start_ms": 42867884,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 364547,
-              "start_ms": 42871884,
-              "title": "Chapter 103"
-            },
-            {
-              "length_ms": 249660,
-              "start_ms": 43236431,
-              "title": "Chapter 104"
-            },
-            {
-              "length_ms": 38521,
-              "start_ms": 43486091,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81kybpskP-L.jpg",
-          "id": "scott-brick-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2023-11-07",
-          "runtime_min": 725,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BXFM978F",
-              "type": "libex-import"
-            }
-          ],
-          "work": "clive-cussler-the-corsican-shadow"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BXFM978F",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Clive Cussler The Corsican Shadow"
-    },
-    "clive-cussler-the-heist": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jack-du-brul"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "clive-cussler-the-heist",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CGRXVV1G",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17879,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1359249,
-              "start_ms": 17879,
-              "title": "Chapter 1: Washington, D.C.: August 1914"
-            },
-            {
-              "length_ms": 1311370,
-              "start_ms": 1377128,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1542292,
-              "start_ms": 2688498,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1129627,
-              "start_ms": 4230790,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1005447,
-              "start_ms": 5360417,
-              "title": "Chapter 5: Newport, Rhode Island"
-            },
-            {
-              "length_ms": 1050749,
-              "start_ms": 6365864,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1105223,
-              "start_ms": 7416613,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1638632,
-              "start_ms": 8521836,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 938457,
-              "start_ms": 10160468,
-              "title": "Chapter 9: Baltimore, Maryland: Some Months Later"
-            },
-            {
-              "length_ms": 738858,
-              "start_ms": 11098925,
-              "title": "Chapter 10: Philadelphia, Pennsylvania"
-            },
-            {
-              "length_ms": 448772,
-              "start_ms": 11837783,
-              "title": "Chapter 11: New York City"
-            },
-            {
-              "length_ms": 753417,
-              "start_ms": 12286555,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1017498,
-              "start_ms": 13039972,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 822938,
-              "start_ms": 14057470,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 938109,
-              "start_ms": 14880408,
-              "title": "Chapter 15: Washington, D.C."
-            },
-            {
-              "length_ms": 998829,
-              "start_ms": 15818517,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 624361,
-              "start_ms": 16817346,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 602000,
-              "start_ms": 17441707,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 898333,
-              "start_ms": 18043707,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1061871,
-              "start_ms": 18942040,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 928078,
-              "start_ms": 20003911,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 981786,
-              "start_ms": 20931989,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 930771,
-              "start_ms": 21913775,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 972823,
-              "start_ms": 22844546,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 797466,
-              "start_ms": 23817369,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 995555,
-              "start_ms": 24614835,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1118481,
-              "start_ms": 25610390,
-              "title": "Chapter 27: Baltimore, Maryland"
-            },
-            {
-              "length_ms": 911986,
-              "start_ms": 26728871,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1130138,
-              "start_ms": 27640857,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 774037,
-              "start_ms": 28770995,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1291540,
-              "start_ms": 29545032,
-              "title": "Chapter 31: Washington, D.C."
-            },
-            {
-              "length_ms": 559740,
-              "start_ms": 30836572,
-              "title": "Chapter 32: New Orleans, Louisiana"
-            },
-            {
-              "length_ms": 722767,
-              "start_ms": 31396312,
-              "title": "Chapter 33: Atlanta, Georgia"
-            },
-            {
-              "length_ms": 1368584,
-              "start_ms": 32119079,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 599446,
-              "start_ms": 33487663,
-              "title": "Chapter 35: New Orleans, Louisiana"
-            },
-            {
-              "length_ms": 517665,
-              "start_ms": 34087109,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 795771,
-              "start_ms": 34604774,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 1112723,
-              "start_ms": 35400545,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 1027366,
-              "start_ms": 36513268,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 839099,
-              "start_ms": 37540634,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 1035238,
-              "start_ms": 38379733,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 1432764,
-              "start_ms": 39414971,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 38335,
-              "start_ms": 40847735,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9110j+vFlzL.jpg",
-          "id": "scott-brick-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2024-05-07",
-          "runtime_min": 681,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CGRXVV1G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "clive-cussler-the-heist"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CGRXVV1G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Clive Cussler The Heist"
     },
     "clive-cussler-the-iron-storm": {
       "added_at": "2026-08-02",
@@ -10987,6 +9704,9 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
+        "historical-fiction",
+        "mystery",
         "thriller-suspense"
       ],
       "id": "clive-cussler-the-iron-storm",
@@ -10999,6 +9719,10 @@
           "asin": [
             {
               "asin": "B0DGQWJF2C",
+              "region": "us"
+            },
+            {
+              "asin": "B0DY89MWMT",
               "region": "us"
             }
           ],
@@ -11259,6 +9983,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0DGQWJF2C",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DY89MWMT",
+              "type": "libex-import"
             }
           ],
           "work": "clive-cussler-the-iron-storm"
@@ -11269,297 +9998,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0DGQWJF2C",
           "type": "libex-import"
-        }
-      ],
-      "title": "Clive Cussler The Iron Storm"
-    },
-    "clive-cussler-the-sea-wolves": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jack-du-brul"
-      ],
-      "genres": [
-        "action-adventure",
-        "thriller-suspense"
-      ],
-      "id": "clive-cussler-the-sea-wolves",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09SNNTN8Q",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16625,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2611455,
-              "start_ms": 16625,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 944332,
-              "start_ms": 2628080,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1156493,
-              "start_ms": 3572412,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 722163,
-              "start_ms": 4728905,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1318336,
-              "start_ms": 5451068,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1389064,
-              "start_ms": 6769404,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 371101,
-              "start_ms": 8158468,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1070950,
-              "start_ms": 8529569,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 524770,
-              "start_ms": 9600519,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1401927,
-              "start_ms": 10125289,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 506938,
-              "start_ms": 11527216,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 642937,
-              "start_ms": 12034154,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 817667,
-              "start_ms": 12677091,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 750585,
-              "start_ms": 13494758,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1092568,
-              "start_ms": 14245343,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1069743,
-              "start_ms": 15337911,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1557757,
-              "start_ms": 16407654,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 995276,
-              "start_ms": 17965411,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1053442,
-              "start_ms": 18960687,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1633012,
-              "start_ms": 20014129,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 803990,
-              "start_ms": 21647141,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 711970,
-              "start_ms": 22451131,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 678324,
-              "start_ms": 23163101,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1118365,
-              "start_ms": 23841425,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 671288,
-              "start_ms": 24959790,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 738533,
-              "start_ms": 25631078,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 438415,
-              "start_ms": 26369611,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 897335,
-              "start_ms": 26808026,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 805639,
-              "start_ms": 27705361,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 946004,
-              "start_ms": 28511000,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 1100927,
-              "start_ms": 29457004,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1078056,
-              "start_ms": 30557931,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 1045919,
-              "start_ms": 31635987,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1028945,
-              "start_ms": 32681906,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 716939,
-              "start_ms": 33710851,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 816831,
-              "start_ms": 34427790,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 1614785,
-              "start_ms": 35244621,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 511767,
-              "start_ms": 36859406,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 816947,
-              "start_ms": 37371173,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 809563,
-              "start_ms": 38188120,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 934997,
-              "start_ms": 38997683,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 928426,
-              "start_ms": 39932680,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 700546,
-              "start_ms": 40861106,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 1582138,
-              "start_ms": 41561652,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 159474,
-              "start_ms": 43143790,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 37731,
-              "start_ms": 43303264,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91LmIvsP5yL.jpg",
-          "id": "scott-brick-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2022-11-08",
-          "runtime_min": 722,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09SNNTN8Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "clive-cussler-the-sea-wolves"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
-          "ref": "B09SNNTN8Q",
+          "ref": "B0DY89MWMT",
           "type": "libex-import"
         }
       ],
-      "title": "Clive Cussler The Sea Wolves"
+      "title": "Clive Cussler The Iron Storm"
     },
     "clive-cussler-the-serpents-eye": {
       "added_at": "2026-08-02",
@@ -11612,435 +10058,6 @@
         }
       ],
       "title": "Clive Cussler The Serpent's Eye"
-    },
-    "clive-cusslers-cold-fire": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "graham-brown"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "thriller-suspense"
-      ],
-      "id": "clive-cusslers-cold-fire",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GS2SHZZS",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 23126,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1494018,
-              "start_ms": 23126,
-              "title": "Prologue: The Burning Ship"
-            },
-            {
-              "length_ms": 1166988,
-              "start_ms": 1517144,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 670499,
-              "start_ms": 2684132,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1767317,
-              "start_ms": 3354631,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 851359,
-              "start_ms": 5121948,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1303707,
-              "start_ms": 5973307,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 743340,
-              "start_ms": 7277014,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 776568,
-              "start_ms": 8020354,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 633463,
-              "start_ms": 8796922,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 244041,
-              "start_ms": 9430385,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 716614,
-              "start_ms": 9674426,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 252981,
-              "start_ms": 10391040,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 550382,
-              "start_ms": 10644021,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 232385,
-              "start_ms": 11194403,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 632674,
-              "start_ms": 11426788,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 956104,
-              "start_ms": 12059462,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 900144,
-              "start_ms": 13015566,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 414778,
-              "start_ms": 13915710,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 600305,
-              "start_ms": 14330488,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 341960,
-              "start_ms": 14930793,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 845810,
-              "start_ms": 15272753,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 935903,
-              "start_ms": 16118563,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1089178,
-              "start_ms": 17054466,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 430614,
-              "start_ms": 18143644,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 776103,
-              "start_ms": 18574258,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 329467,
-              "start_ms": 19350361,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 734632,
-              "start_ms": 19679828,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 391372,
-              "start_ms": 20414460,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 117748,
-              "start_ms": 20805832,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 451372,
-              "start_ms": 20923580,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 381434,
-              "start_ms": 21374952,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 648301,
-              "start_ms": 21756386,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 571559,
-              "start_ms": 22404687,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 137044,
-              "start_ms": 22976246,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 612681,
-              "start_ms": 23113290,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 539353,
-              "start_ms": 23725971,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 340938,
-              "start_ms": 24265324,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 479399,
-              "start_ms": 24606262,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 502201,
-              "start_ms": 25085661,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 257114,
-              "start_ms": 25587862,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 624593,
-              "start_ms": 25844976,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 563339,
-              "start_ms": 26469569,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 228554,
-              "start_ms": 27032908,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 581892,
-              "start_ms": 27261462,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 861529,
-              "start_ms": 27843354,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 1003403,
-              "start_ms": 28704883,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 260969,
-              "start_ms": 29708286,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 986592,
-              "start_ms": 29969255,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 654454,
-              "start_ms": 30955847,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 888395,
-              "start_ms": 31610301,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 645700,
-              "start_ms": 32498696,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 370335,
-              "start_ms": 33144396,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 345025,
-              "start_ms": 33514731,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 543532,
-              "start_ms": 33859756,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 267308,
-              "start_ms": 34403288,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 881499,
-              "start_ms": 34670596,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 376697,
-              "start_ms": 35552095,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 166487,
-              "start_ms": 35928792,
-              "title": "Chapter 57"
-            },
-            {
-              "length_ms": 350551,
-              "start_ms": 36095279,
-              "title": "Chapter 58"
-            },
-            {
-              "length_ms": 248290,
-              "start_ms": 36445830,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 299792,
-              "start_ms": 36694120,
-              "title": "Chapter 60"
-            },
-            {
-              "length_ms": 376999,
-              "start_ms": 36993912,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 187663,
-              "start_ms": 37370911,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 222447,
-              "start_ms": 37558574,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 388864,
-              "start_ms": 37781021,
-              "title": "Chapter 64"
-            },
-            {
-              "length_ms": 196533,
-              "start_ms": 38169885,
-              "title": "Chapter 65"
-            },
-            {
-              "length_ms": 599910,
-              "start_ms": 38366418,
-              "title": "Chapter 66"
-            },
-            {
-              "length_ms": 304761,
-              "start_ms": 38966328,
-              "title": "Chapter 67"
-            },
-            {
-              "length_ms": 259297,
-              "start_ms": 39271089,
-              "title": "Chapter 68"
-            },
-            {
-              "length_ms": 808751,
-              "start_ms": 39530386,
-              "title": "Chapter 69"
-            },
-            {
-              "length_ms": 486968,
-              "start_ms": 40339137,
-              "title": "Chapter 70"
-            },
-            {
-              "length_ms": 472200,
-              "start_ms": 40826105,
-              "title": "Chapter 71"
-            },
-            {
-              "length_ms": 625777,
-              "start_ms": 41298305,
-              "title": "Chapter 72"
-            },
-            {
-              "length_ms": 50595,
-              "start_ms": 41924082,
-              "title": "Closing Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81NRSohYl7L.jpg",
-          "id": "scott-brick-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2026-06-04",
-          "runtime_min": 699,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GS2SHZZS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "clive-cusslers-cold-fire"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GS2SHZZS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Clive Cussler’s Cold Fire"
     },
     "clive-cusslers-condors-fury": {
       "added_at": "2026-08-02",

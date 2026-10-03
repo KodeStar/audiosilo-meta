@@ -7153,6 +7153,7 @@
         "action-adventure",
         "childrens",
         "classics",
+        "coming-of-age",
         "fantasy",
         "religious-fiction"
       ],
@@ -7171,6 +7172,10 @@
             {
               "asin": "B0CKZF1STK",
               "region": "es"
+            },
+            {
+              "asin": "B0B649GBN8",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7280,6 +7285,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0CKZF1STK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B649GBN8",
+              "type": "libex-import"
             }
           ],
           "work": "el-principe-caspian"
@@ -7290,150 +7300,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0CKZFNNJG",
           "type": "libex-import"
-        }
-      ],
-      "title": "El príncipe Caspian"
-    },
-    "el-principe-caspian-prince-caspian": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "el-principe-caspian-prince-caspian",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "idzi-dutkiewicz-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0B649GBN8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 24032,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 927915,
-              "start_ms": 24032,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 1274403,
-              "start_ms": 951947,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 897381,
-              "start_ms": 2226350,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 1411215,
-              "start_ms": 3123731,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1523484,
-              "start_ms": 4534946,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1063799,
-              "start_ms": 6058430,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 1405410,
-              "start_ms": 7122229,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 1313785,
-              "start_ms": 8527639,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 1348661,
-              "start_ms": 9841424,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 1561472,
-              "start_ms": 11190085,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 1358111,
-              "start_ms": 12751557,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 1355255,
-              "start_ms": 14109668,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 1126400,
-              "start_ms": 15464923,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 1548097,
-              "start_ms": 16591323,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 1736968,
-              "start_ms": 18139420,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 36384,
-              "start_ms": 19876388,
-              "title": "Capítulo 17"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81QOp3PX7nL.jpg",
-          "id": "idzi-dutkiewicz-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "idzi-dutkiewicz"
-          ],
-          "publisher": "Grupo Nelson",
-          "release_date": "2023-10-03",
-          "runtime_min": 331,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B649GBN8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-principe-caspian-prince-caspian"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0B649GBN8",
           "type": "libex-import"
         }
       ],
-      "title": "El príncipe Caspian [Prince Caspian]"
+      "title": "El príncipe Caspian"
     },
     "el-principe-cautivo-el-rey": {
       "added_at": "2026-07-29",

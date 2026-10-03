@@ -7047,7 +7047,8 @@
       ],
       "genres": [
         "fantasy",
-        "historical-fiction"
+        "historical-fiction",
+        "romance"
       ],
       "id": "lord-john-and-the-brotherhood-of-the-blade",
       "language": "en",
@@ -7297,31 +7298,7 @@
             }
           ],
           "work": "lord-john-and-the-brotherhood-of-the-blade"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V0K1XI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lord John and the Brotherhood of the Blade"
-    },
-    "lord-john-and-the-brotherhood-of-the-blade-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction",
-        "romance"
-      ],
-      "id": "lord-john-and-the-brotherhood-of-the-blade-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jeff-woodman-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7525,17 +7502,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "lord-john-and-the-brotherhood-of-the-blade-international-edition"
+          "work": "lord-john-and-the-brotherhood-of-the-blade"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0K1XI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "170501481X",
           "type": "libex-import"
         }
       ],
-      "title": "Lord John and the Brotherhood of the Blade: International Edition"
+      "title": "Lord John and the Brotherhood of the Blade"
     },
     "lord-john-and-the-hand-of-devils-international-edition": {
       "added_at": "2026-08-02",
@@ -8035,8 +8017,10 @@
         "diana-gabaldon"
       ],
       "genres": [
+        "fantasy",
         "historical-fiction",
-        "mystery"
+        "mystery",
+        "romance"
       ],
       "id": "lord-john-and-the-private-matter",
       "language": "en",
@@ -8171,32 +8155,7 @@
             }
           ],
           "work": "lord-john-and-the-private-matter"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V5H6BS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lord John and the Private Matter"
-    },
-    "lord-john-and-the-private-matter-international-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction",
-        "mystery",
-        "romance"
-      ],
-      "id": "lord-john-and-the-private-matter-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jeff-woodman-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8325,17 +8284,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "lord-john-and-the-private-matter-international-edition"
+          "work": "lord-john-and-the-private-matter"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5H6BS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1705014798",
           "type": "libex-import"
         }
       ],
-      "title": "Lord John and the Private Matter: International Edition"
+      "title": "Lord John and the Private Matter"
     },
     "lord-john-y-el-prisionero-escoces-narracion-en-castellano": {
       "added_at": "2026-07-29",

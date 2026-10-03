@@ -2592,8 +2592,10 @@
       ],
       "genres": [
         "mystery",
+        "police-procedural",
         "short-stories",
-        "thriller-suspense"
+        "thriller-suspense",
+        "westerns"
       ],
       "id": "wait-for-signs",
       "language": "en",
@@ -2703,33 +2705,7 @@
             }
           ],
           "work": "wait-for-signs"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00OLBAYCS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Wait for Signs"
-    },
-    "wait-for-signs-international-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "craig-johnson"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "short-stories",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "wait-for-signs-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "george-guidall-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2828,17 +2804,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "wait-for-signs-international-edition"
+          "work": "wait-for-signs"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00OLBAYCS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "170501464X",
           "type": "libex-import"
         }
       ],
-      "title": "Wait for Signs: International Edition"
+      "title": "Wait for Signs"
     },
     "wait-for-u": {
       "added_at": "2026-07-29",

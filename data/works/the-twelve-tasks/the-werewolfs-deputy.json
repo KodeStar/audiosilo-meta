@@ -3183,6 +3183,7 @@
       "genres": [
         "literary-fiction",
         "mystery",
+        "police-procedural",
         "westerns"
       ],
       "id": "the-western-star",
@@ -3216,32 +3217,7 @@
             }
           ],
           "work": "the-western-star"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B074Q11329",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Western Star"
-    },
-    "the-western-star-international-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "craig-johnson"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery",
-        "police-procedural",
-        "westerns"
-      ],
-      "id": "the-western-star-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "george-guidall-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3355,17 +3331,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-western-star-international-edition"
+          "work": "the-western-star"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B074Q11329",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1705014704",
           "type": "libex-import"
         }
       ],
-      "title": "The Western Star: International Edition"
+      "title": "The Western Star"
     },
     "the-western-wind": {
       "added_at": "2026-07-29",
