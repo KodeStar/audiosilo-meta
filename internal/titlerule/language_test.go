@@ -19,6 +19,8 @@ func TestEditionLanguage(t *testing.T) {
 		{"Il nome (edizione italiana)", "it"},
 		{"Die Saga (Deutsche Ausgabe)", "de"},
 		{"The Saga [Fench Edition]", "fr"},
+		{"The Gambler [Persian Edition]", "fa"},
+		{"White Nights (Persian Edition)", "fa"},
 		{"Hurricane Wars (Japanese Edition)", "ja"},
 		// A language the importer maps is a language whose edition is read.
 		{"Kuolema (Finnish Edition)", "fi"},
@@ -58,6 +60,31 @@ func TestEditionLanguageReadsTitleAndSubtitleTogether(t *testing.T) {
 	}
 	if _, ok := EditionLanguage("X (German Edition)", "[French Edition]"); ok {
 		t.Error("two languages across title and subtitle stated one")
+	}
+}
+
+// A text NAMES a language when a language word stands in it outside its own edition
+// decoration: the language-course shape, whose decoration names the language taught.
+func TestNamesALanguage(t *testing.T) {
+	for _, tc := range []struct {
+		text string
+		want bool
+	}{
+		{"Learn German: By Reading Fantasy (German Edition)", true},
+		{"101 Conversations in Simple Spanish (Spanish Edition)", true},
+		{"Persian Grammar [Persian Edition]", true},
+		{"A Castilian Spanish Primer", true},
+		// The decoration alone names nothing: it is what the reader strips.
+		{"Steelheart [German Edition]", false},
+		{"The Gambler [Persian Edition]", false},
+		// A language word inside another word is not one.
+		{"Germany 1945", false},
+		{"Englishman's Holiday", false},
+		{"", false},
+	} {
+		if got := NamesALanguage(tc.text); got != tc.want {
+			t.Errorf("NamesALanguage(%q) = %v, want %v", tc.text, got, tc.want)
+		}
 	}
 }
 
