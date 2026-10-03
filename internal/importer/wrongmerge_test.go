@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -1097,13 +1098,20 @@ func TestStripTitleNarratorQualifier(t *testing.T) {
 	}
 }
 
+// titleOnlyLeadIns are the title lead-ins the series vocabulary deliberately does not
+// carry, each with its reason: "read by" is attested as a title qualifier ("ESV Audio
+// Bible, Read by Ray Ortlund") and nowhere in the series trailing-bracket position,
+// where seriesNarratorQualifiers' comment says why it is refused.
+var titleOnlyLeadIns = []string{"read by"}
+
 // TestTitleNarratorVocabularyIsASeriesSubset is the drift guard between the two
-// narrator vocabularies: the title-side list must stay a subset of the series
-// one, so "what a narrator lead-in is" has one definition and the title rule can
-// only ever be the narrower of the two.
+// narrator vocabularies: the title-side list (titlerule.NarratorLeadIns) must stay a
+// subset of the series one, bar the named title-only entries, so "what a narrator
+// lead-in is" has one definition and the title rule can only ever be the narrower of
+// the two.
 func TestTitleNarratorVocabularyIsASeriesSubset(t *testing.T) {
-	for _, phrase := range titleNarratorQualifiers {
-		if !slices.Contains(seriesNarratorQualifiers, phrase) {
+	for _, phrase := range titlerule.NarratorLeadIns {
+		if !slices.Contains(seriesNarratorQualifiers, phrase) && !slices.Contains(titleOnlyLeadIns, phrase) {
 			t.Errorf("title lead-in %q is not in seriesNarratorQualifiers", phrase)
 		}
 		if folded := foldCredit(phrase); folded != phrase {

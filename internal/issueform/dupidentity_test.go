@@ -294,6 +294,26 @@ func TestAddWorkStrippedTitleMeetsTheSlugGate(t *testing.T) {
 	}
 }
 
+// The marketplace-edition and narrator QUALIFIERS are decorations too
+// (titlerule/qualifiers.go): each submitted spelling of the catalogued "Hammered" is
+// stripped to it at compose time and meets the slug gate, rather than composing a
+// second record of the book.
+func TestAddWorkStrippedQualifierMeetsTheSlugGate(t *testing.T) {
+	for _, title := range []string{
+		"Hammered: International Edition",
+		"Hammered (International Edition)",
+		"Hammered - Read by Luke Daniels",
+	} {
+		t.Run(title, func(t *testing.T) {
+			dir := dupSeedTree(t)
+			res := processAddWork(t, dir, dupWorkBody(title, "Kevin Hearne", "Luke Daniels", "", ""))
+			if res.Status != StatusDuplicate {
+				t.Fatalf("status = %q, want %q; messages = %v", res.Status, StatusDuplicate, res.Messages)
+			}
+		})
+	}
+}
+
 // A decorated title the rules CANNOT clean safely is a maintainer's: the residual
 // names no book, so no mechanical rewrite can say what this work is called.
 func TestAddWorkRefusesADecorationOnlyTitle(t *testing.T) {

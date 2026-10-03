@@ -8,6 +8,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
@@ -222,23 +223,17 @@ func cleanSeriesName(name string) string {
 	return trimmed
 }
 
-// titleNarratorQualifiers are the narrator lead-ins that appear INSIDE a title
-// or subtitle rather than at the end of a series name. They are the subset of
-// seriesNarratorQualifiers the dump spells in that position (pinned by
-// TestTitleNarratorVocabularyIsASeriesSubset, so the two lists can never drift
-// into two different ideas of what a narrator lead-in is).
-//
-// "horspiele von" is deliberately NOT here. In the series position it means
-// "audio dramas read by"; in a title it is an AUTHORSHIP phrase - "Die schönsten
-// Märchen-Hörspiele von Grimm, Hauff und Andersen" credits the Brothers Grimm,
-// not a narrator - and stripping it would delete the authors from a title.
-//
-// Keys are in foldCredit form (lowercased, diacritics folded).
-var titleNarratorQualifiers = []string{
-	"gelesen von",    // 11 of the 13 books in the bounded shape below
-	"narrated by",    // 2
-	"gesprochen von", // 0 in the bounded shape; 16 books spell it elsewhere in the position
-}
+// The narrator lead-ins a TITLE spells are titlerule.NarratorLeadIns - one list,
+// read by this mid-title strip and by titlerule's trailing-qualifier rule (which
+// internal/audit's duplicate key and the two writers' identity guards reach), so
+// "what introduces a narrator credit in a title" has one definition. It moved there
+// from here; the three entries measured for this rule ("gelesen von" 11 of the 13
+// books in the bounded shape below, "narrated by" 2, "gesprochen von" 0) are
+// unchanged, and the drift guard TestTitleNarratorVocabularyIsASeriesSubset still
+// pins them to seriesNarratorQualifiers. The fourth, "read by", is attested in the
+// title position only; in THIS rule's bounded shape (a lead-in before a trailing
+// volume marker) the dump holds none, so it widens nothing here. Why "horspiele
+// von" is not in it is stated there too.
 
 // titleVolumeSuffixRE is the BOUND that makes the mid-title strip safe: the
 // qualifier must be followed by a comma and a volume marker that ends the
@@ -264,16 +259,9 @@ var titleNarratorQualifiers = []string{
 // unmeasured rule.
 var titleVolumeSuffixRE = regexp.MustCompile(`(?i),\s*(?:band|folge|episode)\s*\d+(?:\.\d+)?\s*$`)
 
-// narratorObjectLeads are the words that begin a narration credit naming NOBODY
-// - a reflexive or a generic object rather than a person. Each is taken from the
-// dump's own false-positive family above ("as Narrated by Himself", "narrated by
-// the monster himself", "Narrated by the Author"). None of them can be the start
-// of a narrator's name, so a qualifier leading with one is left alone even when
-// it does carry a volume marker: the belt to titleVolumeSuffixRE's braces.
-var narratorObjectLeads = map[string]bool{
-	"himself": true, "herself": true, "themselves": true,
-	"the": true, "a": true, "an": true,
-}
+// A credit leading with titlerule.NarratorObjectLead ("as Narrated by Himself",
+// "Narrated by the Author") names nobody, so it is never stripped: the belt to
+// titleVolumeSuffixRE's braces. The set moved to titlerule with the vocabulary.
 
 // stripTitleNarratorQualifier removes a mid-title narrator qualifier - the
 // qualifier itself and the separator that introduced it - leaving the volume
@@ -284,7 +272,7 @@ var narratorObjectLeads = map[string]bool{
 //
 // It returns the title unchanged unless every condition holds: the trailing
 // volume marker (titleVolumeSuffixRE), a listed lead-in at a WORD boundary
-// before it, a credit that names somebody (narratorObjectLeads), a non-empty
+// before it, a credit that names somebody (titlerule.NarratorObjectLead), a non-empty
 // remainder, and brackets that still balance - the same posture cleanSeriesName
 // takes, for the same reason (a title we cannot take the qualifier off cleanly
 // is left exactly as the source spelled it).
@@ -300,7 +288,7 @@ func stripTitleNarratorQualifier(title string) string {
 		return title
 	}
 	cut, credit := lastNarratorLeadIn(head)
-	if cut < 0 || narratorObjectLeads[firstFoldedWord(credit)] {
+	if cut < 0 || titlerule.NarratorObjectLead(firstFoldedWord(credit)) {
 		return title
 	}
 	kept := strings.TrimSpace(strings.TrimRight(strings.TrimSpace(head[:cut]), "-–—"))
@@ -313,7 +301,7 @@ func stripTitleNarratorQualifier(title string) string {
 // containsNarratorLeadIn reports whether a FOLDED string holds any listed
 // lead-in at all. It is the cheap prefilter for the positional scan.
 func containsNarratorLeadIn(folded string) bool {
-	for _, phrase := range titleNarratorQualifiers {
+	for _, phrase := range titlerule.NarratorLeadIns {
 		if strings.Contains(folded, phrase) {
 			return true
 		}
@@ -334,7 +322,7 @@ func lastNarratorLeadIn(head string) (int, string) {
 			continue // mid-word, so not a lead-in
 		}
 		folded := foldCredit(head[i:])
-		for _, phrase := range titleNarratorQualifiers {
+		for _, phrase := range titlerule.NarratorLeadIns {
 			rest, found := strings.CutPrefix(folded, phrase+" ")
 			if found && strings.TrimSpace(rest) != "" {
 				best, credit = i, strings.TrimSpace(rest)

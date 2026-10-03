@@ -440,6 +440,9 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoAdaptedEditionOneSide(members); ok {
 		out = append(out, s)
 	}
+	if s, ok := vetoEditionLanguageDiffers(members); ok {
+		out = append(out, s)
+	}
 	return out
 }
 
