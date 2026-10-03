@@ -1,6 +1,7 @@
 package audit
 
 import (
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -51,6 +52,12 @@ type index struct {
 	// be checked against the book's own authorship rather than taken on the words
 	// alone - a series name is often two ordinary words.
 	seriesByAuthor map[string][]string
+
+	// seriesTails maps the titlerule.SeriesKey of a series name's post-colon TAIL ("The
+	// Royal Ranger" of "Ranger's Apprentice: The Royal Ranger") to the series ids carrying
+	// it, for W-DUP's subseries-tail key (index.seriesTailKey). Only tails of at least
+	// minSeriesFormWords significant words are held.
+	seriesTails map[string][]string
 
 	// derivedCache memoizes the per-work title derivation. Four detectors ask for
 	// it and the answer costs a series-name lookup, a clean and a volume probe, so
@@ -159,7 +166,33 @@ func newIndex(cat *model.Catalog) *index {
 		ix.seriesByAuthor[a] = ids
 	}
 	ix.seriesNameIdx = newSeriesNameIndex(cat.Series)
+	ix.seriesTails = seriesTailIndex(cat.Series)
 	return ix
+}
+
+// seriesTailIndex builds index.seriesTails: every series name's text after its LAST ": "
+// (parentheticals removed first, so an ordering note does not become part of the tail),
+// keyed by titlerule.SeriesKey. The series ids under a key are sorted.
+func seriesTailIndex(all []*model.Series) map[string][]string {
+	out := map[string][]string{}
+	for _, s := range all {
+		name := titlerule.TidyTitle(titlerule.StripParenGroups(s.Name))
+		i := strings.LastIndex(name, ": ")
+		if i < 0 {
+			continue
+		}
+		tail := name[i+2:]
+		if titlerule.CountSignificantWords(tail) < minSeriesFormWords {
+			continue
+		}
+		if k := titlerule.SeriesKey(tail); k != "" {
+			out[k] = append(out[k], s.ID)
+		}
+	}
+	for k := range out {
+		sort.Strings(out[k])
+	}
+	return out
 }
 
 // hasSidecar reports whether the works-community family holds an entry for a work.
@@ -438,8 +471,13 @@ type seriesForm struct {
 func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 	// Fold every form first, so an ambiguous key (two different series spelling a
 	// form the same way) can be dropped before the index is built.
+	//
+	// An entry holds every SPELLING that folds to its key, not only the first: the
+	// typographic variants SeriesForms carries (a curly apostrophe, a dash for a colon)
+	// fold to one key by construction, and a probe compares bytes, so an entry keeping
+	// one spelling could never find the others in a title.
 	type entry struct {
-		form  seriesForm
+		forms []seriesForm
 		owned map[string]struct{} // the series ids spelling this form
 	}
 	byKey := map[string]*entry{}
@@ -454,11 +492,12 @@ func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 			}
 			e := byKey[key]
 			if e == nil {
-				e = &entry{
-					form:  seriesForm{form: form, lower: strings.ToLower(form), series: s.ID},
-					owned: map[string]struct{}{},
-				}
+				e = &entry{owned: map[string]struct{}{}}
 				byKey[key] = e
+			}
+			lower := strings.ToLower(form)
+			if !slices.ContainsFunc(e.forms, func(f seriesForm) bool { return f.lower == lower }) {
+				e.forms = append(e.forms, seriesForm{form: form, lower: lower, series: s.ID})
 			}
 			e.owned[s.ID] = struct{}{}
 		}
@@ -474,8 +513,10 @@ func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 		if len(e.owned) != 1 {
 			continue // ambiguous: two series spell this form identically
 		}
-		if p := firstPair(e.form.lower); p != "" {
-			idx.byPair[p] = append(idx.byPair[p], e.form)
+		for _, f := range e.forms {
+			if p := firstPair(f.lower); p != "" {
+				idx.byPair[p] = append(idx.byPair[p], f)
+			}
 		}
 	}
 	// Longest form first inside a bucket, so a lookup returns the most specific

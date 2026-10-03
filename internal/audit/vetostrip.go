@@ -44,6 +44,12 @@ func vetoStrippedSeriesDiffers(members []dupMember) (string, bool) {
 			if titlerule.SameTitleUnderCommonSeries(a.work.Title, a.wk.series, b.work.Title, b.wk.series) {
 				continue
 			}
+			// A pair that met on a SPELLING-VARIANT key never agrees under the plain key -
+			// that is why the key exists - so the same condition is asked in its terms.
+			if (a.wk.via == viaSpelling || b.wk.via == viaSpelling) &&
+				titlerule.SameVariantTitleUnderCommonSeries(a.work.Title, a.wk.series, b.work.Title, b.wk.series) {
+				continue
+			}
 			return fmt.Sprintf("%s was cleaned against series %q and %s against %q, and the two titles no longer meet when either "+
 				"name is removed from both: they share the part neither shed, not the book",
 				a.work.ID, a.wk.series, b.work.ID, b.wk.series), true

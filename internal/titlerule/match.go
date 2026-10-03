@@ -53,6 +53,12 @@
 //  8. Comment prose trimmed where it referred to the scoring half that was not
 //     taken, and em dashes converted to hyphens (a workspace-wide rule). No
 //     comment that describes retained BEHAVIOUR was changed.
+//  9. seriesForms returns its list through withPunctuationVariants (rules.go), so
+//     every form also exists in its typographic spellings - a curly apostrophe
+//     for a straight one and a spaced dash for ": " - and the one list that finds
+//     a series name and removes it reads "Ranger’s Apprentice - The Early Years"
+//     as "Ranger's Apprentice: The Early Years". The variants are rules.go's; the
+//     only edit here is the call.
 //
 // Deliberately UNCHANGED otherwise: every widening of the vocabulary lives in
 // rules.go, so this file stays diffable against the server's copy.
@@ -136,7 +142,7 @@ func seriesForms(series string) []string {
 		add(dropLeadingArticle(s))
 		add(dropLeadingArticle(noSuffix))
 	}
-	return out
+	return withPunctuationVariants(out)
 }
 
 // seriesRefIn's job is done by rules.go's exported SeriesRefIn, which is the same

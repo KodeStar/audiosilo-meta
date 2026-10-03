@@ -752,6 +752,83 @@ func SeriesRefIn(lowerTitle, series string) (string, bool) {
 	return "", false
 }
 
+// apostropheGlyphs, colonGlyphs and dashGlyphs are the punctuation a series name is
+// spelled in interchangeably: a title typeset by a retailer carries the curly
+// apostrophe and a spaced dash where the catalogue's series record has the straight
+// apostrophe and a colon - "The Tournament at Gorlan: Ranger’s Apprentice - The Early
+// Years, Book 1" against the series "Ranger's Apprentice: The Early Years". The dashes
+// are spaced on purpose: an unspaced hyphen is part of a word ("Spider-Man").
+//
+// The separator fold is ONE-WAY, a colon in the NAME read as a dash in the title (and
+// one dash as the other), never a dash in the name as a colon in the title. A colon in a
+// title is where the book's own title ends far more often than it is inside a series
+// name, and the reverse fold read "Quicksilver: Saga Alquimia & Fae, Vol. 1" as the
+// series "Quicksilver - Saga Alquimia" plus " & Fae" - a work in both series, retitled
+// to "Quicksilver: Saga Alquimia & Fae" instead of "Quicksilver" (measured: the one
+// regression the symmetric fold made over the real tree).
+var (
+	apostropheGlyphs = []string{"'", "’", "‘"}
+	colonGlyphs      = []string{": ", " - ", " – "}
+	dashGlyphs       = []string{" - ", " – "}
+)
+
+// withPunctuationVariants returns forms followed by every spelling of each form with
+// its apostrophes swapped for the other apostrophes and its subtitle separators for the
+// separators they may be read as (each class replaced uniformly within one spelling),
+// duplicates dropped. It is what seriesForms returns through - delta (9) in match.go -
+// so FINDING a series name in a title and REMOVING it read the same variants, and a form
+// with neither class in it (nearly every series name) comes back unchanged.
+//
+// It moves only titles that spell a series name with the other glyph, which is what the
+// rule is for: every title it changes behaves as its straight-punctuation twin always
+// did. The measurement is on CLAUDE.md's internal/titlerule entry.
+func withPunctuationVariants(forms []string) []string {
+	out := forms
+	seen := make(map[string]bool, len(forms))
+	for _, f := range forms {
+		seen[strings.ToLower(f)] = true
+	}
+	for _, f := range forms {
+		seps := dashGlyphs
+		if strings.Contains(f, ": ") {
+			seps = colonGlyphs
+		}
+		for _, a := range glyphSpellings(f, apostropheGlyphs) {
+			for _, v := range glyphSpellings(a, seps) {
+				if lv := strings.ToLower(v); !seen[lv] {
+					seen[lv] = true
+					out = append(out, v)
+				}
+			}
+		}
+	}
+	return out
+}
+
+// glyphSpellings is s with every occurrence of any glyph of the class replaced by each
+// glyph in turn - just s when it holds none.
+func glyphSpellings(s string, class []string) []string {
+	holds := false
+	for _, g := range class {
+		if strings.Contains(s, g) {
+			holds = true
+			break
+		}
+	}
+	if !holds {
+		return []string{s}
+	}
+	out := make([]string, 0, len(class))
+	for _, to := range class {
+		pairs := make([]string, 0, 2*len(class))
+		for _, from := range class {
+			pairs = append(pairs, from, to)
+		}
+		out = append(out, strings.NewReplacer(pairs...).Replace(s))
+	}
+	return out
+}
+
 // BareSeq derives the volume number a title itself spells out, against a series
 // name. It states a number the title WRITES ("... Volume 9", or a residual that is
 // nothing but the number), so it never grabs an incidental one - which is what makes

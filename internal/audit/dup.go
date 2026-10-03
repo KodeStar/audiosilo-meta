@@ -45,6 +45,8 @@ const (
 	viaOwnSeries      = "own-series"
 	viaEmbeddedSeries = "embedded-series"
 	viaPlain          = "no-series"
+	viaSpelling       = "spelling-variant"
+	viaSeriesTail     = "series-tail"
 )
 
 // workKeys returns the cluster keys a work contributes: one for its title cleaned
@@ -101,20 +103,88 @@ func (ix *index) workKeys(w *model.Work) []workKey {
 		}
 		keys = append(keys, workKey{key: k, cleaned: cleaned, series: series, via: via})
 	}
+	// spelled adds a derivation's US/UK SPELLING-VARIANT key (titlerule.SpellingVariantKey)
+	// beside its identity key, for a title the closed table actually changes: "The Armour
+	// of Light" contributes "armoroflight" as well, which is the key "The Armor of Light"
+	// already has. Only a derivation that HAS an identity key gets one, so the variant can
+	// never key a residual the identity rule refuses.
+	spelled := func(fold, cleaned, series string) {
+		if fold == "" {
+			return
+		}
+		if vk := titlerule.SpellingVariantKey(cleaned); vk != "" && vk != fold {
+			addKey(vk, cleaned, series, viaSpelling)
+		}
+	}
 	if !d.embedded {
 		via := viaPlain
 		if d.seriesName != "" {
 			via = viaOwnSeries
 		}
 		addKey(d.wantKey, d.want, d.seriesName, via)
-		return keys
+		spelled(d.wantKey, d.want, d.seriesName)
+	} else {
+		// A series name the TITLE spells out is weaker evidence than a membership, so
+		// the work contributes both keys: its title cleaned against nothing, and its
+		// title cleaned against the name it embeds.
+		addKey(d.plainKey, d.plain, "", viaPlain)
+		addKey(d.wantKey, d.want, d.seriesName, viaEmbeddedSeries)
+		spelled(d.plainKey, d.plain, "")
+		spelled(d.wantKey, d.want, d.seriesName)
 	}
-	// A series name the TITLE spells out is weaker evidence than a membership, so
-	// the work contributes both keys: its title cleaned against nothing, and its
-	// title cleaned against the name it embeds.
-	addKey(d.plainKey, d.plain, "", viaPlain)
-	addKey(d.wantKey, d.want, d.seriesName, viaEmbeddedSeries)
+	if fold, cleaned, tail, ok := ix.seriesTailKey(w); ok {
+		addKey(fold, cleaned, tail, viaSeriesTail)
+	}
 	return keys
+}
+
+// seriesTailKey is the SUBSERIES-TAIL key: for a title "<P>: <R>" whose head P is the
+// post-colon tail of a catalogued series name ("The Royal Ranger", of "Ranger's
+// Apprentice: The Royal Ranger") and that series shares an author with the work, the
+// title cleaned against P as though P were the series name. "The Royal Ranger: The Red
+// Fox Clan" then keys as "The Red Fox Clan", which is the key of the work modeled at
+// that slot.
+//
+// SeriesForms has no tail form, and adding one would widen every title clean, the
+// census and both writers' duplicate gates: a two-word tail is an ordinary phrase far
+// more often than a series name ("The Early Years", "The Lost Years"). So it is W-DUP's
+// key only - the precedent of the embedded-series key above - and gated twice: the tail
+// carries at least minSeriesFormWords significant words (the series-name index's own
+// floor), and it is the tail of a series holding a work by one of this work's authors,
+// which is what makes the head this book's subseries rather than a coincidence of words.
+// The cleaned title must still carry an identity of its own, and P is reported as the
+// series it was cleaned against, so the stripped-series soundness condition
+// (vetoStrippedSeriesDiffers) reads both titles against P.
+func (ix *index) seriesTailKey(w *model.Work) (fold, cleaned, tail string, ok bool) {
+	i := strings.Index(w.Title, ": ")
+	if i <= 0 {
+		return "", "", "", false
+	}
+	head := w.Title[:i]
+	sids := ix.seriesTails[titlerule.SeriesKey(head)]
+	if len(sids) == 0 {
+		return "", "", "", false
+	}
+	mine := ix.authorSeriesIDs(w.Authors)
+	shared := false
+	for _, sid := range sids {
+		if mine[sid] {
+			shared = true
+			break
+		}
+	}
+	if !shared {
+		return "", "", "", false
+	}
+	cleaned = titlerule.Clean(w.Title, head)
+	if !titlerule.CarriesIdentity(cleaned) {
+		return "", "", "", false
+	}
+	fold = titlerule.IdentityTitleKey(w.Title, head)
+	if fold == "" {
+		return "", "", "", false
+	}
+	return fold, cleaned, head, true
 }
 
 // dupMember is one work inside a candidate cluster.
@@ -528,6 +598,20 @@ func renderSpan(s [2]float64) string {
 // vetoDisjointSeries: both sides are modeled, and in ENTIRELY different series. Two
 // records of one book do not sit in two disjoint series; a book and its companion,
 // or two books sharing a title, do.
+//
+// "Different series" is judged by the series' NAME as well as its id (sharesSlot): two
+// memberships at ONE SLOT of two spellings of one series (sameSeriesSpelling) are the same
+// place in the same order - "The Armor of Light" at 4 of "The Kingsbridge Novels" beside
+// "The Armour of Light" at 4 of "Kingsbridge", "The Final Empire" at 1 of "Mistborn"
+// beside its dramatization at 1 of "Mistborn [Dramatized Adaptation]". Reading those as
+// disjoint vetoed exactly the pairs the two spellings make most likely. The slot has to
+// agree, not just the name: a book at 13 of "Ranger's Apprentice" and its namesake at 13
+// of "Ranger's Apprentice (published order)" are one place, at 14 and 13 they are not.
+//
+// Measured over the 282k-work tree: 149 clusters this veto alone withheld become
+// mechanical (dramatized adaptations beside their novels, abridged-series records,
+// "[Spanish Edition]" and "(Narración en Castellano)" series spellings, two editions'
+// series of one franchise), every one hand-reviewed as one book.
 func vetoDisjointSeries(ix *index, members []dupMember) (string, bool) {
 	var sets []map[string]bool
 	var owners []string
@@ -549,13 +633,60 @@ func vetoDisjointSeries(ix *index, members []dupMember) (string, bool) {
 					break
 				}
 			}
-			if !shared {
+			if !shared && !ix.sharesSlot(owners[i], owners[j]) {
 				return fmt.Sprintf("%s and %s are modeled in entirely different series (%s vs %s)",
 					owners[i], owners[j], truncateList(sortedKeys(sets[i]), 3), truncateList(sortedKeys(sets[j]), 3)), true
 			}
 		}
 	}
 	return "", false
+}
+
+// sharesSlot reports whether two works sit at one slot (importer.SameSlot) of two series
+// that are one series spelled twice (sameSeriesSpelling) - the question vetoDisjointSeries
+// asks of a pair the ids call disjoint.
+func (ix *index) sharesSlot(a, b string) bool {
+	for _, ma := range ix.memberships[a] {
+		sa := ix.seriesByID[ma.series]
+		if sa == nil {
+			continue
+		}
+		for _, mb := range ix.memberships[b] {
+			sb := ix.seriesByID[mb.series]
+			if sb != nil && sameSeriesSpelling(sa.Name, sb.Name) && importer.SameSlot(ma.position, mb.position) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// sameSeriesSpelling reports whether two series names are one series to vetoDisjointSeries:
+// one titlerule.SeriesKey, and either the SAME parenthetical decoration
+// (titlerule.DecorationKey, compared only where it can be read whole) or a decoration on
+// ONE side only.
+//
+// The decoration clause is measured, not cautious. SeriesKey removes a parenthetical, so
+// on its own it called "Pimsleur Chinese (Cantonese)" and "Pimsleur Chinese (Mandarin)"
+// one series, and seven Cantonese/Mandarin and Brazilian/European Portuguese courses - the
+// same lesson numbers at the same slots - went mechanical. Two DIFFERENT decorations are
+// two products; a decoration on one side is the catalogue's ordering, format or edition
+// note on the plain series ("(published order)", "[Dramatized Adaptation]", "(Abridged)",
+// "[Spanish Edition]"), which is where every other newly-shared slot of the measurement
+// sat. The clause's price is 10 correct merges left advisory where both sides carry a
+// different note - six James Bond novels under "(Celebrity Performances)" beside
+// "(Original)" among them - which is the right way round.
+func sameSeriesSpelling(a, b string) bool {
+	ka := titlerule.SeriesKey(a)
+	if ka == "" || ka != titlerule.SeriesKey(b) {
+		return false
+	}
+	decoratedA, decoratedB := titlerule.StripParenGroups(a) != a, titlerule.StripParenGroups(b) != b
+	if !decoratedA || !decoratedB {
+		return true // undecorated, or decorated on one side only
+	}
+	dk := titlerule.DecorationKey(a)
+	return dk != "" && dk == titlerule.DecorationKey(b)
 }
 
 func sortedKeys[V any](m map[string]V) []string {
