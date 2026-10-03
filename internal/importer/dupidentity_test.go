@@ -578,3 +578,34 @@ func TestAnotherNarratorReachesANarratorQualifiedWork(t *testing.T) {
 			sum.NewRecordings, sum.NewWorks, sum.SkippedDuplicateIdentity, id, sum.Warnings)
 	}
 }
+
+// Two qualified-only works cleaning to one title decide nothing: neither is offered as
+// a merge target, so nothing is attached to either and the row meets the duplicate
+// guard as it did before the qualifier strip - whose own ambiguity rule lets it
+// through to found a work of its own.
+func TestSeveralQualifiedWorksDecideNothing(t *testing.T) {
+	files := map[string]string{}
+	for _, w := range [][2]string{
+		{"jesus-listens-narrated-by-bea-reader", "Jesus Listens (Narrated by Bea Reader)"},
+		{"jesus-listens-narrated-by-cy-reader", "Jesus Listens (Narrated by Cy Reader)"},
+	} {
+		id := w[0]
+		files["works/"+shard(id)+"/"+id+"/work.json"] = testpack.WorkJSON(t, id, w[1], testpack.WithAuthors("ada-mapmaker"))
+		files["works/"+shard(id)+"/"+id+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300))
+	}
+	dataDir := seedTombstoneTree(t, files, nil)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0JESUS002", title: "Jesus Listens (Narrated by Dee Reader)",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Dee Reader"}`, minutes: 310}))
+	for _, id := range []string{"jesus-listens-narrated-by-bea-reader", "jesus-listens-narrated-by-cy-reader"} {
+		if recs := recSlugsOf(t, dataDir, id); len(recs) != 1 {
+			t.Errorf("%s holds recordings %v: the row was attached to one of two candidates", id, recs)
+		}
+	}
+	// The guard's ambiguity rule lets a row whose key names several works through, so
+	// it founds its own work - exactly what it did before the qualifier strip.
+	if sum.MergedASINs != 0 || sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("MergedASINs = %d, SkippedDuplicateIdentity = %d, NewWorks = %d, want 0, 0, 1; warnings = %v",
+			sum.MergedASINs, sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}

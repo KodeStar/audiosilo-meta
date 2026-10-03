@@ -2304,7 +2304,8 @@ func (p *planner) resolveWork(title, fullTitle, qualifiedTitle, posSuffix string
 // same key). The second is what reaches "Jesus Listens (Narrated by Bill Russell)"
 // from a row naming another narrator, whose qualified title spells a different
 // slug. Each is judged by the full walk (authors, language, series claim), so the
-// list only says where to LOOK.
+// list only says where to LOOK; and only ONE catalogued work may be offered, since a
+// title several works clean to names none of them.
 func (p *planner) qualifiedTitlesFor(title, fullTitle, qualifiedTitle string) []string {
 	var out []string
 	if qualifiedTitle != "" && qualifiedTitle != fullTitle {
@@ -2313,10 +2314,16 @@ func (p *planner) qualifiedTitlesFor(title, fullTitle, qualifiedTitle string) []
 	if p.identity == nil || title == "" {
 		return out
 	}
+	var catalogued []string
 	for _, cw := range p.identity.Works(p.identity.Key(title, "")) {
 		if cw.Title != title && cw.Title != qualifiedTitle && cleanWorkTitle(cw.Title) == title {
-			out = append(out, cw.Title)
+			catalogued = append(catalogued, cw.Title)
 		}
+	}
+	// SEVERAL such works decide nothing - the duplicate guard's own ambiguity rule -
+	// so none is offered and the row falls through to the guard as before.
+	if len(catalogued) == 1 {
+		out = append(out, catalogued[0])
 	}
 	return out
 }
