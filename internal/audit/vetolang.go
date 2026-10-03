@@ -17,19 +17,6 @@ import (
 // one Persian translation of each book in the catalogue would have been folded away.
 // Their narrators read in Persian; the title states it; only the tag says English.
 
-// effectiveLanguage is the primary subtag a member is judged in: the language its
-// own title or subtitle states through an own-language edition decoration
-// (titlerule.EditionLanguage, the vocabulary T-LINK reads), else its tag's primary
-// subtag, else "" - unknown, which is never judged. The STATEMENT beats the tag
-// because it is the record speaking about itself; the tag is somebody's
-// classification and is the thing found wrong here.
-func effectiveLanguage(w *model.Work) string {
-	if l, ok := titlerule.EditionLanguage(w.Title, w.Subtitle); ok {
-		return l
-	}
-	return model.PrimarySubtag(w.Language)
-}
-
 // vetoEditionLanguageDiffers: a member STATES an own-language edition, and another
 // member's language - its own statement, or else its tag - is known and a different
 // primary subtag. A different language is a translation, and a translation is a
@@ -51,16 +38,35 @@ func effectiveLanguage(w *model.Work) string {
 // the same change (editionOnlyWords); T-LINK, which reads that vocabulary too, was
 // byte-identical.
 func vetoEditionLanguageDiffers(members []dupMember) (string, bool) {
-	for _, m := range members {
-		lang, stated := titlerule.EditionLanguage(m.work.Title, m.work.Subtitle)
-		if !stated {
+	// Each member's EFFECTIVE language, read once rather than per pair: the language
+	// its own title or subtitle states through an own-language edition decoration
+	// (titlerule.EditionLanguage, the vocabulary T-LINK reads), else its tag's primary
+	// subtag, else "" - unknown, which is never judged. The STATEMENT beats the tag
+	// because it is the record speaking about itself; the tag is somebody's
+	// classification and is the thing found wrong here.
+	stated := make([]bool, len(members))
+	effective := make([]string, len(members))
+	anyStated := false
+	for i, m := range members {
+		if l, ok := titlerule.EditionLanguage(m.work.Title, m.work.Subtitle); ok {
+			stated[i], effective[i], anyStated = true, l, true
+		} else {
+			effective[i] = model.PrimarySubtag(m.work.Language)
+		}
+	}
+	if !anyStated {
+		return "", false
+	}
+	for i, m := range members {
+		if !stated[i] {
 			continue
 		}
-		for _, other := range members {
+		lang := effective[i]
+		for j, other := range members {
 			if other.work.ID == m.work.ID {
 				continue
 			}
-			olang := effectiveLanguage(other.work)
+			olang := effective[j]
 			if languagesCompatible(lang, olang) {
 				continue
 			}

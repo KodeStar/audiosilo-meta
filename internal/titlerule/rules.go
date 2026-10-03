@@ -192,9 +192,19 @@ func dropWideGenreSubtitle(s string) string {
 // Iron Druid Chronicles") no longer meets the plain twin it decorates. That is the
 // right way round - a refused cluster is re-findable, a wrong merge deletes a record.
 func Clean(title, series string) string {
-	s := dropWideGenreSubtitle(foldBrandPossessive(dropTitleQualifiers(title)))
+	s := dropWideGenreSubtitle(dropTitleQualifiers(title))
 	if series != "" {
 		s = stripSeriesAtBoundary(s, SeriesForms(series))
+	}
+	// The brand fold runs AFTER the series strip: a series whose own name carries the
+	// possessive ("Tom Clancy's Op-Center") must still come off "Tom Clancy's
+	// Op-Center: Dark Zone". When the fold does change the title it is read against the
+	// series once more, for a series spelled without the possessive.
+	if f := foldBrandPossessive(s); f != s {
+		s = f
+		if series != "" {
+			s = stripSeriesAtBoundary(s, SeriesForms(series))
+		}
 	}
 	s = CleanTitle(s, "")
 	s = dropStrayBrackets(s)
@@ -1284,8 +1294,8 @@ var decorations = []struct {
 	{DecEdition, func(f TitleFacts) bool { return HasEditionMarker(f.Title) }},
 	// The two product qualifiers (qualifiers.go): a marketplace edition and a narrator
 	// credit, each standing as a whole segment, quoted run or bracketed group.
-	{DecMarketEdition, func(f TitleFacts) bool { return dropMarketEdition(f.Title, strings.ToLower(f.Title)) != f.Title }},
-	{DecNarrator, func(f TitleFacts) bool { return dropNarratorQualifier(f.Title, strings.ToLower(f.Title)) != f.Title }},
+	{DecMarketEdition, func(f TitleFacts) bool { return dropsQualifier(f.Title, dropMarketEdition) }},
+	{DecNarrator, func(f TitleFacts) bool { return dropsQualifier(f.Title, dropNarratorQualifier) }},
 	{DecGenreSubtitle, func(f TitleFacts) bool { return dropWideGenreSubtitle(f.Title) != f.Title }},
 	{DecTrailingPunct, func(f TitleFacts) bool { return trailingSeparatorRE.MatchString(f.Title) }},
 }

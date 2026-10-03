@@ -144,3 +144,31 @@ func TestTitleQualifiersNeverEmptyATitle(t *testing.T) {
 		}
 	}
 }
+
+// The brand fold must not break the series strip: a series whose own name carries the
+// possessive still comes off its volumes, so "Tom Clancy's Op-Center: Dark Zone" read
+// against "Tom Clancy's Op-Center" meets the plain "Dark Zone" - and a series spelled
+// without it still comes off a title that carries it.
+func TestBrandFoldKeepsTheSeriesStrip(t *testing.T) {
+	cases := []struct{ title, series, want string }{
+		{"Tom Clancy's Op-Center: Dark Zone", "Tom Clancy's Op-Center", "Dark Zone"},
+		{"Tom Clancy's Op-Center: Dark Zone", "Tom Clancy Op-Center", "Dark Zone"},
+		{"Tom Clancy's Oath of Office", "Jack Ryan", "Tom Clancy Oath of Office"},
+	}
+	for _, c := range cases {
+		if got := Clean(c.title, c.series); got != c.want {
+			t.Errorf("Clean(%q, %q) = %q, want %q", c.title, c.series, got, c.want)
+		}
+	}
+}
+
+// A title that is nothing but a qualifier is not FILED as carrying one either: the
+// decoration table asks the same never-empty question the strip does.
+func TestABareQualifierIsNoDecoration(t *testing.T) {
+	for _, title := range []string{`"International Edition"`, "(Narrated by Jane Doe)", "(International Edition)"} {
+		codes := Decorations(TitleFacts{Title: title})
+		if slices.Contains(codes, DecMarketEdition) || slices.Contains(codes, DecNarrator) {
+			t.Errorf("Decorations(%q) = %v, want no qualifier code", title, codes)
+		}
+	}
+}

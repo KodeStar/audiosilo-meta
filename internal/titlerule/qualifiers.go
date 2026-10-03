@@ -254,6 +254,15 @@ func dropTitleQualifiers(title string) string {
 	return s
 }
 
+// dropsQualifier is the decoration table's test for one qualifier: drop removes
+// something AND leaves a title behind - the same never-empty fallback
+// dropTitleQualifiers applies, so a title that is nothing but a qualifier is not filed
+// as carrying a decoration no strip will ever take off.
+func dropsQualifier(title string, drop func(s, lower string) string) bool {
+	out := drop(title, strings.ToLower(title))
+	return out != title && hasAlnum(out)
+}
+
 // leadingNamePossessive matches a title that OPENS with a possessive of a name of two
 // or three capitalized words - the franchise BRAND a ghostwritten continuation is sold
 // under ("Tom Clancy's Oath of Office", "Clive Cussler's The Heist"). The first word
