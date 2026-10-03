@@ -223,17 +223,7 @@ func cleanSeriesName(name string) string {
 	return trimmed
 }
 
-// The narrator lead-ins a TITLE spells are titlerule.NarratorLeadIns - one list,
-// read by this mid-title strip and by titlerule's trailing-qualifier rule (which
-// internal/audit's duplicate key and the two writers' identity guards reach), so
-// "what introduces a narrator credit in a title" has one definition. It moved there
-// from here; the three entries measured for this rule ("gelesen von" 11 of the 13
-// books in the bounded shape below, "narrated by" 2, "gesprochen von" 0) are
-// unchanged, and the drift guard TestTitleNarratorVocabularyIsASeriesSubset still
-// pins them to seriesNarratorQualifiers. The fourth, "read by", is attested in the
-// title position only; in THIS rule's bounded shape (a lead-in before a trailing
-// volume marker) the dump holds none, so it widens nothing here. Why "horspiele
-// von" is not in it is stated there too.
+// The title narrator lead-ins are titlerule.NarratorLeadIns (moved there; one list).
 
 // titleVolumeSuffixRE is the BOUND that makes the mid-title strip safe: the
 // qualifier must be followed by a comma and a volume marker that ends the
@@ -259,9 +249,7 @@ func cleanSeriesName(name string) string {
 // unmeasured rule.
 var titleVolumeSuffixRE = regexp.MustCompile(`(?i),\s*(?:band|folge|episode)\s*\d+(?:\.\d+)?\s*$`)
 
-// A credit leading with titlerule.NarratorObjectLead ("as Narrated by Himself",
-// "Narrated by the Author") names nobody, so it is never stripped: the belt to
-// titleVolumeSuffixRE's braces. The set moved to titlerule with the vocabulary.
+// The object-lead set is titlerule.NarratorObjectLead (moved with the vocabulary).
 
 // stripTitleNarratorQualifier removes a mid-title narrator qualifier - the
 // qualifier itself and the separator that introduced it - leaving the volume

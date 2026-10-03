@@ -23,11 +23,11 @@ import (
 // subtag, else "" - unknown, which is never judged. The STATEMENT beats the tag
 // because it is the record speaking about itself; the tag is somebody's
 // classification and is the thing found wrong here.
-func effectiveLanguage(w *model.Work) (lang string, stated bool) {
+func effectiveLanguage(w *model.Work) string {
 	if l, ok := titlerule.EditionLanguage(w.Title, w.Subtitle); ok {
-		return l, true
+		return l
 	}
-	return model.PrimarySubtag(w.Language), false
+	return model.PrimarySubtag(w.Language)
 }
 
 // vetoEditionLanguageDiffers: a member STATES an own-language edition, and another
@@ -39,6 +39,12 @@ func effectiveLanguage(w *model.Work) (lang string, stated bool) {
 // identityClusters' business, and a member of unknown language is never judged.
 // "X [English Edition]" beside an English "X" agrees and merges as before.
 //
+// It is deliberately AUDIT-ONLY. The writer guards and metacheck's census
+// (check.WorkIdentity) still judge the language TAGS: a writer's refusal is
+// recoverable where a merge is not, and moving "a stated edition language beats the
+// tag" into the identity predicate would change census and writer outcomes - a
+// separate change with its own measurement.
+//
 // Measured over the 282,052-work tree at c7ef08466 it fires on exactly two W-DUP
 // clusters, the two Persian ones above, and moves both out of the mechanical set. It
 // reads "Persian Edition" because titlerule's edition vocabulary learned the word in
@@ -46,7 +52,7 @@ func effectiveLanguage(w *model.Work) (lang string, stated bool) {
 // byte-identical.
 func vetoEditionLanguageDiffers(members []dupMember) (string, bool) {
 	for _, m := range members {
-		lang, stated := effectiveLanguage(m.work)
+		lang, stated := titlerule.EditionLanguage(m.work.Title, m.work.Subtitle)
 		if !stated {
 			continue
 		}
@@ -54,8 +60,8 @@ func vetoEditionLanguageDiffers(members []dupMember) (string, bool) {
 			if other.work.ID == m.work.ID {
 				continue
 			}
-			olang, _ := effectiveLanguage(other.work)
-			if olang == "" || olang == lang {
+			olang := effectiveLanguage(other.work)
+			if languagesCompatible(lang, olang) {
 				continue
 			}
 			return fmt.Sprintf("%s states a %s edition in its own title and %s is %s: a translation is a different work "+

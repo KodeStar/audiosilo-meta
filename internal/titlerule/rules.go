@@ -170,7 +170,9 @@ func dropWideGenreSubtitle(s string) string {
 // The two product QUALIFIERS come off first - a marketplace edition and a narrator
 // credit, each only as a whole segment, quoted run or bracketed group - and a leading
 // brand possessive is folded ("Tom Clancy's" compares as "Tom Clancy"): see
-// qualifiers.go for the rules and their measurement.
+// qualifiers.go for the rules and their measurement. The fold is Clean's alone, so a
+// caller of CompareKey on a raw title (SameUntranslatedTitle, SameModuloArticles) does
+// not get it.
 //
 // THE SERIES REMOVAL IS BOUNDARY-ANCHORED, through the very rule the retitle
 // proposal uses (stripSeriesAtBoundary): a whole leading segment, a whole trailing
@@ -1282,8 +1284,8 @@ var decorations = []struct {
 	{DecEdition, func(f TitleFacts) bool { return HasEditionMarker(f.Title) }},
 	// The two product qualifiers (qualifiers.go): a marketplace edition and a narrator
 	// credit, each standing as a whole segment, quoted run or bracketed group.
-	{DecMarketEdition, func(f TitleFacts) bool { return dropMarketEdition(f.Title) != f.Title }},
-	{DecNarrator, func(f TitleFacts) bool { return dropNarratorQualifier(f.Title) != f.Title }},
+	{DecMarketEdition, func(f TitleFacts) bool { return dropMarketEdition(f.Title, strings.ToLower(f.Title)) != f.Title }},
+	{DecNarrator, func(f TitleFacts) bool { return dropNarratorQualifier(f.Title, strings.ToLower(f.Title)) != f.Title }},
 	{DecGenreSubtitle, func(f TitleFacts) bool { return dropWideGenreSubtitle(f.Title) != f.Title }},
 	{DecTrailingPunct, func(f TitleFacts) bool { return trailingSeparatorRE.MatchString(f.Title) }},
 }

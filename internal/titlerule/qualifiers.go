@@ -129,8 +129,6 @@ var (
 	// intlSegmentRE is the phrase opening a segment, after a separator. What may
 	// follow it is checked in code (segmentEndsAt), since Go's regexp has no lookahead.
 	intlSegmentRE = regexp.MustCompile(`(?i)(?:[:;,|]|\s[-–])\s*(` + internationalEdition + `)\b`)
-	// narratorGroupRE is one bracketed group, judged by narratorCredit.
-	narratorGroupRE = regexp.MustCompile(bracketGroup)
 )
 
 // segmentEndsAt reports whether a segment may end at s[i:]: the end of the title, a
@@ -148,9 +146,10 @@ func segmentEndsAt(s string, i int) bool {
 
 // dropMarketEdition removes every "International Edition" qualifier that stands as a
 // whole segment, a whole quoted run or a whole bracketed group, leaving the separator
-// that introduced a segment for the run collapse to settle.
-func dropMarketEdition(s string) string {
-	if !strings.Contains(strings.ToLower(s), "international") {
+// that introduced a segment for the run collapse to settle. lower is s lowercased,
+// taken once by the caller for both qualifiers' cheap guards.
+func dropMarketEdition(s, lower string) string {
+	if !strings.Contains(lower, "international") {
 		return s // the common case, kept off the regexps
 	}
 	s = cutAll(s, intlGroupRE, nil)
@@ -163,6 +162,10 @@ func dropMarketEdition(s string) string {
 	return s
 }
 
+// cutAll is the qualifiers' bracket and quote removal; its siblings are rules.go's
+// dropSeriesBracketGroup (a series-only group, for a proposal) and match.go's
+// stripParenGroups (every group, for a series name).
+//
 // cutAll removes every match of re that keep (nil: every match) accepts, together with
 // the whitespace around it, putting a single space back only where a word follows - so
 // a group removed from before a separator leaves "NKJV: Complete Bible", never "NKJV :
@@ -190,11 +193,11 @@ func cutAll(s string, re *regexp.Regexp, keep func(string) bool) string {
 // group (anywhere) or as the title's LAST segment, after a separator - ": ", " - ",
 // ", " or ". " - and running to the end of the title. A lead-in that does not open a
 // segment, or whose credit fails narratorCredit, is left exactly as written.
-func dropNarratorQualifier(s string) string {
-	if !mentionsNarratorLeadIn(s) {
+func dropNarratorQualifier(s, lower string) string {
+	if !mentionsNarratorLeadIn(lower) {
 		return s // the common case
 	}
-	s = cutAll(s, narratorGroupRE, func(g string) bool { return narratorCredit(g[1 : len(g)-1]) })
+	s = cutAll(s, parenGroup, func(g string) bool { return narratorCredit(g[1 : len(g)-1]) })
 	for i := range s {
 		if i == 0 || !opensTrailingSegment(s[:i]) || !narratorCredit(s[i:]) {
 			continue
@@ -205,7 +208,10 @@ func dropNarratorQualifier(s string) string {
 }
 
 // opensTrailingSegment reports whether the text before a candidate lead-in ends in a
-// segment separator followed by a space.
+// segment separator followed by a space. The set is its own: unlike rules.go's
+// subtitleSeps/segmentPunct and identity.go's endsSegment/divisionSeparators it takes
+// ". " ("Die Bibel. Gelesen von Rufus Beck"), which is safe here only because a
+// closed lead-in must follow it.
 func opensTrailingSegment(head string) bool {
 	if !strings.HasSuffix(head, " ") {
 		return false
@@ -221,10 +227,11 @@ func opensTrailingSegment(head string) bool {
 	return false
 }
 
-func mentionsNarratorLeadIn(s string) bool {
-	ls := strings.ToLower(s)
+// mentionsNarratorLeadIn is dropNarratorQualifier's cheap guard over an
+// already-lowercased title.
+func mentionsNarratorLeadIn(lower string) bool {
 	for _, lead := range NarratorLeadIns {
-		if strings.Contains(ls, lead) {
+		if strings.Contains(lower, lead) {
 			return true
 		}
 	}
@@ -235,7 +242,8 @@ func mentionsNarratorLeadIn(s string) bool {
 // It never empties a title: a title that is nothing but a qualifier is returned as it
 // was, for the caller's own fallback to judge.
 func dropTitleQualifiers(title string) string {
-	s := dropNarratorQualifier(dropMarketEdition(title))
+	lower := strings.ToLower(title)
+	s := dropNarratorQualifier(dropMarketEdition(title, lower), lower)
 	if s == title {
 		return title
 	}
@@ -277,6 +285,9 @@ var nameArticles = map[string]bool{
 // different book ("Dragon Magic" beside "Dragon's Magic"), which a one-word head can
 // never reach here.
 func foldBrandPossessive(s string) string {
+	if !strings.ContainsAny(s, "'’") {
+		return s // the common case, kept off the regexp: Clean runs on every title
+	}
 	m := leadingNamePossessive.FindStringSubmatchIndex(s)
 	if m == nil || nameArticles[strings.ToLower(s[m[2]:m[3]])] {
 		return s
