@@ -359,7 +359,8 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 // keeps it for ATTACHMENT; the AUTHOR half of that rule is decided here and only
 // here. Dropping a row can change the others' evidence, so the groups a dropped
 // row claimed into - its resolution units (seriesUnits) - are resolved again until
-// nothing more is dropped. A slot a
+// nothing more is dropped, each re-partitioned over the surviving claims, since a
+// dropped claim can be all that joined two groups into one unit. A slot a
 // dropped row held at STREAM time is not handed back: a sibling that lost the
 // slot to it was excluded then, which only ever narrows a tranche.
 func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditions bool) []selectedRow {
@@ -426,7 +427,6 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 	for len(dirty) > 0 {
 		for _, u := range dirty {
 			var rs []*groupReach
-			var idx [][]int
 			for _, g := range units[u] {
 				var live []int
 				for _, ci := range reaches[g].idx {
@@ -435,13 +435,18 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 						live = append(live, ci)
 					}
 				}
-				if len(live) > 0 {
-					rs, idx = append(rs, reaches[g]), append(idx, live)
+				switch {
+				case len(live) == len(reaches[g].idx):
+					rs = append(rs, reaches[g])
+				case len(live) > 0:
+					// The import of the surviving rows reaches from their claims
+					// alone: a dropped claim's row language may have been all that
+					// joined this group to another, so the group's reach is taken
+					// again and the unit partitioned again below.
+					rs = append(rs, reachOf(cat, claims, live))
 				}
 			}
-			if len(rs) > 0 {
-				resolveSeriesUnit(cat, claims, rs, idx, targets, map[string]map[string]bool{})
-			}
+			resolveReaches(cat, claims, rs, targets, map[string]map[string]bool{})
 			if !first {
 				for _, g := range units[u] {
 					for _, ci := range reaches[g].idx {

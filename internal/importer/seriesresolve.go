@@ -22,8 +22,8 @@ import (
 // answer depends on the order the rows arrive in (the same discipline as the
 // initials decision, initials.go). A book counts once however many rows state it
 // (nameClaim.work), and a claim that places nothing is no evidence at all. Per
-// series name, in three steps over the catalogue's same-named candidates (chain
-// order):
+// resolution unit (the name groups that can reach one catalogued series,
+// seriesUnits), in three steps over each name's candidates (chain order first):
 //
 //  1. ANCHOR: a claim whose authors a candidate SHARES joins it, and its authors
 //     become that candidate's evidence; repeated until nothing more anchors, each
@@ -223,16 +223,20 @@ func resolveSeriesClaims(cat seriesCatalogue, claims []nameClaim) []seriesTarget
 	for i, k := range keys {
 		reaches[i] = reachOf(cat, claims, groups[k])
 	}
-	allocated := map[string]map[string]bool{} // base -> slugs minted this batch
+	resolveReaches(cat, claims, reaches, out, map[string]map[string]bool{})
+	return out
+}
+
+// resolveReaches resolves name groups (their reaches, in key order) unit by unit
+// (seriesUnits); allocated is base -> the slugs minted so far.
+func resolveReaches(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach, out []seriesTarget, allocated map[string]map[string]bool) {
 	for _, unit := range seriesUnits(reaches) {
 		rs := make([]*groupReach, len(unit))
-		idx := make([][]int, len(unit))
 		for i, g := range unit {
-			rs[i], idx[i] = reaches[g], reaches[g].idx
+			rs[i] = reaches[g]
 		}
-		resolveSeriesUnit(cat, claims, rs, idx, out, allocated)
+		resolveSeriesUnit(cat, claims, rs, out, allocated)
 	}
-	return out
 }
 
 // groupReach is what one name group REACHES, computed once before anything is
@@ -293,8 +297,8 @@ func seriesUnits(reaches []*groupReach) [][]int {
 	return out
 }
 
-// claimGroups groups the claims (indexes) by the series name they state, the
-// unit resolveSeriesGroup resolves, with the group keys sorted. Two claims share
+// claimGroups groups the claims (indexes) by the series name they state - the
+// name groups seriesUnits partitions into resolution units - with the group keys sorted. Two claims share
 // a group exactly when titlerule.SameSeriesName calls their names one (the slug
 // plus titlerule.SeriesNameKey, its grouping form), so a respelled decoration -
 // "(German Edition)" beside "[German Edition]" - is one group rather than two
@@ -336,8 +340,7 @@ const (
 
 // seriesCandidate is a series a name's claims may land in: a catalogued one on
 // its chain or reached by its qualifiers, or one the batch founds. Its evidence
-// is the catalogue's own until the batch first extends it, and a private copy
-// after (owned).
+// is its pool (evidencePool).
 type seriesCandidate struct {
 	slug, via string
 	chain     int
@@ -543,14 +546,14 @@ func (u unitClaims) Swap(a, b int) {
 }
 
 // resolveSeriesUnit resolves the claims of one resolution unit (seriesUnits):
-// reaches are its name groups and idx[i] the claims of reaches[i] to resolve (all
-// of them, or the live subset a re-check keeps), in canonical order. Every name
+// reaches are its name groups, each resolving its own claims (groupReach.idx, in
+// canonical order). Every name
 // group keeps its own candidates and tiers - its own chain first - but the
 // candidates of one catalogued series share ONE evidence pool, and anchoring and
 // clustering run over the unit's claims together, so a series several spellings
 // reach admits exactly what it would admit were they one spelling. The rules are
 // the same for a unit of one group, which is the per-name resolution.
-func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach, idx [][]int, out []seriesTarget, allocated map[string]map[string]bool) {
+func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach, out []seriesTarget, allocated map[string]map[string]bool) {
 	var pools evidencePools
 	if len(reaches) > 1 {
 		pools = evidencePools{}
@@ -572,9 +575,9 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, reaches []*group
 		}
 		groups[i] = g
 		if len(reaches) == 1 {
-			u.all = idx[i]
+			u.all = r.idx
 		} else {
-			for _, ci := range idx[i] {
+			for _, ci := range r.idx {
 				u.all = append(u.all, ci)
 				u.group = append(u.group, i)
 			}

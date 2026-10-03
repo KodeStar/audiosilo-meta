@@ -30,7 +30,7 @@ import (
 //     stating that order - an unqualified claim's position is not one of its slots;
 //   - a claim asks with its name's base and ordering, and with its decoration's
 //     language, else its row's (an unknown language asks nothing);
-//   - what it reaches only ADDS candidates, after the chain's (resolveSeriesGroup's
+//   - what it reaches only ADDS candidates, after the chain's (resolveSeriesUnit's
 //     tiers), judged by the same language closure and author fit;
 //   - the importer never writes translation_of, ordering or ordering_of, and a
 //     founded series keeps the source's name verbatim.
@@ -99,8 +99,9 @@ func buildQualified(series []qualifiedSource, language map[string]string) qualif
 	return out
 }
 
-// qualifiedIndex is the index, built on first use: an intake submission or a run
-// whose claims all resolve on their chains never pays for it.
+// qualifiedIndex is the index, built on first use: every name group's reach asks
+// it (reachOf), so a resolution with any claim builds it once per snapshot, and an
+// index nothing resolves through never does.
 func (ix *SeriesAuthorIndex) qualifiedIndex() qualifiedIndex {
 	if ix.qualifiedFrom != nil {
 		ix.qualified = buildQualified(ix.qualifiedFrom, ix.language)
