@@ -2,6 +2,8 @@ package importer
 
 import (
 	"cmp"
+	"fmt"
+	"maps"
 	"slices"
 	"sort"
 	"strings"
@@ -125,8 +127,9 @@ func (ix *SeriesAuthorIndex) holdsQualifiedBase(name, slug string) bool {
 // beyond the candidates it already holds (have). A decorated name reaches under its
 // own decoration's language (tierDecorated, every claim of the group); an
 // undecorated one under each row language of the claims at idx (tierLanguage, the
-// facet naming the claims it serves), in facet then slug order.
-func qualifiedCandidates(cat seriesCatalogue, name string, claims []nameClaim, idx []int, have []*seriesCandidate) []*seriesCandidate {
+// facet naming the claims it serves), in facet then slug order, each over its
+// series' pool in pools.
+func qualifiedCandidates(cat seriesCatalogue, name string, claims []nameClaim, idx []int, have []*seriesCandidate, pools evidencePools) []*seriesCandidate {
 	if cat.qualified == nil {
 		return nil
 	}
@@ -159,15 +162,34 @@ func qualifiedCandidates(cat seriesCatalogue, name string, claims []nameClaim, i
 				continue
 			}
 			seen[slug] = true
-			c := &seriesCandidate{slug: slug, lang: cat.language[slug], tier: tier}
+			c := &seriesCandidate{slug: slug, lang: cat.language[slug], tier: tier, pool: pools.of(cat, slug)}
 			if tier == tierLanguage {
 				c.facet = f
-			}
-			if cat.evidence != nil {
-				c.ev = cat.evidence(slug)
 			}
 			out = append(out, c)
 		}
 	}
 	return out
+}
+
+// noteSeriesNameJoin records that a claim naming given joined the catalogued series
+// at slug, stored as stored: a join the name alone does not show, so it is said once
+// in the run's Notes - a note, not a warning, as a tombstone ride is.
+func (p *planner) noteSeriesNameJoin(given, slug, stored string) {
+	if p.seriesNameJoins == nil {
+		p.seriesNameJoins = map[string]bool{}
+	}
+	p.seriesNameJoins[fmt.Sprintf("%q joined %s %q", given, slug, stored)] = true
+}
+
+// reportSeriesNameJoins appends the run's one note naming every such join, sorted
+// so two runs over one input read the same.
+func (p *planner) reportSeriesNameJoins() {
+	if len(p.seriesNameJoins) == 0 {
+		return
+	}
+	lines := slices.Sorted(maps.Keys(p.seriesNameJoins))
+	p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
+		"%d series claim(s) joined a catalogued series stored under another name: %s",
+		len(lines), strings.Join(lines, ", ")))
 }

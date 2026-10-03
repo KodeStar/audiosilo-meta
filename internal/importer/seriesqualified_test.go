@@ -3,6 +3,7 @@ package importer
 import (
 	"fmt"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -383,4 +384,113 @@ func TestQualifiedIndexIsBuiltOnFirstUse(t *testing.T) {
 	if ix.holdsQualifiedBase("Waylander", "waylander") {
 		t.Error("a base no series holds was reported held")
 	}
+}
+
+// sagaTree is Ada Mapmaker's one-volume German "Saga [German Edition]": open to
+// any one row, as a one-member series is.
+func sagaTree(t *testing.T) string {
+	t.Helper()
+	return seedTombstoneTree(t, map[string]string{
+		"works/ei/eins/work.json": testpack.WorkJSON(t, "eins", "Eins",
+			testpack.WithAuthors("ada-mapmaker"), testpack.WithLanguage("de")),
+		"works/ei/eins/recordings/r1.json":   testpack.RecJSON(t, "r1", "eins", testpack.WithNarrators("bea-reader")),
+		"series/sa/saga-german-edition.json": testpack.SeriesJSON(t, "saga-german-edition", "Saga [German Edition]", "eins@1"),
+	}, nil)
+}
+
+// sagaRow is a German row by author naming series at pos.
+func sagaRow(asin, title, author, series, pos string) string {
+	return langRow(asin, title, author, "german", series, pos)
+}
+
+// One author's rows SPLIT ACROSS SPELLINGS of a series are judged against ONE
+// evidence for the series every spelling reaches, exactly as one spelling would
+// be: three rows of another author do not take over a one-volume series, whether
+// they spell it one way or three, and each spelling founds on its own chain.
+func TestSpellingsDoNotSplitATakeover(t *testing.T) {
+	for name, series := range map[string][3]string{
+		"one spelling":    {"Saga [German Edition]", "Saga [German Edition]", "Saga [German Edition]"},
+		"three spellings": {"Saga [German Edition]", "Saga (Deutsche Ausgabe)", "Saga"},
+	} {
+		dataDir := sagaTree(t)
+		sum := runLibexOver(t, dataDir,
+			sagaRow("B0CARL0002", "Zwei", "Carl Squatter", series[0], "2"),
+			sagaRow("B0CARL0003", "Drei", "Carl Squatter", series[1], "3"),
+			sagaRow("B0CARL0004", "Vier", "Carl Squatter", series[2], "4"))
+		if got := seriesWorks(t, dataDir, "saga-german-edition"); !reflect.DeepEqual(got, map[string]string{"eins": "1"}) {
+			t.Errorf("%s: saga-german-edition = %v, want Ada's volume alone", name, got)
+		}
+		if sum.NewSeries == 0 {
+			t.Errorf("%s: no series founded for the refused rows", name)
+		}
+		assertTreeValid(t, dataDir)
+	}
+	// The violating side: one row of another author is still admitted to the
+	// open one-volume series, under any spelling.
+	for _, series := range []string{"Saga [German Edition]", "Saga (Deutsche Ausgabe)", "Saga"} {
+		dataDir := sagaTree(t)
+		runLibexOver(t, dataDir, sagaRow("B0CARL0002", "Zwei", "Carl Squatter", series, "2"))
+		if seriesWorks(t, dataDir, "saga-german-edition")["zwei"] != "2" {
+			t.Errorf("one row naming %q was not admitted to the open series", series)
+		}
+	}
+}
+
+// The unit resolution is independent of ROW order: the owner's own volumes, a
+// would-be squatter's and an English row, spread over the spellings, land in the
+// same series whatever order they arrive in.
+func TestSpellingUnitsAreOrderIndependent(t *testing.T) {
+	rows := []string{
+		sagaRow("B0ADA00002", "Zwei", "Ada Mapmaker", "Saga (Deutsche Ausgabe)", "2"),
+		sagaRow("B0ADA00003", "Drei", "Ada Mapmaker", "Saga", "3"),
+		sagaRow("B0CARL0004", "Vier", "Carl Squatter", "Saga [German Edition]", "4"),
+		sagaRow("B0CARL0005", "Fuenf", "Carl Squatter", "Saga (Deutsche Ausgabe)", "5"),
+		sagaRow("B0CARL0006", "Sechs", "Carl Squatter", "Saga", "6"),
+		langRow("B0ADAEN001", "One", "Ada Mapmaker", "english", "Saga", "1"),
+	}
+	membership := func(order []int) map[string]map[string]string {
+		dataDir := sagaTree(t)
+		var in []string
+		for _, i := range order {
+			in = append(in, rows[i])
+		}
+		runLibexOver(t, dataDir, in...)
+		assertTreeValid(t, dataDir)
+		out := map[string]map[string]string{}
+		for _, slug := range []string{"saga-german-edition", "saga-german-edition-2", "saga-deutsche-ausgabe",
+			"saga-deutsche-ausgabe-2", "saga", "saga-2", "saga-3"} {
+			if entryExists(t, dataDir, seriesAddr(slug)) {
+				out[slug] = seriesWorks(t, dataDir, slug)
+			}
+		}
+		return out
+	}
+	forward := membership([]int{0, 1, 2, 3, 4, 5})
+	if got := forward["saga-german-edition"]; !reflect.DeepEqual(got, map[string]string{"eins": "1", "zwei": "2", "drei": "3"}) {
+		t.Errorf("saga-german-edition = %v, want Ada's three German volumes alone", got)
+	}
+	for name, order := range map[string][]int{"reverse": {5, 4, 3, 2, 1, 0}, "interleaved": {3, 0, 5, 2, 4, 1}, "squatter first": {2, 3, 4, 0, 1, 5}} {
+		if got := membership(order); !reflect.DeepEqual(got, forward) {
+			t.Errorf("%s order: %v, want %v", name, got, forward)
+		}
+	}
+}
+
+// A join the name alone does not show is said once in the run's Notes - a note,
+// not a warning - and a join of a series stored under the very name the claim
+// gave says nothing.
+func TestAJoinUnderAnotherStoredNameIsNoted(t *testing.T) {
+	dataDir := throneTree(t)
+	sum := runLibexOver(t, dataDir,
+		langRow("B0TOGDE003", "Erbin des Feuers", "Sarah J. Maas", "german", "Throne of Glass (Deutsche Ausgabe)", "3"),
+		langRow("B0TOGDE004", "Koenigin der Schatten", "Sarah J. Maas", "german", "Throne of Glass [German Edition]", "4"))
+	want := `1 series claim(s) joined a catalogued series stored under another name: ` +
+		`"Throne of Glass (Deutsche Ausgabe)" joined throne-of-glass-german-edition "Throne of Glass [German Edition]"`
+	if !slices.Contains(sum.Notes, want) {
+		t.Errorf("Notes = %v, want %q", sum.Notes, want)
+	}
+	if hasWarning(sum.Warnings, "joined") {
+		t.Errorf("the join was warned about: %v", sum.Warnings)
+	}
+	assertTreeValid(t, dataDir)
 }

@@ -357,7 +357,8 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 // load (attachFor, the rule the import asks too, under the same context), which
 // keeps it for ATTACHMENT; the AUTHOR half of that rule is decided here and only
 // here. Dropping a row can change the others' evidence, so the groups a dropped
-// row claimed into are resolved again until nothing more is dropped. A slot a
+// row claimed into - its resolution units (seriesUnits) - are resolved again until
+// nothing more is dropped. A slot a
 // dropped row held at STREAM time is not handed back: a sibling that lost the
 // slot to it was excluded then, which only ever narrows a tranche.
 func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditions bool) []selectedRow {
@@ -390,10 +391,13 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		owner[ci] = w.book
 	}
 	groups, keys := claimGroups(claims)
-	groupOf := make([]string, len(claims))
-	for _, k := range keys {
-		for _, ci := range groups[k] {
-			groupOf[ci] = k
+	units := seriesUnits(cat, claims, groups, keys)
+	unitOf := make([]int, len(claims))
+	for u, unit := range units {
+		for _, k := range unit {
+			for _, ci := range groups[k] {
+				unitOf[ci] = u
+			}
 		}
 	}
 	alive := make([]bool, len(kept))
@@ -401,20 +405,27 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		alive[i] = true
 	}
 	targets := make([]seriesTarget, len(claims))
-	dirty := keys
+	dirty := make([]int, len(units))
+	for u := range dirty {
+		dirty[u] = u
+	}
 	for len(dirty) > 0 {
-		for _, k := range dirty {
-			var live []int
-			for _, ci := range groups[k] {
-				if alive[owner[ci]] {
-					live = append(live, ci)
+		for _, u := range dirty {
+			var members [][]int
+			for _, k := range units[u] {
+				var live []int
+				for _, ci := range groups[k] {
+					targets[ci] = seriesTarget{}
+					if alive[owner[ci]] {
+						live = append(live, ci)
+					}
+				}
+				if len(live) > 0 {
+					members = append(members, live)
 				}
 			}
-			for _, ci := range groups[k] {
-				targets[ci] = seriesTarget{}
-			}
-			if len(live) > 0 {
-				resolveSeriesGroup(cat, claims, live, targets, map[string]map[string]bool{})
+			if len(members) > 0 {
+				resolveSeriesUnit(cat, claims, members, targets, map[string]map[string]bool{})
 			}
 		}
 		// Every claim's target is stamped on its row, as the import's
@@ -423,13 +434,13 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		for ci, t := range targets {
 			books[where[ci].book].series[where[ci].ref].target = t
 		}
-		dropped := map[string]bool{}
+		dropped := map[int]bool{}
 		drop := func(i int, reason refusal) {
 			alive[i] = false
 			x.add(kept[i].asin, reason)
 			for ci := range claims {
 				if owner[ci] == i {
-					dropped[groupOf[ci]] = true
+					dropped[unitOf[ci]] = true
 				}
 			}
 		}
@@ -476,9 +487,9 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 			kept[i].seriesSlug, kept[i].workKey, kept[i].pos, kept[i].attach = v.slug, workKey, pos, nil
 		}
 		dirty = dirty[:0:0]
-		for _, k := range keys {
-			if dropped[k] {
-				dirty = append(dirty, k)
+		for u := range units {
+			if dropped[u] {
+				dirty = append(dirty, u)
 			}
 		}
 	}

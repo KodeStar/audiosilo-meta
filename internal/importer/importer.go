@@ -261,6 +261,11 @@ type planner struct {
 	// its survivor rather than minting there (tombstone.go).
 	redirects      model.Redirects
 	tombstoneRides map[string]string
+	// seriesNameJoins is every claim this run JOINED to a catalogued series stored
+	// under another name than the claim gave (a respelled qualifier, a renamed
+	// edition series, a plain name reaching its language's edition), rendered as
+	// its note line (reportSeriesNameJoins).
+	seriesNameJoins map[string]bool
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -698,6 +703,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
 	p.reportTombstoneRides()
+	p.reportSeriesNameJoins()
 	if p.fatal != nil {
 		return p.fatal
 	}
@@ -3192,8 +3198,11 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 		return nil
 	}
 	if ss, exists := p.series[t.slug]; exists {
-		if t.via != "" {
+		switch {
+		case t.via != "":
 			p.noteTombstone(model.RedirectSeries, t.via, t.slug)
+		case !ss.isNew && ss.name != name:
+			p.noteSeriesNameJoin(name, t.slug, ss.name)
 		}
 		return ss
 	}

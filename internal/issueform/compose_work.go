@@ -635,8 +635,14 @@ func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, 
 		return
 	}
 	if fs.rec != nil {
-		if fs.via != "" {
+		switch {
+		case fs.via != "":
 			c.noteRetired(model.RedirectSeries, fs.via, fs.id)
+		case fs.rec.Name != name:
+			// The importer's run-level note, for the one submission: a join the
+			// name alone does not show (a respelled qualifier, a renamed edition
+			// series, a plain name reaching its language's edition).
+			c.note("series %q joined %s %q", name, fs.id, fs.rec.Name)
 		}
 		c.extendSeries(fs.rec, fs.id, workSlug, pos)
 		return

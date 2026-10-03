@@ -86,6 +86,9 @@ func TestAddWorkFindsTheAuthorsOwnSeries(t *testing.T) {
 	if !strings.Contains(readFile(t, dir, "series/lo/lost-fleet.json"), `"work": "renegade"`) {
 		t.Error("Hawke's own volume did not extend her series")
 	}
+	if anyContains(res.Messages, "joined") {
+		t.Errorf("a join under the very name given was noted: %v", res.Messages)
+	}
 }
 
 // The resolution's LANGUAGE half reaches the form too (importer seriesresolve.go's
@@ -147,6 +150,9 @@ func TestAddWorkExtendsItsLanguagesEditionSeries(t *testing.T) {
 	}
 	if fileExists(t, dir, "series/lo/lost-fleet-2.json") {
 		t.Error("a second German series was composed at lost-fleet-2")
+	}
+	if !anyContains(res.Messages, `series "Lost Fleet" joined lost-fleet-german-edition "Lost Fleet [German Edition]"`) {
+		t.Errorf("the verdict does not name the join under another stored name: %v", res.Messages)
 	}
 
 	dir = formLostFleetTree(t, german)
