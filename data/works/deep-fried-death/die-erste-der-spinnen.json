@@ -19,6 +19,10 @@
             {
               "asin": "B0FXXHWRTV",
               "region": "us"
+            },
+            {
+              "asin": "B0FXXJJH5V",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -46,6 +50,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FXXHWRTV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0FXXJJH5V",
               "type": "libex-import"
             }
           ],
@@ -4319,6 +4328,61 @@
         }
       ],
       "title": "Die Ewigkeit ist ein guter Ort"
+    },
+    "die-ewignacht": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "paul-burghardt"
+      ],
+      "genres": [
+        "horror",
+        "young-adult"
+      ],
+      "id": "die-ewignacht",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kim-hasper-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HKSPB228",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ommjniQzL.jpg",
+          "id": "kim-hasper-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kim-hasper",
+            "konrad-bosherz",
+            "leyla-trebbien",
+            "sandra-schwittau",
+            "uschi-hugo"
+          ],
+          "publisher": "Holysoft GmbH",
+          "release_date": "2026-09-27",
+          "runtime_min": 69,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HKSPB228",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-ewignacht"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0HKSPB228",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Die Ewignacht"
     },
     "die-exegeten": {
       "added_at": "2026-08-02",
