@@ -394,8 +394,8 @@ func TestMergeSeriesKeepsTheVariantSurvivorsOrderingForAPlainLoser(t *testing.T)
 // renumberedFinding is a family-renumbered merge-series: Field "position".
 func renumberedFinding(target, loser string) audit.Finding {
 	fd := seriesFinding(target, loser)
-	fd.Subclass = "family-renumbered"
-	fd.Propose.Field = "position"
+	fd.Subclass = audit.SubclassFamilyRenumbered
+	fd.Propose.Field = audit.FieldPosition
 	return fd
 }
 

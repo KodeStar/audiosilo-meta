@@ -90,18 +90,28 @@ func detectSeriesDup(ix *index, keys []seriesKeys, clustersOf map[string][]strin
 			sfd := seriesDupFinding(ix, serDupDecor, key+"["+sub[0].decor+"]", sub, foldReason)
 			f.add(sfd)
 			if !sfd.Propose.Advisory {
-				for _, id := range Cluster(sfd.Propose.Target, sfd.Propose.Others) {
-					claimed[id] = true
+				for _, k := range sub {
+					claimed[k.series.ID] = true
 				}
 			}
 		}
 		// FAMILY FOLDS (seriesfamily.go): a group withheld for holding a reading-order
 		// family or a translation may still hold plain spellings of ONE family member,
 		// each proposed apart - never a series a mechanical subgroup above already folds.
-		if familyVetoed(ix, group) {
-			for _, ffd := range familySpellingFolds(ix, key, group, claimed, clustersOf) {
-				f.add(ffd)
-			}
+		// The family-member lookup is the cheap gate: without one there is no target.
+		if !hasFamilyMember(ix, group) {
+			continue
+		}
+		sides := seriesSides(ix, group)
+		if !familyVetoed(group, sides) {
+			continue
+		}
+		byID := make(map[string]seriesSide, len(sides))
+		for _, sd := range sides {
+			byID[sd.series.ID] = sd
+		}
+		for _, ffd := range familySpellingFolds(ix, key, group, byID, claimed, clustersOf) {
+			f.add(ffd)
 		}
 	}
 
@@ -171,26 +181,6 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 // that found them. target is the spelling the proposal would keep, which the directional
 // rules need: folding a loser INTO it is what makes a claim.
 func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
-	return seriesMergeVetoesWith(ix, group, target, vetoOptions{})
-}
-
-// vetoOptions are the two narrow stand-downs the family folds (seriesfamily.go) ask of
-// the same veto list. The zero value is the list every whole-group proposal reads.
-type vetoOptions struct {
-	// restatedOrdering is the survivor's STATED ordering field. When set, the
-	// decoration veto stands down for a pair whose every decoration is an ordering
-	// qualifier naming exactly that ordering (decorationsRestate): "The Chronicles of
-	// Narnia (Author's Preferred Order)" stating ordering=recommended says nothing in
-	// its parenthetical the record does not already state, so retiring the plain
-	// "Chronicles of Narnia" into it erases no distinction.
-	restatedOrdering string
-	// renumbered skips the ordering-agreement veto: a family-renumbered fold is
-	// exactly a disagreement about the numbers, judged by its own rule instead
-	// (renumberedOnto) and never mechanical.
-	renumbered bool
-}
-
-func seriesMergeVetoesWith(ix *index, group []seriesKeys, target string, o vetoOptions) []string {
 	var out []string
 	sides := seriesSides(ix, group)
 
@@ -215,7 +205,7 @@ func seriesMergeVetoesWith(ix *index, group []seriesKeys, target string, o vetoO
 
 	// ORDERING AGREEMENT: a fold either retires a spelling whose memberships the
 	// survivor already holds, or adds ones it has room for. Everything else needs a human.
-	if reason, vetoed := vetoSeriesOrderingDisagrees(sides, target); vetoed && !o.renumbered {
+	if reason, vetoed := vetoSeriesOrderingDisagrees(sides, target); vetoed {
 		out = append(out, reason)
 	}
 
@@ -241,18 +231,26 @@ func seriesMergeVetoesWith(ix *index, group []seriesKeys, target string, o vetoO
 	}
 
 	// PARENTHETICAL decoration is SER-PAREN's whole subject - see vetoSeriesDecoration.
-	if reason, vetoed := vetoSeriesDecoration(group, sides, target); vetoed && !decorationsRestate(group, o.restatedOrdering) {
+	if reason, vetoed := vetoSeriesDecoration(group, sides, target); vetoed {
 		out = append(out, reason)
 	}
 	return out
 }
 
 // decorationsRestate reports whether every parenthetical in the group is an ordering
-// qualifier naming ordering - the model ordering the survivor STATES in its field - so
-// no decoration says anything the surviving record does not. An empty ordering never
-// restates anything, and neither does a decoration that is not one ordering group
-// (an edition, an author disambiguator, two groups at once).
-func decorationsRestate(group []seriesKeys, ordering string) bool {
+// qualifier naming exactly the ordering the TARGET states in its field - so no
+// decoration says anything the surviving record does not ("The Chronicles of Narnia
+// (Author's Preferred Order)" stating ordering=recommended, beside a plain "Chronicles
+// of Narnia"). A target stating no ordering never makes a decoration redundant, and
+// neither is a decoration that is not one ordering group (an edition, an author
+// disambiguator, two groups at once).
+func decorationsRestate(group []seriesKeys, target string) bool {
+	var ordering string
+	for _, k := range group {
+		if k.series.ID == target {
+			ordering = k.series.Ordering
+		}
+	}
 	if ordering == "" {
 		return false
 	}
@@ -315,6 +313,13 @@ func decorationsRestate(group []seriesKeys, ordering string) bool {
 // Any other one-sided decoration still vetoes, even where nothing moves: an edition, an
 // author or any other qualifier says something about the series that the plain name
 // does not.
+//
+// And none of it applies when every decoration only RESTATES the target's own stated
+// ordering field (decorationsRestate): "The Chronicles of Narnia (Author's Preferred
+// Order)" stating ordering=recommended, or "Ranger's Apprentice (published order)" beside
+// a "Ranger's Apprentice" stating publication, says nothing the survivor does not.
+// Measured when it was pushed in here from the family folds' caller option: no
+// whole-group record on the 282,027-work tree moved.
 func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string) (string, bool) {
 	var decorated []string
 	plain := 0
@@ -328,7 +333,7 @@ func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string)
 		classes[decorClass(k)] = true
 	}
 	switch {
-	case len(decorated) == 0:
+	case len(decorated) == 0 || decorationsRestate(group, target):
 		return "", false
 	case len(classes) >= 2:
 		return truncateList(decorated, 4) + " carry different parenthetical decorations: that decoration is what " +

@@ -92,6 +92,15 @@ func seriesSideOf(ix *index, s *model.Series) seriesSide {
 	return side
 }
 
+// positions maps each member work of a side to its position there.
+func (s seriesSide) positions() map[string]string {
+	at := make(map[string]string, len(s.members))
+	for _, m := range s.members {
+		at[m.work] = m.position
+	}
+	return at
+}
+
 // splitSides separates the cluster's sides into the proposed survivor and the spellings
 // that would be retired into it. The vetoes that ask a directional question - what does
 // folding THIS side into THAT one assert - need the split; the symmetric ones do not.
@@ -394,12 +403,22 @@ func memberPositions(s seriesSide) []string {
 // It costs NONE of the 69 confirmed-correct proposals: 55 of them are the exact
 // subset-agree shape (every loser membership already in the target, same slot) and the
 // other 14 add memberships to free positions.
+//
+// One disagreement is classified apart: a loser STATING the target's ordering that lists
+// only the target's works in the same relative order under other numbers
+// (renumberedOnto). Its reason opens with renumberedVeto, which is how SER-DUP's
+// family-renumbered fold (seriesfamily.go) tells it from every other disagreement.
 func vetoSeriesOrderingDisagrees(sides []seriesSide, targetID string) (string, bool) {
 	target, losers, ok := splitSides(sides, targetID)
 	if !ok {
 		return "", false
 	}
 	for _, l := range losers {
+		if renumberedOnto(target, l) {
+			return fmt.Sprintf("%s%s states the %s order %s states and lists only its works, in the same relative order, "+
+				"under other numbers: two numberings are not one series", renumberedVeto, l.series.ID,
+				statedOrdering(l.series), target.series.ID), true
+		}
 		for _, a := range target.members {
 			for _, b := range l.members {
 				switch {
@@ -419,14 +438,14 @@ func vetoSeriesOrderingDisagrees(sides []seriesSide, targetID string) (string, b
 	return "", false
 }
 
+// renumberedVeto opens the ordering-agreement reason for a renumbering.
+const renumberedVeto = "two numberings of one order: "
+
 // foldMovesNothing reports whether every membership of a loser is already in the target
 // at the same slot, so folding it changes no ordering - the pure duplicate-spelling
 // retirement this class exists for.
 func foldMovesNothing(target, loser seriesSide) bool {
-	at := make(map[string]string, len(target.members))
-	for _, m := range target.members {
-		at[m.work] = m.position
-	}
+	at := target.positions()
 	for _, m := range loser.members {
 		pos, held := at[m.work]
 		if !held || !importer.SameSlot(pos, m.position) {

@@ -47,7 +47,7 @@ func TestReviewedFamilyFoldsReachMetarepair(t *testing.T) {
 	}
 	var decisions []map[string]any
 	for _, fd := range audit.Analyze(load).Findings(audit.ClassSeriesDup) {
-		if fd.Subclass != "family-spelling" && fd.Subclass != "family-renumbered" {
+		if fd.Subclass != audit.SubclassFamilySpelling && fd.Subclass != audit.SubclassFamilyRenumbered {
 			continue
 		}
 		p := fd.Propose

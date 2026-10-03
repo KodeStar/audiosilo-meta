@@ -33,47 +33,69 @@ import (
 // shape whose head is the twin's own base is refused outright.
 const serDupTwin = "ordering-twin"
 
-// detectOrderingTwins adds the ordering-twin proposals to SER-DUP's findings.
+// detectOrderingTwins adds the ordering-twin proposals to SER-DUP's findings. The twin
+// is a candidate generator over foldOnto, the family folds' own pair judgement, with
+// the verdict forced advisory.
 func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 	grouped := map[string]int{}
 	for _, k := range keys {
 		grouped[k.tight]++
 	}
-	// Each name's franchise key, folded once: the 45k-series catalogue is walked twice.
-	franchise := make(map[string]string, len(keys))
-	for _, k := range keys {
-		franchise[k.series.ID] = titlerule.SeriesFranchiseKey(k.series.Name)
+	// ONE pass over the catalogue keeps what either side of a twin must be - a series
+	// stating an ordering that is no variant - so the franchise key, the sub-series head
+	// and the stated ordering are computed for those few alone, once each.
+	type ordered struct {
+		k                seriesKeys
+		ordering         string
+		franchise        string
+		headKey, baseKey string
 	}
-	byFranchise, _ := groupBy(keys, func(k seriesKeys) string { return franchise[k.series.ID] })
-	for _, o := range keys {
-		s := o.series
-		ordering := statedOrdering(o)
-		if ordering == "" || s.OrderingOf != "" || len(ix.variantsOf[s.ID]) > 0 || grouped[o.tight] > 1 {
+	var cands []ordered
+	for _, k := range keys {
+		if k.series.OrderingOf != "" {
 			continue
 		}
-		bucket := byFranchise[franchise[s.ID]]
-		if len(bucket) < 2 {
+		o := statedOrdering(k.series)
+		if o == "" {
 			continue
 		}
-		own := seriesSideOf(ix, s)
+		base := titlerule.ReadSeriesQualifiers(k.series.Name).Base
+		c := ordered{k: k, ordering: o, franchise: titlerule.SeriesFranchiseKey(k.series.Name), baseKey: titlerule.SeriesKey(base)}
+		if head, _, found := strings.Cut(base, ":"); found {
+			c.headKey = titlerule.SeriesKey(head)
+		}
+		cands = append(cands, c)
+	}
+	byFranchise, _ := groupBy(cands, func(c ordered) string { return c.franchise })
+	for _, o := range cands {
+		s := o.k.series
+		if len(ix.variantsOf[s.ID]) > 0 || grouped[o.k.tight] > 1 {
+			continue
+		}
 		var twins []seriesKeys
-		for _, t := range bucket {
-			if t.series.ID == s.ID || t.series.OrderingOf != "" || statedOrdering(t) != ordering || subSeriesOf(s.Name, t.series.Name) {
-				continue
+		for _, t := range byFranchise[o.franchise] {
+			// A "<parent>: <sub-series>" name headed by the twin's own base is its sub-series.
+			if t.k.series.ID != s.ID && t.ordering == o.ordering && (o.headKey == "" || o.headKey != t.baseKey) {
+				twins = append(twins, t.k)
 			}
-			ts := seriesSideOf(ix, t.series)
-			if !foldMovesNothing(ts, own) || !anySamePerson(ix, ts.authors, own.authors) {
-				continue
-			}
-			if len(seriesMergeVetoesWith(ix, []seriesKeys{o, t}, t.series.ID, vetoOptions{restatedOrdering: t.series.Ordering})) > 0 {
-				continue
-			}
-			twins = append(twins, t)
 		}
-		if len(twins) != 1 {
+		if len(twins) == 0 {
 			continue
 		}
-		t := twins[0]
+		sides := map[string]seriesSide{s.ID: seriesSideOf(ix, s)}
+		authored := twins[:0]
+		for _, t := range twins {
+			ts := seriesSideOf(ix, t.series)
+			if anySamePerson(ix, ts.authors, sides[s.ID].authors) {
+				sides[t.series.ID] = ts
+				authored = append(authored, t)
+			}
+		}
+		v := foldOnto(ix, o.k, authored, sides)
+		if v.kind != foldSpelling {
+			continue
+		}
+		t := v.target
 		f.add(Finding{
 			Subclass: serDupTwin,
 			Key:      s.ID,
@@ -83,20 +105,10 @@ func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 				Target:   t.series.ID,
 				Others:   []string{s.ID},
 				Advisory: true,
-				Reason: "both state the " + ordering + " order of one franchise under two franchise words (" +
+				Reason: "both state the " + o.ordering + " order of one franchise under two franchise words (" +
 					`"` + s.Name + `" and "` + t.series.Name + `"), and ` + t.series.ID + " already holds every membership " +
 					s.ID + " holds at the same slot: confirm the two names are one franchise",
 			},
 		})
 	}
-}
-
-// subSeriesOf reports whether name has the "<parent>: <sub-series>" shape with the
-// parent spelled as the other series' own base - "Discworld: Rincewind" beside
-// "Discworld". Read over the qualifier bases, so an ordering group on either side is no
-// difference.
-func subSeriesOf(name, other string) bool {
-	head, _, found := strings.Cut(titlerule.ReadSeriesQualifiers(name).Base, ":")
-	return found && titlerule.SeriesKey(head) != "" &&
-		titlerule.SeriesKey(head) == titlerule.SeriesKey(titlerule.ReadSeriesQualifiers(other).Base)
 }

@@ -20,7 +20,7 @@ import (
 // ordering in a family are refused; a merge that promotes or moves a variant is refused
 // before anything is re-pointed).
 //
-// Field "position" is SER-DUP's family-renumbered fold (internal/audit/seriesfamily.go):
+// Field audit.FieldPosition is SER-DUP's family-renumbered fold (internal/audit/seriesfamily.go):
 // a loser stating the target's ordering under other NUMBERS. There a loser membership
 // whose work the target lists at another slot is not a conflict - the target's slot is
 // kept and the loser's number is NAMED in the notes through noteLost, the one loss
@@ -29,15 +29,12 @@ import (
 // field names a merge-series, so any other is malformed rather than ignored.
 func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 	target := fd.Propose.Target
-	renumbered := false
-	switch fd.Propose.Field {
-	case "":
-	case "position":
-		renumbered = true
-	default:
-		return refusef(CatMalformed, "merge-series names field %q; the only merge-series field is \"position\" "+
-			"(keep the target's numbering)", fd.Propose.Field)
+	if f := fd.Propose.Field; f != "" && f != audit.FieldPosition {
+		return refusef(CatMalformed, "merge-series names field %q; the only merge-series field is %q "+
+			"(keep the target's numbering)", f, audit.FieldPosition)
 	}
+	// The explicit opt-in a reviewer accepted: never inferred from the lists.
+	renumbered := fd.Propose.Field == audit.FieldPosition
 	te, sorted, loserEntries, err := t.loadCluster(pack.FamilySeries, "series", fd.Propose)
 	if err != nil {
 		return err

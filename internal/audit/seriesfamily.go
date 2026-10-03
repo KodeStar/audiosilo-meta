@@ -4,9 +4,11 @@ import (
 	"cmp"
 	"fmt"
 	"slices"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // seriesfamily.go is SER-DUP's FAMILY folds: the plain spellings inside a group the
@@ -25,7 +27,7 @@ import (
 // So every PLAIN member of such a group - one no ordering_of names or carries, no
 // translation_of touches, whose stated ordering (the field, else its name's qualifier)
 // is none or the target's, in no other language - is judged against each FAMILY member
-// as a pair, by the whole-group veto list (seriesMergeVetoesWith) plus foldMovesNothing:
+// as a pair, by the whole-group veto list (seriesMergeVetoes) plus foldMovesNothing:
 // a fold here may only RETIRE a spelling, because adding memberships to a reading order
 // is a claim about the order. A family member is the only possible target, so a
 // spelling folds onto the member it repeats, never onto another plain spelling - which
@@ -34,6 +36,9 @@ import (
 // One proposal per loser, keyed "<group>/<loser>" and naming that loser alone, so a
 // reviewed acceptance names one stable fold and never goes stale because a sibling
 // spelling landed first.
+//
+// The pair judgement is foldOnto, shared with ordering-twin (seriestwin.go): the two
+// are candidate generators over one rule.
 //
 //   - family-spelling: exactly one family member passes. Mechanical only when it is not
 //     a variant: the importer's qualifier index (internal/importer/seriesqualified.go)
@@ -54,18 +59,30 @@ import (
 //     ALWAYS-advisory merge-series with Field "position": the target's numbering stands
 //     and the loser's is dropped, each dropped number named in the repair's notes.
 const (
-	serDupFamily     = "family-spelling"
-	serDupRenumbered = "family-renumbered"
+	// SubclassFamilySpelling and SubclassFamilyRenumbered are exported because
+	// internal/repair and the integration tests name them.
+	SubclassFamilySpelling   = "family-spelling"
+	SubclassFamilyRenumbered = "family-renumbered"
+	// FieldPosition is the Field of a family-renumbered merge-series: the target's
+	// numbering stands and the loser's is dropped. internal/repair applies a
+	// merge-series naming it only on that explicit opt-in, never by inference.
+	FieldPosition = "position"
 )
+
+// hasFamilyMember is familyVetoed's cheap gate: without a member of an ordering family
+// the group has no target to fold onto, whatever vetoed it.
+func hasFamilyMember(ix *index, group []seriesKeys) bool {
+	return slices.ContainsFunc(group, func(k seriesKeys) bool { return ix.inOrderingFamily(k.series.ID) })
+}
 
 // familyVetoed reports whether a whole group's proposal is withheld for holding an
 // ordering family or a translation - the two vetoes under which a plain spelling still
 // has a fold of its own.
-func familyVetoed(ix *index, group []seriesKeys) bool {
+func familyVetoed(group []seriesKeys, sides []seriesSide) bool {
 	if _, vetoed := vetoSeriesOrderingFamily(group); vetoed {
 		return true
 	}
-	_, vetoed := vetoSeriesLanguagesDisagree(seriesSides(ix, group))
+	_, vetoed := vetoSeriesLanguagesDisagree(sides)
 	return vetoed
 }
 
@@ -78,137 +95,164 @@ func (ix *index) inOrderingFamily(id string) bool {
 
 // statedOrdering is the ordering a series states: its field, else its name's ordering
 // qualifier (the importer's own reading, titlerule.ReadSeriesQualifiers).
-func statedOrdering(k seriesKeys) string {
-	return cmp.Or(k.series.Ordering, titlerule.ReadSeriesQualifiers(k.series.Name).Ordering)
+func statedOrdering(s *model.Series) string {
+	return cmp.Or(s.Ordering, titlerule.ReadSeriesQualifiers(s.Name).Ordering)
 }
 
-// familyVerdict is what one plain spelling's pair judgements came to.
-type familyVerdict struct {
-	loser seriesKeys
-	// passers are the family members it folds onto as a pure retirement.
+// foldKind is what one loser's pair judgements came to.
+type foldKind int
+
+const (
+	foldNone       foldKind = iota // no candidate shares a slot with it
+	foldSpelling                   // exactly one candidate retires it cleanly
+	foldAmbiguous                  // several do
+	foldRenumbered                 // none does, and exactly one holds its list under other numbers
+	foldReview                     // none does: the candidate sharing the most same-slot works
+)
+
+// foldVerdict is foldOnto's answer for one loser. target is set once, by the kind:
+// the candidate it folds onto or names in a review (for foldAmbiguous, the first passer).
+type foldVerdict struct {
+	loser   seriesKeys
+	kind    foldKind
+	target  seriesKeys
 	passers []seriesKeys
-	// renumbered is the one member it is a renumbering of, when it has no passer.
-	renumbered *seriesKeys
-	// affinity is the member sharing the most same-slot works, for a review.
-	affinity *seriesKeys
 }
 
-// root is the family member the spelling resolves toward, for closesToRoot: its one
-// passer, else its renumbering target, else its affinity.
-func (v familyVerdict) root() string {
+// root is the candidate the loser resolves toward, for closesToRoot: none for an
+// ambiguous or empty verdict, which resolve toward nothing.
+func (v foldVerdict) root() string {
+	if v.kind == foldNone || v.kind == foldAmbiguous {
+		return ""
+	}
+	return v.target.series.ID
+}
+
+// foldOnto judges a loser against every candidate as a pair - eligibility, then the
+// whole veto list plus foldMovesNothing (retiresCleanly) - and returns the one verdict
+// both family-spelling and ordering-twin read. sides holds the loser's and every
+// candidate's side.
+func foldOnto(ix *index, loser seriesKeys, candidates []seriesKeys, sides map[string]seriesSide) foldVerdict {
+	v := foldVerdict{loser: loser}
+	var renumbered []seriesKeys
+	var affinity *seriesKeys
+	bestShared := 0
+	ls := sides[loser.series.ID]
+	for i, c := range candidates {
+		if !foldEligible(loser, c, sides) {
+			continue
+		}
+		cs := sides[c.series.ID]
+		clean, vetoes := retiresCleanly(ix, loser, c, sides)
+		if clean {
+			v.passers = append(v.passers, c)
+			continue
+		}
+		if len(vetoes) == 1 && strings.HasPrefix(vetoes[0], renumberedVeto) {
+			renumbered = append(renumbered, c)
+		}
+		// The affinity ladder: most same-slot works, then titlerule's own series rank.
+		if n := sameSlotWorks(cs, ls); n > 0 && (n > bestShared || n == bestShared &&
+			(titlerule.SeriesRank{Works: len(c.series.Works), ID: c.series.ID}).Better(
+				titlerule.SeriesRank{Works: len(affinity.series.Works), ID: affinity.series.ID})) {
+			bestShared, affinity = n, &candidates[i]
+		}
+	}
 	switch {
 	case len(v.passers) == 1:
-		return v.passers[0].series.ID
-	case v.renumbered != nil:
-		return v.renumbered.series.ID
-	case v.affinity != nil:
-		return v.affinity.series.ID
+		v.kind, v.target = foldSpelling, v.passers[0]
+	case len(v.passers) > 1:
+		v.kind, v.target = foldAmbiguous, v.passers[0]
+	case len(renumbered) == 1:
+		v.kind, v.target = foldRenumbered, renumbered[0]
+	case affinity != nil:
+		v.kind, v.target = foldReview, *affinity
 	}
-	return ""
+	return v
+}
+
+// retiresCleanly is THE fold test: the candidate already holds every loser membership
+// at the same slot and no veto fires. vetoes are returned for the caller that reads
+// them (a renumbering, a review).
+func retiresCleanly(ix *index, loser, c seriesKeys, sides map[string]seriesSide) (bool, []string) {
+	vetoes := seriesMergeVetoes(ix, []seriesKeys{loser, c}, c.series.ID)
+	return len(vetoes) == 0 && foldMovesNothing(sides[c.series.ID], sides[loser.series.ID]), vetoes
+}
+
+// foldEligible reports whether candidate c may be loser l's target at all: l states no
+// ordering or c's, and no stated member language disagrees.
+func foldEligible(l, c seriesKeys, sides map[string]seriesSide) bool {
+	if o := statedOrdering(l.series); o != "" && o != statedOrdering(c.series) {
+		return false
+	}
+	_, disagree := vetoSeriesLanguagesDisagree([]seriesSide{sides[l.series.ID], sides[c.series.ID]})
+	return !disagree
 }
 
 // familySpellingFolds is the family folds of one vetoed group, keyed under its key.
 // claimed are the series a mechanical same-decoration subgroup already folds; they are
-// neither a loser nor a target here. clustersOf is W-DUP's work -> cluster keys.
-func familySpellingFolds(ix *index, key string, group []seriesKeys, claimed map[string]bool, clustersOf map[string][]string) []Finding {
+// neither a loser nor a target here. sides are the group's, by id. clustersOf is W-DUP's
+// work -> cluster keys.
+func familySpellingFolds(ix *index, key string, group []seriesKeys, sides map[string]seriesSide, claimed map[string]bool, clustersOf map[string][]string) []Finding {
 	var family, plain []seriesKeys
 	for _, k := range group {
 		switch id := k.series.ID; {
 		case claimed[id]:
 		case ix.inOrderingFamily(id):
 			family = append(family, k)
-		case !ix.translationLinked[id]:
+		case !ix.translationLinked(id):
 			plain = append(plain, k)
 		}
 	}
 	if len(family) == 0 || len(plain) == 0 {
 		return nil
 	}
-	sides := map[string]seriesSide{}
-	for _, k := range append(slices.Clone(family), plain...) {
-		sides[k.series.ID] = seriesSideOf(ix, k.series)
-	}
-
-	verdicts := make([]familyVerdict, 0, len(plain))
+	verdicts := make([]foldVerdict, 0, len(plain))
 	for _, l := range plain {
-		v := familyVerdict{loser: l}
-		var renumbered []seriesKeys
-		bestShared := 0
-		for i, f := range family {
-			if !familyEligible(l, f, sides) {
-				continue
-			}
-			ls, fs := sides[l.series.ID], sides[f.series.ID]
-			pair := []seriesKeys{l, f}
-			if foldMovesNothing(fs, ls) && len(seriesMergeVetoesWith(ix, pair, f.series.ID, vetoOptions{restatedOrdering: f.series.Ordering})) == 0 {
-				v.passers = append(v.passers, f)
-				continue
-			}
-			if renumberedOnto(fs, ls, statedOrdering(l), statedOrdering(f)) &&
-				len(seriesMergeVetoesWith(ix, pair, f.series.ID, vetoOptions{restatedOrdering: f.series.Ordering, renumbered: true})) == 0 {
-				renumbered = append(renumbered, f)
-			}
-			// The affinity ladder: most same-slot works, then titlerule's own series rank.
-			if n := sameSlotWorks(fs, ls); n > 0 && (n > bestShared || n == bestShared &&
-				(titlerule.SeriesRank{Works: len(f.series.Works), ID: f.series.ID}).Better(
-					titlerule.SeriesRank{Works: len(v.affinity.series.Works), ID: v.affinity.series.ID})) {
-				bestShared, v.affinity = n, &family[i]
-			}
+		verdicts = append(verdicts, foldOnto(ix, l, family, sides))
+	}
+	// An ambiguity is settled against the verdicts as JUDGED, so no settlement depends
+	// on the order another was settled in.
+	settled := slices.Clone(verdicts)
+	for i, v := range verdicts {
+		if v.kind != foldAmbiguous {
+			continue
 		}
-		if len(v.passers) == 0 && len(renumbered) == 1 {
-			v.renumbered = &renumbered[0]
+		if root, ok := closesToRoot(v, verdicts, sides); ok {
+			settled[i].kind, settled[i].target = foldSpelling, root
 		}
-		verdicts = append(verdicts, v)
 	}
 
 	var out []Finding
-	for _, v := range verdicts {
-		l := v.loser
-		fd := Finding{Subclass: serDupFamily, Key: key + "/" + l.series.ID}
+	for i, v := range settled {
+		l, t := v.loser, v.target
+		fd := Finding{Subclass: SubclassFamilySpelling, Key: key + "/" + l.series.ID}
 		notes := []string{"ordering family in this group: " + truncateList(seriesIDs(family), 6)}
-		var target seriesKeys
-		switch {
-		case len(v.passers) == 1:
-			target = v.passers[0]
-			fd.Propose = familySpellingProposal(target, l)
-		case len(v.passers) > 1:
-			if root, ok := closesToRoot(v, verdicts, sides); ok {
-				target = root
-				fd.Propose = familySpellingProposal(target, l)
-				fd.Propose.Reason += "; several orderings hold its list, and the spelling that contains it resolves to " + root.series.ID
-				break
+		switch v.kind {
+		case foldSpelling:
+			fd.Propose = familySpellingProposal(t, l)
+			if verdicts[i].kind == foldAmbiguous {
+				fd.Propose.Reason += "; several orderings hold its list, and the spelling that contains it resolves to " + t.series.ID
 			}
-			target = v.passers[0]
-			fd.Propose = Proposal{Op: OpReview, Target: target.series.ID, Others: []string{l.series.ID}, Advisory: true,
+		case foldAmbiguous:
+			fd.Propose = Proposal{Op: OpReview, Target: t.series.ID, Others: []string{l.series.ID}, Advisory: true,
 				Reason: fmt.Sprintf("%s repeats the list of %s alike, slot for slot: which reading order the plain name means is a human's call",
 					l.series.ID, truncateList(seriesIDs(v.passers), 4))}
-		case v.renumbered != nil:
-			target = *v.renumbered
-			fd.Subclass = serDupRenumbered
-			fd.Propose = renumberedProposal(sides[target.series.ID], sides[l.series.ID], statedOrdering(target))
-		case v.affinity != nil:
-			target = *v.affinity
+		case foldRenumbered:
+			fd.Subclass = SubclassFamilyRenumbered
+			fd.Propose = renumberedProposal(sides[t.series.ID], sides[l.series.ID], statedOrdering(t.series))
+		case foldReview:
 			var conflicts []string
-			fd.Propose, conflicts = familyReview(ix, target, l, sides, clustersOf)
+			fd.Propose, conflicts = familyReview(ix, t, l, sides, clustersOf)
 			notes = append(notes, conflicts...)
 		default:
 			continue // nothing in the family shares a slot with it: no evidence it is one of them
 		}
-		fd.Series = []SeriesRef{ix.seriesRef(target.series), ix.seriesRef(l.series)}
+		fd.Series = []SeriesRef{ix.seriesRef(t.series), ix.seriesRef(l.series)}
 		fd.Notes = notes
 		out = append(out, fd)
 	}
 	return out
-}
-
-// familyEligible reports whether family member f may be a plain spelling l's target
-// at all: l states no ordering or f's, and no stated member language disagrees.
-func familyEligible(l, f seriesKeys, sides map[string]seriesSide) bool {
-	if o := statedOrdering(l); o != "" && o != statedOrdering(f) {
-		return false
-	}
-	_, disagree := vetoSeriesLanguagesDisagree([]seriesSide{sides[l.series.ID], sides[f.series.ID]})
-	return !disagree
 }
 
 // familySpellingProposal is the fold of plain spelling l onto family member t:
@@ -238,7 +282,7 @@ func familySpellingProposal(t, l seriesKeys) Proposal {
 // number alike; "The Kingsbridge Novels", which holds those two and two more, resolves
 // to the chronological "Kingsbridge" - so the abridged spelling folds there, and the two
 // spellings close onto one root rather than onto two orders.
-func closesToRoot(v familyVerdict, all []familyVerdict, sides map[string]seriesSide) (seriesKeys, bool) {
+func closesToRoot(v foldVerdict, all []foldVerdict, sides map[string]seriesSide) (seriesKeys, bool) {
 	var roots []string
 	for _, o := range all {
 		if o.loser.series.ID == v.loser.series.ID || !foldMovesNothing(sides[o.loser.series.ID], sides[v.loser.series.ID]) {
@@ -265,7 +309,7 @@ func closesToRoot(v familyVerdict, all []familyVerdict, sides map[string]seriesS
 // stands between the two lists. conflicts are the per-slot notes.
 func familyReview(ix *index, t, l seriesKeys, sides map[string]seriesSide, clustersOf map[string][]string) (Proposal, []string) {
 	ts, ls := sides[t.series.ID], sides[l.series.ID]
-	vetoes := seriesMergeVetoesWith(ix, []seriesKeys{l, t}, t.series.ID, vetoOptions{restatedOrdering: t.series.Ordering})
+	vetoes := seriesMergeVetoes(ix, []seriesKeys{l, t}, t.series.ID)
 	var conflicts, clusterKeys []string
 	for _, a := range ts.members {
 		for _, b := range ls.members {
@@ -284,12 +328,9 @@ func familyReview(ix *index, t, l seriesKeys, sides map[string]seriesSide, clust
 	}
 	if len(vetoes) == 0 {
 		var added []string
-		held := map[string]bool{}
-		for _, m := range ts.members {
-			held[m.work] = true
-		}
+		held := ts.positions()
 		for _, m := range ls.members {
-			if !held[m.work] {
+			if _, ok := held[m.work]; !ok {
 				added = append(added, m.work+"@"+m.position)
 			}
 		}
@@ -306,10 +347,7 @@ func familyReview(ix *index, t, l seriesKeys, sides map[string]seriesSide, clust
 
 // sameSlotWorks counts the loser's memberships the target holds at the same slot.
 func sameSlotWorks(target, loser seriesSide) int {
-	at := make(map[string]string, len(target.members))
-	for _, m := range target.members {
-		at[m.work] = m.position
-	}
+	at := target.positions()
 	n := 0
 	for _, m := range loser.members {
 		if pos, held := at[m.work]; held && importer.SameSlot(pos, m.position) {
@@ -319,23 +357,26 @@ func sameSlotWorks(target, loser seriesSide) int {
 	return n
 }
 
-// renumberedOnto reports whether a loser stating the target's ordering is the target's
-// list under other NUMBERS: every work it lists the target lists, the two agree on their
-// relative order (the loser's members sorted by its own positions sit at non-decreasing
-// positions in the target), and at least one number differs - which is what separates it
-// from a pure retirement. Positions are read through importer.PositionSpan, the
-// package's one position grammar; a position it rejects decides nothing.
-func renumberedOnto(target, loser seriesSide, loserOrdering, targetOrdering string) bool {
-	if loserOrdering == "" || loserOrdering != targetOrdering || len(loser.members) == 0 {
+// renumberedOnto reports whether a loser stating the target's ordering (statedOrdering,
+// both sides) is the target's list under other NUMBERS: every work it lists the target
+// lists, the two agree on their relative order (the loser's members sorted by its own
+// positions sit at non-decreasing positions in the target), and at least one number
+// differs - which is what separates it from a pure retirement. Positions are read
+// through importer.PositionSpan, the package's one position grammar; a position it
+// rejects decides nothing. vetoSeriesOrderingDisagrees asks it, so a renumbering is a
+// veto of its own, distinguishable by renumberedVeto.
+func renumberedOnto(target, loser seriesSide) bool {
+	ordering := statedOrdering(loser.series)
+	if ordering == "" || ordering != statedOrdering(target.series) || len(loser.members) == 0 {
 		return false
 	}
 	at := make(map[string][2]float64, len(target.members))
-	for _, m := range target.members {
-		span, ok := importer.PositionSpan(m.position)
+	for w, pos := range target.positions() {
+		span, ok := importer.PositionSpan(pos)
 		if !ok {
 			return false
 		}
-		at[m.work] = span
+		at[w] = span
 	}
 	type pair struct{ own, there [2]float64 }
 	pairs := make([]pair, 0, len(loser.members))
@@ -363,10 +404,7 @@ func renumberedOnto(target, loser seriesSide, loserOrdering, targetOrdering stri
 
 // renumberedProposal is the always-advisory fold keeping the target's numbering.
 func renumberedProposal(target, loser seriesSide, ordering string) Proposal {
-	at := make(map[string]string, len(target.members))
-	for _, m := range target.members {
-		at[m.work] = m.position
-	}
+	at := target.positions()
 	var differ []string
 	for _, m := range loser.members {
 		if pos := at[m.work]; !importer.SameSlot(pos, m.position) {
@@ -378,7 +416,7 @@ func renumberedProposal(target, loser seriesSide, ordering string) Proposal {
 		Op:       OpMergeSeries,
 		Target:   target.series.ID,
 		Others:   []string{loser.series.ID},
-		Field:    "position",
+		Field:    FieldPosition,
 		Advisory: true,
 		Reason: fmt.Sprintf("%s states the same %s order as %s and lists only its works, in the same relative order, under other "+
 			"numbers (%s): a fold keeps %s's numbering and drops this one's - confirm which numbering is the publisher's",

@@ -11,14 +11,13 @@ package titlerule
 // Universe" beside a different "Expanse") that a key folding them away can only ever
 // nominate a pair for a human.
 
-// franchiseWords are the closed list of trailing franchise words the key peels beyond
-// SeriesKey's own decoration suffixes (which already cover "series", "novel(s)" and
-// "books"). Trailing only: a franchise word inside a name is part of the name.
-var franchiseWords = []string{" universe", " saga"}
+// franchiseSuffixes are SeriesKey's decoration suffixes (which already cover "series",
+// "novel(s)" and "books") plus the closed list of trailing franchise words: " universe"
+// and the one suffix SeriesKey holds back, sagaSuffix. Trailing only: a franchise word
+// inside a name is part of the name.
+var franchiseSuffixes = append(append(append([]string{}, seriesDecorSuffixes...), " universe"), sagaSuffix...)
 
-// SeriesFranchiseKey is SeriesKey with franchiseWords peeled as well: parentheticals
-// removed, a leading article dropped, every trailing decoration or franchise word
-// peeled, then folded.
-func SeriesFranchiseKey(name string) string {
-	return seriesKey(name, append(append([]string{}, seriesDecorSuffixes...), franchiseWords...))
-}
+// SeriesFranchiseKey is SeriesKey with the franchise words peeled as well:
+// parentheticals removed, a leading article dropped, every trailing decoration or
+// franchise word peeled, then folded.
+func SeriesFranchiseKey(name string) string { return seriesKey(name, franchiseSuffixes) }

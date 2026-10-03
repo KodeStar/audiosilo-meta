@@ -58,7 +58,7 @@ func TestFamilySpellingFoldsPlainListOntoMatchingOrdering(t *testing.T) {
 	})))
 	assertProposalsConsistent(t, rep)
 	assertVetoed(t, serDupMerge(t, rep), "two orderings of the franchise")
-	fd := oneFamilyRecord(t, rep, serDupFamily, "dh")
+	fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh")
 	assertMechanical(t, fd)
 	if fd.Propose.Target != "dh-pub" || fd.Key != "dragonheart/dh" {
 		t.Errorf("record = %s %+v, want dh folded onto the primary dh-pub under dragonheart/dh", fd.Key, fd.Propose)
@@ -72,7 +72,7 @@ func TestFamilySpellingOntoAVariantIsAdvisory(t *testing.T) {
 		"series/dh/dh.json": seriesJSON(t, "dh", "Dragon Heart", "three@1", "one@2", "two@3", "four@4"),
 	})))
 	assertProposalsConsistent(t, rep)
-	fd := oneFamilyRecord(t, rep, serDupFamily, "dh")
+	fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh")
 	if fd.Propose.Op != OpMergeSeries || fd.Propose.Target != "dh-chrono" {
 		t.Fatalf("proposal = %+v, want dh folded onto the variant dh-chrono", fd.Propose)
 	}
@@ -97,7 +97,7 @@ func TestFamilySpellingIsReviewWhileAWorkDuplicateHoldsTheSlot(t *testing.T) {
 	})
 	rep := runFixture(t, files)
 	assertProposalsConsistent(t, rep)
-	fd := oneFamilyRecord(t, rep, serDupFamily, "dh")
+	fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh")
 	if fd.Propose.Op != OpReview || fd.Propose.Target != "dh-pub" {
 		t.Fatalf("proposal = %+v, want a review naming dh-pub", fd.Propose)
 	}
@@ -130,7 +130,7 @@ func TestFamilySpellingFoldsAbridgedSubsetOntoUndecoratedVariant(t *testing.T) {
 	}, abridgedRecordings(t, true, "two", "three")))
 	rep := runFixture(t, files)
 	assertProposalsConsistent(t, rep)
-	fd := oneFamilyRecord(t, rep, serDupFamily, "kb-abridged")
+	fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "kb-abridged")
 	if fd.Propose.Op != OpMergeSeries || fd.Propose.Target != "kb" || !fd.Propose.Advisory {
 		t.Fatalf("proposal = %+v, want an advisory fold onto the variant kb", fd.Propose)
 	}
@@ -154,19 +154,19 @@ func TestFamilySpellingClosesToTheRoot(t *testing.T) {
 			"series/dh/dh-books.json": seriesJSON(t, "dh-books", "Dragon Heart Books", "one@1", "two@2", "three@3", "four@4"),
 		})))
 		assertProposalsConsistent(t, rep)
-		fd := oneFamilyRecord(t, rep, serDupFamily, "dh-novels")
+		fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-novels")
 		if fd.Propose.Op != OpMergeSeries || fd.Propose.Target != "dh-chrono" {
 			t.Fatalf("proposal = %+v, want dh-novels closed onto dh-chrono, the root dh-books resolves to", fd.Propose)
 		}
 		assertVetoed(t, fd, "resolves to dh-chrono")
 		// The container itself adds a membership, so it is only ever a review.
-		if c := oneFamilyRecord(t, rep, serDupFamily, "dh-books"); c.Propose.Op != OpReview || c.Propose.Target != "dh-chrono" {
+		if c := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-books"); c.Propose.Op != OpReview || c.Propose.Target != "dh-chrono" {
 			t.Errorf("container = %+v, want a review naming dh-chrono", c.Propose)
 		}
 	})
 	t.Run("no container is a review", func(t *testing.T) {
 		rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, family(t)))
-		fd := oneFamilyRecord(t, rep, serDupFamily, "dh-novels")
+		fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-novels")
 		if fd.Propose.Op != OpReview {
 			t.Fatalf("proposal = %+v, want a review", fd.Propose)
 		}
@@ -187,7 +187,7 @@ func TestFamilySpellingNeverFoldsAFamilyMemberOrTranslation(t *testing.T) {
 	}))
 	rep := runFixture(t, files)
 	assertProposalsConsistent(t, rep)
-	for _, sub := range []string{serDupFamily, serDupRenumbered} {
+	for _, sub := range []string{SubclassFamilySpelling, SubclassFamilyRenumbered} {
 		for _, fd := range subclassOf(t, rep, ClassSeriesDup, sub) {
 			t.Errorf("unexpected %s record: %s %+v", sub, fd.Key, fd.Propose)
 		}
@@ -201,7 +201,7 @@ func TestFamilySpellingRefusesADifferentStatedOrdering(t *testing.T) {
 		"series/dh/dh.json": withOrdering(t, seriesJSON(t, "dh", "Dragon Heart",
 			"one@1", "two@2", "three@3", "four@4"), "chronological"),
 	})))
-	for _, fd := range familyRecords(t, rep, serDupFamily, "dh") {
+	for _, fd := range familyRecords(t, rep, SubclassFamilySpelling, "dh") {
 		if fd.Propose.Target == "dh-pub" {
 			t.Errorf("a chronological spelling was judged against the publication order: %+v", fd.Propose)
 		}
@@ -218,9 +218,9 @@ func TestFamilyRenumberedKeepsTheTargetsNumbering(t *testing.T) {
 			"one@1", "two@2", "four@3"), "publication"),
 	})))
 	assertProposalsConsistent(t, rep)
-	fd := oneFamilyRecord(t, rep, serDupRenumbered, "ra-pub")
+	fd := oneFamilyRecord(t, rep, SubclassFamilyRenumbered, "ra-pub")
 	p := fd.Propose
-	if p.Op != OpMergeSeries || p.Target != "ra" || p.Field != "position" || !p.Advisory {
+	if p.Op != OpMergeSeries || p.Target != "ra" || p.Field != FieldPosition || !p.Advisory {
 		t.Fatalf("proposal = %+v, want an advisory position-field fold onto ra", p)
 	}
 	assertVetoed(t, fd, "four at 3 here, 4 in ra")
@@ -233,10 +233,10 @@ func TestFamilyRenumberedRefusesALoserOutOfOrder(t *testing.T) {
 		"series/ra/ra-pub.json": withOrdering(t, seriesJSON(t, "ra-pub", "Ranger's Apprentice (published order)",
 			"one@1", "four@2", "two@3"), "publication"),
 	})))
-	if got := familyRecords(t, rep, serDupRenumbered, "ra-pub"); len(got) != 0 {
+	if got := familyRecords(t, rep, SubclassFamilyRenumbered, "ra-pub"); len(got) != 0 {
 		t.Fatalf("an out-of-order spelling was proposed as a renumbering: %+v", got)
 	}
-	if fd := oneFamilyRecord(t, rep, serDupFamily, "ra-pub"); fd.Propose.Op != OpReview {
+	if fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "ra-pub"); fd.Propose.Op != OpReview {
 		t.Errorf("proposal = %+v, want a review", fd.Propose)
 	}
 }
