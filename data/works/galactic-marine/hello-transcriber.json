@@ -6165,7 +6165,9 @@
       ],
       "genres": [
         "espionage",
+        "horror",
         "mystery",
+        "politics",
         "thriller-suspense"
       ],
       "id": "hells-corner",
@@ -6957,32 +6959,7 @@
             }
           ],
           "work": "hells-corner"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B004889IW6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hell's Corner"
-    },
-    "hells-corner-the-camel-club-book-5": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "david-baldacci"
-      ],
-      "genres": [
-        "espionage",
-        "horror",
-        "politics",
-        "thriller-suspense"
-      ],
-      "id": "hells-corner-the-camel-club-book-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "orlagh-cassidy-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7010,17 +6987,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "hells-corner-the-camel-club-book-5"
+          "work": "hells-corner"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B004889IW6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DLBKCGCR",
           "type": "libex-import"
         }
       ],
-      "title": "Hell's Corner: The Camel Club Book 5"
+      "title": "Hell's Corner"
     },
     "hells-diva": {
       "added_at": "2026-07-29",

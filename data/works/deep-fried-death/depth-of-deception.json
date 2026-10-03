@@ -887,6 +887,7 @@
       "genres": [
         "literary-fiction",
         "mystery",
+        "police-procedural",
         "thriller-suspense",
         "westerns"
       ],
@@ -1032,32 +1033,7 @@
             }
           ],
           "work": "depth-of-winter"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07FDNZ95S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Depth of Winter"
-    },
-    "depth-of-winter-international-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "craig-johnson"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery",
-        "police-procedural",
-        "westerns"
-      ],
-      "id": "depth-of-winter-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "george-guidall-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1171,17 +1147,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "depth-of-winter-international-edition"
+          "work": "depth-of-winter"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07FDNZ95S",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1705014690",
           "type": "libex-import"
         }
       ],
-      "title": "Depth of Winter: International Edition"
+      "title": "Depth of Winter"
     },
     "depth-perception": {
       "added_at": "2026-07-29",

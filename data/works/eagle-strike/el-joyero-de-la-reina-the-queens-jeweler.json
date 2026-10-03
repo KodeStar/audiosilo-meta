@@ -1281,6 +1281,7 @@
       ],
       "genres": [
         "horror",
+        "literary-fiction",
         "occult",
         "romance",
         "romantic-suspense",
@@ -1803,34 +1804,7 @@
             }
           ],
           "work": "el-juego-del-angel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8408217690",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Juego del Ángel"
-    },
-    "el-juego-del-angel-carlos-ruiz-zafon": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "carlos-ruiz-zafon"
-      ],
-      "genres": [
-        "horror",
-        "literary-fiction",
-        "occult",
-        "romance",
-        "romantic-suspense",
-        "thriller-suspense"
-      ],
-      "id": "el-juego-del-angel-carlos-ruiz-zafon",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jordi-boixaderas-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1857,17 +1831,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-juego-del-angel-carlos-ruiz-zafon"
+          "work": "el-juego-del-angel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8408217690",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09Z71ZZRK",
           "type": "libex-import"
         }
       ],
-      "title": "El juego del ángel"
+      "title": "El Juego del Ángel"
     },
     "el-juego-del-castigo-a-game-of-retribution": {
       "added_at": "2026-08-02",

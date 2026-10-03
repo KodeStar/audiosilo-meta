@@ -707,6 +707,7 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
+        "sword-sorcery",
         "young-adult"
       ],
       "id": "dungeons-dragons-honor-among-thieves-the-druids-call",
@@ -719,6 +720,10 @@
           "asin": [
             {
               "asin": "B0BV31H838",
+              "region": "us"
+            },
+            {
+              "asin": "B0BH9CRXPR",
               "region": "us"
             }
           ],
@@ -884,6 +889,11 @@
               "imported_at": "2026-07-30",
               "ref": "B0BV31H838",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BH9CRXPR",
+              "type": "libex-import"
             }
           ],
           "work": "dungeons-dragons-honor-among-thieves-the-druids-call"
@@ -899,197 +909,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0BV31H838",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dungeons & Dragons: Honor Among Thieves: The Druid's Call"
-    },
-    "dungeons-dragons-honor-among-thieves-the-druids-call-e-k-johnston": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "e-k-johnston"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "sword-sorcery",
-        "young-adult"
-      ],
-      "id": "dungeons-dragons-honor-among-thieves-the-druids-call-e-k-johnston",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emily-lawrence-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BH9CRXPR",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 23266,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 11470,
-              "start_ms": 23266,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 19551,
-              "start_ms": 34736,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 1277120,
-              "start_ms": 54287,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1381610,
-              "start_ms": 1331407,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 921576,
-              "start_ms": 2713017,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1551650,
-              "start_ms": 3634593,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 879479,
-              "start_ms": 5186243,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1159441,
-              "start_ms": 6065722,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1024998,
-              "start_ms": 7225163,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1872991,
-              "start_ms": 8250161,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 825260,
-              "start_ms": 10123152,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1127143,
-              "start_ms": 10948412,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 843395,
-              "start_ms": 12075555,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1284574,
-              "start_ms": 12918950,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 574090,
-              "start_ms": 14203524,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 934765,
-              "start_ms": 14777614,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 699385,
-              "start_ms": 15712379,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1301966,
-              "start_ms": 16411764,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 738278,
-              "start_ms": 17713730,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1012041,
-              "start_ms": 18452008,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1524204,
-              "start_ms": 19464049,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1355952,
-              "start_ms": 20988253,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1103296,
-              "start_ms": 22344205,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 788085,
-              "start_ms": 23447501,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 811467,
-              "start_ms": 24235586,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 85170,
-              "start_ms": 25047053,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 50456,
-              "start_ms": 25132223,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81BmxopfPAL.jpg",
-          "id": "emily-lawrence-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emily-lawrence"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2023-02-28",
-          "runtime_min": 419,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BH9CRXPR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dungeons-dragons-honor-among-thieves-the-druids-call-e-k-johnston"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BH9CRXPR",

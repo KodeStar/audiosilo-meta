@@ -5944,6 +5944,7 @@
       "genres": [
         "literary-fiction",
         "mystery",
+        "police-procedural",
         "thriller-suspense",
         "westerns"
       ],
@@ -6074,32 +6075,7 @@
             }
           ],
           "work": "an-obvious-fact"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01K23ZRXY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "An Obvious Fact"
-    },
-    "an-obvious-fact-international-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "craig-johnson"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery",
-        "police-procedural",
-        "westerns"
-      ],
-      "id": "an-obvious-fact-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "george-guidall-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6213,17 +6189,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "an-obvious-fact-international-edition"
+          "work": "an-obvious-fact"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01K23ZRXY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1705014682",
           "type": "libex-import"
         }
       ],
-      "title": "An Obvious Fact: International Edition"
+      "title": "An Obvious Fact"
     },
     "an-occasionally-happy-family": {
       "added_at": "2026-07-29",

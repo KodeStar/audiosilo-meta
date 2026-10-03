@@ -9954,7 +9954,8 @@
         "george-washington"
       ],
       "genres": [
-        "history"
+        "history",
+        "politics"
       ],
       "id": "george-washington-farewell-address",
       "language": "en",
@@ -10014,12 +10015,52 @@
             }
           ],
           "work": "george-washington-farewell-address"
+        },
+        "john-greenman-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00K1J621G",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3041675,
+              "start_ms": 0,
+              "title": "George Washington's Farewell Address"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81aJti9G-EL.jpg",
+          "id": "john-greenman-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-greenman"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2014-05-01",
+          "runtime_min": 50,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00K1J621G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "george-washington-farewell-address"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00AQ4F762",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00K1J621G",
           "type": "libex-import"
         }
       ],
@@ -11458,64 +11499,6 @@
         }
       ],
       "title": "George Washington, Volume 7"
-    },
-    "george-washingtons-farewell-address": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "george-washington"
-      ],
-      "genres": [
-        "history",
-        "politics"
-      ],
-      "id": "george-washingtons-farewell-address",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-greenman-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00K1J621G",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3041675,
-              "start_ms": 0,
-              "title": "George Washington's Farewell Address"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81aJti9G-EL.jpg",
-          "id": "john-greenman-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-greenman"
-          ],
-          "publisher": "Spoken Realms",
-          "release_date": "2014-05-01",
-          "runtime_min": 50,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00K1J621G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "george-washingtons-farewell-address"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00K1J621G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "George Washington's Farewell Address"
     },
     "george-washingtons-military-genius": {
       "added_at": "2026-07-29",

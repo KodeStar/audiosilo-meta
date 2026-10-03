@@ -201,9 +201,12 @@
         "kate-crew"
       ],
       "genres": [
+        "erotica",
         "mystery",
         "romance",
-        "romantic-suspense"
+        "romantic-comedy",
+        "romantic-suspense",
+        "thriller-suspense"
       ],
       "id": "rook-rebel",
       "language": "en",
@@ -237,33 +240,7 @@
             }
           ],
           "work": "rook-rebel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0DJFT98CB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rook & Rebel"
-    },
-    "rook-rebel-kate-crew": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kate-crew"
-      ],
-      "genres": [
-        "erotica",
-        "romance",
-        "romantic-comedy",
-        "romantic-suspense",
-        "thriller-suspense"
-      ],
-      "id": "rook-rebel-kate-crew",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "lucy-rivers-2025": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -542,10 +519,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "rook-rebel-kate-crew"
+          "work": "rook-rebel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0DJFT98CB",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0FC4SP5GD",

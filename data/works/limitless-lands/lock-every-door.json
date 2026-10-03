@@ -442,19 +442,20 @@
         "goodreads": "41837243"
       }
     },
-    "lock-in-narrated-by-amber-benson": {
+    "lock-in-narrated-by-wil-wheaton": {
       "added_at": "2026-08-02",
       "authors": [
         "john-scalzi"
       ],
       "genres": [
         "cyberpunk",
+        "fantasy",
         "medicine",
         "post-apocalyptic",
         "science-fiction",
         "thriller-suspense"
       ],
-      "id": "lock-in-narrated-by-amber-benson",
+      "id": "lock-in-narrated-by-wil-wheaton",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -626,34 +627,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "lock-in-narrated-by-amber-benson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00KY6Y8PS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lock In (Narrated by Amber Benson)"
-    },
-    "lock-in-narrated-by-wil-wheaton": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-scalzi"
-      ],
-      "genres": [
-        "cyberpunk",
-        "fantasy",
-        "medicine",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "lock-in-narrated-by-wil-wheaton",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "lock-in-narrated-by-wil-wheaton"
+        },
         "wil-wheaton-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -859,6 +834,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00KYUYM14",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00KY6Y8PS",
           "type": "libex-import"
         }
       ],

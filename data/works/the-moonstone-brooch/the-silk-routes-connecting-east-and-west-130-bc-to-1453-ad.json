@@ -3389,7 +3389,9 @@
         "action-adventure",
         "childrens",
         "classics",
+        "coming-of-age",
         "fantasy",
+        "nature",
         "religious-fiction"
       ],
       "id": "the-silver-chair",
@@ -3658,6 +3660,170 @@
           ],
           "work": "the-silver-chair"
         },
+        "jeremy-northam-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTIB2",
+              "region": "us"
+            },
+            {
+              "asin": "B004EEZ256",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 21091,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1129774,
+              "start_ms": 21091,
+              "title": "One: Behind the Gym"
+            },
+            {
+              "length_ms": 1192590,
+              "start_ms": 1150865,
+              "title": "Two: Jill is Given a Task"
+            },
+            {
+              "length_ms": 1163883,
+              "start_ms": 2343455,
+              "title": "Three: The Sailing of the King"
+            },
+            {
+              "length_ms": 1220928,
+              "start_ms": 3507338,
+              "title": "Four: A Parliament of Owls"
+            },
+            {
+              "length_ms": 1158286,
+              "start_ms": 4728266,
+              "title": "Five: Puddleglum"
+            },
+            {
+              "length_ms": 1287152,
+              "start_ms": 5886552,
+              "title": "Six: The Wild Waste Lands of the North"
+            },
+            {
+              "length_ms": 1251220,
+              "start_ms": 7173704,
+              "title": "Seven: The Hill of the Strange Trenches"
+            },
+            {
+              "length_ms": 1235449,
+              "start_ms": 8424924,
+              "title": "Eight: The House of Harfang"
+            },
+            {
+              "length_ms": 1181419,
+              "start_ms": 9660373,
+              "title": "Nine: How They Discovered Something Worth Knowing"
+            },
+            {
+              "length_ms": 1290607,
+              "start_ms": 10841792,
+              "title": "Ten: Travels without the Sun"
+            },
+            {
+              "length_ms": 1261623,
+              "start_ms": 12132399,
+              "title": "Eleven: In the Dark Castle"
+            },
+            {
+              "length_ms": 1316127,
+              "start_ms": 13394022,
+              "title": "Twelve: The Queen of Underland"
+            },
+            {
+              "length_ms": 1124916,
+              "start_ms": 14710149,
+              "title": "Thirteen: Underland Without the Queen"
+            },
+            {
+              "length_ms": 1155444,
+              "start_ms": 15835065,
+              "title": "Fourteen: The Bottom of the World"
+            },
+            {
+              "length_ms": 1076796,
+              "start_ms": 16990509,
+              "title": "Fifteen: The Disappearance of Jill"
+            },
+            {
+              "length_ms": 1542318,
+              "start_ms": 18067305,
+              "title": "Sixteen: The Healing of Harms"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71aYBu-ovwL.jpg",
+          "id": "jeremy-northam-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jeremy-northam"
+          ],
+          "publisher": "HarperCollinsChildren’sBooks",
+          "release_date": "2005-08-29",
+          "runtime_min": 326,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTIB2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004EEZ256",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-silver-chair"
+        },
+        "michael-hordern-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTIBC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4338741,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3993832,
+              "start_ms": 4338741,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71aYBu-ovwL.jpg",
+          "id": "michael-hordern-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-hordern"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-09-02",
+          "runtime_min": 138,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTIBC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-silver-chair"
+        },
         "rupert-degas-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -3918,227 +4084,19 @@
           "imported_at": "2026-08-02",
           "ref": "1662182538",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Silver Chair"
-    },
-    "the-silver-chair-abridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-silver-chair-abridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-hordern-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GTIBC",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4338741,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3993832,
-              "start_ms": 4338741,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71aYBu-ovwL.jpg",
-          "id": "michael-hordern-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-hordern"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-09-02",
-          "runtime_min": 138,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GTIBC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-silver-chair-abridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GTIBC",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Silver Chair: Abridged"
-    },
-    "the-silver-chair-unabridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "the-silver-chair-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jeremy-northam-2005": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GTIB2",
-              "region": "us"
-            },
-            {
-              "asin": "B004EEZ256",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 21091,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1129774,
-              "start_ms": 21091,
-              "title": "One: Behind the Gym"
-            },
-            {
-              "length_ms": 1192590,
-              "start_ms": 1150865,
-              "title": "Two: Jill is Given a Task"
-            },
-            {
-              "length_ms": 1163883,
-              "start_ms": 2343455,
-              "title": "Three: The Sailing of the King"
-            },
-            {
-              "length_ms": 1220928,
-              "start_ms": 3507338,
-              "title": "Four: A Parliament of Owls"
-            },
-            {
-              "length_ms": 1158286,
-              "start_ms": 4728266,
-              "title": "Five: Puddleglum"
-            },
-            {
-              "length_ms": 1287152,
-              "start_ms": 5886552,
-              "title": "Six: The Wild Waste Lands of the North"
-            },
-            {
-              "length_ms": 1251220,
-              "start_ms": 7173704,
-              "title": "Seven: The Hill of the Strange Trenches"
-            },
-            {
-              "length_ms": 1235449,
-              "start_ms": 8424924,
-              "title": "Eight: The House of Harfang"
-            },
-            {
-              "length_ms": 1181419,
-              "start_ms": 9660373,
-              "title": "Nine: How They Discovered Something Worth Knowing"
-            },
-            {
-              "length_ms": 1290607,
-              "start_ms": 10841792,
-              "title": "Ten: Travels without the Sun"
-            },
-            {
-              "length_ms": 1261623,
-              "start_ms": 12132399,
-              "title": "Eleven: In the Dark Castle"
-            },
-            {
-              "length_ms": 1316127,
-              "start_ms": 13394022,
-              "title": "Twelve: The Queen of Underland"
-            },
-            {
-              "length_ms": 1124916,
-              "start_ms": 14710149,
-              "title": "Thirteen: Underland Without the Queen"
-            },
-            {
-              "length_ms": 1155444,
-              "start_ms": 15835065,
-              "title": "Fourteen: The Bottom of the World"
-            },
-            {
-              "length_ms": 1076796,
-              "start_ms": 16990509,
-              "title": "Fifteen: The Disappearance of Jill"
-            },
-            {
-              "length_ms": 1542318,
-              "start_ms": 18067305,
-              "title": "Sixteen: The Healing of Harms"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71aYBu-ovwL.jpg",
-          "id": "jeremy-northam-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jeremy-northam"
-          ],
-          "publisher": "HarperCollinsChildren’sBooks",
-          "release_date": "2005-08-29",
-          "runtime_min": 326,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GTIB2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004EEZ256",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-silver-chair-unabridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GTIB2",
           "type": "libex-import"
         }
       ],
-      "title": "The Silver Chair: Unabridged"
+      "title": "The Silver Chair"
     },
     "the-silver-city": {
       "added_at": "2026-08-01",

@@ -14910,32 +14910,7 @@
             }
           ],
           "work": "land-of-wolves"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1501998803",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Land of Wolves"
-    },
-    "land-of-wolves-international-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "craig-johnson"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery",
-        "police-procedural",
-        "westerns"
-      ],
-      "id": "land-of-wolves-international-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "george-guidall-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -15049,17 +15024,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "land-of-wolves-international-edition"
+          "work": "land-of-wolves"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1501998803",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1705014712",
           "type": "libex-import"
         }
       ],
-      "title": "Land of Wolves: International Edition"
+      "title": "Land of Wolves"
     }
   }
 }

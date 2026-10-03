@@ -9,7 +9,9 @@
         "action-adventure",
         "childrens",
         "classics",
-        "fantasy"
+        "coming-of-age",
+        "fantasy",
+        "nature"
       ],
       "id": "prince-caspian",
       "language": "en",
@@ -272,6 +274,165 @@
           ],
           "work": "prince-caspian"
         },
+        "lynn-redgrave-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GRN0A",
+              "region": "us"
+            },
+            {
+              "asin": "B004EERIE4",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22523,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 794021,
+              "start_ms": 22523,
+              "title": "One: The Island"
+            },
+            {
+              "length_ms": 1106057,
+              "start_ms": 816544,
+              "title": "Two: The Ancient Treasure House"
+            },
+            {
+              "length_ms": 748843,
+              "start_ms": 1922601,
+              "title": "Three: The Dwarf"
+            },
+            {
+              "length_ms": 1201894,
+              "start_ms": 2671444,
+              "title": "Four: The Dwarf Tells of Prince Caspian"
+            },
+            {
+              "length_ms": 1316083,
+              "start_ms": 3873338,
+              "title": "Five: Caspian’s Adventure in the Mountains"
+            },
+            {
+              "length_ms": 884238,
+              "start_ms": 5189421,
+              "title": "Six: The People that Lived in Hinding"
+            },
+            {
+              "length_ms": 1134762,
+              "start_ms": 6073659,
+              "title": "Seven: Old Narnia in Danger"
+            },
+            {
+              "length_ms": 1084253,
+              "start_ms": 7208421,
+              "title": "Eight: How They Left the Island"
+            },
+            {
+              "length_ms": 1184367,
+              "start_ms": 8292674,
+              "title": "Nine: What Lucy Saw"
+            },
+            {
+              "length_ms": 1294523,
+              "start_ms": 9477041,
+              "title": "Ten: The Return of the Lion"
+            },
+            {
+              "length_ms": 1151000,
+              "start_ms": 10771564,
+              "title": "Eleven: The Lion Roars"
+            },
+            {
+              "length_ms": 1102585,
+              "start_ms": 11922564,
+              "title": "Twelve: Sorcery and Sudden Vengeance"
+            },
+            {
+              "length_ms": 1006570,
+              "start_ms": 13025149,
+              "title": "Thirteen: The High King in Command"
+            },
+            {
+              "length_ms": 1290642,
+              "start_ms": 14031719,
+              "title": "Fourteen: How All Were Very Busy"
+            },
+            {
+              "length_ms": 1525759,
+              "start_ms": 15322361,
+              "title": "Fifteen: Aslan Makes a Door in the Air"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71TrtbKcn9L.jpg",
+          "id": "lynn-redgrave-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lynn-redgrave"
+          ],
+          "publisher": "HarperCollinsChildren’sBooks",
+          "release_date": "2005-08-29",
+          "runtime_min": 280,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GRN0A",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004EERIE4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "prince-caspian"
+        },
+        "michael-hordern-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTI9E",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4078910,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4000937,
+              "start_ms": 4078910,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71TrtbKcn9L.jpg",
+          "id": "michael-hordern-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-hordern"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-09-02",
+          "runtime_min": 134,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTI9E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "prince-caspian"
+        },
         "rupert-degas-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -522,222 +683,19 @@
           "imported_at": "2026-08-02",
           "ref": "B09CH91T6N",
           "type": "libex-import"
-        }
-      ],
-      "title": "Prince Caspian"
-    },
-    "prince-caspian-abridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "prince-caspian-abridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-hordern-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GTI9E",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4078910,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4000937,
-              "start_ms": 4078910,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71TrtbKcn9L.jpg",
-          "id": "michael-hordern-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-hordern"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-09-02",
-          "runtime_min": 134,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GTI9E",
-              "type": "libex-import"
-            }
-          ],
-          "work": "prince-caspian-abridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GTI9E",
           "type": "libex-import"
-        }
-      ],
-      "title": "Prince Caspian: Abridged"
-    },
-    "prince-caspian-unabridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy",
-        "nature"
-      ],
-      "id": "prince-caspian-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lynn-redgrave-2005": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GRN0A",
-              "region": "us"
-            },
-            {
-              "asin": "B004EERIE4",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22523,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 794021,
-              "start_ms": 22523,
-              "title": "One: The Island"
-            },
-            {
-              "length_ms": 1106057,
-              "start_ms": 816544,
-              "title": "Two: The Ancient Treasure House"
-            },
-            {
-              "length_ms": 748843,
-              "start_ms": 1922601,
-              "title": "Three: The Dwarf"
-            },
-            {
-              "length_ms": 1201894,
-              "start_ms": 2671444,
-              "title": "Four: The Dwarf Tells of Prince Caspian"
-            },
-            {
-              "length_ms": 1316083,
-              "start_ms": 3873338,
-              "title": "Five: Caspian’s Adventure in the Mountains"
-            },
-            {
-              "length_ms": 884238,
-              "start_ms": 5189421,
-              "title": "Six: The People that Lived in Hinding"
-            },
-            {
-              "length_ms": 1134762,
-              "start_ms": 6073659,
-              "title": "Seven: Old Narnia in Danger"
-            },
-            {
-              "length_ms": 1084253,
-              "start_ms": 7208421,
-              "title": "Eight: How They Left the Island"
-            },
-            {
-              "length_ms": 1184367,
-              "start_ms": 8292674,
-              "title": "Nine: What Lucy Saw"
-            },
-            {
-              "length_ms": 1294523,
-              "start_ms": 9477041,
-              "title": "Ten: The Return of the Lion"
-            },
-            {
-              "length_ms": 1151000,
-              "start_ms": 10771564,
-              "title": "Eleven: The Lion Roars"
-            },
-            {
-              "length_ms": 1102585,
-              "start_ms": 11922564,
-              "title": "Twelve: Sorcery and Sudden Vengeance"
-            },
-            {
-              "length_ms": 1006570,
-              "start_ms": 13025149,
-              "title": "Thirteen: The High King in Command"
-            },
-            {
-              "length_ms": 1290642,
-              "start_ms": 14031719,
-              "title": "Fourteen: How All Were Very Busy"
-            },
-            {
-              "length_ms": 1525759,
-              "start_ms": 15322361,
-              "title": "Fifteen: Aslan Makes a Door in the Air"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71TrtbKcn9L.jpg",
-          "id": "lynn-redgrave-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lynn-redgrave"
-          ],
-          "publisher": "HarperCollinsChildren’sBooks",
-          "release_date": "2005-08-29",
-          "runtime_min": 280,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GRN0A",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004EERIE4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "prince-caspian-unabridged"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GRN0A",
           "type": "libex-import"
         }
       ],
-      "title": "Prince Caspian: Unabridged"
+      "title": "Prince Caspian"
     },
     "prince-charles": {
       "added_at": "2026-07-29",
@@ -15673,31 +15631,7 @@
             }
           ],
           "work": "prince-of-song-sea"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BFTG3SVQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Prince of Song & Sea"
-    },
-    "prince-of-song-sea-linsey-miller": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "linsey-miller"
-      ],
-      "genres": [
-        "action-adventure",
-        "romance",
-        "young-adult"
-      ],
-      "id": "prince-of-song-sea-linsey-miller",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "dan-bittner-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15851,10 +15785,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "prince-of-song-sea-linsey-miller"
+          "work": "prince-of-song-sea"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BFTG3SVQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F8F5R1JH",
