@@ -10958,24 +10958,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002V5CPZA",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "darwins-children"
         },
-        {
-          "position": "1",
-          "work": "darwins-radio"
-        }
-      ]
-    },
-    "darwin-abridged": {
-      "id": "darwin-abridged",
-      "license": "CC0-1.0",
-      "name": "Darwin (abridged)",
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002UZKR92",
@@ -10984,12 +10967,12 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "darwins-radio"
-        },
-        {
           "position": "2",
           "work": "darwins-children"
+        },
+        {
+          "position": "1",
+          "work": "darwins-radio"
         }
       ]
     },
@@ -15931,24 +15914,6 @@
         }
       ]
     },
-    "dave-robicheaux-abridged": {
-      "id": "dave-robicheaux-abridged",
-      "license": "CC0-1.0",
-      "name": "Dave Robicheaux (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V0A4YE",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "heavens-prisoners"
-        }
-      ]
-    },
     "dave-robicheaux-series": {
       "id": "dave-robicheaux-series",
       "license": "CC0-1.0",
@@ -15957,6 +15922,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0036KOGME",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0A4YE",
           "type": "libex-import"
         }
       ],
