@@ -18,6 +18,9 @@ import (
 // "Universe" is part of a real name often enough that only a human can say the two are
 // one franchise.
 //
+// Neither side may be touched by a translation_of link (ix.translationLinked), as in
+// the family folds: a translation is a different series, never a spelling to retire.
+//
 // The ORPHAN O states an ordering (the field, else its name's qualifier), is its own
 // family's primary (no ordering_of) and no variant names it, and sits in no SER-DUP
 // group of two or more (a grouped series is the normalized-name class's business). Its
@@ -83,13 +86,15 @@ func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 	byFranchise, _ := groupBy(cands, func(c ordered) string { return c.franchise })
 	for _, o := range cands {
 		s := o.k.series
-		if len(ix.variantsOf[s.ID]) > 0 || grouped[o.k.tight] > 1 {
+		if len(ix.variantsOf[s.ID]) > 0 || grouped[o.k.tight] > 1 || ix.translationLinked(s.ID) {
 			continue
 		}
 		var twins []seriesKeys
 		for _, t := range byFranchise[o.franchise] {
 			// A "<parent>: <sub-series>" name headed by the twin's own base is its sub-series.
-			if t.k.series.ID != s.ID && !retired[t.k.series.ID] && t.ordering == o.ordering && (o.headKey == "" || o.headKey != t.baseKey) {
+			id := t.k.series.ID
+			if id != s.ID && !retired[id] && !ix.translationLinked(id) && t.ordering == o.ordering &&
+				(o.headKey == "" || o.headKey != t.baseKey) {
 				twins = append(twins, t.k)
 			}
 		}

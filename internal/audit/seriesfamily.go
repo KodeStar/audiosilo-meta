@@ -118,6 +118,8 @@ type foldVerdict struct {
 	passers []seriesKeys
 	// vetoes are the pair vetoes against target, for the review that names them.
 	vetoes []string
+	// reviewedBy are the containers whose REVIEW settled an ambiguity (closesToRoot).
+	reviewedBy []string
 }
 
 // root is the candidate the loser resolves toward, for closesToRoot: none for an
@@ -223,8 +225,8 @@ func familySpellingFolds(ix *index, key string, group []seriesKeys, sides map[st
 		if v.kind != foldAmbiguous {
 			continue
 		}
-		if root, ok := closesToRoot(v, verdicts, sides); ok {
-			settled[i].kind, settled[i].target = foldSpelling, root
+		if root, reviewed, ok := closesToRoot(v, verdicts, sides); ok {
+			settled[i].kind, settled[i].target, settled[i].reviewedBy = foldSpelling, root, reviewed
 		}
 	}
 
@@ -238,6 +240,13 @@ func familySpellingFolds(ix *index, key string, group []seriesKeys, sides map[st
 			fd.Propose = familySpellingProposal(t, l)
 			if verdicts[i].kind == foldAmbiguous {
 				fd.Propose.Reason += "; several orderings hold its list, and the spelling that contains it resolves to " + t.series.ID
+			}
+			if len(v.reviewedBy) > 0 {
+				// A root read off a REVIEW (the container's best match, not a fold) is
+				// review-level evidence, so the fold it settles is no surer than that.
+				fd.Propose.Advisory = true
+				fd.Propose.Reason += "; but " + truncateList(v.reviewedBy, 4) + " resolves there only as a review " +
+					"(its own record), so this fold waits on that review"
 			}
 		case foldAmbiguous:
 			fd.Propose = Proposal{Op: OpReview, Target: t.series.ID, Others: []string{l.series.ID}, Advisory: true,
@@ -287,25 +296,36 @@ func familySpellingProposal(t, l seriesKeys) Proposal {
 // number alike; "The Kingsbridge Novels", which holds those two and two more, resolves
 // to the chronological "Kingsbridge" - so the abridged spelling folds there, and the two
 // spellings close onto one root rather than onto two orders.
-func closesToRoot(v foldVerdict, all []foldVerdict, sides map[string]seriesSide) (seriesKeys, bool) {
+//
+// reviewed names the containers whose verdict is itself only a REVIEW (foldReview: its
+// best-match member, not a fold): a root read off one is review-level evidence, so the
+// fold it settles is advisory, however clean it is on its own.
+func closesToRoot(v foldVerdict, all []foldVerdict, sides map[string]seriesSide) (root seriesKeys, reviewed []string, ok bool) {
 	var roots []string
 	for _, o := range all {
 		if o.loser.series.ID == v.loser.series.ID || !foldMovesNothing(sides[o.loser.series.ID], sides[v.loser.series.ID]) {
 			continue
 		}
-		if r := o.root(); r != "" && !slices.Contains(roots, r) {
+		r := o.root()
+		if r == "" {
+			continue
+		}
+		if !slices.Contains(roots, r) {
 			roots = append(roots, r)
+		}
+		if o.kind == foldReview {
+			reviewed = append(reviewed, o.loser.series.ID)
 		}
 	}
 	if len(roots) != 1 {
-		return seriesKeys{}, false
+		return seriesKeys{}, nil, false
 	}
 	for _, p := range v.passers {
 		if p.series.ID == roots[0] {
-			return p, true
+			return p, sortedUnique(reviewed), true
 		}
 	}
-	return seriesKeys{}, false
+	return seriesKeys{}, nil, false
 }
 
 // familyReview is the review a plain spelling gets when no member passes: the member

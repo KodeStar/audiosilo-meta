@@ -149,20 +149,40 @@ func TestFamilySpellingClosesToTheRoot(t *testing.T) {
 			"series/dh/dh-novels.json": seriesJSON(t, "dh-novels", "The Dragon Heart Novels", "two@2", "three@3"),
 		}
 	}
-	t.Run("a container settles it", func(t *testing.T) {
-		rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three", "four"}, mergeFiles(family(t), map[string]string{
-			"series/dh/dh-books.json": seriesJSON(t, "dh-books", "Dragon Heart Books", "one@1", "two@2", "three@3", "four@4"),
+	t.Run("a container's fold settles it", func(t *testing.T) {
+		// dh-books IS the primary's list, so it folds onto dh-pub - and the spelling it
+		// contains closes onto the same root, mechanically (dh-pub is no variant).
+		rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, mergeFiles(family(t), map[string]string{
+			"series/dh/dh-books.json": seriesJSON(t, "dh-books", "Dragon Heart Books", "two@2", "three@3", "one@4"),
 		})))
 		assertProposalsConsistent(t, rep)
+		if c := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-books"); c.Propose.Op != OpMergeSeries || c.Propose.Target != "dh-pub" {
+			t.Fatalf("container = %+v, want it folded onto dh-pub", c.Propose)
+		}
 		fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-novels")
-		if fd.Propose.Op != OpMergeSeries || fd.Propose.Target != "dh-chrono" {
-			t.Fatalf("proposal = %+v, want dh-novels closed onto dh-chrono, the root dh-books resolves to", fd.Propose)
+		if fd.Propose.Target != "dh-pub" {
+			t.Fatalf("proposal = %+v, want dh-novels closed onto dh-pub, the root dh-books folds onto", fd.Propose)
 		}
-		assertVetoed(t, fd, "resolves to dh-chrono")
-		// The container itself adds a membership, so it is only ever a review.
-		if c := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-books"); c.Propose.Op != OpReview || c.Propose.Target != "dh-chrono" {
-			t.Errorf("container = %+v, want a review naming dh-chrono", c.Propose)
+		assertMechanical(t, fd)
+		if !strings.Contains(fd.Propose.Reason, "resolves to dh-pub") {
+			t.Errorf("reason = %q, want the settlement named", fd.Propose.Reason)
 		}
+	})
+	t.Run("a reviewed container settles it only advisory", func(t *testing.T) {
+		// dh-books adds a membership, so its own record is a REVIEW naming its best match,
+		// dh-pub: a root read off a review is review-level evidence.
+		rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three", "four"}, mergeFiles(family(t), map[string]string{
+			"series/dh/dh-books.json": seriesJSON(t, "dh-books", "Dragon Heart Books", "two@2", "three@3", "one@4", "four@5"),
+		})))
+		assertProposalsConsistent(t, rep)
+		if c := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-books"); c.Propose.Op != OpReview || c.Propose.Target != "dh-pub" {
+			t.Fatalf("container = %+v, want a review naming dh-pub", c.Propose)
+		}
+		fd := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-novels")
+		if fd.Propose.Op != OpMergeSeries || fd.Propose.Target != "dh-pub" {
+			t.Fatalf("proposal = %+v, want dh-novels closed onto dh-pub", fd.Propose)
+		}
+		assertVetoed(t, fd, "dh-books resolves there only as a review")
 	})
 	t.Run("no container is a review", func(t *testing.T) {
 		rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, family(t)))
@@ -224,6 +244,9 @@ func TestFamilyRenumberedKeepsTheTargetsNumbering(t *testing.T) {
 		t.Fatalf("proposal = %+v, want an advisory position-field fold onto ra", p)
 	}
 	assertVetoed(t, fd, "four at 3 here, 4 in ra")
+	if want := "fold ra-pub onto ra, keeping ra's numbering (ra-pub's positions are dropped)"; !strings.Contains(fd.Action, want) {
+		t.Errorf("action = %q, want %q", fd.Action, want)
+	}
 }
 
 // The relative ORDER is the renumbering's whole evidence: a spelling that swaps two
@@ -354,5 +377,25 @@ func TestOrderingTwinIsProposedInOneDirection(t *testing.T) {
 	}
 	if p := got[0].Propose; p.Target != "novel" || !slices.Equal(p.Others, []string{"universe"}) {
 		t.Errorf("proposal = %+v, want universe folded onto novel", p)
+	}
+}
+
+// A series a translation_of link touches is never either side of a twin: a translation
+// is a different series, not a spelling to retire.
+func TestOrderingTwinIgnoresATranslationLinkedSeries(t *testing.T) {
+	for name, linked := range map[string]string{"the orphan": "universe", "the twin": "novel"} {
+		t.Run(name, func(t *testing.T) {
+			files := seriesFixture(t, []string{"one", "two"}, map[string]string{
+				"works/un/uno/work.json":         workJSON(t, "uno", "Uno", withLanguage("it")),
+				"works/un/uno/recordings/i.json": recJSON(t, "i", "uno", testpack.WithRecLanguage("it")),
+				"series/it/serie.json":           seriesJSON(t, "serie", "La Serie", "uno@1"),
+				"series/jr/novel.json":           withOrdering(t, seriesJSON(t, "novel", "A Jack Ryan Novel", "one@1", "two@2"), "publication"),
+				"series/jr/universe.json":        withOrdering(t, seriesJSON(t, "universe", "The Jack Ryan Universe", "two@2"), "publication"),
+			})
+			files["series/it/serie.json"] = withField(t, files["series/it/serie.json"], "translation_of", []string{linked})
+			if got := subclassOf(t, runFixture(t, files), ClassSeriesDup, serDupTwin); len(got) != 0 {
+				t.Errorf("a translation-linked series was folded: %+v", got)
+			}
+		})
 	}
 }
