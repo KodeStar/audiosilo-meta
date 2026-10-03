@@ -18,14 +18,17 @@ import (
 // [Spanish Edition]" holds an English book, "Steelheart [German Edition]" keeps its
 // English title in German). Two signals, each named in the reason with its evidence:
 //
-//   - EDITION STATEMENT, over the whole catalogue: the title or subtitle states an
-//     own-language edition (titlerule.EditionLanguage) of a language other than the
-//     work's tag - "The Gambler [Persian Edition]" tagged en. Measured over the tree
+//   - EDITION STATEMENT, over EVERY work whatever its tag: the title or subtitle states
+//     an own-language edition (titlerule.EditionLanguage) of a language other than the
+//     work's tag - "The Gambler [Persian Edition]" tagged en, or "(English Edition)" on
+//     a work tagged fr. The decoration names one language outright, so no tag is
+//     exempt. Measured over the tree
 //     at landing, the same shape is otherwise a language COURSE ("Learn German: By
 //     Reading Fantasy (German Edition)", "101 Conversations in Simple Spanish (Spanish
 //     Edition)"), whose decoration names the language taught; a title naming a
 //     language outside its decoration (titlerule.NamesALanguage) is withheld.
-//   - SERIES MINORITY TITLE: an en-tagged member of a mixed-language series whose
+//   - SERIES MINORITY TITLE, over EN-TAGGED members only: an en-tagged member of a
+//     mixed-language series whose
 //     language L is not English - the series' derived language, or for a tie the one
 //     language every OTHER member states - and whose title reads as not English in
 //     either of two narrow ways, both titlerule's: a BRACKET GLOSS (titlerule.GlossOf:
@@ -102,7 +105,7 @@ func (m *langMix) seriesTitles(s *model.Series, byLang map[string][]model.Series
 		if len(evidence) == 0 {
 			continue
 		}
-		m.st.TitleSeries++
+		m.titleSeriesWorks[w.ID] = true
 		m.noteTitleLanguage(w, lang, fmt.Sprintf("a member of %s, whose other members are %s: %s", s.ID, lang, strings.Join(evidence, "; ")))
 	}
 }

@@ -200,3 +200,53 @@ func TestTitleLanguageAgreesWithARegionTaggedNarrationReason(t *testing.T) {
 		t.Fatalf("proposal = %+v, want set-work-language de-at", fd.Propose)
 	}
 }
+
+// The edition statement is read on EVERY tag, not only en: a work tagged fr whose title
+// states the English edition proposes en. (Only the series signal is en-only.)
+func TestTitleLanguageReadsAnEditionStatementOnAnyTag(t *testing.T) {
+	rep := runFixture(t, mergeFiles(mixPeople(t),
+		titledWork(t, "nuit-noire", "Nuit Noire (English Edition)", "fr", "anna-sprecher")))
+	wantTitleProposal(t, titleProposals(t, rep), "nuit-noire", "fr", "en")
+	if rep.LangMix.TitleEdition != 1 {
+		t.Errorf("tally = %+v", rep.LangMix)
+	}
+}
+
+// Narration and title evidence naming DIFFERENT languages make the one narration record a
+// review of several languages - never two records for one work.
+func TestTitleLanguageDisagreeingWithNarrationIsAReview(t *testing.T) {
+	files := narratedTree(t)
+	files["works/xx/imperium/work.json"] = workJSON(t, "imperium", "Imperium (French Edition)", withLanguage("en"))
+	rep := runFixture(t, files)
+	if got := titleProposals(t, rep); len(got) != 0 {
+		t.Fatalf("a second record for one work: %+v", got)
+	}
+	fd := onlyMix(t, rep, lMixNarration)
+	if fd.Propose.Op != OpReview || fd.Propose.Target != "imperium" || !fd.Propose.Advisory ||
+		!strings.Contains(fd.Propose.Reason, "several languages this work could be (de, fr)") {
+		t.Fatalf("proposal = %+v, want the review of de and fr", fd.Propose)
+	}
+}
+
+// One en-tagged work glossed in two mixed series of different languages is one review
+// naming both, and is tallied once.
+func TestTitleLanguageInTwoSeriesIsOneReview(t *testing.T) {
+	rep := runFixture(t, mergeFiles(mixPeople(t),
+		titledWork(t, "la-odisea", "La Odisea [The Odyssey]", "en", "nate-narrator"),
+		titledWork(t, "es-1", "Uno", "es", "anna-sprecher"), titledWork(t, "es-2", "Dos", "es", "anna-sprecher"),
+		titledWork(t, "it-1", "Primo", "it", "anna-sprecher"), titledWork(t, "it-2", "Secondo", "it", "anna-sprecher"),
+		map[string]string{
+			"series/se/serie-es.json": seriesJSON(t, "serie-es", "Serie Es", "es-1@1", "es-2@2", "la-odisea@3"),
+			"series/se/serie-it.json": seriesJSON(t, "serie-it", "Serie It", "it-1@1", "it-2@2", "la-odisea@3"),
+		}))
+	got := subclassOf(t, rep, ClassLangMix, lMixTitle)
+	if len(got) != 1 {
+		t.Fatalf("records = %+v, want one", got)
+	}
+	if p := got[0].Propose; p.Op != OpReview || !p.Advisory || !strings.Contains(p.Reason, "(es, it)") {
+		t.Fatalf("proposal = %+v, want the review of es and it", p)
+	}
+	if rep.LangMix.TitleSeries != 1 || rep.LangMix.TitleProposals != 1 {
+		t.Errorf("tally = %+v, want the work counted once", rep.LangMix)
+	}
+}

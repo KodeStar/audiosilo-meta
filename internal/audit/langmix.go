@@ -79,8 +79,9 @@ import (
 // Rubinrot shape: work en, recording de) and whose narrators contradict the work's.
 // It is ALWAYS advisory: a language is only ever set by a reviewed decision.
 // TITLE-LANGUAGE (titlelang.go) is its sibling for the works whose own TITLE says so -
-// an own-language edition decoration, or an en-tagged member of a non-English series
-// titled in that language - always advisory too, and folded into a narration record
+// an own-language edition decoration of another language, read over every tag, or
+// (for en-tagged members only) a non-English series whose language the title is in -
+// always advisory too, and folded into a narration record
 // for the same work rather than emitted beside it.
 
 // L-MIX subclasses.
@@ -143,7 +144,7 @@ type langMixStats struct {
 	AllOtherContradicted int // ...whose narrators contradict the work's language
 	TitleEdition         int // works whose title states another language's edition than their tag
 	TitleCourse          int // ...withheld: the title names a language (a course)
-	TitleSeries          int // en-tagged members of a non-English mixed series whose title is not English
+	TitleSeries          int // en-tagged WORKS (counted once, however many series) of a non-English mixed series titled in its language
 	TitleProposals       int // title-language records (title evidence no narration record names)
 }
 
@@ -211,6 +212,9 @@ type langMix struct {
 	// wantLanguage collects each work's set-work-language candidates (the To it would
 	// be reset to, and why), so a work that is a minority in two series is one finding.
 	wantLanguage map[string]*languageCandidate
+	// titleSeriesWorks is the works the series title signal read, so a work in two
+	// mixed series is tallied once.
+	titleSeriesWorks map[string]bool
 }
 
 // languageCandidate retains narration evidence even when it yields no proposed
@@ -239,12 +243,13 @@ func (m *langMix) languageCandidate(w *model.Work) *languageCandidate {
 func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 	m := &langMix{
 		ix: ix, locks: locks,
-		prof:         check.NewNarrationProfile(ix.cat),
-		byName:       map[string][]*model.Series{},
-		neighbours:   map[string][]string{},
-		primaries:    map[string]bool{},
-		f:            &findings{class: ClassLangMix},
-		wantLanguage: map[string]*languageCandidate{},
+		prof:             check.NewNarrationProfile(ix.cat),
+		byName:           map[string][]*model.Series{},
+		neighbours:       map[string][]string{},
+		primaries:        map[string]bool{},
+		f:                &findings{class: ClassLangMix},
+		wantLanguage:     map[string]*languageCandidate{},
+		titleSeriesWorks: map[string]bool{},
 	}
 	for _, s := range ix.cat.Series {
 		if k := seriesBaseKey(s.Name); k != "" {
@@ -266,6 +271,7 @@ func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 	m.settleContestedMoves()
 	m.otherLanguageWorks()
 	m.editionStatements()
+	m.st.TitleSeries = len(m.titleSeriesWorks)
 	m.languageFindings()
 	return m.f, m.st
 }
