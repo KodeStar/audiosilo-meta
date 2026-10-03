@@ -197,6 +197,11 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 			}
 			resolved = true
 		}
+		// The TITLE is catalogued (a stored title cleans to it), so a miss below is
+		// the slug arm's own category - a catalogued title with no work under it for
+		// these credits - which is what SkippedTitleNoMatch reports. A miss can also be
+		// two matching works (qualifiedCatalogueWalk's ambiguity rule); the category
+		// still holds, since the title is catalogued and the row needs a human.
 		titleHit = true
 		if w, ok := p.qualifiedCatalogueWalk(title, b.qualifiedTitle, authors, rowLang, nil); ok {
 			if w.via != "" {

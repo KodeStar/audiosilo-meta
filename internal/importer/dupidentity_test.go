@@ -422,7 +422,7 @@ func TestOtherModesAreUntouchedByTheGuard(t *testing.T) {
 // marketplace-edition or narrator-qualified listing of a catalogued book RESOLVES to
 // it and is judged by the ordinary recording rules - attached as a new narration, or
 // merged by ASIN into the same production - rather than refused by the duplicate
-// guard or minted beside it (48 of the 51 tree titles carrying "International Edition" have such a twin). The
+// guard or minted beside it (48 of the 51 tree titles carrying "International Edition" have such a twin: 47 newly clustered, plus "Go Tell the Bees That I Am Gone", already clustered). The
 // brand possessive is a comparison rule only, so a brand respelling still meets the
 // duplicate guard.
 func TestQualifiedListingsAttachToTheCataloguedWork(t *testing.T) {
@@ -675,5 +675,64 @@ func TestASeriesTitledQualifiedWorkStaysReachable(t *testing.T) {
 	if sum.NewRecordings != 1 || sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, id)) != 2 {
 		t.Errorf("NewRecordings = %d, NewWorks = %d, SkippedDuplicateIdentity = %d, want a new recording under %s; warnings = %v",
 			sum.NewRecordings, sum.NewWorks, sum.SkippedDuplicateIdentity, id, sum.Warnings)
+	}
+}
+
+// plainBookTree seeds the plain "Lonely Book" alone.
+func plainBookTree(t *testing.T) string {
+	t.Helper()
+	const id = "lonely-book"
+	return seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Lonely Book", testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, nil)
+}
+
+// libex serves its text entity-encoded, so the quoted qualifier arrives as
+// "&quot;International Edition&quot;". The text is decoded BEFORE cleanWorkTitle reads
+// it (runBooks decodes first), which is the only order in which the quoted run is a
+// qualifier at all: the row resolves to the catalogued "Lonely Book".
+func TestAnEntityEncodedQualifierIsDecodedBeforeCleaning(t *testing.T) {
+	dataDir := plainBookTree(t)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0LONELY10", title: "Lonely Book: &quot;International Edition&quot;",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Cy Reader"}`, minutes: 480}))
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "lonely-book")) != 2 {
+		t.Errorf("NewWorks = %d, NewRecordings = %d, want a new recording under lonely-book; warnings = %v",
+			sum.NewWorks, sum.NewRecordings, sum.Warnings)
+	}
+}
+
+// The qualified-title index (planner.qualifiedByClean) holds only CATALOGUED works
+// and is never invalidated, which is sound because a work this run creates always
+// carries a cleaned title: a later row naming it with a qualifier cleans to that
+// title and meets it on the ordinary slug chain, in either row order.
+func TestARunCreatedWorkIsReachedByAQualifiedRowOfTheSameRun(t *testing.T) {
+	plain := libexRow{asin: "B0FRESH001", title: "Fresh Book", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Bea Reader"}`, minutes: 400}
+	qualified := libexRow{asin: "B0FRESH002", title: "Fresh Book: International Edition", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Cy Reader"}`, minutes: 380}
+	for name, order := range map[string][]libexRow{"plain first": {plain, qualified}, "qualified first": {qualified, plain}} {
+		dataDir := seedTombstoneTree(t, map[string]string{}, nil)
+		sum := runLibexInto(t, dataDir, rows(order...))
+		if sum.NewWorks != 1 || sum.NewRecordings != 2 || len(recSlugsOf(t, dataDir, "fresh-book")) != 2 {
+			t.Errorf("%s: NewWorks = %d, NewRecordings = %d, want one work fresh-book holding both; warnings = %v",
+				name, sum.NewWorks, sum.NewRecordings, sum.Warnings)
+		}
+	}
+}
+
+// A recordings-only row whose cleaned title a catalogued QUALIFIED title cleans to,
+// but whose credits match no work under it, is counted as a catalogued title with no
+// matching work (SkippedTitleNoMatch) - the same category the slug arm uses when a
+// bare slug is taken by another author's book, and the actionable one.
+func TestRecordingsOnlyCountsAQualifiedTitleMismatch(t *testing.T) {
+	dataDir := lonelyBookTree(t, false)
+	sum := runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly}, libexRow{asin: "B0LONELY11",
+		title: "Lonely Book, Read by Cy Reader", authors: `{"name":"Zed Other"}`,
+		narrators: `{"name":"Cy Reader"}`, minutes: 480}.render())
+	if sum.NewRecordings != 0 || sum.SkippedNoWork != 1 || sum.SkippedTitleNoMatch != 1 {
+		t.Errorf("NewRecordings = %d, SkippedNoWork = %d, SkippedTitleNoMatch = %d, want 0, 1, 1; warnings = %v",
+			sum.NewRecordings, sum.SkippedNoWork, sum.SkippedTitleNoMatch, sum.Warnings)
 	}
 }

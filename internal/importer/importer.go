@@ -355,7 +355,10 @@ type planner struct {
 	// distinct), so resolveWork and the recordings-only matcher can find a work
 	// catalogued under a qualified title from a row naming another qualifier
 	// (qualifiedCatalogueTitles). Built on first use, in every mode - an exact
-	// title lookup, so it needs neither the identity index nor a series name.
+	// title lookup, so it needs neither the identity index nor a series name. It is
+	// never invalidated, and needs no run-created work: a work this run creates
+	// carries a CLEANED title, so a later qualified row cleans to it and meets it on
+	// the ordinary slug chain (TestARunCreatedWorkIsReachedByAQualifiedRowOfTheSameRun).
 	qualifiedByClean map[string][]string
 	// runIdentity and runIdentified are the same index over the works THIS RUN has
 	// created or merged into: normalized identity key -> work slugs, and slug -> the
