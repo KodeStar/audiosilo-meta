@@ -1,6 +1,7 @@
 package audit
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -231,18 +232,36 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 // languages still stops on the language veto). A member whose parenthetical folds to
 // nothing comparable is a decoration of its own, never equal to another's.
 //
-// The one-sided shape has ONE narrow exemption: an ORDERING qualifier whose series is
-// the plain one's list over again. "The MaddAddam Trilogy (Published Order)" holds the
-// same three works at the same slots as "The MaddAddam Trilogy", and an ordering whose
-// list is identical to its plain sibling's is not a second ordering. It stands down
-// only when every decoration is in orderingDecorations, the survivor is UNDECORATED,
-// and every decorated member's list IS the survivor's: the same number of memberships,
-// each already in it at the same slot (foldMovesNothing, the collection veto's own
-// "nothing moves" test, plus the count) - so the fold retires a spelling and changes no
-// order. A SUBSET is not enough: a partial ordering that agrees on the volumes it has
-// listed so far is still a list nobody has shown to be the plain one. Any other one-sided decoration still
-// vetoes, even where nothing moves: an edition, an author or a format qualifier says
-// something about the series that the plain name does not.
+// The one-sided shape has TWO narrow exemptions, one mechanism: a decoration that says
+// nothing about the series' LIST, on a series whose list the plain one already holds.
+// It stands down only when every decoration is in oneSidedDecorations, the survivor is
+// UNDECORATED, and every decorated member's memberships are each already in the survivor
+// at the same slot (foldMovesNothing, the collection veto's own "nothing moves" test) -
+// so the fold retires a spelling and changes no order.
+//
+//   - an ORDERING qualifier whose series is the plain one's list over again. "The
+//     MaddAddam Trilogy (Published Order)" holds the same three works at the same slots
+//     as "The MaddAddam Trilogy", and an ordering whose list is identical to its plain
+//     sibling's is not a second ordering. It must also hold as MANY memberships: a
+//     partial ordering that agrees on the volumes it has listed so far is still a list
+//     nobody has shown to be the plain one.
+//   - a FORMAT qualifier saying the series is ABRIDGED ("(Abridged)", "(gekürzt)").
+//     Abridgement is a fact about a RECORDING (its `abridged` field), so "X (Abridged)"
+//     holding works the plain "X" already lists at the same slots is the plain series'
+//     list a second time. A SUBSET is enough here: only some volumes of a series are
+//     ever abridged, and a part of the plain list at the plain slots states no order of
+//     its own. Only those two words: "unabridged"/"ungekürzt" is what the plain name
+//     already means, and a dramatization, a Hörspiel, a radio or full-cast production is
+//     a product line with its own numbering. And the recording must SAY it: every work
+//     the abridged spelling lists needs a recording stating `abridged: true`, or the
+//     series name is the only record that an abridged production exists and folding
+//     it away would erase that fact - so the group stays vetoed, naming those works
+//     (3 of the 47 folds the arm made when it landed, all carrying only unabridged or
+//     unstated recordings).
+//
+// Any other one-sided decoration still vetoes, even where nothing moves: an edition, an
+// author or any other qualifier says something about the series that the plain name
+// does not.
 func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string) (string, bool) {
 	var decorated []string
 	plain := 0
@@ -263,8 +282,15 @@ func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string)
 			"tells them apart (an alternative ordering, an edition, or an author disambiguator) - see SER-PAREN", true
 	case plain == 0:
 		return "", false // one decoration, carried by every member: it tells none of them apart
-	case orderingFoldMovesNothing(group, sides, target):
+	}
+	movesNothing, unstated := oneSidedFoldMovesNothing(group, sides, target)
+	switch {
+	case movesNothing && len(unstated) == 0:
 		return "", false
+	case movesNothing:
+		return truncateList(decorated, 4) + " carry a parenthetical decoration the others do not, and no recording of " +
+			truncateList(unstated, 4) + " states it is abridged, so the name is the only record of the abridgement: " +
+			"folding would erase it - see SER-PAREN", true
 	}
 	return truncateList(decorated, 4) + " carry a parenthetical decoration the others do not: folding would erase " +
 		"the decoration that distinguishes them - see SER-PAREN", true
@@ -280,52 +306,82 @@ func decorClass(k seriesKeys) string {
 	return k.decor
 }
 
-// orderingDecorations are the parentheticals that state an ORDERING of a series and
-// nothing else, as titlerule.DecorationKey folds them. A closed vocabulary, measured
-// over the tree's bracketed series names (every group there saying "order",
-// "chronolog" or "reihenfolge"): chronological order 16, publication order 12,
-// published order 6, chronological 2, and one each of recommended listening order,
-// author's preferred order, in chronologischer Reihenfolge and in
-// Veroeffentlichungsreihenfolge. Reading order is the one entry the tree does not
-// carry yet.
-var orderingDecorations = func() map[string]bool {
-	out := map[string]bool{}
+// oneSidedDecorations are the one-sided decorations vetoSeriesDecoration may fold away
+// (which words are in and out, and why, is stated there), keyed by
+// titlerule.DecorationKey so case, bracket style and diacritics are not a difference.
+// The value says how much of the survivor's list the decorated list must be: all of it
+// (an ordering) or any part of it (abridged). Both are closed vocabularies measured
+// over the tree's bracketed series names. Orderings, every group saying "order",
+// "chronolog" or "reihenfolge": chronological order 16, publication order 12, published
+// order 6, chronological 2, and one each of recommended listening order, author's
+// preferred order, in chronologischer Reihenfolge and in Veroeffentlichungsreihenfolge
+// (reading order is the one entry the tree does not carry yet). Abridged, from the
+// languages plan's Phase 6 census of the format-qualified series: abridged 179 and
+// gekürzt 27 of 254.
+var oneSidedDecorations = func() map[string]listCover {
+	out := map[string]listCover{}
 	for _, phrase := range []string{
 		"chronological", "chronological order", "publication order", "published order",
 		"reading order", "recommended listening order", "author's preferred order",
 		"in chronologischer Reihenfolge", "in Veröffentlichungsreihenfolge",
 	} {
-		out[titlerule.DecorationKey("("+phrase+")")] = true
+		out[titlerule.DecorationKey("("+phrase+")")] = coverWhole
+	}
+	for _, phrase := range []string{"abridged", "gekürzt"} {
+		out[titlerule.DecorationKey("("+phrase+")")] = coverPart
 	}
 	return out
 }()
 
-// orderingFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
-// is undecorated, every decorated member carries an ordering qualifier, and each of
-// their lists is the survivor's list over again - as many memberships, none of which
-// the fold would move.
-func orderingFoldMovesNothing(group []seriesKeys, sides []seriesSide, target string) bool {
+// listCover is how much of the survivor's list an exempt one-sided decoration's list
+// must be. Its zero value is no rule at all, so a lookup that misses can never read as
+// either arm.
+type listCover int
+
+const (
+	_          listCover = iota
+	coverWhole           // every membership, and as many of them: an ordering
+	coverPart            // any part of it: an abridged spelling
+)
+
+// oneSidedFoldMovesNothing is vetoSeriesDecoration's one-sided exemption: the survivor
+// is undecorated, every decorated member carries an exempt qualifier, and none of their
+// memberships would move - each already in the survivor at the same slot, and for an
+// ordering as many of them as the survivor holds. unstated is, in group then series
+// order and each work once, every work an ABRIDGED spelling lists that no recording
+// states is abridged: a fold that moves nothing still stands only when it is empty.
+// (Two abridged spellings in one group - "(Abridged)" and "[abridged]" share a
+// DecorationKey - may list the same work, which is still one work to name.)
+func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target string) (movesNothing bool, unstated []string) {
 	tgt, losers, ok := splitSides(sides, target)
 	if !ok {
-		return false
+		return false, nil
 	}
 	decor := make(map[string]seriesKeys, len(group))
 	for _, k := range group {
 		decor[k.series.ID] = k
 	}
 	if decor[target].paren {
-		return false
+		return false, nil
 	}
 	for _, l := range losers {
 		k := decor[l.series.ID]
 		if !k.paren {
 			continue
 		}
-		if !orderingDecorations[k.decor] || len(l.members) != len(tgt.members) || !foldMovesNothing(tgt, l) {
-			return false
+		cover := oneSidedDecorations[k.decor]
+		if cover == 0 || (cover == coverWhole && len(l.members) != len(tgt.members)) || !foldMovesNothing(tgt, l) {
+			return false, nil
+		}
+		if cover == coverPart {
+			for _, m := range l.members {
+				if !m.abridged && !slices.Contains(unstated, m.work) {
+					unstated = append(unstated, m.work)
+				}
+			}
 		}
 	}
-	return true
+	return true, unstated
 }
 
 // sameDecorationSubgroups is, for each comparable decoration at least two members of a
@@ -357,9 +413,10 @@ func sameDecorationSubgroups(group []seriesKeys) [][]seriesKeys {
 // proposes nothing: "Vorkosigan Saga (chronological)" beside "Vorkosigan Saga" is
 // very likely a DELIBERATE second ordering of one series, which the data model has
 // no other way to express, so the only honest output is "a human should look". (The
-// one fold SER-DUP makes over such a pair is an ordering whose list IS the plain
-// series' list - see vetoSeriesDecoration - and that is SER-DUP's proposal, not this
-// class's.)
+// folds SER-DUP makes over such a pair are an ordering whose list IS the plain series'
+// list and an abridged spelling whose list the plain series already holds, every work
+// of it with a recording stating the abridgement - see
+// vetoSeriesDecoration - and those are SER-DUP's proposals, not this class's.)
 //
 // It reads the SAME key index detectSeriesDup does, and in ONE pass: the plain
 // siblings are collected as the loop goes rather than in a first loop of their own,
@@ -395,7 +452,9 @@ func detectSeriesParen(ix *index, keys []seriesKeys) *findings {
 			fd.Subclass = serParenPair
 			fd.Propose.Others = siblings
 			fd.Propose.Reason = "the parenthetical may be a deliberate alternative ordering of the sibling series - not merged automatically, " +
-				"except the one fold SER-DUP proposes: an ordering qualifier whose list IS the sibling's, slot for slot"
+				"except the folds SER-DUP proposes: an ordering qualifier whose list IS the sibling's, slot for slot, " +
+				"and an abridged spelling whose memberships the sibling already holds at the same slots, " +
+				"each of whose works has a recording stating it is abridged"
 			fd.Notes = []string{"undecorated sibling: " + truncateList(siblings, 8)}
 			for _, id := range siblings {
 				if sib := ix.seriesByID[id]; sib != nil {
