@@ -7,6 +7,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/internal/unionfind"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -264,12 +265,12 @@ func statedLangs(l string) map[string]bool {
 // would produce a different catalogue than one applying them in reverse, which is not
 // a repair. Union-find over the shared works, then one record per closed component.
 func closeClusters(cs []dupCluster) []dupCluster {
-	groups := newUnionFind(len(cs))
+	groups := unionfind.New(len(cs))
 	seen := map[string]int{}
 	for i, c := range cs {
 		for _, m := range c.members {
 			if j, dup := seen[m.work.ID]; dup {
-				groups.union(i, j)
+				groups.Union(i, j)
 			} else {
 				seen[m.work.ID] = i
 			}
@@ -278,7 +279,7 @@ func closeClusters(cs []dupCluster) []dupCluster {
 	byRoot := map[int][]int{}
 	var roots []int
 	for i := range cs {
-		r := groups.find(i)
+		r := groups.Find(i)
 		if _, ok := byRoot[r]; !ok {
 			roots = append(roots, r)
 		}

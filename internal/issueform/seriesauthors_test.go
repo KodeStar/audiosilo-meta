@@ -151,7 +151,7 @@ func TestAddWorkExtendsItsLanguagesEditionSeries(t *testing.T) {
 	if fileExists(t, dir, "series/lo/lost-fleet-2.json") {
 		t.Error("a second German series was composed at lost-fleet-2")
 	}
-	if !anyContains(res.Messages, `series "Lost Fleet" joined lost-fleet-german-edition "Lost Fleet [German Edition]"`) {
+	if !anyContains(res.Messages, `1 series claim(s) joined a catalogued series stored under another name (for example: "Lost Fleet" joined lost-fleet-german-edition "Lost Fleet [German Edition]")`) {
 		t.Errorf("the verdict does not name the join under another stored name: %v", res.Messages)
 	}
 

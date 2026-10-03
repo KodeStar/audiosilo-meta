@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/internal/unionfind"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -218,69 +219,76 @@ func rowWork(row *SeriesRow) string {
 func resolveSeriesClaims(cat seriesCatalogue, claims []nameClaim) []seriesTarget {
 	out := make([]seriesTarget, len(claims))
 	groups, keys := claimGroups(claims)
+	reaches := make([]*groupReach, len(keys))
+	for i, k := range keys {
+		reaches[i] = reachOf(cat, claims, groups[k])
+	}
 	allocated := map[string]map[string]bool{} // base -> slugs minted this batch
-	for _, unit := range seriesUnits(cat, claims, groups, keys) {
-		members := make([][]int, len(unit))
-		for i, k := range unit {
-			members[i] = groups[k]
+	for _, unit := range seriesUnits(reaches) {
+		rs := make([]*groupReach, len(unit))
+		idx := make([][]int, len(unit))
+		for i, g := range unit {
+			rs[i], idx[i] = reaches[g], reaches[g].idx
 		}
-		resolveSeriesUnit(cat, claims, members, out, allocated)
+		resolveSeriesUnit(cat, claims, rs, idx, out, allocated)
 	}
 	return out
 }
 
-// seriesUnits partitions the name groups (keys, sorted) into RESOLUTION UNITS: the
-// groups that can reach one catalogued series - on a chain, or through the
-// qualifier index (seriesqualified.go) - are one unit, transitively, so the
-// spellings of one series ("Saga [German Edition]", "Saga (Deutsche Ausgabe)", a
-// German "Saga") are judged against ONE evidence for it, exactly as one spelling
-// would be. Each unit lists its keys in order, and the units are ordered by their
-// first key. A batch of one group is one unit without asking the index.
-func seriesUnits(cat seriesCatalogue, claims []nameClaim, groups map[string][]int, keys []string) [][]string {
-	if len(keys) < 2 {
-		if len(keys) == 0 {
-			return nil
-		}
-		return [][]string{keys}
-	}
-	parent := make([]int, len(keys))
-	for i := range parent {
-		parent[i] = i
-	}
-	find := func(x int) int {
-		for parent[x] != x {
-			parent[x] = parent[parent[x]]
-			x = parent[x]
-		}
-		return x
-	}
+// groupReach is what one name group REACHES, computed once before anything is
+// resolved: its claims (in canonical order) and every catalogued series a claim of
+// it can land in - the chain's, then what the qualifier index reaches for the
+// group's name and row languages (seriesqualified.go) - by tier. The candidates
+// carry no evidence: a resolution attaches it (resolveSeriesUnit), so the
+// partition into units asks the catalogue for names and nothing else.
+type groupReach struct {
+	name, base string
+	idx        []int
+	chainEmpty bool
+	cands      []seriesCandidate
+}
+
+// reachOf is a name group's reach; idx (the group's claims) is sorted into
+// canonical order in place.
+func reachOf(cat seriesCatalogue, claims []nameClaim, idx []int) *groupReach {
+	sort.SliceStable(idx, func(a, b int) bool { return claims[idx[a]].order < claims[idx[b]].order })
+	r := &groupReach{name: claims[idx[0]].name, idx: idx}
+	r.base = Slugify(r.name)
+	r.cands = seriesCandidates(cat, r.base, r.name)
+	r.chainEmpty = len(r.cands) == 0
+	r.cands = append(r.cands, qualifiedCandidates(cat, r.name, r.base, claims, idx, r.cands)...)
+	return r
+}
+
+// seriesUnits partitions the name groups (reaches, in key order) into RESOLUTION
+// UNITS: the groups that can reach one catalogued series are one unit,
+// transitively, so the spellings of one series ("Saga [German Edition]", "Saga
+// (Deutsche Ausgabe)", a German "Saga") are judged against ONE evidence for it,
+// exactly as one spelling would be. Each unit lists its groups in order and the
+// units are ordered by their first group (the union-find's lowest root).
+func seriesUnits(reaches []*groupReach) [][]int {
+	set := unionfind.New(len(reaches))
 	owner := map[string]int{} // catalogued slug -> the first group reaching it
-	for i, k := range keys {
-		idx := groups[k]
-		name := claims[idx[0]].name
-		chain := seriesCandidates(cat, Slugify(name), name, nil)
-		for _, c := range append(chain, qualifiedCandidates(cat, name, claims, idx, chain, nil)...) {
-			first, seen := owner[c.slug]
-			if !seen {
+	for i, r := range reaches {
+		for _, c := range r.cands {
+			if first, seen := owner[c.slug]; seen {
+				set.Union(first, i)
+			} else {
 				owner[c.slug] = i
-				continue
-			}
-			if a, b := find(first), find(i); a != b {
-				parent[max(a, b)] = min(a, b)
 			}
 		}
 	}
-	var out [][]string
+	var out [][]int
 	at := map[int]int{}
-	for i, k := range keys {
-		r := find(i)
-		u, ok := at[r]
+	for i := range reaches {
+		root := set.Find(i)
+		u, ok := at[root]
 		if !ok {
 			u = len(out)
-			at[r] = u
+			at[root] = u
 			out = append(out, nil)
 		}
-		out[u] = append(out[u], k)
+		out[u] = append(out[u], i)
 	}
 	return out
 }
@@ -410,7 +418,9 @@ func (c *seriesCandidate) extend(cl nameClaim) {
 
 // evidencePool is one series' evidence as a resolution unit extends it: the
 // catalogue's own until the unit first places a row there, a private copy after
-// (owned).
+// (owned) - copied on WRITE, because most candidates a unit holds are never
+// extended and an eager copy of each would clone the catalogue's evidence for
+// nothing.
 type evidencePool struct {
 	ev    *seriesAuthors
 	owned bool
@@ -418,8 +428,8 @@ type evidencePool struct {
 
 // evidencePools is a resolution unit's pools, one per catalogued series slug, so
 // every candidate of one series - reached by any name group of the unit - shares
-// one. A nil set hands out a fresh pool per call (a reach that only asks which
-// series a name reaches).
+// one. A nil set hands out a fresh pool per call: a unit of one group holds each
+// series once, so it has nothing to share.
 type evidencePools map[string]*evidencePool
 
 // of is slug's pool, created from the catalogue's evidence on first use.
@@ -443,14 +453,14 @@ func (p evidencePools) of(cat seriesCatalogue, slug string) *evidencePool {
 // different decoration still is), and a retired BASE's live survivor, in chain
 // order and each once. The walk ends at the first free slug - nothing beyond it
 // can have been minted - and every other held or retired slug is occupied.
-func seriesCandidates(cat seriesCatalogue, base, name string, pools evidencePools) []*seriesCandidate {
-	var out []*seriesCandidate
+func seriesCandidates(cat seriesCatalogue, base, name string) []seriesCandidate {
+	var out []seriesCandidate
 	named := titlerule.NewSeriesName(name) // prepared once: every held name on the chain is compared to it
 	add := func(slug, via string) {
-		if slices.ContainsFunc(out, func(c *seriesCandidate) bool { return c.slug == slug }) {
+		if slices.ContainsFunc(out, func(c seriesCandidate) bool { return c.slug == slug }) {
 			return
 		}
-		out = append(out, &seriesCandidate{slug: slug, via: via, pool: pools.of(cat, slug), lang: cat.language[slug], tier: tierChain})
+		out = append(out, seriesCandidate{slug: slug, via: via, lang: cat.language[slug], tier: tierChain})
 	}
 	for i := 0; ; i++ {
 		slug := SeriesSlugAt(base, i)
@@ -496,23 +506,13 @@ func mintSlug(cat seriesCatalogue, base string, allocated map[string]map[string]
 	}
 }
 
-// nameGroup is one name group of a resolution unit: its claims (in canonical
-// order) and its own candidates, by tier.
-type nameGroup struct {
-	name, base string
-	idx        []int
-	cands      []*seriesCandidate
-	// chainEmpty: the name's chain holds no candidate. reached: the qualifier
-	// index has been asked for this group.
-	chainEmpty, reached bool
-}
-
-// reach adds what the qualifier index reaches for the group's claims at idx.
-func (g *nameGroup) reach(cat seriesCatalogue, claims []nameClaim, idx []int, pools evidencePools) {
-	if !g.reached {
-		g.reached = true
-		g.cands = append(g.cands, qualifiedCandidates(cat, g.name, claims, idx, g.cands, pools)...)
-	}
+// unitGroup is one name group as a resolution unit resolves it: its reach, its
+// own candidates (the reach's, over the unit's pools, plus the series it founds)
+// and, in a unit of several groups, the same by slug.
+type unitGroup struct {
+	*groupReach
+	cands  []*seriesCandidate
+	bySlug map[string]*seriesCandidate
 }
 
 // anchors reports whether c may anchor a claim of the group: a candidate the name
@@ -521,61 +521,98 @@ func (g *nameGroup) reach(cat seriesCatalogue, claims []nameClaim, idx []int, po
 // plain base sits on a slug whose stored name no longer equals the claim's, and
 // the rename must be invisible to the outcome). A row-language reach is tried in
 // the cluster step alone.
-func (g *nameGroup) anchors(c *seriesCandidate) bool {
+func (g *unitGroup) anchors(c *seriesCandidate) bool {
 	return c.tier == tierChain || (c.tier == tierDecorated && g.chainEmpty)
 }
 
+// unitClaims is a unit's claims in canonical order, each with the group (an index
+// into the unit) it belongs to.
+type unitClaims struct {
+	claims []nameClaim
+	all    []int
+	group  []int
+}
+
+func (u unitClaims) Len() int { return len(u.all) }
+func (u unitClaims) Less(a, b int) bool {
+	return u.claims[u.all[a]].order < u.claims[u.all[b]].order
+}
+func (u unitClaims) Swap(a, b int) {
+	u.all[a], u.all[b] = u.all[b], u.all[a]
+	u.group[a], u.group[b] = u.group[b], u.group[a]
+}
+
 // resolveSeriesUnit resolves the claims of one resolution unit (seriesUnits):
-// members are its name groups' claims, in unit order. Every name group keeps its
-// own candidates and tiers - its own chain first - but the candidates of one
-// catalogued series share ONE evidence pool, and anchoring and clustering run over
-// the unit's claims together, so a series several spellings reach admits exactly
-// what it would admit were they one spelling. A unit of one group is the original
-// per-name resolution exactly.
-func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, members [][]int, out []seriesTarget, allocated map[string]map[string]bool) {
-	byOrder := func(idx []int) func(a, b int) bool {
-		return func(a, b int) bool { return claims[idx[a]].order < claims[idx[b]].order }
+// reaches are its name groups and idx[i] the claims of reaches[i] to resolve (all
+// of them, or the live subset a re-check keeps), in canonical order. Every name
+// group keeps its own candidates and tiers - its own chain first - but the
+// candidates of one catalogued series share ONE evidence pool, and anchoring and
+// clustering run over the unit's claims together, so a series several spellings
+// reach admits exactly what it would admit were they one spelling. The rules are
+// the same for a unit of one group, which is the per-name resolution.
+func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach, idx [][]int, out []seriesTarget, allocated map[string]map[string]bool) {
+	var pools evidencePools
+	if len(reaches) > 1 {
+		pools = evidencePools{}
 	}
-	pools := evidencePools{}
-	groups := make([]*nameGroup, len(members))
-	groupOf := map[int]*nameGroup{}
-	var all []int // the unit's claims, canonical order
-	for i, idx := range members {
-		sort.SliceStable(idx, byOrder(idx))
-		g := &nameGroup{name: claims[idx[0]].name, idx: idx}
-		g.base = Slugify(g.name)
-		g.cands = seriesCandidates(cat, g.base, g.name, pools)
-		g.chainEmpty = len(g.cands) == 0
-		if g.chainEmpty && titlerule.ReadSeriesQualifiers(g.name).Language != "" {
-			g.reach(cat, claims, idx, pools)
+	groups := make([]*unitGroup, len(reaches))
+	u := unitClaims{claims: claims}
+	for i, r := range reaches {
+		g := &unitGroup{groupReach: r, cands: make([]*seriesCandidate, len(r.cands))}
+		for j := range r.cands {
+			c := r.cands[j]
+			c.pool = pools.of(cat, c.slug)
+			g.cands[j] = &c
+		}
+		if pools != nil {
+			g.bySlug = make(map[string]*seriesCandidate, len(g.cands))
+			for _, c := range g.cands {
+				g.bySlug[c.slug] = c
+			}
 		}
 		groups[i] = g
-		for _, ci := range idx {
-			groupOf[ci] = g
+		if len(reaches) == 1 {
+			u.all = idx[i]
+		} else {
+			for _, ci := range idx[i] {
+				u.all = append(u.all, ci)
+				u.group = append(u.group, i)
+			}
 		}
-		all = append(all, idx...)
 	}
-	sort.SliceStable(all, byOrder(all))
+	all := u.all
+	if len(all) == 0 {
+		return
+	}
+	groupAt := func(k int) *unitGroup {
+		if u.group == nil {
+			return groups[0]
+		}
+		return groups[u.group[k]]
+	}
+	if len(reaches) > 1 {
+		sort.Stable(u)
+	}
 
 	// 1. Anchor, in rounds judged against the evidence at the round's start.
-	placed := map[int]*seriesCandidate{}
+	placed := make([]*seriesCandidate, len(all))
 	for {
 		type anchor struct {
-			ci   int
+			k    int
 			cand *seriesCandidate
 		}
 		var round []anchor
-		for _, ci := range all {
-			if placed[ci] != nil {
+		for k, ci := range all {
+			if placed[k] != nil {
 				continue
 			}
-			g := groupOf[ci]
+			g := groupAt(k)
 			for _, c := range g.cands {
 				if !g.anchors(c) || c.closedTo(claims[ci]) {
 					continue
 				}
 				if c.pool.ev.fit(claims[ci].row, cat.large) == seriesShared {
-					round = append(round, anchor{ci, c})
+					round = append(round, anchor{k, c})
 					break
 				}
 			}
@@ -584,13 +621,13 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, members [][]int,
 			break
 		}
 		for _, a := range round {
-			placed[a.ci] = a.cand
-			a.cand.extend(claims[a.ci])
+			placed[a.k] = a.cand
+			a.cand.extend(claims[all[a.k]])
 		}
 	}
 	var rest []int // positions in all
 	for k, ci := range all {
-		if c := placed[ci]; c != nil {
+		if c := placed[k]; c != nil {
 			out[ci] = seriesTarget{slug: c.slug, found: true, via: c.via}
 			continue
 		}
@@ -599,23 +636,6 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, members [][]int,
 	if len(rest) == 0 {
 		return
 	}
-	restOf := func(g *nameGroup) []int {
-		var idx []int
-		for _, k := range rest {
-			if groupOf[all[k]] == g {
-				idx = append(idx, all[k])
-			}
-		}
-		return idx
-	}
-	if len(groups) > 1 {
-		// A cluster's evidence for a series counts every claim of it that can
-		// reach that series, so every group's reach is known before the first
-		// cluster is judged. (One group asks the index lazily, below.)
-		for _, g := range groups {
-			g.reach(cat, claims, restOf(g), pools)
-		}
-	}
 
 	// 2. Cluster what is left by shared author, within one language and across
 	// the unit's spellings. Each cluster's claims are placed group by group: a
@@ -623,32 +643,11 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, members [][]int,
 	// judged against everything in the cluster that can reach that series - else
 	// founds on its own name's chain.
 	for _, cl := range authorClusters(claims, all, rest) {
-		type clusterView struct {
-			row *SeriesRow
-			add *seriesAuthors
-		}
-		views := map[*seriesCandidate]clusterView{}
-		admits := func(c *seriesCandidate, lead nameClaim) bool {
-			v, ok := views[c]
-			if !ok {
-				var reaching []int
-				for _, k := range cl {
-					ci := all[k]
-					if slices.ContainsFunc(groupOf[ci].cands, func(o *seriesCandidate) bool {
-						return o.slug == c.slug && o.reaches(claims[ci])
-					}) {
-						reaching = append(reaching, k)
-					}
-				}
-				v.row, v.add = clusterEvidence(claims, all, reaching)
-				views[c] = v
-			}
-			return c.admits(lead, v.row, v.add, cat.large)
-		}
-		for _, g := range groups {
+		admits := clusterAdmission(claims, all, cl, groupAt, len(groups) > 1, cat.large)
+		for gi, g := range groups {
 			var sc []int // positions in all
 			for _, k := range cl {
-				if groupOf[all[k]] == g {
+				if u.group == nil || u.group[k] == gi {
 					sc = append(sc, k)
 				}
 			}
@@ -656,13 +655,8 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, members [][]int,
 				continue
 			}
 			lead := claims[all[sc[0]]] // every claim of a cluster states one language
-			home := admitting(g.cands, tierChain, tierChain, func(c *seriesCandidate) bool { return admits(c, lead) })
-			if home == nil && !g.reached {
-				g.reach(cat, claims, restOf(g), pools)
-			}
-			if home == nil {
-				home = admitting(g.cands, tierDecorated, tierFounded, func(c *seriesCandidate) bool { return admits(c, lead) })
-			}
+			admitted := func(c *seriesCandidate) bool { return admits(c, lead) }
+			home := admitting(g.cands, tierChain, tierFounded, admitted)
 			found := home != nil && home.tier != tierFounded
 			var stepped []steppedSeries
 			if !found {
@@ -683,6 +677,9 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, members [][]int,
 				home = &seriesCandidate{slug: slug, chain: chain, tier: tierFounded,
 					pool: &evidencePool{ev: &seriesAuthors{}, owned: true}, languages: map[string]string{}}
 				g.cands = append(g.cands, home)
+				if g.bySlug != nil {
+					g.bySlug[slug] = home
+				}
 			}
 			for _, k := range sc {
 				ci := all[k]
@@ -694,6 +691,38 @@ func resolveSeriesUnit(cat seriesCatalogue, claims []nameClaim, members [][]int,
 				}
 			}
 		}
+	}
+}
+
+// clusterAdmission is how a cluster (positions in all) is admitted to a candidate,
+// asked with the claim that leads the group's part of it. A cluster in a unit of
+// one group is judged by its whole evidence, read once: every claim of it reaches
+// every candidate its lead does. In a unit of several, a candidate is judged by
+// the evidence of the cluster's claims that can reach THAT series (their group
+// holds it and their language reaches it), read once per series.
+func clusterAdmission(claims []nameClaim, all, cl []int, groupAt func(int) *unitGroup, several bool, large map[string]bool) func(*seriesCandidate, nameClaim) bool {
+	if !several {
+		row, add := clusterEvidence(claims, all, cl)
+		return func(c *seriesCandidate, lead nameClaim) bool { return c.admits(lead, row, add, large) }
+	}
+	type view struct {
+		row *SeriesRow
+		add *seriesAuthors
+	}
+	views := map[string]view{}
+	return func(c *seriesCandidate, lead nameClaim) bool {
+		v, ok := views[c.slug]
+		if !ok {
+			var reaching []int
+			for _, k := range cl {
+				if o := groupAt(k).bySlug[c.slug]; o != nil && o.reaches(claims[all[k]]) {
+					reaching = append(reaching, k)
+				}
+			}
+			v.row, v.add = clusterEvidence(claims, all, reaching)
+			views[c.slug] = v
+		}
+		return c.admits(lead, v.row, v.add, large)
 	}
 }
 

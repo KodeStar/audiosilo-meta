@@ -10,6 +10,7 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/build"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
+	"github.com/kodestar/audiosilo-meta/internal/unionfind"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -948,17 +949,17 @@ func (m *langMix) slugVetoes(s *model.Series, members []*mixMember, keepers []mo
 // Lauren's romance beside Tim Lebbon's franchise novel, two series the split would
 // found as one.
 func authorGroups(ix *index, members []*mixMember) int {
-	groups := newUnionFind(len(members))
+	groups := unionfind.New(len(members))
 	for i := range members {
 		for j := i + 1; j < len(members); j++ {
 			if len(sharedAuthors(ix, sortedUnique(members[i].w.Authors), sortedUnique(members[j].w.Authors))) > 0 {
-				groups.union(i, j)
+				groups.Union(i, j)
 			}
 		}
 	}
 	n := 0
 	for i := range groups {
-		if groups.find(i) == i {
+		if groups.Find(i) == i {
 			n++
 		}
 	}

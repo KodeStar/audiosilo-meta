@@ -9,6 +9,7 @@ import (
 	"io"
 	"maps"
 	"os"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -386,16 +387,23 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		titles = resolveWorkTitles(books)
 	}
 
-	owner := make([]int, len(claims))
+	claimsOf := make([][]int, len(kept)) // each row's claims
 	for ci, w := range where {
-		owner[ci] = w.book
+		claimsOf[w.book] = append(claimsOf[w.book], ci)
 	}
 	groups, keys := claimGroups(claims)
-	units := seriesUnits(cat, claims, groups, keys)
+	reaches := make([]*groupReach, len(keys))
+	for i, k := range keys {
+		reaches[i] = reachOf(cat, claims, groups[k])
+	}
+	units := seriesUnits(reaches)
 	unitOf := make([]int, len(claims))
+	for ci := range unitOf {
+		unitOf[ci] = -1 // a claim with no addressable name is in no unit
+	}
 	for u, unit := range units {
-		for _, k := range unit {
-			for _, ci := range groups[k] {
+		for _, g := range unit {
+			for _, ci := range reaches[g].idx {
 				unitOf[ci] = u
 			}
 		}
@@ -405,42 +413,58 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		alive[i] = true
 	}
 	targets := make([]seriesTarget, len(claims))
+	// Every claim's target is stamped on its row, as the import's
+	// resolveSeriesTargets stamps it, so the verdict and the attach rule read the
+	// batch's resolution off the row itself (completionClaim): every claim once,
+	// then a re-resolved unit's claims.
+	stamp := func(ci int) { books[where[ci].book].series[where[ci].ref].target = targets[ci] }
 	dirty := make([]int, len(units))
 	for u := range dirty {
 		dirty[u] = u
 	}
+	first := true
 	for len(dirty) > 0 {
 		for _, u := range dirty {
-			var members [][]int
-			for _, k := range units[u] {
+			var rs []*groupReach
+			var idx [][]int
+			for _, g := range units[u] {
 				var live []int
-				for _, ci := range groups[k] {
+				for _, ci := range reaches[g].idx {
 					targets[ci] = seriesTarget{}
-					if alive[owner[ci]] {
+					if alive[where[ci].book] {
 						live = append(live, ci)
 					}
 				}
 				if len(live) > 0 {
-					members = append(members, live)
+					rs, idx = append(rs, reaches[g]), append(idx, live)
 				}
 			}
-			if len(members) > 0 {
-				resolveSeriesUnit(cat, claims, members, targets, map[string]map[string]bool{})
+			if len(rs) > 0 {
+				resolveSeriesUnit(cat, claims, rs, idx, targets, map[string]map[string]bool{})
+			}
+			if !first {
+				for _, g := range units[u] {
+					for _, ci := range reaches[g].idx {
+						stamp(ci)
+					}
+				}
 			}
 		}
-		// Every claim's target is stamped on its row, as the import's
-		// resolveSeriesTargets stamps it, so the verdict and the attach rule read
-		// the batch's resolution off the row itself (completionClaim).
-		for ci, t := range targets {
-			books[where[ci].book].series[where[ci].ref].target = t
+		if first {
+			for ci := range targets {
+				stamp(ci)
+			}
+			first = false
 		}
+		var next []int
 		dropped := map[int]bool{}
 		drop := func(i int, reason refusal) {
 			alive[i] = false
 			x.add(kept[i].asin, reason)
-			for ci := range claims {
-				if owner[ci] == i {
-					dropped[unitOf[ci]] = true
+			for _, ci := range claimsOf[i] {
+				if u := unitOf[ci]; u >= 0 && !dropped[u] {
+					dropped[u] = true
+					next = append(next, u)
 				}
 			}
 		}
@@ -486,12 +510,8 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 			claimed[key] = workKey
 			kept[i].seriesSlug, kept[i].workKey, kept[i].pos, kept[i].attach = v.slug, workKey, pos, nil
 		}
-		dirty = dirty[:0:0]
-		for u := range units {
-			if dropped[u] {
-				dirty = append(dirty, u)
-			}
-		}
+		slices.Sort(next)
+		dirty = next
 	}
 	out := kept[:0:0]
 	for i, r := range kept {

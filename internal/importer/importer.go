@@ -262,10 +262,8 @@ type planner struct {
 	redirects      model.Redirects
 	tombstoneRides map[string]string
 	// seriesNameJoins is every claim this run JOINED to a catalogued series stored
-	// under another name than the claim gave (a respelled qualifier, a renamed
-	// edition series, a plain name reaching its language's edition), rendered as
-	// its note line (reportSeriesNameJoins).
-	seriesNameJoins map[string]bool
+	// under another name than the claim gave (reportSeriesNameJoins).
+	seriesNameJoins map[SeriesNameJoin]bool
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -3202,7 +3200,7 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 		case t.via != "":
 			p.noteTombstone(model.RedirectSeries, t.via, t.slug)
 		case !ss.isNew && ss.name != name:
-			p.noteSeriesNameJoin(name, t.slug, ss.name)
+			p.noteSeriesNameJoin(SeriesNameJoin{Given: name, Slug: t.slug, Stored: ss.name})
 		}
 		return ss
 	}

@@ -484,8 +484,8 @@ func TestAJoinUnderAnotherStoredNameIsNoted(t *testing.T) {
 	sum := runLibexOver(t, dataDir,
 		langRow("B0TOGDE003", "Erbin des Feuers", "Sarah J. Maas", "german", "Throne of Glass (Deutsche Ausgabe)", "3"),
 		langRow("B0TOGDE004", "Koenigin der Schatten", "Sarah J. Maas", "german", "Throne of Glass [German Edition]", "4"))
-	want := `1 series claim(s) joined a catalogued series stored under another name: ` +
-		`"Throne of Glass (Deutsche Ausgabe)" joined throne-of-glass-german-edition "Throne of Glass [German Edition]"`
+	want := `1 series claim(s) joined a catalogued series stored under another name (for example: ` +
+		`"Throne of Glass (Deutsche Ausgabe)" joined throne-of-glass-german-edition "Throne of Glass [German Edition]")`
 	if !slices.Contains(sum.Notes, want) {
 		t.Errorf("Notes = %v, want %q", sum.Notes, want)
 	}
@@ -493,4 +493,50 @@ func TestAJoinUnderAnotherStoredNameIsNoted(t *testing.T) {
 		t.Errorf("the join was warned about: %v", sum.Warnings)
 	}
 	assertTreeValid(t, dataDir)
+}
+
+// ONE RULE for a unit of one group and a unit of several: a spelling resolved
+// alone resolves exactly as it does inside a unit when nothing else in the unit
+// reaches its series. "Drenai" in English joins the English series alone and
+// beside a German "Drenai" and a "(Deutsche Ausgabe)" claim, which make the three
+// one unit through the German edition series only.
+func TestASpellingAloneResolvesAsInsideAUnit(t *testing.T) {
+	cat := gemmell(
+		&model.Series{ID: "drenai", Name: "Drenai", Works: members()},
+		&model.Series{ID: "drenai-german-edition", Name: "Drenai [German Edition]", Works: []model.SeriesWork{
+			{Work: "die-legende", Position: "1"}, {Work: "der-koenig", Position: "2"}}},
+	)
+	for _, w := range []string{"die-legende", "der-koenig"} {
+		cat.Works = append(cat.Works, &model.Work{ID: w, Title: w, Language: "de", Authors: []string{"david-gemmell"}})
+	}
+	names := map[string]string{}
+	for _, s := range cat.Series {
+		names[s.ID] = s.Name
+	}
+	view := NewSeriesAuthorIndex(cat).catalogue(func(slug string) (string, bool) { n, ok := names[slug]; return n, ok }, nil)
+	claim := func(name, lang, order string) nameClaim {
+		row := SeriesRowFor([]string{"David Gemmell"}, []string{"Book " + order}, "", lang, nil)
+		return nameClaim{name: name, row: row, order: order, work: "row:" + order, evidence: true}
+	}
+	english := claim("Drenai", "en", "a")
+	batch := []nameClaim{english, claim("Drenai", "de", "b"), claim("Drenai (Deutsche Ausgabe)", "de", "c")}
+
+	groups, keys := claimGroups(batch)
+	reaches := make([]*groupReach, len(keys))
+	for i, k := range keys {
+		reaches[i] = reachOf(view, batch, groups[k])
+	}
+	if units := seriesUnits(reaches); len(units) != 1 || len(units[0]) != 2 {
+		t.Fatalf("units = %v, want the two spellings as one unit", units)
+	}
+	alone := resolveSeriesClaims(view, []nameClaim{english})[0]
+	inUnit := resolveSeriesClaims(view, batch)
+	if !reflect.DeepEqual(alone, inUnit[0]) || alone.slug != "drenai" || !alone.found {
+		t.Errorf("alone %+v, inside the unit %+v; want both joining drenai", alone, inUnit[0])
+	}
+	for _, i := range []int{1, 2} {
+		if inUnit[i].slug != "drenai-german-edition" || !inUnit[i].found {
+			t.Errorf("German claim %d resolved to %+v, want drenai-german-edition", i, inUnit[i])
+		}
+	}
 }
