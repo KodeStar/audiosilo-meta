@@ -1313,6 +1313,7 @@
         "homero"
       ],
       "genres": [
+        "action-adventure",
         "classics",
         "historical-fiction",
         "history",
@@ -1984,6 +1985,10 @@
             {
               "asin": "1518913806",
               "region": "us"
+            },
+            {
+              "asin": "B086Q7L93D",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2132,6 +2137,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "1518913806",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B086Q7L93D",
               "type": "libex-import"
             }
           ],
@@ -2433,6 +2443,11 @@
           "imported_at": "2026-07-29",
           "ref": "1518913806",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B086Q7L93D",
+          "type": "libex-import"
         }
       ],
       "title": "La Odisea"
@@ -2677,189 +2692,6 @@
         }
       ],
       "title": "La Odisea Contada A Los Niños"
-    },
-    "la-odisea-the-odyssey": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "homero"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "la-odisea-the-odyssey",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ely-garcia-2020": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B086Q7L93D",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 12120,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1930344,
-              "start_ms": 12120,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1845313,
-              "start_ms": 1942464,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2132334,
-              "start_ms": 3787777,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3466785,
-              "start_ms": 5920111,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2007666,
-              "start_ms": 9386896,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1329644,
-              "start_ms": 11394562,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1363336,
-              "start_ms": 12724206,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2386430,
-              "start_ms": 14087542,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2295013,
-              "start_ms": 16473972,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2313845,
-              "start_ms": 18768985,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2520317,
-              "start_ms": 21082830,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1802170,
-              "start_ms": 23603147,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1720575,
-              "start_ms": 25405317,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2176476,
-              "start_ms": 27125892,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 2204293,
-              "start_ms": 29302368,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1804213,
-              "start_ms": 31506661,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2388358,
-              "start_ms": 33310874,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1642695,
-              "start_ms": 35699232,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 2297289,
-              "start_ms": 37341927,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1493971,
-              "start_ms": 39639216,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1713377,
-              "start_ms": 41133187,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1908215,
-              "start_ms": 42846564,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1358878,
-              "start_ms": 44754779,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 2087659,
-              "start_ms": 46113657,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 15022,
-              "start_ms": 48201316,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/7134S6f7VYL.jpg",
-          "id": "ely-garcia-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ely-garcia"
-          ],
-          "publisher": "Orange Island Book Shop",
-          "release_date": "2020-04-06",
-          "runtime_min": 803,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B086Q7L93D",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-odisea-the-odyssey"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B086Q7L93D",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Odisea [The Odyssey]"
     },
     "la-odisea-the-odyssey-homer": {
       "added_at": "2026-08-02",
