@@ -23,6 +23,7 @@ import (
 	"testing"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
@@ -246,6 +247,15 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // was later corrected). Scoping the assertion to the characters a rule change
 // moved is what keeps this a proof of the two migrations rather than a standing
 // complaint about composed identity in general.
+//
+// The SERIES arm asks the importer's real reach question, not the chain alone:
+// a series off its name's chain is current when SeriesAuthorIndex.Resolve over
+// the loaded catalogue still joins it - which the qualifier index does for a
+// linked edition series renamed to its base name (seriesqualified.go). Only a
+// series nothing reaches fails, and the message carries the resolution's answer.
+// The chain test runs first as a cost shortcut over the same question (a series
+// on its chain is reached), so the catalogue load (~25s) runs only when some
+// series is off its chain.
 func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 	claims := dataSeriesClaims(t)
 	walkEntries(t, "works", func(path, key string, e map[string]any) {
@@ -264,6 +274,8 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 			"an import of this title would mint a duplicate work", path, key, title)
 	})
 
+	type offChain struct{ path, key, name string }
+	var off []offChain
 	walkEntries(t, "series", func(path, key string, e map[string]any) {
 		name := str(e, "name")
 		if !movedByTransliteration(name) && !movedByApostrophe(name) {
@@ -275,7 +287,124 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 				return
 			}
 		}
-		t.Errorf("%s: series %q (name %q) is on no candidate of today's slug chain; "+
-			"an import naming this series would mint a duplicate", path, key, name)
+		off = append(off, offChain{path, key, name})
 	})
+	// The chain test above is a COST shortcut over the same question, not a
+	// different rule: a series on its name's chain is one the resolution
+	// reaches, so only the series off it pay for the catalogue load (~25s).
+	if len(off) == 0 {
+		return
+	}
+
+	// A series off its name's chain is still current when the importer's
+	// resolution REACHES it: a linked edition series renamed to its base name
+	// ("Dreamer's Throne" at dreamers-throne-german-edition) is joined through
+	// the qualifier index by a claim naming that base in its language. So the
+	// question is asked of the real resolution (SeriesAuthorIndex.Resolve over
+	// the loaded catalogue) - see reachesSeries.
+	cat := loadSlugCatalogue(t)
+	for _, o := range off {
+		s := cat.series[o.key]
+		if s == nil {
+			t.Errorf("%s: series %q is not in the loaded catalogue", o.path, o.key)
+			continue
+		}
+		m, ok := cat.reachesSeries(s)
+		if ok {
+			continue
+		}
+		why := m.Why()
+		if why == "" {
+			why = "nothing stepped past"
+		}
+		t.Errorf("%s: series %q (name %q) is on no candidate of today's slug chain "+
+			"and the importer's resolution does not reach it from any member's row "+
+			"(the last claim resolves to %q, found=%v: %s); "+
+			"an import naming this series would mint a duplicate",
+			o.path, o.key, o.name, m.Slug, m.Found, why)
+	}
+}
+
+// slugCatalogue is the loaded catalogue the series arm resolves against: the
+// importer's series index over it plus the id lookups a row is built from.
+type slugCatalogue struct {
+	cat    *model.Catalog
+	ix     *SeriesAuthorIndex
+	works  map[string]*model.Work
+	series map[string]*model.Series
+	names  map[string]string // person id -> name
+}
+
+func loadSlugCatalogue(t *testing.T) *slugCatalogue {
+	t.Helper()
+	res := check.Load(dataDir)
+	if !res.OK() {
+		t.Fatalf("loading %s: %d problem(s), first: %s", dataDir, len(res.Problems), res.Problems[0])
+	}
+	cat := res.Catalog
+	c := &slugCatalogue{
+		cat:    cat,
+		ix:     NewSeriesAuthorIndex(cat),
+		works:  make(map[string]*model.Work, len(cat.Works)),
+		series: make(map[string]*model.Series, len(cat.Series)),
+		names:  make(map[string]string, len(cat.People)),
+	}
+	for _, w := range cat.Works {
+		c.works[w.ID] = w
+	}
+	for _, s := range cat.Series {
+		c.series[s.ID] = s
+	}
+	for _, p := range cat.People {
+		c.names[p.ID] = p.Name
+	}
+	return c
+}
+
+// rowForWork is the row an import of w states: its author credits at their
+// person slugs, its title and subtitle, its first stated publisher and the
+// WORK's own language. The work's language, not the series' derived one, so the
+// language closure is really asked: a row in the series' language by
+// construction would pass it whatever the closure did.
+func (c *slugCatalogue) rowForWork(w *model.Work) *SeriesRow {
+	credits := make([]string, 0, len(w.Authors))
+	slugOf := make(map[string]string, len(w.Authors))
+	for _, a := range w.Authors {
+		credits = append(credits, c.names[a])
+		slugOf[c.names[a]] = a
+	}
+	var publisher string
+	for _, r := range w.Recordings {
+		if r.Publisher != "" {
+			publisher = r.Publisher
+			break
+		}
+	}
+	return SeriesRowFor(credits, []string{w.Title, w.Subtitle}, publisher, w.Language,
+		func(name string) string { return slugOf[name] })
+}
+
+// reachesSeries reports whether a claim naming s by its stored name, from a row
+// modeled on any one of its member works, resolves to s - an import of one of
+// its books naming the series. The match is the first hit, else the last miss
+// (for the failure message).
+func (c *slugCatalogue) reachesSeries(s *model.Series) (SeriesMatch, bool) {
+	stored := func(slug string) (string, bool) {
+		if x := c.series[slug]; x != nil {
+			return x.Name, true
+		}
+		return "", false
+	}
+	var m SeriesMatch
+	for _, sw := range s.Works {
+		w := c.works[sw.Work]
+		if w == nil {
+			continue
+		}
+		m = c.ix.Resolve(s.Name, c.cat.Redirects, stored, c.rowForWork(w))
+		if m.Found && m.Slug == s.ID {
+			return m, true
+		}
+	}
+	return m, false
 }
