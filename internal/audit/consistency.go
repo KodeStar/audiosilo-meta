@@ -16,6 +16,7 @@ type proposalConflictState struct {
 	slot                      map[string]string   // series@position -> finding
 	linkedTo, original        map[string]string   // op/id -> original or finding
 	leaves, joins, restated   map[string]string   // series@work -> finding
+	added                     map[string]string   // series@work an add-series-member adds -> finding
 	mixWorks, mixSeries       map[string]string   // work or series -> finding
 	mergedWorks, mergedSeries map[string]string   // work or series -> finding
 	languages                 map[string]string   // work -> finding
@@ -31,7 +32,7 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 	s := &proposalConflictState{
 		mergeTarget: map[string]string{}, isTarget: map[string]string{},
 		slot: map[string]string{}, linkedTo: map[string]string{}, original: map[string]string{},
-		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{},
+		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{}, added: map[string]string{},
 		mixWorks: map[string]string{}, mixSeries: map[string]string{},
 		mergedWorks: map[string]string{}, mergedSeries: map[string]string{}, languages: map[string]string{},
 		splitKeeper: map[string]string{}, splitBy: map[string]string{}, mixLeftLang: map[string]string{},
@@ -56,6 +57,33 @@ func (s *proposalConflictState) promote(r Finding) []string {
 		return s.conflicts
 	}
 	return s.add(r, false)
+}
+
+// overlaps is the stricter rule a reviewed ASSERTION must also meet, since no detector
+// stands behind it: it may not touch a record another mechanical proposal already merges
+// (the two would apply in report order, the later going stale against the earlier, so a
+// reviewer folds them into one assertion instead), nor add a membership another proposal
+// already adds. It only reads; promote then claims.
+func (s *proposalConflictState) overlaps(r Finding) []string {
+	var conflicts []string
+	p := r.Propose
+	switch p.Op {
+	case OpMergeWorks, OpMergeSeries:
+		merged := s.mergedWorks
+		if p.Op == OpMergeSeries {
+			merged = s.mergedSeries
+		}
+		for _, id := range Cluster(p.Target, p.Others) {
+			if by, both := merged[id]; both {
+				conflicts = append(conflicts, fmt.Sprintf("%s merges %s, which %s already merges", r.Key, id, by))
+			}
+		}
+	case OpAddSeriesMember:
+		if by, both := s.added[p.Series+"@"+p.Target]; both {
+			conflicts = append(conflicts, fmt.Sprintf("%s adds %s to %s, which %s already adds", r.Key, p.Target, p.Series, by))
+		}
+	}
+	return conflicts
 }
 
 // add checks both sides of every constraint as each claim arrives, so report
@@ -176,6 +204,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		if p.Series != "" && p.To != "" {
 			claimSlot(p.Series + "@" + p.To)
 		}
+		put(s.added, p.Series+"@"+p.Target, r.Key)
 	case OpAddWorkLink, OpAddSeriesLink:
 		tr := p.Op + "/" + p.Target
 		if prev, dup := s.linkedTo[tr]; dup && prev != p.To {

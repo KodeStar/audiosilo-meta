@@ -183,7 +183,7 @@ func TestRejectionOfAnotherTargetLeavesTheProposalMechanical(t *testing.T) {
 	if fd == nil || fd.Propose.Advisory || fd.Propose.To != "the-saga" {
 		t.Fatalf("proposal = %+v, want the mechanical link onto the-saga", fd)
 	}
-	if got := rep.Reviewed; len(got.Outcomes) != 0 || len(got.Stale) != 2 || !reflect.DeepEqual(got.Stale[0], stale) {
+	if got := rep.Reviewed; len(got.Outcomes) != 0 || len(got.Stale) != 2 || !reflect.DeepEqual(got.Stale[0].Entry, stale) {
 		t.Errorf("tally = %+v, want both entries stale, in the list's order", got)
 	}
 	assertProposalsConsistent(t, rep)
@@ -218,7 +218,7 @@ func TestSummaryReportsReviewedRejections(t *testing.T) {
 		"reviewed decisions on the list | 2",
 		"... rejected (made advisory) | 1",
 		"... matching no proposal (STALE) | 1",
-		"- STALE `" + decisionIdentity(rep.Reviewed.Stale[0]) + "`: reject: why\n",
+		"- STALE `" + decisionIdentity(rep.Reviewed.Stale[0].Entry) + "`: reject: why\n",
 	} {
 		if !strings.Contains(md, want) {
 			t.Errorf("SUMMARY.md lacks %q:\n%s", want, md)
@@ -346,7 +346,7 @@ func TestReviewedEveryIdentityField(t *testing.T) {
 				r.Others = []string{"another"}
 			}
 			rep := proposalReport(p)
-			tally := applyReviewed(rep, []reviewedDecision{r}, nil)
+			tally := applyReviewed(rep, []reviewedDecision{r}, nil, nil)
 			if len(tally.Stale) != 1 || rep.classes[0].rows[0].Propose.Advisory {
 				t.Fatalf("identity field %s was ignored", field)
 			}
@@ -370,7 +370,7 @@ func TestReviewedAcceptRejectAndNoOpsAcrossClasses(t *testing.T) {
 					p := Proposal{Op: OpRetitle, Target: "book", Field: "title", From: "Old", To: "New", Advisory: advisory, Reason: "source reason"}
 					rep := proposalReport(p)
 					rep.classes[0].class = class
-					rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(p, decision)}, nil)
+					rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(p, decision)}, nil, nil)
 					got := rep.classes[0].rows[0]
 					if got.Propose.Advisory != (decision == "reject") {
 						t.Fatalf("proposal = %+v", got.Propose)
@@ -430,7 +430,7 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 				}
 				accept.Advisory = true
 				rep := proposalReport(existing, accept)
-				rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(accept, "accept")}, nil)
+				rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(accept, "accept")}, nil, nil)
 				if !rep.classes[0].rows[1].Propose.Advisory || rep.Reviewed.Outcomes[0].Status != "refused" || !strings.Contains(rep.Reviewed.Outcomes[0].Why, tc.why) {
 					t.Fatalf("outcome = %+v", rep.Reviewed)
 				}
@@ -446,7 +446,7 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 	de := Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "en", To: "de", Others: []string{"w-de"}, Advisory: true}
 	fr := Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "en", To: "fr", Others: []string{"w-fr"}, Advisory: true}
 	rep := proposalReport(de, fr)
-	if tally := applyReviewed(rep, []reviewedDecision{review(de, "accept"), review(fr, "accept")}, nil); tally.Outcomes[0].Status != "accepted" ||
+	if tally := applyReviewed(rep, []reviewedDecision{review(de, "accept"), review(fr, "accept")}, nil, nil); tally.Outcomes[0].Status != "accepted" ||
 		tally.Outcomes[1].Status != "accepted" {
 		t.Fatalf("one orientation in two splits: tally=%+v", tally)
 	}
@@ -457,7 +457,7 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 	move.Advisory = true
 	other.Advisory = true
 	rep = proposalReport(move, other)
-	tally := applyReviewed(rep, []reviewedDecision{review(move, "accept"), review(other, "accept")}, nil)
+	tally := applyReviewed(rep, []reviewedDecision{review(move, "accept"), review(other, "accept")}, nil, nil)
 	if tally.Outcomes[0].Status != "accepted" || tally.Outcomes[1].Status != "refused" {
 		t.Fatalf("tally=%+v", tally)
 	}
@@ -468,7 +468,7 @@ func TestReviewedRejectsBeforeAccepting(t *testing.T) {
 	p := Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"b"}}
 	q := Proposal{Op: OpMergeWorks, Target: "c", Others: []string{"b"}, Advisory: true}
 	rep := proposalReport(p, q)
-	tally := applyReviewed(rep, []reviewedDecision{review(q, "accept"), review(p, "reject")}, nil)
+	tally := applyReviewed(rep, []reviewedDecision{review(q, "accept"), review(p, "reject")}, nil, nil)
 	if tally.Outcomes[0].Status != "accepted" {
 		t.Fatalf("tally=%+v", tally)
 	}
@@ -490,13 +490,13 @@ func TestReviewedMembershipTombstonesAndSharedDecisions(t *testing.T) {
 		first, second := review(old, decision), review(p, decision)
 		first.Reason = "first"
 		second.Reason = "second"
-		tally := applyReviewed(rep, []reviewedDecision{first, second}, reds)
+		tally := applyReviewed(rep, []reviewedDecision{first, second}, reds, nil)
 		if len(tally.Outcomes) != 2 || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "first") || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "second") {
 			t.Fatalf("tally=%+v, proposal=%+v", tally, rep.classes[0].rows[0])
 		}
 	}
 	rep := proposalReport(p)
-	tally := applyReviewed(rep, []reviewedDecision{review(old, "accept"), review(p, "reject")}, reds)
+	tally := applyReviewed(rep, []reviewedDecision{review(old, "accept"), review(p, "reject")}, reds, nil)
 	if tally.Outcomes[0].Status != "refused" || !rep.classes[0].rows[0].Propose.Advisory {
 		t.Fatalf("opposite decisions: %+v", tally)
 	}
@@ -569,7 +569,7 @@ func TestReviewedResolvesOnlySlugFields(t *testing.T) {
 func TestReviewedMergeNamespacesStaySeparate(t *testing.T) {
 	p := Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"b"}, Advisory: true}
 	rep := proposalReport(Proposal{Op: OpMergeSeries, Target: "b", Others: []string{"a"}}, p)
-	tally := applyReviewed(rep, []reviewedDecision{review(p, "accept")}, nil)
+	tally := applyReviewed(rep, []reviewedDecision{review(p, "accept")}, nil, nil)
 	if tally.Outcomes[0].Status != "accepted" {
 		t.Fatalf("independent namespaces refused: %+v", tally)
 	}
@@ -585,7 +585,7 @@ func TestReviewedRefusedPromotionLeavesNoClaims(t *testing.T) {
 	accepted.To = "2"
 	stillRefused := Proposal{Op: OpAddSeriesMember, Target: "another", Series: "dest", To: "1", Advisory: true}
 	rep := proposalReport(occupied, refused, accepted, stillRefused)
-	tally := applyReviewed(rep, []reviewedDecision{review(refused, "accept"), review(accepted, "accept"), review(stillRefused, "accept")}, nil)
+	tally := applyReviewed(rep, []reviewedDecision{review(refused, "accept"), review(accepted, "accept"), review(stillRefused, "accept")}, nil, nil)
 	for i, want := range []string{"refused", "accepted", "refused"} {
 		if tally.Outcomes[i].Status != want {
 			t.Fatalf("outcomes = %+v", tally.Outcomes)
@@ -614,7 +614,7 @@ func TestReviewedIndexesReviewByClass(t *testing.T) {
 		f.add(Finding{Key: live, Propose: Proposal{Op: OpReview, Target: live}})
 		rep.classes = append(rep.classes, f)
 	}
-	tally := applyReviewed(rep, []reviewedDecision{review(Proposal{Op: OpReview, Target: "old"}, "reject")}, reds)
+	tally := applyReviewed(rep, []reviewedDecision{review(Proposal{Op: OpReview, Target: "old"}, "reject")}, reds, nil)
 	if len(tally.Outcomes) != 1 || len(tally.Stale) != 0 {
 		t.Fatalf("tally = %+v", tally)
 	}
@@ -631,7 +631,7 @@ func TestReviewedRejectsTheMajorityAndAcceptsTheOtherOrientation(t *testing.T) {
 	majority := Proposal{Op: OpSplitSeries, Target: "saga", Others: []string{"d"}, Field: fieldLanguage, From: "de", To: "en"}
 	other := Proposal{Op: OpSplitSeries, Target: "saga", Others: []string{"a", "b"}, Field: fieldLanguage, From: "en", To: "de", Advisory: true}
 	rep := proposalReport(majority, other)
-	rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(majority, "reject"), review(other, "accept")}, nil)
+	rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(majority, "reject"), review(other, "accept")}, nil, nil)
 	rows := rep.classes[0].rows
 	if !rows[0].Propose.Advisory || rows[1].Propose.Advisory {
 		t.Fatalf("majority advisory=%v, other advisory=%v; want the majority withheld and the other applied (%+v)",
