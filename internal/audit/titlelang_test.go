@@ -100,21 +100,15 @@ func TestTitleLanguageReadsASeriesGloss(t *testing.T) {
 	}
 }
 
-// What is not a gloss: a bracket naming the recording's publisher, a format bracket, a
-// head carrying an English function word, a statement naming a language, and a gloss
-// outside a mixed series (M. Robinson's English "El Diablo [The Devil]").
-func TestTitleLanguageGlossVetoes(t *testing.T) {
+// A gloss is only read inside a mixed series (M. Robinson's English "El Diablo [The
+// Devil]" is in none), and a gloss naming the recording's publisher is no gloss - the
+// publishers are read off the record (titlerule.GlossOf has the rest of the vetoes).
+func TestTitleLanguageGlossNeedsAMixedSeries(t *testing.T) {
 	for _, tc := range []struct {
 		name, title string
 		series      bool
 	}{
 		{"publisher", "Faust [Fixture Audio]", true},
-		{"tie-in", "Adrift [Movie Tie-in]", true},
-		{"collection", "Faust [The Dragon Box Set]", true},
-		{"bundle", "Small Talk [5-in-1]", true},
-		{"english head", "A Christmas Carol [Una Novela]", true},
-		{"language statement", "Faust [UK English]", true}, // the course rule: it names a language
-		{"number", "Gravity [1980033501]", true},
 		{"no mixed series", "El Diablo [The Devil]", false},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -132,8 +126,7 @@ func TestTitleLanguageGlossVetoes(t *testing.T) {
 	}
 }
 
-// Function words of the series' language - two distinct ones, and no English one -
-// propose it without a gloss (the Italian "Il Cuore Spezzato Di Arelium").
+// Function words of the series' language propose it without a gloss (the Italian "Il Cuore Spezzato Di Arelium").
 func TestTitleLanguageReadsSeriesFunctionWords(t *testing.T) {
 	series := func(t testing.TB, title string) map[string]string {
 		return mergeFiles(mixPeople(t),
@@ -147,15 +140,10 @@ func TestTitleLanguageReadsSeriesFunctionWords(t *testing.T) {
 	if !strings.Contains(p.Reason, "it function words (di, il)") {
 		t.Errorf("reason = %q, want the words named", p.Reason)
 	}
-	for _, title := range []string{
-		"Alex Cross Must Die",                 // no Italian word at all
-		"La La Land",                          // one distinct word is not two
-		"The Cuore of Il Spezzato Di Arelium", // English function words beside the Italian
-		"Learn Italian: Il Cuore Di Roma",     // a course names its language
-	} {
-		if got := titleProposals(t, runFixture(t, series(t, title))); len(got) != 0 {
-			t.Errorf("%q proposed %+v", title, got)
-		}
+	// A course naming its language is withheld (titlerule.TitleFunctionWords has the
+	// word rule's own cases).
+	if got := titleProposals(t, runFixture(t, series(t, "Learn Italian: Il Cuore Di Roma"))); len(got) != 0 {
+		t.Errorf("a course proposed %+v", got)
 	}
 }
 

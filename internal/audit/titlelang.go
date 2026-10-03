@@ -2,10 +2,8 @@ package audit
 
 import (
 	"fmt"
-	"regexp"
 	"slices"
 	"strings"
-	"unicode"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -30,10 +28,11 @@ import (
 //   - SERIES MINORITY TITLE: an en-tagged member of a mixed-language series whose
 //     language L is not English - the series' derived language, or for a tie the one
 //     language every OTHER member states - and whose title reads as not English in
-//     either of two narrow ways: a BRACKET GLOSS (glossOf: "La Odisea [The Odyssey]",
-//     the US marketplace's English translation printed after a foreign title), or
-//     FUNCTION WORDS of L (titleFunctionWords: at least two distinct ones, and not one
-//     English function word - "Il Cuore Spezzato Di Arelium" in an Italian series).
+//     either of two narrow ways, both titlerule's: a BRACKET GLOSS (titlerule.GlossOf:
+//     "La Odisea [The Odyssey]", the US marketplace's English translation printed
+//     after a foreign title), or FUNCTION WORDS of L (titlerule.TitleFunctionWords: at
+//     least two distinct ones, and not one English function word - "Il Cuore
+//     Spezzato Di Arelium" in an Italian series).
 //
 // The series signal reads an en tag only. The two shapes run one way: an English
 // gloss says the title it glosses is NOT English, and an English-language edition
@@ -48,145 +47,6 @@ import (
 // contradiction is named in the reason, and the proposal is advisory either way. A
 // work the narration-contradicts subclass already proposes keeps that one finding,
 // with the title evidence folded into its notes.
-
-// glossBracket captures a title's trailing square-bracket group and what precedes it.
-var glossBracket = regexp.MustCompile(`^(.*?)\s*\[([^\[\]]*)\]\s*$`)
-
-// tieIn is the one format bracket the decoration readers do not already know: a
-// "[Movie Tie-in]" edition is a product statement about an English book, not a gloss.
-var tieIn = regexp.MustCompile(`(?i)\btie[\s-]*in\b`)
-
-// glossOf reads the BRACKET GLOSS "X [Y]": a title whose trailing square-bracket group
-// is titlerule's bracket-suffix decoration (the shape a retailer prints a second
-// language's title in, never an edition marker) and is a TITLE rather than any other
-// decoration - not a language edition, a dramatization, a collection, a tie-in, a
-// number, the work's own series name, the name of a recording's publisher ("[Naxos]",
-// read off the record rather than a list), or X itself. (A statement naming a language,
-// "[UK English]", never gets here: a title naming a language is read as a course.) X must carry no English function word: a gloss is the
-// English translation of a title that is not English.
-func glossOf(w *model.Work, seriesNames []string) (head, gloss string, ok bool) {
-	if !slices.Contains(titlerule.Decorations(titlerule.TitleFacts{Title: w.Title}), titlerule.DecBracketSuffix) {
-		return "", "", false
-	}
-	m := glossBracket.FindStringSubmatch(w.Title)
-	if m == nil {
-		return "", "", false
-	}
-	head, gloss = strings.TrimSpace(m[1]), strings.TrimSpace(m[2])
-	bracketed := "[" + gloss + "]"
-	switch {
-	case head == "" || gloss == "":
-		return "", "", false
-	case titlerule.CompareKey(head) == titlerule.CompareKey(gloss):
-		return "", "", false
-	case !titlerule.CarriesIdentity(titlerule.Clean(gloss, "")):
-		return "", "", false
-	case titlerule.IsDramatization(gloss) || titlerule.IsCollection(bracketed) || tieIn.MatchString(gloss):
-		return "", "", false
-	}
-	if _, stated := titlerule.EditionLanguage(bracketed); stated {
-		return "", "", false
-	}
-	for _, name := range seriesNames {
-		if titlerule.SameSeriesName(name, gloss) {
-			return "", "", false
-		}
-	}
-	key := titlerule.FoldKey(gloss)
-	for _, r := range w.Recordings {
-		if p := titlerule.FoldKey(r.Publisher); p != "" && (strings.Contains(p, key) || strings.Contains(key, p)) {
-			return "", "", false
-		}
-	}
-	if len(functionWordsIn(head, exclusiveFunctionWords["en"])) > 0 {
-		return "", "", false
-	}
-	return head, gloss, true
-}
-
-// functionWords are each language's commonest FUNCTION words - articles, prepositions,
-// conjunctions - the closed vocabulary titleFunctionWords reads. Every non-English list
-// is used net of the English one (exclusiveFunctionWords), so a word English spells too
-// ("in", "an", "do", "die", "den", "sin", "per") is never evidence of another language,
-// and one-letter ASCII words are left out of every non-English list (an "a", an "o" and
-// an "e" are initials as often as words). It is evidence for an advisory proposal and
-// nothing else: no writer reads a language from it.
-var functionWords = map[string][]string{
-	"en": {"the", "a", "an", "of", "and", "to", "in", "on", "for", "with", "at", "by", "or", "nor", "from",
-		"is", "are", "am", "was", "be", "my", "your", "his", "her", "its", "our", "their", "this", "that",
-		"it", "i", "you", "we", "they", "he", "she", "not", "no", "how", "what", "when", "where", "who",
-		"why", "into", "through", "about", "up", "out", "over", "after", "before", "under", "as", "if", "so",
-		"do", "than", "then", "die", "den", "sin", "per", "con", "me", "us"},
-	"de": {"der", "das", "des", "dem", "ein", "eine", "einer", "eines", "einem", "einen", "und", "mit", "von",
-		"vom", "zum", "zur", "im", "aus", "auf", "bei", "nach", "für", "über", "unter", "durch", "ist",
-		"nicht", "oder", "zu", "wie", "wenn", "sich", "auch"},
-	"es": {"el", "los", "las", "del", "la", "de", "y", "en", "para", "por", "una", "un", "sobre", "que",
-		"al", "su", "sus", "mi"},
-	"fr": {"le", "les", "la", "des", "du", "de", "un", "une", "et", "au", "aux", "en", "dans", "pour", "par",
-		"sur", "avec", "sans", "qui", "que", "est", "ne", "pas", "mon", "ma", "mes", "son", "sa", "ses"},
-	"it": {"il", "lo", "gli", "la", "le", "della", "delle", "degli", "dello", "dei", "del", "di", "nel",
-		"nella", "nei", "negli", "una", "uno", "un", "è", "che", "alla", "allo", "alle", "sul", "sulla",
-		"tra", "fra", "da", "dal", "dalla"},
-	"pt": {"os", "do", "da", "dos", "das", "um", "uma", "de", "em", "na", "nas", "nos", "para", "por", "com",
-		"sem", "que", "ao", "à", "é"},
-	"nl": {"de", "het", "een", "van", "en", "met", "voor", "naar", "uit", "bij", "niet", "zijn", "op", "te"},
-	"da": {"det", "en", "et", "og", "af", "med", "til", "på", "fra", "som", "er"},
-	"sv": {"det", "en", "ett", "och", "av", "med", "till", "på", "från", "som", "är", "för", "att"},
-}
-
-// exclusiveFunctionWords is functionWords as sets, every non-English list net of the
-// English one and of its one-letter ASCII words.
-var exclusiveFunctionWords = func() map[string]map[string]bool {
-	en := map[string]bool{}
-	for _, w := range functionWords["en"] {
-		en[w] = true
-	}
-	out := map[string]map[string]bool{"en": en}
-	for lang, words := range functionWords {
-		if lang == "en" {
-			continue
-		}
-		set := map[string]bool{}
-		for _, w := range words {
-			if en[w] || len(w) == 1 { // one BYTE: an ASCII letter, never "à" or "é"
-				continue
-			}
-			set[w] = true
-		}
-		out[lang] = set
-	}
-	return out
-}()
-
-// functionWordsIn is the distinct words of text in set, sorted. Words are maximal runs
-// of letters, lower-cased, so an elision ("d'amour", "l'ombra") splits at its apostrophe.
-func functionWordsIn(text string, set map[string]bool) []string {
-	var out []string
-	for _, w := range strings.FieldsFunc(strings.ToLower(text), func(r rune) bool { return !unicode.IsLetter(r) }) {
-		if set[w] {
-			out = append(out, w)
-		}
-	}
-	return sortedUnique(out)
-}
-
-// titleFunctionWords is the evidence that a title is in lang: the distinct function
-// words of lang (net of English) its title and subtitle carry outside their bracketed
-// groups - at least two of them, and not one English function word - or nil.
-func titleFunctionWords(w *model.Work, lang string) []string {
-	set := exclusiveFunctionWords[lang]
-	if set == nil || lang == "en" {
-		return nil
-	}
-	text := titlerule.StripParenGroups(w.Title + " : " + w.Subtitle)
-	if len(functionWordsIn(text, exclusiveFunctionWords["en"])) > 0 {
-		return nil
-	}
-	if words := functionWordsIn(text, set); len(words) >= 2 {
-		return words
-	}
-	return nil
-}
 
 // noteTitleLanguage records title evidence that w is in lang.
 func (m *langMix) noteTitleLanguage(w *model.Work, lang, why string) {
@@ -211,7 +71,7 @@ func (m *langMix) editionStatements() {
 			continue
 		}
 		m.st.TitleEdition++
-		m.noteTitleLanguage(w, lang, fmt.Sprintf("the title %q states the %s edition", titleOf(w), lang))
+		m.noteTitleLanguage(w, lang, fmt.Sprintf("the title %q states the %s edition", editionText(w), lang))
 	}
 }
 
@@ -233,11 +93,11 @@ func (m *langMix) seriesTitles(s *model.Series, byLang map[string][]model.Series
 			continue
 		}
 		var evidence []string
-		if head, gloss, ok := glossOf(w, m.seriesNames(w)); ok {
+		if head, gloss, ok := titlerule.GlossOf(w.Title, recordingPublishers(w), m.seriesNames(w)); ok {
 			evidence = append(evidence, fmt.Sprintf("its title %q is glossed [%s], the English translation of a title that is not English", head, gloss))
 		}
-		if words := titleFunctionWords(w, lang); len(words) > 0 {
-			evidence = append(evidence, fmt.Sprintf("its title %q carries %s function words (%s) and no English ones", titleOf(w), lang, strings.Join(words, ", ")))
+		if words := titlerule.TitleFunctionWords(lang, w.Title, w.Subtitle); len(words) > 0 {
+			evidence = append(evidence, fmt.Sprintf("its title %q carries %s function words (%s) and no English ones", editionText(w), lang, strings.Join(words, ", ")))
 		}
 		if len(evidence) == 0 {
 			continue
@@ -273,44 +133,62 @@ func (m *langMix) seriesNames(w *model.Work) []string {
 	return out
 }
 
-// titleOf is a work's title and subtitle as one string, for a reason.
-func titleOf(w *model.Work) string {
-	if w.Subtitle == "" {
-		return w.Title
+// recordingPublishers is the publishers of record of a work's recordings.
+func recordingPublishers(w *model.Work) []string {
+	out := make([]string, 0, len(w.Recordings))
+	for _, r := range w.Recordings {
+		out = append(out, r.Publisher)
 	}
-	return w.Title + ": " + w.Subtitle
+	return out
 }
 
 // titleLanguageFinding is the title-language record of a work no narration finding
 // names: one set-work-language proposal when the evidence names one language, a review
 // when it names several. Advisory either way, with the narrators' verdict in the reason.
 func (m *langMix) titleLanguageFinding(w *model.Work, c *languageCandidate) Finding {
-	tos := sortedKeys(c.titled)
-	fd := Finding{Subclass: lMixTitle, Key: w.ID, Works: []WorkRef{m.ix.workRef(w, "")}}
-	for _, to := range tos {
-		fd.Notes = append(fd.Notes, "-> "+to+" (title): "+strings.Join(c.titled[to], "; "))
-	}
+	fd := Finding{Subclass: lMixTitle, Key: w.ID, Works: []WorkRef{m.ix.workRef(w, "")}, Notes: titleNotes(c)}
 	if c.evidence.Total > 0 {
 		fd.Notes = append(fd.Notes, "the narrators' recordings of other works: "+evidenceText(c.evidence))
 	}
 	if cs := c.contested; len(cs) > 0 {
 		fd.Notes = append(fd.Notes, "a minority member of a series whose keeper language is contested: "+strings.Join(sortedUnique(cs), "; "))
 	}
-	if len(tos) != 1 {
-		fd.Propose = Proposal{Op: OpReview, Target: w.ID, Field: fieldLanguage, From: w.Language, Advisory: true,
-			Reason: "the title evidence names several languages this work could be (" + strings.Join(tos, ", ") + "); a human decides"}
-		return fd
-	}
-	to := tos[0]
-	verdict := "the narrators' other recordings settle nothing"
-	switch d := c.evidence.Dominant(); {
-	case c.evidence.Contradicts(to):
-		verdict = fmt.Sprintf("its narrators record in %s (%s), which contradicts %s", d, evidenceText(c.evidence), to)
-	case d != "":
-		verdict = fmt.Sprintf("its narrators record in %s too (%s)", d, evidenceText(c.evidence))
-	}
-	fd.Propose = Proposal{Op: OpSetWorkLanguage, Target: w.ID, Field: fieldLanguage, From: w.Language, To: to, Advisory: true,
-		Reason: fmt.Sprintf("the title says %s: %s; %s. A title is not a language, so a reviewed decision is what applies this",
-			to, strings.Join(c.titled[to], "; "), verdict)}
+	fd.Propose = languageProposal(w, sortedKeys(c.titled), "title evidence", func(to string) string {
+		verdict := "the narrators' other recordings settle nothing"
+		switch d := c.evidence.Dominant(); {
+		case c.evidence.Contradicts(to):
+			verdict = fmt.Sprintf("its narrators record in %s (%s), which contradicts %s", d, evidenceText(c.evidence), to)
+		case d != "":
+			verdict = fmt.Sprintf("its narrators record in %s too (%s)", d, evidenceText(c.evidence))
+		}
+		return fmt.Sprintf("the title says %s: %s; %s. A title is not a language, so a reviewed decision is what applies this",
+			to, strings.Join(c.titled[to], "; "), verdict)
+	})
 	return fd
+}
+
+// titleNotes renders a candidate's title evidence, one note per language.
+func titleNotes(c *languageCandidate) []string {
+	var out []string
+	for _, to := range sortedKeys(c.titled) {
+		out = append(out, "-> "+to+" (title): "+strings.Join(c.titled[to], "; "))
+	}
+	return out
+}
+
+// languageReview is the advisory review of a work's language a set-work-language
+// proposal becomes when the evidence does not settle on one language.
+func languageReview(w *model.Work, reason string) Proposal {
+	return Proposal{Op: OpReview, Target: w.ID, Field: fieldLanguage, From: w.Language, Advisory: true, Reason: reason}
+}
+
+// languageProposal is the set-work-language proposal for one language, always advisory,
+// or the review of several - evidence names what was read ("evidence", "title
+// evidence"), and reason renders the proposal's reason for its one language.
+func languageProposal(w *model.Work, tos []string, evidence string, reason func(to string) string) Proposal {
+	if len(tos) != 1 {
+		return languageReview(w, "the "+evidence+" names several languages this work could be ("+strings.Join(tos, ", ")+"); a human decides")
+	}
+	return Proposal{Op: OpSetWorkLanguage, Target: w.ID, Field: fieldLanguage, From: w.Language, To: tos[0], Advisory: true,
+		Reason: reason(tos[0])}
 }

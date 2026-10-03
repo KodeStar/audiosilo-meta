@@ -1152,39 +1152,33 @@ func (m *langMix) languageFindings() {
 			}
 			continue
 		}
-		tos := sortedKeys(want)
-		ev := c.evidence
+		union := map[string]bool{}
+		for to := range want {
+			union[to] = true
+		}
+		for to := range c.titled {
+			union[to] = true
+		}
+		tos := sortedKeys(union)
 		fd := Finding{
 			Subclass: lMixNarration,
 			Key:      id,
 			Works:    []WorkRef{m.ix.workRef(w, "")},
 		}
-		for _, to := range tos {
+		for _, to := range sortedKeys(want) {
 			fd.Notes = append(fd.Notes, "-> "+to+": "+want[to])
 		}
-		for _, to := range sortedKeys(c.titled) {
-			fd.Notes = append(fd.Notes, "-> "+to+" (title): "+strings.Join(c.titled[to], "; "))
-			if _, have := want[to]; !have {
-				tos = append(tos, to)
-			}
+		fd.Notes = append(fd.Notes, titleNotes(c)...)
+		if cs := c.contested; len(cs) > 0 {
+			fd.Notes = append(fd.Notes, "a minority member of a series whose keeper language is contested: "+strings.Join(sortedUnique(cs), "; "))
 		}
-		slices.Sort(tos)
-		if c := m.wantLanguage[id].contested; len(c) > 0 {
-			fd.Notes = append(fd.Notes, "a minority member of a series whose keeper language is contested: "+strings.Join(sortedUnique(c), "; "))
-		}
-		dominant := ev.Dominant()
-		switch {
-		case len(tos) != 1:
-			fd.Propose = Proposal{Op: OpReview, Target: id, Field: fieldLanguage, From: w.Language, Advisory: true,
-				Reason: "the evidence names several languages this work could be (" + strings.Join(tos, ", ") + "); a human decides"}
-		case model.PrimarySubtag(tos[0]) != dominant:
-			fd.Propose = Proposal{Op: OpReview, Target: id, Field: fieldLanguage, From: w.Language, Advisory: true,
-				Reason: fmt.Sprintf("the stated evidence names %s but the narrators record in %s; a human decides", tos[0], dominant)}
-		default:
-			fd.Propose = Proposal{Op: OpSetWorkLanguage, Target: id, Field: fieldLanguage, From: w.Language, To: tos[0],
-				Advisory: true,
-				Reason: "never inferred: narrator evidence can withhold a change but never make one, so a reviewed " +
-					"decision is what applies this"}
+		if dominant := c.evidence.Dominant(); len(tos) == 1 && model.PrimarySubtag(tos[0]) != dominant {
+			fd.Propose = languageReview(w, fmt.Sprintf("the stated evidence names %s but the narrators record in %s; a human decides", tos[0], dominant))
+		} else {
+			fd.Propose = languageProposal(w, tos, "evidence", func(string) string {
+				return "never inferred: narrator evidence can withhold a change but never make one, so a reviewed " +
+					"decision is what applies this"
+			})
 		}
 		m.f.add(fd)
 	}

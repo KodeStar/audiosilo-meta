@@ -2,6 +2,7 @@ package titlerule
 
 import (
 	"regexp"
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -109,15 +110,26 @@ func NamesALanguage(text string) bool {
 	if slug == "--" {
 		return false
 	}
-	for _, words := range []map[string]string{model.LanguageWords(), editionOnlyWords} {
-		for word := range words {
-			if strings.Contains(slug, "-"+model.SlugifyWhole(word)+"-") {
-				return true
-			}
+	for _, needle := range languageNeedles {
+		if strings.Contains(slug, needle) {
+			return true
 		}
 	}
 	return false
 }
+
+// languageNeedles are NamesALanguage's language words, slugified and hyphen-bounded
+// once ("-german-", "-castilian-spanish-").
+var languageNeedles = func() []string {
+	var out []string
+	for _, words := range []map[string]string{model.LanguageWords(), editionOnlyWords} {
+		for word := range words {
+			out = append(out, "-"+model.SlugifyWhole(word)+"-")
+		}
+	}
+	slices.Sort(out)
+	return out
+}()
 
 // StripEditionLanguage removes every own-language edition decoration EditionLanguage
 // reads from a text and tidies what is left: "Families First, Volume 2 (German
