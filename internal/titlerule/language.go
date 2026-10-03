@@ -25,7 +25,10 @@ import (
 // ("edición en español" 12, "edizione italiana" 1), "Castilian Spanish" (one series
 // name and six titles) and "Fench" - a real misspelling, carried by ONE series name
 // in the tree ("[Fench Edition]"), and read as French because the decoration states
-// nothing else. A bilingual statement ("English and Spanish Edition", seven titles)
+// nothing else. "Persian Edition" (two work titles, 2026-10-03, both tagged en and
+// read by Persian narrators) is here rather than in the importer's table for the
+// same reason: no libex wave has asked for a Persian mapping, and an edition word
+// is a statement about one title, not a language the importer accepts. A bilingual statement ("English and Spanish Edition", seven titles)
 // names no one language and is deliberately absent, as is every non-language
 // edition ("AmazonClassics Edition", "Second Edition").
 
@@ -34,6 +37,7 @@ import (
 var editionOnlyWords = map[string]string{
 	"castilian-spanish": "es",
 	"fench":             "fr", // one series name in the tree; see the file comment
+	"persian":           "fa", // two work titles in the tree; see the file comment
 }
 
 // editionLanguagePhrases is every decoration the rule reads, keyed by the slug of the
@@ -91,6 +95,28 @@ func EditionLanguageOfDecoration(decor string) string {
 		decor = decor[i+1:]
 	}
 	return editionLanguagePhrases[decor]
+}
+
+// NamesALanguage reports whether a text names a language the edition vocabulary knows
+// (model.LanguageWords plus the edition-only words) as a whole word, once its own
+// edition decorations are gone: "Learn German: By Reading Fantasy (German Edition)"
+// does, "Steelheart [German Edition]" does not. A title that names a language is very
+// often a language COURSE ("101 Conversations in Simple Spanish"), whose edition
+// decoration names the language taught rather than the language read, which is why
+// internal/audit reads no title-language evidence from one.
+func NamesALanguage(text string) bool {
+	slug := "-" + model.SlugifyWhole(StripEditionLanguage(text)) + "-"
+	if slug == "--" {
+		return false
+	}
+	for _, words := range []map[string]string{model.LanguageWords(), editionOnlyWords} {
+		for word := range words {
+			if strings.Contains(slug, "-"+model.SlugifyWhole(word)+"-") {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // StripEditionLanguage removes every own-language edition decoration EditionLanguage

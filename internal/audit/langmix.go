@@ -78,6 +78,10 @@ import (
 // whole catalogue - a work whose EVERY recording states one other language (the
 // Rubinrot shape: work en, recording de) and whose narrators contradict the work's.
 // It is ALWAYS advisory: a language is only ever set by a reviewed decision.
+// TITLE-LANGUAGE (titlelang.go) is its sibling for the works whose own TITLE says so -
+// an own-language edition decoration, or an en-tagged member of a non-English series
+// titled in that language - always advisory too, and folded into a narration record
+// for the same work rather than emitted beside it.
 
 // L-MIX subclasses.
 const (
@@ -86,6 +90,9 @@ const (
 	lMixTargets   = "several-targets"
 	lMixSplit     = "no-target"
 	lMixNarration = "narration-contradicts"
+	// lMixTitle is the set-work-language proposal a work's own TITLE supports and no
+	// narration-contradicts record names (titlelang.go), always advisory.
+	lMixTitle = "title-language"
 	// lMixOtherKeeper is a split's ALTERNATE orientation: another language keeping the
 	// slug of a contested (or tied) series, always advisory, so a reviewer accepts
 	// exactly one orientation of the series.
@@ -134,6 +141,10 @@ type langMixStats struct {
 	CrossWorks           int // ...over this many works
 	AllOther             int // works whose every recording states one other language
 	AllOtherContradicted int // ...whose narrators contradict the work's language
+	TitleEdition         int // works whose title states another language's edition than their tag
+	TitleCourse          int // ...withheld: the title names a language (a course)
+	TitleSeries          int // en-tagged members of a non-English mixed series whose title is not English
+	TitleProposals       int // title-language records (title evidence no narration record names)
 }
 
 // mixLocks are the records another class proposes to change MECHANICALLY in this
@@ -209,6 +220,9 @@ type languageCandidate struct {
 	reasons  map[string]string
 	// contested names the contested series the work is a minority member of.
 	contested []string
+	// titled is the TITLE evidence (titlelang.go): each language the title says the
+	// work is in, and why.
+	titled map[string][]string
 }
 
 func (m *langMix) languageCandidate(w *model.Work) *languageCandidate {
@@ -251,6 +265,7 @@ func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 	}
 	m.settleContestedMoves()
 	m.otherLanguageWorks()
+	m.editionStatements()
 	m.languageFindings()
 	return m.f, m.st
 }
@@ -311,6 +326,7 @@ func (m *langMix) series(s *model.Series) {
 			m.st.TieByDecoration++
 		}
 	}
+	m.seriesTitles(s, byLang, keeper, how)
 	seriesVetoes := m.seriesVetoes(s, byLang, keeper, how)
 	var ct contest
 	if how == keepMajority {
@@ -1120,16 +1136,24 @@ func (m *langMix) otherLanguageWorks() {
 	}
 }
 
-// languageFindings emits one narration-contradicts record per work, in work order.
+// languageFindings emits one set-work-language record per work, in work order: a
+// narration-contradicts record where the narrators support one (title evidence folded
+// into its notes, and a title naming another language making it a review), else a
+// title-language record where the title alone does.
 func (m *langMix) languageFindings() {
 	for _, id := range sortedKeys(m.wantLanguage) {
 		w := m.ix.workByID[id]
-		want := m.wantLanguage[id].reasons
+		c := m.wantLanguage[id]
+		want := c.reasons
 		if len(want) == 0 {
+			if len(c.titled) > 0 {
+				m.st.TitleProposals++
+				m.f.add(m.titleLanguageFinding(w, c))
+			}
 			continue
 		}
 		tos := sortedKeys(want)
-		ev := m.languageCandidate(w).evidence
+		ev := c.evidence
 		fd := Finding{
 			Subclass: lMixNarration,
 			Key:      id,
@@ -1138,6 +1162,13 @@ func (m *langMix) languageFindings() {
 		for _, to := range tos {
 			fd.Notes = append(fd.Notes, "-> "+to+": "+want[to])
 		}
+		for _, to := range sortedKeys(c.titled) {
+			fd.Notes = append(fd.Notes, "-> "+to+" (title): "+strings.Join(c.titled[to], "; "))
+			if _, have := want[to]; !have {
+				tos = append(tos, to)
+			}
+		}
+		slices.Sort(tos)
 		if c := m.wantLanguage[id].contested; len(c) > 0 {
 			fd.Notes = append(fd.Notes, "a minority member of a series whose keeper language is contested: "+strings.Join(sortedUnique(c), "; "))
 		}
