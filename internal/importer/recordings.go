@@ -182,6 +182,34 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 			return w.ws, true
 		}
 	}
+	// Last, the catalogued works whose own qualified title cleans to the row's
+	// (qualifiedCatalogueWalk, resolveWork's own arm): an alternate narration
+	// "Jesus Listens (Narrated by Cy Reader)" of a work catalogued only as "Jesus
+	// Listens (Narrated by Bea Reader)" - exactly what this pass exists for.
+	for i, title := range []string{b.str("title_short"), b.str("title")} {
+		if title == "" || (i == 1 && title == b.str("title_short")) || len(p.qualifiedCatalogueTitles(title)) == 0 {
+			continue
+		}
+		if !resolved {
+			authors = p.rowWorkAuthorsRO(p.rowAuthorCredits(b))
+			if len(authors.all) == 0 {
+				return nil, false
+			}
+			resolved = true
+		}
+		// The TITLE is catalogued (a stored title cleans to it), so a miss below is
+		// the slug arm's own category - a catalogued title with no work under it for
+		// these credits - which is what SkippedTitleNoMatch reports. A miss can also be
+		// two matching works (qualifiedCatalogueWalk's ambiguity rule); the category
+		// still holds, since the title is catalogued and the row needs a human.
+		titleHit = true
+		if w, ok := p.qualifiedCatalogueWalk(title, b.qualifiedTitle, authors, rowLang, nil); ok {
+			if w.via != "" {
+				p.noteTombstone(model.RedirectWorks, w.via, w.ws.slug)
+			}
+			return w.ws, true
+		}
+	}
 	return nil, titleHit
 }
 
@@ -232,6 +260,12 @@ func workTitleCandidates(b sourceBook) []string {
 			seen[cand] = true
 			out = append(out, cand)
 		}
+	}
+	// The QUALIFIED title last, after every cleaned form, so a plain twin wins: a
+	// work catalogued under its qualified title alone is reachable only through it
+	// (sourceBook.qualifiedTitle).
+	if q := b.qualifiedTitle; q != "" && !seen[q] {
+		out = append(out, q)
 	}
 	return out
 }

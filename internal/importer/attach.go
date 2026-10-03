@@ -127,7 +127,7 @@ func (p *planner) attachFor(ctx creditContext, b sourceBook, workTitle string) (
 	}
 	// The create path's own resolution, read-only: the row's title chain (and its
 	// full title's, as a merge target) lands on the occupant.
-	if p.resolveWork(workTitle, b.str("title"), "", authors, lang, nil).ws == ws {
+	if p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, "", authors, lang, nil).ws == ws {
 		return ws, occupant
 	}
 	// The duplicate-identity guard's catalogue half: the row's normalized

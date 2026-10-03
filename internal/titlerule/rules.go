@@ -167,6 +167,13 @@ func dropWideGenreSubtitle(s string) string {
 // series may be "" - a work with no membership and no series name embedded in its
 // title still gets its markers and fluff removed.
 //
+// The two product QUALIFIERS come off first - a marketplace edition and a narrator
+// credit, each only as a whole segment, quoted run or bracketed group - and a leading
+// brand possessive is folded ("Tom Clancy's" compares as "Tom Clancy"): see
+// qualifiers.go for the rules and their measurement. The fold is Clean's alone, so a
+// caller of CompareKey on a raw title (SameUntranslatedTitle, SameModuloArticles) does
+// not get it.
+//
 // THE SERIES REMOVAL IS BOUNDARY-ANCHORED, through the very rule the retitle
 // proposal uses (stripSeriesAtBoundary): a whole leading segment, a whole trailing
 // segment or a whole bracketed group, never an excision from the middle. It used to
@@ -185,9 +192,19 @@ func dropWideGenreSubtitle(s string) string {
 // Iron Druid Chronicles") no longer meets the plain twin it decorates. That is the
 // right way round - a refused cluster is re-findable, a wrong merge deletes a record.
 func Clean(title, series string) string {
-	s := dropWideGenreSubtitle(title)
+	s := dropWideGenreSubtitle(StripTitleQualifiers(title))
 	if series != "" {
 		s = stripSeriesAtBoundary(s, SeriesForms(series))
+	}
+	// The brand fold runs AFTER the series strip: a series whose own name carries the
+	// possessive ("Tom Clancy's Op-Center") must still come off "Tom Clancy's
+	// Op-Center: Dark Zone". When the fold does change the title it is read against the
+	// series once more, for a series spelled without the possessive.
+	if f := foldBrandPossessive(s); f != s {
+		s = f
+		if series != "" {
+			s = stripSeriesAtBoundary(s, SeriesForms(series))
+		}
 	}
 	s = CleanTitle(s, "")
 	s = dropStrayBrackets(s)
@@ -1173,7 +1190,7 @@ func ProposeTitle(title, series string) (string, bool) {
 // codes for what each one is and why.
 func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 	orig := strings.TrimSpace(title)
-	s := dropWideGenreSubtitle(orig)
+	s := dropWideGenreSubtitle(StripTitleQualifiers(orig))
 	if series != "" {
 		if SameModuloArticles(orig, series) {
 			return "", RefuseIsSeriesName, false
@@ -1218,6 +1235,8 @@ const (
 	DecSeriesName    = "series-name"
 	DecVolume        = "volume-marker"
 	DecEdition       = "edition-marker"
+	DecMarketEdition = "marketplace-edition"
+	DecNarrator      = "narrator-qualifier"
 	DecGenreSubtitle = "genre-subtitle"
 	DecTrailingPunct = "trailing-separator"
 )
@@ -1273,6 +1292,10 @@ var decorations = []struct {
 	// be the same question. A hand-written version here had already drifted (it
 	// made the brackets optional and missed stacked markers).
 	{DecEdition, func(f TitleFacts) bool { return HasEditionMarker(f.Title) }},
+	// The two product qualifiers (qualifiers.go): a marketplace edition and a narrator
+	// credit, each standing as a whole segment, quoted run or bracketed group.
+	{DecMarketEdition, func(f TitleFacts) bool { return dropsQualifier(f.Title, dropMarketEdition) }},
+	{DecNarrator, func(f TitleFacts) bool { return dropsQualifier(f.Title, dropNarratorQualifier) }},
 	{DecGenreSubtitle, func(f TitleFacts) bool { return dropWideGenreSubtitle(f.Title) != f.Title }},
 	{DecTrailingPunct, func(f TitleFacts) bool { return trailingSeparatorRE.MatchString(f.Title) }},
 }

@@ -223,7 +223,7 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 			slug = homes[0]
 			identityHomes[i] = slug
 		} else {
-			walk := p.resolveWork(titles[i], b.str("title"), suffixes[i], authors, lang, claim)
+			walk := p.resolveWork(titles[i], b.str("title"), b.qualifiedTitle, suffixes[i], authors, lang, claim)
 			slug = walk.free
 			if walk.ws != nil {
 				slug = walk.ws.slug
@@ -254,7 +254,7 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 			walk = workWalk{ws: p.works[target]}
 		}
 		if walk.ws == nil {
-			walk = p.resolveWork(titles[i], b.str("title"), suffixes[i], authors, lang, claim)
+			walk = p.resolveWork(titles[i], b.str("title"), b.qualifiedTitle, suffixes[i], authors, lang, claim)
 		}
 		if walk.ws == nil {
 			p.relocation.newWorks[target] = true

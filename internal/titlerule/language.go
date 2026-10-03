@@ -38,7 +38,7 @@ import (
 var editionOnlyWords = map[string]string{
 	"castilian-spanish": "es",
 	"fench":             "fr", // one series name in the tree; see the file comment
-	"persian":           "fa", // two work titles in the tree; see the file comment
+	"persian":           "fa", // two work titles in the tree, read by L-MIX title-language and the W-DUP edition-language veto; see the file comment
 }
 
 // editionLanguagePhrases is every decoration the rule reads, keyed by the slug of the

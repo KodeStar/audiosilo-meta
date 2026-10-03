@@ -47,7 +47,7 @@ func TestDecodeHTMLEntities(t *testing.T) {
 // publisher, series name, credits, chapter titles - must reach the record and
 // the slug decoded.
 func TestLibexEntityTextImportsDecoded(t *testing.T) {
-	row := `{"asin":"B0BS4HL89H","title":"The Doomsday Key &quot;International Edition&quot;",` +
+	row := `{"asin":"B0BS4HL89H","title":"The &quot;Doomsday&quot; Key",` +
 		`"subtitle":"A Sigma Force Novel &amp; More","region":"us","language":"english","bookFormat":"unabridged",` +
 		`"releaseDate":"2020-01-01 00:00:00+00","lengthMinutes":600,"publisher":"Simon &amp; Schuster Audio",` +
 		`"authors":[{"name":"Jos&eacute; Rollins"}],"narrators":[{"name":"Christian&nbsp;Baskous"}],` +
@@ -57,13 +57,15 @@ func TestLibexEntityTextImportsDecoded(t *testing.T) {
 	if sum.NewWorks != 1 {
 		t.Fatalf("NewWorks = %d, want 1: %+v", sum.NewWorks, sum)
 	}
-	const workSlug = "the-doomsday-key-international-edition"
+	// The quoted word is not a qualifier: "&quot;International Edition&quot;" would be
+	// stripped before identity now (cleanWorkTitle), which is not this test's subject.
+	const workSlug = "the-doomsday-key"
 	var work struct {
 		Title   string
 		Authors []string
 	}
 	readEntity(t, dataDir, workAddr(workSlug), &work)
-	if work.Title != `The Doomsday Key "International Edition"` {
+	if work.Title != `The "Doomsday" Key` {
 		t.Errorf("work title = %q, want the decoded text", work.Title)
 	}
 	if len(work.Authors) != 1 || work.Authors[0] != "jose-rollins" {

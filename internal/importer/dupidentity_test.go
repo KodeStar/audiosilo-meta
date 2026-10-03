@@ -6,6 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
 
 // dupidentity_test.go pins the CREATE path's duplicate-identity guard on the shape
@@ -412,5 +414,325 @@ func TestOtherModesAreUntouchedByTheGuard(t *testing.T) {
 	}
 	if sum.NewRecordings != 1 {
 		t.Errorf("NewRecordings = %d, want 1: the alternate narration must land", sum.NewRecordings)
+	}
+}
+
+// The two title QUALIFIERS (titlerule's qualifiers.go) are stripped before work
+// identity (cleanWorkTitle, through titlerule.StripTitleQualifiers), so a
+// marketplace-edition or narrator-qualified listing of a catalogued book RESOLVES to
+// it and is judged by the ordinary recording rules - attached as a new narration, or
+// merged by ASIN into the same production - rather than refused by the duplicate
+// guard or minted beside it (48 of the 51 tree titles carrying "International Edition" have such a twin: 47 newly clustered, plus "Go Tell the Bees That I Am Gone", already clustered). The
+// brand possessive is a comparison rule only, so a brand respelling still meets the
+// duplicate guard.
+func TestQualifiedListingsAttachToTheCataloguedWork(t *testing.T) {
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0QUALIF01", title: "The Search", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 568},
+		libexRow{asin: "B0QUALIF02", title: "Tom Clancy's Oath of Office", authors: `{"name":"Bo Two"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 900},
+	)); sum.NewWorks != 2 {
+		t.Fatalf("seed run: NewWorks = %d, want 2", sum.NewWorks)
+	}
+	for _, c := range []struct {
+		row  libexRow
+		want string // "merge": the ASIN joins the same production; "recording": a new narration
+	}{
+		// The same narrator within the runtime tolerance is the same production.
+		{libexRow{asin: "B0QUALIF03", title: "The Search: International Edition", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 527}, "merge"},
+		{libexRow{asin: "B0QUALIF04", title: "The Search “International Edition”", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Cy Reader"}`, minutes: 530}, "recording"},
+		{libexRow{asin: "B0QUALIF05", title: "The Search, Read by Dee Reader", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Dee Reader"}`, minutes: 560}, "recording"},
+	} {
+		before := len(recSlugsOf(t, dataDir, "the-search"))
+		sum := runLibexInto(t, dataDir, rows(c.row))
+		if sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 {
+			t.Errorf("%q: NewWorks = %d, SkippedDuplicateIdentity = %d, want 0 and 0; warnings = %v",
+				c.row.title, sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
+		}
+		if c.want == "recording" && (sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "the-search")) != before+1) {
+			t.Errorf("%q: NewRecordings = %d, want a new recording under the-search", c.row.title, sum.NewRecordings)
+		}
+		if c.want == "merge" && sum.MergedASINs != 1 {
+			t.Errorf("%q: MergedASINs = %d, want the ASIN merged into the same production", c.row.title, sum.MergedASINs)
+		}
+	}
+	// The brand fold is the identity KEY's, not the work title's: refused, not attached.
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0QUALIF06", title: "Tom Clancy Oath of Office", authors: `{"name":"Bo Two"}`,
+			narrators: `{"name":"Eve Reader"}`, minutes: 905},
+	))
+	if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+		t.Errorf("brand respelling: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+	// A title that merely USES the words is no qualifier, and is its own book.
+	sum = runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0QUALIF07", title: "Narrated by the Author: The Search", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 300},
+	))
+	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("a lead-in opening a title: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
+// A title that is NOTHING but a qualifier keeps itself: stripping would leave no title.
+func TestABareQualifierTitleKeepsItsTitle(t *testing.T) {
+	for _, title := range []string{`"International Edition"`, "(Narrated by Jane Doe)"} {
+		if got := cleanWorkTitle(title); got != title {
+			t.Errorf("cleanWorkTitle(%q) = %q, want it unchanged", title, got)
+		}
+	}
+	for title, want := range map[string]string{
+		"The Search: International Edition (Unabridged)": "The Search",
+		"ESV Audio Bible, Read by Ray Ortlund":           "ESV Audio Bible",
+		"Murder: Read by Candlelight":                    "Murder: Read by Candlelight",
+		// A marker standing BEFORE the qualifier comes off once the qualifier has.
+		"The Search (Unabridged), Read by Dee Reader": "The Search",
+		// A volume riding after the credit keeps the credit: it is no name.
+		"The Search, Read by Dee Reader, Book Two": "The Search, Read by Dee Reader, Book Two",
+	} {
+		if got := cleanWorkTitle(title); got != want {
+			t.Errorf("cleanWorkTitle(%q) = %q, want %q", title, got, want)
+		}
+	}
+}
+
+// lonelyBookTree seeds a work catalogued under its QUALIFIED title alone - the shape
+// every import before the qualifier strip created - plus, when withTwin is set, the
+// plain twin a cleaned title reaches first.
+func lonelyBookTree(t *testing.T, withTwin bool) string {
+	t.Helper()
+	files := map[string]string{}
+	add := func(id, title string) {
+		files["works/"+shard(id)+"/"+id+"/work.json"] = testpack.WorkJSON(t, id, title, testpack.WithAuthors("ada-mapmaker"))
+		files["works/"+shard(id)+"/"+id+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500))
+	}
+	add("lonely-book-international-edition", "Lonely Book: International Edition")
+	if withTwin {
+		add("lonely-book", "Lonely Book")
+	}
+	return seedTombstoneTree(t, files, nil)
+}
+
+// A work catalogued under its qualified title ALONE stays reachable: the cleaned
+// title's chain holds nothing, so resolveWork walks the qualified title as a merge
+// target (sourceBook.qualifiedTitle) and the row takes the ordinary ASIN-merge or
+// new-recording path - in create mode and in the recordings-only pass alike - rather
+// than being refused by the duplicate-identity guard its key still trips.
+func TestAQualifiedOnlyWorkStaysReachable(t *testing.T) {
+	const title = "Lonely Book: International Edition"
+	dataDir := lonelyBookTree(t, false)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0LONELY01", title: title,
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Bea Reader"}`, minutes: 505}))
+	if sum.MergedASINs != 1 || sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 {
+		t.Errorf("same production: MergedASINs = %d, NewWorks = %d, SkippedDuplicateIdentity = %d, want 1, 0, 0; warnings = %v",
+			sum.MergedASINs, sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
+	}
+	sum = runLibexInto(t, dataDir, rows(libexRow{asin: "B0LONELY02", title: title,
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Cy Reader"}`, minutes: 480}))
+	if sum.NewRecordings != 1 || sum.NewWorks != 0 || len(recSlugsOf(t, dataDir, "lonely-book-international-edition")) != 2 {
+		t.Errorf("another narration: NewRecordings = %d, NewWorks = %d, want a new recording under the qualified work; warnings = %v",
+			sum.NewRecordings, sum.NewWorks, sum.Warnings)
+	}
+	sum = runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly}, libexRow{asin: "B0LONELY03", title: title,
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Dee Reader"}`, minutes: 470}.render())
+	if sum.NewRecordings != 1 || sum.SkippedNoWork != 0 {
+		t.Errorf("recordings-only: NewRecordings = %d, SkippedNoWork = %d, want 1 and 0; warnings = %v",
+			sum.NewRecordings, sum.SkippedNoWork, sum.Warnings)
+	}
+}
+
+// With a plain twin catalogued too, the CLEANED title's walk wins: the qualified
+// chain is only ever a fallback.
+func TestAPlainTwinWinsOverTheQualifiedWork(t *testing.T) {
+	dataDir := lonelyBookTree(t, true)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0LONELY04", title: "Lonely Book: International Edition",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Cy Reader"}`, minutes: 480}))
+	if sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "lonely-book")) != 2 ||
+		len(recSlugsOf(t, dataDir, "lonely-book-international-edition")) != 1 {
+		t.Errorf("NewRecordings = %d; want the new narration under the plain twin; warnings = %v", sum.NewRecordings, sum.Warnings)
+	}
+}
+
+// A row naming ANOTHER narrator than the qualified-only work's title does spells a
+// different qualified slug, so its own pre-qualifier title cannot reach the work; the
+// catalogued work whose title cleans to exactly the row's is walked instead.
+func TestAnotherNarratorReachesANarratorQualifiedWork(t *testing.T) {
+	const id = "jesus-listens-narrated-by-bea-reader"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Jesus Listens (Narrated by Bea Reader)",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300)),
+	}, nil)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0JESUS001", title: "Jesus Listens (Narrated by Cy Reader)",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Cy Reader"}`, minutes: 310}))
+	if sum.NewRecordings != 1 || sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, id)) != 2 {
+		t.Errorf("NewRecordings = %d, NewWorks = %d, SkippedDuplicateIdentity = %d, want a new recording under %s; warnings = %v",
+			sum.NewRecordings, sum.NewWorks, sum.SkippedDuplicateIdentity, id, sum.Warnings)
+	}
+}
+
+// Two qualified-only works cleaning to one title decide nothing: neither is offered as
+// a merge target, so nothing is attached to either and the row meets the duplicate
+// guard as it did before the qualifier strip - whose own ambiguity rule lets it
+// through to found a work of its own.
+func TestSeveralQualifiedWorksDecideNothing(t *testing.T) {
+	files := map[string]string{}
+	for _, w := range [][2]string{
+		{"jesus-listens-narrated-by-bea-reader", "Jesus Listens (Narrated by Bea Reader)"},
+		{"jesus-listens-narrated-by-cy-reader", "Jesus Listens (Narrated by Cy Reader)"},
+	} {
+		id := w[0]
+		files["works/"+shard(id)+"/"+id+"/work.json"] = testpack.WorkJSON(t, id, w[1], testpack.WithAuthors("ada-mapmaker"))
+		files["works/"+shard(id)+"/"+id+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300))
+	}
+	dataDir := seedTombstoneTree(t, files, nil)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0JESUS002", title: "Jesus Listens (Narrated by Dee Reader)",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Dee Reader"}`, minutes: 310}))
+	for _, id := range []string{"jesus-listens-narrated-by-bea-reader", "jesus-listens-narrated-by-cy-reader"} {
+		if recs := recSlugsOf(t, dataDir, id); len(recs) != 1 {
+			t.Errorf("%s holds recordings %v: the row was attached to one of two candidates", id, recs)
+		}
+	}
+	// The guard's ambiguity rule lets a row whose key names several works through, so
+	// it founds its own work - exactly what it did before the qualifier strip.
+	if sum.MergedASINs != 0 || sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("MergedASINs = %d, SkippedDuplicateIdentity = %d, NewWorks = %d, want 0, 0, 1; warnings = %v",
+			sum.MergedASINs, sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}
+
+// Two qualified-only works cleaning to one title but by DIFFERENT authors are not
+// ambiguous to a row by one of them: only the works that clear the walk (authors,
+// language) count, as the duplicate guard counts only MATCHING works - so the row
+// reaches its own author's work rather than being refused as its duplicate.
+func TestQualifiedWorksOfAnotherAuthorAreNoAmbiguity(t *testing.T) {
+	files := map[string]string{}
+	for _, w := range [][3]string{
+		{"jesus-listens-narrated-by-bea-reader", "Jesus Listens (Narrated by Bea Reader)", "ada-mapmaker"},
+		{"jesus-listens-narrated-by-cy-reader", "Jesus Listens (Narrated by Cy Reader)", "zed-other"},
+	} {
+		id := w[0]
+		files["works/"+shard(id)+"/"+id+"/work.json"] = testpack.WorkJSON(t, id, w[1], testpack.WithAuthors(w[2]))
+		files["works/"+shard(id)+"/"+id+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300))
+	}
+	files["people/ze/zed-other.json"] = testpack.PersonJSON(t, "zed-other", "Zed Other")
+	dataDir := seedTombstoneTree(t, files, nil)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0JESUS003", title: "Jesus Listens (Narrated by Dee Reader)",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Dee Reader"}`, minutes: 310}))
+	if sum.NewRecordings != 1 || sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 ||
+		len(recSlugsOf(t, dataDir, "jesus-listens-narrated-by-bea-reader")) != 2 {
+		t.Errorf("NewRecordings = %d, NewWorks = %d, SkippedDuplicateIdentity = %d, want a new recording under the author's work; warnings = %v",
+			sum.NewRecordings, sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
+	}
+}
+
+// The recordings-only pass - the alternate-narration pass - reaches a work catalogued
+// only under ANOTHER narrator's qualified title, as the create path does.
+func TestRecordingsOnlyReachesANarratorQualifiedWork(t *testing.T) {
+	const id = "jesus-listens-narrated-by-bea-reader"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Jesus Listens (Narrated by Bea Reader)",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300)),
+	}, nil)
+	sum := runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly}, libexRow{asin: "B0JESUS004",
+		title: "Jesus Listens (Narrated by Cy Reader)", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Cy Reader"}`, minutes: 310}.render())
+	if sum.NewRecordings != 1 || sum.SkippedNoWork != 0 || len(recSlugsOf(t, dataDir, id)) != 2 {
+		t.Errorf("NewRecordings = %d, SkippedNoWork = %d, want a new recording under %s; warnings = %v",
+			sum.NewRecordings, sum.SkippedNoWork, id, sum.Warnings)
+	}
+}
+
+// A qualified-only work whose title opens with its series' name is keyed by the
+// identity index under the SERIES-stripped key, so a lookup by the row's bare title
+// key never met it; the catalogued arm is an exact cleaned-title lookup instead, and
+// a row naming another narrator reaches the work rather than being refused as its
+// duplicate.
+func TestASeriesTitledQualifiedWorkStaysReachable(t *testing.T) {
+	const id = "dragon-saga-ember-narrated-by-bea-reader"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Dragon Saga: Ember (Narrated by Bea Reader)",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300)),
+		"series/dr/dragon-saga.json": testpack.SeriesJSON(t, "dragon-saga", "Dragon Saga", id+"@1"),
+	}, nil)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0DRAGON01", title: "Dragon Saga: Ember (Narrated by Cy Reader)",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Cy Reader"}`, minutes: 310,
+		series: `{"name":"Dragon Saga","position":"1"}`}))
+	if sum.NewRecordings != 1 || sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, id)) != 2 {
+		t.Errorf("NewRecordings = %d, NewWorks = %d, SkippedDuplicateIdentity = %d, want a new recording under %s; warnings = %v",
+			sum.NewRecordings, sum.NewWorks, sum.SkippedDuplicateIdentity, id, sum.Warnings)
+	}
+}
+
+// plainBookTree seeds the plain "Lonely Book" alone.
+func plainBookTree(t *testing.T) string {
+	t.Helper()
+	const id = "lonely-book"
+	return seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Lonely Book", testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(500)),
+	}, nil)
+}
+
+// libex serves its text entity-encoded, so the quoted qualifier arrives as
+// "&quot;International Edition&quot;". The text is decoded BEFORE cleanWorkTitle reads
+// it (runBooks decodes first), which is the only order in which the quoted run is a
+// qualifier at all: the row resolves to the catalogued "Lonely Book".
+func TestAnEntityEncodedQualifierIsDecodedBeforeCleaning(t *testing.T) {
+	dataDir := plainBookTree(t)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0LONELY10", title: "Lonely Book: &quot;International Edition&quot;",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Cy Reader"}`, minutes: 480}))
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(recSlugsOf(t, dataDir, "lonely-book")) != 2 {
+		t.Errorf("NewWorks = %d, NewRecordings = %d, want a new recording under lonely-book; warnings = %v",
+			sum.NewWorks, sum.NewRecordings, sum.Warnings)
+	}
+}
+
+// The qualified-title index (planner.qualifiedByClean) holds only CATALOGUED works
+// and is never invalidated, which is sound because a work this run creates always
+// carries a cleaned title: a later row naming it with a qualifier cleans to that
+// title and meets it on the ordinary slug chain, in either row order.
+func TestARunCreatedWorkIsReachedByAQualifiedRowOfTheSameRun(t *testing.T) {
+	plain := libexRow{asin: "B0FRESH001", title: "Fresh Book", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Bea Reader"}`, minutes: 400}
+	qualified := libexRow{asin: "B0FRESH002", title: "Fresh Book: International Edition", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Cy Reader"}`, minutes: 380}
+	for name, order := range map[string][]libexRow{"plain first": {plain, qualified}, "qualified first": {qualified, plain}} {
+		dataDir := seedTombstoneTree(t, map[string]string{}, nil)
+		sum := runLibexInto(t, dataDir, rows(order...))
+		if sum.NewWorks != 1 || sum.NewRecordings != 2 || len(recSlugsOf(t, dataDir, "fresh-book")) != 2 {
+			t.Errorf("%s: NewWorks = %d, NewRecordings = %d, want one work fresh-book holding both; warnings = %v",
+				name, sum.NewWorks, sum.NewRecordings, sum.Warnings)
+		}
+	}
+}
+
+// A recordings-only row whose cleaned title a catalogued QUALIFIED title cleans to,
+// but whose credits match no work under it, is counted as a catalogued title with no
+// matching work (SkippedTitleNoMatch) - the same category the slug arm uses when a
+// bare slug is taken by another author's book, and the actionable one.
+func TestRecordingsOnlyCountsAQualifiedTitleMismatch(t *testing.T) {
+	dataDir := lonelyBookTree(t, false)
+	sum := runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly}, libexRow{asin: "B0LONELY11",
+		title: "Lonely Book, Read by Cy Reader", authors: `{"name":"Zed Other"}`,
+		narrators: `{"name":"Cy Reader"}`, minutes: 480}.render())
+	if sum.NewRecordings != 0 || sum.SkippedNoWork != 1 || sum.SkippedTitleNoMatch != 1 {
+		t.Errorf("NewRecordings = %d, SkippedNoWork = %d, SkippedTitleNoMatch = %d, want 0, 1, 1; warnings = %v",
+			sum.NewRecordings, sum.SkippedNoWork, sum.SkippedTitleNoMatch, sum.Warnings)
 	}
 }
