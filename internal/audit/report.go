@@ -125,7 +125,9 @@ var classDoc = map[string]string{
 		"CONTESTED majority (a keeper member states a translation, the halves share no author, or the principal author writes mostly in " +
 		"a minority language) or a conflicting proposal of another class makes a proposal advisory; every mixed series' " +
 		"split is also proposed in every other orientation (other-keeper), for a reviewer to accept exactly one. A work whose " +
-		"language its narrators contradict is a set-work-language review, never applied mechanically.",
+		"language its narrators contradict, or whose own title says it is in another language (an own-language edition decoration " +
+		"of another language, read on a work of ANY tag; or, for EN-TAGGED members only, the language of a non-English mixed series " +
+		"the title is written in), is a set-work-language review, never applied mechanically.",
 	ClassPersonDup:  "possible duplicate people. ADVISORY throughout, high false-positive rate: two real people can share a name or sit one typo apart, so nothing here proposes an action.",
 	ClassRefSidecar: "works-community sidecar hazards: a spoiler-gated sidecar attached to a work that turns out to be one of a duplicate pair, or keyed by a work slug nothing holds.",
 	ClassHygiene:    "field-level gaps and slug-convention oddities.",
@@ -350,6 +352,10 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 		{Label: "... over this many works", N: mx.CrossWorks},
 		{Label: "works whose every recording states one other language", N: mx.AllOther},
 		{Label: "... whose narrators contradict the work's language", N: mx.AllOtherContradicted},
+		{Label: "works whose title states another language's edition than their tag", N: mx.TitleEdition},
+		{Label: "... withheld: the title names a language (a course)", N: mx.TitleCourse},
+		{Label: "en-tagged works in a non-English mixed series titled in its language (each work once)", N: mx.TitleSeries},
+		{Label: "set-work-language proposals from title evidence alone (title-language)", N: mx.TitleProposals},
 	})
 	b.WriteString("\n")
 
