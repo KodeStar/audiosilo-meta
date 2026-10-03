@@ -3629,6 +3629,10 @@
             {
               "asin": "B002VA8TWS",
               "region": "us"
+            },
+            {
+              "asin": "B079VNHS2L",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3758,6 +3762,11 @@
               "imported_at": "2026-07-30",
               "ref": "B002VA8TWS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B079VNHS2L",
+              "type": "libex-import"
             }
           ],
           "work": "finger-lickin-fifteen"
@@ -3820,6 +3829,51 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0032N2VKY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "finger-lickin-fifteen"
+        },
+        "lorelei-king-2012": {
+          "abridged": true,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B006WOMZPG",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3931464,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3987934,
+              "start_ms": 3931464,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4020767,
+              "start_ms": 7919398,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VzSzwyHuL.jpg",
+          "id": "lorelei-king-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lorelei-king"
+          ],
+          "publisher": "Review",
+          "release_date": "2012-01-12",
+          "runtime_min": 198,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B006WOMZPG",
               "type": "libex-import"
             }
           ],

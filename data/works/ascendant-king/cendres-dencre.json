@@ -12989,6 +12989,10 @@
             {
               "asin": "B008ALBSRU",
               "region": "us"
+            },
+            {
+              "asin": "B008ALAY98",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -13188,6 +13192,11 @@
               "imported_at": "2026-07-30",
               "ref": "B008ALBSRU",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B008ALAY98",
+              "type": "libex-import"
             }
           ],
           "work": "centurion-eagles-of-the-empire-8"
@@ -13237,6 +13246,65 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B006WOO2A2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "centurion-eagles-of-the-empire-8"
+        },
+        "steven-pacey-2012-2": {
+          "abridged": true,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B006WON0PK",
+              "region": "uk"
+            },
+            {
+              "asin": "B006WOMYGQ",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4437612,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3882237,
+              "start_ms": 4437612,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4423494,
+              "start_ms": 8319849,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4287425,
+              "start_ms": 12743343,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51+19ZhJGTL.jpg",
+          "id": "steven-pacey-2012-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steven-pacey"
+          ],
+          "publisher": "Headline",
+          "release_date": "2012-01-12",
+          "runtime_min": 283,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B006WON0PK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B006WOMYGQ",
               "type": "libex-import"
             }
           ],
