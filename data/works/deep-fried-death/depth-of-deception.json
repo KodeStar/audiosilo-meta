@@ -902,6 +902,112 @@
             {
               "asin": "B07FDNZ95S",
               "region": "us"
+            },
+            {
+              "asin": "B07FDH5HQ8",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 10922,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 22236,
+              "start_ms": 10922,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 1974207,
+              "start_ms": 33158,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1798153,
+              "start_ms": 2007365,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1867720,
+              "start_ms": 3805518,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1760072,
+              "start_ms": 5673238,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1748369,
+              "start_ms": 7433310,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1816589,
+              "start_ms": 9181679,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1727703,
+              "start_ms": 10998268,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1729422,
+              "start_ms": 12725971,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1098257,
+              "start_ms": 14455393,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2208357,
+              "start_ms": 15553650,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1683725,
+              "start_ms": 17762007,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1751341,
+              "start_ms": 19445732,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1570272,
+              "start_ms": 21197073,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1352051,
+              "start_ms": 22767345,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1729886,
+              "start_ms": 24119396,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1839763,
+              "start_ms": 25849282,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 831990,
+              "start_ms": 27689045,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 30027,
+              "start_ms": 28521035,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/718eNmvPX2L.jpg",
@@ -918,6 +1024,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B07FDNZ95S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B07FDH5HQ8",
               "type": "libex-import"
             }
           ],
@@ -3269,6 +3380,66 @@
         }
       ],
       "title": "Depthless Hunger 3"
+    },
+    "depthless-hunger-4": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "sarah-lin"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
+      "id": "depthless-hunger-4",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-davis-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HB6GPNFM",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HB7CLZ6F",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FQn2BfrmL.jpg",
+          "id": "jonathan-davis-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-davis"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2026-10-13",
+          "runtime_min": 1815,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HB6GPNFM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HB7CLZ6F",
+              "type": "libex-import"
+            }
+          ],
+          "work": "depthless-hunger-4"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0HB6GPNFM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Depthless Hunger 4"
     },
     "depths": {
       "added_at": "2026-08-01",

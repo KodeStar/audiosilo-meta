@@ -10532,6 +10532,10 @@
             {
               "asin": "B00XK3GO4U",
               "region": "us"
+            },
+            {
+              "asin": "B0793GNSQQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10801,6 +10805,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00XK3GO4U",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0793GNSQQ",
+              "type": "libex-import"
             }
           ],
           "work": "sword-of-the-north"
@@ -10812,6 +10821,10 @@
             {
               "asin": "B011SRLSK4",
               "region": "us"
+            },
+            {
+              "asin": "B011SQRDTK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11080,6 +11093,38 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B011SRLSK4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B011SQRDTK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sword-of-the-north"
+        },
+        "mark-elstob-2027": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HKLP7FZD",
+              "region": "uk"
+            }
+          ],
+          "id": "mark-elstob-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-elstob"
+          ],
+          "publisher": "Head of Zeus",
+          "release_date": "2027-02-15",
+          "runtime_min": 900,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HKLP7FZD",
               "type": "libex-import"
             }
           ],

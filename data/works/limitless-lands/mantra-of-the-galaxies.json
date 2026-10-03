@@ -8394,6 +8394,10 @@
             {
               "asin": "B0036KS9PO",
               "region": "us"
+            },
+            {
+              "asin": "B079VF4P17",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8543,6 +8547,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0036KS9PO",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B079VF4P17",
+              "type": "libex-import"
             }
           ],
           "work": "map-of-bones"
@@ -8602,6 +8611,61 @@
           ],
           "work": "map-of-bones"
         },
+        "kerry-shale-2007-2": {
+          "abridged": true,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B004ELXQIE",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4784657,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4754750,
+              "start_ms": 4784657,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4738310,
+              "start_ms": 9539407,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4734642,
+              "start_ms": 14277717,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4741282,
+              "start_ms": 19012359,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/610LZ3h7sUL.jpg",
+          "id": "kerry-shale-2007-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kerry-shale"
+          ],
+          "publisher": "Orion Publishing Group Limited",
+          "release_date": "2007-01-25",
+          "runtime_min": 395,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B004ELXQIE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "map-of-bones"
+        },
         "l-j-ganser-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8609,6 +8673,10 @@
             {
               "asin": "B0BV43Z39D",
               "region": "us"
+            },
+            {
+              "asin": "B0BV3VVH98",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8742,6 +8810,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BV43Z39D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0BV3VVH98",
               "type": "libex-import"
             }
           ],

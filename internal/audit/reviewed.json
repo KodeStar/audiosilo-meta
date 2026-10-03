@@ -252,6 +252,273 @@
     "target": "den-hedenske-herre"
   },
   {
+    "decision": "accept",
+    "field": "position",
+    "from": "5-8",
+    "op": "drop-membership",
+    "others": [
+      "disgardium-2"
+    ],
+    "reason": "the English boxed sets are already homed in disgardium-2 at the same positions; no Russian original is catalogued, so neither translation is moved further",
+    "series": "disgardium",
+    "target": "disgardium-series-boxed-set-books-5-8"
+  },
+  {
+    "decision": "accept",
+    "field": "position",
+    "from": "9-12",
+    "op": "drop-membership",
+    "others": [
+      "disgardium-2"
+    ],
+    "reason": "the English boxed sets are already homed in disgardium-2 at the same positions; no Russian original is catalogued, so neither translation is moved further",
+    "series": "disgardium",
+    "target": "disgardium-series-boxed-set-books-9-12"
+  },
+  {
+    "decision": "accept",
+    "field": "position",
+    "from": "1-4",
+    "op": "drop-membership",
+    "others": [
+      "disgardium-2"
+    ],
+    "reason": "the English boxed sets are already homed in disgardium-2 at the same positions; no Russian original is catalogued, so neither translation is moved further",
+    "series": "disgardium",
+    "target": "disgardium-series-disgardium-series-boxed-set"
+  },
+  {
+    "decision": "reject",
+    "field": "position",
+    "from": "3",
+    "op": "drop-membership",
+    "others": [
+      "universo-reina-roja"
+    ],
+    "reason": "this drop would take the Spanish original out of its own series and leave antonia-scott English-only: the English translation is the half that moves",
+    "series": "antonia-scott",
+    "target": "rey-blanco"
+  },
+  {
+    "decision": "reject",
+    "field": "position",
+    "from": "2",
+    "op": "drop-membership",
+    "others": [
+      "the-edge-of-glass"
+    ],
+    "reason": "this drop would leave the French translation holding the slug: the English original keeps it and the French book is split out",
+    "series": "edge-of-glass",
+    "target": "to-dance-with-death"
+  },
+  {
+    "decision": "reject",
+    "field": "position",
+    "from": "1",
+    "op": "drop-membership",
+    "others": [
+      "wolves-of-the-zodiac-german-edition"
+    ],
+    "reason": "this drop removes the one German book from a series named for its German edition; the four English members are the misfiled half",
+    "series": "zodiac-wolves-german-edition",
+    "target": "vom-mond-beruhrt-moon-touched"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "a-column-of-fire-a-kingsbridge-novel"
+    ],
+    "reason": "the same Ken Follett book catalogued twice; the two records sit in two Kingsbridge reading-order spellings, which is no evidence of two books",
+    "target": "a-column-of-fire"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "prince-caspian-abridged",
+      "prince-caspian-unabridged"
+    ],
+    "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
+    "target": "prince-caspian"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "green-ember"
+    ],
+    "reason": "Green Ember (2025, Jake Phillips) is the subtitle-less record of Green Ember: Helmer in the Dragon Tomb, a different book than The Green Ember",
+    "target": "the-green-ember"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-horse-and-his-boy-abridged",
+      "the-horse-and-his-boy-unabridged"
+    ],
+    "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
+    "target": "the-horse-and-his-boy"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-last-battle-abridged",
+      "the-last-battle-unabridged"
+    ],
+    "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
+    "target": "the-last-battle"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-lion-the-witch-and-the-wardrobe-abridged"
+    ],
+    "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
+    "target": "the-lion-the-witch-and-the-wardrobe"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-magicians-nephew-abridged",
+      "the-magicians-nephew-unabridged"
+    ],
+    "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
+    "target": "the-magicians-nephew"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-silver-chair-abridged",
+      "the-silver-chair-unabridged"
+    ],
+    "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
+    "target": "the-silver-chair"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-voyage-of-the-dawn-treader-abridged",
+      "the-voyage-of-the-dawn-treader-unabridged"
+    ],
+    "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
+    "target": "the-voyage-of-the-dawn-treader"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "tom-clancy-oath-of-office-jack-ryan-novel-series-book-19"
+    ],
+    "reason": "the same Marc Cameron Jack Ryan book; the two records sit in two Jack Ryan reading-order series, which is no evidence of two books",
+    "target": "tom-clancys-oath-of-office"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "world-without-end-a-kingsbridge-novel"
+    ],
+    "reason": "the same Ken Follett book catalogued twice; the two records sit in two Kingsbridge reading-order spellings, which is no evidence of two books",
+    "target": "world-without-end-ken-follett"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a Portuguese title in a Portuguese series, narrated by Maria Jose dos Santos: the en tag is the error",
+    "target": "anjo-negro-alado-winged-black-angel",
+    "to": "pt"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "Portuguese chapter titles and Brazilian narrators in a Portuguese series: the en tag is the error",
+    "target": "desespero-despair",
+    "to": "pt"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a Mandarin Companion graded reader in simplified Chinese, narrated by Zhang Xiuye: the en tag is the error",
+    "target": "emma-mandarin-companion-graded-readers-level-1-simplified-character-edition-chinese-edition",
+    "to": "zh"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "an Italian title from Tektime narrated by Marcellino Vicari in an Italian series: the en tag is the error",
+    "target": "il-cuore-spezzato-di-arelium",
+    "to": "it"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a Spanish title with an English gloss narrated by Sebastian Llanos in a Spanish series: the en tag is the error",
+    "target": "la-expedicion-de-sabina-para-deterner-el-apocalipsis-sabinas-expedition-to-stop-the-apocalypse",
+    "to": "es"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a Spanish title with an English gloss, narrated by Ely Garcia in a Spanish series: the en tag is the error",
+    "target": "la-odisea-the-odyssey",
+    "to": "es"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a Persian edition read by Babak Ghahremani: the en tag is the error",
+    "target": "the-gambler-persian-edition",
+    "to": "fa"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a Mandarin Companion graded reader in simplified Chinese, narrated by Zhang Xiuye: the en tag is the error",
+    "target": "the-prince-and-the-pauper-mandarin-companion-graded-readers-level-1-simplified-character-edition-chi",
+    "to": "zh"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a French edition whose narrators record in French elsewhere: the en tag is the error",
+    "target": "the-snow-queen-french-edition",
+    "to": "fr"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "set-work-language",
+    "reason": "a Persian edition read by Hamed Faal and Maryam Mahboob: the en tag is the error",
+    "target": "white-nights-persian-edition",
+    "to": "fa"
+  },
+  {
     "decision": "reject",
     "field": "language",
     "from": "pt",
@@ -261,6 +528,31 @@
     ],
     "reason": "the moving member Desespero [Despair] is a Portuguese book tagged English: the work language is the error, not the membership",
     "target": "a-modern-age-fairytale-portuguese-edition",
+    "to": "en"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "rosenrot-mausetot",
+      "sonne-mord-und-sterne"
+    ],
+    "reason": "James Patterson writes in English: the two German translations move out and the English original keeps the slug",
+    "target": "alex-cross",
+    "to": "de"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "es",
+    "op": "split-series",
+    "others": [
+      "black-wolf-a-novel"
+    ],
+    "reason": "Juan Gomez-Jurado writes in Spanish: the Spanish original keeps the slug and the English translation Black Wolf moves out",
+    "target": "antonia-scott",
     "to": "en"
   },
   {
@@ -274,6 +566,18 @@
     "reason": "a language-learning series: its books teach one language through another, so a language split separates one series by its subject",
     "target": "baumgartner-momsen-mystery",
     "to": "de"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "un-otono-en-bramble-falls"
+    ],
+    "reason": "Misty Wilson writes in English: the Spanish translation (translator credited) moves out and the English book keeps the slug",
+    "target": "bramble-falls",
+    "to": "es"
   },
   {
     "decision": "reject",
@@ -309,6 +613,43 @@
     ],
     "reason": "the series name is German (Die Racher): the German volume belongs here and the English members are the misfiled half, already listed in reckoners",
     "target": "die-racher",
+    "to": "de"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "der-tag-der-verschworer",
+      "flammenhochzeit"
+    ],
+    "reason": "two unrelated franchises of one name (Rebecca Shelley's English series and Peter Lerf's German series): the incumbent English series keeps the slug and the German volumes move to their own series",
+    "target": "dragonbound",
+    "to": "de"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "a-dance-of-lies-brittney-arena"
+    ],
+    "reason": "Brittney Arena writes in English: the French translation (Audiolib, translator credited) moves out and the English book keeps the slug",
+    "target": "edge-of-glass",
+    "to": "fr"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "das-gift-der-sunde"
+    ],
+    "reason": "Andrew Bridgeman writes in English: the German translation (translator credited) moves out and the English original keeps the slug",
+    "target": "emma-noble",
     "to": "de"
   },
   {
@@ -386,6 +727,25 @@
     "to": "en"
   },
   {
+    "decision": "accept",
+    "field": "language",
+    "from": "sv",
+    "op": "split-series",
+    "others": [
+      "the-girl-in-the-eagles-talons",
+      "the-girl-in-the-spiders-web",
+      "the-girl-who-kicked-the-hornets-nest",
+      "the-girl-who-lived-twice",
+      "the-girl-who-played-with-fire",
+      "the-girl-who-takes-an-eye-for-an-eye",
+      "the-girl-with-ice-in-her-veins",
+      "the-girl-with-the-dragon-tattoo"
+    ],
+    "reason": "Millennium is Swedish-original (Larsson, Lagercrantz, Smirnoff): the eight English translations move out and the Swedish original keeps the slug",
+    "target": "millennium",
+    "to": "en"
+  },
+  {
     "decision": "reject",
     "field": "language",
     "from": "en",
@@ -411,6 +771,24 @@
     "to": "es"
   },
   {
+    "decision": "accept",
+    "field": "language",
+    "from": "fr",
+    "op": "split-series",
+    "others": [
+      "germinal",
+      "lassommoir-the-drinking-den",
+      "money-emile-zola",
+      "nana",
+      "the-belly-of-paris",
+      "the-bright-side-of-life",
+      "the-ladies-paradise"
+    ],
+    "reason": "Zola wrote in French: the seven English translations move out and the French originals keep the slug",
+    "target": "rougon-macquart",
+    "to": "en"
+  },
+  {
     "decision": "reject",
     "field": "language",
     "from": "en",
@@ -423,6 +801,18 @@
     "to": "es"
   },
   {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "the-crimson-throne"
+    ],
+    "reason": "Sara Raasch and Beth Revis write in English: the German translation (translator credited) moves out and the English book keeps the slug",
+    "target": "spy-and-guardian",
+    "to": "de"
+  },
+  {
     "decision": "reject",
     "field": "language",
     "from": "en",
@@ -433,5 +823,17 @@
     "reason": "a language-learning series (my adventure en francais): a language split separates one series by its subject",
     "target": "the-merde-trilogy-my-adventure-en-francais",
     "to": "fr"
+  },
+  {
+    "decision": "accept",
+    "field": "language",
+    "from": "en",
+    "op": "split-series",
+    "others": [
+      "mathias-sandorf"
+    ],
+    "reason": "no French original is catalogued: the single German audio play moves out and the English translations stay together",
+    "target": "voyages-extraordinaires",
+    "to": "de"
   }
 ]
