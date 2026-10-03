@@ -500,7 +500,7 @@ type SeriesAuthorIndex struct {
 	// qualified is the QUALIFIER index (seriesqualified.go), built from
 	// qualifiedFrom on first use (qualifiedIndex).
 	qualified     qualifiedIndex
-	qualifiedFrom []*model.Series
+	qualifiedFrom []qualifiedSource
 }
 
 // NewSeriesAuthorIndex builds the index over cat. A nil catalogue is an empty
@@ -570,7 +570,7 @@ func newSeriesAuthorIndex(cat *model.Catalog, names map[string]string) *SeriesAu
 		}
 	}
 	ix.large = largeHouses(counts, len(cat.Works))
-	ix.qualifiedFrom = cat.Series
+	ix.qualifiedFrom = qualifiedSources(cat.Series)
 	return ix
 }
 

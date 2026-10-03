@@ -285,6 +285,23 @@ func TestOrderingReachesAPrimaryByItsOwnOrdering(t *testing.T) {
 	if m := resolveIn(unstated, "Drenai (Published Order)", "en"); m.Found {
 		t.Errorf("a claim reached %s, which states no ordering", m.Slug)
 	}
+	// A non-variant in a chronological or recommended order - by its field or by
+	// its name alone - is a reading order: an unqualified claim's position is not
+	// one of its slots, so only a claim stating that order reaches it. (The ids sit
+	// off every claim's chain, so the index alone decides.)
+	for claim, s := range map[string]*model.Series{
+		"Drenai (Chronological Order)": {ID: "drenai-ro", Name: "Drenai (chronological)", Ordering: model.OrderingChronological, Works: members()},
+		"Drenai [Chronological]":       {ID: "drenai-ro", Name: "Drenai (chronological)", Works: members()},
+		"Drenai (Reading Order)":       {ID: "drenai-ro", Name: "Drenai (Recommended Listening Order)", Works: members()},
+	} {
+		cat := gemmell(s)
+		if m := resolveIn(cat, "Drenai", "en"); m.Found {
+			t.Errorf("an unqualified claim reached the reading order %q", s.Name)
+		}
+		if m := resolveIn(cat, claim, "en"); !m.Found || m.Slug != s.ID {
+			t.Errorf("%q, stating %q's own order, resolved to %+v", claim, s.Name, m)
+		}
+	}
 }
 
 // A TIED series has no language facet: it is reached by its name alone, as before.

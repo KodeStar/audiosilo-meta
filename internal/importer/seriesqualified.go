@@ -20,8 +20,12 @@ import (
 //     tied series has no language facet and is not indexed, so it is reached by its
 //     name alone and its ordering facet is unreachable too;
 //   - a VARIANT (ordering_of) is indexed under its stated ordering only, so no
-//     unqualified claim reaches a reading order; a non-variant is indexed under no
-//     ordering and under its own (the field, else its name's qualifier);
+//     unqualified claim reaches a reading order; a non-variant is indexed under its
+//     own (the field, else its name's qualifier) and, when that is publication
+//     order or none, under no ordering too. A chronological or recommended
+//     non-variant ("Vorkosigan Saga (chronological)", stating no ordering_of) is a
+//     reading order whatever its fields say, so it too is reached only by a claim
+//     stating that order - an unqualified claim's position is not one of its slots;
 //   - a claim asks with its name's base and ordering, and with its decoration's
 //     language, else its row's (an unknown language asks nothing);
 //   - what it reaches only ADDS candidates, after the chain's (resolveSeriesGroup's
@@ -37,23 +41,40 @@ type qualifierKey struct{ name, language, ordering string }
 // sorted.
 type qualifiedIndex map[string]map[qualifierKey][]string
 
+// qualifiedSource is what the index reads of one catalogued series - copied out
+// of the record, so a SeriesAuthorIndex that never builds the index does not keep
+// the catalogue's series (and their membership lists) alive for its lifetime.
+type qualifiedSource struct{ id, name, ordering, orderingOf string }
+
+// qualifiedSources is the index's input over a catalogue's series, nil for none.
+func qualifiedSources(series []*model.Series) []qualifiedSource {
+	if len(series) == 0 {
+		return nil
+	}
+	out := make([]qualifiedSource, len(series))
+	for i, s := range series {
+		out[i] = qualifiedSource{s.ID, s.Name, s.Ordering, s.OrderingOf}
+	}
+	return out
+}
+
 // buildQualified indexes series; language is each series' derived language.
 // Every series it reads is live, so a lookup needs no liveness check.
-func buildQualified(series []*model.Series, language map[string]string) qualifiedIndex {
+func buildQualified(series []qualifiedSource, language map[string]string) qualifiedIndex {
 	out := qualifiedIndex{}
 	for _, s := range series {
-		q := titlerule.ReadSeriesQualifiers(s.Name)
+		q := titlerule.ReadSeriesQualifiers(s.name)
 		base := titlerule.NewSeriesName(q.Base)
 		lang := q.Language
 		if lang == "" {
-			lang = model.PrimarySubtag(language[s.ID])
+			lang = model.PrimarySubtag(language[s.id])
 		}
 		if base.Slug() == "" || lang == "" {
 			continue
 		}
-		ordering := cmp.Or(s.Ordering, q.Ordering)
+		ordering := cmp.Or(s.ordering, q.Ordering)
 		orderings := []string{ordering}
-		if s.OrderingOf == "" && ordering != "" {
+		if s.orderingOf == "" && ordering == model.OrderingPublication {
 			orderings = append(orderings, "")
 		}
 		keys := out[base.Slug()]
@@ -63,7 +84,7 @@ func buildQualified(series []*model.Series, language map[string]string) qualifie
 		}
 		for _, o := range orderings {
 			k := qualifierKey{base.Key(), lang, o}
-			keys[k] = append(keys[k], s.ID)
+			keys[k] = append(keys[k], s.id)
 		}
 	}
 	for _, keys := range out {
