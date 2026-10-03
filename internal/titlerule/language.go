@@ -25,7 +25,9 @@ import (
 // ("edición en español" 12, "edizione italiana" 1), "Castilian Spanish" (one series
 // name and six titles) and "Fench" - a real misspelling, carried by ONE series name
 // in the tree ("[Fench Edition]"), and read as French because the decoration states
-// nothing else. A bilingual statement ("English and Spanish Edition", seven titles)
+// nothing else - and "Persian", the one language a work title in the tree names
+// ("The Gambler [Persian Edition]", "White Nights (Persian Edition)") that the
+// importer's table does not map. A bilingual statement ("English and Spanish Edition", seven titles)
 // names no one language and is deliberately absent, as is every non-language
 // edition ("AmazonClassics Edition", "Second Edition").
 
@@ -34,6 +36,11 @@ import (
 var editionOnlyWords = map[string]string{
 	"castilian-spanish": "es",
 	"fench":             "fr", // one series name in the tree; see the file comment
+	// Two work titles in the tree ("The Gambler [Persian Edition]", "White Nights
+	// (Persian Edition)"), both mis-tagged `en`: the one language a decoration in the
+	// tree names that the importer's table does not map, and the statement W-DUP's
+	// language veto reads to keep a translation from being merged into its original.
+	"persian": "fa",
 }
 
 // editionLanguagePhrases is every decoration the rule reads, keyed by the slug of the

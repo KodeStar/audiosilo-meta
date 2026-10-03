@@ -414,3 +414,45 @@ func TestOtherModesAreUntouchedByTheGuard(t *testing.T) {
 		t.Errorf("NewRecordings = %d, want 1: the alternate narration must land", sum.NewRecordings)
 	}
 }
+
+// The two title QUALIFIERS (titlerule's qualifiers.go) are identity-free for the create
+// guard too: a marketplace-edition listing and a narrator-qualified listing of a
+// catalogued book are refused rather than minted beside it, and a brand spelled without
+// its possessive meets the possessive record. Before the rules each of these minted a
+// sibling work (the tree held 47 "International Edition" twins).
+func TestCreateRefusesQualifiedListingsOfACataloguedWork(t *testing.T) {
+	dataDir := t.TempDir()
+	if sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0QUALIF01", title: "The Search", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 568},
+		libexRow{asin: "B0QUALIF02", title: "Tom Clancy's Oath of Office", authors: `{"name":"Bo Two"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 900},
+	)); sum.NewWorks != 2 {
+		t.Fatalf("seed run: NewWorks = %d, want 2", sum.NewWorks)
+	}
+	for _, row := range []libexRow{
+		{asin: "B0QUALIF03", title: "The Search: International Edition", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 527},
+		{asin: "B0QUALIF04", title: "The Search “International Edition”", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Cy Reader"}`, minutes: 530},
+		{asin: "B0QUALIF05", title: "The Search, Read by Dee Reader", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Dee Reader"}`, minutes: 560},
+		{asin: "B0QUALIF06", title: "Tom Clancy Oath of Office", authors: `{"name":"Bo Two"}`,
+			narrators: `{"name":"Eve Reader"}`, minutes: 905},
+	} {
+		sum := runLibexInto(t, dataDir, rows(row))
+		if sum.SkippedDuplicateIdentity != 1 || sum.NewWorks != 0 {
+			t.Errorf("%q: SkippedDuplicateIdentity = %d, NewWorks = %d, want 1 and 0; warnings = %v",
+				row.title, sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+		}
+	}
+	// A title that merely USES the words is no qualifier, and is its own book.
+	sum := runLibexInto(t, dataDir, rows(
+		libexRow{asin: "B0QUALIF07", title: "Narrated by the Author: The Search", authors: `{"name":"Ada One"}`,
+			narrators: `{"name":"Ann Reader"}`, minutes: 300},
+	))
+	if sum.SkippedDuplicateIdentity != 0 || sum.NewWorks != 1 {
+		t.Errorf("a lead-in opening a title: SkippedDuplicateIdentity = %d, NewWorks = %d, want 0 and 1; warnings = %v",
+			sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
+	}
+}

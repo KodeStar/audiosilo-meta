@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -1098,11 +1099,21 @@ func TestStripTitleNarratorQualifier(t *testing.T) {
 }
 
 // TestTitleNarratorVocabularyIsASeriesSubset is the drift guard between the two
-// narrator vocabularies: the title-side list must stay a subset of the series
-// one, so "what a narrator lead-in is" has one definition and the title rule can
-// only ever be the narrower of the two.
+// narrator vocabularies: the title-side list this package's mid-title strip reads
+// (titlerule.NarratorLeadIns) must stay a subset of the series one, so "what a
+// narrator lead-in is" has one definition and the title rule can only ever be the
+// narrower of the two. titlerule's TITLE-ONLY lead-ins must stay out of both lists,
+// so the mid-title strip reads exactly the vocabulary it was measured with.
 func TestTitleNarratorVocabularyIsASeriesSubset(t *testing.T) {
-	for _, phrase := range titleNarratorQualifiers {
+	for _, phrase := range titlerule.TitleOnlyNarratorLeadIns {
+		if slices.Contains(titlerule.NarratorLeadIns, phrase) || slices.Contains(seriesNarratorQualifiers, phrase) {
+			t.Errorf("title-only lead-in %q reached a vocabulary the importer reads", phrase)
+		}
+	}
+	if want := []string{"gelesen von", "narrated by", "gesprochen von"}; !slices.Equal(titlerule.NarratorLeadIns, want) {
+		t.Errorf("titlerule.NarratorLeadIns = %q, want the mid-title strip's measured %q", titlerule.NarratorLeadIns, want)
+	}
+	for _, phrase := range titlerule.NarratorLeadIns {
 		if !slices.Contains(seriesNarratorQualifiers, phrase) {
 			t.Errorf("title lead-in %q is not in seriesNarratorQualifiers", phrase)
 		}
