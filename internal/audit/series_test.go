@@ -232,6 +232,33 @@ func TestSeriesParenReportsADecoratedNameWithASibling(t *testing.T) {
 	}
 }
 
+// The decorated-pair reason names the two folds SER-DUP does propose mechanically, so
+// a reader of SER-PAREN is not told "never merged automatically" about a pair the
+// sibling class will fold: the ordering qualifier whose list IS the sibling's, and the
+// abridged spelling - with the recording condition that admits it.
+func TestSeriesParenPairReasonNamesTheSeriesDupFolds(t *testing.T) {
+	rep := runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
+		"series/aa/vork.json":       seriesJSON(t, "vork", "Vorkosigan Saga", "one@1"),
+		"series/bb/vork-chron.json": seriesJSON(t, "vork-chron", "Vorkosigan Saga (chronological)", "two@1"),
+	}))
+	got := subclassOf(t, rep, ClassSeriesParen, serParenPair)
+	if len(got) != 1 {
+		t.Fatalf("want one decorated-pair record, got %d: %+v", len(got), classOf(t, rep, ClassSeriesParen))
+	}
+	reason := got[0].Propose.Reason
+	for _, want := range []string{
+		"the folds SER-DUP proposes",
+		"an ordering qualifier whose list IS the sibling's",
+		"an abridged spelling",
+		"already holds at the same slots",
+		"has a recording stating it is abridged",
+	} {
+		if !strings.Contains(reason, want) {
+			t.Errorf("reason = %q, want it to mention %q", reason, want)
+		}
+	}
+}
+
 func TestSeriesParenReportsADecoratedNameWithNoSibling(t *testing.T) {
 	rep := runFixture(t, seriesFixture(t, []string{"one"}, map[string]string{
 		"series/aa/spanish.json": seriesJSON(t, "spanish", "365 Days [Spanish Edition]", "one@1"),
