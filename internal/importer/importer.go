@@ -3153,6 +3153,13 @@ func (p *planner) addToSeries(r seriesRef, work, pos string, warn func(string, .
 	ss.members[work] = pos
 	ss.positions[pos] = work
 	ss.dirty = true
+	// A membership ADDED to a catalogued series stored under a name the claim did
+	// not spell - by the series-name equality, so a case or bracket respell the
+	// chain matches is no hidden join - is said in the run's Notes; a retired
+	// slug's join is the tombstone note's.
+	if !ss.isNew && r.target.via == "" && !titlerule.SameSeriesName(name, ss.name) {
+		p.noteSeriesNameJoin(SeriesNameJoin{Given: name, Slug: ss.slug, Stored: ss.name})
+	}
 	if ss.isNew {
 		ss.out.Works = append(ss.out.Works, OutSeriesWork{Work: work, Position: pos})
 	} else {
@@ -3196,11 +3203,8 @@ func (p *planner) getOrCreateSeries(r seriesRef, warn func(string, ...any)) *ser
 		return nil
 	}
 	if ss, exists := p.series[t.slug]; exists {
-		switch {
-		case t.via != "":
+		if t.via != "" {
 			p.noteTombstone(model.RedirectSeries, t.via, t.slug)
-		case !ss.isNew && ss.name != name:
-			p.noteSeriesNameJoin(SeriesNameJoin{Given: name, Slug: t.slug, Stored: ss.name})
 		}
 		return ss
 	}

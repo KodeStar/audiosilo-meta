@@ -164,3 +164,16 @@ func TestAddWorkExtendsItsLanguagesEditionSeries(t *testing.T) {
 		t.Errorf("the French series was not composed at lost-fleet-2:\n%s", mint)
 	}
 }
+
+// The intake twin of the join note's violating sides: a respell the series-name
+// equality already matches is no hidden join, so nothing is noted.
+func TestAddWorkDoesNotNoteARespelledJoin(t *testing.T) {
+	dir := formLostFleetTree(t, nil)
+	res := processAddWork(t, dir, dupWorkBody("Renegade", "Sarah Hawke", "Nate Narrator", "lost fleet", "4"))
+	if res.Status != StatusOK || !strings.Contains(readFile(t, dir, "series/lo/lost-fleet.json"), `"work": "renegade"`) {
+		t.Fatalf("the respelled name did not extend the series: %v", res.Messages)
+	}
+	if anyContains(res.Messages, "joined") {
+		t.Errorf("a respell the chain matches was noted as a join: %v", res.Messages)
+	}
+}

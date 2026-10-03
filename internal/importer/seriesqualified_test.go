@@ -495,6 +495,25 @@ func TestAJoinUnderAnotherStoredNameIsNoted(t *testing.T) {
 	assertTreeValid(t, dataDir)
 }
 
+// The violating sides of the join note: a respell the series-name equality
+// already calls the stored name (case, bracket style) is no hidden join, and a
+// claim whose position is taken joins nothing - neither is noted.
+func TestAJoinNoteNeedsAnAddedMembershipUnderAnotherName(t *testing.T) {
+	for name, row := range map[string]string{
+		"respell":        langRow("B0TOGDE003", "Erbin des Feuers", "Sarah J. Maas", "german", "throne of glass (German Edition)", "3"),
+		"position taken": langRow("B0TOGDE001", "Die Erwaehlte Neu", "Sarah J. Maas", "german", "Throne of Glass (Deutsche Ausgabe)", "1"),
+	} {
+		dataDir := throneTree(t)
+		sum := runLibexOver(t, dataDir, row)
+		for _, n := range sum.Notes {
+			if strings.Contains(n, "stored under another name") {
+				t.Errorf("%s: noted %q", name, n)
+			}
+		}
+		assertTreeValid(t, dataDir)
+	}
+}
+
 // ONE RULE for a unit of one group and a unit of several: a spelling resolved
 // alone resolves exactly as it does inside a unit when nothing else in the unit
 // reaches its series. "Drenai" in English joins the English series alone and

@@ -383,17 +383,17 @@ func (c *composer) noteRetired(kind model.RedirectKind, from, to string) {
 // stored under another name - a join the name alone does not show (a respelled
 // qualifier, a renamed edition series, a plain name reaching its language's
 // edition) - in the importer's own run-level line (importer.SeriesNameJoinsNote),
-// once, beside noteRetired and through its dedupe set.
+// once (joinedNoted), beside noteRetired.
 func (c *composer) noteJoined(given, slug, stored string) {
-	key := "joined " + given + "\x00" + slug
-	if c.retiredNoted[key] {
+	j := importer.SeriesNameJoin{Given: given, Slug: slug, Stored: stored}
+	if c.joinedNoted[j] {
 		return
 	}
-	if c.retiredNoted == nil {
-		c.retiredNoted = map[string]bool{}
+	if c.joinedNoted == nil {
+		c.joinedNoted = map[importer.SeriesNameJoin]bool{}
 	}
-	c.retiredNoted[key] = true
-	c.note("%s", importer.SeriesNameJoinsNote([]importer.SeriesNameJoin{{Given: given, Slug: slug, Stored: stored}}))
+	c.joinedNoted[j] = true
+	c.note("%s", importer.SeriesNameJoinsNote([]importer.SeriesNameJoin{j}))
 }
 
 // noteRekey reports that the submission named a slug a core merge has retired and
