@@ -1152,12 +1152,18 @@ func (m *langMix) languageFindings() {
 			}
 			continue
 		}
-		union := map[string]bool{}
+		// A title names a primary subtag while a narration reason may carry the
+		// recordings' exact tag ("de-at"), so title evidence for a language the
+		// narration already names is agreement, not a second language.
+		union, named := map[string]bool{}, map[string]bool{}
 		for to := range want {
 			union[to] = true
+			named[model.PrimarySubtag(to)] = true
 		}
 		for to := range c.titled {
-			union[to] = true
+			if !named[model.PrimarySubtag(to)] {
+				union[to] = true
+			}
 		}
 		tos := sortedKeys(union)
 		fd := Finding{

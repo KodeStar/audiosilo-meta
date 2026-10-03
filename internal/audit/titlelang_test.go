@@ -183,3 +183,20 @@ func TestTitleLanguageFoldsIntoANarrationRecord(t *testing.T) {
 		t.Errorf("notes = %q, want the title evidence folded in", fd.Notes)
 	}
 }
+
+// Title evidence names a primary subtag; a narration reason may carry the recordings'
+// exact tag. The two agree, so the fold stays one set-work-language proposal rather
+// than a review of "several languages".
+func TestTitleLanguageAgreesWithARegionTaggedNarrationReason(t *testing.T) {
+	files := mergeFiles(mixPeople(t), testpack.WorkFiles(t, "r1", "de", "anna-sprecher"), testpack.WorkFiles(t, "r2", "de", "anna-sprecher"),
+		map[string]string{
+			"works/xx/fixture-gem-red/work.json": workJSON(t, "fixture-gem-red", "Rubinrot (German Edition)"),
+			"works/xx/fixture-gem-red/recordings/r.json": recJSON(t, "r", "fixture-gem-red", withNarrators("anna-sprecher"),
+				testpack.WithRecLanguage("de-at")),
+		})
+	rep := runFixture(t, files)
+	fd := onlyMix(t, rep, lMixNarration)
+	if fd.Propose.Op != OpSetWorkLanguage || fd.Propose.To != "de-at" {
+		t.Fatalf("proposal = %+v, want set-work-language de-at", fd.Propose)
+	}
+}
