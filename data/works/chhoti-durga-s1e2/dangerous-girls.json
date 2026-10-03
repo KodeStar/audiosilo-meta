@@ -8019,6 +8019,14 @@
             {
               "asin": "B09S3YYSX2",
               "region": "us"
+            },
+            {
+              "asin": "B09WJM3CCG",
+              "region": "uk"
+            },
+            {
+              "asin": "B09S42HPPX",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8193,6 +8201,16 @@
               "imported_at": "2026-09-29",
               "ref": "B09S3YYSX2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B09WJM3CCG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B09S42HPPX",
+              "type": "libex-import"
             }
           ],
           "work": "dangerous-mountain-rescue"
@@ -8206,6 +8224,58 @@
         }
       ],
       "title": "Dangerous Mountain Rescue"
+    },
+    "dangerous-mountain-search": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "jodie-bailey"
+      ],
+      "genres": [
+        "nature",
+        "religious-fiction",
+        "romance",
+        "romantic-suspense"
+      ],
+      "id": "dangerous-mountain-search",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cindy-kay-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HC4YGSHZ",
+              "region": "uk"
+            }
+          ],
+          "id": "cindy-kay-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cindy-kay"
+          ],
+          "publisher": "Love Inspired Suspense",
+          "release_date": "2026-12-29",
+          "runtime_min": 360,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HC4YGSHZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dangerous-mountain-search"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0HC4YGSHZ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Dangerous Mountain Search"
     },
     "dangerous-mystic": {
       "added_at": "2026-07-29",
