@@ -59,33 +59,6 @@ func (s *proposalConflictState) promote(r Finding) []string {
 	return s.add(r, false)
 }
 
-// overlaps is the stricter rule a reviewed ASSERTION must also meet, since no detector
-// stands behind it: it may not touch a record another mechanical proposal already merges
-// (the two would apply in report order, the later going stale against the earlier, so a
-// reviewer folds them into one assertion instead), nor add a membership another proposal
-// already adds. It only reads; promote then claims.
-func (s *proposalConflictState) overlaps(r Finding) []string {
-	var conflicts []string
-	p := r.Propose
-	switch p.Op {
-	case OpMergeWorks, OpMergeSeries:
-		merged := s.mergedWorks
-		if p.Op == OpMergeSeries {
-			merged = s.mergedSeries
-		}
-		for _, id := range Cluster(p.Target, p.Others) {
-			if by, both := merged[id]; both {
-				conflicts = append(conflicts, fmt.Sprintf("%s merges %s, which %s already merges", r.Key, id, by))
-			}
-		}
-	case OpAddSeriesMember:
-		if by, both := s.added[p.Series+"@"+p.Target]; both {
-			conflicts = append(conflicts, fmt.Sprintf("%s adds %s to %s, which %s already adds", r.Key, p.Target, p.Series, by))
-		}
-	}
-	return conflicts
-}
-
 // add checks both sides of every constraint as each claim arrives, so report
 // order and acceptance order enforce the same invariant. Initial construction
 // keeps conflicting claims to diagnose the whole set; a promotion rolls them back.
@@ -181,6 +154,11 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 					homeMerged(by, id, r.Key)
 				}
 			}
+			// Two merges touching one record apply in report order and the later goes
+			// stale against the earlier, so the record belongs in ONE proposal.
+			if by, both := merged[id]; both {
+				report("%s merges %s, which %s already merges", r.Key, id, by)
+			}
 			put(merged, id, r.Key)
 		}
 		if p.Target != "" {
@@ -203,6 +181,9 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 	case OpAddSeriesMember:
 		if p.Series != "" && p.To != "" {
 			claimSlot(p.Series + "@" + p.To)
+		}
+		if by, dup := s.added[p.Series+"@"+p.Target]; dup {
+			report("%s and %s both add %s to %s", by, r.Key, p.Target, p.Series)
 		}
 		put(s.added, p.Series+"@"+p.Target, r.Key)
 	case OpAddWorkLink, OpAddSeriesLink:

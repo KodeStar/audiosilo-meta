@@ -302,7 +302,7 @@ func TestReviewedAssertReachesMetarepair(t *testing.T) {
 		}
 	}
 	fresh := audit.Analyze(after)
-	if len(fresh.Reviewed.Stale) != 2 || len(fresh.Reviewed.Outcomes) != 0 {
+	if len(fresh.Reviewed.Stale()) != 2 || len(fresh.Reviewed.Outcomes()) != 0 {
 		t.Fatalf("after applying, reviewed = %+v, want both assertions stale", fresh.Reviewed)
 	}
 	opts.Write = false

@@ -9,7 +9,6 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -81,7 +80,14 @@ var assertClass = map[string]string{
 const subclassAsserted = "asserted"
 
 func (r reviewedDecision) proposal() Proposal {
-	return Proposal{Op: r.Op, Target: r.Target, Series: r.Series, Field: r.Field, From: r.From, To: r.To, Others: r.Others}
+	p := Proposal{Op: r.Op, Target: r.Target, Series: r.Series, Field: r.Field, From: r.From, To: r.To, Others: r.Others}
+	// W-NOSERIES states every membership it adds with field "series"; an assertion may
+	// omit it, and is read with it, so its identity meets the detector's. (An accept or
+	// reject copies a proposal, so its field is taken as written.)
+	if r.Decision == "assert" && p.Op == OpAddSeriesMember && p.Field == "" {
+		p.Field = "series"
+	}
+	return p
 }
 
 func decisionCmp(a, b reviewedDecision) int {
@@ -216,10 +222,10 @@ func validAssertion(r reviewedDecision) error {
 		return fmt.Errorf("a %q proposal cannot be asserted (want %s, %s or %s)", r.Op, OpAddSeriesMember, OpMergeSeries, OpMergeWorks)
 	}
 	if r.Op == OpAddSeriesMember {
-		if r.Target == "" || r.Series == "" || r.Field != "series" || r.From != "" || len(r.Others) > 0 {
-			return fmt.Errorf("an asserted %s names target, series, field \"series\" and to, nothing else", r.Op)
+		if r.Target == "" || r.Series == "" || (r.Field != "" && r.Field != "series") || r.From != "" || len(r.Others) > 0 {
+			return fmt.Errorf("an asserted %s names target, series and to (field, if stated, \"series\"), nothing else", r.Op)
 		}
-		if pos, ok := importer.NormalizeSequence(r.To); !ok || pos != r.To {
+		if !canonicalPosition(r.To) {
 			return fmt.Errorf("asserted position %q is not a canonical series position", r.To)
 		}
 		return nil
@@ -301,37 +307,77 @@ func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
 	return p
 }
 
-type decisionOutcome struct {
-	Entry       reviewedDecision
-	Status, Why string
-}
-type reviewedTally struct {
-	// Stale are the decisions no fresh proposal matched (Status "stale"); for an
-	// assertion, Why names the record that is gone or says it has been applied.
-	Stale    []decisionOutcome
-	Outcomes []decisionOutcome
+// outcomeStatus is what one decision did to the fresh audit.
+type outcomeStatus string
+
+const (
+	statusAccepted  outcomeStatus = "accepted"  // an advisory proposal made mechanical
+	statusRejected  outcomeStatus = "rejected"  // a mechanical proposal made advisory
+	statusAsserted  outcomeStatus = "asserted"  // a proposal sourced, mechanical
+	statusRedundant outcomeStatus = "redundant" // an assertion a detector already makes, taken as an acceptance
+	statusNoOp      outcomeStatus = "no-op"     // the proposal was already in the state asked for
+	statusRefused   outcomeStatus = "refused"   // an acceptance or assertion that would break consistency
+	statusStale     outcomeStatus = "stale"     // matching no fresh proposal
+)
+
+// listed reports whether SUMMARY.md names the decision one by one: the outcomes a
+// reviewer has to act on (STALE ones are listed in their own section).
+func (s outcomeStatus) listed() bool {
+	return slices.Contains([]outcomeStatus{statusNoOp, statusRefused, statusRedundant}, s)
 }
 
-func (t reviewedTally) Entries() int { return len(t.Outcomes) + len(t.Stale) }
+type decisionOutcome struct {
+	Entry  reviewedDecision
+	Status outcomeStatus
+	// Why names a refusal's conflict, a redundant assertion's detector proposal, or a
+	// stale assertion's gone record (or that it has been applied).
+	Why string
+}
+
+// reviewedTally is every decision's outcome, in file order.
+type reviewedTally struct{ All []decisionOutcome }
+
+// Outcomes are the decisions that met a fresh proposal; Stale the ones that did not.
+func (t reviewedTally) Outcomes() []decisionOutcome { return t.filter(false) }
+func (t reviewedTally) Stale() []decisionOutcome    { return t.filter(true) }
+func (t reviewedTally) Entries() int                { return len(t.All) }
+
+func (t reviewedTally) filter(stale bool) []decisionOutcome {
+	var out []decisionOutcome
+	for _, o := range t.All {
+		if (o.Status == statusStale) == stale {
+			out = append(out, o)
+		}
+	}
+	return out
+}
 
 // applyReviewed runs ONCE over all classes, after detection and before rendering.
-// Rejections run first to release conflicts. Acceptances and assertions run in file
-// order and may only extend a consistent mechanical set. Conflicting promotions stay
-// advisory and report why. Repair's plan-time rules still apply. ix is the catalogue
-// an assertion's records are looked up in (nil holds none).
+// Assertions no detector meets are sourced first, as advisory findings of their op's
+// class, so every later step treats them as it treats a detector's. Rejections then
+// run, to release conflicts. Acceptances and assertions run in file order and may only
+// extend a consistent mechanical set; conflicting promotions stay advisory and report
+// why, and a sourced finding left advisory is withdrawn. Repair's plan-time rules
+// still apply. ix is the catalogue an assertion's records are looked up in.
 func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix *index) reviewedTally {
 	// Only OpReview depends on the finding's class. Resolve all other decisions
 	// once, retaining file order when redirects make several keys converge.
 	byKey := make(map[proposalKey][]int, len(rs))
 	byClass := make(map[string]map[proposalKey][]int)
+	resolved := make([]Proposal, len(rs))
 	for j, r := range rs {
 		if r.Op != OpReview {
-			key := keyOf(resolvedProposal(r.proposal(), "", reds))
+			resolved[j] = resolvedProposal(r.proposal(), "", reds)
+			key := keyOf(resolved[j])
 			byKey[key] = append(byKey[key], j)
 		}
 	}
-	matches := make([][]*Finding, len(rs))
-	byFinding := map[*Finding][]int{}
+	// Matches are row positions, not pointers, until sourcing has appended its rows.
+	type row struct {
+		c *findings
+		i int
+	}
+	matched := make([][]row, len(rs))
 	for _, c := range rep.classes {
 		for i := range c.rows {
 			fd := &c.rows[i]
@@ -349,19 +395,45 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 					byClass[c.class] = index
 				}
 			}
-			key := keyOf(resolvedProposal(fd.Propose, c.class, reds))
-			js := index[key]
-			for _, j := range js {
-				matches[j] = append(matches[j], fd)
-			}
-			if len(js) > 0 {
-				byFinding[fd] = js
+			for _, j := range index[keyOf(resolvedProposal(fd.Propose, c.class, reds))] {
+				matched[j] = append(matched[j], row{c, i})
 			}
 		}
 	}
-	var t reviewedTally
-	statuses := make([]string, len(rs))
+	statuses := make([]outcomeStatus, len(rs))
 	whys := make([]string, len(rs))
+	src := sourcing{rep: rep, ix: ix}
+	for j, r := range rs {
+		if r.Decision != "assert" || len(matched[j]) > 0 {
+			continue
+		}
+		key := keyOf(resolved[j])
+		if slices.ContainsFunc(byKey[key], func(o int) bool { return rs[o].Decision == "reject" }) {
+			statuses[j], whys[j] = statusRefused, "a reviewed rejection resolves to the same proposal"
+			continue
+		}
+		c, i, why := src.source(r, resolved[j])
+		if c == nil {
+			statuses[j], whys[j] = statusStale, why
+			continue
+		}
+		// Every assertion converging on this identity meets the one sourced finding: the
+		// first in file order promotes it, the rest find it made already.
+		for _, o := range byKey[key] {
+			if rs[o].Decision == "assert" {
+				matched[o] = append(matched[o], row{c, i})
+			}
+		}
+	}
+	matches := make([][]*Finding, len(rs))
+	byFinding := map[*Finding][]int{}
+	for j, rows := range matched {
+		for _, m := range rows {
+			fd := &m.c.rows[m.i]
+			matches[j] = append(matches[j], fd)
+			byFinding[fd] = append(byFinding[fd], j)
+		}
+	}
 	// Iterate findings in report order, not pointer-map order.
 	for _, c := range rep.classes {
 		for i := range c.rows {
@@ -380,9 +452,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			if len(rejects) == 0 {
 				continue
 			}
-			status := "rejected"
+			status := statusRejected
 			if fd.Propose.Advisory {
-				status = "no-op"
+				status = statusNoOp
 			}
 			for _, j := range rejects {
 				statuses[j] = status
@@ -398,36 +470,15 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	}
 	// One decision can meet several findings: the tally reports a refusal on any
 	// of them, then an acceptance, rather than whichever finding came last.
-	setStatus := func(j int, status string) {
-		if statuses[j] != "refused" && (statuses[j] != "accepted" || status == "refused") {
+	setStatus := func(j int, status outcomeStatus) {
+		if statuses[j] != statusRefused && (statuses[j] != statusAccepted || status == statusRefused) {
 			statuses[j] = status
 		}
 	}
 	var conflictState *proposalConflictState
-	state := func() *proposalConflictState {
-		if conflictState == nil {
-			conflictState = proposalConflicts(rep)
-		}
-		return conflictState
-	}
-	// Sourced findings join their classes only after this loop: appending while it runs
-	// could move a class's rows out from under the pointers matches holds.
-	as := &assertions{rep: rep, ix: ix, reds: reds, state: state, by: map[proposalKey]string{}}
 	for j, r := range rs {
-		if r.Decision == "assert" && len(matches[j]) == 0 {
-			key := keyOf(resolvedProposal(r.proposal(), "", reds))
-			rejected := slices.ContainsFunc(byKey[key], func(o int) bool { return rs[o].Decision == "reject" })
-			statuses[j], whys[j] = as.source(r, key, rejected)
+		if r.Decision == "reject" {
 			continue
-		}
-		if r.Decision != "accept" && r.Decision != "assert" {
-			continue
-		}
-		// A detector already makes the asserted proposal: the assertion is an acceptance
-		// of it, and SUMMARY.md says so, so the entry can be rewritten as one.
-		accepted, noop, verb := "accepted", "no-op", "reviewed and accepted: "
-		if r.Decision == "assert" {
-			accepted, noop, verb = "redundant", "redundant", "reviewed assertion, already proposed, taken as an acceptance: "
 		}
 		for _, fd := range matches[j] {
 			why := ""
@@ -436,23 +487,45 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 					why = "a reviewed rejection resolves to the same proposal"
 				}
 			}
+			// Only the label differs between an acceptance, an assertion sourcing its own
+			// finding, and one a detector (or a converging assertion) already made.
+			sourced := fd.Subclass == subclassAsserted
+			var promoted, unchanged outcomeStatus
+			switch {
+			case r.Decision == "accept":
+				promoted, unchanged = statusAccepted, statusNoOp
+			case sourced:
+				promoted, unchanged = statusAsserted, statusRedundant
+			default:
+				promoted, unchanged = statusRedundant, statusRedundant
+			}
 			if why == "" && fd.Propose.Advisory {
-				if conflicts := state().promote(*fd); len(conflicts) > 0 {
+				if conflictState == nil {
+					conflictState = proposalConflicts(rep)
+				}
+				if conflicts := conflictState.promote(*fd); len(conflicts) > 0 {
 					why = strings.Join(conflicts, "; ")
 				} else {
 					fd.Propose.Advisory = false
-					setStatus(j, accepted)
+					setStatus(j, promoted)
 				}
 			} else if why == "" {
-				setStatus(j, noop)
+				setStatus(j, unchanged)
 			}
-			note := verb + r.Reason
-			if why != "" {
-				statuses[j] = "refused"
+			note := "reviewed and accepted: " + r.Reason
+			switch {
+			case why != "":
+				statuses[j] = statusRefused
 				whys[j] = why
 				note = "reviewed acceptance refused: " + why + "; review: " + r.Reason
-			} else if r.Decision == "assert" && whys[j] == "" {
-				whys[j] = "already proposed as " + fd.Class + " " + fd.Key
+			case statuses[j] == statusAsserted:
+				continue // the sourced finding's own reason and notes already say so
+			case r.Decision == "assert":
+				// SUMMARY.md says where, so the entry can be rewritten as an acceptance.
+				if whys[j] == "" {
+					whys[j] = "already proposed as " + fd.Class + " " + fd.Key
+				}
+				note = "reviewed assertion, already proposed, taken as an acceptance: " + r.Reason
 			}
 			fd.Notes = append(fd.Notes, note)
 			if fd.Propose.Reason != "" {
@@ -461,89 +534,82 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			fd.Propose.Reason += note
 		}
 	}
-	for _, fd := range as.sourced {
-		c := rep.class(fd.Class)
-		if !slices.Contains(rep.classes, c) {
-			rep.classes = append(rep.classes, c)
-		}
-		c.rows = append(c.rows, fd)
+	// A sourced finding no assertion could make mechanical stays out of the report:
+	// it exists only as the assertion, whose refusal SUMMARY.md names.
+	for _, c := range rep.classes {
+		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == subclassAsserted && fd.Propose.Advisory })
 	}
+	var t reviewedTally
 	for j, r := range rs {
-		o := decisionOutcome{r, statuses[j], whys[j]}
-		if o.Status == "stale" || (o.Status == "" && len(matches[j]) == 0) {
-			o.Status = "stale"
-			t.Stale = append(t.Stale, o)
-		} else {
-			t.Outcomes = append(t.Outcomes, o)
+		if statuses[j] == "" {
+			statuses[j] = statusStale
 		}
+		t.All = append(t.All, decisionOutcome{r, statuses[j], whys[j]})
 	}
 	return t
 }
 
-// assertions sources the proposals reviewed assertions state and no detector makes.
-type assertions struct {
-	rep     *Report
-	ix      *index
-	reds    model.Redirects
-	state   func() *proposalConflictState
-	sourced []Finding
-	by      map[proposalKey]string // resolved identity -> the sourced finding's key
+// sourcing adds the findings reviewed assertions state and no detector makes.
+type sourcing struct {
+	rep  *Report
+	ix   *index
+	keys map[string]bool // class + key of every finding, so a sourced key is unique
 }
 
-// source emits one assertion as a non-advisory finding of its op's class, or says why
-// it cannot: STALE when a record it names is gone or it has been applied (a merge's
-// others all resolve to its target, a membership is already listed), REFUSED when it
-// would break the mechanical set's consistency. key is its resolved identity.
-func (a *assertions) source(r reviewedDecision, key proposalKey, rejected bool) (status, why string) {
-	if rejected {
-		return "refused", "a reviewed rejection resolves to the same proposal"
+// source appends one assertion's proposal p (already resolved) to its op's class as an
+// ADVISORY finding the acceptance loop then promotes, returning where it sits; or, with
+// a nil class, why the assertion is STALE: a record it names is gone, or it has been
+// applied (a merge's others all resolve to its target, a membership is listed).
+func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, why string) {
+	if s.ix == nil {
+		return nil, 0, "no catalogue to find its records in"
 	}
-	if by, dup := a.by[key]; dup {
-		return "redundant", "another assertion resolves to the same proposal (" + by + ")"
-	}
-	p := resolvedProposal(r.proposal(), "", a.reds)
-	p.Others = slices.DeleteFunc(p.Others, func(o string) bool { return o == p.Target })
+	p.Others = slices.DeleteFunc(slices.Clone(p.Others), func(o string) bool { return o == p.Target })
 	if p.Op != OpAddSeriesMember && len(p.Others) == 0 {
-		return "stale", "applied: every record it folds now resolves to " + p.Target
+		return nil, 0, "applied: every record it folds now resolves to " + p.Target
 	}
-	class := assertClass[p.Op]
-	fd := Finding{Class: class, Subclass: subclassAsserted,
+	var works, series []string
+	switch p.Op {
+	case OpMergeWorks:
+		works = Cluster(p.Target, p.Others)
+	case OpMergeSeries:
+		series = Cluster(p.Target, p.Others)
+	case OpAddSeriesMember:
+		works, series = []string{p.Target}, []string{p.Series}
+	}
+	fd := Finding{Subclass: subclassAsserted,
 		Notes: []string{"no detector proposes this: a reviewed assertion in " + reviewedPath + " sources it, and no detector veto was asked"}}
 	var missing []string
-	work := func(id string) {
-		if w := a.workByID(id); w != nil {
-			fd.Works = append(fd.Works, a.ix.workBrief(w))
+	for _, id := range works {
+		if w := s.ix.workByID[id]; w != nil {
+			fd.Works = append(fd.Works, s.ix.workBrief(w))
 		} else {
 			missing = append(missing, "work "+id)
 		}
 	}
-	series := func(id string) {
-		if s := a.seriesByID(id); s != nil {
-			fd.Series = append(fd.Series, a.ix.seriesRef(s))
+	for _, id := range series {
+		if se := s.ix.seriesByID[id]; se != nil {
+			fd.Series = append(fd.Series, s.ix.seriesRef(se))
 		} else {
 			missing = append(missing, "series "+id)
 		}
 	}
-	switch p.Op {
-	case OpMergeWorks:
-		for _, id := range Cluster(p.Target, p.Others) {
-			work(id)
-		}
-	case OpMergeSeries:
-		for _, id := range Cluster(p.Target, p.Others) {
-			series(id)
-		}
-	case OpAddSeriesMember:
-		work(p.Target)
-		series(p.Series)
-	}
 	if len(missing) > 0 {
-		return "stale", "no live " + strings.Join(missing, ", ")
+		return nil, 0, "no live " + strings.Join(missing, ", ")
 	}
 	if p.Op == OpAddSeriesMember {
-		for _, m := range a.ix.memberships[p.Target] {
+		for _, m := range s.ix.memberships[p.Target] {
 			if m.series == p.Series {
-				return "stale", fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, m.position)
+				return nil, 0, fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, m.position)
+			}
+		}
+	}
+	class := assertClass[p.Op]
+	if s.keys == nil {
+		s.keys = map[string]bool{}
+		for _, c := range s.rep.classes {
+			for _, fd := range c.rows {
+				s.keys[c.class+" "+fd.Key] = true
 			}
 		}
 	}
@@ -552,42 +618,17 @@ func (a *assertions) source(r reviewedDecision, key proposalKey, rejected bool) 
 		base += "@" + p.Series
 	}
 	fd.Key = base
-	for n := 2; a.keyTaken(class, fd.Key); n++ {
+	for n := 2; s.keys[class+" "+fd.Key]; n++ {
 		fd.Key = fmt.Sprintf("%s/%d", base, n)
 	}
-	p.Advisory = false
+	s.keys[class+" "+fd.Key] = true
+	p.Advisory = true
 	p.Reason = "asserted by review: " + r.Reason
 	fd.Propose = p
-	s := a.state()
-	conflicts := s.overlaps(fd)
-	if len(conflicts) == 0 {
-		conflicts = s.promote(fd)
+	c = s.rep.class(class)
+	if !slices.Contains(s.rep.classes, c) {
+		s.rep.classes = append(s.rep.classes, c)
 	}
-	if len(conflicts) > 0 {
-		return "refused", strings.Join(conflicts, "; ")
-	}
-	a.sourced = append(a.sourced, fd)
-	a.by[key] = class + " " + fd.Key
-	return "asserted", ""
-}
-
-func (a *assertions) workByID(id string) *model.Work {
-	if a.ix == nil {
-		return nil
-	}
-	return a.ix.workByID[id]
-}
-
-func (a *assertions) seriesByID(id string) *model.Series {
-	if a.ix == nil {
-		return nil
-	}
-	return a.ix.seriesByID[id]
-}
-
-// keyTaken reports whether a class already holds a finding under key, so a sourced
-// finding never shares a detector's or another assertion's identity in a worklist.
-func (a *assertions) keyTaken(class, key string) bool {
-	return slices.ContainsFunc(a.rep.class(class).rows, func(fd Finding) bool { return fd.Key == key }) ||
-		slices.ContainsFunc(a.sourced, func(fd Finding) bool { return fd.Class == class && fd.Key == key })
+	c.add(fd)
+	return c, len(c.rows) - 1, ""
 }

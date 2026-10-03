@@ -122,7 +122,7 @@ func TestRejectionNamingRetiredSlugsStillSuppresses(t *testing.T) {
 		!strings.Contains(fd.Propose.Reason, "reviewed under the old slugs") {
 		t.Fatalf("proposal = %+v, want the survivors' link advisory with the review's reason", fd)
 	}
-	if got := rep.Reviewed; len(got.Outcomes) != 1 || len(got.Stale) != 0 {
+	if got := rep.Reviewed; len(got.Outcomes()) != 1 || len(got.Stale()) != 0 {
 		t.Errorf("tally = %+v, want the retired entry matched, none stale", got)
 	}
 
@@ -133,7 +133,7 @@ func TestRejectionNamingRetiredSlugsStillSuppresses(t *testing.T) {
 	if fd := linkFinding(t, rep, "the-saga-german"); fd == nil || fd.Propose.Advisory {
 		t.Fatalf("proposal = %+v, want it mechanical: a works tombstone says nothing of a series", fd)
 	}
-	if got := rep.Reviewed; len(got.Outcomes) != 0 || len(got.Stale) != 1 {
+	if got := rep.Reviewed; len(got.Outcomes()) != 0 || len(got.Stale()) != 1 {
 		t.Errorf("tally = %+v, want the entry stale", got)
 	}
 }
@@ -154,7 +154,7 @@ func TestReviewedRejectionTurnsTheProposalAdvisory(t *testing.T) {
 	if !strings.HasPrefix(fd.Action, "do NOT apply mechanically") {
 		t.Errorf("action = %q", fd.Action)
 	}
-	if got := rep.Reviewed; got.Entries() != 1 || len(got.Outcomes) != 1 || len(got.Stale) != 0 {
+	if got := rep.Reviewed; got.Entries() != 1 || len(got.Outcomes()) != 1 || len(got.Stale()) != 0 {
 		t.Errorf("tally = %+v, want 1 entry, 1 matched, none stale", got)
 	}
 	assertProposalsConsistent(t, rep)
@@ -183,7 +183,7 @@ func TestRejectionOfAnotherTargetLeavesTheProposalMechanical(t *testing.T) {
 	if fd == nil || fd.Propose.Advisory || fd.Propose.To != "the-saga" {
 		t.Fatalf("proposal = %+v, want the mechanical link onto the-saga", fd)
 	}
-	if got := rep.Reviewed; len(got.Outcomes) != 0 || len(got.Stale) != 2 || !reflect.DeepEqual(got.Stale[0].Entry, stale) {
+	if got := rep.Reviewed; len(got.Outcomes()) != 0 || len(got.Stale()) != 2 || !reflect.DeepEqual(got.Stale()[0].Entry, stale) {
 		t.Errorf("tally = %+v, want both entries stale, in the list's order", got)
 	}
 	assertProposalsConsistent(t, rep)
@@ -202,7 +202,7 @@ func TestRejectionOfAnAdvisoryProposalKeepsItsVeto(t *testing.T) {
 		!strings.Contains(fd.Propose.Reason, "derives fr, not en") {
 		t.Fatalf("proposal = %+v, want the review's reason followed by the veto's", fd)
 	}
-	if len(rep.Reviewed.Outcomes) != 1 {
+	if len(rep.Reviewed.Outcomes()) != 1 {
 		t.Errorf("tally = %+v, want the advisory proposal counted as matched", rep.Reviewed)
 	}
 }
@@ -218,13 +218,13 @@ func TestSummaryReportsReviewedRejections(t *testing.T) {
 		"reviewed decisions on the list | 2",
 		"... rejected (made advisory) | 1",
 		"... matching no proposal (STALE) | 1",
-		"- STALE `" + decisionIdentity(rep.Reviewed.Stale[0].Entry) + "`: reject: why\n",
+		"- STALE `" + decisionIdentity(rep.Reviewed.Stale()[0].Entry) + "`: reject: why\n",
 	} {
 		if !strings.Contains(md, want) {
 			t.Errorf("SUMMARY.md lacks %q:\n%s", want, md)
 		}
 	}
-	if strings.Contains(md, "- STALE `"+decisionIdentity(rep.Reviewed.Outcomes[0].Entry)+"`") {
+	if strings.Contains(md, "- STALE `"+decisionIdentity(rep.Reviewed.Outcomes()[0].Entry)+"`") {
 		t.Error("SUMMARY.md lists a matched entry as stale")
 	}
 }
@@ -253,7 +253,7 @@ func TestRejectionsMeetingOnOneKeyKeepEveryReason(t *testing.T) {
 	if fd == nil || !fd.Propose.Advisory || !strings.Contains(fd.Propose.Reason, "first review; second review") {
 		t.Fatalf("proposal = %+v, want both reasons", fd)
 	}
-	if got := rep.Reviewed; len(got.Outcomes) != 2 || len(got.Stale) != 0 {
+	if got := rep.Reviewed; len(got.Outcomes()) != 2 || len(got.Stale()) != 0 {
 		t.Errorf("tally = %+v, want both matched", got)
 	}
 }
@@ -347,7 +347,7 @@ func TestReviewedEveryIdentityField(t *testing.T) {
 			}
 			rep := proposalReport(p)
 			tally := applyReviewed(rep, []reviewedDecision{r}, nil, nil)
-			if len(tally.Stale) != 1 || rep.classes[0].rows[0].Propose.Advisory {
+			if len(tally.Stale()) != 1 || rep.classes[0].rows[0].Propose.Advisory {
 				t.Fatalf("identity field %s was ignored", field)
 			}
 		})
@@ -379,7 +379,7 @@ func TestReviewedAcceptRejectAndNoOpsAcrossClasses(t *testing.T) {
 					if advisory == (decision == "reject") {
 						status = "no-op"
 					}
-					if rep.Reviewed.Outcomes[0].Status != status {
+					if rep.Reviewed.Outcomes()[0].Status != outcomeStatus(status) {
 						t.Fatalf("tally = %+v", rep.Reviewed)
 					}
 					if !strings.Contains(strings.Join(got.Notes, ";"), "reviewed and "+map[string]string{"accept": "accepted", "reject": "rejected"}[decision]+": stated source reviewed") {
@@ -431,7 +431,7 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 				accept.Advisory = true
 				rep := proposalReport(existing, accept)
 				rep.Reviewed = applyReviewed(rep, []reviewedDecision{review(accept, "accept")}, nil, nil)
-				if !rep.classes[0].rows[1].Propose.Advisory || rep.Reviewed.Outcomes[0].Status != "refused" || !strings.Contains(rep.Reviewed.Outcomes[0].Why, tc.why) {
+				if !rep.classes[0].rows[1].Propose.Advisory || rep.Reviewed.Outcomes()[0].Status != "refused" || !strings.Contains(rep.Reviewed.Outcomes()[0].Why, tc.why) {
 					t.Fatalf("outcome = %+v", rep.Reviewed)
 				}
 				if !strings.Contains(summary(rep), tc.why) {
@@ -446,8 +446,8 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 	de := Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "en", To: "de", Others: []string{"w-de"}, Advisory: true}
 	fr := Proposal{Op: OpSplitSeries, Target: "source", Field: "language", From: "en", To: "fr", Others: []string{"w-fr"}, Advisory: true}
 	rep := proposalReport(de, fr)
-	if tally := applyReviewed(rep, []reviewedDecision{review(de, "accept"), review(fr, "accept")}, nil, nil); tally.Outcomes[0].Status != "accepted" ||
-		tally.Outcomes[1].Status != "accepted" {
+	if tally := applyReviewed(rep, []reviewedDecision{review(de, "accept"), review(fr, "accept")}, nil, nil); tally.Outcomes()[0].Status != "accepted" ||
+		tally.Outcomes()[1].Status != "accepted" {
 		t.Fatalf("one orientation in two splits: tally=%+v", tally)
 	}
 	assertProposalsConsistent(t, rep)
@@ -458,7 +458,7 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 	other.Advisory = true
 	rep = proposalReport(move, other)
 	tally := applyReviewed(rep, []reviewedDecision{review(move, "accept"), review(other, "accept")}, nil, nil)
-	if tally.Outcomes[0].Status != "accepted" || tally.Outcomes[1].Status != "refused" {
+	if tally.Outcomes()[0].Status != "accepted" || tally.Outcomes()[1].Status != "refused" {
 		t.Fatalf("tally=%+v", tally)
 	}
 	assertProposalsConsistent(t, rep)
@@ -469,7 +469,7 @@ func TestReviewedRejectsBeforeAccepting(t *testing.T) {
 	q := Proposal{Op: OpMergeWorks, Target: "c", Others: []string{"b"}, Advisory: true}
 	rep := proposalReport(p, q)
 	tally := applyReviewed(rep, []reviewedDecision{review(q, "accept"), review(p, "reject")}, nil, nil)
-	if tally.Outcomes[0].Status != "accepted" {
+	if tally.Outcomes()[0].Status != "accepted" {
 		t.Fatalf("tally=%+v", tally)
 	}
 	assertProposalsConsistent(t, rep)
@@ -491,13 +491,13 @@ func TestReviewedMembershipTombstonesAndSharedDecisions(t *testing.T) {
 		first.Reason = "first"
 		second.Reason = "second"
 		tally := applyReviewed(rep, []reviewedDecision{first, second}, reds, nil)
-		if len(tally.Outcomes) != 2 || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "first") || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "second") {
+		if len(tally.Outcomes()) != 2 || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "first") || !strings.Contains(rep.classes[0].rows[0].Propose.Reason, "second") {
 			t.Fatalf("tally=%+v, proposal=%+v", tally, rep.classes[0].rows[0])
 		}
 	}
 	rep := proposalReport(p)
 	tally := applyReviewed(rep, []reviewedDecision{review(old, "accept"), review(p, "reject")}, reds, nil)
-	if tally.Outcomes[0].Status != "refused" || !rep.classes[0].rows[0].Propose.Advisory {
+	if tally.Outcomes()[0].Status != "refused" || !rep.classes[0].rows[0].Propose.Advisory {
 		t.Fatalf("opposite decisions: %+v", tally)
 	}
 }
@@ -513,7 +513,7 @@ func TestReviewedRealDetectorAcceptsAndStaleSummary(t *testing.T) {
 	stale := r
 	stale.To = "fr"
 	rep := runFixtureRejecting(t, files, r, stale)
-	if onlyMix(t, rep, lMixSplit).Propose.Advisory || len(rep.Reviewed.Stale) != 1 || !strings.Contains(summary(rep), "- STALE") {
+	if onlyMix(t, rep, lMixSplit).Propose.Advisory || len(rep.Reviewed.Stale()) != 1 || !strings.Contains(summary(rep), "- STALE") {
 		t.Fatalf("reviewed=%+v", rep.Reviewed)
 	}
 	assertProposalsConsistent(t, rep)
@@ -570,7 +570,7 @@ func TestReviewedMergeNamespacesStaySeparate(t *testing.T) {
 	p := Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"b"}, Advisory: true}
 	rep := proposalReport(Proposal{Op: OpMergeSeries, Target: "b", Others: []string{"a"}}, p)
 	tally := applyReviewed(rep, []reviewedDecision{review(p, "accept")}, nil, nil)
-	if tally.Outcomes[0].Status != "accepted" {
+	if tally.Outcomes()[0].Status != "accepted" {
 		t.Fatalf("independent namespaces refused: %+v", tally)
 	}
 	assertProposalsConsistent(t, rep)
@@ -587,12 +587,12 @@ func TestReviewedRefusedPromotionLeavesNoClaims(t *testing.T) {
 	rep := proposalReport(occupied, refused, accepted, stillRefused)
 	tally := applyReviewed(rep, []reviewedDecision{review(refused, "accept"), review(accepted, "accept"), review(stillRefused, "accept")}, nil, nil)
 	for i, want := range []string{"refused", "accepted", "refused"} {
-		if tally.Outcomes[i].Status != want {
-			t.Fatalf("outcomes = %+v", tally.Outcomes)
+		if tally.Outcomes()[i].Status != outcomeStatus(want) {
+			t.Fatalf("outcomes = %+v", tally.Outcomes())
 		}
 	}
-	if !strings.Contains(tally.Outcomes[2].Why, "proposal-0") || strings.Contains(tally.Outcomes[2].Why, "proposal-1") {
-		t.Fatalf("original slot claimant was not restored: %+v", tally.Outcomes[2])
+	if !strings.Contains(tally.Outcomes()[2].Why, "proposal-0") || strings.Contains(tally.Outcomes()[2].Why, "proposal-1") {
+		t.Fatalf("original slot claimant was not restored: %+v", tally.Outcomes()[2])
 	}
 	assertProposalsConsistent(t, rep)
 }
@@ -615,7 +615,7 @@ func TestReviewedIndexesReviewByClass(t *testing.T) {
 		rep.classes = append(rep.classes, f)
 	}
 	tally := applyReviewed(rep, []reviewedDecision{review(Proposal{Op: OpReview, Target: "old"}, "reject")}, reds, nil)
-	if len(tally.Outcomes) != 1 || len(tally.Stale) != 0 {
+	if len(tally.Outcomes()) != 1 || len(tally.Stale()) != 0 {
 		t.Fatalf("tally = %+v", tally)
 	}
 	for _, c := range rep.classes {

@@ -72,7 +72,7 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 			if len(fd.Works)+len(fd.Series) == 0 {
 				t.Errorf("finding cites no record: %+v", fd)
 			}
-			if o := rep.Reviewed.Outcomes; len(o) != 1 || o[0].Status != "asserted" {
+			if o := rep.Reviewed.Outcomes(); len(o) != 1 || o[0].Status != "asserted" {
 				t.Fatalf("tally = %+v", rep.Reviewed)
 			}
 			if md := summary(rep); !strings.Contains(md, "... asserted (sourced a mechanical proposal) | 1") {
@@ -83,14 +83,15 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 	}
 }
 
-// An assertion a detector already makes is an acceptance of it: an advisory proposal is
+// An assertion a detector already makes (an omitted membership field read as "series")
+// is an acceptance of it: an advisory proposal is
 // made mechanical, nothing is added, and SUMMARY.md says to rewrite it as an accept.
 func TestReviewedAssertRedundantWithADetectorActsAsAccept(t *testing.T) {
 	advisory := Proposal{Op: OpMergeWorks, Target: "a", Others: []string{"b"}, Advisory: true, Reason: "a veto"}
 	mechanical := Proposal{Op: OpAddSeriesMember, Target: "c", Series: "s", Field: "series", To: "2"}
 	rep := proposalReport(advisory, mechanical)
 	asserts := []reviewedDecision{
-		assertion(OpAddSeriesMember, "c", "s", "series", "2"),
+		assertion(OpAddSeriesMember, "c", "s", "", "2"), // field omitted: read as the detector's "series"
 		assertion(OpMergeWorks, "a", "", "", "", "b"),
 	}
 	rep.Reviewed = applyReviewed(rep, asserts, nil, nil)
@@ -98,9 +99,9 @@ func TestReviewedAssertRedundantWithADetectorActsAsAccept(t *testing.T) {
 	if len(rows) != 2 || rows[0].Propose.Advisory || rows[1].Propose.Advisory {
 		t.Fatalf("rows = %+v, want both proposals mechanical and nothing added", rows)
 	}
-	for _, o := range rep.Reviewed.Outcomes {
+	for _, o := range rep.Reviewed.Outcomes() {
 		if o.Status != "redundant" || !strings.Contains(o.Why, "already proposed as "+ClassLangMix) {
-			t.Fatalf("outcomes = %+v", rep.Reviewed.Outcomes)
+			t.Fatalf("outcomes = %+v", rep.Reviewed.Outcomes())
 		}
 	}
 	md := summary(rep)
@@ -129,10 +130,10 @@ func TestReviewedAssertStaleWhenARecordIsRetired(t *testing.T) {
 		}
 	}
 	whys := map[string]string{}
-	for _, o := range rep.Reviewed.Stale {
+	for _, o := range rep.Reviewed.Stale() {
 		whys[o.Entry.Target] = o.Why
 	}
-	if len(rep.Reviewed.Outcomes) != 0 || len(whys) != 3 ||
+	if len(rep.Reviewed.Outcomes()) != 0 || len(whys) != 3 ||
 		!strings.Contains(whys["the-battle-for-skandia"], "applied: every record it folds") ||
 		!strings.Contains(whys["the-pillars-of-the-earth"], "applied: series kingsbridge lists") ||
 		!strings.Contains(whys["the-ruins-of-gorlan"], "no live work no-such-book") {
@@ -171,7 +172,7 @@ func TestReviewedAssertRefusedOnConflict(t *testing.T) {
 		rejectedTwin, rejection)
 	for i, want := range []string{"", "both claim series slot kingsbridge@1", "which " + detected.Key + " already merges",
 		"a reviewed rejection resolves to the same proposal"} {
-		o := rep.Reviewed.Outcomes[i]
+		o := rep.Reviewed.Outcomes()[i]
 		if want == "" && o.Status != "asserted" || want != "" && (o.Status != "refused" || !strings.Contains(o.Why, want)) {
 			t.Fatalf("outcome %d = %+v, want %q", i, o, want)
 		}
@@ -195,7 +196,7 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 		{"merge onto itself", `[{"decision":"assert","op":"merge-works","others":["a"],"reason":"why","target":"a"}]`, "onto itself"},
 		{"merge with no others", `[{"decision":"assert","op":"merge-series","reason":"why","target":"a"}]`, "a target and others"},
 		{"merge naming a series", `[{"decision":"assert","op":"merge-works","others":["b"],"reason":"why","series":"s","target":"a"}]`, "a target and others"},
-		{"membership without field", `[{"decision":"assert","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"}]`, `field "series"`},
+		{"membership with another field", `[{"decision":"assert","field":"position","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"}]`, `field, if stated, "series"`},
 		{"membership without position", `[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a"}]`, "not a canonical series position"},
 		{"non-canonical position", `[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1 - 3"}]`, "not a canonical series position"},
 	} {
@@ -235,7 +236,7 @@ func TestReviewedAssertsConvergingSourceOnce(t *testing.T) {
 	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 1 {
 		t.Fatalf("sourced %+v, want one", got)
 	}
-	if o := rep.Reviewed.Outcomes; len(o) != 2 || o[0].Status != "asserted" || o[1].Status != "redundant" {
+	if o := rep.Reviewed.Outcomes(); len(o) != 2 || o[0].Status != "asserted" || o[1].Status != "redundant" {
 		t.Fatalf("outcomes = %+v", o)
 	}
 }
