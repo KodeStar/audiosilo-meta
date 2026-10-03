@@ -7766,6 +7766,10 @@
             {
               "asin": "B002VA8TOQ",
               "region": "us"
+            },
+            {
+              "asin": "B079VSGYKB",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8074,6 +8078,39 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002VA8TOQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B079VSGYKB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "beyond-reach"
+        },
+        "kathleen-early-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HHMW4QPJ",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/811SzP7qXEL.jpg",
+          "id": "kathleen-early-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kathleen-early"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2026-10-20",
+          "runtime_min": 919,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HHMW4QPJ",
               "type": "libex-import"
             }
           ],
