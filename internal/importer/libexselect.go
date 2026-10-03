@@ -426,27 +426,13 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 	first := true
 	for len(dirty) > 0 {
 		for _, u := range dirty {
-			var rs []*groupReach
 			for _, g := range units[u] {
-				var live []int
 				for _, ci := range reaches[g].idx {
 					targets[ci] = seriesTarget{}
-					if alive[where[ci].book] {
-						live = append(live, ci)
-					}
-				}
-				switch {
-				case len(live) == len(reaches[g].idx):
-					rs = append(rs, reaches[g])
-				case len(live) > 0:
-					// The import of the surviving rows reaches from their claims
-					// alone: a dropped claim's row language may have been all that
-					// joined this group to another, so the group's reach is taken
-					// again and the unit partitioned again below.
-					rs = append(rs, reachOf(cat, claims, live))
 				}
 			}
-			resolveReaches(cat, claims, rs, targets, map[string]map[string]bool{})
+			live := func(ci int) bool { return alive[where[ci].book] }
+			resolveReaches(cat, claims, liveReaches(cat, claims, reaches, units[u], live), targets, map[string]map[string]bool{})
 			if !first {
 				for _, g := range units[u] {
 					for _, ci := range reaches[g].idx {
@@ -522,6 +508,31 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 	for i, r := range kept {
 		if alive[i] {
 			out = append(out, r)
+		}
+	}
+	return out
+}
+
+// liveReaches is a re-checked unit's name groups over their surviving claims (live):
+// a group that lost none keeps its reach, one that lost some is reached again from
+// the survivors alone - a dropped claim's row language may have been all that
+// joined it to another group, and the import of the surviving rows would not see
+// that link - and a group that lost all is gone. resolveReaches partitions the
+// result into units again.
+func liveReaches(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach, unit []int, live func(ci int) bool) []*groupReach {
+	var out []*groupReach
+	for _, g := range unit {
+		var survivors []int
+		for _, ci := range reaches[g].idx {
+			if live(ci) {
+				survivors = append(survivors, ci)
+			}
+		}
+		switch {
+		case len(survivors) == len(reaches[g].idx):
+			out = append(out, reaches[g])
+		case len(survivors) > 0:
+			out = append(out, reachOf(cat, claims, survivors))
 		}
 	}
 	return out

@@ -484,7 +484,7 @@ func TestAJoinUnderAnotherStoredNameIsNoted(t *testing.T) {
 	sum := runLibexOver(t, dataDir,
 		langRow("B0TOGDE003", "Erbin des Feuers", "Sarah J. Maas", "german", "Throne of Glass (Deutsche Ausgabe)", "3"),
 		langRow("B0TOGDE004", "Koenigin der Schatten", "Sarah J. Maas", "german", "Throne of Glass [German Edition]", "4"))
-	want := `1 series claim(s) joined a catalogued series stored under another name (for example: ` +
+	want := `1 series name(s) joined a catalogued series stored under another name (for example: ` +
 		`"Throne of Glass (Deutsche Ausgabe)" joined throne-of-glass-german-edition "Throne of Glass [German Edition]")`
 	if !slices.Contains(sum.Notes, want) {
 		t.Errorf("Notes = %v, want %q", sum.Notes, want)
@@ -557,5 +557,86 @@ func TestASpellingAloneResolvesAsInsideAUnit(t *testing.T) {
 		if inUnit[i].slug != "drenai-german-edition" || !inUnit[i].found {
 			t.Errorf("German claim %d resolved to %+v, want drenai-german-edition", i, inUnit[i])
 		}
+	}
+}
+
+// A VARIANT stating no ordering (a shape the schema forbids and metacheck refuses)
+// is not indexed at all: under "" it would hand a reading order to every
+// unqualified claim. The violating side: a stated ordering indexes it.
+func TestAVariantWithNoOrderingIsNotIndexed(t *testing.T) {
+	lang := map[string]string{"drenai-chrono": "en"}
+	if got := buildQualified([]qualifiedSource{{id: "drenai-chrono", name: "Drenai (Chronological)", orderingOf: "drenai"}}, lang); len(got) != 1 {
+		t.Fatalf("a variant whose NAME states its ordering was not indexed: %v", got)
+	}
+	if got := buildQualified([]qualifiedSource{{id: "drenai-chrono", name: "Drenai Chronik", orderingOf: "drenai"}}, lang); len(got) != 0 {
+		t.Errorf("a variant stating no ordering at all was indexed: %v", got)
+	}
+}
+
+// One cluster spread across two spellings that reach one series is judged exactly
+// as the same cluster under one spelling: the first spelling's part extends the
+// shared pool before the second's is judged, and its books must count once, not
+// twice. Two rows of another author join Ada's open one-volume series (two of
+// three members dominate nothing) under one spelling - and so under two; counted
+// twice, the second part would read as three of four and be refused.
+func TestAClusterAcrossSpellingsCountsItsBooksOnce(t *testing.T) {
+	outcome := func(second string) map[string]string {
+		dataDir := sagaTree(t)
+		runLibexOver(t, dataDir,
+			sagaRow("B0CARL0002", "Zwei", "Carl Squatter", "Saga [German Edition]", "2"),
+			sagaRow("B0CARL0003", "Drei", "Carl Squatter", second, "3"))
+		assertTreeValid(t, dataDir)
+		return seriesWorks(t, dataDir, "saga-german-edition")
+	}
+	one, two := outcome("Saga [German Edition]"), outcome("Saga (Deutsche Ausgabe)")
+	want := map[string]string{"eins": "1", "zwei": "2", "drei": "3"}
+	if !reflect.DeepEqual(one, want) || !reflect.DeepEqual(two, one) {
+		t.Errorf("one spelling: %v; two spellings: %v; want both %v", one, two, want)
+	}
+}
+
+// libex-select's re-check re-partitions a unit over its SURVIVING claims: a
+// dropped claim whose row language was the only link between two name groups no
+// longer joins them, and the re-check resolves the survivors exactly as the
+// import of the surviving selection does.
+func TestARecheckSplitsAUnitItsDroppedClaimJoined(t *testing.T) {
+	cat := gemmell(
+		&model.Series{ID: "drenai", Name: "Drenai", Works: members()},
+		&model.Series{ID: "drenai-german-edition", Name: "Drenai [German Edition]", Works: []model.SeriesWork{
+			{Work: "die-legende", Position: "1"}, {Work: "der-koenig", Position: "2"}}},
+	)
+	for _, w := range []string{"die-legende", "der-koenig"} {
+		cat.Works = append(cat.Works, &model.Work{ID: w, Title: w, Language: "de", Authors: []string{"david-gemmell"}})
+	}
+	names := map[string]string{}
+	for _, s := range cat.Series {
+		names[s.ID] = s.Name
+	}
+	view := NewSeriesAuthorIndex(cat).catalogue(func(slug string) (string, bool) { n, ok := names[slug]; return n, ok }, nil)
+	claim := func(name, lang, order string) nameClaim {
+		row := SeriesRowFor([]string{"David Gemmell"}, []string{"Book " + order}, "", lang, nil)
+		return nameClaim{name: name, row: row, order: order, work: "row:" + order, evidence: true}
+	}
+	// "Drenai" in German (claim 1) is the only claim linking the plain name to the
+	// German edition series the "(Deutsche Ausgabe)" group reaches.
+	batch := []nameClaim{claim("Drenai", "en", "a"), claim("Drenai", "de", "b"), claim("Drenai (Deutsche Ausgabe)", "de", "c")}
+	groups, keys := claimGroups(batch)
+	reaches := make([]*groupReach, len(keys))
+	for i, k := range keys {
+		reaches[i] = reachOf(view, batch, groups[k])
+	}
+	units := seriesUnits(reaches)
+	if len(units) != 1 {
+		t.Fatalf("units = %v, want one", units)
+	}
+	survivors := liveReaches(view, batch, reaches, units[0], func(ci int) bool { return ci != 1 })
+	if got := seriesUnits(survivors); len(got) != 2 {
+		t.Errorf("the re-check kept one unit over the survivors: %v", got)
+	}
+	recheck := make([]seriesTarget, len(batch))
+	resolveReaches(view, batch, survivors, recheck, map[string]map[string]bool{})
+	imported := resolveSeriesClaims(view, []nameClaim{batch[0], batch[2]})
+	if !reflect.DeepEqual(recheck[0], imported[0]) || !reflect.DeepEqual(recheck[2], imported[1]) {
+		t.Errorf("re-check %+v / %+v, import of the survivors %+v / %+v", recheck[0], recheck[2], imported[0], imported[1])
 	}
 }

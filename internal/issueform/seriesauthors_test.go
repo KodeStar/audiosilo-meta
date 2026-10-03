@@ -151,7 +151,7 @@ func TestAddWorkExtendsItsLanguagesEditionSeries(t *testing.T) {
 	if fileExists(t, dir, "series/lo/lost-fleet-2.json") {
 		t.Error("a second German series was composed at lost-fleet-2")
 	}
-	if !anyContains(res.Messages, `1 series claim(s) joined a catalogued series stored under another name (for example: "Lost Fleet" joined lost-fleet-german-edition "Lost Fleet [German Edition]")`) {
+	if !anyContains(res.Messages, `1 series name(s) joined a catalogued series stored under another name (for example: "Lost Fleet" joined lost-fleet-german-edition "Lost Fleet [German Edition]")`) {
 		t.Errorf("the verdict does not name the join under another stored name: %v", res.Messages)
 	}
 
@@ -175,5 +175,29 @@ func TestAddWorkDoesNotNoteARespelledJoin(t *testing.T) {
 	}
 	if anyContains(res.Messages, "joined") {
 		t.Errorf("a respell the chain matches was noted as a join: %v", res.Messages)
+	}
+}
+
+// The form's language may carry a region ("de-AT"): the series resolution reads
+// its primary subtag (SeriesRowFor, the one place), so the language reach still
+// finds the German edition series.
+func TestAddWorkReachesItsEditionSeriesFromARegionTag(t *testing.T) {
+	german := map[string]string{
+		"series/lo/lost-fleet-german-edition.json": testpack.SeriesJSON(t, "lost-fleet-german-edition",
+			"Lost Fleet [German Edition]", "einfall@1", "aufstand@2"),
+	}
+	for _, w := range []string{"einfall", "aufstand"} {
+		german["works/"+w[:2]+"/"+w+"/work.json"] = testpack.WorkJSON(t, w, w, testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de"))
+		german["works/"+w[:2]+"/"+w+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", w)
+	}
+	dir := formLostFleetTree(t, german)
+	body := strings.Replace(dupWorkBody("Invasion Deutsch", "Sarah Hawke", "Nate Narrator", "Lost Fleet", "3"),
+		field(fWorkLanguage, "en"), field(fWorkLanguage, "de-AT"), 1)
+	res := processAddWork(t, dir, body)
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !strings.Contains(readFile(t, dir, "series/lo/lost-fleet-german-edition.json"), `"work": "invasion-deutsch"`) {
+		t.Error("a de-AT submission did not extend the German edition series")
 	}
 }

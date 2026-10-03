@@ -4,6 +4,7 @@ import (
 	"maps"
 	"slices"
 	"strings"
+	"sync"
 	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -501,6 +502,7 @@ type SeriesAuthorIndex struct {
 	// qualifiedFrom on first use (qualifiedIndex).
 	qualified     qualifiedIndex
 	qualifiedFrom []qualifiedSource
+	qualifiedOnce sync.Once
 }
 
 // NewSeriesAuthorIndex builds the index over cat. A nil catalogue is an empty

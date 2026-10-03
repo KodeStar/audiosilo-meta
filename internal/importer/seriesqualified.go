@@ -75,6 +75,13 @@ func buildQualified(series []qualifiedSource, language map[string]string) qualif
 			continue
 		}
 		ordering := cmp.Or(s.ordering, q.Ordering)
+		if s.orderingOf != "" && ordering == "" {
+			// A variant stating no ordering: the schema's dependentRequired
+			// forbids the shape and metacheck enforces it, but were one to slip
+			// through, indexing it under "" would hand a reading order to every
+			// unqualified claim - so it is not indexed at all.
+			continue
+		}
 		orderings := []string{ordering}
 		if s.orderingOf == "" && ordering == model.OrderingPublication {
 			orderings = append(orderings, "")
@@ -103,10 +110,10 @@ func buildQualified(series []qualifiedSource, language map[string]string) qualif
 // it (reachOf), so a resolution with any claim builds it once per snapshot, and an
 // index nothing resolves through never does.
 func (ix *SeriesAuthorIndex) qualifiedIndex() qualifiedIndex {
-	if ix.qualifiedFrom != nil {
+	ix.qualifiedOnce.Do(func() {
 		ix.qualified = buildQualified(ix.qualifiedFrom, ix.language)
 		ix.qualifiedFrom = nil
-	}
+	})
 	return ix.qualified
 }
 
@@ -188,15 +195,16 @@ func (j SeriesNameJoin) String() string {
 }
 
 // SeriesNameJoinsNote is the one note line naming such joins - the importer's
-// run-level note and the intake form's verdict line alike: a count, then a bounded
-// list of examples (withExamples), sorted so two runs over one input read the same.
+// run-level note and the intake form's verdict line alike: a count of the distinct
+// (given name, series, stored name) joins, then a bounded list of examples
+// (withExamples), sorted so two runs over one input read the same.
 func SeriesNameJoinsNote(joins []SeriesNameJoin) string {
 	examples := make([]string, len(joins))
 	for i, j := range joins {
 		examples[i] = j.String()
 	}
 	slices.Sort(examples)
-	return withExamples(fmt.Sprintf("%d series claim(s) joined a catalogued series stored under another name", len(joins)), examples)
+	return withExamples(fmt.Sprintf("%d series name(s) joined a catalogued series stored under another name", len(joins)), examples)
 }
 
 // noteSeriesNameJoin records a join under another stored name, once; the run's
