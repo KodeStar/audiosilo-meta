@@ -609,3 +609,71 @@ func TestSeveralQualifiedWorksDecideNothing(t *testing.T) {
 			sum.MergedASINs, sum.SkippedDuplicateIdentity, sum.NewWorks, sum.Warnings)
 	}
 }
+
+// Two qualified-only works cleaning to one title but by DIFFERENT authors are not
+// ambiguous to a row by one of them: only the works that clear the walk (authors,
+// language) count, as the duplicate guard counts only MATCHING works - so the row
+// reaches its own author's work rather than being refused as its duplicate.
+func TestQualifiedWorksOfAnotherAuthorAreNoAmbiguity(t *testing.T) {
+	files := map[string]string{}
+	for _, w := range [][3]string{
+		{"jesus-listens-narrated-by-bea-reader", "Jesus Listens (Narrated by Bea Reader)", "ada-mapmaker"},
+		{"jesus-listens-narrated-by-cy-reader", "Jesus Listens (Narrated by Cy Reader)", "zed-other"},
+	} {
+		id := w[0]
+		files["works/"+shard(id)+"/"+id+"/work.json"] = testpack.WorkJSON(t, id, w[1], testpack.WithAuthors(w[2]))
+		files["works/"+shard(id)+"/"+id+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300))
+	}
+	files["people/ze/zed-other.json"] = testpack.PersonJSON(t, "zed-other", "Zed Other")
+	dataDir := seedTombstoneTree(t, files, nil)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0JESUS003", title: "Jesus Listens (Narrated by Dee Reader)",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Dee Reader"}`, minutes: 310}))
+	if sum.NewRecordings != 1 || sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 ||
+		len(recSlugsOf(t, dataDir, "jesus-listens-narrated-by-bea-reader")) != 2 {
+		t.Errorf("NewRecordings = %d, NewWorks = %d, SkippedDuplicateIdentity = %d, want a new recording under the author's work; warnings = %v",
+			sum.NewRecordings, sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
+	}
+}
+
+// The recordings-only pass - the alternate-narration pass - reaches a work catalogued
+// only under ANOTHER narrator's qualified title, as the create path does.
+func TestRecordingsOnlyReachesANarratorQualifiedWork(t *testing.T) {
+	const id = "jesus-listens-narrated-by-bea-reader"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Jesus Listens (Narrated by Bea Reader)",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300)),
+	}, nil)
+	sum := runLibexWith(t, dataDir, Options{Mode: ModeRecordingsOnly}, libexRow{asin: "B0JESUS004",
+		title: "Jesus Listens (Narrated by Cy Reader)", authors: `{"name":"Ada Mapmaker"}`,
+		narrators: `{"name":"Cy Reader"}`, minutes: 310}.render())
+	if sum.NewRecordings != 1 || sum.SkippedNoWork != 0 || len(recSlugsOf(t, dataDir, id)) != 2 {
+		t.Errorf("NewRecordings = %d, SkippedNoWork = %d, want a new recording under %s; warnings = %v",
+			sum.NewRecordings, sum.SkippedNoWork, id, sum.Warnings)
+	}
+}
+
+// A qualified-only work whose title opens with its series' name is keyed by the
+// identity index under the SERIES-stripped key, so a lookup by the row's bare title
+// key never met it; the catalogued arm is an exact cleaned-title lookup instead, and
+// a row naming another narrator reaches the work rather than being refused as its
+// duplicate.
+func TestASeriesTitledQualifiedWorkStaysReachable(t *testing.T) {
+	const id = "dragon-saga-ember-narrated-by-bea-reader"
+	dataDir := seedTombstoneTree(t, map[string]string{
+		"works/" + shard(id) + "/" + id + "/work.json": testpack.WorkJSON(t, id, "Dragon Saga: Ember (Narrated by Bea Reader)",
+			testpack.WithAuthors("ada-mapmaker")),
+		"works/" + shard(id) + "/" + id + "/recordings/r1.json": testpack.RecJSON(t, "r1", id,
+			testpack.WithNarrators("bea-reader"), testpack.WithRuntime(300)),
+		"series/dr/dragon-saga.json": testpack.SeriesJSON(t, "dragon-saga", "Dragon Saga", id+"@1"),
+	}, nil)
+	sum := runLibexInto(t, dataDir, rows(libexRow{asin: "B0DRAGON01", title: "Dragon Saga: Ember (Narrated by Cy Reader)",
+		authors: `{"name":"Ada Mapmaker"}`, narrators: `{"name":"Cy Reader"}`, minutes: 310,
+		series: `{"name":"Dragon Saga","position":"1"}`}))
+	if sum.NewRecordings != 1 || sum.NewWorks != 0 || sum.SkippedDuplicateIdentity != 0 || len(recSlugsOf(t, dataDir, id)) != 2 {
+		t.Errorf("NewRecordings = %d, NewWorks = %d, SkippedDuplicateIdentity = %d, want a new recording under %s; warnings = %v",
+			sum.NewRecordings, sum.NewWorks, sum.SkippedDuplicateIdentity, id, sum.Warnings)
+	}
+}

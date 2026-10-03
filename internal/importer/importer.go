@@ -350,6 +350,13 @@ type planner struct {
 	// other mode, which is what makes the guard a create-only rule and costs the
 	// other two passes nothing (building it cleans every catalogued title once).
 	identity *check.WorkIdentity
+	// qualifiedByClean indexes every catalogued work title that cleanWorkTitle
+	// CHANGES by what it cleans to (cleaned title -> the stored titles, sorted and
+	// distinct), so resolveWork and the recordings-only matcher can find a work
+	// catalogued under a qualified title from a row naming another qualifier
+	// (qualifiedCatalogueTitles). Built on first use, in every mode - an exact
+	// title lookup, so it needs neither the identity index nor a series name.
+	qualifiedByClean map[string][]string
 	// runIdentity and runIdentified are the same index over the works THIS RUN has
 	// created or merged into: normalized identity key -> work slugs, and slug -> the
 	// title and series name that key was derived from. The disk index cannot hold
@@ -2288,44 +2295,64 @@ func (p *planner) resolveWork(title, fullTitle, qualifiedTitle, posSuffix string
 	// The QUALIFIED titles, as merge targets only: a work catalogued under a
 	// qualified title with no plain twin ("Lonely Book: International Edition") sits
 	// on that title's chain, which the cleaned title no longer walks. Nothing is
-	// created there - a miss leaves the row on the chain resolved above.
-	for _, q := range p.qualifiedTitlesFor(title, fullTitle, qualifiedTitle) {
-		if qw, ok := p.mergeOnlyWalk(q, slugOfTitle(q), authors, lang, claim.forTitle(q)); ok {
+	// created there - a miss leaves the row on the chain resolved above. The row's
+	// own pre-qualifier title first, then every catalogued title that cleans to
+	// exactly the row's (qualifiedCatalogueWalk).
+	if qualifiedTitle != "" && qualifiedTitle != fullTitle {
+		if qw, ok := p.mergeOnlyWalk(qualifiedTitle, slugOfTitle(qualifiedTitle), authors, lang, claim.forTitle(qualifiedTitle)); ok {
 			return qw
 		}
+	}
+	if qw, ok := p.qualifiedCatalogueWalk(title, qualifiedTitle, authors, lang, claim); ok {
+		return qw
 	}
 	return w
 }
 
-// qualifiedTitlesFor are the qualified titles resolveWork walks as merge targets
-// after the cleaned ones: the row's own pre-qualifier title, then - in a create run,
-// which holds the identity index - the title of every catalogued work whose OWN
-// title cleans to exactly the row's (cleanWorkTitle, the same rule, not merely the
-// same key). The second is what reaches "Jesus Listens (Narrated by Bill Russell)"
-// from a row naming another narrator, whose qualified title spells a different
-// slug. Each is judged by the full walk (authors, language, series claim), so the
-// list only says where to LOOK; and only ONE catalogued work may be offered, since a
-// title several works clean to names none of them.
-func (p *planner) qualifiedTitlesFor(title, fullTitle, qualifiedTitle string) []string {
-	var out []string
-	if qualifiedTitle != "" && qualifiedTitle != fullTitle {
-		out = append(out, qualifiedTitle)
-	}
-	if p.identity == nil || title == "" {
-		return out
-	}
-	var catalogued []string
-	for _, cw := range p.identity.Works(p.identity.Key(title, "")) {
-		if cw.Title != title && cw.Title != qualifiedTitle && cleanWorkTitle(cw.Title) == title {
-			catalogued = append(catalogued, cw.Title)
+// qualifiedCatalogueTitles are the stored titles of the catalogued works whose OWN
+// title cleans to exactly title (cleanWorkTitle, the same rule, not merely the same
+// key), sorted and distinct - what reaches "Jesus Listens (Narrated by Bill
+// Russell)" from a row naming another narrator, whose qualified title spells a
+// different slug.
+func (p *planner) qualifiedCatalogueTitles(title string) []string {
+	if p.qualifiedByClean == nil {
+		idx := map[string][]string{}
+		for _, ws := range p.works {
+			if c := cleanWorkTitle(ws.title); c != ws.title {
+				idx[c] = append(idx[c], ws.title)
+			}
 		}
+		for c, ts := range idx {
+			slices.Sort(ts)
+			idx[c] = slices.Compact(ts)
+		}
+		p.qualifiedByClean = idx
 	}
-	// SEVERAL such works decide nothing - the duplicate guard's own ambiguity rule -
-	// so none is offered and the row falls through to the guard as before.
-	if len(catalogued) == 1 {
-		out = append(out, catalogued[0])
+	return p.qualifiedByClean[title]
+}
+
+// qualifiedCatalogueWalk walks, as merge targets only, the chain of every catalogued
+// title that cleans to title (skipping skip, a title already walked), and reports a
+// walk only when exactly ONE work clears the full walk (authors, language, series
+// claim): several matching works decide nothing - the duplicate guard's own
+// ambiguity rule, which is likewise asked of the works that MATCH, not of every work
+// a title names - so the row falls through to the guard as before.
+func (p *planner) qualifiedCatalogueWalk(title, skip string, authors workAuthors, lang string, claim *seriesClaim) (workWalk, bool) {
+	var found workWalk
+	for _, q := range p.qualifiedCatalogueTitles(title) {
+		if q == skip {
+			continue
+		}
+		qw, ok := p.mergeOnlyWalk(q, slugOfTitle(q), authors, lang, claim.forTitle(q))
+		if !ok {
+			continue
+		}
+		if found.ws != nil && found.ws != qw.ws {
+			return workWalk{}, false
+		}
+		found = qw
 	}
-	return out
+	return found, found.ws != nil
 }
 
 // resolveWorkTitle is resolveWork over the row's own and full titles.

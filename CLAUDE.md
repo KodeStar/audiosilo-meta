@@ -1731,10 +1731,13 @@ two title QUALIFIERS through `titlerule.StripTitleQualifiers`, so a qualified ro
 to the catalogued work; a title that is only a qualifier keeps itself, and a work
 catalogued under its qualified title alone stays reachable - `resolveWork` and the
 recordings-only matcher walk the pre-qualifier title (`qualifiedWorkTitle`) as a
-merge target only, after the cleaned one, and a create run also walks the title of
-the ONE catalogued work whose own title cleans to exactly the row's
-(`qualifiedTitlesFor`: "Jesus Listens (Narrated by Bill Russell)" from a row naming
-another narrator; several such works decide nothing). And a same-work, same-narrator entry whose
+merge target only, after the cleaned one, and then (in every mode, through an exact
+cleaned-title index built on first use, `qualifiedCatalogueTitles`) the title of
+every catalogued work whose own title cleans to exactly the row's
+(`qualifiedCatalogueWalk`: "Jesus Listens (Narrated by Bill Russell)" from a row
+naming another narrator); it takes a work only when exactly ONE clears the walk's
+author, language and series tests - several matching works decide nothing, as the
+duplicate guard's ambiguity rule counts only matching works. And a same-work, same-narrator entry whose
 only new fact is another ASIN **merges that ASIN into the existing recording**,
 with provenance (the merge appends a `sources[]` entry ref'ing the merged ASIN)
 and two guards - runtime (a >10% gap between two known runtimes is a genuinely

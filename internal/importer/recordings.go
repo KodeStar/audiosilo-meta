@@ -182,6 +182,29 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 			return w.ws, true
 		}
 	}
+	// Last, the catalogued works whose own qualified title cleans to the row's
+	// (qualifiedCatalogueWalk, resolveWork's own arm): an alternate narration
+	// "Jesus Listens (Narrated by Cy Reader)" of a work catalogued only as "Jesus
+	// Listens (Narrated by Bea Reader)" - exactly what this pass exists for.
+	for i, title := range []string{b.str("title_short"), b.str("title")} {
+		if title == "" || (i == 1 && title == b.str("title_short")) || len(p.qualifiedCatalogueTitles(title)) == 0 {
+			continue
+		}
+		if !resolved {
+			authors = p.rowWorkAuthorsRO(p.rowAuthorCredits(b))
+			if len(authors.all) == 0 {
+				return nil, false
+			}
+			resolved = true
+		}
+		titleHit = true
+		if w, ok := p.qualifiedCatalogueWalk(title, b.qualifiedTitle, authors, rowLang, nil); ok {
+			if w.via != "" {
+				p.noteTombstone(model.RedirectWorks, w.via, w.ws.slug)
+			}
+			return w.ws, true
+		}
+	}
 	return nil, titleHit
 }
 
