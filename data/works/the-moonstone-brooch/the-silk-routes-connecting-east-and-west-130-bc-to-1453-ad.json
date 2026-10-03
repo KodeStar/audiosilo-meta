@@ -7279,6 +7279,10 @@
             {
               "asin": "B073PFRCF9",
               "region": "us"
+            },
+            {
+              "asin": "B073PG9MWG",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7503,6 +7507,48 @@
               "imported_at": "2026-08-02",
               "ref": "B073PFRCF9",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B073PG9MWG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-silver-dwarf"
+        },
+        "stewart-crank-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0H83P9KMN",
+              "region": "us"
+            },
+            {
+              "asin": "B0H83SG6ST",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/718kryuFPnL.jpg",
+          "id": "stewart-crank-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stewart-crank"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2026-12-10",
+          "runtime_min": 638,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0H83P9KMN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0H83SG6ST",
+              "type": "libex-import"
             }
           ],
           "work": "the-silver-dwarf"
