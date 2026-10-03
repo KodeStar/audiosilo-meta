@@ -416,6 +416,16 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 	name := claims[idx[0]].name
 	base := Slugify(name)
 	cands := seriesCandidates(cat, base, name)
+	// A DECORATED name whose chain holds nothing reaches the series it spells by
+	// its decoration alone - an edition series renamed to its plain base sits on
+	// a slug whose stored name no longer equals the claim's - and that reach
+	// stands in for the chain: it is looked up now and anchors exactly as the
+	// chain would, so the rename is invisible to the outcome. A chain holding
+	// anything keeps the anchor step to itself.
+	reached := false
+	if len(cands) == 0 && titlerule.ReadSeriesQualifiers(name).Language != "" {
+		cands, reached = qualifiedCandidates(cat, name, claims, idx, nil), true
+	}
 	const unplaced = -1
 	placed := make([]int, len(idx))
 	for i := range placed {
@@ -423,7 +433,9 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 	}
 
 	// 1. Anchor, in rounds judged against the evidence at the round's start. Only
-	// the chain anchors: every other tier is tried in the cluster step alone.
+	// a candidate the name spells anchors (the chain, or the decorated reach that
+	// stands in for an empty one): a row-language reach is tried in the cluster
+	// step alone.
 	for {
 		type anchor struct{ k, cand int }
 		var round []anchor
@@ -432,7 +444,7 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 				continue
 			}
 			for c, cand := range cands {
-				if cand.tier != tierChain || cand.closedTo(claims[ci]) {
+				if !cand.named() || cand.closedTo(claims[ci]) {
 					continue
 				}
 				if cand.ev.fit(claims[ci].row, cat.large) == seriesShared {
@@ -465,8 +477,7 @@ func resolveSeriesGroup(cat seriesCatalogue, claims []nameClaim, idx []int, out 
 	// 2. Cluster what is left by shared author, within one language: each
 	// cluster joins the first candidate, by tier, that admits it. What the
 	// qualifier index reaches (seriesqualified.go) is looked up once, by the
-	// first cluster the chain declines.
-	reached := false
+	// first cluster the chain declines (unless step 1 already did).
 	for _, cl := range authorClusters(claims, idx, rest) {
 		combined, add := clusterEvidence(claims, idx, cl)
 		lead := claims[idx[cl[0]]] // every claim of a cluster states one language

@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -92,6 +93,37 @@ func TestAPlainClaimFindsItsLanguagesEditionSeries(t *testing.T) {
 			t.Errorf("held %q: the founding names more than the English series: %v", held, sum.Warnings)
 		}
 		assertTreeValid(t, dataDir)
+	}
+}
+
+// The rename is invisible to the ANCHOR step too: a decorated claim whose chain
+// holds nothing anchors on the series its decoration reaches exactly as it
+// anchored on the chain before the rename. Rowling's own volume and a volume she
+// co-wrote with Ada anchor first, and Ada's rows then fit through that co-credit -
+// where, judged as one cluster instead, Ada's ten rows would dominate the merged
+// evidence and the cluster, Rowling's own volumes with it, would found
+// harry-potter-german-edition-2 in the renamed tree alone.
+func TestARenamedEditionSeriesAnchorsAsTheChainDid(t *testing.T) {
+	rows := []string{
+		langRow("B0HPDE0003", "Gefangene", "J. K. Rowling", "german", "Harry Potter [German Edition]", "3"),
+		strings.Replace(langRow("B0CO000004", "Gemeinsam", "J. K. Rowling", "german", "Harry Potter [German Edition]", "4"),
+			`"authors":[{"name":"J. K. Rowling"}]`, `"authors":[{"name":"J. K. Rowling"},{"name":"Ada Mapmaker"}]`, 1),
+	}
+	for i := range 10 {
+		rows = append(rows, langRow(fmt.Sprintf("B0ADA000%02d", i), fmt.Sprintf("Ada Buch %d", i), "Ada Mapmaker", "german",
+			"Harry Potter [German Edition]", fmt.Sprint(5+i)))
+	}
+	outcome := func(held string) (map[string]string, int) {
+		dataDir := hpTree(t, held)
+		sum := runLibexOver(t, dataDir, rows...)
+		assertTreeValid(t, dataDir)
+		return seriesWorks(t, dataDir, "harry-potter-german-edition"), sum.NewSeries
+	}
+	decorated, decoratedNew := outcome("Harry Potter [German Edition]")
+	renamed, renamedNew := outcome("Harry Potter")
+	if !reflect.DeepEqual(renamed, decorated) || renamedNew != decoratedNew {
+		t.Errorf("renamed tree: %v (NewSeries %d); decorated tree: %v (NewSeries %d) - the rename changed the outcome",
+			renamed, renamedNew, decorated, decoratedNew)
 	}
 }
 
