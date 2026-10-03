@@ -78,6 +78,11 @@ import (
 // whole catalogue - a work whose EVERY recording states one other language (the
 // Rubinrot shape: work en, recording de) and whose narrators contradict the work's.
 // It is ALWAYS advisory: a language is only ever set by a reviewed decision.
+// TITLE-LANGUAGE (titlelang.go) is its sibling for the works whose own TITLE says so -
+// an own-language edition decoration of another language, read over every tag, or
+// (for en-tagged members only) a non-English series whose language the title is in -
+// always advisory too, and folded into a narration record
+// for the same work rather than emitted beside it.
 
 // L-MIX subclasses.
 const (
@@ -86,6 +91,9 @@ const (
 	lMixTargets   = "several-targets"
 	lMixSplit     = "no-target"
 	lMixNarration = "narration-contradicts"
+	// lMixTitle is the set-work-language proposal a work's own TITLE supports and no
+	// narration-contradicts record names (titlelang.go), always advisory.
+	lMixTitle = "title-language"
 	// lMixOtherKeeper is a split's ALTERNATE orientation: another language keeping the
 	// slug of a contested (or tied) series, always advisory, so a reviewer accepts
 	// exactly one orientation of the series.
@@ -134,6 +142,10 @@ type langMixStats struct {
 	CrossWorks           int // ...over this many works
 	AllOther             int // works whose every recording states one other language
 	AllOtherContradicted int // ...whose narrators contradict the work's language
+	TitleEdition         int // works whose title states another language's edition than their tag
+	TitleCourse          int // ...withheld: the title names a language (a course)
+	TitleSeries          int // en-tagged WORKS (counted once, however many series) of a non-English mixed series titled in its language
+	TitleProposals       int // title-language records (title evidence no narration record names)
 }
 
 // mixLocks are the records another class proposes to change MECHANICALLY in this
@@ -200,6 +212,9 @@ type langMix struct {
 	// wantLanguage collects each work's set-work-language candidates (the To it would
 	// be reset to, and why), so a work that is a minority in two series is one finding.
 	wantLanguage map[string]*languageCandidate
+	// titleSeriesWorks is the works the series title signal read, so a work in two
+	// mixed series is tallied once.
+	titleSeriesWorks map[string]bool
 }
 
 // languageCandidate retains narration evidence even when it yields no proposed
@@ -209,6 +224,9 @@ type languageCandidate struct {
 	reasons  map[string]string
 	// contested names the contested series the work is a minority member of.
 	contested []string
+	// titled is the TITLE evidence (titlelang.go): each language the title says the
+	// work is in, and why.
+	titled map[string][]string
 }
 
 func (m *langMix) languageCandidate(w *model.Work) *languageCandidate {
@@ -225,12 +243,13 @@ func (m *langMix) languageCandidate(w *model.Work) *languageCandidate {
 func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 	m := &langMix{
 		ix: ix, locks: locks,
-		prof:         check.NewNarrationProfile(ix.cat),
-		byName:       map[string][]*model.Series{},
-		neighbours:   map[string][]string{},
-		primaries:    map[string]bool{},
-		f:            &findings{class: ClassLangMix},
-		wantLanguage: map[string]*languageCandidate{},
+		prof:             check.NewNarrationProfile(ix.cat),
+		byName:           map[string][]*model.Series{},
+		neighbours:       map[string][]string{},
+		primaries:        map[string]bool{},
+		f:                &findings{class: ClassLangMix},
+		wantLanguage:     map[string]*languageCandidate{},
+		titleSeriesWorks: map[string]bool{},
 	}
 	for _, s := range ix.cat.Series {
 		if k := seriesBaseKey(s.Name); k != "" {
@@ -251,6 +270,8 @@ func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 	}
 	m.settleContestedMoves()
 	m.otherLanguageWorks()
+	m.editionStatements()
+	m.st.TitleSeries = len(m.titleSeriesWorks)
 	m.languageFindings()
 	return m.f, m.st
 }
@@ -311,6 +332,7 @@ func (m *langMix) series(s *model.Series) {
 			m.st.TieByDecoration++
 		}
 	}
+	m.seriesTitles(s, byLang, keeper, how)
 	seriesVetoes := m.seriesVetoes(s, byLang, keeper, how)
 	var ct contest
 	if how == keepMajority {
@@ -1120,40 +1142,55 @@ func (m *langMix) otherLanguageWorks() {
 	}
 }
 
-// languageFindings emits one narration-contradicts record per work, in work order.
+// languageFindings emits one set-work-language record per work, in work order: a
+// narration-contradicts record where the narrators support one (title evidence folded
+// into its notes, and a title naming another language making it a review), else a
+// title-language record where the title alone does.
 func (m *langMix) languageFindings() {
 	for _, id := range sortedKeys(m.wantLanguage) {
 		w := m.ix.workByID[id]
-		want := m.wantLanguage[id].reasons
+		c := m.wantLanguage[id]
+		want := c.reasons
 		if len(want) == 0 {
+			if len(c.titled) > 0 {
+				m.st.TitleProposals++
+				m.f.add(m.titleLanguageFinding(w, c))
+			}
 			continue
 		}
-		tos := sortedKeys(want)
-		ev := m.languageCandidate(w).evidence
+		// A title names a primary subtag while a narration reason may carry the
+		// recordings' exact tag ("de-at"), so title evidence for a language the
+		// narration already names is agreement, not a second language.
+		union, named := map[string]bool{}, map[string]bool{}
+		for to := range want {
+			union[to] = true
+			named[model.PrimarySubtag(to)] = true
+		}
+		for to := range c.titled {
+			if !named[model.PrimarySubtag(to)] {
+				union[to] = true
+			}
+		}
+		tos := sortedKeys(union)
 		fd := Finding{
 			Subclass: lMixNarration,
 			Key:      id,
 			Works:    []WorkRef{m.ix.workRef(w, "")},
 		}
-		for _, to := range tos {
+		for _, to := range sortedKeys(want) {
 			fd.Notes = append(fd.Notes, "-> "+to+": "+want[to])
 		}
-		if c := m.wantLanguage[id].contested; len(c) > 0 {
-			fd.Notes = append(fd.Notes, "a minority member of a series whose keeper language is contested: "+strings.Join(sortedUnique(c), "; "))
+		fd.Notes = append(fd.Notes, titleNotes(c)...)
+		if cs := c.contested; len(cs) > 0 {
+			fd.Notes = append(fd.Notes, "a minority member of a series whose keeper language is contested: "+strings.Join(sortedUnique(cs), "; "))
 		}
-		dominant := ev.Dominant()
-		switch {
-		case len(tos) != 1:
-			fd.Propose = Proposal{Op: OpReview, Target: id, Field: fieldLanguage, From: w.Language, Advisory: true,
-				Reason: "the evidence names several languages this work could be (" + strings.Join(tos, ", ") + "); a human decides"}
-		case model.PrimarySubtag(tos[0]) != dominant:
-			fd.Propose = Proposal{Op: OpReview, Target: id, Field: fieldLanguage, From: w.Language, Advisory: true,
-				Reason: fmt.Sprintf("the stated evidence names %s but the narrators record in %s; a human decides", tos[0], dominant)}
-		default:
-			fd.Propose = Proposal{Op: OpSetWorkLanguage, Target: id, Field: fieldLanguage, From: w.Language, To: tos[0],
-				Advisory: true,
-				Reason: "never inferred: narrator evidence can withhold a change but never make one, so a reviewed " +
-					"decision is what applies this"}
+		if dominant := c.evidence.Dominant(); len(tos) == 1 && model.PrimarySubtag(tos[0]) != dominant {
+			fd.Propose = languageReview(w, fmt.Sprintf("the stated evidence names %s but the narrators record in %s; a human decides", tos[0], dominant))
+		} else {
+			fd.Propose = languageProposal(w, tos, "evidence", func(string) string {
+				return "never inferred: narrator evidence can withhold a change but never make one, so a reviewed " +
+					"decision is what applies this"
+			})
 		}
 		m.f.add(fd)
 	}
