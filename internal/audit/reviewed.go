@@ -9,6 +9,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -38,8 +39,9 @@ import (
 // A third decision, ASSERT, SOURCES a proposal no detector can see (an alternate title,
 // a reissue, a work stating no series): the entry's identity IS the proposal, emitted
 // non-advisory in its op's class under the subclass `asserted`. It is a human decision,
-// so no detector veto is asked; only the records must exist, and metarepair's plan-time
-// refusals and post-write validation still apply. A detector already proposing the same
+// so no detector veto is asked; only the records must exist, and a membership's slot be
+// free (the one plan-time refusal metarepair would make every run), while metarepair's
+// other plan-time refusals and post-write validation still apply. A detector already proposing the same
 // identity turns it into an acceptance (REDUNDANT), and once applied its records are
 // retired or joined, so it reads STALE and a re-run proposes nothing.
 //
@@ -328,12 +330,15 @@ const (
 	statusNoOp      outcomeStatus = "no-op"     // the proposal was already in the state asked for
 	statusRefused   outcomeStatus = "refused"   // an acceptance or assertion that would break consistency
 	statusStale     outcomeStatus = "stale"     // matching no fresh proposal
+	// statusWithholds is a rejection whose only match is an assertion of the same
+	// proposal: it is what keeps the assertion out, so it is never stale.
+	statusWithholds outcomeStatus = "rejected-an-assertion"
 )
 
 // listed reports whether SUMMARY.md names the decision one by one: the outcomes a
 // reviewer has to act on (STALE ones are listed in their own section).
 func (s outcomeStatus) listed() bool {
-	return slices.Contains([]outcomeStatus{statusNoOp, statusRefused, statusRedundant}, s)
+	return slices.Contains([]outcomeStatus{statusNoOp, statusRefused, statusRedundant, statusWithholds}, s)
 }
 
 type decisionOutcome struct {
@@ -426,11 +431,16 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 		key := keyOf(resolved[j])
 		if slices.ContainsFunc(byKey[key], func(o int) bool { return rs[o].Decision == "reject" }) {
 			statuses[j], whys[j] = statusRefused, "a reviewed rejection resolves to the same proposal"
+			for _, o := range byKey[key] {
+				if rs[o].Decision == "reject" {
+					statuses[o], whys[o] = statusWithholds, "withholds the reviewed assertion of the same proposal"
+				}
+			}
 			continue
 		}
-		c, i, why := src.source(r, resolved[j])
+		c, i, status, why := src.source(r, resolved[j])
 		if c == nil {
-			statuses[j], whys[j] = statusStale, why
+			statuses[j], whys[j] = status, why
 			continue
 		}
 		// Every assertion converging on this identity meets the one sourced finding: the
@@ -577,15 +587,15 @@ type sourcing struct {
 
 // source appends one assertion's proposal p (resolved, its target out of its others)
 // to its op's class as an ADVISORY finding the acceptance loop then promotes,
-// returning where it sits; or, with
-// a nil class, why the assertion is STALE: a record it names is gone, or it has been
-// applied (a merge's others all resolve to its target, a membership is listed).
-func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, why string) {
+// returning where it sits; or, with a nil class, the status and why: STALE when a
+// record it names is gone or it has been applied (a merge's others all resolve to its
+// target, a membership is listed), REFUSED when the series holds its position already.
+func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, status outcomeStatus, why string) {
 	if s.ix == nil {
-		return nil, 0, "no catalogue to find its records in"
+		return nil, 0, statusStale, "no catalogue to find its records in"
 	}
 	if p.Op != OpAddSeriesMember && len(p.Others) == 0 {
-		return nil, 0, "applied: every record it folds now resolves to " + p.Target
+		return nil, 0, statusStale, "applied: every record it folds now resolves to " + p.Target
 	}
 	var works, series []string
 	switch p.Op {
@@ -614,12 +624,18 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, w
 		}
 	}
 	if len(missing) > 0 {
-		return nil, 0, "no live " + strings.Join(missing, ", ")
+		return nil, 0, statusStale, "no live " + strings.Join(missing, ", ")
 	}
 	if p.Op == OpAddSeriesMember {
 		for _, m := range s.ix.memberships[p.Target] {
 			if m.series == p.Series {
-				return nil, 0, fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, m.position)
+				return nil, 0, statusStale, fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, m.position)
+			}
+		}
+		// metarepair refuses a held slot on every run, so the audit says so once here.
+		for _, sw := range s.ix.seriesByID[p.Series].Works {
+			if importer.SameSlot(sw.Position, p.To) {
+				return nil, 0, statusRefused, fmt.Sprintf("position %q of series %s is held by %s", p.To, p.Series, sw.Work)
 			}
 		}
 	}
@@ -649,5 +665,5 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, w
 		s.rep.classes = append(s.rep.classes, c)
 	}
 	c.add(fd)
-	return c, len(c.rows) - 1, ""
+	return c, len(c.rows) - 1, "", ""
 }

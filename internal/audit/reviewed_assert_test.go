@@ -259,3 +259,38 @@ func TestReviewedAssertPartlyAppliedMeetsTheDetector(t *testing.T) {
 		t.Fatalf("outcomes = %+v", rep.Reviewed.All)
 	}
 }
+
+// A rejection that keeps an assertion out is EFFECTIVE, never stale: a reviewer pruning
+// stale entries would otherwise delete it, and the assertion would then apply.
+func TestReviewedRejectionWithholdingAnAssertionIsNotStale(t *testing.T) {
+	rejection := assertOakleaf
+	rejection.Decision = "reject"
+	rep := runFixtureRejecting(t, rangerTree(t), assertOakleaf, rejection)
+	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+		t.Fatalf("a rejected assertion was sourced: %+v", got)
+	}
+	all := rep.Reviewed.All
+	if len(rep.Reviewed.Stale()) != 0 || len(all) != 2 || all[0].Status != statusRefused || all[1].Status != statusWithholds {
+		t.Fatalf("tally = %+v", rep.Reviewed)
+	}
+	md := summary(rep)
+	for _, want := range []string{"... rejections withholding an assertion | 1", "- rejected-an-assertion `", "... matching no proposal (STALE) | 0"} {
+		if !strings.Contains(md, want) {
+			t.Errorf("SUMMARY.md lacks %q:\n%s", want, md)
+		}
+	}
+}
+
+// A membership assertion into a slot the series already holds is refused here, naming
+// the holder, rather than sourced for metarepair to refuse on every run.
+func TestReviewedAssertRefusedOnAHeldSlot(t *testing.T) {
+	held := assertion(OpAddSeriesMember, "the-pillars-of-the-earth", "kingsbridge", "series", "2")
+	rep := runFixtureRejecting(t, rangerTree(t), held)
+	if got := subclassOf(t, rep, ClassWorkNoSeries, subclassAsserted); len(got) != 0 {
+		t.Fatalf("sourced %+v into a held slot", got)
+	}
+	o := rep.Reviewed.All
+	if len(o) != 1 || o[0].Status != statusRefused || !strings.Contains(o[0].Why, `position "2" of series kingsbridge is held by world-without-end`) {
+		t.Fatalf("tally = %+v", rep.Reviewed)
+	}
+}

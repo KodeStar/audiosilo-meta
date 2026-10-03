@@ -380,6 +380,7 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 		{Label: "... asserted, already proposed (redundant)", N: counts[statusRedundant]},
 		{Label: "... no-op", N: counts[statusNoOp]},
 		{Label: "... acceptances or assertions refused", N: counts[statusRefused]},
+		{Label: "... rejections withholding an assertion", N: counts[statusWithholds]},
 		{Label: "... matching no proposal (STALE)", N: counts[statusStale]},
 	})
 	b.WriteString("\n")
