@@ -284,7 +284,7 @@ func TestResolveReadsTheSeriesLanguage(t *testing.T) {
 	}
 }
 
-// resolveSeriesGroup judges a cluster's language by its LEAD claim alone, which is
+// resolveSeriesUnit judges a cluster's language by its LEAD claim alone, which is
 // sound only because authorClusters never groups two languages - by slug or through
 // a spelling rung. One author in German (two spellings), English and no language is
 // three clusters, each one language.

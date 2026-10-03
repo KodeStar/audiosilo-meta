@@ -88,6 +88,23 @@ func NewSeriesName(name string) SeriesName {
 	return SeriesName{slug: slug, key: SeriesNameKey(name)}
 }
 
+// Slug is the name's addressable slug, "" when it has none.
+func (n SeriesName) Slug() string { return n.slug }
+
+// Key is the name's equality key: its slug and its SeriesNameKey, so two names
+// have one Key exactly when SameSeriesName calls them one. "" when the name has
+// no addressable slug (it names no series).
+func (n SeriesName) Key() string {
+	if n.slug == "" {
+		return ""
+	}
+	return n.slug + "\x00" + n.key
+}
+
+// SeriesNameGroupKey is NewSeriesName(name).Key(): the key a writer groups or
+// indexes series names by.
+func SeriesNameGroupKey(name string) string { return NewSeriesName(name).Key() }
+
 // Same reports SameSeriesName(n's name, other). The candidate's key is computed
 // only once its slug agrees, which on a chain walk it nearly always does, but
 // which a lookup over another source's series list mostly does not.

@@ -9,6 +9,7 @@ import (
 	"io"
 	"maps"
 	"os"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -357,7 +358,9 @@ func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (Sel
 // load (attachFor, the rule the import asks too, under the same context), which
 // keeps it for ATTACHMENT; the AUTHOR half of that rule is decided here and only
 // here. Dropping a row can change the others' evidence, so the groups a dropped
-// row claimed into are resolved again until nothing more is dropped. A slot a
+// row claimed into - its resolution units (seriesUnits) - are resolved again until
+// nothing more is dropped, each re-partitioned over the surviving claims, since a
+// dropped claim can be all that joined two groups into one unit. A slot a
 // dropped row held at STREAM time is not handed back: a sibling that lost the
 // slot to it was excluded then, which only ever narrows a tranche.
 func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditions bool) []selectedRow {
@@ -385,15 +388,25 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		titles = resolveWorkTitles(books)
 	}
 
-	owner := make([]int, len(claims))
+	claimsOf := make([][]int, len(kept)) // each row's claims
 	for ci, w := range where {
-		owner[ci] = w.book
+		claimsOf[w.book] = append(claimsOf[w.book], ci)
 	}
 	groups, keys := claimGroups(claims)
-	groupOf := make([]string, len(claims))
-	for _, k := range keys {
-		for _, ci := range groups[k] {
-			groupOf[ci] = k
+	reaches := make([]*groupReach, len(keys))
+	for i, k := range keys {
+		reaches[i] = reachOf(cat, claims, groups[k])
+	}
+	units := seriesUnits(reaches)
+	unitOf := make([]int, len(claims))
+	for ci := range unitOf {
+		unitOf[ci] = -1 // a claim with no addressable name is in no unit
+	}
+	for u, unit := range units {
+		for _, g := range unit {
+			for _, ci := range reaches[g].idx {
+				unitOf[ci] = u
+			}
 		}
 	}
 	alive := make([]bool, len(kept))
@@ -401,35 +414,48 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 		alive[i] = true
 	}
 	targets := make([]seriesTarget, len(claims))
-	dirty := keys
+	// Every claim's target is stamped on its row, as the import's
+	// resolveSeriesTargets stamps it, so the verdict and the attach rule read the
+	// batch's resolution off the row itself (completionClaim): every claim once,
+	// then a re-resolved unit's claims.
+	stamp := func(ci int) { books[where[ci].book].series[where[ci].ref].target = targets[ci] }
+	dirty := make([]int, len(units))
+	for u := range dirty {
+		dirty[u] = u
+	}
+	first := true
 	for len(dirty) > 0 {
-		for _, k := range dirty {
-			var live []int
-			for _, ci := range groups[k] {
-				if alive[owner[ci]] {
-					live = append(live, ci)
+		for _, u := range dirty {
+			for _, g := range units[u] {
+				for _, ci := range reaches[g].idx {
+					targets[ci] = seriesTarget{}
 				}
 			}
-			for _, ci := range groups[k] {
-				targets[ci] = seriesTarget{}
-			}
-			if len(live) > 0 {
-				resolveSeriesGroup(cat, claims, live, targets, map[string]map[string]bool{})
+			live := func(ci int) bool { return alive[where[ci].book] }
+			resolveReaches(cat, claims, liveReaches(cat, claims, reaches, units[u], live), targets, map[string]map[string]bool{})
+			if !first {
+				for _, g := range units[u] {
+					for _, ci := range reaches[g].idx {
+						stamp(ci)
+					}
+				}
 			}
 		}
-		// Every claim's target is stamped on its row, as the import's
-		// resolveSeriesTargets stamps it, so the verdict and the attach rule read
-		// the batch's resolution off the row itself (completionClaim).
-		for ci, t := range targets {
-			books[where[ci].book].series[where[ci].ref].target = t
+		if first {
+			for ci := range targets {
+				stamp(ci)
+			}
+			first = false
 		}
-		dropped := map[string]bool{}
+		var next []int
+		dropped := map[int]bool{}
 		drop := func(i int, reason refusal) {
 			alive[i] = false
 			x.add(kept[i].asin, reason)
-			for ci := range claims {
-				if owner[ci] == i {
-					dropped[groupOf[ci]] = true
+			for _, ci := range claimsOf[i] {
+				if u := unitOf[ci]; u >= 0 && !dropped[u] {
+					dropped[u] = true
+					next = append(next, u)
 				}
 			}
 		}
@@ -475,17 +501,38 @@ func confirmBatch(kept []selectedRow, idx seriesIndex, x exclusions, attachEditi
 			claimed[key] = workKey
 			kept[i].seriesSlug, kept[i].workKey, kept[i].pos, kept[i].attach = v.slug, workKey, pos, nil
 		}
-		dirty = dirty[:0:0]
-		for _, k := range keys {
-			if dropped[k] {
-				dirty = append(dirty, k)
-			}
-		}
+		slices.Sort(next)
+		dirty = next
 	}
 	out := kept[:0:0]
 	for i, r := range kept {
 		if alive[i] {
 			out = append(out, r)
+		}
+	}
+	return out
+}
+
+// liveReaches is a re-checked unit's name groups over their surviving claims (live):
+// a group that lost none keeps its reach, one that lost some is reached again from
+// the survivors alone - a dropped claim's row language may have been all that
+// joined it to another group, and the import of the surviving rows would not see
+// that link - and a group that lost all is gone. resolveReaches partitions the
+// result into units again.
+func liveReaches(cat seriesCatalogue, claims []nameClaim, reaches []*groupReach, unit []int, live func(ci int) bool) []*groupReach {
+	var out []*groupReach
+	for _, g := range unit {
+		var survivors []int
+		for _, ci := range reaches[g].idx {
+			if live(ci) {
+				survivors = append(survivors, ci)
+			}
+		}
+		switch {
+		case len(survivors) == len(reaches[g].idx):
+			out = append(out, reaches[g])
+		case len(survivors) > 0:
+			out = append(out, reachOf(cat, claims, survivors))
 		}
 	}
 	return out
@@ -921,9 +968,10 @@ func mintsSeries(t seriesTarget, ref seriesRef) bool {
 }
 
 // namesACatalogueChain reports whether any claim's name has a catalogue series
-// (or a retired one) at the first slug of its chain - the cheap necessary
-// condition for resolving into a series the tree holds, since a chain's first
-// free slug ends it.
+// (or a retired one) at the first slug of its chain, or names the BASE of one the
+// qualifier index holds (seriesqualified.go) - the cheap necessary condition for
+// resolving into a series the tree holds, since a chain's first free slug ends
+// it and the index is the only other way in.
 func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
 	for _, r := range refs {
 		base := Slugify(r.name)
@@ -937,8 +985,17 @@ func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
 		if _, retired := idx.redirects.Survivor(model.RedirectSeries, first); retired {
 			return true
 		}
+		if idx.holdsQualifiedBase(r.name, base) {
+			return true
+		}
 	}
 	return false
+}
+
+// holdsQualifiedBase is SeriesAuthorIndex.holdsQualifiedBase over the planner's
+// index; base is the name's own slug.
+func (idx seriesIndex) holdsQualifiedBase(name, base string) bool {
+	return idx.p != nil && idx.p.seriesIndex.holdsQualifiedBase(name, base)
 }
 
 // catalogue is the index as the series resolution reads it: the planner's own.

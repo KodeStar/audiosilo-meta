@@ -55,7 +55,7 @@ var editionLanguagePhrases = func() map[string]string {
 
 // groupLanguage is the language a bracketed group's contents state, or "".
 func groupLanguage(group string) string {
-	return editionLanguagePhrases[model.SlugifyWhole(group[1:len(group)-1])]
+	return editionLanguagePhrases[model.SlugifyWhole(groupContents(group))]
 }
 
 // EditionLanguage is the primary language subtag the own-language edition
@@ -153,15 +153,11 @@ var trailingGroup = regexp.MustCompile(`^(.*?)\s*(` + bracketGroup + `)\s*$`)
 // before it, with a trailing separator trimmed. base must carry a letter or digit - a
 // name that is nothing but its decoration names no series to be the edition of.
 func SplitEditionName(name string) (base, lang string, ok bool) {
-	m := trailingGroup.FindStringSubmatch(name)
-	if m == nil {
+	base, group, ok := peelTrailingGroup(name)
+	if !ok {
 		return "", "", false
 	}
-	if lang = groupLanguage(m[2]); lang == "" {
-		return "", "", false
-	}
-	base = strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(m[1], ""))
-	if !hasAlnum(base) {
+	if lang = groupLanguage(group); lang == "" {
 		return "", "", false
 	}
 	return base, lang, true

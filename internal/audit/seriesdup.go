@@ -234,7 +234,7 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 //
 // The one-sided shape has TWO narrow exemptions, one mechanism: a decoration that says
 // nothing about the series' LIST, on a series whose list the plain one already holds.
-// It stands down only when every decoration is in oneSidedDecorations, the survivor is
+// It stands down only when every decoration has a oneSidedCover, the survivor is
 // UNDECORATED, and every decorated member's memberships are each already in the survivor
 // at the same slot (foldMovesNothing, the collection veto's own "nothing moves" test) -
 // so the fold retires a spelling and changes no order.
@@ -306,27 +306,27 @@ func decorClass(k seriesKeys) string {
 	return k.decor
 }
 
-// oneSidedDecorations are the one-sided decorations vetoSeriesDecoration may fold away
-// (which words are in and out, and why, is stated there), keyed by
-// titlerule.DecorationKey so case, bracket style and diacritics are not a difference.
-// The value says how much of the survivor's list the decorated list must be: all of it
-// (an ordering) or any part of it (abridged). Both are closed vocabularies measured
-// over the tree's bracketed series names. Orderings, every group saying "order",
-// "chronolog" or "reihenfolge": chronological order 16, publication order 12, published
-// order 6, chronological 2, and one each of recommended listening order, author's
-// preferred order, in chronologischer Reihenfolge and in Veroeffentlichungsreihenfolge
-// (reading order is the one entry the tree does not carry yet). Abridged, from the
-// languages plan's Phase 6 census of the format-qualified series: abridged 179 and
-// gekürzt 27 of 254.
-var oneSidedDecorations = func() map[string]listCover {
-	out := map[string]listCover{}
-	for _, phrase := range []string{
-		"chronological", "chronological order", "publication order", "published order",
-		"reading order", "recommended listening order", "author's preferred order",
-		"in chronologischer Reihenfolge", "in Veröffentlichungsreihenfolge",
-	} {
-		out[titlerule.DecorationKey("("+phrase+")")] = coverWhole
+// oneSidedCover is how much of the survivor's list a one-sided decoration
+// vetoSeriesDecoration may fold away must cover (which words are in and out, and why,
+// is stated there), read off its titlerule.DecorationKey so case, bracket style and
+// diacritics are not a difference; 0 for a decoration that is never folded away.
+// Both are closed vocabularies. An ORDERING is titlerule's one ordering vocabulary
+// (titlerule.OrderingOfDecoration, the reader the importer's qualifier index keys by,
+// so the audit and the importer cannot disagree about which decorations name a
+// reading order) and must cover the whole list. Abridged, from the languages plan's
+// Phase 6 census of the format-qualified series (abridged 179 and gekürzt 27 of 254),
+// may cover any part of it.
+func oneSidedCover(decorKey string) listCover {
+	if titlerule.OrderingOfDecoration(decorKey) != "" {
+		return coverWhole
 	}
+	return abridgedDecorations[decorKey]
+}
+
+// abridgedDecorations are the one-sided ABRIDGED decorations, keyed by
+// titlerule.DecorationKey.
+var abridgedDecorations = func() map[string]listCover {
+	out := map[string]listCover{}
 	for _, phrase := range []string{"abridged", "gekürzt"} {
 		out[titlerule.DecorationKey("("+phrase+")")] = coverPart
 	}
@@ -369,7 +369,7 @@ func oneSidedFoldMovesNothing(group []seriesKeys, sides []seriesSide, target str
 		if !k.paren {
 			continue
 		}
-		cover := oneSidedDecorations[k.decor]
+		cover := oneSidedCover(k.decor)
 		if cover == 0 || (cover == coverWhole && len(l.members) != len(tgt.members)) || !foldMovesNothing(tgt, l) {
 			return false, nil
 		}

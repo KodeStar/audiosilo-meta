@@ -86,6 +86,9 @@ func TestAddWorkFindsTheAuthorsOwnSeries(t *testing.T) {
 	if !strings.Contains(readFile(t, dir, "series/lo/lost-fleet.json"), `"work": "renegade"`) {
 		t.Error("Hawke's own volume did not extend her series")
 	}
+	if anyContains(res.Messages, "joined") {
+		t.Errorf("a join under the very name given was noted: %v", res.Messages)
+	}
 }
 
 // The resolution's LANGUAGE half reaches the form too (importer seriesresolve.go's
@@ -115,5 +118,86 @@ func TestAddWorkDoesNotExtendAnotherLanguagesSeries(t *testing.T) {
 	res = processAddWork(t, dir, dupWorkBody("Renegade", "Sarah Hawke", "Nate Narrator", "Lost Fleet", "4"))
 	if res.Status != StatusOK || !strings.Contains(readFile(t, dir, "series/lo/lost-fleet.json"), `"work": "renegade"`) {
 		t.Errorf("the English volume did not extend the English series: %v", res.Messages)
+	}
+}
+
+// The QUALIFIER reach (importer seriesqualified.go) reaches the form through the
+// same resolution: a German submission of Hawke's next volume naming the plain
+// "Lost Fleet" extends the German edition series the catalogue holds, rather than
+// composing a second German series at lost-fleet-2 - and a French one, for which
+// the catalogue holds no edition, still composes its own.
+func TestAddWorkExtendsItsLanguagesEditionSeries(t *testing.T) {
+	german := map[string]string{
+		"series/lo/lost-fleet-german-edition.json": testpack.SeriesJSON(t, "lost-fleet-german-edition",
+			"Lost Fleet [German Edition]", "einfall@1", "aufstand@2"),
+	}
+	for _, w := range []string{"einfall", "aufstand"} {
+		german["works/"+w[:2]+"/"+w+"/work.json"] = testpack.WorkJSON(t, w, w, testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de"))
+		german["works/"+w[:2]+"/"+w+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", w)
+	}
+	inLang := func(title, lang string) string {
+		return strings.Replace(dupWorkBody(title, "Sarah Hawke", "Nate Narrator", "Lost Fleet", "3"),
+			field(fWorkLanguage, "en"), field(fWorkLanguage, lang), 1)
+	}
+
+	dir := formLostFleetTree(t, german)
+	res := processAddWork(t, dir, inLang("Invasion Deutsch", "de"))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !strings.Contains(readFile(t, dir, "series/lo/lost-fleet-german-edition.json"), `"work": "invasion-deutsch"`) {
+		t.Error("the German edition series was not extended")
+	}
+	if fileExists(t, dir, "series/lo/lost-fleet-2.json") {
+		t.Error("a second German series was composed at lost-fleet-2")
+	}
+	if !anyContains(res.Messages, `1 series name(s) joined a catalogued series stored under another name (for example: "Lost Fleet" joined lost-fleet-german-edition "Lost Fleet [German Edition]")`) {
+		t.Errorf("the verdict does not name the join under another stored name: %v", res.Messages)
+	}
+
+	dir = formLostFleetTree(t, german)
+	res = processAddWork(t, dir, inLang("Invasion Francais", "fr"))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if mint := readFile(t, dir, "series/lo/lost-fleet-2.json"); !strings.Contains(mint, `"work": "invasion-francais"`) {
+		t.Errorf("the French series was not composed at lost-fleet-2:\n%s", mint)
+	}
+}
+
+// The intake twin of the join note's violating sides: a respell the series-name
+// equality already matches is no hidden join, so nothing is noted.
+func TestAddWorkDoesNotNoteARespelledJoin(t *testing.T) {
+	dir := formLostFleetTree(t, nil)
+	res := processAddWork(t, dir, dupWorkBody("Renegade", "Sarah Hawke", "Nate Narrator", "lost fleet", "4"))
+	if res.Status != StatusOK || !strings.Contains(readFile(t, dir, "series/lo/lost-fleet.json"), `"work": "renegade"`) {
+		t.Fatalf("the respelled name did not extend the series: %v", res.Messages)
+	}
+	if anyContains(res.Messages, "joined") {
+		t.Errorf("a respell the chain matches was noted as a join: %v", res.Messages)
+	}
+}
+
+// The form's language may carry a region ("de-AT"): the series resolution reads
+// its primary subtag (SeriesRowFor, the one place), so the language reach still
+// finds the German edition series.
+func TestAddWorkReachesItsEditionSeriesFromARegionTag(t *testing.T) {
+	german := map[string]string{
+		"series/lo/lost-fleet-german-edition.json": testpack.SeriesJSON(t, "lost-fleet-german-edition",
+			"Lost Fleet [German Edition]", "einfall@1", "aufstand@2"),
+	}
+	for _, w := range []string{"einfall", "aufstand"} {
+		german["works/"+w[:2]+"/"+w+"/work.json"] = testpack.WorkJSON(t, w, w, testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de"))
+		german["works/"+w[:2]+"/"+w+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", w)
+	}
+	dir := formLostFleetTree(t, german)
+	body := strings.Replace(dupWorkBody("Invasion Deutsch", "Sarah Hawke", "Nate Narrator", "Lost Fleet", "3"),
+		field(fWorkLanguage, "en"), field(fWorkLanguage, "de-AT"), 1)
+	res := processAddWork(t, dir, body)
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, want ok; messages = %v", res.Status, res.Messages)
+	}
+	if !strings.Contains(readFile(t, dir, "series/lo/lost-fleet-german-edition.json"), `"work": "invasion-deutsch"`) {
+		t.Error("a de-AT submission did not extend the German edition series")
 	}
 }

@@ -51,6 +51,7 @@ import (
 
 	_ "modernc.org/sqlite" // the pure-Go driver the artifact is built and served with
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/sqlitedsn"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -376,6 +377,23 @@ func (c *composer) noteRetired(kind model.RedirectKind, from, to string) {
 	}
 	c.retiredNoted[key] = true
 	c.note("%s slug %q was retired by a merge onto %q; the submission is recorded against %q", kind, from, to, to)
+}
+
+// noteJoined says that a series name the form gave joined a catalogued series
+// stored under another name - a join the name alone does not show (a respelled
+// qualifier, a renamed edition series, a plain name reaching its language's
+// edition) - in the importer's own run-level line (importer.SeriesNameJoinsNote),
+// once (joinedNoted), beside noteRetired.
+func (c *composer) noteJoined(given, slug, stored string) {
+	j := importer.SeriesNameJoin{Given: given, Slug: slug, Stored: stored}
+	if c.joinedNoted[j] {
+		return
+	}
+	if c.joinedNoted == nil {
+		c.joinedNoted = map[importer.SeriesNameJoin]bool{}
+	}
+	c.joinedNoted[j] = true
+	c.note("%s", importer.SeriesNameJoinsNote([]importer.SeriesNameJoin{j}))
 }
 
 // noteRekey reports that the submission named a slug a core merge has retired and

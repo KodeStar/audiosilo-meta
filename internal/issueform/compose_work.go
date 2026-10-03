@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -638,7 +639,12 @@ func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, 
 		if fs.via != "" {
 			c.noteRetired(model.RedirectSeries, fs.via, fs.id)
 		}
-		c.extendSeries(fs.rec, fs.id, workSlug, pos)
+		// A membership added under a name the series is not stored as (by the
+		// series-name equality: a case or bracket respell is no hidden join) is
+		// said once it is added - a taken position adds nothing.
+		if c.extendSeries(fs.rec, fs.id, workSlug, pos) && fs.via == "" && !titlerule.SameSeriesName(name, fs.rec.Name) {
+			c.noteJoined(name, fs.id, fs.rec.Name)
+		}
 		return
 	}
 
@@ -651,27 +657,28 @@ func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, 
 }
 
 // extendSeries appends the work to an existing series entry, preserving every
-// field the form does not manage.
-func (c *composer) extendSeries(existing *model.Series, seriesSlug, workSlug, pos string) {
+// field the form does not manage, and reports whether the membership was added.
+func (c *composer) extendSeries(existing *model.Series, seriesSlug, workSlug, pos string) bool {
 	for _, sw := range existing.Works {
 		if sw.Work == workSlug {
 			c.note("series %q already lists %q - not re-added", existing.Name, workSlug)
-			return
+			return false
 		}
 		if sw.Position == pos {
 			c.fail(StatusNeedsHuman, "series %q position %q is already taken by %q - a maintainer must resolve it", existing.Name, pos, sw.Work)
-			return
+			return false
 		}
 	}
 	obj, found, ok := c.entryRaw(pack.FamilySeries, seriesSlug)
 	if !ok {
-		return
+		return false
 	}
 	if !found {
 		c.fail(StatusInvalid, "series %q is in the catalogue but has no entry to extend", seriesSlug)
-		return
+		return false
 	}
 	works, _ := obj["works"].([]any)
 	obj["works"] = append(works, map[string]any{"work": workSlug, "position": pos})
 	c.putEntry(pack.FamilySeries, seriesSlug, obj)
+	return true
 }

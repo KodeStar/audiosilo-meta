@@ -261,6 +261,9 @@ type planner struct {
 	// its survivor rather than minting there (tombstone.go).
 	redirects      model.Redirects
 	tombstoneRides map[string]string
+	// seriesNameJoins is every claim this run JOINED to a catalogued series stored
+	// under another name than the claim gave (reportSeriesNameJoins).
+	seriesNameJoins map[SeriesNameJoin]bool
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -698,6 +701,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportSeriesPositionLookups()
 	p.reportDuplicateIdentities()
 	p.reportTombstoneRides()
+	p.reportSeriesNameJoins()
 	if p.fatal != nil {
 		return p.fatal
 	}
@@ -3149,6 +3153,13 @@ func (p *planner) addToSeries(r seriesRef, work, pos string, warn func(string, .
 	ss.members[work] = pos
 	ss.positions[pos] = work
 	ss.dirty = true
+	// A membership ADDED to a catalogued series stored under a name the claim did
+	// not spell - by the series-name equality, so a case or bracket respell the
+	// chain matches is no hidden join - is said in the run's Notes; a retired
+	// slug's join is the tombstone note's.
+	if !ss.isNew && r.target.via == "" && !titlerule.SameSeriesName(name, ss.name) {
+		p.noteSeriesNameJoin(SeriesNameJoin{Given: name, Slug: ss.slug, Stored: ss.name})
+	}
 	if ss.isNew {
 		ss.out.Works = append(ss.out.Works, OutSeriesWork{Work: work, Position: pos})
 	} else {
