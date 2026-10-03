@@ -1817,6 +1817,11 @@
       "authors": [
         "daniel-kennefick"
       ],
+      "genres": [
+        "biography-memoir",
+        "history",
+        "science"
+      ],
       "id": "no-shadow-of-a-doubt",
       "language": "en",
       "license": "CC0-1.0",
@@ -1830,6 +1835,104 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17886,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 655817,
+              "start_ms": 17886,
+              "title": "Prologue: May 29, 1919"
+            },
+            {
+              "length_ms": 1643508,
+              "start_ms": 673703,
+              "title": "1. The Experiment That Weighed Light"
+            },
+            {
+              "length_ms": 1669328,
+              "start_ms": 2317211,
+              "title": "2. Eclipses"
+            },
+            {
+              "length_ms": 3681523,
+              "start_ms": 3986539,
+              "title": "3. Two Pacifists, Einstein and Eddington"
+            },
+            {
+              "length_ms": 5156547,
+              "start_ms": 7668062,
+              "title": "4. Europe in Its Madness"
+            },
+            {
+              "length_ms": 1913974,
+              "start_ms": 12824609,
+              "title": "5. Preparations in Time of War"
+            },
+            {
+              "length_ms": 2960590,
+              "start_ms": 14738583,
+              "title": "6. The Opportunity of the Century?"
+            },
+            {
+              "length_ms": 2339271,
+              "start_ms": 17699173,
+              "title": "7. Tools of the Trade"
+            },
+            {
+              "length_ms": 1330642,
+              "start_ms": 20038444,
+              "title": "8. The Improvised Expedition"
+            },
+            {
+              "length_ms": 2559814,
+              "start_ms": 21369086,
+              "title": "9. Outward Bound"
+            },
+            {
+              "length_ms": 1096864,
+              "start_ms": 23928900,
+              "title": "10. Through Cloud, Hopefully"
+            },
+            {
+              "length_ms": 6338211,
+              "start_ms": 25025764,
+              "title": "11. Not Only Because of Theory"
+            },
+            {
+              "length_ms": 3621104,
+              "start_ms": 31363975,
+              "title": "12. Lights All Askew in the Heavens"
+            },
+            {
+              "length_ms": 5163559,
+              "start_ms": 34985079,
+              "title": "13. Theories and Experiments"
+            },
+            {
+              "length_ms": 5693811,
+              "start_ms": 40148638,
+              "title": "14. The Unbearable Heaviness of Light"
+            },
+            {
+              "length_ms": 1979268,
+              "start_ms": 45842449,
+              "title": "15. The Problem of Scientific Bias"
+            },
+            {
+              "length_ms": 1430265,
+              "start_ms": 47821717,
+              "title": "Epilogue: Where Are They Now?"
+            },
+            {
+              "length_ms": 23954,
+              "start_ms": 49251982,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71rOSFJOMKL.jpg",
           "id": "l-j-ganser-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -1844,6 +1947,10 @@
               "imported_at": "2026-09-24",
               "ref": "1684571472",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1684571472",
+              "type": "libex-import"
             }
           ],
           "work": "no-shadow-of-a-doubt"
@@ -1854,6 +1961,10 @@
           "imported_at": "2026-09-24",
           "ref": "1684571472",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1684571472",
+          "type": "libex-import"
         }
       ],
       "title": "No Shadow of a Doubt"

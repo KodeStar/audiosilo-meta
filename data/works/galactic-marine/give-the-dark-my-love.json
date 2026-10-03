@@ -4770,6 +4770,11 @@
       "authors": [
         "phil-buchanan"
       ],
+      "genres": [
+        "business",
+        "politics",
+        "social-sciences"
+      ],
       "id": "giving-done-right",
       "language": "en",
       "license": "CC0-1.0",
@@ -4783,6 +4788,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 86811,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 35281,
+              "start_ms": 86811,
+              "title": "Author’s Note"
+            },
+            {
+              "length_ms": 1082156,
+              "start_ms": 122092,
+              "title": "Foreword by Darren Walker"
+            },
+            {
+              "length_ms": 614197,
+              "start_ms": 1204248,
+              "title": "Introduction It’s Not Your Business: Why Giving Is a Challenge Like No Other"
+            },
+            {
+              "length_ms": 3431816,
+              "start_ms": 1818445,
+              "title": "1. Nonprofits and Their Unsung American Heroes"
+            },
+            {
+              "length_ms": 3971448,
+              "start_ms": 5250261,
+              "title": "2. So Many Ways to Give"
+            },
+            {
+              "length_ms": 2820667,
+              "start_ms": 9221709,
+              "title": "3. A Tough Balance: Choosing Your Goals"
+            },
+            {
+              "length_ms": 3430330,
+              "start_ms": 12042376,
+              "title": "4. Strategy Done Right: Achieving Your Goals"
+            },
+            {
+              "length_ms": 4186836,
+              "start_ms": 15472706,
+              "title": "5. Essential Partners: Selecting and Working with Nonprofits"
+            },
+            {
+              "length_ms": 3547312,
+              "start_ms": 19659542,
+              "title": "6. No Easy Answers: Assessing Performance"
+            },
+            {
+              "length_ms": 3645300,
+              "start_ms": 23206854,
+              "title": "7. Deploying All the Tools"
+            },
+            {
+              "length_ms": 1365426,
+              "start_ms": 26852154,
+              "title": "Conclusion: A Virtuous Cycle of Good"
+            },
+            {
+              "length_ms": 290110,
+              "start_ms": 28217580,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71v-q4mhz0L.jpg",
           "id": "mark-feuerstein-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -4797,6 +4870,10 @@
               "imported_at": "2026-09-24",
               "ref": "1549142445",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1549142445",
+              "type": "libex-import"
             }
           ],
           "work": "giving-done-right"
@@ -4807,6 +4884,10 @@
           "imported_at": "2026-09-24",
           "ref": "1549142445",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1549142445",
+          "type": "libex-import"
         }
       ],
       "title": "Giving Done Right"

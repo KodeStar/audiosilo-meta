@@ -6287,6 +6287,12 @@
       "authors": [
         "bryan-litfin"
       ],
+      "genres": [
+        "historical-fiction",
+        "history",
+        "religious-fiction",
+        "romance"
+      ],
       "id": "the-conqueror",
       "language": "en",
       "license": "CC0-1.0",
@@ -6300,6 +6306,119 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 13122,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 339008,
+              "start_ms": 13122,
+              "title": "Historical Note"
+            },
+            {
+              "length_ms": 777613,
+              "start_ms": 352130,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 4434,
+              "start_ms": 1129743,
+              "title": "Act 1: Convergence"
+            },
+            {
+              "length_ms": 3794234,
+              "start_ms": 1134177,
+              "title": "1"
+            },
+            {
+              "length_ms": 4589516,
+              "start_ms": 4928411,
+              "title": "2"
+            },
+            {
+              "length_ms": 4856034,
+              "start_ms": 9517927,
+              "title": "3"
+            },
+            {
+              "length_ms": 5132306,
+              "start_ms": 14373961,
+              "title": "4"
+            },
+            {
+              "length_ms": 4615,
+              "start_ms": 19506267,
+              "title": "Act 2: Resistance"
+            },
+            {
+              "length_ms": 4683863,
+              "start_ms": 19510882,
+              "title": "5"
+            },
+            {
+              "length_ms": 5129241,
+              "start_ms": 24194745,
+              "title": "6"
+            },
+            {
+              "length_ms": 5544692,
+              "start_ms": 29323986,
+              "title": "7"
+            },
+            {
+              "length_ms": 5463422,
+              "start_ms": 34868678,
+              "title": "8"
+            },
+            {
+              "length_ms": 5470900,
+              "start_ms": 40332100,
+              "title": "9"
+            },
+            {
+              "length_ms": 5646511,
+              "start_ms": 45803000,
+              "title": "10"
+            },
+            {
+              "length_ms": 6183241,
+              "start_ms": 51449511,
+              "title": "11"
+            },
+            {
+              "length_ms": 6743,
+              "start_ms": 57632752,
+              "title": "Act 3: Acquiescence"
+            },
+            {
+              "length_ms": 5734575,
+              "start_ms": 57639495,
+              "title": "12"
+            },
+            {
+              "length_ms": 5131144,
+              "start_ms": 63374070,
+              "title": "13"
+            },
+            {
+              "length_ms": 7176080,
+              "start_ms": 68505214,
+              "title": "14"
+            },
+            {
+              "length_ms": 3404021,
+              "start_ms": 75681294,
+              "title": "15"
+            },
+            {
+              "length_ms": 25936,
+              "start_ms": 79085315,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OmZ0gNS4L.jpg",
           "id": "michael-braun-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -6314,6 +6433,10 @@
               "imported_at": "2026-09-24",
               "ref": "170500329X",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "170500329X",
+              "type": "libex-import"
             }
           ],
           "work": "the-conqueror"
@@ -6324,6 +6447,10 @@
           "imported_at": "2026-09-24",
           "ref": "170500329X",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "170500329X",
+          "type": "libex-import"
         }
       ],
       "title": "The Conqueror"

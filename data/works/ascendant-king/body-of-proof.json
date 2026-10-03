@@ -8228,6 +8228,10 @@
             {
               "asin": "B0D5RJPSRG",
               "region": "us"
+            },
+            {
+              "asin": "B0D5RGVRMR",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -8505,13 +8509,18 @@
             "johnathan-mcclain"
           ],
           "publisher": "Shadow Alley Press",
-          "release_date": "2024-06-04",
-          "runtime_min": 1057,
+          "release_date": "2000",
+          "runtime_min": 1080,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0D5RJPSRG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0D5RGVRMR",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "bog-standard-isekai-scarred"
@@ -8525,6 +8534,52 @@
         }
       ],
       "title": "Bog Standard Isekai: Scarred"
+    },
+    "bog-standard-isekai-warbound": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "miles-english"
+      ],
+      "id": "bog-standard-isekai-warbound",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "johnathan-mcclain-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HBCYS6LS",
+              "region": "us"
+            }
+          ],
+          "id": "johnathan-mcclain-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johnathan-mcclain"
+          ],
+          "publisher": "Shadow Alley Press",
+          "release_date": "2026",
+          "runtime_min": 1172,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HBCYS6LS",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "bog-standard-isekai-warbound"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0HBCYS6LS",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "Bog Standard Isekai: Warbound"
     },
     "bogart": {
       "added_at": "2026-07-29",

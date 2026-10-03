@@ -667,6 +667,12 @@
       "authors": [
         "jesse-j-holland"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "science-fiction",
+        "superhero"
+      ],
       "id": "who-is-the-black-panther",
       "language": "en",
       "license": "CC0-1.0",
@@ -680,6 +686,109 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 88225,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 390010,
+              "start_ms": 88225,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 1495600,
+              "start_ms": 478235,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 1704510,
+              "start_ms": 1973835,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 1066116,
+              "start_ms": 3678345,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 1163190,
+              "start_ms": 4744461,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 1482180,
+              "start_ms": 5907651,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 1830796,
+              "start_ms": 7389831,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1988220,
+              "start_ms": 9220627,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 1475397,
+              "start_ms": 11208847,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 980890,
+              "start_ms": 12684244,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 1793647,
+              "start_ms": 13665134,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1569928,
+              "start_ms": 15458781,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 1595170,
+              "start_ms": 17028709,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 899719,
+              "start_ms": 18623879,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 848384,
+              "start_ms": 19523598,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 1659203,
+              "start_ms": 20371982,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 1356084,
+              "start_ms": 22031185,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 637981,
+              "start_ms": 23387269,
+              "title": "Chapter Eighteen"
+            },
+            {
+              "length_ms": 117275,
+              "start_ms": 24025250,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VmgbQGu0L.jpg",
           "id": "ken-jackson-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -694,6 +803,10 @@
               "imported_at": "2026-09-24",
               "ref": "166203914X",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "166203914X",
+              "type": "libex-import"
             }
           ],
           "work": "who-is-the-black-panther"
@@ -704,6 +817,10 @@
           "imported_at": "2026-09-24",
           "ref": "166203914X",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "166203914X",
+          "type": "libex-import"
         }
       ],
       "title": "Who is the Black Panther?"

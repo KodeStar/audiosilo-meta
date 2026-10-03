@@ -6869,6 +6869,10 @@
       "authors": [
         "alexander-kriss"
       ],
+      "genres": [
+        "health-wellness",
+        "psychology"
+      ],
       "id": "the-gaming-mind",
       "language": "en",
       "license": "CC0-1.0",
@@ -6882,6 +6886,79 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 23124,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 25640,
+              "start_ms": 23124,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 150230,
+              "start_ms": 48764,
+              "title": "Author's Note"
+            },
+            {
+              "length_ms": 3264911,
+              "start_ms": 198994,
+              "title": "Chapter 1: Me, You, and Silent Hill 2"
+            },
+            {
+              "length_ms": 3206606,
+              "start_ms": 3463905,
+              "title": "Chapter 2: Tutorial: What Are Videogames?"
+            },
+            {
+              "length_ms": 3819635,
+              "start_ms": 6670511,
+              "title": "Chapter 3: Uploaded Unconscious"
+            },
+            {
+              "length_ms": 3502799,
+              "start_ms": 10490146,
+              "title": "Chapter 4: Potential: Why Do We Play Videogames?"
+            },
+            {
+              "length_ms": 3227643,
+              "start_ms": 13992945,
+              "title": "Chapter 5: Violence: Do Videogames Make People Violent?"
+            },
+            {
+              "length_ms": 3393201,
+              "start_ms": 17220588,
+              "title": "Chapter 6: Addiction: How Should We Understand and Treat Videogame Addictions?"
+            },
+            {
+              "length_ms": 2695952,
+              "start_ms": 20613789,
+              "title": "Chapter 7: Health: How Can Videogames Help People to Heal?"
+            },
+            {
+              "length_ms": 4488230,
+              "start_ms": 23309741,
+              "title": "Chapter 8: Multiplayer: What Can Games Teach Us About How Groups and Societies Function?"
+            },
+            {
+              "length_ms": 2514117,
+              "start_ms": 27797971,
+              "title": "Chapter 9: Progression: How Can Videogames Help Us Face Loss and Find Purpose in Life?"
+            },
+            {
+              "length_ms": 1475657,
+              "start_ms": 30312088,
+              "title": "Chapter 10: Next-Gen: What is the Future of Our Lives with Videogames?"
+            },
+            {
+              "length_ms": 41835,
+              "start_ms": 31787745,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817gEpBNnEL.jpg",
           "id": "matthew-josdal-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -6896,6 +6973,10 @@
               "imported_at": "2026-09-24",
               "ref": "1705201202",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1705201202",
+              "type": "libex-import"
             }
           ],
           "work": "the-gaming-mind"
@@ -6906,6 +6987,10 @@
           "imported_at": "2026-09-24",
           "ref": "1705201202",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1705201202",
+          "type": "libex-import"
         }
       ],
       "title": "The Gaming Mind"
