@@ -1907,6 +1907,10 @@
             {
               "asin": "B00GDLGZ18",
               "region": "us"
+            },
+            {
+              "asin": "B00GDLNG24",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2025,6 +2029,39 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00GDLGZ18",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00GDLNG24",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pietr-the-latvian"
+        },
+        "james-faulkner-2025": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0FKC552XN",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61yUNXePoWL.jpg",
+          "id": "james-faulkner-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2025-09-30",
+          "runtime_min": 294,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FKC552XN",
               "type": "libex-import"
             }
           ],

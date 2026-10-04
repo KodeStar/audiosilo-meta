@@ -13188,6 +13188,10 @@
             {
               "asin": "B01B6MMJMM",
               "region": "us"
+            },
+            {
+              "asin": "B01B6MN688",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91+r+IAiAJL.jpg",
@@ -13204,6 +13208,39 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01B6MMJMM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01B6MN688",
+              "type": "libex-import"
+            }
+          ],
+          "work": "inspector-cadaver"
+        },
+        "james-faulkner-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0FKD5CVQX",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61LciPsPC7L.jpg",
+          "id": "james-faulkner-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2026-02-17",
+          "runtime_min": 295,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FKD5CVQX",
               "type": "libex-import"
             }
           ],

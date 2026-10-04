@@ -4437,6 +4437,14 @@
             {
               "asin": "B002VAAAH0",
               "region": "us"
+            },
+            {
+              "asin": "B004DS4EJS",
+              "region": "uk"
+            },
+            {
+              "asin": "B004V1OM1W",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -4481,6 +4489,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002VAAAH0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004DS4EJS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004V1OM1W",
               "type": "libex-import"
             }
           ],
@@ -7556,6 +7574,65 @@
         }
       ],
       "title": "The Saint Closes the Case"
+    },
+    "the-saint-fiacre-affair-inspector-maigret": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "georges-simenon",
+        "shaun-whiteside"
+      ],
+      "credits": [
+        {
+          "person": "shaun-whiteside",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "literary-fiction",
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "the-saint-fiacre-affair-inspector-maigret",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "james-faulkner-2025": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0FKCQ24JY",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71+1MUdHIOL.jpg",
+          "id": "james-faulkner-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2025-09-30",
+          "runtime_min": 255,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FKCQ24JY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-saint-fiacre-affair-inspector-maigret"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0FKCQ24JY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Saint-Fiacre Affair (Inspector Maigret)"
     },
     "the-saint-is-heard": {
       "added_at": "2026-07-29",

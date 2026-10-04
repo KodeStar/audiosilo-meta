@@ -4030,6 +4030,12 @@
         "georges-simenon",
         "frank-wynne"
       ],
+      "credits": [
+        {
+          "person": "frank-wynne",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "classics",
         "mystery",
@@ -4046,6 +4052,10 @@
             {
               "asin": "B00JUWOJIS",
               "region": "us"
+            },
+            {
+              "asin": "B00JUWEKSM",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4120,6 +4130,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00JUWOJIS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00JUWEKSM",
+              "type": "libex-import"
             }
           ],
           "work": "the-dancer-at-the-gai-moulin"
@@ -4129,6 +4144,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00JUWOJIS",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B00JUWEKSM",
           "type": "libex-import"
         }
       ],
