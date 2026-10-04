@@ -4,7 +4,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -116,7 +118,8 @@ func TestReviewedAssertRedundantWithADetectorActsAsAccept(t *testing.T) {
 
 // Once applied, an assertion's records are retired onto its target (or its membership
 // is listed), so it reads STALE and proposes nothing: that is what makes a re-run
-// idempotent. A record that never existed is STALE too, never fatal.
+// idempotent. A slug naming no record, live or retired, is a typo and is REFUSED, so it
+// cannot read as applied.
 func TestReviewedAssertStaleWhenARecordIsRetired(t *testing.T) {
 	files := rangerTree(t)
 	delete(files, "works/xx/oakleaf-bearers/work.json")
@@ -134,10 +137,10 @@ func TestReviewedAssertStaleWhenARecordIsRetired(t *testing.T) {
 	for _, o := range rep.Reviewed.Stale() {
 		whys[o.Entry.Target] = o.Why
 	}
-	if len(rep.Reviewed.Outcomes()) != 0 || len(whys) != 3 ||
+	out := rep.Reviewed.Outcomes()
+	if len(out) != 1 || out[0].Status != statusRefused || !strings.Contains(out[0].Why, "no such work no-such-book") || len(whys) != 2 ||
 		!strings.Contains(whys["the-battle-for-skandia"], "applied: every record it folds") ||
-		!strings.Contains(whys["the-pillars-of-the-earth"], "applied: series kingsbridge lists") ||
-		!strings.Contains(whys["the-ruins-of-gorlan"], "no live work no-such-book") {
+		!strings.Contains(whys["the-pillars-of-the-earth"], "applied: series kingsbridge lists") {
 		t.Fatalf("tally = %+v", rep.Reviewed)
 	}
 	if md := summary(rep); !strings.Contains(md, "- STALE `") || !strings.Contains(md, ": assert: ") {
@@ -350,6 +353,12 @@ func TestMergesOntoOneTargetAreConsistentButALoserFoldsOnce(t *testing.T) {
 		if c := proposalConflicts(proposalReport(books, novels)).conflicts; len(c) != 0 {
 			t.Fatalf("%s: two merges onto one target conflict: %v", op, c)
 		}
+		// The loser check reads only OTHER proposals' losers: one merge folding several
+		// losers is not its own conflict.
+		several := Proposal{Op: op, Target: "t", Others: []string{"l1", "l2", "l3"}}
+		if c := proposalConflicts(proposalReport(several)).conflicts; len(c) != 0 {
+			t.Fatalf("%s: one merge conflicts with itself: %v", op, c)
+		}
 		again := Proposal{Op: op, Target: "dh-pub", Others: []string{"dh-books", "dh-extra"}, Advisory: true}
 		rep := proposalReport(books, novels, again)
 		tally := applyReviewed(rep, []reviewedDecision{review(again, "accept")}, nil, nil)
@@ -357,5 +366,29 @@ func TestMergesOntoOneTargetAreConsistentButALoserFoldsOnce(t *testing.T) {
 			t.Fatalf("%s: re-folding a loser: %+v", op, tally)
 		}
 		assertProposalsConsistent(t, rep)
+	}
+}
+
+// A class sourcing had to create is withdrawn again if its only row is refused, and kept
+// when the row stands; the classes a run starts with are never touched.
+func TestSourcedClassIsWithdrawnWhenEmpty(t *testing.T) {
+	data := t.TempDir()
+	testpack.Seed(t, data, rangerTree(t))
+	ix := newIndex(check.Load(data).Catalog)
+	other := Proposal{Op: OpMergeWorks, Target: "the-ruins-of-gorlan", Others: []string{"oakleaf-bearers"}}
+	for _, tc := range []struct {
+		existing []Proposal
+		classes  int
+	}{{[]Proposal{other}, 1}, {nil, 2}} {
+		rep := proposalReport(tc.existing...)
+		applyReviewed(rep, []reviewedDecision{assertOakleaf}, nil, ix)
+		if len(rep.classes) != tc.classes {
+			t.Fatalf("with %v: classes = %d, want %d", tc.existing, len(rep.classes), tc.classes)
+		}
+		for _, c := range rep.classes {
+			if len(c.rows) == 0 && c.class == ClassWorkDup {
+				t.Fatalf("an empty sourced class was left behind")
+			}
+		}
 	}
 }

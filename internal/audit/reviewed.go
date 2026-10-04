@@ -599,6 +599,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for _, c := range rep.classes {
 		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == subclassAsserted && fd.Propose.Advisory })
 	}
+	rep.classes = slices.DeleteFunc(rep.classes, func(c *findings) bool { return len(c.rows) == 0 && slices.Contains(src.added, c) })
 	var t reviewedTally
 	for j, r := range rs {
 		if statuses[j] == "" {
@@ -614,13 +615,16 @@ type sourcing struct {
 	rep  *Report
 	ix   *index
 	keys map[string]bool // class + key of every finding, so a sourced key is unique
+	// added are the classes sourcing had to create, withdrawn again if they end empty.
+	added []*findings
 }
 
 // source appends one assertion's proposal p (resolved, its target out of its others)
 // to its op's class as an ADVISORY finding the acceptance loop then promotes,
 // returning where it sits; or, with a nil class, the status and why: STALE when a
 // record it names is gone or it has been applied (a merge's others all resolve to its
-// target, a membership is listed), REFUSED when the series holds its position already.
+// target, a membership is listed at its slot), REFUSED when it names no record (live or
+// retired), would widen or move one, or the series holds its position already.
 func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, status outcomeStatus, why string) {
 	if s.ix == nil {
 		return nil, 0, statusStale, "no catalogue to find its records in"
@@ -639,6 +643,8 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	}
 	fd := Finding{Subclass: subclassAsserted,
 		Notes: []string{"no detector proposes this: a reviewed assertion in " + reviewedPath + " sources it, and no detector veto was asked"}}
+	// Every slug has been resolved through the tombstones already, so one naming no
+	// record is neither live nor retired: a typo, which must not read as applied.
 	var missing []string
 	for _, id := range works {
 		if w := s.ix.workByID[id]; w != nil {
@@ -655,7 +661,7 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		}
 	}
 	if len(missing) > 0 {
-		return nil, 0, statusStale, "no live " + strings.Join(missing, ", ")
+		return nil, 0, statusRefused, "no such " + strings.Join(missing, ", ")
 	}
 	if p.Op == OpAddSeriesMember {
 		for _, m := range s.ix.memberships[p.Target] {
@@ -699,6 +705,7 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	c = s.rep.class(class)
 	if !slices.Contains(s.rep.classes, c) {
 		s.rep.classes = append(s.rep.classes, c)
+		s.added = append(s.added, c)
 	}
 	c.add(fd)
 	return c, len(c.rows) - 1, "", ""

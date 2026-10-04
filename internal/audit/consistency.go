@@ -157,6 +157,8 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 			// A loser belongs in ONE proposal: folded twice, the later merge goes stale
 			// against the earlier. A survivor may absorb several. Folding it onto another
 			// target, or a target elsewhere, is reported below; here is the same target.
+			// s.mergeTarget holds only OTHER proposals' losers here: this one records its
+			// own in the Others loop below, after this cluster loop.
 			if by, both := merged[id]; both && id != p.Target && s.mergeTarget[p.Op+"/"+id] == p.Target {
 				report("%s merges %s, which %s already merges", r.Key, id, by)
 			}
