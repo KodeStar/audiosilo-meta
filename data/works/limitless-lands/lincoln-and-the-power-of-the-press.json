@@ -9256,6 +9256,10 @@
             {
               "asin": "B008J4XJFC",
               "region": "us"
+            },
+            {
+              "asin": "B07CZZZX5R",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9549,6 +9553,48 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B008J4XJFC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07CZZZX5R",
+              "type": "libex-import"
+            }
+          ],
+          "work": "line-of-fire-stephen-white"
+        },
+        "richard-poe-2027": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GD8J5TZB",
+              "region": "us"
+            },
+            {
+              "asin": "B0GD8F165X",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7179P6ltOTL.jpg",
+          "id": "richard-poe-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-poe"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2027-01-19",
+          "runtime_min": 768,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GD8J5TZB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GD8F165X",
               "type": "libex-import"
             }
           ],

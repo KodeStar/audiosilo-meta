@@ -1940,6 +1940,10 @@
             {
               "asin": "B002V1NRVK",
               "region": "us"
+            },
+            {
+              "asin": "B07CMXYT72",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2228,6 +2232,48 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002V1NRVK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07CMXYT72",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-siege-stephen-white"
+        },
+        "richard-poe-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0FTBTDLBR",
+              "region": "us"
+            },
+            {
+              "asin": "B0FTDCQF12",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NA1ILT16L.jpg",
+          "id": "richard-poe-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-poe"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2026-12-15",
+          "runtime_min": 832,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FTBTDLBR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FTDCQF12",
               "type": "libex-import"
             }
           ],
