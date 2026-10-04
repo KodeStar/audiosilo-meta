@@ -21,6 +21,10 @@
             {
               "asin": "B0GLQK9B9B",
               "region": "us"
+            },
+            {
+              "asin": "B0GLQQ7H7W",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -229,6 +233,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GLQK9B9B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GLQQ7H7W",
               "type": "libex-import"
             }
           ],
@@ -5923,6 +5932,57 @@
         }
       ],
       "title": "Assassin"
+    },
+    "assassin-unleashed": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "miles-hunter"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
+      "id": "assassin-unleashed",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "jonathan-waters-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HGGGNBJP",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Dp8Np7U0L.jpg",
+          "id": "jonathan-waters-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jonathan-waters"
+          ],
+          "publisher": "Royal Guard Publishing LLC",
+          "release_date": "2026-08-25",
+          "runtime_min": 780,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HGGGNBJP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "assassin-unleashed"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HGGGNBJP",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Assassin Unleashed"
     },
     "assassin-zero": {
       "added_at": "2026-07-29",

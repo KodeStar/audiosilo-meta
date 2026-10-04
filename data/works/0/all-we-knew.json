@@ -541,6 +541,10 @@
             {
               "asin": "B0H4VT5NNV",
               "region": "us"
+            },
+            {
+              "asin": "B0H4VFYYB5",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -701,6 +705,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0H4VT5NNV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H4VFYYB5",
+              "type": "libex-import"
             }
           ],
           "work": "all-we-n-ever-cheered-for"
@@ -735,6 +744,10 @@
             {
               "asin": "B0GZKX216P",
               "region": "us"
+            },
+            {
+              "asin": "B0GZKZ5C5V",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -895,6 +908,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0GZKX216P",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GZKZ5C5V",
+              "type": "libex-import"
             }
           ],
           "work": "all-we-n-ever-played-for"
@@ -908,6 +926,57 @@
         }
       ],
       "title": "All we (n)ever played for"
+    },
+    "all-we-n-ever-searched-for": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "mrs-kristal"
+      ],
+      "genres": [
+        "romance"
+      ],
+      "id": "all-we-n-ever-searched-for",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "aaron-faber-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HKQ9SSRN",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HqilJDT2L.jpg",
+          "id": "aaron-faber-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aaron-faber",
+            "maja-gold"
+          ],
+          "publisher": "Miss Motte Audio",
+          "release_date": "2026-11-25",
+          "runtime_min": 363,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HKQ9SSRN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "all-we-n-ever-searched-for"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HKQ9SSRN",
+          "type": "libex-import"
+        }
+      ],
+      "title": "All we (n)ever searched for"
     },
     "all-we-thought-we-knew": {
       "added_at": "2026-07-29",

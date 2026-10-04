@@ -7917,6 +7917,10 @@
             {
               "asin": "B015YO5DCQ",
               "region": "us"
+            },
+            {
+              "asin": "B015YODM2E",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1cQsM8Xt6L.jpg",
@@ -7933,6 +7937,39 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B015YO5DCQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B015YODM2E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "signed-picpus"
+        },
+        "james-faulkner-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0FKDB6LSC",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51f2VyRX56L.jpg",
+          "id": "james-faulkner-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2026-01-06",
+          "runtime_min": 285,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FKDB6LSC",
               "type": "libex-import"
             }
           ],

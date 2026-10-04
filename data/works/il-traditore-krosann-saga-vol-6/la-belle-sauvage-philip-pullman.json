@@ -2262,6 +2262,10 @@
             {
               "asin": "B01AWDYNTS",
               "region": "us"
+            },
+            {
+              "asin": "B01AWDTWY4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2540,6 +2544,39 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01AWDYNTS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01AWDTWY4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-bete-humaine"
+        },
+        "guy-nadon-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GYT6X63T",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9179A0Iu3tL.jpg",
+          "id": "guy-nadon-2026",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "guy-nadon"
+          ],
+          "publisher": "Kampus Media",
+          "release_date": "2026-05-14",
+          "runtime_min": 855,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GYT6X63T",
               "type": "libex-import"
             }
           ],
