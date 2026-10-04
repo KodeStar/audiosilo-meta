@@ -96,6 +96,22 @@
     "to": "underworld"
   },
   {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "The Pillars of the Earth is Kingsbridge 1 in the chronological order (The Evening and the Morning is 0)",
+    "series": "kingsbridge",
+    "target": "the-pillars-of-the-earth",
+    "to": "1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "The Pillars of the Earth (1989) is the first Kingsbridge novel published",
+    "series": "kingsbridge-publication-order",
+    "target": "the-pillars-of-the-earth",
+    "to": "1"
+  },
+  {
     "decision": "reject",
     "field": "translation_of",
     "op": "add-work-link",
@@ -325,12 +341,94 @@
   },
   {
     "decision": "accept",
+    "op": "merge-series",
+    "others": [
+      "the-jack-ryan-universe-publication-order"
+    ],
+    "reason": "the orphan's one member, Oath of Office, sits at the same publication-order slot in A Jack Ryan Novel; retailers list no separate Jack Ryan Universe series for it",
+    "target": "a-jack-ryan-novel-publication-order"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-series",
+    "others": [
+      "the-kingsbridge-novels"
+    ],
+    "reason": "The Kingsbridge Novels lists the chronological Kingsbridge order slot for slot",
+    "target": "kingsbridge"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-series",
+    "others": [
+      "the-kingsbridge-novels-abridged"
+    ],
+    "reason": "the abridged spelling lists two chronological Kingsbridge volumes at the same slots, and both carry abridged recordings",
+    "target": "kingsbridge"
+  },
+  {
+    "decision": "accept",
+    "field": "position",
+    "op": "merge-series",
+    "others": [
+      "rangers-apprentice-published-order"
+    ],
+    "reason": "Audible's numbering of the publication order omits The Lost Stories; the primary keeps the publisher's numbering (The Lost Stories is Book 11, The Royal Ranger 12)",
+    "target": "rangers-apprentice"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-series",
+    "others": [
+      "chronicles-of-narnia"
+    ],
+    "reason": "the plain Chronicles of Narnia series lists the author's preferred order slot for slot",
+    "target": "the-chronicles-of-narnia-authors-preferred-order"
+  },
+  {
+    "decision": "accept",
     "op": "merge-works",
     "others": [
       "a-column-of-fire-a-kingsbridge-novel"
     ],
     "reason": "the same Ken Follett book catalogued twice; the two records sit in two Kingsbridge reading-order spellings, which is no evidence of two books",
     "target": "a-column-of-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "clear-and-present-danger-jack-ryan"
+    ],
+    "reason": "the same Michael Prichard narration of Clear and Present Danger under a series-decorated title",
+    "target": "clear-and-present-danger"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "command-authority-tom-clancy"
+    ],
+    "reason": "the same Lou Diamond Phillips production of Command Authority; the second record also credits co-author Mark Greaney, which the merge keeps",
+    "target": "command-authority"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-royal-ranger-duel-at-araluen"
+    ],
+    "reason": "the same book: the two records sit at different positions only because the two Ranger's Apprentice numberings differ",
+    "target": "duel-at-araluen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-and-the-goblet-of-fire-narrated-by-stephen-fry"
+    ],
+    "reason": "the Stephen Fry narration of Goblet of Fire belongs on the work as its six siblings do; the cluster's excerpt record stays out of this merge",
+    "target": "harry-potter-and-the-goblet-of-fire"
   },
   {
     "decision": "accept",
@@ -341,6 +439,24 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "prince-caspian"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "oakleaf-bearers"
+    ],
+    "reason": "Oakleaf Bearers is the Australian title of Ranger's Apprentice book 4, The Battle for Skandia: same book, two narrations",
+    "target": "the-battle-for-skandia"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-cardinal-of-the-kremlin-jack-ryan-book-4"
+    ],
+    "reason": "the same Michael Prichard narration of The Cardinal of the Kremlin under a series-decorated title",
+    "target": "the-cardinal-of-the-kremlin"
   },
   {
     "decision": "reject",
@@ -362,6 +478,15 @@
     "target": "the-horse-and-his-boy"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "07-the-last-battle"
+    ],
+    "reason": "a track-numbered record of The Last Battle: the Patrick Stewart recording is the same production the plain work holds",
+    "target": "the-last-battle"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -381,6 +506,16 @@
     "target": "the-lion-the-witch-and-the-wardrobe"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "06-the-magicians-nephew",
+      "the-magicians-nephew-chronicles-of-narnia-book-1"
+    ],
+    "reason": "a track-numbered and a series-decorated record of The Magician's Nephew: the Branagh recording is the same production the plain work holds",
+    "target": "the-magicians-nephew"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -389,6 +524,15 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "the-magicians-nephew"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-royal-ranger-a-new-beginning"
+    ],
+    "reason": "The Royal Ranger: A New Beginning is the later retitling of The Royal Ranger (Ranger's Apprentice 12): same book, two narrations at 836 minutes",
+    "target": "the-royal-ranger"
   },
   {
     "decision": "accept",
@@ -401,6 +545,15 @@
     "target": "the-silver-chair"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-sorcerer-of-the-north"
+    ],
+    "reason": "The Sorcerer of the North is the US title of Ranger's Apprentice book 5, The Sorcerer in the North: same book, three narrations",
+    "target": "the-sorcerer-in-the-north"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -409,6 +562,15 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "the-voyage-of-the-dawn-treader"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "tom-clancy-commander-in-chief-jack-ryan-book-11"
+    ],
+    "reason": "the same Scott Brick production of Commander in Chief; the series memberships move onto the plainly titled record",
+    "target": "tom-clancy-commander-in-chief"
   },
   {
     "decision": "accept",
