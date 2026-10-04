@@ -11829,6 +11829,10 @@
             {
               "asin": "B0H5FMP95V",
               "region": "us"
+            },
+            {
+              "asin": "B0H5FJXMGN",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11932,6 +11936,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0H5FMP95V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H5FJXMGN",
               "type": "libex-import"
             }
           ],
@@ -14022,6 +14031,58 @@
         }
       ],
       "title": "Tödliche Oliven"
+    },
+    "todliche-relikte": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "chris-fritschi"
+      ],
+      "genres": [
+        "horror",
+        "post-apocalyptic",
+        "science-fiction"
+      ],
+      "id": "todliche-relikte",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "michael-meister-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HC4V3Q1Z",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91BqXVDvDbL.jpg",
+          "id": "michael-meister-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-meister"
+          ],
+          "publisher": "Chris Fritschi",
+          "release_date": "2026-07-30",
+          "runtime_min": 629,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HC4V3Q1Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "todliche-relikte"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HC4V3Q1Z",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Tödliche Relikte"
     },
     "todliche-riffe": {
       "added_at": "2026-08-02",

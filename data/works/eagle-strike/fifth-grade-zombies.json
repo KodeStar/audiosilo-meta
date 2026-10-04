@@ -15642,14 +15642,136 @@
       "authors": [
         "jeff-kinney"
       ],
+      "genres": [
+        "childrens",
+        "comedy-humor",
+        "coming-of-age"
+      ],
       "id": "fight-or-flight",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "dan-russell-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GKJ1CP7J",
+              "region": "us"
+            },
+            {
+              "asin": "B0H6WF5417",
+              "region": "us"
+            },
+            {
+              "asin": "B0GKHL8C5B",
+              "region": "uk"
+            },
+            {
+              "asin": "B0H6WHNL7F",
+              "region": "uk"
+            },
+            {
+              "asin": "B0GKHSKF5X",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91jKo+okFNL.jpg",
+          "id": "dan-russell-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-russell"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2026-10-20",
+          "runtime_min": 135,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GKJ1CP7J",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6WF5417",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GKHL8C5B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6WHNL7F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GKHSKF5X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fight-or-flight"
+        },
+        "ramon-de-ocampo-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GV5M6689",
+              "region": "ca"
+            },
+            {
+              "asin": "B0GV5M72BW",
+              "region": "us"
+            },
+            {
+              "asin": "B0GV5C3QW5",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Vw5rKMBYL.jpg",
+          "id": "ramon-de-ocampo-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ramon-de-ocampo"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2026-10-20",
+          "runtime_min": 115,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GV5M6689",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GV5M72BW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GV5C3QW5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fight-or-flight"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/247028753-fight-or-flight",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0GV5M6689",
+          "type": "libex-import"
         }
       ],
       "title": "Fight or Flight",
