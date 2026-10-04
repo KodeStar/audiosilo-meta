@@ -1697,6 +1697,7 @@
         "edgar-rice-burroughs"
       ],
       "genres": [
+        "action-adventure",
         "classics",
         "politics",
         "social-sciences"
@@ -2034,30 +2035,7 @@
             }
           ],
           "work": "tarzan-the-terrible"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00QU62NHG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tarzan the Terrible"
-    },
-    "tarzan-the-terrible-tarzan-series-8": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edgar-rice-burroughs"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "tarzan-the-terrible-tarzan-series-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "peter-silverleaf-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3581,32 +3559,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "tarzan-the-terrible-tarzan-series-8"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0C2CYF9XN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tarzan the Terrible: Tarzan Series 8"
-    },
-    "tarzan-the-terrible-tarzan-series-book-8": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edgar-rice-burroughs"
-      ],
-      "genres": [
-        "classics",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "tarzan-the-terrible-tarzan-series-book-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "tarzan-the-terrible"
+        },
         "rusty-nelson-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3760,17 +3714,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "tarzan-the-terrible-tarzan-series-book-8"
+          "work": "tarzan-the-terrible"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00QU62NHG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C2CYF9XN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00VGXEWN6",
           "type": "libex-import"
         }
       ],
-      "title": "Tarzan the Terrible: Tarzan Series, Book 8"
+      "title": "Tarzan the Terrible"
     },
     "tarzan-the-untamed": {
       "added_at": "2026-08-02",

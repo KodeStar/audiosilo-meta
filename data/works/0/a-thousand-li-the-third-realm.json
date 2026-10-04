@@ -10152,6 +10152,7 @@
         "kelly-st-clare"
       ],
       "genres": [
+        "epic-fantasy",
         "fantasy",
         "romance"
       ],
@@ -10338,31 +10339,7 @@
             }
           ],
           "work": "a-throne-of-feathers-and-bone"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09CLK5RJP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Throne of Feathers and Bone"
-    },
-    "a-throne-of-feathers-and-bone-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "shannon-mayer",
-        "kelly-st-clare"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "a-throne-of-feathers-and-bone-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -10441,10 +10418,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-throne-of-feathers-and-bone-dramatized-adaptation"
+          "work": "a-throne-of-feathers-and-bone"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09CLK5RJP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CYN2MX8D",
@@ -10456,7 +10438,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "A Throne of Feathers and Bone (Dramatized Adaptation)"
+      "title": "A Throne of Feathers and Bone"
     },
     "a-throne-of-illusions": {
       "added_at": "2026-08-02",

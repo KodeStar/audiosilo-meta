@@ -4368,6 +4368,8 @@
         "childrens",
         "dystopian",
         "fantasy",
+        "historical-fiction",
+        "romance",
         "science-fiction",
         "young-adult"
       ],
@@ -4375,6 +4377,206 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jenny-mudge-2019": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "1683354397",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1780506,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1366587,
+              "start_ms": 1780506,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1242499,
+              "start_ms": 3147093,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 999061,
+              "start_ms": 4389592,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 900330,
+              "start_ms": 5388653,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 824076,
+              "start_ms": 6288983,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1031616,
+              "start_ms": 7113059,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 882915,
+              "start_ms": 8144675,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1533213,
+              "start_ms": 9027590,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 997111,
+              "start_ms": 10560803,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1065795,
+              "start_ms": 11557914,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1219465,
+              "start_ms": 12623709,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 616350,
+              "start_ms": 13843174,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1297298,
+              "start_ms": 14459524,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1249094,
+              "start_ms": 15756822,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 820082,
+              "start_ms": 17005916,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1400209,
+              "start_ms": 17825998,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1286153,
+              "start_ms": 19226207,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1005191,
+              "start_ms": 20512360,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1562284,
+              "start_ms": 21517551,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 837311,
+              "start_ms": 23079835,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1223877,
+              "start_ms": 23917146,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 691165,
+              "start_ms": 25141023,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 769927,
+              "start_ms": 25832188,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 633486,
+              "start_ms": 26602115,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 973473,
+              "start_ms": 27235601,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1281973,
+              "start_ms": 28209074,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1439312,
+              "start_ms": 29491047,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 922900,
+              "start_ms": 30930359,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 1620102,
+              "start_ms": 31853259,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 681923,
+              "start_ms": 33473361,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1176740,
+              "start_ms": 34155284,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 284862,
+              "start_ms": 35332024,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 806196,
+              "start_ms": 35616886,
+              "title": "Chapter 34"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9123XiVCuDL.jpg",
+          "id": "jenny-mudge-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jenny-mudge"
+          ],
+          "publisher": "Amulet Books",
+          "release_date": "2019-01-29",
+          "runtime_min": 606,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "1683354397",
+              "type": "libex-import"
+            }
+          ],
+          "work": "darkthaw"
+        },
         "jenny-mudge-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4591,235 +4793,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0G44RH4YY",
           "type": "libex-import"
-        }
-      ],
-      "title": "Darkthaw"
-    },
-    "darkthaw-a-winterkill-novel": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "kate-a-boorman"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "historical-fiction",
-        "romance",
-        "young-adult"
-      ],
-      "id": "darkthaw-a-winterkill-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jenny-mudge-2019": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "1683354397",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1780506,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1366587,
-              "start_ms": 1780506,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1242499,
-              "start_ms": 3147093,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 999061,
-              "start_ms": 4389592,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 900330,
-              "start_ms": 5388653,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 824076,
-              "start_ms": 6288983,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1031616,
-              "start_ms": 7113059,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 882915,
-              "start_ms": 8144675,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1533213,
-              "start_ms": 9027590,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 997111,
-              "start_ms": 10560803,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1065795,
-              "start_ms": 11557914,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1219465,
-              "start_ms": 12623709,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 616350,
-              "start_ms": 13843174,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1297298,
-              "start_ms": 14459524,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1249094,
-              "start_ms": 15756822,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 820082,
-              "start_ms": 17005916,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1400209,
-              "start_ms": 17825998,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1286153,
-              "start_ms": 19226207,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1005191,
-              "start_ms": 20512360,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1562284,
-              "start_ms": 21517551,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 837311,
-              "start_ms": 23079835,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1223877,
-              "start_ms": 23917146,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 691165,
-              "start_ms": 25141023,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 769927,
-              "start_ms": 25832188,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 633486,
-              "start_ms": 26602115,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 973473,
-              "start_ms": 27235601,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1281973,
-              "start_ms": 28209074,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1439312,
-              "start_ms": 29491047,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 922900,
-              "start_ms": 30930359,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 1620102,
-              "start_ms": 31853259,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 681923,
-              "start_ms": 33473361,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 1176740,
-              "start_ms": 34155284,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 284862,
-              "start_ms": 35332024,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 806196,
-              "start_ms": 35616886,
-              "title": "Chapter 34"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9123XiVCuDL.jpg",
-          "id": "jenny-mudge-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jenny-mudge"
-          ],
-          "publisher": "Amulet Books",
-          "release_date": "2019-01-29",
-          "runtime_min": 606,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "1683354397",
-              "type": "libex-import"
-            }
-          ],
-          "work": "darkthaw-a-winterkill-novel"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "1683354397",
           "type": "libex-import"
         }
       ],
-      "title": "Darkthaw: A Winterkill Novel"
+      "title": "Darkthaw"
     },
     "darktown": {
       "added_at": "2026-07-29",

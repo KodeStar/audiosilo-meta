@@ -648,13 +648,70 @@
       "genres": [
         "classics",
         "fantasy",
+        "historical-fiction",
         "literary-fiction",
+        "magical-realism",
         "science-fiction"
       ],
       "id": "dandelion-wine",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-aaron-baker-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FMSDWFXZ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16021,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 911313,
+              "start_ms": 16021,
+              "title": "Just This Side of Byzantium: An Introduction"
+            },
+            {
+              "length_ms": 30231734,
+              "start_ms": 927334,
+              "title": "Dandelion Wine"
+            },
+            {
+              "length_ms": 32763,
+              "start_ms": 31159068,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 729082,
+              "start_ms": 31191831,
+              "title": "Bonus Excerpt from Something Wicked This Way Comes"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81j+ZHyGhLL.jpg",
+          "id": "david-aaron-baker-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-aaron-baker"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2025-11-04",
+          "runtime_min": 531,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FMSDWFXZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dandelion-wine"
+        },
         "full-cast-2007": {
           "added_at": "2026-08-02",
           "asin": [
@@ -965,88 +1022,14 @@
           "imported_at": "2026-08-02",
           "ref": "B004LYV66I",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dandelion Wine"
-    },
-    "dandelion-wine-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ray-bradbury"
-      ],
-      "genres": [
-        "fantasy",
-        "historical-fiction",
-        "magical-realism"
-      ],
-      "id": "dandelion-wine-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-aaron-baker-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0FMSDWFXZ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16021,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 911313,
-              "start_ms": 16021,
-              "title": "Just This Side of Byzantium: An Introduction"
-            },
-            {
-              "length_ms": 30231734,
-              "start_ms": 927334,
-              "title": "Dandelion Wine"
-            },
-            {
-              "length_ms": 32763,
-              "start_ms": 31159068,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 729082,
-              "start_ms": 31191831,
-              "title": "Bonus Excerpt from Something Wicked This Way Comes"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81j+ZHyGhLL.jpg",
-          "id": "david-aaron-baker-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-aaron-baker"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2025-11-04",
-          "runtime_min": 531,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0FMSDWFXZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dandelion-wine-a-novel"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FMSDWFXZ",
           "type": "libex-import"
         }
       ],
-      "title": "Dandelion Wine: A Novel"
+      "title": "Dandelion Wine"
     },
     "dandelions-deception-detours": {
       "added_at": "2026-09-27",

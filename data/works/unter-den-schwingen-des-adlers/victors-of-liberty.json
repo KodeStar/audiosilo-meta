@@ -1459,6 +1459,7 @@
       "genres": [
         "action-adventure",
         "hard-science-fiction",
+        "military-science-fiction",
         "science-fiction",
         "space-opera"
       ],
@@ -1466,6 +1467,163 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-clemence-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09H3M11SL",
+              "region": "us"
+            },
+            {
+              "asin": "164541907X",
+              "region": "us"
+            },
+            {
+              "asin": "1645419096",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 84924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 76000,
+              "start_ms": 84924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3716227,
+              "start_ms": 160924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3299160,
+              "start_ms": 3877151,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3515501,
+              "start_ms": 7176311,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3948413,
+              "start_ms": 10691812,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3600950,
+              "start_ms": 14640225,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4132385,
+              "start_ms": 18241175,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 139000,
+              "start_ms": 22373560,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4164911,
+              "start_ms": 22512560,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3420090,
+              "start_ms": 26677471,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4005720,
+              "start_ms": 30097561,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3372280,
+              "start_ms": 34103281,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3561755,
+              "start_ms": 37475561,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4184000,
+              "start_ms": 41037316,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 147495,
+              "start_ms": 45221316,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917YIDTXolL.jpg",
+          "id": "andy-clemence-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-clemence",
+            "casie-platt",
+            "christopher-scheeren",
+            "colleen-delany",
+            "danny-gavigan",
+            "david-coyne",
+            "drew-kopas",
+            "dylan-lynch",
+            "elizabeth-jernigan",
+            "elliot-dash",
+            "eric-messner",
+            "full-cast",
+            "james-konicek",
+            "james-lewis",
+            "jeff-allin"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2020",
+          "runtime_min": 755,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09H3M11SL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164541907X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164541907X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645419096",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645419096",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09H3M11SL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "victory-conditions"
+        },
         "cynthia-holloway-2009": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1632,184 +1790,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002V0KH64",
           "type": "libex-import"
-        }
-      ],
-      "title": "Victory Conditions"
-    },
-    "victory-conditions-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "elizabeth-moon"
-      ],
-      "genres": [
-        "hard-science-fiction",
-        "military-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "victory-conditions-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-clemence-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09H3M11SL",
-              "region": "us"
-            },
-            {
-              "asin": "164541907X",
-              "region": "us"
-            },
-            {
-              "asin": "1645419096",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 84924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 76000,
-              "start_ms": 84924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3716227,
-              "start_ms": 160924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3299160,
-              "start_ms": 3877151,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3515501,
-              "start_ms": 7176311,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3948413,
-              "start_ms": 10691812,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3600950,
-              "start_ms": 14640225,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4132385,
-              "start_ms": 18241175,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 139000,
-              "start_ms": 22373560,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4164911,
-              "start_ms": 22512560,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3420090,
-              "start_ms": 26677471,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4005720,
-              "start_ms": 30097561,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3372280,
-              "start_ms": 34103281,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3561755,
-              "start_ms": 37475561,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4184000,
-              "start_ms": 41037316,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 147495,
-              "start_ms": 45221316,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/917YIDTXolL.jpg",
-          "id": "andy-clemence-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andy-clemence",
-            "casie-platt",
-            "christopher-scheeren",
-            "colleen-delany",
-            "danny-gavigan",
-            "david-coyne",
-            "drew-kopas",
-            "dylan-lynch",
-            "elizabeth-jernigan",
-            "elliot-dash",
-            "eric-messner",
-            "full-cast",
-            "james-konicek",
-            "james-lewis",
-            "jeff-allin"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2020",
-          "runtime_min": 755,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09H3M11SL",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164541907X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164541907X",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1645419096",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1645419096",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09H3M11SL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "victory-conditions-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09H3M11SL",
@@ -1841,7 +1822,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Victory Conditions [Dramatized Adaptation]"
+      "title": "Victory Conditions"
     },
     "victory-day": {
       "added_at": "2026-08-02",

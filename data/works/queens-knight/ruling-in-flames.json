@@ -10918,7 +10918,7 @@
       ],
       "title": "Rumpole at Christmas"
     },
-    "rumpole-for-the-defence": {
+    "rumpole-for-the-defense": {
       "added_at": "2026-07-29",
       "authors": [
         "john-mortimer"
@@ -10927,10 +10927,75 @@
         "mystery",
         "short-stories"
       ],
-      "id": "rumpole-for-the-defence",
+      "id": "rumpole-for-the-defense",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "frederick-davidson-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B007FXKYYM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4285243,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4294206,
+              "start_ms": 4285243,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3581446,
+              "start_ms": 8579449,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3596910,
+              "start_ms": 12160895,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2805156,
+              "start_ms": 15757805,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1535164,
+              "start_ms": 18562961,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3611910,
+              "start_ms": 20098125,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71uXrK9mqIL.jpg",
+          "id": "frederick-davidson-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frederick-davidson"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2012-03-02",
+          "runtime_min": 395,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B007FXKYYM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rumpole-for-the-defense"
+        },
         "patrick-tull-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11079,93 +11144,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "rumpole-for-the-defence"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B005K0NZ3O",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rumpole for the Defence"
-    },
-    "rumpole-for-the-defense": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-mortimer"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "rumpole-for-the-defense",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "frederick-davidson-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B007FXKYYM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4285243,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4294206,
-              "start_ms": 4285243,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3581446,
-              "start_ms": 8579449,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3596910,
-              "start_ms": 12160895,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2805156,
-              "start_ms": 15757805,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1535164,
-              "start_ms": 18562961,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3611910,
-              "start_ms": 20098125,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71uXrK9mqIL.jpg",
-          "id": "frederick-davidson-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "frederick-davidson"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2012-03-02",
-          "runtime_min": 395,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B007FXKYYM",
-              "type": "libex-import"
-            }
-          ],
           "work": "rumpole-for-the-defense"
         }
       },
@@ -11173,6 +11151,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B007FXKYYM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B005K0NZ3O",
           "type": "libex-import"
         }
       ],

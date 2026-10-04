@@ -1622,6 +1622,14 @@
             {
               "asin": "B0BSMM8M6P",
               "region": "us"
+            },
+            {
+              "asin": "B0BSLMRT62",
+              "region": "us"
+            },
+            {
+              "asin": "B0DJFN7B6Q",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -1921,6 +1929,16 @@
               "imported_at": "2026-07-29",
               "ref": "B0BSMM8M6P",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BSLMRT62",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DJFN7B6Q",
+              "type": "libex-import"
             }
           ],
           "work": "the-armor-of-light"
@@ -1930,6 +1948,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BSMM8M6P",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BSLMRT62",
           "type": "libex-import"
         }
       ],
@@ -3251,66 +3274,6 @@
         }
       ],
       "title": "The Armour of God: The Power of Anastasia Aaronso"
-    },
-    "the-armour-of-light": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ken-follett"
-      ],
-      "genres": [
-        "historical-fiction",
-        "thriller-suspense"
-      ],
-      "id": "the-armour-of-light",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-lee-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BSLMRT62",
-              "region": "us"
-            },
-            {
-              "asin": "B0DJFN7B6Q",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81m7ykKdOZL.jpg",
-          "id": "john-lee-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-lee"
-          ],
-          "publisher": "Macmillan",
-          "release_date": "2023-09-26",
-          "runtime_min": 1299,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BSLMRT62",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DJFN7B6Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-armour-of-light"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BSLMRT62",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Armour of Light"
     },
     "the-arms-maker-of-berlin": {
       "added_at": "2026-07-29",

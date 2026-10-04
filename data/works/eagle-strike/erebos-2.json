@@ -1157,31 +1157,8 @@
             }
           ],
           "work": "erebos-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "3844535349",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Erebos 2"
-    },
-    "erebos-2-erebos-band-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ursula-poznanski"
-      ],
-      "genres": [
-        "thriller-suspense",
-        "young-adult"
-      ],
-      "id": "erebos-2-erebos-band-2",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jens-wawrczeck-2019": {
+        },
+        "jens-wawrczeck-2019-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -2313,7 +2290,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91PVSMRkYyL.jpg",
-          "id": "jens-wawrczeck-2019",
+          "id": "jens-wawrczeck-2019-2",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -2329,17 +2306,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "erebos-2-erebos-band-2"
+          "work": "erebos-2"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3844535349",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "3844536183",
           "type": "libex-import"
         }
       ],
-      "title": "Erebos 2: Erebos, Band 2"
+      "title": "Erebos 2"
     },
     "erebos-3": {
       "added_at": "2026-08-02",

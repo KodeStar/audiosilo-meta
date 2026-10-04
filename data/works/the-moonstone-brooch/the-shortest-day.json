@@ -12819,6 +12819,12 @@
       "authors": [
         "barry-j-hutchison"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "science-fiction",
+        "superhero"
+      ],
       "id": "the-sidekicks-initiative",
       "language": "en",
       "license": "CC0-1.0",
@@ -12830,8 +12836,13 @@
             {
               "asin": "B07N6MS827",
               "region": "us"
+            },
+            {
+              "asin": "B07N6MYFBK",
+              "region": "uk"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/91aTAp1tkpL.jpg",
           "id": "phil-thron-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -12846,6 +12857,11 @@
               "imported_at": "2026-09-24",
               "ref": "B07N6MS827",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07N6MYFBK",
+              "type": "libex-import"
             }
           ],
           "work": "the-sidekicks-initiative"
@@ -12856,62 +12872,14 @@
           "imported_at": "2026-09-24",
           "ref": "B07N6MS827",
           "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "The Sidekicks Initiative"
-    },
-    "the-sidekicks-initiative-a-comedy-superhero-adventure": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "barry-j-hutchison"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "science-fiction",
-        "superhero"
-      ],
-      "id": "the-sidekicks-initiative-a-comedy-superhero-adventure",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "phil-thron-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07N6MYFBK",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91aTAp1tkpL.jpg",
-          "id": "phil-thron-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "phil-thron"
-          ],
-          "publisher": "Zertex Media Ltd",
-          "release_date": "2019-02-02",
-          "runtime_min": 713,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07N6MYFBK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sidekicks-initiative-a-comedy-superhero-adventure"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07N6MYFBK",
           "type": "libex-import"
         }
       ],
-      "title": "The Sidekicks Initiative: A Comedy Superhero Adventure"
+      "title": "The Sidekicks Initiative"
     },
     "the-sideways-8": {
       "added_at": "2026-08-01",

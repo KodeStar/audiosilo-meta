@@ -1494,95 +1494,6 @@
           ],
           "work": "dark-watch"
         },
-        "tom-wopat-2009": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036IOYI2",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 11904,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4291172,
-              "start_ms": 11904,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4030241,
-              "start_ms": 4303076,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4366745,
-              "start_ms": 8333317,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4236852,
-              "start_ms": 12700062,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3560083,
-              "start_ms": 16936914,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 28514,
-              "start_ms": 20496997,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81a4yjCYgOL.jpg",
-          "id": "tom-wopat-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tom-wopat"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2009-10-29",
-          "runtime_min": 341,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036IOYI2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dark-watch"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036IOYI2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dark Watch"
-    },
-    "dark-watch-oregon-files-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "clive-cussler",
-        "jack-du-brul"
-      ],
-      "genres": [
-        "action-adventure",
-        "thriller-suspense"
-      ],
-      "id": "dark-watch-oregon-files-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "scott-brick-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1746,17 +1657,87 @@
               "type": "libex-import"
             }
           ],
-          "work": "dark-watch-oregon-files-3"
+          "work": "dark-watch"
+        },
+        "tom-wopat-2009": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036IOYI2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11904,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4291172,
+              "start_ms": 11904,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4030241,
+              "start_ms": 4303076,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4366745,
+              "start_ms": 8333317,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4236852,
+              "start_ms": 12700062,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3560083,
+              "start_ms": 16936914,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 28514,
+              "start_ms": 20496997,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81a4yjCYgOL.jpg",
+          "id": "tom-wopat-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-wopat"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2009-10-29",
+          "runtime_min": 341,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036IOYI2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-watch"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036IOYI2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0145OGQJ0",
           "type": "libex-import"
         }
       ],
-      "title": "Dark Watch: Oregon Files #3"
+      "title": "Dark Watch"
     },
     "dark-watcher": {
       "added_at": "2026-08-01",

@@ -7274,6 +7274,8 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
+        "politics",
         "thriller-suspense",
         "war-military-fiction"
       ],
@@ -7287,6 +7289,10 @@
           "asin": [
             {
               "asin": "0593106792",
+              "region": "us"
+            },
+            {
+              "asin": "1405943971",
               "region": "us"
             }
           ],
@@ -7697,6 +7703,11 @@
               "imported_at": "2026-07-30",
               "ref": "0593106792",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1405943971",
+              "type": "libex-import"
             }
           ],
           "work": "tom-clancy-code-of-honor"
@@ -7706,6 +7717,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "0593106792",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1405943971",
           "type": "libex-import"
         }
       ],
@@ -8170,6 +8186,7 @@
       ],
       "genres": [
         "action-adventure",
+        "espionage",
         "thriller-suspense",
         "war-military-fiction"
       ],
@@ -8184,55 +8201,7 @@
             {
               "asin": "B011PVT3A0",
               "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818H98-f6ZL.jpg",
-          "id": "scott-brick-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2015-12-01",
-          "runtime_min": 1232,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B011PVT3A0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tom-clancy-commander-in-chief"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B011PVT3A0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tom Clancy Commander-in-Chief"
-    },
-    "tom-clancy-commander-in-chief-jack-ryan-book-11": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "mark-greaney"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "thriller-suspense"
-      ],
-      "id": "tom-clancy-commander-in-chief-jack-ryan-book-11",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "scott-brick-2015": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
+            },
             {
               "asin": "B017JCMF2C",
               "region": "us"
@@ -8655,34 +8624,44 @@
               "title": "Chapter 83"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81DyYrINxCL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/818H98-f6ZL.jpg",
           "id": "scott-brick-2015",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "scott-brick"
           ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2015-12-03",
+          "publisher": "Random House Audio",
+          "release_date": "2015-12-01",
           "runtime_min": 1232,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B011PVT3A0",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-30",
               "ref": "B017JCMF2C",
               "type": "libex-import"
             }
           ],
-          "work": "tom-clancy-commander-in-chief-jack-ryan-book-11"
+          "work": "tom-clancy-commander-in-chief"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B011PVT3A0",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B017JCMF2C",
           "type": "libex-import"
         }
       ],
-      "title": "Tom Clancy Commander in Chief: Jack Ryan, Book 11"
+      "title": "Tom Clancy Commander-in-Chief"
     },
     "tom-clancy-defense-protocol": {
       "added_at": "2026-07-30T14:42:56+01:00",

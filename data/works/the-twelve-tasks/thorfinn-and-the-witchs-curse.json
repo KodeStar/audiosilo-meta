@@ -2571,6 +2571,9 @@
         "kelly-st-clare"
       ],
       "genres": [
+        "action-adventure",
+        "arts-entertainment",
+        "coming-of-age",
         "epic-fantasy",
         "fantasy"
       ],
@@ -2760,34 +2763,7 @@
             }
           ],
           "work": "thorn-kissed-and-silver-chains"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0BMN919JP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Thorn Kissed and Silver Chains"
-    },
-    "thorn-kissed-and-silver-chains-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "shannon-mayer",
-        "kelly-st-clare"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "coming-of-age",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "thorn-kissed-and-silver-chains-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -2836,10 +2812,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "thorn-kissed-and-silver-chains-dramatized-adaptation"
+          "work": "thorn-kissed-and-silver-chains"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0BMN919JP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D3R2QGGM",
@@ -2851,7 +2832,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Thorn Kissed and Silver Chains (Dramatized Adaptation)"
+      "title": "Thorn Kissed and Silver Chains"
     },
     "thorn-of-the-night-blossoms": {
       "added_at": "2026-08-01",

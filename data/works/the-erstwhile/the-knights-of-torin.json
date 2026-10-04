@@ -14725,134 +14725,6 @@
       ],
       "title": "The Laboratory"
     },
-    "the-labors-of-hercules": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "mystery",
-        "short-stories"
-      ],
-      "id": "the-labors-of-hercules",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "hugh-fraser-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B008DJECCM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 11722,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 846023,
-              "start_ms": 11722,
-              "title": "Foreword"
-            },
-            {
-              "length_ms": 3052402,
-              "start_ms": 857745,
-              "title": "The Nemean Lion"
-            },
-            {
-              "length_ms": 2923067,
-              "start_ms": 3910147,
-              "title": "The Lernean Hydra"
-            },
-            {
-              "length_ms": 2248481,
-              "start_ms": 6833214,
-              "title": "The Arcadian Deer"
-            },
-            {
-              "length_ms": 2696858,
-              "start_ms": 9081695,
-              "title": "The Erymanthian Boar"
-            },
-            {
-              "length_ms": 2246159,
-              "start_ms": 11778553,
-              "title": "The Augean Stables"
-            },
-            {
-              "length_ms": 2530418,
-              "start_ms": 14024712,
-              "title": "The Stymphalean Birds"
-            },
-            {
-              "length_ms": 3229942,
-              "start_ms": 16555130,
-              "title": "The Cretan Bull"
-            },
-            {
-              "length_ms": 2121468,
-              "start_ms": 19785072,
-              "title": "The Horses of Diomedes"
-            },
-            {
-              "length_ms": 1801125,
-              "start_ms": 21906540,
-              "title": "The Girdle of Hyppolita"
-            },
-            {
-              "length_ms": 2373590,
-              "start_ms": 23707665,
-              "title": "The Flock of Geryon"
-            },
-            {
-              "length_ms": 1945832,
-              "start_ms": 26081255,
-              "title": "The Apples of the Hesperides"
-            },
-            {
-              "length_ms": 3366313,
-              "start_ms": 28027087,
-              "title": "The Capture of Cerberus"
-            },
-            {
-              "length_ms": 32113,
-              "start_ms": 31393400,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81X9u-NZc6L.jpg",
-          "id": "hugh-fraser-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hugh-fraser"
-          ],
-          "publisher": "William Morrow Paperbacks",
-          "release_date": "2012-07-03",
-          "runtime_min": 523,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B008DJECCM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-labors-of-hercules"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B008DJECCM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Labors of Hercules"
-    },
     "the-labors-of-hercules-beal": {
       "added_at": "2026-07-29",
       "authors": [
@@ -14912,7 +14784,8 @@
         "agatha-christie"
       ],
       "genres": [
-        "mystery"
+        "mystery",
+        "short-stories"
       ],
       "id": "the-labours-of-hercules",
       "language": "en",
@@ -15021,6 +14894,111 @@
             }
           ],
           "work": "the-labours-of-hercules"
+        },
+        "hugh-fraser-2012": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B008DJECCM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11722,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 846023,
+              "start_ms": 11722,
+              "title": "Foreword"
+            },
+            {
+              "length_ms": 3052402,
+              "start_ms": 857745,
+              "title": "The Nemean Lion"
+            },
+            {
+              "length_ms": 2923067,
+              "start_ms": 3910147,
+              "title": "The Lernean Hydra"
+            },
+            {
+              "length_ms": 2248481,
+              "start_ms": 6833214,
+              "title": "The Arcadian Deer"
+            },
+            {
+              "length_ms": 2696858,
+              "start_ms": 9081695,
+              "title": "The Erymanthian Boar"
+            },
+            {
+              "length_ms": 2246159,
+              "start_ms": 11778553,
+              "title": "The Augean Stables"
+            },
+            {
+              "length_ms": 2530418,
+              "start_ms": 14024712,
+              "title": "The Stymphalean Birds"
+            },
+            {
+              "length_ms": 3229942,
+              "start_ms": 16555130,
+              "title": "The Cretan Bull"
+            },
+            {
+              "length_ms": 2121468,
+              "start_ms": 19785072,
+              "title": "The Horses of Diomedes"
+            },
+            {
+              "length_ms": 1801125,
+              "start_ms": 21906540,
+              "title": "The Girdle of Hyppolita"
+            },
+            {
+              "length_ms": 2373590,
+              "start_ms": 23707665,
+              "title": "The Flock of Geryon"
+            },
+            {
+              "length_ms": 1945832,
+              "start_ms": 26081255,
+              "title": "The Apples of the Hesperides"
+            },
+            {
+              "length_ms": 3366313,
+              "start_ms": 28027087,
+              "title": "The Capture of Cerberus"
+            },
+            {
+              "length_ms": 32113,
+              "start_ms": 31393400,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81X9u-NZc6L.jpg",
+          "id": "hugh-fraser-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hugh-fraser"
+          ],
+          "publisher": "William Morrow Paperbacks",
+          "release_date": "2012-07-03",
+          "runtime_min": 523,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B008DJECCM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-labours-of-hercules"
         }
       },
       "sources": [
@@ -15032,6 +15010,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B004RC2HRQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B008DJECCM",
           "type": "libex-import"
         }
       ],

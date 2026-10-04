@@ -8852,15 +8852,105 @@
         "charlaine-harris"
       ],
       "genres": [
+        "action-adventure",
+        "cozy-mystery",
         "fantasy",
+        "literary-fiction",
+        "mystery",
         "paranormal",
         "romance",
+        "thriller-suspense",
         "urban-fantasy"
       ],
       "id": "day-shift",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bianca-bryan-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BVGW9LDW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 35514,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3935214,
+              "start_ms": 35514,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3582421,
+              "start_ms": 3970728,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3557204,
+              "start_ms": 7553149,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 3513063,
+              "start_ms": 11110353,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4012919,
+              "start_ms": 14623416,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3859435,
+              "start_ms": 18636335,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 3402001,
+              "start_ms": 22495770,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 431403,
+              "start_ms": 25897771,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Bg5vr+iSL.jpg",
+          "id": "bianca-bryan-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bianca-bryan",
+            "bradley-foster-smith",
+            "colleen-delany",
+            "drew-kopas",
+            "earl-fisher",
+            "elias-khalil",
+            "eli-vanzandt",
+            "jonathan-lee-taylor",
+            "ken-jackson",
+            "tia-shearer",
+            "tracy-lynn-olivera"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-03-01",
+          "runtime_min": 438,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BVGW9LDW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "day-shift"
+        },
         "susan-bennett-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9096,122 +9186,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00U27ZT1G",
           "type": "libex-import"
-        }
-      ],
-      "title": "Day Shift"
-    },
-    "day-shift-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charlaine-harris"
-      ],
-      "genres": [
-        "action-adventure",
-        "cozy-mystery",
-        "literary-fiction",
-        "mystery",
-        "paranormal",
-        "romance",
-        "thriller-suspense"
-      ],
-      "id": "day-shift-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bianca-bryan-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BVGW9LDW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 35514,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3935214,
-              "start_ms": 35514,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3582421,
-              "start_ms": 3970728,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3557204,
-              "start_ms": 7553149,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 3513063,
-              "start_ms": 11110353,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4012919,
-              "start_ms": 14623416,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3859435,
-              "start_ms": 18636335,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 3402001,
-              "start_ms": 22495770,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 431403,
-              "start_ms": 25897771,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Bg5vr+iSL.jpg",
-          "id": "bianca-bryan-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bianca-bryan",
-            "bradley-foster-smith",
-            "colleen-delany",
-            "drew-kopas",
-            "earl-fisher",
-            "elias-khalil",
-            "eli-vanzandt",
-            "jonathan-lee-taylor",
-            "ken-jackson",
-            "tia-shearer",
-            "tracy-lynn-olivera"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-03-01",
-          "runtime_min": 438,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BVGW9LDW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "day-shift-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BVGW9LDW",
           "type": "libex-import"
         }
       ],
-      "title": "Day Shift (Dramatized Adaptation)"
+      "title": "Day Shift"
     },
     "day-swing-trading-for-beginners": {
       "added_at": "2026-07-29",

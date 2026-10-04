@@ -5486,7 +5486,10 @@
         "brandon-sanderson"
       ],
       "genres": [
+        "action-adventure",
+        "arts-entertainment",
         "comedy-humor",
+        "fantasy",
         "science-fiction",
         "time-travel"
       ],
@@ -5494,6 +5497,136 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andrew-james-spooner-2024": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DDCWY219",
+              "region": "ca"
+            },
+            {
+              "asin": "B0DDCYCHC2",
+              "region": "uk"
+            },
+            {
+              "asin": "B0DDCWWQW7",
+              "region": "au"
+            },
+            {
+              "asin": "B0DDCV5ZL5",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DDCTS3WV",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81choNhYEyL.jpg",
+          "id": "andrew-james-spooner-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrew-james-spooner",
+            "bradley-foster-smith",
+            "colleen-delany",
+            "crystal-lee",
+            "danny-gavigan",
+            "david-cui-cui",
+            "elias-khalil",
+            "full-cast",
+            "helen-day",
+            "holly-adams",
+            "nathaniel-priestley",
+            "zeke-alton"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024-10-18",
+          "runtime_min": 475,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCWY219",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCYCHC2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCWWQW7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCV5ZL5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCTS3WV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-frugal-wizards-handbook-for-surviving-medieval-england"
+        },
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DDCWBJ9G",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 37924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4305229,
+              "start_ms": 37924,
+              "title": "The Frugal Wizard’s Handbook for Surviving Medieval England (Dramatized Adaptation)"
+            },
+            {
+              "length_ms": 24116394,
+              "start_ms": 4343153,
+              "title": "Frequently Asked Question"
+            },
+            {
+              "length_ms": 74568,
+              "start_ms": 28459547,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81choNhYEyL.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 475,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DDCWBJ9G",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCWBJ9G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-frugal-wizards-handbook-for-surviving-medieval-england"
+        },
         "michael-kramer-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5921,158 +6054,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0D18B8S7R",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Frugal Wizard’s Handbook for Surviving Medieval England"
-    },
-    "the-frugal-wizards-handbook-for-surviving-medieval-england-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "fantasy",
-        "science-fiction",
-        "time-travel"
-      ],
-      "id": "the-frugal-wizards-handbook-for-surviving-medieval-england-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-james-spooner-2024": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DDCWY219",
-              "region": "ca"
-            },
-            {
-              "asin": "B0DDCYCHC2",
-              "region": "uk"
-            },
-            {
-              "asin": "B0DDCWWQW7",
-              "region": "au"
-            },
-            {
-              "asin": "B0DDCV5ZL5",
-              "region": "fr"
-            },
-            {
-              "asin": "B0DDCTS3WV",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81choNhYEyL.jpg",
-          "id": "andrew-james-spooner-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrew-james-spooner",
-            "bradley-foster-smith",
-            "colleen-delany",
-            "crystal-lee",
-            "danny-gavigan",
-            "david-cui-cui",
-            "elias-khalil",
-            "full-cast",
-            "helen-day",
-            "holly-adams",
-            "nathaniel-priestley",
-            "zeke-alton"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024-10-18",
-          "runtime_min": 475,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCWY219",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCYCHC2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCWWQW7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCV5ZL5",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCTS3WV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-frugal-wizards-handbook-for-surviving-medieval-england-dramatized-adaptation"
         },
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DDCWBJ9G",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 37924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4305229,
-              "start_ms": 37924,
-              "title": "The Frugal Wizard’s Handbook for Surviving Medieval England (Dramatized Adaptation)"
-            },
-            {
-              "length_ms": 24116394,
-              "start_ms": 4343153,
-              "title": "Frequently Asked Question"
-            },
-            {
-              "length_ms": 74568,
-              "start_ms": 28459547,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81choNhYEyL.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 475,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DDCWBJ9G",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCWBJ9G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-frugal-wizards-handbook-for-surviving-medieval-england-dramatized-adaptation"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "B0DDCWBJ9G",
@@ -6084,7 +6066,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Frugal Wizard’s Handbook for Surviving Medieval England (Dramatized Adaptation)"
+      "title": "The Frugal Wizard’s Handbook for Surviving Medieval England"
     },
     "the-fruit-hunters": {
       "added_at": "2026-07-29",

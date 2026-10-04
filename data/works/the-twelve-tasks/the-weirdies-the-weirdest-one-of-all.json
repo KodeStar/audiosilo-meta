@@ -3476,6 +3476,43 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2014": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648812767.jpg",
+          "id": "full-cast-2014",
+          "isbn": [
+            "9781648817182",
+            "9781648817205",
+            "9781648817229"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2014-07-31",
+          "runtime_min": 1334,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817182",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817205",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817229",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-well-of-ascension"
+        },
         "michael-kramer-2011": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -3935,58 +3972,7 @@
           "imported_at": "2026-07-30",
           "ref": "B004SOK48C",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Well of Ascension"
-    },
-    "the-well-of-ascension-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "id": "the-well-of-ascension-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2014": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648812767.jpg",
-          "id": "full-cast-2014",
-          "isbn": [
-            "9781648817182",
-            "9781648817205",
-            "9781648817229"
-          ],
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2014-07-31",
-          "runtime_min": 1334,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817182",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817205",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817229",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "the-well-of-ascension-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "isbn:9781648817182",
@@ -4003,7 +3989,7 @@
           "type": "audiosilo-books-import"
         }
       ],
-      "title": "The Well of Ascension [Dramatized Adaptation]"
+      "title": "The Well of Ascension"
     },
     "the-well-of-eternity-blizzard-legends": {
       "added_at": "2026-07-29",

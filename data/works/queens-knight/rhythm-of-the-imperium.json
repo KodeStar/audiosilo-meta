@@ -306,6 +306,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648816581.jpg",
+          "id": "full-cast-2020",
+          "isbn": [
+            "9781648816581",
+            "9781648817366",
+            "9781648817373",
+            "9781648817380",
+            "9781648817397",
+            "9781648817403"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020-12-20",
+          "runtime_min": 2661,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648816581",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817366",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817373",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817380",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817397",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648817403",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "rhythm-of-war"
+        },
         "kate-reading-2020": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -431,76 +486,7 @@
           "imported_at": "2026-07-30",
           "ref": "1250759781",
           "type": "libex-import"
-        }
-      ],
-      "title": "Rhythm of War"
-    },
-    "rhythm-of-war-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "id": "rhythm-of-war-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648816581.jpg",
-          "id": "full-cast-2020",
-          "isbn": [
-            "9781648816581",
-            "9781648817366",
-            "9781648817373",
-            "9781648817380",
-            "9781648817397",
-            "9781648817403"
-          ],
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020-12-20",
-          "runtime_min": 2661,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648816581",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817366",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817373",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817380",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817397",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648817403",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "rhythm-of-war-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "isbn:9781648816581",
@@ -532,7 +518,7 @@
           "type": "audiosilo-books-import"
         }
       ],
-      "title": "Rhythm of War [Dramatized Adaptation]"
+      "title": "Rhythm of War"
     },
     "rhythms-blues": {
       "added_at": "2026-07-29",

@@ -8193,6 +8193,7 @@
         "edgar-rice-burroughs"
       ],
       "genres": [
+        "action-adventure",
         "classics"
       ],
       "id": "tarzan-and-the-golden-lion",
@@ -8648,30 +8649,7 @@
             }
           ],
           "work": "tarzan-and-the-golden-lion"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07YQ8Q163",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tarzan and the Golden Lion"
-    },
-    "tarzan-and-the-golden-lion-tarzan-series-9": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edgar-rice-burroughs"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "tarzan-and-the-golden-lion-tarzan-series-9",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "peter-silverleaf-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9920,17 +9898,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "tarzan-and-the-golden-lion-tarzan-series-9"
+          "work": "tarzan-and-the-golden-lion"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07YQ8Q163",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0C2CWHN13",
           "type": "libex-import"
         }
       ],
-      "title": "Tarzan and the Golden Lion: Tarzan Series 9"
+      "title": "Tarzan and the Golden Lion"
     },
     "tarzan-and-the-golden-lion-the-tarzan-series-book-9": {
       "added_at": "2026-08-02",
