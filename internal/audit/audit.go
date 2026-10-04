@@ -191,7 +191,8 @@ func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 	// records (a merge, a restated position, a filled slot), and reads them as locks:
 	// a membership move that would not commute with one of them is advisory.
 	noSeries, integrity := detectWorkNoSeries(ix), detectSeriesIntegrity(ix)
-	serDup := detectSeriesDup(ix, skeys)
+	serDup := detectSeriesDup(ix, skeys, clustersOf)
+	detectOrderingTwins(ix, skeys, serDup)
 	mix, mixTally := detectLanguageMix(ix, newMixLocks(dup, noSeries, integrity, serDup))
 
 	rep := &Report{
@@ -224,7 +225,7 @@ func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 		hyg,
 		loaderFindings(res),
 	}
-	rep.Reviewed = applyReviewed(rep, decisions, cat.Redirects)
+	rep.Reviewed = applyReviewed(rep, decisions, cat.Redirects, ix)
 	// Sort in place and render each record's action prose from its proposal, ONCE:
 	// the writer and the summary then read the same ordered slice.
 	for _, c := range rep.classes {

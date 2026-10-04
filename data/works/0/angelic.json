@@ -868,6 +868,12 @@
       "authors": [
         "andrea-camilleri"
       ],
+      "credits": [
+        {
+          "person": "stephen-sartarelli",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "mystery",
         "police-procedural",
@@ -884,6 +890,10 @@
             {
               "asin": "B00WA7AHI6",
               "region": "us"
+            },
+            {
+              "asin": "B00WA7TTNA",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -993,6 +1003,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00WA7AHI6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B00WA7TTNA",
+              "type": "libex-import"
             }
           ],
           "work": "angelicas-smile"
@@ -1004,6 +1019,10 @@
             {
               "asin": "B00KQRQ34O",
               "region": "us"
+            },
+            {
+              "asin": "B079VTQWWN",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1113,6 +1132,48 @@
               "imported_at": "2026-08-02",
               "ref": "B00KQRQ34O",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B079VTQWWN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "angelicas-smile"
+        },
+        "mark-meadows-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0H9LN9ZK4",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HKLZCTMB",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81aUyxNSNTL.jpg",
+          "id": "mark-meadows-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-meadows"
+          ],
+          "publisher": "Picador",
+          "release_date": "2026-10-22",
+          "runtime_min": 240,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0H9LN9ZK4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HKLZCTMB",
+              "type": "libex-import"
             }
           ],
           "work": "angelicas-smile"
@@ -1122,6 +1183,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00KQRQ34O",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0H9LN9ZK4",
           "type": "libex-import"
         }
       ],

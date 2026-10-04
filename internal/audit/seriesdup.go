@@ -50,7 +50,8 @@ func seriesKeyIndex(all []*model.Series) []seriesKeys {
 }
 
 // detectSeriesDup groups series whose names are the same name spelled two ways.
-func detectSeriesDup(ix *index, keys []seriesKeys) *findings {
+// clustersOf is W-DUP's work -> cluster keys, which a family review names.
+func detectSeriesDup(ix *index, keys []seriesKeys, clustersOf map[string][]string) *findings {
 	f := &findings{class: ClassSeriesDup}
 
 	const foldReason = "fold the members onto the canonical name, then delete the empty spelling"
@@ -84,8 +85,33 @@ func detectSeriesDup(ix *index, keys []seriesKeys) *findings {
 		// it apart from the group) and its own subclass. It is emitted only under a
 		// vetoed group, which is what keeps the non-advisory set consistent: a mechanical
 		// whole-group fold would already fold these members onto a different survivor.
+		claimed := map[string]bool{}
 		for _, sub := range sameDecorationSubgroups(group) {
-			f.add(seriesDupFinding(ix, serDupDecor, key+"["+sub[0].decor+"]", sub, foldReason))
+			sfd := seriesDupFinding(ix, serDupDecor, key+"["+sub[0].decor+"]", sub, foldReason)
+			f.add(sfd)
+			if !sfd.Propose.Advisory {
+				for _, k := range sub {
+					claimed[k.series.ID] = true
+				}
+			}
+		}
+		// FAMILY FOLDS (seriesfamily.go): a group withheld for holding a reading-order
+		// family or a translation may still hold plain spellings of ONE family member,
+		// each proposed apart - never a series a mechanical subgroup above already folds.
+		// The family-member lookup is the cheap gate: without one there is no target.
+		if !hasFamilyMember(ix, group) {
+			continue
+		}
+		sides := seriesSides(ix, group)
+		if !familyVetoed(group, sides) {
+			continue
+		}
+		byID := make(map[string]seriesSide, len(sides))
+		for _, sd := range sides {
+			byID[sd.series.ID] = sd
+		}
+		for _, ffd := range familySpellingFolds(ix, key, group, byID, claimed, clustersOf) {
+			f.add(ffd)
 		}
 	}
 
@@ -155,8 +181,13 @@ func seriesDupFinding(ix *index, sub, key string, group []seriesKeys, reason str
 // that found them. target is the spelling the proposal would keep, which the directional
 // rules need: folding a loser INTO it is what makes a claim.
 func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
+	return seriesMergeVetoesOver(ix, group, seriesSides(ix, group), target)
+}
+
+// seriesMergeVetoesOver is seriesMergeVetoes over sides the caller already holds,
+// one per group member in the group's order.
+func seriesMergeVetoesOver(ix *index, group []seriesKeys, sides []seriesSide, target string) []string {
 	var out []string
-	sides := seriesSides(ix, group)
 
 	// ORDERING FAMILY: two series the data STATES are orderings of one franchise are
 	// deliberately two records, however alike their names read.
@@ -211,6 +242,36 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 	return out
 }
 
+// decorationsRestate reports whether every parenthetical in the group is an ordering
+// qualifier naming exactly the ordering the TARGET states in its field - so no
+// decoration says anything the surviving record does not ("The Chronicles of Narnia
+// (Author's Preferred Order)" stating ordering=recommended, beside a plain "Chronicles
+// of Narnia"). A target stating no ordering never makes a decoration redundant, and
+// neither is a decoration that is not one ordering group (an edition, an author
+// disambiguator, two groups at once).
+func decorationsRestate(group []seriesKeys, target string) bool {
+	var ordering string
+	for _, k := range group {
+		if k.series.ID == target {
+			ordering = k.series.Ordering
+		}
+	}
+	if ordering == "" {
+		return false
+	}
+	for _, k := range group {
+		// A member whose own ordering FIELD states another order is a different list,
+		// whatever its decoration says.
+		if k.series.Ordering != "" && k.series.Ordering != ordering {
+			return false
+		}
+		if k.paren && (k.decor == "" || titlerule.OrderingOfDecoration(k.decor) != ordering) {
+			return false
+		}
+	}
+	return true
+}
+
 // vetoSeriesDecoration: the members carry parentheticals that tell them apart, so a fold
 // would erase the one thing distinguishing two series.
 //
@@ -262,6 +323,14 @@ func seriesMergeVetoes(ix *index, group []seriesKeys, target string) []string {
 // Any other one-sided decoration still vetoes, even where nothing moves: an edition, an
 // author or any other qualifier says something about the series that the plain name
 // does not.
+//
+// And none of it applies when every decoration only RESTATES the target's own stated
+// ordering field and no member's own ordering field states another (decorationsRestate):
+// "The Chronicles of Narnia (Author's Preferred Order)" stating ordering=recommended, or
+// "Ranger's Apprentice (published order)" beside a "Ranger's Apprentice" stating
+// publication, says nothing the survivor does not.
+// Measured when it was pushed in here from the family folds' caller option: no
+// whole-group record on the 282,027-work tree moved.
 func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string) (string, bool) {
 	var decorated []string
 	plain := 0
@@ -275,7 +344,7 @@ func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string)
 		classes[decorClass(k)] = true
 	}
 	switch {
-	case len(decorated) == 0:
+	case len(decorated) == 0 || decorationsRestate(group, target):
 		return "", false
 	case len(classes) >= 2:
 		return truncateList(decorated, 4) + " carry different parenthetical decorations: that decoration is what " +

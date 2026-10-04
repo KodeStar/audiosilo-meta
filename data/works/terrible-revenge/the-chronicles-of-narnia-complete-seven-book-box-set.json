@@ -4120,6 +4120,10 @@
             {
               "asin": "B0H6N8DFGM",
               "region": "us"
+            },
+            {
+              "asin": "B0H6N968T4",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71JaPsyTNUL.jpg",
@@ -4137,6 +4141,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0H6N8DFGM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6N968T4",
+              "type": "libex-import"
             }
           ],
           "work": "the-chronicles-of-tiris-1"
@@ -4150,6 +4159,58 @@
         }
       ],
       "title": "The Chronicles of Tiris #1"
+    },
+    "the-chronicles-of-tiris-2": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "vasily-mahanenko"
+      ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "the-chronicles-of-tiris-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dustin-naylor-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HK5TD4KR",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71oWk8CNR+L.jpg",
+          "id": "dustin-naylor-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dustin-naylor"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-12-29",
+          "runtime_min": 540,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HK5TD4KR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-chronicles-of-tiris-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HK5TD4KR",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Chronicles of Tiris #2"
     },
     "the-chronicles-of-underrealm-collection-one": {
       "added_at": "2026-08-01",

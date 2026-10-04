@@ -58,6 +58,16 @@ type index struct {
 	// minSeriesFormWords significant words are held.
 	seriesTails map[string][]string
 
+	// variantsOf maps a series id to the series whose ordering_of names it, sorted:
+	// the inverse of the one link that makes a series a family's PRIMARY, which a record
+	// cannot see by reading itself. translationNeighbours is each series' translation_of
+	// links in either direction. They are the catalogue's one link index: L-MIX reads
+	// both (a primary, a translation-linked target) and SER-DUP's family folds read both
+	// (seriesfamily.go: a series either link reaches is a family member or a
+	// translation, never a plain spelling to retire).
+	variantsOf            map[string][]string
+	translationNeighbours map[string][]string
+
 	// derivedCache memoizes the per-work title derivation. Four detectors ask for
 	// it and the answer costs a series-name lookup, a clean and a volume probe, so
 	// deriving it once per work rather than once per question is most of the
@@ -73,17 +83,19 @@ type membership struct {
 
 func newIndex(cat *model.Catalog) *index {
 	ix := &index{
-		cat:          cat,
-		workByID:     make(map[string]*model.Work, len(cat.Works)),
-		personByID:   make(map[string]*model.Person, len(cat.People)),
-		seriesByID:   make(map[string]*model.Series, len(cat.Series)),
-		memberships:  map[string][]membership{},
-		sidecars:     map[string][]string{},
-		authorOf:     map[string]int{},
-		narratorOf:   map[string]int{},
-		creditedOn:   map[string]int{},
-		positions:    make(map[string]map[string]string, len(cat.Series)),
-		derivedCache: make(map[string]*workDerived, len(cat.Works)),
+		cat:                   cat,
+		workByID:              make(map[string]*model.Work, len(cat.Works)),
+		personByID:            make(map[string]*model.Person, len(cat.People)),
+		seriesByID:            make(map[string]*model.Series, len(cat.Series)),
+		memberships:           map[string][]membership{},
+		sidecars:              map[string][]string{},
+		authorOf:              map[string]int{},
+		narratorOf:            map[string]int{},
+		creditedOn:            map[string]int{},
+		positions:             make(map[string]map[string]string, len(cat.Series)),
+		variantsOf:            map[string][]string{},
+		translationNeighbours: map[string][]string{},
+		derivedCache:          make(map[string]*workDerived, len(cat.Works)),
 	}
 	for _, w := range cat.Works {
 		ix.workByID[w.ID] = w
@@ -118,6 +130,16 @@ func newIndex(cat *model.Catalog) *index {
 			}
 		}
 		ix.positions[s.ID] = pos
+		if s.OrderingOf != "" {
+			ix.variantsOf[s.OrderingOf] = append(ix.variantsOf[s.OrderingOf], s.ID)
+		}
+		for _, o := range s.TranslationOf {
+			ix.translationNeighbours[s.ID] = append(ix.translationNeighbours[s.ID], o)
+			ix.translationNeighbours[o] = append(ix.translationNeighbours[o], s.ID)
+		}
+	}
+	for _, vs := range ix.variantsOf {
+		sort.Strings(vs)
 	}
 	for _, ms := range ix.memberships {
 		sort.Slice(ms, func(i, j int) bool {
@@ -201,6 +223,9 @@ func subseriesKey(s string) string {
 	}
 	return titlerule.SeriesKey(s)
 }
+
+// translationLinked reports whether any translation_of link touches a series.
+func (ix *index) translationLinked(id string) bool { return len(ix.translationNeighbours[id]) > 0 }
 
 // hasSidecar reports whether the works-community family holds an entry for a work.
 func (ix *index) hasSidecar(workID string) bool { return len(ix.sidecars[workID]) > 0 }
@@ -636,6 +661,13 @@ func positionKey(pos string) string {
 		return ""
 	}
 	return formatSeq(span[0])
+}
+
+// canonicalPosition reports whether pos is a position the data model accepts, in its
+// canonical spelling - what a writer may put into a series as it stands.
+func canonicalPosition(pos string) bool {
+	norm, ok := importer.NormalizeSequence(pos)
+	return ok && norm == pos
 }
 
 // formatSeq renders a volume number in positionKey's canonical spelling, so a

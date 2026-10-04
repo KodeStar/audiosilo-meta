@@ -22,6 +22,10 @@
             {
               "asin": "B0GHSY3R4B",
               "region": "us"
+            },
+            {
+              "asin": "B0GHSRK1WV",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -221,6 +225,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GHSY3R4B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GHSRK1WV",
               "type": "libex-import"
             }
           ],
@@ -5154,6 +5163,58 @@
         }
       ],
       "title": "Heralds of the Siege"
+    },
+    "herausforderung-des-hofes": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "heather-g-harris"
+      ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "thriller-suspense"
+      ],
+      "id": "herausforderung-des-hofes",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "christina-ann-zalamea-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HKQ21QN6",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81taRR0qDnL.jpg",
+          "id": "christina-ann-zalamea-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christina-ann-zalamea"
+          ],
+          "publisher": "Hellhound Press Limited",
+          "release_date": "2026-09-23",
+          "runtime_min": 468,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HKQ21QN6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "herausforderung-des-hofes"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HKQ21QN6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Herausforderung des Hofes"
     },
     "herausforderung-im-ersten-ring": {
       "added_at": "2026-08-02",

@@ -7081,6 +7081,10 @@
             {
               "asin": "B09LVR159N",
               "region": "us"
+            },
+            {
+              "asin": "B09LVRRMBP",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7315,6 +7319,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09LVR159N",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B09LVRRMBP",
+              "type": "libex-import"
             }
           ],
           "work": "long-lost-myron-bolitar-book-9"
@@ -7326,6 +7335,10 @@
             {
               "asin": "B0036KSO7C",
               "region": "us"
+            },
+            {
+              "asin": "B004FTY0WQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7540,6 +7553,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0036KSO7C",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B004FTY0WQ",
+              "type": "libex-import"
             }
           ],
           "work": "long-lost-myron-bolitar-book-9"
@@ -7551,6 +7569,10 @@
             {
               "asin": "B002V0QE70",
               "region": "us"
+            },
+            {
+              "asin": "B079VSTDJT",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7765,6 +7787,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V0QE70",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B079VSTDJT",
+              "type": "libex-import"
             }
           ],
           "work": "long-lost-myron-bolitar-book-9"
@@ -7819,6 +7846,61 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0032N8HUM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "long-lost-myron-bolitar-book-9"
+        },
+        "tim-machin-2009-2": {
+          "abridged": true,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B004EWX0PC",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4745787,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4685415,
+              "start_ms": 4745787,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4712676,
+              "start_ms": 9431202,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4728094,
+              "start_ms": 14143878,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4755818,
+              "start_ms": 18871972,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51rpXn3QKnL.jpg",
+          "id": "tim-machin-2009-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-machin"
+          ],
+          "publisher": "Orion",
+          "release_date": "2009-04-30",
+          "runtime_min": 393,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B004EWX0PC",
               "type": "libex-import"
             }
           ],
