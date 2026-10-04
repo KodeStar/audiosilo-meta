@@ -698,6 +698,10 @@
             {
               "asin": "B0C798C758",
               "region": "us"
+            },
+            {
+              "asin": "B0C78Y7ZMB",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -867,6 +871,49 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0C798C758",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0C78Y7ZMB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tentacles-triathlons"
+        },
+        "jack-calihan-2027": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0H8FFJ7FN",
+              "region": "us"
+            },
+            {
+              "asin": "B0H8FM9MR7",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71WUWSXQ5qL.jpg",
+          "id": "jack-calihan-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jack-calihan",
+            "liam-price"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2027-03-09",
+          "runtime_min": 540,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H8FFJ7FN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H8FM9MR7",
               "type": "libex-import"
             }
           ],

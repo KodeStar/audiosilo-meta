@@ -12619,6 +12619,43 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HD14C25H",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HD17H6PW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91AyJrJDsmL.jpg",
+          "id": "full-cast-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-11-18",
+          "runtime_min": 780,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HD14C25H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HD17H6PW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "house-of-pounding-hearts"
+        },
         "olivia-king-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -12626,6 +12663,10 @@
             {
               "asin": "B0C2X54ZWH",
               "region": "us"
+            },
+            {
+              "asin": "B0C2WKMZK1",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -12995,6 +13036,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0C2X54ZWH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0C2WKMZK1",
               "type": "libex-import"
             }
           ],
