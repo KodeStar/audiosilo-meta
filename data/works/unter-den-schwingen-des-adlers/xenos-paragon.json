@@ -5506,6 +5506,9 @@
       "authors": [
         "jahquel-j"
       ],
+      "genres": [
+        "romance"
+      ],
       "id": "xo-unlawfully-yours",
       "language": "en",
       "license": "CC0-1.0",
@@ -5517,6 +5520,10 @@
             {
               "asin": "B0FB64LQ6Z",
               "region": "us"
+            },
+            {
+              "asin": "B0FB5Z6PM3",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71-PgC-Rj6L.jpg",
@@ -5529,10 +5536,16 @@
           ],
           "publisher": "Dreamscape Media",
           "release_date": "2026-09-08",
+          "runtime_min": 900,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0FB64LQ6Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FB5Z6PM3",
               "type": "libex-import"
             }
           ],
@@ -5543,6 +5556,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0FB64LQ6Z",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0FB5Z6PM3",
           "type": "libex-import"
         }
       ],
