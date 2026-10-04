@@ -8740,6 +8740,10 @@
             {
               "asin": "B0036IN8YS",
               "region": "us"
+            },
+            {
+              "asin": "B004EWYUU6",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8859,6 +8863,11 @@
               "imported_at": "2026-07-30",
               "ref": "B0036IN8YS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004EWYUU6",
+              "type": "libex-import"
             }
           ],
           "work": "devil-may-care"
@@ -8870,6 +8879,10 @@
             {
               "asin": "B0036K1Y42",
               "region": "us"
+            },
+            {
+              "asin": "B079QD5GHF",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8993,6 +9006,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0036K1Y42",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B079QD5GHF",
               "type": "libex-import"
             }
           ],
@@ -9123,6 +9141,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B002V0Q1YG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "devil-may-care"
+        },
+        "tristan-layton-2008-2": {
+          "abridged": true,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B079WYNVJK",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81LklCaknoL.jpg",
+          "id": "tristan-layton-2008-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tristan-layton"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2008-08-25",
+          "runtime_min": 328,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B079WYNVJK",
               "type": "libex-import"
             }
           ],
