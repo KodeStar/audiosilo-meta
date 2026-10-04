@@ -1016,6 +1016,12 @@
       "authors": [
         "david-barrie"
       ],
+      "genres": [
+        "nature",
+        "science",
+        "sports",
+        "technology"
+      ],
       "id": "supernavigators",
       "language": "en",
       "license": "CC0-1.0",
@@ -1029,6 +1035,174 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 19528,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 777775,
+              "start_ms": 19528,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 6000,
+              "start_ms": 797303,
+              "title": "Part I: Navigating Without Maps"
+            },
+            {
+              "length_ms": 1397669,
+              "start_ms": 803303,
+              "title": "1. Mr. Steadman and the Monarch"
+            },
+            {
+              "length_ms": 1333243,
+              "start_ms": 2200972,
+              "title": "2. Jim Lovell’s Magic Carpet"
+            },
+            {
+              "length_ms": 1493948,
+              "start_ms": 3534215,
+              "title": "3. A Tangled Horror"
+            },
+            {
+              "length_ms": 1299133,
+              "start_ms": 5028163,
+              "title": "4. Of Desert Warfare and Ants"
+            },
+            {
+              "length_ms": 1451781,
+              "start_ms": 6327296,
+              "title": "5. The Dancing Bees"
+            },
+            {
+              "length_ms": 1410310,
+              "start_ms": 7779077,
+              "title": "6. Dead Reckoning"
+            },
+            {
+              "length_ms": 1976087,
+              "start_ms": 9189387,
+              "title": "7. The Racehorse of the Insect World"
+            },
+            {
+              "length_ms": 1135804,
+              "start_ms": 11165474,
+              "title": "8. Steering by the Shape of the Sky"
+            },
+            {
+              "length_ms": 1059433,
+              "start_ms": 12301278,
+              "title": "9. How Birds Find True North"
+            },
+            {
+              "length_ms": 1026972,
+              "start_ms": 13360711,
+              "title": "10. Heavenly Dung Beetles"
+            },
+            {
+              "length_ms": 1421873,
+              "start_ms": 14387683,
+              "title": "11. Giant Peacocks"
+            },
+            {
+              "length_ms": 1357717,
+              "start_ms": 15809556,
+              "title": "12. Can Birds Smell Their Way Home?"
+            },
+            {
+              "length_ms": 2174618,
+              "start_ms": 17167273,
+              "title": "13. Sound Navigation"
+            },
+            {
+              "length_ms": 1248815,
+              "start_ms": 19341891,
+              "title": "14. The Earth’s Magnetism"
+            },
+            {
+              "length_ms": 1378406,
+              "start_ms": 20590706,
+              "title": "15. So How Does the Monarch Navigate?"
+            },
+            {
+              "length_ms": 767303,
+              "start_ms": 21969112,
+              "title": "16. The Silver “Y”"
+            },
+            {
+              "length_ms": 1897674,
+              "start_ms": 22736415,
+              "title": "17. The Dark Lord of the Snowy Mountains"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 24634089,
+              "title": "Part II: The Holy Grail"
+            },
+            {
+              "length_ms": 1607814,
+              "start_ms": 24637089,
+              "title": "18. Map and Compass Navigation"
+            },
+            {
+              "length_ms": 1344899,
+              "start_ms": 26244903,
+              "title": "19. Can Birds Solve the Longitude Problem?"
+            },
+            {
+              "length_ms": 1606983,
+              "start_ms": 27589802,
+              "title": "20. The Mystery of Sea Turtle Navigation"
+            },
+            {
+              "length_ms": 1346385,
+              "start_ms": 29196785,
+              "title": "21. Costa Rican Adventures"
+            },
+            {
+              "length_ms": 2119424,
+              "start_ms": 30543170,
+              "title": "22. A Light in the Darkness"
+            },
+            {
+              "length_ms": 1315572,
+              "start_ms": 32662594,
+              "title": "23. The Great Magnetic Mystery"
+            },
+            {
+              "length_ms": 1622726,
+              "start_ms": 33978166,
+              "title": "24. The Seahorses in Our Heads"
+            },
+            {
+              "length_ms": 1163296,
+              "start_ms": 35600892,
+              "title": "25. The Human Navigational Brain"
+            },
+            {
+              "length_ms": 4000,
+              "start_ms": 36764188,
+              "title": "Part III: Why Does Navigation Matter?"
+            },
+            {
+              "length_ms": 1258794,
+              "start_ms": 36768188,
+              "title": "26. The Language of the Earth"
+            },
+            {
+              "length_ms": 1023295,
+              "start_ms": 38026982,
+              "title": "27. Conclusions"
+            },
+            {
+              "length_ms": 32074,
+              "start_ms": 39050277,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BnY1N+ZoL.jpg",
           "id": "david-barrie-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -1043,6 +1217,10 @@
               "imported_at": "2026-09-24",
               "ref": "1684419204",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1684419204",
+              "type": "libex-import"
             }
           ],
           "work": "supernavigators"
@@ -1053,6 +1231,10 @@
           "imported_at": "2026-09-24",
           "ref": "1684419204",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1684419204",
+          "type": "libex-import"
         }
       ],
       "title": "Supernavigators"

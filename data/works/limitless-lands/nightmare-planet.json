@@ -1006,6 +1006,10 @@
             {
               "asin": "B0FZWMD83N",
               "region": "us"
+            },
+            {
+              "asin": "B0FZWG86M7",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -1404,12 +1408,17 @@
           ],
           "publisher": "Aethon Audio",
           "release_date": "2025-12-31",
-          "runtime_min": 970,
+          "runtime_min": 971,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0FZWMD83N",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0FZWG86M7",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "nightmare-realm-summoner-2"

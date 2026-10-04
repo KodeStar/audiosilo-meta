@@ -12252,6 +12252,10 @@
             {
               "asin": "B0FL2SFS47",
               "region": "us"
+            },
+            {
+              "asin": "B0FL2S7MXB",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -12389,14 +12393,19 @@
             "norman-lovett",
             "robert-llewelyn"
           ],
-          "publisher": "BBC Digital Audio",
+          "publisher": "BBC Audio",
           "release_date": "2025-11-20",
-          "runtime_min": 681,
+          "runtime_min": 678,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0FL2SFS47",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0FL2S7MXB",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "red-dwarf-series-i-to-iv"
@@ -12602,6 +12611,39 @@
             }
           ],
           "work": "red-dwarf-series-v-to-viii"
+        },
+        "craig-charles-2025": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0FL2RZGMG",
+              "region": "us"
+            }
+          ],
+          "id": "craig-charles-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "craig-charles",
+            "chris-barrie",
+            "rob-grant",
+            "robert-llewellyn",
+            "norman-lovett",
+            "hattie-hayridge",
+            "full-cast"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2025",
+          "runtime_min": 797,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0FL2RZGMG",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "red-dwarf-series-v-to-viii"
         }
       },
       "sources": [
@@ -12635,6 +12677,10 @@
           "asin": [
             {
               "asin": "B0H4VCLQ2F",
+              "region": "us"
+            },
+            {
+              "asin": "B0H4TXY44X",
               "region": "us"
             }
           ],
@@ -13104,6 +13150,11 @@
             {
               "ref": "B0H4VCLQ2F",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0H4TXY44X",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "red-dwarf-titan"

@@ -6812,6 +6812,13 @@
       "authors": [
         "stefan-van-der-stigchel"
       ],
+      "genres": [
+        "health-wellness",
+        "parenting-relationships",
+        "psychology",
+        "science",
+        "self-help"
+      ],
       "id": "concentration-stefan-van-der-stigchel",
       "language": "en",
       "license": "CC0-1.0",
@@ -6825,6 +6832,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 24275,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 15239,
+              "start_ms": 24275,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 2352234,
+              "start_ms": 39514,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 3412892,
+              "start_ms": 2391748,
+              "title": "1. Why Is It Diffcult to Concentrate?"
+            },
+            {
+              "length_ms": 3252302,
+              "start_ms": 5804640,
+              "title": "2. When and When Not to Multitask"
+            },
+            {
+              "length_ms": 2401430,
+              "start_ms": 9056942,
+              "title": "3. The Sender: How Do You Hold Someone's Attention?"
+            },
+            {
+              "length_ms": 3912863,
+              "start_ms": 11458372,
+              "title": "4. The Receiver: How Can You Improve Your Concentration?"
+            },
+            {
+              "length_ms": 2280362,
+              "start_ms": 15371235,
+              "title": "5. The Importance of Concentration in Traffic"
+            },
+            {
+              "length_ms": 1325186,
+              "start_ms": 17651597,
+              "title": "6. The Future: Are We All Going Stir-Crazy?"
+            },
+            {
+              "length_ms": 28580,
+              "start_ms": 18976783,
+              "title": "Hope for the Future"
+            },
+            {
+              "length_ms": 384246,
+              "start_ms": 19005363,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KntTOTaKL.jpg",
           "id": "perry-daniels-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -6839,6 +6904,10 @@
               "imported_at": "2026-09-24",
               "ref": "1696601363",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1696601363",
+              "type": "libex-import"
             }
           ],
           "work": "concentration-stefan-van-der-stigchel"
@@ -6849,6 +6918,10 @@
           "imported_at": "2026-09-24",
           "ref": "1696601363",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1696601363",
+          "type": "libex-import"
         }
       ],
       "title": "Concentration"

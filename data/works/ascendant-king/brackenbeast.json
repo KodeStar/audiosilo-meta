@@ -11231,6 +11231,11 @@
       "authors": [
         "rebecca-schwarzlose"
       ],
+      "genres": [
+        "health-wellness",
+        "psychology",
+        "science"
+      ],
       "id": "brainscapes",
       "language": "en",
       "license": "CC0-1.0",
@@ -11244,6 +11249,84 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 16906,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 938061,
+              "start_ms": 16906,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 2026010,
+              "start_ms": 954967,
+              "title": "1. An Atlas of You: What Is a Brain Map?"
+            },
+            {
+              "length_ms": 2304185,
+              "start_ms": 2980977,
+              "title": "2. The Tyranny of Numbers: Why Brain Maps Exist"
+            },
+            {
+              "length_ms": 2949165,
+              "start_ms": 5285162,
+              "title": "3. How Brain Maps Determine What We See and Feel"
+            },
+            {
+              "length_ms": 1448879,
+              "start_ms": 8234327,
+              "title": "4. Out of the Ether: Brain Maps for Hearing"
+            },
+            {
+              "length_ms": 2695906,
+              "start_ms": 9683206,
+              "title": "5. Brain Maps and Codes for Taste and Smell"
+            },
+            {
+              "length_ms": 2977308,
+              "start_ms": 12379112,
+              "title": "6. On the Move: Brain Maps for Action"
+            },
+            {
+              "length_ms": 2648908,
+              "start_ms": 15356420,
+              "title": "7. Maps in the Making: How Brain Maps Develop and Adapt"
+            },
+            {
+              "length_ms": 2755535,
+              "start_ms": 18005328,
+              "title": "8. Knowing Again: Brain Maps for Recognition"
+            },
+            {
+              "length_ms": 2833508,
+              "start_ms": 20760863,
+              "title": "9. Imagining, Remembering, and Paying Attention with Brain Maps"
+            },
+            {
+              "length_ms": 3093502,
+              "start_ms": 23594371,
+              "title": "10. Comprehending and Communicating with Brain Maps"
+            },
+            {
+              "length_ms": 4282595,
+              "start_ms": 26687873,
+              "title": "11. Maps as Portals: Mind Reading and Mind Writing with Brain Maps"
+            },
+            {
+              "length_ms": 1762138,
+              "start_ms": 30970468,
+              "title": "12. How Brain Maps Weigh Us Down and How We Rise Above Them"
+            },
+            {
+              "length_ms": 28304,
+              "start_ms": 32732606,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81HJAmdXEhS.jpg",
           "id": "rebecca-schwarzlose-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -11258,6 +11341,10 @@
               "imported_at": "2026-09-24",
               "ref": "1705030718",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1705030718",
+              "type": "libex-import"
             }
           ],
           "work": "brainscapes"
@@ -11268,6 +11355,10 @@
           "imported_at": "2026-09-24",
           "ref": "1705030718",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1705030718",
+          "type": "libex-import"
         }
       ],
       "title": "Brainscapes"

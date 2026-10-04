@@ -14201,6 +14201,10 @@
             {
               "asin": "B09FN44ZLJ",
               "region": "us"
+            },
+            {
+              "asin": "B09FN67MYZ",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -14409,12 +14413,17 @@
           ],
           "publisher": "Tantor Audio",
           "release_date": "2021-10-12",
-          "runtime_min": 510,
+          "runtime_min": 511,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B09FN44ZLJ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B09FN67MYZ",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "a-wizards-guide-to-defensive-baking"

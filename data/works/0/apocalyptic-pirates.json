@@ -8218,6 +8218,11 @@
       "authors": [
         "nicholas-a-christakis"
       ],
+      "genres": [
+        "health-wellness",
+        "medicine",
+        "science"
+      ],
       "id": "apollos-arrow",
       "language": "en",
       "license": "CC0-1.0",
@@ -8231,6 +8236,84 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 25684,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 36541,
+              "start_ms": 25684,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 66389,
+              "start_ms": 62225,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 110110,
+              "start_ms": 128614,
+              "title": "Acronyms"
+            },
+            {
+              "length_ms": 495885,
+              "start_ms": 238724,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 4080535,
+              "start_ms": 734609,
+              "title": "1. An Infinitesimal Thing"
+            },
+            {
+              "length_ms": 6763554,
+              "start_ms": 4815144,
+              "title": "2. An Old Enemy Returns"
+            },
+            {
+              "length_ms": 6734437,
+              "start_ms": 11578698,
+              "title": "3. Pulling Apart"
+            },
+            {
+              "length_ms": 4562976,
+              "start_ms": 18313135,
+              "title": "4. Grief, Fear, and Lies"
+            },
+            {
+              "length_ms": 4624114,
+              "start_ms": 22876111,
+              "title": "5. Us and Them"
+            },
+            {
+              "length_ms": 5658563,
+              "start_ms": 27500225,
+              "title": "6. Banding Together"
+            },
+            {
+              "length_ms": 6437546,
+              "start_ms": 33158788,
+              "title": "7. Things Change"
+            },
+            {
+              "length_ms": 4011641,
+              "start_ms": 39596334,
+              "title": "8. How Plagues End"
+            },
+            {
+              "length_ms": 152916,
+              "start_ms": 43607975,
+              "title": "Acknowledgments"
+            },
+            {
+              "length_ms": 105219,
+              "start_ms": 43760891,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71MLrDplhjL.jpg",
           "id": "nicholas-a-christakis-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -8245,6 +8328,10 @@
               "imported_at": "2026-09-24",
               "ref": "1549160737",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1549160737",
+              "type": "libex-import"
             }
           ],
           "work": "apollos-arrow"
@@ -8255,6 +8342,10 @@
           "imported_at": "2026-09-24",
           "ref": "1549160737",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1549160737",
+          "type": "libex-import"
         }
       ],
       "title": "Apollo's Arrow"
