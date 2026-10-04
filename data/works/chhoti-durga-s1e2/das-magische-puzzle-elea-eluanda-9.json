@@ -10586,6 +10586,14 @@
             {
               "asin": "B0GKB4DX4B",
               "region": "us"
+            },
+            {
+              "asin": "B0GK9ZL99Q",
+              "region": "de"
+            },
+            {
+              "asin": "B0GK9RRNWT",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10761,6 +10769,16 @@
               "imported_at": "2026-08-02",
               "ref": "B0GKB4DX4B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK9ZL99Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK9RRNWT",
+              "type": "libex-import"
             }
           ],
           "work": "das-monster-aus-dem-jenseits"
@@ -10850,6 +10868,105 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0168PBZ0Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "das-monster-aus-dem-jenseits"
+        },
+        "corinna-riegner-2015-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0166UA7IC",
+              "region": "de"
+            },
+            {
+              "asin": "B0168PE40C",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 52222,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 307780,
+              "start_ms": 52222,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 348717,
+              "start_ms": 360002,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 341728,
+              "start_ms": 708719,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 297494,
+              "start_ms": 1050447,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 177888,
+              "start_ms": 1347941,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 252006,
+              "start_ms": 1525829,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 335807,
+              "start_ms": 1777835,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 312355,
+              "start_ms": 2113642,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 214785,
+              "start_ms": 2425997,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 42029,
+              "start_ms": 2640782,
+              "title": "Kapitel 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91mncBtYInL.jpg",
+          "id": "corinna-riegner-2015-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "corinna-riegner",
+            "helog-liebig",
+            "martin-kessler",
+            "sabine-berg",
+            "till-hagen",
+            "tom-jacobs"
+          ],
+          "publisher": "Romantruhe",
+          "release_date": "2015-10-06",
+          "runtime_min": 44,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0166UA7IC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0168PE40C",
               "type": "libex-import"
             }
           ],

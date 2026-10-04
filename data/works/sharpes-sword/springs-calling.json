@@ -6435,6 +6435,14 @@
             {
               "asin": "B0GK9Q2K17",
               "region": "us"
+            },
+            {
+              "asin": "B0GK9RN4MK",
+              "region": "de"
+            },
+            {
+              "asin": "B0GK9L1GN7",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6546,6 +6554,143 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GK9Q2K17",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK9RN4MK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK9L1GN7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "spuk-im-klippenhaus"
+        },
+        "andreas-von-der-meeden-2014": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B00Q56N6GI",
+              "region": "de"
+            },
+            {
+              "asin": "B00Q58FEXY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 53731,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 186108,
+              "start_ms": 53731,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 159289,
+              "start_ms": 239839,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 136185,
+              "start_ms": 399128,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 150860,
+              "start_ms": 535313,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 173058,
+              "start_ms": 686173,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 277362,
+              "start_ms": 859231,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 239049,
+              "start_ms": 1136593,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 213415,
+              "start_ms": 1375642,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 139970,
+              "start_ms": 1589057,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 115682,
+              "start_ms": 1729027,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 202408,
+              "start_ms": 1844709,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 124482,
+              "start_ms": 2047117,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 169297,
+              "start_ms": 2171599,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 287835,
+              "start_ms": 2340896,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 85148,
+              "start_ms": 2628731,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 39567,
+              "start_ms": 2713879,
+              "title": "Kapitel 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1RrylQ-NoL.jpg",
+          "id": "andreas-von-der-meeden-2014",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-von-der-meeden",
+            "heidi-schaffrath",
+            "klaus-nagelen",
+            "robert-rausch"
+          ],
+          "publisher": "Romantruhe",
+          "release_date": "2014-11-25",
+          "runtime_min": 45,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00Q56N6GI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00Q58FEXY",
               "type": "libex-import"
             }
           ],

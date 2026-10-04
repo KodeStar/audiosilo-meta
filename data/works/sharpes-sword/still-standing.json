@@ -12197,6 +12197,14 @@
             {
               "asin": "B0168PDBG0",
               "region": "us"
+            },
+            {
+              "asin": "B0166UBTC0",
+              "region": "de"
+            },
+            {
+              "asin": "B0168PD3JA",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -12269,6 +12277,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0168PDBG0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0166UBTC0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0168PD3JA",
               "type": "libex-import"
             }
           ],
@@ -12473,6 +12491,219 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GLPCQ6SY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "stimmen-aus-dem-jenseits"
+        },
+        "annekathrin-munz-2026-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GLPV6RR7",
+              "region": "de"
+            },
+            {
+              "asin": "B0GLPLY3V4",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 94342,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 90070,
+              "start_ms": 94342,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 90929,
+              "start_ms": 184412,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 93738,
+              "start_ms": 275341,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 90511,
+              "start_ms": 369079,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 91115,
+              "start_ms": 459590,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 90372,
+              "start_ms": 550705,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 90255,
+              "start_ms": 641077,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 91324,
+              "start_ms": 731332,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 94064,
+              "start_ms": 822656,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 91254,
+              "start_ms": 916720,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 90511,
+              "start_ms": 1007974,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 94807,
+              "start_ms": 1098485,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 92113,
+              "start_ms": 1193292,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 90093,
+              "start_ms": 1285405,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 90116,
+              "start_ms": 1375498,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 90464,
+              "start_ms": 1465614,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 92276,
+              "start_ms": 1556078,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 90952,
+              "start_ms": 1648354,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 91672,
+              "start_ms": 1739306,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 93599,
+              "start_ms": 1830978,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 91022,
+              "start_ms": 1924577,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 94435,
+              "start_ms": 2015599,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 90116,
+              "start_ms": 2110034,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 90302,
+              "start_ms": 2200150,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 90464,
+              "start_ms": 2290452,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 91904,
+              "start_ms": 2380916,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 90093,
+              "start_ms": 2472820,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 91463,
+              "start_ms": 2562913,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 90813,
+              "start_ms": 2654376,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 90116,
+              "start_ms": 2745189,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 91231,
+              "start_ms": 2835305,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 90372,
+              "start_ms": 2926536,
+              "title": "Kapitel 33"
+            },
+            {
+              "length_ms": 128220,
+              "start_ms": 3016908,
+              "title": "Kapitel 34"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qoq7Uv6BL.jpg",
+          "id": "annekathrin-munz-2026-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "annekathrin-munz",
+            "christian-rode",
+            "nicolai-tegeler",
+            "tino-kiessling",
+            "vera-bunk"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-02-06",
+          "runtime_min": 52,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GLPV6RR7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GLPLY3V4",
               "type": "libex-import"
             }
           ],

@@ -10761,6 +10761,10 @@
             {
               "asin": "B01GEI939K",
               "region": "us"
+            },
+            {
+              "asin": "B01GEI96WO",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10846,6 +10850,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B01GEI939K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01GEI96WO",
               "type": "libex-import"
             }
           ],
@@ -11055,6 +11064,224 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GK8Q14RX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-fluch-des-geistes"
+        },
+        "christian-stark-2026-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GK8J51GL",
+              "region": "de"
+            },
+            {
+              "asin": "B0GK87GXY9",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 97151,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 90070,
+              "start_ms": 97151,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 90163,
+              "start_ms": 187221,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 91277,
+              "start_ms": 277384,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 92694,
+              "start_ms": 368661,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 90070,
+              "start_ms": 461355,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 91997,
+              "start_ms": 551425,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 90906,
+              "start_ms": 643422,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 91138,
+              "start_ms": 734328,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 92345,
+              "start_ms": 825466,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 92694,
+              "start_ms": 917811,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 91765,
+              "start_ms": 1010505,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 90163,
+              "start_ms": 1102270,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 90464,
+              "start_ms": 1192433,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 91718,
+              "start_ms": 1282897,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 90302,
+              "start_ms": 1374615,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 93437,
+              "start_ms": 1464917,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 91370,
+              "start_ms": 1558354,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 98406,
+              "start_ms": 1649724,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 90581,
+              "start_ms": 1748130,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 91649,
+              "start_ms": 1838711,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 91115,
+              "start_ms": 1930360,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 90929,
+              "start_ms": 2021475,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 94203,
+              "start_ms": 2112404,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 91416,
+              "start_ms": 2206607,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 91951,
+              "start_ms": 2298023,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 94690,
+              "start_ms": 2389974,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 91509,
+              "start_ms": 2484664,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 93344,
+              "start_ms": 2576173,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 90186,
+              "start_ms": 2669517,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 90070,
+              "start_ms": 2759703,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 94551,
+              "start_ms": 2849773,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 127825,
+              "start_ms": 2944324,
+              "title": "Kapitel 33"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91P8aWRrs1L.jpg",
+          "id": "christian-stark-2026-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christian-stark",
+            "dagmar-bittner",
+            "erik-albrodt",
+            "felix-wurgler",
+            "helgo-liebig",
+            "hildegard-meyer",
+            "ingo-abel",
+            "jessica-kroll",
+            "jurgen-thormann",
+            "marc-schulert",
+            "martin-sabel",
+            "patrick-steiner",
+            "peter-groeger",
+            "rudiger-schulzki",
+            "full-cast"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-01-28",
+          "runtime_min": 51,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK8J51GL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK87GXY9",
               "type": "libex-import"
             }
           ],
@@ -13548,6 +13775,111 @@
           ],
           "work": "der-fluch-des-werwolfs"
         },
+        "anita-hopt-2015-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0189A999K",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 171387,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 276666,
+              "start_ms": 171387,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 146332,
+              "start_ms": 448053,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 232989,
+              "start_ms": 594385,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 259924,
+              "start_ms": 827374,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 245110,
+              "start_ms": 1087298,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 208213,
+              "start_ms": 1332408,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 277269,
+              "start_ms": 1540621,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 317138,
+              "start_ms": 1817890,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 231526,
+              "start_ms": 2135028,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 167346,
+              "start_ms": 2366554,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 199692,
+              "start_ms": 2533900,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 199320,
+              "start_ms": 2733592,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 143686,
+              "start_ms": 2932912,
+              "title": "Kapitel 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91VW4dksgeL.jpg",
+          "id": "anita-hopt-2015-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anita-hopt",
+            "bert-franzke",
+            "helgo-liebig",
+            "helmut-krauss",
+            "lutz-schnell",
+            "thomas-nero-wolf"
+          ],
+          "publisher": "Romantruhe",
+          "release_date": "2015-11-20",
+          "runtime_min": 51,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0189A999K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-fluch-des-werwolfs"
+        },
         "anita-hopt-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13555,6 +13887,14 @@
             {
               "asin": "B0GK8Q36SB",
               "region": "us"
+            },
+            {
+              "asin": "B0GK8DJS3L",
+              "region": "de"
+            },
+            {
+              "asin": "B0GK8HZ19H",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -13752,6 +14092,16 @@
               "imported_at": "2026-08-02",
               "ref": "B0GK8Q36SB",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK8DJS3L",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK8HZ19H",
+              "type": "libex-import"
             }
           ],
           "work": "der-fluch-des-werwolfs"
@@ -13798,6 +14148,22 @@
             {
               "asin": "B0GK18FQG3",
               "region": "us"
+            },
+            {
+              "asin": "B0166RUCQW",
+              "region": "de"
+            },
+            {
+              "asin": "B0GK1DPGP3",
+              "region": "de"
+            },
+            {
+              "asin": "B0168PE8EY",
+              "region": "uk"
+            },
+            {
+              "asin": "B0GK13W5LD",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -13876,6 +14242,26 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GK18FQG3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0166RUCQW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK1DPGP3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0168PE8EY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK13W5LD",
               "type": "libex-import"
             }
           ],
