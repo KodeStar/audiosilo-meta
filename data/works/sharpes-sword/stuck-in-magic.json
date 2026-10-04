@@ -1193,6 +1193,10 @@
             {
               "asin": "B0947JQL5M",
               "region": "us"
+            },
+            {
+              "asin": "B0947M17NR",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1282,6 +1286,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0947JQL5M",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0947M17NR",
+              "type": "libex-import"
             }
           ],
           "work": "stuck-inside-minecraft"
@@ -1316,6 +1325,10 @@
             {
               "asin": "B08GRJ56NJ",
               "region": "us"
+            },
+            {
+              "asin": "B08GRB2392",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1390,6 +1403,11 @@
               "imported_at": "2026-08-01",
               "ref": "B08GRJ56NJ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B08GRB2392",
+              "type": "libex-import"
             }
           ],
           "work": "stuck-inside-minecraft-book-1"
@@ -1426,6 +1444,10 @@
             {
               "asin": "B08QLLX7B3",
               "region": "us"
+            },
+            {
+              "asin": "B08QKVSYY6",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1500,6 +1522,11 @@
               "imported_at": "2026-08-01",
               "ref": "B08QLLX7B3",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B08QKVSYY6",
+              "type": "libex-import"
             }
           ],
           "work": "stuck-inside-minecraft-book-2"
@@ -1535,6 +1562,10 @@
             {
               "asin": "B08VQPRZG5",
               "region": "us"
+            },
+            {
+              "asin": "B08VQS5XGG",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1609,6 +1640,11 @@
               "imported_at": "2026-08-01",
               "ref": "B08VQPRZG5",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B08VQS5XGG",
+              "type": "libex-import"
             }
           ],
           "work": "stuck-inside-minecraft-book-3"
@@ -1622,6 +1658,58 @@
         }
       ],
       "title": "Stuck Inside Minecraft: Book 3"
+    },
+    "stuck-inside-minecraft-book-6": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "write-blocked"
+      ],
+      "genres": [
+        "action-adventure",
+        "biography-memoir",
+        "childrens"
+      ],
+      "id": "stuck-inside-minecraft-book-6",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dave-droxler-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HKK8RKX2",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7147j6iDH5L.jpg",
+          "id": "dave-droxler-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dave-droxler"
+          ],
+          "publisher": "Write Blocked",
+          "release_date": "2026-10-16",
+          "runtime_min": 120,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HKK8RKX2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "stuck-inside-minecraft-book-6"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HKK8RKX2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Stuck Inside Minecraft, Book 6"
     },
     "stuck-jennifer-swender": {
       "added_at": "2026-07-29",

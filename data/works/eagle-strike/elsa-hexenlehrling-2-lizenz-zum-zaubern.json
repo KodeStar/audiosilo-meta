@@ -9914,6 +9914,10 @@
             {
               "asin": "B0DWBRB7V6",
               "region": "us"
+            },
+            {
+              "asin": "B0DWC4TX5S",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10097,6 +10101,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DWBRB7V6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0DWC4TX5S",
               "type": "libex-import"
             }
           ],
@@ -13228,6 +13237,10 @@
             {
               "asin": "B004Q7GFWU",
               "region": "us"
+            },
+            {
+              "asin": "B004Q7C650",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -13306,6 +13319,39 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B004Q7GFWU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004Q7C650",
+              "type": "libex-import"
+            }
+          ],
+          "work": "elvenblood"
+        },
+        "moniqua-plante-2027": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HK6RFW6G",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71-3o-tnRnL.jpg",
+          "id": "moniqua-plante-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "moniqua-plante"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2027-02-16",
+          "runtime_min": 798,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HK6RFW6G",
               "type": "libex-import"
             }
           ],

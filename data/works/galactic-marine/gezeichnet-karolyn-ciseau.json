@@ -5703,6 +5703,10 @@
             {
               "asin": "B0FRB5MGLQ",
               "region": "au"
+            },
+            {
+              "asin": "B0FRB87K7L",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5933,6 +5937,11 @@
               "imported_at": "2026-09-24",
               "ref": "B0FRB5MGLQ",
               "type": "openaudible-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FRB87K7L",
+              "type": "libex-import"
             }
           ],
           "work": "ghost-academy-1-summer-term"
@@ -5969,6 +5978,10 @@
             {
               "asin": "B0H8ZSNGB4",
               "region": "us"
+            },
+            {
+              "asin": "B0H916JDNV",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6184,6 +6197,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0H8ZSNGB4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H916JDNV",
+              "type": "libex-import"
             }
           ],
           "work": "ghost-academy-3"
@@ -6197,6 +6215,59 @@
         }
       ],
       "title": "Ghost Academy 3"
+    },
+    "ghost-academy-omnibus-books-1-3": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "d-l-bacon"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "short-stories"
+      ],
+      "id": "ghost-academy-omnibus-books-1-3",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "raya-kane-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HK22CRD3",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81U5crjX+mL.jpg",
+          "id": "raya-kane-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "raya-kane",
+            "richard-brock"
+          ],
+          "publisher": "Royal Guard Publishing LLC",
+          "release_date": "2026-09-18",
+          "runtime_min": 1973,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HK22CRD3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ghost-academy-omnibus-books-1-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HK22CRD3",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Ghost Academy Omnibus, Books 1-3"
     },
     "ghost-adaptation": {
       "added_at": "2026-08-01",

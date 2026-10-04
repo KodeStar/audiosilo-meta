@@ -2653,6 +2653,10 @@
             {
               "asin": "B0GX79JL8C",
               "region": "au"
+            },
+            {
+              "asin": "B0GX79HD48",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2842,6 +2846,11 @@
               "imported_at": "2026-09-24",
               "ref": "B0GX79JL8C",
               "type": "openaudible-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GX79HD48",
+              "type": "libex-import"
             }
           ],
           "work": "vampire-slayer-sorority-girls"
@@ -2880,6 +2889,10 @@
             {
               "asin": "B0H8BK4R39",
               "region": "us"
+            },
+            {
+              "asin": "B0H8B93F9T",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3035,6 +3048,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0H8BK4R39",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H8B93F9T",
+              "type": "libex-import"
             }
           ],
           "work": "vampire-slayer-sorority-girls-2"
@@ -3048,6 +3066,58 @@
         }
       ],
       "title": "Vampire Slayer Sorority Girls 2"
+    },
+    "vampire-slayer-sorority-girls-3": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "landon-scott"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
+      "id": "vampire-slayer-sorority-girls-3",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "raya-kane-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HJY7HFFK",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Ns7cUpWyL.jpg",
+          "id": "raya-kane-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "raya-kane",
+            "richard-brock"
+          ],
+          "publisher": "Royal Guard Publishing LLC",
+          "release_date": "2026-09-15",
+          "runtime_min": 463,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HJY7HFFK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "vampire-slayer-sorority-girls-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HJY7HFFK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Vampire Slayer Sorority Girls 3"
     },
     "vampire-sorcerer": {
       "added_at": "2026-08-02",
