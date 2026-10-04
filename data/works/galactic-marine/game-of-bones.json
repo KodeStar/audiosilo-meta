@@ -7440,6 +7440,10 @@
             {
               "asin": "B01EZ45FMO",
               "region": "us"
+            },
+            {
+              "asin": "B01EZ65CIO",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7549,6 +7553,11 @@
               "imported_at": "2026-08-02",
               "ref": "B01EZ45FMO",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B01EZ65CIO",
+              "type": "libex-import"
             }
           ],
           "work": "game-of-mirrors"
@@ -7560,6 +7569,10 @@
             {
               "asin": "B00UY2VHS8",
               "region": "us"
+            },
+            {
+              "asin": "B07B4MJDHH",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7668,6 +7681,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00UY2VHS8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B07B4MJDHH",
               "type": "libex-import"
             }
           ],
@@ -9568,6 +9586,38 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GHPGH9VQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "game-of-pets-book-1-the-boy-who-knew-too-much"
+        },
+        "eric-lockley-2026-2": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0GHP55CYX",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zFE7yWloL.jpg",
+          "id": "eric-lockley-2026-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-lockley",
+            "gail-shalan",
+            "jessica-threet",
+            "john-pirhalla",
+            "mark-sanderlin"
+          ],
+          "publisher": "Macmillan Young Listeners",
+          "release_date": "2026-09-29",
+          "runtime_min": 156,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GHP55CYX",
               "type": "libex-import"
             }
           ],

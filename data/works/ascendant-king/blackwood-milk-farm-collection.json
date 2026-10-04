@@ -2437,6 +2437,10 @@
             {
               "asin": "B0H6KJBPWJ",
               "region": "us"
+            },
+            {
+              "asin": "B0H6KNXL18",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2505,6 +2509,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0H6KJBPWJ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6KNXL18",
+              "type": "libex-import"
             }
           ],
           "work": "blade-bastard-vol-1"
@@ -2518,6 +2527,69 @@
         }
       ],
       "title": "Blade & Bastard, Vol. 1"
+    },
+    "blade-bastard-vol-3": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "kumo-kagyu",
+        "so-bin",
+        "c-d-leeson",
+        "sean-mccann"
+      ],
+      "credits": [
+        {
+          "person": "c-d-leeson",
+          "role": "editor"
+        },
+        {
+          "person": "sean-mccann",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "science-fiction"
+      ],
+      "id": "blade-bastard-vol-3",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "marc-worden-2027": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HD6TCWKT",
+              "region": "uk"
+            }
+          ],
+          "id": "marc-worden-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marc-worden"
+          ],
+          "publisher": "Yen Audio",
+          "release_date": "2027-01-12",
+          "runtime_min": 420,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HD6TCWKT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "blade-bastard-vol-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HD6TCWKT",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Blade & Bastard, Vol. 3"
     },
     "blade-bound": {
       "added_at": "2026-07-25T19:18:21+01:00",

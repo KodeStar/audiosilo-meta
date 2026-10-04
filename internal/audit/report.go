@@ -372,22 +372,27 @@ func writeCountOnly(b *strings.Builder, rep *Report) {
 func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 	b.WriteString("Reviewed decisions (`" + reviewedPath + "`), matched against fresh proposals after all classes.\n")
 	b.WriteString("Accept promotes to mechanical; reject makes advisory. No-op decisions leave the status unchanged.\n")
+	b.WriteString("Assert sources a mechanical proposal no detector makes (subclass `asserted`); one a detector already\n")
+	b.WriteString("makes is taken as an acceptance and reported redundant, to be rewritten as one.\n")
 	b.WriteString("Refused acceptances stay advisory; STALE decisions match no fresh proposal and are never applied.\n\n")
-	counts := map[string]int{}
-	for _, o := range t.Outcomes {
+	counts := map[outcomeStatus]int{}
+	for _, o := range t.All {
 		counts[o.Status]++
 	}
 	reportdir.Table(b, "measure", []reportdir.Row{
 		{Label: "reviewed decisions on the list", N: t.Entries()},
-		{Label: "... accepted (made mechanical)", N: counts["accepted"]},
-		{Label: "... rejected (made advisory)", N: counts["rejected"]},
-		{Label: "... no-op", N: counts["no-op"]},
-		{Label: "... acceptances refused", N: counts["refused"]},
-		{Label: "... matching no proposal (STALE)", N: len(t.Stale)},
+		{Label: "... accepted (made mechanical)", N: counts[statusAccepted]},
+		{Label: "... rejected (made advisory)", N: counts[statusRejected]},
+		{Label: "... asserted (sourced a mechanical proposal)", N: counts[statusAsserted]},
+		{Label: "... asserted, already proposed (redundant)", N: counts[statusRedundant]},
+		{Label: "... no-op", N: counts[statusNoOp]},
+		{Label: "... acceptances or assertions refused", N: counts[statusRefused]},
+		{Label: "... rejections withholding an assertion", N: counts[statusWithholds]},
+		{Label: "... matching no proposal (STALE)", N: counts[statusStale]},
 	})
 	b.WriteString("\n")
-	for _, o := range t.Outcomes {
-		if o.Status != "no-op" && o.Status != "refused" {
+	for _, o := range t.All {
+		if !o.Status.listed() {
 			continue
 		}
 		fmt.Fprintf(b, "- %s `%s`: %s", o.Status, decisionIdentity(o.Entry), o.Entry.Reason)
@@ -396,8 +401,12 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 		}
 		b.WriteString("\n")
 	}
-	for _, r := range t.Stale {
-		fmt.Fprintf(b, "- STALE `%s`: %s: %s\n", decisionIdentity(r), r.Decision, r.Reason)
+	for _, o := range t.Stale() {
+		fmt.Fprintf(b, "- STALE `%s`: %s: %s", decisionIdentity(o.Entry), o.Entry.Decision, o.Entry.Reason)
+		if o.Why != "" {
+			fmt.Fprintf(b, "; %s", o.Why)
+		}
+		b.WriteString("\n")
 	}
 	b.WriteString("\n")
 }

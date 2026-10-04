@@ -614,6 +614,13 @@ func positionKey(pos string) string {
 	return formatSeq(span[0])
 }
 
+// canonicalPosition reports whether pos is a position the data model accepts, in its
+// canonical spelling - what a writer may put into a series as it stands.
+func canonicalPosition(pos string) bool {
+	norm, ok := importer.NormalizeSequence(pos)
+	return ok && norm == pos
+}
+
 // formatSeq renders a volume number in positionKey's canonical spelling, so a
 // number derived from a title can be looked up against a series' slots.
 func formatSeq(seq float64) string { return strconv.FormatFloat(seq, 'f', -1, 64) }
