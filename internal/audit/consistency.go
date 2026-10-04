@@ -154,9 +154,10 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 					homeMerged(by, id, r.Key)
 				}
 			}
-			// Two merges touching one record apply in report order and the later goes
-			// stale against the earlier, so the record belongs in ONE proposal.
-			if by, both := merged[id]; both {
+			// A loser belongs in ONE proposal: folded twice, the later merge goes stale
+			// against the earlier. A survivor may absorb several. Folding it onto another
+			// target, or a target elsewhere, is reported below; here is the same target.
+			if by, both := merged[id]; both && id != p.Target && s.mergeTarget[p.Op+"/"+id] == p.Target {
 				report("%s merges %s, which %s already merges", r.Key, id, by)
 			}
 			put(merged, id, r.Key)

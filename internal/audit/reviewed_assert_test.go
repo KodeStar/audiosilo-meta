@@ -171,7 +171,7 @@ func TestReviewedAssertRefusedOnConflict(t *testing.T) {
 		assertKingsbr, slotTwice,
 		assertion(OpMergeWorks, "the-pillars-of-the-earth", "", "", "", loser),
 		rejectedTwin, rejection)
-	for i, want := range []string{"", "both claim series slot kingsbridge@1", "which " + detected.Key + " already merges",
+	for i, want := range []string{"", "both claim series slot kingsbridge@1", "is told to fold onto both " + detected.Propose.Target,
 		"a reviewed rejection resolves to the same proposal"} {
 		o := rep.Reviewed.Outcomes()[i]
 		if want == "" && o.Status != "asserted" || want != "" && (o.Status != "refused" || !strings.Contains(o.Why, want)) {
@@ -184,7 +184,7 @@ func TestReviewedAssertRefusedOnConflict(t *testing.T) {
 	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
 		t.Fatalf("refused merges were sourced: %+v", got)
 	}
-	if md := summary(rep); !strings.Contains(md, "- refused `") || !strings.Contains(md, "already merges") {
+	if md := summary(rep); !strings.Contains(md, "- refused `") || !strings.Contains(md, "fold onto both") {
 		t.Errorf("SUMMARY.md lacks the refusals:\n%s", md)
 	}
 	assertProposalsConsistent(t, rep)
@@ -339,5 +339,23 @@ func TestReviewedAssertRefusedOnAHeldSlot(t *testing.T) {
 	o := rep.Reviewed.All
 	if len(o) != 1 || o[0].Status != statusRefused || !strings.Contains(o[0].Why, `position "2" of series kingsbridge is held by world-without-end`) {
 		t.Fatalf("tally = %+v", rep.Reviewed)
+	}
+}
+
+// A survivor may absorb several merges with disjoint losers; a loser belongs in one.
+func TestMergesOntoOneTargetAreConsistentButALoserFoldsOnce(t *testing.T) {
+	for _, op := range []string{OpMergeWorks, OpMergeSeries} {
+		books := Proposal{Op: op, Target: "dh-pub", Others: []string{"dh-books"}}
+		novels := Proposal{Op: op, Target: "dh-pub", Others: []string{"dh-novels"}}
+		if c := proposalConflicts(proposalReport(books, novels)).conflicts; len(c) != 0 {
+			t.Fatalf("%s: two merges onto one target conflict: %v", op, c)
+		}
+		again := Proposal{Op: op, Target: "dh-pub", Others: []string{"dh-books", "dh-extra"}, Advisory: true}
+		rep := proposalReport(books, novels, again)
+		tally := applyReviewed(rep, []reviewedDecision{review(again, "accept")}, nil, nil)
+		if o := tally.All[0]; o.Status != statusRefused || !strings.Contains(o.Why, "merges dh-books, which proposal-0 already merges") {
+			t.Fatalf("%s: re-folding a loser: %+v", op, tally)
+		}
+		assertProposalsConsistent(t, rep)
 	}
 }
