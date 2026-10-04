@@ -201,6 +201,7 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 		{"membership without position", `[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a"}]`, "not a canonical series position"},
 		{"one proposal twice", `[{"decision":"assert","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"},` +
 			`{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"}]`, "the same proposal as entry 0"},
+		{"duplicate others", `[{"decision":"assert","op":"merge-works","others":["b","b"],"reason":"why","target":"a"}]`, "others must be sorted, unique"},
 		{"non-canonical position", `[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1 - 3"}]`, "not a canonical series position"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -230,17 +231,63 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 	}
 }
 
-// Two assertions resolving to one proposal through the tombstone table source it once.
+// Two assertions resolving to one proposal through the tombstone table (the target
+// renamed since one was written) source it once.
 func TestReviewedAssertsConvergingSourceOnce(t *testing.T) {
 	old := assertOakleaf
-	old.Others = []string{"oakleaf-bearers-old"}
+	old.Target = "battle-for-skandia-old"
 	files := rangerTree(t)
-	rep := runFixtureRejectingWith(t, files, `{"people":{},"series":{},"works":{"oakleaf-bearers-old":"oakleaf-bearers"}}`, assertOakleaf, old)
+	rep := runFixtureRejectingWith(t, files, `{"people":{},"series":{},"works":{"battle-for-skandia-old":"the-battle-for-skandia"}}`, old, assertOakleaf)
 	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 1 {
 		t.Fatalf("sourced %+v, want one", got)
 	}
 	if o := rep.Reviewed.Outcomes(); len(o) != 2 || o[0].Status != "asserted" || o[1].Status != "redundant" {
 		t.Fatalf("outcomes = %+v", o)
+	}
+}
+
+// A loser retired onto ANOTHER survivor is refused naming it: folding that survivor onto
+// the target is not what was reviewed. Only a loser resolving to the target is applied.
+func TestReviewedAssertRefusedWhenALoserMergedElsewhere(t *testing.T) {
+	widened := assertion(OpMergeWorks, "the-battle-for-skandia", "", "", "", "oakleaf-bearers-old")
+	rep := runFixtureRejectingWith(t, rangerTree(t), `{"people":{},"series":{},"works":{"oakleaf-bearers-old":"oakleaf-bearers"}}`, widened)
+	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+		t.Fatalf("widened the merge: %+v", got)
+	}
+	o := rep.Reviewed.All
+	if len(o) != 1 || o[0].Status != statusRefused || !strings.Contains(o[0].Why, "oakleaf-bearers-old -> oakleaf-bearers") {
+		t.Fatalf("tally = %+v", rep.Reviewed)
+	}
+}
+
+// A membership assertion whose work the series already lists at ANOTHER position is
+// refused naming it: only the same slot is "applied".
+func TestReviewedAssertRefusedWhenListedElsewhereInTheSeries(t *testing.T) {
+	files := rangerTree(t)
+	files["series/ki/kingsbridge.json"] = seriesJSON(t, "kingsbridge", "Kingsbridge", "the-pillars-of-the-earth@3", "world-without-end@2")
+	rep := runFixtureRejecting(t, files, assertKingsbr)
+	o := rep.Reviewed.All
+	if len(o) != 1 || o[0].Status != statusRefused || !strings.Contains(o[0].Why, `lists the-pillars-of-the-earth at position "3", not "1"`) {
+		t.Fatalf("tally = %+v", rep.Reviewed)
+	}
+}
+
+// One decision meeting several findings reports by precedence, not finding order: a
+// promotion beats a no-op, and a refusal beats both.
+func TestReviewedStatusPrecedence(t *testing.T) {
+	p := Proposal{Op: OpRetitle, Target: "book", Field: "title", From: "Old", To: "New"}
+	q := p
+	q.Advisory = true
+	for _, rows := range [][]Proposal{{p, q}, {q, p}} {
+		rep := proposalReport(rows...)
+		if tally := applyReviewed(rep, []reviewedDecision{review(p, "accept")}, nil, nil); tally.All[0].Status != statusAccepted {
+			t.Fatalf("rows %+v: tally = %+v", rows, tally)
+		}
+	}
+	add := Proposal{Op: OpAddSeriesMember, Target: "w", Series: "s", Field: "series", To: "1", Advisory: true}
+	// The second copy claims the slot the first was just promoted into.
+	if tally := applyReviewed(proposalReport(add, add), []reviewedDecision{review(add, "accept")}, nil, nil); tally.All[0].Status != statusRefused {
+		t.Fatalf("tally = %+v", tally)
 	}
 }
 

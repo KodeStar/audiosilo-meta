@@ -42,7 +42,8 @@ import (
 // so no detector veto is asked; only the records must exist, and a membership's slot be
 // free (the one plan-time refusal metarepair would make every run), while metarepair's
 // other plan-time refusals and post-write validation still apply. A detector already proposing the same
-// identity turns it into an acceptance (REDUNDANT), and once applied its records are
+// identity turns it into an acceptance (REDUNDANT): like an accept, it promotes that
+// proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
 // retired or joined, so it reads STALE and a re-run proposes nothing.
 //
 //go:embed reviewed.json
@@ -251,6 +252,27 @@ func validAssertion(r reviewedDecision) error {
 	return nil
 }
 
+// retiredElsewhere names the losers of a merge assertion an earlier wave retired onto a
+// record OTHER than its (resolved) target. Only a loser resolving to the target itself
+// has been applied; one resolving elsewhere would silently widen the merge to fold
+// that other survivor too.
+func retiredElsewhere(r reviewedDecision, target string, reds model.Redirects) []string {
+	if r.Op != OpMergeWorks && r.Op != OpMergeSeries {
+		return nil
+	}
+	kind := model.RedirectWorks
+	if r.Op == OpMergeSeries {
+		kind = model.RedirectSeries
+	}
+	var out []string
+	for _, o := range r.Others {
+		if to, ok := reds.Survivor(kind, o); ok && to != target {
+			out = append(out, o+" -> "+to)
+		}
+	}
+	return out
+}
+
 func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
 	live := func(kind model.RedirectKind, slug string) string {
 		if to, ok := reds.Survivor(kind, slug); ok {
@@ -380,10 +402,19 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	byKey := make(map[proposalKey][]int, len(rs))
 	byClass := make(map[string]map[proposalKey][]int)
 	resolved := make([]Proposal, len(rs))
+	statuses := make([]outcomeStatus, len(rs))
+	whys := make([]string, len(rs))
 	for j, r := range rs {
 		if r.Op != OpReview {
 			resolved[j] = resolvedProposal(r.proposal(), "", reds)
 			if r.Decision == "assert" {
+				if elsewhere := retiredElsewhere(r, resolved[j].Target, reds); len(elsewhere) > 0 {
+					// Never widened: folding the other survivor onto the target is a decision
+					// nobody reviewed. It matches nothing and sources nothing.
+					statuses[j] = statusRefused
+					whys[j] = "a record it folds was merged into another survivor since: " + strings.Join(elsewhere, ", ")
+					continue
+				}
 				// A loser an earlier wave retired onto the target is no longer folded: the
 				// assertion's proposal is the rest of its cluster, which is what a detector,
 				// a converging assertion and the sourced finding all spell.
@@ -421,11 +452,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			}
 		}
 	}
-	statuses := make([]outcomeStatus, len(rs))
-	whys := make([]string, len(rs))
 	src := sourcing{rep: rep, ix: ix}
 	for j, r := range rs {
-		if r.Decision != "assert" || len(matched[j]) > 0 {
+		if r.Decision != "assert" || len(matched[j]) > 0 || statuses[j] != "" {
 			continue
 		}
 		key := keyOf(resolved[j])
@@ -494,10 +523,12 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			fd.Propose.Reason = note
 		}
 	}
-	// One decision can meet several findings: the tally reports a refusal on any
-	// of them, then an acceptance, rather than whichever finding came last.
+	// One decision can meet several findings: the tally reports a refusal on any of
+	// them, then a promotion (accepted or asserted), then a decision that changed
+	// nothing (no-op or redundant), whatever order the findings came in.
+	rank := map[outcomeStatus]int{statusNoOp: 1, statusRedundant: 1, statusAccepted: 2, statusAsserted: 2, statusRefused: 3}
 	setStatus := func(j int, status outcomeStatus) {
-		if statuses[j] != statusRefused && (statuses[j] != statusAccepted || status == statusRefused) {
+		if rank[status] >= rank[statuses[j]] {
 			statuses[j] = status
 		}
 	}
@@ -628,9 +659,14 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	}
 	if p.Op == OpAddSeriesMember {
 		for _, m := range s.ix.memberships[p.Target] {
-			if m.series == p.Series {
+			if m.series != p.Series {
+				continue
+			}
+			if importer.SameSlot(m.position, p.To) {
 				return nil, 0, statusStale, fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, m.position)
 			}
+			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %q, not %q: moving it is a restate, not an addition",
+				p.Series, p.Target, m.position, p.To)
 		}
 		// metarepair refuses a held slot on every run, so the audit says so once here.
 		for _, sw := range s.ix.seriesByID[p.Series].Works {

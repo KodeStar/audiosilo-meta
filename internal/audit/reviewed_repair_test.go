@@ -264,7 +264,7 @@ func TestReviewedAssertReachesMetarepair(t *testing.T) {
     "others": [
       "oakleaf-bearers"
     ],
-    "reason": "Oakleaf Bearers is the US title of Ranger's Apprentice 4",
+    "reason": "Oakleaf Bearers is the Australian title of The Battle for Skandia, Ranger's Apprentice 4",
     "target": "the-battle-for-skandia"
   }
 ]
