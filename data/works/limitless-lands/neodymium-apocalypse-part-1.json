@@ -3054,6 +3054,10 @@
             {
               "asin": "B0F7XZHBKG",
               "region": "us"
+            },
+            {
+              "asin": "B0F7Y6SLPJ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3173,6 +3177,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F7XZHBKG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0F7Y6SLPJ",
               "type": "libex-import"
             }
           ],
@@ -3621,6 +3630,10 @@
             {
               "asin": "B0GY5PLHLS",
               "region": "us"
+            },
+            {
+              "asin": "B0GY5SVNMK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3730,6 +3743,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GY5PLHLS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GY5SVNMK",
               "type": "libex-import"
             }
           ],
@@ -12052,6 +12070,10 @@
             {
               "asin": "B0D829T1ND",
               "region": "us"
+            },
+            {
+              "asin": "B0D82RBGKH",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -12182,6 +12204,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0D829T1ND",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0D82RBGKH",
+              "type": "libex-import"
             }
           ],
           "work": "neon-nights"
@@ -12195,6 +12222,58 @@
         }
       ],
       "title": "Neon Nights"
+    },
+    "neon-nights-the-complete-series": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "anna-mocikat"
+      ],
+      "genres": [
+        "dystopian",
+        "science-fiction"
+      ],
+      "id": "neon-nights-the-complete-series",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cari-favole-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HK2C7CC9",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Y-39vqZ2L.jpg",
+          "id": "cari-favole-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cari-favole",
+            "garrett-kiesel"
+          ],
+          "publisher": "Anna Mocikat",
+          "release_date": "2026-09-17",
+          "runtime_min": 1197,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HK2C7CC9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "neon-nights-the-complete-series"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HK2C7CC9",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Neon Nights: The Complete Series"
     },
     "neon-prey": {
       "added_at": "2026-08-02",
