@@ -43,11 +43,11 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Not yet observed on a runner, so this is an ESTIMATE to re-size after the
-    # first runs: ~900s of CPU (measured locally on the 282k-work tree, 2m56s
-    # wall at -p 2 / GOMAXPROCS=4) is roughly 4-8 minutes on the runner's four
-    # cores, plus ~3m20s to check the tree out (check.yml's runs).
-    timeout-minutes: 35
+    # Observed 12m05s on the first run (2026-10-04, 282k works): ~4m checking
+    # out and setting up, ~8m of tests, the slowest binaries internal/importer
+    # 295s, internal/repair 276s, pkg/check 162s and pkg/canonical 147s, all
+    # inside the 20m per-binary -timeout. About twice that.
+    timeout-minutes: 25
     outputs:
       failures: ${{ steps.summary.outputs.failures }}
     steps:
@@ -102,8 +102,7 @@ jobs:
     # nor close the issue about main.
     if: always() && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    # Not yet observed either: a handful of API calls, estimated well under a
-    # minute, so 5 is generous rather than measured.
+    # Observed 4s on the first run (a handful of API calls); 5 is the floor.
     timeout-minutes: 5
     permissions:
       contents: read
