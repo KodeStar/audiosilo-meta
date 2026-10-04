@@ -11445,6 +11445,10 @@
             {
               "asin": "B00HRH87PY",
               "region": "us"
+            },
+            {
+              "asin": "B00HRH5S2O",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11554,6 +11558,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00HRH87PY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B00HRH5S2O",
+              "type": "libex-import"
             }
           ],
           "work": "the-dance-of-the-seagull"
@@ -11565,6 +11574,10 @@
             {
               "asin": "B009PRF4AA",
               "region": "us"
+            },
+            {
+              "asin": "B07B41Q1KW",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11673,6 +11686,48 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B009PRF4AA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B07B41Q1KW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-dance-of-the-seagull"
+        },
+        "mark-meadows-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HKM4CKMG",
+              "region": "uk"
+            },
+            {
+              "asin": "B0H9LRRWK5",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81YUaqzApdL.jpg",
+          "id": "mark-meadows-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-meadows"
+          ],
+          "publisher": "Macmillan Digital Audio",
+          "release_date": "2026-11-10",
+          "runtime_min": 360,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HKM4CKMG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0H9LRRWK5",
               "type": "libex-import"
             }
           ],
@@ -15875,6 +15930,73 @@
         }
       ],
       "title": "The Dancing Master"
+    },
+    "the-dancing-men": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "arthur-conan-doyle"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "the-dancing-men",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "paul-spera-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0GGRTGPTK",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 973054,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1112189,
+              "start_ms": 973054,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1002312,
+              "start_ms": 2085243,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81OyY8P2Z6L.jpg",
+          "id": "paul-spera-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-spera"
+          ],
+          "publisher": "Astorg Audio",
+          "release_date": "2026-01-28",
+          "runtime_min": 51,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GGRTGPTK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-dancing-men"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0GGRTGPTK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Dancing Men"
     },
     "the-dancing-plague": {
       "added_at": "2026-09-22",

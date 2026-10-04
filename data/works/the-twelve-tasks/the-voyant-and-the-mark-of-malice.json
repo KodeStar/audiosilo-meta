@@ -6662,6 +6662,10 @@
             {
               "asin": "B0GS3JFJRP",
               "region": "us"
+            },
+            {
+              "asin": "B0GS4BF2QF",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6906,6 +6910,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0GS3JFJRP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GS4BF2QF",
+              "type": "libex-import"
             }
           ],
           "work": "the-wake-of-ages"
@@ -6919,6 +6928,57 @@
         }
       ],
       "title": "The Wake of Ages"
+    },
+    "the-wake-of-ages-2": {
+      "added_at": "2026-10-03",
+      "authors": [
+        "b-t-narro"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "the-wake-of-ages-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "simon-vance-2026": {
+          "abridged": false,
+          "added_at": "2026-10-03",
+          "asin": [
+            {
+              "asin": "B0HCX5YW6P",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71t001juWEL.jpg",
+          "id": "simon-vance-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-12-08",
+          "runtime_min": 660,
+          "sources": [
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0HCX5YW6P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wake-of-ages-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B0HCX5YW6P",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Wake of Ages 2"
     },
     "the-wake-of-the-lorelei-lee": {
       "added_at": "2026-08-02",
