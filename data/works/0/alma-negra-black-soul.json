@@ -10268,6 +10268,10 @@
             {
               "asin": "B003SRQJ20",
               "region": "us"
+            },
+            {
+              "asin": "B079CG7537",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10386,6 +10390,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B003SRQJ20",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B079CG7537",
               "type": "libex-import"
             }
           ],
@@ -11680,6 +11689,47 @@
             {
               "asin": "B017XYARNK",
               "region": "us"
+            },
+            {
+              "asin": "B017XYD872",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 778937,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 557047,
+              "start_ms": 778937,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 945052,
+              "start_ms": 1335984,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 949046,
+              "start_ms": 2281036,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 667063,
+              "start_ms": 3230082,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1127050,
+              "start_ms": 3897145,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 653038,
+              "start_ms": 5024195,
+              "title": "Chapter 7"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81haN5zTqML.jpg",
@@ -11696,6 +11746,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B017XYARNK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B017XYD872",
               "type": "libex-import"
             }
           ],
