@@ -762,7 +762,7 @@ func (m *langMix) emitMove(s *model.Series, mm *mixMember, t *model.Series, keep
 		Reason: fmt.Sprintf("%s is %s in %s, the one series of this name or translation link that derives it",
 			t.ID, s.ID, m.ix.seriesLanguage(t)),
 	}
-	if norm, ok := importer.NormalizeSequence(pos); !ok || norm != pos {
+	if !canonicalPosition(pos) {
 		vetoes = append(vetoes, fmt.Sprintf("the position %q is not a canonical one to write into %s", pos, t.ID))
 	}
 	for _, sw := range t.Works {

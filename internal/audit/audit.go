@@ -224,7 +224,7 @@ func analyzeWith(res check.Result, decisions []reviewedDecision) *Report {
 		hyg,
 		loaderFindings(res),
 	}
-	rep.Reviewed = applyReviewed(rep, decisions, cat.Redirects)
+	rep.Reviewed = applyReviewed(rep, decisions, cat.Redirects, ix)
 	// Sort in place and render each record's action prose from its proposal, ONCE:
 	// the writer and the summary then read the same ordered slice.
 	for _, c := range rep.classes {

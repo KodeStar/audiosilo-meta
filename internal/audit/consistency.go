@@ -16,6 +16,7 @@ type proposalConflictState struct {
 	slot                      map[string]string   // series@position -> finding
 	linkedTo, original        map[string]string   // op/id -> original or finding
 	leaves, joins, restated   map[string]string   // series@work -> finding
+	added                     map[string]string   // series@work an add-series-member adds -> finding
 	mixWorks, mixSeries       map[string]string   // work or series -> finding
 	mergedWorks, mergedSeries map[string]string   // work or series -> finding
 	languages                 map[string]string   // work -> finding
@@ -31,7 +32,7 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 	s := &proposalConflictState{
 		mergeTarget: map[string]string{}, isTarget: map[string]string{},
 		slot: map[string]string{}, linkedTo: map[string]string{}, original: map[string]string{},
-		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{},
+		leaves: map[string]string{}, joins: map[string]string{}, restated: map[string]string{}, added: map[string]string{},
 		mixWorks: map[string]string{}, mixSeries: map[string]string{},
 		mergedWorks: map[string]string{}, mergedSeries: map[string]string{}, languages: map[string]string{},
 		splitKeeper: map[string]string{}, splitBy: map[string]string{}, mixLeftLang: map[string]string{},
@@ -153,6 +154,14 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 					homeMerged(by, id, r.Key)
 				}
 			}
+			// A loser belongs in ONE proposal: folded twice, the later merge goes stale
+			// against the earlier. A survivor may absorb several. Folding it onto another
+			// target, or a target elsewhere, is reported below; here is the same target.
+			// s.mergeTarget holds only OTHER proposals' losers here: this one records its
+			// own in the Others loop below, after this cluster loop.
+			if by, both := merged[id]; both && id != p.Target && s.mergeTarget[p.Op+"/"+id] == p.Target {
+				report("%s merges %s, which %s already merges", r.Key, id, by)
+			}
 			put(merged, id, r.Key)
 		}
 		if p.Target != "" {
@@ -176,6 +185,10 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		if p.Series != "" && p.To != "" {
 			claimSlot(p.Series + "@" + p.To)
 		}
+		if by, dup := s.added[p.Series+"@"+p.Target]; dup {
+			report("%s and %s both add %s to %s", by, r.Key, p.Target, p.Series)
+		}
+		put(s.added, p.Series+"@"+p.Target, r.Key)
 	case OpAddWorkLink, OpAddSeriesLink:
 		tr := p.Op + "/" + p.Target
 		if prev, dup := s.linkedTo[tr]; dup && prev != p.To {

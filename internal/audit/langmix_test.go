@@ -610,7 +610,7 @@ func TestReviewedRefusesTwoOrientationsOfOneSeries(t *testing.T) {
 	fresh := runFixture(t, files)
 	split, alt := onlyMix(t, fresh, lMixSplit), onlyMix(t, fresh, lMixOtherKeeper)
 	rep := runFixtureRejectingWith(t, files, "", review(alt.Propose, "accept"), review(split.Propose, "accept"))
-	out := rep.Reviewed.Outcomes
+	out := rep.Reviewed.Outcomes()
 	if len(out) != 2 {
 		t.Fatalf("outcomes = %+v", out)
 	}
@@ -646,12 +646,12 @@ func TestReviewedRefusesADropAgainstTheOrientationItContradicts(t *testing.T) {
 	}
 	rep := runFixtureRejectingWith(t, files, "", review(alt.Propose, "accept"), review(drop.Propose, "accept"))
 	byOp := map[string]decisionOutcome{}
-	for _, o := range rep.Reviewed.Outcomes {
+	for _, o := range rep.Reviewed.Outcomes() {
 		byOp[o.Entry.Op] = o
 	}
 	if byOp[OpSplitSeries].Status != "accepted" || byOp[OpDropMembership].Status != "refused" ||
 		!strings.Contains(byOp[OpDropMembership].Why, "keeps for es") {
-		t.Fatalf("outcomes = %+v", rep.Reviewed.Outcomes)
+		t.Fatalf("outcomes = %+v", rep.Reviewed.Outcomes())
 	}
 	assertProposalsConsistent(t, rep)
 }
