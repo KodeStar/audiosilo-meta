@@ -4410,6 +4410,10 @@
             {
               "asin": "B07MCVHF9T",
               "region": "us"
+            },
+            {
+              "asin": "B07MMND4QX",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -4633,6 +4637,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07MCVHF9T",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07MMND4QX",
               "type": "libex-import"
             }
           ],
@@ -10560,6 +10569,63 @@
         }
       ],
       "title": "Der Räuber Hotzenplotz - Hörspiele 3: Schluss mit der Räuberei - Das Hörspiel"
+    },
+    "der-rauber-hotzenplotz-otfried-preussler": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "otfried-preussler",
+        "jurgen-nola"
+      ],
+      "genres": [
+        "childrens",
+        "classics"
+      ],
+      "id": "der-rauber-hotzenplotz-otfried-preussler",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "andreas-schroders-2020": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B08L4XCJ41",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1lGGrYhwvL.jpg",
+          "id": "andreas-schroders-2020",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-schroders",
+            "johanna-von-koczian",
+            "kolja-richter",
+            "marco-nola",
+            "marion-breckwoldt",
+            "oliver-reinhard"
+          ],
+          "publisher": "Karussell",
+          "release_date": "2020-10-15",
+          "runtime_min": 129,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B08L4XCJ41",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-rauber-hotzenplotz-otfried-preussler"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B08L4XCJ41",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Der Räuber Hotzenplotz"
     },
     "der-rauberschatz": {
       "added_at": "2026-08-02",
