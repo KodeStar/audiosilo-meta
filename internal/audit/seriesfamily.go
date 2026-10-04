@@ -158,6 +158,8 @@ func foldOnto(ix *index, loser seriesKeys, candidates []seriesKeys, sides map[st
 			renumbered = append(renumbered, c)
 		}
 		// The affinity ladder: most same-slot works, then titlerule's own series rank.
+		// affinity is non-nil whenever n == bestShared is reached: n > 0 here, and
+		// bestShared only leaves 0 when affinity is set beside it.
 		if n := sameSlotWorks(cs, ls); n > 0 && (n > bestShared || n == bestShared &&
 			(titlerule.SeriesRank{Works: len(c.series.Works), ID: c.series.ID}).Better(
 				titlerule.SeriesRank{Works: len(affinity.series.Works), ID: affinity.series.ID})) {
@@ -394,8 +396,9 @@ func renumberedOnto(target, loser seriesSide) bool {
 	if ordering == "" || ordering != statedOrdering(target.series) || len(loser.members) == 0 {
 		return false
 	}
-	at := make(map[string][2]float64, len(target.members))
-	for w, pos := range target.positions() {
+	held := target.positions()
+	at := make(map[string][2]float64, len(held))
+	for w, pos := range held {
 		span, ok := importer.PositionSpan(pos)
 		if !ok {
 			return false
@@ -406,12 +409,14 @@ func renumberedOnto(target, loser seriesSide) bool {
 	pairs := make([]pair, 0, len(loser.members))
 	differs := false
 	for _, m := range loser.members {
-		there, held := at[m.work]
+		there, isHeld := at[m.work]
 		own, ok := importer.PositionSpan(m.position)
-		if !held || !ok {
+		if !isHeld || !ok {
 			return false
 		}
-		differs = differs || own != there
+		// "Differs" is importer.SameSlot's answer, the one internal/repair keeps or drops
+		// a renumbered membership by, so the two passes cannot disagree about it.
+		differs = differs || !importer.SameSlot(held[m.work], m.position)
 		pairs = append(pairs, pair{own, there})
 	}
 	slices.SortFunc(pairs, func(a, b pair) int {

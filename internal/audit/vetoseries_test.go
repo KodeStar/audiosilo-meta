@@ -796,4 +796,13 @@ func TestSeriesDupDecorationRestatingTheTargetsOrdering(t *testing.T) {
 		})))
 		assertVetoed(t, fd, "folding would erase the decoration that distinguishes them")
 	})
+	t.Run("a loser whose field states another ordering is vetoed", func(t *testing.T) {
+		// The decoration restates publication order, but the record says chronological.
+		fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three", "four"}, map[string]string{
+			"series/dh/dh.json": target(t),
+			"series/dh/dh-pub.json": withField(t, seriesJSON(t, "dh-pub", "Dragon Heart (Publication Order)", "one@1", "four@4"),
+				"ordering", "chronological"),
+		})))
+		assertVetoed(t, fd, "folding would erase the decoration that distinguishes them")
+	})
 }

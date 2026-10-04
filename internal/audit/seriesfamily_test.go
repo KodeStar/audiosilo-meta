@@ -402,3 +402,29 @@ func TestOrderingTwinIgnoresATranslationLinkedSeries(t *testing.T) {
 		})
 	}
 }
+
+// A series a family fold retires is never an ordering twin's target: the twin goes to
+// the family member the retired spelling folds onto instead, so the two proposals agree
+// on one survivor and the mechanical set stays consistent.
+func TestOrderingTwinAndAFamilyFoldAgreeOnTheSurvivor(t *testing.T) {
+	rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three"}, map[string]string{
+		"series/dh/dh-pub.json": withOrdering(t, seriesJSON(t, "dh-pub", "Dragon Heart (Publication Order)",
+			"one@1", "two@2", "three@3"), "publication"),
+		"series/dh/dh-chrono.json": orderingVariant(t, seriesJSON(t, "dh-chrono", "Dragon Heart (Chronological Order)",
+			"three@1", "one@2", "two@3"), "chronological", "dh-pub"),
+		"series/dh/dh-books.json": withOrdering(t, seriesJSON(t, "dh-books", "Dragon Heart Books",
+			"one@1", "two@2", "three@3"), "publication"),
+		"series/dh/dh-universe.json": withOrdering(t, seriesJSON(t, "dh-universe", "Dragon Heart Universe (Publication Order)",
+			"two@2"), "publication"),
+	}))
+	assertProposalsConsistent(t, rep)
+	fold := oneFamilyRecord(t, rep, SubclassFamilySpelling, "dh-books")
+	assertMechanical(t, fold)
+	if fold.Propose.Target != "dh-pub" {
+		t.Fatalf("family fold = %+v, want dh-books onto dh-pub", fold.Propose)
+	}
+	twins := subclassOf(t, rep, ClassSeriesDup, serDupTwin)
+	if len(twins) != 1 || twins[0].Propose.Target != "dh-pub" || !slices.Equal(twins[0].Propose.Others, []string{"dh-universe"}) {
+		t.Fatalf("twins = %+v, want dh-universe onto dh-pub, never onto the retired dh-books", twins)
+	}
+}

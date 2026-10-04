@@ -260,6 +260,11 @@ func decorationsRestate(group []seriesKeys, target string) bool {
 		return false
 	}
 	for _, k := range group {
+		// A member whose own ordering FIELD states another order is a different list,
+		// whatever its decoration says.
+		if k.series.Ordering != "" && k.series.Ordering != ordering {
+			return false
+		}
 		if k.paren && (k.decor == "" || titlerule.OrderingOfDecoration(k.decor) != ordering) {
 			return false
 		}
@@ -320,9 +325,10 @@ func decorationsRestate(group []seriesKeys, target string) bool {
 // does not.
 //
 // And none of it applies when every decoration only RESTATES the target's own stated
-// ordering field (decorationsRestate): "The Chronicles of Narnia (Author's Preferred
-// Order)" stating ordering=recommended, or "Ranger's Apprentice (published order)" beside
-// a "Ranger's Apprentice" stating publication, says nothing the survivor does not.
+// ordering field and no member's own ordering field states another (decorationsRestate):
+// "The Chronicles of Narnia (Author's Preferred Order)" stating ordering=recommended, or
+// "Ranger's Apprentice (published order)" beside a "Ranger's Apprentice" stating
+// publication, says nothing the survivor does not.
 // Measured when it was pushed in here from the family folds' caller option: no
 // whole-group record on the 282,027-work tree moved.
 func vetoSeriesDecoration(group []seriesKeys, sides []seriesSide, target string) (string, bool) {
