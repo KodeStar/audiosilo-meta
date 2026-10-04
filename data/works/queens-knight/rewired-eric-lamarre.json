@@ -6574,53 +6574,7 @@
             {
               "asin": "B08NCGK4S1",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vuCeozziL.jpg",
-          "id": "nikki-garcia-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nikki-garcia"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2020-11-24",
-          "runtime_min": 646,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08NCGK4S1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "rey-blanco"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08NCGK4S1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rey blanco"
-    },
-    "rey-blanco-antonia-scott-3": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "juan-gomez-jurado"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "rey-blanco-antonia-scott-3",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nikki-garcia-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "8466668608",
               "region": "us"
@@ -7116,21 +7070,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08NCGK4S1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "8466668608",
               "type": "libex-import"
             }
           ],
-          "work": "rey-blanco-antonia-scott-3"
+          "work": "rey-blanco"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08NCGK4S1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "8466668608",
           "type": "libex-import"
         }
       ],
-      "title": "Rey Blanco (Antonia Scott 3)"
+      "title": "Rey blanco"
     },
     "rey-brujo-witch-king": {
       "added_at": "2026-08-02",

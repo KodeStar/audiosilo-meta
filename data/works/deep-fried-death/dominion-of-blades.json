@@ -297,59 +297,6 @@
       ],
       "title": "Dominion of Blades"
     },
-    "dominion-ollie-chandler-series-book-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "randy-alcorn"
-      ],
-      "genres": [
-        "hard-boiled",
-        "mystery",
-        "religious-fiction",
-        "thriller-suspense"
-      ],
-      "id": "dominion-ollie-chandler-series-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "frank-muller-2022": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09QH7T2BG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71VvQbYBhtL.jpg",
-          "id": "frank-muller-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "frank-muller"
-          ],
-          "publisher": "Oasis Audio",
-          "release_date": "2022-02-08",
-          "runtime_min": 370,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09QH7T2BG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dominion-ollie-chandler-series-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09QH7T2BG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dominion: Ollie Chandler Series, Book 2"
-    },
     "dominion-over-all": {
       "added_at": "2026-08-01",
       "authors": [
@@ -635,6 +582,8 @@
         "randy-alcorn"
       ],
       "genres": [
+        "hard-boiled",
+        "mystery",
         "religious-fiction",
         "thriller-suspense"
       ],
@@ -696,12 +645,45 @@
             }
           ],
           "work": "dominion-randy-alcorn"
+        },
+        "frank-muller-2022": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09QH7T2BG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71VvQbYBhtL.jpg",
+          "id": "frank-muller-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frank-muller"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2022-02-08",
+          "runtime_min": 370,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09QH7T2BG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dominion-randy-alcorn"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1BO38",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09QH7T2BG",
           "type": "libex-import"
         }
       ],

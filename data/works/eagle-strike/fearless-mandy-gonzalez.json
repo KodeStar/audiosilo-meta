@@ -6723,6 +6723,7 @@
         "fantasy",
         "horror",
         "paranormal",
+        "urban-fantasy",
         "young-adult"
       ],
       "id": "feast-of-fools",
@@ -6828,39 +6829,7 @@
             }
           ],
           "work": "feast-of-fools"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/2295829.Feast_of_Fools",
-          "type": "community"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B003757PDK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Feast of Fools",
-      "xref": {
-        "goodreads": "2295829"
-      }
-    },
-    "feast-of-fools-the-morganville-vampires-book-4": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rachel-caine"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "feast-of-fools-the-morganville-vampires-book-4",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "katherine-fenton-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6954,17 +6923,30 @@
               "type": "libex-import"
             }
           ],
-          "work": "feast-of-fools-the-morganville-vampires-book-4"
+          "work": "feast-of-fools"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/2295829.Feast_of_Fools",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003757PDK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B006K2R9T2",
           "type": "libex-import"
         }
       ],
-      "title": "Feast of Fools: The Morganville Vampires, Book 4"
+      "title": "Feast of Fools",
+      "xref": {
+        "goodreads": "2295829"
+      }
     },
     "feast-of-sorrow": {
       "added_at": "2026-07-29",

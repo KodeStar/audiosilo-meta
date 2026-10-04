@@ -8223,6 +8223,7 @@
         "rachel-caine"
       ],
       "genres": [
+        "childrens",
         "fantasy",
         "horror",
         "paranormal",
@@ -8312,38 +8313,7 @@
             }
           ],
           "work": "carpe-corpus"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/5212771-carpe-corpus",
-          "type": "community"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UZN2MQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Carpe Corpus",
-      "xref": {
-        "goodreads": "5212771"
-      }
-    },
-    "carpe-corpus-the-morganville-vampires-book-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rachel-caine"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy"
-      ],
-      "id": "carpe-corpus-the-morganville-vampires-book-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "katherine-fenton-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8422,17 +8392,30 @@
               "type": "libex-import"
             }
           ],
-          "work": "carpe-corpus-the-morganville-vampires-book-6"
+          "work": "carpe-corpus"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/5212771-carpe-corpus",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZN2MQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B007HPKA42",
           "type": "libex-import"
         }
       ],
-      "title": "Carpe Corpus: The Morganville Vampires, Book 6"
+      "title": "Carpe Corpus",
+      "xref": {
+        "goodreads": "5212771"
+      }
     },
     "carpe-demon": {
       "added_at": "2026-08-02",

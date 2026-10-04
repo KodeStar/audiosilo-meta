@@ -13209,7 +13209,8 @@
         "classics",
         "coming-of-age",
         "fantasy",
-        "nature"
+        "nature",
+        "religious-fiction"
       ],
       "id": "the-last-battle",
       "language": "en",
@@ -13399,6 +13400,10 @@
             {
               "asin": "B004EETL58",
               "region": "uk"
+            },
+            {
+              "asin": "B002UZJF22",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -13512,6 +13517,21 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B004EETL58",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B002UZJF22",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B002UZJF22",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002UZJF22",
               "type": "libex-import"
             }
           ],
@@ -13772,6 +13792,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GRN0U",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B002UZJF22",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002UZJF22",
           "type": "libex-import"
         }
       ],

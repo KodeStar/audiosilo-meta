@@ -13419,6 +13419,7 @@
         "kelly-st-clare"
       ],
       "genres": [
+        "arts-entertainment",
         "epic-fantasy",
         "fantasy",
         "romance"
@@ -13606,33 +13607,7 @@
             }
           ],
           "work": "a-court-of-honey-and-ash"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B096T5DLP1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Court of Honey and Ash"
-    },
-    "a-court-of-honey-and-ash-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "shannon-mayer",
-        "kelly-st-clare"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy",
-        "romance"
-      ],
-      "id": "a-court-of-honey-and-ash-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -13711,10 +13686,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-court-of-honey-and-ash-dramatized-adaptation"
+          "work": "a-court-of-honey-and-ash"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B096T5DLP1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CQZ5HC25",
@@ -13726,7 +13706,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "A Court of Honey and Ash (Dramatized Adaptation)"
+      "title": "A Court of Honey and Ash"
     },
     "a-court-of-ice-and-wind-a-reverse-harem-fantasy-romance": {
       "added_at": "2026-08-01",

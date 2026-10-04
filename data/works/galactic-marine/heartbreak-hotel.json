@@ -4368,9 +4368,13 @@
       ],
       "genres": [
         "action-adventure",
+        "coming-of-age",
+        "dystopian",
         "fantasy",
         "historical-fiction",
+        "horror",
         "romance",
+        "science-fiction",
         "young-adult"
       ],
       "id": "heartfire-a-winterkill-novel",
@@ -4576,165 +4580,7 @@
             }
           ],
           "work": "heartfire-a-winterkill-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "1683354419",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Heartfire: A Winterkill Novel"
-    },
-    "heartfire-the-tales-of-alvin-maker-book-5": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "orson-scott-card"
-      ],
-      "genres": [
-        "action-adventure",
-        "alternate-history",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "heartfire-the-tales-of-alvin-maker-book-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nana-visitor-2023": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CFT61XJX",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1655791,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1189651,
-              "start_ms": 1655791,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1168219,
-              "start_ms": 2845442,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1136965,
-              "start_ms": 4013661,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1187863,
-              "start_ms": 5150626,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1103017,
-              "start_ms": 6338489,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1382098,
-              "start_ms": 7441506,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1113211,
-              "start_ms": 8823604,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1629576,
-              "start_ms": 9936815,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1712982,
-              "start_ms": 11566391,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1417485,
-              "start_ms": 13279373,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2005786,
-              "start_ms": 14696858,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2267567,
-              "start_ms": 16702644,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1782410,
-              "start_ms": 18970211,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 680274,
-              "start_ms": 20752621,
-              "title": "Chapter 15"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81U4jMk76lL.jpg",
-          "id": "nana-visitor-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nana-visitor"
-          ],
-          "publisher": "Phoenix Books",
-          "release_date": "2023-08-17",
-          "runtime_min": 357,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CFT61XJX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "heartfire-the-tales-of-alvin-maker-book-5"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CFT61XJX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Heartfire: The Tales of Alvin Maker, Book 5"
-    },
-    "heartfire-the-winterkill-trilogy-book-3": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kate-a-boorman"
-      ],
-      "genres": [
-        "action-adventure",
-        "coming-of-age",
-        "dystopian",
-        "horror",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "heartfire-the-winterkill-trilogy-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jenny-mudge-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4943,17 +4789,153 @@
               "type": "libex-import"
             }
           ],
-          "work": "heartfire-the-winterkill-trilogy-book-3"
+          "work": "heartfire-a-winterkill-novel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "1683354419",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G44W49SN",
           "type": "libex-import"
         }
       ],
-      "title": "Heartfire: The Winterkill Trilogy, Book 3"
+      "title": "Heartfire: A Winterkill Novel"
+    },
+    "heartfire-the-tales-of-alvin-maker-book-5": {
+      "added_at": "2026-08-02",
+      "authors": [
+        "orson-scott-card"
+      ],
+      "genres": [
+        "action-adventure",
+        "alternate-history",
+        "epic-fantasy",
+        "fantasy",
+        "science-fiction"
+      ],
+      "id": "heartfire-the-tales-of-alvin-maker-book-5",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nana-visitor-2023": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CFT61XJX",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1655791,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1189651,
+              "start_ms": 1655791,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1168219,
+              "start_ms": 2845442,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1136965,
+              "start_ms": 4013661,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1187863,
+              "start_ms": 5150626,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1103017,
+              "start_ms": 6338489,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1382098,
+              "start_ms": 7441506,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1113211,
+              "start_ms": 8823604,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1629576,
+              "start_ms": 9936815,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1712982,
+              "start_ms": 11566391,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1417485,
+              "start_ms": 13279373,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2005786,
+              "start_ms": 14696858,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2267567,
+              "start_ms": 16702644,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1782410,
+              "start_ms": 18970211,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 680274,
+              "start_ms": 20752621,
+              "title": "Chapter 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81U4jMk76lL.jpg",
+          "id": "nana-visitor-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nana-visitor"
+          ],
+          "publisher": "Phoenix Books",
+          "release_date": "2023-08-17",
+          "runtime_min": 357,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CFT61XJX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "heartfire-the-tales-of-alvin-maker-book-5"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CFT61XJX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Heartfire: The Tales of Alvin Maker, Book 5"
     },
     "heartforge": {
       "added_at": "2026-08-02",

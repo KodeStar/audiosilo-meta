@@ -7164,8 +7164,11 @@
         "john-boyne"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "education",
         "historical-fiction",
+        "military-history",
         "parenting-relationships",
         "self-help",
         "social-sciences",
@@ -7319,34 +7322,7 @@
             }
           ],
           "work": "the-boy-in-the-striped-pajamas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V0K4TE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Boy in the Striped Pajamas"
-    },
-    "the-boy-in-the-striped-pyjamas": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-boyne"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "historical-fiction",
-        "military-history",
-        "parenting-relationships",
-        "young-adult"
-      ],
-      "id": "the-boy-in-the-striped-pyjamas",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "michael-maloney-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7489,17 +7465,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-boy-in-the-striped-pyjamas"
+          "work": "the-boy-in-the-striped-pajamas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0K4TE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01LZ8K7LR",
           "type": "libex-import"
         }
       ],
-      "title": "The Boy in the Striped Pyjamas"
+      "title": "The Boy in the Striped Pajamas"
     },
     "the-boy-in-the-suitcase": {
       "added_at": "2026-07-29",

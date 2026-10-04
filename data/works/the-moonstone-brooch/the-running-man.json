@@ -3207,6 +3207,7 @@
       ],
       "genres": [
         "alternate-history",
+        "dystopian",
         "fantasy",
         "historical-fiction",
         "paranormal",
@@ -3566,34 +3567,7 @@
             }
           ],
           "work": "the-russian-cage"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1980036276",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Russian Cage"
-    },
-    "the-russian-cage-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "charlaine-harris"
-      ],
-      "genres": [
-        "dystopian",
-        "fantasy",
-        "historical-fiction",
-        "paranormal",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "the-russian-cage-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3657,10 +3631,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-russian-cage-dramatized-adaptation"
+          "work": "the-russian-cage"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1980036276",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B09S7JPZ8T",
@@ -3672,7 +3651,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Russian Cage (Dramatized Adaptation)"
+      "title": "The Russian Cage"
     },
     "the-russian-debutantes-handbook": {
       "added_at": "2026-07-29",

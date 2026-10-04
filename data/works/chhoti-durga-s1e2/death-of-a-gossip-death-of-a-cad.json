@@ -7858,12 +7858,93 @@
         "m-c-beaton"
       ],
       "genres": [
+        "hard-boiled",
         "mystery"
       ],
       "id": "death-of-a-traveling-man",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00CJF9LOK",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1910817,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1790166,
+              "start_ms": 1910817,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1808788,
+              "start_ms": 3700983,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1873293,
+              "start_ms": 5509771,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1530102,
+              "start_ms": 7383064,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1837209,
+              "start_ms": 8913166,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1836234,
+              "start_ms": 10750375,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1707410,
+              "start_ms": 12586609,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1759004,
+              "start_ms": 14294019,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1483615,
+              "start_ms": 16053023,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71c9wm1YCkL.jpg",
+          "id": "david-monteath-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Little, Brown Book Group",
+          "release_date": "2013-04-30",
+          "runtime_min": 292,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00CJF9LOK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-traveling-man"
+        },
         "davina-porter-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8020,112 +8101,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00HHGPX98",
           "type": "libex-import"
-        }
-      ],
-      "title": "Death of a Traveling Man"
-    },
-    "death-of-a-travelling-man": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "m-c-beaton"
-      ],
-      "genres": [
-        "hard-boiled",
-        "mystery"
-      ],
-      "id": "death-of-a-travelling-man",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-monteath-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00CJF9LOK",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1910817,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1790166,
-              "start_ms": 1910817,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1808788,
-              "start_ms": 3700983,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1873293,
-              "start_ms": 5509771,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1530102,
-              "start_ms": 7383064,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1837209,
-              "start_ms": 8913166,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1836234,
-              "start_ms": 10750375,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1707410,
-              "start_ms": 12586609,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1759004,
-              "start_ms": 14294019,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1483615,
-              "start_ms": 16053023,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71c9wm1YCkL.jpg",
-          "id": "david-monteath-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-monteath"
-          ],
-          "publisher": "Little, Brown Book Group",
-          "release_date": "2013-04-30",
-          "runtime_min": 292,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00CJF9LOK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "death-of-a-travelling-man"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00CJF9LOK",
           "type": "libex-import"
         }
       ],
-      "title": "Death of a Travelling Man"
+      "title": "Death of a Traveling Man"
     },
     "death-of-a-valentine": {
       "added_at": "2026-07-29",

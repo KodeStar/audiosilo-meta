@@ -2717,10 +2717,14 @@
         "charlaine-harris"
       ],
       "genres": [
+        "alternate-history",
+        "arts-entertainment",
         "fantasy",
         "historical-fiction",
         "paranormal",
-        "thriller-suspense"
+        "science-fiction",
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "the-serpent-in-heaven",
       "language": "en",
@@ -3095,35 +3099,7 @@
             }
           ],
           "work": "the-serpent-in-heaven"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0B8QRGSB8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Serpent in Heaven"
-    },
-    "the-serpent-in-heaven-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "charlaine-harris"
-      ],
-      "genres": [
-        "alternate-history",
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "the-serpent-in-heaven-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3202,10 +3178,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-serpent-in-heaven-dramatized-adaptation"
+          "work": "the-serpent-in-heaven"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0B8QRGSB8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CQ3NWRMP",
@@ -3217,7 +3198,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Serpent in Heaven (Dramatized Adaptation)"
+      "title": "The Serpent in Heaven"
     },
     "the-serpent-in-the-glass": {
       "added_at": "2026-08-01",

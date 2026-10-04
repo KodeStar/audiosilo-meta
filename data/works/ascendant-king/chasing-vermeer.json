@@ -8553,6 +8553,151 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "peter-noble-2023": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BS9Q6L6P",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1638840,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1875731,
+              "start_ms": 1638840,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1928092,
+              "start_ms": 3514571,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1466641,
+              "start_ms": 5442663,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1193482,
+              "start_ms": 6909304,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1059201,
+              "start_ms": 8102786,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1394683,
+              "start_ms": 9161987,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1926582,
+              "start_ms": 10556670,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1935568,
+              "start_ms": 12483252,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1268506,
+              "start_ms": 14418820,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1531797,
+              "start_ms": 15687326,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1658253,
+              "start_ms": 17219123,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1753478,
+              "start_ms": 18877376,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1695079,
+              "start_ms": 20630854,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1212801,
+              "start_ms": 22325933,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1687115,
+              "start_ms": 23538734,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1990344,
+              "start_ms": 25225849,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1265394,
+              "start_ms": 27216193,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1196617,
+              "start_ms": 28481587,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1163737,
+              "start_ms": 29678204,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1253134,
+              "start_ms": 30841941,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1233583,
+              "start_ms": 32095075,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1104108,
+              "start_ms": 33328658,
+              "title": "Chapter 23"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9136+IPVgLL.jpg",
+          "id": "peter-noble-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-noble"
+          ],
+          "publisher": "Quercus",
+          "release_date": "2023-06-08",
+          "runtime_min": 573,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BS9Q6L6P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "chateau-under-siege"
+        },
         "robert-ian-mackenzie-2023": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8587,9 +8732,22 @@
           "imported_at": "2026-07-29",
           "ref": "B0C5PD73T5",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/63018216-a-chateau-under-siege",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BS9Q6L6P",
+          "type": "libex-import"
         }
       ],
-      "title": "Chateau Under Siege"
+      "title": "Chateau Under Siege",
+      "xref": {
+        "goodreads": "63018216"
+      }
     },
     "chatgpt": {
       "added_at": "2026-07-29",

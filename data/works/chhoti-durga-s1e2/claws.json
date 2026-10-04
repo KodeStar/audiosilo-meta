@@ -16895,26 +16895,7 @@
             }
           ],
           "work": "clear-and-present-danger"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B004EBZ2GI",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Clear and Present Danger"
-    },
-    "clear-and-present-danger-jack-ryan": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "tom-clancy"
-      ],
-      "id": "clear-and-present-danger-jack-ryan",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "michael-prichard-2014": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -17103,17 +17084,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "clear-and-present-danger-jack-ryan"
+          "work": "clear-and-present-danger"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B004EBZ2GI",
+          "type": "audiosilo-books-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B00I2WVC2S",
           "type": "audiosilo-books-import"
         }
       ],
-      "title": "Clear and Present Danger: Jack Ryan"
+      "title": "Clear and Present Danger"
     }
   }
 }

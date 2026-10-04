@@ -7056,6 +7056,7 @@
         "marian-keyes"
       ],
       "genres": [
+        "comedy-humor",
         "parenting-relationships",
         "romance",
         "womens-fiction"
@@ -7070,6 +7071,10 @@
           "asin": [
             {
               "asin": "B0CPB42DXN",
+              "region": "us"
+            },
+            {
+              "asin": "B0CNXV5ZC6",
               "region": "us"
             }
           ],
@@ -7088,6 +7093,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0CPB42DXN",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CNXV5ZC6",
+              "type": "libex-import"
             }
           ],
           "work": "my-favorite-mistake-marian-keyes"
@@ -7097,6 +7107,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0CPB42DXN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CNXV5ZC6",
           "type": "libex-import"
         }
       ],
@@ -7836,59 +7851,6 @@
         }
       ],
       "title": "My Favorites"
-    },
-    "my-favourite-mistake": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "marian-keyes"
-      ],
-      "genres": [
-        "comedy-humor",
-        "parenting-relationships",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "my-favourite-mistake",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marian-keyes-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CNXV5ZC6",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71c-sTSxXgL.jpg",
-          "id": "marian-keyes-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marian-keyes"
-          ],
-          "publisher": "Penguin",
-          "release_date": "2024-04-11",
-          "runtime_min": 935,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CNXV5ZC6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "my-favourite-mistake"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CNXV5ZC6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "My Favourite Mistake"
     },
     "my-fellow-soldiers": {
       "added_at": "2026-07-29",

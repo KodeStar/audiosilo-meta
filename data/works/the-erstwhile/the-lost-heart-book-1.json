@@ -14638,6 +14638,37 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2022": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "cover_url": "https://www.graphicaudio.net/media/catalog/product/m/i/mistborn_7_the_lost_metal_1_of_2.jpg",
+          "id": "full-cast-2022",
+          "isbn": [
+            "9798212436571",
+            "9798212528023"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2022",
+          "runtime_min": 960,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9798212436571",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9798212528023",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-lost-metal"
+        },
         "michael-kramer-2022": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -15178,52 +15209,7 @@
           "imported_at": "2026-07-30",
           "ref": "B09N7MXRNZ",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Lost Metal"
-    },
-    "the-lost-metal-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "id": "the-lost-metal-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2022": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "cover_url": "https://www.graphicaudio.net/media/catalog/product/m/i/mistborn_7_the_lost_metal_1_of_2.jpg",
-          "id": "full-cast-2022",
-          "isbn": [
-            "9798212436571",
-            "9798212528023"
-          ],
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2022",
-          "runtime_min": 960,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9798212436571",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9798212528023",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "the-lost-metal-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "isbn:9798212436571",
@@ -15235,7 +15221,7 @@
           "type": "audiosilo-books-import"
         }
       ],
-      "title": "The Lost Metal [Dramatized Adaptation]"
+      "title": "The Lost Metal"
     },
     "the-lost-mine-a-hercule-poirot-short-story": {
       "added_at": "2026-07-25T19:18:21+01:00",

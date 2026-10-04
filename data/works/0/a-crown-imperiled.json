@@ -4648,6 +4648,7 @@
       ],
       "genres": [
         "action-adventure",
+        "epic-fantasy",
         "fantasy",
         "romance"
       ],
@@ -4834,32 +4835,7 @@
             }
           ],
           "work": "a-crown-of-petals-and-ice"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09S413GXQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Crown of Petals and Ice"
-    },
-    "a-crown-of-petals-and-ice-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "kelly-st-clare",
-        "shannon-mayer"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "romance"
-      ],
-      "id": "a-crown-of-petals-and-ice-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -4938,10 +4914,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-crown-of-petals-and-ice-dramatized-adaptation"
+          "work": "a-crown-of-petals-and-ice"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09S413GXQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D1ZJ58XX",
@@ -4953,7 +4934,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "A Crown of Petals and Ice (Dramatized Adaptation)"
+      "title": "A Crown of Petals and Ice"
     },
     "a-crown-of-ruin": {
       "added_at": "2026-08-02",

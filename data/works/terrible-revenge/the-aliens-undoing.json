@@ -6115,6 +6115,31 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "graphicaudio-2016": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648812880.jpg",
+          "id": "graphicaudio-2016",
+          "isbn": [
+            "9798200911141"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "graphicaudio"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2016",
+          "runtime_min": 489,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9798200911141",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-alloy-of-law"
+        },
         "michael-kramer-2011": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -6344,53 +6369,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0064EL8YS",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Alloy of Law"
-    },
-    "the-alloy-of-law-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "id": "the-alloy-of-law-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "graphicaudio-2016": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648812880.jpg",
-          "id": "graphicaudio-2016",
-          "isbn": [
-            "9798200911141"
-          ],
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "graphicaudio"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2016",
-          "runtime_min": 489,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9798200911141",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "the-alloy-of-law-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "isbn:9798200911141",
           "type": "audiosilo-books-import"
         }
       ],
-      "title": "The Alloy of Law [Dramatized Adaptation]"
+      "title": "The Alloy of Law"
     },
     "the-allure-of-battle": {
       "added_at": "2026-07-29",

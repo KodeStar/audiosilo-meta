@@ -6797,6 +6797,74 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2016": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0BCSL6F8F",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 23266,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 337176,
+              "start_ms": 23266,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 4518905,
+              "start_ms": 360442,
+              "title": "Chapter 1: Positive Morning Affirmations For Radiant Black Women"
+            },
+            {
+              "length_ms": 23172,
+              "start_ms": 4879347,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648813726.jpg",
+          "id": "full-cast-2016",
+          "isbn": [
+            "9781648813726",
+            "9781648813740"
+          ],
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2016-12-12",
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648813726",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "isbn:9781648813740",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0BCSL6F8F",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0BCSL6F8F",
+              "type": "libex-import"
+            }
+          ],
+          "work": "words-of-radiance"
+        },
         "kate-reading-2014": {
           "abridged": false,
           "added_at": "2026-07-17T09:27:30+00:00",
@@ -8109,89 +8177,7 @@
           "imported_at": "2026-07-30",
           "ref": "B00HWF0MHW",
           "type": "libex-import"
-        }
-      ],
-      "title": "Words of Radiance"
-    },
-    "words-of-radiance-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "id": "words-of-radiance-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2016": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0BCSL6F8F",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 23266,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 337176,
-              "start_ms": 23266,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 4518905,
-              "start_ms": 360442,
-              "title": "Chapter 1: Positive Morning Affirmations For Radiant Black Women"
-            },
-            {
-              "length_ms": 23172,
-              "start_ms": 4879347,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://www.graphicaudio.net/media/catalog/product/9/7/9781648813726.jpg",
-          "id": "full-cast-2016",
-          "isbn": [
-            "9781648813726",
-            "9781648813740"
-          ],
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2016-12-12",
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648813726",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "isbn:9781648813740",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0BCSL6F8F",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0BCSL6F8F",
-              "type": "libex-import"
-            }
-          ],
-          "work": "words-of-radiance-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "isbn:9781648813726",
@@ -8208,7 +8194,7 @@
           "type": "audiosilo-books-import"
         }
       ],
-      "title": "Words of Radiance [Dramatized Adaptation]"
+      "title": "Words of Radiance"
     },
     "words-on-a-plate": {
       "added_at": "2026-08-01",
