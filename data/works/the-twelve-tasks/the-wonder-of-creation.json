@@ -4823,6 +4823,10 @@
             {
               "asin": "B01N7ZKPTI",
               "region": "us"
+            },
+            {
+              "asin": "B01MSEQXNC",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4966,6 +4970,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B01N7ZKPTI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01MSEQXNC",
               "type": "libex-import"
             }
           ],
@@ -5134,6 +5143,10 @@
             {
               "asin": "B0149M4F0K",
               "region": "us"
+            },
+            {
+              "asin": "B0149M78EA",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5288,6 +5301,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0149M4F0K",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0149M78EA",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -5299,6 +5317,10 @@
             {
               "asin": "B002V0GCOU",
               "region": "us"
+            },
+            {
+              "asin": "B004EVVRE4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5343,6 +5365,11 @@
               "imported_at": "2026-08-02",
               "ref": "B002V0GCOU",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004EVVRE4",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -5358,6 +5385,10 @@
             {
               "asin": "B00GS1YYNY",
               "region": "us"
+            },
+            {
+              "asin": "B007BR528K",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5507,6 +5538,257 @@
               "imported_at": "2026-09-24",
               "ref": "B00GS1YYNY",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B007BR528K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wonderful-wizard-of-oz"
+        },
+        "annette-bening-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0H8WB2875",
+              "region": "uk"
+            },
+            {
+              "asin": "B0H8W3QJ26",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3333386,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3439525,
+              "start_ms": 3333386,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3338959,
+              "start_ms": 6772911,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3132766,
+              "start_ms": 10111870,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1041089,
+              "start_ms": 13244636,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91G+xbGUmBL.jpg",
+          "id": "annette-bening-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "annette-bening",
+            "john-goodman",
+            "mako",
+            "mark-hamill",
+            "michael-learned",
+            "michelle-trachtenberg",
+            "phyllis-diller",
+            "robert-guillaume",
+            "the-firesign-theatre"
+          ],
+          "publisher": "Otherworld Media",
+          "release_date": "2026-09-15",
+          "runtime_min": 237,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H8WB2875",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H8W3QJ26",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-wonderful-wizard-of-oz"
+        },
+        "brian-rollins-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HCYMXRPC",
+              "region": "uk"
+            },
+            {
+              "asin": "B0HCYQ6M53",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20456,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 95851,
+              "start_ms": 20456,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 472386,
+              "start_ms": 116307,
+              "title": "Chapter 1: The Cyclone"
+            },
+            {
+              "length_ms": 836104,
+              "start_ms": 588693,
+              "title": "Chapter 2: The Council with the Munchkins"
+            },
+            {
+              "length_ms": 797071,
+              "start_ms": 1424797,
+              "title": "Chapter 3: How Dorothy Saved the Scarecrow"
+            },
+            {
+              "length_ms": 566427,
+              "start_ms": 2221868,
+              "title": "Chapter 4: The Road Through the Forest"
+            },
+            {
+              "length_ms": 817063,
+              "start_ms": 2788295,
+              "title": "Chapter 5: The Rescue of the Tin Woodman"
+            },
+            {
+              "length_ms": 606830,
+              "start_ms": 3605358,
+              "title": "Chapter 6: The Cowardly Lion"
+            },
+            {
+              "length_ms": 715731,
+              "start_ms": 4212188,
+              "title": "Chapter 7: The Journey to the Great Oz"
+            },
+            {
+              "length_ms": 758503,
+              "start_ms": 4927919,
+              "title": "Chapter 8: The Deadly Poppy Field"
+            },
+            {
+              "length_ms": 553261,
+              "start_ms": 5686422,
+              "title": "Chapter 9: The Queen of the Field Mice"
+            },
+            {
+              "length_ms": 776916,
+              "start_ms": 6239683,
+              "title": "Chapter 10: The Guardian of the Gate"
+            },
+            {
+              "length_ms": 1465806,
+              "start_ms": 7016599,
+              "title": "Chapter 11: The Wonderful City of Oz"
+            },
+            {
+              "length_ms": 1396633,
+              "start_ms": 8482405,
+              "title": "Chapter 12: The Search for the Wicked Witch"
+            },
+            {
+              "length_ms": 455064,
+              "start_ms": 9879038,
+              "title": "Chapter 13: The Rescue"
+            },
+            {
+              "length_ms": 734470,
+              "start_ms": 10334102,
+              "title": "Chapter 14: The Winged Monkeys"
+            },
+            {
+              "length_ms": 1054302,
+              "start_ms": 11068572,
+              "title": "Chapter 15: The Discovery of Oz, the Terrible"
+            },
+            {
+              "length_ms": 358330,
+              "start_ms": 12122874,
+              "title": "Chapter 16: The Magic Art of the Great Humbug"
+            },
+            {
+              "length_ms": 448586,
+              "start_ms": 12481204,
+              "title": "Chapter 17: How the Balloon Was Launched"
+            },
+            {
+              "length_ms": 463865,
+              "start_ms": 12929790,
+              "title": "Chapter 18: Away to the South"
+            },
+            {
+              "length_ms": 390722,
+              "start_ms": 13393655,
+              "title": "Chapter 19: Attacked by the Fighting Trees"
+            },
+            {
+              "length_ms": 600723,
+              "start_ms": 13784377,
+              "title": "Chapter 20: The Dainty China Country"
+            },
+            {
+              "length_ms": 371263,
+              "start_ms": 14385100,
+              "title": "Chapter 21: The Lion Becomes the King of Beasts"
+            },
+            {
+              "length_ms": 370776,
+              "start_ms": 14756363,
+              "title": "Chapter 22: The Country of the Quadlings"
+            },
+            {
+              "length_ms": 494120,
+              "start_ms": 15127139,
+              "title": "Chapter 23: Glinda the Good Witch Grants Dorothy's Wish"
+            },
+            {
+              "length_ms": 37569,
+              "start_ms": 15621259,
+              "title": "Chapter 24: Home Again"
+            },
+            {
+              "length_ms": 36013,
+              "start_ms": 15658828,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91JwqDkunuL.jpg",
+          "id": "brian-rollins-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brian-rollins"
+          ],
+          "publisher": "Tome Cast Audiobooks",
+          "release_date": "2026-08-05",
+          "runtime_min": 261,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HCYMXRPC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HCYQ6M53",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -5518,6 +5800,10 @@
             {
               "asin": "B0082D78VG",
               "region": "us"
+            },
+            {
+              "asin": "B0082D8CQQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5657,6 +5943,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0082D78VG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0082D8CQQ",
               "type": "libex-import"
             }
           ],
@@ -5819,6 +6110,10 @@
             {
               "asin": "B002V5CJM4",
               "region": "us"
+            },
+            {
+              "asin": "B004EWEF3I",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5958,6 +6253,11 @@
               "imported_at": "2026-08-02",
               "ref": "B002V5CJM4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004EWEF3I",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -5969,6 +6269,10 @@
             {
               "asin": "B07FNWS3NL",
               "region": "us"
+            },
+            {
+              "asin": "B07FNYTWHB",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6108,6 +6412,11 @@
               "imported_at": "2026-08-02",
               "ref": "B07FNWS3NL",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07FNYTWHB",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -6119,6 +6428,10 @@
             {
               "asin": "B07YZNMQ3B",
               "region": "us"
+            },
+            {
+              "asin": "B07YZP1CLP",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6263,6 +6576,11 @@
               "imported_at": "2026-08-02",
               "ref": "B07YZNMQ3B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07YZP1CLP",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -6274,6 +6592,10 @@
             {
               "asin": "B017MG17U6",
               "region": "us"
+            },
+            {
+              "asin": "B017MG6P26",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6451,6 +6773,11 @@
               "imported_at": "2026-08-02",
               "ref": "B017MG17U6",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B017MG6P26",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -6462,6 +6789,10 @@
             {
               "asin": "B002V59V2U",
               "region": "us"
+            },
+            {
+              "asin": "B004EVYALQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6596,6 +6927,11 @@
               "imported_at": "2026-08-02",
               "ref": "B002V59V2U",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004EVYALQ",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -6607,6 +6943,10 @@
             {
               "asin": "B00C6LHHHK",
               "region": "us"
+            },
+            {
+              "asin": "B00C6L3S32",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6756,6 +7096,11 @@
               "imported_at": "2026-08-01",
               "ref": "B00C6LHHHK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00C6L3S32",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -6767,6 +7112,10 @@
             {
               "asin": "B0794FS64J",
               "region": "us"
+            },
+            {
+              "asin": "B0794CB3QH",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6906,6 +7255,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0794FS64J",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0794CB3QH",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -6917,6 +7271,10 @@
             {
               "asin": "B00AWBG5JW",
               "region": "us"
+            },
+            {
+              "asin": "B00AWBG1UA",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7062,6 +7420,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00AWBG5JW",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00AWBG1UA",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -7073,6 +7436,10 @@
             {
               "asin": "B086N47PZS",
               "region": "us"
+            },
+            {
+              "asin": "B086N38SDQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7113,6 +7480,11 @@
               "imported_at": "2026-07-30",
               "ref": "B086N47PZS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B086N38SDQ",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -7124,6 +7496,10 @@
             {
               "asin": "B0CQBKK1HH",
               "region": "us"
+            },
+            {
+              "asin": "B0CQBNMYVB",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7347,6 +7723,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0CQBKK1HH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0CQBNMYVB",
               "type": "libex-import"
             }
           ],
@@ -7659,6 +8040,10 @@
             {
               "asin": "B09B8NHPJR",
               "region": "us"
+            },
+            {
+              "asin": "B09B94BZL2",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7820,6 +8205,11 @@
               "imported_at": "2026-08-01",
               "ref": "B09B8NHPJR",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B09B94BZL2",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -7831,6 +8221,10 @@
             {
               "asin": "B0H4LV6ZSF",
               "region": "us"
+            },
+            {
+              "asin": "B0H4M8BQTS",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7984,6 +8378,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0H4LV6ZSF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H4M8BQTS",
               "type": "libex-import"
             }
           ],
@@ -8509,6 +8908,10 @@
             {
               "asin": "B0FXBLZJH8",
               "region": "us"
+            },
+            {
+              "asin": "B0FXBNBCDQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8648,6 +9051,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FXBLZJH8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FXBNBCDQ",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -8659,6 +9067,10 @@
             {
               "asin": "B009G84LW0",
               "region": "us"
+            },
+            {
+              "asin": "B009G7ZZFI",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8798,6 +9210,11 @@
               "imported_at": "2026-08-02",
               "ref": "B009G84LW0",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B009G7ZZFI",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -8809,6 +9226,10 @@
             {
               "asin": "B0778QG8RK",
               "region": "us"
+            },
+            {
+              "asin": "B0778NJXG3",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8958,6 +9379,11 @@
               "imported_at": "2026-08-01",
               "ref": "B0778QG8RK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0778NJXG3",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -8977,6 +9403,18 @@
             {
               "asin": "B0BZDRF4GL",
               "region": "us"
+            },
+            {
+              "asin": "B00MEORUGW",
+              "region": "uk"
+            },
+            {
+              "asin": "B07C3X7B2H",
+              "region": "uk"
+            },
+            {
+              "asin": "B072334LL3",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9136,6 +9574,21 @@
               "imported_at": "2026-08-02",
               "ref": "B0BZDRF4GL",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00MEORUGW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07C3X7B2H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B072334LL3",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -9147,6 +9600,10 @@
             {
               "asin": "B01AYABUMC",
               "region": "us"
+            },
+            {
+              "asin": "B01AYACLN4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9286,6 +9743,11 @@
               "imported_at": "2026-08-02",
               "ref": "B01AYABUMC",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01AYACLN4",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -9297,6 +9759,10 @@
             {
               "asin": "B0FKH62G6K",
               "region": "us"
+            },
+            {
+              "asin": "B0FKH2QN9N",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9906,6 +10372,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0FKH62G6K",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FKH2QN9N",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -10092,6 +10563,10 @@
             {
               "asin": "B0098OOBC2",
               "region": "us"
+            },
+            {
+              "asin": "B0098OM7M8",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10231,6 +10706,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0098OOBC2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0098OM7M8",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -10312,6 +10792,10 @@
             {
               "asin": "B095PN1QQH",
               "region": "us"
+            },
+            {
+              "asin": "B095PMM1F4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10471,6 +10955,11 @@
               "imported_at": "2026-08-01",
               "ref": "B095PN1QQH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B095PMM1F4",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -10482,6 +10971,10 @@
             {
               "asin": "B00AU4P1KK",
               "region": "us"
+            },
+            {
+              "asin": "B00AU4P1ZK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10621,6 +11114,11 @@
               "imported_at": "2026-08-02",
               "ref": "B00AU4P1KK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00AU4P1ZK",
+              "type": "libex-import"
             }
           ],
           "work": "the-wonderful-wizard-of-oz"
@@ -10632,6 +11130,10 @@
             {
               "asin": "B009K7RNQI",
               "region": "us"
+            },
+            {
+              "asin": "B009K7SMPE",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10770,6 +11272,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B009K7RNQI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B009K7SMPE",
               "type": "libex-import"
             }
           ],
