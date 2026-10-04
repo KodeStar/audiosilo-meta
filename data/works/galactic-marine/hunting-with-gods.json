@@ -5715,6 +5715,10 @@
             {
               "asin": "B0GJTG3FJV",
               "region": "us"
+            },
+            {
+              "asin": "B0GJTM6525",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -5828,6 +5832,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GJTG3FJV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GJTM6525",
               "type": "libex-import"
             }
           ],
@@ -12842,6 +12851,10 @@
             {
               "asin": "B07HYGS8VC",
               "region": "us"
+            },
+            {
+              "asin": "B07HYGRDZ3",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -13165,6 +13178,48 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B07HYGS8VC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07HYGRDZ3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hurst"
+        },
+        "edward-mitchell-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0H6JGV8JQ",
+              "region": "us"
+            },
+            {
+              "asin": "B0H6JK85P3",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91SsnV1L6EL.jpg",
+          "id": "edward-mitchell-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edward-mitchell"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2026-09-24",
+          "runtime_min": 704,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6JGV8JQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6JK85P3",
               "type": "libex-import"
             }
           ],
