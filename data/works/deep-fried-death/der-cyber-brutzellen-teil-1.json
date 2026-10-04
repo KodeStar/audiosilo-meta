@@ -1367,6 +1367,14 @@
             {
               "asin": "B091FPCC9H",
               "region": "us"
+            },
+            {
+              "asin": "B091FM9TJM",
+              "region": "de"
+            },
+            {
+              "asin": "B091FR232L",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1605,6 +1613,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B091FPCC9H",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B091FM9TJM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B091FR232L",
               "type": "libex-import"
             }
           ],
@@ -6355,6 +6373,120 @@
           ],
           "work": "der-diamantengeist"
         },
+        "andrea-aust-2018-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B07FY37HV8",
+              "region": "de"
+            },
+            {
+              "asin": "B07FY9H4J8",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 163446,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 219359,
+              "start_ms": 163446,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 206704,
+              "start_ms": 382805,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 446171,
+              "start_ms": 589509,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 119142,
+              "start_ms": 1035680,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 131680,
+              "start_ms": 1154822,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 258415,
+              "start_ms": 1286502,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 220473,
+              "start_ms": 1544917,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 89025,
+              "start_ms": 1765390,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 183275,
+              "start_ms": 1854415,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 237494,
+              "start_ms": 2037690,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 306109,
+              "start_ms": 2275184,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 477704,
+              "start_ms": 2581293,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 158384,
+              "start_ms": 3058997,
+              "title": "Kapitel 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91sGVtXyvYL.jpg",
+          "id": "andrea-aust-2018-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrea-aust",
+            "christian-deucker",
+            "patrick-bach",
+            "patrick-steiner",
+            "reent-reins",
+            "rudiger-schulzki"
+          ],
+          "publisher": "Romantruhe",
+          "release_date": "2018-07-27",
+          "runtime_min": 53,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07FY37HV8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07FY9H4J8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-diamantengeist"
+        },
         "andrea-aust-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6569,6 +6701,234 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GK9HPXDR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-diamantengeist"
+        },
+        "andrea-aust-2026-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GK9PZQNP",
+              "region": "de"
+            },
+            {
+              "asin": "B0GK9ZHRVH",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 95851,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 91556,
+              "start_ms": 95851,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 92879,
+              "start_ms": 187407,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 91115,
+              "start_ms": 280286,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 92276,
+              "start_ms": 371401,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 90673,
+              "start_ms": 463677,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 92786,
+              "start_ms": 554350,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 91718,
+              "start_ms": 647136,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 92717,
+              "start_ms": 738854,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 90999,
+              "start_ms": 831571,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 90209,
+              "start_ms": 922570,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 94133,
+              "start_ms": 1012779,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 90581,
+              "start_ms": 1106912,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 90395,
+              "start_ms": 1197493,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 93088,
+              "start_ms": 1287888,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 90488,
+              "start_ms": 1380976,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 90627,
+              "start_ms": 1471464,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 91509,
+              "start_ms": 1562091,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 90790,
+              "start_ms": 1653600,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 90070,
+              "start_ms": 1744390,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 90581,
+              "start_ms": 1834460,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 92392,
+              "start_ms": 1925041,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 90325,
+              "start_ms": 2017433,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 95016,
+              "start_ms": 2107758,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 91045,
+              "start_ms": 2202774,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 92624,
+              "start_ms": 2293819,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 91347,
+              "start_ms": 2386443,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 90418,
+              "start_ms": 2477790,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 90813,
+              "start_ms": 2568208,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 90186,
+              "start_ms": 2659021,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 90163,
+              "start_ms": 2749207,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 98313,
+              "start_ms": 2839370,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 94273,
+              "start_ms": 2937683,
+              "title": "Kapitel 33"
+            },
+            {
+              "length_ms": 91254,
+              "start_ms": 3031956,
+              "title": "Kapitel 34"
+            },
+            {
+              "length_ms": 95201,
+              "start_ms": 3123210,
+              "title": "Kapitel 35"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911QC+t23sL.jpg",
+          "id": "andrea-aust-2026-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrea-aust",
+            "christin-deucker",
+            "dagmar-bittner",
+            "ingo-abel",
+            "jenny-maria-meyer",
+            "patrick-bach",
+            "patrick-steiner",
+            "paul-burghardt",
+            "rainer-schmitt",
+            "reent-reins",
+            "robert-missler",
+            "rudiger-schulzki",
+            "tom-steinbrecher",
+            "werner-wilkening",
+            "full-cast"
+          ],
+          "publisher": "Romantruhe Audio",
+          "release_date": "2026-01-28",
+          "runtime_min": 53,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK9PZQNP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK9ZHRVH",
               "type": "libex-import"
             }
           ],

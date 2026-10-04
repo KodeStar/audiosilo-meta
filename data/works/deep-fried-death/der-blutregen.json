@@ -3089,6 +3089,14 @@
             {
               "asin": "B0GJD95NQH",
               "region": "us"
+            },
+            {
+              "asin": "B0GJD9Q94R",
+              "region": "de"
+            },
+            {
+              "asin": "B0GJDPRND8",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3342,6 +3350,16 @@
               "imported_at": "2026-08-02",
               "ref": "B0GJD95NQH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GJD9Q94R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GJDPRND8",
+              "type": "libex-import"
             }
           ],
           "work": "der-botschafter-des-todes"
@@ -3501,6 +3519,175 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0168PC0HG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "der-botschafter-des-todes"
+        },
+        "helmut-krauss-2015-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0166RUGHC",
+              "region": "de"
+            },
+            {
+              "asin": "B0168PDUQG",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 56286,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 154784,
+              "start_ms": 56286,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 158941,
+              "start_ms": 211070,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 38313,
+              "start_ms": 370011,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 186294,
+              "start_ms": 408324,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 169111,
+              "start_ms": 594618,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 256766,
+              "start_ms": 763729,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 105929,
+              "start_ms": 1020495,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 128569,
+              "start_ms": 1126424,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 82686,
+              "start_ms": 1254993,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 85031,
+              "start_ms": 1337679,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 142153,
+              "start_ms": 1422710,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 213670,
+              "start_ms": 1564863,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 133050,
+              "start_ms": 1778533,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 60534,
+              "start_ms": 1911583,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 266820,
+              "start_ms": 1972117,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 54613,
+              "start_ms": 2238937,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 85914,
+              "start_ms": 2293550,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 71030,
+              "start_ms": 2379464,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 200342,
+              "start_ms": 2450494,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 505754,
+              "start_ms": 2650836,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 149606,
+              "start_ms": 3156590,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 287231,
+              "start_ms": 3306196,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 115450,
+              "start_ms": 3593427,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 454485,
+              "start_ms": 3708877,
+              "title": "Kapitel 25"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A17V46SnalL.jpg",
+          "id": "helmut-krauss-2015-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "helmut-krauss",
+            "kirstin-schumann",
+            "patrick-bach",
+            "rene-dawn-claude",
+            "uve-teschner",
+            "wolfgang-bahro"
+          ],
+          "publisher": "Romantruhe",
+          "release_date": "2015-10-06",
+          "runtime_min": 69,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0166RUGHC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0168PDUQG",
               "type": "libex-import"
             }
           ],
