@@ -6,34 +6,22 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"strings"
 	"testing"
 )
 
-// .github/scripts/real-data-report.sh is what makes the scheduled real-data run
-// (.github/workflows/real-data.yml) VISIBLE: `summarize` turns a `go test` log
-// into a bounded failure summary, `report` files, comments on or closes the one
-// ci-real-data issue through `gh`. It lives here rather than beside the
-// workflow because the go tool ignores directories starting with a dot, and it
-// drives the script the way the workflow does - packmerge_test.go's precedent,
-// and internal/serve's TestReleaseNotifyScript* for notify-release.sh - with a
-// stub `gh` on PATH standing in for GitHub.
+// Tests of .github/scripts/real-data-report.sh, driven as the workflow drives
+// it with a stub `gh` on PATH. They live here because the go tool ignores
+// dot-directories.
 
 // realDataReport runs the script with args and extra environment, returning
 // stdout and the exit status. The environment is the test's own minus every
 // variable the script reads, so a CI runner's GITHUB_REPOSITORY cannot leak in.
 func realDataReport(t *testing.T, env []string, args ...string) (string, int) {
 	t.Helper()
-	if _, err := exec.LookPath("bash"); err != nil {
-		t.Skip("bash is not installed, so the report script cannot be driven here")
-	}
-	script, err := filepath.Abs(filepath.Join("..", ".github", "scripts", "real-data-report.sh"))
-	if err != nil {
-		t.Fatal(err)
-	}
-	if _, err := os.Stat(script); err != nil {
-		t.Fatalf("the real-data report script is not where this test expects it: %v", err)
-	}
+	requireTools(t, "bash")
+	script := abs(t, filepath.Join("..", ".github", "scripts", "real-data-report.sh"))
 	cmd := exec.Command("bash", append([]string{script}, args...)...)
 	for _, kv := range os.Environ() {
 		switch strings.SplitN(kv, "=", 2)[0] {
@@ -80,11 +68,17 @@ const (
 
 func TestRealDataSummarize(t *testing.T) {
 	t.Parallel()
+	wide := "--- FAIL: TestWide/" + strings.Repeat("x", 3*reportMaxWidth) + " (0.00s)"
 	for _, tc := range []struct {
 		name string
 		log  *string
 		want string
 	}{
+		{
+			name: "a wide line is cut",
+			log:  ptr(wide + "\nFAIL\tgithub.com/x/pkg\t0.1s\n"),
+			want: wide[:reportMaxWidth] + "\nFAIL\tgithub.com/x/pkg\t0.1s\n",
+		},
 		{
 			name: "missing log",
 			log:  nil,
@@ -182,19 +176,6 @@ func TestRealDataSummarizeBoundsALongList(t *testing.T) {
 	}
 }
 
-func TestRealDataSummarizeCutsWideLines(t *testing.T) {
-	t.Parallel()
-	wide := "--- FAIL: TestWide/" + strings.Repeat("x", 3*reportMaxWidth) + " (0.00s)"
-	got, code := summarize(t, ptr(wide+"\nFAIL\tgithub.com/x/pkg\t0.1s\n"))
-	if code != 0 {
-		t.Fatalf("summarize exited %d, want 0", code)
-	}
-	want := wide[:reportMaxWidth] + "\nFAIL\tgithub.com/x/pkg\t0.1s\n"
-	if got != want {
-		t.Errorf("summarize wrote\n%q\nwant\n%q", got, want)
-	}
-}
-
 // ghStub is a fake `gh` on PATH: it logs every call's argv and, for a
 // --body-file call, its stdin, and answers `issue list` with GH_STUB_OPEN.
 const ghStub = `#!/usr/bin/env bash
@@ -260,7 +241,7 @@ func wantCalls(t *testing.T, got []ghCall, want ...[]string) {
 		t.Fatalf("gh was called %d times, want %d: %q", len(got), len(want), got)
 	}
 	for i := range want {
-		if strings.Join(got[i].args, "\x00") != strings.Join(want[i], "\x00") {
+		if !slices.Equal(got[i].args, want[i]) {
 			t.Errorf("gh call %d was\n%q\nwant\n%q", i, got[i].args, want[i])
 		}
 	}
