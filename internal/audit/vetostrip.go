@@ -25,28 +25,44 @@ import (
 // shedding a different series name, so the key equality is about the template they
 // share rather than about the book.
 //
-// It is asked only of a pair that MET ON THE SAME KEY. A cluster is transitively closed
-// over shared works before anything is proposed (closeClusters), so two members of one
-// closed cluster need not have met each other at all - they can have met a third member
-// on two different keys, and the closure's premise is exactly that transitivity. Asking
-// this of such a pair reads a disagreement that neither key ever claimed: it fired on
-// the six Dante records, where "The Divine Comedy: Inferno" (cleaned against that
-// series) and "The Inferno from The Divine Comedy" (a member of nothing, its mid-title
-// series mention correctly left alone by the boundary anchoring) meet through the four
-// members between them.
-func vetoStrippedSeriesDiffers(members []dupMember) (string, bool) {
-	for i := range members {
-		for j := i + 1; j < len(members); j++ {
-			a, b := members[i], members[j]
-			if a.wk.key != b.wk.key {
-				continue
+// It is asked of every pair that MET ON A KEY - every pair inside one of the cluster's
+// joins, read through the derivations that produced THAT key. A cluster is transitively
+// closed over shared works before anything is proposed (closeClusters), so two members
+// of one closed cluster need not have met each other at all - they can have met a third
+// member on two different keys, and the closure's premise is exactly that transitivity.
+// Asking this of such a pair reads a disagreement that neither key ever claimed: it
+// fired on the six Dante records, where "The Divine Comedy: Inferno" (cleaned against
+// that series) and "The Inferno from The Divine Comedy" (a member of nothing, its
+// mid-title series mention correctly left alone by the boundary anchoring) meet through
+// the four members between them. And since a work contributes SEVERAL keys, the
+// derivation a member carries in the closed cluster may not be the one a pair met on;
+// reading the join's own derivations is what puts a pair that met only on a spelling or
+// subseries-tail key under the rule.
+//
+// A cluster with NO joins recorded (every constructor here records them; one that did
+// not would be a bug) fails SAFE: all its members are compared as one join, which can
+// only withhold more merges, never fewer.
+func vetoStrippedSeriesDiffers(joins [][]dupMember, members []dupMember) (string, bool) {
+	if len(joins) == 0 {
+		joins = [][]dupMember{members}
+	}
+	for _, join := range joins {
+		for i := range join {
+			for j := i + 1; j < len(join); j++ {
+				a, b := join[i], join[j]
+				if titlerule.SameTitleUnderCommonSeries(a.work.Title, a.wk.series, b.work.Title, b.wk.series) {
+					continue
+				}
+				// A pair that met on a SPELLING-VARIANT key never agrees under the plain
+				// key - that is why the key exists - so the condition is asked in its terms.
+				if (a.wk.via == viaSpelling || b.wk.via == viaSpelling) &&
+					titlerule.SameVariantTitleUnderCommonSeries(a.work.Title, a.wk.series, b.work.Title, b.wk.series) {
+					continue
+				}
+				return fmt.Sprintf("%s was cleaned against series %q and %s against %q, and the two titles no longer meet when either "+
+					"name is removed from both: they share the part neither shed, not the book",
+					a.work.ID, a.wk.series, b.work.ID, b.wk.series), true
 			}
-			if titlerule.SameTitleUnderCommonSeries(a.work.Title, a.wk.series, b.work.Title, b.wk.series) {
-				continue
-			}
-			return fmt.Sprintf("%s was cleaned against series %q and %s against %q, and the two titles no longer meet when either "+
-				"name is removed from both: they share the part neither shed, not the book",
-				a.work.ID, a.wk.series, b.work.ID, b.wk.series), true
 		}
 	}
 	return "", false

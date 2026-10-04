@@ -52,6 +52,12 @@ type index struct {
 	// alone - a series name is often two ordinary words.
 	seriesByAuthor map[string][]string
 
+	// seriesTails maps the subseriesKey of a series name's post-colon TAIL ("The
+	// Royal Ranger" of "Ranger's Apprentice: The Royal Ranger") to the series ids carrying
+	// it, for W-DUP's subseries-tail key (index.seriesTailKey). Only tails of at least
+	// minSeriesFormWords significant words are held.
+	seriesTails map[string][]string
+
 	// variantsOf maps a series id to the series whose ordering_of names it, sorted:
 	// the inverse of the one link that makes a series a family's PRIMARY, which a record
 	// cannot see by reading itself. translationNeighbours is each series' translation_of
@@ -181,7 +187,41 @@ func newIndex(cat *model.Catalog) *index {
 		ix.seriesByAuthor[a] = ids
 	}
 	ix.seriesNameIdx = newSeriesNameIndex(cat.Series)
+	ix.seriesTails = seriesTailIndex(cat.Series)
 	return ix
+}
+
+// seriesTailIndex builds index.seriesTails: every series name's text after its LAST ": "
+// (parentheticals removed first, so an ordering note does not become part of the tail),
+// keyed by titlerule.SeriesKey. The series ids under a key are sorted.
+func seriesTailIndex(all []*model.Series) map[string][]string {
+	out := map[string][]string{}
+	for _, s := range all {
+		name := titlerule.TidyTitle(titlerule.StripParenGroups(s.Name))
+		i := strings.LastIndex(name, ": ")
+		if i < 0 {
+			continue
+		}
+		if k := subseriesKey(name[i+2:]); k != "" {
+			out[k] = append(out[k], s.ID)
+		}
+	}
+	for k := range out {
+		sort.Strings(out[k])
+	}
+	return out
+}
+
+// subseriesKey is the key a subseries name is compared by, on both sides of the
+// subseries-tail match: a series name's post-colon tail (seriesTailIndex) and a title's
+// pre-colon head (index.seriesTailKey). It is titlerule.SeriesKey of the tidied text,
+// or "" below the series-name index's significant-word floor (minSeriesFormWords).
+func subseriesKey(s string) string {
+	s = titlerule.TidyTitle(s)
+	if titlerule.CountSignificantWords(s) < minSeriesFormWords {
+		return ""
+	}
+	return titlerule.SeriesKey(s)
 }
 
 // translationLinked reports whether any translation_of link touches a series.
@@ -463,9 +503,15 @@ type seriesForm struct {
 func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 	// Fold every form first, so an ambiguous key (two different series spelling a
 	// form the same way) can be dropped before the index is built.
+	//
+	// An entry holds every SPELLING that folds to its key, not only the first: the
+	// separator variants SeriesForms carries (a spaced dash for a colon) fold to one key
+	// by construction, and a probe compares bytes, so an entry keeping one spelling could
+	// never find the others in a title. Spellings are lowered through titlerule.LowerFold,
+	// as the probed text is, so apostrophe glyphs need no spelling of their own.
 	type entry struct {
-		form  seriesForm
-		owned map[string]struct{} // the series ids spelling this form
+		forms map[string]seriesForm // by lowered spelling
+		owned map[string]struct{}   // the series ids spelling this form
 	}
 	byKey := map[string]*entry{}
 	for _, s := range all {
@@ -479,11 +525,12 @@ func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 			}
 			e := byKey[key]
 			if e == nil {
-				e = &entry{
-					form:  seriesForm{form: form, lower: strings.ToLower(form), series: s.ID},
-					owned: map[string]struct{}{},
-				}
+				e = &entry{forms: map[string]seriesForm{}, owned: map[string]struct{}{}}
 				byKey[key] = e
+			}
+			lower := titlerule.LowerFold(form)
+			if _, dup := e.forms[lower]; !dup {
+				e.forms[lower] = seriesForm{form: form, lower: lower, series: s.ID}
 			}
 			e.owned[s.ID] = struct{}{}
 		}
@@ -499,8 +546,10 @@ func newSeriesNameIndex(all []*model.Series) *seriesNameIndex {
 		if len(e.owned) != 1 {
 			continue // ambiguous: two series spell this form identically
 		}
-		if p := firstPair(e.form.lower); p != "" {
-			idx.byPair[p] = append(idx.byPair[p], e.form)
+		for _, f := range e.forms {
+			if p := firstPair(f.lower); p != "" {
+				idx.byPair[p] = append(idx.byPair[p], f)
+			}
 		}
 	}
 	// Longest form first inside a bucket, so a lookup returns the most specific
@@ -570,9 +619,9 @@ func firstPair(lower string) string {
 // find returns the longest indexed series form occurring in text, at
 // alphanumeric boundaries, and the series it belongs to.
 func (si *seriesNameIndex) find(text string) (form, seriesID string, ok bool) {
-	lower := strings.ToLower(text)
+	lower := titlerule.LowerFold(text)
 	ws := lowerWords(lower)
-	best := seriesForm{}
+	best, bestOff := seriesForm{}, 0
 	for i := 0; i+1 < len(ws); i++ {
 		off := ws[i].off
 		for _, f := range si.byPair[ws[i].word+" "+ws[i+1].word] {
@@ -584,7 +633,7 @@ func (si *seriesNameIndex) find(text string) (form, seriesID string, ok bool) {
 			// A word start is a left boundary by construction, so only the right
 			// edge needs the boundary test.
 			if strings.HasPrefix(lower[off:], f.lower) && titlerule.BoundedAt(lower, off, off+len(f.lower)) {
-				best = f
+				best, bestOff = f, off
 				break
 			}
 		}
@@ -592,7 +641,7 @@ func (si *seriesNameIndex) find(text string) (form, seriesID string, ok bool) {
 	if best.form == "" {
 		return "", "", false
 	}
-	return best.form, best.series, true
+	return titlerule.SpelledAsIn(best.form, text, bestOff, bestOff+len(best.lower)), best.series, true
 }
 
 // ---- position slots ----------------------------------------------------------

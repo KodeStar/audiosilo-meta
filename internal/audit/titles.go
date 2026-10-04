@@ -2,6 +2,7 @@ package audit
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -106,6 +107,12 @@ func detectWorkTitle(ix *index) *findings {
 			p.Advisory = true
 			p.Reason = "the series name was inferred from the title, not from a membership, so which side of the separator the " +
 				"book's own title is on is a judgement: confirm the series before retitling"
+		}
+		if sub == titlerule.DecSeriesName && !p.Advisory && ix.namedAfterTheBook(c.work, c.want) {
+			p.Op = OpReview
+			p.Advisory = true
+			p.Reason = "the series is this book's own edition, named after it, so the head the strip removes is the book's title " +
+				"and what is left is its subtitle or tagline: confirm the title before retitling"
 		}
 		f.add(Finding{
 			Subclass: sub,
@@ -269,4 +276,34 @@ func (ix *index) seriesCorroborated(w *model.Work, d *workDerived) bool {
 		return true
 	}
 	return titlerule.StatesSeriesAndVolume(w.Title, d.seriesName)
+}
+
+// namedAfterTheBook reports the one shape where a series-name strip removes the BOOK'S
+// OWN TITLE: the series the title is read against is an own-language EDITION series
+// (titlerule.SplitEditionName - "Let’s Split Up (German Edition)") holding this work
+// alone, at position 1, and its base name is the title's head the strip took off. Such a
+// series is the catalogue's container for one book's edition, so its name says nothing
+// the book's title does not; "Let's Split Up - Ein verfluchtes Haus. Vier Freunde. Eine
+// verhängnisvolle Entscheidung" was proposed as its tagline.
+//
+// Measured over the 282k-work tree: of the 279 mechanical series-name retitles whose
+// series holds one work, 7 read against an edition series; the position-1 rule keeps
+// "Die Klabauter Chroniken - Heimatland" (volume 3, a real volume title) mechanical and
+// withholds the other six - Let's Split Up, Thorn Season and Uptown Girl (a tagline, or
+// the German subtitle of the book's own title), and Valena, Mia Raloris and "Hearts of
+// Mana, Episode 1", which a reviewer can read either way. W-TITLE mechanical 22,206 ->
+// 22,200. The rule is the W-TITLE caller's, not StripDecoration's - it needs the series'
+// membership, which a title rule does not have - so the intake strip does not move.
+func (ix *index) namedAfterTheBook(w *model.Work, proposed string) bool {
+	s := ix.seriesByID[ix.derived(w).seriesID]
+	if s == nil || len(s.Works) != 1 || s.Works[0].Work != w.ID || positionKey(s.Works[0].Position) != "1" {
+		return false
+	}
+	base, _, ok := titlerule.SplitEditionName(s.Name)
+	if !ok {
+		return false
+	}
+	head := titlerule.CompareKey(base)
+	return head != "" && strings.HasPrefix(titlerule.CompareKey(w.Title), head) &&
+		!strings.HasPrefix(titlerule.CompareKey(proposed), head)
 }

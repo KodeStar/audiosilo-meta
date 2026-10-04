@@ -250,6 +250,11 @@ var decorationRefusals = map[string]decorationOutcome{
 	titlerule.RefuseResultIsSeriesName: {},
 	titlerule.RefuseNoIdentity:         {reason: "nothing that names a book"},
 	titlerule.RefuseFragment:           {reason: "a fragment rather than a title"},
+	// The two below refuse a strip that would lose part of what the title SAYS (the
+	// series a collection or a season belongs to, half a range); the title as submitted
+	// is the honest one, so it stands.
+	titlerule.RefuseUnnamedPart: {},
+	titlerule.RefuseCutsRange:   {},
 }
 
 // checkDecoratedTitle applies gate 2. It returns the context with ctx.title set to

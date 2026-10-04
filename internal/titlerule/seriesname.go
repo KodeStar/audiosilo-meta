@@ -147,3 +147,89 @@ func foldCase(s string) string {
 	}
 	return b.String()
 }
+
+// SameSeriesSpelling reports whether two series names are one series spelled twice, as
+// internal/audit's disjoint-series veto reads them: one SeriesKey, and either the SAME
+// parenthetical decoration (DecorationKey, compared only where it can be read whole) or a
+// decoration on ONE side only that is a catalogue note (seriesNote). It is LOOSER than SameSeriesName - a catalogue's
+// "(published order)" or "[Dramatized Adaptation]" note does not separate - which is why
+// it only ever lifts a veto and never joins a series.
+//
+// The decoration clause is measured, not cautious. SeriesKey removes a parenthetical, so
+// on its own it called "Pimsleur Chinese (Cantonese)" and "Pimsleur Chinese (Mandarin)"
+// one series, and seven Cantonese/Mandarin and Brazilian/European Portuguese courses - the
+// same lesson numbers at the same slots - went mechanical. Two DIFFERENT decorations are
+// two products; a decoration on one side is the catalogue's ordering, format or edition
+// note on the plain series ("(published order)", "[Dramatized Adaptation]", "(Abridged)",
+// "[Spanish Edition]"), which is where every other newly-shared slot of the measurement
+// sat. The clause's price is 10 correct merges left advisory where both sides carry a
+// different note - six James Bond novels under "(Celebrity Performances)" beside
+// "(Original)" among them - which is the right way round.
+//
+// Whether a side is decorated is read off the name, not off DecorationKey: that key is
+// also empty for a decoration it cannot read whole, and two such names must not agree.
+func SameSeriesSpelling(a, b string) bool {
+	ka := SeriesKey(a)
+	if ka == "" || ka != SeriesKey(b) {
+		return false
+	}
+	decoratedA, decoratedB := stripParenGroups(a) != a, stripParenGroups(b) != b
+	switch {
+	case !decoratedA && !decoratedB:
+		return true
+	case decoratedA != decoratedB:
+		// One side decorated: a spelling of the plain series only when EVERY group it
+		// carries is a catalogue note from a closed vocabulary (seriesNote).
+		decorated := a
+		if decoratedB {
+			decorated = b
+		}
+		for _, g := range parenGroup.FindAllString(decorated, -1) {
+			if !seriesNote(g) {
+				return false
+			}
+		}
+		return true
+	}
+	dk := DecorationKey(a)
+	return dk != "" && dk == DecorationKey(b)
+}
+
+// seriesNote reports whether one bracketed group on a series name is a CATALOGUE NOTE -
+// something about how the catalogue lists or produced the series, never about which
+// product it is - from closed vocabularies only, reused wherever the package already
+// has one: an ordering (OrderingOfDecoration), an own-language edition
+// (editionLanguagePhrases, "[Spanish Edition]"), a dramatization (IsDramatization's
+// pattern) or a narration credit (the narrator lead-ins), plus the format and narration
+// notes listed in formatNotes. A dialect or variety ("(Spain-Castilian)", "(Latin
+// American)", "(Brazilian)") and a translated series title ("[The Accursed Kings]") are
+// in none of them, so a one-sided one of those keeps the two series apart.
+func seriesNote(group string) bool {
+	inner := groupContents(group)
+	key := model.SlugifyWhole(inner)
+	if key == "" {
+		return false
+	}
+	if OrderingOfDecoration(key) != "" || editionLanguagePhrases[key] != "" || formatNotes[key] ||
+		dramatization.MatchString(inner) {
+		return true
+	}
+	lower := strings.ToLower(inner)
+	for _, lead := range trailingLeadIns {
+		if strings.HasPrefix(lower, lead+" ") {
+			return true
+		}
+	}
+	return false
+}
+
+// formatNotes are the one-sided format and narration notes seriesNote reads beside the
+// package's other vocabularies, keyed by slug: an abridgement either way (SER-DUP's
+// abridged list, plus its unabridged twins), a full-cast or radio-play production, and
+// the Castilian-narration note Audible's Spanish catalogue carries.
+var formatNotes = map[string]bool{
+	"abridged": true, "unabridged": true, "gekurzt": true, "ungekurzt": true,
+	"full-cast": true, "full-cast-edition": true, "full-cast-editions": true,
+	"horspiel": true, "horspiele": true,
+	"narracion-en-castellano": true,
+}

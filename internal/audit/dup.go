@@ -2,6 +2,7 @@ package audit
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 
@@ -45,6 +46,8 @@ const (
 	viaOwnSeries      = "own-series"
 	viaEmbeddedSeries = "embedded-series"
 	viaPlain          = "no-series"
+	viaSpelling       = "spelling-variant"
+	viaSeriesTail     = "series-tail"
 )
 
 // workKeys returns the cluster keys a work contributes: one for its title cleaned
@@ -101,20 +104,84 @@ func (ix *index) workKeys(w *model.Work) []workKey {
 		}
 		keys = append(keys, workKey{key: k, cleaned: cleaned, series: series, via: via})
 	}
+	// addKeys adds a derivation's identity key and, for a title the closed US/UK table
+	// actually changes, its SPELLING-VARIANT key (titlerule.SpellingVariantKey) beside it:
+	// "The Armour of Light" contributes "armoroflight" as well, which is the key "The
+	// Armor of Light" already has. Only a derivation that HAS an identity key gets one,
+	// so the variant can never key a residual the identity rule refuses.
+	addKeys := func(fold, cleaned, series, via string) {
+		addKey(fold, cleaned, series, via)
+		if fold == "" {
+			return
+		}
+		if vk := titlerule.SpellingVariantKey(cleaned); vk != "" && vk != fold {
+			addKey(vk, cleaned, series, viaSpelling)
+		}
+	}
 	if !d.embedded {
 		via := viaPlain
 		if d.seriesName != "" {
 			via = viaOwnSeries
 		}
-		addKey(d.wantKey, d.want, d.seriesName, via)
-		return keys
+		addKeys(d.wantKey, d.want, d.seriesName, via)
+	} else {
+		// A series name the TITLE spells out is weaker evidence than a membership, so
+		// the work contributes both keys: its title cleaned against nothing, and its
+		// title cleaned against the name it embeds.
+		addKeys(d.plainKey, d.plain, "", viaPlain)
+		addKeys(d.wantKey, d.want, d.seriesName, viaEmbeddedSeries)
 	}
-	// A series name the TITLE spells out is weaker evidence than a membership, so
-	// the work contributes both keys: its title cleaned against nothing, and its
-	// title cleaned against the name it embeds.
-	addKey(d.plainKey, d.plain, "", viaPlain)
-	addKey(d.wantKey, d.want, d.seriesName, viaEmbeddedSeries)
+	if fold, cleaned, tail, ok := ix.seriesTailKey(w); ok {
+		addKey(fold, cleaned, tail, viaSeriesTail)
+	}
 	return keys
+}
+
+// seriesTailKey is the SUBSERIES-TAIL key: for a title "<P>: <R>" whose head P is the
+// post-colon tail of a catalogued series name ("The Royal Ranger", of "Ranger's
+// Apprentice: The Royal Ranger") and that series shares an author with the work, the
+// title cleaned against P as though P were the series name. "The Royal Ranger: The Red
+// Fox Clan" then keys as "The Red Fox Clan", which is the key of the work modeled at
+// that slot.
+//
+// SeriesForms has no tail form, and adding one would widen every title clean, the
+// census and both writers' duplicate gates: a two-word tail is an ordinary phrase far
+// more often than a series name ("The Early Years", "The Lost Years"). So it is W-DUP's
+// key only - the precedent of the embedded-series key above - and gated twice: the tail
+// carries at least minSeriesFormWords significant words (the series-name index's own
+// floor), and it is the tail of a series holding a work by one of this work's authors,
+// which is what makes the head this book's subseries rather than a coincidence of words.
+// The cleaned title must still carry an identity of its own, and P is reported as the
+// series it was cleaned against, so the stripped-series soundness condition
+// (vetoStrippedSeriesDiffers) reads both titles against P.
+func (ix *index) seriesTailKey(w *model.Work) (fold, cleaned, tail string, ok bool) {
+	i := strings.Index(w.Title, ": ")
+	if i <= 0 {
+		return "", "", "", false
+	}
+	head := w.Title[:i]
+	// The tail lookup first: almost no colon title's head is a subseries tail, so the
+	// author's series set is built only for the few that are.
+	tails := ix.seriesTails[subseriesKey(head)]
+	if len(tails) == 0 {
+		return "", "", "", false
+	}
+	mine := ix.authorSeriesIDs(w.Authors)
+	if !slices.ContainsFunc(tails, func(sid string) bool { return mine[sid] }) {
+		return "", "", "", false
+	}
+	// The identity rule's own gate: IdentityTitleKey is CompareKey(Clean(...)) once the
+	// residual carries an identity, which is asked here first so the title is cleaned
+	// once (and a numeric-only residual, which that rule also keys, is not keyed here -
+	// addKey would file it under the work's own series, which is not the one shed).
+	cleaned = titlerule.Clean(w.Title, head)
+	if !titlerule.CarriesIdentity(cleaned) {
+		return "", "", "", false
+	}
+	if fold = titlerule.CompareKey(cleaned); fold == "" {
+		return "", "", "", false
+	}
+	return fold, cleaned, head, true
 }
 
 // dupMember is one work inside a candidate cluster.
@@ -174,6 +241,12 @@ type dupCluster struct {
 	// otherLangs are the languages the same title key held that this cluster is
 	// not in - what the language rule split it away from.
 	otherLangs []string
+	// joins are the candidate groups the cluster was closed from, each with every
+	// member's derivation FOR THE KEY THAT GROUP MET ON. A work contributes several keys
+	// (embedded series, spelling variant, subseries tail), and members carries one
+	// derivation per work, so a pair that met only on a variant or tail key is visible
+	// as such only here - which is what the stripped-series soundness veto has to read.
+	joins [][]dupMember
 }
 
 // identityClusters splits one title key's members into the groups the IDENTITY rule
@@ -224,7 +297,7 @@ func identityClusters(ix *index, members []dupMember) []dupCluster {
 		if len(group) < 2 {
 			continue
 		}
-		c := dupCluster{members: group}
+		c := dupCluster{members: group, joins: [][]dupMember{group}}
 		// What this cluster was split away from, so the record says why the key
 		// held more than the cluster does.
 		mine := map[string]bool{}
@@ -298,6 +371,7 @@ func closeClusters(cs []dupCluster) []dupCluster {
 		byID := map[string]dupMember{}
 		for _, i := range idx {
 			merged.mergedFrom = append(merged.mergedFrom, cs[i].key)
+			merged.joins = append(merged.joins, cs[i].joins...)
 			for _, m := range cs[i].members {
 				prev, dup := byID[m.work.ID]
 				if !dup || (prev.wk.series == "" && m.wk.series != "") {
@@ -382,7 +456,7 @@ func dupFinding(ix *index, c dupCluster) Finding {
 	}
 	// The vetoes. A cluster that trips any of them is still reported - a reviewer
 	// wants to see it - but a mechanical pass must not apply it.
-	if vetoes := mergeVetoes(ix, members, canon); len(vetoes) > 0 {
+	if vetoes := mergeVetoes(ix, c, canon); len(vetoes) > 0 {
 		fd.Propose.Advisory = true
 		fd.Propose.Reason = "do not merge on this evidence: " + strings.Join(vetoes, "; ")
 	}
@@ -399,7 +473,8 @@ func dupFinding(ix *index, c dupCluster) Finding {
 // Every one of these was measured as a wrong proposal in the first draft, and every
 // one asks a question a TITLE cannot answer - which is why the first draft, which
 // only ever compared titles and author sets, got 25-60% of them wrong.
-func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
+func mergeVetoes(ix *index, c dupCluster, canon dupMember) []string {
+	members := c.members
 	var out []string
 	if s, ok := vetoPositionConflict(ix, members); ok {
 		out = append(out, s)
@@ -425,7 +500,7 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoSlugOrdinal(members); ok {
 		out = append(out, s)
 	}
-	if s, ok := vetoStrippedSeriesDiffers(members); ok {
+	if s, ok := vetoStrippedSeriesDiffers(c.joins, members); ok {
 		out = append(out, s)
 	}
 	if s, ok := vetoStatedVolumeElsewhere(ix, members); ok {
@@ -528,6 +603,20 @@ func renderSpan(s [2]float64) string {
 // vetoDisjointSeries: both sides are modeled, and in ENTIRELY different series. Two
 // records of one book do not sit in two disjoint series; a book and its companion,
 // or two books sharing a title, do.
+//
+// "Different series" is judged by the series' NAME as well as its id (sharesSlot): two
+// memberships at ONE SLOT of two spellings of one series (titlerule.SameSeriesSpelling) are the same
+// place in the same order - "The Armor of Light" at 4 of "The Kingsbridge Novels" beside
+// "The Armour of Light" at 4 of "Kingsbridge", "The Final Empire" at 1 of "Mistborn"
+// beside its dramatization at 1 of "Mistborn [Dramatized Adaptation]". Reading those as
+// disjoint vetoed exactly the pairs the two spellings make most likely. The slot has to
+// agree, not just the name: a book at 13 of "Ranger's Apprentice" and its namesake at 13
+// of "Ranger's Apprentice (published order)" are one place, at 14 and 13 they are not.
+//
+// Measured over the 282k-work tree: 149 clusters this veto alone withheld become
+// mechanical (dramatized adaptations beside their novels, abridged-series records,
+// "[Spanish Edition]" and "(Narración en Castellano)" series spellings, two editions'
+// series of one franchise), every one hand-reviewed as one book.
 func vetoDisjointSeries(ix *index, members []dupMember) (string, bool) {
 	var sets []map[string]bool
 	var owners []string
@@ -549,13 +638,42 @@ func vetoDisjointSeries(ix *index, members []dupMember) (string, bool) {
 					break
 				}
 			}
-			if !shared {
+			if !shared && !ix.sharesSlot(owners[i], owners[j]) {
 				return fmt.Sprintf("%s and %s are modeled in entirely different series (%s vs %s)",
 					owners[i], owners[j], truncateList(sortedKeys(sets[i]), 3), truncateList(sortedKeys(sets[j]), 3)), true
 			}
 		}
 	}
 	return "", false
+}
+
+// sharesSlot reports whether two works sit at one slot (importer.SameSlot) of two series
+// that are one series spelled twice (titlerule.SameSeriesSpelling) - the question vetoDisjointSeries
+// asks of a pair the ids call disjoint.
+func (ix *index) sharesSlot(a, b string) bool {
+	for _, ma := range ix.memberships[a] {
+		sa := ix.seriesByID[ma.series]
+		if sa == nil {
+			continue
+		}
+		for _, mb := range ix.memberships[b] {
+			sb := ix.seriesByID[mb.series]
+			if sb != nil && titlerule.SameSeriesSpelling(sa.Name, sb.Name) && sameStatedSlot(ma.position, mb.position) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// sameStatedSlot is importer.SameSlot over two positions that each STATE a slot. SameSlot
+// calls two equal strings one slot before it parses anything, so two empty or two
+// unparseable positions would agree - which says nothing about where either work sits,
+// and is no evidence that two series are one.
+func sameStatedSlot(a, b string) bool {
+	_, okA := importer.PositionSpan(a)
+	_, okB := importer.PositionSpan(b)
+	return okA && okB && importer.SameSlot(a, b)
 }
 
 func sortedKeys[V any](m map[string]V) []string {

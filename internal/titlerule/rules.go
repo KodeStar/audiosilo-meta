@@ -27,6 +27,7 @@ package titlerule
 
 import (
 	"regexp"
+	"slices"
 	"strings"
 	"sync"
 	"unicode"
@@ -456,9 +457,22 @@ func stripVolumePhrases(s string) string {
 // model.Slugify, which strips them and so WELDS the words either side: "L'integrale"
 // became the single token "lintegrale", which no vocabulary holds, and a French
 // omnibus therefore read as a book title.
-var apostropheSplit = strings.NewReplacer(
-	"'", " ", "’", " ", "‘", " ", "´", " ", "`", " ", "ʼ", " ", "ʻ", " ",
-)
+var apostropheSplit = glyphReplacer(apostropheGlyphs, " ")
+
+// apostropheGlyphs are the characters a title or a series name spells an apostrophe
+// with: the straight one first, then the typographic and accent stand-ins retailers
+// use. It is the ONE list - apostropheSplit (word boundaries) and apostropheFold (the
+// series-name match) are both built from it.
+var apostropheGlyphs = []string{"'", "’", "‘", "´", "`", "ʼ", "ʻ"}
+
+// glyphReplacer is a strings.Replacer mapping every glyph to `to`.
+func glyphReplacer(glyphs []string, to string) *strings.Replacer {
+	pairs := make([]string, 0, 2*len(glyphs))
+	for _, g := range glyphs {
+		pairs = append(pairs, g, to)
+	}
+	return strings.NewReplacer(pairs...)
+}
 
 // identityWords splits a text into the ASCII-folded words the vocabulary tests read.
 //
@@ -728,28 +742,209 @@ func FoldKey(s string) string { return strings.ReplaceAll(model.Slugify(s), "-",
 // tree), so the memo is bounded by the catalogue rather than by traffic. A
 // long-lived consumer that walked unbounded user input through it would want its own
 // cache instead; nothing in this module does.
-var formsMemo sync.Map // string -> []string
+var formsMemo sync.Map // string -> seriesFormSet
+
+// seriesFormSet is one memo entry: the forms, and each form lowered through lowerFold -
+// what SeriesRefIn compares, computed once per name rather than once per probe.
+type seriesFormSet struct {
+	forms   []string
+	lowered []string
+}
+
+func seriesFormsOf(series string) seriesFormSet {
+	if v, ok := formsMemo.Load(series); ok {
+		return v.(seriesFormSet)
+	}
+	set := seriesFormSet{forms: seriesForms(series)}
+	set.lowered = make([]string, len(set.forms))
+	for i, f := range set.forms {
+		set.lowered[i] = lowerFold(f)
+	}
+	formsMemo.Store(series, set)
+	return set
+}
 
 // SeriesForms enumerates the spellings one series name appears in, most specific
 // first. It is seriesForms memoized; the returned slice must not be modified.
-func SeriesForms(series string) []string {
-	if v, ok := formsMemo.Load(series); ok {
-		return v.([]string)
-	}
-	forms := seriesForms(series)
-	formsMemo.Store(series, forms)
-	return forms
-}
+func SeriesForms(series string) []string { return seriesFormsOf(series).forms }
 
 // SeriesRefIn reports which spelling of series occurs in lowerTitle (an
-// already-lowercased title), at alphanumeric boundaries.
+// already-lowercased title), at alphanumeric boundaries. Apostrophe glyphs are folded
+// on both sides (lowerFold), so the caller's lowering need not know about them.
 func SeriesRefIn(lowerTitle, series string) (string, bool) {
-	for _, form := range SeriesForms(series) {
-		if containsPhraseLower(lowerTitle, form) {
-			return form, true
+	lowerTitle = foldApostrophes(lowerTitle) // already lowered by the caller
+	set := seriesFormsOf(series)
+	for i, lowered := range set.lowered {
+		if containsPhraseLower(lowerTitle, lowered) {
+			return set.forms[i], true
 		}
 	}
 	return "", false
+}
+
+// THE PUNCTUATION FOLD. A title typeset by a retailer carries the curly apostrophe and a
+// spaced dash where the catalogue's series record has the straight apostrophe and a
+// colon - "The Tournament at Gorlan: Ranger’s Apprentice - The Early Years, Book 1"
+// against the series "Ranger's Apprentice: The Early Years" - and the two are one name.
+// The fold has two halves, because the two classes behave differently:
+//
+//   - an APOSTROPHE is the same character whichever glyph spells it, so it is folded on
+//     BOTH sides of every comparison (lowerFold, which the copied matchers lower
+//     through - delta (9) in match.go). Nothing is expanded and nothing is written: the
+//     removal still cuts the ORIGINAL string, so a retitle keeps the title's own glyph.
+//   - a SEPARATOR is not one character: ": " and " - " are different widths and a colon
+//     is not always a dash. So a series name containing one is EXPANDED into its other
+//     spellings (withSeparatorVariants), at most three, and ONE-WAY: a colon in the NAME
+//     may be read as a spaced dash in the title (and one dash as the other), never a dash
+//     in the name as a colon in the title. A colon in a title is where the book's own
+//     title ends far more often than it is inside a series name, and the reverse fold read
+//     "Quicksilver: Saga Alquimia & Fae, Vol. 1" as the series "Quicksilver - Saga
+//     Alquimia" plus " & Fae" - a work in both series, retitled to "Quicksilver: Saga
+//     Alquimia & Fae" instead of "Quicksilver" (measured: the one regression the
+//     symmetric fold made over the real tree). The dashes are spaced on purpose: an
+//     unspaced hyphen is part of a word ("Spider-Man").
+//
+// Either way a title only ever matches a name it spells with the other glyph, so every
+// title the fold changes behaves exactly as its straight-punctuation twin always did. The
+// measurement is on CLAUDE.md's internal/titlerule entry.
+
+// apostropheFold maps every apostrophe glyph onto the straight one, and
+// apostropheStandIns are the glyphs it has anything to do for.
+var (
+	apostropheFold     = glyphReplacer(apostropheGlyphs[1:], "'")
+	apostropheStandIns = strings.Join(apostropheGlyphs[1:], "")
+	// apostropheAny is every glyph, the straight one included - what SpelledAsIn asks
+	// a form for before it does any work.
+	apostropheAny = strings.Join(apostropheGlyphs, "")
+)
+
+// lowerFold is strings.ToLower with every apostrophe glyph folded to the straight one -
+// what a series form and the text it is looked for in are both lowered through. A text
+// with no stand-in glyph costs nothing beyond the ToLower.
+func lowerFold(s string) string { return foldApostrophes(strings.ToLower(s)) }
+
+// foldApostrophes maps every apostrophe glyph in s onto the straight one; a string
+// holding none is returned as it came.
+func foldApostrophes(s string) string {
+	if !hasApostropheStandIn(s) {
+		return s
+	}
+	return apostropheFold.Replace(s)
+}
+
+// hasApostropheStandIn reports whether s holds an apostrophe glyph other than the
+// straight one. Every stand-in but the backtick is non-ASCII, so an ASCII string is
+// settled by one byte scan and only a non-ASCII tail pays for the set lookup.
+func hasApostropheStandIn(s string) bool {
+	for i := 0; i < len(s); i++ {
+		if c := s[i]; c == '`' || c >= utf8.RuneSelf {
+			return strings.ContainsAny(s[i:], apostropheStandIns)
+		}
+	}
+	return false
+}
+
+// lowerFoldRuneLen is len(lowerFold(string(r))) without building the string - the
+// width removeFoldBounded's offset mapping advances by for one rune of the original.
+// (strings.ToLower lowers rune by rune through unicode.ToLower, and an invalid byte
+// ranges as utf8.RuneError, which it writes out at RuneError's width.)
+func lowerFoldRuneLen(r rune) int {
+	if r != '\'' && strings.ContainsRune(apostropheStandIns, r) {
+		return 1
+	}
+	return utf8.RuneLen(unicode.ToLower(r))
+}
+
+// LowerFold is lowerFold for a caller outside this package that compares a text against
+// series forms itself (internal/audit's series-name index) and must lower both sides
+// the way SeriesRefIn does.
+func LowerFold(s string) string { return lowerFold(s) }
+
+// SpelledAsIn returns form with its apostrophes spelled as text spells the span
+// [start, end) of LowerFold(text) - the series form a title was matched against, written
+// the way the TITLE writes it. A caller that reports the form it found (internal/audit's
+// series-name index) names "MARVEL’s Avengers" for a title typeset with the curly glyph,
+// as it did when each glyph was a spelling of its own. A span holding no apostrophe, or
+// one the title spells straight, returns form unchanged.
+func SpelledAsIn(form, text string, start, end int) string {
+	if !strings.ContainsAny(form, apostropheAny) {
+		return form
+	}
+	lowered := 0
+	for _, r := range text {
+		if lowered >= end {
+			break
+		}
+		if lowered >= start && r != '\'' && strings.ContainsRune(apostropheStandIns, r) {
+			return glyphReplacer(apostropheGlyphs, string(r)).Replace(form)
+		}
+		lowered += lowerFoldRuneLen(r)
+	}
+	return apostropheFold.Replace(form)
+}
+
+// colonGlyphs and dashGlyphs are the separator spellings a series name's ": " and its
+// spaced dashes are expanded into (see THE PUNCTUATION FOLD).
+var (
+	colonGlyphs = []string{": ", " - ", " – "}
+	dashGlyphs  = []string{" - ", " – "}
+	// separatorSpellings are the replacers withSeparatorVariants applies, built once: one
+	// per (colon spelling, dash spelling) pair, each rewriting a name's colons to the
+	// first and its dashes to the second IN ONE PASS - so a colon may become a dash but a
+	// dash is never rewritten as a colon, even in a name holding both ("Star Wars:
+	// Episode I - The Phantom Menace").
+	separatorSpellings = func() []*strings.Replacer {
+		var out []*strings.Replacer
+		for _, c := range colonGlyphs {
+			for _, d := range dashGlyphs {
+				out = append(out, strings.NewReplacer(": ", c, " - ", d, " – ", d))
+			}
+		}
+		return out
+	}()
+	// separatorWeight weighs every separator as ": " (FormWeight).
+	separatorWeight = glyphReplacer(colonGlyphs, ": ")
+)
+
+// withSeparatorVariants returns forms followed by every separator spelling of each form
+// that holds a separator (each class replaced uniformly within one spelling),
+// duplicates dropped. It is what seriesForms returns through - delta (9) - so FINDING a
+// series name in a title and REMOVING it read the same spellings. A list with no
+// separator in any form - nearly every series name - is returned as it came, with no
+// allocation. The list is clipped before it grows, so an append never writes into a
+// caller's spare capacity.
+func withSeparatorVariants(forms []string) []string {
+	if !slices.ContainsFunc(forms, hasSeparatorGlyph) {
+		return forms
+	}
+	out := slices.Clip(forms)
+	for _, f := range forms {
+		if !hasSeparatorGlyph(f) {
+			continue
+		}
+		for _, r := range separatorSpellings {
+			if v := r.Replace(f); !slices.ContainsFunc(out, func(o string) bool { return strings.EqualFold(o, v) }) {
+				out = append(out, v)
+			}
+		}
+	}
+	return out
+}
+
+// FormWeight is a series form's length for choosing the LONGEST of several matched
+// spellings, with every separator weighed as ": " - so the variants withSeparatorVariants
+// adds weigh what the spelling they vary weighs, and a variant's wider dash cannot make a
+// shorter series name out-length a longer one.
+func FormWeight(form string) int {
+	if !hasSeparatorGlyph(form) {
+		return len(form)
+	}
+	return len(separatorWeight.Replace(form))
+}
+
+// hasSeparatorGlyph reports whether a form holds a separator the fold expands.
+func hasSeparatorGlyph(f string) bool {
+	return strings.Contains(f, ": ") || strings.Contains(f, " - ") || strings.Contains(f, " – ")
 }
 
 // BareSeq derives the volume number a title itself spells out, against a series
@@ -1157,6 +1352,19 @@ const (
 	// ("Scarlet and Ivy: Audio Collection Books 1-3" reduces to "Scarlet and
 	// Ivy"), which would make a collection indistinguishable from its series.
 	RefuseResultIsSeriesName = "result-is-the-series-name"
+	// RefuseUnnamedPart: the strip removed the series name from the FRONT of the title
+	// and what is left is a PART of that series rather than the name of a book - a
+	// COLLECTION statement ("Charassi’s Fae Queen: Six Book World Boxset" reduces to
+	// "Six Book World Boxset") or a division or volume of it ("Hitchhiker’s Guide to
+	// Heaven and Hell: Compete Season One" to "Compete Season One"). A box set and a
+	// season are named by the series they belong to, so the name is the part that has
+	// to stay. See statesPart.
+	RefuseUnnamedPart = "residual-is-a-part"
+	// RefuseCutsRange: the title states a numeric RANGE and the proposal keeps one end
+	// of it without the other - "Milf’s Threesomes 4-Pack: Books 13 - 16" became
+	// "...: Books 13", because the dangling-tail peel reads " - 16" as a stray volume
+	// segment. A range is one statement; half of it is a different, false one.
+	RefuseCutsRange = "proposal-cuts-a-range"
 )
 
 // RefusalCodes lists every code StripDecoration can refuse with.
@@ -1169,6 +1377,7 @@ func RefusalCodes() []string {
 	return []string{
 		RefuseNothingToStrip, RefuseNoIdentity, RefuseFragment,
 		RefuseIsSeriesName, RefuseResultIsSeriesName,
+		RefuseUnnamedPart, RefuseCutsRange,
 	}
 }
 
@@ -1191,13 +1400,17 @@ func ProposeTitle(title, series string) (string, bool) {
 func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 	orig := strings.TrimSpace(title)
 	s := dropWideGenreSubtitle(StripTitleQualifiers(orig))
+	forms := SeriesForms(series)
+	stripped := false // whether a series name came off at a title boundary
 	if series != "" {
 		if SameModuloArticles(orig, series) {
 			return "", RefuseIsSeriesName, false
 		}
-		s = stripSeriesAtBoundary(s, SeriesForms(series))
+		before := s
+		s = stripSeriesAtBoundary(s, forms)
+		stripped = s != before
 	}
-	s = dropDecorativeGroups(s, SeriesForms(series))
+	s = dropDecorativeGroups(s, forms)
 	s = tidyTitle(markerSeq.ReplaceAllString(s, " "))
 	s = tidyTitle(wordVolumeMarker.ReplaceAllString(s, " "))
 	s = tidyTitle(fluffWords.ReplaceAllString(s, " "))
@@ -1207,6 +1420,15 @@ func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 	s = peel(s, dropDanglingTailOnce)
 	s = trimStopwordTail(s)
 
+	// beheaded: the series name came off the FRONT, so what is left is whatever the
+	// title said after it - which is where a collection or a season of that series
+	// states itself. A name removed from the tail or a bracket leaves the title's own
+	// head ("First Command Box Set: Spacers, Books 1-6" is still "First Command Box
+	// Set"), and the part refusal below is not asked of it. The head is compared by its
+	// first two SIGNIFICANT words, so a shared article ("The History of Rome: The
+	// Complete Works") or a shared first word ("Rite World: Rite of the Wolf") is not
+	// mistaken for the title's own head surviving.
+	beheaded := stripped && leadingWords(s) != leadingWords(orig)
 	switch {
 	case s == "" || s == orig || len(s) > len(orig):
 		return "", RefuseNothingToStrip, false
@@ -1221,8 +1443,77 @@ func StripDecoration(title, series string) (proposed, refusal string, ok bool) {
 		// same test on the original catches only the titles that were already the
 		// series name; this one catches the ones the strip turns into it.
 		return "", RefuseResultIsSeriesName, false
+	case beheaded && statesPart(s):
+		return "", RefuseUnnamedPart, false
+	case cutsRange(orig, s):
+		return "", RefuseCutsRange, false
 	}
 	return s, "", true
+}
+
+// statesPart reports whether a residual is a PART of a series rather than a name: a
+// collection statement (IsCollection), or one still stating a division or a volume
+// (divisionSequenceOf).
+func statesPart(s string) bool { return IsCollection(s) || len(divisionSequenceOf(s)) > 0 }
+
+// leadingWords is the first two significant words of s (identityWords filtered by
+// significantToken), joined - what a title's head is compared by.
+func leadingWords(s string) string {
+	var out []string
+	for _, w := range identityWords(s) {
+		if significantToken(w) {
+			if out = append(out, w); len(out) == 2 {
+				break
+			}
+		}
+	}
+	return strings.Join(out, " ")
+}
+
+// statedRange matches a numeric range as a title writes one, with or without spaces
+// around the dash.
+var statedRange = regexp.MustCompile(`(\d+)\s*[-–]\s*(\d+)`)
+
+// wordBefore and wordAfter are the context cutsRange recognizes a range's two ends by:
+// the word in front of the low end (and the spaces after it), and the text through the
+// next word after the high end.
+var (
+	wordBefore = regexp.MustCompile(`[^ ]+ *$`)
+	wordAfter  = regexp.MustCompile(`^[^0-9A-Za-z_]*[^ ]*`)
+)
+
+// cutsRange reports whether a proposal keeps one END of a range the title states
+// without the range itself. Each end is recognized by its own context in the title, so
+// an unrelated number elsewhere is not mistaken for it: the LOW end with the word in
+// front of it ("Books 13" of "Books 13 - 16"), the HIGH end with the word after it
+// ("6: Scary" of "Books 1 - 6: Scary ...") or, at the end of the title, with the dash
+// in front of it ("-8" of "Star Wars Episode 1-8"). Dropping the whole range is not a
+// cut - "Omnibus 1: Books 1-3" to "Omnibus 1" is the existing collection shape, and
+// the "1" left in it is the omnibus' own number.
+func cutsRange(orig, proposed string) bool {
+	if !strings.ContainsAny(orig, "-–") || !strings.ContainsAny(orig, "0123456789") {
+		return false
+	}
+	for _, m := range statedRange.FindAllStringSubmatchIndex(orig, -1) {
+		if strings.Contains(proposed, orig[m[0]:m[1]]) {
+			continue
+		}
+		if w := wordBefore.FindString(orig[:m[2]]); w != "" && strings.Contains(proposed, w+orig[m[2]:m[3]]) {
+			return true
+		}
+		// At the end of the title the high end is recognized by the dash in front of it,
+		// with the dash's own spacing ("-8", "- 8") - never by a bare " 8", which any
+		// number in the proposal starting with that digit would contain ("Agent 6: The
+		// Agent Series, Books 4 - 6" keeps the whole-range drop "Agent 6").
+		hi := strings.TrimLeft(orig[m[3]:m[5]], " ")
+		if rest := orig[m[5]:]; strings.TrimSpace(rest) != "" {
+			hi = orig[m[4]:m[5]] + wordAfter.FindString(rest)
+		}
+		if strings.Contains(proposed, hi) {
+			return true
+		}
+	}
+	return false
 }
 
 // ---- decoration detectors ----------------------------------------------------
