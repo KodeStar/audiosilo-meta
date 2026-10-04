@@ -197,13 +197,10 @@ type langMix struct {
 	ix    *index
 	locks mixLocks
 	prof  *check.NarrationProfile
-	// byName buckets series by their name over the edition decoration's base, and
-	// neighbours are the translation_of links in either direction: the two ways a
-	// series in another language is "this series" for move-membership.
-	byName     map[string][]*model.Series
-	neighbours map[string][]string
-	// primaries are the series some variant names as its ordering_of.
-	primaries map[string]bool
+	// byName buckets series by their name over the edition decoration's base: with the
+	// index's translationNeighbours, the two ways a series in another language is "this
+	// series" for move-membership.
+	byName map[string][]*model.Series
 	// personLangs is each author's works per primary language over the whole
 	// catalogue, the HOME signal's evidence, built on first use.
 	personLangs map[string]map[string]int
@@ -245,8 +242,6 @@ func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 		ix: ix, locks: locks,
 		prof:             check.NewNarrationProfile(ix.cat),
 		byName:           map[string][]*model.Series{},
-		neighbours:       map[string][]string{},
-		primaries:        map[string]bool{},
 		f:                &findings{class: ClassLangMix},
 		wantLanguage:     map[string]*languageCandidate{},
 		titleSeriesWorks: map[string]bool{},
@@ -254,13 +249,6 @@ func detectLanguageMix(ix *index, locks mixLocks) (*findings, langMixStats) {
 	for _, s := range ix.cat.Series {
 		if k := seriesBaseKey(s.Name); k != "" {
 			m.byName[k] = append(m.byName[k], s)
-		}
-		for _, t := range s.TranslationOf {
-			m.neighbours[s.ID] = append(m.neighbours[s.ID], t)
-			m.neighbours[t] = append(m.neighbours[t], s.ID)
-		}
-		if s.OrderingOf != "" {
-			m.primaries[s.OrderingOf] = true
 		}
 	}
 	series := slices.Clone(ix.cat.Series)
@@ -621,9 +609,9 @@ func (m *langMix) seriesVetoes(s *model.Series, byLang map[string][]model.Series
 	if _, lang, ok := titlerule.SplitEditionName(s.Name); ok && lang != keeper {
 		out = append(out, fmt.Sprintf("the name %q states the %s edition, but %s keeps the slug", s.Name, lang, keeper))
 	}
-	if s.Ordering != "" || s.OrderingOf != "" || m.primaries[s.ID] {
+	if s.Ordering != "" || m.ix.inOrderingFamily(s.ID) {
 		out = append(out, fmt.Sprintf("%s is in an ordering family (ordering %q, ordering_of %q, a primary: %v), and the "+
-			"series a member moves to would state no ordering", s.ID, s.Ordering, s.OrderingOf, m.primaries[s.ID]))
+			"series a member moves to would state no ordering", s.ID, s.Ordering, s.OrderingOf, len(m.ix.variantsOf[s.ID]) > 0))
 	}
 	if by, locked := m.locks.series[s.ID]; locked {
 		out = append(out, fmt.Sprintf("%s is merged by %s in this audit", s.ID, by))
@@ -700,7 +688,7 @@ func (m *langMix) targets(s *model.Series, lang string) []*model.Series {
 	for _, t := range m.byName[seriesBaseKey(s.Name)] {
 		set[t.ID] = t
 	}
-	for _, id := range m.neighbours[s.ID] {
+	for _, id := range m.ix.translationNeighbours[s.ID] {
 		if t := m.ix.seriesByID[id]; t != nil {
 			set[id] = t
 		}
@@ -903,7 +891,7 @@ func (m *langMix) splitFinding(s *model.Series, members []*mixMember, keepers []
 			"re-derives the slug)", keeper, s.ID, how, lang, s.Name, orDash(slug)),
 		"moving, positions preserved: " + truncateList(sortedUnique(positions), 12),
 	}
-	if len(s.TranslationOf) > 0 || len(m.neighbours[s.ID]) > 0 {
+	if len(s.TranslationOf) > 0 || m.ix.translationLinked(s.ID) {
 		fd.Notes = append(fd.Notes, fmt.Sprintf("%s's translation links stay on %s; the new series states none", s.ID, s.ID))
 	}
 	return fd, vetoes

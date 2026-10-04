@@ -18,6 +18,11 @@ var opPhrase = map[string]func(Proposal) string{
 		return "review as one work: fold " + truncateList(p.Others, 8) + " onto " + p.Target
 	},
 	OpMergeSeries: func(p Proposal) string {
+		if p.Field == FieldPosition {
+			// SER-DUP's family-renumbered fold: the target's numbers are the ones kept.
+			return "review as one series: fold " + truncateList(p.Others, 8) + " onto " + p.Target + ", keeping " +
+				p.Target + "'s numbering (" + truncateList(p.Others, 8) + "'s positions are dropped)"
+		}
 		return "review as one series: fold " + truncateList(p.Others, 8) + " onto " + p.Target
 	},
 	OpRetitle: func(p Proposal) string {
@@ -221,6 +226,8 @@ func sampleLine(r Finding) string {
 	parts := []string{"`" + r.Key + "`"}
 	p := r.Propose
 	switch {
+	case p.Op == OpMergeSeries && p.Field == FieldPosition:
+		parts = append(parts, truncateList(seriesNames(r.Series), 4)+" (keeping the target's numbering)")
 	case p.Field != "" && p.From == "" && p.To == "":
 		parts = append(parts, p.Field+" missing")
 	case p.Field != "" && p.To == "":

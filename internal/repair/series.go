@@ -19,8 +19,22 @@ import (
 // staged merge to pkg/check's link rules (a chain, a second hop, two series of one
 // ordering in a family are refused; a merge that promotes or moves a variant is refused
 // before anything is re-pointed).
+//
+// Field audit.FieldPosition is SER-DUP's family-renumbered fold (internal/audit/seriesfamily.go):
+// a loser stating the target's ordering under other NUMBERS. There a loser membership
+// whose work the target lists at another slot is not a conflict - the target's slot is
+// kept and the loser's number is NAMED in the notes through noteLost, the one loss
+// format - while a loser membership the target does not list at all still refuses: a
+// renumbered fold only ever retires a spelling, it never adds to an ordering. No other
+// field names a merge-series, so any other is malformed rather than ignored.
 func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 	target := fd.Propose.Target
+	if f := fd.Propose.Field; f != "" && f != audit.FieldPosition {
+		return refusef(CatMalformed, "merge-series names field %q; the only merge-series field is %q "+
+			"(keep the target's numbering)", f, audit.FieldPosition)
+	}
+	// The explicit opt-in a reviewer accepted: never inferred from the lists.
+	renumbered := fd.Propose.Field == audit.FieldPosition
 	te, sorted, loserEntries, err := t.loadCluster(pack.FamilySeries, "series", fd.Propose)
 	if err != nil {
 		return err
@@ -46,9 +60,18 @@ func (rn *runner) mergeSeries(t *txn, fd audit.Finding) error {
 				if importer.SameSlot(have, sw.Position) {
 					continue // the same membership, spelled in two series
 				}
+				if renumbered {
+					t.noteLost([]mergedFacts{{field: "position of " + sw.Work, kept: have, dropped: sw.Position}}, slug)
+					continue
+				}
 				return refusef(CatPositionConflict,
 					"%s lists %s at position %q while %s lists it at %q: two orderings are not one series",
 					target, sw.Work, have, slug, sw.Position)
+			}
+			if renumbered {
+				return refusef(CatPositionConflict,
+					"%s lists %s at %q and %s does not list it: a renumbered fold keeps the target's numbering and only "+
+						"retires a spelling, so it never adds a membership", slug, sw.Work, sw.Position, target)
 			}
 			if other, taken := byPosition[slotKey(sw.Position)]; taken {
 				return refusef(CatPositionConflict,
