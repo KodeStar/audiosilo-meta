@@ -3,11 +3,8 @@
 #
 # Usage:
 #   bash .github/scripts/real-data-report.sh summarize <test-log>
-#       Print the bounded failure summary of a `go test` log on stdout: every
-#       `--- FAIL:` line (subtests included), every package `FAIL` line and the
-#       first `panic:` with the few lines after it (a -timeout kill names the
-#       tests still running there), at most MAX_LINES lines of at
-#       most MAX_WIDTH bytes each, then one "... and N more" line.
+#       Print the bounded failure summary of a `go test` log on stdout (the
+#       FAIL and panic lines; at most MAX_LINES lines of MAX_WIDTH bytes).
 #
 #   bash .github/scripts/real-data-report.sh report
 #       env: GH_TOKEN, GITHUB_REPOSITORY, RESULT (the test job's
@@ -18,11 +15,7 @@
 #       job timeout lands here too) opens the tracking issue, or comments on it
 #       when one is already open, naming the run, the commit and the failures.
 #
-# WHY THIS EXISTS: the real-data tests skip under -race (race_{on,off}_test.go),
-# and the pull-request gate is `go test -race ./...`, so they ran nowhere and a
-# red one sat on main unnoticed - twice. A scheduled run fixes WHERE they run;
-# a failed scheduled run is just as easy to miss, so this is the half that
-# makes somebody see it.
+# Why it exists: see the header of .github/workflows/real-data.yml.
 #
 # ONE OPEN ISSUE, identified by the LABEL (not the title, which a human may
 # edit): a failure while it is open is a comment on it, never a second issue,
@@ -64,12 +57,27 @@ open_issue() {
     --json number --jq 'sort_by(.number) | .[0].number // empty'
 }
 
+# The issue body for a run that did not pass (reads RESULT, SHA, RUN_URL, FAILURES).
+failure_body() {
+  echo "The scheduled non-race test run ended \`${RESULT}\` at ${SHA}."
+  echo
+  echo "Run: ${RUN_URL}"
+  echo
+  echo "Failing tests (from the log, bounded):"
+  echo
+  echo '```'
+  printf '%s\n' "${FAILURES:-(no summary was produced; see the run)}"
+  echo '```'
+  echo
+  echo "These tests read the real data/ tree and skip under -race, so the pull-request gate never runs them. Reproduce with \`go test -count=1 ./...\` (no -race). This issue closes itself on the next green run."
+}
+
 report() {
   : "${GITHUB_REPOSITORY:?GITHUB_REPOSITORY must be set}"
   : "${RESULT:?RESULT must be the test job result}"
   : "${RUN_URL:?RUN_URL must be set}"
   : "${SHA:?SHA must be set}"
-  local issue body
+  local issue
   issue="$(open_issue)"
 
   if [ "$RESULT" = "success" ]; then
@@ -83,32 +91,16 @@ report() {
     return 0
   fi
 
-  body="$(mktemp)"
-  {
-    echo "The scheduled non-race test run ended \`${RESULT}\` at ${SHA}."
-    echo
-    echo "Run: ${RUN_URL}"
-    echo
-    echo "Failing tests (from the log, bounded):"
-    echo
-    echo '```'
-    printf '%s\n' "${FAILURES:-(no summary was produced; see the run)}"
-    echo '```'
-    echo
-    echo "These tests read the real data/ tree and skip under -race, so the pull-request gate never runs them. Reproduce with \`go test -count=1 ./...\` (no -race). This issue closes itself on the next green run."
-  } > "$body"
-
   if [ -n "$issue" ]; then
-    gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body-file "$body"
+    failure_body | gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body-file -
     echo "real-data tests ${RESULT}; commented on #${issue}."
   else
     gh label create "$LABEL" --repo "$GITHUB_REPOSITORY" --color B60205 \
       --description "The scheduled real-data test run (real-data.yml) is failing" --force
-    gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" \
-      --label "$LABEL" --body-file "$body"
+    failure_body | gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" \
+      --label "$LABEL" --body-file -
     echo "real-data tests ${RESULT}; opened a ${LABEL} issue."
   fi
-  rm -f "$body"
 }
 
 case "${1:-}" in

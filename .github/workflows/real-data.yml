@@ -41,12 +41,10 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Not yet observed on a runner. Measured locally on the 282k-work tree: the
-    # whole non-race suite 1m28s on 20 cores, 2m56s with -p 2 at GOMAXPROCS=4,
-    # ~800s of CPU either way. check.yml's runner takes ~4x the local time for
-    # the -race suite and ~3m20s to check the tree out, which puts this job at
-    # roughly 11-16 minutes. About twice that; re-size it once a run is
-    # observed.
+    # Not yet observed on a runner, so this is an ESTIMATE to re-size after the
+    # first runs: ~900s of CPU (measured locally on the 282k-work tree, 2m56s
+    # wall at -p 2 / GOMAXPROCS=4) is roughly 4-8 minutes on the runner's four
+    # cores, plus ~3m20s to check the tree out (check.yml's runs).
     timeout-minutes: 35
     outputs:
       failures: ${{ steps.summary.outputs.failures }}
@@ -68,16 +66,12 @@ jobs:
       - name: Test (no -race, the real tree included)
         id: test
         shell: bash
-        # -count=1: setup-go restores the build cache, which carries the test
-        # result cache, and a cached pass would be no run at all.
-        # -p 2: three real-data packages (pkg/check, internal/importer,
-        # internal/repair) each peak at ~3.5GB resident loading the tree, and
-        # the runner has 16GB - two at a time keeps an OOM kill from posing as
-        # a red test, and costs little wall time on four CPUs the loaders
-        # already saturate.
-        # -timeout is per test binary, longer than any package takes and
-        # shorter than the job, so a hang panics with the names of the tests it
-        # was running (which the summary keeps) instead of being killed blind.
+        # -count=1: the restored build cache carries test results, and a
+        # cached pass is no run. -p 2: pkg/check, internal/importer and
+        # internal/repair each peak at ~3.5GB loading the tree on a 16GB
+        # runner, so two at a time keeps an OOM kill from posing as a red
+        # test. -timeout (per binary, inside the job's) makes a hang panic
+        # with the running tests' names, which the summary keeps.
         run: |
           set -o pipefail
           go test -count=1 -p 2 -timeout 20m ./... 2>&1 | tee "$RUNNER_TEMP/test.log"
