@@ -1,6 +1,7 @@
 package titlerule
 
 import (
+	"slices"
 	"strings"
 	"testing"
 )
@@ -124,5 +125,66 @@ func TestSpelledAsInWritesTheTitlesGlyph(t *testing.T) {
 	}
 	if got := SpelledAsIn("Ranger’s Apprentice", "Ranger's Apprentice", 0, 19); got != "Ranger's Apprentice" {
 		t.Errorf("SpelledAsIn = %q, want the title's straight glyph", got)
+	}
+}
+
+// ONE-WAY in a name holding BOTH separators: its colon may be read as a dash, its dash
+// is never read as a colon.
+func TestSeparatorVariantsOfAMixedNameNeverColonizeADash(t *testing.T) {
+	const name = "Star Wars: Episode I - The Phantom Menace"
+	forms := withSeparatorVariants([]string{name})
+	for _, f := range forms {
+		if strings.Contains(f, "Episode I: ") {
+			t.Errorf("variant %q reads the name's dash as a colon", f)
+		}
+	}
+	if !slices.Contains(forms, "Star Wars - Episode I - The Phantom Menace") {
+		t.Errorf("forms = %q, want the colon read as a dash", forms)
+	}
+	if _, ok := SeriesRefIn("phantom: star wars: episode i: the phantom menace", name); ok {
+		t.Error("a title colon matched the name's dash")
+	}
+}
+
+// The list a caller hands in is never written through its spare capacity.
+func TestSeparatorVariantsDoNotWriteIntoTheCallersSlice(t *testing.T) {
+	backing := make([]string, 1, 4)
+	backing[0] = "Ranger's Apprentice: The Early Years"
+	spare := backing[:2]
+	spare[1] = "untouched"
+	_ = withSeparatorVariants(backing)
+	if spare[1] != "untouched" {
+		t.Errorf("withSeparatorVariants wrote %q into the caller's spare capacity", spare[1])
+	}
+}
+
+func TestCutsRange(t *testing.T) {
+	for _, c := range []struct {
+		orig, proposed string
+		want           bool
+	}{
+		// A year range kept whole, dropped whole, and cut.
+		{"The Great War, 1914-1918 (Unabridged)", "The Great War, 1914-1918", false},
+		{"The Great War: 1914-1918", "The Great War", false},
+		{"The Great War 1914-1918", "The Great War 1914", true},
+		// A range at the very start of the title: no word in front of the low end, so only
+		// the high end with the word after it can show a cut.
+		{"1-3: The Omnibus", "3: The Omnibus", true},
+		{"1-3: The Omnibus", "The Omnibus", false},
+		// An en dash, at the end and mid-title.
+		{"Russia's Last Gasp: The Eastern Front 1916–17", "Russia's Last Gasp", false},
+		{"Russia's Last Gasp: The Eastern Front 1916–17", "The Eastern Front 1916", true},
+		{"Star Wars Episode 1–8", "Star Wars –8", true},
+		{"Books 1 – 3: Origins", "3: Origins", true},
+		// A spaced range at the end, whose bare high end is also an unrelated number.
+		{"Agent 6: The Agent Series, Books 4 - 6", "Agent 6", false},
+	} {
+		if got := cutsRange(c.orig, c.proposed); got != c.want {
+			t.Errorf("cutsRange(%q, %q) = %v, want %v", c.orig, c.proposed, got, c.want)
+		}
+	}
+	// The whole strip keeps a year range a title states.
+	if got, _, ok := StripDecoration("The Great War, 1914-1918 (Unabridged)", ""); !ok || got != "The Great War, 1914-1918" {
+		t.Errorf("StripDecoration = %q, %v", got, ok)
 	}
 }

@@ -635,6 +635,24 @@ func TestEveryStripRefusalIsClassified(t *testing.T) {
 	}
 }
 
+// The two refusals that withhold a strip because it would LOSE part of what the title
+// says - the series a collection or a season belongs to, half of a range - keep the
+// title as submitted: the submission proceeds, it is not handed to a maintainer.
+func TestPartAndRangeRefusalsKeepTheTitleAsSubmitted(t *testing.T) {
+	for _, c := range []struct{ title, series, code string }{
+		{"Charassi’s Fae Queen: Six Book World Boxset", "Charassi's Fae Queen", titlerule.RefuseUnnamedPart},
+		{"Milf’s Threesomes 4-Pack: Books 13 - 16", "MILF's Threesomes", titlerule.RefuseCutsRange},
+	} {
+		if _, code, ok := titlerule.StripDecoration(c.title, c.series); ok || code != c.code {
+			t.Fatalf("StripDecoration(%q) = %q, %v; want the refusal %q", c.title, code, ok, c.code)
+		}
+		outcome, listed := decorationRefusals[c.code]
+		if !listed || outcome.reason != "" {
+			t.Errorf("%s: intake outcome = %+v (listed %v), want proceed with the title as submitted", c.code, outcome, listed)
+		}
+	}
+}
+
 // The tier discipline every duplicate gate shares: a collision with a record that is
 // still nothing but a libex mirror seed is needs-human (the submitter's data is
 // wanted, but a title match is not the ASIN match a takeover needs), not a closed

@@ -161,12 +161,16 @@ func TestStrippedSeriesVetoReadsEachJoinsDerivations(t *testing.T) {
 		{work: a, wk: workKey{key: "historyfrombeginningtoend", series: "Cold War", via: viaSeriesTail}},
 		{work: b, wk: workKey{key: "historyfrombeginningtoend", series: "The Hundred Years War", via: viaSeriesTail}},
 	}
-	if _, vetoed := vetoStrippedSeriesDiffers([][]dupMember{join}); !vetoed {
+	if _, vetoed := vetoStrippedSeriesDiffers([][]dupMember{join}, join); !vetoed {
 		t.Error("a pair that met only on a tail key escaped the stripped-series veto")
 	}
 	// Two different joins never compare across each other.
-	if _, vetoed := vetoStrippedSeriesDiffers([][]dupMember{join[:1], join[1:]}); vetoed {
+	if _, vetoed := vetoStrippedSeriesDiffers([][]dupMember{join[:1], join[1:]}, join); vetoed {
 		t.Error("the veto compared two members that never met on a key")
+	}
+	// No joins recorded: fail safe, every pair of the cluster is compared.
+	if _, vetoed := vetoStrippedSeriesDiffers(nil, join); !vetoed {
+		t.Error("a cluster with no joins recorded skipped the veto")
 	}
 }
 
@@ -194,5 +198,40 @@ func TestWorkTitleWithholdsAStripOfTheBooksOwnEditionSeries(t *testing.T) {
 				t.Errorf("advisory = %v, want %v (%s)", got[0].Propose.Advisory, c.advisory, got[0].Propose.Reason)
 			}
 		})
+	}
+}
+
+// Every cluster W-DUP proposes carries the joins the stripped-series veto reads: the
+// candidate built from one key (identityClusters) and the closure of overlapping ones.
+func TestEveryDupClusterRecordsItsJoins(t *testing.T) {
+	work := func(id string) *model.Work {
+		return &model.Work{ID: id, Language: "en", Authors: []string{"jane-doe"}}
+	}
+	ix := newIndex(&model.Catalog{})
+	g := identityClusters(ix, []dupMember{{work: work("a")}, {work: work("b")}})
+	if len(g) != 1 || len(g[0].joins) != 1 || len(g[0].joins[0]) != 2 {
+		t.Fatalf("identityClusters = %+v, want one cluster carrying its one join", g)
+	}
+	h := identityClusters(ix, []dupMember{{work: work("b")}, {work: work("c")}})
+	closed := closeClusters(append(g, h...))
+	if len(closed) != 1 || len(closed[0].joins) != 2 {
+		t.Fatalf("closeClusters = %+v, want one cluster carrying both joins", closed)
+	}
+}
+
+func TestSameStatedSlotNeedsAStatedPosition(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		want bool
+	}{
+		{"4", "04", true},
+		{"1-3", "1-3", true},
+		{"4", "5", false},
+		{"", "", false},
+		{"unknown", "unknown", false},
+	} {
+		if got := sameStatedSlot(c.a, c.b); got != c.want {
+			t.Errorf("sameStatedSlot(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
 	}
 }

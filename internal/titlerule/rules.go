@@ -888,21 +888,22 @@ func SpelledAsIn(form, text string, start, end int) string {
 var (
 	colonGlyphs = []string{": ", " - ", " – "}
 	dashGlyphs  = []string{" - ", " – "}
-	// colonTo and dashTo replace a whole class with one glyph, built once.
-	colonTo = func() []*strings.Replacer {
-		out := make([]*strings.Replacer, len(colonGlyphs))
-		for i, g := range colonGlyphs {
-			out[i] = glyphReplacer(colonGlyphs, g)
+	// separatorSpellings are the replacers withSeparatorVariants applies, built once: one
+	// per (colon spelling, dash spelling) pair, each rewriting a name's colons to the
+	// first and its dashes to the second IN ONE PASS - so a colon may become a dash but a
+	// dash is never rewritten as a colon, even in a name holding both ("Star Wars:
+	// Episode I - The Phantom Menace").
+	separatorSpellings = func() []*strings.Replacer {
+		var out []*strings.Replacer
+		for _, c := range colonGlyphs {
+			for _, d := range dashGlyphs {
+				out = append(out, strings.NewReplacer(": ", c, " - ", d, " – ", d))
+			}
 		}
 		return out
 	}()
-	dashTo = func() []*strings.Replacer {
-		out := make([]*strings.Replacer, len(dashGlyphs))
-		for i, g := range dashGlyphs {
-			out[i] = glyphReplacer(dashGlyphs, g)
-		}
-		return out
-	}()
+	// separatorWeight weighs every separator as ": " (FormWeight).
+	separatorWeight = glyphReplacer(colonGlyphs, ": ")
 )
 
 // withSeparatorVariants returns forms followed by every separator spelling of each form
@@ -910,20 +911,18 @@ var (
 // duplicates dropped. It is what seriesForms returns through - delta (9) - so FINDING a
 // series name in a title and REMOVING it read the same spellings. A list with no
 // separator in any form - nearly every series name - is returned as it came, with no
-// allocation.
+// allocation. The list is clipped before it grows, so an append never writes into a
+// caller's spare capacity.
 func withSeparatorVariants(forms []string) []string {
 	if !slices.ContainsFunc(forms, hasSeparatorGlyph) {
 		return forms
 	}
-	out := forms
+	out := slices.Clip(forms)
 	for _, f := range forms {
-		repl := dashTo
-		if strings.Contains(f, ": ") {
-			repl = colonTo
-		} else if !hasSeparatorGlyph(f) {
+		if !hasSeparatorGlyph(f) {
 			continue
 		}
-		for _, r := range repl {
+		for _, r := range separatorSpellings {
 			if v := r.Replace(f); !slices.ContainsFunc(out, func(o string) bool { return strings.EqualFold(o, v) }) {
 				out = append(out, v)
 			}
@@ -940,7 +939,7 @@ func FormWeight(form string) int {
 	if !hasSeparatorGlyph(form) {
 		return len(form)
 	}
-	return len(colonTo[0].Replace(form))
+	return len(separatorWeight.Replace(form))
 }
 
 // hasSeparatorGlyph reports whether a form holds a separator the fold expands.

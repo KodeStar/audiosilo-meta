@@ -500,7 +500,7 @@ func mergeVetoes(ix *index, c dupCluster, canon dupMember) []string {
 	if s, ok := vetoSlugOrdinal(members); ok {
 		out = append(out, s)
 	}
-	if s, ok := vetoStrippedSeriesDiffers(c.joins); ok {
+	if s, ok := vetoStrippedSeriesDiffers(c.joins, members); ok {
 		out = append(out, s)
 	}
 	if s, ok := vetoStatedVolumeElsewhere(ix, members); ok {
@@ -658,12 +658,22 @@ func (ix *index) sharesSlot(a, b string) bool {
 		}
 		for _, mb := range ix.memberships[b] {
 			sb := ix.seriesByID[mb.series]
-			if sb != nil && titlerule.SameSeriesSpelling(sa.Name, sb.Name) && importer.SameSlot(ma.position, mb.position) {
+			if sb != nil && titlerule.SameSeriesSpelling(sa.Name, sb.Name) && sameStatedSlot(ma.position, mb.position) {
 				return true
 			}
 		}
 	}
 	return false
+}
+
+// sameStatedSlot is importer.SameSlot over two positions that each STATE a slot. SameSlot
+// calls two equal strings one slot before it parses anything, so two empty or two
+// unparseable positions would agree - which says nothing about where either work sits,
+// and is no evidence that two series are one.
+func sameStatedSlot(a, b string) bool {
+	_, okA := importer.PositionSpan(a)
+	_, okB := importer.PositionSpan(b)
+	return okA && okB && importer.SameSlot(a, b)
 }
 
 func sortedKeys[V any](m map[string]V) []string {

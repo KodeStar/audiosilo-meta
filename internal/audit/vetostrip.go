@@ -38,7 +38,14 @@ import (
 // derivation a member carries in the closed cluster may not be the one a pair met on;
 // reading the join's own derivations is what puts a pair that met only on a spelling or
 // subseries-tail key under the rule.
-func vetoStrippedSeriesDiffers(joins [][]dupMember) (string, bool) {
+//
+// A cluster with NO joins recorded (every constructor here records them; one that did
+// not would be a bug) fails SAFE: all its members are compared as one join, which can
+// only withhold more merges, never fewer.
+func vetoStrippedSeriesDiffers(joins [][]dupMember, members []dupMember) (string, bool) {
+	if len(joins) == 0 {
+		joins = [][]dupMember{members}
+	}
 	for _, join := range joins {
 		for i := range join {
 			for j := i + 1; j < len(join); j++ {
