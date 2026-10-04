@@ -15,7 +15,8 @@ name: real-data
 # are real-data, and the next one added under a name it does not match would be
 # silently skipped here too - the exact failure this job exists to end. The
 # fixture tests cost about ten seconds beside the real-tree walks (measured
-# locally: 87.7s for the whole suite against 76.5s for the real-data tests alone).
+# locally at the default -p on 20 cores: 87.7s for the whole suite against
+# 76.5s for the real-data tests alone).
 #
 # A failed scheduled run is as easy to miss as a skipped test, so the report job
 # makes it VISIBLE: a failure opens (or comments on) ONE issue labelled

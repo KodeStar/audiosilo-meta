@@ -1,7 +1,6 @@
 package scripts_test
 
 import (
-	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -34,20 +33,21 @@ func realDataReport(t *testing.T, env []string, args ...string) (string, int) {
 	var stderr strings.Builder
 	cmd.Stderr = &stderr
 	out, err := cmd.Output()
-	code := 0
-	if err != nil {
-		var ee *exec.ExitError
-		if !errors.As(err, &ee) {
-			t.Fatalf("running the report script: %v", err)
-		}
-		code = ee.ExitCode()
+	if stderr.Len() > 0 {
 		t.Logf("stderr: %s", stderr.String())
+	}
+	if err == nil {
+		return string(out), 0
+	}
+	code := exitCode(err)
+	if code < 0 {
+		t.Fatalf("running the report script: %v", err)
 	}
 	return string(out), code
 }
 
-// summarize writes log (when non-nil) to a temp file and runs `summarize` on it.
-func summarize(t *testing.T, log *string) (string, int) {
+// runSummarize writes log (when non-nil) to a temp file and runs `summarize` on it.
+func runSummarize(t *testing.T, log *string) (string, int) {
 	t.Helper()
 	path := filepath.Join(t.TempDir(), "test.log")
 	if log != nil {
@@ -58,7 +58,7 @@ func summarize(t *testing.T, log *string) (string, int) {
 	return realDataReport(t, nil, "summarize", path)
 }
 
-func ptr(s string) *string { return &s }
+func reportLog(s string) *string { return &s }
 
 // The script's bounds, restated: a test of a cap has to know the cap.
 const (
@@ -76,7 +76,7 @@ func TestRealDataSummarize(t *testing.T) {
 	}{
 		{
 			name: "a wide line is cut",
-			log:  ptr(wide + "\nFAIL\tgithub.com/x/pkg\t0.1s\n"),
+			log:  reportLog(wide + "\nFAIL\tgithub.com/x/pkg\t0.1s\n"),
 			want: wide[:reportMaxWidth] + "\nFAIL\tgithub.com/x/pkg\t0.1s\n",
 		},
 		{
@@ -86,7 +86,7 @@ func TestRealDataSummarize(t *testing.T) {
 		},
 		{
 			name: "no FAIL line",
-			log: ptr("=== RUN   TestA\n--- PASS: TestA (0.00s)\nPASS\n" +
+			log: reportLog("=== RUN   TestA\n--- PASS: TestA (0.00s)\nPASS\n" +
 				"ok  \tgithub.com/x/pkg\t0.1s\n"),
 			want: "(no --- FAIL: line in the test log: the failure is outside the tests - " +
 				"a build error, a checkout or setup step, or a timeout; see the run)\n",
@@ -95,7 +95,7 @@ func TestRealDataSummarize(t *testing.T) {
 			// Indented subtest markers are kept, package FAIL lines are kept,
 			// the bare FAIL, the test's own output and the ok lines are not.
 			name: "failing tests",
-			log: ptr("=== RUN   TestA\n=== RUN   TestA/sub\n" +
+			log: reportLog("=== RUN   TestA\n=== RUN   TestA/sub\n" +
 				"    a_test.go:10: boom\n" +
 				"--- FAIL: TestA (0.00s)\n" +
 				"    --- FAIL: TestA/sub (0.00s)\n" +
@@ -113,7 +113,7 @@ func TestRealDataSummarize(t *testing.T) {
 			// its four following lines (the hung tests' names) are what say
 			// which test it was.
 			name: "test timed out",
-			log: ptr("=== RUN   TestRealDataTree\n" +
+			log: reportLog("=== RUN   TestRealDataTree\n" +
 				"panic: test timed out after 20m0s\n" +
 				"\trunning tests:\n" +
 				"\t\tTestRealDataTree (20m0s)\n" +
@@ -132,7 +132,7 @@ func TestRealDataSummarize(t *testing.T) {
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
-			got, code := summarize(t, tc.log)
+			got, code := runSummarize(t, tc.log)
 			if code != 0 {
 				t.Fatalf("summarize exited %d, want 0", code)
 			}
@@ -157,7 +157,7 @@ func TestRealDataSummarizeBoundsALongList(t *testing.T) {
 	if log.Len() < 2*65536 {
 		t.Fatalf("the log is %d bytes, too short to outrun a pipe buffer", log.Len())
 	}
-	got, code := summarize(t, ptr(log.String()))
+	got, code := runSummarize(t, reportLog(log.String()))
 	if code != 0 {
 		t.Fatalf("summarize exited %d on a %d-line failure list, want 0", code, total)
 	}
@@ -187,7 +187,7 @@ for a in "$@"; do
     cat >> "$GH_STUB_LOG"
   fi
 done
-if [ "$1 $2" = "issue list" ] && [ -n "${GH_STUB_OPEN:-}" ]; then
+if [ "${1:-} ${2:-}" = "issue list" ] && [ -n "${GH_STUB_OPEN:-}" ]; then
   echo "$GH_STUB_OPEN"
 fi
 `
@@ -232,10 +232,10 @@ func runReport(t *testing.T, open, result, failures string) (string, []ghCall) {
 	return out, calls
 }
 
-var issueList = []string{"issue", "list", "--repo", "owner/repo", "--label", "ci-real-data",
+var reportIssueList = []string{"issue", "list", "--repo", "owner/repo", "--label", "ci-real-data",
 	"--state", "open", "--json", "number", "--jq", "sort_by(.number) | .[0].number // empty"}
 
-func wantCalls(t *testing.T, got []ghCall, want ...[]string) {
+func wantGHCalls(t *testing.T, got []ghCall, want ...[]string) {
 	t.Helper()
 	if len(got) != len(want) {
 		t.Fatalf("gh was called %d times, want %d: %q", len(got), len(want), got)
@@ -250,7 +250,7 @@ func wantCalls(t *testing.T, got []ghCall, want ...[]string) {
 func TestRealDataReportSuccessWithNoOpenIssue(t *testing.T) {
 	t.Parallel()
 	out, calls := runReport(t, "", "success", "")
-	wantCalls(t, calls, issueList)
+	wantGHCalls(t, calls, reportIssueList)
 	if !strings.Contains(out, "no open ci-real-data issue to close") {
 		t.Errorf("stdout %q does not say there was nothing to close", out)
 	}
@@ -259,7 +259,7 @@ func TestRealDataReportSuccessWithNoOpenIssue(t *testing.T) {
 func TestRealDataReportSuccessClosesTheOpenIssue(t *testing.T) {
 	t.Parallel()
 	_, calls := runReport(t, "7", "success", "")
-	wantCalls(t, calls, issueList,
+	wantGHCalls(t, calls, reportIssueList,
 		[]string{"issue", "close", "7", "--repo", "owner/repo", "--comment",
 			"The real-data tests passed at abc123: https://github.com/owner/repo/actions/runs/42"})
 }
@@ -268,7 +268,7 @@ func TestRealDataReportFailureOpensAnIssue(t *testing.T) {
 	t.Parallel()
 	failures := "--- FAIL: TestRealDataTree (12.00s)\nFAIL\tgithub.com/x/pkg\t12.1s"
 	_, calls := runReport(t, "", "failure", failures)
-	wantCalls(t, calls, issueList,
+	wantGHCalls(t, calls, reportIssueList,
 		[]string{"label", "create", "ci-real-data", "--repo", "owner/repo", "--color", "B60205",
 			"--description", "The scheduled real-data test run (real-data.yml) is failing", "--force"},
 		[]string{"issue", "create", "--repo", "owner/repo", "--title", "Real-data tests are failing on main",
@@ -288,7 +288,7 @@ func TestRealDataReportFailureOpensAnIssue(t *testing.T) {
 func TestRealDataReportFailureCommentsOnTheOpenIssue(t *testing.T) {
 	t.Parallel()
 	_, calls := runReport(t, "7", "cancelled", "")
-	wantCalls(t, calls, issueList,
+	wantGHCalls(t, calls, reportIssueList,
 		[]string{"issue", "comment", "7", "--repo", "owner/repo", "--body-file", "-"})
 	body := calls[1].stdin
 	for _, want := range []string{
