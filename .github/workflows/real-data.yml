@@ -43,10 +43,10 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Observed 12m05s on the first run (2026-10-04, 282k works): ~4m checking
-    # out and setting up, ~8m of tests, the slowest binaries internal/importer
-    # 295s, internal/repair 276s, pkg/check 162s and pkg/canonical 147s, all
-    # inside the 20m per-binary -timeout. About twice that.
+    # Observed 12m05s on the first run (2026-10-04, 282k works: ~4m checkout
+    # and setup, ~8m of tests, slowest binary internal/importer at 295s); 25 is
+    # about twice that, and stays above setup plus the 15m -timeout below, so a
+    # hang panics with its test names before the job is killed.
     timeout-minutes: 25
     outputs:
       failures: ${{ steps.summary.outputs.failures }}
@@ -78,7 +78,7 @@ jobs:
         # `shell: bash` already runs `bash -eo pipefail`, so a red go test is a
         # red step through the tee.
         run: |
-          go test -count=1 -p 2 -timeout 20m ./... 2>&1 | tee "$RUNNER_TEMP/test.log"
+          go test -count=1 -p 2 -timeout 15m ./... 2>&1 | tee "$RUNNER_TEMP/test.log"
 
       - name: Summarize the failures
         id: summary
@@ -102,7 +102,7 @@ jobs:
     # nor close the issue about main.
     if: always() && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    # Observed 4s on the first run (a handful of API calls); 5 is the floor.
+    # Observed 4s on the first run (a handful of API calls).
     timeout-minutes: 5
     permissions:
       contents: read
