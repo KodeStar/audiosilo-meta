@@ -66,11 +66,17 @@ failure_body() {
   echo
   echo "Run: ${RUN_URL}"
   echo
+  local failures="${FAILURES:-(no summary was produced; see the run)}"
+  # The fence is one backtick longer than any run in the content, so a panic
+  # message quoting a fence of its own cannot close this one early (a closing
+  # fence must be at least as long as the opening one).
+  local fence='```'
+  while [[ "$failures" == *"$fence"* ]]; do fence="${fence}\`"; done
   echo "Failing tests (from the log, bounded):"
   echo
-  echo '```'
-  printf '%s\n' "${FAILURES:-(no summary was produced; see the run)}"
-  echo '```'
+  echo "$fence"
+  printf '%s\n' "$failures"
+  echo "$fence"
   echo
   echo "These tests read the real data/ tree and skip under -race, so the pull-request gate never runs them. Reproduce with \`go test -count=1 ./...\` (no -race). This issue closes itself on the next green run."
 }

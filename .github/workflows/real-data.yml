@@ -14,7 +14,8 @@ name: real-data
 # THE WHOLE SUITE, not a -run pattern: a pattern is a second list of which tests
 # are real-data, and the next one added under a name it does not match would be
 # silently skipped here too - the exact failure this job exists to end. The
-# fixture tests cost a minute or two beside the real-tree walks.
+# fixture tests cost about ten seconds beside the real-tree walks (measured
+# locally: 87.7s for the whole suite against 76.5s for the real-data tests alone).
 #
 # A failed scheduled run is as easy to miss as a skipped test, so the report job
 # makes it VISIBLE: a failure opens (or comments on) ONE issue labelled
@@ -68,12 +69,14 @@ jobs:
         shell: bash
         # -count=1: the restored build cache carries test results, and a
         # cached pass is no run. -p 2: pkg/check, internal/importer and
-        # internal/repair each peak at ~3.5GB loading the tree on a 16GB
-        # runner, so two at a time keeps an OOM kill from posing as a red
-        # test. -timeout (per binary, inside the job's) makes a hang panic
-        # with the running tests' names, which the summary keeps.
+        # internal/repair each peak at ~3.5GB loading the tree, so two at a
+        # time keeps an OOM kill from posing as a red test - which assumes the
+        # 16GB public-repository runner (a private repository's has 7GB).
+        # -timeout (per binary, inside the job's) makes a hang panic with the
+        # running tests' names, which the summary keeps. No `set -o pipefail`:
+        # `shell: bash` already runs `bash -eo pipefail`, so a red go test is a
+        # red step through the tee.
         run: |
-          set -o pipefail
           go test -count=1 -p 2 -timeout 20m ./... 2>&1 | tee "$RUNNER_TEMP/test.log"
 
       - name: Summarize the failures
