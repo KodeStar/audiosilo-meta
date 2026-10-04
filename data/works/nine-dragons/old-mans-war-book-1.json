@@ -4429,6 +4429,10 @@
             {
               "asin": "B0DQQG5GH3",
               "region": "us"
+            },
+            {
+              "asin": "B0DQQDHN88",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/911sYtRIZEL.jpg",
@@ -4445,6 +4449,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0DQQG5GH3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0DQQDHN88",
               "type": "libex-import"
             }
           ],
@@ -9792,6 +9801,59 @@
         }
       ],
       "title": "Old Wicked"
+    },
+    "old-wives-tale": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "steve-higgs"
+      ],
+      "genres": [
+        "cozy-mystery",
+        "mystery",
+        "nature",
+        "thriller-suspense"
+      ],
+      "id": "old-wives-tale",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "charles-robert-fox-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HK496DK7",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71LVORg1uHL.jpg",
+          "id": "charles-robert-fox-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charles-robert-fox"
+          ],
+          "publisher": "QUEST from W. F. Howes Ltd",
+          "release_date": "2026-12-31",
+          "runtime_min": 585,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HK496DK7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "old-wives-tale"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HK496DK7",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Old Wives' Tale"
     },
     "old-wolf": {
       "added_at": "2026-07-29",
