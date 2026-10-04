@@ -3243,6 +3243,10 @@
             {
               "asin": "B00804L2KK",
               "region": "us"
+            },
+            {
+              "asin": "B078QDMPDP",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3396,6 +3400,48 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00804L2KK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B078QDMPDP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "in-harms-way-irene-hannon"
+        },
+        "therese-plummer-2027": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0H6NP6HK6",
+              "region": "us"
+            },
+            {
+              "asin": "B0H6NFP69V",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71uvhPnTSwL.jpg",
+          "id": "therese-plummer-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "therese-plummer"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2027-03-02",
+          "runtime_min": 528,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6NP6HK6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H6NFP69V",
               "type": "libex-import"
             }
           ],
