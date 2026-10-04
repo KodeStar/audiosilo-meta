@@ -9993,6 +9993,10 @@
             {
               "asin": "B00G3JZERG",
               "region": "us"
+            },
+            {
+              "asin": "B07DRPRN22",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10106,6 +10110,155 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00G3JZERG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07DRPRN22",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-reckoning-jana-deleon"
+        },
+        "sharon-freedman-2025": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0F7CB1TNX",
+              "region": "uk"
+            },
+            {
+              "asin": "B0F7C8P295",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18394,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 98704,
+              "start_ms": 18394,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 1152498,
+              "start_ms": 117098,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 670337,
+              "start_ms": 1269596,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 1173815,
+              "start_ms": 1939933,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 1560752,
+              "start_ms": 3113748,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 1146834,
+              "start_ms": 4674500,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 1595326,
+              "start_ms": 5821334,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 1441517,
+              "start_ms": 7416660,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1329017,
+              "start_ms": 8858177,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 1165456,
+              "start_ms": 10187194,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 1681890,
+              "start_ms": 11352650,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 1372485,
+              "start_ms": 13034540,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1454567,
+              "start_ms": 14407025,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 1246957,
+              "start_ms": 15861592,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 1203351,
+              "start_ms": 17108549,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 1786264,
+              "start_ms": 18311900,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 1204372,
+              "start_ms": 20098164,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 1561007,
+              "start_ms": 21302536,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 516983,
+              "start_ms": 22863543,
+              "title": "Chapter Eighteen"
+            },
+            {
+              "length_ms": 38205,
+              "start_ms": 23380526,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91tN04mYwcL.jpg",
+          "id": "sharon-freedman-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sharon-freedman"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2025-10-07",
+          "runtime_min": 390,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0F7CB1TNX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0F7C8P295",
               "type": "libex-import"
             }
           ],

@@ -5943,6 +5943,48 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "avery-caris-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GWS5CQGM",
+              "region": "us"
+            },
+            {
+              "asin": "B0GWSCZTH4",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/718v5ZEf-zL.jpg",
+          "id": "avery-caris-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "avery-caris",
+            "charlotte-north",
+            "grayson-owens",
+            "lee-samuels",
+            "savannah-peachwood",
+            "teddy-hamilton"
+          ],
+          "publisher": "Dreamscape Media",
+          "release_date": "2026-09-22",
+          "runtime_min": 1455,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GWS5CQGM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GWSCZTH4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "some-kind-of-perfect"
+        },
         "gregory-salinas-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5950,6 +5992,10 @@
             {
               "asin": "B01IW8T138",
               "region": "us"
+            },
+            {
+              "asin": "B01IW8V3J8",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6378,6 +6424,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01IW8T138",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01IW8V3J8",
               "type": "libex-import"
             }
           ],

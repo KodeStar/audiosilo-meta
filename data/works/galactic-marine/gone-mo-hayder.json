@@ -11654,6 +11654,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "angie-hickman-2027": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HLRFGRYB",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71YWhbPOtqL.jpg",
+          "id": "angie-hickman-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "angie-hickman"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2027-03-30",
+          "runtime_min": 510,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HLRFGRYB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "gone-with-the-woof"
+        },
         "jessica-almasy-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11661,6 +11689,10 @@
             {
               "asin": "B00RXZO6VE",
               "region": "us"
+            },
+            {
+              "asin": "B00RXZZUO6",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11829,6 +11861,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00RXZO6VE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00RXZZUO6",
               "type": "libex-import"
             }
           ],

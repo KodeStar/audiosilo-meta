@@ -11496,6 +11496,10 @@
             {
               "asin": "B0BT2ZHD3X",
               "region": "us"
+            },
+            {
+              "asin": "B0BT31JYBW",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11635,6 +11639,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0BT2ZHD3X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0BT31JYBW",
+              "type": "libex-import"
             }
           ],
           "work": "skinwalkers"
@@ -11669,6 +11678,41 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B002UZZ2BU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "skinwalkers"
+        },
+        "tony-hillerman-1999-2": {
+          "abridged": true,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B07BB6GSW9",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 10591966,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8105RIudPhL.jpg",
+          "id": "tony-hillerman-1999-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tony-hillerman"
+          ],
+          "publisher": "HarperAudio",
+          "release_date": "1999-12-16",
+          "runtime_min": 176,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07BB6GSW9",
               "type": "libex-import"
             }
           ],
