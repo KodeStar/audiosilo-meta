@@ -60,7 +60,9 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 		{assertKingsbr, "asserted/the-pillars-of-the-earth@kingsbridge"},
 	} {
 		t.Run(tc.r.Op, func(t *testing.T) {
-			before := runFixture(t, rangerTree(t))
+			// The baseline carries no decisions: the committed reviewed.json is real-tree
+			// policy and may name these very slugs.
+			before := runFixtureRejecting(t, rangerTree(t))
 			class := assertedRecord[tc.r.Op]
 			rep := runFixtureRejecting(t, rangerTree(t), tc.r)
 			got := subclassOf(t, rep, class, subclassAsserted)
