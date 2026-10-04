@@ -294,7 +294,7 @@ func TestOrderingTwinFoldsAnOrphanOntoItsTwin(t *testing.T) {
 		t.Fatalf("want one ordering-twin record, got %+v", got)
 	}
 	p := got[0].Propose
-	if got[0].Key != "universe" || p.Op != OpMergeSeries || p.Target != "novel" || !slices.Equal(p.Others, []string{"universe"}) {
+	if got[0].Key != "twin/universe" || p.Op != OpMergeSeries || p.Target != "novel" || !slices.Equal(p.Others, []string{"universe"}) {
 		t.Errorf("record = %s %+v, want universe folded onto novel", got[0].Key, p)
 	}
 	if !p.Advisory {
@@ -307,11 +307,18 @@ func TestOrderingTwinFoldsAnOrphanOntoItsTwin(t *testing.T) {
 // "<parent>: <sub-series>" name whose head is the parent is refused even where the
 // franchise words would make the keys agree.
 func TestOrderingTwinIgnoresASubseries(t *testing.T) {
-	for _, name := range []string{"Rincewind (Publication Order)", "Discworld: Rincewind (Publication Order)", "Discworld: Universe (Publication Order)"} {
-		t.Run(name, func(t *testing.T) {
+	for _, tc := range []struct{ parent, sub string }{
+		{"Discworld", "Rincewind (Publication Order)"},
+		{"Discworld", "Discworld: Rincewind (Publication Order)"},
+		{"Discworld", "Discworld: Universe (Publication Order)"},
+		// The other direction: the TWIN is the "<parent>: <sub>" name, headed by the
+		// orphan's base - "Discworld" is the orphan and must not fold into it.
+		{"Discworld: Universe", "Discworld (Publication Order)"},
+	} {
+		t.Run(tc.parent+" | "+tc.sub, func(t *testing.T) {
 			rep := runFixture(t, seriesFixture(t, []string{"one", "two"}, map[string]string{
-				"series/di/discworld.json": withOrdering(t, seriesJSON(t, "discworld", "Discworld", "one@1", "two@2"), "publication"),
-				"series/ri/rincewind.json": withOrdering(t, seriesJSON(t, "rincewind", name, "one@1"), "publication"),
+				"series/di/discworld.json": withOrdering(t, seriesJSON(t, "discworld", tc.parent, "one@1", "two@2"), "publication"),
+				"series/ri/rincewind.json": withOrdering(t, seriesJSON(t, "rincewind", tc.sub, "one@1"), "publication"),
 			}))
 			if got := subclassOf(t, rep, ClassSeriesDup, serDupTwin); len(got) != 0 {
 				t.Errorf("a sub-series was folded onto its parent: %+v", got)
@@ -346,19 +353,15 @@ func TestOrderingTwinNeedsTheSameStatedOrdering(t *testing.T) {
 // Exactly one twin, or no proposal: an orphan two same-ordering twins both hold is
 // nobody's to fold. And whatever is proposed is advisory.
 func TestOrderingTwinNeedsExactlyOneTwin(t *testing.T) {
+	// orphan has two same-ordering twins (novel and saga) that both hold its one
+	// membership; saga, an orphan too, has two (novel and orphan). Neither is decidable.
 	files := seriesFixture(t, []string{"one", "two"}, map[string]string{
 		"series/jr/novel.json":  withOrdering(t, seriesJSON(t, "novel", "A Jack Ryan Novel", "one@1", "two@2"), "publication"),
 		"series/jr/saga.json":   withOrdering(t, seriesJSON(t, "saga", "Jack Ryan Saga", "two@2"), "publication"),
 		"series/jr/orphan.json": withOrdering(t, seriesJSON(t, "orphan", "The Jack Ryan Universe", "two@2"), "publication"),
 	})
-	rep := runFixture(t, files)
-	for _, fd := range subclassOf(t, rep, ClassSeriesDup, serDupTwin) {
-		if !fd.Propose.Advisory {
-			t.Errorf("mechanical ordering twin: %+v", fd.Propose)
-		}
-		if fd.Key == "orphan" {
-			t.Errorf("an orphan with two twins was folded: %+v", fd.Propose)
-		}
+	if got := subclassOf(t, runFixture(t, files), ClassSeriesDup, serDupTwin); len(got) != 0 {
+		t.Errorf("an ambiguous twin was proposed: %+v", got)
 	}
 }
 

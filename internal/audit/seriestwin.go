@@ -39,8 +39,12 @@ import (
 // Rincewind publication order moves nothing into Discworld's - which is exactly why the
 // guard is not the slots but the NAME: O must state an ordering, the franchise keys must
 // be equal (Rincewind and Discworld are not), and a name of the "<parent>: <sub-series>"
-// shape whose head is the twin's own base is refused outright.
+// shape whose head is the OTHER side's base is refused outright, in both directions.
 const serDupTwin = "ordering-twin"
+
+// twinKeyPrefix keys an ordering-twin record apart from every SER-DUP group key: a
+// group key is a folded name, a twin's the orphan's slug, and the two alphabets meet.
+const twinKeyPrefix = "twin/"
 
 // detectOrderingTwins adds the ordering-twin proposals to SER-DUP's findings. The twin
 // is a candidate generator over foldOnto, the family folds' own pair judgement, with
@@ -91,10 +95,11 @@ func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 		}
 		var twins []seriesKeys
 		for _, t := range byFranchise[o.franchise] {
-			// A "<parent>: <sub-series>" name headed by the twin's own base is its sub-series.
+			// A "<parent>: <sub-series>" name headed by the other's base is its sub-series,
+			// whichever side carries it.
 			id := t.k.series.ID
 			if id != s.ID && !retired[id] && !ix.translationLinked(id) && t.ordering == o.ordering &&
-				(o.headKey == "" || o.headKey != t.baseKey) {
+				(o.headKey == "" || o.headKey != t.baseKey) && (t.headKey == "" || t.headKey != o.baseKey) {
 				twins = append(twins, t.k)
 			}
 		}
@@ -122,7 +127,7 @@ func detectOrderingTwins(ix *index, keys []seriesKeys, f *findings) {
 		}
 		f.add(Finding{
 			Subclass: serDupTwin,
-			Key:      s.ID,
+			Key:      twinKeyPrefix + s.ID,
 			Series:   []SeriesRef{ix.seriesRef(t.series), ix.seriesRef(s)},
 			Propose: Proposal{
 				Op:       OpMergeSeries,

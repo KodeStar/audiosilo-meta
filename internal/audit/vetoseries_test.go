@@ -768,3 +768,32 @@ func TestSeriesDupOrderingVetoNeedsOneFamily(t *testing.T) {
 	})))
 	assertMechanical(t, fd)
 }
+
+// The decoration stand-down applies to EVERY group, not only the family folds: a
+// decoration that only restates the target's stated ordering field distinguishes
+// nothing, so a plain group folds it - adding a membership to a free slot - while a
+// decoration stating ANOTHER ordering still vetoes.
+func TestSeriesDupDecorationRestatingTheTargetsOrdering(t *testing.T) {
+	target := func(t testing.TB) string {
+		return withField(t, seriesJSON(t, "dh", "Dragon Heart", "one@1", "two@2", "three@3"), "ordering", "publication")
+	}
+	t.Run("the same ordering folds", func(t *testing.T) {
+		rep := runFixture(t, seriesFixture(t, []string{"one", "two", "three", "four"}, map[string]string{
+			"series/dh/dh.json":     target(t),
+			"series/dh/dh-pub.json": seriesJSON(t, "dh-pub", "Dragon Heart (Publication Order)", "one@1", "four@4"),
+		}))
+		assertProposalsConsistent(t, rep)
+		fd := serDupMerge(t, rep)
+		assertMechanical(t, fd)
+		if fd.Propose.Target != "dh" || !slices.Equal(fd.Propose.Others, []string{"dh-pub"}) {
+			t.Errorf("proposal = %+v, want dh-pub folded onto dh", fd.Propose)
+		}
+	})
+	t.Run("another ordering is vetoed", func(t *testing.T) {
+		fd := serDupMerge(t, runFixture(t, seriesFixture(t, []string{"one", "two", "three", "four"}, map[string]string{
+			"series/dh/dh.json":        target(t),
+			"series/dh/dh-chrono.json": seriesJSON(t, "dh-chrono", "Dragon Heart (Chronological Order)", "one@1", "four@4"),
+		})))
+		assertVetoed(t, fd, "folding would erase the decoration that distinguishes them")
+	})
+}
