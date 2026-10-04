@@ -813,6 +813,9 @@ func SeriesRefIn(lowerTitle, series string) (string, bool) {
 var (
 	apostropheFold     = glyphReplacer(apostropheGlyphs[1:], "'")
 	apostropheStandIns = strings.Join(apostropheGlyphs[1:], "")
+	// apostropheAny is every glyph, the straight one included - what SpelledAsIn asks
+	// a form for before it does any work.
+	apostropheAny = strings.Join(apostropheGlyphs, "")
 )
 
 // lowerFold is strings.ToLower with every apostrophe glyph folded to the straight one -
@@ -864,7 +867,7 @@ func LowerFold(s string) string { return lowerFold(s) }
 // as it did when each glyph was a spelling of its own. A span holding no apostrophe, or
 // one the title spells straight, returns form unchanged.
 func SpelledAsIn(form, text string, start, end int) string {
-	if !strings.ContainsAny(form, strings.Join(apostropheGlyphs, "")) {
+	if !strings.ContainsAny(form, apostropheAny) {
 		return form
 	}
 	lowered := 0
@@ -1488,7 +1491,11 @@ func cutsRange(orig, proposed string) bool {
 		if w := wordBefore.FindString(orig[:m[2]]); w != "" && strings.Contains(proposed, w+orig[m[2]:m[3]]) {
 			return true
 		}
-		hi := orig[m[4]-1 : m[5]]
+		// At the end of the title the high end is recognized by the dash in front of it,
+		// with the dash's own spacing ("-8", "- 8") - never by a bare " 8", which any
+		// number in the proposal starting with that digit would contain ("Agent 6: The
+		// Agent Series, Books 4 - 6" keeps the whole-range drop "Agent 6").
+		hi := strings.TrimLeft(orig[m[3]:m[5]], " ")
 		if rest := orig[m[5]:]; strings.TrimSpace(rest) != "" {
 			hi = orig[m[4]:m[5]] + wordAfter.FindString(rest)
 		}

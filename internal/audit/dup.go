@@ -160,8 +160,14 @@ func (ix *index) seriesTailKey(w *model.Work) (fold, cleaned, tail string, ok bo
 		return "", "", "", false
 	}
 	head := w.Title[:i]
+	// The tail lookup first: almost no colon title's head is a subseries tail, so the
+	// author's series set is built only for the few that are.
+	tails := ix.seriesTails[subseriesKey(head)]
+	if len(tails) == 0 {
+		return "", "", "", false
+	}
 	mine := ix.authorSeriesIDs(w.Authors)
-	if !slices.ContainsFunc(ix.seriesTails[subseriesKey(head)], func(sid string) bool { return mine[sid] }) {
+	if !slices.ContainsFunc(tails, func(sid string) bool { return mine[sid] }) {
 		return "", "", "", false
 	}
 	// The identity rule's own gate: IdentityTitleKey is CompareKey(Clean(...)) once the

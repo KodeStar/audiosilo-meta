@@ -641,6 +641,14 @@ func TestStripDecorationRefusals(t *testing.T) {
 			name:  "dropping a whole range is not a cut",
 			title: "Delta Force Heroes Box Set 1: Books 1-4", want: "Delta Force Heroes Box Set 1",
 		},
+		{
+			name:  "dropping a whole spaced range whose high end the title repeats is not a cut",
+			title: "Agent 6: The Agent Series, Books 4 - 6", series: "The Agent Series", want: "Agent 6",
+		},
+		{
+			name:  "a number that merely begins with the high end is not that end",
+			title: "Wolf 30: The Wolf Series 1 - 3", series: "The Wolf Series", want: "Wolf 30",
+		},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
