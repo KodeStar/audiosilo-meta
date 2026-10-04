@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // The three W-DUP widenings and the relaxed disjoint-series veto, each with the shape it
@@ -143,6 +144,54 @@ func TestDisjointVetoReadsSameKeySameSlotAsShared(t *testing.T) {
 			vetoed := strings.Contains(got[0].Propose.Reason, "entirely different series")
 			if vetoed != c.vetoed {
 				t.Errorf("disjoint-series veto = %v, want %v (%s)", vetoed, c.vetoed, got[0].Propose.Reason)
+			}
+		})
+	}
+}
+
+// The soundness veto reads each JOIN's own derivations. In the closed cluster a work
+// carries one derivation, which need not be the one a pair met on; here the two
+// members of the join met on a key each reached by shedding a different series name,
+// while the cluster-level derivations (own-series, keyed apart) would never compare
+// them - the veto must still fire.
+func TestStrippedSeriesVetoReadsEachJoinsDerivations(t *testing.T) {
+	a := &model.Work{ID: "cold-war-history", Title: "Cold War: A History from Beginning to End"}
+	b := &model.Work{ID: "hundred-years-history", Title: "The Hundred Years War: A History from Beginning to End"}
+	join := []dupMember{
+		{work: a, wk: workKey{key: "historyfrombeginningtoend", series: "Cold War", via: viaSeriesTail}},
+		{work: b, wk: workKey{key: "historyfrombeginningtoend", series: "The Hundred Years War", via: viaSeriesTail}},
+	}
+	if _, vetoed := vetoStrippedSeriesDiffers([][]dupMember{join}); !vetoed {
+		t.Error("a pair that met only on a tail key escaped the stripped-series veto")
+	}
+	// Two different joins never compare across each other.
+	if _, vetoed := vetoStrippedSeriesDiffers([][]dupMember{join[:1], join[1:]}); vetoed {
+		t.Error("the veto compared two members that never met on a key")
+	}
+}
+
+// A series that is one book's own EDITION, named after it, holding that work alone at
+// position 1: the series-name strip would remove the book's title and keep its tagline,
+// so the retitle is withheld.
+func TestWorkTitleWithholdsAStripOfTheBooksOwnEditionSeries(t *testing.T) {
+	const title = "Let's Split Up - Ein verfluchtes Haus. Vier Freunde. Eine verhängnisvolle Entscheidung"
+	for name, c := range map[string]struct {
+		members  []string
+		advisory bool
+	}{
+		"its own edition, alone at 1": {[]string{"lets-split-up-de@1"}, true},
+		"a volume of a real series":   {[]string{"lets-split-up-de@3"}, false},
+	} {
+		t.Run(name, func(t *testing.T) {
+			files := oneWork(t, "lets-split-up-de", title)
+			files["series/le/lets-split-up-german-edition.json"] = seriesJSON(t, "lets-split-up-german-edition",
+				"Let’s Split Up (German Edition)", c.members...)
+			got := classOf(t, runFixture(t, files), ClassWorkTitle)
+			if len(got) != 1 {
+				t.Fatalf("want one W-TITLE record, got %d", len(got))
+			}
+			if got[0].Propose.Advisory != c.advisory {
+				t.Errorf("advisory = %v, want %v (%s)", got[0].Propose.Advisory, c.advisory, got[0].Propose.Reason)
 			}
 		})
 	}

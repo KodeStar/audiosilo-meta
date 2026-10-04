@@ -151,7 +151,7 @@ func foldCase(s string) string {
 // SameSeriesSpelling reports whether two series names are one series spelled twice, as
 // internal/audit's disjoint-series veto reads them: one SeriesKey, and either the SAME
 // parenthetical decoration (DecorationKey, compared only where it can be read whole) or a
-// decoration on ONE side only. It is LOOSER than SameSeriesName - a catalogue's
+// decoration on ONE side only that is a catalogue note (seriesNote). It is LOOSER than SameSeriesName - a catalogue's
 // "(published order)" or "[Dramatized Adaptation]" note does not separate - which is why
 // it only ever lifts a veto and never joins a series.
 //
@@ -173,9 +173,63 @@ func SameSeriesSpelling(a, b string) bool {
 	if ka == "" || ka != SeriesKey(b) {
 		return false
 	}
-	if stripParenGroups(a) == a || stripParenGroups(b) == b {
-		return true // undecorated, or decorated on one side only
+	decoratedA, decoratedB := stripParenGroups(a) != a, stripParenGroups(b) != b
+	switch {
+	case !decoratedA && !decoratedB:
+		return true
+	case decoratedA != decoratedB:
+		// One side decorated: a spelling of the plain series only when EVERY group it
+		// carries is a catalogue note from a closed vocabulary (seriesNote).
+		decorated := a
+		if decoratedB {
+			decorated = b
+		}
+		for _, g := range parenGroup.FindAllString(decorated, -1) {
+			if !seriesNote(g) {
+				return false
+			}
+		}
+		return true
 	}
 	dk := DecorationKey(a)
 	return dk != "" && dk == DecorationKey(b)
+}
+
+// seriesNote reports whether one bracketed group on a series name is a CATALOGUE NOTE -
+// something about how the catalogue lists or produced the series, never about which
+// product it is - from closed vocabularies only, reused wherever the package already
+// has one: an ordering (OrderingOfDecoration), an own-language edition
+// (editionLanguagePhrases, "[Spanish Edition]"), a dramatization (IsDramatization's
+// pattern) or a narration credit (the narrator lead-ins), plus the format and narration
+// notes listed in formatNotes. A dialect or variety ("(Spain-Castilian)", "(Latin
+// American)", "(Brazilian)") and a translated series title ("[The Accursed Kings]") are
+// in none of them, so a one-sided one of those keeps the two series apart.
+func seriesNote(group string) bool {
+	inner := groupContents(group)
+	key := model.SlugifyWhole(inner)
+	if key == "" {
+		return false
+	}
+	if OrderingOfDecoration(key) != "" || editionLanguagePhrases[key] != "" || formatNotes[key] ||
+		dramatization.MatchString(inner) {
+		return true
+	}
+	lower := strings.ToLower(inner)
+	for _, lead := range trailingLeadIns {
+		if strings.HasPrefix(lower, lead+" ") {
+			return true
+		}
+	}
+	return false
+}
+
+// formatNotes are the one-sided format and narration notes seriesNote reads beside the
+// package's other vocabularies, keyed by slug: an abridgement either way (SER-DUP's
+// abridged list, plus its unabridged twins), a full-cast or radio-play production, and
+// the Castilian-narration note Audible's Spanish catalogue carries.
+var formatNotes = map[string]bool{
+	"abridged": true, "unabridged": true, "gekurzt": true, "ungekurzt": true,
+	"full-cast": true, "full-cast-edition": true, "full-cast-editions": true,
+	"horspiel": true, "horspiele": true,
+	"narracion-en-castellano": true,
 }

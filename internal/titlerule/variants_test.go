@@ -97,6 +97,14 @@ func TestSameSeriesSpelling(t *testing.T) {
 		{"Mistborn", "Mistborn [Dramatized Adaptation]", true},
 		{"Throne of Glass (French Edition)", "Throne of Glass [French Edition]", true},
 		{"Pimsleur Chinese (Cantonese)", "Pimsleur Chinese (Mandarin)", false},
+		{"Kingsbridge", "Kingsbridge (Abridged)", true},
+		{"Los Juegos del Hambre", "Los Juegos del Hambre (Narración en Castellano)", true},
+		{"Lock In", "Lock In (Narrated by Amber Benson)", true},
+		// A ONE-SIDED decoration counts only from the closed vocabulary: a dialect or
+		// variety is a different product, and a translated series title is no note.
+		{"Pimsleur Spanish", "Pimsleur Spanish (Spain-Castilian)", false},
+		{"Pimsleur Portuguese", "Pimsleur Portuguese (Brazilian)", false},
+		{"Los Reyes Malditos", "Los Reyes Malditos [The Accursed Kings]", false},
 		// A decoration DecorationKey cannot read whole agrees with nothing decorated.
 		{"Night Watch (Книга 1)", "Night Watch (Том 1)", false},
 		{"Alpha Cycle", "Beta Cycle", false},

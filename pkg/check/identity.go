@@ -257,7 +257,8 @@ func (ix *WorkIdentity) holdsFold(fold string) bool {
 }
 
 // SeriesNameIn returns the series the free text names - the LONGEST spelling of any
-// catalogued series name occurring in it at word boundaries - and that series' id.
+// catalogued series name occurring in it at word boundaries (titlerule.FormWeight) -
+// and that series' id.
 // The candidates are the narrowed list newSeriesNameList built.
 //
 // It is a LINEAR scan of those names, which is right for its callers and wrong for
@@ -268,12 +269,15 @@ func (ix *WorkIdentity) holdsFold(fold string) bool {
 func (ix *WorkIdentity) SeriesNameIn(text string) (name, seriesID string, ok bool) {
 	lower := strings.ToLower(text)
 	var best, bestID string
+	bestLen := 0
 	for _, s := range ix.seriesNames {
 		form, hit := titlerule.SeriesRefIn(lower, s.name)
-		if !hit || len(form) <= len(best) {
-			continue
+		// Longest by the MATCHED spelling, measured consistently: a separator variant
+		// ("X - Y" for "X: Y") is weighed as the spelling it varies, so a variant's
+		// extra byte cannot out-length a longer, more specific series name.
+		if l := titlerule.FormWeight(form); hit && l > bestLen {
+			best, bestID, bestLen = s.name, s.id, l
 		}
-		best, bestID = s.name, s.id
 	}
 	if best == "" {
 		return "", "", false

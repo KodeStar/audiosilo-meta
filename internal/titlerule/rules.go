@@ -932,6 +932,17 @@ func withSeparatorVariants(forms []string) []string {
 	return out
 }
 
+// FormWeight is a series form's length for choosing the LONGEST of several matched
+// spellings, with every separator weighed as ": " - so the variants withSeparatorVariants
+// adds weigh what the spelling they vary weighs, and a variant's wider dash cannot make a
+// shorter series name out-length a longer one.
+func FormWeight(form string) int {
+	if !hasSeparatorGlyph(form) {
+		return len(form)
+	}
+	return len(colonTo[0].Replace(form))
+}
+
 // hasSeparatorGlyph reports whether a form holds a separator the fold expands.
 func hasSeparatorGlyph(f string) bool {
 	return strings.Contains(f, ": ") || strings.Contains(f, " - ") || strings.Contains(f, " – ")

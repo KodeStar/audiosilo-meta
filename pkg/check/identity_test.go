@@ -3,6 +3,7 @@ package check
 import (
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -163,5 +164,28 @@ func TestWorkIdentityToleratesAnEmptyCatalog(t *testing.T) {
 	}
 	if got := ix.Match("Hammered", "", "en", set("a"), set("a")); len(got) != 0 {
 		t.Errorf("Match on an empty index = %v", got)
+	}
+}
+
+// SeriesNameIn picks the LONGEST matched spelling, compared spelling to spelling: it
+// used to compare a candidate's matched form with the previous winner's whole NAME, so a
+// series whose name carries an ordering note ("Alpha Omega (Published Order)", matched
+// as "Alpha Omega") outranked the more specific "Alpha Omega Saga" it is a prefix of. A
+// separator variant is weighed as the spelling it varies (titlerule.FormWeight).
+func TestSeriesNameInPicksTheLongestMatchedSpelling(t *testing.T) {
+	ix := NewWorkIdentity(&model.Catalog{Series: []*model.Series{
+		{ID: "a-alpha-omega-published", Name: "Alpha Omega (Published Order)"},
+		{ID: "b-alpha-omega-saga", Name: "Alpha Omega Saga"},
+		{ID: "c-night-watch", Name: "Night: Watch"},
+		{ID: "d-night-watch-tales", Name: "Night Watch Tales"},
+	}})
+	if _, id, ok := ix.SeriesNameIn("Rising: Alpha Omega Saga, Book 2"); !ok || id != "b-alpha-omega-saga" {
+		t.Errorf("SeriesNameIn = %q, %v; want the longer, more specific series", id, ok)
+	}
+	// "Night – Watch" (the en-dash variant of "Night: Watch", 15 bytes) must not
+	// out-length "Night Watch Tales" (17) - nor, weighed honestly, anything longer
+	// than "Night: Watch" itself.
+	if got, want := titlerule.FormWeight("Night – Watch"), len("Night: Watch"); got != want {
+		t.Errorf("FormWeight = %d, want %d", got, want)
 	}
 }

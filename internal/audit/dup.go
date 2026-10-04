@@ -241,6 +241,12 @@ type dupCluster struct {
 	// otherLangs are the languages the same title key held that this cluster is
 	// not in - what the language rule split it away from.
 	otherLangs []string
+	// joins are the candidate groups the cluster was closed from, each with every
+	// member's derivation FOR THE KEY THAT GROUP MET ON. A work contributes several keys
+	// (embedded series, spelling variant, subseries tail), and members carries one
+	// derivation per work, so a pair that met only on a variant or tail key is visible
+	// as such only here - which is what the stripped-series soundness veto has to read.
+	joins [][]dupMember
 }
 
 // identityClusters splits one title key's members into the groups the IDENTITY rule
@@ -291,7 +297,7 @@ func identityClusters(ix *index, members []dupMember) []dupCluster {
 		if len(group) < 2 {
 			continue
 		}
-		c := dupCluster{members: group}
+		c := dupCluster{members: group, joins: [][]dupMember{group}}
 		// What this cluster was split away from, so the record says why the key
 		// held more than the cluster does.
 		mine := map[string]bool{}
@@ -365,6 +371,7 @@ func closeClusters(cs []dupCluster) []dupCluster {
 		byID := map[string]dupMember{}
 		for _, i := range idx {
 			merged.mergedFrom = append(merged.mergedFrom, cs[i].key)
+			merged.joins = append(merged.joins, cs[i].joins...)
 			for _, m := range cs[i].members {
 				prev, dup := byID[m.work.ID]
 				if !dup || (prev.wk.series == "" && m.wk.series != "") {
@@ -449,7 +456,7 @@ func dupFinding(ix *index, c dupCluster) Finding {
 	}
 	// The vetoes. A cluster that trips any of them is still reported - a reviewer
 	// wants to see it - but a mechanical pass must not apply it.
-	if vetoes := mergeVetoes(ix, members, canon); len(vetoes) > 0 {
+	if vetoes := mergeVetoes(ix, c, canon); len(vetoes) > 0 {
 		fd.Propose.Advisory = true
 		fd.Propose.Reason = "do not merge on this evidence: " + strings.Join(vetoes, "; ")
 	}
@@ -466,7 +473,8 @@ func dupFinding(ix *index, c dupCluster) Finding {
 // Every one of these was measured as a wrong proposal in the first draft, and every
 // one asks a question a TITLE cannot answer - which is why the first draft, which
 // only ever compared titles and author sets, got 25-60% of them wrong.
-func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
+func mergeVetoes(ix *index, c dupCluster, canon dupMember) []string {
+	members := c.members
 	var out []string
 	if s, ok := vetoPositionConflict(ix, members); ok {
 		out = append(out, s)
@@ -492,7 +500,7 @@ func mergeVetoes(ix *index, members []dupMember, canon dupMember) []string {
 	if s, ok := vetoSlugOrdinal(members); ok {
 		out = append(out, s)
 	}
-	if s, ok := vetoStrippedSeriesDiffers(members); ok {
+	if s, ok := vetoStrippedSeriesDiffers(c.joins); ok {
 		out = append(out, s)
 	}
 	if s, ok := vetoStatedVolumeElsewhere(ix, members); ok {
