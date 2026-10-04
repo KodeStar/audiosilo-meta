@@ -130,6 +130,10 @@
             {
               "asin": "B0F2JLWXDQ",
               "region": "us"
+            },
+            {
+              "asin": "B0F2JNLFZR",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -294,6 +298,40 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F2JLWXDQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0F2JNLFZR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mantras-minotaurs"
+        },
+        "connor-brown-2027": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HK5TPZ6X",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71FO7WilSsL.jpg",
+          "id": "connor-brown-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "connor-brown",
+            "shirl-rae"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2027-03-30",
+          "runtime_min": 480,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HK5TPZ6X",
               "type": "libex-import"
             }
           ],
