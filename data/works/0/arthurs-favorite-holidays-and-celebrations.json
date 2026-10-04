@@ -4537,6 +4537,70 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alejandro-ruiz-2023": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0CK9CCV96",
+              "region": "uk"
+            },
+            {
+              "asin": "B0CK9NXC2D",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3352752,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2897920,
+              "start_ms": 3352752,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3672211,
+              "start_ms": 6250672,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81BQzbfKqQL.jpg",
+          "id": "alejandro-ruiz-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "bradley-foster-smith",
+            "carolyn-kashner",
+            "david-cui-cui",
+            "elena-anderson",
+            "eric-messner",
+            "jeri-marshall",
+            "ken-jackson",
+            "marni-penning",
+            "michael-john-casey",
+            "rayner-gabriel"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2023-10-13",
+          "runtime_min": 165,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0CK9CCV96",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0CK9NXC2D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "artificial-condition"
+        },
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -4593,6 +4657,14 @@
             {
               "asin": "B07BFDDWXN",
               "region": "us"
+            },
+            {
+              "asin": "B07BFD86TD",
+              "region": "uk"
+            },
+            {
+              "asin": "B07BFCTQ6F",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -4671,6 +4743,16 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B07BFDDWXN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07BFD86TD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07BFCTQ6F",
               "type": "libex-import"
             }
           ],

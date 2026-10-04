@@ -1314,6 +1314,85 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alejandro-ruiz-2023": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0CMW5V3NJ",
+              "region": "uk"
+            },
+            {
+              "asin": "B0CMWG9PKT",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3274852,
+              "start_ms": 31924,
+              "title": "Part I"
+            },
+            {
+              "length_ms": 2855264,
+              "start_ms": 3306776,
+              "title": "Part II"
+            },
+            {
+              "length_ms": 3539000,
+              "start_ms": 6162040,
+              "title": "Part III"
+            },
+            {
+              "length_ms": 88000,
+              "start_ms": 9701040,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 243440,
+              "start_ms": 9789040,
+              "title": "Trailer"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812c84Cv51L.jpg",
+          "id": "alejandro-ruiz-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "alysia-beltran",
+            "bradley-foster-smith",
+            "david-cui-cui",
+            "elena-anderson",
+            "eric-messner",
+            "jenna-sharpe",
+            "julienne-irons",
+            "khaya-fraites",
+            "marni-penning",
+            "natalie-van-sistine"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2023-11-16",
+          "runtime_min": 167,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0CMW5V3NJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0CMWG9PKT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rogue-protocol"
+        },
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -1386,6 +1465,14 @@
             {
               "asin": "B07D9RHRH5",
               "region": "us"
+            },
+            {
+              "asin": "B07D9RWWR4",
+              "region": "uk"
+            },
+            {
+              "asin": "B07D9QVCV5",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -1454,6 +1541,16 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B07D9RHRH5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07D9RWWR4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07D9QVCV5",
               "type": "libex-import"
             }
           ],

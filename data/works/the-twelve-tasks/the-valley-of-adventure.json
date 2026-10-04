@@ -918,6 +918,10 @@
             {
               "asin": "B0FF716RCY",
               "region": "uk"
+            },
+            {
+              "asin": "B0FF78GJBB",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -1043,6 +1047,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FF716RCY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0FF78GJBB",
               "type": "libex-import"
             }
           ],
@@ -3781,6 +3790,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0D98SFQS8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-valley-of-fear"
+        },
+        "marnye-young-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HLP1WS78",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71EzLgQLVkL.jpg",
+          "id": "marnye-young-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marnye-young"
+          ],
+          "publisher": "Silverton Agency",
+          "release_date": "2026-11-03",
+          "runtime_min": 360,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HLP1WS78",
               "type": "libex-import"
             }
           ],

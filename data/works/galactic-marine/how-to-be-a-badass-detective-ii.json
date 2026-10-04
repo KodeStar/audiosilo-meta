@@ -7901,6 +7901,10 @@
             {
               "asin": "B01E9E61ZK",
               "region": "us"
+            },
+            {
+              "asin": "B01E9EHEEC",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8039,6 +8043,48 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B01E9E61ZK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01E9EHEEC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "how-to-be-a-normal-person"
+        },
+        "michael-lesley-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GZHHSGD9",
+              "region": "uk"
+            },
+            {
+              "asin": "B0GZHY6Z85",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Xc6Emjz+L.jpg",
+          "id": "michael-lesley-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-lesley"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2026-11-03",
+          "runtime_min": 667,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GZHHSGD9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GZHY6Z85",
               "type": "libex-import"
             }
           ],
