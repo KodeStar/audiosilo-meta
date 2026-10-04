@@ -14160,6 +14160,11 @@
         "peter-m-vishton",
         "the-great-courses"
       ],
+      "genres": [
+        "health-wellness",
+        "parenting-relationships",
+        "self-help"
+      ],
       "id": "scientific-secrets-for-a-powerful-memory",
       "language": "en",
       "license": "CC0-1.0",
@@ -14173,6 +14178,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1523693,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1941838,
+              "start_ms": 1523693,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1778509,
+              "start_ms": 3465531,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1774515,
+              "start_ms": 5244040,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1752084,
+              "start_ms": 7018555,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1762951,
+              "start_ms": 8770639,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81dW+L62I8L.jpg",
           "id": "peter-m-vishton-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -14187,6 +14225,10 @@
               "imported_at": "2026-09-24",
               "ref": "1629976784",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1629976784",
+              "type": "libex-import"
             }
           ],
           "work": "scientific-secrets-for-a-powerful-memory"
@@ -14197,6 +14239,10 @@
           "imported_at": "2026-09-24",
           "ref": "1629976784",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1629976784",
+          "type": "libex-import"
         }
       ],
       "title": "Scientific Secrets for a Powerful Memory"

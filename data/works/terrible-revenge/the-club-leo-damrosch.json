@@ -14993,6 +14993,10 @@
             {
               "asin": "B0GLHBXLMZ",
               "region": "us"
+            },
+            {
+              "asin": "B0GLHZGK6V",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81OrwZ8YvtL.jpg",
@@ -15004,12 +15008,17 @@
           ],
           "publisher": "Audible Originals",
           "release_date": "2026-02-05",
-          "runtime_min": 656,
+          "runtime_min": 657,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0GLHBXLMZ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-03",
+              "ref": "B0GLHZGK6V",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-coffee-shop-detectives"

@@ -11200,6 +11200,11 @@
       "authors": [
         "anthony-mcgowan"
       ],
+      "genres": [
+        "comedy-humor",
+        "philosophy",
+        "politics"
+      ],
       "id": "how-to-teach-philosophy-to-your-dog",
       "language": "en",
       "license": "CC0-1.0",
@@ -11213,6 +11218,99 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 21942,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 64365,
+              "start_ms": 21942,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 390722,
+              "start_ms": 86307,
+              "title": "Authors Note"
+            },
+            {
+              "length_ms": 1541108,
+              "start_ms": 477029,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 2963075,
+              "start_ms": 2018137,
+              "title": "Walk 1: Good Dog, Bad Dog"
+            },
+            {
+              "length_ms": 3079918,
+              "start_ms": 4981212,
+              "title": "Walk 2: Plato, Aristotle and the Good Life"
+            },
+            {
+              "length_ms": 4062377,
+              "start_ms": 8061130,
+              "title": "Walk 3: Dare to Know: Kant and the Utilitarians"
+            },
+            {
+              "length_ms": 4483448,
+              "start_ms": 12123507,
+              "title": "Walk 4: Other Minds and Free Will"
+            },
+            {
+              "length_ms": 380598,
+              "start_ms": 16606955,
+              "title": "Walk 5: A Very Short Logical Walk"
+            },
+            {
+              "length_ms": 2212768,
+              "start_ms": 16987553,
+              "title": "Walk 6: Metaphysics 101: The White Stuff in Bird Poo"
+            },
+            {
+              "length_ms": 3428867,
+              "start_ms": 19200321,
+              "title": "Walk 7: Filling Out the Forms and the Problem of Universals"
+            },
+            {
+              "length_ms": 4563696,
+              "start_ms": 22629188,
+              "title": "Walk 8: What Do I Know?"
+            },
+            {
+              "length_ms": 2216971,
+              "start_ms": 27192884,
+              "title": "Walk 9: Empiricism: Sensing is Believing"
+            },
+            {
+              "length_ms": 3561615,
+              "start_ms": 29409855,
+              "title": "Walk 10: Kant and Fuzzy Logic"
+            },
+            {
+              "length_ms": 4079815,
+              "start_ms": 32971470,
+              "title": "Walk 11: Ants, Spiders and the Philosophy of Science"
+            },
+            {
+              "length_ms": 1608097,
+              "start_ms": 37051285,
+              "title": "The Last Walk: Schopenhauers Bubble and the Meaning of Life"
+            },
+            {
+              "length_ms": 111804,
+              "start_ms": 38659382,
+              "title": "OK, That Wasnt Really the Last Walk, This Is"
+            },
+            {
+              "length_ms": 40564,
+              "start_ms": 38771186,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71GOXHv+gEL.jpg",
           "id": "gildart-jackson-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -11227,6 +11325,10 @@
               "imported_at": "2026-09-24",
               "ref": "1690563516",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1690563516",
+              "type": "libex-import"
             }
           ],
           "work": "how-to-teach-philosophy-to-your-dog"
@@ -11237,6 +11339,10 @@
           "imported_at": "2026-09-24",
           "ref": "1690563516",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1690563516",
+          "type": "libex-import"
         }
       ],
       "title": "How to Teach Philosophy to Your Dog"

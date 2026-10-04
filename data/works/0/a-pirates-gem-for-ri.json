@@ -3822,6 +3822,13 @@
       "authors": [
         "judith-flanders"
       ],
+      "genres": [
+        "education",
+        "history",
+        "language",
+        "politics",
+        "social-sciences"
+      ],
       "id": "a-place-for-everything",
       "language": "en",
       "license": "CC0-1.0",
@@ -3835,6 +3842,89 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 18952,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 25619,
+              "start_ms": 18952,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 9600,
+              "start_ms": 44571,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 1699051,
+              "start_ms": 54171,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 3999868,
+              "start_ms": 1753222,
+              "title": "Chapter 1: A Is for Antiquity: From the Beginning to the Classical World"
+            },
+            {
+              "length_ms": 2482144,
+              "start_ms": 5753090,
+              "title": "Chapter 2: B Is for the Benedictines: The Monasteries and the Early Middle Ages"
+            },
+            {
+              "length_ms": 4388338,
+              "start_ms": 8235234,
+              "title": "Chapter 3: C Is for Categories: Authorities and Organization, to the Twelfth Century"
+            },
+            {
+              "length_ms": 2939460,
+              "start_ms": 12623572,
+              "title": "Chapter 4: D Is for Distinctiones: The High Middle Ages and the Search Tool"
+            },
+            {
+              "length_ms": 2284217,
+              "start_ms": 15563032,
+              "title": "Chapter 5: E Is for Expansion: The Reference Work in the Thirteenth and Fourteenth Centuries"
+            },
+            {
+              "length_ms": 4159575,
+              "start_ms": 17847249,
+              "title": "Chapter 6: F Is for Firsts: From the Birth of Printing to Library Catalogs in the Fifteenth to Sixteenth Centuries"
+            },
+            {
+              "length_ms": 5306688,
+              "start_ms": 22006824,
+              "title": "Chapter 7: G Is for Government: Bureaucracy and the Office, from the Sixteenth Century to the French Revolution"
+            },
+            {
+              "length_ms": 4405429,
+              "start_ms": 27313512,
+              "title": "Chapter 8: H Is for History: Libraries, Research, and Extracting in the Seventeenth and Eighteenth Centuries"
+            },
+            {
+              "length_ms": 3216289,
+              "start_ms": 31718941,
+              "title": "Chapter 9: I Is for Index Cards: From Copy Clerks to Office Supplies in the Nineteenth Century"
+            },
+            {
+              "length_ms": 2184764,
+              "start_ms": 34935230,
+              "title": "Chapter 10: Y Is for Y2K: From the Phone Book to Hypertext in the Twentieth and Twenty-First Centuries"
+            },
+            {
+              "length_ms": 652780,
+              "start_ms": 37119994,
+              "title": "Timeline"
+            },
+            {
+              "length_ms": 111341,
+              "start_ms": 37772774,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XAjHscE-L.jpg",
           "id": "julia-winwood-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -3849,6 +3939,10 @@
               "imported_at": "2026-09-24",
               "ref": "1549104802",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1549104802",
+              "type": "libex-import"
             }
           ],
           "work": "a-place-for-everything"
@@ -3859,6 +3953,10 @@
           "imported_at": "2026-09-24",
           "ref": "1549104802",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1549104802",
+          "type": "libex-import"
         }
       ],
       "title": "A Place for Everything"
