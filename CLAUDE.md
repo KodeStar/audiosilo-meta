@@ -63,6 +63,10 @@ go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 # cover the concurrent code and the real tree is data coverage, still read by
 # the non-race run and by metacheck/metafmt below. Unskipped, pkg/canonical's
 # tree walk alone was ~400s and internal/importer's slug walk ~220s (403s wall).
+# So check.yml never runs them: .github/workflows/real-data.yml runs the WHOLE
+# suite without -race daily (and on dispatch), and a red run opens or comments on
+# the one open `ci-real-data` issue, which the next green run closes
+# (.github/scripts/real-data-report.sh). Locally: `go test -count=1 ./...`.
 go run ./cmd/metacheck --profile core       # validate the data tree (~10s over 133k works)
 go run ./cmd/metafmt --check --profile core # canonical formatting (--write to fix)
 go run ./cmd/metabuild -o meta.sqlite   # build the CORE-ONLY artifact (no sidecars)

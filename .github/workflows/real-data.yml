@@ -1,0 +1,125 @@
+name: real-data
+
+# Run the REAL-DATA tests, which nothing else runs.
+#
+# Every test that reads the real data/ tree skips under -race
+# (race_{on,off}_test.go in pkg/check, pkg/canonical, internal/importer and
+# internal/repair - the fixture suites cover the concurrent code, and the walks
+# cost minutes under the detector), and check.yml's gate is `go test -race
+# ./...`. So TestRealDataTree, TestRealDataCanonical, TestData* and
+# TestRealTreeDryRunComposesAPlan ran nowhere but a maintainer's machine, and a
+# red one sat on main unnoticed for a day - twice. This runs the suite WITHOUT
+# the detector, daily and on demand.
+#
+# THE WHOLE SUITE, not a -run pattern: a pattern is a second list of which tests
+# are real-data, and the next one added under a name it does not match would be
+# silently skipped here too - the exact failure this job exists to end. The
+# fixture tests cost a minute or two beside the real-tree walks.
+#
+# A failed scheduled run is as easy to miss as a skipped test, so the report job
+# makes it VISIBLE: a failure opens (or comments on) ONE issue labelled
+# ci-real-data, naming the run and the failing tests, and the next green run
+# closes it. The logic is .github/scripts/real-data-report.sh.
+on:
+  schedule:
+    # Daily, off the hour (scheduled runs queue up at :00) and outside the sync
+    # bot's and the release build's busy windows.
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+# Least privilege by default; the report job alone is granted issues: write.
+permissions:
+  contents: read
+
+# A manual dispatch and the schedule never overlap. Not cancelled: a run that has
+# started is allowed to finish and report, so the issue always reflects a
+# complete run.
+concurrency:
+  group: real-data-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # Not yet observed on a runner. Measured locally on the 282k-work tree: the
+    # whole non-race suite 1m28s on 20 cores, 2m56s with -p 2 at GOMAXPROCS=4,
+    # ~800s of CPU either way. check.yml's runner takes ~4x the local time for
+    # the -race suite and ~3m20s to check the tree out, which puts this job at
+    # roughly 11-16 minutes. About twice that; re-size it once a run is
+    # observed.
+    timeout-minutes: 35
+    outputs:
+      failures: ${{ steps.summary.outputs.failures }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (CLAUDE.md, the `.github/` entry).
+          go-version-file: .go-version
+          check-latest: true
+
+      - name: Test (no -race, the real tree included)
+        id: test
+        shell: bash
+        # -count=1: setup-go restores the build cache, which carries the test
+        # result cache, and a cached pass would be no run at all.
+        # -p 2: three real-data packages (pkg/check, internal/importer,
+        # internal/repair) each peak at ~3.5GB resident loading the tree, and
+        # the runner has 16GB - two at a time keeps an OOM kill from posing as
+        # a red test, and costs little wall time on four CPUs the loaders
+        # already saturate.
+        # -timeout is per test binary, longer than any package takes and
+        # shorter than the job, so a hang panics with the names of the tests it
+        # was running (which the summary keeps) instead of being killed blind.
+        run: |
+          set -o pipefail
+          go test -count=1 -p 2 -timeout 20m ./... 2>&1 | tee "$RUNNER_TEMP/test.log"
+
+      - name: Summarize the failures
+        id: summary
+        if: failure()
+        shell: bash
+        run: |
+          delim="EOF_$(openssl rand -hex 8)"
+          {
+            echo "failures<<${delim}"
+            bash .github/scripts/real-data-report.sh summarize "$RUNNER_TEMP/test.log"
+            echo "${delim}"
+          } >> "$GITHUB_OUTPUT"
+
+  report:
+    needs: test
+    # Always, so a failure, a timeout and a recovery all report. Only for main:
+    # a dispatch from a branch is somebody's experiment, and must neither file
+    # nor close the issue about main.
+    if: always() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    # A handful of API calls; observed well under a minute.
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout the scripts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/scripts
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+          persist-credentials: false
+
+      - name: File, update or close the tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ needs.test.result }}
+          FAILURES: ${{ needs.test.outputs.failures }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SHA: ${{ github.sha }}
+        run: bash .github/scripts/real-data-report.sh report
