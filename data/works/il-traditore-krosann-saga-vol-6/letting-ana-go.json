@@ -6388,6 +6388,10 @@
             {
               "asin": "B0H7J8X818",
               "region": "us"
+            },
+            {
+              "asin": "B0H7HXHZNK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6500,6 +6504,11 @@
             {
               "imported_at": "2026-08-08",
               "ref": "B0H7J8X818",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0H7HXHZNK",
               "type": "libex-import"
             }
           ],
@@ -8644,6 +8653,58 @@
         }
       ],
       "title": "Letzter Vorhang für Mister Goodfellow"
+    },
+    "letztes-spiel": {
+      "added_at": "2026-10-04",
+      "authors": [
+        "michael-anderle",
+        "m-guida"
+      ],
+      "genres": [
+        "comedy-humor",
+        "fantasy"
+      ],
+      "id": "letztes-spiel",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "anja-podritzki-2026": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0HJHY62FB",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Y5DynwzsL.jpg",
+          "id": "anja-podritzki-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anja-podritzki"
+          ],
+          "publisher": "YourStarVoice",
+          "release_date": "2026-09-14",
+          "runtime_min": 411,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0HJHY62FB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "letztes-spiel"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-04",
+          "ref": "B0HJHY62FB",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Letztes Spiel"
     },
     "leuchte-wie-ein-kristall": {
       "added_at": "2026-08-02",
