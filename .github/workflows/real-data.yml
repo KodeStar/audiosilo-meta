@@ -84,7 +84,10 @@ jobs:
           delim="EOF_$(openssl rand -hex 8)"
           {
             echo "failures<<${delim}"
-            bash .github/scripts/real-data-report.sh summarize "$RUNNER_TEMP/test.log"
+            # Never leave the block unterminated: a failed summary is a line
+            # saying so, not a malformed output file that fails this step.
+            bash .github/scripts/real-data-report.sh summarize "$RUNNER_TEMP/test.log" \
+              || echo "(the failure summary could not be produced; see the run)"
             echo "${delim}"
           } >> "$GITHUB_OUTPUT"
 
@@ -95,7 +98,8 @@ jobs:
     # nor close the issue about main.
     if: always() && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    # A handful of API calls; observed well under a minute.
+    # Not yet observed either: a handful of API calls, estimated well under a
+    # minute, so 5 is generous rather than measured.
     timeout-minutes: 5
     permissions:
       contents: read

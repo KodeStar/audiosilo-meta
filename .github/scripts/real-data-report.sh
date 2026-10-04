@@ -45,8 +45,11 @@ summarize() {
     echo "(no --- FAIL: line in the test log: the failure is outside the tests - a build error, a checkout or setup step, or a timeout; see the run)"
     return 0
   fi
-  total="$(printf '%s\n' "$lines" | wc -l | tr -d ' ')"
-  printf '%s\n' "$lines" | head -n "$MAX_LINES"
+  # Here-strings, not `printf | head`: head exits after MAX_LINES, and a writer
+  # still holding more than a pipe buffer then dies of SIGPIPE, which pipefail
+  # turns into a failed script and an unterminated $GITHUB_OUTPUT block.
+  total="$(wc -l <<<"$lines" | tr -d ' ')"
+  head -n "$MAX_LINES" <<<"$lines"
   if [ "$total" -gt "$MAX_LINES" ]; then
     echo "... and $((total - MAX_LINES)) more"
   fi
