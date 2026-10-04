@@ -1719,6 +1719,27 @@
             {
               "asin": "B01M0R7J8D",
               "region": "us"
+            },
+            {
+              "asin": "B01M0R959N",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31486,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2359333,
+              "start_ms": 31486,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 63065,
+              "start_ms": 2390819,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91zaZ9ff7sL.jpg",
@@ -1735,6 +1756,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01M0R7J8D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B01M0R959N",
               "type": "libex-import"
             }
           ],

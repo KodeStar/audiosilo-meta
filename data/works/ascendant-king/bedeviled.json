@@ -6600,6 +6600,10 @@
             {
               "asin": "B0DKQ9KYN3",
               "region": "us"
+            },
+            {
+              "asin": "B0883B7ZZ7",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6728,6 +6732,147 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DKQ9KYN3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0883B7ZZ7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bedtime-fury"
+        },
+        "elizabeth-saydah-2024": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0DKQJ5BJT",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17808,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 675214,
+              "start_ms": 17808,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1065935,
+              "start_ms": 693022,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1229125,
+              "start_ms": 1758957,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1297043,
+              "start_ms": 2988082,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1008116,
+              "start_ms": 4285125,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1105734,
+              "start_ms": 5293241,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1116717,
+              "start_ms": 6398975,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1039906,
+              "start_ms": 7515692,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 916630,
+              "start_ms": 8555598,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 970639,
+              "start_ms": 9472228,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1268251,
+              "start_ms": 10442867,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 974750,
+              "start_ms": 11711118,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1216910,
+              "start_ms": 12685868,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1274497,
+              "start_ms": 13902778,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 749400,
+              "start_ms": 15177275,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 872210,
+              "start_ms": 15926675,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1265325,
+              "start_ms": 16798885,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 907389,
+              "start_ms": 18064210,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 971453,
+              "start_ms": 18971599,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 18598,
+              "start_ms": 19943052,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Vq4HP9lOL.jpg",
+          "id": "elizabeth-saydah-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elizabeth-saydah",
+            "nikola-muckajev"
+          ],
+          "publisher": "Red Palm Press LLC",
+          "release_date": "2024-11-12",
+          "runtime_min": 332,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0DKQJ5BJT",
               "type": "libex-import"
             }
           ],
