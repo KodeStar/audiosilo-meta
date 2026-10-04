@@ -4,10 +4,31 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
 
 // The three W-DUP widenings and the relaxed disjoint-series veto, each with the shape it
 // was built for and the shape it must still refuse.
+
+// recordPair seeds the shape every widening here is about: two records of one book,
+// a plain one and a second whose title the widening has to see through (with
+// otherOpts on its work record), at one runtime, plus the case's own files.
+func recordPair(t *testing.T, plainID, plainTitle, otherID, otherTitle string, runtime int,
+	otherOpts []testpack.WorkOpt, extra map[string]string) map[string]string {
+	t.Helper()
+	files := fixture(t, map[string]string{
+		"works/aa/" + plainID + "/work.json":         workJSON(t, plainID, plainTitle),
+		"works/aa/" + plainID + "/recordings/a.json": recJSON(t, "a", plainID, withRuntime(runtime)),
+		"works/bb/" + otherID + "/work.json":         workJSON(t, otherID, otherTitle, otherOpts...),
+		"works/bb/" + otherID + "/recordings/b.json": recJSON(t, "b", otherID, withRuntime(runtime)),
+		"people/jo/john-roe.json":                    personJSON(t, "john-roe", "John Roe"),
+	})
+	for k, v := range extra {
+		files[k] = v
+	}
+	return files
+}
 
 // royalRanger seeds the Ranger's Apprentice: The Royal Ranger shape: a plain-titled work,
 // and a second record of it whose retailer title leads with the subseries' post-colon
@@ -15,19 +36,13 @@ import (
 // holds, which is the only thing that varies between the two tests.
 func royalRanger(t *testing.T, seriesAuthor string) map[string]string {
 	t.Helper()
-	return fixture(t, map[string]string{
-		"works/re/the-red-fox-clan/work.json":         workJSON(t, "the-red-fox-clan", "The Red Fox Clan"),
-		"works/re/the-red-fox-clan/recordings/a.json": recJSON(t, "a", "the-red-fox-clan", withRuntime(676)),
-		"works/ro/the-royal-ranger-the-red-fox-clan/work.json": workJSON(t, "the-royal-ranger-the-red-fox-clan",
-			"The Royal Ranger: The Red Fox Clan"),
-		"works/ro/the-royal-ranger-the-red-fox-clan/recordings/b.json": recJSON(t, "b", "the-royal-ranger-the-red-fox-clan",
-			withRuntime(676)),
-		"works/ro/the-royal-ranger/work.json":         workJSON(t, "the-royal-ranger", "The Royal Ranger", withAuthors(seriesAuthor)),
-		"works/ro/the-royal-ranger/recordings/c.json": recJSON(t, "c", "the-royal-ranger", withRuntime(600)),
-		"series/ra/rangers-apprentice-the-royal-ranger.json": seriesJSON(t, "rangers-apprentice-the-royal-ranger",
-			"Ranger's Apprentice: The Royal Ranger", "the-royal-ranger@1"),
-		"people/jo/john-roe.json": personJSON(t, "john-roe", "John Roe"),
-	})
+	return recordPair(t, "the-red-fox-clan", "The Red Fox Clan",
+		"the-royal-ranger-the-red-fox-clan", "The Royal Ranger: The Red Fox Clan", 676, nil, map[string]string{
+			"works/ro/the-royal-ranger/work.json":         workJSON(t, "the-royal-ranger", "The Royal Ranger", withAuthors(seriesAuthor)),
+			"works/ro/the-royal-ranger/recordings/c.json": recJSON(t, "c", "the-royal-ranger", withRuntime(600)),
+			"series/ra/rangers-apprentice-the-royal-ranger.json": seriesJSON(t, "rangers-apprentice-the-royal-ranger",
+				"Ranger's Apprentice: The Royal Ranger", "the-royal-ranger@1"),
+		})
 }
 
 func TestWorkDupMeetsThroughASubseriesTail(t *testing.T) {
@@ -57,18 +72,13 @@ func TestWorkDupTailNeedsASharedAuthor(t *testing.T) {
 	}
 }
 
-// armour seeds a UK and a US title of one book.
+// armour seeds a US and a UK title of one book; authors credits the UK record.
 func armour(t *testing.T, authors ...string) map[string]string {
 	t.Helper()
-	return fixture(t, map[string]string{
-		"works/th/the-armor-of-light/work.json":         workJSON(t, "the-armor-of-light", "The Armor of Light"),
-		"works/th/the-armor-of-light/recordings/a.json": recJSON(t, "a", "the-armor-of-light", withRuntime(1299)),
-		"works/th/the-armour-of-light/work.json": workJSON(t, "the-armour-of-light", "The Armour of Light",
-			withAuthors(authors...)),
-		"works/th/the-armour-of-light/recordings/b.json": recJSON(t, "b", "the-armour-of-light", withRuntime(1299)),
-		"series/ki/kingsbridge.json":                     seriesJSON(t, "kingsbridge", "Kingsbridge", "the-armour-of-light@4"),
-		"people/jo/john-roe.json":                        personJSON(t, "john-roe", "John Roe"),
-	})
+	return recordPair(t, "the-armor-of-light", "The Armor of Light", "the-armour-of-light", "The Armour of Light", 1299,
+		[]testpack.WorkOpt{withAuthors(authors...)}, map[string]string{
+			"series/ki/kingsbridge.json": seriesJSON(t, "kingsbridge", "Kingsbridge", "the-armour-of-light@4"),
+		})
 }
 
 func TestWorkDupMeetsAUSUKSpelling(t *testing.T) {

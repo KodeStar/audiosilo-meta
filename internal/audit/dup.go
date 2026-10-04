@@ -2,6 +2,7 @@ package audit
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 
@@ -103,12 +104,13 @@ func (ix *index) workKeys(w *model.Work) []workKey {
 		}
 		keys = append(keys, workKey{key: k, cleaned: cleaned, series: series, via: via})
 	}
-	// spelled adds a derivation's US/UK SPELLING-VARIANT key (titlerule.SpellingVariantKey)
-	// beside its identity key, for a title the closed table actually changes: "The Armour
-	// of Light" contributes "armoroflight" as well, which is the key "The Armor of Light"
-	// already has. Only a derivation that HAS an identity key gets one, so the variant can
-	// never key a residual the identity rule refuses.
-	spelled := func(fold, cleaned, series string) {
+	// addKeys adds a derivation's identity key and, for a title the closed US/UK table
+	// actually changes, its SPELLING-VARIANT key (titlerule.SpellingVariantKey) beside it:
+	// "The Armour of Light" contributes "armoroflight" as well, which is the key "The
+	// Armor of Light" already has. Only a derivation that HAS an identity key gets one,
+	// so the variant can never key a residual the identity rule refuses.
+	addKeys := func(fold, cleaned, series, via string) {
+		addKey(fold, cleaned, series, via)
 		if fold == "" {
 			return
 		}
@@ -121,16 +123,13 @@ func (ix *index) workKeys(w *model.Work) []workKey {
 		if d.seriesName != "" {
 			via = viaOwnSeries
 		}
-		addKey(d.wantKey, d.want, d.seriesName, via)
-		spelled(d.wantKey, d.want, d.seriesName)
+		addKeys(d.wantKey, d.want, d.seriesName, via)
 	} else {
 		// A series name the TITLE spells out is weaker evidence than a membership, so
 		// the work contributes both keys: its title cleaned against nothing, and its
 		// title cleaned against the name it embeds.
-		addKey(d.plainKey, d.plain, "", viaPlain)
-		addKey(d.wantKey, d.want, d.seriesName, viaEmbeddedSeries)
-		spelled(d.plainKey, d.plain, "")
-		spelled(d.wantKey, d.want, d.seriesName)
+		addKeys(d.plainKey, d.plain, "", viaPlain)
+		addKeys(d.wantKey, d.want, d.seriesName, viaEmbeddedSeries)
 	}
 	if fold, cleaned, tail, ok := ix.seriesTailKey(w); ok {
 		addKey(fold, cleaned, tail, viaSeriesTail)
@@ -161,27 +160,19 @@ func (ix *index) seriesTailKey(w *model.Work) (fold, cleaned, tail string, ok bo
 		return "", "", "", false
 	}
 	head := w.Title[:i]
-	sids := ix.seriesTails[titlerule.SeriesKey(head)]
-	if len(sids) == 0 {
-		return "", "", "", false
-	}
 	mine := ix.authorSeriesIDs(w.Authors)
-	shared := false
-	for _, sid := range sids {
-		if mine[sid] {
-			shared = true
-			break
-		}
-	}
-	if !shared {
+	if !slices.ContainsFunc(ix.seriesTails[subseriesKey(head)], func(sid string) bool { return mine[sid] }) {
 		return "", "", "", false
 	}
+	// The identity rule's own gate: IdentityTitleKey is CompareKey(Clean(...)) once the
+	// residual carries an identity, which is asked here first so the title is cleaned
+	// once (and a numeric-only residual, which that rule also keys, is not keyed here -
+	// addKey would file it under the work's own series, which is not the one shed).
 	cleaned = titlerule.Clean(w.Title, head)
 	if !titlerule.CarriesIdentity(cleaned) {
 		return "", "", "", false
 	}
-	fold = titlerule.IdentityTitleKey(w.Title, head)
-	if fold == "" {
+	if fold = titlerule.CompareKey(cleaned); fold == "" {
 		return "", "", "", false
 	}
 	return fold, cleaned, head, true
@@ -600,7 +591,7 @@ func renderSpan(s [2]float64) string {
 // or two books sharing a title, do.
 //
 // "Different series" is judged by the series' NAME as well as its id (sharesSlot): two
-// memberships at ONE SLOT of two spellings of one series (sameSeriesSpelling) are the same
+// memberships at ONE SLOT of two spellings of one series (titlerule.SameSeriesSpelling) are the same
 // place in the same order - "The Armor of Light" at 4 of "The Kingsbridge Novels" beside
 // "The Armour of Light" at 4 of "Kingsbridge", "The Final Empire" at 1 of "Mistborn"
 // beside its dramatization at 1 of "Mistborn [Dramatized Adaptation]". Reading those as
@@ -643,7 +634,7 @@ func vetoDisjointSeries(ix *index, members []dupMember) (string, bool) {
 }
 
 // sharesSlot reports whether two works sit at one slot (importer.SameSlot) of two series
-// that are one series spelled twice (sameSeriesSpelling) - the question vetoDisjointSeries
+// that are one series spelled twice (titlerule.SameSeriesSpelling) - the question vetoDisjointSeries
 // asks of a pair the ids call disjoint.
 func (ix *index) sharesSlot(a, b string) bool {
 	for _, ma := range ix.memberships[a] {
@@ -653,40 +644,12 @@ func (ix *index) sharesSlot(a, b string) bool {
 		}
 		for _, mb := range ix.memberships[b] {
 			sb := ix.seriesByID[mb.series]
-			if sb != nil && sameSeriesSpelling(sa.Name, sb.Name) && importer.SameSlot(ma.position, mb.position) {
+			if sb != nil && titlerule.SameSeriesSpelling(sa.Name, sb.Name) && importer.SameSlot(ma.position, mb.position) {
 				return true
 			}
 		}
 	}
 	return false
-}
-
-// sameSeriesSpelling reports whether two series names are one series to vetoDisjointSeries:
-// one titlerule.SeriesKey, and either the SAME parenthetical decoration
-// (titlerule.DecorationKey, compared only where it can be read whole) or a decoration on
-// ONE side only.
-//
-// The decoration clause is measured, not cautious. SeriesKey removes a parenthetical, so
-// on its own it called "Pimsleur Chinese (Cantonese)" and "Pimsleur Chinese (Mandarin)"
-// one series, and seven Cantonese/Mandarin and Brazilian/European Portuguese courses - the
-// same lesson numbers at the same slots - went mechanical. Two DIFFERENT decorations are
-// two products; a decoration on one side is the catalogue's ordering, format or edition
-// note on the plain series ("(published order)", "[Dramatized Adaptation]", "(Abridged)",
-// "[Spanish Edition]"), which is where every other newly-shared slot of the measurement
-// sat. The clause's price is 10 correct merges left advisory where both sides carry a
-// different note - six James Bond novels under "(Celebrity Performances)" beside
-// "(Original)" among them - which is the right way round.
-func sameSeriesSpelling(a, b string) bool {
-	ka := titlerule.SeriesKey(a)
-	if ka == "" || ka != titlerule.SeriesKey(b) {
-		return false
-	}
-	decoratedA, decoratedB := titlerule.StripParenGroups(a) != a, titlerule.StripParenGroups(b) != b
-	if !decoratedA || !decoratedB {
-		return true // undecorated, or decorated on one side only
-	}
-	dk := titlerule.DecorationKey(a)
-	return dk != "" && dk == titlerule.DecorationKey(b)
 }
 
 func sortedKeys[V any](m map[string]V) []string {

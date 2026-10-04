@@ -606,7 +606,7 @@ func TestStripDecorationRefusals(t *testing.T) {
 		{
 			name:  "a collection that loses the series naming it is refused",
 			title: "Charassi’s Fae Queen: Six Book World Boxset", series: "Charassi's Fae Queen",
-			refusal: RefuseUnnamedCollection,
+			refusal: RefuseUnnamedPart,
 		},
 		{
 			name:  "a collection that keeps its own head still strips",
@@ -616,17 +616,17 @@ func TestStripDecorationRefusals(t *testing.T) {
 		{
 			name:  "a shared article is not the head surviving",
 			title: "The History of Rome: The Complete Works", series: "The History of Rome",
-			refusal: RefuseUnnamedCollection,
+			refusal: RefuseUnnamedPart,
 		},
 		{
 			name:  "a season left after the series came off the front is refused",
 			title: "Hitchhiker’s Guide to Heaven and Hell: Compete Season One", series: "Hitchhiker's Guide to Heaven and Hell",
-			refusal: RefuseUnnamedVolume,
+			refusal: RefuseUnnamedPart,
 		},
 		{
 			name:  "a volume list left after the series came off the front is refused",
 			title: "Katie Kazoo, Switcheroo: Books 11 & 12", series: "Katie Kazoo",
-			refusal: RefuseUnnamedVolume,
+			refusal: RefuseUnnamedPart,
 		},
 		{
 			name:  "a proposal keeping the low end of a range is refused",

@@ -1,6 +1,7 @@
 package titlerule
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -79,27 +80,40 @@ var spellingVariants = map[string]string{
 
 // SpellingVariantKey is CompareKey(cleaned) with every word the closed table holds
 // spelled the American way - or "" when no word of the title is in the table, so a
-// caller adds a key only for the titles the rule actually changes.
+// caller adds a key only for the titles the rule actually changes (and pays no join for
+// the rest).
 func SpellingVariantKey(cleaned string) string {
-	key, changed := spellingKey(cleaned)
-	if !changed {
+	words := slugWords(cleaned)
+	if !slices.ContainsFunc(words, inSpellingTable) {
 		return ""
 	}
-	return key
+	return spellWords(words)
 }
 
-// spellingKey is CompareKey spelled through the table, and whether any word changed.
-// It folds exactly as CompareKey does (model.Slugify of the article-less text, hyphens
-// removed), only word by word, so a title with no table word keys identically.
-func spellingKey(cleaned string) (string, bool) {
-	words := strings.Split(model.Slugify(dropLeadingArticle(cleaned)), "-")
-	changed := false
-	for i, w := range words {
+// spellingKey is CompareKey spelled through the table: identical to CompareKey for a
+// title holding no table word (TestSpellingKeyIsCompareKeyWithoutATableWord).
+func spellingKey(cleaned string) string { return spellWords(slugWords(cleaned)) }
+
+// slugWords is the words CompareKey joins: model.Slugify of the article-less text.
+func slugWords(cleaned string) []string {
+	return strings.Split(model.Slugify(dropLeadingArticle(cleaned)), "-")
+}
+
+func inSpellingTable(w string) bool {
+	_, ok := spellingVariants[w]
+	return ok
+}
+
+// spellWords joins words as CompareKey does, each spelled through the table.
+func spellWords(words []string) string {
+	var b strings.Builder
+	for _, w := range words {
 		if us, ok := spellingVariants[w]; ok {
-			words[i], changed = us, true
+			w = us
 		}
+		b.WriteString(w)
 	}
-	return strings.Join(words, ""), changed
+	return b.String()
 }
 
 // SameVariantTitleUnderCommonSeries is SameTitleUnderCommonSeries for a pair that met on
@@ -109,9 +123,11 @@ func spellingKey(cleaned string) (string, bool) {
 // side having shed a different series name - asked in the variant key's own terms,
 // since under the plain key "armour" and "armor" never agree at all.
 func SameVariantTitleUnderCommonSeries(titleA, seriesA, titleB, seriesB string) bool {
-	for _, s := range [2]string{seriesA, seriesB} {
-		a, _ := spellingKey(Clean(titleA, s))
-		b, _ := spellingKey(Clean(titleB, s))
+	for i, s := range [2]string{seriesA, seriesB} {
+		if i == 1 && seriesB == seriesA {
+			break // the same name: the first pass already asked
+		}
+		a, b := spellingKey(Clean(titleA, s)), spellingKey(Clean(titleB, s))
 		if a != "" && a == b {
 			return true
 		}

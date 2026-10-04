@@ -53,12 +53,15 @@
 //  8. Comment prose trimmed where it referred to the scoring half that was not
 //     taken, and em dashes converted to hyphens (a workspace-wide rule). No
 //     comment that describes retained BEHAVIOUR was changed.
-//  9. seriesForms returns its list through withPunctuationVariants (rules.go), so
-//     every form also exists in its typographic spellings - a curly apostrophe
-//     for a straight one and a spaced dash for ": " - and the one list that finds
-//     a series name and removes it reads "Ranger’s Apprentice - The Early Years"
-//     as "Ranger's Apprentice: The Early Years". The variants are rules.go's; the
-//     only edit here is the call.
+//  9. THE PUNCTUATION FOLD (rules.go): seriesForms returns its list through
+//     withSeparatorVariants, so a series name's ": " also exists as a spaced dash,
+//     and removeFoldBounded lowers BOTH sides through lowerFold, which also folds
+//     every apostrophe glyph to the straight one - so "Ranger’s Apprentice - The Early
+//     Years" is the series "Ranger's Apprentice: The Early Years". Its rune-offset
+//     mapping advances by the same function's width for each rune (lowerFoldRuneLen),
+//     so the cut still lands on the ORIGINAL string's bytes. containsPhraseLower is
+//     unchanged: SeriesRefIn hands it a title and forms already folded. The rules are
+//     rules.go's; the edits here are the call, the two lowerings and the width.
 //
 // Deliberately UNCHANGED otherwise: every widening of the vocabulary lives in
 // rules.go, so this file stays diffable against the server's copy.
@@ -142,7 +145,7 @@ func seriesForms(series string) []string {
 		add(dropLeadingArticle(s))
 		add(dropLeadingArticle(noSuffix))
 	}
-	return withPunctuationVariants(out)
+	return withSeparatorVariants(out)
 }
 
 // seriesRefIn's job is done by rules.go's exported SeriesRefIn, which is the same
@@ -279,7 +282,7 @@ func tidyTitle(s string) string {
 // sits on alphanumeric boundaries, replacing each with a space, so a series form
 // can never be cut out of the middle of a word.
 func removeFoldBounded(s, sub string) string {
-	lsub := strings.ToLower(sub)
+	lsub := lowerFold(sub)
 	if lsub == "" {
 		return s
 	}
@@ -289,7 +292,7 @@ func removeFoldBounded(s, sub string) string {
 	// both occurrences of "Land", not just the first).
 	prev := utf8.RuneError
 	for s != "" {
-		ls := strings.ToLower(s)
+		ls := lowerFold(s)
 		i := strings.Index(ls, lsub)
 		if i < 0 {
 			b.WriteString(s)
@@ -302,7 +305,7 @@ func removeFoldBounded(s, sub string) string {
 			if lowered == i {
 				start = off
 			}
-			lowered += len(strings.ToLower(string(r)))
+			lowered += lowerFoldRuneLen(r)
 			if lowered == i+len(lsub) {
 				end = off + len(string(r))
 				break

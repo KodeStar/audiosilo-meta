@@ -147,3 +147,35 @@ func foldCase(s string) string {
 	}
 	return b.String()
 }
+
+// SameSeriesSpelling reports whether two series names are one series spelled twice, as
+// internal/audit's disjoint-series veto reads them: one SeriesKey, and either the SAME
+// parenthetical decoration (DecorationKey, compared only where it can be read whole) or a
+// decoration on ONE side only. It is LOOSER than SameSeriesName - a catalogue's
+// "(published order)" or "[Dramatized Adaptation]" note does not separate - which is why
+// it only ever lifts a veto and never joins a series.
+//
+// The decoration clause is measured, not cautious. SeriesKey removes a parenthetical, so
+// on its own it called "Pimsleur Chinese (Cantonese)" and "Pimsleur Chinese (Mandarin)"
+// one series, and seven Cantonese/Mandarin and Brazilian/European Portuguese courses - the
+// same lesson numbers at the same slots - went mechanical. Two DIFFERENT decorations are
+// two products; a decoration on one side is the catalogue's ordering, format or edition
+// note on the plain series ("(published order)", "[Dramatized Adaptation]", "(Abridged)",
+// "[Spanish Edition]"), which is where every other newly-shared slot of the measurement
+// sat. The clause's price is 10 correct merges left advisory where both sides carry a
+// different note - six James Bond novels under "(Celebrity Performances)" beside
+// "(Original)" among them - which is the right way round.
+//
+// Whether a side is decorated is read off the name, not off DecorationKey: that key is
+// also empty for a decoration it cannot read whole, and two such names must not agree.
+func SameSeriesSpelling(a, b string) bool {
+	ka := SeriesKey(a)
+	if ka == "" || ka != SeriesKey(b) {
+		return false
+	}
+	if stripParenGroups(a) == a || stripParenGroups(b) == b {
+		return true // undecorated, or decorated on one side only
+	}
+	dk := DecorationKey(a)
+	return dk != "" && dk == DecorationKey(b)
+}

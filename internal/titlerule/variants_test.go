@@ -78,3 +78,43 @@ func TestSameVariantTitleUnderCommonSeries(t *testing.T) {
 		t.Error("two different titles agreed under the variant key")
 	}
 }
+
+func TestSpellingKeyIsCompareKeyWithoutATableWord(t *testing.T) {
+	for _, title := range []string{"The Armor of Light", "Four Hours of Your Life", "A Café in Zürich", "", "1984"} {
+		if got, want := spellingKey(title), CompareKey(title); got != want {
+			t.Errorf("spellingKey(%q) = %q, want CompareKey's %q", title, got, want)
+		}
+	}
+}
+
+func TestSameSeriesSpelling(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		want bool
+	}{
+		{"The Kingsbridge Novels", "Kingsbridge", true},
+		{"Ranger's Apprentice", "Ranger's Apprentice (published order)", true},
+		{"Mistborn", "Mistborn [Dramatized Adaptation]", true},
+		{"Throne of Glass (French Edition)", "Throne of Glass [French Edition]", true},
+		{"Pimsleur Chinese (Cantonese)", "Pimsleur Chinese (Mandarin)", false},
+		// A decoration DecorationKey cannot read whole agrees with nothing decorated.
+		{"Night Watch (Книга 1)", "Night Watch (Том 1)", false},
+		{"Alpha Cycle", "Beta Cycle", false},
+	} {
+		if got := SameSeriesSpelling(c.a, c.b); got != c.want {
+			t.Errorf("SameSeriesSpelling(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
+	}
+}
+
+func TestSpelledAsInWritesTheTitlesGlyph(t *testing.T) {
+	text := "The Tournament at Gorlan: Ranger’s Apprentice - The Early Years"
+	low := LowerFold(text)
+	start := strings.Index(low, "ranger's")
+	if got := SpelledAsIn("Ranger's Apprentice", text, start, start+len("ranger's apprentice")); got != "Ranger’s Apprentice" {
+		t.Errorf("SpelledAsIn = %q, want the title's curly glyph", got)
+	}
+	if got := SpelledAsIn("Ranger’s Apprentice", "Ranger's Apprentice", 0, 19); got != "Ranger's Apprentice" {
+		t.Errorf("SpelledAsIn = %q, want the title's straight glyph", got)
+	}
+}
