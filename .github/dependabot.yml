@@ -70,8 +70,10 @@ updates:
     # govulncheck pin - a bump done by hand in one change, never an image-only
     # pull request that builds on a Go the rest of the repository does not use.
     ignore:
+      # Docker ignore ranges are Bundler requirements: "25.x" is read as the
+      # exact version "= 25.x" and matches no tag, so it is "~> 25.0".
       - dependency-name: node
-        versions: ["25.x", "27.x", "29.x"]
+        versions: ["~> 25.0", "~> 27.0", "~> 29.0"]
       - dependency-name: golang
         update-types:
           - version-update:semver-major
