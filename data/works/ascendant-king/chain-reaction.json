@@ -22,6 +22,14 @@
             {
               "asin": "B0GK8WRCFR",
               "region": "us"
+            },
+            {
+              "asin": "B0GK91DV66",
+              "region": "uk"
+            },
+            {
+              "asin": "B0GK9FWFZ5",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81rCrgIc6iL.jpg",
@@ -38,6 +46,16 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0GK8WRCFR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK91DV66",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GK9FWFZ5",
               "type": "libex-import"
             }
           ],
@@ -66,6 +84,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0GM4YP19S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "chain-reaction"
+        },
+        "scott-brick-2026-2": {
+          "abridged": false,
+          "added_at": "2026-10-04",
+          "asin": [
+            {
+              "asin": "B0GM53CJW1",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Z8Vgi7HsL.jpg",
+          "id": "scott-brick-2026-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "scott-brick"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2026-10-20",
+          "runtime_min": 749,
+          "sources": [
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B0GM53CJW1",
               "type": "libex-import"
             }
           ],
