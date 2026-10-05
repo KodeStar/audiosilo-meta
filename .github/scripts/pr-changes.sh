@@ -10,7 +10,10 @@
 #   go=true|false       the diff reaches the GO GATE - build, vet, `go test
 #                       -race`, golangci-lint, govulncheck. TRUE unless every
 #                       changed file is data or prose (`data/**` bar
-#                       data/go.mod, `*.md`).
+#                       data/go.mod, `*.md`). real-data.yml's push `paths:`
+#                       filter MIRRORS this answer, and
+#                       scripts/realdatapaths_test.go holds the two together:
+#                       change one, change both.
 #   compose=true|false  the diff can move the two-tree COMPOSE. TRUE when any
 #                       changed file is one the release build reads.
 #

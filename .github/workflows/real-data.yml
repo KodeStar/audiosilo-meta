@@ -9,7 +9,8 @@ name: real-data
 # ./...`. So TestRealDataTree, TestRealDataCanonical, TestData* and
 # TestRealTreeDryRunComposesAPlan ran nowhere but a maintainer's machine, and a
 # red one sat on main unnoticed for a day - twice. This runs the suite WITHOUT
-# the detector, daily and on demand.
+# the detector, daily, on demand, and on every push to main that can change
+# what a test says (see the push trigger below).
 #
 # THE WHOLE SUITE, not a -run pattern: a pattern is a second list of which tests
 # are real-data, and the next one added under a name it does not match would be
@@ -18,8 +19,8 @@ name: real-data
 # locally at the default -p on 20 cores: 87.7s for the whole suite against
 # 76.5s for the real-data tests alone).
 #
-# A failed scheduled run is as easy to miss as a skipped test, so the report job
-# makes it VISIBLE: a failure opens (or comments on) ONE issue labelled
+# A failed unattended run is as easy to miss as a skipped test, so the report
+# job makes it VISIBLE: a failure opens (or comments on) ONE issue labelled
 # ci-real-data, naming the run and the failing tests, and the next green run
 # closes it. The logic is .github/scripts/real-data-report.sh.
 on:
@@ -28,27 +29,70 @@ on:
     # bot's and the release build's busy windows.
     - cron: "17 3 * * *"
   workflow_dispatch:
+  # A CODE change reaching main runs it at once rather than up to a day later,
+  # so a red real-data test is pinned to the merge that made it. Not on pull
+  # requests: ten-plus minutes and ~3.5GB per test binary is too much to ask of
+  # every PR, and check.yml's -race gate is the pre-merge bar.
+  #
+  # The path set MIRRORS check.yml's Go gate (.github/scripts/pr-changes.sh's
+  # `go` answer): every path EXCEPT data/** (bar data/go.mod, which is Go - it
+  # keeps the data tree out of the module zip) and *.md. That is what keeps the
+  # sync and intake bots' hundreds of data-only commits a day from triggering
+  # it. scripts/realdatapaths_test.go drives this list and that script over the
+  # same paths, so the two spellings cannot drift. A `paths:` filter rather than
+  # the script, because this is NOT a required check: a filtered-out run simply
+  # does not exist, which is the intended outcome here, where on a required
+  # check it would read as "waiting" forever.
+  #
+  # Semantics (GitHub's workflow syntax reference, "Filter pattern cheat sheet"
+  # and "Git diff comparisons"): patterns are checked in order and a later one
+  # overrides an earlier one, so data/go.mod is re-included after the data/**
+  # exclusion; '**' matches every path; '**.md' matches a .md file at ANY depth,
+  # the root README.md included. A push's file list is the two-dot diff of its
+  # before and after SHAs. A push of over 1,000 commits, or one whose diff times
+  # out, always runs; past 3,000 changed files a match outside the first 3,000
+  # is missed and the run does not happen - harmless for a data-only push, and
+  # for a code push the daily run is the backstop.
+  push:
+    branches: [main]
+    paths:
+      - "**"
+      - "!data/**"
+      - "data/go.mod"
+      - "!**.md"
 
 # Least privilege by default; the report job alone is granted issues: write.
 permissions:
   contents: read
 
-# A manual dispatch and the schedule never overlap. Not cancelled: a run that has
-# started is allowed to finish and report, so the issue always reflects a
-# complete run.
+# One run per ref at a time, and the NEWEST commit wins: a push, the schedule
+# and a dispatch on main share one group, and a new run CANCELS the one in
+# progress. Two code merges close together are then one suite rather than two
+# ten-minute ones back to back (cancel-in-progress: false would queue the
+# second behind the first, spending a whole run on a commit main has already
+# left and reporting the newest one last). Superseding loses nothing, because
+# every run on main tests the tip of main and the newer run says everything the
+# cancelled one would have. A CANCELLED run never reports: the report job runs
+# on `!cancelled()`, not `always()`, which runs even in a cancelled workflow and
+# would file its `cancelled` result as a failure. (A run cancelled during the
+# few seconds the report job takes may or may not have reported its own,
+# complete, result - either is true of main at that commit.)
 concurrency:
   group: real-data-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
     # Observed 12m05s on the first run (2026-10-04, 282k works: ~4m checkout
-    # and setup, ~8m of tests, slowest binary internal/importer at 295s); 25 is
-    # about twice that. The -timeout below is per BINARY and its clock starts
-    # when that binary does, so the worst hang is one starting as the test phase
-    # ends: ~4m + ~8m + 10m = ~22m, which still panics with its test names and
-    # leaves the summary step time to run before the job is killed.
+    # and setup, ~8m of tests, slowest binary internal/importer at 295s) and
+    # 9m39s on the first scheduled one (2026-10-05, run 37260453061: 2m56s
+    # checkout and setup, 6m40s of tests, internal/importer 229s and
+    # internal/repair 211s); 25 is about twice the slower. The -timeout below
+    # is per BINARY and its clock starts when that binary does, so the worst
+    # hang is one starting as the test phase ends: ~4m + ~8m + 10m = ~22m,
+    # which still panics with its test names and leaves the summary step time
+    # to run before the job is killed.
     timeout-minutes: 25
     outputs:
       failures: ${{ steps.summary.outputs.failures }}
@@ -98,10 +142,16 @@ jobs:
 
   report:
     needs: test
-    # Always, so a failure, a timeout and a recovery all report. Only for main:
-    # a dispatch from a branch is somebody's experiment, and must neither file
-    # nor close the issue about main.
-    if: always() && github.ref == 'refs/heads/main'
+    # Whatever the test job concluded, so a failure, a timeout and a recovery
+    # all report - but never for a CANCELLED workflow: a run superseded by a
+    # newer push (see concurrency) or stopped by hand has nothing to say about
+    # main, and RESULT=cancelled would file as a failure. A job TIMEOUT cancels
+    # that job, not the workflow, so it still reports (and a hung test panics
+    # under go test's own -timeout well before the job limit anyway). Only for
+    # main - a push to main, the schedule (which runs on the default branch) or
+    # a dispatch of main: a dispatch from a branch is somebody's experiment, and
+    # must neither file nor close the issue about main.
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     # Observed 4s on the first run (a handful of API calls).
     timeout-minutes: 5
@@ -121,6 +171,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RESULT: ${{ needs.test.result }}
+          EVENT: ${{ github.event_name }}
           FAILURES: ${{ needs.test.outputs.failures }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           SHA: ${{ github.sha }}

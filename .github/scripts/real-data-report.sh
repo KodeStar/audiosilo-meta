@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# real-data-report.sh - make real-data.yml's scheduled result VISIBLE.
+# real-data-report.sh - make real-data.yml's unattended result VISIBLE.
 #
 # Usage:
 #   bash .github/scripts/real-data-report.sh summarize <test-log>
@@ -9,11 +9,14 @@
 #   bash .github/scripts/real-data-report.sh report
 #       env: GH_TOKEN, GITHUB_REPOSITORY, RESULT (the test job's
 #            needs.<job>.result), RUN_URL, SHA, FAILURES (the summary above,
-#            may be empty).
+#            may be empty), EVENT (github.event_name, optional - named in the
+#            issue so a push run is told apart from the schedule).
 #       RESULT=success closes the open tracking issue, if there is one, with a
 #       comment linking the green run. Anything else (failure, cancelled - a
 #       job timeout lands here too) opens the tracking issue, or comments on it
 #       when one is already open, naming the run, the commit and the failures.
+#       A CANCELLED WORKFLOW never reaches this: the workflow's report job runs
+#       on `!cancelled()`, so a run superseded by a newer push files nothing.
 #
 # Why it exists: see the header of .github/workflows/real-data.yml.
 #
@@ -60,9 +63,10 @@ open_issue() {
     --json number --jq 'sort_by(.number) | .[0].number // empty'
 }
 
-# The issue body for a run that did not pass (reads RESULT, SHA, RUN_URL, FAILURES).
+# The issue body for a run that did not pass (reads RESULT, SHA, RUN_URL,
+# FAILURES, EVENT).
 failure_body() {
-  echo "The scheduled non-race test run ended \`${RESULT}\` at ${SHA}."
+  echo "The real-data test run (no -race, triggered by \`${EVENT:-unknown}\`) ended \`${RESULT}\` at ${SHA}."
   echo
   echo "Run: ${RUN_URL}"
   echo
@@ -105,7 +109,7 @@ report() {
     echo "real-data tests ${RESULT}; commented on #${issue}."
   else
     gh label create "$LABEL" --repo "$GITHUB_REPOSITORY" --color B60205 \
-      --description "The scheduled real-data test run (real-data.yml) is failing" --force
+      --description "The real-data test run (real-data.yml) is failing" --force
     failure_body | gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" \
       --label "$LABEL" --body-file -
     echo "real-data tests ${RESULT}; opened a ${LABEL} issue."
