@@ -514,3 +514,21 @@ func TestReviewedAssertDropRefusedOnConflict(t *testing.T) {
 		})
 	}
 }
+
+// pkg/check lets one work sit at two positions of one series (only a position must be
+// unique). An asserted drop of ONE of them is listed at its slot, so it is sourced,
+// not refused as listed elsewhere: the other membership is no evidence against it.
+func TestReviewedAssertDropOfOneOfTwoMemberships(t *testing.T) {
+	files := rangerTree(t)
+	files["series/na/narnia.json"] = seriesJSON(t, "narnia", "The Chronicles of Narnia",
+		"the-magicians-nephew@1", "prince-caspian@2", "prince-caspian@4", "the-complete-chronicles@1-7")
+	rep := runFixtureRejecting(t, files, dropAssertion("prince-caspian", "narnia", "", "2"))
+	got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted)
+	if len(got) != 1 || got[0].Propose.Target != "prince-caspian" || got[0].Propose.From != "2" || got[0].Propose.Advisory {
+		t.Fatalf("sourced %+v, want the one mechanical drop at 2", got)
+	}
+	if o := rep.Reviewed.All; len(o) != 1 || o[0].Status != statusAsserted {
+		t.Fatalf("tally = %+v", rep.Reviewed)
+	}
+	assertProposalsConsistent(t, rep)
+}

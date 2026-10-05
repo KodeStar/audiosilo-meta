@@ -396,3 +396,62 @@ func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
 		t.Fatalf("second run=%+v", again)
 	}
 }
+
+// One work listed at two positions of one series: metarepair applies an asserted drop
+// of ONE of them, through the fresh-audit gate, and the other membership stays.
+func TestReviewedAssertedDropOfOneOfTwoMembershipsReachesMetarepair(t *testing.T) {
+	files := map[string]string{
+		"people/xx/jane-doe.json":      testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json": testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/xx/narnia.json": testpack.SeriesJSON(t, "narnia", "The Chronicles of Narnia",
+			"the-magicians-nephew@1", "prince-caspian@2", "prince-caspian@4"),
+	}
+	for id, title := range map[string]string{"the-magicians-nephew": "The Magician's Nephew", "prince-caspian": "Prince Caspian"} {
+		files["works/xx/"+id+"/work.json"] = testpack.WorkJSON(t, id, title)
+		files["works/xx/"+id+"/recordings/r.json"] = testpack.RecJSON(t, "r", id)
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "Prince Caspian is book 4; the listing at 2 is a stray",
+    "series": "narnia",
+    "target": "prince-caspian"
+  }
+]
+`))
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+	rep, err := repair.Run(repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Write: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].From != "2" {
+		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after repair: %v", after.Problems)
+	}
+	for _, s := range after.Catalog.Series {
+		if s.ID != "narnia" {
+			continue
+		}
+		var got []string
+		for _, sw := range s.Works {
+			got = append(got, sw.Work+"@"+sw.Position)
+		}
+		if want := []string{"the-magicians-nephew@1", "prince-caspian@4"}; !slices.Equal(got, want) {
+			t.Fatalf("narnia = %v, want %v", got, want)
+		}
+	}
+}

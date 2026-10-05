@@ -304,6 +304,21 @@ func TestHomelessDropAppliesOnlyAsAnAssertion(t *testing.T) {
 	assertRefusal(t, rn.dropMembership(tx, lmix), CatStaleValue, "no longer sits in a series of its language")
 }
 
+// One work may sit at two positions of one series; an asserted drop at one slot
+// removes that membership alone and leaves the other.
+func TestHomelessDropOfOneOfTwoMemberships(t *testing.T) {
+	data := seedTree(t, mergeMaps(languageMixTree(t), map[string]string{
+		"series/ch/chronicle.json": seriesJSON(t, "chronicle", "The Chronicle", "c1@1", "c2@2", "chronik@3", "c1@4"),
+	}))
+	rn, tx := planFixture(t, data)
+	if err := rn.dropMembership(tx, homelessDrop("c1", "chronicle", "4")); err != nil {
+		t.Fatal(err)
+	}
+	if got := memberList(tx.series.puts["chronicle"].SeriesWorks()); !slices.Equal(got, []string{"c1@1", "c2@2", "chronik@3"}) {
+		t.Errorf("chronicle = %v, want c1 kept at 1", got)
+	}
+}
+
 func TestHomelessDropRefuses(t *testing.T) {
 	data := seedTree(t, mergeMaps(languageMixTree(t), map[string]string{
 		"series/so/solo.json": seriesJSON(t, "solo", "Solo", "dawn@1"),
