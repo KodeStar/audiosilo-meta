@@ -13,7 +13,8 @@ import (
 
 // membership.go applies the audit's L-MIX proposals: the memberships of a series whose
 // members state two or more languages (plus a reviewed assertion's homeless drop).
-// drop-membership removes a work from a series it is misfiled in (it already sits in a series of its own language), move-membership
+// drop-membership removes a work from a series it is misfiled in (it already sits in a
+// series of its own language), move-membership
 // moves it to the one series of its language that is this series under another name,
 // split-series moves a minority language's members out to a NEW series of the same
 // name, and set-work-language resets a work's language. The first three write the
@@ -25,7 +26,8 @@ import (
 // proposal names, the work still states the language it was judged in, the series it
 // leaves still does not derive that language, and the series it joins still does. An
 // earlier proposal in the same run that moved any of it makes a later one stale-value
-// rather than applied on top.
+// rather than applied on top. The one exception is a drop naming no home (a reviewed
+// assertion's): it judges no language, so only its membership is re-read.
 //
 // The new series a split mints takes its slug from the importer's own chain
 // (importer.FreeSeriesSlug over the series name, a held, retired or reserved candidate
@@ -64,6 +66,10 @@ func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 		}
 		if at, err = membershipAt(works, p.Series, p.Target, p.From); err != nil {
 			return err
+		}
+		// The reviewer's reason is the only audit trail an unconditional drop has.
+		if p.Reason != "" {
+			why = p.Reason
 		}
 	} else {
 		v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
@@ -145,7 +151,7 @@ func (rn *runner) moveMembership(t *txn, fd audit.Finding) error {
 	t.setSeries(p.Series, se.Clone(), left)
 	t.setSeries(dest, de.Clone(), append(slices.Clone(dworks), model.SeriesWork{Work: p.Target, Position: p.To}))
 	t.note("moved %s from series %s (position %q) to %s at position %q, the series of its language (%s)",
-		p.Target, p.Series, p.From, dest, p.To, lang)
+		p.Target, p.Series, works[at].Position, dest, p.To, lang)
 	// refuseLinkFaults judges EVERY series this txn staged, dest included; the
 	// argument only names the record a refusal is about.
 	return t.refuseLinkFaults(p.Series)
