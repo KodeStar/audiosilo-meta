@@ -129,7 +129,11 @@ func TestRealDataPushFilterMirrorsTheGoGate(t *testing.T) {
 		{"scripts/README.md", false},
 		{"notes.mdx", true},
 		{".github/workflows/real-data.yml", true},
+		{".github/scripts/pr-changes.sh", true},
+		{"schema/work.schema.json", true},
+		{"cmd/metacheck/main.go", true},
 		{"site/src/pages/index.astro", false},
+		{"site/README.md", false},
 	} {
 		t.Run(tc.path, func(t *testing.T) {
 			t.Parallel()
@@ -138,16 +142,10 @@ func TestRealDataPushFilterMirrorsTheGoGate(t *testing.T) {
 				t.Errorf("real-data.yml's push filter says %v, want %v", filter, tc.want)
 			}
 			gate := prChangesGo(t, tc.path)
-			// The one documented divergence: site/** reaches the Go gate
-			// but not the real-data suite.
-			if strings.HasPrefix(tc.path, "site/") {
-				if !gate || filter {
-					t.Errorf("site/** exception broken: filter %v (want false), gate %v (want true)", filter, gate)
-				}
-				return
-			}
-			if filter != gate {
-				t.Errorf("real-data.yml's push filter says %v, pr-changes.sh's go gate says %v", filter, gate)
+			// The one documented divergence: site/** may reach the Go gate
+			// but never the real-data suite. Everywhere else the two agree.
+			if mirrored := gate && !strings.HasPrefix(tc.path, "site/"); filter != mirrored {
+				t.Errorf("real-data.yml's push filter says %v, pr-changes.sh's go gate says %v (site/** excepted)", filter, gate)
 			}
 		})
 	}
