@@ -83,8 +83,9 @@ var assertClass = map[string]string{
 	OpDropMembership: ClassSeriesInteg,
 }
 
-// subclassAsserted is the subclass an asserted proposal is emitted under.
-const subclassAsserted = "asserted"
+// SubclassAsserted is the subclass an asserted proposal is emitted under. internal/repair
+// applies a drop naming no home only under it.
+const SubclassAsserted = "asserted"
 
 func (r reviewedDecision) proposal() Proposal {
 	p := Proposal{Op: r.Op, Target: r.Target, Series: r.Series, Field: r.Field, From: r.From, To: r.To, Others: r.Others}
@@ -567,7 +568,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			}
 			// Only the label differs between an acceptance, an assertion sourcing its own
 			// finding, and one a detector (or a converging assertion) already made.
-			sourced := fd.Subclass == subclassAsserted
+			sourced := fd.Subclass == SubclassAsserted
 			var promoted, unchanged outcomeStatus
 			switch {
 			case r.Decision == "accept":
@@ -618,7 +619,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	// A sourced finding no assertion could make mechanical stays out of the report:
 	// it exists only as the assertion, whose refusal SUMMARY.md names.
 	for _, c := range rep.classes {
-		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == subclassAsserted && fd.Propose.Advisory })
+		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == SubclassAsserted && fd.Propose.Advisory })
 	}
 	rep.classes = slices.DeleteFunc(rep.classes, func(c *findings) bool { return len(c.rows) == 0 && slices.Contains(src.added, c) })
 	var t reviewedTally
@@ -664,7 +665,7 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	case OpAddSeriesMember, OpDropMembership:
 		works, series = []string{p.Target}, []string{p.Series}
 	}
-	fd := Finding{Subclass: subclassAsserted,
+	fd := Finding{Subclass: SubclassAsserted,
 		Notes: []string{"no detector proposes this: a reviewed assertion in " + reviewedPath + " sources it, and no detector veto was asked"}}
 	// Every slug has been resolved through the tombstones already, so one naming no
 	// record is neither live nor retired: a typo, which must not read as applied.

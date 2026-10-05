@@ -37,7 +37,7 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 	// asserted drop - so a DETECTOR's drop of a work (L-MIX's) must name its homes.
 	for _, class := range classOrder {
 		for _, fd := range rep.class(class).rows {
-			if p := fd.Propose; p.Op == OpDropMembership && p.Target != "" && len(p.Others) == 0 && fd.Subclass != subclassAsserted {
+			if p := fd.Propose; p.Op == OpDropMembership && p.Target != "" && len(p.Others) == 0 && fd.Subclass != SubclassAsserted {
 				t.Errorf("%s %s drops %s from %s naming no home: only an assertion may", class, fd.Key, p.Target, p.Series)
 			}
 		}

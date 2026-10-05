@@ -270,35 +270,35 @@ func TestMembershipOpsRefuse(t *testing.T) {
 
 // homelessDrop is a reviewed assertion's drop: no home in Others.
 func homelessDrop(target, series, from string) audit.Finding {
-	return audit.Finding{Class: audit.ClassSeriesInteg, Subclass: "asserted", Key: "asserted/" + target + "@" + series,
-		Propose: audit.Proposal{Op: audit.OpDropMembership, Target: target, Series: series, Field: fieldPosition, From: from}}
+	return audit.Finding{Class: audit.ClassSeriesInteg, Subclass: audit.SubclassAsserted, Key: "asserted/" + target + "@" + series,
+		Propose: audit.Proposal{Op: audit.OpDropMembership, Target: target, Series: series, Field: fieldPosition, From: from,
+			Reason: "asserted by review: an omnibus is not a volume"}}
 }
 
-// A drop is dispatched on its SHAPE: naming no home, none is asked for and no language
-// is judged, so a MAJORITY member leaves its series (an assertion's word), whatever
-// class carries the finding. The work itself is not written. A drop naming homes keeps
-// L-MIX's check: a home that no longer lists the work refuses it.
-func TestHomelessDropAppliesUnconditionally(t *testing.T) {
+// A drop naming no home applies only as a reviewed assertion: no language is judged,
+// so a MAJORITY member leaves its series on the review's word, with the review's own
+// reason in the note, and the work itself is not written. The same shape in any other
+// subclass fails closed as malformed, and a drop naming homes keeps L-MIX's check: a
+// home that no longer lists the work refuses it.
+func TestHomelessDropAppliesOnlyAsAnAssertion(t *testing.T) {
 	data := seedTree(t, languageMixTree(t))
-	for _, fd := range []audit.Finding{
-		homelessDrop("c1", "chronicle", "1"),
-		mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "c1", Series: "chronicle", Field: fieldPosition, From: "1"}),
-	} {
-		rn, tx := planFixture(t, data)
-		if err := rn.dropMembership(tx, fd); err != nil {
-			t.Fatalf("%s: %v", fd.Class, err)
-		}
-		if got := memberList(tx.series.puts["chronicle"].SeriesWorks()); !slices.Equal(got, []string{"c2@2", "chronik@3"}) {
-			t.Errorf("%s: chronicle = %v", fd.Class, got)
-		}
-		if want := `dropped c1 (position "1") from series chronicle: asserted by review`; !slices.Contains(tx.notes, want) {
-			t.Errorf("%s: notes = %v, want %q", fd.Class, tx.notes, want)
-		}
-		if len(tx.works.puts) != 0 {
-			t.Errorf("%s: a drop wrote works: %v", fd.Class, tx.works.puts)
-		}
-	}
 	rn, tx := planFixture(t, data)
+	if err := rn.dropMembership(tx, homelessDrop("c1", "chronicle", "1")); err != nil {
+		t.Fatal(err)
+	}
+	if got := memberList(tx.series.puts["chronicle"].SeriesWorks()); !slices.Equal(got, []string{"c2@2", "chronik@3"}) {
+		t.Errorf("chronicle = %v", got)
+	}
+	if want := `dropped c1 (position "1") from series chronicle: asserted by review: an omnibus is not a volume`; !slices.Equal(tx.notes, []string{want}) {
+		t.Errorf("notes = %v, want %q", tx.notes, want)
+	}
+	if len(tx.works.puts) != 0 {
+		t.Errorf("a drop wrote works: %v", tx.works.puts)
+	}
+	rn, tx = planFixture(t, data)
+	homeless := mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "c1", Series: "chronicle", Field: fieldPosition, From: "1"})
+	assertRefusal(t, rn.dropMembership(tx, homeless), CatMalformed, "only ever a reviewed assertion")
+	rn, tx = planFixture(t, data)
 	lmix := mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "chronik", Series: "chronicle", Field: fieldPosition,
 		From: "3", Others: []string{"fate-german"}})
 	assertRefusal(t, rn.dropMembership(tx, lmix), CatStaleValue, "no longer sits in a series of its language")

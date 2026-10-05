@@ -45,8 +45,9 @@ const (
 )
 
 // dropMembership removes Target from Series at From. With homes in Others (L-MIX's
-// drop) the work must still sit in one deriving its language; with none (a reviewed
-// assertion's drop) only the membership is re-read. The work is never written.
+// drop) the work must still sit in one deriving its language; with none, only a
+// reviewed assertion's drop applies, and only the membership is re-read. The work is
+// never written.
 func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.Target == "" || p.Series == "" || p.Field != fieldPosition {
@@ -61,6 +62,12 @@ func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 		why   = "asserted by review"
 	)
 	if len(p.Others) == 0 {
+		// Fail closed: no language or home is asked here, so a detector bug emitting a
+		// homeless drop must not reach it.
+		if fd.Subclass != audit.SubclassAsserted {
+			return refusef(CatMalformed, "a drop naming no home is only ever a reviewed assertion, and %s/%s is not one",
+				fd.Class, orUnstated(fd.Subclass))
+		}
 		if se, works, err = rn.liveSeries(t, p.Series); err != nil {
 			return err
 		}

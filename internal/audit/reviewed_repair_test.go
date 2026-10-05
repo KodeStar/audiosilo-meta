@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"os/exec"
 	"path/filepath"
-	"strings"
+	"slices"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
@@ -356,18 +356,20 @@ func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
 		}
 	}
 	before := check.Load(data)
-	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{"asserted"}, Write: true}
+	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].Subclass != "asserted" ||
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].Subclass != audit.SubclassAsserted ||
 		rep.Applied[0].Class != audit.ClassSeriesInteg {
 		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
 	}
-	if notes := rep.Applied[0].Notes; len(notes) == 0 || !strings.Contains(strings.Join(notes, "\n"),
-		`dropped the-complete-chronicles (position "1-7") from series narnia: asserted by review`) {
-		t.Errorf("notes = %v", notes)
+	// The reviewer's own reason travels from reviewed.json through the sourced finding
+	// to the applied note, whole.
+	if want := `dropped the-complete-chronicles (position "1-7") from series narnia: asserted by review: ` +
+		`an omnibus of the seven books is not a volume of the series`; !slices.Equal(rep.Applied[0].Notes, []string{want}) {
+		t.Errorf("notes = %q, want [%q]", rep.Applied[0].Notes, want)
 	}
 	after := check.Load(data)
 	if len(after.Problems) > 0 {

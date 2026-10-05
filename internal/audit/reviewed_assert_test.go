@@ -83,7 +83,7 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 			before := runFixtureRejecting(t, rangerTree(t))
 			class := assertedRecord[tc.r.Op]
 			rep := runFixtureRejecting(t, rangerTree(t), tc.r)
-			got := subclassOf(t, rep, class, subclassAsserted)
+			got := subclassOf(t, rep, class, SubclassAsserted)
 			if len(got) != 1 || len(classOf(t, rep, class)) != len(classOf(t, before, class))+1 {
 				t.Fatalf("%s = %+v, want the one asserted finding beside the detector's", class, classOf(t, rep, class))
 			}
@@ -152,7 +152,7 @@ func TestReviewedAssertStaleWhenARecordIsRetired(t *testing.T) {
 	rep := runFixtureRejectingWith(t, files, `{"people":{},"series":{},"works":{"oakleaf-bearers":"the-battle-for-skandia"}}`,
 		assertOakleaf, assertKingsbr, missing)
 	for _, class := range []string{ClassWorkDup, ClassWorkNoSeries} {
-		if got := subclassOf(t, rep, class, subclassAsserted); len(got) != 0 {
+		if got := subclassOf(t, rep, class, SubclassAsserted); len(got) != 0 {
 			t.Fatalf("%s sourced %+v from a stale assertion", class, got)
 		}
 	}
@@ -204,10 +204,10 @@ func TestReviewedAssertRefusedOnConflict(t *testing.T) {
 			t.Fatalf("outcome %d = %+v, want %q", i, o, want)
 		}
 	}
-	if got := subclassOf(t, rep, ClassWorkNoSeries, subclassAsserted); len(got) != 1 {
+	if got := subclassOf(t, rep, ClassWorkNoSeries, SubclassAsserted); len(got) != 1 {
 		t.Fatalf("asserted memberships = %+v, want only the first", got)
 	}
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("refused merges were sourced: %+v", got)
 	}
 	if md := summary(rep); !strings.Contains(md, "- refused `") || !strings.Contains(md, "fold onto both") {
@@ -273,7 +273,7 @@ func TestReviewedAssertsConvergingSourceOnce(t *testing.T) {
 	old.Target = "battle-for-skandia-old"
 	files := rangerTree(t)
 	rep := runFixtureRejectingWith(t, files, `{"people":{},"series":{},"works":{"battle-for-skandia-old":"the-battle-for-skandia"}}`, old, assertOakleaf)
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 1 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 1 {
 		t.Fatalf("sourced %+v, want one", got)
 	}
 	if o := rep.Reviewed.Outcomes(); len(o) != 2 || o[0].Status != "asserted" || o[1].Status != "redundant" {
@@ -286,7 +286,7 @@ func TestReviewedAssertsConvergingSourceOnce(t *testing.T) {
 func TestReviewedAssertRefusedWhenALoserMergedElsewhere(t *testing.T) {
 	widened := assertion(OpMergeWorks, "the-battle-for-skandia", "", "", "", "oakleaf-bearers-old")
 	rep := runFixtureRejectingWith(t, rangerTree(t), `{"people":{},"series":{},"works":{"oakleaf-bearers-old":"oakleaf-bearers"}}`, widened)
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("widened the merge: %+v", got)
 	}
 	o := rep.Reviewed.All
@@ -348,7 +348,7 @@ func TestReviewedRejectionWithholdingAnAssertionIsNotStale(t *testing.T) {
 	rejection := assertOakleaf
 	rejection.Decision = "reject"
 	rep := runFixtureRejecting(t, rangerTree(t), assertOakleaf, rejection)
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("a rejected assertion was sourced: %+v", got)
 	}
 	all := rep.Reviewed.All
@@ -368,7 +368,7 @@ func TestReviewedRejectionWithholdingAnAssertionIsNotStale(t *testing.T) {
 func TestReviewedAssertRefusedOnAHeldSlot(t *testing.T) {
 	held := assertion(OpAddSeriesMember, "the-pillars-of-the-earth", "kingsbridge", "series", "2")
 	rep := runFixtureRejecting(t, rangerTree(t), held)
-	if got := subclassOf(t, rep, ClassWorkNoSeries, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkNoSeries, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("sourced %+v into a held slot", got)
 	}
 	o := rep.Reviewed.All
@@ -460,7 +460,7 @@ func TestReviewedAssertDropLookups(t *testing.T) {
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			rep := runFixtureRejecting(t, rangerTree(t), tc.r)
-			if got := subclassOf(t, rep, ClassSeriesInteg, subclassAsserted); len(got) != 0 {
+			if got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted); len(got) != 0 {
 				t.Fatalf("sourced %+v", got)
 			}
 			o := rep.Reviewed.All
@@ -478,7 +478,7 @@ func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
 	old := dropAssertion("complete-chronicles-old", "narnia-old", "", "1-7")
 	rep := runFixtureRejectingWith(t, rangerTree(t),
 		`{"people":{},"series":{"narnia-old":"narnia"},"works":{"complete-chronicles-old":"the-complete-chronicles"}}`, old, assertOmnibus)
-	got := subclassOf(t, rep, ClassSeriesInteg, subclassAsserted)
+	got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted)
 	if len(got) != 1 || got[0].Propose.Target != "the-complete-chronicles" || got[0].Propose.Series != "narnia" || got[0].Propose.Advisory {
 		t.Fatalf("sourced %+v, want one mechanical drop under the live slugs", got)
 	}
@@ -507,7 +507,7 @@ func TestReviewedAssertDropRefusedOnConflict(t *testing.T) {
 			if len(o) != 2 || o[0].Status != statusAsserted || o[1].Status != statusRefused || !strings.Contains(o[1].Why, tc.why) {
 				t.Fatalf("tally = %+v, want the drop refused naming %q", rep.Reviewed, tc.why)
 			}
-			if got := subclassOf(t, rep, ClassSeriesInteg, subclassAsserted); len(got) != 0 {
+			if got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted); len(got) != 0 {
 				t.Fatalf("a refused drop was sourced: %+v", got)
 			}
 			assertProposalsConsistent(t, rep)
