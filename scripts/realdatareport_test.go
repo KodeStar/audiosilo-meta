@@ -270,12 +270,12 @@ func TestRealDataReportFailureOpensAnIssue(t *testing.T) {
 	_, calls := runReport(t, "", "failure", failures)
 	wantGHCalls(t, calls, reportIssueList,
 		[]string{"label", "create", "ci-real-data", "--repo", "owner/repo", "--color", "B60205",
-			"--description", "The scheduled real-data test run (real-data.yml) is failing", "--force"},
+			"--description", "The real-data test run (real-data.yml) is failing", "--force"},
 		[]string{"issue", "create", "--repo", "owner/repo", "--title", "Real-data tests are failing on main",
 			"--label", "ci-real-data", "--body-file", "-"})
 	body := calls[2].stdin
 	for _, want := range []string{
-		"ended `failure` at abc123",
+		"The real-data test run (no -race) ended `failure` at abc123",
 		"Run: https://github.com/owner/repo/actions/runs/42",
 		"```\n" + failures + "\n```\n",
 	} {

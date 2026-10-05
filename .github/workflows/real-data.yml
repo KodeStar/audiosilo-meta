@@ -9,7 +9,7 @@ name: real-data
 # ./...`. So TestRealDataTree, TestRealDataCanonical, TestData* and
 # TestRealTreeDryRunComposesAPlan ran nowhere but a maintainer's machine, and a
 # red one sat on main unnoticed for a day - twice. This runs the suite WITHOUT
-# the detector, daily and on demand.
+# the detector, daily, on demand, and on pushes to main that touch Go code.
 #
 # THE WHOLE SUITE, not a -run pattern: a pattern is a second list of which tests
 # are real-data, and the next one added under a name it does not match would be
@@ -18,8 +18,8 @@ name: real-data
 # locally at the default -p on 20 cores: 87.7s for the whole suite against
 # 76.5s for the real-data tests alone).
 #
-# A failed scheduled run is as easy to miss as a skipped test, so the report job
-# makes it VISIBLE: a failure opens (or comments on) ONE issue labelled
+# A failed unattended run is as easy to miss as a skipped test, so the report
+# job makes it VISIBLE: a failure opens (or comments on) ONE issue labelled
 # ci-real-data, naming the run and the failing tests, and the next green run
 # closes it. The logic is .github/scripts/real-data-report.sh.
 on:
@@ -28,26 +28,39 @@ on:
     # bot's and the release build's busy windows.
     - cron: "17 3 * * *"
   workflow_dispatch:
+  # Code merges run it at once rather than up to a day later; never on PRs.
+  # The paths mirror check.yml's Go gate (pr-changes.sh's `go` answer: all but
+  # data/** bar data/go.mod, and *.md) minus site/**, which no real-data test
+  # reads (the two site/*.ts drift guards are not real-data tests and run in
+  # check.yml); scripts/realdatapaths_test.go enforces both. Not a required
+  # check, so a `paths:` filter is safe. Past 3,000 changed files GitHub can
+  # miss a match; the daily run backs that up.
+  push:
+    branches: [main]
+    paths:
+      - "**"
+      - "!data/**"
+      - "data/go.mod"
+      - "!**.md"
+      - "!site/**"
 
 # Least privilege by default; the report job alone is granted issues: write.
 permissions:
   contents: read
 
-# A manual dispatch and the schedule never overlap. Not cancelled: a run that has
-# started is allowed to finish and report, so the issue always reflects a
-# complete run.
+# The newest run on main cancels the older one, so the newest commit reports.
+# That includes a scheduled or dispatched run a Go push lands on: it tests main's tip too.
 concurrency:
   group: real-data-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Observed 12m05s on the first run (2026-10-04, 282k works: ~4m checkout
-    # and setup, ~8m of tests, slowest binary internal/importer at 295s); 25 is
-    # about twice that. The -timeout below is per BINARY and its clock starts
-    # when that binary does, so the worst hang is one starting as the test phase
-    # ends: ~4m + ~8m + 10m = ~22m, which still panics with its test names and
+    # Observed 12m05s (2026-10-04, dispatch: ~4m setup, ~8m tests).
+    # Observed 9m39s (2026-10-05, scheduled run 37260453061: 3m setup, 6m40s tests).
+    # 25 is about twice the slower. The -timeout below is per BINARY, so the
+    # worst hang (~4m + ~8m + 10m = ~22m) still panics with its test names and
     # leaves the summary step time to run before the job is killed.
     timeout-minutes: 25
     outputs:
@@ -98,10 +111,10 @@ jobs:
 
   report:
     needs: test
-    # Always, so a failure, a timeout and a recovery all report. Only for main:
-    # a dispatch from a branch is somebody's experiment, and must neither file
-    # nor close the issue about main.
-    if: always() && github.ref == 'refs/heads/main'
+    # `!cancelled()`, not `always()`: a superseded or hand-cancelled run files
+    # nothing, while a failure, a job timeout and a recovery all report. Only
+    # for main: a dispatch from a branch must not touch the issue about main.
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     # Observed 4s on the first run (a handful of API calls).
     timeout-minutes: 5

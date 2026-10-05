@@ -107,8 +107,7 @@ jobs:
         # internal/importer and internal/repair) - the fixture suites cover the
         # concurrent code and the real tree is data coverage, validated by
         # metacheck/metafmt below - so the suite stays inside a few minutes.
-        # The real-data tests themselves run daily, without -race, in
-        # real-data.yml.
+        # The real-data tests themselves run without -race in real-data.yml.
         run: go test -race ./...
 
       # --profile core is what this repository's data root now IS: works, people,

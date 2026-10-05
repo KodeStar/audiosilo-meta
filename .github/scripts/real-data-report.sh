@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# real-data-report.sh - make real-data.yml's scheduled result VISIBLE.
+# real-data-report.sh - make real-data.yml's unattended result VISIBLE.
 #
 # Usage:
 #   bash .github/scripts/real-data-report.sh summarize <test-log>
@@ -62,7 +62,7 @@ open_issue() {
 
 # The issue body for a run that did not pass (reads RESULT, SHA, RUN_URL, FAILURES).
 failure_body() {
-  echo "The scheduled non-race test run ended \`${RESULT}\` at ${SHA}."
+  echo "The real-data test run (no -race) ended \`${RESULT}\` at ${SHA}."
   echo
   echo "Run: ${RUN_URL}"
   echo
@@ -105,7 +105,7 @@ report() {
     echo "real-data tests ${RESULT}; commented on #${issue}."
   else
     gh label create "$LABEL" --repo "$GITHUB_REPOSITORY" --color B60205 \
-      --description "The scheduled real-data test run (real-data.yml) is failing" --force
+      --description "The real-data test run (real-data.yml) is failing" --force
     failure_body | gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" \
       --label "$LABEL" --body-file -
     echo "real-data tests ${RESULT}; opened a ${LABEL} issue."
