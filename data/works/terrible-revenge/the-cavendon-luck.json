@@ -5843,6 +5843,67 @@
             {
               "asin": "B015GDEPPG",
               "region": "uk"
+            },
+            {
+              "asin": "B015GCWZ18",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1243150,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1346107,
+              "start_ms": 1243150,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1369884,
+              "start_ms": 2589257,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1112654,
+              "start_ms": 3959141,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1453569,
+              "start_ms": 5071795,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1421154,
+              "start_ms": 6525364,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1226199,
+              "start_ms": 7946518,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1588756,
+              "start_ms": 9172717,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1077174,
+              "start_ms": 10761473,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1000687,
+              "start_ms": 11838647,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1069557,
+              "start_ms": 12839334,
+              "title": "Chapter 11"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91oWh8A6zBL.jpg",
@@ -5859,6 +5920,106 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B015GDEPPG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B015GCWZ18",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cellars-of-the-majestic"
+        },
+        "james-faulkner-2026": {
+          "abridged": false,
+          "added_at": "2026-10-05",
+          "asin": [
+            {
+              "asin": "B0FKDB5L7B",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31741,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1466177,
+              "start_ms": 31741,
+              "title": "Chapter 1. Prosper Donge’s Tyre"
+            },
+            {
+              "length_ms": 1577401,
+              "start_ms": 1497918,
+              "title": "Chapter 2. Maigret Goes Cycling"
+            },
+            {
+              "length_ms": 1598554,
+              "start_ms": 3075319,
+              "title": "Chapter 3. Charlotte at the Pélican"
+            },
+            {
+              "length_ms": 1324234,
+              "start_ms": 4673873,
+              "title": "Chapter 4. Gigi and the Carnival"
+            },
+            {
+              "length_ms": 1760560,
+              "start_ms": 5998107,
+              "title": "Chapter 5. The Spittle on the Window"
+            },
+            {
+              "length_ms": 1669421,
+              "start_ms": 7758667,
+              "title": "Chapter 6. Charlotte’s Letter"
+            },
+            {
+              "length_ms": 1581534,
+              "start_ms": 9428088,
+              "title": "Chapter 7. The Evening of ‘What’s He Saying?’"
+            },
+            {
+              "length_ms": 1878819,
+              "start_ms": 11009622,
+              "title": "Chapter 8. When Maigret Dozed Off"
+            },
+            {
+              "length_ms": 1382074,
+              "start_ms": 12888441,
+              "title": "Chapter 9. Monsieur Charles’ Newspaper"
+            },
+            {
+              "length_ms": 1213985,
+              "start_ms": 14270515,
+              "title": "Chapter 10. Dinner at the Coupole"
+            },
+            {
+              "length_ms": 1277724,
+              "start_ms": 15484500,
+              "title": "Chapter 11. Gala Evening at the Police Judiciaire"
+            },
+            {
+              "length_ms": 79085,
+              "start_ms": 16762224,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61sW8AiRM+L.jpg",
+          "id": "james-faulkner-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2026-01-06",
+          "runtime_min": 280,
+          "sources": [
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B0FKDB5L7B",
               "type": "libex-import"
             }
           ],

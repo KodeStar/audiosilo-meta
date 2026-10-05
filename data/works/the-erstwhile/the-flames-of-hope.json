@@ -5408,6 +5408,67 @@
             {
               "asin": "B00ZGTEH6I",
               "region": "uk"
+            },
+            {
+              "asin": "B00ZGSM8ME",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1135315,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1048566,
+              "start_ms": 1135315,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1092731,
+              "start_ms": 2183881,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 775871,
+              "start_ms": 3276612,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1350008,
+              "start_ms": 4052483,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1035145,
+              "start_ms": 5402491,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1057436,
+              "start_ms": 6437636,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1126121,
+              "start_ms": 7495072,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1062963,
+              "start_ms": 8621193,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1068396,
+              "start_ms": 9684156,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 339010,
+              "start_ms": 10752552,
+              "title": "Chapter 11"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91rZrP-VaVL.jpg",
@@ -5424,6 +5485,111 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B00ZGTEH6I",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B00ZGSM8ME",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-flemish-house"
+        },
+        "james-faulkner-2025": {
+          "abridged": false,
+          "added_at": "2026-10-05",
+          "asin": [
+            {
+              "asin": "B0FKCJJNN7",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 47043,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1367608,
+              "start_ms": 47043,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1269620,
+              "start_ms": 1414651,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1314388,
+              "start_ms": 2684271,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 922459,
+              "start_ms": 3998659,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1611418,
+              "start_ms": 4921118,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1200819,
+              "start_ms": 6532536,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1277236,
+              "start_ms": 7733355,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1365170,
+              "start_ms": 9010591,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1283227,
+              "start_ms": 10375761,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1329086,
+              "start_ms": 11658988,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 401589,
+              "start_ms": 12988074,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 60046,
+              "start_ms": 13389663,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 19039,
+              "start_ms": 13449709,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61s8ahukUEL.jpg",
+          "id": "james-faulkner-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2025-12-09",
+          "runtime_min": 224,
+          "sources": [
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B0FKCJJNN7",
               "type": "libex-import"
             }
           ],

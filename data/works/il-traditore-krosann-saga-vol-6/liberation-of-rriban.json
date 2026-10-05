@@ -5721,6 +5721,67 @@
             {
               "asin": "B012X5JVOU",
               "region": "uk"
+            },
+            {
+              "asin": "B012X6XTDI",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1122314,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1149945,
+              "start_ms": 1122314,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1167314,
+              "start_ms": 2272259,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1161276,
+              "start_ms": 3439573,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1078660,
+              "start_ms": 4600849,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1013644,
+              "start_ms": 5679509,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1206880,
+              "start_ms": 6693153,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1091988,
+              "start_ms": 7900033,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 905392,
+              "start_ms": 8992021,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1215750,
+              "start_ms": 9897413,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 509817,
+              "start_ms": 11113163,
+              "title": "Chapter 11"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91cTkEGFTZL.jpg",
@@ -5737,6 +5798,111 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B012X5JVOU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B012X6XTDI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "liberty-bar-georges-simenon"
+        },
+        "james-faulkner-2025": {
+          "abridged": false,
+          "added_at": "2026-10-05",
+          "asin": [
+            {
+              "asin": "B0FKCQ1TR3",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31741,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1410960,
+              "start_ms": 31741,
+              "title": "Chapter 1: The Dead Man and His Two Women"
+            },
+            {
+              "length_ms": 1466015,
+              "start_ms": 1442701,
+              "title": "Chapter 2: Tell Me About Brown..."
+            },
+            {
+              "length_ms": 1443305,
+              "start_ms": 2908716,
+              "title": "Chapter 3: William’s Goddaughter"
+            },
+            {
+              "length_ms": 1428886,
+              "start_ms": 4352021,
+              "title": "Chapter 4: The Gentian"
+            },
+            {
+              "length_ms": 1357972,
+              "start_ms": 5780907,
+              "title": "Chapter 5: The Funeral of William Brown"
+            },
+            {
+              "length_ms": 1288730,
+              "start_ms": 7138879,
+              "title": "Chapter 6: The Shameful Companion"
+            },
+            {
+              "length_ms": 1433530,
+              "start_ms": 8427609,
+              "title": "Chapter 7: The Order"
+            },
+            {
+              "length_ms": 1358506,
+              "start_ms": 9861139,
+              "title": "Chapter 8: The Four Heirs"
+            },
+            {
+              "length_ms": 1174047,
+              "start_ms": 11219645,
+              "title": "Chapter 9: Chatter"
+            },
+            {
+              "length_ms": 1566975,
+              "start_ms": 12393692,
+              "title": "Chapter 10: The Divan"
+            },
+            {
+              "length_ms": 627821,
+              "start_ms": 13960667,
+              "title": "Chapter 11: A Love Story"
+            },
+            {
+              "length_ms": 60046,
+              "start_ms": 14588488,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 19039,
+              "start_ms": 14648534,
+              "title": "Additional Information"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ANji5yknL.jpg",
+          "id": "james-faulkner-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2025-12-09",
+          "runtime_min": 244,
+          "sources": [
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B0FKCQ1TR3",
               "type": "libex-import"
             }
           ],
