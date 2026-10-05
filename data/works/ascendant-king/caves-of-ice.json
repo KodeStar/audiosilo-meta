@@ -7358,6 +7358,96 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gareth-armstrong-2015": {
+          "abridged": false,
+          "added_at": "2026-10-05",
+          "asin": [
+            {
+              "asin": "B014UH2X8A",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1244962,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1244079,
+              "start_ms": 1244962,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1350983,
+              "start_ms": 2489041,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1098768,
+              "start_ms": 3840024,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1303057,
+              "start_ms": 4938792,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1187376,
+              "start_ms": 6241849,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1378940,
+              "start_ms": 7429225,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1151199,
+              "start_ms": 8808165,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1213753,
+              "start_ms": 9959364,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1165410,
+              "start_ms": 11173117,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1335240,
+              "start_ms": 12338527,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1006863,
+              "start_ms": 13673767,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91uSrD+0X7L.jpg",
+          "id": "gareth-armstrong-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gareth-armstrong"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2015-09-15",
+          "runtime_min": 244,
+          "sources": [
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B014UH2X8A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cecile-is-dead-inspector-maigret"
+        },
         "james-faulkner-2025": {
           "abridged": false,
           "added_at": "2026-10-04",
@@ -7365,6 +7455,87 @@
             {
               "asin": "B0FKD7RDRV",
               "region": "uk"
+            },
+            {
+              "asin": "B0FKCSFPB8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 47043,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1514985,
+              "start_ms": 47043,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1536116,
+              "start_ms": 1562028,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1556363,
+              "start_ms": 3098144,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1361943,
+              "start_ms": 4654507,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1557873,
+              "start_ms": 6016450,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1426866,
+              "start_ms": 7574323,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1675180,
+              "start_ms": 9001189,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1425983,
+              "start_ms": 10676369,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1455496,
+              "start_ms": 12102352,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1406711,
+              "start_ms": 13557848,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1715838,
+              "start_ms": 14964559,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1157143,
+              "start_ms": 16680397,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 59791,
+              "start_ms": 17837540,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 19039,
+              "start_ms": 17897331,
+              "title": "Additional Information"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/61Sz1NaIT-L.jpg",
@@ -7381,6 +7552,11 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B0FKD7RDRV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B0FKCSFPB8",
               "type": "libex-import"
             }
           ],

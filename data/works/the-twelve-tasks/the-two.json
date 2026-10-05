@@ -5383,6 +5383,12 @@
       "authors": [
         "georges-simenon"
       ],
+      "credits": [
+        {
+          "person": "david-watson",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "classics",
         "mystery",
@@ -5399,6 +5405,67 @@
             {
               "asin": "B00N52BO14",
               "region": "uk"
+            },
+            {
+              "asin": "B00N52HG70",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1197175,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1174001,
+              "start_ms": 1197175,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1009279,
+              "start_ms": 2371176,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1251788,
+              "start_ms": 3380455,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1096586,
+              "start_ms": 4632243,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1139542,
+              "start_ms": 5728829,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1018381,
+              "start_ms": 6868371,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1156029,
+              "start_ms": 7886752,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1230193,
+              "start_ms": 9042781,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1144976,
+              "start_ms": 10272974,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 626567,
+              "start_ms": 11417950,
+              "title": "Chapter 11"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91kW6hzXLSL.jpg",
@@ -5416,6 +5483,111 @@
               "imported_at": "2026-10-04",
               "ref": "B00N52BO14",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B00N52HG70",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-two-penny-bar"
+        },
+        "james-faulkner-2025": {
+          "abridged": false,
+          "added_at": "2026-10-05",
+          "asin": [
+            {
+              "asin": "B0FKDDS5KD",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 30162,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1421223,
+              "start_ms": 30162,
+              "title": "Chapter 1: Saturday with Monsieur Basso"
+            },
+            {
+              "length_ms": 1397748,
+              "start_ms": 1451385,
+              "title": "Chapter 2: The Lady’s Husband"
+            },
+            {
+              "length_ms": 1196640,
+              "start_ms": 2849133,
+              "title": "Chapter 3: The Two Boats"
+            },
+            {
+              "length_ms": 1481874,
+              "start_ms": 4045773,
+              "title": "Chapter 4: Meetings in Rue Royale"
+            },
+            {
+              "length_ms": 1318405,
+              "start_ms": 5527647,
+              "title": "Chapter 5: The Doctor’s Car"
+            },
+            {
+              "length_ms": 1372183,
+              "start_ms": 6846052,
+              "title": "Chapter 6: Haggling"
+            },
+            {
+              "length_ms": 1192460,
+              "start_ms": 8218235,
+              "title": "Chapter 7: The Second-Hand Dealer"
+            },
+            {
+              "length_ms": 1451665,
+              "start_ms": 9410695,
+              "title": "Chapter 8: James’s Mistress"
+            },
+            {
+              "length_ms": 1480457,
+              "start_ms": 10862360,
+              "title": "Chapter 9: Twenty-Two Francs of Ham"
+            },
+            {
+              "length_ms": 1359574,
+              "start_ms": 12342817,
+              "title": "Chapter 10: Inspector Maigret’s Absence"
+            },
+            {
+              "length_ms": 706931,
+              "start_ms": 13702391,
+              "title": "Chapter 11: Ulrich’s Murderer"
+            },
+            {
+              "length_ms": 60046,
+              "start_ms": 14409322,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 19039,
+              "start_ms": 14469368,
+              "title": "Additional Information"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51w6WBeU6yL.jpg",
+          "id": "james-faulkner-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-faulkner"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2025-11-11",
+          "runtime_min": 241,
+          "sources": [
+            {
+              "imported_at": "2026-10-05",
+              "ref": "B0FKDDS5KD",
+              "type": "libex-import"
             }
           ],
           "work": "the-two-penny-bar"
@@ -5425,6 +5597,11 @@
         {
           "imported_at": "2026-10-04",
           "ref": "B00N52BO14",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-05",
+          "ref": "B0FKDDS5KD",
           "type": "libex-import"
         }
       ],
