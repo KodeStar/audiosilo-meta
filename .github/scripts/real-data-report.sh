@@ -9,14 +9,11 @@
 #   bash .github/scripts/real-data-report.sh report
 #       env: GH_TOKEN, GITHUB_REPOSITORY, RESULT (the test job's
 #            needs.<job>.result), RUN_URL, SHA, FAILURES (the summary above,
-#            may be empty), EVENT (github.event_name, optional - named in the
-#            issue so a push run is told apart from the schedule).
+#            may be empty).
 #       RESULT=success closes the open tracking issue, if there is one, with a
 #       comment linking the green run. Anything else (failure, cancelled - a
 #       job timeout lands here too) opens the tracking issue, or comments on it
 #       when one is already open, naming the run, the commit and the failures.
-#       A CANCELLED WORKFLOW never reaches this: the workflow's report job runs
-#       on `!cancelled()`, so a run superseded by a newer push files nothing.
 #
 # Why it exists: see the header of .github/workflows/real-data.yml.
 #
@@ -63,10 +60,9 @@ open_issue() {
     --json number --jq 'sort_by(.number) | .[0].number // empty'
 }
 
-# The issue body for a run that did not pass (reads RESULT, SHA, RUN_URL,
-# FAILURES, EVENT).
+# The issue body for a run that did not pass (reads RESULT, SHA, RUN_URL, FAILURES).
 failure_body() {
-  echo "The real-data test run (no -race, triggered by \`${EVENT:-unknown}\`) ended \`${RESULT}\` at ${SHA}."
+  echo "The real-data test run (no -race) ended \`${RESULT}\` at ${SHA}."
   echo
   echo "Run: ${RUN_URL}"
   echo

@@ -24,7 +24,7 @@ func realDataReport(t *testing.T, env []string, args ...string) (string, int) {
 	cmd := exec.Command("bash", append([]string{script}, args...)...)
 	for _, kv := range os.Environ() {
 		switch strings.SplitN(kv, "=", 2)[0] {
-		case "GH_TOKEN", "GITHUB_REPOSITORY", "RESULT", "RUN_URL", "SHA", "FAILURES", "EVENT":
+		case "GH_TOKEN", "GITHUB_REPOSITORY", "RESULT", "RUN_URL", "SHA", "FAILURES":
 			continue
 		}
 		cmd.Env = append(cmd.Env, kv)
@@ -198,8 +198,8 @@ type ghCall struct {
 }
 
 // runReport runs `report` against the stub and returns its stdout and the gh
-// calls it made, in order. extra is appended to the environment (EVENT).
-func runReport(t *testing.T, open, result, failures string, extra ...string) (string, []ghCall) {
+// calls it made, in order.
+func runReport(t *testing.T, open, result, failures string) (string, []ghCall) {
 	t.Helper()
 	dir := t.TempDir()
 	if err := os.WriteFile(filepath.Join(dir, "gh"), []byte(ghStub), 0o755); err != nil {
@@ -216,7 +216,6 @@ func runReport(t *testing.T, open, result, failures string, extra ...string) (st
 		"SHA=abc123",
 		"FAILURES=" + failures,
 	}
-	env = append(env, extra...)
 	out, code := realDataReport(t, env, "report")
 	if code != 0 {
 		t.Fatalf("report exited %d, want 0 (stdout %q)", code, out)
@@ -268,7 +267,7 @@ func TestRealDataReportSuccessClosesTheOpenIssue(t *testing.T) {
 func TestRealDataReportFailureOpensAnIssue(t *testing.T) {
 	t.Parallel()
 	failures := "--- FAIL: TestRealDataTree (12.00s)\nFAIL\tgithub.com/x/pkg\t12.1s"
-	_, calls := runReport(t, "", "failure", failures, "EVENT=push")
+	_, calls := runReport(t, "", "failure", failures)
 	wantGHCalls(t, calls, reportIssueList,
 		[]string{"label", "create", "ci-real-data", "--repo", "owner/repo", "--color", "B60205",
 			"--description", "The real-data test run (real-data.yml) is failing", "--force"},
@@ -276,7 +275,7 @@ func TestRealDataReportFailureOpensAnIssue(t *testing.T) {
 			"--label", "ci-real-data", "--body-file", "-"})
 	body := calls[2].stdin
 	for _, want := range []string{
-		"triggered by `push`) ended `failure` at abc123",
+		"The real-data test run (no -race) ended `failure` at abc123",
 		"Run: https://github.com/owner/repo/actions/runs/42",
 		"```\n" + failures + "\n```\n",
 	} {
@@ -293,8 +292,7 @@ func TestRealDataReportFailureCommentsOnTheOpenIssue(t *testing.T) {
 		[]string{"issue", "comment", "7", "--repo", "owner/repo", "--body-file", "-"})
 	body := calls[1].stdin
 	for _, want := range []string{
-		// No EVENT in the environment: the body says so rather than guessing.
-		"triggered by `unknown`) ended `cancelled` at abc123",
+		"ended `cancelled` at abc123",
 		"```\n(no summary was produced; see the run)\n```\n",
 	} {
 		if !strings.Contains(body, want) {
