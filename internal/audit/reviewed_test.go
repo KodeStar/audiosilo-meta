@@ -404,7 +404,7 @@ func TestReviewedRefusesConflictingAcceptances(t *testing.T) {
 	}{
 		{"restated membership", Proposal{Op: OpRestatePosition, Target: "work", Series: "source", From: "1.0", To: "1"}, move, "restates"},
 		{"language of moved work", move, Proposal{Op: OpSetWorkLanguage, Target: "work", Field: "language", From: "en", To: "de"}, "moves"},
-		{"membership twice", move, Proposal{Op: OpDropMembership, Target: "work", Series: "source", Field: "position", From: "1"}, "both move"},
+		{"membership twice", move, Proposal{Op: OpDropMembership, Target: "work", Series: "source", Field: "position", From: "1", Others: []string{"home"}}, "both move"},
 		{"slot twice", move, Proposal{Op: OpAddSeriesMember, Target: "other", Series: "dest", To: "1"}, "both claim"},
 		{"work merged", move, Proposal{Op: OpMergeWorks, Target: "work", Others: []string{"other"}}, "merges"},
 		{"series merged", move, Proposal{Op: OpMergeSeries, Target: "source", Others: []string{"other"}}, "merges"},

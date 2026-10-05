@@ -38,13 +38,11 @@ import (
 // Ambiguity can make a decision temporarily stale: remove it only after review.
 //
 // A third decision, ASSERT, SOURCES a proposal no detector can see (an alternate title,
-// a reissue, a work stating no series, an omnibus or adaptation listed in a series'
-// slots): the entry's identity IS the proposal, emitted non-advisory in its op's class
-// under the subclass `asserted`. It is a human decision, so no detector veto is asked;
-// only the records must exist, an added membership's slot be free and a dropped one be
-// listed where the entry says and not be the series' last (the plan-time refusals
-// metarepair would make every run), while metarepair's other plan-time refusals and
-// post-write validation still apply. A detector already proposing the same
+// a reissue, a work stating no series, an omnibus listed in a series' slots): the entry's
+// identity IS the proposal, emitted non-advisory in its op's class under the subclass
+// `asserted`. It is a human decision, so no detector veto is asked; sourcing.source only
+// refuses what metarepair would refuse on every run, while metarepair's other plan-time
+// refusals and post-write validation still apply. A detector already proposing the same
 // identity turns it into an acceptance (REDUNDANT): like an accept, it promotes that
 // proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
 // retired or joined, so it reads STALE and a re-run proposes nothing.
@@ -85,9 +83,8 @@ var assertClass = map[string]string{
 	OpDropMembership: ClassSeriesInteg,
 }
 
-// SubclassAsserted is the subclass an asserted proposal is emitted under; internal/repair
-// reads it to tell an asserted drop-membership (no home to check) from L-MIX's.
-const SubclassAsserted = "asserted"
+// subclassAsserted is the subclass an asserted proposal is emitted under.
+const subclassAsserted = "asserted"
 
 func (r reviewedDecision) proposal() Proposal {
 	p := Proposal{Op: r.Op, Target: r.Target, Series: r.Series, Field: r.Field, From: r.From, To: r.To, Others: r.Others}
@@ -570,7 +567,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			}
 			// Only the label differs between an acceptance, an assertion sourcing its own
 			// finding, and one a detector (or a converging assertion) already made.
-			sourced := fd.Subclass == SubclassAsserted
+			sourced := fd.Subclass == subclassAsserted
 			var promoted, unchanged outcomeStatus
 			switch {
 			case r.Decision == "accept":
@@ -621,7 +618,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	// A sourced finding no assertion could make mechanical stays out of the report:
 	// it exists only as the assertion, whose refusal SUMMARY.md names.
 	for _, c := range rep.classes {
-		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == SubclassAsserted && fd.Propose.Advisory })
+		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == subclassAsserted && fd.Propose.Advisory })
 	}
 	rep.classes = slices.DeleteFunc(rep.classes, func(c *findings) bool { return len(c.rows) == 0 && slices.Contains(src.added, c) })
 	var t reviewedTally
@@ -667,7 +664,7 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	case OpAddSeriesMember, OpDropMembership:
 		works, series = []string{p.Target}, []string{p.Series}
 	}
-	fd := Finding{Subclass: SubclassAsserted,
+	fd := Finding{Subclass: subclassAsserted,
 		Notes: []string{"no detector proposes this: a reviewed assertion in " + reviewedPath + " sources it, and no detector veto was asked"}}
 	// Every slug has been resolved through the tombstones already, so one naming no
 	// record is neither live nor retired: a typo, which must not read as applied.
@@ -689,16 +686,34 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 	if len(missing) > 0 {
 		return nil, 0, statusRefused, "no such " + strings.Join(missing, ", ")
 	}
-	if p.Op == OpAddSeriesMember {
+	// A membership op's work as the series lists it now: at the entry's slot (To for an
+	// addition, From for a drop), or elsewhere.
+	var listedAt string
+	var elsewhere []string
+	if p.Op == OpAddSeriesMember || p.Op == OpDropMembership {
+		slot := p.To
+		if p.Op == OpDropMembership {
+			slot = p.From
+		}
 		for _, m := range s.ix.memberships[p.Target] {
 			if m.series != p.Series {
 				continue
 			}
-			if importer.SameSlot(m.position, p.To) {
-				return nil, 0, statusStale, fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, m.position)
+			if importer.SameSlot(m.position, slot) {
+				listedAt = m.position
+			} else {
+				elsewhere = append(elsewhere, strconv.Quote(m.position))
 			}
-			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %q, not %q: moving it is a restate, not an addition",
-				p.Series, p.Target, m.position, p.To)
+		}
+	}
+	switch p.Op {
+	case OpAddSeriesMember:
+		if listedAt != "" {
+			return nil, 0, statusStale, fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, listedAt)
+		}
+		if len(elsewhere) > 0 {
+			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q: moving it is a restate, not an addition",
+				p.Series, p.Target, strings.Join(elsewhere, ", "), p.To)
 		}
 		// metarepair refuses a held slot on every run, so the audit says so once here.
 		for _, sw := range s.ix.seriesByID[p.Series].Works {
@@ -706,24 +721,11 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 				return nil, 0, statusRefused, fmt.Sprintf("position %q of series %s is held by %s", p.To, p.Series, sw.Work)
 			}
 		}
-	}
-	if p.Op == OpDropMembership {
-		var elsewhere []string
-		listed := false
-		for _, m := range s.ix.memberships[p.Target] {
-			if m.series != p.Series {
-				continue
-			}
-			if importer.SameSlot(m.position, p.From) {
-				listed = true
-			} else {
-				elsewhere = append(elsewhere, strconv.Quote(m.position))
-			}
-		}
-		switch {
-		case !listed && len(elsewhere) == 0:
+	case OpDropMembership:
+		if listedAt == "" && len(elsewhere) == 0 {
 			return nil, 0, statusStale, fmt.Sprintf("applied: series %s does not list %s", p.Series, p.Target)
-		case !listed:
+		}
+		if listedAt == "" {
 			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
 				strings.Join(elsewhere, ", "), p.From)
 		}

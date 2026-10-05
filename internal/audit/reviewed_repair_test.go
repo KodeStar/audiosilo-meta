@@ -356,12 +356,12 @@ func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
 		}
 	}
 	before := check.Load(data)
-	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
+	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{"asserted"}, Write: true}
 	rep, err := repair.Run(opts)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].Subclass != audit.SubclassAsserted ||
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].Subclass != "asserted" ||
 		rep.Applied[0].Class != audit.ClassSeriesInteg {
 		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
 	}

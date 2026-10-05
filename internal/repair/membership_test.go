@@ -266,38 +266,45 @@ func TestMembershipOpsRefuse(t *testing.T) {
 	}
 }
 
-// ---- an asserted drop ---------------------------------------------------------
+// ---- a drop naming no home ----------------------------------------------------
 
-func assertedDrop(target, series, from string) audit.Finding {
-	return audit.Finding{Class: audit.ClassSeriesInteg, Subclass: audit.SubclassAsserted, Key: "asserted/" + target + "@" + series,
+// homelessDrop is a reviewed assertion's drop: no home in Others.
+func homelessDrop(target, series, from string) audit.Finding {
+	return audit.Finding{Class: audit.ClassSeriesInteg, Subclass: "asserted", Key: "asserted/" + target + "@" + series,
 		Propose: audit.Proposal{Op: audit.OpDropMembership, Target: target, Series: series, Field: fieldPosition, From: from}}
 }
 
-// A reviewed assertion's drop names no home, so none is asked for and no language is
-// judged: a MAJORITY member, which L-MIX's drop refuses, leaves its series on the
-// review's word. The work itself is not written.
-func TestAssertedDropAppliesWithoutAHome(t *testing.T) {
+// A drop is dispatched on its SHAPE: naming no home, none is asked for and no language
+// is judged, so a MAJORITY member leaves its series (an assertion's word), whatever
+// class carries the finding. The work itself is not written. A drop naming homes keeps
+// L-MIX's check: a home that no longer lists the work refuses it.
+func TestHomelessDropAppliesUnconditionally(t *testing.T) {
 	data := seedTree(t, languageMixTree(t))
+	for _, fd := range []audit.Finding{
+		homelessDrop("c1", "chronicle", "1"),
+		mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "c1", Series: "chronicle", Field: fieldPosition, From: "1"}),
+	} {
+		rn, tx := planFixture(t, data)
+		if err := rn.dropMembership(tx, fd); err != nil {
+			t.Fatalf("%s: %v", fd.Class, err)
+		}
+		if got := memberList(tx.series.puts["chronicle"].SeriesWorks()); !slices.Equal(got, []string{"c2@2", "chronik@3"}) {
+			t.Errorf("%s: chronicle = %v", fd.Class, got)
+		}
+		if want := `dropped c1 (position "1") from series chronicle: asserted by review`; !slices.Contains(tx.notes, want) {
+			t.Errorf("%s: notes = %v, want %q", fd.Class, tx.notes, want)
+		}
+		if len(tx.works.puts) != 0 {
+			t.Errorf("%s: a drop wrote works: %v", fd.Class, tx.works.puts)
+		}
+	}
 	rn, tx := planFixture(t, data)
-	if err := rn.dropMembership(tx, assertedDrop("c1", "chronicle", "1")); err != nil {
-		t.Fatal(err)
-	}
-	if got := memberList(tx.series.puts["chronicle"].SeriesWorks()); !slices.Equal(got, []string{"c2@2", "chronik@3"}) {
-		t.Errorf("chronicle = %v", got)
-	}
-	if want := `dropped c1 (position "1") from series chronicle: asserted by review`; !slices.Contains(tx.notes, want) {
-		t.Errorf("notes = %v, want %q", tx.notes, want)
-	}
-	if len(tx.works.puts) != 0 {
-		t.Errorf("an asserted drop wrote works: %v", tx.works.puts)
-	}
-	// The same drop shaped as L-MIX's (no subclass, no home) is still refused.
-	rn, tx = planFixture(t, data)
-	lmix := mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "chronik", Series: "chronicle", Field: fieldPosition, From: "3"})
+	lmix := mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "chronik", Series: "chronicle", Field: fieldPosition,
+		From: "3", Others: []string{"fate-german"}})
 	assertRefusal(t, rn.dropMembership(tx, lmix), CatStaleValue, "no longer sits in a series of its language")
 }
 
-func TestAssertedDropRefuses(t *testing.T) {
+func TestHomelessDropRefuses(t *testing.T) {
 	data := seedTree(t, mergeMaps(languageMixTree(t), map[string]string{
 		"series/so/solo.json": seriesJSON(t, "solo", "Solo", "dawn@1"),
 	}))
@@ -306,16 +313,47 @@ func TestAssertedDropRefuses(t *testing.T) {
 		category Category
 		mentions string
 	}{
-		"at a moved position":   {assertedDrop("chronik", "chronicle", "2"), CatStaleValue, `no longer lists chronik at position "2"`},
-		"of a work not listed":  {assertedDrop("dawn", "chronicle", "1"), CatStaleValue, "no longer lists dawn"},
-		"of the last member":    {assertedDrop("dawn", "solo", "1"), CatStaleValue, "with no members"},
-		"from a retired series": {assertedDrop("dawn", "gone", "1"), CatMissing, "no series"},
-		"naming no position":    {func() audit.Finding { f := assertedDrop("dawn", "solo", "1"); f.Propose.Field = ""; return f }(), CatMalformed, "no position"},
+		"at a moved position":   {homelessDrop("chronik", "chronicle", "2"), CatStaleValue, `no longer lists chronik at position "2"`},
+		"of a work not listed":  {homelessDrop("dawn", "chronicle", "1"), CatStaleValue, "no longer lists dawn"},
+		"of the last member":    {homelessDrop("dawn", "solo", "1"), CatStaleValue, "with no members"},
+		"from a retired series": {homelessDrop("dawn", "gone", "1"), CatMissing, "no series"},
+		"naming no position":    {func() audit.Finding { f := homelessDrop("dawn", "solo", "1"); f.Propose.Field = ""; return f }(), CatMalformed, "no position"},
+		// S-INTEGRITY's dangling-member drop names no work and is advisory; if it ever
+		// reached the pass it would still be malformed, never an unconditional drop.
+		"a dangling member": {audit.Finding{Class: audit.ClassSeriesInteg, Key: "chronicle", Propose: audit.Proposal{
+			Op: audit.OpDropMembership, Series: "chronicle", Field: "work", From: "chronik"}}, CatMalformed, "no work"},
 	} {
 		t.Run(name, func(t *testing.T) {
 			rn, tx := planFixture(t, data)
 			assertRefusal(t, rn.dropMembership(tx, tc.fd), tc.category, tc.mentions)
 		})
+	}
+}
+
+// A membership is found by its SLOT (importer.SameSlot), the plan-time rule everywhere
+// else: a proposal at "3" finds a work the series lists at "03", for a drop and a move.
+func TestMembershipOpsFindTheSlotNotTheSpelling(t *testing.T) {
+	data := seedTree(t, mergeMaps(languageMixTree(t), map[string]string{
+		"series/ch/chronicle.json": seriesJSON(t, "chronicle", "The Chronicle", "c1@1", "c2@2", "chronik@03"),
+		"series/fa/fate.json":      seriesJSON(t, "fate", "Fate", "f1@1", "f2@2", "schicksal-3@03"),
+	}))
+	rn, tx := planFixture(t, data)
+	drop := mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "chronik", Series: "chronicle", Field: fieldPosition,
+		From: "3", Others: []string{"die-chronik"}})
+	if err := rn.dropMembership(tx, drop); err != nil {
+		t.Fatal(err)
+	}
+	if got := memberList(tx.series.puts["chronicle"].SeriesWorks()); !slices.Equal(got, []string{"c1@1", "c2@2"}) {
+		t.Errorf("chronicle = %v", got)
+	}
+	rn, tx = planFixture(t, data)
+	move := mixFinding(audit.OpMoveMembership, "k", audit.Proposal{Target: "schicksal-3", Series: "fate", Field: fieldPosition,
+		From: "3", To: "3", Others: []string{"fate-german"}})
+	if err := rn.moveMembership(tx, move); err != nil {
+		t.Fatal(err)
+	}
+	if got := memberList(tx.series.puts["fate"].SeriesWorks()); !slices.Equal(got, []string{"f1@1", "f2@2"}) {
+		t.Errorf("fate = %v", got)
 	}
 }
 
