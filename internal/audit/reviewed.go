@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
@@ -37,11 +38,13 @@ import (
 // Ambiguity can make a decision temporarily stale: remove it only after review.
 //
 // A third decision, ASSERT, SOURCES a proposal no detector can see (an alternate title,
-// a reissue, a work stating no series): the entry's identity IS the proposal, emitted
-// non-advisory in its op's class under the subclass `asserted`. It is a human decision,
-// so no detector veto is asked; only the records must exist, and a membership's slot be
-// free (the one plan-time refusal metarepair would make every run), while metarepair's
-// other plan-time refusals and post-write validation still apply. A detector already proposing the same
+// a reissue, a work stating no series, an omnibus or adaptation listed in a series'
+// slots): the entry's identity IS the proposal, emitted non-advisory in its op's class
+// under the subclass `asserted`. It is a human decision, so no detector veto is asked;
+// only the records must exist, an added membership's slot be free and a dropped one be
+// listed where the entry says and not be the series' last (the plan-time refusals
+// metarepair would make every run), while metarepair's other plan-time refusals and
+// post-write validation still apply. A detector already proposing the same
 // identity turns it into an acceptance (REDUNDANT): like an accept, it promotes that
 // proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
 // retired or joined, so it reads STALE and a re-run proposes nothing.
@@ -77,18 +80,28 @@ var assertClass = map[string]string{
 	OpMergeWorks:      ClassWorkDup,
 	OpMergeSeries:     ClassSeriesDup,
 	OpAddSeriesMember: ClassWorkNoSeries,
+	// S-INTEGRITY already proposes a drop (of a dangling member); an asserted drop is the
+	// series-integrity judgement no rule can make, a membership that does not belong.
+	OpDropMembership: ClassSeriesInteg,
 }
 
-// subclassAsserted is the subclass an asserted proposal is emitted under.
-const subclassAsserted = "asserted"
+// SubclassAsserted is the subclass an asserted proposal is emitted under; internal/repair
+// reads it to tell an asserted drop-membership (no home to check) from L-MIX's.
+const SubclassAsserted = "asserted"
 
 func (r reviewedDecision) proposal() Proposal {
 	p := Proposal{Op: r.Op, Target: r.Target, Series: r.Series, Field: r.Field, From: r.From, To: r.To, Others: r.Others}
-	// W-NOSERIES states every membership it adds with field "series"; an assertion may
-	// omit it, and is read with it, so its identity meets the detector's. (An accept or
-	// reject copies a proposal, so its field is taken as written.)
-	if r.Decision == "assert" && p.Op == OpAddSeriesMember && p.Field == "" {
-		p.Field = "series"
+	// W-NOSERIES states every membership it adds with field "series", and L-MIX every
+	// membership it drops with field "position"; an assertion may omit it, and is read
+	// with it, so its identity meets the detector's. (An accept or reject copies a
+	// proposal, so its field is taken as written.)
+	if r.Decision == "assert" && p.Field == "" {
+		switch p.Op {
+		case OpAddSeriesMember:
+			p.Field = "series"
+		case OpDropMembership:
+			p.Field = fieldPosition
+		}
 	}
 	return p
 }
@@ -227,12 +240,23 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 
 // validAssertion is the structural rule an assertion must meet, since nothing a
 // detector checks stands behind it: a merge names a target and the distinct records
-// folding onto it, and a membership a canonical position in a series. Every other
+// folding onto it, an added membership the canonical position it takes in a series,
+// and a dropped one the canonical position it is listed at (from). Every other
 // identity field must be empty, so the entry spells the proposal exactly as a
 // detector would and a detector making the same proposal is found as redundant.
 func validAssertion(r reviewedDecision) error {
 	if _, ok := assertClass[r.Op]; !ok {
-		return fmt.Errorf("a %q proposal cannot be asserted (want %s, %s or %s)", r.Op, OpAddSeriesMember, OpMergeSeries, OpMergeWorks)
+		return fmt.Errorf("a %q proposal cannot be asserted (want %s, %s, %s or %s)", r.Op, OpAddSeriesMember, OpDropMembership,
+			OpMergeSeries, OpMergeWorks)
+	}
+	if r.Op == OpDropMembership {
+		if r.Target == "" || r.Series == "" || (r.Field != "" && r.Field != fieldPosition) || r.To != "" || len(r.Others) > 0 {
+			return fmt.Errorf("an asserted %s names target, series and from (field, if stated, %q), nothing else", r.Op, fieldPosition)
+		}
+		if !canonicalPosition(r.From) {
+			return fmt.Errorf("asserted position %q is not a canonical series position", r.From)
+		}
+		return nil
 	}
 	if r.Op == OpAddSeriesMember {
 		if r.Target == "" || r.Series == "" || (r.Field != "" && r.Field != "series") || r.From != "" || len(r.Others) > 0 {
@@ -546,7 +570,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			}
 			// Only the label differs between an acceptance, an assertion sourcing its own
 			// finding, and one a detector (or a converging assertion) already made.
-			sourced := fd.Subclass == subclassAsserted
+			sourced := fd.Subclass == SubclassAsserted
 			var promoted, unchanged outcomeStatus
 			switch {
 			case r.Decision == "accept":
@@ -597,7 +621,7 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	// A sourced finding no assertion could make mechanical stays out of the report:
 	// it exists only as the assertion, whose refusal SUMMARY.md names.
 	for _, c := range rep.classes {
-		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == subclassAsserted && fd.Propose.Advisory })
+		c.rows = slices.DeleteFunc(c.rows, func(fd Finding) bool { return fd.Subclass == SubclassAsserted && fd.Propose.Advisory })
 	}
 	rep.classes = slices.DeleteFunc(rep.classes, func(c *findings) bool { return len(c.rows) == 0 && slices.Contains(src.added, c) })
 	var t reviewedTally
@@ -623,13 +647,15 @@ type sourcing struct {
 // to its op's class as an ADVISORY finding the acceptance loop then promotes,
 // returning where it sits; or, with a nil class, the status and why: STALE when a
 // record it names is gone or it has been applied (a merge's others all resolve to its
-// target, a membership is listed at its slot), REFUSED when it names no record (live or
-// retired), would widen or move one, or the series holds its position already.
+// target, an added membership is listed at its slot, a dropped one is not listed at
+// all), REFUSED when it names no record (live or retired), would widen or move one, the
+// series holds an added position already, lists a dropped work at another position, or
+// would be left with no members by the drop.
 func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, status outcomeStatus, why string) {
 	if s.ix == nil {
 		return nil, 0, statusStale, "no catalogue to find its records in"
 	}
-	if p.Op != OpAddSeriesMember && len(p.Others) == 0 {
+	if (p.Op == OpMergeWorks || p.Op == OpMergeSeries) && len(p.Others) == 0 {
 		return nil, 0, statusStale, "applied: every record it folds now resolves to " + p.Target
 	}
 	var works, series []string
@@ -638,10 +664,10 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		works = Cluster(p.Target, p.Others)
 	case OpMergeSeries:
 		series = Cluster(p.Target, p.Others)
-	case OpAddSeriesMember:
+	case OpAddSeriesMember, OpDropMembership:
 		works, series = []string{p.Target}, []string{p.Series}
 	}
-	fd := Finding{Subclass: subclassAsserted,
+	fd := Finding{Subclass: SubclassAsserted,
 		Notes: []string{"no detector proposes this: a reviewed assertion in " + reviewedPath + " sources it, and no detector veto was asked"}}
 	// Every slug has been resolved through the tombstones already, so one naming no
 	// record is neither live nor retired: a typo, which must not read as applied.
@@ -681,6 +707,34 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 			}
 		}
 	}
+	if p.Op == OpDropMembership {
+		var elsewhere []string
+		listed := false
+		for _, m := range s.ix.memberships[p.Target] {
+			if m.series != p.Series {
+				continue
+			}
+			if importer.SameSlot(m.position, p.From) {
+				listed = true
+			} else {
+				elsewhere = append(elsewhere, strconv.Quote(m.position))
+			}
+		}
+		switch {
+		case !listed && len(elsewhere) == 0:
+			return nil, 0, statusStale, fmt.Sprintf("applied: series %s does not list %s", p.Series, p.Target)
+		case !listed:
+			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
+				strings.Join(elsewhere, ", "), p.From)
+		}
+		// metarepair refuses to empty a series on every run: retiring it is a merge-series.
+		if !slices.ContainsFunc(s.ix.seriesByID[p.Series].Works, func(sw model.SeriesWork) bool {
+			return sw.Work != p.Target || !importer.SameSlot(sw.Position, p.From)
+		}) {
+			return nil, 0, statusRefused, fmt.Sprintf("dropping %s would leave series %s with no members: retiring a series is a %s",
+				p.Target, p.Series, OpMergeSeries)
+		}
+	}
 	class := assertClass[p.Op]
 	if s.keys == nil {
 		s.keys = map[string]bool{}
@@ -691,7 +745,7 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		}
 	}
 	base := "asserted/" + p.Target
-	if p.Op == OpAddSeriesMember {
+	if p.Op == OpAddSeriesMember || p.Op == OpDropMembership {
 		base += "@" + p.Series
 	}
 	fd.Key = base

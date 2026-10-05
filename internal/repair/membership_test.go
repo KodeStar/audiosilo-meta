@@ -266,6 +266,59 @@ func TestMembershipOpsRefuse(t *testing.T) {
 	}
 }
 
+// ---- an asserted drop ---------------------------------------------------------
+
+func assertedDrop(target, series, from string) audit.Finding {
+	return audit.Finding{Class: audit.ClassSeriesInteg, Subclass: audit.SubclassAsserted, Key: "asserted/" + target + "@" + series,
+		Propose: audit.Proposal{Op: audit.OpDropMembership, Target: target, Series: series, Field: fieldPosition, From: from}}
+}
+
+// A reviewed assertion's drop names no home, so none is asked for and no language is
+// judged: a MAJORITY member, which L-MIX's drop refuses, leaves its series on the
+// review's word. The work itself is not written.
+func TestAssertedDropAppliesWithoutAHome(t *testing.T) {
+	data := seedTree(t, languageMixTree(t))
+	rn, tx := planFixture(t, data)
+	if err := rn.dropMembership(tx, assertedDrop("c1", "chronicle", "1")); err != nil {
+		t.Fatal(err)
+	}
+	if got := memberList(tx.series.puts["chronicle"].SeriesWorks()); !slices.Equal(got, []string{"c2@2", "chronik@3"}) {
+		t.Errorf("chronicle = %v", got)
+	}
+	if want := `dropped c1 (position "1") from series chronicle: asserted by review`; !slices.Contains(tx.notes, want) {
+		t.Errorf("notes = %v, want %q", tx.notes, want)
+	}
+	if len(tx.works.puts) != 0 {
+		t.Errorf("an asserted drop wrote works: %v", tx.works.puts)
+	}
+	// The same drop shaped as L-MIX's (no subclass, no home) is still refused.
+	rn, tx = planFixture(t, data)
+	lmix := mixFinding(audit.OpDropMembership, "k", audit.Proposal{Target: "chronik", Series: "chronicle", Field: fieldPosition, From: "3"})
+	assertRefusal(t, rn.dropMembership(tx, lmix), CatStaleValue, "no longer sits in a series of its language")
+}
+
+func TestAssertedDropRefuses(t *testing.T) {
+	data := seedTree(t, mergeMaps(languageMixTree(t), map[string]string{
+		"series/so/solo.json": seriesJSON(t, "solo", "Solo", "dawn@1"),
+	}))
+	for name, tc := range map[string]struct {
+		fd       audit.Finding
+		category Category
+		mentions string
+	}{
+		"at a moved position":   {assertedDrop("chronik", "chronicle", "2"), CatStaleValue, `no longer lists chronik at position "2"`},
+		"of a work not listed":  {assertedDrop("dawn", "chronicle", "1"), CatStaleValue, "no longer lists dawn"},
+		"of the last member":    {assertedDrop("dawn", "solo", "1"), CatStaleValue, "with no members"},
+		"from a retired series": {assertedDrop("dawn", "gone", "1"), CatMissing, "no series"},
+		"naming no position":    {func() audit.Finding { f := assertedDrop("dawn", "solo", "1"); f.Propose.Field = ""; return f }(), CatMalformed, "no position"},
+	} {
+		t.Run(name, func(t *testing.T) {
+			rn, tx := planFixture(t, data)
+			assertRefusal(t, rn.dropMembership(tx, tc.fd), tc.category, tc.mentions)
+		})
+	}
+}
+
 // ---- set-work-language --------------------------------------------------------
 
 func languageFinding(target, from, to string) audit.Finding {

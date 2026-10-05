@@ -12,7 +12,8 @@ import (
 )
 
 // membership.go applies the audit's L-MIX proposals: the memberships of a series whose
-// members state two or more languages. drop-membership removes a work from a series it
+// members state two or more languages (and a reviewed assertion's drop-membership,
+// dropAsserted, which names a membership no detector can judge). drop-membership removes a work from a series it
 // is misfiled in (it already sits in a series of its own language), move-membership
 // moves it to the one series of its language that is this series under another name,
 // split-series moves a minority language's members out to a NEW series of the same
@@ -42,12 +43,17 @@ const (
 	licenseCC0 = "CC0-1.0"
 )
 
-// dropMembership removes Target from Series at From.
+// dropMembership removes Target from Series at From: L-MIX's drop of a misfiled work
+// whose home among Others still lists it in its language, or a reviewed assertion's
+// (dropAsserted), which names no home.
 func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.Target == "" || p.Series == "" || p.Field != fieldPosition {
 		return refusef(CatMalformed, "drop-membership names no work, no series or no position to remove (a dangling-member "+
 			"record is advisory and names none)")
+	}
+	if fd.Subclass == audit.SubclassAsserted && len(p.Others) == 0 {
+		return rn.dropAsserted(t, p)
 	}
 	v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
 	se, works, at, lang, err := rn.leavingMembership(t, v, p)
@@ -76,6 +82,33 @@ func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 	}
 	t.setSeries(p.Series, se.Clone(), next)
 	t.note("dropped %s (position %q) from series %s: it is a member of %s, which derives %s", p.Target, p.From, p.Series, home, lang)
+	return t.refuseLinkFaults(p.Series)
+}
+
+// dropAsserted removes Target from Series at From on a reviewed assertion's word: an
+// omnibus or an adaptation listed in a series' slots, which no detector can tell from
+// a volume. A human decided it, so there is no home or language to re-check; what is
+// re-read is the membership itself (still listed at From, by importer.SameSlot) and
+// that the series keeps a member, since retiring a series is a merge-series. The work
+// record is never touched: a series names its works, not the other way round.
+func (rn *runner) dropAsserted(t *txn, p audit.Proposal) error {
+	se, works, err := rn.liveSeries(t, p.Series)
+	if err != nil {
+		return err
+	}
+	at := slices.IndexFunc(works, func(sw model.SeriesWork) bool {
+		return sw.Work == p.Target && importer.SameSlot(sw.Position, p.From)
+	})
+	if at < 0 {
+		return refusef(CatStaleValue, "series %s no longer lists %s at position %q", p.Series, p.Target, p.From)
+	}
+	pos := works[at].Position
+	next := slices.Delete(slices.Clone(works), at, at+1)
+	if len(next) == 0 {
+		return refusef(CatStaleValue, "dropping %s would leave series %s with no members", p.Target, p.Series)
+	}
+	t.setSeries(p.Series, se.Clone(), next)
+	t.note("dropped %s (position %q) from series %s: asserted by review", p.Target, pos, p.Series)
 	return t.refuseLinkFaults(p.Series)
 }
 

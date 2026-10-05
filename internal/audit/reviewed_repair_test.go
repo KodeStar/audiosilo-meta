@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
@@ -304,6 +305,85 @@ func TestReviewedAssertReachesMetarepair(t *testing.T) {
 	fresh := audit.Analyze(after)
 	if len(fresh.Reviewed.Stale()) != 2 || len(fresh.Reviewed.Outcomes()) != 0 {
 		t.Fatalf("after applying, reviewed = %+v, want both assertions stale", fresh.Reviewed)
+	}
+	opts.Write = false
+	again, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(again.Applied) != 0 || again.Considered != 0 {
+		t.Fatalf("second run=%+v", again)
+	}
+}
+
+// A reviewed ASSERTED DROP reaches metarepair through the same gate: the omnibus no
+// detector can tell from a volume leaves its series (the work itself untouched), and a
+// re-run finds the assertion STALE and proposes nothing.
+func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
+	files := map[string]string{
+		"people/xx/jane-doe.json":      testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json": testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/xx/narnia.json": testpack.SeriesJSON(t, "narnia", "The Chronicles of Narnia",
+			"the-magicians-nephew@1", "prince-caspian@4", "the-complete-chronicles@1-7"),
+	}
+	for id, title := range map[string]string{
+		"the-magicians-nephew":    "The Magician's Nephew",
+		"prince-caspian":          "Prince Caspian",
+		"the-complete-chronicles": "The Complete Chronicles",
+	} {
+		files["works/xx/"+id+"/work.json"] = testpack.WorkJSON(t, id, title)
+		files["works/xx/"+id+"/recordings/r.json"] = testpack.RecJSON(t, "r", id)
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "from": "1-7",
+    "op": "drop-membership",
+    "reason": "an omnibus of the seven books is not a volume of the series",
+    "series": "narnia",
+    "target": "the-complete-chronicles"
+  }
+]
+`))
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+	before := check.Load(data)
+	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
+	rep, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].Subclass != audit.SubclassAsserted ||
+		rep.Applied[0].Class != audit.ClassSeriesInteg {
+		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	if notes := rep.Applied[0].Notes; len(notes) == 0 || !strings.Contains(strings.Join(notes, "\n"),
+		`dropped the-complete-chronicles (position "1-7") from series narnia: asserted by review`) {
+		t.Errorf("notes = %v", notes)
+	}
+	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after repair: %v", after.Problems)
+	}
+	for _, s := range after.Catalog.Series {
+		if s.ID == "narnia" && (len(s.Works) != 2 || s.Works[0].Work != "the-magicians-nephew" || s.Works[1].Work != "prince-caspian") {
+			t.Fatalf("narnia = %+v", s.Works)
+		}
+	}
+	if len(after.Catalog.Works) != len(before.Catalog.Works) {
+		t.Fatalf("works %d -> %d: a drop touches no work", len(before.Catalog.Works), len(after.Catalog.Works))
+	}
+	fresh := audit.Analyze(after)
+	if len(fresh.Reviewed.Stale()) != 1 || len(fresh.Reviewed.Outcomes()) != 0 {
+		t.Fatalf("after applying, reviewed = %+v, want the assertion stale", fresh.Reviewed)
 	}
 	opts.Write = false
 	again, err := repair.Run(opts)
