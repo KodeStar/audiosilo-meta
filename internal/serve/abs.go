@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"context"
 	"net/http"
 	"strings"
 )
@@ -122,7 +123,7 @@ func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, snap *snapshot
 	// search. Normalize to the bare form here so the exact-lookup path fires.
 	isbn := normalizeISBN(r.URL.Query().Get("isbn"))
 
-	matches, err := snap.absSearch(q, author, isbn, absMaxMatches, lang)
+	matches, err := snap.absSearch(r.Context(), q, author, isbn, absMaxMatches, lang)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -151,33 +152,33 @@ func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, snap *snapshot
 // put it through snapshot.liveLang).
 //
 // It always returns a non-nil slice.
-func (s *snapshot) absSearch(query, author, isbn string, limit int, lang langFilter) ([]absBook, error) {
+func (s *snapshot) absSearch(ctx context.Context, query, author, isbn string, limit int, lang langFilter) ([]absBook, error) {
 	if limit <= 0 {
 		limit = absMaxMatches
 	}
 
 	if isbn != "" {
-		res, err := s.lookup("", isbn)
+		workID, rid, found, err := s.lookupIDs(ctx, "", isbn)
 		if err != nil {
 			return nil, err
 		}
-		if res != nil {
-			genres, descriptions, err := s.absWorkFacets([]string{res.Work.ID})
+		if found {
+			genres, descriptions, err := s.absWorkFacets([]string{workID})
 			if err != nil {
 				return nil, err
 			}
-			d, err := s.workForABS(res.Work.ID, genres, descriptions)
+			d, err := s.workForABS(workID, genres, descriptions)
 			if err != nil {
 				return nil, err
 			}
 			if d != nil {
-				return capABS(absBooksFor(d, res.RecordingID), limit), nil
+				return capABS(absBooksFor(d, rid), limit), nil
 			}
 		}
 		// isbn missed: fall through to a title search.
 	}
 
-	workIDs, inLang, err := s.absCandidates(query, author, limit, lang)
+	workIDs, inLang, err := s.absCandidates(ctx, query, author, limit, lang)
 	if err != nil {
 		return nil, err
 	}
@@ -226,13 +227,13 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int, lang langFil
 // (absBooksFor) and the page holds limit matches, so once the language window
 // holds limit works nothing after it is ever read. An author can lift an
 // other-language work above them, so with one both windows are always run.
-func (s *snapshot) absCandidates(query, author string, limit int, lang langFilter) (ids []string, inLang map[string]bool, err error) {
+func (s *snapshot) absCandidates(ctx context.Context, query, author string, limit int, lang langFilter) (ids []string, inLang map[string]bool, err error) {
 	window := limit * 3
 	if lang == nil {
-		ids, err = s.absWorkSearch(query, window, nil)
+		ids, err = s.absWorkSearch(ctx, query, window, nil)
 		return ids, nil, err
 	}
-	matched, err := s.absWorkSearch(query, window, lang)
+	matched, err := s.absWorkSearch(ctx, query, window, lang)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -243,7 +244,7 @@ func (s *snapshot) absCandidates(query, author string, limit int, lang langFilte
 	if author == "" && len(matched) >= limit {
 		return matched, inLang, nil
 	}
-	all, err := s.absWorkSearch(query, window, nil)
+	all, err := s.absWorkSearch(ctx, query, window, nil)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -262,11 +263,11 @@ func (s *snapshot) absCandidates(query, author string, limit int, lang langFilte
 // the ids, the kind being kindWork by construction. A ranking change therefore
 // lands on both surfaces at once rather than on whichever one was remembered.
 // lang is live; nil is the unfiltered search.
-func (s *snapshot) absWorkSearch(query string, limit int, lang langFilter) ([]string, error) {
+func (s *snapshot) absWorkSearch(ctx context.Context, query string, limit int, lang langFilter) ([]string, error) {
 	if limit <= 0 {
 		limit = absMaxMatches
 	}
-	hits, err := s.ftsHits(kindWork, ftsQuery(query), limit, lang)
+	hits, err := s.ftsHits(ctx, kindWork, ftsQuery(query), limit, lang)
 	if err != nil {
 		return nil, err
 	}

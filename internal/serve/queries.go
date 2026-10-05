@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"context"
 	"database/sql"
 	"sort"
 	"strconv"
@@ -93,7 +94,7 @@ func (s *snapshot) latestWorks(limit int, lang langFilter) ([]*workCard, error) 
 	if err != nil {
 		return nil, err
 	}
-	series, err := s.firstSeriesByWork(ids)
+	series, err := s.firstSeriesByWork(context.Background(), ids)
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +121,7 @@ func (s *snapshot) latestWorks(limit int, lang langFilter) ([]*workCard, error) 
 // (cardsByID) rather than four per id: the caller's list length is the size of a
 // person's or series' credit list, which is unbounded.
 func (s *snapshot) cards(ids []string) ([]*workCard, error) {
-	byID, err := s.cardsByID(ids)
+	byID, err := s.cardsByID(context.Background(), ids)
 	if err != nil {
 		return nil, err
 	}
@@ -985,7 +986,7 @@ func (s *snapshot) person(id string, limit, offset int) (*personDetail, error) {
 	for i, c := range credits {
 		narratedIDs[i] = c.workID
 	}
-	byID, err := s.cardsByID(narratedIDs)
+	byID, err := s.cardsByID(context.Background(), narratedIDs)
 	if err != nil {
 		return nil, err
 	}
@@ -1228,7 +1229,7 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 	for i, m := range members {
 		ids[i] = m.workID
 	}
-	byID, err := s.cardsByID(ids)
+	byID, err := s.cardsByID(context.Background(), ids)
 	if err != nil {
 		return nil, err
 	}
@@ -1324,40 +1325,12 @@ type lookupResult struct {
 	RecordingID string    `json:"recording_id"`
 }
 
-func (s *snapshot) lookup(asin, isbn string) (*lookupResult, error) {
-	var workID, rid string
-	find := func(query, arg string) (bool, error) {
-		err := s.db.QueryRow(query, arg).Scan(&workID, &rid)
-		if err == sql.ErrNoRows {
-			return false, nil
-		}
-		return err == nil, err
-	}
-	found := false
-	var err error
-	switch {
-	case asin != "":
-		found, err = find(`SELECT work_id, recording_id FROM recording_asins WHERE asin=? ORDER BY region LIMIT 1`, asin)
-	case isbn != "":
-		if found, err = find(`SELECT work_id, recording_id FROM recording_isbns WHERE isbn=? LIMIT 1`, isbn); err == nil && !found {
-			// Fall back to a print ISBN on the work; point at its first recording.
-			var wid string
-			e := s.db.QueryRow(`SELECT work_id FROM work_isbns WHERE isbn=? LIMIT 1`, isbn).Scan(&wid)
-			if e == nil {
-				workID, found = wid, true
-				_ = s.db.QueryRow(`SELECT id FROM recordings WHERE work_id=? ORDER BY id LIMIT 1`, wid).Scan(&rid)
-			} else if e != sql.ErrNoRows {
-				err = e
-			}
-		}
-	}
-	if err != nil {
+func (s *snapshot) lookup(ctx context.Context, asin, isbn string) (*lookupResult, error) {
+	workID, rid, found, err := s.lookupIDs(ctx, asin, isbn)
+	if err != nil || !found {
 		return nil, err
 	}
-	if !found {
-		return nil, nil
-	}
-	card, err := s.workCard(workID)
+	card, err := s.workCard(ctx, workID)
 	if err != nil {
 		return nil, err
 	}
@@ -1365,4 +1338,39 @@ func (s *snapshot) lookup(asin, isbn string) (*lookupResult, error) {
 		return nil, nil
 	}
 	return &lookupResult{Work: card, RecordingID: rid}, nil
+}
+
+// lookupIDs resolves an identifier to the work and recording it names, without
+// building the work's card: the ASIN when both are given, else the ISBN (a
+// recording's, then a work's print ISBN, which points at its first recording).
+// lookup composes the card from it; works/match and the ABS facade need only the
+// ids. found is false when the identifier names nothing.
+func (s *snapshot) lookupIDs(ctx context.Context, asin, isbn string) (workID, rid string, found bool, err error) {
+	find := func(query, arg string) (bool, error) {
+		err := s.db.QueryRowContext(ctx, query, arg).Scan(&workID, &rid)
+		if err == sql.ErrNoRows {
+			return false, nil
+		}
+		return err == nil, err
+	}
+	switch {
+	case asin != "":
+		found, err = find(`SELECT work_id, recording_id FROM recording_asins WHERE asin=? ORDER BY region LIMIT 1`, asin)
+	case isbn != "":
+		if found, err = find(`SELECT work_id, recording_id FROM recording_isbns WHERE isbn=? LIMIT 1`, isbn); err == nil && !found {
+			// Fall back to a print ISBN on the work; point at its first recording.
+			var wid string
+			e := s.db.QueryRowContext(ctx, `SELECT work_id FROM work_isbns WHERE isbn=? LIMIT 1`, isbn).Scan(&wid)
+			if e == nil {
+				workID, found = wid, true
+				_ = s.db.QueryRowContext(ctx, `SELECT id FROM recordings WHERE work_id=? ORDER BY id LIMIT 1`, wid).Scan(&rid)
+			} else if e != sql.ErrNoRows {
+				err = e
+			}
+		}
+	}
+	if err != nil {
+		return "", "", false, err
+	}
+	return workID, rid, found, nil
 }

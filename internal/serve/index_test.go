@@ -166,10 +166,12 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 }
 
 // TestBatchLookupsAreIndexed covers the IN-batch queries cardsByID issues, the
-// per-kind batches one search page needs, and the series-position boost's
-// batched membership read. They carry a rendered placeholder list rather than a
-// fixed argument count, so the guard drives them through the same eachChunk
-// helper the real code uses.
+// per-kind batches one search page needs, the series-position boost's batched
+// membership read, and works/match's candidate reads - the author and series
+// probes and the fact batches (the memberships are firstSeriesByWorkSQL's),
+// which run over up to matchCandidatesMax ids per request. They carry a
+// rendered placeholder list rather than a fixed argument count, so the guard
+// drives them through the same eachChunk helper the real code uses.
 func TestBatchLookupsAreIndexed(t *testing.T) {
 	snap := snapshotFor(t, fixtureCatalog())
 	ids := []string{"project-hail-mary", "the-way-of-kings"}
@@ -177,27 +179,33 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 	personIDs := []string{"brandon-sanderson", "andy-weir"}
 
 	cases := []struct {
-		name string
-		ids  []string
-		sql  func(ph string) string
+		name  string
+		ids   []string
+		sql   func(ph string) string
+		extra []any // arguments after the IN list (a LIMIT)
 	}{
-		{"works by id", ids, worksByIDSQL},
-		{"authors by work", ids, authorsByWorkSQL},
-		{"first series by work", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, false) }},
-		{"first series by work, primary first", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, true) }},
-		{"card facts by work", ids, cardFactsByWorkSQL},
+		{"works by id", ids, worksByIDSQL, nil},
+		{"authors by work", ids, authorsByWorkSQL, nil},
+		{"first series by work", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, false) }, nil},
+		{"first series by work, primary first", ids, func(ph string) string { return firstSeriesByWorkSQL(ph, true) }, nil},
+		{"card facts by work", ids, cardFactsByWorkSQL, nil},
 		// One search page's per-kind reads: a scoped page is 100% one kind, so a
 		// per-hit query here would be a whole page of sequential round-trips.
-		{"narrators by work", ids, narratorsByWorkSQL},
-		{"names by person id", personIDs, namesByPersonIDSQL},
-		{"summaries by series id", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, false) }},
-		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true) }},
-		{"members of the probed series", seriesIDs, seriesMembersSQL},
+		{"narrators by work", ids, narratorsByWorkSQL, nil},
+		{"names by person id", personIDs, namesByPersonIDSQL, nil},
+		{"summaries by series id", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, false) }, nil},
+		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true) }, nil},
+		{"members of the probed series", seriesIDs, seriesMembersSQL, nil},
+		// works/match.
+		{"works by the matched people", personIDs, worksByPeopleSQL, []any{matchCandidatesMax}},
+		{"members of the matched series", seriesIDs, seriesMembersByIDSQL, []any{matchCandidatesMax}},
+		{"match: titles", ids, matchWorksSQL, nil},
+		{"match: recording runtimes", ids, matchRuntimesSQL, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			err := eachChunk(tc.ids, func(ph string, args []any) error {
-				assertNoFullScan(t, queryPlan(t, snap, tc.sql(ph), args...))
+				assertNoFullScan(t, queryPlan(t, snap, tc.sql(ph), append(args, tc.extra...)...))
 				return nil
 			})
 			if err != nil {
@@ -208,7 +216,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 }
 
 // NOT guarded here: seriesMatchSQL and exactTitleSQL, the two search boosts'
-// probes. This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a
+// probes, and personMatchSQL, works/match's author probe. This test checks INDEX SELECTION, and an FTS5 MATCH selects no index a
 // plan can name - every FTS query reports as "SCAN <fts> VIRTUAL TABLE INDEX
 // n:M...", which assertNoFullScan deliberately allows, and the ORDER BY
 // legitimately sorts in a temp b-tree. A case here would pass no matter how

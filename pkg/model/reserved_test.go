@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-// TestIsReservedSlug pins the vocabulary itself: the two words are route
+// TestIsReservedSlug pins the vocabulary itself: the words are route
 // literals in the works, people and series id namespaces, and nothing else is.
 func TestIsReservedSlug(t *testing.T) {
 	for _, word := range ReservedSlugs() {
@@ -14,7 +14,7 @@ func TestIsReservedSlug(t *testing.T) {
 			t.Errorf("IsReservedSlug(%q) = false, but it is in ReservedSlugs()", word)
 		}
 	}
-	for _, ok := range []string{"", "searching", "search-2", "latest-releases", "the-search", "chapters", "recordings"} {
+	for _, ok := range []string{"", "searching", "search-2", "latest-releases", "the-search", "matches", "match-point", "chapters", "recordings"} {
 		if IsReservedSlug(ok) {
 			t.Errorf("IsReservedSlug(%q) = true; only whole route literals are reserved", ok)
 		}
@@ -50,6 +50,7 @@ func TestPersonSlugStepsOffAReservedWord(t *testing.T) {
 		{"Search", "search-person", false},
 		{"SEARCH", "search-person", false},
 		{"Latest", "latest-person", false},
+		{"Match", "match-person", false},
 		// Only the WHOLE slug is reserved: a name that merely contains the word
 		// is untouched.
 		{"Search Party", "search-party", false},

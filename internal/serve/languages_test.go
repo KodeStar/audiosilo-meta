@@ -181,7 +181,7 @@ func TestStatsLanguages(t *testing.T) {
 func TestPrimaryOrderingWinsTheSeriesChoice(t *testing.T) {
 	cat := languagesCatalog()
 	snap := snapshotFor(t, cat)
-	card, err := snap.workCard("book-one")
+	card, err := snap.workCard(t.Context(), "book-one")
 	if err != nil {
 		t.Fatal(err)
 	}

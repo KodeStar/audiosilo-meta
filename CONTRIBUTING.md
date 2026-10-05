@@ -86,9 +86,10 @@ a `"recordings"` map keyed by recording slug, so one book is one entry.
 - **Slugs** are lowercase, hyphen-separated: `^[a-z0-9]+(-[a-z0-9]+)*$`
   (for example `harry-potter-and-the-philosophers-stone-j-k-rowling`). The slug
   is the identity; the file it happens to sit in is not.
-- Two slugs are **reserved** in the works, people and series families: `search`
-  and `latest`. They are segments of the API's own routes
-  (`/api/v1/works/latest`, `/api/v1/works/search` and its siblings), so a record
+- Three slugs are **reserved** in the works, people and series families:
+  `search`, `latest` and `match`. They are segments of the API's own routes
+  (`/api/v1/works/latest`, `/api/v1/works/match`, `/api/v1/works/search` and its
+  siblings), so a record
   stored under one of them can be found by search and then never opened. A book
   really called *Search* takes the same disambiguated slug a title collision
   would give it (`search-alyssa-rose-ivy`), a series called *Latest* takes

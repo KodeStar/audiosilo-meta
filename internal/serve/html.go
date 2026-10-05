@@ -168,7 +168,7 @@ func (s *Server) html(h http.HandlerFunc) http.Handler { return gzipMW(documentM
 // crawler for a condition that resolves itself in seconds costs the URL its
 // ranking.
 //
-// A reserved slug (search/latest) needs no special case here: they are refused
+// A reserved slug (latest/match/search) needs no special case here: they are refused
 // as record ids across the whole project (pkg/model/reserved.go), so no record
 // can hold one and they 404 like any other unknown id.
 func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {

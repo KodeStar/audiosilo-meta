@@ -64,6 +64,10 @@ type Config struct {
 	// loopback IP with a port - three things the production asset rule refuses.
 	apiBase string
 
+	// matchBudget overrides how long one works/match may run (matchBudget in
+	// match.go). Test-only, so a budget test does not have to wait seconds.
+	matchBudget time.Duration
+
 	// now supplies the watch feed's window boundary. Test-only; production uses
 	// time.Now. Keeping it on the server makes date-boundary tests deterministic
 	// without a package-global clock that would race parallel tests.
@@ -104,6 +108,11 @@ type Server struct {
 	nextRetry atomic.Int64
 
 	webhookRefreshing atomic.Bool // coalesces webhook-triggered refreshes to one in flight
+
+	// matchSlots bounds how many works/match requests run at once (see
+	// match.go): the heaviest public read, so a flood queues behind
+	// matchConcurrency slots and answers 503 past its budget.
+	matchSlots chan struct{}
 }
 
 // New builds a Server. When DBPath is set it is loaded immediately; otherwise
@@ -155,7 +164,7 @@ func New(cfg Config) (*Server, error) {
 			return nil, fmt.Errorf("serve: METASERVE_WEBHOOK_SECRET must be at least %d bytes", minWebhookSecretBytes)
 		}
 	}
-	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}}
+	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}, matchSlots: make(chan struct{}, matchConcurrency)}
 	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
 		s.gh = newGHClient(cfg.Repo, cfg.Token, cfg.apiBase)
@@ -352,6 +361,9 @@ func (s *Server) routes() []route {
 		route{"GET /api/v1/people/search", s.api(s.searchHandler(kindPerson))},
 		route{"GET /api/v1/series/search", s.api(s.searchHandler(kindSeries))},
 		route{"GET /api/v1/works/latest", s.api(s.handleLatest)},
+		// Structured matching of a file against the catalogue (match.go). A
+		// literal segment like search and latest, so "match" is a reserved slug.
+		route{"GET /api/v1/works/match", s.api(s.handleMatch)},
 		route{"GET /api/v1/watch/feed.atom", s.api(s.handleWatchAtom)},
 		route{"GET /api/v1/watch/feed.json", s.api(s.handleWatchJSON)},
 		route{"GET /api/v1/watch/releases.ics", s.api(s.handleWatchICS)},
@@ -614,8 +626,15 @@ const internalErrMsg = "internal error"
 // this line and the rest of it reads as a log entry of its own - a caller
 // forging whatever an operator or a log pipeline then believes. %q keeps it on
 // one line, with the control characters visible as escapes.
+//
+// A request whose client has gone is not logged: the search and lookup reads
+// run under the request's context, so a client that abandons a query (the
+// site's search box does, on every keystroke) fails it with the context's
+// error, which is no fault of the server's and nobody reads the 500.
 func (s *Server) fail(w http.ResponseWriter, r *http.Request, err error) {
-	s.log.Printf("serve: 500 %q %q: %v", r.Method, r.URL.Path, err)
+	if r.Context().Err() == nil {
+		s.log.Printf("serve: 500 %q %q: %v", r.Method, r.URL.Path, err)
+	}
 	writeErr(w, http.StatusInternalServerError, internalErrMsg)
 }
 
@@ -935,7 +954,7 @@ func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 		if !ok {
 			return
 		}
-		results, err := snap.search(kind, q, limit, lang)
+		results, err := snap.search(r.Context(), kind, q, limit, lang)
 		if err != nil {
 			s.fail(w, r, err)
 			return
@@ -1011,7 +1030,7 @@ func (s *Server) handleLookup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	snap := s.current()
-	res, err := snap.lookup(asin, isbn)
+	res, err := snap.lookup(r.Context(), asin, isbn)
 	if err != nil {
 		s.fail(w, r, err)
 		return

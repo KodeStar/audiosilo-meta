@@ -1,6 +1,9 @@
 package serve
 
-import "sort"
+import (
+	"context"
+	"sort"
+)
 
 // Exact-title search: a query that IS a work's title returns that work FIRST,
 // ahead of the ordinary FTS hits.
@@ -142,9 +145,9 @@ type titleCandidate struct{ id, title string }
 // shortest-titled works whose title matches, each with its authoritative title.
 // It is the one place the probe's column contract is spelled, shared by
 // exactTitleHits and the test that pins the column filter's scope.
-func (s *snapshot) titleCandidates(q string, lang langFilter) ([]titleCandidate, error) {
+func (s *snapshot) titleCandidates(ctx context.Context, q string, lang langFilter) ([]titleCandidate, error) {
 	query, args := exactTitleQuery(q, lang)
-	rows, err := s.db.Query(query, args...)
+	rows, err := s.db.QueryContext(ctx, query, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -167,7 +170,7 @@ func (s *snapshot) titleCandidates(q string, lang langFilter) ([]titleCandidate,
 // Ordering by id makes the answer independent of the row order the probe
 // happened to return, so two works sharing a title always boost the same way
 // round.
-func (s *snapshot) exactTitleHits(q string, lang langFilter) ([]string, error) {
+func (s *snapshot) exactTitleHits(ctx context.Context, q string, lang langFilter) ([]string, error) {
 	if !worthTitleProbing(q) {
 		return nil, nil
 	}
@@ -179,7 +182,7 @@ func (s *snapshot) exactTitleHits(q string, lang langFilter) ([]string, error) {
 	if want == "" {
 		return nil, nil
 	}
-	cands, err := s.titleCandidates(q, lang)
+	cands, err := s.titleCandidates(ctx, q, lang)
 	if err != nil {
 		return nil, err
 	}
