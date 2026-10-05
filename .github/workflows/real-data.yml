@@ -49,6 +49,7 @@ permissions:
   contents: read
 
 # The newest run on main cancels the older one, so the newest commit reports.
+# That includes a scheduled or dispatched run a Go push lands on: it tests main's tip too.
 concurrency:
   group: real-data-${{ github.ref }}
   cancel-in-progress: true
