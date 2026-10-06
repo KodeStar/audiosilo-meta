@@ -57,14 +57,22 @@ func dropAssertion(target, series, field, from string) reviewedDecision {
 		Decision: "assert", Reason: "an omnibus is not a volume of the series"}
 }
 
+// retitleAssertion is an asserted retitle-work of target from one title to another.
+func retitleAssertion(target, field, from, to string) reviewedDecision {
+	return reviewedDecision{Op: OpRetitle, Target: target, Field: field, From: from, To: to,
+		Decision: "assert", Reason: "the narrator credit is a recording fact, not the book's title"}
+}
+
 var (
 	assertOakleaf = assertion(OpMergeWorks, "the-battle-for-skandia", "", "", "", "oakleaf-bearers")
 	assertChronic = assertion(OpMergeSeries, "rangers-apprentice", "", "", "", "the-ranger-chronicles")
 	assertKingsbr = assertion(OpAddSeriesMember, "the-pillars-of-the-earth", "kingsbridge", "series", "1")
 	// The field is omitted: an asserted drop is read with the "position" L-MIX states.
-	assertOmnibus  = dropAssertion("the-complete-chronicles", "narnia", "", "1-7")
+	assertOmnibus = dropAssertion("the-complete-chronicles", "narnia", "", "1-7")
+	// The field is omitted: an asserted retitle is read with the "title" W-TITLE states.
+	assertRetitle  = retitleAssertion("world-without-end", "", "World Without End", "World without End")
 	assertedRecord = map[string]string{OpMergeWorks: ClassWorkDup, OpMergeSeries: ClassSeriesDup, OpAddSeriesMember: ClassWorkNoSeries,
-		OpDropMembership: ClassSeriesInteg}
+		OpDropMembership: ClassSeriesInteg, OpRetitle: ClassWorkTitle}
 )
 
 func TestReviewedAssertSourcesAProposal(t *testing.T) {
@@ -76,6 +84,7 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 		{assertChronic, "asserted/rangers-apprentice"},
 		{assertKingsbr, "asserted/the-pillars-of-the-earth@kingsbridge"},
 		{assertOmnibus, "asserted/the-complete-chronicles@narnia"},
+		{assertRetitle, "asserted/world-without-end"},
 	} {
 		t.Run(tc.r.Op, func(t *testing.T) {
 			// The baseline carries no decisions: the committed reviewed.json is real-tree
@@ -97,6 +106,9 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 			}
 			if tc.r.Op == OpDropMembership && (fd.Propose.Field != "position" || fd.Propose.From != "1-7" || len(fd.Propose.Others) != 0) {
 				t.Errorf("asserted drop = %+v, want field position, from 1-7 and no home", fd.Propose)
+			}
+			if tc.r.Op == OpRetitle && (fd.Propose.Field != "title" || fd.Propose.From != "World Without End" || fd.Propose.To != "World without End") {
+				t.Errorf("asserted retitle = %+v, want field title from the recorded title", fd.Propose)
 			}
 			if o := rep.Reviewed.Outcomes(); len(o) != 1 || o[0].Status != "asserted" {
 				t.Fatalf("tally = %+v", rep.Reviewed)
@@ -218,7 +230,7 @@ func TestReviewedAssertRefusedOnConflict(t *testing.T) {
 
 func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 	for _, tc := range []struct{ name, raw, want string }{
-		{"unsupported op", `[{"decision":"assert","field":"title","from":"A","op":"retitle-work","reason":"why","target":"a","to":"B"}]`, "cannot be asserted"},
+		{"unsupported op", `[{"decision":"assert","field":"language","from":"en","op":"set-work-language","reason":"why","target":"a","to":"de"}]`, "cannot be asserted"},
 		{"review", `[{"decision":"assert","op":"review","reason":"why","target":"a"}]`, "cannot be asserted"},
 		{"merge onto itself", `[{"decision":"assert","op":"merge-works","others":["a"],"reason":"why","target":"a"}]`, "onto itself"},
 		{"merge with no others", `[{"decision":"assert","op":"merge-series","reason":"why","target":"a"}]`, "a target and others"},
@@ -237,6 +249,16 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 		{"drop at a non-canonical position", `[{"decision":"assert","from":"1 - 7","op":"drop-membership","reason":"why","series":"s","target":"a"}]`, "not a canonical series position"},
 		{"one drop twice", `[{"decision":"assert","from":"1","op":"drop-membership","reason":"why","series":"s","target":"a"},` +
 			`{"decision":"assert","field":"position","from":"1","op":"drop-membership","reason":"why","series":"s","target":"a"}]`, "the same proposal as entry 0"},
+		{"retitle naming a series", `[{"decision":"assert","from":"A","op":"retitle-work","reason":"why","series":"s","target":"a","to":"B"}]`, "names target, from and to"},
+		{"retitle with others", `[{"decision":"assert","from":"A","op":"retitle-work","others":["b"],"reason":"why","target":"a","to":"B"}]`, "names target, from and to"},
+		{"retitle of another field", `[{"decision":"assert","field":"subtitle","from":"A","op":"retitle-work","reason":"why","target":"a","to":"B"}]`, `field, if stated, "title"`},
+		{"retitle naming no work", `[{"decision":"assert","from":"A","op":"retitle-work","reason":"why","to":"B"}]`, "names target, from and to"},
+		{"retitle without from", `[{"decision":"assert","op":"retitle-work","reason":"why","target":"a","to":"B"}]`, "trimmed from and to title"},
+		{"retitle without to", `[{"decision":"assert","from":"A","op":"retitle-work","reason":"why","target":"a"}]`, "trimmed from and to title"},
+		{"retitle untrimmed", `[{"decision":"assert","from":"A","op":"retitle-work","reason":"why","target":"a","to":"B "}]`, "trimmed from and to title"},
+		{"retitle to itself", `[{"decision":"assert","from":"A","op":"retitle-work","reason":"why","target":"a","to":"A"}]`, "changes nothing"},
+		{"one retitle twice", `[{"decision":"assert","from":"A","op":"retitle-work","reason":"why","target":"a","to":"B"},` +
+			`{"decision":"assert","field":"title","from":"A","op":"retitle-work","reason":"why","target":"a","to":"B"}]`, "the same proposal as entry 0"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			raw, err := canonical.Format([]byte(tc.raw))
@@ -250,7 +272,8 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 	}
 	raw, err := canonical.Format([]byte(`[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1-3"},` +
 		`{"decision":"assert","from":"1-7","op":"drop-membership","reason":"why","series":"s","target":"a"},` +
-		`{"decision":"assert","op":"merge-works","others":["b","c"],"reason":"why","target":"a"}]`))
+		`{"decision":"assert","op":"merge-works","others":["b","c"],"reason":"why","target":"a"},` +
+		`{"decision":"assert","from":"A (Narrated by N)","op":"retitle-work","reason":"why","target":"a","to":"A"}]`))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -568,4 +591,104 @@ func TestReviewedAssertDropOfOneOfTwoMemberships(t *testing.T) {
 		t.Fatalf("tally = %+v", rep.Reviewed)
 	}
 	assertProposalsConsistent(t, rep)
+}
+
+// An asserted retitle is compared with the title the work states NOW: its new title is
+// the applied steady state (STALE), any title but its old one is the record having
+// moved (REFUSED naming it, so a stale review cannot overwrite a title nobody
+// reviewed), and a typo is REFUSED. A retired target is judged by its survivor.
+func TestReviewedAssertRetitleLookups(t *testing.T) {
+	const reds = `{"people":{},"series":{},"works":{"world-without-end-old":"world-without-end"}}`
+	for _, tc := range []struct {
+		name   string
+		r      reviewedDecision
+		status outcomeStatus
+		why    string
+	}{
+		{"applied", retitleAssertion("world-without-end", "", "World Without End (Narrated by N)", "World Without End"), statusStale,
+			`applied: work world-without-end states the title "World Without End"`},
+		{"title moved", retitleAssertion("world-without-end", "title", "World Without End (Unabridged)", "World Without End: A Novel"),
+			statusRefused, `work world-without-end now states the title "World Without End", not the "World Without End (Unabridged)"`},
+		{"no such work", retitleAssertion("world-without-ends", "", "World Without End", "World without End"), statusRefused,
+			"no such work world-without-ends"},
+		{"retired target", retitleAssertion("world-without-end-old", "", "World Without End", "World without End"), statusAsserted, ""},
+		{"retired target moved", retitleAssertion("world-without-end-old", "", "World Without End: Old", "World without End"), statusStale,
+			`applied: world-without-end-old was merged into world-without-end, which states the title "World Without End"`},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			rep := runFixtureRejectingWith(t, rangerTree(t), reds, tc.r)
+			o := rep.Reviewed.All
+			if len(o) != 1 || o[0].Status != tc.status || !strings.Contains(o[0].Why, tc.why) {
+				t.Fatalf("tally = %+v, want %s naming %q", rep.Reviewed, tc.status, tc.why)
+			}
+			got := subclassOf(t, rep, ClassWorkTitle, SubclassAsserted)
+			if tc.status != statusAsserted {
+				if len(got) != 0 {
+					t.Fatalf("sourced %+v", got)
+				}
+				return
+			}
+			if len(got) != 1 || got[0].Propose.Target != "world-without-end" || got[0].Propose.Advisory {
+				t.Fatalf("sourced %+v, want one mechanical retitle of the survivor", got)
+			}
+			assertProposalsConsistent(t, rep)
+		})
+	}
+}
+
+// An asserted retitle W-TITLE already proposes (its field omitted, read as "title") is
+// an acceptance of that proposal: nothing is sourced beside it.
+func TestReviewedAssertRetitleRedundantWithWTitle(t *testing.T) {
+	files := rangerTree(t)
+	files["works/xx/mageling/work.json"] = workJSON(t, "mageling", "Mageling (Unabridged)")
+	files["works/xx/mageling/recordings/r.json"] = recJSON(t, "r", "mageling")
+	var detected *Finding
+	for _, fd := range classOf(t, runFixtureRejecting(t, files), ClassWorkTitle) {
+		if fd.Propose.Op == OpRetitle && fd.Propose.Target == "mageling" {
+			detected = &fd
+		}
+	}
+	if detected == nil {
+		t.Fatal("fixture must carry W-TITLE's retitle of mageling")
+	}
+	rep := runFixtureRejecting(t, files, retitleAssertion("mageling", "", detected.Propose.From, detected.Propose.To))
+	if got := subclassOf(t, rep, ClassWorkTitle, SubclassAsserted); len(got) != 0 {
+		t.Fatalf("sourced %+v beside the detector's proposal", got)
+	}
+	if o := rep.Reviewed.Outcomes(); len(o) != 1 || o[0].Status != statusRedundant || !strings.Contains(o[0].Why, "already proposed as "+ClassWorkTitle) {
+		t.Fatalf("outcomes = %+v", rep.Reviewed.All)
+	}
+	assertProposalsConsistent(t, rep)
+}
+
+// An asserted retitle of a work a merge folds away would be discarded by the fold, so
+// the later of the two is refused naming the other, in either order; a retitle of the
+// merge's SURVIVOR is no conflict.
+func TestReviewedAssertRetitleRefusedOnAMergedWork(t *testing.T) {
+	loser := retitleAssertion("oakleaf-bearers", "", "Oakleaf Bearers", "The Oakleaf Bearers")
+	survivor := retitleAssertion("the-battle-for-skandia", "", "The Battle for Skandia", "The Battle For Skandia")
+	for _, tc := range []struct {
+		name    string
+		rs      []reviewedDecision
+		refused int
+		why     string
+	}{
+		{"merge first", []reviewedDecision{assertOakleaf, loser}, 1, "asserted/oakleaf-bearers retitles oakleaf-bearers, which asserted/the-battle-for-skandia folds onto the-battle-for-skandia"},
+		{"retitle first", []reviewedDecision{loser, assertOakleaf}, 1, "asserted/oakleaf-bearers retitles oakleaf-bearers, which asserted/the-battle-for-skandia folds onto the-battle-for-skandia"},
+		{"survivor", []reviewedDecision{assertOakleaf, survivor}, -1, ""},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			rep := runFixtureRejecting(t, rangerTree(t), tc.rs...)
+			for i, o := range rep.Reviewed.All {
+				if i == tc.refused {
+					if o.Status != statusRefused || !strings.Contains(o.Why, tc.why) {
+						t.Fatalf("outcome %d = %+v, want refused naming %q", i, o, tc.why)
+					}
+				} else if o.Status != statusAsserted {
+					t.Fatalf("outcome %d = %+v, want asserted", i, o)
+				}
+			}
+			assertProposalsConsistent(t, rep)
+		})
+	}
 }
