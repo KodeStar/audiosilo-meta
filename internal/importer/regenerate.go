@@ -137,7 +137,7 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	}
 	if n := userSourced + incomplete; n > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
-			"genres of %d %s were only added to, never trimmed: %d carry a user-library source, %d have a recording with an ASIN no input row matched",
+			"genres of %d %s could only be added to, never trimmed: %d carry a user-library source, %d have a recording with an ASIN no input row matched",
 			n, plural(n, "work"), userSourced, incomplete))
 	}
 	if silent > 0 {

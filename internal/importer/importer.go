@@ -2218,11 +2218,13 @@ func (p *planner) runGenresAfter(ws *workState, rec string, facts *workFacts) []
 		return nil
 	}
 	mapped := facts.mappedGenres(p)
-	next := UnionGenres(ws.runGenres, mapped)
-	if ws.runRecGenres != nil {
-		if rec == "" {
-			return nil // a row that landed on no recording casts no vote
-		}
+	var next []string
+	switch {
+	case ws.runRecGenres == nil:
+		next = UnionGenres(ws.runGenres, mapped)
+	case rec == "":
+		return nil // a row that landed on no recording casts no vote
+	default:
 		ws.runRecGenres[rec] = UnionGenres(ws.runRecGenres[rec], mapped)
 		next, _ = VoteGenres(slices.Collect(maps.Values(ws.runRecGenres)))
 	}

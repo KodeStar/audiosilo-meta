@@ -263,32 +263,24 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	}
 
 	// The worklists are staged BEFORE the run, so a path that cannot be written
-	// fails here, before the import touches the tree; each is committed (renamed
-	// into place, the previous file kept on failure) only once the run completed.
-	// --skipped is one {"asin","reason"} line per refused row with a refusal code -
-	// the --refusals shape and writer, so the sync bot reads both with one reader;
-	// --genre-changes one line per work the genre regeneration changed.
-	var worklists []*worklist
-	stage := func(flag, path string) *worklist {
-		f, err := atomicfile.StageIf(path)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "metaimport: %s: %v\n", flag, err)
-			return nil
-		}
-		w := &worklist{flag: flag, file: f}
-		worklists = append(worklists, w)
-		return w
-	}
-	defer func() {
-		for _, w := range worklists {
-			w.file.Discard() // a no-op once committed
-		}
-	}()
-	skippedLog := stage("--skipped", *skipped)
-	changesLog := stage("--genre-changes", *genreChanges)
-	if skippedLog == nil || changesLog == nil {
+	// fails here, before the import touches the tree; they are committed together
+	// (CommitInOrder: renamed into place only once both were written) once the run
+	// completed. --skipped is one {"asin","reason"} line per refused row with a
+	// refusal code - the --refusals shape and writer, so the sync bot reads both
+	// with one reader; --genre-changes one line per work the genre regeneration
+	// changed.
+	skippedLog, err := atomicfile.StageIf(*skipped)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
 		return 2
 	}
+	defer skippedLog.Discard() // a no-op once committed
+	changesLog, err := atomicfile.StageIf(*genreChanges)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --genre-changes:", err)
+		return 2
+	}
+	defer changesLog.Discard() // a no-op once committed
 
 	sum, err := run(exportPath, opts)
 
@@ -306,26 +298,17 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	printSummary(sum, *dryRun, mode)
 	for _, rows := range [][]importer.RowSkip{sum.Skips, sum.RelocationSkips} {
 		for _, s := range rows {
-			skippedLog.file.Encode(s)
+			skippedLog.Encode(s)
 		}
 	}
 	for _, c := range sum.GenreChanges {
-		changesLog.file.Encode(c)
+		changesLog.Encode(c)
 	}
-	for _, w := range worklists {
-		if err := atomicfile.CommitInOrder(w.file); err != nil {
-			fmt.Fprintf(os.Stderr, "metaimport: %s: %v\n", w.flag, err)
-			return 1
-		}
+	if err := atomicfile.CommitInOrder(skippedLog, changesLog); err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: worklists:", err)
+		return 1
 	}
 	return 0
-}
-
-// worklist is one staged NDJSON output of an import run, named by its flag for
-// the error that reports it.
-type worklist struct {
-	flag string
-	file *atomicfile.File
 }
 
 // openConflictLog opens the --conflicts worklist for APPEND, returning the sink
