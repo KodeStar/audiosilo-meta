@@ -87,6 +87,11 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 	homeMerged := func(drop, home, merger string) {
 		report("%s relies on %s as its work's home, which %s merges", drop, home, merger)
 	}
+	// An asserted retitle of a work a merge folds away: the reviewer's title would be
+	// discarded with the record (see the OpRetitle case), whichever arrives first.
+	retitleFolded := func(retitle, work, merger, survivor string) {
+		report("%s retitles %s, which %s folds onto %s", retitle, work, merger, survivor)
+	}
 	claimSlot := func(key string) {
 		if prev, dup := s.slot[key]; dup {
 			report("%s and %s both claim series slot %s", prev, r.Key, key)
@@ -183,7 +188,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		}
 		for _, o := range p.Others {
 			if by, both := s.retitled[o]; both && p.Op == OpMergeWorks {
-				report("%s retitles %s, which %s folds onto %s", by, o, r.Key, p.Target)
+				retitleFolded(by, o, r.Key, p.Target)
 			}
 			key := p.Op + "/" + o
 			if prev, dup := s.mergeTarget[key]; dup && prev != p.Target {
@@ -241,7 +246,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 			report("%s and %s both retitle %s", prev, r.Key, p.Target)
 		}
 		if survivor, loser := s.mergeTarget[OpMergeWorks+"/"+p.Target]; loser {
-			report("%s retitles %s, which %s folds onto %s", r.Key, p.Target, s.mergedWorks[p.Target], survivor)
+			retitleFolded(r.Key, p.Target, s.mergedWorks[p.Target], survivor)
 		}
 		put(s.retitled, p.Target, r.Key)
 	case OpSetWorkLanguage:

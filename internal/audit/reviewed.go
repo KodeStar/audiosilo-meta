@@ -194,7 +194,7 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 		if r.Decision == "accept" && !AcceptableOp(r.Op) {
 			return nil, fmt.Errorf("entry %d: no repair applies a %q proposal, so it cannot be accepted", i, r.Op)
 		}
-		if r.Reason == "" || strings.TrimSpace(r.Reason) != r.Reason || strings.ContainsAny(r.Reason, "\n\r\u2013\u2014") {
+		if !oneLineTrimmed(r.Reason) || strings.ContainsAny(r.Reason, "\u2013\u2014") {
 			return nil, fmt.Errorf("entry %d: the reason must be a one-line, trimmed reason in hyphens", i)
 		}
 		if !slices.Equal(r.Others, sortedUnique(r.Others)) {
@@ -263,11 +263,11 @@ func validAssertion(r reviewedDecision) error {
 			OpMergeSeries, OpMergeWorks, OpRetitle)
 	}
 	if r.Op == OpRetitle {
-		if r.Target == "" || r.Series != "" || (r.Field != "" && r.Field != fieldTitle) || len(r.Others) > 0 {
+		if !assertedOnTarget(r, fieldTitle) || r.Series != "" {
 			return fmt.Errorf("an asserted %s names target, from and to (field, if stated, %q), nothing else", r.Op, fieldTitle)
 		}
 		for _, title := range []string{r.From, r.To} {
-			if title == "" || strings.TrimSpace(title) != title || strings.ContainsAny(title, "\n\r") {
+			if !oneLineTrimmed(title) {
 				return fmt.Errorf("an asserted %s needs a one-line, trimmed from and to title, not %q", r.Op, title)
 			}
 		}
@@ -277,7 +277,7 @@ func validAssertion(r reviewedDecision) error {
 		return nil
 	}
 	if r.Op == OpDropMembership {
-		if r.Target == "" || r.Series == "" || (r.Field != "" && r.Field != fieldPosition) || r.To != "" || len(r.Others) > 0 {
+		if !assertedOnTarget(r, fieldPosition) || r.Series == "" || r.To != "" {
 			return fmt.Errorf("an asserted %s names target, series and from (field, if stated, %q), nothing else", r.Op, fieldPosition)
 		}
 		if !canonicalPosition(r.From) {
@@ -286,7 +286,7 @@ func validAssertion(r reviewedDecision) error {
 		return nil
 	}
 	if r.Op == OpAddSeriesMember {
-		if r.Target == "" || r.Series == "" || (r.Field != "" && r.Field != "series") || r.From != "" || len(r.Others) > 0 {
+		if !assertedOnTarget(r, "series") || r.Series == "" || r.From != "" {
 			return fmt.Errorf("an asserted %s names target, series and to (field, if stated, \"series\"), nothing else", r.Op)
 		}
 		if !canonicalPosition(r.To) {
@@ -301,6 +301,19 @@ func validAssertion(r reviewedDecision) error {
 		return fmt.Errorf("an asserted %s folds %q onto itself", r.Op, r.Target)
 	}
 	return nil
+}
+
+// assertedOnTarget is the shape every single-record assertion shares: a target, no
+// others, and a field that is either omitted or the one its op is read under. Each
+// op's arm adds what it requires of series, from and to.
+func assertedOnTarget(r reviewedDecision, field string) bool {
+	return r.Target != "" && len(r.Others) == 0 && (r.Field == "" || r.Field == field)
+}
+
+// oneLineTrimmed reports whether s is non-empty, one line and carries no leading or
+// trailing whitespace - what a reviewed.json value printed into a report must be.
+func oneLineTrimmed(s string) bool {
+	return s != "" && strings.TrimSpace(s) == s && !strings.ContainsAny(s, "\n\r")
 }
 
 // retiredElsewhere names the losers of a merge assertion an earlier wave retired onto a
