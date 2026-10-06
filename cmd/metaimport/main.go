@@ -207,20 +207,25 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
 	}
-	if *genreChanges != "" && mode != importer.ModeRegenerateGenres {
-		fmt.Fprintln(os.Stderr, "metaimport: --genre-changes is the --regenerate-genres worklist; pass it with that mode")
-		return 2
-	}
-	if *attachEditions && mode != importer.ModeCreate {
-		fmt.Fprintln(os.Stderr, "metaimport: --attach-editions attaches rows the CREATE path would plan; it cannot be combined with --enrich, --recordings-only, --relocate or --regenerate-genres")
-		return 2
-	}
-
+	// The flags that belong to one source or one mode, validated in one place:
+	// each is libex-only, and a mode-scoped one is refused outside its mode.
 	for _, f := range []struct {
-		name string
-		set  bool
-	}{{"--skipped", *skipped != ""}, {"--attach-editions", *attachEditions}} {
-		if f.set && name != boundedSource {
+		name   string
+		set    bool
+		scoped bool
+		mode   importer.Mode
+		what   string
+	}{
+		{"--skipped", *skipped != "", false, 0, ""},
+		{"--attach-editions", *attachEditions, true, importer.ModeCreate, "attaches rows the CREATE path would plan"},
+		{"--genre-changes", *genreChanges != "", true, importer.ModeRegenerateGenres, "is the --regenerate-genres worklist"},
+	} {
+		switch {
+		case !f.set:
+		case f.scoped && mode != f.mode:
+			fmt.Fprintf(os.Stderr, "metaimport: %s %s; it is valid in that mode only\n", f.name, f.what)
+			return 2
+		case name != boundedSource:
 			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", f.name, boundedSource, name)
 			return 2
 		}
@@ -257,24 +262,33 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		opts.SeriesLookupLimit = *seriesLookupLimit
 	}
 
-	// The --skipped worklist is staged BEFORE the run, so a path that cannot be
-	// written fails here, before the import touches the tree; it is committed
-	// (renamed into place, the previous file kept on failure) only once the run
-	// completed. One {"asin","reason"} line per refused row with a refusal code -
-	// the --refusals shape and writer, so the sync bot reads both with one reader.
-	skippedLog, err := atomicfile.StageIf(*skipped)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
+	// The worklists are staged BEFORE the run, so a path that cannot be written
+	// fails here, before the import touches the tree; each is committed (renamed
+	// into place, the previous file kept on failure) only once the run completed.
+	// --skipped is one {"asin","reason"} line per refused row with a refusal code -
+	// the --refusals shape and writer, so the sync bot reads both with one reader;
+	// --genre-changes one line per work the genre regeneration changed.
+	var worklists []*worklist
+	stage := func(flag, path string) *worklist {
+		f, err := atomicfile.StageIf(path)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "metaimport: %s: %v\n", flag, err)
+			return nil
+		}
+		w := &worklist{flag: flag, file: f}
+		worklists = append(worklists, w)
+		return w
+	}
+	defer func() {
+		for _, w := range worklists {
+			w.file.Discard() // a no-op once committed
+		}
+	}()
+	skippedLog := stage("--skipped", *skipped)
+	changesLog := stage("--genre-changes", *genreChanges)
+	if skippedLog == nil || changesLog == nil {
 		return 2
 	}
-	defer skippedLog.Discard() // a no-op once committed
-	// The --genre-changes worklist is staged the same way, for the same reason.
-	changesLog, err := atomicfile.StageIf(*genreChanges)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "metaimport: --genre-changes:", err)
-		return 2
-	}
-	defer changesLog.Discard()
 
 	sum, err := run(exportPath, opts)
 
@@ -292,21 +306,26 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	printSummary(sum, *dryRun, mode)
 	for _, rows := range [][]importer.RowSkip{sum.Skips, sum.RelocationSkips} {
 		for _, s := range rows {
-			skippedLog.Encode(s)
+			skippedLog.file.Encode(s)
 		}
 	}
-	if err := atomicfile.CommitInOrder(skippedLog); err != nil {
-		fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
-		return 1
-	}
 	for _, c := range sum.GenreChanges {
-		changesLog.Encode(c)
+		changesLog.file.Encode(c)
 	}
-	if err := atomicfile.CommitInOrder(changesLog); err != nil {
-		fmt.Fprintln(os.Stderr, "metaimport: --genre-changes:", err)
-		return 1
+	for _, w := range worklists {
+		if err := atomicfile.CommitInOrder(w.file); err != nil {
+			fmt.Fprintf(os.Stderr, "metaimport: %s: %v\n", w.flag, err)
+			return 1
+		}
 	}
 	return 0
+}
+
+// worklist is one staged NDJSON output of an import run, named by its flag for
+// the error that reports it.
+type worklist struct {
+	flag string
+	file *atomicfile.File
 }
 
 // openConflictLog opens the --conflicts worklist for APPEND, returning the sink
@@ -340,33 +359,30 @@ func openConflictLog(path string) (io.Writer, func(), error) {
 // pointing either at another source is refused here rather than silently
 // honoured.
 func selectMode(source string, enrich, recordingsOnly, relocate, regenerateGenres bool) (importer.Mode, error) {
-	if regenerateGenres && (enrich || recordingsOnly || relocate) {
-		return 0, fmt.Errorf("--regenerate-genres, --relocate, --enrich and --recordings-only are mutually exclusive")
+	modes := []struct {
+		flag string
+		set  bool
+		mode importer.Mode
+	}{
+		{"--enrich", enrich, importer.ModeEnrich},
+		{"--recordings-only", recordingsOnly, importer.ModeRecordingsOnly},
+		{"--relocate", relocate, importer.ModeRelocate},
+		{"--regenerate-genres", regenerateGenres, importer.ModeRegenerateGenres},
 	}
-	if relocate && (enrich || recordingsOnly) {
-		return 0, fmt.Errorf("--relocate, --enrich and --recordings-only are mutually exclusive")
+	var names, picked []string
+	mode := importer.ModeCreate
+	for _, m := range modes {
+		names = append(names, m.flag)
+		if m.set {
+			picked, mode = append(picked, m.flag), m.mode
+		}
 	}
-	if enrich && recordingsOnly {
-		return 0, fmt.Errorf("--enrich and --recordings-only are different modes; pass one or the other")
-	}
-	var (
-		flagName string
-		mode     importer.Mode
-	)
 	switch {
-	case regenerateGenres:
-		flagName, mode = "--regenerate-genres", importer.ModeRegenerateGenres
-	case relocate:
-		flagName, mode = "--relocate", importer.ModeRelocate
-	case enrich:
-		flagName, mode = "--enrich", importer.ModeEnrich
-	case recordingsOnly:
-		flagName, mode = "--recordings-only", importer.ModeRecordingsOnly
-	default:
-		return importer.ModeCreate, nil
-	}
-	if source != boundedSource {
-		return 0, fmt.Errorf("%s is only supported for the %s source, not %q", flagName, boundedSource, source)
+	case len(picked) > 1:
+		return 0, fmt.Errorf("%s and %s are mutually exclusive; pass one mode at most",
+			strings.Join(names[:len(names)-1], ", "), names[len(names)-1])
+	case len(picked) == 1 && source != boundedSource:
+		return 0, fmt.Errorf("%s is only supported for the %s source, not %q", picked[0], boundedSource, source)
 	}
 	return mode, nil
 }
@@ -489,9 +505,10 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 			rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
 	case importer.ModeRegenerateGenres:
 		rows := s.Matched + s.NotInCatalog + s.SkippedRows
+		set, addedTo, added, removed := s.GenreTally()
 		fmt.Printf("%s: %d works set to the recording vote, %d works added to, %d unchanged, %d not reached by any row; %d genres added, %d removed; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
-			summaryHead(mode, dryRun), s.GenreWorksSet, s.GenreWorksAddedTo, s.GenreWorksUnchanged, s.GenreWorksNoRow,
-			s.GenresAdded, s.GenresRemoved, rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
+			summaryHead(mode, dryRun), set, addedTo, s.GenreWorksUnchanged, s.GenreWorksNoRow,
+			added, removed, rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
 	case importer.ModeRecordingsOnly:
 		fmt.Printf("%s: %d new recordings, %d new people; %d skipped (already present); %d skipped (work not in the catalogue); %d asins merged into existing recordings; %d warnings\n",
 			summaryHead(mode, dryRun), s.NewRecordings, s.NewPeople, s.Skipped, s.SkippedNoWork, s.MergedASINs, len(s.Warnings))

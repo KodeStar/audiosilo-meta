@@ -83,7 +83,7 @@ const FORMAT_TREE: Record<string, { format?: boolean; ancestors: string[] } | un
   Object.assign(Object.create(null), format_tree)
 
 /**
- * Which claims are FORMAT-DERIVED (Go's formatIndex.derived): a format node, or
+ * Which claims are FORMAT-DERIVED (Go's genreTable.formatDerived): a format node, or
  * an ancestor of a format node the record states, that the record reaches
  * through no non-format descendant. Null when none is.
  */
