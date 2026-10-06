@@ -75,7 +75,7 @@ func (p *planner) attestExisting(b sourceBook, asin string) {
 	// applied here: placing a work into a series is enrichment's job, and this
 	// is an exact-ASIN attestation of one edition, not a re-import of the book.
 	if p.applyToRecording(b, ref, warn, scopeAttestExact) {
-		p.applyToWork(b, ref.Work, scopeAttestExact)
+		p.applyToWork(b, ref, scopeAttestExact)
 	}
 }
 

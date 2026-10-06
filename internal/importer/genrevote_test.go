@@ -136,3 +136,57 @@ func TestUserImportKeepsTheUnion(t *testing.T) {
 		}
 	}
 }
+
+// TestEnrichFillVotesGenres is enrichment's half of the recording vote: a
+// genre-less work it fills gets the vote over the recordings its rows matched
+// (a recording's regional ASINs one vote), two recordings keep their union, and
+// a work that carried a set at load is never touched - in either row order.
+func TestEnrichFillVotesGenres(t *testing.T) {
+	rows := []string{
+		regenRow("B0VOTEA001", "Mystery", "Westerns"),
+		regenRow("B0VOTEA002", "Westerns"), // recording a's second marketplace: still one vote
+		regenRow("B0VOTEB001", "Mystery", "Thriller & Suspense"),
+		regenRow("B0VOTEC001", "Mystery", "Thriller & Suspense"),
+		regenRow("B0PAIRA001", "Mystery"),
+		regenRow("B0PAIRB001", "Westerns"),
+		regenRow("B0KEPT0001", "Mystery"),
+		regenRow("B0KEPT0002", "Fantasy"),
+		regenRow("B0KEPT0003", "Fantasy"),
+	}
+	for _, order := range [][]string{rows, reversed(rows)} {
+		dataDir := seedRegen(t, map[string]string{
+			"works/tr/trio/work.json":         regenWorkJSON("trio", nil, "libex-import"),
+			"works/tr/trio/recordings/a.json": regenRecJSON("trio", "a", "B0VOTEA001", "B0VOTEA002"),
+			"works/tr/trio/recordings/b.json": regenRecJSON("trio", "b", "B0VOTEB001"),
+			"works/tr/trio/recordings/c.json": regenRecJSON("trio", "c", "B0VOTEC001"),
+			"works/pa/pair/work.json":         regenWorkJSON("pair", nil, "libex-import"),
+			"works/pa/pair/recordings/a.json": regenRecJSON("pair", "a", "B0PAIRA001"),
+			"works/pa/pair/recordings/b.json": regenRecJSON("pair", "b", "B0PAIRB001"),
+			"works/ke/kept/work.json":         regenWorkJSON("kept", []string{"romance"}, "libex-import"),
+			"works/ke/kept/recordings/a.json": regenRecJSON("kept", "a", "B0KEPT0001"),
+			"works/ke/kept/recordings/b.json": regenRecJSON("kept", "b", "B0KEPT0002"),
+			"works/ke/kept/recordings/c.json": regenRecJSON("kept", "c", "B0KEPT0003"),
+		})
+		kept := readRaw(t, dataDir, "works/ke/kept/work.json")
+		runLibexWith(t, dataDir, Options{Mode: ModeEnrich}, order...)
+		for slug, want := range map[string][]string{
+			"trio": {"mystery", "thriller-suspense"},
+			"pair": {"mystery", "westerns"},
+		} {
+			if got := regenGenres(t, dataDir, slug); !reflect.DeepEqual(got, want) {
+				t.Errorf("%s genres = %v, want %v", slug, got, want)
+			}
+		}
+		if got := readRaw(t, dataDir, "works/ke/kept/work.json"); got != kept {
+			t.Errorf("a work with a recorded genre set was rewritten:\n%s\nwant\n%s", got, kept)
+		}
+		var trio enrichedWork
+		readEntity(t, dataDir, "works/tr/trio/work.json", &trio)
+		if len(trio.Sources) < 2 {
+			t.Errorf("trio sources = %+v, want the enrichment's provenance stamped", trio.Sources)
+		}
+		if res := check.Load(dataDir); !res.OK() {
+			t.Fatalf("tree failed validation: %v", res.Problems)
+		}
+	}
+}

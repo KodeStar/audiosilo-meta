@@ -2210,14 +2210,22 @@ func (p *planner) mergeCreatedWorkFacts(ws *workState, rec string, facts *workFa
 }
 
 // runGenresAfter is the run-owned work's genre set once this row's genres are
-// counted, or nil when it does not change: the union, or for a vote-governed
-// work the vote over its recordings (the union of them when no genre reaches
-// two votes, which keeps the outcome independent of row order).
+// counted, or nil when it does not change (accrueRunGenres).
 func (p *planner) runGenresAfter(ws *workState, rec string, facts *workFacts) []string {
 	if !ws.runGenresOwned || len(facts.genres) == 0 {
 		return nil
 	}
-	mapped := facts.mappedGenres(p)
+	return p.accrueRunGenres(ws, rec, facts.mappedGenres(p))
+}
+
+// accrueRunGenres is THE in-run genre accretion rule, shared by the create path
+// (runGenresAfter) and enrichment's fill (applyWorkGenres): a row's mapped
+// genres, landed on recording rec of a work whose set THIS run owns, give the
+// work's new set - the union, or for a vote-governed work (runRecGenres, a
+// mirror-derived set) the vote over its recordings (the union of them when no
+// genre reaches two votes, which keeps the outcome independent of row order).
+// nil when the set does not change.
+func (p *planner) accrueRunGenres(ws *workState, rec string, mapped []string) []string {
 	var next []string
 	switch {
 	case ws.runRecGenres == nil:

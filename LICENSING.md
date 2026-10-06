@@ -274,8 +274,9 @@ The rule, applied at **record** granularity (not per field):
    ASINs together, as one publisher's one tagging) is one vote; with three or
    more recordings that state a genre, a genre is kept when at least two of
    them state it, and with fewer the recordings' genres are all kept. That is
-   what the mirror's create path writes, and what `metaimport libex
-   --regenerate-genres` re-derives for an existing work - and it may only
+   what the mirror's create path writes, what its enrichment writes into a
+   work that had no genres, and what `metaimport libex --regenerate-genres`
+   re-derives for an existing work - and the regeneration may only
    TRIM a set no user-library source contributed to, and only when every
    recording carrying an ASIN was in the evidence. A set any user-library
    source contributed to is only ever added to, by the vote as by a user row.

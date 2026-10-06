@@ -89,7 +89,7 @@ func (p *planner) enrichBook(b sourceBook, ref RecRef) {
 	if !p.applyToRecording(b, ref, warn, scopeFill) {
 		return
 	}
-	p.applyToWork(b, ref.Work, scopeFill)
+	p.applyToWork(b, ref, scopeFill)
 	p.enrichSeries(b, ref.Work, warn)
 }
 
@@ -381,7 +381,8 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 // does not state), description (community-written, never imported), subtitle (an
 // Audible subtitle is marketing or series copy, not the edition's own subtitle -
 // see libexToBook), and added_at (a creation stamp).
-func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
+func (p *planner) applyToWork(b sourceBook, ref RecRef, scope applyScope) {
+	workSlug := ref.Work
 	// The credits the row STATES, restricted to people the catalogue already
 	// holds - enrichment creates nothing, so a role qualifier naming a person we
 	// do not have states a credit we cannot reference (metacheck's credit
@@ -409,7 +410,7 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 	// is written: first writer wins. Genres are the one exception, and
 	// applyWorkGenres states it.
 	writable := scope == scopeFill || overwrite
-	changed := p.applyWorkGenres(raw, b, ws, writable)
+	changed := p.applyWorkGenres(raw, b, ws, ref.Rec, writable)
 	// Credits are written whole, and only onto a work that carries none: a work
 	// that already lists credits has been described by someone, and splicing a
 	// second source's roles into that list would mix two accounts of who did what
@@ -463,7 +464,7 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 }
 
 // applyWorkGenres is THE genre rule for a matched work, and reports whether it
-// changed raw's set. Nothing here ever removes a genre:
+// changed raw's set. Nothing here ever removes a RECORDED genre:
 //
 //   - a user-library row's mapped genres are UNIONED into the set, whatever the
 //     work's attestation state and whatever the scope: a user export states ONE
@@ -473,13 +474,16 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 //     is attested - and because the union needs no overwrite permission, a row
 //     that maps no genre cannot block a later row's, so row order changes nothing;
 //   - a bulk-mirror row writes only where the work is writable, and then only
-//     onto a work that has no genres or whose set THIS RUN wrote (several ASINs
-//     of one book in one run are one account).
+//     onto a work that has no genres or whose set THIS RUN wrote, and what it
+//     writes is the RECORDING VOTE over the recordings the run's rows matched
+//     (accrueRunGenres, the create path's own rule; ref.Rec is the recording) -
+//     a mirror-derived set, so a later row of the run can outvote what an
+//     earlier one stated, but never anything the work carried at load.
 //
 // A row whose genres map to nothing never touches a recorded set - silence is not
 // an assertion. The genres are mapped only on the branch that can store them, so
 // a row whose genres could never be recorded adds nothing to the unmapped report.
-func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workState, writable bool) bool {
+func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workState, rec string, writable bool) bool {
 	if len(b.genres) == 0 && len(b.vocabGenres) == 0 {
 		return false
 	}
@@ -488,6 +492,19 @@ func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workStat
 		if !writable || (len(existing) > 0 && !ws.runGenresOwned) {
 			return false
 		}
+		// The bulk mirror filling a set: what it writes is a MIRROR-derived set,
+		// so it is the recording vote (genrevote.go) over the recordings this
+		// run's rows matched - the same accretion rule the create path uses, so
+		// the daily enrichment and --regenerate-genres agree on the same rows.
+		if !ws.runGenresOwned {
+			ws.runGenresOwned, ws.runRecGenres = true, map[string][]string{}
+		}
+		next := p.accrueRunGenres(ws, rec, p.genres.mapGenres(b.genres, p.unmappedGenres))
+		if next == nil {
+			return false
+		}
+		ws.runGenres, raw["genres"] = next, next
+		return true
 	}
 	// A hand submission's genres are already vocabulary values
 	// (sourceBook.vocabGenres) and join the mapped claims unchanged: one union,
@@ -496,8 +513,8 @@ func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workStat
 	if out == nil {
 		return false
 	}
-	if !p.userTier || ws.runGenresOwned {
-		ws.runGenresOwned, ws.runGenres = true, out
+	if ws.runGenresOwned {
+		ws.runGenres = out
 	}
 	return true
 }

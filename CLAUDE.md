@@ -2037,8 +2037,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   contradiction disqualifies the whole row, enrich never creates anything, and
   a second identical run is a byte-level no-op); `metaimport libex
   --regenerate-genres` (`regenerate.go`, `ModeRegenerateGenres`: the GENRE
-  REPAIR. Every writer only ever unions genres and enrichment fills only an empty
-  set, so a table fix (#2337's contemporary-romance), the format rule and the
+  REPAIR. Every writer only ever adds to a recorded set and enrichment fills only
+  an empty one, so a table fix (#2337's contemporary-romance), the format rule and the
   recording vote reached new works only. This mode reads the libex rows of every
   catalogued ASIN (scripts/README.md exports them), resolves each through the
   row loop it shares with enrichment (`forEachMatchedRow`, over the same ASIN
@@ -2202,8 +2202,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   on an already-attested work - and within a run they accrete on every work the
   run created or filled (`workState.runGenres`, kept in memory so the common
   nothing-new row costs no store read - the genre twin of `runCredits`) - except
-  a work a BULK-MIRROR create run creates, whose set is the RECORDING VOTE
-  instead (`genrevote.go`: `VoteGenres` is the rule of record - per-recording
+  a work a BULK-MIRROR run creates or (`--enrich`) fills, whose set is the
+  RECORDING VOTE instead (`genrevote.go`: `VoteGenres` is the rule of record - per-recording
   sets, a recording's regional ASINs one vote, a recording whose rows map
   nothing no voter, and with n >= 3 voters a genre kept iff two state it, else
   the union, returning whether it STATED anything and the union when it did not;
@@ -2212,7 +2212,11 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   vote the recording the row landed on (`planner.landedRec`), storing the union
   when no genre reaches two votes so the outcome is independent of row order;
   `workFacts` resolves a row's genres and credits ONCE, so the creating row,
-  which reaches it too, is a no-op) - while
+  which reaches it too, is a no-op; enrichment's fill of a genre-less work
+  (`applyWorkGenres`) goes through the same `accrueRunGenres`, its row's matched
+  recording the vote's, so the sync bot's daily `--enrich` and
+  `--regenerate-genres` agree on the same rows; a set the work carried at load
+  is still never touched) - while
   a later row of the run meeting a work an earlier row attested stamps its
   provenance too (`workState.runAttested`), so row ORDER changes nothing
   (`TestUserImportGenresDoNotDependOnRowOrder`). The ASIN-merge path still
