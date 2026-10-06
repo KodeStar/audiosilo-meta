@@ -2016,9 +2016,14 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   hand-curated browse-node ids that name how a book was PRODUCED rather than what
   it is about (Audio Performances & Dramatizations and its children, the Radio and
   Film & TV leaves, every marketplace's equivalent - pinned by path, per
-  marketplace, in `TestFormatNodesArePinned`), and `format_tree`, which
-  `scripts/genrepaths` DERIVES (every path of every root subtree holding a format
-  node; `TestFormatTreeMatchesGenrePaths` pins it against the verification file).
+  marketplace, in `TestFormatNodesArePinned`), and two keys `scripts/genrepaths`
+  DERIVES from it through `importer.DeriveFormatTree`, already in the shape the
+  rule consumes so the runtime (Go and the site) does lookups only:
+  `format_tree` (every node of every root subtree holding a format node -> its
+  format flag and its transitively closed, sorted ancestors) and `format_paths`
+  (per marketplace, every path of those subtrees -> its node, for ladder claims;
+  US fallback as by_path). `TestFormatTreeMatchesGenrePaths` re-derives both from
+  the verification file, which carries every format-subtree path.
   `mapGenres` drops a FORMAT-DERIVED claim's genre - a format node, or an ancestor
   of one the row states that the row reaches through no subject descendant -
   unless the row maps nothing else: a full-cast Christie dramatization is mystery
@@ -2036,7 +2041,10 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   set, so a table fix (#2337's contemporary-romance), the format rule and the
   recording vote reached new works only. This mode reads the libex rows of every
   catalogued ASIN (scripts/README.md exports them), resolves each through the
-  enrichment pass's ASIN index to the recording it sits on and votes per work: a
+  row loop it shares with enrichment (`forEachMatchedRow`, over the same ASIN
+  index) to the recording it sits on and votes per work, deciding off what the
+  load already put on each `workState` (its loaded genres, whether a source is
+  user-library tier, which recordings carry an ASIN): a
   TRIM-ELIGIBLE work - no `model.TierUserLibrary` source on the work (a
   reference-tier `community` source states no genre and does not block it) AND
   every ASIN-carrying recording met a row - takes the vote as its set, unless the
@@ -2044,11 +2052,13 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   rule 5). It touches no other field, creates nothing and appends NO source - the
   genres are a derivation of rows the work already cites - so a second identical
   run is a byte-level no-op; it skips the credit censuses and series resolution a
-  row set the size of the catalogue does not need, and refuses non-mirror rows.
+  row set the size of the catalogue does not need (`Mode.plansRows`), and
+  refuses non-mirror rows.
   `--genre-changes <path>` is the review worklist (one `{"work","removed",
   "added","mode"}` line per changed work, `trim` or `add-only`, through
   internal/atomicfile); the summary line counts works set / added to / unchanged /
-  not reached and the genre instances added and removed. Mutually exclusive with
+  not reached and the genre instances added and removed (the first two and the
+  instances counted off the worklist, `Summary.GenreTally`). Mutually exclusive with
   the other modes. Measured over the 282,260-work tree with the dump rows of its
   334,843 ASINs (313,202 rows, every one matched): 29,123 works set to the vote,
   1,277 added to, 248,316 unchanged, 3,544 reached by no row; +35,952 / -2,062
@@ -2196,9 +2206,13 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   instead (`genrevote.go`: `VoteGenres` is the rule of record - per-recording
   sets, a recording's regional ASINs one vote, a recording whose rows map
   nothing no voter, and with n >= 3 voters a genre kept iff two state it, else
-  the union; `recordRunVote` feeds it the recording each row landed on, which
-  `addRecording` now returns, and falls back to the union when no genre reaches
-  two votes so the outcome is independent of row order) - while
+  the union, returning whether it STATED anything and the union when it did not;
+  `mergeCreatedWorkFacts`, the ONE in-run accretion point for credits and genres,
+  is called after `addRecording` for every row landing on a work and feeds the
+  vote the recording the row landed on (`planner.landedRec`), storing the union
+  when no genre reaches two votes so the outcome is independent of row order;
+  `workFacts` resolves a row's genres and credits ONCE, so the creating row,
+  which reaches it too, is a no-op) - while
   a later row of the run meeting a work an earlier row attested stamps its
   provenance too (`workState.runAttested`), so row ORDER changes nothing
   (`TestUserImportGenresDoNotDependOnRowOrder`). The ASIN-merge path still

@@ -519,15 +519,18 @@ go test ./internal/importer/ -run 'Genre|Childrens'
 A same-path conflict inside one marketplace (two nodes, one spelling) is printed
 to stderr, and the first node in the taxonomy's own order is kept.
 
-The generator also derives the table's `format_tree` from its hand-curated
-`format` list (the FORMAT nodes - Audio Performances & Dramatizations and its
-children, the Radio and Film & TV leaves, in every marketplace; see
-`internal/importer/audiblegenres.go`): for each marketplace, every path of every
-root subtree that holds a format node, mapped to its node id, which is what the
-format rule reads a node's ancestors and a ladder claim's node from. Those paths
-join the verification file, so `TestFormatTreeMatchesGenrePaths` fails until the
-generator is re-run after a `format` edit, and `TestFormatNodesArePinned` holds
-the list itself to the format paths it states per marketplace.
+The generator also derives two keys from the table's hand-curated `format` list
+(the FORMAT nodes - Audio Performances & Dramatizations and its children, the
+Radio and Film & TV leaves, in every marketplace; see
+`internal/importer/audiblegenres.go`), through `importer.DeriveFormatTree`, in
+the shape the format rule consumes: `format_tree`, every node of every root
+subtree that holds a format node mapped to its format flag and its transitively
+closed ancestors, and `format_paths`, every path of those subtrees per
+marketplace mapped to its node (for a ladder claim). Those paths join the
+verification file, so `TestFormatTreeMatchesGenrePaths` - which re-derives both
+keys from it - fails until the generator is re-run after a `format` edit, and
+`TestFormatNodesArePinned` holds the list itself to the format paths it states
+per marketplace.
 
 ### Regenerate catalogued works' genres
 
