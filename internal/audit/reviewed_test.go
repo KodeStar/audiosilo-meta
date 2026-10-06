@@ -675,9 +675,10 @@ func TestHomeMergeNamesEveryDropAndUndoesARefusal(t *testing.T) {
 	}
 }
 
-// reviewed_test.go's retitle cases: an ACCEPTED retitle is a reviewer's title for that
-// record exactly as an asserted one is, so a merge folding its work conflicts with it
-// (consistency.go's OpRetitle case), whichever arrives first.
+// Fixtures for the accepted-retitle cases: a retitle of w, one of the survivor s, a
+// merge folding w onto s, and an unrelated advisory addition. An ACCEPTED retitle is a
+// reviewer's title for that record exactly as an asserted one is, so a merge folding
+// its work conflicts with it (consistency.go's OpRetitle case), whichever arrives first.
 var (
 	retitleW     = Proposal{Op: OpRetitle, Target: "w", Field: "title", From: "W (Unabridged)", To: "W"}
 	retitleS     = Proposal{Op: OpRetitle, Target: "s", Field: "title", From: "S (Unabridged)", To: "S"}

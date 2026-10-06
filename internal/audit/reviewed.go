@@ -598,6 +598,12 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 		}
 	}
 	var conflictState *proposalConflictState
+	state := func() *proposalConflictState {
+		if conflictState == nil {
+			conflictState = proposalConflicts(rep)
+		}
+		return conflictState
+	}
 	for j, r := range rs {
 		if r.Decision == "reject" {
 			continue
@@ -621,39 +627,31 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			default:
 				promoted, unchanged = statusRedundant, statusRedundant
 			}
-			// A decision that takes effect marks the finding reviewed, which constrains a
-			// retitle (the OpRetitle case in proposalConflictState.add): a candidate carries
-			// the mark into the conflict check, and only a decision that is not refused
-			// leaves it on the finding.
+			// A decision that takes effect marks the finding reviewed (see Finding.reviewed):
+			// a candidate carries the mark into the conflict check.
 			if why == "" && fd.Propose.Advisory {
-				if conflictState == nil {
-					conflictState = proposalConflicts(rep)
-				}
 				candidate := *fd
 				candidate.reviewed = true
-				if conflicts := conflictState.promote(candidate); len(conflicts) > 0 {
+				if conflicts := state().promote(candidate); len(conflicts) > 0 {
 					why = strings.Join(conflicts, "; ")
 				} else {
-					fd.Propose.Advisory, fd.reviewed = false, true
+					fd.Propose.Advisory = false
 					setStatus(j, promoted)
 				}
 			} else if why == "" {
-				// Confirming a detector's mechanical retitle is a reviewed title too. It is
-				// registered here rather than in the initial build: beside a merge folding its
-				// work it would make the base set inconsistent, which promotes nothing, where
-				// refusing this one decision leaves the detector's harmless retitle as it was.
+				// Confirmed here, not in the initial build: beside a merge folding its work it
+				// would make the base set inconsistent, which promotes nothing.
 				if fd.Propose.Op == OpRetitle && !fd.reviewed {
-					if conflictState == nil {
-						conflictState = proposalConflicts(rep)
-					}
-					if conflicts := conflictState.confirm(*fd); len(conflicts) > 0 {
+					if conflicts := state().confirm(*fd); len(conflicts) > 0 {
 						why = strings.Join(conflicts, "; ")
 					}
 				}
 				if why == "" {
-					fd.reviewed = true
 					setStatus(j, unchanged)
 				}
+			}
+			if why == "" {
+				fd.reviewed = true
 			}
 			note := "reviewed and accepted: " + r.Reason
 			switch {

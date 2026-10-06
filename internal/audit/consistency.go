@@ -61,28 +61,16 @@ func (s *proposalConflictState) promote(r Finding) []string {
 	return s.add(r, false)
 }
 
-// confirm registers a reviewed decision on a proposal the mechanical set already
-// holds (a no-op acceptance, or an assertion a detector already made). Only a
-// retitle gains a constraint from being reviewed (see the OpRetitle case in add), so
-// confirm judges that constraint alone: it promotes nothing, so no fail safe is
-// asked. A refusal leaves the indexes unchanged.
+// confirm marks reviewed a retitle the mechanical set already holds (a no-op
+// acceptance, or an assertion a detector already made) and re-adds it, so add's
+// OpRetitle case judges it. It promotes nothing, so no fail safe is asked.
 func (s *proposalConflictState) confirm(r Finding) []string {
-	p := r.Propose
-	if p.Op != OpRetitle {
+	// Only a retitle: re-adding any other op's claim would collide with itself.
+	if r.Propose.Op != OpRetitle {
 		return nil
 	}
-	if survivor, loser := s.mergeTarget[OpMergeWorks+"/"+p.Target]; loser {
-		return []string{retitleFolded(r.Key, p.Target, s.mergedWorks[p.Target], survivor)}
-	}
-	s.reviewedRetitle[p.Target] = r.Key
-	return nil
-}
-
-// retitleFolded is the conflict of a reviewed retitle with a merge folding its work:
-// the reviewer's title would be discarded with the record (see the OpRetitle case in
-// add), whichever arrives first.
-func retitleFolded(retitle, work, merger, survivor string) string {
-	return fmt.Sprintf("%s retitles %s, which %s folds onto %s", retitle, work, merger, survivor)
+	r.reviewed = true
+	return s.add(r, false)
 }
 
 // add checks both sides of every constraint as each claim arrives, so report
@@ -110,6 +98,11 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 	// emitDrop veto, held here for accepted drops too).
 	homeMerged := func(drop, home, merger string) {
 		report("%s relies on %s as its work's home, which %s merges", drop, home, merger)
+	}
+	// A reviewed retitle of a work a merge folds away: the reviewer's title would be
+	// discarded with the record (see the OpRetitle case), whichever arrives first.
+	retitleFolded := func(retitle, work, merger, survivor string) {
+		report("%s retitles %s, which %s folds onto %s", retitle, work, merger, survivor)
 	}
 	claimSlot := func(key string) {
 		if prev, dup := s.slot[key]; dup {
@@ -207,7 +200,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		}
 		for _, o := range p.Others {
 			if by, both := s.reviewedRetitle[o]; both && p.Op == OpMergeWorks {
-				report("%s", retitleFolded(by, o, r.Key, p.Target))
+				retitleFolded(by, o, r.Key, p.Target)
 			}
 			key := p.Op + "/" + o
 			if prev, dup := s.mergeTarget[key]; dup && prev != p.Target {
@@ -271,7 +264,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 			break
 		}
 		if survivor, loser := s.mergeTarget[OpMergeWorks+"/"+p.Target]; loser {
-			report("%s", retitleFolded(r.Key, p.Target, s.mergedWorks[p.Target], survivor))
+			retitleFolded(r.Key, p.Target, s.mergedWorks[p.Target], survivor)
 		}
 		put(s.reviewedRetitle, p.Target, r.Key)
 	case OpSetWorkLanguage:
