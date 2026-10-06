@@ -14544,6 +14544,10 @@
       "authors": [
         "jack-bodett"
       ],
+      "genres": [
+        "comedy-humor",
+        "science-fiction"
+      ],
       "id": "scrapyard-supernova",
       "language": "en",
       "license": "CC0-1.0",
@@ -14555,8 +14559,115 @@
             {
               "asin": "B0HCPN1Y2D",
               "region": "us"
+            },
+            {
+              "asin": "B0HCPQR3HW",
+              "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 21756,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1085277,
+              "start_ms": 21756,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1184055,
+              "start_ms": 1107033,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1400488,
+              "start_ms": 2291088,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1144047,
+              "start_ms": 3691576,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1312438,
+              "start_ms": 4835623,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1317918,
+              "start_ms": 6148061,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1486309,
+              "start_ms": 7465979,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1092916,
+              "start_ms": 8952288,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1371904,
+              "start_ms": 10045204,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1474536,
+              "start_ms": 11417108,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 846669,
+              "start_ms": 12891644,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1772518,
+              "start_ms": 13738313,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 810817,
+              "start_ms": 15510831,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1481386,
+              "start_ms": 16321648,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1422709,
+              "start_ms": 17803034,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1538275,
+              "start_ms": 19225743,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2033348,
+              "start_ms": 20764018,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1953494,
+              "start_ms": 22797366,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 48830,
+              "start_ms": 24750860,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913DEK9n4TL.jpg",
           "id": "neill-thorne-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -14572,6 +14683,11 @@
               "imported_at": "2026-10-03",
               "ref": "B0HCPN1Y2D",
               "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0HCPQR3HW",
+              "type": "libex-import"
             }
           ],
           "work": "scrapyard-supernova"
@@ -14582,6 +14698,11 @@
           "imported_at": "2026-10-03",
           "ref": "B0HCPN1Y2D",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-10-06",
+          "ref": "B0HCPQR3HW",
+          "type": "libex-import"
         }
       ],
       "title": "Scrapyard Supernova"
