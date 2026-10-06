@@ -3983,6 +3983,32 @@
             {
               "asin": "B09Z7CXWGW",
               "region": "de"
+            },
+            {
+              "asin": "B09Z79JH6J",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 43374,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2455417,
+              "start_ms": 43374,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2809405,
+              "start_ms": 2498791,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 53776,
+              "start_ms": 5308196,
+              "title": "Chapter 4"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/A1NHC8QpksL.jpg",
@@ -4004,6 +4030,11 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B09Z7CXWGW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B09Z79JH6J",
               "type": "libex-import"
             }
           ],
