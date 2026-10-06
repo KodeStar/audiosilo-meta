@@ -164,6 +164,12 @@ type workState struct {
 	// memory so the common "nothing new" row is decided without a store read.
 	runGenresOwned bool
 	runGenres      []string
+	// runRecGenres marks a work whose genre set is the RECORDING VOTE
+	// (genrevote.go): a work a bulk-mirror create run created. It holds each of
+	// the work's recordings' mapped genres (the union over the run's rows that
+	// landed on it), and the work's set is the vote over them. nil for every
+	// other work, whose genres follow the union rules above.
+	runRecGenres map[string][]string
 	// runAttested says a user-library row of THIS RUN attested the work. A later
 	// row of the run meeting it is part of the same account, so it stamps its
 	// provenance too even when it changes nothing - otherwise which rows a
@@ -340,6 +346,9 @@ type planner struct {
 	// Without it a second row naming a new (person, role) pair on a work the run
 	// already touched would be dropped silently.
 	runCredits map[string]map[model.Credit]bool
+	// regen is the genre regeneration's state (regenerate.go); nil in every
+	// other mode.
+	regen *regenState
 	// sourceType / importDate are the run-wide halves of every provenance stamp
 	// (the per-row half is the book's ASIN); setSource composes the three.
 	sourceType string
@@ -596,6 +605,11 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	if opts.Mode == ModeRelocate && (sourceType != sourceLibex || len(setup) == 0) {
 		return Summary{}, fmt.Errorf("relocation requires libex rows; use RunLibex")
 	}
+	// The regeneration trims a mirror-derived set to what the mirror's own rows
+	// vote for, so its rows must be the mirror's (regenerate.go).
+	if opts.Mode == ModeRegenerateGenres && model.TierOfSource(sourceType) != model.TierBulkMirror {
+		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex) rows; use RunLibex")
+	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -662,7 +676,7 @@ func openPlanner(sourceType string, opts Options) (*planner, error) {
 // (the other runs never ask where an ASIN sits, so they never pay for it).
 func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
 	p := newPlanner(store, sourceType, opts)
-	if opts.Mode == ModeEnrich || p.userTier {
+	if opts.Mode == ModeEnrich || opts.Mode == ModeRegenerateGenres || p.userTier {
 		p.asinLoc = map[string]RecRef{}
 	}
 	return p
@@ -704,16 +718,25 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 // the same order.
 func (p *planner) run(books []sourceBook, opts Options) error {
 	p.loadExisting()
-	p.credits = p.creditContextOf(books)
+	// The genre regeneration reads a row's ASIN and genres and nothing else, so
+	// it takes neither the batch's credit decisions nor its series resolution -
+	// both whole-batch passes over a row set the size of the catalogue.
+	if p.mode != ModeRegenerateGenres {
+		p.credits = p.creditContextOf(books)
+	}
 	if p.mode == ModeRelocate {
 		p.prepareRelocation()
 		if p.fatal != nil {
 			return p.fatal
 		}
 	}
-	p.resolveSeriesTargets(books)
+	if p.mode != ModeRegenerateGenres {
+		p.resolveSeriesTargets(books)
+	}
 
 	switch opts.Mode {
+	case ModeRegenerateGenres:
+		p.planRegenerateGenres(books)
 	case ModeEnrich:
 		p.planEnrich(books)
 	case ModeRecordingsOnly:
@@ -1059,6 +1082,9 @@ func (p *planner) loadExisting() {
 			ws.recs[r.ID] = ri
 		}
 		p.works[w.ID] = ws
+		if p.mode == ModeRegenerateGenres {
+			p.indexForRegen(w)
+		}
 	}
 	// The series author index is built from this catalogue only if a claim needs
 	// it (seriesAuthorIndex): a run with no series claims never pays for it.
@@ -1317,7 +1343,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if ws != nil {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
-	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	_, rec := p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	// The row's genres vote with the recording it landed on, for a work this
+	// bulk-mirror run created (genrevote.go; a no-op for every other work).
+	p.recordRunVote(ws, rec, facts.genres)
 
 	// addRecording registers the ASIN (p.asins) itself, and only once it landed.
 	// What a merge carries is deliberately narrow: the ASIN, this run's
@@ -2078,6 +2107,11 @@ func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string,
 	credits := p.workCredits(facts.credits)
 	ws.runGenresOwned = true
 	ws.runGenres = p.genres.mapGenres(facts.genres, p.unmappedGenres)
+	if p.votesGenres() {
+		// The vote over this work's recordings takes over from here; addBook
+		// feeds it once the row's recording is known (recordRunVote).
+		ws.runRecGenres = map[string][]string{}
+	}
 	p.putNewEntry(pack.FamilyWorks, slug, outWork{
 		ID: slug, Title: title, Authors: authors.all, Language: lang,
 		Credits: credits,
@@ -2110,7 +2144,9 @@ func (p *planner) mergeCreatedWorkFacts(ws *workState, facts workFacts) {
 		credits, added = p.addRunCredits(ws.slug, p.workCredits(facts.credits))
 	}
 	var genres []string
-	if ws.runGenresOwned && len(facts.genres) > 0 {
+	// A vote-governed work's set is recordRunVote's, which needs the recording
+	// the row lands on - so it is not unioned here.
+	if ws.runGenresOwned && ws.runRecGenres == nil && len(facts.genres) > 0 {
 		if g := UnionGenres(ws.runGenres, p.genres.mapGenres(facts.genres, p.unmappedGenres)); len(g) > len(ws.runGenres) {
 			genres = g
 		}
@@ -2588,7 +2624,7 @@ func (p *planner) rowWorkKeyIn(ctx creditContext, b sourceBook, title, lang stri
 // title is the row's work title, the one placement arbitrates a stated volume
 // against (rowPositionOf), so the serial guard reads the row's position as
 // placement does.
-func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang string, narratorSlugs []string, warn func(string, ...any)) recOutcome {
+func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang string, narratorSlugs []string, warn func(string, ...any)) (recOutcome, string) {
 	// Defensive only: personSlug substitutes "person" for an unslugifiable name
 	// and admitRecordingFacts guarantees at least one narrator, so the slug is
 	// never empty. Checked before the year so the guard cannot produce "-2020".
@@ -2613,12 +2649,12 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	claims := rowSeriesClaims(b, title)
 	if len(matches) > 0 {
 		if asin == "" {
-			return recNone // nothing new to add (same production, no new ASIN)
+			return recNone, "" // nothing new to add (same production, no new ASIN)
 		}
 		for _, m := range matches {
 			if m.info.asins[asin] {
 				p.asins[asin] = true
-				return recAlready // idempotent: this ASIN is already recorded
+				return recAlready, m.slug // idempotent: this ASIN is already recorded
 			}
 		}
 		// A new ASIN on this entry is a re-release of an existing production when
@@ -2642,7 +2678,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
-					return recNone
+					return recNone, ""
 				}
 				// A user import merging into a BULK-MIRROR-ONLY recording attests
 				// it, and must do so BEFORE the merge stamps this run's source on
@@ -2659,10 +2695,10 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 				// The claim happens INSIDE the merge, which is where the target
 				// record's own isbn[] can be read - see claimISBNsFor.
 				if !p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, b.isbns, warn) {
-					return recNone
+					return recNone, ""
 				}
 				p.asins[asin] = true
-				return recMerged
+				return recMerged, m.slug
 			}
 		}
 	}
@@ -2708,10 +2744,12 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	ws.recs[slug] = ri
 	p.putRecording(ws.slug, slug, rec)
 	p.summary.NewRecordings++
-	return recNew
+	return recNew, slug
 }
 
-// recOutcome is what addRecording did with a row.
+// recOutcome is what addRecording did with a row. addRecording also returns the
+// slug of the recording the row landed on ("" for recNone), which the recording
+// vote reads (genrevote.go).
 type recOutcome int
 
 const (

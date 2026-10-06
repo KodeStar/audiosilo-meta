@@ -787,7 +787,7 @@ func TestRelocateModeFlags(t *testing.T) {
 		{"libex", false, true, true, 0, true},
 		{"openaudible", false, false, true, 0, true},
 	} {
-		mode, err := selectMode(tc.source, tc.enrich, tc.recordings, tc.relocate)
+		mode, err := selectMode(tc.source, tc.enrich, tc.recordings, tc.relocate, false)
 		if (err != nil) != tc.bad || !tc.bad && mode != tc.want {
 			t.Fatalf("selectMode(%+v) = %v, %v", tc, mode, err)
 		}
@@ -821,5 +821,82 @@ func TestRelocateCLIRefusalsAreWrittenAtomically(t *testing.T) {
 	}
 	if !strings.Contains(out, "relocate-recording-language: 1 recordings refused") {
 		t.Fatal(out)
+	}
+}
+
+// TestRegenerateGenresFlags is --regenerate-genres' accept and refuse halves:
+// the flag reaches Options.Mode, it is exclusive with every other mode, it is
+// libex-only, and --genre-changes is refused without it.
+func TestRegenerateGenresFlags(t *testing.T) {
+	var got importer.Options
+	run := func(path string, opts importer.Options) (importer.Summary, error) {
+		got = opts
+		return importer.Summary{}, nil
+	}
+	captureStdout(t, func() {
+		if code := runSource(boundedSource, []string{"export.json", "--regenerate-genres"}, run); code != 0 {
+			t.Errorf("exit code = %d, want 0", code)
+		}
+	})
+	if got.Mode != importer.ModeRegenerateGenres {
+		t.Errorf("--regenerate-genres reached Options.Mode as %v", got.Mode)
+	}
+	refused := func(string, importer.Options) (importer.Summary, error) {
+		t.Error("the import must not run")
+		return importer.Summary{}, nil
+	}
+	for _, args := range [][]string{
+		{"export.json", "--regenerate-genres", "--enrich"},
+		{"export.json", "--regenerate-genres", "--recordings-only"},
+		{"export.json", "--regenerate-genres", "--relocate"},
+		{"export.json", "--regenerate-genres", "--attach-editions"},
+		{"export.json", "--genre-changes", "x.ndjson"},
+	} {
+		if code := runSource(boundedSource, args, refused); code != 2 {
+			t.Errorf("%v: exit %d, want 2", args, code)
+		}
+	}
+	if code := runSource("openaudible", []string{"books.json", "--regenerate-genres"}, refused); code != 2 {
+		t.Errorf("--regenerate-genres on openaudible: exit %d, want 2", code)
+	}
+}
+
+// TestGenreChangesWorklist runs the real mode end to end through the CLI: a
+// libex-only work whose one recording's row maps a genre the record lacks is
+// set to it, the worklist names the change, and the summary line says so.
+func TestGenreChangesWorklist(t *testing.T) {
+	dir := t.TempDir()
+	dataDir := filepath.Join(dir, "data")
+	testpack.Seed(t, dataDir, map[string]string{
+		"people/ad/ada-mapmaker.json": `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"libex-import"}]}`,
+		"people/be/bea-reader.json":   `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"libex-import"}]}`,
+		"works/vo/volume-one/work.json": `{"authors":["ada-mapmaker"],"genres":["westerns"],"id":"volume-one","language":"en","license":"CC0-1.0",` +
+			`"sources":[{"type":"libex-import"}],"title":"Volume One"}`,
+		"works/vo/volume-one/recordings/bea-reader-2024.json": `{"asin":[{"asin":"B0PRESENT1","region":"us"}],"id":"bea-reader-2024",` +
+			`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"libex-import"}],"work":"volume-one"}`,
+	})
+	export := filepath.Join(dir, "rows.ndjson")
+	row := `{"asin":"B0PRESENT1","title":"Volume One","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],` +
+		`"narrators":[{"name":"Bea Reader"}],"genres":[{"name":"Mystery"}]}` + "\n"
+	if err := os.WriteFile(export, []byte(row), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	changes := filepath.Join(dir, "changes.ndjson")
+	var code int
+	out := captureStdout(t, func() {
+		code = runSource("libex", []string{export, "--regenerate-genres", "--data", dataDir, "--genre-changes", changes}, importer.RunLibex)
+	})
+	if code != 0 {
+		t.Fatal(code, out)
+	}
+	if !strings.Contains(out, "regenerated genres: 1 works set to the recording vote") {
+		t.Errorf("summary = %q", out)
+	}
+	raw, err := os.ReadFile(changes)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if want := `{"work":"volume-one","removed":["westerns"],"added":["mystery"],"mode":"trim"}` + "\n"; string(raw) != want {
+		t.Errorf("worklist = %q, want %q", raw, want)
 	}
 }

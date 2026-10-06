@@ -242,7 +242,8 @@ func (p *planner) attachTarget(b sourceBook, workTitle string) (ws *workState, o
 // one of its guards turned away is a position-claimed skip instead, so the sync
 // bot memoizes it rather than the selector keeping it every cycle.
 func (p *planner) attachRow(ws *workState, b sourceBook, workTitle, asin, lang string, narratorNames []string, warn func(string, ...any)) {
-	switch p.addRecording(ws, b, workTitle, asin, lang, p.creditSlugs(narratorNames, warn), warn) {
+	out, _ := p.addRecording(ws, b, workTitle, asin, lang, p.creditSlugs(narratorNames, warn), warn)
+	switch out {
 	case recMerged, recNew:
 		p.summary.Attached++
 	case recNone:

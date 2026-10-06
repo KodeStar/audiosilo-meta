@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate] [--existing-series-only] [--attach-editions] [--skipped <path>]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]
 //
 // libex-select writes no records: it reduces a full libex export to the
@@ -100,6 +100,17 @@
 // position (so libex-select excludes it unless it can prove the row is the work at
 // that position), and would mint a duplicate work on the
 // create path. Mutually exclusive with --enrich.
+//
+// --regenerate-genres (libex only) re-derives the GENRES of catalogued works from
+// the libex rows of their own recordings, under today's mapping table and the
+// recording vote: a work no user-library source contributed to, whose every
+// ASIN-carrying recording met a row, takes the vote as its set; every other work
+// only gains what the vote adds. It touches no other field, creates nothing and
+// stamps no source (the genres are a derivation of rows the work already
+// cites); a second identical run is a no-op. --genre-changes <path> writes one
+// NDJSON line per changed work ({"work","removed","added","mode"}). Mutually
+// exclusive with the other modes; the input is the rows of every catalogued
+// ASIN (scripts/README.md).
 package main
 
 import (
@@ -165,6 +176,8 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	enrich := fs.Bool("enrich", false, "fill absent facts on ASIN-matched existing records instead of creating any (libex only)")
 	relocate := fs.Bool("relocate", false, "move cross-language recordings to their stated-language work (libex only)")
 	recordingsOnly := fs.Bool("recordings-only", false, "add alternate narrations to works already in the catalogue; never create a work or touch a series (libex only)")
+	regenerateGenres := fs.Bool("regenerate-genres", false, "re-derive catalogued works' genres from their recordings' rows (the recording vote; a trim only where no user-library source contributed and every recording met a row); touches nothing else (libex only)")
+	genreChanges := fs.String("genre-changes", "", "with --regenerate-genres: write one NDJSON line per changed work ({\"work\",\"removed\",\"added\",\"mode\"}) to this file")
 	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file (a durable worklist; the run is unchanged)")
 	// Registered for every source, like --enrich, so pointing it at the wrong one
 	// says why. It only ever DOES anything on a user-library create run - the
@@ -189,13 +202,17 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		usage()
 		return 2
 	}
-	mode, err := selectMode(name, *enrich, *recordingsOnly, *relocate)
+	mode, err := selectMode(name, *enrich, *recordingsOnly, *relocate, *regenerateGenres)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
 	}
+	if *genreChanges != "" && mode != importer.ModeRegenerateGenres {
+		fmt.Fprintln(os.Stderr, "metaimport: --genre-changes is the --regenerate-genres worklist; pass it with that mode")
+		return 2
+	}
 	if *attachEditions && mode != importer.ModeCreate {
-		fmt.Fprintln(os.Stderr, "metaimport: --attach-editions attaches rows the CREATE path would plan; it cannot be combined with --enrich, --recordings-only or --relocate")
+		fmt.Fprintln(os.Stderr, "metaimport: --attach-editions attaches rows the CREATE path would plan; it cannot be combined with --enrich, --recordings-only, --relocate or --regenerate-genres")
 		return 2
 	}
 
@@ -251,6 +268,13 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 	defer skippedLog.Discard() // a no-op once committed
+	// The --genre-changes worklist is staged the same way, for the same reason.
+	changesLog, err := atomicfile.StageIf(*genreChanges)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --genre-changes:", err)
+		return 2
+	}
+	defer changesLog.Discard()
 
 	sum, err := run(exportPath, opts)
 
@@ -273,6 +297,13 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	}
 	if err := atomicfile.CommitInOrder(skippedLog); err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport: --skipped:", err)
+		return 1
+	}
+	for _, c := range sum.GenreChanges {
+		changesLog.Encode(c)
+	}
+	if err := atomicfile.CommitInOrder(changesLog); err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --genre-changes:", err)
 		return 1
 	}
 	return 0
@@ -308,7 +339,10 @@ func openConflictLog(path string) (io.Writer, func(), error) {
 // These flags are catalogue-bounded passes permitted for boundedSource alone, so
 // pointing either at another source is refused here rather than silently
 // honoured.
-func selectMode(source string, enrich, recordingsOnly, relocate bool) (importer.Mode, error) {
+func selectMode(source string, enrich, recordingsOnly, relocate, regenerateGenres bool) (importer.Mode, error) {
+	if regenerateGenres && (enrich || recordingsOnly || relocate) {
+		return 0, fmt.Errorf("--regenerate-genres, --relocate, --enrich and --recordings-only are mutually exclusive")
+	}
 	if relocate && (enrich || recordingsOnly) {
 		return 0, fmt.Errorf("--relocate, --enrich and --recordings-only are mutually exclusive")
 	}
@@ -320,6 +354,8 @@ func selectMode(source string, enrich, recordingsOnly, relocate bool) (importer.
 		mode     importer.Mode
 	)
 	switch {
+	case regenerateGenres:
+		flagName, mode = "--regenerate-genres", importer.ModeRegenerateGenres
 	case relocate:
 		flagName, mode = "--relocate", importer.ModeRelocate
 	case enrich:
@@ -451,6 +487,11 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 		fmt.Printf("%s: %d works, %d recordings; %d works placed in a series; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
 			summaryHead(mode, dryRun), s.EnrichedWorks, s.EnrichedRecordings, s.SeriesPlacements,
 			rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
+	case importer.ModeRegenerateGenres:
+		rows := s.Matched + s.NotInCatalog + s.SkippedRows
+		fmt.Printf("%s: %d works set to the recording vote, %d works added to, %d unchanged, %d not reached by any row; %d genres added, %d removed; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
+			summaryHead(mode, dryRun), s.GenreWorksSet, s.GenreWorksAddedTo, s.GenreWorksUnchanged, s.GenreWorksNoRow,
+			s.GenresAdded, s.GenresRemoved, rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
 	case importer.ModeRecordingsOnly:
 		fmt.Printf("%s: %d new recordings, %d new people; %d skipped (already present); %d skipped (work not in the catalogue); %d asins merged into existing recordings; %d warnings\n",
 			summaryHead(mode, dryRun), s.NewRecordings, s.NewPeople, s.Skipped, s.SkippedNoWork, s.MergedASINs, len(s.Warnings))
@@ -540,6 +581,11 @@ func summaryHead(mode importer.Mode, dryRun bool) string {
 			return "recordings-only plan (dry run, no files written)"
 		}
 		return "added"
+	case importer.ModeRegenerateGenres:
+		if dryRun {
+			return "genre regeneration plan (dry run, no files written)"
+		}
+		return "regenerated genres"
 	default:
 		if dryRun {
 			return "plan (dry run, no files written)"
@@ -553,7 +599,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate] [--existing-series-only] [--attach-editions] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
@@ -572,6 +618,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
 	fmt.Fprintln(os.Stderr, "  --relocate (libex only) moves cross-language recordings using all their source rows;")
 	fmt.Fprintln(os.Stderr, "    it may create a work, never a series; --skipped records relocation refusals.")
+	fmt.Fprintln(os.Stderr, "  --regenerate-genres (libex only) re-derives catalogued works' genres from their recordings'")
+	fmt.Fprintln(os.Stderr, "    rows (the recording vote); --genre-changes <path> writes one NDJSON line per changed work.")
 	fmt.Fprintln(os.Stderr, "  libex-fill looks up the recordings that carry an ASIN but no cover (or no chapters) and")
 	fmt.Fprintln(os.Stderr, "    enriches them from the live libex service. It covers USER-LIBRARY imports only unless")
 	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids.")

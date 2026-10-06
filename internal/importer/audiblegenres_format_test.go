@@ -113,7 +113,7 @@ func TestFormatNodesArePinned(t *testing.T) {
 		got[n] = true
 	}
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("format = %v\nwant (from the pinned paths) %v", sortedKeys(got), sortedKeys(want))
+		t.Errorf("format = %v\nwant (from the pinned paths) %v", sortedSet(got), sortedSet(want))
 	}
 	if !sort.StringsAreSorted(table.Format) {
 		t.Errorf("format is not sorted")
@@ -144,13 +144,13 @@ func TestFormatTreeMatchesGenrePaths(t *testing.T) {
 				want[key] = node
 			}
 		}
-		if got := table.FormatTree[region]; !reflect.DeepEqual(got, want) && !(len(got) == 0 && len(want) == 0) {
+		if got := table.FormatTree[region]; !reflect.DeepEqual(got, want) && (len(got) != 0 || len(want) != 0) {
 			t.Errorf("format_tree[%s] has %d paths, the verification file %d - regenerate with scripts/genrepaths", region, len(got), len(want))
 		}
 	}
 }
 
-func sortedKeys(m map[string]bool) []string {
+func sortedSet(m map[string]bool) []string {
 	out := make([]string, 0, len(m))
 	for k := range m {
 		out = append(out, k)
