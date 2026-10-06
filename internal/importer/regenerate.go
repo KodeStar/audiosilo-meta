@@ -76,10 +76,14 @@ type regenState struct {
 	seen  map[string]map[string][]string // work -> recording -> union of its rows' genres
 }
 
+func newRegenState() *regenState {
+	return &regenState{works: map[string]*regenWork{}, seen: map[string]map[string][]string{}}
+}
+
 // indexForRegen records w for the regeneration (loadExisting).
 func (p *planner) indexForRegen(w *model.Work) {
 	if p.regen == nil {
-		p.regen = &regenState{works: map[string]*regenWork{}, seen: map[string]map[string][]string{}}
+		p.regen = newRegenState()
 	}
 	rw := &regenWork{genres: slices.Clone(w.Genres)}
 	for _, s := range w.Sources {
@@ -101,7 +105,7 @@ func (p *planner) indexForRegen(w *model.Work) {
 // incomplete), then every work a row reached is decided.
 func (p *planner) planRegenerateGenres(books []sourceBook) {
 	if p.regen == nil {
-		return // an empty catalogue: nothing to regenerate
+		p.regen = newRegenState() // an empty catalogue: every row is not in it
 	}
 	// The run reads every row of the catalogue, whose umbrella nodes ("Literature
 	// & Fiction") are unmapped by design and were reported by the runs that
