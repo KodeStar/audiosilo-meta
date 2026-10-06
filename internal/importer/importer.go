@@ -9,6 +9,7 @@ package importer
 import (
 	"fmt"
 	"io"
+	"maps"
 	"os"
 	"regexp"
 	"slices"
@@ -170,6 +171,12 @@ type workState struct {
 	// landed on it), and the work's set is the vote over them. nil for every
 	// other work, whose genres follow the union rules above.
 	runRecGenres map[string][]string
+	// genres and userSourced are a work's genre set and whether any of its
+	// sources is user-library tier, as the catalogue was LOADED - what the
+	// genre regeneration decides by (regenerate.go). Empty for a work this run
+	// created.
+	genres      []string
+	userSourced bool
 	// runAttested says a user-library row of THIS RUN attested the work. A later
 	// row of the run meeting it is part of the same account, so it stamps its
 	// provenance too even when it changes nothing - otherwise which rows a
@@ -346,9 +353,14 @@ type planner struct {
 	// Without it a second row naming a new (person, role) pair on a work the run
 	// already touched would be dropped silently.
 	runCredits map[string]map[model.Credit]bool
-	// regen is the genre regeneration's state (regenerate.go); nil in every
-	// other mode.
-	regen *regenState
+	// landedRec is the recording the last addRecording call landed its row on (a
+	// new recording, or the one its ASIN merged onto or already sat on), "" when
+	// it wrote nothing - what the recording vote attributes the row's genres to.
+	landedRec string
+	// regenRecs is the genre regeneration's evidence (regenerate.go): each
+	// recording a row reached, with the union of its rows' mapped genres. nil in
+	// every other mode.
+	regenRecs map[RecRef][]string
 	// sourceType / importDate are the run-wide halves of every provenance stamp
 	// (the per-row half is the book's ASIN); setSource composes the three.
 	sourceType string
@@ -676,7 +688,7 @@ func openPlanner(sourceType string, opts Options) (*planner, error) {
 // (the other runs never ask where an ASIN sits, so they never pay for it).
 func plannerOn(store *pack.Store, sourceType string, opts Options) *planner {
 	p := newPlanner(store, sourceType, opts)
-	if opts.Mode == ModeEnrich || opts.Mode == ModeRegenerateGenres || p.userTier {
+	if opts.Mode.locatesASINs() || p.userTier {
 		p.asinLoc = map[string]RecRef{}
 	}
 	return p
@@ -709,7 +721,16 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		existingSeriesOnly: opts.ExistingSeriesOnly,
 		attachEditions:     opts.AttachEditions,
 		loadedPositions:    opts.AttachEditions,
+		regenRecs:          regenRecsFor(opts.Mode),
 	}
+}
+
+// regenRecsFor is the genre regeneration's evidence map, made only for that mode.
+func regenRecsFor(m Mode) map[RecRef][]string {
+	if m != ModeRegenerateGenres {
+		return nil
+	}
+	return map[RecRef][]string{}
 }
 
 // run plans the batch, reports, and (unless a dry run) writes and validates the
@@ -718,10 +739,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 // the same order.
 func (p *planner) run(books []sourceBook, opts Options) error {
 	p.loadExisting()
-	// The genre regeneration reads a row's ASIN and genres and nothing else, so
-	// it takes neither the batch's credit decisions nor its series resolution -
-	// both whole-batch passes over a row set the size of the catalogue.
-	if p.mode != ModeRegenerateGenres {
+	if p.mode.plansRows() {
 		p.credits = p.creditContextOf(books)
 	}
 	if p.mode == ModeRelocate {
@@ -730,7 +748,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 			return p.fatal
 		}
 	}
-	if p.mode != ModeRegenerateGenres {
+	if p.mode.plansRows() {
 		p.resolveSeriesTargets(books)
 	}
 
@@ -1042,6 +1060,12 @@ func (p *planner) loadExisting() {
 			all:      ToSet(w.Authors),
 			lang:     w.Language,
 			recs:     map[string]*recInfo{},
+			genres:   w.Genres,
+		}
+		for _, src := range w.Sources {
+			if model.TierOfSource(src.Type) == model.TierUserLibrary {
+				ws.userSourced = true
+			}
 		}
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
@@ -1082,9 +1106,6 @@ func (p *planner) loadExisting() {
 			ws.recs[r.ID] = ri
 		}
 		p.works[w.ID] = ws
-		if p.mode == ModeRegenerateGenres {
-			p.indexForRegen(w)
-		}
 	}
 	// The series author index is built from this catalogue only if a claim needs
 	// it (seriesAuthorIndex): a run with no series claims never pays for it.
@@ -1326,7 +1347,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// that already exists is the enrichment pass's job (applyToWork). They travel
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
-	facts := workFacts{genres: b.genres, credits: authorCredits}
+	facts := &workFacts{genres: b.genres, credits: authorCredits}
 	walk := p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
 	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
@@ -1343,10 +1364,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	if ws != nil {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
-	_, rec := p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
-	// The row's genres vote with the recording it landed on, for a work this
-	// bulk-mirror run created (genrevote.go; a no-op for every other work).
-	p.recordRunVote(ws, rec, facts.genres)
+	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	// A row of this run landing on a work the run created adds what it states
+	// (credits, genres - the recording vote reads the recording it landed on);
+	// a no-op for a work loaded from disk, and for the row that created it.
+	p.mergeCreatedWorkFacts(ws, p.landedRec, facts)
 
 	// addRecording registers the ASIN (p.asins) itself, and only once it landed.
 	// What a merge carries is deliberately narrow: the ASIN, this run's
@@ -2030,15 +2052,38 @@ func (c *seriesClaim) position() positionClaim {
 	return positionClaim{series: name, pos: c.pos.source}
 }
 
-// workFacts are the facts a row contributes ONLY to a work it creates: the raw
-// genre claims and the row's source credits. Both travel RAW and are resolved at
-// the point of storage (mapGenres, workCredits), so a row that merges into an
-// existing work pays for neither. They travel as one value so the full-title
-// retry below carries them through unchanged, and so adding a creation-only fact
-// is one field rather than one more parameter on every hop.
+// workFacts are the facts a row contributes ONLY to a work it creates (or to a
+// work this run created): the raw genre claims and the row's source credits.
+// Both travel RAW and are resolved at the point of storage, at most ONCE per row
+// (mappedGenres, workCredits), so a row that merges into an existing work pays
+// for neither and the row that creates a work, which mergeCreatedWorkFacts sees
+// too, neither maps its genres twice nor reports an unnamed credit twice. They
+// travel as one value so the full-title retry below carries them through
+// unchanged, and so adding a creation-only fact is one field rather than one
+// more parameter on every hop.
 type workFacts struct {
 	genres  []genreClaim
 	credits []credit
+
+	mapped, resolved bool
+	mappedSet        []string
+	resolvedCredits  []model.Credit
+}
+
+// mappedGenres is the row's genre claims mapped onto the vocabulary, once.
+func (f *workFacts) mappedGenres(p *planner) []string {
+	if !f.mapped {
+		f.mapped, f.mappedSet = true, p.genres.mapGenres(f.genres, p.unmappedGenres)
+	}
+	return f.mappedSet
+}
+
+// workCredits is the row's role credits resolved to people, once.
+func (f *workFacts) workCredits(p *planner) []model.Credit {
+	if !f.resolved {
+		f.resolved, f.resolvedCredits = true, p.workCredits(f.credits)
+	}
+	return f.resolvedCredits
 }
 
 // getOrCreateWork acts on the decision resolveWork made for a row: it merges the
@@ -2046,7 +2091,7 @@ type workFacts struct {
 // chain. facts are the creation-only facts (genres, credits); they are stored only
 // on the branch that creates a work, which is the only place they can be stored.
 // WHICH work a row belongs to, and why, is resolveWork's to say.
-func (p *planner) getOrCreateWork(walk workWalk, authors workAuthors, lang string, facts workFacts, warn func(string, ...any)) *workState {
+func (p *planner) getOrCreateWork(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {
 	ws := p.mergeOrCreate(walk, authors, lang, facts, warn)
 	// Said after the decision so it names the slug the row actually landed on,
 	// not the fallback base the chain composed for the unslugifiable title.
@@ -2056,17 +2101,11 @@ func (p *planner) getOrCreateWork(walk workWalk, authors workAuthors, lang strin
 	return ws
 }
 
-func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string, facts workFacts, warn func(string, ...any)) *workState {
+func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string, facts *workFacts, warn func(string, ...any)) *workState {
 	if ws := walk.ws; ws != nil {
 		if walk.via != "" {
 			p.noteTombstone(model.RedirectWorks, walk.via, ws.slug)
 		}
-		// A later row of this run, merging into a work the run created: its
-		// credits are not a second source's account of an existing work, they are
-		// more of the same import, so the pairs the entry does not carry yet are
-		// merged in (a no-op for a work loaded from disk, which is never in
-		// runCredits).
-		p.mergeCreatedWorkFacts(ws, facts)
 		return ws
 	}
 
@@ -2092,9 +2131,16 @@ func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string,
 	case slug != base:
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
 	}
+	// The work's genre set is THIS run's from here on: a union of its rows', or
+	// for a bulk-mirror create run the recording vote (genrevote.go), which
+	// mergeCreatedWorkFacts feeds as rows land on its recordings.
 	ws := &workState{
 		slug: slug, title: title, authors: authors.set(), all: authors.allSet(), lang: lang,
 		posSuffixed: walk.chain.suffixed, recs: map[string]*recInfo{},
+		runGenresOwned: true, runGenres: facts.mappedGenres(p),
+	}
+	if p.votesGenres() {
+		ws.runRecGenres = map[string][]string{}
 	}
 	p.works[slug] = ws
 	// added_at is stamped here and only here for a work: this is the branch that
@@ -2104,14 +2150,7 @@ func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string,
 	// putNewEntry, not putEntry: p.works comes from a best-effort catalogue load,
 	// so a work the loader could not decode looks free here, and a plain upsert
 	// would replace its whole composite entry - every recording included.
-	credits := p.workCredits(facts.credits)
-	ws.runGenresOwned = true
-	ws.runGenres = p.genres.mapGenres(facts.genres, p.unmappedGenres)
-	if p.votesGenres() {
-		// The vote over this work's recordings takes over from here; addBook
-		// feeds it once the row's recording is known (recordRunVote).
-		ws.runRecGenres = map[string][]string{}
-	}
+	credits := facts.workCredits(p)
 	p.putNewEntry(pack.FamilyWorks, slug, outWork{
 		ID: slug, Title: title, Authors: authors.all, Language: lang,
 		Credits: credits,
@@ -2125,32 +2164,32 @@ func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string,
 	return ws
 }
 
-// mergeCreatedWorkFacts is the create path's half of the in-run merge: a later
-// row that resolved onto a work THIS RUN created contributes the (person, role)
-// pairs and the genres the work does not carry yet. Nothing is removed.
+// mergeCreatedWorkFacts is the create path's half of the in-run merge, and its
+// ONE genre accretion point: a row that landed on recording rec of a work THIS
+// RUN created contributes the (person, role) pairs the work does not carry yet,
+// and its genres - unioned in, or for a vote-governed work (runRecGenres, a
+// bulk-mirror create run) added to rec's set, the work's set becoming the
+// recording vote (genrevote.go). Credits are never removed.
 //
 // Both questions are answered from what the run already holds in memory
 // (runCredits, workState.runGenres), so it is a no-op - and costs no store read -
-// for a work loaded from disk and for a row that adds nothing, which is the
-// overwhelming majority of rows. A row that does add something is written with
-// one read and one put, and stamps its provenance on the work, because the work
-// now records a fact that came from it. (A store read that fails is fatal to the
-// whole run, so the tracked state having moved ahead of the record is never
-// observable.)
-func (p *planner) mergeCreatedWorkFacts(ws *workState, facts workFacts) {
+// for a work loaded from disk, for the row that created the work (its facts are
+// already the work's, and workFacts resolves each fact once), and for a row that
+// adds nothing, which is the overwhelming majority of rows. A row that does
+// change something is written with one read and one put, and stamps its
+// provenance on the work, because the work now records a fact that came from
+// it. (A store read that fails is fatal to the whole run, so the tracked state
+// having moved ahead of the record is never observable.)
+func (p *planner) mergeCreatedWorkFacts(ws *workState, rec string, facts *workFacts) {
+	if ws == nil {
+		return
+	}
 	var credits []model.Credit
 	added := 0
 	if _, touched := p.runCredits[ws.slug]; touched {
-		credits, added = p.addRunCredits(ws.slug, p.workCredits(facts.credits))
+		credits, added = p.addRunCredits(ws.slug, facts.workCredits(p))
 	}
-	var genres []string
-	// A vote-governed work's set is recordRunVote's, which needs the recording
-	// the row lands on - so it is not unioned here.
-	if ws.runGenresOwned && ws.runRecGenres == nil && len(facts.genres) > 0 {
-		if g := UnionGenres(ws.runGenres, p.genres.mapGenres(facts.genres, p.unmappedGenres)); len(g) > len(ws.runGenres) {
-			genres = g
-		}
-	}
+	genres := p.runGenresAfter(ws, rec, facts)
 	if added == 0 && genres == nil {
 		return
 	}
@@ -2168,6 +2207,29 @@ func (p *planner) mergeCreatedWorkFacts(ws *workState, facts workFacts) {
 	}
 	p.stampSource(raw)
 	p.putWorkEntry(ws.slug, raw)
+}
+
+// runGenresAfter is the run-owned work's genre set once this row's genres are
+// counted, or nil when it does not change: the union, or for a vote-governed
+// work the vote over its recordings (the union of them when no genre reaches
+// two votes, which keeps the outcome independent of row order).
+func (p *planner) runGenresAfter(ws *workState, rec string, facts *workFacts) []string {
+	if !ws.runGenresOwned || len(facts.genres) == 0 {
+		return nil
+	}
+	mapped := facts.mappedGenres(p)
+	next := UnionGenres(ws.runGenres, mapped)
+	if ws.runRecGenres != nil {
+		if rec == "" {
+			return nil // a row that landed on no recording casts no vote
+		}
+		ws.runRecGenres[rec] = UnionGenres(ws.runRecGenres[rec], mapped)
+		next, _ = VoteGenres(slices.Collect(maps.Values(ws.runRecGenres)))
+	}
+	if slices.Equal(next, ws.runGenres) {
+		return nil
+	}
+	return next
 }
 
 // unionRawGenres unions add into raw's genre set (UnionGenres, so it stays
@@ -2624,7 +2686,8 @@ func (p *planner) rowWorkKeyIn(ctx creditContext, b sourceBook, title, lang stri
 // title is the row's work title, the one placement arbitrates a stated volume
 // against (rowPositionOf), so the serial guard reads the row's position as
 // placement does.
-func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang string, narratorSlugs []string, warn func(string, ...any)) (recOutcome, string) {
+func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang string, narratorSlugs []string, warn func(string, ...any)) recOutcome {
+	p.landedRec = ""
 	// Defensive only: personSlug substitutes "person" for an unslugifiable name
 	// and admitRecordingFacts guarantees at least one narrator, so the slug is
 	// never empty. Checked before the year so the guard cannot produce "-2020".
@@ -2649,12 +2712,13 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	claims := rowSeriesClaims(b, title)
 	if len(matches) > 0 {
 		if asin == "" {
-			return recNone, "" // nothing new to add (same production, no new ASIN)
+			return recNone // nothing new to add (same production, no new ASIN)
 		}
 		for _, m := range matches {
 			if m.info.asins[asin] {
 				p.asins[asin] = true
-				return recAlready, m.slug // idempotent: this ASIN is already recorded
+				p.landedRec = m.slug
+				return recAlready // idempotent: this ASIN is already recorded
 			}
 		}
 		// A new ASIN on this entry is a re-release of an existing production when
@@ -2678,7 +2742,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
-					return recNone, ""
+					return recNone
 				}
 				// A user import merging into a BULK-MIRROR-ONLY recording attests
 				// it, and must do so BEFORE the merge stamps this run's source on
@@ -2695,10 +2759,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 				// The claim happens INSIDE the merge, which is where the target
 				// record's own isbn[] can be read - see claimISBNsFor.
 				if !p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, b.isbns, warn) {
-					return recNone, ""
+					return recNone
 				}
 				p.asins[asin] = true
-				return recMerged, m.slug
+				p.landedRec = m.slug
+				return recMerged
 			}
 		}
 	}
@@ -2744,12 +2809,12 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	ws.recs[slug] = ri
 	p.putRecording(ws.slug, slug, rec)
 	p.summary.NewRecordings++
-	return recNew, slug
+	p.landedRec = slug
+	return recNew
 }
 
-// recOutcome is what addRecording did with a row. addRecording also returns the
-// slug of the recording the row landed on ("" for recNone), which the recording
-// vote reads (genrevote.go).
+// recOutcome is what addRecording did with a row. The recording it landed on is
+// planner.landedRec.
 type recOutcome int
 
 const (

@@ -259,11 +259,15 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 		if walk.ws == nil {
 			p.relocation.newWorks[target] = true
 		}
-		ws := p.getOrCreateWork(walk, authors, lang, workFacts{genres: b.genres, credits: credits}, p.bookWarn(b))
+		facts := &workFacts{genres: b.genres, credits: credits}
+		ws := p.getOrCreateWork(walk, authors, lang, facts, p.bookWarn(b))
 		if ws == nil || ws.slug != target {
 			p.fatal = fmt.Errorf("relocation destination changed while planning %s", recLabel(rec.Work, rec.ID))
 			return
 		}
+		// A row joining a destination this run minted adds its credits and
+		// genres (a no-op for the row that minted it, and for a catalogued work).
+		p.mergeCreatedWorkFacts(ws, "", facts)
 		p.rememberIdentity(p.rowIdentityOf(b, titles[i]), ws.slug, titles[i])
 	}
 	move := Relocation{Work: rec.Work, Recording: rec.ID, Destination: target, NewWork: p.relocation.newWorks[target]}

@@ -12,39 +12,41 @@ import (
 
 func TestVoteGenres(t *testing.T) {
 	cases := []struct {
-		name string
-		recs [][]string
-		want []string
+		name   string
+		recs   [][]string
+		want   []string
+		stated bool
 	}{
-		{"no recordings", nil, nil},
-		{"one recording is its own set", [][]string{{"mystery", "westerns"}}, []string{"mystery", "westerns"}},
-		{"two recordings are a union", [][]string{{"mystery"}, {"westerns"}}, []string{"mystery", "westerns"}},
+		{"no recordings", nil, nil, false},
+		{"one recording is its own set", [][]string{{"mystery", "westerns"}}, []string{"mystery", "westerns"}, true},
+		{"two recordings are a union", [][]string{{"mystery"}, {"westerns"}}, []string{"mystery", "westerns"}, true},
 		{
 			"three recordings keep what two state",
 			[][]string{{"mystery", "westerns"}, {"mystery", "thriller-suspense"}, {"mystery", "thriller-suspense"}},
-			[]string{"mystery", "thriller-suspense"},
+			[]string{"mystery", "thriller-suspense"}, true,
 		},
 		{
 			"a genre-less recording does not vote, so two bearers stay a union",
 			[][]string{{"mystery"}, {"westerns"}, nil, {}},
-			[]string{"mystery", "westerns"},
+			[]string{"mystery", "westerns"}, true,
 		},
 		{
 			"a recording stating a genre twice is still one vote",
 			[][]string{{"westerns", "westerns", "mystery"}, {"mystery"}, {"mystery"}},
-			[]string{"mystery"},
+			[]string{"mystery"}, true,
 		},
-		{"three recordings agreeing on nothing say nothing", [][]string{{"a"}, {"b"}, {"c"}}, nil},
+		{
+			"three recordings agreeing on nothing state nothing, and hand back the union",
+			[][]string{{"b"}, {"a"}, {"c"}}, []string{"a", "b", "c"}, false,
+		},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			if got := VoteGenres(tc.recs); !reflect.DeepEqual(got, tc.want) {
-				t.Errorf("VoteGenres(%v) = %v, want %v", tc.recs, got, tc.want)
+			got, stated := VoteGenres(tc.recs)
+			if !reflect.DeepEqual(got, tc.want) || stated != tc.stated {
+				t.Errorf("VoteGenres(%v) = %v, %v; want %v, %v", tc.recs, got, stated, tc.want, tc.stated)
 			}
 		})
-	}
-	if got := voteOrUnion([][]string{{"b"}, {"a"}, {"c"}}); !reflect.DeepEqual(got, []string{"a", "b", "c"}) {
-		t.Errorf("voteOrUnion with no agreement = %v, want the union", got)
 	}
 }
 

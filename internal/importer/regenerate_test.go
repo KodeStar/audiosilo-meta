@@ -102,11 +102,12 @@ func TestRegenerateGenresTrimsAMirrorSet(t *testing.T) {
 	if got, want := regenGenres(t, dataDir, "oz"), []string{"childrens", "classics", "fantasy"}; !reflect.DeepEqual(got, want) {
 		t.Errorf("genres = %v, want the vote %v", got, want)
 	}
-	if sum.GenreWorksSet != 1 || sum.GenreWorksNoRow != 1 || sum.Matched != 4 || sum.NotInCatalog != 1 {
+	set, _, added, removed := sum.GenreTally()
+	if set != 1 || sum.GenreWorksNoRow != 1 || sum.Matched != 4 || sum.NotInCatalog != 1 {
 		t.Errorf("summary = %+v", sum)
 	}
-	if sum.GenresAdded != 1 || sum.GenresRemoved != 2 {
-		t.Errorf("instances added/removed = %d/%d, want 1/2", sum.GenresAdded, sum.GenresRemoved)
+	if added != 1 || removed != 2 {
+		t.Errorf("instances added/removed = %d/%d, want 1/2", added, removed)
 	}
 	want := []GenreChange{{Work: "oz", Removed: []string{"education", "westerns"}, Added: []string{"fantasy"}, Mode: GenreChangeTrim}}
 	if !reflect.DeepEqual(sum.GenreChanges, want) {
@@ -128,7 +129,7 @@ func TestRegenerateGenresTrimsAMirrorSet(t *testing.T) {
 		regenRow("B0OZ000003", "Classics", "Fantasy", "Children's Audiobooks"),
 		regenRow("B0OZ000004", "Classics", "Children's Audiobooks"),
 	)
-	if again.GenreWorksSet+again.GenreWorksAddedTo != 0 || len(again.GenreChanges) != 0 {
+	if len(again.GenreChanges) != 0 {
 		t.Errorf("second run changed something: %+v", again)
 	}
 	if !reflect.DeepEqual(after, testpack.Snapshot(t, dataDir)) {
@@ -164,7 +165,7 @@ func TestRegenerateGenresAddsOnlyWithoutTrimRights(t *testing.T) {
 			t.Errorf("%s genres = %v, want %v", slug, got, want)
 		}
 	}
-	if sum.GenreWorksAddedTo != 2 || sum.GenreWorksSet != 1 || sum.GenresRemoved != 1 || sum.GenresAdded != 3 {
+	if set, addedTo, added, removed := sum.GenreTally(); addedTo != 2 || set != 1 || removed != 1 || added != 3 {
 		t.Errorf("summary = %+v", sum)
 	}
 	if !hasNote(sum.Notes, "1 carry a user-library source, 1 have a recording with an ASIN no input row matched") {

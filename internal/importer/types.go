@@ -161,6 +161,20 @@ func (m Mode) boundedByCatalogue() bool {
 	return m == ModeEnrich || m == ModeRecordingsOnly || m == ModeRelocate || m == ModeRegenerateGenres
 }
 
+// locatesASINs reports whether the mode reaches the catalogued recording a row's
+// ASIN sits on (planner.asinLoc): the two passes matched by identifier.
+func (m Mode) locatesASINs() bool {
+	return m == ModeEnrich || m == ModeRegenerateGenres
+}
+
+// plansRows reports whether the mode plans rows as BOOKS - credits, people,
+// series - and so needs the batch's credit decisions and series resolution.
+// The genre regeneration reads a row's ASIN and genres alone, and both
+// whole-batch passes over a row set the size of the catalogue would be waste.
+func (m Mode) plansRows() bool {
+	return m != ModeRegenerateGenres
+}
+
 // runName is the mode's name in a conflict worklist row's "run" field
 // (conflicts.go). It is spelled as the FLAG an operator passed rather than as
 // the Go constant, so a worklist row says how to reproduce the run that wrote
@@ -341,21 +355,14 @@ type Summary struct {
 	// so this is the expected outcome for the overwhelming majority of a large
 	// export's rows. Always 0 outside ModeEnrich and ModeRegenerateGenres.
 	NotInCatalog int
-	// GenreWorksSet / GenreWorksAddedTo count the works a ModeRegenerateGenres
-	// run changed: a trim-eligible work whose set became the recording vote, and
-	// a work whose set the vote was only added to (regenerate.go).
+	// GenreChanges is one entry per work a ModeRegenerateGenres run changed, in
+	// work order (the `--genre-changes` worklist; GenreTally counts it).
 	// GenreWorksUnchanged counts the works a row reached and nothing changed,
-	// GenreWorksNoRow the catalogued works no input row reached, and
-	// GenresAdded / GenresRemoved the genre instances the run added and removed.
-	// GenreChanges is one entry per changed work, in work order (the
-	// `--genre-changes` worklist). All zero outside ModeRegenerateGenres.
-	GenreWorksSet       int
-	GenreWorksAddedTo   int
+	// GenreWorksNoRow the catalogued works no input row reached. All zero
+	// outside ModeRegenerateGenres.
+	GenreChanges        []GenreChange
 	GenreWorksUnchanged int
 	GenreWorksNoRow     int
-	GenresAdded         int
-	GenresRemoved       int
-	GenreChanges        []GenreChange
 	// SkippedNoWork counts RECORDINGS-ONLY rows whose work is not in the
 	// catalogue. That mode never creates a work, so those rows are dropped -
 	// which makes this the counter that proves an excerpt, a trivia title or a

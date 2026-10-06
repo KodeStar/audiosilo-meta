@@ -50,31 +50,41 @@ type RecRef struct {
 // catalogued recording by ASIN and fills absent facts on it, on its work, and
 // on the series it claims, stamped with the planner's run provenance.
 func (p *planner) planEnrich(books []sourceBook) {
+	p.forEachMatchedRow(books, p.enrichBook)
+}
+
+// forEachMatchedRow is the row loop of the two passes matched by identifier
+// (enrichment and the genre regeneration): each row's ASIN located through the
+// catalogue's ASIN index, a row whose ASIN the catalogue does not hold
+// (including one with no well-formed ASIN, which can never match) counted and
+// ignored, and fn called with the recording a matched row sits on, under the
+// row's provenance stamp. It stops at the first fatal error.
+func (p *planner) forEachMatchedRow(books []sourceBook, fn func(b sourceBook, ref RecRef)) {
 	for _, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin)
-		p.enrichBook(b, asin)
+		ref, matched := p.asinLoc[asin]
+		if !matched {
+			p.summary.NotInCatalog++
+			continue
+		}
+		p.summary.Matched++
+		fn(b, ref)
 		if p.fatal != nil {
 			return
 		}
 	}
 }
 
-// enrichBook fills absent facts from one row onto the records its ASIN already
-// matches. A row whose ASIN is not in the catalogue (including a row with no
-// well-formed ASIN at all, which can never match) is counted and ignored.
+// enrichBook fills absent facts from one row onto the recording ref its ASIN
+// matched (forEachMatchedRow has counted and dropped the rows that match none),
+// its work and the series it claims.
 //
 // A row the matched recording CONTRADICTS is dropped whole (see
 // recordingContradicts): the contradiction is the code's own evidence that this
 // ASIN sits on a different production than the row describes, so the row's
 // genres and series claim are no more trustworthy than its runtime.
-func (p *planner) enrichBook(b sourceBook, asin string) {
-	ref, matched := p.asinLoc[asin]
-	if !matched {
-		p.summary.NotInCatalog++
-		return
-	}
-	p.summary.Matched++
+func (p *planner) enrichBook(b sourceBook, ref RecRef) {
 	warn := p.bookWarn(b)
 	if !p.applyToRecording(b, ref, warn, scopeFill) {
 		return
