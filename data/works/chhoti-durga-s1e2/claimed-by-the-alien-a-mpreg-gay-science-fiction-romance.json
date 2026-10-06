@@ -5555,6 +5555,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "beau-thomas-2026": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B0H7K5HHQ8",
+              "region": "uk"
+            }
+          ],
+          "id": "beau-thomas-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "beau-thomas",
+            "jessica-preddy"
+          ],
+          "publisher": "W. F. Howes Ltd",
+          "release_date": "2026-12-01",
+          "runtime_min": 812,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0H7K5HHQ8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "claimed-by-the-orc-king"
+        },
         "dylan-reilly-fitzpatrick-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5562,6 +5590,10 @@
             {
               "asin": "B0G72W8DZY",
               "region": "us"
+            },
+            {
+              "asin": "B0G72Y18ND",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91hmF7j+d+L.jpg",
@@ -5579,6 +5611,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0G72W8DZY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0G72Y18ND",
               "type": "libex-import"
             }
           ],

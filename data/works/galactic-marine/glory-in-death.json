@@ -1294,6 +1294,10 @@
             {
               "asin": "B0DN6H264R",
               "region": "us"
+            },
+            {
+              "asin": "B0DN6HKP7V",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1581,6 +1585,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0DN6H264R",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0DN6HKP7V",
+              "type": "libex-import"
             }
           ],
           "work": "glory-of-broken-dreams"
@@ -1610,6 +1619,36 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "johannes-quester-2026": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B0G2N41YY7",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818BQTHSVcL.jpg",
+          "id": "johannes-quester-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johannes-quester",
+            "julian-tennstedt",
+            "nina-reithmeier"
+          ],
+          "publisher": "Hörbuch Hamburg",
+          "release_date": "2026-10-15",
+          "runtime_min": 780,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0G2N41YY7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "glory-of-broken-hearts"
+        },
         "nina-reithmeier-2026": {
           "abridged": false,
           "added_at": "2026-08-02",

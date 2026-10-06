@@ -2200,6 +2200,10 @@
             {
               "asin": "B0G7521FXR",
               "region": "ca"
+            },
+            {
+              "asin": "B0G76VDF83",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2459,6 +2463,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0G7521FXR",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0G76VDF83",
+              "type": "libex-import"
             }
           ],
           "work": "world-war-3-1"
@@ -2496,6 +2505,10 @@
             {
               "asin": "B0G3YHNM4B",
               "region": "us"
+            },
+            {
+              "asin": "B0G3YFP32X",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2730,6 +2743,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0G3YHNM4B",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0G3YFP32X",
+              "type": "libex-import"
             }
           ],
           "work": "world-war-3-2"
@@ -2782,6 +2800,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GXGWNFRP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "world-war-3-3"
+        },
+        "peter-noble-2026-2": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B0GXGTY685",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91CgUKmijWL.jpg",
+          "id": "peter-noble-2026-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-noble"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-10-27",
+          "runtime_min": 768,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0GXGTY685",
               "type": "libex-import"
             }
           ],
