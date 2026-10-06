@@ -53,6 +53,10 @@ type table struct {
 	ByASIN map[string]string            `json:"by_asin"`
 	ByName map[string]string            `json:"by_name"`
 	ByPath map[string]map[string]string `json:"by_path"`
+	// Format is hand-curated and passed through untouched; FormatTree is
+	// derived here (formatTree).
+	Format     []string                     `json:"format"`
+	FormatTree map[string]map[string]string `json:"format_tree"`
 }
 
 type pathNode struct {
@@ -151,6 +155,7 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 		}
 	}
 	t.ByPath = byPath
+	t.FormatTree = formatTree(regions, taxonomies, t.Format)
 
 	// The verification file: for each marketplace, the node each checked path
 	// names. Checked = every path whose node the table pins by id, every path
@@ -177,7 +182,8 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 				continue
 			}
 			_, pinned := t.ByASIN[p.node]
-			if pinned || anyEntry[p.key] || !strings.Contains(p.key, ":") || childrensRoot[p.root] {
+			_, inFormatTree := t.FormatTree[r][p.key]
+			if pinned || anyEntry[p.key] || !strings.Contains(p.key, ":") || childrensRoot[p.root] || inFormatTree {
 				m[p.key] = p.node
 			}
 		}
@@ -199,6 +205,39 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 	fmt.Printf("by_path: %d entries over %d marketplaces; %d same-path conflicts inside a marketplace (first kept)\n",
 		n, len(byPath), conflicts)
 	return nil
+}
+
+// formatTree derives the table's format_tree: for each marketplace, every path
+// of every ROOT subtree holding one of the format nodes, mapped to its node id
+// (the first node a path names, as the by_path walk keeps the first). The
+// importer reads a node's parents off its path's parent and a ladder claim's node
+// off its path, so the whole subtree is written - a non-format descendant is
+// exactly the subject evidence that keeps an ancestor's genre - and nothing
+// outside it is.
+func formatTree(regions []string, taxonomies map[string][]pathNode, format []string) map[string]map[string]string {
+	isFormat := map[string]bool{}
+	for _, n := range format {
+		isFormat[n] = true
+	}
+	out := map[string]map[string]string{}
+	for _, r := range regions {
+		roots := map[string]bool{}
+		for _, p := range taxonomies[r] {
+			if isFormat[p.node] {
+				roots[p.root] = true
+			}
+		}
+		m := map[string]string{}
+		for _, p := range taxonomies[r] {
+			if _, done := m[p.key]; !done && roots[p.root] {
+				m[p.key] = p.node
+			}
+		}
+		if len(m) > 0 {
+			out[r] = m
+		}
+	}
+	return out
 }
 
 // walk flattens a taxonomy into one pathNode per path. The key is the
