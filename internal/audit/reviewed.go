@@ -45,7 +45,10 @@ import (
 // refusals and post-write validation still apply. A detector already proposing the same
 // identity turns it into an acceptance (REDUNDANT): like an accept, it promotes that
 // proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
-// retired or joined, so it reads STALE and a re-run proposes nothing.
+// retired or joined, so it reads STALE and a re-run proposes nothing. A drop whose target
+// was since retired onto a survivor the series lists only at other slots is STALE too:
+// the work it named is gone and its survivor is not at that slot; a live target listed elsewhere
+// is REFUSED.
 //
 //go:embed reviewed.json
 var reviewedFile []byte
@@ -646,9 +649,10 @@ type sourcing struct {
 // returning where it sits; or, with a nil class, the status and why: STALE when a
 // record it names is gone or it has been applied (a merge's others all resolve to its
 // target, an added membership is listed at its slot, a dropped one is not listed at
-// all), REFUSED when it names no record (live or retired), would widen or move one, the
-// series holds an added position already, lists a dropped work at another position, or
-// would be left with no members by the drop.
+// all, or its target was retired onto a survivor listed only at other slots), REFUSED
+// when it names no record (live or retired), would widen or move one, the series holds
+// an added position already, lists a live dropped work at another position, or would
+// be left with no members by the drop.
 func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, status outcomeStatus, why string) {
 	if s.ix == nil {
 		return nil, 0, statusStale, "no catalogue to find its records in"
@@ -723,12 +727,19 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 			}
 		}
 	case OpDropMembership:
-		if listedAt == "" && len(elsewhere) == 0 {
-			return nil, 0, statusStale, fmt.Sprintf("applied: series %s does not list %s", p.Series, p.Target)
-		}
 		if listedAt == "" {
-			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
-				strings.Join(elsewhere, ", "), p.From)
+			switch {
+			case len(elsewhere) == 0:
+				return nil, 0, statusStale, fmt.Sprintf("applied: series %s does not list %s", p.Series, p.Target)
+			case r.Target != p.Target:
+				// A retired target is the work the decision named no longer existing: its survivor
+				// listed at another slot leaves nothing at the one named, so the drop is applied.
+				return nil, 0, statusStale, fmt.Sprintf("applied: %s was merged into %s, which series %s lists at position %s, not %q",
+					r.Target, p.Target, p.Series, strings.Join(elsewhere, ", "), p.From)
+			default:
+				return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
+					strings.Join(elsewhere, ", "), p.From)
+			}
 		}
 		// metarepair refuses to empty a series on every run: retiring it is a merge-series.
 		if !slices.ContainsFunc(s.ix.seriesByID[p.Series].Works, func(sw model.SeriesWork) bool {
