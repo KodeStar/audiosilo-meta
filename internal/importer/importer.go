@@ -107,6 +107,10 @@ type recInfo struct {
 	narrators  map[string]bool
 	asins      map[string]bool
 	runtimeMin int
+	// releaseDate is a recording LOADED from disk's recorded release date - with
+	// runtimeMin, what the genre regeneration asks the contradiction test about
+	// (rowContradiction). Empty for a recording this run created.
+	releaseDate string
 	// claims is every series position this recording is known to be at - the
 	// per-recording half of the same-title serial guard: two volumes of a serial
 	// published under one title have compatible runtimes and identical
@@ -1078,9 +1082,10 @@ func (p *planner) loadExisting() {
 				p.narratorPeople[n] = true
 			}
 			ri := &recInfo{
-				narrators:  ToSet(r.Narrators),
-				asins:      map[string]bool{},
-				runtimeMin: r.RuntimeMin,
+				narrators:   ToSet(r.Narrators),
+				asins:       map[string]bool{},
+				runtimeMin:  r.RuntimeMin,
+				releaseDate: r.ReleaseDate,
 				// abridged stays nil (unknown) for a disk incumbent: the model's
 				// plain bool can't distinguish stated-false from absent, so we do
 				// not let it block a merge. See recInfo.abridged.

@@ -168,7 +168,7 @@ func TestRegenerateGenresAddsOnlyWithoutTrimRights(t *testing.T) {
 	if set, addedTo, added, removed := sum.GenreTally(); addedTo != 2 || set != 1 || removed != 1 || added != 3 {
 		t.Errorf("summary = %+v", sum)
 	}
-	if !hasNote(sum.Notes, "1 carry a user-library source, 1 have a recording with an ASIN no input row matched") {
+	if !hasNote(sum.Notes, "1 carry a user-library source, 1 have a recording carrying an ASIN that no uncontradicted input row covered") {
 		t.Errorf("notes = %v", sum.Notes)
 	}
 }
@@ -228,6 +228,54 @@ func TestRegenerateGenresRequiresMirrorRows(t *testing.T) {
 	_, err := Run(writeBooks(t, `[]`), Options{DataDir: t.TempDir(), ImportDate: testImportDate, Mode: ModeRegenerateGenres})
 	if err == nil {
 		t.Fatal("a user-library source ran the genre regeneration")
+	}
+}
+
+// regenRowRuntime is regenRow stating a runtime, in minutes.
+func regenRowRuntime(asin string, minutes int, genres ...string) string {
+	return strings.Replace(regenRow(asin, genres...), `"region":"us",`, fmt.Sprintf(`"region":"us","lengthMinutes":%d,`, minutes), 1)
+}
+
+// regenRecRuntime is regenRecJSON recorded at runtime minutes.
+func regenRecRuntime(work, rec string, minutes int, asins ...string) string {
+	return strings.Replace(regenRecJSON(work, rec, asins...), `"license"`, fmt.Sprintf(`"runtime_min":%d,"license"`, minutes), 1)
+}
+
+// TestRegenerateGenresIgnoresContradictedRows: a row its recording contradicts
+// (here a runtime a sixth of the recorded one - another production, which
+// enrichment refuses through the same test) casts no vote. Its stray genre is not
+// voted in, and a recording ALL of whose rows were contradicted is not covered,
+// so its work is never trimmed on the evidence that is left.
+func TestRegenerateGenresIgnoresContradictedRows(t *testing.T) {
+	dataDir := seedRegen(t, map[string]string{
+		"works/st/stray/work.json":          regenWorkJSON("stray", nil, "libex-import"),
+		"works/st/stray/recordings/a.json":  regenRecRuntime("stray", "a", 600, "B0STRAY0A1"),
+		"works/st/stray/recordings/b.json":  regenRecRuntime("stray", "b", 600, "B0STRAY0B1", "B0STRAY0B2"),
+		"works/co/contra/work.json":         regenWorkJSON("contra", []string{"mystery", "westerns"}, "libex-import"),
+		"works/co/contra/recordings/a.json": regenRecRuntime("contra", "a", 600, "B0CONTRAA1"),
+		"works/co/contra/recordings/b.json": regenRecRuntime("contra", "b", 600, "B0CONTRAB1"),
+		"works/co/contra/recordings/c.json": regenRecRuntime("contra", "c", 600, "B0CONTRAC1"),
+	})
+	sum := runRegen(t, dataDir,
+		regenRowRuntime("B0STRAY0A1", 600, "Mystery"),
+		regenRowRuntime("B0STRAY0B1", 600, "Mystery"),
+		regenRowRuntime("B0STRAY0B2", 100, "Westerns"), // contradicted: casts no vote
+		regenRowRuntime("B0CONTRAA1", 600, "Mystery"),
+		regenRowRuntime("B0CONTRAB1", 600, "Mystery"),
+		regenRowRuntime("B0CONTRAC1", 100, "Mystery", "Westerns"), // c's only row: c is not covered
+	)
+	if got, want := regenGenres(t, dataDir, "stray"), []string{"mystery"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("stray genres = %v, want %v (the contradicted row's westerns not voted in)", got, want)
+	}
+	if got, want := regenGenres(t, dataDir, "contra"), []string{"mystery", "westerns"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("contra genres = %v, want %v (an uncovered recording leaves the work add-only)", got, want)
+	}
+	if sum.GenreRowsContradicted != 2 {
+		t.Errorf("GenreRowsContradicted = %d, want 2", sum.GenreRowsContradicted)
+	}
+	if !hasNote(sum.Notes, "2 rows contradicted the recorded runtime or release date") ||
+		!hasNote(sum.Notes, "1 have a recording carrying an ASIN that no uncontradicted input row covered") {
+		t.Errorf("notes = %v", sum.Notes)
 	}
 }
 

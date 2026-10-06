@@ -900,3 +900,35 @@ func TestGenreChangesWorklist(t *testing.T) {
 		t.Errorf("worklist = %q, want %q", raw, want)
 	}
 }
+
+// TestRegenerateGenresRefusesInertFlags: every flag that would do nothing under
+// --regenerate-genres (it writes genres only and stamps no source) is refused
+// through the one flag table, rather than silently ignored.
+func TestRegenerateGenresRefusesInertFlags(t *testing.T) {
+	refused := func(string, importer.Options) (importer.Summary, error) {
+		t.Error("the import must not run")
+		return importer.Summary{}, nil
+	}
+	for _, extra := range [][]string{
+		{"--date", "2026-10-06"},
+		{"--conflicts", "c.ndjson"},
+		{"--existing-series-only"},
+		{"--series-lookup"},
+		{"--series-lookup-limit", "5"},
+		{"--libex", "https://example.invalid"},
+		{"--attach-editions"},
+	} {
+		args := append([]string{"export.json", "--regenerate-genres"}, extra...)
+		if code := runSource(boundedSource, args, refused); code != 2 {
+			t.Errorf("%v: exit %d, want 2", args, code)
+		}
+	}
+	// The same flags stay valid in the other libex modes.
+	ran := false
+	ok := func(string, importer.Options) (importer.Summary, error) { ran = true; return importer.Summary{}, nil }
+	captureStdout(t, func() {
+		if code := runSource(boundedSource, []string{"export.json", "--enrich", "--date", "2026-10-06", "--existing-series-only"}, ok); code != 0 || !ran {
+			t.Errorf("--enrich with --date: exit %d, ran %v", code, ran)
+		}
+	})
+}

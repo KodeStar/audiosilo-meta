@@ -207,25 +207,38 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
 	}
-	// The flags that belong to one source or one mode, validated in one place:
-	// each is libex-only, and a mode-scoped one is refused outside its mode.
+	// The flags that belong to one source or one mode, validated in one place.
+	// A libex-only flag is refused for every other source; a mode-scoped one
+	// outside the modes it does something in, so a flag that would be silently
+	// inert is a refusal instead: --regenerate-genres writes nothing but genres
+	// and stamps no source, so a date, a conflict worklist, a series rule or the
+	// series lookup would all be ignored there.
+	explicit := map[string]bool{}
+	fs.Visit(func(f *flag.Flag) { explicit["--"+f.Name] = true })
+	notRegen := func(m importer.Mode) bool { return m != importer.ModeRegenerateGenres }
+	const inertInRegen = "does nothing under --regenerate-genres, which writes genres only and stamps no source"
 	for _, f := range []struct {
-		name   string
-		set    bool
-		scoped bool
-		mode   importer.Mode
-		what   string
+		name      string
+		libexOnly bool
+		valid     func(importer.Mode) bool // nil: every mode
+		what      string
 	}{
-		{"--skipped", *skipped != "", false, 0, ""},
-		{"--attach-editions", *attachEditions, true, importer.ModeCreate, "attaches rows the CREATE path would plan"},
-		{"--genre-changes", *genreChanges != "", true, importer.ModeRegenerateGenres, "is the --regenerate-genres worklist"},
+		{"--skipped", true, nil, ""},
+		{"--attach-editions", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "attaches rows the CREATE path would plan; it is valid in that mode only"},
+		{"--genre-changes", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres worklist; it is valid in that mode only"},
+		{"--date", false, notRegen, inertInRegen},
+		{"--conflicts", false, notRegen, inertInRegen},
+		{"--existing-series-only", false, notRegen, inertInRegen},
+		{"--series-lookup", false, notRegen, inertInRegen},
+		{"--series-lookup-limit", false, notRegen, inertInRegen},
+		{"--libex", false, notRegen, inertInRegen},
 	} {
 		switch {
-		case !f.set:
-		case f.scoped && mode != f.mode:
-			fmt.Fprintf(os.Stderr, "metaimport: %s %s; it is valid in that mode only\n", f.name, f.what)
+		case !explicit[f.name]:
+		case f.valid != nil && !f.valid(mode):
+			fmt.Fprintf(os.Stderr, "metaimport: %s %s\n", f.name, f.what)
 			return 2
-		case name != boundedSource:
+		case f.libexOnly && name != boundedSource:
 			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", f.name, boundedSource, name)
 			return 2
 		}

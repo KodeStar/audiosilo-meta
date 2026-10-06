@@ -1,6 +1,9 @@
 package importer
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // enrich.go implements the ASIN-matched ENRICHMENT mode (ModeEnrich), the
 // second of the three import shapes LICENSING.md's import posture accepts:
@@ -271,46 +274,60 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
 func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, scope applyScope) bool {
-	contradiction := func(field string, recorded, stated any, format string, args ...any) bool {
-		// The CONFLICT tier, not the row sink: it ranks ahead of the ordinary
-		// row lines (planner.result), so a bounded report keeps it.
-		p.warnInto(b, &p.conflictWarnings)(format, args...)
-		// The durable twin of that warning, and the run's ONLY machine-readable
-		// account of the disagreement: one worklist row, written here rather than
-		// re-derived from the prose above, so the values it reports are the ones
-		// the comparison just made (conflicts.go). It is written in every tier -
-		// the mirror's disagreements with the catalogue are exactly where a wrong
-		// RECORDED value hides - and is a no-op for a run given no worklist.
-		p.recordConflict(b, ref, field, recorded, stated)
-		// Counted only for a user-library run: a bulk mirror disagreeing with the
-		// catalogue is an expected data-quality artefact of the source, while a
-		// person's own library disagreeing is the case a maintainer should look
-		// at (and the intake bot reports). An inferred edition match (the merge
-		// scope) is not a disagreement between two people about one edition, so
-		// it is never counted either.
-		if p.userTier && scope != scopeAttestMerged {
-			p.summary.Conflicts++
-		}
-		return true
-	}
-	// Defense in depth in the merge scope: addRecording only reaches a merge for a
-	// sibling whose runtime is already compatible, so this cannot fire there.
-	if b.runtimeMin > 0 {
-		if cur, known := coerceInt(raw["runtime_min"]); known && cur > 0 && !runtimesCompatible(int(cur), b.runtimeMin) {
-			return contradiction("runtime_min", cur, b.runtimeMin,
-				"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, cur)
-		}
-	}
-	if scope == scopeAttestMerged {
+	runtime, _ := coerceInt(raw["runtime_min"])
+	c, contradicts := rowContradiction(b, runtime, coerceStr(raw["release_date"]), scope)
+	if !contradicts {
 		return false
 	}
-	if rd := b.str("release_date"); datePattern.MatchString(rd) {
-		if cur := coerceStr(raw["release_date"]); cur != "" && datesConflict(cur, rd) {
-			return contradiction("release_date", cur, rd,
-				"release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, cur)
-		}
+	// The CONFLICT tier, not the row sink: it ranks ahead of the ordinary
+	// row lines (planner.result), so a bounded report keeps it.
+	p.warnInto(b, &p.conflictWarnings)("%s", c.message)
+	// The durable twin of that warning, and the run's ONLY machine-readable
+	// account of the disagreement: one worklist row, written here rather than
+	// re-derived from the prose above, so the values it reports are the ones
+	// the comparison just made (conflicts.go). It is written in every tier -
+	// the mirror's disagreements with the catalogue are exactly where a wrong
+	// RECORDED value hides - and is a no-op for a run given no worklist.
+	p.recordConflict(b, ref, c.field, c.recorded, c.stated)
+	// Counted only for a user-library run: a bulk mirror disagreeing with the
+	// catalogue is an expected data-quality artefact of the source, while a
+	// person's own library disagreeing is the case a maintainer should look
+	// at (and the intake bot reports). An inferred edition match (the merge
+	// scope) is not a disagreement between two people about one edition, so
+	// it is never counted either.
+	if p.userTier && scope != scopeAttestMerged {
+		p.summary.Conflicts++
 	}
-	return false
+	return true
+}
+
+// contradiction is the first fact a row contradicts its recording on.
+type contradiction struct {
+	field            string
+	recorded, stated any
+	message          string
+}
+
+// rowContradiction is THE contradiction test (recordingContradicts' rule, and
+// the genre regeneration's - a contradicted row casts no genre vote): does the
+// row disagree with a recording recorded at runtime minutes (0 = unknown) and
+// release date on the runtime, or - outside scopeAttestMerged - on the release
+// date. It only answers; the caller decides what a contradiction costs.
+func rowContradiction(b sourceBook, runtime int64, releaseDate string, scope applyScope) (contradiction, bool) {
+	// Defense in depth in the merge scope: addRecording only reaches a merge for a
+	// sibling whose runtime is already compatible, so this cannot fire there.
+	if b.runtimeMin > 0 && runtime > 0 && !runtimesCompatible(int(runtime), b.runtimeMin) {
+		return contradiction{"runtime_min", runtime, b.runtimeMin, fmt.Sprintf(
+			"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, runtime)}, true
+	}
+	if scope == scopeAttestMerged {
+		return contradiction{}, false
+	}
+	if rd := b.str("release_date"); datePattern.MatchString(rd) && releaseDate != "" && datesConflict(releaseDate, rd) {
+		return contradiction{"release_date", releaseDate, rd, fmt.Sprintf(
+			"release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, releaseDate)}, true
+	}
+	return contradiction{}, false
 }
 
 // fillReleaseDate is fillStr for release_date plus the PRECISION rule the field

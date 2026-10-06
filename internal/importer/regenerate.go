@@ -82,10 +82,22 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	// created the works; listing them again is noise, not news.
 	unmapped := map[string]bool{}
 	reached := map[string]bool{}
+	contradicted := 0
 	p.forEachMatchedRow(books, func(b sourceBook, ref RecRef) {
 		reached[ref.Work] = true
+		// A row its recording CONTRADICTS on runtime or release date is evidence
+		// about another production (enrichment refuses it whole, through the same
+		// test), so it casts no vote - and a recording whose rows were all
+		// contradicted is not covered, so its work cannot be trimmed.
+		if ri := p.works[ref.Work].recs[ref.Rec]; ri != nil {
+			if _, bad := rowContradiction(b, int64(ri.runtimeMin), ri.releaseDate, scopeFill); bad {
+				contradicted++
+				return
+			}
+		}
 		p.regenRecs[ref] = UnionGenres(p.regenRecs[ref], p.genres.mapGenres(b.genres, unmapped))
 	})
+	p.summary.GenreRowsContradicted = contradicted
 
 	var userSourced, incomplete, silent int
 	for _, slug := range slices.Sorted(maps.Keys(p.works)) {
@@ -135,9 +147,14 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 		p.summary.GenreChanges = append(p.summary.GenreChanges,
 			GenreChange{Work: slug, Removed: minus(ws.genres, next), Added: minus(next, ws.genres), Mode: mode})
 	}
+	if contradicted > 0 {
+		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
+			"%d %s contradicted the recorded runtime or release date of the recording they matched and cast no genre vote",
+			contradicted, plural(contradicted, "row")))
+	}
 	if n := userSourced + incomplete; n > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
-			"genres of %d %s could only be added to, never trimmed: %d carry a user-library source, %d have a recording with an ASIN no input row matched",
+			"genres of %d %s could only be added to, never trimmed: %d carry a user-library source, %d have a recording carrying an ASIN that no uncontradicted input row covered",
 			n, plural(n, "work"), userSourced, incomplete))
 	}
 	if silent > 0 {
