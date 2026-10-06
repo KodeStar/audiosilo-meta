@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 
-import { mapGenreClaim, mapGenreClaims } from './audible-genres'
+import { formatDerived, mapGenreClaim, mapGenreClaims } from './audible-genres'
 
 // The table the Go importer embeds - read from disk here so the assertions below
 // are made against the same file the module imports, and so the fixtures used in
@@ -104,5 +104,58 @@ describe('mapGenreClaims', () => {
     ])
     expect(got).toEqual(['epic-fantasy'])
     for (const slug of got) expect(typeof slug).toBe('string')
+  })
+})
+
+// The format rule, mirrored from Go (TestFormatRuleFiveLittlePigs): the exact
+// claims libex holds for two BBC Five Little Pigs productions.
+describe('the format rule', () => {
+  const claims = (...pairs: string[]) =>
+    pairs.map((p) => {
+      const [node, name] = p.split('|')
+      return { node, name }
+    })
+
+  it('drops a dramatization ladder beside a subject', () => {
+    const got = mapGenreClaims(
+      claims(
+        '18571910011|Arts & Entertainment',
+        '18571919011|Audio Performances & Dramatizations',
+        '18571920011|Dramatizations',
+        '18574606011|Mystery'
+      )
+    )
+    expect(got).toContain('mystery')
+    expect(got).not.toContain('arts-entertainment')
+  })
+
+  it('keeps arts-entertainment through a subject node (Art)', () => {
+    const got = mapGenreClaims(
+      claims(
+        '18571910011|Arts & Entertainment',
+        '18571913011|Art',
+        '18571923011|Entertainment & Performing Arts',
+        '18571937011|Radio',
+        '18574606011|Mystery'
+      )
+    )
+    expect(got).toContain('arts-entertainment')
+    expect(got).toContain('mystery')
+  })
+
+  it('keeps the format genre when the record maps nothing else', () => {
+    expect(
+      mapGenreClaims(
+        claims(
+          '18571910011|Arts & Entertainment',
+          '18571923011|Entertainment & Performing Arts',
+          '18571937011|Radio'
+        )
+      )
+    ).toEqual(['arts-entertainment'])
+  })
+
+  it('leaves a record with no format node untouched', () => {
+    expect(formatDerived(claims('18574606011|Mystery'))).toBeNull()
   })
 })
