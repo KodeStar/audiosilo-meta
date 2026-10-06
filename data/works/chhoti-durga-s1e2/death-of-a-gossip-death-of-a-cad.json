@@ -20,6 +20,10 @@
             {
               "asin": "B00IZNDCK4",
               "region": "us"
+            },
+            {
+              "asin": "B079123HN9",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -149,6 +153,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00IZNDCK4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079123HN9",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-gossip-death-of-a-cad"
@@ -184,6 +193,10 @@
             {
               "asin": "B00GTSW53M",
               "region": "us"
+            },
+            {
+              "asin": "B07BP4FMS5",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -248,6 +261,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00GTSW53M",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B07BP4FMS5",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-greedy-woman"
@@ -284,6 +302,10 @@
             {
               "asin": "B09NQQP5QS",
               "region": "us"
+            },
+            {
+              "asin": "B09NQN55Q3",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -372,6 +394,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B09NQQP5QS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B09NQN55Q3",
               "type": "libex-import"
             }
           ],
@@ -1150,6 +1177,10 @@
             {
               "asin": "B00C3GFDC4",
               "region": "us"
+            },
+            {
+              "asin": "B00C3GEUUK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1214,6 +1245,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00C3GFDC4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00C3GEUUK",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-hussy"
@@ -1225,6 +1261,10 @@
             {
               "asin": "B00G3EH07I",
               "region": "us"
+            },
+            {
+              "asin": "B079575VRG",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1303,6 +1343,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00G3EH07I",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079575VRG",
               "type": "libex-import"
             }
           ],
@@ -1952,6 +1997,96 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2013": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B00C3GF4MI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1470474,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1840414,
+              "start_ms": 1470474,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1324327,
+              "start_ms": 3310888,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2129316,
+              "start_ms": 4635215,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2303094,
+              "start_ms": 6764531,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2406888,
+              "start_ms": 9067625,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2493359,
+              "start_ms": 11474513,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1683075,
+              "start_ms": 13967872,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1674159,
+              "start_ms": 15650947,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1570551,
+              "start_ms": 17325106,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2273744,
+              "start_ms": 18895657,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1185703,
+              "start_ms": 21169401,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/719jGtXY3vL.jpg",
+          "id": "david-monteath-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Little, Brown Book Group",
+          "release_date": "2013-04-04",
+          "runtime_min": 372,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00C3GF4MI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-kingfisher"
+        },
         "graeme-malcolm-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1959,6 +2094,10 @@
             {
               "asin": "B007EJACOY",
               "region": "us"
+            },
+            {
+              "asin": "B079J28Q2C",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2037,6 +2176,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B007EJACOY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079J28Q2C",
               "type": "libex-import"
             }
           ],
@@ -2576,6 +2720,27 @@
             {
               "asin": "B09RTNMJCF",
               "region": "us"
+            },
+            {
+              "asin": "B09RTMG2WK",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2109416,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2343334,
+              "start_ms": 2109416,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 769090,
+              "start_ms": 4452750,
+              "title": "Chapter 3"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/7168+OmJjPL.jpg",
@@ -2592,6 +2757,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B09RTNMJCF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B09RTMG2WK",
               "type": "libex-import"
             }
           ],
@@ -3138,6 +3308,110 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2016": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B01M66TGZ4",
+              "region": "uk"
+            },
+            {
+              "asin": "B0D67C194H",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1639097,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1394033,
+              "start_ms": 1639097,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1787565,
+              "start_ms": 3033130,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1623446,
+              "start_ms": 4820695,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1150363,
+              "start_ms": 6444141,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1595861,
+              "start_ms": 7594504,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1912488,
+              "start_ms": 9190365,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2151793,
+              "start_ms": 11102853,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1390550,
+              "start_ms": 13254646,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1339791,
+              "start_ms": 14645196,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1680893,
+              "start_ms": 15984987,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1833819,
+              "start_ms": 17665880,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2458854,
+              "start_ms": 19499699,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91okuqrJPVL.jpg",
+          "id": "david-monteath-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016-11-15",
+          "runtime_min": 365,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B01M66TGZ4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0D67C194H",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-liar"
+        },
         "graeme-malcolm-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3145,6 +3419,10 @@
             {
               "asin": "B00REUBSZK",
               "region": "us"
+            },
+            {
+              "asin": "B07C9VPGNB",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3228,6 +3506,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00REUBSZK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B07C9VPGNB",
               "type": "libex-import"
             }
           ],
@@ -3526,6 +3809,10 @@
             {
               "asin": "B00H2U7YFK",
               "region": "us"
+            },
+            {
+              "asin": "B00H2U5BGY",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3600,6 +3887,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00H2U7YFK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00H2U5BGY",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-macho-man"
@@ -3611,6 +3903,72 @@
             {
               "asin": "B0B2KQP6CP",
               "region": "us"
+            },
+            {
+              "asin": "B0B2KNQ388",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1653399,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2083224,
+              "start_ms": 1653399,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1814151,
+              "start_ms": 3736623,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1847704,
+              "start_ms": 5550774,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1329319,
+              "start_ms": 7398478,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2637717,
+              "start_ms": 8727797,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2681370,
+              "start_ms": 11365514,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1976877,
+              "start_ms": 14046884,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3189539,
+              "start_ms": 16023761,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2533598,
+              "start_ms": 19213300,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2323527,
+              "start_ms": 21746898,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 63482,
+              "start_ms": 24070425,
+              "title": "Chapter 12"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81xfCiVmSRL.jpg",
@@ -3628,6 +3986,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0B2KQP6CP",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0B2KNQ388",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-macho-man"
@@ -3643,6 +4006,10 @@
             {
               "asin": "B00EO89EJW",
               "region": "us"
+            },
+            {
+              "asin": "B079K1VBLN",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3721,6 +4088,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00EO89EJW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079K1VBLN",
               "type": "libex-import"
             }
           ],
@@ -3948,6 +4320,91 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2014": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B00HRCKCP2",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1360597,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1752085,
+              "start_ms": 1360597,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1748555,
+              "start_ms": 3112682,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2335417,
+              "start_ms": 4861237,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1486634,
+              "start_ms": 7196654,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2246066,
+              "start_ms": 8683288,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2008480,
+              "start_ms": 10929354,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2381160,
+              "start_ms": 12937834,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2326454,
+              "start_ms": 15318994,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2551130,
+              "start_ms": 17645448,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2516996,
+              "start_ms": 20196578,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71+Io1Z8+eL.jpg",
+          "id": "david-monteath-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Little, Brown Book Group",
+          "release_date": "2014-01-17",
+          "runtime_min": 378,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00HRCKCP2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-maid"
+        },
         "graeme-malcolm-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3955,6 +4412,10 @@
             {
               "asin": "B002V57X2K",
               "region": "us"
+            },
+            {
+              "asin": "B079WYGWGZ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4034,6 +4495,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V57X2K",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079WYGWGZ",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-maid"
@@ -4069,6 +4535,10 @@
             {
               "asin": "B00GUSAUSS",
               "region": "us"
+            },
+            {
+              "asin": "B00GUS7VV2",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4143,6 +4613,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00GUSAUSS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00GUS7VV2",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-nag"
@@ -4154,6 +4629,10 @@
             {
               "asin": "B002V1NVUM",
               "region": "us"
+            },
+            {
+              "asin": "B004EXIGDM",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4223,6 +4702,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V1NVUM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B004EXIGDM",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-nag"
@@ -4238,6 +4722,10 @@
             {
               "asin": "B00HUZH510",
               "region": "us"
+            },
+            {
+              "asin": "B079738N4D",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4316,6 +4804,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00HUZH510",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079738N4D",
               "type": "libex-import"
             }
           ],
@@ -4396,6 +4889,111 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2023": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B0C24KLHYH",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12816,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1310000,
+              "start_ms": 12816,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1501611,
+              "start_ms": 1322816,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1869229,
+              "start_ms": 2824427,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1672695,
+              "start_ms": 4693656,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2321531,
+              "start_ms": 6366351,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2304394,
+              "start_ms": 8687882,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1708779,
+              "start_ms": 10992276,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2215810,
+              "start_ms": 12701055,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1136477,
+              "start_ms": 14916865,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1471309,
+              "start_ms": 16053342,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2182931,
+              "start_ms": 17524651,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1609328,
+              "start_ms": 19707582,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 739880,
+              "start_ms": 21316910,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 41842,
+              "start_ms": 22056790,
+              "title": "Chapter 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Jhen7-lGL.jpg",
+          "id": "david-monteath-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Little, Brown Book Group",
+          "release_date": "2023-05-04",
+          "runtime_min": 368,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0C24KLHYH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-nurse"
+        },
         "graeme-malcolm-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4403,6 +5001,77 @@
             {
               "asin": "B01944J0JY",
               "region": "us"
+            },
+            {
+              "asin": "B07B3KBPN5",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1224667,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1349590,
+              "start_ms": 1224667,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1714469,
+              "start_ms": 2574257,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1492997,
+              "start_ms": 4288726,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2114502,
+              "start_ms": 5781723,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2114038,
+              "start_ms": 7896225,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1489003,
+              "start_ms": 10010263,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1981962,
+              "start_ms": 11499266,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 985594,
+              "start_ms": 13481228,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1254249,
+              "start_ms": 14466822,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1883463,
+              "start_ms": 15721071,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1385860,
+              "start_ms": 17604534,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 753441,
+              "start_ms": 18990394,
+              "title": "Chapter 13"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81vYClQdS9L.jpg",
@@ -4419,6 +5088,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B01944J0JY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B07B3KBPN5",
               "type": "libex-import"
             }
           ],
@@ -4715,6 +5389,10 @@
             {
               "asin": "B00C3GFEAK",
               "region": "us"
+            },
+            {
+              "asin": "B00C3GF6HG",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4774,6 +5452,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00C3GFEAK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00C3GF6HG",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-perfect-wife"
@@ -4785,6 +5468,10 @@
             {
               "asin": "B00FASCGPO",
               "region": "us"
+            },
+            {
+              "asin": "B079B8WMT1",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4843,6 +5530,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00FASCGPO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079B8WMT1",
               "type": "libex-import"
             }
           ],
@@ -5066,6 +5758,10 @@
             {
               "asin": "B00HFFCLFK",
               "region": "us"
+            },
+            {
+              "asin": "B00HFFBP0W",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5140,6 +5836,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00HFFCLFK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00HFFBP0W",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-poison-pen"
@@ -5151,6 +5852,10 @@
             {
               "asin": "B00RW822IG",
               "region": "us"
+            },
+            {
+              "asin": "B078Z6DTYM",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5225,6 +5930,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00RW822IG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B078Z6DTYM",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-poison-pen"
@@ -5253,6 +5963,91 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2014": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B00JBFTZ7Y",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1758169,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1698540,
+              "start_ms": 1758169,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2563855,
+              "start_ms": 3456709,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2214905,
+              "start_ms": 6020564,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2028077,
+              "start_ms": 8235469,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2276484,
+              "start_ms": 10263546,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1439869,
+              "start_ms": 12540030,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2565619,
+              "start_ms": 13979899,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2844119,
+              "start_ms": 16545518,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2583174,
+              "start_ms": 19389637,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1354002,
+              "start_ms": 21972811,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71teKZAYlPL.jpg",
+          "id": "david-monteath-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Little, Brown Book Group",
+          "release_date": "2014-04-15",
+          "runtime_min": 388,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00JBFTZ7Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-policeman"
+        },
         "graeme-malcolm-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5260,6 +6055,10 @@
             {
               "asin": "B00IK18VAW",
               "region": "us"
+            },
+            {
+              "asin": "B079R6YNJ5",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5333,6 +6132,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00IK18VAW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079R6YNJ5",
               "type": "libex-import"
             }
           ],
@@ -5482,6 +6286,10 @@
             {
               "asin": "B00CJF9UM8",
               "region": "us"
+            },
+            {
+              "asin": "B00CJFDU1U",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5541,6 +6349,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00CJF9UM8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00CJFDU1U",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-prankster"
@@ -5552,6 +6365,10 @@
             {
               "asin": "B006CQBSQG",
               "region": "us"
+            },
+            {
+              "asin": "B006CQ9CV4",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5641,6 +6458,11 @@
               "imported_at": "2026-07-29",
               "ref": "B006CQBSQG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B006CQ9CV4",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-prankster"
@@ -5652,6 +6474,10 @@
             {
               "asin": "B00GTSVQKA",
               "region": "us"
+            },
+            {
+              "asin": "B07C7VBKPG",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5710,6 +6536,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00GTSVQKA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B07C7VBKPG",
               "type": "libex-import"
             }
           ],
@@ -6358,6 +7189,10 @@
             {
               "asin": "B00H3RFXQO",
               "region": "us"
+            },
+            {
+              "asin": "B00H3RFG5C",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6427,6 +7262,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00H3RFXQO",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00H3RFG5C",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-scriptwriter"
@@ -6442,6 +7282,10 @@
             {
               "asin": "B00IAYL15G",
               "region": "us"
+            },
+            {
+              "asin": "B07931517V",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6516,6 +7360,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00IAYL15G",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B07931517V",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-scriptwriter"
@@ -6552,6 +7401,10 @@
             {
               "asin": "B0DD4LJNCT",
               "region": "us"
+            },
+            {
+              "asin": "B0DD4QQ34G",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6636,6 +7489,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0DD4LJNCT",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0DD4QQ34G",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-smuggler"
@@ -6670,6 +7528,10 @@
             {
               "asin": "B00CJF9N7K",
               "region": "us"
+            },
+            {
+              "asin": "B00CJFEN5C",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6729,6 +7591,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00CJF9N7K",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00CJFEN5C",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-snob"
@@ -6740,6 +7607,10 @@
             {
               "asin": "B00G3HKYPA",
               "region": "us"
+            },
+            {
+              "asin": "B078Z5WQ1H",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6798,6 +7669,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00G3HKYPA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B078Z5WQ1H",
               "type": "libex-import"
             }
           ],
@@ -7821,6 +8697,77 @@
             {
               "asin": "B0B831KGJD",
               "region": "us"
+            },
+            {
+              "asin": "B0B8319TC7",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 27376,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 527719,
+              "start_ms": 27376,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2191615,
+              "start_ms": 555095,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2171344,
+              "start_ms": 2746710,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2303140,
+              "start_ms": 4918054,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2238751,
+              "start_ms": 7221194,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2144177,
+              "start_ms": 9459945,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2206406,
+              "start_ms": 11604122,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2063836,
+              "start_ms": 13810528,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2366949,
+              "start_ms": 15874364,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1911025,
+              "start_ms": 18241313,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2504922,
+              "start_ms": 20152338,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 121787,
+              "start_ms": 22657260,
+              "title": "Chapter 13"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/7103sdqG-ML.jpg",
@@ -7837,6 +8784,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B0B831KGJD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0B8319TC7",
               "type": "libex-import"
             }
           ],
@@ -7952,6 +8904,10 @@
             {
               "asin": "B002V0M8J8",
               "region": "us"
+            },
+            {
+              "asin": "B004EXLK12",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8011,6 +8967,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V0M8J8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B004EXLK12",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-traveling-man"
@@ -8022,6 +8983,10 @@
             {
               "asin": "B00HHGPX98",
               "region": "us"
+            },
+            {
+              "asin": "B079KJQ3HK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8091,6 +9056,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00HHGPX98",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079KJQ3HK",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-traveling-man"
@@ -8124,6 +9094,135 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2024": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B0D67DJ51M",
+              "region": "uk"
+            },
+            {
+              "asin": "B01MG1GM0T",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 9391,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2067,
+              "start_ms": 9391,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 27561,
+              "start_ms": 11458,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 150119,
+              "start_ms": 39019,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 1381598,
+              "start_ms": 189138,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 1726588,
+              "start_ms": 1570736,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 2413041,
+              "start_ms": 3297324,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 1742565,
+              "start_ms": 5710365,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 1858153,
+              "start_ms": 7452930,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 2140391,
+              "start_ms": 9311083,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 1611767,
+              "start_ms": 11451474,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 2182837,
+              "start_ms": 13063241,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 1733672,
+              "start_ms": 15246078,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 1913114,
+              "start_ms": 16979750,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 1672371,
+              "start_ms": 18892864,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 1405225,
+              "start_ms": 20565235,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 650879,
+              "start_ms": 21970460,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 15766,
+              "start_ms": 22621339,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71vxkYEPiGL.jpg",
+          "id": "david-monteath-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Little, Brown Book Group",
+          "release_date": "2024-06-05",
+          "runtime_min": 377,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0D67DJ51M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B01MG1GM0T",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-valentine"
+        },
         "graeme-malcolm-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8131,6 +9230,10 @@
             {
               "asin": "B0032G4CMQ",
               "region": "us"
+            },
+            {
+              "asin": "B079VRVFJP",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8215,6 +9318,11 @@
               "imported_at": "2026-07-29",
               "ref": "B0032G4CMQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079VRVFJP",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-valentine"
@@ -8248,6 +9356,10 @@
             {
               "asin": "B00HAOM0D4",
               "region": "us"
+            },
+            {
+              "asin": "B00HAOX33U",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8317,6 +9429,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00HAOM0D4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00HAOX33U",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-village"
@@ -8328,6 +9445,10 @@
             {
               "asin": "B007D43FN0",
               "region": "us"
+            },
+            {
+              "asin": "B079J3Z83P",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8406,6 +9527,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B007D43FN0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079J3Z83P",
               "type": "libex-import"
             }
           ],
@@ -9286,6 +10412,96 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-monteath-2014": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B00HZONCVI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1581140,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1518957,
+              "start_ms": 1581140,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2121747,
+              "start_ms": 3100097,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2218620,
+              "start_ms": 5221844,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1897999,
+              "start_ms": 7440464,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2104471,
+              "start_ms": 9338463,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2005972,
+              "start_ms": 11442934,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2023201,
+              "start_ms": 13448906,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2412693,
+              "start_ms": 15472107,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2066947,
+              "start_ms": 17884800,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1973743,
+              "start_ms": 19951747,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1346246,
+              "start_ms": 21925490,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71bEERL3-nL.jpg",
+          "id": "david-monteath-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-monteath"
+          ],
+          "publisher": "Little, Brown Book Group",
+          "release_date": "2014-01-31",
+          "runtime_min": 387,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00HZONCVI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-of-a-witch"
+        },
         "graeme-malcolm-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9293,6 +10509,10 @@
             {
               "asin": "B002V0Q66O",
               "region": "us"
+            },
+            {
+              "asin": "B079VSHM88",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9377,6 +10597,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V0Q66O",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079VSHM88",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-a-witch"
@@ -9411,6 +10636,10 @@
             {
               "asin": "B00H7FL8MA",
               "region": "us"
+            },
+            {
+              "asin": "B00H564FOE",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9475,6 +10704,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00H7FL8MA",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00H564FOE",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-an-addict"
@@ -9486,6 +10720,10 @@
             {
               "asin": "B002V1LC76",
               "region": "us"
+            },
+            {
+              "asin": "B004EXJZPU",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9555,6 +10793,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V1LC76",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B004EXJZPU",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-an-addict"
@@ -9570,6 +10813,10 @@
             {
               "asin": "B00HHGCHKQ",
               "region": "us"
+            },
+            {
+              "asin": "B07DVZ1LTT",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9638,6 +10885,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00HHGCHKQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B07DVZ1LTT",
               "type": "libex-import"
             }
           ],
@@ -10854,6 +12106,10 @@
             {
               "asin": "B079DVYMJ9",
               "region": "us"
+            },
+            {
+              "asin": "B079DXKS3P",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -10937,6 +12193,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B079DVYMJ9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079DXKS3P",
               "type": "libex-import"
             }
           ],
@@ -11855,6 +13116,10 @@
             {
               "asin": "B00C3GFPDQ",
               "region": "us"
+            },
+            {
+              "asin": "B00C3GF0OU",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11919,6 +13184,11 @@
               "imported_at": "2026-07-29",
               "ref": "B00C3GFPDQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B00C3GF0OU",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-an-outsider"
@@ -11930,6 +13200,10 @@
             {
               "asin": "B002VACNHK",
               "region": "us"
+            },
+            {
+              "asin": "B004EXGJTU",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11989,6 +13263,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002VACNHK",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B004EXGJTU",
+              "type": "libex-import"
             }
           ],
           "work": "death-of-an-outsider"
@@ -12000,6 +13279,10 @@
             {
               "asin": "B00FDUJSMS",
               "region": "us"
+            },
+            {
+              "asin": "B079DFFKBH",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -12063,6 +13346,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00FDUJSMS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B079DFFKBH",
               "type": "libex-import"
             }
           ],
