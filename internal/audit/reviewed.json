@@ -98,6 +98,30 @@
   {
     "decision": "assert",
     "op": "add-series-member",
+    "reason": "Clear and Present Danger (1989) precedes The Sum of All Fears (1991) in publication; the chronological variant already lists it",
+    "series": "a-jack-ryan-novel-publication-order",
+    "target": "clear-and-present-danger",
+    "to": "4"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "The Cardinal of the Kremlin (1988) follows Patriot Games (1987) in publication; the chronological variant already lists it",
+    "series": "a-jack-ryan-novel-publication-order",
+    "target": "the-cardinal-of-the-kremlin",
+    "to": "3"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "The Lion, the Witch and the Wardrobe (1950) is the first Narnia book published; the preferred-order variant already lists it; refused while the BBC dramatisation holds slot 1, it converges once that asserted drop lands",
+    "series": "the-chronicles-of-narnia-publication-order",
+    "target": "the-lion-the-witch-and-the-wardrobe",
+    "to": "1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
     "reason": "The Pillars of the Earth is Kingsbridge 1 in the chronological order (The Evening and the Morning is 0)",
     "series": "kingsbridge",
     "target": "the-pillars-of-the-earth",
@@ -256,6 +280,22 @@
     "to": "zero-frequency"
   },
   {
+    "decision": "assert",
+    "from": "1-7",
+    "op": "drop-membership",
+    "reason": "an omnibus of ten works by four authors is not a volume of the authors' preferred order",
+    "series": "the-chronicles-of-narnia-authors-preferred-order",
+    "target": "10-classic-fantasy-works"
+  },
+  {
+    "decision": "assert",
+    "from": "3.8",
+    "op": "drop-membership",
+    "reason": "the same GraphicAudio production is also listed at 3.5; the 3.8 slot is a duplicate listing",
+    "series": "the-stormlight-archive-dramatized-adaptation",
+    "target": "dawnshard-dramatized-adaptation"
+  },
+  {
     "decision": "reject",
     "field": "position",
     "from": "7",
@@ -314,6 +354,22 @@
     "reason": "this drop would take the Spanish original out of its own series and leave antonia-scott English-only: the English translation is the half that moves",
     "series": "antonia-scott",
     "target": "rey-blanco"
+  },
+  {
+    "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "the BBC dramatisation credits bbc as an author, so it stays its own work rather than merging into the novel (a merge unions authors); the publication order's slot 1 belongs to The Lion, the Witch and the Wardrobe",
+    "series": "the-chronicles-of-narnia-publication-order",
+    "target": "the-chronicles-of-narnia-the-lion-the-witch-and-the-wardrobe"
+  },
+  {
+    "decision": "assert",
+    "from": "1-7",
+    "op": "drop-membership",
+    "reason": "a collected-works omnibus is not a volume of the publication order; it is also listed in screwtape",
+    "series": "the-chronicles-of-narnia-publication-order",
+    "target": "the-collected-works-of-c-s-lewis-the-lion-the-witch-and-the-wardrobe-prince-caspian-and-other"
   },
   {
     "decision": "reject",
@@ -395,6 +451,33 @@
     "target": "a-column-of-fire"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "warriors-5-a-dangerous-path"
+    ],
+    "reason": "same book and same narration re-released: Warriors (Hunter) is a spelling of the Warriors series",
+    "target": "a-dangerous-path"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "amanecer-rojo-narracion-en-castellano-red-rising"
+    ],
+    "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
+    "target": "amanecer-rojo-red-rising"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "balada-de-pajaros-cantores-y-serpientes-the-ballad-of-birds-and-snakes"
+    ],
+    "reason": "same book: two narrations of one work, and the series spellings are one series",
+    "target": "balada-de-pajaros-cantores-y-serpientes"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -416,10 +499,137 @@
     "decision": "accept",
     "op": "merge-works",
     "others": [
+      "dawnshard-dramatized-adaptation",
+      "dawnshard-dramatized-adaptation-the-stormlight-archive"
+    ],
+    "reason": "same book: both GraphicAudio records are one dramatised production of the novella; refused while the asserted drop of the duplicate 3.8 slot is pending, it converges on the audit after that drop lands",
+    "target": "dawnshard"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "despues-de-ti-after-you"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "despues-de-ti"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
       "the-royal-ranger-duel-at-araluen"
     ],
     "reason": "the same book: the two records sit at different positions only because the two Ranger's Apprentice numberings differ",
     "target": "duel-at-araluen"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-capitan-alatriste-captain-alatriste"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "el-capitan-alatriste"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-dia-que-se-perdio-el-amor-the-day-that-love-was-lost"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "el-dia-que-se-perdio-el-amor"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-dia-que-se-perdio-la-cordura-the-day-sanity-was-lost"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "el-dia-que-se-perdio-la-cordura"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-hogar-de-miss-peregrine-para-ninos-peculiares-narracion-en-castellano-miss-peregrines-home-for-pe"
+    ],
+    "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
+    "target": "el-hogar-de-miss-peregrine-para-ninos-peculiares-miss-peregrines-home-for-peculiar-children"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-padrino-edicion-50o-aniversario-the-godfather"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "el-padrino-edicion-50o-aniversario"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-puente-de-los-asesinos-the-bridge-of-assassins"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "el-puente-de-los-asesinos"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-regreso-de-sarah-ellen-the-return-of-sarah-ellen"
+    ],
+    "reason": "same book: two narrations of one work, and the series spellings are one series",
+    "target": "el-regreso-de-sarah-ellen"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-rey-de-hierro-the-iron-king"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "el-rey-de-hierro"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "el-siciliano-the-sicilian"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "el-siciliano"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "ensayo-sobre-la-ceguera-blindness"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "ensayo-sobre-la-ceguera"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "five-little-pigs-dramatised"
+    ],
+    "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
+    "target": "five-little-pigs"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "guns-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
+    "target": "guns-of-the-mountain-man"
   },
   {
     "decision": "assert",
@@ -434,11 +644,231 @@
     "decision": "accept",
     "op": "merge-works",
     "others": [
+      "harry-potter-y-la-piedra-filosofal-harry-potter-1"
+    ],
+    "reason": "same book: two narrations of one work, and the series spellings are one series",
+    "target": "harry-potter-y-la-piedra-filosofal"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "hija-de-la-fortuna-daughter-of-fortune"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "hija-de-la-fortuna"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "im-keller-des-ghouls-damonenjager-isaac-kane-band-0-in-the-ghouls-basement-demon-hunter-isaac-kane-v"
+    ],
+    "reason": "same book and same Lukas Speitling narration: the title states Band 0, the German Edition series spelling is one series",
+    "target": "im-keller-des-ghouls"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "la-amiga-estupenda-my-brilliant-friend"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "la-amiga-estupenda"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "la-catedral-del-mar-cathedral-of-the-sea"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "la-catedral-del-mar"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "la-flor-de-lis-y-el-leon-the-lily-and-the-lion"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "la-flor-de-lis-y-el-leon"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "la-ley-de-los-varones-the-law-of-men"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "la-ley-de-los-varones"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "la-loba-de-francia-the-she-wolf-of-france"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "la-loba-de-francia"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "la-reina-estrangulada-the-strangled-queen"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "la-reina-estrangulada"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "los-herederos-de-la-tierra-la-catedral-del-mar-2"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "los-herederos-de-la-tierra"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "los-venenos-de-la-corona-crown-poisons"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "los-venenos-de-la-corona"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "mentira-lie"
+    ],
+    "reason": "same book: two narrations of one work, and the series spellings are one series",
+    "target": "mentira"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "edge-chronicles-3-midnight-over-sanctaphrax"
+    ],
+    "reason": "same book: the abridged Penguin reading is a recording of the novel, and abridged is stated on it",
+    "target": "midnight-over-sanctaphrax"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "nemesis-orphan-x-book-10"
+    ],
+    "reason": "same book and same Scott Brick narration: Orphan X (Evan Smoak) is a spelling of the Orphan X series",
+    "target": "nemesis-an-orphan-x-novel"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "octopussy-and-the-living-daylights-and-other-stories-with-interview"
+    ],
+    "reason": "same book and same Lucy Fleming and Tom Hiddleston reading: the with-interview record is that production, and only one side carries a sidecar",
+    "target": "octopussy-and-the-living-daylights-and-other-stories"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
       "prince-caspian-abridged",
       "prince-caspian-unabridged"
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "prince-caspian"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "record-of-a-spaceborn-few-wayfarers-3"
+    ],
+    "reason": "same book: two narrations of one work, and the series spellings are one series",
+    "target": "record-of-a-spaceborn-few"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "retrato-en-sepia-portrait-in-sepia"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "retrato-en-sepia"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "warriors-4-rising-storm"
+    ],
+    "reason": "same book and same narration re-released: Warriors (Hunter) is a spelling of the Warriors series",
+    "target": "rising-storm"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "roanoke-narracion-en-castellano"
+    ],
+    "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
+    "target": "roanoke-spanish-edition"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "chroniken-der-gefallenen-seelendieb"
+    ],
+    "reason": "same book and same Felix Borrmann narration re-released under another imprint",
+    "target": "seelendieb-soul-stealer"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "town-tamer-dramatized-adaptation"
+    ],
+    "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
+    "target": "shawn-obrien-town-tamer"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "sinsajo-narracion-en-castellano-mockingjay"
+    ],
+    "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
+    "target": "sinsajo-mockingjay"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "stormchaser-the-edge-chronicles-book-2"
+    ],
+    "reason": "same book: the abridged Penguin reading is a recording of the novel, and abridged is stated on it",
+    "target": "stormchaser"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "tarzan-of-the-apes-alpha-dvd-edition",
+      "tarzan-of-the-apes-amazonclassics-edition",
+      "tarzan-of-the-apes-blackstone-edition",
+      "tarzan-of-the-apes-tarzan-series-1",
+      "tarzan-of-the-apes-the-tarzan-series-1"
+    ],
+    "reason": "same book: every member is another narration or retailer edition of the one novel, and the series spellings are one series",
+    "target": "tarzan-of-the-apes"
   },
   {
     "decision": "assert",
@@ -450,6 +880,17 @@
     "target": "the-battle-for-skandia"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-beasts-of-tarzan-tarzan-series-3",
+      "the-beasts-of-tarzan-tarzan-series-book-3",
+      "the-beasts-of-tarzan-the-tarzan-series-3"
+    ],
+    "reason": "same book: every member is another narration or retailer edition of the one novel, and the series spellings are one series",
+    "target": "the-beasts-of-tarzan"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -457,6 +898,15 @@
     ],
     "reason": "the same Michael Prichard narration of The Cardinal of the Kremlin under a series-decorated title",
     "target": "the-cardinal-of-the-kremlin"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "warriors-6-the-darkest-hour"
+    ],
+    "reason": "same book and same narration re-released: Warriors (Hunter) is a spelling of the Warriors series",
+    "target": "the-darkest-hour"
   },
   {
     "decision": "reject",
@@ -526,6 +976,36 @@
     "target": "the-magicians-nephew"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-forsyte-saga-the-man-of-property"
+    ],
+    "reason": "same book: two narrations of one work, and the series spellings are one series",
+    "target": "the-man-of-property"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-marvelous-land-of-oz-dramatized"
+    ],
+    "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
+    "target": "the-marvelous-land-of-oz"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-return-of-tarzan-classic-tales-edition",
+      "the-return-of-tarzan-tarzan-series-2",
+      "the-return-of-tarzan-tarzan-series-book-2",
+      "the-return-of-tarzan-the-tarzan-series-2"
+    ],
+    "reason": "same book: every member is another narration or retailer edition of the one novel, and the series spellings are one series",
+    "target": "the-return-of-tarzan"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -564,6 +1044,19 @@
     "target": "the-voyage-of-the-dawn-treader"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-wonderful-wizard-of-oz-amazonclassics-edition",
+      "the-wonderful-wizard-of-oz-dramatized",
+      "the-wonderful-wizard-of-oz-unabridged",
+      "wonderful-wizard-of-oz",
+      "wonderful-wizard-of-oz-the-bbc-radio-4-saturday-play"
+    ],
+    "reason": "same book: other narrations, retailer editions and dramatised productions of the one novel, and the authors agree",
+    "target": "the-wonderful-wizard-of-oz"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -585,10 +1078,28 @@
     "decision": "accept",
     "op": "merge-works",
     "others": [
+      "una-noche-y-nada-mas-one-night-and-nothing-else"
+    ],
+    "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
+    "target": "una-noche-y-nada-mas-one-night-and-nothing-more-narracion-en-castellano"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
       "world-without-end-a-kingsbridge-novel"
     ],
     "reason": "the same Ken Follett book catalogued twice; the two records sit in two Kingsbridge reading-order spellings, which is no evidence of two books",
     "target": "world-without-end-ken-follett"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "yo-antes-de-ti-me-before-you"
+    ],
+    "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
+    "target": "yo-antes-de-ti"
   },
   {
     "decision": "accept",
