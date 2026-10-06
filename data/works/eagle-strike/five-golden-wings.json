@@ -3576,7 +3576,10 @@
         "agatha-christie"
       ],
       "genres": [
-        "mystery"
+        "arts-entertainment",
+        "mystery",
+        "thriller-suspense",
+        "westerns"
       ],
       "id": "five-little-pigs",
       "language": "en",
@@ -3709,40 +3712,7 @@
             }
           ],
           "work": "five-little-pigs"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/121648.Five_Little_Pigs",
-          "type": "community"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V5IUZE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Five Little Pigs",
-      "xref": {
-        "goodreads": "121648"
-      }
-    },
-    "five-little-pigs-dramatised": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "mystery",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "five-little-pigs-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "john-moffatt-2010": {
           "added_at": "2026-07-29",
           "asin": [
@@ -3780,17 +3750,30 @@
               "type": "libex-import"
             }
           ],
-          "work": "five-little-pigs-dramatised"
+          "work": "five-little-pigs"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/121648.Five_Little_Pigs",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5IUZE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0042G3KPA",
           "type": "libex-import"
         }
       ],
-      "title": "Five Little Pigs (Dramatised)"
+      "title": "Five Little Pigs",
+      "xref": {
+        "goodreads": "121648"
+      }
     },
     "five-lives-remembered": {
       "added_at": "2026-07-29",

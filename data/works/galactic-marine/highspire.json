@@ -5331,6 +5331,10 @@
             {
               "asin": "8401018668",
               "region": "es"
+            },
+            {
+              "asin": "B071KSXG4M",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5480,6 +5484,11 @@
               "imported_at": "2026-07-29",
               "ref": "8401018668",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B071KSXG4M",
+              "type": "libex-import"
             }
           ],
           "work": "hija-de-la-fortuna"
@@ -5490,61 +5499,14 @@
           "imported_at": "2026-07-29",
           "ref": "8401018668",
           "type": "libex-import"
-        }
-      ],
-      "title": "Hija de la Fortuna"
-    },
-    "hija-de-la-fortuna-daughter-of-fortune": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "isabel-allende"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "womens-fiction"
-      ],
-      "id": "hija-de-la-fortuna-daughter-of-fortune",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "camila-valenzuela-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B071KSXG4M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Bzad6S6oL.jpg",
-          "id": "camila-valenzuela-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "camila-valenzuela"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2017-04-27",
-          "runtime_min": 805,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B071KSXG4M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hija-de-la-fortuna-daughter-of-fortune"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B071KSXG4M",
           "type": "libex-import"
         }
       ],
-      "title": "Hija de la Fortuna [Daughter of Fortune]"
+      "title": "Hija de la Fortuna"
     },
     "hija-de-la-tierra": {
       "added_at": "2026-08-02",

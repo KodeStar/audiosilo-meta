@@ -7261,10 +7261,16 @@
         "l-frank-baum"
       ],
       "genres": [
+        "arts-entertainment",
         "childrens",
         "classics",
         "coming-of-age",
-        "fantasy"
+        "drama-plays",
+        "education",
+        "fantasy",
+        "parenting-relationships",
+        "science-fiction",
+        "young-adult"
       ],
       "id": "the-marvelous-land-of-oz",
       "language": "en",
@@ -8236,6 +8242,45 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B07LCSCL9P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-marvelous-land-of-oz"
+        },
+        "full-cast-2005": {
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0TMKQ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4059127,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4299221,
+              "start_ms": 4059127,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51YwH5MaiSL.jpg",
+          "id": "full-cast-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "The Colonial Radio Theatre on Brilliance Audio",
+          "release_date": "2005-05-23",
+          "runtime_min": 139,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0TMKQ",
               "type": "libex-import"
             }
           ],
@@ -10729,79 +10774,17 @@
           "imported_at": "2026-08-02",
           "ref": "B005BGQOGM",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Marvelous Land of Oz",
-      "xref": {
-        "goodreads": "179565"
-      }
-    },
-    "the-marvelous-land-of-oz-dramatized": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "l-frank-baum"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "drama-plays",
-        "education",
-        "fantasy",
-        "parenting-relationships",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "the-marvelous-land-of-oz-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2005": {
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V0TMKQ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4059127,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4299221,
-              "start_ms": 4059127,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51YwH5MaiSL.jpg",
-          "id": "full-cast-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "The Colonial Radio Theatre on Brilliance Audio",
-          "release_date": "2005-05-23",
-          "runtime_min": 139,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V0TMKQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-marvelous-land-of-oz-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V0TMKQ",
           "type": "libex-import"
         }
       ],
-      "title": "The Marvelous Land of Oz (Dramatized)"
+      "title": "The Marvelous Land of Oz",
+      "xref": {
+        "goodreads": "179565"
+      }
     },
     "the-marvelous-mechanical-man": {
       "added_at": "2026-08-01",

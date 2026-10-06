@@ -11161,118 +11161,7 @@
             {
               "asin": "8420429694",
               "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16857,
-              "start_ms": 0,
-              "title": "Capítulo 1"
             },
-            {
-              "length_ms": 10007,
-              "start_ms": 16857,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 19388,
-              "start_ms": 26864,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 1957418,
-              "start_ms": 46252,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 1754639,
-              "start_ms": 2003670,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1726357,
-              "start_ms": 3758309,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1294349,
-              "start_ms": 5484666,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 2073634,
-              "start_ms": 6779015,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 1762440,
-              "start_ms": 8852649,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 1355186,
-              "start_ms": 10615089,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 1913974,
-              "start_ms": 11970275,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 6274237,
-              "start_ms": 13884249,
-              "title": "Capítulo 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81LMuTpYRcL.jpg",
-          "id": "raul-llorens-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "raul-llorens"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-10-19",
-          "runtime_min": 335,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8420429694",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-capitan-alatriste"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8420429694",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El capitán Alatriste"
-    },
-    "el-capitan-alatriste-captain-alatriste": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arturo-perez-reverte",
-        "carlota-perez-reverte"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "literary-fiction"
-      ],
-      "id": "el-capitan-alatriste-captain-alatriste",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "raul-llorens-2016": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B01MF9F71S",
               "region": "us"
@@ -11353,21 +11242,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "8420429694",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B01MF9F71S",
               "type": "libex-import"
             }
           ],
-          "work": "el-capitan-alatriste-captain-alatriste"
+          "work": "el-capitan-alatriste"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8420429694",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MF9F71S",
           "type": "libex-import"
         }
       ],
-      "title": "El capitán Alatriste [Captain Alatriste]"
+      "title": "El capitán Alatriste"
     },
     "el-capitan-blood": {
       "added_at": "2026-07-29",

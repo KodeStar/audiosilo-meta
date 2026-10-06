@@ -14259,53 +14259,7 @@
             {
               "asin": "B0BZ8XC8MT",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wRW3sN4gL.jpg",
-          "id": "luis-grau-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-grau"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2023-03-23",
-          "runtime_min": 519,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BZ8XC8MT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-ley-de-los-varones"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BZ8XC8MT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La ley de los varones"
-    },
-    "la-ley-de-los-varones-the-law-of-men": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maurice-druon"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "la-ley-de-los-varones-the-law-of-men",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-grau-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0BZ8X58RX",
               "region": "us"
@@ -14324,21 +14278,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0BZ8XC8MT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0BZ8X58RX",
               "type": "libex-import"
             }
           ],
-          "work": "la-ley-de-los-varones-the-law-of-men"
+          "work": "la-ley-de-los-varones"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BZ8XC8MT",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BZ8X58RX",
           "type": "libex-import"
         }
       ],
-      "title": "La ley de los varones [The Law of Men]"
+      "title": "La ley de los varones"
     },
     "la-ley-del-exito-the-law-of-success": {
       "added_at": "2026-07-29",

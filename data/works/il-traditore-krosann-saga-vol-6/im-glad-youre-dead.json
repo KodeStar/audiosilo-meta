@@ -11904,6 +11904,8 @@
         "ulrich-gilga"
       ],
       "genres": [
+        "action-adventure",
+        "historical-fiction",
         "paranormal",
         "thriller-suspense"
       ],
@@ -11911,6 +11913,71 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "lukas-speitling-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CN3X232W",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16323,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4279019,
+              "start_ms": 16323,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 222145,
+              "start_ms": 4295342,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 249126,
+              "start_ms": 4517487,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 142129,
+              "start_ms": 4766613,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 146169,
+              "start_ms": 4908742,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 15254,
+              "start_ms": 5054911,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vDnW-uL1L.jpg",
+          "id": "lukas-speitling-2023",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lukas-speitling"
+          ],
+          "publisher": "Lukas Speitling",
+          "release_date": "2023-11-18",
+          "runtime_min": 84,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CN3X232W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "im-keller-des-ghouls"
+        },
         "lukas-speitling-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11982,97 +12049,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0D31FXKT1",
           "type": "libex-import"
-        }
-      ],
-      "title": "Im Keller des Ghouls"
-    },
-    "im-keller-des-ghouls-damonenjager-isaac-kane-band-0-in-the-ghouls-basement-demon-hunter-isaac-kane-v": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "ulrich-gilga"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction"
-      ],
-      "id": "im-keller-des-ghouls-damonenjager-isaac-kane-band-0-in-the-ghouls-basement-demon-hunter-isaac-kane-v",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lukas-speitling-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CN3X232W",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16323,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4279019,
-              "start_ms": 16323,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 222145,
-              "start_ms": 4295342,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 249126,
-              "start_ms": 4517487,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 142129,
-              "start_ms": 4766613,
-              "title": "Kapitel 4"
-            },
-            {
-              "length_ms": 146169,
-              "start_ms": 4908742,
-              "title": "Kapitel 5"
-            },
-            {
-              "length_ms": 15254,
-              "start_ms": 5054911,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vDnW-uL1L.jpg",
-          "id": "lukas-speitling-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lukas-speitling"
-          ],
-          "publisher": "Lukas Speitling",
-          "release_date": "2023-11-18",
-          "runtime_min": 84,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CN3X232W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "im-keller-des-ghouls-damonenjager-isaac-kane-band-0-in-the-ghouls-basement-demon-hunter-isaac-kane-v"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CN3X232W",
           "type": "libex-import"
         }
       ],
-      "title": "Im Keller des Ghouls: Dämonenjäger Isaac Kane Band 0 [In the Ghoul's Basement: Demon Hunter Isaac Kane, Volume 0]"
+      "title": "Im Keller des Ghouls"
     },
     "im-kerker-der-maschinisten": {
       "added_at": "2026-08-02",
