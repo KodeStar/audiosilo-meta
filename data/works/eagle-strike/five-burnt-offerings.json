@@ -822,6 +822,10 @@
             {
               "asin": "B072MJ1B7L",
               "region": "us"
+            },
+            {
+              "asin": "B07212X6W2",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -901,6 +905,11 @@
               "imported_at": "2026-08-02",
               "ref": "B072MJ1B7L",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B07212X6W2",
+              "type": "libex-import"
             }
           ],
           "work": "five-children-and-it"
@@ -952,6 +961,10 @@
             {
               "asin": "B005DMFQJU",
               "region": "us"
+            },
+            {
+              "asin": "B005DMFE4C",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -1025,6 +1038,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B005DMFQJU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B005DMFE4C",
               "type": "libex-import"
             }
           ],
@@ -1730,6 +1748,51 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0036IN8Z2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "five-children-and-it"
+        },
+        "samantha-bond-2008-2": {
+          "abridged": true,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B004EWWXK0",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3504076,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3615857,
+              "start_ms": 3504076,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3215824,
+              "start_ms": 7119933,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71SCYb1cgXL.jpg",
+          "id": "samantha-bond-2008-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "samantha-bond"
+          ],
+          "publisher": "Penguin",
+          "release_date": "2008-09-02",
+          "runtime_min": 172,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B004EWWXK0",
               "type": "libex-import"
             }
           ],

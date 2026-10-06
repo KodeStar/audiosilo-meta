@@ -89,10 +89,10 @@ const SubclassAsserted = "asserted"
 
 func (r reviewedDecision) proposal() Proposal {
 	p := Proposal{Op: r.Op, Target: r.Target, Series: r.Series, Field: r.Field, From: r.From, To: r.To, Others: r.Others}
-	// W-NOSERIES states every membership it adds with field "series", and L-MIX every
-	// membership it drops with field "position"; an assertion may omit it, and is read
-	// with it, so its identity meets the detector's. (An accept or reject copies a
-	// proposal, so its field is taken as written.)
+	// An assertion may omit a membership's field; it is read as a detector spells it, so
+	// an asserted add can meet W-NOSERIES's proposal (REDUNDANT), while an asserted drop
+	// never meets an L-MIX drop, which names its homes in Others. An accept or reject
+	// copies a proposal, so its field is taken as written.
 	if r.Decision == "assert" && p.Field == "" {
 		switch p.Op {
 		case OpAddSeriesMember:

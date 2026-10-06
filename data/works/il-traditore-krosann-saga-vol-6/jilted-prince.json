@@ -11626,6 +11626,43 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-friday-2027": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B0GRCJZSC4",
+              "region": "de"
+            },
+            {
+              "asin": "B0GRCXZXDY",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71e7aVP0DKL.jpg",
+          "id": "amanda-friday-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-friday"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2027-03-23",
+          "runtime_min": 645,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0GRCJZSC4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0GRCXZXDY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jinx"
+        },
         "amanda-ronconi-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11637,6 +11674,10 @@
             {
               "asin": "B0GTN9SDD7",
               "region": "us"
+            },
+            {
+              "asin": "B0GTMTP49P",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71e7aVP0DKL.jpg",
@@ -11658,6 +11699,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GTN9SDD7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0GTMTP49P",
               "type": "libex-import"
             }
           ],
