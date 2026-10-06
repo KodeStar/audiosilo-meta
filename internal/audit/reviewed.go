@@ -621,18 +621,39 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 			default:
 				promoted, unchanged = statusRedundant, statusRedundant
 			}
+			// A decision that takes effect marks the finding reviewed, which constrains a
+			// retitle (the OpRetitle case in proposalConflictState.add): a candidate carries
+			// the mark into the conflict check, and only a decision that is not refused
+			// leaves it on the finding.
 			if why == "" && fd.Propose.Advisory {
 				if conflictState == nil {
 					conflictState = proposalConflicts(rep)
 				}
-				if conflicts := conflictState.promote(*fd); len(conflicts) > 0 {
+				candidate := *fd
+				candidate.reviewed = true
+				if conflicts := conflictState.promote(candidate); len(conflicts) > 0 {
 					why = strings.Join(conflicts, "; ")
 				} else {
-					fd.Propose.Advisory = false
+					fd.Propose.Advisory, fd.reviewed = false, true
 					setStatus(j, promoted)
 				}
 			} else if why == "" {
-				setStatus(j, unchanged)
+				// Confirming a detector's mechanical retitle is a reviewed title too. It is
+				// registered here rather than in the initial build: beside a merge folding its
+				// work it would make the base set inconsistent, which promotes nothing, where
+				// refusing this one decision leaves the detector's harmless retitle as it was.
+				if fd.Propose.Op == OpRetitle && !fd.reviewed {
+					if conflictState == nil {
+						conflictState = proposalConflicts(rep)
+					}
+					if conflicts := conflictState.confirm(*fd); len(conflicts) > 0 {
+						why = strings.Join(conflicts, "; ")
+					}
+				}
+				if why == "" {
+					fd.reviewed = true
+					setStatus(j, unchanged)
+				}
 			}
 			note := "reviewed and accepted: " + r.Reason
 			switch {

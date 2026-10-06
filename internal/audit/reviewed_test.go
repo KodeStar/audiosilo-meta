@@ -674,3 +674,152 @@ func TestHomeMergeNamesEveryDropAndUndoesARefusal(t *testing.T) {
 		t.Errorf("refused drop left homes[home] = %v", s.homes["home"])
 	}
 }
+
+// reviewed_test.go's retitle cases: an ACCEPTED retitle is a reviewer's title for that
+// record exactly as an asserted one is, so a merge folding its work conflicts with it
+// (consistency.go's OpRetitle case), whichever arrives first.
+var (
+	retitleW     = Proposal{Op: OpRetitle, Target: "w", Field: "title", From: "W (Unabridged)", To: "W"}
+	retitleS     = Proposal{Op: OpRetitle, Target: "s", Field: "title", From: "S (Unabridged)", To: "S"}
+	mergeW       = Proposal{Op: OpMergeWorks, Target: "s", Others: []string{"w"}}
+	unrelatedAdd = Proposal{Op: OpAddSeriesMember, Target: "v", Series: "series", Field: "series", To: "4", Advisory: true}
+)
+
+func advisory(p Proposal) Proposal {
+	p.Advisory = true
+	return p
+}
+
+// An acceptance PROMOTING a retitle of a work a mechanical merge folds away is refused
+// naming the merge, and the retitle stays advisory; a retitle of the survivor is no
+// conflict.
+func TestReviewedAcceptedRetitleRefusedBesideAMergeOfItsWork(t *testing.T) {
+	rep := proposalReport(mergeW, advisory(retitleW))
+	tally := applyReviewed(rep, []reviewedDecision{review(retitleW, "accept")}, nil, nil)
+	if o := tally.All[0]; o.Status != statusRefused || !strings.Contains(o.Why, "proposal-1 retitles w, which proposal-0 folds onto s") {
+		t.Fatalf("tally = %+v", tally)
+	}
+	if fd := rep.classes[0].rows[1]; !fd.Propose.Advisory || fd.reviewed {
+		t.Fatalf("refused retitle = %+v, want it advisory and unmarked", fd)
+	}
+	assertProposalsConsistent(t, rep)
+
+	rep = proposalReport(mergeW, advisory(retitleS))
+	if tally := applyReviewed(rep, []reviewedDecision{review(retitleS, "accept")}, nil, nil); tally.All[0].Status != statusAccepted {
+		t.Fatalf("survivor: tally = %+v", tally)
+	}
+	assertProposalsConsistent(t, rep)
+}
+
+// A retitle accepted FIRST protects its work: a later acceptance of a merge folding it
+// is refused, whether the retitle was promoted or was already the detector's mechanical
+// proposal (a no-op acceptance). With no review of the retitle the same merge is the
+// harmless detector pair and is accepted.
+func TestReviewedAcceptedRetitleRefusesALaterMergeOfItsWork(t *testing.T) {
+	const why = "proposal-0 retitles w, which proposal-1 folds onto s"
+	for _, tc := range []struct {
+		name    string
+		retitle Proposal
+		rs      []reviewedDecision
+		want    []outcomeStatus
+	}{
+		{"promoted", advisory(retitleW), []reviewedDecision{review(retitleW, "accept"), review(mergeW, "accept")},
+			[]outcomeStatus{statusAccepted, statusRefused}},
+		{"no-op", retitleW, []reviewedDecision{review(retitleW, "accept"), review(mergeW, "accept")},
+			[]outcomeStatus{statusNoOp, statusRefused}},
+		{"asserted no-op", retitleW, []reviewedDecision{review(retitleW, "assert"), review(mergeW, "accept")},
+			[]outcomeStatus{statusRedundant, statusRefused}},
+		{"unreviewed", retitleW, []reviewedDecision{review(mergeW, "accept")}, []outcomeStatus{statusAccepted}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			rep := proposalReport(tc.retitle, advisory(mergeW))
+			tally := applyReviewed(rep, tc.rs, nil, nil)
+			for i, want := range tc.want {
+				if o := tally.All[i]; o.Status != want || (want == statusRefused) != strings.Contains(o.Why, why) {
+					t.Fatalf("outcome %d = %+v, want %s", i, o, want)
+				}
+			}
+			if retitle := rep.classes[0].rows[0]; retitle.Propose.Advisory || retitle.reviewed != (len(tc.rs) == 2) {
+				t.Fatalf("retitle = %+v", retitle)
+			}
+			assertProposalsConsistent(t, rep)
+		})
+	}
+}
+
+// A no-op acceptance (or redundant assertion) of a detector's MECHANICAL retitle of a
+// work a mechanical merge folds away is refused on its own: the retitle stays the
+// detector's harmless proposal, unmarked, and the base set stays consistent, so a
+// later promotion is not caught by the fail safe. The fixture is the real shape:
+// W-DUP folds "Mageling (Unabridged)" onto "Mageling" while W-TITLE retitles it.
+func TestReviewedNoOpRetitleRefusedBesideAMechanicalMergeLeavesOthersWorking(t *testing.T) {
+	files := rangerTree(t)
+	files["works/xx/mageling/work.json"] = workJSON(t, "mageling", "Mageling (Unabridged)")
+	files["works/xx/mageling/recordings/r.json"] = recJSON(t, "r", "mageling")
+	files["works/xx/mageling-2/work.json"] = workJSON(t, "mageling-2", "Mageling")
+	files["works/xx/mageling-2/recordings/r.json"] = recJSON(t, "r", "mageling-2")
+	retitleOf := func(rep *Report) *Finding {
+		for i, fd := range rep.class(ClassWorkTitle).rows {
+			if fd.Propose.Op == OpRetitle && fd.Propose.Target == "mageling" {
+				return &rep.class(ClassWorkTitle).rows[i]
+			}
+		}
+		t.Fatal("fixture must carry W-TITLE's retitle of mageling")
+		return nil
+	}
+	base := runFixtureRejecting(t, files)
+	detected := retitleOf(base).Propose
+	if detected.Advisory {
+		t.Fatalf("W-TITLE's retitle is advisory: %+v", detected)
+	}
+	merged := false
+	for _, fd := range base.class(ClassWorkDup).rows {
+		merged = merged || (!fd.Propose.Advisory && fd.Propose.Op == OpMergeWorks && slices.Contains(fd.Propose.Others, "mageling"))
+	}
+	if !merged {
+		t.Fatal("fixture must carry W-DUP's mechanical merge folding mageling")
+	}
+	for _, decision := range []string{"accept", "assert"} {
+		t.Run(decision, func(t *testing.T) {
+			rep := runFixtureRejecting(t, files, review(detected, decision), assertKingsbr)
+			o := rep.Reviewed.All
+			if len(o) != 2 || o[0].Status != statusRefused || !strings.Contains(o[0].Why, "mageling retitles mageling, which") {
+				t.Fatalf("tally = %+v, want the retitle's review refused naming the merge", rep.Reviewed)
+			}
+			if o[1].Status != statusAsserted {
+				t.Fatalf("tally = %+v, want the unrelated assertion promoted", rep.Reviewed)
+			}
+			if fd := retitleOf(rep); fd.Propose.Advisory || fd.reviewed {
+				t.Fatalf("retitle = %+v, want the detector's mechanical proposal, unmarked", fd)
+			}
+			assertProposalsConsistent(t, rep)
+		})
+	}
+}
+
+// A no-op acceptance with no merge beside it marks the finding, and the mark is what
+// assertProposalsConsistent's rebuild reads: a mechanical merge folding the work,
+// appended to the final report, conflicts with it, and does not with the unreviewed
+// twin.
+func TestReviewedNoOpRetitleIsProtectedInTheRebuild(t *testing.T) {
+	for _, reviewed := range []bool{true, false} {
+		rep := proposalReport(retitleW, unrelatedAdd)
+		var rs []reviewedDecision
+		if reviewed {
+			rs = append(rs, review(retitleW, "accept"))
+		}
+		rs = append(rs, review(unrelatedAdd, "accept"))
+		tally := applyReviewed(rep, rs, nil, nil)
+		if reviewed && (tally.All[0].Status != statusNoOp || !rep.classes[0].rows[0].reviewed) {
+			t.Fatalf("tally = %+v, retitle = %+v", tally, rep.classes[0].rows[0])
+		}
+		if o := tally.All[len(rs)-1]; o.Status != statusAccepted {
+			t.Fatalf("reviewed %v: tally = %+v", reviewed, tally)
+		}
+		assertProposalsConsistent(t, rep)
+		rep.classes[0].add(Finding{Key: "late-merge", Propose: mergeW})
+		if c := proposalConflicts(rep).conflicts; (len(c) > 0) != reviewed {
+			t.Fatalf("reviewed %v: rebuild conflicts = %v", reviewed, c)
+		}
+	}
+}
