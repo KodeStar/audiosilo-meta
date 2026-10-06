@@ -5935,7 +5935,8 @@
         "maurice-druon"
       ],
       "genres": [
-        "historical-fiction"
+        "historical-fiction",
+        "history"
       ],
       "id": "la-loba-de-francia",
       "language": "es",
@@ -5948,54 +5949,7 @@
             {
               "asin": "B0CRD2NFWF",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Gi9+qH1JL.jpg",
-          "id": "luis-grau-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-grau"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-01-18",
-          "runtime_min": 677,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CRD2NFWF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-loba-de-francia"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CRD2NFWF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La loba de Francia"
-    },
-    "la-loba-de-francia-the-she-wolf-of-france": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maurice-druon"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history"
-      ],
-      "id": "la-loba-de-francia-the-she-wolf-of-france",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-grau-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B0CRD55DMB",
               "region": "us"
@@ -6014,21 +5968,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CRD2NFWF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CRD55DMB",
               "type": "libex-import"
             }
           ],
-          "work": "la-loba-de-francia-the-she-wolf-of-france"
+          "work": "la-loba-de-francia"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CRD2NFWF",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CRD55DMB",
           "type": "libex-import"
         }
       ],
-      "title": "La loba de Francia [The She-Wolf of France]"
+      "title": "La loba de Francia"
     },
     "la-loba-gris": {
       "added_at": "2026-08-02",

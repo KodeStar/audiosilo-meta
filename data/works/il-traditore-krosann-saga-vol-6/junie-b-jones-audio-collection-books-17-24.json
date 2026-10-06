@@ -10316,30 +10316,7 @@
             }
           ],
           "work": "junkers"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07BHXPWB3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Junkers"
-    },
-    "junkers-revised-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "benjamin-wallace"
-      ],
-      "genres": [
-        "cyberpunk",
-        "science-fiction"
-      ],
-      "id": "junkers-revised-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "phil-thron-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10493,17 +10470,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "junkers-revised-edition"
+          "work": "junkers"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07BHXPWB3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FQ66YKDN",
           "type": "libex-import"
         }
       ],
-      "title": "Junkers (Revised Edition)"
+      "title": "Junkers"
     },
     "junkers-season-two": {
       "added_at": "2026-08-02",

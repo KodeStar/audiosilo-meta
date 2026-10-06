@@ -724,6 +724,10 @@
             {
               "asin": "B09GKZRT26",
               "region": "es"
+            },
+            {
+              "asin": "B09GKWM3H3",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -828,6 +832,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09GKZRT26",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09GKWM3H3",
+              "type": "libex-import"
             }
           ],
           "work": "el-puente-de-los-asesinos"
@@ -838,59 +847,14 @@
           "imported_at": "2026-07-29",
           "ref": "B09GKZRT26",
           "type": "libex-import"
-        }
-      ],
-      "title": "El puente de los Asesinos"
-    },
-    "el-puente-de-los-asesinos-the-bridge-of-assassins": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arturo-perez-reverte"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "el-puente-de-los-asesinos-the-bridge-of-assassins",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "raul-llorens-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09GKWM3H3",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Uh2TPN5WL.jpg",
-          "id": "raul-llorens-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "raul-llorens"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2021-10-28",
-          "runtime_min": 514,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09GKWM3H3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-puente-de-los-asesinos-the-bridge-of-assassins"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09GKWM3H3",
           "type": "libex-import"
         }
       ],
-      "title": "El puente de los Asesinos [The Bridge of Assassins]"
+      "title": "El puente de los Asesinos"
     },
     "el-puente-donde-habitan-las-mariposas": {
       "added_at": "2026-07-29",
@@ -5388,101 +5352,13 @@
       ],
       "genres": [
         "fantasy",
+        "paranormal",
         "psychological-thriller",
+        "romance",
         "thriller-suspense",
         "urban-fantasy"
       ],
       "id": "el-regreso-de-sarah-ellen",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "laura-romero-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0922ZD4QJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15626,
-              "start_ms": 0,
-              "title": "Créditos de apertura"
-            },
-            {
-              "length_ms": 1079124,
-              "start_ms": 15626,
-              "title": "Capítulo 1: Pisco (Perú) Junio de 1983"
-            },
-            {
-              "length_ms": 4186022,
-              "start_ms": 1094750,
-              "title": "Capítulo 2: Al y Eli, Providence (Rhode Island) Agosto de 1991"
-            },
-            {
-              "length_ms": 30663375,
-              "start_ms": 5280772,
-              "title": "Capítulo 3: Al y Eli, Milford (Maine) Agosto de 1991"
-            },
-            {
-              "length_ms": 2748080,
-              "start_ms": 35944147,
-              "title": "Capítulo 4: St. Albans (Vermont) Septiembre de 1991"
-            },
-            {
-              "length_ms": 306015,
-              "start_ms": 38692227,
-              "title": "Capítulo 5: Swanton (Vermont) Octubre de 1991"
-            },
-            {
-              "length_ms": 22568,
-              "start_ms": 38998242,
-              "title": "Créditos finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/7151Nl2szmS.jpg",
-          "id": "laura-romero-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laura-romero"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-04-09",
-          "runtime_min": 650,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0922ZD4QJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-regreso-de-sarah-ellen"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0922ZD4QJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El regreso de Sarah Ellen"
-    },
-    "el-regreso-de-sarah-ellen-the-return-of-sarah-ellen": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "gemma-herrero-virto"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "el-regreso-de-sarah-ellen-the-return-of-sarah-ellen",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -5769,17 +5645,87 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-regreso-de-sarah-ellen-the-return-of-sarah-ellen"
+          "work": "el-regreso-de-sarah-ellen"
+        },
+        "laura-romero-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0922ZD4QJ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15626,
+              "start_ms": 0,
+              "title": "Créditos de apertura"
+            },
+            {
+              "length_ms": 1079124,
+              "start_ms": 15626,
+              "title": "Capítulo 1: Pisco (Perú) Junio de 1983"
+            },
+            {
+              "length_ms": 4186022,
+              "start_ms": 1094750,
+              "title": "Capítulo 2: Al y Eli, Providence (Rhode Island) Agosto de 1991"
+            },
+            {
+              "length_ms": 30663375,
+              "start_ms": 5280772,
+              "title": "Capítulo 3: Al y Eli, Milford (Maine) Agosto de 1991"
+            },
+            {
+              "length_ms": 2748080,
+              "start_ms": 35944147,
+              "title": "Capítulo 4: St. Albans (Vermont) Septiembre de 1991"
+            },
+            {
+              "length_ms": 306015,
+              "start_ms": 38692227,
+              "title": "Capítulo 5: Swanton (Vermont) Octubre de 1991"
+            },
+            {
+              "length_ms": 22568,
+              "start_ms": 38998242,
+              "title": "Créditos finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7151Nl2szmS.jpg",
+          "id": "laura-romero-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "laura-romero"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-04-09",
+          "runtime_min": 650,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0922ZD4QJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-regreso-de-sarah-ellen"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0922ZD4QJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B08NWCTBK5",
           "type": "libex-import"
         }
       ],
-      "title": "El regreso de Sarah Ellen [The Return of Sarah Ellen]"
+      "title": "El regreso de Sarah Ellen"
     },
     "el-regreso-de-sherlock-holmes": {
       "added_at": "2026-07-29",
@@ -9778,246 +9724,7 @@
             {
               "asin": "B07YYLPPSP",
               "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17507,
-              "start_ms": 0,
-              "title": "Capítulo 1"
             },
-            {
-              "length_ms": 8335,
-              "start_ms": 17507,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 155527,
-              "start_ms": 25842,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 6594,
-              "start_ms": 181369,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 2065066,
-              "start_ms": 187963,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1789097,
-              "start_ms": 2253029,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1781992,
-              "start_ms": 4042126,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 854981,
-              "start_ms": 5824118,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 1125285,
-              "start_ms": 6679099,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 1408568,
-              "start_ms": 7804384,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 898774,
-              "start_ms": 9212952,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 961213,
-              "start_ms": 10111726,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 750631,
-              "start_ms": 11072939,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 7337,
-              "start_ms": 11823570,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 1548051,
-              "start_ms": 11830907,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 1130765,
-              "start_ms": 13378958,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 758503,
-              "start_ms": 14509723,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 1610977,
-              "start_ms": 15268226,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 1199171,
-              "start_ms": 16879203,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 747728,
-              "start_ms": 18078374,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 1113234,
-              "start_ms": 18826102,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 910686,
-              "start_ms": 19939336,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 1420155,
-              "start_ms": 20850022,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 652805,
-              "start_ms": 22270177,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 781908,
-              "start_ms": 22922982,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 749795,
-              "start_ms": 23704890,
-              "title": "Capítulo 26"
-            },
-            {
-              "length_ms": 6617,
-              "start_ms": 24454685,
-              "title": "Capítulo 27"
-            },
-            {
-              "length_ms": 922157,
-              "start_ms": 24461302,
-              "title": "Capítulo 28"
-            },
-            {
-              "length_ms": 1035447,
-              "start_ms": 25383459,
-              "title": "Capítulo 29"
-            },
-            {
-              "length_ms": 735097,
-              "start_ms": 26418906,
-              "title": "Capítulo 30"
-            },
-            {
-              "length_ms": 620483,
-              "start_ms": 27154003,
-              "title": "Capítulo 31"
-            },
-            {
-              "length_ms": 979231,
-              "start_ms": 27774486,
-              "title": "Capítulo 32"
-            },
-            {
-              "length_ms": 820546,
-              "start_ms": 28753717,
-              "title": "Capítulo 33"
-            },
-            {
-              "length_ms": 916538,
-              "start_ms": 29574263,
-              "title": "Capítulo 34"
-            },
-            {
-              "length_ms": 1128605,
-              "start_ms": 30490801,
-              "title": "Capítulo 35"
-            },
-            {
-              "length_ms": 1061175,
-              "start_ms": 31619406,
-              "title": "Capítulo 36"
-            },
-            {
-              "length_ms": 2214440,
-              "start_ms": 32680581,
-              "title": "Capítulo 37"
-            },
-            {
-              "length_ms": 49318,
-              "start_ms": 34895021,
-              "title": "Capítulo 38"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91nlsJ0G3DL.jpg",
-          "id": "luis-grau-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-grau"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial Audio",
-          "release_date": "2019-10-24",
-          "runtime_min": 582,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YYLPPSP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-rey-de-hierro"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YYLPPSP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El rey de hierro"
-    },
-    "el-rey-de-hierro-the-iron-king": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maurice-druon",
-        "ma-guadalupe-orozco-bravo"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "el-rey-de-hierro-the-iron-king",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-grau-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "8490707545",
               "region": "us"
@@ -10228,21 +9935,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YYLPPSP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "8490707545",
               "type": "libex-import"
             }
           ],
-          "work": "el-rey-de-hierro-the-iron-king"
+          "work": "el-rey-de-hierro"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YYLPPSP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "8490707545",
           "type": "libex-import"
         }
       ],
-      "title": "El rey de hierro [The Iron King]"
+      "title": "El rey de hierro"
     },
     "el-rey-de-las-mentiras": {
       "added_at": "2026-07-29",

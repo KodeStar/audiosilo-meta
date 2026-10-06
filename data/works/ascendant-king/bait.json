@@ -9199,7 +9199,11 @@
         }
       ],
       "genres": [
-        "action-adventure"
+        "action-adventure",
+        "fantasy",
+        "post-apocalyptic",
+        "science-fiction",
+        "thriller-suspense"
       ],
       "id": "balada-de-pajaros-cantores-y-serpientes",
       "language": "es",
@@ -9457,38 +9461,7 @@
             }
           ],
           "work": "balada-de-pajaros-cantores-y-serpientes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08X5Z85VG",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B0DYF74YY3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Balada de pájaros cantores y serpientes"
-    },
-    "balada-de-pajaros-cantores-y-serpientes-the-ballad-of-birds-and-snakes": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "suzanne-collins"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "post-apocalyptic",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "balada-de-pajaros-cantores-y-serpientes-the-ballad-of-birds-and-snakes",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
         "miguel-bernardeau-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9697,17 +9670,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "balada-de-pajaros-cantores-y-serpientes-the-ballad-of-birds-and-snakes"
+          "work": "balada-de-pajaros-cantores-y-serpientes"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B08X5Z85VG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-12",
+          "ref": "B0DYF74YY3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "8427222238",
           "type": "libex-import"
         }
       ],
-      "title": "Balada de pájaros cantores y serpientes [The Ballad of Birds and Snakes]"
+      "title": "Balada de pájaros cantores y serpientes"
     },
     "balance": {
       "added_at": "2026-08-02",

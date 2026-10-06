@@ -7165,6 +7165,10 @@
             {
               "asin": "B07YYQTLDN",
               "region": "es"
+            },
+            {
+              "asin": "B07YYP697X",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -7334,6 +7338,11 @@
               "imported_at": "2026-07-29",
               "ref": "B07YYQTLDN",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07YYP697X",
+              "type": "libex-import"
             }
           ],
           "work": "los-venenos-de-la-corona"
@@ -7344,60 +7353,14 @@
           "imported_at": "2026-07-29",
           "ref": "B07YYQTLDN",
           "type": "libex-import"
-        }
-      ],
-      "title": "Los venenos de la corona"
-    },
-    "los-venenos-de-la-corona-crown-poisons": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "maurice-druon",
-        "ma-guadalupe-orozco-bravo"
-      ],
-      "genres": [
-        "historical-fiction"
-      ],
-      "id": "los-venenos-de-la-corona-crown-poisons",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "luis-grau-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YYP697X",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91iRMiTTWwL.jpg",
-          "id": "luis-grau-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-grau"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial Audio",
-          "release_date": "2019-10-24",
-          "runtime_min": 474,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YYP697X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "los-venenos-de-la-corona-crown-poisons"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07YYP697X",
           "type": "libex-import"
         }
       ],
-      "title": "Los venenos de la corona [Crown Poisons]"
+      "title": "Los venenos de la corona"
     },
     "los-viajes-de-gulliver": {
       "added_at": "2026-07-29",

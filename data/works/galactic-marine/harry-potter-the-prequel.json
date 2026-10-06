@@ -6058,6 +6058,9 @@
         "j-k-rowling"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
+        "coming-of-age",
         "fantasy",
         "sword-sorcery",
         "young-adult"
@@ -6066,6 +6069,131 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "carlos-ponce-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1781105022",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 29143,
+              "start_ms": 0,
+              "title": "Créditos iniciales"
+            },
+            {
+              "length_ms": 1773049,
+              "start_ms": 29143,
+              "title": "Capítulo 1: El niño que sobrevivió"
+            },
+            {
+              "length_ms": 1317384,
+              "start_ms": 1802192,
+              "title": "Capítulo 2: El vidrio que se desvaneció"
+            },
+            {
+              "length_ms": 1474211,
+              "start_ms": 3119576,
+              "title": "Capítulo 3: Las cartas de nadie"
+            },
+            {
+              "length_ms": 1536534,
+              "start_ms": 4593787,
+              "title": "Capítulo 4: El guardián de las llaves"
+            },
+            {
+              "length_ms": 2766587,
+              "start_ms": 6130321,
+              "title": "Capítulo 5: El callejón Diagon"
+            },
+            {
+              "length_ms": 2395649,
+              "start_ms": 8896908,
+              "title": "Capítulo 6: El viaje desde el andén nueve y tres cuartos"
+            },
+            {
+              "length_ms": 1801520,
+              "start_ms": 11292557,
+              "title": "Capítulo 7: El Sombrero Seleccionador"
+            },
+            {
+              "length_ms": 1216981,
+              "start_ms": 13094077,
+              "title": "Capítulo 8: El profesor de pociones"
+            },
+            {
+              "length_ms": 1792208,
+              "start_ms": 14311058,
+              "title": "Capítulo 9: El duelo a medianoche"
+            },
+            {
+              "length_ms": 1555667,
+              "start_ms": 16103266,
+              "title": "Capítulo 10: Halloween"
+            },
+            {
+              "length_ms": 1242058,
+              "start_ms": 17658933,
+              "title": "Capítulo 11: Quidditch"
+            },
+            {
+              "length_ms": 1972302,
+              "start_ms": 18900991,
+              "title": "Capítulo 12: El espejo de Oesed"
+            },
+            {
+              "length_ms": 1228033,
+              "start_ms": 20873293,
+              "title": "Capítulo 13: Nicolás Flamel"
+            },
+            {
+              "length_ms": 1250069,
+              "start_ms": 22101326,
+              "title": "Capítulo 14: Norberto, el ridgeback noruego"
+            },
+            {
+              "length_ms": 1863145,
+              "start_ms": 23351395,
+              "title": "Capítulo 15: El bosque prohibido"
+            },
+            {
+              "length_ms": 2303047,
+              "start_ms": 25214540,
+              "title": "Capítulo 16: A través de la trampilla"
+            },
+            {
+              "length_ms": 2169925,
+              "start_ms": 27517587,
+              "title": "Capítulo 17: El hombre con dos caras"
+            },
+            {
+              "length_ms": 117727,
+              "start_ms": 29687512,
+              "title": "Créditos finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/912DQetVFjL.jpg",
+          "id": "carlos-ponce-2019",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carlos-ponce"
+          ],
+          "publisher": "Pottermore Publishing",
+          "release_date": "2019-02-21",
+          "runtime_min": 496,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1781105022",
+              "type": "libex-import"
+            }
+          ],
+          "work": "harry-potter-y-la-piedra-filosofal"
+        },
         "leonor-watling-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6197,159 +6325,14 @@
           "imported_at": "2026-08-02",
           "ref": "1781105189",
           "type": "libex-import"
-        }
-      ],
-      "title": "Harry Potter y la piedra filosofal"
-    },
-    "harry-potter-y-la-piedra-filosofal-harry-potter-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-k-rowling"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "harry-potter-y-la-piedra-filosofal-harry-potter-1",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-ponce-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1781105022",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 29143,
-              "start_ms": 0,
-              "title": "Créditos iniciales"
-            },
-            {
-              "length_ms": 1773049,
-              "start_ms": 29143,
-              "title": "Capítulo 1: El niño que sobrevivió"
-            },
-            {
-              "length_ms": 1317384,
-              "start_ms": 1802192,
-              "title": "Capítulo 2: El vidrio que se desvaneció"
-            },
-            {
-              "length_ms": 1474211,
-              "start_ms": 3119576,
-              "title": "Capítulo 3: Las cartas de nadie"
-            },
-            {
-              "length_ms": 1536534,
-              "start_ms": 4593787,
-              "title": "Capítulo 4: El guardián de las llaves"
-            },
-            {
-              "length_ms": 2766587,
-              "start_ms": 6130321,
-              "title": "Capítulo 5: El callejón Diagon"
-            },
-            {
-              "length_ms": 2395649,
-              "start_ms": 8896908,
-              "title": "Capítulo 6: El viaje desde el andén nueve y tres cuartos"
-            },
-            {
-              "length_ms": 1801520,
-              "start_ms": 11292557,
-              "title": "Capítulo 7: El Sombrero Seleccionador"
-            },
-            {
-              "length_ms": 1216981,
-              "start_ms": 13094077,
-              "title": "Capítulo 8: El profesor de pociones"
-            },
-            {
-              "length_ms": 1792208,
-              "start_ms": 14311058,
-              "title": "Capítulo 9: El duelo a medianoche"
-            },
-            {
-              "length_ms": 1555667,
-              "start_ms": 16103266,
-              "title": "Capítulo 10: Halloween"
-            },
-            {
-              "length_ms": 1242058,
-              "start_ms": 17658933,
-              "title": "Capítulo 11: Quidditch"
-            },
-            {
-              "length_ms": 1972302,
-              "start_ms": 18900991,
-              "title": "Capítulo 12: El espejo de Oesed"
-            },
-            {
-              "length_ms": 1228033,
-              "start_ms": 20873293,
-              "title": "Capítulo 13: Nicolás Flamel"
-            },
-            {
-              "length_ms": 1250069,
-              "start_ms": 22101326,
-              "title": "Capítulo 14: Norberto, el ridgeback noruego"
-            },
-            {
-              "length_ms": 1863145,
-              "start_ms": 23351395,
-              "title": "Capítulo 15: El bosque prohibido"
-            },
-            {
-              "length_ms": 2303047,
-              "start_ms": 25214540,
-              "title": "Capítulo 16: A través de la trampilla"
-            },
-            {
-              "length_ms": 2169925,
-              "start_ms": 27517587,
-              "title": "Capítulo 17: El hombre con dos caras"
-            },
-            {
-              "length_ms": 117727,
-              "start_ms": 29687512,
-              "title": "Créditos finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/912DQetVFjL.jpg",
-          "id": "carlos-ponce-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-ponce"
-          ],
-          "publisher": "Pottermore Publishing",
-          "release_date": "2019-02-21",
-          "runtime_min": 496,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1781105022",
-              "type": "libex-import"
-            }
-          ],
-          "work": "harry-potter-y-la-piedra-filosofal-harry-potter-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1781105022",
           "type": "libex-import"
         }
       ],
-      "title": "Harry Potter y la piedra filosofal (Harry Potter 1)"
+      "title": "Harry Potter y la piedra filosofal"
     },
     "harry-potter-y-las-reliquias-de-la-muerte": {
       "added_at": "2026-08-02",

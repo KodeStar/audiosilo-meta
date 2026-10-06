@@ -6201,6 +6201,7 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "epic-fantasy",
         "fantasy"
       ],
@@ -6208,6 +6209,161 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-brownstein-2024": {
+          "abridged": false,
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B0DDCV8PDT",
+              "region": "ca"
+            },
+            {
+              "asin": "B0DDCWYD29",
+              "region": "uk"
+            },
+            {
+              "asin": "B0DDCV3NBN",
+              "region": "au"
+            },
+            {
+              "asin": "B0DDCWR1KP",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DDCV83LG",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UwLVENf9L.jpg",
+          "id": "andy-brownstein-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-brownstein",
+            "chris-davenport",
+            "danny-montooth",
+            "elizabeth-jernigan",
+            "evan-casey",
+            "full-cast",
+            "joe-mallon",
+            "lily-beacon",
+            "matthew-mcgee",
+            "robbie-gay",
+            "stephon-walker",
+            "yasmin-tuazon"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024-11-26",
+          "runtime_min": 324,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCV8PDT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCWYD29",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCV3NBN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCWR1KP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCV83LG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dawnshard"
+        },
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0DDCXWCHM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 44924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 411000,
+              "start_ms": 44924,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 4043174,
+              "start_ms": 455924,
+              "title": "Track 1"
+            },
+            {
+              "length_ms": 2227884,
+              "start_ms": 4499098,
+              "title": "Track 2"
+            },
+            {
+              "length_ms": 2733871,
+              "start_ms": 6726982,
+              "title": "Track 3"
+            },
+            {
+              "length_ms": 4657458,
+              "start_ms": 9460853,
+              "title": "Track 4"
+            },
+            {
+              "length_ms": 1969214,
+              "start_ms": 14118311,
+              "title": "Track 5"
+            },
+            {
+              "length_ms": 3114000,
+              "start_ms": 16087525,
+              "title": "Track 6"
+            },
+            {
+              "length_ms": 291785,
+              "start_ms": 19201525,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91UwLVENf9L.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 325,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0DDCXWCHM",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DDCXWCHM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dawnshard"
+        },
         "kate-reading-2022": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -6489,107 +6645,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0B75NY8F2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dawnshard"
-    },
-    "dawnshard-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "dawnshard-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0DDCXWCHM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 44924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 411000,
-              "start_ms": 44924,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 4043174,
-              "start_ms": 455924,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 2227884,
-              "start_ms": 4499098,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 2733871,
-              "start_ms": 6726982,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 4657458,
-              "start_ms": 9460853,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 1969214,
-              "start_ms": 14118311,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 3114000,
-              "start_ms": 16087525,
-              "title": "Track 6"
-            },
-            {
-              "length_ms": 291785,
-              "start_ms": 19201525,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91UwLVENf9L.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 325,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0DDCXWCHM",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCXWCHM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dawnshard-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0DDCXWCHM",
@@ -6599,109 +6655,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0DDCXWCHM",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dawnshard [Dramatized Adaptation]"
-    },
-    "dawnshard-dramatized-adaptation-the-stormlight-archive": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "dawnshard-dramatized-adaptation-the-stormlight-archive",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-brownstein-2024": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B0DDCV8PDT",
-              "region": "ca"
-            },
-            {
-              "asin": "B0DDCWYD29",
-              "region": "uk"
-            },
-            {
-              "asin": "B0DDCV3NBN",
-              "region": "au"
-            },
-            {
-              "asin": "B0DDCWR1KP",
-              "region": "fr"
-            },
-            {
-              "asin": "B0DDCV83LG",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91UwLVENf9L.jpg",
-          "id": "andy-brownstein-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andy-brownstein",
-            "chris-davenport",
-            "danny-montooth",
-            "elizabeth-jernigan",
-            "evan-casey",
-            "full-cast",
-            "joe-mallon",
-            "lily-beacon",
-            "matthew-mcgee",
-            "robbie-gay",
-            "stephon-walker",
-            "yasmin-tuazon"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024-11-26",
-          "runtime_min": 324,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCV8PDT",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCWYD29",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCV3NBN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCWR1KP",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DDCV83LG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dawnshard-dramatized-adaptation-the-stormlight-archive"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B0DDCV8PDT",
           "type": "libex-import"
         }
       ],
-      "title": "Dawnshard (Dramatized Adaptation): The Stormlight Archive"
+      "title": "Dawnshard"
     },
     "dawnstar": {
       "added_at": "2026-08-08",

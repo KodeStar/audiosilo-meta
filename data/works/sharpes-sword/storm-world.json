@@ -7811,7 +7811,8 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "fantasy"
+        "fantasy",
+        "horror"
       ],
       "id": "stormchaser",
       "language": "en",
@@ -7861,33 +7862,7 @@
             }
           ],
           "work": "stormchaser"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0032N8RZC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Stormchaser"
-    },
-    "stormchaser-the-edge-chronicles-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "paul-stewart",
-        "chris-riddell"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "horror"
-      ],
-      "id": "stormchaser-the-edge-chronicles-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "john-lee-2005": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7951,17 +7926,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "stormchaser-the-edge-chronicles-book-2"
+          "work": "stormchaser"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0032N8RZC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002VA9KP8",
           "type": "libex-import"
         }
       ],
-      "title": "Stormchaser: The Edge Chronicles Book 2"
+      "title": "Stormchaser"
     },
     "stormcrossed-magic": {
       "added_at": "2026-08-02",
