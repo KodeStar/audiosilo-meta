@@ -52,7 +52,8 @@ import (
 // is REFUSED. A retitle is compared with the title the work (its survivor, if retired)
 // states NOW: the asserted To is STALE (applied), the asserted From is sourced, and any
 // other title is REFUSED naming it - the record moved, and a stale review must not
-// overwrite a title nobody reviewed.
+// overwrite a title nobody reviewed - unless the target was retired, whose survivor's
+// other title is STALE, as for a drop.
 //
 //go:embed reviewed.json
 var reviewedFile []byte
@@ -689,10 +690,10 @@ type sourcing struct {
 // record it names is gone or it has been applied (a merge's others all resolve to its
 // target, an added membership is listed at its slot, a dropped one is not listed at
 // all, its target was retired onto a survivor listed only at other slots, or a retitled
-// work already states the new title), REFUSED when it names no record (live or
+// work already states the new title or was retired onto a survivor stating neither), REFUSED when it names no record (live or
 // retired), would widen or move one, the series holds an added position already, lists
 // a live dropped work at another position, would be left with no members by the drop,
-// or a retitled work states neither title.
+// or a live retitled work states neither title.
 func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, status outcomeStatus, why string) {
 	if s.ix == nil {
 		return nil, 0, statusStale, "no catalogue to find its records in"
@@ -762,6 +763,11 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 			return nil, 0, statusStale, fmt.Sprintf("applied: work %s states the title %q", p.Target, title)
 		case p.From:
 		default:
+			// A retired target is the work the decision named no longer existing, as for a drop:
+			// its survivor's own title is nobody's review, so there is nothing left to apply.
+			if r.Target != p.Target {
+				return nil, 0, statusStale, fmt.Sprintf("applied: %s was merged into %s, which states the title %q", r.Target, p.Target, title)
+			}
 			return nil, 0, statusRefused, fmt.Sprintf("work %s now states the title %q, not the %q the assertion was written against",
 				p.Target, title, p.From)
 		}

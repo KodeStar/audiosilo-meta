@@ -242,7 +242,7 @@ func TestADropConflictsWithAnotherChangeToItsMembership(t *testing.T) {
 
 // A DETECTOR's retitle of a merge loser is consistent (either order leaves one
 // catalogue, and the real tree holds such pairs); an ASSERTED one conflicts with a
-// merge folding its work, in either order, and with a second asserted retitle of it.
+// merge folding its work, in either order, and with any second retitle of it.
 // A retitle of the merge's survivor is no conflict either way.
 func TestAnAssertedRetitleConflictsWithAMergeOfItsWork(t *testing.T) {
 	merge := Finding{Key: "merge", Propose: Proposal{Op: OpMergeWorks, Target: "survivor", Others: []string{"w"}}}
@@ -267,6 +267,7 @@ func TestAnAssertedRetitleConflictsWithAMergeOfItsWork(t *testing.T) {
 		{"asserted retitle of the loser first", []Finding{retitle(SubclassAsserted, "w", "New"), merge}, true},
 		{"asserted retitle of the survivor", []Finding{merge, retitle(SubclassAsserted, "survivor", "New")}, false},
 		{"two asserted retitles", []Finding{retitle(SubclassAsserted, "w", "New"), retitle(SubclassAsserted, "w", "Newer")}, true},
+		{"a detector's and an asserted retitle", []Finding{retitle("decorated", "w", "New"), retitle(SubclassAsserted, "w", "Newer")}, true},
 	} {
 		if c := proposalConflicts(report(tc.fds...)).conflicts; (len(c) > 0) != tc.conflict {
 			t.Errorf("%s: conflicts = %v, want conflict %v", tc.name, c, tc.conflict)

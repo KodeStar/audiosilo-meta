@@ -612,8 +612,8 @@ func TestReviewedAssertRetitleLookups(t *testing.T) {
 		{"no such work", retitleAssertion("world-without-ends", "", "World Without End", "World without End"), statusRefused,
 			"no such work world-without-ends"},
 		{"retired target", retitleAssertion("world-without-end-old", "", "World Without End", "World without End"), statusAsserted, ""},
-		{"retired target moved", retitleAssertion("world-without-end-old", "", "World Without End: Old", "World without End"), statusRefused,
-			`work world-without-end now states the title "World Without End"`},
+		{"retired target moved", retitleAssertion("world-without-end-old", "", "World Without End: Old", "World without End"), statusStale,
+			`applied: world-without-end-old was merged into world-without-end, which states the title "World Without End"`},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			rep := runFixtureRejectingWith(t, rangerTree(t), reds, tc.r)
