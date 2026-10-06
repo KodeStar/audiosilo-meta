@@ -1,8 +1,9 @@
 package importer
 
 import (
+	"maps"
 	"reflect"
-	"sort"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -99,8 +100,11 @@ func TestFormatNodesArePinned(t *testing.T) {
 				t.Errorf("%s format path %q is not in %s (regenerate with scripts/genrepaths)", region, key, genrePathsFile)
 				continue
 			}
-			if got := table.FormatTree[region][key]; got != node {
-				t.Errorf("format_tree %s %q = %q, want %q", region, key, got, node)
+			if got := table.FormatPaths[region][key]; got != node {
+				t.Errorf("format_paths %s %q = %q, want %q", region, key, got, node)
+			}
+			if !table.FormatTree[node].Format {
+				t.Errorf("format_tree does not mark %s (%s %q) as a format node", node, region, key)
 			}
 			want[node] = true
 		}
@@ -113,50 +117,29 @@ func TestFormatNodesArePinned(t *testing.T) {
 		got[n] = true
 	}
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("format = %v\nwant (from the pinned paths) %v", sortedSet(got), sortedSet(want))
+		t.Errorf("format = %v\nwant (from the pinned paths) %v", slices.Sorted(maps.Keys(got)), slices.Sorted(maps.Keys(want)))
 	}
-	if !sort.StringsAreSorted(table.Format) {
+	if !slices.IsSorted(table.Format) {
 		t.Errorf("format is not sorted")
 	}
 }
 
-// TestFormatTreeMatchesGenrePaths pins the DERIVED format_tree against the
-// verification file: for every marketplace, exactly the paths under a root that
-// holds a format node, each naming the same node. A hand edit, or a format list
-// changed without regenerating, fails here.
+// TestFormatTreeMatchesGenrePaths pins the DERIVED format_tree and format_paths
+// against the verification file: DeriveFormatTree (the generator's own
+// derivation) over its paths must give exactly what the table carries. A hand
+// edit, or a format list changed without regenerating, fails here.
 func TestFormatTreeMatchesGenrePaths(t *testing.T) {
 	table := audibleGenreTable()
-	isFormat := map[string]bool{}
-	for _, n := range table.Format {
-		isFormat[n] = true
+	tree, paths, err := DeriveFormatTree(table.Format, loadGenrePaths(t))
+	if err != nil {
+		t.Fatal(err)
 	}
-	for region, paths := range loadGenrePaths(t) {
-		roots := map[string]bool{}
-		for key, node := range paths {
-			if isFormat[node] {
-				root, _, _ := strings.Cut(key, ":")
-				roots[root] = true
-			}
-		}
-		want := map[string]string{}
-		for key, node := range paths {
-			if root, _, _ := strings.Cut(key, ":"); roots[root] {
-				want[key] = node
-			}
-		}
-		if got := table.FormatTree[region]; !reflect.DeepEqual(got, want) && (len(got) != 0 || len(want) != 0) {
-			t.Errorf("format_tree[%s] has %d paths, the verification file %d - regenerate with scripts/genrepaths", region, len(got), len(want))
-		}
+	if !reflect.DeepEqual(tree, table.FormatTree) {
+		t.Errorf("format_tree differs from its derivation over %s - regenerate with scripts/genrepaths", genrePathsFile)
 	}
-}
-
-func sortedSet(m map[string]bool) []string {
-	out := make([]string, 0, len(m))
-	for k := range m {
-		out = append(out, k)
+	if !reflect.DeepEqual(paths, table.FormatPaths) {
+		t.Errorf("format_paths differs from its derivation over %s - regenerate with scripts/genrepaths", genrePathsFile)
 	}
-	sort.Strings(out)
-	return out
 }
 
 // nodeClaims builds node-stating claims (the libex shape) from "id|name" pairs.
@@ -173,15 +156,6 @@ func mapRow(claims []genreClaim) []string {
 	return audibleGenreTable().mapGenres(claims, map[string]bool{})
 }
 
-func has(gs []string, g string) bool {
-	for _, x := range gs {
-		if x == g {
-			return true
-		}
-	}
-	return false
-}
-
 // TestFormatRuleFiveLittlePigs replays the exact claims libex holds for the two
 // BBC Five Little Pigs productions the rule was written for. The full-cast
 // dramatization states only format ladders under Arts & Entertainment beside its
@@ -193,7 +167,7 @@ func TestFormatRuleFiveLittlePigs(t *testing.T) {
 		"18571910011|Arts & Entertainment", "18571919011|Audio Performances & Dramatizations",
 		"18571920011|Dramatizations", "18574597011|Mystery, Thriller & Suspense",
 		"18574606011|Mystery", "18574621011|Thriller & Suspense", "18574623011|Crime Thrillers"))
-	if has(fullCast, "arts-entertainment") || !has(fullCast, "mystery") {
+	if slices.Contains(fullCast, "arts-entertainment") || !slices.Contains(fullCast, "mystery") {
 		t.Errorf("B076TNM4YZ = %v; want mystery and no arts-entertainment", fullCast)
 	}
 	moffatt := mapRow(nodeClaims( // B0042G3KPA
@@ -202,7 +176,7 @@ func TestFormatRuleFiveLittlePigs(t *testing.T) {
 		"18574456011|Genre Fiction", "18574481011|Westerns", "18574597011|Mystery, Thriller & Suspense",
 		"18574598011|Crime Fiction", "18574606011|Mystery", "18574619011|Traditional Detectives",
 		"18574621011|Thriller & Suspense"))
-	if !has(moffatt, "arts-entertainment") || !has(moffatt, "mystery") {
+	if !slices.Contains(moffatt, "arts-entertainment") || !slices.Contains(moffatt, "mystery") {
 		t.Errorf("B0042G3KPA = %v; want arts-entertainment (through Art) beside mystery", moffatt)
 	}
 }
@@ -274,12 +248,12 @@ func TestFormatRule(t *testing.T) {
 				t.Errorf("mapGenres = %v, want %v", got, tc.want)
 			}
 			for _, g := range tc.keep {
-				if !has(got, g) {
+				if !slices.Contains(got, g) {
 					t.Errorf("mapGenres = %v, want it to keep %s", got, g)
 				}
 			}
 			for _, g := range tc.without {
-				if has(got, g) {
+				if slices.Contains(got, g) {
 					t.Errorf("mapGenres = %v, want no %s", got, g)
 				}
 			}
@@ -295,7 +269,7 @@ func TestFormatRule(t *testing.T) {
 func TestFormatRuleEveryMarketplace(t *testing.T) {
 	table := audibleGenreTable()
 	plain := table
-	plain.formats = nil
+	plain.FormatTree = nil
 	paths := loadGenrePaths(t)
 	subject := genreClaim{node: "18574606011", name: "Mystery"}
 	for region, keys := range formatPaths {
@@ -318,11 +292,11 @@ func TestFormatRuleEveryMarketplace(t *testing.T) {
 	}
 }
 
-func TestFormatIndexRefusesAnIncompleteTree(t *testing.T) {
-	if _, err := formatIndexOf([]string{"9"}, map[string]map[string]string{"us": {"a": "1"}}); err == nil {
-		t.Errorf("a format node outside the tree was accepted")
+func TestDeriveFormatTreeRefusesAnIncompleteTree(t *testing.T) {
+	if _, _, err := DeriveFormatTree([]string{"9"}, map[string]map[string]string{"us": {"a": "1"}}); err == nil {
+		t.Errorf("a format node no path names was accepted")
 	}
-	if _, err := formatIndexOf(nil, map[string]map[string]string{"us": {"a:b": "2"}}); err == nil {
+	if _, _, err := DeriveFormatTree([]string{"2"}, map[string]map[string]string{"us": {"a:b": "2"}}); err == nil {
 		t.Errorf("a path with no parent path was accepted")
 	}
 }

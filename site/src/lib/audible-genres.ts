@@ -21,23 +21,24 @@
 // that state a category ladder of names rather than a node id - OpenAudible's
 // `genre` field. A libex claim always carries its node, so that step never
 // decides anything here and is deliberately not mirrored.)
-
 //
-// The FORMAT rule is mirrored too (Go's formatIndex / mapGenres): a claim that is
+// The FORMAT rule is mirrored too (Go's formatDerived / mapGenres): a claim that is
 // a format node (Audio Performances & Dramatizations, Radio, Film & TV, ... in
 // every marketplace), or an ancestor of one the record states that it reaches
 // through no subject descendant, yields its genre only when nothing else the
 // record states maps. So a radio dramatization of a crime novel prefills as a
-// crime novel, exactly what `metaimport libex` stores for the same record.
+// crime novel, exactly what `metaimport libex` stores for the same record. The
+// table's `format_tree` is already in the shape the rule needs (scripts/genrepaths
+// derives each node's format flag and closed ancestor list), so this only looks
+// nodes up.
 
 // NAMED imports, not the default: Vite exposes a JSON file's top-level keys as
 // tree-shakeable named exports, so the bundle carries the tables this module
-// reads and never the by_path table (Go-only - see above), which a default
+// reads and never the by_path or format_paths tables (Go-only - see above), which a default
 // import would ship in every client chunk that maps a genre.
 import {
   by_asin,
   by_name,
-  format,
   format_tree,
 } from '../../../internal/importer/audiblegenres.json'
 import type { LibexGenreClaim } from './libex'
@@ -76,37 +77,10 @@ export function mapGenreClaim(claim: LibexGenreClaim): string | undefined {
   return BY_NAME[name] ?? undefined
 }
 
-// The format rule's index, built once from the table: the format node ids, and
-// every node of the format tree mapped to its ancestors (a node's parent is the
-// node at its path's parent, in the same marketplace). Null-prototype for the
-// same reason the two maps above are.
-const FORMAT_NODES = new Set<string>(format)
-const ANCESTORS: Record<string, Set<string> | undefined> = (() => {
-  const parents: Record<string, Set<string>> = Object.create(null)
-  for (const paths of Object.values(format_tree as Record<string, Record<string, string>>)) {
-    for (const [key, node] of Object.entries(paths)) {
-      const own = (parents[node] ??= new Set())
-      const cut = key.lastIndexOf(':')
-      const parent = cut < 0 ? undefined : paths[key.slice(0, cut)]
-      if (parent) own.add(parent)
-    }
-  }
-  const out: Record<string, Set<string>> = Object.create(null)
-  const visit = (node: string, into: Set<string>): void => {
-    for (const p of parents[node] ?? []) {
-      if (!into.has(p)) {
-        into.add(p)
-        visit(p, into)
-      }
-    }
-  }
-  for (const node of Object.keys(parents)) {
-    const anc = new Set<string>()
-    visit(node, anc)
-    out[node] = anc
-  }
-  return out
-})()
+// The derived format tree: node id -> its format flag and ancestors.
+// Null-prototype for the same reason the two maps above are.
+const FORMAT_TREE: Record<string, { format?: boolean; ancestors: string[] } | undefined> =
+  Object.assign(Object.create(null), format_tree)
 
 /**
  * Which claims are FORMAT-DERIVED (Go's formatIndex.derived): a format node, or
@@ -116,20 +90,21 @@ const ANCESTORS: Record<string, Set<string> | undefined> = (() => {
 export function formatDerived(claims: LibexGenreClaim[]): boolean[] | null {
   const nodes = claims.map((c) => {
     const node = c.node?.trim() ?? ''
-    return node && ANCESTORS[node] ? node : ''
+    return node && FORMAT_TREE[node] ? node : ''
   })
+  if (!nodes.some((n) => FORMAT_TREE[n]?.format)) return null
   const formatish = new Set<string>()
   for (const n of nodes) {
-    if (n && FORMAT_NODES.has(n)) {
+    const fn = FORMAT_TREE[n]
+    if (fn?.format) {
       formatish.add(n)
-      for (const a of ANCESTORS[n] ?? []) formatish.add(a)
+      for (const a of fn.ancestors) formatish.add(a)
     }
   }
-  if (formatish.size === 0) return null
   const justified = new Set<string>()
   for (const n of nodes) {
     if (!n || formatish.has(n)) continue
-    for (const a of ANCESTORS[n] ?? []) justified.add(a)
+    for (const a of FORMAT_TREE[n]?.ancestors ?? []) justified.add(a)
   }
   return nodes.map((n) => n !== '' && formatish.has(n) && !justified.has(n))
 }
@@ -144,13 +119,13 @@ export function formatDerived(claims: LibexGenreClaim[]): boolean[] | null {
 export function mapGenreClaims(claims: LibexGenreClaim[]): string[] {
   const slugs = claims.map(mapGenreClaim)
   const derived = formatDerived(claims)
-  const collect = (withDerived: boolean): string[] => {
+  const collect = (skip: boolean[] | null): string[] => {
     const out = new Set<string>()
     slugs.forEach((slug, i) => {
-      if (slug && (withDerived || !derived?.[i])) out.add(slug)
+      if (slug && !skip?.[i]) out.add(slug)
     })
     return [...out].sort()
   }
-  const out = collect(false)
-  return out.length === 0 && derived ? collect(true) : out
+  const out = collect(derived)
+  return out.length === 0 && derived ? collect(null) : out
 }
