@@ -105,6 +105,14 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		if other, both := s.restated[membership]; both {
 			report("%s moves membership %s, which %s restates", r.Key, membership, other)
 		}
+		// A membership one proposal takes out and another puts in (an addition, or a move
+		// into the series) would apply or go stale by run order.
+		if other, both := s.added[membership]; both {
+			report("%s moves %s out of %s, which %s adds", r.Key, work, series, other)
+		}
+		if other, both := s.joins[membership]; both {
+			report("%s moves %s out of %s, which %s moves into it", r.Key, work, series, other)
+		}
 		if m, both := s.mergedWorks[work]; both {
 			report("%s moves %s, which %s merges", r.Key, work, m)
 		}
@@ -188,6 +196,9 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		if by, dup := s.added[p.Series+"@"+p.Target]; dup {
 			report("%s and %s both add %s to %s", by, r.Key, p.Target, p.Series)
 		}
+		if by, both := s.leaves[p.Series+"@"+p.Target]; both {
+			report("%s moves %s out of %s, which %s adds", by, p.Target, p.Series, r.Key)
+		}
 		put(s.added, p.Series+"@"+p.Target, r.Key)
 	case OpAddWorkLink, OpAddSeriesLink:
 		tr := p.Op + "/" + p.Target
@@ -249,6 +260,9 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		dest := p.Others[0]
 		if prev, dup := s.joins[dest+"@"+p.Target]; dup {
 			report("%s and %s both move %s into %s", prev, r.Key, p.Target, dest)
+		}
+		if by, both := s.leaves[dest+"@"+p.Target]; both {
+			report("%s moves %s out of %s, which %s moves into it", by, p.Target, dest, r.Key)
 		}
 		put(s.joins, dest+"@"+p.Target, r.Key)
 		touchSeries(dest)

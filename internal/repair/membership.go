@@ -12,8 +12,9 @@ import (
 )
 
 // membership.go applies the audit's L-MIX proposals: the memberships of a series whose
-// members state two or more languages. drop-membership removes a work from a series it
-// is misfiled in (it already sits in a series of its own language), move-membership
+// members state two or more languages (plus a reviewed assertion's homeless drop).
+// drop-membership removes a work from a series it is misfiled in (it already sits in a
+// series of its own language), move-membership
 // moves it to the one series of its language that is this series under another name,
 // split-series moves a minority language's members out to a NEW series of the same
 // name, and set-work-language resets a work's language. The first three write the
@@ -25,7 +26,8 @@ import (
 // proposal names, the work still states the language it was judged in, the series it
 // leaves still does not derive that language, and the series it joins still does. An
 // earlier proposal in the same run that moved any of it makes a later one stale-value
-// rather than applied on top.
+// rather than applied on top. The one exception is a drop naming no home (a reviewed
+// assertion's): it judges no language, so only its membership is re-read.
 //
 // The new series a split mints takes its slug from the importer's own chain
 // (importer.FreeSeriesSlug over the series name, a held, retired or reserved candidate
@@ -42,40 +44,70 @@ const (
 	licenseCC0 = "CC0-1.0"
 )
 
-// dropMembership removes Target from Series at From.
+// dropMembership removes Target from Series at From. With homes in Others (L-MIX's
+// drop) the work must still sit in one deriving its language; with none, only a
+// reviewed assertion's drop applies, and only the membership is re-read. The work is
+// never written.
 func (rn *runner) dropMembership(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.Target == "" || p.Series == "" || p.Field != fieldPosition {
 		return refusef(CatMalformed, "drop-membership names no work, no series or no position to remove (a dangling-member "+
 			"record is advisory and names none)")
 	}
-	v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
-	se, works, at, lang, err := rn.leavingMembership(t, v, p)
-	if err != nil {
-		return err
-	}
-	var home string
-	for _, h := range p.Others {
-		_, hw, herr := rn.liveSeries(t, h)
-		if herr != nil {
-			continue // a home an earlier proposal retired is no home; the next may still be
+	var (
+		se    entry
+		works []model.SeriesWork
+		at    int
+		err   error
+		why   = "asserted by review"
+	)
+	if len(p.Others) == 0 {
+		// Fail closed: no language or home is asked here, so a detector bug emitting a
+		// homeless drop must not reach it.
+		if fd.Subclass != audit.SubclassAsserted {
+			return refusef(CatMalformed, "a drop naming no home is only ever a reviewed assertion, and %s/%s is not one",
+				fd.Class, orUnstated(fd.Subclass))
 		}
-		if slices.ContainsFunc(hw, func(sw model.SeriesWork) bool { return sw.Work == p.Target }) &&
-			v.Language(model.RedirectSeries, h) == lang {
-			home = h
-			break
+		if se, works, err = rn.liveSeries(t, p.Series); err != nil {
+			return err
 		}
-	}
-	if home == "" {
-		return refusef(CatStaleValue, "work %s no longer sits in a series of its language (%s) among [%s], so %s is not "+
-			"a misfile to drop", p.Target, lang, joinList(p.Others), p.Series)
+		if at, err = membershipAt(works, p.Series, p.Target, p.From); err != nil {
+			return err
+		}
+		// The reviewer's reason is the only audit trail an unconditional drop has.
+		if p.Reason != "" {
+			why = p.Reason
+		}
+	} else {
+		v := &stagedLinkView{t: t, seriesLang: map[string]string{}}
+		var lang string
+		if se, works, at, lang, err = rn.leavingMembership(t, v, p); err != nil {
+			return err
+		}
+		var home string
+		for _, h := range p.Others {
+			_, hw, herr := rn.liveSeries(t, h)
+			if herr != nil {
+				continue // a home an earlier proposal retired is no home; the next may still be
+			}
+			if slices.ContainsFunc(hw, func(sw model.SeriesWork) bool { return sw.Work == p.Target }) &&
+				v.Language(model.RedirectSeries, h) == lang {
+				home = h
+				break
+			}
+		}
+		if home == "" {
+			return refusef(CatStaleValue, "work %s no longer sits in a series of its language (%s) among [%s], so %s is not "+
+				"a misfile to drop", p.Target, lang, joinList(p.Others), p.Series)
+		}
+		why = fmt.Sprintf("it is a member of %s, which derives %s", home, lang)
 	}
 	next := slices.Delete(slices.Clone(works), at, at+1)
 	if len(next) == 0 {
 		return refusef(CatStaleValue, "dropping %s would leave series %s with no members", p.Target, p.Series)
 	}
 	t.setSeries(p.Series, se.Clone(), next)
-	t.note("dropped %s (position %q) from series %s: it is a member of %s, which derives %s", p.Target, p.From, p.Series, home, lang)
+	t.note("dropped %s (position %q) from series %s: %s", p.Target, works[at].Position, p.Series, why)
 	return t.refuseLinkFaults(p.Series)
 }
 
@@ -126,7 +158,7 @@ func (rn *runner) moveMembership(t *txn, fd audit.Finding) error {
 	t.setSeries(p.Series, se.Clone(), left)
 	t.setSeries(dest, de.Clone(), append(slices.Clone(dworks), model.SeriesWork{Work: p.Target, Position: p.To}))
 	t.note("moved %s from series %s (position %q) to %s at position %q, the series of its language (%s)",
-		p.Target, p.Series, p.From, dest, p.To, lang)
+		p.Target, p.Series, works[at].Position, dest, p.To, lang)
 	// refuseLinkFaults judges EVERY series this txn staged, dest included; the
 	// argument only names the record a refusal is about.
 	return t.refuseLinkFaults(p.Series)
@@ -259,9 +291,10 @@ func (rn *runner) setWorkLanguage(t *txn, fd audit.Finding) error {
 	return t.refuseLinkFaults(p.Target)
 }
 
-// membershipAt is where works lists work at exactly pos, or a stale-value refusal.
+// membershipAt is where works lists work at pos's slot (importer.SameSlot, so "03" is
+// "3"), or a stale-value refusal.
 func membershipAt(works []model.SeriesWork, series, work, pos string) (int, error) {
-	at := slices.IndexFunc(works, func(sw model.SeriesWork) bool { return sw.Work == work && sw.Position == pos })
+	at := slices.IndexFunc(works, func(sw model.SeriesWork) bool { return sw.Work == work && importer.SameSlot(sw.Position, pos) })
 	if at < 0 {
 		return 0, refusef(CatStaleValue, "series %s no longer lists %s at position %q", series, work, pos)
 	}

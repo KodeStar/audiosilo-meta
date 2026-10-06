@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/audit"
@@ -312,5 +313,145 @@ func TestReviewedAssertReachesMetarepair(t *testing.T) {
 	}
 	if len(again.Applied) != 0 || again.Considered != 0 {
 		t.Fatalf("second run=%+v", again)
+	}
+}
+
+// A reviewed ASSERTED DROP reaches metarepair through the same gate: the omnibus no
+// detector can tell from a volume leaves its series (the work itself untouched), and a
+// re-run finds the assertion STALE and proposes nothing.
+func TestReviewedAssertedDropReachesMetarepair(t *testing.T) {
+	files := map[string]string{
+		"people/xx/jane-doe.json":      testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json": testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/xx/narnia.json": testpack.SeriesJSON(t, "narnia", "The Chronicles of Narnia",
+			"the-magicians-nephew@1", "prince-caspian@4", "the-complete-chronicles@1-7"),
+	}
+	for id, title := range map[string]string{
+		"the-magicians-nephew":    "The Magician's Nephew",
+		"prince-caspian":          "Prince Caspian",
+		"the-complete-chronicles": "The Complete Chronicles",
+	} {
+		files["works/xx/"+id+"/work.json"] = testpack.WorkJSON(t, id, title)
+		files["works/xx/"+id+"/recordings/r.json"] = testpack.RecJSON(t, "r", id)
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "from": "1-7",
+    "op": "drop-membership",
+    "reason": "an omnibus of the seven books is not a volume of the series",
+    "series": "narnia",
+    "target": "the-complete-chronicles"
+  }
+]
+`))
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+	before := check.Load(data)
+	opts := repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
+	rep, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].Subclass != audit.SubclassAsserted ||
+		rep.Applied[0].Class != audit.ClassSeriesInteg {
+		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	// The reviewer's own reason travels from reviewed.json through the sourced finding
+	// to the applied note, whole.
+	if want := `dropped the-complete-chronicles (position "1-7") from series narnia: asserted by review: ` +
+		`an omnibus of the seven books is not a volume of the series`; !slices.Equal(rep.Applied[0].Notes, []string{want}) {
+		t.Errorf("notes = %q, want [%q]", rep.Applied[0].Notes, want)
+	}
+	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after repair: %v", after.Problems)
+	}
+	for _, s := range after.Catalog.Series {
+		if s.ID == "narnia" && (len(s.Works) != 2 || s.Works[0].Work != "the-magicians-nephew" || s.Works[1].Work != "prince-caspian") {
+			t.Fatalf("narnia = %+v", s.Works)
+		}
+	}
+	if len(after.Catalog.Works) != len(before.Catalog.Works) {
+		t.Fatalf("works %d -> %d: a drop touches no work", len(before.Catalog.Works), len(after.Catalog.Works))
+	}
+	fresh := audit.Analyze(after)
+	if len(fresh.Reviewed.Stale()) != 1 || len(fresh.Reviewed.Outcomes()) != 0 {
+		t.Fatalf("after applying, reviewed = %+v, want the assertion stale", fresh.Reviewed)
+	}
+	opts.Write = false
+	again, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(again.Applied) != 0 || again.Considered != 0 {
+		t.Fatalf("second run=%+v", again)
+	}
+}
+
+// One work listed at two positions of one series: metarepair applies an asserted drop
+// of ONE of them, through the fresh-audit gate, and the other membership stays.
+func TestReviewedAssertedDropOfOneOfTwoMembershipsReachesMetarepair(t *testing.T) {
+	files := map[string]string{
+		"people/xx/jane-doe.json":      testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json": testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"series/xx/narnia.json": testpack.SeriesJSON(t, "narnia", "The Chronicles of Narnia",
+			"the-magicians-nephew@1", "prince-caspian@2", "prince-caspian@4"),
+	}
+	for id, title := range map[string]string{"the-magicians-nephew": "The Magician's Nephew", "prince-caspian": "Prince Caspian"} {
+		files["works/xx/"+id+"/work.json"] = testpack.WorkJSON(t, id, title)
+		files["works/xx/"+id+"/recordings/r.json"] = testpack.RecJSON(t, "r", id)
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "Prince Caspian is book 4; the listing at 2 is a stray",
+    "series": "narnia",
+    "target": "prince-caspian"
+  }
+]
+`))
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+	rep, err := repair.Run(repair.Options{DataDir: data, Ops: []string{audit.OpDropMembership}, Write: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].From != "2" {
+		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after repair: %v", after.Problems)
+	}
+	for _, s := range after.Catalog.Series {
+		if s.ID != "narnia" {
+			continue
+		}
+		var got []string
+		for _, sw := range s.Works {
+			got = append(got, sw.Work+"@"+sw.Position)
+		}
+		if want := []string{"the-magicians-nephew@1", "prince-caspian@4"}; !slices.Equal(got, want) {
+			t.Fatalf("narnia = %v, want %v", got, want)
+		}
 	}
 }

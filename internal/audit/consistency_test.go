@@ -33,6 +33,15 @@ func assertProposalsConsistent(t testing.TB, rep *Report) {
 	for _, conflict := range proposalConflicts(rep).conflicts {
 		t.Error(conflict)
 	}
+	// metarepair drops a membership naming no home unconditionally - the shape of an
+	// asserted drop - so a DETECTOR's drop of a work (L-MIX's) must name its homes.
+	for _, class := range classOrder {
+		for _, fd := range rep.class(class).rows {
+			if p := fd.Propose; p.Op == OpDropMembership && p.Target != "" && len(p.Others) == 0 && fd.Subclass != SubclassAsserted {
+				t.Errorf("%s %s drops %s from %s naming no home: only an assertion may", class, fd.Key, p.Target, p.Series)
+			}
+		}
+	}
 }
 
 // A tree built to produce overlapping clusters: three records of one book whose keys
@@ -200,6 +209,33 @@ func TestOutDirGuardResolvesSymlinks(t *testing.T) {
 	for _, name := range []string{"report", "SUMMARY.md"} {
 		if _, err := os.Stat(filepath.Join(data, name)); !os.IsNotExist(err) {
 			t.Errorf("a refused run created data/%s (stat err = %v)", name, err)
+		}
+	}
+}
+
+// A mechanical drop conflicts with every other mechanical proposal changing the same
+// membership - an addition of it, a move into the series, a restate, a merge folding
+// the work or the series - in either order, since the two would apply or go stale by
+// run order; a drop beside a change to another membership is consistent.
+func TestADropConflictsWithAnotherChangeToItsMembership(t *testing.T) {
+	drop := Proposal{Op: OpDropMembership, Target: "w", Series: "s", Field: "position", From: "1-3"}
+	for name, other := range map[string]Proposal{
+		"an addition":           {Op: OpAddSeriesMember, Target: "w", Series: "s", Field: "series", To: "4"},
+		"a move into":           {Op: OpMoveMembership, Target: "w", Series: "elsewhere", Others: []string{"s"}, Field: "position", From: "2", To: "4"},
+		"a restate":             {Op: OpRestatePosition, Target: "w", Series: "s", Field: "position", From: "1-3", To: "1-4"},
+		"a merge of the work":   {Op: OpMergeWorks, Target: "survivor", Others: []string{"w"}},
+		"a merge of the series": {Op: OpMergeSeries, Target: "survivor", Others: []string{"s"}},
+	} {
+		for _, order := range [][]Proposal{{drop, other}, {other, drop}} {
+			if c := proposalConflicts(proposalReport(order...)).conflicts; len(c) == 0 {
+				t.Errorf("%s: %+v reports no conflict", name, order)
+			}
+		}
+	}
+	unrelated := Proposal{Op: OpAddSeriesMember, Target: "v", Series: "s", Field: "series", To: "4"}
+	for _, order := range [][]Proposal{{drop, unrelated}, {unrelated, drop}} {
+		if c := proposalConflicts(proposalReport(order...)).conflicts; len(c) != 0 {
+			t.Errorf("%+v: %v", order, c)
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package audit
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -14,7 +15,8 @@ import (
 // SOURCES a proposal no detector makes.
 
 // rangerTree holds books no detector relates: an alternate title beside the series
-// member it is, a reissue's original title, and a novel stating no series.
+// member it is, a reissue's original title, a novel stating no series, and an omnibus
+// listed at a range beside the volumes it collects (and alone in a series of its own).
 func rangerTree(t testing.TB) map[string]string {
 	t.Helper()
 	files := map[string]string{
@@ -24,6 +26,9 @@ func rangerTree(t testing.TB) map[string]string {
 			"the-ruins-of-gorlan@1", "the-battle-for-skandia@4"),
 		"series/ra/the-ranger-chronicles.json": seriesJSON(t, "the-ranger-chronicles", "The Ranger Chronicles", "the-ruins-of-gorlan@1"),
 		"series/ki/kingsbridge.json":           seriesJSON(t, "kingsbridge", "Kingsbridge", "world-without-end@2"),
+		"series/na/narnia.json": seriesJSON(t, "narnia", "The Chronicles of Narnia",
+			"the-magicians-nephew@1", "prince-caspian@4", "the-complete-chronicles@1-7"),
+		"series/na/narnia-collection.json": seriesJSON(t, "narnia-collection", "Narnia Collection", "the-complete-chronicles@1"),
 	}
 	for id, title := range map[string]string{
 		"the-ruins-of-gorlan":      "The Ruins of Gorlan",
@@ -31,6 +36,9 @@ func rangerTree(t testing.TB) map[string]string {
 		"oakleaf-bearers":          "Oakleaf Bearers",
 		"the-pillars-of-the-earth": "The Pillars of the Earth",
 		"world-without-end":        "World Without End",
+		"the-magicians-nephew":     "The Magician's Nephew",
+		"prince-caspian":           "Prince Caspian",
+		"the-complete-chronicles":  "The Complete Chronicles",
 	} {
 		files["works/xx/"+id+"/work.json"] = workJSON(t, id, title)
 		files["works/xx/"+id+"/recordings/r.json"] = recJSON(t, "r", id)
@@ -43,11 +51,20 @@ func assertion(op, target, series, field, to string, others ...string) reviewedD
 		Decision: "assert", Reason: "the publisher lists one under the other's title"}
 }
 
+// dropAssertion is an asserted drop-membership: target listed in series at from.
+func dropAssertion(target, series, field, from string) reviewedDecision {
+	return reviewedDecision{Op: OpDropMembership, Target: target, Series: series, Field: field, From: from,
+		Decision: "assert", Reason: "an omnibus is not a volume of the series"}
+}
+
 var (
-	assertOakleaf  = assertion(OpMergeWorks, "the-battle-for-skandia", "", "", "", "oakleaf-bearers")
-	assertChronic  = assertion(OpMergeSeries, "rangers-apprentice", "", "", "", "the-ranger-chronicles")
-	assertKingsbr  = assertion(OpAddSeriesMember, "the-pillars-of-the-earth", "kingsbridge", "series", "1")
-	assertedRecord = map[string]string{OpMergeWorks: ClassWorkDup, OpMergeSeries: ClassSeriesDup, OpAddSeriesMember: ClassWorkNoSeries}
+	assertOakleaf = assertion(OpMergeWorks, "the-battle-for-skandia", "", "", "", "oakleaf-bearers")
+	assertChronic = assertion(OpMergeSeries, "rangers-apprentice", "", "", "", "the-ranger-chronicles")
+	assertKingsbr = assertion(OpAddSeriesMember, "the-pillars-of-the-earth", "kingsbridge", "series", "1")
+	// The field is omitted: an asserted drop is read with the "position" L-MIX states.
+	assertOmnibus  = dropAssertion("the-complete-chronicles", "narnia", "", "1-7")
+	assertedRecord = map[string]string{OpMergeWorks: ClassWorkDup, OpMergeSeries: ClassSeriesDup, OpAddSeriesMember: ClassWorkNoSeries,
+		OpDropMembership: ClassSeriesInteg}
 )
 
 func TestReviewedAssertSourcesAProposal(t *testing.T) {
@@ -58,6 +75,7 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 		{assertOakleaf, "asserted/the-battle-for-skandia"},
 		{assertChronic, "asserted/rangers-apprentice"},
 		{assertKingsbr, "asserted/the-pillars-of-the-earth@kingsbridge"},
+		{assertOmnibus, "asserted/the-complete-chronicles@narnia"},
 	} {
 		t.Run(tc.r.Op, func(t *testing.T) {
 			// The baseline carries no decisions: the committed reviewed.json is real-tree
@@ -65,7 +83,7 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 			before := runFixtureRejecting(t, rangerTree(t))
 			class := assertedRecord[tc.r.Op]
 			rep := runFixtureRejecting(t, rangerTree(t), tc.r)
-			got := subclassOf(t, rep, class, subclassAsserted)
+			got := subclassOf(t, rep, class, SubclassAsserted)
 			if len(got) != 1 || len(classOf(t, rep, class)) != len(classOf(t, before, class))+1 {
 				t.Fatalf("%s = %+v, want the one asserted finding beside the detector's", class, classOf(t, rep, class))
 			}
@@ -76,6 +94,9 @@ func TestReviewedAssertSourcesAProposal(t *testing.T) {
 			}
 			if len(fd.Works)+len(fd.Series) == 0 {
 				t.Errorf("finding cites no record: %+v", fd)
+			}
+			if tc.r.Op == OpDropMembership && (fd.Propose.Field != "position" || fd.Propose.From != "1-7" || len(fd.Propose.Others) != 0) {
+				t.Errorf("asserted drop = %+v, want field position, from 1-7 and no home", fd.Propose)
 			}
 			if o := rep.Reviewed.Outcomes(); len(o) != 1 || o[0].Status != "asserted" {
 				t.Fatalf("tally = %+v", rep.Reviewed)
@@ -131,7 +152,7 @@ func TestReviewedAssertStaleWhenARecordIsRetired(t *testing.T) {
 	rep := runFixtureRejectingWith(t, files, `{"people":{},"series":{},"works":{"oakleaf-bearers":"the-battle-for-skandia"}}`,
 		assertOakleaf, assertKingsbr, missing)
 	for _, class := range []string{ClassWorkDup, ClassWorkNoSeries} {
-		if got := subclassOf(t, rep, class, subclassAsserted); len(got) != 0 {
+		if got := subclassOf(t, rep, class, SubclassAsserted); len(got) != 0 {
 			t.Fatalf("%s sourced %+v from a stale assertion", class, got)
 		}
 	}
@@ -183,10 +204,10 @@ func TestReviewedAssertRefusedOnConflict(t *testing.T) {
 			t.Fatalf("outcome %d = %+v, want %q", i, o, want)
 		}
 	}
-	if got := subclassOf(t, rep, ClassWorkNoSeries, subclassAsserted); len(got) != 1 {
+	if got := subclassOf(t, rep, ClassWorkNoSeries, SubclassAsserted); len(got) != 1 {
 		t.Fatalf("asserted memberships = %+v, want only the first", got)
 	}
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("refused merges were sourced: %+v", got)
 	}
 	if md := summary(rep); !strings.Contains(md, "- refused `") || !strings.Contains(md, "fold onto both") {
@@ -208,6 +229,14 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 			`{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1"}]`, "the same proposal as entry 0"},
 		{"duplicate others", `[{"decision":"assert","op":"merge-works","others":["b","b"],"reason":"why","target":"a"}]`, "others must be sorted, unique"},
 		{"non-canonical position", `[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1 - 3"}]`, "not a canonical series position"},
+		{"drop with a home", `[{"decision":"assert","from":"1","op":"drop-membership","others":["h"],"reason":"why","series":"s","target":"a"}]`, "names target, series and from"},
+		{"drop with a destination", `[{"decision":"assert","from":"1","op":"drop-membership","reason":"why","series":"s","target":"a","to":"2"}]`, "names target, series and from"},
+		{"drop with another field", `[{"decision":"assert","field":"work","from":"1","op":"drop-membership","reason":"why","series":"s","target":"a"}]`, `field, if stated, "position"`},
+		{"drop naming no series", `[{"decision":"assert","from":"1","op":"drop-membership","reason":"why","target":"a"}]`, "names target, series and from"},
+		{"drop without position", `[{"decision":"assert","op":"drop-membership","reason":"why","series":"s","target":"a"}]`, "not a canonical series position"},
+		{"drop at a non-canonical position", `[{"decision":"assert","from":"1 - 7","op":"drop-membership","reason":"why","series":"s","target":"a"}]`, "not a canonical series position"},
+		{"one drop twice", `[{"decision":"assert","from":"1","op":"drop-membership","reason":"why","series":"s","target":"a"},` +
+			`{"decision":"assert","field":"position","from":"1","op":"drop-membership","reason":"why","series":"s","target":"a"}]`, "the same proposal as entry 0"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			raw, err := canonical.Format([]byte(tc.raw))
@@ -220,6 +249,7 @@ func TestReviewedAssertRejectsAnUnsupportedOp(t *testing.T) {
 		})
 	}
 	raw, err := canonical.Format([]byte(`[{"decision":"assert","field":"series","op":"add-series-member","reason":"why","series":"s","target":"a","to":"1-3"},` +
+		`{"decision":"assert","from":"1-7","op":"drop-membership","reason":"why","series":"s","target":"a"},` +
 		`{"decision":"assert","op":"merge-works","others":["b","c"],"reason":"why","target":"a"}]`))
 	if err != nil {
 		t.Fatal(err)
@@ -243,7 +273,7 @@ func TestReviewedAssertsConvergingSourceOnce(t *testing.T) {
 	old.Target = "battle-for-skandia-old"
 	files := rangerTree(t)
 	rep := runFixtureRejectingWith(t, files, `{"people":{},"series":{},"works":{"battle-for-skandia-old":"the-battle-for-skandia"}}`, old, assertOakleaf)
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 1 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 1 {
 		t.Fatalf("sourced %+v, want one", got)
 	}
 	if o := rep.Reviewed.Outcomes(); len(o) != 2 || o[0].Status != "asserted" || o[1].Status != "redundant" {
@@ -256,7 +286,7 @@ func TestReviewedAssertsConvergingSourceOnce(t *testing.T) {
 func TestReviewedAssertRefusedWhenALoserMergedElsewhere(t *testing.T) {
 	widened := assertion(OpMergeWorks, "the-battle-for-skandia", "", "", "", "oakleaf-bearers-old")
 	rep := runFixtureRejectingWith(t, rangerTree(t), `{"people":{},"series":{},"works":{"oakleaf-bearers-old":"oakleaf-bearers"}}`, widened)
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("widened the merge: %+v", got)
 	}
 	o := rep.Reviewed.All
@@ -318,7 +348,7 @@ func TestReviewedRejectionWithholdingAnAssertionIsNotStale(t *testing.T) {
 	rejection := assertOakleaf
 	rejection.Decision = "reject"
 	rep := runFixtureRejecting(t, rangerTree(t), assertOakleaf, rejection)
-	if got := subclassOf(t, rep, ClassWorkDup, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkDup, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("a rejected assertion was sourced: %+v", got)
 	}
 	all := rep.Reviewed.All
@@ -338,7 +368,7 @@ func TestReviewedRejectionWithholdingAnAssertionIsNotStale(t *testing.T) {
 func TestReviewedAssertRefusedOnAHeldSlot(t *testing.T) {
 	held := assertion(OpAddSeriesMember, "the-pillars-of-the-earth", "kingsbridge", "series", "2")
 	rep := runFixtureRejecting(t, rangerTree(t), held)
-	if got := subclassOf(t, rep, ClassWorkNoSeries, subclassAsserted); len(got) != 0 {
+	if got := subclassOf(t, rep, ClassWorkNoSeries, SubclassAsserted); len(got) != 0 {
 		t.Fatalf("sourced %+v into a held slot", got)
 	}
 	o := rep.Reviewed.All
@@ -393,4 +423,112 @@ func TestSourcedClassIsWithdrawnWhenEmpty(t *testing.T) {
 			}
 		}
 	}
+}
+
+// A malformed asserted drop is a defect of the embedded policy, so the init-time parse
+// panics rather than sourcing a drop nothing stands behind.
+func TestReviewedAssertedDropMalformedPanics(t *testing.T) {
+	raw, err := canonical.Format([]byte(`[{"decision":"assert","from":"1-7","op":"drop-membership","others":["home"],"reason":"why","series":"s","target":"a"}]`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() {
+		if r := recover(); r == nil || !strings.Contains(fmt.Sprint(r), "names target, series and from") {
+			t.Fatalf("recovered %v, want a panic naming the drop's shape", r)
+		}
+	}()
+	mustParseReviewed(raw)
+}
+
+// An asserted drop is looked up as an asserted membership is: a work the series no
+// longer lists is the applied steady state (STALE), and a typo, a listing at another
+// position or a drop of the series' last member is REFUSED naming it - nothing sourced.
+func TestReviewedAssertDropLookups(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		r      reviewedDecision
+		status outcomeStatus
+		why    string
+	}{
+		{"not listed", dropAssertion("oakleaf-bearers", "narnia", "", "2"), statusStale, "applied: series narnia does not list oakleaf-bearers"},
+		{"listed elsewhere", dropAssertion("the-complete-chronicles", "narnia", "", "1"), statusRefused,
+			`series narnia lists the-complete-chronicles at position "1-7", not "1"`},
+		{"the last member", dropAssertion("the-complete-chronicles", "narnia-collection", "position", "1"), statusRefused,
+			"would leave series narnia-collection with no members: retiring a series is a merge-series"},
+		{"no such series", dropAssertion("the-complete-chronicles", "narnia-typo", "", "1-7"), statusRefused, "no such series narnia-typo"},
+		{"no such work", dropAssertion("the-complete-chronicle", "narnia", "", "1-7"), statusRefused, "no such work the-complete-chronicle"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			rep := runFixtureRejecting(t, rangerTree(t), tc.r)
+			if got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted); len(got) != 0 {
+				t.Fatalf("sourced %+v", got)
+			}
+			o := rep.Reviewed.All
+			if len(o) != 1 || o[0].Status != tc.status || !strings.Contains(o[0].Why, tc.why) {
+				t.Fatalf("tally = %+v, want %s naming %q", rep.Reviewed, tc.status, tc.why)
+			}
+		})
+	}
+}
+
+// Both slugs of an asserted drop resolve through the tombstones, so an assertion
+// written before a merge still sources the drop under the survivors - and one written
+// after it meets that same finding, as a second assertion of one proposal does.
+func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
+	old := dropAssertion("complete-chronicles-old", "narnia-old", "", "1-7")
+	rep := runFixtureRejectingWith(t, rangerTree(t),
+		`{"people":{},"series":{"narnia-old":"narnia"},"works":{"complete-chronicles-old":"the-complete-chronicles"}}`, old, assertOmnibus)
+	got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted)
+	if len(got) != 1 || got[0].Propose.Target != "the-complete-chronicles" || got[0].Propose.Series != "narnia" || got[0].Propose.Advisory {
+		t.Fatalf("sourced %+v, want one mechanical drop under the live slugs", got)
+	}
+	if o := rep.Reviewed.Outcomes(); len(o) != 2 || o[0].Status != statusAsserted || o[1].Status != statusRedundant ||
+		!strings.Contains(o[1].Why, "another assertion already sources it") {
+		t.Fatalf("outcomes = %+v", o)
+	}
+	assertProposalsConsistent(t, rep)
+}
+
+// A drop of a work a mechanical merge folds, or from a series one folds, would apply
+// or go stale by run order: the later assertion is refused naming the conflict.
+func TestReviewedAssertDropRefusedOnConflict(t *testing.T) {
+	foldWork := assertion(OpMergeWorks, "the-magicians-nephew", "", "", "", "the-complete-chronicles")
+	foldSeries := assertion(OpMergeSeries, "narnia-collection", "", "", "", "narnia")
+	for _, tc := range []struct {
+		first reviewedDecision
+		why   string
+	}{
+		{foldWork, "moves the-complete-chronicles, which asserted/the-magicians-nephew merges"},
+		{foldSeries, "changes series narnia, which asserted/narnia-collection merges"},
+	} {
+		t.Run(tc.first.Op, func(t *testing.T) {
+			rep := runFixtureRejecting(t, rangerTree(t), tc.first, assertOmnibus)
+			o := rep.Reviewed.All
+			if len(o) != 2 || o[0].Status != statusAsserted || o[1].Status != statusRefused || !strings.Contains(o[1].Why, tc.why) {
+				t.Fatalf("tally = %+v, want the drop refused naming %q", rep.Reviewed, tc.why)
+			}
+			if got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted); len(got) != 0 {
+				t.Fatalf("a refused drop was sourced: %+v", got)
+			}
+			assertProposalsConsistent(t, rep)
+		})
+	}
+}
+
+// pkg/check lets one work sit at two positions of one series (only a position must be
+// unique). An asserted drop of ONE of them is listed at its slot, so it is sourced,
+// not refused as listed elsewhere: the other membership is no evidence against it.
+func TestReviewedAssertDropOfOneOfTwoMemberships(t *testing.T) {
+	files := rangerTree(t)
+	files["series/na/narnia.json"] = seriesJSON(t, "narnia", "The Chronicles of Narnia",
+		"the-magicians-nephew@1", "prince-caspian@2", "prince-caspian@4", "the-complete-chronicles@1-7")
+	rep := runFixtureRejecting(t, files, dropAssertion("prince-caspian", "narnia", "", "2"))
+	got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted)
+	if len(got) != 1 || got[0].Propose.Target != "prince-caspian" || got[0].Propose.From != "2" || got[0].Propose.Advisory {
+		t.Fatalf("sourced %+v, want the one mechanical drop at 2", got)
+	}
+	if o := rep.Reviewed.All; len(o) != 1 || o[0].Status != statusAsserted {
+		t.Fatalf("tally = %+v", rep.Reviewed)
+	}
+	assertProposalsConsistent(t, rep)
 }
