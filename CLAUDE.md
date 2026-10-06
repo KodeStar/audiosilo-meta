@@ -2059,30 +2059,43 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   internal/atomicfile); the summary line counts works set / added to / unchanged /
   not reached and the genre instances added and removed (the first two and the
   instances counted off the worklist, `Summary.GenreTally`). Mutually exclusive with
-  the other modes. A row its recording CONTRADICTS on runtime or release date
-  (`rowContradiction`, the one test enrichment's `recordingContradicts` reads too)
-  casts no vote, and a recording every row of which was contradicted is not
-  covered, so its work falls to add-only; `Summary.GenreRowsContradicted` and a
-  note count them. Inert flags (`--date`, `--conflicts`, `--existing-series-only`,
+  the other modes. A row its recording CONTRADICTS on the RUNTIME
+  (`rowContradiction`, the one test enrichment's `recordingContradicts` reads
+  too, asked in the ASIN-merge scope: the risk is an ASIN attached to the wrong
+  recording, which the runtime catches, while a release date legitimately
+  differs per regional re-release and says nothing about genres) casts no vote,
+  and a recording every row of which was contradicted is not covered, so its
+  work falls to add-only; `Summary.GenreRowsContradicted` and a note count them.
+  The regeneration NEVER JUDGES A RECORD WITH EVIDENCE OLDER THAN THE RECORD:
+  `--rows-as-of YYYY-MM-DD` is REQUIRED (refused in every other mode), and a work
+  whose newest provenance day - its added_at, every recording's, every
+  sources[].imported_at on it and its recordings, ordered by `model.TimeKey`
+  (metabuild's own key, moved to the leaf so the importer does not link the
+  builder) - is later is left alone, counted as `Summary.GenreWorksNewerThanRows`
+  and named in a note. Provenance dates are IMPORT dates, not evidence dates, so
+  the flag is the last day the catalogue was written from rows no newer than the
+  export: the snapshot date is the safe default, and a later day only when
+  every import up to it used rows no newer than the export (scripts/README.md). Inert flags (`--date`, `--conflicts`, `--existing-series-only`,
   `--series-lookup(-limit)`, `--libex`) are refused through the CLI's one
-  mode-scoped flag table. Measured over the 282,260-work tree with the dump rows
-  (snapshot 2026-07-29) of its 334,843 ASINs (313,202 rows, every one matched):
-  26,516 works set to the vote, 976 added to, 251,224 unchanged, 3,544 reached by
-  no row; +29,775 / -2,390 genre instances - 20,390 works whose only change is the
-  missing contemporary-romance, arts-entertainment removed from 829 (the format
-  rule plus the vote: Five Little Pigs loses it and westerns, The Marvelous Land
-  of Oz the six genres one Colonial Radio Theatre ASIN gave it); 8,242 rows
-  contradicted (7,843 on the release date, 399 on the runtime; asking the runtime
-  alone would give 29,093 / 1,266 / +35,891 / -2,054); 6,241 works add-only for a
-  user-library source, 642 for a recording no uncontradicted row covered, 1,013
-  left alone on a silent vote; no work left genre-less; metacheck and metafmt
-  green; the second run a no-op. Of the 2,390 removals, 834 came off a format
-  ladder, 728 are a vote minority, 348 were stated only by contradicted rows and
-  480 by NO row of the work - and 325 of those 326 works were catalogued AFTER the
-  dump's snapshot by the sync bot's live rows (every spot-checked genre arrived in
-  an import commit, none by hand), so THE ROWS MUST BE AT LEAST AS FRESH AS THE
-  CATALOGUE: a stale export trims what newer rows stated. ~3.5 min and ~18 GB
-  peak RSS writing, 93s for the no-op - the libex parse layer still
+  mode-scoped flag table. Measured over the 282,260-work tree with the rows of
+  the 2026-07-29 dump for its 334,843 ASINs (313,202 rows, every one matched;
+  399 contradicted on the runtime): at `--rows-as-of 2026-07-29`, 19,519 works
+  set to the vote, 1 added to, 121,247 unchanged, 137,949 held back as newer than
+  the rows (the August waves imported from this very dump, and every enrichment
+  batch since stamped its sources), 3,544 reached by no row; +19,907 / -751 genre
+  instances, the removals 597 off a format ladder and 154 vote minorities, none
+  stated only by a contradicted row or by no row at all. At `--rows-as-of
+  2026-09-20`, the day before the sync bot's first live-row import: 27,524 set,
+  853 added to, 239,656 unchanged, 10,683 held back; +33,250 / -1,458 (813 format,
+  634 minority, 5 only by a contradicted row, 6 by no row). Without the guard the
+  same rows gave 29,093 / 1,266 / +35,891 / -2,054, and 480 removals no row
+  stated came almost all (325 of 326 works) from works the sync bot had imported
+  from newer live rows - every spot-checked genre arrived in an import commit,
+  none by hand. Five Little Pigs loses arts-entertainment and westerns, The
+  Marvelous Land of Oz the six genres one Colonial Radio Theatre ASIN gave it; no
+  work is left genre-less; metacheck and metafmt green; metaaudit identical over
+  the real tree; the second run a no-op. ~3.5 min and ~16-18 GB peak RSS
+  writing, 93s for the no-op - the libex parse layer still
   slurps the file); `metaimport libex
   --recordings-only` (the ALTERNATE-NARRATION pass: a row is resolved to a work
   the catalogue already holds by cleaned title slug + exact author set - seeing

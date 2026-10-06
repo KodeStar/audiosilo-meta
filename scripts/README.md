@@ -550,23 +550,31 @@ rg --files data/works -g '*.json' | xargs jq -r '
   docker exec -i libex-pg psql -X -U postgres -d libex -tA -v ON_ERROR_STOP=1 > /tmp/all-rows.ndjson
 
 go run ./cmd/metaimport libex /tmp/all-rows.ndjson --regenerate-genres \
-  --dry-run --genre-changes /tmp/genre-changes.ndjson
+  --rows-as-of 2026-07-29 --dry-run --genre-changes /tmp/genre-changes.ndjson
 # Review the worklist (one {"work","removed","added","mode"} line per work), then
 # repeat without --dry-run.
 ```
 
 It touches no field but `genres`, creates nothing and stamps no source, so the
 data pull request is genres only, and a second run over the same rows is a
-no-op. A row that contradicts its recording's runtime or release date casts no
-vote (the summary notes how many).
+no-op. A row that contradicts its recording's runtime casts no vote (a release
+date may differ - a regional re-release has its own), and the summary notes how
+many.
 
-**The rows must be at least as fresh as the catalogue.** A work catalogued from
-newer rows than the export holds (the sync bot imports from the live service
-daily) is judged against older rows, and a trim then removes genres the newer
-rows stated: over the 2026-07-29 dump, 325 of the 326 works whose trims removed a
-genre no row stated had been added after that snapshot. Export from a dump taken
-after the newest import, or restrict the review to works added before the
-snapshot.
+**`--rows-as-of` is required: set it to the dump's snapshot date.** The
+regeneration never judges a record with evidence older than the record, so a
+work whose newest provenance (its `added_at`, every recording's, every
+`sources[].imported_at`) is later than that day is left as it is and counted.
+Provenance dates are IMPORT dates, so the snapshot date also holds back every
+work imported from this same dump after the snapshot: over the 2026-07-29 dump
+it holds back 137,949 works (the August waves and every enrichment batch since).
+A later day is safe only if EVERY import up to it used rows no newer than the
+export - check the data history first. For the 2026-07-29 dump the sync bot's
+first live-row import was 2026-09-21, so 2026-09-20 holds back 10,683 works and
+judges the August waves too, but earlier live lookups exist (the 2026-08-09
+live-libex gap fill, the chapter live-lookup batches), which is why the snapshot
+date is the default: a day after any import of newer rows lets those works be
+trimmed of genres the newer rows stated.
 
 ### Relocate cross-language recordings
 
