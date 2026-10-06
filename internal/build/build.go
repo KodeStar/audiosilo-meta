@@ -808,12 +808,7 @@ func addedAt(w *model.Work) any {
 // date-only, so the normalization is a no-op on current data by construction -
 // which is what let the storage migration's artifact equivalence proof pass with
 // this fix already in place.
-func timeKey(s string) string {
-	if t, err := time.Parse(time.RFC3339, s); err == nil {
-		return t.UTC().Format(time.RFC3339)
-	}
-	return s
-}
+func timeKey(s string) string { return model.TimeKey(s) }
 
 // TimeKey exposes timeKey so a writer that has to ORDER two added_at values the
 // way this builder will can pin itself against the same rule rather than

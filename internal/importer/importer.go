@@ -15,6 +15,7 @@ import (
 	"slices"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -181,6 +182,11 @@ type workState struct {
 	// created.
 	genres      []string
 	userSourced bool
+	// newestDay is the DAY (YYYY-MM-DD, an RFC 3339 timestamp read in UTC) of the
+	// newest provenance the loaded work carries: its added_at, every recording's,
+	// and every sources[].imported_at on it and its recordings. The genre
+	// regeneration does not judge a work newer than its rows (regenerate.go).
+	newestDay string
 	// runAttested says a user-library row of THIS RUN attested the work. A later
 	// row of the run meeting it is part of the same account, so it stamps its
 	// provenance too even when it changes nothing - otherwise which rows a
@@ -361,6 +367,8 @@ type planner struct {
 	// new recording, or the one its ASIN merged onto or already sat on), "" when
 	// it wrote nothing - what the recording vote attributes the row's genres to.
 	landedRec string
+	// rowsAsOf is Options.RowsAsOf, the genre regeneration's cut-off day.
+	rowsAsOf string
 	// regenRecs is the genre regeneration's evidence (regenerate.go): each
 	// recording a row reached, with the union of its rows' mapped genres. nil in
 	// every other mode.
@@ -626,6 +634,9 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	if opts.Mode == ModeRegenerateGenres && model.TierOfSource(sourceType) != model.TierBulkMirror {
 		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex) rows; use RunLibex")
 	}
+	if _, err := time.Parse(time.DateOnly, opts.RowsAsOf); opts.Mode == ModeRegenerateGenres && err != nil || opts.Mode != ModeRegenerateGenres && opts.RowsAsOf != "" {
+		return Summary{}, fmt.Errorf("genre regeneration requires the rows' snapshot date (RowsAsOf, YYYY-MM-DD), and only it takes one")
+	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
 	// synthetic narration under the canonical record, the bulk mirror may not.
@@ -726,6 +737,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		attachEditions:     opts.AttachEditions,
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
+		rowsAsOf:           opts.RowsAsOf,
 	}
 }
 
@@ -1071,6 +1083,7 @@ func (p *planner) loadExisting() {
 				ws.userSourced = true
 			}
 		}
+		ws.newestDay = newestProvenanceDay(w)
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
 		}

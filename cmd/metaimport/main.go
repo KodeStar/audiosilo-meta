@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]
 //
 // libex-select writes no records: it reduces a full libex export to the
@@ -107,7 +107,9 @@
 // ASIN-carrying recording met a row, takes the vote as its set; every other work
 // only gains what the vote adds. It touches no other field, creates nothing and
 // stamps no source (the genres are a derivation of rows the work already
-// cites); a second identical run is a no-op. --genre-changes <path> writes one
+// cites); a second identical run is a no-op. --rows-as-of YYYY-MM-DD, the
+// rows' snapshot date, is required: a work whose newest provenance is later was
+// written from newer rows and is not judged. --genre-changes <path> writes one
 // NDJSON line per changed work ({"work","removed","added","mode"}). Mutually
 // exclusive with the other modes; the input is the rows of every catalogued
 // ASIN (scripts/README.md).
@@ -177,6 +179,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	relocate := fs.Bool("relocate", false, "move cross-language recordings to their stated-language work (libex only)")
 	recordingsOnly := fs.Bool("recordings-only", false, "add alternate narrations to works already in the catalogue; never create a work or touch a series (libex only)")
 	regenerateGenres := fs.Bool("regenerate-genres", false, "re-derive catalogued works' genres from their recordings' rows (the recording vote; a trim only where no user-library source contributed and every recording met a row); touches nothing else (libex only)")
+	rowsAsOf := fs.String("rows-as-of", "", "with --regenerate-genres (REQUIRED there): the YYYY-MM-DD snapshot date of the rows; a work whose newest provenance is later is not judged")
 	genreChanges := fs.String("genre-changes", "", "with --regenerate-genres: write one NDJSON line per changed work ({\"work\",\"removed\",\"added\",\"mode\"}) to this file")
 	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction to this file (a durable worklist; the run is unchanged)")
 	// Registered for every source, like --enrich, so pointing it at the wrong one
@@ -226,6 +229,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		{"--skipped", true, nil, ""},
 		{"--attach-editions", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "attaches rows the CREATE path would plan; it is valid in that mode only"},
 		{"--genre-changes", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres worklist; it is valid in that mode only"},
+		{"--rows-as-of", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres rows' snapshot date; it is valid in that mode only"},
 		{"--date", false, notRegen, inertInRegen},
 		{"--conflicts", false, notRegen, inertInRegen},
 		{"--existing-series-only", false, notRegen, inertInRegen},
@@ -242,6 +246,13 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", f.name, boundedSource, name)
 			return 2
 		}
+	}
+
+	// The regeneration never judges a record with evidence older than the
+	// record, so it has to be told how old its rows are.
+	if mode == importer.ModeRegenerateGenres && !dateRE.MatchString(*rowsAsOf) {
+		fmt.Fprintln(os.Stderr, "metaimport: --regenerate-genres needs --rows-as-of YYYY-MM-DD, the snapshot date of its rows (a work with newer provenance is not judged)")
+		return 2
 	}
 
 	stamp := *date
@@ -267,6 +278,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		Conflicts:          conflictLog,
 		ExistingSeriesOnly: *existingSeriesOnly,
 		AttachEditions:     *attachEditions,
+		RowsAsOf:           *rowsAsOf,
 	}
 	if *seriesLookup {
 		client := importer.NewLibexClient()
@@ -612,7 +624,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
@@ -632,7 +644,8 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  --relocate (libex only) moves cross-language recordings using all their source rows;")
 	fmt.Fprintln(os.Stderr, "    it may create a work, never a series; --skipped records relocation refusals.")
 	fmt.Fprintln(os.Stderr, "  --regenerate-genres (libex only) re-derives catalogued works' genres from their recordings'")
-	fmt.Fprintln(os.Stderr, "    rows (the recording vote); --genre-changes <path> writes one NDJSON line per changed work.")
+	fmt.Fprintln(os.Stderr, "    rows (the recording vote); --rows-as-of <the rows' snapshot date> is required, and a work")
+	fmt.Fprintln(os.Stderr, "    with newer provenance is not judged; --genre-changes <path> writes one NDJSON line per changed work.")
 	fmt.Fprintln(os.Stderr, "  libex-fill looks up the recordings that carry an ASIN but no cover (or no chapters) and")
 	fmt.Fprintln(os.Stderr, "    enriches them from the live libex service. It covers USER-LIBRARY imports only unless")
 	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids.")

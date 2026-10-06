@@ -8,6 +8,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // regenWorkJSON is a work "<slug>" by Ada Mapmaker stating genres, with the
@@ -73,7 +74,7 @@ func regenGenres(t *testing.T, dataDir, slug string) []string {
 
 func runRegen(t *testing.T, dataDir string, rows ...string) Summary {
 	t.Helper()
-	return runLibexWith(t, dataDir, Options{Mode: ModeRegenerateGenres}, rows...)
+	return runLibexWith(t, dataDir, Options{Mode: ModeRegenerateGenres, RowsAsOf: "2026-10-06"}, rows...)
 }
 
 // TestRegenerateGenresTrimsAMirrorSet is the Marvelous Land of Oz shape: three
@@ -242,8 +243,10 @@ func regenRecRuntime(work, rec string, minutes int, asins ...string) string {
 }
 
 // TestRegenerateGenresIgnoresContradictedRows: a row its recording contradicts
-// (here a runtime a sixth of the recorded one - another production, which
-// enrichment refuses through the same test) casts no vote. Its stray genre is not
+// on the RUNTIME (here a sixth of the recorded one - another production, an ASIN
+// attached to the wrong recording) casts no vote, through the ASIN-merge scope
+// of the one contradiction test; a release date that differs, as a regional
+// re-release's does, is no contradiction and the row votes. Its stray genre is not
 // voted in, and a recording ALL of whose rows were contradicted is not covered,
 // so its work is never trimmed on the evidence that is left.
 func TestRegenerateGenresIgnoresContradictedRows(t *testing.T) {
@@ -255,6 +258,10 @@ func TestRegenerateGenresIgnoresContradictedRows(t *testing.T) {
 		"works/co/contra/recordings/a.json": regenRecRuntime("contra", "a", 600, "B0CONTRAA1"),
 		"works/co/contra/recordings/b.json": regenRecRuntime("contra", "b", 600, "B0CONTRAB1"),
 		"works/co/contra/recordings/c.json": regenRecRuntime("contra", "c", 600, "B0CONTRAC1"),
+		"works/da/dated/work.json":          regenWorkJSON("dated", nil, "libex-import"),
+		"works/da/dated/recordings/a.json": strings.Replace(regenRecRuntime("dated", "a", 600, "B0DATED0A1"),
+			`"license"`, `"release_date":"2020-01-01","license"`, 1),
+		"works/da/dated/recordings/b.json": regenRecRuntime("dated", "b", 600, "B0DATED0B1"),
 	})
 	sum := runRegen(t, dataDir,
 		regenRowRuntime("B0STRAY0A1", 600, "Mystery"),
@@ -263,7 +270,12 @@ func TestRegenerateGenresIgnoresContradictedRows(t *testing.T) {
 		regenRowRuntime("B0CONTRAA1", 600, "Mystery"),
 		regenRowRuntime("B0CONTRAB1", 600, "Mystery"),
 		regenRowRuntime("B0CONTRAC1", 100, "Mystery", "Westerns"), // c's only row: c is not covered
+		strings.Replace(regenRowRuntime("B0DATED0A1", 600, "Westerns"), `"region":"us",`, `"region":"us","releaseDate":"2021-05-05",`, 1),
+		regenRowRuntime("B0DATED0B1", 600, "Mystery"),
 	)
+	if got, want := regenGenres(t, dataDir, "dated"), []string{"mystery", "westerns"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("dated genres = %v, want %v (a release date that differs is no contradiction)", got, want)
+	}
 	if got, want := regenGenres(t, dataDir, "stray"), []string{"mystery"}; !reflect.DeepEqual(got, want) {
 		t.Errorf("stray genres = %v, want %v (the contradicted row's westerns not voted in)", got, want)
 	}
@@ -273,9 +285,85 @@ func TestRegenerateGenresIgnoresContradictedRows(t *testing.T) {
 	if sum.GenreRowsContradicted != 2 {
 		t.Errorf("GenreRowsContradicted = %d, want 2", sum.GenreRowsContradicted)
 	}
-	if !hasNote(sum.Notes, "2 rows contradicted the recorded runtime or release date") ||
+	if !hasNote(sum.Notes, "2 rows contradicted the recorded runtime") ||
 		!hasNote(sum.Notes, "1 have a recording carrying an ASIN that no uncontradicted input row covered") {
 		t.Errorf("notes = %v", sum.Notes)
+	}
+}
+
+// TestRegenerateGenresSkipsWorksNewerThanTheRows: the regeneration never judges
+// a record with evidence older than the record. A work whose newest provenance -
+// its own added_at, or a recording's source imported_at - is after the rows'
+// snapshot is left exactly as it is, counted and named; one dated before it is
+// trimmed by the vote.
+func TestRegenerateGenresSkipsWorksNewerThanTheRows(t *testing.T) {
+	dated := func(slug, addedAt string) string {
+		return strings.Replace(regenWorkJSON(slug, []string{"mystery", "westerns"}, "libex-import"),
+			`"id"`, fmt.Sprintf(`"added_at":%q,"id"`, addedAt), 1)
+	}
+	files := map[string]string{
+		"works/ea/early/work.json":    dated("early", "2026-07-01"),
+		"works/la/late/work.json":     dated("late", "2026-08-15"),
+		"works/re/rec-late/work.json": dated("rec-late", "2026-07-01"),
+	}
+	for _, slug := range []string{"early", "late", "rec-late"} {
+		for _, rec := range []string{"a", "b", "c"} {
+			asin := freshASIN(slug, rec)
+			files["works/"+slug[:2]+"/"+slug+"/recordings/"+rec+".json"] = regenRecJSON(slug, rec, asin)
+		}
+	}
+	files["works/re/rec-late/recordings/c.json"] = strings.Replace(files["works/re/rec-late/recordings/c.json"],
+		`{"type":"libex-import"}`, `{"type":"libex-import","imported_at":"2026-09-01"}`, 1)
+	dataDir := seedRegen(t, files)
+	var rows []string
+	for _, slug := range []string{"early", "late", "rec-late"} {
+		for _, rec := range []string{"a", "b", "c"} {
+			asin := freshASIN(slug, rec)
+			genres := []string{"Mystery"}
+			if rec == "a" {
+				genres = append(genres, "Westerns")
+			}
+			rows = append(rows, regenRow(asin, genres...))
+		}
+	}
+	late := readRaw(t, dataDir, "works/la/late/work.json")
+	recLate := readRaw(t, dataDir, "works/re/rec-late/work.json")
+	sum := runLibexWith(t, dataDir, Options{Mode: ModeRegenerateGenres, RowsAsOf: "2026-07-29"}, rows...)
+	if got, want := regenGenres(t, dataDir, "early"), []string{"mystery"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("early genres = %v, want the vote %v", got, want)
+	}
+	if readRaw(t, dataDir, "works/la/late/work.json") != late || readRaw(t, dataDir, "works/re/rec-late/work.json") != recLate {
+		t.Errorf("a work newer than the rows was judged")
+	}
+	if sum.GenreWorksNewerThanRows != 2 || !hasNote(sum.Notes, "2 works carry provenance newer than the rows (--rows-as-of 2026-07-29)") {
+		t.Errorf("summary = %+v, notes = %v", sum, sum.Notes)
+	}
+	if _, err := RunLibex(writeBooks(t, rows[0]+"\n"), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRegenerateGenres}); err == nil {
+		t.Errorf("a regeneration without RowsAsOf ran")
+	}
+}
+
+func freshASIN(slug, rec string) string {
+	return map[string]string{"early": "B0FEARLY", "late": "B0FLATE0", "rec-late": "B0FRECLT"}[slug] + strings.ToUpper(rec) + "1"
+}
+
+// TestNewestProvenanceDay pins the dating rule: the newest of the work's and its
+// recordings' added_at and sources' imported_at, an RFC 3339 timestamp read in
+// UTC (metabuild's own ordering, model.TimeKey) and cut to its day.
+func TestNewestProvenanceDay(t *testing.T) {
+	w := &model.Work{
+		AddedAt: "2026-07-01",
+		Sources: []model.Source{{Type: "libex-import", ImportedAt: "2026-07-02"}},
+		Recordings: []*model.Recording{{
+			AddedAt: "2026-07-29T23:30:00-02:00", // 2026-07-30 in UTC
+			Sources: []model.Source{{Type: "libex-import", ImportedAt: "2026-07-03"}},
+		}},
+	}
+	if got := newestProvenanceDay(w); got != "2026-07-30" {
+		t.Errorf("newestProvenanceDay = %q, want 2026-07-30", got)
+	}
+	if got := newestProvenanceDay(&model.Work{}); got != "" {
+		t.Errorf("an undated work = %q, want empty", got)
 	}
 }
 

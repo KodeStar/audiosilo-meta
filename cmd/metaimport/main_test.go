@@ -834,12 +834,12 @@ func TestRegenerateGenresFlags(t *testing.T) {
 		return importer.Summary{}, nil
 	}
 	captureStdout(t, func() {
-		if code := runSource(boundedSource, []string{"export.json", "--regenerate-genres"}, run); code != 0 {
+		if code := runSource(boundedSource, []string{"export.json", "--regenerate-genres", "--rows-as-of", "2026-07-29"}, run); code != 0 {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
-	if got.Mode != importer.ModeRegenerateGenres {
-		t.Errorf("--regenerate-genres reached Options.Mode as %v", got.Mode)
+	if got.Mode != importer.ModeRegenerateGenres || got.RowsAsOf != "2026-07-29" {
+		t.Errorf("--regenerate-genres reached Options as mode %v, rows as of %q", got.Mode, got.RowsAsOf)
 	}
 	refused := func(string, importer.Options) (importer.Summary, error) {
 		t.Error("the import must not run")
@@ -851,6 +851,9 @@ func TestRegenerateGenresFlags(t *testing.T) {
 		{"export.json", "--regenerate-genres", "--relocate"},
 		{"export.json", "--regenerate-genres", "--attach-editions"},
 		{"export.json", "--genre-changes", "x.ndjson"},
+		{"export.json", "--regenerate-genres"},                            // no --rows-as-of
+		{"export.json", "--regenerate-genres", "--rows-as-of", "2026-07"}, // not a day
+		{"export.json", "--enrich", "--rows-as-of", "2026-07-29"},         // another mode
 	} {
 		if code := runSource(boundedSource, args, refused); code != 2 {
 			t.Errorf("%v: exit %d, want 2", args, code)
@@ -884,7 +887,7 @@ func TestGenreChangesWorklist(t *testing.T) {
 	changes := filepath.Join(dir, "changes.ndjson")
 	var code int
 	out := captureStdout(t, func() {
-		code = runSource("libex", []string{export, "--regenerate-genres", "--data", dataDir, "--genre-changes", changes}, importer.RunLibex)
+		code = runSource("libex", []string{export, "--regenerate-genres", "--rows-as-of", "2026-10-06", "--data", dataDir, "--genre-changes", changes}, importer.RunLibex)
 	})
 	if code != 0 {
 		t.Fatal(code, out)
@@ -918,7 +921,7 @@ func TestRegenerateGenresRefusesInertFlags(t *testing.T) {
 		{"--libex", "https://example.invalid"},
 		{"--attach-editions"},
 	} {
-		args := append([]string{"export.json", "--regenerate-genres"}, extra...)
+		args := append([]string{"export.json", "--regenerate-genres", "--rows-as-of", "2026-07-29"}, extra...)
 		if code := runSource(boundedSource, args, refused); code != 2 {
 			t.Errorf("%v: exit %d, want 2", args, code)
 		}

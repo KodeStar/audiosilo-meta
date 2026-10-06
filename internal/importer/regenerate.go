@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"maps"
 	"slices"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // regenerate.go is `metaimport libex --regenerate-genres` (ModeRegenerateGenres):
@@ -85,12 +87,15 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	contradicted := 0
 	p.forEachMatchedRow(books, func(b sourceBook, ref RecRef) {
 		reached[ref.Work] = true
-		// A row its recording CONTRADICTS on runtime or release date is evidence
-		// about another production (enrichment refuses it whole, through the same
-		// test), so it casts no vote - and a recording whose rows were all
-		// contradicted is not covered, so its work cannot be trimmed.
+		// A row its recording CONTRADICTS on runtime is evidence about another
+		// production - an ASIN attached to the wrong recording, which the runtime
+		// test is what catches - so it casts no vote, and a recording whose rows
+		// were all contradicted is not covered, so its work cannot be trimmed.
+		// The test is the ASIN-merge scope's (rowContradiction, runtime only): a
+		// release date legitimately differs per regional re-release, which is why
+		// that scope skips it, and a date says nothing about a production's genres.
 		if ri := p.works[ref.Work].recs[ref.Rec]; ri != nil {
-			if _, bad := rowContradiction(b, int64(ri.runtimeMin), ri.releaseDate, scopeFill); bad {
+			if _, bad := rowContradiction(b, int64(ri.runtimeMin), ri.releaseDate, scopeAttestMerged); bad {
 				contradicted++
 				return
 			}
@@ -100,12 +105,21 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	p.summary.GenreRowsContradicted = contradicted
 
 	var userSourced, incomplete, silent int
+	var newer []string
 	for _, slug := range slices.Sorted(maps.Keys(p.works)) {
 		if !reached[slug] {
 			p.summary.GenreWorksNoRow++
 			continue
 		}
 		ws := p.works[slug]
+		// The regeneration never judges a record with evidence older than the
+		// record: a work whose newest provenance is after the rows' snapshot was
+		// written from newer rows than these, which would trim what they stated.
+		if ws.newestDay > p.rowsAsOf {
+			p.summary.GenreWorksNewerThanRows++
+			newer = append(newer, slug)
+			continue
+		}
 		var sets [][]string
 		complete := true
 		for rec, ri := range ws.recs {
@@ -149,8 +163,13 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	}
 	if contradicted > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
-			"%d %s contradicted the recorded runtime or release date of the recording they matched and cast no genre vote",
+			"%d %s contradicted the recorded runtime of the recording they matched and cast no genre vote",
 			contradicted, plural(contradicted, "row")))
+	}
+	if len(newer) > 0 {
+		p.summary.Notes = append(p.summary.Notes, withExamples(fmt.Sprintf(
+			"%d %s carry provenance newer than the rows (--rows-as-of %s) and were not judged",
+			len(newer), plural(len(newer), "work"), p.rowsAsOf), newer))
 	}
 	if n := userSourced + incomplete; n > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
@@ -162,6 +181,34 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 			"%d trim-eligible %s kept the recorded set because the recording vote stated no genre",
 			silent, plural(silent, "work")))
 	}
+}
+
+// newestProvenanceDay is the day of the newest provenance a work carries: its
+// added_at, every recording's added_at, and every sources[].imported_at on the
+// work and its recordings, compared chronologically as metabuild compares them
+// (model.TimeKey, which build.TimeKey is: an RFC 3339 timestamp normalized to UTC) and cut to the day.
+// "" for a work carrying none.
+func newestProvenanceDay(w *model.Work) string {
+	newest := ""
+	note := func(s string) {
+		if s == "" {
+			return
+		}
+		if day := model.TimeKey(s); len(day) >= 10 && day[:10] > newest {
+			newest = day[:10]
+		}
+	}
+	note(w.AddedAt)
+	for _, s := range w.Sources {
+		note(s.ImportedAt)
+	}
+	for _, r := range w.Recordings {
+		note(r.AddedAt)
+		for _, s := range r.Sources {
+			note(s.ImportedAt)
+		}
+	}
+	return newest
 }
 
 // minus is the sorted members of a that b lacks.
