@@ -2059,17 +2059,30 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   internal/atomicfile); the summary line counts works set / added to / unchanged /
   not reached and the genre instances added and removed (the first two and the
   instances counted off the worklist, `Summary.GenreTally`). Mutually exclusive with
-  the other modes. Measured over the 282,260-work tree with the dump rows of its
-  334,843 ASINs (313,202 rows, every one matched): 29,123 works set to the vote,
-  1,277 added to, 248,316 unchanged, 3,544 reached by no row; +35,952 / -2,062
-  genre instances - 20,252 works whose only change is the missing
-  contemporary-romance, arts-entertainment removed from 829 (the format rule plus
-  the vote: Five Little Pigs loses it and westerns, The Marvelous Land of Oz the
-  six genres one Colonial Radio Theatre ASIN gave it); 6,241 works add-only for a
-  user-library source, 465 for a recording no row reached, 986 left alone on a
-  silent vote; no work left genre-less; metacheck green, metaaudit identical but
-  for LOADER's oversized-entry byte counts; the second run a no-op. ~5 min and
-  ~18 GB peak RSS writing, 93s for the no-op - the libex parse layer still
+  the other modes. A row its recording CONTRADICTS on runtime or release date
+  (`rowContradiction`, the one test enrichment's `recordingContradicts` reads too)
+  casts no vote, and a recording every row of which was contradicted is not
+  covered, so its work falls to add-only; `Summary.GenreRowsContradicted` and a
+  note count them. Inert flags (`--date`, `--conflicts`, `--existing-series-only`,
+  `--series-lookup(-limit)`, `--libex`) are refused through the CLI's one
+  mode-scoped flag table. Measured over the 282,260-work tree with the dump rows
+  (snapshot 2026-07-29) of its 334,843 ASINs (313,202 rows, every one matched):
+  26,516 works set to the vote, 976 added to, 251,224 unchanged, 3,544 reached by
+  no row; +29,775 / -2,390 genre instances - 20,390 works whose only change is the
+  missing contemporary-romance, arts-entertainment removed from 829 (the format
+  rule plus the vote: Five Little Pigs loses it and westerns, The Marvelous Land
+  of Oz the six genres one Colonial Radio Theatre ASIN gave it); 8,242 rows
+  contradicted (7,843 on the release date, 399 on the runtime; asking the runtime
+  alone would give 29,093 / 1,266 / +35,891 / -2,054); 6,241 works add-only for a
+  user-library source, 642 for a recording no uncontradicted row covered, 1,013
+  left alone on a silent vote; no work left genre-less; metacheck and metafmt
+  green; the second run a no-op. Of the 2,390 removals, 834 came off a format
+  ladder, 728 are a vote minority, 348 were stated only by contradicted rows and
+  480 by NO row of the work - and 325 of those 326 works were catalogued AFTER the
+  dump's snapshot by the sync bot's live rows (every spot-checked genre arrived in
+  an import commit, none by hand), so THE ROWS MUST BE AT LEAST AS FRESH AS THE
+  CATALOGUE: a stale export trims what newer rows stated. ~3.5 min and ~18 GB
+  peak RSS writing, 93s for the no-op - the libex parse layer still
   slurps the file); `metaimport libex
   --recordings-only` (the ALTERNATE-NARRATION pass: a row is resolved to a work
   the catalogue already holds by cleaned title slug + exact author set - seeing

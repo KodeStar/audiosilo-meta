@@ -557,7 +557,16 @@ go run ./cmd/metaimport libex /tmp/all-rows.ndjson --regenerate-genres \
 
 It touches no field but `genres`, creates nothing and stamps no source, so the
 data pull request is genres only, and a second run over the same rows is a
-no-op.
+no-op. A row that contradicts its recording's runtime or release date casts no
+vote (the summary notes how many).
+
+**The rows must be at least as fresh as the catalogue.** A work catalogued from
+newer rows than the export holds (the sync bot imports from the live service
+daily) is judged against older rows, and a trim then removes genres the newer
+rows stated: over the 2026-07-29 dump, 325 of the 326 works whose trims removed a
+genre no row stated had been added after that snapshot. Export from a dump taken
+after the newest import, or restrict the review to works added before the
+snapshot.
 
 ### Relocate cross-language recordings
 
