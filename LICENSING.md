@@ -157,6 +157,16 @@ protect. Importers therefore never store a retailer's genre strings verbatim -
 they map them onto our vocabulary in code, and anything that does not map is
 dropped.
 
+A retailer category that names a **format** rather than a subject - Audible's
+"Audio Performances & Dramatizations" (with its Dramatizations and Storytelling
+children), and the "Radio" and "Film & TV" leaves under "Entertainment &
+Performing Arts", in every marketplace - says how a book was produced, not what
+it is about. It contributes a genre only when nothing else the retailer states
+about the same product maps to one: a full-cast radio dramatization of a crime
+novel is a crime novel, while a radio panel show with no other category stays
+in arts and entertainment. The same holds for the "Arts & Entertainment"
+ancestors such a product lists only because of the format category.
+
 ## Imports bring facts only
 
 The import path (OpenAudible `books.json`, Libation exports, per-title
@@ -257,8 +267,20 @@ The rule, applied at **record** granularity (not per field):
    book under - a partial statement, not a replacement for the whole set. So a
    user-library row's mapped genres are **added** to the work's set, on a
    mirror-only work and an already-attested one alike, and never remove a
-   genre. Nothing about rules 2-4 changes for any other field, and whether a
-   noisy mirror set should ever be trimmed is a separate, undecided question.
+   genre. Nothing about rules 2-4 changes for any other field.
+
+   A **mirror-only** genre set is not a union of every row the mirror holds:
+   it is the **vote over the work's recordings**. Each recording (its regional
+   ASINs together, as one publisher's one tagging) is one vote; with three or
+   more recordings that state a genre, a genre is kept when at least two of
+   them state it, and with fewer the recordings' genres are all kept. That is
+   what the mirror's create path writes, and what `metaimport libex
+   --regenerate-genres` re-derives for an existing work - and it may only
+   TRIM a set no user-library source contributed to, and only when every
+   recording carrying an ASIN was in the evidence. A set any user-library
+   source contributed to is only ever added to, by the vote as by a user row.
+   The regeneration appends no source: the genres are derived from rows the
+   work already cites.
 
 The intake bot applies the same rule, through the same code: a form submission
 (Add a work, Add a recording) that names a bulk-mirror-only recording by ASIN

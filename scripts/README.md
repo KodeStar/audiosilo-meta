@@ -519,6 +519,43 @@ go test ./internal/importer/ -run 'Genre|Childrens'
 A same-path conflict inside one marketplace (two nodes, one spelling) is printed
 to stderr, and the first node in the taxonomy's own order is kept.
 
+The generator also derives the table's `format_tree` from its hand-curated
+`format` list (the FORMAT nodes - Audio Performances & Dramatizations and its
+children, the Radio and Film & TV leaves, in every marketplace; see
+`internal/importer/audiblegenres.go`): for each marketplace, every path of every
+root subtree that holds a format node, mapped to its node id, which is what the
+format rule reads a node's ancestors and a ladder claim's node from. Those paths
+join the verification file, so `TestFormatTreeMatchesGenrePaths` fails until the
+generator is re-run after a `format` edit, and `TestFormatNodesArePinned` holds
+the list itself to the format paths it states per marketplace.
+
+### Regenerate catalogued works' genres
+
+`metaimport libex --regenerate-genres` re-derives the `genres` of catalogued
+works from the libex rows of their own recordings, under the current mapping
+table (format rule included) and the recording vote (see
+`internal/importer/regenerate.go` and LICENSING.md's trust-tier rule 5). It
+needs the rows of EVERY catalogued ASIN - a recording with an ASIN but no row
+makes its work add-only - so export them all in one file. The list is too long
+for a `-v` command-line argument, so set the variable on the script's stdin:
+
+```sh
+rg --files data/works -g '*.json' | xargs jq -r '
+  .entries[] | .recordings[]? | .asin[]?.asin' | LC_ALL=C sort -u > /tmp/all-asins.txt
+
+{ printf '\\set asins %s\n' "'$(paste -sd, /tmp/all-asins.txt)'"; cat scripts/libex-export-rows.sql; } |
+  docker exec -i libex-pg psql -X -U postgres -d libex -tA -v ON_ERROR_STOP=1 > /tmp/all-rows.ndjson
+
+go run ./cmd/metaimport libex /tmp/all-rows.ndjson --regenerate-genres \
+  --dry-run --genre-changes /tmp/genre-changes.ndjson
+# Review the worklist (one {"work","removed","added","mode"} line per work), then
+# repeat without --dry-run.
+```
+
+It touches no field but `genres`, creates nothing and stamps no source, so the
+data pull request is genres only, and a second run over the same rows is a
+no-op.
+
 ### Relocate cross-language recordings
 
 `metaimport libex --relocate` moves a recording filed under a work in another
