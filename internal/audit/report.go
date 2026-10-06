@@ -374,7 +374,7 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 	b.WriteString("Accept promotes to mechanical; reject makes advisory. No-op decisions leave the status unchanged.\n")
 	b.WriteString("Assert sources a mechanical proposal no detector makes (subclass `asserted`); one a detector already\n")
 	b.WriteString("makes is taken as an acceptance and reported redundant, to be rewritten as one.\n")
-	b.WriteString("Refused acceptances stay advisory; STALE decisions match no fresh proposal and are never applied.\n\n")
+	b.WriteString("A refused decision leaves the proposal as the detectors made it; STALE decisions match no fresh proposal and are never applied.\n\n")
 	counts := map[outcomeStatus]int{}
 	for _, o := range t.All {
 		counts[o.Status]++

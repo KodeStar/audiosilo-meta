@@ -184,6 +184,12 @@ type Finding struct {
 	// Notes carry the evidence that is not a field: a runtime gap, a language
 	// split, which spellings a cluster holds.
 	Notes []string `json:"notes,omitempty"`
+
+	// reviewed is set when a reviewed acceptance or assertion took effect on this
+	// proposal: it made it mechanical, or confirmed one a detector already had. A
+	// refused or rejecting decision never sets it. It is not on the wire; the
+	// conflict state reads it (see the OpRetitle case in proposalConflictState.add).
+	reviewed bool
 }
 
 // findingLess orders two findings of one class deterministically. Every

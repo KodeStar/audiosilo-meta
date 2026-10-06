@@ -241,13 +241,15 @@ func TestADropConflictsWithAnotherChangeToItsMembership(t *testing.T) {
 }
 
 // A DETECTOR's retitle of a merge loser is consistent (either order leaves one
-// catalogue, and the real tree holds such pairs); an ASSERTED one conflicts with a
-// merge folding its work, in either order, and with any second retitle of it.
-// A retitle of the merge's survivor is no conflict either way.
-func TestAnAssertedRetitleConflictsWithAMergeOfItsWork(t *testing.T) {
+// catalogue, and the real tree holds such pairs); a REVIEWED one (Finding.reviewed: an
+// accepted detector proposal or an assertion) conflicts with a merge folding its work,
+// in either order, and with any second retitle of it. The mark, not the subclass, is
+// what is read: an unreviewed asserted-subclass finding is not protected. A retitle of
+// the merge's survivor is no conflict either way.
+func TestAReviewedRetitleConflictsWithAMergeOfItsWork(t *testing.T) {
 	merge := Finding{Key: "merge", Propose: Proposal{Op: OpMergeWorks, Target: "survivor", Others: []string{"w"}}}
-	retitle := func(subclass, target, to string) Finding {
-		return Finding{Key: subclass + "/" + target + "/" + to, Subclass: subclass,
+	retitle := func(subclass string, reviewed bool, target, to string) Finding {
+		return Finding{Key: subclass + "/" + target + "/" + to, Subclass: subclass, reviewed: reviewed,
 			Propose: Proposal{Op: OpRetitle, Target: target, Field: "title", From: "Old", To: to}}
 	}
 	report := func(fds ...Finding) *Report {
@@ -262,12 +264,16 @@ func TestAnAssertedRetitleConflictsWithAMergeOfItsWork(t *testing.T) {
 		fds      []Finding
 		conflict bool
 	}{
-		{"detector retitle of the loser", []Finding{merge, retitle("decorated", "w", "New")}, false},
-		{"asserted retitle of the loser", []Finding{merge, retitle(SubclassAsserted, "w", "New")}, true},
-		{"asserted retitle of the loser first", []Finding{retitle(SubclassAsserted, "w", "New"), merge}, true},
-		{"asserted retitle of the survivor", []Finding{merge, retitle(SubclassAsserted, "survivor", "New")}, false},
-		{"two asserted retitles", []Finding{retitle(SubclassAsserted, "w", "New"), retitle(SubclassAsserted, "w", "Newer")}, true},
-		{"a detector's and an asserted retitle", []Finding{retitle("decorated", "w", "New"), retitle(SubclassAsserted, "w", "Newer")}, true},
+		{"detector retitle of the loser", []Finding{merge, retitle("decorated", false, "w", "New")}, false},
+		{"unreviewed asserted-subclass retitle of the loser", []Finding{merge, retitle(SubclassAsserted, false, "w", "New")}, false},
+		{"asserted retitle of the loser", []Finding{merge, retitle(SubclassAsserted, true, "w", "New")}, true},
+		{"asserted retitle of the loser first", []Finding{retitle(SubclassAsserted, true, "w", "New"), merge}, true},
+		{"accepted retitle of the loser", []Finding{merge, retitle("decorated", true, "w", "New")}, true},
+		{"accepted retitle of the loser first", []Finding{retitle("decorated", true, "w", "New"), merge}, true},
+		{"asserted retitle of the survivor", []Finding{merge, retitle(SubclassAsserted, true, "survivor", "New")}, false},
+		{"accepted retitle of the survivor", []Finding{merge, retitle("decorated", true, "survivor", "New")}, false},
+		{"two asserted retitles", []Finding{retitle(SubclassAsserted, true, "w", "New"), retitle(SubclassAsserted, true, "w", "Newer")}, true},
+		{"a detector's and an asserted retitle", []Finding{retitle("decorated", false, "w", "New"), retitle(SubclassAsserted, true, "w", "Newer")}, true},
 	} {
 		if c := proposalConflicts(report(tc.fds...)).conflicts; (len(c) > 0) != tc.conflict {
 			t.Errorf("%s: conflicts = %v, want conflict %v", tc.name, c, tc.conflict)

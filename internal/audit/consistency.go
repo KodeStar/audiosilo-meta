@@ -24,7 +24,7 @@ type proposalConflictState struct {
 	mixLeftLang               map[string]string   // series/language -> an L-MIX drop or move taking a member of it out
 	homes                     map[string][]string // series a drop relies on as the work's home -> every such drop
 	retitled, retitledTo      map[string]string   // work a mechanical retitle-work rewrites -> finding, and its title
-	assertedRetitle           map[string]string   // work an ASSERTED retitle-work rewrites -> finding
+	reviewedRetitle           map[string]string   // work a REVIEWED retitle-work rewrites -> finding
 }
 
 // proposalConflicts is the shared set invariant used by reviewed acceptances and
@@ -38,7 +38,7 @@ func proposalConflicts(rep *Report) *proposalConflictState {
 		mixWorks: map[string]string{}, mixSeries: map[string]string{},
 		mergedWorks: map[string]string{}, mergedSeries: map[string]string{}, languages: map[string]string{},
 		splitKeeper: map[string]string{}, splitBy: map[string]string{}, mixLeftLang: map[string]string{},
-		homes: map[string][]string{}, retitled: map[string]string{}, retitledTo: map[string]string{}, assertedRetitle: map[string]string{},
+		homes: map[string][]string{}, retitled: map[string]string{}, retitledTo: map[string]string{}, reviewedRetitle: map[string]string{},
 	}
 	for _, class := range classOrder {
 		for _, r := range rep.class(class).rows {
@@ -58,6 +58,18 @@ func (s *proposalConflictState) promote(r Finding) []string {
 	if len(s.conflicts) > 0 {
 		return s.conflicts
 	}
+	return s.add(r, false)
+}
+
+// confirm marks reviewed a retitle the mechanical set already holds (a no-op
+// acceptance, or an assertion a detector already made) and re-adds it, so add's
+// OpRetitle case judges it. It promotes nothing, so no fail safe is asked.
+func (s *proposalConflictState) confirm(r Finding) []string {
+	// Only a retitle: re-adding any other op's claim would collide with itself.
+	if r.Propose.Op != OpRetitle {
+		return nil
+	}
+	r.reviewed = true
 	return s.add(r, false)
 }
 
@@ -87,7 +99,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 	homeMerged := func(drop, home, merger string) {
 		report("%s relies on %s as its work's home, which %s merges", drop, home, merger)
 	}
-	// An asserted retitle of a work a merge folds away: the reviewer's title would be
+	// A reviewed retitle of a work a merge folds away: the reviewer's title would be
 	// discarded with the record (see the OpRetitle case), whichever arrives first.
 	retitleFolded := func(retitle, work, merger, survivor string) {
 		report("%s retitles %s, which %s folds onto %s", retitle, work, merger, survivor)
@@ -187,7 +199,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 			put(s.isTarget, key, r.Key)
 		}
 		for _, o := range p.Others {
-			if by, both := s.assertedRetitle[o]; both && p.Op == OpMergeWorks {
+			if by, both := s.reviewedRetitle[o]; both && p.Op == OpMergeWorks {
 				retitleFolded(by, o, r.Key, p.Target)
 			}
 			key := p.Op + "/" + o
@@ -235,7 +247,7 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 			}
 		}
 	case OpRetitle:
-		// Two retitles of one work to different titles, a detector's beside an asserted one
+		// Two retitles of one work to different titles, a detector's beside a reviewed one
 		// included, apply or go stale by run order (the later reads From against the
 		// earlier's title): reject the detector's to assert another title.
 		if prev, dup := s.retitled[p.Target]; dup && s.retitledTo[p.Target] != p.To {
@@ -245,15 +257,16 @@ func (s *proposalConflictState) add(r Finding, keepConflicts bool) []string {
 		put(s.retitledTo, p.Target, p.To)
 		// A detector's retitle of a merge loser is harmless (either order leaves one
 		// catalogue, the loser retired whichever runs first), and the real tree holds such
-		// pairs. An ASSERTED retitle is a reviewer's title for THAT record, which a fold of
-		// it would discard: assert it on the survivor. A survivor's retitle is no conflict.
-		if r.Subclass != SubclassAsserted {
+		// pairs. A REVIEWED retitle (accepted or asserted, Finding.reviewed) is a reviewer's
+		// title for THAT record, which a fold of it would discard: review it on the
+		// survivor. A survivor's retitle is no conflict.
+		if !r.reviewed {
 			break
 		}
 		if survivor, loser := s.mergeTarget[OpMergeWorks+"/"+p.Target]; loser {
 			retitleFolded(r.Key, p.Target, s.mergedWorks[p.Target], survivor)
 		}
-		put(s.assertedRetitle, p.Target, r.Key)
+		put(s.reviewedRetitle, p.Target, r.Key)
 	case OpSetWorkLanguage:
 		if prev, dup := s.languages[p.Target]; dup {
 			report("%s and %s both set the language of %s", prev, r.Key, p.Target)
