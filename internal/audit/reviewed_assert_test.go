@@ -489,6 +489,45 @@ func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
 	assertProposalsConsistent(t, rep)
 }
 
+// A drop whose target was retired since (the Dawnshard shape: the drop applied, then the
+// work merged into a twin the series lists at another slot) is the applied steady state,
+// STALE. A survivor listed AT the asserted slot is still the drop, and a LIVE target
+// listed elsewhere stays REFUSED.
+func TestReviewedAssertDropOfARetiredTarget(t *testing.T) {
+	const reds = `{"people":{},"series":{},"works":{"complete-chronicles-old":"the-complete-chronicles"}}`
+	for _, tc := range []struct {
+		name   string
+		r      reviewedDecision
+		status outcomeStatus
+		why    string
+	}{
+		{"survivor elsewhere", dropAssertion("complete-chronicles-old", "narnia", "", "1"), statusStale,
+			`applied: complete-chronicles-old was merged into the-complete-chronicles, which series narnia lists at position "1-7", not "1"`},
+		{"survivor at the slot", dropAssertion("complete-chronicles-old", "narnia", "", "1-7"), statusAsserted, ""},
+		{"live target elsewhere", dropAssertion("the-complete-chronicles", "narnia", "", "1"), statusRefused,
+			`series narnia lists the-complete-chronicles at position "1-7", not "1"`},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			rep := runFixtureRejectingWith(t, rangerTree(t), reds, tc.r)
+			o := rep.Reviewed.All
+			if len(o) != 1 || o[0].Status != tc.status || !strings.Contains(o[0].Why, tc.why) {
+				t.Fatalf("tally = %+v, want %s naming %q", rep.Reviewed, tc.status, tc.why)
+			}
+			got := subclassOf(t, rep, ClassSeriesInteg, SubclassAsserted)
+			if tc.status != statusAsserted {
+				if len(got) != 0 {
+					t.Fatalf("sourced %+v", got)
+				}
+				return
+			}
+			if len(got) != 1 || got[0].Propose.Target != "the-complete-chronicles" || got[0].Propose.From != "1-7" || got[0].Propose.Advisory {
+				t.Fatalf("sourced %+v, want one mechanical drop of the survivor at 1-7", got)
+			}
+			assertProposalsConsistent(t, rep)
+		})
+	}
+}
+
 // A drop of a work a mechanical merge folds, or from a series one folds, would apply
 // or go stale by run order: the later assertion is refused naming the conflict.
 func TestReviewedAssertDropRefusedOnConflict(t *testing.T) {
