@@ -491,8 +491,8 @@ func TestReviewedAssertDropResolvesTombstones(t *testing.T) {
 
 // A drop whose target was retired since (the Dawnshard shape: the drop applied, then the
 // work merged into a twin the series lists at another slot) is the applied steady state,
-// STALE. A survivor listed AT the asserted slot is still the drop, and a LIVE target
-// listed elsewhere stays REFUSED.
+// STALE. A survivor listed AT the asserted slot is still the drop (a LIVE target listed
+// elsewhere stays REFUSED: TestReviewedAssertDropLookups).
 func TestReviewedAssertDropOfARetiredTarget(t *testing.T) {
 	const reds = `{"people":{},"series":{},"works":{"complete-chronicles-old":"the-complete-chronicles"}}`
 	for _, tc := range []struct {
@@ -504,8 +504,6 @@ func TestReviewedAssertDropOfARetiredTarget(t *testing.T) {
 		{"survivor elsewhere", dropAssertion("complete-chronicles-old", "narnia", "", "1"), statusStale,
 			`applied: complete-chronicles-old was merged into the-complete-chronicles, which series narnia lists at position "1-7", not "1"`},
 		{"survivor at the slot", dropAssertion("complete-chronicles-old", "narnia", "", "1-7"), statusAsserted, ""},
-		{"live target elsewhere", dropAssertion("the-complete-chronicles", "narnia", "", "1"), statusRefused,
-			`series narnia lists the-complete-chronicles at position "1-7", not "1"`},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			rep := runFixtureRejectingWith(t, rangerTree(t), reds, tc.r)

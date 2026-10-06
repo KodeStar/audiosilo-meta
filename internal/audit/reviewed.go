@@ -47,7 +47,7 @@ import (
 // proposal even where the detector made it advisory, overriding the detector's veto. Once applied its records are
 // retired or joined, so it reads STALE and a re-run proposes nothing. A drop whose target
 // was since retired onto a survivor the series lists only at other slots is STALE too:
-// the work it named is gone and nothing sits at its slot; a live target listed elsewhere
+// the work it named is gone and its survivor is not at that slot; a live target listed elsewhere
 // is REFUSED.
 //
 //go:embed reviewed.json
@@ -727,18 +727,19 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 			}
 		}
 	case OpDropMembership:
-		if listedAt == "" && len(elsewhere) == 0 {
-			return nil, 0, statusStale, fmt.Sprintf("applied: series %s does not list %s", p.Series, p.Target)
-		}
-		// A retired target is the work the decision named no longer existing: its survivor
-		// listed at another slot leaves nothing at the one named, so the drop is applied.
-		if listedAt == "" && r.Target != p.Target {
-			return nil, 0, statusStale, fmt.Sprintf("applied: %s was merged into %s, which series %s lists at position %s, not %q",
-				r.Target, p.Target, p.Series, strings.Join(elsewhere, ", "), p.From)
-		}
 		if listedAt == "" {
-			return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
-				strings.Join(elsewhere, ", "), p.From)
+			switch {
+			case len(elsewhere) == 0:
+				return nil, 0, statusStale, fmt.Sprintf("applied: series %s does not list %s", p.Series, p.Target)
+			case r.Target != p.Target:
+				// A retired target is the work the decision named no longer existing: its survivor
+				// listed at another slot leaves nothing at the one named, so the drop is applied.
+				return nil, 0, statusStale, fmt.Sprintf("applied: %s was merged into %s, which series %s lists at position %s, not %q",
+					r.Target, p.Target, p.Series, strings.Join(elsewhere, ", "), p.From)
+			default:
+				return nil, 0, statusRefused, fmt.Sprintf("series %s lists %s at position %s, not %q", p.Series, p.Target,
+					strings.Join(elsewhere, ", "), p.From)
+			}
 		}
 		// metarepair refuses to empty a series on every run: retiring it is a merge-series.
 		if !slices.ContainsFunc(s.ix.seriesByID[p.Series].Works, func(sw model.SeriesWork) bool {
