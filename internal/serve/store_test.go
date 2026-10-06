@@ -29,7 +29,7 @@ func TestBatchQueriesTolerateRepeatedIDs(t *testing.T) {
 	t.Cleanup(snap.close)
 
 	const workID = "the-way-of-kings" // the two-narrator recording
-	once, err := snap.narratorsByWork([]string{workID})
+	once, err := snap.narratorsByWork(t.Context(), []string{workID})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -42,7 +42,7 @@ func TestBatchQueriesTolerateRepeatedIDs(t *testing.T) {
 	for i := range ids {
 		ids[i] = workID
 	}
-	repeated, err := snap.narratorsByWork(ids)
+	repeated, err := snap.narratorsByWork(t.Context(), ids)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -51,7 +51,7 @@ func TestBatchQueriesTolerateRepeatedIDs(t *testing.T) {
 			len(ids), repeated[workID], once[workID])
 	}
 
-	cards, err := snap.cardsByID(ids)
+	cards, err := snap.cardsByID(t.Context(), ids)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -79,7 +79,7 @@ func TestNarratorsByWorkOrderIsTotal(t *testing.T) {
 
 	// Credit order still wins where it says something: the fixture's recording
 	// credits Michael Kramer first.
-	got, err := snap.narratorsByWork([]string{"the-way-of-kings"})
+	got, err := snap.narratorsByWork(t.Context(), []string{"the-way-of-kings"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -139,7 +139,7 @@ func TestCardFactsPickTheEarliestReleaseDate(t *testing.T) {
 	}
 	t.Cleanup(snap.close)
 
-	cards, err := snap.cardsByID([]string{"many-narrations", "no-dates", "project-hail-mary"})
+	cards, err := snap.cardsByID(t.Context(), []string{"many-narrations", "no-dates", "project-hail-mary"})
 	if err != nil {
 		t.Fatal(err)
 	}

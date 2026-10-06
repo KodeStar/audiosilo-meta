@@ -329,6 +329,115 @@
         }
       }
     },
+    "/api/v1/works/match": {
+      "get": {
+        "tags": ["Search"],
+        "operationId": "matchWorks",
+        "summary": "Match a file against the catalogue",
+        "description": "Identify the work an audiobook FILE is, from the facts its tags and its folder path state, each of which may be wrong. Unlike `works/search`, which needs every word of one query, this takes the facts separately - several title guesses, several author guesses, a series name or two and a position, a runtime, an identifier, and optionally the text a person typed - gathers candidates along each of them (the identifier, the typed text exactly as `works/search` reads it, every title guess, every work by the named authors, the members of the named series), and ranks every candidate by how well its own facts agree. Each result is a `WorkResult` plus a 0-100 `score` and the `reasons` behind it.\n\nScoring: within the structured facts the score is a weighted average of title (60), author (20), series (10) and runtime (10) agreement over the facts the request states, a fact left out counting neither for nor against - except that titles which identify nothing (absent, or only `CD1`/`12`-shaped) keep their weight unless the series and its position agree. Every field is judged by its best guess, so a garbage tag beside a good path costs nothing. The typed text is scored separately, read per work as the facts it states about that work (the work's author words as its author, its series words and a volume number as that volume, the rest as a title) and judged by the same rules, and the better of the two scores counts; an identifier hit scores 100. A named title that clearly disagrees outranks a numbering match, and named authors none of whom wrote a work scale its score down.\n\nBounds: each text value is cut to 256 bytes, at most 4 values of `title` and of `author` and 2 of `series` are read, an author resolves through a bounded window of people and the author and series probes add at most 2,500 works. At most 8 matches run at once, each within 2 seconds; past that the answer is a 503 with `Retry-After`. Nothing is cached server-side and responses carry no `Cache-Control`, as for the searches.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "description": "Free text as a person typed it, in any order of title, author and series words.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "description": "A title guess: a tag, a folder or file name. Repeat for several; the first 4 are read. Send it as named: numbering and edition fluff are taken off here (`02 - `, `SW06 - `, `Sharpe - 08 - `, `(Unabridged)`, `: Series, Book 5`, the `series` name), and the number the numbering carried is the position when `position` is not given.",
+            "schema": { "type": "array", "items": { "type": "string" }, "maxItems": 4 }
+          },
+          {
+            "name": "author",
+            "in": "query",
+            "required": false,
+            "description": "An author guess. Repeat for several; the first 4 are read. A credit naming several people (`A & B`, `A, B`, `A; B`) is read as each of them, and `Cornwell, Bernard` as Bernard Cornwell. Matching is by surname, then first name or initial.",
+            "schema": { "type": "array", "items": { "type": "string" }, "maxItems": 4 }
+          },
+          {
+            "name": "series",
+            "in": "query",
+            "required": false,
+            "description": "A series name guess: the folder a book sits in, a series tag. Repeat for both; the first 2 are read, each is judged and the better agreement counts, so a wrong guess (an author's folder in a `Fiction/<author>/<book>` layout) costs nothing beside a right one. Numbering is taken off (`03 - Tawny Man` is `Tawny Man`).",
+            "schema": { "type": "array", "items": { "type": "string" }, "maxItems": 2 }
+          },
+          {
+            "name": "position",
+            "in": "query",
+            "required": false,
+            "description": "The book's position in `series` (`8`, `08`, `7.5`): one value, applied to whichever `series` guess agrees best. Compared numerically, so `08` is `8`. A value that is not a position is ignored. When absent, the number a title guess's numbering carries is used.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "runtime",
+            "in": "query",
+            "required": false,
+            "description": "The book's length in seconds. A recording within 3% agrees fully, within 10% partly. A non-numeric or non-positive value, or one above 1,000,000, is ignored.",
+            "schema": { "type": "integer", "minimum": 1, "maximum": 1000000 }
+          },
+          {
+            "name": "asin",
+            "in": "query",
+            "required": false,
+            "description": "An Audible ASIN, looked up exactly as on `/api/v1/lookup`; a hit scores 100. A value longer than 20 characters is ignored.",
+            "schema": { "type": "string", "maxLength": 20 }
+          },
+          {
+            "name": "isbn",
+            "in": "query",
+            "required": false,
+            "description": "An ISBN, hyphens and spaces allowed, looked up exactly as on `/api/v1/lookup`; a hit scores 100. A value longer than 20 characters once the hyphens and spaces are taken out is ignored.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "How many results to return. Capped at 20; a non-numeric or non-positive value falls back to the default (10).",
+            "schema": { "type": "integer", "default": 10, "minimum": 1, "maximum": 20 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The candidates, best first.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["results"],
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "description": "Candidates in rank order, best first. Never null; empty when nothing scored at all.",
+                      "items": { "$ref": "#/components/schemas/MatchResult" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest",
+            "description": "None of `q`, `title`, `author`, `series`, `asin` or `isbn` carried a value."
+          },
+          "500": { "$ref": "#/components/responses/ServerError" },
+          "503": {
+            "description": "Either no artifact has loaded yet (see the other routes' 503), or the match could not start or finish within its 2-second budget. Both are temporary; `Retry-After` says when to try again.",
+            "headers": {
+              "Retry-After": { "$ref": "#/components/headers/RetryAfter" }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/watch/feed.atom": {
       "get": {
         "tags": ["Watch feeds"],
@@ -1181,6 +1290,67 @@
             }
           }
         ]
+      },
+      "MatchResult": {
+        "description": "A works/match candidate: every WorkResult field, plus how well the work fits the request and why.",
+        "allOf": [
+          { "$ref": "#/components/schemas/WorkResult" },
+          {
+            "type": "object",
+            "required": ["score", "reasons"],
+            "properties": {
+              "score": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100,
+                "description": "How well the work's own facts agree with the request: 100 for an identifier hit, otherwise the better of the structured-facts score and the typed-text score."
+              },
+              "recording_id": {
+                "type": "string",
+                "description": "The recording the identifier named, else the one whose runtime is closest to `runtime`. Omitted when neither applies."
+              },
+              "reasons": { "$ref": "#/components/schemas/MatchReasons" }
+            }
+          }
+        ]
+      },
+      "MatchReasons": {
+        "type": "object",
+        "description": "Which facts agreed. A field is omitted when the request did not let it be judged.",
+        "properties": {
+          "title": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "The best similarity between a title guess and the work's title (1 is the same words)."
+          },
+          "text": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "The similarity of the typed text, read as a title once the work's own author and series words are taken out of it; 1 when it named the work's series and volume (`sharpe 8`)."
+          },
+          "author": {
+            "type": "string",
+            "enum": ["full", "surname", "none"],
+            "description": "Whether an author guess names one of the work's authors: by surname and first name, by surname only, or not at all."
+          },
+          "series": {
+            "type": "string",
+            "enum": ["position", "name", "conflict", "none"],
+            "description": "How the work's series fit `series` and `position`: both agree; the series agrees and no position was asked; the series agrees but the position does not, or the title clearly names another volume; no series fits."
+          },
+          "runtime": {
+            "type": "number",
+            "minimum": 0,
+            "description": "The relative difference between `runtime` and the closest recording's (0.02 is 2%)."
+          },
+          "identifier": {
+            "type": "string",
+            "enum": ["asin", "isbn"],
+            "description": "Present when the work was found by that identifier."
+          }
+        }
       },
       "PersonResult": {
         "type": "object",

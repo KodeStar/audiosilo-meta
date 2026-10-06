@@ -372,11 +372,11 @@ func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
 }
 
 // checkReservedSlug enforces that no work, person or series id is one of the
-// API's route literals (model.ReservedSlugs: "search" and "latest").
+// API's route literals (model.ReservedSlugs: "latest", "match" and "search").
 //
 // The API addresses a record by its slug, and it serves literal segments in the
-// same namespaces - /api/v1/works/latest, /api/v1/works/search,
-// /api/v1/people/search, /api/v1/series/search. A literal wins over a wildcard
+// same namespaces - /api/v1/works/latest, /api/v1/works/match,
+// /api/v1/works/search, /api/v1/people/search, /api/v1/series/search. A literal wins over a wildcard
 // in the router, so a record stored under one of those words is REACHABLE BY
 // SEARCH AND THEN UNOPENABLE: its own detail route answers with the list
 // endpoint instead. The catalogue held exactly one such record - the work

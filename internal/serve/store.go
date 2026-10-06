@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
@@ -366,8 +367,8 @@ type workCard struct {
 // exist. Keeping ONE implementation is what stops the card's composition rules
 // (which series membership wins, which cover wins) from being spelled twice and
 // drifting apart.
-func (s *snapshot) workCard(id string) (*workCard, error) {
-	byID, err := s.cardsByID([]string{id})
+func (s *snapshot) workCard(ctx context.Context, id string) (*workCard, error) {
+	byID, err := s.cardsByID(ctx, []string{id})
 	if err != nil {
 		return nil, err
 	}
@@ -519,7 +520,7 @@ func seriesSummariesByIDSQL(ph string, languages bool) string {
 // queries per work a workCard loop costs. That is what keeps a prolific
 // narrator's page from issuing thousands of sequential round-trips. Ids absent
 // from the catalogue are simply missing from the map.
-func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
+func (s *snapshot) cardsByID(ctx context.Context, ids []string) (map[string]*workCard, error) {
 	out := make(map[string]*workCard, len(ids))
 	if len(ids) == 0 {
 		return out, nil
@@ -529,7 +530,7 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 	uniq := dedupeIDs(ids)
 
 	err := eachChunk(uniq, func(ph string, args []any) error {
-		rows, err := s.db.Query(worksByIDSQL(ph), args...)
+		rows, err := s.db.QueryContext(ctx, worksByIDSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -561,15 +562,15 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 		}
 	}
 
-	authors, err := s.authorsByWork(found)
+	authors, err := s.authorsByWork(ctx, found)
 	if err != nil {
 		return nil, err
 	}
-	series, err := s.firstSeriesByWork(found)
+	series, err := s.firstSeriesByWork(ctx, found)
 	if err != nil {
 		return nil, err
 	}
-	facts, err := s.cardFactsByWork(found)
+	facts, err := s.cardFactsByWork(ctx, found)
 	if err != nil {
 		return nil, err
 	}
@@ -587,10 +588,10 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 }
 
 // authorsByWork returns each work's authors in credit order, keyed by work id.
-func (s *snapshot) authorsByWork(ids []string) (map[string][]personRef, error) {
+func (s *snapshot) authorsByWork(ctx context.Context, ids []string) (map[string][]personRef, error) {
 	out := map[string][]personRef{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(authorsByWorkSQL(ph), args...)
+		rows, err := s.db.QueryContext(ctx, authorsByWorkSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -616,11 +617,11 @@ func (s *snapshot) authorsByWork(ids []string) (map[string][]personRef, error) {
 // Works with no series are absent from the map. This is the only definition of
 // "the card's series" - workCard goes through it too, and so do works/latest's
 // per-series cap and the coverage browser.
-func (s *snapshot) firstSeriesByWork(ids []string) (map[string]*seriesRef, error) {
+func (s *snapshot) firstSeriesByWork(ctx context.Context, ids []string) (map[string]*seriesRef, error) {
 	orderings := s.hasOrderings()
 	out := map[string]*seriesRef{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(firstSeriesByWorkSQL(ph, orderings), args...)
+		rows, err := s.db.QueryContext(ctx, firstSeriesByWorkSQL(ph, orderings), args...)
 		if err != nil {
 			return err
 		}
@@ -667,10 +668,10 @@ type cardFacts struct {
 // the SHORTER (less precise) value sorts first. Picking the more precise value
 // there would need a second rule for no gain: both describe the same year, and
 // the card's date is a "when did this book come out" hint, not an edition fact.
-func (s *snapshot) cardFactsByWork(ids []string) (map[string]*cardFacts, error) {
+func (s *snapshot) cardFactsByWork(ctx context.Context, ids []string) (map[string]*cardFacts, error) {
 	out := map[string]*cardFacts{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(cardFactsByWorkSQL(ph), args...)
+		rows, err := s.db.QueryContext(ctx, cardFactsByWorkSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -705,10 +706,10 @@ func (s *snapshot) cardFactsByWork(ids []string) (map[string]*cardFacts, error) 
 
 // narratorsByWork returns each work's distinct narrators in credit order, keyed
 // by work id. A work with no narrators is absent from the map.
-func (s *snapshot) narratorsByWork(ids []string) (map[string][]personRef, error) {
+func (s *snapshot) narratorsByWork(ctx context.Context, ids []string) (map[string][]personRef, error) {
 	out := map[string][]personRef{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(narratorsByWorkSQL(ph), args...)
+		rows, err := s.db.QueryContext(ctx, narratorsByWorkSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -731,10 +732,10 @@ func (s *snapshot) narratorsByWork(ids []string) (map[string][]personRef, error)
 
 // namesByPersonID returns the display name of each person id. Ids absent from
 // the catalogue are simply missing from the map.
-func (s *snapshot) namesByPersonID(ids []string) (map[string]string, error) {
+func (s *snapshot) namesByPersonID(ctx context.Context, ids []string) (map[string]string, error) {
 	out := map[string]string{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(namesByPersonIDSQL(ph), args...)
+		rows, err := s.db.QueryContext(ctx, namesByPersonIDSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -764,10 +765,10 @@ type seriesSummary struct {
 
 // seriesSummariesByID returns the name and member count of each series id, in
 // one query per chunk. Ids absent from the catalogue are missing from the map.
-func (s *snapshot) seriesSummariesByID(ids []string) (map[string]seriesSummary, error) {
+func (s *snapshot) seriesSummariesByID(ctx context.Context, ids []string) (map[string]seriesSummary, error) {
 	out := map[string]seriesSummary{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(seriesSummariesByIDSQL(ph, s.schemaVersion >= languagesSchemaVersion), args...)
+		rows, err := s.db.QueryContext(ctx, seriesSummariesByIDSQL(ph, s.schemaVersion >= languagesSchemaVersion), args...)
 		if err != nil {
 			return err
 		}

@@ -2,6 +2,7 @@ package serve
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
@@ -216,7 +217,7 @@ func (s *snapshot) selectWatchCandidates(
 	for i, c := range candidates {
 		ids[i] = c.workID
 	}
-	facts, err := s.cardFactsByWork(ids)
+	facts, err := s.cardFactsByWork(context.Background(), ids)
 	if err != nil {
 		return nil, err
 	}
@@ -322,7 +323,7 @@ func (s *snapshot) watchFeed(
 	for i, c := range kept {
 		keptIDs[i] = c.workID
 	}
-	byID, err := s.cardsByID(keptIDs)
+	byID, err := s.cardsByID(context.Background(), keptIDs)
 	if err != nil {
 		return watchFeed{}, err
 	}

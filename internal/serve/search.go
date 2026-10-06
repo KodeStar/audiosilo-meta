@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"context"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -521,19 +522,19 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 // its derived language and a member at that position may still be in another
 // one - a boosted work outside the filter is dropped before mergeHits rather than
 // leading a page the reader asked to exclude it from.
-func (s *snapshot) search(kind searchKind, q string, limit int, lang langFilter) ([]any, error) {
-	hits, err := s.ftsHits(kind, ftsQuery(q), limit, lang)
+func (s *snapshot) search(ctx context.Context, kind searchKind, q string, limit int, lang langFilter) ([]any, error) {
+	hits, err := s.ftsHits(ctx, kind, ftsQuery(q), limit, lang)
 	if err != nil {
 		return nil, err
 	}
 	var boosted []string
 	if kind == kindAny || kind == kindWork {
-		boosted = s.boostedWorks(q, lang)
-		if boosted, err = s.worksInLanguages(boosted, lang); err != nil {
+		boosted = s.boostedWorks(ctx, q, lang)
+		if boosted, err = s.worksInLanguages(ctx, boosted, lang); err != nil {
 			return nil, err
 		}
 	}
-	return s.results(mergeHits(boosted, hits, limit))
+	return s.results(ctx, mergeHits(boosted, hits, limit))
 }
 
 // ftsHits runs the search query for kind and materializes its rows in rank
@@ -544,9 +545,9 @@ func (s *snapshot) search(kind searchKind, q string, limit int, lang langFilter)
 // The hits are collected FIRST so the whole page's cards, names and summaries
 // can be resolved in one batch each (see results) rather than inside the scan
 // loop. lang is already live (snapshot.liveLang); nil is no filter.
-func (s *snapshot) ftsHits(kind searchKind, match string, limit int, lang langFilter) ([]searchHit, error) {
+func (s *snapshot) ftsHits(ctx context.Context, kind searchKind, match string, limit int, lang langFilter) ([]searchHit, error) {
 	query, args := ftsSearchQuery(kind, match, limit, lang)
-	rows, err := s.db.Query(query, args...)
+	rows, err := s.db.QueryContext(ctx, query, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -573,16 +574,42 @@ func (s *snapshot) ftsHits(kind searchKind, match string, limit int, lang langFi
 //
 // lang (live, nil for none) is handed to both probes, which filter inside their
 // windows; with none each issues exactly the SQL it always did.
-func (s *snapshot) boostedWorks(q string, lang langFilter) []string {
-	titles, err := s.exactTitleHits(q, lang)
-	if err != nil {
+func (s *snapshot) boostedWorks(ctx context.Context, q string, lang langFilter) []string {
+	titles, err := s.exactTitleHits(ctx, q, lang)
+	if err != nil && ctx.Err() == nil {
 		s.logf("serve: exact-title probe for %q failed, serving the plain search page: %v", q, err)
 	}
-	positions, err := s.seriesPositionHits(q, lang)
-	if err != nil {
+	positions, err := s.seriesPositionHits(ctx, q, lang)
+	if err != nil && ctx.Err() == nil {
 		s.logf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
 	}
 	return append(titles, positions...)
+}
+
+// workResults composes work ids into their search-result shape, reading the
+// cards and the narrators in one batch each. An id the batch could not resolve
+// is absent from the map. It is the work half of results, which works/match's
+// ranked page shares.
+func (s *snapshot) workResults(ctx context.Context, ids []string) (map[string]workResult, error) {
+	cards, err := s.cardsByID(ctx, ids)
+	if err != nil {
+		return nil, err
+	}
+	narrators, err := s.narratorsByWork(ctx, ids)
+	if err != nil {
+		return nil, err
+	}
+	out := make(map[string]workResult, len(cards))
+	for id, card := range cards {
+		// A work with no narrators is absent from the batch, but the wire
+		// contract says narrators is always an array.
+		ns := narrators[id]
+		if ns == nil {
+			ns = []personRef{}
+		}
+		out[id] = workResult{Kind: kindWork, workCard: card, Narrators: ns}
+	}
+	return out, nil
 }
 
 // results composes one ranked page of hits into their per-kind result shapes.
@@ -595,7 +622,7 @@ func (s *snapshot) boostedWorks(q string, lang langFilter) []string {
 // keystroke of the site's search box) and a type-scoped page is 100% one kind,
 // so a per-hit query there is a whole page of sequential round-trips, not the
 // occasional one a mixed page would pay.
-func (s *snapshot) results(hits []searchHit) ([]any, error) {
+func (s *snapshot) results(ctx context.Context, hits []searchHit) ([]any, error) {
 	var workIDs, personIDs, seriesIDs []string
 	for _, h := range hits {
 		switch h.kind {
@@ -607,19 +634,15 @@ func (s *snapshot) results(hits []searchHit) ([]any, error) {
 			seriesIDs = append(seriesIDs, h.id)
 		}
 	}
-	cards, err := s.cardsByID(workIDs)
+	works, err := s.workResults(ctx, workIDs)
 	if err != nil {
 		return nil, err
 	}
-	narrators, err := s.narratorsByWork(workIDs)
+	names, err := s.namesByPersonID(ctx, personIDs)
 	if err != nil {
 		return nil, err
 	}
-	names, err := s.namesByPersonID(personIDs)
-	if err != nil {
-		return nil, err
-	}
-	summaries, err := s.seriesSummariesByID(seriesIDs)
+	summaries, err := s.seriesSummariesByID(ctx, seriesIDs)
 	if err != nil {
 		return nil, err
 	}
@@ -632,17 +655,9 @@ func (s *snapshot) results(hits []searchHit) ([]any, error) {
 	for _, h := range hits {
 		switch h.kind {
 		case kindWork:
-			card := cards[h.id]
-			if card == nil {
-				continue
+			if w, ok := works[h.id]; ok {
+				out = append(out, w)
 			}
-			// A work with no narrators is absent from the batch, but the wire
-			// contract says narrators is always an array.
-			ns := narrators[h.id]
-			if ns == nil {
-				ns = []personRef{}
-			}
-			out = append(out, workResult{Kind: kindWork, workCard: card, Narrators: ns})
 		case kindPerson:
 			name, ok := names[h.id]
 			if !ok {

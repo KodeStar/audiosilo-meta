@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"context"
 	"database/sql"
 	"math"
 	"sort"
@@ -292,11 +293,11 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 	for i := range page {
 		ids[i] = page[i].ID
 	}
-	authors, err := s.authorsByWork(ids)
+	authors, err := s.authorsByWork(context.Background(), ids)
 	if err != nil {
 		return nil, err
 	}
-	series, err := s.firstSeriesByWork(ids)
+	series, err := s.firstSeriesByWork(context.Background(), ids)
 	if err != nil {
 		return nil, err
 	}

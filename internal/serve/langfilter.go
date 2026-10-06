@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"context"
 	"fmt"
 	"slices"
 	"strings"
@@ -202,7 +203,7 @@ func worksInLanguagesSQL(ph, pred string) string {
 // worksInLanguages filters ids to the works f (already live) admits, preserving
 // their order. It costs one primary-key read per id and runs only when a boost
 // fired under a filter - a handful of ids on a rare path.
-func (s *snapshot) worksInLanguages(ids []string, f langFilter) ([]string, error) {
+func (s *snapshot) worksInLanguages(ctx context.Context, ids []string, f langFilter) ([]string, error) {
 	if f == nil || len(ids) == 0 {
 		return ids, nil
 	}
@@ -211,7 +212,7 @@ func (s *snapshot) worksInLanguages(ids []string, f langFilter) ([]string, error
 	pred, predArgs := f.predicate("language", false)
 	keep := map[string]bool{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(worksInLanguagesSQL(ph, pred), append(args, predArgs...)...)
+		rows, err := s.db.QueryContext(ctx, worksInLanguagesSQL(ph, pred), append(args, predArgs...)...)
 		if err != nil {
 			return err
 		}

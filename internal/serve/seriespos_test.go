@@ -141,7 +141,7 @@ func resultIDs(t *testing.T, results []any) []string {
 
 func searchIDs(t *testing.T, snap *snapshot, q string) []string {
 	t.Helper()
-	res, err := snap.search(kindAny, q, 20, nil)
+	res, err := snap.search(t.Context(), kindAny, q, 20, nil)
 	if err != nil {
 		t.Fatalf("search(%q): %v", q, err)
 	}
@@ -207,12 +207,12 @@ func TestSearchSeriesPositionMisses(t *testing.T) {
 		t.Errorf("search('jack reacher 99') = %v, want no results", ids)
 	}
 	// A series that does not exist boosts nothing.
-	if hits, err := snap.seriesPositionHits("fahrenheit 451", nil); err != nil || hits != nil {
+	if hits, err := snap.seriesPositionHits(t.Context(), "fahrenheit 451", nil); err != nil || hits != nil {
 		t.Errorf("seriesPositionHits('fahrenheit 451') = %v, %v; want nil, nil", hits, err)
 	}
 	// No trailing number: the plain series query is untouched, still returning
 	// the series record and its works.
-	if hits, err := snap.seriesPositionHits("jack reacher", nil); err != nil || hits != nil {
+	if hits, err := snap.seriesPositionHits(t.Context(), "jack reacher", nil); err != nil || hits != nil {
 		t.Errorf("seriesPositionHits('jack reacher') = %v, %v; want nil, nil", hits, err)
 	}
 	ids := searchIDs(t, snap, "jack reacher")
@@ -265,7 +265,7 @@ func TestSearchNumericTitlesNotRegressed(t *testing.T) {
 // combined one.
 func scopedIDs(t *testing.T, snap *snapshot, kind searchKind, q string) []string {
 	t.Helper()
-	res, err := snap.search(kind, q, 20, nil)
+	res, err := snap.search(t.Context(), kind, q, 20, nil)
 	if err != nil {
 		t.Fatalf("search(%s, %q): %v", kind, q, err)
 	}
@@ -347,7 +347,7 @@ func TestSearchSeriesPositionPrefersTheWholeName(t *testing.T) {
 	// A residual that names a series OUTRIGHT drops the partial matches: "jack
 	// reacher 2" is volume 2 of Jack Reacher, not also of "The Hunt for Jack
 	// Reacher". Without this the boost prepends a fan-out of near-misses.
-	hits, err := snap.seriesPositionHits("jack reacher 2", nil)
+	hits, err := snap.seriesPositionHits(t.Context(), "jack reacher 2", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -356,7 +356,7 @@ func TestSearchSeriesPositionPrefersTheWholeName(t *testing.T) {
 	}
 	// With no whole-name match the ranked candidates all stand: "expanse 3"
 	// legitimately resolves against a series whose name merely contains it.
-	if hits, err := snap.seriesPositionHits("jungle 2", nil); err != nil {
+	if hits, err := snap.seriesPositionHits(t.Context(), "jungle 2", nil); err != nil {
 		t.Fatal(err)
 	} else if len(hits) < 2 {
 		t.Errorf("seriesPositionHits('jungle 2') = %v, want both jungle series' volume 2", hits)
@@ -441,7 +441,7 @@ func TestSeriesPositionSkipsJunkResiduals(t *testing.T) {
 		"jack reach 2",
 		"jack reacher b 2",
 	} {
-		hits, err := snap.seriesPositionHits(q, nil)
+		hits, err := snap.seriesPositionHits(t.Context(), q, nil)
 		if err != nil {
 			t.Fatalf("seriesPositionHits(%q): %v", q, err)
 		}

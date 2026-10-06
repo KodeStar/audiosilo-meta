@@ -557,14 +557,14 @@ func TestABSSkipsTheUnfilteredWindowWhenItCannotReachThePage(t *testing.T) {
 	snap := snapshotFor(t, langFilterCatalog())
 	de := langFilter{"de"} // two German "Saga Tales" of four
 
-	ids, _, err := snap.absCandidates("saga tales", "", 2, de)
+	ids, _, err := snap.absCandidates(t.Context(), "saga tales", "", 2, de)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if !sameSet(ids, "saga-tales-de", "saga-tales-jane-de") {
 		t.Errorf("no author, full language window: candidates %v, want the two German works alone", ids)
 	}
-	both, _, err := snap.absCandidates("saga tales", "Nobody At All", 2, de)
+	both, _, err := snap.absCandidates(t.Context(), "saga tales", "Nobody At All", 2, de)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -572,16 +572,16 @@ func TestABSSkipsTheUnfilteredWindowWhenItCannotReachThePage(t *testing.T) {
 		t.Fatalf("with an author: candidates %v, want both windows (four works)", both)
 	}
 	// A language window SHORT of limit still reads the unfiltered one.
-	if short, _, err := snap.absCandidates("saga tales", "", 3, de); err != nil || len(short) != 4 {
+	if short, _, err := snap.absCandidates(t.Context(), "saga tales", "", 3, de); err != nil || len(short) != 4 {
 		t.Errorf("no author, language window short of limit: candidates %v (%v), want four", short, err)
 	}
 
 	for _, limit := range []int{1, 2} {
-		skipped, err := snap.absSearch("saga tales", "", "", limit, de)
+		skipped, err := snap.absSearch(t.Context(), "saga tales", "", "", limit, de)
 		if err != nil {
 			t.Fatal(err)
 		}
-		full, err := snap.absSearch("saga tales", "Nobody At All", "", limit, de)
+		full, err := snap.absSearch(t.Context(), "saga tales", "Nobody At All", "", limit, de)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -621,13 +621,13 @@ func TestBoostProbesFilterInsideTheirWindows(t *testing.T) {
 	if q, args := exactTitleQuery("dune", nil); q != exactTitleSQL || len(args) != 2 {
 		t.Errorf("unfiltered exact-title probe = %q %v, want exactTitleSQL unchanged", q, args)
 	}
-	if got, err := snap.exactTitleHits("dune", nil); err != nil || slices.Contains(got, "zz-dune-de") {
+	if got, err := snap.exactTitleHits(t.Context(), "dune", nil); err != nil || slices.Contains(got, "zz-dune-de") {
 		t.Fatalf("fixture: unfiltered exact-title window = %v (%v), want it full without the German Dune", got, err)
 	}
-	if got, err := snap.exactTitleHits("dune", de); err != nil || !slices.Equal(got, []string{"zz-dune-de"}) {
+	if got, err := snap.exactTitleHits(t.Context(), "dune", de); err != nil || !slices.Equal(got, []string{"zz-dune-de"}) {
 		t.Errorf("exact-title probe under lang=de = %v (%v), want [zz-dune-de]", got, err)
 	}
-	if got, err := snap.seriesPositionHits("saga chronicles 4", de); err != nil || !slices.Equal(got, []string{"saga-chronicles-de-vol"}) {
+	if got, err := snap.seriesPositionHits(t.Context(), "saga chronicles 4", de); err != nil || !slices.Equal(got, []string{"saga-chronicles-de-vol"}) {
 		t.Errorf("series probe under lang=de = %v (%v), want [saga-chronicles-de-vol]", got, err)
 	}
 }
