@@ -110,10 +110,12 @@ const (
 
 // fieldPosition and fieldLanguage are the Field a membership op and a language op
 // name: the membership's position (what the repair checks the tree still states), and
-// the language a split moves out or a work is reset to.
+// the language a split moves out or a work is reset to. fieldTitle is W-TITLE's, the
+// one field a retitle rewrites.
 const (
 	fieldPosition = "position"
 	fieldLanguage = "language"
+	fieldTitle    = "title"
 )
 
 // How a series' keeper language was decided.

@@ -38,7 +38,8 @@ import (
 // Ambiguity can make a decision temporarily stale: remove it only after review.
 //
 // A third decision, ASSERT, SOURCES a proposal no detector can see (an alternate title,
-// a reissue, a work stating no series, an omnibus listed in a series' slots): the entry's
+// a reissue, a work stating no series, an omnibus listed in a series' slots, a title a
+// detector's own rule refuses to propose): the entry's
 // identity IS the proposal, emitted non-advisory in its op's class under the subclass
 // `asserted`. It is a human decision, so no detector veto is asked; sourcing.source only
 // refuses what metarepair would refuse on every run, while metarepair's other plan-time
@@ -48,7 +49,10 @@ import (
 // retired or joined, so it reads STALE and a re-run proposes nothing. A drop whose target
 // was since retired onto a survivor the series lists only at other slots is STALE too:
 // the work it named is gone and its survivor is not at that slot; a live target listed elsewhere
-// is REFUSED.
+// is REFUSED. A retitle is compared with the title the work (its survivor, if retired)
+// states NOW: the asserted To is STALE (applied), the asserted From is sourced, and any
+// other title is REFUSED naming it - the record moved, and a stale review must not
+// overwrite a title nobody reviewed.
 //
 //go:embed reviewed.json
 var reviewedFile []byte
@@ -84,6 +88,10 @@ var assertClass = map[string]string{
 	// S-INTEGRITY already proposes a drop (of a dangling member); an asserted drop is the
 	// series-integrity judgement no rule can make, a membership that does not belong.
 	OpDropMembership: ClassSeriesInteg,
+	// W-TITLE's fragment rule refuses some correct retitles outright ("Lock In (Narrated by
+	// Wil Wheaton)" reads its trailing "In" as a dangling connective), so no proposal exists
+	// for an accept to meet.
+	OpRetitle: ClassWorkTitle,
 }
 
 // SubclassAsserted is the subclass an asserted proposal is emitted under. internal/repair
@@ -92,16 +100,19 @@ const SubclassAsserted = "asserted"
 
 func (r reviewedDecision) proposal() Proposal {
 	p := Proposal{Op: r.Op, Target: r.Target, Series: r.Series, Field: r.Field, From: r.From, To: r.To, Others: r.Others}
-	// An assertion may omit a membership's field; it is read as a detector spells it, so
-	// an asserted add can meet W-NOSERIES's proposal (REDUNDANT), while an asserted drop
-	// never meets an L-MIX drop, which names its homes in Others. An accept or reject
-	// copies a proposal, so its field is taken as written.
+	// An assertion may omit a membership's or a retitle's field; it is read as a detector
+	// spells it, so an asserted add can meet W-NOSERIES's proposal and an asserted retitle
+	// W-TITLE's (REDUNDANT), while an asserted drop never meets an L-MIX drop, which names
+	// its homes in Others. An accept or reject copies a proposal, so its field is taken as
+	// written.
 	if r.Decision == "assert" && p.Field == "" {
 		switch p.Op {
 		case OpAddSeriesMember:
 			p.Field = "series"
 		case OpDropMembership:
 			p.Field = fieldPosition
+		case OpRetitle:
+			p.Field = fieldTitle
 		}
 	}
 	return p
@@ -242,13 +253,28 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 // validAssertion is the structural rule an assertion must meet, since nothing a
 // detector checks stands behind it: a merge names a target and the distinct records
 // folding onto it, an added membership the canonical position it takes in a series,
-// and a dropped one the canonical position it is listed at (from). Every other
+// a dropped one the canonical position it is listed at (from), and a retitle the
+// work's recorded title (from) and its replacement (to), different. Every other
 // identity field must be empty, so the entry spells the proposal exactly as a
 // detector would and a detector making the same proposal is found as redundant.
 func validAssertion(r reviewedDecision) error {
 	if _, ok := assertClass[r.Op]; !ok {
-		return fmt.Errorf("a %q proposal cannot be asserted (want %s, %s, %s or %s)", r.Op, OpAddSeriesMember, OpDropMembership,
-			OpMergeSeries, OpMergeWorks)
+		return fmt.Errorf("a %q proposal cannot be asserted (want %s, %s, %s, %s or %s)", r.Op, OpAddSeriesMember, OpDropMembership,
+			OpMergeSeries, OpMergeWorks, OpRetitle)
+	}
+	if r.Op == OpRetitle {
+		if r.Target == "" || r.Series != "" || (r.Field != "" && r.Field != fieldTitle) || len(r.Others) > 0 {
+			return fmt.Errorf("an asserted %s names target, from and to (field, if stated, %q), nothing else", r.Op, fieldTitle)
+		}
+		for _, title := range []string{r.From, r.To} {
+			if title == "" || strings.TrimSpace(title) != title || strings.ContainsAny(title, "\n\r") {
+				return fmt.Errorf("an asserted %s needs a one-line, trimmed from and to title, not %q", r.Op, title)
+			}
+		}
+		if r.From == r.To {
+			return fmt.Errorf("an asserted %s changes nothing: from and to are both %q", r.Op, r.From)
+		}
+		return nil
 	}
 	if r.Op == OpDropMembership {
 		if r.Target == "" || r.Series == "" || (r.Field != "" && r.Field != fieldPosition) || r.To != "" || len(r.Others) > 0 {
@@ -649,10 +675,11 @@ type sourcing struct {
 // returning where it sits; or, with a nil class, the status and why: STALE when a
 // record it names is gone or it has been applied (a merge's others all resolve to its
 // target, an added membership is listed at its slot, a dropped one is not listed at
-// all, or its target was retired onto a survivor listed only at other slots), REFUSED
-// when it names no record (live or retired), would widen or move one, the series holds
-// an added position already, lists a live dropped work at another position, or would
-// be left with no members by the drop.
+// all, its target was retired onto a survivor listed only at other slots, or a retitled
+// work already states the new title), REFUSED when it names no record (live or
+// retired), would widen or move one, the series holds an added position already, lists
+// a live dropped work at another position, would be left with no members by the drop,
+// or a retitled work states neither title.
 func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, status outcomeStatus, why string) {
 	if s.ix == nil {
 		return nil, 0, statusStale, "no catalogue to find its records in"
@@ -668,6 +695,8 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		series = Cluster(p.Target, p.Others)
 	case OpAddSeriesMember, OpDropMembership:
 		works, series = []string{p.Target}, []string{p.Series}
+	case OpRetitle:
+		works = []string{p.Target}
 	}
 	fd := Finding{Subclass: SubclassAsserted,
 		Notes: []string{"no detector proposes this: a reviewed assertion in " + reviewedPath + " sources it, and no detector veto was asked"}}
@@ -712,6 +741,17 @@ func (s *sourcing) source(r reviewedDecision, p Proposal) (c *findings, i int, s
 		}
 	}
 	switch p.Op {
+	case OpRetitle:
+		// The title is compared with the work as it stands now (a retired target's survivor):
+		// metarepair re-reads it the same way and refuses any other title as stale-value.
+		switch title := s.ix.workByID[p.Target].Title; title {
+		case p.To:
+			return nil, 0, statusStale, fmt.Sprintf("applied: work %s states the title %q", p.Target, title)
+		case p.From:
+		default:
+			return nil, 0, statusRefused, fmt.Sprintf("work %s now states the title %q, not the %q the assertion was written against",
+				p.Target, title, p.From)
+		}
 	case OpAddSeriesMember:
 		if listedAt != "" {
 			return nil, 0, statusStale, fmt.Sprintf("applied: series %s lists %s at position %q", p.Series, p.Target, listedAt)

@@ -344,6 +344,14 @@
     "target": "disgardium-series-disgardium-series-boxed-set"
   },
   {
+    "decision": "assert",
+    "from": "5",
+    "op": "drop-membership",
+    "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
+    "series": "zodiac-wolves-german-edition",
+    "target": "fates-entwined"
+  },
+  {
     "decision": "reject",
     "field": "position",
     "from": "3",
@@ -354,6 +362,22 @@
     "reason": "this drop would take the Spanish original out of its own series and leave antonia-scott English-only: the English translation is the half that moves",
     "series": "antonia-scott",
     "target": "rey-blanco"
+  },
+  {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
+    "series": "zodiac-wolves-german-edition",
+    "target": "star-cursed-elizabeth-briggs"
+  },
+  {
+    "decision": "assert",
+    "from": "3",
+    "op": "drop-membership",
+    "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
+    "series": "zodiac-wolves-german-edition",
+    "target": "sun-crossed"
   },
   {
     "decision": "assert",
@@ -396,6 +420,14 @@
     "target": "vom-mond-beruhrt-moon-touched"
   },
   {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
+    "series": "zodiac-wolves-german-edition",
+    "target": "zodiac-aligned"
+  },
+  {
     "decision": "accept",
     "op": "merge-series",
     "others": [
@@ -431,6 +463,15 @@
     ],
     "reason": "Audible's numbering of the publication order omits The Lost Stories; the primary keeps the publisher's numbering (The Lost Stories is Book 11, The Royal Ranger 12)",
     "target": "rangers-apprentice"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-forsaken-kingdom-series-2"
+    ],
+    "reason": "the-forsaken-kingdom-series-2 was minted by a bad series claim and has only ever held this one Sherlock episode at 70; after the work merge it lists the survivor at the slot the target does, so the fold retires it and moves nothing",
+    "target": "sherlock-holmes-die-galaktischen-falle"
   },
   {
     "decision": "accept",
@@ -476,6 +517,15 @@
     ],
     "reason": "same book: two narrations of one work, and the series spellings are one series",
     "target": "balada-de-pajaros-cantores-y-serpientes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bombenterror-auf-fomalhaut-b-sherlock-holmes-die-galaktischen-falle-folge-70"
+    ],
+    "reason": "the same episode 70 of the same German series by the same authors; the Folge record carries two other narrations",
+    "target": "bombenterror-auf-fomalhaut-b-sherlock-holmes-die-galaktischen-falle-70"
   },
   {
     "decision": "assert",
@@ -1100,6 +1150,22 @@
     ],
     "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
     "target": "yo-antes-de-ti"
+  },
+  {
+    "decision": "assert",
+    "from": "Head On (Narrated by Wil Wheaton)",
+    "op": "retitle-work",
+    "reason": "John Scalzi's Head On holds both the Wil Wheaton and Amber Benson narrations, so the narrator credit is a recording fact, not the book's title; W-TITLE's fragment rule misreads the trailing On as a dangling connective (the Larry Csonka Head On is a different work by another author)",
+    "target": "head-on-narrated-by-wil-wheaton",
+    "to": "Head On"
+  },
+  {
+    "decision": "assert",
+    "from": "Lock In (Narrated by Wil Wheaton)",
+    "op": "retitle-work",
+    "reason": "the work holds both the Wil Wheaton and Amber Benson narrations, so the narrator credit is a recording fact, not the book's title; W-TITLE's fragment rule misreads the trailing In as a dangling connective",
+    "target": "lock-in-narrated-by-wil-wheaton",
+    "to": "Lock In"
   },
   {
     "decision": "accept",

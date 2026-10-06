@@ -455,3 +455,71 @@ func TestReviewedAssertedDropOfOneOfTwoMembershipsReachesMetarepair(t *testing.T
 		}
 	}
 }
+
+// An asserted retitle W-TITLE's own rules would never propose ("Lock In" reads its
+// trailing "In" as a dangling connective) reaches metarepair through the fresh-audit
+// gate, is applied with the reviewer's title, and reads STALE once applied.
+func TestReviewedAssertedRetitleReachesMetarepair(t *testing.T) {
+	const id, decorated = "lock-in-narrated-by-wil-wheaton", "Lock In (Narrated by Wil Wheaton)"
+	files := map[string]string{
+		"people/xx/jane-doe.json":               testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/xx/nate-narrator.json":          testpack.PersonJSON(t, "nate-narrator", "Nate Narrator"),
+		"works/xx/" + id + "/work.json":         testpack.WorkJSON(t, id, decorated),
+		"works/xx/" + id + "/recordings/r.json": testpack.RecJSON(t, "r", id),
+	}
+	root := t.TempDir()
+	data := filepath.Join(root, "data")
+	testpack.Seed(t, data, files)
+	audit.SetReviewedForTest(t, []byte(`[
+  {
+    "decision": "assert",
+    "from": "Lock In (Narrated by Wil Wheaton)",
+    "op": "retitle-work",
+    "reason": "the narrator credit is a recording fact, not the book's title",
+    "target": "lock-in-narrated-by-wil-wheaton",
+    "to": "Lock In"
+  }
+]
+`))
+	for _, args := range [][]string{{"init", "-q"}, {"config", "user.email", "fixture@example.com"}, {"config", "user.name", "Fixture"}, {"config", "commit.gpgsign", "false"}, {"add", "-A"}, {"commit", "-qm", "seed"}} {
+		cmd := exec.Command("git", args...)
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("git %v: %v: %s", args, err, out)
+		}
+	}
+	opts := repair.Options{DataDir: data, Ops: []string{audit.OpRetitle}, Subclasses: []string{audit.SubclassAsserted}, Write: true}
+	rep, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rep.Applied) != 1 || len(rep.Refused) != 0 || rep.Applied[0].Subclass != audit.SubclassAsserted ||
+		rep.Applied[0].Class != audit.ClassWorkTitle {
+		t.Fatalf("repair applied %+v, refused %+v", rep.Applied, rep.Refused)
+	}
+	after := check.Load(data)
+	if len(after.Problems) > 0 {
+		t.Fatalf("after repair: %v", after.Problems)
+	}
+	var title string
+	for _, w := range after.Catalog.Works {
+		if w.ID == id {
+			title = w.Title
+		}
+	}
+	if title != "Lock In" {
+		t.Fatalf("title = %q, want %q (the slug untouched)", title, "Lock In")
+	}
+	fresh := audit.Analyze(after)
+	if len(fresh.Reviewed.Stale()) != 1 || len(fresh.Reviewed.Outcomes()) != 0 {
+		t.Fatalf("after applying, reviewed = %+v, want the assertion stale", fresh.Reviewed)
+	}
+	opts.Write = false
+	again, err := repair.Run(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(again.Applied) != 0 || again.Considered != 0 {
+		t.Fatalf("second run=%+v", again)
+	}
+}

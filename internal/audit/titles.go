@@ -91,7 +91,7 @@ func detectWorkTitle(ix *index) *findings {
 		p := Proposal{
 			Op:     OpRetitle,
 			Target: c.work.ID,
-			Field:  "title",
+			Field:  fieldTitle,
 			From:   c.work.Title,
 			To:     c.want,
 			Reason: "the slug is identity and is deliberately left alone; see F-HYGIENE for the rename candidates",
