@@ -7854,6 +7854,14 @@
             {
               "asin": "B0G1MW6V4Q",
               "region": "us"
+            },
+            {
+              "asin": "B0G1MWKR96",
+              "region": "de"
+            },
+            {
+              "asin": "B0G1N2TGKX",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8054,6 +8062,16 @@
               "imported_at": "2026-08-02",
               "ref": "B0G1MW6V4Q",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0G1MWKR96",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0G1N2TGKX",
+              "type": "libex-import"
             }
           ],
           "work": "darkhill-academy-1-magisches-blut"
@@ -8107,6 +8125,44 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GY5C1V15",
+              "type": "libex-import"
+            }
+          ],
+          "work": "darkhill-academy-2-verzaubertes-erbe"
+        },
+        "pia-rhona-saxe-2026-2": {
+          "abridged": false,
+          "added_at": "2026-10-06",
+          "asin": [
+            {
+              "asin": "B0GY553PYX",
+              "region": "de"
+            },
+            {
+              "asin": "B0GY56YB9T",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91L7s-OBtKL.jpg",
+          "id": "pia-rhona-saxe-2026-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "pia-rhona-saxe",
+            "sven-macht"
+          ],
+          "publisher": "Silberfisch",
+          "release_date": "2026-11-27",
+          "runtime_min": 720,
+          "sources": [
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0GY553PYX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0GY56YB9T",
               "type": "libex-import"
             }
           ],
