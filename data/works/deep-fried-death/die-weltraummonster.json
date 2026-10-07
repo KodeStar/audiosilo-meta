@@ -7017,6 +7017,10 @@
             {
               "asin": "B0D9LXLKVC",
               "region": "us"
+            },
+            {
+              "asin": "B0D9LYKF59",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -7200,6 +7204,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D9LXLKVC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0D9LYKF59",
               "type": "libex-import"
             }
           ],
@@ -9196,6 +9205,169 @@
         }
       ],
       "title": "Die Wünschelrute"
+    },
+    "die-wuste-der-ewigkeit": {
+      "added_at": "2026-10-07",
+      "authors": [
+        "alex-kosh"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
+      "id": "die-wuste-der-ewigkeit",
+      "language": "de",
+      "license": "CC0-1.0",
+      "recordings": {
+        "alex-kratzenstein-2026": {
+          "abridged": false,
+          "added_at": "2026-10-07",
+          "asin": [
+            {
+              "asin": "B0HKPX1ZS8",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31114,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 346464,
+              "start_ms": 31114,
+              "title": "Teil 1. Der Preis des Lebens"
+            },
+            {
+              "length_ms": 1683516,
+              "start_ms": 377578,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 935299,
+              "start_ms": 2061094,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 1300015,
+              "start_ms": 2996393,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 1025602,
+              "start_ms": 4296408,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 1141980,
+              "start_ms": 5322010,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 1288289,
+              "start_ms": 6463990,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 1078891,
+              "start_ms": 7752279,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 1507718,
+              "start_ms": 8831170,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 1175045,
+              "start_ms": 10338888,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 269328,
+              "start_ms": 11513933,
+              "title": "Teil 2. Springmaus-Tag"
+            },
+            {
+              "length_ms": 926638,
+              "start_ms": 11783261,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 960609,
+              "start_ms": 12709899,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 1069859,
+              "start_ms": 13670508,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 1122266,
+              "start_ms": 14740367,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 1497942,
+              "start_ms": 15862633,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 1339071,
+              "start_ms": 17360575,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 1123033,
+              "start_ms": 18699646,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 1192275,
+              "start_ms": 19822679,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 1105803,
+              "start_ms": 21014954,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 48552,
+              "start_ms": 22120757,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MLmOMyAzL.jpg",
+          "id": "alex-kratzenstein-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-kratzenstein"
+          ],
+          "publisher": "MDB US INC.",
+          "release_date": "2026-10-21",
+          "runtime_min": 369,
+          "sources": [
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HKPX1ZS8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "die-wuste-der-ewigkeit"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-07",
+          "ref": "B0HKPX1ZS8",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Die Wüste der Ewigkeit"
     },
     "die-wuste-der-ewigkeit-die-letzten-helden-3": {
       "added_at": "2026-08-02",
