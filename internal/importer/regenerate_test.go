@@ -2,6 +2,8 @@ package importer
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
@@ -418,6 +420,37 @@ func TestRegenerateGenresUserSourceOnARecording(t *testing.T) {
 	}
 	if !hasNote(sum.Notes, "1 carry a user-library source") {
 		t.Errorf("notes = %v", sum.Notes)
+	}
+}
+
+// TestRegenerateGenresFailsOnAnUnreadableWork: a catalogued work whose entry
+// cannot be read when the regeneration writes it (here its pack is removed
+// between the load and the decision - the tree changed under the run) is fatal,
+// never a silent skip.
+func TestRegenerateGenresFailsOnAnUnreadableWork(t *testing.T) {
+	dataDir := seedRegen(t, map[string]string{
+		"works/go/gone/work.json":         regenWorkJSON("gone", []string{"westerns"}, "libex-import"),
+		"works/go/gone/recordings/a.json": regenRecJSON("gone", "a", "B0GONE0001"),
+	})
+	opts := Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRegenerateGenres, RowsAsOf: "2026-10-06"}
+	p, err := openPlanner(sourceLibex, opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	p.loadExisting()
+	entries, err := decodeLibexEntries([]byte(regenRow("B0GONE0001", "Mystery") + "\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	packs, _ := filepath.Glob(filepath.Join(dataDir, "works", "*", "*.json"))
+	for _, f := range packs {
+		if err := os.Remove(f); err != nil {
+			t.Fatal(err)
+		}
+	}
+	p.planRegenerateGenres(parseLibexEntries(entries).books)
+	if p.fatal == nil || len(p.summary.GenreChanges) != 0 {
+		t.Errorf("fatal = %v, changes = %+v; want a fatal error and no change", p.fatal, p.summary.GenreChanges)
 	}
 }
 

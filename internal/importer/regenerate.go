@@ -165,12 +165,16 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 			p.summary.GenreWorksUnchanged++
 			continue
 		}
+		// A catalogued work whose entry cannot be read mid-run means the tree
+		// changed under the run, or a bug: fatal, never a silent skip. (entryRaw
+		// sets p.fatal on every nil it returns; the fallback keeps the rule true
+		// should that ever change.)
 		raw := p.workEntryRaw(slug)
 		if raw == nil {
-			if p.fatal != nil {
-				return
+			if p.fatal == nil {
+				p.fatal = fmt.Errorf("genre regeneration: work %q could not be read", slug)
 			}
-			continue
+			return
 		}
 		raw["genres"] = next
 		p.putWorkEntry(slug, raw)
