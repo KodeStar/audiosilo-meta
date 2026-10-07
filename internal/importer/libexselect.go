@@ -83,6 +83,12 @@ type SelectOptions struct {
 	// The subset and both worklists are committed together (atomicfile), the
 	// subset last.
 	AttachmentsPath string
+	// ImportDate is the run day (YYYY-MM-DD) the preorder-estimate rule reads
+	// for a row carrying no updatedAt (estimate.go, planner.rowDay): a row whose
+	// release date is later than its capture day is a preorder listing whose
+	// runtime is an estimate, judged exactly as the import of it judges it.
+	// Empty makes no undated row an estimate.
+	ImportDate string
 }
 
 // SeriesCount is one catalogue series' share of a selection.
@@ -294,7 +300,7 @@ func (st *selectState) claimPosition(slug, seq, workKey string) bool {
 func selectLibexRows(r io.Reader, opts SelectOptions, refusals *refusalLog) (SelectResult, []selectedRow, error) {
 	res := SelectResult{Excluded: map[string]int{}}
 	x := exclusions{res: &res, log: refusals}
-	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions)
+	idx, warnings := loadSeriesIndex(opts.DataDir, opts.AttachEditions, opts.ImportDate)
 	res.Warnings = append(res.Warnings, warnings...)
 
 	st := newSelectState()
@@ -824,7 +830,7 @@ type seriesIndex struct {
 //
 // attach says the run applies the attach rule; without it the planner lets go
 // of the normalized-identity index, exactly as a plain selection always has.
-func loadSeriesIndex(dataDir string, attach bool) (seriesIndex, []string) {
+func loadSeriesIndex(dataDir string, attach bool, importDate string) (seriesIndex, []string) {
 	idx := seriesIndex{
 		bySlug:    map[string]string{},
 		asins:     map[string]bool{},
@@ -835,7 +841,7 @@ func loadSeriesIndex(dataDir string, attach bool) (seriesIndex, []string) {
 	if err != nil {
 		return idx, []string{fmt.Sprintf("catalogue at %s: %v; selecting against nothing", dataDir, err)}
 	}
-	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir})
+	p := newPlanner(store, sourceLibex, Options{DataDir: dataDir, ImportDate: importDate})
 	p.loadedPositions = attach
 	p.loadExisting()
 	if !attach {
@@ -878,8 +884,10 @@ func (idx seriesIndex) libexBook(e rawBook, asin string) sourceBook {
 	region, _, _ := libexRegion(e)
 	book := libexToBook(e, asin, region, libexNames(e["authors"]), libexNames(e["narrators"]), &libexParse{})
 	// This door composes a book runBooks never sees, so it decodes the book's
-	// text itself - exactly once, as runBooks does for the import (entities.go).
+	// text itself - exactly once, as runBooks does for the import (entities.go) -
+	// and resolves its comparable runtime as planner.run does (estimate.go).
 	book.decodeText()
+	idx.p.setEvidenceRuntime(&book)
 	return book
 }
 

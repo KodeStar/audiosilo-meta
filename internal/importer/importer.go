@@ -105,9 +105,14 @@ func qualifiedWorkTitle(title string) string {
 // sibling work (see addRecording). Its storage location is the work's composite
 // pack entry, reached on demand from the work + recording slugs, never stored.
 type recInfo struct {
-	narrators  map[string]bool
-	asins      map[string]bool
-	runtimeMin int
+	narrators map[string]bool
+	asins     map[string]bool
+	// known is the recording's runtime as a same-production comparison reads
+	// it: the recorded runtime, or for a preorder ESTIMATE its chapter
+	// timeline's total, else the estimate marked as one. Set only through
+	// knownRuntime (estimate.go), at every site that builds or refreshes a
+	// recInfo.
+	known runtimeEvidence
 	// claims is every series position this recording is known to be at - the
 	// per-recording half of the same-title serial guard: two volumes of a serial
 	// published under one title have compatible runtimes and identical
@@ -273,6 +278,10 @@ type planner struct {
 	// per-record half is whether the record the row matched is still
 	// bulk-mirror-only. See attest.go and LICENSING.md's trust tiers.
 	userTier bool
+	// mirrorTier reports whether THIS run's source type is the bulk mirror
+	// (model.TierBulkMirror) - the run-wide half of the preorder-estimate rule's
+	// row test (estimate.go) and of the genre vote (genrevote.go).
+	mirrorTier bool
 	// credits is the run's batch credit decisions (creditContext): the two
 	// censuses and the initials decision, taken once before planning. Every
 	// planning step reads them through here; libex-select, which judges several
@@ -375,6 +384,10 @@ type planner struct {
 	sourceType string
 	importDate string
 	curSource  OutSource
+	// curStatesRuntime reports whether the row curSource stamps states a
+	// runtime: only such a row's post-release stamp is let past the source
+	// deduplication to end a preorder estimate (endsEstimate, estimate.go).
+	curStatesRuntime bool
 	// identity is the run's NORMALIZED WORK IDENTITY index over the catalogue as
 	// loaded - the create path's duplicate guard (dupidentity.go). nil in every
 	// other mode, which is what makes the guard a create-only rule and costs the
@@ -425,6 +438,13 @@ type planner struct {
 	// run whose lookups were all refused from a run that needed none.
 	seriesLookupFailed   int
 	seriesLookupFailures []string
+	// estimates holds the preorder-estimate runtimes a chapter timeline kept and
+	// the examples of both outcomes, for the aggregated notes (estimate.go,
+	// reportEstimates; the replacements are counted on the summary).
+	estimates struct {
+		kept                           int
+		replacedExamples, keptExamples []string
+	}
 	// mode is the planning pass this run was asked for. It is kept only so a
 	// conflict worklist row can name the run that wrote it; the pass itself is
 	// selected once, by runBooks' switch.
@@ -445,15 +465,24 @@ type planner struct {
 
 // setSource points the planner's provenance stamp at the row being planned. Every
 // record a row creates or changes carries it (see stampSource).
-func (p *planner) setSource(asin string) {
-	p.curSource = OutSource{Type: p.sourceType, Ref: asin, ImportedAt: p.importDate}
+func (p *planner) setSource(asin string, b sourceBook) {
+	p.curSource = OutSource{Type: p.sourceType, Ref: asin, ImportedAt: p.statementDay(b)}
+	p.curStatesRuntime = b.runtimeMin > 0
 }
 
 // stampSource appends this row's provenance to an existing record's raw sources[]
 // array. It goes through appendSourceUnique, so a second pass over the same row
-// never double-stamps.
+// never double-stamps - with the one exception of a stamp from a row stating a
+// runtime that ENDS a preorder estimate (endsEstimate, estimate.go): an
+// enrichment row's ref is the ASIN the record was created under, so the
+// deduplication would otherwise drop the one post-release statement the
+// estimate rule reads, and the record would stay an estimate for good.
 func (p *planner) stampSource(raw map[string]any) {
 	srcArr, _ := raw["sources"].([]any)
+	if p.endsEstimate(raw) {
+		raw["sources"] = append(srcArr, sourceMap(p.curSource))
+		return
+	}
 	raw["sources"] = appendSourceUnique(srcArr, p.curSource)
 }
 
@@ -533,8 +562,16 @@ func Run(booksPath string, opts Options) (Summary, error) {
 // one).
 type sourceBook struct {
 	raw        rawBook
-	series     []seriesRef  // the book's series claims (>1 only for Libation)
-	runtimeMin int          // whole minutes; 0 = unknown
+	series     []seriesRef // the book's series claims (>1 only for Libation)
+	runtimeMin int         // whole minutes; 0 = unknown
+	// evidence is the runtime a same-production comparison reads: runtimeMin,
+	// or for a bulk-mirror row captured before its release its chapter list's
+	// total, else its runtime marked as an estimate. Resolved once at the row
+	// doors (planner.setEvidenceRuntime, estimate.go).
+	evidence runtimeEvidence
+	// capturedAt is the UTC day the source captured the row (a libex row's
+	// updatedAt), "" when it does not say; read through planner.rowDay.
+	capturedAt string
 	abridged   *bool        // tri-state: nil = the source did not state it
 	genres     []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
 	// vocabGenres are genres ALREADY in this project's vocabulary, which no export
@@ -730,6 +767,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		mode:               opts.Mode,
 		conflicts:          opts.Conflicts,
 		userTier:           model.TierOfSource(sourceType) == model.TierUserLibrary,
+		mirrorTier:         model.TierOfSource(sourceType) == model.TierBulkMirror,
 		existingSeriesOnly: opts.ExistingSeriesOnly,
 		attachEditions:     opts.AttachEditions,
 		loadedPositions:    opts.AttachEditions,
@@ -751,6 +789,11 @@ func regenRecsFor(m Mode) map[RecRef][]string {
 // Summary through result(), so every way out of a run reports its warnings in
 // the same order.
 func (p *planner) run(books []sourceBook, opts Options) error {
+	// The row door of every run: each row's comparable runtime is resolved once,
+	// against the run's date, before anything compares one (estimate.go).
+	for i := range books {
+		p.setEvidenceRuntime(&books[i])
+	}
 	p.loadExisting()
 	if p.mode.plansRows() {
 		p.credits = p.creditContextOf(books)
@@ -788,6 +831,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportDroppedSeriesClaims()
 	p.reportLostSeriesClaims()
 	p.reportSeriesPositionLookups()
+	p.reportEstimates()
 	p.reportDuplicateIdentities()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
@@ -990,7 +1034,7 @@ func (p *planner) planCreate(books []sourceBook) {
 	suffixes := p.serialPositionSuffixes(books, titles)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
-		p.setSource(asin)
+		p.setSource(asin, b)
 		p.addBook(b, asin, titles[i], suffixes[i])
 		if p.fatal != nil {
 			return
@@ -1087,9 +1131,10 @@ func (p *planner) loadExisting() {
 				p.narratorPeople[n] = true
 			}
 			ri := &recInfo{
-				narrators:  ToSet(r.Narrators),
-				asins:      map[string]bool{},
-				runtimeMin: r.RuntimeMin,
+				narrators: ToSet(r.Narrators),
+				asins:     map[string]bool{},
+				known: knownRuntime(r.RuntimeMin, r.ReleaseDate, r.AddedAt, r.Sources,
+					func() int { return chapterMinutes(r.Chapters) }),
 				// abridged stays nil (unknown) for a disk incumbent: the model's
 				// plain bool can't distinguish stated-false from absent, so we do
 				// not let it block a merge. See recInfo.abridged.
@@ -2768,7 +2813,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 					m.slug, incumbent, series, want)
 				continue
 			}
-			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
+			// The runtime half reads both sides' comparable runtimes
+			// (estimate.go): a runtime the mirror stated before release is held
+			// to the estimate bound, so a corrected regional row of a
+			// preorder-catalogued production merges instead of minting a twin.
+			if sameRuntime(m.info.known, b.evidence) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
 					// The ASIN is not recorded, but the row IS this production's
@@ -2791,7 +2840,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 				// earlier version did) loses a fact no later run would restore.
 				// The claim happens INSIDE the merge, which is where the target
 				// record's own isbn[] can be read - see claimISBNsFor.
-				if !p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, b.isbns, warn) {
+				if !p.mergeRecordingASIN(m.info, b, RecRef{Work: ws.slug, Rec: m.slug}, region, asin, warn) {
 					return recNone
 				}
 				p.asins[asin] = true
@@ -2833,8 +2882,9 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	rec.AddedAt = p.importDate
 
 	ri := &recInfo{
-		narrators: narrSet, asins: map[string]bool{}, runtimeMin: b.runtimeMin,
-		abridged: b.abridged, claims: claims,
+		narrators: narrSet, asins: map[string]bool{}, abridged: b.abridged, claims: claims,
+		known: knownRuntime(rec.RuntimeMin, rec.ReleaseDate, rec.AddedAt, []model.Source{model.Source(p.curSource)},
+			func() int { return chapterMinutes(rec.Chapters) }),
 	}
 	for _, a := range rec.ASIN {
 		ri.asins[a.ASIN] = true
@@ -3262,22 +3312,27 @@ func (p *planner) seriesPosConflict(ri *recInfo, ws *workState, row []posClaim, 
 // holds would otherwise be reported as a collision with "another recording"
 // (claimISBNsFor). Nothing is claimed on the bail path below either, which is
 // the right side to err on: an entry that could not be read was not written.
-func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string, isbns []string, warn func(string, ...any)) bool {
+func (p *planner) mergeRecordingASIN(ri *recInfo, b sourceBook, ref RecRef, region, asin string, warn func(string, ...any)) bool {
 	if p.fatal != nil {
 		return false
 	}
-	entry, raw := p.recordingRaw(workSlug, recSlug)
+	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
 	if raw == nil {
 		return false
 	}
 	arr, _ := raw["asin"].([]any)
 	raw["asin"] = append(arr, map[string]any{"region": region, "asin": asin})
-	appendISBNs(raw, p.claimISBNsFor(raw, isbns, warn))
+	appendISBNs(raw, p.claimISBNsFor(raw, b.isbns, warn))
+	// A recorded preorder estimate is corrected by a released row's runtime
+	// (estimate.go). Asked of the record BEFORE this merge's stamp, which is
+	// what ends the estimate state when the run is dated after the release.
+	p.correctEstimate(raw, ref, b)
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
 	p.stampSource(raw)
-	p.putWorkEntry(workSlug, entry)
+	p.putWorkEntry(ref.Work, entry)
 	ri.asins[asin] = true
+	syncRecInfo(ri, raw)
 	// p.asins is registered by addRecording, the one owner, once this returns.
 	p.summary.MergedASINs++
 	return true

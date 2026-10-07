@@ -1813,7 +1813,17 @@ and two guards - runtime (a >10% gap between two known runtimes is a genuinely
 different production and gets its own recording under the same work) and
 abridged (a known-abridged entry never merges into an unabridged/unstated
 recording) - rather than
-minting a sibling work or dropping the ASIN (`Summary.MergedASINs`). Series
+minting a sibling work or dropping the ASIN (`Summary.MergedASINs`). **A
+runtime the bulk mirror stated BEFORE release is an ESTIMATE** (`estimate.go`,
+which states the rule, the A Bird Among Wolves case and the measurements;
+"before" is judged by the day the row was CAPTURED - a libex row's `updatedAt`,
+else `--rows-as-of`, else `--date`): its chapter timeline's total stands in for
+it, and with none the guards that refuse a row compare it within 50% instead of
+10% (the title corroboration keeps 10%); a released row's runtime replaces it on
+the ASIN merge and on `--enrich` unless the timeline or that bound refutes the
+stated value. A merged regional row stating NO runtime still ends the estimate
+uncorrected - the one gap sources[] cannot close without a schema change,
+measured rare and pinned in the file. Series
 positions accept omnibus ranges (`"1-3.5"`), spelled with or without whitespace
 around the dash (`NormalizeSequence` tolerates it on INPUT and removes it on the
 way to the canonical value, so what is stored still satisfies the schema's

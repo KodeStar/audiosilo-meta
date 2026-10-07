@@ -273,8 +273,8 @@ func (rp rowPosition) agrees(o rowPosition, corroborated func() bool) bool {
 // rowProductionOf or resolvedRowProduction, never a literal: a zero runtime or a
 // missing narrator set would silently corroborate nothing, or everything.
 type rowProduction struct {
-	runtime  int   // whole minutes; 0 = unstated
-	abridged *bool // nil = unstated
+	runtime  runtimeEvidence // sourceBook.evidence
+	abridged *bool           // nil = unstated
 	// narrators is the resolved narrator-slug set. When it is nil, names are
 	// resolved through resolve on first use: the claim is built before the row's
 	// people exist (creating them is what a refused row must not do), and the
@@ -289,7 +289,7 @@ type rowProduction struct {
 // decision getOrCreatePerson acts on, and the one rowWorkAuthorsRO reads authors
 // through).
 func (p *planner) rowProductionOf(b sourceBook, narratorNames []string) *rowProduction {
-	return &rowProduction{runtime: b.runtimeMin, abridged: b.abridged, names: narratorNames,
+	return &rowProduction{runtime: b.evidence, abridged: b.abridged, names: narratorNames,
 		resolve: func(name string) string {
 			return p.resolvePerson(name).slug
 		}}
@@ -298,7 +298,7 @@ func (p *planner) rowProductionOf(b sourceBook, narratorNames []string) *rowProd
 // resolvedRowProduction is b's production for a caller that already holds the
 // row's resolved narrator set (addRecording).
 func resolvedRowProduction(b sourceBook, narrators map[string]bool) *rowProduction {
-	return &rowProduction{runtime: b.runtimeMin, abridged: b.abridged, narrators: narrators}
+	return &rowProduction{runtime: b.evidence, abridged: b.abridged, narrators: narrators}
 }
 
 // narratorSet is the row's resolved narrator-slug set.
@@ -314,14 +314,19 @@ func (rp *rowProduction) narratorSet() map[string]bool {
 
 // sameProductionAs reports whether the row is the same production as recording
 // ri, by the importer's OWN definition - the one the ASIN merge in addRecording
-// applies: the identical narrator set (SameSet), compatible runtimes
-// (runtimesCompatible) and no abridged conflict (abridgedConflict). One
-// tightening, because this is evidence rather than a merge decision: BOTH
-// runtimes must be stated, since an unknown runtime is compatible with anything
-// and so corroborates nothing. The narrator set is asked last - it is the only
-// part that may have to resolve names.
+// applies: the identical narrator set (SameSet), compatible runtimes and no
+// abridged conflict (abridgedConflict). Two tightenings, because this is
+// evidence rather than a merge decision: BOTH runtimes must be stated, since an
+// unknown runtime is compatible with anything and so corroborates nothing; and
+// the runtimes are held to the ordinary 10% rule even where one is a preorder
+// estimate with no timeline (estimate.go), whose minutes are read as stated. The
+// estimate bound exists so a correction is not refused; as positive evidence it
+// would nearly double the cross-volume corroborations it admits (measured in
+// estimate.go's header), and volumes of one series by one narrator sit within
+// it routinely. The narrator set is asked last - it is the only part that may
+// have to resolve names.
 func (rp *rowProduction) sameProductionAs(ri *recInfo) bool {
-	return rp.runtime > 0 && ri.runtimeMin > 0 && runtimesCompatible(ri.runtimeMin, rp.runtime) &&
+	return rp.runtime.min > 0 && ri.known.min > 0 && runtimesCompatible(ri.known.min, rp.runtime.min) &&
 		!abridgedConflict(ri.abridged, rp.abridged) && SameSet(ri.narrators, rp.narratorSet())
 }
 

@@ -7,7 +7,7 @@
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]
-//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]
+//	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]
 //
 // libex-select writes no records: it reduces a full libex export to the
 // bounded, series-completing subset LICENSING.md's import posture allows, and
@@ -130,6 +130,20 @@ import (
 )
 
 var dateRE = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
+
+// runDate resolves a --date flag: today (UTC) when absent, else the value when
+// it is YYYY-MM-DD. ok is false (with the error printed) otherwise. One helper,
+// because the import and libex-select must read the same run day.
+func runDate(flag string) (string, bool) {
+	if flag == "" {
+		return time.Now().UTC().Format("2006-01-02"), true
+	}
+	if !dateRE.MatchString(flag) {
+		fmt.Fprintf(os.Stderr, "metaimport: --date %q must be YYYY-MM-DD\n", flag)
+		return "", false
+	}
+	return flag, true
+}
 
 func main() {
 	if len(os.Args) < 2 {
@@ -255,11 +269,8 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 
-	stamp := *date
-	if stamp == "" {
-		stamp = time.Now().UTC().Format("2006-01-02")
-	} else if !dateRE.MatchString(stamp) {
-		fmt.Fprintf(os.Stderr, "metaimport: --date %q must be YYYY-MM-DD\n", stamp)
+	stamp, ok := runDate(*date)
+	if !ok {
 		return 2
 	}
 
@@ -409,6 +420,7 @@ func runLibexSelect(args []string) int {
 	attachEditions := fs.Bool("attach-editions", false, "keep a row at a series position the catalogue already fills when it is another edition of the work there, for `metaimport libex --attach-editions` to attach")
 	refusals := fs.String("refusals", "", "write one NDJSON line per refused row ({\"asin\",\"reason\"}, stable reason codes) to this file")
 	attachments := fs.String("attachments", "", "write one NDJSON line per row selected for ATTACHMENT ({\"asin\",\"work\",\"series\",\"position\"}) to this file")
+	date := fs.String("date", "", "the run day (YYYY-MM-DD) the preorder-estimate rule reads for a row carrying no updatedAt, as the import's --date does; defaults to today (UTC)")
 	// Registered here for the same reason --enrich is registered for every
 	// source: a flag pointed at the wrong subcommand should say why, not produce
 	// flag's bare "not defined" line. Selection imports nothing, so there is no
@@ -435,6 +447,10 @@ func runLibexSelect(args []string) int {
 		fmt.Fprintf(os.Stderr, "metaimport: --max-per-series must not be negative\n")
 		return 2
 	}
+	day, ok := runDate(*date)
+	if !ok {
+		return 2
+	}
 
 	res, err := importer.SelectLibex(exportPath, *out, importer.SelectOptions{
 		DataDir:         *data,
@@ -442,6 +458,7 @@ func runLibexSelect(args []string) int {
 		AttachEditions:  *attachEditions,
 		RefusalsPath:    *refusals,
 		AttachmentsPath: *attachments,
+		ImportDate:      day,
 	})
 	if err != nil {
 		// The report is deliberately NOT printed here. A run that aborted
@@ -625,7 +642,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")

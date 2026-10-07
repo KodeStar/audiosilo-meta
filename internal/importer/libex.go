@@ -387,6 +387,13 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	if rd := isoDatePart(e.str("releaseDate")); rd != "" {
 		raw["release_date"] = rd
 	}
+	// updatedAt is when libex last wrote the row: the day the row was CAPTURED as
+	// the preorder-estimate rule reads it (planner.rowDay), cut to its UTC day.
+	// A row not written since before its release still holds the preorder
+	// listing, however late it is read.
+	if day := model.TimeKey(e.str("updatedAt")); len(day) >= 10 && datePattern.MatchString(day[:10]) {
+		sb.capturedAt = day[:10]
+	}
 	if img := e.str("imageUrl"); img != "" {
 		if strings.HasPrefix(img, "https://") {
 			raw["image_url"] = img

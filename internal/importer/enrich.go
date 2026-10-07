@@ -65,7 +65,7 @@ func (p *planner) planEnrich(books []sourceBook) {
 func (p *planner) forEachMatchedRow(books []sourceBook, fn func(b sourceBook, ref RecRef)) {
 	for _, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
-		p.setSource(asin)
+		p.setSource(asin, b)
 		ref, matched := p.asinLoc[asin]
 		if !matched {
 			p.summary.NotInCatalog++
@@ -187,10 +187,17 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// Runtime and release date reach here only in agreement (recordingContradicts
 	// refused the row otherwise), so an overwrite is a precision improvement -
 	// 601 minutes for a recorded 600, or a full date for a recorded year - never
-	// a re-statement of a different production.
+	// a re-statement of a different production. The one exception is a recorded
+	// preorder ESTIMATE, which that guard compares through its chapter timeline
+	// or at the estimate bound, and which correctEstimate judges below.
 	if b.runtimeMin > 0 {
 		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || overwrite {
-			raw["runtime_min"] = b.runtimeMin
+			setDecoded(raw, "runtime_min", b.runtimeMin)
+			changed = true
+		} else if scope == scopeFill && p.correctEstimate(raw, ref, b) {
+			// The one replacement of a recorded value outside the trust-tier
+			// overwrite: the recorded runtime was a preorder listing's estimate
+			// and this row states the released one (estimate.go).
 			changed = true
 		}
 	}
@@ -216,7 +223,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// sources' chapter tables would produce a timeline neither source states.
 	if existing, _ := raw["chapters"].([]any); len(existing) == 0 || overwrite {
 		if chs := buildChapters(b.chapterRows(), warn); len(chs) > 0 {
-			raw["chapters"] = chs
+			setDecoded(raw, "chapters", chs)
 			changed = true
 		}
 	}
@@ -233,6 +240,11 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	}
 	p.stampSource(raw)
 	p.putWorkEntry(ref.Work, entry)
+	// A later row of the run compares with what the record now says: a filled or
+	// replaced runtime, a chapter list, the stamp that ends an estimate.
+	if ws := p.works[ref.Work]; ws != nil {
+		syncRecInfo(ws.recs[ref.Rec], raw)
+	}
 	if overwrite {
 		p.summary.AttestedRecordings++
 	} else {
@@ -274,8 +286,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
 func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, scope applyScope) bool {
-	runtime, _ := coerceInt(raw["runtime_min"])
-	c, contradicts := rowContradiction(b, int(runtime), coerceStr(raw["release_date"]), scope)
+	c, contradicts := rowContradiction(b, rawKnownRuntime(raw), coerceStr(raw["release_date"]), scope)
 	if !contradicts {
 		return false
 	}
@@ -310,15 +321,18 @@ type contradiction struct {
 
 // rowContradiction is THE contradiction test (recordingContradicts' rule, and
 // the genre regeneration's - a contradicted row casts no genre vote): does the
-// row disagree with a recording recorded at runtime minutes (0 = unknown) and
-// release date on the runtime, or - outside scopeAttestMerged - on the release
-// date. It only answers; the caller decides what a contradiction costs.
-func rowContradiction(b sourceBook, runtime int, releaseDate string, scope applyScope) (contradiction, bool) {
+// row disagree with a recording recorded at runtime and release date on the
+// runtime, or - outside scopeAttestMerged - on the release date. Both runtimes
+// are the comparable ones (the recording's recInfo.known, the row's evidence),
+// compared through sameRuntime, which is where a preorder estimate on either
+// side is held to its own bound (estimate.go). It only answers; the caller
+// decides what a contradiction costs.
+func rowContradiction(b sourceBook, runtime runtimeEvidence, releaseDate string, scope applyScope) (contradiction, bool) {
 	// Defense in depth in the merge scope: addRecording only reaches a merge for a
 	// sibling whose runtime is already compatible, so this cannot fire there.
-	if b.runtimeMin > 0 && runtime > 0 && !runtimesCompatible(runtime, b.runtimeMin) {
-		return contradiction{"runtime_min", runtime, b.runtimeMin, fmt.Sprintf(
-			"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, runtime)}, true
+	if !sameRuntime(runtime, b.evidence) {
+		return contradiction{"runtime_min", runtime.min, b.evidence.min, fmt.Sprintf(
+			"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.evidence.min, runtime.min)}, true
 	}
 	if scope == scopeAttestMerged {
 		return contradiction{}, false

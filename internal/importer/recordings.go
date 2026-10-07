@@ -46,7 +46,7 @@ func (p *planner) planRecordings(books []sourceBook) {
 	normalizeEditionMarkers(books)
 	for _, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
-		p.setSource(asin)
+		p.setSource(asin, b)
 		p.addRecordingToExistingWork(b, asin)
 		if p.fatal != nil {
 			return

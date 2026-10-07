@@ -183,9 +183,12 @@ func (p *planner) attest(a Attestation, asin string, opts Options) (Summary, err
 		isbns:       a.ISBNs,
 		vocabGenres: a.Genres,
 	}
+	// The submission is a row door of its own (estimate.go).
+	p.setEvidenceRuntime(&b)
 	// The submission's own entry, not setSource's: a run stamps the row's ASIN as
 	// its ref, where a hand submission's provenance is what the submitter cited.
 	p.curSource = a.Source
+	p.curStatesRuntime = b.runtimeMin > 0
 	p.attestExisting(b, asin)
 	if p.fatal != nil {
 		return p.result(), p.fatal
@@ -226,19 +229,19 @@ func (p *planner) attestOnMerge(b sourceBook, ref RecRef, warn func(string, ...a
 // records? Both halves must hold - a user-library run, and a record whose every
 // provenance entry is bulk-mirror tier.
 func (p *planner) overwrites(raw map[string]any) bool {
-	return p.userTier && model.BulkMirrorOnlyTypes(rawSourceTypes(raw))
+	return p.userTier && model.BulkMirrorOnly(rawSources(raw))
 }
 
-// rawSourceTypes reads the type of every entry in a decoded record's sources[]
-// array. A malformed entry yields an empty type, which pkg/model ranks as
-// reference tier - so a record we cannot fully read is never classified as
-// overwritable.
-func rawSourceTypes(raw map[string]any) []string {
+// rawSources reads a decoded record's sources[] array (type and imported_at,
+// the two facts the trust tier and the preorder-estimate rule read). A
+// malformed entry yields an empty type, which pkg/model ranks as reference tier
+// - so a record we cannot fully read is never classified as overwritable.
+func rawSources(raw map[string]any) []model.Source {
 	arr, _ := raw["sources"].([]any)
-	out := make([]string, 0, len(arr))
+	out := make([]model.Source, 0, len(arr))
 	for _, s := range arr {
 		m, _ := s.(map[string]any)
-		out = append(out, coerceStr(m["type"]))
+		out = append(out, model.Source{Type: coerceStr(m["type"]), ImportedAt: coerceStr(m["imported_at"])})
 	}
 	return out
 }

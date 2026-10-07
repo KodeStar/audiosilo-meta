@@ -466,3 +466,29 @@ func hasNote(notes []string, sub string) bool {
 	}
 	return false
 }
+
+// The regeneration judges a row by the day the rows were captured
+// (--rows-as-of), not the run's: rows taken before a release state a preorder
+// estimate, held to the estimate bound, so a 400-minute row does not contradict
+// the released 600; rows taken after it state a measurement, and it does.
+func TestRegenerateGenresReadsPreordersByTheRowsDate(t *testing.T) {
+	for _, tc := range []struct {
+		rowsAsOf         string
+		wantContradicted int
+	}{
+		{"2026-09-01", 0},
+		{"2026-09-20", 1},
+	} {
+		t.Run(tc.rowsAsOf, func(t *testing.T) {
+			dataDir := seedRegen(t, map[string]string{
+				"works/pr/preorder/work.json":         regenWorkJSON("preorder", nil, "libex-import"),
+				"works/pr/preorder/recordings/a.json": regenRecRuntime("preorder", "a", 600, "B0PREORDA1"),
+			})
+			row := strings.Replace(regenRowRuntime("B0PREORDA1", 400, "Mystery"), `"region":"us",`, `"region":"us","releaseDate":"2026-09-08",`, 1)
+			sum := runLibexWith(t, dataDir, Options{Mode: ModeRegenerateGenres, RowsAsOf: tc.rowsAsOf, ImportDate: "2026-10-07"}, row)
+			if sum.GenreRowsContradicted != tc.wantContradicted {
+				t.Errorf("GenreRowsContradicted = %d, want %d", sum.GenreRowsContradicted, tc.wantContradicted)
+			}
+		})
+	}
+}

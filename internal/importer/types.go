@@ -313,6 +313,12 @@ type Summary struct {
 	// Attested* instead, so the two are disjoint.
 	EnrichedWorks      int
 	EnrichedRecordings int
+	// EstimatesReplaced counts the recorded PREORDER-ESTIMATE runtimes a
+	// released row replaced (estimate.go), on the ASIN merge or on enrichment.
+	// It is not a disjoint counter: an enriched recording whose estimate was
+	// replaced is also an EnrichedRecordings one, and a merge also a MergedASINs
+	// one. The run's notes name a few, and those a chapter timeline kept.
+	EstimatesReplaced int
 	// AttestedWorks / AttestedRecordings count the bulk-mirror-only records a
 	// USER-library run took over: the row's stated facts overwrote the mirror's
 	// and the run's source entry was appended, so the record is user-attested
