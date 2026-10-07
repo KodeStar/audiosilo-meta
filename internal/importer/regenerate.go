@@ -97,7 +97,7 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 		// release date legitimately differs per regional re-release, which is why
 		// that scope skips it, and a date says nothing about a production's genres.
 		if ri := p.works[ref.Work].recs[ref.Rec]; ri != nil {
-			if _, bad := rowContradiction(b, ri.knownMin, "", scopeAttestMerged); bad {
+			if _, bad := rowContradiction(b, ri.known, "", scopeAttestMerged); bad {
 				p.summary.GenreRowsContradicted++
 				return
 			}

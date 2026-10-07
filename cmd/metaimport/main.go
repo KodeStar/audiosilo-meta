@@ -420,7 +420,7 @@ func runLibexSelect(args []string) int {
 	attachEditions := fs.Bool("attach-editions", false, "keep a row at a series position the catalogue already fills when it is another edition of the work there, for `metaimport libex --attach-editions` to attach")
 	refusals := fs.String("refusals", "", "write one NDJSON line per refused row ({\"asin\",\"reason\"}, stable reason codes) to this file")
 	attachments := fs.String("attachments", "", "write one NDJSON line per row selected for ATTACHMENT ({\"asin\",\"work\",\"series\",\"position\"}) to this file")
-	date := fs.String("date", "", "the run day (YYYY-MM-DD) the preorder-estimate rule reads, as the import's --date does; defaults to today (UTC)")
+	date := fs.String("date", "", "the run day (YYYY-MM-DD) the preorder-estimate rule reads for a row carrying no updatedAt, as the import's --date does; defaults to today (UTC)")
 	// Registered here for the same reason --enrich is registered for every
 	// source: a flag pointed at the wrong subcommand should say why, not produce
 	// flag's bare "not defined" line. Selection imports nothing, so there is no

@@ -107,12 +107,12 @@ func qualifiedWorkTitle(title string) string {
 type recInfo struct {
 	narrators map[string]bool
 	asins     map[string]bool
-	// knownMin is the recording's runtime as a same-production comparison may
-	// read it (whole minutes, 0 = unknown): the recorded runtime, or for a
-	// preorder ESTIMATE its chapter timeline's total. Set only through
-	// knownMinutes (estimate.go), at every site that builds or refreshes a
+	// known is the recording's runtime as a same-production comparison reads
+	// it: the recorded runtime, or for a preorder ESTIMATE its chapter
+	// timeline's total, else the estimate marked as one. Set only through
+	// knownRuntime (estimate.go), at every site that builds or refreshes a
 	// recInfo.
-	knownMin int
+	known runtimeEvidence
 	// claims is every series position this recording is known to be at - the
 	// per-recording half of the same-title serial guard: two volumes of a serial
 	// published under one title have compatible runtimes and identical
@@ -461,8 +461,8 @@ type planner struct {
 
 // setSource points the planner's provenance stamp at the row being planned. Every
 // record a row creates or changes carries it (see stampSource).
-func (p *planner) setSource(asin string) {
-	p.curSource = OutSource{Type: p.sourceType, Ref: asin, ImportedAt: p.importDate}
+func (p *planner) setSource(asin string, b sourceBook) {
+	p.curSource = OutSource{Type: p.sourceType, Ref: asin, ImportedAt: p.statementDay(b)}
 }
 
 // stampSource appends this row's provenance to an existing record's raw sources[]
@@ -559,13 +559,16 @@ type sourceBook struct {
 	raw        rawBook
 	series     []seriesRef // the book's series claims (>1 only for Libation)
 	runtimeMin int         // whole minutes; 0 = unknown
-	// evidenceRuntime is the runtime a same-production comparison reads (whole
-	// minutes, 0 = unknown): runtimeMin, or for a bulk-mirror row listing a
-	// production not yet released its chapter list's total. Resolved once at the
-	// row doors (planner.setEvidenceRuntime, estimate.go).
-	evidenceRuntime int
-	abridged        *bool        // tri-state: nil = the source did not state it
-	genres          []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
+	// evidence is the runtime a same-production comparison reads: runtimeMin,
+	// or for a bulk-mirror row captured before its release its chapter list's
+	// total, else its runtime marked as an estimate. Resolved once at the row
+	// doors (planner.setEvidenceRuntime, estimate.go).
+	evidence runtimeEvidence
+	// capturedAt is the UTC day the source captured the row (a libex row's
+	// updatedAt), "" when it does not say; read through planner.rowDay.
+	capturedAt string
+	abridged   *bool        // tri-state: nil = the source did not state it
+	genres     []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
 	// vocabGenres are genres ALREADY in this project's vocabulary, which no export
 	// states: only a hand submission does (Attest - an issue form validates its
 	// genres against the schema enum), so there is nothing to map. Read by
@@ -1026,7 +1029,7 @@ func (p *planner) planCreate(books []sourceBook) {
 	suffixes := p.serialPositionSuffixes(books, titles)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
-		p.setSource(asin)
+		p.setSource(asin, b)
 		p.addBook(b, asin, titles[i], suffixes[i])
 		if p.fatal != nil {
 			return
@@ -1125,7 +1128,7 @@ func (p *planner) loadExisting() {
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),
 				asins:     map[string]bool{},
-				knownMin: knownMinutes(r.RuntimeMin, r.ReleaseDate, r.AddedAt, r.Sources,
+				known: knownRuntime(r.RuntimeMin, r.ReleaseDate, r.AddedAt, r.Sources,
 					func() int { return chapterMinutes(r.Chapters) }),
 				// abridged stays nil (unknown) for a disk incumbent: the model's
 				// plain bool can't distinguish stated-false from absent, so we do
@@ -2806,10 +2809,10 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 				continue
 			}
 			// The runtime half reads both sides' comparable runtimes
-			// (estimate.go): a runtime the mirror stated before release is
-			// unknown here, so a corrected regional row of a preorder-catalogued
-			// production merges instead of minting a twin of it.
-			if runtimesCompatible(m.info.knownMin, b.evidenceRuntime) && !abridgedConflict(m.info.abridged, b.abridged) {
+			// (estimate.go): a runtime the mirror stated before release is held
+			// to the estimate bound, so a corrected regional row of a
+			// preorder-catalogued production merges instead of minting a twin.
+			if sameRuntime(m.info.known, b.evidence) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
 					// The ASIN is not recorded, but the row IS this production's
@@ -2875,7 +2878,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 
 	ri := &recInfo{
 		narrators: narrSet, asins: map[string]bool{}, abridged: b.abridged, claims: claims,
-		knownMin: knownMinutes(rec.RuntimeMin, rec.ReleaseDate, rec.AddedAt, []model.Source{model.Source(p.curSource)},
+		known: knownRuntime(rec.RuntimeMin, rec.ReleaseDate, rec.AddedAt, []model.Source{model.Source(p.curSource)},
 			func() int { return chapterMinutes(rec.Chapters) }),
 	}
 	for _, a := range rec.ASIN {

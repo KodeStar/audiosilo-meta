@@ -84,9 +84,10 @@ type SelectOptions struct {
 	// subset last.
 	AttachmentsPath string
 	// ImportDate is the run day (YYYY-MM-DD) the preorder-estimate rule reads
-	// (estimate.go): a row whose release date is later is a preorder listing
-	// whose runtime is an estimate, judged exactly as the import of it judges
-	// it. Empty makes no row an estimate.
+	// for a row carrying no updatedAt (estimate.go, planner.rowDay): a row whose
+	// release date is later than its capture day is a preorder listing whose
+	// runtime is an estimate, judged exactly as the import of it judges it.
+	// Empty makes no undated row an estimate.
 	ImportDate string
 }
 

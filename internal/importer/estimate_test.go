@@ -147,6 +147,10 @@ func TestRuntimeEstimatedReadsProvenanceAndDates(t *testing.T) {
 		{"no release date", "", "2026-08-02", mirror("2026-08-02"), false},
 		{"no dated statement at all", "2026-09-08", "", []model.Source{{Type: model.SourceLibexImport}}, false},
 		{"an offset stamp read by its UTC day", "2026-09-08", "2026-09-08T01:00:00+02:00", mirror("2026-09-08T01:00:00+02:00"), true},
+		// The statements decide, not the creation stamp: a recording created after
+		// release from a row captured before it (setSource dates the row).
+		{"created after release from a pre-release capture", "2026-09-08", "2026-10-07", mirror("2026-09-01"), true},
+		{"no dated source: added_at stands in", "2026-09-08", "2026-08-02", []model.Source{{Type: model.SourceLibexImport}}, true},
 	} {
 		if got := runtimeEstimated(tc.release, tc.added, tc.sources); got != tc.want {
 			t.Errorf("%s: runtimeEstimated = %v, want %v", tc.name, got, tc.want)
@@ -428,4 +432,217 @@ func readRecordingRaw(t *testing.T, dataDir string) (string, map[string]any) {
 	var raw map[string]any
 	readEntity(t, dataDir, estRecAddr, &raw)
 	return estRecAddr, raw
+}
+
+// estRowCaptured is estRow as libex last wrote it on day (its updatedAt).
+func estRowCaptured(asin, region string, minutes int, day string) string {
+	return strings.Replace(estRow(asin, region, minutes, "unabridged", ""), `"region":`,
+		fmt.Sprintf(`"updatedAt":"%sT10:00:00.123456+00:00","region":`, day), 1)
+}
+
+func TestEstimateRuntimesHaveTheirOwnBound(t *testing.T) {
+	est := func(m int) runtimeEvidence { return runtimeEvidence{min: m, estimate: true} }
+	known := func(m int) runtimeEvidence { return runtimeEvidence{min: m} }
+	for _, tc := range []struct {
+		a, b runtimeEvidence
+		want bool
+	}{
+		{known(840), known(970), false}, // the ordinary 10% rule is unchanged
+		{known(900), known(970), true},
+		{est(840), known(970), true}, // A Bird Among Wolves
+		{known(970), est(840), true},
+		{est(840), known(1680), true}, // exactly double
+		{est(840), known(1690), false},
+		{est(840), known(420), true}, // exactly half
+		{est(840), known(300), false},
+		{est(600), est(1300), false},
+		{est(840), known(0), true}, // unknown is compatible with anything
+	} {
+		if got := sameRuntime(tc.a, tc.b); got != tc.want {
+			t.Errorf("sameRuntime(%+v, %+v) = %v, want %v", tc.a, tc.b, got, tc.want)
+		}
+	}
+}
+
+// A chapterless estimate keeps a runtime bound: a released row of a clearly
+// different length is another production, on the merge and on enrichment.
+func TestAChapterlessEstimateKeepsARuntimeBound(t *testing.T) {
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
+		estRow(estUKASIN, "uk", 300, "unabridged", ""))
+	if sum.MergedASINs != 0 || sum.NewRecordings != 1 || sum.EstimatesReplaced != 0 {
+		t.Fatalf("summary = %+v, want a distinct recording and no replacement", sum)
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estEstimate || len(rec.ASIN) != 1 {
+		t.Errorf("the estimate changed: runtime %d, asins %v", rec.RuntimeMin, rec.ASIN)
+	}
+
+	dataDir = seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	var conflicts bytes.Buffer
+	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
+		estRow(estUSASIN, "us", 300, "unabridged", ""))
+	if sum.EnrichedRecordings != 0 || sum.EstimatesReplaced != 0 || conflicts.Len() == 0 {
+		t.Errorf("summary = %+v, conflicts %q; want the row refused as a contradiction", sum, conflicts.String())
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estEstimate {
+		t.Errorf("runtime = %d, want the estimate kept", rec.RuntimeMin)
+	}
+}
+
+// "Released" is judged by the day the row was CAPTURED: a preorder row libex
+// has not written since before the release, imported after it, is an estimate
+// itself. It merges (both sides are estimates) but replaces nothing, and its
+// stamp is dated its capture day, so the record stays an estimate for the
+// released row that follows.
+func TestAStalePreorderRowCorrectsNothing(t *testing.T) {
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
+		estRowCaptured(estUKASIN, "uk", 900, "2026-09-01"))
+	if sum.MergedASINs != 1 || sum.NewRecordings != 0 || sum.EstimatesReplaced != 0 {
+		t.Fatalf("summary = %+v, want a merge and no replacement", sum)
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estEstimate {
+		t.Errorf("runtime = %d, want the recorded %d kept", rec.RuntimeMin, estEstimate)
+	}
+	_, raw := readRecordingRaw(t, dataDir)
+	if !rawRuntimeEstimated(raw) {
+		t.Fatalf("a stale preorder row ended the estimate: %v", raw["sources"])
+	}
+	if !strings.Contains(fmt.Sprint(raw["sources"]), "2026-09-01") {
+		t.Errorf("the stale row's stamp is not dated its capture day: %v", raw["sources"])
+	}
+
+	// The same row on enrichment: nothing replaced, still an estimate.
+	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
+		estRowCaptured(estUSASIN, "us", 900, "2026-09-01"))
+	if sum.EstimatesReplaced != 0 {
+		t.Errorf("summary = %+v, want nothing replaced", sum)
+	}
+	if _, raw := readRecordingRaw(t, dataDir); !rawRuntimeEstimated(raw) {
+		t.Errorf("a stale enrichment row ended the estimate: %v", raw["sources"])
+	}
+
+	// A row captured after the release corrects it.
+	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
+		estRowCaptured(estUSASIN, "us", estReleasedLen, "2026-10-05"))
+	if sum.EstimatesReplaced != 1 {
+		t.Errorf("summary = %+v, want the released row to replace the estimate", sum)
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
+		t.Errorf("runtime = %d, want %d", rec.RuntimeMin, estReleasedLen)
+	}
+}
+
+// The row arm reads the capture day too: a stale preorder row is held to the
+// estimate bound against a released recording (it merges), where the same row
+// captured after release is a measurement that differs (a distinct recording).
+func TestAStalePreorderRowIsAnEstimateToTheMerge(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		row        string
+		wantMerged bool
+	}{
+		{"captured before release", estRowCaptured(estUKASIN, "uk", 600, "2026-09-01"), true},
+		{"captured after release", estRowCaptured(estUKASIN, "uk", 600, "2026-10-01"), false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			released := estRecording(t, "2026-09-20", estMirrorSource("2026-09-20"), "", testpack.WithRuntime(estReleasedLen))
+			dataDir := seedEstimateTree(t, released)
+			sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate}, tc.row)
+			if merged := sum.MergedASINs == 1 && sum.NewRecordings == 0; merged != tc.wantMerged {
+				t.Errorf("summary = %+v, want merged %v", sum, tc.wantMerged)
+			}
+			if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
+				t.Errorf("runtime = %d, want the released %d kept", rec.RuntimeMin, estReleasedLen)
+			}
+		})
+	}
+}
+
+// A recording CREATED after release from a stale preorder row is an estimate:
+// its statement is dated the row's capture day, so a released row corrects it.
+func TestARecordingCreatedFromAStaleRowIsAnEstimate(t *testing.T) {
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	// A different narrator's production: a new recording under the work.
+	stale := strings.Replace(estRowCaptured("B0EST00009", "us", 500, "2026-09-01"),
+		`"narrators":[{"name":"Bea Reader"}]`, `"narrators":[{"name":"Cal Voice"}]`, 1)
+	if sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate}, stale); sum.NewRecordings != 1 {
+		t.Fatalf("summary = %+v, want one new recording", sum)
+	}
+	var raw map[string]any
+	readEntity(t, dataDir, recAddr(estWork, "cal-voice-2026"), &raw)
+	if !rawRuntimeEstimated(raw) || coerceStr(raw["added_at"]) != estRunDate {
+		t.Errorf("recording = added_at %v, sources %v; want an estimate created on the run day", raw["added_at"], raw["sources"])
+	}
+}
+
+// The title corroboration reads an estimate with no timeline at the ordinary
+// 10% rule, never at the estimate bound: volumes of one series by one narrator
+// sit inside that bound routinely.
+func TestTitleCorroborationReadsAnEstimateStrictly(t *testing.T) {
+	narr := map[string]bool{"bea-reader": true}
+	ws := &workState{recs: map[string]*recInfo{"r": {narrators: narr, known: runtimeEvidence{min: 840, estimate: true}}}}
+	for _, tc := range []struct {
+		row  runtimeEvidence
+		want bool
+	}{
+		{runtimeEvidence{min: 870}, true},                 // within 10% of the estimate as stated
+		{runtimeEvidence{min: estReleasedLen}, false},     // within the estimate bound only
+		{runtimeEvidence{min: 870, estimate: true}, true}, // an estimate row, the same
+		{runtimeEvidence{}, false},                        // unknown corroborates nothing
+	} {
+		if got := titleCorroborated(ws, &rowProduction{runtime: tc.row, narrators: narr}); got != tc.want {
+			t.Errorf("row %+v: titleCorroborated = %v, want %v", tc.row, got, tc.want)
+		}
+	}
+}
+
+// Witch Myth as preorders: three books whose rows all list a release still
+// ahead and carry no chapters, so every runtime is an estimate. The second and
+// third (196 and 218 minutes) sit within the estimate bound of the first's 169,
+// but the title arm is corroborated only at the 10% rule, so they stay three.
+func TestPreorderVolumesStayApart(t *testing.T) {
+	dataDir := witchMythTree(t)
+	rows := make([]string, 0, 3)
+	for _, n := range []int{1, 2, 3} {
+		rows = append(rows, strings.Replace(witchMythRows[n], `"releaseDate":"2020-01-01 00:00:00+00"`, `"releaseDate":"2027-01-01 00:00:00+00"`, 1))
+	}
+	sum := runLibexOver(t, dataDir, rows...)
+	if sum.NewWorks != 3 || sum.SkippedDuplicateIdentity != 0 || sum.MergedASINs != 0 {
+		t.Errorf("works = %d, skipped = %d, merged = %d; want three books: %v",
+			sum.NewWorks, sum.SkippedDuplicateIdentity, sum.MergedASINs, sum.Warnings)
+	}
+}
+
+// Every write the estimate rule makes into a decoded record is stored in the
+// decoded form, so a reader later in the same edit (enrichment's "chapters
+// absent?" test, the chapter total, coerceInt) sees what a re-read would.
+func TestEstimateWritesStoreTheDecodedForm(t *testing.T) {
+	p := &planner{importDate: estRunDate, mirrorTier: true}
+	raw := map[string]any{}
+	if err := json.Unmarshal([]byte(estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), "")), &raw); err != nil {
+		t.Fatal(err)
+	}
+	var row map[string]any
+	if err := json.Unmarshal([]byte(estRow(estUKASIN, "uk", estReleasedLen, "unabridged", estChapters(estReleasedLen, true))), &row); err != nil {
+		t.Fatal(err)
+	}
+	b := libexToBook(rawBook(row), estUKASIN, "uk", []string{"Ada Mapmaker"}, []string{"Bea Reader"}, &libexParse{})
+	p.setEvidenceRuntime(&b)
+	if !p.correctEstimate(raw, RecRef{Work: estWork, Rec: estRec}, b) {
+		t.Fatal("the estimate was not replaced")
+	}
+	if _, ok := raw["runtime_min"].(float64); !ok {
+		t.Errorf("runtime_min is %T, want the decoded float64", raw["runtime_min"])
+	}
+	chs, ok := raw["chapters"].([]any)
+	if !ok || len(chs) != 17 {
+		t.Fatalf("chapters is %T (%d), want the decoded []any of 17", raw["chapters"], len(chs))
+	}
+	if n, known := coerceInt(raw["runtime_min"]); !known || n != estReleasedLen {
+		t.Errorf("coerceInt(runtime_min) = %d, %v", n, known)
+	}
+	if got := rawKnownRuntime(raw); got != (runtimeEvidence{min: estReleasedLen}) {
+		t.Errorf("rawKnownRuntime = %+v, want the replaced runtime read through the decoded chapters", got)
+	}
 }

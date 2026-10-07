@@ -206,8 +206,9 @@ code (internal/importer/refusalcodes.go), for a caller that acts on them. `--max
 one series, in series-position order, so a runaway franchise stays reviewable;
 whatever it cut is printed. `--date` (default today, UTC) is the run day the
 preorder-estimate rule reads (internal/importer/estimate.go: a row whose release
-date is later is a preorder listing whose runtime is an estimate), exactly as
-the import's own `--date` does; give both the same day.
+date is later than the day it was captured - its `updatedAt` when it carries
+one, else this date - is a preorder listing whose runtime is an estimate),
+exactly as the import's own `--date` does; give both the same day.
 
 If the report describes a tranche that is too large or too broad to review,
 tighten it (a smaller cap, or a catalogue with fewer stub series) and select

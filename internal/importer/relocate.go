@@ -240,7 +240,7 @@ func (p *planner) relocateRecording(rec *model.Recording, asins map[string]bool,
 	}
 	for _, i := range indices {
 		b := books[i]
-		p.setSource(NormalizeASIN(b.str("asin")))
+		p.setSource(NormalizeASIN(b.str("asin")), b)
 		credits := p.rowAuthorCredits(b)
 		authors := p.rowWorkAuthors(credits, p.bookWarn(b))
 		lang, _ := mapLanguage(b.str("language"))
@@ -402,7 +402,7 @@ func (p *planner) moveRawRecording(rec *model.Recording, target string, indices 
 	landed := toRecs[id]
 	runtime, _ := landed.IntAt("runtime_min")
 	ri := &recInfo{narrators: ToSet(landed.Strs("narrators")), abridged: landed.BoolPtr("abridged"), asins: map[string]bool{},
-		knownMin: knownMinutes(runtime, landed.Str("release_date"), landed.Str("added_at"), landed.Sources(),
+		known: knownRuntime(runtime, landed.Str("release_date"), landed.Str("added_at"), landed.Sources(),
 			func() int { return chapterMinutes(landed.Chapters()) })}
 	for _, a := range landed.ASINs() {
 		ri.asins[a.ASIN] = true
