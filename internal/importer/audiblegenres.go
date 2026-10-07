@@ -5,7 +5,7 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
-	"sort"
+	"slices"
 	"strings"
 	"sync"
 )
@@ -72,6 +72,65 @@ import (
 // TestChildrensClaimsAvoidAdultAdviceGenres pins the rule; the children's node
 // ids it names came from libex's own /categories taxonomy for every marketplace
 // the table covers.
+//
+// A FORMAT node says how a book was PRODUCED, not what it is about. Audible's
+// Arts & Entertainment tree carries a handful of them - Audio Performances &
+// Dramatizations (and its Dramatizations and Storytelling children), and under
+// Entertainment & Performing Arts the Radio and Film & TV leaves, with their
+// equivalents in every marketplace - and it files a full-cast BBC radio
+// dramatization of an Agatha Christie novel there beside Mystery. Every one of
+// them maps to arts-entertainment (Storytelling to writing-publishing), and a
+// book stating a leaf also states its ancestors (the Arts & Entertainment root,
+// Entertainment & Performing Arts), which map to arts-entertainment too. So a
+// Christie dramatization was an arts book. The fiction-side "Dramatizations"
+// nodes (Mystery > Dramatizations, ...) already map to nothing; this is the rule
+// that makes the Arts & Entertainment side agree.
+//
+// The rule is ROW-LEVEL (mapGenres): a claim that is FORMAT-DERIVED yields its
+// genre only when the row maps to NO other genre. A claim is format-derived when
+// it is a format node, or an ancestor of a format node the row states, AND the
+// row states no non-format descendant of it - an ancestor the row also reaches
+// through a subject node ("Art", "Music", "Theater") is justified by that subject
+// and keeps its genre. So the full-cast Christie (mystery, thriller) drops
+// arts-entertainment, a radio panel show whose row maps nothing else keeps it,
+// and a row also stating Arts & Entertainment > Art keeps it through Art.
+//
+// Radio and Film & TV are a format only for FICTION. A full-cast BBC radio
+// mystery is a mystery produced for radio; "Crack of the Bat: A History of
+// Baseball on the Radio", "Westworld and Philosophy" or "Films from the Future"
+// are books ABOUT radio, television and film, and Audible files them under the
+// same leaves. So those leaves (every marketplace's equivalents - the curated
+// "format_fiction_only" list) are format nodes only in a row that also maps a
+// FICTION genre, and in any other row are subject nodes that yield their genre
+// and justify their ancestors like Art or Music; the Audio Performances &
+// Dramatizations subtree is a format whatever else the row maps (a dramatized
+// Gospel is religion, not an arts book). Which genres are fiction is the table's
+// "genre_kinds": every value of the schema's genre vocabulary classified as
+// "fiction", "nonfiction" or "neither" (TestGenreKindsCoverTheVocabulary). The
+// rule reads only "fiction" today, but the nonfiction/neither split is kept on
+// purpose: every genre added to the vocabulary then forces an explicit
+// classification decision rather than defaulting silently to "not fiction". The
+// "neither" calls are deliberate: comedy-humor (a radio panel show is not
+// fiction, so it keeps arts-entertainment), drama-plays and poetry (performance
+// forms - a play reaches fiction through literary-fiction or classics anyway),
+// childrens and young-adult (audiences), and espionage, mythology, occult and
+// lgbtq, which Audible files on both sides.
+//
+// The data is five keys of the table. "format" and "format_fiction_only" are the
+// hand-curated lists of format node ids across every marketplace (decisions,
+// like by_asin), and "genre_kinds" the hand-curated classification. Two keys are
+// DERIVED by scripts/genrepaths (DeriveFormatTree), already in the shape the rule
+// consumes, so the rule does map lookups and nothing else: "format_tree" maps
+// every node of every root subtree holding a format node to whether it is a
+// format node (and whether only for fiction) and its ancestors (transitively
+// closed, over every path the node sits at - Opera is under both Entertainment &
+// Performing Arts and Music), and "format_paths" maps, per marketplace, every path of those
+// subtrees to its node, for a source stating a LADDER of names rather than node
+// ids (the claim's marketplace, else the US table, as by_path falls back). A
+// claim outside the tree is never format-derived and costs one map lookup.
+// TestFormatNodesArePinned pins the format list per marketplace by path, and
+// TestFormatTreeMatchesGenrePaths re-derives the two keys from the verification
+// file.
 
 //go:embed audiblegenres.json
 var audibleGenresFS embed.FS
@@ -86,6 +145,25 @@ type genreTable struct {
 	// comment); a value is the browse-node id the path names, resolved through
 	// ResolveGenreNode.
 	ByPath map[string]map[string]string `json:"by_path"`
+	// Format is the hand-curated list of FORMAT browse-node ids (see the file
+	// comment), across every marketplace: the generator's input, not read by the
+	// rule itself.
+	Format []string `json:"format"`
+	// FormatFictionOnly is the hand-curated SUBSET of Format that is a format
+	// only in a row mapping a fiction genre (Radio, Film & TV; see the file
+	// comment) - the generator's input too.
+	FormatFictionOnly []string `json:"format_fiction_only"`
+	// GenreKinds classifies every vocabulary genre as "fiction", "nonfiction" or
+	// "neither" (hand-curated; read by the rule to decide a row maps fiction). It
+	// stays three-valued although the rule reads only "fiction", so a genre added
+	// to the vocabulary forces an explicit decision (TestGenreKindsCoverTheVocabulary).
+	GenreKinds map[string]string `json:"genre_kinds"`
+	// FormatTree and FormatPaths are DERIVED by scripts/genrepaths, never
+	// hand-authored (DeriveFormatTree): every node of a root subtree holding a
+	// format node, and every path of those subtrees per marketplace. A table
+	// without them (a test's bare literal) has the format rule off.
+	FormatTree  map[string]FormatNode        `json:"format_tree"`
+	FormatPaths map[string]map[string]string `json:"format_paths"`
 	// memo caches name resolution keyed by the RAW claim name, so a bulk import
 	// lowercases/trims each distinct spelling once instead of once per book. It
 	// is bounded by the number of distinct names in the input (a retailer
@@ -272,16 +350,20 @@ func (t genreTable) lookupName(raw string) (string, bool) {
 //
 // It is called only where the result is stored, so a row whose genres would
 // never persist adds no noise to that report.
+//
+// The FORMAT rule (see the file comment) is applied here, over the whole row: a
+// format-derived claim's genre is kept only when no other claim of the row maps
+// to anything. It changes which MAPPED genres are kept, never what is reported as
+// unmapped.
 func (t genreTable) mapGenres(claims []genreClaim, unmapped map[string]bool) []string {
 	if len(claims) == 0 {
 		return nil
 	}
-	seen := map[string]bool{}
 	// A row states at most one ladder (every claim of a pathGenreClaims slice
 	// carries the same one), so one name and one hit flag cover it.
 	ladder, hit := "", false
-	var out []string
-	for _, c := range claims {
+	slugs := make([]string, len(claims))
+	for i, c := range claims {
 		slug, ok := t.lookup(c)
 		if c.ladder != "" {
 			ladder, hit = c.ladder, hit || ok
@@ -294,15 +376,208 @@ func (t genreTable) mapGenres(claims []genreClaim, unmapped map[string]bool) []s
 			}
 			continue
 		}
-		if seen[slug] {
+		slugs[i] = slug
+	}
+	if ladder != "" && !hit {
+		unmapped[ladder] = true
+	}
+	// Whether the row maps a fiction genre matters only to a fiction-only format
+	// node, so it is asked lazily - most rows state none - and at most once.
+	var fictionKnown, fictionMapped bool
+	fiction := func() bool {
+		if !fictionKnown {
+			fictionKnown = true
+			fictionMapped = slices.ContainsFunc(slugs, func(g string) bool { return t.GenreKinds[g] == genreFiction })
+		}
+		return fictionMapped
+	}
+	derived := t.formatDerived(claims, fiction)
+	out := distinctSorted(slugs, derived)
+	if len(out) == 0 && derived != nil {
+		// Nothing but format-derived claims mapped: the row is about its format
+		// (a radio panel show), so the format genre is all it has to say.
+		out = distinctSorted(slugs, nil)
+	}
+	return out
+}
+
+// distinctSorted is the sorted, duplicate-free set of the non-empty slugs whose
+// skip flag is not set (nil skips nothing).
+func distinctSorted(slugs []string, skip []bool) []string {
+	seen := map[string]bool{}
+	var out []string
+	for i, slug := range slugs {
+		if slug == "" || seen[slug] || (skip != nil && skip[i]) {
 			continue
 		}
 		seen[slug] = true
 		out = append(out, slug)
 	}
-	if ladder != "" && !hit {
-		unmapped[ladder] = true
-	}
-	sort.Strings(out)
+	slices.Sort(out)
 	return out
+}
+
+// FormatNode is one node of the derived format tree (see the file comment):
+// whether it is a format node, and its ancestors, transitively closed and
+// sorted.
+type FormatNode struct {
+	Format bool `json:"format,omitempty"`
+	// FictionOnly marks a format node that is a format only in a row mapping a
+	// fiction genre (format_fiction_only).
+	FictionOnly bool     `json:"fiction_only,omitempty"`
+	Ancestors   []string `json:"ancestors"`
+}
+
+// genreFiction is the genre_kinds value of a fiction genre.
+const genreFiction = "fiction"
+
+// isFormat reports whether the node acts as a format node in its row; fiction
+// (asked only for a fiction-only node) answers whether the row maps a fiction
+// genre.
+func (n FormatNode) isFormat(fiction func() bool) bool {
+	return n.Format && (!n.FictionOnly || fiction())
+}
+
+// formatNodeOf is the format-tree node a claim names, or "" when it names none:
+// its browse-node id, else (a ladder-stating claim) the node its path names in
+// the claim's marketplace, falling back to the US paths as by_path does.
+func (t genreTable) formatNodeOf(c genreClaim) string {
+	if node := strings.TrimSpace(c.node); node != "" {
+		if _, ok := t.FormatTree[node]; ok {
+			return node
+		}
+		return ""
+	}
+	if c.path == "" {
+		return ""
+	}
+	node, ok := t.FormatPaths[c.region][c.path]
+	if !ok && c.region != "us" {
+		node = t.FormatPaths["us"][c.path]
+	}
+	return node
+}
+
+// formatDerived reports, per claim, whether it is FORMAT-DERIVED: a format node
+// (a fiction-only one only when fiction, the row mapping a fiction genre), or an
+// ancestor of a format node the row states, that the row reaches through no
+// non-format descendant. nil (the common case: no claim is a format node, or the
+// rule is off) means none is.
+func (t genreTable) formatDerived(claims []genreClaim, fiction func() bool) []bool {
+	if !slices.ContainsFunc(claims, func(c genreClaim) bool { return t.FormatTree[t.formatNodeOf(c)].isFormat(fiction) }) {
+		return nil
+	}
+	nodes := make([]string, len(claims))
+	formatish := map[string]bool{}
+	for i, c := range claims {
+		n := t.formatNodeOf(c)
+		nodes[i] = n
+		if fn := t.FormatTree[n]; fn.isFormat(fiction) {
+			formatish[n] = true
+			for _, a := range fn.Ancestors {
+				formatish[a] = true
+			}
+		}
+	}
+	// justified is every node a stated NON-format-ish tree node descends from:
+	// the subject evidence that keeps an ancestor's genre.
+	justified := map[string]bool{}
+	for _, n := range nodes {
+		if n == "" || formatish[n] {
+			continue
+		}
+		for _, a := range t.FormatTree[n].Ancestors {
+			justified[a] = true
+		}
+	}
+	out := make([]bool, len(claims))
+	for i, n := range nodes {
+		out[i] = n != "" && formatish[n] && !justified[n]
+	}
+	return out
+}
+
+// DeriveFormatTree derives the table's format_tree and format_paths from the
+// hand-curated format list (and its fiction-only subset) and a taxonomy given as marketplace -> path key
+// (GenrePathKey form) -> node id: for each marketplace, every path of every root
+// subtree holding a format node, and for every node of those paths whether it is
+// a format node and its transitively closed ancestors (a node's parent being the
+// node at its path's parent, in the same marketplace). It is GENERATION-time
+// code - scripts/genrepaths writes its result and TestFormatTreeMatchesGenrePaths
+// re-derives it from the verification file - so the runtime rule only looks
+// things up. A format node no path names, or a path whose parent path is
+// missing, is an error.
+func DeriveFormatTree(format, fictionOnly []string, paths map[string]map[string]string) (map[string]FormatNode, map[string]map[string]string, error) {
+	isFormat := map[string]bool{}
+	for _, n := range format {
+		isFormat[n] = true
+	}
+	isFictionOnly := map[string]bool{}
+	for _, n := range fictionOnly {
+		if !isFormat[n] {
+			return nil, nil, fmt.Errorf("format_fiction_only node %s is not in format", n)
+		}
+		isFictionOnly[n] = true
+	}
+	formatPaths := map[string]map[string]string{}
+	parents := map[string]map[string]bool{}
+	for region, m := range paths {
+		roots := map[string]bool{}
+		for key, node := range m {
+			if isFormat[node] {
+				root, _, _ := strings.Cut(key, ":")
+				roots[root] = true
+			}
+		}
+		if len(roots) == 0 {
+			continue
+		}
+		sub := map[string]string{}
+		for key, node := range m {
+			if root, _, _ := strings.Cut(key, ":"); roots[root] {
+				sub[key] = node
+			}
+		}
+		for key, node := range sub {
+			if parents[node] == nil {
+				parents[node] = map[string]bool{}
+			}
+			cut := strings.LastIndex(key, ":")
+			if cut < 0 {
+				continue
+			}
+			parent, ok := sub[key[:cut]]
+			if !ok {
+				return nil, nil, fmt.Errorf("%s: %q has no parent path %q", region, key, key[:cut])
+			}
+			parents[node][parent] = true
+		}
+		formatPaths[region] = sub
+	}
+	var visit func(node string, into map[string]bool)
+	visit = func(node string, into map[string]bool) {
+		for p := range parents[node] {
+			if !into[p] {
+				into[p] = true
+				visit(p, into)
+			}
+		}
+	}
+	tree := map[string]FormatNode{}
+	for node := range parents {
+		anc := map[string]bool{}
+		visit(node, anc)
+		list := make([]string, 0, len(anc))
+		for a := range anc {
+			list = append(list, a)
+		}
+		slices.Sort(list)
+		tree[node] = FormatNode{Format: isFormat[node], FictionOnly: isFictionOnly[node], Ancestors: list}
+	}
+	for _, n := range format {
+		if _, ok := tree[n]; !ok {
+			return nil, nil, fmt.Errorf("format node %s is named by no path", n)
+		}
+	}
+	return tree, formatPaths, nil
 }

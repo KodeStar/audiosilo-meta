@@ -141,6 +141,12 @@ const (
 	ModeRecordingsOnly
 	// ModeRelocate moves cross-language recordings using libex source evidence.
 	ModeRelocate
+	// ModeRegenerateGenres re-derives catalogued works' genre sets from the rows
+	// of their own recordings: the recording vote under today's mapping, a trim
+	// only where the trust tier and complete evidence allow it, an addition
+	// otherwise. It touches no other field and creates nothing. See
+	// regenerate.go.
+	ModeRegenerateGenres
 )
 
 // boundedByCatalogue reports whether the mode's run is bounded by THIS
@@ -152,7 +158,21 @@ const (
 // irrelevant here, so a per-row line for each of a million rows the run was
 // never going to touch buries the output it exists to produce.
 func (m Mode) boundedByCatalogue() bool {
-	return m == ModeEnrich || m == ModeRecordingsOnly || m == ModeRelocate
+	return m == ModeEnrich || m == ModeRecordingsOnly || m == ModeRelocate || m == ModeRegenerateGenres
+}
+
+// locatesASINs reports whether the mode reaches the catalogued recording a row's
+// ASIN sits on (planner.asinLoc): the two passes matched by identifier.
+func (m Mode) locatesASINs() bool {
+	return m == ModeEnrich || m == ModeRegenerateGenres
+}
+
+// plansRows reports whether the mode plans rows as BOOKS - credits, people,
+// series - and so needs the batch's credit decisions and series resolution.
+// The genre regeneration reads a row's ASIN and genres alone, and both
+// whole-batch passes over a row set the size of the catalogue would be waste.
+func (m Mode) plansRows() bool {
+	return m != ModeRegenerateGenres
 }
 
 // runName is the mode's name in a conflict worklist row's "run" field
@@ -169,6 +189,8 @@ func (m Mode) runName() string {
 		return "enrich"
 	case ModeRecordingsOnly:
 		return "recordings-only"
+	case ModeRegenerateGenres:
+		return "regenerate-genres"
 	default:
 		return "create"
 	}
@@ -256,6 +278,11 @@ type Options struct {
 	// behaviour exactly. The series-completion bot passes it, with
 	// libex-select's own --attach-editions.
 	AttachEditions bool
+	// RowsAsOf (`--rows-as-of`, REQUIRED by ModeRegenerateGenres) is the
+	// YYYY-MM-DD snapshot date of the rows: a work whose newest provenance -
+	// its added_at, every recording's, every sources[].imported_at on it and its
+	// recordings - falls on a later day is not judged (regenerate.go).
+	RowsAsOf string
 }
 
 // Summary is the outcome counts of a run.
@@ -322,16 +349,32 @@ type Summary struct {
 	// SeriesPlacements counts works an enrichment run placed into an existing
 	// series they were not yet a member of. Always 0 outside ModeEnrich.
 	SeriesPlacements int
-	// Matched counts enrichment rows whose ASIN located a catalogued recording,
-	// whether or not the row then changed anything (a row every one of whose
-	// facts was already recorded, and a row dropped for contradicting the record,
-	// both count as matched). Always 0 outside ModeEnrich.
+	// Matched counts enrichment (and genre-regeneration) rows whose ASIN located
+	// a catalogued recording, whether or not the row then changed anything (a row
+	// every one of whose facts was already recorded, and a row dropped for
+	// contradicting the record, both count as matched). Always 0 outside
+	// ModeEnrich and ModeRegenerateGenres.
 	Matched int
-	// NotInCatalog counts enrichment rows whose ASIN matches nothing in the
-	// catalogue. They are ignored (enrichment never creates), so this is the
-	// expected outcome for the overwhelming majority of a large export's rows.
-	// Always 0 outside ModeEnrich.
+	// NotInCatalog counts enrichment (and genre-regeneration) rows whose ASIN
+	// matches nothing in the catalogue. They are ignored (neither mode creates),
+	// so this is the expected outcome for the overwhelming majority of a large
+	// export's rows. Always 0 outside ModeEnrich and ModeRegenerateGenres.
 	NotInCatalog int
+	// GenreChanges is one entry per work a ModeRegenerateGenres run changed, in
+	// work order (the `--genre-changes` worklist; GenreTally counts it).
+	// GenreWorksUnchanged counts the works a row reached and nothing changed,
+	// GenreWorksNoRow the catalogued works no input row reached. All zero
+	// outside ModeRegenerateGenres.
+	GenreChanges        []GenreChange
+	GenreWorksUnchanged int
+	GenreWorksNoRow     int
+	// GenreRowsContradicted counts the rows a ModeRegenerateGenres run refused as
+	// genre evidence because they contradicted their recording's RUNTIME
+	// (rowContradiction in the ASIN-merge scope, which never reads a release
+	// date). GenreWorksNewer counts the works a row reached that were not judged
+	// because their newest provenance is later than Options.RowsAsOf.
+	GenreRowsContradicted int
+	GenreWorksNewer       int
 	// SkippedNoWork counts RECORDINGS-ONLY rows whose work is not in the
 	// catalogue. That mode never creates a work, so those rows are dropped -
 	// which makes this the counter that proves an excerpt, a trivia title or a

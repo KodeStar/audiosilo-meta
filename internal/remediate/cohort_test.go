@@ -3,7 +3,7 @@ package remediate
 import (
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/build"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // TestPartMarkerForms pins the four spellings measured in the live tree, and
@@ -94,7 +94,7 @@ func TestEarlierStampAgreesWithTheArtifactOrdering(t *testing.T) {
 		for _, b := range values {
 			got := earlierStamp(a, b)
 			want := a
-			if build.TimeKey(b) < build.TimeKey(a) {
+			if model.TimeKey(b) < model.TimeKey(a) {
 				want = b
 			}
 			if got != want {

@@ -519,6 +519,65 @@ go test ./internal/importer/ -run 'Genre|Childrens'
 A same-path conflict inside one marketplace (two nodes, one spelling) is printed
 to stderr, and the first node in the taxonomy's own order is kept.
 
+The generator also derives two keys from the table's hand-curated `format` list
+(the FORMAT nodes - Audio Performances & Dramatizations and its children, the
+Radio and Film & TV leaves, in every marketplace; see
+`internal/importer/audiblegenres.go`) and its hand-curated `format_fiction_only`
+subset (the Radio and Film & TV leaves, a format only beside a fiction genre of
+the table's `genre_kinds`), through `importer.DeriveFormatTree`, in the shape
+the format rule consumes: `format_tree`, every node of every root subtree that
+holds a format node mapped to its format flags and its transitively closed
+ancestors, and `format_paths`, every path of those subtrees per
+marketplace mapped to its node (for a ladder claim). Those paths join the
+verification file, so `TestFormatTreeMatchesGenrePaths` - which re-derives both
+keys from it - fails until the generator is re-run after a `format` edit, and
+`TestFormatNodesArePinned` holds the list itself to the format paths it states
+per marketplace.
+
+### Regenerate catalogued works' genres
+
+`metaimport libex --regenerate-genres` re-derives the `genres` of catalogued
+works from the libex rows of their own recordings, under the current mapping
+table (format rule included) and the recording vote (see
+`internal/importer/regenerate.go` and LICENSING.md's trust-tier rule 5). It
+needs the rows of EVERY catalogued ASIN - a recording with an ASIN but no row
+makes its work add-only - so export them all in one file. The list is too long
+for a `-v` command-line argument, so set the variable on the script's stdin:
+
+```sh
+rg --files data/works -g '*.json' | xargs jq -r '
+  .entries[] | .recordings[]? | .asin[]?.asin' | LC_ALL=C sort -u > /tmp/all-asins.txt
+
+{ printf '\\set asins %s\n' "'$(paste -sd, /tmp/all-asins.txt)'"; cat scripts/libex-export-rows.sql; } |
+  docker exec -i libex-pg psql -X -U postgres -d libex -tA -v ON_ERROR_STOP=1 > /tmp/all-rows.ndjson
+
+go run ./cmd/metaimport libex /tmp/all-rows.ndjson --regenerate-genres \
+  --rows-as-of 2026-07-29 --dry-run --genre-changes /tmp/genre-changes.ndjson
+# Review the worklist (one {"work","removed","added","mode"} line per work), then
+# repeat without --dry-run.
+```
+
+It touches no field but `genres`, creates nothing and stamps no source, so the
+data pull request is genres only, and a second run over the same rows is a
+no-op. A row that contradicts its recording's runtime casts no vote (a release
+date may differ - a regional re-release has its own), and the summary notes how
+many.
+
+**`--rows-as-of` is required: set it to the dump's snapshot date.** The
+regeneration never judges a record with evidence older than the record, so a
+work whose newest provenance (its `added_at`, every recording's, every
+`sources[].imported_at`) is later than that day is left as it is and counted.
+Provenance dates are IMPORT dates, so the snapshot date also holds back every
+work imported from this same dump after the snapshot: over the 2026-07-29 dump
+it holds back 138,009 works (the August waves and every enrichment batch since).
+A later day is safe only if EVERY import up to it used rows no newer than the
+export - check the data history first. For the 2026-07-29 dump the sync bot's
+first live-row import was 2026-09-21, so 2026-09-20 holds back 10,690 works and
+judges the August waves too, but earlier live lookups exist (the 2026-08-09
+live-libex gap fill, the chapter live-lookup batches), which is why the snapshot
+date is the default: a day after any import of newer rows lets those works be
+trimmed of genres the newer rows stated.
+
 ### Relocate cross-language recordings
 
 `metaimport libex --relocate` moves a recording filed under a work in another

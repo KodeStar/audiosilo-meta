@@ -110,3 +110,25 @@ func TestSourceTiersCoverSchemaEnum(t *testing.T) {
 		}
 	}
 }
+
+func TestAnyUserLibrary(t *testing.T) {
+	for _, tc := range []struct {
+		types []string
+		want  bool
+	}{
+		{nil, false},
+		{[]string{SourceLibexImport}, false},
+		{[]string{SourceLibexImport, SourceCommunity}, false},
+		{[]string{SourceLibexImport, SourceOpenAudibleImport}, true},
+		{[]string{SourceUser}, true},
+		{[]string{"some-unknown-type"}, false},
+	} {
+		var sources []Source
+		for _, typ := range tc.types {
+			sources = append(sources, Source{Type: typ})
+		}
+		if got := AnyUserLibrary(sources); got != tc.want {
+			t.Errorf("AnyUserLibrary(%v) = %v, want %v", tc.types, got, tc.want)
+		}
+	}
+}

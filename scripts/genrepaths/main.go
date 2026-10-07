@@ -53,6 +53,14 @@ type table struct {
 	ByASIN map[string]string            `json:"by_asin"`
 	ByName map[string]string            `json:"by_name"`
 	ByPath map[string]map[string]string `json:"by_path"`
+	// Format, FormatFictionOnly and GenreKinds are hand-curated and passed
+	// through untouched; FormatTree and
+	// FormatPaths are derived from it here (importer.DeriveFormatTree).
+	Format            []string                       `json:"format"`
+	FormatFictionOnly []string                       `json:"format_fiction_only"`
+	GenreKinds        map[string]string              `json:"genre_kinds"`
+	FormatTree        map[string]importer.FormatNode `json:"format_tree"`
+	FormatPaths       map[string]map[string]string   `json:"format_paths"`
 }
 
 type pathNode struct {
@@ -151,6 +159,21 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 		}
 	}
 	t.ByPath = byPath
+	// The format rule's two derived keys, from every marketplace's paths (the
+	// first node a path names, as the by_path walk keeps the first).
+	allPaths := map[string]map[string]string{}
+	for _, r := range regions {
+		m := map[string]string{}
+		for _, p := range taxonomies[r] {
+			if _, done := m[p.key]; !done {
+				m[p.key] = p.node
+			}
+		}
+		allPaths[r] = m
+	}
+	if t.FormatTree, t.FormatPaths, err = importer.DeriveFormatTree(t.Format, t.FormatFictionOnly, allPaths); err != nil {
+		return fmt.Errorf("format_tree: %w", err)
+	}
 
 	// The verification file: for each marketplace, the node each checked path
 	// names. Checked = every path whose node the table pins by id, every path
@@ -177,7 +200,8 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 				continue
 			}
 			_, pinned := t.ByASIN[p.node]
-			if pinned || anyEntry[p.key] || !strings.Contains(p.key, ":") || childrensRoot[p.root] {
+			_, inFormatTree := t.FormatPaths[r][p.key]
+			if pinned || anyEntry[p.key] || !strings.Contains(p.key, ":") || childrensRoot[p.root] || inFormatTree {
 				m[p.key] = p.node
 			}
 		}

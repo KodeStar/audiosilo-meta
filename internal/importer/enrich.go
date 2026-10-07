@@ -1,6 +1,9 @@
 package importer
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // enrich.go implements the ASIN-matched ENRICHMENT mode (ModeEnrich), the
 // second of the three import shapes LICENSING.md's import posture accepts:
@@ -50,36 +53,46 @@ type RecRef struct {
 // catalogued recording by ASIN and fills absent facts on it, on its work, and
 // on the series it claims, stamped with the planner's run provenance.
 func (p *planner) planEnrich(books []sourceBook) {
+	p.forEachMatchedRow(books, p.enrichBook)
+}
+
+// forEachMatchedRow is the row loop of the two passes matched by identifier
+// (enrichment and the genre regeneration): each row's ASIN located through the
+// catalogue's ASIN index, a row whose ASIN the catalogue does not hold
+// (including one with no well-formed ASIN, which can never match) counted and
+// ignored, and fn called with the recording a matched row sits on, under the
+// row's provenance stamp. It stops at the first fatal error.
+func (p *planner) forEachMatchedRow(books []sourceBook, fn func(b sourceBook, ref RecRef)) {
 	for _, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin)
-		p.enrichBook(b, asin)
+		ref, matched := p.asinLoc[asin]
+		if !matched {
+			p.summary.NotInCatalog++
+			continue
+		}
+		p.summary.Matched++
+		fn(b, ref)
 		if p.fatal != nil {
 			return
 		}
 	}
 }
 
-// enrichBook fills absent facts from one row onto the records its ASIN already
-// matches. A row whose ASIN is not in the catalogue (including a row with no
-// well-formed ASIN at all, which can never match) is counted and ignored.
+// enrichBook fills absent facts from one row onto the recording ref its ASIN
+// matched (forEachMatchedRow has counted and dropped the rows that match none),
+// its work and the series it claims.
 //
 // A row the matched recording CONTRADICTS is dropped whole (see
 // recordingContradicts): the contradiction is the code's own evidence that this
 // ASIN sits on a different production than the row describes, so the row's
 // genres and series claim are no more trustworthy than its runtime.
-func (p *planner) enrichBook(b sourceBook, asin string) {
-	ref, matched := p.asinLoc[asin]
-	if !matched {
-		p.summary.NotInCatalog++
-		return
-	}
-	p.summary.Matched++
+func (p *planner) enrichBook(b sourceBook, ref RecRef) {
 	warn := p.bookWarn(b)
 	if !p.applyToRecording(b, ref, warn, scopeFill) {
 		return
 	}
-	p.applyToWork(b, ref.Work, scopeFill)
+	p.applyToWork(b, ref, scopeFill)
 	p.enrichSeries(b, ref.Work, warn)
 }
 
@@ -261,46 +274,60 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
 func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, scope applyScope) bool {
-	contradiction := func(field string, recorded, stated any, format string, args ...any) bool {
-		// The CONFLICT tier, not the row sink: it ranks ahead of the ordinary
-		// row lines (planner.result), so a bounded report keeps it.
-		p.warnInto(b, &p.conflictWarnings)(format, args...)
-		// The durable twin of that warning, and the run's ONLY machine-readable
-		// account of the disagreement: one worklist row, written here rather than
-		// re-derived from the prose above, so the values it reports are the ones
-		// the comparison just made (conflicts.go). It is written in every tier -
-		// the mirror's disagreements with the catalogue are exactly where a wrong
-		// RECORDED value hides - and is a no-op for a run given no worklist.
-		p.recordConflict(b, ref, field, recorded, stated)
-		// Counted only for a user-library run: a bulk mirror disagreeing with the
-		// catalogue is an expected data-quality artefact of the source, while a
-		// person's own library disagreeing is the case a maintainer should look
-		// at (and the intake bot reports). An inferred edition match (the merge
-		// scope) is not a disagreement between two people about one edition, so
-		// it is never counted either.
-		if p.userTier && scope != scopeAttestMerged {
-			p.summary.Conflicts++
-		}
-		return true
-	}
-	// Defense in depth in the merge scope: addRecording only reaches a merge for a
-	// sibling whose runtime is already compatible, so this cannot fire there.
-	if b.runtimeMin > 0 {
-		if cur, known := coerceInt(raw["runtime_min"]); known && cur > 0 && !runtimesCompatible(int(cur), b.runtimeMin) {
-			return contradiction("runtime_min", cur, b.runtimeMin,
-				"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, cur)
-		}
-	}
-	if scope == scopeAttestMerged {
+	runtime, _ := coerceInt(raw["runtime_min"])
+	c, contradicts := rowContradiction(b, int(runtime), coerceStr(raw["release_date"]), scope)
+	if !contradicts {
 		return false
 	}
-	if rd := b.str("release_date"); datePattern.MatchString(rd) {
-		if cur := coerceStr(raw["release_date"]); cur != "" && datesConflict(cur, rd) {
-			return contradiction("release_date", cur, rd,
-				"release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, cur)
-		}
+	// The CONFLICT tier, not the row sink: it ranks ahead of the ordinary
+	// row lines (planner.result), so a bounded report keeps it.
+	p.warnInto(b, &p.conflictWarnings)("%s", c.message)
+	// The durable twin of that warning, and the run's ONLY machine-readable
+	// account of the disagreement: one worklist row, written here rather than
+	// re-derived from the prose above, so the values it reports are the ones
+	// the comparison just made (conflicts.go). It is written in every tier -
+	// the mirror's disagreements with the catalogue are exactly where a wrong
+	// RECORDED value hides - and is a no-op for a run given no worklist.
+	p.recordConflict(b, ref, c.field, c.recorded, c.stated)
+	// Counted only for a user-library run: a bulk mirror disagreeing with the
+	// catalogue is an expected data-quality artefact of the source, while a
+	// person's own library disagreeing is the case a maintainer should look
+	// at (and the intake bot reports). An inferred edition match (the merge
+	// scope) is not a disagreement between two people about one edition, so
+	// it is never counted either.
+	if p.userTier && scope != scopeAttestMerged {
+		p.summary.Conflicts++
 	}
-	return false
+	return true
+}
+
+// contradiction is the first fact a row contradicts its recording on.
+type contradiction struct {
+	field            string
+	recorded, stated any
+	message          string
+}
+
+// rowContradiction is THE contradiction test (recordingContradicts' rule, and
+// the genre regeneration's - a contradicted row casts no genre vote): does the
+// row disagree with a recording recorded at runtime minutes (0 = unknown) and
+// release date on the runtime, or - outside scopeAttestMerged - on the release
+// date. It only answers; the caller decides what a contradiction costs.
+func rowContradiction(b sourceBook, runtime int, releaseDate string, scope applyScope) (contradiction, bool) {
+	// Defense in depth in the merge scope: addRecording only reaches a merge for a
+	// sibling whose runtime is already compatible, so this cannot fire there.
+	if b.runtimeMin > 0 && runtime > 0 && !runtimesCompatible(runtime, b.runtimeMin) {
+		return contradiction{"runtime_min", runtime, b.runtimeMin, fmt.Sprintf(
+			"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, runtime)}, true
+	}
+	if scope == scopeAttestMerged {
+		return contradiction{}, false
+	}
+	if rd := b.str("release_date"); datePattern.MatchString(rd) && releaseDate != "" && datesConflict(releaseDate, rd) {
+		return contradiction{"release_date", releaseDate, rd, fmt.Sprintf(
+			"release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, releaseDate)}, true
+	}
+	return contradiction{}, false
 }
 
 // fillReleaseDate is fillStr for release_date plus the PRECISION rule the field
@@ -371,7 +398,8 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 // does not state), description (community-written, never imported), subtitle (an
 // Audible subtitle is marketing or series copy, not the edition's own subtitle -
 // see libexToBook), and added_at (a creation stamp).
-func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
+func (p *planner) applyToWork(b sourceBook, ref RecRef, scope applyScope) {
+	workSlug := ref.Work
 	// The credits the row STATES, restricted to people the catalogue already
 	// holds - enrichment creates nothing, so a role qualifier naming a person we
 	// do not have states a credit we cannot reference (metacheck's credit
@@ -399,7 +427,7 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 	// is written: first writer wins. Genres are the one exception, and
 	// applyWorkGenres states it.
 	writable := scope == scopeFill || overwrite
-	changed := p.applyWorkGenres(raw, b, ws, writable)
+	changed := p.applyWorkGenres(raw, b, ws, ref.Rec, writable)
 	// Credits are written whole, and only onto a work that carries none: a work
 	// that already lists credits has been described by someone, and splicing a
 	// second source's roles into that list would mix two accounts of who did what
@@ -453,7 +481,7 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 }
 
 // applyWorkGenres is THE genre rule for a matched work, and reports whether it
-// changed raw's set. Nothing here ever removes a genre:
+// changed raw's set. Nothing here ever removes a RECORDED genre:
 //
 //   - a user-library row's mapped genres are UNIONED into the set, whatever the
 //     work's attestation state and whatever the scope: a user export states ONE
@@ -463,13 +491,16 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 //     is attested - and because the union needs no overwrite permission, a row
 //     that maps no genre cannot block a later row's, so row order changes nothing;
 //   - a bulk-mirror row writes only where the work is writable, and then only
-//     onto a work that has no genres or whose set THIS RUN wrote (several ASINs
-//     of one book in one run are one account).
+//     onto a work that has no genres or whose set THIS RUN wrote, and what it
+//     writes is the RECORDING VOTE over the recordings the run's rows matched
+//     (accrueRunGenres, the create path's own rule; ref.Rec is the recording) -
+//     a mirror-derived set, so a later row of the run can outvote what an
+//     earlier one stated, but never anything the work carried at load.
 //
 // A row whose genres map to nothing never touches a recorded set - silence is not
 // an assertion. The genres are mapped only on the branch that can store them, so
 // a row whose genres could never be recorded adds nothing to the unmapped report.
-func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workState, writable bool) bool {
+func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workState, rec string, writable bool) bool {
 	if len(b.genres) == 0 && len(b.vocabGenres) == 0 {
 		return false
 	}
@@ -478,6 +509,19 @@ func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workStat
 		if !writable || (len(existing) > 0 && !ws.runGenresOwned) {
 			return false
 		}
+		// The bulk mirror filling a set: what it writes is a MIRROR-derived set,
+		// so it is the recording vote (genrevote.go) over the recordings this
+		// run's rows matched - the same accretion rule the create path uses, so
+		// the daily enrichment and --regenerate-genres agree on the same rows.
+		if !ws.runGenresOwned {
+			ws.runGenresOwned, ws.runRecGenres = true, map[string][]string{}
+		}
+		next := p.accrueRunGenres(ws, rec, p.genres.mapGenres(b.genres, p.unmappedGenres))
+		if next == nil {
+			return false
+		}
+		ws.runGenres, raw["genres"] = next, next
+		return true
 	}
 	// A hand submission's genres are already vocabulary values
 	// (sourceBook.vocabGenres) and join the mapped claims unchanged: one union,
@@ -486,8 +530,8 @@ func (p *planner) applyWorkGenres(raw map[string]any, b sourceBook, ws *workStat
 	if out == nil {
 		return false
 	}
-	if !p.userTier || ws.runGenresOwned {
-		ws.runGenresOwned, ws.runGenres = true, out
+	if ws.runGenresOwned {
+		ws.runGenres = out
 	}
 	return true
 }
