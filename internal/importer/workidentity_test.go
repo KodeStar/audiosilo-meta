@@ -237,14 +237,14 @@ func TestSeriesPositionGuardReportsTheRefusal(t *testing.T) {
 		{"disk", withSeries, resolved, &recInfo{claims: []posClaim{{key: "bravelands", pos: rowPosition{source: "1"}}}}},
 		{"this run", &planner{}, unresolved, &recInfo{claims: []posClaim{{name: "BRAVELANDS", key: "name:bravelands", pos: rowPosition{source: "1"}}}}},
 	} {
-		series, incumbent, want, conflict := tc.p.seriesPosConflict(tc.ri, &workState{slug: "bravelands-book-1"}, rowSeriesClaims(tc.b, "Bravelands"), resolvedRowProduction(tc.b, nil))
+		series, incumbent, want, conflict := tc.p.seriesPosConflict(tc.ri, &workState{slug: "bravelands-book-1"}, rowSeriesClaims(tc.b, "Bravelands"), resolvedRowProduction(tc.b.runtimeMin, tc.b, nil))
 		if !conflict || series != "Bravelands" || incumbent != "1" || want != "4" {
 			t.Fatalf("%s: seriesPosConflict = %q %q %q %v", tc.name, series, incumbent, want, conflict)
 		}
 	}
 	// A recording with no known position never blocks: the guard fires on
 	// evidence, never on absence.
-	if _, _, _, conflict := withSeries.seriesPosConflict(&recInfo{}, &workState{slug: "bravelands-book-1"}, rowSeriesClaims(resolved, "Bravelands"), resolvedRowProduction(resolved, nil)); conflict {
+	if _, _, _, conflict := withSeries.seriesPosConflict(&recInfo{}, &workState{slug: "bravelands-book-1"}, rowSeriesClaims(resolved, "Bravelands"), resolvedRowProduction(resolved.runtimeMin, resolved, nil)); conflict {
 		t.Error("a recording with no recorded claim must never block a merge")
 	}
 }

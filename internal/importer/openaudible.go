@@ -252,6 +252,10 @@ func coerceInt(v any) (int64, bool) {
 		return 0, false
 	case float64:
 		return int64(x), true
+	case int:
+		// A value this run wrote into a decoded record (a replaced runtime) and
+		// reads back before the record is re-rendered.
+		return int64(x), true
 	default:
 		return 0, false
 	}

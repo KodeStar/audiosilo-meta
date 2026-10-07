@@ -1813,7 +1813,35 @@ and two guards - runtime (a >10% gap between two known runtimes is a genuinely
 different production and gets its own recording under the same work) and
 abridged (a known-abridged entry never merges into an unabridged/unstated
 recording) - rather than
-minting a sibling work or dropping the ASIN (`Summary.MergedASINs`). Series
+minting a sibling work or dropping the ASIN (`Summary.MergedASINs`). **A
+runtime the bulk mirror stated BEFORE release is an ESTIMATE** (`estimate.go`;
+A Bird Among Wolves was catalogued as a preorder at 840 minutes and released at
+970, so the corrected regional rows minted a `-2` twin and `--enrich` refused
+the correction as a contradiction): a BULK-MIRROR-ONLY recording whose
+`release_date`, at its own precision (`releasedAfter`, the serve/site
+`releaseIsFuture` rule), is later than its `added_at` AND every
+`sources[].imported_at` (so a post-release stamp ends the state), and a
+bulk-mirror ROW whose release date is later than the run's `--date`, state a
+runtime no same-production comparison may read: `recInfo.knownRuntime` /
+`knownRecordedRuntime` / `planner.statedRuntime` give the CHAPTER TIMELINE's
+total in its place, else unknown (a timeline agreeing with its estimate keeps
+the guard exactly as it was), read by the ASIN merge, `rowContradiction`
+(enrichment and the genre regeneration), `sameProductionAs` (title
+corroboration, hence libex-select and attach, which take `--date` too) - one
+predicate, while `rawentry.RuntimesCompatible` keeps repair's meaning. A RELEASED
+row stating a runtime then REPLACES a recorded estimate on the ASIN merge and on
+`--enrich` (`correctEstimate`, never in the user-attested tier, abridged and
+every other guard unchanged), taking the row's clean chapter list with it, and is
+WITHHELD when the timeline (the row's, else the recorded one) contradicts the
+stated value by >10% - measured, of 49 estimate twins carrying chapters 34
+timelines match the twin's released runtime and 12 the recorded value, where the
+twin held a round estimate. Replacements and withholdings are aggregated
+`Summary.Notes` (`Summary.EstimatesReplaced`), never conflict-worklist rows.
+Measured over the 297,422-recording tree on 2026-10-07: 2,282 mirror-only
+recordings catalogued before release (945 since released), 1,877 with no
+post-release statement (540 released, 1,337 still preorders; 515 carry chapters,
+407 agreeing with the runtime); of 713 same-narrator twin pairs the 10% guard
+split, 199 have an estimate side and 197 now compare as one production. Series
 positions accept omnibus ranges (`"1-3.5"`), spelled with or without whitespace
 around the dash (`NormalizeSequence` tolerates it on INPUT and removes it on the
 way to the canonical value, so what is stored still satisfies the schema's

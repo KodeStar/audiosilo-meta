@@ -161,6 +161,10 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 		return false
 	}
 	overwrite := p.overwrites(raw)
+	// Asked before anything this call writes: a recorded preorder estimate
+	// (estimate.go) is unknown to the contradiction guard below, and a released
+	// row's runtime replaces it.
+	estimate := rawRuntimeEstimated(raw)
 	// A merged-in row is a DIFFERENT edition of the same production, so on a
 	// record it may not overwrite it has nothing to say: its regional release
 	// date legitimately differs, and reporting that as a conflict would flag an
@@ -187,10 +191,17 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// Runtime and release date reach here only in agreement (recordingContradicts
 	// refused the row otherwise), so an overwrite is a precision improvement -
 	// 601 minutes for a recorded 600, or a full date for a recorded year - never
-	// a re-statement of a different production.
+	// a re-statement of a different production. The one exception is a recorded
+	// preorder ESTIMATE, which that guard compares through its chapter timeline
+	// or not at all, and which correctEstimate judges below.
 	if b.runtimeMin > 0 {
 		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || overwrite {
 			raw["runtime_min"] = b.runtimeMin
+			changed = true
+		} else if estimate && scope == scopeFill && p.correctEstimate(raw, ref, b) {
+			// The one replacement of a recorded value outside the trust-tier
+			// overwrite: the recorded runtime was a preorder listing's estimate
+			// and this row states the released one (estimate.go).
 			changed = true
 		}
 	}
@@ -274,8 +285,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
 func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, scope applyScope) bool {
-	runtime, _ := coerceInt(raw["runtime_min"])
-	c, contradicts := rowContradiction(b, int(runtime), coerceStr(raw["release_date"]), scope)
+	c, contradicts := rowContradiction(b, knownRecordedRuntime(raw), p.statedRuntime(b), coerceStr(raw["release_date"]), scope)
 	if !contradicts {
 		return false
 	}
@@ -310,15 +320,19 @@ type contradiction struct {
 
 // rowContradiction is THE contradiction test (recordingContradicts' rule, and
 // the genre regeneration's - a contradicted row casts no genre vote): does the
-// row disagree with a recording recorded at runtime minutes (0 = unknown) and
-// release date on the runtime, or - outside scopeAttestMerged - on the release
-// date. It only answers; the caller decides what a contradiction costs.
-func rowContradiction(b sourceBook, runtime int, releaseDate string, scope applyScope) (contradiction, bool) {
+// row, stating stated minutes, disagree with a recording recorded at runtime
+// minutes and release date on the runtime, or - outside scopeAttestMerged - on
+// the release date. Both runtimes are the KNOWN ones (0 = unknown), which is
+// where a preorder estimate on either side drops out of the comparison
+// (estimate.go: knownRecordedRuntime / recInfo.knownRuntime and
+// planner.statedRuntime). It only answers; the caller decides what a
+// contradiction costs.
+func rowContradiction(b sourceBook, runtime, stated int, releaseDate string, scope applyScope) (contradiction, bool) {
 	// Defense in depth in the merge scope: addRecording only reaches a merge for a
 	// sibling whose runtime is already compatible, so this cannot fire there.
-	if b.runtimeMin > 0 && runtime > 0 && !runtimesCompatible(runtime, b.runtimeMin) {
-		return contradiction{"runtime_min", runtime, b.runtimeMin, fmt.Sprintf(
-			"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, runtime)}, true
+	if stated > 0 && runtime > 0 && !runtimesCompatible(runtime, stated) {
+		return contradiction{"runtime_min", runtime, stated, fmt.Sprintf(
+			"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", stated, runtime)}, true
 	}
 	if scope == scopeAttestMerged {
 		return contradiction{}, false
