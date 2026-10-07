@@ -921,6 +921,7 @@ func TestRegenerateGenresRefusesInertFlags(t *testing.T) {
 		{"--series-lookup-limit", "5"},
 		{"--libex", "https://example.invalid"},
 		{"--attach-editions"},
+		{"--skipped", "s.ndjson"},
 	} {
 		args := append([]string{"export.json", "--regenerate-genres", "--rows-as-of", "2026-07-29"}, extra...)
 		if code := runSource(boundedSource, args, refused); code != 2 {

@@ -22,7 +22,9 @@ import (
 //
 // What it may do to a work is the TRUST TIER's decision (LICENSING.md, rule 5):
 //
-//   - TRIM-ELIGIBLE: no source on the work is user-library tier, AND every
+//   - TRIM-ELIGIBLE: no source on the work or on any of its recordings is
+//     user-library tier (a user-library ASIN merge stamps only the recording,
+//     userSourced), AND every
 //     recording of the work that carries an ASIN met at least one input row
 //     (the evidence is complete - a recording whose rows are missing could hold
 //     the very genre the vote would drop). Its set BECOMES the vote, sorted. A
@@ -195,6 +197,25 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 			"%d trim-eligible %s kept the recorded set because the recording vote stated no genre",
 			silent, plural(silent, "work")))
 	}
+}
+
+// userSourced reports whether a user-library-tier source sits on the work or on
+// any of its recordings: a user-library ASIN merge stamps only the recording,
+// and a set any user-library source contributed to is never trimmed.
+func userSourced(w *model.Work) bool {
+	for _, s := range w.Sources {
+		if model.TierOfSource(s.Type) == model.TierUserLibrary {
+			return true
+		}
+	}
+	for _, r := range w.Recordings {
+		for _, s := range r.Sources {
+			if model.TierOfSource(s.Type) == model.TierUserLibrary {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // ValidateRowsAsOf is THE rule for Options.RowsAsOf, read by the importer and

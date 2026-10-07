@@ -403,6 +403,24 @@ func TestNewestProvenanceDay(t *testing.T) {
 	}
 }
 
+// TestRegenerateGenresUserSourceOnARecording: a user-library source on a
+// RECORDING (what a user-library ASIN merge stamps) makes its work add-only, as
+// one on the work does - it is never trimmed.
+func TestRegenerateGenresUserSourceOnARecording(t *testing.T) {
+	dataDir := seedRegen(t, map[string]string{
+		"works/me/merged/work.json": regenWorkJSON("merged", []string{"westerns"}, "libex-import"),
+		"works/me/merged/recordings/a.json": strings.Replace(regenRecJSON("merged", "a", "B0MERGED01"),
+			`[{"type":"libex-import"}]`, `[{"type":"libex-import"},{"type":"openaudible-import"}]`, 1),
+	})
+	sum := runRegen(t, dataDir, regenRow("B0MERGED01", "Mystery"))
+	if got, want := regenGenres(t, dataDir, "merged"), []string{"mystery", "westerns"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("genres = %v, want %v (added to, never trimmed)", got, want)
+	}
+	if !hasNote(sum.Notes, "1 carry a user-library source") {
+		t.Errorf("notes = %v", sum.Notes)
+	}
+}
+
 func hasNote(notes []string, sub string) bool {
 	for _, n := range notes {
 		if strings.Contains(n, sub) {

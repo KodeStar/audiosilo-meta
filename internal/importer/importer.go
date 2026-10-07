@@ -172,8 +172,9 @@ type workState struct {
 	// landed on it), and the work's set is the vote over them. nil for every
 	// other work, whose genres follow the union rules above.
 	runRecGenres map[string][]string
-	// genres and userSourced are a work's genre set and whether any of its
-	// sources is user-library tier, as the catalogue was LOADED - what the
+	// genres and userSourced are a work's genre set and whether any source on
+	// it OR ON ANY OF ITS RECORDINGS is user-library tier (a user-library ASIN
+	// merge stamps only the recording), as the catalogue was LOADED - what the
 	// genre regeneration decides by (regenerate.go). Empty for a work this run
 	// created.
 	genres      []string
@@ -1069,11 +1070,7 @@ func (p *planner) loadExisting() {
 			recs:     map[string]*recInfo{},
 			genres:   w.Genres,
 		}
-		for _, src := range w.Sources {
-			if model.TierOfSource(src.Type) == model.TierUserLibrary {
-				ws.userSourced = true
-			}
-		}
+		ws.userSourced = userSourced(w)
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
 		}
@@ -2237,9 +2234,13 @@ func (p *planner) accrueRunGenres(ws *workState, rec string, mapped []string) []
 	switch {
 	case ws.runRecGenres == nil:
 		next = UnionGenres(ws.runGenres, mapped)
-	case rec == "":
-		return nil // a row that landed on no recording casts no vote
 	default:
+		if rec == "" {
+			// A row that landed on no recording is still evidence about the work
+			// (the row that created it may have seeded runGenres this way), so it
+			// casts a vote of its own, under a key no recording slug can spell.
+			rec = fmt.Sprintf("\x00unlanded-%d", len(ws.runRecGenres))
+		}
 		ws.runRecGenres[rec] = UnionGenres(ws.runRecGenres[rec], mapped)
 		next, _ = VoteGenres(slices.Collect(maps.Values(ws.runRecGenres)))
 	}

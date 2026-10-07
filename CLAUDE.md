@@ -2045,7 +2045,8 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   index) to the recording it sits on and votes per work, deciding off what the
   load already put on each `workState` (its loaded genres, whether a source is
   user-library tier, which recordings carry an ASIN): a
-  TRIM-ELIGIBLE work - no `model.TierUserLibrary` source on the work (a
+  TRIM-ELIGIBLE work - no `model.TierUserLibrary` source on the work or any of
+  its recordings (a user-library ASIN merge stamps only the recording; a
   reference-tier `community` source states no genre and does not block it) AND
   every ASIN-carrying recording met a row - takes the vote as its set, unless the
   vote states nothing; every other work only gains what the vote adds (LICENSING.md
@@ -2078,7 +2079,9 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   the flag is the last day the catalogue was written from rows no newer than the
   export: the snapshot date is the safe default, and a later day only when
   every import up to it used rows no newer than the export (scripts/README.md). Inert flags (`--date`, `--conflicts`, `--existing-series-only`,
-  `--series-lookup(-limit)`, `--libex`) are refused through the CLI's one
+  `--series-lookup(-limit)`, `--libex`, and `--skipped`, whose worklist drops a
+  refused row whose ASIN is catalogued, so under this mode it could only list
+  rows that matched nothing) are refused through the CLI's one
   mode-scoped flag table. Measured over the 282,260-work tree with the rows of
   the 2026-07-29 dump for its 334,843 ASINs (313,202 rows, every one matched;
   399 contradicted on the runtime): at `--rows-as-of 2026-07-29`, 19,519 works

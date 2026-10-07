@@ -277,7 +277,8 @@ The rule, applied at **record** granularity (not per field):
    what the mirror's create path writes, what its enrichment writes into a
    work that had no genres, and what `metaimport libex --regenerate-genres`
    re-derives for an existing work - and the regeneration may only
-   TRIM a set no user-library source contributed to, and only when every
+   TRIM a set no user-library source contributed to (a user-library source on
+   the work or on any of its recordings counts), and only when every
    recording carrying an ASIN was in the evidence. A set any user-library
    source contributed to is only ever added to, by the vote as by a user row.
    The regeneration appends no source: the genres are derived from rows the
