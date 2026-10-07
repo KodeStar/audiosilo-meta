@@ -2,6 +2,7 @@ package importer
 
 import (
 	"fmt"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -423,10 +424,10 @@ func TestRegenerateGenresUserSourceOnARecording(t *testing.T) {
 	}
 }
 
-// TestRegenerateGenresFailsOnAnUnreadableWork: a catalogued work whose entry
-// cannot be read when the regeneration writes it (here its pack is removed
-// between the load and the decision - the tree changed under the run) is fatal,
-// never a silent skip.
+// TestRegenerateGenresFailsOnAnUnreadableWork pins the contract: a catalogued
+// work whose entry cannot be read when the regeneration writes it (here its pack
+// is removed between the load and the decision - the tree changed under the run)
+// stops the run with entryRaw's fatal error and changes nothing.
 func TestRegenerateGenresFailsOnAnUnreadableWork(t *testing.T) {
 	dataDir := seedRegen(t, map[string]string{
 		"works/go/gone/work.json":         regenWorkJSON("gone", []string{"westerns"}, "libex-import"),
@@ -442,11 +443,14 @@ func TestRegenerateGenresFailsOnAnUnreadableWork(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	packs, _ := filepath.Glob(filepath.Join(dataDir, "works", "*", "*.json"))
-	for _, f := range packs {
-		if err := os.Remove(f); err != nil {
-			t.Fatal(err)
+	err = filepath.WalkDir(filepath.Join(dataDir, "works"), func(path string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() || filepath.Ext(path) != ".json" {
+			return err
 		}
+		return os.Remove(path)
+	})
+	if err != nil {
+		t.Fatal(err)
 	}
 	p.planRegenerateGenres(parseLibexEntries(entries).books)
 	if p.fatal == nil || len(p.summary.GenreChanges) != 0 {
