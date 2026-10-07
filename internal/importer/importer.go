@@ -384,6 +384,10 @@ type planner struct {
 	sourceType string
 	importDate string
 	curSource  OutSource
+	// curStatesRuntime reports whether the row curSource stamps states a
+	// runtime: only such a row's post-release stamp is let past the source
+	// deduplication to end a preorder estimate (endsEstimate, estimate.go).
+	curStatesRuntime bool
 	// identity is the run's NORMALIZED WORK IDENTITY index over the catalogue as
 	// loaded - the create path's duplicate guard (dupidentity.go). nil in every
 	// other mode, which is what makes the guard a create-only rule and costs the
@@ -463,15 +467,16 @@ type planner struct {
 // record a row creates or changes carries it (see stampSource).
 func (p *planner) setSource(asin string, b sourceBook) {
 	p.curSource = OutSource{Type: p.sourceType, Ref: asin, ImportedAt: p.statementDay(b)}
+	p.curStatesRuntime = b.runtimeMin > 0
 }
 
 // stampSource appends this row's provenance to an existing record's raw sources[]
 // array. It goes through appendSourceUnique, so a second pass over the same row
-// never double-stamps - with the one exception of a stamp that ENDS a preorder
-// estimate (endsEstimate, estimate.go): an enrichment row's ref is the ASIN the
-// record was created under, so the deduplication would otherwise drop the one
-// post-release statement the estimate rule reads, and the record would stay an
-// estimate for good.
+// never double-stamps - with the one exception of a stamp from a row stating a
+// runtime that ENDS a preorder estimate (endsEstimate, estimate.go): an
+// enrichment row's ref is the ASIN the record was created under, so the
+// deduplication would otherwise drop the one post-release statement the
+// estimate rule reads, and the record would stay an estimate for good.
 func (p *planner) stampSource(raw map[string]any) {
 	srcArr, _ := raw["sources"].([]any)
 	if p.endsEstimate(raw) {

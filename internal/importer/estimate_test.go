@@ -646,3 +646,113 @@ func TestEstimateWritesStoreTheDecodedForm(t *testing.T) {
 		t.Errorf("rawKnownRuntime = %+v, want the replaced runtime read through the decoded chapters", got)
 	}
 }
+
+// estRowWithISBN is estRow carrying a recording ISBN, so an enrichment has a
+// fact to fill and stamps the record.
+func estRowWithISBN(asin, region string, minutes int) string {
+	return strings.Replace(estRow(asin, region, minutes, "unabridged", ""), `"region":`, `"isbn":"9781250411396","region":`, 1)
+}
+
+// A released row stating NO runtime said nothing about the estimate: an
+// enrichment of the record's own ASIN fills what it states, its stamp is
+// deduplicated as it always was, and the estimate stays correctable by the next
+// row that states the released runtime.
+func TestAnEnrichmentStatingNoRuntimeKeepsTheEstimate(t *testing.T) {
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
+		estRowWithISBN(estUSASIN, "us", 0))
+	if sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 0 {
+		t.Fatalf("summary = %+v, want the ISBN filled and nothing replaced", sum)
+	}
+	_, raw := readRecordingRaw(t, dataDir)
+	if !rawRuntimeEstimated(raw) {
+		t.Fatalf("a row stating no runtime ended the estimate: %v", raw["sources"])
+	}
+	if srcs, _ := raw["sources"].([]any); len(srcs) != 1 {
+		t.Errorf("sources = %v, want the one deduplicated stamp", raw["sources"])
+	}
+
+	var conflicts bytes.Buffer
+	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
+		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
+	if sum.EstimatesReplaced != 1 || conflicts.Len() != 0 {
+		t.Errorf("summary = %+v, conflicts %q; want the released runtime to replace the estimate", sum, conflicts.String())
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
+		t.Errorf("runtime = %d, want %d", rec.RuntimeMin, estReleasedLen)
+	}
+}
+
+// The gap estimate.go's header records: a merged regional row stating no
+// runtime appends a NEW stamp dated after the release, so the recording reads
+// as measured and the estimate is guarded from then on - a later row stating
+// the released runtime is a contradiction. sources[] records when a statement
+// was made, not what it stated, so nothing short of a schema change tells this
+// stamp from a measurement. If this test starts failing because the estimate
+// survives, the gap has been closed: update the header and CLAUDE.md.
+func TestAMergeStatingNoRuntimeEndsTheEstimate(t *testing.T) {
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
+		estRow(estUKASIN, "uk", 0, "unabridged", ""))
+	if sum.MergedASINs != 1 || sum.NewRecordings != 0 || sum.EstimatesReplaced != 0 {
+		t.Fatalf("summary = %+v, want a merge and no replacement", sum)
+	}
+	_, raw := readRecordingRaw(t, dataDir)
+	if rawRuntimeEstimated(raw) {
+		t.Fatalf("the merged stamp no longer ends the estimate - the gap is closed: %v", raw["sources"])
+	}
+
+	var conflicts bytes.Buffer
+	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
+		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
+	if sum.EstimatesReplaced != 0 || conflicts.Len() == 0 {
+		t.Errorf("summary = %+v, conflicts %q; want the released row refused against the locked estimate", sum, conflicts.String())
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estEstimate {
+		t.Errorf("runtime = %d, want the estimate %d kept", rec.RuntimeMin, estEstimate)
+	}
+}
+
+// A preorder ROW is the uncertain side, so it is held to the estimate bound
+// against any incumbent, a user-attested one included: within the bound its
+// ASIN merges into the user's recording, whose own facts never change (the
+// correction runs only on a bulk-mirror-only estimate); outside it, it is a
+// distinct recording.
+func TestAPreorderRowAgainstAUserAttestedRecording(t *testing.T) {
+	attested := estRecording(t, "2026-09-20",
+		fmt.Sprintf(`[{"imported_at":"2026-09-20","ref":%q,"type":"libex-import"},{"imported_at":"2026-09-21","type":"openaudible-import"}]`, estUSASIN),
+		"", testpack.WithRuntime(estReleasedLen))
+	for _, tc := range []struct {
+		name       string
+		minutes    int
+		wantMerged bool
+	}{
+		{"within the estimate bound", estEstimate, true},
+		{"outside the estimate bound", 400, false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := seedEstimateTree(t, attested)
+			// Run before the 2026-09-08 release, so the row is a preorder.
+			sum := runLibexWith(t, dataDir, Options{ImportDate: estPreRelease, Mode: ModeCreate},
+				estRow(estUKASIN, "uk", tc.minutes, "unabridged", ""))
+			if merged := sum.MergedASINs == 1 && sum.NewRecordings == 0; merged != tc.wantMerged {
+				t.Fatalf("summary = %+v, want merged %v", sum, tc.wantMerged)
+			}
+			if sum.EstimatesReplaced != 0 || sum.AttestedRecordings != 0 {
+				t.Errorf("summary = %+v, want nothing replaced or attested", sum)
+			}
+			rec := readEstRecording(t, dataDir)
+			wantASINs := 1
+			if tc.wantMerged {
+				wantASINs = 2
+			}
+			if rec.RuntimeMin != estReleasedLen || rec.ReleaseDate != estRelease || len(rec.ASIN) != wantASINs {
+				t.Errorf("recording = runtime %d, release %q, asins %v; want %d, %q and %d ASINs",
+					rec.RuntimeMin, rec.ReleaseDate, rec.ASIN, estReleasedLen, estRelease, wantASINs)
+			}
+			if _, raw := readRecordingRaw(t, dataDir); model.BulkMirrorOnly(rawSources(raw)) {
+				t.Errorf("the record lost its user attestation: %v", raw["sources"])
+			}
+		})
+	}
+}

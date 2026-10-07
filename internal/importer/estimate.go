@@ -49,7 +49,7 @@ import (
 //     it: each sources[].imported_at (added_at only where no source is dated).
 //     A post-release stamp - an ASIN merge or enrichment by a released row -
 //     ENDS the state (stampSource writes it even where its ref is already
-//     recorded, see endsEstimate);
+//     recorded, see endsEstimate, but only for a row that states a runtime);
 //   - a ROW's runtime is an estimate iff the run is a bulk-mirror run and the
 //     row's release date is later than the day the row was CAPTURED (rowDay): a
 //     libex row's own updatedAt, else --rows-as-of, else the run's date. A
@@ -91,6 +91,22 @@ import (
 // the rest. 28 of the 526 live records were last written before their release
 // date: libex had not yet corrected them, which is what the capture-day rule
 // reads.
+//
+// ONE GAP IS LEFT OPEN, and it is a property of sources[], which records WHEN
+// a statement was made and not WHAT it stated. A released row stating NO
+// runtime ends nothing through the deduplication bypass - an enrichment of the
+// record's own ASIN is deduplicated exactly as before the rule, so the estimate
+// stays correctable by the next row that states one. But where its stamp's ref
+// is NEW - a merged regional ASIN - the stamp is appended like any other, it is
+// dated after the release, and the recording reads as measured from then on: the
+// estimate becomes a guarded value, and a later released row stating the real
+// runtime is refused as a contradiction (TestAMergeStatingNoRuntimeEndsTheEstimate
+// pins it). Closing it means recording which statement stated the runtime - a
+// schema change - or dating a post-release statement before the release, which
+// would be false provenance. It is measured as rare: every one of the 526 live
+// libex records above states a runtime, and 131 of the tree's 289,427
+// bulk-mirror-only recordings (77 of them released) were catalogued from a row
+// stating none.
 //
 // The title corroboration was measured by replaying each of the 2,233
 // recordings of the works holding an estimate or a preorder as a row against its
@@ -225,16 +241,20 @@ func syncRecInfo(ri *recInfo, raw map[string]any) {
 }
 
 // endsEstimate reports whether this run's stamp on raw is the post-release
-// statement that ends its estimate state: the recording is still an estimate and
-// the stamp itself is dated on or after the release (a row captured before
-// release is dated its capture day, setSource, so it ends nothing). stampSource
-// then writes the stamp even where an entry of the same type and ref is already
-// recorded. Once written, the recording is no estimate, so a later stamp of the
-// run - or a re-run - is deduplicated as usual and sources[] never grows by
-// repetition.
+// statement that ends its estimate state: the row states a runtime (the one a
+// correction judged - correctEstimate runs before every stamp it can end), the
+// recording is still an estimate, and the stamp itself is dated on or after the
+// release (a row captured before release is dated its capture day, setSource,
+// so it ends nothing). stampSource then writes the stamp even where an entry of
+// the same type and ref is already recorded. A row stating no runtime said
+// nothing about the estimate, so its stamp is deduplicated as usual and the
+// estimate stays correctable (the header's open gap is the merge of a NEW ref,
+// which no deduplication touches). Once written, the recording is no estimate,
+// so a later stamp of the run - or a re-run - is deduplicated as usual and
+// sources[] never grows by repetition.
 func (p *planner) endsEstimate(raw map[string]any) bool {
 	day := p.curSource.ImportedAt
-	return len(day) == 10 && rawRuntimeEstimated(raw) && !releasedAfter(coerceStr(raw["release_date"]), day)
+	return p.curStatesRuntime && len(day) == 10 && rawRuntimeEstimated(raw) && !releasedAfter(coerceStr(raw["release_date"]), day)
 }
 
 // rowDay is the day a row's statement was CAPTURED, which is what decides

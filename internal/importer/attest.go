@@ -188,6 +188,7 @@ func (p *planner) attest(a Attestation, asin string, opts Options) (Summary, err
 	// The submission's own entry, not setSource's: a run stamps the row's ASIN as
 	// its ref, where a hand submission's provenance is what the submitter cited.
 	p.curSource = a.Source
+	p.curStatesRuntime = b.runtimeMin > 0
 	p.attestExisting(b, asin)
 	if p.fatal != nil {
 		return p.result(), p.fatal
