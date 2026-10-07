@@ -11116,58 +11116,7 @@
             {
               "asin": "B0036IOXII",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4765803,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
-            {
-              "length_ms": 4757537,
-              "start_ms": 4765803,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4758326,
-              "start_ms": 9523340,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4756747,
-              "start_ms": 14281666,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4767707,
-              "start_ms": 19038413,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51rM56ZbFaL.jpg",
-          "id": "emilia-fox-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emilia-fox"
-          ],
-          "publisher": "Orion",
-          "release_date": "2010-02-04",
-          "runtime_min": 396,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0036IOXII",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sweetness-at-the-bottom-of-the-pie"
-        },
-        "emilia-fox-2010-2": {
-          "abridged": true,
-          "added_at": "2026-10-03",
-          "asin": [
             {
               "asin": "B004EWTCCW",
               "region": "uk"
@@ -11229,7 +11178,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51rM56ZbFaL.jpg",
-          "id": "emilia-fox-2010-2",
+          "id": "emilia-fox-2010",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -11239,6 +11188,11 @@
           "release_date": "2010-02-04",
           "runtime_min": 396,
           "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0036IOXII",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-03",
               "ref": "B004EWTCCW",

@@ -10612,10 +10612,14 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "susan-ericksen-2008": {
+        "susan-ericksen-2013": {
           "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
+          "added_at": "2026-07-25T17:12:12+01:00",
           "asin": [
+            {
+              "asin": "B00CSA18GA",
+              "region": "us"
+            },
             {
               "asin": "B002V8LITQ",
               "region": "us"
@@ -10627,156 +10631,6 @@
             {
               "asin": "B004FTLRUY",
               "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2088960,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2427089,
-              "start_ms": 2088960,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2003046,
-              "start_ms": 4516049,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2036065,
-              "start_ms": 6519095,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2105075,
-              "start_ms": 8555160,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2249038,
-              "start_ms": 10660235,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1940074,
-              "start_ms": 12909273,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2225075,
-              "start_ms": 14849347,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2280060,
-              "start_ms": 17074422,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2136097,
-              "start_ms": 19354482,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1856064,
-              "start_ms": 21490579,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2128062,
-              "start_ms": 23346643,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2000074,
-              "start_ms": 25474705,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2324085,
-              "start_ms": 27474779,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 2204085,
-              "start_ms": 29798864,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1980058,
-              "start_ms": 32002949,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2302073,
-              "start_ms": 33983007,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1941095,
-              "start_ms": 36285080,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 2068108,
-              "start_ms": 38226175,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 2016049,
-              "start_ms": 40294283,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1722085,
-              "start_ms": 42310332,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 2547043,
-              "start_ms": 44032417,
-              "title": "Chapter 22"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51YniQ7Fe-L.jpg",
-          "id": "susan-ericksen-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "susan-ericksen"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2008-05-20",
-          "runtime_min": 776,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B002V8LITQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-04",
-              "ref": "B00CSA5O9C",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-04",
-              "ref": "B004FTLRUY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "seduction-in-death"
-        },
-        "susan-ericksen-2013": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B00CSA18GA",
-              "region": "us"
             }
           ],
           "chapters": [
@@ -10920,6 +10774,21 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B00CSA18GA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V8LITQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00CSA5O9C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B004FTLRUY",
               "type": "libex-import"
             }
           ],

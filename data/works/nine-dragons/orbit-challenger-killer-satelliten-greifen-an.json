@@ -5218,107 +5218,7 @@
             {
               "asin": "B0H6KJ15X1",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36361,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
-            {
-              "length_ms": 17554,
-              "start_ms": 36361,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1117506,
-              "start_ms": 53915,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1604707,
-              "start_ms": 1171421,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1552532,
-              "start_ms": 2776128,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2607345,
-              "start_ms": 4328660,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1268715,
-              "start_ms": 6936005,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1570388,
-              "start_ms": 8204720,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2210168,
-              "start_ms": 9775108,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1375642,
-              "start_ms": 11985276,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1116206,
-              "start_ms": 13360918,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1154426,
-              "start_ms": 14477124,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 545111,
-              "start_ms": 15631550,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 357378,
-              "start_ms": 16176661,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 166300,
-              "start_ms": 16534039,
-              "title": "Chapter 15"
-            }
-          ],
-          "id": "tj-clark-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tj-clark"
-          ],
-          "publisher": "Yen Audio",
-          "release_date": "2026-08-11",
-          "runtime_min": 330,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0H6KJ15X1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "orc-eroica-vol-3"
-        },
-        "tj-clark-2026-2": {
-          "abridged": false,
-          "added_at": "2026-10-06",
-          "asin": [
             {
               "asin": "B0H6KFSC5L",
               "region": "uk"
@@ -5426,7 +5326,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91ko9emviiL.jpg",
-          "id": "tj-clark-2026-2",
+          "id": "tj-clark-2026",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -5436,6 +5336,11 @@
           "release_date": "2026-08-11",
           "runtime_min": 278,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H6KJ15X1",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-06",
               "ref": "B0H6KFSC5L",

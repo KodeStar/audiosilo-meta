@@ -8291,63 +8291,7 @@
             {
               "asin": "B0032NAA5M",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4529888,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
-            {
-              "length_ms": 4320676,
-              "start_ms": 4529888,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4475228,
-              "start_ms": 8850564,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4247208,
-              "start_ms": 13325792,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4370599,
-              "start_ms": 17573000,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4329593,
-              "start_ms": 21943599,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Vho0xd02L.jpg",
-          "id": "tim-machin-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tim-machin"
-          ],
-          "publisher": "Orion",
-          "release_date": "2008-11-12",
-          "runtime_min": 437,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0032NAA5M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "one-false-move"
-        },
-        "tim-machin-2008-2": {
-          "abridged": true,
-          "added_at": "2026-10-03",
-          "asin": [
             {
               "asin": "B004EWYXTY",
               "region": "uk"
@@ -8414,7 +8358,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51Vho0xd02L.jpg",
-          "id": "tim-machin-2008-2",
+          "id": "tim-machin-2008",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -8424,6 +8368,11 @@
           "release_date": "2008-11-12",
           "runtime_min": 437,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0032NAA5M",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-03",
               "ref": "B004EWYXTY",

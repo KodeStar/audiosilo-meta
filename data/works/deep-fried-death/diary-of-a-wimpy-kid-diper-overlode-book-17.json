@@ -302,34 +302,13 @@
       "license": "CC0-1.0",
       "recordings": {
         "dan-russell": {
+          "abridged": false,
           "added_at": "2026-07-12T19:06:31+01:00",
           "asin": [
             {
               "asin": "B01LYNXZAZ",
               "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51t8ou5DqkL._SL500_.jpg",
-          "id": "dan-russell",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-russell"
-          ],
-          "publisher": "Puffin",
-          "runtime_min": 129,
-          "sources": [
-            {
-              "ref": "B01LYNXZAZ",
-              "type": "audible-lookup"
-            }
-          ],
-          "work": "diary-of-a-wimpy-kid-double-down-book-11"
-        },
-        "dan-russell-2016": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
+            },
             {
               "asin": "B01M0XYJPI",
               "region": "us"
@@ -356,8 +335,8 @@
               "title": "Chapter 3"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91d1Dvf4rIL.jpg",
-          "id": "dan-russell-2016",
+          "cover_url": "https://m.media-amazon.com/images/I/51t8ou5DqkL._SL500_.jpg",
+          "id": "dan-russell",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -367,6 +346,10 @@
           "release_date": "2016-11-01",
           "runtime_min": 145,
           "sources": [
+            {
+              "ref": "B01LYNXZAZ",
+              "type": "audible-lookup"
+            },
             {
               "imported_at": "2026-07-30",
               "ref": "B01M0XYJPI",
@@ -721,10 +704,14 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "dan-russell-2013": {
+        "dan-russell-2020": {
           "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
+          "added_at": "2026-07-12T19:06:31+01:00",
           "asin": [
+            {
+              "asin": "B00GB8CO5E",
+              "region": "uk"
+            },
             {
               "asin": "B00GB8JC8G",
               "region": "us"
@@ -751,38 +738,6 @@
               "title": "Chapter 3"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+SPbp2aBL.jpg",
-          "id": "dan-russell-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-russell"
-          ],
-          "publisher": "Puffin",
-          "release_date": "2013-11-06",
-          "runtime_min": 130,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00GB8JC8G",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-04",
-              "ref": "B00GB8ELWS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "diary-of-a-wimpy-kid-hard-luck-book-8"
-        },
-        "dan-russell-2020": {
-          "added_at": "2026-07-12T19:06:31+01:00",
-          "asin": [
-            {
-              "asin": "B00GB8CO5E",
-              "region": "uk"
-            }
-          ],
           "cover_url": "https://m.media-amazon.com/images/I/51sPouhMPDL._SL500_.jpg",
           "id": "dan-russell-2020",
           "language": "en",
@@ -792,11 +747,21 @@
           ],
           "publisher": "Puffin",
           "release_date": "2020",
-          "runtime_min": 109,
+          "runtime_min": 130,
           "sources": [
             {
               "ref": "B00GB8CO5E",
               "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00GB8JC8G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B00GB8ELWS",
+              "type": "libex-import"
             }
           ],
           "work": "diary-of-a-wimpy-kid-hard-luck-book-8"

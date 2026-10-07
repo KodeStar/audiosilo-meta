@@ -1838,31 +1838,7 @@
             {
               "asin": "B0DNRD5GGR",
               "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/914kqbi8b8L.jpg",
-          "id": "kirby-heyborne-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kirby-heyborne"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2026-10-13",
-          "runtime_min": 660,
-          "sources": [
-            {
-              "imported_at": "2026-09-22",
-              "ref": "B0DNRD5GGR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sunderworld-vol-2-the-unfortunate-responsibilities-of-leopold-berry"
-        },
-        "kirby-heyborne-2026-2": {
-          "abridged": false,
-          "added_at": "2026-10-06",
-          "asin": [
+            },
             {
               "asin": "B0DNRFQZL1",
               "region": "uk"
@@ -2310,7 +2286,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/914kqbi8b8L.jpg",
-          "id": "kirby-heyborne-2026-2",
+          "id": "kirby-heyborne-2026",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -2320,6 +2296,11 @@
           "release_date": "2026-10-13",
           "runtime_min": 857,
           "sources": [
+            {
+              "imported_at": "2026-09-22",
+              "ref": "B0DNRD5GGR",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-06",
               "ref": "B0DNRFQZL1",

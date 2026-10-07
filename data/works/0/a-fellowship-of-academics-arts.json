@@ -8222,123 +8222,7 @@
             {
               "asin": "B0CDMXYZS5",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 791777,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
-            {
-              "length_ms": 1736573,
-              "start_ms": 791777,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1551603,
-              "start_ms": 2528350,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1767526,
-              "start_ms": 4079953,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1624096,
-              "start_ms": 5847479,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1849817,
-              "start_ms": 7471575,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1962898,
-              "start_ms": 9321392,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2247947,
-              "start_ms": 11284290,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1590148,
-              "start_ms": 13532237,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1692107,
-              "start_ms": 15122385,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1433089,
-              "start_ms": 16814492,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1638214,
-              "start_ms": 18247581,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2008340,
-              "start_ms": 19885795,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1516286,
-              "start_ms": 21894135,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1771612,
-              "start_ms": 23410421,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 2278202,
-              "start_ms": 25182033,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2012798,
-              "start_ms": 27460235,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1170261,
-              "start_ms": 29473033,
-              "title": "Chapter 18"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91h7SH7LYQL.jpg",
-          "id": "tom-weiss-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tom-weiss"
-          ],
-          "publisher": "Spoken Realms",
-          "release_date": "2023-08-03",
-          "runtime_min": 510,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CDMXYZS5",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-fighting-man-of-mars"
-        },
-        "tom-weiss-2023-2": {
-          "abridged": true,
-          "added_at": "2026-10-03",
-          "asin": [
             {
               "asin": "B0CDMV59HR",
               "region": "uk"
@@ -8465,7 +8349,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91h7SH7LYQL.jpg",
-          "id": "tom-weiss-2023-2",
+          "id": "tom-weiss-2023",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -8475,6 +8359,11 @@
           "release_date": "2023-08-03",
           "runtime_min": 510,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CDMXYZS5",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-03",
               "ref": "B0CDMV59HR",
