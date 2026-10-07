@@ -206,3 +206,57 @@ func TestAnUnlandedRowStillVotes(t *testing.T) {
 		t.Errorf("after a landed row = %v, want %v (two voters: the union)", got, want)
 	}
 }
+
+// runParsedLibex parses libex rows as RunLibex does, lets edit change what the
+// parse layer would have refused (an unknown region, no ASIN - shapes a libex
+// row never reaches the planner with, but the create path's vote must still
+// handle), and runs the create path over them.
+func runParsedLibex(t *testing.T, dataDir string, edit func([]sourceBook), rows ...string) {
+	t.Helper()
+	entries, err := decodeLibexEntries([]byte(strings.Join(rows, "\n") + "\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	books := parseLibexEntries(entries).books
+	edit(books)
+	if _, err := runBooks(books, sourceLibex, Options{DataDir: dataDir, ImportDate: testImportDate}, nil); err != nil {
+		t.Fatalf("import run: %v", err)
+	}
+}
+
+// TestAMatchedRowVotesWithItsProduction: a row matched to ONE existing production
+// whose ASIN cannot be recorded (here an unknown region) is that production's
+// tagging, so its genres join that recording's vote - the stray Westerns the
+// Moffatt production states twice is still one vote and loses.
+func TestAMatchedRowVotesWithItsProduction(t *testing.T) {
+	dataDir := t.TempDir()
+	runParsedLibex(t, dataDir, func(books []sourceBook) {
+		books[1].raw["region"] = "zz"
+	},
+		libexVoteRow("B0VOTE0001", "us", "John Moffatt", 120, "Mystery", "Westerns"),
+		libexVoteRow("B0VOTE0002", "us", "John Moffatt", 120, "Westerns"),
+		libexVoteRow("B0VOTE0003", "us", "Full Cast", 90, "Mystery", "Thriller & Suspense"),
+		libexVoteRow("B0VOTE0004", "us", "Hugh Fraser", 420, "Mystery", "Thriller & Suspense"),
+	)
+	if got, want := readVoteWork(t, dataDir).Genres, []string{"mystery", "thriller-suspense"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("genres = %v, want %v (the unrecorded regional row joins its production's vote)", got, want)
+	}
+}
+
+// TestARowMatchingSeveralProductionsVotesAlone: a row with no ASIN that matches
+// SEVERAL same-narrator productions cannot say which one it is, so it casts a
+// vote of its own - here the third voter, under which its Westerns loses where
+// two voters would have kept the union.
+func TestARowMatchingSeveralProductionsVotesAlone(t *testing.T) {
+	dataDir := t.TempDir()
+	runParsedLibex(t, dataDir, func(books []sourceBook) {
+		books[2].raw["asin"] = ""
+	},
+		libexVoteRow("B0VOTE0001", "us", "John Moffatt", 120, "Mystery"),
+		libexVoteRow("B0VOTE0002", "us", "John Moffatt", 420, "Mystery"), // another runtime: a second production
+		libexVoteRow("B0VOTE0003", "us", "John Moffatt", 120, "Westerns"),
+	)
+	if got, want := readVoteWork(t, dataDir).Genres, []string{"mystery"}; !reflect.DeepEqual(got, want) {
+		t.Errorf("genres = %v, want %v (the unmatched row is a third voter)", got, want)
+	}
+}

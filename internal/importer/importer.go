@@ -360,8 +360,9 @@ type planner struct {
 	// already touched would be dropped silently.
 	runCredits map[string]map[model.Credit]bool
 	// landedRec is the recording the last addRecording call landed its row on (a
-	// new recording, or the one its ASIN merged onto or already sat on), "" when
-	// it wrote nothing - what the recording vote attributes the row's genres to.
+	// new recording, or the one its ASIN merged onto or already sat on, or the
+	// one production it was matched to when its ASIN could not be recorded), ""
+	// otherwise - what the recording vote attributes the row's genres to.
 	landedRec string
 	// rowsAsOf is Options.RowsAsOf, the genre regeneration's cut-off day.
 	rowsAsOf string
@@ -2734,7 +2735,13 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	claims := rowSeriesClaims(b, title)
 	if len(matches) > 0 {
 		if asin == "" {
-			return recNone // nothing new to add (same production, no new ASIN)
+			// Nothing new to add (same production, no new ASIN). The row's genres
+			// are still that production's tagging, so the vote counts them there
+			// rather than as a vote of their own - when the production is one.
+			if len(matches) == 1 {
+				p.landedRec = matches[0].slug
+			}
+			return recNone
 		}
 		for _, m := range matches {
 			if m.info.asins[asin] {
@@ -2764,6 +2771,10 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
+					// The ASIN is not recorded, but the row IS this production's
+					// (a regional ASIN of it): its genres join that recording's
+					// vote rather than casting a second one for one tagging.
+					p.landedRec = m.slug
 					return recNone
 				}
 				// A user import merging into a BULK-MIRROR-ONLY recording attests
