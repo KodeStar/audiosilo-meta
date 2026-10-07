@@ -2067,8 +2067,9 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   and a recording every row of which was contradicted is not covered, so its
   work falls to add-only; `Summary.GenreRowsContradicted` and a note count them.
   The regeneration NEVER JUDGES A RECORD WITH EVIDENCE OLDER THAN THE RECORD:
-  `--rows-as-of YYYY-MM-DD` is REQUIRED (refused in every other mode; one rule,
-  `importer.ValidateRowsAsOf`, which the CLI asks too), and a work a row reached
+  `--rows-as-of YYYY-MM-DD` is REQUIRED (refused in every other mode, and refused
+  AFTER the run's own UTC day - a future cut-off, a 2062 typo, would hold nothing
+  back; one rule, `importer.ValidateRowsAsOf`, which the CLI asks too), and a work a row reached
   whose newest provenance day - its added_at, every recording's, every
   sources[].imported_at on it and its recordings, ordered by `model.TimeKey`
   (metabuild's own key, in the leaf so the importer does not link the builder;

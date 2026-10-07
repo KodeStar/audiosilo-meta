@@ -5,6 +5,7 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -344,6 +345,37 @@ func TestRegenerateGenresSkipsWorksNewerThanTheRows(t *testing.T) {
 	}
 	if _, err := RunLibex(writeBooks(t, rows[0]+"\n"), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRegenerateGenres}); err == nil {
 		t.Errorf("a regeneration without RowsAsOf ran")
+	}
+}
+
+// TestValidateRowsAsOf pins the one --rows-as-of rule: required by the
+// regeneration as a real calendar day no later than the run's own (UTC) day, and
+// taken by no other mode.
+func TestValidateRowsAsOf(t *testing.T) {
+	today := time.Date(2026, 10, 7, 23, 30, 0, 0, time.FixedZone("x", -3*3600)) // 2026-10-08 in UTC
+	for _, tc := range []struct {
+		mode     Mode
+		rowsAsOf string
+		ok       bool
+	}{
+		{ModeRegenerateGenres, "2026-07-29", true},
+		{ModeRegenerateGenres, "2026-10-08", true},  // the run's own UTC day
+		{ModeRegenerateGenres, "2026-10-09", false}, // tomorrow
+		{ModeRegenerateGenres, "2062-07-29", false}, // the typo the rule exists for
+		{ModeRegenerateGenres, "", false},
+		{ModeRegenerateGenres, "2026-13-45", false},
+		{ModeRegenerateGenres, "2026-07", false},
+		{ModeEnrich, "2026-07-29", false},
+		{ModeEnrich, "", true},
+	} {
+		if err := ValidateRowsAsOf(tc.mode, tc.rowsAsOf, today); (err == nil) != tc.ok {
+			t.Errorf("ValidateRowsAsOf(%v, %q) = %v, want ok=%v", tc.mode, tc.rowsAsOf, err, tc.ok)
+		}
+	}
+	// The importer asks the same rule against the real clock.
+	if _, err := RunLibex(writeBooks(t, regenRow("B0FUTURE01")+"\n"), Options{DataDir: t.TempDir(), ImportDate: testImportDate,
+		Mode: ModeRegenerateGenres, RowsAsOf: "2999-01-01"}); err == nil || !strings.Contains(err.Error(), "after today") {
+		t.Errorf("a future RowsAsOf: err = %v, want the after-today refusal", err)
 	}
 }
 

@@ -15,6 +15,7 @@ import (
 	"slices"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -624,7 +625,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	if opts.Mode == ModeRegenerateGenres && model.TierOfSource(sourceType) != model.TierBulkMirror {
 		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex) rows; use RunLibex")
 	}
-	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf); err != nil {
+	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf, time.Now().UTC()); err != nil {
 		return Summary{}, err
 	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI

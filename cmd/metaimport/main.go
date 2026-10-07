@@ -250,7 +250,7 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 
 	// The regeneration never judges a record with evidence older than the
 	// record, so it has to be told how old its rows are.
-	if err := importer.ValidateRowsAsOf(mode, *rowsAsOf); err != nil {
+	if err := importer.ValidateRowsAsOf(mode, *rowsAsOf, time.Now().UTC()); err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport: --rows-as-of:", err)
 		return 2
 	}

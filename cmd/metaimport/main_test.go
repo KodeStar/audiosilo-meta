@@ -851,9 +851,10 @@ func TestRegenerateGenresFlags(t *testing.T) {
 		{"export.json", "--regenerate-genres", "--relocate"},
 		{"export.json", "--regenerate-genres", "--attach-editions"},
 		{"export.json", "--genre-changes", "x.ndjson"},
-		{"export.json", "--regenerate-genres"},                            // no --rows-as-of
-		{"export.json", "--regenerate-genres", "--rows-as-of", "2026-07"}, // not a day
-		{"export.json", "--enrich", "--rows-as-of", "2026-07-29"},         // another mode
+		{"export.json", "--regenerate-genres"},                               // no --rows-as-of
+		{"export.json", "--regenerate-genres", "--rows-as-of", "2026-07"},    // not a day
+		{"export.json", "--regenerate-genres", "--rows-as-of", "2062-07-29"}, // after today
+		{"export.json", "--enrich", "--rows-as-of", "2026-07-29"},            // another mode
 	} {
 		if code := runSource(boundedSource, args, refused); code != 2 {
 			t.Errorf("%v: exit %d, want 2", args, code)

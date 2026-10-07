@@ -200,15 +200,24 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 // ValidateRowsAsOf is THE rule for Options.RowsAsOf, read by the importer and
 // by cmd/metaimport's --rows-as-of alike: the genre regeneration requires the
 // rows' snapshot date as a real calendar day, and no other mode takes one.
-func ValidateRowsAsOf(mode Mode, rowsAsOf string) error {
+//
+// The date may not be after today (UTC, the day of the run): rows cannot be
+// newer than the run reading them, and a future cut-off - a typo like 2062 -
+// would hold nothing back and silently defeat the guard. today is passed in so
+// the rule is testable; both callers pass time.Now().UTC().
+func ValidateRowsAsOf(mode Mode, rowsAsOf string, today time.Time) error {
 	if mode != ModeRegenerateGenres {
 		if rowsAsOf != "" {
 			return fmt.Errorf("a rows-as-of date is the genre regeneration's; this mode takes none")
 		}
 		return nil
 	}
-	if _, err := time.Parse(time.DateOnly, rowsAsOf); err != nil {
+	day, err := time.Parse(time.DateOnly, rowsAsOf)
+	if err != nil {
 		return fmt.Errorf("the genre regeneration needs the rows' snapshot date as YYYY-MM-DD (a work with newer provenance is not judged), not %q", rowsAsOf)
+	}
+	if run := today.UTC().Format(time.DateOnly); rowsAsOf > run {
+		return fmt.Errorf("the rows' snapshot date %s is after today (%s): rows cannot be newer than the run, and a future cut-off would hold nothing back", day.Format(time.DateOnly), run)
 	}
 	return nil
 }
