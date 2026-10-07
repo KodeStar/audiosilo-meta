@@ -7101,58 +7101,7 @@
             {
               "asin": "B002V0KDYU",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4181217,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
-            {
-              "length_ms": 4091217,
-              "start_ms": 4181217,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4185815,
-              "start_ms": 8272434,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4111511,
-              "start_ms": 12458249,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3827299,
-              "start_ms": 16569760,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91z4FLd4cSL.jpg",
-          "id": "grover-gardner-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "grover-gardner"
-          ],
-          "publisher": "Listen & Live Audio, Inc.",
-          "release_date": "2005-08-01",
-          "runtime_min": 339,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0KDYU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sudden-death-david-rosenfelt"
-        },
-        "grover-gardner-2005-2": {
-          "abridged": true,
-          "added_at": "2026-10-04",
-          "asin": [
             {
               "asin": "B079MBCSLY",
               "region": "uk"
@@ -7214,7 +7163,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91z4FLd4cSL.jpg",
-          "id": "grover-gardner-2005-2",
+          "id": "grover-gardner-2005",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -7224,6 +7173,11 @@
           "release_date": "2005-08-01",
           "runtime_min": 339,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0KDYU",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-04",
               "ref": "B079MBCSLY",

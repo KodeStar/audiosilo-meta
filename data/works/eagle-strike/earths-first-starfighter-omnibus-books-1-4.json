@@ -12764,80 +12764,7 @@
             {
               "asin": "B0G72JPYW8",
               "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81h5y2oOTxL.jpg",
-          "id": "connor-crais-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "connor-crais",
-            "eden-oneill",
-            "ellie-gossage",
-            "mark-bramhall",
-            "sean-masters",
-            "shane-east",
-            "stella-hunter"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2026-11-03",
-          "runtime_min": 618,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G72JPYW8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "east-of-envy"
-        },
-        "connor-crais-2026-2": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GPR23188",
-              "region": "us"
             },
-            {
-              "asin": "B0HD6CDW6H",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91T-7ZxVWUL.jpg",
-          "id": "connor-crais-2026-2",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "connor-crais",
-            "eden-oneill",
-            "ellie-gossage",
-            "mark-bramhall",
-            "sean-masters",
-            "shane-east",
-            "stella-hunter"
-          ],
-          "publisher": "Tor Bramble",
-          "release_date": "2026-11-05",
-          "runtime_min": 840,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GPR23188",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-06",
-              "ref": "B0HD6CDW6H",
-              "type": "libex-import"
-            }
-          ],
-          "work": "east-of-envy"
-        },
-        "connor-crais-2026-3": {
-          "abridged": false,
-          "added_at": "2026-10-06",
-          "asin": [
             {
               "asin": "B0G731MC56",
               "region": "uk"
@@ -13143,8 +13070,8 @@
               "title": "Additional Information"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81R9WZp1wuL.jpg",
-          "id": "connor-crais-2026-3",
+          "cover_url": "https://m.media-amazon.com/images/I/81h5y2oOTxL.jpg",
+          "id": "connor-crais-2026",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -13160,6 +13087,11 @@
           "release_date": "2026-11-03",
           "runtime_min": 458,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G72JPYW8",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-06",
               "ref": "B0G731MC56",
@@ -13198,6 +13130,49 @@
             {
               "imported_at": "2026-10-07",
               "ref": "B0GPQQK8XJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "east-of-envy"
+        },
+        "connor-crais-2026-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GPR23188",
+              "region": "us"
+            },
+            {
+              "asin": "B0HD6CDW6H",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91T-7ZxVWUL.jpg",
+          "id": "connor-crais-2026-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "connor-crais",
+            "eden-oneill",
+            "ellie-gossage",
+            "mark-bramhall",
+            "sean-masters",
+            "shane-east",
+            "stella-hunter"
+          ],
+          "publisher": "Tor Bramble",
+          "release_date": "2026-11-05",
+          "runtime_min": 840,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GPR23188",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-06",
+              "ref": "B0HD6CDW6H",
               "type": "libex-import"
             }
           ],

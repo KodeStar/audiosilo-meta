@@ -15034,63 +15034,7 @@
             {
               "asin": "B0032N2SKW",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4316032,
-              "start_ms": 0,
-              "title": "Chapter 1"
             },
-            {
-              "length_ms": 4319283,
-              "start_ms": 4316032,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4602056,
-              "start_ms": 8635315,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4120752,
-              "start_ms": 13237371,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4309299,
-              "start_ms": 17358123,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4188369,
-              "start_ms": 21667422,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/515HgfCMUNL.jpg",
-          "id": "tim-machin-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tim-machin"
-          ],
-          "publisher": "Orion",
-          "release_date": "2006-04-19",
-          "runtime_min": 430,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0032N2SKW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "darkest-fear"
-        },
-        "tim-machin-2006-2": {
-          "abridged": true,
-          "added_at": "2026-10-03",
-          "asin": [
             {
               "asin": "B004EWX4BM",
               "region": "uk"
@@ -15157,7 +15101,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/515HgfCMUNL.jpg",
-          "id": "tim-machin-2006-2",
+          "id": "tim-machin-2006",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -15167,6 +15111,11 @@
           "release_date": "2006-04-19",
           "runtime_min": 430,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0032N2SKW",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-03",
               "ref": "B004EWX4BM",

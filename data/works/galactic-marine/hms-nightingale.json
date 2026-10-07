@@ -4701,31 +4701,7 @@
             {
               "asin": "B0GY8RWS4V",
               "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81L-0L5eHoL.jpg",
-          "id": "andreas-frohlich-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-frohlich"
-          ],
-          "publisher": "Silberfisch",
-          "release_date": "2026-09-25",
-          "runtime_min": 269,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GY8RWS4V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hoch-hinaus"
-        },
-        "andreas-frohlich-2026-2": {
-          "abridged": false,
-          "added_at": "2026-10-04",
-          "asin": [
+            },
             {
               "asin": "B0GY91GP4Z",
               "region": "de"
@@ -5092,7 +5068,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81L-0L5eHoL.jpg",
-          "id": "andreas-frohlich-2026-2",
+          "id": "andreas-frohlich-2026",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -5102,6 +5078,11 @@
           "release_date": "2026-09-25",
           "runtime_min": 234,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GY8RWS4V",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-04",
               "ref": "B0GY91GP4Z",

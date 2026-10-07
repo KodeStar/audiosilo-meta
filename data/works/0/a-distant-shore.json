@@ -941,31 +941,7 @@
             {
               "asin": "B0G7251KK9",
               "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81GQbBTn-QL.jpg",
-          "id": "mary-robinette-kowal-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mary-robinette-kowal"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2026-09-29",
-          "runtime_min": 555,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G7251KK9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-divided-duty"
-        },
-        "mary-robinette-kowal-2026-2": {
-          "abridged": false,
-          "added_at": "2026-10-04",
-          "asin": [
+            },
             {
               "asin": "B0G72KXF16",
               "region": "uk"
@@ -1094,7 +1070,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81GQbBTn-QL.jpg",
-          "id": "mary-robinette-kowal-2026-2",
+          "id": "mary-robinette-kowal-2026",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -1104,6 +1080,11 @@
           "release_date": "2026-09-29",
           "runtime_min": 701,
           "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G7251KK9",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-10-04",
               "ref": "B0G72KXF16",
