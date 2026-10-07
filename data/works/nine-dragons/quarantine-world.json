@@ -1615,6 +1615,30 @@
             {
               "asin": "B09GTKFM5M",
               "region": "uk"
+            },
+            {
+              "asin": "B09GSDZ3S2",
+              "region": "us"
+            },
+            {
+              "asin": "B09GT7P1CF",
+              "region": "au"
+            },
+            {
+              "asin": "B09GT3JDWP",
+              "region": "ca"
+            },
+            {
+              "asin": "B09GSYZ22V",
+              "region": "de"
+            },
+            {
+              "asin": "B09GSYY2VN",
+              "region": "fr"
+            },
+            {
+              "asin": "B09GT63ZBT",
+              "region": "jp"
             }
           ],
           "chapters": [
@@ -1723,6 +1747,36 @@
             {
               "imported_at": "2026-09-26",
               "ref": "B09GTKFM5M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B09GSDZ3S2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B09GT7P1CF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B09GT3JDWP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B09GSYZ22V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B09GSYY2VN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B09GT63ZBT",
               "type": "libex-import"
             }
           ],
@@ -1945,6 +1999,10 @@
             {
               "asin": "B00EKJI7A2",
               "region": "uk"
+            },
+            {
+              "asin": "B00EKJH6MW",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2118,6 +2176,11 @@
             {
               "imported_at": "2026-09-26",
               "ref": "B00EKJI7A2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B00EKJH6MW",
               "type": "libex-import"
             }
           ],
@@ -2365,6 +2428,120 @@
       ],
       "title": "Quarry's Deal"
     },
+    "quarrys-ex": {
+      "added_at": "2026-10-07",
+      "authors": [
+        "max-allan-collins"
+      ],
+      "genres": [
+        "hard-boiled",
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "quarrys-ex",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stefan-rudnicki-2018": {
+          "abridged": false,
+          "added_at": "2026-10-07",
+          "asin": [
+            {
+              "asin": "1982573813",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1601294,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1479761,
+              "start_ms": 1601294,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1422268,
+              "start_ms": 3081055,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1572641,
+              "start_ms": 4503323,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2075120,
+              "start_ms": 6075964,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1984516,
+              "start_ms": 8151084,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1264651,
+              "start_ms": 10135600,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1689437,
+              "start_ms": 11400251,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1105409,
+              "start_ms": 13089688,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1129139,
+              "start_ms": 14195097,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1455101,
+              "start_ms": 15324236,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 485064,
+              "start_ms": 16779337,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81SqQ6PA6hL.jpg",
+          "id": "stefan-rudnicki-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stefan-rudnicki"
+          ],
+          "publisher": "Skyboat Media",
+          "release_date": "2018-10-16",
+          "runtime_min": 287,
+          "sources": [
+            {
+              "imported_at": "2026-10-07",
+              "ref": "1982573813",
+              "type": "libex-import"
+            }
+          ],
+          "work": "quarrys-ex"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-07",
+          "ref": "1982573813",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Quarry's Ex"
+    },
     "quarrys-list": {
       "added_at": "2026-07-29",
       "authors": [
@@ -2567,6 +2744,30 @@
             {
               "asin": "B0DG6ND2V2",
               "region": "uk"
+            },
+            {
+              "asin": "B0DG6QG421",
+              "region": "us"
+            },
+            {
+              "asin": "B0DG6G2H39",
+              "region": "au"
+            },
+            {
+              "asin": "B0DG6YVR87",
+              "region": "ca"
+            },
+            {
+              "asin": "B0DG6C3YJJ",
+              "region": "de"
+            },
+            {
+              "asin": "B0DG6P5C4V",
+              "region": "fr"
+            },
+            {
+              "asin": "B0DG6ZK8MR",
+              "region": "jp"
             }
           ],
           "chapters": [
@@ -2681,6 +2882,36 @@
               "imported_at": "2026-09-26",
               "ref": "B0DG6ND2V2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0DG6QG421",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0DG6G2H39",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0DG6YVR87",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0DG6C3YJJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0DG6P5C4V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0DG6ZK8MR",
+              "type": "libex-import"
             }
           ],
           "work": "quarrys-return"
@@ -2714,8 +2945,33 @@
             {
               "asin": "B0HKTRNFQP",
               "region": "uk"
+            },
+            {
+              "asin": "B0HKTPSKXN",
+              "region": "us"
+            },
+            {
+              "asin": "B0HKTTL4CV",
+              "region": "au"
+            },
+            {
+              "asin": "B0HKTGP2SB",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HKTPWYST",
+              "region": "de"
+            },
+            {
+              "asin": "B0HKTN29CW",
+              "region": "fr"
+            },
+            {
+              "asin": "B0HKTWHSL9",
+              "region": "jp"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/61fBMD2-J0L.jpg",
           "id": "stefan-rudnicki-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -2729,6 +2985,36 @@
             {
               "imported_at": "2026-09-26",
               "ref": "B0HKTRNFQP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HKTPSKXN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HKTTL4CV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HKTGP2SB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HKTPWYST",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HKTN29CW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HKTWHSL9",
               "type": "libex-import"
             }
           ],
