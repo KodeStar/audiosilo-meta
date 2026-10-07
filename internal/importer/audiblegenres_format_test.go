@@ -6,6 +6,8 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
 
 // formatPaths is the FORMAT rule's node list stated by PATH, per marketplace:
@@ -80,6 +82,79 @@ var formatPaths = map[string][]string{
 	},
 }
 
+// fictionOnlyPaths is the subset of formatPaths that is a format ONLY in a row
+// mapping a fiction genre: the Radio and Film & TV leaves of each marketplace's
+// performing-arts node (see audiblegenres.go). TestFictionOnlyFormatNodesArePinned
+// holds format_fiction_only to it.
+var fictionOnlyPaths = map[string][]string{
+	"us": {"arts & entertainment:entertainment & performing arts:film & tv", "arts & entertainment:entertainment & performing arts:radio"},
+	"uk": {"arts & entertainment:entertainment & performing arts:film & tv"},
+	"ca": {"arts & entertainment:entertainment & performing arts:film & tv", "arts & entertainment:entertainment & performing arts:radio"},
+	"au": {"arts & entertainment:entertainment & performing arts:film & tv"},
+	"in": {"arts & entertainment:entertainment & performing arts:film & tv"},
+	"fr": {"arts et divertissement:divertissement et arts du spectacle:films et télévision"},
+	"es": {"arte y entretenimiento:entretenimiento y artes escénicas:cine y tv"},
+	"it": {
+		"arte e intrattenimento:intrattenimento e arti dello spettacolo:film e tv",
+		"arte e intrattenimento:intrattenimento e arti dello spettacolo:radio",
+	},
+	"jp": {"エンターテインメント・アート:エンターテインメント・舞台芸術:映画・テレビ", "エンターテインメント・アート:エンターテインメント・舞台芸術:ラジオ"},
+}
+
+func TestFictionOnlyFormatNodesArePinned(t *testing.T) {
+	table := audibleGenreTable()
+	paths := loadGenrePaths(t)
+	want := map[string]bool{}
+	for region, keys := range fictionOnlyPaths {
+		for _, key := range keys {
+			if !slices.Contains(formatPaths[region], key) {
+				t.Errorf("%s %q is fiction-only but not a pinned format path", region, key)
+			}
+			want[paths[region][key]] = true
+			if node := table.FormatTree[paths[region][key]]; !node.Format || !node.FictionOnly {
+				t.Errorf("format_tree %s (%s %q) = %+v, want a fiction-only format node", paths[region][key], region, key, node)
+			}
+		}
+	}
+	got := map[string]bool{}
+	for _, n := range table.FormatFictionOnly {
+		got[n] = true
+	}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("format_fiction_only = %v\nwant (from the pinned paths) %v", slices.Sorted(maps.Keys(got)), slices.Sorted(maps.Keys(want)))
+	}
+	if !slices.IsSorted(table.FormatFictionOnly) {
+		t.Errorf("format_fiction_only is not sorted")
+	}
+}
+
+// TestGenreKindsCoverTheVocabulary is genre_kinds' drift guard: every value of
+// the schema's genre vocabulary is classified, as fiction, nonfiction or
+// neither, and nothing else is - so a genre added to the vocabulary must be
+// classified before the format rule can read it.
+func TestGenreKindsCoverTheVocabulary(t *testing.T) {
+	table := audibleGenreTable()
+	enum := testpack.SchemaDefEnum(t, "genre")
+	for g := range enum {
+		switch table.GenreKinds[g] {
+		case genreFiction, "nonfiction", "neither":
+		default:
+			t.Errorf("genre %q is classified %q; want fiction, nonfiction or neither", g, table.GenreKinds[g])
+		}
+	}
+	for g := range table.GenreKinds {
+		if !enum[g] {
+			t.Errorf("genre_kinds classifies %q, which is not in the vocabulary", g)
+		}
+	}
+	// The judgement calls the format rule depends on (audiblegenres.go).
+	for g, want := range map[string]string{"comedy-humor": "neither", "drama-plays": "neither", "short-stories": genreFiction, "history": "nonfiction", "mystery": genreFiction} {
+		if got := table.GenreKinds[g]; got != want {
+			t.Errorf("genre_kinds[%s] = %q, want %q", g, got, want)
+		}
+	}
+}
+
 // TestFormatNodesArePinned is the format list's drift guard: the table's
 // hand-curated "format" ids are EXACTLY the nodes the verification file gives the
 // pinned paths, every marketplace the table covers is stated (none silently
@@ -130,7 +205,7 @@ func TestFormatNodesArePinned(t *testing.T) {
 // edit, or a format list changed without regenerating, fails here.
 func TestFormatTreeMatchesGenrePaths(t *testing.T) {
 	table := audibleGenreTable()
-	tree, paths, err := DeriveFormatTree(table.Format, loadGenrePaths(t))
+	tree, paths, err := DeriveFormatTree(table.Format, table.FormatFictionOnly, loadGenrePaths(t))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -235,6 +310,30 @@ func TestFormatRule(t *testing.T) {
 			want:   []string{"arts-entertainment"},
 		},
 		{
+			name: "a BBC fiction radio row drops arts-entertainment (Radio and Film & TV are formats for fiction)",
+			claims: nodeClaims("18571910011|Arts & Entertainment", "18571923011|Entertainment & Performing Arts",
+				"18571937011|Radio", "18571933011|Film & TV", "18574606011|Mystery"),
+			want: []string{"mystery"},
+		},
+		{
+			name: "a nonfiction row about film keeps arts-entertainment (Film & TV is its subject)",
+			claims: nodeClaims("18571910011|Arts & Entertainment", "18571923011|Entertainment & Performing Arts",
+				"18571933011|Film & TV", "18573518011|History"),
+			want: []string{"arts-entertainment", "history"},
+		},
+		{
+			name: "a radio comedy panel show keeps arts-entertainment (comedy-humor is not fiction)",
+			claims: nodeClaims("18571910011|Arts & Entertainment", "18571923011|Entertainment & Performing Arts",
+				"18571937011|Radio", "24427740011|Comedy & Humor"),
+			want: []string{"arts-entertainment", "comedy-humor"},
+		},
+		{
+			name: "the dramatizations subtree is a format beside nonfiction too (a dramatized Gospel)",
+			claims: nodeClaims("18571910011|Arts & Entertainment", "18571919011|Audio Performances & Dramatizations",
+				"18571920011|Dramatizations", "18574839011|Religion & Spirituality"),
+			want: []string{"religion-spirituality"},
+		},
+		{
 			name: "a German Hörspiel of a thriller is a thriller",
 			claims: nodeClaims("16206595031|Kunst & Unterhaltung", "16206604031|Hörspiele & Dramatisierungen",
 				"18574621011|Thriller & Suspense"),
@@ -272,6 +371,13 @@ func TestFormatRuleEveryMarketplace(t *testing.T) {
 	plain.FormatTree = nil
 	paths := loadGenrePaths(t)
 	subject := genreClaim{node: "18574606011", name: "Mystery"}
+	history := genreClaim{node: "18573518011", name: "History"}
+	fictionOnly := map[string]bool{}
+	for region, keys := range fictionOnlyPaths {
+		for _, key := range keys {
+			fictionOnly[region+" "+key] = true
+		}
+	}
 	for region, keys := range formatPaths {
 		for _, key := range keys {
 			segs := strings.Split(key, ":")
@@ -288,15 +394,29 @@ func TestFormatRuleEveryMarketplace(t *testing.T) {
 			if !reflect.DeepEqual(beside, []string{"mystery"}) {
 				t.Errorf("%s %q beside Mystery = %v, want [mystery]", region, key, beside)
 			}
+			// Beside a NONFICTION subject a fiction-only node (Radio, Film & TV)
+			// is a subject itself and keeps what it maps; the dramatizations
+			// subtree is a format whatever the row maps.
+			nonfiction := table.mapGenres(append(slices.Clone(ladder), history), map[string]bool{})
+			want := []string{"history"}
+			if fictionOnly[region+" "+key] {
+				want = UnionGenres(want, alone)
+			}
+			if !reflect.DeepEqual(nonfiction, want) {
+				t.Errorf("%s %q beside History = %v, want %v", region, key, nonfiction, want)
+			}
 		}
 	}
 }
 
 func TestDeriveFormatTreeRefusesAnIncompleteTree(t *testing.T) {
-	if _, _, err := DeriveFormatTree([]string{"9"}, map[string]map[string]string{"us": {"a": "1"}}); err == nil {
+	if _, _, err := DeriveFormatTree([]string{"1"}, []string{"9"}, map[string]map[string]string{"us": {"a": "1"}}); err == nil {
+		t.Errorf("a fiction-only node outside the format list was accepted")
+	}
+	if _, _, err := DeriveFormatTree([]string{"9"}, nil, map[string]map[string]string{"us": {"a": "1"}}); err == nil {
 		t.Errorf("a format node no path names was accepted")
 	}
-	if _, _, err := DeriveFormatTree([]string{"2"}, map[string]map[string]string{"us": {"a:b": "2"}}); err == nil {
+	if _, _, err := DeriveFormatTree([]string{"2"}, nil, map[string]map[string]string{"us": {"a:b": "2"}}); err == nil {
 		t.Errorf("a path with no parent path was accepted")
 	}
 }

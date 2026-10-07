@@ -53,11 +53,14 @@ type table struct {
 	ByASIN map[string]string            `json:"by_asin"`
 	ByName map[string]string            `json:"by_name"`
 	ByPath map[string]map[string]string `json:"by_path"`
-	// Format is hand-curated and passed through untouched; FormatTree and
+	// Format, FormatFictionOnly and GenreKinds are hand-curated and passed
+	// through untouched; FormatTree and
 	// FormatPaths are derived from it here (importer.DeriveFormatTree).
-	Format      []string                       `json:"format"`
-	FormatTree  map[string]importer.FormatNode `json:"format_tree"`
-	FormatPaths map[string]map[string]string   `json:"format_paths"`
+	Format            []string                       `json:"format"`
+	FormatFictionOnly []string                       `json:"format_fiction_only"`
+	GenreKinds        map[string]string              `json:"genre_kinds"`
+	FormatTree        map[string]importer.FormatNode `json:"format_tree"`
+	FormatPaths       map[string]map[string]string   `json:"format_paths"`
 }
 
 type pathNode struct {
@@ -168,7 +171,7 @@ func run(catDir string, fetch bool, base, tablePath, verifyPath string) error {
 		}
 		allPaths[r] = m
 	}
-	if t.FormatTree, t.FormatPaths, err = importer.DeriveFormatTree(t.Format, allPaths); err != nil {
+	if t.FormatTree, t.FormatPaths, err = importer.DeriveFormatTree(t.Format, t.FormatFictionOnly, allPaths); err != nil {
 		return fmt.Errorf("format_tree: %w", err)
 	}
 

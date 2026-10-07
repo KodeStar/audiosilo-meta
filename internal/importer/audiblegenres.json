@@ -4867,6 +4867,109 @@
     "8192501051",
     "8192502051"
   ],
+  "format_fiction_only": [
+    "18059409031",
+    "18571933011",
+    "18571937011",
+    "19393897031",
+    "21074221011",
+    "21074225011",
+    "21229724031",
+    "21838789031",
+    "21838793031",
+    "21882635031",
+    "8169327051",
+    "8192494051",
+    "8192498051"
+  ],
+  "genre_kinds": {
+    "action-adventure": "fiction",
+    "alternate-history": "fiction",
+    "arts-entertainment": "nonfiction",
+    "biography-memoir": "nonfiction",
+    "business": "nonfiction",
+    "childrens": "neither",
+    "classics": "fiction",
+    "comedy-humor": "neither",
+    "coming-of-age": "fiction",
+    "contemporary-romance": "fiction",
+    "cozy-mystery": "fiction",
+    "cyberpunk": "fiction",
+    "dark-fantasy": "fiction",
+    "drama-plays": "neither",
+    "dystopian": "fiction",
+    "economics": "nonfiction",
+    "education": "nonfiction",
+    "epic-fantasy": "fiction",
+    "erotica": "fiction",
+    "espionage": "neither",
+    "essays": "nonfiction",
+    "fairy-tales-folklore": "fiction",
+    "fantasy": "fiction",
+    "finance": "nonfiction",
+    "food-cooking": "nonfiction",
+    "ghost-stories": "fiction",
+    "gothic": "fiction",
+    "hard-boiled": "fiction",
+    "hard-science-fiction": "fiction",
+    "health-wellness": "nonfiction",
+    "historical-fiction": "fiction",
+    "historical-romance": "fiction",
+    "history": "nonfiction",
+    "home-garden": "nonfiction",
+    "horror": "fiction",
+    "language": "nonfiction",
+    "law": "nonfiction",
+    "legal-thriller": "fiction",
+    "lgbtq": "neither",
+    "literary-fiction": "fiction",
+    "litrpg": "fiction",
+    "magical-realism": "fiction",
+    "medicine": "nonfiction",
+    "military-history": "nonfiction",
+    "military-science-fiction": "fiction",
+    "music": "nonfiction",
+    "mystery": "fiction",
+    "mythology": "neither",
+    "nature": "nonfiction",
+    "occult": "neither",
+    "paranormal": "fiction",
+    "paranormal-romance": "fiction",
+    "parenting-relationships": "nonfiction",
+    "philosophy": "nonfiction",
+    "poetry": "neither",
+    "police-procedural": "fiction",
+    "politics": "nonfiction",
+    "post-apocalyptic": "fiction",
+    "psychological-thriller": "fiction",
+    "psychology": "nonfiction",
+    "religion-spirituality": "nonfiction",
+    "religious-fiction": "fiction",
+    "romance": "fiction",
+    "romantic-comedy": "fiction",
+    "romantic-suspense": "fiction",
+    "science": "nonfiction",
+    "science-fiction": "fiction",
+    "self-help": "nonfiction",
+    "short-stories": "fiction",
+    "social-sciences": "nonfiction",
+    "space-opera": "fiction",
+    "sports": "nonfiction",
+    "steampunk": "fiction",
+    "superhero": "fiction",
+    "sword-sorcery": "fiction",
+    "technology": "nonfiction",
+    "thriller-suspense": "fiction",
+    "time-travel": "fiction",
+    "travel": "nonfiction",
+    "true-crime": "nonfiction",
+    "urban-fantasy": "fiction",
+    "war-military-fiction": "fiction",
+    "westerns": "fiction",
+    "womens-fiction": "fiction",
+    "writing-publishing": "nonfiction",
+    "young-adult": "neither"
+  },
   "format_tree": {
     "16206595031": {
       "ancestors": []
@@ -4923,6 +5026,7 @@
     },
     "18059409031": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "18059282031",
         "18059407031"
@@ -5027,6 +5131,7 @@
     },
     "18571933011": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "18571910011",
         "18571923011"
@@ -5055,6 +5160,7 @@
     },
     "18571937011": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "18571910011",
         "18571923011"
@@ -5186,6 +5292,7 @@
     },
     "19393897031": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "19393879031",
         "19393891031"
@@ -5325,6 +5432,7 @@
     },
     "21074221011": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "21073382011",
         "21073521011"
@@ -5344,6 +5452,7 @@
     },
     "21074225011": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "21073382011",
         "21073521011"
@@ -5411,6 +5520,7 @@
     },
     "21229724031": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "21228886031",
         "21229025031"
@@ -5483,6 +5593,7 @@
     },
     "21838789031": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "21837951031",
         "21838090031"
@@ -5496,6 +5607,7 @@
     },
     "21838793031": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "21837951031",
         "21838090031"
@@ -5578,6 +5690,7 @@
     },
     "21882635031": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "21881797031",
         "21881936031"
@@ -5717,6 +5830,7 @@
     },
     "8169327051": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "8169304051",
         "8169317051"
@@ -5862,6 +5976,7 @@
     },
     "8192494051": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "8191656051",
         "8191795051"
@@ -5887,6 +6002,7 @@
     },
     "8192498051": {
       "format": true,
+      "fiction_only": true,
       "ancestors": [
         "8191656051",
         "8191795051"

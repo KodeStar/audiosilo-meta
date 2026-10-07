@@ -156,6 +156,59 @@ describe('the format rule', () => {
   })
 
   it('leaves a record with no format node untouched', () => {
-    expect(formatDerived(claims('18574606011|Mystery'))).toBeNull()
+    expect(formatDerived(claims('18574606011|Mystery'), true)).toBeNull()
+  })
+
+  it('drops Radio and Film & TV beside a fiction genre (a BBC radio mystery)', () => {
+    expect(
+      mapGenreClaims(
+        claims(
+          '18571910011|Arts & Entertainment',
+          '18571923011|Entertainment & Performing Arts',
+          '18571937011|Radio',
+          '18571933011|Film & TV',
+          '18574606011|Mystery'
+        )
+      )
+    ).toEqual(['mystery'])
+  })
+
+  it('keeps arts-entertainment for a nonfiction book about film', () => {
+    expect(
+      mapGenreClaims(
+        claims(
+          '18571910011|Arts & Entertainment',
+          '18571923011|Entertainment & Performing Arts',
+          '18571933011|Film & TV',
+          '18573518011|History'
+        )
+      )
+    ).toEqual(['arts-entertainment', 'history'])
+  })
+
+  it('keeps arts-entertainment for a radio comedy panel show', () => {
+    expect(
+      mapGenreClaims(
+        claims(
+          '18571910011|Arts & Entertainment',
+          '18571923011|Entertainment & Performing Arts',
+          '18571937011|Radio',
+          '24427740011|Comedy & Humor'
+        )
+      )
+    ).toEqual(['arts-entertainment', 'comedy-humor'])
+  })
+
+  it('drops the dramatizations subtree beside nonfiction too', () => {
+    expect(
+      mapGenreClaims(
+        claims(
+          '18571910011|Arts & Entertainment',
+          '18571919011|Audio Performances & Dramatizations',
+          '18571920011|Dramatizations',
+          '18574839011|Religion & Spirituality'
+        )
+      )
+    ).toEqual(['religion-spirituality'])
   })
 })

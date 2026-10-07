@@ -26,8 +26,10 @@
 // a format node (Audio Performances & Dramatizations, Radio, Film & TV, ... in
 // every marketplace), or an ancestor of one the record states that it reaches
 // through no subject descendant, yields its genre only when nothing else the
-// record states maps. So a radio dramatization of a crime novel prefills as a
-// crime novel, exactly what `metaimport libex` stores for the same record. The
+// record states maps. Radio and Film & TV are formats only beside a FICTION genre
+// (the table's `genre_kinds`): a book about film keeps arts-entertainment. So a
+// radio dramatization of a crime novel prefills as a crime novel, exactly what
+// `metaimport libex` stores for the same record. The
 // table's `format_tree` is already in the shape the rule needs (scripts/genrepaths
 // derives each node's format flag and closed ancestor list), so this only looks
 // nodes up.
@@ -40,6 +42,7 @@ import {
   by_asin,
   by_name,
   format_tree,
+  genre_kinds,
 } from '../../../internal/importer/audiblegenres.json'
 import type { LibexGenreClaim } from './libex'
 
@@ -77,28 +80,42 @@ export function mapGenreClaim(claim: LibexGenreClaim): string | undefined {
   return BY_NAME[name] ?? undefined
 }
 
-// The derived format tree: node id -> its format flag and ancestors.
-// Null-prototype for the same reason the two maps above are.
-const FORMAT_TREE: Record<string, { format?: boolean; ancestors: string[] } | undefined> =
-  Object.assign(Object.create(null), format_tree)
+// The derived format tree: node id -> its format flags and ancestors, and the
+// vocabulary's fiction/nonfiction classification. Null-prototype for the same
+// reason the two maps above are.
+const FORMAT_TREE: Record<
+  string,
+  { format?: boolean; fiction_only?: boolean; ancestors: string[] } | undefined
+> = Object.assign(Object.create(null), format_tree)
+const GENRE_KINDS: Record<string, string | undefined> = Object.assign(
+  Object.create(null),
+  genre_kinds
+)
+
+// isFormat is Go's FormatNode.isFormat: a fiction-only node (Radio, Film & TV)
+// is a format only in a record mapping a fiction genre.
+const isFormat = (node: string, fiction: boolean): boolean => {
+  const fn = FORMAT_TREE[node]
+  return !!fn?.format && (fiction || !fn.fiction_only)
+}
 
 /**
- * Which claims are FORMAT-DERIVED (Go's genreTable.formatDerived): a format node, or
+ * Which claims are FORMAT-DERIVED (Go's genreTable.formatDerived): a format node
+ * (a fiction-only one only when `fiction`, the record mapping a fiction genre), or
  * an ancestor of a format node the record states, that the record reaches
  * through no non-format descendant. Null when none is.
  */
-export function formatDerived(claims: LibexGenreClaim[]): boolean[] | null {
+export function formatDerived(claims: LibexGenreClaim[], fiction: boolean): boolean[] | null {
   const nodes = claims.map((c) => {
     const node = c.node?.trim() ?? ''
     return node && FORMAT_TREE[node] ? node : ''
   })
-  if (!nodes.some((n) => FORMAT_TREE[n]?.format)) return null
+  if (!nodes.some((n) => isFormat(n, fiction))) return null
   const formatish = new Set<string>()
   for (const n of nodes) {
-    const fn = FORMAT_TREE[n]
-    if (fn?.format) {
+    if (isFormat(n, fiction)) {
       formatish.add(n)
-      for (const a of fn.ancestors) formatish.add(a)
+      for (const a of FORMAT_TREE[n]?.ancestors ?? []) formatish.add(a)
     }
   }
   const justified = new Set<string>()
@@ -118,7 +135,8 @@ export function formatDerived(claims: LibexGenreClaim[]): boolean[] | null {
  */
 export function mapGenreClaims(claims: LibexGenreClaim[]): string[] {
   const slugs = claims.map(mapGenreClaim)
-  const derived = formatDerived(claims)
+  const fiction = slugs.some((g) => g !== undefined && GENRE_KINDS[g] === 'fiction')
+  const derived = formatDerived(claims, fiction)
   const collect = (skip: boolean[] | null): string[] => {
     const out = new Set<string>()
     slugs.forEach((slug, i) => {
