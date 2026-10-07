@@ -7,7 +7,6 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/build"
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/internal/unionfind"
@@ -580,10 +579,10 @@ func (m *langMix) tieKeeper(s *model.Series, byLang map[string][]model.SeriesWor
 	return model.PrimarySubtag(first.Language), keepIncumbent
 }
 
-// addedBefore orders two works by added_at chronologically (build.TimeKey, the
+// addedBefore orders two works by added_at chronologically (model.TimeKey, the
 // artifact's own comparison), an unstated one last, then by id.
 func addedBefore(a, b *model.Work) bool {
-	ka, kb := build.TimeKey(a.AddedAt), build.TimeKey(b.AddedAt)
+	ka, kb := model.TimeKey(a.AddedAt), model.TimeKey(b.AddedAt)
 	if (ka == "") != (kb == "") {
 		return ka != ""
 	}
@@ -982,7 +981,7 @@ func authorGroups(ix *index, members []*mixMember) int {
 // incumbency veto compares DAYS: one bulk wave stamps a whole series within a day,
 // and an order inside it says nothing about which half the series was.
 func addedDay(w *model.Work) string {
-	if k := build.TimeKey(w.AddedAt); len(k) >= len("2006-01-02") {
+	if k := model.TimeKey(w.AddedAt); len(k) >= len("2006-01-02") {
 		return k[:len("2006-01-02")]
 	}
 	return ""

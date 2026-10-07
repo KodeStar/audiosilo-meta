@@ -275,14 +275,14 @@ func earlierDate(a, b string) string {
 //
 // They come in two shapes - a plain YYYY-MM-DD and the migration's full RFC 3339
 // timestamp with an offset - and this comparison has to agree with the one
-// internal/build's timeKey makes when it derives the artifact's added_at from
+// model.TimeKey (which internal/build orders by) makes when the builder derives the artifact's added_at from
 // the same values, or the two could order one pair of records differently. So
-// the method is timeKey's: a parseable RFC 3339 value is normalized to UTC
+// the method is model.TimeKey's: a parseable RFC 3339 value is normalized to UTC
 // before it is compared, anything else is compared as written. The two forms
 // still sort correctly against each other, because a UTC RFC 3339 rendering
 // begins with the very date a plain date states.
 //
-// Relocating this beside timeKey is out of scope; the two are pinned against
+// Relocating this onto model.TimeKey is out of scope; the two are pinned against
 // each other by TestEarlierStampAgreesWithTheArtifactOrdering.
 func earlierStamp(a, b string) string {
 	switch {
@@ -297,7 +297,7 @@ func earlierStamp(a, b string) string {
 	return b
 }
 
-// stampKey is internal/build timeKey's normalization: RFC 3339 in UTC, anything
+// stampKey is model.TimeKey's normalization: RFC 3339 in UTC, anything
 // else as written.
 func stampKey(s string) string {
 	if t, err := time.Parse(time.RFC3339, s); err == nil {

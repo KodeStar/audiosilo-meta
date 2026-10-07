@@ -764,7 +764,8 @@ func appendName(names []string, n string) []string {
 }
 
 // addedAt resolves a work's added_at value: the record's own added_at when it
-// has one, else the newest sources[].imported_at on it, else NULL.
+// has one, else the newest sources[].imported_at on it (ordered chronologically
+// by model.TimeKey), else NULL.
 //
 // The field is the primary source because a pack file cannot be dated from git
 // history the way one file per work could (a pack's add-date is not its
@@ -780,7 +781,7 @@ func addedAt(w *model.Work) any {
 		if s.ImportedAt == "" {
 			continue
 		}
-		if key := timeKey(s.ImportedAt); newestKey == "" || key > newestKey {
+		if key := model.TimeKey(s.ImportedAt); newestKey == "" || key > newestKey {
 			newest, newestKey = s.ImportedAt, key
 		}
 	}
@@ -789,32 +790,6 @@ func addedAt(w *model.Work) any {
 	}
 	return nil
 }
-
-// timeKey returns a value that orders timestamps CHRONOLOGICALLY under string
-// comparison. A plain date ("2026-07-29") is already such a key; a full RFC 3339
-// timestamp is not, because the offset travels with it - "2026-07-29T01:00:00Z"
-// is later than "2026-07-29T02:00:00+05:00" but sorts before it - so it is
-// normalized to UTC first.
-//
-// The key is only ever compared, never stored: addedAt returns the ORIGINAL
-// string, so normalizing here cannot change a byte in the artifact.
-//
-// Two things keep it safe rather than merely careful. The schema pins
-// imported_at to a date or an RFC 3339 timestamp, so the "not parseable" branch
-// is unreachable from validated data and exists only so an unvalidated caller
-// gets an ordering rather than a panic; and a date sorts before every timestamp
-// on the same day, which is the right answer when the two are mixed (a date-only
-// value is the start of its day). Every imported_at in the tree today is
-// date-only, so the normalization is a no-op on current data by construction -
-// which is what let the storage migration's artifact equivalence proof pass with
-// this fix already in place.
-func timeKey(s string) string { return model.TimeKey(s) }
-
-// TimeKey exposes timeKey so a writer that has to ORDER two added_at values the
-// way this builder will can pin itself against the same rule rather than
-// restate it (internal/remediate's earlierStamp). It is a comparison key only:
-// nothing stores what it returns.
-func TimeKey(s string) string { return timeKey(s) }
 
 func nullStr(s string) any {
 	if s == "" {

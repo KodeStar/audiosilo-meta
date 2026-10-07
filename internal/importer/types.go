@@ -372,10 +372,6 @@ type Summary struct {
 	// genre evidence because they contradicted their recording's runtime or
 	// release date (rowContradiction, enrichment's own test).
 	GenreRowsContradicted int
-	// GenreWorksNewerThanRows counts the works a row reached that the
-	// regeneration did not judge because their newest provenance is after
-	// Options.RowsAsOf.
-	GenreWorksNewerThanRows int
 	// SkippedNoWork counts RECORDINGS-ONLY rows whose work is not in the
 	// catalogue. That mode never creates a work, so those rows are dropped -
 	// which makes this the counter that proves an excerpt, a trivia title or a

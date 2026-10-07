@@ -2067,12 +2067,13 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   and a recording every row of which was contradicted is not covered, so its
   work falls to add-only; `Summary.GenreRowsContradicted` and a note count them.
   The regeneration NEVER JUDGES A RECORD WITH EVIDENCE OLDER THAN THE RECORD:
-  `--rows-as-of YYYY-MM-DD` is REQUIRED (refused in every other mode), and a work
+  `--rows-as-of YYYY-MM-DD` is REQUIRED (refused in every other mode; one rule,
+  `importer.ValidateRowsAsOf`, which the CLI asks too), and a work a row reached
   whose newest provenance day - its added_at, every recording's, every
   sources[].imported_at on it and its recordings, ordered by `model.TimeKey`
-  (metabuild's own key, moved to the leaf so the importer does not link the
-  builder) - is later is left alone, counted as `Summary.GenreWorksNewerThanRows`
-  and named in a note. Provenance dates are IMPORT dates, not evidence dates, so
+  (metabuild's own key, in the leaf so the importer does not link the builder;
+  build.TimeKey is gone and internal/audit reads it there too) - is later is left
+  alone and counted and named in a note. Provenance dates are IMPORT dates, not evidence dates, so
   the flag is the last day the catalogue was written from rows no newer than the
   export: the snapshot date is the safe default, and a later day only when
   every import up to it used rows no newer than the export (scripts/README.md). Inert flags (`--date`, `--conflicts`, `--existing-series-only`,

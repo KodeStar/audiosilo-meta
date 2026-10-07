@@ -15,7 +15,6 @@ import (
 	"slices"
 	"sort"
 	"strings"
-	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/rawentry"
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
@@ -108,10 +107,6 @@ type recInfo struct {
 	narrators  map[string]bool
 	asins      map[string]bool
 	runtimeMin int
-	// releaseDate is a recording LOADED from disk's recorded release date - with
-	// runtimeMin, what the genre regeneration asks the contradiction test about
-	// (rowContradiction). Empty for a recording this run created.
-	releaseDate string
 	// claims is every series position this recording is known to be at - the
 	// per-recording half of the same-title serial guard: two volumes of a serial
 	// published under one title have compatible runtimes and identical
@@ -182,11 +177,6 @@ type workState struct {
 	// created.
 	genres      []string
 	userSourced bool
-	// newestDay is the DAY (YYYY-MM-DD, an RFC 3339 timestamp read in UTC) of the
-	// newest provenance the loaded work carries: its added_at, every recording's,
-	// and every sources[].imported_at on it and its recordings. The genre
-	// regeneration does not judge a work newer than its rows (regenerate.go).
-	newestDay string
 	// runAttested says a user-library row of THIS RUN attested the work. A later
 	// row of the run meeting it is part of the same account, so it stamps its
 	// provenance too even when it changes nothing - otherwise which rows a
@@ -634,8 +624,8 @@ func runBooks(books []sourceBook, sourceType string, opts Options, parseSkips []
 	if opts.Mode == ModeRegenerateGenres && model.TierOfSource(sourceType) != model.TierBulkMirror {
 		return Summary{}, fmt.Errorf("genre regeneration requires bulk-mirror (libex) rows; use RunLibex")
 	}
-	if _, err := time.Parse(time.DateOnly, opts.RowsAsOf); opts.Mode == ModeRegenerateGenres && err != nil || opts.Mode != ModeRegenerateGenres && opts.RowsAsOf != "" {
-		return Summary{}, fmt.Errorf("genre regeneration requires the rows' snapshot date (RowsAsOf, YYYY-MM-DD), and only it takes one")
+	if err := ValidateRowsAsOf(opts.Mode, opts.RowsAsOf); err != nil {
+		return Summary{}, err
 	}
 	// The run's trust tier, asked here as well as by newPlanner because the AI
 	// gate below runs before the planner exists and needs the same answer: a person's own library (or a hand submission) may admit a
@@ -1083,7 +1073,6 @@ func (p *planner) loadExisting() {
 				ws.userSourced = true
 			}
 		}
-		ws.newestDay = newestProvenanceDay(w)
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
 		}
@@ -1095,10 +1084,9 @@ func (p *planner) loadExisting() {
 				p.narratorPeople[n] = true
 			}
 			ri := &recInfo{
-				narrators:   ToSet(r.Narrators),
-				asins:       map[string]bool{},
-				runtimeMin:  r.RuntimeMin,
-				releaseDate: r.ReleaseDate,
+				narrators:  ToSet(r.Narrators),
+				asins:      map[string]bool{},
+				runtimeMin: r.RuntimeMin,
 				// abridged stays nil (unknown) for a disk incumbent: the model's
 				// plain bool can't distinguish stated-false from absent, so we do
 				// not let it block a merge. See recInfo.abridged.

@@ -275,7 +275,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
 func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, scope applyScope) bool {
 	runtime, _ := coerceInt(raw["runtime_min"])
-	c, contradicts := rowContradiction(b, runtime, coerceStr(raw["release_date"]), scope)
+	c, contradicts := rowContradiction(b, int(runtime), coerceStr(raw["release_date"]), scope)
 	if !contradicts {
 		return false
 	}
@@ -313,10 +313,10 @@ type contradiction struct {
 // row disagree with a recording recorded at runtime minutes (0 = unknown) and
 // release date on the runtime, or - outside scopeAttestMerged - on the release
 // date. It only answers; the caller decides what a contradiction costs.
-func rowContradiction(b sourceBook, runtime int64, releaseDate string, scope applyScope) (contradiction, bool) {
+func rowContradiction(b sourceBook, runtime int, releaseDate string, scope applyScope) (contradiction, bool) {
 	// Defense in depth in the merge scope: addRecording only reaches a merge for a
 	// sibling whose runtime is already compatible, so this cannot fire there.
-	if b.runtimeMin > 0 && runtime > 0 && !runtimesCompatible(int(runtime), b.runtimeMin) {
+	if b.runtimeMin > 0 && runtime > 0 && !runtimesCompatible(runtime, b.runtimeMin) {
 		return contradiction{"runtime_min", runtime, b.runtimeMin, fmt.Sprintf(
 			"runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, runtime)}, true
 	}

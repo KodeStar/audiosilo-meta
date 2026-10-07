@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"maps"
 	"slices"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -84,7 +85,6 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	// created the works; listing them again is noise, not news.
 	unmapped := map[string]bool{}
 	reached := map[string]bool{}
-	contradicted := 0
 	p.forEachMatchedRow(books, func(b sourceBook, ref RecRef) {
 		reached[ref.Work] = true
 		// A row its recording CONTRADICTS on runtime is evidence about another
@@ -95,14 +95,24 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 		// release date legitimately differs per regional re-release, which is why
 		// that scope skips it, and a date says nothing about a production's genres.
 		if ri := p.works[ref.Work].recs[ref.Rec]; ri != nil {
-			if _, bad := rowContradiction(b, int64(ri.runtimeMin), ri.releaseDate, scopeAttestMerged); bad {
-				contradicted++
+			if _, bad := rowContradiction(b, ri.runtimeMin, "", scopeAttestMerged); bad {
+				p.summary.GenreRowsContradicted++
 				return
 			}
 		}
 		p.regenRecs[ref] = UnionGenres(p.regenRecs[ref], p.genres.mapGenres(b.genres, unmapped))
 	})
-	p.summary.GenreRowsContradicted = contradicted
+	// The newest provenance day of every work a row reached, read off the
+	// catalogue the load kept (the regeneration resolves no series, so nothing
+	// let it go) - only the works the decision below will look at.
+	newestDay := map[string]string{}
+	if p.catalog != nil {
+		for _, w := range p.catalog.Works {
+			if reached[w.ID] {
+				newestDay[w.ID] = newestProvenanceDay(w)
+			}
+		}
+	}
 
 	var userSourced, incomplete, silent int
 	var newer []string
@@ -115,8 +125,7 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 		// The regeneration never judges a record with evidence older than the
 		// record: a work whose newest provenance is after the rows' snapshot was
 		// written from newer rows than these, which would trim what they stated.
-		if ws.newestDay > p.rowsAsOf {
-			p.summary.GenreWorksNewerThanRows++
+		if newestDay[slug] > p.rowsAsOf {
 			newer = append(newer, slug)
 			continue
 		}
@@ -161,10 +170,10 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 		p.summary.GenreChanges = append(p.summary.GenreChanges,
 			GenreChange{Work: slug, Removed: minus(ws.genres, next), Added: minus(next, ws.genres), Mode: mode})
 	}
-	if contradicted > 0 {
+	if n := p.summary.GenreRowsContradicted; n > 0 {
 		p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
 			"%d %s contradicted the recorded runtime of the recording they matched and cast no genre vote",
-			contradicted, plural(contradicted, "row")))
+			n, plural(n, "row")))
 	}
 	if len(newer) > 0 {
 		p.summary.Notes = append(p.summary.Notes, withExamples(fmt.Sprintf(
@@ -183,10 +192,26 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	}
 }
 
+// ValidateRowsAsOf is THE rule for Options.RowsAsOf, read by the importer and
+// by cmd/metaimport's --rows-as-of alike: the genre regeneration requires the
+// rows' snapshot date as a real calendar day, and no other mode takes one.
+func ValidateRowsAsOf(mode Mode, rowsAsOf string) error {
+	if mode != ModeRegenerateGenres {
+		if rowsAsOf != "" {
+			return fmt.Errorf("a rows-as-of date is the genre regeneration's; this mode takes none")
+		}
+		return nil
+	}
+	if _, err := time.Parse(time.DateOnly, rowsAsOf); err != nil {
+		return fmt.Errorf("the genre regeneration needs the rows' snapshot date as YYYY-MM-DD (a work with newer provenance is not judged), not %q", rowsAsOf)
+	}
+	return nil
+}
+
 // newestProvenanceDay is the day of the newest provenance a work carries: its
 // added_at, every recording's added_at, and every sources[].imported_at on the
 // work and its recordings, compared chronologically as metabuild compares them
-// (model.TimeKey, which build.TimeKey is: an RFC 3339 timestamp normalized to UTC) and cut to the day.
+// (model.TimeKey: an RFC 3339 timestamp normalized to UTC) and cut to the day.
 // "" for a work carrying none.
 func newestProvenanceDay(w *model.Work) string {
 	newest := ""

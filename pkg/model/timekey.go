@@ -13,10 +13,17 @@ import "time"
 // gets an ordering rather than a panic.
 //
 // It is a comparison key only: nothing stores what it returns. internal/build
-// orders added_at by it (build.TimeKey) and the importer's genre regeneration
+// orders added_at by it, internal/audit orders works by it, and the importer's
+// genre regeneration
 // dates a work's newest provenance by it - a leaf here, so the importer need not
 // link the SQLite builder for one comparison.
 func TimeKey(s string) string {
+	// A value no longer than a plain date ("2026-07-29") can never be an RFC 3339
+	// timestamp (the shortest is 20 bytes), so it is returned as it is without
+	// the parse attempt - the result the parse would have given.
+	if len(s) <= len(time.DateOnly) {
+		return s
+	}
 	if t, err := time.Parse(time.RFC3339, s); err == nil {
 		return t.UTC().Format(time.RFC3339)
 	}

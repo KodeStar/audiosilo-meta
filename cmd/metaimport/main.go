@@ -250,8 +250,8 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 
 	// The regeneration never judges a record with evidence older than the
 	// record, so it has to be told how old its rows are.
-	if mode == importer.ModeRegenerateGenres && !dateRE.MatchString(*rowsAsOf) {
-		fmt.Fprintln(os.Stderr, "metaimport: --regenerate-genres needs --rows-as-of YYYY-MM-DD, the snapshot date of its rows (a work with newer provenance is not judged)")
+	if err := importer.ValidateRowsAsOf(mode, *rowsAsOf); err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport: --rows-as-of:", err)
 		return 2
 	}
 

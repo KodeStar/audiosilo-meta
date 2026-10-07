@@ -245,8 +245,9 @@ func regenRecRuntime(work, rec string, minutes int, asins ...string) string {
 // TestRegenerateGenresIgnoresContradictedRows: a row its recording contradicts
 // on the RUNTIME (here a sixth of the recorded one - another production, an ASIN
 // attached to the wrong recording) casts no vote, through the ASIN-merge scope
-// of the one contradiction test; a release date that differs, as a regional
-// re-release's does, is no contradiction and the row votes. Its stray genre is not
+// of the one contradiction test, which never reads a release date (the
+// regeneration hands it none: a regional re-release's date differs by right),
+// so the "dated" row, whose date differs from its recording's, votes. Its stray genre is not
 // voted in, and a recording ALL of whose rows were contradicted is not covered,
 // so its work is never trimmed on the evidence that is left.
 func TestRegenerateGenresIgnoresContradictedRows(t *testing.T) {
@@ -335,8 +336,8 @@ func TestRegenerateGenresSkipsWorksNewerThanTheRows(t *testing.T) {
 	if readRaw(t, dataDir, "works/la/late/work.json") != late || readRaw(t, dataDir, "works/re/rec-late/work.json") != recLate {
 		t.Errorf("a work newer than the rows was judged")
 	}
-	if sum.GenreWorksNewerThanRows != 2 || !hasNote(sum.Notes, "2 works carry provenance newer than the rows (--rows-as-of 2026-07-29)") {
-		t.Errorf("summary = %+v, notes = %v", sum, sum.Notes)
+	if !hasNote(sum.Notes, "2 works carry provenance newer than the rows (--rows-as-of 2026-07-29) and were not judged (for example: late, rec-late)") {
+		t.Errorf("notes = %v", sum.Notes)
 	}
 	if _, err := RunLibex(writeBooks(t, rows[0]+"\n"), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRegenerateGenres}); err == nil {
 		t.Errorf("a regeneration without RowsAsOf ran")
