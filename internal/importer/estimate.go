@@ -43,7 +43,9 @@ import (
 //     (nothing is ever relaxed for a record a user attested) and its
 //     release_date is LATER than the day of every statement the mirror made
 //     about it: its added_at and every sources[].imported_at. A post-release
-//     stamp - an ASIN merge or enrichment after release - ENDS the state;
+//     stamp - an ASIN merge or enrichment after release - ENDS the state
+//     (stampSource writes it even where its ref is already recorded, see
+//     endsEstimate);
 //   - a ROW's runtime is an estimate iff the run is a bulk-mirror run and the
 //     row's release date is later than the run's import date (the same test for
 //     a record that does not exist yet: a recording created from such a row is
@@ -51,7 +53,8 @@ import (
 //
 // "Later" is compared at the release date's own PRECISION (releasedAfter), the
 // rule internal/serve's releaseIsFuture and the site's isFutureRelease apply, so
-// a year-only release date never makes an estimate. The run's "now" is
+// a year-only release date makes an estimate only of a statement made in an
+// EARLIER year ("2027" against 2026-12-31). The run's "now" is
 // Options.ImportDate, the stamp every record it writes carries; "" makes nothing
 // an estimate.
 //
@@ -146,6 +149,17 @@ func syncRecInfo(ri *recInfo, raw map[string]any) {
 	}
 }
 
+// endsEstimate reports whether this run's stamp on raw is the post-release
+// statement that ends its estimate state: the recording is still an estimate and
+// its release date has passed as of the run. stampSource then writes the stamp
+// even where an entry of the same type and ref is already recorded. Once
+// written, the recording is no estimate, so a later stamp of the run - or a
+// re-run - is deduplicated as usual and sources[] never grows by repetition.
+func (p *planner) endsEstimate(raw map[string]any) bool {
+	return len(p.importDate) == 10 && rawRuntimeEstimated(raw) &&
+		!releasedAfter(coerceStr(raw["release_date"]), p.importDate)
+}
+
 // setEvidenceRuntime is the ROW half, resolved once at a row door (planner.run,
 // AttestAt, libex-select's libexBook): the runtime a same-production comparison
 // may read, which for a bulk-mirror row listing a production its own release
@@ -191,8 +205,10 @@ func (p *planner) correctEstimate(raw map[string]any, ref RecRef, b sourceBook) 
 	if stated <= 0 || !p.rowReleased(b) {
 		return false
 	}
+	// No recorded runtime is no estimate to replace: enrichment fills an absent
+	// one itself, and a merged regional row never fills one.
 	recorded, _ := coerceInt(raw["runtime_min"])
-	if int(recorded) == stated || !rawRuntimeEstimated(raw) {
+	if recorded <= 0 || int(recorded) == stated || !rawRuntimeEstimated(raw) {
 		return false
 	}
 	// Evidence only, like setEvidenceRuntime: the fill and create paths warn

@@ -280,6 +280,13 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 		t.Errorf("recording = runtime %d, %d chapters; want %d and the row's 17", rec.RuntimeMin, len(rec.Chapters), estReleasedLen)
 	}
 
+	// The enrichment's stamp ends the estimate state although its ref (the
+	// record's own ASIN) is already recorded: the corrected runtime is a
+	// post-release statement now, fully guarded again.
+	if _, raw := readRecordingRaw(t, dataDir); rawRuntimeEstimated(raw) {
+		t.Errorf("the record is still an estimate after a post-release enrichment: %v", raw["sources"])
+	}
+
 	// A second identical run is a byte-level no-op: the value is already there.
 	before := snapshotTree(t, dataDir)
 	again := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
@@ -288,6 +295,42 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 		t.Errorf("re-run changed something: %+v", again)
 	}
 	assertTreeUnchanged(t, dataDir, before)
+
+	// A later row contradicting the corrected runtime is a contradiction again,
+	// not a second "correction".
+	var conflicts2 bytes.Buffer
+	later := runLibexWith(t, dataDir, Options{ImportDate: "2026-10-08", Mode: ModeEnrich, Conflicts: &conflicts2},
+		estRow(estUSASIN, "us", 300, "unabridged", ""))
+	if later.EstimatesReplaced != 0 || conflicts2.Len() == 0 {
+		t.Errorf("summary = %+v, conflicts %q; want the contradicting row refused", later, conflicts2.String())
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
+		t.Errorf("runtime = %d, want the corrected %d kept", rec.RuntimeMin, estReleasedLen)
+	}
+}
+
+// A recorded estimate with no runtime at all is nothing to replace: a merged
+// regional row never fills a runtime, estimate or not.
+func TestAMergeFillsNoAbsentRuntime(t *testing.T) {
+	rec := estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), "")
+	var m map[string]any
+	if err := json.Unmarshal([]byte(rec), &m); err != nil {
+		t.Fatal(err)
+	}
+	delete(m, "runtime_min")
+	stripped, err := json.Marshal(m)
+	if err != nil {
+		t.Fatal(err)
+	}
+	dataDir := seedEstimateTree(t, string(stripped))
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
+		estRow(estUKASIN, "uk", estReleasedLen, "unabridged", ""))
+	if sum.MergedASINs != 1 || sum.EstimatesReplaced != 0 {
+		t.Fatalf("summary = %+v, want a merge and no replacement", sum)
+	}
+	if got := readEstRecording(t, dataDir); got.RuntimeMin != 0 {
+		t.Errorf("runtime = %d, want none filled by a merge", got.RuntimeMin)
+	}
 }
 
 // Outside the rule the contradiction guard is unchanged: the same rows against

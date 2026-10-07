@@ -131,6 +131,20 @@ import (
 
 var dateRE = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
 
+// runDate resolves a --date flag: today (UTC) when absent, else the value when
+// it is YYYY-MM-DD. ok is false (with the error printed) otherwise. One helper,
+// because the import and libex-select must read the same run day.
+func runDate(flag string) (string, bool) {
+	if flag == "" {
+		return time.Now().UTC().Format("2006-01-02"), true
+	}
+	if !dateRE.MatchString(flag) {
+		fmt.Fprintf(os.Stderr, "metaimport: --date %q must be YYYY-MM-DD\n", flag)
+		return "", false
+	}
+	return flag, true
+}
+
 func main() {
 	if len(os.Args) < 2 {
 		usage()
@@ -255,11 +269,8 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		return 2
 	}
 
-	stamp := *date
-	if stamp == "" {
-		stamp = time.Now().UTC().Format("2006-01-02")
-	} else if !dateRE.MatchString(stamp) {
-		fmt.Fprintf(os.Stderr, "metaimport: --date %q must be YYYY-MM-DD\n", stamp)
+	stamp, ok := runDate(*date)
+	if !ok {
 		return 2
 	}
 
@@ -436,11 +447,8 @@ func runLibexSelect(args []string) int {
 		fmt.Fprintf(os.Stderr, "metaimport: --max-per-series must not be negative\n")
 		return 2
 	}
-	day := *date
-	if day == "" {
-		day = time.Now().UTC().Format("2006-01-02")
-	} else if !dateRE.MatchString(day) {
-		fmt.Fprintf(os.Stderr, "metaimport: --date %q must be YYYY-MM-DD\n", day)
+	day, ok := runDate(*date)
+	if !ok {
 		return 2
 	}
 

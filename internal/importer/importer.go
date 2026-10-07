@@ -467,9 +467,17 @@ func (p *planner) setSource(asin string) {
 
 // stampSource appends this row's provenance to an existing record's raw sources[]
 // array. It goes through appendSourceUnique, so a second pass over the same row
-// never double-stamps.
+// never double-stamps - with the one exception of a stamp that ENDS a preorder
+// estimate (endsEstimate, estimate.go): an enrichment row's ref is the ASIN the
+// record was created under, so the deduplication would otherwise drop the one
+// post-release statement the estimate rule reads, and the record would stay an
+// estimate for good.
 func (p *planner) stampSource(raw map[string]any) {
 	srcArr, _ := raw["sources"].([]any)
+	if p.endsEstimate(raw) {
+		raw["sources"] = append(srcArr, sourceMap(p.curSource))
+		return
+	}
 	raw["sources"] = appendSourceUnique(srcArr, p.curSource)
 }
 
