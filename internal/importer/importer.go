@@ -2231,14 +2231,14 @@ func (p *planner) runGenresAfter(ws *workState, rec string, facts *workFacts) []
 // nil when the set does not change.
 func (p *planner) accrueRunGenres(ws *workState, rec string, mapped []string) []string {
 	var next []string
-	switch {
-	case ws.runRecGenres == nil:
+	if ws.runRecGenres == nil {
 		next = UnionGenres(ws.runGenres, mapped)
-	default:
+	} else {
 		if rec == "" {
 			// A row that landed on no recording is still evidence about the work
 			// (the row that created it may have seeded runGenres this way), so it
-			// casts a vote of its own, under a key no recording slug can spell.
+			// casts a vote of its own, under a key no recording slug can spell
+			// (each such key is the map's size when it was added, so distinct).
 			rec = fmt.Sprintf("\x00unlanded-%d", len(ws.runRecGenres))
 		}
 		ws.runRecGenres[rec] = UnionGenres(ws.runRecGenres[rec], mapped)
