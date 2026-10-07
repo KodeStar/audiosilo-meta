@@ -2023,7 +2023,25 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   format flag and its transitively closed, sorted ancestors) and `format_paths`
   (per marketplace, every path of those subtrees -> its node, for ladder claims;
   US fallback as by_path). `TestFormatTreeMatchesGenrePaths` re-derives both from
-  the verification file, which carries every format-subtree path.
+  the verification file, which carries every format-subtree path. Radio and Film
+  & TV are a format ONLY BESIDE FICTION: the same leaves file books ABOUT film,
+  television and radio ("Westworld and Philosophy", "Crack of the Bat: A History
+  of Baseball on the Radio"), so those nodes - the curated `format_fiction_only`
+  subset, every marketplace's equivalents, pinned by
+  `TestFictionOnlyFormatNodesArePinned`, marked `fiction_only` in `format_tree` -
+  are format nodes only in a row that also maps a fiction genre, and subject
+  nodes otherwise; the Audio Performances & Dramatizations subtree is a format
+  whatever the row maps (a dramatized Gospel is religion). Fiction is the table's
+  hand-curated `genre_kinds`, every vocabulary genre classified fiction /
+  nonfiction / neither (`TestGenreKindsCoverTheVocabulary` holds it to the schema
+  enum; comedy-humor, drama-plays, poetry, childrens, young-adult and the
+  two-sided espionage, mythology, occult and lgbtq are neither - a radio panel
+  show keeps arts-entertainment). Measured with the regeneration over the merged
+  dump + live rows at `--rows-as-of 2026-09-20`: arts-entertainment removals 803
+  -> 579 (of those, 570 keep a fiction or other genre, 6 are left with
+  performance genres only and 3 with nonfiction only), 27,313 works set to the
+  vote and -1,234 genre instances against 27,535 and -1,458 before the
+  refinement.
   `mapGenres` drops a FORMAT-DERIVED claim's genre - a format node, or an ancestor
   of one the row states that the row reaches through no subject descendant -
   unless the row maps nothing else: a full-cast Christie dramatization is mystery

@@ -165,7 +165,11 @@ it is about. It contributes a genre only when nothing else the retailer states
 about the same product maps to one: a full-cast radio dramatization of a crime
 novel is a crime novel, while a radio panel show with no other category stays
 in arts and entertainment. The same holds for the "Arts & Entertainment"
-ancestors such a product lists only because of the format category.
+ancestors such a product lists only because of the format category. "Radio"
+and "Film & TV" are a format only for FICTION: the same leaves file books ABOUT
+radio, film and television ("Westworld and Philosophy"), so beside no fiction
+genre they are the subject and keep arts and entertainment. Which genres count
+as fiction is the project's own classification of its vocabulary.
 
 ## Imports bring facts only
 
