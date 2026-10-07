@@ -569,10 +569,10 @@ work whose newest provenance (its `added_at`, every recording's, every
 `sources[].imported_at`) is later than that day is left as it is and counted.
 Provenance dates are IMPORT dates, so the snapshot date also holds back every
 work imported from this same dump after the snapshot: over the 2026-07-29 dump
-it holds back 137,949 works (the August waves and every enrichment batch since).
+it holds back 138,009 works (the August waves and every enrichment batch since).
 A later day is safe only if EVERY import up to it used rows no newer than the
 export - check the data history first. For the 2026-07-29 dump the sync bot's
-first live-row import was 2026-09-21, so 2026-09-20 holds back 10,683 works and
+first live-row import was 2026-09-21, so 2026-09-20 holds back 10,690 works and
 judges the August waves too, but earlier live lookups exist (the 2026-08-09
 live-libex gap fill, the chapter live-lookup batches), which is why the snapshot
 date is the default: a day after any import of newer rows lets those works be

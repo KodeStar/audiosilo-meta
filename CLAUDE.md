@@ -2036,12 +2036,9 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   nonfiction / neither (`TestGenreKindsCoverTheVocabulary` holds it to the schema
   enum; comedy-humor, drama-plays, poetry, childrens, young-adult and the
   two-sided espionage, mythology, occult and lgbtq are neither - a radio panel
-  show keeps arts-entertainment). Measured with the regeneration over the merged
-  dump + live rows at `--rows-as-of 2026-09-20`: arts-entertainment removals 803
-  -> 579 (of those, 570 keep a fiction or other genre, 6 are left with
-  performance genres only and 3 with nonfiction only), 27,313 works set to the
-  vote and -1,234 genre instances against 27,535 and -1,458 before the
-  refinement.
+  show keeps arts-entertainment). In the regeneration's measurement (below) it
+  took arts-entertainment removals from 803 to 579, 3 of them left with
+  nonfiction genres only.
   `mapGenres` drops a FORMAT-DERIVED claim's genre - a format node, or an ancestor
   of one the row states that the row reaches through no subject descendant -
   unless the row maps nothing else: a full-cast Christie dramatization is mystery
@@ -2100,24 +2097,30 @@ opens a pull request, and an import whose ONLY effect was a conflict is
   `--series-lookup(-limit)`, `--libex`, and `--skipped`, whose worklist drops a
   refused row whose ASIN is catalogued, so under this mode it could only list
   rows that matched nothing) are refused through the CLI's one
-  mode-scoped flag table. Measured over the 282,260-work tree with the rows of
-  the 2026-07-29 dump for its 334,843 ASINs (313,202 rows, every one matched;
-  399 contradicted on the runtime): at `--rows-as-of 2026-07-29`, 19,519 works
-  set to the vote, 1 added to, 121,247 unchanged, 137,949 held back as newer than
-  the rows (the August waves imported from this very dump, and every enrichment
-  batch since stamped its sources), 3,544 reached by no row; +19,907 / -751 genre
-  instances, the removals 597 off a format ladder and 154 vote minorities, none
-  stated only by a contradicted row or by no row at all. At `--rows-as-of
-  2026-09-20`, the day before the sync bot's first live-row import: 27,524 set,
-  853 added to, 239,656 unchanged, 10,683 held back; +33,250 / -1,458 (813 format,
-  634 minority, 5 only by a contradicted row, 6 by no row). Without the guard the
-  same rows gave 29,093 / 1,266 / +35,891 / -2,054, and 480 removals no row
-  stated came almost all (325 of 326 works) from works the sync bot had imported
-  from newer live rows - every spot-checked genre arrived in an import commit,
-  none by hand. Five Little Pigs loses arts-entertainment and westerns, The
-  Marvelous Land of Oz the six genres one Colonial Radio Theatre ASIN gave it; no
-  work is left genre-less; metacheck and metafmt green; metaaudit identical over
-  the real tree; the second run a no-op. ~3.5 min and ~16-18 GB peak RSS
+  mode-scoped flag table. MEASURED AT 342edbc ON THE MERGED ROWS (the
+  2026-07-29 dump's 313,202 rows for the catalogue's 334,843 ASINs, with 408
+  live rows for the #1513 works - 253 replacing dump rows, 155 added - so
+  313,357 rows, every one matched, 398 contradicted on the runtime) over the
+  282,260-work tree, at `--rows-as-of 2026-09-20` (the day before the sync bot's
+  first live-row import): 27,313 works set to the vote, 857 added to, 239,916
+  unchanged, 10,690 held back as newer than the rows, 3,484 reached by no row;
+  +33,280 / -1,234 genre instances, the removals 589 off a format ladder
+  (arts-entertainment 571, writing-publishing 18), 633 vote minorities, 5 stated
+  only by a contradicted row and 7 by no row; arts-entertainment removed from 579
+  works (570 keep a fiction or other genre, 6 are left with performance genres
+  only, 3 with nonfiction only); 4,832 works add-only for a user-library source,
+  2 for a recording no uncontradicted row covered, 969 left alone on a silent
+  vote. At the snapshot date itself (`--rows-as-of 2026-07-29`) the same rows
+  hold back 138,009 works - the August waves imported from this very dump, and
+  every enrichment batch since stamped its sources - and set 19,298. Before the
+  freshness guard existed, 325 of the 326 works with a removal no row stated had
+  been imported by the sync bot from newer live rows (every spot-checked genre
+  arrived in an import commit, none by hand). Five Little Pigs loses
+  arts-entertainment and westerns; The Marvelous Land of Oz, whose stray genres
+  one Colonial Radio Theatre ASIN gave it, is held back at this cut-off (the sync
+  bot attached an edition to it on 2026-10-04); no work is left genre-less; metacheck and
+  metafmt green; metaaudit identical over the real tree; the second run a no-op.
+  ~3.5 min and ~16-18 GB peak RSS
   writing, 93s for the no-op - the libex parse layer still
   slurps the file); `metaimport libex
   --recordings-only` (the ALTERNATE-NARRATION pass: a row is resolved to a work
