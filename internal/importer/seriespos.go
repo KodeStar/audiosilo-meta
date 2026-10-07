@@ -273,7 +273,7 @@ func (rp rowPosition) agrees(o rowPosition, corroborated func() bool) bool {
 // rowProductionOf or resolvedRowProduction, never a literal: a zero runtime or a
 // missing narrator set would silently corroborate nothing, or everything.
 type rowProduction struct {
-	runtime  int   // whole minutes; 0 = unstated or a preorder estimate (planner.statedRuntime)
+	runtime  int   // whole minutes; 0 = unknown (sourceBook.evidenceRuntime)
 	abridged *bool // nil = unstated
 	// narrators is the resolved narrator-slug set. When it is nil, names are
 	// resolved through resolve on first use: the claim is built before the row's
@@ -289,17 +289,16 @@ type rowProduction struct {
 // decision getOrCreatePerson acts on, and the one rowWorkAuthorsRO reads authors
 // through).
 func (p *planner) rowProductionOf(b sourceBook, narratorNames []string) *rowProduction {
-	return &rowProduction{runtime: p.statedRuntime(b), abridged: b.abridged, names: narratorNames,
+	return &rowProduction{runtime: b.evidenceRuntime, abridged: b.abridged, names: narratorNames,
 		resolve: func(name string) string {
 			return p.resolvePerson(name).slug
 		}}
 }
 
 // resolvedRowProduction is b's production for a caller that already holds the
-// row's resolved narrator set (addRecording) and its stated runtime
-// (planner.statedRuntime, so a preorder estimate is unstated here too).
-func resolvedRowProduction(runtime int, b sourceBook, narrators map[string]bool) *rowProduction {
-	return &rowProduction{runtime: runtime, abridged: b.abridged, narrators: narrators}
+// row's resolved narrator set (addRecording).
+func resolvedRowProduction(b sourceBook, narrators map[string]bool) *rowProduction {
+	return &rowProduction{runtime: b.evidenceRuntime, abridged: b.abridged, narrators: narrators}
 }
 
 // narratorSet is the row's resolved narrator-slug set.
@@ -320,12 +319,10 @@ func (rp *rowProduction) narratorSet() map[string]bool {
 // tightening, because this is evidence rather than a merge decision: BOTH
 // runtimes must be stated, since an unknown runtime is compatible with anything
 // and so corroborates nothing - and a preorder ESTIMATE on either side is
-// unknown (estimate.go: recInfo.knownRuntime, planner.statedRuntime). The
-// narrator set is asked last - it is the only part that may have to resolve
-// names.
+// unknown (estimate.go). The narrator set is asked last - it is the only part
+// that may have to resolve names.
 func (rp *rowProduction) sameProductionAs(ri *recInfo) bool {
-	known := ri.knownRuntime()
-	return rp.runtime > 0 && known > 0 && runtimesCompatible(known, rp.runtime) &&
+	return rp.runtime > 0 && ri.knownMin > 0 && runtimesCompatible(ri.knownMin, rp.runtime) &&
 		!abridgedConflict(ri.abridged, rp.abridged) && SameSet(ri.narrators, rp.narratorSet())
 }
 

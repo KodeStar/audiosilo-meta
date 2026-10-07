@@ -883,8 +883,10 @@ func (idx seriesIndex) libexBook(e rawBook, asin string) sourceBook {
 	region, _, _ := libexRegion(e)
 	book := libexToBook(e, asin, region, libexNames(e["authors"]), libexNames(e["narrators"]), &libexParse{})
 	// This door composes a book runBooks never sees, so it decodes the book's
-	// text itself - exactly once, as runBooks does for the import (entities.go).
+	// text itself - exactly once, as runBooks does for the import (entities.go) -
+	// and resolves its comparable runtime as planner.run does (estimate.go).
 	book.decodeText()
+	idx.p.setEvidenceRuntime(&book)
 	return book
 }
 

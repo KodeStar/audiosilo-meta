@@ -105,9 +105,14 @@ func qualifiedWorkTitle(title string) string {
 // sibling work (see addRecording). Its storage location is the work's composite
 // pack entry, reached on demand from the work + recording slugs, never stored.
 type recInfo struct {
-	narrators  map[string]bool
-	asins      map[string]bool
-	runtimeMin int
+	narrators map[string]bool
+	asins     map[string]bool
+	// knownMin is the recording's runtime as a same-production comparison may
+	// read it (whole minutes, 0 = unknown): the recorded runtime, or for a
+	// preorder ESTIMATE its chapter timeline's total. Set only through
+	// knownMinutes (estimate.go), at every site that builds or refreshes a
+	// recInfo.
+	knownMin int
 	// claims is every series position this recording is known to be at - the
 	// per-recording half of the same-title serial guard: two volumes of a serial
 	// published under one title have compatible runtimes and identical
@@ -122,12 +127,6 @@ type recInfo struct {
 	// them apart is not worth it, so a disk incumbent never blocks a merge on
 	// abridged grounds. See abridgedConflict.
 	abridged *bool
-	// estimate marks a runtime the bulk mirror stated before the production was
-	// released (estimate.go): not evidence to any same-production comparison,
-	// which reads knownRuntime - the chapter timeline's total (timeline, whole
-	// minutes, 0 when there is none) in its place.
-	estimate bool
-	timeline int
 }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
@@ -279,6 +278,10 @@ type planner struct {
 	// per-record half is whether the record the row matched is still
 	// bulk-mirror-only. See attest.go and LICENSING.md's trust tiers.
 	userTier bool
+	// mirrorTier reports whether THIS run's source type is the bulk mirror
+	// (model.TierBulkMirror) - the run-wide half of the preorder-estimate rule's
+	// row test (estimate.go) and of the genre vote (genrevote.go).
+	mirrorTier bool
 	// credits is the run's batch credit decisions (creditContext): the two
 	// censuses and the initials decision, taken once before planning. Every
 	// planning step reads them through here; libex-select, which judges several
@@ -431,9 +434,13 @@ type planner struct {
 	// run whose lookups were all refused from a run that needed none.
 	seriesLookupFailed   int
 	seriesLookupFailures []string
-	// estimates tallies the preorder-estimate runtimes this run replaced or kept,
-	// for the aggregated notes (estimate.go, reportEstimates).
-	estimates estimateReport
+	// estimates holds the preorder-estimate runtimes a chapter timeline kept and
+	// the examples of both outcomes, for the aggregated notes (estimate.go,
+	// reportEstimates; the replacements are counted on the summary).
+	estimates struct {
+		kept                           int
+		replacedExamples, keptExamples []string
+	}
 	// mode is the planning pass this run was asked for. It is kept only so a
 	// conflict worklist row can name the run that wrote it; the pass itself is
 	// selected once, by runBooks' switch.
@@ -542,10 +549,15 @@ func Run(booksPath string, opts Options) (Summary, error) {
 // one).
 type sourceBook struct {
 	raw        rawBook
-	series     []seriesRef  // the book's series claims (>1 only for Libation)
-	runtimeMin int          // whole minutes; 0 = unknown
-	abridged   *bool        // tri-state: nil = the source did not state it
-	genres     []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
+	series     []seriesRef // the book's series claims (>1 only for Libation)
+	runtimeMin int         // whole minutes; 0 = unknown
+	// evidenceRuntime is the runtime a same-production comparison reads (whole
+	// minutes, 0 = unknown): runtimeMin, or for a bulk-mirror row listing a
+	// production not yet released its chapter list's total. Resolved once at the
+	// row doors (planner.setEvidenceRuntime, estimate.go).
+	evidenceRuntime int
+	abridged        *bool        // tri-state: nil = the source did not state it
+	genres          []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
 	// vocabGenres are genres ALREADY in this project's vocabulary, which no export
 	// states: only a hand submission does (Attest - an issue form validates its
 	// genres against the schema enum), so there is nothing to map. Read by
@@ -739,6 +751,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		mode:               opts.Mode,
 		conflicts:          opts.Conflicts,
 		userTier:           model.TierOfSource(sourceType) == model.TierUserLibrary,
+		mirrorTier:         model.TierOfSource(sourceType) == model.TierBulkMirror,
 		existingSeriesOnly: opts.ExistingSeriesOnly,
 		attachEditions:     opts.AttachEditions,
 		loadedPositions:    opts.AttachEditions,
@@ -760,6 +773,11 @@ func regenRecsFor(m Mode) map[RecRef][]string {
 // Summary through result(), so every way out of a run reports its warnings in
 // the same order.
 func (p *planner) run(books []sourceBook, opts Options) error {
+	// The row door of every run: each row's comparable runtime is resolved once,
+	// against the run's date, before anything compares one (estimate.go).
+	for i := range books {
+		p.setEvidenceRuntime(&books[i])
+	}
 	p.loadExisting()
 	if p.mode.plansRows() {
 		p.credits = p.creditContextOf(books)
@@ -1097,15 +1115,14 @@ func (p *planner) loadExisting() {
 				p.narratorPeople[n] = true
 			}
 			ri := &recInfo{
-				narrators:  ToSet(r.Narrators),
-				asins:      map[string]bool{},
-				runtimeMin: r.RuntimeMin,
+				narrators: ToSet(r.Narrators),
+				asins:     map[string]bool{},
+				knownMin: knownMinutes(r.RuntimeMin, r.ReleaseDate, r.AddedAt, r.Sources,
+					func() int { return chapterMinutes(r.Chapters) }),
 				// abridged stays nil (unknown) for a disk incumbent: the model's
 				// plain bool can't distinguish stated-false from absent, so we do
 				// not let it block a merge. See recInfo.abridged.
 				abridged: nil,
-				estimate: runtimeEstimated(r.ReleaseDate, r.AddedAt, r.Sources),
-				timeline: modelChapterMinutes(r.Chapters),
 			}
 			for _, a := range r.ASIN {
 				// One ASIN listed under several regions is ONE identifier of this
@@ -2768,7 +2785,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 		// compatible sibling. If none is compatible it is a genuinely different
 		// production (a distinct runtime, or a known-abridged edition), so fall
 		// through to a distinct slug under the same work.
-		prod := resolvedRowProduction(p.statedRuntime(b), b, narrSet)
+		prod := resolvedRowProduction(b, narrSet)
 		for _, m := range matches {
 			// A sibling recording whose row claimed a DIFFERENT position in a
 			// series this row also claims is a different volume, however alike the
@@ -2780,11 +2797,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 					m.slug, incumbent, series, want)
 				continue
 			}
-			// The runtime half reads both sides through the preorder-estimate
-			// rule (estimate.go): a runtime the mirror stated before release is
+			// The runtime half reads both sides' comparable runtimes
+			// (estimate.go): a runtime the mirror stated before release is
 			// unknown here, so a corrected regional row of a preorder-catalogued
 			// production merges instead of minting a twin of it.
-			if runtimesCompatible(m.info.knownRuntime(), p.statedRuntime(b)) && !abridgedConflict(m.info.abridged, b.abridged) {
+			if runtimesCompatible(m.info.knownMin, b.evidenceRuntime) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
 					// The ASIN is not recorded, but the row IS this production's
@@ -2849,9 +2866,9 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	rec.AddedAt = p.importDate
 
 	ri := &recInfo{
-		narrators: narrSet, asins: map[string]bool{}, runtimeMin: b.runtimeMin,
-		abridged: b.abridged, claims: claims, estimate: p.rowRuntimeEstimated(b),
-		timeline: chapterMinutes(rec.Chapters),
+		narrators: narrSet, asins: map[string]bool{}, abridged: b.abridged, claims: claims,
+		knownMin: knownMinutes(rec.RuntimeMin, rec.ReleaseDate, rec.AddedAt, []model.Source{model.Source(p.curSource)},
+			func() int { return chapterMinutes(rec.Chapters) }),
 	}
 	for _, a := range rec.ASIN {
 		ri.asins[a.ASIN] = true
@@ -3293,15 +3310,13 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, b sourceBook, ref RecRef, regi
 	// A recorded preorder estimate is corrected by a released row's runtime
 	// (estimate.go). Asked of the record BEFORE this merge's stamp, which is
 	// what ends the estimate state when the run is dated after the release.
-	if rawRuntimeEstimated(raw) {
-		p.correctEstimate(raw, ref, b)
-	}
+	p.correctEstimate(raw, ref, b)
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
 	p.stampSource(raw)
 	p.putWorkEntry(ref.Work, entry)
 	ri.asins[asin] = true
-	p.syncRecInfo(ri, raw)
+	syncRecInfo(ri, raw)
 	// p.asins is registered by addRecording, the one owner, once this returns.
 	p.summary.MergedASINs++
 	return true

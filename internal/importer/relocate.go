@@ -401,7 +401,9 @@ func (p *planner) moveRawRecording(rec *model.Recording, target string, indices 
 	delete(p.works[rec.Work].recs, rec.ID)
 	landed := toRecs[id]
 	runtime, _ := landed.IntAt("runtime_min")
-	ri := &recInfo{narrators: ToSet(landed.Strs("narrators")), runtimeMin: runtime, abridged: landed.BoolPtr("abridged"), asins: map[string]bool{}}
+	ri := &recInfo{narrators: ToSet(landed.Strs("narrators")), abridged: landed.BoolPtr("abridged"), asins: map[string]bool{},
+		knownMin: knownMinutes(runtime, landed.Str("release_date"), landed.Str("added_at"), landed.Sources(),
+			func() int { return chapterMinutes(landed.Chapters()) })}
 	for _, a := range landed.ASINs() {
 		ri.asins[a.ASIN] = true
 	}

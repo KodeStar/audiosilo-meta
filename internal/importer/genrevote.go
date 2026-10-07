@@ -1,10 +1,6 @@
 package importer
 
-import (
-	"slices"
-
-	"github.com/kodestar/audiosilo-meta/pkg/model"
-)
+import "slices"
 
 // genrevote.go is the RECORDING VOTE, the rule of record for what a MIRROR-derived
 // genre set is.
@@ -85,5 +81,5 @@ func VoteGenres(recordings [][]string) (genres []string, stated bool) {
 // rule 5 (its genres are added, never trimmed), and the relocation pass moves
 // recordings rather than planning rows onto them, so it keeps the union too.
 func (p *planner) votesGenres() bool {
-	return p.mode == ModeCreate && model.TierOfSource(p.sourceType) == model.TierBulkMirror
+	return p.mode == ModeCreate && p.mirrorTier
 }

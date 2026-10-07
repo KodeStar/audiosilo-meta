@@ -60,7 +60,10 @@ var chuteLibre = multiSeriesRow("B0GDJN7NZQ", "Chute Libre", "David Freed", "Bea
 
 func runLibexWith(t *testing.T, dataDir string, opts Options, rows ...string) Summary {
 	t.Helper()
-	opts.DataDir, opts.ImportDate = dataDir, testImportDate
+	opts.DataDir = dataDir
+	if opts.ImportDate == "" {
+		opts.ImportDate = testImportDate
+	}
 	sum, err := RunLibex(writeBooks(t, strings.Join(rows, "\n")+"\n"), opts)
 	if err != nil {
 		t.Fatalf("import run: %v", err)

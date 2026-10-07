@@ -2,13 +2,13 @@ package importer
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"reflect"
 	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
-	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -49,15 +49,18 @@ func estChapters(minutes int, row bool) string {
 	return "[" + strings.Join(parts, ",") + "]"
 }
 
-// estRecording renders the seeded recording; sources and addedAt vary the
-// estimate test, chapters (a JSON array or "") the chapter rule.
-func estRecording(addedAt, sources, chapters string) string {
-	extra := ""
+// estRecording renders the seeded recording at the estimated runtime; sources
+// and addedAt vary the estimate test, chapters (a JSON array or "") the chapter
+// rule, and opts anything else.
+func estRecording(t *testing.T, addedAt, sources, chapters string, opts ...testpack.RecOpt) string {
+	t.Helper()
+	fields := map[string]any{"publisher": "Wolf Press", "release_date": estRelease, "sources": json.RawMessage(sources)}
 	if chapters != "" {
-		extra = `"chapters":` + chapters + `,`
+		fields["chapters"] = json.RawMessage(chapters)
 	}
-	return fmt.Sprintf(`{"added_at":%q,"asin":[{"asin":%q,"region":"us"}],%s"id":%q,"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"publisher":"Wolf Press","release_date":%q,"runtime_min":%d,"sources":%s,"work":%q}`,
-		addedAt, estUSASIN, extra, estRec, estRelease, estEstimate, sources, estWork)
+	return testpack.WithFields(t, testpack.RecJSON(t, estRec, estWork,
+		append([]testpack.RecOpt{testpack.WithASIN(estUSASIN), testpack.WithNarrators("bea-reader"),
+			testpack.WithRuntime(estEstimate), testpack.WithRecAddedAt(addedAt)}, opts...)...), fields)
 }
 
 func estMirrorSource(day string) string {
@@ -86,22 +89,6 @@ func estRow(asin, region string, minutes int, format, chapters string) string {
 		asin, region, format, estRelease, minutes, extra)
 }
 
-func runEstimate(t *testing.T, dataDir, date string, mode Mode, conflicts *bytes.Buffer, rows ...string) Summary {
-	t.Helper()
-	opts := Options{DataDir: dataDir, ImportDate: date, Mode: mode}
-	if conflicts != nil {
-		opts.Conflicts = conflicts
-	}
-	sum, err := RunLibex(writeBooks(t, strings.Join(rows, "\n")+"\n"), opts)
-	if err != nil {
-		t.Fatalf("libex run: %v", err)
-	}
-	if res := check.Load(dataDir); !res.OK() {
-		t.Fatalf("tree failed validation: %v", res.Problems)
-	}
-	return sum
-}
-
 func readEstRecording(t *testing.T, dataDir string) recordingFile {
 	t.Helper()
 	var rec recordingFile
@@ -122,6 +109,9 @@ func TestReleasedAfterComparesAtTheReleasePrecision(t *testing.T) {
 		{"2026", "2026-01-01", false}, // a year names no later day of itself
 		{"2027", "2026-12-31", true},
 		{"2026-09-08", "2026-08-02T10:00:00+02:00", true}, // a backfilled timestamp is read by its day
+		// ... its UTC day: 01:00 at +02:00 on the release day is 23:00 UTC the day before.
+		{"2026-09-08", "2026-09-08T01:00:00+02:00", true},
+		{"2026-09-08", "2026-09-07T23:30:00-02:00", false}, // 01:30 UTC on the release day
 		{"", "2026-08-02", false},
 		{"2026-09-08", "", false},
 		{"soon", "2026-08-02", false},
@@ -156,6 +146,7 @@ func TestRuntimeEstimatedReadsProvenanceAndDates(t *testing.T) {
 		{"a year-only release is never later", "2026", "2026-08-02", mirror("2026-08-02"), false},
 		{"no release date", "", "2026-08-02", mirror("2026-08-02"), false},
 		{"no dated statement at all", "2026-09-08", "", []model.Source{{Type: model.SourceLibexImport}}, false},
+		{"an offset stamp read by its UTC day", "2026-09-08", "2026-09-08T01:00:00+02:00", mirror("2026-09-08T01:00:00+02:00"), true},
 	} {
 		if got := runtimeEstimated(tc.release, tc.added, tc.sources); got != tc.want {
 			t.Errorf("%s: runtimeEstimated = %v, want %v", tc.name, got, tc.want)
@@ -166,9 +157,9 @@ func TestRuntimeEstimatedReadsProvenanceAndDates(t *testing.T) {
 // The defect: a released regional row of a preorder-catalogued production is
 // the same recording, and its runtime replaces the estimate.
 func TestPreorderEstimateMergesAReleasedRegionalRow(t *testing.T) {
-	dataDir := seedEstimateTree(t, estRecording("2026-08-02", estMirrorSource("2026-08-02"), ""))
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	var conflicts bytes.Buffer
-	sum := runEstimate(t, dataDir, estRunDate, ModeCreate, &conflicts,
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate, Conflicts: &conflicts},
 		estRow(estUKASIN, "uk", estReleasedLen, "unabridged", ""))
 
 	if sum.NewWorks != 0 || sum.NewRecordings != 0 || sum.MergedASINs != 1 || sum.EstimatesReplaced != 1 {
@@ -198,8 +189,8 @@ func TestPreorderEstimateMergesAReleasedRegionalRow(t *testing.T) {
 // Before release the row is a preorder too: the merge happens (both runtimes
 // are unknown to it) but nothing replaces the estimate.
 func TestPreorderEstimateMergesButKeepsTheRuntimeBeforeRelease(t *testing.T) {
-	dataDir := seedEstimateTree(t, estRecording("2026-08-02", estMirrorSource("2026-08-02"), ""))
-	sum := runEstimate(t, dataDir, estPreRelease, ModeCreate, nil,
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estPreRelease, Mode: ModeCreate},
 		estRow(estUKASIN, "uk", estReleasedLen, "unabridged", ""))
 
 	if sum.NewRecordings != 0 || sum.MergedASINs != 1 || sum.EstimatesReplaced != 0 {
@@ -213,11 +204,10 @@ func TestPreorderEstimateMergesButKeepsTheRuntimeBeforeRelease(t *testing.T) {
 // The incoming row may be the preorder: a released recording meets a bulk
 // row listing a regional edition not out yet, at an estimate.
 func TestAPreorderRowMergesIntoAReleasedRecording(t *testing.T) {
-	released := strings.Replace(estRecording("2026-09-20", estMirrorSource("2026-09-20"), ""),
-		fmt.Sprintf(`"runtime_min":%d`, estEstimate), fmt.Sprintf(`"runtime_min":%d`, estReleasedLen), 1)
+	released := estRecording(t, "2026-09-20", estMirrorSource("2026-09-20"), "", testpack.WithRuntime(estReleasedLen))
 	dataDir := seedEstimateTree(t, released)
 	// Run on 2026-09-01, so the row's 2026-09-08 release is still ahead of it.
-	sum := runEstimate(t, dataDir, estPreRelease, ModeCreate, nil,
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estPreRelease, Mode: ModeCreate},
 		estRow(estUKASIN, "uk", estEstimate, "unabridged", ""))
 
 	if sum.NewRecordings != 0 || sum.MergedASINs != 1 || sum.EstimatesReplaced != 0 {
@@ -232,10 +222,9 @@ func TestAPreorderRowMergesIntoAReleasedRecording(t *testing.T) {
 // recorded one does: a timeline that disagrees with the released recording is a
 // different production.
 func TestAPreorderRowsTimelineKeepsTheGuard(t *testing.T) {
-	released := strings.Replace(estRecording("2026-09-20", estMirrorSource("2026-09-20"), ""),
-		fmt.Sprintf(`"runtime_min":%d`, estEstimate), fmt.Sprintf(`"runtime_min":%d`, estReleasedLen), 1)
+	released := estRecording(t, "2026-09-20", estMirrorSource("2026-09-20"), "", testpack.WithRuntime(estReleasedLen))
 	dataDir := seedEstimateTree(t, released)
-	sum := runEstimate(t, dataDir, estPreRelease, ModeCreate, nil,
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estPreRelease, Mode: ModeCreate},
 		estRow(estUKASIN, "uk", 600, "unabridged", estChapters(600, true)))
 	if sum.MergedASINs != 0 || sum.NewRecordings != 1 {
 		t.Fatalf("summary = %+v, want a distinct recording", sum)
@@ -250,18 +239,18 @@ func TestThePreorderEstimateRuleRelaxesNothingElse(t *testing.T) {
 		row       string
 	}{
 		{"a user-attested recording keeps the runtime guard",
-			estRecording("2026-08-02", fmt.Sprintf(`[{"imported_at":"2026-08-02","ref":%q,"type":"libex-import"},{"imported_at":"2026-08-03","type":"openaudible-import"}]`, estUSASIN), ""),
+			estRecording(t, "2026-08-02", fmt.Sprintf(`[{"imported_at":"2026-08-02","ref":%q,"type":"libex-import"},{"imported_at":"2026-08-03","type":"openaudible-import"}]`, estUSASIN), ""),
 			estRow(estUKASIN, "uk", estReleasedLen, "unabridged", "")},
 		{"a recording catalogued after release keeps the runtime guard",
-			estRecording("2026-09-20", estMirrorSource("2026-09-20"), ""),
+			estRecording(t, "2026-09-20", estMirrorSource("2026-09-20"), ""),
 			estRow(estUKASIN, "uk", estReleasedLen, "unabridged", "")},
 		{"the abridged guard still applies to an estimate",
-			estRecording("2026-08-02", estMirrorSource("2026-08-02"), ""),
+			estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""),
 			estRow(estUKASIN, "uk", estReleasedLen, "abridged", "")},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			dataDir := seedEstimateTree(t, tc.recording)
-			sum := runEstimate(t, dataDir, estRunDate, ModeCreate, nil, tc.row)
+			sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate}, tc.row)
 			if sum.MergedASINs != 0 || sum.NewRecordings != 1 || sum.EstimatesReplaced != 0 {
 				t.Fatalf("summary = %+v, want a distinct recording and no merge", sum)
 			}
@@ -275,9 +264,9 @@ func TestThePreorderEstimateRuleRelaxesNothingElse(t *testing.T) {
 // --enrich over the SAME ASIN: the released runtime replaces the estimate
 // instead of disqualifying the row as a contradiction.
 func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
-	dataDir := seedEstimateTree(t, estRecording("2026-08-02", estMirrorSource("2026-08-02"), ""))
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	var conflicts bytes.Buffer
-	sum := runEstimate(t, dataDir, estRunDate, ModeEnrich, &conflicts,
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true)))
 
 	if sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 1 {
@@ -293,7 +282,7 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 
 	// A second identical run is a byte-level no-op: the value is already there.
 	before := snapshotTree(t, dataDir)
-	again := runEstimate(t, dataDir, estRunDate, ModeEnrich, nil,
+	again := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true)))
 	if again.EstimatesReplaced != 0 || again.EnrichedRecordings != 0 {
 		t.Errorf("re-run changed something: %+v", again)
@@ -304,9 +293,9 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 // Outside the rule the contradiction guard is unchanged: the same rows against
 // a recording catalogued after release are refused and logged.
 func TestEnrichStillRefusesAContradictionOfAReleasedRecording(t *testing.T) {
-	dataDir := seedEstimateTree(t, estRecording("2026-09-20", estMirrorSource("2026-09-20"), ""))
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-09-20", estMirrorSource("2026-09-20"), ""))
 	var conflicts bytes.Buffer
-	sum := runEstimate(t, dataDir, estRunDate, ModeEnrich, &conflicts,
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
 	if sum.EnrichedRecordings != 0 || sum.EstimatesReplaced != 0 || conflicts.Len() == 0 {
 		t.Errorf("summary = %+v, conflicts %q; want the row refused and logged", sum, conflicts.String())
@@ -336,11 +325,11 @@ func TestTheChapterTimelineDecidesAnEstimate(t *testing.T) {
 			"", estReleasedLen, estChapters(estEstimate, true), true, estEstimate, 0, "kept 1 preorder-estimate"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			dataDir := seedEstimateTree(t, estRecording("2026-08-02", estMirrorSource("2026-08-02"), tc.recorded))
+			dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), tc.recorded))
 			// Merged through the create path, so the row is another ASIN: the
 			// enrich path's fill would otherwise write the row's chapters into a
 			// recording that has none.
-			sum := runEstimate(t, dataDir, estRunDate, ModeCreate, nil,
+			sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
 				estRow(estUKASIN, "uk", tc.rowMinutes, "unabridged", tc.rowChapters))
 			if merged := sum.MergedASINs == 1 && sum.NewRecordings == 0; merged != tc.wantMerged {
 				t.Fatalf("summary = %+v, want merged %v", sum, tc.wantMerged)
@@ -369,8 +358,8 @@ func TestPreorderEstimateCorrectionIsDeterministic(t *testing.T) {
 		estRow("B0EST00003", "au", estReleasedLen+5, "unabridged", ""),
 	}
 	run := func(order ...string) (map[string]string, recordingFile) {
-		dataDir := seedEstimateTree(t, estRecording("2026-08-02", estMirrorSource("2026-08-02"), ""))
-		sum := runEstimate(t, dataDir, estRunDate, ModeCreate, nil, order...)
+		dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+		sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate}, order...)
 		if sum.MergedASINs != 2 || sum.NewRecordings != 0 || sum.EstimatesReplaced != 1 {
 			t.Fatalf("summary = %+v, want both rows merged and one replacement", sum)
 		}
