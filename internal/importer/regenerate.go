@@ -105,12 +105,16 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 	// The newest provenance day of every work a row reached, read off the
 	// catalogue the load kept (the regeneration resolves no series, so nothing
 	// let it go) - only the works the decision below will look at.
+	// No catalogue would read every work as undated and judge them all, so its
+	// absence is fatal rather than a guard that silently stands down.
+	if p.catalog == nil {
+		p.fatal = fmt.Errorf("genre regeneration: the catalogue load was released before the provenance dates were read")
+		return
+	}
 	newestDay := map[string]string{}
-	if p.catalog != nil {
-		for _, w := range p.catalog.Works {
-			if reached[w.ID] {
-				newestDay[w.ID] = newestProvenanceDay(w)
-			}
+	for _, w := range p.catalog.Works {
+		if reached[w.ID] {
+			newestDay[w.ID] = newestProvenanceDay(w)
 		}
 	}
 
@@ -127,6 +131,7 @@ func (p *planner) planRegenerateGenres(books []sourceBook) {
 		// written from newer rows than these, which would trim what they stated.
 		if newestDay[slug] > p.rowsAsOf {
 			newer = append(newer, slug)
+			p.summary.GenreWorksNewer++
 			continue
 		}
 		var sets [][]string

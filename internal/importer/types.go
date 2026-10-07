@@ -369,9 +369,12 @@ type Summary struct {
 	GenreWorksUnchanged int
 	GenreWorksNoRow     int
 	// GenreRowsContradicted counts the rows a ModeRegenerateGenres run refused as
-	// genre evidence because they contradicted their recording's runtime or
-	// release date (rowContradiction, enrichment's own test).
+	// genre evidence because they contradicted their recording's RUNTIME
+	// (rowContradiction in the ASIN-merge scope, which never reads a release
+	// date). GenreWorksNewer counts the works a row reached that were not judged
+	// because their newest provenance is later than Options.RowsAsOf.
 	GenreRowsContradicted int
+	GenreWorksNewer       int
 	// SkippedNoWork counts RECORDINGS-ONLY rows whose work is not in the
 	// catalogue. That mode never creates a work, so those rows are dropped -
 	// which makes this the counter that proves an excerpt, a trivia title or a

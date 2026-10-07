@@ -6,7 +6,6 @@ import (
 	"maps"
 	"slices"
 	"strings"
-	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -275,15 +274,10 @@ func earlierDate(a, b string) string {
 //
 // They come in two shapes - a plain YYYY-MM-DD and the migration's full RFC 3339
 // timestamp with an offset - and this comparison has to agree with the one
-// model.TimeKey (which internal/build orders by) makes when the builder derives the artifact's added_at from
-// the same values, or the two could order one pair of records differently. So
-// the method is model.TimeKey's: a parseable RFC 3339 value is normalized to UTC
-// before it is compared, anything else is compared as written. The two forms
-// still sort correctly against each other, because a UTC RFC 3339 rendering
-// begins with the very date a plain date states.
-//
-// Relocating this onto model.TimeKey is out of scope; the two are pinned against
-// each other by TestEarlierStampAgreesWithTheArtifactOrdering.
+// internal/build makes when it derives the artifact's added_at from the same
+// values, or the two could order one pair of records differently. So it
+// compares through model.TimeKey, the very key the builder orders by, which
+// TestEarlierStampAgreesWithTheArtifactOrdering pins.
 func earlierStamp(a, b string) string {
 	switch {
 	case a == "":
@@ -291,19 +285,10 @@ func earlierStamp(a, b string) string {
 	case b == "":
 		return a
 	}
-	if stampKey(a) <= stampKey(b) {
+	if model.TimeKey(a) <= model.TimeKey(b) {
 		return a
 	}
 	return b
-}
-
-// stampKey is model.TimeKey's normalization: RFC 3339 in UTC, anything
-// else as written.
-func stampKey(s string) string {
-	if t, err := time.Parse(time.RFC3339, s); err == nil {
-		return t.UTC().Format(time.RFC3339)
-	}
-	return s
 }
 
 // modal returns the value seen most often, ties broken by the value itself so

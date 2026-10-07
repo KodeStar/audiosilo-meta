@@ -514,8 +514,8 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	case importer.ModeRegenerateGenres:
 		rows := s.Matched + s.NotInCatalog + s.SkippedRows
 		set, addedTo, added, removed := s.GenreTally()
-		fmt.Printf("%s: %d works set to the recording vote, %d works added to, %d unchanged, %d not reached by any row; %d genres added, %d removed; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
-			summaryHead(mode, dryRun), set, addedTo, s.GenreWorksUnchanged, s.GenreWorksNoRow,
+		fmt.Printf("%s: %d works set to the recording vote, %d works added to, %d unchanged, %d held back as newer than the rows, %d not reached by any row; %d genres added, %d removed; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
+			summaryHead(mode, dryRun), set, addedTo, s.GenreWorksUnchanged, s.GenreWorksNewer, s.GenreWorksNoRow,
 			added, removed, rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
 	case importer.ModeRecordingsOnly:
 		fmt.Printf("%s: %d new recordings, %d new people; %d skipped (already present); %d skipped (work not in the catalogue); %d asins merged into existing recordings; %d warnings\n",

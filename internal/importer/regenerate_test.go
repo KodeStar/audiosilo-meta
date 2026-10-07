@@ -339,6 +339,9 @@ func TestRegenerateGenresSkipsWorksNewerThanTheRows(t *testing.T) {
 	if !hasNote(sum.Notes, "2 works carry provenance newer than the rows (--rows-as-of 2026-07-29) and were not judged (for example: late, rec-late)") {
 		t.Errorf("notes = %v", sum.Notes)
 	}
+	if sum.GenreWorksNewer != 2 {
+		t.Errorf("GenreWorksNewer = %d, want 2", sum.GenreWorksNewer)
+	}
 	if _, err := RunLibex(writeBooks(t, rows[0]+"\n"), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeRegenerateGenres}); err == nil {
 		t.Errorf("a regeneration without RowsAsOf ran")
 	}
