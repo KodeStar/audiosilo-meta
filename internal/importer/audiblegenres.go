@@ -107,6 +107,9 @@ import (
 // Gospel is religion, not an arts book). Which genres are fiction is the table's
 // "genre_kinds": every value of the schema's genre vocabulary classified as
 // "fiction", "nonfiction" or "neither" (TestGenreKindsCoverTheVocabulary). The
+// rule reads only "fiction" today, but the nonfiction/neither split is kept on
+// purpose: every genre added to the vocabulary then forces an explicit
+// classification decision rather than defaulting silently to "not fiction". The
 // "neither" calls are deliberate: comedy-humor (a radio panel show is not
 // fiction, so it keeps arts-entertainment), drama-plays and poetry (performance
 // forms - a play reaches fiction through literary-fiction or classics anyway),
@@ -119,9 +122,9 @@ import (
 // DERIVED by scripts/genrepaths (DeriveFormatTree), already in the shape the rule
 // consumes, so the rule does map lookups and nothing else: "format_tree" maps
 // every node of every root subtree holding a format node to whether it is a
-// format node (and whether only for fiction) and its ancestors (transitively closed, over every
-// path the node sits at - Opera is under both Entertainment & Performing Arts
-// and Music), and "format_paths" maps, per marketplace, every path of those
+// format node (and whether only for fiction) and its ancestors (transitively
+// closed, over every path the node sits at - Opera is under both Entertainment &
+// Performing Arts and Music), and "format_paths" maps, per marketplace, every path of those
 // subtrees to its node, for a source stating a LADDER of names rather than node
 // ids (the claim's marketplace, else the US table, as by_path falls back). A
 // claim outside the tree is never format-derived and costs one map lookup.
@@ -151,7 +154,9 @@ type genreTable struct {
 	// comment) - the generator's input too.
 	FormatFictionOnly []string `json:"format_fiction_only"`
 	// GenreKinds classifies every vocabulary genre as "fiction", "nonfiction" or
-	// "neither" (hand-curated; read by the rule to decide a row maps fiction).
+	// "neither" (hand-curated; read by the rule to decide a row maps fiction). It
+	// stays three-valued although the rule reads only "fiction", so a genre added
+	// to the vocabulary forces an explicit decision (TestGenreKindsCoverTheVocabulary).
 	GenreKinds map[string]string `json:"genre_kinds"`
 	// FormatTree and FormatPaths are DERIVED by scripts/genrepaths, never
 	// hand-authored (DeriveFormatTree): every node of a root subtree holding a
@@ -376,7 +381,16 @@ func (t genreTable) mapGenres(claims []genreClaim, unmapped map[string]bool) []s
 	if ladder != "" && !hit {
 		unmapped[ladder] = true
 	}
-	fiction := slices.ContainsFunc(slugs, func(g string) bool { return t.GenreKinds[g] == genreFiction })
+	// Whether the row maps a fiction genre matters only to a fiction-only format
+	// node, so it is asked lazily - most rows state none - and at most once.
+	var fictionKnown, fictionMapped bool
+	fiction := func() bool {
+		if !fictionKnown {
+			fictionKnown = true
+			fictionMapped = slices.ContainsFunc(slugs, func(g string) bool { return t.GenreKinds[g] == genreFiction })
+		}
+		return fictionMapped
+	}
 	derived := t.formatDerived(claims, fiction)
 	out := distinctSorted(slugs, derived)
 	if len(out) == 0 && derived != nil {
@@ -417,10 +431,11 @@ type FormatNode struct {
 // genreFiction is the genre_kinds value of a fiction genre.
 const genreFiction = "fiction"
 
-// isFormat reports whether the node acts as a format node in a row whose mapped
-// genres include fiction (or not).
-func (n FormatNode) isFormat(fiction bool) bool {
-	return n.Format && (fiction || !n.FictionOnly)
+// isFormat reports whether the node acts as a format node in its row; fiction
+// (asked only for a fiction-only node) answers whether the row maps a fiction
+// genre.
+func (n FormatNode) isFormat(fiction func() bool) bool {
+	return n.Format && (!n.FictionOnly || fiction())
 }
 
 // formatNodeOf is the format-tree node a claim names, or "" when it names none:
@@ -448,7 +463,7 @@ func (t genreTable) formatNodeOf(c genreClaim) string {
 // ancestor of a format node the row states, that the row reaches through no
 // non-format descendant. nil (the common case: no claim is a format node, or the
 // rule is off) means none is.
-func (t genreTable) formatDerived(claims []genreClaim, fiction bool) []bool {
+func (t genreTable) formatDerived(claims []genreClaim, fiction func() bool) []bool {
 	if !slices.ContainsFunc(claims, func(c genreClaim) bool { return t.FormatTree[t.formatNodeOf(c)].isFormat(fiction) }) {
 		return nil
 	}

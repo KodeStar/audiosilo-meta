@@ -156,7 +156,7 @@ describe('the format rule', () => {
   })
 
   it('leaves a record with no format node untouched', () => {
-    expect(formatDerived(claims('18574606011|Mystery'), true)).toBeNull()
+    expect(formatDerived(claims('18574606011|Mystery'), () => true)).toBeNull()
   })
 
   it('drops Radio and Film & TV beside a fiction genre (a BBC radio mystery)', () => {

@@ -93,10 +93,11 @@ const GENRE_KINDS: Record<string, string | undefined> = Object.assign(
 )
 
 // isFormat is Go's FormatNode.isFormat: a fiction-only node (Radio, Film & TV)
-// is a format only in a record mapping a fiction genre.
-const isFormat = (node: string, fiction: boolean): boolean => {
+// is a format only in a record mapping a fiction genre, which `fiction` answers -
+// asked only for such a node.
+const isFormat = (node: string, fiction: () => boolean): boolean => {
   const fn = FORMAT_TREE[node]
-  return !!fn?.format && (fiction || !fn.fiction_only)
+  return !!fn?.format && (!fn.fiction_only || fiction())
 }
 
 /**
@@ -105,7 +106,7 @@ const isFormat = (node: string, fiction: boolean): boolean => {
  * an ancestor of a format node the record states, that the record reaches
  * through no non-format descendant. Null when none is.
  */
-export function formatDerived(claims: LibexGenreClaim[], fiction: boolean): boolean[] | null {
+export function formatDerived(claims: LibexGenreClaim[], fiction: () => boolean): boolean[] | null {
   const nodes = claims.map((c) => {
     const node = c.node?.trim() ?? ''
     return node && FORMAT_TREE[node] ? node : ''
@@ -135,7 +136,10 @@ export function formatDerived(claims: LibexGenreClaim[], fiction: boolean): bool
  */
 export function mapGenreClaims(claims: LibexGenreClaim[]): string[] {
   const slugs = claims.map(mapGenreClaim)
-  const fiction = slugs.some((g) => g !== undefined && GENRE_KINDS[g] === 'fiction')
+  // Asked lazily, and at most once: only a fiction-only format node needs it.
+  let fictionMapped: boolean | undefined
+  const fiction = (): boolean =>
+    (fictionMapped ??= slugs.some((g) => g !== undefined && GENRE_KINDS[g] === 'fiction'))
   const derived = formatDerived(claims, fiction)
   const collect = (skip: boolean[] | null): string[] => {
     const out = new Set<string>()
