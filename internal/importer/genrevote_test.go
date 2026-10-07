@@ -8,7 +8,6 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 func TestVoteGenres(t *testing.T) {
@@ -194,8 +193,8 @@ func TestEnrichFillVotesGenres(t *testing.T) {
 
 // TestAnUnlandedRowStillVotes: a row that lands on no recording - the shape the
 // row creating a work would have if addRecording wrote nothing - casts a vote of
-// its own, under a key no recording slug can spell, so the next row's vote does
-// not silently replace the genres it seeded.
+// its own, so the next row's vote does not silently replace the genres it
+// seeded.
 func TestAnUnlandedRowStillVotes(t *testing.T) {
 	p := &planner{}
 	ws := &workState{runGenresOwned: true, runGenres: []string{"mystery"}, runRecGenres: map[string][]string{}}
@@ -205,10 +204,5 @@ func TestAnUnlandedRowStillVotes(t *testing.T) {
 	got := p.accrueRunGenres(ws, "bea-reader-2024", []string{"fantasy"})
 	if want := []string{"fantasy", "mystery"}; !reflect.DeepEqual(got, want) {
 		t.Errorf("after a landed row = %v, want %v (two voters: the union)", got, want)
-	}
-	for key := range ws.runRecGenres {
-		if key != "bea-reader-2024" && model.ValidSlug(key) {
-			t.Errorf("the unlanded vote's key %q could be a recording slug", key)
-		}
 	}
 }

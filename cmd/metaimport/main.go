@@ -226,10 +226,6 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		valid     func(importer.Mode) bool // nil: every mode
 		what      string
 	}{
-		// Under --regenerate-genres every row of interest is catalogued, and a
-		// refused row whose ASIN the catalogue holds is dropped from the worklist
-		// as recorded (planner.result), so it would carry only refusals of rows
-		// that matched nothing: not the worklist an operator asked for.
 		{"--skipped", true, notRegen, "cannot report a --regenerate-genres run's refusals: a refused row whose ASIN the catalogue holds is not listed, and every other row matched nothing"},
 		{"--attach-editions", true, func(m importer.Mode) bool { return m == importer.ModeCreate }, "attaches rows the CREATE path would plan; it is valid in that mode only"},
 		{"--genre-changes", true, func(m importer.Mode) bool { return m == importer.ModeRegenerateGenres }, "is the --regenerate-genres worklist; it is valid in that mode only"},

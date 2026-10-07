@@ -130,3 +130,16 @@ func BulkMirrorOnlyTypes(types []string) bool {
 	}
 	return true
 }
+
+// AnyUserLibrary reports whether any of the sources is user-library tier: a
+// person's own library or a hand submission contributed to the record. It is
+// the test the genre regeneration refuses to trim on (a set any user-library
+// source contributed to is only ever added to - LICENSING.md, rule 5).
+func AnyUserLibrary(sources []Source) bool {
+	for _, s := range sources {
+		if TierOfSource(s.Type) == TierUserLibrary {
+			return true
+		}
+	}
+	return false
+}

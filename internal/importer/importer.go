@@ -172,6 +172,10 @@ type workState struct {
 	// landed on it), and the work's set is the vote over them. nil for every
 	// other work, whose genres follow the union rules above.
 	runRecGenres map[string][]string
+	// unlandedGenres holds, for a vote-governed work, the mapped genres of each
+	// row of the run that landed on NO recording - each its own vote, beside the
+	// recordings', so the next row cannot silently replace what it seeded.
+	unlandedGenres [][]string
 	// genres and userSourced are a work's genre set and whether any source on
 	// it OR ON ANY OF ITS RECORDINGS is user-library tier (a user-library ASIN
 	// merge stamps only the recording), as the catalogue was LOADED - what the
@@ -1070,7 +1074,7 @@ func (p *planner) loadExisting() {
 			recs:     map[string]*recInfo{},
 			genres:   w.Genres,
 		}
-		ws.userSourced = userSourced(w)
+		ws.userSourced = hasUserLibrarySource(w)
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
 		}
@@ -2234,15 +2238,15 @@ func (p *planner) accrueRunGenres(ws *workState, rec string, mapped []string) []
 	if ws.runRecGenres == nil {
 		next = UnionGenres(ws.runGenres, mapped)
 	} else {
+		// A row that landed on no recording is still evidence about the work (the
+		// row that created it may have seeded runGenres this way), so it casts a
+		// vote of its own.
 		if rec == "" {
-			// A row that landed on no recording is still evidence about the work
-			// (the row that created it may have seeded runGenres this way), so it
-			// casts a vote of its own, under a key no recording slug can spell
-			// (each such key is the map's size when it was added, so distinct).
-			rec = fmt.Sprintf("\x00unlanded-%d", len(ws.runRecGenres))
+			ws.unlandedGenres = append(ws.unlandedGenres, mapped)
+		} else {
+			ws.runRecGenres[rec] = UnionGenres(ws.runRecGenres[rec], mapped)
 		}
-		ws.runRecGenres[rec] = UnionGenres(ws.runRecGenres[rec], mapped)
-		next, _ = VoteGenres(slices.Collect(maps.Values(ws.runRecGenres)))
+		next, _ = VoteGenres(append(slices.Collect(maps.Values(ws.runRecGenres)), ws.unlandedGenres...))
 	}
 	if slices.Equal(next, ws.runGenres) {
 		return nil
