@@ -2624,6 +2624,14 @@
             {
               "asin": "B00NGRP5WW",
               "region": "us"
+            },
+            {
+              "asin": "B00NGRHJ80",
+              "region": "de"
+            },
+            {
+              "asin": "B00NGRYTKQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2737,6 +2745,16 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B00NGRP5WW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B00NGRHJ80",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B00NGRYTKQ",
               "type": "libex-import"
             }
           ],
@@ -3226,6 +3244,157 @@
         }
       ],
       "title": "Maigret a New York"
+    },
+    "maigret-al-picratts": {
+      "added_at": "2026-10-08",
+      "authors": [
+        "georges-simenon"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "maigret-al-picratts",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
+        "giuseppe-battiston-2020": {
+          "abridged": false,
+          "added_at": "2026-10-08",
+          "asin": [
+            {
+              "asin": "8869865126",
+              "region": "us"
+            },
+            {
+              "asin": "B0C6FKFVKJ",
+              "region": "br"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 824098,
+              "start_ms": 0,
+              "title": "Capitolo 1"
+            },
+            {
+              "length_ms": 643239,
+              "start_ms": 824098,
+              "title": "Capitolo 2"
+            },
+            {
+              "length_ms": 982111,
+              "start_ms": 1467337,
+              "title": "Capitolo 3"
+            },
+            {
+              "length_ms": 1007908,
+              "start_ms": 2449448,
+              "title": "Capitolo 4"
+            },
+            {
+              "length_ms": 844022,
+              "start_ms": 3457356,
+              "title": "Capitolo 5"
+            },
+            {
+              "length_ms": 965601,
+              "start_ms": 4301378,
+              "title": "Capitolo 6"
+            },
+            {
+              "length_ms": 1027529,
+              "start_ms": 5266979,
+              "title": "Capitolo 7"
+            },
+            {
+              "length_ms": 820384,
+              "start_ms": 6294508,
+              "title": "Capitolo 8"
+            },
+            {
+              "length_ms": 982157,
+              "start_ms": 7114892,
+              "title": "Capitolo 9"
+            },
+            {
+              "length_ms": 1043829,
+              "start_ms": 8097049,
+              "title": "Capitolo 10"
+            },
+            {
+              "length_ms": 844834,
+              "start_ms": 9140878,
+              "title": "Capitolo 11"
+            },
+            {
+              "length_ms": 717682,
+              "start_ms": 9985712,
+              "title": "Capitolo 12"
+            },
+            {
+              "length_ms": 873441,
+              "start_ms": 10703394,
+              "title": "Capitolo 13"
+            },
+            {
+              "length_ms": 820175,
+              "start_ms": 11576835,
+              "title": "Capitolo 14"
+            },
+            {
+              "length_ms": 902768,
+              "start_ms": 12397010,
+              "title": "Capitolo 15"
+            },
+            {
+              "length_ms": 848921,
+              "start_ms": 13299778,
+              "title": "Capitolo 16"
+            },
+            {
+              "length_ms": 779888,
+              "start_ms": 14148699,
+              "title": "Capitolo 17"
+            },
+            {
+              "length_ms": 840120,
+              "start_ms": 14928587,
+              "title": "Capitolo 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/816WSBpd5JL.jpg",
+          "id": "giuseppe-battiston-2020",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "giuseppe-battiston"
+          ],
+          "publisher": "Emons Edizioni",
+          "release_date": "2020-01-30",
+          "runtime_min": 262,
+          "sources": [
+            {
+              "imported_at": "2026-10-08",
+              "ref": "8869865126",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0C6FKFVKJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "maigret-al-picratts"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-08",
+          "ref": "8869865126",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Maigret al Picratt's"
     },
     "maigret-and-monsieur-charles": {
       "added_at": "2026-07-29",
@@ -5342,6 +5511,138 @@
       ],
       "title": "Maigret Defends Himself"
     },
+    "maigret-e-i-testimoni-recalcitranti": {
+      "added_at": "2026-10-08",
+      "authors": [
+        "georges-simenon"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "maigret-e-i-testimoni-recalcitranti",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
+        "giuseppe-battiston-2021": {
+          "abridged": false,
+          "added_at": "2026-10-08",
+          "asin": [
+            {
+              "asin": "8869867056",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 945144,
+              "start_ms": 0,
+              "title": "Capitolo 1"
+            },
+            {
+              "length_ms": 970524,
+              "start_ms": 945144,
+              "title": "Capitolo 2"
+            },
+            {
+              "length_ms": 838565,
+              "start_ms": 1915668,
+              "title": "Capitolo 3"
+            },
+            {
+              "length_ms": 782582,
+              "start_ms": 2754233,
+              "title": "Capitolo 4"
+            },
+            {
+              "length_ms": 880686,
+              "start_ms": 3536815,
+              "title": "Capitolo 5"
+            },
+            {
+              "length_ms": 991701,
+              "start_ms": 4417501,
+              "title": "Capitolo 6"
+            },
+            {
+              "length_ms": 910965,
+              "start_ms": 5409202,
+              "title": "Capitolo 7"
+            },
+            {
+              "length_ms": 895849,
+              "start_ms": 6320167,
+              "title": "Capitolo 8"
+            },
+            {
+              "length_ms": 996600,
+              "start_ms": 7216016,
+              "title": "Capitolo 9"
+            },
+            {
+              "length_ms": 948581,
+              "start_ms": 8212616,
+              "title": "Capitolo 10"
+            },
+            {
+              "length_ms": 928867,
+              "start_ms": 9161197,
+              "title": "Capitolo 11"
+            },
+            {
+              "length_ms": 894804,
+              "start_ms": 10090064,
+              "title": "Capitolo 12"
+            },
+            {
+              "length_ms": 1001824,
+              "start_ms": 10984868,
+              "title": "Capitolo 13"
+            },
+            {
+              "length_ms": 1016778,
+              "start_ms": 11986692,
+              "title": "Capitolo 14"
+            },
+            {
+              "length_ms": 878318,
+              "start_ms": 13003470,
+              "title": "Capitolo 15"
+            },
+            {
+              "length_ms": 1074224,
+              "start_ms": 13881788,
+              "title": "Capitolo 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81KbJxaQJ7L.jpg",
+          "id": "giuseppe-battiston-2021",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "giuseppe-battiston"
+          ],
+          "publisher": "Emons Edizioni",
+          "release_date": "2021-01-14",
+          "runtime_min": 249,
+          "sources": [
+            {
+              "imported_at": "2026-10-08",
+              "ref": "8869867056",
+              "type": "libex-import"
+            }
+          ],
+          "work": "maigret-e-i-testimoni-recalcitranti"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-08",
+          "ref": "8869867056",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Maigret e i testimoni recalcitranti"
+    },
     "maigret-e-il-fantasma": {
       "added_at": "2026-09-22",
       "authors": [
@@ -5876,6 +6177,149 @@
         }
       ],
       "title": "Maigret e la vecchia signora"
+    },
+    "maigret-e-luomo-della-panchina": {
+      "added_at": "2026-10-08",
+      "authors": [
+        "georges-simenon"
+      ],
+      "genres": [
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "maigret-e-luomo-della-panchina",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
+        "giuseppe-battiston-2021": {
+          "abridged": false,
+          "added_at": "2026-10-08",
+          "asin": [
+            {
+              "asin": "8869867811",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 702937,
+              "start_ms": 0,
+              "title": "Capitolo 1"
+            },
+            {
+              "length_ms": 717450,
+              "start_ms": 702937,
+              "title": "Capitolo 2"
+            },
+            {
+              "length_ms": 737605,
+              "start_ms": 1420387,
+              "title": "Capitolo 3"
+            },
+            {
+              "length_ms": 1006213,
+              "start_ms": 2157992,
+              "title": "Capitolo 4"
+            },
+            {
+              "length_ms": 924456,
+              "start_ms": 3164205,
+              "title": "Capitolo 5"
+            },
+            {
+              "length_ms": 1078659,
+              "start_ms": 4088661,
+              "title": "Capitolo 6"
+            },
+            {
+              "length_ms": 1028504,
+              "start_ms": 5167320,
+              "title": "Capitolo 7"
+            },
+            {
+              "length_ms": 944471,
+              "start_ms": 6195824,
+              "title": "Capitolo 8"
+            },
+            {
+              "length_ms": 1034588,
+              "start_ms": 7140295,
+              "title": "Capitolo 9"
+            },
+            {
+              "length_ms": 809145,
+              "start_ms": 8174883,
+              "title": "Capitolo 10"
+            },
+            {
+              "length_ms": 1033705,
+              "start_ms": 8984028,
+              "title": "Capitolo 11"
+            },
+            {
+              "length_ms": 1000478,
+              "start_ms": 10017733,
+              "title": "Capitolo 12"
+            },
+            {
+              "length_ms": 949649,
+              "start_ms": 11018211,
+              "title": "Capitolo 13"
+            },
+            {
+              "length_ms": 914378,
+              "start_ms": 11967860,
+              "title": "Capitolo 14"
+            },
+            {
+              "length_ms": 933488,
+              "start_ms": 12882238,
+              "title": "Capitolo 15"
+            },
+            {
+              "length_ms": 843975,
+              "start_ms": 13815726,
+              "title": "Capitolo 16"
+            },
+            {
+              "length_ms": 827721,
+              "start_ms": 14659701,
+              "title": "Capitolo 17"
+            },
+            {
+              "length_ms": 962791,
+              "start_ms": 15487422,
+              "title": "Capitolo 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WyQs51H8L.jpg",
+          "id": "giuseppe-battiston-2021",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "giuseppe-battiston"
+          ],
+          "publisher": "Emons Edizioni",
+          "release_date": "2021-09-23",
+          "runtime_min": 273,
+          "sources": [
+            {
+              "imported_at": "2026-10-08",
+              "ref": "8869867811",
+              "type": "libex-import"
+            }
+          ],
+          "work": "maigret-e-luomo-della-panchina"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-08",
+          "ref": "8869867811",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Maigret e l'uomo della panchina"
     },
     "maigret-enjoys-himself": {
       "added_at": "2026-07-29",
