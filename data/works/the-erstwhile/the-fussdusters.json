@@ -5149,6 +5149,15 @@
       "authors": [
         "kaitlin-ugolik-phillips"
       ],
+      "genres": [
+        "arts-entertainment",
+        "biography-memoir",
+        "history",
+        "politics",
+        "science",
+        "social-sciences",
+        "technology"
+      ],
       "id": "the-future-of-feeling",
       "language": "en",
       "license": "CC0-1.0",
@@ -5162,6 +5171,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 24445,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 723585,
+              "start_ms": 24445,
+              "title": "Author’s Note"
+            },
+            {
+              "length_ms": 1905081,
+              "start_ms": 748030,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 2484999,
+              "start_ms": 2653111,
+              "title": "Chapter 1: Talking to Each Other"
+            },
+            {
+              "length_ms": 1986096,
+              "start_ms": 5138110,
+              "title": "Chapter 2: Teaching Them Young"
+            },
+            {
+              "length_ms": 2500138,
+              "start_ms": 7124206,
+              "title": "Chapter 3: VR, the Empathy Machine"
+            },
+            {
+              "length_ms": 1759073,
+              "start_ms": 9624344,
+              "title": "Chapter 4: Feeling the News"
+            },
+            {
+              "length_ms": 1632084,
+              "start_ms": 11383417,
+              "title": "Chapter 5: Empathy at Work"
+            },
+            {
+              "length_ms": 2578112,
+              "start_ms": 13015501,
+              "title": "Chapter 6: For Your Health"
+            },
+            {
+              "length_ms": 2737121,
+              "start_ms": 15593613,
+              "title": "Chapter 7: Best Bot Friends"
+            },
+            {
+              "length_ms": 2585169,
+              "start_ms": 18330734,
+              "title": "Chapter 8: A More Empathic Valley"
+            },
+            {
+              "length_ms": 517687,
+              "start_ms": 20915903,
+              "title": "Epilogue: What’s Next"
+            },
+            {
+              "length_ms": 68360,
+              "start_ms": 21433590,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71PIjKNaGxL.jpg",
           "id": "kaitlin-ugolik-phillips-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -5176,6 +5253,10 @@
               "imported_at": "2026-09-24",
               "ref": "1799749789",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1799749789",
+              "type": "libex-import"
             }
           ],
           "work": "the-future-of-feeling"
@@ -5186,6 +5267,10 @@
           "imported_at": "2026-09-24",
           "ref": "1799749789",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1799749789",
+          "type": "libex-import"
         }
       ],
       "title": "The Future of Feeling"
