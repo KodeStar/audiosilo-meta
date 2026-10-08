@@ -2291,6 +2291,14 @@
             {
               "asin": "B07KGD1HD6",
               "region": "us"
+            },
+            {
+              "asin": "B07KGFHVXK",
+              "region": "de"
+            },
+            {
+              "asin": "B07KGGW8QQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -2529,6 +2537,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07KGD1HD6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B07KGFHVXK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B07KGGW8QQ",
               "type": "libex-import"
             }
           ],
@@ -6311,6 +6329,133 @@
         {
           "imported_at": "2026-10-04",
           "ref": "B01CDEW0MQ",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Félicie"
+    },
+    "felicie-georges-simenon": {
+      "added_at": "2026-10-08",
+      "authors": [
+        "georges-simenon"
+      ],
+      "genres": [
+        "mystery"
+      ],
+      "id": "felicie-georges-simenon",
+      "language": "it",
+      "license": "CC0-1.0",
+      "recordings": {
+        "giuseppe-battiston-2021": {
+          "abridged": false,
+          "added_at": "2026-10-08",
+          "asin": [
+            {
+              "asin": "8869867099",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 878805,
+              "start_ms": 0,
+              "title": "Capitolo 1"
+            },
+            {
+              "length_ms": 962931,
+              "start_ms": 878805,
+              "title": "Capitolo 2"
+            },
+            {
+              "length_ms": 864641,
+              "start_ms": 1841736,
+              "title": "Capitolo 3"
+            },
+            {
+              "length_ms": 872652,
+              "start_ms": 2706377,
+              "title": "Capitolo 4"
+            },
+            {
+              "length_ms": 867985,
+              "start_ms": 3579029,
+              "title": "Capitolo 5"
+            },
+            {
+              "length_ms": 986731,
+              "start_ms": 4447014,
+              "title": "Capitolo 6"
+            },
+            {
+              "length_ms": 899285,
+              "start_ms": 5433745,
+              "title": "Capitolo 7"
+            },
+            {
+              "length_ms": 855910,
+              "start_ms": 6333030,
+              "title": "Capitolo 8"
+            },
+            {
+              "length_ms": 967621,
+              "start_ms": 7188940,
+              "title": "Capitolo 9"
+            },
+            {
+              "length_ms": 992374,
+              "start_ms": 8156561,
+              "title": "Capitolo 10"
+            },
+            {
+              "length_ms": 996971,
+              "start_ms": 9148935,
+              "title": "Capitolo 11"
+            },
+            {
+              "length_ms": 950485,
+              "start_ms": 10145906,
+              "title": "Capitolo 12"
+            },
+            {
+              "length_ms": 980230,
+              "start_ms": 11096391,
+              "title": "Capitolo 13"
+            },
+            {
+              "length_ms": 914401,
+              "start_ms": 12076621,
+              "title": "Capitolo 14"
+            },
+            {
+              "length_ms": 960284,
+              "start_ms": 12991022,
+              "title": "Capitolo 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ygldaKRYL.jpg",
+          "id": "giuseppe-battiston-2021",
+          "language": "it",
+          "license": "CC0-1.0",
+          "narrators": [
+            "giuseppe-battiston"
+          ],
+          "publisher": "Emons Edizioni",
+          "release_date": "2021-02-18",
+          "runtime_min": 232,
+          "sources": [
+            {
+              "imported_at": "2026-10-08",
+              "ref": "8869867099",
+              "type": "libex-import"
+            }
+          ],
+          "work": "felicie-georges-simenon"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-08",
+          "ref": "8869867099",
           "type": "libex-import"
         }
       ],

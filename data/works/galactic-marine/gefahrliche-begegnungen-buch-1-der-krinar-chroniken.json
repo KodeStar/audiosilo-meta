@@ -3862,6 +3862,14 @@
             {
               "asin": "B0FDQZSXYB",
               "region": "us"
+            },
+            {
+              "asin": "B0FDQZV4SZ",
+              "region": "de"
+            },
+            {
+              "asin": "B0FDQYNSV9",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4089,6 +4097,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0FDQZSXYB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0FDQZV4SZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0FDQYNSV9",
               "type": "libex-import"
             }
           ],
@@ -11963,6 +11981,284 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0F79NXHBT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "gefangen-im-gestern"
+        },
+        "anna-muller-2025-2": {
+          "abridged": false,
+          "added_at": "2026-10-08",
+          "asin": [
+            {
+              "asin": "B0F79CYN5R",
+              "region": "de"
+            },
+            {
+              "asin": "B0F79GL9LJ",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 105719,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 99102,
+              "start_ms": 105719,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 96525,
+              "start_ms": 204821,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 95596,
+              "start_ms": 301346,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 99915,
+              "start_ms": 396942,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 98870,
+              "start_ms": 496857,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 97291,
+              "start_ms": 595727,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 93553,
+              "start_ms": 693018,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 93738,
+              "start_ms": 786571,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 95666,
+              "start_ms": 880309,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 92276,
+              "start_ms": 975975,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 94064,
+              "start_ms": 1068251,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 95596,
+              "start_ms": 1162315,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 93390,
+              "start_ms": 1257911,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 93204,
+              "start_ms": 1351301,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 93506,
+              "start_ms": 1444505,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 93738,
+              "start_ms": 1538011,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 93088,
+              "start_ms": 1631749,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 96177,
+              "start_ms": 1724837,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 92508,
+              "start_ms": 1821014,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 95666,
+              "start_ms": 1913522,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 92624,
+              "start_ms": 2009188,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 93251,
+              "start_ms": 2101812,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 93738,
+              "start_ms": 2195063,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 97639,
+              "start_ms": 2288801,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 91788,
+              "start_ms": 2386440,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 92972,
+              "start_ms": 2478228,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 93251,
+              "start_ms": 2571200,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 93135,
+              "start_ms": 2664451,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 92554,
+              "start_ms": 2757586,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 92810,
+              "start_ms": 2850140,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 93924,
+              "start_ms": 2942950,
+              "title": "Kapitel 32"
+            },
+            {
+              "length_ms": 94180,
+              "start_ms": 3036874,
+              "title": "Kapitel 33"
+            },
+            {
+              "length_ms": 97732,
+              "start_ms": 3131054,
+              "title": "Kapitel 34"
+            },
+            {
+              "length_ms": 93088,
+              "start_ms": 3228786,
+              "title": "Kapitel 35"
+            },
+            {
+              "length_ms": 92624,
+              "start_ms": 3321874,
+              "title": "Kapitel 36"
+            },
+            {
+              "length_ms": 93019,
+              "start_ms": 3414498,
+              "title": "Kapitel 37"
+            },
+            {
+              "length_ms": 94249,
+              "start_ms": 3507517,
+              "title": "Kapitel 38"
+            },
+            {
+              "length_ms": 95712,
+              "start_ms": 3601766,
+              "title": "Kapitel 39"
+            },
+            {
+              "length_ms": 95944,
+              "start_ms": 3697478,
+              "title": "Kapitel 40"
+            },
+            {
+              "length_ms": 94017,
+              "start_ms": 3793422,
+              "title": "Kapitel 41"
+            },
+            {
+              "length_ms": 92276,
+              "start_ms": 3887439,
+              "title": "Kapitel 42"
+            },
+            {
+              "length_ms": 94899,
+              "start_ms": 3979715,
+              "title": "Kapitel 43"
+            },
+            {
+              "length_ms": 99172,
+              "start_ms": 4074614,
+              "title": "Kapitel 44"
+            },
+            {
+              "length_ms": 168599,
+              "start_ms": 4173786,
+              "title": "Kapitel 45"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Dmijybs9L.jpg",
+          "id": "anna-muller-2025-2",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anna-muller",
+            "christiane-werk",
+            "claudia-urbschat-mingues",
+            "gerrit-schmidt-foss",
+            "jurgen-heinrich",
+            "katharina-von-daake",
+            "kerstin-draeger",
+            "manou-lobowski",
+            "marc-prediger",
+            "niki-nowotny",
+            "patrick-grigutsch",
+            "sascha-dreager",
+            "sven-plate",
+            "thomas-birker",
+            "vreny-kolbener"
+          ],
+          "publisher": "Dreamland Productions",
+          "release_date": "2025-05-23",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0F79CYN5R",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0F79GL9LJ",
               "type": "libex-import"
             }
           ],
