@@ -16319,6 +16319,10 @@
             {
               "asin": "B09L9TXHN4",
               "region": "us"
+            },
+            {
+              "asin": "B09RKK53LP",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81rLC-ip+oL.jpg",
@@ -16328,14 +16332,19 @@
           "narrators": [
             "henry-levya"
           ],
-          "publisher": "Random House Audio",
+          "publisher": "Macmillan",
           "release_date": "2022-07-12",
-          "runtime_min": 587,
+          "runtime_min": 588,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B09L9TXHN4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B09RKK53LP",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "upgrade-blake-crouch"

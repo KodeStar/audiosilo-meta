@@ -14177,6 +14177,10 @@
             {
               "asin": "B01637XZ1Y",
               "region": "us"
+            },
+            {
+              "asin": "B01637WSKS",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -14275,12 +14279,17 @@
           ],
           "publisher": "Hodder & Stoughton",
           "release_date": "2015-10-08",
-          "runtime_min": 508,
+          "runtime_min": 509,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B01637XZ1Y",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B01637WSKS",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "truths-half-truths-and-little-white-lies"

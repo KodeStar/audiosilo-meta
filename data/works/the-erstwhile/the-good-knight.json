@@ -9754,6 +9754,13 @@
       "authors": [
         "c-s-forester"
       ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "mystery",
+        "thriller-suspense",
+        "war-military-fiction"
+      ],
       "id": "the-good-shepherd-c-s-forester",
       "language": "en",
       "license": "CC0-1.0",
@@ -9766,6 +9773,99 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 16346,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 609036,
+              "start_ms": 16346,
+              "title": "Chapter I"
+            },
+            {
+              "length_ms": 1609,
+              "start_ms": 625382,
+              "title": "Chapter II"
+            },
+            {
+              "length_ms": 6122932,
+              "start_ms": 626991,
+              "title": "Wednesday. Forenoon Watch: 0800-1200"
+            },
+            {
+              "length_ms": 4217324,
+              "start_ms": 6749923,
+              "title": "Wednesday. Afternoon Watch: 1200-1600"
+            },
+            {
+              "length_ms": 2197791,
+              "start_ms": 10967247,
+              "title": "Wednesday. Dog Watches: 1600-2000"
+            },
+            {
+              "length_ms": 1579328,
+              "start_ms": 13165038,
+              "title": "Wednesday. First Watch: 2000-2400"
+            },
+            {
+              "length_ms": 1249210,
+              "start_ms": 14744366,
+              "title": "Thursday. Midwatch: 2400-0400"
+            },
+            {
+              "length_ms": 1979013,
+              "start_ms": 15993576,
+              "title": "Thursday. Morning Watch: 0400-0800"
+            },
+            {
+              "length_ms": 2514999,
+              "start_ms": 17972589,
+              "title": "Thursday. Forenoon Watch: 0800-1200"
+            },
+            {
+              "length_ms": 2411949,
+              "start_ms": 20487588,
+              "title": "Thursday. Afternoon Watch: 1200-1600"
+            },
+            {
+              "length_ms": 1187120,
+              "start_ms": 22899537,
+              "title": "Thursday. Dog Watches: 1600-2000"
+            },
+            {
+              "length_ms": 600653,
+              "start_ms": 24086657,
+              "title": "Thursday. First Watch: 2000-2400"
+            },
+            {
+              "length_ms": 866708,
+              "start_ms": 24687310,
+              "title": "Friday. Midwatch: 2400-0400"
+            },
+            {
+              "length_ms": 1622680,
+              "start_ms": 25554018,
+              "title": "Friday. Morning Watch: 0400-0800"
+            },
+            {
+              "length_ms": 613471,
+              "start_ms": 27176698,
+              "title": "Friday. Forenoon Watch: 0800-1200"
+            },
+            {
+              "length_ms": 557093,
+              "start_ms": 27790169,
+              "title": "Chapter III"
+            },
+            {
+              "length_ms": 54148,
+              "start_ms": 28347262,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914oDQKTayL.jpg",
           "id": "edoardo-ballerini-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -9783,6 +9883,10 @@
             {
               "ref": "Libex (libexdb.com) lookup for 1774244152 (retrieved 2026-09-28)",
               "type": "user"
+            },
+            {
+              "ref": "1774244152",
+              "type": "libex-import"
             }
           ],
           "work": "the-good-shepherd-c-s-forester"
@@ -9796,6 +9900,10 @@
         {
           "ref": "Libex (libexdb.com) lookup for 1774244152 (retrieved 2026-09-28)",
           "type": "user"
+        },
+        {
+          "ref": "1774244152",
+          "type": "libex-import"
         }
       ],
       "title": "The Good Shepherd"

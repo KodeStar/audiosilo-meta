@@ -2021,6 +2021,10 @@
             {
               "asin": "B002V5GX0I",
               "region": "us"
+            },
+            {
+              "asin": "B004F1YDBW",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -2099,12 +2103,17 @@
           ],
           "publisher": "Simon & Schuster Audio",
           "release_date": "2008-12-11",
-          "runtime_min": 186,
+          "runtime_min": 187,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B002V5GX0I",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B004F1YDBW",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "wishful-drinking"

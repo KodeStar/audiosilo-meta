@@ -151,6 +151,10 @@
       "authors": [
         "cass-r-sunstein"
       ],
+      "genres": [
+        "business",
+        "self-help"
+      ],
       "id": "too-much-information-cass-r-sunstein",
       "language": "en",
       "license": "CC0-1.0",
@@ -196,6 +200,69 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 30361,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 54548,
+              "start_ms": 30361,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 1049385,
+              "start_ms": 84909,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 2936256,
+              "start_ms": 1134294,
+              "title": "1. Knowledge Is Power, but Ignorance Is Bliss"
+            },
+            {
+              "length_ms": 4546629,
+              "start_ms": 4070550,
+              "title": "2. Measuring Welfare"
+            },
+            {
+              "length_ms": 3550191,
+              "start_ms": 8617179,
+              "title": "3. Psychology"
+            },
+            {
+              "length_ms": 987033,
+              "start_ms": 12167370,
+              "title": "4. Learning the Wrong Thing"
+            },
+            {
+              "length_ms": 1745165,
+              "start_ms": 13154403,
+              "title": "5. Moral Wrongs"
+            },
+            {
+              "length_ms": 2318210,
+              "start_ms": 14899568,
+              "title": "6. Valuing Facebook"
+            },
+            {
+              "length_ms": 3841810,
+              "start_ms": 17217778,
+              "title": "7. Sludge"
+            },
+            {
+              "length_ms": 628491,
+              "start_ms": 21059588,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 38803,
+              "start_ms": 21688079,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8178Q43jXvL.jpg",
           "id": "tristan-morris-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -230,6 +297,10 @@
           "imported_at": "2026-09-24",
           "ref": "1705276342",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1705276342",
+          "type": "libex-import"
         }
       ],
       "title": "Too Much Information"
