@@ -1403,6 +1403,10 @@
             {
               "asin": "B0CN1XH312",
               "region": "us"
+            },
+            {
+              "asin": "B0CKC7SQHY",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -1534,14 +1538,19 @@
           "narrators": [
             "sarah-naudi"
           ],
-          "publisher": "Recorded Books",
+          "publisher": "Penguin Audio",
           "release_date": "2023-12-05",
-          "runtime_min": 307,
+          "runtime_min": 308,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0CN1XH312",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0CKC7SQHY",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "orbital-samantha-harvey"

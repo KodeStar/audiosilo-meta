@@ -7367,6 +7367,11 @@
       "authors": [
         "cass-r-sunstein"
       ],
+      "genres": [
+        "law",
+        "politics",
+        "social-sciences"
+      ],
       "id": "law-and-leviathan",
       "language": "en",
       "license": "CC0-1.0",
@@ -7412,6 +7417,59 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 24344,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 11198,
+              "start_ms": 24344,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 2253806,
+              "start_ms": 35542,
+              "title": "Introduction: Long Continued and Hard Fought Contention"
+            },
+            {
+              "length_ms": 2252683,
+              "start_ms": 2289348,
+              "title": "1. The New Coke"
+            },
+            {
+              "length_ms": 3031040,
+              "start_ms": 4542031,
+              "title": "2. Laws Morality #1 - Rules and Discretion"
+            },
+            {
+              "length_ms": 3126729,
+              "start_ms": 7573071,
+              "title": "3. Laws Morality #2 - Consistency and Reliance"
+            },
+            {
+              "length_ms": 3442056,
+              "start_ms": 10699800,
+              "title": "4. Laws Morality #3 - Limits, Trade-offs and the Judicial War"
+            },
+            {
+              "length_ms": 3252604,
+              "start_ms": 14141856,
+              "title": "5. Surrogate Safeguards and Action"
+            },
+            {
+              "length_ms": 413000,
+              "start_ms": 17394460,
+              "title": "Final Words"
+            },
+            {
+              "length_ms": 39184,
+              "start_ms": 17807460,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81bwy7ABHwL.jpg",
           "id": "mike-chamberlain-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -7451,6 +7509,10 @@
           "imported_at": "2026-09-24",
           "ref": "1705257046",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1705257046",
+          "type": "libex-import"
         }
       ],
       "title": "Law and Leviathan"

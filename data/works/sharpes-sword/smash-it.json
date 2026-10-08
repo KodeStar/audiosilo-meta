@@ -1418,6 +1418,13 @@
       "authors": [
         "a-s-barwich"
       ],
+      "genres": [
+        "health-wellness",
+        "history",
+        "philosophy",
+        "psychology",
+        "science"
+      ],
       "id": "smellosophy",
       "language": "en",
       "license": "CC0-1.0",
@@ -1463,6 +1470,89 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 18523,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 10570,
+              "start_ms": 18523,
+              "title": "Publisher's Note"
+            },
+            {
+              "length_ms": 13608,
+              "start_ms": 29093,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 229088,
+              "start_ms": 42701,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 1555133,
+              "start_ms": 271789,
+              "title": "Introduction: Nosedive"
+            },
+            {
+              "length_ms": 4956693,
+              "start_ms": 1826922,
+              "title": "1. History of the Nose"
+            },
+            {
+              "length_ms": 3329880,
+              "start_ms": 6783615,
+              "title": "2. Modern Olfaction: At the Crossroads"
+            },
+            {
+              "length_ms": 4923883,
+              "start_ms": 10113495,
+              "title": "3. Minding the Nose: Odors in Cognition"
+            },
+            {
+              "length_ms": 3317876,
+              "start_ms": 15037378,
+              "title": "4. How Behavior Senses Chemistry: The Affective Nature of Smell"
+            },
+            {
+              "length_ms": 2427112,
+              "start_ms": 18355254,
+              "title": "5. On Air: From the Nose to the Brain"
+            },
+            {
+              "length_ms": 4133152,
+              "start_ms": 20782366,
+              "title": "6. Molecules to Perception"
+            },
+            {
+              "length_ms": 3891245,
+              "start_ms": 24915518,
+              "title": "7. Fingerprinting the Bulb"
+            },
+            {
+              "length_ms": 3293680,
+              "start_ms": 28806763,
+              "title": "8. Beyond Mapping, to Measuring Smells"
+            },
+            {
+              "length_ms": 4590840,
+              "start_ms": 32100443,
+              "title": "9. Perception as a Skill"
+            },
+            {
+              "length_ms": 1082482,
+              "start_ms": 36691283,
+              "title": "10. The Distillate: The Nose as a Window into Mind and Brain"
+            },
+            {
+              "length_ms": 37183,
+              "start_ms": 37773765,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71iyPgyxG0L.jpg",
           "id": "chloe-cannon-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -1502,6 +1592,10 @@
           "imported_at": "2026-09-24",
           "ref": "1705218288",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1705218288",
+          "type": "libex-import"
         }
       ],
       "title": "Smellosophy"
