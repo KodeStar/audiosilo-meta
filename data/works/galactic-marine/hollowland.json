@@ -7676,6 +7676,12 @@
       "authors": [
         "stephen-cass"
       ],
+      "genres": [
+        "arts-entertainment",
+        "politics",
+        "science",
+        "social-sciences"
+      ],
       "id": "hollyweird-science",
       "language": "en",
       "license": "CC0-1.0",
@@ -7689,6 +7695,94 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 14942,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 11390,
+              "start_ms": 14942,
+              "title": "PDF Enhancement Note"
+            },
+            {
+              "length_ms": 10797,
+              "start_ms": 26332,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 415358,
+              "start_ms": 37129,
+              "title": "Foreword by Jaime Paglia"
+            },
+            {
+              "length_ms": 828789,
+              "start_ms": 452487,
+              "title": "1. Introduction"
+            },
+            {
+              "length_ms": 6322537,
+              "start_ms": 1281276,
+              "title": "2. The Path to Nerdvana"
+            },
+            {
+              "length_ms": 6748995,
+              "start_ms": 7603813,
+              "title": "3. Hollywood Scientists: Reel and Imaginary"
+            },
+            {
+              "length_ms": 4530629,
+              "start_ms": 14352808,
+              "title": "4. Matter Matters"
+            },
+            {
+              "length_ms": 3079477,
+              "start_ms": 18883437,
+              "title": "5. Pure Energy"
+            },
+            {
+              "length_ms": 4696931,
+              "start_ms": 21962914,
+              "title": "6. Radiation: An All-Time Glow"
+            },
+            {
+              "length_ms": 4501977,
+              "start_ms": 26659845,
+              "title": "7. A Quantum of Weirdness"
+            },
+            {
+              "length_ms": 3305313,
+              "start_ms": 31161822,
+              "title": "8. My God, It’s Full of Stars: The Universe"
+            },
+            {
+              "length_ms": 3944699,
+              "start_ms": 34467135,
+              "title": "9. Shortcuts Through Time and Space"
+            },
+            {
+              "length_ms": 1775652,
+              "start_ms": 38411834,
+              "title": "10. Moving in Stereo: Parallel Universes"
+            },
+            {
+              "length_ms": 5818200,
+              "start_ms": 40187486,
+              "title": "11. Braver Newer Worlds"
+            },
+            {
+              "length_ms": 192405,
+              "start_ms": 46005686,
+              "title": "12. Afterword"
+            },
+            {
+              "length_ms": 50753,
+              "start_ms": 46198091,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/810qK4BNppS.jpg",
           "id": "john-lescault-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -7703,6 +7797,10 @@
               "imported_at": "2026-09-24",
               "ref": "1799916677",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1799916677",
+              "type": "libex-import"
             }
           ],
           "work": "hollyweird-science"
@@ -7713,6 +7811,10 @@
           "imported_at": "2026-09-24",
           "ref": "1799916677",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1799916677",
+          "type": "libex-import"
         }
       ],
       "title": "Hollyweird Science"

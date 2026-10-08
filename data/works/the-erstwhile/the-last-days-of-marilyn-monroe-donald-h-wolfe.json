@@ -3989,6 +3989,10 @@
             {
               "asin": "B0BDG1J77F",
               "region": "us"
+            },
+            {
+              "asin": "B0BDFY43G6",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71-fhqnE3VL.jpg",
@@ -3999,14 +4003,19 @@
             "fiona-shaw",
             "richard-osman"
           ],
-          "publisher": "Penguin",
+          "publisher": "Penguin Audio",
           "release_date": "2023-09-14",
-          "runtime_min": 655,
+          "runtime_min": 652,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0BDG1J77F",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0BDFY43G6",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-last-devil-to-die"

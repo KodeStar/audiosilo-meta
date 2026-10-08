@@ -5748,6 +5748,10 @@
             {
               "asin": "B0C8VHYFJ5",
               "region": "us"
+            },
+            {
+              "asin": "B0C8WGLRPQ",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -6061,12 +6065,17 @@
           ],
           "publisher": "Simon & Schuster Audio",
           "release_date": "2023-08-01",
-          "runtime_min": 750,
+          "runtime_min": 751,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0C8VHYFJ5",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0C8WGLRPQ",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "a-stitch-in-time-andrew-j-robinson"

@@ -6992,6 +6992,9 @@
       "authors": [
         "julian-barbour"
       ],
+      "genres": [
+        "science"
+      ],
       "id": "the-janus-point",
       "language": "en",
       "license": "CC0-1.0",
@@ -7005,6 +7008,129 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 19025,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 10100,
+              "start_ms": 19025,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 765856,
+              "start_ms": 29125,
+              "title": "Preface and Acknowledgements"
+            },
+            {
+              "length_ms": 3281096,
+              "start_ms": 794981,
+              "title": "Chapter 1: Time and Its Arrows"
+            },
+            {
+              "length_ms": 3047084,
+              "start_ms": 4076077,
+              "title": "Chapter 2: Bare-Bones Thermodynamics"
+            },
+            {
+              "length_ms": 2435053,
+              "start_ms": 7123161,
+              "title": "Chapter 3: Statistical Mechanics in a Nutshell"
+            },
+            {
+              "length_ms": 2504132,
+              "start_ms": 9558214,
+              "title": "Chapter 4: Boltzmann’s Tussle with Zermelo"
+            },
+            {
+              "length_ms": 1508135,
+              "start_ms": 12062346,
+              "title": "Chapter 5: The Curious History of Boltzmann Brains"
+            },
+            {
+              "length_ms": 2193054,
+              "start_ms": 13570481,
+              "title": "Chapter 6: The Janus Point"
+            },
+            {
+              "length_ms": 1714143,
+              "start_ms": 15763535,
+              "title": "Chapter 7: The Minimal Model"
+            },
+            {
+              "length_ms": 3701075,
+              "start_ms": 17477678,
+              "title": "Chapter 8: The Foundations of Dynamics"
+            },
+            {
+              "length_ms": 1076152,
+              "start_ms": 21178753,
+              "title": "Chapter 9: The Complexity of Shapes"
+            },
+            {
+              "length_ms": 1075106,
+              "start_ms": 22254905,
+              "title": "Chapter 10: Shape Space"
+            },
+            {
+              "length_ms": 1200124,
+              "start_ms": 23330011,
+              "title": "Chapter 11: A Role Reversal"
+            },
+            {
+              "length_ms": 1210107,
+              "start_ms": 24530135,
+              "title": "Chapter 12: This Most Beautiful System"
+            },
+            {
+              "length_ms": 1108125,
+              "start_ms": 25740242,
+              "title": "Chapter 13: Two Kinds of Dynamical Laws"
+            },
+            {
+              "length_ms": 1381099,
+              "start_ms": 26848367,
+              "title": "Chapter 14: A Blindfolded Creator"
+            },
+            {
+              "length_ms": 2451144,
+              "start_ms": 28229466,
+              "title": "Chapter 15: An Entropy-Like Concept for the Universe"
+            },
+            {
+              "length_ms": 5684082,
+              "start_ms": 30680610,
+              "title": "Chapter 16: A Glimpse of the Big Bang?"
+            },
+            {
+              "length_ms": 2576091,
+              "start_ms": 36364692,
+              "title": "Chapter 17: The Big Bang in General Relativity"
+            },
+            {
+              "length_ms": 3410128,
+              "start_ms": 38940783,
+              "title": "Chapter 18: The Large-Scale Structure of the Universe"
+            },
+            {
+              "length_ms": 5126106,
+              "start_ms": 42350911,
+              "title": "Chapter 19: The Creation of Structure in the Universe"
+            },
+            {
+              "length_ms": 2034290,
+              "start_ms": 47477017,
+              "title": "Chapter 20: What Does It All Mean?"
+            },
+            {
+              "length_ms": 52834,
+              "start_ms": 49511307,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LJnCZPHBS.jpg",
           "id": "james-langton-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -7019,6 +7145,10 @@
               "imported_at": "2026-09-24",
               "ref": "1713586681",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1713586681",
+              "type": "libex-import"
             }
           ],
           "work": "the-janus-point"
@@ -7029,6 +7159,10 @@
           "imported_at": "2026-09-24",
           "ref": "1713586681",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1713586681",
+          "type": "libex-import"
         }
       ],
       "title": "The Janus Point"

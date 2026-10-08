@@ -10498,6 +10498,13 @@
       "authors": [
         "eva-holland"
       ],
+      "genres": [
+        "health-wellness",
+        "parenting-relationships",
+        "psychology",
+        "science",
+        "self-help"
+      ],
       "id": "nerve-eva-holland",
       "language": "en",
       "license": "CC0-1.0",
@@ -10511,6 +10518,94 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17345,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 31310,
+              "start_ms": 17345,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 1042380,
+              "start_ms": 48655,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 1091035,
+              "title": "Part One"
+            },
+            {
+              "length_ms": 2148119,
+              "start_ms": 1094035,
+              "title": "1. A Personal History of Fear"
+            },
+            {
+              "length_ms": 3098122,
+              "start_ms": 3242154,
+              "title": "2. This Is Your Brain on Fear"
+            },
+            {
+              "length_ms": 1146462,
+              "start_ms": 6340276,
+              "title": "3. A Fear Fulfilled"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 7486738,
+              "title": "Part Two"
+            },
+            {
+              "length_ms": 1757699,
+              "start_ms": 7489738,
+              "title": "4. Free Fall"
+            },
+            {
+              "length_ms": 3238231,
+              "start_ms": 9247437,
+              "title": "5. On the Wall"
+            },
+            {
+              "length_ms": 4713697,
+              "start_ms": 12485668,
+              "title": "6. Wrecked"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 17199365,
+              "title": "Part Three"
+            },
+            {
+              "length_ms": 2603532,
+              "start_ms": 17202365,
+              "title": "7. The Fear Cure"
+            },
+            {
+              "length_ms": 2397437,
+              "start_ms": 19805897,
+              "title": "8. Fearless"
+            },
+            {
+              "length_ms": 2082690,
+              "start_ms": 22203334,
+              "title": "9. Why Fear Matters"
+            },
+            {
+              "length_ms": 1151918,
+              "start_ms": 24286024,
+              "title": "Epilogue: A Détente with Fear"
+            },
+            {
+              "length_ms": 32065,
+              "start_ms": 25437942,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rdZ4vUtpL.jpg",
           "id": "kirsten-potter-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -10525,6 +10620,10 @@
               "imported_at": "2026-09-24",
               "ref": "1974962865",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1974962865",
+              "type": "libex-import"
             }
           ],
           "work": "nerve-eva-holland"
@@ -10535,6 +10634,10 @@
           "imported_at": "2026-09-24",
           "ref": "1974962865",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1974962865",
+          "type": "libex-import"
         }
       ],
       "title": "Nerve"

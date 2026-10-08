@@ -642,6 +642,13 @@
       "authors": [
         "bill-dare"
       ],
+      "genres": [
+        "comedy-humor",
+        "fantasy",
+        "literary-fiction",
+        "religious-fiction",
+        "science-fiction"
+      ],
       "id": "brian-gullivers-travels",
       "language": "en",
       "license": "CC0-1.0",
@@ -687,6 +694,69 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1664080,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1667517,
+              "start_ms": 1664080,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1672161,
+              "start_ms": 3331597,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1668098,
+              "start_ms": 5003758,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1629808,
+              "start_ms": 6671856,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1645783,
+              "start_ms": 8301664,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1680613,
+              "start_ms": 9947447,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1679127,
+              "start_ms": 11628060,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1682471,
+              "start_ms": 13307187,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1684375,
+              "start_ms": 14989658,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1678965,
+              "start_ms": 16674033,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1678686,
+              "start_ms": 18352998,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LvDtWTOwL.jpg",
           "id": "neil-pearson-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -730,6 +800,10 @@
           "imported_at": "2026-10-03",
           "ref": "178753829X",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "178753829X",
+          "type": "libex-import"
         }
       ],
       "title": "Brian Gulliver's Travels"

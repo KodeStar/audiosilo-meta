@@ -1698,6 +1698,13 @@
       "authors": [
         "rahul-jandial"
       ],
+      "genres": [
+        "health-wellness",
+        "medicine",
+        "parenting-relationships",
+        "psychology",
+        "self-help"
+      ],
       "id": "neurofitness",
       "language": "en",
       "license": "CC0-1.0",
@@ -1711,6 +1718,104 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 24625,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 773514,
+              "start_ms": 24625,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 1695033,
+              "start_ms": 798139,
+              "title": "Chapter 1: An Anatomy Lesson Like No Other"
+            },
+            {
+              "length_ms": 1646852,
+              "start_ms": 2493172,
+              "title": "Chapter 2: Beyond Memory and IQ"
+            },
+            {
+              "length_ms": 1389714,
+              "start_ms": 4140024,
+              "title": "Chapter 3: The Seat of Language"
+            },
+            {
+              "length_ms": 1799639,
+              "start_ms": 5529738,
+              "title": "Chapter 4: Unleash Creativity"
+            },
+            {
+              "length_ms": 1885808,
+              "start_ms": 7329377,
+              "title": "Chapter 5: \"Smart Drugs, Stupid Drugs\""
+            },
+            {
+              "length_ms": 2472019,
+              "start_ms": 9215185,
+              "title": "Chapter 6: Sleep on It"
+            },
+            {
+              "length_ms": 1007095,
+              "start_ms": 11687204,
+              "title": "Chapter 7: Just Breathe"
+            },
+            {
+              "length_ms": 1328413,
+              "start_ms": 12694299,
+              "title": "Chapter 8: How to Handle Head Injuries"
+            },
+            {
+              "length_ms": 1202840,
+              "start_ms": 14022712,
+              "title": "Chapter 9:Food for Thought"
+            },
+            {
+              "length_ms": 1574568,
+              "start_ms": 15225552,
+              "title": "Chapter 10: How the Brain Heals Itself"
+            },
+            {
+              "length_ms": 1686558,
+              "start_ms": 16800120,
+              "title": "Chapter 11: The Bionic Brain"
+            },
+            {
+              "length_ms": 1098025,
+              "start_ms": 18486678,
+              "title": "Chapter 12: Shock and Tingle"
+            },
+            {
+              "length_ms": 1746187,
+              "start_ms": 19584703,
+              "title": "Chapter 13: Stem Cells and Beyond"
+            },
+            {
+              "length_ms": 1850328,
+              "start_ms": 21330890,
+              "title": "Chapter 14: The Younger Brain"
+            },
+            {
+              "length_ms": 1479877,
+              "start_ms": 23181218,
+              "title": "Chapter 15: The Older Brain"
+            },
+            {
+              "length_ms": 199701,
+              "start_ms": 24661095,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 39928,
+              "start_ms": 24860796,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7181wcF6zML.jpg",
           "id": "graham-winton-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -1725,6 +1830,10 @@
               "imported_at": "2026-09-24",
               "ref": "1980034168",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1980034168",
+              "type": "libex-import"
             }
           ],
           "work": "neurofitness"
@@ -1735,6 +1844,10 @@
           "imported_at": "2026-09-24",
           "ref": "1980034168",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1980034168",
+          "type": "libex-import"
         }
       ],
       "title": "Neurofitness"

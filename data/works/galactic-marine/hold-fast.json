@@ -10792,6 +10792,14 @@
       "authors": [
         "tyler-j-kelley"
       ],
+      "genres": [
+        "history",
+        "nature",
+        "politics",
+        "science",
+        "sports",
+        "technology"
+      ],
       "id": "holding-back-the-river",
       "language": "en",
       "license": "CC0-1.0",
@@ -10837,6 +10845,49 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 21919,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3601,
+              "start_ms": 21919,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 2204617,
+              "start_ms": 25520,
+              "title": "Prelude: Perfecting Nature"
+            },
+            {
+              "length_ms": 9518113,
+              "start_ms": 2230137,
+              "title": "Part I: The Lock"
+            },
+            {
+              "length_ms": 10756618,
+              "start_ms": 11748250,
+              "title": "Part II: Alluvial Empire"
+            },
+            {
+              "length_ms": 8513247,
+              "start_ms": 22504868,
+              "title": "Part III: Rivers of Earth"
+            },
+            {
+              "length_ms": 2002372,
+              "start_ms": 31018115,
+              "title": "Coda: Retreat and Fortify"
+            },
+            {
+              "length_ms": 36151,
+              "start_ms": 33020487,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91aezYq3zXS.jpg",
           "id": "samantha-desz-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -10871,6 +10922,10 @@
           "imported_at": "2026-09-24",
           "ref": "1797121375",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1797121375",
+          "type": "libex-import"
         }
       ],
       "title": "Holding Back the River"

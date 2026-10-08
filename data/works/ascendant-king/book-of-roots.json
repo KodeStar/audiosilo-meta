@@ -14883,6 +14883,10 @@
             {
               "asin": "B0C3WVQSMS",
               "region": "us"
+            },
+            {
+              "asin": "B0C3WTPPRD",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -15124,9 +15128,9 @@
           "narrators": [
             "travis-baldree"
           ],
-          "publisher": "Macmillan Audio",
+          "publisher": "Tor",
           "release_date": "2023-11-07",
-          "runtime_min": 504,
+          "runtime_min": 482,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -15137,6 +15141,11 @@
               "imported_at": "2026-08-02",
               "ref": "B0C3WVQSMS",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0C3WTPPRD",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "bookshops-bonedust"
