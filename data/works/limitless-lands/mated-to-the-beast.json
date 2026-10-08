@@ -7674,6 +7674,12 @@
       "authors": [
         "francis-su"
       ],
+      "genres": [
+        "education",
+        "politics",
+        "science",
+        "social-sciences"
+      ],
       "id": "mathematics-for-human-flourishing",
       "language": "en",
       "license": "CC0-1.0",
@@ -7719,6 +7725,99 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 19724,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 36731,
+              "start_ms": 19724,
+              "title": "Publisher's Note"
+            },
+            {
+              "length_ms": 153522,
+              "start_ms": 56455,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 1584204,
+              "start_ms": 209977,
+              "title": "Chapter 1: Flourishing"
+            },
+            {
+              "length_ms": 1735087,
+              "start_ms": 1794181,
+              "title": "Chapter 2: Exploration"
+            },
+            {
+              "length_ms": 1479529,
+              "start_ms": 3529268,
+              "title": "Chapter 3: Meaning"
+            },
+            {
+              "length_ms": 1999423,
+              "start_ms": 5008797,
+              "title": "Chapter 4: Play"
+            },
+            {
+              "length_ms": 2141831,
+              "start_ms": 7008220,
+              "title": "Chapter 5: Beauty"
+            },
+            {
+              "length_ms": 1375619,
+              "start_ms": 9150051,
+              "title": "Chapter 6: Permanence"
+            },
+            {
+              "length_ms": 1670304,
+              "start_ms": 10525670,
+              "title": "Chapter 7: Truth"
+            },
+            {
+              "length_ms": 1348754,
+              "start_ms": 12195974,
+              "title": "Chapter 8: Struggle"
+            },
+            {
+              "length_ms": 2304557,
+              "start_ms": 13544728,
+              "title": "Chapter 9: Power"
+            },
+            {
+              "length_ms": 2094648,
+              "start_ms": 15849285,
+              "title": "Chapter 10: Justice"
+            },
+            {
+              "length_ms": 2414364,
+              "start_ms": 17943933,
+              "title": "Chapter 11: Freedom"
+            },
+            {
+              "length_ms": 1734530,
+              "start_ms": 20358297,
+              "title": "Chapter 12: Community"
+            },
+            {
+              "length_ms": 1733578,
+              "start_ms": 22092827,
+              "title": "Chapter 13: Love"
+            },
+            {
+              "length_ms": 916094,
+              "start_ms": 23826405,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 43794,
+              "start_ms": 24742499,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xVYdfA+hL.jpg",
           "id": "david-sadzin-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -7758,6 +7857,10 @@
           "imported_at": "2026-09-24",
           "ref": "170522380X",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "170522380X",
+          "type": "libex-import"
         }
       ],
       "title": "Mathematics for Human Flourishing"

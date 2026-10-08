@@ -2885,6 +2885,12 @@
       "authors": [
         "daniel-deudney"
       ],
+      "genres": [
+        "espionage",
+        "history",
+        "politics",
+        "science"
+      ],
       "id": "dark-skies-daniel-deudney",
       "language": "en",
       "license": "CC0-1.0",
@@ -2898,6 +2904,104 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 20481,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 9272,
+              "start_ms": 20481,
+              "title": "Publisher's Note"
+            },
+            {
+              "length_ms": 1562439,
+              "start_ms": 29753,
+              "title": "Prologue: Machine Civilization and the Transformation of the Earth"
+            },
+            {
+              "length_ms": 7333,
+              "start_ms": 1592192,
+              "title": "Part One: The Earth, Technology, and Space"
+            },
+            {
+              "length_ms": 4814197,
+              "start_ms": 1599525,
+              "title": "1. The Promise of Space Revisited"
+            },
+            {
+              "length_ms": 7101358,
+              "start_ms": 6413722,
+              "title": "2. Questions, Debates, and Frameworks"
+            },
+            {
+              "length_ms": 7649,
+              "start_ms": 13515080,
+              "title": "Part Two: Geographic and Technological Horizons"
+            },
+            {
+              "length_ms": 7193740,
+              "start_ms": 13522729,
+              "title": "3. New Heavens, New Earth"
+            },
+            {
+              "length_ms": 7457087,
+              "start_ms": 20716469,
+              "title": "4. Technological Imaginaries, Feasibilities, Syndromes, and Catastrophes"
+            },
+            {
+              "length_ms": 6252,
+              "start_ms": 28173556,
+              "title": "Part Three: Space Expansionism"
+            },
+            {
+              "length_ms": 6975151,
+              "start_ms": 28179808,
+              "title": "5. Absolute Weapons, Lightning Wars, and Ultimate Positions"
+            },
+            {
+              "length_ms": 8277494,
+              "start_ms": 35154959,
+              "title": "6. Limitless Frontiers, Spaceship Earths, and Higher Humanities"
+            },
+            {
+              "length_ms": 6777184,
+              "start_ms": 43432453,
+              "title": "7. Superpower Restraints, Planetary Security, and Earth Identity"
+            },
+            {
+              "length_ms": 5260,
+              "start_ms": 50209637,
+              "title": "Part Four: Assessment"
+            },
+            {
+              "length_ms": 7737595,
+              "start_ms": 50214897,
+              "title": "8. Geography, Geopolitics, and Geohistory"
+            },
+            {
+              "length_ms": 5807588,
+              "start_ms": 57952492,
+              "title": "9. Earth Space, Planetary Geopolitics, and World Governments"
+            },
+            {
+              "length_ms": 7353944,
+              "start_ms": 63760080,
+              "title": "10. Solar Space, Island Earth, and the Ends of Humanity"
+            },
+            {
+              "length_ms": 3280245,
+              "start_ms": 71114024,
+              "title": "Conclusion: Space for Earth"
+            },
+            {
+              "length_ms": 37885,
+              "start_ms": 74394269,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81OjTI2mUtL.jpg",
           "id": "tom-parks-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -2912,6 +3016,10 @@
               "imported_at": "2026-09-24",
               "ref": "1705266444",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1705266444",
+              "type": "libex-import"
             }
           ],
           "work": "dark-skies-daniel-deudney"
@@ -2922,6 +3030,10 @@
           "imported_at": "2026-09-24",
           "ref": "1705266444",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1705266444",
+          "type": "libex-import"
         }
       ],
       "title": "Dark Skies"

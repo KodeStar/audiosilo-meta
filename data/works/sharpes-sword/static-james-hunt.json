@@ -5062,6 +5062,10 @@
             {
               "asin": "B09RYRTK81",
               "region": "us"
+            },
+            {
+              "asin": "B09RYQF2Y8",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5285,12 +5289,17 @@
           ],
           "publisher": "Penguin Audio",
           "release_date": "2022-10-04",
-          "runtime_min": 932,
+          "runtime_min": 933,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B09RYRTK81",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B09RYQF2Y8",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "station-eternity"

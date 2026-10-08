@@ -5677,6 +5677,10 @@
             {
               "asin": "B002V0THHO",
               "region": "us"
+            },
+            {
+              "asin": "B004FTXZ36",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -5800,12 +5804,17 @@
           ],
           "publisher": "ISIS Audio Books",
           "release_date": "2009-01-29",
-          "runtime_min": 868,
+          "runtime_min": 869,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B002V0THHO",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B004FTXZ36",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "a-snowball-in-hell"

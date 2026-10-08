@@ -14183,6 +14183,10 @@
             {
               "asin": "B0C6FPMDGV",
               "region": "us"
+            },
+            {
+              "asin": "B0C6FL35YR",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -14356,12 +14360,17 @@
           ],
           "publisher": "Audible Studios",
           "release_date": "2023-09-19",
-          "runtime_min": 485,
+          "runtime_min": 486,
           "sources": [
             {
               "imported_at": "2026-07-29",
               "ref": "B0C6FPMDGV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-08",
+              "ref": "B0C6FL35YR",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "starter-villain"

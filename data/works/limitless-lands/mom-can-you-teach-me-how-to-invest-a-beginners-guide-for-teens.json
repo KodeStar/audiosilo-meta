@@ -307,6 +307,14 @@
       "authors": [
         "abigail-tucker"
       ],
+      "genres": [
+        "nature",
+        "parenting-relationships",
+        "politics",
+        "science",
+        "social-sciences",
+        "sports"
+      ],
       "id": "mom-genes",
       "language": "en",
       "license": "CC0-1.0",
@@ -352,6 +360,84 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 21013,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 5456,
+              "start_ms": 21013,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 39660,
+              "start_ms": 26469,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 2108116,
+              "start_ms": 66129,
+              "title": "Introduction: Of Mice and Moms"
+            },
+            {
+              "length_ms": 3699518,
+              "start_ms": 2174245,
+              "title": "Chapter 1: Momentum"
+            },
+            {
+              "length_ms": 3385748,
+              "start_ms": 5873763,
+              "title": "Chapter 2: Dad Genes"
+            },
+            {
+              "length_ms": 2334882,
+              "start_ms": 9259511,
+              "title": "Chapter 3: The Whole Shebang"
+            },
+            {
+              "length_ms": 2165515,
+              "start_ms": 11594393,
+              "title": "Chapter 4: Mommy Weirdest"
+            },
+            {
+              "length_ms": 3514271,
+              "start_ms": 13759908,
+              "title": "Chapter 5: Mother of Invention"
+            },
+            {
+              "length_ms": 3393061,
+              "start_ms": 17274179,
+              "title": "Chapter 6: In Search of the Mom Gene"
+            },
+            {
+              "length_ms": 3820843,
+              "start_ms": 20667240,
+              "title": "Chapter 7: Are You Kidding Me?"
+            },
+            {
+              "length_ms": 3660486,
+              "start_ms": 24488083,
+              "title": "Chapter 8: Thermometers"
+            },
+            {
+              "length_ms": 4211752,
+              "start_ms": 28148569,
+              "title": "Chapter 9: No Mom Is an Island"
+            },
+            {
+              "length_ms": 3538256,
+              "start_ms": 32360321,
+              "title": "Chapter 10: Motherland"
+            },
+            {
+              "length_ms": 51360,
+              "start_ms": 35898577,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815GnhFYvCL.jpg",
           "id": "samantha-desz-2021",
           "language": "en",
           "license": "CC0-1.0",
@@ -386,6 +472,10 @@
           "imported_at": "2026-09-24",
           "ref": "1797120107",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1797120107",
+          "type": "libex-import"
         }
       ],
       "title": "Mom Genes"

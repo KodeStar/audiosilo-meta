@@ -2732,6 +2732,13 @@
       "authors": [
         "rebecca-giggs"
       ],
+      "genres": [
+        "nature",
+        "philosophy",
+        "politics",
+        "science",
+        "sports"
+      ],
       "id": "fathoms-rebecca-giggs",
       "language": "en",
       "license": "CC0-1.0",
@@ -2749,6 +2756,74 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17809,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 60861,
+              "start_ms": 17809,
+              "title": "Fathom"
+            },
+            {
+              "length_ms": 4038343,
+              "start_ms": 78670,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 5543462,
+              "start_ms": 4117013,
+              "title": "Chapter 1: Petroglyph"
+            },
+            {
+              "length_ms": 5210023,
+              "start_ms": 9660475,
+              "title": "Chapter 2: The Oooo-ers"
+            },
+            {
+              "length_ms": 3277263,
+              "start_ms": 14870498,
+              "title": "Chapter 3: Blue Museum"
+            },
+            {
+              "length_ms": 5163746,
+              "start_ms": 18147761,
+              "title": "Chapter 4: Charisma"
+            },
+            {
+              "length_ms": 5240465,
+              "start_ms": 23311507,
+              "title": "Chapter 5: Sounding"
+            },
+            {
+              "length_ms": 4653929,
+              "start_ms": 28551972,
+              "title": "Chapter 6: Sea Pie"
+            },
+            {
+              "length_ms": 3344370,
+              "start_ms": 33205901,
+              "title": "Chapter 7: Kitsch Interior"
+            },
+            {
+              "length_ms": 4486907,
+              "start_ms": 36550271,
+              "title": "Chapter 8: Scantling"
+            },
+            {
+              "length_ms": 2447801,
+              "start_ms": 41037178,
+              "title": "Epilogue: Deep End"
+            },
+            {
+              "length_ms": 30486,
+              "start_ms": 43484979,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71jShai+DoL.jpg",
           "id": "shiromi-arserio-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -2778,6 +2853,10 @@
           "imported_at": "2026-09-24",
           "ref": "1797114018",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1797114018",
+          "type": "libex-import"
         }
       ],
       "title": "Fathoms"
