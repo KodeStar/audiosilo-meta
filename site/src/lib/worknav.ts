@@ -20,8 +20,8 @@ export interface SeriesNeighbors {
 
 /** The entries immediately before and after currentWorkId within a series'
     member list, taken in the order received. The API's ordering guarantee is the
-    contract: the server returns series works sorted by position (internal/serve
-    seriesDetail), and every consumer (the series page, the rail, this nav)
+    contract: the server returns series works sorted by position (pkg/query
+    SeriesDetail), and every consumer (the series page, the rail, this nav)
     renders that order as-is - re-sorting here would be a second ordering seam
     that could disagree with the rail on the same page. Returns nulls when the
     current work is not in the list, and a one-sided result at the first/last

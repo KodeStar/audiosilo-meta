@@ -33,7 +33,7 @@ import { markedWorkIDs, stringList, watchedSlugs, type Watchlist } from './watch
 export const WATCH_BADGE_STORAGE_KEY = 'audiosilo-meta:watch-badge'
 
 /** How long a fetched feed is reused. One hour, which is also the feed's own
-    public cache lifetime (internal/serve/watchfeed.go), so a shorter TTL here
+    public cache lifetime (pkg/query/watchfeed.go), so a shorter TTL here
     would mostly re-read a CDN copy of what we already have. */
 export const WATCH_BADGE_TTL_MS = 60 * 60 * 1000
 
@@ -170,7 +170,7 @@ export function workIDsFromFeed(feed: unknown): string[] {
 }
 
 /** The work slug an item URL names, or null. The item URL is
-    `<siteURL>/works/<slug>` (internal/serve/watchfeed.go), so the path is read
+    `<siteURL>/works/<slug>` (pkg/query/watchfeed.go), so the path is read
     by the islands' own `/works/{slug}` rule rather than a second regex - and
     the base only settles a relative value, since the feed always states an
     absolute one. A URL this cannot parse is skipped. */

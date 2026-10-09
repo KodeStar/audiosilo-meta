@@ -88,7 +88,7 @@ describe('flattenAcrossSeries', () => {
     // A work really does belong to several series (an omnibus, a crossover), and
     // the flat list is "what came out", not "where am I in each series" - so one
     // book is one row. The server's feed applies the same rule
-    // (internal/serve/watchfeed.go `seenWork`).
+    // (pkg/query/watchfeed.go `seenWork`).
     const shared = entry('shared', '1', '2026-09-01')
     const lists = flattenAcrossSeries([
       panel('first', 'First', {
@@ -187,7 +187,7 @@ describe('compareAvailable', () => {
 })
 
 describe('positionStart', () => {
-  // The twin of Go positionStart in internal/serve/queries.go.
+  // The twin of Go positionStart in pkg/query/queries.go.
   it('reads a decimal, a range and a padded number', () => {
     expect(positionStart('2.5')).toBe(2.5)
     expect(positionStart('1-3')).toBe(1)

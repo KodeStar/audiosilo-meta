@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 // knobGitHub is a releases endpoint with the knobs these tests need: it can go
@@ -199,9 +200,9 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	for _, snap := range []*snapshot{first, second} {
-		if _, err := os.Stat(snap.path); err != nil {
-			t.Fatalf("artifact %s of a snapshot still in grace was pruned: %v", snap.path, err)
+	for _, snap := range []*query.DB{first, second} {
+		if _, err := os.Stat(snap.Path()); err != nil {
+			t.Fatalf("artifact %s of a snapshot still in grace was pruned: %v", snap.Path(), err)
 		}
 	}
 
@@ -215,8 +216,7 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 		go func(i int) {
 			defer wg.Done()
 			<-start
-			var n int
-			errs[i] = first.db.QueryRow(`SELECT COUNT(*) FROM works`).Scan(&n)
+			_, errs[i] = first.Pages(query.WorkPages, 1, 0)
 		}(i)
 	}
 	close(start)
@@ -240,7 +240,7 @@ func TestPruneCollectsArtifactsOnceGraceElapses(t *testing.T) {
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
-	superseded := srv.current().path
+	superseded := srv.current().Path()
 	f.publish(tagR2, makeAssets(t, v2, "", nil))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
@@ -307,8 +307,8 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 	if elapsed := time.Since(started); elapsed < srv.gh.stallTimeout {
 		t.Fatalf("the download finished in %s, faster than the %s stall timeout - the test proved nothing", elapsed, srv.gh.stallTimeout)
 	}
-	if srv.loaded != tagR2 || srv.current().stats.Works != 5 {
-		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().stats.Works, tagR2)
+	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
+		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().Stats().Works, tagR2)
 	}
 }
 
@@ -365,8 +365,8 @@ func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
-	if srv.loaded != tagR2 || srv.current().stats.Works != 5 {
-		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().stats.Works, tagR2)
+	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
+		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().Stats().Works, tagR2)
 	}
 	if got := f.hitCount(dataAssetName); got != 0 {
 		t.Errorf("artifact downloaded %d times, want 0 (the cache already held it)", got)
@@ -395,8 +395,8 @@ func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 	if got := f.hitCount(dataAssetName); got != 1 {
 		t.Errorf("artifact downloaded %d times, want 1 (the mismatched cache file must not be adopted)", got)
 	}
-	if srv.loaded != tagR2 || srv.current().stats.Works != 5 {
-		t.Errorf("loaded = %q with %d works, want %q / 5 (the freshly downloaded artifact)", srv.loaded, srv.current().stats.Works, tagR2)
+	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
+		t.Errorf("loaded = %q with %d works, want %q / 5 (the freshly downloaded artifact)", srv.loaded, srv.current().Stats().Works, tagR2)
 	}
 }
 
@@ -426,11 +426,11 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	if snap == nil {
 		t.Fatal("boot answered 503 with a loadable artifact in the cache directory")
 	}
-	if snap.stats.Works != 4 {
-		t.Errorf("works = %d, want 4", snap.stats.Works)
+	if snap.Stats().Works != 4 {
+		t.Errorf("works = %d, want 4", snap.Stats().Works)
 	}
-	if snap.tag != tagR1 {
-		t.Errorf("snapshot tag = %q, want %q (read back from the file name, so a patch can still be based on it)", snap.tag, tagR1)
+	if snap.Info().Tag != tagR1 {
+		t.Errorf("snapshot tag = %q, want %q (read back from the file name, so a patch can still be based on it)", snap.Info().Tag, tagR1)
 	}
 	if srv.loaded != "" {
 		t.Errorf("loaded = %q, want empty: nothing has confirmed this artifact against a release yet", srv.loaded)

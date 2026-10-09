@@ -471,7 +471,7 @@ func TestRefreshRejectsCorruptDownload(t *testing.T) {
 	if srv.loaded != "" {
 		t.Errorf("loaded tag = %q, want empty after rejected refresh", srv.loaded)
 	}
-	if srv.current().stats.Works != 4 {
+	if srv.current().Stats().Works != 4 {
 		t.Errorf("serving snapshot changed after a rejected refresh")
 	}
 }
@@ -488,11 +488,11 @@ func TestRefreshPatchHappyPath(t *testing.T) {
 	if srv.loaded != tagR2 {
 		t.Errorf("loaded = %q, want %q", srv.loaded, tagR2)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted)", got)
 	}
 	// The reconstructed artifact must be byte-identical to the real v2.
-	patched := readDB(t, srv.current().path)
+	patched := readDB(t, srv.current().Path())
 	if !bytes.Equal(patched, v2) {
 		t.Errorf("patched artifact (%d bytes) differs from v2 (%d bytes)", len(patched), len(v2))
 	}
@@ -566,7 +566,7 @@ func TestRefreshPatchFallsBack(t *testing.T) {
 			if srv.loaded != tagR2 {
 				t.Errorf("loaded = %q, want %q", srv.loaded, tagR2)
 			}
-			if got := srv.current().stats.Works; got != 5 {
+			if got := srv.current().Stats().Works; got != 5 {
 				t.Errorf("works = %d, want 5 (v2 adopted via full download)", got)
 			}
 			if got := fake.hitCount(dataAssetName); got != 1 {
@@ -607,7 +607,7 @@ func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
 	if srv.loaded != tagR2 {
 		t.Errorf("loaded = %q, want %q (retry must not be 304-blocked)", srv.loaded, tagR2)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted on retry)", got)
 	}
 }
@@ -642,7 +642,7 @@ func TestRefreshSkipsNonDataReleases(t *testing.T) {
 			if srv.loaded != tagR2 {
 				t.Errorf("loaded = %q, want %q (code/draft/prerelease entries must be skipped)", srv.loaded, tagR2)
 			}
-			if got := srv.current().stats.Works; got != 5 {
+			if got := srv.current().Stats().Works; got != 5 {
 				t.Errorf("works = %d, want 5 (v2 adopted)", got)
 			}
 			if got := fake.hitCount(dataAssetName); got != tc.wantGz {
@@ -687,7 +687,7 @@ func TestRefreshSelectsByPublishedAt(t *testing.T) {
 	if srv.loaded != newerTag {
 		t.Errorf("loaded = %q, want %q (must select max published_at, not the first-listed data release)", srv.loaded, newerTag)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (the newer-published v2 artifact adopted)", got)
 	}
 	// The stale release's gz must never have been downloaded.
@@ -718,7 +718,7 @@ func TestRefreshTieBreaksLikeJq(t *testing.T) {
 	if srv.loaded != second.tag {
 		t.Errorf("loaded = %q, want %q (later-in-list must win a published_at tie, matching jq max_by)", srv.loaded, second.tag)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (the later-listed v2 artifact adopted)", got)
 	}
 }
@@ -741,7 +741,7 @@ func TestRefreshErrorsWithoutDataRelease(t *testing.T) {
 	if srv.loaded != tagR1 {
 		t.Errorf("loaded = %q, want still %q", srv.loaded, tagR1)
 	}
-	if got := srv.current().stats.Works; got != 4 {
+	if got := srv.current().Stats().Works; got != 4 {
 		t.Errorf("works = %d, want 4 (snapshot unchanged)", got)
 	}
 }
@@ -841,7 +841,7 @@ func TestRefreshPrunesCache(t *testing.T) {
 		time.Sleep(10 * time.Millisecond)
 	}
 	// The superseded artifact is gone but the live one still opens.
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 after the prune", got)
 	}
 }
@@ -879,7 +879,7 @@ func TestPatchSkippedOverBaseCap(t *testing.T) {
 	if got := fake.hitCount(dataAssetName); got != 1 {
 		t.Errorf("gz fetched %d times, want 1", got)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted via full download)", got)
 	}
 }
@@ -957,7 +957,7 @@ func TestPollLoopRefreshesAtStartup(t *testing.T) {
 	// is only a cap (the loop exits as soon as R2 lands) - keep it generous so a
 	// loaded -race CI runner can't flake it.
 	deadline := time.Now().Add(10 * time.Second)
-	for srv.current().tag != tagR2 {
+	for srv.current().Info().Tag != tagR2 {
 		if time.Now().After(deadline) {
 			cancel()
 			<-done
@@ -965,7 +965,7 @@ func TestPollLoopRefreshesAtStartup(t *testing.T) {
 		}
 		time.Sleep(10 * time.Millisecond)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted at startup)", got)
 	}
 
@@ -1104,7 +1104,7 @@ func TestExpansionBoundReadsTheLoadedArtifact(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { srv.current().close() })
+	t.Cleanup(func() { _ = srv.current().Close() })
 
 	size := srv.currentArtifactBytes()
 	if size <= 0 {
@@ -1461,7 +1461,7 @@ func TestFullRefreshSurvivesAnUndeclaredAssetSize(t *testing.T) {
 	if err := srv.fullRefresh(context.Background(), rel); err != nil {
 		t.Fatalf("a refresh whose assets declare no size failed: %v", err)
 	}
-	if got := srv.current().tag; got != tagR1 {
+	if got := srv.current().Info().Tag; got != tagR1 {
 		t.Errorf("loaded tag = %q, want %q", got, tagR1)
 	}
 	if !strings.Contains(logged.String(), "declares no size") {

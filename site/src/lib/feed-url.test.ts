@@ -57,7 +57,7 @@ describe('buildFeedURLs', () => {
   })
 
   it('refuses a list the server would reject, saying why', async () => {
-    // The server's cap (maxWatchSeries, internal/serve/seriesparam.go) - a URL
+    // The server's cap (maxWatchSeries, pkg/query/seriesparam.go) - a URL
     // past it 400s inside the reader's feed reader, where nobody would see it.
     const slugs = Array.from({ length: MAX_FEED_SERIES + 1 }, (_, i) => `series-${i}`)
     await expect(buildFeedURLs(watchlist(slugs), 'https://meta.example', '')).rejects.toThrow(
@@ -129,7 +129,7 @@ describe('buildFeedURLs', () => {
 
   // The compact form is a cosmetic shortening, not a contract: the server takes
   // a plain CSV of the same 200 series (validateSeriesList,
-  // internal/serve/seriesparam.go), so a browser without CompressionStream gets
+  // pkg/query/seriesparam.go), so a browser without CompressionStream gets
   // a working feed rather than an error about a shortening it never asked for.
   it('falls back to the plain CSV where the browser cannot compress', async () => {
     vi.stubGlobal('CompressionStream', undefined)

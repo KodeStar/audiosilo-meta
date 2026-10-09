@@ -22,6 +22,7 @@ import (
 	"github.com/klauspost/compress/zstd"
 
 	"github.com/kodestar/audiosilo-meta/internal/ghhost"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 // The request deadlines. They are deliberately NOT one http.Client.Timeout:
@@ -679,10 +680,10 @@ func decompressBound(declared, currentBytes int64) int64 {
 // loaded nothing yet, the shape tryPatch reads the same way).
 func (s *Server) currentArtifactBytes() int64 {
 	cur := s.current()
-	if cur == nil || cur.path == "" {
+	if cur == nil || cur.Path() == "" {
 		return 0
 	}
-	info, err := os.Stat(cur.path)
+	info, err := os.Stat(cur.Path())
 	if err != nil {
 		return 0
 	}
@@ -886,7 +887,7 @@ func (s *Server) pruneCacheLocked() {
 	}
 	keep := map[string]bool{s.cfg.DBPath: true}
 	if cur := s.current(); cur != nil {
-		keep[cur.path] = true
+		keep[cur.Path()] = true
 	}
 	for p := range s.retired {
 		keep[p] = true
@@ -916,12 +917,12 @@ func (s *Server) pruneCacheLocked() {
 // adopt opens the artifact at dbPath as the snapshot for tag and hot-swaps it
 // in, then prunes the cache. Shared tail of the full and patch refresh paths.
 // Always called with s.mu held (refresh owns it), hence pruneCacheLocked.
-func (s *Server) adopt(dbPath, tag string) (*snapshot, error) {
-	snap, err := openSnapshot(dbPath, tag)
+func (s *Server) adopt(dbPath, tag string) (*query.DB, error) {
+	snap, err := query.Open(dbPath, tag)
 	if err != nil {
 		return nil, err
 	}
-	snap.log = s.log
+	snap.SetLogger(s.log)
 	s.swap(snap)
 	s.loaded = tag
 	// Prune on EVERY successful adopt, not only when the grace timer fires, so a
@@ -937,7 +938,7 @@ func (s *Server) adopt(dbPath, tag string) (*snapshot, error) {
 // it adopts it, preferring a small binary delta against the currently-loaded
 // artifact and falling back to a full download. It is a no-op on 304 or when the
 // loaded tag already matches. Serialized by s.mu (also the only writer of
-// s.loaded / the snapshot path, so tryPatch may read s.current().path safely).
+// s.loaded / the snapshot path, so tryPatch may read s.current().Path() safely).
 func (s *Server) refresh(ctx context.Context) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -1016,7 +1017,7 @@ func (s *Server) cachedRefresh(ctx context.Context, rel *ghRelease) error {
 		return err
 	}
 	s.log.Printf("serve: adopted cached artifact for %s without downloading (%d works, built %s)",
-		rel.TagName, snap.stats.Works, snap.stats.BuiltAt)
+		rel.TagName, snap.Stats().Works, snap.Stats().BuiltAt)
 	return nil
 }
 
@@ -1036,15 +1037,15 @@ func (s *Server) adoptStaleCache() bool {
 	if !ok {
 		return false
 	}
-	snap, err := openSnapshot(path, tag)
+	snap, err := query.Open(path, tag)
 	if err != nil {
 		s.log.Printf("serve: cached artifact %s is not usable: %v", path, err)
 		return false
 	}
-	snap.log = s.log
+	snap.SetLogger(s.log)
 	s.cur.Store(snap)
 	s.log.Printf("serve: serving the STALE cached artifact %s (%s, %d works, built %s) until a release loads",
-		path, tag, snap.stats.Works, snap.stats.BuiltAt)
+		path, tag, snap.Stats().Works, snap.Stats().BuiltAt)
 	return true
 }
 
@@ -1083,7 +1084,7 @@ func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
 	if err != nil {
 		return err
 	}
-	s.log.Printf("serve: loaded release %s (%d works, built %s)", rel.TagName, snap.stats.Works, snap.stats.BuiltAt)
+	s.log.Printf("serve: loaded release %s (%d works, built %s)", rel.TagName, snap.Stats().Works, snap.Stats().BuiltAt)
 	return nil
 }
 
@@ -1100,10 +1101,10 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	// can never diverge. cur is nil on a poll-only boot's first refresh; an
 	// empty tag is a local --db artifact - both always take the full path.
 	cur := s.current()
-	if cur == nil || cur.tag == "" {
+	if cur == nil || cur.Info().Tag == "" {
 		return fmt.Errorf("no loaded release tag (first refresh is always full)")
 	}
-	info, err := os.Stat(cur.path)
+	info, err := os.Stat(cur.Path())
 	if err != nil {
 		return fmt.Errorf("loaded artifact unavailable: %w", err)
 	}
@@ -1117,7 +1118,8 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	}
 	// The most common bail-out - the server is 2+ releases behind, so no delta
 	// is based on our tag - must cost zero HTTP requests.
-	patchName := patchAssetName(cur.tag)
+	curTag := cur.Info().Tag
+	patchName := patchAssetName(curTag)
 	if _, ok := findAsset(rel, patchName); !ok {
 		return fmt.Errorf("release %s has no %s asset", rel.TagName, patchName)
 	}
@@ -1145,7 +1147,7 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	// measured against - the one size this path knows exactly. The patch asset's
 	// own declared size says nothing about the OUTPUT, so it is not the declared
 	// arm here; the base goes in as the current-artifact arm instead.
-	artifactBytes, err := applyPatchFile(patchPath, cur.path, dstPath, want,
+	artifactBytes, err := applyPatchFile(patchPath, cur.Path(), dstPath, want,
 		decompressBound(0, info.Size()))
 	if err != nil {
 		return err
@@ -1155,7 +1157,7 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 		return err
 	}
 	s.log.Printf("serve: patched %s -> %s (patch %d bytes, artifact %d bytes; %d works, built %s)",
-		cur.tag, rel.TagName, patchBytes, artifactBytes, snap.stats.Works, snap.stats.BuiltAt)
+		curTag, rel.TagName, patchBytes, artifactBytes, snap.Stats().Works, snap.Stats().BuiltAt)
 	return nil
 }
 

@@ -181,13 +181,13 @@ func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 	}
 
 	deadline := time.Now().Add(10 * time.Second)
-	for srv.current().tag != tagR2 {
+	for srv.current().Info().Tag != tagR2 {
 		if time.Now().After(deadline) {
 			t.Fatalf("webhook did not refresh to %q within the deadline", tagR2)
 		}
 		time.Sleep(10 * time.Millisecond)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Fatalf("works = %d, want 5 after webhook refresh", got)
 	}
 }
@@ -226,7 +226,7 @@ func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 	unlock()
 
 	deadline := time.Now().Add(10 * time.Second)
-	for srv.current().tag != tagR2 {
+	for srv.current().Info().Tag != tagR2 {
 		if time.Now().After(deadline) {
 			t.Fatalf("the background refresh did not land %q", tagR2)
 		}

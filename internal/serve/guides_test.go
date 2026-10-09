@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 // The community guide pages (guides.go) and their sitemap families. The fixture
@@ -500,13 +501,13 @@ func TestGuideSitemapsTolerateOlderArtifacts(t *testing.T) {
 // they ask the query layer how it degrades, which is a question a route cannot
 // put (the downgraded servers carry no site directory, so no page route exists
 // on them at all).
-func snapshotOf(t *testing.T, dbPath string) *snapshot {
+func snapshotOf(t *testing.T, dbPath string) *query.DB {
 	t.Helper()
-	snap, err := openSnapshot(dbPath, "")
+	snap, err := query.Open(dbPath, "")
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(snap.close)
+	t.Cleanup(func() { _ = snap.Close() })
 	return snap
 }
 
@@ -519,7 +520,7 @@ func TestGuideProbeAgreesWithTheGuideDefinition(t *testing.T) {
 	snap := snapshotFor(t, guideCatalog())
 	for _, id := range []string{"only-chapters", "only-characters", "only-summary", "plain-work", "no-such-work"} {
 		t.Run(id, func(t *testing.T) {
-			d, err := snap.workDetail(id)
+			d, err := snap.WorkDetail(id)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -528,8 +529,8 @@ func TestGuideProbeAgreesWithTheGuideDefinition(t *testing.T) {
 				probe func(string) (bool, error)
 				want  bool
 			}{
-				{"recap", snap.hasRecapPage, d != nil && hasRecapGuide(d)},
-				{"characters", snap.hasCharacterPage, d != nil && hasCharacterGuide(d)},
+				{"recap", snap.HasRecapPage, d != nil && hasRecapGuide(d)},
+				{"characters", snap.HasCharacterPage, d != nil && hasCharacterGuide(d)},
 			}
 			for _, p := range probes {
 				got, err := p.probe(id)
@@ -555,7 +556,7 @@ func TestGuideProbesTolerateOlderArtifacts(t *testing.T) {
 		snap := snapshotOf(t, downgradedDB(t, guideCatalog(), 2, "work_genres", "recap_summaries", "redirects"))
 		want := map[string]bool{"only-chapters": true, "only-summary": false, "plain-work": false}
 		for id, expect := range want {
-			got, err := snap.hasRecapPage(id)
+			got, err := snap.HasRecapPage(id)
 			if err != nil {
 				t.Fatalf("recap probe on a v2 artifact: %v", err)
 			}
@@ -569,11 +570,11 @@ func TestGuideProbesTolerateOlderArtifacts(t *testing.T) {
 		snap := snapshotOf(t, downgradedDB(t, guideCatalog(), 1,
 			"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "redirects"))
 		for _, id := range []string{"only-chapters", "only-characters", "only-summary"} {
-			recap, err := snap.hasRecapPage(id)
+			recap, err := snap.HasRecapPage(id)
 			if err != nil {
 				t.Fatalf("recap probe on a v1 artifact: %v", err)
 			}
-			chars, err := snap.hasCharacterPage(id)
+			chars, err := snap.HasCharacterPage(id)
 			if err != nil {
 				t.Fatalf("character probe on a v1 artifact: %v", err)
 			}
@@ -592,14 +593,14 @@ func TestGuideProbesTolerateOlderArtifacts(t *testing.T) {
 // book-scoped one is what you need before starting.
 func TestRecapRowLabel(t *testing.T) {
 	cases := []struct {
-		in   recapOut
+		in   query.RecapOut
 		want string
 	}{
-		{recapOut{Through: positionOut{Chapter: 0}, Scope: "series"}, "Previously, in earlier books"},
-		{recapOut{Through: positionOut{Chapter: 0}, Scope: "book"}, "Before this book"},
-		{recapOut{Through: positionOut{Chapter: 0}}, "Before this book"},
-		{recapOut{Through: positionOut{Chapter: 1}, Scope: "book"}, "Story so far - through chapter 1"},
-		{recapOut{Through: positionOut{Chapter: 12}}, "Story so far - through chapter 12"},
+		{query.RecapOut{Through: query.PositionOut{Chapter: 0}, Scope: "series"}, "Previously, in earlier books"},
+		{query.RecapOut{Through: query.PositionOut{Chapter: 0}, Scope: "book"}, "Before this book"},
+		{query.RecapOut{Through: query.PositionOut{Chapter: 0}}, "Before this book"},
+		{query.RecapOut{Through: query.PositionOut{Chapter: 1}, Scope: "book"}, "Story so far - through chapter 1"},
+		{query.RecapOut{Through: query.PositionOut{Chapter: 12}}, "Story so far - through chapter 12"},
 	}
 	for _, tc := range cases {
 		if got := recapRowLabel(tc.in); got != tc.want {

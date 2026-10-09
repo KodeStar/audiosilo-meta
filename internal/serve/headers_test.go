@@ -148,7 +148,8 @@ func TestSecurityHeadersOnAnAPIOnlyServer(t *testing.T) {
 		t.Errorf("mux 404 = %d with X-Content-Type-Options %q", rec.StatusCode, rec.Header.Get("X-Content-Type-Options"))
 	}
 	// The state a poll-only boot is in before its first release lands.
-	t.Cleanup(srv.cur.Swap(nil).close)
+	old := srv.cur.Swap(nil)
+	t.Cleanup(func() { _ = old.Close() })
 	for _, path := range []string{"/healthz", "/api/v1/stats"} {
 		rec := serveRecorded(srv, path)
 		if rec.StatusCode != http.StatusServiceUnavailable {

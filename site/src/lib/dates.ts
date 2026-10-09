@@ -12,7 +12,7 @@
 // the last day of 2025 west of Greenwich - and would turn an unparseable value
 // into "Invalid Date" rather than leaving it alone.
 //
-// HAND-MIRRORED TWIN of internal/serve/watchfeed.go (`releaseIsFuture`,
+// HAND-MIRRORED TWIN of pkg/query/watchfeed.go (`releaseIsFuture`,
 // `formatReleaseDate`), which renders the same catalogue values into the watch
 // feed a reader subscribes to from this page. A reader comparing the two must
 // not be told two different things about one book, so the cases pinned in

@@ -15,9 +15,11 @@ import (
 	"hash/fnv"
 	"io"
 	"log"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // WriteJSON writes v as the JSON body of a response with the given status.
@@ -39,6 +41,13 @@ func WriteErr(w http.ResponseWriter, status int, msg string) {
 // that gate because they are not API). Two spellings of one condition is a
 // difference a client could read as a difference.
 const NoArtifactMsg = "no data loaded yet: the server is fetching the latest release"
+
+// RetryAfter renders a wait as a Retry-After value: whole seconds, rounded up,
+// never below 1 - a "0" would read as "retry immediately".
+func RetryAfter(wait time.Duration) string {
+	secs := int(math.Ceil(wait.Seconds()))
+	return strconv.Itoa(max(secs, 1))
+}
 
 // InternalErrMsg is the body of EVERY 500 this server writes. An internal
 // error's own text describes the failure's internals - a SQL statement, a file

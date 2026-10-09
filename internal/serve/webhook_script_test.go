@@ -86,7 +86,7 @@ func TestReleaseNotifyScriptIsAcceptedByTheHandler(t *testing.T) {
 	// or mis-addressed body would fail silently at, since both answer 202 too -
 	// and it settles the refresh goroutine before the test's temp dirs go away.
 	deadline := time.Now().Add(10 * time.Second)
-	for srv.current().tag != tagR2 {
+	for srv.current().Info().Tag != tagR2 {
 		if time.Now().After(deadline) {
 			t.Fatalf("the script's delivery did not drive a refresh to %q within the deadline", tagR2)
 		}

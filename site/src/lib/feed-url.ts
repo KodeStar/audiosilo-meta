@@ -15,7 +15,7 @@ export interface FeedURLs {
 const PLAIN_URL_LIMIT = 1500
 
 /** The server's contract limit, stated once on this side too
-    (`maxWatchSeries`, internal/serve/seriesparam.go; openapi.json's `s`
+    (`maxWatchSeries`, pkg/query/seriesparam.go; openapi.json's `s`
     parameter). Refusing here means a reader past it is told so on the page,
     rather than being handed a URL that 400s inside their feed reader. */
 export const MAX_FEED_SERIES = 200
@@ -48,7 +48,7 @@ function base64url(bytes: Uint8Array): string {
 /**
  * The compact `s` value the server also accepts: raw DEFLATE, unpadded
  * base64url, prefixed `z:` so it cannot read as CSV (decodeSeriesParam,
- * internal/serve/seriesparam.go).
+ * pkg/query/seriesparam.go).
  *
  * A browser with no `CompressionStream` gets the PLAIN CSV back instead of an
  * error. The compact form is a cosmetic shortening, not a contract: the server
