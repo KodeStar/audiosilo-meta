@@ -862,9 +862,10 @@ func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64)
 //
 // io.Pipe hands each Write straight to the reader, so the copy's writer blocks
 // only until the hasher has TAKEN the chunk, not until it has hashed it - the
-// two run in parallel a chunk apart. The hasher reads with a buffer at least as
-// large as any chunk the copy writes (the inflater's are its 32 KiB window), so
-// one Write is one Read and the writer is never held across a hash.
+// two run in parallel a chunk apart, and the writer waits at most for the
+// PREVIOUS chunk's hash, never its own. The hasher reads with a buffer as large
+// as the copy's (installStream's 1 MiB; the inflater hands out at most its 32 KiB
+// window per Read anyway), so one Write is always one Read.
 func hashPipe() (w *io.PipeWriter, sum <-chan string) {
 	pr, pw := io.Pipe()
 	out := make(chan string, 1)
