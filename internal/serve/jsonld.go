@@ -210,14 +210,14 @@ func workJSONLD(d *query.WorkDetail, siteURL, canonical string) []byte {
 		Description: query.CommunityDescriptionText(d),
 	}
 	for _, a := range d.Authors {
-		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + personPath + a.ID})
+		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + model.PeoplePath + a.ID})
 	}
 	// The FIRST membership is the one the page presents as the series, matching
 	// the card rule (see snapshot.firstSeriesByWork) - any series that is not a
 	// variant ordering before every variant.
 	if len(d.Series) > 0 {
 		sr := d.Series[0]
-		url := siteURL + seriesPath + sr.ID
+		url := siteURL + model.SeriesPath + sr.ID
 		book.IsPartOf = &ldSeriesRef{Type: "BookSeries", ID: seriesNodeID(url), Name: sr.Name, URL: url, Position: sr.Position}
 	}
 	for _, t := range d.TranslationOf {
@@ -247,7 +247,7 @@ func workJSONLD(d *query.WorkDetail, siteURL, canonical string) []byte {
 			Abridged: rec.Abridged,
 		}
 		for _, n := range rec.Narrators {
-			ab.ReadBy = append(ab.ReadBy, ldPerson{Type: "Person", Name: n.Name, URL: siteURL + personPath + n.ID})
+			ab.ReadBy = append(ab.ReadBy, ldPerson{Type: "Person", Name: n.Name, URL: siteURL + model.PeoplePath + n.ID})
 		}
 		if len(rec.ISBN) > 0 {
 			ab.ISBN = rec.ISBN[0]
@@ -270,14 +270,14 @@ func personJSONLD(d *query.PersonDetail, canonical string) []byte {
 // workTranslationRef is a work's translation link as a JSON-LD reference to the
 // Book node the other work's page defines.
 func workTranslationRef(siteURL string, t query.WorkTranslation) ldTranslationRef {
-	url := siteURL + workPath + t.ID
+	url := siteURL + model.WorksPath + t.ID
 	return ldTranslationRef{Type: "Book", ID: workNodeID(url), Name: t.Title, URL: url, InLanguage: t.Language}
 }
 
 // seriesTranslationRef is its series twin, a reference to the BookSeries node the
 // other series' page defines.
 func seriesTranslationRef(siteURL string, t query.SeriesTranslation) ldTranslationRef {
-	url := siteURL + seriesPath + t.ID
+	url := siteURL + model.SeriesPath + t.ID
 	return ldTranslationRef{Type: "BookSeries", ID: seriesNodeID(url), Name: t.Name, URL: url, InLanguage: t.Language}
 }
 
@@ -298,7 +298,7 @@ func seriesJSONLD(d *query.SeriesDetail, siteURL, canonical string) []byte {
 		}
 		item := ldListItem{
 			Type: "ListItem",
-			Item: ldBookRef{Type: "Book", Name: entry.Work.Title, URL: siteURL + workPath + entry.Work.ID},
+			Item: ldBookRef{Type: "Book", Name: entry.Work.Title, URL: siteURL + model.WorksPath + entry.Work.ID},
 		}
 		if n, ok := listPosition(entry.Position); ok {
 			item.Position = n

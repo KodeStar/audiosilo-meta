@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
@@ -86,11 +87,11 @@ type sitemapFamily struct {
 }
 
 var sitemapFamilies = []sitemapFamily{
-	{name: "recaps", prefix: workPath, suffix: recapSuffix, pages: query.RecapPages},
-	{name: "characters", prefix: workPath, suffix: charactersSuffix, pages: query.CharacterPages},
-	{name: "series", prefix: seriesPath, pages: query.SeriesPages},
-	{name: "people", prefix: personPath, pages: query.PersonPages},
-	{name: "works", prefix: workPath, pages: query.WorkPages},
+	{name: "recaps", prefix: model.WorksPath, suffix: recapSuffix, pages: query.RecapPages},
+	{name: "characters", prefix: model.WorksPath, suffix: charactersSuffix, pages: query.CharacterPages},
+	{name: "series", prefix: model.SeriesPath, pages: query.SeriesPages},
+	{name: "people", prefix: model.PeoplePath, pages: query.PersonPages},
+	{name: "works", prefix: model.WorksPath, pages: query.WorkPages},
 }
 
 // count is how many URLs fam holds in snap.

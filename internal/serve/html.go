@@ -29,14 +29,6 @@ import (
 // these routes by construction and a page's query budget is exactly the API
 // route the site already hits for it.
 
-// The path routes every internal link, canonical URL and JSON-LD url is built
-// from. They are the prefixes of the three entity patterns, written once.
-const (
-	workPath   = model.WorksPath
-	personPath = model.PeoplePath
-	seriesPath = model.SeriesPath
-)
-
 // siteName is the suffix every page title carries and the og:site_name value.
 const siteName = "AudioSilo Meta"
 
@@ -86,15 +78,15 @@ type htmlEntityRoute struct {
 }
 
 var htmlEntityRoutes = []htmlEntityRoute{
-	{pattern: "GET /works/{id}", legacy: "GET /work", shell: "work/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeWorkPage},
-	{pattern: "GET /people/{id}", legacy: "GET /person", shell: "person/index.html", prefix: personPath, namespace: model.RedirectPeople, compose: composePersonPage},
-	{pattern: "GET /series/{id}", legacy: "GET /series", shell: "series/index.html", prefix: seriesPath, namespace: model.RedirectSeries, compose: composeSeriesPage},
+	{pattern: "GET /works/{id}", legacy: "GET /work", shell: "work/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeWorkPage},
+	{pattern: "GET /people/{id}", legacy: "GET /person", shell: "person/index.html", prefix: model.PeoplePath, namespace: model.RedirectPeople, compose: composePersonPage},
+	{pattern: "GET /series/{id}", legacy: "GET /series", shell: "series/index.html", prefix: model.SeriesPath, namespace: model.RedirectSeries, compose: composeSeriesPage},
 	// The community guide pages (see guides.go). They address a WORK by the same
 	// slug the work page does - hence the same namespace, which is what makes a
 	// retired slug 301 here too - and their literal FOLLOWS the wildcard, so they
 	// shadow no record and the reserved-slug set does not grow.
-	{pattern: "GET /works/{id}" + recapSuffix, shell: "recap/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeRecapPage},
-	{pattern: "GET /works/{id}" + charactersSuffix, shell: "characters/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeCharactersPage},
+	{pattern: "GET /works/{id}" + recapSuffix, shell: "recap/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeRecapPage},
+	{pattern: "GET /works/{id}" + charactersSuffix, shell: "characters/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeCharactersPage},
 }
 
 // htmlEntityRouteByPattern is the table above indexed by ServeMux pattern - the
@@ -382,7 +374,7 @@ func composeWorkPage(siteURL string, snap *query.DB, id string) (*entityPage, er
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + workPath + d.ID
+	canonical := siteURL + model.WorksPath + d.ID
 	// The view carries the cover the og image wants and the author names both the
 	// title and the description read, so each is derived once for the page.
 	view := newWorkView(d)
@@ -522,7 +514,7 @@ func composePersonPage(siteURL string, snap *query.DB, id string) (*entityPage, 
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + personPath + d.ID
+	canonical := siteURL + model.PeoplePath + d.ID
 	sheet, err := renderTemplate("person", newPersonView(d))
 	if err != nil {
 		return nil, err
@@ -566,7 +558,7 @@ func composeSeriesPage(siteURL string, snap *query.DB, id string) (*entityPage, 
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + seriesPath + d.ID
+	canonical := siteURL + model.SeriesPath + d.ID
 	sheet, err := renderTemplate("series", newSeriesView(d))
 	if err != nil {
 		return nil, err

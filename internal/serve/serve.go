@@ -180,11 +180,10 @@ func New(cfg Config) (*Server, error) {
 	}
 
 	if cfg.DBPath != "" {
-		snap, err := query.Open(cfg.DBPath, "")
+		snap, err := s.open(cfg.DBPath, "")
 		if err != nil {
 			return nil, err
 		}
-		snap.SetLogger(s.log)
 		s.cur.Store(snap)
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {
@@ -219,6 +218,18 @@ func (s *Server) newGHClient(repo, apiBase string, opts ...release.Option) *rele
 		o = append(o, release.WithAPIBase(apiBase))
 	}
 	return release.New(repo, s.cfg.Token, append(o, opts...)...)
+}
+
+// open opens the artifact at path as a snapshot labelled tag, its degradation
+// notices routed through this server's logger - every snapshot this server
+// serves comes through here.
+func (s *Server) open(path, tag string) (*query.DB, error) {
+	snap, err := query.Open(path, tag)
+	if err != nil {
+		return nil, err
+	}
+	snap.SetLogger(s.log)
+	return snap, nil
 }
 
 // Handler returns the http.Handler for the server (exposed for tests).
@@ -364,8 +375,9 @@ func (r route) specPath() string {
 // has no spec entry (see buildMux).
 func (s *Server) routes() []route {
 	var rs []route
+	pub := s.public(s.query)
 	for _, qr := range query.Routes() {
-		h := s.public(s.query)
+		h := pub
 		if qr.Pattern == query.HealthzPattern {
 			h = s.query
 		}

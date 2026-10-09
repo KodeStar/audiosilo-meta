@@ -66,7 +66,7 @@ const (
 // workGuidePath composes one guide page's path. Written once so the canonical
 // URL, the work page's link, the sibling link and the sitemap loc cannot spell
 // it three ways.
-func workGuidePath(id, suffix string) string { return workPath + id + suffix }
+func workGuidePath(id, suffix string) string { return model.WorksPath + id + suffix }
 
 // hasRecapGuide and hasCharacterGuide are the ONE definition of "this work has
 // a guide page". Three places ask: the compose func (which returns no page
@@ -169,7 +169,7 @@ func guidePage(siteURL string, d *query.WorkDetail, suffix, title, description s
 		// work page keeps og:type "book" and these are articles.
 		ogType:    "article",
 		image:     ogImage(siteURL, firstCover(d)),
-		jsonLD:    guideJSONLD(view.Heading, siteURL, canonical, siteURL+workPath+d.ID),
+		jsonLD:    guideJSONLD(view.Heading, siteURL, canonical, siteURL+model.WorksPath+d.ID),
 		factSheet: sheet,
 		payload:   payload,
 	}, nil
@@ -346,7 +346,7 @@ func newCharactersView(d *query.WorkDetail) guideView {
 // the work page's own JSON-LD: a work in several series presents one of them,
 // and presenting a different one here would say two things about the same book.
 func guideLinks(d *query.WorkDetail, self string) []guideLink {
-	links := []guideLink{{URL: workPath + d.ID, Text: "Full details for " + d.Title}}
+	links := []guideLink{{URL: model.WorksPath + d.ID, Text: "Full details for " + d.Title}}
 	if self != recapSuffix && hasRecapGuide(d) {
 		links = append(links, guideLink{URL: workGuidePath(d.ID, recapSuffix), Text: d.Title + " recap"})
 	}
@@ -355,7 +355,7 @@ func guideLinks(d *query.WorkDetail, self string) []guideLink {
 	}
 	if len(d.Series) > 0 {
 		sr := d.Series[0]
-		links = append(links, guideLink{URL: seriesPath + sr.ID, Text: "More books in " + sr.Name})
+		links = append(links, guideLink{URL: model.SeriesPath + sr.ID, Text: "More books in " + sr.Name})
 	}
 	return links
 }

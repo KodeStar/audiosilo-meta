@@ -253,11 +253,10 @@ func (s *Server) pruneCacheLocked() {
 // in, then prunes the cache. Shared tail of the full and patch refresh paths.
 // Always called with s.mu held (refresh owns it), hence pruneCacheLocked.
 func (s *Server) adopt(dbPath, tag string) (*query.DB, error) {
-	snap, err := query.Open(dbPath, tag)
+	snap, err := s.open(dbPath, tag)
 	if err != nil {
 		return nil, err
 	}
-	snap.SetLogger(s.log)
 	s.swap(snap)
 	s.loaded = tag
 	// Prune on EVERY successful adopt, not only when the grace timer fires, so a
@@ -357,8 +356,9 @@ func (s *Server) cachedRefresh(ctx context.Context, rel *release.Release) error 
 	if err != nil {
 		return err
 	}
+	st := snap.Stats()
 	s.log.Printf("serve: adopted cached artifact for %s without downloading (%d works, built %s)",
-		rel.Tag, snap.Stats().Works, snap.Stats().BuiltAt)
+		rel.Tag, st.Works, st.BuiltAt)
 	return nil
 }
 
@@ -378,15 +378,15 @@ func (s *Server) adoptStaleCache() bool {
 	if !ok {
 		return false
 	}
-	snap, err := query.Open(path, tag)
+	snap, err := s.open(path, tag)
 	if err != nil {
 		s.log.Printf("serve: cached artifact %s is not usable: %v", path, err)
 		return false
 	}
-	snap.SetLogger(s.log)
 	s.cur.Store(snap)
+	st := snap.Stats()
 	s.log.Printf("serve: serving the STALE cached artifact %s (%s, %d works, built %s) until a release loads",
-		path, tag, snap.Stats().Works, snap.Stats().BuiltAt)
+		path, tag, st.Works, st.BuiltAt)
 	return true
 }
 
@@ -406,7 +406,8 @@ func (s *Server) fullRefresh(ctx context.Context, rel *release.Release) error {
 	if err != nil {
 		return err
 	}
-	s.log.Printf("serve: loaded release %s (%d works, built %s)", rel.Tag, snap.Stats().Works, snap.Stats().BuiltAt)
+	st := snap.Stats()
+	s.log.Printf("serve: loaded release %s (%d works, built %s)", rel.Tag, st.Works, st.BuiltAt)
 	return nil
 }
 
@@ -423,7 +424,11 @@ func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 	// can never diverge. cur is nil on a poll-only boot's first refresh; an
 	// empty tag is a local --db artifact - both always take the full path.
 	cur := s.current()
-	if cur == nil || cur.Info().Tag == "" {
+	var curTag string
+	if cur != nil {
+		curTag = cur.Info().Tag
+	}
+	if curTag == "" {
 		return fmt.Errorf("no loaded release tag (first refresh is always full)")
 	}
 	info, err := os.Stat(cur.Path())
@@ -440,7 +445,6 @@ func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 	}
 	// The most common bail-out - the server is 2+ releases behind, so no delta
 	// is based on our tag - must cost zero HTTP requests.
-	curTag := cur.Info().Tag
 	patchName := patchAssetName(curTag)
 	if _, ok := rel.Asset(patchName); !ok {
 		return fmt.Errorf("release %s has no %s asset", rel.Tag, patchName)
@@ -476,8 +480,9 @@ func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 	if err != nil {
 		return err
 	}
+	st := snap.Stats()
 	s.log.Printf("serve: patched %s -> %s (patch %d bytes, artifact %d bytes; %d works, built %s)",
-		curTag, rel.Tag, patchBytes, artifactBytes, snap.Stats().Works, snap.Stats().BuiltAt)
+		curTag, rel.Tag, patchBytes, artifactBytes, st.Works, st.BuiltAt)
 	return nil
 }
 
