@@ -1,7 +1,6 @@
 package serve
 
 import (
-	"bytes"
 	"encoding/xml"
 	"net/http"
 	"os"
@@ -10,6 +9,10 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 // The sitemap surface: the index at /sitemap-index.xml and the entity shards at
@@ -77,96 +80,22 @@ type sitemapFamily struct {
 	// therefore a set of PAGES rather than of records, which is what lets two
 	// families address one id space.
 	suffix string
-	// count is how many URLs the family holds. It reads the SNAPSHOT rather than
-	// Stats because the guide families count works CARRYING A SIDECAR, which is
-	// not a catalogue statistic and does not belong in the public /api/v1/stats
-	// payload (this change moves no API surface and no SchemaVersion).
-	count func(*snapshot) int
-	// query returns the SQL for one shard's id (+ lastmod) rows, ordered by id.
-	// It is a function of the snapshot for the same reason count is: the recap
-	// family's URL set spans two tables, the second of which only exists at
-	// schema_version 3, so WHICH query is honest depends on the artifact.
-	query func(*snapshot) string
+	// pages is the family as the query layer reads it: how many URLs it holds
+	// (DB.PageCount) and one shard's rows (DB.Pages) - the SQL is pkg/query's,
+	// where the index guard EXPLAINs it.
+	pages query.PageFamily
 }
 
 var sitemapFamilies = []sitemapFamily{
-	{name: "recaps", prefix: workPath, suffix: recapSuffix,
-		count: func(s *snapshot) int { return s.recapWorks },
-		query: func(s *snapshot) string { _, shard := recapSitemapSQL(s.schemaVersion); return shard }},
-	{name: "characters", prefix: workPath, suffix: charactersSuffix,
-		count: func(s *snapshot) int { return s.characterWorks },
-		query: func(*snapshot) string { return charactersSitemapSQL }},
-	{name: "series", prefix: seriesPath,
-		count: func(s *snapshot) int { return s.stats.Series },
-		query: func(*snapshot) string { return seriesSitemapSQL }},
-	{name: "people", prefix: personPath,
-		count: func(s *snapshot) int { return s.stats.People },
-		query: func(*snapshot) string { return peopleSitemapSQL }},
-	{name: "works", prefix: workPath,
-		count: func(s *snapshot) int { return s.stats.Works },
-		query: func(*snapshot) string { return worksSitemapSQL }},
+	{name: "recaps", prefix: model.WorksPath, suffix: recapSuffix, pages: query.RecapPages},
+	{name: "characters", prefix: model.WorksPath, suffix: charactersSuffix, pages: query.CharacterPages},
+	{name: "series", prefix: model.SeriesPath, pages: query.SeriesPages},
+	{name: "people", prefix: model.PeoplePath, pages: query.PersonPages},
+	{name: "works", prefix: model.WorksPath, pages: query.WorkPages},
 }
 
-// The per-family shard queries. Each walks an index in id order - the same order
-// the OFFSET pages through - so a shard is a windowed index walk rather than a
-// scan (TestServeLookupsAreIndexed runs these very constants through EXPLAIN
-// QUERY PLAN).
-//
-// Only works carries an added_at column, so every other query selects a literal
-// NULL for it: one row shape, one scan loop, and no per-family branch that could
-// disagree with the query it belongs to. A family with no date simply emits no
-// <lastmod>, which is the protocol's own "unknown" - nothing is fabricated, and
-// nothing about the artifact changes to serve any of these.
-const (
-	worksSitemapSQL  = `SELECT id, added_at FROM works ORDER BY id LIMIT ? OFFSET ?`
-	peopleSitemapSQL = `SELECT id, NULL FROM people ORDER BY id LIMIT ? OFFSET ?`
-	seriesSitemapSQL = `SELECT id, NULL FROM series ORDER BY id LIMIT ? OFFSET ?`
-
-	// The guide families list one URL per work that CARRIES the sidecar the page
-	// renders, which is the same condition the compose func applies (see
-	// hasRecapGuide / hasCharacterGuide) - a sitemap must never promise a URL
-	// that 404s.
-	charactersSitemapSQL = `SELECT DISTINCT work_id, NULL FROM characters ORDER BY work_id LIMIT ? OFFSET ?`
-	// A recap page is served for a chaptered recap OR a whole-book summary, so
-	// its URL set is the union of two tables. The membership of the second one is
-	// exactly what the page needs from it - internal/build writes a
-	// recap_summaries row only for a sidecar that states in_short or ending - so
-	// a listed URL always has a page. It is written as a COMPOUND select
-	// rather than as a subquery deliberately: wrapping the union in a FROM makes
-	// the outer step an unindexed scan of a co-routine, while each arm of a
-	// compound still walks its own index.
-	recapsSitemapSQL = `SELECT work_id, NULL FROM recaps UNION SELECT work_id, NULL FROM recap_summaries ` +
-		`ORDER BY work_id LIMIT ? OFFSET ?`
-	// recapsOnlySitemapSQL is that same set on an artifact that predates
-	// recap_summaries (schema_version 2), where the second table does not exist
-	// to be named - a query mentioning it would not even parse.
-	recapsOnlySitemapSQL = `SELECT DISTINCT work_id, NULL FROM recaps ORDER BY work_id LIMIT ? OFFSET ?`
-
-	// The guide families' counts, each counting exactly the rows its shard query
-	// pages, so "how many shards" and "what is in them" cannot disagree.
-	characterWorksCountSQL = `SELECT COUNT(DISTINCT work_id) FROM characters`
-	recapWorksCountSQL     = `SELECT COUNT(*) FROM (SELECT work_id FROM recaps UNION SELECT work_id FROM recap_summaries)`
-	recapWorksOnlyCountSQL = `SELECT COUNT(DISTINCT work_id) FROM recaps`
-)
-
-// recapSitemapSQL derives the recap family's two queries from the artifact's
-// schema_version: how many pages the family holds, and how one shard's rows are
-// read. A recap page is served for a chaptered recap OR a whole-book summary, so
-// the set spans two tables and the second only exists from
-// summarySchemaVersion - below it, a query naming recap_summaries would not even
-// parse.
-//
-// It is one PURE function of the version rather than a value threaded through
-// the snapshot, so the pairing is structural: the count and the listing are
-// derived from the same input, at every call, and a snapshot's schemaVersion is
-// immutable - so "how many shards a family advertises" and "what is in them"
-// cannot be computed against different tables however the two are reached.
-func recapSitemapSQL(schemaVersion int) (countSQL, shardSQL string) {
-	if schemaVersion >= summarySchemaVersion {
-		return recapWorksCountSQL, recapsSitemapSQL
-	}
-	return recapWorksOnlyCountSQL, recapsOnlySitemapSQL
-}
+// count is how many URLs fam holds in snap.
+func (fam sitemapFamily) count(snap *query.DB) int { return snap.PageCount(fam.pages) }
 
 // shardFilePattern is the strict spelling of a shard's file name. Strict on both
 // counts: the family is matched against the table above, and a shard number has
@@ -277,12 +206,12 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 }
 
 // sitemapUnavailable is the no-artifact answer, the API routes' own 503 with the
-// poll loop's real wait (see requireSnapshot/retryAfter). The body is JSON where
-// the document would have been XML: a 503 carries no sitemap either way, and one
-// error shape across the server beats a second one invented for two routes.
+// poll loop's real wait (httpx.WriteNoArtifact, retryWait). The body is JSON
+// where the document would have been XML: a 503 carries no sitemap either way,
+// and one error shape across the server beats a second one invented for two
+// routes.
 func (s *Server) sitemapUnavailable(w http.ResponseWriter) {
-	w.Header().Set("Retry-After", s.retryAfter())
-	writeErr(w, http.StatusServiceUnavailable, noArtifactMsg)
+	httpx.WriteNoArtifact(w, s.retryWait())
 }
 
 // parseShardFile reads a shard file name as (family, shard number). Everything
@@ -380,12 +309,12 @@ type urlEntryDoc struct {
 // artifact's build time is not a fact about it. Every shard entry carries the
 // artifact's built_at, which IS its date - the shard is rendered from that
 // artifact and from nothing else.
-func (s *Server) sitemapIndex(snap *snapshot, static bool) *sitemapIndexDoc {
+func (s *Server) sitemapIndex(snap *query.DB, static bool) *sitemapIndexDoc {
 	doc := &sitemapIndexDoc{NS: sitemapNS}
 	if static {
 		doc.Sitemaps = append(doc.Sitemaps, sitemapEntryDoc{Loc: s.cfg.SiteURL + "/" + staticSitemapFile})
 	}
-	built := w3cDate(snap.stats.BuiltAt)
+	built := w3cDate(snap.Stats().BuiltAt)
 	for _, fam := range sitemapFamilies {
 		for shard := range shardCount(fam.count(snap)) {
 			doc.Sitemaps = append(doc.Sitemaps, sitemapEntryDoc{
@@ -400,26 +329,20 @@ func (s *Server) sitemapIndex(snap *snapshot, static bool) *sitemapIndexDoc {
 // sitemapShard composes one shard: up to sitemapShardURLs entity page URLs, in
 // id order, each with the record's own added_at as its lastmod where the family
 // has one.
-func (s *Server) sitemapShard(snap *snapshot, fam sitemapFamily, shard int) (*urlSetDoc, error) {
-	rows, err := snap.db.Query(fam.query(snap), sitemapShardURLs, shard*sitemapShardURLs)
+func (s *Server) sitemapShard(snap *query.DB, fam sitemapFamily, shard int) (*urlSetDoc, error) {
+	pages, err := snap.Pages(fam.pages, sitemapShardURLs, shard*sitemapShardURLs)
 	if err != nil {
 		return nil, err
 	}
-	defer func() { _ = rows.Close() }()
 	doc := &urlSetDoc{NS: sitemapNS}
-	for rows.Next() {
-		var id string
-		var added *string
-		if err := rows.Scan(&id, &added); err != nil {
-			return nil, err
-		}
-		entry := urlEntryDoc{Loc: s.cfg.SiteURL + fam.prefix + id + fam.suffix}
-		if added != nil {
-			entry.LastMod = w3cDate(*added)
+	for _, p := range pages {
+		entry := urlEntryDoc{Loc: s.cfg.SiteURL + fam.prefix + p.ID + fam.suffix}
+		if p.AddedAt != nil {
+			entry.LastMod = w3cDate(*p.AddedAt)
 		}
 		doc.URLs = append(doc.URLs, entry)
 	}
-	return doc, rows.Err()
+	return doc, nil
 }
 
 // w3cDate normalizes a stored date to the W3C Datetime forms the sitemap
@@ -471,10 +394,10 @@ func w3cDate(v string) string {
 // established before this is called (the shard route checks the family's shard
 // count first; the index always exists once an artifact is loaded), so RFC 9110
 // 13.1.2's condition is already answered.
-func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap *snapshot, doc string) (string, bool) {
+func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap *query.DB, doc string) (string, bool) {
 	etag := sitemapETag(snap, s.cfg.SiteURL, doc)
 	inm := r.Header.Get("If-None-Match")
-	if !matchesETag(inm, etag) && !anyValidator(inm) {
+	if !httpx.MatchesETag(inm, etag) && !httpx.AnyValidator(inm) {
 		return etag, false
 	}
 	h := w.Header()
@@ -495,8 +418,8 @@ func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap
 // document naming the wrong host. Weak, and stripped of quotes and backslashes
 // for the same reason entityETag is - a quote in any component would end the tag
 // early.
-func sitemapETag(snap *snapshot, siteURL, doc string) string {
-	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.version()+"/"+siteURL+doc) + `"`
+func sitemapETag(snap *query.DB, siteURL, doc string) string {
+	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.Version()+"/"+siteURL+doc) + `"`
 }
 
 // writeSitemap renders a document and writes it under the validator the
@@ -506,7 +429,7 @@ func sitemapETag(snap *snapshot, siteURL, doc string) string {
 // SUCCESS is what puts the ETag and the cache policy on the response, so no
 // error path can inherit them.
 func (s *Server) writeSitemap(w http.ResponseWriter, r *http.Request, etag string, doc any) {
-	body, err := renderXML(doc)
+	body, err := httpx.RenderXML(doc)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -516,21 +439,4 @@ func (s *Server) writeSitemap(w http.ResponseWriter, r *http.Request, etag strin
 	h.Set("Cache-Control", sitemapMaxAge)
 	h.Set("Content-Type", "application/xml; charset=utf-8")
 	_, _ = w.Write(body)
-}
-
-// renderXML marshals an XML document, declaration included - the sitemaps here
-// and the watch feed's Atom representation. It is deterministic: struct field
-// order is the element order, the entries are in the order their query returned
-// them (ORDER BY id) and nothing here reads a clock, so two renders of one
-// snapshot are byte-identical.
-func renderXML(doc any) ([]byte, error) {
-	var b bytes.Buffer
-	b.WriteString(xml.Header)
-	enc := xml.NewEncoder(&b)
-	enc.Indent("", "  ")
-	if err := enc.Encode(doc); err != nil {
-		return nil, err
-	}
-	b.WriteByte('\n')
-	return b.Bytes(), nil
 }

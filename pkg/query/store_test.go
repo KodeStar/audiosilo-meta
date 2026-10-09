@@ -1,0 +1,285 @@
+package query
+
+import (
+	"net/http"
+	"os"
+	"path/filepath"
+	"slices"
+	"strings"
+	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
+
+// TestBatchQueriesTolerateRepeatedIDs pins the dedupe that lives in eachChunk.
+//
+// Callers legitimately hand these helpers a repeated id - a narrator credited on
+// two recordings of one work yields that work twice - and every helper APPENDS
+// its rows into a map keyed by the id. A repeat inside one chunk is harmless
+// (the IN list matches each row once), but a repeat that lands in a SECOND chunk
+// runs the query again and appends the same rows on top of the first answer, so
+// the work comes back with its narrators listed twice. The list is chunked
+// precisely because it can be long, so this is reachable rather than theoretical
+// - hence a repeat count that crosses idChunkSize.
+func TestBatchQueriesTolerateRepeatedIDs(t *testing.T) {
+	snap, err := Open(artifacttest.Build(t, artifacttest.Fixture()), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = snap.Close() })
+
+	const workID = "the-way-of-kings" // the two-narrator recording
+	once, err := snap.narratorsByWork(t.Context(), []string{workID})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(once[workID]) != 2 {
+		t.Fatalf("narratorsByWork(one id) = %v, want the recording's two narrators", once[workID])
+	}
+
+	// Enough repeats to span two chunks, which is the only shape that breaks.
+	ids := make([]string, idChunkSize+1)
+	for i := range ids {
+		ids[i] = workID
+	}
+	repeated, err := snap.narratorsByWork(t.Context(), ids)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !slices.Equal(repeated[workID], once[workID]) {
+		t.Errorf("narratorsByWork(%d repeats) = %v, want the same as one id: %v",
+			len(ids), repeated[workID], once[workID])
+	}
+
+	cards, err := snap.cardsByID(t.Context(), ids)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(cards) != 1 || cards[workID] == nil || len(cards[workID].Authors) != 1 {
+		t.Errorf("cardsByID(%d repeats) = %+v, want one card with one author", len(ids), cards)
+	}
+}
+
+// TestNarratorsByWorkOrderIsTotal pins the tie-break in the ORDER BY. The
+// narrators of one recording share a MIN(ord) across a work only as far as
+// MIN(ord) can tell - a dual-narrator recording gives each of them ord 0 and 1,
+// but a work with several recordings can hand two people the same minimum. With
+// MIN(ord) alone the planner picks the order, so the same artifact could answer
+// the same request two ways; the person id makes it total.
+func TestNarratorsByWorkOrderIsTotal(t *testing.T) {
+	if !strings.HasSuffix(narratorsByWorkSQL("?"), "MIN(rn.ord), p.id") {
+		t.Errorf("narratorsByWorkSQL does not break MIN(ord) ties on the person id: %s", narratorsByWorkSQL("?"))
+	}
+
+	snap, err := Open(artifacttest.Build(t, artifacttest.Fixture()), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = snap.Close() })
+
+	// Credit order still wins where it says something: the fixture's recording
+	// credits Michael Kramer first.
+	got, err := snap.narratorsByWork(t.Context(), []string{"the-way-of-kings"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	names := make([]string, 0, 2)
+	for _, p := range got["the-way-of-kings"] {
+		names = append(names, p.ID)
+	}
+	if !slices.Equal(names, []string{"michael-kramer", "kate-reading"}) {
+		t.Errorf("narrators = %v, want credit order (michael-kramer, kate-reading)", names)
+	}
+}
+
+// TestCardFactsPickTheEarliestReleaseDate pins the card's release_date rule: the
+// minimum by plain STRING order over the recordings that state one, absent when
+// none does. Both halves matter to the site - a work's entry on a series page
+// is "when did this come out", and a date in the FUTURE is what marks a
+// catalogued preorder - so the rule may not quietly become "the first
+// recording's date" or "the newest".
+//
+// It also re-pins the cover rule, which now shares the query: the first
+// NON-EMPTY cover in recording id order, unaffected by a recording that sorts
+// earlier and carries none.
+func TestCardFactsPickTheEarliestReleaseDate(t *testing.T) {
+	rec := func(id, release, cover string) *model.Recording {
+		return &model.Recording{
+			ID: id, Work: "many-narrations", Language: "en", License: "CC0-1.0",
+			ReleaseDate: release, CoverURL: cover, Narrators: []string{"ray-porter"},
+		}
+	}
+	cat := artifacttest.Fixture()
+	cat.Works = append(cat.Works,
+		&model.Work{
+			ID: "many-narrations", Title: "Many Narrations", Language: "en",
+			Authors: []string{"andy-weir"}, License: "CC0-1.0",
+			Recordings: []*model.Recording{
+				// Deliberately NOT in date order, and the id order (which the
+				// cover follows) disagrees with it: "a-" sorts first and states
+				// the LATEST date and no cover.
+				rec("a-2024", "2024-03-02", ""),
+				rec("b-1999", "1999", "https://example.test/b.jpg"),
+				rec("c-1999-07", "1999-07-01", "https://example.test/c.jpg"),
+			},
+		},
+		&model.Work{
+			ID: "no-dates", Title: "No Dates", Language: "en",
+			Authors: []string{"andy-weir"}, License: "CC0-1.0",
+			Recordings: []*model.Recording{{
+				ID: "undated", Work: "no-dates", Language: "en", License: "CC0-1.0",
+				Narrators: []string{"ray-porter"},
+			}},
+		},
+	)
+
+	snap, err := Open(artifacttest.Build(t, cat), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = snap.Close() })
+
+	cards, err := snap.cardsByID(t.Context(), []string{"many-narrations", "no-dates", "project-hail-mary"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	// "1999" beats "1999-07-01" by string order, which is the documented answer
+	// for a year stated at two precisions: both describe the same year.
+	if got := cards["many-narrations"].ReleaseDate; got != "1999" {
+		t.Errorf("earliest release_date = %q, want 1999", got)
+	}
+	if got := cards["many-narrations"].CoverURL; got == nil || *got != "https://example.test/b.jpg" {
+		t.Errorf("cover = %v, want the first non-empty one in recording id order", got)
+	}
+	if got := cards["no-dates"].ReleaseDate; got != "" {
+		t.Errorf("release_date of a work whose recordings state none = %q, want empty", got)
+	}
+	if got := cards["project-hail-mary"].ReleaseDate; got != "2021-05-04" {
+		t.Errorf("single-recording release_date = %q, want 2021-05-04", got)
+	}
+}
+
+// TestOpenSnapshotEscapesTheArtifactPath pins the DSN rule from the failing
+// side. --db and --cache are operator-supplied paths, and a '?' in one ends the
+// file name inside a `file:` URI: the spliced spelling this replaced opened a
+// DIFFERENT file with mode=ro never parsed, so the handle was read-WRITE and the
+// named file was CREATED rather than the artifact opened. The escaping lives in
+// internal/sqlitedsn (its own test pins the URI); what this pins is that the
+// serving loader really goes through it.
+func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
+	built := artifacttest.Build(t, artifacttest.Fixture())
+	// Built at an ordinary path and MOVED: internal/build opens its output with
+	// a plain DSN, which the driver splits on '?' too, so a fixture written
+	// straight to the path under test would leave no artifact there at all.
+	base := t.TempDir()
+	dir := filepath.Join(base, "a?b")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	path := filepath.Join(dir, "meta.sqlite")
+	if err := os.Rename(built, path); err != nil {
+		t.Fatal(err)
+	}
+
+	snap, err := Open(path, "")
+	if err != nil {
+		t.Fatalf("openSnapshot on a %q path: %v", filepath.Base(dir), err)
+	}
+	t.Cleanup(func() { _ = snap.Close() })
+	if snap.stats.Works != len(artifacttest.Fixture().Works) {
+		t.Errorf("works = %d, want the fixture's %d - the wrong file was opened",
+			snap.stats.Works, len(artifacttest.Fixture().Works))
+	}
+	// The spliced DSN would have named (and created) the truncated path - in
+	// THIS directory. A second t.TempDir() is a new empty one, where nothing was
+	// ever going to exist and the check passes whatever the DSN did.
+	if _, err := os.Stat(filepath.Join(base, "a")); err == nil {
+		t.Error("a truncated artifact path was created")
+	}
+}
+
+// TestCardCarriesLanguageOnEverySurface pins the card's `language` field
+// wherever a card reaches the wire: the four searches, works/latest, a series'
+// entries, a person's two credit lists and lookup. The card is composed ONCE
+// (cardsByID) and every one of those surfaces embeds it, so this is the test
+// that fails if a surface ever grows a hand-restated card again - the search
+// hit did, until it embedded the card.
+//
+// The fixture adds a FRENCH edition beside English works of the same author and
+// series, which is the case the field exists for: without it the two read as
+// one book twice on every list.
+func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
+	cat := artifacttest.Fixture()
+	cat.Works = append(cat.Works, &model.Work{
+		ID: "la-voie-des-rois", Title: "La Voie des rois", Language: "fr",
+		Authors: []string{"brandon-sanderson"}, License: "CC0-1.0",
+		AddedAt: "2026-07-11",
+		Recordings: []*model.Recording{{
+			ID: "kramer-fr", Work: "la-voie-des-rois", Language: "fr", License: "CC0-1.0",
+			Narrators: []string{"michael-kramer"},
+			ASIN:      []model.ASIN{{Region: "fr", ASIN: "B0FRENCH01"}},
+		}},
+	})
+	cat.Series[0].Works = append(cat.Series[0].Works, model.SeriesWork{Work: "la-voie-des-rois", Position: "11"})
+	_, ts := newTestServerForCatalog(t, cat)
+
+	want := map[string]string{
+		"project-hail-mary": "en", "the-way-of-kings": "en", "words-of-radiance": "en",
+		"edgedancer": "en", "la-voie-des-rois": "fr",
+	}
+	for _, path := range []string{
+		"/api/v1/search?q=voie",
+		"/api/v1/works/search?q=voie",
+		"/api/v1/search?q=kings",
+		"/api/v1/works/latest",
+		"/api/v1/series/the-stormlight-archive",
+		"/api/v1/people/brandon-sanderson",
+		"/api/v1/people/michael-kramer",
+		"/api/v1/lookup?asin=B0FRENCH01",
+	} {
+		code, body := artifacttest.GetJSON(t, ts.URL, path)
+		if code != http.StatusOK {
+			t.Fatalf("GET %s: status %d", path, code)
+		}
+		// Every card-shaped object on the page: an id, a title and an authors
+		// list. A work detail would match too, and carries the field as well.
+		var cards int
+		var walk func(v any)
+		walk = func(v any) {
+			switch v := v.(type) {
+			case map[string]any:
+				_, hasTitle := v["title"]
+				_, hasAuthors := v["authors"]
+				if id, ok := v["id"].(string); ok && hasTitle && hasAuthors {
+					cards++
+					if got, ok := v["language"]; !ok || got != want[id] {
+						t.Errorf("GET %s: card %q language = %v (present %v), want %q", path, id, got, ok, want[id])
+					}
+				}
+				for _, child := range v {
+					walk(child)
+				}
+			case []any:
+				for _, child := range v {
+					walk(child)
+				}
+			}
+		}
+		walk(body)
+		if cards == 0 {
+			t.Errorf("GET %s: no work card on the page", path)
+		}
+	}
+}
+
+// TestMaxSchemaVersionIsTheNewestGate: MaxSchemaVersion names the newest layer
+// this code reads, so a new version gate that is not also a MaxSchemaVersion bump
+// fails here (TestMaxSchemaVersionIsTheBuilders ties it to the builder).
+func TestMaxSchemaVersionIsTheNewestGate(t *testing.T) {
+	newest := max(sidecarSchemaVersion, summarySchemaVersion, genresSchemaVersion,
+		redirectSchemaVersion, descriptionSchemaVersion, languagesSchemaVersion)
+	if MaxSchemaVersion != newest {
+		t.Errorf("MaxSchemaVersion = %d, the newest version gate is %d", MaxSchemaVersion, newest)
+	}
+}

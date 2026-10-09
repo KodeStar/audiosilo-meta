@@ -243,8 +243,8 @@ jobs:
         # release can be either. The patch base is therefore the non-draft,
         # non-prerelease release carrying a meta.sqlite.gz asset with the MAXIMUM
         # published_at - by publish time, NOT list position, mirroring
-        # latestDataRelease in internal/serve/github.go (its doc comment has the
-        # full rationale: the list order is not publish-chronological). The
+        # LatestData in pkg/release/release.go (its doc comment has the full
+        # rationale: the list order is not publish-chronological). The
         # non-draft half of that filter earns its keep now that releases are
         # drafted before they are published: a draft is never a patch base, so a
         # leftover one cannot become the chain's next link. If it

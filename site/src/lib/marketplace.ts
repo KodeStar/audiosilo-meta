@@ -5,7 +5,7 @@
 //
 // The region VOCABULARY is deliberately NOT mirrored here. The enum lives in
 // schema/common.schema.json and the marketplace hosts in
-// internal/serve/purchase_links.go, so a copy on the site would be a third
+// pkg/query/purchase_links.go, so a copy on the site would be a third
 // spelling that drifts the day a marketplace is added. Instead a guessed or
 // stored region is only ever used when it is one of the regions a recording's
 // own links carry - validity is decided by the data on the page.
@@ -90,7 +90,7 @@ export function retailerLabel(retailer: string, region?: string): string {
 }
 
 /** A purchase link that names its marketplace. Region presence is the data's
-    own distinction (internal/serve/purchase_links.go emits `region` exactly on
+    own distinction (pkg/query/purchase_links.go emits `region` exactly on
     marketplace-scoped identifiers), so the split does not key on the retailer
     name and a region-scoped retailer the server learns to derive tomorrow
     reaches the marketplace chooser by construction. */

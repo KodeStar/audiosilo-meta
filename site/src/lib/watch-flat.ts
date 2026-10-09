@@ -60,7 +60,7 @@ function lift(panel: Panel, classified: ClassifiedEntry): FlatEntry {
  * The per-series panels are the place a book is shown once per series it
  * belongs to; this list answers "what came out", and one book listed twice is
  * one book the reader ticks off twice. The same rule the server's feed applies
- * (internal/serve/watchfeed.go, `seenWork`), for the same reason. It is one set
+ * (pkg/query/watchfeed.go, `seenWork`), for the same reason. It is one set
  * across BOTH lists: an entry cannot be a preorder in one series and available
  * in another, since the classification reads the work's own release date.
  */
@@ -105,7 +105,7 @@ function byNameThenPosition(a: FlatEntry, b: FlatEntry): number {
  * whatever precision its source gave (`YYYY`, `YYYY-MM` or `YYYY-MM-DD`), and
  * string order sorts those chronologically while letting the less precise value
  * win a tie - the same rule the server picks a card's date by (`workCard` in
- * internal/serve/store.go). Parsing would drag the reader's timezone into a
+ * pkg/query/store.go). Parsing would drag the reader's timezone into a
  * fact that has none, exactly as lib/dates.ts says.
  *
  * An entry with NO date sorts LAST in BOTH directions: most of them are old
@@ -139,7 +139,7 @@ export function compareAvailable(a: FlatEntry, b: FlatEntry): number {
  * An unparseable value yields +Infinity so it sorts last rather than silently
  * leading the list as a zero.
  *
- * HAND-MIRRORED TWIN of Go `positionStart` in internal/serve/queries.go, which
+ * HAND-MIRRORED TWIN of Go `positionStart` in pkg/query/queries.go, which
  * sorts the same position strings server-side and is the RULE OF RECORD (it
  * orders the series rail every consumer reads). The sentinel differs in
  * spelling only (Go has no +Inf literal in that expression and uses 1e18). Both

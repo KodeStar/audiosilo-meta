@@ -2,90 +2,25 @@ package serve
 
 import (
 	"bytes"
-	"compress/gzip"
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
-	"encoding/json"
-	"io"
 	"log"
 	"net/http"
 	"net/http/httptest"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"sort"
 	"strconv"
 	"strings"
-	"sync"
-	"sync/atomic"
 	"testing"
 	"time"
 
 	"github.com/klauspost/compress/zstd"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/release"
+	"github.com/kodestar/audiosilo-meta/pkg/release/releasetest"
 )
-
-// hexDigest is data's sha256 as lowercase hex.
-func hexDigest(data []byte) string {
-	sum := sha256.Sum256(data)
-	return hex.EncodeToString(sum[:])
-}
-
-// sumFile builds a `sha256sum`-format checksum file over data for name.
-func sumFile(name string, data []byte) []byte {
-	return []byte(hexDigest(data) + "  " + name + "\n")
-}
-
-// TestInstallVerified covers the checksum gate every streamed asset now goes
-// through: matching bytes install, tampered bytes do not (and leave nothing
-// behind), and an unusable checksum file is an error rather than a panic.
-func TestInstallVerified(t *testing.T) {
-	data := []byte("the compressed artifact bytes")
-	good := sumFile("meta.sqlite.gz", data)
-	want, err := expectedDigest(good)
-	if err != nil {
-		t.Fatalf("expectedDigest: %v", err)
-	}
-
-	dir := t.TempDir()
-	dst := filepath.Join(dir, "asset.bin")
-	if _, err := installVerified(bytes.NewReader(data), dst, want, 0); err != nil {
-		t.Errorf("good checksum rejected: %v", err)
-	}
-	if got, _ := os.ReadFile(dst); !bytes.Equal(got, data) {
-		t.Errorf("installed bytes differ from the source")
-	}
-
-	// A corrupted download must be rejected and must not replace the file.
-	tampered := filepath.Join(dir, "tampered.bin")
-	if _, err := installVerified(bytes.NewReader([]byte("tampered")), tampered, want, 0); err == nil {
-		t.Errorf("corrupted download accepted")
-	}
-	if _, err := os.Stat(tampered); !os.IsNotExist(err) {
-		t.Errorf("destination created despite a checksum mismatch")
-	}
-
-	// An empty checksum file is an error, not a panic.
-	if _, err := expectedDigest([]byte("")); err == nil {
-		t.Errorf("empty checksum file accepted")
-	}
-}
-
-// gzOf gzips b.
-func gzOf(t *testing.T, b []byte) []byte {
-	t.Helper()
-	var buf bytes.Buffer
-	zw := gzip.NewWriter(&buf)
-	if _, err := zw.Write(b); err != nil {
-		t.Fatal(err)
-	}
-	if err := zw.Close(); err != nil {
-		t.Fatal(err)
-	}
-	return buf.Bytes()
-}
 
 // writeFile writes data to a fresh file under dir and returns its path.
 func writeFile(t *testing.T, dir, name string, data []byte) string {
@@ -95,39 +30,6 @@ func writeFile(t *testing.T, dir, name string, data []byte) string {
 		t.Fatal(err)
 	}
 	return path
-}
-
-// TestGunzipStreamTo covers the one-pass download path: the COMPRESSED bytes are
-// what the published checksum covers, so the digest is taken over the gz while
-// the artifact is decompressed straight to disk. A gz whose digest does not match
-// must leave nothing behind, even though the decompression itself succeeded.
-func TestGunzipStreamTo(t *testing.T) {
-	payload := []byte("hello sqlite")
-	gz := gzOf(t, payload)
-	dir := t.TempDir()
-
-	dst := filepath.Join(dir, "nested", "out.bin")
-	if err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), decompressFloor); err != nil {
-		t.Fatal(err)
-	}
-	got, err := os.ReadFile(dst)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if !bytes.Equal(got, payload) {
-		t.Errorf("gunzip = %q, want %q", got, payload)
-	}
-
-	// A valid gz carrying the wrong bytes: decompression succeeds, the digest
-	// gate does not, and no file is installed.
-	bad := filepath.Join(dir, "bad.bin")
-	err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz), decompressFloor)
-	if err == nil {
-		t.Errorf("gz with a mismatched digest accepted")
-	}
-	if _, err := os.Stat(bad); !os.IsNotExist(err) {
-		t.Errorf("destination created despite a digest mismatch")
-	}
 }
 
 // TestNextBootBackoff pins the boot-retry schedule: start at bootRetry, double
@@ -150,160 +52,6 @@ func TestNextBootBackoff(t *testing.T) {
 	if got := nextBootBackoff(0, time.Hour, limit); got != limit {
 		t.Errorf("base over the limit = %s, want %s", got, limit)
 	}
-}
-
-// fakeRel is one release as the fake publishes it: a tag, its named assets, the
-// draft/prerelease flags the selection logic must respect, and an optional
-// published time (zero unless a test pins it - selection is by max published_at).
-type fakeRel struct {
-	tag        string
-	draft      bool
-	prerelease bool
-	published  time.Time
-	assets     map[string][]byte
-}
-
-// fakeGitHub serves the releases LIST endpoint (newest-first, like GitHub) with
-// ETag/304 support plus per-release named assets. It counts full (200) list
-// responses, 304s, and per-asset downloads. setRelease/setReleases advance the
-// published state (new tags => new ETag) and reset the per-asset hit counts, so
-// a test can assert exactly which assets the *current* refresh fetched;
-// setAssetFailure makes one asset 500 on demand.
-type fakeGitHub struct {
-	srv *httptest.Server
-
-	mu         sync.Mutex
-	rels       []fakeRel
-	etag       string
-	hits       map[string]int
-	failing    map[string]bool
-	redirectTo string
-
-	fullFetch atomic.Int32
-	notMod    atomic.Int32
-}
-
-func newFakeGitHub(t *testing.T, tag string, assets map[string][]byte) *fakeGitHub {
-	f := &fakeGitHub{}
-	f.setRelease(tag, assets)
-	mux := http.NewServeMux()
-	mux.HandleFunc("/repos/owner/name/releases", func(w http.ResponseWriter, r *http.Request) {
-		f.mu.Lock()
-		if r.Header.Get("If-None-Match") == f.etag {
-			f.mu.Unlock()
-			f.notMod.Add(1)
-			w.WriteHeader(http.StatusNotModified)
-			return
-		}
-		etag := f.etag
-		list := make([]ghRelease, 0, len(f.rels))
-		for _, fr := range f.rels {
-			rel := ghRelease{TagName: fr.tag, Draft: fr.draft, Prerelease: fr.prerelease, PublishedAt: fr.published}
-			names := make([]string, 0, len(fr.assets))
-			for name := range fr.assets {
-				names = append(names, name)
-			}
-			sort.Strings(names)
-			for _, name := range names {
-				// Download URLs are namespaced per release (like real GitHub
-				// asset URLs), so two releases advertising the same asset name
-				// never shadow each other.
-				rel.Assets = append(rel.Assets, ghAsset{
-					Name: name, Size: int64(len(fr.assets[name])),
-					DownloadURL: f.srv.URL + "/dl/" + fr.tag + "/" + name,
-				})
-			}
-			list = append(list, rel)
-		}
-		f.mu.Unlock()
-
-		f.fullFetch.Add(1)
-		w.Header().Set("ETag", etag)
-		_ = json.NewEncoder(w).Encode(list)
-	})
-	mux.HandleFunc("/dl/", func(w http.ResponseWriter, r *http.Request) {
-		tag, name, found := strings.Cut(strings.TrimPrefix(r.URL.Path, "/dl/"), "/")
-		if !found {
-			http.NotFound(w, r)
-			return
-		}
-		f.mu.Lock()
-		if f.failing[name] {
-			f.mu.Unlock()
-			http.Error(w, "boom", http.StatusInternalServerError)
-			return
-		}
-		var data []byte
-		ok := false
-		for _, fr := range f.rels {
-			if fr.tag == tag {
-				data, ok = fr.assets[name]
-				break
-			}
-		}
-		if ok {
-			f.hits[name]++
-		}
-		f.mu.Unlock()
-		if !ok {
-			http.NotFound(w, r)
-			return
-		}
-		_, _ = w.Write(data)
-	})
-	// A real browser_download_url always 302s to a CDN host, so the hop policy
-	// is not an edge case here - this route is how a test aims one.
-	mux.HandleFunc("/redirect", func(w http.ResponseWriter, r *http.Request) {
-		f.mu.Lock()
-		target := f.redirectTo
-		f.mu.Unlock()
-		http.Redirect(w, r, target, http.StatusFound)
-	})
-	f.srv = httptest.NewServer(mux)
-	t.Cleanup(f.srv.Close)
-	return f
-}
-
-// setReleases replaces the published release list (order = newest first, like
-// the real endpoint), changing the ETag (so the next poll is a 200, not a 304)
-// and resetting per-asset hit counts and failures.
-func (f *fakeGitHub) setReleases(rels ...fakeRel) {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	f.rels = rels
-	tags := make([]string, len(rels))
-	for i, r := range rels {
-		tags[i] = r.tag
-	}
-	f.etag = `"` + strings.Join(tags, "+") + `"`
-	f.hits = map[string]int{}
-	f.failing = map[string]bool{}
-}
-
-// setRedirect points the fake's /redirect route at target.
-func (f *fakeGitHub) setRedirect(target string) {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	f.redirectTo = target
-}
-
-// setRelease publishes a single (data) release - the common case.
-func (f *fakeGitHub) setRelease(tag string, assets map[string][]byte) {
-	f.setReleases(fakeRel{tag: tag, assets: assets})
-}
-
-// setAssetFailure makes downloads of the named asset return 500 (or heals it).
-// The release metadata (and its ETag) is unchanged.
-func (f *fakeGitHub) setAssetFailure(name string, fail bool) {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	f.failing[name] = fail
-}
-
-func (f *fakeGitHub) hitCount(name string) int {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	return f.hits[name]
 }
 
 // readDB reads a fixture artifact file into memory.
@@ -336,23 +84,18 @@ func makePatch(t *testing.T, prev, next []byte) []byte {
 // zstd delta named for that from-tag.
 func makeAssets(t *testing.T, db []byte, patchFrom string, prev []byte) map[string][]byte {
 	t.Helper()
-	gz := gzOf(t, db)
-	assets := map[string][]byte{
-		dataAssetName:             gz,
-		dataAssetName + ".sha256": sumFile(dataAssetName, gz),
-		"meta.sqlite.sha256":      sumFile("meta.sqlite", db),
-	}
+	assets := releasetest.DataAssets(t, db)
 	if patchFrom != "" && prev != nil {
 		assets[patchAssetName(patchFrom)] = makePatch(t, prev, db)
 	}
 	return assets
 }
 
-// v2Catalog is fixtureCatalog plus one extra work, so its artifact's stats.Works
+// v2Catalog is artifacttest.Fixture plus one extra work, so its artifact's stats.Works
 // differs from the base fixture (4 -> 5) - the observable signal that a patched
 // refresh actually adopted the newer artifact.
 func v2Catalog() *model.Catalog {
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	cat.Works = append(cat.Works, &model.Work{
 		ID: "the-martian", Title: "The Martian", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
@@ -366,20 +109,27 @@ func v2Catalog() *model.Catalog {
 // the bytes as release assets.
 func buildV1V2(t *testing.T) (v1Path string, v1 []byte, v2Path string, v2 []byte) {
 	t.Helper()
-	v1Path = buildFixtureDB(t, fixtureCatalog())
-	v2Path = buildFixtureDB(t, v2Catalog())
+	v1Path = artifacttest.Build(t, artifacttest.Fixture())
+	v2Path = artifacttest.Build(t, v2Catalog())
 	return v1Path, readDB(t, v1Path), v2Path, readDB(t, v2Path)
 }
 
 // newPollServer seeds a server from a local artifact (so New() doesn't poll) and
 // points its GitHub client at the fake.
-func newPollServer(t *testing.T, seed string, fake *fakeGitHub) *Server {
+func newPollServer(t *testing.T, seed string, fake *releasetest.GitHub) *Server {
 	t.Helper()
-	srv, err := New(Config{DBPath: seed, Repo: "owner/name", CacheDir: t.TempDir(), swapGrace: time.Minute})
+	return newPollServerIn(t, seed, t.TempDir(), fake, time.Minute)
+}
+
+// newPollServerIn is newPollServer with the cache directory and the swap grace
+// chosen by the test.
+func newPollServerIn(t *testing.T, seed, cache string, fake *releasetest.GitHub, grace time.Duration) *Server {
+	t.Helper()
+	srv, err := New(Config{DBPath: seed, Repo: releasetest.Repo, CacheDir: cache, swapGrace: grace})
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = srv.newGHClient(releasetest.Repo, fake.URL)
 	return srv
 }
 
@@ -390,34 +140,34 @@ const (
 
 // codeOnlyRel mimics a code/image release (v*): newest in the list, no data
 // assets - release selection must skip it.
-var codeOnlyRel = fakeRel{tag: "v0.2.0", assets: map[string][]byte{
+var codeOnlyRel = releasetest.Rel{Tag: "v0.2.0", Assets: map[string][]byte{
 	"metaserve-linux-amd64.tar.gz": []byte("a binary, not data"),
 }}
 
 // preRelDecoy mimics a prerelease DATA release: it advertises the data asset
 // (selection only looks at name presence; nothing ever downloads it), but the
 // prerelease flag must exclude it - adopting it would flip loaded to its tag.
-var preRelDecoy = fakeRel{
-	tag:        "data-v2026.07.13-pre",
-	prerelease: true,
-	assets:     map[string][]byte{dataAssetName: nil},
+var preRelDecoy = releasetest.Rel{
+	Tag:        "data-v2026.07.13-pre",
+	Prerelease: true,
+	Assets:     map[string][]byte{release.DataAsset: nil},
 }
 
 // draftDecoy is preRelDecoy's sibling for the Draft branch of the filter: a
 // draft release carrying the data asset name that must likewise be skipped.
-var draftDecoy = fakeRel{
-	tag:    "data-vdraft",
-	draft:  true,
-	assets: map[string][]byte{dataAssetName: nil},
+var draftDecoy = releasetest.Rel{
+	Tag:    "data-vdraft",
+	Draft:  true,
+	Assets: map[string][]byte{release.DataAsset: nil},
 }
 
 // setupR1 arranges the standard patch-test starting point from prebuilt v1
 // artifacts: a fake publishing v1 under tagR1, a server seeded from v1Path, and
 // one full refresh so the server is loaded on R1 (its snapshot path pointing at
 // the cached R1 file, ready to be a patch base).
-func setupR1(t *testing.T, v1Path string, v1 []byte) (*Server, *fakeGitHub) {
+func setupR1(t *testing.T, v1Path string, v1 []byte) (*Server, *releasetest.GitHub) {
 	t.Helper()
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
 	srv := newPollServer(t, v1Path, fake)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("R1 refresh: %v", err)
@@ -429,16 +179,16 @@ func setupR1(t *testing.T, v1Path string, v1 []byte) (*Server, *fakeGitHub) {
 }
 
 func TestRefreshETagAndSwap(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
+	seed := artifacttest.Build(t, artifacttest.Fixture())
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
 	srv := newPollServer(t, seed, fake)
 
 	// First refresh: no loaded tag yet, so the full path downloads and swaps.
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("first refresh: %v", err)
 	}
-	if fake.fullFetch.Load() != 1 {
-		t.Errorf("expected 1 full release fetch, got %d", fake.fullFetch.Load())
+	if fake.Lists() != 1 {
+		t.Errorf("expected 1 full release fetch, got %d", fake.Lists())
 	}
 	if srv.loaded != tagR1 {
 		t.Errorf("loaded tag = %q", srv.loaded)
@@ -448,20 +198,20 @@ func TestRefreshETagAndSwap(t *testing.T) {
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("second refresh: %v", err)
 	}
-	if fake.notMod.Load() != 1 {
-		t.Errorf("expected a 304 on the second poll, got %d", fake.notMod.Load())
+	if fake.NotModified() != 1 {
+		t.Errorf("expected a 304 on the second poll, got %d", fake.NotModified())
 	}
-	if fake.hitCount(dataAssetName) != 1 {
-		t.Errorf("gz downloaded %d times, want exactly 1", fake.hitCount(dataAssetName))
+	if fake.Hits(release.DataAsset) != 1 {
+		t.Errorf("gz downloaded %d times, want exactly 1", fake.Hits(release.DataAsset))
 	}
 }
 
 func TestRefreshRejectsCorruptDownload(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	assets := makeAssets(t, readDB(t, seed), "", nil)
 	// A checksum that does not match the gz payload.
-	assets[dataAssetName+".sha256"] = []byte("deadbeef  " + dataAssetName + "\n")
-	fake := newFakeGitHub(t, tagR1, assets)
+	assets[release.DataDigestAsset] = []byte("deadbeef  " + release.DataAsset + "\n")
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: assets})
 	srv := newPollServer(t, seed, fake)
 
 	if err := srv.refresh(context.Background()); err == nil {
@@ -471,7 +221,7 @@ func TestRefreshRejectsCorruptDownload(t *testing.T) {
 	if srv.loaded != "" {
 		t.Errorf("loaded tag = %q, want empty after rejected refresh", srv.loaded)
 	}
-	if srv.current().stats.Works != 4 {
+	if srv.current().Stats().Works != 4 {
 		t.Errorf("serving snapshot changed after a rejected refresh")
 	}
 }
@@ -481,26 +231,26 @@ func TestRefreshPatchHappyPath(t *testing.T) {
 	srv, fake := setupR1(t, v1Path, v1)
 
 	// R2 ships a delta from R1; the poller should patch, not full-download.
-	fake.setRelease(tagR2, makeAssets(t, v2, tagR1, v1))
+	fake.Publish(tagR2, makeAssets(t, v2, tagR1, v1))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("patch refresh: %v", err)
 	}
 	if srv.loaded != tagR2 {
 		t.Errorf("loaded = %q, want %q", srv.loaded, tagR2)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted)", got)
 	}
 	// The reconstructed artifact must be byte-identical to the real v2.
-	patched := readDB(t, srv.current().path)
+	patched := readDB(t, srv.current().Path())
 	if !bytes.Equal(patched, v2) {
 		t.Errorf("patched artifact (%d bytes) differs from v2 (%d bytes)", len(patched), len(v2))
 	}
 	// The gz anchor must never have been fetched for R2 (patch path only).
-	if got := fake.hitCount(dataAssetName); got != 0 {
+	if got := fake.Hits(release.DataAsset); got != 0 {
 		t.Errorf("gz fetched %d times during patch refresh, want 0", got)
 	}
-	if got := fake.hitCount(patchAssetName(tagR1)); got != 1 {
+	if got := fake.Hits(patchAssetName(tagR1)); got != 1 {
 		t.Errorf("patch fetched %d times, want 1", got)
 	}
 }
@@ -531,7 +281,7 @@ func TestRefreshPatchFallsBack(t *testing.T) {
 			name: "wrong raw checksum",
 			build: func(t *testing.T) map[string][]byte {
 				a := makeAssets(t, v2, tagR1, v1)
-				a["meta.sqlite.sha256"] = []byte("deadbeef  meta.sqlite\n")
+				a[release.RawDigestAsset] = []byte("deadbeef  meta.sqlite\n")
 				return a
 			},
 			wantPatchHits: 1,
@@ -549,7 +299,7 @@ func TestRefreshPatchFallsBack(t *testing.T) {
 			name: "raw checksum missing",
 			build: func(t *testing.T) map[string][]byte {
 				a := makeAssets(t, v2, tagR1, v1)
-				delete(a, "meta.sqlite.sha256")
+				delete(a, release.RawDigestAsset)
 				return a
 			},
 			wantPatchHits: 0,
@@ -559,20 +309,20 @@ func TestRefreshPatchFallsBack(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			srv, fake := setupR1(t, v1Path, v1)
 
-			fake.setRelease(tagR2, tc.build(t))
+			fake.Publish(tagR2, tc.build(t))
 			if err := srv.refresh(context.Background()); err != nil {
 				t.Fatalf("refresh should succeed via fallback: %v", err)
 			}
 			if srv.loaded != tagR2 {
 				t.Errorf("loaded = %q, want %q", srv.loaded, tagR2)
 			}
-			if got := srv.current().stats.Works; got != 5 {
+			if got := srv.current().Stats().Works; got != 5 {
 				t.Errorf("works = %d, want 5 (v2 adopted via full download)", got)
 			}
-			if got := fake.hitCount(dataAssetName); got != 1 {
+			if got := fake.Hits(release.DataAsset); got != 1 {
 				t.Errorf("gz fetched %d times, want 1 (full fallback used)", got)
 			}
-			if got := fake.hitCount(patchAssetName(tagR1)); got != tc.wantPatchHits {
+			if got := fake.Hits(patchAssetName(tagR1)); got != tc.wantPatchHits {
 				t.Errorf("patch fetched %d times, want %d", got, tc.wantPatchHits)
 			}
 		})
@@ -589,8 +339,8 @@ func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
 
 	// R2 is published (no patch asset, so the full path runs), but its gz
 	// download 500s: the refresh must error and nothing may be adopted.
-	fake.setRelease(tagR2, makeAssets(t, v2, "", nil))
-	fake.setAssetFailure(dataAssetName, true)
+	fake.Publish(tagR2, makeAssets(t, v2, "", nil))
+	fake.SetAssetFailure(release.DataAsset, true)
 	if err := srv.refresh(context.Background()); err == nil {
 		t.Fatal("expected refresh to fail while the asset download 500s")
 	}
@@ -600,14 +350,14 @@ func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
 
 	// The asset heals (same release, same ETag). The next refresh must retry
 	// and succeed - before the etag-forget fix it 304-ed and no-oped forever.
-	fake.setAssetFailure(dataAssetName, false)
+	fake.SetAssetFailure(release.DataAsset, false)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("refresh after the asset healed: %v", err)
 	}
 	if srv.loaded != tagR2 {
 		t.Errorf("loaded = %q, want %q (retry must not be 304-blocked)", srv.loaded, tagR2)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted on retry)", got)
 	}
 }
@@ -635,20 +385,20 @@ func TestRefreshSkipsNonDataReleases(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			srv, fake := setupR1(t, v1Path, v1)
 
-			fake.setReleases(codeOnlyRel, draftDecoy, preRelDecoy, fakeRel{tag: tagR2, assets: makeAssets(t, v2, tc.patchFrom, v1)})
+			fake.SetReleases(codeOnlyRel, draftDecoy, preRelDecoy, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, tc.patchFrom, v1)})
 			if err := srv.refresh(context.Background()); err != nil {
 				t.Fatalf("refresh: %v", err)
 			}
 			if srv.loaded != tagR2 {
 				t.Errorf("loaded = %q, want %q (code/draft/prerelease entries must be skipped)", srv.loaded, tagR2)
 			}
-			if got := srv.current().stats.Works; got != 5 {
+			if got := srv.current().Stats().Works; got != 5 {
 				t.Errorf("works = %d, want 5 (v2 adopted)", got)
 			}
-			if got := fake.hitCount(dataAssetName); got != tc.wantGz {
+			if got := fake.Hits(release.DataAsset); got != tc.wantGz {
 				t.Errorf("gz fetched %d times, want %d", got, tc.wantGz)
 			}
-			if got := fake.hitCount(patchAssetName(tagR1)); got != tc.wantPatch {
+			if got := fake.Hits(patchAssetName(tagR1)); got != tc.wantPatch {
 				t.Errorf("patch fetched %d times, want %d", got, tc.wantPatch)
 			}
 		})
@@ -657,7 +407,7 @@ func TestRefreshSkipsNonDataReleases(t *testing.T) {
 
 // TestRefreshSelectsByPublishedAt is the regression test for the stale-artifact
 // bug: GitHub's release list order is NOT publish-chronological (see the
-// latestDataRelease doc comment for the observed order), so the first-listed
+// release.Client.LatestData doc comment for the observed order), so the first-listed
 // data release is not necessarily the newest. The list here mimics that order -
 // a leading code release, then a STALE data release (older published_at,
 // lexicographically-larger tag) BEFORE the real newest - and the poller must
@@ -672,13 +422,13 @@ func TestRefreshSelectsByPublishedAt(t *testing.T) {
 		newerTag = "data-v2026.07.12-6f10608" // published 23:33, the actual newest
 	)
 	day := time.Date(2026, 7, 12, 0, 0, 0, 0, time.UTC)
-	staleRel := fakeRel{tag: staleTag, published: day.Add(17*time.Hour + 9*time.Minute), assets: makeAssets(t, v1, "", nil)}
-	newerRel := fakeRel{tag: newerTag, published: day.Add(23*time.Hour + 33*time.Minute), assets: makeAssets(t, v2, "", nil)}
+	staleRel := releasetest.Rel{Tag: staleTag, Published: day.Add(17*time.Hour + 9*time.Minute), Assets: makeAssets(t, v1, "", nil)}
+	newerRel := releasetest.Rel{Tag: newerTag, Published: day.Add(23*time.Hour + 33*time.Minute), Assets: makeAssets(t, v2, "", nil)}
 
-	fake := newFakeGitHub(t, staleTag, nil)
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: staleTag})
 	// List order = observed GitHub order: code release first, then stale before
 	// newer (reverse-lexicographic within the day).
-	fake.setReleases(codeOnlyRel, staleRel, newerRel)
+	fake.SetReleases(codeOnlyRel, staleRel, newerRel)
 
 	srv := newPollServer(t, v1Path, fake)
 	if err := srv.refresh(context.Background()); err != nil {
@@ -687,11 +437,11 @@ func TestRefreshSelectsByPublishedAt(t *testing.T) {
 	if srv.loaded != newerTag {
 		t.Errorf("loaded = %q, want %q (must select max published_at, not the first-listed data release)", srv.loaded, newerTag)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (the newer-published v2 artifact adopted)", got)
 	}
 	// The stale release's gz must never have been downloaded.
-	if got := fake.hitCount(dataAssetName); got != 1 {
+	if got := fake.Hits(release.DataAsset); got != 1 {
 		t.Errorf("gz fetched %d times, want 1 (only the newer release)", got)
 	}
 }
@@ -705,20 +455,20 @@ func TestRefreshTieBreaksLikeJq(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 
 	tie := time.Date(2026, 7, 12, 17, 9, 32, 0, time.UTC)
-	first := fakeRel{tag: "data-v2026.07.12-aaaaaaa", published: tie, assets: makeAssets(t, v1, "", nil)}
-	second := fakeRel{tag: "data-v2026.07.12-bbbbbbb", published: tie, assets: makeAssets(t, v2, "", nil)}
+	first := releasetest.Rel{Tag: "data-v2026.07.12-aaaaaaa", Published: tie, Assets: makeAssets(t, v1, "", nil)}
+	second := releasetest.Rel{Tag: "data-v2026.07.12-bbbbbbb", Published: tie, Assets: makeAssets(t, v2, "", nil)}
 
-	fake := newFakeGitHub(t, first.tag, nil)
-	fake.setReleases(first, second)
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: first.Tag})
+	fake.SetReleases(first, second)
 
 	srv := newPollServer(t, v1Path, fake)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("refresh: %v", err)
 	}
-	if srv.loaded != second.tag {
-		t.Errorf("loaded = %q, want %q (later-in-list must win a published_at tie, matching jq max_by)", srv.loaded, second.tag)
+	if srv.loaded != second.Tag {
+		t.Errorf("loaded = %q, want %q (later-in-list must win a published_at tie, matching jq max_by)", srv.loaded, second.Tag)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (the later-listed v2 artifact adopted)", got)
 	}
 }
@@ -727,10 +477,10 @@ func TestRefreshTieBreaksLikeJq(t *testing.T) {
 // list holding only code releases yields a descriptive error and the serving
 // snapshot is untouched.
 func TestRefreshErrorsWithoutDataRelease(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	srv, fake := setupR1(t, seed, readDB(t, seed))
 
-	fake.setReleases(codeOnlyRel)
+	fake.SetReleases(codeOnlyRel)
 	err := srv.refresh(context.Background())
 	if err == nil {
 		t.Fatal("expected refresh to error when no data release exists")
@@ -741,19 +491,18 @@ func TestRefreshErrorsWithoutDataRelease(t *testing.T) {
 	if srv.loaded != tagR1 {
 		t.Errorf("loaded = %q, want still %q", srv.loaded, tagR1)
 	}
-	if got := srv.current().stats.Works; got != 4 {
+	if got := srv.current().Stats().Works; got != 4 {
 		t.Errorf("works = %d, want 4 (snapshot unchanged)", got)
 	}
 }
 
-// TestWorkflowMatchesGoConstants pins the bash<->Go contract: the release
-// workflow's zstd window, patch-asset filename, and prev-release selection
-// must match patchWindowLog, patchAssetName, dataAssetName, and
-// releaseListPageSize. A bump/rename on one side now fails tests instead of
-// silently killing the delta feature (the poller would never find a matching
-// asset). Expected substrings are derived from the Go constants where one
-// exists; the draft/prerelease jq predicate is pinned verbatim (an equivalent
-// reformatting requires updating this test).
+// TestWorkflowMatchesGoConstants pins the bash<->Go contract on the PATCH side:
+// the release workflow's zstd window and patch-asset filename must match
+// patchWindowLog and patchAssetName. A bump/rename on one side now fails tests
+// instead of silently killing the delta feature (the poller would never find a
+// matching asset). The prev-release SELECTION the patch is based on must match
+// pkg/release's LatestData, which is that package's
+// TestWorkflowMatchesTheSelection.
 func TestWorkflowMatchesGoConstants(t *testing.T) {
 	wf, err := os.ReadFile(filepath.Join("..", "..", ".github", "workflows", "release.yml"))
 	if err != nil {
@@ -766,36 +515,6 @@ func TestWorkflowMatchesGoConstants(t *testing.T) {
 	if want := patchAssetName("${PREV_TAG}"); !strings.Contains(s, want) {
 		t.Errorf("release.yml does not contain %q - the patch asset naming convention drifted", want)
 	}
-	// The prev-release selection must mirror latestDataRelease: pick by
-	// data-asset presence, exclude drafts/prereleases, select by max
-	// published_at, over the same window.
-	if want := `.name == "` + dataAssetName + `"`; !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not filter releases by %q - it must pick the newest release carrying the data asset, not GitHub's latest", want)
-	}
-	if want := `select((.draft or .prerelease) | not)`; !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not contain %q - drafts/prereleases must be excluded like latestDataRelease does", want)
-	}
-	if want := `max_by(.published_at)`; !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not contain %q - it must pick by publish time, not list position, like latestDataRelease does", want)
-	}
-	if want := "per_page=" + strconv.Itoa(releaseListPageSize); !strings.Contains(s, want) {
-		t.Errorf("release.yml prev selection does not contain %q - keep the scan window in sync with releaseListPageSize", want)
-	}
-}
-
-// TestPollLoopRefreshesAtStartup pins the production Docker boot: New() loads a
-// baked --db artifact (tag "", so it does NOT run the poll-only synchronous
-// first refresh), then Run() starts pollLoop. pollLoop must refresh IMMEDIATELY,
-// well before the first Interval tick, or a recreated container serves
-// build-time data for one full interval. The server here is seeded from v1, the
-// fake publishes a newer R2 release, and Interval defaults to an hour - so ONLY
-// the startup refresh can adopt R2 within the test's seconds-long deadline.
-// cacheFiles lists the cache directory, for the prune assertions.
-func cacheFiles(t *testing.T, dir string) []string {
-	t.Helper()
-	names := dirEntries(t, dir)
-	sort.Strings(names)
-	return names
 }
 
 // TestRefreshPrunesCache covers the cache-volume leak: every adopted release
@@ -805,23 +524,23 @@ func cacheFiles(t *testing.T, dir string) []string {
 func TestRefreshPrunesCache(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
 	srv, err := New(Config{DBPath: v1Path, Repo: "owner/name", CacheDir: cache, swapGrace: 10 * time.Millisecond})
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = srv.newGHClient("owner/name", fake.URL)
 
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("R1 refresh: %v", err)
 	}
 	r1File := filepath.Base(srv.dbCachePath(tagR1))
 	// The gz the artifact was streamed through is removed by the refresh itself.
-	if got := cacheFiles(t, cache); len(got) != 1 || got[0] != r1File {
+	if got := releasetest.DirEntries(t, cache); len(got) != 1 || got[0] != r1File {
 		t.Errorf("cache after R1 = %v, want just [%s]", got, r1File)
 	}
 
-	fake.setRelease(tagR2, makeAssets(t, v2, "", nil))
+	fake.Publish(tagR2, makeAssets(t, v2, "", nil))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("R2 refresh: %v", err)
 	}
@@ -831,7 +550,7 @@ func TestRefreshPrunesCache(t *testing.T) {
 	// assuming it has already fired.
 	deadline := time.Now().Add(10 * time.Second)
 	for {
-		got := cacheFiles(t, cache)
+		got := releasetest.DirEntries(t, cache)
 		if len(got) == 1 && got[0] == r2File {
 			break
 		}
@@ -841,7 +560,7 @@ func TestRefreshPrunesCache(t *testing.T) {
 		time.Sleep(10 * time.Millisecond)
 	}
 	// The superseded artifact is gone but the live one still opens.
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 after the prune", got)
 	}
 }
@@ -852,7 +571,7 @@ func TestRefreshPrunesCache(t *testing.T) {
 // download rather than allocate it.
 func TestPatchSkippedOverBaseCap(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
 	srv, err := New(Config{
 		DBPath: v1Path, Repo: "owner/name", CacheDir: t.TempDir(),
 		swapGrace: time.Minute, maxPatchBase: 1, // every artifact is over a 1-byte cap
@@ -860,26 +579,26 @@ func TestPatchSkippedOverBaseCap(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = srv.newGHClient("owner/name", fake.URL)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("R1 refresh: %v", err)
 	}
 
 	// R2 ships a usable delta from R1; the cap must make us ignore it.
-	fake.setRelease(tagR2, makeAssets(t, v2, tagR1, v1))
+	fake.Publish(tagR2, makeAssets(t, v2, tagR1, v1))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("R2 refresh: %v", err)
 	}
 	if srv.loaded != tagR2 {
 		t.Errorf("loaded = %q, want %q (full download fallback)", srv.loaded, tagR2)
 	}
-	if got := fake.hitCount(patchAssetName(tagR1)); got != 0 {
+	if got := fake.Hits(patchAssetName(tagR1)); got != 0 {
 		t.Errorf("patch fetched %d times, want 0 (over the base cap)", got)
 	}
-	if got := fake.hitCount(dataAssetName); got != 1 {
+	if got := fake.Hits(release.DataAsset); got != 1 {
 		t.Errorf("gz fetched %d times, want 1", got)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted via full download)", got)
 	}
 }
@@ -908,14 +627,14 @@ func TestBootWithoutDataServesDegraded(t *testing.T) {
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
 
-	code, body := getJSON(t, ts.URL, "/healthz")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/healthz")
 	if code != http.StatusServiceUnavailable {
 		t.Errorf("healthz status = %d, want 503", code)
 	}
 	if body["status"] != "starting" {
 		t.Errorf("healthz body = %v, want status starting", body)
 	}
-	code, body = getJSON(t, ts.URL, "/api/v1/stats")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/stats")
 	if code != http.StatusServiceUnavailable {
 		t.Errorf("stats status = %d, want 503", code)
 	}
@@ -929,19 +648,26 @@ func TestBootWithoutDataServesDegraded(t *testing.T) {
 
 	// Once a release is reachable, the same process becomes healthy.
 	_, v1, _, _ := buildV1V2(t)
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
-	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
+	srv.gh = srv.newGHClient("owner/name", fake.URL)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("recovery refresh: %v", err)
 	}
-	if code, body := getJSON(t, ts.URL, "/healthz"); code != 200 || body["status"] != "ok" {
+	if code, body := artifacttest.GetJSON(t, ts.URL, "/healthz"); code != 200 || body["status"] != "ok" {
 		t.Errorf("healthz after recovery = %d %v, want 200 ok", code, body)
 	}
 }
 
+// TestPollLoopRefreshesAtStartup pins the production Docker boot: New() loads a
+// baked --db artifact (tag "", so it does NOT run the poll-only synchronous
+// first refresh), then Run() starts pollLoop. pollLoop must refresh IMMEDIATELY,
+// well before the first Interval tick, or a recreated container serves
+// build-time data for one full interval. The server here is seeded from v1, the
+// fake publishes a newer R2 release, and Interval defaults to an hour - so ONLY
+// the startup refresh can adopt R2 within the test's seconds-long deadline.
 func TestPollLoopRefreshesAtStartup(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
-	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
 	srv := newPollServer(t, v1Path, fake) // Interval defaults to time.Hour
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -957,7 +683,7 @@ func TestPollLoopRefreshesAtStartup(t *testing.T) {
 	// is only a cap (the loop exits as soon as R2 lands) - keep it generous so a
 	// loaded -race CI runner can't flake it.
 	deadline := time.Now().Add(10 * time.Second)
-	for srv.current().tag != tagR2 {
+	for srv.current().Info().Tag != tagR2 {
 		if time.Now().After(deadline) {
 			cancel()
 			<-done
@@ -965,7 +691,7 @@ func TestPollLoopRefreshesAtStartup(t *testing.T) {
 		}
 		time.Sleep(10 * time.Millisecond)
 	}
-	if got := srv.current().stats.Works; got != 5 {
+	if got := srv.current().Stats().Works; got != 5 {
 		t.Errorf("works = %d, want 5 (v2 adopted at startup)", got)
 	}
 
@@ -986,7 +712,7 @@ func TestApplyPatchFile(t *testing.T) {
 		dir := t.TempDir()
 		patchPath := writeFile(t, dir, "patch.zst", patch)
 		dst := filepath.Join(dir, "out", "meta.sqlite")
-		n, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), patchBound(v1))
+		n, err := applyPatchFile(patchPath, v1Path, dst, releasetest.Digest(v2), patchBound(v1))
 		if err != nil {
 			t.Fatalf("applyPatchFile: %v", err)
 		}
@@ -1009,7 +735,7 @@ func TestApplyPatchFile(t *testing.T) {
 			t.Errorf("dst was created despite a hash mismatch")
 		}
 		// No leftover temp files in the dst directory.
-		for _, name := range dirEntries(t, dir) {
+		for _, name := range releasetest.DirEntries(t, dir) {
 			if strings.HasPrefix(name, ".meta-") {
 				t.Errorf("leftover temp file %q after failed apply", name)
 			}
@@ -1043,7 +769,7 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 	t.Logf("CLI patch size = %d bytes (v2 artifact = %d bytes)", info.Size(), len(v2))
 
 	dst := filepath.Join(dir, "out.sqlite")
-	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2), decompressFloor); err != nil {
+	if _, err := applyPatchFile(patchPath, v1Path, dst, releasetest.Digest(v2), release.DecompressBound(0, 0)); err != nil {
 		t.Fatalf("applyPatchFile on CLI frame: %v", err)
 	}
 	if got := readDB(t, dst); !bytes.Equal(got, v2) {
@@ -1051,120 +777,21 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 	}
 }
 
-// TestDecompressBound pins the arithmetic both refresh paths write under. The
-// property that matters is that it is a CEILING and never a trap: too low is
-// not a caught attack, it is every refresh failing forever while the server
-// serves stale data.
-func TestDecompressBound(t *testing.T) {
-	const big = 3 << 30 // an artifact bigger than the floor
-	cases := []struct {
-		name     string
-		declared int64
-		current  int64
-		want     int64
-	}{
-		{"nothing known is the floor", 0, 0, decompressFloor},
-		{"a negative size is nothing known", -1, 0, decompressFloor},
-		{"a small declared size stays on the floor", 1 << 20, 0, decompressFloor},
-		{"a large declared size takes the ratio", 1 << 30, 0, decompressRatio << 30},
-		// THE FINDING: an undeclared size used to collapse onto a 1 GiB floor,
-		// which is BELOW the ~1.6 GB artifact it was bounding, so every full
-		// refresh would have failed forever. The loaded artifact is what keeps
-		// the bound tracking the data.
-		{"an undeclared size clears the loaded artifact", 0, big, big * currentArtifactRatio},
-		{"the loaded artifact never lowers the floor", 0, 1 << 20, decompressFloor},
-		{"the largest arm wins", 1 << 30, big, max(int64(decompressRatio)<<30, big*currentArtifactRatio)},
-		{"an absurd declared size cannot overflow", 1 << 62, 0, decompressFloor},
-		{"an absurd loaded size cannot overflow", 0, 1 << 62, decompressFloor},
-	}
-	for _, tc := range cases {
-		t.Run(tc.name, func(t *testing.T) {
-			if got := decompressBound(tc.declared, tc.current); got != tc.want {
-				t.Errorf("decompressBound(%d, %d) = %d, want %d", tc.declared, tc.current, got, tc.want)
-			}
-		})
-	}
-
-	// The floor alone has to clear the real artifact, since that is where an
-	// undeclared size lands on a server with nothing loaded yet.
-	const realArtifactBytes = 1_600_000_000
-	if decompressFloor <= realArtifactBytes {
-		t.Errorf("the floor is %d bytes, at or below the ~%d-byte artifact it must bound",
-			int64(decompressFloor), int64(realArtifactBytes))
-	}
-}
-
-// TestExpansionBoundReadsTheLoadedArtifact: the bound a running server computes
-// takes the artifact it is serving into account, so a catalogue that outgrows
-// the floor can never trip it - and an asset that declares no size says so in
-// the log rather than only in a refresh that starts failing.
-func TestExpansionBoundReadsTheLoadedArtifact(t *testing.T) {
-	var logged bytes.Buffer
-	srv, err := New(Config{DBPath: buildFixtureDB(t, fixtureCatalog()), Logger: log.New(&logged, "", 0)})
+// TestCurrentArtifactBytesReadsTheLoadedArtifact: the size this server hands its
+// release client as the expansion bound's base (release.WithBaseSize) is the
+// artifact it is serving, so a catalogue that outgrows the floor can never trip
+// the bound. The arithmetic and the "declares no size" notice are pkg/release's
+// TestExpansionBoundReadsTheBaseSize; that the notice reaches THIS server's log
+// is TestFullRefreshSurvivesAnUndeclaredAssetSize.
+func TestCurrentArtifactBytesReadsTheLoadedArtifact(t *testing.T) {
+	srv, err := New(Config{DBPath: artifacttest.Build(t, artifacttest.Fixture()), Logger: artifacttest.QuietLogger()})
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Cleanup(func() { srv.current().close() })
+	t.Cleanup(func() { _ = srv.current().Close() })
 
-	size := srv.currentArtifactBytes()
-	if size <= 0 {
+	if size := srv.currentArtifactBytes(); size <= 0 {
 		t.Fatalf("the loaded artifact reports %d bytes", size)
-	}
-	if got, want := srv.expansionBound(dataAssetName, 0), decompressBound(0, size); got != want {
-		t.Errorf("expansionBound with nothing declared = %d, want %d", got, want)
-	}
-	if !strings.Contains(logged.String(), "declares no size") {
-		t.Errorf("log %q does not report the undeclared size", logged.String())
-	}
-	logged.Reset()
-	if got, want := srv.expansionBound(dataAssetName, 1<<30), decompressBound(1<<30, size); got != want {
-		t.Errorf("expansionBound with a declared size = %d, want %d", got, want)
-	}
-	if logged.Len() != 0 {
-		t.Errorf("a declared size logged %q", logged.String())
-	}
-}
-
-// TestGunzipStreamToIsBounded is the finding: the sha256 gate only fires once the
-// bytes are on disk, and a gzip stream declares no output size - so an asset that
-// expands without limit fills the cache volume before anything rejects it. The
-// bound stops the COPY, so the outcome is a failed refresh with nothing
-// installed, exactly as a digest mismatch is.
-func TestGunzipStreamToIsBounded(t *testing.T) {
-	payload := bytes.Repeat([]byte("a"), 1<<20) // compresses to ~1KB
-	gz := gzOf(t, payload)
-	dir := t.TempDir()
-
-	dst := filepath.Join(dir, "bounded.bin")
-	err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), 4096)
-	if err == nil {
-		t.Fatal("an asset expanding far past its bound was installed")
-	}
-	if !strings.Contains(err.Error(), "bound") {
-		t.Errorf("error = %v, want the bound named", err)
-	}
-	if _, err := os.Stat(dst); !os.IsNotExist(err) {
-		t.Errorf("destination created despite the bound")
-	}
-	for _, e := range dirEntries(t, dir) {
-		if strings.HasPrefix(e, ".meta-") {
-			t.Errorf("leftover temp file %q after a bounded refusal", e)
-		}
-	}
-
-	// The bound is not tight: the real ratio (about 4x) must pass, and an
-	// artifact exactly AT the bound is legitimate rather than suspicious - while
-	// ONE byte past it is not, which is the whole boundary in two lines.
-	exact := filepath.Join(dir, "exact.bin")
-	if err := gunzipStreamTo(bytes.NewReader(gz), exact, hexDigest(gz), int64(len(payload))); err != nil {
-		t.Errorf("a payload exactly at the bound was refused: %v", err)
-	}
-	over := filepath.Join(dir, "over.bin")
-	if err := gunzipStreamTo(bytes.NewReader(gz), over, hexDigest(gz), int64(len(payload))-1); err == nil {
-		t.Error("a payload one byte past the bound was installed")
-	}
-	if _, err := os.Stat(over); !os.IsNotExist(err) {
-		t.Error("destination created despite the bound")
 	}
 }
 
@@ -1182,18 +809,18 @@ func TestApplyPatchFileIsBounded(t *testing.T) {
 	dst := filepath.Join(dir, "out.bin")
 	// Floor 1, so the bound really is the ratio over the base's 64 bytes - what
 	// tryPatch computes from the base artifact it stat'd.
-	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), int64(len(base))*currentArtifactRatio); err == nil {
+	if _, err := applyPatchFile(patchPath, basePath, dst, releasetest.Digest(next), int64(len(base))*2); err == nil {
 		t.Fatal("a patch expanding far past its base was installed")
 	}
 	if _, err := os.Stat(dst); !os.IsNotExist(err) {
 		t.Errorf("destination created despite the bound")
 	}
 	// An output exactly AT the bound is legitimate rather than suspicious.
-	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), int64(len(next))); err != nil {
+	if _, err := applyPatchFile(patchPath, basePath, dst, releasetest.Digest(next), int64(len(next))); err != nil {
 		t.Errorf("a patch landing exactly on the bound was refused: %v", err)
 	}
 	// With the production floor the same patch is an ordinary, tiny refresh.
-	if _, err := applyPatchFile(patchPath, basePath, dst, hexDigest(next), patchBound(base)); err != nil {
+	if _, err := applyPatchFile(patchPath, basePath, dst, releasetest.Digest(next), patchBound(base)); err != nil {
 		t.Errorf("a patch well inside the floor was refused: %v", err)
 	}
 }
@@ -1201,237 +828,7 @@ func TestApplyPatchFileIsBounded(t *testing.T) {
 // patchBound is tryPatch's own bound for a base artifact, so a test never
 // invents an arithmetic of its own.
 func patchBound(base []byte) int64 {
-	return decompressBound(0, int64(len(base)))
-}
-
-func dirEntries(t *testing.T, dir string) []string {
-	t.Helper()
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		t.Fatal(err)
-	}
-	names := make([]string, 0, len(entries))
-	for _, e := range entries {
-		names = append(names, e.Name())
-	}
-	return names
-}
-
-// newTestGHClient is newGHClient pointed at an httptest server: the same
-// production client, plus that server's origin admitted as an asset origin. An
-// httptest server is plain HTTP on a loopback IP with a port - three things the
-// production asset rule refuses, and rightly - so the exemption is an explicit
-// piece of test setup rather than a clause inside the rule.
-func newTestGHClient(repo, token, base string) *ghClient {
-	c := newGHClient(repo, token, base)
-	c.allowOrigin(base)
-	return c
-}
-
-// TestAssetHostsAreAllowlisted is the finding: an asset URL comes out of the
-// release JSON and get() attaches this server's token to whatever host it names.
-// A release that pointed an asset elsewhere would hand that host the credential,
-// so the host is checked BEFORE the request is built.
-func TestAssetHostsAreAllowlisted(t *testing.T) {
-	prod := newGHClient("owner/name", "token", "")
-	for _, url := range []string{
-		"https://github.com/owner/name/releases/download/v1/meta.sqlite.gz",
-		"https://objects.githubusercontent.com/github-production-release-asset/1/2",
-		"https://release-assets.githubusercontent.com/x",
-		"https://api.github.com/repos/owner/name/releases/assets/1",
-	} {
-		if err := prod.checkAssetURL(url); err != nil {
-			t.Errorf("%s was refused: %v", url, err)
-		}
-	}
-	for _, tc := range []struct{ url, reason string }{
-		{"https://evil.example/meta.sqlite.gz", "not a GitHub release-asset host"},
-		{"https://github.com.evil.example/meta.sqlite.gz", "not a GitHub release-asset host"},
-		{"https://notgithubusercontent.com/x", "not a GitHub release-asset host"},
-		// A token is never sent in clear.
-		{"http://github.com/owner/name/releases/download/v1/meta.sqlite.gz", "is not https"},
-		// THE PORT: the host arm reads u.Hostname(), which strips it, so an
-		// allowlisted NAME with a port of the release JSON's choosing used to be
-		// dialled with the bearer token attached.
-		{"https://objects.githubusercontent.com:8443/x", "explicit port"},
-		{"https://github.com:1337/owner/name/releases/download/v1/meta.sqlite.gz", "explicit port"},
-		{"https://api.github.com:8443/repos/owner/name/releases/assets/1", "explicit port"},
-		{"://nonsense", "download"},
-	} {
-		err := prod.checkAssetURL(tc.url)
-		if err == nil {
-			t.Errorf("%s was allowed", tc.url)
-			continue
-		}
-		if !strings.Contains(err.Error(), tc.reason) {
-			t.Errorf("%s was refused as %q, want the reason to name %q", tc.url, err, tc.reason)
-		}
-	}
-
-	// The origins allowOrigin was handed are the one exception, and they are
-	// whole origins: the port is part of what must match, which is how a test
-	// server is reached without the rule above gaining a clause.
-	local := newTestGHClient("owner/name", "token", "http://127.0.0.1:1/")
-	if err := local.checkAssetURL("http://127.0.0.1:1/dl/tag/meta.sqlite.gz"); err != nil {
-		t.Errorf("the configured base's own origin was refused: %v", err)
-	}
-	for _, url := range []string{
-		"http://127.0.0.2:1/dl/tag/meta.sqlite.gz",  // another host
-		"http://127.0.0.1:2/dl/tag/meta.sqlite.gz",  // another port
-		"https://127.0.0.1:1/dl/tag/meta.sqlite.gz", // another scheme
-	} {
-		if err := local.checkAssetURL(url); err == nil {
-			t.Errorf("%s rode in on the exempt origin", url)
-		}
-	}
-}
-
-// TestAssetRedirectsAreRechecked is the finding the attachment fetcher had too,
-// one repository over: policy ran on the URL the release JSON named and on
-// nothing after it. A browser_download_url ALWAYS 302s to a CDN host, so
-// redirects are this path's NORMAL shape.
-//
-// What a hop is judged by is ghhost.HopPolicy - https, no IP literal, bounded -
-// and NOT the asset allowlist: GitHub chooses the CDN, has moved it before, and
-// net/http strips the Authorization header on a cross-host hop. ghhost's own
-// test pins that an ordinary unlisted https host is followed; a local test
-// server can only be an IP literal, so it cannot be pinned from here.
-func TestAssetRedirectsAreRechecked(t *testing.T) {
-	var elsewhereHits atomic.Int32
-	elsewhere := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-		elsewhereHits.Add(1)
-		_, _ = w.Write([]byte("payload"))
-	}))
-	defer elsewhere.Close()
-
-	asset := []byte("the artifact bytes")
-	fake := newFakeGitHub(t, "data-v1", map[string][]byte{dataAssetName: asset})
-	c := newTestGHClient("owner/name", "token", fake.srv.URL)
-
-	t.Run("a hop to the exempt origin is followed", func(t *testing.T) {
-		fake.setRedirect(fake.srv.URL + "/dl/data-v1/" + dataAssetName)
-		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
-		if err != nil {
-			t.Fatalf("an allowed hop was refused: %v", err)
-		}
-		defer func() { _ = resp.Body.Close() }()
-		got, err := io.ReadAll(resp.Body)
-		if err != nil {
-			t.Fatal(err)
-		}
-		if !bytes.Equal(got, asset) {
-			t.Errorf("body = %q, want the asset", got)
-		}
-	})
-
-	t.Run("a hop to another local host is refused and never dialed", func(t *testing.T) {
-		// Plain HTTP on a loopback IP: both arms of the hop rule, and the shape
-		// an SSRF redirect takes in production (169.254.169.254, a service on the
-		// container's own loopback).
-		fake.setRedirect(elsewhere.URL + "/meta.sqlite.gz")
-		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
-		if err == nil {
-			_ = resp.Body.Close()
-			t.Fatal("a redirect to a refused location was followed")
-		}
-		if !strings.Contains(err.Error(), "redirected to a refused location") {
-			t.Errorf("error = %v, want the redirect refusal", err)
-		}
-		if n := elsewhereHits.Load(); n != 0 {
-			t.Errorf("the refused host was dialed %d times", n)
-		}
-	})
-}
-
-// TestReleaseMetadataFollowsARedirect: the metadata call shares the client, so
-// it shares the hop policy. A repository RENAME answers 301 on
-// /repos/<old>/releases, and a policy that refused it would strand every poller
-// on the old name.
-func TestReleaseMetadataFollowsARedirect(t *testing.T) {
-	fake := newFakeGitHub(t, "data-v1", map[string][]byte{dataAssetName: []byte("x")})
-	moved := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, fake.srv.URL+r.URL.RequestURI(), http.StatusMovedPermanently)
-	}))
-	defer moved.Close()
-
-	c := newTestGHClient("owner/name", "", moved.URL)
-	c.allowOrigin(fake.srv.URL)
-	rel, notModified, err := c.latestDataRelease(context.Background())
-	if err != nil {
-		t.Fatalf("latestDataRelease through a 301: %v", err)
-	}
-	if notModified || rel == nil || rel.TagName != "data-v1" {
-		t.Errorf("rel = %+v, notModified = %v, want the moved repository's release", rel, notModified)
-	}
-}
-
-// TestRefusedAssetHostIsNeverDialed: the allowlist runs before the request
-// exists, so the refused host sees no connection at all - which is the whole
-// point, since making the request is what would disclose the token.
-func TestRefusedAssetHostIsNeverDialed(t *testing.T) {
-	var hits atomic.Int32
-	elsewhere := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-		hits.Add(1)
-		_, _ = w.Write([]byte("payload"))
-	}))
-	defer elsewhere.Close()
-
-	// A client whose exempt origin is a DIFFERENT local server, so `elsewhere` is
-	// off the rule the way a third-party host is in production.
-	other := httptest.NewServer(http.NotFoundHandler())
-	defer other.Close()
-	c := newTestGHClient("owner/name", "token", other.URL)
-
-	resp, err := c.get(context.Background(), elsewhere.URL+"/meta.sqlite.gz")
-	if err == nil {
-		_ = resp.Body.Close()
-		t.Fatal("an asset download to a refused host was made")
-	}
-	if !strings.Contains(err.Error(), "is not https") {
-		t.Errorf("error = %v, want the allowlist refusal", err)
-	}
-	if n := hits.Load(); n != 0 {
-		t.Errorf("the refused host was dialed %d times", n)
-	}
-}
-
-// TestAssetDownloadIsBoundedByItsDeclaredSize is the finding on the one
-// artifact-sized writer that had no bound at all: the patch asset streamed to
-// disk with maxBytes 0, although the release states its size right at the call
-// site. Nothing is decompressed on that path, so the declared size is the EXACT
-// bound rather than a multiple of it.
-func TestAssetDownloadIsBoundedByItsDeclaredSize(t *testing.T) {
-	payload := bytes.Repeat([]byte("p"), 4096)
-	fake := newFakeGitHub(t, tagR1, map[string][]byte{"blob.bin": payload})
-	srv := newPollServer(t, buildFixtureDB(t, fixtureCatalog()), fake)
-	dst := filepath.Join(t.TempDir(), "blob.bin")
-	url := fake.srv.URL + "/dl/" + tagR1 + "/blob.bin"
-
-	over := &ghRelease{TagName: tagR1, Assets: []ghAsset{
-		{Name: "blob.bin", Size: int64(len(payload)) - 1, DownloadURL: url},
-	}}
-	if _, err := srv.assetTo(context.Background(), over, "blob.bin", dst, ""); err == nil {
-		t.Error("an asset one byte past its declared size was installed")
-	} else if !strings.Contains(err.Error(), "bound") {
-		t.Errorf("error = %v, want the bound named", err)
-	}
-	if _, err := os.Stat(dst); !os.IsNotExist(err) {
-		t.Error("destination created despite the bound")
-	}
-
-	exact := &ghRelease{TagName: tagR1, Assets: []ghAsset{
-		{Name: "blob.bin", Size: int64(len(payload)), DownloadURL: url},
-	}}
-	if n, err := srv.assetTo(context.Background(), exact, "blob.bin", dst, ""); err != nil || n != int64(len(payload)) {
-		t.Errorf("an asset exactly at its declared size: %d bytes, %v", n, err)
-	}
-
-	// A release that declares no size falls back to the server-wide expansion
-	// bound rather than to no bound at all.
-	none := &ghRelease{TagName: tagR1, Assets: []ghAsset{{Name: "blob.bin", DownloadURL: url}}}
-	if _, err := srv.assetTo(context.Background(), none, "blob.bin", dst, ""); err != nil {
-		t.Errorf("an asset declaring no size was refused: %v", err)
-	}
+	return release.DecompressBound(0, int64(len(base)))
 }
 
 // TestFullRefreshSurvivesAnUndeclaredAssetSize is the finding's teeth. The bound
@@ -1441,16 +838,16 @@ func TestAssetDownloadIsBoundedByItsDeclaredSize(t *testing.T) {
 // maxBytes+1 bytes to the cache volume each time.
 func TestFullRefreshSurvivesAnUndeclaredAssetSize(t *testing.T) {
 	var logged bytes.Buffer
-	v1Path := buildFixtureDB(t, fixtureCatalog())
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, v1Path), "", nil))
+	v1Path := artifacttest.Build(t, artifacttest.Fixture())
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, v1Path), "", nil)})
 	srv, err := New(Config{DBPath: v1Path, Repo: "owner/name", CacheDir: t.TempDir(),
 		swapGrace: time.Minute, Logger: log.New(&logged, "", 0)})
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = srv.newGHClient("owner/name", fake.URL)
 
-	rel, _, err := srv.gh.latestDataRelease(context.Background())
+	rel, _, _, err := srv.gh.LatestData(context.Background(), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1461,7 +858,7 @@ func TestFullRefreshSurvivesAnUndeclaredAssetSize(t *testing.T) {
 	if err := srv.fullRefresh(context.Background(), rel); err != nil {
 		t.Fatalf("a refresh whose assets declare no size failed: %v", err)
 	}
-	if got := srv.current().tag; got != tagR1 {
+	if got := srv.current().Info().Tag; got != tagR1 {
 		t.Errorf("loaded tag = %q, want %q", got, tagR1)
 	}
 	if !strings.Contains(logged.String(), "declares no size") {

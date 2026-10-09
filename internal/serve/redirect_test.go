@@ -1,49 +1,16 @@
 package serve
 
 import (
-	"database/sql"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/build"
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
-
-// getNoFollow issues the request WITHOUT following redirects, which is the whole
-// point wherever a redirect is the thing under test: http.DefaultClient would
-// follow it and every assertion would be about the destination instead. Shared
-// with site_test.go, whose 301 comes from http.FileServer rather than from here.
-func getNoFollow(t *testing.T, base, path string) *http.Response {
-	t.Helper()
-	return getNoFollowWith(t, base+path, nil)
-}
-
-// getNoFollowWith is getNoFollow carrying request headers - the one request
-// builder conditionalGet and the header tests share. A header named here is sent
-// as given, so an explicit Accept-Encoding stops the transport adding its own and
-// transparently stripping the Content-Encoding a test is asserting on. The caller
-// does not close the body.
-func getNoFollowWith(t *testing.T, url string, hdr map[string]string) *http.Response {
-	t.Helper()
-	req, err := http.NewRequest(http.MethodGet, url, nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-	for k, v := range hdr {
-		req.Header.Set(k, v)
-	}
-	client := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
-	resp, err := client.Do(req)
-	if err != nil {
-		t.Fatal(err)
-	}
-	t.Cleanup(func() { _ = resp.Body.Close() })
-	return resp
-}
 
 // wantRedirect asserts the response is the 301 contract: the status, the
 // Location, and the body naming the new slug so a client that does not follow
@@ -58,8 +25,8 @@ func wantRedirect(t *testing.T, resp *http.Response, wantLocation, wantSlug stri
 	}
 	// A tombstone has to be revocable: an unbounded 301 lets a client or a CDN
 	// keep serving it after a bad merge is reversed.
-	if got := resp.Header.Get("Cache-Control"); got != redirectMaxAge {
-		t.Errorf("Cache-Control = %q, want %q", got, redirectMaxAge)
+	if got := resp.Header.Get("Cache-Control"); got != query.RedirectMaxAge {
+		t.Errorf("Cache-Control = %q, want %q", got, query.RedirectMaxAge)
 	}
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
@@ -115,7 +82,7 @@ func TestRetiredSlugRedirects(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			wantRedirect(t, getNoFollow(t, ts.URL, tc.path), tc.location, tc.slug)
+			wantRedirect(t, artifacttest.GetNoFollow(t, ts.URL, tc.path), tc.location, tc.slug)
 		})
 	}
 }
@@ -125,7 +92,7 @@ func TestRetiredSlugRedirects(t *testing.T) {
 // would silently hand a follower a different page than it asked for.
 func TestRetiredSlugRedirectKeepsTheQuery(t *testing.T) {
 	_, ts := newTestServer(t)
-	resp := getNoFollow(t, ts.URL, "/api/v1/people/andy-weir-author?limit=5&offset=10")
+	resp := artifacttest.GetNoFollow(t, ts.URL, "/api/v1/people/andy-weir-author?limit=5&offset=10")
 	wantRedirect(t, resp, "/api/v1/people/andy-weir?limit=5&offset=10", "andy-weir")
 }
 
@@ -135,7 +102,7 @@ func TestRetiredSlugRedirectKeepsTheQuery(t *testing.T) {
 // community-metadata seam.
 func TestRetiredSlugRedirectIsFollowable(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook")
 	if code != http.StatusOK {
 		t.Fatalf("status = %d, want 200 after following the redirect", code)
 	}
@@ -154,11 +121,11 @@ func TestUnknownSlugStillNotFound(t *testing.T) {
 		"/api/v1/people/no-such-person",
 		"/api/v1/series/no-such-series",
 	} {
-		if code, _ := getJSON(t, ts.URL, path); code != http.StatusNotFound {
+		if code, _ := artifacttest.GetJSON(t, ts.URL, path); code != http.StatusNotFound {
 			t.Errorf("GET %s = %d, want 404", path, code)
 		}
 	}
-	code, body := getJSON(t, ts.URL, "/api/v1/works/words-of-radiance/recordings/nope/chapters")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/words-of-radiance/recordings/nope/chapters")
 	if code != http.StatusOK {
 		t.Fatalf("chapters of a live work = %d, want 200", code)
 	}
@@ -171,86 +138,117 @@ func TestUnknownSlugStillNotFound(t *testing.T) {
 // redirects table dropped - a newer binary briefly serving an older release. The
 // retired slug must 404 as it did before the mechanism existed, never 500.
 func TestRedirectsTolerateOlderArtifact(t *testing.T) {
-	ts := downgradedServer(t, downgradedDB(t, fixtureCatalog(), 4, "redirects"))
-	if code, _ := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook"); code != http.StatusNotFound {
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 4, "redirects"))
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook"); code != http.StatusNotFound {
 		t.Errorf("retired work slug on a v4 artifact = %d, want 404", code)
 	}
-	if code, _ := getJSON(t, ts.URL, "/api/v1/people/andy-weir-author"); code != http.StatusNotFound {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/andy-weir-author"); code != http.StatusNotFound {
 		t.Errorf("retired person slug on a v4 artifact = %d, want 404", code)
 	}
 	// And the route it gates still serves the live record.
-	if code, _ := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary"); code != http.StatusOK {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary"); code != http.StatusOK {
 		t.Errorf("live work on a v4 artifact = %d, want 200", code)
 	}
 }
 
-// TestRedirectLookupIsIndexed pins the redirect probe to the artifact's primary
-// key. It sits on the miss path of every id route, so a full scan here would be a
-// table scan per 404 - and 404s are what a crawler and a stale client produce
-// most of.
-func TestRedirectLookupIsIndexed(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
-	assertNoFullScan(t, queryPlan(t, snap, redirectTargetSQL, "works", "project-hail-mary-audiobook"))
+// redirectNamespaces says which id namespace a route's record wildcard names,
+// over the routes that are metaserve's OWN (the pages, the sitemaps, the webhook
+// and the spec). A route that addresses a record by slug can be reached by a slug
+// a merge retired, and the namespace is what resolves it.
+//
+// The pages are the only own routes that address a record, and they are folded
+// in from the ONE table that defines them (htmlEntityRoutes, whose namespace the
+// page handler resolves by), so a page family cannot be added without its
+// redirect. The API routes are pkg/query's, guarded by its own
+// TestEveryRecordRouteNamesANamespace.
+var redirectNamespaces = func() map[string]model.RedirectKind {
+	m := map[string]model.RedirectKind{}
+	for _, e := range htmlEntityRoutes {
+		m[e.pattern] = e.namespace
+	}
+	return m
+}()
+
+// redirectExemptRoutes are the own wildcard routes that deliberately resolve no
+// retired slug. It exists so that the guard can be answered in the only two ways
+// that are honest - name the namespace, or say out loud that this wildcard is not
+// a record - rather than by a route quietly not appearing in either list. A
+// multi-segment wildcard ({rest...}) belongs here: it is a path, not an id.
+//
+// The sitemap shard's wildcard is a FILE NAME (works-3.xml), not a slug: it names
+// a window over a family, so there is no retired id for it to resolve and an
+// unknown one is the 404 parseShardFile already gives it.
+var redirectExemptRoutes = map[string]bool{
+	"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}": true,
 }
 
-// TestRedirectTargetResolves covers the query layer on its own: a hit, a miss,
-// and that the namespaces do not leak into one another. (The version gate is
-// covered end to end by TestRedirectsTolerateOlderArtifact, and the empty-table
-// short circuit by TestRedirectTargetSkipsAnEmptyTable.)
-func TestRedirectTargetResolves(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
-	got, err := snap.redirectTarget("works", "project-hail-mary-audiobook")
-	if err != nil || got != "project-hail-mary" {
-		t.Errorf("redirectTarget(works) = %q, %v", got, err)
+// redirectCoverageGaps returns the patterns that address a record by a wildcard
+// and neither name a namespace nor say they are exempt. The SHAPE of the pattern
+// decides, not the wildcard's name, so "GET /api/v1/publishers/{pid}" is as much
+// a gap as a {id} route would be.
+func redirectCoverageGaps(patterns []string) []string {
+	var gaps []string
+	for _, pattern := range patterns {
+		if !hasAnyWildcard(pattern) {
+			continue // a fully literal route addresses no record
+		}
+		if _, named := redirectNamespaces[pattern]; named || redirectExemptRoutes[pattern] {
+			continue
+		}
+		gaps = append(gaps, pattern)
 	}
-	// The namespaces do not leak into one another.
-	if got, err := snap.redirectTarget("people", "project-hail-mary-audiobook"); err != nil || got != "" {
-		t.Errorf("redirectTarget(people) = %q, %v, want no hit", got, err)
-	}
-	if got, err := snap.redirectTarget("works", "project-hail-mary"); err != nil || got != "" {
-		t.Errorf("a live slug resolved to %q, %v, want no hit", got, err)
-	}
+	return gaps
 }
 
-// TestRedirectTargetSkipsAnEmptyTable pins the memo: a catalogue that has retired
-// nothing answers without touching the table, which matters because the chapters
-// route consults the redirects on an ordinary 200 (an empty chapter list).
-func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
-	cat := fixtureCatalog()
-	cat.Redirects = nil
-	snap := snapshotFor(t, cat)
-	if snap.hasRedirects {
-		t.Error("hasRedirects is true for a catalogue with no redirects")
+// hasAnyWildcard reports whether a pattern carries a wildcard of ANY form - a
+// record's {id} as much as a {rest...} path or a filter segment, everything but
+// the {$} anchor. A route with one has to be decided about, out loud, rather
+// than skipped for having no {id} segment.
+func hasAnyWildcard(pattern string) bool {
+	_, path, _ := strings.Cut(pattern, " ")
+	for _, seg := range strings.Split(path, "/") {
+		if strings.HasPrefix(seg, "{") && strings.HasSuffix(seg, "}") && seg != "{$}" {
+			return true
+		}
 	}
-	if got, err := snap.redirectTarget("works", "project-hail-mary-audiobook"); err != nil || got != "" {
-		t.Errorf("empty table = %q, %v, want no hit and no error", got, err)
+	return false
+}
+
+// ownRoutes is every route metaserve registers that is NOT pkg/query's: the
+// pages, the sitemaps, and the webhook and spec routes() appends after the API.
+func ownRoutes(srv *Server) []route {
+	api := map[string]bool{}
+	for _, r := range query.Routes() {
+		api[r.Pattern] = true
 	}
-	// And with redirects present the memo says so, so the query does run.
-	if full := snapshotFor(t, fixtureCatalog()); !full.hasRedirects {
-		t.Error("hasRedirects is false for a catalogue that holds redirects")
+	own := append(srv.htmlRoutes(), srv.sitemapRoutes()...)
+	for _, r := range srv.routes() {
+		if !api[r.pattern] {
+			own = append(own, r)
+		}
 	}
+	return own
 }
 
 // TestEveryIDRouteResolvesRetiredSlugs is the drift guard, in the shape of
 // TestOpenAPICoversEveryRoute: it diffs redirectNamespaces against the server's
-// own route tables, so a fifth route that addresses a record by slug cannot ship
-// without redirect support (and an entry naming a route that no longer exists
-// cannot linger). The pattern is what redirected() looks the namespace up by, so
-// this is the same key the request path uses, and the candidate set is derived
-// from the pattern's SHAPE rather than from the wildcard being spelled {id} - see
+// own route tables, so a further page that addresses a record by slug cannot
+// ship without redirect support (and an entry naming a route that no longer
+// exists cannot linger). The candidate set is derived from the pattern's SHAPE
+// rather than from the wildcard being spelled {id} - see
 // TestRedirectCoverageIgnoresTheWildcardsName.
 //
-// It covers the UNION of all three tables: an entity PAGE addresses a record by
-// the same slug an API route does, so a retired slug has to keep resolving there
-// too (in HTML - see redirected), and the sitemap table has to answer the guard
-// as well - which it does by naming its file wildcard exempt.
+// It covers metaserve's OWN routes: an entity PAGE addresses a record by the
+// same slug an API route does, so a retired slug has to keep resolving there too
+// (in HTML - see entityHandler), and the sitemap table has to answer the guard
+// as well - which it does by naming its file wildcard exempt. The API routes are
+// pkg/query's guard's (TestEveryRecordRouteNamesANamespace).
 func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
-	all := append(srv.routes(), srv.htmlRoutes()...)
-	all = append(all, srv.sitemapRoutes()...)
-	patterns := make([]string, 0, len(all))
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: artifacttest.QuietLogger()}
+	own := ownRoutes(srv)
+	patterns := make([]string, 0, len(own))
 	registered := map[string]bool{}
-	for _, r := range all {
+	for _, r := range own {
 		patterns = append(patterns, r.pattern)
 		registered[r.pattern] = true
 	}
@@ -260,12 +258,12 @@ func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 	}
 	for pattern := range redirectNamespaces {
 		if !registered[pattern] {
-			t.Errorf("redirectNamespaces names %s, which Server.routes does not register", pattern)
+			t.Errorf("redirectNamespaces names %s, which the server does not register", pattern)
 		}
 	}
 	for pattern := range redirectExemptRoutes {
 		if !registered[pattern] {
-			t.Errorf("redirectExemptRoutes names %s, which Server.routes does not register", pattern)
+			t.Errorf("redirectExemptRoutes names %s, which the server does not register", pattern)
 		}
 	}
 }
@@ -278,60 +276,9 @@ func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 // wrong by construction either way.
 func TestRedirectLocationEscapesExactlyOnce(t *testing.T) {
 	_, ts := newTestServer(t)
-	resp := getNoFollow(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook/recordings/caf%C3%A9-2021/chapters")
+	resp := artifacttest.GetNoFollow(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook/recordings/caf%C3%A9-2021/chapters")
 	wantRedirect(t, resp,
 		"/api/v1/works/project-hail-mary/recordings/caf%C3%A9-2021/chapters", "project-hail-mary")
-}
-
-// TestSelfRedirectDoesNotLoop covers the resolver's own guarantee against a loop.
-// pkg/check refuses a self-row, so this artifact is hand-built to carry one: the
-// request must fall through to the 404 it was already heading for rather than
-// 301-ing a following client back to the same URL forever.
-func TestSelfRedirectDoesNotLoop(t *testing.T) {
-	cat := fixtureCatalog()
-	cat.Redirects = model.Redirects{model.RedirectWorks: {"ghost-work": "ghost-work"}}
-	ts := serverFor(t, cat)
-
-	resp := getNoFollow(t, ts.URL, "/api/v1/works/ghost-work")
-	if resp.StatusCode != http.StatusNotFound {
-		t.Errorf("status = %d, want 404: a self-redirect must not be served", resp.StatusCode)
-	}
-	if loc := resp.Header.Get("Location"); loc != "" {
-		t.Errorf("Location = %q, want none", loc)
-	}
-}
-
-// TestRedirectVersionClaimRequiresTheTable pins the load-time claim, and that the
-// failure SAYS which claim it is: an artifact reporting redirectSchemaVersion or
-// above without the table is corrupt, and "no such table: redirects" alone reads
-// as a bug in the server rather than as a broken file.
-//
-// The version it asserts is the BUILDER's, not the literal 5 the gate was born
-// at: a later table bumps SchemaVersion past it, and the message names the
-// version the artifact actually claims.
-func TestRedirectVersionClaimRequiresTheTable(t *testing.T) {
-	path := buildFixtureDB(t, fixtureCatalog())
-	db, err := sql.Open("sqlite", path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if _, err := db.Exec(`DROP TABLE redirects`); err != nil {
-		t.Fatal(err)
-	}
-	if err := db.Close(); err != nil {
-		t.Fatal(err)
-	}
-
-	_, err = openSnapshot(path, "")
-	if err == nil {
-		t.Fatal("openSnapshot accepted a redirect-claiming artifact with no redirects table")
-	}
-	claimed := fmt.Sprintf("schema_version %d", build.SchemaVersion)
-	for _, want := range []string{claimed, "requires the redirects table", path} {
-		if !strings.Contains(err.Error(), want) {
-			t.Errorf("error %q does not name %q", err, want)
-		}
-	}
 }
 
 // TestRedirectCoverageIgnoresTheWildcardsName is the teeth of the coverage guard.
@@ -348,9 +295,9 @@ func TestRedirectCoverageIgnoresTheWildcardsName(t *testing.T) {
 		{name: "a multi-segment wildcard", pattern: "GET /files/{rest...}", gap: true},
 		{name: "a literal route", pattern: "GET /api/v1/stats", gap: false},
 		{name: "an anchored literal route", pattern: "GET /api/v1/coverage/{$}", gap: false},
-		{name: "a route that names its namespace", pattern: "GET /api/v1/works/{id}", gap: false},
+		{name: "a route that names its namespace", pattern: "GET /series/{id}", gap: false},
 		// A PAGE route is judged by the same rule: a fourth family's page that
-		// addresses a record and names no namespace is a gap, and the three that
+		// addresses a record and names no namespace is a gap, and the pages that
 		// exist are covered because htmlEntityRoutes folds them into the map.
 		{name: "an unregistered page route", pattern: "GET /publishers/{id}", gap: true},
 		{name: "a registered page route", pattern: "GET /works/{id}", gap: false},
@@ -364,11 +311,6 @@ func TestRedirectCoverageIgnoresTheWildcardsName(t *testing.T) {
 			}
 		})
 	}
-	// And the id wildcard is read by POSITION, whatever it is called.
-	if got := idWildcardOf("GET /api/v1/publishers/{pid}/imprints/{iid}"); got != "pid" {
-		t.Errorf("idWildcardOf = %q, want pid", got)
-	}
-	if got := idWildcardOf("GET /api/v1/stats"); got != "" {
-		t.Errorf("idWildcardOf of a literal route = %q, want empty", got)
-	}
+	// That the id wildcard is then read by POSITION, whatever it is called, is
+	// pkg/query's TestRecordWildcardIsReadByPosition (the resolver is there).
 }

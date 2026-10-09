@@ -77,7 +77,7 @@ describe('workIDsFromFeed', () => {
           'https://meta.audiosilo.app/works/',
           // The shared `/works/{slug}` reader (lib/entity-url.ts) matches the
           // path EXACTLY, so a trailing slash is not a work page. The feed
-          // never writes one (internal/serve/watchfeed.go).
+          // never writes one (pkg/query/watchfeed.go).
           'https://meta.audiosilo.app/works/die-trying/',
           'https://meta.audiosilo.app/works/killing-floor/recap',
           'not a url at all',

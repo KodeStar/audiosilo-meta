@@ -11,7 +11,9 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 // The HTML entity pages. metaserve does not own a parallel page design: the
@@ -26,14 +28,6 @@ import (
 // handlers call and adds NO SQL of its own, so TestServeLookupsAreIndexed covers
 // these routes by construction and a page's query budget is exactly the API
 // route the site already hits for it.
-
-// The path routes every internal link, canonical URL and JSON-LD url is built
-// from. They are the prefixes of the three entity patterns, written once.
-const (
-	workPath   = "/works/"
-	personPath = "/people/"
-	seriesPath = "/series/"
-)
 
 // siteName is the suffix every page title carries and the og:site_name value.
 const siteName = "AudioSilo Meta"
@@ -61,14 +55,15 @@ const descriptionMax = 160
 // composeFunc renders one entity page from the live snapshot, or returns
 // (nil, nil) when the id names no record - which is the caller's cue to try the
 // redirect table and then the site's 404.
-type composeFunc func(siteURL string, snap *snapshot, id string) (*entityPage, error)
+type composeFunc func(siteURL string, snap *query.DB, id string) (*entityPage, error)
 
 // htmlEntityRoute is one page, as DATA. Every consumer reads this one table
 // rather than a list of its own: buildMux registers the pattern and its legacy
-// twin, redirectNamespaces learns the id namespace from it, the redirect writer
-// learns which patterns answer in HTML from it, and loadShells learns which
-// built shells to split. A fourth family - or a further page hanging off an
-// existing one - is one row.
+// twin, entityHandler resolves a retired slug in the row's namespace (and
+// answers it with the HTML 301 body), loadShells learns which built shells to
+// split, and the redirect drift guard (TestEveryIDRouteResolvesRetiredSlugs)
+// reads the namespaces from it. A fourth family - or a further page hanging off
+// an existing one - is one row.
 type htmlEntityRoute struct {
 	pattern string // the ServeMux pattern of the path route
 	// legacy is the ServeMux pattern of the ?id= route this page replaced, and is
@@ -84,37 +79,22 @@ type htmlEntityRoute struct {
 }
 
 var htmlEntityRoutes = []htmlEntityRoute{
-	{pattern: "GET /works/{id}", legacy: "GET /work", shell: "work/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeWorkPage},
-	{pattern: "GET /people/{id}", legacy: "GET /person", shell: "person/index.html", prefix: personPath, namespace: model.RedirectPeople, compose: composePersonPage},
-	{pattern: "GET /series/{id}", legacy: "GET /series", shell: "series/index.html", prefix: seriesPath, namespace: model.RedirectSeries, compose: composeSeriesPage},
+	{pattern: "GET /works/{id}", legacy: "GET /work", shell: "work/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeWorkPage},
+	{pattern: "GET /people/{id}", legacy: "GET /person", shell: "person/index.html", prefix: model.PeoplePath, namespace: model.RedirectPeople, compose: composePersonPage},
+	{pattern: "GET /series/{id}", legacy: "GET /series", shell: "series/index.html", prefix: model.SeriesPath, namespace: model.RedirectSeries, compose: composeSeriesPage},
 	// The community guide pages (see guides.go). They address a WORK by the same
 	// slug the work page does - hence the same namespace, which is what makes a
 	// retired slug 301 here too - and their literal FOLLOWS the wildcard, so they
 	// shadow no record and the reserved-slug set does not grow.
-	{pattern: "GET /works/{id}" + recapSuffix, shell: "recap/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeRecapPage},
-	{pattern: "GET /works/{id}" + charactersSuffix, shell: "characters/index.html", prefix: workPath, namespace: model.RedirectWorks, compose: composeCharactersPage},
+	{pattern: "GET /works/{id}" + recapSuffix, shell: "recap/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeRecapPage},
+	{pattern: "GET /works/{id}" + charactersSuffix, shell: "characters/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeCharactersPage},
 }
-
-// htmlEntityRouteByPattern is the table above indexed by ServeMux pattern - the
-// ONE derivation every pattern-keyed consumer reads. Membership answers "is this
-// a page route", which is what decides that a retired slug's 301 carries the
-// page body rather than the API's JSON envelope; the row answers which namespace
-// that slug resolves in (redirectNamespaces folds it in). Both questions are the
-// same knowledge, so they are one index built by one iteration, and a new page
-// route is a row that answers both.
-var htmlEntityRouteByPattern = func() map[string]htmlEntityRoute {
-	out := make(map[string]htmlEntityRoute, len(htmlEntityRoutes))
-	for _, e := range htmlEntityRoutes {
-		out[e.pattern] = e
-	}
-	return out
-}()
 
 // writeRedirectPage is the entity pages' 301 body: the smallest valid HTML
 // document that says where the record went and links there. A page's client is a
 // browser or a crawler, and both are better served by a followable link than by
 // the API's {"redirect": ...} envelope if they ignore the Location header.
-func writeRedirectPage(w http.ResponseWriter, location string) {
+func writeRedirectPage(w http.ResponseWriter, location, _ string) {
 	escaped := html.EscapeString(location)
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusMovedPermanently)
@@ -211,8 +191,8 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 		// composed; an unknown slug still 404s and a retired one still 301s.
 		inm := r.Header.Get("If-None-Match")
 		etag := entityETag(snap, sh, id)
-		wildcard := anyValidator(inm)
-		if !wildcard && matchesETag(inm, etag) {
+		wildcard := httpx.AnyValidator(inm)
+		if !wildcard && httpx.MatchesETag(inm, etag) {
 			h := w.Header()
 			h.Set("ETag", etag)
 			h.Set("Cache-Control", entityMaxAge)
@@ -227,12 +207,16 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 			// The REQUEST's path, not the family prefix plus the id: several pages
 			// now hang off one prefix (see the guide routes), so a notice built from
 			// the prefix would name the work page for a failure on its recap.
-			snap.logf("serve: rendering %s failed, serving the shell untouched: %v", r.URL.Path, err)
+			s.log.Printf("serve: rendering %q failed, serving the shell untouched: %v", r.URL.Path, err) // quoted: the decoded path can carry a newline (see httpx.Fail)
 			sh.serveRaw(w)
 			return
 		}
 		if page == nil {
-			if redirected(w, r, snap) {
+			// A retired slug answers 301 here as on the API (the same headers -
+			// query's RedirectRetired), with a minimal HTML page for a body: a
+			// browser that ignores the Location would otherwise be shown the API's
+			// JSON envelope.
+			if snap.RedirectRetired(w, r, e.namespace, writeRedirectPage) {
 				return
 			}
 			s.site.notFound(w, r)
@@ -295,8 +279,8 @@ func (s *Server) legacyHandler(e htmlEntityRoute) http.HandlerFunc {
 // early, so all of them are stripped of them - every id in the artifact is a
 // slug and the other two parts are a tag and a hex digest, which makes that
 // unreachable rather than merely unlikely.
-func entityETag(snap *snapshot, sh *shell, id string) string {
-	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.version()+"/"+sh.identity+"/"+id) + `"`
+func entityETag(snap *query.DB, sh *shell, id string) string {
+	return `W/"` + strings.NewReplacer(`"`, "", `\`, "").Replace(snap.Version()+"/"+sh.identity+"/"+id) + `"`
 }
 
 // ---- page composition -------------------------------------------------------
@@ -367,8 +351,8 @@ func metaTag(kind, name, content string) string {
 
 // ---- work -------------------------------------------------------------------
 
-func composeWorkPage(siteURL string, snap *snapshot, id string) (*entityPage, error) {
-	d, err := snap.workDetail(id)
+func composeWorkPage(siteURL string, snap *query.DB, id string) (*entityPage, error) {
+	d, err := snap.WorkDetail(id)
 	if err != nil || d == nil {
 		return nil, err
 	}
@@ -376,11 +360,11 @@ func composeWorkPage(siteURL string, snap *snapshot, id string) (*entityPage, er
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + workPath + d.ID
+	canonical := siteURL + model.WorksPath + d.ID
 	// The view carries the cover the og image wants and the author names both the
 	// title and the description read, so each is derived once for the page.
 	view := newWorkView(d)
-	authors := joinNames(personNames(d.Authors))
+	authors := joinNames(query.PersonNames(d.Authors))
 	sheet, err := renderTemplate("work", view)
 	if err != nil {
 		return nil, err
@@ -401,7 +385,7 @@ func composeWorkPage(siteURL string, snap *snapshot, id string) (*entityPage, er
 // the work's already-joined credit line (composeWorkPage derives it once for the
 // two places that read it); the clause is dropped rather than left empty when
 // the work credits nobody.
-func workTitle(d *workDetail, authors string) string {
+func workTitle(d *query.WorkDetail, authors string) string {
 	var b strings.Builder
 	b.WriteString(d.Title)
 	if authors != "" {
@@ -422,21 +406,11 @@ func workTitle(d *workDetail, authors string) string {
 // spoiler-free by contract (schema/description.schema.json), which is exactly why
 // the guide pages' text is kept out of THEIR meta descriptions and this one is
 // not. Everything else falls back to the composed facts, unchanged.
-func workDescription(d *workDetail, authors string) string {
-	if text := communityDescriptionText(d); text != "" {
+func workDescription(d *query.WorkDetail, authors string) string {
+	if text := query.CommunityDescriptionText(d); text != "" {
 		return truncateDescription(text)
 	}
 	return workFactDescription(d, authors)
-}
-
-// communityDescriptionText is the work's CC BY-SA description text, or "" - the
-// one probe the page's three description surfaces (the tag, the fact sheet, the
-// JSON-LD) share, so a page cannot state one and omit another.
-func communityDescriptionText(d *workDetail) string {
-	if d.CommunityDescription == nil {
-		return ""
-	}
-	return d.CommunityDescription.Text
 }
 
 // workFactDescription composes a description from the facts the work states, in
@@ -444,12 +418,12 @@ func communityDescriptionText(d *workDetail) string {
 // narrators (deduped across recordings, in credit order), the series and
 // position, how many recordings there are, and a runtime. It is what a work with
 // no community description gets, which is almost every work.
-func workFactDescription(d *workDetail, authors string) string {
+func workFactDescription(d *query.WorkDetail, authors string) string {
 	parts := []string{d.Title}
 	if authors != "" {
 		parts = append(parts, "by "+authors)
 	}
-	if names := personNames(dedupeNarrators(d)); len(names) > 0 {
+	if names := query.PersonNames(dedupeNarrators(d)); len(names) > 0 {
 		parts = append(parts, "narrated by "+joinNames(names))
 	}
 	if len(d.Series) > 0 {
@@ -472,8 +446,8 @@ func workFactDescription(d *workDetail, authors string) string {
 // dedupeNarrators returns the work's narrators across all its recordings, in
 // first-credited order and without repeats: two recordings sharing a narrator
 // name it once.
-func dedupeNarrators(d *workDetail) []personRef {
-	var out []personRef
+func dedupeNarrators(d *query.WorkDetail) []query.PersonRef {
+	var out []query.PersonRef
 	seen := map[string]bool{}
 	for _, rec := range d.Recordings {
 		for _, n := range rec.Narrators {
@@ -490,7 +464,7 @@ func dedupeNarrators(d *workDetail) []personRef {
 // firstRuntime is the runtime of the first recording that states one. A work's
 // recordings are separate productions of different lengths, so summing them
 // would state a duration nothing has.
-func firstRuntime(d *workDetail) string {
+func firstRuntime(d *query.WorkDetail) string {
 	for _, rec := range d.Recordings {
 		if rec.RuntimeMin > 0 {
 			return formatRuntime(rec.RuntimeMin)
@@ -499,7 +473,7 @@ func firstRuntime(d *workDetail) string {
 	return ""
 }
 
-func firstCover(d *workDetail) string {
+func firstCover(d *query.WorkDetail) string {
 	for _, rec := range d.Recordings {
 		if rec.CoverURL != "" {
 			return rec.CoverURL
@@ -510,15 +484,15 @@ func firstCover(d *workDetail) string {
 
 // ---- person -----------------------------------------------------------------
 
-func composePersonPage(siteURL string, snap *snapshot, id string) (*entityPage, error) {
+func composePersonPage(siteURL string, snap *query.DB, id string) (*entityPage, error) {
 	// The MAXIMUM window, not the JSON route's default. The embedded payload
 	// replaces the fetch the island would otherwise make, and the site asks for
-	// personPageMax outright (site/src/lib/api.ts PERSON_PAGE_MAX), so composing a
+	// query.PersonPageMax outright (site/src/lib/api.ts PERSON_PAGE_MAX), so composing a
 	// smaller page would hand the island fewer credits than it asked for - and
 	// there is no pagination UI on the page to reach the rest with. The window
 	// still bounds a corporate credit that narrates thousands of works, and
 	// windowCaption says so on the fact sheet.
-	d, err := snap.person(id, personPageMax, 0)
+	d, err := snap.Person(id, query.PersonPageMax, 0)
 	if err != nil || d == nil {
 		return nil, err
 	}
@@ -526,7 +500,7 @@ func composePersonPage(siteURL string, snap *snapshot, id string) (*entityPage, 
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + personPath + d.ID
+	canonical := siteURL + model.PeoplePath + d.ID
 	sheet, err := renderTemplate("person", newPersonView(d))
 	if err != nil {
 		return nil, err
@@ -543,7 +517,7 @@ func composePersonPage(siteURL string, snap *snapshot, id string) (*entityPage, 
 	}, nil
 }
 
-func personDescription(d *personDetail) string {
+func personDescription(d *query.PersonDetail) string {
 	var parts []string
 	if d.AuthoredTotal > 0 {
 		parts = append(parts, "author of "+plural(d.AuthoredTotal, "audiobook", "audiobooks"))
@@ -559,10 +533,10 @@ func personDescription(d *personDetail) string {
 
 // ---- series -----------------------------------------------------------------
 
-func composeSeriesPage(siteURL string, snap *snapshot, id string) (*entityPage, error) {
+func composeSeriesPage(siteURL string, snap *query.DB, id string) (*entityPage, error) {
 	// The SAME call the JSON route makes with no ?limit: the whole series (see
 	// snapshot.series - membership is bounded by what a series is).
-	d, err := snap.series(id, 0, 0)
+	d, err := snap.Series(id, 0, 0)
 	if err != nil || d == nil {
 		return nil, err
 	}
@@ -570,7 +544,7 @@ func composeSeriesPage(siteURL string, snap *snapshot, id string) (*entityPage, 
 	if err != nil {
 		return nil, err
 	}
-	canonical := siteURL + seriesPath + d.ID
+	canonical := siteURL + model.SeriesPath + d.ID
 	sheet, err := renderTemplate("series", newSeriesView(d))
 	if err != nil {
 		return nil, err
@@ -587,9 +561,9 @@ func composeSeriesPage(siteURL string, snap *snapshot, id string) (*entityPage, 
 	}, nil
 }
 
-func seriesDescription(d *seriesDetail) string {
+func seriesDescription(d *query.SeriesDetail) string {
 	parts := []string{d.Name}
-	if names := personNames(d.Authors); len(names) > 0 {
+	if names := query.PersonNames(d.Authors); len(names) > 0 {
 		parts = append(parts, "by "+joinNames(names))
 	}
 	if d.WorksTotal > 0 {
@@ -611,9 +585,9 @@ func ogImage(siteURL, cover string) string {
 	return siteURL + defaultOGImage
 }
 
-// joinNames renders a credit list for prose. personNames (abs.go) is the one
-// projection of person refs to display names; there is no second copy of it
-// here.
+// joinNames renders a credit list for prose. query.PersonNames
+// (pkg/query/abs.go) is the one projection of person refs to display names;
+// there is no second copy of it here.
 func joinNames(names []string) string { return strings.Join(names, ", ") }
 
 func plural(n int, one, many string) string {
@@ -813,7 +787,7 @@ type purchaseLinkView struct{ Label, URL string }
 
 type recordingView struct {
 	ID          string
-	Narrators   []personRef
+	Narrators   []query.PersonRef
 	Runtime     string
 	Abridged    bool
 	Publisher   string
@@ -836,7 +810,7 @@ type recordingView struct {
 // The island's retailerLabel (site/src/lib/marketplace.ts) is this rule's
 // hand-mirrored twin, so the fact sheet and the hydrated page spell one link
 // the same way; each side's test pins the same cases.
-func purchaseLabel(l purchaseLink) string {
+func purchaseLabel(l query.PurchaseLink) string {
 	name := l.Retailer
 	switch l.Retailer {
 	case "audible":
@@ -854,7 +828,7 @@ type workView struct {
 	Title    string
 	Subtitle string
 	CoverURL string
-	// Description is the prose intro the page leads with (displayDescription:
+	// Description is the prose intro the page leads with (query.DisplayDescription:
 	// the community's where there is one). DescriptionIsCommunity is what decides
 	// whether the CC BY-SA notice is printed beside it - the attribution follows
 	// the TEXT, never the presence of a paragraph, so the CC0 field can never be
@@ -864,18 +838,18 @@ type workView struct {
 	LicenseURL             string
 	LicenseLabel           string
 	FirstPublished         string
-	Authors                []personRef
-	Series                 []seriesRef
+	Authors                []query.PersonRef
+	Series                 []query.SeriesRef
 	Genres                 []string
 	Guides                 []guideLink
 	Recordings             []recordingView
 }
 
-func newWorkView(d *workDetail) workView {
+func newWorkView(d *query.WorkDetail) workView {
 	// ONE call for both fields. The text the page prints and the flag that decides
 	// whether the CC BY-SA notice is printed beside it are two halves of one
-	// answer (displayDescription), so they cannot disagree.
-	description, isCommunity := displayDescription(d)
+	// answer (query.DisplayDescription), so they cannot disagree.
+	description, isCommunity := query.DisplayDescription(d)
 	v := workView{
 		Title: d.Title, Subtitle: d.Subtitle, CoverURL: firstCover(d),
 		Description:            description,
@@ -889,11 +863,11 @@ func newWorkView(d *workDetail) workView {
 		rv := recordingView{
 			ID: rec.ID, Narrators: rec.Narrators, Runtime: formatRuntime(rec.RuntimeMin),
 			Abridged: rec.Abridged, Publisher: rec.Publisher,
-			// publishedYear (abs.go) is the package's one date-to-year rule, so the
-			// fact sheet and the ABS facade cannot read one date two ways: a value
-			// it does not recognize as a year renders as stated rather than being
-			// silently truncated to four characters.
-			ReleaseYear: publishedYear(rec.ReleaseDate), Chapters: rec.ChapterCount,
+			// query.PublishedYear (pkg/query/abs.go) is the one date-to-year rule,
+			// so the fact sheet and the ABS facade cannot read one date two ways: a
+			// value it does not recognize as a year renders as stated rather than
+			// being silently truncated to four characters.
+			ReleaseYear: query.PublishedYear(rec.ReleaseDate), Chapters: rec.ChapterCount,
 		}
 		for _, a := range rec.ASIN {
 			rv.Codes = append(rv.Codes, codeView{Label: "ASIN (" + a.Region + ")", Value: a.ASIN})
@@ -924,7 +898,7 @@ type personView struct {
 	NarratedCaption string
 }
 
-func newPersonView(d *personDetail) personView {
+func newPersonView(d *query.PersonDetail) personView {
 	v := personView{
 		Name:            d.Name,
 		AuthoredCaption: windowCaption(len(d.Authored), d.AuthoredTotal),
@@ -941,15 +915,15 @@ func newPersonView(d *personDetail) personView {
 
 // cardLink renders one work card as a link plus its byline (its authors, which
 // is what tells two same-titled works apart in a long list).
-func cardLink(card *workCard) workLink {
+func cardLink(card *query.WorkCard) workLink {
 	if card == nil {
 		return workLink{}
 	}
 	return workLink{ID: card.ID, Title: card.Title, Byline: byline(card.Authors)}
 }
 
-func byline(authors []personRef) string {
-	if names := personNames(authors); len(names) > 0 {
+func byline(authors []query.PersonRef) string {
+	if names := query.PersonNames(authors); len(names) > 0 {
 		return "by " + joinNames(names)
 	}
 	return ""
@@ -973,12 +947,12 @@ type volumeView struct {
 
 type seriesView struct {
 	Name    string
-	Authors []personRef
+	Authors []query.PersonRef
 	Volumes []volumeView
 	Caption string
 }
 
-func newSeriesView(d *seriesDetail) seriesView {
+func newSeriesView(d *query.SeriesDetail) seriesView {
 	v := seriesView{Name: d.Name, Authors: d.Authors, Caption: windowCaption(len(d.Works), d.WorksTotal)}
 	for _, entry := range d.Works {
 		if entry.Work == nil {

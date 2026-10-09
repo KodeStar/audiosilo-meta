@@ -12,6 +12,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -55,7 +56,7 @@ func getSitemap(t *testing.T, base, path string) (int, string, http.Header) {
 // pages (no shell), so no pattern may appear under /api/ or in either of the
 // other two tables.
 func TestSitemapRoutesAreDisjointFromEverythingElse(t *testing.T) {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: artifacttest.QuietLogger()}
 
 	taken := map[string]string{}
 	for _, r := range srv.routes() {
@@ -103,7 +104,7 @@ func TestSitemapsNeedNoSiteDirectory(t *testing.T) {
 // rests on - the static pages first, then the two guide families, then series,
 // people and works - along with the absolute locs and the built_at lastmod.
 func TestSitemapIndexOrderAndContents(t *testing.T) {
-	ts := sitemapSite(t, fixtureCatalog())
+	ts := sitemapSite(t, artifacttest.Fixture())
 	code, body, hdr := getSitemap(t, ts.URL, sitemapIndexPath)
 	if code != http.StatusOK {
 		t.Fatalf("status = %d, want 200\n%s", code, body)
@@ -165,7 +166,7 @@ func TestSitemapIndexOrderAndContents(t *testing.T) {
 // TestSitemapIndexOmitsAnAbsentStaticSitemap is the other half of that
 // condition: nothing is listed that the deployment cannot serve.
 func TestSitemapIndexOmitsAnAbsentStaticSitemap(t *testing.T) {
-	ts := sitemapServerWithoutStatic(t, fixtureCatalog())
+	ts := sitemapServerWithoutStatic(t, artifacttest.Fixture())
 	_, body, _ := getSitemap(t, ts.URL, sitemapIndexPath)
 	if strings.Contains(body, staticSitemapFile) {
 		t.Errorf("index lists %s, which the dist does not carry:\n%s", staticSitemapFile, body)
@@ -226,7 +227,7 @@ func parseURLSet(t *testing.T, body string) urlSet {
 // Phase A page URLs in id order, and a lastmod appears exactly where the record
 // states an added_at.
 func TestSitemapShardsCarryEveryEntityURL(t *testing.T) {
-	ts := sitemapSite(t, fixtureCatalog())
+	ts := sitemapSite(t, artifacttest.Fixture())
 
 	code, body, hdr := getSitemap(t, ts.URL, "/sitemaps/works-0.xml")
 	if code != http.StatusOK {
@@ -307,43 +308,6 @@ func TestShardCountPagination(t *testing.T) {
 	}
 }
 
-// TestShardWindowsThePageItPromises checks the OFFSET arithmetic against the
-// database rather than only the count: with the cap forced down to 2, shard 0
-// and shard 1 partition the works family in id order with no gap and no repeat.
-func TestShardWindowsThePageItPromises(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
-	var got []string
-	for shard := range 2 {
-		rows, err := snap.db.Query(worksSitemapSQL, 2, shard*2)
-		if err != nil {
-			t.Fatal(err)
-		}
-		var ids []string
-		for rows.Next() {
-			var id string
-			var added *string
-			if err := rows.Scan(&id, &added); err != nil {
-				t.Fatal(err)
-			}
-			ids = append(ids, id)
-		}
-		if err := rows.Err(); err != nil {
-			t.Fatal(err)
-		}
-		if err := rows.Close(); err != nil {
-			t.Fatal(err)
-		}
-		if len(ids) != 2 {
-			t.Fatalf("shard %d returned %d ids, want 2", shard, len(ids))
-		}
-		got = append(got, ids...)
-	}
-	want := "edgedancer,project-hail-mary,the-way-of-kings,words-of-radiance"
-	if strings.Join(got, ",") != want {
-		t.Errorf("windowed ids = %v, want %s", got, want)
-	}
-}
-
 // withShardCap lowers the protocol cap for one test. The package's tests do not
 // run in parallel, and the original is restored on cleanup.
 func withShardCap(t *testing.T, n int) {
@@ -359,7 +323,7 @@ func withShardCap(t *testing.T, n int) {
 // no id in both, and the shard past the end a 404.
 func TestShardRoutePartitionsThroughTheMux(t *testing.T) {
 	withShardCap(t, 2)
-	ts := sitemapSite(t, fixtureCatalog())
+	ts := sitemapSite(t, artifacttest.Fixture())
 
 	_, index, _ := getSitemap(t, ts.URL, sitemapIndexPath)
 	for _, want := range []string{"/sitemaps/works-0.xml", "/sitemaps/works-1.xml"} {
@@ -407,7 +371,7 @@ func TestShardRoutePartitionsThroughTheMux(t *testing.T) {
 // unknown family, a non-canonical number, junk, a traversal attempt, a shard past
 // the family's end and every shard of an empty family.
 func TestSitemapShard404s(t *testing.T) {
-	ts := sitemapSite(t, fixtureCatalog())
+	ts := sitemapSite(t, artifacttest.Fixture())
 	cases := []string{
 		"/sitemaps/works.xml",          // no shard number
 		"/sitemaps/works-.xml",         // empty number
@@ -448,7 +412,7 @@ func TestSitemapShard404s(t *testing.T) {
 // TestSitemapsAreDeterministic: one snapshot renders one document, byte for
 // byte. Nothing here reads a clock, and every list is ordered by id.
 func TestSitemapsAreDeterministic(t *testing.T) {
-	ts := sitemapSite(t, fixtureCatalog())
+	ts := sitemapSite(t, artifacttest.Fixture())
 	for _, path := range []string{sitemapIndexPath, "/sitemaps/works-0.xml", "/sitemaps/people-0.xml"} {
 		_, first, _ := getSitemap(t, ts.URL, path)
 		_, second, _ := getSitemap(t, ts.URL, path)
@@ -465,7 +429,7 @@ func TestSitemapsAreDeterministic(t *testing.T) {
 // origin is not a slug - and a raw "&" would make the document unparseable. The
 // escaping is encoding/xml's, so this pins that nothing bypasses it.
 func TestSitemapEscapesTheOrigin(t *testing.T) {
-	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg := quietConfig(t, artifacttest.Fixture(), markedShells)
 	cfg.SiteURL = "https://meta.test/?a=1&b=2"
 	_, ts := newPageServerFrom(t, cfg)
 
@@ -483,7 +447,7 @@ func TestSitemapEscapesTheOrigin(t *testing.T) {
 // matching If-None-Match and the "*" wildcard are 304 with no body, and a
 // validator for another document is not.
 func TestSitemapConditionalRequests(t *testing.T) {
-	ts := sitemapSite(t, fixtureCatalog())
+	ts := sitemapSite(t, artifacttest.Fixture())
 	for _, path := range []string{sitemapIndexPath, "/sitemaps/works-0.xml"} {
 		_, _, hdr := getSitemap(t, ts.URL, path)
 		etag := hdr.Get("ETag")
@@ -517,10 +481,10 @@ func TestSitemapConditionalRequests(t *testing.T) {
 // neither, or a shared cache would store the error and then 304-renew it under
 // the document's own ETag for the life of the release.
 func TestSitemapErrorCarriesNoCacheHeaders(t *testing.T) {
-	srv, ts := newPageServerFrom(t, quietConfig(t, fixtureCatalog(), markedShells))
+	srv, ts := newPageServerFrom(t, quietConfig(t, artifacttest.Fixture(), markedShells))
 	// The stats are already loaded, so the shard still EXISTS - the failure lands
 	// where the document is rendered, which is the path under test.
-	srv.current().close()
+	_ = srv.current().Close()
 
 	code, body, hdr := getSitemap(t, ts.URL, "/sitemaps/works-0.xml")
 	if code != http.StatusInternalServerError {
@@ -541,7 +505,7 @@ func TestSitemapErrorCarriesNoCacheHeaders(t *testing.T) {
 // such dependency and must be unmoved by it.
 func TestSitemapIndexETagTracksTheStaticEntry(t *testing.T) {
 	// One artifact, two dists: same snapshot identity, same origin.
-	bare := quietConfig(t, fixtureCatalog(), markedShells)
+	bare := quietConfig(t, artifacttest.Fixture(), markedShells)
 	withStatic := bare
 	withStatic.Site = entitySite(t, markedShells)
 	writeSiteFile(t, withStatic.Site, staticSitemapFile, `<urlset></urlset>`)
@@ -573,7 +537,7 @@ func TestSitemapIndexETagTracksTheStaticEntry(t *testing.T) {
 // still announces no encoding (a client applies a 304's content headers to its
 // CACHED copy - see gzipResponseWriter.ensureHeader).
 func TestSitemapGzip(t *testing.T) {
-	ts := sitemapSite(t, fixtureCatalog())
+	ts := sitemapSite(t, artifacttest.Fixture())
 	req, err := http.NewRequest(http.MethodGet, ts.URL+"/sitemaps/works-0.xml", nil)
 	if err != nil {
 		t.Fatal(err)

@@ -1,28 +1,30 @@
-// Package serve is the read-only HTTP API over the compiled metadata artifact.
-// It opens the SQLite database produced by internal/build, exposes a small JSON
-// API (search, work/person/series detail, ASIN/ISBN lookup, stats, coverage), and can
-// hot-swap a newer GitHub Release artifact on a signed webhook or fallback poll
-// without a restart. All content is public, so there is no auth; CORS is wide
-// open on the API surface. Business logic lives here; cmd/metaserve is a thin
+// Package serve is metaserve: the read-only HTTP server over the compiled
+// metadata artifact. The JSON API itself (search, work/person/series detail,
+// ASIN/ISBN lookup, match, stats, coverage, watch feeds, the Audiobookshelf
+// provider) is pkg/query's handler, served here behind CORS and gzip; this
+// package adds what is metaserve's own - the hot swap of a newer GitHub Release
+// artifact on a signed webhook or fallback poll without a restart, the
+// server-rendered entity and guide pages, the sitemaps and the OpenAPI document.
+// All content is public, so there is no auth; CORS is wide open on the API
+// surface. Business logic lives here and in pkg/query; cmd/metaserve is a thin
 // wrapper.
 package serve
 
 import (
+	"cmp"
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
-	"math"
 	"net/http"
-	"net/url"
-	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
+	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
 
 // Config configures a Server.
@@ -60,17 +62,19 @@ type Config struct {
 
 	// apiBase overrides the GitHub API base URL. Test-only: production always
 	// talks to api.github.com. Setting it also admits that origin as an asset
-	// origin (ghClient.allowOrigin), since an httptest server is plain HTTP on a
+	// origin (release.WithAPIBase), since an httptest server is plain HTTP on a
 	// loopback IP with a port - three things the production asset rule refuses.
 	apiBase string
 
-	// matchBudget overrides how long one works/match may run (matchBudget in
-	// match.go). Test-only, so a budget test does not have to wait seconds.
+	// matchBudget overrides how long one works/match may run
+	// (query.PublicMatchBudget). Test-only, so a budget test does not have to
+	// wait seconds.
 	matchBudget time.Duration
 
-	// now supplies the watch feed's window boundary. Test-only; production uses
-	// time.Now. Keeping it on the server makes date-boundary tests deterministic
-	// without a package-global clock that would race parallel tests.
+	// now supplies the watch feed's window boundary (query.HandlerOptions.Now).
+	// Test-only; production uses time.Now. Keeping it on the server makes
+	// date-boundary tests deterministic without a package-global clock that would
+	// race parallel tests.
 	now func() time.Time
 }
 
@@ -80,7 +84,12 @@ type Server struct {
 	cfg Config
 	log *log.Logger
 
-	cur atomic.Pointer[snapshot]
+	cur atomic.Pointer[query.DB]
+
+	// query is the JSON API: pkg/query's handler over the live snapshot, the same
+	// one a mirror-mode AudioSilo server mounts in-process. buildMux builds it and
+	// routes() registers its patterns in front of it.
+	query http.Handler
 
 	site *siteHandler
 	mux  http.Handler
@@ -91,10 +100,14 @@ type Server struct {
 	// the untouched static file.
 	shells shells
 
-	gh *ghClient
+	// gh is the release client the poller fetches through (newGHClient).
+	gh *release.Client
 
 	mu     sync.Mutex // guards refresh() so two polls never race
 	loaded string     // tag of the currently-loaded release ("" for local db)
+	// etag is the release list's last ETag, sent as If-None-Match so a poll that
+	// finds nothing new costs one conditional request. Guarded by mu.
+	etag string
 
 	// retired counts the artifact files of snapshots that have been swapped out
 	// but not yet closed, so the cache prune spares every one of them (see
@@ -108,11 +121,6 @@ type Server struct {
 	nextRetry atomic.Int64
 
 	webhookRefreshing atomic.Bool // coalesces webhook-triggered refreshes to one in flight
-
-	// matchSlots bounds how many works/match requests run at once (see
-	// match.go): the heaviest public read, so a flood queues behind
-	// matchConcurrency slots and answers 503 past its budget.
-	matchSlots chan struct{}
 }
 
 // New builds a Server. When DBPath is set it is loaded immediately; otherwise
@@ -136,7 +144,7 @@ func New(cfg Config) (*Server, error) {
 		cfg.Interval = time.Hour
 	}
 	if cfg.Repo == "" {
-		cfg.Repo = "KodeStar/audiosilo-meta"
+		cfg.Repo = release.DefaultRepo
 	}
 	if cfg.swapGrace <= 0 {
 		cfg.swapGrace = 60 * time.Second
@@ -164,21 +172,17 @@ func New(cfg Config) (*Server, error) {
 			return nil, fmt.Errorf("serve: METASERVE_WEBHOOK_SECRET must be at least %d bytes", minWebhookSecretBytes)
 		}
 	}
-	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}, matchSlots: make(chan struct{}, matchConcurrency)}
+	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}}
 	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
-		s.gh = newGHClient(cfg.Repo, cfg.Token, cfg.apiBase)
-		if cfg.apiBase != "" {
-			s.gh.allowOrigin(cfg.apiBase) // test-only; apiBase is unexported
-		}
+		s.gh = s.newGHClient(cfg.Repo, cfg.apiBase)
 	}
 
 	if cfg.DBPath != "" {
-		snap, err := openSnapshot(cfg.DBPath, "")
+		snap, err := s.open(cfg.DBPath, "")
 		if err != nil {
 			return nil, err
 		}
-		snap.log = s.log
 		s.cur.Store(snap)
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {
@@ -201,6 +205,30 @@ func New(cfg Config) (*Server, error) {
 	}
 	s.mux = s.buildMux()
 	return s, nil
+}
+
+// newGHClient builds the release client this server polls through: repo, the
+// configured token, the server's logger, and the loaded artifact's size as the
+// expansion bound's floor (release.WithBaseSize - the arm that keeps the bound
+// tracking a growing catalogue). apiBase is test-only (Config.apiBase).
+func (s *Server) newGHClient(repo, apiBase string, opts ...release.Option) *release.Client {
+	o := []release.Option{release.WithLogger(s.log), release.WithBaseSize(s.currentArtifactBytes)}
+	if apiBase != "" {
+		o = append(o, release.WithAPIBase(apiBase))
+	}
+	return release.New(repo, s.cfg.Token, append(o, opts...)...)
+}
+
+// open opens the artifact at path as a snapshot labelled tag, its degradation
+// notices routed through this server's logger - every snapshot this server
+// serves comes through here.
+func (s *Server) open(path, tag string) (*query.DB, error) {
+	snap, err := query.Open(path, tag)
+	if err != nil {
+		return nil, err
+	}
+	snap.SetLogger(s.log)
+	return snap, nil
 }
 
 // Handler returns the http.Handler for the server (exposed for tests).
@@ -276,7 +304,7 @@ func (s *Server) httpServer() *http.Server {
 
 // current returns the live snapshot, or nil when none has loaded yet (a
 // poll-only boot whose first fetch failed - see New).
-func (s *Server) current() *snapshot { return s.cur.Load() }
+func (s *Server) current() *query.DB { return s.cur.Load() }
 
 // defaultBootRetry is the first retry wait for a server with NO artifact. It is
 // much shorter than the steady-state poll interval: a boot that could not reach
@@ -296,19 +324,19 @@ const defaultBootRetry = 30 * time.Second
 // the prune must spare all of them (see pruneCacheLocked).
 //
 // The caller must hold s.mu (adopt does): s.retired is refresh-owned state.
-func (s *Server) swap(next *snapshot) {
+func (s *Server) swap(next *query.DB) {
 	old := s.cur.Swap(next)
 	if old == nil || old == next {
 		return
 	}
-	s.retired[old.path]++
+	s.retired[old.Path()]++
 	time.AfterFunc(s.cfg.swapGrace, func() {
-		old.close()
+		_ = old.Close()
 		s.mu.Lock()
 		defer s.mu.Unlock()
-		s.retired[old.path]--
-		if s.retired[old.path] <= 0 {
-			delete(s.retired, old.path)
+		s.retired[old.Path()]--
+		if s.retired[old.Path()] <= 0 {
+			delete(s.retired, old.Path())
 		}
 		s.pruneCacheLocked()
 	})
@@ -336,172 +364,51 @@ func (r route) specPath() string {
 // the server actually serves rather than to a third hand-written copy of the
 // list.
 //
+// The JSON API itself is pkg/query's (query.Routes): every pattern it serves is
+// registered here in front of s.query, wearing the public stack - except the
+// readiness probe, which a health check calls rather than a browser. Only the
+// routes that are metaserve's own (the release webhook and the spec) have
+// handlers here.
+//
 // The static site at "/" is deliberately not here: it is not part of the API and
 // has no spec entry (see buildMux).
 func (s *Server) routes() []route {
-	rs := []route{
-		{"GET /healthz", http.HandlerFunc(s.handleHealthz)},
+	var rs []route
+	pub := s.public(s.query)
+	for _, qr := range query.Routes() {
+		h := pub
+		if qr.Pattern == query.HealthzPattern {
+			h = s.query
+		}
+		rs = append(rs, route{qr.Pattern, h})
 	}
 	// Present only when a webhook secret is configured, because that is exactly
 	// when it is registered: an unconfigured deployment does not serve the hook.
 	if s.cfg.WebhookSecret != "" {
 		rs = append(rs, route{"POST " + githubReleaseWebhookPath, http.HandlerFunc(s.handleGitHubReleaseWebhook)})
 	}
-	return append(rs,
-		// The machine-readable description of everything below. It is STATIC, so
-		// it deliberately skips the loaded-artifact gate: a client discovering the
-		// API must get the spec even on a boot that has no data yet.
-		route{"GET /api/v1/openapi.json", s.public(http.HandlerFunc(handleOpenAPI))},
-		route{"GET /api/v1/stats", s.api(s.handleStats)},
-		route{"GET /api/v1/search", s.api(s.searchHandler(kindAny))},
-		// Type-scoped searches. A literal segment beats "{id}" in ServeMux's
-		// precedence rules, so each coexists with its family's detail route
-		// exactly as works/latest already does.
-		route{"GET /api/v1/works/search", s.api(s.searchHandler(kindWork))},
-		route{"GET /api/v1/people/search", s.api(s.searchHandler(kindPerson))},
-		route{"GET /api/v1/series/search", s.api(s.searchHandler(kindSeries))},
-		route{"GET /api/v1/works/latest", s.api(s.handleLatest)},
-		// Structured matching of a file against the catalogue (match.go). A
-		// literal segment like search and latest, so "match" is a reserved slug.
-		route{"GET /api/v1/works/match", s.api(s.handleMatch)},
-		route{"GET /api/v1/watch/feed.atom", s.api(s.handleWatchAtom)},
-		route{"GET /api/v1/watch/feed.json", s.api(s.handleWatchJSON)},
-		route{"GET /api/v1/watch/releases.ics", s.api(s.handleWatchICS)},
-		route{"GET /api/v1/works/{id}", s.api(s.handleWork)},
-		route{"GET /api/v1/works/{id}/recordings/{rid}/chapters", s.api(s.handleChapters)},
-		route{"GET /api/v1/people/{id}", s.api(s.handlePerson)},
-		route{"GET /api/v1/series/{id}", s.api(s.handleSeries)},
-		route{"GET /api/v1/lookup", s.api(s.handleLookup)},
-		route{"GET /api/v1/coverage", s.api(s.handleCoverage)},
-		route{"GET /api/v1/coverage/works", s.api(s.handleCoverageWorks)},
-		route{"GET /api/v1/coverage/series-gaps", s.api(s.handleCoverageSeriesGaps)},
-		// Audiobookshelf custom metadata provider (ABS appends /search to the
-		// configured base URL). Outside /api/v1; the specific pattern wins over "/".
-		route{"GET /abs/search", s.api(s.handleABSSearch)},
-		// The same provider with a language preference: configured as /abs/de, ABS
-		// calls /abs/de/search. It ranks rather than filters - see abs.go.
-		route{"GET /abs/{" + absLangWildcard + "}/search", s.api(s.handleABSLangSearch)},
-	)
+	// The machine-readable description of all of it. It is STATIC, so it
+	// deliberately skips the loaded-artifact gate: a client discovering the API
+	// must get the spec even on a boot that has no data yet.
+	return append(rs, route{"GET /api/v1/openapi.json", s.public(http.HandlerFunc(handleOpenAPI))})
 }
 
-// idWildcard is what the four current detail routes spell their record wildcard.
-// Their handlers read it directly; the redirect machinery does NOT - it derives
-// the name from the pattern (see idWildcardOf), so nothing depends on the
+// idWildcard is what the entity page routes spell their record wildcard. Their
+// handler reads it directly; the redirect machinery does NOT - it derives the
+// name from the pattern (query's RedirectRetired), so nothing depends on the
 // spelling being this one.
 const idWildcard = "id"
 
-// redirectNamespaces says which id namespace a route's record wildcard names. It
-// sits beside routes() because it is the same knowledge: a route that addresses a
-// record by slug can be reached by a slug a merge retired, and the namespace is
-// what resolves it (and, being the route segment too, what rebuilds the Location -
-// see model.RedirectKind).
-//
-// It is keyed by the ServeMux pattern, so it is checkable against the route table
-// rather than believed: TestEveryIDRouteResolvesRetiredSlugs requires every
-// registered pattern that HAS a wildcard to appear here or in
-// redirectExemptRoutes, which is how a fifth family route cannot ship without
-// redirect support.
-// The HTML entity pages address the same records by the same slugs, so their
-// patterns are folded in from the ONE pattern-keyed index of the table that
-// defines them (htmlEntityRouteByPattern, which the page-body decision in
-// redirected reads too) rather than restated here - a page family cannot be
-// added without its redirect, and the two tables cannot disagree about which
-// namespace a family resolves in.
-var redirectNamespaces = func() map[string]model.RedirectKind {
-	m := map[string]model.RedirectKind{
-		"GET /api/v1/works/{id}":                           model.RedirectWorks,
-		"GET /api/v1/works/{id}/recordings/{rid}/chapters": model.RedirectWorks,
-		"GET /api/v1/people/{id}":                          model.RedirectPeople,
-		"GET /api/v1/series/{id}":                          model.RedirectSeries,
-	}
-	for pattern, e := range htmlEntityRouteByPattern {
-		m[pattern] = e.namespace
-	}
-	return m
-}()
-
-// redirectExemptRoutes are the wildcard routes that deliberately resolve no
-// retired slug. It exists so that the guard above can be answered in the only two
-// ways that are honest - name the namespace, or say out loud that this wildcard is
-// not a record - rather than by a route quietly not appearing in either list. A
-// multi-segment wildcard ({rest...}) belongs here: it is a path, not an id.
-//
-// The sitemap shard's wildcard is a FILE NAME (works-3.xml), not a slug: it names
-// a window over a family, so there is no retired id for it to resolve and an
-// unknown one is the 404 parseShardFile already gives it.
-//
-// The Audiobookshelf provider's language segment is a FILTER (de, or de,en), not
-// a record: there is nothing it could have been retired from.
-var redirectExemptRoutes = map[string]bool{
-	"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}": true,
-	"GET /abs/{" + absLangWildcard + "}/search":                   true,
-}
-
-// redirectCoverageGaps returns the patterns that address a record by a wildcard
-// and neither name a namespace nor say they are exempt. It is the guard's
-// derivation, exported to the test rather than written there, so what the test
-// checks is what the request path reads: the SHAPE of the pattern decides, not the
-// wildcard's name, so "GET /api/v1/publishers/{pid}" is as much a gap as a
-// {id} route would be.
-func redirectCoverageGaps(patterns []string) []string {
-	var gaps []string
-	for _, pattern := range patterns {
-		if idWildcardOf(pattern) == "" && !hasAnyWildcard(pattern) {
-			continue // a fully literal route addresses no record
-		}
-		if _, named := redirectNamespaces[pattern]; named || redirectExemptRoutes[pattern] {
-			continue
-		}
-		gaps = append(gaps, pattern)
-	}
-	return gaps
-}
-
-// hasAnyWildcard reports whether a pattern carries a wildcard of ANY form,
-// including the two idWildcardOf declines to read as a record id. A route with one
-// of those still has to be decided about, out loud, rather than skipped for having
-// no {name} segment.
-func hasAnyWildcard(pattern string) bool {
-	_, path, _ := strings.Cut(pattern, " ")
-	for _, seg := range strings.Split(path, "/") {
-		if strings.HasPrefix(seg, "{") && strings.HasSuffix(seg, "}") && seg != "{$}" {
-			return true
-		}
-	}
-	return false
-}
-
-// idWildcardOf returns the name of the wildcard a pattern addresses its record
-// by: the FIRST single-segment wildcard in the path. It is derived rather than
-// assumed so a route spelling it {work} or {pid} still redirects, and so the
-// coverage guard does not rest on a naming convention nothing enforces.
-//
-// "" means the pattern has no such wildcard. ServeMux's two other forms are
-// deliberately not it: {$} is an anchor rather than a value, and {rest...} spans
-// segments, so neither can name one record.
-func idWildcardOf(pattern string) string {
-	_, path, _ := strings.Cut(pattern, " ")
-	for _, seg := range strings.Split(path, "/") {
-		if name, ok := wildcardName(seg); ok {
-			return name
-		}
-	}
-	return ""
-}
-
-// wildcardName reads one pattern segment as a single-segment wildcard.
-func wildcardName(seg string) (string, bool) {
-	if !strings.HasPrefix(seg, "{") || !strings.HasSuffix(seg, "}") {
-		return "", false
-	}
-	name := seg[1 : len(seg)-1]
-	if name == "$" || strings.HasSuffix(name, "...") {
-		return "", false
-	}
-	return name, true
-}
-
 func (s *Server) buildMux() http.Handler {
+	// The JSON API over the live snapshot. It reads the pointer per request, so
+	// it is built once and survives every swap.
+	s.query = query.NewHandler(s.current, query.HandlerOptions{
+		Logger:      s.log,
+		RetryAfter:  s.retryWait,
+		SiteURL:     s.cfg.SiteURL,
+		Now:         s.cfg.now,
+		MatchBudget: cmp.Or(s.cfg.matchBudget, query.PublicMatchBudget),
+	})
 	mux := http.NewServeMux()
 	for _, r := range s.routes() {
 		mux.Handle(r.pattern, r.handler)
@@ -540,43 +447,13 @@ func (s *Server) public(h http.Handler) http.Handler {
 // Server.html): an XML document is never framed or navigated from.
 func (s *Server) compressed(h http.HandlerFunc) http.Handler { return gzipMW(h) }
 
-// api is public plus the loaded-artifact gate: what every handler that reads a
-// snapshot needs.
-func (s *Server) api(h http.HandlerFunc) http.Handler {
-	return s.public(s.requireSnapshot(h))
-}
-
-// noArtifactMsg is the one wording of the no-artifact 503, shared by the API
-// gate below and the sitemap routes' own copy of it (sitemapUnavailable, which
-// is outside this middleware because those routes are not API). Two spellings of
-// one condition is a difference a client could read as a difference.
-const noArtifactMsg = "no data loaded yet: the server is fetching the latest release"
-
-// requireSnapshot answers 503 while no artifact has loaded, so every data
-// handler can assume s.current() is non-nil. Only a poll-only boot that could
-// not reach GitHub is in that state (see New); it is temporary by construction,
-// hence Retry-After.
-func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		if s.current() == nil {
-			w.Header().Set("Retry-After", s.retryAfter())
-			writeErr(w, http.StatusServiceUnavailable, noArtifactMsg)
-			return
-		}
-		next(w, r)
-	}
-}
-
-// retryAfter is the Retry-After value for the 503s a server with no artifact
-// answers: the poll loop's CURRENT wait, not the initial bootRetry. After
+// retryWait is the wait the 503s a server with no artifact advertise as
+// Retry-After: the poll loop's CURRENT wait, not the initial bootRetry. After
 // several failed attempts the loop has backed off (up to --interval), and
 // advertising 30s then would send every client back long before anything can
-// have changed. Whole seconds, rounded up, never below 1 - a "0" would read as
-// "retry immediately".
-func (s *Server) retryAfter() string {
-	secs := int(math.Ceil(time.Duration(s.nextRetry.Load()).Seconds()))
-	return strconv.Itoa(max(secs, 1))
-}
+// have changed. The API's gate reads it through query.HandlerOptions.RetryAfter
+// and the sitemaps directly, so the two cannot advertise different waits.
+func (s *Server) retryWait() time.Duration { return time.Duration(s.nextRetry.Load()) }
 
 // ---- middleware -------------------------------------------------------------
 
@@ -597,447 +474,8 @@ func corsMW(next http.Handler) http.Handler {
 
 // ---- JSON helpers -----------------------------------------------------------
 
-func writeJSON(w http.ResponseWriter, status int, v any) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.WriteHeader(status)
-	enc := json.NewEncoder(w)
-	_ = enc.Encode(v)
-}
-
-func writeErr(w http.ResponseWriter, status int, msg string) {
-	writeJSON(w, status, map[string]string{"error": msg})
-}
-
-// internalErrMsg is the body of EVERY 500 this server writes. An internal
-// error's own text describes the failure's internals - a SQL statement, a file
-// path on the cache volume, a driver message - and every API route here is
-// public and CORS-open, so that text is reflected to anyone who can provoke it.
-// The 4xx messages are deliberately untouched: those are about the REQUEST, which
-// the caller sent and is the only thing they can act on.
-const internalErrMsg = "internal error"
-
-// fail answers with the fixed 500 body and logs what actually went wrong, so the
-// detail is kept where an operator reads it rather than where a stranger does.
-// ONE helper rather than a fixed string at each site: a handler that spells its
-// own 500 is a handler that can quietly go back to reflecting err.Error().
-//
-// The method and path are QUOTED. r.URL.Path is the DECODED path, so a request
-// for `/works/x%0A2026-01-01 serve: 500 ...` puts a newline in the middle of
-// this line and the rest of it reads as a log entry of its own - a caller
-// forging whatever an operator or a log pipeline then believes. %q keeps it on
-// one line, with the control characters visible as escapes.
-//
-// A request whose client has gone is not logged: the search and lookup reads
-// run under the request's context, so a client that abandons a query (the
-// site's search box does, on every keystroke) fails it with the context's
-// error, which is no fault of the server's and nobody reads the 500.
+// fail answers with the fixed 500 body and logs the error through this server's
+// logger (httpx.Fail: the error's own text never reaches the body).
 func (s *Server) fail(w http.ResponseWriter, r *http.Request, err error) {
-	if r.Context().Err() == nil {
-		s.log.Printf("serve: 500 %q %q: %v", r.Method, r.URL.Path, err)
-	}
-	writeErr(w, http.StatusInternalServerError, internalErrMsg)
-}
-
-// clampLimit parses the ?limit= param and clamps it to [1, max], defaulting to
-// def when absent or invalid. A def of 0 is how an endpoint spells "no window at
-// all by default" (snapshot.series), since 0 is never reachable from a supplied
-// value.
-func clampLimit(raw string, def, max int) int {
-	if raw == "" {
-		return def
-	}
-	n, err := strconv.Atoi(raw)
-	if err != nil || n <= 0 {
-		return def
-	}
-	if n > max {
-		return max
-	}
-	return n
-}
-
-// clampOffset parses the ?offset= param into a non-negative row offset,
-// defaulting to 0 when absent, invalid, or negative.
-func clampOffset(raw string) int {
-	if raw == "" {
-		return 0
-	}
-	n, err := strconv.Atoi(raw)
-	if err != nil || n < 0 {
-		return 0
-	}
-	return n
-}
-
-// ---- handlers ---------------------------------------------------------------
-
-// handleHealthz reports readiness, not liveness: a server that has not loaded an
-// artifact yet answers 503 with status "starting", so a container health check
-// or a load balancer keeps it out of rotation until it can actually answer.
-func (s *Server) handleHealthz(w http.ResponseWriter, _ *http.Request) {
-	snap := s.current()
-	if snap == nil {
-		w.Header().Set("Retry-After", s.retryAfter())
-		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
-		return
-	}
-	writeJSON(w, http.StatusOK, map[string]any{
-		"status":   "ok",
-		"built_at": snap.stats.BuiltAt,
-		"works":    snap.stats.Works,
-	})
-}
-
-func (s *Server) handleStats(w http.ResponseWriter, _ *http.Request) {
-	writeJSON(w, http.StatusOK, s.current().stats)
-}
-
-// langParam reads a request's language filter from its already-parsed query
-// values, as snap can apply it to kind (snapshot.langFilterFor - the one version
-// gate), answering the 400 itself when an item is not a language tag. Repeated
-// parameters are one list, so `lang=de&lang=en` reads as `lang=de,en`. Every
-// handler a filter narrows reads it here, so the spelling of the parameter and
-// its error have one home; the handler must then query snap itself, the snapshot
-// the gate was asked of.
-func langParam(w http.ResponseWriter, snap *snapshot, q url.Values, kind searchKind) (langFilter, bool) {
-	f, err := snap.langFilterFor(strings.Join(q["lang"], ","), kind)
-	if err != nil {
-		writeErr(w, http.StatusBadRequest, err.Error())
-		return nil, false
-	}
-	return f, true
-}
-
-func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
-	q := r.URL.Query()
-	limit := clampLimit(q.Get("limit"), 12, 50)
-	snap := s.current()
-	lang, ok := langParam(w, snap, q, kindWork)
-	if !ok {
-		return
-	}
-	cards, err := snap.latestWorks(limit, lang)
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	writeJSON(w, http.StatusOK, map[string]any{"works": cards})
-}
-
-func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
-	detail, err := snap.workDetail(r.PathValue(idWildcard))
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	if detail == nil {
-		if redirected(w, r, snap) {
-			return
-		}
-		writeErr(w, http.StatusNotFound, "work not found")
-		return
-	}
-	writeJSON(w, http.StatusOK, detail)
-}
-
-// handleChapters answers an unknown (work, recording) pair with an empty list
-// rather than a 404 - a recording legitimately has no chapters - so the retired
-// slug is consulted when the list comes back EMPTY. It can only ever hit on a
-// slug the catalogue does not hold: a live work is never a redirect source
-// (pkg/check's checkRedirects), so a real recording with no chapters still gets
-// its empty list.
-func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
-	chs, err := snap.chapters(r.PathValue(idWildcard), r.PathValue("rid"))
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	if len(chs) == 0 && redirected(w, r, snap) {
-		return
-	}
-	writeJSON(w, http.StatusOK, map[string]any{"chapters": chs})
-}
-
-// redirected answers a request whose {id} names a RETIRED slug with a 301 at the
-// same route under the slug that replaced it, and reports whether it did.
-//
-// Every id route calls it where it would otherwise 404, so a slug a merge retired
-// keeps resolving (see model.Redirects for why that matters). The BODY carries the
-// new slug too, so a client that does not follow redirects can heal what it stored
-// instead of only learning that the id is gone.
-//
-// It is composed entirely from ROUTE DATA rather than per-route arguments: the
-// namespace comes from redirectNamespaces keyed by the pattern that matched, and
-// the Location is that same pattern with its wildcards filled in - the new slug for
-// {id}, the request's own values for the rest - so no route can be handed a
-// Location belonging to another one, and a route that gains a wildcard needs no
-// change here. The request's query string travels along, because a ?limit/?offset
-// window describes the request rather than the id.
-//
-// It reads the snapshot the handler already answered from rather than loading the
-// pointer again, so a hot-swap mid-request cannot make the 404 and the redirect
-// decision come from two different artifacts. A lookup FAILURE degrades to "no
-// redirect": the caller then answers its own 404, which is what the request looked
-// like anyway, rather than turning a missing record into a 500.
-//
-// WHICH BODY it writes is decided by the route table the pattern came from, not
-// by the caller: an API route gets the JSON body, an entity PAGE gets a minimal
-// HTML page linking the new URL (a browser that ignores the Location would
-// otherwise be shown a JSON document). The headers are identical either way, so
-// the two writers cannot drift on the part that matters.
-func redirected(w http.ResponseWriter, r *http.Request, snap *snapshot) bool {
-	location, to, ok := resolveRedirect(r, snap)
-	if !ok {
-		return false
-	}
-	w.Header().Set("Location", location)
-	// A tombstone is not permanent the way 301 invites a client to assume: a bad
-	// merge can be reversed, and the redirect then has to stop being served. An
-	// hour is long enough to spare the origin a stale client's repeated misses and
-	// short enough that reversing one is not a support problem.
-	w.Header().Set("Cache-Control", redirectMaxAge)
-	if _, page := htmlEntityRouteByPattern[r.Pattern]; page {
-		writeRedirectPage(w, location)
-		return true
-	}
-	writeJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
-	return true
-}
-
-// resolveRedirect is the decision half of redirected: it reports the Location to
-// send and the slug that replaced the requested one, or ok=false when this
-// request is not a retired slug at a redirecting route.
-func resolveRedirect(r *http.Request, snap *snapshot) (location, to string, ok bool) {
-	kind, named := redirectNamespaces[r.Pattern]
-	if !named {
-		return "", "", false // not a route a retired slug can arrive at
-	}
-	idName := idWildcardOf(r.Pattern)
-	id := r.PathValue(idName)
-	to, err := snap.redirectTarget(kind, id)
-	if err != nil {
-		snap.logf("serve: redirect lookup for %s %q failed: %v", kind, id, err)
-		return "", "", false
-	}
-	if to == "" {
-		return "", "", false
-	}
-	// A row pointing a slug at ITSELF would send a following client back here
-	// forever. pkg/check refuses one, so no sanctioned artifact carries it, but
-	// "cannot loop" should be true of the resolver rather than only of the data it
-	// is usually given - a hand-built or corrupted artifact must degrade to the
-	// 404 the request was already heading for.
-	if to == id {
-		snap.logf("serve: ignoring self-redirect for %s %q (the artifact's redirect table is corrupt)", kind, id)
-		return "", "", false
-	}
-	return redirectLocation(r, idName, to), to, true
-}
-
-// redirectMaxAge bounds how long a 301 may be cached. See redirected.
-const redirectMaxAge = "public, max-age=3600"
-
-// redirectLocation rebuilds the matched route's path with to standing in for the
-// record wildcard idName, every other wildcard keeping the value it matched, and
-// the request's own query string appended.
-//
-// It returns the WIRE form and is used as the header value directly, escaping each
-// segment exactly once. Handing it to url.URL would escape it a second time (Path
-// is the decoded form, so a % becomes %25), and setting Path alone would not
-// escape at all - url.URL leaves a "/" inside a path segment untouched. The ids in
-// the artifact are plain slugs today, so either mistake is latent rather than
-// visible, which is precisely why it is written down here.
-func redirectLocation(r *http.Request, idName, to string) string {
-	_, pattern, _ := strings.Cut(r.Pattern, " ")
-	var b strings.Builder
-	for _, seg := range strings.Split(strings.TrimPrefix(pattern, "/"), "/") {
-		b.WriteByte('/')
-		name, wild := wildcardName(seg)
-		if !wild {
-			b.WriteString(seg)
-			continue
-		}
-		value := to
-		if name != idName {
-			value = r.PathValue(name)
-		}
-		b.WriteString(url.PathEscape(value))
-	}
-	if r.URL.RawQuery != "" {
-		b.WriteByte('?')
-		b.WriteString(r.URL.RawQuery)
-	}
-	return b.String()
-}
-
-// personPageDefault / personPageMax bound one page of a person's credit lists.
-// The default is a page, not the whole list: a corporate credit ("Full Cast")
-// already narrates ~2,000 works, and that count grows with the catalogue. The
-// unpaged totals travel in the response so a client always knows what it is
-// missing.
-const (
-	personPageDefault = 100
-	personPageMax     = 500
-)
-
-func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
-	q := r.URL.Query()
-	limit := clampLimit(q.Get("limit"), personPageDefault, personPageMax)
-	p, err := snap.person(r.PathValue(idWildcard), limit, clampOffset(q.Get("offset")))
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	if p == nil {
-		if redirected(w, r, snap) {
-			return
-		}
-		writeErr(w, http.StatusNotFound, "person not found")
-		return
-	}
-	writeJSON(w, http.StatusOK, p)
-}
-
-// seriesPageMax bounds an explicitly requested series page. There is no
-// default: ?limit absent means the whole series (see snapshot.series - the
-// player's series rail is composed from the full list).
-const seriesPageMax = 500
-
-func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
-	q := r.URL.Query()
-	ser, err := snap.series(r.PathValue(idWildcard), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	if ser == nil {
-		if redirected(w, r, snap) {
-			return
-		}
-		writeErr(w, http.StatusNotFound, "series not found")
-		return
-	}
-	writeJSON(w, http.StatusOK, ser)
-}
-
-// searchPageDefault / searchPageMax bound one page of search results. Every
-// search endpoint shares them: a client that learns the window on /search knows
-// it on the type-scoped ones too.
-const (
-	searchPageDefault = 20
-	searchPageMax     = 50
-)
-
-// searchHandler builds the search endpoint for one kind - kindAny for the
-// combined search, kindWork/kindPerson/kindSeries for the type-scoped ones. The
-// four differ only in that value, so the q/limit parsing, the empty-q 400 and
-// the {"results": [...]} envelope live here once rather than in four
-// near-identical handlers.
-func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		params := r.URL.Query()
-		q := strings.TrimSpace(params.Get("q"))
-		if q == "" {
-			writeErr(w, http.StatusBadRequest, "q is required")
-			return
-		}
-		limit := clampLimit(params.Get("limit"), searchPageDefault, searchPageMax)
-		// Validated on every scope, people/search included: the parameter means one
-		// thing on all four, and the people scope ignoring it (a person has no
-		// language) is the gate's decision, not a reason to accept garbage.
-		snap := s.current()
-		lang, ok := langParam(w, snap, params, kind)
-		if !ok {
-			return
-		}
-		results, err := snap.search(r.Context(), kind, q, limit, lang)
-		if err != nil {
-			s.fail(w, r, err)
-			return
-		}
-		writeJSON(w, http.StatusOK, map[string]any{"results": results})
-	}
-}
-
-// handleCoverage reports the top-line expressive-layer totals
-// (characters/recaps/recap summaries). The per-work list and series gaps are
-// their own paginated endpoints. It always returns 200 and degrades on older
-// artifacts (see snapshot.coverage) rather than reporting everything as missing.
-func (s *Server) handleCoverage(w http.ResponseWriter, r *http.Request) {
-	res, err := s.current().coverage()
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	writeJSON(w, http.StatusOK, res)
-}
-
-// handleCoverageWorks serves one filtered, searchable, paginated page of works
-// for the contribute-page coverage browser. ?filter selects the dimension
-// (missing|has_characters|has_recaps|has_recap_summary), ?q is a full-text query
-// over title/authors/narrators/series (word prefixes), ?lang narrows by language,
-// ?limit/?offset paginate. It always returns 200 and degrades to an
-// empty page with available:false when the filter's dimension is unevaluable at
-// the current artifact schema_version (see snapshot.coverageWorks).
-func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
-	q := r.URL.Query()
-	filter, ok := validCoverageFilter(q.Get("filter"))
-	if !ok {
-		writeErr(w, http.StatusBadRequest, "unknown filter")
-		return
-	}
-	snap := s.current()
-	lang, ok := langParam(w, snap, q, kindWork)
-	if !ok {
-		return
-	}
-	limit := clampLimit(q.Get("limit"), 25, 100)
-	offset := clampOffset(q.Get("offset"))
-	res, err := snap.coverageWorks(filter, strings.TrimSpace(q.Get("q")), limit, offset, lang)
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	writeJSON(w, http.StatusOK, res)
-}
-
-// handleCoverageSeriesGaps serves one searchable, paginated page of series with
-// interior position gaps. ?q is a series-name substring; ?limit/?offset
-// paginate. series_gaps has no schema_version dependency, so it is always
-// available.
-func (s *Server) handleCoverageSeriesGaps(w http.ResponseWriter, r *http.Request) {
-	q := r.URL.Query()
-	limit := clampLimit(q.Get("limit"), 25, 100)
-	offset := clampOffset(q.Get("offset"))
-	res, err := s.current().seriesGapsPage(strings.TrimSpace(q.Get("q")), limit, offset)
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	writeJSON(w, http.StatusOK, res)
-}
-
-func (s *Server) handleLookup(w http.ResponseWriter, r *http.Request) {
-	q := r.URL.Query()
-	asin := strings.TrimSpace(q.Get("asin"))
-	isbn := strings.TrimSpace(q.Get("isbn"))
-	if asin == "" && isbn == "" {
-		writeErr(w, http.StatusBadRequest, "asin or isbn is required")
-		return
-	}
-	snap := s.current()
-	res, err := snap.lookup(r.Context(), asin, isbn)
-	if err != nil {
-		s.fail(w, r, err)
-		return
-	}
-	if res == nil {
-		writeErr(w, http.StatusNotFound, "not found")
-		return
-	}
-	writeJSON(w, http.StatusOK, res)
+	httpx.Fail(w, r, s.log, "serve", err)
 }

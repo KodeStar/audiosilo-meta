@@ -11,6 +11,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -23,7 +24,7 @@ import (
 // table: it is registered only on a configured deployment, but the spec
 // describes the whole surface, so the guard has to see it.
 func servedPaths() []string {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: artifacttest.QuietLogger()}
 	rs := srv.routes()
 	out := make([]string, 0, len(rs))
 	for _, r := range rs {
@@ -230,7 +231,7 @@ func resolvePointer(doc any, parts []string) any {
 // any data has loaded: a client discovering the API on a cold boot gets the
 // contract, not the 503 every data route is answering.
 func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
-	srv := &Server{cfg: Config{}, log: testLogger(), retired: map[string]int{}}
+	srv := &Server{cfg: Config{}, log: artifacttest.QuietLogger(), retired: map[string]int{}}
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
@@ -238,7 +239,7 @@ func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
 	if srv.current() != nil {
 		t.Fatal("test server unexpectedly has a snapshot")
 	}
-	if code, _ := getJSON(t, ts.URL, "/api/v1/stats"); code != http.StatusServiceUnavailable {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/stats"); code != http.StatusServiceUnavailable {
 		t.Fatalf("stats = %d, want 503 (the gate this route opts out of)", code)
 	}
 
@@ -273,7 +274,7 @@ func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
 // and constant for the life of the binary, so a client that already has it
 // should be told so rather than sent hundreds of kilobytes again.
 func TestOpenAPIRevalidates(t *testing.T) {
-	srv := &Server{cfg: Config{}, log: testLogger(), retired: map[string]int{}}
+	srv := &Server{cfg: Config{}, log: artifacttest.QuietLogger(), retired: map[string]int{}}
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
@@ -330,54 +331,6 @@ func TestOpenAPIRevalidates(t *testing.T) {
 	}
 	if len(body) != 0 {
 		t.Errorf("304 carried a %d-byte body", len(body))
-	}
-}
-
-// TestMatchesETag covers the If-None-Match forms RFC 9110 allows, since a wrong
-// answer either serves a 304 for a document the client does not have or never
-// serves one at all. "*" is NOT one of them: it names no validator, so whether
-// it matches depends on the resource having a representation - see
-// anyValidator, and the entity handler that answers that question.
-func TestMatchesETag(t *testing.T) {
-	const tag = `"abc"`
-	cases := []struct {
-		header string
-		want   bool
-	}{
-		{"", false},
-		{tag, true},
-		{`W/"abc"`, true},
-		{`"other", "abc"`, true},
-		{`"other"`, false},
-		{"*", false},
-		{`"ab"`, false},
-	}
-	for _, tc := range cases {
-		if got := matchesETag(tc.header, tag); got != tc.want {
-			t.Errorf("matchesETag(%q, %q) = %v, want %v", tc.header, tag, got, tc.want)
-		}
-	}
-}
-
-// TestAnyValidator pins the wildcard's own reading, in every list position it
-// can arrive in - a header that carries it means "304 if this resource has any
-// current representation", which is a question its callers answer.
-func TestAnyValidator(t *testing.T) {
-	cases := map[string]bool{
-		"":              false,
-		"*":             true,
-		" * ":           true,
-		`"abc", *`:      true,
-		`*, "abc"`:      true,
-		`"abc"`:         false,
-		`W/"*"`:         false, // a validator whose opaque value is an asterisk
-		`"a*b"`:         false,
-		`"abc", W/"de"`: false,
-	}
-	for header, want := range cases {
-		if got := anyValidator(header); got != want {
-			t.Errorf("anyValidator(%q) = %v, want %v", header, got, want)
-		}
 	}
 }
 

@@ -113,7 +113,7 @@ export interface AsinRef {
   asin: string
 }
 
-/** A derived, non-affiliate route to a retailer (internal/serve/purchase_links.go):
+/** A derived, non-affiliate route to a retailer (pkg/query/purchase_links.go):
     an Audible marketplace URL from a region-scoped ASIN, a Libro.fm URL from a
     checksum-valid recording ISBN-13. `availability` is always "unknown" by
     design - whether a retailer currently sells the recording is volatile, and

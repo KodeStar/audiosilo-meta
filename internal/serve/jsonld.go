@@ -5,6 +5,9 @@ import (
 	"math"
 	"strconv"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
 // The JSON-LD each entity page carries, built as Go structs and marshaled with
@@ -200,21 +203,21 @@ func guideJSONLD(headline, siteURL, canonical, workCanonical string) []byte {
 // workJSONLD builds the @graph for a work page: the Book, then one Audiobook per
 // recording, in the order the detail carries them (recording id order), so two
 // renders of one snapshot produce identical bytes.
-func workJSONLD(d *workDetail, siteURL, canonical string) []byte {
+func workJSONLD(d *query.WorkDetail, siteURL, canonical string) []byte {
 	bookID := workNodeID(canonical)
 	book := ldBook{
 		Type: "Book", ID: bookID, Name: d.Title, URL: canonical, InLanguage: d.Language,
-		Description: communityDescriptionText(d),
+		Description: query.CommunityDescriptionText(d),
 	}
 	for _, a := range d.Authors {
-		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + personPath + a.ID})
+		book.Author = append(book.Author, ldPerson{Type: "Person", Name: a.Name, URL: siteURL + model.PeoplePath + a.ID})
 	}
 	// The FIRST membership is the one the page presents as the series, matching
 	// the card rule (see snapshot.firstSeriesByWork) - any series that is not a
 	// variant ordering before every variant.
 	if len(d.Series) > 0 {
 		sr := d.Series[0]
-		url := siteURL + seriesPath + sr.ID
+		url := siteURL + model.SeriesPath + sr.ID
 		book.IsPartOf = &ldSeriesRef{Type: "BookSeries", ID: seriesNodeID(url), Name: sr.Name, URL: url, Position: sr.Position}
 	}
 	for _, t := range d.TranslationOf {
@@ -244,7 +247,7 @@ func workJSONLD(d *workDetail, siteURL, canonical string) []byte {
 			Abridged: rec.Abridged,
 		}
 		for _, n := range rec.Narrators {
-			ab.ReadBy = append(ab.ReadBy, ldPerson{Type: "Person", Name: n.Name, URL: siteURL + personPath + n.ID})
+			ab.ReadBy = append(ab.ReadBy, ldPerson{Type: "Person", Name: n.Name, URL: siteURL + model.PeoplePath + n.ID})
 		}
 		if len(rec.ISBN) > 0 {
 			ab.ISBN = rec.ISBN[0]
@@ -257,7 +260,7 @@ func workJSONLD(d *workDetail, siteURL, canonical string) []byte {
 	return mustMarshalLD(ldGraph{Context: ldContext, Graph: append([]any{book}, nodes...)})
 }
 
-func personJSONLD(d *personDetail, canonical string) []byte {
+func personJSONLD(d *query.PersonDetail, canonical string) []byte {
 	return mustMarshalLD(ldPersonPage{
 		Context: ldContext, Type: "Person", Name: d.Name,
 		URL: canonical, MainEntityOfPage: canonical,
@@ -266,19 +269,19 @@ func personJSONLD(d *personDetail, canonical string) []byte {
 
 // workTranslationRef is a work's translation link as a JSON-LD reference to the
 // Book node the other work's page defines.
-func workTranslationRef(siteURL string, t workTranslation) ldTranslationRef {
-	url := siteURL + workPath + t.ID
+func workTranslationRef(siteURL string, t query.WorkTranslation) ldTranslationRef {
+	url := siteURL + model.WorksPath + t.ID
 	return ldTranslationRef{Type: "Book", ID: workNodeID(url), Name: t.Title, URL: url, InLanguage: t.Language}
 }
 
 // seriesTranslationRef is its series twin, a reference to the BookSeries node the
 // other series' page defines.
-func seriesTranslationRef(siteURL string, t seriesTranslation) ldTranslationRef {
-	url := siteURL + seriesPath + t.ID
+func seriesTranslationRef(siteURL string, t query.SeriesTranslation) ldTranslationRef {
+	url := siteURL + model.SeriesPath + t.ID
 	return ldTranslationRef{Type: "BookSeries", ID: seriesNodeID(url), Name: t.Name, URL: url, InLanguage: t.Language}
 }
 
-func seriesJSONLD(d *seriesDetail, siteURL, canonical string) []byte {
+func seriesJSONLD(d *query.SeriesDetail, siteURL, canonical string) []byte {
 	doc := ldBookSeries{
 		Context: ldContext, Type: "BookSeries", ID: seriesNodeID(canonical), Name: d.Name, URL: canonical,
 		InLanguage: d.Language,
@@ -295,7 +298,7 @@ func seriesJSONLD(d *seriesDetail, siteURL, canonical string) []byte {
 		}
 		item := ldListItem{
 			Type: "ListItem",
-			Item: ldBookRef{Type: "Book", Name: entry.Work.Title, URL: siteURL + workPath + entry.Work.ID},
+			Item: ldBookRef{Type: "Book", Name: entry.Work.Title, URL: siteURL + model.WorksPath + entry.Work.ID},
 		}
 		if n, ok := listPosition(entry.Position); ok {
 			item.Position = n
@@ -310,7 +313,7 @@ func seriesJSONLD(d *seriesDetail, siteURL, canonical string) []byte {
 // an omnibus is left without a position rather than rounded into somebody else's
 // slot.
 func listPosition(pos string) (int, bool) {
-	lo, hi, ok := parsePositionRange(pos)
+	lo, hi, ok := model.ParsePositionRange(pos)
 	if !ok || lo != hi || lo != math.Trunc(lo) || lo < 0 || lo > math.MaxInt32 {
 		return 0, false
 	}
