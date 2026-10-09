@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
@@ -181,26 +182,104 @@ func TestRedirectsTolerateOlderArtifact(t *testing.T) {
 	}
 }
 
+// redirectNamespaces says which id namespace a route's record wildcard names,
+// over the routes that are metaserve's OWN (the pages, the sitemaps, the webhook
+// and the spec). A route that addresses a record by slug can be reached by a slug
+// a merge retired, and the namespace is what resolves it.
+//
+// The pages are the only own routes that address a record, and they are folded
+// in from the ONE table that defines them (htmlEntityRoutes, whose namespace the
+// page handler resolves by), so a page family cannot be added without its
+// redirect. The API routes are pkg/query's, guarded by its own
+// TestEveryRecordRouteNamesANamespace.
+var redirectNamespaces = func() map[string]model.RedirectKind {
+	m := map[string]model.RedirectKind{}
+	for _, e := range htmlEntityRoutes {
+		m[e.pattern] = e.namespace
+	}
+	return m
+}()
+
+// redirectExemptRoutes are the own wildcard routes that deliberately resolve no
+// retired slug. It exists so that the guard can be answered in the only two ways
+// that are honest - name the namespace, or say out loud that this wildcard is not
+// a record - rather than by a route quietly not appearing in either list. A
+// multi-segment wildcard ({rest...}) belongs here: it is a path, not an id.
+//
+// The sitemap shard's wildcard is a FILE NAME (works-3.xml), not a slug: it names
+// a window over a family, so there is no retired id for it to resolve and an
+// unknown one is the 404 parseShardFile already gives it.
+var redirectExemptRoutes = map[string]bool{
+	"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}": true,
+}
+
+// redirectCoverageGaps returns the patterns that address a record by a wildcard
+// and neither name a namespace nor say they are exempt. The SHAPE of the pattern
+// decides, not the wildcard's name, so "GET /api/v1/publishers/{pid}" is as much
+// a gap as a {id} route would be.
+func redirectCoverageGaps(patterns []string) []string {
+	var gaps []string
+	for _, pattern := range patterns {
+		if !hasAnyWildcard(pattern) {
+			continue // a fully literal route addresses no record
+		}
+		if _, named := redirectNamespaces[pattern]; named || redirectExemptRoutes[pattern] {
+			continue
+		}
+		gaps = append(gaps, pattern)
+	}
+	return gaps
+}
+
+// hasAnyWildcard reports whether a pattern carries a wildcard of ANY form - a
+// record's {id} as much as a {rest...} path or a filter segment, everything but
+// the {$} anchor. A route with one has to be decided about, out loud, rather
+// than skipped for having no {id} segment.
+func hasAnyWildcard(pattern string) bool {
+	_, path, _ := strings.Cut(pattern, " ")
+	for _, seg := range strings.Split(path, "/") {
+		if strings.HasPrefix(seg, "{") && strings.HasSuffix(seg, "}") && seg != "{$}" {
+			return true
+		}
+	}
+	return false
+}
+
+// ownRoutes is every route metaserve registers that is NOT pkg/query's: the
+// pages, the sitemaps, and the webhook and spec routes() appends after the API.
+func ownRoutes(srv *Server) []route {
+	api := map[string]bool{}
+	for _, r := range query.Routes() {
+		api[r.Pattern] = true
+	}
+	own := append(srv.htmlRoutes(), srv.sitemapRoutes()...)
+	for _, r := range srv.routes() {
+		if !api[r.pattern] {
+			own = append(own, r)
+		}
+	}
+	return own
+}
+
 // TestEveryIDRouteResolvesRetiredSlugs is the drift guard, in the shape of
 // TestOpenAPICoversEveryRoute: it diffs redirectNamespaces against the server's
-// own route tables, so a fifth route that addresses a record by slug cannot ship
-// without redirect support (and an entry naming a route that no longer exists
-// cannot linger). The pattern is what redirected() looks the namespace up by, so
-// this is the same key the request path uses, and the candidate set is derived
-// from the pattern's SHAPE rather than from the wildcard being spelled {id} - see
+// own route tables, so a further page that addresses a record by slug cannot
+// ship without redirect support (and an entry naming a route that no longer
+// exists cannot linger). The candidate set is derived from the pattern's SHAPE
+// rather than from the wildcard being spelled {id} - see
 // TestRedirectCoverageIgnoresTheWildcardsName.
 //
-// It covers the UNION of all three tables: an entity PAGE addresses a record by
-// the same slug an API route does, so a retired slug has to keep resolving there
-// too (in HTML - see redirected), and the sitemap table has to answer the guard
-// as well - which it does by naming its file wildcard exempt.
+// It covers metaserve's OWN routes: an entity PAGE addresses a record by the
+// same slug an API route does, so a retired slug has to keep resolving there too
+// (in HTML - see entityHandler), and the sitemap table has to answer the guard
+// as well - which it does by naming its file wildcard exempt. The API routes are
+// pkg/query's guard's (TestEveryRecordRouteNamesANamespace).
 func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
-	all := append(srv.routes(), srv.htmlRoutes()...)
-	all = append(all, srv.sitemapRoutes()...)
-	patterns := make([]string, 0, len(all))
+	own := ownRoutes(srv)
+	patterns := make([]string, 0, len(own))
 	registered := map[string]bool{}
-	for _, r := range all {
+	for _, r := range own {
 		patterns = append(patterns, r.pattern)
 		registered[r.pattern] = true
 	}
@@ -210,12 +289,12 @@ func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 	}
 	for pattern := range redirectNamespaces {
 		if !registered[pattern] {
-			t.Errorf("redirectNamespaces names %s, which Server.routes does not register", pattern)
+			t.Errorf("redirectNamespaces names %s, which the server does not register", pattern)
 		}
 	}
 	for pattern := range redirectExemptRoutes {
 		if !registered[pattern] {
-			t.Errorf("redirectExemptRoutes names %s, which Server.routes does not register", pattern)
+			t.Errorf("redirectExemptRoutes names %s, which the server does not register", pattern)
 		}
 	}
 }
@@ -247,9 +326,9 @@ func TestRedirectCoverageIgnoresTheWildcardsName(t *testing.T) {
 		{name: "a multi-segment wildcard", pattern: "GET /files/{rest...}", gap: true},
 		{name: "a literal route", pattern: "GET /api/v1/stats", gap: false},
 		{name: "an anchored literal route", pattern: "GET /api/v1/coverage/{$}", gap: false},
-		{name: "a route that names its namespace", pattern: "GET /api/v1/works/{id}", gap: false},
+		{name: "a route that names its namespace", pattern: "GET /series/{id}", gap: false},
 		// A PAGE route is judged by the same rule: a fourth family's page that
-		// addresses a record and names no namespace is a gap, and the three that
+		// addresses a record and names no namespace is a gap, and the pages that
 		// exist are covered because htmlEntityRoutes folds them into the map.
 		{name: "an unregistered page route", pattern: "GET /publishers/{id}", gap: true},
 		{name: "a registered page route", pattern: "GET /works/{id}", gap: false},

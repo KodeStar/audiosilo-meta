@@ -23,7 +23,6 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
@@ -399,96 +398,6 @@ func (s *Server) routes() []route {
 // name from the pattern (query's RedirectRetired), so nothing depends on the
 // spelling being this one.
 const idWildcard = "id"
-
-// redirectNamespaces says which id namespace a route's record wildcard names,
-// over EVERY route this server registers. A route that addresses a record by
-// slug can be reached by a slug a merge retired, and the namespace is what
-// resolves it (and, being the route segment too, what rebuilds the Location -
-// see model.RedirectKind).
-//
-// It is keyed by the ServeMux pattern, so it is checkable against the route
-// tables rather than believed: TestEveryIDRouteResolvesRetiredSlugs requires
-// every registered pattern that HAS a wildcard to appear here or in
-// redirectExemptRoutes, which is how a fifth family route cannot ship without
-// redirect support. The API routes' namespaces are pkg/query's (query.Routes,
-// which its handler resolves by); the HTML entity pages address the same records
-// by the same slugs, so their patterns are folded in from the ONE pattern-keyed
-// index of the table that defines them (htmlEntityRouteByPattern, which the page
-// redirect reads too) rather than restated here - a page family cannot be added
-// without its redirect, and the tables cannot disagree about which namespace a
-// family resolves in.
-var redirectNamespaces = func() map[string]model.RedirectKind {
-	m := map[string]model.RedirectKind{}
-	for _, r := range query.Routes() {
-		if r.Namespace != "" {
-			m[r.Pattern] = r.Namespace
-		}
-	}
-	for pattern, e := range htmlEntityRouteByPattern {
-		m[pattern] = e.namespace
-	}
-	return m
-}()
-
-// redirectExemptRoutes are the wildcard routes that deliberately resolve no
-// retired slug. It exists so that the guard above can be answered in the only two
-// ways that are honest - name the namespace, or say out loud that this wildcard is
-// not a record - rather than by a route quietly not appearing in either list. A
-// multi-segment wildcard ({rest...}) belongs here: it is a path, not an id.
-//
-// The sitemap shard's wildcard is a FILE NAME (works-3.xml), not a slug: it names
-// a window over a family, so there is no retired id for it to resolve and an
-// unknown one is the 404 parseShardFile already gives it.
-//
-// pkg/query's wildcard routes that name no namespace (the Audiobookshelf
-// provider's language segment, a FILTER rather than a record) were decided about
-// by that package's own guard, TestEveryRecordRouteNamesANamespace, so they are
-// taken as it states them.
-var redirectExemptRoutes = func() map[string]bool {
-	m := map[string]bool{
-		"GET " + sitemapShardPrefix + "{" + sitemapFileWildcard + "}": true,
-	}
-	for _, r := range query.Routes() {
-		if r.Namespace == "" && hasAnyWildcard(r.Pattern) {
-			m[r.Pattern] = true
-		}
-	}
-	return m
-}()
-
-// redirectCoverageGaps returns the patterns that address a record by a wildcard
-// and neither name a namespace nor say they are exempt. It is the guard's
-// derivation, exported to the test rather than written there, so what the test
-// checks is what the request path reads: the SHAPE of the pattern decides, not the
-// wildcard's name, so "GET /api/v1/publishers/{pid}" is as much a gap as a
-// {id} route would be.
-func redirectCoverageGaps(patterns []string) []string {
-	var gaps []string
-	for _, pattern := range patterns {
-		if !hasAnyWildcard(pattern) {
-			continue // a fully literal route addresses no record
-		}
-		if _, named := redirectNamespaces[pattern]; named || redirectExemptRoutes[pattern] {
-			continue
-		}
-		gaps = append(gaps, pattern)
-	}
-	return gaps
-}
-
-// hasAnyWildcard reports whether a pattern carries a wildcard of ANY form - a
-// record's {id} as much as a {rest...} path or a filter segment, everything but
-// the {$} anchor. A route with one has to be decided about, out loud, rather
-// than skipped for having no {id} segment.
-func hasAnyWildcard(pattern string) bool {
-	_, path, _ := strings.Cut(pattern, " ")
-	for _, seg := range strings.Split(path, "/") {
-		if strings.HasPrefix(seg, "{") && strings.HasSuffix(seg, "}") && seg != "{$}" {
-			return true
-		}
-	}
-	return false
-}
 
 func (s *Server) buildMux() http.Handler {
 	// The JSON API over the live snapshot. It reads the pointer per request, so

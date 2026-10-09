@@ -1078,10 +1078,11 @@ hit, sends `Location` at the same route under the surviving slug plus a
 heal the id it stored rather than only learn it is gone, and a bounded
 `Cache-Control: public, max-age=3600`, because a tombstone is NOT permanent the
 way 301 invites a client to assume - reversing a bad merge has to withdraw it. It
-is ONE helper (`DB.RedirectRetired` + `DB.redirectTarget`; the API's `redirected`
-and the pages' entity handler differ only in the body) composed from ROUTE DATA
-rather than four per-route closures: the namespace comes from
-`redirectNamespaces` keyed by the `http.Request.Pattern` that matched, and the
+is ONE helper (`DB.RedirectRetired` + `DB.redirectTarget`; pkg/query's
+`handler.redirected` and the pages' entity handler differ only in the body)
+composed from ROUTE DATA rather than four per-route closures: the namespace comes
+from the route table (pkg/query's `route.namespace`, indexed by the
+`http.Request.Pattern` that matched; a page's `htmlEntityRoute.namespace`), and the
 `Location` is that same pattern with its wildcards filled in - the new slug for
 the record wildcard, the request's own values for the rest (so the `chapters`
 route needs no special case) - plus the request's query string, because a
@@ -1090,13 +1091,17 @@ wildcard is the record's is DERIVED (`idWildcardOf`: the first single-segment
 wildcard), so nothing depends on it being spelled `{id}`, and the `Location` is
 built as the wire string with each segment escaped exactly once - handing it to
 `url.URL` escapes a second time (`%` becomes `%25`) and setting `Path` alone does
-not escape at all. `TestEveryIDRouteResolvesRetiredSlugs` diffs that table
-against `Server.routes`, exactly as the OpenAPI guard does, with the candidates
-derived from each pattern's SHAPE rather than from that spelling
-(`redirectCoverageGaps`; a route may also be listed in `redirectExemptRoutes` -
-today the sitemap shard file and the ABS language segment - to say out loud
-that its wildcard is not a record), so a fifth family route cannot ship without
-redirect support whatever it calls its id. A row
+not escape at all. Two drift guards, one per route owner, each diffing its own
+routes' namespaces exactly as the OpenAPI guard does: pkg/query's
+`TestEveryRecordRouteNamesANamespace` over `query.Routes()` (judged by
+`idWildcardOf`, the resolver's own parser) and internal/serve's
+`TestEveryIDRouteResolvesRetiredSlugs` over metaserve's own routes (pages,
+sitemaps, webhook, spec; candidates derived from each pattern's SHAPE rather than
+from that spelling, `redirectCoverageGaps`). In both, a route may instead be
+listed in its test's `redirectExemptRoutes` - the ABS language segment and the
+sitemap shard file - to say out loud that its wildcard is not a record, so a
+fifth family route cannot ship without redirect support whatever it calls its
+id. A row
 pointing a slug at ITSELF is ignored rather than served, so the resolver cannot
 loop even on an artifact `pkg/check` never saw. Cost is bounded at LOAD: the version gate
 (schema_version >= 5) and "does the table hold anything at all" are both asked
@@ -1131,9 +1136,9 @@ crawler would keep. The handlers call the SAME snapshot methods the JSON ones do
 `TestServeLookupsAreIndexed` covers them by construction; rendering is
 deterministic (golden files in `internal/serve/testdata/golden`), the pages
 carry `ETag` + `Cache-Control: public, max-age=300`, and a retired slug 301s
-here too - `redirectNamespaces` folds in the page patterns from the one
-`htmlEntityRoutes` table and `redirected` picks the HTML writer for them, so the
-guard covers both tables and a page cannot ship without redirect support. The
+here too - each `htmlEntityRoutes` row names its namespace and the entity handler
+answers a retired slug with the HTML writer, and serve's redirect guard reads the
+same table, so a page cannot ship without redirect support. The
 public origin is `--site-url` (default `https://meta.audiosilo.app`), because a
 canonical link cannot be relative and the server cannot discover its own origin.
 The WORK page reads the community DESCRIPTION wherever it says anything about the
@@ -1474,7 +1479,7 @@ cleaning 307s to the clean path with the query kept). It RANKS, never filters:
 and `rankByAuthor` partitions (author + language,
 author, language, rest) - the author is evidence about this book, the language a
 library default. A segment that is not a language list is a 404, the route is in
-`redirectExemptRoutes` (its wildcard is a filter, not a record), and the unscoped
+pkg/query's test-side `redirectExemptRoutes` (its wildcard is a filter, not a record), and the unscoped
 `/abs/search` is byte-identical to before (`TestUnscopedABSSearchIsUnchanged`,
 goldens captured on the base code).
 

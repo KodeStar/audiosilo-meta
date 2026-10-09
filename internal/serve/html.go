@@ -59,10 +59,11 @@ type composeFunc func(siteURL string, snap *query.DB, id string) (*entityPage, e
 
 // htmlEntityRoute is one page, as DATA. Every consumer reads this one table
 // rather than a list of its own: buildMux registers the pattern and its legacy
-// twin, redirectNamespaces learns the id namespace from it, the redirect writer
-// learns which patterns answer in HTML from it, and loadShells learns which
-// built shells to split. A fourth family - or a further page hanging off an
-// existing one - is one row.
+// twin, entityHandler resolves a retired slug in the row's namespace (and
+// answers it with the HTML 301 body), loadShells learns which built shells to
+// split, and the redirect drift guard (TestEveryIDRouteResolvesRetiredSlugs)
+// reads the namespaces from it. A fourth family - or a further page hanging off
+// an existing one - is one row.
 type htmlEntityRoute struct {
 	pattern string // the ServeMux pattern of the path route
 	// legacy is the ServeMux pattern of the ?id= route this page replaced, and is
@@ -88,21 +89,6 @@ var htmlEntityRoutes = []htmlEntityRoute{
 	{pattern: "GET /works/{id}" + recapSuffix, shell: "recap/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeRecapPage},
 	{pattern: "GET /works/{id}" + charactersSuffix, shell: "characters/index.html", prefix: model.WorksPath, namespace: model.RedirectWorks, compose: composeCharactersPage},
 }
-
-// htmlEntityRouteByPattern is the table above indexed by ServeMux pattern - the
-// ONE derivation every pattern-keyed consumer reads. Membership answers "is this
-// a page route", which is what decides that a retired slug's 301 carries the
-// page body rather than the API's JSON envelope; the row answers which namespace
-// that slug resolves in (redirectNamespaces folds it in). Both questions are the
-// same knowledge, so they are one index built by one iteration, and a new page
-// route is a row that answers both.
-var htmlEntityRouteByPattern = func() map[string]htmlEntityRoute {
-	out := make(map[string]htmlEntityRoute, len(htmlEntityRoutes))
-	for _, e := range htmlEntityRoutes {
-		out[e.pattern] = e
-	}
-	return out
-}()
 
 // writeRedirectPage is the entity pages' 301 body: the smallest valid HTML
 // document that says where the record went and links there. A page's client is a
