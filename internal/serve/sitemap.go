@@ -205,12 +205,12 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 }
 
 // sitemapUnavailable is the no-artifact answer, the API routes' own 503 with the
-// poll loop's real wait (see requireSnapshot/retryAfter). The body is JSON where
-// the document would have been XML: a 503 carries no sitemap either way, and one
-// error shape across the server beats a second one invented for two routes.
+// poll loop's real wait (httpx.WriteNoArtifact, retryWait). The body is JSON
+// where the document would have been XML: a 503 carries no sitemap either way,
+// and one error shape across the server beats a second one invented for two
+// routes.
 func (s *Server) sitemapUnavailable(w http.ResponseWriter) {
-	w.Header().Set("Retry-After", s.retryAfter())
-	httpx.WriteErr(w, http.StatusServiceUnavailable, httpx.NoArtifactMsg)
+	httpx.WriteNoArtifact(w, s.retryWait())
 }
 
 // parseShardFile reads a shard file name as (family, shard number). Everything

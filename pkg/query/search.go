@@ -577,11 +577,11 @@ func (s *DB) ftsHits(ctx context.Context, kind searchKind, match string, limit i
 func (s *DB) boostedWorks(ctx context.Context, q string, lang langFilter) []string {
 	titles, err := s.exactTitleHits(ctx, q, lang)
 	if err != nil && ctx.Err() == nil {
-		s.logf("serve: exact-title probe for %q failed, serving the plain search page: %v", q, err)
+		s.logf("query: exact-title probe for %q failed, serving the plain search page: %v", q, err)
 	}
 	positions, err := s.seriesPositionHits(ctx, q, lang)
 	if err != nil && ctx.Err() == nil {
-		s.logf("serve: series-position probe for %q failed, serving the plain search page: %v", q, err)
+		s.logf("query: series-position probe for %q failed, serving the plain search page: %v", q, err)
 	}
 	return append(titles, positions...)
 }

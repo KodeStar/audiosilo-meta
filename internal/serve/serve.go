@@ -531,12 +531,8 @@ func (s *Server) compressed(h http.HandlerFunc) http.Handler { return gzipMW(h) 
 // several failed attempts the loop has backed off (up to --interval), and
 // advertising 30s then would send every client back long before anything can
 // have changed. The API's gate reads it through query.HandlerOptions.RetryAfter
-// and the sitemaps through retryAfter, so the two cannot advertise different
-// waits.
+// and the sitemaps directly, so the two cannot advertise different waits.
 func (s *Server) retryWait() time.Duration { return time.Duration(s.nextRetry.Load()) }
-
-// retryAfter is retryWait as a header value.
-func (s *Server) retryAfter() string { return httpx.RetryAfter(s.retryWait()) }
 
 // ---- middleware -------------------------------------------------------------
 
@@ -560,5 +556,5 @@ func corsMW(next http.Handler) http.Handler {
 // fail answers with the fixed 500 body and logs the error through this server's
 // logger (httpx.Fail: the error's own text never reaches the body).
 func (s *Server) fail(w http.ResponseWriter, r *http.Request, err error) {
-	httpx.Fail(w, r, s.log, err)
+	httpx.Fail(w, r, s.log, "serve", err)
 }

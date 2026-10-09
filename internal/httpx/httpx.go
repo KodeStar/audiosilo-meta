@@ -36,11 +36,18 @@ func WriteErr(w http.ResponseWriter, status int, msg string) {
 	WriteJSON(w, status, map[string]string{"error": msg})
 }
 
-// NoArtifactMsg is the one wording of the no-artifact 503, shared by the API
-// gate (pkg/query's requireDB) and metaserve's sitemap routes (which are outside
-// that gate because they are not API). Two spellings of one condition is a
-// difference a client could read as a difference.
-const NoArtifactMsg = "no data loaded yet: the server is fetching the latest release"
+// noArtifactMsg is the one wording of the no-artifact 503 (see WriteNoArtifact).
+const noArtifactMsg = "no data loaded yet: the server is fetching the latest release"
+
+// WriteNoArtifact answers the no-artifact 503: Retry-After carrying wait, and the
+// one error body. It is shared by the API gate (pkg/query's handler.gate) and
+// metaserve's sitemap routes (which are outside that gate because they are not
+// API), because two spellings of one condition is a difference a client could
+// read as a difference.
+func WriteNoArtifact(w http.ResponseWriter, wait time.Duration) {
+	w.Header().Set("Retry-After", RetryAfter(wait))
+	WriteErr(w, http.StatusServiceUnavailable, noArtifactMsg)
+}
 
 // RetryAfter renders a wait as a Retry-After value: whole seconds, rounded up,
 // never below 1 - a "0" would read as "retry immediately".
@@ -62,6 +69,9 @@ const InternalErrMsg = "internal error"
 // ONE helper rather than a fixed string at each site: a handler that spells its
 // own 500 is a handler that can quietly go back to reflecting err.Error().
 //
+// component prefixes the log line ("query", "serve"), so an operator can tell
+// the API's 500s from metaserve's own.
+//
 // The method and path are QUOTED. r.URL.Path is the DECODED path, so a request
 // for `/works/x%0A2026-01-01 serve: 500 ...` puts a newline in the middle of
 // this line and the rest of it reads as a log entry of its own - a caller
@@ -72,9 +82,9 @@ const InternalErrMsg = "internal error"
 // run under the request's context, so a client that abandons a query (the
 // site's search box does, on every keystroke) fails it with the context's
 // error, which is no fault of the server's and nobody reads the 500.
-func Fail(w http.ResponseWriter, r *http.Request, logger *log.Logger, err error) {
+func Fail(w http.ResponseWriter, r *http.Request, logger *log.Logger, component string, err error) {
 	if r.Context().Err() == nil {
-		logger.Printf("serve: 500 %q %q: %v", r.Method, r.URL.Path, err)
+		logger.Printf("%s: 500 %q %q: %v", component, r.Method, r.URL.Path, err)
 	}
 	WriteErr(w, http.StatusInternalServerError, InternalErrMsg)
 }

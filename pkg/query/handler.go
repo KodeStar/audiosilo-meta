@@ -68,11 +68,11 @@ const defaultMatchBudget = 30 * time.Second
 // metaserve wraps its own around every route but /healthz; an in-process
 // consumer needs neither.
 func NewHandler(current func() *DB, opts HandlerOptions) http.Handler {
-	return newHandler(current, opts).serveMux()
+	return newHandler(current, opts).mux
 }
 
-// newHandler is NewHandler's state with the option defaults filled in, apart
-// from the mux, so a test can reach the match slots.
+// newHandler is NewHandler's state with the option defaults filled in and the
+// route table registered, so a test can reach the match slots beside the mux.
 func newHandler(current func() *DB, opts HandlerOptions) *handler {
 	if opts.Logger == nil {
 		opts.Logger = log.Default()
@@ -94,31 +94,29 @@ func newHandler(current func() *DB, opts HandlerOptions) *handler {
 	if opts.MatchConcurrency <= 0 {
 		opts.MatchConcurrency = matchConcurrency
 	}
-	s := &handler{load: current, cfg: opts, log: opts.Logger,
+	s := &handler{current: current, cfg: opts,
 		matchSlots: make(chan struct{}, opts.MatchConcurrency), namespaces: map[string]model.RedirectKind{}}
+	// ONE pass over the table: the mux and the namespace index are both read off
+	// the same slice, so they cannot disagree about which routes exist.
+	mux := http.NewServeMux()
 	for _, r := range s.routes() {
+		mux.Handle(r.pattern, r.handler)
 		if r.namespace != "" {
 			s.namespaces[r.pattern] = r.namespace
 		}
 	}
+	s.mux = mux
 	return s
 }
 
-// serveMux registers the route table on a fresh mux.
-func (s *handler) serveMux() http.Handler {
-	mux := http.NewServeMux()
-	for _, r := range s.routes() {
-		mux.Handle(r.pattern, r.handler)
-	}
-	return mux
-}
-
 // handler is NewHandler's state: the database source, the options with their
-// defaults filled in, and the works/match slots.
+// defaults filled in, the works/match slots and the mux it serves through.
 type handler struct {
-	load func() *DB
-	cfg  HandlerOptions
-	log  *log.Logger
+	// current returns the database a request answers from, or nil when none is
+	// loaded. Handlers call it ONCE and keep the result, so a swap mid-request
+	// cannot split one answer across two artifacts.
+	current func() *DB
+	cfg     HandlerOptions
 
 	// matchSlots bounds how many works/match requests run at once (see
 	// match.go): the heaviest read, so a flood queues behind
@@ -128,20 +126,15 @@ type handler struct {
 	// namespaces is the route table's redirect namespaces keyed by pattern -
 	// what redirected looks the matched pattern up in.
 	namespaces map[string]model.RedirectKind
-}
 
-// current returns the database this request answers from, or nil when none is
-// loaded. Handlers call it ONCE and keep the result, so a swap mid-request cannot
-// split one answer across two artifacts.
-func (s *handler) current() *DB { return s.load() }
+	// mux serves the route table (NewHandler's result).
+	mux http.Handler
+}
 
 // fail answers with the fixed 500 body and logs the error (see httpx.Fail).
 func (s *handler) fail(w http.ResponseWriter, r *http.Request, err error) {
-	httpx.Fail(w, r, s.log, err)
+	httpx.Fail(w, r, s.cfg.Logger, "query", err)
 }
-
-// retryAfter is the Retry-After the no-database 503s carry.
-func (s *handler) retryAfter() string { return httpx.RetryAfter(s.cfg.RetryAfter()) }
 
 // ---- routing ----------------------------------------------------------------
 
@@ -220,15 +213,6 @@ func (s *handler) routes() []route {
 	}
 }
 
-// redirectExemptRoutes are this table's wildcard routes that deliberately
-// resolve no retired slug: the Audiobookshelf provider's language segment is a
-// FILTER (de, or de,en), not a record - there is nothing it could have been
-// retired from. TestEveryRecordRouteNamesANamespace requires every other
-// wildcard route to name a namespace.
-var redirectExemptRoutes = map[string]bool{
-	"GET /abs/{" + absLangWildcard + "}/search": true,
-}
-
 // idWildcard is what the API's record routes spell their record wildcard.
 // Their handlers read it directly; the redirect machinery does NOT - it derives
 // the name from the pattern (see idWildcardOf), so nothing depends on the
@@ -272,8 +256,7 @@ func wildcardName(seg string) (string, bool) {
 func (s *handler) gate(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if s.current() == nil {
-			w.Header().Set("Retry-After", s.retryAfter())
-			httpx.WriteErr(w, http.StatusServiceUnavailable, httpx.NoArtifactMsg)
+			httpx.WriteNoArtifact(w, s.cfg.RetryAfter())
 			return
 		}
 		next(w, r)
@@ -319,7 +302,7 @@ func clampOffset(raw string) int {
 func (s *handler) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 	snap := s.current()
 	if snap == nil {
-		w.Header().Set("Retry-After", s.retryAfter())
+		w.Header().Set("Retry-After", httpx.RetryAfter(s.cfg.RetryAfter()))
 		httpx.WriteJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
 		return
 	}
@@ -472,7 +455,7 @@ func (d *DB) resolveRedirect(r *http.Request, kind model.RedirectKind) (location
 	id := r.PathValue(idName)
 	to, err := d.redirectTarget(kind, id)
 	if err != nil {
-		d.logf("serve: redirect lookup for %s %q failed: %v", kind, id, err)
+		d.logf("query: redirect lookup for %s %q failed: %v", kind, id, err)
 		return "", "", false
 	}
 	if to == "" {
@@ -484,7 +467,7 @@ func (d *DB) resolveRedirect(r *http.Request, kind model.RedirectKind) (location
 	// is usually given - a hand-built or corrupted artifact must degrade to the
 	// 404 the request was already heading for.
 	if to == id {
-		d.logf("serve: ignoring self-redirect for %s %q (the artifact's redirect table is corrupt)", kind, id)
+		d.logf("query: ignoring self-redirect for %s %q (the artifact's redirect table is corrupt)", kind, id)
 		return "", "", false
 	}
 	return redirectLocation(r, idName, to), to, true

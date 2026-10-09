@@ -123,17 +123,29 @@ func TestRecordWildcardIsReadByPosition(t *testing.T) {
 	}
 }
 
+// redirectExemptRoutes are the route table's wildcard routes that deliberately
+// resolve no retired slug: the Audiobookshelf provider's language segment is a
+// FILTER (de, or de,en), not a record - there is nothing it could have been
+// retired from. TestEveryRecordRouteNamesANamespace requires every other
+// wildcard route to name a namespace.
+var redirectExemptRoutes = map[string]bool{
+	"GET /abs/{" + absLangWildcard + "}/search": true,
+}
+
 // TestEveryRecordRouteNamesANamespace is this route table's redirect drift
-// guard: a route whose pattern carries a wildcard either names the namespace a
-// retired slug in it resolves in, or appears in redirectExemptRoutes - saying out
-// loud that its wildcard is not a record - so a new family route cannot ship
-// without redirect support. metaserve's TestEveryIDRouteResolvesRetiredSlugs
-// takes this table's answers as given, across its own routes too.
+// guard: a route whose pattern carries a record wildcard either names the
+// namespace a retired slug in it resolves in, or appears in redirectExemptRoutes -
+// saying out loud that its wildcard is not a record - so a new family route
+// cannot ship without redirect support. "Carries a record wildcard" is
+// idWildcardOf's reading, the one the resolver itself applies, so the guard and
+// the request path cannot disagree about which wildcard a route is addressed by.
+// metaserve's TestEveryIDRouteResolvesRetiredSlugs guards its own routes the
+// same way.
 func TestEveryRecordRouteNamesANamespace(t *testing.T) {
 	registered := map[string]bool{}
 	for _, r := range Routes() {
 		registered[r.Pattern] = true
-		if !strings.Contains(r.Pattern, "{") {
+		if idWildcardOf(r.Pattern) == "" {
 			if r.Namespace != "" {
 				t.Errorf("route %s names namespace %q but has no wildcard to resolve", r.Pattern, r.Namespace)
 			}

@@ -554,7 +554,7 @@ func TestMatchIsBoundedByTheCandidateCap(t *testing.T) {
 // httptestServer serves srv's routes for the life of the test.
 func httptestServer(t *testing.T, srv *handler) string {
 	t.Helper()
-	ts := httptest.NewServer(srv.serveMux())
+	ts := httptest.NewServer(srv.mux)
 	t.Cleanup(ts.Close)
 	return ts.URL
 }
