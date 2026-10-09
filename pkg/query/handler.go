@@ -229,7 +229,7 @@ var redirectExemptRoutes = map[string]bool{
 	"GET /abs/{" + absLangWildcard + "}/search": true,
 }
 
-// idWildcard is what the four current detail routes spell their record wildcard.
+// idWildcard is what the API's record routes spell their record wildcard.
 // Their handlers read it directly; the redirect machinery does NOT - it derives
 // the name from the pattern (see idWildcardOf), so nothing depends on the
 // spelling being this one.
@@ -282,7 +282,7 @@ func (s *handler) gate(next http.HandlerFunc) http.HandlerFunc {
 
 // clampLimit parses the ?limit= param and clamps it to [1, max], defaulting to
 // def when absent or invalid. A def of 0 is how an endpoint spells "no window at
-// all by default" (DB.series), since 0 is never reachable from a supplied
+// all by default" (DB.Series), since 0 is never reachable from a supplied
 // value.
 func clampLimit(raw string, def, max int) int {
 	if raw == "" {
@@ -557,7 +557,7 @@ func (s *handler) handlePerson(w http.ResponseWriter, r *http.Request) {
 }
 
 // seriesPageMax bounds an explicitly requested series page. There is no
-// default: ?limit absent means the whole series (see DB.series - the
+// default: ?limit absent means the whole series (see DB.Series - the
 // player's series rail is composed from the full list).
 const seriesPageMax = 500
 

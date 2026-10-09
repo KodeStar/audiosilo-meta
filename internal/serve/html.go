@@ -607,9 +607,9 @@ func ogImage(siteURL, cover string) string {
 	return siteURL + defaultOGImage
 }
 
-// joinNames renders a credit list for prose. personNames (abs.go) is the one
-// projection of person refs to display names; there is no second copy of it
-// here.
+// joinNames renders a credit list for prose. query.PersonNames
+// (pkg/query/abs.go) is the one projection of person refs to display names;
+// there is no second copy of it here.
 func joinNames(names []string) string { return strings.Join(names, ", ") }
 
 func plural(n int, one, many string) string {
@@ -850,7 +850,7 @@ type workView struct {
 	Title    string
 	Subtitle string
 	CoverURL string
-	// Description is the prose intro the page leads with (displayDescription:
+	// Description is the prose intro the page leads with (query.DisplayDescription:
 	// the community's where there is one). DescriptionIsCommunity is what decides
 	// whether the CC BY-SA notice is printed beside it - the attribution follows
 	// the TEXT, never the presence of a paragraph, so the CC0 field can never be
@@ -870,7 +870,7 @@ type workView struct {
 func newWorkView(d *query.WorkDetail) workView {
 	// ONE call for both fields. The text the page prints and the flag that decides
 	// whether the CC BY-SA notice is printed beside it are two halves of one
-	// answer (displayDescription), so they cannot disagree.
+	// answer (query.DisplayDescription), so they cannot disagree.
 	description, isCommunity := query.DisplayDescription(d)
 	v := workView{
 		Title: d.Title, Subtitle: d.Subtitle, CoverURL: firstCover(d),
@@ -885,10 +885,10 @@ func newWorkView(d *query.WorkDetail) workView {
 		rv := recordingView{
 			ID: rec.ID, Narrators: rec.Narrators, Runtime: formatRuntime(rec.RuntimeMin),
 			Abridged: rec.Abridged, Publisher: rec.Publisher,
-			// publishedYear (abs.go) is the package's one date-to-year rule, so the
-			// fact sheet and the ABS facade cannot read one date two ways: a value
-			// it does not recognize as a year renders as stated rather than being
-			// silently truncated to four characters.
+			// query.PublishedYear (pkg/query/abs.go) is the one date-to-year rule,
+			// so the fact sheet and the ABS facade cannot read one date two ways: a
+			// value it does not recognize as a year renders as stated rather than
+			// being silently truncated to four characters.
 			ReleaseYear: query.PublishedYear(rec.ReleaseDate), Chapters: rec.ChapterCount,
 		}
 		for _, a := range rec.ASIN {

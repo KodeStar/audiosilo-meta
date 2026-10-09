@@ -163,7 +163,7 @@ func recapSitemapSQL(schemaVersion int) (countSQL, shardSQL string) {
 // It is what keeps the 404 path cheap. Almost every work in the catalogue
 // carries no sidecar at all, so almost every request to these routes - a stale
 // link, a crawler walking a guessed URL, a bot probing the shape - ends in a
-// 404, and without a probe each one first paid workDetail's 6+4N-query cascade
+// 404, and without a probe each one first paid DB.WorkDetail's 6+4N-query cascade
 // to learn there was nothing to render.
 //
 // The recap probe reuses ONE bound parameter across its two EXISTS clauses
@@ -196,7 +196,7 @@ func recapGuideProbeSQL(schemaVersion int) string {
 //
 // A work id the catalogue does not hold answers false too, since nothing can
 // reference it: the probe therefore covers "no such work" as well, which is why
-// it can stand in front of the workDetail cascade rather than beside it.
+// it can stand in front of the DB.WorkDetail cascade rather than beside it.
 func (s *DB) HasRecapPage(workID string) (bool, error) {
 	return s.sidecarExists(recapGuideProbeSQL(s.schemaVersion), workID)
 }

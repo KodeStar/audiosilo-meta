@@ -486,7 +486,7 @@ func DisplayDescription(d *WorkDetail) (text string, community bool) {
 // community for a record field they did not write would be its own falsehood.
 const absCommunityAttribution = "\n\n(Description CC BY-SA 4.0, AudioSilo Meta community)"
 
-// absDescription is displayDescription for the ABS payload: the same choice of
+// absDescription is DisplayDescription for the ABS payload: the same choice of
 // text, with the attribution suffix when the choice was the community's.
 func absDescription(d *WorkDetail) string {
 	text, community := DisplayDescription(d)

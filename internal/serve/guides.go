@@ -24,7 +24,7 @@ import (
 // are two more rows in htmlEntityRoutes, so they inherit the shell injection,
 // the ETag, the retired-slug 301 and the coverage guards without a special case
 // anywhere. The page BODY costs no new SQL: the compose funcs call
-// snapshot.workDetail, the same read GET /works/{id} makes, and embed its
+// DB.WorkDetail (pkg/query), the same read GET /works/{id} makes, and embed its
 // marshal as the page payload - so the island hydrates without a second fetch.
 // The one query they add is the PRESENCE PROBE below, which is what keeps the
 // 404 path from paying for a page that will not be served.

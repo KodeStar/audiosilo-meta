@@ -173,7 +173,7 @@ func positionToken(tok string) (string, bool) {
 
 // positionsEqual compares a stated position against a stored one through
 // parsePositionRange, this package's single copy of the position grammar (the
-// same call DB.series orders a series by). Two positions are the same when
+// same call DB.Series orders a series by). Two positions are the same when
 // both parse and their spans are equal, so "02" finds "2" and "2.50" finds
 // "2.5", while "2", "2.5" and "1-3.5" stay three different volumes.
 func positionsEqual(a, b string) bool {

@@ -859,7 +859,7 @@ func (s *DB) seriesSummariesByID(ctx context.Context, ids []string) (map[string]
 	return out, nil
 }
 
-// authorsOfSQL is the single-work author query (workDetail and the ABS path read
+// authorsOfSQL is the single-work author query (DB.WorkDetail and the ABS path read
 // a work's authors on their own, without a card). Shared with the index guard.
 const authorsOfSQL = `SELECT p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id WHERE wa.work_id=? ORDER BY wa.ord`
 

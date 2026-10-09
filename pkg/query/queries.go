@@ -197,7 +197,7 @@ type RecapSummaryOut struct {
 // DescriptionOut is the community SPOILER-FREE description - the paragraph a
 // stranger reads before deciding to listen.
 //
-// It is an OBJECT under its own key rather than a string in workDetail's
+// It is an OBJECT under its own key rather than a string in WorkDetail's
 // `description`, and the two are deliberately not merged: `description` is the
 // CC0 work record's own field, this text is CC BY-SA, and one JSON key carrying
 // either would erase the license boundary the schema keeps structural - a
@@ -296,7 +296,7 @@ func (s *DB) WorkDetail(id string) (*WorkDetail, error) {
 // row, authors, series, print ISBNs, recordings (with narrators/asins/isbns but
 // NO chapter count) and the community DESCRIPTION - and none of the
 // characters/recaps/recap-summary sidecars. absSearch calls it once per candidate
-// on the public /abs/search hot path, so it deliberately skips workDetail's ~100+
+// on the public /abs/search hot path, so it deliberately skips DB.WorkDetail's ~100+
 // discarded round-trips; the description is the one sidecar it carries at all,
 // because ABS displays a description and ours is own-words rather than scraped.
 //
@@ -1032,7 +1032,7 @@ type SeriesEntry struct {
 
 // SeriesDetail is a series plus its member works in position order. WorksTotal
 // is the unpaged membership count and Limit/Offset echo the window that was
-// applied (Limit 0 = the whole series, the default - see DB.series). The
+// applied (Limit 0 = the whole series, the default - see DB.Series). The
 // three fields are additive; a consumer reading only works is unaffected.
 //
 // The LANGUAGES fields are additive and all omitempty, and every one is absent on
@@ -1102,11 +1102,11 @@ func seriesHeaderSQL(languages bool) string {
 // seriesName reads a series' name and nothing else, reporting whether the series
 // exists at all. It is what a caller that does not want the MEMBERSHIP asks (the
 // watch feed, which then selects the few members that can be news):
-// DB.series materializes a card per member, which is the right answer for
+// DB.Series materializes a card per member, which is the right answer for
 // the series page and a whole catalogue read for a feed that keeps a handful of
 // them.
 //
-// It hands back the name rather than a seriesDetail because a seriesDetail with
+// It hands back the name rather than a SeriesDetail because a SeriesDetail with
 // two of its fields filled is a lie about the other four - a caller has no way
 // to tell an empty membership from an unread one.
 func (s *DB) seriesName(id string) (name string, ok bool, err error) {
@@ -1137,7 +1137,7 @@ type watchMember struct {
 // every watched series at once - see DB.selectWatchCandidates).
 //
 // It exists because the feed reads up to 200 series and keeps only what falls
-// inside a rolling window (90 days by default). DB.series builds a card,
+// inside a rolling window (90 days by default). DB.Series builds a card,
 // its authors, its first series membership and its recordings' facts for every
 // member, which for a 200-slug request materialized a large part of the
 // catalogue and then threw nearly all of it away.
@@ -1242,7 +1242,7 @@ func (s *DB) Series(id string, limit, offset int) (*SeriesDetail, error) {
 	return &d, nil
 }
 
-// orderingFamily returns the ordering family d belongs to (see seriesDetail), or
+// orderingFamily returns the ordering family d belongs to (see SeriesDetail), or
 // nil when it has none. Only a variant (one naming a primary) or a series some
 // variant names (DB.orderingPrimaries) HAS a family, so every other series -
 // all of them on an artifact carrying no ordering, and on every artifact older than
