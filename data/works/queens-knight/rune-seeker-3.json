@@ -7316,6 +7316,14 @@
             {
               "asin": "B0H5JWWGJZ",
               "region": "us"
+            },
+            {
+              "asin": "B0H5JYXHX5",
+              "region": "de"
+            },
+            {
+              "asin": "B0H5JTW5YS",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7579,10 +7587,21 @@
           ],
           "publisher": "Audible Studios",
           "release_date": "2026-07-23",
+          "runtime_min": 678,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0H5JWWGJZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0H5JYXHX5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0H5JTW5YS",
               "type": "libex-import"
             }
           ],
