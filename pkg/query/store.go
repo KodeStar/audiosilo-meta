@@ -235,16 +235,16 @@ func (s *DB) loadStats() error {
 	if err := q(&st.Works, `SELECT COUNT(*) FROM works`); err != nil {
 		return err
 	}
-	if err := q(&st.Recordings, `SELECT COUNT(*) FROM recordings`); err != nil {
+	// The recording count and the runtime total in ONE walk: the SUM has to
+	// read every row anyway, so a separate COUNT(*) was a second pass for nothing.
+	if err := s.db.QueryRow(`SELECT COUNT(*), COALESCE(SUM(runtime_min), 0) FROM recordings`).
+		Scan(&st.Recordings, &st.TotalRuntimeMin); err != nil {
 		return err
 	}
 	if err := q(&st.People, `SELECT COUNT(*) FROM people`); err != nil {
 		return err
 	}
 	if err := q(&st.Series, `SELECT COUNT(*) FROM series`); err != nil {
-		return err
-	}
-	if err := q(&st.TotalRuntimeMin, `SELECT COALESCE(SUM(runtime_min), 0) FROM recordings`); err != nil {
 		return err
 	}
 	if err := q(&st.TotalChapters, `SELECT COUNT(*) FROM chapters`); err != nil {
