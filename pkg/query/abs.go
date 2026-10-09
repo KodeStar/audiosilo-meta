@@ -88,8 +88,8 @@ type absBook struct {
 // handleABSSearch is the transport-only handler for GET /abs/search. ABS always
 // sends a query; a missing/empty one is a 400. It never 404s: a no-match is a
 // 200 with an empty array.
-func (s *handler) handleABSSearch(w http.ResponseWriter, r *http.Request) {
-	s.serveABS(w, r, s.current(), nil)
+func (s *handler) handleABSSearch(w http.ResponseWriter, r *http.Request, snap *DB) {
+	s.serveABS(w, r, snap, nil)
 }
 
 // handleABSLangSearch is GET /abs/{lang}/search: the same search ranked toward
@@ -100,13 +100,12 @@ func (s *handler) handleABSSearch(w http.ResponseWriter, r *http.Request) {
 // The segment is validated BEFORE the version gate, so a bad one is a 404 on
 // every artifact; below languagesSchemaVersion a good one is then dropped and the
 // answer is the unscoped one.
-func (s *handler) handleABSLangSearch(w http.ResponseWriter, r *http.Request) {
+func (s *handler) handleABSLangSearch(w http.ResponseWriter, r *http.Request, snap *DB) {
 	lang, err := parseLangFilter(r.PathValue(absLangWildcard))
 	if err != nil || len(lang) == 0 {
 		httpx.WriteErr(w, http.StatusNotFound, "unknown provider language")
 		return
 	}
-	snap := s.current()
 	s.serveABS(w, r, snap, snap.liveLang(lang, kindWork))
 }
 

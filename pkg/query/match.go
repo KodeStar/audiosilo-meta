@@ -190,7 +190,7 @@ type matchReasons struct {
 }
 
 // handleMatch serves GET /api/v1/works/match.
-func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request) {
+func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request, snap *DB) {
 	req, ok := parseMatchRequest(r.URL.Query())
 	if !ok {
 		httpx.WriteErr(w, http.StatusBadRequest, "one of q, title, author, series, asin or isbn is required")
@@ -205,7 +205,7 @@ func (s *handler) handleMatch(w http.ResponseWriter, r *http.Request) {
 		s.matchBusy(w)
 		return
 	}
-	results, err := s.current().match(ctx, req)
+	results, err := snap.match(ctx, req)
 	switch {
 	case errors.Is(err, errMatchBusy) || (err != nil && ctx.Err() != nil):
 		s.matchBusy(w)

@@ -77,21 +77,22 @@ func capItems(items []watchFeedItem) []watchFeedItem {
 	return items
 }
 
-func (s *handler) handleWatchAtom(w http.ResponseWriter, r *http.Request) {
-	s.handleWatchFeed(w, r, "application/atom+xml; charset=utf-8", renderAtomFeed)
+func (s *handler) handleWatchAtom(w http.ResponseWriter, r *http.Request, snap *DB) {
+	s.handleWatchFeed(w, r, snap, "application/atom+xml; charset=utf-8", renderAtomFeed)
 }
 
-func (s *handler) handleWatchJSON(w http.ResponseWriter, r *http.Request) {
-	s.handleWatchFeed(w, r, "application/feed+json; charset=utf-8", renderJSONFeed)
+func (s *handler) handleWatchJSON(w http.ResponseWriter, r *http.Request, snap *DB) {
+	s.handleWatchFeed(w, r, snap, "application/feed+json; charset=utf-8", renderJSONFeed)
 }
 
-func (s *handler) handleWatchICS(w http.ResponseWriter, r *http.Request) {
-	s.handleWatchFeed(w, r, "text/calendar; charset=utf-8", renderICalendar)
+func (s *handler) handleWatchICS(w http.ResponseWriter, r *http.Request, snap *DB) {
+	s.handleWatchFeed(w, r, snap, "text/calendar; charset=utf-8", renderICalendar)
 }
 
 func (s *handler) handleWatchFeed(
 	w http.ResponseWriter,
 	r *http.Request,
+	snap *DB,
 	contentType string,
 	render func(watchFeed) ([]byte, error),
 ) {
@@ -108,7 +109,6 @@ func (s *handler) handleWatchFeed(
 		return
 	}
 
-	snap := s.current()
 	now := s.cfg.Now().UTC()
 	etag := watchFeedETag(snap, s.cfg.SiteURL, r.URL.Path, rawSeries, rawWindow, now)
 	inm := r.Header.Get("If-None-Match")

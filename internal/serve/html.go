@@ -207,7 +207,7 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 			// The REQUEST's path, not the family prefix plus the id: several pages
 			// now hang off one prefix (see the guide routes), so a notice built from
 			// the prefix would name the work page for a failure on its recap.
-			s.log.Printf("serve: rendering %s failed, serving the shell untouched: %v", r.URL.Path, err)
+			s.log.Printf("serve: rendering %q failed, serving the shell untouched: %v", r.URL.Path, err) // quoted: the decoded path can carry a newline (see httpx.Fail)
 			sh.serveRaw(w)
 			return
 		}

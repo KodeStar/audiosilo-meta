@@ -1,7 +1,10 @@
 package query
 
 import (
+	"net/http"
+	"net/http/httptest"
 	"strings"
+	"sync/atomic"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
@@ -947,6 +950,33 @@ func TestPositionStart(t *testing.T) {
 	for in, want := range cases {
 		if got := positionStart(in); got != want {
 			t.Errorf("positionStart(%q) = %v, want %v", in, got, want)
+		}
+	}
+}
+
+// TestGateHandsTheHandlerTheDatabaseItChecked pins that a request loads the
+// database pointer ONCE: an in-process consumer's current can go back to nil
+// (its copy unloaded) at any moment, and a handler that loaded it a second time
+// after the gate's nil check would dereference that nil.
+func TestGateHandsTheHandlerTheDatabaseItChecked(t *testing.T) {
+	db := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
+	var calls atomic.Int32
+	current := func() *DB {
+		if calls.Add(1) == 1 {
+			return db
+		}
+		return nil // unloaded straight after the gate looked
+	}
+	h := NewHandler(current, HandlerOptions{Logger: artifacttest.QuietLogger()})
+	for _, path := range []string{"/api/v1/stats", "/api/v1/works/match?q=hail+mary", "/api/v1/search?q=hail"} {
+		calls.Store(0)
+		rec := httptest.NewRecorder()
+		h.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, path, nil))
+		if rec.Code != http.StatusOK {
+			t.Errorf("GET %s = %d, want 200 from the database the gate checked", path, rec.Code)
+		}
+		if n := calls.Load(); n != 1 {
+			t.Errorf("GET %s loaded the database %d times, want once", path, n)
 		}
 	}
 }

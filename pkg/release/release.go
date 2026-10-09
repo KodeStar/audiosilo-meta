@@ -190,10 +190,16 @@ func WithAllowedOrigin(raw string) Option {
 // WithHTTPClient makes the client send its requests through hc (a copy of it).
 // Its CheckRedirect is replaced by this package's hop policy, and its Timeout
 // should be zero: downloads are policed by progress (Timeouts), and a
-// whole-request deadline would abort a healthy slow one.
+// whole-request deadline would abort a healthy slow one. An hc with no
+// Transport gets the same transport New builds, so it keeps the response-header
+// bound - the one guard against a connection that is accepted and never
+// answered (see responseHeaderTimeout).
 func WithHTTPClient(hc *http.Client) Option {
 	return func(c *Client) {
 		cp := *hc
+		if cp.Transport == nil {
+			cp.Transport = defaultTransport()
+		}
 		c.http = &cp
 	}
 }
@@ -252,13 +258,7 @@ func New(repo, token string, opts ...Option) *Client {
 		// The client carries NO Timeout (see the deadline constants); the
 		// per-request contexts do that job. The transport still bounds the
 		// pre-body phase.
-		tr, ok := http.DefaultTransport.(*http.Transport)
-		if !ok {
-			tr = &http.Transport{}
-		}
-		tr = tr.Clone()
-		tr.ResponseHeaderTimeout = responseHeaderTimeout
-		c.http = &http.Client{Transport: tr}
+		c.http = &http.Client{Transport: defaultTransport()}
 	}
 	if c.log == nil {
 		c.log = log.Default()
@@ -274,6 +274,18 @@ func New(repo, token string, opts ...Option) *Client {
 	// ghhost's package doc, which is where that trade is argued.
 	c.http.CheckRedirect = ghhost.CheckRedirect(0, c.allowsOrigin) // 0: ghhost.DefaultMaxRedirects
 	return c
+}
+
+// defaultTransport is net/http's default transport with the response-header
+// bound (responseHeaderTimeout) set.
+func defaultTransport() *http.Transport {
+	tr, ok := http.DefaultTransport.(*http.Transport)
+	if !ok {
+		tr = &http.Transport{}
+	}
+	tr = tr.Clone()
+	tr.ResponseHeaderTimeout = responseHeaderTimeout
+	return tr
 }
 
 func allowOrigin(c *Client, raw string) {

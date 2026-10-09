@@ -113,8 +113,9 @@ func newHandler(current func() *DB, opts HandlerOptions) *handler {
 // defaults filled in, the works/match slots and the mux it serves through.
 type handler struct {
 	// current returns the database a request answers from, or nil when none is
-	// loaded. Handlers call it ONCE and keep the result, so a swap mid-request
-	// cannot split one answer across two artifacts.
+	// loaded. gate calls it ONCE per request and hands the result to the
+	// handler, so a swap mid-request cannot split one answer across two
+	// artifacts, nor an unload between two reads turn into a nil dereference.
 	current func() *DB
 	cfg     HandlerOptions
 
@@ -249,17 +250,28 @@ func wildcardName(seg string) (string, bool) {
 	return name, true
 }
 
-// gate answers 503 while there is no database, so every data handler can assume
-// s.current() is non-nil. For metaserve that is a poll-only boot that could not
-// reach GitHub (temporary by construction, hence Retry-After); for an
-// in-process consumer it is a copy that has not loaded.
-func (s *handler) gate(next http.HandlerFunc) http.HandlerFunc {
+// dataHandler is a route handler over the ONE database its request answers
+// from: gate loads it and hands it over, so the handler never calls current
+// itself.
+type dataHandler func(w http.ResponseWriter, r *http.Request, snap *DB)
+
+// gate answers 503 while there is no database, and otherwise calls next with
+// the database it just loaded - the request's only load of the pointer. Loading
+// it again in the handler would be a second read of a value the caller may
+// change at any moment: an in-process consumer's current can go back to nil
+// (its copy unloaded) between the two, which would be a nil dereference, and a
+// works/match request queues for up to MatchBudget before it reads. For
+// metaserve the 503 is a poll-only boot that could not reach GitHub (temporary
+// by construction, hence Retry-After); for an in-process consumer it is a copy
+// that has not loaded.
+func (s *handler) gate(next dataHandler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		if s.current() == nil {
+		snap := s.current()
+		if snap == nil {
 			httpx.WriteNoArtifact(w, s.cfg.RetryAfter())
 			return
 		}
-		next(w, r)
+		next(w, r, snap)
 	}
 }
 
@@ -313,8 +325,8 @@ func (s *handler) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 	})
 }
 
-func (s *handler) handleStats(w http.ResponseWriter, _ *http.Request) {
-	httpx.WriteJSON(w, http.StatusOK, s.current().stats)
+func (s *handler) handleStats(w http.ResponseWriter, _ *http.Request, snap *DB) {
+	httpx.WriteJSON(w, http.StatusOK, snap.stats)
 }
 
 // langParam reads a request's language filter from its already-parsed query
@@ -333,10 +345,9 @@ func langParam(w http.ResponseWriter, snap *DB, q url.Values, kind searchKind) (
 	return f, true
 }
 
-func (s *handler) handleLatest(w http.ResponseWriter, r *http.Request) {
+func (s *handler) handleLatest(w http.ResponseWriter, r *http.Request, snap *DB) {
 	q := r.URL.Query()
 	limit := clampLimit(q.Get("limit"), 12, 50)
-	snap := s.current()
 	lang, ok := langParam(w, snap, q, kindWork)
 	if !ok {
 		return
@@ -349,8 +360,7 @@ func (s *handler) handleLatest(w http.ResponseWriter, r *http.Request) {
 	httpx.WriteJSON(w, http.StatusOK, map[string]any{"works": cards})
 }
 
-func (s *handler) handleWork(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
+func (s *handler) handleWork(w http.ResponseWriter, r *http.Request, snap *DB) {
 	detail, err := snap.WorkDetail(r.PathValue(idWildcard))
 	if err != nil {
 		s.fail(w, r, err)
@@ -372,8 +382,7 @@ func (s *handler) handleWork(w http.ResponseWriter, r *http.Request) {
 // slug the catalogue does not hold: a live work is never a redirect source
 // (pkg/check's checkRedirects), so a real recording with no chapters still gets
 // its empty list.
-func (s *handler) handleChapters(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
+func (s *handler) handleChapters(w http.ResponseWriter, r *http.Request, snap *DB) {
 	chs, err := snap.chapters(r.PathValue(idWildcard), r.PathValue("rid"))
 	if err != nil {
 		s.fail(w, r, err)
@@ -520,8 +529,7 @@ const (
 	PersonPageMax     = 500
 )
 
-func (s *handler) handlePerson(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
+func (s *handler) handlePerson(w http.ResponseWriter, r *http.Request, snap *DB) {
 	q := r.URL.Query()
 	limit := clampLimit(q.Get("limit"), personPageDefault, PersonPageMax)
 	p, err := snap.Person(r.PathValue(idWildcard), limit, clampOffset(q.Get("offset")))
@@ -544,8 +552,7 @@ func (s *handler) handlePerson(w http.ResponseWriter, r *http.Request) {
 // player's series rail is composed from the full list).
 const seriesPageMax = 500
 
-func (s *handler) handleSeries(w http.ResponseWriter, r *http.Request) {
-	snap := s.current()
+func (s *handler) handleSeries(w http.ResponseWriter, r *http.Request, snap *DB) {
 	q := r.URL.Query()
 	ser, err := snap.Series(r.PathValue(idWildcard), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
@@ -575,8 +582,8 @@ const (
 // four differ only in that value, so the q/limit parsing, the empty-q 400 and
 // the {"results": [...]} envelope live here once rather than in four
 // near-identical handlers.
-func (s *handler) searchHandler(kind searchKind) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
+func (s *handler) searchHandler(kind searchKind) dataHandler {
+	return func(w http.ResponseWriter, r *http.Request, snap *DB) {
 		params := r.URL.Query()
 		q := strings.TrimSpace(params.Get("q"))
 		if q == "" {
@@ -587,7 +594,6 @@ func (s *handler) searchHandler(kind searchKind) http.HandlerFunc {
 		// Validated on every scope, people/search included: the parameter means one
 		// thing on all four, and the people scope ignoring it (a person has no
 		// language) is the gate's decision, not a reason to accept garbage.
-		snap := s.current()
 		lang, ok := langParam(w, snap, params, kind)
 		if !ok {
 			return
@@ -605,8 +611,8 @@ func (s *handler) searchHandler(kind searchKind) http.HandlerFunc {
 // (characters/recaps/recap summaries). The per-work list and series gaps are
 // their own paginated endpoints. It always returns 200 and degrades on older
 // artifacts (see DB.coverage) rather than reporting everything as missing.
-func (s *handler) handleCoverage(w http.ResponseWriter, r *http.Request) {
-	res, err := s.current().coverage()
+func (s *handler) handleCoverage(w http.ResponseWriter, r *http.Request, snap *DB) {
+	res, err := snap.coverage()
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -621,14 +627,13 @@ func (s *handler) handleCoverage(w http.ResponseWriter, r *http.Request) {
 // ?limit/?offset paginate. It always returns 200 and degrades to an
 // empty page with available:false when the filter's dimension is unevaluable at
 // the current artifact schema_version (see DB.coverageWorks).
-func (s *handler) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
+func (s *handler) handleCoverageWorks(w http.ResponseWriter, r *http.Request, snap *DB) {
 	q := r.URL.Query()
 	filter, ok := validCoverageFilter(q.Get("filter"))
 	if !ok {
 		httpx.WriteErr(w, http.StatusBadRequest, "unknown filter")
 		return
 	}
-	snap := s.current()
 	lang, ok := langParam(w, snap, q, kindWork)
 	if !ok {
 		return
@@ -647,11 +652,11 @@ func (s *handler) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
 // interior position gaps. ?q is a series-name substring; ?limit/?offset
 // paginate. series_gaps has no schema_version dependency, so it is always
 // available.
-func (s *handler) handleCoverageSeriesGaps(w http.ResponseWriter, r *http.Request) {
+func (s *handler) handleCoverageSeriesGaps(w http.ResponseWriter, r *http.Request, snap *DB) {
 	q := r.URL.Query()
 	limit := clampLimit(q.Get("limit"), 25, 100)
 	offset := clampOffset(q.Get("offset"))
-	res, err := s.current().seriesGapsPage(strings.TrimSpace(q.Get("q")), limit, offset)
+	res, err := snap.seriesGapsPage(strings.TrimSpace(q.Get("q")), limit, offset)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -659,7 +664,7 @@ func (s *handler) handleCoverageSeriesGaps(w http.ResponseWriter, r *http.Reques
 	httpx.WriteJSON(w, http.StatusOK, res)
 }
 
-func (s *handler) handleLookup(w http.ResponseWriter, r *http.Request) {
+func (s *handler) handleLookup(w http.ResponseWriter, r *http.Request, snap *DB) {
 	q := r.URL.Query()
 	asin := strings.TrimSpace(q.Get("asin"))
 	isbn := strings.TrimSpace(q.Get("isbn"))
@@ -667,7 +672,6 @@ func (s *handler) handleLookup(w http.ResponseWriter, r *http.Request) {
 		httpx.WriteErr(w, http.StatusBadRequest, "asin or isbn is required")
 		return
 	}
-	snap := s.current()
 	res, err := snap.lookup(r.Context(), asin, isbn)
 	if err != nil {
 		s.fail(w, r, err)

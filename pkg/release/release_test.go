@@ -411,3 +411,20 @@ func TestAssetDownloadsHaveNoWholeRequestTimeout(t *testing.T) {
 		t.Errorf("asset deadline %s is no more generous than the metadata timeout %s", c.timeouts.Asset, c.timeouts.Metadata)
 	}
 }
+
+// A caller's client with no Transport must keep the response-header bound New
+// builds: the stall watchdog only starts once headers arrive, so without it an
+// accepted-but-silent connection would hang until the whole asset deadline. A
+// client that brings its own Transport is used as it is.
+func TestWithHTTPClientKeepsTheHeaderBound(t *testing.T) {
+	c := New("", "", WithHTTPClient(&http.Client{}))
+	tr, ok := c.http.Transport.(*http.Transport)
+	if !ok || tr.ResponseHeaderTimeout != responseHeaderTimeout {
+		t.Fatalf("transport = %#v, want an *http.Transport with ResponseHeaderTimeout %v", c.http.Transport, responseHeaderTimeout)
+	}
+	own := &http.Transport{}
+	c = New("", "", WithHTTPClient(&http.Client{Transport: own}))
+	if c.http.Transport != own {
+		t.Fatalf("a caller's own Transport was replaced")
+	}
+}
