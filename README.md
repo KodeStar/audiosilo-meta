@@ -83,7 +83,9 @@ data/          the CC0 database: works/, people/, series/ + redirects.json (rang
                (the CC BY-SA characters/recaps layer lives in KodeStar/audiosilo-meta-community)
 schema/        JSON Schemas (one per entity) - authoritative field definitions
 cmd/           Go tooling: metacheck (validate), metafmt (canonicalise), metabuild (SQLite), metaserve (API server)
-internal/      shared Go packages behind the tooling (build, check, serve, ...)
+pkg/           public Go packages: the data model, pack storage and checks, and the read side
+               (query: the artifact's queries and the JSON API handler; release: the data-release fetcher)
+internal/      shared Go packages behind the tooling (build, serve, importer, ...)
 Dockerfile     container image: API server + static site (no baked data)
 .github/       issue forms + CI workflows (check, release, image)
 CONTRIBUTING.md  GOVERNANCE.md  LICENSING.md
@@ -128,6 +130,13 @@ go run ./cmd/metabuild -o meta.sqlite
 `metaserve` is a read-only JSON API over the compiled artifact - FTS search,
 work/person/series detail, chapter lists, and ASIN/ISBN lookup. All data is
 public, so there is no auth; the API sends permissive CORS.
+
+The query code and the API handler are the public Go package `pkg/query`
+(`query.Open` + `query.NewHandler`), and the release fetcher is `pkg/release`, so
+another program can serve the same API in-process from a downloaded artifact -
+which is what an AudioSilo server's metadata mirror mode does. Because such a
+consumer can read an artifact newer than its own code, artifact schema changes
+stay additive (new tables and columns only).
 
 ```sh
 # Dev: build the artifact, then serve it locally.
