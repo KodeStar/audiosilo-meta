@@ -8,6 +8,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -22,7 +23,7 @@ import (
 // precisely because it can be long, so this is reachable rather than theoretical
 // - hence a repeat count that crosses idChunkSize.
 func TestBatchQueriesTolerateRepeatedIDs(t *testing.T) {
-	snap, err := Open(buildFixtureDB(t, fixtureCatalog()), "")
+	snap, err := Open(artifacttest.Build(t, artifacttest.Fixture()), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -71,7 +72,7 @@ func TestNarratorsByWorkOrderIsTotal(t *testing.T) {
 		t.Errorf("narratorsByWorkSQL does not break MIN(ord) ties on the person id: %s", narratorsByWorkSQL("?"))
 	}
 
-	snap, err := Open(buildFixtureDB(t, fixtureCatalog()), "")
+	snap, err := Open(artifacttest.Build(t, artifacttest.Fixture()), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -109,7 +110,7 @@ func TestCardFactsPickTheEarliestReleaseDate(t *testing.T) {
 			ReleaseDate: release, CoverURL: cover, Narrators: []string{"ray-porter"},
 		}
 	}
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	cat.Works = append(cat.Works,
 		&model.Work{
 			ID: "many-narrations", Title: "Many Narrations", Language: "en",
@@ -133,7 +134,7 @@ func TestCardFactsPickTheEarliestReleaseDate(t *testing.T) {
 		},
 	)
 
-	snap, err := Open(buildFixtureDB(t, cat), "")
+	snap, err := Open(artifacttest.Build(t, cat), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -167,7 +168,7 @@ func TestCardFactsPickTheEarliestReleaseDate(t *testing.T) {
 // internal/sqlitedsn (its own test pins the URI); what this pins is that the
 // serving loader really goes through it.
 func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
-	built := buildFixtureDB(t, fixtureCatalog())
+	built := artifacttest.Build(t, artifacttest.Fixture())
 	// Built at an ordinary path and MOVED: internal/build opens its output with
 	// a plain DSN, which the driver splits on '?' too, so a fixture written
 	// straight to the path under test would leave no artifact there at all.
@@ -186,9 +187,9 @@ func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
 		t.Fatalf("openSnapshot on a %q path: %v", filepath.Base(dir), err)
 	}
 	t.Cleanup(func() { _ = snap.Close() })
-	if snap.stats.Works != len(fixtureCatalog().Works) {
+	if snap.stats.Works != len(artifacttest.Fixture().Works) {
 		t.Errorf("works = %d, want the fixture's %d - the wrong file was opened",
-			snap.stats.Works, len(fixtureCatalog().Works))
+			snap.stats.Works, len(artifacttest.Fixture().Works))
 	}
 	// The spliced DSN would have named (and created) the truncated path - in
 	// THIS directory. A second t.TempDir() is a new empty one, where nothing was
@@ -209,7 +210,7 @@ func TestOpenSnapshotEscapesTheArtifactPath(t *testing.T) {
 // series, which is the case the field exists for: without it the two read as
 // one book twice on every list.
 func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	cat.Works = append(cat.Works, &model.Work{
 		ID: "la-voie-des-rois", Title: "La Voie des rois", Language: "fr",
 		Authors: []string{"brandon-sanderson"}, License: "CC0-1.0",
@@ -237,7 +238,7 @@ func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
 		"/api/v1/people/michael-kramer",
 		"/api/v1/lookup?asin=B0FRENCH01",
 	} {
-		code, body := getJSON(t, ts.URL, path)
+		code, body := artifacttest.GetJSON(t, ts.URL, path)
 		if code != http.StatusOK {
 			t.Fatalf("GET %s: status %d", path, code)
 		}

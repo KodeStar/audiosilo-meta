@@ -5,6 +5,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -167,7 +168,7 @@ func contains(ids []string, want string) bool {
 // TestSearchSeriesPosition is the feature: a user who knows the series and the
 // number finds the volume, in every spelling of the number, ranked first.
 func TestSearchSeriesPosition(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 
 	cases := []struct {
 		query string
@@ -199,7 +200,7 @@ func TestSearchSeriesPosition(t *testing.T) {
 // resolve: an unknown position, an unknown series, and a query with no number
 // all return exactly the FTS page they always did.
 func TestSearchSeriesPositionMisses(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 
 	// A position the series does not hold boosts nothing (and the FTS page for
 	// this query is empty, as it was before the feature).
@@ -230,7 +231,7 @@ func TestSearchSeriesPositionMisses(t *testing.T) {
 // number, a title that ENDS in a number, and a query that is both a title
 // fragment and a position query.
 func TestSearchNumericTitlesNotRegressed(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 
 	// "1984" is one token, so it is never read as a position at all.
 	if _, ok := parseSeriesPositionQuery("1984"); ok {
@@ -276,7 +277,7 @@ func scopedIDs(t *testing.T, snap *DB, kind searchKind, q string) []string {
 // that only wants books calls, so the volume lookup has to resolve there too -
 // narrowing a search must not silently cost the feature.
 func TestWorkSearchKeepsTheSeriesPositionBoost(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 	cases := map[string]string{
 		"jack reacher 2":      "work:die-trying",
 		"jack reacher book 2": "work:die-trying",
@@ -297,7 +298,7 @@ func TestWorkSearchKeepsTheSeriesPositionBoost(t *testing.T) {
 // so prepending them to a people or series page would put a work on a page that
 // promises neither. The scoped pages still answer their own query.
 func TestScopedSearchesBoostOnlyWorks(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 	for _, kind := range []searchKind{kindPerson, kindSeries} {
 		for _, id := range scopedIDs(t, snap, kind, "jack reacher 2") {
 			if strings.HasPrefix(id, "work:") {
@@ -316,7 +317,7 @@ func TestScopedSearchesBoostOnlyWorks(t *testing.T) {
 // TestSearchSeriesPositionDedupes covers the work that is both the boost and an
 // FTS hit ("Halo 2" at position 2 of Halo): it must appear once, first.
 func TestSearchSeriesPositionDedupes(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 	ids := searchIDs(t, snap, "halo 2")
 	if first(ids) != "work:halo-2" {
 		t.Errorf("search('halo 2') first = %q, want work:halo-2 (page: %v)", first(ids), ids)
@@ -336,7 +337,7 @@ func TestSearchSeriesPositionDedupes(t *testing.T) {
 // tries the whole residual first: "the jungle book 2" is volume 2 of "The Jungle
 // Book", not volume 2 of "The Jungle".
 func TestSearchSeriesPositionPrefersTheWholeName(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 	if got := first(searchIDs(t, snap, "the jungle book 2")); got != "work:the-second-jungle-book" {
 		t.Errorf("search('the jungle book 2') first = %q, want work:the-second-jungle-book", got)
 	}
@@ -427,7 +428,7 @@ func TestPreferWholeName(t *testing.T) {
 // Jungle"/"The Jungle Book" with a work at position 1, so a nil result here is
 // the SKIP, not an absence of data.
 func TestSeriesPositionSkipsJunkResiduals(t *testing.T) {
-	snap := snapshotFor(t, seriesPositionCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, seriesPositionCatalog()))
 	for _, q := range []string{
 		"the 1",   // article only
 		"the 100", // the same, mid-keystroke on a numeric title

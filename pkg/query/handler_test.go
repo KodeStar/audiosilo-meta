@@ -4,12 +4,13 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 func TestHealthz(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/healthz")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/healthz")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -26,7 +27,7 @@ func TestHealthz(t *testing.T) {
 
 func TestStats(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/stats")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/stats")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -46,7 +47,7 @@ func TestStats(t *testing.T) {
 
 func TestLatestOrdering(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/latest")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -74,7 +75,7 @@ func TestLatestOrdering(t *testing.T) {
 
 func TestLatestLimitClamp(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/latest?limit=999")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?limit=999")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -82,7 +83,7 @@ func TestLatestLimitClamp(t *testing.T) {
 	if n := len(body["works"].([]any)); n != 3 {
 		t.Errorf("got %d works", n)
 	}
-	code, body = getJSON(t, ts.URL, "/api/v1/works/latest?limit=1")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?limit=1")
 	if code != 200 || len(body["works"].([]any)) != 1 {
 		t.Errorf("limit=1 -> %d works", len(body["works"].([]any)))
 	}
@@ -124,10 +125,10 @@ func TestLatestSeriesDiversityCap(t *testing.T) {
 			},
 		}},
 	}
-	dbPath := buildFixtureDB(t, cat)
+	dbPath := artifacttest.Build(t, cat)
 	_, ts := serveDB(t, dbPath, HandlerOptions{})
 
-	code, body := getJSON(t, ts.URL, "/api/v1/works/latest?limit=8")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?limit=8")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -157,7 +158,7 @@ func TestLatestSeriesDiversityCap(t *testing.T) {
 	}
 
 	// The limit still binds after capping.
-	code, body = getJSON(t, ts.URL, "/api/v1/works/latest?limit=3")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?limit=3")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -169,7 +170,7 @@ func TestLatestSeriesDiversityCap(t *testing.T) {
 
 func TestWorkDetail(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -213,7 +214,7 @@ func TestWorkDetailDerivesPurchaseLinksFromIdentifiers(t *testing.T) {
 	}
 	_, ts := newTestServerForCatalog(t, catalog)
 
-	code, body := getJSON(t, ts.URL, "/api/v1/works/circe")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/circe")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -238,7 +239,7 @@ func TestWorkDetailDerivesPurchaseLinksFromIdentifiers(t *testing.T) {
 
 func TestWorkDetailCharactersRecaps(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -284,7 +285,7 @@ func TestWorkDetailCharactersRecaps(t *testing.T) {
 	}
 
 	// A work with no sidecars omits the keys entirely (omitempty).
-	_, wbody := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	_, wbody := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
 	if _, has := wbody["characters"]; has {
 		t.Errorf("work without characters should omit the key")
 	}
@@ -295,7 +296,7 @@ func TestWorkDetailCharactersRecaps(t *testing.T) {
 
 func TestWorkDetailRecapSummary(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -311,7 +312,7 @@ func TestWorkDetailRecapSummary(t *testing.T) {
 	}
 
 	// A work whose recaps sidecar has no summary fields omits the key entirely.
-	_, wbody := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	_, wbody := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
 	if _, has := wbody["recap_summary"]; has {
 		t.Errorf("work without a recap summary should omit the key")
 	}
@@ -319,7 +320,7 @@ func TestWorkDetailRecapSummary(t *testing.T) {
 
 func TestWorkDetailGenres(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -332,7 +333,7 @@ func TestWorkDetailGenres(t *testing.T) {
 	}
 
 	// A work with no genres omits the key entirely (omitempty).
-	_, wbody := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	_, wbody := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
 	if _, has := wbody["genres"]; has {
 		t.Errorf("work without genres should omit the key, got %v", wbody["genres"])
 	}
@@ -342,8 +343,8 @@ func TestWorkDetailGenres(t *testing.T) {
 // the work_genres table: the genre query no-ops on the version, so the work still
 // serves without genres while its v3 payload keeps working.
 func TestGenresToleratesV3Artifact(t *testing.T) {
-	ts := downgradedServer(t, downgradedDB(t, fixtureCatalog(), 3, "work_genres"))
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 3, "work_genres"))
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
 	}
@@ -362,7 +363,7 @@ func TestGenresToleratesV3Artifact(t *testing.T) {
 // TestGenresToleratesV3ArtifactABS covers the same downgrade on the ABS facade,
 // whose batched genre lookup gates on the version separately from workGenres.
 func TestGenresToleratesV3ArtifactABS(t *testing.T) {
-	ts := downgradedServer(t, downgradedDB(t, fixtureCatalog(), 3, "work_genres"))
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 3, "work_genres"))
 	code, matches := absMatches(t, ts.URL, "/abs/search?query=hail")
 	if code != 200 {
 		t.Fatalf("status %d", code)
@@ -380,8 +381,8 @@ func TestGenresToleratesV3ArtifactABS(t *testing.T) {
 // the characters/recaps tables but not recap_summaries: the summary query no-ops
 // on the version, so the work still serves its characters/recaps.
 func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
-	ts := downgradedServer(t, downgradedDB(t, fixtureCatalog(), 2, "work_genres", "recap_summaries"))
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 2, "work_genres", "recap_summaries"))
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
 	}
@@ -404,7 +405,7 @@ func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
 // record's own field.
 func TestCommunityDescription(t *testing.T) {
 	_, ts := newTestServer(t)
-	_, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	cd, ok := body["community_description"].(map[string]any)
 	if !ok {
 		t.Fatalf("community_description = %v, want an object", body["community_description"])
@@ -420,7 +421,7 @@ func TestCommunityDescription(t *testing.T) {
 	}
 
 	// A work with no description member omits the key entirely.
-	_, plain := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	_, plain := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
 	if _, has := plain["community_description"]; has {
 		t.Errorf("a work with no description sidecar should omit the key, got %v", plain["community_description"])
 	}
@@ -430,8 +431,8 @@ func TestCommunityDescription(t *testing.T) {
 // that predates work_descriptions: the query no-ops on the version, so the work
 // still serves and its pages fall back to the composed fact sentence.
 func TestCommunityDescriptionToleratesV5Artifact(t *testing.T) {
-	ts := downgradedServer(t, downgradedDB(t, fixtureCatalog(), 5, "work_descriptions"))
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 5, "work_descriptions"))
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
 	}
@@ -455,7 +456,7 @@ func TestCommunityDescriptionToleratesV5Artifact(t *testing.T) {
 // /abs/search candidate while the boot itself looked fine. The redirects table
 // is refused the same way, and the error names the claim being enforced.
 func TestCommunityDescriptionRefusesAVersion6ArtifactWithoutTheTable(t *testing.T) {
-	dbPath := downgradedDB(t, fixtureCatalog(), 6, "work_descriptions")
+	dbPath := artifacttest.Downgraded(t, artifacttest.Fixture(), 6, "work_descriptions")
 	_, err := Open(dbPath, "")
 	if err == nil {
 		t.Fatal("a version 6 artifact with no work_descriptions table opened cleanly")
@@ -472,9 +473,9 @@ func TestCommunityDescriptionRefusesAVersion6ArtifactWithoutTheTable(t *testing.
 // release until the layer has data - the work page, the guide pages and the ABS
 // candidates must not touch work_descriptions at all.
 func TestDescriptionMemoSkipsTheQueryWhenTheTableIsEmpty(t *testing.T) {
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	cat.Descriptions = nil
-	empty := snapshotFor(t, cat)
+	empty := openTestDB(t, artifacttest.Build(t, cat))
 	if empty.hasDescriptions {
 		t.Error("hasDescriptions is true for a catalogue holding no descriptions")
 	}
@@ -482,7 +483,7 @@ func TestDescriptionMemoSkipsTheQueryWhenTheTableIsEmpty(t *testing.T) {
 	if err != nil || got != nil {
 		t.Errorf("communityDescriptionOf = %v, %v; want nil, nil", got, err)
 	}
-	if full := snapshotFor(t, fixtureCatalog()); !full.hasDescriptions {
+	if full := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture())); !full.hasDescriptions {
 		t.Error("hasDescriptions is false for a catalogue that holds one")
 	}
 }
@@ -491,9 +492,9 @@ func TestDescriptionMemoSkipsTheQueryWhenTheTableIsEmpty(t *testing.T) {
 // predates the characters/recaps tables: every sidecar query no-ops on the
 // version, so the work still serves, just without them.
 func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
-	ts := downgradedServer(t, downgradedDB(t, fixtureCatalog(), 1,
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 1,
 		"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "work_descriptions"))
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
 	}
@@ -509,7 +510,7 @@ func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
 
 func TestWorkNotFound(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/nope")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/nope")
 	if code != 404 {
 		t.Fatalf("status %d", code)
 	}
@@ -520,7 +521,7 @@ func TestWorkNotFound(t *testing.T) {
 
 func TestChapters(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary/recordings/ray-porter-2021/chapters")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary/recordings/ray-porter-2021/chapters")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -535,7 +536,7 @@ func TestChapters(t *testing.T) {
 
 func TestPerson(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/people/brandon-sanderson")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/brandon-sanderson")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -548,7 +549,7 @@ func TestPerson(t *testing.T) {
 	}
 
 	// A narrator has narrated entries carrying the recording id.
-	code, body = getJSON(t, ts.URL, "/api/v1/people/ray-porter")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/people/ray-porter")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -572,7 +573,7 @@ func TestPerson(t *testing.T) {
 func TestPersonPagination(t *testing.T) {
 	_, ts := newTestServer(t)
 
-	code, body := getJSON(t, ts.URL, "/api/v1/people/brandon-sanderson")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/brandon-sanderson")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -595,7 +596,7 @@ func TestPersonPagination(t *testing.T) {
 		t.Fatalf("authored = %v, want 3 works", all)
 	}
 
-	code, body = getJSON(t, ts.URL, "/api/v1/people/brandon-sanderson?limit=1&offset=1")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/people/brandon-sanderson?limit=1&offset=1")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -611,7 +612,7 @@ func TestPersonPagination(t *testing.T) {
 	}
 
 	// An over-large limit is clamped, not honoured verbatim.
-	_, body = getJSON(t, ts.URL, "/api/v1/people/brandon-sanderson?limit=999999")
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/people/brandon-sanderson?limit=999999")
 	if got := body["limit"].(float64); got != PersonPageMax {
 		t.Errorf("limit = %v, want the clamp %d", got, PersonPageMax)
 	}
@@ -623,7 +624,7 @@ func TestPersonPagination(t *testing.T) {
 func TestSeriesPagination(t *testing.T) {
 	_, ts := newTestServer(t)
 
-	code, body := getJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -637,7 +638,7 @@ func TestSeriesPagination(t *testing.T) {
 		t.Errorf("limit = %v, want 0 (no window)", got)
 	}
 
-	_, body = getJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive?limit=1&offset=1")
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive?limit=1&offset=1")
 	works := body["works"].([]any)
 	if len(works) != 1 {
 		t.Fatalf("windowed works = %d, want 1", len(works))
@@ -650,7 +651,7 @@ func TestSeriesPagination(t *testing.T) {
 	}
 
 	// An offset past the end is an empty page, not an error.
-	code, body = getJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive?offset=99")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive?offset=99")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -661,7 +662,7 @@ func TestSeriesPagination(t *testing.T) {
 
 func TestPersonNotFound(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, _ := getJSON(t, ts.URL, "/api/v1/people/nobody")
+	code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/nobody")
 	if code != 404 {
 		t.Fatalf("status %d", code)
 	}
@@ -669,7 +670,7 @@ func TestPersonNotFound(t *testing.T) {
 
 func TestSeriesNumericOrder(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -686,7 +687,7 @@ func TestSeriesNumericOrder(t *testing.T) {
 
 func TestLookupASIN(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/lookup?asin=B08G9PRS1K")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/lookup?asin=B08G9PRS1K")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -700,7 +701,7 @@ func TestLookupASIN(t *testing.T) {
 
 func TestLookupISBN(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/lookup?isbn=9781427209269")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/lookup?isbn=9781427209269")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -714,11 +715,11 @@ func TestLookupISBN(t *testing.T) {
 
 func TestLookupMissingParam(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, _ := getJSON(t, ts.URL, "/api/v1/lookup")
+	code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/lookup")
 	if code != 400 {
 		t.Fatalf("status %d, want 400", code)
 	}
-	code, _ = getJSON(t, ts.URL, "/api/v1/lookup?asin=ZZZNOPE")
+	code, _ = artifacttest.GetJSON(t, ts.URL, "/api/v1/lookup?asin=ZZZNOPE")
 	if code != 404 {
 		t.Fatalf("status %d, want 404", code)
 	}
@@ -726,7 +727,7 @@ func TestLookupMissingParam(t *testing.T) {
 
 func TestSearch(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/search?q=hail")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/search?q=hail")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -749,7 +750,7 @@ func TestSearch(t *testing.T) {
 func TestSearchPrefixAndKinds(t *testing.T) {
 	_, ts := newTestServer(t)
 	// "sand" is a prefix of Sanderson (person) and matches works via author name.
-	code, body := getJSON(t, ts.URL, "/api/v1/search?q=sand")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/search?q=sand")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -762,7 +763,7 @@ func TestSearchPrefixAndKinds(t *testing.T) {
 	}
 
 	// A series query returns a series result carrying a works count.
-	code, body = getJSON(t, ts.URL, "/api/v1/search?q=stormlight")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/search?q=stormlight")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -784,11 +785,11 @@ func TestSearchPrefixAndKinds(t *testing.T) {
 func TestSearchQuoteEscaping(t *testing.T) {
 	_, ts := newTestServer(t)
 	// A query full of double quotes must not 500 (FTS escaping), and empty q is 400.
-	code, _ := getJSON(t, ts.URL, `/api/v1/search?q=%22%22%22`)
+	code, _ := artifacttest.GetJSON(t, ts.URL, `/api/v1/search?q=%22%22%22`)
 	if code != 200 {
 		t.Fatalf("quote query status = %d, want 200", code)
 	}
-	code, _ = getJSON(t, ts.URL, "/api/v1/search?q=%20%20")
+	code, _ = artifacttest.GetJSON(t, ts.URL, "/api/v1/search?q=%20%20")
 	if code != 400 {
 		t.Fatalf("empty q status = %d, want 400", code)
 	}
@@ -798,7 +799,7 @@ func TestSearchQuoteEscaping(t *testing.T) {
 // type-scoped page must carry exactly one key.
 func searchResultKinds(t *testing.T, base, path string) map[string]int {
 	t.Helper()
-	code, body := getJSON(t, base, path)
+	code, body := artifacttest.GetJSON(t, base, path)
 	if code != 200 {
 		t.Fatalf("GET %s: status %d", path, code)
 	}
@@ -854,7 +855,7 @@ func TestTypedSearchScopesToOneKind(t *testing.T) {
 func TestTypedSearchResultShapesMatchTheCombinedSearch(t *testing.T) {
 	_, ts := newTestServer(t)
 
-	code, body := getJSON(t, ts.URL, "/api/v1/works/search?q=hail")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/search?q=hail")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -881,7 +882,7 @@ func TestTypedSearchResultShapesMatchTheCombinedSearch(t *testing.T) {
 		}
 	}
 
-	code, body = getJSON(t, ts.URL, "/api/v1/series/search?q=stormlight")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/series/search?q=stormlight")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -903,7 +904,7 @@ func TestSearchRequiresAQuery(t *testing.T) {
 	}
 	for _, p := range paths {
 		for _, query := range []string{"", "?q=", "?q=%20%20"} {
-			code, body := getJSON(t, ts.URL, p+query)
+			code, body := artifacttest.GetJSON(t, ts.URL, p+query)
 			if code != 400 {
 				t.Errorf("GET %s%s = %d, want 400", p, query, code)
 			}

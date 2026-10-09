@@ -12,6 +12,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -81,7 +82,7 @@ func matchCatalog() *model.Catalog {
 // matchJSON runs one works/match request and returns its results.
 func matchJSON(t *testing.T, base string, params url.Values) []map[string]any {
 	t.Helper()
-	code, body := getJSON(t, base, "/api/v1/works/match?"+params.Encode())
+	code, body := artifacttest.GetJSON(t, base, "/api/v1/works/match?"+params.Encode())
 	if code != http.StatusOK {
 		t.Fatalf("works/match?%s: status %d, body %v", params.Encode(), code, body)
 	}
@@ -381,7 +382,7 @@ func TestMatchResponseShape(t *testing.T) {
 func TestMatchRequiresAFact(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, matchCatalog())
 	for _, q := range []string{"", "q=+", "title=&author=", "position=8", "runtime=3600", "limit=5"} {
-		if code, body := getJSON(t, ts.URL, "/api/v1/works/match?"+q); code != http.StatusBadRequest || body["error"] == "" {
+		if code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/match?"+q); code != http.StatusBadRequest || body["error"] == "" {
 			t.Errorf("?%s: status %d %v, want a 400", q, code, body)
 		}
 	}
@@ -429,8 +430,8 @@ func TestParseMatchRequestBounds(t *testing.T) {
 // TestMatchBudget: a match that cannot get a slot inside its budget is a 503
 // with Retry-After, never a request that waits indefinitely.
 func TestMatchBudget(t *testing.T) {
-	db := openTestDB(t, buildFixtureDB(t, matchCatalog()))
-	srv := newHandler(func() *DB { return db }, HandlerOptions{MatchBudget: 20 * time.Millisecond, Logger: testLogger()})
+	db := openTestDB(t, artifacttest.Build(t, matchCatalog()))
+	srv := newHandler(func() *DB { return db }, HandlerOptions{MatchBudget: 20 * time.Millisecond, Logger: artifacttest.QuietLogger()})
 	for range cap(srv.matchSlots) {
 		srv.matchSlots <- struct{}{}
 	}
@@ -448,7 +449,7 @@ func TestMatchBudget(t *testing.T) {
 // TestMatchStopsOnACancelledContext: the work stops when the request's context
 // does (a client gone, the budget spent), and says so as errMatchBusy.
 func TestMatchStopsOnACancelledContext(t *testing.T) {
-	snap := snapshotFor(t, matchCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, matchCatalog()))
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
 	_, err := snap.match(ctx, matchRequest{titles: []string{"Sharpe's Eagle"}, authors: []string{"Bernard Cornwell"}, limit: 5})
@@ -464,7 +465,7 @@ func TestMatchStopsOnACancelledContext(t *testing.T) {
 // the matchConcurrency slots. Each read is run live first, so a read that
 // refused for some other reason cannot pass.
 func TestMatchReadsHonourTheContext(t *testing.T) {
-	snap := snapshotFor(t, matchCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, matchCatalog()))
 	pool := newCandidatePool()
 	pool.add("dune", "sharpes-eagle")
 	reads := map[string]func(context.Context) error{
@@ -521,8 +522,8 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 // match-budget 503 whichever way the slot race goes - refused before a slot,
 // or failing its first read - and never a 200 or a 500.
 func TestMatchOverBudgetIsA503(t *testing.T) {
-	db := openTestDB(t, buildFixtureDB(t, matchCatalog()))
-	srv := NewHandler(func() *DB { return db }, HandlerOptions{MatchBudget: PublicMatchBudget, Logger: testLogger()})
+	db := openTestDB(t, artifacttest.Build(t, matchCatalog()))
+	srv := NewHandler(func() *DB { return db }, HandlerOptions{MatchBudget: PublicMatchBudget, Logger: artifacttest.QuietLogger()})
 	ctx, cancel := context.WithCancel(t.Context())
 	cancel()
 	params := url.Values{"q": {"sharpe eagle"}, "title": {"Sharpe's Eagle"}, "author": {"Bernard Cornwell"}, "series": {"Sharpe"}, "asin": {"B002SQ7KVE"}}
@@ -537,7 +538,7 @@ func TestMatchOverBudgetIsA503(t *testing.T) {
 // TestMatchIsBoundedByTheCandidateCap: the author probe stops at the pool's
 // cap however many works the named people wrote.
 func TestMatchIsBoundedByTheCandidateCap(t *testing.T) {
-	snap := snapshotFor(t, matchCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, matchCatalog()))
 	ids, err := snap.idsByChunk(context.Background(), []string{"bernard-cornwell", "patricia-cornwell"}, worksByPeopleSQL, 2)
 	if err != nil || len(ids) != 2 {
 		t.Fatalf("works by people with limit 2 = %v, %v", ids, err)
@@ -620,7 +621,7 @@ func ptr[T any](v T) *T { return &v }
 // TestPeopleNamed: a full name resolves by every word; a surname alone keeps
 // the bearers whose first name or initial agrees, else every bearer.
 func TestPeopleNamed(t *testing.T) {
-	snap := snapshotFor(t, matchCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, matchCatalog()))
 	for in, want := range map[string]string{
 		"Bernard Cornwell": "bernard-cornwell",
 		"B. Cornwell":      "bernard-cornwell",

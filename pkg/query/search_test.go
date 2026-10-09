@@ -8,6 +8,7 @@ import (
 	"testing"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -237,7 +238,7 @@ func punctuatedCatalog() *model.Catalog {
 // because the welded phrase demanded the words be adjacent - across two FTS
 // columns, in the query's order.
 func TestSearchPunctuatedQueries(t *testing.T) {
-	snap := snapshotFor(t, punctuatedCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, punctuatedCatalog()))
 
 	cases := []struct {
 		name, query, want string
@@ -287,7 +288,7 @@ func TestSearchPunctuatedQueries(t *testing.T) {
 // 30-45% slower for the class; here the adversary is "Alpha Q", which matches
 // the conjunction and not the phrase.
 func TestSearchInitialisms(t *testing.T) {
-	snap := snapshotFor(t, punctuatedCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, punctuatedCatalog()))
 
 	// Selectivity: the phrase resolves the initialism and nothing else.
 	ids := searchIDs(t, snap, "Q&A")
@@ -348,10 +349,10 @@ func TestABSSearchInitialism(t *testing.T) {
 // a 500. The handler's own guard rejects an empty q, so these arrive as
 // punctuation.
 func TestSearchPunctuationDegradesQuietly(t *testing.T) {
-	ts := serverFor(t, punctuatedCatalog())
+	_, ts := newTestServerForCatalog(t, punctuatedCatalog())
 	for _, q := range []string{"!!", `"""`} {
 		path := "/api/v1/search?q=" + url.QueryEscape(q)
-		code, body := getJSON(t, ts.URL, path)
+		code, body := artifacttest.GetJSON(t, ts.URL, path)
 		if code != 200 {
 			t.Errorf("GET %s = %d, want 200 (body %v)", path, code, body)
 			continue
@@ -367,9 +368,9 @@ func TestSearchPunctuationDegradesQuietly(t *testing.T) {
 // punctuated title FIRST: nameKey reads the same terms, so a query spelling the
 // title without its space still names it outright.
 func TestSearchPunctuatedQueryOverHTTP(t *testing.T) {
-	ts := serverFor(t, punctuatedCatalog())
+	_, ts := newTestServerForCatalog(t, punctuatedCatalog())
 	const path = "/api/v1/search?q=Halo%3APrimordium"
-	code, body := getJSON(t, ts.URL, path)
+	code, body := artifacttest.GetJSON(t, ts.URL, path)
 	if code != 200 {
 		t.Fatalf("GET %s = %d", path, code)
 	}
@@ -407,7 +408,7 @@ func TestABSSearchPunctuatedQuery(t *testing.T) {
 // parse splits on whitespace, so a welded number is not a position query at all
 // and the page stays the plain FTS one.
 func TestSeriesPositionBoostSurvivesPunctuation(t *testing.T) {
-	snap := snapshotFor(t, punctuatedCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, punctuatedCatalog()))
 	// Halo #7 is Cryptum, which the plain FTS page cannot rank first (nothing in
 	// its row says "7").
 	for _, q := range []string{"halo 7", "halo: 7"} {
@@ -681,7 +682,7 @@ func possessiveCatalog() *model.Catalog {
 // apostrophe, which before this returned NOTHING - the row holds `ender` and
 // `s`, never `enders`.
 func TestSearchPossessivesWithoutApostrophe(t *testing.T) {
-	snap := snapshotFor(t, possessiveCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, possessiveCatalog()))
 
 	// The bug, pinned on the fixture: the expression the builder used to emit
 	// matches nothing at all.
@@ -722,9 +723,9 @@ func TestSearchPossessivesWithoutApostrophe(t *testing.T) {
 	}
 
 	// And on the wire, once.
-	ts := serverFor(t, possessiveCatalog())
+	_, ts := newTestServerForCatalog(t, possessiveCatalog())
 	const path = "/api/v1/works/search?q=enders+game"
-	code, body := getJSON(t, ts.URL, path)
+	code, body := artifacttest.GetJSON(t, ts.URL, path)
 	results, _ := body["results"].([]any)
 	if code != http.StatusOK || len(results) == 0 {
 		t.Fatalf("GET %s = %d with %d results", path, code, len(results))
@@ -774,7 +775,7 @@ func TestExactTitleIgnoresAFreeStandingS(t *testing.T) {
 	cat.Works = append(cat.Works, &model.Work{
 		ID: "model-s", Title: "Model S", Language: "en", Authors: []string{"jane-doe"}, License: "CC0-1.0",
 	})
-	snap := snapshotFor(t, cat)
+	snap := openTestDB(t, artifacttest.Build(t, cat))
 	for q, want := range map[string]string{"models": "", "Model S": "model-s", "enders game": "enders-game"} {
 		ids, err := snap.exactTitleHits(t.Context(), q, nil)
 		if err != nil {

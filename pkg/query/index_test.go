@@ -3,6 +3,8 @@ package query
 import (
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 )
 
 // queryPlan returns the EXPLAIN QUERY PLAN steps for query.
@@ -65,7 +67,7 @@ func assertNoFullScan(t *testing.T, plan []string) {
 // three once per recording, so the cost was multiplied by the catalogue size on
 // every hit.
 func TestServeLookupsAreIndexed(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	// Minority languages of an all-English fixture, so worksPredicate takes the
 	// index form - the majority form is a deliberate scan (see its comment).
 	latestOne, latestOneArgs := snap.latestCandidatesQuery(langFilter{"de"}, 200)
@@ -177,7 +179,7 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 // rendered placeholder list rather than a fixed argument count, so the guard
 // drives them through the same eachChunk helper the real code uses.
 func TestBatchLookupsAreIndexed(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	ids := []string{"project-hail-mary", "the-way-of-kings"}
 	seriesIDs := []string{"the-stormlight-archive"}
 	personIDs := []string{"brandon-sanderson", "andy-weir"}
@@ -250,7 +252,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 // What must hold is that each ARM walks its own index. Unindexed, this is two
 // full sidecar-table reads on every artifact swap.
 func TestRecapPageCountWalksItsIndexes(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	plan := queryPlan(t, snap, recapWorksCountSQL)
 	joined := strings.Join(plan, " | ")
 	for _, table := range []string{"recaps", "recap_summaries"} {
@@ -278,7 +280,7 @@ func TestRecapPageCountWalksItsIndexes(t *testing.T) {
 // those are 404s (most works carry no sidecar), so an unindexed probe would turn
 // the cheap path into a full sidecar-table read per crawl hit.
 func TestGuidePresenceProbesAreIndexed(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	cases := []struct {
 		name   string
 		query  string
@@ -314,7 +316,7 @@ func TestGuidePresenceProbesAreIndexed(t *testing.T) {
 // co-routine SCAN; the step this pins is the join back to works, which must
 // never read the table without an index.
 func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	plan := queryPlan(t, snap, exactTitleSQL, titleMatch("spare"), exactTitleProbeLimit)
 	joined := strings.Join(plan, " | ")
 	for _, step := range plan {
@@ -334,7 +336,7 @@ func TestExactTitleWorksJoinIsIndexed(t *testing.T) {
 // one record. What must hold is that the reverse arm looks the target up in the
 // covering index, and that the two arms MERGE in index order rather than sorting.
 func TestReverseTranslationsUseTheTargetIndex(t *testing.T) {
-	snap := snapshotFor(t, languagesCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Languages()))
 	for name, query := range map[string]string{
 		"translations of a work":   workTranslationsSQL,
 		"translations of a series": seriesTranslationsSQL,

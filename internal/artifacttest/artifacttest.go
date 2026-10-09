@@ -1,7 +1,8 @@
 // Package artifacttest is test support for the query layer: the fixture
 // catalogues and the artifact builders that pkg/query's tests, internal/serve's
 // tests and pkg/query/querytest (the public face, for downstream consumers) all
-// build their artifacts from. ONE home, because a fixture that differs between
+// build their artifacts from, and the HTTP helpers the first two serve them
+// through (http.go). ONE home, because a fixture that differs between
 // the suite that tests the query layer and the suite that tests the server built
 // on it is the one kind of drift neither suite can catch.
 //

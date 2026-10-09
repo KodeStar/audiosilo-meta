@@ -14,13 +14,14 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 var watchFeedNow = time.Date(2026, 10, 20, 15, 30, 0, 0, time.UTC)
 
 func watchFeedCatalog() *model.Catalog {
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	for _, work := range cat.Works {
 		switch work.ID {
 		case "the-way-of-kings":
@@ -39,7 +40,7 @@ func watchFeedCatalog() *model.Catalog {
 
 func newWatchFeedServer(t *testing.T, cat *model.Catalog) (*DB, *httptest.Server) {
 	t.Helper()
-	return serveDB(t, buildFixtureDB(t, cat), HandlerOptions{
+	return serveDB(t, artifacttest.Build(t, cat), HandlerOptions{
 		SiteURL: testSiteURL,
 		Now:     func() time.Time { return watchFeedNow },
 	})
@@ -314,7 +315,7 @@ func TestWatchFeedETagAnd304(t *testing.T) {
 func TestWatchFeedETagMovesWithTheDay(t *testing.T) {
 	cat := watchFeedCatalog()
 	morning := time.Date(2026, 10, 20, 8, 0, 0, 0, time.UTC)
-	snap := openTestDB(t, buildFixtureDB(t, cat))
+	snap := openTestDB(t, artifacttest.Build(t, cat))
 	path := "/api/v1/watch/feed.atom"
 	same := watchFeedETag(snap, testSiteURL, path, "the-stormlight-archive", "", morning.Add(9*time.Hour))
 	first := watchFeedETag(snap, testSiteURL, path, "the-stormlight-archive", "", morning)
@@ -356,7 +357,7 @@ func TestWatchFeedCapsItemsAfterOrdering(t *testing.T) {
 }
 
 func TestWatchFeedsRequireSnapshot(t *testing.T) {
-	srv := NewHandler(func() *DB { return nil }, HandlerOptions{SiteURL: testSiteURL, Logger: testLogger()})
+	srv := NewHandler(func() *DB { return nil }, HandlerOptions{SiteURL: testSiteURL, Logger: artifacttest.QuietLogger()})
 	for _, path := range []string{
 		"/api/v1/watch/feed.json?s=series",
 		"/api/v1/watch/feed.atom?s=series",
@@ -773,7 +774,7 @@ func watchShapesCatalog(t *testing.T) *model.Catalog {
 // card's - fails here. There is no date filter in SQL to get wrong:
 // watchMembersSQL reads membership, and all the judgement is watchNewsOf's.
 func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
-	snap, err := Open(buildFixtureDB(t, watchShapesCatalog(t)), "")
+	snap, err := Open(artifacttest.Build(t, watchShapesCatalog(t)), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -848,7 +849,7 @@ func TestWatchFeedMatchesTheWholeSeriesSweep(t *testing.T) {
 // rewrite moved - seen on first SIGHT rather than on emit - is unpinned, and
 // without one of them being news the dedupe never fires at all.
 func TestWatchShapesFixtureCoversTheSharedWork(t *testing.T) {
-	snap, err := Open(buildFixtureDB(t, watchShapesCatalog(t)), "")
+	snap, err := Open(artifacttest.Build(t, watchShapesCatalog(t)), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -883,7 +884,7 @@ func TestWatchShapesFixtureCoversTheSharedWork(t *testing.T) {
 // one per member of every watched series. Without it the change is invisible to
 // the tests - the output is identical either way.
 func TestWatchSelectionIsBounded(t *testing.T) {
-	snap, err := Open(buildFixtureDB(t, watchShapesCatalog(t)), "")
+	snap, err := Open(artifacttest.Build(t, watchShapesCatalog(t)), "")
 	if err != nil {
 		t.Fatal(err)
 	}

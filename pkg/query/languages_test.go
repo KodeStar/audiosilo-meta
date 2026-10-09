@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -36,9 +37,9 @@ func sameIDs(t *testing.T, what string, got any, want ...string) {
 // order and carrying the other work's title and language - and a work with
 // neither link omits both keys.
 func TestWorkDetailTranslations(t *testing.T) {
-	_, ts := newTestServerForCatalog(t, languagesCatalog())
+	_, ts := newTestServerForCatalog(t, artifacttest.Languages())
 
-	_, one := getJSON(t, ts.URL, "/api/v1/works/book-one")
+	_, one := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/book-one")
 	sameIDs(t, "book-one translations", one["translations"], "buch-eins", "livre-un", "sammelband")
 	if _, has := one["translation_of"]; has {
 		t.Errorf("an original carries translation_of: %v", one["translation_of"])
@@ -48,13 +49,13 @@ func TestWorkDetailTranslations(t *testing.T) {
 		t.Errorf("translations[0] = %v, want Buch Eins in de", first)
 	}
 
-	_, omni := getJSON(t, ts.URL, "/api/v1/works/sammelband")
+	_, omni := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/sammelband")
 	sameIDs(t, "sammelband translation_of", omni["translation_of"], "book-one", "book-two")
 	if _, has := omni["translations"]; has {
 		t.Errorf("a translation nothing translates carries translations: %v", omni["translations"])
 	}
 
-	_, plain := getJSON(t, ts.URL, "/api/v1/works/the-prequel")
+	_, plain := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/the-prequel")
 	for _, key := range []string{"translation_of", "translations"} {
 		if _, has := plain[key]; has {
 			t.Errorf("a work with no links carries %s: %v", key, plain[key])
@@ -67,9 +68,9 @@ func TestWorkDetailTranslations(t *testing.T) {
 // and the ordering FAMILY - identical on the primary and on each variant, the
 // primary first even where a variant's id sorts before it.
 func TestSeriesDetailLanguagesAndOrderings(t *testing.T) {
-	_, ts := newTestServerForCatalog(t, languagesCatalog())
+	_, ts := newTestServerForCatalog(t, artifacttest.Languages())
 
-	_, primary := getJSON(t, ts.URL, "/api/v1/series/the-saga")
+	_, primary := artifacttest.GetJSON(t, ts.URL, "/api/v1/series/the-saga")
 	if primary["language"] != "en" || primary["ordering"] != model.OrderingPublication {
 		t.Errorf("the-saga language/ordering = %v/%v", primary["language"], primary["ordering"])
 	}
@@ -84,14 +85,14 @@ func TestSeriesDetailLanguagesAndOrderings(t *testing.T) {
 	}
 
 	for _, variant := range []string{"saga-chronological", "the-saga-recommended"} {
-		_, v := getJSON(t, ts.URL, "/api/v1/series/"+variant)
+		_, v := artifacttest.GetJSON(t, ts.URL, "/api/v1/series/"+variant)
 		if v["ordering_of"] != "the-saga" {
 			t.Errorf("%s ordering_of = %v, want the-saga", variant, v["ordering_of"])
 		}
 		sameIDs(t, variant+" orderings", v["orderings"], "the-saga", "saga-chronological", "the-saga-recommended")
 	}
 
-	_, de := getJSON(t, ts.URL, "/api/v1/series/die-saga")
+	_, de := artifacttest.GetJSON(t, ts.URL, "/api/v1/series/die-saga")
 	if de["language"] != "de" {
 		t.Errorf("die-saga language = %v, want de", de["language"])
 	}
@@ -105,8 +106,8 @@ func TestSeriesDetailLanguagesAndOrderings(t *testing.T) {
 
 // TestStatsLanguages pins the census: most works first, ties by tag.
 func TestStatsLanguages(t *testing.T) {
-	_, ts := newTestServerForCatalog(t, languagesCatalog())
-	_, body := getJSON(t, ts.URL, "/api/v1/stats")
+	_, ts := newTestServerForCatalog(t, artifacttest.Languages())
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/stats")
 	raw, _ := json.Marshal(body["languages"])
 	const want = `[{"language":"en","works":3},{"language":"de","works":2},{"language":"fr","works":1}]`
 	if string(raw) != want {
@@ -121,8 +122,8 @@ func TestStatsLanguages(t *testing.T) {
 // primary) and works/latest's series cap. metaserve's work page (its JSON-LD
 // isPartOf) is the fourth surface - TestPrimaryOrderingWinsThePageSeries.
 func TestPrimaryOrderingWinsTheSeriesChoice(t *testing.T) {
-	cat := languagesCatalog()
-	snap := snapshotFor(t, cat)
+	cat := artifacttest.Languages()
+	snap := openTestDB(t, artifacttest.Build(t, cat))
 	card, err := snap.workCard(t.Context(), "book-one")
 	if err != nil {
 		t.Fatal(err)
@@ -132,7 +133,7 @@ func TestPrimaryOrderingWinsTheSeriesChoice(t *testing.T) {
 	}
 
 	_, ts := newTestServerForCatalog(t, cat)
-	_, detail := getJSON(t, ts.URL, "/api/v1/works/book-one")
+	_, detail := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/book-one")
 	sameIDs(t, "book-one series", detail["series"], "the-saga", "saga-chronological", "the-saga-recommended")
 	refs := detail["series"].([]any)
 	if _, has := refs[0].(map[string]any)["ordering_of"]; has {
@@ -143,7 +144,7 @@ func TestPrimaryOrderingWinsTheSeriesChoice(t *testing.T) {
 	}
 
 	// works/latest's series cap keys on the same choice, so its cards agree.
-	_, latest := getJSON(t, ts.URL, "/api/v1/works/latest")
+	_, latest := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest")
 	for _, w := range latest["works"].([]any) {
 		c := w.(map[string]any)
 		if c["id"] == "book-one" && c["series"].(map[string]any)["id"] != "the-saga" {
@@ -153,13 +154,13 @@ func TestPrimaryOrderingWinsTheSeriesChoice(t *testing.T) {
 }
 
 // v6ShapedDB builds cat's artifact and rolls it back to the schema_version 6
-// SHAPE, which is more than downgradedDB's dropped tables: the translations table
+// SHAPE, which is more than artifacttest.Downgraded's dropped tables: the translations table
 // goes, the three series columns and their index go, and idx_works_language goes.
 // search_fts keeps its language column, because an FTS5 table cannot drop one -
 // harmless, since no serve query reads it.
 func v6ShapedDB(t *testing.T, cat *model.Catalog) string {
 	t.Helper()
-	return alteredDB(t, cat, 6,
+	return artifacttest.Altered(t, cat, 6,
 		"DROP TABLE translations",
 		"DROP INDEX idx_series_ordering_of",
 		"DROP INDEX idx_works_language",
@@ -176,11 +177,11 @@ func v6ShapedDB(t *testing.T, cat *model.Catalog) string {
 // stats census, and a work's series in plain id order (the v6 ORDER BY, with NULL
 // selected in place of ordering_of).
 func TestLanguagesTolerateAV6Artifact(t *testing.T) {
-	ts := downgradedServer(t, v6ShapedDB(t, languagesCatalog()))
+	ts := downgradedServer(t, v6ShapedDB(t, artifacttest.Languages()))
 
 	get := func(route string) map[string]any {
 		t.Helper()
-		code, body := getJSON(t, ts.URL, route)
+		code, body := artifacttest.GetJSON(t, ts.URL, route)
 		if code != http.StatusOK {
 			t.Fatalf("GET %s on a v6 artifact: status %d, body %v", route, code, body)
 		}
@@ -236,7 +237,7 @@ func TestLanguagesRefuseAVersion7ArtifactWithoutTheTable(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := Open(alteredDB(t, languagesCatalog(), 7, tc.stmts...), "")
+			_, err := Open(artifacttest.Altered(t, artifacttest.Languages(), 7, tc.stmts...), "")
 			if err == nil {
 				t.Fatal("a version 7 artifact missing its languages shape opened cleanly")
 			}
@@ -255,7 +256,7 @@ func TestLanguagesRefuseAVersion7ArtifactWithoutTheTable(t *testing.T) {
 // the family query at all, and over one that HAS a family only its members pay
 // for the family query.
 func TestLanguageMemosSkipTheQueries(t *testing.T) {
-	empty := snapshotFor(t, fixtureCatalog())
+	empty := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	if empty.hasTranslations || empty.hasOrderings() {
 		t.Errorf("memos = %v/%v for a catalogue with no links", empty.hasTranslations, empty.hasOrderings())
 	}
@@ -268,7 +269,7 @@ func TestLanguageMemosSkipTheQueries(t *testing.T) {
 		t.Errorf("orderingFamily = %v, %v; want no query", fam, err)
 	}
 
-	full := snapshotFor(t, languagesCatalog())
+	full := openTestDB(t, artifacttest.Build(t, artifacttest.Languages()))
 	if !full.hasTranslations || !full.hasOrderings() {
 		t.Errorf("memos = %v/%v for a catalogue holding both", full.hasTranslations, full.hasOrderings())
 	}
@@ -288,14 +289,14 @@ func TestLanguageMemosSkipTheQueries(t *testing.T) {
 // Keyed on the card's series id, the prequel opened a bucket of its own and all
 // three filled the grid.
 func TestLatestCapsAnOrderingFamilyAsOneSeries(t *testing.T) {
-	cat := languagesCatalog()
+	cat := artifacttest.Languages()
 	for _, w := range cat.Works {
 		switch w.ID {
 		case "book-one", "book-two", "the-prequel":
 			w.AddedAt = "2026-09-30"
 		}
 	}
-	snap := snapshotFor(t, cat)
+	snap := openTestDB(t, artifacttest.Build(t, cat))
 	cards, err := snap.latestWorks(12, nil)
 	if err != nil {
 		t.Fatal(err)

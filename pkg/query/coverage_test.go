@@ -1,12 +1,11 @@
 package query
 
 import (
-	"database/sql"
-	"net/http/httptest"
 	"reflect"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -87,25 +86,6 @@ func coverageCatalog() *model.Catalog {
 	}
 }
 
-// snapshotFor opens a fixture catalogue as a snapshot, for tests that need the
-// query layer directly rather than through HTTP.
-func snapshotFor(t *testing.T, cat *model.Catalog) *DB {
-	t.Helper()
-	snap, err := Open(buildFixtureDB(t, cat), "")
-	if err != nil {
-		t.Fatal(err)
-	}
-	t.Cleanup(func() { _ = snap.Close() })
-	return snap
-}
-
-func serverFor(t *testing.T, cat *model.Catalog) *httptest.Server {
-	t.Helper()
-	dbPath := buildFixtureDB(t, cat)
-	_, ts := serveDB(t, dbPath, HandlerOptions{})
-	return ts
-}
-
 // workIDs pulls the "works" array from a /coverage/works body into an id slice.
 func workIDs(body map[string]any) []string {
 	works, _ := body["works"].([]any)
@@ -117,8 +97,8 @@ func workIDs(body map[string]any) []string {
 }
 
 func TestCoverageTotals(t *testing.T) {
-	ts := serverFor(t, coverageCatalog())
-	code, body := getJSON(t, ts.URL, "/api/v1/coverage")
+	_, ts := newTestServerForCatalog(t, coverageCatalog())
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -144,8 +124,8 @@ func TestCoverageTotals(t *testing.T) {
 }
 
 func TestCoverageWorksMissing(t *testing.T) {
-	ts := serverFor(t, coverageCatalog())
-	code, body := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing")
+	_, ts := newTestServerForCatalog(t, coverageCatalog())
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -189,10 +169,10 @@ func TestCoverageWorksMissing(t *testing.T) {
 }
 
 func TestCoverageWorksHasFilters(t *testing.T) {
-	ts := serverFor(t, coverageCatalog())
+	_, ts := newTestServerForCatalog(t, coverageCatalog())
 
 	// has_characters: alpha-covered + beta-partial (title order).
-	_, body := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=has_characters")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=has_characters")
 	if got := workIDs(body); !reflect.DeepEqual(got, []string{"alpha-covered", "beta-partial"}) {
 		t.Errorf("has_characters = %v, want [alpha-covered beta-partial]", got)
 	}
@@ -209,7 +189,7 @@ func TestCoverageWorksHasFilters(t *testing.T) {
 
 	// has_recaps / has_recap_summary / has_description: only alpha-covered.
 	for _, f := range []string{"has_recaps", "has_recap_summary", "has_description"} {
-		_, body := getJSON(t, ts.URL, "/api/v1/coverage/works?filter="+f)
+		_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter="+f)
 		if got := workIDs(body); !reflect.DeepEqual(got, []string{"alpha-covered"}) {
 			t.Errorf("%s = %v, want [alpha-covered]", f, got)
 		}
@@ -217,9 +197,9 @@ func TestCoverageWorksHasFilters(t *testing.T) {
 }
 
 func TestCoverageWorksPagination(t *testing.T) {
-	ts := serverFor(t, coverageCatalog())
+	_, ts := newTestServerForCatalog(t, coverageCatalog())
 
-	_, body := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&limit=2&offset=0")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&limit=2&offset=0")
 	if got, _ := body["total"].(float64); got != 4 {
 		t.Errorf("total = %v, want 4", got)
 	}
@@ -230,7 +210,7 @@ func TestCoverageWorksPagination(t *testing.T) {
 		t.Errorf("page 1 = %v", got)
 	}
 
-	_, body = getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&limit=2&offset=2")
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&limit=2&offset=2")
 	if got := workIDs(body); !reflect.DeepEqual(got, []string{"gamma-bare", "multi"}) {
 		t.Errorf("page 2 = %v", got)
 	}
@@ -239,7 +219,7 @@ func TestCoverageWorksPagination(t *testing.T) {
 	}
 
 	// Offset past the end returns an empty page but the true total.
-	_, body = getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&offset=10")
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&offset=10")
 	if got := workIDs(body); len(got) != 0 {
 		t.Errorf("over-offset page = %v, want empty", got)
 	}
@@ -249,10 +229,10 @@ func TestCoverageWorksPagination(t *testing.T) {
 }
 
 func TestCoverageWorksSearch(t *testing.T) {
-	ts := serverFor(t, coverageCatalog())
+	_, ts := newTestServerForCatalog(t, coverageCatalog())
 
 	// Title token, case-insensitive (the query runs through the FTS index).
-	_, body := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=MULTI")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=MULTI")
 	if got := workIDs(body); !reflect.DeepEqual(got, []string{"multi"}) {
 		t.Errorf("q=MULTI = %v, want [multi]", got)
 	}
@@ -262,14 +242,14 @@ func TestCoverageWorksSearch(t *testing.T) {
 
 	// An author name matches every work by that author (the FTS row carries the
 	// work's people, not just its title).
-	_, body = getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=Author")
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=Author")
 	if got, _ := body["total"].(float64); got != 4 {
 		t.Errorf("q=Author total = %v, want 4", got)
 	}
 
 	// Punctuation is not an operator: a query of nothing but a metacharacter
 	// matches nothing rather than everything (or erroring the MATCH).
-	_, body = getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=%25")
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=%25")
 	if got, _ := body["total"].(float64); got != 0 {
 		t.Errorf("q=%%%% total = %v, want 0", got)
 	}
@@ -280,7 +260,7 @@ func TestCoverageWorksSearch(t *testing.T) {
 // row by row (what the LIKE '%...%' predicate it replaced forced on every
 // request).
 func TestCoverageSearchIsIndexed(t *testing.T) {
-	snap := snapshotFor(t, coverageCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, coverageCatalog()))
 	where, args, ok := snap.coverageWhere(filterMissing, "multi", nil)
 	if !ok {
 		t.Fatal("coverage filter unexpectedly unavailable")
@@ -293,8 +273,8 @@ func TestCoverageSearchIsIndexed(t *testing.T) {
 }
 
 func TestCoverageWorksUnknownFilter(t *testing.T) {
-	ts := serverFor(t, coverageCatalog())
-	code, _ := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=bogus")
+	_, ts := newTestServerForCatalog(t, coverageCatalog())
+	code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=bogus")
 	if code != 400 {
 		t.Errorf("unknown filter status = %d, want 400", code)
 	}
@@ -343,8 +323,8 @@ func gapIDs(body map[string]any) []string {
 }
 
 func TestCoverageSeriesGaps(t *testing.T) {
-	ts := serverFor(t, gapCatalog())
-	code, body := getJSON(t, ts.URL, "/api/v1/coverage/series-gaps")
+	_, ts := newTestServerForCatalog(t, gapCatalog())
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/series-gaps")
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
@@ -380,10 +360,10 @@ func TestCoverageSeriesGaps(t *testing.T) {
 }
 
 func TestCoverageSeriesGapsPageAndSearch(t *testing.T) {
-	ts := serverFor(t, gapCatalog())
+	_, ts := newTestServerForCatalog(t, gapCatalog())
 
 	// Second page of one item.
-	_, body := getJSON(t, ts.URL, "/api/v1/coverage/series-gaps?limit=1&offset=1")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/series-gaps?limit=1&offset=1")
 	if got := gapIDs(body); !reflect.DeepEqual(got, []string{"sg-int"}) {
 		t.Errorf("page = %v, want [sg-int]", got)
 	}
@@ -392,7 +372,7 @@ func TestCoverageSeriesGapsPageAndSearch(t *testing.T) {
 	}
 
 	// Name search, case-insensitive.
-	_, body = getJSON(t, ts.URL, "/api/v1/coverage/series-gaps?q=RANGE")
+	_, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/series-gaps?q=RANGE")
 	if got := gapIDs(body); !reflect.DeepEqual(got, []string{"sg-range"}) {
 		t.Errorf("q=RANGE = %v, want [sg-range]", got)
 	}
@@ -406,14 +386,12 @@ func TestCoverageSeriesGapsPageAndSearch(t *testing.T) {
 // and the works browser reports available:false with no rows - but series_gaps
 // is still computed.
 func TestCoverageDegradesV1(t *testing.T) {
-	dbPath := buildFixtureDB(t, fixtureCatalog())
-	rollbackSchema(t, dbPath, 1,
-		"DROP TABLE characters", "DROP TABLE character_aliases",
-		"DROP TABLE recaps", "DROP TABLE recap_summaries")
+	dbPath := artifacttest.Downgraded(t, artifacttest.Fixture(), 1,
+		"characters", "character_aliases", "recaps", "recap_summaries")
 
 	_, ts := serveDB(t, dbPath, HandlerOptions{})
 
-	code, body := getJSON(t, ts.URL, "/api/v1/coverage")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
 	}
@@ -428,7 +406,7 @@ func TestCoverageDegradesV1(t *testing.T) {
 	}
 
 	// The works browser is unavailable at v1: an empty page, available:false.
-	_, wb := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing")
+	_, wb := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing")
 	if wb["available"] != false {
 		t.Errorf("v1 works available = %v, want false", wb["available"])
 	}
@@ -437,7 +415,7 @@ func TestCoverageDegradesV1(t *testing.T) {
 	}
 
 	// series_gaps still computed from v1 data: stormlight has 1,2,10 => 3..9.
-	_, gaps := getJSON(t, ts.URL, "/api/v1/coverage/series-gaps")
+	_, gaps := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/series-gaps")
 	if got := gapIDs(gaps); !reflect.DeepEqual(got, []string{"the-stormlight-archive"}) {
 		t.Fatalf("v1 gaps = %v", got)
 	}
@@ -452,12 +430,11 @@ func TestCoverageDegradesV1(t *testing.T) {
 // it is not a missing dimension, and a "has_recap_summary" filter is
 // unavailable - but characters/recaps filters work normally.
 func TestCoverageDegradesV2(t *testing.T) {
-	dbPath := buildFixtureDB(t, fixtureCatalog())
-	rollbackSchema(t, dbPath, 2, "DROP TABLE recap_summaries")
+	dbPath := artifacttest.Downgraded(t, artifacttest.Fixture(), 2, "recap_summaries")
 
 	_, ts := serveDB(t, dbPath, HandlerOptions{})
 
-	_, body := getJSON(t, ts.URL, "/api/v1/coverage")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage")
 	totals := body["totals"].(map[string]any)
 	if got, _ := totals["with_characters"].(float64); got != 1 {
 		t.Errorf("v2 with_characters = %v, want 1", got)
@@ -471,7 +448,7 @@ func TestCoverageDegradesV2(t *testing.T) {
 
 	// The missing filter is evaluable; project-hail-mary (characters+recaps) is
 	// covered, no row cites recap_summary, and the three bare works remain.
-	_, wb := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing")
+	_, wb := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing")
 	if got, _ := wb["total"].(float64); got != 3 {
 		t.Errorf("v2 missing total = %v, want 3", got)
 	}
@@ -488,7 +465,7 @@ func TestCoverageDegradesV2(t *testing.T) {
 	}
 
 	// The recap-summary filter is unavailable (table absent).
-	_, hs := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=has_recap_summary")
+	_, hs := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?filter=has_recap_summary")
 	if hs["available"] != false {
 		t.Errorf("v2 has_recap_summary available = %v, want false", hs["available"])
 	}
@@ -515,27 +492,6 @@ func TestCoveredIntegers(t *testing.T) {
 		if got := coveredIntegers(c.in); !reflect.DeepEqual(got, c.want) {
 			t.Errorf("coveredIntegers(%q) = %v, want %v", c.in, got, c.want)
 		}
-	}
-}
-
-// rollbackSchema mutates an artifact in place to look like an older schema
-// version: it runs the given DROP statements and stamps meta.schema_version.
-func rollbackSchema(t *testing.T, dbPath string, version int, drops ...string) {
-	t.Helper()
-	db, err := sql.Open("sqlite", dbPath)
-	if err != nil {
-		t.Fatal(err)
-	}
-	for _, stmt := range drops {
-		if _, err := db.Exec(stmt); err != nil {
-			t.Fatal(err)
-		}
-	}
-	if _, err := db.Exec("UPDATE meta SET value=? WHERE key='schema_version'", version); err != nil {
-		t.Fatal(err)
-	}
-	if err := db.Close(); err != nil {
-		t.Fatal(err)
 	}
 }
 

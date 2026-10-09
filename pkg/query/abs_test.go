@@ -4,13 +4,14 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // absServer builds a server over cat and returns its base URL.
 func absServer(t *testing.T, cat *model.Catalog) string {
 	t.Helper()
-	dbPath := buildFixtureDB(t, cat)
+	dbPath := artifacttest.Build(t, cat)
 	_, ts := serveDB(t, dbPath, HandlerOptions{})
 	return ts.URL
 }
@@ -20,7 +21,7 @@ func absServer(t *testing.T, cat *model.Catalog) string {
 // hard-fails on that), so a passing call proves the array invariant.
 func absMatches(t *testing.T, base, path string) (int, []any) {
 	t.Helper()
-	code, body := getJSON(t, base, path)
+	code, body := artifacttest.GetJSON(t, base, path)
 	if code == 200 {
 		raw, ok := body["matches"]
 		if !ok || raw == nil {
@@ -176,10 +177,10 @@ func TestABSCommunityDescriptionCarriesItsAttribution(t *testing.T) {
 
 func TestABSEmptyQuery400(t *testing.T) {
 	base := absServer(t, absFixture())
-	if code, _ := getJSON(t, base, "/abs/search"); code != 400 {
+	if code, _ := artifacttest.GetJSON(t, base, "/abs/search"); code != 400 {
 		t.Errorf("missing query: status %d, want 400", code)
 	}
-	if code, _ := getJSON(t, base, "/abs/search?query=%20%20"); code != 400 {
+	if code, _ := artifacttest.GetJSON(t, base, "/abs/search?query=%20%20"); code != 400 {
 		t.Errorf("blank query: status %d, want 400", code)
 	}
 	// mediaType is accepted/ignored; a real query still succeeds.

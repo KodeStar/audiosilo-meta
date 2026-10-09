@@ -1,12 +1,12 @@
 package query
 
 import (
-	"database/sql"
 	"fmt"
 	"net/http"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/internal/build"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -16,7 +16,7 @@ import (
 // table scan per 404 - and 404s are what a crawler and a stale client produce
 // most of.
 func TestRedirectLookupIsIndexed(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	assertNoFullScan(t, queryPlan(t, snap, redirectTargetSQL, "works", "project-hail-mary-audiobook"))
 }
 
@@ -25,7 +25,7 @@ func TestRedirectLookupIsIndexed(t *testing.T) {
 // covered end to end by TestRedirectsTolerateOlderArtifact, and the empty-table
 // short circuit by TestRedirectTargetSkipsAnEmptyTable.)
 func TestRedirectTargetResolves(t *testing.T) {
-	snap := snapshotFor(t, fixtureCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	got, err := snap.redirectTarget("works", "project-hail-mary-audiobook")
 	if err != nil || got != "project-hail-mary" {
 		t.Errorf("redirectTarget(works) = %q, %v", got, err)
@@ -43,9 +43,9 @@ func TestRedirectTargetResolves(t *testing.T) {
 // nothing answers without touching the table, which matters because the chapters
 // route consults the redirects on an ordinary 200 (an empty chapter list).
 func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	cat.Redirects = nil
-	snap := snapshotFor(t, cat)
+	snap := openTestDB(t, artifacttest.Build(t, cat))
 	if snap.hasRedirects {
 		t.Error("hasRedirects is true for a catalogue with no redirects")
 	}
@@ -53,7 +53,7 @@ func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
 		t.Errorf("empty table = %q, %v, want no hit and no error", got, err)
 	}
 	// And with redirects present the memo says so, so the query does run.
-	if full := snapshotFor(t, fixtureCatalog()); !full.hasRedirects {
+	if full := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture())); !full.hasRedirects {
 		t.Error("hasRedirects is false for a catalogue that holds redirects")
 	}
 }
@@ -63,11 +63,11 @@ func TestRedirectTargetSkipsAnEmptyTable(t *testing.T) {
 // request must fall through to the 404 it was already heading for rather than
 // 301-ing a following client back to the same URL forever.
 func TestSelfRedirectDoesNotLoop(t *testing.T) {
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	cat.Redirects = model.Redirects{model.RedirectWorks: {"ghost-work": "ghost-work"}}
-	ts := serverFor(t, cat)
+	_, ts := newTestServerForCatalog(t, cat)
 
-	resp := getNoFollow(t, ts.URL, "/api/v1/works/ghost-work")
+	resp := artifacttest.GetNoFollow(t, ts.URL, "/api/v1/works/ghost-work")
 	if resp.StatusCode != http.StatusNotFound {
 		t.Errorf("status = %d, want 404: a self-redirect must not be served", resp.StatusCode)
 	}
@@ -85,19 +85,10 @@ func TestSelfRedirectDoesNotLoop(t *testing.T) {
 // at: a later table bumps SchemaVersion past it, and the message names the
 // version the artifact actually claims.
 func TestRedirectVersionClaimRequiresTheTable(t *testing.T) {
-	path := buildFixtureDB(t, fixtureCatalog())
-	db, err := sql.Open("sqlite", path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if _, err := db.Exec(`DROP TABLE redirects`); err != nil {
-		t.Fatal(err)
-	}
-	if err := db.Close(); err != nil {
-		t.Fatal(err)
-	}
+	// The builder's own version, CLAIMED without the table it implies.
+	path := artifacttest.Downgraded(t, artifacttest.Fixture(), build.SchemaVersion, "redirects")
 
-	_, err = Open(path, "")
+	_, err := Open(path, "")
 	if err == nil {
 		t.Fatal("openSnapshot accepted a redirect-claiming artifact with no redirects table")
 	}

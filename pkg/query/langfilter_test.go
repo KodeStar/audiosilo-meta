@@ -10,16 +10,17 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// langFilterCatalog is languagesCatalog plus the shapes the ?lang= filter has to
+// langFilterCatalog is artifacttest.Languages plus the shapes the ?lang= filter has to
 // judge: a work carrying a REGIONAL tag (buch-zwei, de-at), a series whose members
 // TIE between two languages (mixed-saga, which therefore derives none), and four
 // "Saga Tales" editions by two authors in three languages for the Audiobookshelf
 // ranking (author dominant, then language).
 func langFilterCatalog() *model.Catalog {
-	cat := languagesCatalog()
+	cat := artifacttest.Languages()
 	cat.People = append(cat.People, &model.Person{ID: "max-muster", Name: "Max Muster", License: "CC0-1.0"})
 	work := func(id, title, lang, author string) *model.Work {
 		return &model.Work{ID: id, Title: title, Language: lang, Authors: []string{author}, License: "CC0-1.0"}
@@ -148,7 +149,7 @@ func TestFTSSearchQueryWithoutAFilterIsUnchanged(t *testing.T) {
 // pageIDs is the "id" of every search result, in order.
 func pageIDs(t *testing.T, base, path string) []string {
 	t.Helper()
-	code, body := getJSON(t, base, path)
+	code, body := artifacttest.GetJSON(t, base, path)
 	if code != http.StatusOK {
 		t.Fatalf("GET %s: status %d, body %v", path, code, body)
 	}
@@ -220,7 +221,7 @@ func TestSearchFiltersByLanguage(t *testing.T) {
 // derived language where there is one, omitted on a tie.
 func TestSeriesResultCarriesItsLanguage(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, langFilterCatalog())
-	_, body := getJSON(t, ts.URL, "/api/v1/series/search?q=saga")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/series/search?q=saga")
 	langs := map[string]any{}
 	for _, r := range body["results"].([]any) {
 		m := r.(map[string]any)
@@ -279,16 +280,16 @@ func TestSearchBoostsObeyTheLanguageFilter(t *testing.T) {
 func TestLatestAndCoverageFilterByLanguage(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, langFilterCatalog())
 
-	_, latest := getJSON(t, ts.URL, "/api/v1/works/latest?lang=de")
+	_, latest := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?lang=de")
 	if got := ids(t, latest["works"]); !sameSet(got, "buch-eins", "sammelband", "buch-zwei", "saga-tales-de", "saga-tales-jane-de") {
 		t.Errorf("works/latest?lang=de = %v", got)
 	}
-	_, latest = getJSON(t, ts.URL, "/api/v1/works/latest?lang=fr")
+	_, latest = artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?lang=fr")
 	if got := ids(t, latest["works"]); !sameSet(got, "livre-un", "saga-tales-fr") {
 		t.Errorf("works/latest?lang=fr = %v", got)
 	}
 
-	_, cov := getJSON(t, ts.URL, "/api/v1/coverage/works?lang=de")
+	_, cov := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?lang=de")
 	if cov["total"] != float64(5) {
 		t.Errorf("coverage/works?lang=de total = %v, want 5", cov["total"])
 	}
@@ -302,21 +303,21 @@ func TestLatestAndCoverageFilterByLanguage(t *testing.T) {
 	}
 	// A filter selecting most of the catalogue takes the scan form
 	// (worksPredicate) and must answer the same way, the regional tag included.
-	_, cov = getJSON(t, ts.URL, "/api/v1/coverage/works?lang=de,en&limit=100")
+	_, cov = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?lang=de,en&limit=100")
 	if cov["total"] != float64(9) {
 		t.Errorf("coverage/works?lang=de,en total = %v, want 9", cov["total"])
 	}
-	_, latest = getJSON(t, ts.URL, "/api/v1/works/latest?lang=en,de")
+	_, latest = artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?lang=en,de")
 	if got := ids(t, latest["works"]); !slices.Contains(got, "buch-zwei") || slices.Contains(got, "livre-un") {
 		t.Errorf("works/latest?lang=en,de = %v, want the de-at buch-zwei and no French work", got)
 	}
 	// q and lang narrow together.
-	_, cov = getJSON(t, ts.URL, "/api/v1/coverage/works?lang=de&q=saga+tales")
+	_, cov = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?lang=de&q=saga+tales")
 	if cov["total"] != float64(2) {
 		t.Errorf("coverage/works?lang=de&q=saga+tales total = %v, want 2", cov["total"])
 	}
 	// Unfiltered rows carry the language too.
-	_, cov = getJSON(t, ts.URL, "/api/v1/coverage/works")
+	_, cov = artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works")
 	if cov["total"] != float64(11) {
 		t.Errorf("coverage/works total = %v, want 11", cov["total"])
 	}
@@ -340,7 +341,7 @@ func TestLangIsValidated(t *testing.T) {
 		"/api/v1/coverage/works?lang=english",
 		"/api/v1/works/latest?lang=aa,ab,ac,ad,ae,af,ag,ah,ai",
 	} {
-		code, body := getJSON(t, ts.URL, path)
+		code, body := artifacttest.GetJSON(t, ts.URL, path)
 		if code != http.StatusBadRequest {
 			t.Errorf("GET %s: status %d, want 400", path, code)
 			continue
@@ -357,7 +358,7 @@ func TestLangIsValidated(t *testing.T) {
 // (and every other v7 column) still answers unfiltered, while garbage is still a
 // 400 - the parameter is parsed, then ignored.
 func TestLangIsIgnoredBelowTheLanguagesLayer(t *testing.T) {
-	ts := downgradedServer(t, alteredDB(t, langFilterCatalog(), 6))
+	ts := downgradedServer(t, artifacttest.Altered(t, langFilterCatalog(), 6))
 
 	if got := pageIDs(t, ts.URL, "/api/v1/works/search?q=buch&lang=en"); !sameSet(got, "buch-eins", "buch-zwei") {
 		t.Errorf("v6 works/search?q=buch&lang=en = %v, want the unfiltered page", got)
@@ -365,21 +366,21 @@ func TestLangIsIgnoredBelowTheLanguagesLayer(t *testing.T) {
 	if got := pageIDs(t, ts.URL, "/api/v1/series/search?q=saga&lang=fr"); len(got) != 5 {
 		t.Errorf("v6 series/search?q=saga&lang=fr = %v, want all five", got)
 	}
-	_, body := getJSON(t, ts.URL, "/api/v1/series/search?q=saga")
+	_, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/series/search?q=saga")
 	for _, r := range body["results"].([]any) {
 		if lang, has := r.(map[string]any)["language"]; has {
 			t.Errorf("v6 series hit carries language %v", lang)
 		}
 	}
-	_, latest := getJSON(t, ts.URL, "/api/v1/works/latest?lang=fr")
+	_, latest := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/latest?lang=fr")
 	if n := len(ids(t, latest["works"])); n <= 2 {
 		t.Errorf("v6 works/latest?lang=fr = %d works, want the unfiltered list", n)
 	}
-	_, cov := getJSON(t, ts.URL, "/api/v1/coverage/works?lang=fr")
+	_, cov := artifacttest.GetJSON(t, ts.URL, "/api/v1/coverage/works?lang=fr")
 	if cov["total"] != float64(11) {
 		t.Errorf("v6 coverage/works?lang=fr total = %v, want 11", cov["total"])
 	}
-	if code, _ := getJSON(t, ts.URL, "/api/v1/works/search?q=buch&lang=english"); code != http.StatusBadRequest {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/search?q=buch&lang=english"); code != http.StatusBadRequest {
 		t.Errorf("v6 garbage lang: status %d, want 400", code)
 	}
 	// The ABS language route ranks as the unscoped one does.
@@ -462,11 +463,11 @@ func TestABSLanguageRouteEdges(t *testing.T) {
 	}
 
 	for _, seg := range []string{"english", "de_at", "de,english", "%20"} {
-		if code, _ := getJSON(t, ts.URL, "/abs/"+seg+"/search?query=saga"); code != http.StatusNotFound {
+		if code, _ := artifacttest.GetJSON(t, ts.URL, "/abs/"+seg+"/search?query=saga"); code != http.StatusNotFound {
 			t.Errorf("/abs/%s/search: status %d, want 404", seg, code)
 		}
 	}
-	if code, _ := getJSON(t, ts.URL, "/abs/de/search"); code != http.StatusBadRequest {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/abs/de/search"); code != http.StatusBadRequest {
 		t.Errorf("/abs/de/search with no query: status %d, want 400", code)
 	}
 }
@@ -480,7 +481,7 @@ func TestABSLanguageRouteEdges(t *testing.T) {
 // than one read of the table (worksPredicate). The fixture is 4 en, 5 de (one
 // tagged de-at) and 2 fr of 11.
 func TestLanguageFilteredQueriesUseTheLanguageIndex(t *testing.T) {
-	snap := snapshotFor(t, langFilterCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, langFilterCatalog()))
 
 	// The boosts' filter reads the ids it was handed by primary key.
 	pred, predArgs := langFilter{"de"}.predicate("language", false)
@@ -554,7 +555,7 @@ func TestLangFilterForIsTheOneGate(t *testing.T) {
 // both: it keeps both windows, and with every work in its "author missed" half the
 // order it ranks is (language, the rest), the no-author order.
 func TestABSSkipsTheUnfilteredWindowWhenItCannotReachThePage(t *testing.T) {
-	snap := snapshotFor(t, langFilterCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, langFilterCatalog()))
 	de := langFilter{"de"} // two German "Saga Tales" of four
 
 	ids, _, err := snap.absCandidates(t.Context(), "saga tales", "", 2, de)
@@ -615,7 +616,7 @@ func TestBoostProbesFilterInsideTheirWindows(t *testing.T) {
 	cat.Works = append(cat.Works, work("saga-chronicles-de-vol", "Band vier", "de"))
 	cat.Series = append(cat.Series, &model.Series{ID: "zz-saga-chronicles-de", Name: "Saga Chronicles", License: "CC0-1.0",
 		Works: []model.SeriesWork{{Work: "saga-chronicles-de-vol", Position: "4"}}})
-	snap := snapshotFor(t, cat)
+	snap := openTestDB(t, artifacttest.Build(t, cat))
 	de := langFilter{"de"}
 
 	if q, args := exactTitleQuery("dune", nil); q != exactTitleSQL || len(args) != 2 {

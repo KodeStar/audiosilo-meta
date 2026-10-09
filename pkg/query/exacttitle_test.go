@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -92,7 +93,7 @@ func exactTitleCatalog() *model.Catalog {
 // the page, on the combined search and on the works scope alike, in every
 // spelling nameKey folds together.
 func TestExactTitleBoost(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
 	cases := []struct {
 		query string
@@ -128,7 +129,7 @@ func TestExactTitleBoost(t *testing.T) {
 // The fixture reproduces that, so the assertion above is not passing by accident
 // on a page that was already right.
 func TestExactTitleBoostFixesTheRanking(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
 	hits, err := snap.ftsHits(t.Context(), kindWork, ftsQuery("spare"), 20, nil)
 	if err != nil {
@@ -150,7 +151,7 @@ func TestExactTitleBoostFixesTheRanking(t *testing.T) {
 // TestExactTitleBoostIsDeterministic: two works share the title "Spare Parts",
 // so the order they boost in may not depend on the row order the probe returned.
 func TestExactTitleBoostIsDeterministic(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 	want := []string{"spare-parts", "spare-parts-andy-weir"}
 	for i := 0; i < 5; i++ {
 		hits, err := snap.exactTitleHits(t.Context(), "Spare Parts", nil)
@@ -167,7 +168,7 @@ func TestExactTitleBoostIsDeterministic(t *testing.T) {
 // title: a prefix, a fragment, a title with extra words, and a query that names
 // nothing all resolve nothing, so the page is the one FTS produced.
 func TestExactTitleMisses(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 	for _, q := range []string{
 		"spar",              // half-typed: no prefix-star on the probe
 		"parts",             // a fragment of a title is not the title
@@ -204,7 +205,7 @@ func TestExactTitleMisses(t *testing.T) {
 // filter means a PERSON and a SERIES named "Spare" can never be boosted onto the
 // combined page as works either.
 func TestExactTitleBoostsOnlyWorks(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
 	hits, err := snap.exactTitleHits(t.Context(), "Spare", nil)
 	if err != nil {
@@ -233,7 +234,7 @@ func TestExactTitleBoostsOnlyWorks(t *testing.T) {
 // query is never probed at all. The fixture holds works actually titled "The",
 // "A" and "S", so a nil answer here is the SKIP, not an absence of data.
 func TestExactTitleSkipsJunkQueries(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 	for _, q := range []string{"the", "The", "a", "s", "S", "the a of", "  ", ""} {
 		hits, err := snap.exactTitleHits(t.Context(), q, nil)
 		if err != nil {
@@ -283,7 +284,7 @@ func TestWorthTitleProbing(t *testing.T) {
 // query matches the names column - which boosted Prince Harry's "Spare" for the
 // query "spare harry", a string that is nobody's title.
 func TestTitleMatchFiltersEveryPhrase(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
 	cases := map[string]string{
 		"spare harry": `title : ("spare" "harry")`,
@@ -318,7 +319,7 @@ func TestTitleMatchFiltersEveryPhrase(t *testing.T) {
 // and the position is an inference, so the title leads and the volume follows -
 // both ahead of the FTS page.
 func TestExactTitleLeadsTheSeriesPositionBoost(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
 	// Both probes really do fire for this query.
 	title, err := snap.exactTitleHits(t.Context(), "halo 2", nil)
@@ -350,7 +351,7 @@ func TestExactTitleLeadsTheSeriesPositionBoost(t *testing.T) {
 // than a 500, and says so in the log. Both probes run against the same handle,
 // so a closed one exercises both degradation paths at once.
 func TestBoostProbeErrorDegrades(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 	var logged bytes.Buffer
 	snap.log = log.New(&logged, "", 0)
 	_ = snap.Close()
@@ -366,13 +367,19 @@ func TestBoostProbeErrorDegrades(t *testing.T) {
 }
 
 // TestBoostProbeErrorDegradesWithoutALogger is the same degradation on a
-// snapshot nobody injected a logger into - openSnapshot's own product, which is
+// snapshot nobody injected a logger into - Open's own product, which is
 // what a test, a CLI or any future direct caller holds. The notices go through
 // DB.logf for exactly this reason: s.log is nil there, and calling
 // Printf on it is a nil dereference inside a path whose whole promise is that a
 // failed probe costs the boost and nothing else.
 func TestBoostProbeErrorDegradesWithoutALogger(t *testing.T) {
-	snap := snapshotFor(t, exactTitleCatalog())
+	// Open directly: openTestDB injects a logger, which is the one thing this
+	// test needs absent.
+	snap, err := Open(artifacttest.Build(t, exactTitleCatalog()), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = snap.Close() })
 	if snap.log != nil {
 		t.Fatal("openSnapshot injected a logger - this test no longer pins anything")
 	}
