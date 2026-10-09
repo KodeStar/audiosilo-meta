@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/internal/releasetest"
 )
 
 const testWebhookSecret = "0123456789abcdef0123456789abcdef"
@@ -32,7 +33,7 @@ func signWebhook(body, secret string) string {
 	return "sha256=" + hex.EncodeToString(mac.Sum(nil))
 }
 
-func newWebhookServer(t *testing.T, seed string, fake *fakeGitHub) *Server {
+func newWebhookServer(t *testing.T, seed string, fake *releasetest.GitHub) *Server {
 	t.Helper()
 	srv, err := New(Config{
 		DBPath:        seed,
@@ -45,7 +46,7 @@ func newWebhookServer(t *testing.T, seed string, fake *fakeGitHub) *Server {
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = srv.newGHClient("owner/name", fake.srv.URL)
+	srv.gh = srv.newGHClient("owner/name", fake.URL)
 	return srv
 }
 
@@ -114,7 +115,7 @@ func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
 
 func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
 
@@ -137,14 +138,14 @@ func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
 			}
 		})
 	}
-	if got := fake.fullFetch.Load(); got != 0 {
+	if got := fake.Lists(); got != 0 {
 		t.Fatalf("rejected webhooks fetched releases %d times, want 0", got)
 	}
 }
 
 func TestWebhookIgnoresUnrelatedSignedEvents(t *testing.T) {
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
 	srv := newWebhookServer(t, seed, fake)
 
 	tests := []struct {
@@ -165,14 +166,14 @@ func TestWebhookIgnoresUnrelatedSignedEvents(t *testing.T) {
 			}
 		})
 	}
-	if got := fake.fullFetch.Load(); got != 0 {
+	if got := fake.Lists(); got != 0 {
 		t.Fatalf("ignored webhooks fetched releases %d times, want 0", got)
 	}
 }
 
 func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
-	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
 	srv := newWebhookServer(t, v1Path, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
 
@@ -201,7 +202,7 @@ func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 // that refreshed synchronously would never answer.
 func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
-	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
 	srv := newWebhookServer(t, v1Path, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
 
@@ -238,7 +239,7 @@ func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 
 func TestWebhookRejectsMalformedSignedJSON(t *testing.T) {
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":`
 
@@ -247,7 +248,7 @@ func TestWebhookRejectsMalformedSignedJSON(t *testing.T) {
 	if rec.Code != http.StatusBadRequest {
 		t.Fatalf("status = %d, want 400", rec.Code)
 	}
-	if got := fake.fullFetch.Load(); got != 0 {
+	if got := fake.Lists(); got != 0 {
 		t.Fatalf("malformed webhook fetched releases %d times, want 0", got)
 	}
 }

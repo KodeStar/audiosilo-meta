@@ -2,7 +2,6 @@ package serve
 
 import (
 	"context"
-	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -13,138 +12,11 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/internal/releasetest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
-
-// knobGitHub is a releases endpoint with the knobs these tests need: it can go
-// down, count per-asset downloads, deliver an asset in timed chunks (slow but
-// perfectly healthy) and stop dead in the middle of one (a stalled transfer).
-// fakeGitHub in github_test.go covers the well-behaved cases; this one exists
-// for the failure shapes, so neither fake has to grow the other's knobs.
-type knobGitHub struct {
-	srv *httptest.Server
-
-	mu      sync.Mutex
-	tag     string
-	assets  map[string][]byte
-	hits    map[string]int
-	down    bool
-	chunk   int           // >0: deliver in chunks of this many bytes
-	pace    time.Duration // delay between chunks
-	hang    string        // asset that delivers half and then goes quiet
-	release chan struct{} // closed at cleanup so a hung handler can return
-}
-
-func newKnobGitHub(t *testing.T, tag string, assets map[string][]byte) *knobGitHub {
-	t.Helper()
-	f := &knobGitHub{tag: tag, assets: assets, hits: map[string]int{}, release: make(chan struct{})}
-	mux := http.NewServeMux()
-	mux.HandleFunc("/repos/owner/name/releases", func(w http.ResponseWriter, _ *http.Request) {
-		f.mu.Lock()
-		defer f.mu.Unlock()
-		if f.down {
-			http.Error(w, "github is down", http.StatusInternalServerError)
-			return
-		}
-		rel := ghRelease{TagName: f.tag, PublishedAt: time.Now()}
-		for name := range f.assets {
-			rel.Assets = append(rel.Assets, ghAsset{Name: name, DownloadURL: f.srv.URL + "/dl/" + f.tag + "/" + name})
-		}
-		_ = json.NewEncoder(w).Encode([]ghRelease{rel})
-	})
-	mux.HandleFunc("/dl/", func(w http.ResponseWriter, r *http.Request) {
-		_, name, _ := strings.Cut(strings.TrimPrefix(r.URL.Path, "/dl/"), "/")
-		f.mu.Lock()
-		data, ok := f.assets[name]
-		chunk, pace, hang := f.chunk, f.pace, f.hang == name
-		if ok {
-			f.hits[name]++
-		}
-		f.mu.Unlock()
-		if !ok {
-			http.NotFound(w, r)
-			return
-		}
-		flush := func() {
-			if fl, ok := w.(http.Flusher); ok {
-				fl.Flush()
-			}
-		}
-		if hang {
-			_, _ = w.Write(data[:len(data)/2])
-			flush()
-			select { // a connection that is up and simply never delivers again
-			case <-r.Context().Done():
-			case <-f.release:
-			}
-			return
-		}
-		if chunk > 0 {
-			for off := 0; off < len(data); off += chunk {
-				end := min(off+chunk, len(data))
-				if _, err := w.Write(data[off:end]); err != nil {
-					return
-				}
-				flush()
-				time.Sleep(pace)
-			}
-			return
-		}
-		_, _ = w.Write(data)
-	})
-	f.srv = httptest.NewServer(mux)
-	t.Cleanup(func() { close(f.release); f.srv.Close() })
-	return f
-}
-
-func (f *knobGitHub) publish(tag string, assets map[string][]byte) {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	f.tag, f.assets, f.hits = tag, assets, map[string]int{}
-}
-
-func (f *knobGitHub) setDown(v bool)     { f.mu.Lock(); f.down = v; f.mu.Unlock() }
-func (f *knobGitHub) hangOn(name string) { f.mu.Lock(); f.hang = name; f.mu.Unlock() }
-
-func (f *knobGitHub) throttle(chunk int, pace time.Duration) {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	f.chunk, f.pace = chunk, pace
-}
-
-func (f *knobGitHub) hitCount(name string) int {
-	f.mu.Lock()
-	defer f.mu.Unlock()
-	return f.hits[name]
-}
-
-// knobServer seeds a server from a local artifact (so New does not poll) and
-// points it at the knob fake.
-func knobServer(t *testing.T, seed, cache string, f *knobGitHub, grace time.Duration) *Server {
-	t.Helper()
-	srv, err := New(Config{DBPath: seed, Repo: "owner/name", CacheDir: cache, swapGrace: grace})
-	if err != nil {
-		t.Fatal(err)
-	}
-	srv.gh = srv.newGHClient("owner/name", f.srv.URL)
-	return srv
-}
-
-// cacheNames lists the cache directory.
-func cacheNames(t *testing.T, dir string) []string {
-	t.Helper()
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		t.Fatal(err)
-	}
-	out := make([]string, 0, len(entries))
-	for _, e := range entries {
-		out = append(out, e.Name())
-	}
-	return out
-}
 
 func hasTempFile(names []string) bool {
 	for _, n := range names {
@@ -181,23 +53,23 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 	v3 := readDB(t, artifacttest.Build(t, v3Catalog()))
 	cache := t.TempDir()
 
-	f := newKnobGitHub(t, tagR1, makeAssets(t, v1, "", nil))
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
 	// A grace long enough that nothing is collected by a timer during the test:
 	// every file that disappears here disappeared because a prune chose to.
-	srv := knobServer(t, v1Path, cache, f, 10*time.Minute)
+	srv := newPollServerIn(t, v1Path, cache, f, 10*time.Minute)
 
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	first := srv.current() // the handle an in-flight request would be holding
 
-	f.publish(tagR2, makeAssets(t, v2, "", nil))
+	f.Publish(tagR2, makeAssets(t, v2, "", nil))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	second := srv.current()
 
-	f.publish(tagR3, makeAssets(t, v3, "", nil))
+	f.Publish(tagR3, makeAssets(t, v3, "", nil))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
@@ -236,14 +108,14 @@ func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 func TestPruneCollectsArtifactsOnceGraceElapses(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := newKnobGitHub(t, tagR1, makeAssets(t, v1, "", nil))
-	srv := knobServer(t, v1Path, cache, f, 20*time.Millisecond)
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
+	srv := newPollServerIn(t, v1Path, cache, f, 20*time.Millisecond)
 
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	superseded := srv.current().Path()
-	f.publish(tagR2, makeAssets(t, v2, "", nil))
+	f.Publish(tagR2, makeAssets(t, v2, "", nil))
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
@@ -275,16 +147,16 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	assets := makeAssets(t, v2, "", nil)
-	f := newKnobGitHub(t, tagR2, assets)
-	srv := knobServer(t, v1Path, cache, f, time.Minute)
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: assets})
+	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
 	const stall = 300 * time.Millisecond
-	srv.gh = srv.newGHClient("owner/name", f.srv.URL,
+	srv.gh = srv.newGHClient("owner/name", f.URL,
 		release.WithTimeouts(release.Timeouts{Stall: stall, Asset: 30 * time.Second}))
 
 	// Ten chunks, 50ms apart: no gap is anywhere near the stall timeout, but the
 	// download as a whole takes well over it.
 	gz := assets[release.DataAsset]
-	f.throttle(len(gz)/10+1, 50*time.Millisecond)
+	f.Throttle(len(gz)/10+1, 50*time.Millisecond)
 
 	started := time.Now()
 	if err := srv.refresh(context.Background()); err != nil {
@@ -305,10 +177,10 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 func TestStalledDownloadIsAbandoned(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := newKnobGitHub(t, tagR2, makeAssets(t, v2, "", nil))
-	f.hangOn(release.DataAsset)
-	srv := knobServer(t, v1Path, cache, f, time.Minute)
-	srv.gh = srv.newGHClient("owner/name", f.srv.URL,
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	f.HangOn(release.DataAsset)
+	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
+	srv.gh = srv.newGHClient("owner/name", f.URL,
 		release.WithTimeouts(release.Timeouts{Stall: 150 * time.Millisecond, Asset: 30 * time.Second}))
 	before := srv.current()
 
@@ -325,7 +197,7 @@ func TestStalledDownloadIsAbandoned(t *testing.T) {
 	if _, err := os.Stat(srv.dbCachePath(tagR2)); !os.IsNotExist(err) {
 		t.Errorf("partial artifact installed")
 	}
-	if names := cacheNames(t, cache); hasTempFile(names) {
+	if names := releasetest.DirEntries(t, cache); hasTempFile(names) {
 		t.Errorf("temp file leaked: %v", names)
 	}
 	if srv.etag != "" {
@@ -341,8 +213,8 @@ func TestStalledDownloadIsAbandoned(t *testing.T) {
 func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := newKnobGitHub(t, tagR2, makeAssets(t, v2, "", nil))
-	srv := knobServer(t, v1Path, cache, f, time.Minute)
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
 	// What the previous container left behind.
 	if err := os.WriteFile(srv.dbCachePath(tagR2), v2, 0o600); err != nil {
 		t.Fatal(err)
@@ -354,10 +226,10 @@ func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
 		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().Stats().Works, tagR2)
 	}
-	if got := f.hitCount(release.DataAsset); got != 0 {
+	if got := f.Hits(release.DataAsset); got != 0 {
 		t.Errorf("artifact downloaded %d times, want 0 (the cache already held it)", got)
 	}
-	if got := f.hitCount(release.RawDigestAsset); got != 1 {
+	if got := f.Hits(release.RawDigestAsset); got != 1 {
 		t.Errorf("raw checksum fetched %d times, want 1 (the cached file must be verified, not trusted)", got)
 	}
 }
@@ -368,8 +240,8 @@ func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
-	f := newKnobGitHub(t, tagR2, makeAssets(t, v2, "", nil))
-	srv := knobServer(t, v1Path, cache, f, time.Minute)
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
+	srv := newPollServerIn(t, v1Path, cache, f, time.Minute)
 	// A perfectly loadable artifact - just not this release's.
 	if err := os.WriteFile(srv.dbCachePath(tagR2), v1, 0o600); err != nil {
 		t.Fatal(err)
@@ -378,7 +250,7 @@ func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
-	if got := f.hitCount(release.DataAsset); got != 1 {
+	if got := f.Hits(release.DataAsset); got != 1 {
 		t.Errorf("artifact downloaded %d times, want 1 (the mismatched cache file must not be adopted)", got)
 	}
 	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
@@ -394,8 +266,8 @@ func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	_, v1, _, _ := buildV1V2(t)
 	cache := t.TempDir()
-	f := newKnobGitHub(t, tagR1, makeAssets(t, v1, "", nil))
-	f.setDown(true)
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, v1, "", nil)})
+	f.SetDown(true)
 
 	// Seed the volume the way a previous container would have.
 	staleServer := &Server{cfg: Config{CacheDir: cache}, log: artifacttest.QuietLogger()}
@@ -403,7 +275,7 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: cache, apiBase: f.srv.URL,
+	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: cache, apiBase: f.URL,
 		swapGrace: time.Minute, bootRetry: time.Hour})
 	if err != nil {
 		t.Fatalf("New must not fail: %v", err)
@@ -431,14 +303,14 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	}
 
 	// GitHub comes back: the stale artifact is confirmed, not re-downloaded.
-	f.setDown(false)
+	f.SetDown(false)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
 	if srv.loaded != tagR1 {
 		t.Errorf("loaded = %q, want %q once the release confirmed the cached artifact", srv.loaded, tagR1)
 	}
-	if got := f.hitCount(release.DataAsset); got != 0 {
+	if got := f.Hits(release.DataAsset); got != 0 {
 		t.Errorf("artifact downloaded %d times, want 0", got)
 	}
 }
@@ -454,9 +326,9 @@ func TestDegradedBootWithNothingCachedStillServes503(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(cache, "someone-elses.sqlite"), []byte("garbage"), 0o600); err != nil {
 		t.Fatal(err)
 	}
-	f := newKnobGitHub(t, tagR1, map[string][]byte{})
-	f.setDown(true)
-	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: cache, apiBase: f.srv.URL,
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: map[string][]byte{}})
+	f.SetDown(true)
+	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: cache, apiBase: f.URL,
 		swapGrace: time.Minute, bootRetry: time.Hour})
 	if err != nil {
 		t.Fatalf("New must not fail: %v", err)
@@ -491,9 +363,9 @@ func TestTagFromCacheName(t *testing.T) {
 // even once the loop had backed off to the poll interval, sending clients back
 // dozens of times before anything could have changed.
 func TestRetryAfterReportsTheCurrentWait(t *testing.T) {
-	f := newKnobGitHub(t, tagR1, map[string][]byte{})
-	f.setDown(true)
-	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: t.TempDir(), apiBase: f.srv.URL,
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: map[string][]byte{}})
+	f.SetDown(true)
+	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: t.TempDir(), apiBase: f.URL,
 		swapGrace: time.Minute, bootRetry: 30 * time.Second, Interval: time.Hour})
 	if err != nil {
 		t.Fatal(err)
@@ -531,9 +403,9 @@ func TestRetryAfterReportsTheCurrentWait(t *testing.T) {
 // TestPollLoopPublishesItsBackoff: the header is only right if the loop keeps it
 // in step with the wait it is actually sleeping on.
 func TestPollLoopPublishesItsBackoff(t *testing.T) {
-	f := newKnobGitHub(t, tagR1, map[string][]byte{})
-	f.setDown(true)
-	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: t.TempDir(), apiBase: f.srv.URL,
+	f := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: map[string][]byte{}})
+	f.SetDown(true)
+	srv, err := New(Config{Poll: true, Repo: "owner/name", CacheDir: t.TempDir(), apiBase: f.URL,
 		swapGrace: time.Minute, bootRetry: 5 * time.Millisecond, Interval: 5 * time.Second})
 	if err != nil {
 		t.Fatal(err)

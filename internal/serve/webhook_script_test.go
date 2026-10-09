@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/internal/releasetest"
 )
 
 // The SENDER of the release webhook is .github/scripts/notify-release.sh, and
@@ -73,7 +74,7 @@ func TestReleaseNotifyScriptIsAcceptedByTheHandler(t *testing.T) {
 	signature, payload := notifyReleaseScript(t, "owner/name", testWebhookSecret)
 
 	v1Path, _, _, v2 := buildV1V2(t)
-	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR2, Assets: makeAssets(t, v2, "", nil)})
 	srv := newWebhookServer(t, v1Path, fake)
 
 	rec := httptest.NewRecorder()
@@ -108,7 +109,7 @@ func TestReleaseNotifyScriptSignatureCoversThePayload(t *testing.T) {
 	}
 
 	seed := artifacttest.Build(t, artifacttest.Fixture())
-	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: tagR1, Assets: makeAssets(t, readDB(t, seed), "", nil)})
 	srv := newWebhookServer(t, seed, fake)
 
 	rec := httptest.NewRecorder()
@@ -116,7 +117,7 @@ func TestReleaseNotifyScriptSignatureCoversThePayload(t *testing.T) {
 	if rec.Code != http.StatusUnauthorized {
 		t.Fatalf("a tampered body under the script's signature = %d, want 401", rec.Code)
 	}
-	if got := fake.fullFetch.Load(); got != 0 {
+	if got := fake.Lists(); got != 0 {
 		t.Fatalf("the rejected delivery fetched releases %d times, want 0", got)
 	}
 }

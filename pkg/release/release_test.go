@@ -2,10 +2,7 @@ package release
 
 import (
 	"bytes"
-	"compress/gzip"
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
 	"io"
 	"log"
 	"net/http"
@@ -15,44 +12,28 @@ import (
 	"strings"
 	"sync/atomic"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/releasetest"
 )
 
-// hexDigest is data's sha256 as lowercase hex.
-func hexDigest(data []byte) string {
-	sum := sha256.Sum256(data)
-	return hex.EncodeToString(sum[:])
+// clientFor is a Client pointed at fake, with its notices discarded.
+func clientFor(fake *releasetest.GitHub, opts ...Option) *Client {
+	return New(releasetest.Repo, "", append([]Option{WithAPIBase(fake.URL), WithLogger(log.New(io.Discard, "", 0))}, opts...)...)
 }
 
-// sumFile builds a `sha256sum`-format checksum file over data for name.
-func sumFile(name string, data []byte) []byte {
-	return []byte(hexDigest(data) + "  " + name + "\n")
-}
-
-// gzOf gzips b.
-func gzOf(t *testing.T, b []byte) []byte {
-	t.Helper()
-	var buf bytes.Buffer
-	zw := gzip.NewWriter(&buf)
-	if _, err := zw.Write(b); err != nil {
-		t.Fatal(err)
+// TestReleasetestNamesTheContract: internal/releasetest cannot import this
+// package (these tests import it), so it spells the asset names as literals -
+// pinned here to the constants they stand for.
+func TestReleasetestNamesTheContract(t *testing.T) {
+	got := releasetest.DataAssets(t, []byte("raw"))
+	for _, name := range []string{DataAsset, DataDigestAsset, RawDigestAsset} {
+		if _, ok := got[name]; !ok {
+			t.Errorf("releasetest.DataAssets has no %s asset", name)
+		}
 	}
-	if err := zw.Close(); err != nil {
-		t.Fatal(err)
+	if len(got) != 3 {
+		t.Errorf("releasetest.DataAssets = %d assets, want the contract's 3", len(got))
 	}
-	return buf.Bytes()
-}
-
-func dirEntries(t *testing.T, dir string) []string {
-	t.Helper()
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		t.Fatal(err)
-	}
-	names := make([]string, 0, len(entries))
-	for _, e := range entries {
-		names = append(names, e.Name())
-	}
-	return names
 }
 
 // TestInstallVerified covers the checksum gate every streamed asset now goes
@@ -60,7 +41,7 @@ func dirEntries(t *testing.T, dir string) []string {
 // behind), and an unusable checksum file is an error rather than a panic.
 func TestInstallVerified(t *testing.T) {
 	data := []byte("the compressed artifact bytes")
-	good := sumFile("meta.sqlite.gz", data)
+	good := releasetest.SumFile("meta.sqlite.gz", data)
 	want, err := ExpectedDigest(good)
 	if err != nil {
 		t.Fatalf("expectedDigest: %v", err)
@@ -96,11 +77,11 @@ func TestInstallVerified(t *testing.T) {
 // must leave nothing behind, even though the decompression itself succeeded.
 func TestGunzipStreamTo(t *testing.T) {
 	payload := []byte("hello sqlite")
-	gz := gzOf(t, payload)
+	gz := releasetest.Gzip(t, payload)
 	dir := t.TempDir()
 
 	dst := filepath.Join(dir, "nested", "out.bin")
-	if _, err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), decompressFloor); err != nil {
+	if _, err := gunzipStreamTo(bytes.NewReader(gz), dst, releasetest.Digest(gz), decompressFloor); err != nil {
 		t.Fatal(err)
 	}
 	got, err := os.ReadFile(dst)
@@ -114,7 +95,7 @@ func TestGunzipStreamTo(t *testing.T) {
 	// A valid gz carrying the wrong bytes: decompression succeeds, the digest
 	// gate does not, and no file is installed.
 	bad := filepath.Join(dir, "bad.bin")
-	_, err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz), decompressFloor)
+	_, err = gunzipStreamTo(bytes.NewReader(releasetest.Gzip(t, []byte("tampered"))), bad, releasetest.Digest(gz), decompressFloor)
 	if err == nil {
 		t.Errorf("gz with a mismatched digest accepted")
 	}
@@ -173,11 +154,11 @@ func TestDecompressBound(t *testing.T) {
 // installed, exactly as a digest mismatch is.
 func TestGunzipStreamToIsBounded(t *testing.T) {
 	payload := bytes.Repeat([]byte("a"), 1<<20) // compresses to ~1KB
-	gz := gzOf(t, payload)
+	gz := releasetest.Gzip(t, payload)
 	dir := t.TempDir()
 
 	dst := filepath.Join(dir, "bounded.bin")
-	_, err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz), 4096)
+	_, err := gunzipStreamTo(bytes.NewReader(gz), dst, releasetest.Digest(gz), 4096)
 	if err == nil {
 		t.Fatal("an asset expanding far past its bound was installed")
 	}
@@ -187,7 +168,7 @@ func TestGunzipStreamToIsBounded(t *testing.T) {
 	if _, err := os.Stat(dst); !os.IsNotExist(err) {
 		t.Errorf("destination created despite the bound")
 	}
-	for _, e := range dirEntries(t, dir) {
+	for _, e := range releasetest.DirEntries(t, dir) {
 		if strings.HasPrefix(e, ".meta-") {
 			t.Errorf("leftover temp file %q after a bounded refusal", e)
 		}
@@ -197,11 +178,11 @@ func TestGunzipStreamToIsBounded(t *testing.T) {
 	// artifact exactly AT the bound is legitimate rather than suspicious - while
 	// ONE byte past it is not, which is the whole boundary in two lines.
 	exact := filepath.Join(dir, "exact.bin")
-	if _, err := gunzipStreamTo(bytes.NewReader(gz), exact, hexDigest(gz), int64(len(payload))); err != nil {
+	if _, err := gunzipStreamTo(bytes.NewReader(gz), exact, releasetest.Digest(gz), int64(len(payload))); err != nil {
 		t.Errorf("a payload exactly at the bound was refused: %v", err)
 	}
 	over := filepath.Join(dir, "over.bin")
-	if _, err := gunzipStreamTo(bytes.NewReader(gz), over, hexDigest(gz), int64(len(payload))-1); err == nil {
+	if _, err := gunzipStreamTo(bytes.NewReader(gz), over, releasetest.Digest(gz), int64(len(payload))-1); err == nil {
 		t.Error("a payload one byte past the bound was installed")
 	}
 	if _, err := os.Stat(over); !os.IsNotExist(err) {
@@ -286,12 +267,12 @@ func TestAssetRedirectsAreRechecked(t *testing.T) {
 	defer elsewhere.Close()
 
 	asset := []byte("the artifact bytes")
-	fake := newFakeGitHub(t, fakeRel{tag: "data-v1", assets: map[string][]byte{DataAsset: asset}})
-	c := New("owner/name", "token", WithAPIBase(fake.srv.URL))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-v1", Assets: map[string][]byte{DataAsset: asset}})
+	c := New("owner/name", "token", WithAPIBase(fake.URL))
 
 	t.Run("a hop to the exempt origin is followed", func(t *testing.T) {
-		fake.setRedirect(fake.srv.URL + "/dl/data-v1/" + DataAsset)
-		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
+		fake.SetRedirect(fake.URL + "/dl/data-v1/" + DataAsset)
+		resp, err := c.get(context.Background(), fake.URL+"/redirect")
 		if err != nil {
 			t.Fatalf("an allowed hop was refused: %v", err)
 		}
@@ -309,8 +290,8 @@ func TestAssetRedirectsAreRechecked(t *testing.T) {
 		// Plain HTTP on a loopback IP: both arms of the hop rule, and the shape
 		// an SSRF redirect takes in production (169.254.169.254, a service on the
 		// container's own loopback).
-		fake.setRedirect(elsewhere.URL + "/meta.sqlite.gz")
-		resp, err := c.get(context.Background(), fake.srv.URL+"/redirect")
+		fake.SetRedirect(elsewhere.URL + "/meta.sqlite.gz")
+		resp, err := c.get(context.Background(), fake.URL+"/redirect")
 		if err == nil {
 			_ = resp.Body.Close()
 			t.Fatal("a redirect to a refused location was followed")
@@ -329,13 +310,13 @@ func TestAssetRedirectsAreRechecked(t *testing.T) {
 // /repos/<old>/releases, and a policy that refused it would strand every poller
 // on the old name.
 func TestReleaseMetadataFollowsARedirect(t *testing.T) {
-	fake := newFakeGitHub(t, fakeRel{tag: "data-v1", assets: map[string][]byte{DataAsset: []byte("x")}})
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-v1", Assets: map[string][]byte{DataAsset: []byte("x")}})
 	moved := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, fake.srv.URL+r.URL.RequestURI(), http.StatusMovedPermanently)
+		http.Redirect(w, r, fake.URL+r.URL.RequestURI(), http.StatusMovedPermanently)
 	}))
 	defer moved.Close()
 
-	c := New("owner/name", "", WithAPIBase(moved.URL), WithAllowedOrigin(fake.srv.URL))
+	c := New("owner/name", "", WithAPIBase(moved.URL), WithAllowedOrigin(fake.URL))
 	rel, _, notModified, err := c.LatestData(context.Background(), "")
 	if err != nil {
 		t.Fatalf("LatestData through a 301: %v", err)
@@ -382,10 +363,10 @@ func TestRefusedAssetHostIsNeverDialed(t *testing.T) {
 // bound rather than a multiple of it.
 func TestAssetDownloadIsBoundedByItsDeclaredSize(t *testing.T) {
 	payload := bytes.Repeat([]byte("p"), 4096)
-	fake := newFakeGitHub(t, fakeRel{tag: "data-v1", assets: map[string][]byte{"blob.bin": payload}})
-	c := New("owner/name", "", WithAPIBase(fake.srv.URL), WithLogger(log.New(io.Discard, "", 0)))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-v1", Assets: map[string][]byte{"blob.bin": payload}})
+	c := clientFor(fake)
 	dst := filepath.Join(t.TempDir(), "blob.bin")
-	url := fake.srv.URL + "/dl/data-v1/blob.bin"
+	url := fake.URL + "/dl/data-v1/blob.bin"
 
 	over := &Release{Tag: "data-v1", Assets: []Asset{
 		{Name: "blob.bin", Size: int64(len(payload)) - 1, URL: url},

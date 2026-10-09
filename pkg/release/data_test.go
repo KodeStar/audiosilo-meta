@@ -3,7 +3,6 @@ package release
 import (
 	"bytes"
 	"context"
-	"io"
 	"log"
 	"net/http"
 	"net/http/httptest"
@@ -13,26 +12,14 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/releasetest"
 )
-
-func quietLogger() *log.Logger { return log.New(io.Discard, "", 0) }
-
-// dataAssets is a data release's three contract assets over raw (the
-// decompressed artifact bytes).
-func dataAssets(t *testing.T, raw []byte) map[string][]byte {
-	t.Helper()
-	gz := gzOf(t, raw)
-	return map[string][]byte{
-		DataAsset:       gz,
-		DataDigestAsset: sumFile(DataAsset, gz),
-		RawDigestAsset:  sumFile("meta.sqlite", raw),
-	}
-}
 
 // codeRel is a code/image release (v*): newer than every data release and
 // carrying no data asset, so selection must skip it however it is listed.
-func codeRel(tag string, published time.Time) fakeRel {
-	return fakeRel{tag: tag, published: published, assets: map[string][]byte{
+func codeRel(tag string, published time.Time) releasetest.Rel {
+	return releasetest.Rel{Tag: tag, Published: published, Assets: map[string][]byte{
 		"metaserve-linux-amd64.tar.gz": []byte("a binary, not data"),
 	}}
 }
@@ -45,16 +32,16 @@ func codeRel(tag string, published time.Time) fakeRel {
 func TestLatestDataPicksTheNewestDataRelease(t *testing.T) {
 	day := time.Date(2026, 10, 9, 0, 0, 0, 0, time.UTC)
 	data := map[string][]byte{DataAsset: []byte("gz")}
-	fake := newFakeGitHub(t,
+	fake := releasetest.NewGitHub(t,
 		codeRel("v0.21.0", day.Add(10*time.Hour)),
-		fakeRel{tag: "data-v2026.10.09-aaa-bbb", published: day.Add(2 * time.Hour), assets: data},
+		releasetest.Rel{Tag: "data-v2026.10.09-aaa-bbb", Published: day.Add(2 * time.Hour), Assets: data},
 		codeRel("v0.20.9", day.Add(9*time.Hour)),
-		fakeRel{tag: "data-v2026.10.09-ccc-ddd", published: day.Add(8 * time.Hour), assets: data},
-		fakeRel{tag: "data-vdraft", draft: true, published: day.Add(11 * time.Hour), assets: data},
-		fakeRel{tag: "data-v2026.10.09-pre", prerelease: true, published: day.Add(12 * time.Hour), assets: data},
-		fakeRel{tag: "data-v2026.10.08-eee-fff", published: day.Add(-time.Hour), assets: data},
+		releasetest.Rel{Tag: "data-v2026.10.09-ccc-ddd", Published: day.Add(8 * time.Hour), Assets: data},
+		releasetest.Rel{Tag: "data-vdraft", Draft: true, Published: day.Add(11 * time.Hour), Assets: data},
+		releasetest.Rel{Tag: "data-v2026.10.09-pre", Prerelease: true, Published: day.Add(12 * time.Hour), Assets: data},
+		releasetest.Rel{Tag: "data-v2026.10.08-eee-fff", Published: day.Add(-time.Hour), Assets: data},
 	)
-	rel, etag, notModified, err := fake.client().LatestData(context.Background(), "")
+	rel, etag, notModified, err := clientFor(fake).LatestData(context.Background(), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -78,11 +65,11 @@ func TestLatestDataPicksTheNewestDataRelease(t *testing.T) {
 func TestLatestDataTieBreaksLikeJq(t *testing.T) {
 	at := time.Date(2026, 10, 9, 12, 0, 0, 0, time.UTC)
 	data := map[string][]byte{DataAsset: []byte("gz")}
-	fake := newFakeGitHub(t,
-		fakeRel{tag: "data-first", published: at, assets: data},
-		fakeRel{tag: "data-second", published: at, assets: data},
+	fake := releasetest.NewGitHub(t,
+		releasetest.Rel{Tag: "data-first", Published: at, Assets: data},
+		releasetest.Rel{Tag: "data-second", Published: at, Assets: data},
 	)
-	rel, _, _, err := fake.client().LatestData(context.Background(), "")
+	rel, _, _, err := clientFor(fake).LatestData(context.Background(), "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -96,8 +83,8 @@ func TestLatestDataTieBreaksLikeJq(t *testing.T) {
 // 200 again with a new ETag.
 func TestLatestDataIsConditional(t *testing.T) {
 	data := map[string][]byte{DataAsset: []byte("gz")}
-	fake := newFakeGitHub(t, fakeRel{tag: "data-1", assets: data})
-	c := fake.client()
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-1", Assets: data})
+	c := clientFor(fake)
 
 	_, etag, _, err := c.LatestData(context.Background(), "")
 	if err != nil {
@@ -107,11 +94,11 @@ func TestLatestDataIsConditional(t *testing.T) {
 	if err != nil || !notModified || rel != nil || again != etag {
 		t.Fatalf("second call = %+v, %q, notModified %v, %v; want a 304 keeping %q", rel, again, notModified, err, etag)
 	}
-	if fake.listCount() != 1 {
-		t.Errorf("the list was served in full %d times, want 1", fake.listCount())
+	if fake.Lists() != 1 {
+		t.Errorf("the list was served in full %d times, want 1", fake.Lists())
 	}
 
-	fake.setReleases(fakeRel{tag: "data-2", assets: data})
+	fake.SetReleases(releasetest.Rel{Tag: "data-2", Assets: data})
 	rel, next, notModified, err := c.LatestData(context.Background(), etag)
 	if err != nil || notModified || rel == nil || rel.Tag != "data-2" {
 		t.Fatalf("after a new release = %+v, notModified %v, %v", rel, notModified, err)
@@ -126,8 +113,8 @@ func TestLatestDataIsConditional(t *testing.T) {
 // poll is a cheap 304 until the list changes (retrying an unchanged list cannot
 // find a data release either).
 func TestLatestDataKeepsTheETagOfAListWithNoDataRelease(t *testing.T) {
-	fake := newFakeGitHub(t, codeRel("v0.21.0", time.Now()))
-	rel, etag, _, err := fake.client().LatestData(context.Background(), "")
+	fake := releasetest.NewGitHub(t, codeRel("v0.21.0", time.Now()))
+	rel, etag, _, err := clientFor(fake).LatestData(context.Background(), "")
 	if err == nil || rel != nil {
 		t.Fatalf("rel = %+v, err = %v; want the no-data-release error", rel, err)
 	}
@@ -161,8 +148,8 @@ func TestRequestsCarryTheUserAgent(t *testing.T) {
 // declared compressed size.
 func TestDownloadDataInstallsAVerifiedArtifact(t *testing.T) {
 	raw := bytes.Repeat([]byte("the artifact "), 4096)
-	fake := newFakeGitHub(t, fakeRel{tag: "data-1", assets: dataAssets(t, raw)})
-	c := fake.client()
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-1", Assets: releasetest.DataAssets(t, raw)})
+	c := clientFor(fake)
 	rel, _, _, err := c.LatestData(context.Background(), "")
 	if err != nil {
 		t.Fatal(err)
@@ -180,14 +167,14 @@ func TestDownloadDataInstallsAVerifiedArtifact(t *testing.T) {
 	if !bytes.Equal(got, raw) {
 		t.Error("installed bytes differ from the artifact")
 	}
-	if res.Bytes != int64(len(raw)) || res.SHA256 != hexDigest(raw) {
-		t.Errorf("Result = %+v, want %d bytes, %s", res, len(raw), hexDigest(raw))
+	if res.Bytes != int64(len(raw)) || res.SHA256 != releasetest.Digest(raw) {
+		t.Errorf("Result = %+v, want %d bytes, %s", res, len(raw), releasetest.Digest(raw))
 	}
 	gz, _ := rel.Asset(DataAsset)
 	if total != gz.Size || done != gz.Size {
 		t.Errorf("progress ended at %d / %d, want %d / %d", done, total, gz.Size, gz.Size)
 	}
-	if names := dirEntries(t, filepath.Dir(dst)); len(names) != 1 {
+	if names := releasetest.DirEntries(t, filepath.Dir(dst)); len(names) != 1 {
 		t.Errorf("mirror folder holds %v, want only the artifact", names)
 	}
 }
@@ -201,14 +188,14 @@ func TestDownloadDataRefusesABadDigest(t *testing.T) {
 		name   string
 		mangle func(map[string][]byte)
 	}{
-		{"the checksum", func(a map[string][]byte) { a[DataDigestAsset] = sumFile(DataAsset, []byte("other")) }},
-		{"the bytes", func(a map[string][]byte) { a[DataAsset] = gzOf(t, []byte("tampered")) }},
+		{"the checksum", func(a map[string][]byte) { a[DataDigestAsset] = releasetest.SumFile(DataAsset, []byte("other")) }},
+		{"the bytes", func(a map[string][]byte) { a[DataAsset] = releasetest.Gzip(t, []byte("tampered")) }},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			assets := dataAssets(t, raw)
+			assets := releasetest.DataAssets(t, raw)
 			tc.mangle(assets)
-			fake := newFakeGitHub(t, fakeRel{tag: "data-1", assets: assets})
-			c := fake.client()
+			fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-1", Assets: assets})
+			c := clientFor(fake)
 			rel, _, _, err := c.LatestData(context.Background(), "")
 			if err != nil {
 				t.Fatal(err)
@@ -218,7 +205,7 @@ func TestDownloadDataRefusesABadDigest(t *testing.T) {
 			if _, err := c.DownloadData(context.Background(), rel, dst, nil); err == nil || !strings.Contains(err.Error(), "sha256 mismatch") {
 				t.Fatalf("err = %v, want the digest mismatch", err)
 			}
-			if names := dirEntries(t, dir); len(names) != 0 {
+			if names := releasetest.DirEntries(t, dir); len(names) != 0 {
 				t.Errorf("left behind %v after a refused download", names)
 			}
 		})
@@ -236,22 +223,22 @@ func TestDownloadDataIsAnchoredOnTheGzDigest(t *testing.T) {
 		mangle func(map[string][]byte)
 	}{
 		{"absent", func(a map[string][]byte) { delete(a, RawDigestAsset) }},
-		{"wrong", func(a map[string][]byte) { a[RawDigestAsset] = sumFile("meta.sqlite", []byte("other")) }},
+		{"wrong", func(a map[string][]byte) { a[RawDigestAsset] = releasetest.SumFile("meta.sqlite", []byte("other")) }},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			assets := dataAssets(t, raw)
+			assets := releasetest.DataAssets(t, raw)
 			tc.mangle(assets)
-			fake := newFakeGitHub(t, fakeRel{tag: "data-1", assets: assets})
-			c := fake.client()
+			fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-1", Assets: assets})
+			c := clientFor(fake)
 			rel, _, _, err := c.LatestData(context.Background(), "")
 			if err != nil {
 				t.Fatal(err)
 			}
 			res, err := c.DownloadData(context.Background(), rel, filepath.Join(t.TempDir(), "meta.sqlite"), nil)
-			if err != nil || res.SHA256 != hexDigest(raw) {
+			if err != nil || res.SHA256 != releasetest.Digest(raw) {
 				t.Fatalf("Result = %+v, %v", res, err)
 			}
-			if n := fake.hitCount(RawDigestAsset); n != 0 {
+			if n := fake.Hits(RawDigestAsset); n != 0 {
 				t.Errorf("the raw checksum was fetched %d times, want 0", n)
 			}
 		})
@@ -261,10 +248,10 @@ func TestDownloadDataIsAnchoredOnTheGzDigest(t *testing.T) {
 // TestDownloadDataKeepsTheCurrentFileOnFailure: a failed download into an
 // existing destination leaves the existing file exactly as it was.
 func TestDownloadDataKeepsTheCurrentFileOnFailure(t *testing.T) {
-	assets := dataAssets(t, []byte("new"))
-	assets[DataDigestAsset] = sumFile(DataAsset, []byte("not it"))
-	fake := newFakeGitHub(t, fakeRel{tag: "data-2", assets: assets})
-	c := fake.client()
+	assets := releasetest.DataAssets(t, []byte("new"))
+	assets[DataDigestAsset] = releasetest.SumFile(DataAsset, []byte("not it"))
+	fake := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-2", Assets: assets})
+	c := clientFor(fake)
 	rel, _, _, err := c.LatestData(context.Background(), "")
 	if err != nil {
 		t.Fatal(err)
