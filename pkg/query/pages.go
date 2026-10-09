@@ -8,7 +8,9 @@ package query
 // them are internal/serve's.
 
 // PageFamily is one set of entity pages a sitemap lists - one URL per row its
-// query returns. The value is the family's sitemap file prefix.
+// query returns. Its values are OPAQUE identifiers: compare them with the
+// constants below, and name files or URLs after something of your own
+// (metaserve's sitemap families carry their own file names).
 type PageFamily string
 
 // The families, by what one page addresses. The two GUIDE families list one
@@ -21,25 +23,47 @@ const (
 	WorkPages      PageFamily = "works"
 )
 
-// PageCount is how many pages family holds. It reads what Open settled rather
-// than counting per request: the guide families count works CARRYING A SIDECAR,
-// which is not a catalogue statistic and is deliberately not on Stats (the
-// /api/v1/stats payload). Zero for an unknown family, and for the guide families
-// on an artifact older than the sidecar tables.
+// pageFamilies is how each family is counted and read - ONE row per family, so
+// its count and its shard query cannot be added, or dropped, apart.
+//
+// count reads what Open settled rather than counting per request: the guide
+// families count works CARRYING A SIDECAR, which is not a catalogue statistic and
+// is deliberately not on Stats (the /api/v1/stats payload). shardSQL is a
+// function of the database for the recap family's sake (see recapSitemapSQL).
+var pageFamilies = map[PageFamily]struct {
+	count    func(*DB) int
+	shardSQL func(*DB) string
+}{
+	RecapPages: {
+		count:    func(s *DB) int { return s.recapWorks },
+		shardSQL: func(s *DB) string { _, shard := recapSitemapSQL(s.schemaVersion); return shard },
+	},
+	CharacterPages: {
+		count:    func(s *DB) int { return s.characterWorks },
+		shardSQL: func(*DB) string { return charactersSitemapSQL },
+	},
+	SeriesPages: {
+		count:    func(s *DB) int { return s.stats.Series },
+		shardSQL: func(*DB) string { return seriesSitemapSQL },
+	},
+	PersonPages: {
+		count:    func(s *DB) int { return s.stats.People },
+		shardSQL: func(*DB) string { return peopleSitemapSQL },
+	},
+	WorkPages: {
+		count:    func(s *DB) int { return s.stats.Works },
+		shardSQL: func(*DB) string { return worksSitemapSQL },
+	},
+}
+
+// PageCount is how many pages family holds. Zero for an unknown family, and for
+// the guide families on an artifact older than the sidecar tables.
 func (s *DB) PageCount(family PageFamily) int {
-	switch family {
-	case RecapPages:
-		return s.recapWorks
-	case CharacterPages:
-		return s.characterWorks
-	case SeriesPages:
-		return s.stats.Series
-	case PersonPages:
-		return s.stats.People
-	case WorkPages:
-		return s.stats.Works
+	f, ok := pageFamilies[family]
+	if !ok {
+		return 0
 	}
-	return 0
+	return f.count(s)
 }
 
 // PageEntry is one page of a family: the record's id and, for works, its
@@ -52,11 +76,11 @@ type PageEntry struct {
 // Pages reads one window of family's pages in id order: limit rows from offset.
 // An unknown family reads nothing.
 func (s *DB) Pages(family PageFamily, limit, offset int) ([]PageEntry, error) {
-	query := s.pageSQL(family)
-	if query == "" {
+	f, ok := pageFamilies[family]
+	if !ok {
 		return nil, nil
 	}
-	rows, err := s.db.Query(query, limit, offset)
+	rows, err := s.db.Query(f.shardSQL(s), limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -70,27 +94,6 @@ func (s *DB) Pages(family PageFamily, limit, offset int) ([]PageEntry, error) {
 		out = append(out, e)
 	}
 	return out, rows.Err()
-}
-
-// pageSQL is the shard query of one family. It is a function of the database
-// for the recap family's sake: its URL set spans two tables, the second of which
-// only exists at schema_version 3, so WHICH query is honest depends on the
-// artifact.
-func (s *DB) pageSQL(family PageFamily) string {
-	switch family {
-	case RecapPages:
-		_, shard := recapSitemapSQL(s.schemaVersion)
-		return shard
-	case CharacterPages:
-		return charactersSitemapSQL
-	case SeriesPages:
-		return seriesSitemapSQL
-	case PersonPages:
-		return peopleSitemapSQL
-	case WorkPages:
-		return worksSitemapSQL
-	}
-	return ""
 }
 
 // The per-family shard queries. Each walks an index in id order - the same order
@@ -113,19 +116,12 @@ const (
 	// hasRecapGuide / hasCharacterGuide) - a sitemap must never promise a URL
 	// that 404s.
 	charactersSitemapSQL = `SELECT DISTINCT work_id, NULL FROM characters ORDER BY work_id LIMIT ? OFFSET ?`
-	// A recap page is served for a chaptered recap OR a whole-book summary, so
-	// its URL set is the union of two tables. The membership of the second one is
-	// exactly what the page needs from it - internal/build writes a
-	// recap_summaries row only for a sidecar that states in_short or ending - so
-	// a listed URL always has a page. It is written as a COMPOUND select
-	// rather than as a subquery deliberately: wrapping the union in a FROM makes
-	// the outer step an unindexed scan of a co-routine, while each arm of a
-	// compound still walks its own index.
+	// The recap family's two spellings (see recapSitemapSQL for why there are
+	// two). The union is written as a COMPOUND select rather than as a subquery
+	// deliberately: wrapping it in a FROM makes the outer step an unindexed scan
+	// of a co-routine, while each arm of a compound still walks its own index.
 	recapsSitemapSQL = `SELECT work_id, NULL FROM recaps UNION SELECT work_id, NULL FROM recap_summaries ` +
 		`ORDER BY work_id LIMIT ? OFFSET ?`
-	// recapsOnlySitemapSQL is that same set on an artifact that predates
-	// recap_summaries (schema_version 2), where the second table does not exist
-	// to be named - a query mentioning it would not even parse.
 	recapsOnlySitemapSQL = `SELECT DISTINCT work_id, NULL FROM recaps ORDER BY work_id LIMIT ? OFFSET ?`
 
 	// The guide families' counts, each counting exactly the rows its shard query
@@ -137,10 +133,15 @@ const (
 
 // recapSitemapSQL derives the recap family's two queries from the artifact's
 // schema_version: how many pages the family holds, and how one shard's rows are
-// read. A recap page is served for a chaptered recap OR a whole-book summary, so
-// the set spans two tables and the second only exists from
-// summarySchemaVersion - below it, a query naming recap_summaries would not even
-// parse.
+// read. THE RECAP FAMILY SPANS TWO TABLES: a recap page is served for a
+// chaptered recap OR a whole-book summary, so its URL set is the union of
+// recaps and recap_summaries. The second table's membership is exactly what the
+// page needs from it - internal/build writes a recap_summaries row only for a
+// sidecar that states in_short or ending - so a listed URL always has a page.
+// That table only exists from summarySchemaVersion: below it, a query naming
+// recap_summaries would not even parse, so the older spelling reads recaps
+// alone. Every other recap query here (the count, the guide probe) follows this
+// same pair of spellings.
 //
 // It is one PURE function of the version rather than a value threaded through
 // the snapshot, so the pairing is structural: the count and the listing are
@@ -172,9 +173,9 @@ func recapSitemapSQL(schemaVersion int) (countSQL, shardSQL string) {
 const (
 	recapGuideExistsSQL = `SELECT EXISTS(SELECT 1 FROM recaps WHERE work_id=?1) ` +
 		`OR EXISTS(SELECT 1 FROM recap_summaries WHERE work_id=?1)`
-	// recapGuideExistsOnlySQL is that same question on an artifact that predates
-	// recap_summaries (schema_version 2), where naming the second table would not
-	// parse - the sitemap family's own pair of spellings, one work at a time.
+	// recapGuideExistsOnlySQL is that same question before recap_summaries (see
+	// recapSitemapSQL) - the sitemap family's own pair of spellings, one work at
+	// a time.
 	recapGuideExistsOnlySQL = `SELECT EXISTS(SELECT 1 FROM recaps WHERE work_id=?1)`
 	characterGuideExistsSQL = `SELECT EXISTS(SELECT 1 FROM characters WHERE work_id=?1)`
 )

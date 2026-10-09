@@ -21,7 +21,6 @@
 // metaserve's own concerns - the hot swap, the HTML entity and guide pages, the
 // sitemaps, the release poller and webhook, CORS and gzip - stay in
 // internal/serve, which serves this package's handler for its API routes. The
-// exported reads beyond Open, Info and NewHandler (WorkDetail, Person, Series,
-// the page families and guide probes, DisplayDescription, RedirectRetired) exist
-// for those pages; the response types they return are the API's JSON shapes.
+// other exported reads and helpers are the ones metaserve's pages use; the
+// response types they return are the API's JSON shapes.
 package query
