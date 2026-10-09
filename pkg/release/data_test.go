@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"context"
 	"log"
-	"net/http"
-	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -13,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/internal/releasetest"
+	"github.com/kodestar/audiosilo-meta/pkg/release/releasetest"
 )
 
 // codeRel is a code/image release (v*): newer than every data release and
@@ -126,20 +124,27 @@ func TestLatestDataKeepsTheETagOfAListWithNoDataRelease(t *testing.T) {
 	}
 }
 
-// TestRequestsCarryTheUserAgent: GitHub asks API clients to name themselves.
+// TestRequestsCarryTheUserAgent: GitHub asks API clients to name themselves,
+// on the list and on every asset.
 func TestRequestsCarryTheUserAgent(t *testing.T) {
-	var got []string
-	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		got = append(got, r.Header.Get("User-Agent"))
-		w.WriteHeader(http.StatusNotModified)
-	}))
-	t.Cleanup(srv.Close)
-	c := New("owner/name", "", WithAPIBase(srv.URL), WithUserAgent("AudioSilo/2.1.0"))
-	if _, _, _, err := c.LatestData(context.Background(), `"x"`); err != nil {
+	gh := releasetest.NewGitHub(t, releasetest.Rel{Tag: "data-v1", Assets: releasetest.DataAssets(t, []byte("raw"))})
+	c := New(releasetest.Repo, "", WithAPIBase(gh.URL), WithUserAgent("AudioSilo/2.1.0"))
+	rel, _, _, err := c.LatestData(context.Background(), "")
+	if err != nil {
 		t.Fatal(err)
 	}
-	if len(got) != 1 || got[0] != "AudioSilo/2.1.0" {
-		t.Errorf("User-Agent = %v", got)
+	if _, err := c.DownloadData(context.Background(), rel, filepath.Join(t.TempDir(), "meta.sqlite"), nil); err != nil {
+		t.Fatal(err)
+	}
+	got := gh.UserAgents()
+	if len(got) < 2 {
+		t.Fatalf("User-Agents = %v, want the list and the assets", got)
+	}
+	for _, ua := range got {
+		if ua != "AudioSilo/2.1.0" {
+			t.Errorf("User-Agents = %v", got)
+			break
+		}
 	}
 }
 

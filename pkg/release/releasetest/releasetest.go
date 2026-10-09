@@ -2,7 +2,9 @@
 // of GitHub's releases API, and the checksum and gzip helpers its assets are
 // built with. pkg/release's own tests and metaserve's refresh tests
 // (internal/serve) both run against it, so the two suites cannot drift apart
-// on what a release looks like on the wire.
+// on what a release looks like on the wire. It is exported for the same reason
+// downstream: audiosilo-server's mirror mode downloads through pkg/release, and
+// its tests publish their releases here rather than in a fake of their own.
 //
 // It deliberately does NOT import pkg/release: that package's internal tests
 // import this one, and a cycle would follow. The asset names are therefore
@@ -132,6 +134,7 @@ type GitHub struct {
 	pace       time.Duration // delay between chunks
 	hang       string        // asset that delivers half and then goes quiet
 	redirectTo string
+	agents     []string      // every list and asset request's User-Agent, in order
 	unhang     chan struct{} // closed at cleanup so a hung handler can return
 }
 
@@ -159,6 +162,7 @@ func NewGitHub(tb testing.TB, rels ...Rel) *GitHub {
 
 func (f *GitHub) serveList(w http.ResponseWriter, r *http.Request) {
 	f.mu.Lock()
+	f.agents = append(f.agents, r.Header.Get("User-Agent"))
 	if f.down {
 		f.mu.Unlock()
 		http.Error(w, "github is down", http.StatusInternalServerError)
@@ -203,6 +207,7 @@ func (f *GitHub) serveAsset(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	f.mu.Lock()
+	f.agents = append(f.agents, r.Header.Get("User-Agent"))
 	if f.failing[name] {
 		f.mu.Unlock()
 		http.Error(w, "boom", http.StatusInternalServerError)
@@ -329,4 +334,11 @@ func (f *GitHub) NotModified() int {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	return f.notMod
+}
+
+// UserAgents lists the User-Agent of every list and asset request, in order.
+func (f *GitHub) UserAgents() []string {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	return append([]string(nil), f.agents...)
 }

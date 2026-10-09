@@ -12,10 +12,10 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
-	"github.com/kodestar/audiosilo-meta/internal/releasetest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 	"github.com/kodestar/audiosilo-meta/pkg/release"
+	"github.com/kodestar/audiosilo-meta/pkg/release/releasetest"
 )
 
 func hasTempFile(names []string) bool {

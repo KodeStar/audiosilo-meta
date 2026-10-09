@@ -17,9 +17,9 @@ import (
 	"github.com/klauspost/compress/zstd"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
-	"github.com/kodestar/audiosilo-meta/internal/releasetest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/release"
+	"github.com/kodestar/audiosilo-meta/pkg/release/releasetest"
 )
 
 // writeFile writes data to a fresh file under dir and returns its path.

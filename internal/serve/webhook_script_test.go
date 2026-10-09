@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
-	"github.com/kodestar/audiosilo-meta/internal/releasetest"
+	"github.com/kodestar/audiosilo-meta/pkg/release/releasetest"
 )
 
 // The SENDER of the release webhook is .github/scripts/notify-release.sh, and

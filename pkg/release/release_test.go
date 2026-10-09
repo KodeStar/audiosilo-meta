@@ -13,7 +13,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/releasetest"
+	"github.com/kodestar/audiosilo-meta/pkg/release/releasetest"
 )
 
 // clientFor is a Client pointed at fake, with its notices discarded.
@@ -21,7 +21,7 @@ func clientFor(fake *releasetest.GitHub, opts ...Option) *Client {
 	return New(releasetest.Repo, "", append([]Option{WithAPIBase(fake.URL), WithLogger(log.New(io.Discard, "", 0))}, opts...)...)
 }
 
-// TestReleasetestNamesTheContract: internal/releasetest cannot import this
+// TestReleasetestNamesTheContract: releasetest cannot import this
 // package (these tests import it), so it spells the asset names as literals -
 // pinned here to the constants they stand for.
 func TestReleasetestNamesTheContract(t *testing.T) {
