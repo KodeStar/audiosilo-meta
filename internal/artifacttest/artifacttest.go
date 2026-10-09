@@ -25,8 +25,37 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// BuiltAt is the build time every fixture artifact is stamped with.
-var BuiltAt = time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)
+// BuiltAtRFC3339 is the build time every fixture artifact is stamped with, as
+// the artifact's meta(built_at) spells it.
+const BuiltAtRFC3339 = "2026-07-11T00:00:00Z"
+
+// BuiltAt is BuiltAtRFC3339 as a time, which is what the builder takes.
+var BuiltAt = func() time.Time {
+	t, err := time.Parse(time.RFC3339, BuiltAtRFC3339)
+	if err != nil {
+		panic(err)
+	}
+	return t
+}()
+
+// The facts Fixture is built from, named once so pkg/query/querytest's public
+// constants are these values rather than a second copy of them.
+const (
+	// HailMary is the fully fleshed work: one recording (HailMaryRecording) with
+	// a cover, chapters, the ASIN HailMaryASIN and the whole community layer,
+	// and a retired slug (HailMaryRetired) that redirects to it.
+	HailMary          = "project-hail-mary"
+	HailMaryRecording = "ray-porter-2021"
+	HailMaryASIN      = "B08G9PRS1K"
+	HailMaryRetired   = "project-hail-mary-audiobook"
+	// WayOfKings is the work with an ISBN (WayOfKingsISBN on its recording
+	// WayOfKingsRecording) and two narrators, and the first of Stormlight.
+	WayOfKings          = "the-way-of-kings"
+	WayOfKingsRecording = "kramer-reading-2010"
+	WayOfKingsISBN      = "9781427209269"
+	// Stormlight is the series holding works at positions "1", "2" and "10".
+	Stormlight = "the-stormlight-archive"
+)
 
 // Build writes cat's artifact into a fresh temporary directory and returns its
 // path.
@@ -122,7 +151,7 @@ func Fixture() *model.Catalog {
 	reading := &model.Person{ID: "kate-reading", Name: "Kate Reading", License: "CC0-1.0"}
 
 	phm := &model.Work{
-		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
+		ID: HailMary, Title: "Project Hail Mary", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
 		Genres: []string{"hard-science-fiction", "science-fiction"},
 		// The one fixture work with an added_at, so the "latest" ordering has
@@ -130,11 +159,11 @@ func Fixture() *model.Catalog {
 		// no date map.
 		AddedAt: "2026-07-10T00:00:00Z",
 		Recordings: []*model.Recording{{
-			ID: "ray-porter-2021", Work: "project-hail-mary", Language: "en",
+			ID: HailMaryRecording, Work: HailMary, Language: "en",
 			RuntimeMin: 970, Publisher: "Audible Studios", ReleaseDate: "2021-05-04",
 			CoverURL: "https://example.test/phm.jpg", License: "CC0-1.0",
 			Narrators: []string{"ray-porter"},
-			ASIN:      []model.ASIN{{Region: "us", ASIN: "B08G9PRS1K"}},
+			ASIN:      []model.ASIN{{Region: "us", ASIN: HailMaryASIN}},
 			Chapters: []model.Chapter{
 				{Title: "Opening Credits", StartMS: 0, LengthMS: 5000},
 				{Title: "Chapter 1", StartMS: 5000, LengthMS: 600000},
@@ -143,12 +172,12 @@ func Fixture() *model.Catalog {
 		}},
 	}
 	wok := &model.Work{
-		ID: "the-way-of-kings", Title: "The Way of Kings", Language: "en",
+		ID: WayOfKings, Title: "The Way of Kings", Language: "en",
 		Authors: []string{"brandon-sanderson"}, License: "CC0-1.0",
 		Recordings: []*model.Recording{{
-			ID: "kramer-reading-2010", Work: "the-way-of-kings", Language: "en",
+			ID: WayOfKingsRecording, Work: WayOfKings, Language: "en",
 			Narrators: []string{"michael-kramer", "kate-reading"}, License: "CC0-1.0",
-			ISBN: []model.ISBNRef{{ISBN: "9781427209269"}},
+			ISBN: []model.ISBNRef{{ISBN: WayOfKingsISBN}},
 		}},
 	}
 	wor := &model.Work{
@@ -161,16 +190,16 @@ func Fixture() *model.Catalog {
 	}
 
 	series := &model.Series{
-		ID: "the-stormlight-archive", Name: "The Stormlight Archive", License: "CC0-1.0",
+		ID: Stormlight, Name: "The Stormlight Archive", License: "CC0-1.0",
 		Authors: []string{"brandon-sanderson"},
 		Works: []model.SeriesWork{
-			{Work: "the-way-of-kings", Position: "1"},
+			{Work: WayOfKings, Position: "1"},
 			{Work: "words-of-radiance", Position: "2"},
 			{Work: "edgedancer", Position: "10"}, // "10" < "2" as a string; must sort last numerically
 		},
 	}
 	chars := &model.Characters{
-		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
+		Work: HailMary, License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		Characters: []model.Character{
 			{
@@ -183,7 +212,7 @@ func Fixture() *model.Catalog {
 		},
 	}
 	recaps := &model.Recaps{
-		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
+		Work: HailMary, License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		InShort: "A lone amnesiac wakes aboard a ship, befriends an alien, and saves both worlds.",
 		Ending:  "Grace stays on Erid while the cure flies home.",
@@ -196,7 +225,7 @@ func Fixture() *model.Catalog {
 	// deliberately saying nothing the recap above says - it is what the meta tag,
 	// the fact sheet, the JSON-LD and the ABS facade all read.
 	desc := &model.Description{
-		Work: "project-hail-mary", License: "CC-BY-SA-4.0",
+		Work: HailMary, License: "CC-BY-SA-4.0",
 		Sources: []model.Source{{Type: "community"}},
 		Text: "A junior-high science teacher wakes alone aboard a ship he does not remember boarding, " +
 			"with two dead crewmates and no idea how far from home he is. What comes back to him arrives " +
@@ -212,9 +241,9 @@ func Fixture() *model.Catalog {
 		// One retired slug per namespace, the shape a duplicate merge leaves
 		// behind: the loser's slug still resolves, at the survivor.
 		Redirects: model.Redirects{
-			model.RedirectWorks:  {"project-hail-mary-audiobook": "project-hail-mary"},
+			model.RedirectWorks:  {HailMaryRetired: HailMary},
 			model.RedirectPeople: {"andy-weir-author": "andy-weir"},
-			model.RedirectSeries: {"stormlight-archive": "the-stormlight-archive"},
+			model.RedirectSeries: {"stormlight-archive": Stormlight},
 		},
 	}
 }
