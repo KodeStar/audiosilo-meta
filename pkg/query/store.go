@@ -178,13 +178,15 @@ type LanguageCount struct {
 	Works    int    `json:"works"`
 }
 
-// MaxSchemaVersion is the newest artifact schema_version this code understands
-// - internal/build.SchemaVersion, which a test pins it to. An artifact NEWER
-// than it still opens and serves (every optional read is gated with >=); the
-// consumer that embeds this package (a mirror-mode AudioSilo server) shows that
-// its copy is newer than it understands. Artifact schema changes must therefore
-// stay ADDITIVE - new tables and columns - because such consumers lag.
-const MaxSchemaVersion = languagesSchemaVersion
+// MaxSchemaVersion is the newest artifact schema_version this code understands:
+// internal/build.SchemaVersion, which TestMaxSchemaVersionIsTheBuilders pins it
+// to, and the newest of the version gates below (languagesSchemaVersion). An
+// artifact NEWER than it still opens and serves (every optional read is gated
+// with >=); the consumer that embeds this package (a mirror-mode AudioSilo
+// server) shows that its copy is newer than it understands. Artifact schema
+// changes must therefore stay ADDITIVE - new tables and columns - because such
+// consumers lag.
+const MaxSchemaVersion = 7
 
 // Open opens the artifact at path read-only and runs the load-time integrity
 // checks (loadStats: a schema_version claim without the tables it implies is a

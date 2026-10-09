@@ -271,3 +271,14 @@ func TestCardCarriesLanguageOnEverySurface(t *testing.T) {
 		}
 	}
 }
+
+// TestMaxSchemaVersionIsTheNewestGate: MaxSchemaVersion names the newest layer
+// this code reads, so a new version gate that is not also a MaxSchemaVersion bump
+// fails here (TestMaxSchemaVersionIsTheBuilders ties it to the builder).
+func TestMaxSchemaVersionIsTheNewestGate(t *testing.T) {
+	newest := max(sidecarSchemaVersion, summarySchemaVersion, genresSchemaVersion,
+		redirectSchemaVersion, descriptionSchemaVersion, languagesSchemaVersion)
+	if MaxSchemaVersion != newest {
+		t.Errorf("MaxSchemaVersion = %d, the newest version gate is %d", MaxSchemaVersion, newest)
+	}
+}
