@@ -11,6 +11,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -211,8 +212,8 @@ func (s *Server) entityHandler(e htmlEntityRoute) http.HandlerFunc {
 		// composed; an unknown slug still 404s and a retired one still 301s.
 		inm := r.Header.Get("If-None-Match")
 		etag := entityETag(snap, sh, id)
-		wildcard := anyValidator(inm)
-		if !wildcard && matchesETag(inm, etag) {
+		wildcard := httpx.AnyValidator(inm)
+		if !wildcard && httpx.MatchesETag(inm, etag) {
 			h := w.Header()
 			h.Set("ETag", etag)
 			h.Set("Cache-Control", entityMaxAge)

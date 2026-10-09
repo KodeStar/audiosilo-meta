@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -1324,7 +1325,7 @@ func TestInternalErrorsAreNotReflected(t *testing.T) {
 			t.Errorf("GET %s body is not the JSON error envelope: %s", path, body)
 			continue
 		}
-		if out["error"] != internalErrMsg {
+		if out["error"] != httpx.InternalErrMsg {
 			t.Errorf("GET %s leaks the internal error: %q", path, out["error"])
 		}
 	}

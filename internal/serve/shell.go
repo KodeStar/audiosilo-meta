@@ -1,18 +1,17 @@
 package serve
 
 import (
-	"encoding/binary"
 	"fmt"
-	"hash/fnv"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
 	"runtime/debug"
-	"strconv"
 	"strings"
 	"sync"
+
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 )
 
 // The three markers the BUILT Astro shell carries, and the whole contract
@@ -177,30 +176,11 @@ func loadShells(dir, siteURL string, logger *log.Logger) shells {
 //   - the binary's VCS revision: the COMPOSER's own code, which a fact-sheet or
 //     JSON-LD change moves without touching any of the above.
 //
-// fnv-64a is enough: this is a cache key, not a signature - a client that
-// fabricates a validator is only ever handed a 304 for a page it invented (see
-// entityHandler), so nothing here has to resist collisions chosen by an
-// attacker. Components are length-prefixed so no two of them can be run together
-// into the same digest input.
+// The digest is httpx.Identity's (length-prefixed fnv-64a - see there for why a
+// cache key needs no more; entityHandler is why a fabricated validator buys its
+// fabricator nothing).
 func pageIdentity(shellName, shellHTML, siteURL, revision string) string {
-	return identity(shellName, shellHTML, siteURL, revision)
-}
-
-// identity is the digest pageIdentity is the shell's four-part spelling of: any
-// number of components, each length-prefixed, folded into one short hex string.
-// Other surfaces that need a validator over a different set of components (the
-// watch feeds, over the artifact and the request's own parameters) call this
-// rather than borrowing pageIdentity's parameter names for values that mean
-// something else.
-func identity(parts ...string) string {
-	h := fnv.New64a()
-	for _, part := range parts {
-		var n [8]byte
-		binary.LittleEndian.PutUint64(n[:], uint64(len(part)))
-		_, _ = h.Write(n[:])
-		_, _ = io.WriteString(h, part)
-	}
-	return strconv.FormatUint(h.Sum64(), 16)
+	return httpx.Identity(shellName, shellHTML, siteURL, revision)
 }
 
 // buildRevision is the commit this binary was built from, or "" when the

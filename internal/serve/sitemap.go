@@ -1,7 +1,6 @@
 package serve
 
 import (
-	"bytes"
 	"encoding/xml"
 	"net/http"
 	"os"
@@ -10,6 +9,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 )
 
 // The sitemap surface: the index at /sitemap-index.xml and the entity shards at
@@ -282,7 +283,7 @@ func (s *Server) handleSitemapShard(w http.ResponseWriter, r *http.Request) {
 // error shape across the server beats a second one invented for two routes.
 func (s *Server) sitemapUnavailable(w http.ResponseWriter) {
 	w.Header().Set("Retry-After", s.retryAfter())
-	writeErr(w, http.StatusServiceUnavailable, noArtifactMsg)
+	httpx.WriteErr(w, http.StatusServiceUnavailable, httpx.NoArtifactMsg)
 }
 
 // parseShardFile reads a shard file name as (family, shard number). Everything
@@ -474,7 +475,7 @@ func w3cDate(v string) string {
 func (s *Server) sitemapNotModified(w http.ResponseWriter, r *http.Request, snap *snapshot, doc string) (string, bool) {
 	etag := sitemapETag(snap, s.cfg.SiteURL, doc)
 	inm := r.Header.Get("If-None-Match")
-	if !matchesETag(inm, etag) && !anyValidator(inm) {
+	if !httpx.MatchesETag(inm, etag) && !httpx.AnyValidator(inm) {
 		return etag, false
 	}
 	h := w.Header()
@@ -506,7 +507,7 @@ func sitemapETag(snap *snapshot, siteURL, doc string) string {
 // SUCCESS is what puts the ETag and the cache policy on the response, so no
 // error path can inherit them.
 func (s *Server) writeSitemap(w http.ResponseWriter, r *http.Request, etag string, doc any) {
-	body, err := renderXML(doc)
+	body, err := httpx.RenderXML(doc)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -516,21 +517,4 @@ func (s *Server) writeSitemap(w http.ResponseWriter, r *http.Request, etag strin
 	h.Set("Cache-Control", sitemapMaxAge)
 	h.Set("Content-Type", "application/xml; charset=utf-8")
 	_, _ = w.Write(body)
-}
-
-// renderXML marshals an XML document, declaration included - the sitemaps here
-// and the watch feed's Atom representation. It is deterministic: struct field
-// order is the element order, the entries are in the order their query returned
-// them (ORDER BY id) and nothing here reads a clock, so two renders of one
-// snapshot are byte-identical.
-func renderXML(doc any) ([]byte, error) {
-	var b bytes.Buffer
-	b.WriteString(xml.Header)
-	enc := xml.NewEncoder(&b)
-	enc.Indent("", "  ")
-	if err := enc.Encode(doc); err != nil {
-		return nil, err
-	}
-	b.WriteByte('\n')
-	return b.Bytes(), nil
 }

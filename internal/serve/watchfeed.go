@@ -14,6 +14,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -97,13 +98,13 @@ func (s *Server) handleWatchFeed(
 	rawSeries := r.URL.Query().Get("s")
 	series, err := decodeSeriesParam(rawSeries)
 	if err != nil {
-		writeErr(w, http.StatusBadRequest, err.Error())
+		httpx.WriteErr(w, http.StatusBadRequest, err.Error())
 		return
 	}
 	rawWindow := r.URL.Query().Get("window")
 	window, err := watchWindow(rawWindow)
 	if err != nil {
-		writeErr(w, http.StatusBadRequest, err.Error())
+		httpx.WriteErr(w, http.StatusBadRequest, err.Error())
 		return
 	}
 
@@ -111,7 +112,7 @@ func (s *Server) handleWatchFeed(
 	now := s.cfg.now().UTC()
 	etag := watchFeedETag(snap, s.cfg.SiteURL, r.URL.Path, rawSeries, rawWindow, now)
 	inm := r.Header.Get("If-None-Match")
-	if matchesETag(inm, etag) || anyValidator(inm) {
+	if httpx.MatchesETag(inm, etag) || httpx.AnyValidator(inm) {
 		h := w.Header()
 		h.Set("ETag", etag)
 		h.Set("Cache-Control", watchFeedMaxAge)
@@ -170,7 +171,7 @@ func (s *Server) watchFeedSelfURL(path, rawSeries, rawWindow string) string {
 // for the life of that URL. Deliberately free of the artifact and the clock -
 // an id that moved with the data would make every poll look like a new feed.
 func watchFeedID(rawSeries, rawWindow string) string {
-	return watchTagPrefix + "watch/" + identity(rawSeries, rawWindow)
+	return watchTagPrefix + "watch/" + httpx.Identity(rawSeries, rawWindow)
 }
 
 // watchFeedETag is the feed's cache validator. It covers the artifact, the
@@ -183,7 +184,7 @@ func watchFeedID(rawSeries, rawWindow string) string {
 // which is exactly the news the feed exists to carry.
 func watchFeedETag(snap *snapshot, siteURL, path, rawSeries, rawWindow string, now time.Time) string {
 	day := dayStart(now).Format(time.DateOnly)
-	return `W/"` + identity(path, rawSeries, rawWindow, day, snap.version()+"/"+siteURL) + `"`
+	return `W/"` + httpx.Identity(path, rawSeries, rawWindow, day, snap.version()+"/"+siteURL) + `"`
 }
 
 // watchCandidate is one member the feed will report, carried together with the
@@ -651,7 +652,7 @@ func renderAtomFeed(feed watchFeed) ([]byte, error) {
 	}
 	// The sitemaps' renderer: same declaration, same indent, same trailing
 	// newline, and deterministic for the same reason.
-	return renderXML(doc)
+	return httpx.RenderXML(doc)
 }
 
 type jsonFeed struct {

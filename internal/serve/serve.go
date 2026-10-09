@@ -9,7 +9,6 @@ package serve
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
@@ -22,6 +21,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -546,12 +546,6 @@ func (s *Server) api(h http.HandlerFunc) http.Handler {
 	return s.public(s.requireSnapshot(h))
 }
 
-// noArtifactMsg is the one wording of the no-artifact 503, shared by the API
-// gate below and the sitemap routes' own copy of it (sitemapUnavailable, which
-// is outside this middleware because those routes are not API). Two spellings of
-// one condition is a difference a client could read as a difference.
-const noArtifactMsg = "no data loaded yet: the server is fetching the latest release"
-
 // requireSnapshot answers 503 while no artifact has loaded, so every data
 // handler can assume s.current() is non-nil. Only a poll-only boot that could
 // not reach GitHub is in that state (see New); it is temporary by construction,
@@ -560,7 +554,7 @@ func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if s.current() == nil {
 			w.Header().Set("Retry-After", s.retryAfter())
-			writeErr(w, http.StatusServiceUnavailable, noArtifactMsg)
+			httpx.WriteErr(w, http.StatusServiceUnavailable, httpx.NoArtifactMsg)
 			return
 		}
 		next(w, r)
@@ -597,45 +591,10 @@ func corsMW(next http.Handler) http.Handler {
 
 // ---- JSON helpers -----------------------------------------------------------
 
-func writeJSON(w http.ResponseWriter, status int, v any) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.WriteHeader(status)
-	enc := json.NewEncoder(w)
-	_ = enc.Encode(v)
-}
-
-func writeErr(w http.ResponseWriter, status int, msg string) {
-	writeJSON(w, status, map[string]string{"error": msg})
-}
-
-// internalErrMsg is the body of EVERY 500 this server writes. An internal
-// error's own text describes the failure's internals - a SQL statement, a file
-// path on the cache volume, a driver message - and every API route here is
-// public and CORS-open, so that text is reflected to anyone who can provoke it.
-// The 4xx messages are deliberately untouched: those are about the REQUEST, which
-// the caller sent and is the only thing they can act on.
-const internalErrMsg = "internal error"
-
-// fail answers with the fixed 500 body and logs what actually went wrong, so the
-// detail is kept where an operator reads it rather than where a stranger does.
-// ONE helper rather than a fixed string at each site: a handler that spells its
-// own 500 is a handler that can quietly go back to reflecting err.Error().
-//
-// The method and path are QUOTED. r.URL.Path is the DECODED path, so a request
-// for `/works/x%0A2026-01-01 serve: 500 ...` puts a newline in the middle of
-// this line and the rest of it reads as a log entry of its own - a caller
-// forging whatever an operator or a log pipeline then believes. %q keeps it on
-// one line, with the control characters visible as escapes.
-//
-// A request whose client has gone is not logged: the search and lookup reads
-// run under the request's context, so a client that abandons a query (the
-// site's search box does, on every keystroke) fails it with the context's
-// error, which is no fault of the server's and nobody reads the 500.
+// fail answers with the fixed 500 body and logs the error through this server's
+// logger (httpx.Fail: the error's own text never reaches the body).
 func (s *Server) fail(w http.ResponseWriter, r *http.Request, err error) {
-	if r.Context().Err() == nil {
-		s.log.Printf("serve: 500 %q %q: %v", r.Method, r.URL.Path, err)
-	}
-	writeErr(w, http.StatusInternalServerError, internalErrMsg)
+	httpx.Fail(w, r, s.log, err)
 }
 
 // clampLimit parses the ?limit= param and clamps it to [1, max], defaulting to
@@ -678,10 +637,10 @@ func (s *Server) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 	snap := s.current()
 	if snap == nil {
 		w.Header().Set("Retry-After", s.retryAfter())
-		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
+		httpx.WriteJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
 		return
 	}
-	writeJSON(w, http.StatusOK, map[string]any{
+	httpx.WriteJSON(w, http.StatusOK, map[string]any{
 		"status":   "ok",
 		"built_at": snap.stats.BuiltAt,
 		"works":    snap.stats.Works,
@@ -689,7 +648,7 @@ func (s *Server) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 }
 
 func (s *Server) handleStats(w http.ResponseWriter, _ *http.Request) {
-	writeJSON(w, http.StatusOK, s.current().stats)
+	httpx.WriteJSON(w, http.StatusOK, s.current().stats)
 }
 
 // langParam reads a request's language filter from its already-parsed query
@@ -702,7 +661,7 @@ func (s *Server) handleStats(w http.ResponseWriter, _ *http.Request) {
 func langParam(w http.ResponseWriter, snap *snapshot, q url.Values, kind searchKind) (langFilter, bool) {
 	f, err := snap.langFilterFor(strings.Join(q["lang"], ","), kind)
 	if err != nil {
-		writeErr(w, http.StatusBadRequest, err.Error())
+		httpx.WriteErr(w, http.StatusBadRequest, err.Error())
 		return nil, false
 	}
 	return f, true
@@ -721,7 +680,7 @@ func (s *Server) handleLatest(w http.ResponseWriter, r *http.Request) {
 		s.fail(w, r, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, map[string]any{"works": cards})
+	httpx.WriteJSON(w, http.StatusOK, map[string]any{"works": cards})
 }
 
 func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
@@ -735,10 +694,10 @@ func (s *Server) handleWork(w http.ResponseWriter, r *http.Request) {
 		if redirected(w, r, snap) {
 			return
 		}
-		writeErr(w, http.StatusNotFound, "work not found")
+		httpx.WriteErr(w, http.StatusNotFound, "work not found")
 		return
 	}
-	writeJSON(w, http.StatusOK, detail)
+	httpx.WriteJSON(w, http.StatusOK, detail)
 }
 
 // handleChapters answers an unknown (work, recording) pair with an empty list
@@ -757,7 +716,7 @@ func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 	if len(chs) == 0 && redirected(w, r, snap) {
 		return
 	}
-	writeJSON(w, http.StatusOK, map[string]any{"chapters": chs})
+	httpx.WriteJSON(w, http.StatusOK, map[string]any{"chapters": chs})
 }
 
 // redirected answers a request whose {id} names a RETIRED slug with a 301 at the
@@ -802,7 +761,7 @@ func redirected(w http.ResponseWriter, r *http.Request, snap *snapshot) bool {
 		writeRedirectPage(w, location)
 		return true
 	}
-	writeJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
+	httpx.WriteJSON(w, http.StatusMovedPermanently, map[string]string{"redirect": to})
 	return true
 }
 
@@ -895,10 +854,10 @@ func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 		if redirected(w, r, snap) {
 			return
 		}
-		writeErr(w, http.StatusNotFound, "person not found")
+		httpx.WriteErr(w, http.StatusNotFound, "person not found")
 		return
 	}
-	writeJSON(w, http.StatusOK, p)
+	httpx.WriteJSON(w, http.StatusOK, p)
 }
 
 // seriesPageMax bounds an explicitly requested series page. There is no
@@ -918,10 +877,10 @@ func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 		if redirected(w, r, snap) {
 			return
 		}
-		writeErr(w, http.StatusNotFound, "series not found")
+		httpx.WriteErr(w, http.StatusNotFound, "series not found")
 		return
 	}
-	writeJSON(w, http.StatusOK, ser)
+	httpx.WriteJSON(w, http.StatusOK, ser)
 }
 
 // searchPageDefault / searchPageMax bound one page of search results. Every
@@ -942,7 +901,7 @@ func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 		params := r.URL.Query()
 		q := strings.TrimSpace(params.Get("q"))
 		if q == "" {
-			writeErr(w, http.StatusBadRequest, "q is required")
+			httpx.WriteErr(w, http.StatusBadRequest, "q is required")
 			return
 		}
 		limit := clampLimit(params.Get("limit"), searchPageDefault, searchPageMax)
@@ -959,7 +918,7 @@ func (s *Server) searchHandler(kind searchKind) http.HandlerFunc {
 			s.fail(w, r, err)
 			return
 		}
-		writeJSON(w, http.StatusOK, map[string]any{"results": results})
+		httpx.WriteJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
 }
 
@@ -973,7 +932,7 @@ func (s *Server) handleCoverage(w http.ResponseWriter, r *http.Request) {
 		s.fail(w, r, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, res)
+	httpx.WriteJSON(w, http.StatusOK, res)
 }
 
 // handleCoverageWorks serves one filtered, searchable, paginated page of works
@@ -987,7 +946,7 @@ func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 	filter, ok := validCoverageFilter(q.Get("filter"))
 	if !ok {
-		writeErr(w, http.StatusBadRequest, "unknown filter")
+		httpx.WriteErr(w, http.StatusBadRequest, "unknown filter")
 		return
 	}
 	snap := s.current()
@@ -1002,7 +961,7 @@ func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
 		s.fail(w, r, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, res)
+	httpx.WriteJSON(w, http.StatusOK, res)
 }
 
 // handleCoverageSeriesGaps serves one searchable, paginated page of series with
@@ -1018,7 +977,7 @@ func (s *Server) handleCoverageSeriesGaps(w http.ResponseWriter, r *http.Request
 		s.fail(w, r, err)
 		return
 	}
-	writeJSON(w, http.StatusOK, res)
+	httpx.WriteJSON(w, http.StatusOK, res)
 }
 
 func (s *Server) handleLookup(w http.ResponseWriter, r *http.Request) {
@@ -1026,7 +985,7 @@ func (s *Server) handleLookup(w http.ResponseWriter, r *http.Request) {
 	asin := strings.TrimSpace(q.Get("asin"))
 	isbn := strings.TrimSpace(q.Get("isbn"))
 	if asin == "" && isbn == "" {
-		writeErr(w, http.StatusBadRequest, "asin or isbn is required")
+		httpx.WriteErr(w, http.StatusBadRequest, "asin or isbn is required")
 		return
 	}
 	snap := s.current()
@@ -1036,8 +995,8 @@ func (s *Server) handleLookup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if res == nil {
-		writeErr(w, http.StatusNotFound, "not found")
+		httpx.WriteErr(w, http.StatusNotFound, "not found")
 		return
 	}
-	writeJSON(w, http.StatusOK, res)
+	httpx.WriteJSON(w, http.StatusOK, res)
 }

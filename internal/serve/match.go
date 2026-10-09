@@ -12,6 +12,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 )
 
 // Structured match: GET /api/v1/works/match.
@@ -185,7 +187,7 @@ type matchReasons struct {
 func (s *Server) handleMatch(w http.ResponseWriter, r *http.Request) {
 	req, ok := parseMatchRequest(r.URL.Query())
 	if !ok {
-		writeErr(w, http.StatusBadRequest, "one of q, title, author, series, asin or isbn is required")
+		httpx.WriteErr(w, http.StatusBadRequest, "one of q, title, author, series, asin or isbn is required")
 		return
 	}
 	budget := s.cfg.matchBudget
@@ -208,14 +210,14 @@ func (s *Server) handleMatch(w http.ResponseWriter, r *http.Request) {
 	case err != nil:
 		s.fail(w, r, err)
 	default:
-		writeJSON(w, http.StatusOK, map[string]any{"results": results})
+		httpx.WriteJSON(w, http.StatusOK, map[string]any{"results": results})
 	}
 }
 
 // matchBusy answers a match that ran out of budget: 503, retry in a second.
 func (s *Server) matchBusy(w http.ResponseWriter) {
 	w.Header().Set("Retry-After", "1")
-	writeErr(w, http.StatusServiceUnavailable, "the match did not finish in time; retry shortly")
+	httpx.WriteErr(w, http.StatusServiceUnavailable, "the match did not finish in time; retry shortly")
 }
 
 // matchFacts is a request read for scoring: every hypothesis folded once.

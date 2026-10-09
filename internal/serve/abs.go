@@ -4,6 +4,8 @@ import (
 	"context"
 	"net/http"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/internal/httpx"
 )
 
 // This file implements the Audiobookshelf (ABS) custom metadata provider
@@ -101,7 +103,7 @@ func (s *Server) handleABSSearch(w http.ResponseWriter, r *http.Request) {
 func (s *Server) handleABSLangSearch(w http.ResponseWriter, r *http.Request) {
 	lang, err := parseLangFilter(r.PathValue(absLangWildcard))
 	if err != nil || len(lang) == 0 {
-		writeErr(w, http.StatusNotFound, "unknown provider language")
+		httpx.WriteErr(w, http.StatusNotFound, "unknown provider language")
 		return
 	}
 	snap := s.current()
@@ -113,7 +115,7 @@ func (s *Server) handleABSLangSearch(w http.ResponseWriter, r *http.Request) {
 func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, snap *snapshot, lang langFilter) {
 	q := strings.TrimSpace(r.URL.Query().Get("query"))
 	if q == "" {
-		writeErr(w, http.StatusBadRequest, "query is required")
+		httpx.WriteErr(w, http.StatusBadRequest, "query is required")
 		return
 	}
 	author := strings.TrimSpace(r.URL.Query().Get("author"))
@@ -131,7 +133,7 @@ func (s *Server) serveABS(w http.ResponseWriter, r *http.Request, snap *snapshot
 	if matches == nil {
 		matches = []absBook{}
 	}
-	writeJSON(w, http.StatusOK, map[string]any{"matches": matches})
+	httpx.WriteJSON(w, http.StatusOK, map[string]any{"matches": matches})
 }
 
 // absSearch resolves ABS query params into ranked BookMetadata matches:
