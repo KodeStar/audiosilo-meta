@@ -43,7 +43,7 @@ func newWebhookServer(t *testing.T, seed string, fake *fakeGitHub) *Server {
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newTestGHClient("owner/name", "", fake.srv.URL)
+	srv.gh = srv.newGHClient("owner/name", fake.srv.URL)
 	return srv
 }
 

@@ -25,6 +25,7 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
+	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
 
 // Config configures a Server.
@@ -62,7 +63,7 @@ type Config struct {
 
 	// apiBase overrides the GitHub API base URL. Test-only: production always
 	// talks to api.github.com. Setting it also admits that origin as an asset
-	// origin (ghClient.allowOrigin), since an httptest server is plain HTTP on a
+	// origin (release.WithAPIBase), since an httptest server is plain HTTP on a
 	// loopback IP with a port - three things the production asset rule refuses.
 	apiBase string
 
@@ -100,10 +101,14 @@ type Server struct {
 	// the untouched static file.
 	shells shells
 
-	gh *ghClient
+	// gh is the release client the poller fetches through (newGHClient).
+	gh *release.Client
 
 	mu     sync.Mutex // guards refresh() so two polls never race
 	loaded string     // tag of the currently-loaded release ("" for local db)
+	// etag is the release list's last ETag, sent as If-None-Match so a poll that
+	// finds nothing new costs one conditional request. Guarded by mu.
+	etag string
 
 	// retired counts the artifact files of snapshots that have been swapped out
 	// but not yet closed, so the cache prune spares every one of them (see
@@ -140,7 +145,7 @@ func New(cfg Config) (*Server, error) {
 		cfg.Interval = time.Hour
 	}
 	if cfg.Repo == "" {
-		cfg.Repo = "KodeStar/audiosilo-meta"
+		cfg.Repo = release.DefaultRepo
 	}
 	if cfg.swapGrace <= 0 {
 		cfg.swapGrace = 60 * time.Second
@@ -171,10 +176,7 @@ func New(cfg Config) (*Server, error) {
 	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}}
 	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
-		s.gh = newGHClient(cfg.Repo, cfg.Token, cfg.apiBase)
-		if cfg.apiBase != "" {
-			s.gh.allowOrigin(cfg.apiBase) // test-only; apiBase is unexported
-		}
+		s.gh = s.newGHClient(cfg.Repo, cfg.apiBase)
 	}
 
 	if cfg.DBPath != "" {
@@ -205,6 +207,18 @@ func New(cfg Config) (*Server, error) {
 	}
 	s.mux = s.buildMux()
 	return s, nil
+}
+
+// newGHClient builds the release client this server polls through: repo, the
+// configured token, the server's logger, and the loaded artifact's size as the
+// expansion bound's floor (release.WithBaseSize - the arm that keeps the bound
+// tracking a growing catalogue). apiBase is test-only (Config.apiBase).
+func (s *Server) newGHClient(repo, apiBase string, opts ...release.Option) *release.Client {
+	o := []release.Option{release.WithLogger(s.log), release.WithBaseSize(s.currentArtifactBytes)}
+	if apiBase != "" {
+		o = append(o, release.WithAPIBase(apiBase))
+	}
+	return release.New(repo, s.cfg.Token, append(o, opts...)...)
 }
 
 // Handler returns the http.Handler for the server (exposed for tests).

@@ -15,6 +15,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/serve"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
 
 func main() {
@@ -24,7 +25,7 @@ func main() {
 	siteURL := flag.String("site-url", model.SiteURL,
 		"public origin of this deployment, used for canonical, og: and JSON-LD URLs on the entity pages")
 	poll := flag.Bool("poll", false, "fetch and refresh the artifact from GitHub Releases")
-	repo := flag.String("repo", "KodeStar/audiosilo-meta", "GitHub owner/name to poll")
+	repo := flag.String("repo", release.DefaultRepo, "GitHub owner/name to poll")
 	interval := flag.Duration("interval", time.Hour, "poll interval")
 	cache := flag.String("cache", "./cache", "directory for downloaded artifacts")
 	flag.Parse()

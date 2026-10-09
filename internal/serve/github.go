@@ -1,483 +1,29 @@
 package serve
 
+// metaserve's refresh orchestration over pkg/release: which data release to
+// adopt (release.Client.LatestData, conditional on the ETag this server keeps),
+// the CACHE VOLUME (adopting an artifact a previous container left, verified;
+// pruning superseded ones), the zstd --patch-from DELTA against the loaded
+// artifact, and the full verified download (release.Client.DownloadData) every
+// other path falls back to. The asset contract, the host allowlist, the stall
+// watchdog and the verified install are pkg/release's, shared with mirror-mode
+// AudioSilo servers.
+
 import (
 	"bufio"
-	"compress/gzip"
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
-	"encoding/json"
 	"errors"
 	"fmt"
-	"hash"
-	"io"
-	"net/http"
-	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
-	"sync/atomic"
 	"time"
 
 	"github.com/klauspost/compress/zstd"
 
-	"github.com/kodestar/audiosilo-meta/internal/ghhost"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
+	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
-
-// The request deadlines. They are deliberately NOT one http.Client.Timeout:
-// that is a deadline on the whole request, body included, so a single number
-// has to cover both a tiny JSON document and an artifact download that is
-// hundreds of MB post-seed. Sized for the JSON it aborts healthy long
-// downloads - and since the image bakes no artifact, an aborted download is a
-// container that never becomes ready, forever. Sized for the artifact it lets a
-// hung metadata request sit for the same long time. So the two are split, and
-// the artifact download is policed by PROGRESS rather than by total duration.
-const (
-	// metadataTimeout bounds the release-metadata request end to end. It is a
-	// small JSON document: a slow one is a broken one.
-	metadataTimeout = 30 * time.Second
-
-	// responseHeaderTimeout bounds the wait for response HEADERS on every
-	// request, asset downloads included. It is what catches a connection that is
-	// accepted and then never answered, which is otherwise the one failure the
-	// stall watchdog below cannot see (no body has started).
-	responseHeaderTimeout = 30 * time.Second
-
-	// assetDeadline is the absolute ceiling on ONE asset download. It is not a
-	// service-level expectation but a runaway guard: a slow-but-healthy link may
-	// legitimately need many minutes for the artifact, and aborting that is worse
-	// than waiting for it.
-	assetDeadline = 60 * time.Minute
-
-	// assetStallTimeout is how long a download may go without delivering a
-	// single byte before it is abandoned. This - not a whole-request deadline -
-	// is what tells a dead transfer from a slow one, so a healthy download of any
-	// size finishes while a stalled one fails in a minute.
-	assetStallTimeout = 60 * time.Second
-)
-
-// ghClient talks to the GitHub Releases API, remembering the last ETag so a
-// poll that finds nothing new costs one conditional request.
-type ghClient struct {
-	base  string // API base, "https://api.github.com" (overridable for tests)
-	repo  string // "owner/name"
-	token string // optional
-	http  *http.Client
-	etag  string
-
-	// allowOrigins are the `scheme://host` origins this client may talk to
-	// BESIDE the public GitHub rule (see checkAssetTarget) - and, as a redirect
-	// hop, beside ghhost.HopPolicy. It is EMPTY in production, where the policy
-	// is exactly github.com / api.github.com / *.githubusercontent.com over
-	// https with no port; its one filler is test setup pointing the whole client
-	// at an httptest server, which is plain HTTP on a loopback IP with a port -
-	// three things the production rule refuses, and rightly.
-	allowOrigins []string
-
-	// The deadlines above, as fields so tests can scale them down.
-	metaTimeout   time.Duration // whole-request deadline for the metadata call
-	assetDeadline time.Duration // whole-request ceiling for an asset download
-	stallTimeout  time.Duration // no-progress watchdog for an asset download
-}
-
-func newGHClient(repo, token, base string) *ghClient {
-	if base == "" {
-		base = "https://api.github.com"
-	}
-	// The client carries NO Timeout (see the deadline constants); the per-request
-	// contexts do that job. The transport still bounds the pre-body phase.
-	tr, ok := http.DefaultTransport.(*http.Transport)
-	if !ok {
-		tr = &http.Transport{}
-	}
-	tr = tr.Clone()
-	tr.ResponseHeaderTimeout = responseHeaderTimeout
-	c := &ghClient{
-		base:          strings.TrimRight(base, "/"),
-		repo:          repo,
-		token:         token,
-		http:          &http.Client{Transport: tr},
-		metaTimeout:   metadataTimeout,
-		assetDeadline: assetDeadline,
-		stallTimeout:  assetStallTimeout,
-	}
-	// A browser_download_url ALWAYS 302s to a CDN host, so a redirect is the
-	// normal path here rather than an edge case. The hop is judged by
-	// ghhost.HopPolicy - https, no IP literal, bounded - and deliberately NOT by
-	// the asset allowlist: GitHub picks the CDN and has moved it before, and
-	// net/http strips the Authorization header on a cross-host hop anyway. See
-	// ghhost's package doc, which is where that trade is argued.
-	c.http.CheckRedirect = ghhost.CheckRedirect(0, c.allowsOrigin) // 0: ghhost.DefaultMaxRedirects
-	return c
-}
-
-// allowOrigin adds raw's `scheme://host` to the origins this client may reach
-// outside the public GitHub rule. TEST SETUP ONLY - see ghClient.allowOrigins;
-// its one production-side caller is New, gated on the unexported Config.apiBase
-// that only a test can set.
-func (c *ghClient) allowOrigin(raw string) {
-	if u, err := url.Parse(raw); err == nil && u.Host != "" {
-		c.allowOrigins = append(c.allowOrigins, u.Scheme+"://"+u.Host)
-	}
-}
-
-// allowsOrigin reports whether u is one of the extra origins above. Both the
-// scheme and the host (port included) must match: an exemption that ignored
-// either would be a hole in the rule it is an exception to.
-func (c *ghClient) allowsOrigin(u *url.URL) bool {
-	origin := u.Scheme + "://" + u.Host
-	for _, o := range c.allowOrigins {
-		if o == origin {
-			return true
-		}
-	}
-	return false
-}
-
-type ghAsset struct {
-	Name string `json:"name"`
-	// Size is the asset's COMPRESSED size as the release metadata declares it.
-	// It is one arm of what bounds the refresh paths (see decompressBound): a
-	// gzip stream states no output size, so a declared input size is the only
-	// thing a plausible expansion can be measured against - and a release that
-	// declares none falls back to the floor and the loaded artifact's size,
-	// never to a bound below the file it is bounding.
-	Size        int64  `json:"size"`
-	DownloadURL string `json:"browser_download_url"`
-}
-
-type ghRelease struct {
-	TagName     string    `json:"tag_name"`
-	Draft       bool      `json:"draft"`
-	Prerelease  bool      `json:"prerelease"`
-	PublishedAt time.Time `json:"published_at"`
-	Assets      []ghAsset `json:"assets"`
-}
-
-// releaseListPageSize is how many recent releases the poller scans for a data
-// release. The repo also cuts code/image releases (v*, no data assets) between
-// data releases, so a window of the list is searched and the newest by
-// published_at selected (the list order is not publish-chronological - see
-// latestDataRelease).
-//
-// The window is a BOOT-SURVIVAL concern, not just a freshness one: the image
-// bakes no artifact, so if enough code/image releases ever pushed every data
-// release out of these 15, a fresh container would find nothing to load. It
-// would not crash - it comes up degraded, falls back to whatever the cache
-// volume holds and otherwise answers 503 (see New) - but it would stay there,
-// because every retry scans the same exhausted window. A wider window (or
-// pagination) is the fix if the cadence of code releases ever approaches this.
-const releaseListPageSize = 15
-
-// latestDataRelease fetches the newest releases conditionally and returns the
-// non-draft, non-prerelease release carrying a meta.sqlite.gz asset with the
-// MAXIMUM published_at. GitHub's "latest" release can be a code/image release
-// (v*) with no data assets, so selection is by asset presence, not recency
-// alone. The list endpoint's order is NOT publish-chronological: it was
-// observed live to be created_at date descending, then reverse-lexicographic
-// tag order within a day - so with several same-day data releases the
-// first-listed one is not the newest. Selection is therefore by max
-// published_at, not list position. notModified is true when GitHub answers 304
-// (nothing changed since the last successful fetch).
-func (c *ghClient) latestDataRelease(ctx context.Context) (rel *ghRelease, notModified bool, err error) {
-	ctx, cancel := context.WithTimeout(ctx, c.metaTimeout)
-	defer cancel()
-	url := fmt.Sprintf("%s/repos/%s/releases?per_page=%d", c.base, c.repo, releaseListPageSize)
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
-	if err != nil {
-		return nil, false, err
-	}
-	req.Header.Set("Accept", "application/vnd.github+json")
-	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
-	if c.token != "" {
-		req.Header.Set("Authorization", "Bearer "+c.token)
-	}
-	if c.etag != "" {
-		req.Header.Set("If-None-Match", c.etag)
-	}
-	resp, err := c.http.Do(req)
-	if err != nil {
-		return nil, false, err
-	}
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode == http.StatusNotModified {
-		return nil, true, nil
-	}
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(io.LimitReader(resp.Body, 512))
-		return nil, false, fmt.Errorf("releases: %s: %s", resp.Status, strings.TrimSpace(string(body)))
-	}
-	var list []ghRelease
-	if err := json.NewDecoder(resp.Body).Decode(&list); err != nil {
-		return nil, false, err
-	}
-	if et := resp.Header.Get("ETag"); et != "" {
-		c.etag = et
-	}
-	var best *ghRelease
-	for i := range list {
-		r := &list[i]
-		if r.Draft || r.Prerelease {
-			continue
-		}
-		if _, ok := findAsset(r, dataAssetName); !ok {
-			continue
-		}
-		// Greater-or-equal keeps the LATER-in-list entry on equal timestamps,
-		// matching release.yml's jq (max_by is a stable sort, so it returns the
-		// last of a tied pair) - the two selectors must agree even on a
-		// same-second tie, or the workflow could base its patch on a release no
-		// running server has loaded.
-		if best == nil || !r.PublishedAt.Before(best.PublishedAt) {
-			best = r
-		}
-	}
-	if best != nil {
-		return best, false, nil
-	}
-	// The stored ETag makes the next poll 304 until the list changes - correct,
-	// since retrying an unchanged list cannot find a data release either.
-	return nil, false, fmt.Errorf("no data release with a %s asset among the latest %d", dataAssetName, len(list))
-}
-
-// forget drops the remembered ETag so the next poll refetches the release
-// metadata unconditionally. Called when a refresh fails AFTER a successful
-// (200) metadata fetch - the ETag was already stored, so without this the next
-// poll would 304 and never retry the failed download until another release is
-// cut.
-func (c *ghClient) forget() { c.etag = "" }
-
-// get issues the authenticated asset GET. The caller owns (and must close) the
-// response body - closing it is also what releases the request context, so a
-// caller that forgets leaks a context until assetDeadline.
-//
-// The download is bounded by assetDeadline (a runaway guard) and, far more
-// tightly, by a no-progress watchdog: see stallGuard.
-func (c *ghClient) get(ctx context.Context, url string) (*http.Response, error) {
-	// The URL comes out of the release JSON, and the request below attaches this
-	// server's token to whatever host it names - so the host is checked FIRST.
-	if err := c.checkAssetURL(url); err != nil {
-		return nil, err
-	}
-	ctx, cancel := context.WithTimeout(ctx, c.assetDeadline)
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
-	if err != nil {
-		cancel()
-		return nil, err
-	}
-	req.Header.Set("Accept", "application/octet-stream")
-	if c.token != "" {
-		req.Header.Set("Authorization", "Bearer "+c.token)
-	}
-	resp, err := c.http.Do(req)
-	if err != nil {
-		cancel()
-		return nil, err
-	}
-	if resp.StatusCode != http.StatusOK {
-		_ = resp.Body.Close()
-		cancel()
-		return nil, fmt.Errorf("download %s: %s", url, resp.Status)
-	}
-	resp.Body = newStallGuard(resp.Body, c.stallTimeout, cancel)
-	return resp, nil
-}
-
-// stallGuard wraps a download body with a no-progress watchdog and owns the
-// request context's cancel func (released on Close, so the guard is also what
-// makes the deadline collectable).
-//
-// It is the piece that lets the artifact download have a generous deadline
-// without also tolerating a dead connection for that long: every byte delivered
-// resets the timer, so a slow-but-steady transfer of any size runs to
-// completion, while one that goes quiet for stallTimeout is cancelled. The
-// cancellation surfaces to the reader as a context error, which says nothing
-// about why, so Read rewrites it into the real reason.
-type stallGuard struct {
-	body    io.ReadCloser
-	timeout time.Duration
-	timer   *time.Timer
-	cancel  context.CancelFunc
-	stalled atomic.Bool
-}
-
-func newStallGuard(body io.ReadCloser, timeout time.Duration, cancel context.CancelFunc) *stallGuard {
-	g := &stallGuard{body: body, timeout: timeout, cancel: cancel}
-	g.timer = time.AfterFunc(timeout, func() {
-		g.stalled.Store(true)
-		cancel() // kills the in-flight Read
-	})
-	return g
-}
-
-func (g *stallGuard) Read(p []byte) (int, error) {
-	n, err := g.body.Read(p)
-	if n > 0 {
-		g.timer.Reset(g.timeout)
-	}
-	if err != nil && g.stalled.Load() {
-		return n, fmt.Errorf("download stalled: no data for %s", g.timeout)
-	}
-	return n, err
-}
-
-func (g *stallGuard) Close() error {
-	g.timer.Stop()
-	err := g.body.Close()
-	g.cancel()
-	return err
-}
-
-// checkAssetURL refuses an asset URL this client may not send its token to.
-//
-// The URLs are read out of the release JSON, which is data from a remote
-// service, and get() attaches `Authorization: Bearer <token>` to whatever they
-// name. A release whose asset URL pointed at another host - a compromised or
-// mistaken one, or simply a repository somebody else can publish to - would
-// therefore hand that host a credential. The allowlist is applied BEFORE the
-// request is built, so a refused URL is never even dialed.
-func (c *ghClient) checkAssetURL(raw string) error {
-	u, err := url.Parse(raw)
-	if err != nil {
-		return fmt.Errorf("download %s: %w", raw, err)
-	}
-	return c.checkAssetTarget(u)
-}
-
-// checkAssetTarget is the rule itself, over a parsed URL: the INITIAL URL the
-// release JSON named, which is the one this client attaches its token to. A
-// redirect hop is judged by ghhost.HopPolicy instead (see newGHClient).
-//
-// Production policy is exactly: https, no explicit port, and one of github.com,
-// api.github.com or *.githubusercontent.com. `api.github.com` is this client's
-// own addition to the shared GitHub host rule - it is the API's asset route,
-// which is no part of what issueform fetches.
-//
-// THE PORT IS PART OF THE RULE. The allowlist reads u.Hostname(), which strips
-// the port, so `https://objects.githubusercontent.com:8443/x` matched the host
-// arm and was dialled with the bearer token attached - a URL the release JSON
-// chooses, pointing at whatever is listening on that port of a host whose NAME
-// resolves wherever the resolver says. A real asset URL never carries one.
-//
-// The one exception is an origin allowOrigin was handed, which is test setup
-// alone and is why it is checked as a whole origin rather than as a relaxation
-// of any single arm.
-func (c *ghClient) checkAssetTarget(u *url.URL) error {
-	if c.allowsOrigin(u) {
-		return nil
-	}
-	switch {
-	case u.Scheme != "https":
-		// A token is not sent in clear.
-		return fmt.Errorf("refusing to download %s: scheme %q is not https", u.Redacted(), u.Scheme)
-	case u.Port() != "":
-		return fmt.Errorf("refusing to download %s: %q names an explicit port", u.Redacted(), u.Host)
-	case !ghhost.Allowed(u.Hostname(), "api.github.com"):
-		return fmt.Errorf("refusing to download %s: %q is not a GitHub release-asset host", u.Redacted(), u.Host)
-	}
-	return nil
-}
-
-// maxSmallAssetBytes bounds the assets that are read into memory. Only the
-// `sha256sum`-format checksum files take that path (about 80 bytes each); the
-// artifact and the patch are streamed to disk, so nothing unbounded is ever
-// buffered.
-const maxSmallAssetBytes = 4 << 10
-
-// downloadSmall GETs url and returns the body, refusing anything larger than
-// maxSmallAssetBytes.
-func (c *ghClient) downloadSmall(ctx context.Context, url string) ([]byte, error) {
-	resp, err := c.get(ctx, url)
-	if err != nil {
-		return nil, err
-	}
-	defer func() { _ = resp.Body.Close() }()
-	body, err := io.ReadAll(io.LimitReader(resp.Body, maxSmallAssetBytes+1))
-	if err != nil {
-		return nil, err
-	}
-	if len(body) > maxSmallAssetBytes {
-		return nil, fmt.Errorf("download %s: larger than %d bytes, expected a checksum file", url, maxSmallAssetBytes)
-	}
-	return body, nil
-}
-
-// downloadTo streams url straight into dstPath (temp file + rename, never
-// through memory) and, when wantHexDigest is non-empty, refuses to install it
-// unless the streamed bytes hash to it. This is the path every artifact-sized
-// asset takes: post-seed the gz is hundreds of MB and the raw artifact ~10x
-// today's, so buffering a whole asset would put that on the heap of a serving
-// process.
-// maxBytes bounds what lands on disk. Nothing is decompressed here, so the
-// bound is the asset's own DECLARED size rather than a multiple of it: the
-// release states exactly how many bytes this is, and a body that runs past its
-// own declaration is either a corrupt transfer or a host answering with
-// something else. It matters because this is the one artifact-sized writer that
-// is not behind an expansion bound - the patch asset, hundreds of MB of it.
-func (c *ghClient) downloadTo(ctx context.Context, url, dstPath, wantHexDigest string, maxBytes int64) (int64, error) {
-	resp, err := c.get(ctx, url)
-	if err != nil {
-		return 0, err
-	}
-	defer func() { _ = resp.Body.Close() }()
-	return installVerified(resp.Body, dstPath, wantHexDigest, maxBytes)
-}
-
-// findAsset returns the named asset of rel. It hands back the WHOLE asset rather
-// than its URL because the declared Size is what bounds the decompression paths.
-func findAsset(rel *ghRelease, name string) (ghAsset, bool) {
-	for _, a := range rel.Assets {
-		if a.Name == name {
-			return a, true
-		}
-	}
-	return ghAsset{}, false
-}
-
-// smallAsset finds the named asset on rel and reads it into memory (checksum
-// files only - see maxSmallAssetBytes).
-func (s *Server) smallAsset(ctx context.Context, rel *ghRelease, name string) ([]byte, error) {
-	asset, ok := findAsset(rel, name)
-	if !ok {
-		return nil, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
-	}
-	return s.gh.downloadSmall(ctx, asset.DownloadURL)
-}
-
-// assetTo finds the named asset on rel and streams it to dstPath, verified
-// against wantHexDigest when one is given.
-func (s *Server) assetTo(ctx context.Context, rel *ghRelease, name, dstPath, wantHexDigest string) (int64, error) {
-	asset, ok := findAsset(rel, name)
-	if !ok {
-		return 0, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
-	}
-	// The declared size IS the bound here (see downloadTo). A release that
-	// declares none falls back to the server-wide expansion bound, which is a
-	// ceiling rather than a size but is still a bound.
-	bound := asset.Size
-	if bound <= 0 {
-		bound = s.expansionBound(name, 0)
-	}
-	return s.gh.downloadTo(ctx, asset.DownloadURL, dstPath, wantHexDigest, bound)
-}
-
-// assetBody finds the named asset on rel and opens its body for streaming, also
-// returning the size the release metadata declares for it (0 when it declares
-// none). The caller owns (and must close) the returned reader. Used by the path
-// that transforms an asset while it downloads rather than landing it as a file.
-func (s *Server) assetBody(ctx context.Context, rel *ghRelease, name string) (io.ReadCloser, int64, error) {
-	asset, ok := findAsset(rel, name)
-	if !ok {
-		return nil, 0, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
-	}
-	resp, err := s.gh.get(ctx, asset.DownloadURL)
-	if err != nil {
-		return nil, 0, err
-	}
-	return resp.Body, asset.Size, nil
-}
 
 // patchWindowLog is the log2 of the zstd window the release patches are
 // compressed with (--long=31 in .github/workflows/release.yml - a bump is a
@@ -485,194 +31,10 @@ func (s *Server) assetBody(ctx context.Context, rel *ghRelease, name string) (io
 // admit a window this large or the frame is rejected.
 const patchWindowLog = 31
 
-// dataAssetName is the release asset that makes a release a DATA release: the
-// gzipped SQLite artifact. Release selection keys on its presence; its checksum
-// sibling is dataAssetName + ".sha256".
-const dataAssetName = "meta.sqlite.gz"
-
-// rawAssetName names the UNCOMPRESSED artifact. No such asset is published -
-// only its checksum is (rawAssetName + ".sha256"), which is what the patch path
-// and the cache-adoption path verify a reconstructed or already-present file
-// against.
-const rawAssetName = "meta.sqlite"
-
 // patchAssetName is the release-asset naming convention for the binary delta
 // based on fromTag's artifact.
 func patchAssetName(fromTag string) string {
 	return "meta.sqlite.patch.from-" + fromTag + ".zst"
-}
-
-// expectedDigest parses a `sha256sum`-format checksum file, returning its first
-// whitespace-separated field as the expected lowercase hex digest.
-func expectedDigest(checksumFile []byte) (string, error) {
-	fields := strings.Fields(string(checksumFile))
-	if len(fields) == 0 {
-		return "", fmt.Errorf("checksum file is empty")
-	}
-	return strings.ToLower(fields[0]), nil
-}
-
-// installStream streams src into dstPath atomically (temp file + rename in
-// dstPath's directory). When verify is non-nil it runs AFTER the copy and BEFORE
-// the rename: an error from it means nothing is installed. Any failure removes
-// the temp file and never creates dstPath. Returns the number of bytes written.
-//
-// The gate is a callback rather than a digest because the bytes that must be
-// verified are not always the bytes being written: fullRefresh decompresses
-// while it downloads, so what it can check against the published checksum is the
-// COMPRESSED input, not the artifact landing on disk.
-//
-// maxBytes is the bound on what is written (see decompressBound; 0 means
-// unbounded, which no caller passes any more - every artifact-sized writer here
-// carries a bound, the patch download included).
-// The check lives here because this is where the copy's byte count already is,
-// and it is applied exactly as a failed verification is: the temp file goes and
-// dstPath is never created. src is read at most one byte past the bound, which
-// is all it takes to prove it was crossed.
-func installStream(src io.Reader, dstPath string, maxBytes int64, verify func() error) (int64, error) {
-	if err := os.MkdirAll(filepath.Dir(dstPath), 0o755); err != nil {
-		return 0, err
-	}
-	tmp, err := os.CreateTemp(filepath.Dir(dstPath), ".meta-*.tmp")
-	if err != nil {
-		return 0, err
-	}
-	tmpName := tmp.Name()
-	defer func() { _ = os.Remove(tmpName) }()
-
-	if maxBytes > 0 {
-		src = io.LimitReader(src, maxBytes+1)
-	}
-	n, err := io.Copy(tmp, src) //nolint:gosec // bounded above and gated by verify below, so unverified bytes never become dstPath
-	if err != nil {
-		_ = tmp.Close()
-		return 0, err
-	}
-	if err := tmp.Close(); err != nil {
-		return 0, err
-	}
-	if maxBytes > 0 && n > maxBytes {
-		return 0, fmt.Errorf("the asset expands past the %d-byte bound: refusing it as unverifiable", maxBytes)
-	}
-	if verify != nil {
-		if err := verify(); err != nil {
-			return 0, err
-		}
-	}
-	if err := os.Rename(tmpName, dstPath); err != nil {
-		return 0, err
-	}
-	return n, nil
-}
-
-// checkDigest compares an accumulated hash against an expected lowercase hex
-// digest.
-func checkDigest(h hash.Hash, wantHexDigest string) error {
-	got := hex.EncodeToString(h.Sum(nil))
-	if got != wantHexDigest {
-		return fmt.Errorf("sha256 mismatch: got %s, want %s", got, wantHexDigest)
-	}
-	return nil
-}
-
-// installVerified streams src into dstPath atomically, requiring the streamed
-// bytes to hash to wantHexDigest (empty = no digest check) before anything is
-// installed. maxBytes is installStream's bound (0 = unbounded).
-func installVerified(src io.Reader, dstPath, wantHexDigest string, maxBytes int64) (int64, error) {
-	if wantHexDigest == "" {
-		return installStream(src, dstPath, maxBytes, nil)
-	}
-	h := sha256.New()
-	return installStream(io.TeeReader(src, h), dstPath, maxBytes, func() error {
-		return checkDigest(h, wantHexDigest)
-	})
-}
-
-// gunzipStreamTo decompresses src into dstPath in ONE pass, verifying the
-// COMPRESSED bytes against wantGzDigest before the result is installed. This is
-// what lets fullRefresh go from the network straight to the finished artifact:
-// no intermediate .gz file, and neither the compressed nor the decompressed
-// bytes are ever held in memory.
-//
-// The digest is taken at the tee, i.e. over everything read from src, and the
-// reader is drained before the check so trailing bytes cannot be skipped by the
-// gzip reader stopping at its trailer. installStream runs the check before the
-// rename, so a corrupted download is discarded with the temp file - the same
-// "verified before it counts" property the old download-then-compare had.
-//
-// maxBytes is the COMPUTED bound on what is written, Server.expansionBound's -
-// the shape applyPatchFile takes too, so neither path decides the bound for
-// itself.
-// The checksum gate is the real defence, but it only fires at the END, and a
-// gzip stream declares no output size - so without a bound, an asset that
-// decompresses without limit fills the cache volume before anything gets to
-// reject it. Hitting the bound is treated exactly as a failed verification: the
-// temp file goes and dstPath is never created.
-func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64) error {
-	h := sha256.New()
-	tee := io.TeeReader(src, h)
-	zr, err := gzip.NewReader(bufio.NewReaderSize(tee, downloadBufferBytes))
-	if err != nil {
-		return err
-	}
-	defer func() { _ = zr.Close() }()
-	_, err = installStream(zr, dstPath, maxBytes, func() error {
-		if _, err := io.Copy(io.Discard, tee); err != nil {
-			return err
-		}
-		return checkDigest(h, wantGzDigest)
-	})
-	return err
-}
-
-// The EXPANSION BOUND. Both refresh paths write a file whose size is decided by
-// the asset's CONTENT rather than by anything either end declared: a gzip stream
-// states no output size, and a zstd --patch-from frame's window is the whole
-// base artifact. The sha256 gate rejects a wrong result, but only once the bytes
-// are on disk, so the bound is what keeps a runaway expansion from filling the
-// cache volume first.
-//
-// IT IS A CEILING, NOT AN EXPECTATION, and the failure mode it must not have is
-// being too LOW. A bound the real artifact exceeds is not a caught attack, it is
-// every refresh failing forever - re-downloading the whole asset each poll,
-// writing maxBytes+1 bytes to the cache volume each time, and serving stale data
-// in between. That is worse than the disk-filling it guards against, so every
-// arm below is sized generously and the three are combined with max():
-//
-//   - the DECLARED compressed size times decompressRatio. The real artifact's
-//     gzip ratio measured about 3.8x, so 16x is margin enough for a catalogue
-//     that compresses far worse than today's and is still a bound.
-//   - decompressFloor, which covers a small or UNDECLARED size. It has to clear
-//     the real artifact on its own, because that is what an asset declaring no
-//     size falls back to: at ~1.6 GB today, a 1 GiB floor was below the file it
-//     was bounding.
-//   - twice the CURRENTLY LOADED artifact, when there is one. The catalogue only
-//     grows, and the next release is the neighbour of the one being served, so
-//     this is the arm that keeps the bound tracking the data instead of needing
-//     a constant raised by hand every year.
-const (
-	decompressRatio = 16
-	decompressFloor = 4 << 30 // 4 GiB
-	// currentArtifactRatio is the multiple of the loaded artifact's on-disk size
-	// the bound may never fall below. Two: a release that DOUBLED the catalogue
-	// between two polls is not something to refuse.
-	currentArtifactRatio = 2
-)
-
-// decompressBound is the arithmetic above: the maximum of the floor, the ratio
-// over a declared compressed size (0 or negative = nothing declared) and
-// currentArtifactRatio over the loaded artifact's size (0 = none loaded). Each
-// multiplication is guarded against an absurd input overflowing into a small
-// number, which would turn the ceiling into a trap.
-func decompressBound(declared, currentBytes int64) int64 {
-	bound := int64(decompressFloor)
-	if currentBytes > 0 && currentBytes <= (1<<62)/currentArtifactRatio {
-		bound = max(bound, currentBytes*currentArtifactRatio)
-	}
-	if declared > 0 && declared <= (1<<62)/decompressRatio {
-		bound = max(bound, declared*decompressRatio)
-	}
-	return bound
 }
 
 // currentArtifactBytes is the on-disk size of the artifact this server is
@@ -690,23 +52,6 @@ func (s *Server) currentArtifactBytes() int64 {
 	return info.Size()
 }
 
-// expansionBound is decompressBound over this server's own state, and the one
-// place an UNDECLARED asset size is reported: a release that stops declaring
-// sizes is a silent move onto the floor, and an operator should read that in the
-// log rather than infer it from a refresh that started failing.
-func (s *Server) expansionBound(asset string, declared int64) int64 {
-	bound := decompressBound(declared, s.currentArtifactBytes())
-	if declared <= 0 {
-		s.log.Printf("serve: release asset %s declares no size; bounding its expansion at %d bytes", asset, bound)
-	}
-	return bound
-}
-
-// downloadBufferBytes is the read buffer for the on-disk decompression paths -
-// large enough that a multi-hundred-MB artifact is not read in 4KB syscalls,
-// small enough to be irrelevant to the process's footprint.
-const downloadBufferBytes = 1 << 20
-
 // applyPatchFile reconstructs the new artifact by applying the zstd
 // --patch-from delta at patchPath to the previously-loaded artifact, verifies
 // the result's sha256 against wantHexDigest (the published raw-sqlite digest),
@@ -722,11 +67,12 @@ const downloadBufferBytes = 1 << 20
 //     window exceeds the decoder's defaults, so both the max window and max
 //     memory are raised to match or the decode rejects the frame.
 //
-// maxBytes is the COMPUTED bound on the reconstructed artifact, the same shape
-// gunzipStreamTo takes: the patch declares no output size, and a frame that
-// expanded without limit would fill the cache volume long before the sha256 gate
-// could reject it. The caller measures it against the BASE artifact's size (see
-// decompressBound's current-artifact arm), the one size this path knows exactly.
+// maxBytes is the COMPUTED bound on the reconstructed artifact, the shape the full
+// download takes (release.DecompressBound): the patch declares no output size,
+// and a frame that expanded without limit would fill the cache volume long before
+// the sha256 gate could reject it. The caller measures it against the BASE
+// artifact's size (the bound's current-artifact arm), the one size this path
+// knows exactly.
 //
 // The patch itself and the reconstructed output both stream (file in, file out),
 // but the PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
@@ -744,7 +90,7 @@ func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, maxBytes
 		return 0, err
 	}
 	defer func() { _ = patch.Close() }()
-	reader, err := zstd.NewReader(bufio.NewReaderSize(patch, downloadBufferBytes),
+	reader, err := zstd.NewReader(bufio.NewReaderSize(patch, patchBufferBytes),
 		zstd.WithDecoderDictRaw(0, prev),
 		zstd.WithDecoderMaxWindow(1<<patchWindowLog),
 		zstd.WithDecoderMaxMemory(1<<patchWindowLog),
@@ -754,13 +100,18 @@ func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, maxBytes
 		return 0, err
 	}
 	defer reader.Close()
-	return installVerified(reader, dstPath, wantHexDigest, maxBytes)
+	return release.InstallVerified(reader, dstPath, wantHexDigest, maxBytes)
 }
+
+// patchBufferBytes is the patch's read buffer - large enough that a
+// hundreds-of-MB delta is not read in 4KB syscalls.
+const patchBufferBytes = 1 << 20
 
 // cachePrefix names every file this server writes into the cache directory: the
 // artifacts (meta-<tag>.sqlite), their transient siblings (.gz, .patch.zst) and
-// installVerified's temp files (.meta-*.tmp). pruneCache only ever removes files
-// matching it, so a cache directory shared with anything else is left alone.
+// the verified installs' temp files (.meta-*.tmp - release.TempFile). pruneCache
+// only ever removes files matching it, so a cache directory shared with anything
+// else is left alone.
 const cachePrefix = "meta-"
 
 // artifactSuffix completes a cached artifact's file name (cachePrefix + tag +
@@ -827,22 +178,6 @@ func (s *Server) newestCachedArtifact() (path, tag string, ok bool) {
 		}
 	}
 	return path, tag, path != ""
-}
-
-// verifyFileDigest hashes an existing file and compares it with an expected
-// lowercase hex digest. The download paths verify bytes as they stream; this is
-// for the one case where the bytes are already on disk (see cachedRefresh).
-func verifyFileDigest(path, wantHexDigest string) error {
-	f, err := os.Open(path) //nolint:gosec // our own cache file, not user input
-	if err != nil {
-		return err
-	}
-	defer func() { _ = f.Close() }()
-	h := sha256.New()
-	if _, err := io.Copy(h, bufio.NewReaderSize(f, downloadBufferBytes)); err != nil {
-		return err
-	}
-	return checkDigest(h, wantHexDigest)
 }
 
 // defaultMaxPatchBase caps the artifact size at which the patch path is still
@@ -943,14 +278,17 @@ func (s *Server) refresh(ctx context.Context) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	rel, notModified, err := s.gh.latestDataRelease(ctx)
+	rel, etag, notModified, err := s.gh.LatestData(ctx, s.etag)
+	// Stored even beside an error: a 200 that lists no data release makes the
+	// next poll a cheap 304 until the list changes (see LatestData).
+	s.etag = etag
 	if err != nil {
 		return err
 	}
 	if notModified {
 		return nil
 	}
-	if rel.TagName != "" && rel.TagName == s.loaded {
+	if rel.Tag != "" && rel.Tag == s.loaded {
 		return nil
 	}
 
@@ -961,26 +299,33 @@ func (s *Server) refresh(ctx context.Context) error {
 	if err := s.cachedRefresh(ctx, rel); err == nil {
 		return nil
 	} else if !errors.Is(err, errNoCachedArtifact) && ctx.Err() == nil {
-		s.log.Printf("serve: cached artifact for %s unusable (%v); downloading", rel.TagName, err)
+		s.log.Printf("serve: cached artifact for %s unusable (%v); downloading", rel.Tag, err)
 	}
 
 	if err := s.tryPatch(ctx, rel); err != nil {
 		// A dead context means shutdown, not a patch problem - don't log a
 		// misleading fallback or attempt a doomed full download.
 		if ctx.Err() != nil {
-			s.gh.forget()
+			s.forgetETag()
 			return err
 		}
 		s.log.Printf("serve: patch refresh unavailable (%v); falling back to full download", err)
 		if err := s.fullRefresh(ctx, rel); err != nil {
 			// The 200 above already stored the new ETag; forget it so the next
 			// poll retries this release instead of 304-ing until the one after.
-			s.gh.forget()
+			s.forgetETag()
 			return err
 		}
 	}
 	return nil
 }
+
+// forgetETag drops the remembered ETag so the next poll refetches the release
+// metadata unconditionally. Called when a refresh fails AFTER a successful
+// (200) metadata fetch - the ETag was already stored, so without this the next
+// poll would 304 and never retry the failed download until another release is
+// cut. The caller holds s.mu.
+func (s *Server) forgetETag() { s.etag = "" }
 
 // errNoCachedArtifact means the cache volume holds no file for the release's
 // tag - the ordinary case, and the one refresh() must not log about.
@@ -996,29 +341,35 @@ var errNoCachedArtifact = errors.New("no cached artifact for this release")
 // the patch path verifies a reconstruction against. Anything else - absent,
 // unreadable, wrong bytes - is an error, and refresh falls through to the patch
 // and full paths, which overwrite the file atomically anyway.
-func (s *Server) cachedRefresh(ctx context.Context, rel *ghRelease) error {
-	dbPath := s.dbCachePath(rel.TagName)
+func (s *Server) cachedRefresh(ctx context.Context, rel *release.Release) error {
+	dbPath := s.dbCachePath(rel.Tag)
 	if _, err := os.Stat(dbPath); err != nil {
 		return errNoCachedArtifact
 	}
-	sumData, err := s.smallAsset(ctx, rel, rawAssetName+".sha256")
+	want, err := s.rawDigest(ctx, rel)
 	if err != nil {
 		return err
 	}
-	want, err := expectedDigest(sumData)
-	if err != nil {
+	if err := release.VerifyFile(dbPath, want); err != nil {
 		return err
 	}
-	if err := verifyFileDigest(dbPath, want); err != nil {
-		return err
-	}
-	snap, err := s.adopt(dbPath, rel.TagName)
+	snap, err := s.adopt(dbPath, rel.Tag)
 	if err != nil {
 		return err
 	}
 	s.log.Printf("serve: adopted cached artifact for %s without downloading (%d works, built %s)",
-		rel.TagName, snap.Stats().Works, snap.Stats().BuiltAt)
+		rel.Tag, snap.Stats().Works, snap.Stats().BuiltAt)
 	return nil
+}
+
+// rawDigest reads the release's published digest of the DECOMPRESSED artifact
+// (release.RawDigestAsset) - what a cached or patched file is verified against.
+func (s *Server) rawDigest(ctx context.Context, rel *release.Release) (string, error) {
+	sumData, err := s.gh.ReadAsset(ctx, rel, release.RawDigestAsset)
+	if err != nil {
+		return "", err
+	}
+	return release.ExpectedDigest(sumData)
 }
 
 // adoptStaleCache is the last resort of a poll-only boot whose first fetch
@@ -1049,42 +400,22 @@ func (s *Server) adoptStaleCache() bool {
 	return true
 }
 
-// fullRefresh downloads meta.sqlite.gz, verifies it against meta.sqlite.gz.sha256,
-// and decompresses it into the cache in ONE streaming pass, then hot-swaps the
-// snapshot. This is the universal path: it works for the first refresh and
-// whenever a patch is unavailable.
-//
-// The checksum is fetched FIRST so the download can be gated on it without ever
-// materializing the compressed asset: the response body is hashed as it is
-// decompressed straight into the artifact's temp file, and gunzipStreamTo checks
-// the digest before the rename. So the network transfer, the decompression and
-// the verification all happen once, over one pass, with no .gz file on the cache
-// volume and neither form of the asset in memory.
-func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
-	sumData, err := s.smallAsset(ctx, rel, dataAssetName+".sha256")
+// fullRefresh downloads the release's artifact (release.Client.DownloadData:
+// meta.sqlite.gz streamed through gunzip into the cache in ONE pass, verified
+// against meta.sqlite.gz.sha256 and meta.sqlite.sha256 before it is installed,
+// so no .gz ever lands on the cache volume and neither form is held in memory),
+// then hot-swaps the snapshot. This is the universal path: it works for the
+// first refresh and whenever a patch is unavailable.
+func (s *Server) fullRefresh(ctx context.Context, rel *release.Release) error {
+	dbPath := s.dbCachePath(rel.Tag)
+	if _, err := s.gh.DownloadData(ctx, rel, dbPath, nil); err != nil {
+		return err
+	}
+	snap, err := s.adopt(dbPath, rel.Tag)
 	if err != nil {
 		return err
 	}
-	want, err := expectedDigest(sumData)
-	if err != nil {
-		return err
-	}
-
-	body, gzBytes, err := s.assetBody(ctx, rel, dataAssetName)
-	if err != nil {
-		return err
-	}
-	defer func() { _ = body.Close() }()
-
-	dbPath := s.dbCachePath(rel.TagName)
-	if err := gunzipStreamTo(body, dbPath, want, s.expansionBound(dataAssetName, gzBytes)); err != nil {
-		return err
-	}
-	snap, err := s.adopt(dbPath, rel.TagName)
-	if err != nil {
-		return err
-	}
-	s.log.Printf("serve: loaded release %s (%d works, built %s)", rel.TagName, snap.Stats().Works, snap.Stats().BuiltAt)
+	s.log.Printf("serve: loaded release %s (%d works, built %s)", rel.Tag, snap.Stats().Works, snap.Stats().BuiltAt)
 	return nil
 }
 
@@ -1095,7 +426,7 @@ func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
 // back to a full download; it never swaps a snapshot unless the patched artifact
 // verifies. metabuild is deterministic, so the patched file is bit-identical to
 // what a full download would produce.
-func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
+func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 	// The loaded snapshot is the single source of truth for the patch base: its
 	// tag names the asset to request and its path is the dictionary, so the two
 	// can never diverge. cur is nil on a poll-only boot's first refresh; an
@@ -1120,25 +451,23 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	// is based on our tag - must cost zero HTTP requests.
 	curTag := cur.Info().Tag
 	patchName := patchAssetName(curTag)
-	if _, ok := findAsset(rel, patchName); !ok {
-		return fmt.Errorf("release %s has no %s asset", rel.TagName, patchName)
+	if _, ok := rel.Asset(patchName); !ok {
+		return fmt.Errorf("release %s has no %s asset", rel.Tag, patchName)
 	}
 
 	// Fetch and parse the tiny raw-file checksum first, so a release that can't
 	// verify a patch fails fast without spending the patch download.
-	sumData, err := s.smallAsset(ctx, rel, rawAssetName+".sha256")
-	if err != nil {
-		return err
-	}
-	want, err := expectedDigest(sumData)
+	want, err := s.rawDigest(ctx, rel)
 	if err != nil {
 		return err
 	}
 
-	dstPath := s.dbCachePath(rel.TagName)
+	dstPath := s.dbCachePath(rel.Tag)
 	patchPath := dstPath + ".patch.zst"
 	defer func() { _ = os.Remove(patchPath) }()
-	patchBytes, err := s.assetTo(ctx, rel, patchName, patchPath, "")
+	// Bounded by the patch asset's DECLARED size: nothing is decompressed on the
+	// way to disk, so a body past its own declaration is refused.
+	patchBytes, err := s.gh.DownloadAsset(ctx, rel, patchName, patchPath, "")
 	if err != nil {
 		return err
 	}
@@ -1148,16 +477,16 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	// own declared size says nothing about the OUTPUT, so it is not the declared
 	// arm here; the base goes in as the current-artifact arm instead.
 	artifactBytes, err := applyPatchFile(patchPath, cur.Path(), dstPath, want,
-		decompressBound(0, info.Size()))
+		release.DecompressBound(0, info.Size()))
 	if err != nil {
 		return err
 	}
-	snap, err := s.adopt(dstPath, rel.TagName)
+	snap, err := s.adopt(dstPath, rel.Tag)
 	if err != nil {
 		return err
 	}
 	s.log.Printf("serve: patched %s -> %s (patch %d bytes, artifact %d bytes; %d works, built %s)",
-		curTag, rel.TagName, patchBytes, artifactBytes, snap.Stats().Works, snap.Stats().BuiltAt)
+		curTag, rel.Tag, patchBytes, artifactBytes, snap.Stats().Works, snap.Stats().BuiltAt)
 	return nil
 }
 

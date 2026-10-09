@@ -14,6 +14,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
+	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
 
 // knobGitHub is a releases endpoint with the knobs these tests need: it can go
@@ -126,7 +127,7 @@ func knobServer(t *testing.T, seed, cache string, f *knobGitHub, grace time.Dura
 	if err != nil {
 		t.Fatal(err)
 	}
-	srv.gh = newTestGHClient("owner/name", "", f.srv.URL)
+	srv.gh = srv.newGHClient("owner/name", f.srv.URL)
 	return srv
 }
 
@@ -266,23 +267,6 @@ func TestPruneCollectsArtifactsOnceGraceElapses(t *testing.T) {
 
 // ---- (2) download deadlines: progress, not total duration -------------------
 
-// TestAssetDownloadsHaveNoWholeRequestTimeout pins the shape of the fix: a
-// single http.Client.Timeout cannot serve both a small JSON document and a
-// hundreds-of-MB artifact, and with no baked data in the image, aborting a
-// healthy download is a container that never becomes ready.
-func TestAssetDownloadsHaveNoWholeRequestTimeout(t *testing.T) {
-	c := newGHClient("owner/name", "", "")
-	if c.http.Timeout != 0 {
-		t.Errorf("client carries a whole-request timeout of %s; asset downloads must be bounded by progress instead", c.http.Timeout)
-	}
-	if c.metaTimeout <= 0 || c.stallTimeout <= 0 {
-		t.Errorf("metadata timeout = %s, stall timeout = %s; both must be set", c.metaTimeout, c.stallTimeout)
-	}
-	if c.assetDeadline <= c.metaTimeout {
-		t.Errorf("asset deadline %s is no more generous than the metadata timeout %s", c.assetDeadline, c.metaTimeout)
-	}
-}
-
 // TestSlowButHealthyDownloadIsNotAborted: a transfer that keeps delivering but
 // takes many times the stall timeout in total must complete. Under a
 // whole-request deadline of the same size it would be killed every attempt.
@@ -292,20 +276,20 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 	assets := makeAssets(t, v2, "", nil)
 	f := newKnobGitHub(t, tagR2, assets)
 	srv := knobServer(t, v1Path, cache, f, time.Minute)
-	srv.gh.stallTimeout = 300 * time.Millisecond
-	srv.gh.assetDeadline = 30 * time.Second
+	srv.gh = srv.newGHClient("owner/name", f.srv.URL,
+		release.WithTimeouts(release.Timeouts{Stall: 300 * time.Millisecond, Asset: 30 * time.Second}))
 
 	// Ten chunks, 50ms apart: no gap is anywhere near the stall timeout, but the
 	// download as a whole takes well over it.
-	gz := assets[dataAssetName]
+	gz := assets[release.DataAsset]
 	f.throttle(len(gz)/10+1, 50*time.Millisecond)
 
 	started := time.Now()
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("a slow but healthy download was aborted: %v", err)
 	}
-	if elapsed := time.Since(started); elapsed < srv.gh.stallTimeout {
-		t.Fatalf("the download finished in %s, faster than the %s stall timeout - the test proved nothing", elapsed, srv.gh.stallTimeout)
+	if elapsed := time.Since(started); elapsed < srv.gh.Timeouts().Stall {
+		t.Fatalf("the download finished in %s, faster than the %s stall timeout - the test proved nothing", elapsed, srv.gh.Timeouts().Stall)
 	}
 	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
 		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().Stats().Works, tagR2)
@@ -320,10 +304,10 @@ func TestStalledDownloadIsAbandoned(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	cache := t.TempDir()
 	f := newKnobGitHub(t, tagR2, makeAssets(t, v2, "", nil))
-	f.hangOn(dataAssetName)
+	f.hangOn(release.DataAsset)
 	srv := knobServer(t, v1Path, cache, f, time.Minute)
-	srv.gh.stallTimeout = 150 * time.Millisecond
-	srv.gh.assetDeadline = 30 * time.Second
+	srv.gh = srv.newGHClient("owner/name", f.srv.URL,
+		release.WithTimeouts(release.Timeouts{Stall: 150 * time.Millisecond, Asset: 30 * time.Second}))
 	before := srv.current()
 
 	err := srv.refresh(context.Background())
@@ -342,8 +326,8 @@ func TestStalledDownloadIsAbandoned(t *testing.T) {
 	if names := cacheNames(t, cache); hasTempFile(names) {
 		t.Errorf("temp file leaked: %v", names)
 	}
-	if srv.gh.etag != "" {
-		t.Errorf("etag retained after a failed refresh: %q", srv.gh.etag)
+	if srv.etag != "" {
+		t.Errorf("etag retained after a failed refresh: %q", srv.etag)
 	}
 }
 
@@ -368,10 +352,10 @@ func TestRefreshAdoptsVerifiedCachedArtifact(t *testing.T) {
 	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
 		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().Stats().Works, tagR2)
 	}
-	if got := f.hitCount(dataAssetName); got != 0 {
+	if got := f.hitCount(release.DataAsset); got != 0 {
 		t.Errorf("artifact downloaded %d times, want 0 (the cache already held it)", got)
 	}
-	if got := f.hitCount(rawAssetName + ".sha256"); got != 1 {
+	if got := f.hitCount(release.RawDigestAsset); got != 1 {
 		t.Errorf("raw checksum fetched %d times, want 1 (the cached file must be verified, not trusted)", got)
 	}
 }
@@ -392,7 +376,7 @@ func TestRefreshRedownloadsAnUnverifiableCachedArtifact(t *testing.T) {
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatal(err)
 	}
-	if got := f.hitCount(dataAssetName); got != 1 {
+	if got := f.hitCount(release.DataAsset); got != 1 {
 		t.Errorf("artifact downloaded %d times, want 1 (the mismatched cache file must not be adopted)", got)
 	}
 	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
@@ -452,7 +436,7 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	if srv.loaded != tagR1 {
 		t.Errorf("loaded = %q, want %q once the release confirmed the cached artifact", srv.loaded, tagR1)
 	}
-	if got := f.hitCount(dataAssetName); got != 0 {
+	if got := f.hitCount(release.DataAsset); got != 0 {
 		t.Errorf("artifact downloaded %d times, want 0", got)
 	}
 }
