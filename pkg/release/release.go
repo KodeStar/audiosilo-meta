@@ -84,6 +84,16 @@ func (r *Release) Asset(name string) (Asset, bool) {
 	return Asset{}, false
 }
 
+// need is Asset for a caller that cannot proceed without it: the one spelling
+// of the error every download path gives for a missing asset.
+func (r *Release) need(name string) (Asset, error) {
+	a, ok := r.Asset(name)
+	if !ok {
+		return Asset{}, fmt.Errorf("release %s has no %s asset", r.Tag, name)
+	}
+	return a, nil
+}
+
 // The request deadlines. They are deliberately NOT one http.Client.Timeout:
 // that is a deadline on the whole request, body included, so a single number
 // has to cover both a tiny JSON document and an artifact download that is
@@ -265,9 +275,6 @@ func New(repo, token string, opts ...Option) *Client {
 	c.http.CheckRedirect = ghhost.CheckRedirect(0, c.allowsOrigin) // 0: ghhost.DefaultMaxRedirects
 	return c
 }
-
-// Timeouts reports the client's request deadlines.
-func (c *Client) Timeouts() Timeouts { return c.timeouts }
 
 func allowOrigin(c *Client, raw string) {
 	if u, err := url.Parse(raw); err == nil && u.Host != "" {
@@ -551,12 +558,12 @@ func (c *Client) checkAssetTarget(u *url.URL) error {
 // buffered.
 const maxSmallAssetBytes = 4 << 10
 
-// ReadAsset reads the named asset of rel into memory - checksum files only: it
+// readAsset reads the named asset of rel into memory - checksum files only: it
 // refuses anything larger than 4 KiB.
-func (c *Client) ReadAsset(ctx context.Context, rel *Release, name string) ([]byte, error) {
-	asset, ok := rel.Asset(name)
-	if !ok {
-		return nil, fmt.Errorf("release %s has no %s asset", rel.Tag, name)
+func (c *Client) readAsset(ctx context.Context, rel *Release, name string) ([]byte, error) {
+	asset, err := rel.need(name)
+	if err != nil {
+		return nil, err
 	}
 	resp, err := c.get(ctx, asset.URL)
 	if err != nil {
@@ -573,9 +580,12 @@ func (c *Client) ReadAsset(ctx context.Context, rel *Release, name string) ([]by
 	return body, nil
 }
 
-// readDigest reads one of rel's checksum assets and parses it.
-func (c *Client) readDigest(ctx context.Context, rel *Release, name string) (string, error) {
-	sum, err := c.ReadAsset(ctx, rel, name)
+// ReadDigest reads one of rel's `sha256sum`-format checksum assets (name is
+// DataDigestAsset or RawDigestAsset) and returns the lowercase hex digest it
+// states. metaserve verifies a cached or patch-reconstructed artifact against
+// RawDigestAsset's.
+func (c *Client) ReadDigest(ctx context.Context, rel *Release, name string) (string, error) {
+	sum, err := c.readAsset(ctx, rel, name)
 	if err != nil {
 		return "", err
 	}
@@ -583,19 +593,20 @@ func (c *Client) readDigest(ctx context.Context, rel *Release, name string) (str
 }
 
 // DownloadAsset streams the named asset of rel straight into dstPath (a temp
-// file in dstPath's folder, then a rename - never through memory) and, when
-// wantHexDigest is non-empty, refuses to install it unless the streamed bytes
-// hash to it. It returns the bytes written.
+// file in dstPath's folder, then a rename - never through memory) and returns
+// the bytes written. Nothing is verified here: the one caller (metaserve's patch
+// path) verifies what the asset RECONSTRUCTS, against RawDigestAsset, which is
+// the guarantee that matters.
 //
 // The bound on what lands on disk is the asset's DECLARED size: nothing is
 // decompressed here, so the release states exactly how many bytes this is, and a
 // body that runs past its own declaration is either a corrupt transfer or a host
 // answering with something else. A release that declares no size falls back to
 // the expansion bound (a ceiling rather than a size, but still a bound).
-func (c *Client) DownloadAsset(ctx context.Context, rel *Release, name, dstPath, wantHexDigest string) (int64, error) {
-	asset, ok := rel.Asset(name)
-	if !ok {
-		return 0, fmt.Errorf("release %s has no %s asset", rel.Tag, name)
+func (c *Client) DownloadAsset(ctx context.Context, rel *Release, name, dstPath string) (int64, error) {
+	asset, err := rel.need(name)
+	if err != nil {
+		return 0, err
 	}
 	bound := asset.Size
 	if bound <= 0 {
@@ -606,7 +617,7 @@ func (c *Client) DownloadAsset(ctx context.Context, rel *Release, name, dstPath,
 		return 0, err
 	}
 	defer func() { _ = resp.Body.Close() }()
-	return InstallVerified(resp.Body, dstPath, wantHexDigest, bound)
+	return installStream(resp.Body, dstPath, bound, nil)
 }
 
 // Result describes an installed artifact.
@@ -643,13 +654,13 @@ type Result struct {
 func (c *Client) DownloadData(ctx context.Context, rel *Release, dstPath string, progress func(done, total int64)) (Result, error) {
 	// The checksum is fetched FIRST, so the download can be gated on it without
 	// ever materializing the compressed asset.
-	wantGz, err := c.readDigest(ctx, rel, DataDigestAsset)
+	wantGz, err := c.ReadDigest(ctx, rel, DataDigestAsset)
 	if err != nil {
 		return Result{}, err
 	}
-	asset, ok := rel.Asset(DataAsset)
-	if !ok {
-		return Result{}, fmt.Errorf("release %s has no %s asset", rel.Tag, DataAsset)
+	asset, err := rel.need(DataAsset)
+	if err != nil {
+		return Result{}, err
 	}
 	resp, err := c.get(ctx, asset.URL)
 	if err != nil {
@@ -700,7 +711,8 @@ const tempPattern = ".meta-*.tmp"
 // install writes beside its destination. A process that died mid-download
 // leaves one behind; a caller that owns the folder deletes them at start.
 func TempFile(name string) bool {
-	return strings.HasPrefix(name, ".meta-") && strings.HasSuffix(name, ".tmp")
+	ok, _ := filepath.Match(tempPattern, name) // the pattern is a constant, so it cannot be malformed
+	return ok
 }
 
 // installStream streams src into dstPath atomically (temp file + fsync + rename

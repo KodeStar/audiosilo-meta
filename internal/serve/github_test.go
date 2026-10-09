@@ -272,7 +272,7 @@ func makeAssets(t *testing.T, db []byte, patchFrom string, prev []byte) map[stri
 	assets := map[string][]byte{
 		release.DataAsset:       gz,
 		release.DataDigestAsset: sumFile(release.DataAsset, gz),
-		"meta.sqlite.sha256":    sumFile("meta.sqlite", db),
+		release.RawDigestAsset:  sumFile("meta.sqlite", db),
 	}
 	if patchFrom != "" && prev != nil {
 		assets[patchAssetName(patchFrom)] = makePatch(t, prev, db)
@@ -392,7 +392,7 @@ func TestRefreshRejectsCorruptDownload(t *testing.T) {
 	seed := buildFixtureDB(t, fixtureCatalog())
 	assets := makeAssets(t, readDB(t, seed), "", nil)
 	// A checksum that does not match the gz payload.
-	assets[release.DataAsset+".sha256"] = []byte("deadbeef  " + release.DataAsset + "\n")
+	assets[release.DataDigestAsset] = []byte("deadbeef  " + release.DataAsset + "\n")
 	fake := newFakeGitHub(t, tagR1, assets)
 	srv := newPollServer(t, seed, fake)
 
@@ -463,7 +463,7 @@ func TestRefreshPatchFallsBack(t *testing.T) {
 			name: "wrong raw checksum",
 			build: func(t *testing.T) map[string][]byte {
 				a := makeAssets(t, v2, tagR1, v1)
-				a["meta.sqlite.sha256"] = []byte("deadbeef  meta.sqlite\n")
+				a[release.RawDigestAsset] = []byte("deadbeef  meta.sqlite\n")
 				return a
 			},
 			wantPatchHits: 1,
@@ -481,7 +481,7 @@ func TestRefreshPatchFallsBack(t *testing.T) {
 			name: "raw checksum missing",
 			build: func(t *testing.T) map[string][]byte {
 				a := makeAssets(t, v2, tagR1, v1)
-				delete(a, "meta.sqlite.sha256")
+				delete(a, release.RawDigestAsset)
 				return a
 			},
 			wantPatchHits: 0,

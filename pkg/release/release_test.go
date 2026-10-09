@@ -390,7 +390,7 @@ func TestAssetDownloadIsBoundedByItsDeclaredSize(t *testing.T) {
 	over := &Release{Tag: "data-v1", Assets: []Asset{
 		{Name: "blob.bin", Size: int64(len(payload)) - 1, URL: url},
 	}}
-	if _, err := c.DownloadAsset(context.Background(), over, "blob.bin", dst, ""); err == nil {
+	if _, err := c.DownloadAsset(context.Background(), over, "blob.bin", dst); err == nil {
 		t.Error("an asset one byte past its declared size was installed")
 	} else if !strings.Contains(err.Error(), "bound") {
 		t.Errorf("error = %v, want the bound named", err)
@@ -402,14 +402,14 @@ func TestAssetDownloadIsBoundedByItsDeclaredSize(t *testing.T) {
 	exact := &Release{Tag: "data-v1", Assets: []Asset{
 		{Name: "blob.bin", Size: int64(len(payload)), URL: url},
 	}}
-	if n, err := c.DownloadAsset(context.Background(), exact, "blob.bin", dst, ""); err != nil || n != int64(len(payload)) {
+	if n, err := c.DownloadAsset(context.Background(), exact, "blob.bin", dst); err != nil || n != int64(len(payload)) {
 		t.Errorf("an asset exactly at its declared size: %d bytes, %v", n, err)
 	}
 
 	// A release that declares no size falls back to the expansion bound rather
 	// than to no bound at all.
 	none := &Release{Tag: "data-v1", Assets: []Asset{{Name: "blob.bin", URL: url}}}
-	if _, err := c.DownloadAsset(context.Background(), none, "blob.bin", dst, ""); err != nil {
+	if _, err := c.DownloadAsset(context.Background(), none, "blob.bin", dst); err != nil {
 		t.Errorf("an asset declaring no size was refused: %v", err)
 	}
 }

@@ -107,11 +107,11 @@ func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string, maxBytes
 // hundreds-of-MB delta is not read in 4KB syscalls.
 const patchBufferBytes = 1 << 20
 
-// cachePrefix names every file this server writes into the cache directory: the
-// artifacts (meta-<tag>.sqlite), their transient siblings (.gz, .patch.zst) and
-// the verified installs' temp files (.meta-*.tmp - release.TempFile). pruneCache
-// only ever removes files matching it, so a cache directory shared with anything
-// else is left alone.
+// cachePrefix names every file this server writes into the cache directory
+// itself: the artifacts (meta-<tag>.sqlite) and their transient siblings (.gz,
+// .patch.zst). The verified installs' temp files are pkg/release's
+// (release.TempFile). pruneCacheLocked only ever removes files that are one or
+// the other, so a cache directory shared with anything else is left alone.
 const cachePrefix = "meta-"
 
 // artifactSuffix completes a cached artifact's file name (cachePrefix + tag +
@@ -232,7 +232,7 @@ func (s *Server) pruneCacheLocked() {
 			continue
 		}
 		name := e.Name()
-		if !strings.HasPrefix(name, cachePrefix) && !strings.HasPrefix(name, "."+cachePrefix) {
+		if !strings.HasPrefix(name, cachePrefix) && !release.TempFile(name) {
 			continue
 		}
 		// Never delete what we are serving, what a request may still be reading,
@@ -346,7 +346,7 @@ func (s *Server) cachedRefresh(ctx context.Context, rel *release.Release) error 
 	if _, err := os.Stat(dbPath); err != nil {
 		return errNoCachedArtifact
 	}
-	want, err := s.rawDigest(ctx, rel)
+	want, err := s.gh.ReadDigest(ctx, rel, release.RawDigestAsset)
 	if err != nil {
 		return err
 	}
@@ -360,16 +360,6 @@ func (s *Server) cachedRefresh(ctx context.Context, rel *release.Release) error 
 	s.log.Printf("serve: adopted cached artifact for %s without downloading (%d works, built %s)",
 		rel.Tag, snap.Stats().Works, snap.Stats().BuiltAt)
 	return nil
-}
-
-// rawDigest reads the release's published digest of the DECOMPRESSED artifact
-// (release.RawDigestAsset) - what a cached or patched file is verified against.
-func (s *Server) rawDigest(ctx context.Context, rel *release.Release) (string, error) {
-	sumData, err := s.gh.ReadAsset(ctx, rel, release.RawDigestAsset)
-	if err != nil {
-		return "", err
-	}
-	return release.ExpectedDigest(sumData)
 }
 
 // adoptStaleCache is the last resort of a poll-only boot whose first fetch
@@ -458,7 +448,7 @@ func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 
 	// Fetch and parse the tiny raw-file checksum first, so a release that can't
 	// verify a patch fails fast without spending the patch download.
-	want, err := s.rawDigest(ctx, rel)
+	want, err := s.gh.ReadDigest(ctx, rel, release.RawDigestAsset)
 	if err != nil {
 		return err
 	}
@@ -468,7 +458,7 @@ func (s *Server) tryPatch(ctx context.Context, rel *release.Release) error {
 	defer func() { _ = os.Remove(patchPath) }()
 	// Bounded by the patch asset's DECLARED size: nothing is decompressed on the
 	// way to disk, so a body past its own declaration is refused.
-	patchBytes, err := s.gh.DownloadAsset(ctx, rel, patchName, patchPath, "")
+	patchBytes, err := s.gh.DownloadAsset(ctx, rel, patchName, patchPath)
 	if err != nil {
 		return err
 	}

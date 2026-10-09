@@ -147,7 +147,7 @@ func cacheNames(t *testing.T, dir string) []string {
 
 func hasTempFile(names []string) bool {
 	for _, n := range names {
-		if strings.HasSuffix(n, ".tmp") {
+		if release.TempFile(n) {
 			return true
 		}
 	}
@@ -276,8 +276,9 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 	assets := makeAssets(t, v2, "", nil)
 	f := newKnobGitHub(t, tagR2, assets)
 	srv := knobServer(t, v1Path, cache, f, time.Minute)
+	const stall = 300 * time.Millisecond
 	srv.gh = srv.newGHClient("owner/name", f.srv.URL,
-		release.WithTimeouts(release.Timeouts{Stall: 300 * time.Millisecond, Asset: 30 * time.Second}))
+		release.WithTimeouts(release.Timeouts{Stall: stall, Asset: 30 * time.Second}))
 
 	// Ten chunks, 50ms apart: no gap is anywhere near the stall timeout, but the
 	// download as a whole takes well over it.
@@ -288,8 +289,8 @@ func TestSlowButHealthyDownloadIsNotAborted(t *testing.T) {
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("a slow but healthy download was aborted: %v", err)
 	}
-	if elapsed := time.Since(started); elapsed < srv.gh.Timeouts().Stall {
-		t.Fatalf("the download finished in %s, faster than the %s stall timeout - the test proved nothing", elapsed, srv.gh.Timeouts().Stall)
+	if elapsed := time.Since(started); elapsed < stall {
+		t.Fatalf("the download finished in %s, faster than the %s stall timeout - the test proved nothing", elapsed, stall)
 	}
 	if srv.loaded != tagR2 || srv.current().Stats().Works != 5 {
 		t.Errorf("loaded = %q with %d works, want %q / 5", srv.loaded, srv.current().Stats().Works, tagR2)
