@@ -402,10 +402,11 @@ func (s *Server) adoptStaleCache() bool {
 
 // fullRefresh downloads the release's artifact (release.Client.DownloadData:
 // meta.sqlite.gz streamed through gunzip into the cache in ONE pass, verified
-// against meta.sqlite.gz.sha256 and meta.sqlite.sha256 before it is installed,
-// so no .gz ever lands on the cache volume and neither form is held in memory),
-// then hot-swaps the snapshot. This is the universal path: it works for the
-// first refresh and whenever a patch is unavailable.
+// against meta.sqlite.gz.sha256 before it is installed, so no .gz ever lands on
+// the cache volume and neither form is held in memory), then hot-swaps the
+// snapshot. This is the universal path: it works for the first refresh and
+// whenever a patch is unavailable - including when meta.sqlite.sha256, which
+// gates only the cache and patch paths, is the broken asset.
 func (s *Server) fullRefresh(ctx context.Context, rel *release.Release) error {
 	dbPath := s.dbCachePath(rel.Tag)
 	if _, err := s.gh.DownloadData(ctx, rel, dbPath, nil); err != nil {

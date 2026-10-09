@@ -734,7 +734,10 @@ func installStream(src io.Reader, dstPath string, maxBytes int64, verify func() 
 	if maxBytes > 0 {
 		src = io.LimitReader(src, maxBytes+1)
 	}
-	n, err := io.Copy(tmp, src) //nolint:gosec // bounded above and gated by verify below, so unverified bytes never become dstPath
+	// writerOnly hides *os.File's ReadFrom: with no file or socket to splice
+	// from, it falls back to io.Copy's 32 KiB buffer, and an artifact-sized
+	// download would then be read in 32 KiB calls whatever buffer is passed here.
+	n, err := io.CopyBuffer(writerOnly{tmp}, src, make([]byte, downloadBufferBytes)) //nolint:gosec // bounded above and gated by verify below, so unverified bytes never become dstPath
 	if err == nil {
 		// Durable before it is visible: a crash after the rename must not leave
 		// a name pointing at bytes the disk never received.
@@ -760,6 +763,10 @@ func installStream(src io.Reader, dstPath string, maxBytes int64, verify func() 
 	}
 	return n, nil
 }
+
+// writerOnly exposes only Write, so io.CopyBuffer uses the buffer it is given
+// instead of deferring to the destination's ReadFrom (see installStream).
+type writerOnly struct{ io.Writer }
 
 // checkDigest compares an accumulated hash against an expected lowercase hex
 // digest.
@@ -806,6 +813,13 @@ const downloadBufferBytes = 1 << 20
 // stream declares no output size - so without a bound, an asset that
 // decompresses without limit fills the volume before anything gets to reject
 // it. Hitting the bound is treated exactly as a failed verification.
+//
+// The decompressed digest is taken on a SECOND goroutine (hashPipe): it covers
+// the whole artifact (about 1.7 GB today), and hashed inline it would add its
+// full cost to the copy's wall time. Through the pipe, chunk N is hashed while
+// chunk N+1 is inflated and written, so on more than one core it costs next to
+// nothing. The compressed digest stays inline: it is a quarter of the bytes and
+// the gate the install waits on anyway.
 func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64) (Result, error) {
 	gzHash := sha256.New()
 	tee := io.TeeReader(src, gzHash)
@@ -814,17 +828,42 @@ func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string, maxBytes int64)
 		return Result{}, err
 	}
 	defer func() { _ = zr.Close() }()
-	rawHash := sha256.New()
-	n, err := installStream(io.TeeReader(zr, rawHash), dstPath, maxBytes, func() error {
+	pw, rawSum := hashPipe()
+	n, err := installStream(io.TeeReader(zr, pw), dstPath, maxBytes, func() error {
 		if _, err := io.Copy(io.Discard, tee); err != nil {
 			return err
 		}
 		return checkDigest(gzHash, wantGzDigest)
 	})
+	// Closed on EVERY path, so the hashing goroutine always ends: on a failure
+	// it has hashed a prefix nobody reads, which costs nothing but the wait.
+	_ = pw.Close()
+	sum := <-rawSum
 	if err != nil {
 		return Result{}, err
 	}
-	return Result{Bytes: n, SHA256: hex.EncodeToString(rawHash.Sum(nil))}, nil
+	return Result{Bytes: n, SHA256: sum}, nil
+}
+
+// hashPipe starts a goroutine that sha256-hashes everything written to w and,
+// once w is closed, sends the lowercase hex digest on sum.
+//
+// io.Pipe hands each Write straight to the reader, so the copy's writer blocks
+// only until the hasher has TAKEN the chunk, not until it has hashed it - the
+// two run in parallel a chunk apart. The hasher reads with a buffer at least as
+// large as any chunk the copy writes (the inflater's are its 32 KiB window), so
+// one Write is one Read and the writer is never held across a hash.
+func hashPipe() (w *io.PipeWriter, sum <-chan string) {
+	pr, pw := io.Pipe()
+	out := make(chan string, 1)
+	go func() {
+		h := sha256.New()
+		// A hash never fails to write, and the pipe's read side only ever ends
+		// with the writer's Close - so there is no error to report here.
+		_, _ = io.CopyBuffer(h, pr, make([]byte, downloadBufferBytes))
+		out <- hex.EncodeToString(h.Sum(nil))
+	}()
+	return pw, out
 }
 
 // VerifyFile hashes an existing file and compares it with an expected lowercase
