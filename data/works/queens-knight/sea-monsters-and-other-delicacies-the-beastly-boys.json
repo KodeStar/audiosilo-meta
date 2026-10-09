@@ -3443,6 +3443,10 @@
             {
               "asin": "B006QNR63E",
               "region": "us"
+            },
+            {
+              "asin": "B006QNPDNY",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3572,6 +3576,11 @@
               "imported_at": "2026-08-02",
               "ref": "B006QNR63E",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B006QNPDNY",
+              "type": "libex-import"
             }
           ],
           "work": "sea-of-poppies"
@@ -3583,6 +3592,10 @@
             {
               "asin": "B002V5BTHU",
               "region": "us"
+            },
+            {
+              "asin": "B07BLNXVM8",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -3736,6 +3749,38 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B002V5BTHU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07BLNXVM8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sea-of-poppies"
+        },
+        "ranjit-madgavkar-2026": {
+          "abridged": false,
+          "added_at": "2026-10-09",
+          "asin": [
+            {
+              "asin": "B0HM59VT4W",
+              "region": "uk"
+            }
+          ],
+          "id": "ranjit-madgavkar-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ranjit-madgavkar"
+          ],
+          "publisher": "HarperCollins India",
+          "release_date": "2026-10-14",
+          "runtime_min": 1314,
+          "sources": [
+            {
+              "imported_at": "2026-10-07",
+              "ref": "B0HM59VT4W",
               "type": "libex-import"
             }
           ],
