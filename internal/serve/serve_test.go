@@ -19,26 +19,12 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
 
-// testLogger is the logger a Server built directly in a test gets. Server.log
-// is not optional any more - fail() and the search probes write through it
-// unguarded - so a literal that left it nil would panic on the first
-// degradation notice rather than on anything the test is about.
-func testLogger() *log.Logger { return log.New(io.Discard, "", 0) }
+// The shared fixtures, artifact builders and HTTP helpers (including the quiet
+// logger a Server built directly in a test needs - Server.log is not optional)
+// live in internal/artifacttest, which pkg/query's tests use too.
 
-// The shared fixtures live in internal/artifacttest (pkg/query's tests and
-// pkg/query/querytest build from the same ones); these are this package's
-// spellings of them.
-func fixtureCatalog() *model.Catalog   { return artifacttest.Fixture() }
-func languagesCatalog() *model.Catalog { return artifacttest.Languages() }
-
-// buildFixtureDB writes a fixture artifact and returns its path.
-func buildFixtureDB(t *testing.T, cat *model.Catalog) string {
-	t.Helper()
-	return artifacttest.Build(t, cat)
-}
-
-// downgradedServer serves an artifact rolled back to an OLDER shape - a
-// downgradedDB or alteredDB path. That is the "a newer metaserve binary briefly
+// downgradedServer serves an artifact rolled back to an OLDER shape - an
+// artifacttest.Downgraded or Altered path. That is the "a newer metaserve binary briefly
 // serves an older release" case every version-gated query has to tolerate: it
 // must degrade to "no data" rather than 500 on the missing table.
 func downgradedServer(t *testing.T, dbPath string) *httptest.Server {
@@ -58,21 +44,14 @@ func downgradedServer(t *testing.T, dbPath string) *httptest.Server {
 	return ts
 }
 
-// downgradedDB rolls a fixture artifact back to an older shape (see
-// artifacttest.Downgraded).
-func downgradedDB(t *testing.T, cat *model.Catalog, version int, dropTables ...string) string {
-	t.Helper()
-	return artifacttest.Downgraded(t, cat, version, dropTables...)
-}
-
 func newTestServer(t *testing.T) (*Server, *httptest.Server) {
 	t.Helper()
-	return newTestServerForCatalog(t, fixtureCatalog())
+	return newTestServerForCatalog(t, artifacttest.Fixture())
 }
 
 func newTestServerForCatalog(t *testing.T, catalog *model.Catalog) (*Server, *httptest.Server) {
 	t.Helper()
-	dbPath := buildFixtureDB(t, catalog)
+	dbPath := artifacttest.Build(t, catalog)
 	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -80,24 +59,6 @@ func newTestServerForCatalog(t *testing.T, catalog *model.Catalog) (*Server, *ht
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
 	return srv, ts
-}
-
-// getJSON fetches path and decodes the body into a generic map.
-func getJSON(t *testing.T, base, path string) (int, map[string]any) {
-	t.Helper()
-	resp, err := http.Get(base + path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { _ = resp.Body.Close() }()
-	body, _ := io.ReadAll(resp.Body)
-	var out map[string]any
-	if len(body) > 0 {
-		if err := json.Unmarshal(body, &out); err != nil {
-			t.Fatalf("GET %s: decode %q: %v", path, body, err)
-		}
-	}
-	return resp.StatusCode, out
 }
 
 func TestCORSHeader(t *testing.T) {
@@ -119,14 +80,14 @@ func TestCORSHeader(t *testing.T) {
 // concurrently, swaps mid-flight, and asserts the stat flips atomically without
 // a race (run under -race).
 func TestHotSwap(t *testing.T) {
-	db1 := buildFixtureDB(t, fixtureCatalog())
+	db1 := artifacttest.Build(t, artifacttest.Fixture())
 
-	cat2 := fixtureCatalog()
+	cat2 := artifacttest.Fixture()
 	cat2.Works = append(cat2.Works, &model.Work{
 		ID: "artemis", Title: "Artemis", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
 	})
-	db2 := buildFixtureDB(t, cat2)
+	db2 := artifacttest.Build(t, cat2)
 
 	srv, err := New(Config{DBPath: db1, swapGrace: time.Minute})
 	if err != nil {
@@ -193,7 +154,7 @@ func TestHotSwap(t *testing.T) {
 // watchfeed.go).
 func TestInternalErrorsAreNotReflected(t *testing.T) {
 	var logged bytes.Buffer
-	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg := quietConfig(t, artifacttest.Fixture(), markedShells)
 	cfg.Logger = log.New(&logged, "", 0)
 	srv, ts := newPageServerFrom(t, cfg)
 	_ = srv.current().Close()
@@ -251,7 +212,7 @@ func TestInternalErrorsAreNotReflected(t *testing.T) {
 // quoted, so a control character is an escape and the entry stays one line.
 func TestFailLogsOneLinePerRequest(t *testing.T) {
 	var logged bytes.Buffer
-	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg := quietConfig(t, artifacttest.Fixture(), markedShells)
 	cfg.Logger = log.New(&logged, "", 0)
 	srv, ts := newPageServerFrom(t, cfg)
 	_ = srv.current().Close()
@@ -281,7 +242,7 @@ func TestFailLogsOneLinePerRequest(t *testing.T) {
 // query layer directly rather than through HTTP.
 func snapshotFor(t *testing.T, cat *model.Catalog) *query.DB {
 	t.Helper()
-	snap, err := query.Open(buildFixtureDB(t, cat), "")
+	snap, err := query.Open(artifacttest.Build(t, cat), "")
 	if err != nil {
 		t.Fatal(err)
 	}

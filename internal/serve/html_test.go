@@ -77,7 +77,7 @@ func writeSiteFile(t *testing.T, dir, name, content string) {
 func quietConfig(t *testing.T, cat *model.Catalog, shells map[string]string) Config {
 	t.Helper()
 	return Config{
-		DBPath:    buildFixtureDB(t, cat),
+		DBPath:    artifacttest.Build(t, cat),
 		Site:      entitySite(t, shells),
 		SiteURL:   testSiteURL,
 		Logger:    log.New(io.Discard, "", 0),
@@ -120,7 +120,7 @@ func getPage(t *testing.T, base, path string) (int, string) {
 // in routes(), TestOpenAPICoversEveryRoute would start demanding a spec entry for
 // a page - and the honest fix would be a spec that lies.
 func TestHTMLRoutesAreDisjointFromTheAPI(t *testing.T) {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: artifacttest.QuietLogger()}
 
 	api := map[string]bool{}
 	for _, r := range srv.routes() {
@@ -183,7 +183,7 @@ func entityPayload(t *testing.T, page string) string {
 // marked head section is REPLACED (once), the body marker becomes the fact sheet
 // plus the payload, and everything outside the markers survives untouched.
 func TestEntityPageInjectsIntoTheShell(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	code, page := getPage(t, ts.URL, "/works/project-hail-mary")
 	if code != http.StatusOK {
 		t.Fatalf("status = %d, want 200", code)
@@ -258,7 +258,7 @@ func between(t *testing.T, s, open, close string) string {
 // site/src/lib/api.ts PERSON_PAGE_MAX and composePersonPage), so a payload
 // composed at the default would be a smaller page than the fetch it replaces.
 func TestEntityPayloadIsTheAPIResponse(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	cases := []struct{ page, api string }{
 		{"/works/project-hail-mary", "/api/v1/works/project-hail-mary"},
 		{"/people/brandon-sanderson", "/api/v1/people/brandon-sanderson?limit=" + strconv.Itoa(query.PersonPageMax)},
@@ -295,7 +295,7 @@ func TestEntityPayloadIsTheAPIResponse(t *testing.T) {
 // would silently drop credits 101-500 on a hydrated page that has no pagination
 // UI to reach them with.
 func TestPersonPageComposesTheMaximumWindow(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	_, page := getPage(t, ts.URL, "/people/brandon-sanderson")
 	var doc struct {
 		Limit int `json:"limit"`
@@ -322,7 +322,7 @@ func TestShellWithoutMarkersIsServedUntouched(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			ts := newPageServer(t, fixtureCatalog(), map[string]string{"work": tc.fixture})
+			ts := newPageServer(t, artifacttest.Fixture(), map[string]string{"work": tc.fixture})
 			code, page := getPage(t, ts.URL, "/works/project-hail-mary")
 			if code != http.StatusOK {
 				t.Fatalf("status = %d, want 200", code)
@@ -341,7 +341,7 @@ func TestShellWithoutMarkersIsServedUntouched(t *testing.T) {
 // means the request is the static site's, exactly as before these routes
 // existed - here, the site's own 404.
 func TestEntityPageWithoutAShellFallsThrough(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), nil)
+	ts := newPageServer(t, artifacttest.Fixture(), nil)
 	code, page := getPage(t, ts.URL, "/works/project-hail-mary")
 	if code != http.StatusNotFound {
 		t.Fatalf("status = %d, want the static site's 404", code)
@@ -357,7 +357,7 @@ func TestEntityPageWithoutAShellFallsThrough(t *testing.T) {
 func TestEntityPageWithoutASnapshot(t *testing.T) {
 	srv := &Server{
 		cfg:     Config{Site: entitySite(t, markedShells), SiteURL: testSiteURL},
-		log:     testLogger(),
+		log:     artifacttest.QuietLogger(),
 		retired: map[string]int{},
 	}
 	srv.site = newSiteHandler(srv.cfg.Site)
@@ -387,7 +387,7 @@ func TestEntityPageWithoutASnapshot(t *testing.T) {
 // needs: one snapshot renders one page, byte for byte, however many times it is
 // asked. Nothing here may depend on a timestamp or on map iteration order.
 func TestEntityPagesAreDeterministic(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	for _, path := range []string{
 		"/works/project-hail-mary", "/people/brandon-sanderson", "/series/the-stormlight-archive",
 	} {
@@ -404,7 +404,7 @@ func TestEntityPagesAreDeterministic(t *testing.T) {
 // artifact for this feature: a change to the head, the fact sheet or the JSON-LD
 // shows up as a readable diff rather than as a passing test.
 func TestEntityPagesGolden(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	cases := []struct{ name, path string }{
 		{"work", "/works/project-hail-mary"},
 		{"person", "/people/brandon-sanderson"},
@@ -482,7 +482,7 @@ func TestEntityPageEscapesHostileText(t *testing.T) {
 // too, and answers in HTML there - a browser following a dead link gets a page
 // linking the survivor, not the API's JSON envelope.
 func TestRetiredSlugRedirectsOnPages(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	cases := []struct{ path, location string }{
 		{"/works/project-hail-mary-audiobook", "/works/project-hail-mary"},
 		{"/people/andy-weir-author", "/people/andy-weir"},
@@ -490,7 +490,7 @@ func TestRetiredSlugRedirectsOnPages(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.path, func(t *testing.T) {
-			resp := getNoFollow(t, ts.URL, tc.path)
+			resp := artifacttest.GetNoFollow(t, ts.URL, tc.path)
 			if resp.StatusCode != http.StatusMovedPermanently {
 				t.Fatalf("status = %d, want 301", resp.StatusCode)
 			}
@@ -517,8 +517,8 @@ func TestRetiredSlugRedirectsOnPages(t *testing.T) {
 // TestRetiredSlugStillAnswersJSONOnTheAPI is the other half: adding the HTML
 // writer must not change what an API client is served.
 func TestRetiredSlugStillAnswersJSONOnTheAPI(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
-	wantRedirect(t, getNoFollow(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook"),
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
+	wantRedirect(t, artifacttest.GetNoFollow(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook"),
 		"/api/v1/works/project-hail-mary", "project-hail-mary")
 }
 
@@ -526,7 +526,7 @@ func TestRetiredSlugStillAnswersJSONOnTheAPI(t *testing.T) {
 // forever, keeping the rest of the query and escaping the id exactly once. With
 // no id at all the request is the family's landing page, served from the shell.
 func TestLegacyQueryRedirects(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	cases := []struct{ name, path, location string }{
 		{"work", "/work?id=project-hail-mary", "/works/project-hail-mary"},
 		{"person", "/person?id=andy-weir", "/people/andy-weir"},
@@ -536,7 +536,7 @@ func TestLegacyQueryRedirects(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			resp := getNoFollow(t, ts.URL, tc.path)
+			resp := artifacttest.GetNoFollow(t, ts.URL, tc.path)
 			if resp.StatusCode != http.StatusMovedPermanently {
 				t.Fatalf("status = %d, want 301", resp.StatusCode)
 			}
@@ -561,7 +561,7 @@ func TestLegacyQueryRedirects(t *testing.T) {
 // reserved slugs need no special case - no record can hold one, so they land
 // here like any other unknown id.
 func TestEntityPageNotFound(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	for _, path := range []string{
 		"/works/no-such-work", "/people/nobody", "/series/nothing",
 		"/works/search", "/works/latest", "/people/search", "/series/search",
@@ -583,7 +583,7 @@ func TestEntityPageNotFound(t *testing.T) {
 // redirects. The body is closed at cleanup.
 func conditionalGet(t *testing.T, url, inm string) *http.Response {
 	t.Helper()
-	return getNoFollowWith(t, url, map[string]string{"If-None-Match": inm, "Accept-Encoding": "gzip"})
+	return artifacttest.GetNoFollowWith(t, url, map[string]string{"If-None-Match": inm, "Accept-Encoding": "gzip"})
 }
 
 // wantBodyless fails when a response carries any body, which is what a 304 must
@@ -605,8 +605,8 @@ func wantBodyless(t *testing.T, resp *http.Response) {
 // spelled out - the shape has three parts now (see entityETag) and a test that
 // re-spells it would be a second definition of the validator.
 func TestEntityPageRevalidates(t *testing.T) {
-	srv, ts := newPageServerFrom(t, quietConfig(t, fixtureCatalog(), markedShells))
-	resp := getNoFollow(t, ts.URL, "/works/project-hail-mary")
+	srv, ts := newPageServerFrom(t, quietConfig(t, artifacttest.Fixture(), markedShells))
+	resp := artifacttest.GetNoFollow(t, ts.URL, "/works/project-hail-mary")
 	if resp.StatusCode != http.StatusOK {
 		t.Fatalf("status = %d", resp.StatusCode)
 	}
@@ -632,7 +632,7 @@ func TestEntityPageRevalidates(t *testing.T) {
 	wantBodyless(t, second)
 
 	// Two different records never share a validator.
-	other := getNoFollow(t, ts.URL, "/works/the-way-of-kings")
+	other := artifacttest.GetNoFollow(t, ts.URL, "/works/the-way-of-kings")
 	if got := other.Header.Get("ETag"); got == etag {
 		t.Errorf("two works share the ETag %q", got)
 	}
@@ -647,9 +647,9 @@ func TestEntityPageRevalidates(t *testing.T) {
 // One config, so both servers read one artifact; the dist changes between them,
 // as a deploy changes it.
 func TestEntityETagCoversTheDist(t *testing.T) {
-	cfg := quietConfig(t, fixtureCatalog(), markedShells)
+	cfg := quietConfig(t, artifacttest.Fixture(), markedShells)
 	_, first := newPageServerFrom(t, cfg)
-	before := getNoFollow(t, first.URL, "/works/project-hail-mary").Header.Get("ETag")
+	before := artifacttest.GetNoFollow(t, first.URL, "/works/project-hail-mary").Header.Get("ETag")
 
 	shellPath := filepath.Join(cfg.Site, "work", "index.html")
 	raw, err := os.ReadFile(shellPath)
@@ -662,7 +662,7 @@ func TestEntityETagCoversTheDist(t *testing.T) {
 		t.Fatal(err)
 	}
 	_, second := newPageServerFrom(t, cfg)
-	after := getNoFollow(t, second.URL, "/works/project-hail-mary").Header.Get("ETag")
+	after := artifacttest.GetNoFollow(t, second.URL, "/works/project-hail-mary").Header.Get("ETag")
 
 	if before == "" || after == "" {
 		t.Fatalf("missing ETag: %q, %q", before, after)
@@ -722,8 +722,8 @@ func TestPageIdentityCoversEveryComponent(t *testing.T) {
 // from this same snapshot, so a fabricated one buys its fabricator a bodyless
 // 304 for a page that was never served and tells it nothing it did not invent.
 func TestEntityPageRevalidatesWithoutComposing(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
-	live := getNoFollow(t, ts.URL, "/works/project-hail-mary")
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
+	live := artifacttest.GetNoFollow(t, ts.URL, "/works/project-hail-mary")
 	if _, err := io.Copy(io.Discard, live.Body); err != nil {
 		t.Fatal(err)
 	}
@@ -759,7 +759,7 @@ func TestEntityPageRevalidatesWithoutComposing(t *testing.T) {
 // unconditional match had them answering 304 for records the server does not
 // serve, which is how a crawler loses a page and a browser loses a redirect.
 func TestWildcardValidatorNeedsARepresentation(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	cases := []struct {
 		name, path string
 		want       int
@@ -1002,7 +1002,7 @@ func TestSiteURLIsNormalized(t *testing.T) {
 	}
 	for in, want := range cases {
 		srv, err := New(Config{
-			DBPath: buildFixtureDB(t, fixtureCatalog()), SiteURL: in,
+			DBPath: artifacttest.Build(t, artifacttest.Fixture()), SiteURL: in,
 			Logger: log.New(io.Discard, "", 0), swapGrace: time.Minute,
 		})
 		if err != nil {

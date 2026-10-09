@@ -9,6 +9,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 )
 
 // writeSiteFixture lays out a minimal Astro-like static site:
@@ -40,7 +42,7 @@ func writeSiteFixture(t *testing.T) string {
 
 func newSiteTestServer(t *testing.T) *httptest.Server {
 	t.Helper()
-	dbPath := buildFixtureDB(t, fixtureCatalog())
+	dbPath := artifacttest.Build(t, artifacttest.Fixture())
 	srv, err := New(Config{DBPath: dbPath, Site: writeSiteFixture(t), swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -114,7 +116,7 @@ func TestSiteIndexHTMLRedirect(t *testing.T) {
 	ts := newSiteTestServer(t)
 
 	// First observe the 301 itself.
-	if code := getNoFollow(t, ts.URL, "/index.html").StatusCode; code != http.StatusMovedPermanently {
+	if code := artifacttest.GetNoFollow(t, ts.URL, "/index.html").StatusCode; code != http.StatusMovedPermanently {
 		t.Fatalf("GET /index.html status = %d, want 301", code)
 	}
 

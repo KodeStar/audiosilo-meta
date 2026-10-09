@@ -11,6 +11,8 @@ import (
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 )
 
 const testWebhookSecret = "0123456789abcdef0123456789abcdef"
@@ -57,7 +59,7 @@ func TestWebhookConfigValidation(t *testing.T) {
 }
 
 func TestWebhookDisabledWithoutSecret(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	srv, err := New(Config{DBPath: seed, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -79,7 +81,7 @@ func TestWebhookDisabledWithoutSecret(t *testing.T) {
 // by the site, which is only possible if the route was never registered.
 func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
 	registers := func(cfg Config) bool {
-		for _, r := range (&Server{cfg: cfg, log: testLogger()}).routes() {
+		for _, r := range (&Server{cfg: cfg, log: artifacttest.QuietLogger()}).routes() {
 			if r.specPath() == githubReleaseWebhookPath {
 				return true
 			}
@@ -93,7 +95,7 @@ func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
 		t.Error("the release hook is NOT in the route table with a webhook secret configured")
 	}
 
-	srv, err := New(Config{DBPath: buildFixtureDB(t, fixtureCatalog()), Site: writeSiteFixture(t), swapGrace: time.Minute})
+	srv, err := New(Config{DBPath: artifacttest.Build(t, artifacttest.Fixture()), Site: writeSiteFixture(t), swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -111,7 +113,7 @@ func TestWebhookRouteAbsentWithoutSecret(t *testing.T) {
 }
 
 func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
@@ -141,7 +143,7 @@ func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
 }
 
 func TestWebhookIgnoresUnrelatedSignedEvents(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newWebhookServer(t, seed, fake)
 
@@ -235,7 +237,7 @@ func TestWebhookAnswersBeforeTheRefresh(t *testing.T) {
 }
 
 func TestWebhookRejectsMalformedSignedJSON(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":`

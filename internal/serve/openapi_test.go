@@ -11,6 +11,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -23,7 +24,7 @@ import (
 // table: it is registered only on a configured deployment, but the spec
 // describes the whole surface, so the guard has to see it.
 func servedPaths() []string {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: artifacttest.QuietLogger()}
 	rs := srv.routes()
 	out := make([]string, 0, len(rs))
 	for _, r := range rs {
@@ -230,7 +231,7 @@ func resolvePointer(doc any, parts []string) any {
 // any data has loaded: a client discovering the API on a cold boot gets the
 // contract, not the 503 every data route is answering.
 func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
-	srv := &Server{cfg: Config{}, log: testLogger(), retired: map[string]int{}}
+	srv := &Server{cfg: Config{}, log: artifacttest.QuietLogger(), retired: map[string]int{}}
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
@@ -238,7 +239,7 @@ func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
 	if srv.current() != nil {
 		t.Fatal("test server unexpectedly has a snapshot")
 	}
-	if code, _ := getJSON(t, ts.URL, "/api/v1/stats"); code != http.StatusServiceUnavailable {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/stats"); code != http.StatusServiceUnavailable {
 		t.Fatalf("stats = %d, want 503 (the gate this route opts out of)", code)
 	}
 
@@ -273,7 +274,7 @@ func TestOpenAPIServedWithoutASnapshot(t *testing.T) {
 // and constant for the life of the binary, so a client that already has it
 // should be told so rather than sent hundreds of kilobytes again.
 func TestOpenAPIRevalidates(t *testing.T) {
-	srv := &Server{cfg: Config{}, log: testLogger(), retired: map[string]int{}}
+	srv := &Server{cfg: Config{}, log: artifacttest.QuietLogger(), retired: map[string]int{}}
 	srv.mux = srv.buildMux()
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)

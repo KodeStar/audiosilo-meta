@@ -7,41 +7,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
-
-// getNoFollow issues the request WITHOUT following redirects, which is the whole
-// point wherever a redirect is the thing under test: http.DefaultClient would
-// follow it and every assertion would be about the destination instead. Shared
-// with site_test.go, whose 301 comes from http.FileServer rather than from here.
-func getNoFollow(t *testing.T, base, path string) *http.Response {
-	t.Helper()
-	return getNoFollowWith(t, base+path, nil)
-}
-
-// getNoFollowWith is getNoFollow carrying request headers - the one request
-// builder conditionalGet and the header tests share. A header named here is sent
-// as given, so an explicit Accept-Encoding stops the transport adding its own and
-// transparently stripping the Content-Encoding a test is asserting on. The caller
-// does not close the body.
-func getNoFollowWith(t *testing.T, url string, hdr map[string]string) *http.Response {
-	t.Helper()
-	req, err := http.NewRequest(http.MethodGet, url, nil)
-	if err != nil {
-		t.Fatal(err)
-	}
-	for k, v := range hdr {
-		req.Header.Set(k, v)
-	}
-	client := &http.Client{CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
-	resp, err := client.Do(req)
-	if err != nil {
-		t.Fatal(err)
-	}
-	t.Cleanup(func() { _ = resp.Body.Close() })
-	return resp
-}
 
 // wantRedirect asserts the response is the 301 contract: the status, the
 // Location, and the body naming the new slug so a client that does not follow
@@ -113,7 +82,7 @@ func TestRetiredSlugRedirects(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			wantRedirect(t, getNoFollow(t, ts.URL, tc.path), tc.location, tc.slug)
+			wantRedirect(t, artifacttest.GetNoFollow(t, ts.URL, tc.path), tc.location, tc.slug)
 		})
 	}
 }
@@ -123,7 +92,7 @@ func TestRetiredSlugRedirects(t *testing.T) {
 // would silently hand a follower a different page than it asked for.
 func TestRetiredSlugRedirectKeepsTheQuery(t *testing.T) {
 	_, ts := newTestServer(t)
-	resp := getNoFollow(t, ts.URL, "/api/v1/people/andy-weir-author?limit=5&offset=10")
+	resp := artifacttest.GetNoFollow(t, ts.URL, "/api/v1/people/andy-weir-author?limit=5&offset=10")
 	wantRedirect(t, resp, "/api/v1/people/andy-weir?limit=5&offset=10", "andy-weir")
 }
 
@@ -133,7 +102,7 @@ func TestRetiredSlugRedirectKeepsTheQuery(t *testing.T) {
 // community-metadata seam.
 func TestRetiredSlugRedirectIsFollowable(t *testing.T) {
 	_, ts := newTestServer(t)
-	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook")
 	if code != http.StatusOK {
 		t.Fatalf("status = %d, want 200 after following the redirect", code)
 	}
@@ -152,11 +121,11 @@ func TestUnknownSlugStillNotFound(t *testing.T) {
 		"/api/v1/people/no-such-person",
 		"/api/v1/series/no-such-series",
 	} {
-		if code, _ := getJSON(t, ts.URL, path); code != http.StatusNotFound {
+		if code, _ := artifacttest.GetJSON(t, ts.URL, path); code != http.StatusNotFound {
 			t.Errorf("GET %s = %d, want 404", path, code)
 		}
 	}
-	code, body := getJSON(t, ts.URL, "/api/v1/works/words-of-radiance/recordings/nope/chapters")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/words-of-radiance/recordings/nope/chapters")
 	if code != http.StatusOK {
 		t.Fatalf("chapters of a live work = %d, want 200", code)
 	}
@@ -169,15 +138,15 @@ func TestUnknownSlugStillNotFound(t *testing.T) {
 // redirects table dropped - a newer binary briefly serving an older release. The
 // retired slug must 404 as it did before the mechanism existed, never 500.
 func TestRedirectsTolerateOlderArtifact(t *testing.T) {
-	ts := downgradedServer(t, downgradedDB(t, fixtureCatalog(), 4, "redirects"))
-	if code, _ := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook"); code != http.StatusNotFound {
+	ts := downgradedServer(t, artifacttest.Downgraded(t, artifacttest.Fixture(), 4, "redirects"))
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook"); code != http.StatusNotFound {
 		t.Errorf("retired work slug on a v4 artifact = %d, want 404", code)
 	}
-	if code, _ := getJSON(t, ts.URL, "/api/v1/people/andy-weir-author"); code != http.StatusNotFound {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/people/andy-weir-author"); code != http.StatusNotFound {
 		t.Errorf("retired person slug on a v4 artifact = %d, want 404", code)
 	}
 	// And the route it gates still serves the live record.
-	if code, _ := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary"); code != http.StatusOK {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/works/project-hail-mary"); code != http.StatusOK {
 		t.Errorf("live work on a v4 artifact = %d, want 200", code)
 	}
 }
@@ -275,7 +244,7 @@ func ownRoutes(srv *Server) []route {
 // as well - which it does by naming its file wildcard exempt. The API routes are
 // pkg/query's guard's (TestEveryRecordRouteNamesANamespace).
 func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
-	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: testLogger()}
+	srv := &Server{cfg: Config{WebhookSecret: strings.Repeat("s", minWebhookSecretBytes)}, log: artifacttest.QuietLogger()}
 	own := ownRoutes(srv)
 	patterns := make([]string, 0, len(own))
 	registered := map[string]bool{}
@@ -307,7 +276,7 @@ func TestEveryIDRouteResolvesRetiredSlugs(t *testing.T) {
 // wrong by construction either way.
 func TestRedirectLocationEscapesExactlyOnce(t *testing.T) {
 	_, ts := newTestServer(t)
-	resp := getNoFollow(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook/recordings/caf%C3%A9-2021/chapters")
+	resp := artifacttest.GetNoFollow(t, ts.URL, "/api/v1/works/project-hail-mary-audiobook/recordings/caf%C3%A9-2021/chapters")
 	wantRedirect(t, resp,
 		"/api/v1/works/project-hail-mary/recordings/caf%C3%A9-2021/chapters", "project-hail-mary")
 }

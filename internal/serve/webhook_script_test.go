@@ -9,6 +9,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 )
 
 // The SENDER of the release webhook is .github/scripts/notify-release.sh, and
@@ -105,7 +107,7 @@ func TestReleaseNotifyScriptSignatureCoversThePayload(t *testing.T) {
 		t.Fatalf("the payload no longer contains the action this test flips: %q", payload)
 	}
 
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newWebhookServer(t, seed, fake)
 

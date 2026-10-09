@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 )
@@ -29,7 +30,7 @@ const (
 // did not ask nor quoted into a result snippet); and the share-alike terms the
 // text travels under are stated with a rel="license" link.
 func TestRecapPageCarriesTheRankingSubstance(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	code, page := getPage(t, ts.URL, phmRecapPath)
 	if code != http.StatusOK {
 		t.Fatalf("status = %d, want 200", code)
@@ -88,7 +89,7 @@ func TestRecapPageCarriesTheRankingSubstance(t *testing.T) {
 // ALIASES sit inside the data-nosnippet block with the description: "also known
 // as" is as much a spoiler as the description itself.
 func TestCharactersPageCarriesTheRankingSubstance(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	code, page := getPage(t, ts.URL, phmCharactersPath)
 	if code != http.StatusOK {
 		t.Fatalf("status = %d, want 200", code)
@@ -125,7 +126,7 @@ func TestCharactersPageCarriesTheRankingSubstance(t *testing.T) {
 // not a 200 with an empty body, which is what a crawler would otherwise index
 // for the very query this feature targets.
 func TestGuidePageNeedsItsMember(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	for _, path := range []string{
 		"/works/the-way-of-kings" + recapSuffix,      // a live work, no recaps
 		"/works/the-way-of-kings" + charactersSuffix, // a live work, no characters
@@ -174,7 +175,7 @@ func TestRecapPageServesASummaryOnlyWork(t *testing.T) {
 // hydrates from it with no second fetch and cannot be handed a shape the API
 // would not have returned.
 func TestGuidePayloadIsTheWorkAPIResponse(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	_, apiBody := getBody(t, ts.URL+"/api/v1/works/project-hail-mary")
 	want := strings.TrimSuffix(apiBody, "\n")
 	for _, path := range []string{phmRecapPath, phmCharactersPath} {
@@ -187,7 +188,7 @@ func TestGuidePayloadIsTheWorkAPIResponse(t *testing.T) {
 
 // TestGuidePagesAreDeterministic: one snapshot renders one page, byte for byte.
 func TestGuidePagesAreDeterministic(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	for _, path := range []string{phmRecapPath, phmCharactersPath} {
 		_, first := getPage(t, ts.URL, path)
 		_, second := getPage(t, ts.URL, path)
@@ -203,10 +204,10 @@ func TestGuidePagesAreDeterministic(t *testing.T) {
 // shell bytes. Without the name they would share a validator and a client would
 // be handed a 304 for a page it never asked for.
 func TestGuidePagesValidateSeparately(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	etags := map[string]string{}
 	for _, path := range []string{"/works/project-hail-mary", phmRecapPath, phmCharactersPath} {
-		resp := getNoFollow(t, ts.URL, path)
+		resp := artifacttest.GetNoFollow(t, ts.URL, path)
 		if resp.StatusCode != http.StatusOK {
 			t.Fatalf("GET %s = %d", path, resp.StatusCode)
 		}
@@ -241,14 +242,14 @@ func TestGuidePagesValidateSeparately(t *testing.T) {
 // no special case. TestEveryIDRouteResolvesRetiredSlugs is what makes that a
 // rule rather than a coincidence; this is the behaviour it promises.
 func TestRetiredSlugRedirectsOnGuidePages(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	cases := []struct{ path, location string }{
 		{"/works/project-hail-mary-audiobook" + recapSuffix, phmRecapPath},
 		{"/works/project-hail-mary-audiobook" + charactersSuffix, phmCharactersPath},
 	}
 	for _, tc := range cases {
 		t.Run(tc.path, func(t *testing.T) {
-			resp := getNoFollow(t, ts.URL, tc.path)
+			resp := artifacttest.GetNoFollow(t, ts.URL, tc.path)
 			if resp.StatusCode != http.StatusMovedPermanently {
 				t.Fatalf("status = %d, want 301", resp.StatusCode)
 			}
@@ -273,7 +274,7 @@ func TestRetiredSlugRedirectsOnGuidePages(t *testing.T) {
 // work's Book node, licensed under the share-alike deed. The `about` @id has to
 // be the very node the WORK page defines, or it references nothing.
 func TestGuidePageJSONLD(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	_, page := getPage(t, ts.URL, phmRecapPath)
 	var doc map[string]any
 	if err := json.Unmarshal([]byte(between(t, page, `<script type="application/ld+json">`, "</script>")), &doc); err != nil {
@@ -312,7 +313,7 @@ func TestGuidePageJSONLD(t *testing.T) {
 // query's landing spot): the work page names its guides, with descriptive anchor
 // text, and carries none of their text.
 func TestWorkPageLinksItsGuides(t *testing.T) {
-	ts := newPageServer(t, fixtureCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Fixture(), markedShells)
 	_, page := getPage(t, ts.URL, "/works/project-hail-mary")
 	for _, want := range []string{
 		"<h2>Guides</h2>",
@@ -454,7 +455,7 @@ func TestGuideSitemapsSkipACatalogueWithNoSidecars(t *testing.T) {
 // advertises no guide shards at all.
 func TestGuideSitemapsTolerateOlderArtifacts(t *testing.T) {
 	t.Run("v2, before recap summaries", func(t *testing.T) {
-		ts := downgradedServer(t, downgradedDB(t, guideCatalog(), 2, "work_genres", "recap_summaries", "redirects"))
+		ts := downgradedServer(t, artifacttest.Downgraded(t, guideCatalog(), 2, "work_genres", "recap_summaries", "redirects"))
 		code, body, _ := getSitemap(t, ts.URL, "/sitemaps/recaps-0.xml")
 		if code != http.StatusOK {
 			t.Fatalf("recaps shard on a v2 artifact = %d, want 200\n%s", code, body)
@@ -475,7 +476,7 @@ func TestGuideSitemapsTolerateOlderArtifacts(t *testing.T) {
 	})
 
 	t.Run("v1, before the sidecars", func(t *testing.T) {
-		ts := downgradedServer(t, downgradedDB(t, guideCatalog(), 1,
+		ts := downgradedServer(t, artifacttest.Downgraded(t, guideCatalog(), 1,
 			"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "redirects"))
 		_, index, _ := getSitemap(t, ts.URL, sitemapIndexPath)
 		for _, absent := range []string{"/sitemaps/recaps-", "/sitemaps/characters-"} {
@@ -553,7 +554,7 @@ func TestGuideProbeAgreesWithTheGuideDefinition(t *testing.T) {
 // all: every sidecar table is gone, and the answer is "no page" for every work.
 func TestGuideProbesTolerateOlderArtifacts(t *testing.T) {
 	t.Run("v2, before recap summaries", func(t *testing.T) {
-		snap := snapshotOf(t, downgradedDB(t, guideCatalog(), 2, "work_genres", "recap_summaries", "redirects"))
+		snap := snapshotOf(t, artifacttest.Downgraded(t, guideCatalog(), 2, "work_genres", "recap_summaries", "redirects"))
 		want := map[string]bool{"only-chapters": true, "only-summary": false, "plain-work": false}
 		for id, expect := range want {
 			got, err := snap.HasRecapPage(id)
@@ -567,7 +568,7 @@ func TestGuideProbesTolerateOlderArtifacts(t *testing.T) {
 	})
 
 	t.Run("v1, before the sidecars", func(t *testing.T) {
-		snap := snapshotOf(t, downgradedDB(t, guideCatalog(), 1,
+		snap := snapshotOf(t, artifacttest.Downgraded(t, guideCatalog(), 1,
 			"work_genres", "characters", "character_aliases", "recaps", "recap_summaries", "redirects"))
 		for _, id := range []string{"only-chapters", "only-characters", "only-summary"} {
 			recap, err := snap.HasRecapPage(id)

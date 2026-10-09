@@ -12,6 +12,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/query"
 	"github.com/kodestar/audiosilo-meta/pkg/release"
@@ -177,7 +178,7 @@ const tagR3 = "data-v2026.07.13-r3"
 // open database file".
 func TestPruneSparesEveryArtifactStillInGrace(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
-	v3 := readDB(t, buildFixtureDB(t, v3Catalog()))
+	v3 := readDB(t, artifacttest.Build(t, v3Catalog()))
 	cache := t.TempDir()
 
 	f := newKnobGitHub(t, tagR1, makeAssets(t, v1, "", nil))
@@ -397,7 +398,7 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	f.setDown(true)
 
 	// Seed the volume the way a previous container would have.
-	staleServer := &Server{cfg: Config{CacheDir: cache}, log: testLogger()}
+	staleServer := &Server{cfg: Config{CacheDir: cache}, log: artifacttest.QuietLogger()}
 	if err := os.WriteFile(staleServer.dbCachePath(tagR1), v1, 0o600); err != nil {
 		t.Fatal(err)
 	}
@@ -422,10 +423,10 @@ func TestDegradedBootServesStaleCachedArtifact(t *testing.T) {
 	}
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
-	if code, _ := getJSON(t, ts.URL, "/healthz"); code != http.StatusOK {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/healthz"); code != http.StatusOK {
 		t.Errorf("healthz = %d, want 200: the server is serving", code)
 	}
-	if code, _ := getJSON(t, ts.URL, "/api/v1/stats"); code != http.StatusOK {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/api/v1/stats"); code != http.StatusOK {
 		t.Errorf("stats = %d, want 200", code)
 	}
 
@@ -465,7 +466,7 @@ func TestDegradedBootWithNothingCachedStillServes503(t *testing.T) {
 	}
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
-	if code, _ := getJSON(t, ts.URL, "/healthz"); code != http.StatusServiceUnavailable {
+	if code, _ := artifacttest.GetJSON(t, ts.URL, "/healthz"); code != http.StatusServiceUnavailable {
 		t.Errorf("healthz = %d, want 503", code)
 	}
 }
@@ -473,7 +474,7 @@ func TestDegradedBootWithNothingCachedStillServes503(t *testing.T) {
 // TestTagFromCacheName pins the file-name round trip the stale fallback reads
 // its tag back through, including what it must refuse.
 func TestTagFromCacheName(t *testing.T) {
-	srv := &Server{cfg: Config{CacheDir: "/cache"}, log: testLogger()}
+	srv := &Server{cfg: Config{CacheDir: "/cache"}, log: artifacttest.QuietLogger()}
 	if got := tagFromCacheName(filepath.Base(srv.dbCachePath(tagR2))); got != tagR2 {
 		t.Errorf("round trip = %q, want %q", got, tagR2)
 	}

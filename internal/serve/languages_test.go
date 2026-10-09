@@ -4,13 +4,15 @@ import (
 	"encoding/json"
 	"net/http"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 )
 
 // TestPrimaryOrderingWinsThePageSeries is TestPrimaryOrderingWinsTheSeriesChoice
 // (pkg/query) on the work PAGE: its JSON-LD isPartOf names the primary ordering,
 // not the variant whose id sorts first.
 func TestPrimaryOrderingWinsThePageSeries(t *testing.T) {
-	ts := newPageServer(t, languagesCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Languages(), markedShells)
 	code, page := getPage(t, ts.URL, "/works/book-one")
 	if code != http.StatusOK {
 		t.Fatalf("status = %d", code)
@@ -33,7 +35,7 @@ func TestPrimaryOrderingWinsThePageSeries(t *testing.T) {
 // and a primary series (inLanguage and workTranslation). Regenerate with
 // -update-golden, as TestEntityPagesGolden.
 func TestLanguagePagesGolden(t *testing.T) {
-	ts := newPageServer(t, languagesCatalog(), markedShells)
+	ts := newPageServer(t, artifacttest.Languages(), markedShells)
 	for _, tc := range []struct{ name, path string }{
 		{"work-translations", "/works/book-one"},
 		{"work-translation-of", "/works/sammelband"},

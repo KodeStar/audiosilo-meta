@@ -23,6 +23,7 @@ import (
 
 	"github.com/klauspost/compress/zstd"
 
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/release"
 )
@@ -280,11 +281,11 @@ func makeAssets(t *testing.T, db []byte, patchFrom string, prev []byte) map[stri
 	return assets
 }
 
-// v2Catalog is fixtureCatalog plus one extra work, so its artifact's stats.Works
+// v2Catalog is artifacttest.Fixture plus one extra work, so its artifact's stats.Works
 // differs from the base fixture (4 -> 5) - the observable signal that a patched
 // refresh actually adopted the newer artifact.
 func v2Catalog() *model.Catalog {
-	cat := fixtureCatalog()
+	cat := artifacttest.Fixture()
 	cat.Works = append(cat.Works, &model.Work{
 		ID: "the-martian", Title: "The Martian", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
@@ -298,8 +299,8 @@ func v2Catalog() *model.Catalog {
 // the bytes as release assets.
 func buildV1V2(t *testing.T) (v1Path string, v1 []byte, v2Path string, v2 []byte) {
 	t.Helper()
-	v1Path = buildFixtureDB(t, fixtureCatalog())
-	v2Path = buildFixtureDB(t, v2Catalog())
+	v1Path = artifacttest.Build(t, artifacttest.Fixture())
+	v2Path = artifacttest.Build(t, v2Catalog())
 	return v1Path, readDB(t, v1Path), v2Path, readDB(t, v2Path)
 }
 
@@ -361,7 +362,7 @@ func setupR1(t *testing.T, v1Path string, v1 []byte) (*Server, *fakeGitHub) {
 }
 
 func TestRefreshETagAndSwap(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newPollServer(t, seed, fake)
 
@@ -389,7 +390,7 @@ func TestRefreshETagAndSwap(t *testing.T) {
 }
 
 func TestRefreshRejectsCorruptDownload(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	assets := makeAssets(t, readDB(t, seed), "", nil)
 	// A checksum that does not match the gz payload.
 	assets[release.DataDigestAsset] = []byte("deadbeef  " + release.DataAsset + "\n")
@@ -659,7 +660,7 @@ func TestRefreshTieBreaksLikeJq(t *testing.T) {
 // list holding only code releases yields a descriptive error and the serving
 // snapshot is untouched.
 func TestRefreshErrorsWithoutDataRelease(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog())
+	seed := artifacttest.Build(t, artifacttest.Fixture())
 	srv, fake := setupR1(t, seed, readDB(t, seed))
 
 	fake.setReleases(codeOnlyRel)
@@ -824,14 +825,14 @@ func TestBootWithoutDataServesDegraded(t *testing.T) {
 	ts := httptest.NewServer(srv.Handler())
 	t.Cleanup(ts.Close)
 
-	code, body := getJSON(t, ts.URL, "/healthz")
+	code, body := artifacttest.GetJSON(t, ts.URL, "/healthz")
 	if code != http.StatusServiceUnavailable {
 		t.Errorf("healthz status = %d, want 503", code)
 	}
 	if body["status"] != "starting" {
 		t.Errorf("healthz body = %v, want status starting", body)
 	}
-	code, body = getJSON(t, ts.URL, "/api/v1/stats")
+	code, body = artifacttest.GetJSON(t, ts.URL, "/api/v1/stats")
 	if code != http.StatusServiceUnavailable {
 		t.Errorf("stats status = %d, want 503", code)
 	}
@@ -850,7 +851,7 @@ func TestBootWithoutDataServesDegraded(t *testing.T) {
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("recovery refresh: %v", err)
 	}
-	if code, body := getJSON(t, ts.URL, "/healthz"); code != 200 || body["status"] != "ok" {
+	if code, body := artifacttest.GetJSON(t, ts.URL, "/healthz"); code != 200 || body["status"] != "ok" {
 		t.Errorf("healthz after recovery = %d %v, want 200 ok", code, body)
 	}
 }
@@ -974,7 +975,7 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 // TestExpansionBoundReadsTheBaseSize; that the notice reaches THIS server's log
 // is TestFullRefreshSurvivesAnUndeclaredAssetSize.
 func TestCurrentArtifactBytesReadsTheLoadedArtifact(t *testing.T) {
-	srv, err := New(Config{DBPath: buildFixtureDB(t, fixtureCatalog()), Logger: testLogger()})
+	srv, err := New(Config{DBPath: artifacttest.Build(t, artifacttest.Fixture()), Logger: artifacttest.QuietLogger()})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1041,7 +1042,7 @@ func dirEntries(t *testing.T, dir string) []string {
 // maxBytes+1 bytes to the cache volume each time.
 func TestFullRefreshSurvivesAnUndeclaredAssetSize(t *testing.T) {
 	var logged bytes.Buffer
-	v1Path := buildFixtureDB(t, fixtureCatalog())
+	v1Path := artifacttest.Build(t, artifacttest.Fixture())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, v1Path), "", nil))
 	srv, err := New(Config{DBPath: v1Path, Repo: "owner/name", CacheDir: t.TempDir(),
 		swapGrace: time.Minute, Logger: log.New(&logged, "", 0)})

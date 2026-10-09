@@ -5,6 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
 )
 
 // TestServerDeadlines pins the listener Run serves on to the named deadlines.
@@ -36,15 +38,16 @@ func TestServerDeadlines(t *testing.T) {
 	}
 }
 
-// fetch is getNoFollowWith with gzip accepted explicitly, so the transport
-// neither adds Accept-Encoding nor strips the Content-Encoding the rows assert.
+// fetch is artifacttest.GetNoFollowWith with gzip accepted explicitly, so the
+// transport neither adds Accept-Encoding nor strips the Content-Encoding the
+// rows assert.
 func fetch(t *testing.T, url string, hdr map[string]string) *http.Response {
 	t.Helper()
 	h := map[string]string{"Accept-Encoding": "gzip"}
 	for k, v := range hdr {
 		h[k] = v
 	}
-	return getNoFollowWith(t, url, h)
+	return artifacttest.GetNoFollowWith(t, url, h)
 }
 
 // TestSecurityHeaders: nosniff on every response, the two document headers on
@@ -55,7 +58,7 @@ func fetch(t *testing.T, url string, hdr map[string]string) *http.Response {
 // header its surface already promised (CORS, gzip, the redirect's Location), so
 // adding the headers is shown not to have displaced anything.
 func TestSecurityHeaders(t *testing.T) {
-	srv, ts := newPageServerFrom(t, quietConfig(t, fixtureCatalog(), markedShells))
+	srv, ts := newPageServerFrom(t, quietConfig(t, artifacttest.Fixture(), markedShells))
 	writeSiteFile(t, srv.cfg.Site, "styles.css", "body{}")
 	writeSiteFile(t, srv.cfg.Site, "about/index.html", "<html>ABOUT</html>")
 
