@@ -2530,6 +2530,162 @@
             {
               "asin": "B0GL9JWZZ2",
               "region": "us"
+            },
+            {
+              "asin": "B0GL94Z84V",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 30928,
+              "start_ms": 0,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 86656,
+              "start_ms": 30928,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 46973,
+              "start_ms": 117584,
+              "title": "Heed My Tale"
+            },
+            {
+              "length_ms": 202292,
+              "start_ms": 164557,
+              "title": "Foreword"
+            },
+            {
+              "length_ms": 281123,
+              "start_ms": 366849,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 1000896,
+              "start_ms": 647972,
+              "title": "Chapter 1: Midnight in the Gazebo of Good and Evil"
+            },
+            {
+              "length_ms": 949510,
+              "start_ms": 1648868,
+              "title": "Chapter 2: The Warning"
+            },
+            {
+              "length_ms": 660630,
+              "start_ms": 2598378,
+              "title": "Chapter 3: Bienvenue á Paristoo"
+            },
+            {
+              "length_ms": 777775,
+              "start_ms": 3259008,
+              "title": "Chapter 4: The Welcome Walk"
+            },
+            {
+              "length_ms": 740437,
+              "start_ms": 4036783,
+              "title": "Chapter 5: Race to the Toothpaste"
+            },
+            {
+              "length_ms": 141827,
+              "start_ms": 4777220,
+              "title": "Entr'acte 1"
+            },
+            {
+              "length_ms": 1165711,
+              "start_ms": 4919047,
+              "title": "Chapter 6: A Night at the Opera"
+            },
+            {
+              "length_ms": 1047962,
+              "start_ms": 6084758,
+              "title": "Chapter 7: The Green Mansion"
+            },
+            {
+              "length_ms": 721002,
+              "start_ms": 7132720,
+              "title": "Chapter 8: Welcome to the Jungle"
+            },
+            {
+              "length_ms": 1184310,
+              "start_ms": 7853722,
+              "title": "Chapter 9: Choose Your Own Adventure"
+            },
+            {
+              "length_ms": 1053373,
+              "start_ms": 9038032,
+              "title": "Chapter 10: Nut of the Month"
+            },
+            {
+              "length_ms": 1207460,
+              "start_ms": 10091405,
+              "title": "Chapter 11: Pizzafruit"
+            },
+            {
+              "length_ms": 663672,
+              "start_ms": 11298865,
+              "title": "Chapter 12: Awkward for Breakfast"
+            },
+            {
+              "length_ms": 1148087,
+              "start_ms": 11962537,
+              "title": "Chapter 13: Trouble at the Cenote"
+            },
+            {
+              "length_ms": 164977,
+              "start_ms": 13110624,
+              "title": "Entr'acte 2"
+            },
+            {
+              "length_ms": 724903,
+              "start_ms": 13275601,
+              "title": "Chapter 14: The Last Temptation of Gertrude Porch"
+            },
+            {
+              "length_ms": 1065168,
+              "start_ms": 14000504,
+              "title": "Chapter 15: The Diary of Majestina DeWeen"
+            },
+            {
+              "length_ms": 834455,
+              "start_ms": 15065672,
+              "title": "Chapter 16: The Procession of the Gourds"
+            },
+            {
+              "length_ms": 940013,
+              "start_ms": 15900127,
+              "title": "Chapter 17: The Chalice"
+            },
+            {
+              "length_ms": 1278212,
+              "start_ms": 16840140,
+              "title": "Chapter 18: The End"
+            },
+            {
+              "length_ms": 123715,
+              "start_ms": 18118352,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 76927,
+              "start_ms": 18242067,
+              "title": "Afterword"
+            },
+            {
+              "length_ms": 89234,
+              "start_ms": 18318994,
+              "title": "Acknowledgments"
+            },
+            {
+              "length_ms": 201061,
+              "start_ms": 18408228,
+              "title": "Closing Credits"
+            },
+            {
+              "length_ms": 105905,
+              "start_ms": 18609289,
+              "title": "Raising Readers"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91-PC47SMfL.jpg",
@@ -2542,11 +2698,16 @@
           ],
           "publisher": "Little, Brown Young Readers",
           "release_date": "2026-09-29",
-          "runtime_min": 540,
+          "runtime_min": 311,
           "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0GL9JWZZ2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0GL94Z84V",
               "type": "libex-import"
             }
           ],

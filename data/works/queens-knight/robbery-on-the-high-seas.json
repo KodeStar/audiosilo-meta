@@ -3021,6 +3021,10 @@
             {
               "asin": "B0F9QS7CCL",
               "region": "uk"
+            },
+            {
+              "asin": "B0F9QDZ7RW",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -3289,6 +3293,11 @@
             {
               "imported_at": "2026-10-03",
               "ref": "B0F9QS7CCL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0F9QDZ7RW",
               "type": "libex-import"
             }
           ],
@@ -7424,6 +7433,10 @@
             {
               "asin": "B0D5Z4HNLQ",
               "region": "uk"
+            },
+            {
+              "asin": "B0D5ZC5TCB",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -7747,6 +7760,11 @@
             {
               "imported_at": "2026-10-03",
               "ref": "B0D5Z4HNLQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0D5ZC5TCB",
               "type": "libex-import"
             }
           ],
@@ -14977,6 +14995,56 @@
         }
       ],
       "title": "Robert B. Parker's Little White Lies"
+    },
+    "robert-b-parkers-lockdown": {
+      "added_at": "2026-10-10",
+      "authors": [
+        "christopher-farnsworth"
+      ],
+      "genres": [
+        "mystery",
+        "thriller-suspense"
+      ],
+      "id": "robert-b-parkers-lockdown",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "james-naughton-2027": {
+          "abridged": false,
+          "added_at": "2026-10-10",
+          "asin": [
+            {
+              "asin": "B0H3TTMMVK",
+              "region": "de"
+            }
+          ],
+          "id": "james-naughton-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-naughton"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2027-02-09",
+          "runtime_min": 540,
+          "sources": [
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0H3TTMMVK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "robert-b-parkers-lockdown"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-10",
+          "ref": "B0H3TTMMVK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Robert B. Parker's Lockdown"
     },
     "robert-b-parkers-lullaby": {
       "added_at": "2026-08-02",
