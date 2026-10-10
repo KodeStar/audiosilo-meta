@@ -14284,6 +14284,10 @@
             {
               "asin": "B0GT6GR72G",
               "region": "uk"
+            },
+            {
+              "asin": "B0GT624PRF",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -14592,6 +14596,11 @@
             {
               "imported_at": "2026-10-03",
               "ref": "B0GT6GR72G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0GT624PRF",
               "type": "libex-import"
             }
           ],
@@ -17902,6 +17911,147 @@
         }
       ],
       "title": "The Spook Who Sat by the Door"
+    },
+    "the-spook-who-spoke-again": {
+      "added_at": "2026-10-10",
+      "authors": [
+        "lindsey-davis"
+      ],
+      "genres": [
+        "historical-fiction"
+      ],
+      "id": "the-spook-who-spoke-again",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "thomas-judd-2015": {
+          "abridged": false,
+          "added_at": "2026-10-10",
+          "asin": [
+            {
+              "asin": "B00UO3ZZAS",
+              "region": "de"
+            },
+            {
+              "asin": "B00UO41EUC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 594106,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 891925,
+              "start_ms": 594106,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 764494,
+              "start_ms": 1486031,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 436396,
+              "start_ms": 2250525,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 910965,
+              "start_ms": 2686921,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 887467,
+              "start_ms": 3597886,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 527790,
+              "start_ms": 4485353,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 427433,
+              "start_ms": 5013143,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 346627,
+              "start_ms": 5440576,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 605344,
+              "start_ms": 5787203,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 663951,
+              "start_ms": 6392547,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 313562,
+              "start_ms": 7056498,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 230806,
+              "start_ms": 7370060,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 503501,
+              "start_ms": 7600866,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 744478,
+              "start_ms": 8104367,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 262803,
+              "start_ms": 8848845,
+              "title": "Chapter 16"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1sbhCB1IML.jpg",
+          "id": "thomas-judd-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "thomas-judd"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2015-03-17",
+          "runtime_min": 151,
+          "sources": [
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B00UO3ZZAS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B00UO41EUC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-spook-who-spoke-again"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-10",
+          "ref": "B00UO3ZZAS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Spook Who Spoke Again"
     },
     "the-spookiest-of-spooks": {
       "added_at": "2026-08-02",
