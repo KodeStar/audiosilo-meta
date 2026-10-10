@@ -2296,6 +2296,10 @@
             {
               "asin": "B0GFBNBJW3",
               "region": "us"
+            },
+            {
+              "asin": "B0GFC363WS",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -2540,6 +2544,7 @@
               "title": "Credits"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/91DULq85IYL.jpg",
           "id": "eva-kaminsky-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -2548,11 +2553,16 @@
           ],
           "publisher": "Quill Tree Books",
           "release_date": "2026-10-06",
-          "runtime_min": 456,
+          "runtime_min": 453,
           "sources": [
             {
               "imported_at": "2026-09-27",
               "ref": "B0GFBNBJW3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0GFC363WS",
               "type": "libex-import"
             }
           ],
