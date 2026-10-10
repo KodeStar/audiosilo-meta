@@ -1,5 +1,11 @@
 # audiosilo-meta
 
+> **Use of AI:** AudioSilo is developed by me (a human), with assistance from AI, primarily Claude Code, to help me write, clean up, document, and review the code. That doesn't mean the app is generated on autopilot or "vibe coded". Nothing goes out until I've read it, tested it, and decided it belongs. AI is what lets one person keep up this pace, and I think it's important to disclose that.
+
+![A work page on meta.audiosilo.app](.github/assets/screenshot.webp)
+
+[Website](https://audiosilo.app) · [Metadata](https://audiosilo.app/metadata) · [Docs](https://docs.audiosilo.app) · [Discord](https://discord.gg/nFFqRbkRn6) · [Sponsor](https://github.com/sponsors/KodeStar)
+
 The open source community audiobook database behind
 [meta.audiosilo.app](https://meta.audiosilo.app) - audiobook metadata, in the open.
 
