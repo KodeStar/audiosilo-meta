@@ -6106,60 +6106,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "jordan-harrold-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B01N9RFTXZ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51kW5XuYFUL.jpg",
-          "id": "jordan-harrold-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jordan-harrold"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2017-01-24",
-          "runtime_min": 593,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B01N9RFTXZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "winchester-1886"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01N9RFTXZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Winchester 1886"
-    },
-    "winchester-1886-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "literary-fiction",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "winchester-1886-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -6218,10 +6164,43 @@
               "type": "libex-import"
             }
           ],
-          "work": "winchester-1886-dramatized-adaptation"
+          "work": "winchester-1886"
+        },
+        "jordan-harrold-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B01N9RFTXZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51kW5XuYFUL.jpg",
+          "id": "jordan-harrold-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jordan-harrold"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2017-01-24",
+          "runtime_min": 593,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B01N9RFTXZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "winchester-1886"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01N9RFTXZ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648804365",
@@ -6233,7 +6212,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Winchester 1886 [Dramatized Adaptation]"
+      "title": "Winchester 1886"
     },
     "winchester-1887-dramatized-adaptation": {
       "added_at": "2026-07-25T17:12:12+01:00",

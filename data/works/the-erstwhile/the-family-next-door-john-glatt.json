@@ -7552,6 +7552,86 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648817610",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 47924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4036767,
+              "start_ms": 47924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4145435,
+              "start_ms": 4084691,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3843041,
+              "start_ms": 8230126,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4524942,
+              "start_ms": 12073167,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4101178,
+              "start_ms": 16598109,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 4506000,
+              "start_ms": 20699287,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 115000,
+              "start_ms": 25205287,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 241722,
+              "start_ms": 25320287,
+              "title": "Preview of Super Powereds: Year 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91YCgY21qrL.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2021",
+          "runtime_min": 426,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648817610",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648817610",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-fangs-of-freelance"
+        },
         "kirby-heyborne-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7827,107 +7907,7 @@
           "imported_at": "2026-08-02",
           "ref": "B077H6GG9Z",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Fangs of Freelance"
-    },
-    "the-fangs-of-freelance-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "comedy-humor",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "the-fangs-of-freelance-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648817610",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 47924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4036767,
-              "start_ms": 47924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4145435,
-              "start_ms": 4084691,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3843041,
-              "start_ms": 8230126,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4524942,
-              "start_ms": 12073167,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4101178,
-              "start_ms": 16598109,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 4506000,
-              "start_ms": 20699287,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 115000,
-              "start_ms": 25205287,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 241722,
-              "start_ms": 25320287,
-              "title": "Preview of Super Powereds: Year 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91YCgY21qrL.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2021",
-          "runtime_min": 426,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648817610",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648817610",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fangs-of-freelance-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648817610",
@@ -7939,7 +7919,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Fangs of Freelance [Dramatized Adaptation]"
+      "title": "The Fangs of Freelance"
     },
     "the-fangs-of-oannos": {
       "added_at": "2026-07-25T19:18:21+01:00",

@@ -12217,8 +12217,11 @@
         "ellen-campbell"
       ],
       "genres": [
+        "fantasy",
+        "paranormal",
         "science",
-        "science-fiction"
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "under-my-heel",
       "language": "en",
@@ -12407,33 +12410,7 @@
             }
           ],
           "work": "under-my-heel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0725VYTP7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Under My Heel"
-    },
-    "under-my-heel-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "science",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "under-my-heel-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -12512,10 +12489,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "under-my-heel-dramatized-adaptation"
+          "work": "under-my-heel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0725VYTP7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B09MG79LMR",
@@ -12527,7 +12509,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Under My Heel [Dramatized Adaptation]"
+      "title": "Under My Heel"
     },
     "under-my-skin": {
       "added_at": "2026-07-29",

@@ -8101,12 +8101,120 @@
       "genres": [
         "action-adventure",
         "dystopian",
-        "science-fiction"
+        "military-science-fiction",
+        "science",
+        "science-fiction",
+        "space-opera"
       ],
       "id": "dark-age",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alex-hill-knight-2025": {
+          "abridged": false,
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B0FF61W874",
+              "region": "us"
+            },
+            {
+              "asin": "B0G4SLBQ9V",
+              "region": "us"
+            },
+            {
+              "asin": "B0GS513Q2W",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 45970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 7935911,
+              "start_ms": 45970,
+              "title": "Virginia"
+            },
+            {
+              "length_ms": 4320908,
+              "start_ms": 7981881,
+              "title": "Darrow"
+            },
+            {
+              "length_ms": 12636320,
+              "start_ms": 12302789,
+              "title": "Lysander"
+            },
+            {
+              "length_ms": 7676098,
+              "start_ms": 24939109,
+              "title": "Lyria"
+            },
+            {
+              "length_ms": 7256976,
+              "start_ms": 32615207,
+              "title": "Virginia"
+            },
+            {
+              "length_ms": 67547,
+              "start_ms": 39872183,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815L7qSaoxL.jpg",
+          "id": "alex-hill-knight-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-hill-knight",
+            "christopher-tester",
+            "elena-anderson",
+            "full-cast",
+            "ian-putnam",
+            "jenna-sharpe",
+            "jessica-threet",
+            "jonathan-david-bullock",
+            "jon-vertullo",
+            "natalie-van-sistine",
+            "rayner-gabriel",
+            "stewart-crank",
+            "andrew-james-spooner",
+            "chris-davenport",
+            "karen-novack",
+            "robb-moreira",
+            "stephanie-nemeth-parker",
+            "tia-shearer",
+            "danny-montooth",
+            "elizabeth-jernigan",
+            "laura-c-harris",
+            "peter-holdway",
+            "rj-bayley"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2025-08-29",
+          "runtime_min": 665,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0FF61W874",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G4SLBQ9V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GS513Q2W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-age"
+        },
         "james-langton-2019": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -8660,6 +8768,21 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1980000174",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0FF61W874",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G4SLBQ9V",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GS513Q2W",
           "type": "libex-import"
         }
       ],
@@ -9506,148 +9629,6 @@
         }
       ],
       "title": "Dark Age America"
-    },
-    "dark-age-dramatized-adaptation": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "pierce-brown"
-      ],
-      "genres": [
-        "action-adventure",
-        "dystopian",
-        "military-science-fiction",
-        "science",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "dark-age-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-hill-knight-2025": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B0FF61W874",
-              "region": "us"
-            },
-            {
-              "asin": "B0G4SLBQ9V",
-              "region": "us"
-            },
-            {
-              "asin": "B0GS513Q2W",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 45970,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 7935911,
-              "start_ms": 45970,
-              "title": "Virginia"
-            },
-            {
-              "length_ms": 4320908,
-              "start_ms": 7981881,
-              "title": "Darrow"
-            },
-            {
-              "length_ms": 12636320,
-              "start_ms": 12302789,
-              "title": "Lysander"
-            },
-            {
-              "length_ms": 7676098,
-              "start_ms": 24939109,
-              "title": "Lyria"
-            },
-            {
-              "length_ms": 7256976,
-              "start_ms": 32615207,
-              "title": "Virginia"
-            },
-            {
-              "length_ms": 67547,
-              "start_ms": 39872183,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/815L7qSaoxL.jpg",
-          "id": "alex-hill-knight-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-hill-knight",
-            "christopher-tester",
-            "elena-anderson",
-            "full-cast",
-            "ian-putnam",
-            "jenna-sharpe",
-            "jessica-threet",
-            "jonathan-david-bullock",
-            "jon-vertullo",
-            "natalie-van-sistine",
-            "rayner-gabriel",
-            "stewart-crank",
-            "andrew-james-spooner",
-            "chris-davenport",
-            "karen-novack",
-            "robb-moreira",
-            "stephanie-nemeth-parker",
-            "tia-shearer",
-            "danny-montooth",
-            "elizabeth-jernigan",
-            "laura-c-harris",
-            "peter-holdway",
-            "rj-bayley"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2025-08-29",
-          "runtime_min": 665,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0FF61W874",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G4SLBQ9V",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GS513Q2W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dark-age-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0FF61W874",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G4SLBQ9V",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GS513Q2W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dark Age [Dramatized Adaptation]"
     },
     "dark-agenda": {
       "added_at": "2026-07-29",

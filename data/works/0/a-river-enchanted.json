@@ -6379,6 +6379,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "literary-fiction",
         "thriller-suspense",
         "westerns"
       ],
@@ -6386,6 +6387,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648800017",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3717630,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3291312,
+              "start_ms": 3717630,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2956411,
+              "start_ms": 7008942,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2967115,
+              "start_ms": 9965353,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3550678,
+              "start_ms": 12932468,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91fRevLJsgL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 274,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648800017",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648800017",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-rocky-mountain-christmas"
+        },
         "jack-garrett-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6616,87 +6677,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00BCNKNK6",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Rocky Mountain Christmas"
-    },
-    "a-rocky-mountain-christmas-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "westerns"
-      ],
-      "id": "a-rocky-mountain-christmas-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648800017",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3717630,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3291312,
-              "start_ms": 3717630,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2956411,
-              "start_ms": 7008942,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2967115,
-              "start_ms": 9965353,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3550678,
-              "start_ms": 12932468,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91fRevLJsgL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 274,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648800017",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648800017",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-rocky-mountain-christmas-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648800017",
@@ -6708,7 +6689,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "A Rocky Mountain Christmas [Dramatized Adaptation]"
+      "title": "A Rocky Mountain Christmas"
     },
     "a-rocky-mountain-romance": {
       "added_at": "2026-07-29",

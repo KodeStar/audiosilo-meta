@@ -13991,6 +13991,7 @@
         "action-adventure",
         "dystopian",
         "fantasy",
+        "historical-fiction",
         "paranormal",
         "science-fiction",
         "sword-sorcery",
@@ -14297,35 +14298,7 @@
             }
           ],
           "work": "an-easy-death"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07FF7628Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "An Easy Death"
-    },
-    "an-easy-death-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "charlaine-harris"
-      ],
-      "genres": [
-        "dystopian",
-        "fantasy",
-        "historical-fiction",
-        "paranormal",
-        "science-fiction",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "an-easy-death-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -14389,10 +14362,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "an-easy-death-dramatized-adaptation"
+          "work": "an-easy-death"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07FF7628Q",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648813380",
@@ -14404,7 +14382,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "An Easy Death [Dramatized Adaptation]"
+      "title": "An Easy Death"
     },
     "an-echo-in-the-bone": {
       "added_at": "2026-07-25T19:18:21+01:00",

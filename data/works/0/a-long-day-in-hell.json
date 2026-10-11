@@ -5768,8 +5768,10 @@
         "charlaine-harris"
       ],
       "genres": [
+        "alternate-history",
         "fantasy",
         "paranormal",
+        "science-fiction",
         "thriller-suspense",
         "urban-fantasy"
       ],
@@ -5777,6 +5779,80 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alejandro-ruiz-2020": {
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "1648814735",
+              "region": "us"
+            },
+            {
+              "asin": "1648814735",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3575292,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3652220,
+              "start_ms": 3575292,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3543899,
+              "start_ms": 7227512,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3624867,
+              "start_ms": 10771411,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4604376,
+              "start_ms": 14396278,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81OQ-IWNlCL.jpg",
+          "id": "alejandro-ruiz-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "amanda-forstrom",
+            "bradley-smith",
+            "colleen-delany",
+            "elizabeth-jernigan",
+            "full-cast",
+            "ken-jackson",
+            "michael-glenn",
+            "robbie-gay",
+            "stephon-walker",
+            "steve-wannall",
+            "yasmin-tuazon"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020-09-07",
+          "runtime_min": 316,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648814735",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1648814735",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-longer-fall"
+        },
         "barbara-barnes-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6149,105 +6225,6 @@
             }
           ],
           "work": "a-longer-fall"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1980036284",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Longer Fall"
-    },
-    "a-longer-fall-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "charlaine-harris"
-      ],
-      "genres": [
-        "alternate-history",
-        "fantasy",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "a-longer-fall-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alejandro-ruiz-2020": {
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "1648814735",
-              "region": "us"
-            },
-            {
-              "asin": "1648814735",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3575292,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3652220,
-              "start_ms": 3575292,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3543899,
-              "start_ms": 7227512,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3624867,
-              "start_ms": 10771411,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4604376,
-              "start_ms": 14396278,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81OQ-IWNlCL.jpg",
-          "id": "alejandro-ruiz-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alejandro-ruiz",
-            "amanda-forstrom",
-            "bradley-smith",
-            "colleen-delany",
-            "elizabeth-jernigan",
-            "full-cast",
-            "ken-jackson",
-            "michael-glenn",
-            "robbie-gay",
-            "stephon-walker",
-            "steve-wannall",
-            "yasmin-tuazon"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020-09-07",
-          "runtime_min": 316,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648814735",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1648814735",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-longer-fall-dramatized-adaptation"
         },
         "full-cast-2020": {
           "abridged": false,
@@ -6307,10 +6284,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "a-longer-fall-dramatized-adaptation"
+          "work": "a-longer-fall"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1980036284",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648816673",
@@ -6322,7 +6304,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "A Longer Fall [Dramatized Adaptation]"
+      "title": "A Longer Fall"
     },
     "a-looming-of-vultures": {
       "added_at": "2026-08-01",

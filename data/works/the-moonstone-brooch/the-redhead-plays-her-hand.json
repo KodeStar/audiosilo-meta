@@ -2202,13 +2202,84 @@
       ],
       "genres": [
         "action-adventure",
+        "paranormal",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "thriller-suspense"
       ],
       "id": "the-reef",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alexandra-cohler-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BKPNZC9W",
+              "region": "us"
+            },
+            {
+              "asin": "B0BKPC2RZK",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3358348,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4158484,
+              "start_ms": 3358348,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3828320,
+              "start_ms": 7516832,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3937778,
+              "start_ms": 11345152,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91C59rKMSTL.jpg",
+          "id": "alexandra-cohler-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alexandra-cohler",
+            "amanda-forstrom",
+            "christopher-graybill",
+            "elias-khalil",
+            "eric-messner",
+            "keith-richards",
+            "ken-jackson",
+            "michael-john-casey",
+            "mike-ciporkin",
+            "rose-elizabeth-supan",
+            "ryan-haugen"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022-11-01",
+          "runtime_min": 254,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BKPNZC9W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0BKPC2RZK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-reef"
+        },
         "scott-sigler-2019": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2369,104 +2440,14 @@
           "imported_at": "2026-08-01",
           "ref": "B07RT28Q7Q",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Reef"
-    },
-    "the-reef-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "scott-sigler",
-        "matt-wallace"
-      ],
-      "genres": [
-        "action-adventure",
-        "paranormal",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "the-reef-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alexandra-cohler-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BKPNZC9W",
-              "region": "us"
-            },
-            {
-              "asin": "B0BKPC2RZK",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3358348,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4158484,
-              "start_ms": 3358348,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3828320,
-              "start_ms": 7516832,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3937778,
-              "start_ms": 11345152,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91C59rKMSTL.jpg",
-          "id": "alexandra-cohler-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alexandra-cohler",
-            "amanda-forstrom",
-            "christopher-graybill",
-            "elias-khalil",
-            "eric-messner",
-            "keith-richards",
-            "ken-jackson",
-            "michael-john-casey",
-            "mike-ciporkin",
-            "rose-elizabeth-supan",
-            "ryan-haugen"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022-11-01",
-          "runtime_min": 254,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BKPNZC9W",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0BKPC2RZK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-reef-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BKPNZC9W",
           "type": "libex-import"
         }
       ],
-      "title": "The Reef (Dramatized Adaptation)"
+      "title": "The Reef"
     },
     "the-reef-nora-roberts": {
       "added_at": "2026-07-29",

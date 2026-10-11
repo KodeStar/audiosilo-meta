@@ -11465,6 +11465,7 @@
         "susanne-valenti"
       ],
       "genres": [
+        "fantasy",
         "paranormal",
         "romance",
         "romantic-suspense"
@@ -11822,31 +11823,7 @@
             }
           ],
           "work": "cursed-fates"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09NZDTFQP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cursed Fates"
-    },
-    "cursed-fates-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "susanne-valenti",
-        "caroline-peckham"
-      ],
-      "genres": [
-        "fantasy",
-        "romance"
-      ],
-      "id": "cursed-fates-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "emlyn-mcfarland-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11961,10 +11938,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "cursed-fates-dramatized-adaptation"
+          "work": "cursed-fates"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09NZDTFQP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FNNJRMKG",
@@ -11976,7 +11958,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Cursed Fates [Dramatized Adaptation]"
+      "title": "Cursed Fates"
     },
     "cursed-for-keeps": {
       "added_at": "2026-08-01",

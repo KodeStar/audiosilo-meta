@@ -5366,8 +5366,12 @@
         "michael-anderle"
       ],
       "genres": [
+        "fantasy",
+        "paranormal",
         "science",
-        "science-fiction"
+        "science-fiction",
+        "space-opera",
+        "urban-fantasy"
       ],
       "id": "we-will-build",
       "language": "en",
@@ -5561,34 +5565,7 @@
             }
           ],
           "work": "we-will-build"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B073ZMY4S4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "We Will Build"
-    },
-    "we-will-build-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "science",
-        "science-fiction",
-        "space-opera",
-        "urban-fantasy"
-      ],
-      "id": "we-will-build-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5652,10 +5629,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "we-will-build-dramatized-adaptation"
+          "work": "we-will-build"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B073ZMY4S4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0BFSVW52F",
@@ -5667,7 +5649,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "We Will Build (Dramatized Adaptation)"
+      "title": "We Will Build"
     },
     "we-will-change-our-stars": {
       "added_at": "2026-08-01",

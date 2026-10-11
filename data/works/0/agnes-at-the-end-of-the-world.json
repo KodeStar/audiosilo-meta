@@ -8763,8 +8763,10 @@
         "action-adventure",
         "classics",
         "fantasy",
+        "paranormal",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "urban-fantasy"
       ],
       "id": "ahead-full",
       "language": "en",
@@ -8958,33 +8960,7 @@
             }
           ],
           "work": "ahead-full"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07FFDT279",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ahead Full"
-    },
-    "ahead-full-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "space-opera",
-        "urban-fantasy"
-      ],
-      "id": "ahead-full-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9058,10 +9034,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "ahead-full-dramatized-adaptation"
+          "work": "ahead-full"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07FFDT279",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0DJMZB2QC",
@@ -9073,7 +9054,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Ahead Full (Dramatized Adaptation)"
+      "title": "Ahead Full"
     },
     "ahead-of-his-time": {
       "added_at": "2026-08-01",

@@ -7548,6 +7548,71 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648792642",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3351684,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3533612,
+              "start_ms": 3351684,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3299671,
+              "start_ms": 6885296,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3368704,
+              "start_ms": 10184967,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3221118,
+              "start_ms": 13553671,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3614486,
+              "start_ms": 16774789,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/8151lsA625L.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 340,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648792642",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648792642",
+              "type": "libex-import"
+            }
+          ],
+          "work": "flintlock"
+        },
         "tom-stechschulte-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7869,93 +7934,7 @@
           "imported_at": "2026-07-29",
           "ref": "B00SI46SF6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Flintlock"
-    },
-    "flintlock-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "flintlock-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648792642",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3351684,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3533612,
-              "start_ms": 3351684,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3299671,
-              "start_ms": 6885296,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3368704,
-              "start_ms": 10184967,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3221118,
-              "start_ms": 13553671,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3614486,
-              "start_ms": 16774789,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/8151lsA625L.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 340,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648792642",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648792642",
-              "type": "libex-import"
-            }
-          ],
-          "work": "flintlock-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648792642",
@@ -7967,7 +7946,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Flintlock [Dramatized Adaptation]"
+      "title": "Flintlock"
     },
     "flinx-in-flux": {
       "added_at": "2026-08-02",

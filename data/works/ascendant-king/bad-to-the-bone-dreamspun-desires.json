@@ -8153,6 +8153,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648804691",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3845897,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4186372,
+              "start_ms": 3845897,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3875619,
+              "start_ms": 8032269,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3489425,
+              "start_ms": 11907888,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3684239,
+              "start_ms": 15397313,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/915Q+T7TB8L.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 307,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648804691",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648804691",
+              "type": "libex-import"
+            }
+          ],
+          "work": "badger-boy"
+        },
         "jonathan-davis-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8268,84 +8328,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002UZJUS6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Badger Boy"
-    },
-    "badger-boy-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "elmer-kelton"
-      ],
-      "genres": [
-        "westerns"
-      ],
-      "id": "badger-boy-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648804691",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3845897,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4186372,
-              "start_ms": 3845897,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3875619,
-              "start_ms": 8032269,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3489425,
-              "start_ms": 11907888,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3684239,
-              "start_ms": 15397313,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/915Q+T7TB8L.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 307,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648804691",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648804691",
-              "type": "libex-import"
-            }
-          ],
-          "work": "badger-boy-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648804691",
@@ -8357,7 +8340,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Badger Boy [Dramatized Adaptation]"
+      "title": "Badger Boy"
     },
     "badger-to-the-bone": {
       "added_at": "2026-08-02",

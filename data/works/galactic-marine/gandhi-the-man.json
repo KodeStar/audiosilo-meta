@@ -9494,31 +9494,7 @@
             }
           ],
           "work": "ganymede"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B005S33AEC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ganymede"
-    },
-    "ganymede-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "cherie-priest"
-      ],
-      "genres": [
-        "fantasy",
-        "science-fiction",
-        "steampunk"
-      ],
-      "id": "ganymede-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9577,10 +9553,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "ganymede-dramatized-adaptation"
+          "work": "ganymede"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005S33AEC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648816762",
@@ -9592,7 +9573,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Ganymede [Dramatized Adaptation]"
+      "title": "Ganymede"
     },
     "ganymede-rises": {
       "added_at": "2026-08-02",

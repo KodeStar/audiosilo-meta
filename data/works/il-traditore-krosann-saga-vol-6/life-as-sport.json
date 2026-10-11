@@ -7646,9 +7646,13 @@
         "michael-anderle"
       ],
       "genres": [
+        "arts-entertainment",
+        "fantasy",
+        "paranormal",
         "science",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "urban-fantasy"
       ],
       "id": "life-goes-on",
       "language": "en",
@@ -7832,34 +7836,7 @@
             }
           ],
           "work": "life-goes-on"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07JGBT1PG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Life Goes On"
-    },
-    "life-goes-on-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "fantasy",
-        "paranormal",
-        "science",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "life-goes-on-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2025": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -7928,10 +7905,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "life-goes-on-dramatized-adaptation"
+          "work": "life-goes-on"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07JGBT1PG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0DQF5Q1F1",
@@ -7943,7 +7925,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Life Goes On (Dramatized Adaptation)"
+      "title": "Life Goes On"
     },
     "life-goes-on-kelly-moore": {
       "added_at": "2026-07-29",

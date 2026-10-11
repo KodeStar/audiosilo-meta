@@ -8515,12 +8515,79 @@
         "j-a-johnstone"
       ],
       "genres": [
+        "action-adventure",
+        "historical-fiction",
         "westerns"
       ],
       "id": "right-between-the-eyes",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "164881462X",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4148244,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3918553,
+              "start_ms": 4148244,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3920689,
+              "start_ms": 8066797,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3505377,
+              "start_ms": 11987486,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3897515,
+              "start_ms": 15492863,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4279111,
+              "start_ms": 19390378,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81a2cZPKQdL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 394,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "164881462X",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "164881462X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "right-between-the-eyes"
+        },
         "j-rodney-turner-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8847,91 +8914,7 @@
           "imported_at": "2026-07-29",
           "ref": "1977342566",
           "type": "libex-import"
-        }
-      ],
-      "title": "Right Between the Eyes"
-    },
-    "right-between-the-eyes-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "right-between-the-eyes-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "164881462X",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4148244,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3918553,
-              "start_ms": 4148244,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3920689,
-              "start_ms": 8066797,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3505377,
-              "start_ms": 11987486,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3897515,
-              "start_ms": 15492863,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4279111,
-              "start_ms": 19390378,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81a2cZPKQdL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 394,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "164881462X",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "164881462X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "right-between-the-eyes-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "164881462X",
@@ -8943,7 +8926,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Right Between the Eyes [Dramatized Adaptation]"
+      "title": "Right Between the Eyes"
     },
     "right-billionaire-wrong-wedding": {
       "added_at": "2026-07-29",

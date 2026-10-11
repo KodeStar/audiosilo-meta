@@ -8020,12 +8020,165 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
-        "military-science-fiction"
+        "military-science-fiction",
+        "science-fiction"
       ],
       "id": "the-magic-engineer",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alejandro-ruiz-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B09H3MN4HB",
+              "region": "us"
+            },
+            {
+              "asin": "1648809839",
+              "region": "us"
+            },
+            {
+              "asin": "1648809855",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 131924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 16000,
+              "start_ms": 131924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3448312,
+              "start_ms": 147924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3469641,
+              "start_ms": 3596236,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3617343,
+              "start_ms": 7065877,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3565122,
+              "start_ms": 10683220,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3671260,
+              "start_ms": 14248342,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3215986,
+              "start_ms": 17919602,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 112000,
+              "start_ms": 21135588,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3420103,
+              "start_ms": 21247588,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3616484,
+              "start_ms": 24667691,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3587668,
+              "start_ms": 28284175,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3738435,
+              "start_ms": 31871843,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4314000,
+              "start_ms": 35610278,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 272102,
+              "start_ms": 39924278,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81pxThmbZ9L.jpg",
+          "id": "alejandro-ruiz-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alejandro-ruiz",
+            "amanda-forstrom",
+            "andy-brownstein",
+            "andy-clemence",
+            "bradley-smith",
+            "carolyn-kashner",
+            "chris-davenport",
+            "chris-genebach",
+            "chris-stinson",
+            "christopher-walker",
+            "colleen-delany",
+            "dani-stoller",
+            "david-jourdan",
+            "dawn-ursula",
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 669,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09H3MN4HB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648809839",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648809839",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648809855",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648809855",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-06",
+              "ref": "B09H3MN4HB",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-magic-engineer"
+        },
         "kirby-heyborne-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9016,180 +9169,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00GGO61MA",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Magic Engineer"
-    },
-    "the-magic-engineer-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "l-e-modesitt-jr"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "military-science-fiction",
-        "science-fiction"
-      ],
-      "id": "the-magic-engineer-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alejandro-ruiz-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B09H3MN4HB",
-              "region": "us"
-            },
-            {
-              "asin": "1648809839",
-              "region": "us"
-            },
-            {
-              "asin": "1648809855",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 131924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 16000,
-              "start_ms": 131924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3448312,
-              "start_ms": 147924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3469641,
-              "start_ms": 3596236,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3617343,
-              "start_ms": 7065877,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3565122,
-              "start_ms": 10683220,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3671260,
-              "start_ms": 14248342,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3215986,
-              "start_ms": 17919602,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 112000,
-              "start_ms": 21135588,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3420103,
-              "start_ms": 21247588,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3616484,
-              "start_ms": 24667691,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3587668,
-              "start_ms": 28284175,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3738435,
-              "start_ms": 31871843,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4314000,
-              "start_ms": 35610278,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 272102,
-              "start_ms": 39924278,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81pxThmbZ9L.jpg",
-          "id": "alejandro-ruiz-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alejandro-ruiz",
-            "amanda-forstrom",
-            "andy-brownstein",
-            "andy-clemence",
-            "bradley-smith",
-            "carolyn-kashner",
-            "chris-davenport",
-            "chris-genebach",
-            "chris-stinson",
-            "christopher-walker",
-            "colleen-delany",
-            "dani-stoller",
-            "david-jourdan",
-            "dawn-ursula",
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 669,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09H3MN4HB",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648809839",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648809839",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648809855",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648809855",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-06",
-              "ref": "B09H3MN4HB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-magic-engineer-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B09H3MN4HB",
@@ -9221,7 +9201,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Magic Engineer [Dramatized Adaptation]"
+      "title": "The Magic Engineer"
     },
     "the-magic-factory": {
       "added_at": "2026-08-01",

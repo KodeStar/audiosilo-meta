@@ -10004,6 +10004,85 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-graybill-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CP6R4RCZ",
+              "region": "us"
+            },
+            {
+              "asin": "B0CP6QCHML",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3413867,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3391227,
+              "start_ms": 3413867,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3627305,
+              "start_ms": 6805094,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3287713,
+              "start_ms": 10432399,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3220793,
+              "start_ms": 13720112,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4182191,
+              "start_ms": 16940905,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91dTmiFf76L.jpg",
+          "id": "christopher-graybill-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-graybill",
+            "jessica-lauren-ball",
+            "laura-c-harris",
+            "nanette-savard",
+            "rayner-gabriel",
+            "richard-rohan",
+            "robb-moreira",
+            "rob-mcfadyen",
+            "stephanie-nemeth-parker",
+            "steven-carpenter",
+            "yasmin-tuazon"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-12-13",
+          "runtime_min": 351,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CP6R4RCZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CP6QCHML",
+              "type": "libex-import"
+            }
+          ],
+          "work": "silver-moon"
+        },
         "heather-costa-2022": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -10193,6 +10272,11 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B09PSKW9D4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CP6R4RCZ",
           "type": "libex-import"
         }
       ],
@@ -10638,108 +10722,6 @@
         }
       ],
       "title": "Silver Moon Cries"
-    },
-    "silver-moon-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jen-l-grey"
-      ],
-      "genres": [
-        "paranormal",
-        "romance"
-      ],
-      "id": "silver-moon-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-graybill-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CP6R4RCZ",
-              "region": "us"
-            },
-            {
-              "asin": "B0CP6QCHML",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3413867,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3391227,
-              "start_ms": 3413867,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3627305,
-              "start_ms": 6805094,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3287713,
-              "start_ms": 10432399,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3220793,
-              "start_ms": 13720112,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4182191,
-              "start_ms": 16940905,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91dTmiFf76L.jpg",
-          "id": "christopher-graybill-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-graybill",
-            "jessica-lauren-ball",
-            "laura-c-harris",
-            "nanette-savard",
-            "rayner-gabriel",
-            "richard-rohan",
-            "robb-moreira",
-            "rob-mcfadyen",
-            "stephanie-nemeth-parker",
-            "steven-carpenter",
-            "yasmin-tuazon"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-12-13",
-          "runtime_min": 351,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CP6R4RCZ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CP6QCHML",
-              "type": "libex-import"
-            }
-          ],
-          "work": "silver-moon-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CP6R4RCZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Silver Moon (Dramatized Adaptation)"
     },
     "silver-moon-silver-moon-book-1": {
       "added_at": "2026-08-01",

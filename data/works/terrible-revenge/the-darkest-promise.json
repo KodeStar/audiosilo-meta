@@ -4890,6 +4890,72 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bradley-smith-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1648792022",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3460632,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3670099,
+              "start_ms": 3460632,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3724225,
+              "start_ms": 7130731,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4422588,
+              "start_ms": 10854956,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4120403,
+              "start_ms": 15277544,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81jhSqxLVjL.jpg",
+          "id": "bradley-smith-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bradley-smith",
+            "full-cast",
+            "gregory-linington",
+            "jonathan-lee-taylor",
+            "ken-jackson",
+            "nora-achrati",
+            "robbie-gay",
+            "scott-mccormick",
+            "terence-aselford",
+            "thomas-keegan",
+            "tia-shearer",
+            "tim-getman"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020-11-11",
+          "runtime_min": 323,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648792022",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-darkest-winter"
+        },
         "cody-roberts-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5105,6 +5171,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "1515949567",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1648792022",
           "type": "libex-import"
         }
       ],
@@ -5517,97 +5588,6 @@
         }
       ],
       "title": "The Darkest Winter: An Ending World Novel"
-    },
-    "the-darkest-winter-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "the-darkest-winter-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bradley-smith-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1648792022",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3460632,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3670099,
-              "start_ms": 3460632,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3724225,
-              "start_ms": 7130731,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4422588,
-              "start_ms": 10854956,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4120403,
-              "start_ms": 15277544,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81jhSqxLVjL.jpg",
-          "id": "bradley-smith-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bradley-smith",
-            "full-cast",
-            "gregory-linington",
-            "jonathan-lee-taylor",
-            "ken-jackson",
-            "nora-achrati",
-            "robbie-gay",
-            "scott-mccormick",
-            "terence-aselford",
-            "thomas-keegan",
-            "tia-shearer",
-            "tim-getman"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020-11-11",
-          "runtime_min": 323,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648792022",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-darkest-winter-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1648792022",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Darkest Winter [Dramatized Adaptation]"
     },
     "the-darkest-witch": {
       "added_at": "2026-08-01",

@@ -6143,12 +6143,144 @@
         "action-adventure",
         "epic-fantasy",
         "fantasy",
+        "paranormal-romance",
         "romance"
       ],
       "id": "onyx-storm",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gabriel-michael-2025": {
+          "abridged": false,
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B0DWZBBV2W",
+              "region": "us"
+            },
+            {
+              "asin": "B0DWZDJXP9",
+              "region": "de"
+            },
+            {
+              "asin": "B0F6G83NST",
+              "region": "us"
+            },
+            {
+              "asin": "B0F6GT9NJ4",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 35924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3933434,
+              "start_ms": 35924,
+              "title": "Track 1"
+            },
+            {
+              "length_ms": 3968081,
+              "start_ms": 3969358,
+              "title": "Track 2"
+            },
+            {
+              "length_ms": 3871579,
+              "start_ms": 7937439,
+              "title": "Track 3"
+            },
+            {
+              "length_ms": 4150125,
+              "start_ms": 11809018,
+              "title": "Track 4"
+            },
+            {
+              "length_ms": 3805680,
+              "start_ms": 15959143,
+              "title": "Track 5"
+            },
+            {
+              "length_ms": 3881192,
+              "start_ms": 19764823,
+              "title": "Track 6"
+            },
+            {
+              "length_ms": 3923916,
+              "start_ms": 23646015,
+              "title": "Track 7"
+            },
+            {
+              "length_ms": 3532010,
+              "start_ms": 27569931,
+              "title": "Track 8"
+            },
+            {
+              "length_ms": 3307775,
+              "start_ms": 31101941,
+              "title": "Track 9"
+            },
+            {
+              "length_ms": 2565500,
+              "start_ms": 34409716,
+              "title": "Track 10"
+            },
+            {
+              "length_ms": 112735,
+              "start_ms": 36975216,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91+9jDH4SAL.jpg",
+          "id": "gabriel-michael-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gabriel-michael",
+            "khaya-fraites",
+            "klai-rivera",
+            "lamont-ridgell",
+            "laura-c-harris",
+            "megan-poppy",
+            "rayner-gabriel",
+            "robb-moreira",
+            "taylor-coan",
+            "torian-brackett",
+            "troy-allan",
+            "danny-gavigan",
+            "full-cast",
+            "jessica-schly",
+            "su-ling-chan"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2025-05-07",
+          "runtime_min": 617,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DWZBBV2W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0DWZDJXP9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F6G83NST",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F6GT9NJ4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "onyx-storm"
+        },
         "jasmin-walker-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6584,158 +6716,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CZFKLZ9M",
           "type": "libex-import"
-        }
-      ],
-      "title": "Onyx Storm"
-    },
-    "onyx-storm-dramatized-adaptation": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "rebecca-yarros"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal-romance",
-        "romance"
-      ],
-      "id": "onyx-storm-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gabriel-michael-2025": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B0DWZBBV2W",
-              "region": "us"
-            },
-            {
-              "asin": "B0DWZDJXP9",
-              "region": "de"
-            },
-            {
-              "asin": "B0F6G83NST",
-              "region": "us"
-            },
-            {
-              "asin": "B0F6GT9NJ4",
-              "region": "de"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 35924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3933434,
-              "start_ms": 35924,
-              "title": "Track 1"
-            },
-            {
-              "length_ms": 3968081,
-              "start_ms": 3969358,
-              "title": "Track 2"
-            },
-            {
-              "length_ms": 3871579,
-              "start_ms": 7937439,
-              "title": "Track 3"
-            },
-            {
-              "length_ms": 4150125,
-              "start_ms": 11809018,
-              "title": "Track 4"
-            },
-            {
-              "length_ms": 3805680,
-              "start_ms": 15959143,
-              "title": "Track 5"
-            },
-            {
-              "length_ms": 3881192,
-              "start_ms": 19764823,
-              "title": "Track 6"
-            },
-            {
-              "length_ms": 3923916,
-              "start_ms": 23646015,
-              "title": "Track 7"
-            },
-            {
-              "length_ms": 3532010,
-              "start_ms": 27569931,
-              "title": "Track 8"
-            },
-            {
-              "length_ms": 3307775,
-              "start_ms": 31101941,
-              "title": "Track 9"
-            },
-            {
-              "length_ms": 2565500,
-              "start_ms": 34409716,
-              "title": "Track 10"
-            },
-            {
-              "length_ms": 112735,
-              "start_ms": 36975216,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+9jDH4SAL.jpg",
-          "id": "gabriel-michael-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gabriel-michael",
-            "khaya-fraites",
-            "klai-rivera",
-            "lamont-ridgell",
-            "laura-c-harris",
-            "megan-poppy",
-            "rayner-gabriel",
-            "robb-moreira",
-            "taylor-coan",
-            "torian-brackett",
-            "troy-allan",
-            "danny-gavigan",
-            "full-cast",
-            "jessica-schly",
-            "su-ling-chan"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2025-05-07",
-          "runtime_min": 617,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DWZBBV2W",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0DWZDJXP9",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F6G83NST",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F6GT9NJ4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "onyx-storm-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B0DWZBBV2W",
@@ -6747,7 +6728,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Onyx Storm [Dramatized Adaptation]"
+      "title": "Onyx Storm"
     },
     "onyx-storm-flammengekusst": {
       "added_at": "2026-08-02",

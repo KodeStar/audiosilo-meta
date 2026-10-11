@@ -16530,12 +16530,127 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "paranormal-romance",
+        "romance"
       ],
       "id": "fourth-wing",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-cui-cui-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CKS42KQH",
+              "region": "us"
+            },
+            {
+              "asin": "B0CKS423RQ",
+              "region": "de"
+            },
+            {
+              "asin": "B0CKS4PZSN",
+              "region": "it"
+            },
+            {
+              "asin": "B0CKS6G1FH",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36710,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4248184,
+              "start_ms": 36710,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4044637,
+              "start_ms": 4284894,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 4211728,
+              "start_ms": 8329531,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4012710,
+              "start_ms": 12541259,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 4023507,
+              "start_ms": 16553969,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3953615,
+              "start_ms": 20577476,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 3734217,
+              "start_ms": 24531091,
+              "title": "Part 7"
+            },
+            {
+              "length_ms": 85371,
+              "start_ms": 28265308,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1b01NnIXHL.jpg",
+          "id": "david-cui-cui-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-cui-cui",
+            "full-cast",
+            "gabriel-michael",
+            "jessica-lauren-ball",
+            "khaya-fraites",
+            "lamont-ridgell",
+            "laura-c-harris",
+            "robb-moreira",
+            "scott-mccormick",
+            "taylor-coan",
+            "torian-brackett",
+            "troy-allan"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-12-27",
+          "runtime_min": 472,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CKS42KQH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CKS423RQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CKS4PZSN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CKS6G1FH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fourth-wing"
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -16983,147 +17098,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0BVD25SYT",
           "type": "libex-import"
-        }
-      ],
-      "title": "Fourth Wing"
-    },
-    "fourth-wing-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rebecca-yarros"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal-romance",
-        "romance"
-      ],
-      "id": "fourth-wing-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-cui-cui-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CKS42KQH",
-              "region": "us"
-            },
-            {
-              "asin": "B0CKS423RQ",
-              "region": "de"
-            },
-            {
-              "asin": "B0CKS4PZSN",
-              "region": "it"
-            },
-            {
-              "asin": "B0CKS6G1FH",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36710,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4248184,
-              "start_ms": 36710,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4044637,
-              "start_ms": 4284894,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 4211728,
-              "start_ms": 8329531,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4012710,
-              "start_ms": 12541259,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 4023507,
-              "start_ms": 16553969,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3953615,
-              "start_ms": 20577476,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 3734217,
-              "start_ms": 24531091,
-              "title": "Part 7"
-            },
-            {
-              "length_ms": 85371,
-              "start_ms": 28265308,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1b01NnIXHL.jpg",
-          "id": "david-cui-cui-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-cui-cui",
-            "full-cast",
-            "gabriel-michael",
-            "jessica-lauren-ball",
-            "khaya-fraites",
-            "lamont-ridgell",
-            "laura-c-harris",
-            "robb-moreira",
-            "scott-mccormick",
-            "taylor-coan",
-            "torian-brackett",
-            "troy-allan"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-12-27",
-          "runtime_min": 472,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CKS42KQH",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CKS423RQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CKS4PZSN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CKS6G1FH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fourth-wing-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CKS42KQH",
           "type": "libex-import"
         }
       ],
-      "title": "Fourth Wing [Dramatized Adaptation]"
+      "title": "Fourth Wing"
     },
     "fourth-wing-flammengekusst": {
       "added_at": "2026-08-02",

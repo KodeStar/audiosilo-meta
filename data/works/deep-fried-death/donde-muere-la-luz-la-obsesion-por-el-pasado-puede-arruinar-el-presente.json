@@ -15144,9 +15144,12 @@
         "michael-anderle"
       ],
       "genres": [
+        "fantasy",
         "horror",
+        "paranormal",
         "science",
-        "science-fiction"
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "dont-cross-this-line",
       "language": "en",
@@ -15340,31 +15343,7 @@
             }
           ],
           "work": "dont-cross-this-line"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07933159X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Don't Cross This Line"
-    },
-    "dont-cross-this-line-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "dont-cross-this-line-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -15453,10 +15432,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "dont-cross-this-line-dramatized-adaptation"
+          "work": "dont-cross-this-line"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07933159X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CP4FGCPT",
@@ -15468,7 +15452,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Don't Cross This Line (Dramatized Adaptation)"
+      "title": "Don't Cross This Line"
     },
     "dont-cry": {
       "added_at": "2026-07-29",

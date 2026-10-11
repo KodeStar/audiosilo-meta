@@ -5473,6 +5473,81 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "andy-clemence-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1648800076",
+              "region": "us"
+            },
+            {
+              "asin": "1648800076",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3934714,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4164080,
+              "start_ms": 3934714,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4164382,
+              "start_ms": 8098794,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3527273,
+              "start_ms": 12263176,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4267339,
+              "start_ms": 15790449,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MsJ+YIt8L.jpg",
+          "id": "andy-clemence-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andy-clemence",
+            "bradley-smith",
+            "casie-platt",
+            "eric-messner",
+            "full-cast",
+            "james-lewis",
+            "jonathan-feuer",
+            "maboud-ebrahimzadeh",
+            "mort-shelby",
+            "scott-graham",
+            "thomas-keegan",
+            "thomas-penny"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020-11-14",
+          "runtime_min": 334,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648800076",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1648800076",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-texas-hill-country-christmas"
+        },
         "jack-garrett-2015": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -5738,110 +5813,14 @@
           "imported_at": "2026-07-30",
           "ref": "B01865AKO6",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Texas Hill Country Christmas"
-    },
-    "a-texas-hill-country-christmas-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "a-texas-hill-country-christmas-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andy-clemence-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1648800076",
-              "region": "us"
-            },
-            {
-              "asin": "1648800076",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3934714,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4164080,
-              "start_ms": 3934714,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4164382,
-              "start_ms": 8098794,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3527273,
-              "start_ms": 12263176,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4267339,
-              "start_ms": 15790449,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91MsJ+YIt8L.jpg",
-          "id": "andy-clemence-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andy-clemence",
-            "bradley-smith",
-            "casie-platt",
-            "eric-messner",
-            "full-cast",
-            "james-lewis",
-            "jonathan-feuer",
-            "maboud-ebrahimzadeh",
-            "mort-shelby",
-            "scott-graham",
-            "thomas-keegan",
-            "thomas-penny"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020-11-14",
-          "runtime_min": 334,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648800076",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1648800076",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-texas-hill-country-christmas-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1648800076",
           "type": "libex-import"
         }
       ],
-      "title": "A Texas Hill Country Christmas [Dramatized Adaptation]"
+      "title": "A Texas Hill Country Christmas"
     },
     "a-texas-sky": {
       "added_at": "2026-07-29",

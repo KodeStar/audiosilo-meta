@@ -9096,7 +9096,8 @@
         "paranormal",
         "science-fiction",
         "space-opera",
-        "thriller-suspense"
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "forever-defend",
       "language": "en",
@@ -9295,34 +9296,7 @@
             }
           ],
           "work": "forever-defend"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07D1CSPS1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Forever Defend"
-    },
-    "forever-defend-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "space-opera",
-        "urban-fantasy"
-      ],
-      "id": "forever-defend-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -9391,10 +9365,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "forever-defend-dramatized-adaptation"
+          "work": "forever-defend"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07D1CSPS1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D6SCN4H4",
@@ -9406,7 +9385,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Forever Defend (Dramatized Adaptation)"
+      "title": "Forever Defend"
     },
     "forever-desired": {
       "added_at": "2026-08-01",

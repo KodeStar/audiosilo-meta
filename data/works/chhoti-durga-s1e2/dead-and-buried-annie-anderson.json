@@ -8830,7 +8830,8 @@
     "dead-before-sundown": {
       "added_at": "2026-07-29",
       "authors": [
-        "william-w-johnstone"
+        "william-w-johnstone",
+        "j-a-johnstone"
       ],
       "genres": [
         "historical-fiction",
@@ -8842,6 +8843,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648795188",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3669054,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3673466,
+              "start_ms": 3669054,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3675904,
+              "start_ms": 7342520,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3980457,
+              "start_ms": 11018424,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3590709,
+              "start_ms": 14998881,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ap2Mia5bL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 310,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648795188",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648795188",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dead-before-sundown"
+        },
         "george-guidall-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9043,88 +9104,7 @@
           "imported_at": "2026-07-29",
           "ref": "B007L7741I",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dead Before Sundown"
-    },
-    "dead-before-sundown-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "dead-before-sundown-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648795188",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3669054,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3673466,
-              "start_ms": 3669054,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3675904,
-              "start_ms": 7342520,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3980457,
-              "start_ms": 11018424,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3590709,
-              "start_ms": 14998881,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ap2Mia5bL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 310,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648795188",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648795188",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dead-before-sundown-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648795188",
@@ -9136,7 +9116,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Dead Before Sundown [Dramatized Adaptation]"
+      "title": "Dead Before Sundown"
     },
     "dead-before-tea-time": {
       "added_at": "2026-10-03",

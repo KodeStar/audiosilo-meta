@@ -9372,12 +9372,74 @@
         "william-w-johnstone"
       ],
       "genres": [
+        "action-adventure",
+        "historical-fiction",
         "westerns"
       ],
       "id": "ambush-of-the-mountain-man",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648806279",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3530199,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3345345,
+              "start_ms": 3530199,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3080916,
+              "start_ms": 6875544,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3479463,
+              "start_ms": 9956460,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3900626,
+              "start_ms": 13435923,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91a1xzCv5FL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 289,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648806279",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648806279",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ambush-of-the-mountain-man"
+        },
         "jack-garrett-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9473,86 +9535,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002UZLETE",
           "type": "libex-import"
-        }
-      ],
-      "title": "Ambush of the Mountain Man"
-    },
-    "ambush-of-the-mountain-man-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "ambush-of-the-mountain-man-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648806279",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3530199,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3345345,
-              "start_ms": 3530199,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3080916,
-              "start_ms": 6875544,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3479463,
-              "start_ms": 9956460,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3900626,
-              "start_ms": 13435923,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91a1xzCv5FL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 289,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648806279",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648806279",
-              "type": "libex-import"
-            }
-          ],
-          "work": "ambush-of-the-mountain-man-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648806279",
@@ -9564,7 +9547,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Ambush of the Mountain Man [Dramatized Adaptation]"
+      "title": "Ambush of the Mountain Man"
     },
     "ambush-of-tigers": {
       "added_at": "2026-08-02",

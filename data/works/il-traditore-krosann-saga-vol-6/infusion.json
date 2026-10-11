@@ -3047,12 +3047,74 @@
       "genres": [
         "action-adventure",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "science-fiction",
+        "steampunk"
       ],
       "id": "inherit-the-flame",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648813208",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3912910,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4313919,
+              "start_ms": 3912910,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3672166,
+              "start_ms": 8226829,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3853746,
+              "start_ms": 11898995,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4056269,
+              "start_ms": 15752741,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81AMwQKHO1L.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 330,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648813208",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648813208",
+              "type": "libex-import"
+            }
+          ],
+          "work": "inherit-the-flame"
+        },
         "jim-frangione-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3389,88 +3451,7 @@
           "imported_at": "2026-08-02",
           "ref": "B06Y4SG8XF",
           "type": "libex-import"
-        }
-      ],
-      "title": "Inherit the Flame"
-    },
-    "inherit-the-flame-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "megan-e-okeefe"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "science-fiction",
-        "steampunk"
-      ],
-      "id": "inherit-the-flame-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648813208",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3912910,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4313919,
-              "start_ms": 3912910,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3672166,
-              "start_ms": 8226829,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3853746,
-              "start_ms": 11898995,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4056269,
-              "start_ms": 15752741,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81AMwQKHO1L.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 330,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648813208",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648813208",
-              "type": "libex-import"
-            }
-          ],
-          "work": "inherit-the-flame-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648813208",
@@ -3482,7 +3463,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Inherit the Flame [Dramatized Adaptation]"
+      "title": "Inherit the Flame"
     },
     "inherit-the-night": {
       "added_at": "2026-07-25T19:18:21+01:00",

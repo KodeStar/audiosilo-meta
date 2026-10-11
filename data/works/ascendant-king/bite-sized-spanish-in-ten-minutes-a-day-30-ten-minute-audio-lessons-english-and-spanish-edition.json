@@ -3013,10 +3013,12 @@
         "michael-anderle"
       ],
       "genres": [
+        "fantasy",
         "horror",
         "paranormal",
         "science-fiction",
-        "thriller-suspense"
+        "thriller-suspense",
+        "urban-fantasy"
       ],
       "id": "bite-this",
       "language": "en",
@@ -3190,34 +3192,7 @@
             }
           ],
           "work": "bite-this"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B06XYVH7SD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bite This"
-    },
-    "bite-this-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "bite-this-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -3276,10 +3251,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "bite-this-dramatized-adaptation"
+          "work": "bite-this"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B06XYVH7SD",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648817947",
@@ -3291,7 +3271,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Bite This [Dramatized Adaptation]"
+      "title": "Bite This"
     },
     "bite-twice-mm": {
       "added_at": "2026-08-02",

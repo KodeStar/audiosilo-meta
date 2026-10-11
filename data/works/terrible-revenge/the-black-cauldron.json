@@ -14703,6 +14703,7 @@
         "j-a-johnstone"
       ],
       "genres": [
+        "action-adventure",
         "historical-fiction",
         "westerns"
       ],
@@ -14973,32 +14974,7 @@
             }
           ],
           "work": "the-black-hills"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07L6N17MF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Black Hills"
-    },
-    "the-black-hills-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "the-black-hills-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -15057,10 +15033,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-black-hills-dramatized-adaptation"
+          "work": "the-black-hills"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07L6N17MF",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648815464",
@@ -15072,7 +15053,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Black Hills [Dramatized Adaptation]"
+      "title": "The Black Hills"
     },
     "the-black-history-of-the-white-house": {
       "added_at": "2026-07-29",
