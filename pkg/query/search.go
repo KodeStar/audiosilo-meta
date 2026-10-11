@@ -30,12 +30,26 @@ type personResult struct {
 // language (the strict majority of its members', read at build), so a list
 // filtered or badged by language can say which a series is in; it is omitted on
 // a tie and on any artifact older than languagesSchemaVersion.
+//
+// The rest of the LANGUAGES facts say WHAT a series is, which is what tells three
+// series all named "Harry Potter" apart on a results list: Ordering is the
+// reading order the record states, OrderingOf/OrderingOfName name the primary a
+// VARIANT ordering is a view of (the slug every other surface spells as
+// ordering_of, plus its name, so the list needs no second read), and
+// TranslationOf is the series this one translates, in the series detail's own
+// shape. All are additive and omitempty, read in batches over the page's ids
+// (seriesResultsByID), and absent on an artifact older than
+// languagesSchemaVersion.
 type seriesResult struct {
-	Kind     searchKind `json:"kind"`
-	ID       string     `json:"id"`
-	Name     string     `json:"name"`
-	Works    int        `json:"works"`
-	Language string     `json:"language,omitempty"`
+	Kind           searchKind          `json:"kind"`
+	ID             string              `json:"id"`
+	Name           string              `json:"name"`
+	Works          int                 `json:"works"`
+	Language       string              `json:"language,omitempty"`
+	Ordering       string              `json:"ordering,omitempty"`
+	OrderingOf     string              `json:"ordering_of,omitempty"`
+	OrderingOfName string              `json:"ordering_of_name,omitempty"`
+	TranslationOf  []SeriesTranslation `json:"translation_of,omitempty"`
 }
 
 // ftsQuery turns a raw user query into a safe FTS5 MATCH expression: every
@@ -513,6 +527,14 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 // resolve are always works, so prepending them on a people or series page would
 // put a work where the endpoint promises neither.
 //
+// The exact-SERIES-name ranking (exactseries.go) is their series twin, but a
+// ranking of the composed page rather than a probe: a query that IS a series'
+// name puts the series rows of that name - the primary ahead of same-named
+// translations and reading-order variants - where the page's first series row
+// was (rankSeriesRows). It reads only what results composed, so it costs no
+// query, moves only series rows, and is a no-op on the work and people scopes,
+// whose pages hold none.
+//
 // lang (already live - langFilterFor, which drops it for the people scope)
 // narrows every hit to the languages it names (langfilter.go), the boosts
 // included. Each boost probe applies the filter INSIDE its own bounded window
@@ -534,7 +556,11 @@ func (s *DB) search(ctx context.Context, kind searchKind, q string, limit int, l
 			return nil, err
 		}
 	}
-	return s.results(ctx, mergeHits(boosted, hits, limit))
+	out, err := s.results(ctx, mergeHits(boosted, hits, limit))
+	if err != nil {
+		return nil, err
+	}
+	return rankSeriesRows(out, q), nil
 }
 
 // ftsHits runs the search query for kind and materializes its rows in rank
@@ -642,7 +668,7 @@ func (s *DB) results(ctx context.Context, hits []searchHit) ([]any, error) {
 	if err != nil {
 		return nil, err
 	}
-	summaries, err := s.seriesSummariesByID(ctx, seriesIDs)
+	series, err := s.seriesResultsByID(ctx, seriesIDs)
 	if err != nil {
 		return nil, err
 	}
@@ -665,11 +691,9 @@ func (s *DB) results(ctx context.Context, hits []searchHit) ([]any, error) {
 			}
 			out = append(out, personResult{Kind: kindPerson, ID: h.id, Name: name})
 		case kindSeries:
-			sum, ok := summaries[h.id]
-			if !ok {
-				continue
+			if r, ok := series[h.id]; ok {
+				out = append(out, r)
 			}
-			out = append(out, seriesResult{Kind: kindSeries, ID: h.id, Name: sum.name, Works: sum.works, Language: sum.language})
 		}
 	}
 	return out, nil

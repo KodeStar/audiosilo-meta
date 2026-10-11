@@ -199,8 +199,10 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		// per-hit query here would be a whole page of sequential round-trips.
 		{"narrators by work", ids, narratorsByWorkSQL, nil},
 		{"names by person id", personIDs, namesByPersonIDSQL, nil},
-		{"summaries by series id", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, false) }, nil},
-		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true) }, nil},
+		{"summaries by series id", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, false, false) }, nil},
+		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true, false) }, nil},
+		{"summaries by series id, v7 with orderings", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true, true) }, nil},
+		{"what each series translates", seriesIDs, seriesTranslationOfByIDSQL, nil},
 		{"members of the probed series", seriesIDs, seriesMembersSQL, nil},
 		// works/match.
 		{"works by the matched people", personIDs, worksByPeopleSQL, []any{matchCandidatesMax}},
