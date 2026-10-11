@@ -1016,18 +1016,18 @@ FIRST among the page's series rows, ranked by TIER then id - the PRIMARY (no
 reading-order variants - and the partial matches follow in bm25 order. The real
 case: "harry potter" held three series all named "Harry Potter" (the English one
 and its German and Spanish editions), and identical names are identical FTS rows,
-so bm25 ties them and the order is whatever the tie falls to (today the edition
-slugs' suffix happens to sort them after the original - an accident, not a rule).
+so bm25 ties them and the order is whatever the tie falls to.
 It is a RANKING OF THE COMPOSED PAGE, not a probe: `rankSeriesRows` runs on what
 `DB.results` built - every series row already carries its name, `ordering_of` and
 `translation_of` - and moves the tiered block to the page's first series slot,
 every other row keeping its place, so it costs NO query (nameKey over at most
-`limit` names), needs no cost gate, and is a no-op on the work and people scopes.
-A first version ran its own title-filtered FTS probe to also pull an exact name the
-page lacked; on the 282k-work artifact that cost every common-word keystroke a
+`limit` names) and needs no cost gate; `DB.search` runs it on the combined and
+series scopes only, over `searchPage`'s unranked page. A title-filtered FTS probe
+that also pulled an exact name the page lacked was measured on the 282k-work
+artifact: it cost every common-word keystroke a
 second posting-list walk ("book" 66 -> 96ms combined, 43 -> 78ms on
 series/search) for a case bm25 does not produce (an exact name is the shortest
-series row holding every query word), and the two versions agreed on every page
+series row holding every query word), and probe and page agreed on every page
 for the 638 real series names tried, on both surfaces; the page ranking measured
 within noise of the base on every query timed. `?lang=` needs nothing: the page is
 filtered at the source, so under `lang=de` the English primary is not on it and
@@ -1495,7 +1495,8 @@ more primary-key join spelled only when `hasOrderings`), all from
 `seriesSummariesByIDSQL(ph, languages, orderings)`'s one row, and `translation_of`
 in the series detail's `SeriesTranslation` shape, one batched read of the
 translations primary key per page (`seriesTranslationOfByIDSQL`, no query while
-`hasTranslations` is false), composed by `seriesResultsByID` - and a coverage row
+`hasSeriesTranslations` - a load-time EXISTS over the series kind prefix,
+`anySeriesTranslationSQL` - is false), composed by `seriesResultsByID` - and a coverage row
 the work's `language`. Measured over the 281k-work
 artifact (median ms, base / head no-lang / `lang=en` / `lang=de`): `search?q=the`
 196 / 181 / 336 / 223, `works/search?q=the` 327 / 318 / 333 / 220, `search?q=book`

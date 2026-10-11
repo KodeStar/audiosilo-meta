@@ -10,8 +10,9 @@
 // Pure and DOM-free, so the wording is pinned by series-relation.test.ts rather
 // than by eye.
 
-import type { SeriesOrdering, SeriesTranslation } from './api'
+import type { SearchResult, SeriesOrdering } from './api'
 import { joinNames } from './languages'
+import { workCount } from './person-credits'
 
 /** How a reading order reads as the head of a phrase ("Chronological order of
     Harry Potter"). Keyed by the ordering enum, so a value the schema gains is a
@@ -22,15 +23,15 @@ export const ORDERING_LABELS: Record<SeriesOrdering, string> = {
   recommended: 'Recommended order',
 }
 
+type SeriesHit = Extract<SearchResult, { kind: 'series' }>
+
 /** The facts a series row is described from - a subset of a series search hit,
-    every one optional because an older metaserve sends none of them. */
-export interface SeriesFacts {
-  works?: number
-  ordering?: string
-  ordering_of?: string
-  ordering_of_name?: string
-  translation_of?: SeriesTranslation[]
-}
+    every one optional because an older metaserve sends none of them. `ordering`
+    is widened to any string: a newer metaserve may send a value this build has
+    no words for, and orderingLabel must survive it. */
+export type SeriesFacts = Partial<
+  Pick<SeriesHit, 'works' | 'ordering_of' | 'ordering_of_name' | 'translation_of'>
+> & { ordering?: string }
 
 function orderingLabel(ordering: string | undefined): string {
   return ordering && Object.hasOwn(ORDERING_LABELS, ordering)
@@ -65,6 +66,6 @@ export function seriesSubline(s: SeriesFacts): string | null {
   const parts: string[] = []
   const relation = seriesRelation(s)
   if (relation) parts.push(relation)
-  if (s.works != null) parts.push(`${s.works} ${s.works === 1 ? 'work' : 'works'}`)
+  if (s.works != null) parts.push(workCount(s.works))
   return parts.length > 0 ? parts.join(' · ') : null
 }

@@ -11,11 +11,8 @@ import "sort"
 // (harry-potter-german-edition and harry-potter-spanish-edition, each stating
 // translation_of harry-potter). Identical names are identical FTS rows, so bm25
 // gives them identical scores and the order among them is whatever the tie falls
-// to - nothing in a relevance score can say "the original first". On today's
-// catalogue the tie happens to fall the right way (the edition slugs carry a
-// suffix, so they sort after the original and their rows were inserted after
-// it), but that is an accident of slug spelling, not a rule; this file makes it
-// one. Unlike the two work boosts (exacttitle.go, seriespos.go) it is ranking
+// to - nothing in a relevance score can say "the original first", so this file
+// says it. Unlike the two work boosts (exacttitle.go, seriespos.go) it is ranking
 // alone, and query-side for the same reason: a relevance score cannot express an
 // equality, and nothing about the artifact changes.
 //
@@ -38,16 +35,15 @@ import "sort"
 // WHY THE PAGE AND NOT A PROBE. The rule reads only rows the page already
 // composed: seriesResultsByID has read every series row's name, ordering_of and
 // translation_of in its batches, so the ranking costs no query at all - nameKey
-// over at most limit names. A first version ran its own FTS probe (the
-// exact-title probe's shape, filtered to series rows) so it could also pull an
-// exact name the page did not hold; measured on the 282k-work artifact that
-// probe cost every keystroke of a common word a whole extra walk of its posting
-// list ("book" 66 -> 96ms on the combined page, 43 -> 78ms on series/search,
-// "love" 32 -> 43ms) to answer a case bm25 does not produce: an exact name is the
-// shortest series row holding every query word, so it ranks at the top of the
-// series rows and is on the page whenever the page holds any of them. Over 400
-// random series names and the 238 franchises carrying a translation or an
-// ordering variant the two versions agreed on every page.
+// over at most limit names. A probe of its own (the exact-title probe's shape,
+// filtered to series rows) could also pull an exact name the page did not hold;
+// measured on the 282k-work artifact it cost every keystroke of a common word a
+// whole extra walk of its posting list ("book" 66 -> 96ms on the combined page,
+// 43 -> 78ms on series/search, "love" 32 -> 43ms) to answer a case bm25 does not
+// produce: an exact name is the shortest series row holding every query word, so
+// it ranks at the top of the series rows and is on the page whenever the page
+// holds any of them. Over 400 random series names and the 238 franchises carrying
+// a translation or an ordering variant, probe and page agreed on every page.
 //
 // WITH ?lang= there is nothing more to do: the page is already filtered at the
 // source, so under lang=de the English primary is not on it and the German
@@ -111,6 +107,7 @@ func rankSeriesRows(page []any, q string) []any {
 	}
 	first := -1
 	var exact []seriesResult
+	var at []int // the page index of each exact row, ascending
 	for i, r := range page {
 		sr, ok := r.(seriesResult)
 		if !ok {
@@ -121,23 +118,21 @@ func rankSeriesRows(page []any, q string) []any {
 		}
 		if nameKey(sr.Name) == want {
 			exact = append(exact, sr)
+			at = append(at, i)
 		}
 	}
 	if len(exact) == 0 {
 		return page
 	}
 	rankExactSeries(exact)
-	isExact := make(map[string]bool, len(exact))
-	for _, r := range exact {
-		isExact[r.ID] = true
-	}
 	out := make([]any, 0, len(page))
 	out = append(out, page[:first]...)
 	for _, r := range exact {
 		out = append(out, r)
 	}
-	for _, r := range page[first:] {
-		if sr, ok := r.(seriesResult); ok && isExact[sr.ID] {
+	for i, r := range page[first:] {
+		if len(at) > 0 && at[0] == first+i {
+			at = at[1:]
 			continue
 		}
 		out = append(out, r)

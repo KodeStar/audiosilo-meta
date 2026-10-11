@@ -148,6 +148,8 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		// them: anyTranslationSQL, an EXISTS that stops at the first row whatever
 		// it walks, and seriesShapeSQL, whose "SCAN series" reads no row at all
 		// (LIMIT 0 - its whole job is to fail the prepare on a missing column).
+		// anySeriesTranslationSQL's EXISTS carries a predicate, so it is pinned
+		// positively instead (TestSeriesTranslationProbeIsIndexed).
 		{"series of a work", seriesOfSQL(false), []any{wok}},
 		{"series of a work, primary first", seriesOfSQL(true), []any{wok}},
 		{"translations of a work", workTranslationsSQL, []any{work}},
@@ -355,4 +357,24 @@ func TestReverseTranslationsUseTheTargetIndex(t *testing.T) {
 			t.Logf("plan -> %s", joined)
 		})
 	}
+}
+
+// TestSeriesTranslationProbeIsIndexed pins the load-time series-link probe
+// positively. Its EXISTS carries a predicate, so an unindexed form would read
+// every work link before the first series one; the guard above cannot take it,
+// because an EXISTS always plans as a SCAN CONSTANT ROW.
+func TestSeriesTranslationProbeIsIndexed(t *testing.T) {
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Languages()))
+	plan := queryPlan(t, snap, anySeriesTranslationSQL)
+	joined := strings.Join(plan, " | ")
+	found := false
+	for _, step := range plan {
+		if strings.HasPrefix(step, "SEARCH translations ") && strings.Contains(step, "(kind=?)") {
+			found = true
+		}
+	}
+	if !found {
+		t.Errorf("the probe does not seek the translations kind prefix: %s", joined)
+	}
+	t.Logf("plan -> %s", joined)
 }

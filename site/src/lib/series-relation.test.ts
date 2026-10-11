@@ -67,6 +67,7 @@ describe('seriesSubline', () => {
     )
     expect(seriesSubline({ works: 1 })).toBe('1 work')
     expect(seriesSubline({ works: 0 })).toBe('0 works')
+    expect(seriesSubline({ works: 1234 })).toBe('1,234 works')
     expect(seriesSubline({ translation_of: [original] })).toBe('Translation of Harry Potter')
     expect(seriesSubline({})).toBeNull()
   })

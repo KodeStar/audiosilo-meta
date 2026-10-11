@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"reflect"
 	"slices"
-	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
@@ -21,8 +20,11 @@ var hpRanked = []string{
 	"harry-potter-chronological", "harry-potter-full-cast",
 }
 
-// seriesRows returns the ids of the series rows of a search page, in page order.
-func seriesRows(t *testing.T, base, path string) []string {
+// seriesHitOptionalKeys are the omitempty languages fields of a series hit.
+var seriesHitOptionalKeys = []string{"language", "ordering", "ordering_of", "ordering_of_name", "translation_of"}
+
+// rowsOfKind returns the ids of a search page's rows of one kind, in page order.
+func rowsOfKind(t *testing.T, base, path string, kind searchKind) []string {
 	t.Helper()
 	code, body := artifacttest.GetJSON(t, base, path)
 	if code != http.StatusOK {
@@ -31,11 +33,17 @@ func seriesRows(t *testing.T, base, path string) []string {
 	var out []string
 	for _, r := range body["results"].([]any) {
 		m := r.(map[string]any)
-		if m["kind"] == "series" {
+		if m["kind"] == string(kind) {
 			out = append(out, m["id"].(string))
 		}
 	}
 	return out
+}
+
+// seriesRows returns the ids of the series rows of a search page, in page order.
+func seriesRows(t *testing.T, base, path string) []string {
+	t.Helper()
+	return rowsOfKind(t, base, path, kindSeries)
 }
 
 // TestExactSeriesNameRanksThePrimaryFirst is the reported bug: three series all
@@ -82,13 +90,7 @@ func TestExactSeriesNameLeavesWorksAlone(t *testing.T) {
 			want = append(want, h.id)
 		}
 	}
-	var got []string
-	for _, id := range pageIDs(t, ts.URL, "/api/v1/search?q=harry+potter") {
-		if !strings.HasPrefix(id, "harry-potter") && id != hpPrimary {
-			got = append(got, id)
-		}
-	}
-	if !slices.Equal(got, want) {
+	if got := rowsOfKind(t, ts.URL, "/api/v1/search?q=harry+potter", kindWork); !slices.Equal(got, want) {
 		t.Errorf("work rows = %v, want the plain page's %v", got, want)
 	}
 }
@@ -115,7 +117,7 @@ func TestExactSeriesNameObeysTheLanguageFilter(t *testing.T) {
 }
 
 // TestExactSeriesNameOnlyFiresOnAWholeName: a query that names no series outright
-// moves nothing, so its page is the plain merged page byte for byte.
+// moves nothing, so its page is the unranked page byte for byte.
 func TestExactSeriesNameOnlyFiresOnAWholeName(t *testing.T) {
 	db := openTestDB(t, artifacttest.Build(t, artifacttest.SameNamedSeries()))
 	ctx := context.Background()
@@ -125,15 +127,7 @@ func TestExactSeriesNameOnlyFiresOnAWholeName(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			hits, err := db.ftsHits(ctx, kind, ftsQuery(q), 20, nil)
-			if err != nil {
-				t.Fatal(err)
-			}
-			boosted := db.boostedWorks(ctx, q, nil)
-			if kind == kindSeries {
-				boosted = nil
-			}
-			want, err := db.results(ctx, mergeHits(boosted, hits, 20))
+			want, err := db.searchPage(ctx, kind, q, 20, nil)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -166,14 +160,13 @@ func TestSeriesResultSaysWhatASeriesIs(t *testing.T) {
 		},
 		"harry-potter-full-cast": {"language": "en"},
 	}
-	optional := []string{"language", "ordering", "ordering_of", "ordering_of_name", "translation_of"}
 	for id, want := range cases {
 		got, ok := byID[id]
 		if !ok {
 			t.Errorf("no hit for %s", id)
 			continue
 		}
-		for _, key := range optional {
+		for _, key := range seriesHitOptionalKeys {
 			if !reflect.DeepEqual(got[key], want[key]) {
 				t.Errorf("%s.%s = %v, want %v", id, key, got[key], want[key])
 			}
@@ -199,7 +192,7 @@ func TestExactSeriesNameOnAV6Artifact(t *testing.T) {
 		if m["kind"] != "series" {
 			continue
 		}
-		for _, key := range []string{"language", "ordering", "ordering_of", "ordering_of_name", "translation_of"} {
+		for _, key := range seriesHitOptionalKeys {
 			if _, has := m[key]; has {
 				t.Errorf("v6 series hit %s carries %s: %v", m["id"], key, m[key])
 			}

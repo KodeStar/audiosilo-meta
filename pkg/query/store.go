@@ -69,6 +69,11 @@ type DB struct {
 	// "no orderings at all" (hasOrderings).
 	hasTranslations   bool
 	orderingPrimaries map[string]bool
+	// hasSeriesTranslations narrows hasTranslations to the series family, for
+	// the one read that asks of series alone on every search page holding a
+	// series row (seriesTranslationOfByID), so an artifact holding work links
+	// alone still pays no query there.
+	hasSeriesTranslations bool
 
 	// log is the injected logger (SetLogger), for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing).
@@ -321,6 +326,11 @@ func (s *DB) loadStats() error {
 		if err := s.db.QueryRow(anyTranslationSQL).Scan(&s.hasTranslations); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the translations table: %w",
 				s.path, s.schemaVersion, err)
+		}
+		if s.hasTranslations {
+			if err := s.db.QueryRow(anySeriesTranslationSQL).Scan(&s.hasSeriesTranslations); err != nil {
+				return fmt.Errorf("%s: series translations: %w", s.path, err)
+			}
 		}
 		if err := s.loadOrderingPrimaries(); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the series ordering columns: %w",
@@ -580,10 +590,12 @@ func namesByPersonIDSQL(ph string) string {
 // chronological order of Harry Potter" without a second read; where it carries
 // none the join is not even spelled - the column is NULL for every series - so an
 // empty layer costs a search page exactly what it did before the layer existed.
+// orderings implies languages: hasOrderings is only ever settled on a
+// languages-era artifact.
 func seriesSummariesByIDSQL(ph string, languages, orderings bool) string {
 	cols, join := "NULL, NULL, NULL, NULL", ""
 	switch {
-	case languages && orderings:
+	case orderings:
 		cols, join = "s.language, s.ordering, s.ordering_of, p.name", " LEFT JOIN series p ON p.id = s.ordering_of"
 	case languages:
 		cols = "s.language, s.ordering, NULL, NULL"
@@ -597,11 +609,9 @@ func seriesSummariesByIDSQL(ph string, languages, orderings bool) string {
 // page in one query. It walks the table's primary key (kind, id, target) by its
 // (kind, id) prefix and joins the original for its name and derived language, so
 // a row naming a series the artifact does not carry is dropped exactly as the
-// per-record read drops it (seriesTranslationsSQL's first arm, whose shape this
-// is, COALESCE included).
+// per-record read drops it: both are seriesOriginalsSQL.
 func seriesTranslationOfByIDSQL(ph string) string {
-	return `SELECT t.id, t.target, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.target ` +
-		`WHERE t.kind = 'series' AND t.id IN (` + ph + `) ORDER BY t.id, t.target`
+	return `SELECT t.id, ` + seriesOriginalsSQL + `t.id IN (` + ph + `) ORDER BY t.id, t.target`
 }
 
 // cardsByID builds the work cards for a whole id set in a FIXED number of
@@ -889,12 +899,12 @@ func (s *DB) seriesResultsByID(ctx context.Context, ids []string) (map[string]se
 
 // seriesTranslationOfByID returns, for each series id that translates another,
 // the series it translates, in target id order - one query per chunk over a whole
-// search page. It answers without a query while the artifact holds no translation
-// at all (DB.hasTranslations, false on every artifact older than
-// languagesSchemaVersion), so an empty layer costs a search page nothing.
+// search page. It answers without a query while the artifact holds no series
+// translation at all (DB.hasSeriesTranslations, false on every artifact older
+// than languagesSchemaVersion), so an empty layer costs a search page nothing.
 func (s *DB) seriesTranslationOfByID(ctx context.Context, ids []string) (map[string][]SeriesTranslation, error) {
 	out := map[string][]SeriesTranslation{}
-	if !s.hasTranslations || len(ids) == 0 {
+	if !s.hasSeriesTranslations {
 		return out, nil
 	}
 	err := eachChunk(ids, func(ph string, args []any) error {
