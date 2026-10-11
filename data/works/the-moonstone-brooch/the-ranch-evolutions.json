@@ -2841,6 +2841,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648802184",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3833010,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3666523,
+              "start_ms": 3833010,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3698567,
+              "start_ms": 7499533,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3475005,
+              "start_ms": 11198100,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4217323,
+              "start_ms": 14673105,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cWTZt8cAL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 315,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648802184",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648802184",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-range-detectives"
+        },
         "john-mclain-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3117,88 +3177,7 @@
           "imported_at": "2026-07-29",
           "ref": "109408400X",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Range Detectives"
-    },
-    "the-range-detectives-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "mystery",
-        "westerns"
-      ],
-      "id": "the-range-detectives-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648802184",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3833010,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3666523,
-              "start_ms": 3833010,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3698567,
-              "start_ms": 7499533,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3475005,
-              "start_ms": 11198100,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4217323,
-              "start_ms": 14673105,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91cWTZt8cAL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 315,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648802184",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648802184",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-range-detectives-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648802184",
@@ -3210,7 +3189,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Range Detectives [Dramatized Adaptation]"
+      "title": "The Range Detectives"
     },
     "the-ranger": {
       "added_at": "2026-07-29",

@@ -3044,7 +3044,8 @@
     "partner-in-crime-j-a-jance": {
       "added_at": "2026-07-29",
       "authors": [
-        "j-a-jance"
+        "j-a-jance",
+        "stephanie-brush"
       ],
       "genres": [
         "hard-boiled",
@@ -3120,31 +3121,7 @@
             }
           ],
           "work": "partner-in-crime-j-a-jance"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V1BOXS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Partner in Crime"
-    },
-    "partner-in-crime-j-a-jance-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "j-a-jance",
-        "stephanie-brush"
-      ],
-      "genres": [
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "partner-in-crime-j-a-jance-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "gene-engene-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3292,10 +3269,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "partner-in-crime-j-a-jance-2"
+          "work": "partner-in-crime-j-a-jance"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1BOXS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B009067RY2",
