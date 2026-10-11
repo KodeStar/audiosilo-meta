@@ -11020,7 +11020,8 @@
     "wintersmith": {
       "added_at": "2026-07-17T09:27:30+00:00",
       "authors": [
-        "terry-pratchett"
+        "terry-pratchett",
+        "paul-kidby"
       ],
       "genres": [
         "action-adventure",
@@ -11042,6 +11043,10 @@
             {
               "asin": "B0C6R9JWN4",
               "region": "us"
+            },
+            {
+              "asin": "B09M8XRW7B",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -11148,6 +11153,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B0C6R9JWN4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09M8XRW7B",
               "type": "libex-import"
             }
           ],
@@ -11426,69 +11436,6 @@
             }
           ],
           "work": "wintersmith"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "0061373397",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0C6R9JWN4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Wintersmith"
-    },
-    "wintersmith-discworld-novel-35": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-pratchett",
-        "paul-kidby"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "wintersmith-discworld-novel-35",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bill-nighy-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09M8XRW7B",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91KeYFfZXxL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "indira-varma",
-            "peter-serafinowicz",
-            "steven-cree"
-          ],
-          "publisher": "RHCP Digital",
-          "release_date": "2023-06-15",
-          "runtime_min": 615,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09M8XRW7B",
-              "type": "libex-import"
-            }
-          ],
-          "work": "wintersmith-discworld-novel-35"
         },
         "tony-robinson-2007": {
           "abridged": true,
@@ -11556,17 +11503,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "wintersmith-discworld-novel-35"
+          "work": "wintersmith"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "0061373397",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C6R9JWN4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0032NAM9Q",
           "type": "libex-import"
         }
       ],
-      "title": "Wintersmith: (Discworld Novel 35)"
+      "title": "Wintersmith"
     },
     "wintersong": {
       "added_at": "2026-08-02",

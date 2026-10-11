@@ -17036,6 +17036,93 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/series/45175-harry-potter",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0D1CWTPYD",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F14RPXHR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F1553GZJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F14YFFHW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F14RHNSH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F14SH8SN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F1554Y8N",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0F14PB3DT",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "harry-potter-and-the-philosophers-stone"
+        },
+        {
+          "position": "2",
+          "work": "harry-potter-and-the-chamber-of-secrets"
+        },
+        {
+          "position": "7",
+          "work": "harry-potter-and-the-deathly-hallows"
+        },
+        {
+          "position": "4",
+          "work": "harry-potter-and-the-goblet-of-fire"
+        },
+        {
+          "position": "6",
+          "work": "harry-potter-and-the-half-blood-prince"
+        },
+        {
+          "position": "5",
+          "work": "harry-potter-and-the-order-of-the-phoenix"
+        },
+        {
+          "position": "3",
+          "work": "harry-potter-and-the-prisoner-of-azkaban"
+        }
+      ]
+    },
+    "harry-potter-extended-collection": {
+      "authors": [
+        "j-k-rowling"
+      ],
+      "id": "harry-potter-extended-collection",
+      "license": "CC0-1.0",
+      "name": "Harry Potter (Extended Collection)",
+      "ordering": "chronological",
+      "ordering_of": "harry-potter",
+      "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/series/45175-harry-potter",
+          "type": "community"
         }
       ],
       "works": [
@@ -17081,78 +17168,6 @@
         }
       ]
     },
-    "harry-potter-full-cast-editions": {
-      "id": "harry-potter-full-cast-editions",
-      "license": "CC0-1.0",
-      "name": "Harry Potter (Full-Cast Editions)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F14RPXHR",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F1553GZJ",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F14YFFHW",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F14RHNSH",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F14SH8SN",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F1554Y8N",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0F14PB3DT",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "harry-potter-and-the-sorcerers-stone"
-        },
-        {
-          "position": "2",
-          "work": "harry-potter-and-the-chamber-of-secrets"
-        },
-        {
-          "position": "3",
-          "work": "harry-potter-and-the-prisoner-of-azkaban"
-        },
-        {
-          "position": "4",
-          "work": "harry-potter-and-the-goblet-of-fire"
-        },
-        {
-          "position": "5",
-          "work": "harry-potter-and-the-order-of-the-phoenix"
-        },
-        {
-          "position": "6",
-          "work": "harry-potter-and-the-half-blood-prince"
-        },
-        {
-          "position": "7",
-          "work": "harry-potter-and-the-deathly-hallows"
-        }
-      ]
-    },
     "harry-potter-german-edition": {
       "id": "harry-potter-german-edition",
       "license": "CC0-1.0",
@@ -17161,6 +17176,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B017WQLQRK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01LZF0K10",
           "type": "libex-import"
         }
       ],
@@ -17198,100 +17218,24 @@
         }
       ]
     },
-    "harry-potter-gesprochen-von-rufus-beck": {
-      "id": "harry-potter-gesprochen-von-rufus-beck",
+    "harry-potter-spanish-edition": {
+      "id": "harry-potter-spanish-edition",
       "license": "CC0-1.0",
-      "name": "Harry Potter - Gesprochen von Rufus Beck",
+      "name": "Harry Potter",
       "sources": [
         {
           "imported_at": "2026-08-02",
-          "ref": "B01LZF0K10",
+          "ref": "1781105022",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "harry-potter-und-der-stein-der-weisen-gesprochen-von-rufus-beck"
         },
-        {
-          "position": "2",
-          "work": "harry-potter-und-die-kammer-des-schreckens-gesprochen-von-rufus-beck"
-        },
-        {
-          "position": "3",
-          "work": "harry-potter-und-der-gefangene-von-askaban-gesprochen-von-rufus-beck"
-        },
-        {
-          "position": "4",
-          "work": "harry-potter-und-der-feuerkelch-gesprochen-von-rufus-beck"
-        },
-        {
-          "position": "5",
-          "work": "harry-potter-und-der-orden-des-phonix-gesprochen-von-rufus-beck"
-        },
-        {
-          "position": "6",
-          "work": "harry-potter-und-der-halbblutprinz-gesprochen-von-rufus-beck"
-        },
-        {
-          "position": "7",
-          "work": "harry-potter-und-die-heiligtumer-des-todes-gesprochen-von-rufus-beck"
-        }
-      ]
-    },
-    "harry-potter-narrated-by-stephen-fry": {
-      "id": "harry-potter-narrated-by-stephen-fry",
-      "license": "CC0-1.0",
-      "name": "Harry Potter (Narrated by Stephen Fry)",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0D1CWTPYD",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "7",
-          "work": "harry-potter-and-the-deathly-hallows"
-        },
-        {
-          "position": "6",
-          "work": "harry-potter-and-the-half-blood-prince"
-        },
-        {
-          "position": "5",
-          "work": "harry-potter-and-the-order-of-the-phoenix"
-        },
-        {
-          "position": "4",
-          "work": "harry-potter-and-the-goblet-of-fire"
-        },
-        {
-          "position": "3",
-          "work": "harry-potter-and-the-prisoner-of-azkaban"
-        },
-        {
-          "position": "2",
-          "work": "harry-potter-and-the-chamber-of-secrets"
-        },
-        {
-          "position": "1",
-          "work": "harry-potter-and-the-philosophers-stone"
-        }
-      ]
-    },
-    "harry-potter-spanish": {
-      "id": "harry-potter-spanish",
-      "license": "CC0-1.0",
-      "name": "Harry Potter [Spanish]",
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "1781105189",
           "type": "libex-import"
         }
+      ],
+      "translation_of": [
+        "harry-potter"
       ],
       "works": [
         {
@@ -17313,43 +17257,6 @@
         {
           "position": "5",
           "work": "harry-potter-y-la-orden-del-fenix"
-        }
-      ]
-    },
-    "harry-potter-spanish-edition": {
-      "id": "harry-potter-spanish-edition",
-      "license": "CC0-1.0",
-      "name": "Harry Potter",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1781105022",
-          "type": "libex-import"
-        }
-      ],
-      "translation_of": [
-        "harry-potter"
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "harry-potter-y-la-piedra-filosofal"
-        },
-        {
-          "position": "2",
-          "work": "harry-potter-y-la-camara-secreta-harry-potter-2"
-        },
-        {
-          "position": "3",
-          "work": "harry-potter-y-el-prisionero-de-azkaban-harry-potter-3"
-        },
-        {
-          "position": "4",
-          "work": "harry-potter-y-el-caliz-de-fuego-harry-potter-4"
-        },
-        {
-          "position": "5",
-          "work": "harry-potter-y-la-orden-del-fenix-harry-potter-5"
         },
         {
           "position": "6",
