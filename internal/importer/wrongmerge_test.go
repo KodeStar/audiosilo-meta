@@ -1102,12 +1102,15 @@ func TestStripTitleNarratorQualifier(t *testing.T) {
 // narrator vocabularies: the title-side list this package's mid-title strip reads
 // (titlerule.NarratorLeadIns) must stay a subset of the series one, so "what a
 // narrator lead-in is" has one definition and the title rule can only ever be the
-// narrower of the two. titlerule's TITLE-ONLY lead-ins must stay out of both lists,
-// so the mid-title strip reads exactly the vocabulary it was measured with.
+// narrower of the two. titlerule's TITLE-ONLY lead-ins ("read by") must stay out of
+// both lists: the mid-title strip reads exactly the vocabulary it was measured with,
+// and the series cleaning (cleanSeriesName) reads a title-only lead-in only under the
+// title rule's NAME bound (narratorCredit), never through SeriesNarratorLeadIns' bare
+// bracketed-prefix arm, which the dump measured "read by" out of.
 func TestTitleNarratorVocabularyIsASeriesSubset(t *testing.T) {
 	for _, phrase := range titlerule.TitleOnlyNarratorLeadIns {
 		if slices.Contains(titlerule.NarratorLeadIns, phrase) || slices.Contains(titlerule.SeriesNarratorLeadIns, phrase) {
-			t.Errorf("title-only lead-in %q reached a vocabulary the importer reads", phrase)
+			t.Errorf("title-only lead-in %q reached an unbounded lead-in list the importer reads", phrase)
 		}
 	}
 	if want := []string{"gelesen von", "narrated by", "gesprochen von"}; !slices.Equal(titlerule.NarratorLeadIns, want) {

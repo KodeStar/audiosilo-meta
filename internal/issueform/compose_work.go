@@ -605,10 +605,7 @@ func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
 // Fry)" or "Discworld (abridged)" extends the series it is a recording of rather than
 // composing a second series beside it.
 func formSeriesName(s sections) string {
-	name := s.get(fWorkSeriesName)
-	if base, ok := titlerule.StripSeriesRecordingQualifiers(name); ok {
-		return base
-	}
+	name, _ := titlerule.StripSeriesRecordingQualifiers(s.get(fWorkSeriesName))
 	return name
 }
 

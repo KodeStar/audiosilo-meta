@@ -90,6 +90,16 @@ func TestAdvisoryDuplicateSeries(t *testing.T) {
 		t.Errorf("equal lists: got %v, want one report against series-one-full-cast", got)
 	}
 
+	// Two plain spellings of the same list: the survivor is titlerule.SeriesRank's
+	// (equal works, the smaller id), the ladder a SER-DUP merge keeps.
+	files = seriesFixture(map[string]string{
+		"aa-series-one": seriesBody("aa-series-one", "Series One Again", "", "book-one@1", "book-two@2", "book-three@3"),
+	})
+	got = advisoryMatching(advisoryWarnings(t, files), duplicateSeriesMarker)
+	if len(got) != 1 || !strings.Contains(got[0], `series "series-one"`) || !strings.Contains(got[0], `in "aa-series-one"`) {
+		t.Errorf("equal plain lists: got %v, want one report against series-one naming aa-series-one", got)
+	}
+
 	// Quiet: a different position (a sub-series numbered on its own), a single
 	// shared member (the floor), and an ordering variant of series-one.
 	for name, body := range map[string]string{

@@ -240,13 +240,23 @@ func dropNarratorQualifier(s, lower string) string {
 		return s // the common case
 	}
 	s = cutAll(s, parenGroup, func(g string) bool { return narratorCredit(g[1 : len(g)-1]) })
-	for i := range s {
-		if i == 0 || !opensTrailingSegment(s[:i]) || !narratorCredit(s[i:]) {
-			continue
-		}
+	if i, found := trailingNarratorCut(s); found {
 		return s[:i]
 	}
 	return s
+}
+
+// trailingNarratorCut is the offset at which a narrator credit standing as s's LAST
+// segment begins: the first offset that opens a trailing segment (opensTrailingSegment)
+// and starts a credit running to the end (narratorCredit). It is the one trailing
+// scan dropNarratorQualifier and the series reader (trailingNarratorSegment) share.
+func trailingNarratorCut(s string) (int, bool) {
+	for i := range s {
+		if i > 0 && opensTrailingSegment(s[:i]) && narratorCredit(s[i:]) {
+			return i, true
+		}
+	}
+	return 0, false
 }
 
 // looksLikeAName reports whether a credit's words read as a name: the first and last
@@ -289,6 +299,39 @@ func opensTrailingSegment(head string) bool {
 func mentionsNarratorLeadIn(lower string) bool {
 	for _, lead := range trailingLeadIns {
 		if strings.Contains(lower, lead) {
+			return true
+		}
+	}
+	return false
+}
+
+// mentionsNarratorLeadInFold is mentionsNarratorLeadIn over text in any case, without
+// lowering it: every lead-in is lowercase ASCII, so an ASCII case fold finds exactly
+// what strings.ToLower would, and the common no-lead-in case allocates nothing.
+func mentionsNarratorLeadInFold(s string) bool {
+	for _, lead := range trailingLeadIns {
+		if containsFoldASCII(s, lead) {
+			return true
+		}
+	}
+	return false
+}
+
+// containsFoldASCII reports whether s contains sub under an ASCII case fold; sub must
+// be lowercase ASCII.
+func containsFoldASCII(s, sub string) bool {
+	for i := 0; i+len(sub) <= len(s); i++ {
+		j := 0
+		for ; j < len(sub); j++ {
+			c := s[i+j]
+			if 'A' <= c && c <= 'Z' {
+				c += 'a' - 'A'
+			}
+			if c != sub[j] {
+				break
+			}
+		}
+		if j == len(sub) {
 			return true
 		}
 	}

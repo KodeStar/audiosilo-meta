@@ -74,10 +74,7 @@ func qualifiedSources(series []*model.Series) []qualifiedSource {
 func buildQualified(series []qualifiedSource, language map[string]string) qualifiedIndex {
 	out := qualifiedIndex{}
 	for _, s := range series {
-		// A recording-qualified name ("Harry Potter (Narrated by Stephen Fry)",
-		// "Discworld (abridged)") is indexed under the series it is a recording of:
-		// the claim side never carries the qualifier (cleanSeriesName), so this is
-		// the only way a claim reaches such a series, and only ever after the chain.
+		// Indexed without its recording qualifier (the file comment says why).
 		name, _ := titlerule.StripSeriesRecordingQualifiers(s.name)
 		q := titlerule.ReadSeriesQualifiers(name)
 		base := titlerule.NewSeriesName(q.Base)

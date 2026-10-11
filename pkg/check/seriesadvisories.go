@@ -1,8 +1,7 @@
 package check
 
 import (
-	"sort"
-	"strings"
+	"slices"
 
 	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -81,22 +80,16 @@ const duplicateSeriesMarker = "a duplicate series (a recording variant or a seco
 // (model.Series.OrderingPrimary - a chronological order may legitimately list exactly
 // its primary's works at the same numbers).
 //
-// Positions compare as SLOTS: equal strings, or the same span under the schema's
-// position grammar (model.ParsePositionRange), so "02" and "2" are one place and "2",
-// "2.5" and "1-3.5" stay three - internal/importer's SameSlot over a tree that already
-// satisfies the schema's position pattern (pkg/check cannot import the importer,
-// which imports it).
+// Positions compare as SLOTS (model.SameSlot, the one slot rule internal/importer,
+// internal/audit and internal/repair read too), so "02" and "2" are one place and "2",
+// "2.5" and "1-3.5" stay three.
 //
 // Cost is one index of every membership by work, then, per series of at least
-// duplicateSeriesMinShared members, only the series listing its FIRST member at the
-// same slot - never every pair of series.
+// duplicateSeriesMinShared members, only the series listing its FIRST member - never
+// every pair of series.
 func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
-	type membership struct {
-		series *model.Series
-		pos    string
-	}
-	byWork := map[string][]membership{}
-	posIn := make(map[*model.Series]map[string]string, len(cat.Series))
+	byWork := map[string][]*model.Series{}
+	posIn := make(map[*model.Series]map[string]string, len(cat.Series)) // work -> its first position
 	for _, s := range cat.Series {
 		m := make(map[string]string, len(s.Works))
 		for _, sw := range s.Works {
@@ -104,7 +97,7 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 				continue
 			}
 			m[sw.Work] = sw.Position
-			byWork[sw.Work] = append(byWork[sw.Work], membership{s, sw.Position})
+			byWork[sw.Work] = append(byWork[sw.Work], s)
 		}
 		posIn[s] = m
 	}
@@ -112,7 +105,7 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 		in := posIn[sup]
 		for w, p := range posIn[sub] {
 			q, ok := in[w]
-			if !ok || !sameSlot(p, q) {
+			if !ok || !model.SameSlot(p, q) {
 				return false
 			}
 		}
@@ -123,17 +116,15 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 		if len(mine) < duplicateSeriesMinShared {
 			continue
 		}
-		first := s.Works[0]
+		first := s.Works[0].Work
 		var supersets []string
-		for _, m := range byWork[first.Work] {
-			t := m.series
-			if t == s || t.ID == s.ID || !sameSlot(m.pos, mine[first.Work]) || linkedSeries(s, t) {
+		for _, t := range byWork[first] {
+			theirs := posIn[t]
+			if t.ID == s.ID || len(theirs) < len(mine) || !model.SameSlot(theirs[first], mine[first]) ||
+				linkedSeries(s, t) || !contains(t, s) {
 				continue
 			}
-			if len(posIn[t]) < len(mine) || !contains(t, s) {
-				continue
-			}
-			if len(posIn[t]) == len(mine) && !seriesDuplicateSide(s, t) {
+			if len(theirs) == len(mine) && !seriesDuplicateSide(s, t) {
 				continue // the same list: reported once, against the other side
 			}
 			supersets = append(supersets, t.ID)
@@ -141,63 +132,31 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 		if len(supersets) == 0 {
 			continue
 		}
-		sort.Strings(supersets)
-		supersets = dedupSorted(supersets)
+		slices.Sort(supersets)
+		supersets = slices.Compact(supersets) // a series listed twice by one id is named once
 		warn(idx.series[s], "series %q (%q) lists %d works, every one at the same position in %s: %s",
 			s.ID, s.Name, len(mine), quotedList(supersets), duplicateSeriesMarker)
 	}
 }
 
-// sameSlot reports whether two stored positions name one slot (see
-// checkDuplicateSeries).
-func sameSlot(a, b string) bool {
-	if a == b {
-		return true
-	}
-	alo, ahi, aok := model.ParsePositionRange(a)
-	blo, bhi, bok := model.ParsePositionRange(b)
-	return aok && bok && alo == blo && ahi == bhi
-}
-
 // linkedSeries reports whether two series are a modelled pair rather than a
 // duplicate: a translation link either way, or one ordering family.
 func linkedSeries(a, b *model.Series) bool {
-	for _, t := range a.TranslationOf {
-		if t == b.ID {
-			return true
-		}
-	}
-	for _, t := range b.TranslationOf {
-		if t == a.ID {
-			return true
-		}
-	}
-	return a.OrderingPrimary() == b.OrderingPrimary()
+	return slices.Contains(a.TranslationOf, b.ID) || slices.Contains(b.TranslationOf, a.ID) ||
+		a.OrderingPrimary() == b.OrderingPrimary()
 }
 
 // seriesDuplicateSide decides which of two series holding the SAME list is the
-// duplicate to report: the one whose name carries a recording qualifier when only one
-// does, else the longer id (a numbered "-2" or a decorated spelling is longer than the
-// slug it was minted beside), else the later id. It reports whether a is that side.
+// duplicate to report, and reports whether a is that side. A recording-qualified name
+// is never the survivor over a plain one; otherwise the survivor is titlerule.SeriesRank's
+// choice - the ladder internal/audit's SER-DUP and internal/repair name a merge's
+// survivor by - so this advisory never names the other side of a pair a repair would
+// keep.
 func seriesDuplicateSide(a, b *model.Series) bool {
-	qa, qb := titlerule.IsRecordingQualifiedSeriesName(a.Name), titlerule.IsRecordingQualifiedSeriesName(b.Name)
+	_, qa := titlerule.StripSeriesRecordingQualifiers(a.Name)
+	_, qb := titlerule.StripSeriesRecordingQualifiers(b.Name)
 	if qa != qb {
 		return qa
 	}
-	if len(a.ID) != len(b.ID) {
-		return len(a.ID) > len(b.ID)
-	}
-	return strings.Compare(a.ID, b.ID) > 0
-}
-
-// dedupSorted drops adjacent repeats from a sorted list (a series listed twice by
-// one id cannot be named twice).
-func dedupSorted(ids []string) []string {
-	out := ids[:0]
-	for i, id := range ids {
-		if i == 0 || id != ids[i-1] {
-			out = append(out, id)
-		}
-	}
-	return out
+	return titlerule.SeriesRank{Works: len(b.Works), ID: b.ID}.Better(titlerule.SeriesRank{Works: len(a.Works), ID: a.ID})
 }

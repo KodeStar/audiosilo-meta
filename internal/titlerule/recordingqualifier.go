@@ -65,8 +65,8 @@ var SeriesNarratorLeadIns = []string{
 // recordingFormatPhrases are the production statements a whole bracketed group may
 // make, keyed by the group's slug (model.SlugifyWhole, so case, spacing, hyphens and
 // diacritics are not identity): an abridgement either way, a full-cast recording and a
-// dramatization. seriesNote's catalogue-note vocabulary (formatNotes) is this set
-// plus the notes that are not recording statements.
+// dramatization. seriesNote reads every recording qualifier as a catalogue note too
+// (recordingGroup), so the two vocabularies cannot disagree.
 var recordingFormatPhrases = map[string]bool{
 	"abridged": true, "unabridged": true, "gekurzt": true, "ungekurzt": true,
 	"full-cast": true, "full-cast-edition": true, "full-cast-editions": true,
@@ -77,22 +77,31 @@ var recordingFormatPhrases = map[string]bool{
 	"dramatized-version": true, "full-cast-dramatization": true,
 }
 
-// recordingGroup reports whether one bracketed group is a recording qualifier and
-// nothing else: a production phrase, a series narrator lead-in followed by a credit,
-// or a narrator credit under the title rule's name bound. A group holding a further
-// bracket ("((gelesen von Peter)", which the group pattern matches from its first
-// opener) is never one - stripping it would leave a dangling bracket.
-func recordingGroup(group string) bool {
-	inner := groupContents(group)
+// seriesNarratorLeadInSlugs are SeriesNarratorLeadIns in slug form, each with the
+// hyphen that must follow it, taken once rather than per group.
+var seriesNarratorLeadInSlugs = func() []string {
+	out := make([]string, len(SeriesNarratorLeadIns))
+	for i, lead := range SeriesNarratorLeadIns {
+		out[i] = strings.ReplaceAll(lead, " ", "-") + "-"
+	}
+	return out
+}()
+
+// recordingGroup reports whether one bracketed group, given as its contents and their
+// slug (model.SlugifyWhole), is a recording qualifier and nothing else: a production
+// phrase, a series narrator lead-in followed by a credit, or a narrator credit under
+// the title rule's name bound. A group holding a further bracket ("((gelesen von
+// Peter)", which the group pattern matches from its first opener) is never one -
+// stripping it would leave a dangling bracket.
+func recordingGroup(inner, slug string) bool {
 	if inner == "" || strings.ContainsAny(inner, "()[]") {
 		return false
 	}
-	slug := model.SlugifyWhole(inner)
 	if recordingFormatPhrases[slug] {
 		return true
 	}
-	for _, lead := range SeriesNarratorLeadIns {
-		if rest, ok := strings.CutPrefix(slug, strings.ReplaceAll(lead, " ", "-")+"-"); ok && rest != "" {
+	for _, lead := range seriesNarratorLeadInSlugs {
+		if rest, ok := strings.CutPrefix(slug, lead); ok && rest != "" {
 			return true
 		}
 	}
@@ -108,43 +117,46 @@ func recordingGroup(group string) bool {
 //     Hornblower (publication order)" and a language edition stays the edition it is;
 //   - a trailing narrator SEGMENT after a separator ("Harry Potter - Gesprochen von
 //     Rufus Beck", "..., read by Timothy West"), held to exactly the bound the title
-//     rule strips a narrator credit under (opensTrailingSegment + narratorCredit: a
-//     closed lead-in, then a NAME of two to six capitalized words) - an unbracketed
-//     tail is otherwise indistinguishable from a name containing the words, which is
-//     why "Classic Stories Read by Celebrities" stays.
+//     rule strips a narrator credit under (trailingNarratorCut: a closed lead-in
+//     opening the last segment, then a NAME of two to six capitalized words) - an
+//     unbracketed tail is otherwise indistinguishable from a name containing the
+//     words, which is why "Classic Stories Read by Celebrities" stays.
 //
 // The first group that is neither a recording qualifier nor a kept edition/ordering
-// group stops the reading, and a name that would be left with no letter or digit is
-// returned unchanged (ok false). It is idempotent.
+// group stops the reading. Nothing is cut that would leave no letter or digit behind
+// (peelTrailingGroup and the segment cut both refuse it), so a name that is nothing
+// but its qualifier comes back unchanged. Whenever ok is false the name is returned
+// exactly as given. It is idempotent.
 func StripSeriesRecordingQualifiers(name string) (base string, ok bool) {
-	if !strings.ContainsAny(name, ")]") && !mentionsNarratorLeadIn(strings.ToLower(name)) {
+	if !strings.ContainsAny(name, ")]") && !mentionsNarratorLeadInFold(name) {
 		return name, false // the common case: no group, no lead-in
 	}
 	s := strings.TrimSpace(name)
 	var kept []string // the edition/ordering groups peeled on the way, last first
-	dropped, stopped := false, false
-	for !stopped {
+	dropped := false
+read:
+	for {
 		rest, group, peeled := peelTrailingGroup(s)
 		if !peeled {
+			// No group left: a narrator credit may be the last segment.
+			if cut, found := trailingNarratorSegment(s); found {
+				s, dropped = cut, true
+			}
 			break
 		}
+		inner := groupContents(group)
+		slug := model.SlugifyWhole(inner)
 		switch {
-		case recordingGroup(group):
+		case recordingGroup(inner, slug):
 			dropped = true
-		case groupLanguage(group) != "" || groupOrdering(group) != "":
+		case editionLanguagePhrases[slug] != "" || OrderingOfDecoration(slug) != "":
 			kept = append(kept, group)
 		default:
 			// Neither: the reading stops and the group stays where it is - which
 			// also means no narrator segment can be trailing.
-			stopped = true
-			continue
+			break read
 		}
 		s = rest
-	}
-	if !stopped {
-		if cut, found := trailingNarratorSegment(s); found {
-			s, dropped = cut, true
-		}
 	}
 	if !dropped {
 		return name, false
@@ -152,35 +164,23 @@ func StripSeriesRecordingQualifiers(name string) (base string, ok bool) {
 	for i := len(kept) - 1; i >= 0; i-- {
 		s += " " + kept[i]
 	}
-	if !hasAlnum(s) {
-		return name, false
-	}
 	return s, true
 }
 
-// trailingNarratorSegment cuts a narrator credit that is the name's LAST segment, after
-// a separator, and returns what precedes it with the separator trimmed. It is the
-// series twin of dropNarratorQualifier's trailing arm, over the same two tests.
+// trailingNarratorSegment cuts a narrator credit that is the name's LAST segment
+// (trailingNarratorCut) and returns what precedes it with the separator trimmed,
+// refusing a cut that would leave no letter or digit.
 func trailingNarratorSegment(s string) (string, bool) {
-	if !mentionsNarratorLeadIn(strings.ToLower(s)) {
+	if !mentionsNarratorLeadInFold(s) {
 		return s, false
 	}
-	for i := range s {
-		if i == 0 || !opensTrailingSegment(s[:i]) || !narratorCredit(s[i:]) {
-			continue
-		}
-		head := strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(s[:i], ""))
-		if !hasAlnum(head) {
-			return s, false
-		}
-		return head, true
+	i, found := trailingNarratorCut(s)
+	if !found {
+		return s, false
 	}
-	return s, false
-}
-
-// IsRecordingQualifiedSeriesName reports whether a series name carries a recording
-// qualifier (StripSeriesRecordingQualifiers would remove one).
-func IsRecordingQualifiedSeriesName(name string) bool {
-	_, ok := StripSeriesRecordingQualifiers(name)
-	return ok
+	head := strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(s[:i], ""))
+	if !hasAlnum(head) {
+		return s, false
+	}
+	return head, true
 }

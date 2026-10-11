@@ -101,6 +101,8 @@ func TestSameSeriesSpelling(t *testing.T) {
 		{"Kingsbridge", "Kingsbridge (Abridged)", true},
 		{"Los Juegos del Hambre", "Los Juegos del Hambre (Narración en Castellano)", true},
 		{"Lock In", "Lock In (Narrated by Amber Benson)", true},
+		// Every recording qualifier the series strip removes is a note too.
+		{"Kalle Blomquist", "Kalle Blomquist (Hörspiele von Kurt Vethake)", true},
 		// A ONE-SIDED decoration counts only from the closed vocabulary: a dialect or
 		// variety is a different product, and a translated series title is no note.
 		{"Pimsleur Spanish", "Pimsleur Spanish (Spain-Castilian)", false},

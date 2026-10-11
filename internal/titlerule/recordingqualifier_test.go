@@ -1,6 +1,9 @@
 package titlerule
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 // Every case is a series name from the tree (2026-10-11) or the importer's own
 // narrator-qualifier fixtures, plus the shapes the reader must leave alone.
@@ -65,27 +68,21 @@ func TestStripSeriesRecordingQualifiers(t *testing.T) {
 		if again, ok := StripSeriesRecordingQualifiers(got); again != got || ok {
 			t.Errorf("not idempotent on %q: %q -> %q", c.in, got, again)
 		}
-		if IsRecordingQualifiedSeriesName(c.in) != (c.want != c.in) {
-			t.Errorf("IsRecordingQualifiedSeriesName(%q) disagrees with the strip", c.in)
-		}
 	}
 }
 
-// Every recording production phrase is also a catalogue note: seriesNote's format
-// vocabulary is built from it, so the two cannot drift.
-func TestRecordingPhrasesAreFormatNotes(t *testing.T) {
-	for phrase := range recordingFormatPhrases {
-		if !formatNotes[phrase] {
-			t.Errorf("recording phrase %q is not a format note", phrase)
-		}
+// The fast path - no bracket, no lead-in, which is nearly every series name - must
+// cost nothing, and the case-folding guard must find exactly what lowering would.
+func TestStripSeriesRecordingQualifiersFastPath(t *testing.T) {
+	if n := testing.AllocsPerRun(100, func() { StripSeriesRecordingQualifiers("The Stormlight Archive") }); n != 0 {
+		t.Errorf("a plain series name allocates %v times, want 0", n)
 	}
-	for _, lead := range NarratorLeadIns {
-		found := false
-		for _, s := range SeriesNarratorLeadIns {
-			found = found || s == lead
-		}
-		if !found {
-			t.Errorf("title lead-in %q is not a series lead-in", lead)
+	for _, s := range []string{
+		"Harry Potter - Gesprochen von Rufus Beck", "X, READ BY Y", "Narrated By", "gelesen vo",
+		"Gelesen\u00a0von", "Über alles", "", "by", "Discworld",
+	} {
+		if got, want := mentionsNarratorLeadInFold(s), mentionsNarratorLeadIn(strings.ToLower(s)); got != want {
+			t.Errorf("mentionsNarratorLeadInFold(%q) = %v, lowering says %v", s, got, want)
 		}
 	}
 }
