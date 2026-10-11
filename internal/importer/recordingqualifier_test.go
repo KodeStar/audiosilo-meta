@@ -3,6 +3,7 @@ package importer
 import (
 	"reflect"
 	"slices"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -191,4 +192,50 @@ func TestRecordingQualifiedClaimsAreOrderIndependent(t *testing.T) {
 		}
 		assertTreeValid(t, dataDir)
 	}
+}
+
+// The abridgement a cleaned series qualifier stated is not lost with the qualifier:
+// a source that stated nothing itself takes it onto the recording, after its own
+// flag and its title's edition marker, and two claims that disagree state nothing.
+func TestASeriesQualifierAbridgementReachesTheRecording(t *testing.T) {
+	yes, no := true, false
+	for _, tc := range []struct {
+		desc   string
+		title  string
+		own    *bool
+		series []string
+		want   *bool
+	}{
+		{"series only", "Wintersmith", nil, []string{"Discworld: Tiffany Aching (abridged)"}, &yes},
+		{"gekürzt", "Wintersmith", nil, []string{"Scheibenwelt [gekürzt]"}, &yes},
+		{"unabridged", "Wintersmith", nil, []string{"Discworld (Unabridged)"}, &no},
+		{"the source's own flag wins", "Wintersmith", &no, []string{"Discworld (abridged)"}, &no},
+		{"the title marker wins", "Wintersmith (Unabridged)", nil, []string{"Discworld (abridged)"}, &no},
+		{"claims that disagree", "Wintersmith", nil, []string{"Discworld (abridged)", "Tiffany Aching (unabridged)"}, nil},
+		{"one claim states it", "Wintersmith", nil, []string{"Discworld", "Tiffany Aching (abridged)"}, &yes},
+		{"nothing stated", "Wintersmith", nil, []string{"Discworld (Full-Cast Editions)"}, nil},
+	} {
+		b := sourceBook{raw: rawBook{"title": tc.title}, abridged: tc.own}
+		for _, s := range tc.series {
+			b.series = append(b.series, makeSeriesRef(s, "3"))
+		}
+		books := []sourceBook{b}
+		normalizeEditionMarkers(books)
+		got := books[0].abridged
+		if (got == nil) != (tc.want == nil) || (got != nil && *got != *tc.want) {
+			t.Errorf("%s: abridged = %v, want %v", tc.desc, fmtBool(got), fmtBool(tc.want))
+		}
+		for _, r := range books[0].series {
+			if strings.ContainsAny(r.name, "()[]") {
+				t.Errorf("%s: claim %q kept its qualifier", tc.desc, r.name)
+			}
+		}
+	}
+}
+
+func fmtBool(b *bool) string {
+	if b == nil {
+		return "nil"
+	}
+	return strconv.FormatBool(*b)
 }

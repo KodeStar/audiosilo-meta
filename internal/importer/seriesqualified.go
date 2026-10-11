@@ -42,7 +42,9 @@ import (
 //   - what it reaches only ADDS candidates, after the chain's (resolveSeriesUnit's
 //     tiers), judged by the same language closure and author fit;
 //   - the importer never writes translation_of, ordering or ordering_of, and a
-//     founded series keeps the source's name verbatim.
+//     founded series keeps the source's name as the claim states it - verbatim but
+//     for the recording qualifiers cleanSeriesName takes off every claim (whose
+//     abridgement, if they state one, is carried onto the recording).
 
 // qualifierKey is one index key under a base slug: the base's name key
 // (titlerule.SeriesName.Key) and the two facets.

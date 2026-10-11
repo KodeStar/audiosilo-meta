@@ -21,7 +21,7 @@ import (
 // regrowth is visible the wave after it happens.
 //
 // Both are WARNINGS and must stay so. Measured over the 282,710-work tree at
-// origin/main (2026-10-11): 189 series carry a recording qualifier and 199 are a
+// origin/main (2026-10-11): 189 series carry a recording qualifier and 197 are a
 // duplicate of another series under the two-member floor below. Failing on them
 // would turn every unrelated pull request red until a repair wave drained them, and
 // both have members a human must tell apart - a sub-series numbered like its parent
@@ -58,8 +58,10 @@ const recordingQualifierMarker = "a recording qualifier: narration and productio
 // other series ("Edge Of Glass" / "The Edge of Glass") and half one book that
 // really is the first volume of two series ("Princes of Petras" and "Irresistible
 // Russian Tycoons" both opening on it) - evidence too thin to count as a class. A
-// floor of TWO reports 199 (80 of them two-work series), nearly all of them one
-// series twice: a recording variant ("Harry Potter (Narrated by Stephen Fry)" in
+// floor of TWO reports 199 (80 of them two-work series) - 197 once a plain series
+// inside a recording variant is no longer read as the duplicate (checkDuplicateSeries;
+// the three it took were "Bodenstein & Kirchhoff" beside its "(gekürzt)" twin and two
+// like it) - nearly all of them one series twice: a recording variant ("Harry Potter (Narrated by Stephen Fry)" in
 // "harry-potter", "Women's Murder Club (abridged)", "Mistborn [Dramatized
 // Adaptation]"), a respelling ("The Hunger Games" / "hunger-games") or an edition
 // series beside its translated-title twin ("Los Juegos del Hambre (The Hunger
@@ -75,6 +77,12 @@ const duplicateSeriesMarker = "a duplicate series (a recording variant or a seco
 // holding exactly the same list are reported once, against the one that is not the
 // canonical spelling (seriesDuplicateSide).
 //
+// A recording-qualified series is never named as the series a PLAIN one duplicates,
+// whatever the two hold: "Bodenstein & Kirchhoff" is not a duplicate of the
+// "(gekürzt)" variant that happens to list more of its volumes - the variant is the
+// recording spelled as a series (series-recording-qualifier names it), and reading the
+// containment the other way would point a repair at retiring the plain slug.
+//
 // Pairs that are LINKED are not duplicates, whatever they list: a translation and its
 // original (translation_of either way) and two members of one ordering family
 // (model.Series.OrderingPrimary - a chronological order may legitimately list exactly
@@ -86,11 +94,20 @@ const duplicateSeriesMarker = "a duplicate series (a recording variant or a seco
 //
 // Cost is one index of every membership by work, then, per series of at least
 // duplicateSeriesMinShared members, only the series listing its FIRST member - never
-// every pair of series.
+// every pair of series. A series below the floor is not indexed at all: it can be
+// neither the subset (it is under the floor) nor a superset (that holds at least as
+// many works as a subset that is not).
 func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+	type indexed struct {
+		pos       map[string]string // work -> its first position
+		qualified bool              // the name carries a recording qualifier
+	}
 	byWork := map[string][]*model.Series{}
-	posIn := make(map[*model.Series]map[string]string, len(cat.Series)) // work -> its first position
+	in := map[*model.Series]indexed{}
 	for _, s := range cat.Series {
+		if len(s.Works) < duplicateSeriesMinShared {
+			continue
+		}
 		m := make(map[string]string, len(s.Works))
 		for _, sw := range s.Works {
 			if _, dup := m[sw.Work]; dup {
@@ -99,12 +116,12 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 			m[sw.Work] = sw.Position
 			byWork[sw.Work] = append(byWork[sw.Work], s)
 		}
-		posIn[s] = m
+		_, q := titlerule.StripSeriesRecordingQualifiers(s.Name)
+		in[s] = indexed{pos: m, qualified: q}
 	}
-	contains := func(sup, sub *model.Series) bool {
-		in := posIn[sup]
-		for w, p := range posIn[sub] {
-			q, ok := in[w]
+	contains := func(sup, sub map[string]string) bool {
+		for w, p := range sub {
+			q, ok := sup[w]
 			if !ok || !model.SameSlot(p, q) {
 				return false
 			}
@@ -112,19 +129,19 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 		return true
 	}
 	for _, s := range cat.Series {
-		mine := posIn[s]
-		if len(mine) < duplicateSeriesMinShared {
+		me, ok := in[s]
+		if !ok || len(me.pos) < duplicateSeriesMinShared {
 			continue
 		}
 		first := s.Works[0].Work
 		var supersets []string
 		for _, t := range byWork[first] {
-			theirs := posIn[t]
-			if t.ID == s.ID || len(theirs) < len(mine) || !model.SameSlot(theirs[first], mine[first]) ||
-				linkedSeries(s, t) || !contains(t, s) {
+			them := in[t]
+			if t.ID == s.ID || len(them.pos) < len(me.pos) || (them.qualified && !me.qualified) ||
+				!model.SameSlot(them.pos[first], me.pos[first]) || linkedSeries(s, t) || !contains(them.pos, me.pos) {
 				continue
 			}
-			if len(theirs) == len(mine) && !seriesDuplicateSide(s, t) {
+			if len(them.pos) == len(me.pos) && !seriesDuplicateSide(s, t, me.qualified, them.qualified) {
 				continue // the same list: reported once, against the other side
 			}
 			supersets = append(supersets, t.ID)
@@ -135,7 +152,7 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 		slices.Sort(supersets)
 		supersets = slices.Compact(supersets) // a series listed twice by one id is named once
 		warn(idx.series[s], "series %q (%q) lists %d works, every one at the same position in %s: %s",
-			s.ID, s.Name, len(mine), quotedList(supersets), duplicateSeriesMarker)
+			s.ID, s.Name, len(me.pos), quotedList(supersets), duplicateSeriesMarker)
 	}
 }
 
@@ -147,14 +164,13 @@ func linkedSeries(a, b *model.Series) bool {
 }
 
 // seriesDuplicateSide decides which of two series holding the SAME list is the
-// duplicate to report, and reports whether a is that side. A recording-qualified name
-// is never the survivor over a plain one; otherwise the survivor is titlerule.SeriesRank's
-// choice - the ladder internal/audit's SER-DUP and internal/repair name a merge's
-// survivor by - so this advisory never names the other side of a pair a repair would
-// keep.
-func seriesDuplicateSide(a, b *model.Series) bool {
-	_, qa := titlerule.StripSeriesRecordingQualifiers(a.Name)
-	_, qb := titlerule.StripSeriesRecordingQualifiers(b.Name)
+// duplicate to report, and reports whether a is that side; qa and qb say whether each
+// name carries a recording qualifier. A recording-qualified name is never the survivor
+// over a plain one; between two names alike in that, the survivor is
+// titlerule.SeriesRank's choice - the ladder internal/audit's SER-DUP and
+// internal/repair name a merge's survivor by - so where the qualifier does not decide,
+// this advisory never names the other side of a pair a repair would keep.
+func seriesDuplicateSide(a, b *model.Series, qa, qb bool) bool {
 	if qa != qb {
 		return qa
 	}

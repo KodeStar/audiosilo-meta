@@ -78,21 +78,24 @@ var recordingFormatPhrases = map[string]bool{
 }
 
 // seriesNarratorLeadInSlugs are SeriesNarratorLeadIns in slug form, each with the
-// hyphen that must follow it, taken once rather than per group.
+// hyphen that must follow it, taken once rather than per group - through the very
+// slugger the group is read with (model.SlugifyWhole), so an entry and a group spelling
+// it cannot disagree about case, spacing or a diacritic.
 var seriesNarratorLeadInSlugs = func() []string {
 	out := make([]string, len(SeriesNarratorLeadIns))
 	for i, lead := range SeriesNarratorLeadIns {
-		out[i] = strings.ReplaceAll(lead, " ", "-") + "-"
+		out[i] = model.SlugifyWhole(lead) + "-"
 	}
 	return out
 }()
 
 // recordingGroup reports whether one bracketed group, given as its contents and their
 // slug (model.SlugifyWhole), is a recording qualifier and nothing else: a production
-// phrase, a series narrator lead-in followed by a credit, or a narrator credit under
-// the title rule's name bound. A group holding a further bracket ("((gelesen von
-// Peter)", which the group pattern matches from its first opener) is never one -
-// stripping it would leave a dangling bracket.
+// phrase, a series narrator lead-in followed by anything at all (the posture the
+// importer measured the bracketed lead-ins under, so "(Narrated by the author)" is read
+// too), or a narrator credit under the title rule's name bound. A group holding a
+// further bracket ("((gelesen von Peter)", which the group pattern matches from its
+// first opener) is never one - stripping it would leave a dangling bracket.
 func recordingGroup(inner, slug string) bool {
 	if inner == "" || strings.ContainsAny(inner, "()[]") {
 		return false
@@ -122,12 +125,52 @@ func recordingGroup(inner, slug string) bool {
 //     unbracketed tail is otherwise indistinguishable from a name containing the
 //     words, which is why "Classic Stories Read by Celebrities" stays.
 //
+// The two interleave: what a narrator segment leaves behind is read again, so "Foo
+// (abridged) - Narrated by Ann Reader" is "Foo" in one call rather than in two.
+//
 // The first group that is neither a recording qualifier nor a kept edition/ordering
 // group stops the reading. Nothing is cut that would leave no letter or digit behind
 // (peelTrailingGroup and the segment cut both refuse it), so a name that is nothing
 // but its qualifier comes back unchanged. Whenever ok is false the name is returned
 // exactly as given. It is idempotent.
 func StripSeriesRecordingQualifiers(name string) (base string, ok bool) {
+	return stripSeriesRecording(name, nil)
+}
+
+// abridgementPhrases are the recording format groups that state an abridgement either
+// way, keyed as recordingFormatPhrases is: true for an abridged recording.
+var abridgementPhrases = map[string]bool{
+	"abridged": true, "gekurzt": true,
+	"unabridged": false, "ungekurzt": false,
+}
+
+// SeriesAbridgement is the abridgement a series name's recording qualifiers state -
+// "(abridged)", "[gekürzt]", "(Unabridged)" - read by the very reading
+// StripSeriesRecordingQualifiers strips them under, so a writer cleaning the qualifier
+// off a series claim can carry the fact onto the RECORDING it is about instead of
+// losing it. stated is false when no qualifier states one, or when two contradict.
+func SeriesAbridgement(name string) (abridged, stated bool) {
+	conflict := false
+	stripSeriesRecording(name, func(slug string) {
+		a, ok := abridgementPhrases[slug]
+		if !ok {
+			return
+		}
+		if stated && a != abridged {
+			conflict = true
+		}
+		abridged, stated = a, true
+	})
+	if conflict {
+		return false, false
+	}
+	return abridged, stated
+}
+
+// stripSeriesRecording is the one reading behind StripSeriesRecordingQualifiers and
+// SeriesAbridgement; onDrop, when not nil, is handed the slug of every bracketed group
+// dropped.
+func stripSeriesRecording(name string, onDrop func(slug string)) (string, bool) {
 	if !strings.ContainsAny(name, ")]") && !mentionsNarratorLeadInFold(name) {
 		return name, false // the common case: no group, no lead-in
 	}
@@ -138,17 +181,23 @@ read:
 	for {
 		rest, group, peeled := peelTrailingGroup(s)
 		if !peeled {
-			// No group left: a narrator credit may be the last segment.
-			if cut, found := trailingNarratorSegment(s); found {
-				s, dropped = cut, true
+			// No group left: a narrator credit may be the last segment, and what it
+			// leaves may end in a further recording group.
+			cut, found := trailingNarratorSegment(s)
+			if !found {
+				break
 			}
-			break
+			s, dropped = cut, true
+			continue
 		}
 		inner := groupContents(group)
 		slug := model.SlugifyWhole(inner)
 		switch {
 		case recordingGroup(inner, slug):
 			dropped = true
+			if onDrop != nil {
+				onDrop(slug)
+			}
 		case editionLanguagePhrases[slug] != "" || OrderingOfDecoration(slug) != "":
 			kept = append(kept, group)
 		default:
@@ -168,8 +217,9 @@ read:
 }
 
 // trailingNarratorSegment cuts a narrator credit that is the name's LAST segment
-// (trailingNarratorCut) and returns what precedes it with the separator trimmed,
-// refusing a cut that would leave no letter or digit.
+// (trailingNarratorCut) and returns what precedes it with the separator trimmed
+// (trailingNarratorHead, then any separator run left before it), refusing a cut that
+// would leave no letter or digit.
 func trailingNarratorSegment(s string) (string, bool) {
 	if !mentionsNarratorLeadInFold(s) {
 		return s, false
@@ -178,7 +228,7 @@ func trailingNarratorSegment(s string) (string, bool) {
 	if !found {
 		return s, false
 	}
-	head := strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(s[:i], ""))
+	head := strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(trailingNarratorHead(s, i), ""))
 	if !hasAlnum(head) {
 		return s, false
 	}

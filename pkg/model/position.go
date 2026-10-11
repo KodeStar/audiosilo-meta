@@ -151,11 +151,13 @@ func PositionRange(pos string) (lo, hi float64, isRange bool) {
 	if !ok || !strings.Contains(norm, "-") {
 		return 0, 0, false
 	}
-	span, ok := PositionSpan(norm)
+	// norm is already accepted and canonical, so the span is read straight off it
+	// rather than normalized a second time through PositionSpan.
+	lo, hi, ok = ParsePositionRange(norm)
 	if !ok {
 		return 0, 0, false
 	}
-	return span[0], span[1], true
+	return lo, hi, true
 }
 
 // SameSlot reports whether two stored positions name the same slot. Equal strings always

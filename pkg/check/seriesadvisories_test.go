@@ -100,6 +100,21 @@ func TestAdvisoryDuplicateSeries(t *testing.T) {
 		t.Errorf("equal plain lists: got %v, want one report against series-one naming aa-series-one", got)
 	}
 
+	// A plain series is never reported as a duplicate of a recording variant that
+	// lists more of its volumes: the variant is the recording spelled as a series,
+	// which series-recording-qualifier names instead.
+	files = seriesFixture(map[string]string{
+		"series-one":       seriesBody("series-one", "Series One (gekürzt)", "", "book-one@1", "book-two@2", "book-three@3"),
+		"series-one-plain": seriesBody("series-one-plain", "Series One", "", "book-one@1", "book-two@2"),
+	})
+	warns := advisoryWarnings(t, files)
+	if got := advisoryMatching(warns, duplicateSeriesMarker); len(got) != 0 {
+		t.Errorf("plain subset of a recording variant: reported %v", got)
+	}
+	if got := advisoryMatching(warns, recordingQualifierMarker); len(got) != 1 || !strings.Contains(got[0], `"series-one"`) {
+		t.Errorf("plain subset of a recording variant: the variant is not named as one: %v", got)
+	}
+
 	// Quiet: a different position (a sub-series numbered on its own), a single
 	// shared member (the floor), and an ordering variant of series-one.
 	for name, body := range map[string]string{

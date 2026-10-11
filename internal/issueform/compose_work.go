@@ -402,7 +402,7 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 	recSlug := c.uniqueRecordingSlug(workSlug, narratorSlugs, s.get(fRecRelease))
 	rec := outRecording{
 		ID: recSlug, Work: workSlug, Narrators: narratorSlugs, Language: lang,
-		Abridged: abridgedFromForm(s.get(fRecAbridged)),
+		Abridged: formAbridged(s),
 		License:  licenseCC0, Sources: c.sources(sourceRef),
 	}
 	rec.RuntimeMin, rec.ReleaseDate, rec.CoverURL = c.recordingFacts(s)
@@ -468,6 +468,21 @@ func (c *composer) putRecording(workSlug, recSlug string, rec any) {
 		return
 	}
 	c.putEntry(pack.FamilyWorks, workSlug, entry)
+}
+
+// formAbridged is a composed recording's abridged tri-state: the form's dropdown,
+// else the abridgement a recording qualifier on the series name states
+// (titlerule.SeriesAbridgement) - formSeriesName reads the name without it, and the
+// qualifier is a fact about THIS recording, so it lands here rather than being lost.
+// A form without a series name (add-recording) reads the dropdown alone.
+func formAbridged(s sections) *bool {
+	if a := abridgedFromForm(s.get(fRecAbridged)); a != nil {
+		return a
+	}
+	if a, stated := titlerule.SeriesAbridgement(s.get(fWorkSeriesName)); stated {
+		return &a
+	}
+	return nil
 }
 
 // abridgedFromForm maps the rec_abridged dropdown to the recording's tri-state

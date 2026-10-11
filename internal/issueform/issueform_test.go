@@ -1053,6 +1053,7 @@ func TestAddWorkReadsARecordingQualifiedSeriesName(t *testing.T) {
 		body := addWorkBody("Sequel Book", "Jane Doe", "en", "Ed Reader", "", "web", true)
 		body = strings.Replace(body, field(fWorkSeriesName, ""), field(fWorkSeriesName, name), 1)
 		body = strings.Replace(body, field(fWorkSeriesPosition, ""), field(fWorkSeriesPosition, "2"), 1)
+		body = strings.Replace(body, field(fRecAbridged, "Unabridged"), field(fRecAbridged, "Unknown"), 1)
 		res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
 		if res.Status != StatusOK {
 			t.Fatalf("%q: status = %q, messages = %v", name, res.Status, res.Messages)
@@ -1063,6 +1064,13 @@ func TestAddWorkReadsARecordingQualifiedSeriesName(t *testing.T) {
 		}
 		if !anyContains(res.Messages, `read as "Existing Series"`) {
 			t.Errorf("%q: the verdict does not say how the name was read: %v", name, res.Messages)
+		}
+		// The abridgement the qualifier stated lands on the recording, since the
+		// dropdown said nothing ("Unknown"); a narrator credit states none.
+		rec := readFile(t, dir, "works/se/sequel-book/recordings/"+onlyRecordingOf(t, dir, "sequel-book")+".json")
+		if abridged := strings.Contains(name, "(abridged)"); strings.Contains(rec, `"abridged": true`) != abridged ||
+			(!abridged && strings.Contains(rec, `"abridged"`)) {
+			t.Errorf("%q: recording abridged flag is wrong:\n%s", name, rec)
 		}
 	}
 }

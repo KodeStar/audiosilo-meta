@@ -241,7 +241,7 @@ func dropNarratorQualifier(s, lower string) string {
 	}
 	s = cutAll(s, parenGroup, func(g string) bool { return narratorCredit(g[1 : len(g)-1]) })
 	if i, found := trailingNarratorCut(s); found {
-		return s[:i]
+		return trailingNarratorHead(s, i)
 	}
 	return s
 }
@@ -257,6 +257,17 @@ func trailingNarratorCut(s string) (int, bool) {
 		}
 	}
 	return 0, false
+}
+
+// trailingNarratorHead is what precedes a trailing narrator credit cut at i
+// (trailingNarratorCut): s[:i] without the ONE separator opensTrailingSegment accepted
+// there and the spaces around it. The separator is removed by what that test read, not
+// by a punctuation class, because the class callers trim with has no en dash - "Harry
+// Potter – Gesprochen von Rufus Beck" left "Harry Potter –" behind.
+func trailingNarratorHead(s string, i int) string {
+	h := strings.TrimRight(s[:i], " ")
+	_, size := utf8.DecodeLastRuneInString(h)
+	return strings.TrimRight(h[:len(h)-size], " ")
 }
 
 // looksLikeAName reports whether a credit's words read as a name: the first and last

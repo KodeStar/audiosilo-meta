@@ -216,8 +216,10 @@ func seriesNote(group string) bool {
 		dramatization.MatchString(inner) || recordingGroup(inner, key) {
 		return true
 	}
-	// A narration credit naming no NAME ("(Narrated by the author)") is still a note,
-	// though not a qualifier the strip would remove.
+	// A narration credit led by a lead-in the series vocabulary does not hold and
+	// naming no NAME ("(Read by the author)") is still a note, though not a qualifier
+	// the strip would remove. ("(Narrated by the author)" is both: recordingGroup's
+	// bracketed lead-in arm takes it whatever follows the lead-in.)
 	lower := strings.ToLower(inner)
 	for _, lead := range trailingLeadIns {
 		if strings.HasPrefix(lower, lead+" ") {

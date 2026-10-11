@@ -36,6 +36,14 @@ func TestStripSeriesRecordingQualifiers(t *testing.T) {
 		{"Harry Potter (Full-Cast Editions) [Spanish Edition]", "Harry Potter [Spanish Edition]"},
 		{"Foo (a note) (narrated by B)", "Foo (a note)"},
 		{"Foo (abridged) (Narrated by Ann Reader)", "Foo"},
+		// A narrator segment exposes the group before it, which is read in the same
+		// call - the strip is idempotent, so one call is the whole reading.
+		{"Foo (abridged) - Narrated by Ann Reader", "Foo"},
+		{"Foo [German Edition] (gekürzt) - Gesprochen von Ann Reader", "Foo [German Edition]"},
+		// The separator a narrator segment follows goes with it, whatever it is: an en
+		// dash or a period is not left dangling on the name.
+		{"Harry Potter – Gesprochen von Rufus Beck", "Harry Potter"},
+		{"Die Bibel. Gelesen von Rufus Beck", "Die Bibel"},
 
 		// Left alone: not a recording qualifier.
 		{"Harry Potter [German Edition]", "Harry Potter [German Edition]"},
@@ -83,6 +91,45 @@ func TestStripSeriesRecordingQualifiersFastPath(t *testing.T) {
 	} {
 		if got, want := mentionsNarratorLeadInFold(s), mentionsNarratorLeadIn(strings.ToLower(s)); got != want {
 			t.Errorf("mentionsNarratorLeadInFold(%q) = %v, lowering says %v", s, got, want)
+		}
+	}
+}
+
+// The abridgement a stripped qualifier states is readable, so a writer cleaning it off
+// a claim can carry it onto the recording; two qualifiers that disagree state nothing.
+func TestSeriesAbridgement(t *testing.T) {
+	for _, tc := range []struct {
+		name             string
+		abridged, stated bool
+	}{
+		{"Discworld: Tiffany Aching (abridged)", true, true},
+		{"Jack Reacher (Gekürzt)", true, true},
+		{"The Sword of Shannara (Unabridged)", false, true},
+		{"Die HULDA-Reihe (ungekürzt)", false, true},
+		{"Harry Potter [German Edition] (gekürzt)", true, true},
+		{"Foo (abridged) - Narrated by Ann Reader", true, true},
+		{"Harry Potter (Full-Cast Editions)", false, false},
+		{"Harry Potter (Narrated by Stephen Fry)", false, false},
+		{"Foo (abridged) (unabridged)", false, false},
+		{"Abridged History", false, false},
+		{"Foo (abridged) (Box Set)", false, false},
+	} {
+		if a, s := SeriesAbridgement(tc.name); a != tc.abridged || s != tc.stated {
+			t.Errorf("SeriesAbridgement(%q) = %v, %v; want %v, %v", tc.name, a, s, tc.abridged, tc.stated)
+		}
+	}
+}
+
+// The trailing narrator strip a TITLE goes through removes the separator it read too,
+// so an en dash does not survive into a retitle.
+func TestStripTitleQualifiersTakesTheSeparator(t *testing.T) {
+	for in, want := range map[string]string{
+		"Foo – Narrated by Ann Reader":      "Foo",
+		"Foo - Narrated by Ann Reader":      "Foo",
+		"Die Bibel. Gelesen von Rufus Beck": "Die Bibel",
+	} {
+		if got := StripTitleQualifiers(in); got != want {
+			t.Errorf("StripTitleQualifiers(%q) = %q, want %q", in, got, want)
 		}
 	}
 }
