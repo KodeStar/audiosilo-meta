@@ -1,0 +1,186 @@
+package titlerule
+
+import (
+	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
+
+// recordingqualifier.go reads a RECORDING QUALIFIER off a series name: a statement
+// about one PRODUCTION of the books - who narrated it, that it is abridged, a
+// full-cast or a dramatized recording - which a retailer folds into the series name
+// when it lists each production as a series of its own ("Harry Potter (Narrated by
+// Stephen Fry)", "Harry Potter (Full-Cast Editions)", "Discworld: Tiffany Aching
+// (abridged)", "Harry Potter - Gesprochen von Rufus Beck"). A series is an ordered
+// set of WORKS; narration, abridgement and production are facts about a recording
+// (recording.narrators, recording.abridged), so a recording-qualified name names the
+// SAME series as its base. Every reader of the question asks this one function:
+// internal/importer's claim cleaning (cleanSeriesName) and its qualifier index, the
+// intake form, and pkg/check's series-recording-qualifier advisory.
+//
+// What is NOT a recording qualifier, and is left exactly as written: a language
+// EDITION ("[German Edition]", "(Deutsche Ausgabe)" - a translation, which is a
+// different set of works, read by ReadSeriesQualifiers' language facet), a reading
+// ORDER ("(Chronological)"), a collection or box set, a Hörspiel or radio production
+// (a German Hörspiel series is very often its own numbered run of episodes - "Die drei
+// ???", "Sherlock Holmes - Hörspiel" - rather than a recording of a text series), and
+// a dialect note ("(Narración en Castellano)" - a Castilian and a Latin American
+// Spanish edition are frequently two translations). Both vocabularies are CLOSED.
+//
+// Measured over the tree at origin/main (2026-10-11, 45,586 series): 767 series names
+// match the broad pattern /narrated by|full[- ]cast|abridged|dramati[sz]|gesprochen|
+// gelesen|read by|gekürzt|hörspiel|edition/i, most of them language editions or
+// Hörspiel runs. This reader takes 189 of them, every one a production statement:
+// 127 abridged, 23 gekürzt, 8 unabridged/ungekürzt, 25 dramatized, 1 full-cast and 5
+// narrator credits (two bracketed - "(Narrated by Stephen Fry)", "(gelesen von Gerrit
+// Petersen)" - the separator form "Harry Potter - Gesprochen von Rufus Beck" and two
+// ", read by Timothy West"). The narrower pattern without "hörspiel|edition" matches
+// 196; the seven it leaves are names whose words are not a qualifier ("Charles Paris
+// Dramatisations", "Classic Stories and Tales Read by Celebrities", "Dramatis
+// Personae", "Neil Gaiman Full-Cast Radio Adaptations", "Der König der purpurnen Stadt
+// - Das ungekürzte Hörspiel").
+
+// SeriesNarratorLeadIns are the lead-in phrases of a trailing BRACKETED group that
+// qualifies a series name by its narrator ("Sherlock Holmes - Die galaktischen Fälle
+// (gelesen von Peter Bocek)"). They MOVED here from internal/importer
+// (seriesNarratorQualifiers), where they were measured over the full 1.13M-book libex
+// dump, unchanged and in their order, so the importer, pkg/check and internal/audit
+// read one list. Counts are distinct series titles and the books behind them. Every
+// entry is lowercase ASCII and matched against the group's slug, so one entry covers
+// "Hörspiele" and "Horspiele" alike.
+//
+// "read by" and "lu par" were deliberately left out of it by that measurement: neither
+// occurs in the trailing-bracket position anywhere in the dump, and both occur
+// elsewhere as false positives («"À la recherche du temps perdu" lu par de grands
+// acteurs» credits "great actors"). A bracketed "(Read by X)" is still read, but only
+// through the title rule's NAME bound (narratorCredit), which is what keeps it off
+// prose.
+var SeriesNarratorLeadIns = []string{
+	"gelesen von",    // 15 series titles, 446 books - German "read by"
+	"narrated by",    // 3 titles, 91 books
+	"gesprochen von", // 1 title, 8 books - German "spoken by"
+	"horspiele von",  // 2 titles, 6 books - German "audio dramas by"
+}
+
+// recordingFormatPhrases are the production statements a whole bracketed group may
+// make, keyed by the group's slug (model.SlugifyWhole, so case, spacing, hyphens and
+// diacritics are not identity): an abridgement either way, a full-cast recording and a
+// dramatization. seriesNote's catalogue-note vocabulary (formatNotes) is this set
+// plus the notes that are not recording statements.
+var recordingFormatPhrases = map[string]bool{
+	"abridged": true, "unabridged": true, "gekurzt": true, "ungekurzt": true,
+	"full-cast": true, "full-cast-edition": true, "full-cast-editions": true,
+	"full-cast-production": true, "full-cast-recording": true,
+	"dramatized": true, "dramatised": true,
+	"dramatized-adaptation": true, "dramatised-adaptation": true,
+	"dramatization": true, "dramatisation": true,
+	"dramatized-version": true, "full-cast-dramatization": true,
+}
+
+// recordingGroup reports whether one bracketed group is a recording qualifier and
+// nothing else: a production phrase, a series narrator lead-in followed by a credit,
+// or a narrator credit under the title rule's name bound. A group holding a further
+// bracket ("((gelesen von Peter)", which the group pattern matches from its first
+// opener) is never one - stripping it would leave a dangling bracket.
+func recordingGroup(group string) bool {
+	inner := groupContents(group)
+	if inner == "" || strings.ContainsAny(inner, "()[]") {
+		return false
+	}
+	slug := model.SlugifyWhole(inner)
+	if recordingFormatPhrases[slug] {
+		return true
+	}
+	for _, lead := range SeriesNarratorLeadIns {
+		if rest, ok := strings.CutPrefix(slug, strings.ReplaceAll(lead, " ", "-")+"-"); ok && rest != "" {
+			return true
+		}
+	}
+	return narratorCredit(inner)
+}
+
+// StripSeriesRecordingQualifiers returns a series name without the recording
+// qualifiers it ends in, and whether it carried any. Two shapes are read:
+//
+//   - trailing BRACKETED groups that are recording qualifiers (recordingGroup), any
+//     number of them; a language edition or ordering group among them is KEPT, in
+//     place, so "Horatio Hornblower (publication order) (abridged)" is "Horatio
+//     Hornblower (publication order)" and a language edition stays the edition it is;
+//   - a trailing narrator SEGMENT after a separator ("Harry Potter - Gesprochen von
+//     Rufus Beck", "..., read by Timothy West"), held to exactly the bound the title
+//     rule strips a narrator credit under (opensTrailingSegment + narratorCredit: a
+//     closed lead-in, then a NAME of two to six capitalized words) - an unbracketed
+//     tail is otherwise indistinguishable from a name containing the words, which is
+//     why "Classic Stories Read by Celebrities" stays.
+//
+// The first group that is neither a recording qualifier nor a kept edition/ordering
+// group stops the reading, and a name that would be left with no letter or digit is
+// returned unchanged (ok false). It is idempotent.
+func StripSeriesRecordingQualifiers(name string) (base string, ok bool) {
+	if !strings.ContainsAny(name, ")]") && !mentionsNarratorLeadIn(strings.ToLower(name)) {
+		return name, false // the common case: no group, no lead-in
+	}
+	s := strings.TrimSpace(name)
+	var kept []string // the edition/ordering groups peeled on the way, last first
+	dropped, stopped := false, false
+	for !stopped {
+		rest, group, peeled := peelTrailingGroup(s)
+		if !peeled {
+			break
+		}
+		switch {
+		case recordingGroup(group):
+			dropped = true
+		case groupLanguage(group) != "" || groupOrdering(group) != "":
+			kept = append(kept, group)
+		default:
+			// Neither: the reading stops and the group stays where it is - which
+			// also means no narrator segment can be trailing.
+			stopped = true
+			continue
+		}
+		s = rest
+	}
+	if !stopped {
+		if cut, found := trailingNarratorSegment(s); found {
+			s, dropped = cut, true
+		}
+	}
+	if !dropped {
+		return name, false
+	}
+	for i := len(kept) - 1; i >= 0; i-- {
+		s += " " + kept[i]
+	}
+	if !hasAlnum(s) {
+		return name, false
+	}
+	return s, true
+}
+
+// trailingNarratorSegment cuts a narrator credit that is the name's LAST segment, after
+// a separator, and returns what precedes it with the separator trimmed. It is the
+// series twin of dropNarratorQualifier's trailing arm, over the same two tests.
+func trailingNarratorSegment(s string) (string, bool) {
+	if !mentionsNarratorLeadIn(strings.ToLower(s)) {
+		return s, false
+	}
+	for i := range s {
+		if i == 0 || !opensTrailingSegment(s[:i]) || !narratorCredit(s[i:]) {
+			continue
+		}
+		head := strings.TrimSpace(trailingSeparatorRE.ReplaceAllString(s[:i], ""))
+		if !hasAlnum(head) {
+			return s, false
+		}
+		return head, true
+	}
+	return s, false
+}
+
+// IsRecordingQualifiedSeriesName reports whether a series name carries a recording
+// qualifier (StripSeriesRecordingQualifiers would remove one).
+func IsRecordingQualifiedSeriesName(name string) bool {
+	_, ok := StripSeriesRecordingQualifiers(name)
+	return ok
+}

@@ -224,12 +224,18 @@ func seriesNote(group string) bool {
 }
 
 // formatNotes are the one-sided format and narration notes seriesNote reads beside the
-// package's other vocabularies, keyed by slug: an abridgement either way (SER-DUP's
-// abridged list, plus its unabridged twins), a full-cast or radio-play production, and
-// the Castilian-narration note Audible's Spanish catalogue carries.
-var formatNotes = map[string]bool{
-	"abridged": true, "unabridged": true, "gekurzt": true, "ungekurzt": true,
-	"full-cast": true, "full-cast-edition": true, "full-cast-editions": true,
-	"horspiel": true, "horspiele": true,
-	"narracion-en-castellano": true,
-}
+// package's other vocabularies, keyed by slug: every recording production statement
+// (recordingFormatPhrases - an abridgement either way, a full-cast recording, a
+// dramatization), plus a Hörspiel production and the Castilian-narration note Audible's
+// Spanish catalogue carries, which are catalogue notes but not recording qualifiers
+// (recordingqualifier.go says why).
+var formatNotes = func() map[string]bool {
+	out := map[string]bool{
+		"horspiel": true, "horspiele": true,
+		"narracion-en-castellano": true,
+	}
+	for phrase := range recordingFormatPhrases {
+		out[phrase] = true
+	}
+	return out
+}()
