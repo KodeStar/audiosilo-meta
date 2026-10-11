@@ -1106,7 +1106,7 @@ func TestStripTitleNarratorQualifier(t *testing.T) {
 // so the mid-title strip reads exactly the vocabulary it was measured with.
 func TestTitleNarratorVocabularyIsASeriesSubset(t *testing.T) {
 	for _, phrase := range titlerule.TitleOnlyNarratorLeadIns {
-		if slices.Contains(titlerule.NarratorLeadIns, phrase) || slices.Contains(seriesNarratorQualifiers, phrase) {
+		if slices.Contains(titlerule.NarratorLeadIns, phrase) || slices.Contains(titlerule.SeriesNarratorLeadIns, phrase) {
 			t.Errorf("title-only lead-in %q reached a vocabulary the importer reads", phrase)
 		}
 	}
@@ -1114,8 +1114,8 @@ func TestTitleNarratorVocabularyIsASeriesSubset(t *testing.T) {
 		t.Errorf("titlerule.NarratorLeadIns = %q, want the mid-title strip's measured %q", titlerule.NarratorLeadIns, want)
 	}
 	for _, phrase := range titlerule.NarratorLeadIns {
-		if !slices.Contains(seriesNarratorQualifiers, phrase) {
-			t.Errorf("title lead-in %q is not in seriesNarratorQualifiers", phrase)
+		if !slices.Contains(titlerule.SeriesNarratorLeadIns, phrase) {
+			t.Errorf("title lead-in %q is not in titlerule.SeriesNarratorLeadIns", phrase)
 		}
 		if folded := foldCredit(phrase); folded != phrase {
 			t.Errorf("title lead-in %q is not in foldCredit form (want %q)", phrase, folded)

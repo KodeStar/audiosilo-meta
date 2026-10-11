@@ -114,7 +114,7 @@ func (c *composer) addWork(s sections) {
 	// One series row for every lookup the submission makes, so the gates and the
 	// placement judge the same authors.
 	seriesRow := c.formSeriesRow(s)
-	ctx := c.titleContextFor(title, s.get(fWorkSeriesName), seriesRow)
+	ctx := c.titleContextFor(title, formSeriesName(s), seriesRow)
 	if c.checkSeriesVolume(ctx) {
 		return
 	}
@@ -599,12 +599,28 @@ func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
 	return importer.SeriesRowFor(splitNames(s.get(fWorkAuthors)), []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}, s.get(fRecPublisher), lang, slugOf)
 }
 
+// formSeriesName is the form's series name as every series lookup reads it: with
+// its trailing RECORDING QUALIFIERS removed (titlerule.StripSeriesRecordingQualifiers,
+// the rule the bulk importer cleans a claim by), so "Harry Potter (Narrated by Stephen
+// Fry)" or "Discworld (abridged)" extends the series it is a recording of rather than
+// composing a second series beside it.
+func formSeriesName(s sections) string {
+	name := s.get(fWorkSeriesName)
+	if base, ok := titlerule.StripSeriesRecordingQualifiers(name); ok {
+		return base
+	}
+	return name
+}
+
 // placeInSeries adds the work to the named series (creating it or extending an
 // existing one). It is a no-op when no series name is given.
 func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, sourceRef string) {
-	name := s.get(fWorkSeriesName)
+	name := formSeriesName(s)
 	if name == "" {
 		return
+	}
+	if raw := s.get(fWorkSeriesName); raw != name {
+		c.note("series name %q states a recording qualifier (a narrator or a production: a fact about the recording, not the series) - read as %q", raw, name)
 	}
 	posRaw := s.get(fWorkSeriesPosition)
 	if posRaw == "" {

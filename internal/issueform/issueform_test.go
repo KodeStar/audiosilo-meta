@@ -1042,3 +1042,27 @@ func TestTemplateAliases(t *testing.T) {
 		t.Fatalf("data:add-work alias failed: %q %v", res.Status, res.Messages)
 	}
 }
+
+// A series name stating a recording qualifier - a narrator credit, an abridgement, a
+// production - extends the series it is a recording of rather than composing a second
+// series beside it (titlerule.StripSeriesRecordingQualifiers, the importer's rule),
+// and the verdict says how the name was read.
+func TestAddWorkReadsARecordingQualifiedSeriesName(t *testing.T) {
+	for _, name := range []string{"Existing Series (Narrated by Ed Reader)", "Existing Series (abridged)", "Existing Series - Gesprochen von Ed Reader"} {
+		dir := seedTree(t)
+		body := addWorkBody("Sequel Book", "Jane Doe", "en", "Ed Reader", "", "web", true)
+		body = strings.Replace(body, field(fWorkSeriesName, ""), field(fWorkSeriesName, name), 1)
+		body = strings.Replace(body, field(fWorkSeriesPosition, ""), field(fWorkSeriesPosition, "2"), 1)
+		res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+		if res.Status != StatusOK {
+			t.Fatalf("%q: status = %q, messages = %v", name, res.Status, res.Messages)
+		}
+		series := readFile(t, dir, "series/ex/existing-series.json")
+		if !strings.Contains(series, "sequel-book") || strings.Contains(series, name) {
+			t.Errorf("%q: existing series was not extended, or a second series was composed:\n%s", name, series)
+		}
+		if !anyContains(res.Messages, `read as "Existing Series"`) {
+			t.Errorf("%q: the verdict does not say how the name was read: %v", name, res.Messages)
+		}
+	}
+}

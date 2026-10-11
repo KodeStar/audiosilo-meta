@@ -155,70 +155,34 @@ func NormalizeISBN(raw string) (isbn string, ok bool) {
 	return isbn, true
 }
 
-// seriesNarratorQualifiers are the lead-in phrases of a trailing parenthetical
-// that qualifies a series name BY ITS NARRATOR rather than naming a different
-// series: "Sherlock Holmes - Die galaktischen Fälle (gelesen von Peter Bocek)".
-// The qualifier is an artifact of one retailer listing each re-narration as its
-// own series - four of them for that one title - so a single book minted FOUR
-// works, each in a series of its own. Narration is modeled by
-// recording.narrators; it is not part of a series' identity.
+// cleanSeriesName strips the trailing RECORDING QUALIFIERS from a series name, so
+// every production of one serial - each narration, the abridged and the full-cast
+// recordings, a dramatized adaptation - resolves to ONE series. The rule and its
+// vocabularies are titlerule.StripSeriesRecordingQualifiers
+// (internal/titlerule/recordingqualifier.go), the one reader pkg/check's
+// series-recording-qualifier advisory and the intake form ask too.
 //
-// This is the same class of see-through as the "(Full-Cast Edition)" production
-// qualifier on a work title (recordings.go), and it is held to the same
-// evidence bar as roleQualifiers and the AI vocabulary: measured over the full
-// dump, in the trailing-bracket position only, and CLOSED. Counts are distinct
-// series titles and the books behind them.
+// It began here as the narrator see-through alone ("Sherlock Holmes - Die
+// galaktischen Fälle (gelesen von Peter Bocek)": one retailer listing each
+// re-narration as its own series minted FOUR works for one book, each in a series of
+// its own), measured over the full libex dump in the trailing-bracket position. Its
+// lead-ins moved to titlerule (SeriesNarratorLeadIns) unchanged, and the reader now
+// also takes the production statements ("(abridged)", "(gekürzt)", "(Full-Cast
+// Editions)", "[Dramatized Adaptation]") and the separator-form narrator credit
+// under the title rule's name bound ("Harry Potter - Gesprochen von Rufus Beck"),
+// which minted the recording-variant series the tree held 189 of on 2026-10-11 -
+// "Harry Potter (Full-Cast Editions)" and "Discworld: Tiffany Aching (abridged)"
+// among them, each beside its plain series and stamping a second series onto every
+// book. Narration and production are modeled on the recording
+// (recording.narrators, recording.abridged); they are not part of a series' identity.
 //
-// Keys are in foldCredit form (lowercased, diacritics folded), so one entry
-// covers "Hörspiele" and "Horspiele" alike.
-//
-// Deliberately NOT included, though both were candidates: "read by" and "lu
-// par". Neither occurs in the trailing-bracket position anywhere in the dump,
-// and both occur elsewhere as false positives - "A Read by the Sea Wedding
-// Romance" is a title, and «"À la recherche du temps perdu" lu par de grands
-// acteurs» credits "great actors" rather than a person. Adding a phrase the
-// data does not attest would be a guess at what a retailer might emit, which is
-// exactly what this vocabulary style refuses. Each is one line away the day a
-// dump carries one.
-var seriesNarratorQualifiers = []string{
-	"gelesen von",    // 15 series titles, 446 books - German "read by"
-	"narrated by",    // 3 titles, 91 books
-	"gesprochen von", // 1 title, 8 books - German "spoken by"
-	"horspiele von",  // 2 titles, 6 books - German "audio dramas by"
-}
-
-// cleanSeriesName strips a trailing narrator qualifier from a series name so
-// every narration of one serial resolves to ONE series. The marker must be a
-// trailing parenthetical (or bracket) whose content BEGINS with a listed phrase
-// at a word boundary and continues with something: a bare "(gelesen von)" names
-// nobody, and a strip that would leave an empty name is refused (the dump does
-// carry series titles that are nothing but a bracket).
-//
-// Only the trailing bracket is read. The dump also spells the qualifier
-// dash-separated ("Sherlock Holmes gelesen von Rupert Pichler"), which this
-// deliberately does not touch: an unbracketed tail is indistinguishable from a
-// series name that legitimately contains the words, and the bracketed form is
-// what the measurement covers.
+// A name that is nothing but its qualifier, or whose qualifier names nobody, is
+// returned as written, as is a language edition or reading-order group (kept in
+// place: "X [German Edition] (gekürzt)" is "X [German Edition]").
 func cleanSeriesName(name string) string {
 	trimmed := strings.TrimSpace(name)
-	if !strings.ContainsAny(trimmed, closeBracketChars) {
-		return trimmed
-	}
-	m := trailingParenRE.FindStringSubmatchIndex(trimmed)
-	if m == nil {
-		return trimmed
-	}
-	marker := foldCredit(trimmed[m[2]:m[3]])
-	for _, phrase := range seriesNarratorQualifiers {
-		rest, found := strings.CutPrefix(marker, phrase)
-		if !found || continuesWord(rest) || strings.TrimSpace(rest) == "" {
-			continue
-		}
-		stripped := strings.TrimSpace(trimmed[:m[0]])
-		if stripped == "" || !bracketsBalanced(stripped) {
-			continue
-		}
-		return stripped
+	if base, ok := titlerule.StripSeriesRecordingQualifiers(trimmed); ok {
+		return base
 	}
 	return trimmed
 }

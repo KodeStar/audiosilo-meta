@@ -191,7 +191,7 @@ func (c *composer) outsideTakeover(s sections, t *takeover) (unapplied []string,
 		unapplied = append(unapplied, fRecAbridged)
 	}
 	title := s.get(fWorkTitle)
-	return unapplied, title != "" && titleKey(title, s.get(fWorkSeriesName)) != titleKey(c.works[t.ref.Work].Title, "")
+	return unapplied, title != "" && titleKey(title, formSeriesName(s)) != titleKey(c.works[t.ref.Work].Title, "")
 }
 
 // identityMismatch lists how the submission describes a different book or
