@@ -406,9 +406,10 @@ const (
 	// anyTranslationSQL settles DB.hasTranslations once per snapshot and
 	// proves the table a version 7 artifact claims.
 	anyTranslationSQL = `SELECT EXISTS(SELECT 1 FROM translations)`
-	// anySeriesTranslationSQL settles DB.hasSeriesTranslations once per snapshot:
-	// a probe of the translations primary key by its kind prefix.
-	anySeriesTranslationSQL = `SELECT EXISTS(SELECT 1 FROM translations WHERE kind = 'series')`
+	// seriesTranslatorsSQL settles DB.seriesTranslators once per snapshot: every
+	// series that states a translation_of, read off the translations table by its
+	// kind prefix (TestSeriesTranslatorsReadIsIndexed).
+	seriesTranslatorsSQL = `SELECT DISTINCT id FROM translations WHERE kind = 'series'`
 	// seriesShapeSQL proves the three series columns a version 7 artifact claims -
 	// every one the gated reads name - and reads no row (LIMIT 0): a column that is
 	// missing fails the PREPARE, which is the whole check.

@@ -666,7 +666,7 @@ name+count) over the ids the page holds - a scoped page is 100% one kind, so a
 per-hit query there would be a whole page of sequential round-trips. The ABS
 facade's work search goes through the same `ftsHits`, so a ranking change lands
 on both surfaces (the three query-side boosts do NOT: they sit in
-`DB.search`). The two WORK boosts apply to `works/search` too and
+`DB.search` and its `searchPage`). The two WORK boosts apply to `works/search` too and
 to that scope ONLY, since the ids they resolve are always works (the third, the
 exact-series-name ranking below, applies to the combined search and
 `series/search` instead); a literal path
@@ -1020,7 +1020,7 @@ so bm25 ties them and the order is whatever the tie falls to.
 It is a RANKING OF THE COMPOSED PAGE, not a probe: `rankSeriesRows` runs on what
 `DB.results` built - every series row already carries its name, `ordering_of` and
 `translation_of` - and moves the tiered block to the page's first series slot,
-every other row keeping its place, so it costs NO query (nameKey over at most
+every other row keeping its relative order, so it costs NO query (nameKey over at most
 `limit` names) and needs no cost gate; `DB.search` runs it on the combined and
 series scopes only, over `searchPage`'s unranked page. A title-filtered FTS probe
 that also pulled an exact name the page lacked was measured on the 282k-work
@@ -1494,9 +1494,10 @@ variant's `ordering_of` and `ordering_of_name` (the primary's name, through one
 more primary-key join spelled only when `hasOrderings`), all from
 `seriesSummariesByIDSQL(ph, languages, orderings)`'s one row, and `translation_of`
 in the series detail's `SeriesTranslation` shape, one batched read of the
-translations primary key per page (`seriesTranslationOfByIDSQL`, no query while
-`hasSeriesTranslations` - a load-time EXISTS over the series kind prefix,
-`anySeriesTranslationSQL` - is false), composed by `seriesResultsByID` - and a coverage row
+translations primary key per page (`seriesTranslationOfByIDSQL`, over only the
+page's series rows in `seriesTranslators` - the load-time set of series stating a
+link, `seriesTranslatorsSQL` - so a page holding none costs no query), composed by
+`seriesResultsByID` - and a coverage row
 the work's `language`. Measured over the 281k-work
 artifact (median ms, base / head no-lang / `lang=en` / `lang=de`): `search?q=the`
 196 / 181 / 336 / 223, `works/search?q=the` 327 / 318 / 333 / 220, `search?q=book`

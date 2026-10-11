@@ -26,8 +26,11 @@ import "sort"
 //
 // and the tiered block takes the place of the page's FIRST series row, each
 // member dropped from wherever else it sat. The partial matches ("Harry Potter
-// (Full-Cast Editions)") follow in their bm25 order; works and people keep their
-// slots, the work boosts included. A same-named translation keeps its place
+// (Full-Cast Editions)") follow in their bm25 order, and works and people keep
+// their RELATIVE order: the rows ahead of the first series row - the work boosts
+// always among them - keep their slots, and a row between the first series row
+// and an exact one moves down by the exact rows lifted past it. A same-named
+// translation keeps its place
 // ahead of the partial matches: it is an exact match the reader may well want,
 // and the site labels it ("Translation of Harry Potter"), which is what makes
 // three identical names readable at all.
@@ -43,7 +46,12 @@ import "sort"
 // produce: an exact name is the shortest series row holding every query word, so
 // it ranks at the top of the series rows and is on the page whenever the page
 // holds any of them. Over 400 random series names and the 238 franchises carrying
-// a translation or an ordering variant, probe and page agreed on every page.
+// a translation or an ordering variant, probe and page agreed on every page. The
+// one gap is a window smaller than the tie: several same-named series score
+// alike, so which of them reach a page shorter than their count is bm25's tie
+// order, and the PRIMARY may be the one left off (series/search with limit=2 over
+// the SameNamedSeries fixture holds a translation and the variant). No default
+// window is that small against any franchise in the catalogue.
 //
 // WITH ?lang= there is nothing more to do: the page is already filtered at the
 // source, so under lang=de the English primary is not on it and the German
@@ -98,8 +106,9 @@ func rankExactSeries(exact []seriesResult) {
 // rankSeriesRows applies the rule to one composed page: the series rows whose
 // name IS q, ranked by rankExactSeries, take the place of the page's first series
 // row, and every other row keeps its relative order. The page keeps its length
-// and its rows; only series rows move. A page with no such row is returned as it
-// came.
+// and its rows, and only series rows are reordered - a row the lifted block
+// passes moves down a slot per row lifted past it. A page with no such row is
+// returned as it came.
 func rankSeriesRows(page []any, q string) []any {
 	want := nameKey(q)
 	if want == "" {

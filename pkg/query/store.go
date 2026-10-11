@@ -69,11 +69,13 @@ type DB struct {
 	// "no orderings at all" (hasOrderings).
 	hasTranslations   bool
 	orderingPrimaries map[string]bool
-	// hasSeriesTranslations narrows hasTranslations to the series family, for
-	// the one read that asks of series alone on every search page holding a
-	// series row (seriesTranslationOfByID), so an artifact holding work links
-	// alone still pays no query there.
-	hasSeriesTranslations bool
+	// seriesTranslators narrows hasTranslations to the series family, for the
+	// one read that asks of series alone on every search page holding a series
+	// row (seriesTranslationOfByID): the set of series that state a
+	// translation_of, so a page none of whose series rows translates anything -
+	// almost every page, and every page of an artifact holding work links alone -
+	// pays no query there.
+	seriesTranslators map[string]bool
 
 	// log is the injected logger (SetLogger), for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing).
@@ -328,7 +330,7 @@ func (s *DB) loadStats() error {
 				s.path, s.schemaVersion, err)
 		}
 		if s.hasTranslations {
-			if err := s.db.QueryRow(anySeriesTranslationSQL).Scan(&s.hasSeriesTranslations); err != nil {
+			if err := s.loadSeriesTranslators(); err != nil {
 				return fmt.Errorf("%s: series translations: %w", s.path, err)
 			}
 		}
@@ -369,6 +371,24 @@ func (s *DB) loadOrderingPrimaries() error {
 	s.orderingPrimaries = make(map[string]bool, len(ids))
 	for _, id := range ids {
 		s.orderingPrimaries[id] = true
+	}
+	return nil
+}
+
+// loadSeriesTranslators settles DB.seriesTranslators (seriesTranslatorsSQL).
+// Only loadStats calls it, once per snapshot, behind the version gate.
+func (s *DB) loadSeriesTranslators() error {
+	rows, err := s.db.Query(seriesTranslatorsSQL)
+	if err != nil {
+		return err
+	}
+	ids, err := scanIDs(rows)
+	if err != nil {
+		return err
+	}
+	s.seriesTranslators = make(map[string]bool, len(ids))
+	for _, id := range ids {
+		s.seriesTranslators[id] = true
 	}
 	return nil
 }
@@ -898,16 +918,20 @@ func (s *DB) seriesResultsByID(ctx context.Context, ids []string) (map[string]se
 }
 
 // seriesTranslationOfByID returns, for each series id that translates another,
-// the series it translates, in target id order - one query per chunk over a whole
-// search page. It answers without a query while the artifact holds no series
-// translation at all (DB.hasSeriesTranslations, false on every artifact older
-// than languagesSchemaVersion), so an empty layer costs a search page nothing.
+// the series it translates, in target id order - one query per chunk over the
+// page's series rows that state a link. It answers without a query when none of
+// them does (DB.seriesTranslators, empty on every artifact older than
+// languagesSchemaVersion), so a page of untranslated series - and an empty layer
+// - costs a search page nothing.
 func (s *DB) seriesTranslationOfByID(ctx context.Context, ids []string) (map[string][]SeriesTranslation, error) {
 	out := map[string][]SeriesTranslation{}
-	if !s.hasSeriesTranslations {
-		return out, nil
+	var linked []string
+	for _, id := range ids {
+		if s.seriesTranslators[id] {
+			linked = append(linked, id)
+		}
 	}
-	err := eachChunk(ids, func(ph string, args []any) error {
+	err := eachChunk(linked, func(ph string, args []any) error {
 		rows, err := s.db.QueryContext(ctx, seriesTranslationOfByIDSQL(ph), args...)
 		if err != nil {
 			return err
