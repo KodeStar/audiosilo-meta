@@ -515,7 +515,14 @@ const (
 	// turn red a link it did not write, so it is advisory where the work-level
 	// rule (a stated language on both sides) is a problem.
 	AdvisorySeriesTranslationSameLanguage = "series-translation-same-language"
-	AdvisoryUnclassified                  = "unclassified"
+	// AdvisorySeriesRecordingQualifier is a series whose NAME carries a recording
+	// qualifier - a narrator credit, an abridgement, a full-cast or dramatized
+	// production - and states no translation or ordering link (seriesadvisories.go).
+	AdvisorySeriesRecordingQualifier = "series-recording-qualifier"
+	// AdvisoryDuplicateSeries is a series every member of which another series
+	// already lists at the same position (seriesadvisories.go).
+	AdvisoryDuplicateSeries = "duplicate-series"
+	AdvisoryUnclassified    = "unclassified"
 )
 
 // advisoryMarkers maps each class to the marker its rule's message carries. It is
@@ -556,6 +563,10 @@ var advisoryMarkers = []struct {
 	// The series translation links whose sides derive one language (languages.go).
 	// Appended for the same reason.
 	{AdvisorySeriesTranslationSameLanguage, seriesSameLanguage, "series translation links whose two sides derive the same language"},
+	// The recording-variant series (seriesadvisories.go). Appended, like every
+	// class since the first: the census line is read by column position.
+	{AdvisorySeriesRecordingQualifier, recordingQualifierMarker, "recording-qualified series names"},
+	{AdvisoryDuplicateSeries, duplicateSeriesMarker, "duplicate series"},
 }
 
 // AdvisoryClass names the advisory class a warning belongs to, or

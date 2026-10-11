@@ -481,6 +481,8 @@ func load(lst *pack.Listing, rdr *pack.Reader) (Result, *pathIndex) {
 	checkNormalizedDuplicateWorks(identity, idx, warn)
 	checkOrphanPeople(cat, recs, idx, warn)
 	checkSidecarPositionScale(cat, idx, warn)
+	checkSeriesRecordingQualifier(cat, idx, warn)
+	checkDuplicateSeries(cat, idx, warn)
 
 	sortProblems(l.probs)
 	sortProblems(l.warns)
