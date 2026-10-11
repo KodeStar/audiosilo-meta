@@ -118,7 +118,8 @@ func TestExactSeriesNameObeysTheLanguageFilter(t *testing.T) {
 }
 
 // hpGroup is the same-named "Harry Potter" set in the order the group rule ranks
-// it: the primary, the two translations by id, then the variant.
+// it: the primary, the two translations (in the page's order, which on this
+// fixture is id order), then the variant.
 var hpGroup = hpRanked[:4]
 
 // TestSameNamedSeriesLeadWithThePrimaryWhileTyping is the half-typed query: no
@@ -368,16 +369,23 @@ func TestRankSeriesRows(t *testing.T) {
 			[]any{primary, w("a"), partial, de, p("p"), chrono, w("b")},
 		},
 		{
-			"two groups are each ranked in their own slots",
-			[]any{chrono, s("b-x", "X"), de, s("a-x", "x!"), primary},
+			"two groups, each ranked by tier in their own slots",
+			[]any{chrono, s("b-x", "X"), es, s("a-x", "x!"), de, primary},
 			"harry",
-			[]any{primary, s("a-x", "x!"), de, s("b-x", "X"), chrono},
+			// es before de: one tier keeps the page's order, not id order.
+			[]any{primary, s("b-x", "X"), es, s("a-x", "x!"), de, chrono},
 		},
 		{
-			"a group beside the whole-query lift is ranked too",
-			[]any{w("a"), s("b-x", "X"), partial, s("a-x", "X")},
-			"harry potter full cast editions",
-			[]any{w("a"), partial, s("a-x", "X"), s("b-x", "X")},
+			"an all-primary group is left as it came",
+			[]any{w("a"), s("b-x", "Reapers MC"), partial, s("a-x", "Reaper's MC")},
+			"reaper",
+			[]any{w("a"), s("b-x", "Reapers MC"), partial, s("a-x", "Reaper's MC")},
+		},
+		{
+			"the lift breaks ties by id, a group beside it by page order",
+			[]any{w("a"), s("b-x", "X"), es, s("a-x", "X"), de},
+			"x",
+			[]any{w("a"), s("a-x", "X"), s("b-x", "X"), es, de},
 		},
 		{"no series row", []any{w("a"), p("b")}, "harry potter", []any{w("a"), p("b")}},
 		{"no term", []any{partial, primary}, "!!", []any{partial, primary}},
