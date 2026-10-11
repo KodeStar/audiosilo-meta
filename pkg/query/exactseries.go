@@ -1,10 +1,15 @@
 package query
 
-import "sort"
+import (
+	"slices"
+	"sort"
+)
 
 // Exact-series-name ranking: a query that IS a series' name puts the series of
 // that name FIRST among the page's series rows, and the PRIMARY series - not a
-// translation, not a reading-order variant - leads the same-named rest.
+// translation, not a reading-order variant - leads the same-named rest; and any
+// series rows of the page sharing one name, typed whole or not, are put in that
+// same order inside the slots they hold.
 //
 // THE BUG. A search for "harry potter" listed three series rows all named
 // "Harry Potter": the English series and its German and Spanish editions
@@ -35,6 +40,16 @@ import "sort"
 // and the site labels it ("Translation of Harry Potter"), which is what makes
 // three identical names readable at all.
 //
+// THE GROUPS. The lift needs the WHOLE name, and a reader is still typing it:
+// "harry pot" or "potter" holds the same four "Harry Potter" rows, tied in bm25
+// just the same, and nothing lifts them. So every set of two or more series rows
+// on the page sharing one name under nameKey - the exact block included, which
+// the lift has already put in this order - is ranked by the same tier-then-id
+// rule INTO THE SLOTS THE SET ALREADY HOLDS: no other row moves, no row joins the
+// page, and the set does not move up; only who sits in its slots changes. A set
+// of primaries alone is put in id order, which is the tie order bm25 falls to
+// for identical names in any case.
+//
 // WHY THE PAGE AND NOT A PROBE. The rule reads only rows the page already
 // composed: seriesResultsByID has read every series row's name, ordering_of and
 // translation_of in its batches, so the ranking costs no query at all - nameKey
@@ -61,12 +76,21 @@ import "sort"
 // AN OLDER ARTIFACT (or an empty languages layer) states no link, so every exact
 // name is tier 0 and the rule is "the exact names first, by id".
 //
-// BYTE-IDENTITY. A query that names no series on the page outright leaves the
-// page exactly as it was, and so does one whose exact names already led the
-// series rows in tier order. Measured on the 282k-work artifact, over 400 random
+// BYTE-IDENTITY. A page that names no series outright and holds no two series of
+// one name is exactly as it came, and so is one whose same-named rows already sat
+// in tier-then-id order. Measured on the 282k-work artifact, over 400 random
 // series names and the 238 franchise names carrying a translation or an ordering
-// variant, on both surfaces: one page moved ("Of Magic", whose exact name now
-// leads "Magic of Magic"), and the timings were within noise of the base.
+// variant, on both surfaces: the lift moved one page ("Of Magic", whose exact
+// name now leads "Magic of Magic"), and the timings were within noise of the
+// base. The groups, measured over the typing prefixes of the same names (a first
+// word cut to three letters, the first word, the first word plus half the second,
+// the last word): of the random names' 1,152 prefixes, 2 combined and 4 series
+// pages moved, every one the real case of the bug - "Kin", "King", "Kings" left
+// the Kingsbridge reading-order variant ahead of its primary; of the franchise
+// names' 727, the same Kingsbridge pages and one more, a pair of primaries put in
+// id order ("reaper": "Reaper's MC" and "Reapers MC", one name under the
+// possessive fold). The real Harry Potter series already tie in tier order. The
+// grouping costs about 6us a page.
 
 // seriesTier ranks same-named series: lower leads (see the file header).
 type seriesTier int
@@ -131,7 +155,7 @@ func rankSeriesRows(page []any, q string) []any {
 		}
 	}
 	if len(exact) == 0 {
-		return page
+		return rankSameNamedGroups(page)
 	}
 	rankExactSeries(exact)
 	out := make([]any, 0, len(page))
@@ -145,6 +169,62 @@ func rankSeriesRows(page []any, q string) []any {
 			continue
 		}
 		out = append(out, r)
+	}
+	return rankSameNamedGroups(out)
+}
+
+// rankSameNamedGroups is the rule's second half (see THE GROUPS in the file
+// header): every set of two or more series rows on the page sharing one name
+// under nameKey is ranked by rankExactSeries INTO THE SLOTS THE SET ALREADY
+// HOLDS, so no other row moves and nothing joins the page. A page holding no such
+// set is returned as it came; one is copied before it is reordered, never
+// rewritten in place. After the whole-query lift the exact rows are one set
+// already in tier order, so this leaves them where the lift put them.
+func rankSameNamedGroups(page []any) []any {
+	var keys []string // the nameKey of each page row, "" for a non-series row
+	var count map[string]int
+	grouped := false
+	for i, r := range page {
+		sr, ok := r.(seriesResult)
+		if !ok {
+			continue
+		}
+		k := nameKey(sr.Name)
+		if k == "" {
+			continue
+		}
+		if keys == nil {
+			keys = make([]string, len(page))
+			count = map[string]int{}
+		}
+		keys[i] = k
+		count[k]++
+		if count[k] > 1 {
+			grouped = true
+		}
+	}
+	if !grouped {
+		return page
+	}
+	out := slices.Clone(page)
+	done := map[string]bool{}
+	for i, k := range keys {
+		if k == "" || count[k] < 2 || done[k] {
+			continue
+		}
+		done[k] = true
+		var slots []int
+		var rows []seriesResult
+		for j := i; j < len(keys); j++ {
+			if keys[j] == k {
+				slots = append(slots, j)
+				rows = append(rows, page[j].(seriesResult))
+			}
+		}
+		rankExactSeries(rows)
+		for n, slot := range slots {
+			out[slot] = rows[n]
+		}
 	}
 	return out
 }

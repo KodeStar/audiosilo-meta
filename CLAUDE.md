@@ -1032,8 +1032,15 @@ for the 638 real series names tried, on both surfaces; the page ranking measured
 within noise of the base on every query timed. `?lang=` needs nothing: the page is
 filtered at the source, so under `lang=de` the English primary is not on it and
 the German edition leads. An older artifact or an empty layer states no link, so
-every exact name is a primary, by id. A page naming no series outright is
-byte-identical; measured, the rule moved 1 of 400 random series-name pages ("Of
+every exact name is a primary, by id. The same tier-then-id order also ranks
+every GROUP of two or more page rows sharing one series name, inside the slots
+the group already holds (`rankSameNamedGroups`: no other row moves, nothing joins
+the page), so a half-typed "harry pot" or "potter" - no whole name, the same
+bm25 tie - leads with the primary too. Measured over 1,879 typing prefixes of
+the names below on both surfaces, the groups moved Kingsbridge's
+reading-order variant behind its primary ("Kin", "King", "Kings") and put one
+pair of same-named primaries in id order ("reaper"), nothing else. A page
+naming no series outright and holding no such group is byte-identical; measured, the rule moved 1 of 400 random series-name pages ("Of
 Magic" now leads "Magic of Magic") and none of the 238 franchise names carrying a
 translation or ordering variant. The fixture is `artifacttest.SameNamedSeries()`,
 whose primary id deliberately sorts after its same-named siblings so the bm25 tie

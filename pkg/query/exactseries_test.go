@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 const hpPrimary = "the-harry-potter-series"
@@ -116,26 +117,133 @@ func TestExactSeriesNameObeysTheLanguageFilter(t *testing.T) {
 	}
 }
 
-// TestExactSeriesNameOnlyFiresOnAWholeName: a query that names no series outright
-// moves nothing, so its page is the unranked page byte for byte.
-func TestExactSeriesNameOnlyFiresOnAWholeName(t *testing.T) {
-	db := openTestDB(t, artifacttest.Build(t, artifacttest.SameNamedSeries()))
+// hpGroup is the same-named "Harry Potter" set in the order the group rule ranks
+// it: the primary, the two translations by id, then the variant.
+var hpGroup = hpRanked[:4]
+
+// TestSameNamedSeriesLeadWithThePrimaryWhileTyping is the half-typed query: no
+// whole-query lift fires on "harry pot" or "potter", but the four series named
+// "Harry Potter" still tie in bm25, so the group is ranked inside its own slots -
+// the primary first - on both surfaces, while the partial match and the works
+// keep the slots they held on the unranked page.
+func TestSameNamedSeriesLeadWithThePrimaryWhileTyping(t *testing.T) {
+	db, ts := newTestServerForCatalog(t, artifacttest.SameNamedSeries())
 	ctx := context.Background()
-	for _, q := range []string{"harry", "potter", "harry pot", "harry potter full", "the", "a"} {
+	for _, q := range []string{"harry", "potter", "harry pot", "Harry Pott"} {
 		for _, kind := range []searchKind{kindAny, kindSeries} {
+			plain, err := db.searchPage(ctx, kind, q, 20, nil)
+			if err != nil {
+				t.Fatal(err)
+			}
+			// The premise: unranked, the primary does not lead the group.
+			if first := firstSeries(plain); first == hpPrimary {
+				t.Fatalf("plain %q %q page leads with the primary: the fixture no longer shows the bug", kind, q)
+			}
 			got, err := db.search(ctx, kind, q, 20, nil)
 			if err != nil {
 				t.Fatal(err)
 			}
-			want, err := db.searchPage(ctx, kind, q, 20, nil)
-			if err != nil {
-				t.Fatal(err)
+			if len(got) != len(plain) {
+				t.Fatalf("search(%q, %q) has %d rows, the plain page %d", kind, q, len(got), len(plain))
 			}
-			if !reflect.DeepEqual(got, want) {
-				t.Errorf("search(%q, %q) = %v, want the plain page %v", kind, q, got, want)
+			var group []string
+			for i := range got {
+				sr, ok := got[i].(seriesResult)
+				if ok && nameKey(sr.Name) == "harry potter" {
+					group = append(group, sr.ID)
+					if _, was := plain[i].(seriesResult); !was || nameKey(plain[i].(seriesResult).Name) != "harry potter" {
+						t.Errorf("search(%q, %q) row %d: group row %s took a slot the group did not hold", kind, q, i, sr.ID)
+					}
+					continue
+				}
+				if !reflect.DeepEqual(got[i], plain[i]) {
+					t.Errorf("search(%q, %q) row %d = %v, want the plain page's %v", kind, q, i, got[i], plain[i])
+				}
+			}
+			if !slices.Equal(group, hpGroup) {
+				t.Errorf("search(%q, %q) group = %v, want %v", kind, q, group, hpGroup)
 			}
 		}
 	}
+	for _, path := range []string{"/api/v1/series/search?q=harry+pot", "/api/v1/search?q=potter"} {
+		if got := seriesRows(t, ts.URL, path); !slices.Equal(got, hpRanked) {
+			t.Errorf("%s series rows = %v, want %v", path, got, hpRanked)
+		}
+	}
+}
+
+// firstSeries is the id of a page's first series row, "" when it holds none.
+func firstSeries(page []any) string {
+	for _, r := range page {
+		if sr, ok := r.(seriesResult); ok {
+			return sr.ID
+		}
+	}
+	return ""
+}
+
+// TestSeriesRankingLeavesAPageWithoutAGroupAlone: a page naming no series outright
+// and holding no two series of one name is the unranked page byte for byte -
+// over the same-named fixture's queries that reach at most one of its names and
+// over the main fixture, whose series names are all distinct.
+func TestSeriesRankingLeavesAPageWithoutAGroupAlone(t *testing.T) {
+	ctx := context.Background()
+	for _, tc := range []struct {
+		cat     func() *model.Catalog
+		queries []string
+	}{
+		{artifacttest.SameNamedSeries, []string{"harry potter full", "full cast", "the", "a", "rowling", "stein"}},
+		{artifacttest.Fixture, []string{"a", "the", "s", "har", "reacher", "jack", "saga", "book"}},
+		{artifacttest.Languages, []string{"saga", "the", "die", "book", "buch"}},
+	} {
+		db := openTestDB(t, artifacttest.Build(t, tc.cat()))
+		for _, q := range tc.queries {
+			for _, kind := range []searchKind{kindAny, kindSeries} {
+				want, err := db.searchPage(ctx, kind, q, 20, nil)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if hasSameNamedGroup(want) {
+					t.Fatalf("searchPage(%q, %q) holds a same-named group: not a no-group page", kind, q)
+				}
+				got, err := db.search(ctx, kind, q, 20, nil)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if exactName(want, q) {
+					continue // the whole-query lift may move it; that rule is pinned above
+				}
+				if !reflect.DeepEqual(got, want) {
+					t.Errorf("search(%q, %q) = %v, want the plain page %v", kind, q, got, want)
+				}
+			}
+		}
+	}
+}
+
+// hasSameNamedGroup reports whether two series rows of a page share a nameKey.
+func hasSameNamedGroup(page []any) bool {
+	seen := map[string]bool{}
+	for _, r := range page {
+		if sr, ok := r.(seriesResult); ok {
+			k := nameKey(sr.Name)
+			if seen[k] {
+				return true
+			}
+			seen[k] = true
+		}
+	}
+	return false
+}
+
+// exactName reports whether a page holds a series named q outright.
+func exactName(page []any, q string) bool {
+	for _, r := range page {
+		if sr, ok := r.(seriesResult); ok && nameKey(sr.Name) == nameKey(q) {
+			return true
+		}
+	}
+	return false
 }
 
 // TestSeriesResultSaysWhatASeriesIs pins the additive series-hit fields: a
@@ -252,7 +360,25 @@ func TestRankSeriesRows(t *testing.T) {
 			"Harry Potter",
 			[]any{primary, de, es, chrono, partial},
 		},
-		{"no exact name", []any{w("a"), partial, chrono}, "harry pot", []any{w("a"), partial, chrono}},
+		{"no exact name, no group", []any{w("a"), partial, chrono}, "harry pot", []any{w("a"), partial, chrono}},
+		{
+			"a same-named group is ranked inside its own slots",
+			[]any{chrono, w("a"), partial, de, p("p"), primary, w("b")},
+			"harry pot",
+			[]any{primary, w("a"), partial, de, p("p"), chrono, w("b")},
+		},
+		{
+			"two groups are each ranked in their own slots",
+			[]any{chrono, s("b-x", "X"), de, s("a-x", "x!"), primary},
+			"harry",
+			[]any{primary, s("a-x", "x!"), de, s("b-x", "X"), chrono},
+		},
+		{
+			"a group beside the whole-query lift is ranked too",
+			[]any{w("a"), s("b-x", "X"), partial, s("a-x", "X")},
+			"harry potter full cast editions",
+			[]any{w("a"), partial, s("a-x", "X"), s("b-x", "X")},
+		},
 		{"no series row", []any{w("a"), p("b")}, "harry potter", []any{w("a"), p("b")}},
 		{"no term", []any{partial, primary}, "!!", []any{partial, primary}},
 		{"empty page", nil, "harry potter", nil},
