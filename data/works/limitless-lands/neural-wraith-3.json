@@ -30,6 +30,10 @@
             {
               "asin": "B0C9G5K2QR",
               "region": "uk"
+            },
+            {
+              "asin": "B0C9FV65J4",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -239,6 +243,11 @@
               "imported_at": "2026-10-09",
               "ref": "B0C9G5K2QR",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-11",
+              "ref": "B0C9FV65J4",
+              "type": "libex-import"
             }
           ],
           "work": "neural-wraith-3"
@@ -252,6 +261,59 @@
         }
       ],
       "title": "Neural Wraith 3"
+    },
+    "neural-wraith-4": {
+      "added_at": "2026-10-11",
+      "authors": [
+        "k-d-robertson"
+      ],
+      "genres": [
+        "action-adventure",
+        "cyberpunk",
+        "dystopian",
+        "science-fiction"
+      ],
+      "id": "neural-wraith-4",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stephanie-savannah-2026": {
+          "abridged": false,
+          "added_at": "2026-10-11",
+          "asin": [
+            {
+              "asin": "B0HM73GHH6",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91B83ReDcTL.jpg",
+          "id": "stephanie-savannah-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephanie-savannah"
+          ],
+          "publisher": "Podium Audio",
+          "release_date": "2026-11-17",
+          "runtime_min": 933,
+          "sources": [
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0HM73GHH6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "neural-wraith-4"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-10",
+          "ref": "B0HM73GHH6",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Neural Wraith 4"
     },
     "neuro-discipline": {
       "added_at": "2026-07-29",

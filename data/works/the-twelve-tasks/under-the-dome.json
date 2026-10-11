@@ -13701,6 +13701,10 @@
             {
               "asin": "B0FTJLZ99Z",
               "region": "uk"
+            },
+            {
+              "asin": "B0FTJGJ2PW",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -13830,6 +13834,11 @@
               "imported_at": "2026-10-04",
               "ref": "B0FTJLZ99Z",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-11",
+              "ref": "B0FTJGJ2PW",
+              "type": "libex-import"
             }
           ],
           "work": "under-the-oak-tree-volume-3-the-novel"
@@ -13843,6 +13852,59 @@
         }
       ],
       "title": "Under the Oak Tree: Volume 3 (The Novel)"
+    },
+    "under-the-oak-tree-volume-4-the-novel": {
+      "added_at": "2026-10-11",
+      "authors": [
+        "suji-kim"
+      ],
+      "genres": [
+        "fantasy",
+        "historical-fiction",
+        "paranormal-romance",
+        "romance"
+      ],
+      "id": "under-the-oak-tree-volume-4-the-novel",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "zion-jang-2026": {
+          "abridged": false,
+          "added_at": "2026-10-11",
+          "asin": [
+            {
+              "asin": "B0GS8FXMRW",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Y0bRL48cL.jpg",
+          "id": "zion-jang-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "zion-jang"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2026-11-17",
+          "runtime_min": 720,
+          "sources": [
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0GS8FXMRW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "under-the-oak-tree-volume-4-the-novel"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-10",
+          "ref": "B0GS8FXMRW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Under the Oak Tree: Volume 4 (The Novel)"
     },
     "under-the-paper-moon": {
       "added_at": "2026-07-29",

@@ -9397,6 +9397,10 @@
             {
               "asin": "B0D34DVPQ3",
               "region": "uk"
+            },
+            {
+              "asin": "B0D34C76SR",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -9472,6 +9476,11 @@
               "imported_at": "2026-10-06",
               "ref": "B0D34DVPQ3",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-11",
+              "ref": "B0D34C76SR",
+              "type": "libex-import"
             }
           ],
           "work": "shadow-lab"
@@ -9485,6 +9494,67 @@
         }
       ],
       "title": "Shadow Lab"
+    },
+    "shadow-lab-volume-three": {
+      "added_at": "2026-10-11",
+      "authors": [
+        "brendan-deneen"
+      ],
+      "genres": [
+        "short-stories",
+        "thriller-suspense"
+      ],
+      "id": "shadow-lab-volume-three",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "bailey-carr-2026": {
+          "abridged": false,
+          "added_at": "2026-10-11",
+          "asin": [
+            {
+              "asin": "B0GTN67PZW",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vQZip6-eL.jpg",
+          "id": "bailey-carr-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bailey-carr",
+            "chris-andrew-ciulla",
+            "fajer-al-kaisi",
+            "gary-bennett",
+            "hillary-huber",
+            "james-anderson-foster",
+            "lauren-fortgang",
+            "leon-nixon",
+            "megan-tusing",
+            "taylor-meskimen",
+            "tim-lounibos"
+          ],
+          "publisher": "Blackstone Publishing",
+          "release_date": "2026-11-10",
+          "runtime_min": 630,
+          "sources": [
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0GTN67PZW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shadow-lab-volume-three"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-10",
+          "ref": "B0GTN67PZW",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Shadow Lab, Volume Three"
     },
     "shadow-lab-volume-two-a-blackstone-publishing-anthology": {
       "added_at": "2026-08-02",
