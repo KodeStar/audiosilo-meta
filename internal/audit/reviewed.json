@@ -436,6 +436,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "bodenstein-kirchhoff-gekurzt"
+    ],
+    "reason": "lists 10 of the canonical series' works at the same slots and fills its free slots with Eine unbeliebte Frau: Bodenstein & Kirchhoff 1 at 1, Tiefe Wunden at 3, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
+    "target": "bodenstein-kirchhoff"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "century-trilogy-abridged"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
@@ -508,6 +517,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "erebos-gekurzt"
+    ],
+    "reason": "lists 1 of the canonical series' works at the same slots and fills its free slots with Erebos at 1, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
+    "target": "erebos"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "fearless-jones-abridged"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
@@ -521,6 +539,15 @@
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "franz-eberhofer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "grant-county-abridged"
+    ],
+    "reason": "lists 5 of the canonical series' works at the same slots and fills its free slots with Broken at 7, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
+    "target": "grant-county"
   },
   {
     "decision": "assert",
@@ -566,6 +593,15 @@
     ],
     "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; abridgement is a property of the recordings, not a series",
     "target": "j-p-beaumont"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "kevin-kerney-abridged"
+    ],
+    "reason": "lists 1 of the canonical series' works at the same slots and fills its free slots with Under the Color of Law at 6, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
+    "target": "kevin-kerney"
   },
   {
     "decision": "accept",
@@ -653,6 +689,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "redemption-abridged"
+    ],
+    "reason": "lists 3 of the canonical series' works at the same slots and fills its free slots with Return at 3, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
+    "target": "redemption"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "the-forsaken-kingdom-series-2"
     ],
     "reason": "the-forsaken-kingdom-series-2 was minted by a bad series claim and has only ever held this one Sherlock episode at 70; after the work merge it lists the survivor at the slot the target does, so the fold retires it and moves nothing",
@@ -668,6 +713,15 @@
     "target": "slash-and-pecos"
   },
   {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "sun-coast-chronicles-abridged"
+    ],
+    "reason": "lists 1 of the canonical series' works at the same slots and fills its free slots with Presumption of Guilt at 4, Ulterior Motives at 3, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
+    "target": "sun-coast-chronicles"
+  },
+  {
     "decision": "accept",
     "op": "merge-series",
     "others": [
@@ -675,6 +729,15 @@
     ],
     "reason": "the plain Chronicles of Narnia series lists the author's preferred order slot for slot",
     "target": "the-chronicles-of-narnia-authors-preferred-order"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-guardians-trilogy-abridged"
+    ],
+    "reason": "lists 2 of the canonical series' works at the same slots and fills its free slots with Stars of Fortune at 1, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
+    "target": "the-guardians-trilogy"
   },
   {
     "decision": "assert",
