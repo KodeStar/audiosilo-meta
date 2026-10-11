@@ -6951,6 +6951,10 @@
             {
               "asin": "B0H6N7861T",
               "region": "uk"
+            },
+            {
+              "asin": "B0H6N3C3GV",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -7081,6 +7085,11 @@
               "imported_at": "2026-10-09",
               "ref": "B0H6N7861T",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-11",
+              "ref": "B0H6N3C3GV",
+              "type": "libex-import"
             }
           ],
           "work": "legends-of-vandilor"
@@ -7094,6 +7103,58 @@
         }
       ],
       "title": "Legends of Vandilor"
+    },
+    "legends-of-vandilor-volume-2": {
+      "added_at": "2026-10-11",
+      "authors": [
+        "chad-r-odom"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy"
+      ],
+      "id": "legends-of-vandilor-volume-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "tiffany-vanlandingham-2026": {
+          "abridged": false,
+          "added_at": "2026-10-11",
+          "asin": [
+            {
+              "asin": "B0HM95ZL5F",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81fCCxKQbdL.jpg",
+          "id": "tiffany-vanlandingham-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tiffany-vanlandingham",
+            "tim-ratliff"
+          ],
+          "publisher": "Jailbreak Media",
+          "release_date": "2026-10-07",
+          "runtime_min": 461,
+          "sources": [
+            {
+              "imported_at": "2026-10-11",
+              "ref": "B0HM95ZL5F",
+              "type": "libex-import"
+            }
+          ],
+          "work": "legends-of-vandilor-volume-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-11",
+          "ref": "B0HM95ZL5F",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Legends of Vandilor: Volume 2"
     },
     "legends-rise": {
       "added_at": "2026-08-02",
