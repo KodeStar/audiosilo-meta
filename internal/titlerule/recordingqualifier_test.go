@@ -120,16 +120,59 @@ func TestSeriesAbridgement(t *testing.T) {
 	}
 }
 
-// The trailing narrator strip a TITLE goes through removes the separator it read too,
-// so an en dash does not survive into a retitle.
+// The trailing narrator strip removes exactly the separator the opener accepted,
+// including its spaces, without taking any of the title with it.
 func TestStripTitleQualifiersTakesTheSeparator(t *testing.T) {
-	for in, want := range map[string]string{
-		"Foo – Narrated by Ann Reader":      "Foo",
-		"Foo - Narrated by Ann Reader":      "Foo",
-		"Die Bibel. Gelesen von Rufus Beck": "Die Bibel",
+	for _, tc := range []struct {
+		name, sep string
+		accepted  bool
+	}{
+		{"colon", ": ", true},
+		{"comma", ", ", true},
+		{"period", ". ", true},
+		{"semicolon", "; ", true},
+		{"pipe", "| ", true},
+		{"hyphen", " - ", true},
+		{"en dash", " \u2013 ", true},
+		{"en dash and hyphen", " \u2013- ", true},
+		{"spaces around colon", "   :   ", true},
+		{"spaces around comma", "   ,   ", true},
+		{"spaces around period", "   .   ", true},
+		{"spaces around semicolon", "   ;   ", true},
+		{"spaces around pipe", "   |   ", true},
+		{"spaces around hyphen", "   -   ", true},
+		{"spaces around en dash", "   \u2013   ", true},
+		{"spaces around en dash and hyphen", "   \u2013-   ", true},
+		{"bare space", " ", false},
+		{"no separator", "", false},
+		{"em dash", " \u2014 ", false},
+		{"hyphen without leading space", "- ", false},
+		{"en dash without leading space", "\u2013 ", false},
+		{"colon without trailing space", ":", false},
+		{"hyphen without trailing space", " -", false},
+		{"hyphen and en dash", " -\u2013 ", false},
 	} {
-		if got := StripTitleQualifiers(in); got != want {
-			t.Errorf("StripTitleQualifiers(%q) = %q, want %q", in, got, want)
-		}
+		t.Run(tc.name, func(t *testing.T) {
+			for _, title := range []string{"Foo", "Café", "A"} {
+				head := title + tc.sep
+				in := head + "Narrated by Ann Reader"
+				want := in
+				if tc.accepted {
+					want = title
+				}
+				if got := opensTrailingSegment(head); got != tc.accepted {
+					t.Errorf("opensTrailingSegment(%q) = %v, want %v", head, got, tc.accepted)
+				}
+				if got := dropNarratorQualifier(in, strings.ToLower(in)); got != want {
+					t.Errorf("dropNarratorQualifier(%q) = %q, want %q", in, got, want)
+				}
+				if got := StripTitleQualifiers(in); got != want {
+					t.Errorf("StripTitleQualifiers(%q) = %q, want %q", in, got, want)
+				}
+				if got, ok := StripSeriesRecordingQualifiers(in); got != want || ok != tc.accepted {
+					t.Errorf("StripSeriesRecordingQualifiers(%q) = %q, %v; want %q, %v", in, got, ok, want, tc.accepted)
+				}
+			}
+		})
 	}
 }
