@@ -1729,6 +1729,11 @@
           "imported_at": "2026-08-02",
           "ref": "3844536183",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TPKGKPA",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -1739,28 +1744,10 @@
         {
           "position": "3",
           "work": "erebos-3"
-        }
-      ]
-    },
-    "erebos-gekurzt": {
-      "id": "erebos-gekurzt",
-      "license": "CC0-1.0",
-      "name": "Erebos (gekürzt)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00TPKGKPA",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
+        },
         {
           "position": "1",
           "work": "erebos"
-        },
-        {
-          "position": "2",
-          "work": "erebos-2"
         }
       ]
     },
