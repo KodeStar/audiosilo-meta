@@ -665,9 +665,11 @@ page, batching EVERY per-hit read (cards, work narrators, person names, series
 name+count) over the ids the page holds - a scoped page is 100% one kind, so a
 per-hit query there would be a whole page of sequential round-trips. The ABS
 facade's work search goes through the same `ftsHits`, so a ranking change lands
-on both surfaces (the two query-side boosts do NOT: they sit in
-`DB.search`). Both apply to `works/search` too and
-to that scope ONLY, since the ids they resolve are always works; a literal path
+on both surfaces (the three query-side boosts do NOT: they sit in
+`DB.search` and its `searchPage`). The two WORK boosts apply to `works/search` too and
+to that scope ONLY, since the ids they resolve are always works (the third, the
+exact-series-name ranking below, applies to the combined search and
+`series/search` instead); a literal path
 segment beats `{id}` in ServeMux's precedence, which is what lets the three sit
 beside their families' detail routes as `works/latest` already does - and is
 exactly why `search`, `latest` and `match` are RESERVED slugs (see the data-model
@@ -1007,6 +1009,45 @@ everything the guard admits costs at or below the page it enriches (worst case
 `search?q=` and to `works/search` only, an exact title leading a resolved volume
 (an equality before an inference), and `mergeHits` collapses them when they name
 the same work.
+Their SERIES twin is the **exact-series-name ranking** (`exactseries.go`): a
+query that IS a series' name (`nameKey` equality) puts the series of that name
+FIRST among the page's series rows, ranked by TIER then id - the PRIMARY (no
+`translation_of`, no `ordering_of`), then same-named translations, then same-named
+reading-order variants - and the partial matches follow in bm25 order. A link
+demotes a row only when its target is among those same-named rows: a translation
+or variant of some other series ranks as a primary there. The real
+case: "harry potter" held three series all named "Harry Potter" (the English one
+and its German and Spanish editions), and identical names are identical FTS rows,
+so bm25 ties them and the order is whatever the tie falls to.
+It is a RANKING OF THE COMPOSED PAGE, not a probe: `rankSeriesRows` runs on what
+`DB.results` built - every series row already carries its name, `ordering_of` and
+`translation_of` - and moves the tiered block to the page's first series slot,
+every other row keeping its relative order, so it costs NO query (nameKey over at most
+`limit` names) and needs no cost gate; `DB.search` runs it on the combined and
+series scopes only, over `searchPage`'s unranked page. A title-filtered FTS probe
+that also pulled an exact name the page lacked was measured on the 282k-work
+artifact: it cost every common-word keystroke a
+second posting-list walk ("book" 66 -> 96ms combined, 43 -> 78ms on
+series/search) for a case bm25 does not produce (an exact name is the shortest
+series row holding every query word), and probe and page agreed on every page
+for the 638 real series names tried, on both surfaces; the page ranking measured
+within noise of the base on every query timed. `?lang=` needs nothing: the page is
+filtered at the source, so under `lang=de` the English primary is not on it and
+the German edition leads. An older artifact or an empty layer states no link, so
+every exact name is a primary, by id. Every GROUP of two or more page rows
+sharing one series name is also ranked by TIER ALONE, stably, inside the slots
+the group already holds (`rankSameNamedGroups`: no other row moves, nothing joins
+the page, bm25 order stands within a tier, so an all-primary group such as
+"Reaper's MC"/"Reapers MC" is untouched), so a half-typed "harry pot" or
+"potter" - no whole name, the same bm25 tie - leads with the primary too.
+Measured over 1,879 typing prefixes of the names below on both surfaces, the
+groups moved only Kingsbridge's reading-order variant behind its primary ("Kin",
+"King", "Kings"). A page
+naming no series outright and holding no such group is byte-identical; measured, the rule moved 1 of 400 random series-name pages ("Of
+Magic" now leads "Magic of Magic") and none of the 238 franchise names carrying a
+translation or ordering variant. The fixture is `artifacttest.SameNamedSeries()`,
+whose primary id deliberately sorts after its same-named siblings so the bm25 tie
+shows.
 **The STRUCTURED MATCH** (`GET /api/v1/works/match`, `match.go` + the pure
 scoring in `matchscore.go`) identifies the work a FILE is, for audiosilo-server's
 "Match with community metadata" dialog and any client like it. `works/search`
@@ -1458,8 +1499,16 @@ then reading every row loses to one read of it. ANALYZE would not fix it:
 sqlite_stat1 stores an AVERAGE rows-per-key, so `en` at 87% and `de` at 7.6% look
 the same to the planner, and only sqlite_stat4 samples (an artifact change) see
 the skew - the census switch is the design, not a stopgap. A series search hit gains its
-derived `language` (`seriesSummariesByIDSQL(ph, languages)`, the two-text
-pattern) and a coverage row the work's `language`. Measured over the 281k-work
+derived `language` plus what tells same-named series apart - its `ordering`, a
+variant's `ordering_of` and `ordering_of_name` (the primary's name, through one
+more primary-key join spelled only when `hasOrderings`), all from
+`seriesSummariesByIDSQL(ph, languages, orderings)`'s one row, and `translation_of`
+in the series detail's `SeriesTranslation` shape, one batched read of the
+translations primary key per page (`seriesTranslationOfByIDSQL`, over only the
+page's series rows in `seriesTranslators` - the load-time set of series stating a
+link, `seriesTranslatorsSQL` - so a page holding none costs no query), composed by
+`seriesResultsByID` - and a coverage row
+the work's `language`. Measured over the 281k-work
 artifact (median ms, base / head no-lang / `lang=en` / `lang=de`): `search?q=the`
 196 / 181 / 336 / 223, `works/search?q=the` 327 / 318 / 333 / 220, `search?q=book`
 46 / 50 / 75 / 58, `harry` 3.7 / 3.9 / 5.6 / 3.7, `spare` 0.9 / 0.9 / 1.1 / 0.4,
@@ -1623,6 +1672,11 @@ dedupe sweep) must stay unfiltered, and a test pins that it passes none. Search
 (header and hero), latest additions and the coverage browser follow the
 preference. The ASIN/ISBN exact lookup and entity pages never do, and the search
 panel offers a per-box "Search all languages" bypass that stores nothing.
+A series row in the search panel says what the series IS beside its language
+chip - "Translation of Harry Potter · 7 works", "Chronological order of Harry
+Potter · 7 works" - worded by the pure, tested `lib/series-relation.ts` over the
+hit's `translation_of`/`ordering`/`ordering_of_name` (an older metaserve sends
+none, and the line is the member count it always was).
 `/stats` is read once per page through `getStatsShared` (shared with
 StatsBand), and only when the menu opens or the prompt is eligible. The
 selector and prompt hydrate `client:idle`, and the phone-menu copy is

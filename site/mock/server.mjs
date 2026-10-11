@@ -342,6 +342,13 @@ const server = createServer((req, res) => {
             name: s.name,
             works: s.works.length,
             ...(s.language ? { language: s.language } : {}),
+            // What the series IS, as a real series hit carries it (each field
+            // omitted when the record states none).
+            ...(s.ordering ? { ordering: s.ordering } : {}),
+            ...(s.ordering_of
+              ? { ordering_of: s.ordering_of, ordering_of_name: db.series[s.ordering_of]?.name }
+              : {}),
+            ...(s.translation_of ? { translation_of: s.translation_of } : {}),
           })
       }
       for (const person of Object.values(db.people)) {

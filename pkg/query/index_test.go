@@ -148,12 +148,17 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		// them: anyTranslationSQL, an EXISTS that stops at the first row whatever
 		// it walks, and seriesShapeSQL, whose "SCAN series" reads no row at all
 		// (LIMIT 0 - its whole job is to fail the prepare on a missing column).
+		// seriesTranslatorsSQL is here AND pinned positively
+		// (TestSeriesTranslatorsReadIsIndexed): a walk of a whole covering index
+		// passes this guard, and would read every work link to find the series
+		// ones.
 		{"series of a work", seriesOfSQL(false), []any{wok}},
 		{"series of a work, primary first", seriesOfSQL(true), []any{wok}},
 		{"translations of a work", workTranslationsSQL, []any{work}},
 		{"translations of a series", seriesTranslationsSQL, []any{series}},
 		{"ordering family", seriesOrderingFamilySQL, []any{series}},
 		{"ordering primaries", orderingPrimariesSQL, nil},
+		{"series translators", seriesTranslatorsSQL, nil},
 		{"languages census", languageCensusSQL, nil},
 		// works/latest's phase one under a minority language filter, one language
 		// and two: the RANGE predicate reaches works through idx_works_language
@@ -199,8 +204,10 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		// per-hit query here would be a whole page of sequential round-trips.
 		{"narrators by work", ids, narratorsByWorkSQL, nil},
 		{"names by person id", personIDs, namesByPersonIDSQL, nil},
-		{"summaries by series id", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, false) }, nil},
-		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true) }, nil},
+		{"summaries by series id", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, false, false) }, nil},
+		{"summaries by series id, v7", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true, false) }, nil},
+		{"summaries by series id, v7 with orderings", seriesIDs, func(ph string) string { return seriesSummariesByIDSQL(ph, true, true) }, nil},
+		{"what each series translates", seriesIDs, seriesTranslationOfByIDSQL, nil},
 		{"members of the probed series", seriesIDs, seriesMembersSQL, nil},
 		// works/match.
 		{"works by the matched people", personIDs, worksByPeopleSQL, []any{matchCandidatesMax}},
@@ -353,4 +360,24 @@ func TestReverseTranslationsUseTheTargetIndex(t *testing.T) {
 			t.Logf("plan -> %s", joined)
 		})
 	}
+}
+
+// TestSeriesTranslatorsReadIsIndexed pins the load-time series-link read
+// positively. It carries a kind predicate, so a walk of a whole index would read
+// every work link to find the series ones - and TestServeLookupsAreIndexed passes
+// any index walk, so it is this test that requires the kind prefix be SOUGHT.
+func TestSeriesTranslatorsReadIsIndexed(t *testing.T) {
+	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Languages()))
+	plan := queryPlan(t, snap, seriesTranslatorsSQL)
+	joined := strings.Join(plan, " | ")
+	found := false
+	for _, step := range plan {
+		if strings.HasPrefix(step, "SEARCH translations ") && strings.Contains(step, "(kind=?)") {
+			found = true
+		}
+	}
+	if !found {
+		t.Errorf("the probe does not seek the translations kind prefix: %s", joined)
+	}
+	t.Logf("plan -> %s", joined)
 }

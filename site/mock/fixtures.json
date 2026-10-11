@@ -356,6 +356,7 @@
       "id": "harry-potter",
       "name": "Harry Potter",
       "language": "en",
+      "translations": [{ "id": "harry-potter-de", "name": "Harry Potter", "language": "de" }],
       "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
       "works": [
         {
@@ -373,6 +374,7 @@
       "id": "harry-potter-de",
       "name": "Harry Potter",
       "language": "de",
+      "translation_of": [{ "id": "harry-potter", "name": "Harry Potter", "language": "en" }],
       "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
       "works": [
         {

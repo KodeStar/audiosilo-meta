@@ -69,6 +69,13 @@ type DB struct {
 	// "no orderings at all" (hasOrderings).
 	hasTranslations   bool
 	orderingPrimaries map[string]bool
+	// seriesTranslators narrows hasTranslations to the series family, for the
+	// one read that asks of series alone on every search page holding a series
+	// row (seriesTranslationOfByID): the set of series that state a
+	// translation_of, so a page none of whose series rows translates anything -
+	// almost every page, and every page of an artifact holding work links alone -
+	// pays no query there.
+	seriesTranslators map[string]bool
 
 	// log is the injected logger (SetLogger), for the query layer's degradation
 	// notices (a request that serves a lesser answer rather than failing).
@@ -322,6 +329,11 @@ func (s *DB) loadStats() error {
 			return fmt.Errorf("%s: artifact schema_version %d requires the translations table: %w",
 				s.path, s.schemaVersion, err)
 		}
+		if s.hasTranslations {
+			if err := s.loadSeriesTranslators(); err != nil {
+				return fmt.Errorf("%s: series translations: %w", s.path, err)
+			}
+		}
 		if err := s.loadOrderingPrimaries(); err != nil {
 			return fmt.Errorf("%s: artifact schema_version %d requires the series ordering columns: %w",
 				s.path, s.schemaVersion, err)
@@ -359,6 +371,24 @@ func (s *DB) loadOrderingPrimaries() error {
 	s.orderingPrimaries = make(map[string]bool, len(ids))
 	for _, id := range ids {
 		s.orderingPrimaries[id] = true
+	}
+	return nil
+}
+
+// loadSeriesTranslators settles DB.seriesTranslators (seriesTranslatorsSQL).
+// Only loadStats calls it, once per snapshot, behind the version gate.
+func (s *DB) loadSeriesTranslators() error {
+	rows, err := s.db.Query(seriesTranslatorsSQL)
+	if err != nil {
+		return err
+	}
+	ids, err := scanIDs(rows)
+	if err != nil {
+		return err
+	}
+	s.seriesTranslators = make(map[string]bool, len(ids))
+	for _, id := range ids {
+		s.seriesTranslators[id] = true
 	}
 	return nil
 }
@@ -571,16 +601,37 @@ func namesByPersonIDSQL(ph string) string {
 // JOIN keeps a series with no member works on the page, with a count of zero,
 // instead of dropping it.
 //
-// A languages-era artifact also hands back the series' derived language from the
-// same primary-key row; an older one has no such column, so its text selects NULL
-// in its place and both scan into one shape (seriesHeaderSQL's two-text pattern).
-func seriesSummariesByIDSQL(ph string, languages bool) string {
-	lang := "NULL"
-	if languages {
-		lang = "s.language"
+// A languages-era artifact also hands back the series' derived language and the
+// ordering it states from the same primary-key row; an older one has no such
+// columns, so its text selects NULL in their place and every text scans into one
+// shape (seriesHeaderSQL's two-text pattern). Where the artifact carries any
+// ordering at all (DB.hasOrderings) the text also reads a VARIANT's ordering_of
+// and its primary's NAME through one more primary-key join, so a hit can say "the
+// chronological order of Harry Potter" without a second read; where it carries
+// none the join is not even spelled - the column is NULL for every series - so an
+// empty layer costs a search page exactly what it did before the layer existed.
+// orderings implies languages: hasOrderings is only ever settled on a
+// languages-era artifact.
+func seriesSummariesByIDSQL(ph string, languages, orderings bool) string {
+	cols, join := "NULL, NULL, NULL, NULL", ""
+	switch {
+	case orderings:
+		cols, join = "s.language, s.ordering, s.ordering_of, p.name", " LEFT JOIN series p ON p.id = s.ordering_of"
+	case languages:
+		cols = "s.language, s.ordering, NULL, NULL"
 	}
-	return `SELECT s.id, s.name, ` + lang + `, COUNT(sw.work_id) FROM series s LEFT JOIN series_works sw ON sw.series_id = s.id ` +
-		`WHERE s.id IN (` + ph + `) GROUP BY s.id, s.name`
+	return `SELECT s.id, s.name, ` + cols + `, COUNT(sw.work_id) FROM series s` + join +
+		` LEFT JOIN series_works sw ON sw.series_id = s.id WHERE s.id IN (` + ph + `) GROUP BY s.id, s.name`
+}
+
+// seriesTranslationOfByIDSQL reads what each series of a search page TRANSLATES
+// - the "what this translates" direction of the translations table - for a whole
+// page in one query. It walks the table's primary key (kind, id, target) by its
+// (kind, id) prefix and joins the original for its name and derived language, so
+// a row naming a series the artifact does not carry is dropped exactly as the
+// per-record read drops it: both are seriesOriginalsSQL.
+func seriesTranslationOfByIDSQL(ph string) string {
+	return `SELECT t.id, ` + seriesOriginalsSQL + `t.id IN (` + ph + `) ORDER BY t.id, t.target`
 }
 
 // cardsByID builds the work cards for a whole id set in a FIXED number of
@@ -823,33 +874,76 @@ func (s *DB) namesByPersonID(ctx context.Context, ids []string) (map[string]stri
 	return out, nil
 }
 
-// seriesSummary is a series' name, how many works it holds and its derived
-// language ("" on a tie or an older artifact) - what a series search hit carries.
-type seriesSummary struct {
-	name     string
-	works    int
-	language string
+// seriesResultsByID composes series ids into their search-result shape - the
+// series half of results, as workResults is the work half - in a FIXED number of
+// queries per chunk: the summary (name, member count and the languages facts the
+// series row carries) and, only where the artifact holds any translation at all,
+// what each series translates. Ids absent from the catalogue are missing from the
+// map.
+func (s *DB) seriesResultsByID(ctx context.Context, ids []string) (map[string]seriesResult, error) {
+	out := map[string]seriesResult{}
+	languages, orderings := s.schemaVersion >= languagesSchemaVersion, s.hasOrderings()
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.QueryContext(ctx, seriesSummariesByIDSQL(ph, languages, orderings), args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			r := seriesResult{Kind: kindSeries}
+			var lang, ordering, orderingOf, orderingOfName sql.NullString
+			if err := rows.Scan(&r.ID, &r.Name, &lang, &ordering, &orderingOf, &orderingOfName, &r.Works); err != nil {
+				return err
+			}
+			r.Language, r.Ordering = lang.String, ordering.String
+			r.OrderingOf, r.OrderingOfName = orderingOf.String, orderingOfName.String
+			out[r.ID] = r
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+	translated, err := s.seriesTranslationOfByID(ctx, ids)
+	if err != nil {
+		return nil, err
+	}
+	for id, of := range translated {
+		if r, ok := out[id]; ok {
+			r.TranslationOf = of
+			out[id] = r
+		}
+	}
+	return out, nil
 }
 
-// seriesSummariesByID returns the name and member count of each series id, in
-// one query per chunk. Ids absent from the catalogue are missing from the map.
-func (s *DB) seriesSummariesByID(ctx context.Context, ids []string) (map[string]seriesSummary, error) {
-	out := map[string]seriesSummary{}
-	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, seriesSummariesByIDSQL(ph, s.schemaVersion >= languagesSchemaVersion), args...)
+// seriesTranslationOfByID returns, for each series id that translates another,
+// the series it translates, in target id order - one query per chunk over the
+// page's series rows that state a link. It answers without a query when none of
+// them does (DB.seriesTranslators, empty on every artifact older than
+// languagesSchemaVersion), so a page of untranslated series - and an empty layer
+// - costs a search page nothing.
+func (s *DB) seriesTranslationOfByID(ctx context.Context, ids []string) (map[string][]SeriesTranslation, error) {
+	out := map[string][]SeriesTranslation{}
+	var linked []string
+	for _, id := range ids {
+		if s.seriesTranslators[id] {
+			linked = append(linked, id)
+		}
+	}
+	err := eachChunk(linked, func(ph string, args []any) error {
+		rows, err := s.db.QueryContext(ctx, seriesTranslationOfByIDSQL(ph), args...)
 		if err != nil {
 			return err
 		}
 		defer func() { _ = rows.Close() }()
 		for rows.Next() {
 			var id string
-			var sum seriesSummary
-			var lang sql.NullString
-			if err := rows.Scan(&id, &sum.name, &lang, &sum.works); err != nil {
+			var t SeriesTranslation
+			if err := rows.Scan(&id, &t.ID, &t.Name, &t.Language); err != nil {
 				return err
 			}
-			sum.language = lang.String
-			out[id] = sum
+			out[id] = append(out[id], t)
 		}
 		return rows.Err()
 	})

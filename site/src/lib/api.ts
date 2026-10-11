@@ -102,6 +102,16 @@ export type SearchResult =
           members split evenly), and on a response from a metaserve that
           predates the field. */
       language?: string
+      /** What the series IS, so same-named series can be told apart on a list
+          (lib/series-relation.ts): the reading order it states, and - on a
+          VARIANT ordering only - the primary series' slug and name. Absent on a
+          response from a metaserve serving an artifact older than
+          schema_version 7, or one that predates the fields. */
+      ordering?: SeriesOrdering
+      ordering_of?: string
+      ordering_of_name?: string
+      /** The series this one translates (the series page's own shape). */
+      translation_of?: SeriesTranslation[]
     }
 
 export interface SearchResponse {

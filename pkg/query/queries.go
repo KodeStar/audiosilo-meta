@@ -406,6 +406,10 @@ const (
 	// anyTranslationSQL settles DB.hasTranslations once per snapshot and
 	// proves the table a version 7 artifact claims.
 	anyTranslationSQL = `SELECT EXISTS(SELECT 1 FROM translations)`
+	// seriesTranslatorsSQL settles DB.seriesTranslators once per snapshot: every
+	// series that states a translation_of, read off the translations table by its
+	// kind prefix (TestSeriesTranslatorsReadIsIndexed).
+	seriesTranslatorsSQL = `SELECT DISTINCT id FROM translations WHERE kind = 'series'`
 	// seriesShapeSQL proves the three series columns a version 7 artifact claims -
 	// every one the gated reads name - and reads no row (LIMIT 0): a column that is
 	// missing fails the PREPARE, which is the whole check.
@@ -441,8 +445,13 @@ const (
 		`WHERE t.kind = 'works' AND t.id = ?1 ` +
 		`UNION ALL SELECT 1, t.id, w.title, w.language FROM translations t JOIN works w ON w.id = t.id ` +
 		`WHERE t.kind = 'works' AND t.target = ?1 ORDER BY 2`
-	seriesTranslationsSQL = `SELECT 0, t.target, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.target ` +
-		`WHERE t.kind = 'series' AND t.id = ?1 ` +
+	// seriesOriginalsSQL is the series "what does this translate" read with its
+	// first column and its id predicate left to the caller: the direction here,
+	// the translation's own id in the search page's batch
+	// (seriesTranslationOfByIDSQL). One spelling, so the two reads cannot drift.
+	seriesOriginalsSQL = `t.target, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.target ` +
+		`WHERE t.kind = 'series' AND `
+	seriesTranslationsSQL = `SELECT 0, ` + seriesOriginalsSQL + `t.id = ?1 ` +
 		`UNION ALL SELECT 1, t.id, s.name, COALESCE(s.language, '') FROM translations t JOIN series s ON s.id = t.id ` +
 		`WHERE t.kind = 'series' AND t.target = ?1 ORDER BY 2`
 )

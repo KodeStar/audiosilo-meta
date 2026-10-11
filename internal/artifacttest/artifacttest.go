@@ -307,3 +307,53 @@ func Languages() *model.Catalog {
 		},
 	}
 }
+
+// SameNamedSeries is a franchise whose series share ONE name - the shape the
+// real catalogue holds for "Harry Potter", where the English series and its
+// German and Spanish editions are three series all named "Harry Potter".
+//
+//   - the-harry-potter-series is the PRIMARY (en): no translation_of, no
+//     ordering_of. Its id deliberately sorts AFTER every same-named sibling's:
+//     identical names are identical FTS rows, so bm25 ties them and the tie falls
+//     to row order - only the exact-series ranking (pkg/query's exactseries.go)
+//     can put the primary first here.
+//   - harry-potter-german-edition (de) and harry-potter-spanish-edition (es) are
+//     TRANSLATIONS of it, each named "Harry Potter".
+//   - harry-potter-chronological is a reading-order VARIANT of it, also named
+//     "Harry Potter", and sorting before both translations.
+//   - harry-potter-full-cast ("Harry Potter (Full-Cast Editions)") is a PARTIAL
+//     match: it holds every query word and is no exact name.
+func SameNamedSeries() *model.Catalog {
+	jk := &model.Person{ID: "j-k-rowling", Name: "J. K. Rowling", License: "CC0-1.0"}
+	work := func(id, title, lang string, of ...string) *model.Work {
+		return &model.Work{
+			ID: id, Title: title, Language: lang, Authors: []string{"j-k-rowling"},
+			License: "CC0-1.0", TranslationOf: of,
+		}
+	}
+	series := func(id, name string, works ...string) *model.Series {
+		s := &model.Series{ID: id, Name: name, License: "CC0-1.0", Authors: []string{"j-k-rowling"}}
+		for i, w := range works {
+			s.Works = append(s.Works, model.SeriesWork{Work: w, Position: strconv.Itoa(i + 1)})
+		}
+		return s
+	}
+	primary := series("the-harry-potter-series", "Harry Potter", "philosophers-stone", "chamber-of-secrets")
+	german := series("harry-potter-german-edition", "Harry Potter", "stein-der-weisen")
+	german.TranslationOf = []string{"the-harry-potter-series"}
+	spanish := series("harry-potter-spanish-edition", "Harry Potter", "piedra-filosofal")
+	spanish.TranslationOf = []string{"the-harry-potter-series"}
+	chrono := series("harry-potter-chronological", "Harry Potter", "philosophers-stone", "chamber-of-secrets")
+	chrono.Ordering, chrono.OrderingOf = model.OrderingChronological, "the-harry-potter-series"
+	fullCast := series("harry-potter-full-cast", "Harry Potter (Full-Cast Editions)", "philosophers-stone")
+	return &model.Catalog{
+		People: []*model.Person{jk},
+		Works: []*model.Work{
+			work("philosophers-stone", "Harry Potter and the Philosopher's Stone", "en"),
+			work("chamber-of-secrets", "Harry Potter and the Chamber of Secrets", "en"),
+			work("stein-der-weisen", "Harry Potter und der Stein der Weisen", "de", "philosophers-stone"),
+			work("piedra-filosofal", "Harry Potter y la piedra filosofal", "es", "philosophers-stone"),
+		},
+		Series: []*model.Series{primary, german, spanish, chrono, fullCast},
+	}
+}
