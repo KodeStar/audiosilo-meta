@@ -3297,14 +3297,55 @@
       "authors": [
         "kim-harrison"
       ],
+      "genres": [
+        "fantasy",
+        "paranormal",
+        "romance",
+        "urban-fantasy"
+      ],
       "id": "absolute-demon",
       "language": "en",
       "license": "CC0-1.0",
+      "recordings": {
+        "marguerite-gavin-2027": {
+          "abridged": false,
+          "added_at": "2026-10-11",
+          "asin": [
+            {
+              "asin": "B0H3T8TFLT",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51dfyCcjv4L.jpg",
+          "id": "marguerite-gavin-2027",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marguerite-gavin"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2027-02-09",
+          "runtime_min": 960,
+          "sources": [
+            {
+              "imported_at": "2026-10-10",
+              "ref": "B0H3T8TFLT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "absolute-demon"
+        }
+      },
       "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/252044808-absolute-demon",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-10-10",
+          "ref": "B0H3T8TFLT",
+          "type": "libex-import"
         }
       ],
       "title": "Absolute Demon",
