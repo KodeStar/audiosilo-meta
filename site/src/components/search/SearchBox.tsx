@@ -11,6 +11,7 @@ import {
   type LookupResponse,
 } from '../../lib/api'
 import { addFromLibexUrl, addWorkFromQueryUrl } from '../../lib/search-cta'
+import { seriesSubline } from '../../lib/series-relation'
 import { Icon } from '../ui'
 import LanguageChip from '../cards/LanguageChip'
 import { useLanguages } from '../languages/use-languages'
@@ -43,7 +44,6 @@ interface Option {
   coverUrl?: string | null
   seriesName?: string
   seriesPosition?: string
-  worksCount?: number
   /** The work's language tag, or a series' derived primary language (absent
       on a tie). People have none. Drives the row's language chip. */
   language?: string
@@ -140,7 +140,9 @@ function resultsToGroups(results: SearchResult[], pinned: LookupResponse | null)
         group: 'series',
         href: href.series(r.id),
         primary: r.name,
-        worksCount: r.works,
+        // "Translation of Harry Potter · 7 works": what tells three series all
+        // named "Harry Potter" apart, beside the language chip.
+        secondary: seriesSubline(r) ?? undefined,
         language: r.language,
       })
     }
@@ -677,14 +679,16 @@ function Row({
 }: RowProps) {
   /* The secondary line is rendered only when the record actually carries one.
      A person result is just {id, name} - it states no role, and this repo does
-     not invent facts, so nothing goes here rather than a guessed "narrator". */
+     not invent facts, so nothing goes here rather than a guessed "narrator".
+     A series' line is lib/series-relation.ts's, and is not highlighted: it is
+     a description ("Translation of ..."), not the text the query matched. */
   const sub =
     opt.group === 'work'
       ? opt.secondary
         ? highlight(opt.secondary, q)
         : null
-      : opt.group === 'series' && opt.worksCount != null
-        ? `${opt.worksCount} ${opt.worksCount === 1 ? 'work' : 'works'}`
+      : opt.group === 'series'
+        ? (opt.secondary ?? null)
         : null
 
   return (
