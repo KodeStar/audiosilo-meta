@@ -2170,35 +2170,7 @@
             }
           ],
           "work": "duskfall"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01HQF19H4",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01GEZ4OJ2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Duskfall"
-    },
-    "duskfall-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "christopher-husberg"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "duskfall-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -2272,10 +2244,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "duskfall-dramatized-adaptation"
+          "work": "duskfall"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01HQF19H4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01GEZ4OJ2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1645417697",
@@ -2287,7 +2269,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Duskfall [Dramatized Adaptation]"
+      "title": "Duskfall"
     },
     "dusks-and-dawns": {
       "added_at": "2026-08-02",

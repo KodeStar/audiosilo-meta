@@ -7494,12 +7494,82 @@
       "genres": [
         "comedy-humor",
         "fantasy",
+        "horror",
+        "mystery",
+        "occult",
+        "paranormal",
+        "thriller-suspense",
         "urban-fantasy"
       ],
       "id": "dark-war",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648815898",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3839697,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3850379,
+              "start_ms": 3839697,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4030148,
+              "start_ms": 7690076,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3885580,
+              "start_ms": 11720224,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4025991,
+              "start_ms": 15605804,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4620236,
+              "start_ms": 19631795,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9186dXvghJL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 404,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648815898",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648815898",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dark-war"
+        },
         "john-banks-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7645,93 +7715,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00IV3K5HQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dark War"
-    },
-    "dark-war-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "tim-waggoner"
-      ],
-      "genres": [
-        "horror",
-        "mystery",
-        "occult",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "dark-war-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648815898",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3839697,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3850379,
-              "start_ms": 3839697,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4030148,
-              "start_ms": 7690076,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3885580,
-              "start_ms": 11720224,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4025991,
-              "start_ms": 15605804,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4620236,
-              "start_ms": 19631795,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9186dXvghJL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 404,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648815898",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648815898",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dark-war-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648815898",
@@ -7743,7 +7727,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Dark War [Dramatized Adaptation]"
+      "title": "Dark War"
     },
     "dark-warrior-alliance-boxset": {
       "added_at": "2026-08-01",

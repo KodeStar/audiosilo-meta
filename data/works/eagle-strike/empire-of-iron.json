@@ -7255,6 +7255,9 @@
       "genres": [
         "cyberpunk",
         "dystopian",
+        "epic-fantasy",
+        "fantasy",
+        "hard-science-fiction",
         "military-science-fiction",
         "science-fiction",
         "space-opera"
@@ -7263,6 +7266,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H2ZDMYKF",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91uIQlQ7n1L.jpg",
+          "id": "full-cast-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2026-08-26",
+          "runtime_min": 720,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H2ZDMYKF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "empire-of-silence"
+        },
         "john-lee-2018": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -8161,66 +8192,17 @@
           "imported_at": "2026-08-02",
           "ref": "B07BGZWW63",
           "type": "libex-import"
-        }
-      ],
-      "title": "Empire of Silence",
-      "xref": {
-        "goodreads": "36454667"
-      }
-    },
-    "empire-of-silence-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "christopher-ruocchio"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "hard-science-fiction",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "empire-of-silence-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0H2ZDMYKF",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91uIQlQ7n1L.jpg",
-          "id": "full-cast-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2026-08-26",
-          "runtime_min": 720,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0H2ZDMYKF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "empire-of-silence-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0H2ZDMYKF",
           "type": "libex-import"
         }
       ],
-      "title": "Empire of Silence [Dramatized Adaptation]"
+      "title": "Empire of Silence",
+      "xref": {
+        "goodreads": "36454667"
+      }
     },
     "empire-of-silence-limpero-del-silenzio": {
       "added_at": "2026-08-02",

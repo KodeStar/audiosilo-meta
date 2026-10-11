@@ -10692,9 +10692,13 @@
         "michael-anderle"
       ],
       "genres": [
+        "action-adventure",
+        "fantasy",
         "horror",
+        "paranormal",
         "science",
-        "science-fiction"
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "we-have-contact",
       "language": "en",
@@ -10893,35 +10897,7 @@
             }
           ],
           "work": "we-have-contact"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B076PNXS54",
-          "type": "libex-import"
-        }
-      ],
-      "title": "We Have Contact"
-    },
-    "we-have-contact-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "we-have-contact-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -10985,10 +10961,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "we-have-contact-dramatized-adaptation"
+          "work": "we-have-contact"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B076PNXS54",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0CCGDKZP9",
@@ -11000,7 +10981,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "We Have Contact (Dramatized Adaptation)"
+      "title": "We Have Contact"
     },
     "we-have-lost-the-president": {
       "added_at": "2026-07-29",

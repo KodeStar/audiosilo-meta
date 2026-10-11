@@ -9668,7 +9668,10 @@
         "martha-carr"
       ],
       "genres": [
+        "action-adventure",
+        "arts-entertainment",
         "fantasy",
+        "military-science-fiction",
         "paranormal",
         "urban-fantasy"
       ],
@@ -9908,33 +9911,7 @@
             }
           ],
           "work": "stand-with-my-unit"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0C1TJVHKS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Stand With My Unit"
-    },
-    "stand-with-my-unit-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle",
-        "martha-carr"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "fantasy",
-        "military-science-fiction"
-      ],
-      "id": "stand-with-my-unit-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2025": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -10003,10 +9980,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "stand-with-my-unit-dramatized-adaptation"
+          "work": "stand-with-my-unit"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0C1TJVHKS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0DQF65WY5",
@@ -10018,7 +10000,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Stand with My Unit (Dramatized Adaptation)"
+      "title": "Stand With My Unit"
     },
     "stand-your-ground": {
       "added_at": "2026-08-01",

@@ -4283,6 +4283,72 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amanda-forstrom-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1648792049",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4084273,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4304190,
+              "start_ms": 4084273,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4014196,
+              "start_ms": 8388463,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4513866,
+              "start_ms": 12402659,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4470397,
+              "start_ms": 16916525,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qnGPj5KML.jpg",
+          "id": "amanda-forstrom-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amanda-forstrom",
+            "bradley-smith",
+            "chris-davenport",
+            "full-cast",
+            "gary-telles",
+            "jessica-lauren-ball",
+            "jonathan-lee-taylor",
+            "ken-jackson",
+            "richard-rohan",
+            "terence-aselford",
+            "thomas-keegan",
+            "tim-getman"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020-11-11",
+          "runtime_min": 356,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648792049",
+              "type": "libex-import"
+            }
+          ],
+          "work": "damnation-valley"
+        },
         "cody-roberts-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4494,100 +4560,14 @@
           "imported_at": "2026-08-02",
           "ref": "1515949613",
           "type": "libex-import"
-        }
-      ],
-      "title": "Damnation Valley"
-    },
-    "damnation-valley-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "damnation-valley-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-forstrom-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1648792049",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4084273,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4304190,
-              "start_ms": 4084273,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4014196,
-              "start_ms": 8388463,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4513866,
-              "start_ms": 12402659,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4470397,
-              "start_ms": 16916525,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91qnGPj5KML.jpg",
-          "id": "amanda-forstrom-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-forstrom",
-            "bradley-smith",
-            "chris-davenport",
-            "full-cast",
-            "gary-telles",
-            "jessica-lauren-ball",
-            "jonathan-lee-taylor",
-            "ken-jackson",
-            "richard-rohan",
-            "terence-aselford",
-            "thomas-keegan",
-            "tim-getman"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020-11-11",
-          "runtime_min": 356,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648792049",
-              "type": "libex-import"
-            }
-          ],
-          "work": "damnation-valley-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1648792049",
           "type": "libex-import"
         }
       ],
-      "title": "Damnation Valley [Dramatized Adaptation]"
+      "title": "Damnation Valley"
     },
     "damnation-zach-bohannon": {
       "added_at": "2026-08-02",

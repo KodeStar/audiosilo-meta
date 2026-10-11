@@ -10470,6 +10470,84 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chris-stinson-2022": {
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B0B3586SGR",
+              "region": "us"
+            },
+            {
+              "asin": "B0B359Z7MX",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3127031,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3273595,
+              "start_ms": 3127031,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3051566,
+              "start_ms": 6400626,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2964398,
+              "start_ms": 9452192,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3165135,
+              "start_ms": 12416590,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3235096,
+              "start_ms": 15581725,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91lX7NtGXnL.jpg",
+          "id": "chris-stinson-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-stinson",
+            "christopher-davenport",
+            "gabriel-michael",
+            "kaylee-eluvian",
+            "nicole-perez",
+            "rayner-gabriel",
+            "richard-rohan",
+            "rob-mcfadyen",
+            "terence-aselford",
+            "torian-brackett",
+            "zeke-alton"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2022-07-01",
+          "runtime_min": 313,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0B3586SGR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0B359Z7MX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pray-for-death"
+        },
         "eric-michael-summerer-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10620,112 +10698,14 @@
           "imported_at": "2026-07-29",
           "ref": "1541436032",
           "type": "libex-import"
-        }
-      ],
-      "title": "Pray for Death"
-    },
-    "pray-for-death-dramatized-adaptation": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "pray-for-death-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chris-stinson-2022": {
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B0B3586SGR",
-              "region": "us"
-            },
-            {
-              "asin": "B0B359Z7MX",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3127031,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3273595,
-              "start_ms": 3127031,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3051566,
-              "start_ms": 6400626,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2964398,
-              "start_ms": 9452192,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3165135,
-              "start_ms": 12416590,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3235096,
-              "start_ms": 15581725,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lX7NtGXnL.jpg",
-          "id": "chris-stinson-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chris-stinson",
-            "christopher-davenport",
-            "gabriel-michael",
-            "kaylee-eluvian",
-            "nicole-perez",
-            "rayner-gabriel",
-            "richard-rohan",
-            "rob-mcfadyen",
-            "terence-aselford",
-            "torian-brackett",
-            "zeke-alton"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2022-07-01",
-          "runtime_min": 313,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0B3586SGR",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0B359Z7MX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pray-for-death-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B0B3586SGR",
           "type": "libex-import"
         }
       ],
-      "title": "Pray for Death (Dramatized Adaptation)"
+      "title": "Pray for Death"
     },
     "pray-for-mercy": {
       "added_at": "2026-07-29",

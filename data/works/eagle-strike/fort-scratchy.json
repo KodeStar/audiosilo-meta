@@ -3967,12 +3967,87 @@
         "myke-cole"
       ],
       "genres": [
-        "science-fiction"
+        "classics",
+        "fantasy",
+        "military-science-fiction",
+        "science-fiction",
+        "urban-fantasy",
+        "war-military-fiction"
       ],
       "id": "fortress-frontier",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1645417875",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3725339,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4238059,
+              "start_ms": 3725339,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4152819,
+              "start_ms": 7963398,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4279507,
+              "start_ms": 12116217,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3922221,
+              "start_ms": 16395724,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4070643,
+              "start_ms": 20317945,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3987422,
+              "start_ms": 24388588,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81T1tbzI++L.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 473,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645417875",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645417875",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fortress-frontier"
+        },
         "korey-jackson-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4158,99 +4233,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00B8ACAHW",
           "type": "libex-import"
-        }
-      ],
-      "title": "Fortress Frontier"
-    },
-    "fortress-frontier-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "myke-cole"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "military-science-fiction",
-        "science-fiction",
-        "urban-fantasy",
-        "war-military-fiction"
-      ],
-      "id": "fortress-frontier-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1645417875",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3725339,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4238059,
-              "start_ms": 3725339,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4152819,
-              "start_ms": 7963398,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4279507,
-              "start_ms": 12116217,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3922221,
-              "start_ms": 16395724,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4070643,
-              "start_ms": 20317945,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3987422,
-              "start_ms": 24388588,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81T1tbzI++L.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 473,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1645417875",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1645417875",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fortress-frontier-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1645417875",
@@ -4262,7 +4245,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Fortress Frontier [Dramatized Adaptation]"
+      "title": "Fortress Frontier"
     },
     "fortress-of-ambrose": {
       "added_at": "2026-08-02",

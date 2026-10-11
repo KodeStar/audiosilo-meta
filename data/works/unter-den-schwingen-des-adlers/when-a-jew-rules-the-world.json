@@ -5156,66 +5156,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "j-rodney-turner-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09M5N26RB",
-              "region": "us"
-            },
-            {
-              "asin": "B09M5MHFMW",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81stwlxzpnL.jpg",
-          "id": "j-rodney-turner-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "j-rodney-turner"
-          ],
-          "publisher": "Tantor Media",
-          "release_date": "2021-11-30",
-          "runtime_min": 520,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09M5N26RB",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09M5MHFMW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "when-all-hell-broke-loose"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09M5N26RB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "When All Hell Broke Loose"
-    },
-    "when-all-hell-broke-loose-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "westerns"
-      ],
-      "id": "when-all-hell-broke-loose-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5274,10 +5214,52 @@
               "type": "libex-import"
             }
           ],
-          "work": "when-all-hell-broke-loose-dramatized-adaptation"
+          "work": "when-all-hell-broke-loose"
+        },
+        "j-rodney-turner-2021": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09M5N26RB",
+              "region": "us"
+            },
+            {
+              "asin": "B09M5MHFMW",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81stwlxzpnL.jpg",
+          "id": "j-rodney-turner-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "j-rodney-turner"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2021-11-30",
+          "runtime_min": 520,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09M5N26RB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09M5MHFMW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "when-all-hell-broke-loose"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09M5N26RB",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0BR8F9M8H",
@@ -5289,7 +5271,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "When All Hell Broke Loose (Dramatized Adaptation)"
+      "title": "When All Hell Broke Loose"
     },
     "when-all-is-said": {
       "added_at": "2026-07-29",

@@ -5116,6 +5116,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648802427",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3604990,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3488519,
+              "start_ms": 3604990,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3534239,
+              "start_ms": 7093509,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3633412,
+              "start_ms": 10627748,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4052020,
+              "start_ms": 14261160,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91MNvrEIqDL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 305,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648802427",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648802427",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-violent-land"
+        },
         "jack-garrett-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5366,87 +5426,7 @@
           "imported_at": "2026-07-29",
           "ref": "B009G5CWF6",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Violent Land"
-    },
-    "the-violent-land-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "the-violent-land-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648802427",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3604990,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3488519,
-              "start_ms": 3604990,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3534239,
-              "start_ms": 7093509,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3633412,
-              "start_ms": 10627748,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4052020,
-              "start_ms": 14261160,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91MNvrEIqDL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 305,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648802427",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648802427",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-violent-land-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648802427",
@@ -5458,7 +5438,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Violent Land [Dramatized Adaptation]"
+      "title": "The Violent Land"
     },
     "the-violent-stones-an-epic-portal-fantasy": {
       "added_at": "2026-08-02",
@@ -5715,6 +5695,9 @@
         "j-a-johnstone"
       ],
       "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "mystery",
         "westerns"
       ],
       "id": "the-violent-storm",
@@ -5874,33 +5857,7 @@
             }
           ],
           "work": "the-violent-storm"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09SBS88KQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Violent Storm"
-    },
-    "the-violent-storm-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "mystery",
-        "westerns"
-      ],
-      "id": "the-violent-storm-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5964,10 +5921,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-violent-storm-dramatized-adaptation"
+          "work": "the-violent-storm"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09SBS88KQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0B7CPT3MY",
@@ -5979,7 +5941,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Violent Storm (Dramatized Adaptation)"
+      "title": "The Violent Storm"
     },
     "the-violent-take-it-by-force": {
       "added_at": "2026-07-29",

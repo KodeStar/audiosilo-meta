@@ -6270,6 +6270,7 @@
         "r-a-salvatore"
       ],
       "genres": [
+        "action-adventure",
         "epic-fantasy",
         "fantasy"
       ],
@@ -6365,31 +6366,7 @@
             }
           ],
           "work": "the-dame"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V8NCXQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Dame"
-    },
-    "the-dame-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "r-a-salvatore"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-dame-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -6458,10 +6435,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-dame-dramatized-adaptation"
+          "work": "the-dame"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8NCXQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648809952",
@@ -6473,7 +6455,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Dame [Dramatized Adaptation]"
+      "title": "The Dame"
     },
     "the-dame-richard-stark": {
       "added_at": "2026-07-29",

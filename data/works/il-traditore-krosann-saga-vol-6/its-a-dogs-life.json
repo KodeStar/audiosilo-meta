@@ -12178,9 +12178,12 @@
         "michael-anderle"
       ],
       "genres": [
+        "fantasy",
         "military-science-fiction",
+        "paranormal",
         "science-fiction",
-        "space-opera"
+        "space-opera",
+        "urban-fantasy"
       ],
       "id": "its-hell-to-choose",
       "language": "en",
@@ -12374,33 +12377,7 @@
             }
           ],
           "work": "its-hell-to-choose"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B074G4VD1J",
-          "type": "libex-import"
-        }
-      ],
-      "title": "It's Hell to Choose"
-    },
-    "its-hell-to-choose-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "space-opera",
-        "urban-fantasy"
-      ],
-      "id": "its-hell-to-choose-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2022": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -12469,10 +12446,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "its-hell-to-choose-dramatized-adaptation"
+          "work": "its-hell-to-choose"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B074G4VD1J",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0BPKK9BHQ",
@@ -12484,7 +12466,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "It's Hell to Choose (Dramatized Adaptation)"
+      "title": "It's Hell to Choose"
     },
     "its-how-you-play-the-game-and-the-games-do-count": {
       "added_at": "2026-07-29",

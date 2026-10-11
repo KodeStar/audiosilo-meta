@@ -12044,6 +12044,7 @@
         "fantasy",
         "horror",
         "paranormal",
+        "post-apocalyptic",
         "science",
         "science-fiction",
         "urban-fantasy"
@@ -12215,33 +12216,7 @@
             }
           ],
           "work": "queen-bitch"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B06VWZZG8L",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Queen Bitch"
-    },
-    "queen-bitch-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "post-apocalyptic",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "queen-bitch-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -12300,10 +12275,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "queen-bitch-dramatized-adaptation"
+          "work": "queen-bitch"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B06VWZZG8L",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "164881641X",
@@ -12315,7 +12295,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Queen Bitch (Dramatized Adaptation)"
+      "title": "Queen Bitch"
     },
     "queen-camilla": {
       "added_at": "2026-07-29",

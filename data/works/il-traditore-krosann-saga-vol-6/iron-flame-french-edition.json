@@ -953,111 +953,11 @@
         "action-adventure",
         "dystopian",
         "fantasy",
-        "science-fiction"
-      ],
-      "id": "iron-gold",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tim-gerard-reynolds-2018": {
-          "abridged": false,
-          "added_at": "2026-07-11T17:30:05+01:00",
-          "asin": [
-            {
-              "asin": "B074NBY2Z3",
-              "region": "uk"
-            },
-            {
-              "asin": "B074NBTRGL",
-              "region": "us"
-            },
-            {
-              "asin": "B078RPHPCF",
-              "region": "de"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 593919,
-              "start_ms": 0,
-              "title": "The Fall of Mercury"
-            },
-            {
-              "length_ms": 3000,
-              "start_ms": 593919,
-              "title": "Part I: Wind"
-            },
-            {
-              "length_ms": 3000,
-              "start_ms": 29003617,
-              "title": "Part II: Shadow"
-            },
-            {
-              "length_ms": 3000,
-              "start_ms": 54587957,
-              "title": "Part III: Dust"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51oKG4sAeqL._SL500_.jpg",
-          "id": "tim-gerard-reynolds-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tim-gerard-reynolds",
-            "john-curless",
-            "julian-elfer",
-            "aedin-moloney"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2018-01-16",
-          "runtime_min": 1403,
-          "sources": [
-            {
-              "imported_at": "2026-07-11",
-              "ref": "B074NBY2Z3",
-              "type": "openaudible-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B074NBTRGL",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B078RPHPCF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "iron-gold"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-11",
-          "ref": "B074NBY2Z3",
-          "type": "openaudible-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B074NBTRGL",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Iron Gold"
-    },
-    "iron-gold-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "pierce-brown"
-      ],
-      "genres": [
-        "action-adventure",
-        "dystopian",
         "military-science-fiction",
         "post-apocalyptic",
         "science-fiction"
       ],
-      "id": "iron-gold-dramatized-adaptation",
+      "id": "iron-gold",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1175,10 +1075,91 @@
               "type": "libex-import"
             }
           ],
-          "work": "iron-gold-dramatized-adaptation"
+          "work": "iron-gold"
+        },
+        "tim-gerard-reynolds-2018": {
+          "abridged": false,
+          "added_at": "2026-07-11T17:30:05+01:00",
+          "asin": [
+            {
+              "asin": "B074NBY2Z3",
+              "region": "uk"
+            },
+            {
+              "asin": "B074NBTRGL",
+              "region": "us"
+            },
+            {
+              "asin": "B078RPHPCF",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 593919,
+              "start_ms": 0,
+              "title": "The Fall of Mercury"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 593919,
+              "title": "Part I: Wind"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 29003617,
+              "title": "Part II: Shadow"
+            },
+            {
+              "length_ms": 3000,
+              "start_ms": 54587957,
+              "title": "Part III: Dust"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51oKG4sAeqL._SL500_.jpg",
+          "id": "tim-gerard-reynolds-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-gerard-reynolds",
+            "john-curless",
+            "julian-elfer",
+            "aedin-moloney"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2018-01-16",
+          "runtime_min": 1403,
+          "sources": [
+            {
+              "imported_at": "2026-07-11",
+              "ref": "B074NBY2Z3",
+              "type": "openaudible-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B074NBTRGL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B078RPHPCF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "iron-gold"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-11",
+          "ref": "B074NBY2Z3",
+          "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B074NBTRGL",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DJMXQDB4",
@@ -1190,7 +1171,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Iron Gold [Dramatized Adaptation]"
+      "title": "Iron Gold"
     },
     "iron-gold-pierce-brown": {
       "added_at": "2026-08-02",

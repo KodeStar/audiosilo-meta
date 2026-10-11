@@ -6374,6 +6374,76 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bruce-alan-rauscher-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1648804918",
+              "region": "us"
+            },
+            {
+              "asin": "1648804918",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4082369,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4252479,
+              "start_ms": 4082369,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4578928,
+              "start_ms": 8334848,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4234482,
+              "start_ms": 12913776,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91a98ohNyZL.jpg",
+          "id": "bruce-alan-rauscher-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bruce-alan-rauscher",
+            "christopher-graybill",
+            "colleen-delany",
+            "evan-casey",
+            "full-cast",
+            "ken-jackson",
+            "matthew-mcgee",
+            "nora-achrati",
+            "peter-holdway",
+            "richard-rohan",
+            "robbie-gay",
+            "scott-mccormick"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020-11-14",
+          "runtime_min": 285,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1648804918",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1648804918",
+              "type": "libex-import"
+            }
+          ],
+          "work": "colters-journey"
+        },
         "john-mclain-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6644,104 +6714,14 @@
           "imported_at": "2026-08-02",
           "ref": "B072K3LKBG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Colter's Journey"
-    },
-    "colters-journey-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "colters-journey-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bruce-alan-rauscher-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1648804918",
-              "region": "us"
-            },
-            {
-              "asin": "1648804918",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4082369,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4252479,
-              "start_ms": 4082369,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4578928,
-              "start_ms": 8334848,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4234482,
-              "start_ms": 12913776,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91a98ohNyZL.jpg",
-          "id": "bruce-alan-rauscher-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bruce-alan-rauscher",
-            "christopher-graybill",
-            "colleen-delany",
-            "evan-casey",
-            "full-cast",
-            "ken-jackson",
-            "matthew-mcgee",
-            "nora-achrati",
-            "peter-holdway",
-            "richard-rohan",
-            "robbie-gay",
-            "scott-mccormick"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020-11-14",
-          "runtime_min": 285,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1648804918",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1648804918",
-              "type": "libex-import"
-            }
-          ],
-          "work": "colters-journey-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1648804918",
           "type": "libex-import"
         }
       ],
-      "title": "Colter's Journey [Dramatized Adaptation]"
+      "title": "Colter's Journey"
     },
     "colters-lady": {
       "added_at": "2026-07-29",

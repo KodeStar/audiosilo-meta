@@ -12959,31 +12959,11 @@
       "authors": [
         "ilona-andrews"
       ],
-      "id": "magic-tides",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/65969788-magic-tides",
-          "type": "community"
-        }
-      ],
-      "title": "Magic Tides",
-      "xref": {
-        "goodreads": "65969788"
-      }
-    },
-    "magic-tides-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "ilona-andrews"
-      ],
       "genres": [
         "fantasy",
         "urban-fantasy"
       ],
-      "id": "magic-tides-dramatized-adaptation",
+      "id": "magic-tides",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -13061,7 +13041,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-tides-dramatized-adaptation"
+          "work": "magic-tides"
         },
         "delton-engle-sorrell-2026": {
           "abridged": false,
@@ -13127,7 +13107,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-tides-dramatized-adaptation"
+          "work": "magic-tides"
         },
         "full-cast-2026": {
           "abridged": false,
@@ -13155,17 +13135,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-tides-dramatized-adaptation"
+          "work": "magic-tides"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/65969788-magic-tides",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GYT16VQ6",
           "type": "libex-import"
         }
       ],
-      "title": "Magic Tides [Dramatized Adaptation]"
+      "title": "Magic Tides",
+      "xref": {
+        "goodreads": "65969788"
+      }
     },
     "magic-tides-magic-claims": {
       "added_at": "2026-08-02",

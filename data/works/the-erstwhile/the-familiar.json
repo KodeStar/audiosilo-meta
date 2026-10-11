@@ -9144,6 +9144,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648801587",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3860386,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3601879,
+              "start_ms": 3860386,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3570207,
+              "start_ms": 7462265,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3609263,
+              "start_ms": 11032472,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3810161,
+              "start_ms": 14641735,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913rUfrTZtL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 307,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648801587",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648801587",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-family-jensen"
+        },
         "jack-garrett-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9394,87 +9454,7 @@
           "imported_at": "2026-07-29",
           "ref": "B005ZUHQCU",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Family Jensen"
-    },
-    "the-family-jensen-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "the-family-jensen-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648801587",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3860386,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3601879,
-              "start_ms": 3860386,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3570207,
-              "start_ms": 7462265,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3609263,
-              "start_ms": 11032472,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3810161,
-              "start_ms": 14641735,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913rUfrTZtL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 307,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648801587",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648801587",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-family-jensen-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648801587",
@@ -9486,7 +9466,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Family Jensen [Dramatized Adaptation]"
+      "title": "The Family Jensen"
     },
     "the-family-jewels": {
       "added_at": "2026-08-02",

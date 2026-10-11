@@ -10080,6 +10080,7 @@
         "myke-cole"
       ],
       "genres": [
+        "classics",
         "espionage",
         "fantasy",
         "literary-fiction",
@@ -10093,6 +10094,76 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1645417972",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3939056,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4429276,
+              "start_ms": 3939056,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4036998,
+              "start_ms": 8368332,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4219019,
+              "start_ms": 12405330,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3912214,
+              "start_ms": 16624349,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4026595,
+              "start_ms": 20536563,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4222872,
+              "start_ms": 24563158,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NOwlVPvyL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 480,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1645417972",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1645417972",
+              "type": "libex-import"
+            }
+          ],
+          "work": "gemini-cell"
+        },
         "korey-jackson-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10278,95 +10349,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00TQEHYEG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Gemini Cell"
-    },
-    "gemini-cell-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "myke-cole"
-      ],
-      "genres": [
-        "classics",
-        "fantasy"
-      ],
-      "id": "gemini-cell-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1645417972",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3939056,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4429276,
-              "start_ms": 3939056,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4036998,
-              "start_ms": 8368332,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4219019,
-              "start_ms": 12405330,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3912214,
-              "start_ms": 16624349,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4026595,
-              "start_ms": 20536563,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4222872,
-              "start_ms": 24563158,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91NOwlVPvyL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 480,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1645417972",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1645417972",
-              "type": "libex-import"
-            }
-          ],
-          "work": "gemini-cell-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1645417972",
@@ -10378,7 +10361,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Gemini Cell [Dramatized Adaptation]"
+      "title": "Gemini Cell"
     },
     "gemini-dorothy-dunnett": {
       "added_at": "2026-07-29",

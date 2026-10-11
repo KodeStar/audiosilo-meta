@@ -3162,6 +3162,7 @@
         "fantasy",
         "mystery",
         "paranormal",
+        "romance",
         "thriller-suspense",
         "urban-fantasy"
       ],
@@ -3169,6 +3170,71 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648813062",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3840696,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3638497,
+              "start_ms": 3840696,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3551793,
+              "start_ms": 7479193,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3756779,
+              "start_ms": 11030986,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3437946,
+              "start_ms": 14787765,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4003305,
+              "start_ms": 18225711,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81NwO-578cL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 370,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648813062",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648813062",
+              "type": "libex-import"
+            }
+          ],
+          "work": "devils-and-details"
+        },
         "khristine-hvam-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3329,94 +3395,7 @@
           "imported_at": "2026-08-02",
           "ref": "B07FN215QZ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Devils and Details"
-    },
-    "devils-and-details-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "devon-monk"
-      ],
-      "genres": [
-        "fantasy",
-        "mystery",
-        "paranormal",
-        "romance",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "devils-and-details-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648813062",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3840696,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3638497,
-              "start_ms": 3840696,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3551793,
-              "start_ms": 7479193,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3756779,
-              "start_ms": 11030986,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3437946,
-              "start_ms": 14787765,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4003305,
-              "start_ms": 18225711,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81NwO-578cL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 370,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648813062",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648813062",
-              "type": "libex-import"
-            }
-          ],
-          "work": "devils-and-details-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648813062",
@@ -3428,7 +3407,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Devils and Details [Dramatized Adaptation]"
+      "title": "Devils and Details"
     },
     "devils-and-dragons": {
       "added_at": "2026-08-01",

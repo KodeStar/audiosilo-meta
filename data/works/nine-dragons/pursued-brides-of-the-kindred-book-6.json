@@ -6231,67 +6231,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "j-rodney-turner-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1541432754",
-              "region": "us"
-            },
-            {
-              "asin": "1541432754",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91hTQrKZlHL.jpg",
-          "id": "j-rodney-turner-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "j-rodney-turner"
-          ],
-          "publisher": "Tantor Media",
-          "release_date": "2020-02-25",
-          "runtime_min": 449,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1541432754",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1541432754",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pursuit-of-the-mountain-man"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1541432754",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pursuit of the Mountain Man"
-    },
-    "pursuit-of-the-mountain-man-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "pursuit-of-the-mountain-man-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -6350,10 +6289,52 @@
               "type": "libex-import"
             }
           ],
-          "work": "pursuit-of-the-mountain-man-dramatized-adaptation"
+          "work": "pursuit-of-the-mountain-man"
+        },
+        "j-rodney-turner-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1541432754",
+              "region": "us"
+            },
+            {
+              "asin": "1541432754",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91hTQrKZlHL.jpg",
+          "id": "j-rodney-turner-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "j-rodney-turner"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2020-02-25",
+          "runtime_min": 449,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1541432754",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1541432754",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pursuit-of-the-mountain-man"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1541432754",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648805795",
@@ -6365,7 +6346,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Pursuit of the Mountain Man [Dramatized Adaptation]"
+      "title": "Pursuit of the Mountain Man"
     },
     "pursuit-of-the-zubalamo": {
       "added_at": "2026-08-01",

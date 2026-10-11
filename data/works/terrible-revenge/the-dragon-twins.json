@@ -5534,6 +5534,7 @@
       ],
       "genres": [
         "action-adventure",
+        "coming-of-age",
         "epic-fantasy",
         "fairy-tales-folklore",
         "fantasy"
@@ -5832,31 +5833,7 @@
             }
           ],
           "work": "the-dragonbone-chair"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00W8DB4XE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Dragonbone Chair"
-    },
-    "the-dragonbone-chair-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tad-williams"
-      ],
-      "genres": [
-        "coming-of-age",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-dragonbone-chair-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andy-brownstein-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6025,10 +6002,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-dragonbone-chair-dramatized-adaptation"
+          "work": "the-dragonbone-chair"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00W8DB4XE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F1DKF4W5",
@@ -6045,7 +6027,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Dragonbone Chair [Dramatized Adaptation]"
+      "title": "The Dragonbone Chair"
     },
     "the-dragonbone-sword": {
       "added_at": "2026-08-01",

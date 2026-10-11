@@ -526,6 +526,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "family-jensen-dramatized"
+    ],
+    "reason": "once the dramatized duplicate works fold, the variant lists four of the canonical series' works at the same slots and fills the empty slots 5 and 6; dramatization is a property of the recordings, not a series",
+    "target": "family-jensen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "fearless-jones-abridged"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
@@ -548,6 +557,15 @@
     ],
     "reason": "lists 5 of the canonical series' works at the same slots and fills its free slots with Broken at 7, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
     "target": "grant-county"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "gunnie-rose-dramatized-adaptation"
+    ],
+    "reason": "once the dramatized duplicate works fold, the variant lists The Russian Cage and The Serpent in Heaven at the canonical slots and fills the empty slots 1 and 2 with An Easy Death and A Longer Fall; dramatization is a property of the recordings, not a series",
+    "target": "gunnie-rose"
   },
   {
     "decision": "assert",
@@ -758,6 +776,15 @@
     "target": "vattas-war"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-colorado-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-colorado-christmas"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -776,6 +803,132 @@
     "target": "a-dangerous-path"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-death-valley-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-death-valley-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-frontier-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-frontier-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-high-sierra-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-high-sierra-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-jensen-family-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-jensen-family-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-longer-fall-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-longer-fall"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-maccallister-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-maccallister-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-reason-to-die-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-reason-to-die"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-rocky-mountain-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-rocky-mountain-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-soul-of-ash-and-blood-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-soul-of-ash-and-blood"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-texas-hill-country-christmas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "a-texas-hill-country-christmas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "absaroka-ambush-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "absaroka-ambush"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ahead-full-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "ahead-full"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "alcatraz-versus-the-knights-of-crystallia-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "alcatraz-versus-the-knights-of-crystallia"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "alcatraz-versus-the-shattered-lens-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "alcatraz-versus-the-shattered-lens"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -783,6 +936,51 @@
     ],
     "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
     "target": "amanecer-rojo-red-rising"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ambush-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "ambush-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "an-easy-death-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "an-easy-death"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ascendance-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "ascendance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "assault-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "assault-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "badger-boy-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "badger-boy"
   },
   {
     "decision": "accept",
@@ -797,10 +995,172 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "bite-this-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "bite-this"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "black-dogs-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "black-dogs"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "blackfoot-messiah-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "blackfoot-messiah"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "blood-on-the-divide-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "blood-on-the-divide"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bloodshed-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "bloodshed-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bloody-acquisitions-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "bloody-acquisitions"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "bombenterror-auf-fomalhaut-b-sherlock-holmes-die-galaktischen-falle-folge-70"
     ],
     "reason": "the same episode 70 of the same German series by the same authors; the Folge record carries two other narrations",
     "target": "bombenterror-auf-fomalhaut-b-sherlock-holmes-die-galaktischen-falle-70"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "born-in-fire-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "born-in-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "breach-zone-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "breach-zone"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "break-the-chains-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "break-the-chains"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "broken-mate-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "broken-mate"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "broken-souls-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "broken-souls"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "brotherhood-of-evil-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "brotherhood-of-evil"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "brutal-night-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "brutal-night-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "buckhorn-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "buckhorn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "butchery-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "butchery-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "capture-death-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "capture-death"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cheyenne-challenge-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "cheyenne-challenge"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "chorus-skating-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "chorus-skating"
   },
   {
     "decision": "assert",
@@ -815,6 +1175,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "code-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "code-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "colters-journey-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "colters-journey"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "command-authority-tom-clancy"
     ],
     "reason": "the same Lou Diamond Phillips production of Command Authority; the second record also credits co-author Mark Greaney, which the merge keeps",
@@ -824,10 +1202,118 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "control-point-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "control-point"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "corpies-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "corpies"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cruel-winter-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "cruel-winter-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cultivation-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "cultivation"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cunning-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "cunning-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cursed-fates-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "cursed-fates"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "cutthroats-dramatized-adaptation"
     ],
     "reason": "the same novel; [Dramatized Adaptation] names the full-cast production, a property of the recording",
     "target": "cutthroats"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "damnation-valley-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "damnation-valley"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dark-age-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dark-age"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dark-war-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dark-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "darkest-before-the-dawn-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "darkest-before-the-dawn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "darkness-of-light-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "darkness-of-light"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dawn-arrives-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dawn-arrives"
   },
   {
     "decision": "accept",
@@ -840,6 +1326,60 @@
     "target": "dawnshard"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dead-before-sundown-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dead-before-sundown"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dead-streets-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dead-streets"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "deadly-assessments-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "deadly-assessments"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "death-and-relaxation-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "death-and-relaxation"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "death-becomes-her-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "death-becomes-her"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "death-rides-a-chestnut-mare-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "death-rides-a-chestnut-mare"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -849,6 +1389,60 @@
     "target": "despues-de-ti"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "destiny-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "destiny-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "devils-and-details-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "devils-and-details"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "die-by-the-gun-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "die-by-the-gun"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "die-with-the-outlaws-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "die-with-the-outlaws"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dig-your-own-grave-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dig-your-own-grave"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dont-cross-this-line-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dont-cross-this-line"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -856,6 +1450,24 @@
     ],
     "reason": "the same book: the two records sit at different positions only because the two Ranger's Apprentice numberings differ",
     "target": "duel-at-araluen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "duskfall-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "duskfall"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "dwellers-of-darkness-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "dwellers-of-darkness"
   },
   {
     "decision": "accept",
@@ -939,6 +1551,24 @@
     "target": "el-siciliano"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "elantris-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "elantris"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "empire-of-silence-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "empire-of-silence"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -948,6 +1578,42 @@
     "target": "ensayo-sobre-la-ceguera"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "evil-never-sleeps-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "evil-never-sleeps"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fear-the-stars-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "fear-the-stars"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fire-in-the-darkness-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "fire-in-the-darkness"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "firestick-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "firestick"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -955,6 +1621,96 @@
     ],
     "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
     "target": "five-little-pigs"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "flintlock-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "flintlock"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "forever-defend-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "forever-defend"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fortress-frontier-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "fortress-frontier"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fourth-wing-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "fourth-wing"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "frontier-of-violence-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "frontier-of-violence"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fury-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "fury-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "fused-in-fire-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "fused-in-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ganymede-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "ganymede"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "gemini-cell-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "gemini-cell"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "gods-and-ends-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "gods-and-ends"
   },
   {
     "decision": "assert",
@@ -978,10 +1734,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "hang-him-twice-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "hang-him-twice"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "hang-them-slowly-dramatized-adaptation"
     ],
     "reason": "the same novel; [Dramatized Adaptation] names the full-cast production, a property of the recording",
     "target": "hang-them-slowly"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "hard-ride-to-hell-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "hard-ride-to-hell"
   },
   {
     "decision": "assert",
@@ -1110,6 +1884,15 @@
     "target": "harry-potter-y-la-piedra-filosofal"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "helltown-massacre-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "helltown-massacre"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1117,6 +1900,15 @@
     ],
     "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
     "target": "hija-de-la-fortuna"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "hungry-ghosts-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "hungry-ghosts"
   },
   {
     "decision": "assert",
@@ -1135,6 +1927,78 @@
     ],
     "reason": "same book and same Lukas Speitling narration: the title states Band 0, the German Edition series spelling is one series",
     "target": "im-keller-des-ghouls"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "inherit-the-flame-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "inherit-the-flame"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "iron-flame-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "iron-flame"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "iron-gold-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "iron-gold"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "its-hell-to-choose-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "its-hell-to-choose"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "javelin-rain-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "javelin-rain"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "kill-crazy-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "kill-crazy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "killer-take-all-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "killer-take-all"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "kneel-or-die-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "kneel-or-die"
   },
   {
     "decision": "accept",
@@ -1191,6 +2055,15 @@
     "target": "la-reina-estrangulada"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "life-goes-on-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "life-goes-on"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1209,6 +2082,42 @@
     "target": "los-venenos-de-la-corona"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "love-lost-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "love-lost"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magic-gifts-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "magic-gifts"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magic-tides-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "magic-tides"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "magical-midlife-flowers-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "magical-midlife-flowers"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1216,6 +2125,15 @@
     ],
     "reason": "same book: two narrations of one work, and the series spellings are one series",
     "target": "mentira"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "mentored-in-fire-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "mentored-in-fire"
   },
   {
     "decision": "accept",
@@ -1227,6 +2145,51 @@
     "target": "midnight-over-sanctaphrax"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "might-makes-right-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "might-makes-right"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "morning-star-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "morning-star"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "mount-fitz-roy-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "mount-fitz-roy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "my-ride-is-a-bitch-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "my-ride-is-a-bitch"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "natural-dual-mage-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "natural-dual-mage"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1234,6 +2197,33 @@
     ],
     "reason": "same book and same Scott Brick narration: Orphan X (Evan Smoak) is a spelling of the Orphan X series",
     "target": "nemesis-an-orphan-x-novel"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "network-effect-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "network-effect"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "never-submit-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "never-submit"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "never-surrender-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "never-surrender"
   },
   {
     "decision": "assert",
@@ -1257,10 +2247,136 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "once-in-a-blue-moon-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "once-in-a-blue-moon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "onyx-storm-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "onyx-storm"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "out-of-house-and-home-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "out-of-house-and-home"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "outlaw-country-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "outlaw-country"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "paid-in-blood-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "paid-in-blood"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "partner-in-crime-j-a-jance-2"
     ],
     "reason": "the same J. P. Beaumont novel: one record holds the abridged recording, the other the unabridged one",
     "target": "partner-in-crime-j-a-jance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "people-of-the-wolf-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "people-of-the-wolf"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "perhaps-the-stars-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "perhaps-the-stars"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "posthumous-education-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "posthumous-education"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "power-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "power-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "pray-for-death-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "pray-for-death"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "preacher-and-the-mountain-caesar-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "preacher-and-the-mountain-caesar"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "preachers-frenzy-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "preachers-frenzy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "preachers-inferno-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "preachers-inferno"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "preachers-rage-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "preachers-rage"
   },
   {
     "decision": "accept",
@@ -1273,6 +2389,87 @@
     "target": "prince-caspian"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "prometheus-wakes-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "prometheus-wakes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "pursuit-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "pursuit-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "queen-bitch-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "queen-bitch"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "quest-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "quest-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rage-and-ruin-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "rage-and-ruin"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rage-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "rage-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rain-of-shadows-and-endings-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "rain-of-shadows-and-endings"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "raised-in-fire-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "raised-in-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rattlesnake-wells-wyoming-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "rattlesnake-wells-wyoming"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1280,6 +2477,24 @@
     ],
     "reason": "same book: two narrations of one work, and the series spellings are one series",
     "target": "record-of-a-spaceborn-few"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "release-the-dogs-of-war-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "release-the-dogs-of-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "remington-1894-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "remington-1894"
   },
   {
     "decision": "accept",
@@ -1291,6 +2506,42 @@
     "target": "retrato-en-sepia"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "revealed-in-fire-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "revealed-in-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ride-the-savage-land-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "ride-the-savage-land"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "riding-the-nightmare-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "riding-the-nightmare"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "right-between-the-eyes-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "right-between-the-eyes"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1298,6 +2549,15 @@
     ],
     "reason": "same book and same narration re-released: Warriors (Hunter) is a spelling of the Warriors series",
     "target": "rising-storm"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "river-of-blood-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "river-of-blood"
   },
   {
     "decision": "accept",
@@ -1309,6 +2569,24 @@
     "target": "roanoke-spanish-edition"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "savage-texas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "savage-texas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "savagery-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "savagery-of-the-mountain-man"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1316,6 +2594,24 @@
     ],
     "reason": "same book and same Felix Borrmann narration re-released under another imprint",
     "target": "seelendieb-soul-stealer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "serpents-silver-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "serpents-silver"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "shadow-princess-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "shadow-princess"
   },
   {
     "decision": "accept",
@@ -1327,6 +2623,24 @@
     "target": "shawn-obrien-town-tamer"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "siege-line-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "siege-line"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "silver-moon-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "silver-moon"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1336,6 +2650,69 @@
     "target": "sinsajo-mockingjay"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "slaughter-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "slaughter-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "son-of-spellsinger-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "son-of-spellsinger"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sons-of-texas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "sons-of-texas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "spirit-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "spirit-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "springfield-1880-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "springfield-1880"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "stand-with-my-unit-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "stand-with-my-unit"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "stone-of-farewell-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "stone-of-farewell"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1343,6 +2720,42 @@
     ],
     "reason": "same book: the abridged Penguin reading is a recording of the novel, and abridged is stated on it",
     "target": "stormchaser"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "stranglehold-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "stranglehold"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sued-for-peace-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "sued-for-peace"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "super-powereds-year-3-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "super-powereds-year-3"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "super-powereds-year-4-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "super-powereds-year-4"
   },
   {
     "decision": "accept",
@@ -1356,6 +2769,51 @@
     ],
     "reason": "same book: every member is another narration or retailer edition of the one novel, and the series spellings are one series",
     "target": "tarzan-of-the-apes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "terminal-alliance-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "terminal-alliance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "terminal-uprising-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "terminal-uprising"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "terror-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "terror-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "texas-standoff-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "texas-standoff"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-all-pro-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-all-pro"
   },
   {
     "decision": "assert",
@@ -1381,10 +2839,73 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-black-hills-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-black-hills"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-book-of-azrael-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-book-of-azrael"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-buckskin-line-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-buckskin-line"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-cardinal-of-the-kremlin-jack-ryan-book-4"
     ],
     "reason": "the same Michael Prichard narration of The Cardinal of the Kremlin under a series-decorated title",
     "target": "the-cardinal-of-the-kremlin"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-champion-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-champion"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-chuckwagon-trail-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-chuckwagon-trail"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dame-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-dame"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dark-messiah-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-dark-messiah"
   },
   {
     "decision": "accept",
@@ -1396,6 +2917,96 @@
     "target": "the-darkest-hour"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-darkest-winter-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-darkest-winter"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-daylight-war-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-daylight-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-death-of-chaos-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-death-of-chaos"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-detective-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-detective"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-dragonbone-chair-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-dragonbone-chair"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-emperors-soul-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-emperors-soul"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-eyes-of-texas-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-eyes-of-texas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-family-jensen-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-family-jensen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-fangs-of-freelance-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-fangs-of-freelance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-frontiersman-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-frontiersman"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -1403,6 +3014,15 @@
     ],
     "reason": "Green Ember (2025, Jake Phillips) is the subtitle-less record of Green Ember: Helmer in the Dragon Tomb, a different book than The Green Ember",
     "target": "the-green-ember"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-highwayman-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-highwayman"
   },
   {
     "decision": "accept",
@@ -1413,6 +3033,33 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "the-horse-and-his-boy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-jackals-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-jackals"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-jensen-brand-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-jensen-brand"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-killing-light-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-killing-light"
   },
   {
     "decision": "assert",
@@ -1434,6 +3081,24 @@
     "target": "the-last-battle"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-last-wish-full-cast-edition"
+    ],
+    "reason": "the same book by the same author: the decorated title names the full-cast production, which is a property of the recording, not of the work",
+    "target": "the-last-wish"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-legend-of-perley-gates-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-legend-of-perley-gates"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1441,6 +3106,15 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "the-lion-the-witch-and-the-wardrobe"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-magic-engineer-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-magic-engineer"
   },
   {
     "decision": "assert",
@@ -1484,10 +3158,46 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-mvp-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-mvp"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-order-war-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-order-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-queen-of-crows-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-queen-of-crows"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-range-detectives-dramatized-adaptation"
     ],
     "reason": "the same novel; [Dramatized Adaptation] names the full-cast production, a property of the recording",
     "target": "the-range-detectives"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-reef-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-reef"
   },
   {
     "decision": "accept",
@@ -1505,10 +3215,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-rider-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-rider"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-royal-ranger-a-new-beginning"
     ],
     "reason": "The Royal Ranger: A New Beginning is the later retitling of The Royal Ranger (Ranger's Apprentice 12): same book, two narrations at 836 minutes",
     "target": "the-royal-ranger"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-scavenger-door-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-scavenger-door"
   },
   {
     "decision": "accept",
@@ -1524,10 +3252,64 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-six-gun-tarot-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-six-gun-tarot"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-sorcerer-of-the-north"
     ],
     "reason": "The Sorcerer of the North is the US title of Ranger's Apprentice book 5, The Sorcerer in the North: same book, three narrations",
     "target": "the-sorcerer-in-the-north"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-throne-of-broken-gods-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-throne-of-broken-gods"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-towers-of-the-sunset-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-towers-of-the-sunset"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-trail-west-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-trail-west"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-violent-land-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-violent-land"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-violent-storm-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-violent-storm"
   },
   {
     "decision": "accept",
@@ -1538,6 +3320,15 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "the-voyage-of-the-dawn-treader"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-war-of-two-queens-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-war-of-two-queens"
   },
   {
     "decision": "accept",
@@ -1551,6 +3342,24 @@
     ],
     "reason": "same book: other narrations, retailer editions and dramatised productions of the one novel, and the authors agree",
     "target": "the-wonderful-wizard-of-oz"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "this-violent-land-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "this-violent-land"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "those-jensen-boys-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "those-jensen-boys"
   },
   {
     "decision": "assert",
@@ -1571,6 +3380,24 @@
     "target": "tom-clancys-oath-of-office"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "too-soon-to-die-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "too-soon-to-die"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "trek-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "trek-of-the-mountain-man"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1578,6 +3405,141 @@
     ],
     "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
     "target": "una-noche-y-nada-mas-one-night-and-nothing-more-narracion-en-castellano"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "undeading-bells-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "undeading-bells"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "undeath-and-taxes-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "undeath-and-taxes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "under-my-heel-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "under-my-heel"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "vengeance-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "vengeance-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "violent-sunday-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "violent-sunday"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "war-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "war-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warbreaker-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "warbreaker"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warpath-of-the-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "warpath-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warrior-fae-princess-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "warrior-fae-princess"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warrior-fae-trapped-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "warrior-fae-trapped"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "we-have-contact-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "we-have-contact"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "we-will-build-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "we-will-build"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "when-all-hell-broke-loose-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "when-all-hell-broke-loose"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "when-the-shooting-starts-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "when-the-shooting-starts"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "winchester-1886-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "winchester-1886"
   },
   {
     "decision": "assert",
@@ -1608,6 +3570,24 @@
   },
   {
     "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "yuma-prison-crashout-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "yuma-prison-crashout"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "yumi-and-the-nightmare-painter-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "yumi-and-the-nightmare-painter"
+  },
+  {
+    "decision": "assert",
     "from": "Head On (Narrated by Wil Wheaton)",
     "op": "retitle-work",
     "reason": "John Scalzi's Head On holds both the Wil Wheaton and Amber Benson narrations, so the narrator credit is a recording fact, not the book's title; W-TITLE's fragment rule misreads the trailing On as a dangling connective (the Larry Csonka Head On is a different work by another author)",
@@ -1621,6 +3601,14 @@
     "reason": "the work holds both the Wil Wheaton and Amber Benson narrations, so the narrator credit is a recording fact, not the book's title; W-TITLE's fragment rule misreads the trailing In as a dangling connective",
     "target": "lock-in-narrated-by-wil-wheaton",
     "to": "Lock In"
+  },
+  {
+    "decision": "assert",
+    "from": "Massacre Canyon [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "the only catalogued Massacre Canyon (Family Jensen 5): no plain twin exists to merge into, so the dramatized full-cast production, a property of the recording, comes off the title instead",
+    "target": "massacre-canyon-dramatized-adaptation",
+    "to": "Massacre Canyon"
   },
   {
     "decision": "accept",

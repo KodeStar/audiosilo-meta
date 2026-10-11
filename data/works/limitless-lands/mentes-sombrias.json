@@ -2528,6 +2528,7 @@
         "k-f-breene"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
         "paranormal",
         "romance",
@@ -2537,6 +2538,86 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2024": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0D347GKL4",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 43924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3746385,
+              "start_ms": 43924,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 4378308,
+              "start_ms": 3790309,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3415121,
+              "start_ms": 8168617,
+              "title": "Part 3"
+            },
+            {
+              "length_ms": 4315985,
+              "start_ms": 11583738,
+              "title": "Part 4"
+            },
+            {
+              "length_ms": 3860015,
+              "start_ms": 15899723,
+              "title": "Part 5"
+            },
+            {
+              "length_ms": 3689000,
+              "start_ms": 19759738,
+              "title": "Part 6"
+            },
+            {
+              "length_ms": 123000,
+              "start_ms": 23448738,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 257110,
+              "start_ms": 23571738,
+              "title": "Listening Preview"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91djPBYO49L.jpg",
+          "id": "full-cast-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2024",
+          "runtime_min": 397,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0D347GKL4",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0D347GKL4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mentored-in-fire"
+        },
         "nicole-poole-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -2712,108 +2793,7 @@
           "imported_at": "2026-08-01",
           "ref": "B099KM7Q25",
           "type": "libex-import"
-        }
-      ],
-      "title": "Mentored in Fire"
-    },
-    "mentored-in-fire-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "k-f-breene"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "romance",
-        "urban-fantasy"
-      ],
-      "id": "mentored-in-fire-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2024": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0D347GKL4",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 43924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3746385,
-              "start_ms": 43924,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 4378308,
-              "start_ms": 3790309,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3415121,
-              "start_ms": 8168617,
-              "title": "Part 3"
-            },
-            {
-              "length_ms": 4315985,
-              "start_ms": 11583738,
-              "title": "Part 4"
-            },
-            {
-              "length_ms": 3860015,
-              "start_ms": 15899723,
-              "title": "Part 5"
-            },
-            {
-              "length_ms": 3689000,
-              "start_ms": 19759738,
-              "title": "Part 6"
-            },
-            {
-              "length_ms": 123000,
-              "start_ms": 23448738,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 257110,
-              "start_ms": 23571738,
-              "title": "Listening Preview"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91djPBYO49L.jpg",
-          "id": "full-cast-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2024",
-          "runtime_min": 397,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0D347GKL4",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0D347GKL4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mentored-in-fire-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D347GKL4",
@@ -2825,7 +2805,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Mentored in Fire (Dramatized Adaptation)"
+      "title": "Mentored in Fire"
     },
     "mentoria-al-minuto": {
       "added_at": "2026-07-29",

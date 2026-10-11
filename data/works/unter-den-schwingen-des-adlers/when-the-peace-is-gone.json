@@ -3097,68 +3097,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "jack-garrett-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09ZZTHKXJ",
-              "region": "us"
-            },
-            {
-              "asin": "B0B1119S94",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819Cv-iBeJL.jpg",
-          "id": "jack-garrett-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jack-garrett"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2022-05-24",
-          "runtime_min": 533,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09ZZTHKXJ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0B1119S94",
-              "type": "libex-import"
-            }
-          ],
-          "work": "when-the-shooting-starts"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09ZZTHKXJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "When the Shooting Starts"
-    },
-    "when-the-shooting-starts-dramatized-adaptation": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "westerns"
-      ],
-      "id": "when-the-shooting-starts-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "bradley-foster-smith-2024": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -3252,17 +3190,59 @@
               "type": "libex-import"
             }
           ],
-          "work": "when-the-shooting-starts-dramatized-adaptation"
+          "work": "when-the-shooting-starts"
+        },
+        "jack-garrett-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09ZZTHKXJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0B1119S94",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819Cv-iBeJL.jpg",
+          "id": "jack-garrett-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jack-garrett"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2022-05-24",
+          "runtime_min": 533,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09ZZTHKXJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0B1119S94",
+              "type": "libex-import"
+            }
+          ],
+          "work": "when-the-shooting-starts"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09ZZTHKXJ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B0D3R2ZV4Z",
           "type": "libex-import"
         }
       ],
-      "title": "When the Shooting Starts (Dramatized Adaptation)"
+      "title": "When the Shooting Starts"
     },
     "when-the-side-n-gga-catch-feelings": {
       "added_at": "2026-07-29",

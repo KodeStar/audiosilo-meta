@@ -4028,6 +4028,80 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "eric-messner-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CD88LYWW",
+              "region": "us"
+            },
+            {
+              "asin": "B0CD87LS43",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3520771,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3513875,
+              "start_ms": 3520771,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4240381,
+              "start_ms": 7034646,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3911842,
+              "start_ms": 11275027,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4136843,
+              "start_ms": 15186869,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gvdEptAyL.jpg",
+          "id": "eric-messner-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "eric-messner",
+            "jessica-lauren-ball",
+            "laura-c-harris",
+            "matthew-pauli",
+            "richard-rohan",
+            "robb-moreira",
+            "stephon-walker",
+            "steven-carpenter",
+            "taylor-coan",
+            "terence-aselford",
+            "yasmin-tuazon"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2023-08-14",
+          "runtime_min": 321,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CD88LYWW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CD87LS43",
+              "type": "libex-import"
+            }
+          ],
+          "work": "broken-mate"
+        },
         "heather-costa-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -4198,106 +4272,14 @@
           "imported_at": "2026-08-01",
           "ref": "B09MDDK49R",
           "type": "libex-import"
-        }
-      ],
-      "title": "Broken Mate"
-    },
-    "broken-mate-dramatized-adaptation": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jen-l-grey"
-      ],
-      "genres": [
-        "paranormal",
-        "romance"
-      ],
-      "id": "broken-mate-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eric-messner-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CD88LYWW",
-              "region": "us"
-            },
-            {
-              "asin": "B0CD87LS43",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3520771,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3513875,
-              "start_ms": 3520771,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4240381,
-              "start_ms": 7034646,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3911842,
-              "start_ms": 11275027,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4136843,
-              "start_ms": 15186869,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91gvdEptAyL.jpg",
-          "id": "eric-messner-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eric-messner",
-            "jessica-lauren-ball",
-            "laura-c-harris",
-            "matthew-pauli",
-            "richard-rohan",
-            "robb-moreira",
-            "stephon-walker",
-            "steven-carpenter",
-            "taylor-coan",
-            "terence-aselford",
-            "yasmin-tuazon"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2023-08-14",
-          "runtime_min": 321,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CD88LYWW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CD87LS43",
-              "type": "libex-import"
-            }
-          ],
-          "work": "broken-mate-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CD88LYWW",
           "type": "libex-import"
         }
       ],
-      "title": "Broken Mate (Dramatized Adaptation)"
+      "title": "Broken Mate"
     },
     "broken-mcintyre-security-bodyguard-series-book-3": {
       "added_at": "2026-07-29",

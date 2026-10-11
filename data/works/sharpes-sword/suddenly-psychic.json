@@ -2071,9 +2071,12 @@
       ],
       "genres": [
         "action-adventure",
+        "fantasy",
         "military-science-fiction",
+        "paranormal",
         "science",
-        "science-fiction"
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "sued-for-peace",
       "language": "en",
@@ -2267,33 +2270,7 @@
             }
           ],
           "work": "sued-for-peace"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B075XRP1RP",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sued for Peace"
-    },
-    "sued-for-peace-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "sued-for-peace-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2023": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -2367,10 +2344,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "sued-for-peace-dramatized-adaptation"
+          "work": "sued-for-peace"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B075XRP1RP",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0C3S7W54F",
@@ -2382,7 +2364,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Sued for Peace (Dramatized Adaptation)"
+      "title": "Sued for Peace"
     },
     "suelen": {
       "added_at": "2026-08-01",

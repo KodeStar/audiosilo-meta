@@ -9059,7 +9059,8 @@
     "destiny-of-the-mountain-man": {
       "added_at": "2026-07-29",
       "authors": [
-        "william-w-johnstone"
+        "william-w-johnstone",
+        "j-a-johnstone"
       ],
       "genres": [
         "westerns"
@@ -9068,6 +9069,66 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648806317",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3380662,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3167596,
+              "start_ms": 3380662,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3114817,
+              "start_ms": 6548258,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2968996,
+              "start_ms": 9663075,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3597907,
+              "start_ms": 12632071,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9129dn5s8nL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 271,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648806317",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648806317",
+              "type": "libex-import"
+            }
+          ],
+          "work": "destiny-of-the-mountain-man"
+        },
         "vanessa-maroney-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9163,85 +9224,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002VA373E",
           "type": "libex-import"
-        }
-      ],
-      "title": "Destiny of the Mountain Man"
-    },
-    "destiny-of-the-mountain-man-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "westerns"
-      ],
-      "id": "destiny-of-the-mountain-man-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648806317",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3380662,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3167596,
-              "start_ms": 3380662,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3114817,
-              "start_ms": 6548258,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2968996,
-              "start_ms": 9663075,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3597907,
-              "start_ms": 12632071,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9129dn5s8nL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 271,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648806317",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648806317",
-              "type": "libex-import"
-            }
-          ],
-          "work": "destiny-of-the-mountain-man-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648806317",
@@ -9253,7 +9236,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Destiny of the Mountain Man [Dramatized Adaptation]"
+      "title": "Destiny of the Mountain Man"
     },
     "destiny-of-the-queen": {
       "added_at": "2026-08-01",

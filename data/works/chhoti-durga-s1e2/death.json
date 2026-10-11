@@ -6549,6 +6549,7 @@
         "fantasy",
         "mystery",
         "paranormal",
+        "romance",
         "thriller-suspense",
         "urban-fantasy"
       ],
@@ -6556,6 +6557,76 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648813046",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3575222,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3599557,
+              "start_ms": 3575222,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3366684,
+              "start_ms": 7174779,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3470500,
+              "start_ms": 10541463,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3464672,
+              "start_ms": 14011963,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3356653,
+              "start_ms": 17476635,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3491142,
+              "start_ms": 20833288,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81cqTCuPMsL.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 405,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648813046",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648813046",
+              "type": "libex-import"
+            }
+          ],
+          "work": "death-and-relaxation"
+        },
         "khristine-hvam-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6776,99 +6847,7 @@
           "imported_at": "2026-08-02",
           "ref": "B07FCR7DK1",
           "type": "libex-import"
-        }
-      ],
-      "title": "Death and Relaxation"
-    },
-    "death-and-relaxation-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "devon-monk"
-      ],
-      "genres": [
-        "fantasy",
-        "mystery",
-        "paranormal",
-        "romance",
-        "thriller-suspense",
-        "urban-fantasy"
-      ],
-      "id": "death-and-relaxation-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2020": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648813046",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3575222,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3599557,
-              "start_ms": 3575222,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3366684,
-              "start_ms": 7174779,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3470500,
-              "start_ms": 10541463,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3464672,
-              "start_ms": 14011963,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3356653,
-              "start_ms": 17476635,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3491142,
-              "start_ms": 20833288,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81cqTCuPMsL.jpg",
-          "id": "full-cast-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2020",
-          "runtime_min": 405,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648813046",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648813046",
-              "type": "libex-import"
-            }
-          ],
-          "work": "death-and-relaxation-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648813046",
@@ -6880,7 +6859,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Death and Relaxation [Dramatized Adaptation]"
+      "title": "Death and Relaxation"
     },
     "death-and-sweet-temptations": {
       "added_at": "2026-08-02",

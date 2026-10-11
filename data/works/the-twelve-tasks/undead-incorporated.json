@@ -4715,6 +4715,91 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648818439",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 47924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4264230,
+              "start_ms": 47924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4014892,
+              "start_ms": 4312154,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4195056,
+              "start_ms": 8327046,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3520702,
+              "start_ms": 12522102,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4046587,
+              "start_ms": 16042804,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3965852,
+              "start_ms": 20089391,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4163523,
+              "start_ms": 24055243,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4404000,
+              "start_ms": 28218766,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 196104,
+              "start_ms": 32622766,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ijoOjXA4L.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Graphic Audio LLC",
+          "release_date": "2021",
+          "runtime_min": 547,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648818439",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648818439",
+              "type": "libex-import"
+            }
+          ],
+          "work": "undeading-bells"
+        },
         "kirby-heyborne-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5035,112 +5120,7 @@
           "imported_at": "2026-08-02",
           "ref": "1977346987",
           "type": "libex-import"
-        }
-      ],
-      "title": "Undeading Bells"
-    },
-    "undeading-bells-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "comedy-humor",
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "undeading-bells-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648818439",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 47924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4264230,
-              "start_ms": 47924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4014892,
-              "start_ms": 4312154,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4195056,
-              "start_ms": 8327046,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3520702,
-              "start_ms": 12522102,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4046587,
-              "start_ms": 16042804,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3965852,
-              "start_ms": 20089391,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4163523,
-              "start_ms": 24055243,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4404000,
-              "start_ms": 28218766,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 196104,
-              "start_ms": 32622766,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ijoOjXA4L.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Graphic Audio LLC",
-          "release_date": "2021",
-          "runtime_min": 547,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648818439",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648818439",
-              "type": "libex-import"
-            }
-          ],
-          "work": "undeading-bells-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648818439",
@@ -5152,7 +5132,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Undeading Bells (Dramatized Adaptation)"
+      "title": "Undeading Bells"
     },
     "undeadly": {
       "added_at": "2026-08-01",
@@ -5252,6 +5232,86 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2021": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648816533",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 47924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4261722,
+              "start_ms": 47924,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4380165,
+              "start_ms": 4309646,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4021394,
+              "start_ms": 8689811,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4331148,
+              "start_ms": 12711205,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4600174,
+              "start_ms": 17042353,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4248000,
+              "start_ms": 21642527,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 110000,
+              "start_ms": 25890527,
+              "title": "End Credits"
+            },
+            {
+              "length_ms": 221461,
+              "start_ms": 26000527,
+              "title": "Trailer for Shannon Mayer's Rylee Adamson Series"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91BfDn4Z0QL.jpg",
+          "id": "full-cast-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2021",
+          "runtime_min": 437,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648816533",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648816533",
+              "type": "libex-import"
+            }
+          ],
+          "work": "undeath-and-taxes"
+        },
         "kirby-heyborne-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5552,106 +5612,7 @@
           "imported_at": "2026-08-02",
           "ref": "B015NMXZ7E",
           "type": "libex-import"
-        }
-      ],
-      "title": "Undeath and Taxes"
-    },
-    "undeath-and-taxes-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "drew-hayes"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "undeath-and-taxes-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2021": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "1648816533",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 47924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4261722,
-              "start_ms": 47924,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4380165,
-              "start_ms": 4309646,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4021394,
-              "start_ms": 8689811,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4331148,
-              "start_ms": 12711205,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4600174,
-              "start_ms": 17042353,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4248000,
-              "start_ms": 21642527,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 110000,
-              "start_ms": 25890527,
-              "title": "End Credits"
-            },
-            {
-              "length_ms": 221461,
-              "start_ms": 26000527,
-              "title": "Trailer for Shannon Mayer's Rylee Adamson Series"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BfDn4Z0QL.jpg",
-          "id": "full-cast-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "GraphicAudio",
-          "release_date": "2021",
-          "runtime_min": 437,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "1648816533",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1648816533",
-              "type": "libex-import"
-            }
-          ],
-          "work": "undeath-and-taxes-dramatized-adaptation"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648816533",
@@ -5663,7 +5624,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Undeath and Taxes (Dramatized Adaptation)"
+      "title": "Undeath and Taxes"
     },
     "undeclared": {
       "added_at": "2026-07-29",
