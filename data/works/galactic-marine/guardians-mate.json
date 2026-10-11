@@ -12540,12 +12540,14 @@
       ],
       "credits": [
         {
-          "person": "ben-aaranovitch",
+          "person": "ben-aaronovitch",
           "role": "introduction"
         }
       ],
       "first_published": "1989",
       "genres": [
+        "action-adventure",
+        "comedy-humor",
         "epic-fantasy",
         "fantasy",
         "science-fiction"
@@ -13486,51 +13488,7 @@
             }
           ],
           "work": "guards-guards"
-        }
-      },
-      "sources": [
-        {
-          "ref": "Q2078564",
-          "type": "wikidata"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B004FU8XPA",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B09M8WGGBN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Guards! Guards!",
-      "xref": {
-        "wikidata": "Q2078564"
-      }
-    },
-    "guards-guards-discworld-novel-8": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-pratchett",
-        "ben-aaranovitch"
-      ],
-      "credits": [
-        {
-          "person": "ben-aaranovitch",
-          "role": "introduction"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "guards-guards-discworld-novel-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tony-robinson-2007": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -13592,17 +13550,34 @@
               "type": "libex-import"
             }
           ],
-          "work": "guards-guards-discworld-novel-8"
+          "work": "guards-guards"
         }
       },
       "sources": [
+        {
+          "ref": "Q2078564",
+          "type": "wikidata"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B004FU8XPA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-12",
+          "ref": "B09M8WGGBN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0032NALUG",
           "type": "libex-import"
         }
       ],
-      "title": "Guards! Guards!: (Discworld Novel 8)"
+      "title": "Guards! Guards!",
+      "xref": {
+        "wikidata": "Q2078564"
+      }
     },
     "guardsman": {
       "added_at": "2026-08-02",

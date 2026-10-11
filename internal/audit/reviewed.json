@@ -352,6 +352,14 @@
     "target": "fates-entwined"
   },
   {
+    "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "the US-titled duplicate of Philosopher's Stone, whose slot 1 the main series already fills; the duplicate cannot merge yet because both records carry community characters and recaps, so it leaves the variant series and the variant folds into harry-potter",
+    "series": "harry-potter-full-cast-editions",
+    "target": "harry-potter-and-the-sorcerers-stone"
+  },
+  {
     "decision": "reject",
     "field": "position",
     "from": "3",
@@ -423,6 +431,78 @@
     ],
     "reason": "the orphan's one member, Oath of Office, sits at the same publication-order slot in A Jack Ryan Novel; retailers list no separate Jack Ryan Universe series for it",
     "target": "a-jack-ryan-novel-publication-order"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "discworld-abridged"
+    ],
+    "reason": "lists Discworld novels at the main series' own slots once the decorated duplicates fold; abridgement is a property of the recordings, not a series",
+    "target": "discworld"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "discworld-ankh-morpork-city-watch-abridged"
+    ],
+    "reason": "lists City Watch novels at the same slots once the decorated duplicates fold; abridgement is a property of the recordings, not a series",
+    "target": "discworld-ankh-morpork-city-watch"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "discworld-for-kids-abridged"
+    ],
+    "reason": "lists the same five novels at the same slots once the decorated duplicates fold; abridgement is a property of the recordings, not a series",
+    "target": "discworld-for-kids"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "discworld-tiffany-aching-abridged"
+    ],
+    "reason": "the same five Tiffany Aching novels; the fold fills the missing slots 1 (The Wee Free Men) and 3 (Wintersmith); abridgement is a property of the recordings, not a series",
+    "target": "discworld-tiffany-aching"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "harry-potter-full-cast-editions"
+    ],
+    "reason": "lists novels 2-7 at the same slots once the US-titled duplicate of book 1 has left it; full cast is a property of the recordings, not a series",
+    "target": "harry-potter"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "harry-potter-narrated-by-stephen-fry"
+    ],
+    "reason": "lists the seven novels at the same slots; the narrator is a property of the Stephen Fry recordings, not a series",
+    "target": "harry-potter"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "harry-potter-gesprochen-von-rufus-beck"
+    ],
+    "reason": "lists the seven German novels at the same slots once the narrator-titled duplicates fold; the narrator is a property of the Rufus Beck recordings, not a series",
+    "target": "harry-potter-german-edition"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "harry-potter-spanish"
+    ],
+    "reason": "the same Spanish translation of the series: books 1-5 at the same slots once the decorated duplicates fold",
+    "target": "harry-potter-spanish-edition"
   },
   {
     "decision": "accept",
@@ -661,6 +741,15 @@
     "target": "five-little-pigs"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "guards-guards-discworld-novel-8"
+    ],
+    "reason": "the same novel; (Discworld Novel 8) is a retailer series decoration and the record holds only the abridged Tony Robinson recording",
+    "target": "guards-guards"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -673,10 +762,118 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "harry-potter-and-the-goblet-of-fire-full-cast-edition"
+    ],
+    "reason": "the same novel; (Full-Cast Edition) names the production, which is a property of the recording, not of the work",
+    "target": "harry-potter-and-the-goblet-of-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "harry-potter-and-the-goblet-of-fire-narrated-by-stephen-fry"
     ],
     "reason": "the Stephen Fry narration of Goblet of Fire belongs on the work as its six siblings do; the cluster's excerpt record stays out of this merge",
     "target": "harry-potter-and-the-goblet-of-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-und-der-feuerkelch-gesprochen-von-rufus-beck"
+    ],
+    "reason": "the same German translation; the title tail names the narrator, which is a property of the Rufus Beck recording, not of the work",
+    "target": "harry-potter-und-der-feuerkelch"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-und-der-gefangene-von-askaban-gesprochen-von-rufus-beck"
+    ],
+    "reason": "the same German translation; the title tail names the narrator, which is a property of the Rufus Beck recording, not of the work",
+    "target": "harry-potter-und-der-gefangene-von-askaban"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-und-der-halbblutprinz-gesprochen-von-rufus-beck"
+    ],
+    "reason": "the same German translation; the title tail names the narrator, which is a property of the Rufus Beck recording, not of the work",
+    "target": "harry-potter-und-der-halbblutprinz"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-und-der-orden-des-phonix-gesprochen-von-rufus-beck"
+    ],
+    "reason": "the same German translation; the title tail names the narrator, which is a property of the Rufus Beck recording, not of the work",
+    "target": "harry-potter-und-der-orden-des-phonix"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-und-der-stein-der-weisen-gesprochen-von-rufus-beck"
+    ],
+    "reason": "the same German translation; the title tail names the narrator, which is a property of the Rufus Beck recording, not of the work",
+    "target": "harry-potter-und-der-stein-der-weisen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-und-die-heiligtumer-des-todes-gesprochen-von-rufus-beck"
+    ],
+    "reason": "the same German translation; the title tail names the narrator, which is a property of the Rufus Beck recording, not of the work",
+    "target": "harry-potter-und-die-heiligtumer-des-todes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-und-die-kammer-des-schreckens-gesprochen-von-rufus-beck"
+    ],
+    "reason": "the same German translation; the title tail names the narrator, which is a property of the Rufus Beck recording, not of the work",
+    "target": "harry-potter-und-die-kammer-des-schreckens"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-y-el-caliz-de-fuego-harry-potter-4"
+    ],
+    "reason": "the same Spanish translation; the (Harry Potter 4) tail is a retailer series decoration, and the Carlos Ponce recording is a second narration of the one work",
+    "target": "harry-potter-y-el-caliz-de-fuego"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-y-el-prisionero-de-azkaban-harry-potter-3"
+    ],
+    "reason": "the same Spanish translation; the (Harry Potter 3) tail is a retailer series decoration, and the Carlos Ponce recording is a second narration of the one work",
+    "target": "harry-potter-y-el-prisionero-de-azkaban"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-y-la-camara-secreta-harry-potter-2"
+    ],
+    "reason": "the same Spanish translation; the (Harry Potter 2) tail is a retailer series decoration, and the Carlos Ponce recording is a second narration of the one work",
+    "target": "harry-potter-y-la-camara-secreta"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-y-la-orden-del-fenix-harry-potter-5"
+    ],
+    "reason": "the same Spanish translation; the (Harry Potter 5) tail is a retailer series decoration, and the Carlos Ponce recording is a second narration of the one work",
+    "target": "harry-potter-y-la-orden-del-fenix"
   },
   {
     "decision": "accept",
@@ -695,6 +892,15 @@
     ],
     "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
     "target": "hija-de-la-fortuna"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "i-shall-wear-midnight-discworld-novel-38"
+    ],
+    "reason": "the same novel; (Discworld Novel 38) is a retailer series decoration and the record holds the abridged Tony Robinson recording plus another ASIN of the 2023 full-cast production",
+    "target": "i-shall-wear-midnight"
   },
   {
     "decision": "accept",
@@ -803,6 +1009,15 @@
     ],
     "reason": "same book and same Scott Brick narration: Orphan X (Evan Smoak) is a spelling of the Orphan X series",
     "target": "nemesis-an-orphan-x-novel"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "night-watch-discworld-book-29"
+    ],
+    "reason": "the same novel; Discworld, Book 29 is a retailer series decoration and the record holds another ASIN of the 2023 full-cast production",
+    "target": "night-watch"
   },
   {
     "decision": "accept",
@@ -1120,6 +1335,15 @@
     ],
     "reason": "same book: a Castilian and a Latin-American Spanish narration are two recordings of one work",
     "target": "una-noche-y-nada-mas-one-night-and-nothing-more-narracion-en-castellano"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wintersmith-discworld-novel-35"
+    ],
+    "reason": "the same novel; (Discworld Novel 35) is a retailer series decoration and the record holds the abridged Tony Robinson recording plus another ASIN of the 2023 full-cast production",
+    "target": "wintersmith"
   },
   {
     "decision": "accept",

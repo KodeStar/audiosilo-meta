@@ -4153,6 +4153,10 @@
             {
               "asin": "B09M8WLC57",
               "region": "us"
+            },
+            {
+              "asin": "B09M8WCN2H",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4294,6 +4298,11 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B09M8WLC57",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09M8WCN2H",
               "type": "libex-import"
             }
           ],
@@ -4450,69 +4459,6 @@
             }
           ],
           "work": "i-shall-wear-midnight"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B09M8WLC57",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004EG5T8E",
-          "type": "libex-import"
-        }
-      ],
-      "title": "I Shall Wear Midnight"
-    },
-    "i-shall-wear-midnight-discworld-novel-38": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-pratchett",
-        "paul-kidby"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "i-shall-wear-midnight-discworld-novel-38",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bill-nighy-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09M8WCN2H",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91VHliYuxmL.jpg",
-          "id": "bill-nighy-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bill-nighy",
-            "indira-varma",
-            "peter-serafinowicz",
-            "steven-cree"
-          ],
-          "publisher": "RHCP Digital",
-          "release_date": "2023-06-15",
-          "runtime_min": 706,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09M8WCN2H",
-              "type": "libex-import"
-            }
-          ],
-          "work": "i-shall-wear-midnight-discworld-novel-38"
         },
         "tony-robinson-2010": {
           "abridged": true,
@@ -4815,17 +4761,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "i-shall-wear-midnight-discworld-novel-38"
+          "work": "i-shall-wear-midnight"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B09M8WLC57",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004EG5T8E",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B004A9L4FW",
           "type": "libex-import"
         }
       ],
-      "title": "I Shall Wear Midnight: (Discworld Novel 38)"
+      "title": "I Shall Wear Midnight"
     },
     "i-shot-the-buddha": {
       "added_at": "2026-07-29",
