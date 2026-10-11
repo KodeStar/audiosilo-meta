@@ -1013,7 +1013,9 @@ Their SERIES twin is the **exact-series-name ranking** (`exactseries.go`): a
 query that IS a series' name (`nameKey` equality) puts the series of that name
 FIRST among the page's series rows, ranked by TIER then id - the PRIMARY (no
 `translation_of`, no `ordering_of`), then same-named translations, then same-named
-reading-order variants - and the partial matches follow in bm25 order. The real
+reading-order variants - and the partial matches follow in bm25 order. A link
+demotes a row only when its target is among those same-named rows: a translation
+or variant of some other series ranks as a primary there. The real
 case: "harry potter" held three series all named "Harry Potter" (the English one
 and its German and Spanish editions), and identical names are identical FTS rows,
 so bm25 ties them and the order is whatever the tie falls to.

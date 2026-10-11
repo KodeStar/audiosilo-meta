@@ -25,9 +25,15 @@ import (
 // under nameKey - the comparison the exact-title boost and preferWholeName make -
 // are ranked by TIER, then by id:
 //
-//  0. a primary: states no translation_of and no ordering_of;
-//  1. a translation: states translation_of (and is no variant);
-//  2. a reading-order variant: states ordering_of.
+//  0. a primary: states no translation_of and no ordering_of - or states a link
+//     whose target is not among the same-named rows being ranked;
+//  1. a translation: one of its translation_of targets is among them (and it is
+//     no variant of one);
+//  2. a reading-order variant: its ordering_of target is among them.
+//
+// A link demotes a row only toward the series it names: two unrelated series of
+// one name, one of them a translation or variant of some THIRD series, are not
+// reordered by a link that says nothing about the other.
 //
 // and the tiered block takes the place of the page's FIRST series row, each
 // member dropped from wherever else it sat. The partial matches ("Harry Potter
@@ -73,7 +79,8 @@ import (
 //
 // WITH ?lang= there is nothing more to do: the page is already filtered at the
 // source, so under lang=de the English primary is not on it and the German
-// edition - tier 1, the only exact match left - leads, which is the right answer
+// edition - tier 0 there, its target being off the page, and the only exact
+// match left - leads, which is the right answer
 // for a reader who asked for German.
 //
 // AN OLDER ARTIFACT (or an empty languages layer) states no link, so every exact
@@ -103,25 +110,39 @@ const (
 	tierVariant
 )
 
-// tierOf places a series hit by the links it states. A variant is a variant
-// whatever else it states: it is a VIEW of another series, which is further from
-// "the series this name means" than a translation of it is.
-func tierOf(r seriesResult) seriesTier {
-	switch {
-	case r.OrderingOf != "":
+// tierOf places a series hit by the links it states toward the same-named rows
+// being ranked (group, by id); a link to a series outside them demotes nothing.
+// A variant of one of them is a variant whatever else it states: it is a VIEW of
+// another series, which is further from "the series this name means" than a
+// translation of it is.
+func tierOf(r seriesResult, group map[string]bool) seriesTier {
+	if r.OrderingOf != "" && group[r.OrderingOf] {
 		return tierVariant
-	case len(r.TranslationOf) > 0:
-		return tierTranslation
+	}
+	for _, t := range r.TranslationOf {
+		if group[t.ID] {
+			return tierTranslation
+		}
 	}
 	return tierPrimary
+}
+
+// groupIDs is the id set tierOf judges links against.
+func groupIDs(rows []seriesResult) map[string]bool {
+	ids := make(map[string]bool, len(rows))
+	for _, r := range rows {
+		ids[r.ID] = true
+	}
+	return ids
 }
 
 // rankExactSeries orders same-named series hits by tier, then id. Ordering by id
 // inside a tier makes the answer independent of the order bm25 happened to tie
 // them in.
 func rankExactSeries(exact []seriesResult) {
+	group := groupIDs(exact)
 	sort.SliceStable(exact, func(i, j int) bool {
-		ti, tj := tierOf(exact[i]), tierOf(exact[j])
+		ti, tj := tierOf(exact[i], group), tierOf(exact[j], group)
 		if ti != tj {
 			return ti < tj
 		}
@@ -178,7 +199,8 @@ func rankSeriesRows(page []any, q string) []any {
 // rankByTier orders same-named series hits by tier alone, keeping the order they
 // came in within a tier.
 func rankByTier(rows []seriesResult) {
-	sort.SliceStable(rows, func(i, j int) bool { return tierOf(rows[i]) < tierOf(rows[j]) })
+	group := groupIDs(rows)
+	sort.SliceStable(rows, func(i, j int) bool { return tierOf(rows[i], group) < tierOf(rows[j], group) })
 }
 
 // rankSameNamedGroups is the rule's second half (see THE GROUPS in the file

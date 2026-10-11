@@ -321,16 +321,21 @@ func TestTierOf(t *testing.T) {
 		{seriesResult{OrderingOf: "x"}, tierVariant},
 		// A variant is a variant whatever else it states.
 		{seriesResult{OrderingOf: "x", TranslationOf: of}, tierVariant},
+		// A link to a series outside the group demotes nothing.
+		{seriesResult{TranslationOf: []SeriesTranslation{{ID: "absent"}}}, tierPrimary},
+		{seriesResult{TranslationOf: []SeriesTranslation{{ID: "absent"}, {ID: "x"}}}, tierTranslation},
+		{seriesResult{OrderingOf: "absent"}, tierPrimary},
+		{seriesResult{OrderingOf: "absent", TranslationOf: of}, tierTranslation},
 	}
 	for _, tc := range cases {
-		if got := tierOf(tc.r); got != tc.want {
+		if got := tierOf(tc.r, map[string]bool{"x": true}); got != tc.want {
 			t.Errorf("tierOf(%+v) = %d, want %d", tc.r, got, tc.want)
 		}
 	}
 }
 
 func TestRankSeriesRows(t *testing.T) {
-	of := []SeriesTranslation{{ID: "hp", Name: "Harry Potter"}}
+	of := []SeriesTranslation{{ID: "z-hp", Name: "Harry Potter"}}
 	w := func(id string) any { return workResult{Kind: kindWork, WorkCard: &WorkCard{ID: id}} }
 	p := func(id string) any { return personResult{Kind: kindPerson, ID: id} }
 	s := func(id, name string) seriesResult { return seriesResult{Kind: kindSeries, ID: id, Name: name} }
@@ -397,5 +402,46 @@ func TestRankSeriesRows(t *testing.T) {
 				t.Errorf("rankSeriesRows = %v, want %v", got, tc.want)
 			}
 		})
+	}
+}
+
+// A link only justifies demotion when its target shares the group's name and
+// is on this page. Check both the exact-name lift and the half-typed query.
+func TestSeriesRankingRequiresATargetInTheGroup(t *testing.T) {
+	primary := seriesResult{ID: "z-primary", Name: "Reapers MC"}
+	unrelated := seriesResult{ID: "unrelated", Name: "Reapers MC"}
+	otherName := seriesResult{ID: primary.ID, Name: "Other Series"}
+	work := workResult{Kind: kindWork, WorkCard: &WorkCard{ID: "work"}}
+	for _, link := range []string{"translation", "ordering"} {
+		related := seriesResult{ID: "a-related", Name: "Reaper's MC"}
+		if link == "translation" {
+			related.TranslationOf = []SeriesTranslation{{ID: "absent"}, {ID: primary.ID}}
+		} else {
+			related.OrderingOf = primary.ID
+		}
+		for _, q := range []string{"reaper", "reapers mc"} {
+			for _, tc := range []struct {
+				name string
+				page []any
+				want []any
+			}{
+				{"target in group", []any{related, primary}, []any{primary, related}},
+				{"target absent", []any{related, unrelated}, []any{related, unrelated}},
+				{"target has another name", []any{related, unrelated, otherName}, []any{related, unrelated, otherName}},
+				{"non-series target", []any{related, unrelated, personResult{ID: primary.ID}}, []any{related, unrelated, personResult{ID: primary.ID}}},
+			} {
+				t.Run(link+"/"+q+"/"+tc.name, func(t *testing.T) {
+					page := append([]any{work}, tc.page...)
+					before := slices.Clone(page)
+					want := append([]any{work}, tc.want...)
+					if got := rankSeriesRows(page, q); !reflect.DeepEqual(got, want) {
+						t.Errorf("rankSeriesRows = %v, want %v", got, want)
+					}
+					if !reflect.DeepEqual(page, before) {
+						t.Error("ranking mutated the input page")
+					}
+				})
+			}
+		}
 	}
 }
