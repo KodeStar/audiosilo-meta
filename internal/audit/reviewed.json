@@ -436,6 +436,24 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "century-trilogy-abridged"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "century-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "der-seher-gelesen-von-gerrit-petersen"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; the narrator is a property of the recordings, not a series",
+    "target": "der-seher"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "discworld-abridged"
     ],
     "reason": "lists Discworld novels at the main series' own slots once the decorated duplicates fold; abridgement is a property of the recordings, not a series",
@@ -467,6 +485,42 @@
     ],
     "reason": "the same five Tiffany Aching novels; the fold fills the missing slots 1 (The Wee Free Men) and 3 (Wintersmith); abridgement is a property of the recordings, not a series",
     "target": "discworld-tiffany-aching"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "doomsday-warrior-dramatized-adaptation"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; dramatization is a property of the recordings, not a series",
+    "target": "doomsday-warrior"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "dream-trilogy-abridged"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "dream-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "fearless-jones-abridged"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "fearless-jones"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "franz-eberhofer-gekurzt"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "franz-eberhofer"
   },
   {
     "decision": "assert",
@@ -505,6 +559,15 @@
     "target": "harry-potter-spanish-edition"
   },
   {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "j-p-beaumont-abridged"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; abridgement is a property of the recordings, not a series",
+    "target": "j-p-beaumont"
+  },
+  {
     "decision": "accept",
     "op": "merge-series",
     "others": [
@@ -521,6 +584,60 @@
     ],
     "reason": "the abridged spelling lists two chronological Kingsbridge volumes at the same slots, and both carry abridged recordings",
     "target": "kingsbridge"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "lincoln-rhyme-gekurzt"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "lincoln-rhyme"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "magic-trilogy-abridged"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "magic-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "memory-man-gekurzt"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "memory-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "midnight-texas-dramatized-adaptation"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; dramatization is a property of the recordings, not a series",
+    "target": "midnight-texas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "mistborn-dramatized-adaptation"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; dramatization is a property of the recordings, not a series",
+    "target": "mistborn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "oz-abridged"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
+    "target": "oz"
   },
   {
     "decision": "accept",
@@ -542,6 +659,15 @@
     "target": "sherlock-holmes-die-galaktischen-falle"
   },
   {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "slash-and-pecos-dramatized-adaptation"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; dramatization is a property of the recordings, not a series",
+    "target": "slash-and-pecos"
+  },
+  {
     "decision": "accept",
     "op": "merge-series",
     "others": [
@@ -549,6 +675,24 @@
     ],
     "reason": "the plain Chronicles of Narnia series lists the author's preferred order slot for slot",
     "target": "the-chronicles-of-narnia-authors-preferred-order"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-range-detectives-dramatized-adaptation"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; dramatization is a property of the recordings, not a series",
+    "target": "the-range-detectives"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "vattas-war-dramatized-adaptation"
+    ],
+    "reason": "lists the same works at the same slots as the canonical series; dramatization is a property of the recordings, not a series",
+    "target": "vattas-war"
   },
   {
     "decision": "accept",
@@ -612,6 +756,15 @@
     ],
     "reason": "the same Lou Diamond Phillips production of Command Authority; the second record also credits co-author Mark Greaney, which the merge keeps",
     "target": "command-authority"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cutthroats-dramatized-adaptation"
+    ],
+    "reason": "the same novel; [Dramatized Adaptation] names the full-cast production, a property of the recording",
+    "target": "cutthroats"
   },
   {
     "decision": "accept",
@@ -757,6 +910,15 @@
     ],
     "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
     "target": "guns-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "hang-them-slowly-dramatized-adaptation"
+    ],
+    "reason": "the same novel; [Dramatized Adaptation] names the full-cast production, a property of the recording",
+    "target": "hang-them-slowly"
   },
   {
     "decision": "assert",
@@ -1029,6 +1191,15 @@
     "target": "octopussy-and-the-living-daylights-and-other-stories"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "partner-in-crime-j-a-jance-2"
+    ],
+    "reason": "the same J. P. Beaumont novel: one record holds the abridged recording, the other the unabridged one",
+    "target": "partner-in-crime-j-a-jance"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1245,6 +1416,15 @@
     ],
     "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
     "target": "the-marvelous-land-of-oz"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-range-detectives-dramatized-adaptation"
+    ],
+    "reason": "the same novel; [Dramatized Adaptation] names the full-cast production, a property of the recording",
+    "target": "the-range-detectives"
   },
   {
     "decision": "accept",
