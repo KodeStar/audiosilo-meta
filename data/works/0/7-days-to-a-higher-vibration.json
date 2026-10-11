@@ -158,6 +158,10 @@
       "authors": [
         "aaron-crash"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
       "id": "7-deadly-instincts",
       "language": "en",
       "license": "CC0-1.0",
@@ -212,6 +216,7 @@
           ],
           "publisher": "Shadow Alley Press",
           "release_date": "2026-08-10",
+          "runtime_min": 921,
           "sources": [
             {
               "imported_at": "2026-09-24",
@@ -267,6 +272,11 @@
           "imported_at": "2026-09-24",
           "ref": "B0HDQ2YGQT",
           "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-10-11",
+          "ref": "B0HDQ7G7C4",
+          "type": "libex-import"
         }
       ],
       "title": "7 Deadly Instincts"
@@ -4831,6 +4841,57 @@
         }
       ],
       "title": "7 Secrets to Investing Like Warren Buffett"
+    },
+    "7-songs-of-sin-the-sinfire-chronicles-book-2": {
+      "added_at": "2026-10-11",
+      "authors": [
+        "aaron-crash"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy"
+      ],
+      "id": "7-songs-of-sin-the-sinfire-chronicles-book-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "stephanie-savannah-2026": {
+          "abridged": false,
+          "added_at": "2026-10-11",
+          "asin": [
+            {
+              "asin": "B0HM69WV1D",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IO+5KOOmL.jpg",
+          "id": "stephanie-savannah-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stephanie-savannah"
+          ],
+          "publisher": "Shadow Alley Press Inc",
+          "release_date": "2026-10-07",
+          "runtime_min": 1022,
+          "sources": [
+            {
+              "imported_at": "2026-10-11",
+              "ref": "B0HM69WV1D",
+              "type": "libex-import"
+            }
+          ],
+          "work": "7-songs-of-sin-the-sinfire-chronicles-book-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-11",
+          "ref": "B0HM69WV1D",
+          "type": "libex-import"
+        }
+      ],
+      "title": "7 Songs of Sin (The Sinfire Chronicles Book 2)"
     },
     "7-sortileges-pour-echapper-a-une-journee-catastrophique-au-bureau": {
       "added_at": "2026-08-02",
