@@ -1164,21 +1164,27 @@ a mirror of audiosilo-server's `metadata.PositionInTitle` that judges the name a
 one `volumeKeywords` list); a number TIED to the series name that way wins over
 a bare prefix number (a series named "7 Days" leaves only "7" of "7 Days: Book
 1" to `cutNumbering`), read off the guess with its numbering cut too, so "01 -
-He Who Fights with Monsters 4: ..." is volume 4; one that is the name of THIS
-work's author is not judged against it (per candidate, because the strings
-cannot tell which tag is the garbage one); `seriesVerdict` is the one place a
-candidate's numbering is judged: a GENERIC title ("Dork Diaries 6": the series name and a number) counts
-as numbering, at `genericTitleValue` or the better similarity a guess naming
-more than the series reaches, a named title in the 0.3-0.75 band vetoes an
-agreeing position ("Sharpe's Siege" filed at 20 must not become "Sharpe's
-Revenge"), and a candidate sitting in the named series at ANOTHER position - or
-whose generic title names another volume, unless the series lists it at exactly
-the stated position (an omnibus at 1-3) - gets no credit for a title that does
-not agree, where a guess that is ONLY the series' name never counts as agreeing
-(`titleGuess.onlySeries`): "He Who Fights with Monsters", the folder "FWM04 - He
-Who Fights With Monsters - Book 4" left uncut, is contained in every "He Who
-Fights with Monsters N", and counted as agreement it let a neighbouring volume
-sit 5 points behind the stated one (`TestMatchStatedVolumeBeatsItsNeighbours`);
+He Who Fights with Monsters 4: ..." is volume 4 - within one guess only: across
+guesses the first that states a number decides, as before; one that is the name
+of THIS work's author is not judged against it (per candidate, because the
+strings cannot tell which tag is the garbage one); `seriesVerdict` is the one
+place a candidate's numbering is judged: a GENERIC title ("Dork Diaries 6": the
+series name and a number) counts as numbering, at `genericTitleValue` (in full
+only for a guess spelled exactly as the record, so a real title of the same
+volume still ranks first), a named title in the 0.3-0.75 band vetoes an agreeing
+position ("Sharpe's Siege" filed at 20 must not become "Sharpe's Revenge"), and
+a candidate sitting in the named series at ANOTHER position - or whose generic
+title names another volume, unless the series lists it at exactly the stated
+position (an omnibus at 1-3) - gets no credit for a title that does not agree,
+where a guess that is ONLY the series' name (`titleGuess.onlySeries`) counts as
+agreeing only with a work titled exactly that name, and not even there once a
+guess TIED a volume to the name (`matchFacts.tiedVolume`): "He Who Fights with
+Monsters", the folder "FWM04 - He Who Fights With Monsters - Book 4" left uncut,
+is contained in every "He Who Fights with Monsters N", and counted as agreement
+it let a neighbouring volume sit 5 points behind the stated one
+(`TestMatchStatedVolumeBeatsItsNeighbours`), while "02 - Throne of Glass" still
+finds the first volume titled after its series, as it always did
+(`TestMatchSeriesNamedVolumeKeepsItsTitle`);
 a request stating no volume is judged exactly as before
 (`TestMatchWithoutAVolumeAppliesNoVolumeRule`). Named authors none of whom wrote a work
 scale its score by 0.75. Each title form, guess and series name is folded once

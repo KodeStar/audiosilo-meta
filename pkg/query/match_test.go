@@ -259,13 +259,12 @@ func matchScores(res []map[string]any) map[string]float64 {
 // With Monsters - Book 4" states volume 4 (cutNumbering) and leaves the guess
 // "He Who Fights with Monsters", the series' name alone, which is contained in
 // every generic volume title and kept them all at title 0.93 - while volume 4's
-// generic title counted only genericTitleValue. Read as what it is
-// (seriesVerdict's named), it no longer outvotes the stated volume, and volume
-// 4 keeps what the tag's title reaches: here volume 4 scores 92 and volumes 1,
-// 3, 5 and 13 score 22 (before: 90 against 84 and 81). The tag's own title states
-// the volume too ("He Who Fights with Monsters 4: ...", titleVolume), so the
-// tag alone, with no position and no folder, ranks the same way (before: 92
-// against 67, on the tag's number alone).
+// generic title counts genericTitleValue. Read as what it is (seriesVerdict's
+// named), it no longer outvotes the stated volume: here volume 4 scores 90 and
+// volumes 1, 3, 5 and 13 score 22 (before: 90 against 84 and 81). The tag's own
+// title states the volume too ("He Who Fights with Monsters 4: ...",
+// titleVolume), so the tag alone, with no position and no folder, ranks the
+// same way (before: 92 against 67, on the tag's number alone).
 func TestMatchStatedVolumeBeatsItsNeighbours(t *testing.T) {
 	_, ts := newTestServerForCatalog(t, hwfwmCatalog())
 	const tag = "He Who Fights with Monsters 4: A LitRPG Adventure (He Who Fights with Monsters, Book 4)"
@@ -295,8 +294,8 @@ func TestMatchStatedVolumeBeatsItsNeighbours(t *testing.T) {
 				t.Fatalf("top = %v, want he-who-fights-with-monsters-4", matchIDs(res))
 			}
 			scores := matchScores(res)
-			if got := scores["he-who-fights-with-monsters-4"]; got != 92 {
-				t.Errorf("volume 4 scores %v, want 92 (reasons %v)", got, res[0]["reasons"])
+			if got := scores["he-who-fights-with-monsters-4"]; got != 90 {
+				t.Errorf("volume 4 scores %v, want 90 (reasons %v)", got, res[0]["reasons"])
 			}
 			for _, other := range []string{"he-who-fights-with-monsters-a-litrpg-adventure", "he-who-fights-with-monsters-3", "he-who-fights-with-monsters-5", "he-who-fights-with-monsters-13-a-litrpg-adventure"} {
 				if got, ok := scores[other]; ok && got != 22 {
@@ -304,6 +303,98 @@ func TestMatchStatedVolumeBeatsItsNeighbours(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+// TestMatchSeriesNamedVolumeKeepsItsTitle: a guess that is only the series'
+// name still counts for a work titled exactly that, unless a guess tied a
+// volume to the name. "02 - Throne of Glass" may be the first volume filed
+// second, and the strings cannot tell it from a folder numbering volume 2, so
+// the exact title keeps the lead it had before the stated-volume rule (89,
+// Crown of Midnight 44; the rule alone had them at 22 and 44). Beside "He Who
+// Fights with Monsters 4: ..." the name is that numbering's leftover, so a
+// first volume titled exactly "He Who Fights with Monsters" gets nothing from it
+// and volume 4 leads 90 to 22. Folder alone, nothing ties the volume and the two
+// readings cannot be told apart: volume 4 still leads, but only 90 to 89.
+func TestMatchSeriesNamedVolumeKeepsItsTitle(t *testing.T) {
+	work := func(id, title, author string) *model.Work {
+		return &model.Work{ID: id, Title: title, Language: "en", Authors: []string{author}, License: "CC0-1.0"}
+	}
+	cat := &model.Catalog{
+		People: []*model.Person{
+			{ID: "sarah-j-maas", Name: "Sarah J. Maas", License: "CC0-1.0"},
+			{ID: "shirtaloon", Name: "Shirtaloon", License: "CC0-1.0"},
+		},
+		Works: []*model.Work{
+			work("throne-of-glass", "Throne of Glass", "sarah-j-maas"),
+			work("crown-of-midnight", "Crown of Midnight", "sarah-j-maas"),
+			work("hwfwm-1", "He Who Fights with Monsters", "shirtaloon"),
+			work("hwfwm-3", "He Who Fights with Monsters 3", "shirtaloon"),
+			work("hwfwm-4", "He Who Fights with Monsters 4", "shirtaloon"),
+		},
+		Series: []*model.Series{
+			{ID: "throne-of-glass-series", Name: "Throne of Glass", License: "CC0-1.0", Works: []model.SeriesWork{
+				{Work: "throne-of-glass", Position: "1"}, {Work: "crown-of-midnight", Position: "2"},
+			}},
+			{ID: "hwfwm", Name: "He Who Fights with Monsters", License: "CC0-1.0", Works: []model.SeriesWork{
+				{Work: "hwfwm-1", Position: "1"}, {Work: "hwfwm-3", Position: "3"}, {Work: "hwfwm-4", Position: "4"},
+			}},
+		},
+	}
+	_, ts := newTestServerForCatalog(t, cat)
+	for _, tc := range []struct {
+		name          string
+		params        url.Values
+		want, below   string
+		wantS, belowS float64
+	}{
+		{"a numbering prefix", url.Values{
+			"title": {"02 - Throne of Glass"}, "author": {"Sarah J. Maas"}, "series": {"Throne of Glass"},
+		}, "throne-of-glass", "crown-of-midnight", 89, 44},
+		{"a stated position", url.Values{
+			"title": {"Throne of Glass"}, "author": {"Sarah J. Maas"}, "series": {"Throne of Glass"}, "position": {"2"},
+		}, "throne-of-glass", "crown-of-midnight", 89, 44},
+		{"a tied volume", url.Values{
+			"title":  {"FWM04 - He Who Fights With Monsters - Book 4", "He Who Fights with Monsters 4: A LitRPG Adventure"},
+			"author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
+		}, "hwfwm-4", "hwfwm-1", 90, 22},
+		{"the folder alone", url.Values{
+			"title": {"FWM04 - He Who Fights With Monsters - Book 4"}, "author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
+		}, "hwfwm-4", "hwfwm-1", 90, 89},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			res := matchJSON(t, ts.URL, tc.params)
+			scores := matchScores(res)
+			if len(res) == 0 || res[0]["id"] != tc.want || scores[tc.want] != tc.wantS || scores[tc.below] != tc.belowS {
+				t.Errorf("%s %v, %s %v; want %v and %v: %v", tc.want, scores[tc.want], tc.below, scores[tc.below], tc.wantS, tc.belowS, matchIDs(res))
+			}
+		})
+	}
+}
+
+// TestMatchARealTitleOutranksAGenericRecord: two records of one volume, one
+// stored under its real title and one under the series' name and number. A
+// guess naming both ("Dork Diaries 12: Crush Catastrophe") reaches the same
+// title similarity in each, and the generic one counts genericTitleValue, so
+// the real title leads, 92 to 90 - unless the guess is spelled exactly as the
+// generic record, which then counts in full.
+func TestMatchARealTitleOutranksAGenericRecord(t *testing.T) {
+	work := func(id, title string) *model.Work {
+		return &model.Work{ID: id, Title: title, Language: "en", Authors: []string{"rachel-renee-russell"}, License: "CC0-1.0"}
+	}
+	_, ts := newTestServerForCatalog(t, &model.Catalog{
+		People: []*model.Person{{ID: "rachel-renee-russell", Name: "Rachel Renée Russell", License: "CC0-1.0"}},
+		Works:  []*model.Work{work("crush-catastrophe", "Tales from a Not-So-Secret Crush Catastrophe"), work("dork-diaries-12", "Dork Diaries 12")},
+		Series: []*model.Series{{ID: "dork-diaries", Name: "Dork Diaries", License: "CC0-1.0", Works: []model.SeriesWork{
+			{Work: "crush-catastrophe", Position: "12"}, {Work: "dork-diaries-12", Position: "12.1"},
+		}}},
+	})
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"Dork Diaries 12: Crush Catastrophe"}, "author": {"Rachel Renee Russell"}, "series": {"Dork Diaries"},
+	})
+	scores := matchScores(res)
+	if len(res) == 0 || res[0]["id"] != "crush-catastrophe" || scores["crush-catastrophe"] != 92 || scores["dork-diaries-12"] != 90 {
+		t.Errorf("crush-catastrophe %v, dork-diaries-12 %v; want 92 first and 90: %v", scores["crush-catastrophe"], scores["dork-diaries-12"], matchIDs(res))
 	}
 }
 
@@ -699,6 +790,9 @@ func TestReadFactsPosition(t *testing.T) {
 		{matchRequest{titles: []string{"7 Days: Book 1"}, series: []string{"7 Days"}}, "1", nil},
 		// ... and so does one a numbering prefix hid in front of the name.
 		{matchRequest{titles: []string{"01 - He Who Fights with Monsters 4: A LitRPG Adventure"}, series: []string{"He Who Fights With Monsters"}}, "4", nil},
+		// Across guesses the first number wins: a later guess's tied number
+		// does not override the first guess's prefix.
+		{matchRequest{titles: []string{"03 - Harry Potter and the Prisoner of Azkaban", "Harry Potter 1"}, series: []string{"Harry Potter"}}, "03", nil},
 	} {
 		f := readFacts(tc.req)
 		var titles []string
