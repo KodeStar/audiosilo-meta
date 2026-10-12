@@ -5665,11 +5665,19 @@
     "winnie-the-pooh": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
-        "a-a-milne"
+        "a-a-milne",
+        "e-h-shepard"
+      ],
+      "credits": [
+        {
+          "person": "e-h-shepard",
+          "role": "illustrator"
+        }
       ],
       "genres": [
         "childrens",
         "classics",
+        "coming-of-age",
         "nature",
         "poetry"
       ],
@@ -7435,6 +7443,14 @@
             {
               "asin": "B09Q8CWYL8",
               "region": "de"
+            },
+            {
+              "asin": "B09WG5HTZ7",
+              "region": "us"
+            },
+            {
+              "asin": "B09WFYF1BY",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -7534,6 +7550,16 @@
             {
               "imported_at": "2026-10-10",
               "ref": "B09Q8CWYL8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09WG5HTZ7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09WFYF1BY",
               "type": "libex-import"
             }
           ],
@@ -7647,6 +7673,96 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0DJDKKQ34",
+              "type": "libex-import"
+            }
+          ],
+          "work": "winnie-the-pooh"
+        },
+        "michael-page-2022": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B09Q9D242K",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 233058,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 908132,
+              "start_ms": 233058,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 628122,
+              "start_ms": 1141190,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 520126,
+              "start_ms": 1769312,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 665135,
+              "start_ms": 2289438,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1054116,
+              "start_ms": 2954573,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1205115,
+              "start_ms": 4008689,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1229125,
+              "start_ms": 5213804,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1281137,
+              "start_ms": 6442929,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1058110,
+              "start_ms": 7724066,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 830113,
+              "start_ms": 8782176,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 370055,
+              "start_ms": 9612289,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71ld4p4atDL.jpg",
+          "id": "michael-page-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-page"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2022-02-01",
+          "runtime_min": 166,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B09Q9D242K",
               "type": "libex-import"
             }
           ],
@@ -7899,6 +8015,33 @@
               "imported_at": "2026-10-09",
               "ref": "B004EVTOBW",
               "type": "libex-import"
+            }
+          ],
+          "work": "winnie-the-pooh"
+        },
+        "peter-dennis-2015": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B018R6AKZ8",
+              "region": "us"
+            }
+          ],
+          "id": "peter-dennis-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-dennis"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2015",
+          "runtime_min": 166,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B018R6AKZ8",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "winnie-the-pooh"
@@ -8161,6 +8304,115 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0G46JM13K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "winnie-the-pooh"
+        },
+        "sam-galimore-2022": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B0BQX4Z7NZ",
+              "region": "us"
+            },
+            {
+              "asin": "B0BQX5227F",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11818,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 141827,
+              "start_ms": 11818,
+              "title": "FOREWORD"
+            },
+            {
+              "length_ms": 213414,
+              "start_ms": 153645,
+              "title": "INTRODUCTION"
+            },
+            {
+              "length_ms": 833642,
+              "start_ms": 367059,
+              "title": "CHAPTER I"
+            },
+            {
+              "length_ms": 578687,
+              "start_ms": 1200701,
+              "title": "CHAPTER II"
+            },
+            {
+              "length_ms": 465420,
+              "start_ms": 1779388,
+              "title": "CHAPTER III"
+            },
+            {
+              "length_ms": 620181,
+              "start_ms": 2244808,
+              "title": "CHAPTER IV"
+            },
+            {
+              "length_ms": 1013156,
+              "start_ms": 2864989,
+              "title": "CHAPTER V"
+            },
+            {
+              "length_ms": 1152290,
+              "start_ms": 3878145,
+              "title": "CHAPTER VI"
+            },
+            {
+              "length_ms": 1120386,
+              "start_ms": 5030435,
+              "title": "CHAPTER VII"
+            },
+            {
+              "length_ms": 1216772,
+              "start_ms": 6150821,
+              "title": "CHAPTER VIII"
+            },
+            {
+              "length_ms": 981902,
+              "start_ms": 7367593,
+              "title": "CHAPTER IX"
+            },
+            {
+              "length_ms": 768464,
+              "start_ms": 8349495,
+              "title": "CHAPTER X"
+            },
+            {
+              "length_ms": 15951,
+              "start_ms": 9117959,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818Lgo+OQsL.jpg",
+          "id": "sam-galimore-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sam-galimore"
+          ],
+          "publisher": "Sam Galimore",
+          "release_date": "2022-12-23",
+          "runtime_min": 152,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B0BQX4Z7NZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0BQX5227F",
               "type": "libex-import"
             }
           ],
@@ -8444,180 +8696,32 @@
           "imported_at": "2026-08-02",
           "ref": "B0G46K8G7D",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B018R6AKZ8",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B09Q9D242K",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0BQX4Z7NZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09WG5HTZ7",
+          "type": "libex-import"
         }
       ],
       "title": "Winnie-the-Pooh",
       "xref": {
         "goodreads": "99107"
       }
-    },
-    "winnie-the-pooh-a-a-milnes-pooh-classics": {
-      "added_at": "2026-09-24",
-      "authors": [
-        "a-a-milne"
-      ],
-      "id": "winnie-the-pooh-a-a-milnes-pooh-classics",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-dennis-2015": {
-          "abridged": false,
-          "added_at": "2026-09-24",
-          "asin": [
-            {
-              "asin": "B018R6AKZ8",
-              "region": "us"
-            }
-          ],
-          "id": "peter-dennis-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-dennis"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2015",
-          "runtime_min": 166,
-          "sources": [
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B018R6AKZ8",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "winnie-the-pooh-a-a-milnes-pooh-classics"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-09-24",
-          "ref": "B018R6AKZ8",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Winnie-the-Pooh: A.A. Milne's Pooh Classics"
-    },
-    "winnie-the-pooh-amazonclassics-edition": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "a-a-milne",
-        "e-h-shepard"
-      ],
-      "credits": [
-        {
-          "person": "e-h-shepard",
-          "role": "illustrator"
-        }
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "nature"
-      ],
-      "id": "winnie-the-pooh-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-page-2022": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B09Q9D242K",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 233058,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 908132,
-              "start_ms": 233058,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 628122,
-              "start_ms": 1141190,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 520126,
-              "start_ms": 1769312,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 665135,
-              "start_ms": 2289438,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1054116,
-              "start_ms": 2954573,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1205115,
-              "start_ms": 4008689,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1229125,
-              "start_ms": 5213804,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1281137,
-              "start_ms": 6442929,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1058110,
-              "start_ms": 7724066,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 830113,
-              "start_ms": 8782176,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 370055,
-              "start_ms": 9612289,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71ld4p4atDL.jpg",
-          "id": "michael-page-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-page"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2022-02-01",
-          "runtime_min": 166,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B09Q9D242K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "winnie-the-pooh-amazonclassics-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B09Q9D242K",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Winnie-the-Pooh (AmazonClassics Edition)"
     },
     "winnie-the-pooh-and-eeyores-lost-tail": {
       "added_at": "2026-08-02",
@@ -9245,138 +9349,6 @@
         }
       ],
       "title": "Winnie-the-Pooh at the Palace"
-    },
-    "winnie-the-pooh-galimore-edition": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "a-a-milne"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "winnie-the-pooh-galimore-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sam-galimore-2022": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B0BQX4Z7NZ",
-              "region": "us"
-            },
-            {
-              "asin": "B0BQX5227F",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 11818,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 141827,
-              "start_ms": 11818,
-              "title": "FOREWORD"
-            },
-            {
-              "length_ms": 213414,
-              "start_ms": 153645,
-              "title": "INTRODUCTION"
-            },
-            {
-              "length_ms": 833642,
-              "start_ms": 367059,
-              "title": "CHAPTER I"
-            },
-            {
-              "length_ms": 578687,
-              "start_ms": 1200701,
-              "title": "CHAPTER II"
-            },
-            {
-              "length_ms": 465420,
-              "start_ms": 1779388,
-              "title": "CHAPTER III"
-            },
-            {
-              "length_ms": 620181,
-              "start_ms": 2244808,
-              "title": "CHAPTER IV"
-            },
-            {
-              "length_ms": 1013156,
-              "start_ms": 2864989,
-              "title": "CHAPTER V"
-            },
-            {
-              "length_ms": 1152290,
-              "start_ms": 3878145,
-              "title": "CHAPTER VI"
-            },
-            {
-              "length_ms": 1120386,
-              "start_ms": 5030435,
-              "title": "CHAPTER VII"
-            },
-            {
-              "length_ms": 1216772,
-              "start_ms": 6150821,
-              "title": "CHAPTER VIII"
-            },
-            {
-              "length_ms": 981902,
-              "start_ms": 7367593,
-              "title": "CHAPTER IX"
-            },
-            {
-              "length_ms": 768464,
-              "start_ms": 8349495,
-              "title": "CHAPTER X"
-            },
-            {
-              "length_ms": 15951,
-              "start_ms": 9117959,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818Lgo+OQsL.jpg",
-          "id": "sam-galimore-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sam-galimore"
-          ],
-          "publisher": "Sam Galimore",
-          "release_date": "2022-12-23",
-          "runtime_min": 152,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B0BQX4Z7NZ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0BQX5227F",
-              "type": "libex-import"
-            }
-          ],
-          "work": "winnie-the-pooh-galimore-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0BQX4Z7NZ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Winnie-the-Pooh (Galimore Edition)"
     },
     "winnie-the-pooh-laura-mcmahon": {
       "added_at": "2026-08-02",
@@ -10662,140 +10634,6 @@
         }
       ],
       "title": "Winnie-The-Pooh: The Complete BBC Collection"
-    },
-    "winnie-the-pooh-unabridged": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "a-a-milne"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "nature"
-      ],
-      "id": "winnie-the-pooh-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kevin-theis-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09WG5HTZ7",
-              "region": "us"
-            },
-            {
-              "asin": "B09WFYF1BY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19899,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 197462,
-              "start_ms": 19899,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 887327,
-              "start_ms": 217361,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 618788,
-              "start_ms": 1104688,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 500390,
-              "start_ms": 1723476,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 653873,
-              "start_ms": 2223866,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1052885,
-              "start_ms": 2877739,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1199008,
-              "start_ms": 3930624,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1259194,
-              "start_ms": 5129632,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1287778,
-              "start_ms": 6388826,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1045153,
-              "start_ms": 7676604,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 829440,
-              "start_ms": 8721757,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 143313,
-              "start_ms": 9551197,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 33319,
-              "start_ms": 9694510,
-              "title": "Chapter 14"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lpVwICcYL.jpg",
-          "id": "kevin-theis-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kevin-theis",
-            "sara-nichols"
-          ],
-          "publisher": "SoundCraft Audiobooks",
-          "release_date": "2022-03-24",
-          "runtime_min": 161,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09WG5HTZ7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09WFYF1BY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "winnie-the-pooh-unabridged"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09WG5HTZ7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Winnie-the-Pooh: Unabridged"
     },
     "winnie-welpe-hat-ein-glitzerndes-geheimnis": {
       "added_at": "2026-08-02",

@@ -1063,80 +1063,6 @@
       ],
       "title": "Something Blue"
     },
-    "something-blue-a-novel": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "emily-giffin"
-      ],
-      "genres": [
-        "contemporary-romance",
-        "romance",
-        "womens-fiction"
-      ],
-      "id": "something-blue-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jennifer-wiltsie-2005": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1NJD6",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4261558,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4305072,
-              "start_ms": 4261558,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4266156,
-              "start_ms": 8566630,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4243307,
-              "start_ms": 12832786,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71-Aa-cBQQL.jpg",
-          "id": "jennifer-wiltsie-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jennifer-wiltsie"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2005-06-17",
-          "runtime_min": 284,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1NJD6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "something-blue-a-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V1NJD6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Something Blue: A Novel"
-    },
     "something-blue-emily-giffin": {
       "added_at": "2026-07-29",
       "authors": [
@@ -1360,12 +1286,67 @@
             }
           ],
           "work": "something-blue-emily-giffin"
+        },
+        "jennifer-wiltsie-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1NJD6",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4261558,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4305072,
+              "start_ms": 4261558,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4266156,
+              "start_ms": 8566630,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4243307,
+              "start_ms": 12832786,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71-Aa-cBQQL.jpg",
+          "id": "jennifer-wiltsie-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jennifer-wiltsie"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2005-06-17",
+          "runtime_min": 284,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1NJD6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "something-blue-emily-giffin"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B003X3E59S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1NJD6",
           "type": "libex-import"
         }
       ],

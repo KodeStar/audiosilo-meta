@@ -4474,7 +4474,7 @@
       "works": [
         {
           "position": "1",
-          "work": "the-surgeon-a-rizzoli-isles-novel-tess-gerritsen"
+          "work": "the-surgeon"
         },
         {
           "position": "3",
@@ -5470,6 +5470,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/series/92467-robert-langdon",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B002V57TJW",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -5502,58 +5507,6 @@
         "goodreads": "92467"
       }
     },
-    "robert-langdon-abridged": {
-      "id": "robert-langdon-abridged",
-      "license": "CC0-1.0",
-      "name": "Robert Langdon (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B002V57TJW",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "angels-demons-dan-brown"
-        }
-      ]
-    },
-    "robert-langdon-gekurzt": {
-      "id": "robert-langdon-gekurzt",
-      "license": "CC0-1.0",
-      "name": "Robert Langdon (gekürzt)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TVO331E",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "3",
-          "work": "das-verlorene-symbol-robert-langdon-3"
-        },
-        {
-          "position": "1",
-          "work": "illuminati"
-        },
-        {
-          "position": "5",
-          "work": "origin-german-edition"
-        },
-        {
-          "position": "4",
-          "work": "inferno-german-edition-robert-langdon-4"
-        },
-        {
-          "position": "2",
-          "work": "der-da-vinci-code"
-        }
-      ]
-    },
     "robert-langdon-german-edition": {
       "id": "robert-langdon-german-edition",
       "license": "CC0-1.0",
@@ -5563,6 +5516,11 @@
           "imported_at": "2026-07-29",
           "ref": "B00TKMIQA0",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TVO331E",
+          "type": "libex-import"
         }
       ],
       "translation_of": [
@@ -5571,11 +5529,11 @@
       "works": [
         {
           "position": "2",
-          "work": "sakrileg-robert-langdon-2"
+          "work": "der-da-vinci-code"
         },
         {
           "position": "1",
-          "work": "illuminati-robert-langdon-1"
+          "work": "illuminati"
         },
         {
           "position": "3",
@@ -9342,6 +9300,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002V02GKE",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0032N8WCA",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -9352,21 +9315,7 @@
         {
           "position": "3",
           "work": "the-pirates-of-pompeii"
-        }
-      ]
-    },
-    "roman-mysteries-abridged": {
-      "id": "roman-mysteries-abridged",
-      "license": "CC0-1.0",
-      "name": "Roman Mysteries [abridged]",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0032N8WCA",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
+        },
         {
           "position": "1",
           "work": "the-thieves-of-ostia"

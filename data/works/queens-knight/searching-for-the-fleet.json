@@ -14033,50 +14033,7 @@
             }
           ],
           "work": "season-of-storms"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B074MGV5Q9",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B074MGV5Q9",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B07CZQPDMM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Season of Storms"
-    },
-    "season-of-storms-booktrack-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "andrzej-sapkowski",
-        "david-french"
-      ],
-      "credits": [
-        {
-          "person": "david-french",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fairy-tales-folklore",
-        "fantasy",
-        "historical-fiction"
-      ],
-      "id": "season-of-storms-booktrack-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "peter-kenny-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -14293,17 +14250,32 @@
               "type": "libex-import"
             }
           ],
-          "work": "season-of-storms-booktrack-edition"
+          "work": "season-of-storms"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B074MGV5Q9",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B074MGV5Q9",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07CZQPDMM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BFBYJVJ6",
           "type": "libex-import"
         }
       ],
-      "title": "Season of Storms: Booktrack Edition"
+      "title": "Season of Storms"
     },
     "season-of-storms-ellen-foxxe": {
       "added_at": "2026-08-02",

@@ -105,24 +105,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0041MFK8K",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "the-force-unleashed-ii-star-wars-legends"
         },
-        {
-          "position": "1",
-          "work": "the-force-unleashed-star-wars-legends"
-        }
-      ]
-    },
-    "star-wars-the-force-unleashed-abridged": {
-      "id": "star-wars-the-force-unleashed-abridged",
-      "license": "CC0-1.0",
-      "name": "Star Wars: The Force Unleashed (abridged)",
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002V0QK0Q",
@@ -130,6 +113,10 @@
         }
       ],
       "works": [
+        {
+          "position": "2",
+          "work": "the-force-unleashed-ii-star-wars-legends"
+        },
         {
           "position": "1",
           "work": "star-wars-the-force-unleashed"
@@ -171,24 +158,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00F2ORAKW",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "star-wars-specter-of-the-past-the-hand-of-thrawn-book-1"
         },
-        {
-          "position": "2",
-          "work": "vision-of-the-future-star-wars-the-hand-of-thrawn"
-        }
-      ]
-    },
-    "star-wars-the-hand-of-thrawn-duology-legends-abridged": {
-      "id": "star-wars-the-hand-of-thrawn-duology-legends-abridged",
-      "license": "CC0-1.0",
-      "name": "Star Wars: The Hand of Thrawn Duology - Legends (abridged)",
-      "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002V1NZX0",
@@ -202,7 +172,7 @@
         },
         {
           "position": "2",
-          "work": "vision-of-the-future-star-wars-legends-the-hand-of-thrawn"
+          "work": "vision-of-the-future-star-wars-the-hand-of-thrawn"
         }
       ]
     },
@@ -631,6 +601,11 @@
           "imported_at": "2026-08-02",
           "ref": "B008NCT9QI",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V02OTC",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -640,50 +615,12 @@
         },
         {
           "position": "1",
-          "work": "rogue-squadron-star-wars-legends-rogue-squadron"
+          "work": "star-wars-x-wing-rogue-squadron"
         },
         {
           "position": "2",
-          "work": "wedges-gamble-star-wars-legends-rogue-squadron"
+          "work": "star-wars-x-wing-wedges-gamble"
         },
-        {
-          "position": "3",
-          "work": "the-krytos-trap-star-wars-legends-rogue-squadron"
-        },
-        {
-          "position": "4",
-          "work": "the-bacta-war-star-wars-legends-rogue-squadron"
-        },
-        {
-          "position": "6",
-          "work": "iron-fist-star-wars-legends-wraith-squadron"
-        },
-        {
-          "position": "5",
-          "work": "wraith-squadron-star-wars-legends-wraith-squadron"
-        },
-        {
-          "position": "7",
-          "work": "solo-command-star-wars-legends-wraith-squadron"
-        },
-        {
-          "position": "8",
-          "work": "isards-revenge-star-wars-legends-rogue-squadron"
-        }
-      ]
-    },
-    "star-wars-x-wing-legends-abridged": {
-      "id": "star-wars-x-wing-legends-abridged",
-      "license": "CC0-1.0",
-      "name": "Star Wars: X-Wing - Legends (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V02OTC",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
         {
           "position": "3",
           "work": "star-wars-x-wing-the-krytos-trap"
@@ -691,14 +628,6 @@
         {
           "position": "4",
           "work": "star-wars-x-wing-the-bacta-war"
-        },
-        {
-          "position": "9",
-          "work": "star-wars-x-wing-starfighters-of-adumar"
-        },
-        {
-          "position": "7",
-          "work": "star-wars-x-wing-solo-command"
         },
         {
           "position": "6",
@@ -709,16 +638,16 @@
           "work": "star-wars-x-wing-wraith-squadron"
         },
         {
+          "position": "7",
+          "work": "star-wars-x-wing-solo-command"
+        },
+        {
           "position": "8",
           "work": "star-wars-x-wing-isards-revenge"
         },
         {
-          "position": "2",
-          "work": "star-wars-x-wing-wedges-gamble"
-        },
-        {
-          "position": "1",
-          "work": "star-wars-x-wing-rogue-squadron"
+          "position": "9",
+          "work": "star-wars-x-wing-starfighters-of-adumar"
         }
       ]
     },
@@ -9947,6 +9876,11 @@
           "imported_at": "2026-07-29",
           "ref": "B01F9OAYYS",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VAETRC",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -10080,7 +10014,7 @@
         },
         {
           "position": "3",
-          "work": "dead-in-the-water-a-novel"
+          "work": "dead-in-the-water-stuart-woods"
         },
         {
           "position": "2",
@@ -10172,7 +10106,7 @@
         },
         {
           "position": "5",
-          "work": "worst-fears-realized-stone-barrington-book-5"
+          "work": "worst-fears-realized"
         },
         {
           "position": "32",
@@ -10225,36 +10159,6 @@
         {
           "position": "69",
           "work": "stuart-woods-fool-proof"
-        }
-      ]
-    },
-    "stone-barrington-abridged": {
-      "id": "stone-barrington-abridged",
-      "license": "CC0-1.0",
-      "name": "Stone Barrington (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VAETRC",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "3",
-          "work": "dead-in-the-water-stuart-woods"
-        },
-        {
-          "position": "4",
-          "work": "swimming-to-catalina"
-        },
-        {
-          "position": "5",
-          "work": "worst-fears-realized"
-        },
-        {
-          "position": "2",
-          "work": "dirt-stuart-woods"
         }
       ]
     },

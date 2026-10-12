@@ -1461,78 +1461,6 @@
       ],
       "title": "Act of War"
     },
-    "act-of-war-a-thriller": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "brad-thor"
-      ],
-      "genres": [
-        "espionage",
-        "literary-fiction",
-        "politics",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "act-of-war-a-thriller",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "armand-schultz-2014": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00KI2YJE8",
-              "region": "us"
-            },
-            {
-              "asin": "B00L1DP07I",
-              "region": "de"
-            },
-            {
-              "asin": "B01MT837ES",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/814iBPEyXFL.jpg",
-          "id": "armand-schultz-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "armand-schultz"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2014-07-08",
-          "runtime_min": 382,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00KI2YJE8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00L1DP07I",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01MT837ES",
-              "type": "libex-import"
-            }
-          ],
-          "work": "act-of-war-a-thriller"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00KI2YJE8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Act of War: A Thriller"
-    },
     "act-of-war-brad-thor": {
       "added_at": "2026-07-29",
       "authors": [
@@ -1926,12 +1854,63 @@
             }
           ],
           "work": "act-of-war-brad-thor"
+        },
+        "armand-schultz-2014-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00KI2YJE8",
+              "region": "us"
+            },
+            {
+              "asin": "B00L1DP07I",
+              "region": "de"
+            },
+            {
+              "asin": "B01MT837ES",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/814iBPEyXFL.jpg",
+          "id": "armand-schultz-2014-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "armand-schultz"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2014-07-08",
+          "runtime_min": 382,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00KI2YJE8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00L1DP07I",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01MT837ES",
+              "type": "libex-import"
+            }
+          ],
+          "work": "act-of-war-brad-thor"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B00KGHJ7JW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00KI2YJE8",
           "type": "libex-import"
         }
       ],

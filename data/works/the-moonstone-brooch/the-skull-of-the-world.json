@@ -3041,12 +3041,67 @@
             }
           ],
           "work": "the-sky-ghost"
+        },
+        "terence-aselford-2006": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0865I",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2385154,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2311454,
+              "start_ms": 2385154,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2419473,
+              "start_ms": 4696608,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2281360,
+              "start_ms": 7116081,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Ipt2D6LgL.jpg",
+          "id": "terence-aselford-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "terence-aselford"
+          ],
+          "publisher": "Listen & Live Audio, Inc.",
+          "release_date": "2006-05-26",
+          "runtime_min": 156,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0865I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-sky-ghost"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0CVNSSQRG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0865I",
           "type": "libex-import"
         }
       ],

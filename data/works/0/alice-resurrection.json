@@ -5301,6 +5301,14 @@
             {
               "asin": "B08FF6CJD4",
               "region": "uk"
+            },
+            {
+              "asin": "1662128940",
+              "region": "us"
+            },
+            {
+              "asin": "1662128940",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -5402,6 +5410,16 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B08FF6CJD4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1662128940",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1662128940",
               "type": "libex-import"
             }
           ],
@@ -9126,6 +9144,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0DD5M15V5",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1662128940",
           "type": "libex-import"
         }
       ],

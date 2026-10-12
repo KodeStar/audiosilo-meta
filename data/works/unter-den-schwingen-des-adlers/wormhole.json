@@ -7711,6 +7711,115 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "richard-ferrone-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V018ZI",
+              "region": "us"
+            },
+            {
+              "asin": "B004FUF8EE",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2555960,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2454814,
+              "start_ms": 2555960,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2462151,
+              "start_ms": 5010774,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2440464,
+              "start_ms": 7472925,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2608437,
+              "start_ms": 9913389,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2361516,
+              "start_ms": 12521826,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2411578,
+              "start_ms": 14883342,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2233249,
+              "start_ms": 17294920,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2320742,
+              "start_ms": 19528169,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2115570,
+              "start_ms": 21848911,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2562368,
+              "start_ms": 23964481,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2310711,
+              "start_ms": 26526849,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2551548,
+              "start_ms": 28837560,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2371500,
+              "start_ms": 31389108,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xXBR2yfyL.jpg",
+          "id": "richard-ferrone-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-ferrone"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2007-01-29",
+          "runtime_min": 562,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V018ZI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FUF8EE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "worst-fears-realized"
+        },
         "tony-roberts-2005": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -7786,6 +7895,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002VACR9O",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V018ZI",
           "type": "libex-import"
         }
       ],
@@ -7923,139 +8037,6 @@
         }
       ],
       "title": "Worst Fears Realized: International Edition"
-    },
-    "worst-fears-realized-stone-barrington-book-5": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stuart-woods"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "worst-fears-realized-stone-barrington-book-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "richard-ferrone-2007": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V018ZI",
-              "region": "us"
-            },
-            {
-              "asin": "B004FUF8EE",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2555960,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2454814,
-              "start_ms": 2555960,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2462151,
-              "start_ms": 5010774,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2440464,
-              "start_ms": 7472925,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2608437,
-              "start_ms": 9913389,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2361516,
-              "start_ms": 12521826,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2411578,
-              "start_ms": 14883342,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2233249,
-              "start_ms": 17294920,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2320742,
-              "start_ms": 19528169,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2115570,
-              "start_ms": 21848911,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2562368,
-              "start_ms": 23964481,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2310711,
-              "start_ms": 26526849,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2551548,
-              "start_ms": 28837560,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2371500,
-              "start_ms": 31389108,
-              "title": "Chapter 14"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81xXBR2yfyL.jpg",
-          "id": "richard-ferrone-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "richard-ferrone"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2007-01-29",
-          "runtime_min": 562,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V018ZI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FUF8EE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "worst-fears-realized-stone-barrington-book-5"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V018ZI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Worst Fears Realized: Stone Barrington, Book 5"
     },
     "worst-laid-plans-at-the-upright-citizens-brigade-theatre": {
       "added_at": "2026-07-29",

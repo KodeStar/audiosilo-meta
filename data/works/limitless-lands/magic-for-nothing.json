@@ -1852,31 +1852,11 @@
       "authors": [
         "ilona-andrews"
       ],
-      "id": "magic-gifts",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/13299211-magic-gifts",
-          "type": "community"
-        }
-      ],
-      "title": "Magic Gifts",
-      "xref": {
-        "goodreads": "13299211"
-      }
-    },
-    "magic-gifts-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "ilona-andrews"
-      ],
       "genres": [
         "paranormal",
         "romance"
       ],
-      "id": "magic-gifts-dramatized-adaptation",
+      "id": "magic-gifts",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1938,10 +1918,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "magic-gifts-dramatized-adaptation"
+          "work": "magic-gifts"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/13299211-magic-gifts",
+          "type": "community"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0D43JTVR7",
@@ -1953,7 +1938,10 @@
           "type": "libex-import"
         }
       ],
-      "title": "Magic Gifts (Dramatized Adaptation)"
+      "title": "Magic Gifts",
+      "xref": {
+        "goodreads": "13299211"
+      }
     },
     "magic-girls-of-multiverse-inn": {
       "added_at": "2026-08-20",
