@@ -3536,9 +3536,16 @@ func (p *planner) addToSeries(r seriesRef, work, pos string, warn func(string, .
 	// A membership ADDED to a catalogued series stored under a name the claim did
 	// not spell - by the series-name equality, so a case or bracket respell the
 	// chain matches is no hidden join - is said in the run's Notes; a retired
-	// slug's join is the tombstone note's.
-	if !ss.isNew && r.target.via == "" && !titlerule.SameSeriesName(name, ss.name) {
-		p.noteSeriesNameJoin(SeriesNameJoin{Given: name, Slug: ss.slug, Stored: ss.name})
+	// slug's join is the tombstone note's. The claim spells a series by its cleaned
+	// name or by its raw one (seriesRef.raw, the tierRaw reach), and a note names
+	// the name the row stated.
+	if !ss.isNew && r.target.via == "" && !titlerule.SameSeriesName(name, ss.name) &&
+		(r.raw == "" || !titlerule.SameSeriesName(r.raw, ss.name)) {
+		given := name
+		if r.raw != "" {
+			given = r.raw
+		}
+		p.noteSeriesNameJoin(SeriesNameJoin{Given: given, Slug: ss.slug, Stored: ss.name})
 	}
 	if ss.isNew {
 		ss.out.Works = append(ss.out.Works, OutSeriesWork{Work: work, Position: pos})

@@ -1106,6 +1106,11 @@ func TestAddWorkReachesATiedRecordingVariantSeries(t *testing.T) {
 	if series := readFile(t, dir, "series/ex/existing-series-abridged.json"); !strings.Contains(series, "sequel-book") {
 		t.Errorf("the held variant was not extended:\n%s", series)
 	}
+	// The submission spelled the series it extended: no "read as" note claims the
+	// qualifier was read away, and no join under another name is reported.
+	if anyContains(res.Messages, "read as") || anyContains(res.Messages, "stored under another name") {
+		t.Errorf("the verdict misdescribes a join by the name as submitted: %v", res.Messages)
+	}
 }
 
 // A series `name` correction ending in a RECORDING qualifier is invalid, naming the

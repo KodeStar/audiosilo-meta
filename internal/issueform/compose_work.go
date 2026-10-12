@@ -647,7 +647,11 @@ func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, 
 	if name == "" {
 		return
 	}
-	if raw != name {
+	// spelled: the series it lands in is the one the name AS SUBMITTED spells (a
+	// held recording-variant series reached by its own name), so the qualifier was
+	// not read away and the stored name is no other name.
+	spelled := fs.rec != nil && titlerule.SameSeriesName(raw, fs.rec.Name)
+	if raw != name && !spelled {
 		c.note("series name %q states a recording qualifier (a narrator or a production: a fact about the recording, not the series) - read as %q", raw, name)
 	}
 	posRaw := s.get(fWorkSeriesPosition)
@@ -685,8 +689,8 @@ func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, 
 		// A membership added under a name the series is not stored as (by the
 		// series-name equality: a case or bracket respell is no hidden join) is
 		// said once it is added - a taken position adds nothing.
-		if c.extendSeries(fs.rec, fs.id, workSlug, pos) && fs.via == "" && !titlerule.SameSeriesName(name, fs.rec.Name) {
-			c.noteJoined(name, fs.id, fs.rec.Name)
+		if c.extendSeries(fs.rec, fs.id, workSlug, pos) && fs.via == "" && !titlerule.SameSeriesName(name, fs.rec.Name) && !spelled {
+			c.noteJoined(raw, fs.id, fs.rec.Name)
 		}
 		return
 	}

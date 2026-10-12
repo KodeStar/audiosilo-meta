@@ -278,6 +278,11 @@ func TestATiedRecordingVariantSeriesIsReachedByTheRawName(t *testing.T) {
 			if sum.NewSeries != 0 || sum.SeriesClaimsDropped != 0 {
 				t.Errorf("%s, order %d: NewSeries/SeriesClaimsDropped = %d/%d, want 0/0", tc.desc, o, sum.NewSeries, sum.SeriesClaimsDropped)
 			}
+			// The rows SPELLED the series they joined, so no join under another
+			// name is reported.
+			if slices.ContainsFunc(sum.Notes, func(n string) bool { return strings.Contains(n, "stored under another name") }) {
+				t.Errorf("%s, order %d: a raw-spelled join was noted as a join under another name: %v", tc.desc, o, sum.Notes)
+			}
 			if entryExists(t, dataDir, seriesAddr("foo")) {
 				t.Errorf("%s, order %d: a duplicate `foo` series was founded", tc.desc, o)
 			}
