@@ -16,7 +16,7 @@ import (
 // A series is an ordered set of WORKS, and a work's series are all stamped onto a book
 // a server matches, so every Harry Potter book showed three series. The importer and
 // the intake form no longer found one (titlerule.StripSeriesRecordingQualifiers, read
-// by internal/importer's cleanSeriesName and its qualifier index); these count what
+// by internal/importer's CleanSeriesName and its qualifier index); these count what
 // the tree already holds, in every metacheck run, so the repair is a number and a
 // regrowth is visible the wave after it happens.
 //

@@ -149,13 +149,16 @@ func (c *composer) sameBookAs(ctx titleContext, w *model.Work) bool {
 
 // titleContextFor resolves the context: the series the title is about, the record we
 // hold for it, and whether the title states a volume that record has no work at.
-func (c *composer) titleContextFor(title, formSeries string, row *importer.SeriesRow) titleContext {
+// rawSeries is the form's series name as submitted; the title is judged against the
+// name seriesForForm cleans it to, without its recording qualifiers.
+func (c *composer) titleContextFor(title, rawSeries string, row *importer.SeriesRow) titleContext {
 	ctx := titleContext{title: title}
-	if formSeries != "" {
+	if rawSeries != "" {
+		fs := c.seriesForForm(rawSeries, row)
 		// The record placeInSeries will extend (seriesForForm, for the same row),
 		// so the position gate reads the series the work actually lands in - never
 		// another author's same-named series.
-		ctx.seriesRec = c.seriesForForm(formSeries, row).rec
+		ctx.seriesRec = fs.rec
 		// A name the INDEX would not read a title against is not read against one
 		// here either (WorkIdentity.Admits): a one-word series name strips its own
 		// titles down to their volume number, and a fold-ambiguous one would make
@@ -163,8 +166,8 @@ func (c *composer) titleContextFor(title, formSeries string, row *importer.Serie
 		// its name. The series RECORD above is still resolved - it is addressed by
 		// slug, which is unambiguous - so the position gate keeps working while the
 		// title is left alone.
-		if c.identityIndex().Admits(formSeries) {
-			ctx.series = formSeries
+		if fs.name != "" && c.identityIndex().Admits(fs.name) {
+			ctx.series = fs.name
 		}
 	}
 	if ctx.series == "" {

@@ -33,7 +33,7 @@ import (
 //     Adaptation]") is indexed under the name without the qualifier, beside the plain
 //     series of that name - a recording facet that is never a separate key, because a
 //     narration or a production is a fact about a recording and the claim side has
-//     already shed it (cleanSeriesName). So a claim whose chain holds nothing reaches
+//     already shed it (CleanSeriesName). So a claim whose chain holds nothing reaches
 //     the recording-variant series the catalogue already has rather than founding a
 //     second one beside it, and a claim whose chain holds the plain series joins THAT
 //     first (tier order);
@@ -43,7 +43,7 @@ import (
 //     tiers), judged by the same language closure and author fit;
 //   - the importer never writes translation_of, ordering or ordering_of, and a
 //     founded series keeps the source's name as the claim states it - verbatim but
-//     for the recording qualifiers cleanSeriesName takes off every claim (whose
+//     for the recording qualifiers CleanSeriesName takes off every claim (whose
 //     abridgement, if they state one, is carried onto the recording).
 
 // qualifierKey is one index key under a base slug: the base's name key
