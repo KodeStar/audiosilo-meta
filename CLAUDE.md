@@ -163,11 +163,17 @@ cleaned name reaches (`tierRaw`, `rawCandidates` in seriesresolve.go, anchoring 
 where the cleaned chain is empty; libex-select's pre-filter and the form's `Resolve`
 ask it too), because the qualifier index cannot key a variant whose derived language
 TIES and the cleaned chain may be empty: without it a claim "Foo (abridged)" founded
-`foo` beside the held `foo-abridged`. A qualified claim's POSITION is the variant
-listing's numbering, so it contradicts no work (`seriesClaim.compatible`): the
-dramatized Stormlight numbers Edgedancer 2.8 where the series says 2.5, and the row
-lands as a recording of `edgedancer`, the series keeping its own entry and gaining no
-second membership (refusing the merge there minted a duplicate work).
+`foo` beside the held `foo-abridged`. A qualified claim's POSITION may be the
+variant listing's own number for an IN-BETWEEN volume, so it does not contradict a
+work the series LISTS at another fraction of the same whole volume
+(`seriesClaim.compatible`'s `renumbers`): the dramatized Stormlight numbers Edgedancer
+2.8 where the series says 2.5, and the row lands as a recording of `edgedancer`, the
+series keeping its own entry and gaining no second membership (refusing the merge
+there minted a duplicate work). It is no wider than that: a qualified claim at
+another WHOLE volume is another volume (a narrator credit or an abridgement numbers a
+serial as the plain listing does, and a serial sharing one short title would
+otherwise file volume 3 as a recording of volume 2), and a work that only CLAIMED a
+slot is not exempt.
 
 **Before a change is done, all of the above must pass.** CI
 (`.github/workflows/check.yml`) gates THE WHOLE of it on every PR and push to

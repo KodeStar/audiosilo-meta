@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"maps"
+	"math"
 	"os"
 	"regexp"
 	"slices"
@@ -2077,24 +2078,49 @@ type seriesClaim struct {
 // looking absent from the series and made every later volume compatible with
 // it. claimed is what the work ASKED for, which is the fact this test needs.
 //
-// A claim whose name was cleaned of a RECORDING qualifier (seriesRef.raw: "[Dramatized
-// Adaptation]", "(Full-Cast Editions)", a narrator credit) contradicts nothing: its
-// position is the recording-variant listing's numbering, which can differ from the
-// series it now joins ("The Stormlight Archive [Dramatized Adaptation]" numbers
-// Edgedancer 2.8, the series 2.5), so a different position is not a different
-// volume. Refusing the merge there minted a second work for a book the series lists.
-// places, the positive half, is unchanged: silence still confirms nothing.
+// One narrow exception (renumbers): a claim cleaned of a RECORDING qualifier
+// (seriesRef.raw) may state the variant listing's own number for an in-between
+// volume the series LISTS at another fraction of the same whole volume ("The
+// Stormlight Archive [Dramatized Adaptation]" numbers Edgedancer 2.8, the series
+// 2.5). Refusing the merge there minted a second work for a book the series lists.
+// It is deliberately no wider: a narrator credit or an abridgement numbers a serial
+// exactly as the plain listing does, so a qualified claim at another WHOLE volume is
+// another volume (a serial sharing one short title would otherwise file volume 3 as
+// a recording of volume 2), and a work that only CLAIMED a slot is not exempt (the
+// merge would then place it at the variant's number). places, the positive half, is
+// unchanged: silence still confirms nothing.
 func (c *seriesClaim) compatible(ws *workState) bool {
-	if c == nil || c.ref.raw != "" {
+	if c == nil {
 		return true
 	}
 	if existing, in := c.ss.members[ws.slug]; in {
-		return c.holds(ws, existing)
+		return c.holds(ws, existing) || c.renumbers(existing)
 	}
 	if wanted, asked := c.ss.claimed[ws.slug]; asked {
 		return c.holds(ws, wanted)
 	}
 	return true
+}
+
+// renumbers reports whether the row's source position can be a recording-variant
+// listing's renumbering of listed, the slot the series holds the work at: the claim's
+// name was cleaned of a recording qualifier, and both positions are single
+// in-between volumes of the same whole volume (betweenSameVolumes).
+func (c *seriesClaim) renumbers(listed string) bool {
+	return c.ref.raw != "" && betweenSameVolumes(listed, c.pos.source)
+}
+
+// betweenSameVolumes reports whether a and b are both single, non-whole positions
+// between the same two whole volumes ("2.5" and "2.8"). A whole volume, an omnibus
+// range or a position the grammar rejects never is.
+func betweenSameVolumes(a, b string) bool {
+	sa, oka := PositionSpan(a)
+	sb, okb := PositionSpan(b)
+	if !oka || !okb || sa[0] != sa[1] || sb[0] != sb[1] {
+		return false
+	}
+	x, y := sa[0], sb[0]
+	return x != math.Trunc(x) && y != math.Trunc(y) && math.Floor(x) == math.Floor(y)
 }
 
 // holds reports whether ws recorded at pos is at the row's position: the

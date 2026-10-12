@@ -350,3 +350,93 @@ func TestADramatizedClaimKeepsThePlainSeriesPosition(t *testing.T) {
 		assertTreeValid(t, dataDir)
 	}
 }
+
+// The renumbering exception is no wider than an in-between volume: a recording-
+// qualified claim at another WHOLE volume of the series is another volume. A serial
+// whose volumes share one short title ("Wayfarer") is the shape that would otherwise
+// file volume 3 as a recording of volume 2 - and a narrator credit or an abridgement
+// numbers a serial exactly as the plain listing does. Both doors: a user-library row
+// (its full title holds the new work) and the sync bot's libex row (no full title, so
+// the work is minted beside volume 2 on the author-suffixed slug).
+func TestAQualifiedClaimAtAnotherVolumeIsNotMerged(t *testing.T) {
+	volume2 := libexRow{asin: "B0WAYFARE2", title: "Wayfarer", authors: `{"name":"Sarah Hawke"}`,
+		minutes: 480, series: `{"name":"Wayfarer Saga","position":"2"}`}
+	for _, series := range []string{
+		"Wayfarer Saga [Dramatized Adaptation]",
+		"Wayfarer Saga (abridged)",
+		"Wayfarer Saga (Narrated by Cid Voice)",
+	} {
+		t.Run("user library "+series, func(t *testing.T) {
+			dataDir := t.TempDir()
+			if seed := runLibexInto(t, dataDir, rows(volume2)); seed.NewWorks != 1 {
+				t.Fatalf("seed: %+v", seed)
+			}
+			sum := runOpenAudibleInto(t, dataDir, `[{"asin":"B0WAYFAR03","title":"Wayfarer: The Lost Road","title_short":"Wayfarer",
+				"author":"Sarah Hawke","narrated_by":"Cid Voice","series_name":"`+series+`","series_sequence":"3",
+				"language":"english","region":"AU"}]`)
+			if sum.NewWorks != 1 {
+				t.Errorf("NewWorks = %d, want volume 3 minted; warnings %v", sum.NewWorks, sum.Warnings)
+			}
+			if recs := recSlugsOf(t, dataDir, "wayfarer"); len(recs) != 1 {
+				t.Errorf("volume 2 gained a recording: %v", recs)
+			}
+			want := map[string]string{"wayfarer": "2", "wayfarer-the-lost-road": "3"}
+			if got := seriesWorks(t, dataDir, "wayfarer-saga"); !reflect.DeepEqual(got, want) {
+				t.Errorf("wayfarer-saga = %v, want %v", got, want)
+			}
+			assertTreeValid(t, dataDir)
+		})
+		t.Run("sync bot "+series, func(t *testing.T) {
+			dataDir := t.TempDir()
+			if seed := runLibexInto(t, dataDir, rows(volume2)); seed.NewWorks != 1 {
+				t.Fatalf("seed: %+v", seed)
+			}
+			row := tombRow("B0WAYFAR3L", "Wayfarer", "Sarah Hawke", "Cid Voice", 500, series, "3")
+			sum := runLibexWith(t, dataDir, Options{ExistingSeriesOnly: true, AttachEditions: true}, row)
+			if sum.NewWorks != 1 || sum.SkippedDuplicateIdentity != 0 {
+				t.Errorf("NewWorks/SkippedDuplicateIdentity = %d/%d, want 1/0; warnings %v", sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
+			}
+			if recs := recSlugsOf(t, dataDir, "wayfarer"); len(recs) != 1 {
+				t.Errorf("volume 2 gained a recording: %v", recs)
+			}
+			if got := seriesWorks(t, dataDir, "wayfarer-saga"); got["wayfarer"] != "2" || len(got) != 2 {
+				t.Errorf("wayfarer-saga = %v, want volume 2 and a new volume 3", got)
+			}
+			assertTreeValid(t, dataDir)
+		})
+		// The duplicate-identity guard reads the same veto: a decorated title of
+		// volume 3 keys like volume 2, and the series placing volume 2 elsewhere is
+		// what keeps the guard from refusing it as a duplicate.
+		t.Run("decorated "+series, func(t *testing.T) {
+			dataDir := t.TempDir()
+			if seed := runLibexInto(t, dataDir, rows(volume2)); seed.NewWorks != 1 {
+				t.Fatalf("seed: %+v", seed)
+			}
+			row := tombRow("B0WAYFAR3D", "Wayfarer: A Novel", "Sarah Hawke", "Cid Voice", 500, series, "3")
+			sum := runLibexWith(t, dataDir, Options{}, row)
+			if sum.NewWorks != 1 || sum.SkippedDuplicateIdentity != 0 {
+				t.Errorf("NewWorks/SkippedDuplicateIdentity = %d/%d, want 1/0; warnings %v", sum.NewWorks, sum.SkippedDuplicateIdentity, sum.Warnings)
+			}
+			assertTreeValid(t, dataDir)
+		})
+	}
+}
+
+func TestBetweenSameVolumes(t *testing.T) {
+	for _, c := range []struct {
+		a, b string
+		want bool
+	}{
+		{"2.5", "2.8", true},
+		{"2.50", "2.8", true},
+		{"2.5", "2", false},
+		{"2", "3", false},
+		{"2.5", "3.5", false},
+		{"2.5", "2.5-2.8", false},
+		{"2.5", "x", false},
+	} {
+		if got := betweenSameVolumes(c.a, c.b); got != c.want {
+			t.Errorf("betweenSameVolumes(%q, %q) = %v, want %v", c.a, c.b, got, c.want)
+		}
+	}
+}
