@@ -3596,6 +3596,10 @@
             {
               "asin": "B0GD2C9BFG",
               "region": "uk"
+            },
+            {
+              "asin": "B0GD1XB3WS",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -3814,6 +3818,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0GD2C9BFG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-12",
+              "ref": "B0GD1XB3WS",
               "type": "libex-import"
             }
           ],
@@ -8031,6 +8040,59 @@
         }
       ],
       "title": "Breaker's Ruin"
+    },
+    "breakeven-verdant-string-book-2": {
+      "added_at": "2026-10-12",
+      "authors": [
+        "michelle-diener"
+      ],
+      "genres": [
+        "action-adventure",
+        "romance",
+        "science-fiction",
+        "space-opera"
+      ],
+      "id": "breakeven-verdant-string-book-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "natalie-beran-2026": {
+          "abridged": false,
+          "added_at": "2026-10-12",
+          "asin": [
+            {
+              "asin": "B0HMJT9LRK",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91qQJEcyrEL.jpg",
+          "id": "natalie-beran-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "natalie-beran"
+          ],
+          "publisher": "Kemah Bay Marketing,LLC",
+          "release_date": "2026-10-10",
+          "runtime_min": 453,
+          "sources": [
+            {
+              "imported_at": "2026-10-12",
+              "ref": "B0HMJT9LRK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "breakeven-verdant-string-book-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-12",
+          "ref": "B0HMJT9LRK",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Breakeven (Verdant String Book 2)"
     },
     "breakfall": {
       "added_at": "2026-08-01",
