@@ -99,21 +99,19 @@ func NormalizeISBN(raw string) (isbn string, ok bool) {
 	return isbn, true
 }
 
-// cleanSeriesName strips the trailing RECORDING QUALIFIERS from a series name (a
+// CleanSeriesName strips the trailing RECORDING QUALIFIERS from a series name (a
 // narrator credit, "(abridged)", "(Full-Cast Editions)", "[Dramatized Adaptation]"), so
 // every production of one serial resolves to ONE series: narration and production are
 // facts about a recording, not a series. The rule, its vocabularies and their history
 // are titlerule.StripSeriesRecordingQualifiers.
-func cleanSeriesName(name string) string {
-	base, _ := titlerule.StripSeriesRecordingQualifiers(strings.TrimSpace(name))
-	return base
-}
-
-// cleanSeriesNameRaw is cleanSeriesName plus the trimmed name as given when cleaning
-// changed it ("" when it did not) - a claim's raw spelling (seriesRef.raw).
-func cleanSeriesNameRaw(name string) (clean, raw string) {
+//
+// raw is the trimmed name as given when cleaning changed it, "" when it did not - a
+// claim's raw spelling (seriesRef.raw), which the resolution reaches after the cleaned
+// name's candidates (tierRaw). It is the ONE cleaner: internal/issueform reads a form's
+// series name through it too, so a submission and a bulk row name one series alike.
+func CleanSeriesName(name string) (clean, raw string) {
 	raw = strings.TrimSpace(name)
-	clean = cleanSeriesName(raw)
+	clean, _ = titlerule.StripSeriesRecordingQualifiers(raw)
 	if clean == raw {
 		raw = ""
 	}
@@ -129,7 +127,7 @@ func cleanSeriesNameRaw(name string) (clean, raw string) {
 // gelesen von Andreas Lange, Band 11" beside "... - gelesen von Peter Bocek,
 // Band 11" beside the undecorated "..., Band 11" - which minted THREE works for
 // one book. Narration is modeled by recording.narrators; it is not part of a
-// work's identity, and it is the same see-through cleanSeriesName performs one
+// work's identity, and it is the same see-through CleanSeriesName performs one
 // level up.
 //
 // Measured over the full 1.13M-book dump, the bounded shape matches 13 books
@@ -158,7 +156,7 @@ var titleVolumeSuffixRE = regexp.MustCompile(`(?i),\s*(?:band|folge|episode)\s*\
 // It returns the title unchanged unless every condition holds: the trailing
 // volume marker (titleVolumeSuffixRE), a listed lead-in at a WORD boundary
 // before it, a credit that names somebody (titlerule.NarratorObjectLead), a non-empty
-// remainder, and brackets that still balance - the same posture cleanSeriesName
+// remainder, and brackets that still balance - the same posture CleanSeriesName
 // takes, for the same reason (a title we cannot take the qualifier off cleanly
 // is left exactly as the source spelled it).
 func stripTitleNarratorQualifier(title string) string {

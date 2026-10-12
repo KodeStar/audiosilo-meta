@@ -539,6 +539,9 @@ func seriesSlugOf(name string) (slug, base string) {
 
 // formSeries is what a form's series name addresses (seriesForForm).
 type formSeries struct {
+	// name is the series name every lookup reads: the submitted one without its
+	// trailing recording qualifiers (importer.CleanSeriesName).
+	name string
 	// slug is the name's first candidate (seriesSlugOf) and base the unstepped
 	// slug, for the reserved-literal note. A new series is minted at slug.
 	slug, base string
@@ -571,17 +574,18 @@ type formSeries struct {
 // a name is for a given book. When the chain holds no series of that name the
 // form stays conservative: a slug held by another series is taken, not stepped.
 //
-// raw is the series name AS SUBMITTED: the slug is the cleaned name's
-// (cleanSeriesName), and Resolve cleans it the same way while keeping the raw
-// spelling, so a catalogued recording-variant series it spells is still reached
-// after everything the cleaned name reaches (the importer's tierRaw).
+// raw is the series name AS SUBMITTED, and this is the ONE place the form cleans it
+// (importer.CleanSeriesName, into fs.name): the slug is the cleaned name's, and
+// Resolve cleans it the same way while keeping the raw spelling, so a catalogued
+// recording-variant series it spells is still reached after everything the cleaned
+// name reaches (the importer's tierRaw).
 func (c *composer) seriesForForm(raw string, row *importer.SeriesRow) formSeries {
 	if fs, ok := c.formSeries[raw]; ok {
 		return fs
 	}
 	fs := formSeries{}
-	name := cleanSeriesName(raw)
-	fs.slug, fs.base = seriesSlugOf(name)
+	fs.name, _ = importer.CleanSeriesName(raw)
+	fs.slug, fs.base = seriesSlugOf(fs.name)
 	if fs.slug != "" {
 		stored := func(slug string) (string, bool) {
 			s := c.series[slug]
@@ -624,24 +628,26 @@ func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
 // its trailing RECORDING QUALIFIERS removed (titlerule.StripSeriesRecordingQualifiers,
 // the rule the bulk importer cleans a claim by), so "Harry Potter (Narrated by Stephen
 // Fry)" or "Discworld (abridged)" extends the series it is a recording of rather than
-// composing a second series beside it.
-func formSeriesName(s sections) string { return cleanSeriesName(s.get(fWorkSeriesName)) }
-
-// cleanSeriesName is a series name with its trailing recording qualifiers removed
-// (formSeriesName's rule, for a name already read off the form).
-func cleanSeriesName(raw string) string {
-	name, _ := titlerule.StripSeriesRecordingQualifiers(raw)
+// composing a second series beside it. It is seriesForForm's name for a reader with
+// no series lookup to make (the takeover's title comparison).
+func formSeriesName(s sections) string {
+	name, _ := importer.CleanSeriesName(s.get(fWorkSeriesName))
 	return name
 }
 
 // placeInSeries adds the work to the named series (creating it or extending an
 // existing one). It is a no-op when no series name is given.
 func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, sourceRef string) {
-	name := formSeriesName(s)
+	raw := s.get(fWorkSeriesName)
+	if raw == "" {
+		return
+	}
+	fs := c.seriesForForm(raw, row)
+	name := fs.name
 	if name == "" {
 		return
 	}
-	if raw := s.get(fWorkSeriesName); raw != name {
+	if raw != name {
 		c.note("series name %q states a recording qualifier (a narrator or a production: a fact about the recording, not the series) - read as %q", raw, name)
 	}
 	posRaw := s.get(fWorkSeriesPosition)
@@ -654,7 +660,6 @@ func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, 
 		c.note("series position %q is not a number or omnibus range - work not placed in the series", posRaw)
 		return
 	}
-	fs := c.seriesForForm(s.get(fWorkSeriesName), row)
 	if fs.slug == "" {
 		c.note("series name %q produced an empty slug - work not placed in the series", name)
 		return

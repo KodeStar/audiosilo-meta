@@ -383,8 +383,8 @@ func TestSeriesNarratorQualifierIsNormalizedAway(t *testing.T) {
 		{"(gelesen von Peter Bocek)", "(gelesen von Peter Bocek)"},
 	}
 	for _, c := range cases {
-		if got := cleanSeriesName(c.in); got != c.want {
-			t.Errorf("cleanSeriesName(%q) = %q, want %q", c.in, got, c.want)
+		if got, _ := CleanSeriesName(c.in); got != c.want {
+			t.Errorf("CleanSeriesName(%q) = %q, want %q", c.in, got, c.want)
 		}
 	}
 }

@@ -1791,7 +1791,7 @@ type seriesRef struct {
 	// normalizeEditionMarkers carries it there when the source stated nothing itself,
 	// rather than losing it with the name it was cleaned off.
 	abridged *bool
-	// raw is the name as the source spelled it when cleanSeriesName changed it
+	// raw is the name as the source spelled it when CleanSeriesName changed it
 	// ("Foo (abridged)" beside name "Foo"), "" otherwise. The resolution reaches a
 	// series spelled by it too, after the cleaned name's candidates (tierRaw,
 	// seriesresolve.go), so a catalogued recording-variant series the qualifier
@@ -1807,13 +1807,13 @@ type seriesRef struct {
 // validating the raw position token through the shared rules. Every source
 // builds its refs here so one spelling of a position ("1.0") can never become a
 // different position from another ("1"), and it normalizes a trailing narrator
-// qualifier out of the NAME (cleanSeriesName) so one serial cannot fork into a
+// qualifier out of the NAME (CleanSeriesName) so one serial cannot fork into a
 // series per narrator.
 func makeSeriesRef(name, rawSeq string) seriesRef {
 	pos, ok := NormalizeSequence(rawSeq)
 	name = DecodeHTMLEntities(name)
 	ref := seriesRef{seq: pos, seqOK: ok, rawSeq: rawSeq}
-	ref.name, ref.raw = cleanSeriesNameRaw(name)
+	ref.name, ref.raw = CleanSeriesName(name)
 	if a, stated := titlerule.SeriesAbridgement(name); stated {
 		ref.abridged = &a
 	}

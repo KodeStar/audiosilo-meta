@@ -15,7 +15,7 @@ import (
 // set of WORKS; narration, abridgement and production are facts about a recording
 // (recording.narrators, recording.abridged), so a recording-qualified name names the
 // SAME series as its base. Every reader of the question asks this one function:
-// internal/importer's claim cleaning (cleanSeriesName) and its qualifier index, the
+// internal/importer's claim cleaning (CleanSeriesName) and its qualifier index, the
 // intake form, and pkg/check's series-recording-qualifier advisory.
 //
 // What is NOT a recording qualifier, and is left exactly as written: a language
