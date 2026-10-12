@@ -1074,3 +1074,81 @@ func TestAddWorkReadsARecordingQualifiedSeriesName(t *testing.T) {
 		}
 	}
 }
+
+// A catalogued recording-variant series whose members TIE in language is out of the
+// importer's qualifier index (it keys a series by its derived language), and the
+// cleaned name's chain is empty - so the name AS SUBMITTED is asked too (Resolve's
+// raw spelling, the importer's tierRaw): the form extends the held "Existing Series
+// (abridged)" rather than composing a duplicate "existing-series" beside it.
+func TestAddWorkReachesATiedRecordingVariantSeries(t *testing.T) {
+	files := seedFiles()
+	delete(files, "series/ex/existing-series.json")
+	files["works/zw/zweites-werk/work.json"] = testpack.WorkJSON(t, "zweites-werk", "Zweites Werk",
+		testpack.WithAuthors("jane-doe"), testpack.WithLanguage("de"))
+	files["works/zw/zweites-werk/recordings/r1.json"] = testpack.RecJSON(t, "r1", "zweites-werk", testpack.WithNarrators("john-smith"))
+	files["series/ex/existing-series-abridged.json"] = testpack.SeriesJSON(t, "existing-series-abridged",
+		"Existing Series (abridged)", "existing-work@1", "zweites-werk@2")
+	dir := t.TempDir()
+	testpack.Seed(t, dir, files)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree does not validate: %v", res.Problems)
+	}
+	body := addWorkBody("Sequel Book", "Jane Doe", "en", "Ed Reader", "", "web", true)
+	body = strings.Replace(body, field(fWorkSeriesName, ""), field(fWorkSeriesName, "Existing Series (abridged)"), 1)
+	body = strings.Replace(body, field(fWorkSeriesPosition, ""), field(fWorkSeriesPosition, "3"), 1)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if recordExists(t, dir, "series/ex/existing-series.json") {
+		t.Error("a duplicate existing-series was composed beside the held variant")
+	}
+	if series := readFile(t, dir, "series/ex/existing-series-abridged.json"); !strings.Contains(series, "sequel-book") {
+		t.Errorf("the held variant was not extended:\n%s", series)
+	}
+}
+
+// A series `name` correction ending in a RECORDING qualifier is invalid, naming the
+// base the strip leaves: a narrator, an abridgement or a production is a fact about a
+// recording, and the series-recording-qualifier advisory would name the result. A
+// plain rename is applied, and restating the qualified name a record ALREADY carries
+// is the ordinary no-op duplicate rather than a refusal.
+func TestCorrectDataRefusesARecordingQualifiedSeriesName(t *testing.T) {
+	const addr = "data/series/ex/existing-series.json"
+	for _, name := range []string{
+		"Existing Series (abridged)",
+		"Existing Series (Narrated by Ed Reader)",
+		"Existing Series - Gesprochen von Ed Reader",
+		"Existing Series (Full-Cast Editions)",
+		"Existing Series [Dramatized Adaptation]",
+	} {
+		dir := seedTree(t)
+		res := Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody(addr, "name", name, "web", true)})
+		if res.Status != StatusInvalid {
+			t.Errorf("%q: status = %q, want invalid; messages = %v", name, res.Status, res.Messages)
+			continue
+		}
+		if !anyContains(res.Messages, "property of the recording") || !anyContains(res.Messages, `correct the name to "Existing Series"`) {
+			t.Errorf("%q: the verdict does not say why or name the base: %v", name, res.Messages)
+		}
+		if series := readFile(t, dir, "series/ex/existing-series.json"); !strings.Contains(series, `"name": "Existing Series"`) {
+			t.Errorf("%q: the series was rewritten:\n%s", name, series)
+		}
+	}
+
+	dir := seedTree(t)
+	res := Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody(addr, "name", "Existing Saga", "web", true)})
+	if res.Status != StatusOK || !strings.Contains(readFile(t, dir, "series/ex/existing-series.json"), `"name": "Existing Saga"`) {
+		t.Errorf("plain rename: status = %q, messages = %v", res.Status, res.Messages)
+	}
+
+	files := seedFiles()
+	files["series/ex/existing-series.json"] = strings.Replace(files["series/ex/existing-series.json"],
+		`"name": "Existing Series"`, `"name": "Existing Series (abridged)"`, 1)
+	dir = t.TempDir()
+	testpack.Seed(t, dir, files)
+	res = Process(Options{DataDir: dir, Template: "correct-data", Body: correctBody(addr, "name", "Existing Series (abridged)", "web", true)})
+	if res.Status != StatusDuplicate {
+		t.Errorf("restating the carried name: status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	}
+}

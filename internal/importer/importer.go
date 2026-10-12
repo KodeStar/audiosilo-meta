@@ -1791,6 +1791,12 @@ type seriesRef struct {
 	// normalizeEditionMarkers carries it there when the source stated nothing itself,
 	// rather than losing it with the name it was cleaned off.
 	abridged *bool
+	// raw is the name as the source spelled it when cleanSeriesName changed it
+	// ("Foo (abridged)" beside name "Foo"), "" otherwise. The resolution reaches a
+	// series spelled by it too, after the cleaned name's candidates (tierRaw,
+	// seriesresolve.go), so a catalogued recording-variant series the qualifier
+	// index cannot hold (a tied derived language) is still found by its own name.
+	raw string
 	// target is where the claim lands, decided for the whole batch before any
 	// row is planned (resolveSeriesTargets, seriesresolve.go). The zero value is
 	// an unresolved or unaddressable claim, which places nothing.
@@ -1806,7 +1812,8 @@ type seriesRef struct {
 func makeSeriesRef(name, rawSeq string) seriesRef {
 	pos, ok := NormalizeSequence(rawSeq)
 	name = DecodeHTMLEntities(name)
-	ref := seriesRef{name: cleanSeriesName(name), seq: pos, seqOK: ok, rawSeq: rawSeq}
+	ref := seriesRef{seq: pos, seqOK: ok, rawSeq: rawSeq}
+	ref.name, ref.raw = cleanSeriesNameRaw(name)
 	if a, stated := titlerule.SeriesAbridgement(name); stated {
 		ref.abridged = &a
 	}
@@ -2069,8 +2076,16 @@ type seriesClaim struct {
 // (its position was already taken by a sibling edition) - which left the work
 // looking absent from the series and made every later volume compatible with
 // it. claimed is what the work ASKED for, which is the fact this test needs.
+//
+// A claim whose name was cleaned of a RECORDING qualifier (seriesRef.raw: "[Dramatized
+// Adaptation]", "(Full-Cast Editions)", a narrator credit) contradicts nothing: its
+// position is the recording-variant listing's numbering, which can differ from the
+// series it now joins ("The Stormlight Archive [Dramatized Adaptation]" numbers
+// Edgedancer 2.8, the series 2.5), so a different position is not a different
+// volume. Refusing the merge there minted a second work for a book the series lists.
+// places, the positive half, is unchanged: silence still confirms nothing.
 func (c *seriesClaim) compatible(ws *workState) bool {
-	if c == nil {
+	if c == nil || c.ref.raw != "" {
 		return true
 	}
 	if existing, in := c.ss.members[ws.slug]; in {

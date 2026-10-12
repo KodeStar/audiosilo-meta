@@ -979,25 +979,36 @@ func mintsSeries(t seriesTarget, ref seriesRef) bool {
 // (or a retired one) at the first slug of its chain, or names the BASE of one the
 // qualifier index holds (seriesqualified.go) - the cheap necessary condition for
 // resolving into a series the tree holds, since a chain's first free slug ends
-// it and the index is the only other way in.
+// it and the index is the only other way in. A claim's raw spelling (seriesRef.raw)
+// is asked for its chain too, since the resolution reaches that chain as well
+// (tierRaw).
 func (idx seriesIndex) namesACatalogueChain(refs []seriesRef) bool {
 	for _, r := range refs {
 		base := Slugify(r.name)
 		if base == "" {
 			continue
 		}
-		first := SeriesSlugAt(base, 0)
-		if _, held := idx.bySlug[first]; held {
+		if idx.holdsChain(base) || idx.holdsQualifiedBase(r.name, base) {
 			return true
 		}
-		if _, retired := idx.redirects.Survivor(model.RedirectSeries, first); retired {
-			return true
-		}
-		if idx.holdsQualifiedBase(r.name, base) {
+		if r.raw != "" && idx.holdsChain(Slugify(r.raw)) {
 			return true
 		}
 	}
 	return false
+}
+
+// holdsChain reports whether base's chain starts at a held or retired slug.
+func (idx seriesIndex) holdsChain(base string) bool {
+	if base == "" {
+		return false
+	}
+	first := SeriesSlugAt(base, 0)
+	if _, held := idx.bySlug[first]; held {
+		return true
+	}
+	_, retired := idx.redirects.Survivor(model.RedirectSeries, first)
+	return retired
 }
 
 // holdsQualifiedBase is SeriesAuthorIndex.holdsQualifiedBase over the planner's
