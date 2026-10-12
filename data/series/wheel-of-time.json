@@ -8813,7 +8813,7 @@
     "will-gallows-abridged": {
       "id": "will-gallows-abridged",
       "license": "CC0-1.0",
-      "name": "Will Gallows (abridged)",
+      "name": "Will Gallows",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -11550,22 +11550,6 @@
       ],
       "works": [
         {
-          "position": "1",
-          "work": "lightning-wingman"
-        },
-        {
-          "position": "2",
-          "work": "mustang-wingman"
-        },
-        {
-          "position": "3",
-          "work": "sabre-wingman"
-        },
-        {
-          "position": "4",
-          "work": "forever-wingman"
-        },
-        {
           "position": "18",
           "work": "battle-for-america"
         },
@@ -11604,6 +11588,36 @@
         {
           "position": "14",
           "work": "the-sky-ghost"
+        }
+      ]
+    },
+    "wingman-2": {
+      "id": "wingman-2",
+      "license": "CC0-1.0",
+      "name": "Wingman",
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09G52YD3K",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "lightning-wingman"
+        },
+        {
+          "position": "2",
+          "work": "mustang-wingman"
+        },
+        {
+          "position": "3",
+          "work": "sabre-wingman"
+        },
+        {
+          "position": "4",
+          "work": "forever-wingman"
         }
       ]
     },
