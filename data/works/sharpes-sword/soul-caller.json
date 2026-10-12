@@ -8484,16 +8484,324 @@
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
         "tim-lahaye",
-        "jerry-jenkins"
+        "jerry-jenkins",
+        "jerry-b-jenkins"
       ],
       "genres": [
+        "literary-fiction",
+        "post-apocalyptic",
         "religious-fiction",
-        "science-fiction"
+        "science-fiction",
+        "thriller-suspense"
       ],
       "id": "soul-harvest",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "frank-muller-2015": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00T576CLK",
+              "region": "us"
+            },
+            {
+              "asin": "B00T57D95W",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 61927,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 184273,
+              "start_ms": 61927,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 177307,
+              "start_ms": 246200,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 219289,
+              "start_ms": 423507,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 169970,
+              "start_ms": 642796,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 206982,
+              "start_ms": 812766,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 189289,
+              "start_ms": 1019748,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 220636,
+              "start_ms": 1209037,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 274970,
+              "start_ms": 1429673,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 154319,
+              "start_ms": 1704643,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 245295,
+              "start_ms": 1858962,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 212926,
+              "start_ms": 2104257,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 196765,
+              "start_ms": 2317183,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 170480,
+              "start_ms": 2513948,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 152973,
+              "start_ms": 2684428,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 157431,
+              "start_ms": 2837401,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 238979,
+              "start_ms": 2994832,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 247478,
+              "start_ms": 3233811,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 264057,
+              "start_ms": 3481289,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 52477,
+              "start_ms": 3745346,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 70960,
+              "start_ms": 3797823,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 161285,
+              "start_ms": 3868783,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 228623,
+              "start_ms": 4030068,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 151951,
+              "start_ms": 4258691,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 171270,
+              "start_ms": 4410642,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 223654,
+              "start_ms": 4581912,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 132957,
+              "start_ms": 4805566,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 211951,
+              "start_ms": 4938523,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 213948,
+              "start_ms": 5150474,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 172942,
+              "start_ms": 5364422,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 203964,
+              "start_ms": 5537364,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 225976,
+              "start_ms": 5741328,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 228948,
+              "start_ms": 5967304,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 189939,
+              "start_ms": 6196252,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 155945,
+              "start_ms": 6386191,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 161610,
+              "start_ms": 6542136,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 55727,
+              "start_ms": 6703746,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 36408,
+              "start_ms": 6759473,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 207818,
+              "start_ms": 6795881,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 236936,
+              "start_ms": 7003699,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 222958,
+              "start_ms": 7240635,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 192632,
+              "start_ms": 7463593,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 185295,
+              "start_ms": 7656225,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 153623,
+              "start_ms": 7841520,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 159985,
+              "start_ms": 7995143,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 199412,
+              "start_ms": 8155128,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 161843,
+              "start_ms": 8354540,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 190635,
+              "start_ms": 8516383,
+              "title": "Chapter 48"
+            },
+            {
+              "length_ms": 183948,
+              "start_ms": 8707018,
+              "title": "Chapter 49"
+            },
+            {
+              "length_ms": 159288,
+              "start_ms": 8890966,
+              "title": "Chapter 50"
+            },
+            {
+              "length_ms": 174985,
+              "start_ms": 9050254,
+              "title": "Chapter 51"
+            },
+            {
+              "length_ms": 119629,
+              "start_ms": 9225239,
+              "title": "Chapter 52"
+            },
+            {
+              "length_ms": 112546,
+              "start_ms": 9344868,
+              "title": "Chapter 53"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91rb-Nf6IhL.jpg",
+          "id": "frank-muller-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frank-muller"
+          ],
+          "publisher": "Tyndale House Publishers, Inc.",
+          "release_date": "2015-02-13",
+          "runtime_min": 157,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00T576CLK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00T57D95W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "soul-harvest"
+        },
         "jack-sondericker-2010": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -8653,6 +8961,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B004DR3MW4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00T576CLK",
           "type": "libex-import"
         }
       ],
@@ -9713,337 +10026,6 @@
         }
       ],
       "title": "Soul Harvest"
-    },
-    "soul-harvest-the-world-takes-sides": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye",
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "literary-fiction",
-        "post-apocalyptic",
-        "religious-fiction",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "soul-harvest-the-world-takes-sides",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "frank-muller-2015": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00T576CLK",
-              "region": "us"
-            },
-            {
-              "asin": "B00T57D95W",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 61927,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 184273,
-              "start_ms": 61927,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 177307,
-              "start_ms": 246200,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 219289,
-              "start_ms": 423507,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 169970,
-              "start_ms": 642796,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 206982,
-              "start_ms": 812766,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 189289,
-              "start_ms": 1019748,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 220636,
-              "start_ms": 1209037,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 274970,
-              "start_ms": 1429673,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 154319,
-              "start_ms": 1704643,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 245295,
-              "start_ms": 1858962,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 212926,
-              "start_ms": 2104257,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 196765,
-              "start_ms": 2317183,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 170480,
-              "start_ms": 2513948,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 152973,
-              "start_ms": 2684428,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 157431,
-              "start_ms": 2837401,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 238979,
-              "start_ms": 2994832,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 247478,
-              "start_ms": 3233811,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 264057,
-              "start_ms": 3481289,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 52477,
-              "start_ms": 3745346,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 70960,
-              "start_ms": 3797823,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 161285,
-              "start_ms": 3868783,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 228623,
-              "start_ms": 4030068,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 151951,
-              "start_ms": 4258691,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 171270,
-              "start_ms": 4410642,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 223654,
-              "start_ms": 4581912,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 132957,
-              "start_ms": 4805566,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 211951,
-              "start_ms": 4938523,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 213948,
-              "start_ms": 5150474,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 172942,
-              "start_ms": 5364422,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 203964,
-              "start_ms": 5537364,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 225976,
-              "start_ms": 5741328,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 228948,
-              "start_ms": 5967304,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 189939,
-              "start_ms": 6196252,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 155945,
-              "start_ms": 6386191,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 161610,
-              "start_ms": 6542136,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 55727,
-              "start_ms": 6703746,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 36408,
-              "start_ms": 6759473,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 207818,
-              "start_ms": 6795881,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 236936,
-              "start_ms": 7003699,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 222958,
-              "start_ms": 7240635,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 192632,
-              "start_ms": 7463593,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 185295,
-              "start_ms": 7656225,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 153623,
-              "start_ms": 7841520,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 159985,
-              "start_ms": 7995143,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 199412,
-              "start_ms": 8155128,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 161843,
-              "start_ms": 8354540,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 190635,
-              "start_ms": 8516383,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 183948,
-              "start_ms": 8707018,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 159288,
-              "start_ms": 8890966,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 174985,
-              "start_ms": 9050254,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 119629,
-              "start_ms": 9225239,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 112546,
-              "start_ms": 9344868,
-              "title": "Chapter 53"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91rb-Nf6IhL.jpg",
-          "id": "frank-muller-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "frank-muller"
-          ],
-          "publisher": "Tyndale House Publishers, Inc.",
-          "release_date": "2015-02-13",
-          "runtime_min": 157,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00T576CLK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00T57D95W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "soul-harvest-the-world-takes-sides"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00T576CLK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Soul Harvest: The World Takes Sides"
     },
     "soul-harvest-tim-lahaye": {
       "added_at": "2026-08-02",

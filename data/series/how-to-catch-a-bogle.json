@@ -912,28 +912,7 @@
           "imported_at": "2026-08-02",
           "ref": "0008501084",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "howls-moving-castle"
         },
-        {
-          "position": "2",
-          "work": "castle-in-the-air"
-        },
-        {
-          "position": "3",
-          "work": "house-of-many-ways"
-        }
-      ]
-    },
-    "howls-moving-castle": {
-      "id": "howls-moving-castle",
-      "license": "CC0-1.0",
-      "name": "Howl's Moving Castle",
-      "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/series/80111-howl-s-moving-castle",
@@ -962,28 +941,6 @@
       "id": "hubbards-point",
       "license": "CC0-1.0",
       "name": "Hubbard's Point",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00IEGPKSY",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "safe-harbor-luanne-rice"
-        },
-        {
-          "position": "1",
-          "work": "firefly-beach"
-        }
-      ]
-    },
-    "hubbards-point-black-hall-series": {
-      "id": "hubbards-point-black-hall-series",
-      "license": "CC0-1.0",
-      "name": "Hubbard's Point/Black Hall Series",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -2128,6 +2085,11 @@
           "imported_at": "2026-07-17",
           "ref": "1338589040",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/series/73758-the-hunger-games",
+          "type": "community"
         }
       ],
       "works": [
@@ -2151,7 +2113,10 @@
           "position": "0.5",
           "work": "sunrise-on-the-reaping"
         }
-      ]
+      ],
+      "xref": {
+        "goodreads": "73758"
+      }
     },
     "hunger-games-2": {
       "id": "hunger-games-2",
@@ -2362,28 +2327,6 @@
         {
           "position": "5",
           "work": "its-about-time"
-        }
-      ]
-    },
-    "hunt-the-stars": {
-      "id": "hunt-the-stars",
-      "license": "CC0-1.0",
-      "name": "Hunt the Stars",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0063051052",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "hunt-the-stars-jessie-mihalik"
-        },
-        {
-          "position": "2",
-          "work": "eclipse-the-moon"
         }
       ]
     },
@@ -4038,6 +3981,11 @@
           "imported_at": "2026-08-02",
           "ref": "B002V5BLIW",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B076BRG27W",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -4056,28 +4004,6 @@
         {
           "position": "4",
           "work": "the-rise-of-endymion"
-        }
-      ]
-    },
-    "hyperion-2": {
-      "id": "hyperion-2",
-      "license": "CC0-1.0",
-      "name": "Hypérion",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B076BRG27W",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "hyperion"
-        },
-        {
-          "position": "3",
-          "work": "endymion"
         }
       ]
     },

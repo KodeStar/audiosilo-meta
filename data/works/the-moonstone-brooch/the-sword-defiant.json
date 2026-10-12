@@ -5680,79 +5680,6 @@
       ],
       "title": "The Sword of Shannara"
     },
-    "the-sword-of-shannara-original-shannara-trilogy-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-brooks"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-sword-of-shannara-original-shannara-trilogy-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "theodore-bikel-1999": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V1LIPW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2897733,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2878763,
-              "start_ms": 2897733,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2890930,
-              "start_ms": 5776496,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2849993,
-              "start_ms": 8667426,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41NTkS0PIJL.jpg",
-          "id": "theodore-bikel-1999",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "theodore-bikel"
-          ],
-          "publisher": "Phoenix Books",
-          "release_date": "1999-12-16",
-          "runtime_min": 191,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V1LIPW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-sword-of-shannara-original-shannara-trilogy-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V1LIPW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Sword of Shannara: Original Shannara Trilogy, Book 1"
-    },
     "the-sword-of-shannara-the-shannara-series-book-1": {
       "added_at": "2026-08-02",
       "authors": [
@@ -5986,12 +5913,67 @@
             }
           ],
           "work": "the-sword-of-shannara-the-shannara-series-book-1"
+        },
+        "theodore-bikel-1999": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1LIPW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2897733,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2878763,
+              "start_ms": 2897733,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2890930,
+              "start_ms": 5776496,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2849993,
+              "start_ms": 8667426,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41NTkS0PIJL.jpg",
+          "id": "theodore-bikel-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "theodore-bikel"
+          ],
+          "publisher": "Phoenix Books",
+          "release_date": "1999-12-16",
+          "runtime_min": 191,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1LIPW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-sword-of-shannara-the-shannara-series-book-1"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002UZKK2G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1LIPW",
           "type": "libex-import"
         }
       ],

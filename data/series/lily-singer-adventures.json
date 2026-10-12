@@ -565,6 +565,11 @@
           "imported_at": "2026-09-26",
           "ref": "B0074R1HPE",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA8GGC",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -5061,28 +5066,6 @@
         }
       ]
     },
-    "loki-series": {
-      "id": "loki-series",
-      "license": "CC0-1.0",
-      "name": "Loki Series",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "0593104021",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "loki-where-mischief-lies"
-        },
-        {
-          "position": "2",
-          "work": "gamora-and-nebula"
-        }
-      ]
-    },
     "lola-pink-mysteries": {
       "id": "lola-pink-mysteries",
       "license": "CC0-1.0",
@@ -8114,32 +8097,6 @@
         }
       ]
     },
-    "lords-of-carnage-ironwood-mc": {
-      "id": "lords-of-carnage-ironwood-mc",
-      "license": "CC0-1.0",
-      "name": "Lords of Carnage Ironwood MC",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1705241808",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "iron-will-daphne-loveling"
-        },
-        {
-          "position": "3",
-          "work": "iron-fist"
-        },
-        {
-          "position": "4",
-          "work": "iron-bond"
-        }
-      ]
-    },
     "lords-of-carnage-mc": {
       "id": "lords-of-carnage-mc",
       "license": "CC0-1.0",
@@ -9215,51 +9172,6 @@
         }
       ]
     },
-    "lorien-legacies": {
-      "id": "lorien-legacies",
-      "license": "CC0-1.0",
-      "name": "Lorien Legacies",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/series/48329-lorien-legacies",
-          "type": "community"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "i-am-number-four"
-        },
-        {
-          "position": "2",
-          "work": "the-power-of-six"
-        },
-        {
-          "position": "3",
-          "work": "the-rise-of-nine"
-        },
-        {
-          "position": "4",
-          "work": "the-fall-of-five"
-        },
-        {
-          "position": "5",
-          "work": "the-revenge-of-seven"
-        },
-        {
-          "position": "6",
-          "work": "the-fate-of-ten"
-        },
-        {
-          "position": "7",
-          "work": "united-as-one"
-        }
-      ],
-      "xref": {
-        "goodreads": "48329"
-      }
-    },
     "lorien-legacies-reborn": {
       "id": "lorien-legacies-reborn",
       "license": "CC0-1.0",
@@ -9298,7 +9210,7 @@
         }
       ],
       "translation_of": [
-        "lorien-legacies"
+        "the-lorien-legacies"
       ],
       "works": [
         {
@@ -10101,40 +10013,6 @@
         }
       ]
     },
-    "los-juegos-del-hambre-the-hunger-games": {
-      "id": "los-juegos-del-hambre-the-hunger-games",
-      "license": "CC0-1.0",
-      "name": "Los Juegos del Hambre (The Hunger Games)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "8427222203",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "los-juegos-del-hambre-the-hunger-games"
-        },
-        {
-          "position": "2",
-          "work": "en-llamas-catching-fire"
-        },
-        {
-          "position": "3",
-          "work": "sinsajo-mockingjay"
-        },
-        {
-          "position": "4",
-          "work": "balada-de-pajaros-cantores-y-serpientes"
-        },
-        {
-          "position": "5",
-          "work": "los-juegos-del-hambre-5-amanecer-en-la-cosecha"
-        }
-      ]
-    },
     "los-libros-del-puerto-escondido": {
       "id": "los-libros-del-puerto-escondido",
       "license": "CC0-1.0",
@@ -10492,40 +10370,7 @@
           "imported_at": "2026-07-29",
           "ref": "B07YYQB6D8",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "la-reina-estrangulada"
         },
-        {
-          "position": "3",
-          "work": "los-venenos-de-la-corona"
-        },
-        {
-          "position": "1",
-          "work": "el-rey-de-hierro"
-        },
-        {
-          "position": "4",
-          "work": "la-ley-de-los-varones"
-        },
-        {
-          "position": "5",
-          "work": "la-loba-de-francia"
-        },
-        {
-          "position": "6",
-          "work": "la-flor-de-lis-y-el-leon"
-        }
-      ]
-    },
-    "los-reyes-malditos-the-accursed-kings": {
-      "id": "los-reyes-malditos-the-accursed-kings",
-      "license": "CC0-1.0",
-      "name": "Los Reyes Malditos [The Accursed Kings]",
-      "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "8413141400",
@@ -14737,28 +14582,6 @@
         }
       ]
     },
-    "love-in-bloom-the-bradens": {
-      "id": "love-in-bloom-the-bradens",
-      "license": "CC0-1.0",
-      "name": "Love in Bloom: The Bradens",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00OSN490C",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "lovers-at-heart"
-        },
-        {
-          "position": "6",
-          "work": "hearts-at-play"
-        }
-      ]
-    },
     "love-in-bloom-the-remingtons": {
       "id": "love-in-bloom-the-remingtons",
       "license": "CC0-1.0",
@@ -18189,52 +18012,6 @@
         {
           "position": "1",
           "work": "la-suerte-de-los-idiotas-the-luck-of-idiots"
-        }
-      ]
-    },
-    "lucas-davenport-abridged": {
-      "id": "lucas-davenport-abridged",
-      "license": "CC0-1.0",
-      "name": "Lucas Davenport (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UZN5KA",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "12",
-          "work": "chosen-prey"
-        },
-        {
-          "position": "27",
-          "work": "golden-prey"
-        },
-        {
-          "position": "13",
-          "work": "mortal-prey"
-        },
-        {
-          "position": "16",
-          "work": "broken-prey"
-        },
-        {
-          "position": "17",
-          "work": "invisible-prey"
-        },
-        {
-          "position": "18",
-          "work": "phantom-prey"
-        },
-        {
-          "position": "19",
-          "work": "wicked-prey"
-        },
-        {
-          "position": "20",
-          "work": "storm-prey"
         }
       ]
     },

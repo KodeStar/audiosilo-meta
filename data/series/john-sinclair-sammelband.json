@@ -1728,36 +1728,6 @@
         }
       ]
     },
-    "jons-mysteries": {
-      "id": "jons-mysteries",
-      "license": "CC0-1.0",
-      "name": "Jon's Mysteries",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0866831GN",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "jons-downright-ridiculous-shooting-case"
-        },
-        {
-          "position": "4",
-          "work": "jons-boom-shaka-laka-problem"
-        },
-        {
-          "position": "2",
-          "work": "jons-crazy-head-boppin-mystery"
-        },
-        {
-          "position": "3",
-          "work": "jons-spooky-corpse-conundrum"
-        }
-      ]
-    },
     "jons-mysteries-case": {
       "id": "jons-mysteries-case",
       "license": "CC0-1.0",
@@ -7361,6 +7331,16 @@
           "imported_at": "2026-07-25",
           "ref": "B0BGYKPR5L",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/series/49971-the-kane-chronicles",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B07B1S6DRX",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -7380,7 +7360,10 @@
           "position": "3",
           "work": "the-serpents-shadow"
         }
-      ]
+      ],
+      "xref": {
+        "goodreads": "49971"
+      }
     },
     "kane-y-abel": {
       "id": "kane-y-abel",
@@ -9549,32 +9532,6 @@
         }
       ]
     },
-    "kathlyn-trent-marcus-burton-romance-adventure": {
-      "id": "kathlyn-trent-marcus-burton-romance-adventure",
-      "license": "CC0-1.0",
-      "name": "Kathlyn Trent / Marcus Burton Romance Adventure",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00L91UA04",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "valley-of-the-shadow-kathryn-le-veque"
-        },
-        {
-          "position": "2",
-          "work": "the-eden-factor"
-        },
-        {
-          "position": "3",
-          "work": "canyon-of-the-sphinx"
-        }
-      ]
-    },
     "kathryn-dance-gekurzt": {
       "id": "kathryn-dance-gekurzt",
       "license": "CC0-1.0",
@@ -10830,32 +10787,6 @@
         {
           "position": "2",
           "work": "kiss-river"
-        }
-      ]
-    },
-    "keeper-universe": {
-      "id": "keeper-universe",
-      "license": "CC0-1.0",
-      "name": "Keeper Universe",
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "1774246880",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "dragons-reach"
-        },
-        {
-          "position": "2",
-          "work": "ravens-ruin"
-        },
-        {
-          "position": "3",
-          "work": "phoenix-rising"
         }
       ]
     },

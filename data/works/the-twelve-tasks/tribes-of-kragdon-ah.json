@@ -1229,7 +1229,8 @@
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
         "tim-lahaye",
-        "jerry-jenkins"
+        "jerry-jenkins",
+        "jerry-b-jenkins"
       ],
       "genres": [
         "religious-fiction",
@@ -1239,6 +1240,130 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "frank-muller-2015": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00T8JY0YG",
+              "region": "us"
+            },
+            {
+              "asin": "B00T8SYQAU",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 43885,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 233824,
+              "start_ms": 43885,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 756064,
+              "start_ms": 277709,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 567983,
+              "start_ms": 1033773,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1099325,
+              "start_ms": 1601756,
+              "title": "Chapters 3-4"
+            },
+            {
+              "length_ms": 848759,
+              "start_ms": 2701081,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 811816,
+              "start_ms": 3549840,
+              "title": "Chapters 6-7"
+            },
+            {
+              "length_ms": 579477,
+              "start_ms": 4361656,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 405559,
+              "start_ms": 4941133,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 480885,
+              "start_ms": 5346692,
+              "title": "Chapters 10-12"
+            },
+            {
+              "length_ms": 284328,
+              "start_ms": 5827577,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 656010,
+              "start_ms": 6111905,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 820616,
+              "start_ms": 6767915,
+              "title": "Chapters 15-16"
+            },
+            {
+              "length_ms": 818967,
+              "start_ms": 7588531,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 696737,
+              "start_ms": 8407498,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1301362,
+              "start_ms": 9104235,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 252585,
+              "start_ms": 10405597,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81thsgQxSoL.jpg",
+          "id": "frank-muller-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frank-muller"
+          ],
+          "publisher": "Tyndale House Publishers, Inc.",
+          "release_date": "2015-02-06",
+          "runtime_min": 177,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00T8JY0YG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00T8SYQAU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tribulation-force"
+        },
         "jack-sondericker-2010": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -1399,157 +1524,14 @@
           "imported_at": "2026-08-02",
           "ref": "B004E8JVJK",
           "type": "libex-import"
-        }
-      ],
-      "title": "Tribulation Force"
-    },
-    "tribulation-force-the-continuing-drama-of-those-left-behind": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye",
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "religious-fiction",
-        "science-fiction"
-      ],
-      "id": "tribulation-force-the-continuing-drama-of-those-left-behind",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "frank-muller-2015": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00T8JY0YG",
-              "region": "us"
-            },
-            {
-              "asin": "B00T8SYQAU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 43885,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 233824,
-              "start_ms": 43885,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 756064,
-              "start_ms": 277709,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 567983,
-              "start_ms": 1033773,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1099325,
-              "start_ms": 1601756,
-              "title": "Chapters 3-4"
-            },
-            {
-              "length_ms": 848759,
-              "start_ms": 2701081,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 811816,
-              "start_ms": 3549840,
-              "title": "Chapters 6-7"
-            },
-            {
-              "length_ms": 579477,
-              "start_ms": 4361656,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 405559,
-              "start_ms": 4941133,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 480885,
-              "start_ms": 5346692,
-              "title": "Chapters 10-12"
-            },
-            {
-              "length_ms": 284328,
-              "start_ms": 5827577,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 656010,
-              "start_ms": 6111905,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 820616,
-              "start_ms": 6767915,
-              "title": "Chapters 15-16"
-            },
-            {
-              "length_ms": 818967,
-              "start_ms": 7588531,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 696737,
-              "start_ms": 8407498,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1301362,
-              "start_ms": 9104235,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 252585,
-              "start_ms": 10405597,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81thsgQxSoL.jpg",
-          "id": "frank-muller-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "frank-muller"
-          ],
-          "publisher": "Tyndale House Publishers, Inc.",
-          "release_date": "2015-02-06",
-          "runtime_min": 177,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00T8JY0YG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00T8SYQAU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tribulation-force-the-continuing-drama-of-those-left-behind"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00T8JY0YG",
           "type": "libex-import"
         }
       ],
-      "title": "Tribulation Force: The Continuing Drama of Those Left Behind"
+      "title": "Tribulation Force"
     },
     "tribulation-force-tim-lahaye": {
       "added_at": "2026-08-02",

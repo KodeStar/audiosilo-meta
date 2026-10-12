@@ -1937,32 +1937,6 @@
         }
       ]
     },
-    "the-tarzan-series-german": {
-      "id": "the-tarzan-series-german",
-      "license": "CC0-1.0",
-      "name": "The Tarzan Series [German]",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B06WCZLQ4Q",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "tarzan-of-the-apes"
-        },
-        {
-          "position": "3",
-          "work": "the-beasts-of-tarzan"
-        },
-        {
-          "position": "2",
-          "work": "the-return-of-tarzan"
-        }
-      ]
-    },
     "the-tatterdemon-trilogy": {
       "id": "the-tatterdemon-trilogy",
       "license": "CC0-1.0",
@@ -4334,28 +4308,6 @@
         }
       ]
     },
-    "the-thursday-murder-club": {
-      "id": "the-thursday-murder-club",
-      "license": "CC0-1.0",
-      "name": "The Thursday Murder Club",
-      "sources": [
-        {
-          "imported_at": "2026-10-08",
-          "ref": "B0BDFY43G6",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "4",
-          "work": "the-last-devil-to-die"
-        },
-        {
-          "position": "3",
-          "work": "the-bullet-that-missed"
-        }
-      ]
-    },
     "the-thyssian-archipelago": {
       "id": "the-thyssian-archipelago",
       "license": "CC0-1.0",
@@ -4585,6 +4537,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/series/47592-the-tiger-saga",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004YX3P38",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -10986,6 +10943,11 @@
           "imported_at": "2026-08-02",
           "ref": "B002V1CKTK",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/series/42783-underland-chronicles",
+          "type": "community"
         }
       ],
       "works": [
@@ -11009,7 +10971,10 @@
           "position": "1",
           "work": "gregor-the-overlander"
         }
-      ]
+      ],
+      "xref": {
+        "goodreads": "42783"
+      }
     },
     "the-underland-chronicles-spanish-edition": {
       "id": "the-underland-chronicles-spanish-edition",

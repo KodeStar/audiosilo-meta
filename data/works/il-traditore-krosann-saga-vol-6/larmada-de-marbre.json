@@ -8400,6 +8400,7 @@
         "action-adventure",
         "childrens",
         "classics",
+        "literary-fiction",
         "parenting-relationships"
       ],
       "id": "las-aventuras-de-huckleberry-finn",
@@ -10047,6 +10048,60 @@
             }
           ],
           "work": "las-aventuras-de-huckleberry-finn"
+        },
+        "yadira-sanchez-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V1NJ68",
+              "region": "us"
+            },
+            {
+              "asin": "B01CTFZFI0",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2776642,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 2813144,
+              "start_ms": 2776642,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 2794104,
+              "start_ms": 5589786,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9116gyNQwCL.jpg",
+          "id": "yadira-sanchez-2005",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "yadira-sanchez"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2005-10-05",
+          "runtime_min": 139,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V1NJ68",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01CTFZFI0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "las-aventuras-de-huckleberry-finn"
         }
       },
       "sources": [
@@ -10063,6 +10118,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B09M7NVSPW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1NJ68",
           "type": "libex-import"
         }
       ],
@@ -11518,7 +11578,9 @@
       "genres": [
         "action-adventure",
         "childrens",
-        "classics"
+        "classics",
+        "romance",
+        "young-adult"
       ],
       "id": "las-aventuras-de-tom-sawyer",
       "language": "es",
@@ -13563,6 +13625,69 @@
             }
           ],
           "work": "las-aventuras-de-tom-sawyer"
+        },
+        "yadira-sanchez-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0Q1F0",
+              "region": "us"
+            },
+            {
+              "asin": "B07YXSHC3N",
+              "region": "es"
+            },
+            {
+              "asin": "B01CTGSQ58",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2523127,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 3629976,
+              "start_ms": 2523127,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 3854791,
+              "start_ms": 6153103,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51s6FvHxjHL.jpg",
+          "id": "yadira-sanchez-2005",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "yadira-sanchez"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2005-10-07",
+          "runtime_min": 166,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0Q1F0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07YXSHC3N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01CTGSQ58",
+              "type": "libex-import"
+            }
+          ],
+          "work": "las-aventuras-de-tom-sawyer"
         }
       },
       "sources": [
@@ -13579,6 +13704,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0CYQLTGSC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0Q1F0",
           "type": "libex-import"
         }
       ],

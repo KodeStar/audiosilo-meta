@@ -1451,79 +1451,6 @@
       ],
       "title": "The Elfstones of Shannara"
     },
-    "the-elfstones-of-shannara-original-shannara-trilogy-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-brooks"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-elfstones-of-shannara-original-shannara-trilogy-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "theodore-bikel-1999": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002UUMO0C",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2783166,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2784165,
-              "start_ms": 2783166,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2871286,
-              "start_ms": 5567331,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2872702,
-              "start_ms": 8438617,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51oJgLY9EIL.jpg",
-          "id": "theodore-bikel-1999",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "theodore-bikel"
-          ],
-          "publisher": "Phoenix Books",
-          "release_date": "1999-12-16",
-          "runtime_min": 188,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002UUMO0C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-elfstones-of-shannara-original-shannara-trilogy-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UUMO0C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Elfstones of Shannara: Original Shannara Trilogy, Book 2"
-    },
     "the-elfstones-of-shannara-the-shannara-series-book-2": {
       "added_at": "2026-08-02",
       "authors": [
@@ -1845,12 +1772,67 @@
             }
           ],
           "work": "the-elfstones-of-shannara-the-shannara-series-book-2"
+        },
+        "theodore-bikel-1999": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UUMO0C",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2783166,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2784165,
+              "start_ms": 2783166,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2871286,
+              "start_ms": 5567331,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2872702,
+              "start_ms": 8438617,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51oJgLY9EIL.jpg",
+          "id": "theodore-bikel-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "theodore-bikel"
+          ],
+          "publisher": "Phoenix Books",
+          "release_date": "1999-12-16",
+          "runtime_min": 188,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UUMO0C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-elfstones-of-shannara-the-shannara-series-book-2"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B002UZLC9G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUMO0C",
           "type": "libex-import"
         }
       ],

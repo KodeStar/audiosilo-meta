@@ -2196,6 +2196,11 @@
           "imported_at": "2026-08-02",
           "ref": "0593104021",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "0593104021",
+          "type": "audiosilo-books-import"
         }
       ],
       "works": [
@@ -6512,11 +6517,16 @@
         }
       ]
     },
-    "matt-jensen-dramatized-adaptation": {
-      "id": "matt-jensen-dramatized-adaptation",
+    "matt-jensen-the-last-mountain-man": {
+      "id": "matt-jensen-the-last-mountain-man",
       "license": "CC0-1.0",
-      "name": "Matt Jensen [Dramatized Adaptation]",
+      "name": "Matt Jensen, The Last Mountain Man",
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0KJHQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648803687",
@@ -6524,6 +6534,18 @@
         }
       ],
       "works": [
+        {
+          "position": "1",
+          "work": "the-last-mountain-man"
+        },
+        {
+          "position": "3",
+          "work": "purgatory-william-johnstone"
+        },
+        {
+          "position": "11",
+          "work": "die-with-the-outlaws"
+        },
         {
           "position": "8",
           "work": "the-eyes-of-texas"
@@ -6549,54 +6571,12 @@
           "work": "savage-territory-dramatized-adaptation"
         },
         {
-          "position": "3",
-          "work": "purgatory-dramatized-adaptation"
-        },
-        {
           "position": "2",
           "work": "deadly-trail-dramatized-adaptation"
         },
         {
           "position": "10",
           "work": "the-great-train-massacre-dramatized-adaptation"
-        },
-        {
-          "position": "11",
-          "work": "die-with-the-outlaws"
-        },
-        {
-          "position": "1",
-          "work": "the-last-mountain-man-dramatized-adaptation-matt-jensen-the-last-mountain-man-book-1"
-        }
-      ]
-    },
-    "matt-jensen-the-last-mountain-man": {
-      "id": "matt-jensen-the-last-mountain-man",
-      "license": "CC0-1.0",
-      "name": "Matt Jensen, The Last Mountain Man",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V0KJHQ",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "the-last-mountain-man"
-        },
-        {
-          "position": "3",
-          "work": "purgatory-william-johnstone"
-        },
-        {
-          "position": "11",
-          "work": "die-with-the-outlaws"
-        },
-        {
-          "position": "8",
-          "work": "the-eyes-of-texas"
         }
       ]
     },
@@ -12857,36 +12837,6 @@
         {
           "position": "7",
           "work": "long-shadows-david-baldacci-2"
-        }
-      ]
-    },
-    "memory-man-series-abridged": {
-      "id": "memory-man-series-abridged",
-      "license": "CC0-1.0",
-      "name": "Memory Man Series (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00U9RU0LS",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "memory-man"
-        },
-        {
-          "position": "2",
-          "work": "the-last-mile-david-baldacci"
-        },
-        {
-          "position": "6",
-          "work": "walk-the-wire"
-        },
-        {
-          "position": "4",
-          "work": "the-fallen-david-baldacci"
         }
       ]
     },
