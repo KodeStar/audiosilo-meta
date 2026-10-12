@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/titlerule"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -86,7 +87,7 @@ var correctableFields = map[model.Kind]map[string]correctOp{
 		"description": {kind: kindString}, "kind": {kind: kindString},
 	},
 	model.KindSeries: {
-		"name":           {kind: kindString},
+		"name":           {kind: kindString, resolve: (*composer).seriesNameFreeOfRecordingQualifier},
 		"translation_of": {add: (*composer).correctTranslationOf},
 		"ordering":       {kind: kindString, resolve: (*composer).checkOrdering},
 		"ordering_of":    {kind: kindString, resolve: (*composer).resolveOrderingOf},
@@ -562,6 +563,29 @@ func (c *composer) renameableInPlace(addr entryAddr, _ map[string]any, value any
 		return value, true
 	}
 	c.fail(StatusNeedsHuman, "renaming %s to %q changes its id to %q - a person's id IS the slug of their name, so the record has to move and every work crediting it has to be rewritten; a maintainer will do it", addr.label(c), name, want)
+	return nil, false
+}
+
+// seriesNameFreeOfRecordingQualifier judges a series `name` correction: a name ending
+// in a RECORDING qualifier (titlerule.StripSeriesRecordingQualifiers - a narrator
+// credit, "(abridged)", "(Full-Cast Editions)", "[Dramatized Adaptation]") is refused
+// as invalid naming the base the strip leaves, because narration, abridgement and
+// production are facts about a recording: renaming a series to one would recreate
+// the recording-variant series every writer now cleans a claim of, and the
+// series-recording-qualifier advisory would name it on the next check. The name the
+// record already carries passes (the hook rule: the no-op verdict stays the no-op
+// test's), so a correction restating it is a duplicate rather than a refusal.
+func (c *composer) seriesNameFreeOfRecordingQualifier(addr entryAddr, record map[string]any, value any) (any, bool) {
+	name, _ := value.(string)
+	if current, _ := record["name"].(string); name == current {
+		return value, true
+	}
+	base, qualified := titlerule.StripSeriesRecordingQualifiers(name)
+	if !qualified {
+		return value, true
+	}
+	c.fail(StatusInvalid, "series name %q for %s states a recording qualifier: a narrator, an abridgement, a full-cast production or a dramatization is a property of the recording, not of the series - correct the name to %q instead",
+		name, addr.label(c), base)
 	return nil, false
 }
 

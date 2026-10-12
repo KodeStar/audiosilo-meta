@@ -154,9 +154,20 @@ every book a server matched. One rule, `titlerule.StripSeriesRecordingQualifiers
 the importer cleans every claim through it (`cleanSeriesName`) and indexes a
 catalogued variant under its base, an abridgement the cleaned qualifier stated
 (`titlerule.SeriesAbridgement`) lands on the recording when the source stated none, the intake form reads its series name through it
-(`formSeriesName`), and `metacheck` counts two ADVISORY classes -
+(`formSeriesName`), the correct-data form refuses renaming a series to a qualified
+name as `invalid` naming the base (`seriesNameFreeOfRecordingQualifier`), and `metacheck` counts two ADVISORY classes -
 `series-recording-qualifier` (189 on 2026-10-11) and `duplicate-series` (197) - that
 never fail the check (pkg/check's `seriesadvisories.go`).
+A claim's RAW spelling (`seriesRef.raw`) is still walked, AFTER everything the
+cleaned name reaches (`tierRaw`, `rawCandidates` in seriesresolve.go, anchoring only
+where the cleaned chain is empty; libex-select's pre-filter and the form's `Resolve`
+ask it too), because the qualifier index cannot key a variant whose derived language
+TIES and the cleaned chain may be empty: without it a claim "Foo (abridged)" founded
+`foo` beside the held `foo-abridged`. A qualified claim's POSITION is the variant
+listing's numbering, so it contradicts no work (`seriesClaim.compatible`): the
+dramatized Stormlight numbers Edgedancer 2.8 where the series says 2.5, and the row
+lands as a recording of `edgedancer`, the series keeping its own entry and gaining no
+second membership (refusing the merge there minted a duplicate work).
 
 **Before a change is done, all of the above must pass.** CI
 (`.github/workflows/check.yml`) gates THE WHOLE of it on every PR and push to

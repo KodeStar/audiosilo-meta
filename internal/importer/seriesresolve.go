@@ -64,7 +64,10 @@ import (
 // nameClaim is one row's claim to a named series, as the resolution reads it.
 type nameClaim struct {
 	name string
-	row  *SeriesRow
+	// raw is the name as the source spelled it before its recording qualifiers came
+	// off (seriesRef.raw), "" when cleaning changed nothing.
+	raw string
+	row *SeriesRow
 	// order is the claim's canonical tie-break key, built from the row's own
 	// facts (never its input position), so every ordering of one batch resolves
 	// alike.
@@ -189,7 +192,7 @@ func claimsOf(refs []seriesRef, row *SeriesRow, id string, places bool, work str
 	}
 	out := make([]nameClaim, len(refs))
 	for i, r := range refs {
-		out[i] = nameClaim{name: r.name, row: row, order: order, work: work, evidence: places && r.seqOK}
+		out[i] = nameClaim{name: r.name, raw: r.raw, row: row, order: order, work: work, evidence: places && r.seqOK}
 	}
 	return out
 }
@@ -242,7 +245,8 @@ func resolveReaches(cat seriesCatalogue, claims []nameClaim, reaches []*groupRea
 // groupReach is what one name group REACHES, computed once before anything is
 // resolved: its claims (in canonical order) and every catalogued series a claim of
 // it can land in - the chain's, then what the qualifier index reaches for the
-// group's name and row languages (seriesqualified.go) - by tier. The candidates
+// group's name and row languages (seriesqualified.go), then the chains of its claims'
+// raw spellings (rawCandidates) - by tier. The candidates
 // carry no evidence: a resolution attaches it (resolveSeriesUnit), so the
 // partition into units asks the catalogue for names and nothing else.
 type groupReach struct {
@@ -261,7 +265,44 @@ func reachOf(cat seriesCatalogue, claims []nameClaim, idx []int) *groupReach {
 	r.cands = seriesCandidates(cat, r.base, r.name)
 	r.chainEmpty = len(r.cands) == 0
 	r.cands = append(r.cands, qualifiedCandidates(cat, r.name, r.base, claims, idx, r.cands)...)
+	r.cands = append(r.cands, rawCandidates(cat, claims, idx, r.cands)...)
 	return r
+}
+
+// rawCandidates is what the group's claims reach by the names they were spelled with
+// BEFORE their recording qualifiers came off (nameClaim.raw): each distinct raw
+// spelling's own chain (seriesCandidates), minus the candidates the group already
+// holds (have), as tierRaw - ranked after everything the cleaned name reaches. It is
+// how a catalogued recording-variant series the qualifier index cannot hold is still
+// found: the index keys a series by its derived language, so a variant whose members
+// TIE ("Foo (abridged)", en and de alike) is in no facet, and the cleaned "Foo" walks
+// an empty `foo` chain - without this the claim founded a duplicate `foo` beside the
+// `foo-abridged` it spells. Reached by the whole group, like every other candidate of
+// it (a cluster is judged by its lead's reach); the spellings are taken in the
+// group's canonical claim order, so the result does not depend on row order.
+func rawCandidates(cat seriesCatalogue, claims []nameClaim, idx []int, have []seriesCandidate) []seriesCandidate {
+	var out []seriesCandidate
+	var walked []string // raw group keys already walked
+	for _, ci := range idx {
+		raw := claims[ci].raw
+		if raw == "" {
+			continue
+		}
+		key := titlerule.SeriesNameGroupKey(raw)
+		if key == "" || slices.Contains(walked, key) {
+			continue
+		}
+		walked = append(walked, key)
+		for _, c := range seriesCandidates(cat, Slugify(raw), raw) {
+			held := func(o seriesCandidate) bool { return o.slug == c.slug }
+			if slices.ContainsFunc(have, held) || slices.ContainsFunc(out, held) {
+				continue
+			}
+			c.tier = tierRaw
+			out = append(out, c)
+		}
+	}
+	return out
 }
 
 // seriesUnits partitions the name groups (reaches, in key order) into RESOLUTION
@@ -334,6 +375,9 @@ const (
 	tierDecorated
 	// tierLanguage: one it reached under a row's language (the facet).
 	tierLanguage
+	// tierRaw: a catalogued series on the chain of a claim's RAW spelling, before
+	// its recording qualifiers came off (rawCandidates).
+	tierRaw
 	// tierFounded: a series this batch founds.
 	tierFounded
 )
@@ -361,10 +405,10 @@ type seriesCandidate struct {
 	foundedLang *string
 }
 
-// named reports whether the claim's name spells the candidate - the chain's, or
-// one its own decoration reached - which is what a claim that founds instead
-// reports as stepped past.
-func (c *seriesCandidate) named() bool { return c.tier <= tierDecorated }
+// named reports whether the claim's name spells the candidate - the chain's, one
+// its own decoration reached, or its raw spelling's chain - which is what a claim
+// that founds instead reports as stepped past.
+func (c *seriesCandidate) named() bool { return c.tier <= tierDecorated || c.tier == tierRaw }
 
 // reaches reports whether cl reaches the candidate at all: a tierLanguage one
 // only by a claim in its facet.
@@ -522,10 +566,12 @@ type unitGroup struct {
 // spells - the chain, or, where the chain holds nothing, what the name's own
 // decoration reaches, which stands in for it (a held edition series renamed to its
 // plain base sits on a slug whose stored name no longer equals the claim's, and
-// the rename must be invisible to the outcome). A row-language reach is tried in
-// the cluster step alone.
+// the rename must be invisible to the outcome), and after it the chain of a raw
+// spelling (the series the claim's own uncleaned name spells, which is the chain the
+// claim walked before its recording qualifiers were cleaned off). A row-language
+// reach is tried in the cluster step alone.
 func (g *unitGroup) anchors(c *seriesCandidate) bool {
-	return c.tier == tierChain || (c.tier == tierDecorated && g.chainEmpty)
+	return c.tier == tierChain || ((c.tier == tierDecorated || c.tier == tierRaw) && g.chainEmpty)
 }
 
 // unitClaims is a unit's claims in canonical order, each with the group (an index
@@ -864,11 +910,14 @@ func (m SeriesMatch) Why() string { return describeStepped(m.stepped) }
 
 // Resolve is resolveSeriesClaims for one row's claim to name: stored reports the
 // name a series slug holds, reds is the tombstone table. A nil index judges no
-// authors and no languages (the name-only walk).
+// authors and no languages (the name-only walk). name is read as every claim is
+// (cleanSeriesName), its raw spelling kept for the tierRaw reach, so a caller passes
+// the name as submitted.
 func (ix *SeriesAuthorIndex) Resolve(name string, reds model.Redirects, stored func(slug string) (string, bool), row *SeriesRow) SeriesMatch {
 	if row == nil {
 		row = &SeriesRow{}
 	}
-	t := resolveSeriesClaims(ix.catalogue(stored, reds), []nameClaim{{name: name, row: row, order: claimOrder(row, "")}})[0]
+	clean, raw := cleanSeriesNameRaw(name)
+	t := resolveSeriesClaims(ix.catalogue(stored, reds), []nameClaim{{name: clean, raw: raw, row: row, order: claimOrder(row, "")}})[0]
 	return SeriesMatch{Slug: t.slug, Found: t.found, Via: t.via, Stepped: steppedSlugs(t.stepped), stepped: t.stepped}
 }

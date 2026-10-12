@@ -239,3 +239,114 @@ func fmtBool(b *bool) string {
 	}
 	return strconv.FormatBool(*b)
 }
+
+// A tied-language recording-variant series is reached by the claim's RAW name. The
+// qualifier index cannot hold a series whose derived language is a tie (it indexes
+// under a language), and the cleaned claim "Foo" walks an empty `foo` chain - so
+// without the raw name's chain a claim "Foo (abridged)" founded a duplicate `foo`
+// beside the `foo-abridged` it spells (or, under --existing-series-only, was dropped,
+// and libex-select refused the row as completing nothing). The raw name's chain is
+// asked AFTER the cleaned name's candidates, so a plain `foo`, when held, still wins
+// (TestARecordingVariantSeriesIsReachedOnlyAfterThePlainOne, and the case below).
+// Both row orders resolve alike.
+func TestATiedRecordingVariantSeriesIsReachedByTheRawName(t *testing.T) {
+	tree := func(t *testing.T, extra map[string]string) string {
+		files := map[string]string{
+			"people/sa/sarah-hawke.json":            testpack.PersonJSON(t, "sarah-hawke", "Sarah Hawke"),
+			"works/fi/first-foo/work.json":          testpack.WorkJSON(t, "first-foo", "First Foo", testpack.WithAuthors("sarah-hawke")),
+			"works/fi/first-foo/recordings/r1.json": testpack.RecJSON(t, "r1", "first-foo", testpack.WithNarrators("bea-reader")),
+			"works/zw/zweites-foo/work.json": testpack.WorkJSON(t, "zweites-foo", "Zweites Foo",
+				testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de")),
+			"works/zw/zweites-foo/recordings/r1.json": testpack.RecJSON(t, "r1", "zweites-foo", testpack.WithNarrators("bea-reader")),
+			"series/fo/foo-abridged.json":             testpack.SeriesJSON(t, "foo-abridged", "Foo (abridged)", "first-foo@1", "zweites-foo@2"),
+		}
+		for k, v := range extra {
+			files[k] = v
+		}
+		return seedTombstoneTree(t, files, nil)
+	}
+	a := langRow("B0FOOABR03", "Third Foo", "Sarah Hawke", "english", "Foo (abridged)", "3")
+	b := langRow("B0FOOABR04", "Fourth Foo", "Sarah Hawke", "english", "Foo (abridged)", "4")
+	want := map[string]string{"first-foo": "1", "zweites-foo": "2", "third-foo": "3", "fourth-foo": "4"}
+	for _, tc := range []struct {
+		desc string
+		opts Options
+	}{{"create", Options{}}, {"existing series only", Options{ExistingSeriesOnly: true}}} {
+		for o, rows := range [][]string{{a, b}, {b, a}} {
+			dataDir := tree(t, nil)
+			sum := runLibexWith(t, dataDir, tc.opts, rows...)
+			if sum.NewSeries != 0 || sum.SeriesClaimsDropped != 0 {
+				t.Errorf("%s, order %d: NewSeries/SeriesClaimsDropped = %d/%d, want 0/0", tc.desc, o, sum.NewSeries, sum.SeriesClaimsDropped)
+			}
+			if entryExists(t, dataDir, seriesAddr("foo")) {
+				t.Errorf("%s, order %d: a duplicate `foo` series was founded", tc.desc, o)
+			}
+			if got := seriesWorks(t, dataDir, "foo-abridged"); !reflect.DeepEqual(got, want) {
+				t.Errorf("%s, order %d: foo-abridged = %v, want %v", tc.desc, o, got, want)
+			}
+			assertTreeValid(t, dataDir)
+		}
+	}
+
+	// libex-select's pre-filter asks the raw spelling's chain too, so the row is a
+	// completion of the held variant rather than a row naming no catalogued series.
+	if res, _, _ := selectInto(t, tree(t, nil), []string{a}); res.RowsSelected != 1 {
+		t.Errorf("libex-select: selected %d, excluded %v; want the row kept", res.RowsSelected, res.Excluded)
+	}
+
+	// With a plain `foo` held as well, the cleaned name's chain wins.
+	dataDir := tree(t, map[string]string{
+		"works/ze/zero-foo/work.json":          testpack.WorkJSON(t, "zero-foo", "Zero Foo", testpack.WithAuthors("sarah-hawke")),
+		"works/ze/zero-foo/recordings/r1.json": testpack.RecJSON(t, "r1", "zero-foo", testpack.WithNarrators("bea-reader")),
+		"series/fo/foo.json":                   testpack.SeriesJSON(t, "foo", "Foo", "zero-foo@0"),
+	})
+	runLibexOver(t, dataDir, a)
+	if got := seriesWorks(t, dataDir, "foo")["third-foo"]; got != "3" {
+		t.Errorf("plain held: third-foo at %q in foo, want 3 (foo = %v, foo-abridged = %v)", got,
+			seriesWorks(t, dataDir, "foo"), seriesWorks(t, dataDir, "foo-abridged"))
+	}
+	assertTreeValid(t, dataDir)
+}
+
+// A dramatized series can number differently from the plain one: on the real tree
+// "The Stormlight Archive [Dramatized Adaptation]" holds Edgedancer at 2.8 where the
+// plain series holds it at 2.5. A dramatized-qualified claim now joins the plain
+// series, and for a work that series ALREADY lists the series keeps its own entry -
+// the importer's long-standing rule (a work the series lists keeps its position) -
+// so the claim moves nothing and adds no second membership; the row lands as a
+// recording of the catalogued work.
+func TestADramatizedClaimKeepsThePlainSeriesPosition(t *testing.T) {
+	files := map[string]string{
+		"people/br/brandon-sanderson.json": testpack.PersonJSON(t, "brandon-sanderson", "Brandon Sanderson"),
+		"people/ka/kate-reading.json":      testpack.PersonJSON(t, "kate-reading", "Kate Reading"),
+		"series/th/the-stormlight-archive.json": testpack.SeriesJSON(t, "the-stormlight-archive", "The Stormlight Archive",
+			"the-way-of-kings@1", "edgedancer@2.5", "oathbringer@3"),
+	}
+	for w, title := range map[string]string{"the-way-of-kings": "The Way of Kings", "edgedancer": "Edgedancer", "oathbringer": "Oathbringer"} {
+		files["works/"+shard(w)+"/"+w+"/work.json"] = testpack.WorkJSON(t, w, title, testpack.WithAuthors("brandon-sanderson"))
+		files["works/"+shard(w)+"/"+w+"/recordings/r1.json"] = testpack.RecJSON(t, "r1", w, testpack.WithNarrators("kate-reading"))
+	}
+	want := map[string]string{"the-way-of-kings": "1", "edgedancer": "2.5", "oathbringer": "3"}
+	row := tombRow("B0STORMDR1", "Edgedancer", "Brandon Sanderson", "Full Cast", 300,
+		"The Stormlight Archive [Dramatized Adaptation]", "2.8")
+	for _, tc := range []struct {
+		desc string
+		opts Options
+	}{{"create", Options{}}, {"sync bot", Options{ExistingSeriesOnly: true, AttachEditions: true}}} {
+		dataDir := seedTombstoneTree(t, files, nil)
+		sum := runLibexWith(t, dataDir, tc.opts, row)
+		if sum.NewSeries != 0 || sum.NewWorks != 0 {
+			t.Errorf("%s: NewSeries/NewWorks = %d/%d, want 0/0", tc.desc, sum.NewSeries, sum.NewWorks)
+		}
+		if got := seriesWorks(t, dataDir, "the-stormlight-archive"); !reflect.DeepEqual(got, want) {
+			t.Errorf("%s: the-stormlight-archive = %v, want %v (the plain numbering kept, one membership)", tc.desc, got, want)
+		}
+		if entryExists(t, dataDir, seriesAddr("the-stormlight-archive-dramatized-adaptation")) {
+			t.Errorf("%s: the dramatized variant series was founded", tc.desc)
+		}
+		if recs := recSlugsOf(t, dataDir, "edgedancer"); len(recs) != 2 {
+			t.Errorf("%s: edgedancer recordings = %v, want the dramatization beside r1", tc.desc, recs)
+		}
+		assertTreeValid(t, dataDir)
+	}
+}

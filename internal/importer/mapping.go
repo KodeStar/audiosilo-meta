@@ -109,6 +109,17 @@ func cleanSeriesName(name string) string {
 	return base
 }
 
+// cleanSeriesNameRaw is cleanSeriesName plus the trimmed name as given when cleaning
+// changed it ("" when it did not) - a claim's raw spelling (seriesRef.raw).
+func cleanSeriesNameRaw(name string) (clean, raw string) {
+	raw = strings.TrimSpace(name)
+	clean = cleanSeriesName(raw)
+	if clean == raw {
+		raw = ""
+	}
+	return clean, raw
+}
+
 // The title narrator lead-ins are titlerule.NarratorLeadIns (moved there; one list).
 
 // titleVolumeSuffixRE is the BOUND that makes the mid-title strip safe: the
