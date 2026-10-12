@@ -2,6 +2,7 @@ package query
 
 import (
 	"context"
+	"maps"
 	"slices"
 	"sort"
 )
@@ -83,35 +84,64 @@ import (
 //
 // THE PULL. With its target off the page, a translation or variant is tier 0, so
 // a window that lost the primary would lead with whichever edition the tie let
-// in. But a same-named set left with no primary of its name - any number of
-// rows of one name, a lone one included, typed whole or not - usually names that
-// primary itself: a translation's translation_of and a variant's ordering_of are
-// on the row already, with the target's name. A row is a primary OF ITS NAME
-// when none of its links names a series of the same nameKey, the name-level
-// twin of tierOf's group test. When a set holding none links to a series of the
-// SAME nameKey that the page does not hold, those ids are read in ONE batch
+// in. But the rows themselves name it: a translation's translation_of and a
+// variant's ordering_of are on the row already, with the target's name. So
+// wherever a same-named set - any number of rows of one name, a lone one
+// included, typed whole or not - holds a row linking to a series of the SAME
+// nameKey that the page does not hold, those ids are read in ONE batch
 // (seriesResultsByID, the summary read the page's own series rows came from, so
-// the index guards cover it) and each that comes back a primary of that name,
-// inside the live ?lang= filter, is put at the set's first slot. The pulled
-// primary JOINS THE GROUP, so the page is ranked again - the rows linking to it
-// now judge their link against a group holding its target and fall behind it,
-// translations before variants - and is cut back to its limit, so the last row
-// drops. This is the one place a row joins the page, and only a series the
-// page's own rows link to under the same name. planPrimaryPulls decides it
-// purely, so the read is issued on such a page alone and never on an ordinary
-// one: a primary of the name on the page, a link to a differently-named series
-// ("Die Saga" translating "The Saga") and a translation_of target whose stated
-// language the filter refuses all plan nothing, so a lone German edition under
-// lang=de costs no read. A lone row is a set too: "harry pot" with limit=1 holds
-// the reading-order variant alone, and it names its primary. A failed read
-// serves the ranked page, logged.
+// the index guards cover it), sized by the links on the page's own rows. A
+// primary of the name already on the page does not stop it: an unrelated series
+// that happens to share the name ("Harry Potter" by a fan, stating no link) says
+// nothing about the one the page's German edition translates, and ranked beside
+// it the German edition would still lead by id. A row is a PRIMARY OF ITS NAME
+// when none of its links names a series of the same nameKey, the name-level twin
+// of tierOf's group test, and what comes back a primary of the set's name inside
+// the live ?lang= filter is put at the set's first slot. The pulled primary
+// JOINS THE GROUP, so the page is ranked again - the rows linking to it now judge
+// their link against a group holding its target and fall behind it, translations
+// before variants - and is cut back to its limit, so the last row drops.
+//
+// A link is SAME-NAMED only inside the filter: a translation_of target states
+// its language, and one the live ?lang= filter refuses is no same-named link,
+// neither for the plan nor for the primary-of-its-name test (an ordering_of
+// target states none and always counts). So a German edition alone on a lang=de
+// page plans no read for the English original it names, and under lang=de that
+// German edition is the primary of its name.
+//
+// ONE MORE HOP, and no more. A variant of a translation ("Harry Potter", German,
+// chronological, a view of the German edition) names the translation, and the
+// first read returns a series that is no primary of the name. Its own
+// same-named link is then read in a SECOND batch (secondHop: only for such rows,
+// only their links, and nothing the page or the first read holds), and where
+// that target comes back a primary of the name it is placed together with the
+// translation between them - so the variant ranks behind the translation it is a
+// view of and the translation behind the original, whatever the ids say;
+// placed alone the original would tie the variant at tier 0. Where the original
+// is on the page already, the translation joins on the first read alone, for
+// the same reason. A third hop is never read, so a page costs at most two reads,
+// and a target the second read does not return a primary places nothing. Under
+// lang=de the German edition's link to its English original does not count, so
+// the German edition is placed on the first read and leads its variant.
+//
+// This is the one place a row joins the page, and only a series the page's own
+// rows link to under the same name, or the original such a series translates.
+// planPrimaryPulls decides it purely, so a read is issued on such a page alone
+// and never on an ordinary one: a set whose same-named links all land on the
+// page, a link to a differently-named series ("Die Saga" translating "The Saga")
+// and a translation_of target whose stated language the filter refuses all plan
+// nothing. A lone row is a set too: "harry pot" with limit=1 holds the
+// reading-order variant alone, and it names its primary. A failed first read
+// serves the ranked page and a failed second one what the first read places,
+// both logged.
 //
 // WITH ?lang= the page is already filtered at the source, so under lang=de the
 // English primary is not on it and the German edition - tier 0 there, its target
 // being off the page, and the only exact match left - leads, which is the right
 // answer for a reader who asked for German; the pull does not bring the English
-// primary back (see THE PULL), and a pulled series is admitted by the filter's
-// own rule, so a filtered page never gains a series outside it.
+// primary back (its link is no same-named link there, see THE PULL), and a
+// pulled series is admitted by the filter's own rule, so a filtered page never
+// gains a series outside it.
 //
 // AN OLDER ARTIFACT (or an empty languages layer) states no link, so every exact
 // name is tier 0 and the rule is "the exact names first, by id".
@@ -119,13 +149,15 @@ import (
 // BYTE-IDENTITY. A page that names no series outright and holds no two series of
 // one name is exactly as it came, and so is one whose exact rows already sat in
 // tier-then-id order, whose other same-named rows already sat in tier order and
-// none of whose sets lacking a primary of their name links to a same-named
-// series off the page.
+// none of whose rows links to a same-named series off the page.
 // Measured on the 282k-work artifact, the pull planned no read on any of 2,242
 // series names and typing prefixes at the default window (unfiltered and
 // lang=de), nor on the 931 franchise queries at limit=1 and 2 - the real
-// primaries win their ties (the plans the name-level primary test admits are a
-// subset of what was measured) - and one pull read costs about 0.1ms. Over 400
+// primaries win their ties - and one pull read costs about 0.1ms. Measured
+// again once a primary on the page stopped blocking a pull and the second hop
+// landed, over the 962 names and typing prefixes of the 260 series names a
+// translation or ordering link touches, on both surfaces, at limit=20, 2 and 1,
+// unfiltered and lang=de: no page planned a read, so none reached a second. Over 400
 // random series names and the 238 franchise names carrying a translation or an
 // ordering variant, on both surfaces, the lift moved one page ("Of Magic", whose
 // exact name now leads "Magic of Magic"), and the timings were within noise of
@@ -297,8 +329,8 @@ func rankSameNamedGroups(page []any) []any {
 	return out
 }
 
-// primaryPull is one same-named set of a composed page that holds no primary of
-// its name but links to one the page does not hold (see THE PULL in the file
+// primaryPull is one same-named set of a composed page whose rows link to a
+// series of the same name the page does not hold (see THE PULL in the file
 // header).
 type primaryPull struct {
 	slot int      // the page index of the set's first row
@@ -307,42 +339,61 @@ type primaryPull struct {
 }
 
 // sameNamedLinks appends to ids every series r links to - translation_of or
-// ordering_of - whose stated name has nameKey k, a translation_of target only
-// when the live filter admits its stated language. It reports whether r states
-// any same-named link at all, admitted or not: a row stating none is a primary
-// of the name k (see THE PULL in the file header).
+// ordering_of - whose stated name has nameKey k and which the live filter does
+// not put outside it: a translation_of target states its language and counts
+// only when lang admits it, an ordering_of target states none and always
+// counts. It reports whether r has any such link, which is the test of a
+// PRIMARY OF THE NAME k: a row with none is one (see THE PULL in the file
+// header). So under lang=de a German edition whose original is English is the
+// primary of its name, as it is tier 0 on the filtered page.
 func sameNamedLinks(r seriesResult, k string, lang langFilter, ids []string) ([]string, bool) {
-	linked := false
+	n := len(ids)
 	for _, t := range r.TranslationOf {
-		if nameKey(t.Name) == k {
-			linked = true
-			if lang.admits(t.Language) {
-				ids = append(ids, t.ID)
-			}
+		if nameKey(t.Name) == k && lang.admits(t.Language) {
+			ids = append(ids, t.ID)
 		}
 	}
 	if r.OrderingOf != "" && nameKey(r.OrderingOfName) == k {
-		linked = true
 		ids = append(ids, r.OrderingOf)
 	}
-	return ids, linked
+	return ids, len(ids) > n
+}
+
+// seriesIDsOn is the set of the series rows' ids on page.
+func seriesIDsOn(page []any) map[string]bool {
+	ids := map[string]bool{}
+	for _, r := range page {
+		if sr, ok := r.(seriesResult); ok {
+			ids[sr.ID] = true
+		}
+	}
+	return ids
+}
+
+// ofPull reports whether a fetched series r can join pull key's set at all: it
+// still has the set's name, and the live filter admits its language (an unknown
+// one passes, as on the FTS side).
+func ofPull(r seriesResult, key string, lang langFilter) bool {
+	return nameKey(r.Name) == key && lang.admits(r.Language)
 }
 
 // planPrimaryPulls finds the sets the pull applies to on a page rankSeriesRows
 // has ranked: the series rows sharing one nameKey - one or more of them, typed
-// whole or not - none of which is a primary of that name, where a row's
-// translation_of or ordering_of names a series whose stated name has the same
-// nameKey and which the page does not hold. A translation_of target also states
-// its language, so one the live filter would refuse is not planned at all - a
-// German edition alone on a lang=de page costs no read for the English original
-// it names. It is pure, so a page it answers nil for costs no query: that is
-// every page holding no such set, which is every ordinary page.
+// whole or not - where a row's translation_of or ordering_of names a series
+// whose stated name has the same nameKey, which the page does not hold and
+// which the live filter does not put outside it (sameNamedLinks). A primary of
+// the name already on the page does not stop it: an unrelated series of the name
+// says nothing about the one a translation on the page translates. It is pure,
+// so a page it answers nil for costs no query: that is every page none of whose
+// same-named links leaves the page, which is every ordinary page - and a German
+// edition alone on a lang=de page plans nothing for the English original it
+// names.
 func planPrimaryPulls(page []any, lang langFilter) []primaryPull {
 	// Allocated at the first named series row, so a page holding none - every
 	// work-only combined page - costs no map. onPage needs only the named rows: a
 	// link is followed only when its target's stated name has the set's (non-
 	// empty) key, and that target's own row would carry the same name.
-	var onPage, primary map[string]bool
+	var onPage map[string]bool
 	var first map[string]int
 	var linked map[string][]string
 	var order []string // the set keys in first-slot order
@@ -356,23 +407,17 @@ func planPrimaryPulls(page []any, lang langFilter) []primaryPull {
 			continue
 		}
 		if onPage == nil {
-			onPage, primary, first, linked = map[string]bool{}, map[string]bool{}, map[string]int{}, map[string][]string{}
+			onPage, first, linked = map[string]bool{}, map[string]int{}, map[string][]string{}
 		}
 		onPage[sr.ID] = true
 		if _, seen := first[k]; !seen {
 			first[k] = i
 			order = append(order, k)
 		}
-		var states bool
-		if linked[k], states = sameNamedLinks(sr, k, lang, linked[k]); !states {
-			primary[k] = true
-		}
+		linked[k], _ = sameNamedLinks(sr, k, lang, linked[k])
 	}
 	var out []primaryPull
 	for _, k := range order {
-		if primary[k] {
-			continue
-		}
 		var ids []string
 		for _, id := range linked[k] {
 			if !onPage[id] {
@@ -388,34 +433,107 @@ func planPrimaryPulls(page []any, lang langFilter) []primaryPull {
 	return out
 }
 
-// placePrimaries puts each pull's fetched primaries - read back still of the
-// set's name and still a primary of it, admitted by the live language filter
-// (an unknown language passes, as on the FTS side) - at the set's first slot, by
-// id, every row from that slot on moving down one per row placed. The page is
-// then ranked again for q, so each placed primary joins its group and the rows
-// linking to it fall behind it, and cut back to limit, so the last rows drop. A
-// pull none of whose ids survives places nothing, and the page is returned as
-// it came.
-func placePrimaries(page []any, pulls []primaryPull, fetched map[string]seriesResult, q string, limit int, lang langFilter) []any {
-	at := map[int][]any{}
-	placed := 0
+// secondHop lists what the pull's SECOND read fetches: for every row the first
+// read returned that could join its set (ofPull) but is no primary of the set's
+// name - a variant of a translation, whose translation_of names the original -
+// the same-named series its own links name that neither the page nor the first
+// read holds, sorted. It is nil, and no second read is issued, unless the first
+// read met such a row, so the hop is bounded by those rows' links and is never
+// followed a third time.
+func secondHop(page []any, pulls []primaryPull, fetched map[string]seriesResult, lang langFilter) []string {
+	var onPage map[string]bool
+	var ids []string
 	for _, p := range pulls {
 		for _, id := range p.ids {
 			r, ok := fetched[id]
-			if !ok || nameKey(r.Name) != p.key || !lang.admits(r.Language) {
+			if !ok || !ofPull(r, p.key, lang) {
 				continue
 			}
-			if _, states := sameNamedLinks(r, p.key, nil, nil); states {
-				continue
+			links, _ := sameNamedLinks(r, p.key, lang, nil)
+			for _, t := range links {
+				if _, held := fetched[t]; held {
+					continue
+				}
+				if onPage == nil {
+					onPage = seriesIDsOn(page)
+				}
+				if !onPage[t] {
+					ids = append(ids, t)
+				}
 			}
-			at[p.slot] = append(at[p.slot], r)
-			placed++
 		}
 	}
-	if placed == 0 {
+	slices.Sort(ids)
+	return slices.Compact(ids)
+}
+
+// placePrimaries puts each pull's fetched series at the set's first slot, every
+// row from that slot on moving down one per row placed, then ranks the page
+// again for q, so each placed series joins its group and the rows linking to it
+// fall behind it, and cuts it back to limit, so the last rows drop. Only a
+// series that still has the set's name and that the live filter admits
+// (ofPull) is ever placed, and of those:
+//
+//   - a primary of the set's name (sameNamedLinks) is placed;
+//   - one that is not - a translation, the target of a variant on the page - is
+//     placed together with the primary it names, when that primary came back
+//     from either read as a primary of the name, or alone when what it names is
+//     on the page already. It is the link between the page's row and that
+//     primary: on the page, the variant ranks as a variant behind it and it as a
+//     translation behind the primary, whatever the ids;
+//   - anything else - a chain longer than two hops, a target that did not come
+//     back - is not placed.
+//
+// A pull none of whose ids survives places nothing, and the page is returned as
+// it came.
+func placePrimaries(page []any, pulls []primaryPull, fetched map[string]seriesResult, q string, limit int, lang langFilter) []any {
+	var onPage map[string]bool
+	at := map[int][]any{}
+	placed := map[string]bool{}
+	place := func(slot int, r seriesResult) {
+		if !placed[r.ID] {
+			placed[r.ID] = true
+			at[slot] = append(at[slot], r)
+		}
+	}
+	for _, p := range pulls {
+		for _, id := range p.ids {
+			r, ok := fetched[id]
+			if !ok || !ofPull(r, p.key, lang) {
+				continue
+			}
+			links, linked := sameNamedLinks(r, p.key, lang, nil)
+			if !linked {
+				place(p.slot, r)
+				continue
+			}
+			anchored := false
+			for _, t := range links {
+				if onPage == nil {
+					onPage = seriesIDsOn(page)
+				}
+				if onPage[t] {
+					anchored = true
+					continue
+				}
+				f, ok := fetched[t]
+				if !ok || !ofPull(f, p.key, lang) {
+					continue
+				}
+				if _, l := sameNamedLinks(f, p.key, lang, nil); !l {
+					place(p.slot, f)
+					anchored = true
+				}
+			}
+			if anchored {
+				place(p.slot, r)
+			}
+		}
+	}
+	if len(placed) == 0 {
 		return page
 	}
-	out := make([]any, 0, len(page)+placed)
+	out := make([]any, 0, len(page)+len(placed))
 	for i, r := range page {
 		out = append(out, at[i]...)
 		out = append(out, r)
@@ -429,10 +547,12 @@ func placePrimaries(page []any, pulls []primaryPull, fetched map[string]seriesRe
 
 // pullPrimaries is the pull over one ranked page: plan it, read every planned id
 // in ONE batch (seriesResultsByID, the summary read the page's own series rows
-// came from), and place what qualifies. A page with nothing to pull is returned
-// as it came, with no query. A failed read degrades to the ranked page, logged,
-// as a failed boost probe does: the pull refines a page the search produced on
-// its own.
+// came from), read the second hop the first read asks for in at most one more
+// (secondHop), and place what qualifies. A page with nothing to pull is returned
+// as it came, with no query; no page issues more than two. A failed first read
+// degrades to the ranked page and a failed second one to what the first read
+// alone places, both logged, as a failed boost probe is: the pull refines a page
+// the search produced on its own.
 func (s *DB) pullPrimaries(ctx context.Context, page []any, q string, limit int, lang langFilter) []any {
 	pulls := planPrimaryPulls(page, lang)
 	if len(pulls) == 0 {
@@ -448,6 +568,16 @@ func (s *DB) pullPrimaries(ctx context.Context, page []any, q string, limit int,
 			s.logf("query: primary-series read for %q failed, serving the ranked page: %v", q, err)
 		}
 		return page
+	}
+	if more := secondHop(page, pulls, fetched, lang); len(more) > 0 {
+		next, err := s.seriesResultsByID(ctx, more)
+		if err != nil {
+			if ctx.Err() == nil {
+				s.logf("query: second primary-series read for %q failed, placing what the first found: %v", q, err)
+			}
+		} else {
+			maps.Copy(fetched, next)
+		}
 	}
 	return placePrimaries(page, pulls, fetched, q, limit, lang)
 }

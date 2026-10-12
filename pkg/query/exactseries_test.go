@@ -643,7 +643,14 @@ func TestPlanAndPlacePrimaries(t *testing.T) {
 	// name (tierOf judges a link against the same-named rows), and the pull reads
 	// it the same way.
 	hpOther := of(s("hp-other", "Harry Potter", "de"), "hpc", "Harry Potter Collection", "en")
-	fetched := map[string]seriesResult{"hp": hp, "x": x}
+	// An unrelated series of the name, stating no link: a primary of the name,
+	// whose id sorts after the German edition's.
+	fan := s("potter-fan", "Harry Potter", "en")
+	// A reading-order variant of the German edition, whose id sorts ahead of
+	// the original's: a translation's variant, two hops from the primary.
+	chronoDe := variant(s("chrono-de", "Harry Potter", "de"), "hp-de", "Harry Potter")
+	// Both reads' answers: the first returns hp-de for chronoDe, the second hp.
+	fetched := map[string]seriesResult{"hp": hp, "x": x, "hp-de": de}
 
 	cases := []struct {
 		name  string
@@ -681,8 +688,57 @@ func TestPlanAndPlacePrimaries(t *testing.T) {
 			},
 			[]any{hp, de, chrono, x},
 		},
-		{"a set holding a primary pulls nothing", []any{de, hp}, "harry", nil, 2, nil, []any{de, hp}},
-		{"a translation of another name is the set's primary", []any{de, hpOther}, "harry", nil, 2, nil, []any{de, hpOther}},
+		{"a set holding the primary its rows name pulls nothing", []any{de, hp}, "harry", nil, 2, nil, []any{de, hp}},
+		{
+			// Ranked alone the two are tier 0 (hp is off the page), so by id the
+			// German edition led; another primary of the name says nothing about
+			// the series it translates.
+			"an unrelated primary of the name does not block the pull",
+			[]any{de, fan}, "harry potter", nil, 2,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}},
+			[]any{hp, fan},
+		},
+		{
+			"a translation of another name does not block the pull either",
+			[]any{de, hpOther}, "harry", nil, 2,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}},
+			[]any{hp, hpOther},
+		},
+		{
+			// The first read returns hp-de, no primary of the name (it translates
+			// hp); the second returns hp. Both join, so the variant ranks behind
+			// the translation it is a view of and the translation behind hp,
+			// whatever the ids say - placed alone, hp would tie the variant at
+			// tier 0 and lose to its id.
+			"a translation's variant pulls the original in two hops",
+			[]any{chronoDe}, "harry potter", nil, 3,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp-de"}}},
+			[]any{hp, de, chronoDe},
+		},
+		{
+			"a translation's variant at the limit leaves the original alone",
+			[]any{chronoDe}, "harry pot", nil, 1,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp-de"}}},
+			[]any{hp},
+		},
+		{
+			// Under lang=de the English original is outside the filter, so hp-de's
+			// link to it is no same-named link: hp-de is the primary of its name,
+			// pulled for its variant, and leads.
+			"under a filter the translation is the primary its variant pulls",
+			[]any{chronoDe}, "harry potter", langFilter{"de"}, 2,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp-de"}}},
+			[]any{de, chronoDe},
+		},
+		{
+			// The original is on the page, the translation between them is not:
+			// ranked alone the variant and the original tie at tier 0 and the
+			// variant's id leads. The translation joins on the first read alone.
+			"a translation joins between its variant and an original on the page",
+			[]any{chronoDe, hp}, "harry potter", nil, 3,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp-de"}}},
+			[]any{hp, de, chronoDe},
+		},
 		{
 			// Before the pull the exact block ranks both rows tier 0 (their target
 			// is off the page), so by id the variant leads; with the primary in the
@@ -726,6 +782,19 @@ func TestPlanAndPlacePrimaries(t *testing.T) {
 		})
 	}
 
+	// A translation whose own original did not come back as a primary of the
+	// name - a third hop, never read - is not placed, nor is anything for it.
+	for _, orig := range []seriesResult{
+		of(s("hp", "Harry Potter", "en"), "older", "Harry Potter", "en"),
+		s("hp", "Harry Potter", "fr"),
+	} {
+		got := placePrimaries([]any{chronoDe}, []primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp-de"}}},
+			map[string]seriesResult{"hp-de": de, "hp": orig}, "harry potter", 2, langFilter{"de", "en"})
+		if !reflect.DeepEqual(got, []any{chronoDe}) {
+			t.Errorf("placePrimaries with the original %+v = %v, want the page unchanged", orig, got)
+		}
+	}
+
 	// A fetched row that is no longer a primary of the set's name, no longer of
 	// that name, or outside the filter is not placed.
 	pull := []primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}}
@@ -736,6 +805,84 @@ func TestPlanAndPlacePrimaries(t *testing.T) {
 	} {
 		if got := placePrimaries([]any{de}, pull, map[string]seriesResult{"hp": stale}, "harry potter", 1, nil); !reflect.DeepEqual(got, []any{de}) {
 			t.Errorf("placePrimaries with %+v = %v, want the page unchanged", stale, got)
+		}
+	}
+}
+
+// TestSecondHopReadsOnlyWhatTheFirstCannotPlace pins the second read's bound:
+// it is asked only for a first-read row that is no primary of its name, only
+// for that row's same-named links, and never for one the page or the first read
+// already holds or the filter puts outside it.
+func TestSecondHopReadsOnlyWhatTheFirstCannotPlace(t *testing.T) {
+	s := func(id, lang string) seriesResult {
+		return seriesResult{Kind: kindSeries, ID: id, Name: "Harry Potter", Language: lang}
+	}
+	hp := s("hp", "en")
+	de := s("hp-de", "de")
+	de.TranslationOf = []SeriesTranslation{{ID: "hp", Name: "Harry Potter", Language: "en"}}
+	chronoDe := s("chrono-de", "de")
+	chronoDe.OrderingOf, chronoDe.OrderingOfName = "hp-de", "Harry Potter"
+	pullDe := []primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp-de"}}}
+	pullHp := []primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}}
+	for _, tc := range []struct {
+		name    string
+		page    []any
+		pulls   []primaryPull
+		fetched map[string]seriesResult
+		lang    langFilter
+		want    []string
+	}{
+		{"a translation's original", []any{chronoDe}, pullDe, map[string]seriesResult{"hp-de": de}, nil, []string{"hp"}},
+		{"an original outside the filter", []any{chronoDe}, pullDe, map[string]seriesResult{"hp-de": de}, langFilter{"de"}, nil},
+		{"an original on the page", []any{chronoDe, hp}, pullDe, map[string]seriesResult{"hp-de": de}, nil, nil},
+		{"an original the first read returned", []any{chronoDe}, pullDe, map[string]seriesResult{"hp-de": de, "hp": hp}, nil, nil},
+		{"a primary", []any{de}, pullHp, map[string]seriesResult{"hp": hp}, nil, nil},
+		{"a row that did not come back", []any{chronoDe}, pullDe, map[string]seriesResult{}, nil, nil},
+	} {
+		if got := secondHop(tc.page, tc.pulls, tc.fetched, tc.lang); !slices.Equal(got, tc.want) {
+			t.Errorf("%s: secondHop = %v, want %v", tc.name, got, tc.want)
+		}
+	}
+}
+
+// TestPullFollowsATranslationsVariantToItsOriginal runs both reads over a real
+// artifact: a reading-order variant of the German edition, alone on a page,
+// names the German edition, which translates the English original under the
+// same name. With no filter the second read brings the original and it leads -
+// its id sorts after the variant's, so only the translation joining between them
+// puts it there; under lang=de the German edition is the primary of its name and
+// leads its variant.
+func TestPullFollowsATranslationsVariantToItsOriginal(t *testing.T) {
+	cat := artifacttest.SameNamedSeries()
+	const deChrono = "harry-potter-german-chronological"
+	cat.Series = append(cat.Series, &model.Series{
+		ID: deChrono, Name: "Harry Potter", License: "CC0-1.0", Authors: []string{"j-k-rowling"},
+		Works:    []model.SeriesWork{{Work: "stein-der-weisen", Position: "1"}},
+		Ordering: model.OrderingChronological, OrderingOf: "harry-potter-german-edition",
+	})
+	db := openTestDB(t, artifacttest.Build(t, cat))
+	ctx := context.Background()
+	rows, err := db.seriesResultsByID(ctx, []string{deChrono})
+	if err != nil {
+		t.Fatal(err)
+	}
+	page := []any{rows[deChrono]}
+	for _, tc := range []struct {
+		lang  langFilter
+		limit int
+		want  []string
+	}{
+		{nil, 1, []string{hpPrimary}},
+		{nil, 3, []string{hpPrimary, "harry-potter-german-edition", deChrono}},
+		{langFilter{"de"}, 1, []string{"harry-potter-german-edition"}},
+		{langFilter{"de"}, 2, []string{"harry-potter-german-edition", deChrono}},
+	} {
+		var got []string
+		for _, r := range db.pullPrimaries(ctx, page, "harry potter", tc.limit, tc.lang) {
+			got = append(got, r.(seriesResult).ID)
+		}
+		if !slices.Equal(got, tc.want) {
+			t.Errorf("lang=%v limit=%d: pulled page = %v, want %v", tc.lang, tc.limit, got, tc.want)
 		}
 	}
 }
