@@ -1054,7 +1054,31 @@ the page, bm25 order stands within a tier, so an all-primary group such as
 "potter" - no whole name, the same bm25 tie - leads with the primary too.
 Measured over 1,879 typing prefixes of the names below on both surfaces, the
 groups moved only Kingsbridge's reading-order variant behind its primary ("Kin",
-"King", "Kings"). A page
+"King", "Kings"). The one row that JOINS a page is the **pull**
+(`planPrimaryPulls` -> `pullPrimaries`), and it is a contract change: a window
+smaller than the tie (`limit=1..3` on the fixture) can hold same-named
+translations and variants and no primary - and with their target off the page
+the group-relative tiers rank them as primaries, so whichever edition the tie let
+in led. When such a set (any number of rows of one name, a lone one included, so
+`harry pot&limit=1` gets the primary too) holds no PRIMARY OF ITS NAME - a row
+none of whose links names a series of the same `nameKey`, the name-level twin of
+`tierOf`'s group test, so a translation of a differently-named series still
+counts as one - and links by `translation_of`/`ordering_of` to a series of the
+same `nameKey` the page lacks, those ids are read in ONE `seriesResultsByID`
+batch and each primary of that name inside the live `?lang=` is put at the set's
+first slot. The pulled primary JOINS THE GROUP: the page is ranked again
+(`rankSeriesRows`, so the rows linking to it now judge their link against a group
+holding its target and fall behind it, translations before variants) and cut
+back to its limit, the last row dropping - a linked same-named primary may now
+appear on a page the relevance window did not put it on, never one outside
+`?lang=`. The plan is pure, so an ordinary page issues no read (a
+differently-named link, a primary of the name already on the page, a
+translation_of target whose stated language the filter refuses: nothing
+planned), and a failed read serves the ranked page. Measured on the 282k-work artifact: over the 2,242
+series names and typing prefixes above, at the default window with no filter and
+with `lang=de`, and over the 931 franchise queries at `limit=1` and `2`, no page
+planned a read (the real primaries win their bm25 ties); one pull read costs
+about 0.1ms. A page
 naming no series outright and holding no such group is byte-identical; measured, the rule moved 1 of 400 random series-name pages ("Of
 Magic" now leads "Magic of Magic") and none of the 238 franchise names carrying a
 translation or ordering variant. The fixture is `artifacttest.SameNamedSeries()`,
