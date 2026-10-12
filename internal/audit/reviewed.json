@@ -2568,6 +2568,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-enigma-series-breakfield-and-burkey"
+    ],
+    "reason": "both list the same eleven Breakfield and Burkey novels at the same slots from the same founding listing: the same series under an author-disambiguated second spelling",
+    "target": "the-enigma-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "first-mountain-man",
       "first-mountain-man-dramatized-adaptation"
     ],
