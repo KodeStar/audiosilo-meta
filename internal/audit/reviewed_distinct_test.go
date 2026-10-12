@@ -94,3 +94,39 @@ func TestReviewedDistinctSuppressesTheCensusGroup(t *testing.T) {
 		t.Errorf("reviewed census: %d groups, %d suppressed; want 0 and 1", count(res), res.Suppressed)
 	}
 }
+
+// A `merge-people` decision is a reject naming a target and distinct others -
+// nothing else parses - and it reads into the people namespace. No detector
+// proposes the op, so the audit reports it census-only, never stale.
+func TestReviewedMergePeopleRejection(t *testing.T) {
+	rs := mustParse(t, `[{"decision":"reject","op":"merge-people","others":["sir-richard-burton"],`+
+		`"reason":"the Victorian translator and the actor are two people","target":"richard-burton"}]`)
+	want := []check.ReviewedDistinct{{Kind: model.RedirectPeople, IDs: []string{"richard-burton", "sir-richard-burton"}}}
+	if got := distinctOf(rs); !reflect.DeepEqual(got, want) {
+		t.Errorf("distinctOf = %+v, want %+v", got, want)
+	}
+	for name, entry := range map[string]string{
+		"accept":    `{"decision":"accept","op":"merge-people","others":["b"],"reason":"r","target":"a"}`,
+		"assert":    `{"decision":"assert","op":"merge-people","others":["b"],"reason":"r","target":"a"}`,
+		"no target": `{"decision":"reject","op":"merge-people","others":["b"],"reason":"r"}`,
+		"no others": `{"decision":"reject","op":"merge-people","reason":"r","target":"a"}`,
+		"a field":   `{"decision":"reject","field":"name","op":"merge-people","others":["b"],"reason":"r","target":"a"}`,
+		"self":      `{"decision":"reject","op":"merge-people","others":["a"],"reason":"r","target":"a"}`,
+	} {
+		raw, err := canonical.Format([]byte("[" + entry + "]"))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if _, err := parseReviewed(raw); err == nil {
+			t.Errorf("%s: parsed, want a refusal", name)
+		}
+	}
+
+	rep := runFixtureRejecting(t, map[string]string{
+		"people/ja/jane-doe.json":         testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"works/ho/hollow-crown/work.json": testpack.WorkJSON(t, "hollow-crown", "Hollow Crown"),
+	}, rs[0])
+	if all := rep.Reviewed.All; len(all) != 1 || all[0].Status != statusCensus {
+		t.Errorf("tally = %+v, want the person rejection census-only", rep.Reviewed.All)
+	}
+}

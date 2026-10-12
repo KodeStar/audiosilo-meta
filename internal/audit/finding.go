@@ -69,7 +69,12 @@ const (
 	OpSplitSeries     = "split-series"
 	OpSetWorkLanguage = "set-work-language"
 	OpReview          = "review" // no mechanical action: a human decides
-	OpNone            = ""       // a pass-through record (LOADER)
+	// OpMergePeople folds person Others onto Target. No detector proposes it and no
+	// repair applies it: it exists so reviewed.json can REJECT it, recording "two
+	// people, not one" for a pair metacheck's honorific-person census would otherwise
+	// name forever (ReviewedDistinct). People have no merge pass yet.
+	OpMergePeople = "merge-people"
+	OpNone        = "" // a pass-through record (LOADER)
 )
 
 // Proposal is the typed repair a finding proposes.

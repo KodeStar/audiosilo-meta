@@ -16,8 +16,8 @@ import (
 
 // ReviewedDistinct is one reviewed decision that the records it names are NOT one
 // record: internal/audit/reviewed.json's `reject` of a `merge-works` (Kind
-// model.RedirectWorks) or `merge-series` (model.RedirectSeries) proposal, its target
-// and others together. Every PAIR of its ids is read as distinct, so a reviewer who
+// model.RedirectWorks), `merge-series` (model.RedirectSeries) or `merge-people`
+// (model.RedirectPeople) proposal, its target and others together. Every PAIR of its ids is read as distinct, so a reviewer who
 // finds two of a group's members really are one record rejects only the others (and
 // asserts that merge), rather than rejecting the whole group.
 //
@@ -34,8 +34,8 @@ type ReviewedDistinct struct {
 type LoadOptions struct {
 	// Distinct are the reviewed "not one record" decisions the duplicate advisories
 	// honour: a pair one of them covers is neither reported nor counted by
-	// identity-equal-works, normalized-duplicate-works (works) or duplicate-series
-	// (series), and Result.Suppressed counts every finding so withheld. Problems are
+	// identity-equal-works, normalized-duplicate-works (works), duplicate-series
+	// (series) or honorific-person-pair (people), and Result.Suppressed counts every finding so withheld. Problems are
 	// never touched - a review is about a census, not about what is valid.
 	Distinct []ReviewedDistinct
 }

@@ -81,8 +81,9 @@ var honorificSlugPrefixes = []string{"sir", "dame", "dr", "mr", "mrs", "ms"}
 //
 // Like the importer's rule it ignores a one-word remainder ("Mr. Peter" ->
 // "Peter"), where the shape is coincidence far more often than it is a
-// duplicate.
-func checkHonorificPersonPairs(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+// duplicate. A pair a reviewed decision recorded as two people (reviewed) is
+// withheld, so the answer, once a maintainer has given it, stops being asked.
+func checkHonorificPersonPairs(cat *model.Catalog, idx *pathIndex, reviewed *reviewedPairs, warn addFunc) {
 	byID := make(map[string]*model.Person, len(cat.People))
 	for _, p := range cat.People {
 		byID[p.ID] = p
@@ -93,7 +94,7 @@ func checkHonorificPersonPairs(cat *model.Catalog, idx *pathIndex, warn addFunc)
 			continue
 		}
 		twin, exists := byID[bare]
-		if !exists {
+		if !exists || reviewed.withheld(model.RedirectPeople, p.ID, twin.ID) {
 			continue
 		}
 		warn(idx.person[p], "person %q differs from %q only by a courtesy title: "+

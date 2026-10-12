@@ -476,10 +476,10 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	// Advisories (warn, never fail): the shapes a bulk import can produce that
 	// no rule can call wrong on its own evidence. See advisories.go.
 	checkCrossLanguageRecordings(cat, idx, warn)
-	checkHonorificPersonPairs(cat, idx, warn)
 	// The reviewed "not one record" decisions (reviewed.go), resolved through the
 	// tombstone table just read; empty for a plain load.
 	reviewed := newReviewedPairs(opts.Distinct, cat.Redirects)
+	checkHonorificPersonPairs(cat, idx, reviewed, warn)
 	checkIdentityEqualWorks(cat, idx, reviewed, warn)
 	// The normalized-identity index is built here rather than inside the rule
 	// because it is the SHARED one: it travels out on Result.Identity, so

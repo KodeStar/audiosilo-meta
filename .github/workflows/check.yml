@@ -155,12 +155,6 @@ jobs:
           bash .github/scripts/advisory-delta.sh diff "$RUNNER_TEMP/advisories-base.txt" "$RUNNER_TEMP/advisories-head.txt" > "$RUNNER_TEMP/advisories-new.txt"
           bash .github/scripts/advisory-delta.sh summary "$RUNNER_TEMP/advisories-new.txt" >> "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/advisories-new.txt"
-              echo "$fence"
-            else
-              echo "None: every advisory the merged tree holds, the base already held."
-            fi
-          } >> "$GITHUB_STEP_SUMMARY"
-          cat "$RUNNER_TEMP/advisories-new.txt"
 
   # The other half of the documented gate (CLAUDE.md): `golangci-lint run`.
   # It was documented and run by hand but never by CI, so the green baseline the

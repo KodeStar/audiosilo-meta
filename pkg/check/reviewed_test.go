@@ -216,3 +216,27 @@ func TestAdvisoryKeyIgnoresThePackFile(t *testing.T) {
 		t.Errorf("a key must be one line with one tab: %q", got)
 	}
 }
+
+// A `merge-people` rejection withholds an honorific pair - two different people
+// whose ids read as a duplicate - and is read in the people namespace alone.
+func TestReviewedHonorificPairIsWithheld(t *testing.T) {
+	const marker = "only by a courtesy title"
+	files := baseValid()
+	for id, name := range map[string]string{
+		"dr-arthur-conan-doyle": "Dr. Arthur Conan Doyle", "arthur-conan-doyle": "Arthur Conan Doyle",
+		"sir-richard-burton": "Sir Richard Burton", "richard-burton": "Richard Burton",
+	} {
+		files["people/"+id[:2]+"/"+id+".json"] = `{"id":"` + id + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}`
+	}
+	people := func(ids ...string) ReviewedDistinct { return ReviewedDistinct{Kind: model.RedirectPeople, IDs: ids} }
+
+	res := reviewedLoad(t, files, distinctWorks("sir-richard-burton", "richard-burton"))
+	if got := advisoryMatching(problemLines(res.Warnings), marker); len(got) != 2 || res.Suppressed != 0 {
+		t.Errorf("a works decision withheld a person pair: %v (suppressed %d)", got, res.Suppressed)
+	}
+	res = reviewedLoad(t, files, people("richard-burton", "sir-richard-burton"))
+	got := advisoryMatching(problemLines(res.Warnings), marker)
+	if len(got) != 1 || !strings.Contains(got[0], "dr-arthur-conan-doyle") || res.Suppressed != 1 {
+		t.Errorf("reviewed person pair: %v (suppressed %d), want only the unreviewed pair and 1 suppressed", got, res.Suppressed)
+	}
+}

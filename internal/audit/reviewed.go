@@ -135,8 +135,8 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 	return rs
 }
 
-// ReviewedDistinct returns this list's `reject`s of `merge-works` and `merge-series`
-// proposals as the decisions pkg/check's advisory census honours
+// ReviewedDistinct returns this list's `reject`s of `merge-works`, `merge-series` and
+// `merge-people` proposals as the decisions pkg/check's advisory census honours
 // (check.ReviewedDistinct states what one means). cmd/metacheck hands them to the
 // load, since pkg/check cannot import this package.
 func ReviewedDistinct() []check.ReviewedDistinct { return distinctOf(reviewedDecisions) }
@@ -145,22 +145,25 @@ func ReviewedDistinct() []check.ReviewedDistinct { return distinctOf(reviewedDec
 func distinctOf(rs []reviewedDecision) []check.ReviewedDistinct {
 	var out []check.ReviewedDistinct
 	for _, r := range rs {
-		if r.Decision != "reject" {
-			continue
+		if kind := distinctKind(r.Op); r.Decision == "reject" && kind != "" {
+			out = append(out, check.ReviewedDistinct{Kind: kind, IDs: append([]string{r.Target}, r.Others...)})
 		}
-		var kind model.RedirectKind
-		switch r.Op {
-		case OpMergeWorks:
-			kind = model.RedirectWorks
-		case OpMergeSeries:
-			kind = model.RedirectSeries
-		default:
-			continue
-		}
-		ids := append([]string{r.Target}, r.Others...)
-		out = append(out, check.ReviewedDistinct{Kind: kind, IDs: ids})
 	}
 	return out
+}
+
+// distinctKind is the namespace a REJECTION of op records "not one record" in, for
+// the census: the three merge ops, and "" for every other op.
+func distinctKind(op string) model.RedirectKind {
+	switch op {
+	case OpMergeWorks:
+		return model.RedirectWorks
+	case OpMergeSeries:
+		return model.RedirectSeries
+	case OpMergePeople:
+		return model.RedirectPeople
+	}
+	return ""
 }
 
 func knownReviewOp(op string) bool {
@@ -173,7 +176,7 @@ func knownReviewOp(op string) bool {
 // acceptance of one would be counted as made mechanical while nothing applies it, so
 // it is refused at parse. internal/repair's TestAcceptableOpsAreAppliable pins this set
 // against the ops the repair can apply.
-var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true}
+var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true}
 
 // AcceptableOp reports whether a reviewed decision may ACCEPT a proposal of op.
 // Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
@@ -234,6 +237,10 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 			if slug != "" && !model.ValidSlug(slug) {
 				return nil, fmt.Errorf("entry %d: %q is not a slug", i, slug)
 			}
+		}
+		if r.Op == OpMergePeople && (r.Decision != "reject" || r.Target == "" || len(r.Others) == 0 ||
+			r.Series != "" || r.Field != "" || r.From != "" || r.To != "" || slices.Contains(r.Others, r.Target)) {
+			return nil, fmt.Errorf("entry %d: a %s decision is a reject naming a target and the distinct others, nothing else", i, OpMergePeople)
 		}
 		if r.Op == OpAddWorkLink || r.Op == OpAddSeriesLink {
 			if !model.ValidSlug(r.Target) || !model.ValidSlug(r.To) {
@@ -378,6 +385,8 @@ func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
 	switch p.Op {
 	case OpMergeSeries, OpSplitSeries:
 		kind = model.RedirectSeries
+	case OpMergePeople:
+		kind = model.RedirectPeople
 	case OpReview:
 		switch class {
 		case ClassPersonDup:
@@ -446,6 +455,10 @@ const (
 	statusNoOp      outcomeStatus = "no-op"     // the proposal was already in the state asked for
 	statusRefused   outcomeStatus = "refused"   // an acceptance or assertion that would break consistency
 	statusStale     outcomeStatus = "stale"     // matching no fresh proposal
+	// statusCensus is a merge REJECTION matching no fresh proposal. It is not stale:
+	// metacheck's census honours it whatever the detectors propose (ReviewedDistinct),
+	// so pruning it would bring a reviewed pair back into the census.
+	statusCensus outcomeStatus = "census-only"
 	// statusWithholds is a rejection whose only match is an assertion of the same
 	// proposal: it is what keeps the assertion out, so it is never stale.
 	statusWithholds outcomeStatus = "rejected-an-assertion"
@@ -717,6 +730,9 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for j, r := range rs {
 		if statuses[j] == "" {
 			statuses[j] = statusStale
+			if r.Decision == "reject" && distinctKind(r.Op) != "" {
+				statuses[j] = statusCensus
+			}
 		}
 		t.All = append(t.All, decisionOutcome{r, statuses[j], whys[j]})
 	}
