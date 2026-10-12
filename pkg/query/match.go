@@ -258,7 +258,7 @@ type matchFacts struct {
 // is what candidate.isAuthorName compares. probe is the variant as written,
 // which is what the title probes search for: the folded terms read "&" as
 // "and" and strip diacritics, so a stored "Pride & Prejudice" holds no "and"
-// for an FTS phrase to find and nameKey keeps "Renée" accented. seriesName
+// for an FTS phrase to find and nameKey keeps "Renée" accented. onlySeries
 // marks a guess that is only the request's series name ("He Who Fights with
 // Monsters" for a folder "FWM04 - He Who Fights With Monsters - Book 4"): it
 // agrees with every volume titled after the series, so it says nothing about
@@ -267,7 +267,7 @@ type titleGuess struct {
 	termForm
 	key        string
 	probe      string
-	seriesName bool
+	onlySeries bool
 }
 
 func newTitleGuess(terms []string) titleGuess {
@@ -322,13 +322,18 @@ func readFacts(req matchRequest) *matchFacts {
 		besides = []string{""}
 	}
 	for _, h := range req.titles {
-		if n, ok := titleVolume(h, f.series); ok {
-			imply(&tied, n)
-		}
 		for _, name := range besides {
 			variants, number := titleVariants(h, name)
 			imply(&implied, number)
 			for _, v := range variants {
+				// Every form is read, so a numbering prefix cut away bares the
+				// tied number behind it ("01 - He Who Fights with Monsters 4:
+				// ..." is volume 4, not 1).
+				if tied == "" && f.position == "" {
+					if n, ok := titleVolume(v, f.series); ok {
+						imply(&tied, n)
+					}
+				}
 				terms := matchTerms(v)
 				key := strings.Join(terms, " ")
 				if !informativeTitle(terms) || seen[key] {
@@ -341,7 +346,7 @@ func readFacts(req matchRequest) *matchFacts {
 				seen[key] = true
 				g := newTitleGuess(terms)
 				g.probe = v
-				g.seriesName = slices.ContainsFunc(f.series, func(s termForm) bool { return sameWords(&s, &g.termForm) })
+				g.onlySeries = slices.ContainsFunc(f.series, func(s termForm) bool { return sameWords(&s, &g.termForm) })
 				f.titles = append(f.titles, g)
 			}
 		}
@@ -912,7 +917,7 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 		titleJudged = true
 		s := bestTitle(&h.termForm, c.titles, f.edit)
 		t = max(t, s)
-		if !h.seriesName {
+		if !h.onlySeries {
 			named = max(named, s)
 		}
 	}

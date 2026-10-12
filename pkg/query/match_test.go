@@ -261,8 +261,8 @@ func matchScores(res []map[string]any) map[string]float64 {
 // every generic volume title and kept them all at title 0.93 - while volume 4's
 // generic title counted only genericTitleValue. Read as what it is
 // (seriesVerdict's named), it no longer outvotes the stated volume, and volume
-// 4 keeps what the tag's title reaches: here volume 4 scores 92 and volumes 3,
-// 5 and 13 score 22 (before: 90 against 84 and 81). The tag's own title states
+// 4 keeps what the tag's title reaches: here volume 4 scores 92 and volumes 1,
+// 3, 5 and 13 score 22 (before: 90 against 84 and 81). The tag's own title states
 // the volume too ("He Who Fights with Monsters 4: ...", titleVolume), so the
 // tag alone, with no position and no folder, ranks the same way (before: 92
 // against 67, on the tag's number alone).
@@ -298,7 +298,7 @@ func TestMatchStatedVolumeBeatsItsNeighbours(t *testing.T) {
 			if got := scores["he-who-fights-with-monsters-4"]; got != 92 {
 				t.Errorf("volume 4 scores %v, want 92 (reasons %v)", got, res[0]["reasons"])
 			}
-			for _, other := range []string{"he-who-fights-with-monsters-3", "he-who-fights-with-monsters-5", "he-who-fights-with-monsters-13-a-litrpg-adventure"} {
+			for _, other := range []string{"he-who-fights-with-monsters-a-litrpg-adventure", "he-who-fights-with-monsters-3", "he-who-fights-with-monsters-5", "he-who-fights-with-monsters-13-a-litrpg-adventure"} {
 				if got, ok := scores[other]; ok && got != 22 {
 					t.Errorf("%s scores %v, want 22 (or absent)", other, got)
 				}
@@ -697,6 +697,8 @@ func TestReadFactsPosition(t *testing.T) {
 		// A number tied to the series' name beats the bare prefix "7" a series
 		// named "7 Days" leaves.
 		{matchRequest{titles: []string{"7 Days: Book 1"}, series: []string{"7 Days"}}, "1", nil},
+		// ... and so does one a numbering prefix hid in front of the name.
+		{matchRequest{titles: []string{"01 - He Who Fights with Monsters 4: A LitRPG Adventure"}, series: []string{"He Who Fights With Monsters"}}, "4", nil},
 	} {
 		f := readFacts(tc.req)
 		var titles []string
@@ -712,7 +714,7 @@ func TestReadFactsPosition(t *testing.T) {
 	f := readFacts(matchRequest{titles: []string{"FWM04 - He Who Fights With Monsters - Book 4"}, series: []string{"He Who Fights WIth Monsters"}})
 	var marked []string
 	for _, g := range f.titles {
-		if g.seriesName {
+		if g.onlySeries {
 			marked = append(marked, g.joined)
 		}
 	}
