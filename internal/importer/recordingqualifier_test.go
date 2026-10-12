@@ -313,6 +313,58 @@ func TestATiedRecordingVariantSeriesIsReachedByTheRawName(t *testing.T) {
 	assertTreeValid(t, dataDir)
 }
 
+// A raw spelling's chain is reached by the whole name group, so it never ANCHORS: a
+// plain claim's outcome must not turn on whether another row of the batch spelled the
+// variant. With the tied "Foo (abridged)" held and a German "Foo [German Edition]"
+// reachable by the row's language, a German plain "Foo" row joins the German edition
+// - alone, and beside an English "Foo (abridged)" row of the same author in either
+// order - while the English qualified row joins foo-abridged: clusters form within one
+// language, the German one reaches the language facet first, and the English one has
+// no facet, so the raw candidate is the first that admits it.
+func TestARawSpellingDoesNotPullAPlainClaimOffItsLanguage(t *testing.T) {
+	tree := func(t *testing.T) string {
+		files := map[string]string{
+			"people/sa/sarah-hawke.json":            testpack.PersonJSON(t, "sarah-hawke", "Sarah Hawke"),
+			"works/fi/first-foo/work.json":          testpack.WorkJSON(t, "first-foo", "First Foo", testpack.WithAuthors("sarah-hawke")),
+			"works/fi/first-foo/recordings/r1.json": testpack.RecJSON(t, "r1", "first-foo", testpack.WithNarrators("bea-reader")),
+			"works/zw/zweites-foo/work.json": testpack.WorkJSON(t, "zweites-foo", "Zweites Foo",
+				testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de")),
+			"works/zw/zweites-foo/recordings/r1.json": testpack.RecJSON(t, "r1", "zweites-foo", testpack.WithNarrators("bea-reader")),
+			"works/er/erstes-foo/work.json": testpack.WorkJSON(t, "erstes-foo", "Erstes Foo",
+				testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de")),
+			"works/er/erstes-foo/recordings/r1.json": testpack.RecJSON(t, "r1", "erstes-foo", testpack.WithNarrators("bea-reader")),
+			"works/an/anderes-foo/work.json": testpack.WorkJSON(t, "anderes-foo", "Anderes Foo",
+				testpack.WithAuthors("sarah-hawke"), testpack.WithLanguage("de")),
+			"works/an/anderes-foo/recordings/r1.json": testpack.RecJSON(t, "r1", "anderes-foo", testpack.WithNarrators("bea-reader")),
+			"series/fo/foo-abridged.json":             testpack.SeriesJSON(t, "foo-abridged", "Foo (abridged)", "first-foo@1", "zweites-foo@2"),
+			"series/fo/foo-german-edition.json": testpack.SeriesJSON(t, "foo-german-edition", "Foo [German Edition]",
+				"erstes-foo@1", "anderes-foo@2"),
+		}
+		return seedTombstoneTree(t, files, nil)
+	}
+	de := langRow("B0FOODE003", "Drittes Foo", "Sarah Hawke", "german", "Foo", "3")
+	en := langRow("B0FOOABR03", "Third Foo", "Sarah Hawke", "english", "Foo (abridged)", "3")
+	wantDE := map[string]string{"erstes-foo": "1", "anderes-foo": "2", "drittes-foo": "3"}
+	for o, rows := range [][]string{{de}, {de, en}, {en, de}} {
+		dataDir := tree(t)
+		sum := runLibexOver(t, dataDir, rows...)
+		if sum.NewSeries != 0 {
+			t.Errorf("rows %d: NewSeries = %d, want 0", o, sum.NewSeries)
+		}
+		if got := seriesWorks(t, dataDir, "foo-german-edition"); !reflect.DeepEqual(got, wantDE) {
+			t.Errorf("rows %d: foo-german-edition = %v, want %v", o, got, wantDE)
+		}
+		ab := seriesWorks(t, dataDir, "foo-abridged")
+		if _, in := ab["drittes-foo"]; in {
+			t.Errorf("rows %d: the German plain row joined foo-abridged: %v", o, ab)
+		}
+		if len(rows) == 2 && ab["third-foo"] != "3" {
+			t.Errorf("rows %d: foo-abridged = %v, want third-foo at 3", o, ab)
+		}
+		assertTreeValid(t, dataDir)
+	}
+}
+
 // A dramatized series can number differently from the plain one: on the real tree
 // "The Stormlight Archive [Dramatized Adaptation]" holds Edgedancer at 2.8 where the
 // plain series holds it at 2.5. A dramatized-qualified claim now joins the plain

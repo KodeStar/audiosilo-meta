@@ -278,7 +278,8 @@ func reachOf(cat seriesCatalogue, claims []nameClaim, idx []int) *groupReach {
 // TIE ("Foo (abridged)", en and de alike) is in no facet, and the cleaned "Foo" walks
 // an empty `foo` chain - without this the claim founded a duplicate `foo` beside the
 // `foo-abridged` it spells. Reached by the whole group, like every other candidate of
-// it (a cluster is judged by its lead's reach); the spellings are taken in the
+// it (a cluster is judged by its lead's reach), and for that reason never an anchor
+// (unitGroup.anchors): only the cluster step tries it; the spellings are taken in the
 // group's canonical claim order, so the result does not depend on row order. A raw
 // spelling is deduplicated as a STRING before its group key is computed, so the N
 // claims of one spelling pay for the key and the walk once.
@@ -392,15 +393,6 @@ const (
 	tierFounded
 )
 
-// spelledByName reports whether a candidate of tier t is a series the claim's own
-// name spells - its chain, what its own decoration reached, or its raw spelling's
-// chain - rather than one only the row's language reached or the batch founds. It is
-// the one statement of that set, which is not a prefix of the tier order (tierRaw
-// ranks after tierLanguage), so named and anchors both ask it.
-func spelledByName(t candidateTier) bool {
-	return t == tierChain || t == tierDecorated || t == tierRaw
-}
-
 // seriesCandidate is a series a name's claims may land in: a catalogued one on
 // its chain or reached by its qualifiers, or one the batch founds. Its evidence
 // is its pool (evidencePool).
@@ -425,9 +417,14 @@ type seriesCandidate struct {
 }
 
 // named reports whether the claim's name spells the candidate - the chain's, one
-// its own decoration reached, or its raw spelling's chain - which is what a claim
-// that founds instead reports as stepped past.
-func (c *seriesCandidate) named() bool { return spelledByName(c.tier) }
+// its own decoration reached, or its raw spelling's chain - rather than one only
+// the row's language reached or the batch founds, which is what a claim that
+// founds instead reports as stepped past. The set is not a prefix of the tier
+// order (tierRaw ranks after tierLanguage), and it is NOT the anchoring set: a
+// raw-spelling candidate is reported but never anchors (unitGroup.anchors).
+func (c *seriesCandidate) named() bool {
+	return c.tier == tierChain || c.tier == tierDecorated || c.tier == tierRaw
+}
 
 // reaches reports whether cl reaches the candidate at all: a tierLanguage one
 // only by a claim in its facet.
@@ -581,16 +578,18 @@ type unitGroup struct {
 	bySlug map[string]*seriesCandidate
 }
 
-// anchors reports whether c may anchor a claim of the group: a candidate the name
-// spells - the chain, or, where the chain holds nothing, what the name's own
-// decoration reaches, which stands in for it (a held edition series renamed to its
-// plain base sits on a slug whose stored name no longer equals the claim's, and
-// the rename must be invisible to the outcome), and after it the chain of a raw
-// spelling (the series the claim's own uncleaned name spells, which is the chain the
-// claim walked before its recording qualifiers were cleaned off). A row-language
-// reach is tried in the cluster step alone.
+// anchors reports whether c may anchor a claim of the group: the chain, or, where
+// the chain holds nothing, what the name's own decoration reaches, which stands in
+// for it (a held edition series renamed to its plain base sits on a slug whose
+// stored name no longer equals the claim's, and the rename must be invisible to the
+// outcome). A row-language reach and a raw spelling's chain (tierRaw) are tried in
+// the cluster step alone, in tier order: a raw candidate is reached by the whole
+// name group, so anchoring on it would let a plain claim's outcome turn on whether
+// another row of the batch spelled the variant - a German "Foo" would anchor to the
+// tied "Foo (abridged)" ahead of the German edition its language reaches - and it
+// must rank after everything the cleaned name reaches, the language facet included.
 func (g *unitGroup) anchors(c *seriesCandidate) bool {
-	return c.tier == tierChain || (spelledByName(c.tier) && g.chainEmpty)
+	return c.tier == tierChain || (c.tier == tierDecorated && g.chainEmpty)
 }
 
 // unitClaims is a unit's claims in canonical order, each with the group (an index

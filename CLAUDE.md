@@ -159,9 +159,10 @@ name as `invalid` naming the base (`seriesNameFreeOfRecordingQualifier`), and `m
 `series-recording-qualifier` (189 on 2026-10-11) and `duplicate-series` (197) - that
 never fail the check (pkg/check's `seriesadvisories.go`).
 A claim's RAW spelling (`seriesRef.raw`) is still walked, AFTER everything the
-cleaned name reaches (`tierRaw`, `rawCandidates` in seriesresolve.go, anchoring only
-where the cleaned chain is empty; libex-select's pre-filter and the form's `Resolve`
-ask it too), because the qualifier index cannot key a variant whose derived language
+cleaned name reaches (`tierRaw`, `rawCandidates` in seriesresolve.go - NEVER an
+anchor, only a cluster-step candidate after the row-language reach, so a plain claim's
+outcome cannot turn on another row having spelled the variant; libex-select's
+pre-filter and the form's `Resolve` ask it too), because the qualifier index cannot key a variant whose derived language
 TIES and the cleaned chain may be empty: without it a claim "Foo (abridged)" founded
 `foo` beside the held `foo-abridged`. A qualified claim's POSITION may be the
 variant listing's own number for an IN-BETWEEN volume, so it does not contradict a
