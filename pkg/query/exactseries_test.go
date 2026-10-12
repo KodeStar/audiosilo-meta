@@ -606,6 +606,11 @@ func TestPullDegradesToTheRankedPage(t *testing.T) {
 		t.Fatal(err)
 	}
 	ranked := rankSeriesRows(page, "harry potter")
+	// The premise: this page plans a read, so the failure path is the one taken
+	// rather than the no-plan return, which would pass this test unread.
+	if planPrimaryPulls(ranked, nil) == nil {
+		t.Fatal("the limit=1 page plans no pull: the fixture no longer reaches the read")
+	}
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
 	if got := db.pullPrimaries(ctx, ranked, "harry potter", 1, nil); !reflect.DeepEqual(got, ranked) {

@@ -1034,8 +1034,9 @@ so bm25 ties them and the order is whatever the tie falls to.
 It is a RANKING OF THE COMPOSED PAGE, not a probe: `rankSeriesRows` runs on what
 `DB.results` built - every series row already carries its name, `ordering_of` and
 `translation_of` - and moves the tiered block to the page's first series slot,
-every other row keeping its relative order, so it costs NO query (nameKey over at most
-`limit` names) and needs no cost gate; `DB.search` runs it on the combined and
+every other row keeping its relative order, so the ranking costs NO query (nameKey over at most
+`limit` names) and needs no cost gate - the one read it can add is the pull below,
+planned purely and issued only on a page that needs it; `DB.search` runs it on the combined and
 series scopes only, over `searchPage`'s unranked page. A title-filtered FTS probe
 that also pulled an exact name the page lacked was measured on the 282k-work
 artifact: it cost every common-word keystroke a
@@ -1043,9 +1044,10 @@ second posting-list walk ("book" 66 -> 96ms combined, 43 -> 78ms on
 series/search) for a case bm25 does not produce (an exact name is the shortest
 series row holding every query word), and probe and page agreed on every page
 for the 638 real series names tried, on both surfaces; the page ranking measured
-within noise of the base on every query timed. `?lang=` needs nothing: the page is
+within noise of the base on every query timed. `?lang=` needs nothing of the ranking: the page is
 filtered at the source, so under `lang=de` the English primary is not on it and
-the German edition leads. An older artifact or an empty layer states no link, so
+the German edition leads (the pull below asks the filter itself, so it never
+brings that primary back). An older artifact or an empty layer states no link, so
 every exact name is a primary, by id. Every GROUP of two or more page rows
 sharing one series name is also ranked by TIER ALONE, stably, inside the slots
 the group already holds (`rankSameNamedGroups`: no other row moves, nothing joins
@@ -1054,8 +1056,8 @@ the page, bm25 order stands within a tier, so an all-primary group such as
 "potter" - no whole name, the same bm25 tie - leads with the primary too.
 Measured over 1,879 typing prefixes of the names below on both surfaces, the
 groups moved only Kingsbridge's reading-order variant behind its primary ("Kin",
-"King", "Kings"). The one row that JOINS a page is the **pull**
-(`planPrimaryPulls` -> `pullPrimaries`), and it is a contract change: a window
+"King", "Kings"). The one way a row JOINS a page is the **pull**
+(`pullPrimaries`: `planPrimaryPulls` -> one read -> `placePrimaries`), and it is a contract change: a window
 smaller than the tie (`limit=1..3` on the fixture) can hold same-named
 translations and variants and no primary - and with their target off the page
 the group-relative tiers rank them as primaries, so whichever edition the tie let
@@ -1079,7 +1081,7 @@ series names and typing prefixes above, at the default window with no filter and
 with `lang=de`, and over the 931 franchise queries at `limit=1` and `2`, no page
 planned a read (the real primaries win their bm25 ties); one pull read costs
 about 0.1ms. A page
-naming no series outright and holding no such group is byte-identical; measured, the rule moved 1 of 400 random series-name pages ("Of
+naming no series outright, holding no such group and planning no pull is byte-identical; measured, the rule moved 1 of 400 random series-name pages ("Of
 Magic" now leads "Magic of Magic") and none of the 238 franchise names carrying a
 translation or ordering variant. The fixture is `artifacttest.SameNamedSeries()`,
 whose primary id deliberately sorts after its same-named siblings so the bm25 tie

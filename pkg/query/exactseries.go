@@ -316,7 +316,7 @@ func sameNamedLinks(r seriesResult, k string, lang langFilter, ids []string) ([]
 	for _, t := range r.TranslationOf {
 		if nameKey(t.Name) == k {
 			linked = true
-			if admits(lang, t.Language) {
+			if lang.admits(t.Language) {
 				ids = append(ids, t.ID)
 			}
 		}
@@ -338,24 +338,27 @@ func sameNamedLinks(r seriesResult, k string, lang langFilter, ids []string) ([]
 // it names. It is pure, so a page it answers nil for costs no query: that is
 // every page holding no such set, which is every ordinary page.
 func planPrimaryPulls(page []any, lang langFilter) []primaryPull {
-	onPage := map[string]bool{}
-	first := map[string]int{}
-	var order []string // the set keys in first-slot order
-	var primary map[string]bool
+	// Allocated at the first named series row, so a page holding none - every
+	// work-only combined page - costs no map. onPage needs only the named rows: a
+	// link is followed only when its target's stated name has the set's (non-
+	// empty) key, and that target's own row would carry the same name.
+	var onPage, primary map[string]bool
+	var first map[string]int
 	var linked map[string][]string
+	var order []string // the set keys in first-slot order
 	for i, r := range page {
 		sr, ok := r.(seriesResult)
 		if !ok {
 			continue
 		}
-		onPage[sr.ID] = true
 		k := nameKey(sr.Name)
 		if k == "" {
 			continue
 		}
-		if primary == nil {
-			primary, linked = map[string]bool{}, map[string][]string{}
+		if onPage == nil {
+			onPage, primary, first, linked = map[string]bool{}, map[string]bool{}, map[string]int{}, map[string][]string{}
 		}
+		onPage[sr.ID] = true
 		if _, seen := first[k]; !seen {
 			first[k] = i
 			order = append(order, k)
@@ -385,12 +388,6 @@ func planPrimaryPulls(page []any, lang langFilter) []primaryPull {
 	return out
 }
 
-// admits is the live filter's rule for a series' language as the FTS side reads
-// it: no filter admits everything, and an unknown (tied) language passes.
-func admits(lang langFilter, language string) bool {
-	return len(lang) == 0 || language == "" || lang.has(language)
-}
-
 // placePrimaries puts each pull's fetched primaries - read back still of the
 // set's name and still a primary of it, admitted by the live language filter
 // (an unknown language passes, as on the FTS side) - at the set's first slot, by
@@ -401,24 +398,24 @@ func admits(lang langFilter, language string) bool {
 // it came.
 func placePrimaries(page []any, pulls []primaryPull, fetched map[string]seriesResult, q string, limit int, lang langFilter) []any {
 	at := map[int][]any{}
-	placed := false
+	placed := 0
 	for _, p := range pulls {
 		for _, id := range p.ids {
 			r, ok := fetched[id]
-			if !ok || nameKey(r.Name) != p.key || !admits(lang, r.Language) {
+			if !ok || nameKey(r.Name) != p.key || !lang.admits(r.Language) {
 				continue
 			}
 			if _, states := sameNamedLinks(r, p.key, nil, nil); states {
 				continue
 			}
 			at[p.slot] = append(at[p.slot], r)
-			placed = true
+			placed++
 		}
 	}
-	if !placed {
+	if placed == 0 {
 		return page
 	}
-	out := make([]any, 0, len(page)+len(at))
+	out := make([]any, 0, len(page)+placed)
 	for i, r := range page {
 		out = append(out, at[i]...)
 		out = append(out, r)

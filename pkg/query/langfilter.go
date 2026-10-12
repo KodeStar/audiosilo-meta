@@ -154,6 +154,16 @@ func (f langFilter) has(tag string) bool {
 	return found
 }
 
+// admits is predicate's FTS-side rule (unknownPasses) asked in Go, of a language
+// read off a composed row rather than a column: no filter admits everything, an
+// unknown language - a tied series, stored empty - passes, and anything else must
+// be one f has. It is what judges a series the search places on a page outside
+// the FTS query (the exact-series pull, exactseries.go), so the page cannot hold
+// a row the query's own predicate would have refused.
+func (f langFilter) admits(language string) bool {
+	return len(f) == 0 || language == "" || f.has(language)
+}
+
 // worksInFilter counts the works f admits, off the stats languages census.
 func (s *DB) worksInFilter(f langFilter) int {
 	n := 0
