@@ -279,7 +279,8 @@ func TestSplitVolumeAndVolumeOf(t *testing.T) {
 // Monsters golden case, tagged "He Who Fights With Monsters"), and the ones that
 // must give none: a name that is the start of a word or of a title with a
 // number of its own, a year, an ordinal, a range, a pack size, a number not
-// right after the name.
+// right after the name. The name is judged without its stopwords, as volumeOf
+// judges one, so "Expanse 3" is volume 3 of "The Expanse".
 func TestTitleVolume(t *testing.T) {
 	const hw = "He Who Fights With Monsters"
 	for _, tc := range []struct{ title, series, want string }{
@@ -298,6 +299,9 @@ func TestTitleVolume(t *testing.T) {
 		{"Bobiverse 5 [Dramatized]", "Bobiverse", "5"},
 		{"Expeditionary Force 06", "Expeditionary Force", "06"},
 		{"Spacers, Part 2", "Spacers", "2"},
+		{"Expanse 3: Abaddon's Gate", "The Expanse", "3"},
+		{"Unintended Cultivator, Volume 2", "Unintended Cultivator", "2"},
+		{"Artemis Fowl 1 - Artemis Fowl", "Artemis Fowl", "1"},
 
 		// None.
 		{"He Who Fights with Monsters: A LitRPG Adventure", hw, ""}, // book 1, unnumbered
@@ -320,8 +324,9 @@ func TestTitleVolume(t *testing.T) {
 		{"Monsters 4 A LitRPG Adventure", "Monsters", ""},
 		{"Leviathan Wakes (The Expanse 1)", "The Expanse", ""},
 		{"Anything 3", "", ""},
+		{"He Who Fights with Monsters No. 4", hw, ""}, // "No." is no volume word here (volumeKeywords)
 	} {
-		got, ok := titleVolume(tc.title, tc.series)
+		got, ok := titleVolume(tc.title, []termForm{newTermForm(matchTerms(tc.series))})
 		if got != tc.want || ok != (tc.want != "") {
 			t.Errorf("titleVolume(%q, %q) = %q, %v; want %q", tc.title, tc.series, got, ok, tc.want)
 		}

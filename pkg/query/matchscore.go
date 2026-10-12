@@ -5,7 +5,6 @@ import (
 	"regexp"
 	"slices"
 	"strings"
-	"unicode"
 	"unicode/utf8"
 
 	"golang.org/x/text/unicode/norm"
@@ -187,7 +186,7 @@ func identOf(terms []string) string {
 // number, which becomes the request's position when it states none.
 var (
 	// "02 - ", "7. ", "Book 3: ", "#4 ", "Vol. 2 - ", and the scanner's "01 Title".
-	leadNumberRE = regexp.MustCompile(`(?i)^\s*(?:(?:book|vol(?:ume)?\.?|part|band|teil|tome)\s*)?#?(\d{1,3}(?:\.\d+)?)(?:\s*[-.:_)\]]\s*|\s+)`)
+	leadNumberRE = regexp.MustCompile(`(?i)^\s*(?:` + volumeWordPattern + `\s*)?#?(\d{1,3}(?:\.\d+)?)(?:\s*[-.:_)\]]\s*|\s+)`)
 	// "SW06 - ", "BAE06: ", "C02 ": a short series code glued to its number.
 	// The separator must be followed by a space, so "R2-D2" and "Catch-22" are
 	// titles, not codes.
@@ -207,8 +206,8 @@ var (
 	// "(Unabridged)", "[MP3]", "(Sharpe 08)": any trailing bracketed group.
 	trailBracketRE = regexp.MustCompile(`\s*[(\[][^()\[\]]{0,80}[)\]]\s*$`)
 	// ": Sentenced to War, Book 5" / ", Book 5": a series-and-volume tail.
-	trailColonVolumeRE = regexp.MustCompile(`(?i)\s*:\s*[^:]*\b(?:book|vol(?:ume)?\.?|part|band|teil|tome)\s*#?\d+(?:\.\d+)?\s*$`)
-	trailCommaVolumeRE = regexp.MustCompile(`(?i)\s*[,-]\s*(?:book|vol(?:ume)?\.?|part|band|teil|tome)\s*#?\d+(?:\.\d+)?\s*$`)
+	trailColonVolumeRE = regexp.MustCompile(`(?i)\s*:\s*[^:]*\b` + volumeWordPattern + `\s*#?\d+(?:\.\d+)?\s*$`)
+	trailCommaVolumeRE = regexp.MustCompile(`(?i)\s*[,-]\s*` + volumeWordPattern + `\s*#?\d+(?:\.\d+)?\s*$`)
 
 	// The cuts in the order cutNumbering applies them.
 	trailCuts = []*regexp.Regexp{trailBracketRE, trailColonVolumeRE, trailCommaVolumeRE}
@@ -334,94 +333,48 @@ func splitVolume(terms []string) (name []string, number string, ok bool) {
 // "the primal hunter book 1"), returning the number.
 func volumeOf(terms []string, series []termForm) (string, bool) {
 	name, n, ok := splitVolume(terms)
-	if !ok {
+	if !ok || !namesSeries(name, series) {
 		return "", false
 	}
-	ident := identOf(name)
-	if ident != "" && slices.ContainsFunc(series, func(s termForm) bool { return s.ident == ident }) {
-		return n, true
+	return n, true
+}
+
+// namesSeries reports whether terms are one of the series' names, stopwords
+// aside ("primal hunter" is "The Primal Hunter").
+func namesSeries(terms []string, series []termForm) bool {
+	ident := identOf(terms)
+	return ident != "" && slices.ContainsFunc(series, func(s termForm) bool { return s.ident == ident })
+}
+
+// titleVolume reads the volume a title states right after one of the series'
+// names, as publishers number a series' books: "He Who Fights with Monsters 4:
+// A LitRPG Adventure", "The Expanse, Book 3", "Discworld #8: Guards! Guards!".
+// The name is judged as volumeOf judges one (namesSeries), and the number must
+// be followed by the end or a separator, not by more words ("Jack Reacher 61
+// Hours") or another number (a range, "Dork Diaries 1 - 12"). It mirrors
+// audiosilo-server's metadata.PositionInTitle, except that a hyphen glued to a
+// word is no separator: on the catalogue's titles that was a pack size
+// ("Bodyswaps 4-Pack", "3-in-1"), never a volume.
+func titleVolume(title string, series []termForm) (string, bool) {
+	for _, m := range titleVolumeRE.FindAllStringSubmatchIndex(title, -1) {
+		n, sep := title[m[2]:m[3]], title[m[4]:]
+		if titleRangeRE.MatchString(sep) || strings.Trim(n, "0.") == "" || !namesSeries(matchTerms(title[:m[0]]), series) {
+			continue
+		}
+		return positionToken(n)
 	}
 	return "", false
 }
 
-// titleVolume reads the volume a title states right after the series' name, as
-// many publishers number a series' books: "He Who Fights with Monsters 4: A
-// LitRPG Adventure", "The Expanse, Book 3", "Discworld #8: Guards! Guards!". It
-// mirrors audiosilo-server's metadata.PositionInTitle and is as narrow, since
-// the number becomes the request's position:
-//
-//   - the title starts with the name (letters and digits compared, case and
-//     accents aside), which ends where a word does ("Catch" in "Catcher 3" gives
-//     none);
-//   - the number is set off by a space or a comma ("Catch-22" gives none),
-//     maybe after "Book", "Vol.", "Volume", "Part", "No." or "#", has one to
-//     three digits and maybe a decimal part, and is above 0 ("Monsters 1999"
-//     gives none);
-//   - the title ends after it or a separator follows (":", a spaced "-", a
-//     dash, "(", "[", ",", ";", "|"), so "Jack Reacher 61 Hours", "4th Edition"
-//     and "Bodyswaps 4-Pack" give none, and a dash or comma then another
-//     number is a range ("Dork Diaries 1 - 12"), which gives none. The hyphen
-//     glued to a word is narrower than the server's rule: measured over the
-//     catalogue's own titles it was a pack or bundle size ("4-Pack", "3-in-1",
-//     "12-book Collection") every time, never a volume.
-func titleVolume(title, series string) (string, bool) {
-	rest, ok := afterSeriesName(title, series)
-	if !ok {
-		return "", false
-	}
-	m := titleVolumeRE.FindStringSubmatch(rest)
-	if m == nil || titleRangeRE.MatchString(rest[len(m[0])-len(m[2]):]) || strings.Trim(m[1], "0.") == "" {
-		return "", false
-	}
-	return positionToken(m[1])
-}
-
-// titleVolumeRE is the number after a series' name (titleVolume): m[1] the
-// number, m[2] the end or the separator after it.
-var titleVolumeRE = regexp.MustCompile(`^(?:\s*,\s*|\s+)(?i:(?:book|vol(?:ume)?\.?|part|no\.)\s*)?#?(\d{1,3}(?:\.\d+)?)\s*($|-(?:\s|$)|[:(\[,;|\x{2013}\x{2014}])`)
-
-// titleRangeRE is a separator that makes the number the start of a range: a
-// dash or a comma, then another number.
-var titleRangeRE = regexp.MustCompile(`^[-,\x{2013}\x{2014}]\s*\d`)
-
-// afterSeriesName is what follows the series' name at the start of title, the
-// two compared by their letters and digits alone (seriesKey), when the name
-// ends where a word does.
-func afterSeriesName(title, series string) (string, bool) {
-	want := seriesKey(series)
-	if want == "" {
-		return "", false
-	}
-	var got strings.Builder
-	for i, r := range title {
-		got.WriteString(seriesKey(string(r)))
-		if !strings.HasPrefix(want, got.String()) {
-			return "", false
-		}
-		if got.Len() == len(want) {
-			// Marks combining with the name's last letter are part of it (a
-			// decomposed "é" is "e" + U+0301).
-			rest := strings.TrimLeftFunc(title[i+utf8.RuneLen(r):], model.IsCombiningMark)
-			if next, _ := utf8.DecodeRuneInString(rest); unicode.IsLetter(next) || unicode.IsNumber(next) {
-				return "", false
-			}
-			return rest, true
-		}
-	}
-	return "", false
-}
-
-// seriesKey is s's letters and digits alone, lowercased and without accents:
-// "He Who Fights WIth Monsters" and "He Who Fights with Monsters" share it.
-func seriesKey(s string) string {
-	var b strings.Builder
-	for _, r := range stripMarks(s) {
-		if unicode.IsLetter(r) || unicode.IsNumber(r) {
-			b.WriteRune(unicode.ToLower(r))
-		}
-	}
-	return b.String()
-}
+var (
+	// titleVolumeRE is a number set off by a space or a comma, maybe after a
+	// volume word or "#": m[2:4] the number, m[4] where the end or the
+	// separator after it starts.
+	titleVolumeRE = regexp.MustCompile(`(?i)[\s,]\s*(?:` + volumeWordPattern + `\s*)?#?(\d{1,3}(?:\.\d+)?)\s*($|-(?:\s|$)|[:(\[,;|\x{2013}\x{2014}])`)
+	// titleRangeRE is a separator that makes the number the start of a range:
+	// a dash or a comma, then another number.
+	titleRangeRE = regexp.MustCompile(`^[-,\x{2013}\x{2014}]\s*\d`)
+)
 
 // filter returns the terms drop does not reject.
 func filter(terms []string, drop func(string) bool) []string {
@@ -560,6 +513,10 @@ func bestTitle(hyp *termForm, forms []titleForm, buf *editBuf) float64 {
 // sameIdentifyingTerms reports whether two term lists hold the same words once
 // stopwords are left out ("The Dresden Files" and "Dresden Files").
 func sameIdentifyingTerms(a, b *termForm) bool { return a.ident != "" && a.ident == b.ident }
+
+// sameWords reports whether two forms are one name: the same words, or the
+// same but for stopwords.
+func sameWords(a, b *termForm) bool { return a.joined == b.joined || sameIdentifyingTerms(a, b) }
 
 // containsRun reports whether short appears in long as a contiguous run of
 // whole words and holds at least two identifying ones.
@@ -838,7 +795,7 @@ func seriesNameFits(hyp, name *termForm, buf *editBuf) bool {
 	if len(hyp.terms) == 0 || len(name.terms) == 0 {
 		return false
 	}
-	if hyp.joined == name.joined || sameIdentifyingTerms(hyp, name) || containsRun(hyp, name) || containsRun(name, hyp) {
+	if sameWords(hyp, name) || containsRun(hyp, name) || containsRun(name, hyp) {
 		return true
 	}
 	// One identifying word on either side ("Sharpe" for "Richard Sharpe

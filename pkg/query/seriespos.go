@@ -1,7 +1,10 @@
 package query
 
 import (
+	"cmp"
 	"context"
+	"maps"
+	"slices"
 	"sort"
 	"strings"
 )
@@ -114,6 +117,15 @@ var volumeKeywords = map[string]bool{
 	"book": true, "vol": true, "volume": true, "part": true,
 	"band": true, "teil": true, "tome": true,
 }
+
+// volumeWordPattern is volumeKeywords as a regexp alternation, longest first,
+// each word maybe abbreviated with a "." - the volume words matchscore.go's
+// numbering shapes read, so the vocabulary has one home.
+var volumeWordPattern = func() string {
+	words := slices.Collect(maps.Keys(volumeKeywords))
+	slices.SortFunc(words, func(a, b string) int { return cmp.Or(len(b)-len(a), strings.Compare(a, b)) })
+	return `(?:` + strings.Join(words, "|") + `)\.?`
+}()
 
 // seriesPositionQuery is a query read as "<series name> [volume word] <number>".
 // residuals are the series-name candidates to try, most likely first.

@@ -315,7 +315,6 @@ func readFacts(req matchRequest) *matchFacts {
 			*to = p
 		}
 	}
-	spellings := slices.Concat(req.series, f.seriesNames)
 	// Each guess is read beside each series name (titleVariants takes the
 	// name off), the first name's variants first.
 	besides := f.seriesNames
@@ -323,10 +322,8 @@ func readFacts(req matchRequest) *matchFacts {
 		besides = []string{""}
 	}
 	for _, h := range req.titles {
-		for _, name := range spellings {
-			if n, ok := titleVolume(h, name); ok {
-				imply(&tied, n)
-			}
+		if n, ok := titleVolume(h, f.series); ok {
+			imply(&tied, n)
 		}
 		for _, name := range besides {
 			variants, number := titleVariants(h, name)
@@ -344,9 +341,7 @@ func readFacts(req matchRequest) *matchFacts {
 				seen[key] = true
 				g := newTitleGuess(terms)
 				g.probe = v
-				g.seriesName = slices.ContainsFunc(f.series, func(s termForm) bool {
-					return s.joined == g.joined || sameIdentifyingTerms(&s, &g.termForm)
-				})
+				g.seriesName = slices.ContainsFunc(f.series, func(s termForm) bool { return sameWords(&s, &g.termForm) })
 				f.titles = append(f.titles, g)
 			}
 		}
@@ -968,23 +963,20 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 //     record stored under its volume number) - is numbering: the number
 //     agreeing is the series agreeing and stands in for the title at
 //     genericTitleValue, or at what a guess naming more than the series
-//     reaches when that is more ("He Who Fights with Monsters 4: A LitRPG
-//     Adventure" against "He Who Fights with Monsters 4"), so reading the
-//     volume never costs the volume its title (a real title that agrees still
-//     ranks first); a different number is a different volume, unless the
-//     series lists the work at exactly the stated position (an omnibus
-//     "Sellswords: Volume 1" listed at 1-3);
+//     reaches when that is more (a real title that agrees still ranks first);
+//     a different number is a different volume, unless the series lists the
+//     work at exactly the stated position (an omnibus "Sellswords: Volume 1"
+//     listed at 1-3);
 //   - a named title that clearly disagrees outranks a numbering match (see
 //     seriesDistrustLow/High);
 //   - in the named series but at ANOTHER volume, unless the title itself agrees
 //     ("Sharpe's Siege" filed as volume 20, which is volume 19), whatever it
 //     shares with the request's title is the series' naming pattern ("Tales
 //     from a Not-So-..."), not identity, so the title counts nothing. Whether
-//     the title agrees is read off named, the best similarity of the guesses
-//     that are not only the series' name: "He Who Fights with Monsters" is
-//     contained in every volume titled "He Who Fights with Monsters N", so
-//     beside a stated volume 4 it must not let volume 3 keep its title (it
-//     held 0.93 there, and volume 4 led volume 3 by 5 points).
+//     the title agrees is read off named, the best over the guesses that are
+//     not only the series' name: "He Who Fights with Monsters" is contained in
+//     every "He Who Fights with Monsters N", so it must not let another volume
+//     keep its title beside a stated one.
 func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreement, float64) {
 	agreement := seriesNone
 	for _, m := range c.series {

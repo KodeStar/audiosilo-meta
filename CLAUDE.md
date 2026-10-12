@@ -1158,32 +1158,28 @@ stored title is also compared by either side of its colon at 0.9; a title guess
 that is the series name plus a number (`volumeOf`) is position evidence, never a
 title, and so is a title that is the series name, a number and then the end or
 a separator (`titleVolume`, "He Who Fights with Monsters 4: A LitRPG Adventure" -
-a mirror of audiosilo-server's `metadata.PositionInTitle`, one hair narrower: a
-hyphen glued to a word, "Bodyswaps 4-Pack", is a pack size; measured over the
-catalogue's own series titles it reads 4,876 and agrees with the stored position
-on 4,794, the rest omnibus numbering at range positions); a number TIED to the
-series name that way wins over a bare prefix number (a series named "7 Days"
-leaves only "7" of "7 Days: Book 1" to `cutNumbering`); one that is the name of
-THIS work's author is not judged against it (per candidate, because the strings
-cannot tell which tag is the garbage one); `seriesVerdict` is the one place a
-candidate's numbering is judged: a GENERIC title ("Dork Diaries 6": the series
-name and a number) counts as numbering, at `genericTitleValue` or the better
-similarity a guess naming more than the series reaches, a named title in the
-0.3-0.75 band vetoes an agreeing position ("Sharpe's Siege" filed at 20 must not
-become "Sharpe's Revenge"), and a candidate sitting in the named series at
-ANOTHER position - or whose generic title names another volume, unless the
-series lists it at exactly the stated position (an omnibus at 1-3) - gets no
-credit for a title that does not agree, where a guess that is ONLY the series'
-name never counts as agreeing (`titleGuess.seriesName`): "He Who Fights with
-Monsters", the folder "FWM04 - He Who Fights With Monsters - Book 4" left
-uncut, is contained in every "He Who Fights with Monsters N" and kept volume 3 at
-title 0.93 beside a stated volume 4, so the right volume led its neighbour by 5
-points (91 to 86 on the real artifact; 93 to 30 since,
-`TestMatchStatedVolumeBeatsItsNeighbours`); a request stating no volume is
-judged exactly as before (`TestMatchWithoutAVolumeAppliesNoVolumeRule`). Measured
-over 1,500 sampled series memberships against the 282k-work core artifact, four
-request shapes each: no top pick lost, confident right picks up 16-70 per shape,
-confident wrong picks unchanged. Named authors none of whom wrote a work
+a mirror of audiosilo-server's `metadata.PositionInTitle` that judges the name as
+`volumeOf` does, stopwords aside, and reads a hyphen glued to a word, "Bodyswaps
+4-Pack", as a pack size; every numbering shape reads its volume words from the
+one `volumeKeywords` list); a number TIED to the series name that way wins over
+a bare prefix number (a series named "7 Days" leaves only "7" of "7 Days: Book
+1" to `cutNumbering`); one that is the name of THIS work's author is not judged
+against it (per candidate, because the strings cannot tell which tag is the
+garbage one); `seriesVerdict` is the one place a candidate's numbering is
+judged: a GENERIC title ("Dork Diaries 6": the series name and a number) counts
+as numbering, at `genericTitleValue` or the better similarity a guess naming
+more than the series reaches, a named title in the 0.3-0.75 band vetoes an
+agreeing position ("Sharpe's Siege" filed at 20 must not become "Sharpe's
+Revenge"), and a candidate sitting in the named series at ANOTHER position - or
+whose generic title names another volume, unless the series lists it at exactly
+the stated position (an omnibus at 1-3) - gets no credit for a title that does
+not agree, where a guess that is ONLY the series' name never counts as agreeing
+(`titleGuess.seriesName`): "He Who Fights with Monsters", the folder "FWM04 - He
+Who Fights With Monsters - Book 4" left uncut, is contained in every "He Who
+Fights with Monsters N", and counted as agreement it let a neighbouring volume
+sit 5 points behind the stated one (`TestMatchStatedVolumeBeatsItsNeighbours`);
+a request stating no volume is judged exactly as before
+(`TestMatchWithoutAVolumeAppliesNoVolumeRule`). Named authors none of whom wrote a work
 scale its score by 0.75. Each title form, guess and series name is folded once
 (`termForm`), person and series names once per request (`factMemo`). Each result is
 the `WorkResult` search returns plus `score` (0-100), `recording_id` (the
