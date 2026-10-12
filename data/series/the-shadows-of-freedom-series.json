@@ -9637,12 +9637,17 @@
           "imported_at": "2026-07-29",
           "ref": "B004XDOKB0",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UZX8X4",
+          "type": "libex-import"
         }
       ],
       "works": [
         {
           "position": "1",
-          "work": "spellman-files"
+          "work": "the-spellman-files"
         },
         {
           "position": "3",
@@ -9659,6 +9664,10 @@
         {
           "position": "5",
           "work": "trail-of-the-spellmans"
+        },
+        {
+          "position": "2",
+          "work": "curse-of-the-spellmans"
         }
       ]
     },
@@ -11199,28 +11208,6 @@
         {
           "position": "1-3",
           "work": "the-star-fighters-of-murphy-street-audio-collection"
-        }
-      ]
-    },
-    "the-star-girl-series": {
-      "id": "the-star-girl-series",
-      "license": "CC0-1.0",
-      "name": "The Star Girl Series",
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0899D855Y",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "the-gifting-the-star-girl-series-book-2"
-        },
-        {
-          "position": "1",
-          "work": "the-gifted"
         }
       ]
     },
@@ -13626,6 +13613,16 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/series/49075-the-stormlight-archive",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B0B75LPW2K",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "isbn:9781648813900",
+          "type": "audiosilo-books-import"
         }
       ],
       "works": [
@@ -13664,44 +13661,6 @@
         {
           "position": "4.5",
           "work": "horneater"
-        }
-      ]
-    },
-    "the-stormlight-archive-dramatized-adaptation": {
-      "id": "the-stormlight-archive-dramatized-adaptation",
-      "license": "CC0-1.0",
-      "name": "The Stormlight Archive [Dramatized Adaptation]",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "isbn:9781648813900",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "the-way-of-kings"
-        },
-        {
-          "position": "2",
-          "work": "words-of-radiance"
-        },
-        {
-          "position": "2.8",
-          "work": "edgedancer"
-        },
-        {
-          "position": "3",
-          "work": "oathbringer"
-        },
-        {
-          "position": "3.5",
-          "work": "dawnshard"
-        },
-        {
-          "position": "4",
-          "work": "rhythm-of-war"
         }
       ]
     },
@@ -17161,40 +17120,19 @@
         }
       ]
     },
-    "the-sword-of-shannara-abridged": {
-      "id": "the-sword-of-shannara-abridged",
-      "license": "CC0-1.0",
-      "name": "The Sword of Shannara (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V8H3EA",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "3",
-          "work": "the-wishsong-of-shannara-original-shannara-trilogy-book-3"
-        },
-        {
-          "position": "1",
-          "work": "the-sword-of-shannara-original-shannara-trilogy-book-1"
-        },
-        {
-          "position": "2",
-          "work": "the-elfstones-of-shannara-original-shannara-trilogy-book-2"
-        }
-      ]
-    },
     "the-sword-of-shannara-unabridged": {
       "id": "the-sword-of-shannara-unabridged",
       "license": "CC0-1.0",
-      "name": "The Sword of Shannara (Unabridged)",
+      "name": "The Sword of Shannara",
       "sources": [
         {
           "imported_at": "2026-07-30",
           "ref": "B002UZDXUM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8H3EA",
           "type": "libex-import"
         }
       ],

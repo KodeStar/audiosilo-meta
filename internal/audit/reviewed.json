@@ -289,6 +289,14 @@
   },
   {
     "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "the series numbers the chronological order, where Beyond the Deepwoods is book 4 and already listed there; slot 1 is The Curse of the Gloamglozer",
+    "series": "the-edge-chronicles",
+    "target": "beyond-the-deepwoods-the-edge-chronicles-book-1"
+  },
+  {
+    "decision": "assert",
     "from": "3.8",
     "op": "drop-membership",
     "reason": "the same GraphicAudio production is also listed at 3.5; the 3.8 slot is a duplicate listing",
@@ -306,6 +314,14 @@
     "reason": "the series name is Danish (Saksernes fortaellinger): the Danish volume belongs here and the two Dutch volumes are the misfiled half",
     "series": "saksernes-fortaellinger",
     "target": "den-hedenske-herre"
+  },
+  {
+    "decision": "assert",
+    "from": "0.5",
+    "op": "drop-membership",
+    "reason": "the canonical Kingsbridge series lists the prequel at its publication slot 4 with the same abridged recording; 0.5 is its chronological number",
+    "series": "kingsbridge-serie-gekurzt",
+    "target": "der-morgen-einer-neuen-zeit"
   },
   {
     "decision": "accept",
@@ -345,6 +361,14 @@
   },
   {
     "decision": "assert",
+    "from": "2.8",
+    "op": "drop-membership",
+    "reason": "the canonical series lists Edgedancer at 2.5 with the same GraphicAudio recording; 2.8 is the dramatization's own release number",
+    "series": "the-stormlight-archive-dramatized-adaptation",
+    "target": "edgedancer"
+  },
+  {
+    "decision": "assert",
     "from": "5",
     "op": "drop-membership",
     "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
@@ -353,11 +377,19 @@
   },
   {
     "decision": "assert",
-    "from": "1",
+    "from": "3",
     "op": "drop-membership",
-    "reason": "the US-titled duplicate of Philosopher's Stone, whose slot 1 the main series already fills; the duplicate cannot merge yet because both records carry community characters and recaps, so it leaves the variant series and the variant folds into harry-potter",
-    "series": "harry-potter-full-cast-editions",
-    "target": "harry-potter-and-the-sorcerers-stone"
+    "reason": "Left Behind 3 is P.T. Saunders' book of the same name, not a LaHaye and Jenkins volume; it stays in Saunders' own Left Behind Series",
+    "series": "left-behind",
+    "target": "left-behind-3"
+  },
+  {
+    "decision": "assert",
+    "from": "1-3",
+    "op": "drop-membership",
+    "reason": "P.T. Saunders' box set is not a LaHaye and Jenkins volume; it stays in Saunders' own Left Behind Series",
+    "series": "left-behind",
+    "target": "left-behind-series-the-box-set"
   },
   {
     "decision": "assert",
@@ -374,6 +406,22 @@
     "reason": "the series lists Magical Midlife Flowers twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
     "series": "leveling-up",
     "target": "magical-midlife-flowers-dramatized-adaptation"
+  },
+  {
+    "decision": "assert",
+    "from": "3",
+    "op": "drop-membership",
+    "reason": "the series numbers the chronological order, where Midnight over Sanctaphrax is book 6; slot 3 is publication order",
+    "series": "the-edge-chronicles",
+    "target": "midnight-over-sanctaphrax"
+  },
+  {
+    "decision": "assert",
+    "from": "21",
+    "op": "drop-membership",
+    "reason": "the canonical series lists One of Us Is Dead at 20; the listing has no abridged recording of it, only the unabridged Daniel Weyman reading",
+    "series": "roy-grace-abridged",
+    "target": "one-of-us-is-dead-peter-james"
   },
   {
     "decision": "reject",
@@ -397,6 +445,30 @@
   },
   {
     "decision": "assert",
+    "from": "21",
+    "op": "drop-membership",
+    "reason": "the canonical series lists Sharpe's Devil at 23 in its chronological order that now includes Sharpe's Command; 21 is the older numbering",
+    "series": "richard-sharpe-novels-abridged",
+    "target": "sharpes-devil"
+  },
+  {
+    "decision": "assert",
+    "from": "14",
+    "op": "drop-membership",
+    "reason": "the canonical series lists Sharpe's Sword at 15 in its chronological order that now includes Sharpe's Command; 14 is the older numbering",
+    "series": "richard-sharpe-novels-abridged",
+    "target": "sharpes-sword"
+  },
+  {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "Shawn O'Brien, Town Tamer is book 1 (its own bundle is numbered 1-3 and Manslaughter is book 2), so slot 2 is a misnumbering",
+    "series": "shawn-obrien",
+    "target": "shawn-obrien-town-tamer"
+  },
+  {
+    "decision": "assert",
     "from": "2",
     "op": "drop-membership",
     "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
@@ -405,11 +477,43 @@
   },
   {
     "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "a retailer listing of abridged Star Wars film novelizations, not a series of its own; the novel sits at 13 of the Star Wars series",
+    "series": "star-wars-abridged",
+    "target": "star-wars-episode-ii-attack-of-the-clones"
+  },
+  {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "a retailer listing of abridged Star Wars film novelizations, not a series of its own; the novel sits in the Star Wars series",
+    "series": "star-wars-abridged",
+    "target": "star-wars-episode-iii-revenge-of-the-sith"
+  },
+  {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "the series numbers the chronological order, where Stormchaser is book 5; slot 2 is publication order",
+    "series": "the-edge-chronicles",
+    "target": "stormchaser"
+  },
+  {
+    "decision": "assert",
     "from": "3",
     "op": "drop-membership",
     "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
     "series": "zodiac-wolves-german-edition",
     "target": "sun-crossed"
+  },
+  {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "the canonical Kovac and Liska series lists The 9th Girl at 5 with the same abridged recording, after the novella The 1st Victim",
+    "series": "kovac-liska-abridged",
+    "target": "the-9th-girl"
   },
   {
     "decision": "assert",
@@ -437,11 +541,27 @@
   },
   {
     "decision": "assert",
+    "from": "22",
+    "op": "drop-membership",
+    "reason": "the canonical series lists The Hawk Is Dead at 21; the listing has no abridged recording of it, only the unabridged Daniel Weyman reading",
+    "series": "roy-grace-abridged",
+    "target": "the-hawk-is-dead"
+  },
+  {
+    "decision": "assert",
     "from": "0.1",
     "op": "drop-membership",
     "reason": "the series lists The Last Wish twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
     "series": "the-witcher",
     "target": "the-last-wish-full-cast-edition"
+  },
+  {
+    "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "a retailer listing of abridged Star Wars film novelizations, not a series of its own; the novel sits in the Star Wars series",
+    "series": "star-wars-abridged",
+    "target": "the-phantom-menace-star-wars-episode-i"
   },
   {
     "decision": "reject",
@@ -473,6 +593,33 @@
     "target": "87th-precinct"
   },
   {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "bailey-weggins-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "a-bailey-weggins-mystery"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "buckhorn"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "a-buckhorn-western"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "detective-d-d-warren-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "a-d-d-warren-and-flora-dane-novel"
+  },
+  {
     "decision": "accept",
     "op": "merge-series",
     "others": [
@@ -480,6 +627,159 @@
     ],
     "reason": "the orphan's one member, Oath of Office, sits at the same publication-order slot in A Jack Ryan Novel; retailers list no separate Jack Ryan Universe series for it",
     "target": "a-jack-ryan-novel-publication-order"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-nursery-crime-adventures"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "a-nursery-crime-novel"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "spells-angels"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "a-spells-angels-cozy-mystery"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-thursday-murder-club"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "a-thursday-murder-club-mystery"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "sir-charles-sheridan"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "a-victorian-mystery-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-waiting-to-exhale-novel-abridged"
+    ],
+    "reason": "two recording spellings of one series, holding book 1 and book 2 at free slots of each other",
+    "target": "a-waiting-to-exhale-novel-unabridged"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "vickie-adventure-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "adventures-of-vickie-anderson"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "perilous-alliance"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "aeon-14-perilous-alliance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "agent-pendergast-series-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots; Crooked River is filed there with only its unabridged reading, so the name records no abridgement of it",
+    "target": "agent-pendergast"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "alastair-audley"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "alastair-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "alcatraz-vs-the-evil-librarians"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "alcatraz-versus-the-evil-librarians"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "all-souls-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "all-souls"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "krone-der-sieben-inseln"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "all-the-stars-and-teeth-german-edition"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "amanecer-rojo-red-rising"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "amanecer-rojo"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "amelia-peabody-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots; every abridged reading carries the flag, and A River in the Sky and The Painted Queen are filed there with only unabridged readings",
+    "target": "amelia-peabody"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "memory-man-series-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "amos-decker"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "an-inconvenient-truth-abridged"
+    ],
+    "reason": "the abridged spelling lists An Inconvenient Truth at 1, the free slot before its sequel at 2, and its only recording states abridged",
+    "target": "an-inconvenient-truth"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "ana-la-de-tejas-verdes-anne-of-green-gables"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "ana-la-de-las-tejas-verdes"
   },
   {
     "decision": "assert",
@@ -494,10 +794,91 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "antes-de-ti-me-before-you"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "antes-de-ti"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "apollo-quartet-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots; the retailer files Ian Sales' unabridged novella readings under it, so the name records no abridgement",
+    "target": "apollo-quartet-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "artemis-fowl-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
     "target": "artemis-fowl"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "an-atlee-pine-thriller-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "atlee-pine"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "adventuras-de-tom-sawyer-y-huckleberry-finn-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "aventuras-de-tom-sawyer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-renee-ballard-and-harry-bosch-novel"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "ballard-and-bosch"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "black-bear-clan"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "bellhaven-clan"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "bevilacqua-spanish-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "bevilacqua-y-chamorro"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-black-city-saint-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "black-city"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "black-flagged-german-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of this series; the retailer files the English VEKTOR and OMEGA products under a German-edition label, and no German edition is in the catalogue",
+    "target": "black-flagged"
   },
   {
     "decision": "assert",
@@ -521,10 +902,37 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "boisen-nyborg-ermitteln-gekurzt"
+    ],
+    "reason": "the abridged spelling places Die Tote am Strand at 1 and Die Tote im Kustenfeuer at 3, the numbering the publisher's own Boisen & Nyborg listing gives, free slots beside Tod in den Fluten at 5",
+    "target": "boisen-nyborg-ermitteln"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "butch-karp-marlene-ciampi-abridged"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
     "target": "butch-karp-marlene-ciampi"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-captives-war"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "captives-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "warhammer-40-000-carcharodons"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "carcharodons"
   },
   {
     "decision": "assert",
@@ -539,10 +947,91 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "chaos-queens"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "chaos-queen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "christmas-hope-series-abridged"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
     "target": "christmas-hope-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "audible-exclusive-chronicles-of-barsetshire-read-by-timothy-west"
+    ],
+    "reason": "once the decorated duplicate records merge, it lists the six novels at the same slots; the narrator and the Audible exclusive are properties of the recordings",
+    "target": "chronicles-of-barsetshire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "ciclo-el-legado-inheritance-cycle-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "ciclo-el-legado"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-civil-war-trilogy-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "civil-war-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "coalwood-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "coalwood"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "covert-one-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "covert-one-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "an-apocalypse-science-fiction-cyberpunk-adventure"
+    ],
+    "reason": "both list the same five Cyber Viking works at the same slots; the other name is a retailer genre tagline",
+    "target": "cyber-viking"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "dc-detectives-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "d-c-detectives"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "daniel-pike-legal-thriller"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "daniel-pike"
   },
   {
     "decision": "assert",
@@ -557,10 +1046,100 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "green-berets"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "dave-riley"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "adventures-of-a-middle-school-zombie"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "dead-jed"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "georg-dengler"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "dengler-ermittelt"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "die-dragons-gift-triologie"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "der-drachengeschenk-trilogie"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "der-kleine-drache-kokosnuss-sachhorbuch"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "der-kleine-drache-kokosnuss-sachhorbucher"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "der-ring-des-nibelungen-horspiel"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "der-ring-des-nibelungen-drama"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "der-seher-gelesen-von-gerrit-petersen"
     ],
     "reason": "lists the same works at the same slots as the canonical series; the narrator is a property of the recordings, not a series",
     "target": "der-seher"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-descendants-mystery"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "descendants-de-la-cruz"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-detective-riley-quinn-pine-brooke-mystery"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "detective-riley-quinn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-devils-2"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "devils-duet"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-aternian-wars-german-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "die-aternien-kriege"
   },
   {
     "decision": "assert",
@@ -620,6 +1199,24 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-doctor-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "doctor-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "dodecahedral-space-empire"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "dodecahedral"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "doomsday-warrior-dramatized-adaptation"
     ],
     "reason": "lists the same works at the same slots as the canonical series; dramatization is a property of the recordings, not a series",
@@ -629,10 +1226,91 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "midnights-daughter"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "dorina-basarab"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "dream-trilogy-abridged"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "dream-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "earth-release"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "earth"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-draconic-prophecies"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "eberron-the-draconic-prophecies"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "el-asesinato-de-pitagoras"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "el-asesinato-de-pitagoras-the-murder-of-pythagoras"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "el-dia-que-se-perdio-la-cordura-the-day-sanity-was-lost"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "el-dia-que-se-perdio-la-cordura"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "el-hogar-de-miss-peregrine-para-ninos-peculiares-miss-peregrines-home-for-peculiar-children-narracio"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "el-hogar-de-miss-peregrine-para-ninos-peculiares-miss-peregrines-home-for-peculiar-children"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "las-parejas-de-los-alfa-alphas-mates"
+    ],
+    "reason": "both list the same four works at the same slots; Las Parejas de los Alfa is the title of book 2, which the retailer also uses as a series label",
+    "target": "el-hombre-oso-multimillonario-bear-shifter-billionaire-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "el-padrino-spanish-version"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "el-padrino"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "an-elvis-cole-and-joe-pike-novel-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "elvis-cole-joe-pike"
   },
   {
     "decision": "assert",
@@ -656,6 +1334,24 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "inspector-erlendur-spanish-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "erlendur-sveinsson"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "fae-von-schnee-und-eis-fantasy-mit-spice"
+    ],
+    "reason": "every work it lists sits at the same slot of this series; the German edition's own recordings are not in the catalogue, so the German label lists the English works",
+    "target": "fae-of-snow-ice"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "family-jensen-dramatized"
     ],
     "reason": "once the dramatized duplicate works fold, the variant lists four of the canonical series' works at the same slots and fills the empty slots 5 and 6; dramatization is a property of the recordings, not a series",
@@ -674,10 +1370,55 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "fifty-shades"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "fifty-shades-of-grey-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "franz-eberhofer-gekurzt"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "franz-eberhofer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "full-tilt-duet"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "full-tilt"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "gentleman-bastard-sequence"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "gentleman-bastard"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "monster-girl-maids"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "goblin-girl-maid-service"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "gotland-spanish-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "gotland"
   },
   {
     "decision": "assert",
@@ -692,10 +1433,28 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "kommissar-barbarotti"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "gunnar-barbarotti"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "gunnie-rose-dramatized-adaptation"
     ],
     "reason": "once the dramatized duplicate works fold, the variant lists The Russian Cage and The Serpent in Heaven at the canonical slots and fills the empty slots 1 and 2 with An Easy Death and A Longer Fall; dramatization is a property of the recordings, not a series",
     "target": "gunnie-rose"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "harry-hole-gekurzt"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "harry-hole"
   },
   {
     "decision": "assert",
@@ -737,10 +1496,154 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "wizarding-world-spanish-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of the Spanish Harry Potter series; the Wizarding World label holds only the seven novels",
+    "target": "harry-potter-spanish-edition"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "hathaway-abridged"
+    ],
+    "reason": "the abridged spelling lists only Love in the Afternoon at slot 5 of this series, filed with its unabridged reading; the abridged production is not in the catalogue",
+    "target": "hathaways"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "royal-spyness"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "her-royal-spyness"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "hija-de-la-fortuna-daughter-of-fortune"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "hija-de-la-fortuna"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-dark-and-hollow-star"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "hollow-star-saga"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "howls-moving-castle"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "howls-castle"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "hubbards-point-black-hall-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "hubbards-point"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-hunger-games"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "hunger-games"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "hyperion-2"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "hyperion"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "independent-abridged"
+    ],
+    "reason": "the abridged spelling lists more of Dale Brown's standalone novels under the retailer's Independent label, at free slots of that same listing; each has an abridged recording",
+    "target": "independent"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "inspector-morse-mysteries"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "inspector-morse"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-series",
+    "others": [
+      "invisible-life-trilogy-abridged"
+    ],
+    "reason": "two recording spellings of one trilogy: both list Invisible Life at 1, which has an abridged recording",
+    "target": "invisible-life-trilogy-unabridged"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "lords-of-carnage-ironwood-mc"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "ironwood-mc"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "ishmael-series-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "ishmael"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "j-p-beaumont-abridged"
     ],
     "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; abridgement is a property of the recordings, not a series",
     "target": "j-p-beaumont"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "jack-swyteck-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "jack-swytek"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "jackrabbit-junction"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "jackrabbit-junction-humorous-mystery"
   },
   {
     "decision": "assert",
@@ -764,6 +1667,33 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "jons-mysteries"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "jons-mysteries-case"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-kane-chronicles"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "kane-chronicles"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "kathlyn-trent-marcus-burton-romance-adventure"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "kathlyn-trent-marcus-burton"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "kelvin-of-rud-dramatized-adaptation"
     ],
     "reason": "the dramatized spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order; a dramatization is a property of the recordings, not a separate series",
@@ -777,6 +1707,15 @@
     ],
     "reason": "lists 1 of the canonical series' works at the same slots and fills its free slots with Under the Color of Law at 6, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
     "target": "kevin-kerney"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "phoenix-guards"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "khaavren-romances"
   },
   {
     "decision": "accept",
@@ -800,6 +1739,33 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "kingsbridge-serie-gekurzt"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "kingsbridge-serie"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "kinsey-millhone-abridged"
+    ],
+    "reason": "the abridged spelling lists the alphabet novels at this series' slots and adds the ABC and GHI gift collections at free ranges, each with an abridged recording",
+    "target": "kinsey-millhone-mysteries"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "nurse-kit-carsons-knife-and-gun-club"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "kit-carsons-knife-and-gun-club"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "kommissar-jennerwein-ermittelt-gekurzt"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
@@ -809,10 +1775,136 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "kovac-liska-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "kovac-and-liska"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "trilogia-de-la-ciudad-blanca-white-city-trilogy"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "kraken-trilogia-de-la-ciudad-blanca"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "la-biblia-de-los-caidos-the-bible-of-the-fallen"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "la-biblia-de-los-caidos"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "la-catedral-del-mar-cathedral-of-the-sea"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "la-catedral-del-mar"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "le-cycle-du-soleil-noir"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "la-saga-du-soleil-noir"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "lanneau-du-sorcier"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "lanneau-du-sorcier-the-sorcerers-ring"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "las-aventuras-del-capitan-alatriste"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "las-aventuras-del-capitan-alatriste-the-adventures-of-captain-alatriste"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "las-pruebas-de-apollo-the-trials-of-apollo"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "las-pruebas-de-apolo"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "last-days"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "last-days-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "left-behind-abridged"
+    ],
+    "reason": "once the duplicate records merge, the abridged spelling lists the series' own volumes at their slots and fills slot 3 with Nicolae, each with an abridged Tyndale recording",
+    "target": "left-behind"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "lightbringer"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "lightbringer-saga"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "lincoln-rhyme-gekurzt"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "lincoln-rhyme"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-lincoln-rhyme-novel-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "lincoln-rhyme-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "los-juegos-del-hambre-the-hunger-games"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "los-juegos-del-hambre"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "los-reyes-malditos-the-accursed-kings"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "los-reyes-malditos"
   },
   {
     "decision": "assert",
@@ -831,6 +1923,51 @@
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "magic-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "loki-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "marvel-rebels-renegades"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "swords-and-sheaths"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "master-of-swords"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "matt-jensen-dramatized-adaptation"
+    ],
+    "reason": "once the dramatized duplicates of books 1 and 3 merge, the dramatized spelling numbers the Matt Jensen books as this series does and fills its free slots; a dramatization is a property of the recordings",
+    "target": "matt-jensen-the-last-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "montana-mavericks"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "maverick-montana"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "la-ciudad-de-las-bestias-the-city-of-the-beasts"
+    ],
+    "reason": "both list the same three works at the same slots; Memorias del Aguila y del Jaguar is the trilogy's name, the other the first book's title",
+    "target": "memorias-del-aguila-y-del-jaguar"
   },
   {
     "decision": "assert",
@@ -863,10 +2000,64 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-mistborn-saga"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "mistborn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "mitch-rapp-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
     "target": "mitch-rapp"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "alex-stern"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "ninth-house"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "north-falls-thriller"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "north-falls"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "noughts-and-crosses-abridged"
+    ],
+    "reason": "the abridged spelling numbers the novels as the series does (Crossfire is 5) and fills free slots 2 to 4; Checkmate is filed there with only its unabridged Adjoa Andoh reading",
+    "target": "noughts-and-crosses"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "o-lar-da-srta-peregrine-para-criancas-peculiares"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "o-lar-da-srta-peregrine-para-criancas-peculiares-miss-peregrines-home-for-peculiar-children"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "an-orphan-x-novel"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "orphan-x"
   },
   {
     "decision": "assert",
@@ -899,6 +2090,105 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "percy-jackson-y-los-dioses-del-olimpo"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "percy-jackson-y-los-dioses-del-olimpo-percy-jackson-and-the-olympians"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "perry-mason-radio-drama"
+    ],
+    "reason": "the radio dramatizations of the first three novels already merged into them; the fourth, The Case of the Howling Dog, takes the free slot 4, and a dramatization is a property of the recordings",
+    "target": "perry-mason"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "petaybee-trilogy-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "petaybee"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "peter-hogart-ermittelt"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "peter-hogart"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-peyton-brooks-collection"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "peyton-brooks-mysteries"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "phedre-trilogy"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "phedres-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "pia-korittki-gekurzt"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots; Todliche Mitgift is filed there with only its unabridged reading, so the name records no abridgement of it",
+    "target": "pia-korittki"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "level-up-destiny"
+    ],
+    "reason": "every work it lists sits at the same slot of this series; the retailer's Level Up Destiny listing holds exactly the three Portal Warrior books",
+    "target": "portal-warrior"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "lucas-davenport-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots; Golden Prey is filed there with only its unabridged reading, so the name records no abridgement of it",
+    "target": "prey-lucas-davenport"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "damned-magic-and-divine-fates-queen-of-the-damned"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "queen-of-the-damned"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "detective-inspector-robert-colbeck"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "railway-detective"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "ramses-the-damned-abridged"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
@@ -913,6 +2203,15 @@
     ],
     "reason": "Audible's numbering of the publication order omits The Lost Stories; the primary keeps the publisher's numbering (The Lost Stories is Book 11, The Royal Ranger 12)",
     "target": "rangers-apprentice"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "wyoming-dramatized-adaptation"
+    ],
+    "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
+    "target": "rattlesnake-wells-wyoming"
   },
   {
     "decision": "assert",
@@ -936,6 +2235,24 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "richard-sharpe-novels-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "richard-sharpe-novels"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "rizzoli-and-isles-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "rizzoli-isles"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "robert-langdon-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
@@ -954,6 +2271,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "r-daneel-olivaw"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "robots"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "roman-mysteries-abridged"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
@@ -963,10 +2289,64 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "roy-grace-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, all filed with unabridged readings only; the abridged productions of books 1 to 7 are not in the catalogue",
+    "target": "roy-grace"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "fargo-adventures-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots; books 3 to 10 are filed there with only their unabridged readings, and books 1 and 2 have abridged recordings",
+    "target": "sam-and-remi-fargo-adventures-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "blood-ash"
+    ],
+    "reason": "both list Jennifer L. Armentrout's Italian editions; the retailer's Blood & Ash label lists the same Italian works as Sangue e cenere and two more at free slots",
+    "target": "sangue-e-cenere"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "arena-cultivation"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "savage-ascension"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "secret-projects-dramatized-adaptation"
     ],
     "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
     "target": "secret-projects"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-shaw-series-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "shaw-and-katie-james"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "shawn-obrien-dramatized-adaptation"
+    ],
+    "reason": "the dramatized spelling numbers the books as the publisher does (Town Tamer 1, Manslaughter 2, Better Off Dead 3); a dramatization is a property of the recordings",
+    "target": "shawn-obrien"
   },
   {
     "decision": "assert",
@@ -990,10 +2370,73 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "sins-and-secrets-julia-mason"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "sins-and-secrets"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "slash-and-pecos-dramatized-adaptation"
     ],
     "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; dramatization is a property of the recordings, not a series",
     "target": "slash-and-pecos"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "book-the-beginning-dramatized-adaptation"
+    ],
+    "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
+    "target": "smoke-jensen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "spires"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "spires-universe"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "spots"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "spots-the-youth-tablets"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "star-quartet-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "star"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-star-girl-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "star-girl"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "star-wars-abridged"
+    ],
+    "reason": "once the film novelizations leave, the retailer listing holds only Karen Traviss' The Clone Wars, which opens the Legends Clone Wars novels; slot 3 is free",
+    "target": "star-wars-the-clone-wars-legends-abridged"
   },
   {
     "decision": "assert",
@@ -1008,10 +2451,82 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "hunt-the-stars"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "starlights-shadow"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "sun-coast-chronicles-abridged"
     ],
     "reason": "lists 1 of the canonical series' works at the same slots and fills its free slots with Presumption of Guilt at 4, Ulterior Motives at 3, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
     "target": "sun-coast-chronicles"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "magpie-murders"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "susan-ryeland-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-tarzan-series-german"
+    ],
+    "reason": "every work it lists sits at the same slot of this series; the retailer files English Tarzan products under a German label, and no German edition is in the catalogue",
+    "target": "tarzan"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "texas-rangers-dramatized-adaptation"
+    ],
+    "reason": "Elmer Kelton's nine Texas Rangers novels at their series numbers, once Mary Burton's books of the same series name are split out; a dramatization is a property of the recordings",
+    "target": "texas-rangers"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "epic-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-avatar-chronicles"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-book-of-beginning"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-books-of-beginning"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "love-in-bloom-the-bradens"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-bradens"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-cat-who-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "the-cat-who-2"
   },
   {
     "decision": "accept",
@@ -1026,10 +2541,146 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-great-adventures-of-hotdog-man"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-collected-adventures-of-hotdog-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-edge-chronicles-abridged"
+    ],
+    "reason": "the abridged spelling numbers all ten volumes in the chronological order the series uses for Beyond the Deepwoods and books 11 to 13, at free slots, each with an abridged recording",
+    "target": "the-edge-chronicles"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-elite"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-elite-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-enigma-series-breakfield-and-burkey"
+    ],
+    "reason": "both list the same eleven Breakfield and Burkey novels at the same slots from the same founding listing: the same series under an author-disambiguated second spelling",
+    "target": "the-enigma-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "first-mountain-man",
+      "first-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the dramatized spelling numbers the Preacher books exactly as the publisher's own First Mountain Man listing does (Purge 29, Hell 32), filling free slots; a dramatization is a property of the recordings",
+    "target": "the-first-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-forsyte-saga-recorded-books"
+    ],
+    "reason": "two publisher spellings of The Forsyte Saga: the Recorded Books listing holds two of the three novels at the same slots",
+    "target": "the-forsyte-saga-blackstone-audio-inc"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "the-guardians-trilogy-abridged"
     ],
     "reason": "lists 2 of the canonical series' works at the same slots and fills its free slots with Stars of Fortune at 1, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
     "target": "the-guardians-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-hero-book-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-hero-book"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "eragon"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-inheritance-cycle"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "guardian-cycle"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-keeper-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "keeper-universe"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-keeper-origins"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "landry-family"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-landry-family"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "lightlark"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-lightlark-saga"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "lorien-legacies"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-lorien-legacies"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "maci-and-mason-mystery"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-mason-maci-magical-mystery-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "audible-exclusive-the-pallisers-read-by-timothy-west"
+    ],
+    "reason": "lists the same six novels at the same slots; the narrator and the Audible exclusive are properties of the recordings, not a series",
+    "target": "the-pallisers"
   },
   {
     "decision": "assert",
@@ -1044,10 +2695,173 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "spellman-mysteries-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "the-spellmans"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "stormlight-archive",
+      "the-stormlight-archive-dramatized-adaptation"
+    ],
+    "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
+    "target": "the-stormlight-archive"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-sword-of-shannara-abridged"
+    ],
+    "reason": "two recording spellings of one trilogy: once the decorated duplicate records merge, the abridged spelling lists the same three novels at the same slots",
+    "target": "the-sword-of-shannara-unabridged"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "the-talents-abridged"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
     "target": "the-talents"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "tigers-curse"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-tiger-saga"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "time-travel-twin-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-time-travel-twins"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "underland-chronicles"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-underland-chronicles"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "winterkill-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "the-winterkill-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "wolf-hall-trilogy-abridged"
+    ],
+    "reason": "the abridged spelling lists Bring Up the Bodies at this series' slot 2 and adds the abridged Wolf Hall and Bring Up the Bodies omnibus at the free range 1-2",
+    "target": "the-wolf-hall-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "chrestomanci-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "the-worlds-of-chrestomanci"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "death-cast-series"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "they-both-die-at-the-end-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "all-the-dead-spanish-edition"
+    ],
+    "reason": "both list the same three Spanish works at the same slots; Todos los Muertos is the series' own Spanish name",
+    "target": "todos-los-muertos"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "trilogia-africanus-spanish-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "trilogia-africanus"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "trilogia-de-estocolmo"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "trilogia-de-estocolmo-stockholm-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "in-the-land-of-the-long-white-cloud-spanish-edition"
+    ],
+    "reason": "both list the same three Spanish works at the same slots; the trilogy's Spanish name is the better spelling",
+    "target": "trilogia-de-la-nube-blanca-white-cloud-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "trilogia-lorquiana-spanish-edition"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "trilogia-lorquiana"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "tu-me-ves-do-you-see-me"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "tu-me-ves"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "castle-glower"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "tuesdays-at-the-castle"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "die-uhtred-saga"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "uhtred"
   },
   {
     "decision": "assert",
@@ -1066,6 +2880,60 @@
     ],
     "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
     "target": "warlock-holmes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "warriors-hunter"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "warriors"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "night-vale"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "welcome-to-night-vale"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "william-monk-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
+    "target": "william-monk-mystery"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "wingman-abridged"
+    ],
+    "reason": "Mack Maloney's Wingman novels at their series numbers, once Thomas Willard's books of the same series name are split out; each has an abridged recording",
+    "target": "wingman"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "womens-murder-club-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots; The Trial is filed there with only its unabridged novella reading, so the name records no abridgement of it",
+    "target": "womens-murder-club"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-worst-detective-ever-bundle"
+    ],
+    "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
+    "target": "worst-detective-ever"
   },
   {
     "decision": "assert",
@@ -1314,6 +3182,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "apollyon-the-destroyer-is-unleashed"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 5 of Left Behind and its abridged spelling",
+    "target": "apollyon-tim-lahaye"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "armageddon-the-cosmic-battle-of-the-ages"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 11 of Left Behind and its abridged spelling",
+    "target": "armageddon-tim-lahaye"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "artemis-fowl-movie-tie-in-edition"
     ],
     "reason": "the same book: \"Artemis Fowl Movie Tie-In Edition\" and \"Artemis Fowl\" differ only by retailer decoration; both sit at 1 of artemis-fowl-abridged and its canonical series, by the same author",
@@ -1327,6 +3213,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "ascendance"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "assassins-assignment-jerusalem-target-antichrist"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 6 of Left Behind and its abridged spelling",
+    "target": "assassins"
   },
   {
     "decision": "assert",
@@ -1927,6 +3822,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "doctor-thorne-by-anthony-trollope"
+    ],
+    "reason": "the same Trollope novel: \"by Anthony Trollope\" is a retailer byline decoration on the title",
+    "target": "doctor-thorne"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "dont-cross-this-line-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2077,6 +3981,15 @@
     "target": "ensayo-sobre-la-ceguera"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "evening-star-star-quartet-book-1"
+    ],
+    "reason": "the same Catherine Coulter novel: \"Star Quartet, Book 1\" is a retailer series decoration, and both records sit at slot 1 of the Star Quartet and its abridged spelling",
+    "target": "evening-star"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -2224,10 +4137,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "glorious-appearing-the-end-of-days"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 12 of Left Behind and its abridged spelling",
+    "target": "glorious-appearing"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "gods-and-ends-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "gods-and-ends"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "gods-and-generals-a-novel-of-the-civil-war"
+    ],
+    "reason": "the same Jeff Shaara novel: the subtitle is the cover tagline, and both records sit at slot 1 of the Civil War Trilogy and its abridged spelling",
+    "target": "gods-and-generals"
   },
   {
     "decision": "assert",
@@ -2629,6 +4560,33 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "huckleberry-finn-spanish-edition"
+    ],
+    "reason": "the same Spanish Huckleberry Finn: \"[Spanish Edition]\" restates the language, and both records sit at slot 2 of the Spanish Tom Sawyer series and its abridged spelling",
+    "target": "las-aventuras-de-huckleberry-finn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "aventuras-de-tom-sawyer-the-adventures-of-tom-sawyer"
+    ],
+    "reason": "the same Spanish Tom Sawyer: the bracketed English title glosses the Spanish one, and both records sit at slot 1 of the Spanish Tom Sawyer series and its abridged spelling",
+    "target": "las-aventuras-de-tom-sawyer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "left-behind-tim-lahaye"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the two records split the Books in Motion and Tyndale recordings, and both sit at slot 1 of Left Behind and its abridged spelling",
+    "target": "left-behind"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "life-goes-on-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2651,6 +4609,15 @@
     ],
     "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
     "target": "los-venenos-de-la-corona"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "lost-empire-fargo-adventures-2"
+    ],
+    "reason": "the same Clive Cussler novel: both titles only add a Fargo series decoration to Lost Empire, and both records sit at slot 2 of the Fargo Adventures and its abridged spelling",
+    "target": "lost-empire-a-fargo-adventure"
   },
   {
     "decision": "assert",
@@ -2845,6 +4812,15 @@
     "decision": "accept",
     "op": "merge-works",
     "others": [
+      "noughts-crosses-malorie-blackman"
+    ],
+    "reason": "the same novel by Malorie Blackman: the author-suffixed record holds only the abridged Joan Walker recording, and both sit at slot 1 of Noughts and Crosses and its abridged spelling",
+    "target": "noughts-crosses"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
       "octopussy-and-the-living-daylights-and-other-stories-with-interview"
     ],
     "reason": "same book and same Lucy Fleming and Tom Hiddleston reading: the with-interview record is that production, and only one side carries a sidecar",
@@ -3021,6 +4997,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "prometheus-wakes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "purgatory-dramatized-adaptation"
+    ],
+    "reason": "the same Matt Jensen novel by William W. Johnstone: the decorated title names the GraphicAudio dramatization of book 3, which is a property of the recording",
+    "target": "purgatory-william-johnstone"
   },
   {
     "decision": "assert",
@@ -3233,6 +5218,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "rocket-boys-homer-hickam"
+    ],
+    "reason": "the same memoir by Homer Hickam: the second record holds only the abridged Simon & Schuster recording, and both sit at slot 1 of Coalwood and its abridged spelling",
+    "target": "rocket-boys"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "savage-texas-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -3404,6 +5398,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-beginning-dramatized-adaptation"
+    ],
+    "reason": "the same Smoke Jensen novel: GraphicAudio lists its dramatization as book 1 of Smoke Jensen, The Beginning, which is a property of the recording",
+    "target": "smoke-jensen-the-beginning"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "something-blue-a-novel"
     ],
     "reason": "the same book: \"Something Blue: A Novel\" and \"Something Blue\" differ only by retailer decoration; both sit at 2 of something-borrowed-something-blue-abridged and its canonical series, by the same author",
@@ -3426,6 +5429,24 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "sons-of-texas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "soul-harvest-the-world-takes-sides"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 4 of Left Behind and its abridged spelling",
+    "target": "soul-harvest"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "spartan-gold-fargo-adventures-1"
+    ],
+    "reason": "the same Clive Cussler novel: \"FARGO Adventures #1\" is a retailer series decoration, and both records sit at slot 1 of the Fargo Adventures and its abridged spelling",
+    "target": "spartan-gold"
   },
   {
     "decision": "assert",
@@ -3770,6 +5791,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-cat-who-came-to-breakfast-lilian-jackson-braun"
+    ],
+    "reason": "the same Lilian Jackson Braun novel: the two records split the Phoenix Books recordings, and both sit at slot 16 of The Cat Who and its abridged spelling",
+    "target": "the-cat-who-came-to-breakfast"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-champion-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -3860,6 +5890,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-elfstones-of-shannara-original-shannara-trilogy-book-2"
+    ],
+    "reason": "the same Terry Brooks novel: the two titles only add different retailer series decorations, and both records sit at slot 2 of The Sword of Shannara and its abridged spelling",
+    "target": "the-elfstones-of-shannara-the-shannara-series-book-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-emperors-soul-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -3902,6 +5941,15 @@
     "target": "the-final-storm-wingman-book-6"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "first-mountain-man-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
+    "target": "the-first-mountain-man"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -3937,6 +5985,15 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "the-horse-and-his-boy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-indwelling-tim-lahaye"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the author-suffixed record holds the Tyndale recordings, and both sit at slot 7 of Left Behind and its abridged spelling",
+    "target": "the-indwelling"
   },
   {
     "decision": "assert",
@@ -3992,6 +6049,33 @@
     ],
     "reason": "the same book: \"The Last Boyfriend: Inn BoonsBoro Trilogy, Book 2\" and \"The Last Boyfriend\" differ only by retailer decoration; both sit at 2 of inn-boonsboro-abridged and its canonical series, by the same author",
     "target": "the-last-boyfriend"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-last-chronicle-of-barset-parts-1-2"
+    ],
+    "reason": "the same Trollope novel: \"Parts 1 & 2\" is the whole book, read complete in one recording",
+    "target": "the-last-chronicle-of-barset"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-last-full-measure-a-novel-of-the-civil-war"
+    ],
+    "reason": "the same Jeff Shaara novel: the subtitle is the cover tagline, and both records sit at slot 3 of the Civil War Trilogy and its abridged spelling",
+    "target": "the-last-full-measure"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-last-mountain-man-dramatized-adaptation-matt-jensen-the-last-mountain-man-book-1"
+    ],
+    "reason": "the same Matt Jensen novel: the Jack Garrett recording's own summary describes Matt Jensen reared by Smoke, and the decorated record is the GraphicAudio dramatization of book 1",
+    "target": "the-last-mountain-man"
   },
   {
     "decision": "assert",
@@ -4059,6 +6143,15 @@
     "target": "the-man-of-property"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-mark-tim-lahaye"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the author-suffixed record holds the Tyndale recordings, and both sit at slot 8 of Left Behind and its abridged spelling",
+    "target": "the-mark"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -4098,6 +6191,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "robert-ludlums-the-paris-option"
+    ],
+    "reason": "the same Covert-One novel: the \"Robert Ludlum's\" prefix is the brand on the cover, and both records sit at slot 3 of the Covert-One series and its abridged spelling",
+    "target": "the-paris-option"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-promise-an-elvis-cole-and-joe-pike-novel-book-16"
     ],
     "reason": "the same book: \"The Promise: An Elvis Cole and Joe Pike Novel, Book 16\" and \"The Promise\" differ only by retailer decoration; both sit at 2 of scott-james-abridged and its canonical series, by the same author",
@@ -4129,6 +6231,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "the-reef"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-remnant-on-the-brink-of-armageddon"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 10 of Left Behind and its abridged spelling",
+    "target": "the-remnant"
   },
   {
     "decision": "accept",
@@ -4219,6 +6330,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "spellman-files"
+    ],
+    "reason": "the same Lisa Lutz novel: \"Spellman Files\" drops the article of The Spellman Files, and both records sit at slot 1 of The Spellmans and its abridged spelling",
+    "target": "the-spellman-files"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-stranger-times-german-edition"
     ],
     "reason": "the same book: \"The Stranger Times (German edition)\" and \"The Stranger Times - Was, wenn die seltsamsten News die wirklich wahren wären\" differ only by retailer decoration; both sit at 1 of the-stranger-times-gekurzt and its canonical series, by the same author",
@@ -4259,6 +6379,15 @@
     ],
     "reason": "the same book: \"The Survivor: Mitch Rapp, Book #14\" and \"The Survivor\" differ only by retailer decoration; both sit at 14 of mitch-rapp-abridged and its canonical series, by the same author",
     "target": "the-survivor-vince-flynn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-sword-of-shannara-original-shannara-trilogy-book-1"
+    ],
+    "reason": "the same Terry Brooks novel: the two titles only add different retailer series decorations, and both records sit at slot 1 of The Sword of Shannara and its abridged spelling",
+    "target": "the-sword-of-shannara-the-shannara-series-book-1"
   },
   {
     "decision": "assert",
@@ -4337,10 +6466,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-warden-timothy-west-version"
+    ],
+    "reason": "the same Trollope novel: \"Timothy West Version\" names a narrator, which is a property of the recording",
+    "target": "the-warden"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-wind-in-the-willows-unabridged"
     ],
     "reason": "the same book by the same author: \"The Wind in the Willows - Unabridged\" only adds an edition, production or narrator note to \"The Wind in the Willows\", which is a property of the recording",
     "target": "the-wind-in-the-willows"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-wishsong-of-shannara-original-shannara-trilogy-book-3"
+    ],
+    "reason": "the same Terry Brooks novel: the two titles only add different retailer series decorations, and both records sit at slot 3 of The Sword of Shannara and its abridged spelling",
+    "target": "the-wishsong-of-shannara-the-shannara-series-book-3"
   },
   {
     "decision": "accept",
@@ -4453,6 +6600,15 @@
     ],
     "reason": "the same book: \"Tress of the Emerald Sea: A Cosmere Novel (Dramatized Adaptation)\" and \"Tress of the Emerald Sea\" differ only by retailer decoration; both sit at 1 of secret-projects-dramatized-adaptation and its canonical series, by the same author",
     "target": "tress-of-the-emerald-sea"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "tribulation-force-the-continuing-drama-of-those-left-behind"
+    ],
+    "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 2 of Left Behind and its abridged spelling",
+    "target": "tribulation-force"
   },
   {
     "decision": "assert",

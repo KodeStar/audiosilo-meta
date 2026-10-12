@@ -3022,60 +3022,6 @@
         }
       ]
     },
-    "fargo-adventures-abridged": {
-      "id": "fargo-adventures-abridged",
-      "license": "CC0-1.0",
-      "name": "Fargo Adventures (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B011M5YA5M",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "6",
-          "work": "the-eye-of-heaven"
-        },
-        {
-          "position": "7",
-          "work": "the-solomon-curse"
-        },
-        {
-          "position": "5",
-          "work": "the-mayan-secrets"
-        },
-        {
-          "position": "3",
-          "work": "the-kingdom-fargo-adventures-3"
-        },
-        {
-          "position": "4",
-          "work": "the-tombs-fargo-adventures-4"
-        },
-        {
-          "position": "8",
-          "work": "pirate-clive-cussler"
-        },
-        {
-          "position": "9",
-          "work": "the-romanov-ransom"
-        },
-        {
-          "position": "10",
-          "work": "the-grey-ghost"
-        },
-        {
-          "position": "1",
-          "work": "spartan-gold"
-        },
-        {
-          "position": "2",
-          "work": "lost-empire-a-fargo-adventure"
-        }
-      ]
-    },
     "farm-fresh-romances": {
       "id": "farm-fresh-romances",
       "license": "CC0-1.0",
@@ -7061,40 +7007,6 @@
         }
       ]
     },
-    "fbi-thriller-abridged": {
-      "id": "fbi-thriller-abridged",
-      "license": "CC0-1.0",
-      "name": "FBI Thriller (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003ZZSDVU",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "14",
-          "work": "whiplash-an-fbi-thriller-book-14"
-        },
-        {
-          "position": "16",
-          "work": "backfire"
-        },
-        {
-          "position": "18",
-          "work": "power-play-an-fbi-thriller-book-18"
-        },
-        {
-          "position": "9",
-          "work": "blowout-an-fbi-thriller-book-9"
-        },
-        {
-          "position": "19",
-          "work": "nemesis-an-fbi-thriller-book-19"
-        }
-      ]
-    },
     "fbi-us-attorney": {
       "id": "fbi-us-attorney",
       "license": "CC0-1.0",
@@ -10622,35 +10534,6 @@
         }
       ]
     },
-    "fifty-shades": {
-      "id": "fifty-shades",
-      "license": "CC0-1.0",
-      "name": "Fifty Shades",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/series/63134-fifty-shades",
-          "type": "community"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "fifty-shades-of-grey"
-        },
-        {
-          "position": "2",
-          "work": "fifty-shades-darker"
-        },
-        {
-          "position": "3",
-          "work": "fifty-shades-freed"
-        }
-      ],
-      "xref": {
-        "goodreads": "63134"
-      }
-    },
     "fifty-shades-of-grey-as-told-by-christian": {
       "id": "fifty-shades-of-grey-as-told-by-christian",
       "license": "CC0-1.0",
@@ -10701,6 +10584,11 @@
           "imported_at": "2026-08-08",
           "ref": "B0GX56DXDW",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/series/63134-fifty-shades",
+          "type": "community"
         }
       ],
       "works": [
@@ -10728,7 +10616,10 @@
           "position": "2",
           "work": "fifty-shades-darker"
         }
-      ]
+      ],
+      "xref": {
+        "goodreads": "63134"
+      }
     },
     "fifty-shades-of-grey-von-christian-selbst-erzahlt": {
       "id": "fifty-shades-of-grey-von-christian-selbst-erzahlt",
@@ -15051,154 +14942,6 @@
         }
       ]
     },
-    "first-mountain-man": {
-      "id": "first-mountain-man",
-      "license": "CC0-1.0",
-      "name": "First Mountain Man",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0BVGTYRMT",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "28",
-          "work": "preachers-inferno"
-        }
-      ]
-    },
-    "first-mountain-man-dramatized-adaptation": {
-      "id": "first-mountain-man-dramatized-adaptation",
-      "license": "CC0-1.0",
-      "name": "First Mountain Man [Dramatized Adaptation]",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648802648",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "8",
-          "work": "preacher-william-w-johnstone"
-        },
-        {
-          "position": "9",
-          "work": "preachers-peace"
-        },
-        {
-          "position": "7",
-          "work": "blackfoot-messiah"
-        },
-        {
-          "position": "4",
-          "work": "forty-guns-west-dramatized-adaptation"
-        },
-        {
-          "position": "5",
-          "work": "cheyenne-challenge"
-        },
-        {
-          "position": "6",
-          "work": "preacher-and-the-mountain-caesar"
-        },
-        {
-          "position": "3",
-          "work": "absaroka-ambush"
-        },
-        {
-          "position": "29",
-          "work": "preachers-purge-dramatized-adaptation"
-        },
-        {
-          "position": "25",
-          "work": "preachers-rage"
-        },
-        {
-          "position": "24",
-          "work": "preachers-kill-dramatized-adaptation"
-        },
-        {
-          "position": "26",
-          "work": "preachers-frenzy"
-        },
-        {
-          "position": "23",
-          "work": "preachers-hell-storm-dramatized-adaptation"
-        },
-        {
-          "position": "21",
-          "work": "preachers-slaughter"
-        },
-        {
-          "position": "22",
-          "work": "preachers-bloodbath"
-        },
-        {
-          "position": "20",
-          "work": "preachers-blood-hunt-dramatized-adaptation"
-        },
-        {
-          "position": "2",
-          "work": "blood-on-the-divide"
-        },
-        {
-          "position": "18",
-          "work": "preachers-fury-dramatized-adaptation"
-        },
-        {
-          "position": "19",
-          "work": "preachers-massacre-dramatized-adaptation"
-        },
-        {
-          "position": "17",
-          "work": "preachers-assault-dramatized-adaptation"
-        },
-        {
-          "position": "13",
-          "work": "preachers-quest-dramatized-adaptation"
-        },
-        {
-          "position": "12",
-          "work": "preachers-fortune-dramatized-adaptation"
-        },
-        {
-          "position": "15",
-          "work": "preachers-pursuit-dramatized-adaptation"
-        },
-        {
-          "position": "16",
-          "work": "preachers-fire-dramatized-adaptation"
-        },
-        {
-          "position": "14",
-          "work": "preachers-showdown-dramatized-adaptation"
-        },
-        {
-          "position": "11",
-          "work": "preachers-journey-dramatized-adaptation"
-        },
-        {
-          "position": "10",
-          "work": "preachers-justice"
-        },
-        {
-          "position": "1",
-          "work": "first-mountain-man-dramatized-adaptation"
-        },
-        {
-          "position": "27",
-          "work": "preachers-carnage-dramatized-adaptation"
-        },
-        {
-          "position": "32",
-          "work": "preachers-hell-dramatized-adaptation"
-        }
-      ]
-    },
     "first-necromancer": {
       "id": "first-necromancer",
       "license": "CC0-1.0",
@@ -15522,7 +15265,7 @@
     "firstborn-abridged": {
       "id": "firstborn-abridged",
       "license": "CC0-1.0",
-      "name": "Firstborn (abridged)",
+      "name": "Firstborn",
       "sources": [
         {
           "imported_at": "2026-07-29",

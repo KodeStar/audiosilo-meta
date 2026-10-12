@@ -7757,6 +7757,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002VA9OFO",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0REIS",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -7823,24 +7828,7 @@
           "imported_at": "2026-07-29",
           "ref": "B01708GTD6",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "shawn-obrien-town-tamer"
         },
-        {
-          "position": "3",
-          "work": "better-off-dead-william-w-johnstone"
-        }
-      ]
-    },
-    "shawn-obrien-dramatized-adaptation": {
-      "id": "shawn-obrien-dramatized-adaptation",
-      "license": "CC0-1.0",
-      "name": "Shawn O'Brien [Dramatized Adaptation]",
-      "sources": [
         {
           "imported_at": "2026-07-25",
           "ref": "1648802303",
@@ -7849,16 +7837,16 @@
       ],
       "works": [
         {
+          "position": "3",
+          "work": "better-off-dead-william-w-johnstone"
+        },
+        {
           "position": "2",
           "work": "manslaughter-dramatized-adaptation"
         },
         {
           "position": "1",
           "work": "shawn-obrien-town-tamer"
-        },
-        {
-          "position": "3",
-          "work": "better-off-dead-william-w-johnstone"
         },
         {
           "position": "1-3",
@@ -11234,7 +11222,7 @@
     "shield-of-sparrows-reihe-gekurzt": {
       "id": "shield-of-sparrows-reihe-gekurzt",
       "license": "CC0-1.0",
-      "name": "Shield of Sparrows-Reihe [gekürzt]",
+      "name": "Shield of Sparrows-Reihe",
       "sources": [
         {
           "imported_at": "2026-08-02",

@@ -7426,6 +7426,16 @@
           "imported_at": "2026-08-02",
           "ref": "B0BVGTYRMT",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0BVGTYRMT",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648802648",
+          "type": "audiosilo-books-import"
         }
       ],
       "works": [
@@ -7492,6 +7502,66 @@
         {
           "position": "8",
           "work": "preacher-william-w-johnstone"
+        },
+        {
+          "position": "4",
+          "work": "forty-guns-west-dramatized-adaptation"
+        },
+        {
+          "position": "29",
+          "work": "preachers-purge-dramatized-adaptation"
+        },
+        {
+          "position": "24",
+          "work": "preachers-kill-dramatized-adaptation"
+        },
+        {
+          "position": "23",
+          "work": "preachers-hell-storm-dramatized-adaptation"
+        },
+        {
+          "position": "20",
+          "work": "preachers-blood-hunt-dramatized-adaptation"
+        },
+        {
+          "position": "18",
+          "work": "preachers-fury-dramatized-adaptation"
+        },
+        {
+          "position": "19",
+          "work": "preachers-massacre-dramatized-adaptation"
+        },
+        {
+          "position": "17",
+          "work": "preachers-assault-dramatized-adaptation"
+        },
+        {
+          "position": "13",
+          "work": "preachers-quest-dramatized-adaptation"
+        },
+        {
+          "position": "12",
+          "work": "preachers-fortune-dramatized-adaptation"
+        },
+        {
+          "position": "15",
+          "work": "preachers-pursuit-dramatized-adaptation"
+        },
+        {
+          "position": "16",
+          "work": "preachers-fire-dramatized-adaptation"
+        },
+        {
+          "position": "14",
+          "work": "preachers-showdown-dramatized-adaptation"
+        },
+        {
+          "position": "11",
+          "work": "preachers-journey-dramatized-adaptation"
+        },
+        {
+          "position": "32",
+          "work": "preachers-hell-dramatized-adaptation"
         }
       ]
     },
@@ -10782,11 +10852,16 @@
     "the-forsyte-saga-blackstone-audio-inc": {
       "id": "the-forsyte-saga-blackstone-audio-inc",
       "license": "CC0-1.0",
-      "name": "The Forsyte Saga (Blackstone Audio, Inc.)",
+      "name": "The Forsyte Saga",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1CG6M",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00J5UZ1BE",
           "type": "libex-import"
         }
       ],
@@ -10795,28 +10870,6 @@
           "position": "1-3",
           "work": "the-forsyte-saga"
         },
-        {
-          "position": "1",
-          "work": "the-man-of-property"
-        },
-        {
-          "position": "3",
-          "work": "to-let"
-        }
-      ]
-    },
-    "the-forsyte-saga-recorded-books": {
-      "id": "the-forsyte-saga-recorded-books",
-      "license": "CC0-1.0",
-      "name": "The Forsyte Saga (Recorded Books)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00J5UZ1BE",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
         {
           "position": "1",
           "work": "the-man-of-property"

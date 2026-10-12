@@ -3933,11 +3933,15 @@
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
         "tim-lahaye",
-        "jerry-jenkins"
+        "jerry-jenkins",
+        "jerry-b-jenkins"
       ],
       "genres": [
+        "literary-fiction",
+        "post-apocalyptic",
         "religious-fiction",
-        "science-fiction"
+        "science-fiction",
+        "thriller-suspense"
       ],
       "id": "glorious-appearing",
       "language": "en",
@@ -4096,34 +4100,7 @@
             }
           ],
           "work": "glorious-appearing"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B004DJS4X4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Glorious Appearing"
-    },
-    "glorious-appearing-the-end-of-days": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye",
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "literary-fiction",
-        "post-apocalyptic",
-        "religious-fiction",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "glorious-appearing-the-end-of-days",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "steve-sever-2015": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -4346,17 +4323,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "glorious-appearing-the-end-of-days"
+          "work": "glorious-appearing"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B004DJS4X4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00T5786G4",
           "type": "libex-import"
         }
       ],
-      "title": "Glorious Appearing: The End of Days"
+      "title": "Glorious Appearing"
     },
     "glorious-appearing-tim-lahaye": {
       "added_at": "2026-08-02",

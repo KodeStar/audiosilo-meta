@@ -928,36 +928,6 @@
         }
       ]
     },
-    "vickie-adventure-series": {
-      "id": "vickie-adventure-series",
-      "license": "CC0-1.0",
-      "name": "Vickie Adventure Series",
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07VPXWRB6",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "vickie-doctor-by-day-zombie-hunter-by-night"
-        },
-        {
-          "position": "2",
-          "work": "vickie"
-        },
-        {
-          "position": "3",
-          "work": "vickie-doctor-by-day-ghost-whisperer-by-night"
-        },
-        {
-          "position": "4",
-          "work": "vickie-doctor-by-day-vampire-medic-by-night-vickie-adventure-series-book-4"
-        }
-      ]
-    },
     "vicky-bliss": {
       "id": "vicky-bliss",
       "license": "CC0-1.0",
@@ -4078,32 +4048,6 @@
         }
       ]
     },
-    "virgil-flowers-abridged": {
-      "id": "virgil-flowers-abridged",
-      "license": "CC0-1.0",
-      "name": "Virgil Flowers (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V1L9LU",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "dark-of-the-moon-john-sandford"
-        },
-        {
-          "position": "4",
-          "work": "bad-blood-john-sandford"
-        },
-        {
-          "position": "2",
-          "work": "heat-lightning"
-        }
-      ]
-    },
     "virgil-flowers-series": {
       "id": "virgil-flowers-series",
       "license": "CC0-1.0",
@@ -4112,6 +4056,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1JCKK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1L9LU",
           "type": "libex-import"
         }
       ],
@@ -6404,7 +6353,7 @@
     "voyage-of-the-jerle-shannara-abridged": {
       "id": "voyage-of-the-jerle-shannara-abridged",
       "license": "CC0-1.0",
-      "name": "Voyage of the Jerle Shannara (Abridged)",
+      "name": "Voyage of the Jerle Shannara",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -11210,28 +11159,6 @@
         }
       ]
     },
-    "warhammer-40-000-carcharodons": {
-      "id": "warhammer-40-000-carcharodons",
-      "license": "CC0-1.0",
-      "name": "Warhammer 40,000: Carcharodons",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CWLT7J9Y",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "red-tithe"
-        },
-        {
-          "position": "2",
-          "work": "outer-dark"
-        }
-      ]
-    },
     "warhammer-40-000-ciaphas-cain": {
       "id": "warhammer-40-000-ciaphas-cain",
       "license": "CC0-1.0",
@@ -13592,6 +13519,26 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/series/84197-warriors",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0735YGMPW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0735SQQWZ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0735WH6KJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0735XCQVH",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -13809,59 +13756,6 @@
         {
           "position": "1",
           "work": "warriors-dawn-of-the-clans-1-the-sun-trail"
-        }
-      ]
-    },
-    "warriors-hunter": {
-      "id": "warriors-hunter",
-      "license": "CC0-1.0",
-      "name": "Warriors (Hunter)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0735YGMPW",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0735SQQWZ",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0735WH6KJ",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0735XCQVH",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "4",
-          "work": "rising-storm"
-        },
-        {
-          "position": "5",
-          "work": "a-dangerous-path"
-        },
-        {
-          "position": "6",
-          "work": "the-darkest-hour"
-        },
-        {
-          "position": "1",
-          "work": "into-the-wild"
-        },
-        {
-          "position": "2",
-          "work": "fire-and-ice"
-        },
-        {
-          "position": "3",
-          "work": "forest-of-secrets"
         }
       ]
     },
@@ -19366,6 +19260,16 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B00YI0CDFS",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B00YI0CDFS",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B06XKLCLLC",
           "type": "libex-import"
         }
       ],

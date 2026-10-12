@@ -7832,40 +7832,6 @@
         }
       ]
     },
-    "chrestomanci-abridged": {
-      "id": "chrestomanci-abridged",
-      "license": "CC0-1.0",
-      "name": "Chrestomanci [Abridged]",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00AEVZY7Y",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "3",
-          "work": "witch-week"
-        },
-        {
-          "position": "1",
-          "work": "charmed-life"
-        },
-        {
-          "position": "2",
-          "work": "the-magicians-of-caprona"
-        },
-        {
-          "position": "4",
-          "work": "the-lives-of-christopher-chant"
-        },
-        {
-          "position": "5",
-          "work": "conrads-fate"
-        }
-      ]
-    },
     "chris-bronson": {
       "id": "chris-bronson",
       "license": "CC0-1.0",
@@ -8854,7 +8820,7 @@
     "christopher-paget-unabridged": {
       "id": "christopher-paget-unabridged",
       "license": "CC0-1.0",
-      "name": "Christopher Paget (unabridged)",
+      "name": "Christopher Paget",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -9790,16 +9756,21 @@
           "imported_at": "2026-08-01",
           "ref": "B093MLYK7J",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1O1YC",
+          "type": "libex-import"
         }
       ],
       "works": [
         {
           "position": "3",
-          "work": "doctor-thorne-by-anthony-trollope"
+          "work": "doctor-thorne"
         },
         {
           "position": "6",
-          "work": "the-last-chronicle-of-barset-parts-1-2"
+          "work": "the-last-chronicle-of-barset"
         },
         {
           "position": "1",
@@ -12883,6 +12854,11 @@
           "imported_at": "2026-07-29",
           "ref": "B07C72Y591",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648800254",
+          "type": "audiosilo-books-import"
         }
       ],
       "works": [
@@ -13509,20 +13485,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CW3QJ6NR",
           "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "5",
-          "work": "murtagh-spanish-edition"
-        }
-      ]
-    },
-    "ciclo-el-legado-inheritance-cycle-abridged": {
-      "id": "ciclo-el-legado-inheritance-cycle-abridged",
-      "license": "CC0-1.0",
-      "name": "Ciclo El Legado [Inheritance Cycle] (abridged)",
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V0PVCY",
@@ -13530,6 +13493,10 @@
         }
       ],
       "works": [
+        {
+          "position": "5",
+          "work": "murtagh-spanish-edition"
+        },
         {
           "position": "1",
           "work": "eragon-en-espanol"
@@ -16058,6 +16025,11 @@
           "imported_at": "2026-08-08",
           "ref": "B002V01BPU",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1A1NW",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -16067,11 +16039,11 @@
         },
         {
           "position": "3",
-          "work": "the-last-full-measure-a-novel-of-the-civil-war"
+          "work": "the-last-full-measure"
         },
         {
           "position": "1",
-          "work": "gods-and-generals-a-novel-of-the-civil-war"
+          "work": "gods-and-generals"
         }
       ]
     },

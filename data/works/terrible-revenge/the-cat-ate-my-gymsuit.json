@@ -4743,7 +4743,8 @@
     "the-cat-who-came-to-breakfast": {
       "added_at": "2026-07-29",
       "authors": [
-        "lilian-braun"
+        "lilian-braun",
+        "lilian-jackson-braun"
       ],
       "genres": [
         "cozy-mystery",
@@ -4753,6 +4754,172 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "dick-van-patten-2022": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09W8HZ35L",
+              "region": "us"
+            },
+            {
+              "asin": "B09W8W3MRJ",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/9178149-PbL.jpg",
+          "id": "dick-van-patten-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dick-van-patten"
+          ],
+          "publisher": "Phoenix Books",
+          "release_date": "2022-03-24",
+          "runtime_min": 180,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09W8HZ35L",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09W8W3MRJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cat-who-came-to-breakfast"
+        },
+        "george-guidall-2006": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V5GZ92",
+              "region": "us"
+            },
+            {
+              "asin": "B004EXF5XG",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1580211,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1364451,
+              "start_ms": 1580211,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1396309,
+              "start_ms": 2944662,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1533632,
+              "start_ms": 4340971,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1391711,
+              "start_ms": 5874603,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1468383,
+              "start_ms": 7266314,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1584483,
+              "start_ms": 8734697,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1390597,
+              "start_ms": 10319180,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1117019,
+              "start_ms": 11709777,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1291401,
+              "start_ms": 12826796,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1242732,
+              "start_ms": 14118197,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1180828,
+              "start_ms": 15360929,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1404018,
+              "start_ms": 16541757,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1470520,
+              "start_ms": 17945775,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1312717,
+              "start_ms": 19416295,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1301432,
+              "start_ms": 20729012,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1231865,
+              "start_ms": 22030444,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1734066,
+              "start_ms": 23262309,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/5121yj4EPdL.jpg",
+          "id": "george-guidall-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "george-guidall"
+          ],
+          "publisher": "Phoenix Books",
+          "release_date": "2006-03-09",
+          "runtime_min": 416,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5GZ92",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EXF5XG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cat-who-came-to-breakfast"
+        },
         "george-guidall-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4898,191 +5065,7 @@
           "imported_at": "2026-07-29",
           "ref": "B09PPM6NFW",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Cat Who Came to Breakfast"
-    },
-    "the-cat-who-came-to-breakfast-lilian-jackson-braun": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "lilian-jackson-braun"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "mystery"
-      ],
-      "id": "the-cat-who-came-to-breakfast-lilian-jackson-braun",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dick-van-patten-2022": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09W8HZ35L",
-              "region": "us"
-            },
-            {
-              "asin": "B09W8W3MRJ",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/9178149-PbL.jpg",
-          "id": "dick-van-patten-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dick-van-patten"
-          ],
-          "publisher": "Phoenix Books",
-          "release_date": "2022-03-24",
-          "runtime_min": 180,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09W8HZ35L",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09W8W3MRJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-cat-who-came-to-breakfast-lilian-jackson-braun"
         },
-        "george-guidall-2006": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V5GZ92",
-              "region": "us"
-            },
-            {
-              "asin": "B004EXF5XG",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1580211,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1364451,
-              "start_ms": 1580211,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1396309,
-              "start_ms": 2944662,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1533632,
-              "start_ms": 4340971,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1391711,
-              "start_ms": 5874603,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1468383,
-              "start_ms": 7266314,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1584483,
-              "start_ms": 8734697,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1390597,
-              "start_ms": 10319180,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1117019,
-              "start_ms": 11709777,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1291401,
-              "start_ms": 12826796,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1242732,
-              "start_ms": 14118197,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1180828,
-              "start_ms": 15360929,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1404018,
-              "start_ms": 16541757,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1470520,
-              "start_ms": 17945775,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1312717,
-              "start_ms": 19416295,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1301432,
-              "start_ms": 20729012,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1231865,
-              "start_ms": 22030444,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1734066,
-              "start_ms": 23262309,
-              "title": "Chapter 18"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/5121yj4EPdL.jpg",
-          "id": "george-guidall-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "george-guidall"
-          ],
-          "publisher": "Phoenix Books",
-          "release_date": "2006-03-09",
-          "runtime_min": 416,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V5GZ92",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EXF5XG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-cat-who-came-to-breakfast-lilian-jackson-braun"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V5GZ92",

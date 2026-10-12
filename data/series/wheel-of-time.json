@@ -8813,7 +8813,7 @@
     "will-gallows-abridged": {
       "id": "will-gallows-abridged",
       "license": "CC0-1.0",
-      "name": "Will Gallows (abridged)",
+      "name": "Will Gallows",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -9517,24 +9517,6 @@
         }
       ]
     },
-    "william-monk-abridged": {
-      "id": "william-monk-abridged",
-      "license": "CC0-1.0",
-      "name": "William Monk (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B008I6BNCW",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "11",
-          "work": "slaves-of-obsession"
-        }
-      ]
-    },
     "william-monk-mystery": {
       "id": "william-monk-mystery",
       "license": "CC0-1.0",
@@ -9543,6 +9525,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1M3I8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B008I6BNCW",
           "type": "libex-import"
         }
       ],
@@ -9622,6 +9609,10 @@
         {
           "position": "24",
           "work": "dark-tide-rising-anne-perry"
+        },
+        {
+          "position": "11",
+          "work": "slaves-of-obsession"
         }
       ]
     },
@@ -11546,25 +11537,14 @@
           "imported_at": "2026-08-01",
           "ref": "B09G52YD3K",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZN6DQ",
+          "type": "libex-import"
         }
       ],
       "works": [
-        {
-          "position": "1",
-          "work": "lightning-wingman"
-        },
-        {
-          "position": "2",
-          "work": "mustang-wingman"
-        },
-        {
-          "position": "3",
-          "work": "sabre-wingman"
-        },
-        {
-          "position": "4",
-          "work": "forever-wingman"
-        },
         {
           "position": "18",
           "work": "battle-for-america"
@@ -11604,21 +11584,7 @@
         {
           "position": "14",
           "work": "the-sky-ghost"
-        }
-      ]
-    },
-    "wingman-abridged": {
-      "id": "wingman-abridged",
-      "license": "CC0-1.0",
-      "name": "Wingman (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UZN6DQ",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
+        },
         {
           "position": "1",
           "work": "wingman-1"
@@ -11634,14 +11600,6 @@
         {
           "position": "4",
           "work": "wingman-4"
-        },
-        {
-          "position": "5",
-          "work": "the-twisted-cross"
-        },
-        {
-          "position": "6",
-          "work": "the-final-storm-wingman-book-6"
         },
         {
           "position": "7",
@@ -11672,16 +11630,42 @@
           "work": "wingman-13"
         },
         {
-          "position": "14",
-          "work": "the-sky-ghost"
-        },
-        {
           "position": "15",
           "work": "wingman-15"
         },
         {
           "position": "16",
           "work": "wingman-16"
+        }
+      ]
+    },
+    "wingman-2": {
+      "id": "wingman-2",
+      "license": "CC0-1.0",
+      "name": "Wingman",
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09G52YD3K",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "1",
+          "work": "lightning-wingman"
+        },
+        {
+          "position": "2",
+          "work": "mustang-wingman"
+        },
+        {
+          "position": "3",
+          "work": "sabre-wingman"
+        },
+        {
+          "position": "4",
+          "work": "forever-wingman"
         }
       ]
     },
@@ -13542,32 +13526,6 @@
         {
           "position": "3",
           "work": "eisfieber"
-        }
-      ]
-    },
-    "winterkill-series": {
-      "id": "winterkill-series",
-      "license": "CC0-1.0",
-      "name": "Winterkill Series",
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "1683354397",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "darkthaw"
-        },
-        {
-          "position": "1",
-          "work": "winterkill"
-        },
-        {
-          "position": "3",
-          "work": "heartfire-a-winterkill-novel"
         }
       ]
     },
@@ -18983,48 +18941,6 @@
         }
       ]
     },
-    "wizarding-world-spanish-edition": {
-      "id": "wizarding-world-spanish-edition",
-      "license": "CC0-1.0",
-      "name": "Wizarding World [Spanish Edition]",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1781105022",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "harry-potter-y-la-piedra-filosofal"
-        },
-        {
-          "position": "2",
-          "work": "harry-potter-y-la-camara-secreta"
-        },
-        {
-          "position": "3",
-          "work": "harry-potter-y-el-prisionero-de-azkaban"
-        },
-        {
-          "position": "4",
-          "work": "harry-potter-y-el-caliz-de-fuego"
-        },
-        {
-          "position": "5",
-          "work": "harry-potter-y-la-orden-del-fenix"
-        },
-        {
-          "position": "6",
-          "work": "harry-potter-y-el-misterio-del-principe"
-        },
-        {
-          "position": "7",
-          "work": "harry-potter-y-las-reliquias-de-la-muerte"
-        }
-      ]
-    },
     "wizardry-and-myths": {
       "id": "wizardry-and-myths",
       "license": "CC0-1.0",
@@ -19486,28 +19402,6 @@
         {
           "position": "4",
           "work": "mated-girl"
-        }
-      ]
-    },
-    "wolf-hall-trilogy-abridged": {
-      "id": "wolf-hall-trilogy-abridged",
-      "license": "CC0-1.0",
-      "name": "Wolf Hall Trilogy (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B007W4ZBI8",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "2",
-          "work": "bring-up-the-bodies"
-        },
-        {
-          "position": "1-2",
-          "work": "wolf-hall-and-bring-up-the-bodies"
         }
       ]
     },

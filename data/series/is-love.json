@@ -699,6 +699,11 @@
           "imported_at": "2026-07-29",
           "ref": "0593416473",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1OR6O",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -709,6 +714,10 @@
         {
           "position": "3",
           "work": "my-ishmael"
+        },
+        {
+          "position": "1",
+          "work": "ishmael"
         }
       ]
     },
@@ -772,24 +781,6 @@
         {
           "position": "3",
           "work": "very-important-corpses"
-        }
-      ]
-    },
-    "ishmael-series-abridged": {
-      "id": "ishmael-series-abridged",
-      "license": "CC0-1.0",
-      "name": "Ishmael Series (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V1OR6O",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "ishmael"
         }
       ]
     },
@@ -4609,13 +4600,16 @@
     "jack-reacher-gekurzt": {
       "id": "jack-reacher-gekurzt",
       "license": "CC0-1.0",
-      "name": "Jack Reacher (Gekürzt)",
+      "name": "Jack Reacher",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0B72WSR7Z",
           "type": "libex-import"
         }
+      ],
+      "translation_of": [
+        "jack-reacher"
       ],
       "works": [
         {
@@ -5018,32 +5012,6 @@
         }
       ]
     },
-    "jack-swyteck-abridged": {
-      "id": "jack-swyteck-abridged",
-      "license": "CC0-1.0",
-      "name": "Jack Swyteck (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V5IV94",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "3",
-          "work": "last-to-die-james-grippando"
-        },
-        {
-          "position": "4",
-          "work": "hear-no-evil-james-grippando"
-        },
-        {
-          "position": "5",
-          "work": "got-the-look"
-        }
-      ]
-    },
     "jack-swytek": {
       "id": "jack-swytek",
       "license": "CC0-1.0",
@@ -5052,6 +5020,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0195I4AL2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V5IV94",
           "type": "libex-import"
         }
       ],
@@ -5816,44 +5789,6 @@
         {
           "position": "11",
           "work": "black-notice-joy-ellis"
-        }
-      ]
-    },
-    "jackrabbit-junction": {
-      "id": "jackrabbit-junction",
-      "license": "CC0-1.0",
-      "name": "Jackrabbit Junction",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00ITYURSE",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "dance-of-the-winnebagos"
-        },
-        {
-          "position": "3",
-          "work": "the-great-jackalope-stampede"
-        },
-        {
-          "position": "4.5",
-          "work": "the-wild-turkey-tango"
-        },
-        {
-          "position": "4",
-          "work": "the-rowdy-coyote-rumble"
-        },
-        {
-          "position": "5",
-          "work": "in-cahoots-with-the-prickly-pear-posse"
-        },
-        {
-          "position": "2",
-          "work": "jackrabbit-junction-jitters"
         }
       ]
     },
@@ -11863,7 +11798,7 @@
     "jedi-quest-abridged": {
       "id": "jedi-quest-abridged",
       "license": "CC0-1.0",
-      "name": "Jedi Quest (abridged)",
+      "name": "Jedi Quest",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -13749,7 +13684,7 @@
     "jeston-nash-dramatized-adaptation": {
       "id": "jeston-nash-dramatized-adaptation",
       "license": "CC0-1.0",
-      "name": "Jeston Nash [Dramatized Adaptation]",
+      "name": "Jeston Nash",
       "sources": [
         {
           "imported_at": "2026-07-25",

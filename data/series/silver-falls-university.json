@@ -3800,28 +3800,6 @@
         }
       ]
     },
-    "sins-and-secrets-julia-mason": {
-      "id": "sins-and-secrets-julia-mason",
-      "license": "CC0-1.0",
-      "name": "Sins and Secrets: Julia/Mason",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B078XJSPX6",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "imperfect"
-        },
-        {
-          "position": "2",
-          "work": "unforgiven-willow-winters"
-        }
-      ]
-    },
     "sins-deceit": {
       "id": "sins-deceit",
       "license": "CC0-1.0",
@@ -4381,32 +4359,6 @@
         {
           "position": "4",
           "work": "sir-callie-and-the-final-stand"
-        }
-      ]
-    },
-    "sir-charles-sheridan": {
-      "id": "sir-charles-sheridan",
-      "license": "CC0-1.0",
-      "name": "Sir Charles Sheridan",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "169055925X",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "death-at-bishops-keep"
-        },
-        {
-          "position": "2",
-          "work": "death-at-gallows-green"
-        },
-        {
-          "position": "3",
-          "work": "death-at-daisys-folly"
         }
       ]
     },
@@ -5166,7 +5118,7 @@
     "sisterhood-diaries-abridged": {
       "id": "sisterhood-diaries-abridged",
       "license": "CC0-1.0",
-      "name": "Sisterhood Diaries (abridged)",
+      "name": "Sisterhood Diaries",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -7405,13 +7357,16 @@
     "skulduggery-pleasant-gekurzt": {
       "id": "skulduggery-pleasant-gekurzt",
       "license": "CC0-1.0",
-      "name": "Skulduggery Pleasant [gekürzt]",
+      "name": "Skulduggery Pleasant",
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B004V2O7HU",
           "type": "libex-import"
         }
+      ],
+      "translation_of": [
+        "skulduggery-pleasant"
       ],
       "works": [
         {
@@ -11196,6 +11151,11 @@
         {
           "imported_at": "2026-07-25",
           "ref": "B0BNJYT1G8",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648806074",
           "type": "audiosilo-books-import"
         }
       ],

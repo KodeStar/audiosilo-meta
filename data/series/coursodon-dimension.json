@@ -1258,7 +1258,7 @@
     "coven-of-bones-reihe-gekurzt": {
       "id": "coven-of-bones-reihe-gekurzt",
       "license": "CC0-1.0",
-      "name": "Coven-of-Bones-Reihe [gekürzt]",
+      "name": "Coven-of-Bones-Reihe",
       "sources": [
         {
           "imported_at": "2026-08-02",
@@ -1604,44 +1604,6 @@
         }
       ]
     },
-    "covert-one-abridged": {
-      "id": "covert-one-abridged",
-      "license": "CC0-1.0",
-      "name": "Covert One (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V5B6DW",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "the-hades-factor"
-        },
-        {
-          "position": "2",
-          "work": "the-cassandra-compact"
-        },
-        {
-          "position": "4",
-          "work": "robert-ludlums-the-altman-code"
-        },
-        {
-          "position": "5",
-          "work": "robert-ludlums-the-lazarus-vendetta-a-covert-one-novel"
-        },
-        {
-          "position": "3",
-          "work": "robert-ludlums-the-paris-option"
-        },
-        {
-          "position": "6",
-          "work": "robert-ludlums-the-moscow-vector"
-        }
-      ]
-    },
     "covert-one-series": {
       "id": "covert-one-series",
       "license": "CC0-1.0",
@@ -1650,6 +1612,11 @@
         {
           "imported_at": "2026-07-25",
           "ref": "B0141S8C10",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V5B6DW",
           "type": "audiosilo-books-import"
         }
       ],
@@ -13817,6 +13784,11 @@
           "imported_at": "2026-08-01",
           "ref": "B09MD26X3Z",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08GR7Z2PC",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -15000,6 +14972,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BKWPFQMN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1M2SO",
           "type": "libex-import"
         }
       ],
@@ -17246,28 +17223,6 @@
         {
           "position": "2",
           "work": "justice-damned-connections-book-2"
-        }
-      ]
-    },
-    "damned-magic-and-divine-fates-queen-of-the-damned": {
-      "id": "damned-magic-and-divine-fates-queen-of-the-damned",
-      "license": "CC0-1.0",
-      "name": "Damned Magic and Divine Fates: Queen of the Damned",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0H6BT3275",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "4",
-          "work": "brimstone-nightmares"
-        },
-        {
-          "position": "1-4",
-          "work": "queen-of-the-damned-kel-carpenter"
         }
       ]
     },

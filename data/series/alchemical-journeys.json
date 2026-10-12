@@ -2029,28 +2029,6 @@
         }
       ]
     },
-    "alex-stern": {
-      "id": "alex-stern",
-      "license": "CC0-1.0",
-      "name": "Alex Stern",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B07LHB5ZJ6",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "ninth-house"
-        },
-        {
-          "position": "2",
-          "work": "hell-bent"
-        }
-      ]
-    },
     "alex-stern-portuguese-edition": {
       "id": "alex-stern-portuguese-edition",
       "license": "CC0-1.0",
@@ -2063,7 +2041,7 @@
         }
       ],
       "translation_of": [
-        "alex-stern"
+        "ninth-house"
       ],
       "works": [
         {
@@ -2323,7 +2301,7 @@
     "alexander-abridged": {
       "id": "alexander-abridged",
       "license": "CC0-1.0",
-      "name": "Alexander (abridged)",
+      "name": "Alexander",
       "sources": [
         {
           "imported_at": "2026-07-29",
@@ -6628,6 +6606,31 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/series/61821-all-souls",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "147224334X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004NPFDG4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B008HTGADW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00IEIE1MI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQDBW1F3",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -6678,60 +6681,6 @@
         {
           "position": "3",
           "work": "livets-bog"
-        }
-      ]
-    },
-    "all-souls-series": {
-      "id": "all-souls-series",
-      "license": "CC0-1.0",
-      "name": "All Souls Series",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "147224334X",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004NPFDG4",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B008HTGADW",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00IEIE1MI",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CQDBW1F3",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "4",
-          "work": "times-convert"
-        },
-        {
-          "position": "1",
-          "work": "a-discovery-of-witches"
-        },
-        {
-          "position": "2",
-          "work": "shadow-of-night"
-        },
-        {
-          "position": "3",
-          "work": "the-book-of-life"
-        },
-        {
-          "position": "5",
-          "work": "the-black-bird-oracle"
         }
       ]
     },
@@ -6802,32 +6751,6 @@
         {
           "position": "2",
           "work": "the-only-light-left-burning"
-        }
-      ]
-    },
-    "all-the-dead-spanish-edition": {
-      "id": "all-the-dead-spanish-edition",
-      "license": "CC0-1.0",
-      "name": "All the Dead (Spanish Edition)",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08FVK6Q8F",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "caen-estrellas-fugaces-narracion-en-castellano-shooting-stars-fall"
-        },
-        {
-          "position": "2",
-          "work": "el-mecanismo-de-los-secretos-narracion-en-castellano-the-mechanism-of-secrets"
-        },
-        {
-          "position": "3",
-          "work": "la-ciudad-encerrada-narracion-en-castellano-the-enclosed-city"
         }
       ]
     },
@@ -12442,40 +12365,6 @@
         }
       ]
     },
-    "amanecer-rojo-red-rising": {
-      "id": "amanecer-rojo-red-rising",
-      "license": "CC0-1.0",
-      "name": "Amanecer Rojo [Red Rising]",
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B08B1VT1BC",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "1",
-          "work": "amanecer-rojo-red-rising"
-        },
-        {
-          "position": "2",
-          "work": "hijo-dorado"
-        },
-        {
-          "position": "3",
-          "work": "manana-azul"
-        },
-        {
-          "position": "4",
-          "work": "oro-y-ceniza"
-        },
-        {
-          "position": "5",
-          "work": "edad-oscura-amanecer-rojo-libro-5"
-        }
-      ]
-    },
     "amanecer-rojo-red-rising-narracion-en-castellano": {
       "id": "amanecer-rojo-red-rising-narracion-en-castellano",
       "license": "CC0-1.0",
@@ -13433,6 +13322,11 @@
           "imported_at": "2026-07-29",
           "ref": "B002V0QUX8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UZJSZG",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -13515,60 +13409,6 @@
         {
           "position": "20",
           "work": "the-painted-queen"
-        }
-      ]
-    },
-    "amelia-peabody-abridged": {
-      "id": "amelia-peabody-abridged",
-      "license": "CC0-1.0",
-      "name": "Amelia Peabody (abridged)",
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002UZJSZG",
-          "type": "libex-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "17",
-          "work": "serpent-on-the-crown"
-        },
-        {
-          "position": "18",
-          "work": "tomb-of-the-golden-bird"
-        },
-        {
-          "position": "19",
-          "work": "a-river-in-the-sky"
-        },
-        {
-          "position": "15",
-          "work": "children-of-the-storm"
-        },
-        {
-          "position": "16",
-          "work": "guardian-of-the-horizon"
-        },
-        {
-          "position": "14",
-          "work": "the-golden-one"
-        },
-        {
-          "position": "13",
-          "work": "lord-of-the-silent"
-        },
-        {
-          "position": "20",
-          "work": "the-painted-queen"
-        },
-        {
-          "position": "11",
-          "work": "the-falcon-at-the-portal"
-        },
-        {
-          "position": "10",
-          "work": "the-ape-who-guards-the-balance"
         }
       ]
     },

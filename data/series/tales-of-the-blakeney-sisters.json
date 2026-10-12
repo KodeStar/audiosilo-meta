@@ -3863,6 +3863,11 @@
           "imported_at": "2026-08-01",
           "ref": "B016LEZTM2",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B06WCZLQ4Q",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -10177,7 +10182,7 @@
     "texas-john-slaughter-dramatized-adaptation": {
       "id": "texas-john-slaughter-dramatized-adaptation",
       "license": "CC0-1.0",
-      "name": "Texas John Slaughter [Dramatized Adaptation]",
+      "name": "Texas John Slaughter",
       "sources": [
         {
           "imported_at": "2026-07-25",
@@ -10437,21 +10442,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00IUPA4K8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648804799",
+          "type": "audiosilo-books-import"
         }
       ],
       "works": [
-        {
-          "position": "3",
-          "work": "youre-not-safe"
-        },
-        {
-          "position": "2",
-          "work": "no-escape-mary-burton"
-        },
-        {
-          "position": "1",
-          "work": "the-seventh-victim"
-        },
         {
           "position": "7",
           "work": "hard-trail-to-follow"
@@ -10467,24 +10465,6 @@
         {
           "position": "9",
           "work": "texas-standoff"
-        }
-      ]
-    },
-    "texas-rangers-dramatized-adaptation": {
-      "id": "texas-rangers-dramatized-adaptation",
-      "license": "CC0-1.0",
-      "name": "Texas Rangers [Dramatized Adaptation]",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648804799",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "7",
-          "work": "hard-trail-to-follow"
         },
         {
           "position": "6",
@@ -10505,18 +10485,32 @@
         {
           "position": "1",
           "work": "the-buckskin-line"
+        }
+      ]
+    },
+    "texas-rangers-2": {
+      "id": "texas-rangers-2",
+      "license": "CC0-1.0",
+      "name": "Texas Rangers",
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00IUPA4K8",
+          "type": "libex-import"
+        }
+      ],
+      "works": [
+        {
+          "position": "3",
+          "work": "youre-not-safe"
         },
         {
-          "position": "5",
-          "work": "texas-vendetta"
+          "position": "2",
+          "work": "no-escape-mary-burton"
         },
         {
-          "position": "8",
-          "work": "other-mens-horses"
-        },
-        {
-          "position": "9",
-          "work": "texas-standoff"
+          "position": "1",
+          "work": "the-seventh-victim"
         }
       ]
     },
