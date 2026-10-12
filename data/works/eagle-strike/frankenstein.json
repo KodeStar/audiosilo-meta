@@ -3,7 +3,8 @@
     "frankenstein": {
       "added_at": "2026-07-17T09:27:30+00:00",
       "authors": [
-        "mary-shelley"
+        "mary-shelley",
+        "brock-parks"
       ],
       "genres": [
         "classics",
@@ -18,6 +19,219 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "a-g-smith-2024": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B0D4SPKRWM",
+              "region": "us"
+            },
+            {
+              "asin": "B0D4SFK3K2",
+              "region": "de"
+            },
+            {
+              "asin": "B0D4SSVCCL",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20781,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 92763,
+              "start_ms": 20781,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 15464,
+              "start_ms": 113544,
+              "title": "Acknowledgments"
+            },
+            {
+              "length_ms": 10031,
+              "start_ms": 129008,
+              "title": "Dedication"
+            },
+            {
+              "length_ms": 145798,
+              "start_ms": 139039,
+              "title": "Letter 1"
+            },
+            {
+              "length_ms": 100913,
+              "start_ms": 284837,
+              "title": "Letter 2"
+            },
+            {
+              "length_ms": 43374,
+              "start_ms": 385750,
+              "title": "Letter 3"
+            },
+            {
+              "length_ms": 838263,
+              "start_ms": 429124,
+              "title": "Letter 4"
+            },
+            {
+              "length_ms": 291224,
+              "start_ms": 1267387,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 494538,
+              "start_ms": 1558611,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 636482,
+              "start_ms": 2053149,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 645630,
+              "start_ms": 2689631,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 766095,
+              "start_ms": 3335261,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 362788,
+              "start_ms": 4101356,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1081399,
+              "start_ms": 4464144,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1010230,
+              "start_ms": 5545543,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 663603,
+              "start_ms": 6555773,
+              "title": "Chapter"
+            },
+            {
+              "length_ms": 746498,
+              "start_ms": 7219376,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 858952,
+              "start_ms": 7965874,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 437998,
+              "start_ms": 8824826,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 631327,
+              "start_ms": 9262824,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 270860,
+              "start_ms": 9894151,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 862203,
+              "start_ms": 10165011,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1154705,
+              "start_ms": 11027214,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 708278,
+              "start_ms": 12181919,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 666157,
+              "start_ms": 12890197,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 526140,
+              "start_ms": 13556354,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1217724,
+              "start_ms": 14082494,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1126005,
+              "start_ms": 15300218,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1032730,
+              "start_ms": 16426223,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 906553,
+              "start_ms": 17458953,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 2799281,
+              "start_ms": 18365506,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 25146,
+              "start_ms": 21164787,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815GshRk2UL.jpg",
+          "id": "a-g-smith-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "a-g-smith"
+          ],
+          "publisher": "Brock Parks",
+          "release_date": "2024-05-22",
+          "runtime_min": 352,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B0D4SPKRWM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0D4SFK3K2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0D4SSVCCL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "frankenstein"
+        },
         "amanda-friday-2021": {
           "added_at": "2026-07-31T00:43:12+01:00",
           "asin": [
@@ -6207,6 +6421,11 @@
           "imported_at": "2026-08-08",
           "ref": "B071V2RNK3",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0D4SPKRWM",
+          "type": "libex-import"
         }
       ],
       "title": "Frankenstein"
@@ -6344,243 +6563,6 @@
         }
       ],
       "title": "Frankenstein"
-    },
-    "frankenstein-abridged": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "mary-shelley",
-        "brock-parks"
-      ],
-      "genres": [
-        "classics",
-        "science-fiction"
-      ],
-      "id": "frankenstein-abridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "a-g-smith-2024": {
-          "abridged": true,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B0D4SPKRWM",
-              "region": "us"
-            },
-            {
-              "asin": "B0D4SFK3K2",
-              "region": "de"
-            },
-            {
-              "asin": "B0D4SSVCCL",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 20781,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 92763,
-              "start_ms": 20781,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 15464,
-              "start_ms": 113544,
-              "title": "Acknowledgments"
-            },
-            {
-              "length_ms": 10031,
-              "start_ms": 129008,
-              "title": "Dedication"
-            },
-            {
-              "length_ms": 145798,
-              "start_ms": 139039,
-              "title": "Letter 1"
-            },
-            {
-              "length_ms": 100913,
-              "start_ms": 284837,
-              "title": "Letter 2"
-            },
-            {
-              "length_ms": 43374,
-              "start_ms": 385750,
-              "title": "Letter 3"
-            },
-            {
-              "length_ms": 838263,
-              "start_ms": 429124,
-              "title": "Letter 4"
-            },
-            {
-              "length_ms": 291224,
-              "start_ms": 1267387,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 494538,
-              "start_ms": 1558611,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 636482,
-              "start_ms": 2053149,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 645630,
-              "start_ms": 2689631,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 766095,
-              "start_ms": 3335261,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 362788,
-              "start_ms": 4101356,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1081399,
-              "start_ms": 4464144,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1010230,
-              "start_ms": 5545543,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 663603,
-              "start_ms": 6555773,
-              "title": "Chapter"
-            },
-            {
-              "length_ms": 746498,
-              "start_ms": 7219376,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 858952,
-              "start_ms": 7965874,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 437998,
-              "start_ms": 8824826,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 631327,
-              "start_ms": 9262824,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 270860,
-              "start_ms": 9894151,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 862203,
-              "start_ms": 10165011,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1154705,
-              "start_ms": 11027214,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 708278,
-              "start_ms": 12181919,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 666157,
-              "start_ms": 12890197,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 526140,
-              "start_ms": 13556354,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1217724,
-              "start_ms": 14082494,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1126005,
-              "start_ms": 15300218,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1032730,
-              "start_ms": 16426223,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 906553,
-              "start_ms": 17458953,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 2799281,
-              "start_ms": 18365506,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 25146,
-              "start_ms": 21164787,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/815GshRk2UL.jpg",
-          "id": "a-g-smith-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "a-g-smith"
-          ],
-          "publisher": "Brock Parks",
-          "release_date": "2024-05-22",
-          "runtime_min": 352,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B0D4SPKRWM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0D4SFK3K2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0D4SSVCCL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "frankenstein-abridged"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0D4SPKRWM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Frankenstein Abridged"
     },
     "frankenstein-adaptation": {
       "added_at": "2026-08-07",

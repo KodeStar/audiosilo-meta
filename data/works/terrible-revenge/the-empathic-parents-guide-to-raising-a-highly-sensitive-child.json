@@ -10120,34 +10120,7 @@
             }
           ],
           "work": "the-emperors-soul"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00BNGVRP2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Emperor's Soul"
-    },
-    "the-emperors-soul-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy"
-      ],
-      "id": "the-emperors-soul-dramatized-adaptation",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "full-cast-2020": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -10196,10 +10169,19 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-emperors-soul-dramatized-adaptation"
+          "work": "the-emperors-soul"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00BNGVRP2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1645419134",
@@ -10211,7 +10193,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Emperor's Soul [Dramatized Adaptation]"
+      "title": "The Emperor's Soul"
     },
     "the-emperors-soul-elantris-series-book": {
       "added_at": "2026-07-25T17:12:12+01:00",

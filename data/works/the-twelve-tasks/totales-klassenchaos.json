@@ -2774,7 +2774,8 @@
     "tote-lugen-nicht": {
       "added_at": "2026-07-29",
       "authors": [
-        "kathy-reichs"
+        "kathy-reichs",
+        "thomas-a-merk"
       ],
       "genres": [
         "literary-fiction",
@@ -3688,33 +3689,7 @@
             }
           ],
           "work": "tote-lugen-nicht"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TKMKT82",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tote lügen nicht"
-    },
-    "tote-lugen-nicht-kathy-reichs": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kathy-reichs",
-        "thomas-a-merk"
-      ],
-      "genres": [
-        "literary-fiction",
-        "medicine",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "tote-lugen-nicht-kathy-reichs",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ranja-bonalana-2012": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -4191,10 +4166,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "tote-lugen-nicht-kathy-reichs"
+          "work": "tote-lugen-nicht"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TKMKT82",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00TWVBO62",

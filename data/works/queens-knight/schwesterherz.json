@@ -642,7 +642,8 @@
     "schwesternmord": {
       "added_at": "2026-07-29",
       "authors": [
-        "tess-gerritsen"
+        "tess-gerritsen",
+        "andreas-jager"
       ],
       "genres": [
         "literary-fiction",
@@ -654,6 +655,84 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "katharina-thalbach-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00TW34WZK",
+              "region": "us"
+            },
+            {
+              "asin": "B004UVKY42",
+              "region": "de"
+            },
+            {
+              "asin": "B00TW3PUHE",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4534347,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 4316311,
+              "start_ms": 4534347,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 4450801,
+              "start_ms": 8850658,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 4239314,
+              "start_ms": 13301459,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 3862500,
+              "start_ms": 17540773,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 3786525,
+              "start_ms": 21403273,
+              "title": "Kapitel 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91QvAsITaqL.jpg",
+          "id": "katharina-thalbach-2006",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "katharina-thalbach"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2006-01-09",
+          "runtime_min": 419,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00TW34WZK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004UVKY42",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00TW3PUHE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "schwesternmord"
+        },
         "michael-hansonis-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1473,105 +1552,7 @@
           "imported_at": "2026-07-29",
           "ref": "B00TKMK7P2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Schwesternmord"
-    },
-    "schwesternmord-tess-gerritsen": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "tess-gerritsen",
-        "andreas-jager"
-      ],
-      "genres": [
-        "literary-fiction",
-        "medicine",
-        "thriller-suspense"
-      ],
-      "id": "schwesternmord-tess-gerritsen",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "katharina-thalbach-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00TW34WZK",
-              "region": "us"
-            },
-            {
-              "asin": "B004UVKY42",
-              "region": "de"
-            },
-            {
-              "asin": "B00TW3PUHE",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4534347,
-              "start_ms": 0,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 4316311,
-              "start_ms": 4534347,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 4450801,
-              "start_ms": 8850658,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 4239314,
-              "start_ms": 13301459,
-              "title": "Kapitel 4"
-            },
-            {
-              "length_ms": 3862500,
-              "start_ms": 17540773,
-              "title": "Kapitel 5"
-            },
-            {
-              "length_ms": 3786525,
-              "start_ms": 21403273,
-              "title": "Kapitel 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91QvAsITaqL.jpg",
-          "id": "katharina-thalbach-2006",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "katharina-thalbach"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2006-01-09",
-          "runtime_min": 419,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00TW34WZK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B004UVKY42",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00TW3PUHE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "schwesternmord-tess-gerritsen"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00TW34WZK",

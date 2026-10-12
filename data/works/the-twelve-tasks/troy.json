@@ -2255,7 +2255,8 @@
     "truckers": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "terry-pratchett"
+        "terry-pratchett",
+        "mark-beech"
       ],
       "genres": [
         "action-adventure",
@@ -2344,38 +2345,7 @@
             }
           ],
           "work": "truckers"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B0032N51S8",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0032N51S8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Truckers"
-    },
-    "truckers-the-first-book-of-the-nomes": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "terry-pratchett",
-        "mark-beech"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "comedy-humor",
-        "fantasy"
-      ],
-      "id": "truckers-the-first-book-of-the-nomes",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tony-robinson-2007": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -2437,17 +2407,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "truckers-the-first-book-of-the-nomes"
+          "work": "truckers"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B0032N51S8",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0032N51S8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0032N8U36",
           "type": "libex-import"
         }
       ],
-      "title": "Truckers: The First Book of the Nomes"
+      "title": "Truckers"
     },
     "trucking-business-3-manuscripts-in-1-book": {
       "added_at": "2026-07-29",

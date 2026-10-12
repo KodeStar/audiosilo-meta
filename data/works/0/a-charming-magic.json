@@ -7482,7 +7482,8 @@
     "a-christmas-carol": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "charles-dickens"
+        "charles-dickens",
+        "steve-cook"
       ],
       "credits": [
         {
@@ -11606,6 +11607,84 @@
           ],
           "work": "a-christmas-carol"
         },
+        "steve-cook-2025": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B0FT454VBJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0FT444R4Q",
+              "region": "de"
+            },
+            {
+              "asin": "B0FT4NLJGW",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 36191,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2898667,
+              "start_ms": 36191,
+              "title": "Chapter 1: Marley's Ghost"
+            },
+            {
+              "length_ms": 2562482,
+              "start_ms": 2934858,
+              "title": "Chapter 2: The First of the Three Spirits"
+            },
+            {
+              "length_ms": 3355187,
+              "start_ms": 5497340,
+              "title": "Chapter 3: The Second of the Three Spirits"
+            },
+            {
+              "length_ms": 3172237,
+              "start_ms": 8852527,
+              "title": "Chapter 4: The Last of the Spirits"
+            },
+            {
+              "length_ms": 20943,
+              "start_ms": 12024764,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81izkLwHhBL.jpg",
+          "id": "steve-cook-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-cook"
+          ],
+          "publisher": "Five Talents Audio",
+          "release_date": "2025-09-29",
+          "runtime_min": 200,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B0FT454VBJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FT444R4Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FT4NLJGW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
         "tadhg-hynes-2014": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11907,6 +11986,11 @@
         {
           "imported_at": "2026-08-12",
           "ref": "B0BTMVPBK2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0FT454VBJ",
           "type": "libex-import"
         }
       ],
@@ -14251,114 +14335,6 @@
         }
       ],
       "title": "A Christmas Carol (Trout Lake Media Edition 2)"
-    },
-    "a-christmas-carol-unabridged-and-fully-dramatized": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "charles-dickens",
-        "steve-cook"
-      ],
-      "credits": [
-        {
-          "person": "steve-cook",
-          "role": "adaptation"
-        }
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "a-christmas-carol-unabridged-and-fully-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "steve-cook-2025": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B0FT454VBJ",
-              "region": "us"
-            },
-            {
-              "asin": "B0FT444R4Q",
-              "region": "de"
-            },
-            {
-              "asin": "B0FT4NLJGW",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 36191,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2898667,
-              "start_ms": 36191,
-              "title": "Chapter 1: Marley's Ghost"
-            },
-            {
-              "length_ms": 2562482,
-              "start_ms": 2934858,
-              "title": "Chapter 2: The First of the Three Spirits"
-            },
-            {
-              "length_ms": 3355187,
-              "start_ms": 5497340,
-              "title": "Chapter 3: The Second of the Three Spirits"
-            },
-            {
-              "length_ms": 3172237,
-              "start_ms": 8852527,
-              "title": "Chapter 4: The Last of the Spirits"
-            },
-            {
-              "length_ms": 20943,
-              "start_ms": 12024764,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81izkLwHhBL.jpg",
-          "id": "steve-cook-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "steve-cook"
-          ],
-          "publisher": "Five Talents Audio",
-          "release_date": "2025-09-29",
-          "runtime_min": 200,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B0FT454VBJ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0FT444R4Q",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0FT4NLJGW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-unabridged-and-fully-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0FT454VBJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol (Unabridged and Fully Dramatized)"
     }
   }
 }

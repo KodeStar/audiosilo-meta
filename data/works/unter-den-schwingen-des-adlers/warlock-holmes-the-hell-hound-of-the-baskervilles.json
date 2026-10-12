@@ -275,12 +275,15 @@
     "warlock-holmes-the-sign-of-nine": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "g-s-denning"
+        "g-s-denning",
+        "hayden-sherman"
       ],
       "genres": [
         "classics",
         "comedy-humor",
+        "dark-fantasy",
         "fantasy",
+        "historical-fiction",
         "mystery",
         "paranormal",
         "thriller-suspense"
@@ -289,6 +292,81 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2020": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "1648812007",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4294948,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4239685,
+              "start_ms": 4294948,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4870315,
+              "start_ms": 8534633,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4817304,
+              "start_ms": 13404948,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4298919,
+              "start_ms": 18222252,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3340840,
+              "start_ms": 22521171,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3605432,
+              "start_ms": 25862011,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 5130889,
+              "start_ms": 29467443,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GzcnnJf-L.jpg",
+          "id": "full-cast-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "GraphicAudio",
+          "release_date": "2020",
+          "runtime_min": 576,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "1648812007",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1648812007",
+              "type": "libex-import"
+            }
+          ],
+          "work": "warlock-holmes-the-sign-of-nine"
+        },
         "robert-garson-2019": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -473,6 +551,16 @@
         {
           "imported_at": "2026-07-30",
           "ref": "1980001138",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648812007",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648812007",
           "type": "libex-import"
         }
       ],
@@ -3448,193 +3536,6 @@
         }
       ],
       "title": "Warlord: After It Happened, Book 10"
-    },
-    "warlord-alex-hawke-book-6": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ted-bell"
-      ],
-      "genres": [
-        "espionage",
-        "thriller-suspense"
-      ],
-      "id": "warlord-alex-hawke-book-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-shea-2010": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0043G7MSK",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVZZRE",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1186865,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1193227,
-              "start_ms": 1186865,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1015362,
-              "start_ms": 2380092,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1247097,
-              "start_ms": 3395454,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1179992,
-              "start_ms": 4642551,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1217329,
-              "start_ms": 5822543,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1189419,
-              "start_ms": 7039872,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1140053,
-              "start_ms": 8229291,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1155611,
-              "start_ms": 9369344,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1092220,
-              "start_ms": 10524955,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1173676,
-              "start_ms": 11617175,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1304497,
-              "start_ms": 12790851,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1046152,
-              "start_ms": 14095348,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1078613,
-              "start_ms": 15141500,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1074202,
-              "start_ms": 16220113,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1044341,
-              "start_ms": 17294315,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1182871,
-              "start_ms": 18338656,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1239435,
-              "start_ms": 19521527,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1195642,
-              "start_ms": 20760962,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1238413,
-              "start_ms": 21956604,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1264744,
-              "start_ms": 23195017,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1106152,
-              "start_ms": 24459761,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1376572,
-              "start_ms": 25565913,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 590112,
-              "start_ms": 26942485,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1198893,
-              "start_ms": 27532597,
-              "title": "Chapter 25"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/811OkxMT4SL.jpg",
-          "id": "john-shea-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-shea"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2010-09-20",
-          "runtime_min": 478,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0043G7MSK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVZZRE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "warlord-alex-hawke-book-6"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0043G7MSK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Warlord: Alex Hawke, Book 6"
     },
     "warlord-and-the-waif": {
       "added_at": "2026-08-01",
@@ -12802,12 +12703,181 @@
             }
           ],
           "work": "warlord-ted-bell"
+        },
+        "john-shea-2010-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0043G7MSK",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVZZRE",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1186865,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1193227,
+              "start_ms": 1186865,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1015362,
+              "start_ms": 2380092,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1247097,
+              "start_ms": 3395454,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1179992,
+              "start_ms": 4642551,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1217329,
+              "start_ms": 5822543,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1189419,
+              "start_ms": 7039872,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1140053,
+              "start_ms": 8229291,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1155611,
+              "start_ms": 9369344,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1092220,
+              "start_ms": 10524955,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1173676,
+              "start_ms": 11617175,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1304497,
+              "start_ms": 12790851,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1046152,
+              "start_ms": 14095348,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1078613,
+              "start_ms": 15141500,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1074202,
+              "start_ms": 16220113,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1044341,
+              "start_ms": 17294315,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1182871,
+              "start_ms": 18338656,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1239435,
+              "start_ms": 19521527,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1195642,
+              "start_ms": 20760962,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1238413,
+              "start_ms": 21956604,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1264744,
+              "start_ms": 23195017,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1106152,
+              "start_ms": 24459761,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1376572,
+              "start_ms": 25565913,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 590112,
+              "start_ms": 26942485,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1198893,
+              "start_ms": 27532597,
+              "title": "Chapter 25"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/811OkxMT4SL.jpg",
+          "id": "john-shea-2010-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-shea"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2010-09-20",
+          "runtime_min": 478,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0043G7MSK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVZZRE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "warlord-ted-bell"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B0043F25RE",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0043G7MSK",
           "type": "libex-import"
         }
       ],

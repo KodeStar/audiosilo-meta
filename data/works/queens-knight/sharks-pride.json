@@ -6636,7 +6636,8 @@
     "sharpes-escape": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "bernard-cornwell"
+        "bernard-cornwell",
+        "john-nicholl"
       ],
       "genres": [
         "action-adventure",
@@ -6779,6 +6780,69 @@
           ],
           "work": "sharpes-escape"
         },
+        "paul-mcgann-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTMKE",
+              "region": "us"
+            },
+            {
+              "asin": "B004V5OKTC",
+              "region": "de"
+            },
+            {
+              "asin": "B004EWDCDM",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4387503,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4694610,
+              "start_ms": 4387503,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4538201,
+              "start_ms": 9082113,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/618DF3UnU6L.jpg",
+          "id": "paul-mcgann-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-mcgann"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-06-10",
+          "runtime_min": 226,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTMKE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004V5OKTC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EWDCDM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sharpes-escape"
+        },
         "rupert-farley-2014": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -6912,99 +6976,14 @@
           "imported_at": "2026-08-02",
           "ref": "B002UZI0A0",
           "type": "libex-import"
-        }
-      ],
-      "title": "Sharpe’s Escape"
-    },
-    "sharpes-escape-the-bussaco-campaign-1810": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-nicholl",
-        "bernard-cornwell"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "historical-fiction",
-        "short-stories",
-        "war-military-fiction"
-      ],
-      "id": "sharpes-escape-the-bussaco-campaign-1810",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "paul-mcgann-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GTMKE",
-              "region": "us"
-            },
-            {
-              "asin": "B004V5OKTC",
-              "region": "de"
-            },
-            {
-              "asin": "B004EWDCDM",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4387503,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4694610,
-              "start_ms": 4387503,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4538201,
-              "start_ms": 9082113,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/618DF3UnU6L.jpg",
-          "id": "paul-mcgann-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paul-mcgann"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-06-10",
-          "runtime_min": 226,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GTMKE",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004V5OKTC",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EWDCDM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sharpes-escape-the-bussaco-campaign-1810"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GTMKE",
           "type": "libex-import"
         }
       ],
-      "title": "Sharpe’s Escape: The Bussaco Campaign, 1810"
+      "title": "Sharpe’s Escape"
     },
     "sharpes-fortress": {
       "added_at": "2026-07-11T17:30:05+01:00",
@@ -7319,11 +7298,13 @@
     "sharpes-fury": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "bernard-cornwell"
+        "bernard-cornwell",
+        "john-nicholl"
       ],
       "genres": [
         "action-adventure",
         "historical-fiction",
+        "horror",
         "politics",
         "war-military-fiction"
       ],
@@ -7859,6 +7840,79 @@
           ],
           "work": "sharpes-fury"
         },
+        "paul-mcgann-2007": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GPPB4",
+              "region": "us"
+            },
+            {
+              "asin": "B01MDNYY5N",
+              "region": "de"
+            },
+            {
+              "asin": "B004EW918M",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4071619,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4250366,
+              "start_ms": 4071619,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4184236,
+              "start_ms": 8321985,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4147734,
+              "start_ms": 12506221,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3953569,
+              "start_ms": 16653955,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EVjjS9HCL.jpg",
+          "id": "paul-mcgann-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-mcgann"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2007-04-06",
+          "runtime_min": 343,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GPPB4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01MDNYY5N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EW918M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sharpes-fury"
+        },
         "rupert-farley-2014": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -8176,108 +8230,14 @@
           "imported_at": "2026-08-02",
           "ref": "B002V5D6S0",
           "type": "libex-import"
-        }
-      ],
-      "title": "Sharpe’s Fury"
-    },
-    "sharpes-fury-the-battle-of-barrosa-march-1811": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-nicholl",
-        "bernard-cornwell"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "horror",
-        "war-military-fiction"
-      ],
-      "id": "sharpes-fury-the-battle-of-barrosa-march-1811",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "paul-mcgann-2007": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GPPB4",
-              "region": "us"
-            },
-            {
-              "asin": "B01MDNYY5N",
-              "region": "de"
-            },
-            {
-              "asin": "B004EW918M",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4071619,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4250366,
-              "start_ms": 4071619,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4184236,
-              "start_ms": 8321985,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4147734,
-              "start_ms": 12506221,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3953569,
-              "start_ms": 16653955,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91EVjjS9HCL.jpg",
-          "id": "paul-mcgann-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paul-mcgann"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2007-04-06",
-          "runtime_min": 343,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GPPB4",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01MDNYY5N",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EW918M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sharpes-fury-the-battle-of-barrosa-march-1811"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GPPB4",
           "type": "libex-import"
         }
       ],
-      "title": "Sharpe’s Fury: The Battle of Barrosa, March 1811"
+      "title": "Sharpe’s Fury"
     },
     "sharpes-gold": {
       "added_at": "2026-07-11T17:30:05+01:00",
@@ -9709,7 +9669,8 @@
     "sharpes-havoc": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "bernard-cornwell"
+        "bernard-cornwell",
+        "john-nicholl"
       ],
       "genres": [
         "action-adventure",
@@ -9811,6 +9772,69 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B079X1W573",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sharpes-havoc"
+        },
+        "paul-mcgann-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GTMJK",
+              "region": "us"
+            },
+            {
+              "asin": "B004EKGCXG",
+              "region": "de"
+            },
+            {
+              "asin": "B004EKG9S4",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4477411,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4454284,
+              "start_ms": 4477411,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4390243,
+              "start_ms": 8931695,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61juvQgHU9L.jpg",
+          "id": "paul-mcgann-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-mcgann"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-06-09",
+          "runtime_min": 221,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GTMJK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EKGCXG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EKG9S4",
               "type": "libex-import"
             }
           ],
@@ -9939,99 +9963,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00MGU4R9M",
           "type": "libex-import"
-        }
-      ],
-      "title": "Sharpe’s Havoc"
-    },
-    "sharpes-havoc-the-northern-portugal-campaign-spring-1809": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "bernard-cornwell",
-        "john-nicholl"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "war-military-fiction"
-      ],
-      "id": "sharpes-havoc-the-northern-portugal-campaign-spring-1809",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "paul-mcgann-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GTMJK",
-              "region": "us"
-            },
-            {
-              "asin": "B004EKGCXG",
-              "region": "de"
-            },
-            {
-              "asin": "B004EKG9S4",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4477411,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4454284,
-              "start_ms": 4477411,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4390243,
-              "start_ms": 8931695,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61juvQgHU9L.jpg",
-          "id": "paul-mcgann-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paul-mcgann"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-06-09",
-          "runtime_min": 221,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GTMJK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EKGCXG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EKG9S4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sharpes-havoc-the-northern-portugal-campaign-spring-1809"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GTMJK",
           "type": "libex-import"
         }
       ],
-      "title": "Sharpe’s Havoc: The Northern Portugal Campaign, Spring 1809"
+      "title": "Sharpe’s Havoc"
     },
     "sharpes-honour": {
       "added_at": "2026-07-11T17:30:05+01:00",

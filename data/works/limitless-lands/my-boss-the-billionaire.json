@@ -1405,30 +1405,7 @@
             }
           ],
           "work": "my-brilliant-career"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002V5B63C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "My Brilliant Career"
-    },
-    "my-brilliant-career-unabridged": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "miles-franklin"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "my-brilliant-career-unabridged",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sara-nichols-2022": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -1676,17 +1653,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "my-brilliant-career-unabridged"
+          "work": "my-brilliant-career"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002V5B63C",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0BLQXCVTQ",
           "type": "libex-import"
         }
       ],
-      "title": "My Brilliant Career - Unabridged"
+      "title": "My Brilliant Career"
     },
     "my-brilliant-friend": {
       "added_at": "2026-08-08",

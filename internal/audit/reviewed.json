@@ -360,6 +360,22 @@
     "target": "harry-potter-and-the-sorcerers-stone"
   },
   {
+    "decision": "assert",
+    "from": "5.4",
+    "op": "drop-membership",
+    "reason": "the series lists Magic Gifts twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
+    "series": "kate-daniels",
+    "target": "magic-gifts-dramatized-adaptation"
+  },
+  {
+    "decision": "assert",
+    "from": "8",
+    "op": "drop-membership",
+    "reason": "the series lists Magical Midlife Flowers twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
+    "series": "leveling-up",
+    "target": "magical-midlife-flowers-dramatized-adaptation"
+  },
+  {
     "decision": "reject",
     "field": "position",
     "from": "3",
@@ -370,6 +386,14 @@
     "reason": "this drop would take the Spanish original out of its own series and leave antonia-scott English-only: the English translation is the half that moves",
     "series": "antonia-scott",
     "target": "rey-blanco"
+  },
+  {
+    "decision": "assert",
+    "from": "0.2",
+    "op": "drop-membership",
+    "reason": "the series lists Season of Storms twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
+    "series": "the-witcher",
+    "target": "season-of-storms-booktrack-edition"
   },
   {
     "decision": "assert",
@@ -404,6 +428,22 @@
     "target": "the-collected-works-of-c-s-lewis-the-lion-the-witch-and-the-wardrobe-prince-caspian-and-other"
   },
   {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "the series lists The Emperor's Soul twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
+    "series": "elantris",
+    "target": "the-emperors-soul-dramatized-adaptation"
+  },
+  {
+    "decision": "assert",
+    "from": "0.1",
+    "op": "drop-membership",
+    "reason": "the series lists The Last Wish twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
+    "series": "the-witcher",
+    "target": "the-last-wish-full-cast-edition"
+  },
+  {
     "decision": "reject",
     "field": "position",
     "from": "2",
@@ -424,6 +464,15 @@
     "target": "zodiac-aligned"
   },
   {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "87th-precinct-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "87th-precinct"
+  },
+  {
     "decision": "accept",
     "op": "merge-series",
     "others": [
@@ -431,6 +480,33 @@
     ],
     "reason": "the orphan's one member, Oath of Office, sits at the same publication-order slot in A Jack Ryan Novel; retailers list no separate Jack Ryan Universe series for it",
     "target": "a-jack-ryan-novel-publication-order"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "angelic-intervention-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "angelic-intervention"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "artemis-fowl-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
+    "target": "artemis-fowl"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "blossom-street-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "blossom-street"
   },
   {
     "decision": "assert",
@@ -445,6 +521,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "butch-karp-marlene-ciampi-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "butch-karp-marlene-ciampi"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "century-trilogy-abridged"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
@@ -454,10 +539,46 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "christmas-hope-series-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "christmas-hope-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "das-rad-der-zeit-gekurzt"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "das-rad-der-zeit"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "der-seher-gelesen-von-gerrit-petersen"
     ],
     "reason": "lists the same works at the same slots as the canonical series; the narrator is a property of the recordings, not a series",
     "target": "der-seher"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "die-chroniken-von-narnia-horspiel"
+    ],
+    "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
+    "target": "die-chroniken-von-narnia"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "die-schule-der-magischen-tiere-endlich-ferien-horspiel"
+    ],
+    "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
+    "target": "die-schule-der-magischen-tiere-endlich-ferien"
   },
   {
     "decision": "assert",
@@ -512,6 +633,15 @@
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "dream-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "emily-windsnap-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "emily-windsnap"
   },
   {
     "decision": "assert",
@@ -616,6 +746,33 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "jason-bourne-series-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
+    "target": "jason-bourne-series"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "johnny-maxwell-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
+    "target": "johnny-maxwell"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "kelvin-of-rud-dramatized-adaptation"
+    ],
+    "reason": "the dramatized spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order; a dramatization is a property of the recordings, not a separate series",
+    "target": "kelvin-of-rud"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "kevin-kerney-abridged"
     ],
     "reason": "lists 1 of the canonical series' works at the same slots and fills its free slots with Under the Color of Law at 6, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
@@ -643,10 +800,28 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "kommissar-jennerwein-ermittelt-gekurzt"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "kommissar-jennerwein-ermittelt"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "lincoln-rhyme-gekurzt"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "lincoln-rhyme"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "mackenzie-family-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "mackenzie-family"
   },
   {
     "decision": "assert",
@@ -688,10 +863,46 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "mitch-rapp-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
+    "target": "mitch-rapp"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "oz-abridged"
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "oz"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "patrick-mclanahan-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "patrick-mclanahan"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "percy-jackson-gekurzt"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "percy-jackson-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "ramses-the-damned-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "ramses-the-damned"
   },
   {
     "decision": "accept",
@@ -707,10 +918,55 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "red-princess-mysteries-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "red-princess-mysteries"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "redemption-abridged"
     ],
     "reason": "lists 3 of the canonical series' works at the same slots and fills its free slots with Return at 3, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
     "target": "redemption"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "robert-langdon-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
+    "target": "robert-langdon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "robert-langdon-gekurzt"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
+    "target": "robert-langdon-german-edition"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "roman-mysteries-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "roman-mysteries"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "secret-projects-dramatized-adaptation"
+    ],
+    "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
+    "target": "secret-projects"
   },
   {
     "decision": "assert",
@@ -725,10 +981,28 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "shopaholic-abridged"
+    ],
+    "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
+    "target": "shopaholic"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "slash-and-pecos-dramatized-adaptation"
     ],
     "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; dramatization is a property of the recordings, not a series",
     "target": "slash-and-pecos"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "star-wars-x-wing-legends-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "star-wars-x-wing-legends"
   },
   {
     "decision": "assert",
@@ -770,10 +1044,46 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-talents-abridged"
+    ],
+    "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
+    "target": "the-talents"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "vattas-war-dramatized-adaptation"
     ],
     "reason": "lists the same works at the same slots as the canonical series; dramatization is a property of the recordings, not a series",
     "target": "vattas-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "warlock-holmes-dramatized"
+    ],
+    "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
+    "target": "warlock-holmes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-final-unfinished-voyage-of-jack-aubrey"
+    ],
+    "reason": "the same book: \"The Final Unfinished Voyage of Jack Aubrey\" and \"21\" differ only by retailer decoration; both sit at 21 of aubrey-maturin-abridged and its canonical series, by the same author",
+    "target": "21"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-christmas-carol-unabridged-and-fully-dramatized"
+    ],
+    "reason": "the same book by the same author: \"A Christmas Carol (Unabridged and Fully Dramatized)\" only adds an edition, production or narrator note to \"A Christmas Carol\", which is a property of the recording",
+    "target": "a-christmas-carol"
   },
   {
     "decision": "assert",
@@ -905,6 +1215,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "act-of-war-a-thriller"
+    ],
+    "reason": "the same book by the same author: \"Act of War: A Thriller\" only adds a retailer series decoration to \"Act of War\", and both sit at the same position of two spellings of one series",
+    "target": "act-of-war-brad-thor"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-adventures-of-huckleberry-finn"
+    ],
+    "reason": "the same book: \"The Adventures of Huckleberry Finn\" and \"Adventures of Huckleberry Finn\" differ only by retailer decoration; both sit at 2 of twains-tom-and-huck-abridged and its canonical series, by the same author",
+    "target": "adventures-of-huckleberry-finn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "ahead-full-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -923,10 +1251,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "alcatraz-versus-the-scriveners-bones-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: \"Alcatraz Versus The Scrivener’s Bones [Dramatized Adaptation]\" only adds an edition, production or narrator note to \"Alcatraz Versus the Scrivener's Bones\", which is a property of the recording",
+    "target": "alcatraz-versus-the-scriveners-bones"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "alcatraz-versus-the-shattered-lens-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "alcatraz-versus-the-shattered-lens"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "alices-adventures-in-wonderland-unabridged"
+    ],
+    "reason": "the same book by the same author: \"Alice's Adventures in Wonderland - Unabridged\" only adds an edition, production or narrator note to \"Alice's Adventures in Wonderland\", which is a property of the recording",
+    "target": "alices-adventures-in-wonderland"
   },
   {
     "decision": "accept",
@@ -959,6 +1305,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "angels-demons-dan-brown"
+    ],
+    "reason": "the same novel: one record holds the 2003 abridged Richard Poe recording, the other the unabridged one; audiosilo-meta-community#418 re-keys the fuller sidecar onto angels-demons",
+    "target": "angels-demons"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "artemis-fowl-movie-tie-in-edition"
+    ],
+    "reason": "the same book: \"Artemis Fowl Movie Tie-In Edition\" and \"Artemis Fowl\" differ only by retailer decoration; both sit at 1 of artemis-fowl-abridged and its canonical series, by the same author",
+    "target": "artemis-fowl-eoin-colfer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "ascendance-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -977,6 +1341,33 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "awakened-a-house-of-night-novel"
+    ],
+    "reason": "the same book: \"Awakened: A House of Night Novel\" and \"Awakened\" differ only by retailer decoration; both sit at 8 of house-of-night-abridged and its canonical series, by the same author",
+    "target": "awakened"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "backfire-an-fbi-thriller-book-16"
+    ],
+    "reason": "the same book by the same author: \"Backfire: An FBI Thriller, Book 16\" only adds a retailer series decoration to \"Backfire\", and both sit at the same position of two spellings of one series",
+    "target": "backfire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "bad-blood-a-virgil-flowers-novel"
+    ],
+    "reason": "the same book by the same author: \"Bad Blood: a Virgil Flowers novel\" only adds a retailer series decoration to \"Bad Blood\", and both sit at the same position of two spellings of one series",
+    "target": "bad-blood-john-sandford"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "badger-boy-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -990,6 +1381,24 @@
     ],
     "reason": "same book: two narrations of one work, and the series spellings are one series",
     "target": "balada-de-pajaros-cantores-y-serpientes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "better-off-dead-dramatized-adaptation"
+    ],
+    "reason": "the same book: \"Better Off Dead [Dramatized Adaptation]\" and \"Better off Dead\" differ only by retailer decoration; both sit at 3 of shawn-obrien-dramatized-adaptation and its canonical series, by the same author",
+    "target": "better-off-dead-william-w-johnstone"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-edge-chronicles-beyond-the-deepwoods"
+    ],
+    "reason": "the same book: \"The Edge Chronicles: Beyond the Deepwoods\" and \"Beyond the Deepwoods\" differ only by retailer decoration; both sit at 4 of the-edge-chronicles-abridged and its canonical series, by the same author",
+    "target": "beyond-the-deepwoods"
   },
   {
     "decision": "assert",
@@ -1044,6 +1453,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "bloody-acquisitions"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "blutmale-tess-gerritsen"
+    ],
+    "reason": "the same book: \"Blutmale\" and \"Blutmale\" differ only by retailer decoration; both sit at 6 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
+    "target": "blutmale"
   },
   {
     "decision": "assert",
@@ -1130,6 +1548,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "bullets-dont-argue-dramatized-adaptation"
+    ],
+    "reason": "the same book by the same author: \"Bullets Don't Argue [Dramatized Adaptation]\" only adds an edition, production or narrator note to \"Bullets Don’t Argue\", which is a property of the recording",
+    "target": "bullets-dont-argue"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "butchery-of-the-mountain-man-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -1143,6 +1570,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "capture-death"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-charmed-life"
+    ],
+    "reason": "the same book by the same author: \"A Charmed Life\" only adds a retailer series decoration to \"Charmed Life\", and both sit at the same position of two spellings of one series",
+    "target": "charmed-life"
   },
   {
     "decision": "assert",
@@ -1338,6 +1774,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "dead-in-the-water-a-novel"
+    ],
+    "reason": "the same book: \"Dead in the Water: A Novel\" and \"Dead in the Water\" differ only by retailer decoration; both sit at 3 of stone-barrington-abridged and its canonical series, by the same author",
+    "target": "dead-in-the-water-stuart-woods"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "dead-streets-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -1380,6 +1825,33 @@
     "target": "death-rides-a-chestnut-mare"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "der-code-der-knochen-tempe-brennan-20"
+    ],
+    "reason": "the same book: \"Der Code der Knochen: Tempe Brennan 20\" and \"Der Code der Knochen: Ein neuer Fall für Tempe Brennan\" differ only by retailer decoration; both sit at 20 of tempe-brennan-gekurzt and its canonical series, by the same author",
+    "target": "der-code-der-knochen-ein-neuer-fall-fur-tempe-brennan"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sakrileg-robert-langdon-2"
+    ],
+    "reason": "the same book: \"Sakrileg: Robert Langdon 2\" and \"Der Da Vinci Code\" differ only by retailer decoration; both sit at 2 of robert-langdon-gekurzt and its canonical series, by the same author",
+    "target": "der-da-vinci-code"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "erloser-ein-harry-hole-krimi-6"
+    ],
+    "reason": "the same book: \"Erlöser (Ein Harry-Hole-Krimi 6)\" and \"Der Erlöser\" differ only by retailer decoration; both sit at 6 of harry-hole-gekurzt and its canonical series, by the same author",
+    "target": "der-erloser"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1387,6 +1859,15 @@
     ],
     "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
     "target": "despues-de-ti"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "destined-a-house-of-night-novel"
+    ],
+    "reason": "the same book: \"Destined: A House of Night Novel\" and \"Destined\" differ only by retailer decoration; both sit at 9 of house-of-night-abridged and its canonical series, by the same author",
+    "target": "destined"
   },
   {
     "decision": "assert",
@@ -1414,6 +1895,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "die-by-the-gun"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "larve-ein-harry-hole-krimi-9"
+    ],
+    "reason": "the same book: \"Larve (Ein Harry-Hole-Krimi 9)\" and \"Die Larve\" differ only by retailer decoration; both sit at 9 of harry-hole-gekurzt and its canonical series, by the same author",
+    "target": "die-larve"
   },
   {
     "decision": "assert",
@@ -1563,6 +2053,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "emma-full-cast-drama"
+    ],
+    "reason": "the same book by the same author: \"Emma (Full Cast Drama)\" only adds an edition, production or narrator note to \"Emma\", which is a property of the recording",
+    "target": "emma"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "empire-of-silence-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -1662,6 +2161,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "frankenstein-abridged"
+    ],
+    "reason": "the same book by the same author: \"Frankenstein Abridged\" only adds an edition, production or narrator note to \"Frankenstein\", which is a property of the recording",
+    "target": "frankenstein"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "free-fall-an-elvis-cole-and-joe-pike-novel-book-4"
+    ],
+    "reason": "the same book by the same author: \"Free Fall: An Elvis Cole and Joe Pike Novel, Book 4\" only adds a retailer series decoration to \"Free Fall\", and both sit at the same position of two spellings of one series",
+    "target": "free-fall-robert-crais"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "frontier-of-violence-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -1711,6 +2228,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "gods-and-ends"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "grabkammer-maura-isles-jane-rizzoli-7"
+    ],
+    "reason": "the same book: \"Grabkammer: Maura Isles / Jane Rizzoli 7\" and \"Grabkammer: Maura Isles /Jane Rizzoli 7\" differ only by retailer decoration; both sit at 7 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
+    "target": "grabkammer-maura-isles-jane-rizzoli-7-tess-gerritsen"
   },
   {
     "decision": "assert",
@@ -1774,6 +2300,15 @@
     ],
     "reason": "the Stephen Fry narration of Goblet of Fire belongs on the work as its six siblings do; the cluster's excerpt record stays out of this merge",
     "target": "harry-potter-and-the-goblet-of-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "harry-potter-and-the-sorcerers-stone"
+    ],
+    "reason": "Harry Potter and the Sorcerer's Stone is the US title of the same novel; the community sidecar collision is resolved in audiosilo-meta-community#418, which keeps the incumbent Philosopher's Stone sidecar",
+    "target": "harry-potter-and-the-philosophers-stone"
   },
   {
     "decision": "assert",
@@ -1893,6 +2428,15 @@
     "target": "helltown-massacre"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "hide-and-seek-the-number-one-bestselling-series-that-inspired-bbc-ones-rebus"
+    ],
+    "reason": "the same book: \"Hide And Seek: The number one bestselling series that inspired BBC One’s REBUS\" and \"Hide and Seek: Inspector Rebus, Book 2\" differ only by retailer decoration; both sit at 2 of inspector-rebus-abridged and its canonical series, by the same author",
+    "target": "hide-and-seek-inspector-rebus-book-2"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -1900,6 +2444,15 @@
     ],
     "reason": "same book and same production: one record per marketplace, the bracketed or suffixed title and series spellings are retailer decorations",
     "target": "hija-de-la-fortuna"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "h-m-s-surprise"
+    ],
+    "reason": "the same book: \"H.M.S. Surprise\" and \"HMS Surprise\" differ only by retailer decoration; both sit at 3 of aubrey-maturin-abridged and its canonical series, by the same author",
+    "target": "hms-surprise"
   },
   {
     "decision": "assert",
@@ -1918,6 +2471,15 @@
     ],
     "reason": "the same novel; (Discworld Novel 38) is a retailer series decoration and the record holds the abridged Tony Robinson recording plus another ASIN of the 2023 full-cast production",
     "target": "i-shall-wear-midnight"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "illuminati-robert-langdon-1"
+    ],
+    "reason": "the same book: \"Illuminati: Robert Langdon 1\" and \"Illuminati\" differ only by retailer decoration; both sit at 1 of robert-langdon-gekurzt and its canonical series, by the same author",
+    "target": "illuminati"
   },
   {
     "decision": "accept",
@@ -2058,6 +2620,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "lady-chatterleys-lover-unabridged"
+    ],
+    "reason": "the same book by the same author: \"Lady Chatterley's Lover - Unabridged\" only adds an edition, production or narrator note to \"Lady Chatterley's Lover\", which is a property of the recording",
+    "target": "lady-chatterleys-lover"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "life-goes-on-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2089,6 +2660,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "love-lost"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "love-will-tear-us-apart-german-edition"
+    ],
+    "reason": "the same book: \"Love Will Tear Us Apart (German edition)\" and \"Love Will Tear Us Apart - Nach dem Tod fängt das Leben erst richtig an? The Stranger Times ermittelt.\" differ only by retailer decoration; both sit at 3 of the-stranger-times-gekurzt and its canonical series, by the same author",
+    "target": "love-will-tear-us-apart-nach-dem-tod-fangt-das-leben-erst-richtig-an-the-stranger-times-ermittelt"
   },
   {
     "decision": "assert",
@@ -2157,6 +2737,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "minecraft-the-island-narrated-by-jack-black"
+    ],
+    "reason": "the same book by the same author: \"Minecraft: The Island (Narrated by Jack Black)\" only adds an edition, production or narrator note to \"Minecraft: The Island\", which is a property of the recording",
+    "target": "minecraft-the-island"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "morning-star-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2170,6 +2759,24 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "mount-fitz-roy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "my-antonia-unabridged"
+    ],
+    "reason": "the same book by the same author: \"My Ántonia: Unabridged\" only adds an edition, production or narrator note to \"My Antonia\", which is a property of the recording",
+    "target": "my-antonia"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "my-brilliant-career-unabridged"
+    ],
+    "reason": "the same book by the same author: \"My Brilliant Career - Unabridged\" only adds an edition, production or narrator note to \"My Brilliant Career\", which is a property of the recording",
+    "target": "my-brilliant-career"
   },
   {
     "decision": "assert",
@@ -2256,6 +2863,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "only-you-can-save-mankind-johnny-maxwell-book-1"
+    ],
+    "reason": "the same book: \"Only You Can Save Mankind: Johnny Maxwell, Book 1\" and \"Only You Can Save Mankind\" differ only by retailer decoration; both sit at 1 of johnny-maxwell-abridged and its canonical series, by the same author",
+    "target": "only-you-can-save-mankind"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "onyx-storm-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2314,6 +2930,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "perhaps-the-stars"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "pilgrims-progress-unabridged"
+    ],
+    "reason": "the same book by the same author: \"Pilgrim's Progress Unabridged\" only adds an edition, production or narrator note to \"Pilgrim's Progress\", which is a property of the recording",
+    "target": "pilgrims-progress"
   },
   {
     "decision": "assert",
@@ -2491,6 +3116,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "relight-my-fire-manche-comebacks-sind-einfach-morderisch"
+    ],
+    "reason": "the same book: \"Relight My Fire. Manche Comebacks sind einfach mörderisch.\" and \"Relight My Fire\" differ only by retailer decoration; both sit at 4 of the-stranger-times-gekurzt and its canonical series, by the same author",
+    "target": "relight-my-fire"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "remington-1894-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2542,6 +3176,24 @@
     "target": "right-between-the-eyes"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ring-the-bells-nicht-jede-bescherung-ist-ein-geschenk"
+    ],
+    "reason": "the same book: \"Ring the Bells - Nicht jede Bescherung ist ein Geschenk\" and \"Ring the Bells\" differ only by retailer decoration; both sit at 5 of the-stranger-times-gekurzt and its canonical series, by the same author",
+    "target": "ring-the-bells"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rise-to-rebellion-a-novel-of-the-american-revolution"
+    ],
+    "reason": "the same book: \"Rise to Rebellion: A Novel of the American Revolution\" and \"Rise to Rebellion: A Novel of the Revolution\" differ only by retailer decoration; both sit at 1 of american-revolutionary-war-abridged and its canonical series, by the same author",
+    "target": "rise-to-rebellion-a-novel-of-the-revolution"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -2572,6 +3224,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "robert-ludlums-tm-the-bourne-betrayal"
+    ],
+    "reason": "the same book: \"Robert Ludlum's (TM) The Bourne Betrayal\" and \"Robert Ludlum's The Bourne Betrayal\" differ only by retailer decoration; both sit at 5 of jason-bourne-series-abridged and its canonical series, by the same author",
+    "target": "robert-ludlums-the-bourne-betrayal"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "savage-texas-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2585,6 +3246,42 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "savagery-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "scheintot"
+    ],
+    "reason": "the same book: \"Scheintot\" and \"Scheintot\" differ only by retailer decoration; both sit at 5 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
+    "target": "scheintot-tess-gerritsen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "maximum-ride-schools-out-forever-booktrack-edition"
+    ],
+    "reason": "the same book: \"Maximum Ride: School's Out Forever: Booktrack Edition\" and \"School's Out Forever\" differ only by retailer decoration; both sit at 2 of maximum-ride-abridged and its canonical series, by the same author",
+    "target": "schools-out-forever"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "schwesternmord-tess-gerritsen"
+    ],
+    "reason": "the same book: \"Schwesternmord\" and \"Schwesternmord\" differ only by retailer decoration; both sit at 4 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
+    "target": "schwesternmord"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "season-of-storms-booktrack-edition"
+    ],
+    "reason": "the same book; the decorated title names the Booktrack soundtrack edition, a property of the recording; its duplicate series slot was dropped first",
+    "target": "season-of-storms"
   },
   {
     "decision": "accept",
@@ -2614,6 +3311,33 @@
     "target": "shadow-princess"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sharpes-escape-the-bussaco-campaign-1810"
+    ],
+    "reason": "the same book: \"Sharpe’s Escape: The Bussaco Campaign, 1810\" and \"Sharpe’s Escape\" differ only by retailer decoration; both sit at 10 of richard-sharpe-novels-abridged and its canonical series, by the same author",
+    "target": "sharpes-escape"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sharpes-fury-the-battle-of-barrosa-march-1811"
+    ],
+    "reason": "the same book: \"Sharpe’s Fury: The Battle of Barrosa, March 1811\" and \"Sharpe’s Fury\" differ only by retailer decoration; both sit at 11 of richard-sharpe-novels-abridged and its canonical series, by the same author",
+    "target": "sharpes-fury"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sharpes-havoc-the-northern-portugal-campaign-spring-1809"
+    ],
+    "reason": "the same book: \"Sharpe’s Havoc: The Northern Portugal Campaign, Spring 1809\" and \"Sharpe’s Havoc\" differ only by retailer decoration; both sit at 7 of richard-sharpe-novels-abridged and its canonical series, by the same author",
+    "target": "sharpes-havoc"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -2621,6 +3345,15 @@
     ],
     "reason": "same book: a dramatised production is a recording of the work, as in earlier reviewed waves, and the authors agree",
     "target": "shawn-obrien-town-tamer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "shopaholic-and-sister"
+    ],
+    "reason": "the same book: \"Shopaholic and Sister\" and \"Shopaholic & Sister\" differ only by retailer decoration; both sit at 4 of shopaholic-abridged and its canonical series, by the same author",
+    "target": "shopaholic-sister"
   },
   {
     "decision": "assert",
@@ -2662,6 +3395,24 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "slightly-shady-lake-march-book-1"
+    ],
+    "reason": "the same book: \"Slightly Shady: Lake & March, Book 1\" and \"Slightly Shady\" differ only by retailer decoration; both sit at 1 of lavinia-lake-and-tobias-march-abridged and its canonical series, by the same author",
+    "target": "slightly-shady"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "something-blue-a-novel"
+    ],
+    "reason": "the same book: \"Something Blue: A Novel\" and \"Something Blue\" differ only by retailer decoration; both sit at 2 of something-borrowed-something-blue-abridged and its canonical series, by the same author",
+    "target": "something-blue-emily-giffin"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "son-of-spellsinger-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2675,6 +3426,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "sons-of-texas"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "star-wars-specter-of-the-past-the-hand-of-thrawn-book-1"
+    ],
+    "reason": "the same book: \"Star Wars: Specter of the Past: The Hand of Thrawn, Book 1\" and \"Specter of the Past: Star Wars Legends (The Hand of Thrawn)\" differ only by retailer decoration; both sit at 1 of star-wars-the-hand-of-thrawn-duology-legends-abridged and its canonical series, by the same author",
+    "target": "specter-of-the-past-star-wars-legends-the-hand-of-thrawn"
   },
   {
     "decision": "assert",
@@ -2702,6 +3462,87 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "stand-with-my-unit"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-force-unleashed-star-wars-legends"
+    ],
+    "reason": "the same book: \"The Force Unleashed: Star Wars Legends\" and \"Star Wars: The Force Unleashed\" differ only by retailer decoration; both sit at 1 of star-wars-the-force-unleashed-abridged and its canonical series, by the same author",
+    "target": "star-wars-the-force-unleashed"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "iron-fist-star-wars-legends-wraith-squadron"
+    ],
+    "reason": "the same book: \"Iron Fist: Star Wars Legends (Wraith Squadron)\" and \"Star Wars: X-Wing: Iron Fist\" differ only by retailer decoration; both sit at 6 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-iron-fist"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "isards-revenge-star-wars-legends-rogue-squadron"
+    ],
+    "reason": "the same book: \"Isard's Revenge: Star Wars Legends (Rogue Squadron)\" and \"Star Wars: X-Wing: Isard's Revenge\" differ only by retailer decoration; both sit at 8 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-isards-revenge"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rogue-squadron-star-wars-legends-rogue-squadron"
+    ],
+    "reason": "the same book: \"Rogue Squadron: Star Wars Legends (Rogue Squadron)\" and \"Star Wars: X-Wing: Rogue Squadron\" differ only by retailer decoration; both sit at 1 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-rogue-squadron"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "solo-command-star-wars-legends-wraith-squadron"
+    ],
+    "reason": "the same book: \"Solo Command: Star Wars Legends (Wraith Squadron)\" and \"Star Wars: X-Wing: Solo Command\" differ only by retailer decoration; both sit at 7 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-solo-command"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-bacta-war-star-wars-legends-rogue-squadron"
+    ],
+    "reason": "the same book: \"The Bacta War: Star Wars Legends (Rogue Squadron)\" and \"Star Wars: X-Wing: The Bacta War\" differ only by retailer decoration; both sit at 4 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-the-bacta-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-krytos-trap-star-wars-legends-rogue-squadron"
+    ],
+    "reason": "the same book: \"The Krytos Trap: Star Wars Legends (Rogue Squadron)\" and \"Star Wars: X-Wing: The Krytos Trap\" differ only by retailer decoration; both sit at 3 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-the-krytos-trap"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wedges-gamble-star-wars-legends-rogue-squadron"
+    ],
+    "reason": "the same book: \"Wedge's Gamble: Star Wars Legends (Rogue Squadron)\" and \"Star Wars: X-Wing: Wedge's Gamble\" differ only by retailer decoration; both sit at 2 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-wedges-gamble"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wraith-squadron-star-wars-legends-wraith-squadron"
+    ],
+    "reason": "the same book: \"Wraith Squadron: Star Wars Legends (Wraith Squadron)\" and \"Star Wars: X-Wing: Wraith Squadron\" differ only by retailer decoration; both sit at 5 of star-wars-x-wing-legends-abridged and its canonical series, by the same author",
+    "target": "star-wars-x-wing-wraith-squadron"
   },
   {
     "decision": "assert",
@@ -2810,6 +3651,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-adventures-of-sherlock-holmes-unabridged"
+    ],
+    "reason": "the same book by the same author: \"The Adventures of Sherlock Holmes - Unabridged\" only adds an edition, production or narrator note to \"The Adventures of Sherlock Holmes\", which is a property of the recording",
+    "target": "the-adventures-of-sherlock-holmes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-all-pro-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2857,6 +3707,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-bourne-supremacy-jason-bourne-book-2"
+    ],
+    "reason": "the same book: \"The Bourne Supremacy (Jason Bourne Book #2)\" and \"The Bourne Supremacy\" differ only by retailer decoration; both sit at 2 of jason-bourne-series-abridged and its canonical series, by the same author",
+    "target": "the-bourne-supremacy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-buckskin-line-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -2866,10 +3725,46 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-call-of-the-wild-unabridged"
+    ],
+    "reason": "the same book by the same author: \"The Call of the Wild - Unabridged\" only adds an edition, production or narrator note to \"The Call of the Wild\", which is a property of the recording",
+    "target": "the-call-of-the-wild"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-cardinal-of-the-kremlin-jack-ryan-book-4"
     ],
     "reason": "the same Michael Prichard narration of The Cardinal of the Kremlin under a series-decorated title",
     "target": "the-cardinal-of-the-kremlin"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "perry-mason-and-the-case-of-the-lucky-legs"
+    ],
+    "reason": "the same book: \"Perry Mason and the Case of the Lucky Legs\" and \"The Case of the Lucky Legs\" differ only by retailer decoration; both sit at 3 of perry-mason-radio-drama and its canonical series, by the same author",
+    "target": "the-case-of-the-lucky-legs"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "perry-mason-and-the-case-of-the-sulky-girl"
+    ],
+    "reason": "the same book: \"Perry Mason and the Case of the Sulky Girl\" and \"The Case of the Sulky Girl\" differ only by retailer decoration; both sit at 2 of perry-mason-radio-drama and its canonical series, by the same author",
+    "target": "the-case-of-the-sulky-girl"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "perry-mason-and-the-case-of-the-velvet-claws"
+    ],
+    "reason": "the same book: \"Perry Mason and the Case of the Velvet Claws\" and \"The Case of the Velvet Claws\" differ only by retailer decoration; both sit at 1 of perry-mason-radio-drama and its canonical series, by the same author",
+    "target": "the-case-of-the-velvet-claws"
   },
   {
     "decision": "assert",
@@ -3001,6 +3896,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "wingman-6"
+    ],
+    "reason": "the same book: \"Wingman #6\" and \"The Final Storm: Wingman, Book 6\" differ only by retailer decoration; both sit at 6 of wingman-abridged and its canonical series, by the same author",
+    "target": "the-final-storm-wingman-book-6"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-frontiersman-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -3079,6 +3983,15 @@
     ],
     "reason": "the abridged and unabridged narrations of one book are recordings of one work (the abridged side states abridged: true), so the runtime and different-series vetoes do not apply",
     "target": "the-last-battle"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-last-boyfriend-inn-boonsboro-trilogy-book-2"
+    ],
+    "reason": "the same book: \"The Last Boyfriend: Inn BoonsBoro Trilogy, Book 2\" and \"The Last Boyfriend\" differ only by retailer decoration; both sit at 2 of inn-boonsboro-abridged and its canonical series, by the same author",
+    "target": "the-last-boyfriend"
   },
   {
     "decision": "assert",
@@ -3167,10 +4080,28 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-neighbor-a-detective-d-d-warren-novel"
+    ],
+    "reason": "the same book by the same author: \"The Neighbor: A Detective D. D. Warren Novel\" only adds a retailer series decoration to \"The Neighbor\", and both sit at the same position of two spellings of one series",
+    "target": "the-neighbor-lisa-gardner"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-order-war-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "the-order-war"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-promise-an-elvis-cole-and-joe-pike-novel-book-16"
+    ],
+    "reason": "the same book: \"The Promise: An Elvis Cole and Joe Pike Novel, Book 16\" and \"The Promise\" differ only by retailer decoration; both sit at 2 of scott-james-abridged and its canonical series, by the same author",
+    "target": "the-promise-robert-crais"
   },
   {
     "decision": "assert",
@@ -3224,6 +4155,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-rising-left-behind-series-book-13"
+    ],
+    "reason": "the same book: \"The Rising: Left Behind Series, Book 13\" and \"The Rising: Before They Were Left Behind\" differ only by retailer decoration; both sit at 1 of before-they-were-left-behind-abridged and its canonical series, by the same author",
+    "target": "the-rising-before-they-were-left-behind"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-royal-ranger-a-new-beginning"
     ],
     "reason": "The Royal Ranger: A New Beginning is the later retitling of The Royal Ranger (Ranger's Apprentice 12): same book, two narrations at 836 minutes",
@@ -3261,10 +4201,64 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "wingman-14"
+    ],
+    "reason": "the same book: \"Wingman #14\" and \"The Sky Ghost\" differ only by retailer decoration; both sit at 14 of wingman-abridged and its canonical series, by the same author",
+    "target": "the-sky-ghost"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-sorcerer-of-the-north"
     ],
     "reason": "The Sorcerer of the North is the US title of Ranger's Apprentice book 5, The Sorcerer in the North: same book, three narrations",
     "target": "the-sorcerer-in-the-north"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-stranger-times-german-edition"
+    ],
+    "reason": "the same book: \"The Stranger Times (German edition)\" and \"The Stranger Times - Was, wenn die seltsamsten News die wirklich wahren wären\" differ only by retailer decoration; both sit at 1 of the-stranger-times-gekurzt and its canonical series, by the same author",
+    "target": "the-stranger-times-was-wenn-die-seltsamsten-news-die-wirklich-wahren-waren"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-sun-also-rises-unabridged"
+    ],
+    "reason": "the same book by the same author: \"The Sun Also Rises - Unabridged\" only adds an edition, production or narrator note to \"The Sun Also Rises\", which is a property of the recording",
+    "target": "the-sun-also-rises"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-sunlit-man-a-cosmere-novel-dramatized-adaptation"
+    ],
+    "reason": "the same book: \"The Sunlit Man: A Cosmere Novel (Dramatized Adaptation)\" and \"The Sunlit Man\" differ only by retailer decoration; both sit at 4 of secret-projects-dramatized-adaptation and its canonical series, by the same author",
+    "target": "the-sunlit-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-surgeon-a-rizzoli-isles-novel-tess-gerritsen"
+    ],
+    "reason": "the same book by the same author: \"The Surgeon: A Rizzoli & Isles Novel\" only adds a retailer series decoration to \"The Surgeon\", and both sit at the same position of two spellings of one series",
+    "target": "the-surgeon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-survivor-mitch-rapp-book-14"
+    ],
+    "reason": "the same book: \"The Survivor: Mitch Rapp, Book #14\" and \"The Survivor\" differ only by retailer decoration; both sit at 14 of mitch-rapp-abridged and its canonical series, by the same author",
+    "target": "the-survivor-vince-flynn"
   },
   {
     "decision": "assert",
@@ -3292,6 +4286,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "the-trail-west"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "wingman-5"
+    ],
+    "reason": "the same book: \"Wingman #5\" and \"The Twisted Cross\" differ only by retailer decoration; both sit at 5 of wingman-abridged and its canonical series, by the same author",
+    "target": "the-twisted-cross"
   },
   {
     "decision": "assert",
@@ -3331,6 +4334,15 @@
     "target": "the-war-of-two-queens"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-wind-in-the-willows-unabridged"
+    ],
+    "reason": "the same book by the same author: \"The Wind in the Willows - Unabridged\" only adds an edition, production or narrator note to \"The Wind in the Willows\", which is a property of the recording",
+    "target": "the-wind-in-the-willows"
+  },
+  {
     "decision": "accept",
     "op": "merge-works",
     "others": [
@@ -3342,6 +4354,24 @@
     ],
     "reason": "same book: other narrations, retailer editions and dramatised productions of the one novel, and the authors agree",
     "target": "the-wonderful-wizard-of-oz"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-wonderful-wizard-of-oz-unabridged-and-dramatized-legacy-edition"
+    ],
+    "reason": "the same book by the same author: \"The Wonderful Wizard of OZ - Unabridged and Dramatized - Legacy Edition\" only adds an edition, production or narrator note to \"The Wonderful Wizard of Oz\", which is a property of the recording",
+    "target": "the-wonderful-wizard-of-oz"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "this-charming-man-german-edition"
+    ],
+    "reason": "the same book: \"This Charming Man (German Edition)\" and \"This Charming Man - Sie sind hier. Sie haben Hunger. The Stranger Times fühlt ihnen auf den Zahn\" differ only by retailer decoration; both sit at 2 of the-stranger-times-gekurzt and its canonical series, by the same author",
+    "target": "this-charming-man-sie-sind-hier-sie-haben-hunger-the-stranger-times-fuhlt-ihnen-auf-den-zahn"
   },
   {
     "decision": "assert",
@@ -3392,10 +4422,46 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "tote-lugen-nicht-kathy-reichs"
+    ],
+    "reason": "the same book: \"Tote lügen nicht\" and \"Tote lügen nicht\" differ only by retailer decoration; both sit at 1 of tempe-brennan-gekurzt and its canonical series, by the same author",
+    "target": "tote-lugen-nicht"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "totengrund-maura-isles-jane-rizzoli-8"
+    ],
+    "reason": "the same book: \"Totengrund: Maura Isles / Jane Rizzoli 8\" and \"Totengrund\" differ only by retailer decoration; both sit at 8 of maura-isles-jane-rizzoli-gekurzt and its canonical series, by the same author",
+    "target": "totengrund"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "trek-of-the-mountain-man-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "trek-of-the-mountain-man"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "tress-of-the-emerald-sea-a-cosmere-novel-dramatized-adaptation"
+    ],
+    "reason": "the same book: \"Tress of the Emerald Sea: A Cosmere Novel (Dramatized Adaptation)\" and \"Tress of the Emerald Sea\" differ only by retailer decoration; both sit at 1 of secret-projects-dramatized-adaptation and its canonical series, by the same author",
+    "target": "tress-of-the-emerald-sea"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "truckers-the-first-book-of-the-nomes"
+    ],
+    "reason": "the same book: \"Truckers: The First Book of the Nomes\" and \"Truckers\" differ only by retailer decoration; both sit at 1 of the-bromeliad-trilogy-abridged and its canonical series, by the same author",
+    "target": "truckers"
   },
   {
     "decision": "accept",
@@ -3455,6 +4521,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "vision-of-the-future-star-wars-legends-the-hand-of-thrawn"
+    ],
+    "reason": "the same book: \"Vision of the Future: Star Wars Legends (The Hand of Thrawn)\" and \"Vision of the Future: Star Wars (The Hand of Thrawn)\" differ only by retailer decoration; both sit at 2 of star-wars-the-hand-of-thrawn-duology-legends-abridged and its canonical series, by the same author",
+    "target": "vision-of-the-future-star-wars-the-hand-of-thrawn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "war-of-the-mountain-man-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -3468,6 +4543,24 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "warbreaker"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-sign-of-nine-dramatized-adaptation"
+    ],
+    "reason": "the same book: \"The Sign of Nine [Dramatized Adaptation]\" and \"Warlock Holmes: The Sign of Nine\" differ only by retailer decoration; both sit at 4 of warlock-holmes-dramatized and its canonical series, by the same author",
+    "target": "warlock-holmes-the-sign-of-nine"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "warlord-alex-hawke-book-6"
+    ],
+    "reason": "the same book: \"Warlord: Alex Hawke, Book 6\" and \"Warlord\" differ only by retailer decoration; both sit at 6 of alex-hawke-abridged and its canonical series, by the same author",
+    "target": "warlord-ted-bell"
   },
   {
     "decision": "assert",
@@ -3545,6 +4638,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "winnie-the-pooh-unabridged"
+    ],
+    "reason": "the same book by the same author: \"Winnie-the-Pooh: Unabridged\" only adds an edition, production or narrator note to \"Winnie-the-Pooh\", which is a property of the recording",
+    "target": "winnie-the-pooh"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "wintersmith-discworld-novel-35"
     ],
     "reason": "the same novel; (Discworld Novel 35) is a retailer series decoration and the record holds the abridged Tony Robinson recording plus another ASIN of the 2023 full-cast production",
@@ -3558,6 +4660,15 @@
     ],
     "reason": "the same Ken Follett book catalogued twice; the two records sit in two Kingsbridge reading-order spellings, which is no evidence of two books",
     "target": "world-without-end-ken-follett"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "worst-fears-realized-stone-barrington-book-5"
+    ],
+    "reason": "the same book: \"Worst Fears Realized: Stone Barrington, Book 5\" and \"Worst Fears Realized\" differ only by retailer decoration; both sit at 5 of stone-barrington-abridged and its canonical series, by the same author",
+    "target": "worst-fears-realized"
   },
   {
     "decision": "accept",

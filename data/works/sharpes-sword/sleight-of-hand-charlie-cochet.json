@@ -6190,131 +6190,6 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
-        "elizabeth-sastre-2001": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V59TI6",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVNCQA",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1810482,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1797479,
-              "start_ms": 1810482,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1800080,
-              "start_ms": 3607961,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1798710,
-              "start_ms": 5408041,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1797270,
-              "start_ms": 7206751,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1777324,
-              "start_ms": 9004021,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1799825,
-              "start_ms": 10781345,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1799662,
-              "start_ms": 12581170,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1799198,
-              "start_ms": 14380832,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1795250,
-              "start_ms": 16180030,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1784592,
-              "start_ms": 17975280,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 949997,
-              "start_ms": 19759872,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81H5z1SgqHL.jpg",
-          "id": "elizabeth-sastre-2001",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "elizabeth-sastre"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2001-05-01",
-          "runtime_min": 345,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V59TI6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVNCQA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "slightly-shady"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V59TI6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Slightly Shady"
-    },
-    "slightly-shady-lake-march-book-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "amanda-quick"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "mystery",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "slightly-shady-lake-march-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "barbara-rosenblat-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6502,17 +6377,121 @@
               "type": "libex-import"
             }
           ],
-          "work": "slightly-shady-lake-march-book-1"
+          "work": "slightly-shady"
+        },
+        "elizabeth-sastre-2001": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V59TI6",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVNCQA",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1810482,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1797479,
+              "start_ms": 1810482,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1800080,
+              "start_ms": 3607961,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1798710,
+              "start_ms": 5408041,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1797270,
+              "start_ms": 7206751,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1777324,
+              "start_ms": 9004021,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1799825,
+              "start_ms": 10781345,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1799662,
+              "start_ms": 12581170,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1799198,
+              "start_ms": 14380832,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1795250,
+              "start_ms": 16180030,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1784592,
+              "start_ms": 17975280,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 949997,
+              "start_ms": 19759872,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81H5z1SgqHL.jpg",
+          "id": "elizabeth-sastre-2001",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elizabeth-sastre"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2001-05-01",
+          "runtime_min": 345,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V59TI6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVNCQA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "slightly-shady"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V59TI6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00G4K5RHQ",
           "type": "libex-import"
         }
       ],
-      "title": "Slightly Shady: Lake & March, Book 1"
+      "title": "Slightly Shady"
     },
     "slightly-sinful": {
       "added_at": "2026-07-29",

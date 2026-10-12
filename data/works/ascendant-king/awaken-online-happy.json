@@ -6127,35 +6127,15 @@
     "awakened": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
-        "p-c-cast"
-      ],
-      "id": "awakened",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/8652190-awakened",
-          "type": "community"
-        }
-      ],
-      "title": "Awakened",
-      "xref": {
-        "goodreads": "8652190"
-      }
-    },
-    "awakened-a-house-of-night-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kristin-cast",
-        "p-c-cast"
+        "p-c-cast",
+        "kristin-cast"
       ],
       "genres": [
         "childrens",
         "fantasy",
         "young-adult"
       ],
-      "id": "awakened-a-house-of-night-novel",
+      "id": "awakened",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -6336,7 +6316,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "awakened-a-house-of-night-novel"
+          "work": "awakened"
         },
         "caitlin-davies-2011-2": {
           "abridged": true,
@@ -6650,17 +6630,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "awakened-a-house-of-night-novel"
+          "work": "awakened"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/8652190-awakened",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B004H2TKCQ",
           "type": "libex-import"
         }
       ],
-      "title": "Awakened: A House of Night Novel"
+      "title": "Awakened",
+      "xref": {
+        "goodreads": "8652190"
+      }
     },
     "awakened-aaron-n-hall": {
       "added_at": "2026-08-02",
