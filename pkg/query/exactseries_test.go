@@ -441,12 +441,15 @@ func TestSmallWindowPullsTheSameNamedPrimary(t *testing.T) {
 			}
 		}
 	}
-	// A half-typed name pulls it too once the window holds two of the set.
-	for _, path := range []string{
-		"/api/v1/series/search?q=harry+pot&limit=2",
-		"/api/v1/search?q=potter&limit=2",
+	// A half-typed name pulls it too, from a lone row (the variant alone at
+	// limit=1) as from a set of them.
+	for path, want := range map[string][]string{
+		"/api/v1/series/search?q=harry+pot&limit=1": {hpPrimary},
+		"/api/v1/search?q=harry+pot&limit=1":        {hpPrimary},
+		"/api/v1/series/search?q=potter&limit=1":    {hpPrimary},
+		"/api/v1/series/search?q=harry+pot&limit=2": {hpPrimary, "harry-potter-german-edition"},
+		"/api/v1/search?q=potter&limit=2":           {hpPrimary, "harry-potter-german-edition"},
 	} {
-		want := []string{hpPrimary, "harry-potter-german-edition"}
 		if got := seriesRows(t, ts.URL, path); !slices.Equal(got, want) {
 			t.Errorf("%s series rows = %v, want %v", path, got, want)
 		}
@@ -466,7 +469,7 @@ func TestSmallWindowPullObeysTheLanguageFilter(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			if pulls := planPrimaryPulls(rankSeriesRows(page, "harry potter"), "harry potter", langFilter{"de"}); pulls != nil {
+			if pulls := planPrimaryPulls(rankSeriesRows(page, "harry potter"), langFilter{"de"}); pulls != nil {
 				t.Errorf("lang=de %q page at limit %d plans a read: %+v", kind, limit, pulls)
 			}
 		}
@@ -505,7 +508,7 @@ func TestSmallWindowDoesNotPullADifferentlyNamedPrimary(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			if pulls := planPrimaryPulls(rankSeriesRows(page, q), q, nil); pulls != nil {
+			if pulls := planPrimaryPulls(rankSeriesRows(page, q), nil); pulls != nil {
 				t.Errorf("%q %q page plans a read: %+v", kind, q, pulls)
 			}
 		}
@@ -537,7 +540,7 @@ func TestOrdinaryPagesPlanNoPrimaryRead(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					if pulls := planPrimaryPulls(rankSeriesRows(page, q), q, lang); pulls != nil {
+					if pulls := planPrimaryPulls(rankSeriesRows(page, q), lang); pulls != nil {
 						t.Errorf("%q %q lang=%v plans a read: %+v", kind, q, lang, pulls)
 					}
 				}
@@ -622,7 +625,12 @@ func TestPlanAndPlacePrimaries(t *testing.T) {
 			[]any{hp, de, chrono, x},
 		},
 		{"a set holding a primary pulls nothing", []any{de, hp}, "harry", nil, 2, nil, []any{de, hp}},
-		{"one row of a typed-at name pulls nothing", []any{de}, "harry", nil, 1, nil, []any{de}},
+		{
+			"a lone row of a typed-at name pulls its primary",
+			[]any{chrono}, "harry pot", nil, 1,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}},
+			[]any{hp},
+		},
 		{"a primary already on the page is not read again", []any{de, w("a"), es, hp}, "harry", nil, 4, nil, []any{de, w("a"), es, hp}},
 		{"a differently named original is not pulled", []any{diesaga}, "die saga", nil, 1, nil, []any{diesaga}},
 		{"an original outside the filter is not even planned", []any{de}, "harry potter", langFilter{"de"}, 1, nil, []any{de}},
@@ -635,7 +643,7 @@ func TestPlanAndPlacePrimaries(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			plan := planPrimaryPulls(tc.page, tc.q, tc.lang)
+			plan := planPrimaryPulls(tc.page, tc.lang)
 			if !reflect.DeepEqual(plan, tc.plan) {
 				t.Fatalf("planPrimaryPulls = %+v, want %+v", plan, tc.plan)
 			}

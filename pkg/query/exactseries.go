@@ -75,8 +75,9 @@ import (
 // primary). No default window is that small against any franchise in the
 // catalogue, and THE PULL closes it without a probe.
 //
-// THE PULL. A same-named set left with no primary - two or more rows of one name,
-// or the whole-query exact block of any size - usually names the primary itself:
+// THE PULL. A same-named set left with no primary - any number of rows of one
+// name, a lone one included, typed whole or not - usually names the primary
+// itself:
 // a translation's translation_of and a variant's ordering_of are on the row
 // already, with the target's name. When one names a series of the SAME nameKey
 // that the page does not hold, those ids are read in ONE batch
@@ -89,9 +90,10 @@ import (
 // purely, so the read is issued on such a page alone and never on an ordinary
 // one: a primary on the page, a set of primaries, a link to a differently-named
 // series ("Die Saga" translating "The Saga") and a translation_of target whose
-// stated language the filter refuses all plan nothing. A lone row of a
-// half-typed name ("harry pot" with limit=1) is no set and is left alone. A
-// failed read serves the ranked page, logged.
+// stated language the filter refuses all plan nothing, so a lone German edition
+// under lang=de costs no read. A lone row is a set too: "harry pot" with limit=1
+// holds the reading-order variant alone, and it names its primary. A failed
+// read serves the ranked page, logged.
 //
 // WITH ?lang= the page is already filtered at the source, so under lang=de the
 // English primary is not on it and the German edition - tier 1, the only exact
@@ -104,9 +106,11 @@ import (
 // BYTE-IDENTITY. A page that names no series outright and holds no two series of
 // one name is exactly as it came, and so is one whose exact rows already sat in
 // tier-then-id order, whose other same-named rows already sat in tier order and
-// none of whose primary-less sets links to a same-named series off the page (a
-// default window over the real tree holds every tie whole, so the pull plans
-// nothing there). Measured on the 282k-work artifact, over 400 random
+// none of whose primary-less sets links to a same-named series off the page.
+// Measured on the 282k-work artifact, the pull planned no read on any of 2,242
+// series names and typing prefixes at the default window (unfiltered and
+// lang=de), nor on the 931 franchise queries at limit=1 and 2 - the real
+// primaries win their ties - and one pull read costs about 0.1ms. Measured on the 282k-work artifact, over 400 random
 // series names and the 238 franchise names carrying a translation or an ordering
 // variant, on both surfaces: the lift moved one page ("Of Magic", whose exact
 // name now leads "Magic of Magic"), and the timings were within noise of the
@@ -272,21 +276,19 @@ type primaryPull struct {
 }
 
 // planPrimaryPulls finds the sets the pull applies to on a page rankSeriesRows
-// has ranked: the series rows sharing one nameKey - two or more of them, or any
-// number when the name IS q (the whole-query exact block) - none of which is a
-// primary, where a row's translation_of or ordering_of names a series whose
-// stated name has the same nameKey and which the page does not hold. A
+// has ranked: the series rows sharing one nameKey - one or more of them, typed
+// whole or not - none of which is a primary, where a row's translation_of or
+// ordering_of names a series whose stated name has the same nameKey and which
+// the page does not hold. A
 // translation_of target also states its language, so one the live filter would
 // refuse is not planned at all - a German edition alone on a lang=de page costs
 // no read for the English original it names. It is pure, so a page it answers
 // nil for costs no query: that is every page holding no such set, which is every
 // ordinary page.
-func planPrimaryPulls(page []any, q string, lang langFilter) []primaryPull {
-	want := nameKey(q)
+func planPrimaryPulls(page []any, lang langFilter) []primaryPull {
 	onPage := map[string]bool{}
 	first := map[string]int{}
 	var order []string // the set keys in first-slot order
-	var count map[string]int
 	var primary map[string]bool
 	var linked map[string][]string
 	for i, r := range page {
@@ -299,14 +301,13 @@ func planPrimaryPulls(page []any, q string, lang langFilter) []primaryPull {
 		if k == "" {
 			continue
 		}
-		if count == nil {
-			count, primary, linked = map[string]int{}, map[string]bool{}, map[string][]string{}
+		if primary == nil {
+			primary, linked = map[string]bool{}, map[string][]string{}
 		}
 		if _, seen := first[k]; !seen {
 			first[k] = i
 			order = append(order, k)
 		}
-		count[k]++
 		if tierOf(sr) == tierPrimary {
 			primary[k] = true
 			continue
@@ -322,7 +323,7 @@ func planPrimaryPulls(page []any, q string, lang langFilter) []primaryPull {
 	}
 	var out []primaryPull
 	for _, k := range order {
-		if primary[k] || (count[k] < 2 && k != want) {
+		if primary[k] {
 			continue
 		}
 		var ids []string
@@ -389,7 +390,7 @@ func placePrimaries(page []any, pulls []primaryPull, fetched map[string]seriesRe
 // as a failed boost probe does: the pull refines a page the search produced on
 // its own.
 func (s *DB) pullPrimaries(ctx context.Context, page []any, q string, limit int, lang langFilter) []any {
-	pulls := planPrimaryPulls(page, q, lang)
+	pulls := planPrimaryPulls(page, lang)
 	if len(pulls) == 0 {
 		return page
 	}
