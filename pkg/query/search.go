@@ -525,7 +525,8 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 // put a work where the endpoint promises neither.
 //
 // Their series twin, a query that IS a series' name, re-ranks the composed page
-// rather than probing (rankSeriesRows, exactseries.go).
+// rather than probing (rankSeriesRows, exactseries.go), and pulls a same-named
+// primary the page's own rows link to when the window lost it (pullPrimaries).
 //
 // lang (already live - langFilterFor, which drops it for the people scope)
 // narrows every hit to the languages it names (langfilter.go), the boosts
@@ -542,7 +543,7 @@ func (s *DB) search(ctx context.Context, kind searchKind, q string, limit int, l
 		return nil, err
 	}
 	if kind == kindAny || kind == kindSeries {
-		page = rankSeriesRows(page, q)
+		page = s.pullPrimaries(ctx, rankSeriesRows(page, q), q, limit, lang)
 	}
 	return page, nil
 }

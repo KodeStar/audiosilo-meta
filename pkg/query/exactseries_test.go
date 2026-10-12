@@ -2,7 +2,9 @@ package query
 
 import (
 	"context"
+	"fmt"
 	"net/http"
+	"net/url"
 	"reflect"
 	"slices"
 	"testing"
@@ -397,5 +399,261 @@ func TestRankSeriesRows(t *testing.T) {
 				t.Errorf("rankSeriesRows = %v, want %v", got, tc.want)
 			}
 		})
+	}
+}
+
+// TestSmallWindowPullsTheSameNamedPrimary is the gap the ranking alone left: a
+// window smaller than the tie holds translations and the variant of "Harry
+// Potter" and not the primary, so a translation led. The page's rows name the
+// primary (translation_of, ordering_of) under the same name, so it is read in one
+// batch and put at the set's first slot, the last row dropping so the limit
+// holds - on both surfaces, for the whole name and while it is typed.
+func TestSmallWindowPullsTheSameNamedPrimary(t *testing.T) {
+	db, ts := newTestServerForCatalog(t, artifacttest.SameNamedSeries())
+	ctx := context.Background()
+	for limit, want := range map[int][]string{
+		1: {hpPrimary},
+		2: {hpPrimary, "harry-potter-german-edition"},
+		3: {hpPrimary, "harry-potter-german-edition", "harry-potter-spanish-edition"},
+	} {
+		for _, kind := range []searchKind{kindAny, kindSeries} {
+			// The premise: the window holds no primary before the pull.
+			plain, err := db.searchPage(ctx, kind, "harry potter", limit, nil)
+			if err != nil {
+				t.Fatal(err)
+			}
+			for _, r := range plain {
+				if sr, ok := r.(seriesResult); ok && sr.ID == hpPrimary {
+					t.Fatalf("plain %q page at limit %d holds the primary: the fixture no longer shows the gap", kind, limit)
+				}
+			}
+		}
+		for _, path := range []string{
+			fmt.Sprintf("/api/v1/series/search?q=harry+potter&limit=%d", limit),
+			fmt.Sprintf("/api/v1/search?q=harry+potter&limit=%d", limit),
+		} {
+			_, body := artifacttest.GetJSON(t, ts.URL, path)
+			if n := len(body["results"].([]any)); n != limit {
+				t.Errorf("%s holds %d rows, want the limit %d", path, n, limit)
+			}
+			if got := seriesRows(t, ts.URL, path); !slices.Equal(got, want) {
+				t.Errorf("%s series rows = %v, want %v", path, got, want)
+			}
+		}
+	}
+	// A half-typed name pulls it too once the window holds two of the set.
+	for _, path := range []string{
+		"/api/v1/series/search?q=harry+pot&limit=2",
+		"/api/v1/search?q=potter&limit=2",
+	} {
+		want := []string{hpPrimary, "harry-potter-german-edition"}
+		if got := seriesRows(t, ts.URL, path); !slices.Equal(got, want) {
+			t.Errorf("%s series rows = %v, want %v", path, got, want)
+		}
+	}
+}
+
+// TestSmallWindowPullObeysTheLanguageFilter: under lang=de the English primary
+// is outside the filter, so it is neither pulled nor even read - the German
+// edition, the only exact match the reader asked for, leads; under lang=en the
+// variant's primary is English and is pulled.
+func TestSmallWindowPullObeysTheLanguageFilter(t *testing.T) {
+	db, ts := newTestServerForCatalog(t, artifacttest.SameNamedSeries())
+	ctx := context.Background()
+	for limit := 1; limit <= 3; limit++ {
+		for _, kind := range []searchKind{kindAny, kindSeries} {
+			page, err := db.searchPage(ctx, kind, "harry potter", limit, langFilter{"de"})
+			if err != nil {
+				t.Fatal(err)
+			}
+			if pulls := planPrimaryPulls(rankSeriesRows(page, "harry potter"), "harry potter", langFilter{"de"}); pulls != nil {
+				t.Errorf("lang=de %q page at limit %d plans a read: %+v", kind, limit, pulls)
+			}
+		}
+		for _, path := range []string{
+			fmt.Sprintf("/api/v1/series/search?q=harry+potter&lang=de&limit=%d", limit),
+			fmt.Sprintf("/api/v1/search?q=harry+potter&lang=de&limit=%d", limit),
+		} {
+			if got, want := seriesRows(t, ts.URL, path), []string{"harry-potter-german-edition"}; !slices.Equal(got, want) {
+				t.Errorf("%s series rows = %v, want %v", path, got, want)
+			}
+		}
+	}
+	for _, path := range []string{
+		"/api/v1/series/search?q=harry+potter&lang=en&limit=1",
+		"/api/v1/search?q=harry+potter&lang=en&limit=1",
+	} {
+		if got, want := seriesRows(t, ts.URL, path), []string{hpPrimary}; !slices.Equal(got, want) {
+			t.Errorf("%s series rows = %v, want %v", path, got, want)
+		}
+	}
+}
+
+// TestSmallWindowDoesNotPullADifferentlyNamedPrimary: "Die Saga" translates "The
+// Saga" and "The Saga (Chronological Order)" is a variant of it - a link, but to
+// another NAME, which is another answer to another query. Neither is pulled, and
+// nothing is read.
+func TestSmallWindowDoesNotPullADifferentlyNamedPrimary(t *testing.T) {
+	db, ts := newTestServerForCatalog(t, artifacttest.Languages())
+	ctx := context.Background()
+	for q, want := range map[string]string{
+		"die saga":                       "die-saga",
+		"the saga (chronological order)": "saga-chronological",
+	} {
+		for _, kind := range []searchKind{kindAny, kindSeries} {
+			page, err := db.searchPage(ctx, kind, q, 1, nil)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if pulls := planPrimaryPulls(rankSeriesRows(page, q), q, nil); pulls != nil {
+				t.Errorf("%q %q page plans a read: %+v", kind, q, pulls)
+			}
+		}
+		path := "/api/v1/series/search?limit=1&q=" + url.QueryEscape(q)
+		if got := seriesRows(t, ts.URL, path); !slices.Equal(got, []string{want}) {
+			t.Errorf("%s series rows = %v, want [%s]", path, got, want)
+		}
+	}
+}
+
+// TestOrdinaryPagesPlanNoPrimaryRead pins the cost: every default-window page of
+// the fixtures' queries - the Harry Potter pages, whose primary the window holds,
+// included - plans no pull, so the search issues no read beyond the page's own.
+func TestOrdinaryPagesPlanNoPrimaryRead(t *testing.T) {
+	ctx := context.Background()
+	for _, tc := range []struct {
+		cat     func() *model.Catalog
+		queries []string
+	}{
+		{artifacttest.SameNamedSeries, []string{"harry potter", "harry pot", "potter", "full cast", "the", "rowling"}},
+		{artifacttest.Fixture, []string{"a", "the", "s", "har", "reacher", "jack", "saga", "book"}},
+		{artifacttest.Languages, []string{"saga", "the saga", "die saga", "the", "die", "book", "buch"}},
+	} {
+		db := openTestDB(t, artifacttest.Build(t, tc.cat()))
+		for _, q := range tc.queries {
+			for _, kind := range []searchKind{kindAny, kindSeries} {
+				for _, lang := range []langFilter{nil, {"de"}, {"en"}} {
+					page, err := db.searchPage(ctx, kind, q, 20, lang)
+					if err != nil {
+						t.Fatal(err)
+					}
+					if pulls := planPrimaryPulls(rankSeriesRows(page, q), q, lang); pulls != nil {
+						t.Errorf("%q %q lang=%v plans a read: %+v", kind, q, lang, pulls)
+					}
+				}
+			}
+		}
+	}
+}
+
+// TestPullDegradesToTheRankedPage: a read that fails (here a cancelled context)
+// serves the ranked page as it came rather than failing the search.
+func TestPullDegradesToTheRankedPage(t *testing.T) {
+	db := openTestDB(t, artifacttest.Build(t, artifacttest.SameNamedSeries()))
+	page, err := db.searchPage(context.Background(), kindSeries, "harry potter", 1, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ranked := rankSeriesRows(page, "harry potter")
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	if got := db.pullPrimaries(ctx, ranked, "harry potter", 1, nil); !reflect.DeepEqual(got, ranked) {
+		t.Errorf("pullPrimaries on a failed read = %v, want the ranked page %v", got, ranked)
+	}
+}
+
+func TestPlanAndPlacePrimaries(t *testing.T) {
+	w := func(id string) any { return workResult{Kind: kindWork, WorkCard: &WorkCard{ID: id}} }
+	s := func(id, name, lang string) seriesResult {
+		return seriesResult{Kind: kindSeries, ID: id, Name: name, Language: lang}
+	}
+	of := func(r seriesResult, id, name, lang string) seriesResult {
+		r.TranslationOf = append(r.TranslationOf, SeriesTranslation{ID: id, Name: name, Language: lang})
+		return r
+	}
+	variant := func(r seriesResult, id, name string) seriesResult {
+		r.OrderingOf, r.OrderingOfName = id, name
+		return r
+	}
+	hp := s("hp", "Harry Potter", "en")
+	de := of(s("hp-de", "Harry Potter", "de"), "hp", "Harry Potter", "en")
+	es := of(s("hp-es", "Harry Potter", "es"), "hp", "Harry Potter", "en")
+	chrono := variant(s("hp-chrono", "Harry Potter", "en"), "hp", "Harry Potter")
+	x := s("x", "X", "en")
+	xde := of(s("x-de", "X", "de"), "x", "X", "en")
+	xvar := variant(s("x-var", "X", "en"), "x", "X")
+	diesaga := of(s("die-saga", "Die Saga", "de"), "the-saga", "The Saga", "en")
+	fetched := map[string]seriesResult{"hp": hp, "x": x}
+
+	cases := []struct {
+		name  string
+		page  []any
+		q     string
+		lang  langFilter
+		limit int
+		plan  []primaryPull
+		want  []any
+	}{
+		{
+			"the exact block of one row pulls its primary in its place",
+			[]any{de}, "harry potter", nil, 1,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}},
+			[]any{hp},
+		},
+		{
+			"the set shifts down and the page's last row drops",
+			[]any{w("a"), de, chrono, w("b")}, "harry", nil, 4,
+			[]primaryPull{{slot: 1, key: "harry potter", ids: []string{"hp"}}},
+			[]any{w("a"), hp, de, chrono},
+		},
+		{
+			"a short page grows by the primary",
+			[]any{de, es}, "harry", nil, 20,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}},
+			[]any{hp, de, es},
+		},
+		{
+			"two sets each pull their own",
+			[]any{de, chrono, xde, xvar}, "potter x", nil, 4,
+			[]primaryPull{
+				{slot: 0, key: "harry potter", ids: []string{"hp"}},
+				{slot: 2, key: "x", ids: []string{"x"}},
+			},
+			[]any{hp, de, chrono, x},
+		},
+		{"a set holding a primary pulls nothing", []any{de, hp}, "harry", nil, 2, nil, []any{de, hp}},
+		{"one row of a typed-at name pulls nothing", []any{de}, "harry", nil, 1, nil, []any{de}},
+		{"a primary already on the page is not read again", []any{de, w("a"), es, hp}, "harry", nil, 4, nil, []any{de, w("a"), es, hp}},
+		{"a differently named original is not pulled", []any{diesaga}, "die saga", nil, 1, nil, []any{diesaga}},
+		{"an original outside the filter is not even planned", []any{de}, "harry potter", langFilter{"de"}, 1, nil, []any{de}},
+		{
+			"a variant's primary outside the filter is planned, read and refused",
+			[]any{chrono}, "harry potter", langFilter{"de"}, 1,
+			[]primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}},
+			[]any{chrono},
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			plan := planPrimaryPulls(tc.page, tc.q, tc.lang)
+			if !reflect.DeepEqual(plan, tc.plan) {
+				t.Fatalf("planPrimaryPulls = %+v, want %+v", plan, tc.plan)
+			}
+			if got := placePrimaries(tc.page, plan, fetched, tc.limit, tc.lang); !reflect.DeepEqual(got, tc.want) {
+				t.Errorf("placePrimaries = %v, want %v", got, tc.want)
+			}
+		})
+	}
+
+	// A fetched row that is no longer a primary, or no longer of the set's name,
+	// is not placed.
+	pull := []primaryPull{{slot: 0, key: "harry potter", ids: []string{"hp"}}}
+	for _, stale := range []seriesResult{
+		of(s("hp", "Harry Potter", "en"), "other", "Harry Potter", "en"),
+		s("hp", "Harry Potter Collection", "en"),
+	} {
+		if got := placePrimaries([]any{de}, pull, map[string]seriesResult{"hp": stale}, 1, nil); !reflect.DeepEqual(got, []any{de}) {
+			t.Errorf("placePrimaries with %+v = %v, want the page unchanged", stale, got)
+		}
 	}
 }

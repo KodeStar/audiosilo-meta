@@ -1040,7 +1040,19 @@ the page, bm25 order stands within a tier, so an all-primary group such as
 "potter" - no whole name, the same bm25 tie - leads with the primary too.
 Measured over 1,879 typing prefixes of the names below on both surfaces, the
 groups moved only Kingsbridge's reading-order variant behind its primary ("Kin",
-"King", "Kings"). A page
+"King", "Kings"). The one row that JOINS a page is the **pull**
+(`planPrimaryPulls` -> `pullPrimaries`), and it is a contract change: a window
+smaller than the tie (`limit=1..3` on the fixture) can hold same-named
+translations and variants and no primary, and when such a set (two or more rows,
+or the exact block of any size) links by `translation_of`/`ordering_of` to a
+series of the same `nameKey` the page lacks, those ids are read in ONE
+`seriesResultsByID` batch and each primary of that name inside the live `?lang=`
+is put at the set's first slot, the last row dropping so the limit holds - a
+linked same-named primary may now appear on a page the relevance window did not
+put it on. The plan is pure, so an ordinary page issues no read (a
+differently-named link, a primary already on the page, a translation_of target
+whose stated language the filter refuses: nothing planned), and a failed read
+serves the ranked page. A page
 naming no series outright and holding no such group is byte-identical; measured, the rule moved 1 of 400 random series-name pages ("Of
 Magic" now leads "Magic of Magic") and none of the 238 franchise names carrying a
 translation or ordering variant. The fixture is `artifacttest.SameNamedSeries()`,
