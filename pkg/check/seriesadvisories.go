@@ -88,6 +88,10 @@ const duplicateSeriesMarker = "a duplicate series (a recording variant or a seco
 // (model.Series.OrderingPrimary - a chronological order may legitimately list exactly
 // its primary's works at the same numbers).
 //
+// A pair a reviewed decision recorded as two series (reviewed - a `merge-series`
+// rejection) is not a duplicate either: the superset drops off the subset's list, and
+// a subset left with none is not reported.
+//
 // Positions compare as SLOTS (model.SameSlot, the one slot rule internal/importer,
 // internal/audit and internal/repair read too), so "02" and "2" are one place and "2",
 // "2.5" and "1-3.5" stay three.
@@ -97,7 +101,7 @@ const duplicateSeriesMarker = "a duplicate series (a recording variant or a seco
 // every pair of series. A series below the floor is not indexed at all: it can be
 // neither the subset (it is under the floor) nor a superset (that holds at least as
 // many works as a subset that is not).
-func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, reviewed *reviewedPairs, warn addFunc) {
 	type indexed struct {
 		pos       map[string]string // work -> its first position
 		qualified bool              // the name carries a recording qualifier
@@ -143,6 +147,9 @@ func checkDuplicateSeries(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 			}
 			if len(them.pos) == len(me.pos) && !seriesDuplicateSide(s, t, me.qualified, them.qualified) {
 				continue // the same list: reported once, against the other side
+			}
+			if reviewed.withheld(model.RedirectSeries, s.ID, t.ID) {
+				continue
 			}
 			supersets = append(supersets, t.ID)
 		}

@@ -11,6 +11,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -984,32 +985,7 @@ func conflictedRebase(t *testing.T, path, base, main, branch string) string {
 // script configures it, which is what the intake sweep does.
 func rebaseFixture(t *testing.T, path, base, main, branch, driver string) (string, string, error) {
 	t.Helper()
-	repo := t.TempDir()
-	git := func(args ...string) string {
-		t.Helper()
-		out, err := runIn(repo, "git", args...)
-		if err != nil {
-			t.Fatalf("git %s: %v\n%s", strings.Join(args, " "), err, out)
-		}
-		return out
-	}
-	write := func(rel, body string) {
-		t.Helper()
-		full := filepath.Join(repo, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(full, []byte(body), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
-
-	git("init", "-q", "-b", "main")
-	git("config", "user.name", "Fixture")
-	git("config", "user.email", "fixture@example.com")
-	// An inherited ~/.gitconfig with commit signing would make these prompt.
-	git("config", "commit.gpgsign", "false")
-	git("config", "tag.gpgsign", "false")
+	repo, git, write := gitFixture(t)
 	if driver != "" {
 		git("config", "merge.packjson.name", "three-way merge of pack-file entries")
 		git("config", "merge.packjson.driver", driver+" %O %A %B %P")
@@ -1085,6 +1061,69 @@ func mustJSON(t *testing.T, v any) string {
 		t.Fatal(err)
 	}
 	return string(out)
+}
+
+// gitFixture initializes an empty repository on branch main in a temp dir and
+// returns it with a `git` runner (fatal on failure, returning the output) and a
+// `write` helper for a file relative to it.
+func gitFixture(t *testing.T) (repo string, git func(args ...string) string, write func(rel, body string)) {
+	t.Helper()
+	repo = t.TempDir()
+	git = func(args ...string) string {
+		t.Helper()
+		out, err := runIn(repo, "git", args...)
+		if err != nil {
+			t.Fatalf("git %s: %v\n%s", strings.Join(args, " "), err, out)
+		}
+		return out
+	}
+	write = func(rel, body string) {
+		t.Helper()
+		full := filepath.Join(repo, filepath.FromSlash(rel))
+		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(full, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	git("init", "-q", "-b", "main")
+	git("config", "user.name", "Fixture")
+	git("config", "user.email", "fixture@example.com")
+	// An inherited ~/.gitconfig with commit signing would make these prompt.
+	git("config", "commit.gpgsign", "false")
+	git("config", "tag.gpgsign", "false")
+	return repo, git, write
+}
+
+// runScript runs a .github/scripts script under bash in dir ("" for the test's
+// own), with the environment minus the variables in scrub plus env, returning
+// stdout and the exit status; stderr goes to the test log.
+func runScript(t *testing.T, dir, script string, scrub, env []string, args ...string) (string, int) {
+	t.Helper()
+	path := abs(t, filepath.Join("..", ".github", "scripts", script))
+	cmd := exec.Command("bash", append([]string{path}, args...)...)
+	cmd.Dir = dir
+	for _, kv := range os.Environ() {
+		if !slices.Contains(scrub, strings.SplitN(kv, "=", 2)[0]) {
+			cmd.Env = append(cmd.Env, kv)
+		}
+	}
+	cmd.Env = append(cmd.Env, env...)
+	var stderr strings.Builder
+	cmd.Stderr = &stderr
+	out, err := cmd.Output()
+	if stderr.Len() > 0 {
+		t.Logf("stderr: %s", stderr.String())
+	}
+	if err == nil {
+		return string(out), 0
+	}
+	code := exitCode(err)
+	if code < 0 {
+		t.Fatalf("running %s: %v", script, err)
+	}
+	return string(out), code
 }
 
 func runIn(dir, name string, args ...string) (string, error) {

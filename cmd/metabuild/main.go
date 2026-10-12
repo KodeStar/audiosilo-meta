@@ -41,7 +41,7 @@ func main() {
 	flag.Parse()
 
 	res := build.Load(build.Sources{Data: *dataDir, Community: *community})
-	check.PrintAdvisories(os.Stderr, res.Warnings)
+	check.PrintAdvisories(os.Stderr, res)
 	if !res.OK() {
 		for _, p := range res.Problems {
 			fmt.Fprintln(os.Stderr, p.String())

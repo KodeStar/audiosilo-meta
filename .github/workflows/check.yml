@@ -72,14 +72,20 @@ jobs:
     runs-on: ubuntu-latest
     needs: changes
     # Observed up to ~18 minutes with the Go gate (the -race suite plus a
-    # whole-tree metacheck and metafmt), and the tree only grows. About twice
-    # that: a hang is caught inside the hour instead of at GitHub's six.
+    # whole-tree metacheck and metafmt), and the tree only grows; a data pull
+    # request adds a second metacheck over its base (~1-2 minutes, the advisory
+    # step below). About twice that: a hang is caught inside the hour instead of
+    # at GitHub's six.
     timeout-minutes: 40
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          # Two commits: on a pull request the checkout is GitHub's test MERGE
+          # commit, and its first parent is the base the advisory step below
+          # compares against. On a push the second commit is simply unused.
+          fetch-depth: 2
 
       - name: Set up Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
@@ -118,11 +124,43 @@ jobs:
       # under `core` a works-community/ directory that reappears here - a bad
       # merge, a stray revert, a misdirected contribution - is an unrecognized
       # location and a RED check, instead of a family silently re-adopted.
+      # The advisory keys are this tree's half of the advisory delta below; the
+      # flag changes nothing about the check itself.
       - name: Validate data (metacheck)
-        run: go run ./cmd/metacheck --profile core
+        run: go run ./cmd/metacheck --profile core --advisory-keys "$RUNNER_TEMP/advisories-head.txt"
 
       - name: Check canonical formatting (metafmt)
         run: go run ./cmd/metafmt --check --profile core
+
+      # THE ADVISORIES THIS PULL REQUEST INTRODUCES, in the job summary: the same
+      # metacheck over the BASE (the merge commit's first parent), and what the
+      # merged tree names that the base did not (.github/scripts/advisory-delta.sh
+      # says why and what counts; ai-verify.yml hands the same list to the model).
+      # NEVER A FAILURE, twice over: the advisories are not a gate (the sync bot
+      # auto-merges on green CI), and `continue-on-error` keeps a broken comparison
+      # from turning the required check red. Pull requests only - a push to main
+      # has no "introduced by" - and a pull request touching no data/ skips it, since
+      # the same binary over the same data names the same advisories.
+      - name: Advisories this pull request introduces
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          if git diff --quiet HEAD^1 HEAD -- data/; then
+            echo "No data change, so no advisory can be new."
+            exit 0
+          fi
+          go build -o "$RUNNER_TEMP/metacheck" ./cmd/metacheck
+          bash .github/scripts/advisory-delta.sh keys "$RUNNER_TEMP/metacheck" HEAD^1 "$RUNNER_TEMP/advisories-base.txt"
+          bash .github/scripts/advisory-delta.sh diff "$RUNNER_TEMP/advisories-base.txt" "$RUNNER_TEMP/advisories-head.txt" > "$RUNNER_TEMP/advisories-new.txt"
+          bash .github/scripts/advisory-delta.sh summary "$RUNNER_TEMP/advisories-new.txt" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/advisories-new.txt"
+              echo "$fence"
+            else
+              echo "None: every advisory the merged tree holds, the base already held."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/advisories-new.txt"
 
   # The other half of the documented gate (CLAUDE.md): `golangci-lint run`.
   # It was documented and run by hand but never by CI, so the green baseline the

@@ -12,6 +12,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -132,6 +133,34 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 		panic(fmt.Sprintf("audit: %s: %v", reviewedPath, err))
 	}
 	return rs
+}
+
+// ReviewedDistinct returns this list's `reject`s of `merge-works` and `merge-series`
+// proposals as the decisions pkg/check's advisory census honours
+// (check.ReviewedDistinct states what one means). cmd/metacheck hands them to the
+// load, since pkg/check cannot import this package.
+func ReviewedDistinct() []check.ReviewedDistinct { return distinctOf(reviewedDecisions) }
+
+// distinctOf is ReviewedDistinct over a given list.
+func distinctOf(rs []reviewedDecision) []check.ReviewedDistinct {
+	var out []check.ReviewedDistinct
+	for _, r := range rs {
+		if r.Decision != "reject" {
+			continue
+		}
+		var kind model.RedirectKind
+		switch r.Op {
+		case OpMergeWorks:
+			kind = model.RedirectWorks
+		case OpMergeSeries:
+			kind = model.RedirectSeries
+		default:
+			continue
+		}
+		ids := append([]string{r.Target}, r.Others...)
+		out = append(out, check.ReviewedDistinct{Kind: kind, IDs: ids})
+	}
+	return out
 }
 
 func knownReviewOp(op string) bool {

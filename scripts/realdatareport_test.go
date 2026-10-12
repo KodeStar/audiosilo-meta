@@ -3,7 +3,6 @@ package scripts_test
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"slices"
 	"strings"
@@ -20,30 +19,8 @@ import (
 func realDataReport(t *testing.T, env []string, args ...string) (string, int) {
 	t.Helper()
 	requireTools(t, "bash")
-	script := abs(t, filepath.Join("..", ".github", "scripts", "real-data-report.sh"))
-	cmd := exec.Command("bash", append([]string{script}, args...)...)
-	for _, kv := range os.Environ() {
-		switch strings.SplitN(kv, "=", 2)[0] {
-		case "GH_TOKEN", "GITHUB_REPOSITORY", "RESULT", "RUN_URL", "SHA", "FAILURES":
-			continue
-		}
-		cmd.Env = append(cmd.Env, kv)
-	}
-	cmd.Env = append(cmd.Env, env...)
-	var stderr strings.Builder
-	cmd.Stderr = &stderr
-	out, err := cmd.Output()
-	if stderr.Len() > 0 {
-		t.Logf("stderr: %s", stderr.String())
-	}
-	if err == nil {
-		return string(out), 0
-	}
-	code := exitCode(err)
-	if code < 0 {
-		t.Fatalf("running the report script: %v", err)
-	}
-	return string(out), code
+	return runScript(t, "", "real-data-report.sh",
+		[]string{"GH_TOKEN", "GITHUB_REPOSITORY", "RESULT", "RUN_URL", "SHA", "FAILURES"}, env, args...)
 }
 
 // runSummarize writes log (when non-nil) to a temp file and runs `summarize` on it.

@@ -105,8 +105,8 @@ func LoadComposed(coreDir, communityDir string) Result {
 	// characters/recaps maps that would be asked for one. Holding it would pin the
 	// core index - a map over every work, recording, person and series - alive for
 	// the whole of the community load, for nothing.
-	core, _ := load(coreLst, nil)
-	com, comIdx := load(comLst, nil)
+	core, _ := load(coreLst, nil, LoadOptions{})
+	com, comIdx := load(comLst, nil, LoadOptions{})
 
 	res := Result{
 		Problems: slices.Concat(core.Problems, fromCommunity(com.Problems)),
