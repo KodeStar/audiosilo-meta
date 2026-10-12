@@ -70,7 +70,14 @@ type Result struct {
 	// They never fail a check, so a caller that ignores them still behaves
 	// exactly as it did before this field existed.
 	Warnings []Problem
-	Catalog  *model.Catalog
+	// Suppressed counts the reviewed PAIRS LoadOptions.Distinct withheld from the
+	// duplicate advisories; the census line prints it, so a review never makes the
+	// count silently smaller. For the pair classes (identity-equal-works,
+	// honorific-person-pair) a pair is a finding; a group finding
+	// (normalized-duplicate-works, duplicate-series) can lose a pair, and count it,
+	// while still being reported for the pairs left.
+	Suppressed int
+	Catalog    *model.Catalog
 	// Identity is the NORMALIZED WORK IDENTITY index over Catalog (identity.go),
 	// built by the load because its own duplicate census needs it - so it is built
 	// UNCONDITIONALLY, and the ~8% it adds to a load over the 279k-work tree is the
@@ -311,12 +318,16 @@ func Load(dir string) Result { return LoadProfile(dir, pack.ProfileAll) }
 //     question this tree can answer - it is the release build's, over both
 //     trees. Everything WITHIN a family - schemas, placement, bounds, caps,
 //     key/id agreement, the member rules - runs unchanged.
-func LoadProfile(dir string, p pack.Profile) Result {
+func LoadProfile(dir string, p pack.Profile) Result { return LoadProfileWith(dir, p, LoadOptions{}) }
+
+// LoadProfileWith is LoadProfile with options (reviewed.go). LoadProfile is this
+// with the zero LoadOptions, so every existing caller is unchanged.
+func LoadProfileWith(dir string, p pack.Profile, opts LoadOptions) Result {
 	lst, err := pack.ListProfile(dir, p)
 	if err != nil {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
-	res, _ := load(lst, nil)
+	res, _ := load(lst, nil, opts)
 	return res
 }
 
@@ -366,7 +377,7 @@ func LoadStore(s *pack.Store) Result {
 	if lst == nil {
 		return LoadProfile(s.Dir(), s.Profile())
 	}
-	res, _ := load(lst, s.Reader())
+	res, _ := load(lst, s.Reader(), LoadOptions{})
 	return res
 }
 
@@ -381,7 +392,7 @@ func LoadStore(s *pack.Store) Result {
 // it, which is why it is a second return value rather than a Result field - the
 // index maps every loaded record to its path, and retaining that on every load
 // would cost hundreds of megabytes over the real tree to serve one consumer.
-func load(lst *pack.Listing, rdr *pack.Reader) (Result, *pathIndex) {
+func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathIndex) {
 	dir := lst.Dir()
 	profile := lst.Profile()
 
@@ -469,8 +480,11 @@ func load(lst *pack.Listing, rdr *pack.Reader) (Result, *pathIndex) {
 	// Advisories (warn, never fail): the shapes a bulk import can produce that
 	// no rule can call wrong on its own evidence. See advisories.go.
 	checkCrossLanguageRecordings(cat, idx, warn)
-	checkHonorificPersonPairs(cat, idx, warn)
-	checkIdentityEqualWorks(cat, idx, warn)
+	// The reviewed "not one record" decisions (reviewed.go), resolved through the
+	// tombstone table just read; empty for a plain load.
+	reviewed := newReviewedPairs(opts.Distinct, cat.Redirects)
+	checkHonorificPersonPairs(cat, idx, reviewed, warn)
+	checkIdentityEqualWorks(cat, idx, reviewed, warn)
 	// The normalized-identity index is built here rather than inside the rule
 	// because it is the SHARED one: it travels out on Result.Identity, so
 	// internal/importer's create guard and internal/issueform's intake gate probe
@@ -478,16 +492,16 @@ func load(lst *pack.Listing, rdr *pack.Reader) (Result, *pathIndex) {
 	// census and the two writers' refusals can never disagree about what one book
 	// is (identity.go).
 	identity := NewWorkIdentity(cat)
-	checkNormalizedDuplicateWorks(identity, idx, warn)
+	checkNormalizedDuplicateWorks(identity, idx, reviewed, warn)
 	checkOrphanPeople(cat, recs, idx, warn)
 	checkSidecarPositionScale(cat, idx, warn)
 	checkSeriesRecordingQualifier(cat, idx, warn)
-	checkDuplicateSeries(cat, idx, warn)
+	checkDuplicateSeries(cat, idx, reviewed, warn)
 
 	sortProblems(l.probs)
 	sortProblems(l.warns)
 
-	return Result{Problems: l.probs, Warnings: l.warns, Catalog: cat, Identity: identity}, idx
+	return Result{Problems: l.probs, Warnings: l.warns, Suppressed: reviewed.suppressed, Catalog: cat, Identity: identity}, idx
 }
 
 func sortProblems(ps []Problem) {

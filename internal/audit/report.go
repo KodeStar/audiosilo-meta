@@ -17,6 +17,9 @@ var opPhrase = map[string]func(Proposal) string{
 	OpMergeWorks: func(p Proposal) string {
 		return "review as one work: fold " + truncateList(p.Others, 8) + " onto " + p.Target
 	},
+	OpMergePeople: func(p Proposal) string {
+		return "review as one person: fold " + truncateList(p.Others, 8) + " onto " + p.Target
+	},
 	OpMergeSeries: func(p Proposal) string {
 		if p.Field == FieldPosition {
 			// SER-DUP's family-renumbered fold: the target's numbers are the ones kept.
@@ -388,6 +391,7 @@ func writeReviewedSummary(b *strings.Builder, t reviewedTally) {
 		{Label: "... no-op", N: counts[statusNoOp]},
 		{Label: "... acceptances or assertions refused", N: counts[statusRefused]},
 		{Label: "... rejections withholding an assertion", N: counts[statusWithholds]},
+		{Label: "... merge rejections matching no proposal, honoured by metacheck's census", N: counts[statusCensus]},
 		{Label: "... matching no proposal (STALE)", N: counts[statusStale]},
 	})
 	b.WriteString("\n")

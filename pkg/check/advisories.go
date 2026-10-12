@@ -81,8 +81,9 @@ var honorificSlugPrefixes = []string{"sir", "dame", "dr", "mr", "mrs", "ms"}
 //
 // Like the importer's rule it ignores a one-word remainder ("Mr. Peter" ->
 // "Peter"), where the shape is coincidence far more often than it is a
-// duplicate.
-func checkHonorificPersonPairs(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+// duplicate. A pair a reviewed decision recorded as two people (reviewed) is
+// withheld, so the answer, once a maintainer has given it, stops being asked.
+func checkHonorificPersonPairs(cat *model.Catalog, idx *pathIndex, reviewed *reviewedPairs, warn addFunc) {
 	byID := make(map[string]*model.Person, len(cat.People))
 	for _, p := range cat.People {
 		byID[p.ID] = p
@@ -93,7 +94,7 @@ func checkHonorificPersonPairs(cat *model.Catalog, idx *pathIndex, warn addFunc)
 			continue
 		}
 		twin, exists := byID[bare]
-		if !exists {
+		if !exists || reviewed.withheld(model.RedirectPeople, p.ID, twin.ID) {
 			continue
 		}
 		warn(idx.person[p], "person %q differs from %q only by a courtesy title: "+
@@ -150,7 +151,10 @@ func deHonorifiedSlug(id string) (bare string, ok bool) {
 // list are the identity rule's own business, and the one case where that rule
 // says no - a mutual translation, each side crediting the other's author as its
 // translator - is a pair it deliberately keeps apart.
-func checkIdentityEqualWorks(cat *model.Catalog, idx *pathIndex, warn addFunc) {
+//
+// A pair a reviewed decision recorded as two books (reviewed) is withheld - asked
+// last, so it is counted only where the census would otherwise have reported it.
+func checkIdentityEqualWorks(cat *model.Catalog, idx *pathIndex, reviewed *reviewedPairs, warn addFunc) {
 	groups := map[string][]*model.Work{}
 	for _, w := range cat.Works {
 		key := model.Slugify(w.Title)
@@ -175,7 +179,7 @@ func checkIdentityEqualWorks(cat *model.Catalog, idx *pathIndex, warn addFunc) {
 					continue
 				}
 				reason := oneBookReason(a, b)
-				if reason == "" || differentVolumes(a, b) {
+				if reason == "" || differentVolumes(a, b) || reviewed.withheld(model.RedirectWorks, a.ID, b.ID) {
 					continue
 				}
 				warn(idx.work[a], "work %q and %q have the same title and %s: "+
@@ -369,14 +373,15 @@ func subset(a, b map[string]bool) bool {
 // defect as two. So this class is exactly "titles that differ and mean the same
 // book", which is the decoration-minted population. What each pair must clear
 // otherwise is normalizedDuplicateGroup's business, and it is the index's own
-// predicate - the same rules the two writers refuse a new record on.
-func checkNormalizedDuplicateWorks(ix *WorkIdentity, idx *pathIndex, warn addFunc) {
+// predicate - the same rules the two writers refuse a new record on - and, last, that
+// no reviewed decision recorded the pair as two books.
+func checkNormalizedDuplicateWorks(ix *WorkIdentity, idx *pathIndex, reviewed *reviewedPairs, warn addFunc) {
 	for _, key := range ix.Keys() {
 		works := ix.Works(key)
 		if len(works) < 2 {
 			continue
 		}
-		group := normalizedDuplicateGroup(ix, works)
+		group := normalizedDuplicateGroup(ix, works, reviewed)
 		if len(group) < 2 {
 			continue
 		}
@@ -424,8 +429,10 @@ type dupCandidate struct {
 // serial position suffix telling the two apart.
 //
 // Pairwise rather than group-wide because the identity rule matches NESTED author
-// sets, so a key group can hold two unrelated books by different authors.
-func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work) []*model.Work {
+// sets, so a key group can hold two unrelated books by different authors - and for the
+// same reason a REVIEWED pair (reviewed) drops only that pair: a member left pairing
+// with nobody drops out, and a group left with fewer than two is no finding at all.
+func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work, reviewed *reviewedPairs) []*model.Work {
 	cands := make([]dupCandidate, 0, len(works))
 	for _, w := range works {
 		all, identity := identitySets(w)
@@ -441,7 +448,8 @@ func normalizedDuplicateGroup(ix *WorkIdentity, works []*model.Work) []*model.Wo
 			if differentVolumes(a.work, b.work) {
 				continue
 			}
-			if !ix.matches(b.work, &b.coll, a.work.Title, ix.SeriesNameOf(a.work.ID), ix.statementOf[a.work.ID], a.work.Language, a.all, a.identity, &a.coll) {
+			if !ix.matches(b.work, &b.coll, a.work.Title, ix.SeriesNameOf(a.work.ID), ix.statementOf[a.work.ID], a.work.Language, a.all, a.identity, &a.coll) ||
+				reviewed.withheld(model.RedirectWorks, a.work.ID, b.work.ID) {
 				continue
 			}
 			keep[a.work.ID], keep[b.work.ID] = a.work, b.work
@@ -583,22 +591,55 @@ func AdvisoryClass(w Problem) string {
 	return AdvisoryUnclassified
 }
 
-// AdvisoryCensus renders the one-line count metacheck prints under the
-// advisory lines, so a wave can be compared against the last one without
-// diffing thousands of lines. It returns "" when no advisory class fired.
-// PrintAdvisories writes every warning to w with the "advisory: " prefix and
-// the census line under them - the one spelling of the advisory report, shared
-// by cmd/metacheck and cmd/metabuild so the two CLIs cannot drift on it. Exit
-// status is the caller's; advisories never affect it.
-func PrintAdvisories(w io.Writer, warnings []Problem) {
-	for _, p := range warnings {
+// PrintAdvisories writes every warning of res to w with the "advisory: " prefix
+// and the census line under them - the one spelling of the advisory report, shared
+// by cmd/metacheck and cmd/metabuild so the two CLIs cannot drift on it. A load
+// that withheld reviewed pairs (Result.Suppressed) says how many at the end of the
+// census line, so a review is visible in the count rather than silently making it
+// smaller (metabuild loads without decisions, so its line never carries one).
+// Exit status is the caller's; advisories never affect it.
+func PrintAdvisories(w io.Writer, res Result) {
+	for _, p := range res.Warnings {
 		_, _ = fmt.Fprintf(w, "advisory: %s\n", p.String())
 	}
-	if census := AdvisoryCensus(warnings); census != "" {
+	census := AdvisoryCensus(res.Warnings)
+	if res.Suppressed > 0 {
+		if census == "" {
+			census = "advisory classes: none"
+		}
+		census += fmt.Sprintf(" (%d reviewed and suppressed)", res.Suppressed)
+	}
+	if census != "" {
 		_, _ = fmt.Fprintf(w, "%s\n", census)
 	}
 }
 
+// AdvisoryKey is an advisory's STABLE identity, the line two loads' advisories are
+// compared by to find what a change INTRODUCED (cmd/metacheck --advisory-keys,
+// .github/scripts/advisory-delta.sh): its class, a tab, then its record's location
+// with the PACK FILE taken off, then the message. The pack file is storage - a split
+// or a rebind renames it with the record inside untouched, and a sync tranche splits
+// packs routinely - so keying by it would report every advisory in a touched pack as
+// new; the family and the entry (and recording) it names are the record. A tab or a
+// line break inside the text is read as a space, so a key is always one line with one
+// tab.
+func AdvisoryKey(p Problem) string {
+	loc := p.Path
+	if file, rest, ok := strings.Cut(p.Path, ".json: "); ok {
+		family, _, _ := strings.Cut(file, "/")
+		loc = family + ": " + rest
+	}
+	return AdvisoryClass(p) + "\t" + strings.Map(func(r rune) rune {
+		if r == '\t' || r == '\n' || r == '\r' {
+			return ' '
+		}
+		return r
+	}, loc+": "+p.Msg)
+}
+
+// AdvisoryCensus renders the one-line count metacheck prints under the
+// advisory lines, so a wave can be compared against the last one without
+// diffing thousands of lines. It returns "" when no advisory class fired.
 func AdvisoryCensus(warns []Problem) string {
 	counts, total := map[string]int{}, 0
 	for _, w := range warns {

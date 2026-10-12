@@ -9,7 +9,8 @@ name: ai-verify
 #
 # WHAT THE MODEL READS is an entry-level summary produced by `cmd/metadiff`, not
 # the pull request's text diff - see the "Gather the data change" step, which
-# states why.
+# states why - plus the metacheck ADVISORIES the pull request introduces
+# (.github/scripts/advisory-delta.sh), each of which the model is told to flag.
 #
 # SECURITY: this uses the plain `pull_request` trigger, NOT
 # `pull_request_target`, which is FORBIDDEN in this repo (the "pwn request"
@@ -74,9 +75,10 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     # Observed up to ~11 minutes (the model call dominates, and a large tranche
-    # is a large prompt). The bound is what stops a hung CLI call from holding
-    # the concurrency group - and the PR's verdict - indefinitely.
-    timeout-minutes: 25
+    # is a large prompt), plus the two whole-tree metacheck runs of the advisory
+    # delta (~1-2 minutes each). The bound is what stops a hung CLI call from
+    # holding the concurrency group - and the PR's verdict - indefinitely.
+    timeout-minutes: 30
     # HAS_OAUTH gates the CLI-install step below. A step-level `if:` can read the
     # `env` context but a `secrets` comparison there is fragile, so we resolve
     # the presence of the OAuth secret into a plain boolean env var here (job
@@ -250,13 +252,38 @@ jobs:
             git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/redirects.json'
           } >> context.txt
 
+          # THE ADVISORIES THIS PULL REQUEST INTRODUCES (advisory-delta.sh says why):
+          # the same metacheck over the merge base and the head - metadiff's pair -
+          # and what the head names that the base did not goes to the script as
+          # ADVISORIES_FILE, which makes a contributor pull request's verdict a flag
+          # and is shown, unflagged, in a sync-bot one's comment (ai-verify.sh says
+          # why). Both sides run the HEAD's metacheck, which reads the head's
+          # internal/audit/reviewed.json and pkg/check: the list is trustworthy for
+          # a data-only pull request, and one that also edits those can hide its
+          # own advisories - such a change touches code and gets a maintainer's
+          # review anyway. A separate file rather than more of
+          # context.txt, so the script stays inert without it (a run that computed
+          # no delta reads exactly as before); hashed into the reuse key below like the context. A
+          # failure is not a skipped verification: the list becomes a NOTE saying it
+          # could not be computed. Inside the `if` for the same reason as metadiff.
+          if MERGE_BASE="$(git merge-base "$BASE_SHA" "$HEAD_SHA")" &&
+            go build -o "$RUNNER_TEMP/metacheck" ./cmd/metacheck &&
+            bash .github/scripts/advisory-delta.sh keys "$RUNNER_TEMP/metacheck" "$MERGE_BASE" "$RUNNER_TEMP/advisories-base.txt" &&
+            bash .github/scripts/advisory-delta.sh keys "$RUNNER_TEMP/metacheck" "$HEAD_SHA" "$RUNNER_TEMP/advisories-head.txt" &&
+            bash .github/scripts/advisory-delta.sh diff "$RUNNER_TEMP/advisories-base.txt" "$RUNNER_TEMP/advisories-head.txt" > advisories.txt; then
+            echo "advisories this pull request introduces: $(head -n 1 advisories.txt)"
+          else
+            echo "::warning::the advisory delta could not be computed for PR $PR"
+            echo "NOTE: the advisories this pull request introduces could not be computed, so nothing is known about them." > advisories.txt
+          fi
+
       # A rebase over an unrelated merge leaves the judged context byte for byte
       # the same: its verdict stands, re-applied without a model call (see the
       # script). A dispatch, a re-run and the opt-in label always judge afresh -
       # audiosilo-meta-sync re-runs verify to have a failed run or a disputed
       # flag judged again. The context format, the pull request's origin and the
       # day also decide the verdict (they shape the prompt), so they are hashed
-      # with it.
+      # with it, and so is the advisory list the model is shown beside it.
       - name: Reuse the verdict for unchanged content
         id: reuse
         if: steps.gather.outputs.has_changes == 'true'
@@ -272,7 +299,7 @@ jobs:
           # The prompt states today's date (release-date plausibility is judged
           # against it), so a verdict is reused within its UTC day only.
           printf 'format=%s origin=%s day=%s\n' "$CONTEXT_FORMAT" "$PR_ORIGIN" "$(date -u +%F)" > verify-inputs.txt
-          bash .github/scripts/ai-verify-reuse.sh context.txt "$PR" verify-inputs.txt \
+          bash .github/scripts/ai-verify-reuse.sh context.txt "$PR" verify-inputs.txt advisories.txt \
             .github/scripts/ai-verify.sh .github/scripts/ai-verify-reuse.sh .github/workflows/ai-verify.yml
 
       # Only needed for the preferred CLAUDE_CODE_OAUTH_TOKEN transport (a
@@ -316,6 +343,9 @@ jobs:
           CONTEXT_FORMAT: ${{ steps.gather.outputs.context_format }}
           # sync-bot or contributor: what a retailer ASIN in it proves.
           PR_ORIGIN: ${{ steps.gather.outputs.origin }}
+          # The advisories this pull request introduces (the gather step); empty
+          # when there are none, which leaves the prompt as it was.
+          ADVISORIES_FILE: advisories.txt
         run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
 
       # Runs even when the verification step FAILED (a skip), so the skip keeps

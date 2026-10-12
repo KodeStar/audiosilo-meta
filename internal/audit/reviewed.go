@@ -12,6 +12,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -134,6 +135,64 @@ func mustParseReviewed(raw []byte) []reviewedDecision {
 	return rs
 }
 
+// ReviewedDistinct returns this list's `reject`s of `merge-works`, `merge-series` and
+// `merge-people` proposals as the decisions pkg/check's advisory census honours
+// (check.ReviewedDistinct states what one means). cmd/metacheck hands them to the
+// load, since pkg/check cannot import this package.
+func ReviewedDistinct() []check.ReviewedDistinct { return distinctOf(reviewedDecisions) }
+
+// distinctOf is ReviewedDistinct over a given list.
+func distinctOf(rs []reviewedDecision) []check.ReviewedDistinct {
+	var out []check.ReviewedDistinct
+	for _, r := range rs {
+		if kind := distinctKind(r.Op); r.Decision == "reject" && kind != "" {
+			out = append(out, check.ReviewedDistinct{Kind: kind, IDs: append([]string{r.Target}, r.Others...)})
+		}
+	}
+	return out
+}
+
+// namesAPair reports whether a resolved merge rejection still names two different
+// LIVE records - what pkg/check's census needs of a decision to withhold anything.
+// Its records merged onto one survivor, or deleted without a redirect, leave a pair
+// the census never sees. A nil index (a unit test's report with no catalogue)
+// counts every id as live.
+func namesAPair(p Proposal, kind model.RedirectKind, ix *index) bool {
+	live := func(id string) bool {
+		if ix == nil {
+			return true
+		}
+		switch kind {
+		case model.RedirectSeries:
+			return ix.seriesByID[id] != nil
+		case model.RedirectPeople:
+			return ix.personByID[id] != nil
+		}
+		return ix.workByID[id] != nil
+	}
+	seen := map[string]bool{}
+	for _, id := range append([]string{p.Target}, p.Others...) {
+		if live(id) {
+			seen[id] = true
+		}
+	}
+	return len(seen) >= 2
+}
+
+// distinctKind is the namespace a REJECTION of op records "not one record" in, for
+// the census: the three merge ops, and "" for every other op.
+func distinctKind(op string) model.RedirectKind {
+	switch op {
+	case OpMergeWorks:
+		return model.RedirectWorks
+	case OpMergeSeries:
+		return model.RedirectSeries
+	case OpMergePeople:
+		return model.RedirectPeople
+	}
+	return ""
+}
+
 func knownReviewOp(op string) bool {
 	_, ok := opPhrase[op]
 	return op != OpNone && ok
@@ -144,14 +203,15 @@ func knownReviewOp(op string) bool {
 // acceptance of one would be counted as made mechanical while nothing applies it, so
 // it is refused at parse. internal/repair's TestAcceptableOpsAreAppliable pins this set
 // against the ops the repair can apply.
-var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true}
+var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, OpRepointSidecar: true, OpMergePeople: true}
 
 // AcceptableOp reports whether a reviewed decision may ACCEPT a proposal of op.
 // Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
 func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
 
-// Ops returns every op the audit emits, sorted. opPhrase renders every one of them,
-// review included, so it is the list.
+// Ops returns every op opPhrase renders, review included, sorted: every op the
+// audit emits, plus merge-people, which no detector emits and only a reviewed
+// rejection names.
 func Ops() []string {
 	var out []string
 	for op := range opPhrase {
@@ -205,6 +265,10 @@ func parseReviewed(raw []byte) ([]reviewedDecision, error) {
 			if slug != "" && !model.ValidSlug(slug) {
 				return nil, fmt.Errorf("entry %d: %q is not a slug", i, slug)
 			}
+		}
+		if r.Op == OpMergePeople && (r.Decision != "reject" || r.Target == "" || len(r.Others) == 0 ||
+			r.Series != "" || r.Field != "" || r.From != "" || r.To != "" || slices.Contains(r.Others, r.Target)) {
+			return nil, fmt.Errorf("entry %d: a %s decision is a reject naming a target and the distinct others, nothing else", i, OpMergePeople)
 		}
 		if r.Op == OpAddWorkLink || r.Op == OpAddSeriesLink {
 			if !model.ValidSlug(r.Target) || !model.ValidSlug(r.To) {
@@ -349,6 +413,8 @@ func resolvedProposal(p Proposal, class string, reds model.Redirects) Proposal {
 	switch p.Op {
 	case OpMergeSeries, OpSplitSeries:
 		kind = model.RedirectSeries
+	case OpMergePeople:
+		kind = model.RedirectPeople
 	case OpReview:
 		switch class {
 		case ClassPersonDup:
@@ -417,6 +483,13 @@ const (
 	statusNoOp      outcomeStatus = "no-op"     // the proposal was already in the state asked for
 	statusRefused   outcomeStatus = "refused"   // an acceptance or assertion that would break consistency
 	statusStale     outcomeStatus = "stale"     // matching no fresh proposal
+	// statusCensus is a merge REJECTION matching no fresh proposal that still names
+	// two live records once resolved. It is not stale: metacheck's census honours it
+	// whatever the detectors propose (ReviewedDistinct), so pruning it would bring a
+	// reviewed pair back into the census. One whose records resolve to fewer than
+	// two live records (merged onto one survivor, or deleted) withholds nothing
+	// there, and is STALE.
+	statusCensus outcomeStatus = "census-only"
 	// statusWithholds is a rejection whose only match is an assertion of the same
 	// proposal: it is what keeps the assertion out, so it is never stale.
 	statusWithholds outcomeStatus = "rejected-an-assertion"
@@ -439,7 +512,9 @@ type decisionOutcome struct {
 // reviewedTally is every decision's outcome, in file order.
 type reviewedTally struct{ All []decisionOutcome }
 
-// Outcomes are the decisions that met a fresh proposal; Stale the ones that did not.
+// Outcomes are every decision that is not STALE - those that met a fresh proposal,
+// plus the census-only merge rejections, which met none but are still in force;
+// Stale the rest.
 func (t reviewedTally) Outcomes() []decisionOutcome { return t.filter(false) }
 func (t reviewedTally) Stale() []decisionOutcome    { return t.filter(true) }
 func (t reviewedTally) Entries() int                { return len(t.All) }
@@ -688,6 +763,17 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 	for j, r := range rs {
 		if statuses[j] == "" {
 			statuses[j] = statusStale
+			if r.Decision == "reject" && distinctKind(r.Op) != "" {
+				// Census-only while it still names two live records; one whose records
+				// now resolve to one survivor (merged since, despite the rejection) or
+				// are gone names a pair the census cannot see, so it is STALE and
+				// listed for review.
+				if namesAPair(resolved[j], distinctKind(r.Op), ix) {
+					statuses[j] = statusCensus
+				} else {
+					whys[j] = "fewer than two of the records it names are live once resolved (target " + resolved[j].Target + "): merged onto one survivor, or deleted"
+				}
+			}
 		}
 		t.All = append(t.All, decisionOutcome{r, statuses[j], whys[j]})
 	}
