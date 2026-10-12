@@ -74,66 +74,10 @@ func mapRegion(word string) (region string, ok bool) {
 	return region, true
 }
 
-// sequencePattern matches a series position AS A SOURCE MAY SPELL IT: a number,
-// or an omnibus range whose dash may carry whitespace on either side. The
-// schema's own pattern (series.schema.json) admits no whitespace at all, which
-// is the point of NORMALIZING rather than merely validating - what a source
-// typed and what the record stores are two different strings, and only the
-// canonical one is ever written.
-//
-// The whitespace tolerance was measured over the full 1.13M-book dump: of the
-// 345,140 stated series positions, 4,080 fail the schema pattern and 104 of
-// those (100 distinct books, 53 distinct spellings) are an omnibus range spelled
-// with a space - "1 - 3", "3040 - 3049", and the one-sided "14 -15", "1.5- 3.5".
-// Every one of them was dropped, which cost the book its place in its series.
-// ZERO of the 104 use an en or em dash, so the dash class stays the plain hyphen
-// the schema pattern names: the tolerance is whitespace, nothing else.
-var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(\s*-\s*\d+(\.\d+)?)?$`)
-
 // NormalizeSequence trims a raw series_sequence, canonicalizes it, and reports
-// whether it is a valid position (a single number or a range like "1-3.5").
-//
-// A position is a STRING in the schema, so two spellings of the same number are
-// two different positions to every rule that compares them (series membership,
-// the position-uniqueness check, the importer's same-position merge test).
-// Sources spell them differently - a Postgres numeric renders "1" as "1.0", and
-// a range is written both "1-3" and "1 - 3" - so trailing fractional zeros are
-// stripped ("1.0" -> "1", "2.50" -> "2.5", both endpoints of a range) and the
-// whitespace around a range's dash is removed. One book cannot occupy a series
-// twice, and what is stored always satisfies the schema pattern.
-func NormalizeSequence(raw string) (pos string, ok bool) {
-	pos = strings.TrimSpace(raw)
-	if pos == "" || !sequencePattern.MatchString(pos) {
-		return "", false
-	}
-	// Removing ALL whitespace is equivalent to removing it around the dash: the
-	// value has been trimmed and has matched sequencePattern, whose only
-	// whitespace is the `\s*` on either side of that dash. A regexp replace here
-	// cost ~130ns and an allocation on every position; the guard keeps the
-	// overwhelmingly common tight spelling free.
-	if strings.ContainsAny(pos, " \t\n\v\f\r") {
-		pos = strings.Join(strings.Fields(pos), "")
-	}
-	if !strings.Contains(pos, ".") {
-		return pos, true
-	}
-	parts := strings.Split(pos, "-")
-	for i, part := range parts {
-		parts[i] = trimFractionalZeros(part)
-	}
-	return strings.Join(parts, "-"), true
-}
-
-// trimFractionalZeros drops the trailing zeros (and then a bare trailing dot) of
-// a decimal number. It is only ever called on a value the sequence pattern
-// matched, and only touches a value that HAS a fractional part - so "10" keeps
-// its zero.
-func trimFractionalZeros(n string) string {
-	if !strings.Contains(n, ".") {
-		return n
-	}
-	return strings.TrimSuffix(strings.TrimRight(n, "0"), ".")
-}
+// whether it is a valid position: model.NormalizeSequence, the rule of record, kept
+// under this name for this package's many callers.
+func NormalizeSequence(raw string) (pos string, ok bool) { return model.NormalizeSequence(raw) }
 
 var (
 	// isbnPattern mirrors common.schema.json #/$defs/isbn, so an ISBN that
@@ -155,72 +99,14 @@ func NormalizeISBN(raw string) (isbn string, ok bool) {
 	return isbn, true
 }
 
-// seriesNarratorQualifiers are the lead-in phrases of a trailing parenthetical
-// that qualifies a series name BY ITS NARRATOR rather than naming a different
-// series: "Sherlock Holmes - Die galaktischen Fälle (gelesen von Peter Bocek)".
-// The qualifier is an artifact of one retailer listing each re-narration as its
-// own series - four of them for that one title - so a single book minted FOUR
-// works, each in a series of its own. Narration is modeled by
-// recording.narrators; it is not part of a series' identity.
-//
-// This is the same class of see-through as the "(Full-Cast Edition)" production
-// qualifier on a work title (recordings.go), and it is held to the same
-// evidence bar as roleQualifiers and the AI vocabulary: measured over the full
-// dump, in the trailing-bracket position only, and CLOSED. Counts are distinct
-// series titles and the books behind them.
-//
-// Keys are in foldCredit form (lowercased, diacritics folded), so one entry
-// covers "Hörspiele" and "Horspiele" alike.
-//
-// Deliberately NOT included, though both were candidates: "read by" and "lu
-// par". Neither occurs in the trailing-bracket position anywhere in the dump,
-// and both occur elsewhere as false positives - "A Read by the Sea Wedding
-// Romance" is a title, and «"À la recherche du temps perdu" lu par de grands
-// acteurs» credits "great actors" rather than a person. Adding a phrase the
-// data does not attest would be a guess at what a retailer might emit, which is
-// exactly what this vocabulary style refuses. Each is one line away the day a
-// dump carries one.
-var seriesNarratorQualifiers = []string{
-	"gelesen von",    // 15 series titles, 446 books - German "read by"
-	"narrated by",    // 3 titles, 91 books
-	"gesprochen von", // 1 title, 8 books - German "spoken by"
-	"horspiele von",  // 2 titles, 6 books - German "audio dramas by"
-}
-
-// cleanSeriesName strips a trailing narrator qualifier from a series name so
-// every narration of one serial resolves to ONE series. The marker must be a
-// trailing parenthetical (or bracket) whose content BEGINS with a listed phrase
-// at a word boundary and continues with something: a bare "(gelesen von)" names
-// nobody, and a strip that would leave an empty name is refused (the dump does
-// carry series titles that are nothing but a bracket).
-//
-// Only the trailing bracket is read. The dump also spells the qualifier
-// dash-separated ("Sherlock Holmes gelesen von Rupert Pichler"), which this
-// deliberately does not touch: an unbracketed tail is indistinguishable from a
-// series name that legitimately contains the words, and the bracketed form is
-// what the measurement covers.
+// cleanSeriesName strips the trailing RECORDING QUALIFIERS from a series name (a
+// narrator credit, "(abridged)", "(Full-Cast Editions)", "[Dramatized Adaptation]"), so
+// every production of one serial resolves to ONE series: narration and production are
+// facts about a recording, not a series. The rule, its vocabularies and their history
+// are titlerule.StripSeriesRecordingQualifiers.
 func cleanSeriesName(name string) string {
-	trimmed := strings.TrimSpace(name)
-	if !strings.ContainsAny(trimmed, closeBracketChars) {
-		return trimmed
-	}
-	m := trailingParenRE.FindStringSubmatchIndex(trimmed)
-	if m == nil {
-		return trimmed
-	}
-	marker := foldCredit(trimmed[m[2]:m[3]])
-	for _, phrase := range seriesNarratorQualifiers {
-		rest, found := strings.CutPrefix(marker, phrase)
-		if !found || continuesWord(rest) || strings.TrimSpace(rest) == "" {
-			continue
-		}
-		stripped := strings.TrimSpace(trimmed[:m[0]])
-		if stripped == "" || !bracketsBalanced(stripped) {
-			continue
-		}
-		return stripped
-	}
-	return trimmed
+	base, _ := titlerule.StripSeriesRecordingQualifiers(strings.TrimSpace(name))
+	return base
 }
 
 // The title narrator lead-ins are titlerule.NarratorLeadIns (moved there; one list).

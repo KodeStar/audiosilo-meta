@@ -28,12 +28,23 @@ import (
 //     non-variant ("Vorkosigan Saga (chronological)", stating no ordering_of) is a
 //     reading order whatever its fields say, so it too is reached only by a claim
 //     stating that order - an unqualified claim's position is not one of its slots;
+//   - a RECORDING-qualified catalogued name (titlerule.StripSeriesRecordingQualifiers:
+//     a narrator credit, "(abridged)", "(Full-Cast Editions)", "[Dramatized
+//     Adaptation]") is indexed under the name without the qualifier, beside the plain
+//     series of that name - a recording facet that is never a separate key, because a
+//     narration or a production is a fact about a recording and the claim side has
+//     already shed it (cleanSeriesName). So a claim whose chain holds nothing reaches
+//     the recording-variant series the catalogue already has rather than founding a
+//     second one beside it, and a claim whose chain holds the plain series joins THAT
+//     first (tier order);
 //   - a claim asks with its name's base and ordering, and with its decoration's
 //     language, else its row's (an unknown language asks nothing);
 //   - what it reaches only ADDS candidates, after the chain's (resolveSeriesUnit's
 //     tiers), judged by the same language closure and author fit;
 //   - the importer never writes translation_of, ordering or ordering_of, and a
-//     founded series keeps the source's name verbatim.
+//     founded series keeps the source's name as the claim states it - verbatim but
+//     for the recording qualifiers cleanSeriesName takes off every claim (whose
+//     abridgement, if they state one, is carried onto the recording).
 
 // qualifierKey is one index key under a base slug: the base's name key
 // (titlerule.SeriesName.Key) and the two facets.
@@ -65,7 +76,9 @@ func qualifiedSources(series []*model.Series) []qualifiedSource {
 func buildQualified(series []qualifiedSource, language map[string]string) qualifiedIndex {
 	out := qualifiedIndex{}
 	for _, s := range series {
-		q := titlerule.ReadSeriesQualifiers(s.name)
+		// Indexed without its recording qualifier (the file comment says why).
+		name, _ := titlerule.StripSeriesRecordingQualifiers(s.name)
+		q := titlerule.ReadSeriesQualifiers(name)
 		base := titlerule.NewSeriesName(q.Base)
 		lang := q.Language
 		if lang == "" {

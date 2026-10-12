@@ -200,10 +200,12 @@ func SameSeriesSpelling(a, b string) bool {
 // product it is - from closed vocabularies only, reused wherever the package already
 // has one: an ordering (OrderingOfDecoration), an own-language edition
 // (editionLanguagePhrases, "[Spanish Edition]"), a dramatization (IsDramatization's
-// pattern) or a narration credit (the narrator lead-ins), plus the format and narration
-// notes listed in formatNotes. A dialect or variety ("(Spain-Castilian)", "(Latin
-// American)", "(Brazilian)") and a translated series title ("[The Accursed Kings]") are
-// in none of them, so a one-sided one of those keeps the two series apart.
+// pattern), every RECORDING QUALIFIER (recordingGroup, so a group the series
+// recording-qualifier strip removes is always a note too), a narration credit led by
+// any narrator lead-in, plus the notes listed in formatNotes. A dialect or variety
+// ("(Spain-Castilian)", "(Latin American)", "(Brazilian)") and a translated series
+// title ("[The Accursed Kings]") are in none of them, so a one-sided one of those keeps
+// the two series apart.
 func seriesNote(group string) bool {
 	inner := groupContents(group)
 	key := model.SlugifyWhole(inner)
@@ -211,9 +213,13 @@ func seriesNote(group string) bool {
 		return false
 	}
 	if OrderingOfDecoration(key) != "" || editionLanguagePhrases[key] != "" || formatNotes[key] ||
-		dramatization.MatchString(inner) {
+		dramatization.MatchString(inner) || recordingGroup(inner, key) {
 		return true
 	}
+	// A narration credit led by a lead-in the series vocabulary does not hold and
+	// naming no NAME ("(Read by the author)") is still a note, though not a qualifier
+	// the strip would remove. ("(Narrated by the author)" is both: recordingGroup's
+	// bracketed lead-in arm takes it whatever follows the lead-in.)
 	lower := strings.ToLower(inner)
 	for _, lead := range trailingLeadIns {
 		if strings.HasPrefix(lower, lead+" ") {
@@ -223,13 +229,11 @@ func seriesNote(group string) bool {
 	return false
 }
 
-// formatNotes are the one-sided format and narration notes seriesNote reads beside the
-// package's other vocabularies, keyed by slug: an abridgement either way (SER-DUP's
-// abridged list, plus its unabridged twins), a full-cast or radio-play production, and
-// the Castilian-narration note Audible's Spanish catalogue carries.
+// formatNotes are the catalogue notes seriesNote reads beside the package's other
+// vocabularies that are NOT recording qualifiers (recordingqualifier.go says why), keyed
+// by slug: a Hörspiel production and the Castilian-narration note Audible's Spanish
+// catalogue carries.
 var formatNotes = map[string]bool{
-	"abridged": true, "unabridged": true, "gekurzt": true, "ungekurzt": true,
-	"full-cast": true, "full-cast-edition": true, "full-cast-editions": true,
 	"horspiel": true, "horspiele": true,
 	"narracion-en-castellano": true,
 }

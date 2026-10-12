@@ -114,7 +114,7 @@ func (c *composer) addWork(s sections) {
 	// One series row for every lookup the submission makes, so the gates and the
 	// placement judge the same authors.
 	seriesRow := c.formSeriesRow(s)
-	ctx := c.titleContextFor(title, s.get(fWorkSeriesName), seriesRow)
+	ctx := c.titleContextFor(title, formSeriesName(s), seriesRow)
 	if c.checkSeriesVolume(ctx) {
 		return
 	}
@@ -402,7 +402,7 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 	recSlug := c.uniqueRecordingSlug(workSlug, narratorSlugs, s.get(fRecRelease))
 	rec := outRecording{
 		ID: recSlug, Work: workSlug, Narrators: narratorSlugs, Language: lang,
-		Abridged: abridgedFromForm(s.get(fRecAbridged)),
+		Abridged: formAbridged(s),
 		License:  licenseCC0, Sources: c.sources(sourceRef),
 	}
 	rec.RuntimeMin, rec.ReleaseDate, rec.CoverURL = c.recordingFacts(s)
@@ -468,6 +468,21 @@ func (c *composer) putRecording(workSlug, recSlug string, rec any) {
 		return
 	}
 	c.putEntry(pack.FamilyWorks, workSlug, entry)
+}
+
+// formAbridged is a composed recording's abridged tri-state: the form's dropdown,
+// else the abridgement a recording qualifier on the series name states
+// (titlerule.SeriesAbridgement) - formSeriesName reads the name without it, and the
+// qualifier is a fact about THIS recording, so it lands here rather than being lost.
+// A form without a series name (add-recording) reads the dropdown alone.
+func formAbridged(s sections) *bool {
+	if a := abridgedFromForm(s.get(fRecAbridged)); a != nil {
+		return a
+	}
+	if a, stated := titlerule.SeriesAbridgement(s.get(fWorkSeriesName)); stated {
+		return &a
+	}
+	return nil
 }
 
 // abridgedFromForm maps the rec_abridged dropdown to the recording's tri-state
@@ -599,12 +614,25 @@ func (c *composer) formSeriesRow(s sections) *importer.SeriesRow {
 	return importer.SeriesRowFor(splitNames(s.get(fWorkAuthors)), []string{s.get(fWorkTitle), s.get(fWorkSubtitle)}, s.get(fRecPublisher), lang, slugOf)
 }
 
+// formSeriesName is the form's series name as every series lookup reads it: with
+// its trailing RECORDING QUALIFIERS removed (titlerule.StripSeriesRecordingQualifiers,
+// the rule the bulk importer cleans a claim by), so "Harry Potter (Narrated by Stephen
+// Fry)" or "Discworld (abridged)" extends the series it is a recording of rather than
+// composing a second series beside it.
+func formSeriesName(s sections) string {
+	name, _ := titlerule.StripSeriesRecordingQualifiers(s.get(fWorkSeriesName))
+	return name
+}
+
 // placeInSeries adds the work to the named series (creating it or extending an
 // existing one). It is a no-op when no series name is given.
 func (c *composer) placeInSeries(s sections, row *importer.SeriesRow, workSlug, sourceRef string) {
-	name := s.get(fWorkSeriesName)
+	name := formSeriesName(s)
 	if name == "" {
 		return
+	}
+	if raw := s.get(fWorkSeriesName); raw != name {
+		c.note("series name %q states a recording qualifier (a narrator or a production: a fact about the recording, not the series) - read as %q", raw, name)
 	}
 	posRaw := s.get(fWorkSeriesPosition)
 	if posRaw == "" {

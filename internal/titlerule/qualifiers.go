@@ -240,13 +240,41 @@ func dropNarratorQualifier(s, lower string) string {
 		return s // the common case
 	}
 	s = cutAll(s, parenGroup, func(g string) bool { return narratorCredit(g[1 : len(g)-1]) })
-	for i := range s {
-		if i == 0 || !opensTrailingSegment(s[:i]) || !narratorCredit(s[i:]) {
-			continue
-		}
-		return s[:i]
+	if i, found := trailingNarratorCut(s); found {
+		return trailingNarratorHead(s, i)
 	}
 	return s
+}
+
+// trailingNarratorCut is the offset at which a narrator credit standing as s's LAST
+// segment begins: the first offset that opens a trailing segment (opensTrailingSegment)
+// and starts a credit running to the end (narratorCredit). It is the one trailing
+// scan dropNarratorQualifier and the series reader (trailingNarratorSegment) share.
+func trailingNarratorCut(s string) (int, bool) {
+	for i := range s {
+		if i > 0 && opensTrailingSegment(s[:i]) && narratorCredit(s[i:]) {
+			return i, true
+		}
+	}
+	return 0, false
+}
+
+// trailingNarratorHead is what precedes a trailing narrator credit cut at i
+// (trailingNarratorCut): s[:i] without the separator opensTrailingSegment accepted
+// there and the spaces around it. The separator is removed by what that test read, not
+// by a punctuation class, because the class callers trim with has no en dash - "Harry
+// Potter – Gesprochen von Rufus Beck" left "Harry Potter –" behind.
+func trailingNarratorHead(s string, i int) string {
+	h := strings.TrimRight(s[:i], " ")
+	r, size := utf8.DecodeLastRuneInString(h)
+	switch r {
+	case '-', '–':
+		// Match the opener's suffix order, which also accepts an en dash then a hyphen.
+		h = strings.TrimSuffix(strings.TrimSuffix(h, "-"), "–")
+	default:
+		h = h[:len(h)-size]
+	}
+	return strings.TrimRight(h, " ")
 }
 
 // looksLikeAName reports whether a credit's words read as a name: the first and last
@@ -289,6 +317,39 @@ func opensTrailingSegment(head string) bool {
 func mentionsNarratorLeadIn(lower string) bool {
 	for _, lead := range trailingLeadIns {
 		if strings.Contains(lower, lead) {
+			return true
+		}
+	}
+	return false
+}
+
+// mentionsNarratorLeadInFold is mentionsNarratorLeadIn over text in any case, without
+// lowering it: every lead-in is lowercase ASCII, so an ASCII case fold finds exactly
+// what strings.ToLower would, and the common no-lead-in case allocates nothing.
+func mentionsNarratorLeadInFold(s string) bool {
+	for _, lead := range trailingLeadIns {
+		if containsFoldASCII(s, lead) {
+			return true
+		}
+	}
+	return false
+}
+
+// containsFoldASCII reports whether s contains sub under an ASCII case fold; sub must
+// be lowercase ASCII.
+func containsFoldASCII(s, sub string) bool {
+	for i := 0; i+len(sub) <= len(s); i++ {
+		j := 0
+		for ; j < len(sub); j++ {
+			c := s[i+j]
+			if 'A' <= c && c <= 'Z' {
+				c += 'a' - 'A'
+			}
+			if c != sub[j] {
+				break
+			}
+		}
+		if j == len(sub) {
 			return true
 		}
 	}

@@ -1044,8 +1044,9 @@ func (p *planner) planCreate(books []sourceBook) {
 
 // normalizeEditionMarkers is the batch-boundary title pre-pass every planning
 // mode that reads titles runs first. For every book it: (1) derives the abridged
-// tri-state from the title's edition marker when the source did not state it,
-// then (2) runs cleanWorkTitle over the raw title/title_short. This is the
+// tri-state from the title's edition marker when the source did not state it (and,
+// failing that, from the recording qualifiers its series claims were cleaned of -
+// seriesClaimsAbridged), then (2) runs cleanWorkTitle over the raw title/title_short. This is the
 // SINGLE marker-derivation mechanism for ALL sources (the ABS path already
 // cleans its titles locally to fix its subtitle split, but never derives
 // abridged), so step 1 must run BEFORE the titles are mutated. Cleaning once
@@ -1069,6 +1070,9 @@ func normalizeEditionMarkers(books []sourceBook) {
 				}
 			}
 		}
+		if books[i].abridged == nil {
+			books[i].abridged = seriesClaimsAbridged(books[i].series)
+		}
 		for _, key := range []string{"title", "title_short"} {
 			raw := books[i].str(key)
 			if raw == "" {
@@ -1085,6 +1089,29 @@ func normalizeEditionMarkers(books []sourceBook) {
 			}
 		}
 	}
+}
+
+// seriesClaimsAbridged is the abridgement a book's series claims stated through the
+// recording qualifiers makeSeriesRef cleaned off their names, when every claim stating
+// one agrees; nil when none states one or two disagree. It is the title marker's
+// fallback in normalizeEditionMarkers: a series name printing the edition is the same
+// kind of source statement a title printing it is.
+func seriesClaimsAbridged(refs []seriesRef) *bool {
+	var out *bool
+	for _, r := range refs {
+		if r.abridged == nil {
+			continue
+		}
+		if out != nil && *out != *r.abridged {
+			return nil
+		}
+		out = r.abridged
+	}
+	if out == nil {
+		return nil
+	}
+	v := *out // the book's own value, never aliasing a claim's
+	return &v
 }
 
 // loadExisting seeds the planner's identity maps from the current data tree so
@@ -1758,6 +1785,12 @@ type seriesRef struct {
 	seq    string
 	seqOK  bool
 	rawSeq string
+	// abridged is the abridgement a recording qualifier the name was cleaned of
+	// stated ("(abridged)", "[gekürzt]", "(Unabridged)" - titlerule.SeriesAbridgement),
+	// nil when none did. The qualifier is a statement about the RECORDING, so
+	// normalizeEditionMarkers carries it there when the source stated nothing itself,
+	// rather than losing it with the name it was cleaned off.
+	abridged *bool
 	// target is where the claim lands, decided for the whole batch before any
 	// row is planned (resolveSeriesTargets, seriesresolve.go). The zero value is
 	// an unresolved or unaddressable claim, which places nothing.
@@ -1772,7 +1805,12 @@ type seriesRef struct {
 // series per narrator.
 func makeSeriesRef(name, rawSeq string) seriesRef {
 	pos, ok := NormalizeSequence(rawSeq)
-	return seriesRef{name: cleanSeriesName(DecodeHTMLEntities(name)), seq: pos, seqOK: ok, rawSeq: rawSeq}
+	name = DecodeHTMLEntities(name)
+	ref := seriesRef{name: cleanSeriesName(name), seq: pos, seqOK: ok, rawSeq: rawSeq}
+	if a, stated := titlerule.SeriesAbridgement(name); stated {
+		ref.abridged = &a
+	}
+	return ref
 }
 
 // sourceCredits resolves one credit list (authors or narrators). A source that
