@@ -255,10 +255,15 @@ jobs:
           # THE ADVISORIES THIS PULL REQUEST INTRODUCES (advisory-delta.sh says why):
           # the same metacheck over the merge base and the head - metadiff's pair -
           # and what the head names that the base did not goes to the script as
-          # ADVISORIES_FILE, which makes the verdict a flag (the route a sync-bot pull
-          # request reaches its steward by). A separate file rather than more of
-          # context.txt, so the script stays inert without it (the community repo's
-          # copy runs that way); hashed into the reuse key below like the context. A
+          # ADVISORIES_FILE, which makes a contributor pull request's verdict a flag
+          # and is shown, unflagged, in a sync-bot one's comment (ai-verify.sh says
+          # why). Both sides run the HEAD's metacheck, which reads the head's
+          # internal/audit/reviewed.json and pkg/check: the list is trustworthy for
+          # a data-only pull request, and one that also edits those can hide its
+          # own advisories - such a change touches code and gets a maintainer's
+          # review anyway. A separate file rather than more of
+          # context.txt, so the script stays inert without it (a run that computed
+          # no delta reads exactly as before); hashed into the reuse key below like the context. A
           # failure is not a skipped verification: the list becomes a NOTE saying it
           # could not be computed. Inside the `if` for the same reason as metadiff.
           if MERGE_BASE="$(git merge-base "$BASE_SHA" "$HEAD_SHA")" &&

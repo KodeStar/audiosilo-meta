@@ -152,6 +152,33 @@ func distinctOf(rs []reviewedDecision) []check.ReviewedDistinct {
 	return out
 }
 
+// namesAPair reports whether a resolved merge rejection still names two different
+// LIVE records - what pkg/check's census needs of a decision to withhold anything.
+// Its records merged onto one survivor, or deleted without a redirect, leave a pair
+// the census never sees. A nil index (a unit test's report with no catalogue)
+// counts every id as live.
+func namesAPair(p Proposal, kind model.RedirectKind, ix *index) bool {
+	live := func(id string) bool {
+		if ix == nil {
+			return true
+		}
+		switch kind {
+		case model.RedirectSeries:
+			return ix.seriesByID[id] != nil
+		case model.RedirectPeople:
+			return ix.personByID[id] != nil
+		}
+		return ix.workByID[id] != nil
+	}
+	seen := map[string]bool{}
+	for _, id := range append([]string{p.Target}, p.Others...) {
+		if live(id) {
+			seen[id] = true
+		}
+	}
+	return len(seen) >= 2
+}
+
 // distinctKind is the namespace a REJECTION of op records "not one record" in, for
 // the census: the three merge ops, and "" for every other op.
 func distinctKind(op string) model.RedirectKind {
@@ -182,8 +209,9 @@ var unappliableOps = map[string]bool{OpReview: true, OpRenameCandidate: true, Op
 // Ops lists every op the audit emits, so a test can hold this to the repair's appliers.
 func AcceptableOp(op string) bool { return knownReviewOp(op) && !unappliableOps[op] }
 
-// Ops returns every op the audit emits, sorted. opPhrase renders every one of them,
-// review included, so it is the list.
+// Ops returns every op opPhrase renders, review included, sorted: every op the
+// audit emits, plus merge-people, which no detector emits and only a reviewed
+// rejection names.
 func Ops() []string {
 	var out []string
 	for op := range opPhrase {
@@ -455,9 +483,12 @@ const (
 	statusNoOp      outcomeStatus = "no-op"     // the proposal was already in the state asked for
 	statusRefused   outcomeStatus = "refused"   // an acceptance or assertion that would break consistency
 	statusStale     outcomeStatus = "stale"     // matching no fresh proposal
-	// statusCensus is a merge REJECTION matching no fresh proposal. It is not stale:
-	// metacheck's census honours it whatever the detectors propose (ReviewedDistinct),
-	// so pruning it would bring a reviewed pair back into the census.
+	// statusCensus is a merge REJECTION matching no fresh proposal that still names
+	// two live records once resolved. It is not stale: metacheck's census honours it
+	// whatever the detectors propose (ReviewedDistinct), so pruning it would bring a
+	// reviewed pair back into the census. One whose records resolve to fewer than
+	// two live records (merged onto one survivor, or deleted) withholds nothing
+	// there, and is STALE.
 	statusCensus outcomeStatus = "census-only"
 	// statusWithholds is a rejection whose only match is an assertion of the same
 	// proposal: it is what keeps the assertion out, so it is never stale.
@@ -481,7 +512,9 @@ type decisionOutcome struct {
 // reviewedTally is every decision's outcome, in file order.
 type reviewedTally struct{ All []decisionOutcome }
 
-// Outcomes are the decisions that met a fresh proposal; Stale the ones that did not.
+// Outcomes are every decision that is not STALE - those that met a fresh proposal,
+// plus the census-only merge rejections, which met none but are still in force;
+// Stale the rest.
 func (t reviewedTally) Outcomes() []decisionOutcome { return t.filter(false) }
 func (t reviewedTally) Stale() []decisionOutcome    { return t.filter(true) }
 func (t reviewedTally) Entries() int                { return len(t.All) }
@@ -731,7 +764,15 @@ func applyReviewed(rep *Report, rs []reviewedDecision, reds model.Redirects, ix 
 		if statuses[j] == "" {
 			statuses[j] = statusStale
 			if r.Decision == "reject" && distinctKind(r.Op) != "" {
-				statuses[j] = statusCensus
+				// Census-only while it still names two live records; one whose records
+				// now resolve to one survivor (merged since, despite the rejection) or
+				// are gone names a pair the census cannot see, so it is STALE and
+				// listed for review.
+				if namesAPair(resolved[j], distinctKind(r.Op), ix) {
+					statuses[j] = statusCensus
+				} else {
+					whys[j] = "fewer than two of the records it names are live once resolved (target " + resolved[j].Target + "): merged onto one survivor, or deleted"
+				}
 			}
 		}
 		t.All = append(t.All, decisionOutcome{r, statuses[j], whys[j]})

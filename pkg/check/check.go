@@ -70,8 +70,12 @@ type Result struct {
 	// They never fail a check, so a caller that ignores them still behaves
 	// exactly as it did before this field existed.
 	Warnings []Problem
-	// Suppressed counts the advisory findings LoadOptions.Distinct withheld; the
-	// census line prints it, so a review never makes the count silently smaller.
+	// Suppressed counts the reviewed PAIRS LoadOptions.Distinct withheld from the
+	// duplicate advisories; the census line prints it, so a review never makes the
+	// count silently smaller. For the pair classes (identity-equal-works,
+	// honorific-person-pair) a pair is a finding; a group finding
+	// (normalized-duplicate-works, duplicate-series) can lose a pair, and count it,
+	// while still being reported for the pairs left.
 	Suppressed int
 	Catalog    *model.Catalog
 	// Identity is the NORMALIZED WORK IDENTITY index over Catalog (identity.go),

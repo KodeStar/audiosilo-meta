@@ -594,9 +594,9 @@ func AdvisoryClass(w Problem) string {
 // PrintAdvisories writes every warning of res to w with the "advisory: " prefix
 // and the census line under them - the one spelling of the advisory report, shared
 // by cmd/metacheck and cmd/metabuild so the two CLIs cannot drift on it. A load
-// that withheld reviewed findings (Result.Suppressed) says how many at the end of
-// the census line, so a review is visible in the count rather than silently making
-// it smaller (metabuild loads without decisions, so its line never carries one).
+// that withheld reviewed pairs (Result.Suppressed) says how many at the end of the
+// census line, so a review is visible in the count rather than silently making it
+// smaller (metabuild loads without decisions, so its line never carries one).
 // Exit status is the caller's; advisories never affect it.
 func PrintAdvisories(w io.Writer, res Result) {
 	for _, p := range res.Warnings {

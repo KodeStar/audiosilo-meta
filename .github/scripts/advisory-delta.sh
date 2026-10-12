@@ -11,7 +11,9 @@
 #   advisory-delta.sh diff <base-keys> <head-keys>
 #       Print the advisories <head-keys> holds and <base-keys> does not, bounded,
 #       or NOTHING when there are none - an empty output is the "none" answer, so
-#       a caller tests it with `-s`. Exits 2 when either file is missing.
+#       a caller tests it with `-s`. Exits 2 when either file is missing, and 1
+#       when the comparison itself fails (an empty output must never stand for a
+#       comparison that did not run).
 #   advisory-delta.sh summary <diff-output>
 #       Render a `diff` output as the markdown check.yml appends to the job's step
 #       summary: a heading, then the list in a code fence longer than any backtick
@@ -23,10 +25,20 @@
 # past with the rest. The census is a maintainer's reading list for the WHOLE
 # tree; what a reviewer of one pull request needs is the part of it that pull
 # request made. check.yml prints it in the job summary and ai-verify.yml hands it
-# to the model, which flags the pull request - that is the route a sync-bot pull
-# request reaches its steward by, so the advisories themselves never fail a check
-# (the bot auto-merges on green, and a new red gate would stall it instead of
-# routing it).
+# to the model, which flags a contributor's pull request for a maintainer and
+# shows it, unflagged, in a series-completion bot pull request's verdict comment
+# (ai-verify.sh says why). The advisories themselves never fail a check: the bot
+# auto-merges on green, and a new red gate would stall it.
+#
+# TWO PAIRS. check.yml compares the base TIP (the merge commit's first parent)
+# with the merge commit; ai-verify.yml compares the MERGE BASE with the head,
+# metadiff's pair. On a branch that is behind main the two lists can differ.
+#
+# TRUST. Both sides run ONE metacheck binary, built from the pull request's head,
+# so they read the head's internal/audit/reviewed.json and pkg/check. The list is
+# trustworthy for a DATA-ONLY pull request (every sync-bot and intake one); a pull
+# request that also adds a reviewed rejection or edits the checker can hide its
+# own advisories, and is a code change a maintainer reviews anyway.
 #
 # WHAT COUNTS AS INTRODUCED. A KEY carries no pack file (a split or rebind renames
 # packs under untouched records) but does carry the whole message, and a message
@@ -60,7 +72,11 @@ EXCLUDED_CLASSES="oversized-entry"
 # advisory COVERS: a base key of the same class naming every record the new one
 # names. A key's records are its ENTRY (the locator "<family>: entry <slug>:")
 # and every quoted run of slug characters in its message - every record a message
-# names is quoted, and a title, which is free text, rarely is slug-shaped.
+# names is quoted, and a title, which is free text, rarely is slug-shaped. A quoted
+# token that is not a record (a language code, a one-word lowercase title) can only
+# make a key HARDER to cover - it is one more name a base advisory must hold too -
+# and a base advisory carrying one still covers only keys of its own class whose
+# entry it names, so the heuristic errs towards listing, never towards hiding.
 # shellcheck disable=SC2016 # awk's own $ fields, not the shell's
 COVERED_AWK='
 function records(s, set,    t) {
@@ -85,6 +101,11 @@ BEGIN {
 }
 index(excluded, " " $1 " ") == 0 {
   records($2, mine)
+  # A key naming no record at all (no entry locator, no quoted slug) would be
+  # covered by ANY base advisory of its class, so it is never treated as covered.
+  n = 0
+  for (t in mine) n++
+  if (n == 0) { print; next }
   for (i = 1; i <= nb; i++) {
     if (bclass[i] != $1) continue
     all = 1
@@ -130,8 +151,14 @@ diff_keys() {
   fi
   # Byte order (LC_ALL=C, exported by the dispatch below) on both sides, as comm
   # needs; the inputs are re-sorted rather than trusted to arrive sorted.
-  new="$(comm -13 <(sort -u "$base") <(sort -u "$head") |
-    awk -F'\t' -v excluded=" $EXCLUDED_CLASSES " -v basefile="$base" "$COVERED_AWK")"
+  # The status is checked: under no `set -e`, a failing awk (or comm) would leave
+  # `new` empty and read as "no new advisories", which is the one answer a broken
+  # comparison must never give.
+  if ! new="$(comm -13 <(sort -u "$base") <(sort -u "$head") |
+    awk -F'\t' -v excluded=" $EXCLUDED_CLASSES " -v basefile="$base" "$COVERED_AWK")"; then
+    echo "advisory-delta: comparing $base with $head failed" >&2
+    exit 1
+  fi
   [ -n "$new" ] || return 0
   total="$(printf '%s\n' "$new" | wc -l | tr -d ' ')"
   noun=advisories

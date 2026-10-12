@@ -29,12 +29,16 @@
 # this pull request introduces (.github/scripts/advisory-delta.sh's `diff`, built
 # by ai-verify.yml), or a one-line NOTE that they could not be computed. Unset or
 # empty, the prompt and the message are exactly what they were without it, which
-# is how audiosilo-meta-community's copy of this script runs. Set, the list is
-# appended to the user message as a section of its own, a paragraph of the system
-# prompt asks for one finding per advisory, and the verdict is a FLAG whatever the
-# model concluded - the advisories are a deterministic signal, so routing the pull
-# request to its steward must not depend on a model obeying (advisory-delta.sh
-# says why the list exists).
+# is how a run that computed no advisory delta reads. Set, the list is appended to
+# the user message as a section of its own, a paragraph of the system prompt asks
+# for one finding per advisory, and (unless the file is only that NOTE) the
+# verdict is a FLAG whatever the model concluded - the advisories are a
+# deterministic signal, so routing the pull request to a maintainer must not
+# depend on a model obeying (advisory-delta.sh says why the list exists). The
+# exception is a series-completion bot pull request (PR_ORIGIN=sync-bot), whose
+# flag reaches an automated resolver rather than a person: there the list is
+# shown in the comment only, and the prompt, message and verdict are untouched
+# (see INFO_ADVISORIES below).
 #
 # TRANSPORT: two credentials are supported, in preference order. Both feed the
 # SAME system prompt, context handling, verdict extraction, and comment render.
@@ -119,6 +123,22 @@ ADVISORIES=""
 if [ -n "${ADVISORIES_FILE:-}" ] && [ -s "$ADVISORIES_FILE" ]; then
   ADVISORIES="$(head -c "$MAX_ADVISORY_BYTES" "$ADVISORIES_FILE" | iconv -f utf-8 -t utf-8 -c)"
 fi
+# A SERIES-COMPLETION BOT pull request is never flagged for its advisories: its
+# flag does not reach a person, it feeds audiosilo-meta-sync's automated
+# fix/drop/exclude ladder, whose resolver may only edit or remove the entries the
+# pull request added and can neither fold a series nor record a reviewed
+# rejection - so a legitimate volume that makes an existing duplicate visible
+# (the-enigma-series' 11 volumes on 2026-10-12) would be dropped or its whole
+# batch excluded, and a re-verify (the dispute) would flag it again forever. Its
+# list is shown in the comment instead, as information beside the verdict; the
+# prompt and the message stay byte for byte what they were without it.
+INFO_ADVISORIES=""
+if [ "$PR_ORIGIN" = "sync-bot" ] && [ -n "$ADVISORIES" ]; then
+  if [ "${ADVISORIES#NOTE:}" = "$ADVISORIES" ]; then
+    INFO_ADVISORIES="$ADVISORIES"
+  fi
+  ADVISORIES=""
+fi
 
 # The two halves of the prompt that depend on WHICH context shape was built.
 # Everything after them - what to check for, the cautions, the verdict contract -
@@ -145,7 +165,7 @@ RAWDIFF_HOWTO="WHAT YOU ARE READING is a unified text diff of the files under da
 
 Do not ask for the summary or for more of the diff; there is no second turn."
 
-ADVISORY_HOWTO="AFTER THE CHANGE comes a second input: the ADVISORIES THIS PULL REQUEST INTRODUCES. CI runs the repository's own checker (metacheck) over the data before and after this pull request. An advisory is a shape the checker cannot call wrong on its own evidence but that is usually a defect: two works that read as one book (identity-equal-works, normalized-duplicate-works), a series duplicating another or named for a recording rather than a series (duplicate-series, series-recording-qualifier), a person record nothing credits (orphan-person), two people differing only by a courtesy title (honorific-person-pair), a recording in another language than its work (cross-language-recording), a reading-order variant listing works its primary does not (ordering-variant-not-subset). The list holds only advisories naming a record, or a combination of records, that the checker did not name before this pull request; pairs a maintainer has already reviewed and recorded as distinct never appear in it. Its first line counts them per class; then each line is one advisory, '- [class] <family>: entry <slug>: <message>'; a last line '- ... and N more not shown' means the list was cut. EVERY LISTED ADVISORY IS A FINDING, whatever else you conclude: return \"flag\" and report each one, naming its class and the records it quotes and what would resolve it (merge the records or fold the series, or, if they are genuinely different, record a reviewed rejection in internal/audit/reviewed.json). Whether the records really are one book is a maintainer's call, not yours; your job is that it is seen. When there are more than five, one finding per class naming its records is enough. If the section is instead a NOTE saying the advisories could not be computed, report nothing about advisories."
+ADVISORY_HOWTO="AFTER THE CHANGE comes a second input: the ADVISORIES THIS PULL REQUEST INTRODUCES. CI runs the repository's own checker (metacheck) over the data before and after this pull request. An advisory is a shape the checker cannot call wrong on its own evidence but that is usually a defect: two works that read as one book (identity-equal-works, normalized-duplicate-works), a series duplicating another or named for a recording rather than a series (duplicate-series, series-recording-qualifier), a person record nothing credits (orphan-person), two people differing only by a courtesy title (honorific-person-pair), a recording in another language than its work (cross-language-recording), a reading-order variant listing works its primary does not (ordering-variant-not-subset), a series translation_of whose two sides derive one language (series-translation-same-language). The list holds only advisories naming a record, or a combination of records, that the checker did not name before this pull request; pairs a maintainer has already reviewed and recorded as distinct never appear in it. Its first line counts them per class; then each line is one advisory, '- [class] <family>: entry <slug>: <message>'; a last line '- ... and N more not shown' means the list was cut. EVERY LISTED ADVISORY IS A FINDING, whatever else you conclude: return \"flag\" and report each one, naming its class and the records it quotes and what would resolve it. For the four PAIR classes (identity-equal-works, normalized-duplicate-works, duplicate-series, honorific-person-pair) that is merging the records or folding the series, or, if they are genuinely different, a reviewed rejection in internal/audit/reviewed.json; every other class is resolved in the data itself (credit or remove the orphan, correct the language, rename or link the series) or accepted as it stands by a maintainer, and no reviewed decision withholds it. Whether the records really are what the advisory suspects is a maintainer's call, not yours; your job is that it is seen. When there are more than five, one finding per class naming its records is enough. If the section is instead a NOTE saying the advisories could not be computed, report nothing about advisories."
 
 # A variable rather than a command substitution, which would strip the blank line
 # that keeps it a paragraph; empty, the prompt is byte for byte what it was.
@@ -295,8 +315,19 @@ fi
 # ADVISORIES_FILE above); a NOTE that they could not be computed is not.
 if [ "$VERDICT" = "pass" ] && [ -n "$ADVISORIES" ] && [ "${ADVISORIES#NOTE:}" = "$ADVISORIES" ]; then
   VERDICT=flag
-  VERDICT_JSON="$(printf '%s' "$VERDICT_JSON" | jq -c --arg f "This pull request introduces metacheck advisories: $(head -n 1 <<<"$ADVISORIES") (listed in the check job's summary); a maintainer decides whether each is a real duplicate." \
-    '.verdict = "flag" | .findings = ((.findings // []) + [$f])')"
+  # The finding CARRIES the advisories (the first ten lines of the list, each
+  # already bounded by advisory-delta.sh), rather than pointing at the check
+  # job's summary: that one compares the base tip with the merge commit and this
+  # one the merge base with the head, so on a stale branch the two lists differ,
+  # and whoever acts on this flag reads this comment.
+  FORCED_FINDING="This pull request introduces metacheck advisories: $(head -n 1 <<<"$ADVISORIES") $(awk 'NR > 1 && NR <= 11 { sub(/^- /, ""); printf "%s%s", sep, $0; sep = "; " } NR > 11 { more++ } END { if (more) printf "; and %d more line(s) not shown", more }' <<<"$ADVISORIES"). A maintainer decides whether each is a real defect."
+  # A pass carrying findings that are not an array (a string, an object) still
+  # takes the forced one: they are kept as one string, and a jq that cannot
+  # amend the reply at all falls back to a verdict of the forced finding alone,
+  # rather than an empty verdict.json beside a "flagged" comment listing nothing.
+  VERDICT_JSON="$(printf '%s' "$VERDICT_JSON" | jq -c --arg f "$FORCED_FINDING" \
+    '.verdict = "flag" | .findings = (((.findings // []) | if type == "array" then . else [tostring] end) + [$f])')" ||
+    VERDICT_JSON="$(jq -cn --arg f "$FORCED_FINDING" '{verdict: "flag", findings: [$f]}')"
 fi
 
 printf '%s\n' "$VERDICT_JSON" > "$VERDICT_OUT"
@@ -312,6 +343,21 @@ printf '%s\n' "$VERDICT_JSON" > "$VERDICT_OUT"
     echo "Claude flagged the following for a maintainer to check (advisory - not a merge block):"
     echo
     printf '%s' "$VERDICT_JSON" | jq -r '.findings[]? | "- " + .'
+  fi
+  if [ -n "$INFO_ADVISORIES" ]; then
+    # A fence longer than any backtick run in the list, which quotes titles.
+    fence='```'
+    while grep -qF -- "$fence" <<<"$INFO_ADVISORIES"; do
+      fence="$fence\`"
+    done
+    echo
+    echo "#### Advisories this pull request introduces"
+    echo
+    echo "Information for a maintainer, not a finding: a series-completion pull request is not flagged for them."
+    echo
+    echo "$fence"
+    printf '%s\n' "$INFO_ADVISORIES"
+    echo "$fence"
   fi
 } > "$COMMENT_OUT"
 

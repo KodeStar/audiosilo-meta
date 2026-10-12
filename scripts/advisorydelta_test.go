@@ -19,7 +19,9 @@ import (
 func advisoryDelta(t *testing.T, dir string, env []string, args ...string) (string, int) {
 	t.Helper()
 	requireTools(t, "bash", "git", "tar", "iconv")
-	return runScript(t, dir, "advisory-delta.sh", []string{"MAX_LINES", "MAX_WIDTH", "PROFILE"}, env, args...)
+	// STATUS and NOKEYS steer TestAdvisoryDeltaKeys' stub metacheck, so an
+	// inherited value of either must not reach it.
+	return runScript(t, dir, "advisory-delta.sh", []string{"MAX_LINES", "MAX_WIDTH", "PROFILE", "STATUS", "NOKEYS"}, env, args...)
 }
 
 // keysFile writes lines (one key each) to a temp file and returns its path.
@@ -86,6 +88,23 @@ func TestAdvisoryDeltaDiff(t *testing.T) {
 			head: []string{"cross-language-recording\tworks: entry x: recording \"r\" is in \"pt\" but its work is in \"en\": a translation is a different work"},
 			want: "1 new advisory (cross-language-recording 1):\n- [cross-language-recording] works: entry x: recording \"r\" is in \"pt\" but its work is in \"en\": a translation is a different work\n",
 		},
+		{
+			// Quoted tokens that are not records (language codes) are one more name a
+			// base advisory must hold: the same recording of the same work in a NEW
+			// language pair is listed, not covered by the old pair.
+			name: "a quoted language code makes a key harder to cover, never easier",
+			base: []string{"cross-language-recording\tworks: entry x: recording \"r\" is in \"pt\" but its work is in \"en\": a translation is a different work"},
+			head: []string{"cross-language-recording\tworks: entry x: recording \"r\" is in \"de\" but its work is in \"en\": a translation is a different work"},
+			want: "1 new advisory (cross-language-recording 1):\n- [cross-language-recording] works: entry x: recording \"r\" is in \"de\" but its work is in \"en\": a translation is a different work\n",
+		},
+		{
+			// A key naming no record (no entry locator, nothing slug-shaped quoted)
+			// would be a subset of every same-class base advisory: it is listed.
+			name: "a key naming no record is never covered",
+			base: []string{orphanP},
+			head: []string{orphanP, "orphan-person\tpeople: an orphan record with no locator"},
+			want: "1 new advisory (orphan-person 1):\n- [orphan-person] people: an orphan record with no locator\n",
+		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
@@ -127,6 +146,21 @@ func TestAdvisoryDeltaDiffNeedsBothFiles(t *testing.T) {
 	}
 	if _, code := advisoryDelta(t, "", nil, "nonsense"); code != 2 {
 		t.Errorf("an unknown command: exit %d, want 2", code)
+	}
+}
+
+// A comparison that fails is a failure, never an empty "no new advisories": with
+// an awk that cannot run, the head's new orphan must not read as nothing new.
+func TestAdvisoryDeltaDiffFailsLoudly(t *testing.T) {
+	t.Parallel()
+	bin := t.TempDir()
+	if err := os.WriteFile(filepath.Join(bin, "awk"), []byte("#!/bin/sh\necho 'awk: broken' >&2\nexit 2\n"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	got, code := advisoryDelta(t, "", []string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH")},
+		"diff", keysFile(t), keysFile(t, orphanQ))
+	if code == 0 || got != "" {
+		t.Errorf("a failed comparison: exit %d, output %q; want a non-zero exit and no list", code, got)
 	}
 }
 
@@ -201,7 +235,7 @@ func TestAdvisoryDeltaSummary(t *testing.T) {
 }
 
 // ai-verify.sh with ADVISORIES_FILE: unset or empty, neither the system prompt nor
-// the message mentions advisories (audiosilo-meta-community runs it that way); set,
+// the message mentions advisories (a run that computed no advisory delta); set,
 // both do, the list arriving as its own section after the change.
 func TestAIVerifyAdvisorySection(t *testing.T) {
 	t.Parallel()
@@ -211,7 +245,8 @@ func TestAIVerifyAdvisorySection(t *testing.T) {
 	if err := os.MkdirAll(bin, 0o755); err != nil {
 		t.Fatal(err)
 	}
-	// A stub claude CLI recording the system prompt and stdin, answering a pass.
+	// A stub claude CLI recording the system prompt and stdin, answering a pass -
+	// or, with REPLY_FILE set, that file's contents.
 	if err := os.WriteFile(filepath.Join(bin, "claude"), []byte(`#!/usr/bin/env bash
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -220,6 +255,7 @@ while [ $# -gt 0 ]; do
   esac
 done
 cat > "$OUTDIR/stdin.txt"
+if [ -n "${REPLY_FILE:-}" ]; then cat "$REPLY_FILE"; exit 0; fi
 printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 `), 0o755); err != nil {
 		t.Fatal(err)
@@ -237,14 +273,14 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 		t.Fatal(err)
 	}
 	var lastOut string
-	run := func(advisoryFile string) (system, stdin string) {
+	run := func(advisoryFile string, env ...string) (system, stdin string) {
 		t.Helper()
 		out := t.TempDir()
 		lastOut = out
 		cmd := exec.Command("bash", abs(t, filepath.Join("..", ".github", "scripts", "ai-verify.sh")),
 			context, filepath.Join(out, "verdict.json"), filepath.Join(out, "comment.md"))
-		cmd.Env = []string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
-			"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out}
+		cmd.Env = append([]string{"PATH=" + bin + string(os.PathListSeparator) + os.Getenv("PATH"), "HOME=" + out,
+			"CLAUDE_CODE_OAUTH_TOKEN=test", "OUTDIR=" + out}, env...)
 		if advisoryFile != "" {
 			cmd.Env = append(cmd.Env, "ADVISORIES_FILE="+advisoryFile)
 		}
@@ -272,8 +308,8 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 	}
 	system, stdin := run(advisories)
 	if verdict := readFile(t, filepath.Join(lastOut, "verdict.json")); !strings.Contains(verdict, `"verdict":"flag"`) ||
-		!strings.Contains(verdict, "introduces metacheck advisories: 1 new advisory") {
-		t.Errorf("a pass beside introduced advisories must become a flag: %s", verdict)
+		!strings.Contains(verdict, "introduces metacheck advisories: 1 new advisory (orphan-person 1): [orphan-person] people: entry p: an orphan record.") {
+		t.Errorf("a pass beside introduced advisories must become a flag carrying them: %s", verdict)
 	}
 	if !strings.Contains(system, "EVERY LISTED ADVISORY IS A FINDING") {
 		t.Error("with advisories the system prompt does not say they are findings")
@@ -281,5 +317,38 @@ printf '%s' '{"result":"{\"verdict\":\"pass\",\"findings\":[]}"}'
 	if !strings.HasPrefix(stdin, plainStdin) || !strings.Contains(stdin, "===== ADVISORIES THIS PULL REQUEST INTRODUCES") ||
 		!strings.HasSuffix(strings.TrimSpace(stdin), "an orphan record") {
 		t.Errorf("with advisories the message is:\n%s", stdin)
+	}
+
+	// A pass whose findings are not an array still becomes a flag that lists
+	// them and the forced finding, never an empty verdict beside a bare comment.
+	reply := filepath.Join(dir, "reply.json")
+	if err := os.WriteFile(reply, []byte(`{"result":"{\"verdict\":\"pass\",\"findings\":\"none\"}"}`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	run(advisories, "REPLY_FILE="+reply)
+	verdict := readFile(t, filepath.Join(lastOut, "verdict.json"))
+	comment := readFile(t, filepath.Join(lastOut, "comment.md"))
+	if !strings.Contains(verdict, `"verdict":"flag"`) || !strings.Contains(verdict, `"findings":["none","This pull request`) ||
+		!strings.Contains(comment, "- This pull request introduces metacheck advisories") {
+		t.Errorf("a pass with string findings beside advisories:\nverdict %s\ncomment %s", verdict, comment)
+	}
+
+	// A series-completion bot pull request is never flagged for its advisories
+	// (its flag feeds an automated resolver, not a person): the prompt and the
+	// message are what they are without the list, the verdict stays the model's,
+	// and the list is shown in the comment as information.
+	syncSystem, syncStdin := run("", "PR_ORIGIN=sync-bot")
+	if s, in := run(advisories, "PR_ORIGIN=sync-bot"); s != syncSystem || in != syncStdin {
+		t.Error("a sync-bot pull request's advisories changed the prompt or the message")
+	}
+	verdict = readFile(t, filepath.Join(lastOut, "verdict.json"))
+	comment = readFile(t, filepath.Join(lastOut, "comment.md"))
+	if !strings.Contains(verdict, `"verdict":"pass"`) || !strings.Contains(comment, "#### Advisories this pull request introduces") ||
+		!strings.Contains(comment, "```\n1 new advisory (orphan-person 1):\n- [orphan-person] people: entry p: an orphan record\n```") {
+		t.Errorf("a sync-bot pass beside advisories:\nverdict %s\ncomment %s", verdict, comment)
+	}
+	run(note, "PR_ORIGIN=sync-bot")
+	if comment := readFile(t, filepath.Join(lastOut, "comment.md")); strings.Contains(comment, "Advisories") {
+		t.Errorf("a sync-bot NOTE must add no advisory section: %s", comment)
 	}
 }

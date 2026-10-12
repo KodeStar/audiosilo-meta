@@ -35,14 +35,15 @@ type LoadOptions struct {
 	// Distinct are the reviewed "not one record" decisions the duplicate advisories
 	// honour: a pair one of them covers is neither reported nor counted by
 	// identity-equal-works, normalized-duplicate-works (works), duplicate-series
-	// (series) or honorific-person-pair (people), and Result.Suppressed counts every finding so withheld. Problems are
-	// never touched - a review is about a census, not about what is valid.
+	// (series) or honorific-person-pair (people), and Result.Suppressed counts every pair
+	// so withheld. Problems are never touched - a review is about a census, not about
+	// what is valid.
 	Distinct []ReviewedDistinct
 }
 
 // reviewedPairs is the load's resolved form of LoadOptions.Distinct: every pair of
-// live ids a decision covers, per namespace, plus the count of advisory findings it
-// has withheld. Empty for a load given no decisions.
+// live ids a decision covers, per namespace, plus the count of pairs it has
+// withheld. Empty for a load given no decisions.
 type reviewedPairs struct {
 	pairs      map[model.RedirectKind]map[[2]string]bool
 	suppressed int
@@ -77,8 +78,11 @@ func newReviewedPairs(ds []ReviewedDistinct, reds model.Redirects) *reviewedPair
 
 // withheld reports whether a reviewed decision recorded a and b, of namespace kind,
 // as distinct, counting it when it did. A rule asks it LAST, after every rule of its
-// own has passed the pair, so the count is exactly the findings a review took out of
-// the census rather than every pair it happens to name.
+// own has passed the pair, so the count is exactly the pairs a review took out of the
+// census rather than every pair it happens to name. A pair class reports one finding
+// per pair, so there the count is findings; a GROUP class (a normalized-duplicate
+// group, a duplicate series' supersets) counts each pair it drops, the group still
+// being reported for whatever pairs remain.
 func (r *reviewedPairs) withheld(kind model.RedirectKind, a, b string) bool {
 	if b < a {
 		a, b = b, a

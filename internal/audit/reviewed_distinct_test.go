@@ -123,10 +123,42 @@ func TestReviewedMergePeopleRejection(t *testing.T) {
 	}
 
 	rep := runFixtureRejecting(t, map[string]string{
-		"people/ja/jane-doe.json":         testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
-		"works/ho/hollow-crown/work.json": testpack.WorkJSON(t, "hollow-crown", "Hollow Crown"),
+		"people/ja/jane-doe.json":           testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"people/ri/richard-burton.json":     testpack.PersonJSON(t, "richard-burton", "Richard Burton"),
+		"people/si/sir-richard-burton.json": testpack.PersonJSON(t, "sir-richard-burton", "Sir Richard Burton"),
+		"works/ho/hollow-crown/work.json":   testpack.WorkJSON(t, "hollow-crown", "Hollow Crown"),
 	}, rs[0])
 	if all := rep.Reviewed.All; len(all) != 1 || all[0].Status != statusCensus {
 		t.Errorf("tally = %+v, want the person rejection census-only", rep.Reviewed.All)
+	}
+}
+
+// A merge rejection naming a record that has since been DELETED (no redirect) names
+// no pair the census could withhold either, so it is STALE rather than census-only.
+func TestReviewedMergeRejectionNamingADeletedRecordIsStale(t *testing.T) {
+	rejection := review(Proposal{Op: OpMergeWorks, Target: "hollow-crown", Others: []string{"gone-crown"}}, "reject")
+	rep := runFixtureRejecting(t, map[string]string{
+		"people/ja/jane-doe.json":         testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"works/ho/hollow-crown/work.json": testpack.WorkJSON(t, "hollow-crown", "Hollow Crown"),
+	}, rejection)
+	if all := rep.Reviewed.All; len(all) != 1 || all[0].Status != statusStale || !strings.Contains(all[0].Why, "deleted") {
+		t.Errorf("tally = %+v, want the rejection naming a deleted work STALE", rep.Reviewed.All)
+	}
+}
+
+// A merge rejection whose records have since been merged onto one survivor names no
+// pair the census could withhold, so it is STALE - listed for review - rather than
+// census-only forever.
+func TestReviewedMergeRejectionCollapsedOntoOneRecordIsStale(t *testing.T) {
+	rejection := review(Proposal{Op: OpMergeWorks, Target: "hollow-crown", Others: []string{"hollow-crown-old"}}, "reject")
+	rep := runFixtureRejectingWith(t, map[string]string{
+		"people/ja/jane-doe.json":         testpack.PersonJSON(t, "jane-doe", "Jane Doe"),
+		"works/ho/hollow-crown/work.json": testpack.WorkJSON(t, "hollow-crown", "Hollow Crown"),
+	}, `{"people":{},"series":{},"works":{"hollow-crown-old":"hollow-crown"}}`, rejection)
+	if all := rep.Reviewed.All; len(all) != 1 || all[0].Status != statusStale || !strings.Contains(all[0].Why, "hollow-crown") {
+		t.Errorf("tally = %+v, want the collapsed rejection STALE naming its survivor", rep.Reviewed.All)
+	}
+	if len(distinctOf([]reviewedDecision{rejection})) != 1 {
+		t.Error("the census reader must still hand the decision over; pkg/check compacts it to nothing")
 	}
 }
