@@ -31,6 +31,16 @@
           "imported_at": "2026-08-02",
           "ref": "B002VA3NS8",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0LYRU",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V8KTOQ",
+          "type": "libex-import"
         }
       ],
       "works": [
@@ -41,6 +51,10 @@
         {
           "position": "1",
           "work": "star-wars-the-clone-wars-no-prisoners"
+        },
+        {
+          "position": "3",
+          "work": "star-wars-the-clone-wars"
         }
       ]
     },
@@ -12383,28 +12397,6 @@
         {
           "position": "1",
           "work": "call-of-the-goddess"
-        }
-      ]
-    },
-    "stormlight-archive": {
-      "id": "stormlight-archive",
-      "license": "CC0-1.0",
-      "name": "Stormlight Archive",
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B0B75LPW2K",
-          "type": "audiosilo-books-import"
-        }
-      ],
-      "works": [
-        {
-          "position": "3.5",
-          "work": "dawnshard"
-        },
-        {
-          "position": "5",
-          "work": "wind-and-truth"
         }
       ]
     },
