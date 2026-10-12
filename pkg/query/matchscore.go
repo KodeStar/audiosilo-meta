@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"slices"
 	"strings"
+	"unicode"
 	"unicode/utf8"
 
 	"golang.org/x/text/unicode/norm"
@@ -341,6 +342,85 @@ func volumeOf(terms []string, series []termForm) (string, bool) {
 		return n, true
 	}
 	return "", false
+}
+
+// titleVolume reads the volume a title states right after the series' name, as
+// many publishers number a series' books: "He Who Fights with Monsters 4: A
+// LitRPG Adventure", "The Expanse, Book 3", "Discworld #8: Guards! Guards!". It
+// mirrors audiosilo-server's metadata.PositionInTitle and is as narrow, since
+// the number becomes the request's position:
+//
+//   - the title starts with the name (letters and digits compared, case and
+//     accents aside), which ends where a word does ("Catch" in "Catcher 3" gives
+//     none);
+//   - the number is set off by a space or a comma ("Catch-22" gives none),
+//     maybe after "Book", "Vol.", "Volume", "Part", "No." or "#", has one to
+//     three digits and maybe a decimal part, and is above 0 ("Monsters 1999"
+//     gives none);
+//   - the title ends after it or a separator follows (":", a spaced "-", a
+//     dash, "(", "[", ",", ";", "|"), so "Jack Reacher 61 Hours", "4th Edition"
+//     and "Bodyswaps 4-Pack" give none, and a dash or comma then another
+//     number is a range ("Dork Diaries 1 - 12"), which gives none. The hyphen
+//     glued to a word is narrower than the server's rule: measured over the
+//     catalogue's own titles it was a pack or bundle size ("4-Pack", "3-in-1",
+//     "12-book Collection") every time, never a volume.
+func titleVolume(title, series string) (string, bool) {
+	rest, ok := afterSeriesName(title, series)
+	if !ok {
+		return "", false
+	}
+	m := titleVolumeRE.FindStringSubmatch(rest)
+	if m == nil || titleRangeRE.MatchString(rest[len(m[0])-len(m[2]):]) || strings.Trim(m[1], "0.") == "" {
+		return "", false
+	}
+	return positionToken(m[1])
+}
+
+// titleVolumeRE is the number after a series' name (titleVolume): m[1] the
+// number, m[2] the end or the separator after it.
+var titleVolumeRE = regexp.MustCompile(`^(?:\s*,\s*|\s+)(?i:(?:book|vol(?:ume)?\.?|part|no\.)\s*)?#?(\d{1,3}(?:\.\d+)?)\s*($|-(?:\s|$)|[:(\[,;|\x{2013}\x{2014}])`)
+
+// titleRangeRE is a separator that makes the number the start of a range: a
+// dash or a comma, then another number.
+var titleRangeRE = regexp.MustCompile(`^[-,\x{2013}\x{2014}]\s*\d`)
+
+// afterSeriesName is what follows the series' name at the start of title, the
+// two compared by their letters and digits alone (seriesKey), when the name
+// ends where a word does.
+func afterSeriesName(title, series string) (string, bool) {
+	want := seriesKey(series)
+	if want == "" {
+		return "", false
+	}
+	var got strings.Builder
+	for i, r := range title {
+		got.WriteString(seriesKey(string(r)))
+		if !strings.HasPrefix(want, got.String()) {
+			return "", false
+		}
+		if got.Len() == len(want) {
+			// Marks combining with the name's last letter are part of it (a
+			// decomposed "é" is "e" + U+0301).
+			rest := strings.TrimLeftFunc(title[i+utf8.RuneLen(r):], model.IsCombiningMark)
+			if next, _ := utf8.DecodeRuneInString(rest); unicode.IsLetter(next) || unicode.IsNumber(next) {
+				return "", false
+			}
+			return rest, true
+		}
+	}
+	return "", false
+}
+
+// seriesKey is s's letters and digits alone, lowercased and without accents:
+// "He Who Fights WIth Monsters" and "He Who Fights with Monsters" share it.
+func seriesKey(s string) string {
+	var b strings.Builder
+	for _, r := range stripMarks(s) {
+		if unicode.IsLetter(r) || unicode.IsNumber(r) {
+			b.WriteRune(unicode.ToLower(r))
+		}
+	}
+	return b.String()
 }
 
 // filter returns the terms drop does not reject.

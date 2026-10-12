@@ -211,6 +211,124 @@ func TestMatchExamples(t *testing.T) {
 	}
 }
 
+// hwfwmCatalog is the He Who Fights with Monsters case, titles and credits as
+// the catalogue holds them: volume 1 named after the series, volumes 2-10 a
+// GENERIC title (the series' name and the number), 11-13 the name, the number
+// and a subtitle.
+func hwfwmCatalog() *model.Catalog {
+	cat := &model.Catalog{
+		People: []*model.Person{
+			{ID: "shirtaloon", Name: "Shirtaloon", License: "CC0-1.0"},
+			{ID: "travis-deverell", Name: "Travis Deverell", License: "CC0-1.0"},
+			{ID: "heath-miller", Name: "Heath Miller", License: "CC0-1.0"},
+		},
+	}
+	series := &model.Series{ID: "he-who-fights-with-monsters", Name: "He Who Fights with Monsters", License: "CC0-1.0"}
+	for _, m := range []struct{ id, title, position string }{
+		{"he-who-fights-with-monsters-a-litrpg-adventure", "He Who Fights with Monsters: A LitRPG Adventure", "1"},
+		{"he-who-fights-with-monsters-3", "He Who Fights with Monsters 3", "3"},
+		{"he-who-fights-with-monsters-4", "He Who Fights with Monsters 4", "4"},
+		{"he-who-fights-with-monsters-5", "He Who Fights with Monsters 5", "5"},
+		{"he-who-fights-with-monsters-13-a-litrpg-adventure", "He Who Fights with Monsters 13: A LitRPG Adventure", "13"},
+	} {
+		cat.Works = append(cat.Works, &model.Work{
+			ID: m.id, Title: m.title, Language: "en", Authors: []string{"shirtaloon", "travis-deverell"}, License: "CC0-1.0",
+			Recordings: []*model.Recording{{
+				ID: m.id + "-rec", Work: m.id, Language: "en", RuntimeMin: 1300, License: "CC0-1.0",
+				Narrators: []string{"heath-miller"},
+			}},
+		})
+		series.Works = append(series.Works, model.SeriesWork{Work: m.id, Position: m.position})
+	}
+	cat.Series = []*model.Series{series}
+	return cat
+}
+
+// matchScores is each result's score by work id.
+func matchScores(res []map[string]any) map[string]float64 {
+	out := map[string]float64{}
+	for _, r := range res {
+		out[r["id"].(string)] = r["score"].(float64)
+	}
+	return out
+}
+
+// TestMatchStatedVolumeBeatsItsNeighbours is the He Who Fights with Monsters
+// golden case: a bulk match found the right volume at 91 and held it for review
+// because the volume next to it scored 86. The folder "FWM04 - He Who Fights
+// With Monsters - Book 4" states volume 4 (cutNumbering) and leaves the guess
+// "He Who Fights with Monsters", the series' name alone, which is contained in
+// every generic volume title and kept them all at title 0.93 - while volume 4's
+// generic title counted only genericTitleValue. Read as what it is
+// (seriesVerdict's named), it no longer outvotes the stated volume, and volume
+// 4 keeps what the tag's title reaches: here volume 4 scores 92 and volumes 3,
+// 5 and 13 score 22 (before: 90 against 84 and 81). The tag's own title states
+// the volume too ("He Who Fights with Monsters 4: ...", titleVolume), so the
+// tag alone, with no position and no folder, ranks the same way (before: 92
+// against 67, on the tag's number alone).
+func TestMatchStatedVolumeBeatsItsNeighbours(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, hwfwmCatalog())
+	const tag = "He Who Fights with Monsters 4: A LitRPG Adventure (He Who Fights with Monsters, Book 4)"
+	for _, tc := range []struct {
+		name   string
+		params url.Values
+	}{
+		{"folder and tag", url.Values{
+			"title":  {"FWM04 - He Who Fights With Monsters - Book 4", tag},
+			"author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
+		}},
+		{"the tag's title alone states the volume", url.Values{
+			"title": {tag}, "author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
+		}},
+		{"the bare series name beside the tag", url.Values{
+			"title":  {"He Who Fights WIth Monsters", tag},
+			"author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
+		}},
+		{"a stated position", url.Values{
+			"title":  {"FWM04 - He Who Fights With Monsters - Book 4", tag},
+			"author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"}, "position": {"4"},
+		}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			res := matchJSON(t, ts.URL, tc.params)
+			if len(res) == 0 || res[0]["id"] != "he-who-fights-with-monsters-4" {
+				t.Fatalf("top = %v, want he-who-fights-with-monsters-4", matchIDs(res))
+			}
+			scores := matchScores(res)
+			if got := scores["he-who-fights-with-monsters-4"]; got != 92 {
+				t.Errorf("volume 4 scores %v, want 92 (reasons %v)", got, res[0]["reasons"])
+			}
+			for _, other := range []string{"he-who-fights-with-monsters-3", "he-who-fights-with-monsters-5", "he-who-fights-with-monsters-13-a-litrpg-adventure"} {
+				if got, ok := scores[other]; ok && got != 22 {
+					t.Errorf("%s scores %v, want 22 (or absent)", other, got)
+				}
+			}
+		})
+	}
+}
+
+// TestMatchWithoutAVolumeAppliesNoVolumeRule: a request naming no volume - the
+// series' name as the title, no number anywhere - judges every volume by name
+// alone, exactly as before titleVolume and seriesVerdict's named existed: the
+// generic volumes tie at 95 and the one titled after the series leads.
+func TestMatchWithoutAVolumeAppliesNoVolumeRule(t *testing.T) {
+	_, ts := newTestServerForCatalog(t, hwfwmCatalog())
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"He Who Fights with Monsters"}, "author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
+	})
+	scores := matchScores(res)
+	for _, id := range []string{"he-who-fights-with-monsters-3", "he-who-fights-with-monsters-4", "he-who-fights-with-monsters-5"} {
+		if scores[id] != 95 {
+			t.Errorf("%s scores %v, want 95: %v", id, scores[id], scores)
+		}
+	}
+	for _, r := range res {
+		if s := r["reasons"].(map[string]any)["series"]; s != string(seriesName) {
+			t.Errorf("%v: series %v, want %q (no volume was stated)", r["id"], s, seriesName)
+		}
+	}
+}
+
 func matchIDs(res []map[string]any) []any {
 	out := make([]any, len(res))
 	for i, r := range res {
@@ -574,6 +692,11 @@ func TestReadFactsPosition(t *testing.T) {
 		{matchRequest{titles: []string{"Dune", "02 - Dune Messiah"}}, "02", nil},
 		{matchRequest{titles: []string{"The Primal Hunter 8"}, series: []string{"Primal Hunter"}}, "8", []string{}},
 		{matchRequest{titles: []string{"The Primal Hunter"}, series: []string{"Primal Hunter"}}, "", []string{"the primal hunter"}},
+		// The series' name and a number, then a subtitle (titleVolume).
+		{matchRequest{titles: []string{"He Who Fights with Monsters 4: A LitRPG Adventure"}, series: []string{"He Who Fights With Monsters"}}, "4", nil},
+		// A number tied to the series' name beats the bare prefix "7" a series
+		// named "7 Days" leaves.
+		{matchRequest{titles: []string{"7 Days: Book 1"}, series: []string{"7 Days"}}, "1", nil},
 	} {
 		f := readFacts(tc.req)
 		var titles []string
@@ -583,6 +706,18 @@ func TestReadFactsPosition(t *testing.T) {
 		if f.position != tc.want || (tc.wantTitles != nil && strings.Join(titles, "|") != strings.Join(tc.wantTitles, "|")) {
 			t.Errorf("readFacts(%+v): position %q, titles %q; want %q, %q", tc.req, f.position, titles, tc.want, tc.wantTitles)
 		}
+	}
+	// A guess that is only the series' name is marked so: it says nothing
+	// about which volume (seriesVerdict).
+	f := readFacts(matchRequest{titles: []string{"FWM04 - He Who Fights With Monsters - Book 4"}, series: []string{"He Who Fights WIth Monsters"}})
+	var marked []string
+	for _, g := range f.titles {
+		if g.seriesName {
+			marked = append(marked, g.joined)
+		}
+	}
+	if f.position != "04" || !slices.Equal(marked, []string{"he who fights with monsters"}) {
+		t.Errorf("FWM04: position %q, series-name guesses %q; want 04, [he who fights with monsters]", f.position, marked)
 	}
 	// A series folder's own numbering is not the series' name.
 	if f := readFacts(matchRequest{series: []string{"03 - Tawny Man"}}); !slices.Equal(f.seriesNames, []string{"Tawny Man"}) {
