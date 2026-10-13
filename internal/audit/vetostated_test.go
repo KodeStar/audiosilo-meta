@@ -174,10 +174,12 @@ func TestWorkDupVetoesTwoCollectionsOfDifferentSelections(t *testing.T) {
 
 // ...while two records of ONE collection, within the importer's same-production
 // tolerance, still merge.
+// The slugs are not the real Nietzsche pair: reviewed.json rejects that pair as two
+// selections, and an embedded rejection would withhold this fixture's merge too.
 func TestWorkDupKeepsTwoRecordsOfOneCollection(t *testing.T) {
 	fd := statedPair(t, []statedWork{
-		{"friedrich-nietzsche-collection", "Friedrich Nietzsche Collection", "ann-reader", 2406},
-		{"the-friedrich-nietzsche-collection", "The Friedrich Nietzsche Collection", "bob-reader", 2450},
+		{"arthur-schopenhauer-collection", "Arthur Schopenhauer Collection", "ann-reader", 2406},
+		{"the-arthur-schopenhauer-collection", "The Arthur Schopenhauer Collection", "bob-reader", 2450},
 	}, nil)
 	wantMechanical(t, fd)
 }
