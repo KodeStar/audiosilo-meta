@@ -4532,9 +4532,17 @@
     "la-isla-de-las-tormentas": {
       "added_at": "2026-07-29",
       "authors": [
-        "ken-follett",
-        "mirta-arlt",
-        "ignacio-gomez-calvo"
+        "ken-follett"
+      ],
+      "credits": [
+        {
+          "person": "ignacio-gomez-calvo",
+          "role": "translator"
+        },
+        {
+          "person": "mirta-arlt",
+          "role": "translator"
+        }
       ],
       "genres": [
         "espionage",
@@ -5687,146 +5695,25 @@
     "la-isla-del-tesoro": {
       "added_at": "2026-07-29",
       "authors": [
-        "robert-louis-stevenson",
-        "fernando-refoyo-romero"
+        "robert-louis-stevenson"
       ],
       "credits": [
         {
           "person": "fernando-refoyo-romero",
+          "role": "translator"
+        },
+        {
+          "person": "jordi-beltran",
           "role": "translator"
         }
       ],
       "genres": [
         "action-adventure",
         "childrens",
-        "classics"
-      ],
-      "id": "la-isla-del-tesoro",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "fonolibro-2008": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA9KFI",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2779336,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 2837989,
-              "start_ms": 2779336,
-              "title": "Capítulo 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91KsffK5RaL.jpg",
-          "id": "fonolibro-2008",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "fonolibro"
-          ],
-          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
-          "release_date": "2008-02-06",
-          "runtime_min": 93,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA9KFI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-isla-del-tesoro"
-        },
-        "zack-gomez-rolls-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0FBRZCN21",
-              "region": "us"
-            },
-            {
-              "asin": "B0FBS2K2TR",
-              "region": "es"
-            },
-            {
-              "asin": "B0FBS19GDM",
-              "region": "de"
-            },
-            {
-              "asin": "B0FBS3LTPD",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91XHMNSDuYL.jpg",
-          "id": "zack-gomez-rolls-2025",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "zack-gomez-rolls"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2025-08-25",
-          "runtime_min": 487,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0FBRZCN21",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0FBS2K2TR",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0FBS19GDM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0FBS3LTPD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-isla-del-tesoro"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0FBRZCN21",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA9KFI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La isla del tesoro"
-    },
-    "la-isla-del-tesoro-robert-louis-stevenson": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-louis-stevenson",
-        "jordi-beltran"
-      ],
-      "genres": [
-        "action-adventure",
         "classics",
         "literary-fiction"
       ],
-      "id": "la-isla-del-tesoro-robert-louis-stevenson",
+      "id": "la-isla-del-tesoro",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -6105,10 +5992,115 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-isla-del-tesoro-robert-louis-stevenson"
+          "work": "la-isla-del-tesoro"
+        },
+        "fonolibro-2008": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA9KFI",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2779336,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 2837989,
+              "start_ms": 2779336,
+              "title": "Capítulo 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KsffK5RaL.jpg",
+          "id": "fonolibro-2008",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fonolibro"
+          ],
+          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
+          "release_date": "2008-02-06",
+          "runtime_min": 93,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA9KFI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-isla-del-tesoro"
+        },
+        "zack-gomez-rolls-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0FBRZCN21",
+              "region": "us"
+            },
+            {
+              "asin": "B0FBS2K2TR",
+              "region": "es"
+            },
+            {
+              "asin": "B0FBS19GDM",
+              "region": "de"
+            },
+            {
+              "asin": "B0FBS3LTPD",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XHMNSDuYL.jpg",
+          "id": "zack-gomez-rolls-2025",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "zack-gomez-rolls"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2025-08-25",
+          "runtime_min": 487,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FBRZCN21",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0FBS2K2TR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FBS19GDM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FBS3LTPD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-isla-del-tesoro"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0FBRZCN21",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA9KFI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09XFTGQWQ",
@@ -13715,13 +13707,15 @@
     "la-letra-escarlata-the-scarlet-letter": {
       "added_at": "2026-07-29",
       "authors": [
-        "nathaniel-hawthorne",
-        "pilar-serrano",
-        "jose-donoso"
+        "nathaniel-hawthorne"
       ],
       "credits": [
         {
           "person": "jose-donoso",
+          "role": "translator"
+        },
+        {
+          "person": "pilar-serrano",
           "role": "translator"
         }
       ],
