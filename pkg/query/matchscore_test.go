@@ -1,6 +1,8 @@
 package query
 
 import (
+	"maps"
+	"regexp"
 	"slices"
 	"strings"
 	"testing"
@@ -271,6 +273,87 @@ func TestSplitVolumeAndVolumeOf(t *testing.T) {
 	}
 	if _, ok := volumeOf(matchTerms("Catch 22"), series); ok {
 		t.Error("volumeOf read another name's number as the series' volume")
+	}
+}
+
+// TestTitleVolume: the titles a series' books carry their number in, mirroring
+// audiosilo-server's metadata.PositionInTitle cases (the He Who Fights with
+// Monsters golden case, tagged "He Who Fights With Monsters"), and the ones that
+// must give none: a name that is the start of a word or of a title with a
+// number of its own, a year, an ordinal, a range, a pack size, a number not
+// right after the name. The name is judged without its stopwords, as volumeOf
+// judges one, so "Expanse 3" is volume 3 of "The Expanse".
+func TestTitleVolume(t *testing.T) {
+	const hw = "He Who Fights With Monsters"
+	for _, tc := range []struct{ title, series, want string }{
+		{"He Who Fights with Monsters 4: A LitRPG Adventure (He Who Fights with Monsters, Book 4)", hw, "4"},
+		{"He Who Fights with Monsters 10 - A LitRPG Adventure (He Who Fights with Monsters, Book 10)", hw, "10"},
+		{"He Who Fights with Monsters 13: A LitRPG Adventure: He Who Fights with Monsters, Book 13", hw, "13"},
+		{"He Who Fights with Monsters 6", hw, "6"},
+		{"He Who Fights WIth Monsters 2: A LitRPG Adventure", hw, "2"},
+		{"The Expanse, Book 3", "The Expanse", "3"},
+		{"The Expanse Vol. 2 - Caliban's War", "The Expanse", "2"},
+		{"Discworld #8: Guards! Guards!", "Discworld", "8"},
+		{"Thé Expanse 7 (Unabridged)", "the expanse", "7"},
+		{"Cafe\u0301 3", "Café", "3"}, // a decomposed title (NFD, a macOS file name)
+		{"Expanse 2.5: The Churn", "Expanse", "2.5"},
+		{"Bobiverse 4 \u2013 Heaven's River", "Bobiverse", "4"},
+		{"Bobiverse 5 [Dramatized]", "Bobiverse", "5"},
+		{"Expeditionary Force 06", "Expeditionary Force", "06"},
+		{"Spacers, Part 2", "Spacers", "2"},
+		{"Expanse 3: Abaddon's Gate", "The Expanse", "3"},
+		{"Unintended Cultivator, Volume 2", "Unintended Cultivator", "2"},
+		{"Artemis Fowl 1 - Artemis Fowl", "Artemis Fowl", "1"},
+
+		// None.
+		{"He Who Fights with Monsters: A LitRPG Adventure", hw, ""}, // book 1, unnumbered
+		{"He Who Fights with Monsters", hw, ""},
+		{"FWM04 - He Who Fights With Monsters - Book 4", hw, ""}, // cutNumbering reads that one
+		{"Catch-22", "Catch", ""},
+		{"Catcher 3", "Catch", ""},
+		{"2001: A Space Odyssey", "Space Odyssey", ""},
+		{"Monsters 1999", "Monsters", ""},
+		{"Monsters 4th Edition", "Monsters", ""},
+		{"Monsters of 4 Kingdoms", "Monsters", ""},
+		{"Monsters 0", "Monsters", ""},
+		{"Jack Reacher 61 Hours", "Jack Reacher", ""},
+		{"Dork Diaries 1-12", "Dork Diaries", ""},
+		{"Dork Diaries 1 - 12", "Dork Diaries", ""},
+		{"Dork Diaries 1 \u2013 3", "Dork Diaries", ""},
+		{"Saga 1, 2 and 3", "Saga", ""},
+		{"Bodyswaps 4-Pack: Books 1-4", "Bodyswaps", ""},
+		{"Badass Black Affirmations 3-in-1 Value Collection", "Badass Black Affirmations", ""},
+		{"Monsters 4 A LitRPG Adventure", "Monsters", ""},
+		{"Leviathan Wakes (The Expanse 1)", "The Expanse", ""},
+		{"Anything 3", "", ""},
+		{"He Who Fights with Monsters No. 4", hw, ""}, // "No." is no volume word here (volumeKeywords)
+	} {
+		got, ok := titleVolume(tc.title, []termForm{newTermForm(matchTerms(tc.series))})
+		if got != tc.want || ok != (tc.want != "") {
+			t.Errorf("titleVolume(%q, %q) = %q, %v; want %q", tc.title, tc.series, got, ok, tc.want)
+		}
+	}
+}
+
+// TestVolumeWordPattern pins the volume words every numbering shape reads
+// (leadNumberRE, the trailing volume cuts, titleVolumeRE): exactly the seven
+// volumeKeywords holds, with a "." only after vol/volume, and not "No.", which
+// volumeKeywords leaves out for lack of evidence.
+func TestVolumeWordPattern(t *testing.T) {
+	keys := slices.Sorted(maps.Keys(volumeKeywords))
+	if want := []string{"band", "book", "part", "teil", "tome", "vol", "volume"}; !slices.Equal(keys, want) {
+		t.Fatalf("volumeKeywords = %q, want %q", keys, want)
+	}
+	re := regexp.MustCompile(`(?i)^` + volumeWordPattern + `$`)
+	for _, w := range []string{"book", "Book", "vol", "Vol.", "volume", "Volume.", "part", "band", "Teil", "tome"} {
+		if !re.MatchString(w) {
+			t.Errorf("%q is not read as a volume word", w)
+		}
+	}
+	for _, w := range []string{"no", "No.", "nr", "Book.", "Tome.", "Part.", "books", "bk", "pt", "livre"} {
+		if re.MatchString(w) {
+			t.Errorf("%q is read as a volume word", w)
+		}
 	}
 }
 

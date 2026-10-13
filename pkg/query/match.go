@@ -1,6 +1,7 @@
 package query
 
 import (
+	"cmp"
 	"context"
 	"database/sql"
 	"errors"
@@ -235,10 +236,17 @@ type matchFacts struct {
 	// forms together, so a candidate's agreement is the best any of them
 	// reaches (seriesVerdict) and position applies to whichever that is.
 	seriesNames []string
-	// position is the request's, else the number a title guess's numbering
-	// carried ("Sharpe - 08 - Sharpe's Eagle" is volume 8).
+	// position is the request's, else the number a title guess states after
+	// the series' name ("He Who Fights with Monsters 4: ..." is volume 4), else
+	// the one its numbering carried ("Sharpe - 08 - Sharpe's Eagle" is volume 8).
 	position string
-	runtime  int
+	// tiedVolume is whether a title guess ties the volume the request reads
+	// to the series' name (titleVolume, volumeOf): then a guess that is only
+	// the name is the leftover of that numbering and names no work titled
+	// after the series. A tied number naming another volume ("Throne of Glass
+	// 1" beside "02 - Throne of Glass") does not count.
+	tiedVolume bool
+	runtime    int
 	// text is the free text's terms, nil when it says nothing identifying;
 	// textTitle is the whole of it as a title guess, the first one textFacts
 	// reads for every candidate, so it is built once here.
@@ -256,11 +264,16 @@ type matchFacts struct {
 // is what candidate.isAuthorName compares. probe is the variant as written,
 // which is what the title probes search for: the folded terms read "&" as
 // "and" and strip diacritics, so a stored "Pride & Prejudice" holds no "and"
-// for an FTS phrase to find and nameKey keeps "Renée" accented.
+// for an FTS phrase to find and nameKey keeps "Renée" accented. onlySeries
+// marks a guess that is only the request's series name ("He Who Fights with
+// Monsters" for a folder "FWM04 - He Who Fights With Monsters - Book 4"): it
+// agrees with every volume titled after the series, so it says nothing about
+// which volume (seriesVerdict).
 type titleGuess struct {
 	termForm
-	key   string
-	probe string
+	key        string
+	probe      string
+	onlySeries bool
 }
 
 func newTitleGuess(terms []string) titleGuess {
@@ -297,11 +310,17 @@ func readFacts(req matchRequest) *matchFacts {
 	// judged as a title the latter would read the series' first volume as the
 	// answer to every volume. The name ALONE is kept as a title: plenty of
 	// first volumes are titled after their series ("Spacers", "Artemis Fowl").
+	// Within one guess a number TIED to the series' name - that variant, or a
+	// title that is the name and then a number ("He Who Fights with Monsters
+	// 4: A LitRPG Adventure", titleVolume) - wins over a bare prefix number,
+	// which is all a series named "7 Days" leaves of "7 Days: Book 1"; across
+	// guesses the first that states a number decides.
 	seen := map[string]bool{}
-	implied := ""
-	imply := func(n string) {
-		if p, ok := positionToken(n); ok && implied == "" {
-			implied = p
+	var implied string
+	var tiedNumbers []string
+	imply := func(to *string, n string) {
+		if p, ok := positionToken(n); ok && *to == "" {
+			*to = p
 		}
 	}
 	// Each guess is read beside each series name (titleVariants takes the
@@ -311,29 +330,44 @@ func readFacts(req matchRequest) *matchFacts {
 		besides = []string{""}
 	}
 	for _, h := range req.titles {
+		var tied, prefix string
 		for _, name := range besides {
 			variants, number := titleVariants(h, name)
-			imply(number)
+			imply(&prefix, number)
 			for _, v := range variants {
+				// Every form is read, so a numbering prefix cut away bares the
+				// tied number behind it ("01 - He Who Fights with Monsters 4:
+				// ..." is volume 4, not 1).
+				if tied == "" {
+					if n, ok := titleVolume(v, f.series); ok {
+						imply(&tied, n)
+					}
+				}
 				terms := matchTerms(v)
 				key := strings.Join(terms, " ")
 				if !informativeTitle(terms) || seen[key] {
 					continue
 				}
 				if n, numbering := volumeOf(terms, f.series); numbering {
-					imply(n)
+					imply(&tied, n)
 					continue
 				}
 				seen[key] = true
 				g := newTitleGuess(terms)
 				g.probe = v
+				g.onlySeries = slices.ContainsFunc(f.series, func(s termForm) bool { return sameWords(&s, &g.termForm) })
 				f.titles = append(f.titles, g)
 			}
 		}
+		if tied != "" {
+			tiedNumbers = append(tiedNumbers, tied)
+		}
+		imply(&implied, cmp.Or(tied, prefix))
 	}
 	if f.position == "" {
 		f.position = implied
 	}
+	f.tiedVolume = slices.ContainsFunc(tiedNumbers, func(n string) bool { return positionsEqual(n, f.position) })
 	f.structured = len(req.titles) > 0 || len(f.authors) > 0 || len(f.series) > 0
 	if terms := matchTerms(req.text); informativeTitle(terms) {
 		f.text, f.textTitle = terms, newTitleGuess(terms)
@@ -886,19 +920,31 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 	// tag reading "Bernard Cornwell" may sit an author tag reading "Sharpe's
 	// Eagle (Sharpe 08)", and dropping every title that equals some author
 	// hypothesis would throw away the real title with the fake name.
-	t, titleJudged := 0.0, false
+	// named is the same best over the guesses that are not only the series'
+	// name, which is what seriesVerdict lets outvote a position - except for a
+	// work titled exactly that name ("02 - Throne of Glass" may be the first
+	// volume filed second in a reading order) where no guess tied a volume to
+	// the name.
+	t, named, titleJudged := 0.0, 0.0, false
 	for i := range f.titles {
 		h := &f.titles[i]
 		if c.isAuthorName(h) {
 			continue
 		}
 		titleJudged = true
-		t = max(t, bestTitle(&h.termForm, c.titles, f.edit))
+		s := bestTitle(&h.termForm, c.titles, f.edit)
+		t = max(t, s)
+		// titles[0] is the work's own title: the exception is for the work
+		// TITLED the series' name, not one whose subtitle or colon half is it
+		// ("He Who Fights with Monsters: A LitRPG Adventure").
+		if !h.onlySeries || (!f.tiedVolume && len(c.titles) > 0 && sameWords(&h.termForm, &c.titles[0].termForm)) {
+			named = max(named, s)
+		}
 	}
 	v.title = t
 	series, titleValue := seriesNone, t
 	if len(f.series) > 0 {
-		series, titleValue = f.seriesVerdict(c, t)
+		series, titleValue = f.seriesVerdict(c, t, named)
 		v.reasons.Series = series
 	}
 	switch {
@@ -941,15 +987,22 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 //   - a GENERIC title - the series' name and a number, "Dork Diaries 6" (a
 //     record stored under its volume number) - is numbering: the number
 //     agreeing is the series agreeing and stands in for the title at
-//     genericTitleValue (a real title that agrees still ranks first); a
-//     different number is a different volume;
+//     genericTitleValue, in full only for a guess spelled as the record is (a
+//     real title that agrees still ranks first); a different number is a
+//     different volume, unless the series lists the
+//     work at exactly the stated position (an omnibus "Sellswords: Volume 1"
+//     listed at 1-3);
 //   - a named title that clearly disagrees outranks a numbering match (see
 //     seriesDistrustLow/High);
 //   - in the named series but at ANOTHER volume, unless the title itself agrees
 //     ("Sharpe's Siege" filed as volume 20, which is volume 19), whatever it
 //     shares with the request's title is the series' naming pattern ("Tales
-//     from a Not-So-..."), not identity, so the title counts nothing.
-func (f *matchFacts) seriesVerdict(c *candidate, t float64) (seriesAgreement, float64) {
+//     from a Not-So-..."), not identity, so the title counts nothing. Whether
+//     the title agrees is read off named, the best over the guesses that are
+//     not only the series' name: "He Who Fights with Monsters" is contained in
+//     every "He Who Fights with Monsters N", so it must not let another volume
+//     keep its title beside a stated one.
+func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreement, float64) {
 	agreement := seriesNone
 	for _, m := range c.series {
 		fits := slices.ContainsFunc(f.series, func(h termForm) bool { return seriesNameFits(&h, m.name, f.edit) })
@@ -966,22 +1019,35 @@ func (f *matchFacts) seriesVerdict(c *candidate, t float64) (seriesAgreement, fl
 			break
 		}
 	}
-	elsewhere := agreement == seriesConflict
+	listed, elsewhere := agreement == seriesPosition, agreement == seriesConflict
 	if agreement == seriesPosition && t >= seriesDistrustLow && t < seriesDistrustHigh {
 		agreement = seriesConflict
 	}
 	value := t
 	if n, ok := volumeOf(c.title, f.series); ok && f.position != "" {
-		if positionsEqual(n, f.position) {
+		switch {
+		case positionsEqual(n, f.position):
 			agreement, elsewhere, value = seriesPosition, false, genericTitleValue
-		} else {
+			if f.spelledAs(c) {
+				value = 1
+			}
+		case !listed:
 			agreement, elsewhere = seriesConflict, true
 		}
 	}
-	if elsewhere && t < seriesDistrustHigh {
+	if elsewhere && named < seriesDistrustHigh {
 		value = 0
 	}
 	return agreement, value
+}
+
+// spelledAs reports whether a title guess naming more than the series is
+// spelled, word for word, as one of the forms c's title is compared in at full
+// weight (the title, with its subtitle, or without its own series tail).
+func (f *matchFacts) spelledAs(c *candidate) bool {
+	return slices.ContainsFunc(f.titles, func(g titleGuess) bool {
+		return !g.onlySeries && slices.ContainsFunc(c.titles, func(ft titleForm) bool { return ft.weight == 1 && ft.joined == g.joined })
+	})
 }
 
 // textFacts reads the typed text as the structured facts it states about one
