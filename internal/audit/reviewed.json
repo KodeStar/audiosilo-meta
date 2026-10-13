@@ -297,6 +297,38 @@
   },
   {
     "decision": "assert",
+    "from": "135",
+    "op": "drop-membership",
+    "reason": "the author's own Hunter Saga listing numbers Blood of the Hunters 62, between On a Knife Edge 59 and In Cold Blood 63; the Author's Republic listing's 135 is the book's runtime in minutes, not a volume",
+    "series": "hunter-saga",
+    "target": "blood-of-the-hunters-the-hunter-saga-book-135"
+  },
+  {
+    "decision": "assert",
+    "from": "6",
+    "op": "drop-membership",
+    "reason": "Buckhorn Beginnings is the omnibus of Sawyer and Morgan, which the publisher's US and UK listings both number 1-2; slot 6 is a stray sequential number",
+    "series": "the-buckhorn-brothers",
+    "target": "buckhorn-beginnings"
+  },
+  {
+    "decision": "assert",
+    "from": "5",
+    "op": "drop-membership",
+    "reason": "the author's current Pact Arcanum listing (the 2017 re-recordings) numbers Cathedral of the Sky 1.5 between Sunset 1 and Sunrise 2; 5 is its number on the 2012 listing, before the series was renumbered",
+    "series": "pact-arcanum",
+    "target": "cathedral-of-the-sky"
+  },
+  {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "the same Czas silnych istot 1 reading (Marcin Popczynski, 586 min, 31 chapters) re-released in 2023; it is part 1 of volume 4, which the 2015 listing numbers 4.1 beside part 2 at 4.2, while the 2023 listing puts both parts at 4",
+    "series": "gamedec",
+    "target": "czas-silnych-istot-1-gamedec-4"
+  },
+  {
+    "decision": "assert",
     "from": "3.8",
     "op": "drop-membership",
     "reason": "the same GraphicAudio production is also listed at 3.5; the 3.8 slot is a duplicate listing",
@@ -369,11 +401,59 @@
   },
   {
     "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "the compilation of Cóatl, Balam and Cuauhtli: its 2038 min is exactly the three Audible Studios readings (844 + 639 + 555), so it covers volumes 1-3 as the anniversary edition does; slot 4 is Cuaitláhuac's",
+    "series": "enigmas-de-los-dioses-del-mexico-antiguo-enigmas-of-the-gods-of-ancient-mexico",
+    "target": "enigmas-de-los-dioses-del-mexico-antiguo-enigmas-of-the-gods-of-ancient-mexico"
+  },
+  {
+    "decision": "assert",
     "from": "5",
     "op": "drop-membership",
     "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
     "series": "zodiac-wolves-german-edition",
     "target": "fates-entwined"
+  },
+  {
+    "decision": "assert",
+    "from": "9",
+    "op": "drop-membership",
+    "reason": "One Audiobooks' complete Red Rain listing numbers First Light 5.5 between Blue Fire 5 and Operation Thunderbird 6; the 2025 self-published listing's 9 predates the renumbering and collides with nothing else",
+    "series": "red-rain",
+    "target": "first-light-red-rain"
+  },
+  {
+    "decision": "assert",
+    "from": "7",
+    "op": "drop-membership",
+    "reason": "Forever Buckhorn is the omnibus of Gabe and Jordan, which the publisher's US and UK listings both number 3-4; slot 7 is a stray sequential number",
+    "series": "the-buckhorn-brothers",
+    "target": "forever-buckhorn"
+  },
+  {
+    "decision": "assert",
+    "from": "0",
+    "op": "drop-membership",
+    "reason": "His True Mate is Six Pack Shifters book 1, as its own title and the Tantor listing state; slot 0 is a stray number",
+    "series": "six-pack-shifters",
+    "target": "his-true-mate"
+  },
+  {
+    "decision": "assert",
+    "from": "26",
+    "op": "drop-membership",
+    "reason": "Jingle Bells, Batman Smells! is Junie B. Jones #25, as its own title and the listing state; slot 26 is Aloha-ha-ha!'s",
+    "series": "junie-b-jones",
+    "target": "junie-b-jones-25-jingle-bells-batman-smells-p-s-so-does-may"
+  },
+  {
+    "decision": "assert",
+    "from": "7",
+    "op": "drop-membership",
+    "reason": "both the 2014 and the 2025 listings number Leave It for the Rain 6, after Sleigh of Hope 5; the Book 7 in the 2025 title is a retailer slip",
+    "series": "the-grayson-family",
+    "target": "leave-it-for-the-rain-the-grayson-family-book-7"
   },
   {
     "decision": "assert",
@@ -393,6 +473,14 @@
   },
   {
     "decision": "assert",
+    "from": "8",
+    "op": "drop-membership",
+    "reason": "its own subtitle calls it the seventh Lottie Brooks diary and both Puffin listings number it 7",
+    "series": "lottie-brooks",
+    "target": "lottie-brooks-vs-the-ultra-mean-girls"
+  },
+  {
+    "decision": "assert",
     "from": "5.4",
     "op": "drop-membership",
     "reason": "the series lists Magic Gifts twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
@@ -409,6 +497,14 @@
   },
   {
     "decision": "assert",
+    "from": "9",
+    "op": "drop-membership",
+    "reason": "Messenger is the 74 min prequel novella the 2021 listing numbers 0.5; book 9 is a different, roughly 145 min volume, as the Books 1-11 omnibus (3575 min) and Collection 2: Books 7-10 (1199 min) runtimes show",
+    "series": "america-falls",
+    "target": "messenger-america-falls-book-9"
+  },
+  {
+    "decision": "assert",
     "from": "3",
     "op": "drop-membership",
     "reason": "the series numbers the chronological order, where Midnight over Sanctaphrax is book 6; slot 3 is publication order",
@@ -417,11 +513,43 @@
   },
   {
     "decision": "assert",
+    "from": "12",
+    "op": "drop-membership",
+    "reason": "Nightshade Revenge is Alex Rider book 13 after Nightshade 12, as both listings and the Walker title state",
+    "series": "alex-rider",
+    "target": "nightshade-revenge"
+  },
+  {
+    "decision": "assert",
+    "from": "1.5",
+    "op": "drop-membership",
+    "reason": "the publisher's current Guardians of the Stone listings (2023 and 2025 re-releases) number Once Upon a Highland Legend 5, as its own title says; 1.5 is the 2014 listing's number",
+    "series": "guardians-of-the-stone",
+    "target": "once-upon-a-highland-legend"
+  },
+  {
+    "decision": "assert",
     "from": "21",
     "op": "drop-membership",
     "reason": "the canonical series lists One of Us Is Dead at 20; the listing has no abridged recording of it, only the unabridged Daniel Weyman reading",
     "series": "roy-grace-abridged",
     "target": "one-of-us-is-dead-peter-james"
+  },
+  {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "Origins Redux is Dreamcatcher book one, as its own title and both listings state",
+    "series": "dreamcatcher-2",
+    "target": "origins-redux"
+  },
+  {
+    "decision": "assert",
+    "from": "18.75",
+    "op": "drop-membership",
+    "reason": "Podium's Out Law: A Dresden Files Novella is numbered 18.5 on the Audible listing, after Twelve Months 18; 18.75 has no source",
+    "series": "the-dresden-files",
+    "target": "out-law"
   },
   {
     "decision": "reject",
@@ -434,6 +562,14 @@
     "reason": "this drop would take the Spanish original out of its own series and leave antonia-scott English-only: the English translation is the half that moves",
     "series": "antonia-scott",
     "target": "rey-blanco"
+  },
+  {
+    "decision": "assert",
+    "from": "2525-2",
+    "op": "drop-membership",
+    "reason": "Schlacht des Schicksals is episode 26, as its own title and both listings state; 2525-2 is a garbled position",
+    "series": "die-abenteuer-der-letzten-helden",
+    "target": "schlacht-des-schicksals"
   },
   {
     "decision": "assert",
@@ -493,11 +629,35 @@
   },
   {
     "decision": "assert",
+    "from": "26",
+    "op": "drop-membership",
+    "reason": "Random House's Star Wars listing numbers Battle Scars 25; the Penguin Audio second listing of the same reading took 26, a slot no other book holds",
+    "series": "star-wars",
+    "target": "star-wars-jedi-battle-scars-sam-maggs"
+  },
+  {
+    "decision": "assert",
+    "from": "50",
+    "op": "drop-membership",
+    "reason": "Random House's Star Wars listing numbers Shadow of the Sith 49; the Penguin Audio second listing of the same reading took 50, a slot no other book holds",
+    "series": "star-wars",
+    "target": "star-wars-shadow-of-the-sith-adam-christopher"
+  },
+  {
+    "decision": "assert",
     "from": "2",
     "op": "drop-membership",
     "reason": "the series numbers the chronological order, where Stormchaser is book 5; slot 2 is publication order",
     "series": "the-edge-chronicles",
     "target": "stormchaser"
+  },
+  {
+    "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "both HarperVia listings number Strange Houses 2, after Strange Pictures 1 and before Strange Buildings 3",
+    "series": "strange-houses",
+    "target": "strange-houses"
   },
   {
     "decision": "assert",
@@ -517,6 +677,22 @@
   },
   {
     "decision": "assert",
+    "from": "0",
+    "op": "drop-membership",
+    "reason": "Audible's Kommandant's Girl listing numbers The Ambassador's Daughter 3 for both the 2013 Harlequin and the 2026 Park Row editions, its publication order; slot 0 is an unsourced prequel number",
+    "series": "the-kommandants-girl",
+    "target": "the-ambassadors-daughter"
+  },
+  {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "The Smoke Thieves is a trilogy and the Penguin title itself says Book 3; the UK listing's 4 is a slip, the US listing numbers the same multicast production 3",
+    "series": "the-smoke-thieves",
+    "target": "the-burning-kingdoms-the-smoke-thieves-book-3"
+  },
+  {
+    "decision": "assert",
     "from": "1",
     "op": "drop-membership",
     "reason": "the BBC dramatisation credits bbc as an author, so it stays its own work rather than merging into the novel (a merge unions authors); the publication order's slot 1 belongs to The Lion, the Witch and the Wardrobe",
@@ -533,11 +709,35 @@
   },
   {
     "decision": "assert",
+    "from": "6",
+    "op": "drop-membership",
+    "reason": "The Dragon's Mage is Advent Mage Cycle book 5; every other 2023-2025 re-release kept its number (Jaunten 1 to Balancer 4), so the 2026 re-release's 6 is a slip with no book 5 left in that listing",
+    "series": "advent-mage-cycle",
+    "target": "the-dragons-mage-advent-mage-cycle-book-6"
+  },
+  {
+    "decision": "assert",
     "from": "2",
     "op": "drop-membership",
     "reason": "the series lists The Emperor's Soul twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
     "series": "elantris",
     "target": "the-emperors-soul-dramatized-adaptation"
+  },
+  {
+    "decision": "assert",
+    "from": "3.5",
+    "op": "drop-membership",
+    "reason": "The Favorite is The Selection 2.6 on Goodreads, Marlee's novella set during The Elite, and the series already holds it there; Audible's 3.5 is its release-order number",
+    "series": "the-selection",
+    "target": "the-favorite-a-novella"
+  },
+  {
+    "decision": "assert",
+    "from": "9",
+    "op": "drop-membership",
+    "reason": "Penguin's Inspector Maigret order numbers The Grand Banks Café 8 (A Man's Head is 9), as both the US and UK listings state",
+    "series": "inspector-maigret",
+    "target": "the-grand-banks-cafe"
   },
   {
     "decision": "assert",
@@ -549,6 +749,14 @@
   },
   {
     "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "this series numbers Fable 1 and Namesake 2, so The Last Legacy is 3, as the Bolinda title itself says; 4 is the newer listing's number after Saint became 1",
+    "series": "the-world-of-the-narrows",
+    "target": "the-last-legacy-the-world-of-the-narrows-book-3"
+  },
+  {
+    "decision": "assert",
     "from": "0.1",
     "op": "drop-membership",
     "reason": "the series lists The Last Wish twice: the plain record keeps its position and this production record, numbered by its own release series, leaves so the two records can merge",
@@ -557,11 +765,43 @@
   },
   {
     "decision": "assert",
+    "from": "17.2",
+    "op": "drop-membership",
+    "reason": "Podium's own title numbers The Law Dresden Files book 17.5, and the Audible listing agrees; 17.2 has no source",
+    "series": "the-dresden-files",
+    "target": "the-law"
+  },
+  {
+    "decision": "assert",
+    "from": "15",
+    "op": "drop-membership",
+    "reason": "Penguin's Inspector Maigret order numbers The Misty Harbour 16 (The Madman of Bergerac is 15), as both the US and UK listings state",
+    "series": "inspector-maigret",
+    "target": "the-misty-harbour"
+  },
+  {
+    "decision": "assert",
     "from": "1",
     "op": "drop-membership",
     "reason": "a retailer listing of abridged Star Wars film novelizations, not a series of its own; the novel sits in the Star Wars series",
     "series": "star-wars-abridged",
     "target": "the-phantom-menace-star-wars-episode-i"
+  },
+  {
+    "decision": "assert",
+    "from": "25",
+    "op": "drop-membership",
+    "reason": "the Audible Studios Miss Silver listing numbers The Silent Pool 24 and Vanishing Point 25; the ISIS listing's 25 for The Silent Pool collides with Vanishing Point",
+    "series": "miss-silver",
+    "target": "the-silent-pool"
+  },
+  {
+    "decision": "assert",
+    "from": "8",
+    "op": "drop-membership",
+    "reason": "The Thirteenth Santa is the prequel novella in which Rebecca and Richie meet, numbered 0.5 on the first listing; the 2021 re-release's 8 places it after books it precedes",
+    "series": "rebecca-mayfield-mysteries",
+    "target": "the-thirteenth-santa-a-novella"
   },
   {
     "decision": "reject",
@@ -577,11 +817,163 @@
   },
   {
     "decision": "assert",
+    "from": "6",
+    "op": "drop-membership",
+    "reason": "Warrior of the Drowned Empire is book 4 on every other listing (Hodderscape and Seven Queens Press); book 5 is Traitor of the Drowned Empire, so the third listing's 6 is a slip",
+    "series": "drowned-empire",
+    "target": "warrior-of-the-drowned-empire-drowned-empire-book-6"
+  },
+  {
+    "decision": "assert",
     "from": "4",
     "op": "drop-membership",
     "reason": "the English volume is already listed at the same slot in zodiac-wolves; the German edition series keeps its German volume",
     "series": "zodiac-wolves-german-edition",
     "target": "zodiac-aligned"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "mr-adam-brown"
+    ],
+    "reason": "two people: Mr. Adam Brown narrates Simon Carr's comic science fiction; Adam Brown is the unrelated non-fiction author",
+    "target": "adam-brown"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-alex-george"
+    ],
+    "reason": "two people: Dr. Alex George is the UK TV doctor who wrote and reads Live Well Every Day and The Mind Manual; Alex George is the novelist of A Good American and The Paris Hours",
+    "target": "alex-george"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-david-booth"
+    ],
+    "reason": "two people: Dr. David Booth is the scientist of Great Unanswered Questions (listing 1529142369 credits Dr David Booth); David Booth is a US narrator of self-help titles",
+    "target": "david-booth"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-david-clarke"
+    ],
+    "reason": "two people: Dr. David Clarke is a Christian marriage counsellor; David Clarke narrates Sherlock Holmes and other classics",
+    "target": "david-clarke"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-lisa-klein"
+    ],
+    "reason": "two people: Dr. Lisa Klein is the pediatrician co-writing Celebrate Your Body 2 with Dr. Carrie Leff; Lisa Klein is the novelist of Ophelia",
+    "target": "lisa-klein"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-matt-lewis"
+    ],
+    "reason": "two people: Dr. Matt Lewis wrote Overcome Anxiety (listing B06XFWTF3D credits Dr. Matt Lewis); Matt Lewis wrote Filthy Rich Politicians",
+    "target": "matt-lewis"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-matthew-barnes"
+    ],
+    "reason": "two people: Dr. Matthew Barnes wrote The Hermetica 101 beside his Kybalion 101 and Emerald Tablet 101; Matthew Barnes is a Macmillan cast narrator (A Dream So Dark)",
+    "target": "matthew-barnes"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-michael-goldberg"
+    ],
+    "reason": "two people: Dr. Michael Goldberg is the physician of The Myth of Autism; Michael Goldberg is the sales trainer of Knock Out Networking",
+    "target": "michael-goldberg"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-patrick-jones"
+    ],
+    "reason": "two people: Dr. Patrick Jones wrote and reads the Olympus Kids and Storyforge titles; Patrick Jones is the YA novelist",
+    "target": "patrick-jones"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-patrick-moore"
+    ],
+    "reason": "two people: Dr. Patrick Moore is the Greenpeace co-founder of Fake Invisible Catastrophes; Patrick Moore is the astronomer of The Star of Bethlehem",
+    "target": "patrick-moore"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-rebecca-sharp"
+    ],
+    "reason": "two people: Dr. Rebecca Sharp is a romance novelist who does not narrate; Rebecca Sharp narrates Kabir Hussain's pharmaceutical title",
+    "target": "rebecca-sharp"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "sir-richard-burton"
+    ],
+    "reason": "two people: Sir Richard Burton is the Victorian translator of the Kama Sutra and the Arabian Nights; Richard Burton is the actor who reads Under Milk Wood",
+    "target": "richard-burton"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-steven-lin"
+    ],
+    "reason": "two people: Dr. Steven Lin is the dentist who reads his own The Dental Diet; Steven Lin narrates the YA fantasy Defining Justice",
+    "target": "steven-lin"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-tom-morris"
+    ],
+    "reason": "two people: Dr. Tom Morris is a co-credit on Luther's The Bondage of the Will; Tom Morris narrates paranormal romance",
+    "target": "tom-morris"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-tom-smith"
+    ],
+    "reason": "two people: Dr. Tom Smith wrote the Scottish country doctor memoirs A Seaside Practice and Medic on the Move; Tom Smith is a co-author of The Oz Principle",
+    "target": "tom-smith"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-people",
+    "others": [
+      "dr-william-davies"
+    ],
+    "reason": "two people: Dr. William Davies wrote Overcoming Anger and Irritability (listing B007NX6B8C); William Davies is the political economist of Nervous States",
+    "target": "william-davies"
   },
   {
     "decision": "assert",
@@ -746,6 +1138,15 @@
     "target": "amanecer-rojo"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "aurora-rising"
+    ],
+    "reason": "a named sub-series, not a second spelling: G.S. Jennsen's Aurora Rising trilogy, the first of the Amaranthe universe's named arcs",
+    "target": "amaranthe"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -809,6 +1210,15 @@
     "target": "apollo-quartet-series"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-history-of-goranin"
+    ],
+    "reason": "a named sub-series, not a second spelling: M.J. Padgett's History of Goranin books, listed by the publisher both on their own and inside the Archives",
+    "target": "archives-of-the-ancient-kingdoms"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -843,6 +1253,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "ballard-and-bosch"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "werewolves-of-shade"
+    ],
+    "reason": "a named sub-series, not a second spelling: Tim O'Rourke's Werewolves of Shade, the first arc of Beautiful Immortals",
+    "target": "beautiful-immortals-orourke"
   },
   {
     "decision": "assert",
@@ -888,6 +1307,15 @@
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
     "target": "blossom-street"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-english-brothers"
+    ],
+    "reason": "a named sub-series, not a second spelling: Katy Regnery's English Brothers arc of Blueberry Lane",
+    "target": "blueberry-lane"
   },
   {
     "decision": "assert",
@@ -1070,6 +1498,24 @@
     "target": "dead-jed"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "fire-and-ice-breene"
+    ],
+    "reason": "a named sub-series, not a second spelling: K.F. Breene's Fire and Ice trilogy inside the Demon Days, Vampire Nights world",
+    "target": "demon-days-vampire-nights-world"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "vampire-nights-world"
+    ],
+    "reason": "one series: K.F. Breene's Demon Days, Vampire Nights world listed twice, the same works at the same slots once the GraphicAudio dramatizations are merged into the novels",
+    "target": "demon-days-vampire-nights-world"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -1178,6 +1624,15 @@
     "target": "die-schule-der-magischen-tiere-endlich-ferien"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "sturmfels-akademie"
+    ],
+    "reason": "a named sub-series, not a second spelling: Torsten Weitze's five Turm books, which the publisher lists both as Sturmfels-Akademie and inside Die Streitenden Götter",
+    "target": "die-streitenden-gotter"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -1248,6 +1703,24 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "dorina-basarab"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "dragonrider-chronicles"
+    ],
+    "reason": "a named sub-series, not a second spelling: Nicole Conway's Dragonrider Chronicles 1-4, followed by Dragonrider Legacy in the universe",
+    "target": "dragonrider-universe"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "dragons-gift-the-huntress"
+    ],
+    "reason": "a named sub-series, not a second spelling: Linsey Hall's Huntress arc, the first of several in the Dragon's Gift world",
+    "target": "dragons-gift"
   },
   {
     "decision": "assert",
@@ -1430,6 +1903,15 @@
     "target": "full-tilt"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "agent-g"
+    ],
+    "reason": "a named sub-series, not a second spelling: C.T. Phipps' Agent G trilogy, the first arc of the Futurepunk universe (Cyber Dragon and Moon Cops follow)",
+    "target": "futurepunk"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -1482,6 +1964,15 @@
     ],
     "reason": "once the dramatized duplicate works fold, the variant lists The Russian Cage and The Serpent in Heaven at the canonical slots and fills the empty slots 1 and 2 with An Easy Death and A Longer Fall; dramatization is a property of the recordings, not a series",
     "target": "gunnie-rose"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "ghost-hunters"
+    ],
+    "reason": "a named sub-series, not a second spelling: Jayne Castle's Ghost Hunters sub-series of Harmony",
+    "target": "harmony-castle"
   },
   {
     "decision": "assert",
@@ -1610,6 +2101,15 @@
     "target": "hyperion"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "hythrun-chronicles-wolfblade-trilogy"
+    ],
+    "reason": "a named sub-series, not a second spelling: Jennifer Fallon's Wolfblade trilogy, the first trilogy of the Hythrun Chronicles",
+    "target": "hythryn-chronicles"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -1680,6 +2180,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "jackrabbit-junction-humorous-mystery"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "james-bond-celebrity-performances"
+    ],
+    "reason": "one series: the Celebrity Performances listing is Fleming's fourteen Bond books at the original numbering, its name a recording note for the celebrity readings those works already carry",
+    "target": "james-bond-original"
   },
   {
     "decision": "assert",
@@ -1916,6 +2425,15 @@
     "target": "left-behind"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "liaden-universe-books-of-before"
+    ],
+    "reason": "a named sub-series, not a second spelling: the Books of Before arc of the Liaden Universe",
+    "target": "liaden-universe"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -1961,6 +2479,15 @@
     "target": "los-reyes-malditos"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "snow-sisters"
+    ],
+    "reason": "a named sub-series, not a second spelling: Melissa Foster's Snow Sisters arc of Love in Bloom",
+    "target": "love-in-bloom"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -1968,6 +2495,15 @@
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
     "target": "mackenzie-family"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-swordmage-trilogy"
+    ],
+    "reason": "a named sub-series, not a second spelling: Martin Hengst's Swordmage trilogy inside Magic of Solendrea",
+    "target": "magic-of-solendrea"
   },
   {
     "decision": "assert",
@@ -2103,6 +2639,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "o-lar-da-srta-peregrine-para-criancas-peculiares-miss-peregrines-home-for-peculiar-children"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-fatemarked-epic"
+    ],
+    "reason": "a named sub-series, not a second spelling: David Estes' Fatemarked Epic, the first arc of the Onore world",
+    "target": "onore"
   },
   {
     "decision": "assert",
@@ -2268,6 +2813,15 @@
     "target": "rattlesnake-wells-wyoming"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-farseer-trilogy"
+    ],
+    "reason": "a named sub-series, not a second spelling: Robin Hobb's Farseer trilogy opening the Realms of the Elderlings",
+    "target": "realms-of-the-elderlings"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2293,6 +2847,15 @@
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
     "target": "richard-sharpe-novels"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "riftwar-saga"
+    ],
+    "reason": "a named sub-series, not a second spelling: Feist's Riftwar Saga, the first arc of the Riftwar Cycle",
+    "target": "riftwar-cycle-publication-order"
   },
   {
     "decision": "assert",
@@ -2338,6 +2901,15 @@
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
     "target": "roman-mysteries"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "too-far"
+    ],
+    "reason": "a named sub-series, not a second spelling: Abbi Glines' Too Far trilogy opening Rosemary Beach",
+    "target": "rosemary-beach"
   },
   {
     "decision": "assert",
@@ -2574,6 +3146,15 @@
     "target": "the-avatar-chronicles"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "redemption"
+    ],
+    "reason": "a named sub-series, not a second spelling: Kingsbury and Smalley's Redemption series, the first arc of the Baxter family books",
+    "target": "the-baxters"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2619,6 +3200,33 @@
     "target": "the-chronicles-of-narnia-authors-preferred-order"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-cemeteries-of-amalo"
+    ],
+    "reason": "a named sub-series, not a second spelling: Katherine Addison's Cemeteries of Amalo trilogy inside the Chronicles of Osreth",
+    "target": "the-chronicles-of-osreth"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-chronicles-of-thomas-covenant-the-unbeliever"
+    ],
+    "reason": "a named sub-series, not a second spelling: Donaldson's First Chronicles, the opening trilogy of the ten-book Chronicles",
+    "target": "the-chronicles-of-thomas-covenant"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "cobra-trilogy"
+    ],
+    "reason": "a named sub-series, not a second spelling: Timothy Zahn's first Cobra trilogy; Cobra War and Cobra Rebellion follow in the universe",
+    "target": "the-cobra-universe"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2626,6 +3234,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "the-collected-adventures-of-hotdog-man"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "a-shade-of-mind"
+    ],
+    "reason": "a named sub-series, not a second spelling: the four-book A Shade of Mind arc that opens D.N. Leo's wider multiverse collection",
+    "target": "the-d-n-leo-multiverse-collection"
   },
   {
     "decision": "assert",
@@ -2646,6 +3263,15 @@
     "target": "the-elite-series"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-first-formic-war"
+    ],
+    "reason": "a named sub-series, not a second spelling: the First Formic War trilogy inside the Enderverse",
+    "target": "the-enderverse"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2658,11 +3284,29 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "farseer-trilogy"
+    ],
+    "reason": "one series: Robin Hobb's Farseer trilogy listed twice, the same three novels once the duplicate Assassin's Apprentice record is merged",
+    "target": "the-farseer-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "first-mountain-man",
       "first-mountain-man-dramatized-adaptation"
     ],
     "reason": "the dramatized spelling numbers the Preacher books exactly as the publisher's own First Mountain Man listing does (Purge 29, Hell 32), filling free slots; a dramatization is a property of the recordings",
     "target": "the-first-mountain-man"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-forsyte-saga-blackstone-audio-inc"
+    ],
+    "reason": "a named sub-series, not a second spelling: Galsworthy's Forsyte Saga, the first trilogy of the Forsyte Chronicles",
+    "target": "the-forsyte-chronicles"
   },
   {
     "decision": "assert",
@@ -2672,6 +3316,15 @@
     ],
     "reason": "two publisher spellings of The Forsyte Saga: the Recorded Books listing holds two of the three novels at the same slots",
     "target": "the-forsyte-saga-blackstone-audio-inc"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "jack-manson"
+    ],
+    "reason": "a named sub-series, not a second spelling: Tim Simpson's Jack Manson books, which the retailer numbers 1, 2 and 4 both as their own series and inside The Future",
+    "target": "the-future"
   },
   {
     "decision": "assert",
@@ -2728,6 +3381,15 @@
     "target": "the-landry-family"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "legacy-fleet-trilogy"
+    ],
+    "reason": "a named sub-series, not a second spelling: Nick Webb's first Legacy Fleet trilogy; the series continues to book 9",
+    "target": "the-legacy-fleet-series"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2744,6 +3406,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "the-lorien-legacies"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-slaver-wars-the-lost-fleet"
+    ],
+    "reason": "a named sub-series, not a second spelling: Raymond L. Weil's Slaver Wars arc of The Lost Fleet; The Originator Wars follows",
+    "target": "the-lost-fleet"
   },
   {
     "decision": "assert",
@@ -2764,6 +3435,24 @@
     "target": "the-mason-maci-magical-mystery-series"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "blue-eyes"
+    ],
+    "reason": "a named sub-series, not a second spelling: the Blue Eyes trilogy, followed by the Day Human trilogy in The Night Human World",
+    "target": "the-night-human-world"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-original-sinners-the-red-years-quartet"
+    ],
+    "reason": "a named sub-series, not a second spelling: Tiffany Reisz's Red Years quartet, the first arc of the Original Sinners",
+    "target": "the-original-sinners-collection"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2780,6 +3469,24 @@
     ],
     "reason": "lists the same works at the same slots as the canonical series once its decorated duplicate works fold; dramatization is a property of the recordings, not a series",
     "target": "the-range-detectives"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-silver-series"
+    ],
+    "reason": "a named sub-series, not a second spelling: Cheree Alsop's Silver Series; Werewolf Academy follows in the universe",
+    "target": "the-silver-series-universe"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "spectr"
+    ],
+    "reason": "a named sub-series, not a second spelling: Jordan L. Hawk's first SPECTR series; Mocker of Ravens opens the second",
+    "target": "the-spectr-universe"
   },
   {
     "decision": "assert",
@@ -2799,6 +3506,15 @@
     ],
     "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
     "target": "the-stormlight-archive"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-san-francisco-sullivans"
+    ],
+    "reason": "a named sub-series, not a second spelling: Bella Andre's San Francisco Sullivans, the first arc of The Sullivans",
+    "target": "the-sullivans"
   },
   {
     "decision": "assert",
@@ -2891,6 +3607,15 @@
     "target": "todos-los-muertos"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-legend-of-beka-cooper"
+    ],
+    "reason": "a named sub-series, not a second spelling: Tamora Pierce's Beka Cooper trilogy, first in Tortall's chronological order",
+    "target": "tortall"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2954,6 +3679,15 @@
     "target": "uhtred"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "vattas-war"
+    ],
+    "reason": "a named sub-series, not a second spelling: Elizabeth Moon's Vatta's War, followed by Vatta's Peace in the universe",
+    "target": "vatta-universe"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -2988,6 +3722,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "welcome-to-night-vale"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "made-in-heaven-trilogy"
+    ],
+    "reason": "a named sub-series, not a second spelling: Toni Goode's Made in Heaven trilogy opening the six-book Whispers series",
+    "target": "whispers-series"
   },
   {
     "decision": "assert",
@@ -3553,12 +4296,12 @@
     "target": "a-longer-fall"
   },
   {
-    "decision": "assert",
+    "decision": "reject",
     "op": "merge-works",
     "others": [
       "a-love-letter-to-whiskey-kandi-steiner"
     ],
-    "reason": "the same novel by the same author: the 2025 Simon Maverick duet audio edition is the expanded anniversary text, which adds the bundled Jamie novella Love, Whiskey and an extended epilogue, so its longer runtime is a property of the edition, not a different book",
+    "reason": "two works: the 2016 Lauren Sweet reading (608 min) is the novel alone, while the 2025 duet edition (1085 min) is the fifth anniversary text that adds the 50,000-word Jamie novella Love, Whiskey, so it collects books 1 and 1.5",
     "target": "a-love-letter-to-whiskey"
   },
   {
@@ -4324,6 +5067,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "anne-of-avonlea-lucy-maud-montgomery"
+    ],
+    "reason": "the same Montgomery novel: the second record holds other narrations of it, catalogued under the L. M. Montgomery spelling of her name",
+    "target": "anne-of-avonlea"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "anne-of-green-gables-amazonclassics-edition",
       "anne-of-green-gables-bbc-childrens-classics",
       "anne-of-green-gables-dramatized",
@@ -4332,6 +5084,24 @@
     ],
     "reason": "the same novel by the same author (l-m-montgomery and lucy-maud-montgomery are one person): each decoration names a publisher edition or a dramatized full-cast production, properties of the recording, not of the work",
     "target": "anne-of-green-gables"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "anne-of-the-island-lucy-maud-montgomery"
+    ],
+    "reason": "the same Montgomery novel: the second record holds other narrations of it, catalogued under the L. M. Montgomery spelling of her name",
+    "target": "anne-of-the-island"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "annes-house-of-dreams-lucy-maud-montgomery"
+    ],
+    "reason": "the same Montgomery novel: the second record holds other narrations of it, catalogued under the L. M. Montgomery spelling of her name",
+    "target": "annes-house-of-dreams"
   },
   {
     "decision": "reject",
@@ -4394,6 +5164,15 @@
       "apollyon-the-destroyer-is-unleashed"
     ],
     "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 5 of Left Behind and its abridged spelling",
+    "target": "apollyon-tim-lahaye"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "apollyon-tim-lahaye-2"
+    ],
+    "reason": "the same Left Behind novel: the second record holds Richard Ferrone's Recorded Books reading, catalogued under the Jerry Jenkins spelling",
     "target": "apollyon-tim-lahaye"
   },
   {
@@ -4605,6 +5384,24 @@
     ],
     "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 6 of Left Behind and its abridged spelling",
     "target": "assassins"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "assassins-tim-lahaye"
+    ],
+    "reason": "the same Left Behind novel: the second record holds the Ferrone and A. W. Miller readings, catalogued under the Jerry Jenkins spelling",
+    "target": "assassins"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-farseer-assassins-apprentice"
+    ],
+    "reason": "the same novel: Paul Boehmer's 1038 min reading is on both records (HarperCollins 1995 and Tantor 2010), and The Farseer is the series name prefixed to the title",
+    "target": "assassins-apprentice"
   },
   {
     "decision": "assert",
@@ -6039,10 +6836,8 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
-      "crime-and-punishment-amazonclassics-edition",
       "crime-and-punishment-audio-connoisseur-edition",
-      "crime-and-punishment-fyodor-dostoyevsky",
-      "crime-and-punishment-trout-lake-media-edition"
+      "crime-and-punishment-fyodor-dostoyevsky"
     ],
     "reason": "the same novel by Dostoevsky: the decorations name the AmazonClassics, Audio Connoisseur and Trout Lake Media editions, which are properties of the recording, and the plain duplicate differs only in the spelling of the author's slug",
     "target": "crime-and-punishment"
@@ -7015,6 +7810,15 @@
     ],
     "reason": "an adaptation vs the novel: the 517-minute Horverlag radio play is Ulrich Lampen's dramatization, while the other record holds the readings",
     "target": "der-zauberberg"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "desecration-tim-lahaye"
+    ],
+    "reason": "the same Left Behind novel: the second record holds the Frank Muller and A. W. Miller readings, catalogued under the Jerry Jenkins spelling",
+    "target": "desecration"
   },
   {
     "decision": "reject",
@@ -8306,6 +9110,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "emily-of-new-moon-amazonclassics-edition"
+    ],
+    "reason": "the same Montgomery novel: AmazonClassics Edition names the Brilliance production, a property of the recording",
+    "target": "emily-of-new-moon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "emma-full-cast-drama"
     ],
     "reason": "the same book by the same author: \"Emma (Full Cast Drama)\" only adds an edition, production or narrator note to \"Emma\", which is a property of the recording",
@@ -9106,6 +9919,15 @@
       "glorious-appearing-the-end-of-days"
     ],
     "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 12 of Left Behind and its abridged spelling",
+    "target": "glorious-appearing"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "glorious-appearing-tim-lahaye"
+    ],
+    "reason": "the same Left Behind novel: the second record holds Richard Ferrone's Recorded Books reading, catalogued under the Jerry Jenkins spelling",
     "target": "glorious-appearing"
   },
   {
@@ -11764,6 +12586,15 @@
     "target": "maldita-roma"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "man-superman"
+    ],
+    "reason": "the same Shaw play in the same BBC full-cast production with Ralph Fiennes and Judi Dench, released by BBC Digital Audio and by Blackstone",
+    "target": "man-and-superman"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -12349,6 +13180,24 @@
     "target": "natural-dual-mage"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "natural-mage-magical-mayhem-trilogy-2-dramatized-adaptation"
+    ],
+    "reason": "the same book: GraphicAudio's full-cast production credits only K.F. Breene, so it is a recording of Natural Mage, Magical Mayhem 2",
+    "target": "natural-mage"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "natural-witch-magical-mayhem-trilogy-1-dramatized-adaptation"
+    ],
+    "reason": "the same book: GraphicAudio's full-cast production credits only K.F. Breene, so it is a recording of Natural Witch, Magical Mayhem 1",
+    "target": "natural-witch"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -12466,6 +13315,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "nicolae-tim-lahaye"
+    ],
+    "reason": "the same Left Behind novel, book 3: the plain-titled record holds the Ferrone and A. W. Miller readings, and the audit folds the third record nicolae onto it first",
+    "target": "nicolae-the-rise-of-antichrist"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "night-watch-discworld-book-29"
     ],
     "reason": "the same novel; Discworld, Book 29 is a retailer series decoration and the record holds another ASIN of the 2023 full-cast production",
@@ -12541,6 +13399,15 @@
     ],
     "reason": "the Adapted for Young Adults edition is a young readers' adaptation with a different text, a distinct work",
     "target": "notes-from-a-young-black-chef"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "notes-from-the-underground-fyodor-dostoyevsky"
+    ],
+    "reason": "the same Dostoevsky novella in the same Garnett translation, catalogued under the Dostoyevsky spelling",
+    "target": "notes-from-the-underground"
   },
   {
     "decision": "assert",
@@ -13608,6 +14475,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "pygmalion-bernard-shaw"
+    ],
+    "reason": "the same Shaw play: the BBC, L.A. Theatre Works, Naxos and Mark Bowen recordings are all performances of its text, catalogued under both spellings of Shaw",
+    "target": "pygmalion"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "pygmalion-george-bernard-shaw"
     ],
     "reason": "the same play: both are full-cast performances of Shaw's text, and Alistair McGowan is a performer in the BBC production, not a co-author",
@@ -13703,6 +14579,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "rain-of-shadows-and-endings"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "rainbow-valley-lucy-maud-montgomery"
+    ],
+    "reason": "the same Montgomery novel: the second record holds other narrations of it, catalogued under the L. M. Montgomery spelling of her name",
+    "target": "rainbow-valley"
   },
   {
     "decision": "assert",
@@ -14086,6 +14971,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "rilla-of-ingleside-lucy-maud-montgomery"
+    ],
+    "reason": "the same Montgomery novel: the second record holds other narrations of it, catalogued under the L. M. Montgomery spelling of her name",
+    "target": "rilla-of-ingleside"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "ring-the-bells-nicht-jede-bescherung-ist-ein-geschenk"
     ],
     "reason": "the same book: \"Ring the Bells - Nicht jede Bescherung ist ein Geschenk\" and \"Ring the Bells\" differ only by retailer decoration; both sit at 5 of the-stranger-times-gekurzt and its canonical series, by the same author",
@@ -14318,9 +15212,10 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "saint-joan-bernard-shaw",
       "saint-joan-dramatised"
     ],
-    "reason": "the same play by the same author: Dramatised names the Siobhan McKenna full-cast performance, which is a property of the recording, not of the work",
+    "reason": "the same Shaw play: the Spoken Realms, Blackstone and Siobhan McKenna full-cast recordings are all performances of its text, catalogued under both spellings of Shaw",
     "target": "saint-joan"
   },
   {
@@ -14669,6 +15564,15 @@
     "target": "shadow-princess"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "shadowed-jerry-b-jenkins"
+    ],
+    "reason": "the same Underground Zealot novel, book 3: the second record holds Steve Sever's abridged Tyndale reading",
+    "target": "shadowed-jerry-jenkins"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -14853,6 +15757,15 @@
     ],
     "reason": "the same novel by the same author: AmazonClassics Edition names the publisher's edition of the recording, not a different work",
     "target": "silas-marner"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "silenced-jerry-jenkins"
+    ],
+    "reason": "the same Underground Zealot novel: the second record holds Steve Sever's Tyndale reading, catalogued under the Jerry Jenkins spelling",
+    "target": "silenced-jerry-b-jenkins"
   },
   {
     "decision": "assert",
@@ -15125,9 +16038,27 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "soon-jerry-jenkins"
+    ],
+    "reason": "the same Underground Zealot novel: the second record holds Steve Sever's Tyndale reading, catalogued under the Jerry Jenkins spelling",
+    "target": "soon"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "soul-harvest-the-world-takes-sides"
     ],
     "reason": "the same novel by LaHaye and Jenkins: the subtitle is the cover tagline, and both records sit at slot 4 of Left Behind and its abridged spelling",
+    "target": "soul-harvest"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "soul-harvest-tim-lahaye"
+    ],
+    "reason": "the same Left Behind novel: the second record holds the Ferrone and A. W. Miller readings, catalogued under the Jerry Jenkins spelling",
     "target": "soul-harvest"
   },
   {
@@ -16587,7 +17518,6 @@
     "op": "merge-works",
     "others": [
       "brothers-karamazov",
-      "the-brothers-karamazov-amazonclassics-edition",
       "the-brothers-karamazov-fyodor-dostoevsky",
       "the-brothers-karamazov-fyodor-dostoyevsky",
       "the-brothers-karamazov-jimcin-recordings-edition",
@@ -17710,7 +18640,6 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
-      "the-idiot-amazonclassics-edition",
       "the-idiot-blackstone",
       "the-idiot-fyodor-dostoyevsky",
       "the-idiot-tantor"
@@ -18869,6 +19798,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-remnant-tim-lahaye"
+    ],
+    "reason": "the same Left Behind novel: the second record holds the Ferrone and A. W. Miller readings, catalogued under the Jerry Jenkins spelling",
+    "target": "the-remnant"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-republic-amazonclassics-edition"
     ],
     "reason": "the same dialogue by the same author: Raymond Larson and Benjamin Jowett are translators, not co-authors, and the longer AmazonClassics runtime is Jowett's introduction and analysis around the same text",
@@ -19313,6 +20251,15 @@
     ],
     "reason": "the same novel by the same author: the Jenny Seagrove recording is the abridged reading, and the published title is The Stormy Petrel",
     "target": "the-stormy-petrel"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-story-girl-lucy-maud-montgomery"
+    ],
+    "reason": "the same Montgomery novel: the second record holds Trisha Rose's narration of it, catalogued under the L. M. Montgomery spelling of her name",
+    "target": "the-story-girl"
   },
   {
     "decision": "reject",
@@ -20465,6 +21412,15 @@
     "target": "tribulation-force"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "tribulation-force-tim-lahaye"
+    ],
+    "reason": "the same Left Behind novel: the second record holds the Ferrone and A. W. Miller readings, catalogued under the Jerry Jenkins spelling",
+    "target": "tribulation-force"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -21153,6 +22109,15 @@
     ],
     "reason": "probably different compilations: the 2011 release adds Jack Canfield and runs 165 minutes against 226 for the 2010 release",
     "target": "whispers-the-spirit-of-now"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "white-nights-fyodor-dostoyevsky"
+    ],
+    "reason": "the same Dostoevsky story; the Garnett and Ronald Meyer translations are recordings of one work, as for The Idiot",
+    "target": "white-nights-fyodor-dostoevsky"
   },
   {
     "decision": "reject",
