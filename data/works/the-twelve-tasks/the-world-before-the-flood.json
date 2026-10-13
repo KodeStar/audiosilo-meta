@@ -5599,6 +5599,8 @@
       ],
       "genres": [
         "business",
+        "economics",
+        "finance",
         "politics",
         "social-sciences"
       ],
@@ -5744,12 +5746,91 @@
             }
           ],
           "work": "the-world-is-flat"
+        },
+        "oliver-wyman-2006-2": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1M4VY",
+              "region": "us"
+            },
+            {
+              "asin": "B07BMG6SYD",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4488417,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4479501,
+              "start_ms": 4488417,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4529609,
+              "start_ms": 8967918,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4411420,
+              "start_ms": 13497527,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4363215,
+              "start_ms": 17908947,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4692706,
+              "start_ms": 22272162,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4326249,
+              "start_ms": 26964868,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51WbMag5jTL.jpg",
+          "id": "oliver-wyman-2006-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "oliver-wyman"
+          ],
+          "publisher": "Macmillan Audio",
+          "release_date": "2006-04-07",
+          "runtime_min": 521,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1M4VY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07BMG6SYD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-world-is-flat"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8LDIW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1M4VY",
           "type": "libex-import"
         }
       ],
@@ -5853,106 +5934,6 @@
         }
       ],
       "title": "The World Is Flat 3.0"
-    },
-    "the-world-is-flat-updated-and-expanded": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "thomas-l-friedman"
-      ],
-      "genres": [
-        "business",
-        "economics",
-        "finance",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "the-world-is-flat-updated-and-expanded",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "oliver-wyman-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1M4VY",
-              "region": "us"
-            },
-            {
-              "asin": "B07BMG6SYD",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4488417,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4479501,
-              "start_ms": 4488417,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4529609,
-              "start_ms": 8967918,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4411420,
-              "start_ms": 13497527,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4363215,
-              "start_ms": 17908947,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4692706,
-              "start_ms": 22272162,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4326249,
-              "start_ms": 26964868,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51WbMag5jTL.jpg",
-          "id": "oliver-wyman-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "oliver-wyman"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2006-04-07",
-          "runtime_min": 521,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1M4VY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07BMG6SYD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-world-is-flat-updated-and-expanded"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V1M4VY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The World Is Flat [Updated and Expanded]"
     },
     "the-world-is-my-home": {
       "added_at": "2026-07-29",

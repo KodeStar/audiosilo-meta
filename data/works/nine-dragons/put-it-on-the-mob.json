@@ -5646,7 +5646,8 @@
         "classics",
         "drama-plays",
         "literary-fiction",
-        "womens-fiction"
+        "womens-fiction",
+        "writing-publishing"
       ],
       "id": "pygmalion",
       "language": "en",
@@ -5709,12 +5710,87 @@
             }
           ],
           "work": "pygmalion"
+        },
+        "full-cast-2001": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UUMNNK",
+              "region": "us"
+            },
+            {
+              "asin": "B004F3UTDQ",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 32879,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 617326,
+              "start_ms": 32879,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1874918,
+              "start_ms": 650205,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 889556,
+              "start_ms": 2525123,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2374055,
+              "start_ms": 3414679,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 58561,
+              "start_ms": 5788734,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vbNtYD2nL.jpg",
+          "id": "full-cast-2001",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "nicholas-pennell",
+            "shannon-cochran"
+          ],
+          "publisher": "L.A. Theatre Works",
+          "release_date": "2001-03-15",
+          "runtime_min": 97,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UUMNNK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F3UTDQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pygmalion"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-07",
           "ref": "B07BGCQRH4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UUMNNK",
           "type": "libex-import"
         }
       ],
@@ -5961,101 +6037,6 @@
         }
       ],
       "title": "Pygmalion (Classic Radio Theatre)"
-    },
-    "pygmalion-george-bernard-shaw": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "george-bernard-shaw"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "literary-fiction",
-        "writing-publishing"
-      ],
-      "id": "pygmalion-george-bernard-shaw",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2001": {
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002UUMNNK",
-              "region": "us"
-            },
-            {
-              "asin": "B004F3UTDQ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 32879,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 617326,
-              "start_ms": 32879,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1874918,
-              "start_ms": 650205,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 889556,
-              "start_ms": 2525123,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2374055,
-              "start_ms": 3414679,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 58561,
-              "start_ms": 5788734,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vbNtYD2nL.jpg",
-          "id": "full-cast-2001",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast",
-            "nicholas-pennell",
-            "shannon-cochran"
-          ],
-          "publisher": "L.A. Theatre Works",
-          "release_date": "2001-03-15",
-          "runtime_min": 97,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002UUMNNK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F3UTDQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pygmalion-george-bernard-shaw"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002UUMNNK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pygmalion"
     },
     "pygmalion-perfekt-unverliebt": {
       "added_at": "2026-07-29",

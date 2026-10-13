@@ -6,14 +6,53 @@
         "charles-lamb"
       ],
       "genres": [
+        "action-adventure",
         "military-science-fiction",
         "post-apocalyptic",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "alice-resurrection",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-thomas-may-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GV55THCF",
+              "region": "us"
+            },
+            {
+              "asin": "B0GV51XFRY",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71jWuUA+soL.jpg",
+          "id": "daniel-thomas-may-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-thomas-may"
+          ],
+          "publisher": "Tantor Media",
+          "release_date": "2026-09-22",
+          "runtime_min": 660,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GV55THCF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GV51XFRY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alice-resurrection"
+        },
         "david-drummond-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -253,6 +292,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B01IDQVPRO",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GV55THCF",
           "type": "libex-import"
         }
       ],
@@ -3383,6 +3427,91 @@
           ],
           "work": "alices-adventures-in-wonderland"
         },
+        "full-cast-2000": {
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V0TEO0",
+              "region": "us"
+            },
+            {
+              "asin": "B004FKA9GQ",
+              "region": "de"
+            },
+            {
+              "asin": "B07YRT2DGX",
+              "region": "es"
+            },
+            {
+              "asin": "B01BZNRQKM",
+              "region": "jp"
+            },
+            {
+              "asin": "B004EVNI28",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1344435,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1375875,
+              "start_ms": 1344435,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1382609,
+              "start_ms": 2720310,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1337562,
+              "start_ms": 4102919,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51fHWlNq1jL.jpg",
+          "id": "full-cast-2000",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Monterey SoundWorks",
+          "release_date": "2000-07-19",
+          "runtime_min": 90,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V0TEO0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FKA9GQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07YRT2DGX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01BZNRQKM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVNI28",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland"
+        },
         "gareth-stafford-2017": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -3712,6 +3841,115 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B0CJLXYBQ1",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland"
+        },
+        "h-s-e-2022": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B09S3NH48X",
+              "region": "us"
+            },
+            {
+              "asin": "B09S3MZDP1",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 8684,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 757899,
+              "start_ms": 8684,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 758363,
+              "start_ms": 766583,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 608084,
+              "start_ms": 1524946,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 908062,
+              "start_ms": 2133030,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 805128,
+              "start_ms": 3041092,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 960354,
+              "start_ms": 3846220,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 869030,
+              "start_ms": 4806574,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 891460,
+              "start_ms": 5675604,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 885376,
+              "start_ms": 6567064,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 805987,
+              "start_ms": 7452440,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 704005,
+              "start_ms": 8258427,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 767071,
+              "start_ms": 8962432,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 6129,
+              "start_ms": 9729503,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91HOLhwOhnL.jpg",
+          "id": "h-s-e-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "h-s-e"
+          ],
+          "publisher": "H. S. E",
+          "release_date": "2022-02-09",
+          "runtime_min": 162,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B09S3NH48X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09S3MZDP1",
               "type": "libex-import"
             }
           ],
@@ -6208,6 +6446,142 @@
           ],
           "work": "alices-adventures-in-wonderland"
         },
+        "michael-page-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B071JCGYVH",
+              "region": "us"
+            },
+            {
+              "asin": "B0BQJPCLC6",
+              "region": "br"
+            },
+            {
+              "asin": "B072M5S3Y6",
+              "region": "de"
+            },
+            {
+              "asin": "B07YRRWHHC",
+              "region": "es"
+            },
+            {
+              "asin": "B072JKWRYY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 178097,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 716196,
+              "start_ms": 178097,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 715175,
+              "start_ms": 894293,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 624199,
+              "start_ms": 1609468,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 883194,
+              "start_ms": 2233667,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 807172,
+              "start_ms": 3116861,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 922204,
+              "start_ms": 3924033,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 844185,
+              "start_ms": 4846237,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 873163,
+              "start_ms": 5690422,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 900191,
+              "start_ms": 6563585,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 943195,
+              "start_ms": 7463776,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 633208,
+              "start_ms": 8406971,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 827188,
+              "start_ms": 9040179,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 296147,
+              "start_ms": 9867367,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51RQmHoKJFL.jpg",
+          "id": "michael-page-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michael-page"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2017-06-13",
+          "runtime_min": 169,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071JCGYVH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0BQJPCLC6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B072M5S3Y6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07YRRWHHC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B072JKWRYY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland"
+        },
         "michael-scott-2018": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -6419,6 +6793,124 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B071YXN7S2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alices-adventures-in-wonderland"
+        },
+        "michelle-bowser-2020": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B089M8VPW6",
+              "region": "us"
+            },
+            {
+              "asin": "B089M8CN8F",
+              "region": "de"
+            },
+            {
+              "asin": "B089MB49FL",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 25123,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 725670,
+              "start_ms": 25123,
+              "title": "Chapter I: Down the Rabbit Hole"
+            },
+            {
+              "length_ms": 737697,
+              "start_ms": 750793,
+              "title": "Chapter II: The Pool of Tears"
+            },
+            {
+              "length_ms": 635158,
+              "start_ms": 1488490,
+              "title": "Chapter III: A Caucus-Race and a Long Tale"
+            },
+            {
+              "length_ms": 875438,
+              "start_ms": 2123648,
+              "title": "Chapter IV: The Rabbit Sends in a Little Bill"
+            },
+            {
+              "length_ms": 769695,
+              "start_ms": 2999086,
+              "title": "Chapter V: Advice from a Caterpillar"
+            },
+            {
+              "length_ms": 881754,
+              "start_ms": 3768781,
+              "title": "Chapter VI: Pig and Pepper"
+            },
+            {
+              "length_ms": 836847,
+              "start_ms": 4650535,
+              "title": "Chapter VII: A Mad Tea-Party"
+            },
+            {
+              "length_ms": 839447,
+              "start_ms": 5487382,
+              "title": "Chapter VIII: The Queen's Croquet-Ground"
+            },
+            {
+              "length_ms": 823704,
+              "start_ms": 6326829,
+              "title": "Chapter IX: The Mock Turtle's Story"
+            },
+            {
+              "length_ms": 720375,
+              "start_ms": 7150533,
+              "title": "Chapter X: The Lobster Quadrille"
+            },
+            {
+              "length_ms": 620855,
+              "start_ms": 7870908,
+              "title": "Chapter XI: Who Stole the Tarts?"
+            },
+            {
+              "length_ms": 700638,
+              "start_ms": 8491763,
+              "title": "Chapter XII: Alice's Evidence"
+            },
+            {
+              "length_ms": 36130,
+              "start_ms": 9192401,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NJz0303BL.jpg",
+          "id": "michelle-bowser-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "michelle-bowser"
+          ],
+          "publisher": "Burning Bulb Publishing",
+          "release_date": "2020-06-03",
+          "runtime_min": 153,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B089M8VPW6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B089M8CN8F",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B089MB49FL",
               "type": "libex-import"
             }
           ],
@@ -9150,149 +9642,29 @@
           "imported_at": "2026-08-02",
           "ref": "1662128940",
           "type": "libex-import"
-        }
-      ],
-      "title": "Alice's Adventures in Wonderland"
-    },
-    "alices-adventures-in-wonderland-academic-edition": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "alices-adventures-in-wonderland-academic-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michelle-bowser-2020": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B089M8VPW6",
-              "region": "us"
-            },
-            {
-              "asin": "B089M8CN8F",
-              "region": "de"
-            },
-            {
-              "asin": "B089MB49FL",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 25123,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 725670,
-              "start_ms": 25123,
-              "title": "Chapter I: Down the Rabbit Hole"
-            },
-            {
-              "length_ms": 737697,
-              "start_ms": 750793,
-              "title": "Chapter II: The Pool of Tears"
-            },
-            {
-              "length_ms": 635158,
-              "start_ms": 1488490,
-              "title": "Chapter III: A Caucus-Race and a Long Tale"
-            },
-            {
-              "length_ms": 875438,
-              "start_ms": 2123648,
-              "title": "Chapter IV: The Rabbit Sends in a Little Bill"
-            },
-            {
-              "length_ms": 769695,
-              "start_ms": 2999086,
-              "title": "Chapter V: Advice from a Caterpillar"
-            },
-            {
-              "length_ms": 881754,
-              "start_ms": 3768781,
-              "title": "Chapter VI: Pig and Pepper"
-            },
-            {
-              "length_ms": 836847,
-              "start_ms": 4650535,
-              "title": "Chapter VII: A Mad Tea-Party"
-            },
-            {
-              "length_ms": 839447,
-              "start_ms": 5487382,
-              "title": "Chapter VIII: The Queen's Croquet-Ground"
-            },
-            {
-              "length_ms": 823704,
-              "start_ms": 6326829,
-              "title": "Chapter IX: The Mock Turtle's Story"
-            },
-            {
-              "length_ms": 720375,
-              "start_ms": 7150533,
-              "title": "Chapter X: The Lobster Quadrille"
-            },
-            {
-              "length_ms": 620855,
-              "start_ms": 7870908,
-              "title": "Chapter XI: Who Stole the Tarts?"
-            },
-            {
-              "length_ms": 700638,
-              "start_ms": 8491763,
-              "title": "Chapter XII: Alice's Evidence"
-            },
-            {
-              "length_ms": 36130,
-              "start_ms": 9192401,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91NJz0303BL.jpg",
-          "id": "michelle-bowser-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michelle-bowser"
-          ],
-          "publisher": "Burning Bulb Publishing",
-          "release_date": "2020-06-03",
-          "runtime_min": 153,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B089M8VPW6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B089M8CN8F",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B089MB49FL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-academic-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B089M8VPW6",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B071JCGYVH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B09S3NH48X",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002V0TEO0",
+          "type": "libex-import"
         }
       ],
-      "title": "Alice's Adventures In Wonderland (Academic Edition)"
+      "title": "Alice's Adventures in Wonderland"
     },
     "alices-adventures-in-wonderland-adaptation": {
       "added_at": "2026-08-07",
@@ -9545,166 +9917,6 @@
         }
       ],
       "title": "Alice’s Adventures in Wonderland (Adapted for Children)"
-    },
-    "alices-adventures-in-wonderland-amazonclassics-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "fantasy"
-      ],
-      "id": "alices-adventures-in-wonderland-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "michael-page-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B071JCGYVH",
-              "region": "us"
-            },
-            {
-              "asin": "B0BQJPCLC6",
-              "region": "br"
-            },
-            {
-              "asin": "B072M5S3Y6",
-              "region": "de"
-            },
-            {
-              "asin": "B07YRRWHHC",
-              "region": "es"
-            },
-            {
-              "asin": "B072JKWRYY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 178097,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 716196,
-              "start_ms": 178097,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 715175,
-              "start_ms": 894293,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 624199,
-              "start_ms": 1609468,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 883194,
-              "start_ms": 2233667,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 807172,
-              "start_ms": 3116861,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 922204,
-              "start_ms": 3924033,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 844185,
-              "start_ms": 4846237,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 873163,
-              "start_ms": 5690422,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 900191,
-              "start_ms": 6563585,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 943195,
-              "start_ms": 7463776,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 633208,
-              "start_ms": 8406971,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 827188,
-              "start_ms": 9040179,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 296147,
-              "start_ms": 9867367,
-              "title": "Chapter 14"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51RQmHoKJFL.jpg",
-          "id": "michael-page-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "michael-page"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2017-06-13",
-          "runtime_min": 169,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B071JCGYVH",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0BQJPCLC6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B072M5S3Y6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07YRRWHHC",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B072JKWRYY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-amazonclassics-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B071JCGYVH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice's Adventures in Wonderland (AmazonClassics Edition)"
     },
     "alices-adventures-in-wonderland-and-through-the-looking-glass": {
       "added_at": "2026-08-01",
@@ -12491,139 +12703,6 @@
       ],
       "title": "Alice's Adventures in Wonderland - Annotated"
     },
-    "alices-adventures-in-wonderland-annotated-edition": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "classics",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "alices-adventures-in-wonderland-annotated-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "h-s-e-2022": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B09S3NH48X",
-              "region": "us"
-            },
-            {
-              "asin": "B09S3MZDP1",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 8684,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 757899,
-              "start_ms": 8684,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 758363,
-              "start_ms": 766583,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 608084,
-              "start_ms": 1524946,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 908062,
-              "start_ms": 2133030,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 805128,
-              "start_ms": 3041092,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 960354,
-              "start_ms": 3846220,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 869030,
-              "start_ms": 4806574,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 891460,
-              "start_ms": 5675604,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 885376,
-              "start_ms": 6567064,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 805987,
-              "start_ms": 7452440,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 704005,
-              "start_ms": 8258427,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 767071,
-              "start_ms": 8962432,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 6129,
-              "start_ms": 9729503,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91HOLhwOhnL.jpg",
-          "id": "h-s-e-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "h-s-e"
-          ],
-          "publisher": "H. S. E",
-          "release_date": "2022-02-09",
-          "runtime_min": 162,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B09S3NH48X",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09S3MZDP1",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-annotated-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B09S3NH48X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice’s Adventures in Wonderland (Annotated Edition)"
-    },
     "alices-adventures-in-wonderland-by-lewis-carroll": {
       "added_at": "2026-08-02",
       "authors": [
@@ -12681,114 +12760,6 @@
         }
       ],
       "title": "Alice's Adventures in Wonderland by Lewis Carroll"
-    },
-    "alices-adventures-in-wonderland-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "alices-adventures-in-wonderland-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2000": {
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002V0TEO0",
-              "region": "us"
-            },
-            {
-              "asin": "B004FKA9GQ",
-              "region": "de"
-            },
-            {
-              "asin": "B07YRT2DGX",
-              "region": "es"
-            },
-            {
-              "asin": "B01BZNRQKM",
-              "region": "jp"
-            },
-            {
-              "asin": "B004EVNI28",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1344435,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1375875,
-              "start_ms": 1344435,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1382609,
-              "start_ms": 2720310,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1337562,
-              "start_ms": 4102919,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51fHWlNq1jL.jpg",
-          "id": "full-cast-2000",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Monterey SoundWorks",
-          "release_date": "2000-07-19",
-          "runtime_min": 90,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002V0TEO0",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FKA9GQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07YRT2DGX",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01BZNRQKM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVNI28",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alices-adventures-in-wonderland-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002V0TEO0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alice's Adventures in Wonderland (Dramatized)"
     },
     "alices-adventures-in-wonderland-sleepless-edition": {
       "added_at": "2026-08-02",

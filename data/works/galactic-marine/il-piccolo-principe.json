@@ -10781,7 +10781,12 @@
         "oscar-wilde"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "gothic",
+        "historical-fiction",
+        "horror",
+        "paranormal",
+        "thriller-suspense"
       ],
       "id": "il-ritratto-di-dorian-gray",
       "language": "it",
@@ -10895,34 +10900,7 @@
             }
           ],
           "work": "il-ritratto-di-dorian-gray"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "3748010737",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Il ritratto di Dorian Gray"
-    },
-    "il-ritratto-di-dorian-gray-the-picture-of-dorian-gray": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "oscar-wilde"
-      ],
-      "genres": [
-        "classics",
-        "gothic",
-        "historical-fiction",
-        "horror",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "il-ritratto-di-dorian-gray-the-picture-of-dorian-gray",
-      "language": "it",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "dante-biagioni-2010": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -11045,17 +11023,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "il-ritratto-di-dorian-gray-the-picture-of-dorian-gray"
+          "work": "il-ritratto-di-dorian-gray"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "3748010737",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0049C5NCU",
           "type": "libex-import"
         }
       ],
-      "title": "Il ritratto di Dorian Gray [The Picture of Dorian Gray]"
+      "title": "Il ritratto di Dorian Gray"
     },
     "il-ritratto-di-elsa-greer": {
       "added_at": "2026-07-29",

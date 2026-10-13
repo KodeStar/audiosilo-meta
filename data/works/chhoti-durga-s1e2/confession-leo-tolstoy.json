@@ -14508,6 +14508,45 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chante-mccormick-2025": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DD5H6NBR",
+              "region": "us"
+            },
+            {
+              "asin": "B0DD5MY7GY",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ok-MbohXL.jpg",
+          "id": "chante-mccormick-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chante-mccormick",
+            "karrine-steffans",
+            "tyla-collier"
+          ],
+          "publisher": "Amistad",
+          "release_date": "2025-03-04",
+          "runtime_min": 417,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DD5H6NBR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DD5MY7GY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "confessions-of-a-video-vixen"
+        },
         "karrine-steffans-2005": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -14583,66 +14622,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002V5B2PY",
           "type": "libex-import"
-        }
-      ],
-      "title": "Confessions of a Video Vixen"
-    },
-    "confessions-of-a-video-vixen-karrine-steffans": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "karrine-steffans"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "confessions-of-a-video-vixen-karrine-steffans",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chante-mccormick-2025": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DD5H6NBR",
-              "region": "us"
-            },
-            {
-              "asin": "B0DD5MY7GY",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ok-MbohXL.jpg",
-          "id": "chante-mccormick-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chante-mccormick",
-            "karrine-steffans",
-            "tyla-collier"
-          ],
-          "publisher": "Amistad",
-          "release_date": "2025-03-04",
-          "runtime_min": 417,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DD5H6NBR",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DD5MY7GY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "confessions-of-a-video-vixen-karrine-steffans"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DD5H6NBR",

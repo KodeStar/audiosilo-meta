@@ -8201,7 +8201,8 @@
     "90-minutes-in-heaven": {
       "added_at": "2026-07-29",
       "authors": [
-        "don-piper"
+        "don-piper",
+        "cecil-murphey"
       ],
       "genres": [
         "biography-memoir",
@@ -8341,32 +8342,7 @@
             }
           ],
           "work": "90-minutes-in-heaven"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0038EFU4Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "90 Minutes in Heaven"
-    },
-    "90-minutes-in-heaven-don-piper": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "don-piper",
-        "cecil-murphey"
-      ],
-      "genres": [
-        "biography-memoir",
-        "religion-spirituality",
-        "religious-fiction"
-      ],
-      "id": "90-minutes-in-heaven-don-piper",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "don-piper-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8549,10 +8525,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "90-minutes-in-heaven-don-piper"
+          "work": "90-minutes-in-heaven"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0038EFU4Q",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B015QKWY3Y",

@@ -4883,7 +4883,8 @@
     "the-red-queen-philippa-gregory": {
       "added_at": "2026-07-29",
       "authors": [
-        "philippa-gregory"
+        "philippa-gregory",
+        "gareth-armstrong"
       ],
       "genres": [
         "historical-fiction",
@@ -5487,33 +5488,7 @@
             }
           ],
           "work": "the-red-queen-philippa-gregory"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003VBXYVM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Red Queen"
-    },
-    "the-red-queen-philippa-gregory-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "philippa-gregory",
-        "gareth-armstrong"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "history",
-        "romance"
-      ],
-      "id": "the-red-queen-philippa-gregory-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "emily-watson-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5806,10 +5781,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-red-queen-philippa-gregory-2"
+          "work": "the-red-queen-philippa-gregory"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003VBXYVM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B004GAVDVU",

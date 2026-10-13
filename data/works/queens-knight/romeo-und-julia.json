@@ -434,6 +434,46 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "fonolibro-inc-2008": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0844Y7H61",
+              "region": "es"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2957665,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 2971225,
+              "start_ms": 2957665,
+              "title": "Capítulo 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TFJLmSTUL.jpg",
+          "id": "fonolibro-inc-2008",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fonolibro-inc"
+          ],
+          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
+          "release_date": "2008-02-06",
+          "runtime_min": 98,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0844Y7H61",
+              "type": "libex-import"
+            }
+          ],
+          "work": "romeo-y-julieta"
+        },
         "marcos-chacon-2020": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -441,6 +481,52 @@
             {
               "asin": "B085CKJSWZ",
               "region": "es"
+            },
+            {
+              "asin": "B085CK8PF3",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 353616,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 405606,
+              "start_ms": 353616,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 460846,
+              "start_ms": 759222,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 302416,
+              "start_ms": 1220068,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 372842,
+              "start_ms": 1522484,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 461241,
+              "start_ms": 1895326,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 438741,
+              "start_ms": 2356567,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 359792,
+              "start_ms": 2795308,
+              "title": "Capítulo 8"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81S8rDWqVkL.jpg",
@@ -457,6 +543,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "B085CKJSWZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B085CK8PF3",
               "type": "libex-import"
             }
           ],
@@ -522,164 +613,19 @@
           "imported_at": "2026-07-29",
           "ref": "B085CKJSWZ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Romeo y Julieta"
-    },
-    "romeo-y-julieta-dramatizado": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "drama-plays"
-      ],
-      "id": "romeo-y-julieta-dramatizado",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "fonolibro-inc-2008": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0844Y7H61",
-              "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2957665,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 2971225,
-              "start_ms": 2957665,
-              "title": "Capítulo 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91TFJLmSTUL.jpg",
-          "id": "fonolibro-inc-2008",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "fonolibro-inc"
-          ],
-          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
-          "release_date": "2008-02-06",
-          "runtime_min": 98,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0844Y7H61",
-              "type": "libex-import"
-            }
-          ],
-          "work": "romeo-y-julieta-dramatizado"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0844Y7H61",
           "type": "libex-import"
-        }
-      ],
-      "title": "Romeo y Julieta (Dramatizado)"
-    },
-    "romeo-y-julieta-romeo-and-juliet": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "romeo-y-julieta-romeo-and-juliet",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marcos-chacon-2020": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B085CK8PF3",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 353616,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 405606,
-              "start_ms": 353616,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 460846,
-              "start_ms": 759222,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 302416,
-              "start_ms": 1220068,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 372842,
-              "start_ms": 1522484,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 461241,
-              "start_ms": 1895326,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 438741,
-              "start_ms": 2356567,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 359792,
-              "start_ms": 2795308,
-              "title": "Capítulo 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81S8rDWqVkL.jpg",
-          "id": "marcos-chacon-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcos-chacon"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-04",
-          "runtime_min": 52,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CK8PF3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "romeo-y-julieta-romeo-and-juliet"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B085CK8PF3",
           "type": "libex-import"
         }
       ],
-      "title": "Romeo y Julieta [Romeo and Juliet]"
+      "title": "Romeo y Julieta"
     },
     "romeos-mondkristall-plan": {
       "added_at": "2026-08-02",

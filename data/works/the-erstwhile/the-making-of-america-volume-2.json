@@ -10908,6 +10908,7 @@
       "genres": [
         "hard-boiled",
         "mystery",
+        "police-procedural",
         "romance",
         "romantic-comedy",
         "thriller-suspense"
@@ -11418,6 +11419,63 @@
               "imported_at": "2026-09-24",
               "ref": "B004T3FDDI",
               "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-maltese-falcon"
+        },
+        "full-cast-2009": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V1OO5I",
+              "region": "us"
+            },
+            {
+              "asin": "B004UWSCYA",
+              "region": "de"
+            },
+            {
+              "asin": "B004EVJYPS",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 6942814,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51ltxJ2lgoL.jpg",
+          "id": "full-cast-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "jane-lapotaire",
+            "nickolas-grace",
+            "peter-vaughan",
+            "tom-wilkinson"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2009-05-04",
+          "runtime_min": 115,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V1OO5I",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004UWSCYA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVJYPS",
+              "type": "libex-import"
             }
           ],
           "work": "the-maltese-falcon"
@@ -12494,90 +12552,14 @@
           "imported_at": "2026-07-30",
           "ref": "1982525428",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Maltese Falcon"
-    },
-    "the-maltese-falcon-bbc-radio-crimes": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "dashiell-hammett"
-      ],
-      "genres": [
-        "hard-boiled",
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "the-maltese-falcon-bbc-radio-crimes",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2009": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002V1OO5I",
-              "region": "us"
-            },
-            {
-              "asin": "B004UWSCYA",
-              "region": "de"
-            },
-            {
-              "asin": "B004EVJYPS",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 6942814,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51ltxJ2lgoL.jpg",
-          "id": "full-cast-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast",
-            "jane-lapotaire",
-            "nickolas-grace",
-            "peter-vaughan",
-            "tom-wilkinson"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2009-05-04",
-          "runtime_min": 115,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002V1OO5I",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004UWSCYA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVJYPS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-maltese-falcon-bbc-radio-crimes"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B002V1OO5I",
           "type": "libex-import"
         }
       ],
-      "title": "The Maltese Falcon (BBC Radio Crimes)"
+      "title": "The Maltese Falcon"
     },
     "the-maltese-falcon-screen-guild-players": {
       "added_at": "2026-07-29",

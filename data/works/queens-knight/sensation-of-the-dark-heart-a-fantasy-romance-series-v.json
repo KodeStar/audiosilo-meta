@@ -2355,7 +2355,9 @@
         }
       ],
       "genres": [
-        "classics"
+        "classics",
+        "romance",
+        "romantic-comedy"
       ],
       "id": "sense-and-sensibility",
       "language": "en",
@@ -3233,6 +3235,52 @@
             {
               "imported_at": "2026-10-09",
               "ref": "2291067702",
+              "type": "libex-import"
+            }
+          ],
+          "work": "sense-and-sensibility"
+        },
+        "brady-smith-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0H12V5YG7",
+              "region": "us"
+            },
+            {
+              "asin": "B0H12KCH6X",
+              "region": "de"
+            },
+            {
+              "asin": "B0H12699NB",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/818T9mRPv0L.jpg",
+          "id": "brady-smith-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "brady-smith"
+          ],
+          "publisher": "Another World Audiobooks",
+          "release_date": "2026-05-11",
+          "runtime_min": 711,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0H12V5YG7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0H12KCH6X",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0H12699NB",
               "type": "libex-import"
             }
           ],
@@ -5595,6 +5643,11 @@
           "imported_at": "2026-08-07",
           "ref": "B0CG6PRYF2",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0H12V5YG7",
+          "type": "libex-import"
         }
       ],
       "title": "Sense and Sensibility"
@@ -5709,75 +5762,6 @@
         }
       ],
       "title": "Sense and Sensibility (Adaptation)"
-    },
-    "sense-and-sensibility-annotated": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jane-austen"
-      ],
-      "genres": [
-        "romance",
-        "romantic-comedy"
-      ],
-      "id": "sense-and-sensibility-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "brady-smith-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0H12V5YG7",
-              "region": "us"
-            },
-            {
-              "asin": "B0H12KCH6X",
-              "region": "de"
-            },
-            {
-              "asin": "B0H12699NB",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/818T9mRPv0L.jpg",
-          "id": "brady-smith-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "brady-smith"
-          ],
-          "publisher": "Another World Audiobooks",
-          "release_date": "2026-05-11",
-          "runtime_min": 711,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0H12V5YG7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0H12KCH6X",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0H12699NB",
-              "type": "libex-import"
-            }
-          ],
-          "work": "sense-and-sensibility-annotated"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0H12V5YG7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sense and Sensibility (Annotated)"
     },
     "sense-and-sensibility-pride-and-prejudice-with-songs-from-regency-england": {
       "added_at": "2026-08-08",

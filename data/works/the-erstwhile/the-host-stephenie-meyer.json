@@ -5322,12 +5322,67 @@
       "genres": [
         "health-wellness",
         "medicine",
+        "politics",
         "science"
       ],
       "id": "the-hot-zone-richard-preston",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "howard-mcgillin-2007": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8LD0A",
+              "region": "us"
+            },
+            {
+              "asin": "B079VSXDXS",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3624217,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4005071,
+              "start_ms": 3624217,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3526322,
+              "start_ms": 7629288,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81v0SCVTtuL.jpg",
+          "id": "howard-mcgillin-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "howard-mcgillin"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2007-03-30",
+          "runtime_min": 185,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8LD0A",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079VSXDXS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-hot-zone-richard-preston"
+        },
         "richard-m-davidson-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5562,6 +5617,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B004XJ60P8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V8LD0A",
           "type": "libex-import"
         }
       ],

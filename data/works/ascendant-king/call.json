@@ -1657,6 +1657,7 @@
         "john-le-carre"
       ],
       "genres": [
+        "classics",
         "espionage",
         "historical-fiction",
         "mystery",
@@ -1666,6 +1667,57 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "anna-chancellor-2009": {
+          "abridged": false,
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B002V5A282",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVO01Q",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2717060,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2544721,
+              "start_ms": 2717060,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/519sh7L6ULL.jpg",
+          "id": "anna-chancellor-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anna-chancellor",
+            "eleanor-bron",
+            "kenneth-cranham"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2009-07-10",
+          "runtime_min": 87,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V5A282",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVO01Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "call-for-the-dead"
+        },
         "michael-jayston-2010": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -2218,85 +2270,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0CYDK9RBJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Call for the Dead"
-    },
-    "call-for-the-dead-dramatised": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "john-le-carre"
-      ],
-      "genres": [
-        "classics",
-        "espionage",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "call-for-the-dead-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anna-chancellor-2009": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B002V5A282",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVO01Q",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2717060,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2544721,
-              "start_ms": 2717060,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/519sh7L6ULL.jpg",
-          "id": "anna-chancellor-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anna-chancellor",
-            "eleanor-bron",
-            "kenneth-cranham"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2009-07-10",
-          "runtime_min": 87,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B002V5A282",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVO01Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "call-for-the-dead-dramatised"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B002V5A282",
           "type": "libex-import"
         }
       ],
-      "title": "Call for the Dead (Dramatised)"
+      "title": "Call for the Dead"
     },
     "call-her-mine": {
       "added_at": "2026-07-29",

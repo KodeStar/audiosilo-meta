@@ -6684,6 +6684,7 @@
       "genres": [
         "historical-fiction",
         "historical-romance",
+        "history",
         "romance"
       ],
       "id": "sir-philips-folly",
@@ -6768,32 +6769,7 @@
             }
           ],
           "work": "sir-philips-folly"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0086791NG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sir Philip's Folly"
-    },
-    "sir-philips-folly-m-c-beaton": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "m-c-beaton"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "history",
-        "romance"
-      ],
-      "id": "sir-philips-folly-m-c-beaton",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "davina-porter-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6871,17 +6847,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "sir-philips-folly-m-c-beaton"
+          "work": "sir-philips-folly"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0086791NG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01MA28PML",
           "type": "libex-import"
         }
       ],
-      "title": "Sir Philip’s Folly"
+      "title": "Sir Philip's Folly"
     },
     "sir-quinlan-and-the-swords-of-valor": {
       "added_at": "2026-08-02",

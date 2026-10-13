@@ -17477,6 +17477,43 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bryan-godwin-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0C638P7TR",
+              "region": "us"
+            },
+            {
+              "asin": "B0C63FWF7C",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91bA46zG8+L.jpg",
+          "id": "bryan-godwin-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bryan-godwin"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-05-30",
+          "runtime_min": 392,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0C638P7TR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0C63FWF7C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "baron-trumps-marvellous-underground-journey"
+        },
         "joe-wosik-2018": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -17911,62 +17948,7 @@
           "imported_at": "2026-08-02",
           "ref": "B086R5NNN8",
           "type": "libex-import"
-        }
-      ],
-      "title": "Baron Trump's Marvellous Underground Journey"
-    },
-    "baron-trumps-marvellous-underground-journey-ingersoll-lockwood": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ingersoll-lockwood"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "baron-trumps-marvellous-underground-journey-ingersoll-lockwood",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bryan-godwin-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0C638P7TR",
-              "region": "us"
-            },
-            {
-              "asin": "B0C63FWF7C",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91bA46zG8+L.jpg",
-          "id": "bryan-godwin-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bryan-godwin"
-          ],
-          "publisher": "Bookstream Audiobooks",
-          "release_date": "2023-05-30",
-          "runtime_min": 392,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0C638P7TR",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0C63FWF7C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "baron-trumps-marvellous-underground-journey-ingersoll-lockwood"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0C638P7TR",

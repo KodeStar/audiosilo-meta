@@ -6147,7 +6147,8 @@
     "my-life-in-france": {
       "added_at": "2026-07-29",
       "authors": [
-        "julia-child"
+        "julia-child",
+        "alex-prudhomme"
       ],
       "genres": [
         "arts-entertainment",
@@ -6159,6 +6160,95 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "flo-salant-greenberg-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8HA3E",
+              "region": "us"
+            },
+            {
+              "asin": "B004EXDV1Y",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2762385,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2567570,
+              "start_ms": 2762385,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3076969,
+              "start_ms": 5329955,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2135679,
+              "start_ms": 8406924,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2128805,
+              "start_ms": 10542603,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2138186,
+              "start_ms": 12671408,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1249837,
+              "start_ms": 14809594,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 845671,
+              "start_ms": 16059431,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 669803,
+              "start_ms": 16905102,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 581335,
+              "start_ms": 17574905,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51XZai8SpwL.jpg",
+          "id": "flo-salant-greenberg-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "flo-salant-greenberg"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2006-04-04",
+          "runtime_min": 302,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8HA3E",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EXDV1Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "my-life-in-france"
+        },
         "kimberly-farr-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6539,116 +6629,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002VAGOE8",
           "type": "libex-import"
-        }
-      ],
-      "title": "My Life in France"
-    },
-    "my-life-in-france-alex-prudhomme": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alex-prudhomme",
-        "julia-child"
-      ],
-      "genres": [
-        "biography-memoir",
-        "food-cooking",
-        "home-garden"
-      ],
-      "id": "my-life-in-france-alex-prudhomme",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "flo-salant-greenberg-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V8HA3E",
-              "region": "us"
-            },
-            {
-              "asin": "B004EXDV1Y",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2762385,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2567570,
-              "start_ms": 2762385,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3076969,
-              "start_ms": 5329955,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2135679,
-              "start_ms": 8406924,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2128805,
-              "start_ms": 10542603,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2138186,
-              "start_ms": 12671408,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1249837,
-              "start_ms": 14809594,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 845671,
-              "start_ms": 16059431,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 669803,
-              "start_ms": 16905102,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 581335,
-              "start_ms": 17574905,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51XZai8SpwL.jpg",
-          "id": "flo-salant-greenberg-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "flo-salant-greenberg"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2006-04-04",
-          "runtime_min": 302,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V8HA3E",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EXDV1Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "my-life-in-france-alex-prudhomme"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8HA3E",

@@ -4415,7 +4415,9 @@
         "hard-boiled",
         "historical-fiction",
         "literary-fiction",
-        "mystery"
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
       ],
       "id": "holy-orders",
       "language": "en",
@@ -4564,31 +4566,7 @@
             }
           ],
           "work": "holy-orders"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00DUFE3KA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Holy Orders"
-    },
-    "holy-orders-benjamin-black": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benjamin-black"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "holy-orders-benjamin-black",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "john-keating-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4731,33 +4709,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "holy-orders-benjamin-black"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00JVS04FI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Holy Orders"
-    },
-    "holy-orders-john-banville": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-banville"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "holy-orders-john-banville",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "holy-orders"
+        },
         "stanley-townsend-2026": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4793,10 +4746,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "holy-orders-john-banville"
+          "work": "holy-orders"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00DUFE3KA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00JVS04FI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0GQZPNCWH",

@@ -12077,6 +12077,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "epic-fantasy",
         "fantasy",
         "travel",
         "young-adult"
@@ -12100,6 +12101,14 @@
             {
               "asin": "B004USM7P4",
               "region": "de"
+            },
+            {
+              "asin": "B003WVNWU4",
+              "region": "us"
+            },
+            {
+              "asin": "B00IDHHQJK",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -12494,6 +12503,21 @@
               "imported_at": "2026-10-09",
               "ref": "B004USM7P4",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B003WVNWU4",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B003WVNWU4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00IDHHQJK",
+              "type": "libex-import"
             }
           ],
           "work": "eldest"
@@ -12587,6 +12611,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0739338587",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B003WVNWU4",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B003WVNWU4",
           "type": "libex-import"
         }
       ],

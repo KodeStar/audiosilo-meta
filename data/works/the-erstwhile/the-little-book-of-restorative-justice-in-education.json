@@ -8679,66 +8679,6 @@
       ],
       "title": "The Little Match Girl"
     },
-    "the-little-match-girl-from-the-naxos-audiobook-a-family-christmas": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "hans-christian-andersen"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "historical-fiction"
-      ],
-      "id": "the-little-match-girl-from-the-naxos-audiobook-a-family-christmas",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "teresa-gallagher-2007": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA9U8A",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 384940,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61QLjyn-dgL.jpg",
-          "id": "teresa-gallagher-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "teresa-gallagher"
-          ],
-          "publisher": "Naxos Audiobooks",
-          "release_date": "2007-11-21",
-          "runtime_min": 6,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA9U8A",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-little-match-girl-from-the-naxos-audiobook-a-family-christmas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA9U8A",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Little Match Girl (from the Naxos Audiobook 'A Family Christmas')"
-    },
     "the-little-match-girl-hans-christian-andersen": {
       "added_at": "2026-08-08",
       "authors": [
@@ -8747,8 +8687,10 @@
       "genres": [
         "childrens",
         "classics",
+        "coming-of-age",
         "fairy-tales-folklore",
-        "fantasy"
+        "fantasy",
+        "historical-fiction"
       ],
       "id": "the-little-match-girl-hans-christian-andersen",
       "language": "en",
@@ -8855,12 +8797,52 @@
             }
           ],
           "work": "the-little-match-girl-hans-christian-andersen"
+        },
+        "teresa-gallagher-2007": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA9U8A",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 384940,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61QLjyn-dgL.jpg",
+          "id": "teresa-gallagher-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "teresa-gallagher"
+          ],
+          "publisher": "Naxos Audiobooks",
+          "release_date": "2007-11-21",
+          "runtime_min": 6,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA9U8A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-little-match-girl-hans-christian-andersen"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-08",
           "ref": "B01N6NYBEQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA9U8A",
           "type": "libex-import"
         }
       ],

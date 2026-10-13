@@ -10594,7 +10594,8 @@
     "the-angel-of-indian-lake": {
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
-        "stephen-graham-jones"
+        "stephen-graham-jones",
+        "stephen-king"
       ],
       "genres": [
         "horror",
@@ -10733,33 +10734,8 @@
             }
           ],
           "work": "the-angel-of-indian-lake"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B0D4FPDCTM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Angel of Indian Lake"
-    },
-    "the-angel-of-indian-lake-stephen-graham-jones": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stephen-graham-jones",
-        "stephen-king"
-      ],
-      "genres": [
-        "horror",
-        "literary-fiction",
-        "thriller-suspense"
-      ],
-      "id": "the-angel-of-indian-lake-stephen-graham-jones",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrew-j-robinson-2024": {
+        },
+        "andrew-j-robinson-2024-2": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
@@ -10773,7 +10749,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71zAEia2wEL.jpg",
-          "id": "andrew-j-robinson-2024",
+          "id": "andrew-j-robinson-2024-2",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -10798,10 +10774,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-angel-of-indian-lake-stephen-graham-jones"
+          "work": "the-angel-of-indian-lake"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B0D4FPDCTM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CMDC3X89",

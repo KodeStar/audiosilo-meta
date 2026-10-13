@@ -6926,7 +6926,11 @@
         "jason-dark"
       ],
       "genres": [
-        "fantasy"
+        "fantasy",
+        "horror",
+        "paranormal",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "hochzeit-der-vampire-john-sinclair-classics-24",
       "language": "de",
@@ -7055,33 +7059,7 @@
             }
           ],
           "work": "hochzeit-der-vampire-john-sinclair-classics-24"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B018EQRTP0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hochzeit der Vampire: John Sinclair Classics 24"
-    },
-    "hochzeit-der-vampire-john-sinclair-tonstudio-braun-klassiker-45": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "hochzeit-der-vampire-john-sinclair-tonstudio-braun-klassiker-45",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "div-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7228,17 +7206,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "hochzeit-der-vampire-john-sinclair-tonstudio-braun-klassiker-45"
+          "work": "hochzeit-der-vampire-john-sinclair-classics-24"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B018EQRTP0",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01KVGTYR2",
           "type": "libex-import"
         }
       ],
-      "title": "Hochzeit der Vampire: John Sinclair - Tonstudio Braun Klassiker 45"
+      "title": "Hochzeit der Vampire: John Sinclair Classics 24"
     },
     "hochzeit-mit-hindernissen": {
       "added_at": "2026-08-02",

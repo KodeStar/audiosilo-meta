@@ -475,26 +475,6 @@
       ],
       "title": "The 9th Man"
     },
-    "the-a-b-c-murders": {
-      "added_at": "2026-07-25T19:18:21+01:00",
-      "authors": [
-        "agatha-christie"
-      ],
-      "id": "the-a-b-c-murders",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/16322.The_A_B_C_Murders",
-          "type": "community"
-        }
-      ],
-      "title": "The A.B.C. Murders",
-      "xref": {
-        "goodreads": "16322"
-      }
-    },
     "the-a-fib-cure": {
       "added_at": "2026-07-29",
       "authors": [
@@ -4440,9 +4420,17 @@
           "imported_at": "2026-08-12",
           "ref": "B0FWKH93HK",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/16322.The_A_B_C_Murders",
+          "type": "community"
         }
       ],
-      "title": "The ABC Murders"
+      "title": "The ABC Murders",
+      "xref": {
+        "goodreads": "16322"
+      }
     },
     "the-abcs-of-success": {
       "added_at": "2026-07-29",
@@ -11399,17 +11387,269 @@
     "the-absolution": {
       "added_at": "2026-07-29",
       "authors": [
-        "yrsa-sigurdardottir"
+        "yrsa-sigurdardottir",
+        "victoria-cribb"
       ],
       "genres": [
         "mystery",
         "police-procedural",
-        "thriller-suspense"
+        "psychological-thriller",
+        "thriller-suspense",
+        "travel"
       ],
       "id": "the-absolution",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "lucy-paterson-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1473694000",
+              "region": "us"
+            },
+            {
+              "asin": "1473694000",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 722186,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 981879,
+              "start_ms": 722186,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1165548,
+              "start_ms": 1704065,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 846553,
+              "start_ms": 2869613,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1129604,
+              "start_ms": 3716166,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 810562,
+              "start_ms": 4845770,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 737651,
+              "start_ms": 5656332,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 175171,
+              "start_ms": 6393983,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 240001,
+              "start_ms": 6569154,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1120316,
+              "start_ms": 6809155,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1361525,
+              "start_ms": 7929471,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1351680,
+              "start_ms": 9290996,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 518733,
+              "start_ms": 10642676,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 823147,
+              "start_ms": 11161409,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 532619,
+              "start_ms": 11984556,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1008999,
+              "start_ms": 12517175,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 377045,
+              "start_ms": 13526174,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1001290,
+              "start_ms": 13903219,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1139728,
+              "start_ms": 14904509,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1084696,
+              "start_ms": 16044237,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 865779,
+              "start_ms": 17128933,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 366410,
+              "start_ms": 17994712,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1189976,
+              "start_ms": 18361122,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 826165,
+              "start_ms": 19551098,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1242639,
+              "start_ms": 20377263,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 996600,
+              "start_ms": 21619902,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 956801,
+              "start_ms": 22616502,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1134155,
+              "start_ms": 23573303,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 971430,
+              "start_ms": 24707458,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 235032,
+              "start_ms": 25678888,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 784788,
+              "start_ms": 25913920,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 906367,
+              "start_ms": 26698708,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 914401,
+              "start_ms": 27605075,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 397293,
+              "start_ms": 28519476,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 1366308,
+              "start_ms": 28916769,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 1364265,
+              "start_ms": 30283077,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 1288986,
+              "start_ms": 31647342,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 1163784,
+              "start_ms": 32936328,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 1438383,
+              "start_ms": 34100112,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 1467826,
+              "start_ms": 35538495,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 340033,
+              "start_ms": 37006321,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 2011544,
+              "start_ms": 37346354,
+              "title": "Chapter 42"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GOXgM5gmL.jpg",
+          "id": "lucy-paterson-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lucy-paterson"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2019-04-18",
+          "runtime_min": 655,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1473694000",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1473694000",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-absolution"
+        },
         "lucy-paterson-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11675,277 +11915,7 @@
           "imported_at": "2026-07-29",
           "ref": "1250261333",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Absolution"
-    },
-    "the-absolution-yrsa-sigurdardottir": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yrsa-sigurdardottir",
-        "victoria-cribb"
-      ],
-      "genres": [
-        "mystery",
-        "psychological-thriller",
-        "thriller-suspense",
-        "travel"
-      ],
-      "id": "the-absolution-yrsa-sigurdardottir",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lucy-paterson-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1473694000",
-              "region": "us"
-            },
-            {
-              "asin": "1473694000",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 722186,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 981879,
-              "start_ms": 722186,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1165548,
-              "start_ms": 1704065,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 846553,
-              "start_ms": 2869613,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1129604,
-              "start_ms": 3716166,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 810562,
-              "start_ms": 4845770,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 737651,
-              "start_ms": 5656332,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 175171,
-              "start_ms": 6393983,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 240001,
-              "start_ms": 6569154,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1120316,
-              "start_ms": 6809155,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1361525,
-              "start_ms": 7929471,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1351680,
-              "start_ms": 9290996,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 518733,
-              "start_ms": 10642676,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 823147,
-              "start_ms": 11161409,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 532619,
-              "start_ms": 11984556,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1008999,
-              "start_ms": 12517175,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 377045,
-              "start_ms": 13526174,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1001290,
-              "start_ms": 13903219,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1139728,
-              "start_ms": 14904509,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1084696,
-              "start_ms": 16044237,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 865779,
-              "start_ms": 17128933,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 366410,
-              "start_ms": 17994712,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1189976,
-              "start_ms": 18361122,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 826165,
-              "start_ms": 19551098,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1242639,
-              "start_ms": 20377263,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 996600,
-              "start_ms": 21619902,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 956801,
-              "start_ms": 22616502,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1134155,
-              "start_ms": 23573303,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 971430,
-              "start_ms": 24707458,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 235032,
-              "start_ms": 25678888,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 784788,
-              "start_ms": 25913920,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 906367,
-              "start_ms": 26698708,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 914401,
-              "start_ms": 27605075,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 397293,
-              "start_ms": 28519476,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 1366308,
-              "start_ms": 28916769,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 1364265,
-              "start_ms": 30283077,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 1288986,
-              "start_ms": 31647342,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 1163784,
-              "start_ms": 32936328,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 1438383,
-              "start_ms": 34100112,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 1467826,
-              "start_ms": 35538495,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 340033,
-              "start_ms": 37006321,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 2011544,
-              "start_ms": 37346354,
-              "title": "Chapter 42"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91GOXgM5gmL.jpg",
-          "id": "lucy-paterson-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lucy-paterson"
-          ],
-          "publisher": "Hodder & Stoughton",
-          "release_date": "2019-04-18",
-          "runtime_min": 655,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1473694000",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1473694000",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-absolution-yrsa-sigurdardottir"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1473694000",

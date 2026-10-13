@@ -11311,13 +11311,144 @@
         "ernest-shackleton"
       ],
       "genres": [
+        "biography-memoir",
         "history",
+        "science-fiction",
         "travel"
       ],
       "id": "south",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "geoffrey-howard-2004": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA3NHE",
+              "region": "us"
+            },
+            {
+              "asin": "B004FTGY7K",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3572994,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2571610,
+              "start_ms": 3572994,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3277822,
+              "start_ms": 6144604,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3006798,
+              "start_ms": 9422426,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1932829,
+              "start_ms": 12429224,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 547573,
+              "start_ms": 14362053,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1286478,
+              "start_ms": 14909626,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 5011841,
+              "start_ms": 16196104,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4995030,
+              "start_ms": 21207945,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1543848,
+              "start_ms": 26202975,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1617966,
+              "start_ms": 27746823,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2299844,
+              "start_ms": 29364789,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2947866,
+              "start_ms": 31664633,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1561449,
+              "start_ms": 34612499,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 3980875,
+              "start_ms": 36173948,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 4069669,
+              "start_ms": 40154823,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 432913,
+              "start_ms": 44224492,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 404074,
+              "start_ms": 44657405,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/418imwGPp6L.jpg",
+          "id": "geoffrey-howard-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "geoffrey-howard"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2004-04-22",
+          "runtime_min": 750,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA3NHE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FTGY7K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "south"
+        },
         "steven-crossley-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11487,6 +11618,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B004TC0TIS",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA3NHE",
           "type": "libex-import"
         }
       ],

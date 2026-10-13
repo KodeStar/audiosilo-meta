@@ -2095,12 +2095,43 @@
       ],
       "genres": [
         "hard-boiled",
-        "mystery"
+        "mystery",
+        "psychological-thriller",
+        "thriller-suspense"
       ],
       "id": "la-grieta-del-silencio",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "belen-roca-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D1RN77JV",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Oo8cmERUL.jpg",
+          "id": "belen-roca-2024",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "belen-roca",
+            "xavi-fernandez"
+          ],
+          "publisher": "Penguin Random House Audio",
+          "release_date": "2024-04-16",
+          "runtime_min": 600,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D1RN77JV",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-grieta-del-silencio"
+        },
         "belen-roca-font-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2145,63 +2176,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0D1RJSLRC",
           "type": "libex-import"
-        }
-      ],
-      "title": "La grieta del silencio"
-    },
-    "la-grieta-del-silencio-the-fissure-of-silence": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "javier-castillo"
-      ],
-      "genres": [
-        "hard-boiled",
-        "mystery",
-        "psychological-thriller",
-        "thriller-suspense"
-      ],
-      "id": "la-grieta-del-silencio-the-fissure-of-silence",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "belen-roca-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D1RN77JV",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Oo8cmERUL.jpg",
-          "id": "belen-roca-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "belen-roca",
-            "xavi-fernandez"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2024-04-16",
-          "runtime_min": 600,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D1RN77JV",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-grieta-del-silencio-the-fissure-of-silence"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0D1RN77JV",
           "type": "libex-import"
         }
       ],
-      "title": "La grieta del silencio [The Fissure of Silence]"
+      "title": "La grieta del silencio"
     },
     "la-grosse-faim-de-petit-renard": {
       "added_at": "2026-08-02",
@@ -6104,7 +6086,7 @@
       ],
       "title": "La guerra de los Mundos"
     },
-    "la-guerra-de-los-mundos-the-war-of-the-worlds": {
+    "la-guerra-de-los-mundos-war-of-the-worlds": {
       "added_at": "2026-07-29",
       "authors": [
         "h-g-wells"
@@ -6114,7 +6096,7 @@
         "classics",
         "science-fiction"
       ],
-      "id": "la-guerra-de-los-mundos-the-war-of-the-worlds",
+      "id": "la-guerra-de-los-mundos-war-of-the-worlds",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -6144,32 +6126,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-guerra-de-los-mundos-the-war-of-the-worlds"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0744MWNBX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Guerra de los Mundos [The War of the Worlds]"
-    },
-    "la-guerra-de-los-mundos-war-of-the-worlds": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "h-g-wells"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "science-fiction"
-      ],
-      "id": "la-guerra-de-los-mundos-war-of-the-worlds",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "la-guerra-de-los-mundos-war-of-the-worlds"
+        },
         "yair-martinez-quezada-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6340,6 +6298,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B07RD2KQP4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0744MWNBX",
           "type": "libex-import"
         }
       ],

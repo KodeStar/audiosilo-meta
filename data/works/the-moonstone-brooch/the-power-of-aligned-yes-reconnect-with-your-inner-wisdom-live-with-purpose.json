@@ -457,15 +457,55 @@
     "the-power-of-awareness": {
       "added_at": "2026-07-29",
       "authors": [
-        "neville-goddard"
+        "neville-goddard",
+        "the-neville-collection"
       ],
       "genres": [
-        "religion-spirituality"
+        "parenting-relationships",
+        "religion-spirituality",
+        "self-help"
       ],
       "id": "the-power-of-awareness",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "charles-conrad-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B09RQT29N5",
+              "region": "us"
+            },
+            {
+              "asin": "B09RQSBX8L",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81h8m1d4gTL.jpg",
+          "id": "charles-conrad-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charles-conrad"
+          ],
+          "publisher": "The Neville Collection",
+          "release_date": "2022-02-04",
+          "runtime_min": 143,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09RQT29N5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09RQSBX8L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-power-of-awareness"
+        },
         "dan-strutzel-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -873,6 +913,11 @@
           "imported_at": "2026-07-29",
           "ref": "B00C2ZZ1BO",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09RQT29N5",
+          "type": "libex-import"
         }
       ],
       "title": "The Power of Awareness"
@@ -1212,68 +1257,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "1549185713",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Power of Awareness"
-    },
-    "the-power-of-awareness-neville-goddard": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "neville-goddard",
-        "the-neville-collection"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "religion-spirituality",
-        "self-help"
-      ],
-      "id": "the-power-of-awareness-neville-goddard",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "charles-conrad-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09RQT29N5",
-              "region": "us"
-            },
-            {
-              "asin": "B09RQSBX8L",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81h8m1d4gTL.jpg",
-          "id": "charles-conrad-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "charles-conrad"
-          ],
-          "publisher": "The Neville Collection",
-          "release_date": "2022-02-04",
-          "runtime_min": 143,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09RQT29N5",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09RQSBX8L",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-power-of-awareness-neville-goddard"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09RQT29N5",
           "type": "libex-import"
         }
       ],

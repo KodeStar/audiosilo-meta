@@ -9528,6 +9528,60 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "oliver-wyman-2012": {
+          "abridged": false,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B009GJVJC4",
+              "region": "us"
+            },
+            {
+              "asin": "B07CPRY5JF",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4069830,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3544246,
+              "start_ms": 4069830,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81EfBJvCUoL.jpg",
+          "id": "oliver-wyman-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "oliver-wyman"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2012",
+          "runtime_min": 127,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B009GJVJC4",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B009GJVJC4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07CPRY5JF",
+              "type": "libex-import"
+            }
+          ],
+          "work": "legion-brandon-sanderson"
+        },
         "oliver-wyman-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9609,6 +9663,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00BNGVTK0",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B009GJVJC4",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B009GJVJC4",
           "type": "libex-import"
         }
       ],
@@ -11051,88 +11115,6 @@
         }
       ],
       "title": "Legión: Las múltiples vidas de Stephen Leeds (Legión) [Legion: The many lives of Stephen Leeds]"
-    },
-    "legion-legion-book-1": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "brandon-sanderson"
-      ],
-      "genres": [
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "legion-legion-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "oliver-wyman-2012": {
-          "abridged": false,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B009GJVJC4",
-              "region": "us"
-            },
-            {
-              "asin": "B07CPRY5JF",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4069830,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3544246,
-              "start_ms": 4069830,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81EfBJvCUoL.jpg",
-          "id": "oliver-wyman-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "oliver-wyman"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2012",
-          "runtime_min": 127,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B009GJVJC4",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B009GJVJC4",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07CPRY5JF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "legion-legion-book-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B009GJVJC4",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B009GJVJC4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Legion: Legion, Book #1"
     },
     "legion-of-despair": {
       "added_at": "2026-08-01",

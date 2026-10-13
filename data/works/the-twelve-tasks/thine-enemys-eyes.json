@@ -12138,185 +12138,6 @@
       ],
       "title": "Think and Eat Yourself Smart"
     },
-    "think-and-grow-rich": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "napoleon-hill",
-        "mitch-horowitz",
-        "theresa-puskar"
-      ],
-      "genres": [
-        "business",
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "think-and-grow-rich",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "erik-synnestvedt-2007": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V5D950",
-              "region": "us"
-            },
-            {
-              "asin": "B004P8Q5JI",
-              "region": "de"
-            },
-            {
-              "asin": "B004FTOII2",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 41924,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 257007,
-              "start_ms": 41924,
-              "title": "What Do You Want Most?"
-            },
-            {
-              "length_ms": 196406,
-              "start_ms": 298931,
-              "title": "Tributes to the Author"
-            },
-            {
-              "length_ms": 196397,
-              "start_ms": 495337,
-              "title": "Publisher's Preface"
-            },
-            {
-              "length_ms": 842190,
-              "start_ms": 691734,
-              "title": "Author's Preface"
-            },
-            {
-              "length_ms": 1974000,
-              "start_ms": 1533924,
-              "title": "Chapter 1: Introduction"
-            },
-            {
-              "length_ms": 2743321,
-              "start_ms": 3507924,
-              "title": "Chapter 2: Desire"
-            },
-            {
-              "length_ms": 2570596,
-              "start_ms": 6251245,
-              "title": "Chapter 3: Faith"
-            },
-            {
-              "length_ms": 892091,
-              "start_ms": 8821841,
-              "title": "Chapter 4: Auto-Suggestion"
-            },
-            {
-              "length_ms": 1982509,
-              "start_ms": 9713932,
-              "title": "Chapter 5: Specialized Knowledge"
-            },
-            {
-              "length_ms": 1894288,
-              "start_ms": 11696441,
-              "title": "Chapter 6: Imagination"
-            },
-            {
-              "length_ms": 5565913,
-              "start_ms": 13590729,
-              "title": "Chapter 7: Organized Planning"
-            },
-            {
-              "length_ms": 957148,
-              "start_ms": 19156642,
-              "title": "Chapter 8: Decision"
-            },
-            {
-              "length_ms": 2928040,
-              "start_ms": 20113790,
-              "title": "Chapter 9: Persistence"
-            },
-            {
-              "length_ms": 937609,
-              "start_ms": 23041830,
-              "title": "Chapter 10: Power of the Master Mind"
-            },
-            {
-              "length_ms": 2914875,
-              "start_ms": 23979439,
-              "title": "Chapter 11: The Mystery of Sex Transmutation"
-            },
-            {
-              "length_ms": 956160,
-              "start_ms": 26894314,
-              "title": "Chapter 12: The Subconscious Mind"
-            },
-            {
-              "length_ms": 789652,
-              "start_ms": 27850474,
-              "title": "Chapter 13: The Brain"
-            },
-            {
-              "length_ms": 1437538,
-              "start_ms": 28640126,
-              "title": "Chapter 14: The Sixth Sense"
-            },
-            {
-              "length_ms": 4425313,
-              "start_ms": 30077664,
-              "title": "Chapter 15: How to Outwit the Six Ghosts of Fear"
-            },
-            {
-              "length_ms": 17940,
-              "start_ms": 34502977,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91vb1955kTL.jpg",
-          "id": "erik-synnestvedt-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "erik-synnestvedt"
-          ],
-          "publisher": "Ascent Audio",
-          "release_date": "2007-10-16",
-          "runtime_min": 575,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V5D950",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004P8Q5JI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FTOII2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "think-and-grow-rich"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V5D950",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Think and Grow Rich"
-    },
     "think-and-grow-rich-a-black-choice": {
       "added_at": "2026-07-29",
       "authors": [
@@ -12815,7 +12636,9 @@
     "think-and-grow-rich-napoleon-hill": {
       "added_at": "2026-07-29",
       "authors": [
-        "napoleon-hill"
+        "napoleon-hill",
+        "mitch-horowitz",
+        "theresa-puskar"
       ],
       "genres": [
         "business",
@@ -13322,6 +13145,159 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B004EVS724",
+              "type": "libex-import"
+            }
+          ],
+          "work": "think-and-grow-rich-napoleon-hill"
+        },
+        "erik-synnestvedt-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V5D950",
+              "region": "us"
+            },
+            {
+              "asin": "B004P8Q5JI",
+              "region": "de"
+            },
+            {
+              "asin": "B004FTOII2",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 41924,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 257007,
+              "start_ms": 41924,
+              "title": "What Do You Want Most?"
+            },
+            {
+              "length_ms": 196406,
+              "start_ms": 298931,
+              "title": "Tributes to the Author"
+            },
+            {
+              "length_ms": 196397,
+              "start_ms": 495337,
+              "title": "Publisher's Preface"
+            },
+            {
+              "length_ms": 842190,
+              "start_ms": 691734,
+              "title": "Author's Preface"
+            },
+            {
+              "length_ms": 1974000,
+              "start_ms": 1533924,
+              "title": "Chapter 1: Introduction"
+            },
+            {
+              "length_ms": 2743321,
+              "start_ms": 3507924,
+              "title": "Chapter 2: Desire"
+            },
+            {
+              "length_ms": 2570596,
+              "start_ms": 6251245,
+              "title": "Chapter 3: Faith"
+            },
+            {
+              "length_ms": 892091,
+              "start_ms": 8821841,
+              "title": "Chapter 4: Auto-Suggestion"
+            },
+            {
+              "length_ms": 1982509,
+              "start_ms": 9713932,
+              "title": "Chapter 5: Specialized Knowledge"
+            },
+            {
+              "length_ms": 1894288,
+              "start_ms": 11696441,
+              "title": "Chapter 6: Imagination"
+            },
+            {
+              "length_ms": 5565913,
+              "start_ms": 13590729,
+              "title": "Chapter 7: Organized Planning"
+            },
+            {
+              "length_ms": 957148,
+              "start_ms": 19156642,
+              "title": "Chapter 8: Decision"
+            },
+            {
+              "length_ms": 2928040,
+              "start_ms": 20113790,
+              "title": "Chapter 9: Persistence"
+            },
+            {
+              "length_ms": 937609,
+              "start_ms": 23041830,
+              "title": "Chapter 10: Power of the Master Mind"
+            },
+            {
+              "length_ms": 2914875,
+              "start_ms": 23979439,
+              "title": "Chapter 11: The Mystery of Sex Transmutation"
+            },
+            {
+              "length_ms": 956160,
+              "start_ms": 26894314,
+              "title": "Chapter 12: The Subconscious Mind"
+            },
+            {
+              "length_ms": 789652,
+              "start_ms": 27850474,
+              "title": "Chapter 13: The Brain"
+            },
+            {
+              "length_ms": 1437538,
+              "start_ms": 28640126,
+              "title": "Chapter 14: The Sixth Sense"
+            },
+            {
+              "length_ms": 4425313,
+              "start_ms": 30077664,
+              "title": "Chapter 15: How to Outwit the Six Ghosts of Fear"
+            },
+            {
+              "length_ms": 17940,
+              "start_ms": 34502977,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91vb1955kTL.jpg",
+          "id": "erik-synnestvedt-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "erik-synnestvedt"
+          ],
+          "publisher": "Ascent Audio",
+          "release_date": "2007-10-16",
+          "runtime_min": 575,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5D950",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004P8Q5JI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FTOII2",
               "type": "libex-import"
             }
           ],
@@ -16286,6 +16262,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0C2RQCPT8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V5D950",
           "type": "libex-import"
         }
       ],

@@ -11686,6 +11686,60 @@
           ],
           "work": "the-spy-who-came-in-from-the-cold"
         },
+        "simon-russell-beale-2009": {
+          "abridged": false,
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B002VA92AQ",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVO0IY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3376646,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3402095,
+              "start_ms": 3376646,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3397637,
+              "start_ms": 6778741,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51JgDbucRkL.jpg",
+          "id": "simon-russell-beale-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-russell-beale"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2009-08-03",
+          "runtime_min": 169,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002VA92AQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVO0IY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-spy-who-came-in-from-the-cold"
+        },
         "simon-russell-beale-2025": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -12070,86 +12124,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0CYQLRN6F",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Spy Who Came in from the Cold"
-    },
-    "the-spy-who-came-in-from-the-cold-dramatised": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "john-le-carre"
-      ],
-      "genres": [
-        "espionage",
-        "thriller-suspense"
-      ],
-      "id": "the-spy-who-came-in-from-the-cold-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-russell-beale-2009": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B002VA92AQ",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVO0IY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3376646,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3402095,
-              "start_ms": 3376646,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3397637,
-              "start_ms": 6778741,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51JgDbucRkL.jpg",
-          "id": "simon-russell-beale-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-russell-beale"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2009-08-03",
-          "runtime_min": 169,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B002VA92AQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVO0IY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-spy-who-came-in-from-the-cold-dramatised"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B002VA92AQ",
           "type": "libex-import"
         }
       ],
-      "title": "The Spy Who Came in from the Cold (Dramatised)"
+      "title": "The Spy Who Came in from the Cold"
     },
     "the-spy-who-couldnt-spell": {
       "added_at": "2026-07-29",

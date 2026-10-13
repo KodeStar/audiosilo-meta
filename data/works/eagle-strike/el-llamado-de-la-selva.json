@@ -401,122 +401,11 @@
       ],
       "genres": [
         "classics",
-        "psychological-thriller"
-      ],
-      "id": "el-lobo-estepario",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "karin-zavala-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07TFJXXTM",
-              "region": "us"
-            },
-            {
-              "asin": "B07TFG1KY1",
-              "region": "de"
-            },
-            {
-              "asin": "B07TCHHHCM",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3603109,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 3599185,
-              "start_ms": 3603109,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 3599185,
-              "start_ms": 7202294,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 3599185,
-              "start_ms": 10801479,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 3599185,
-              "start_ms": 14400664,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 3599185,
-              "start_ms": 17999849,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 3599185,
-              "start_ms": 21599034,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 773595,
-              "start_ms": 25198219,
-              "title": "Capítulo 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71oremwF77L.jpg",
-          "id": "karin-zavala-2019",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "karin-zavala",
-            "leto-dugaktin"
-          ],
-          "publisher": "Stream Readers",
-          "release_date": "2019-06-25",
-          "runtime_min": 432,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07TFJXXTM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07TFG1KY1",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07TCHHHCM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-lobo-estepario"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07TFJXXTM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Lobo Estepario"
-    },
-    "el-lobo-estepario-steppenwolf": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "hermann-hesse"
-      ],
-      "genres": [
         "historical-fiction",
         "literary-fiction",
         "psychological-thriller"
       ],
-      "id": "el-lobo-estepario-steppenwolf",
+      "id": "el-lobo-estepario",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -626,17 +515,111 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-lobo-estepario-steppenwolf"
+          "work": "el-lobo-estepario"
+        },
+        "karin-zavala-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07TFJXXTM",
+              "region": "us"
+            },
+            {
+              "asin": "B07TFG1KY1",
+              "region": "de"
+            },
+            {
+              "asin": "B07TCHHHCM",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3603109,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 3599185,
+              "start_ms": 3603109,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 3599185,
+              "start_ms": 7202294,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 3599185,
+              "start_ms": 10801479,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 3599185,
+              "start_ms": 14400664,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 3599185,
+              "start_ms": 17999849,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 3599185,
+              "start_ms": 21599034,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 773595,
+              "start_ms": 25198219,
+              "title": "Capítulo 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71oremwF77L.jpg",
+          "id": "karin-zavala-2019",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "karin-zavala",
+            "leto-dugaktin"
+          ],
+          "publisher": "Stream Readers",
+          "release_date": "2019-06-25",
+          "runtime_min": 432,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07TFJXXTM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07TFG1KY1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07TCHHHCM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-lobo-estepario"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07TFJXXTM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8HJTE",
           "type": "libex-import"
         }
       ],
-      "title": "El Lobo Estepario [Steppenwolf]"
+      "title": "El Lobo Estepario"
     },
     "el-loco-de-dios-en-el-fin-del-mundo": {
       "added_at": "2026-07-29",
@@ -2333,200 +2316,6 @@
       ],
       "title": "El mago de Oz"
     },
-    "el-mago-de-oz-the-wizard-of-oz": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lyman-frank-baum"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "el-mago-de-oz-the-wizard-of-oz",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "armando-hernandez-2022": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0BDBX75KD",
-              "region": "us"
-            },
-            {
-              "asin": "B0BDBFDW4C",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18552,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 161123,
-              "start_ms": 18552,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 482023,
-              "start_ms": 179675,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 320087,
-              "start_ms": 661698,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 211115,
-              "start_ms": 981785,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 358910,
-              "start_ms": 1192900,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 203035,
-              "start_ms": 1551810,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 296379,
-              "start_ms": 1754845,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 422138,
-              "start_ms": 2051224,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 210628,
-              "start_ms": 2473362,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 292130,
-              "start_ms": 2683990,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 392974,
-              "start_ms": 2976120,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 498741,
-              "start_ms": 3369094,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 305621,
-              "start_ms": 3867835,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 213623,
-              "start_ms": 4173456,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 352037,
-              "start_ms": 4387079,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 254583,
-              "start_ms": 4739116,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 180999,
-              "start_ms": 4993699,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 119629,
-              "start_ms": 5174698,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 91579,
-              "start_ms": 5294327,
-              "title": "Capítulo 20"
-            },
-            {
-              "length_ms": 96641,
-              "start_ms": 5385906,
-              "title": "Capítulo 21"
-            },
-            {
-              "length_ms": 166301,
-              "start_ms": 5482547,
-              "title": "Capítulo 22"
-            },
-            {
-              "length_ms": 212044,
-              "start_ms": 5648848,
-              "title": "Capítulo 23"
-            },
-            {
-              "length_ms": 279986,
-              "start_ms": 5860892,
-              "title": "Capítulo 24"
-            },
-            {
-              "length_ms": 34876,
-              "start_ms": 6140878,
-              "title": "Capítulo 25"
-            },
-            {
-              "length_ms": 18575,
-              "start_ms": 6175754,
-              "title": "Capítulo 26"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81KtsFimscL.jpg",
-          "id": "armando-hernandez-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "armando-hernandez"
-          ],
-          "publisher": "Author's Republic",
-          "release_date": "2022-09-06",
-          "runtime_min": 103,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0BDBX75KD",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0BDBFDW4C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-mago-de-oz-the-wizard-of-oz"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0BDBX75KD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Mago de Oz [The Wizard of Oz]"
-    },
     "el-mago-de-oz-the-wizard-of-oz-frank-baum": {
       "added_at": "2026-07-29",
       "authors": [
@@ -2717,6 +2506,7 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
         "classics",
         "fairy-tales-folklore",
         "fantasy"
@@ -2893,12 +2683,186 @@
             }
           ],
           "work": "el-mago-de-oz-wonderful-wizard-of-oz"
+        },
+        "armando-hernandez-2022": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0BDBX75KD",
+              "region": "us"
+            },
+            {
+              "asin": "B0BDBFDW4C",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18552,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 161123,
+              "start_ms": 18552,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 482023,
+              "start_ms": 179675,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 320087,
+              "start_ms": 661698,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 211115,
+              "start_ms": 981785,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 358910,
+              "start_ms": 1192900,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 203035,
+              "start_ms": 1551810,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 296379,
+              "start_ms": 1754845,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 422138,
+              "start_ms": 2051224,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 210628,
+              "start_ms": 2473362,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 292130,
+              "start_ms": 2683990,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 392974,
+              "start_ms": 2976120,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 498741,
+              "start_ms": 3369094,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 305621,
+              "start_ms": 3867835,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 213623,
+              "start_ms": 4173456,
+              "title": "Capítulo 15"
+            },
+            {
+              "length_ms": 352037,
+              "start_ms": 4387079,
+              "title": "Capítulo 16"
+            },
+            {
+              "length_ms": 254583,
+              "start_ms": 4739116,
+              "title": "Capítulo 17"
+            },
+            {
+              "length_ms": 180999,
+              "start_ms": 4993699,
+              "title": "Capítulo 18"
+            },
+            {
+              "length_ms": 119629,
+              "start_ms": 5174698,
+              "title": "Capítulo 19"
+            },
+            {
+              "length_ms": 91579,
+              "start_ms": 5294327,
+              "title": "Capítulo 20"
+            },
+            {
+              "length_ms": 96641,
+              "start_ms": 5385906,
+              "title": "Capítulo 21"
+            },
+            {
+              "length_ms": 166301,
+              "start_ms": 5482547,
+              "title": "Capítulo 22"
+            },
+            {
+              "length_ms": 212044,
+              "start_ms": 5648848,
+              "title": "Capítulo 23"
+            },
+            {
+              "length_ms": 279986,
+              "start_ms": 5860892,
+              "title": "Capítulo 24"
+            },
+            {
+              "length_ms": 34876,
+              "start_ms": 6140878,
+              "title": "Capítulo 25"
+            },
+            {
+              "length_ms": 18575,
+              "start_ms": 6175754,
+              "title": "Capítulo 26"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81KtsFimscL.jpg",
+          "id": "armando-hernandez-2022",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "armando-hernandez"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2022-09-06",
+          "runtime_min": 103,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BDBX75KD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0BDBFDW4C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-mago-de-oz-wonderful-wizard-of-oz"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B09JXTVT87",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0BDBX75KD",
           "type": "libex-import"
         }
       ],

@@ -12014,6 +12014,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "b-j-harrison-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B06XP31N6G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ZcOE6qkxL.jpg",
+          "id": "b-j-harrison-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison",
+            "cilla-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2017-03-16",
+          "runtime_min": 64,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06XP31N6G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-diaries-of-adam-and-eve"
+        },
         "don-randall-2006": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -12126,62 +12155,14 @@
           "imported_at": "2026-07-30",
           "ref": "B002V8H6R4",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Diaries of Adam and Eve"
-    },
-    "the-diaries-of-adam-and-eve-classic-tales-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "mark-twain"
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor",
-        "literary-fiction"
-      ],
-      "id": "the-diaries-of-adam-and-eve-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B06XP31N6G",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ZcOE6qkxL.jpg",
-          "id": "b-j-harrison-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison",
-            "cilla-harrison"
-          ],
-          "publisher": "B.J. Harrison",
-          "release_date": "2017-03-16",
-          "runtime_min": 64,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B06XP31N6G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-diaries-of-adam-and-eve-classic-tales-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B06XP31N6G",
           "type": "libex-import"
         }
       ],
-      "title": "The Diaries of Adam and Eve [Classic Tales Edition]"
+      "title": "The Diaries of Adam and Eve"
     },
     "the-diaries-of-adam-eve": {
       "added_at": "2026-08-08",

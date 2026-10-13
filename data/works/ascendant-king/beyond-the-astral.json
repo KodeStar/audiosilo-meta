@@ -7114,6 +7114,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "coming-of-age",
         "fairy-tales-folklore",
         "fantasy"
       ],
@@ -7121,6 +7122,70 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "clive-mantle-2005": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5A156",
+              "region": "us"
+            },
+            {
+              "asin": "B079MB9B26",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4488092,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4515306,
+              "start_ms": 4488092,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4521018,
+              "start_ms": 9003398,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4499888,
+              "start_ms": 13524416,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4359779,
+              "start_ms": 18024304,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819vzZGLMkL.jpg",
+          "id": "clive-mantle-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clive-mantle"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2005-07-12",
+          "runtime_min": 372,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5A156",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079MB9B26",
+              "type": "libex-import"
+            }
+          ],
+          "work": "beyond-the-deepwoods"
+        },
         "clive-mantle-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7437,99 +7502,14 @@
           "imported_at": "2026-08-02",
           "ref": "B004T4KOX6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Beyond the Deepwoods"
-    },
-    "beyond-the-deepwoods-the-edge-chronicles-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "paul-stewart",
-        "chris-riddell"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "beyond-the-deepwoods-the-edge-chronicles-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "clive-mantle-2005": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V5A156",
-              "region": "us"
-            },
-            {
-              "asin": "B079MB9B26",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4488092,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4515306,
-              "start_ms": 4488092,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4521018,
-              "start_ms": 9003398,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4499888,
-              "start_ms": 13524416,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4359779,
-              "start_ms": 18024304,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819vzZGLMkL.jpg",
-          "id": "clive-mantle-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "clive-mantle"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2005-07-12",
-          "runtime_min": 372,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V5A156",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079MB9B26",
-              "type": "libex-import"
-            }
-          ],
-          "work": "beyond-the-deepwoods-the-edge-chronicles-book-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V5A156",
           "type": "libex-import"
         }
       ],
-      "title": "Beyond the Deepwoods: The Edge Chronicles Book 1"
+      "title": "Beyond the Deepwoods"
     },
     "beyond-the-desert-sands": {
       "added_at": "2026-07-29",

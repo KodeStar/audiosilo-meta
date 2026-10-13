@@ -9982,7 +9982,8 @@
     "flashman-on-the-march": {
       "added_at": "2026-08-02",
       "authors": [
-        "george-macdonald-fraser"
+        "george-macdonald-fraser",
+        "kati-nicholl"
       ],
       "genres": [
         "action-adventure",
@@ -10147,34 +10148,7 @@
             }
           ],
           "work": "flashman-on-the-march"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00VW3ED70",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Flashman on the March"
-    },
-    "flashman-on-the-march-kati-nicholl": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kati-nicholl",
-        "george-macdonald-fraser"
-      ],
-      "genres": [
-        "action-adventure",
-        "comedy-humor",
-        "historical-fiction",
-        "romance",
-        "romantic-suspense"
-      ],
-      "id": "flashman-on-the-march-kati-nicholl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "toby-stephens-2008": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -10246,10 +10220,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "flashman-on-the-march-kati-nicholl"
+          "work": "flashman-on-the-march"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00VW3ED70",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0036GROK4",

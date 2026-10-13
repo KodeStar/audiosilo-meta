@@ -10170,16 +10170,18 @@
       ],
       "title": "Dead Shot"
     },
-    "dead-shot-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
+    "dead-shot-william-w-johnstone": {
+      "added_at": "2026-07-29",
       "authors": [
         "william-w-johnstone",
         "j-a-johnstone"
       ],
       "genres": [
+        "historical-fiction",
+        "thriller-suspense",
         "westerns"
       ],
-      "id": "dead-shot-dramatized-adaptation",
+      "id": "dead-shot-william-w-johnstone",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -10241,38 +10243,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "dead-shot-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648803245",
-          "type": "audiosilo-books-import"
+          "work": "dead-shot-william-w-johnstone"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648803245",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dead Shot [Dramatized Adaptation]"
-    },
-    "dead-shot-william-w-johnstone": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "historical-fiction",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "dead-shot-william-w-johnstone",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "jack-garrett-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -10452,6 +10424,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00GGPN1FY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648803245",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648803245",
           "type": "libex-import"
         }
       ],

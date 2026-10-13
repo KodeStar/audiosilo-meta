@@ -717,12 +717,22 @@
     "the-cask-of-amontillado": {
       "added_at": "2026-08-02",
       "authors": [
-        "edgar-allan-poe"
+        "edgar-allan-poe",
+        "ben-sturgess",
+        "wireless-theatre-company"
+      ],
+      "credits": [
+        {
+          "person": "ben-sturgess",
+          "role": "editor"
+        }
       ],
       "genres": [
         "classics",
+        "education",
         "gothic",
         "horror",
+        "language",
         "short-stories",
         "thriller-suspense"
       ],
@@ -815,6 +825,42 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B004EW9TCK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cask-of-amontillado"
+        },
+        "adam-cole-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0764GNDTJ",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1387857,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71u89hSGpdL.jpg",
+          "id": "adam-cole-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adam-cole",
+            "andrew-ward"
+          ],
+          "publisher": "Design Sound Productions",
+          "release_date": "2017-10-03",
+          "runtime_min": 23,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0764GNDTJ",
               "type": "libex-import"
             }
           ],
@@ -1265,6 +1311,42 @@
           ],
           "work": "the-cask-of-amontillado"
         },
+        "john-chatty-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA9VWA",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 913473,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51u+4Qcj1TL.jpg",
+          "id": "john-chatty-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-chatty",
+            "walter-zimmerman"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2008-03-05",
+          "runtime_min": 15,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA9VWA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-cask-of-amontillado"
+        },
         "larry-g-jones-2018": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1609,6 +1691,16 @@
           "imported_at": "2026-08-02",
           "ref": "B0H3PLYLKY",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA9VWA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0764GNDTJ",
+          "type": "libex-import"
         }
       ],
       "title": "The Cask of Amontillado"
@@ -1715,136 +1807,6 @@
         }
       ],
       "title": "The Cask of Amontillado - Das Fass von Amontillado"
-    },
-    "the-cask-of-amontillado-dramatized": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edgar-allan-poe"
-      ],
-      "genres": [
-        "classics",
-        "education",
-        "horror",
-        "language",
-        "short-stories"
-      ],
-      "id": "the-cask-of-amontillado-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-chatty-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA9VWA",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 913473,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51u+4Qcj1TL.jpg",
-          "id": "john-chatty-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-chatty",
-            "walter-zimmerman"
-          ],
-          "publisher": "Jimcin Recordings",
-          "release_date": "2008-03-05",
-          "runtime_min": 15,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA9VWA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-cask-of-amontillado-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA9VWA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Cask of Amontillado (Dramatized)"
-    },
-    "the-cask-of-amontillado-edgar-allan-poe": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edgar-allan-poe",
-        "ben-sturgess",
-        "wireless-theatre-company"
-      ],
-      "credits": [
-        {
-          "person": "ben-sturgess",
-          "role": "editor"
-        }
-      ],
-      "genres": [
-        "classics",
-        "horror",
-        "short-stories"
-      ],
-      "id": "the-cask-of-amontillado-edgar-allan-poe",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adam-cole-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0764GNDTJ",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1387857,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71u89hSGpdL.jpg",
-          "id": "adam-cole-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adam-cole",
-            "andrew-ward"
-          ],
-          "publisher": "Design Sound Productions",
-          "release_date": "2017-10-03",
-          "runtime_min": 23,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0764GNDTJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-cask-of-amontillado-edgar-allan-poe"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0764GNDTJ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Cask of Amontillado"
     },
     "the-caspian-gates": {
       "added_at": "2026-07-29",

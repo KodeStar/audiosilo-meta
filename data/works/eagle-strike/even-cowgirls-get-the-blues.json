@@ -4277,7 +4277,9 @@
         "hard-boiled",
         "historical-fiction",
         "literary-fiction",
-        "mystery"
+        "mystery",
+        "police-procedural",
+        "thriller-suspense"
       ],
       "id": "even-the-dead",
       "language": "en",
@@ -4456,32 +4458,7 @@
             }
           ],
           "work": "even-the-dead"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0195CQRPU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Even the Dead"
-    },
-    "even-the-dead-benjamin-black": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benjamin-black"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "even-the-dead-benjamin-black",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sean-barrett-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4648,10 +4625,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "even-the-dead-benjamin-black"
+          "work": "even-the-dead"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0195CQRPU",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B018UTYRVA",

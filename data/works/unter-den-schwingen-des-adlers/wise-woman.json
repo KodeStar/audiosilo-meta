@@ -268,6 +268,7 @@
       ],
       "genres": [
         "biography-memoir",
+        "mystery",
         "politics",
         "social-sciences",
         "true-crime"
@@ -440,33 +441,7 @@
             }
           ],
           "work": "wiseguy"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1508295891",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Wiseguy"
-    },
-    "wiseguy-nicholas-pileggi": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "nicholas-pileggi"
-      ],
-      "genres": [
-        "biography-memoir",
-        "mystery",
-        "politics",
-        "social-sciences",
-        "true-crime"
-      ],
-      "id": "wiseguy-nicholas-pileggi",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "nicholas-pileggi-2011": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -549,10 +524,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "wiseguy-nicholas-pileggi"
+          "work": "wiseguy"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1508295891",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B005N0KQCY",

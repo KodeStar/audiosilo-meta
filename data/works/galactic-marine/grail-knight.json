@@ -8471,12 +8471,67 @@
       "genres": [
         "classics",
         "coming-of-age",
-        "historical-fiction"
+        "historical-fiction",
+        "literary-fiction"
       ],
       "id": "grandes-esperanzas",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "daniel-quintero-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8LEV8",
+              "region": "us"
+            },
+            {
+              "asin": "B004F354Q8",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3559898,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 3550145,
+              "start_ms": 3559898,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 3475470,
+              "start_ms": 7110043,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71qJn6u5t7L.jpg",
+          "id": "daniel-quintero-2006",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-quintero"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2006-07-07",
+          "runtime_min": 176,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8LEV8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F354Q8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "grandes-esperanzas"
+        },
         "various-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8763,86 +8818,14 @@
           "imported_at": "2026-07-29",
           "ref": "872628670X",
           "type": "libex-import"
-        }
-      ],
-      "title": "Grandes esperanzas"
-    },
-    "grandes-esperanzas-great-expectations": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "grandes-esperanzas-great-expectations",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-quintero-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V8LEV8",
-              "region": "us"
-            },
-            {
-              "asin": "B004F354Q8",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3559898,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 3550145,
-              "start_ms": 3559898,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 3475470,
-              "start_ms": 7110043,
-              "title": "Capítulo 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71qJn6u5t7L.jpg",
-          "id": "daniel-quintero-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-quintero"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-07-07",
-          "runtime_min": 176,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V8LEV8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F354Q8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "grandes-esperanzas-great-expectations"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8LEV8",
           "type": "libex-import"
         }
       ],
-      "title": "Grandes Esperanzas [Great Expectations]"
+      "title": "Grandes esperanzas"
     },
     "grandes-historias-de-isadora-moon-1-isadora-moon-y-el-hechizo-magico": {
       "added_at": "2026-08-02",

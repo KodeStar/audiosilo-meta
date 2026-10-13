@@ -594,6 +594,100 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "betty-hart-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00D1HPCZC",
+              "region": "us"
+            },
+            {
+              "asin": "B00D307JEE",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1229147,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3481274,
+              "start_ms": 1229147,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4084622,
+              "start_ms": 4710421,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4123167,
+              "start_ms": 8795043,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3080637,
+              "start_ms": 12918210,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4056851,
+              "start_ms": 15998847,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3751694,
+              "start_ms": 20055698,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3227666,
+              "start_ms": 23807392,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4262301,
+              "start_ms": 27035058,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3530083,
+              "start_ms": 31297359,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3185289,
+              "start_ms": 34827442,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hAeEyAxAL.jpg",
+          "id": "betty-hart-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "betty-hart"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2013-05-30",
+          "runtime_min": 633,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00D1HPCZC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00D307JEE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "chicken-soup-for-the-soul-think-positive"
+        },
         "jim-bond-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1150,6 +1244,11 @@
           "imported_at": "2026-07-29",
           "ref": "B005KBR08Y",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00D1HPCZC",
+          "type": "libex-import"
         }
       ],
       "title": "Chicken Soup for the Soul: Think Positive"
@@ -1384,124 +1483,6 @@
         }
       ],
       "title": "Chicken Soup for the Soul: Think Positive - 30 Inspirational Stories about Words that Changed Lives, Health Challenges, and Making Every Day Special"
-    },
-    "chicken-soup-for-the-soul-think-positive-jack-canfield": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jack-canfield",
-        "mark-victor-hansen"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "chicken-soup-for-the-soul-think-positive-jack-canfield",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "betty-hart-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00D1HPCZC",
-              "region": "us"
-            },
-            {
-              "asin": "B00D307JEE",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1229147,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3481274,
-              "start_ms": 1229147,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4084622,
-              "start_ms": 4710421,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4123167,
-              "start_ms": 8795043,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3080637,
-              "start_ms": 12918210,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4056851,
-              "start_ms": 15998847,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3751694,
-              "start_ms": 20055698,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3227666,
-              "start_ms": 23807392,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4262301,
-              "start_ms": 27035058,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3530083,
-              "start_ms": 31297359,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3185289,
-              "start_ms": 34827442,
-              "title": "Chapter 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hAeEyAxAL.jpg",
-          "id": "betty-hart-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "betty-hart"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2013-05-30",
-          "runtime_min": 633,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00D1HPCZC",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00D307JEE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "chicken-soup-for-the-soul-think-positive-jack-canfield"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00D1HPCZC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Chicken Soup for the Soul: Think Positive"
     },
     "chicken-soup-for-the-soul-think-positive-live-happy": {
       "added_at": "2026-08-02",

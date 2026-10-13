@@ -2881,7 +2881,14 @@
     "purgatorio": {
       "added_at": "2026-08-07",
       "authors": [
-        "dante-alighieri"
+        "dante-alighieri",
+        "ichabod-charles-wright"
+      ],
+      "credits": [
+        {
+          "person": "ichabod-charles-wright",
+          "role": "translator"
+        }
       ],
       "genres": [
         "classics",
@@ -3104,12 +3111,227 @@
             }
           ],
           "work": "purgatorio"
+        },
+        "denis-daly-2015": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B013PJ6SSU",
+              "region": "us"
+            },
+            {
+              "asin": "B013PISK78",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 695716,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 521009,
+              "start_ms": 695716,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 522774,
+              "start_ms": 1216725,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 551613,
+              "start_ms": 1739499,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 509121,
+              "start_ms": 2291112,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 557047,
+              "start_ms": 2800233,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 619044,
+              "start_ms": 3357280,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 535963,
+              "start_ms": 3976324,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 544601,
+              "start_ms": 4512287,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 584028,
+              "start_ms": 5056888,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 551985,
+              "start_ms": 5640916,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 614354,
+              "start_ms": 6192901,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 552449,
+              "start_ms": 6807255,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 605066,
+              "start_ms": 7359704,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 574833,
+              "start_ms": 7964770,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 576041,
+              "start_ms": 8539603,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 584168,
+              "start_ms": 9115644,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 532062,
+              "start_ms": 9699812,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 555979,
+              "start_ms": 10231874,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 573858,
+              "start_ms": 10787853,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 603812,
+              "start_ms": 11361711,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 530065,
+              "start_ms": 11965523,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 592620,
+              "start_ms": 12495588,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 563548,
+              "start_ms": 13088208,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 621087,
+              "start_ms": 13651756,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 552031,
+              "start_ms": 14272843,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 572511,
+              "start_ms": 14824874,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 561041,
+              "start_ms": 15397385,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 553657,
+              "start_ms": 15958426,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 559694,
+              "start_ms": 16512083,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 544740,
+              "start_ms": 17071777,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 554075,
+              "start_ms": 17616517,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 600886,
+              "start_ms": 18170592,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 557511,
+              "start_ms": 18771478,
+              "title": "Chapter 34"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gJS4Np+BL.jpg",
+          "id": "denis-daly-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "denis-daly",
+            "libby-stephenson"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2015-08-11",
+          "runtime_min": 322,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B013PJ6SSU",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B013PISK78",
+              "type": "libex-import"
+            }
+          ],
+          "work": "purgatorio"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-07",
           "ref": "B07P5VW8PJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B013PJ6SSU",
           "type": "libex-import"
         }
       ],

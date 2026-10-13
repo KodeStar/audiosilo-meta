@@ -5131,12 +5131,208 @@
       ],
       "genres": [
         "classics",
-        "mystery"
+        "literary-fiction",
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "the-secret-adversary",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "b-j-harrison-2018": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B07HJFL2J4",
+              "region": "us"
+            },
+            {
+              "asin": "B07HJCM2QT",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 30139,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 201456,
+              "start_ms": 30139,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 928519,
+              "start_ms": 231595,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 933581,
+              "start_ms": 1160114,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 629075,
+              "start_ms": 2093695,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1079449,
+              "start_ms": 2722770,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 693812,
+              "start_ms": 3802219,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 756738,
+              "start_ms": 4496031,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 747543,
+              "start_ms": 5252769,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1274311,
+              "start_ms": 6000312,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1092823,
+              "start_ms": 7274623,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 843209,
+              "start_ms": 8367446,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1104712,
+              "start_ms": 9210655,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1965615,
+              "start_ms": 10315367,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1148133,
+              "start_ms": 12280982,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 771924,
+              "start_ms": 13429115,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 885701,
+              "start_ms": 14201039,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1086833,
+              "start_ms": 15086740,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1845475,
+              "start_ms": 16173573,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1537671,
+              "start_ms": 18019048,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1192298,
+              "start_ms": 19556719,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 738719,
+              "start_ms": 20749017,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 698409,
+              "start_ms": 21487736,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 599724,
+              "start_ms": 22186145,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 806800,
+              "start_ms": 22785869,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1257917,
+              "start_ms": 23592669,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1739453,
+              "start_ms": 24850586,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 768069,
+              "start_ms": 26590039,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 1341927,
+              "start_ms": 27358108,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 427340,
+              "start_ms": 28700035,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 62275,
+              "start_ms": 29127375,
+              "title": "Chapter 31"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51yWKKUjsXL.jpg",
+          "id": "b-j-harrison-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2018-09-24",
+          "runtime_min": 486,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B07HJFL2J4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07HJCM2QT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-secret-adversary"
+        },
         "emilia-fox-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5729,6 +5925,190 @@
           ],
           "work": "the-secret-adversary"
         },
+        "marian-hussey-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1713543818",
+              "region": "us"
+            },
+            {
+              "asin": "1713543818",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 280009,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1102088,
+              "start_ms": 280009,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1085114,
+              "start_ms": 1382097,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 737094,
+              "start_ms": 2467211,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1243103,
+              "start_ms": 3204305,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 759106,
+              "start_ms": 4447408,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 834083,
+              "start_ms": 5206514,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 822102,
+              "start_ms": 6040597,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1342090,
+              "start_ms": 6862699,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1198080,
+              "start_ms": 8204789,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 936112,
+              "start_ms": 9402869,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1198080,
+              "start_ms": 10338981,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2138093,
+              "start_ms": 11537061,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1224109,
+              "start_ms": 13675154,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 844091,
+              "start_ms": 14899263,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 946097,
+              "start_ms": 15743354,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1121105,
+              "start_ms": 16689451,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1930089,
+              "start_ms": 17810556,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1627091,
+              "start_ms": 19740645,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1296091,
+              "start_ms": 21367736,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 763100,
+              "start_ms": 22663827,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 704075,
+              "start_ms": 23426927,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 666110,
+              "start_ms": 24131002,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 843139,
+              "start_ms": 24797112,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1301106,
+              "start_ms": 25640251,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1823091,
+              "start_ms": 26941357,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 780097,
+              "start_ms": 28764448,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 1391130,
+              "start_ms": 29544545,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 843046,
+              "start_ms": 30935675,
+              "title": "Chapter 29"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/810nMmEfW5L.jpg",
+          "id": "marian-hussey-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "marian-hussey"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2020-07-28",
+          "runtime_min": 529,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1713543818",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1713543818",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-secret-adversary"
+        },
         "nadia-may-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6093,6 +6473,16 @@
           "imported_at": "2026-08-08",
           "ref": "B008CQ9HSA",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1713543818",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B07HJFL2J4",
+          "type": "libex-import"
         }
       ],
       "title": "The Secret Adversary"
@@ -6300,214 +6690,6 @@
         }
       ],
       "title": "The Secret Adversary: A Tommy & Tuppence Mystery"
-    },
-    "the-secret-adversary-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "the-secret-adversary-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marian-hussey-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1713543818",
-              "region": "us"
-            },
-            {
-              "asin": "1713543818",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 280009,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1102088,
-              "start_ms": 280009,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1085114,
-              "start_ms": 1382097,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 737094,
-              "start_ms": 2467211,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1243103,
-              "start_ms": 3204305,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 759106,
-              "start_ms": 4447408,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 834083,
-              "start_ms": 5206514,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 822102,
-              "start_ms": 6040597,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1342090,
-              "start_ms": 6862699,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1198080,
-              "start_ms": 8204789,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 936112,
-              "start_ms": 9402869,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1198080,
-              "start_ms": 10338981,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2138093,
-              "start_ms": 11537061,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1224109,
-              "start_ms": 13675154,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 844091,
-              "start_ms": 14899263,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 946097,
-              "start_ms": 15743354,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1121105,
-              "start_ms": 16689451,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1930089,
-              "start_ms": 17810556,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1627091,
-              "start_ms": 19740645,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1296091,
-              "start_ms": 21367736,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 763100,
-              "start_ms": 22663827,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 704075,
-              "start_ms": 23426927,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 666110,
-              "start_ms": 24131002,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 843139,
-              "start_ms": 24797112,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1301106,
-              "start_ms": 25640251,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1823091,
-              "start_ms": 26941357,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 780097,
-              "start_ms": 28764448,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1391130,
-              "start_ms": 29544545,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 843046,
-              "start_ms": 30935675,
-              "title": "Chapter 29"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/810nMmEfW5L.jpg",
-          "id": "marian-hussey-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marian-hussey"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2020-07-28",
-          "runtime_min": 529,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1713543818",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1713543818",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-secret-adversary-amazonclassics-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1713543818",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Secret Adversary (AmazonClassics Edition)"
     },
     "the-secret-adversary-and-then-there-were-none": {
       "added_at": "2026-07-29",
@@ -6838,222 +7020,6 @@
         }
       ],
       "title": "The Secret Adversary & And Then There Were None"
-    },
-    "the-secret-adversary-classic-tales-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "the-secret-adversary-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2018": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B07HJFL2J4",
-              "region": "us"
-            },
-            {
-              "asin": "B07HJCM2QT",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 30139,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 201456,
-              "start_ms": 30139,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 928519,
-              "start_ms": 231595,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 933581,
-              "start_ms": 1160114,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 629075,
-              "start_ms": 2093695,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1079449,
-              "start_ms": 2722770,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 693812,
-              "start_ms": 3802219,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 756738,
-              "start_ms": 4496031,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 747543,
-              "start_ms": 5252769,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1274311,
-              "start_ms": 6000312,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1092823,
-              "start_ms": 7274623,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 843209,
-              "start_ms": 8367446,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1104712,
-              "start_ms": 9210655,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1965615,
-              "start_ms": 10315367,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1148133,
-              "start_ms": 12280982,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 771924,
-              "start_ms": 13429115,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 885701,
-              "start_ms": 14201039,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1086833,
-              "start_ms": 15086740,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1845475,
-              "start_ms": 16173573,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1537671,
-              "start_ms": 18019048,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1192298,
-              "start_ms": 19556719,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 738719,
-              "start_ms": 20749017,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 698409,
-              "start_ms": 21487736,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 599724,
-              "start_ms": 22186145,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 806800,
-              "start_ms": 22785869,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1257917,
-              "start_ms": 23592669,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1739453,
-              "start_ms": 24850586,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 768069,
-              "start_ms": 26590039,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1341927,
-              "start_ms": 27358108,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 427340,
-              "start_ms": 28700035,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 62275,
-              "start_ms": 29127375,
-              "title": "Chapter 31"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51yWKKUjsXL.jpg",
-          "id": "b-j-harrison-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison"
-          ],
-          "publisher": "B.J. Harrison",
-          "release_date": "2018-09-24",
-          "runtime_min": 486,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B07HJFL2J4",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07HJCM2QT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-secret-adversary-classic-tales-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B07HJFL2J4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Secret Adversary [Classic Tales Edition]"
     },
     "the-secret-adversary-n-or-m": {
       "added_at": "2026-08-07",

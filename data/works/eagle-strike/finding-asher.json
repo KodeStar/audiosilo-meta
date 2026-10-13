@@ -9554,6 +9554,7 @@
       "genres": [
         "arts-entertainment",
         "biography-memoir",
+        "parenting-relationships",
         "politics",
         "writing-publishing"
       ],
@@ -9561,6 +9562,85 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alton-fitzgeral-white-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UZLEZS",
+              "region": "us"
+            },
+            {
+              "asin": "B004EW91RI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2688360,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2401315,
+              "start_ms": 2688360,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2616424,
+              "start_ms": 5089675,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2548158,
+              "start_ms": 7706099,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2304348,
+              "start_ms": 10254257,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2300726,
+              "start_ms": 12558605,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2602446,
+              "start_ms": 14859331,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2504179,
+              "start_ms": 17461777,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41hU1D+SvGL.jpg",
+          "id": "alton-fitzgeral-white-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alton-fitzgeral-white"
+          ],
+          "publisher": "William Morrow",
+          "release_date": "2006-03-06",
+          "runtime_min": 332,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UZLEZS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EW91RI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "finding-fish"
+        },
         "thomas-penny-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9661,106 +9741,7 @@
           "imported_at": "2026-07-29",
           "ref": "B01F7P4FZI",
           "type": "libex-import"
-        }
-      ],
-      "title": "Finding Fish"
-    },
-    "finding-fish-antwone-q-fisher": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "antwone-q-fisher"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir",
-        "parenting-relationships",
-        "writing-publishing"
-      ],
-      "id": "finding-fish-antwone-q-fisher",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alton-fitzgeral-white-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002UZLEZS",
-              "region": "us"
-            },
-            {
-              "asin": "B004EW91RI",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2688360,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2401315,
-              "start_ms": 2688360,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2616424,
-              "start_ms": 5089675,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2548158,
-              "start_ms": 7706099,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2304348,
-              "start_ms": 10254257,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2300726,
-              "start_ms": 12558605,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2602446,
-              "start_ms": 14859331,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2504179,
-              "start_ms": 17461777,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41hU1D+SvGL.jpg",
-          "id": "alton-fitzgeral-white-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alton-fitzgeral-white"
-          ],
-          "publisher": "William Morrow",
-          "release_date": "2006-03-06",
-          "runtime_min": 332,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002UZLEZS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EW91RI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "finding-fish-antwone-q-fisher"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZLEZS",

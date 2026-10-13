@@ -10792,7 +10792,8 @@
       "genres": [
         "classics",
         "comedy-humor",
-        "history"
+        "history",
+        "politics"
       ],
       "id": "a-modest-proposal",
       "language": "en",
@@ -11371,6 +11372,51 @@
           ],
           "work": "a-modest-proposal"
         },
+        "tim-gerard-reynolds-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1799718921",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 54525,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1342550,
+              "start_ms": 54525,
+              "title": "A Modest Proposal"
+            },
+            {
+              "length_ms": 401076,
+              "start_ms": 1397075,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71AIqrBpouL.jpg",
+          "id": "tim-gerard-reynolds-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tim-gerard-reynolds"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-09-17",
+          "runtime_min": 29,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1799718921",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-modest-proposal"
+        },
         "todd-messinger-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11422,77 +11468,14 @@
           "imported_at": "2026-08-02",
           "ref": "B06Y6FF828",
           "type": "libex-import"
-        }
-      ],
-      "title": "A Modest Proposal"
-    },
-    "a-modest-proposal-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jonathan-swift"
-      ],
-      "genres": [
-        "comedy-humor",
-        "politics"
-      ],
-      "id": "a-modest-proposal-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tim-gerard-reynolds-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1799718921",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 54525,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1342550,
-              "start_ms": 54525,
-              "title": "A Modest Proposal"
-            },
-            {
-              "length_ms": 401076,
-              "start_ms": 1397075,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71AIqrBpouL.jpg",
-          "id": "tim-gerard-reynolds-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tim-gerard-reynolds"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-09-17",
-          "runtime_min": 29,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1799718921",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-modest-proposal-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1799718921",
           "type": "libex-import"
         }
       ],
-      "title": "A Modest Proposal (AmazonClassics Edition)"
+      "title": "A Modest Proposal"
     },
     "a-modest-proposal-and-other-essays": {
       "added_at": "2026-07-29",

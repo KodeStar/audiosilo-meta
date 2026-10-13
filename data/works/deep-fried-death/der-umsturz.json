@@ -4450,11 +4450,13 @@
     "der-ungluckliche-morder": {
       "added_at": "2026-07-29",
       "authors": [
-        "hakan-nesser"
+        "hakan-nesser",
+        "gabriele-haefs"
       ],
       "genres": [
         "hard-boiled",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "der-ungluckliche-morder",
       "language": "de",
@@ -4547,30 +4549,7 @@
             }
           ],
           "work": "der-ungluckliche-morder"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TKMH6Y2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Der unglückliche Mörder"
-    },
-    "der-ungluckliche-morder-hakan-nesser": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "hakan-nesser",
-        "gabriele-haefs"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "der-ungluckliche-morder-hakan-nesser",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "max-moor-2011": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4938,10 +4917,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "der-ungluckliche-morder-hakan-nesser"
+          "work": "der-ungluckliche-morder"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TKMH6Y2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00TWO8YYO",
@@ -6469,29 +6453,7 @@
             }
           ],
           "work": "der-unheimliche-von-dartmoor-john-sinclair-sonderedition-13"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "383878975X",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Der Unheimliche von Dartmoor: John Sinclair Sonderedition 13"
-    },
-    "der-unheimliche-von-dartmoor-john-sinclair-tonstudio-braun-klassiker-90": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "horror"
-      ],
-      "id": "der-unheimliche-von-dartmoor-john-sinclair-tonstudio-braun-klassiker-90",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "div-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6638,17 +6600,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "der-unheimliche-von-dartmoor-john-sinclair-tonstudio-braun-klassiker-90"
+          "work": "der-unheimliche-von-dartmoor-john-sinclair-sonderedition-13"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "383878975X",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B074H71F16",
           "type": "libex-import"
         }
       ],
-      "title": "Der Unheimliche von Dartmoor: John Sinclair - Tonstudio Braun Klassiker 90"
+      "title": "Der Unheimliche von Dartmoor: John Sinclair Sonderedition 13"
     },
     "der-unsicht-hase": {
       "added_at": "2026-10-09",

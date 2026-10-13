@@ -4893,8 +4893,11 @@
         "michael-anderle"
       ],
       "genres": [
+        "fantasy",
         "horror",
-        "science-fiction"
+        "paranormal",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "never-forsaken",
       "language": "en",
@@ -5088,31 +5091,7 @@
             }
           ],
           "work": "never-forsaken"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B0722KS9CF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Never Forsaken"
-    },
-    "never-forsaken-dramatized": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "michael-anderle"
-      ],
-      "genres": [
-        "fantasy",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "never-forsaken-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5186,10 +5165,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "never-forsaken-dramatized"
+          "work": "never-forsaken"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B0722KS9CF",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "1648818919",
@@ -5201,7 +5185,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Never Forsaken (Dramatized)"
+      "title": "Never Forsaken"
     },
     "never-get-a-real-job": {
       "added_at": "2026-07-29",

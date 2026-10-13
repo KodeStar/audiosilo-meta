@@ -14408,7 +14408,8 @@
     "execution-dock": {
       "added_at": "2026-07-29",
       "authors": [
-        "anne-perry"
+        "anne-perry",
+        "david-colacci"
       ],
       "genres": [
         "historical-fiction",
@@ -14508,32 +14509,7 @@
             }
           ],
           "work": "execution-dock"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V8DHMW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Execution Dock"
-    },
-    "execution-dock-anne-perry": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "anne-perry",
-        "david-colacci"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "execution-dock-anne-perry",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "david-colacci-2016": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -14641,10 +14617,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "execution-dock-anne-perry"
+          "work": "execution-dock"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V8DHMW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B01BHB0532",

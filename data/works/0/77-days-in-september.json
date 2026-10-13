@@ -1489,12 +1489,177 @@
       "genres": [
         "legal-thriller",
         "mystery",
+        "police-procedural",
         "thriller-suspense"
       ],
       "id": "7th-heaven",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "carolyn-mccormick-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0032N8X9M",
+              "region": "us"
+            },
+            {
+              "asin": "B004EXKJ4G",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1134481,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1190162,
+              "start_ms": 1134481,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1037932,
+              "start_ms": 2324643,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1033195,
+              "start_ms": 3362575,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 987127,
+              "start_ms": 4395770,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1019867,
+              "start_ms": 5382897,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 786646,
+              "start_ms": 6402764,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1287779,
+              "start_ms": 7189410,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1323259,
+              "start_ms": 8477189,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1092406,
+              "start_ms": 9800448,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1285224,
+              "start_ms": 10892854,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1299482,
+              "start_ms": 12178078,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1012994,
+              "start_ms": 13477560,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 821986,
+              "start_ms": 14490554,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 960470,
+              "start_ms": 15312540,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1550721,
+              "start_ms": 16273010,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 885656,
+              "start_ms": 17823731,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1012994,
+              "start_ms": 18709387,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1031105,
+              "start_ms": 19722381,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1188258,
+              "start_ms": 20753486,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 879200,
+              "start_ms": 21941744,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1025718,
+              "start_ms": 22820944,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1149713,
+              "start_ms": 23846662,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 937064,
+              "start_ms": 24996375,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1802844,
+              "start_ms": 25933439,
+              "title": "Chapter 25"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PkWKIHMFL.jpg",
+          "id": "carolyn-mccormick-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carolyn-mccormick"
+          ],
+          "publisher": "Cornerstone Digital",
+          "release_date": "2007-12-10",
+          "runtime_min": 462,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0032N8X9M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EXKJ4G",
+              "type": "libex-import"
+            }
+          ],
+          "work": "7th-heaven"
+        },
         "carolyn-mccormick-2008": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -2294,190 +2459,7 @@
           "imported_at": "2026-07-30",
           "ref": "B002V8HMQ4",
           "type": "libex-import"
-        }
-      ],
-      "title": "7th Heaven"
-    },
-    "7th-heaven-james-patterson": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "7th-heaven-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carolyn-mccormick-2007": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0032N8X9M",
-              "region": "us"
-            },
-            {
-              "asin": "B004EXKJ4G",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1134481,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1190162,
-              "start_ms": 1134481,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1037932,
-              "start_ms": 2324643,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1033195,
-              "start_ms": 3362575,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 987127,
-              "start_ms": 4395770,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1019867,
-              "start_ms": 5382897,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 786646,
-              "start_ms": 6402764,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1287779,
-              "start_ms": 7189410,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1323259,
-              "start_ms": 8477189,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1092406,
-              "start_ms": 9800448,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1285224,
-              "start_ms": 10892854,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1299482,
-              "start_ms": 12178078,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1012994,
-              "start_ms": 13477560,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 821986,
-              "start_ms": 14490554,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 960470,
-              "start_ms": 15312540,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1550721,
-              "start_ms": 16273010,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 885656,
-              "start_ms": 17823731,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1012994,
-              "start_ms": 18709387,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1031105,
-              "start_ms": 19722381,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1188258,
-              "start_ms": 20753486,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 879200,
-              "start_ms": 21941744,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1025718,
-              "start_ms": 22820944,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1149713,
-              "start_ms": 23846662,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 937064,
-              "start_ms": 24996375,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1802844,
-              "start_ms": 25933439,
-              "title": "Chapter 25"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PkWKIHMFL.jpg",
-          "id": "carolyn-mccormick-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carolyn-mccormick"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2007-12-10",
-          "runtime_min": 462,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0032N8X9M",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EXKJ4G",
-              "type": "libex-import"
-            }
-          ],
-          "work": "7th-heaven-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0032N8X9M",

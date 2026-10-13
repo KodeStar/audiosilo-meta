@@ -5159,73 +5159,6 @@
       ],
       "title": "Hypnos"
     },
-    "hypnos-15-top-stories-by-h-p-lovecraft": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "horror",
-        "short-stories"
-      ],
-      "id": "hypnos-15-top-stories-by-h-p-lovecraft",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "paul-spera-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "2821113293",
-              "region": "us"
-            },
-            {
-              "asin": "2821113293",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1101738,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91lcbhQWboL.jpg",
-          "id": "paul-spera-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paul-spera"
-          ],
-          "publisher": "Astorg Audio",
-          "release_date": "2019-02-08",
-          "runtime_min": 17,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "2821113293",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "2821113293",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hypnos-15-top-stories-by-h-p-lovecraft"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "2821113293",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hypnos: 15 Top Stories by H. P. Lovecraft"
-    },
     "hypnos-eva-pohler": {
       "added_at": "2026-08-02",
       "authors": [
@@ -5435,6 +5368,7 @@
       ],
       "genres": [
         "classics",
+        "horror",
         "short-stories"
       ],
       "id": "hypnos-h-p-lovecraft",
@@ -5551,6 +5485,50 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00UG0RJDK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hypnos-h-p-lovecraft"
+        },
+        "paul-spera-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "2821113293",
+              "region": "us"
+            },
+            {
+              "asin": "2821113293",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1101738,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91lcbhQWboL.jpg",
+          "id": "paul-spera-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-spera"
+          ],
+          "publisher": "Astorg Audio",
+          "release_date": "2019-02-08",
+          "runtime_min": 17,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "2821113293",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "2821113293",
               "type": "libex-import"
             }
           ],
@@ -5699,6 +5677,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0DVZ8LKGR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "2821113293",
           "type": "libex-import"
         }
       ],

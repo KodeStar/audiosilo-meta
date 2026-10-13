@@ -756,6 +756,110 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "patrick-tull-2004": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8N9Y8",
+              "region": "us"
+            },
+            {
+              "asin": "B079WWLYZJ",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 20781,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 35924,
+              "start_ms": 20781,
+              "title": "Prelude"
+            },
+            {
+              "length_ms": 4200628,
+              "start_ms": 56705,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 4195614,
+              "start_ms": 4257333,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 6047018,
+              "start_ms": 8452947,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 3244621,
+              "start_ms": 14499965,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 4683564,
+              "start_ms": 17744586,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 3348272,
+              "start_ms": 22428150,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 3683338,
+              "start_ms": 25776422,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 3491523,
+              "start_ms": 29459760,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 1579551,
+              "start_ms": 32951283,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 2594831,
+              "start_ms": 34530834,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 128012,
+              "start_ms": 37125665,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91JVpF0PojL.jpg",
+          "id": "patrick-tull-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-tull"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2004-02-05",
+          "runtime_min": 620,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8N9Y8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079WWLYZJ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-reverse-of-the-medal"
+        },
         "ric-jerrom-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1068,136 +1172,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00CFRWRA2",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Reverse of the Medal"
-    },
-    "the-reverse-of-the-medal-aubrey-maturin-series-book-11": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "patrick-obrian"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction"
-      ],
-      "id": "the-reverse-of-the-medal-aubrey-maturin-series-book-11",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "patrick-tull-2004": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V8N9Y8",
-              "region": "us"
-            },
-            {
-              "asin": "B079WWLYZJ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 20781,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 35924,
-              "start_ms": 20781,
-              "title": "Prelude"
-            },
-            {
-              "length_ms": 4200628,
-              "start_ms": 56705,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 4195614,
-              "start_ms": 4257333,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 6047018,
-              "start_ms": 8452947,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 3244621,
-              "start_ms": 14499965,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 4683564,
-              "start_ms": 17744586,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 3348272,
-              "start_ms": 22428150,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 3683338,
-              "start_ms": 25776422,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 3491523,
-              "start_ms": 29459760,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 1579551,
-              "start_ms": 32951283,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 2594831,
-              "start_ms": 34530834,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 128012,
-              "start_ms": 37125665,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91JVpF0PojL.jpg",
-          "id": "patrick-tull-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "patrick-tull"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2004-02-05",
-          "runtime_min": 620,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V8N9Y8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079WWLYZJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-reverse-of-the-medal-aubrey-maturin-series-book-11"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V8N9Y8",
           "type": "libex-import"
         }
       ],
-      "title": "The Reverse of the Medal: Aubrey/Maturin Series, Book 11"
+      "title": "The Reverse of the Medal"
     },
     "the-revisioners": {
       "added_at": "2026-07-29",

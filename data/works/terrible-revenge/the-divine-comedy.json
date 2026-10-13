@@ -3,7 +3,8 @@
     "the-divine-comedy": {
       "added_at": "2026-07-17T09:27:30+00:00",
       "authors": [
-        "dante-alighieri"
+        "dante-alighieri",
+        "charles-eliot-norton"
       ],
       "credits": [
         {
@@ -24,6 +25,7 @@
         "epic-fantasy",
         "literary-fiction",
         "poetry",
+        "religion-spirituality",
         "self-help"
       ],
       "id": "the-divine-comedy",
@@ -4601,6 +4603,100 @@
           ],
           "work": "the-divine-comedy"
         },
+        "dante-alighieri-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0JWAG",
+              "region": "us"
+            },
+            {
+              "asin": "B004FTXFYU",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4644316,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4671948,
+              "start_ms": 4644316,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4635539,
+              "start_ms": 9316264,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4624300,
+              "start_ms": 13951803,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4634657,
+              "start_ms": 18576103,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4656298,
+              "start_ms": 23210760,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3560873,
+              "start_ms": 27867058,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4707660,
+              "start_ms": 31427931,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4703295,
+              "start_ms": 36135591,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4716902,
+              "start_ms": 40838886,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1478879,
+              "start_ms": 45555788,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1TQ48QC7UL.jpg",
+          "id": "dante-alighieri-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dante-alighieri"
+          ],
+          "publisher": "Christian Audio",
+          "release_date": "2009-05-18",
+          "runtime_min": 783,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0JWAG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FTXFYU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-divine-comedy"
+        },
         "edoardo-ballerini": {
           "abridged": false,
           "asin": [
@@ -7633,122 +7729,7 @@
           "imported_at": "2026-08-08",
           "ref": "B07D3BKPV1",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Divine Comedy"
-    },
-    "the-divine-comedy-dante-alighieri": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dante-alighieri",
-        "charles-eliot-norton"
-      ],
-      "genres": [
-        "classics",
-        "epic-fantasy",
-        "poetry",
-        "religion-spirituality"
-      ],
-      "id": "the-divine-comedy-dante-alighieri",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dante-alighieri-2009": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0JWAG",
-              "region": "us"
-            },
-            {
-              "asin": "B004FTXFYU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4644316,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4671948,
-              "start_ms": 4644316,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4635539,
-              "start_ms": 9316264,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4624300,
-              "start_ms": 13951803,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4634657,
-              "start_ms": 18576103,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4656298,
-              "start_ms": 23210760,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3560873,
-              "start_ms": 27867058,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4707660,
-              "start_ms": 31427931,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4703295,
-              "start_ms": 36135591,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4716902,
-              "start_ms": 40838886,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1478879,
-              "start_ms": 45555788,
-              "title": "Chapter 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1TQ48QC7UL.jpg",
-          "id": "dante-alighieri-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dante-alighieri"
-          ],
-          "publisher": "Christian Audio",
-          "release_date": "2009-05-18",
-          "runtime_min": 783,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0JWAG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FTXFYU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-divine-comedy-dante-alighieri"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V0JWAG",
@@ -7756,474 +7737,6 @@
         }
       ],
       "title": "The Divine Comedy"
-    },
-    "the-divine-comedy-inferno": {
-      "added_at": "2026-07-31T00:43:12+01:00",
-      "authors": [
-        "dante-alighieri"
-      ],
-      "credits": [
-        {
-          "person": "henry-wadsworth-longfellow",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "poetry"
-      ],
-      "id": "the-divine-comedy-inferno",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "james-langton-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B003JTXCN6",
-              "region": "us"
-            },
-            {
-              "asin": "B004F221HY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 476984,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 478424,
-              "start_ms": 476984,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 466442,
-              "start_ms": 955408,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 494260,
-              "start_ms": 1421850,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 484554,
-              "start_ms": 1916110,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 393485,
-              "start_ms": 2400664,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 455297,
-              "start_ms": 2794149,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 436396,
-              "start_ms": 3249446,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 458594,
-              "start_ms": 3685842,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 442944,
-              "start_ms": 4144436,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 407371,
-              "start_ms": 4587380,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 476427,
-              "start_ms": 4994751,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 513672,
-              "start_ms": 5471178,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 482650,
-              "start_ms": 5984850,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 398919,
-              "start_ms": 6467500,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 423532,
-              "start_ms": 6866419,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 437000,
-              "start_ms": 7289951,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 442572,
-              "start_ms": 7726951,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 427619,
-              "start_ms": 8169523,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 432541,
-              "start_ms": 8597142,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 453114,
-              "start_ms": 9029683,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 463145,
-              "start_ms": 9482797,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 456504,
-              "start_ms": 9945942,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 480142,
-              "start_ms": 10402446,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 474151,
-              "start_ms": 10882588,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 451489,
-              "start_ms": 11356739,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 423393,
-              "start_ms": 11808228,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 453207,
-              "start_ms": 12231621,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 426504,
-              "start_ms": 12684828,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 458037,
-              "start_ms": 13111332,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 463935,
-              "start_ms": 13569369,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 454972,
-              "start_ms": 14033304,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 524307,
-              "start_ms": 14488276,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 481025,
-              "start_ms": 15012583,
-              "title": "Chapter 34"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61agdt7hxbL.jpg",
-          "id": "james-langton-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "james-langton"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2010-04-29",
-          "runtime_min": 258,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B003JTXCN6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F221HY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-divine-comedy-inferno"
-        },
-        "joe-phoenix-2021": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B09LHF1XC8",
-              "region": "us"
-            },
-            {
-              "asin": "B09LHCSV65",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14233,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3575,
-              "start_ms": 14233,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 456132,
-              "start_ms": 17808,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 495862,
-              "start_ms": 473940,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 452649,
-              "start_ms": 969802,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 495537,
-              "start_ms": 1422451,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 485459,
-              "start_ms": 1917988,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 407440,
-              "start_ms": 2403447,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 463447,
-              "start_ms": 2810887,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 386496,
-              "start_ms": 3274334,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 428524,
-              "start_ms": 3660830,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 447564,
-              "start_ms": 4089354,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 397641,
-              "start_ms": 4536918,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 456550,
-              "start_ms": 4934559,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 507750,
-              "start_ms": 5391109,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 457827,
-              "start_ms": 5898859,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 406581,
-              "start_ms": 6356686,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 444638,
-              "start_ms": 6763267,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 444476,
-              "start_ms": 7207905,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 438555,
-              "start_ms": 7652381,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 445474,
-              "start_ms": 8090936,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 437556,
-              "start_ms": 8536410,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 461659,
-              "start_ms": 8973966,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 477773,
-              "start_ms": 9435625,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 477518,
-              "start_ms": 9913398,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 522681,
-              "start_ms": 10390916,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 485784,
-              "start_ms": 10913597,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 465536,
-              "start_ms": 11399381,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 428593,
-              "start_ms": 11864917,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 442549,
-              "start_ms": 12293510,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 408555,
-              "start_ms": 12736059,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 448563,
-              "start_ms": 13144614,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 467069,
-              "start_ms": 13593177,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 431496,
-              "start_ms": 14060246,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 511698,
-              "start_ms": 14491742,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 448145,
-              "start_ms": 15003440,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 21524,
-              "start_ms": 15451585,
-              "title": "Chapter 37"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vS6e4xVUS.jpg",
-          "id": "joe-phoenix-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joe-phoenix"
-          ],
-          "publisher": "Strelbytskyy Multimedia Publishing",
-          "release_date": "2021-11-10",
-          "runtime_min": 257,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B09LHF1XC8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09LHCSV65",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-divine-comedy-inferno"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09LHF1XC8",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-12",
-          "ref": "B003JTXCN6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Divine Comedy: Inferno"
     },
     "the-divine-comedy-inferno-purgatorio-paradiso": {
       "added_at": "2026-07-25T19:18:21+01:00",
@@ -8929,245 +8442,6 @@
         }
       ],
       "title": "The Divine Comedy: Paradiso"
-    },
-    "the-divine-comedy-purgatorio": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "dante-alighieri",
-        "ichabod-charles-wright"
-      ],
-      "credits": [
-        {
-          "person": "ichabod-charles-wright",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "the-divine-comedy-purgatorio",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "denis-daly-2015": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B013PJ6SSU",
-              "region": "us"
-            },
-            {
-              "asin": "B013PISK78",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 695716,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 521009,
-              "start_ms": 695716,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 522774,
-              "start_ms": 1216725,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 551613,
-              "start_ms": 1739499,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 509121,
-              "start_ms": 2291112,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 557047,
-              "start_ms": 2800233,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 619044,
-              "start_ms": 3357280,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 535963,
-              "start_ms": 3976324,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 544601,
-              "start_ms": 4512287,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 584028,
-              "start_ms": 5056888,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 551985,
-              "start_ms": 5640916,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 614354,
-              "start_ms": 6192901,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 552449,
-              "start_ms": 6807255,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 605066,
-              "start_ms": 7359704,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 574833,
-              "start_ms": 7964770,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 576041,
-              "start_ms": 8539603,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 584168,
-              "start_ms": 9115644,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 532062,
-              "start_ms": 9699812,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 555979,
-              "start_ms": 10231874,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 573858,
-              "start_ms": 10787853,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 603812,
-              "start_ms": 11361711,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 530065,
-              "start_ms": 11965523,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 592620,
-              "start_ms": 12495588,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 563548,
-              "start_ms": 13088208,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 621087,
-              "start_ms": 13651756,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 552031,
-              "start_ms": 14272843,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 572511,
-              "start_ms": 14824874,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 561041,
-              "start_ms": 15397385,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 553657,
-              "start_ms": 15958426,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 559694,
-              "start_ms": 16512083,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 544740,
-              "start_ms": 17071777,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 554075,
-              "start_ms": 17616517,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 600886,
-              "start_ms": 18170592,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 557511,
-              "start_ms": 18771478,
-              "title": "Chapter 34"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91gJS4Np+BL.jpg",
-          "id": "denis-daly-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "denis-daly",
-            "libby-stephenson"
-          ],
-          "publisher": "Spoken Realms",
-          "release_date": "2015-08-11",
-          "runtime_min": 322,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B013PJ6SSU",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B013PISK78",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-divine-comedy-purgatorio"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B013PJ6SSU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Divine Comedy - Purgatorio"
     },
     "the-divine-comedy-stephen-wyatt": {
       "added_at": "2026-07-29",

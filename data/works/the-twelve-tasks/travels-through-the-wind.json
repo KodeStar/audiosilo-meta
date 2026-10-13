@@ -12401,6 +12401,105 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "patrick-tull-2004": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V5BR54",
+              "region": "us"
+            },
+            {
+              "asin": "B079NC4FBS",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 48145,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4731961,
+              "start_ms": 48145,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 3668242,
+              "start_ms": 4780106,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 4413324,
+              "start_ms": 8448348,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 5501740,
+              "start_ms": 12861672,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 4662629,
+              "start_ms": 18363412,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 6177975,
+              "start_ms": 23026041,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 2243329,
+              "start_ms": 29204016,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 4958774,
+              "start_ms": 31447345,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 3922672,
+              "start_ms": 36406119,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 6031689,
+              "start_ms": 40328791,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 16967,
+              "start_ms": 46360480,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91BJssaH+OL.jpg",
+          "id": "patrick-tull-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-tull"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2004-01-07",
+          "runtime_min": 772,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V5BR54",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079NC4FBS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "treasons-harbour"
+        },
         "ric-jerrom-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12713,131 +12812,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00BGBRYNS",
           "type": "libex-import"
-        }
-      ],
-      "title": "Treason's Harbour"
-    },
-    "treasons-harbour-aubrey-maturin-series-book-9": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "patrick-obrian"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction"
-      ],
-      "id": "treasons-harbour-aubrey-maturin-series-book-9",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "patrick-tull-2004": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V5BR54",
-              "region": "us"
-            },
-            {
-              "asin": "B079NC4FBS",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 48145,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4731961,
-              "start_ms": 48145,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 3668242,
-              "start_ms": 4780106,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 4413324,
-              "start_ms": 8448348,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 5501740,
-              "start_ms": 12861672,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 4662629,
-              "start_ms": 18363412,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 6177975,
-              "start_ms": 23026041,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 2243329,
-              "start_ms": 29204016,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 4958774,
-              "start_ms": 31447345,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 3922672,
-              "start_ms": 36406119,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 6031689,
-              "start_ms": 40328791,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 16967,
-              "start_ms": 46360480,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BJssaH+OL.jpg",
-          "id": "patrick-tull-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "patrick-tull"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2004-01-07",
-          "runtime_min": 772,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V5BR54",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079NC4FBS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "treasons-harbour-aubrey-maturin-series-book-9"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V5BR54",
           "type": "libex-import"
         }
       ],
-      "title": "Treason's Harbour: Aubrey/Maturin Series, Book 9"
+      "title": "Treason's Harbour"
     },
     "treasure": {
       "added_at": "2026-08-01",

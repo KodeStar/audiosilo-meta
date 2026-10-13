@@ -6150,6 +6150,14 @@
             {
               "asin": "B004H2TK8A",
               "region": "uk"
+            },
+            {
+              "asin": "B004ILM8LQ",
+              "region": "us"
+            },
+            {
+              "asin": "B004ILM578",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6313,6 +6321,16 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B004H2TK8A",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004ILM8LQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004ILM578",
               "type": "libex-import"
             }
           ],
@@ -6642,6 +6660,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B004H2TKCQ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004ILM8LQ",
           "type": "libex-import"
         }
       ],
@@ -10432,195 +10455,6 @@
         }
       ],
       "title": "Awakened"
-    },
-    "awakened-house-of-night-book-8": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kristin-cast",
-        "p-c-cast"
-      ],
-      "id": "awakened-house-of-night-book-8",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "caitlin-davies-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B004ILM8LQ",
-              "region": "us"
-            },
-            {
-              "asin": "B004ILM578",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1282113,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 557186,
-              "start_ms": 1282113,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1532563,
-              "start_ms": 1839299,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1490024,
-              "start_ms": 3371862,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 900470,
-              "start_ms": 4861886,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1254017,
-              "start_ms": 5762356,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1342903,
-              "start_ms": 7016373,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1197082,
-              "start_ms": 8359276,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1458167,
-              "start_ms": 9556358,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1060827,
-              "start_ms": 11014525,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1808324,
-              "start_ms": 12075352,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1193970,
-              "start_ms": 13883676,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1005053,
-              "start_ms": 15077646,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1086462,
-              "start_ms": 16082699,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1720506,
-              "start_ms": 17169161,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1373275,
-              "start_ms": 18889667,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1012808,
-              "start_ms": 20262942,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1240317,
-              "start_ms": 21275750,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1465829,
-              "start_ms": 22516067,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1287639,
-              "start_ms": 23981896,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1603849,
-              "start_ms": 25269535,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1421154,
-              "start_ms": 26873384,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1583183,
-              "start_ms": 28294538,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1316479,
-              "start_ms": 29877721,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1290333,
-              "start_ms": 31194200,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1353212,
-              "start_ms": 32484533,
-              "title": "Chapter 26"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51HyRJNoJ+L.jpg",
-          "id": "caitlin-davies-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "caitlin-davies"
-          ],
-          "publisher": "Little, Brown Audio",
-          "release_date": "2011-01-10",
-          "runtime_min": 563,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004ILM8LQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004ILM578",
-              "type": "libex-import"
-            }
-          ],
-          "work": "awakened-house-of-night-book-8"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004ILM8LQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Awakened: House of Night, Book 8"
     },
     "awakened-imagination": {
       "added_at": "2026-07-29",

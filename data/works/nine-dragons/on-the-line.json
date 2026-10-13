@@ -3154,17 +3154,151 @@
     "on-the-origin-of-species": {
       "added_at": "2026-07-29",
       "authors": [
-        "charles-darwin"
+        "charles-darwin",
+        "damien-hirst",
+        "william-bynum"
+      ],
+      "credits": [
+        {
+          "person": "william-bynum",
+          "role": "introduction"
+        }
       ],
       "genres": [
         "classics",
         "history",
+        "nature",
+        "philosophy",
         "science"
       ],
       "id": "on-the-origin-of-species",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ben-arogundade-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0241425522",
+              "region": "us"
+            },
+            {
+              "asin": "0241425522",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 87440,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 789832,
+              "start_ms": 87440,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 5637201,
+              "start_ms": 877272,
+              "title": "Chapter 1. Variation under Domestication"
+            },
+            {
+              "length_ms": 2298171,
+              "start_ms": 6514473,
+              "title": "Chapter 2. Variation under Nature"
+            },
+            {
+              "length_ms": 2747013,
+              "start_ms": 8812644,
+              "title": "Chapter 3. Struggle for Existence"
+            },
+            {
+              "length_ms": 7727228,
+              "start_ms": 11559657,
+              "title": "Chapter 4. Natural Selection"
+            },
+            {
+              "length_ms": 5408368,
+              "start_ms": 19286885,
+              "title": "Chapter 5. Laws of Variation"
+            },
+            {
+              "length_ms": 5070448,
+              "start_ms": 24695253,
+              "title": "Chapter 6. Difficulties on Theory"
+            },
+            {
+              "length_ms": 5350736,
+              "start_ms": 29765701,
+              "title": "Chapter 7. Instinct"
+            },
+            {
+              "length_ms": 4758117,
+              "start_ms": 35116437,
+              "title": "Chapter 8. Hybridism"
+            },
+            {
+              "length_ms": 4355482,
+              "start_ms": 39874554,
+              "title": "Chapter 9. On the Imperfection of the Geological Record"
+            },
+            {
+              "length_ms": 4739424,
+              "start_ms": 44230036,
+              "title": "Chapter 10. On the Geological Succession of Organic Beings"
+            },
+            {
+              "length_ms": 5096965,
+              "start_ms": 48969460,
+              "title": "Chapter 11. Geographical Distribution"
+            },
+            {
+              "length_ms": 3853026,
+              "start_ms": 54066425,
+              "title": "Chapter 12. Geographical Distribution — continued"
+            },
+            {
+              "length_ms": 6588685,
+              "start_ms": 57919451,
+              "title": "Chapter 13. Mutual Affinities of Organic Beings: Morphology: Embryology: Organs"
+            },
+            {
+              "length_ms": 4415932,
+              "start_ms": 64508136,
+              "title": "Chapter 14. Recapitulation and Conclusion"
+            },
+            {
+              "length_ms": 51517,
+              "start_ms": 68924068,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WnRdtQOgL.jpg",
+          "id": "ben-arogundade-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ben-arogundade"
+          ],
+          "publisher": "Penguin Classics",
+          "release_date": "2019-09-26",
+          "runtime_min": 1149,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0241425522",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "0241425522",
+              "type": "libex-import"
+            }
+          ],
+          "work": "on-the-origin-of-species"
+        },
         "bill-dewees-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3505,159 +3639,7 @@
           "imported_at": "2026-07-29",
           "ref": "B0036GPK9G",
           "type": "libex-import"
-        }
-      ],
-      "title": "On the Origin of Species"
-    },
-    "on-the-origin-of-species-charles-darwin": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-darwin",
-        "damien-hirst",
-        "william-bynum"
-      ],
-      "credits": [
-        {
-          "person": "william-bynum",
-          "role": "introduction"
-        }
-      ],
-      "genres": [
-        "history",
-        "nature",
-        "philosophy",
-        "science"
-      ],
-      "id": "on-the-origin-of-species-charles-darwin",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ben-arogundade-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "0241425522",
-              "region": "us"
-            },
-            {
-              "asin": "0241425522",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 87440,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 789832,
-              "start_ms": 87440,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 5637201,
-              "start_ms": 877272,
-              "title": "Chapter 1. Variation under Domestication"
-            },
-            {
-              "length_ms": 2298171,
-              "start_ms": 6514473,
-              "title": "Chapter 2. Variation under Nature"
-            },
-            {
-              "length_ms": 2747013,
-              "start_ms": 8812644,
-              "title": "Chapter 3. Struggle for Existence"
-            },
-            {
-              "length_ms": 7727228,
-              "start_ms": 11559657,
-              "title": "Chapter 4. Natural Selection"
-            },
-            {
-              "length_ms": 5408368,
-              "start_ms": 19286885,
-              "title": "Chapter 5. Laws of Variation"
-            },
-            {
-              "length_ms": 5070448,
-              "start_ms": 24695253,
-              "title": "Chapter 6. Difficulties on Theory"
-            },
-            {
-              "length_ms": 5350736,
-              "start_ms": 29765701,
-              "title": "Chapter 7. Instinct"
-            },
-            {
-              "length_ms": 4758117,
-              "start_ms": 35116437,
-              "title": "Chapter 8. Hybridism"
-            },
-            {
-              "length_ms": 4355482,
-              "start_ms": 39874554,
-              "title": "Chapter 9. On the Imperfection of the Geological Record"
-            },
-            {
-              "length_ms": 4739424,
-              "start_ms": 44230036,
-              "title": "Chapter 10. On the Geological Succession of Organic Beings"
-            },
-            {
-              "length_ms": 5096965,
-              "start_ms": 48969460,
-              "title": "Chapter 11. Geographical Distribution"
-            },
-            {
-              "length_ms": 3853026,
-              "start_ms": 54066425,
-              "title": "Chapter 12. Geographical Distribution — continued"
-            },
-            {
-              "length_ms": 6588685,
-              "start_ms": 57919451,
-              "title": "Chapter 13. Mutual Affinities of Organic Beings: Morphology: Embryology: Organs"
-            },
-            {
-              "length_ms": 4415932,
-              "start_ms": 64508136,
-              "title": "Chapter 14. Recapitulation and Conclusion"
-            },
-            {
-              "length_ms": 51517,
-              "start_ms": 68924068,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WnRdtQOgL.jpg",
-          "id": "ben-arogundade-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ben-arogundade"
-          ],
-          "publisher": "Penguin Classics",
-          "release_date": "2019-09-26",
-          "runtime_min": 1149,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "0241425522",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0241425522",
-              "type": "libex-import"
-            }
-          ],
-          "work": "on-the-origin-of-species-charles-darwin"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "0241425522",
@@ -6320,39 +6302,7 @@
             }
           ],
           "work": "on-the-road"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/70401.On_the_Road",
-          "type": "community"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V5GQ8M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "On the Road",
-      "xref": {
-        "goodreads": "70401"
-      }
-    },
-    "on-the-road-50th-anniversary-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "jack-kerouac"
-      ],
-      "genres": [
-        "classics",
-        "coming-of-age",
-        "literary-fiction"
-      ],
-      "id": "on-the-road-50th-anniversary-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "will-patton-2007": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -6630,17 +6580,30 @@
               "type": "libex-import"
             }
           ],
-          "work": "on-the-road-50th-anniversary-edition"
+          "work": "on-the-road"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/70401.On_the_Road",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5GQ8M",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B002UZMS58",
           "type": "libex-import"
         }
       ],
-      "title": "On the Road (50th Anniversary Edition)"
+      "title": "On the Road",
+      "xref": {
+        "goodreads": "70401"
+      }
     },
     "on-the-road-again": {
       "added_at": "2026-08-01",

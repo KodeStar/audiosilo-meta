@@ -2380,163 +2380,12 @@
         "bill-rauch"
       ],
       "genres": [
+        "arts-entertainment",
         "classics",
         "drama-plays",
         "literary-fiction"
       ],
       "id": "richard-ii",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "oregon-shakespeare-festival-2017": {
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B06Y29F5Z3",
-              "region": "us"
-            },
-            {
-              "asin": "B06Y24YD5B",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 639663,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 280590,
-              "start_ms": 639663,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 926941,
-              "start_ms": 920253,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 238097,
-              "start_ms": 1847194,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1058737,
-              "start_ms": 2085291,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 461706,
-              "start_ms": 3144028,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 505266,
-              "start_ms": 3605734,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 80759,
-              "start_ms": 4111000,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 166580,
-              "start_ms": 4191759,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 933396,
-              "start_ms": 4358339,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 814138,
-              "start_ms": 5291735,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 369244,
-              "start_ms": 6105873,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1261029,
-              "start_ms": 6475117,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 413733,
-              "start_ms": 7736146,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 369012,
-              "start_ms": 8149879,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 475080,
-              "start_ms": 8518891,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 611521,
-              "start_ms": 8993971,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 364414,
-              "start_ms": 9605492,
-              "title": "Chapter 18"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81nweu19FRL.jpg",
-          "id": "oregon-shakespeare-festival-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "oregon-shakespeare-festival"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2017-04-18",
-          "runtime_min": 166,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B06Y29F5Z3",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B06Y24YD5B",
-              "type": "libex-import"
-            }
-          ],
-          "work": "richard-ii"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B06Y29F5Z3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Richard II"
-    },
-    "richard-ii-william-shakespeare": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "classics",
-        "drama-plays"
-      ],
-      "id": "richard-ii-william-shakespeare",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -2678,10 +2527,143 @@
               "type": "libex-import"
             }
           ],
-          "work": "richard-ii-william-shakespeare"
+          "work": "richard-ii"
+        },
+        "oregon-shakespeare-festival-2017": {
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B06Y29F5Z3",
+              "region": "us"
+            },
+            {
+              "asin": "B06Y24YD5B",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 639663,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 280590,
+              "start_ms": 639663,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 926941,
+              "start_ms": 920253,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 238097,
+              "start_ms": 1847194,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1058737,
+              "start_ms": 2085291,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 461706,
+              "start_ms": 3144028,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 505266,
+              "start_ms": 3605734,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 80759,
+              "start_ms": 4111000,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 166580,
+              "start_ms": 4191759,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 933396,
+              "start_ms": 4358339,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 814138,
+              "start_ms": 5291735,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 369244,
+              "start_ms": 6105873,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1261029,
+              "start_ms": 6475117,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 413733,
+              "start_ms": 7736146,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 369012,
+              "start_ms": 8149879,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 475080,
+              "start_ms": 8518891,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 611521,
+              "start_ms": 8993971,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 364414,
+              "start_ms": 9605492,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81nweu19FRL.jpg",
+          "id": "oregon-shakespeare-festival-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "oregon-shakespeare-festival"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2017-04-18",
+          "runtime_min": 166,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B06Y29F5Z3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B06Y24YD5B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "richard-ii"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B06Y29F5Z3",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00K6N48Z4",
@@ -7387,143 +7369,6 @@
         }
       ],
       "title": "Riches Within Your Reach!"
-    },
-    "richest-man-in-babylon-original-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "george-s-clason"
-      ],
-      "genres": [
-        "business",
-        "finance"
-      ],
-      "id": "richest-man-in-babylon-original-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christa-lewis-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B073HD64K1",
-              "region": "us"
-            },
-            {
-              "asin": "B073HF2G1P",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 28653,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 118979,
-              "start_ms": 28653,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 142896,
-              "start_ms": 147632,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 767837,
-              "start_ms": 290528,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1313831,
-              "start_ms": 1058365,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2327568,
-              "start_ms": 2372196,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1679406,
-              "start_ms": 4699764,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1491093,
-              "start_ms": 6379170,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1520721,
-              "start_ms": 7870263,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 443826,
-              "start_ms": 9390984,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1221648,
-              "start_ms": 9834810,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 608316,
-              "start_ms": 11056458,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1987396,
-              "start_ms": 11664774,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 780562,
-              "start_ms": 13652170,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 27771,
-              "start_ms": 14432732,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mSdr-rOJL.jpg",
-          "id": "christa-lewis-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christa-lewis"
-          ],
-          "publisher": "Dauphin Publications",
-          "release_date": "2017-07-03",
-          "runtime_min": 240,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B073HD64K1",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B073HF2G1P",
-              "type": "libex-import"
-            }
-          ],
-          "work": "richest-man-in-babylon-original-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B073HD64K1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Richest Man In Babylon - Original Edition"
     },
     "richie": {
       "added_at": "2026-07-29",

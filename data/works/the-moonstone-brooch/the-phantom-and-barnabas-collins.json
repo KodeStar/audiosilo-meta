@@ -4045,9 +4045,14 @@
     "the-phantom-of-the-opera": {
       "added_at": "2026-08-07",
       "authors": [
-        "gaston-leroux"
+        "gaston-leroux",
+        "alexander-teixeira-de-mattos"
       ],
       "credits": [
+        {
+          "person": "alexander-teixeira-de-mattos",
+          "role": "translator"
+        },
         {
           "person": "diane-namm",
           "role": "editor"
@@ -4055,6 +4060,7 @@
       ],
       "genres": [
         "classics",
+        "gothic",
         "horror",
         "literary-fiction"
       ],
@@ -5103,44 +5109,7 @@
             }
           ],
           "work": "the-phantom-of-the-opera"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B074Q2GX5G",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-08-07",
-          "ref": "1645552705",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Phantom of the Opera"
-    },
-    "the-phantom-of-the-opera-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "gaston-leroux",
-        "alexander-teixeira-de-mattos"
-      ],
-      "credits": [
-        {
-          "person": "alexander-teixeira-de-mattos",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics",
-        "gothic",
-        "horror",
-        "literary-fiction"
-      ],
-      "id": "the-phantom-of-the-opera-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-campbell-2018": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -5328,17 +5297,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-phantom-of-the-opera-amazonclassics-edition"
+          "work": "the-phantom-of-the-opera"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B074Q2GX5G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1645552705",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B07C11CQLQ",
           "type": "libex-import"
         }
       ],
-      "title": "The Phantom of the Opera (AmazonClassics Edition)"
+      "title": "The Phantom of the Opera"
     },
     "the-phantom-of-the-opera-dramatized": {
       "added_at": "2026-08-07",

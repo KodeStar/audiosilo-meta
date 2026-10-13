@@ -1440,18 +1440,21 @@
       ],
       "title": "Voices from Beyond"
     },
-    "voices-from-beyond-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
+    "voices-from-beyond-simon-r-green": {
+      "added_at": "2026-08-02",
       "authors": [
         "simon-r-green"
       ],
       "genres": [
+        "action-adventure",
         "fantasy",
+        "ghost-stories",
+        "horror",
         "paranormal",
         "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "voices-from-beyond-dramatized-adaptation",
+      "id": "voices-from-beyond-simon-r-green",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1513,40 +1516,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "voices-from-beyond-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648808875",
-          "type": "audiosilo-books-import"
+          "work": "voices-from-beyond-simon-r-green"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648808875",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Voices From Beyond [Dramatized Adaptation]"
-    },
-    "voices-from-beyond-simon-r-green": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "simon-r-green"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "ghost-stories",
-        "horror",
-        "paranormal",
-        "urban-fantasy"
-      ],
-      "id": "voices-from-beyond-simon-r-green",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-reynolds-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1646,6 +1617,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00MFW81RA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648808875",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648808875",
           "type": "libex-import"
         }
       ],

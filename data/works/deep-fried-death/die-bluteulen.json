@@ -2084,7 +2084,11 @@
         "jason-dark"
       ],
       "genres": [
-        "horror"
+        "fantasy",
+        "horror",
+        "paranormal",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "die-blutorgel-john-sinclair-sonderedition-14",
       "language": "de",
@@ -2418,33 +2422,7 @@
             }
           ],
           "work": "die-blutorgel-john-sinclair-sonderedition-14"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "3838789768",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Die Blutorgel: John Sinclair Sonderedition 14"
-    },
-    "die-blutorgel-john-sinclair-tonstudio-braun-klassiker-33": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "die-blutorgel-john-sinclair-tonstudio-braun-klassiker-33",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "div-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2591,17 +2569,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "die-blutorgel-john-sinclair-tonstudio-braun-klassiker-33"
+          "work": "die-blutorgel-john-sinclair-sonderedition-14"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "3838789768",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01HMWQVGA",
           "type": "libex-import"
         }
       ],
-      "title": "Die Blutorgel: John Sinclair - Tonstudio Braun Klassiker 33"
+      "title": "Die Blutorgel: John Sinclair Sonderedition 14"
     },
     "die-blutsauger-von-tahiti": {
       "added_at": "2026-08-02",

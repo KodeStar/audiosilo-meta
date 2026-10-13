@@ -5425,81 +5425,6 @@
       ],
       "title": "Robinson Crusoe (AmazonClassics Edition)"
     },
-    "robinson-crusoe-bbc-childrens-classics": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "daniel-defoe"
-      ],
-      "genres": [
-        "action-adventure",
-        "arts-entertainment",
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "robinson-crusoe-bbc-childrens-classics",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "roy-marsden-2008": {
-          "abridged": true,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B002V57SP2",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3397265,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3302992,
-              "start_ms": 3397265,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1lzx9y2qZL.jpg",
-          "id": "roy-marsden-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "roy-marsden"
-          ],
-          "publisher": "BBC Worldwide Ltd",
-          "release_date": "2008",
-          "runtime_min": 115,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B002V57SP2",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B002V57SP2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "robinson-crusoe-bbc-childrens-classics"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V57SP2",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V57SP2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Robinson Crusoe (BBC Children's Classics)"
-    },
     "robinson-crusoe-daniel-defoe": {
       "added_at": "2026-08-02",
       "authors": [
@@ -6176,11 +6101,15 @@
     "robinson-crusoe-daniel-defoe-3": {
       "added_at": "2026-07-29",
       "authors": [
-        "daniel-defoe"
+        "daniel-defoe",
+        "robin-waterfield"
       ],
       "genres": [
         "action-adventure",
-        "classics"
+        "arts-entertainment",
+        "classics",
+        "literary-fiction",
+        "young-adult"
       ],
       "id": "robinson-crusoe-daniel-defoe-3",
       "language": "en",
@@ -6329,6 +6258,52 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B00CWF68L6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "robinson-crusoe-daniel-defoe-3"
+        },
+        "daniel-weyman-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07FXW2V85",
+              "region": "us"
+            },
+            {
+              "asin": "B07FXMJPZY",
+              "region": "de"
+            },
+            {
+              "asin": "B07FXZ7XBN",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/917XJwr72fL.jpg",
+          "id": "daniel-weyman-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-weyman"
+          ],
+          "publisher": "Puffin Classics",
+          "release_date": "2019-01-03",
+          "runtime_min": 389,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07FXW2V85",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07FXMJPZY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07FXZ7XBN",
               "type": "libex-import"
             }
           ],
@@ -6909,6 +6884,51 @@
           ],
           "work": "robinson-crusoe-daniel-defoe-3"
         },
+        "roy-marsden-2008": {
+          "abridged": true,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B002V57SP2",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3397265,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3302992,
+              "start_ms": 3397265,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1lzx9y2qZL.jpg",
+          "id": "roy-marsden-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "roy-marsden"
+          ],
+          "publisher": "BBC Worldwide Ltd",
+          "release_date": "2008",
+          "runtime_min": 115,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B002V57SP2",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V57SP2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "robinson-crusoe-daniel-defoe-3"
+        },
         "simon-vance-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7072,6 +7092,21 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZLIN6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V57SP2",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V57SP2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07FXW2V85",
           "type": "libex-import"
         }
       ],
@@ -8174,76 +8209,6 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0047OUJGU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Robinson Crusoe"
-    },
-    "robinson-crusoe-daniel-defoe-6": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "daniel-defoe",
-        "robin-waterfield"
-      ],
-      "genres": [
-        "classics",
-        "young-adult"
-      ],
-      "id": "robinson-crusoe-daniel-defoe-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-weyman-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07FXW2V85",
-              "region": "us"
-            },
-            {
-              "asin": "B07FXMJPZY",
-              "region": "de"
-            },
-            {
-              "asin": "B07FXZ7XBN",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/917XJwr72fL.jpg",
-          "id": "daniel-weyman-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-weyman"
-          ],
-          "publisher": "Puffin Classics",
-          "release_date": "2019-01-03",
-          "runtime_min": 389,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07FXW2V85",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07FXMJPZY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07FXZ7XBN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "robinson-crusoe-daniel-defoe-6"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07FXW2V85",
           "type": "libex-import"
         }
       ],

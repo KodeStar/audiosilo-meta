@@ -8913,12 +8913,65 @@
       ],
       "genres": [
         "classics",
-        "literary-fiction"
+        "historical-fiction",
+        "historical-romance",
+        "literary-fiction",
+        "romance"
       ],
       "id": "two-on-a-tower",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "blake-ritson-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B004CNUB2S",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVMIGA",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3404510,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3407296,
+              "start_ms": 3404510,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71UR6wmSBsL.jpg",
+          "id": "blake-ritson-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "blake-ritson",
+            "maggie-oneill"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2010-11-17",
+          "runtime_min": 113,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004CNUB2S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVMIGA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "two-on-a-tower"
+        },
         "michael-kitchen-2007": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9169,85 +9222,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V1J8CM",
           "type": "libex-import"
-        }
-      ],
-      "title": "Two on a Tower"
-    },
-    "two-on-a-tower-bbc-radio-4-classic-serial": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "thomas-hardy"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "historical-romance",
-        "literary-fiction",
-        "romance"
-      ],
-      "id": "two-on-a-tower-bbc-radio-4-classic-serial",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "blake-ritson-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B004CNUB2S",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVMIGA",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3404510,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3407296,
-              "start_ms": 3404510,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71UR6wmSBsL.jpg",
-          "id": "blake-ritson-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "blake-ritson",
-            "maggie-oneill"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2010-11-17",
-          "runtime_min": 113,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B004CNUB2S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVMIGA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "two-on-a-tower-bbc-radio-4-classic-serial"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B004CNUB2S",
           "type": "libex-import"
         }
       ],
-      "title": "Two On A Tower (Bbc Radio 4 Classic Serial)"
+      "title": "Two on a Tower"
     },
     "two-part-invention": {
       "added_at": "2026-07-29",

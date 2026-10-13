@@ -9133,6 +9133,75 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "hugh-fraser-2008": {
+          "abridged": false,
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B002V5AZSO",
+              "region": "us"
+            },
+            {
+              "asin": "B07L8JWXRN",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4348773,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4310970,
+              "start_ms": 4348773,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4306977,
+              "start_ms": 8659743,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4268849,
+              "start_ms": 12966720,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4258122,
+              "start_ms": 17235569,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4418665,
+              "start_ms": 21493691,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PrnP3gdHL.jpg",
+          "id": "hugh-fraser-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hugh-fraser"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2008-01-28",
+          "runtime_min": 431,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V5AZSO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07L8JWXRN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-hollow"
+        },
         "hugh-fraser-2012": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -9333,103 +9402,17 @@
           "imported_at": "2026-08-02",
           "ref": "B008CHN98I",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Hollow",
-      "xref": {
-        "goodreads": "16303"
-      }
-    },
-    "the-hollow-a-hercule-poirot-mystery": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "the-hollow-a-hercule-poirot-mystery",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "hugh-fraser-2008": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B002V5AZSO",
-              "region": "us"
-            },
-            {
-              "asin": "B07L8JWXRN",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4348773,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4310970,
-              "start_ms": 4348773,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4306977,
-              "start_ms": 8659743,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4268849,
-              "start_ms": 12966720,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4258122,
-              "start_ms": 17235569,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4418665,
-              "start_ms": 21493691,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PrnP3gdHL.jpg",
-          "id": "hugh-fraser-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hugh-fraser"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2008-01-28",
-          "runtime_min": 431,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B002V5AZSO",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07L8JWXRN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-hollow-a-hercule-poirot-mystery"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B002V5AZSO",
           "type": "libex-import"
         }
       ],
-      "title": "The Hollow: A Hercule Poirot Mystery"
+      "title": "The Hollow",
+      "xref": {
+        "goodreads": "16303"
+      }
     },
     "the-hollow-and-the-haunted": {
       "added_at": "2026-08-02",

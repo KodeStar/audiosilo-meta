@@ -13439,12 +13439,54 @@
             }
           ],
           "work": "isis-unveiled-volume-1"
+        },
+        "graham-dunlop-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CG77XWWB",
+              "region": "us"
+            },
+            {
+              "asin": "B0CG7H28WM",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1-QvX91CXL.jpg",
+          "id": "graham-dunlop-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "graham-dunlop"
+          ],
+          "publisher": "Adultbrain Publishing",
+          "release_date": "2023-08-22",
+          "runtime_min": 1763,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CG77XWWB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CG7H28WM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "isis-unveiled-volume-1"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B09H3PTQJB",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CG77XWWB",
           "type": "libex-import"
         }
       ],
@@ -13511,67 +13553,6 @@
         }
       ],
       "title": "Isis Unveiled, Volume 2"
-    },
-    "isis-unveiled-volume-i": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "h-p-blavatsky"
-      ],
-      "genres": [
-        "philosophy",
-        "politics",
-        "religion-spirituality"
-      ],
-      "id": "isis-unveiled-volume-i",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "graham-dunlop-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CG77XWWB",
-              "region": "us"
-            },
-            {
-              "asin": "B0CG7H28WM",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1-QvX91CXL.jpg",
-          "id": "graham-dunlop-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "graham-dunlop"
-          ],
-          "publisher": "Adultbrain Publishing",
-          "release_date": "2023-08-22",
-          "runtime_min": 1763,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CG77XWWB",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CG7H28WM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "isis-unveiled-volume-i"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CG77XWWB",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Isis Unveiled: Volume I"
     },
     "isla-and-the-happily-ever-after": {
       "added_at": "2026-07-25T19:18:21+01:00",

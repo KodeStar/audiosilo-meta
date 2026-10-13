@@ -1235,19 +1235,26 @@
       "added_at": "2026-07-29",
       "authors": [
         "plato",
-        "raymond-larson"
+        "raymond-larson",
+        "benjamin-jowett"
       ],
       "credits": [
+        {
+          "person": "benjamin-jowett",
+          "role": "translator"
+        },
         {
           "person": "raymond-larson",
           "role": "translator"
         }
       ],
       "genres": [
+        "classics",
         "history",
         "mythology",
         "philosophy",
-        "politics"
+        "politics",
+        "short-stories"
       ],
       "id": "the-republic",
       "language": "en",
@@ -1597,6 +1604,43 @@
           ],
           "work": "the-republic"
         },
+        "malcolm-hillgartner-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07CZQ48PC",
+              "region": "us"
+            },
+            {
+              "asin": "B07CZQ5HCQ",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/714OTfM0f5L.jpg",
+          "id": "malcolm-hillgartner-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "malcolm-hillgartner"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2018-05-11",
+          "runtime_min": 1358,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07CZQ48PC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07CZQ5HCQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-republic"
+        },
         "pat-bottino-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1702,78 +1746,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00LOGC1W4",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Republic"
-    },
-    "the-republic-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "plato",
-        "benjamin-jowett"
-      ],
-      "credits": [
-        {
-          "person": "benjamin-jowett",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics",
-        "philosophy",
-        "politics",
-        "short-stories"
-      ],
-      "id": "the-republic-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "malcolm-hillgartner-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07CZQ48PC",
-              "region": "us"
-            },
-            {
-              "asin": "B07CZQ5HCQ",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/714OTfM0f5L.jpg",
-          "id": "malcolm-hillgartner-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "malcolm-hillgartner"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2018-05-11",
-          "runtime_min": 1358,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07CZQ48PC",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07CZQ5HCQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-republic-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07CZQ48PC",
           "type": "libex-import"
         }
       ],
-      "title": "The Republic (AmazonClassics Edition)"
+      "title": "The Republic"
     },
     "the-republic-for-which-it-stands": {
       "added_at": "2026-07-29",

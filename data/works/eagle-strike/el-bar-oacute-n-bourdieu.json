@@ -5636,6 +5636,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "fantasy",
         "religious-fiction"
       ],
@@ -5775,34 +5776,8 @@
             }
           ],
           "work": "el-caballo-y-su-muchacho"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CKZGCC3Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El caballo y su muchacho"
-    },
-    "el-caballo-y-su-muchacho-the-horse-and-his-boy": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy",
-        "religious-fiction"
-      ],
-      "id": "el-caballo-y-su-muchacho-the-horse-and-his-boy",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "idzi-dutkiewicz-2023": {
+        },
+        "idzi-dutkiewicz-2023-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -5816,7 +5791,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/819O3zBoiIL.jpg",
-          "id": "idzi-dutkiewicz-2023",
+          "id": "idzi-dutkiewicz-2023-2",
           "language": "es",
           "license": "CC0-1.0",
           "narrators": [
@@ -5837,17 +5812,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-caballo-y-su-muchacho-the-horse-and-his-boy"
+          "work": "el-caballo-y-su-muchacho"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CKZGCC3Q",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BM56QRR8",
           "type": "libex-import"
         }
       ],
-      "title": "El caballo y su muchacho [The Horse and His Boy]"
+      "title": "El caballo y su muchacho"
     },
     "el-cafe-de-la-luna-llena-the-full-moon-coffee-shop": {
       "added_at": "2026-08-02",

@@ -4224,6 +4224,7 @@
       "genres": [
         "action-adventure",
         "dystopian",
+        "fantasy",
         "science-fiction",
         "self-help",
         "young-adult"
@@ -4239,6 +4240,14 @@
             {
               "asin": "B0CQ35Q9MY",
               "region": "us"
+            },
+            {
+              "asin": "B0D1VVBGLW",
+              "region": "us"
+            },
+            {
+              "asin": "B0D1VVNW4B",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4572,370 +4581,7 @@
               "imported_at": "2026-08-02",
               "ref": "B0CQ35Q9MY",
               "type": "libex-import"
-            }
-          ],
-          "work": "songlight"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CQ35Q9MY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Songlight"
-    },
-    "songlight-the-torch-trilogy-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "moira-buffini"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "self-help",
-        "young-adult"
-      ],
-      "id": "songlight-the-torch-trilogy-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "antonia-beamish-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0D1VVBGLW",
-              "region": "us"
             },
-            {
-              "asin": "B0D1VVNW4B",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 37746,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 437031,
-              "start_ms": 37746,
-              "title": "Prologue: Kaira"
-            },
-            {
-              "length_ms": 2953,
-              "start_ms": 474777,
-              "title": "Part One"
-            },
-            {
-              "length_ms": 751648,
-              "start_ms": 477730,
-              "title": "1: Elsa"
-            },
-            {
-              "length_ms": 937947,
-              "start_ms": 1229378,
-              "title": "2: Elsa"
-            },
-            {
-              "length_ms": 1518747,
-              "start_ms": 2167325,
-              "title": "3: Elsa"
-            },
-            {
-              "length_ms": 969989,
-              "start_ms": 3686072,
-              "title": "4: Rye"
-            },
-            {
-              "length_ms": 1157677,
-              "start_ms": 4656061,
-              "title": "5: Elsa"
-            },
-            {
-              "length_ms": 720585,
-              "start_ms": 5813738,
-              "title": "6: Piper"
-            },
-            {
-              "length_ms": 1375711,
-              "start_ms": 6534323,
-              "title": "7: Elsa"
-            },
-            {
-              "length_ms": 2954,
-              "start_ms": 7910034,
-              "title": "Part Two"
-            },
-            {
-              "length_ms": 510021,
-              "start_ms": 7912988,
-              "title": "8: Piper"
-            },
-            {
-              "length_ms": 1642301,
-              "start_ms": 8423009,
-              "title": "9: Lark"
-            },
-            {
-              "length_ms": 847504,
-              "start_ms": 10065310,
-              "title": "10: Lark"
-            },
-            {
-              "length_ms": 807079,
-              "start_ms": 10912814,
-              "title": "11: Lark"
-            },
-            {
-              "length_ms": 1249512,
-              "start_ms": 11719893,
-              "title": "12: Swan"
-            },
-            {
-              "length_ms": 1590428,
-              "start_ms": 12969405,
-              "title": "13: Lark"
-            },
-            {
-              "length_ms": 1034425,
-              "start_ms": 14559833,
-              "title": "14: Swan"
-            },
-            {
-              "length_ms": 853774,
-              "start_ms": 15594258,
-              "title": "15: Lark"
-            },
-            {
-              "length_ms": 1215285,
-              "start_ms": 16448032,
-              "title": "16: Lark"
-            },
-            {
-              "length_ms": 2953,
-              "start_ms": 17663317,
-              "title": "Part Three"
-            },
-            {
-              "length_ms": 1634285,
-              "start_ms": 17666270,
-              "title": "17: Swan"
-            },
-            {
-              "length_ms": 747798,
-              "start_ms": 19300555,
-              "title": "18: Rye"
-            },
-            {
-              "length_ms": 1571897,
-              "start_ms": 20048353,
-              "title": "19: Lark"
-            },
-            {
-              "length_ms": 388678,
-              "start_ms": 21620250,
-              "title": "20: Rye"
-            },
-            {
-              "length_ms": 1375851,
-              "start_ms": 22008928,
-              "title": "21: Nightingale"
-            },
-            {
-              "length_ms": 641892,
-              "start_ms": 23384779,
-              "title": "22: Lark"
-            },
-            {
-              "length_ms": 910036,
-              "start_ms": 24026671,
-              "title": "23: Nightingale"
-            },
-            {
-              "length_ms": 1352702,
-              "start_ms": 24936707,
-              "title": "24: Lark"
-            },
-            {
-              "length_ms": 77693,
-              "start_ms": 26289409,
-              "title": "25: Nightingale"
-            },
-            {
-              "length_ms": 117260,
-              "start_ms": 26367102,
-              "title": "26: Swan"
-            },
-            {
-              "length_ms": 78645,
-              "start_ms": 26484362,
-              "title": "27: Nightingale"
-            },
-            {
-              "length_ms": 2953,
-              "start_ms": 26563007,
-              "title": "Part Four"
-            },
-            {
-              "length_ms": 1737056,
-              "start_ms": 26565960,
-              "title": "28: Piper"
-            },
-            {
-              "length_ms": 394530,
-              "start_ms": 28303016,
-              "title": "29: Nightingale"
-            },
-            {
-              "length_ms": 671034,
-              "start_ms": 28697546,
-              "title": "30: Lark"
-            },
-            {
-              "length_ms": 984781,
-              "start_ms": 29368580,
-              "title": "31: Swan"
-            },
-            {
-              "length_ms": 731405,
-              "start_ms": 30353361,
-              "title": "32: Nightingale"
-            },
-            {
-              "length_ms": 1652749,
-              "start_ms": 31084766,
-              "title": "33: Lark"
-            },
-            {
-              "length_ms": 716845,
-              "start_ms": 32737515,
-              "title": "34: Rye"
-            },
-            {
-              "length_ms": 1791768,
-              "start_ms": 33454360,
-              "title": "35: Lark"
-            },
-            {
-              "length_ms": 1192437,
-              "start_ms": 35246128,
-              "title": "36: Nightingale"
-            },
-            {
-              "length_ms": 2125902,
-              "start_ms": 36438565,
-              "title": "37: Lark"
-            },
-            {
-              "length_ms": 2931,
-              "start_ms": 38564467,
-              "title": "Part Five"
-            },
-            {
-              "length_ms": 1316172,
-              "start_ms": 38567398,
-              "title": "38: Nightingale"
-            },
-            {
-              "length_ms": 752024,
-              "start_ms": 39883570,
-              "title": "39: Lark"
-            },
-            {
-              "length_ms": 1129278,
-              "start_ms": 40635594,
-              "title": "40: Swan"
-            },
-            {
-              "length_ms": 789223,
-              "start_ms": 41764872,
-              "title": "41: Nightingale"
-            },
-            {
-              "length_ms": 427154,
-              "start_ms": 42554095,
-              "title": "42: Piper"
-            },
-            {
-              "length_ms": 387936,
-              "start_ms": 42981249,
-              "title": "43: Lark"
-            },
-            {
-              "length_ms": 421674,
-              "start_ms": 43369185,
-              "title": "44: Nightingale"
-            },
-            {
-              "length_ms": 1112700,
-              "start_ms": 43790859,
-              "title": "45: Lark"
-            },
-            {
-              "length_ms": 1490930,
-              "start_ms": 44903559,
-              "title": "46: Lark"
-            },
-            {
-              "length_ms": 450653,
-              "start_ms": 46394489,
-              "title": "47: Swan"
-            },
-            {
-              "length_ms": 203290,
-              "start_ms": 46845142,
-              "title": "48: Nightingale"
-            },
-            {
-              "length_ms": 538075,
-              "start_ms": 47048432,
-              "title": "49: Swan"
-            },
-            {
-              "length_ms": 1256687,
-              "start_ms": 47586507,
-              "title": "50: Lark"
-            },
-            {
-              "length_ms": 472712,
-              "start_ms": 48843194,
-              "title": "51: Piper"
-            },
-            {
-              "length_ms": 369545,
-              "start_ms": 49315906,
-              "title": "52: Nightingale"
-            },
-            {
-              "length_ms": 623176,
-              "start_ms": 49685451,
-              "title": "53: Lark"
-            },
-            {
-              "length_ms": 93134,
-              "start_ms": 50308627,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81dZ-rdRdSL.jpg",
-          "id": "antonia-beamish-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "antonia-beamish",
-            "joe-gaminara",
-            "katy-sobey",
-            "saffron-coomber",
-            "sam-crerar"
-          ],
-          "publisher": "Faber & Faber",
-          "release_date": "2024-08-27",
-          "runtime_min": 839,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0D1VVBGLW",
@@ -4947,17 +4593,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "songlight-the-torch-trilogy-book-1"
+          "work": "songlight"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CQ35Q9MY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0D1VVBGLW",
           "type": "libex-import"
         }
       ],
-      "title": "Songlight: The Torch Trilogy, Book 1"
+      "title": "Songlight"
     },
     "songmaster": {
       "added_at": "2026-07-29",

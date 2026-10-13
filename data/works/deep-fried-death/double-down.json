@@ -5,6 +5,7 @@
       "authors": [
         "jeff-kinney"
       ],
+      "first_published": "2016",
       "genres": [
         "arts-entertainment",
         "childrens",
@@ -16,6 +17,202 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "dan-russell": {
+          "abridged": false,
+          "added_at": "2026-07-12T19:06:31+01:00",
+          "asin": [
+            {
+              "asin": "B01LYNXZAZ",
+              "region": "uk"
+            },
+            {
+              "asin": "B01M0XYJPI",
+              "region": "us"
+            },
+            {
+              "asin": "B079XNW3QQ",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3185545,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3838467,
+              "start_ms": 3185545,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1719692,
+              "start_ms": 7024012,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51t8ou5DqkL._SL500_.jpg",
+          "id": "dan-russell",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-russell"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2016-11-01",
+          "runtime_min": 145,
+          "sources": [
+            {
+              "ref": "B01LYNXZAZ",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B01M0XYJPI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B079XNW3QQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "double-down"
+        },
+        "dan-russell-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "0143796232",
+              "region": "us"
+            },
+            {
+              "asin": "0143796232",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 647882,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 631071,
+              "start_ms": 647882,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 325056,
+              "start_ms": 1278953,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 173011,
+              "start_ms": 1604009,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 373492,
+              "start_ms": 1777020,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 169877,
+              "start_ms": 2150512,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 376186,
+              "start_ms": 2320389,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 456527,
+              "start_ms": 2696575,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 276712,
+              "start_ms": 3153102,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 331255,
+              "start_ms": 3429814,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 722628,
+              "start_ms": 3761069,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 288833,
+              "start_ms": 4483697,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 231433,
+              "start_ms": 4772530,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 440552,
+              "start_ms": 5003963,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 246526,
+              "start_ms": 5444515,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 550707,
+              "start_ms": 5691041,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 132493,
+              "start_ms": 6241748,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 263894,
+              "start_ms": 6374241,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1118737,
+              "start_ms": 6638135,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91CaPb+AM4L.jpg",
+          "id": "dan-russell-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-russell"
+          ],
+          "publisher": "Penguin Random House Australia Audio",
+          "release_date": "2018-10-30",
+          "runtime_min": 129,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0143796232",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "0143796232",
+              "type": "libex-import"
+            }
+          ],
+          "work": "double-down"
+        },
         "ramon-de-ocampo-2016": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -196,6 +393,20 @@
           "imported_at": "2026-07-30",
           "ref": "B01K25W8RK",
           "type": "libex-import"
+        },
+        {
+          "ref": "B01LYNXZAZ",
+          "type": "audible-lookup"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01M0XYJPI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "0143796232",
+          "type": "libex-import"
         }
       ],
       "title": "Double Down"
@@ -260,164 +471,6 @@
         }
       ],
       "title": "Double Down"
-    },
-    "double-down-diary-of-a-wimpy-kid-11": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jeff-kinney"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age"
-      ],
-      "id": "double-down-diary-of-a-wimpy-kid-11",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dan-russell-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "0143796232",
-              "region": "us"
-            },
-            {
-              "asin": "0143796232",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 647882,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 631071,
-              "start_ms": 647882,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 325056,
-              "start_ms": 1278953,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 173011,
-              "start_ms": 1604009,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 373492,
-              "start_ms": 1777020,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 169877,
-              "start_ms": 2150512,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 376186,
-              "start_ms": 2320389,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 456527,
-              "start_ms": 2696575,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 276712,
-              "start_ms": 3153102,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 331255,
-              "start_ms": 3429814,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 722628,
-              "start_ms": 3761069,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 288833,
-              "start_ms": 4483697,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 231433,
-              "start_ms": 4772530,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 440552,
-              "start_ms": 5003963,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 246526,
-              "start_ms": 5444515,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 550707,
-              "start_ms": 5691041,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 132493,
-              "start_ms": 6241748,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 263894,
-              "start_ms": 6374241,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1118737,
-              "start_ms": 6638135,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91CaPb+AM4L.jpg",
-          "id": "dan-russell-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-russell"
-          ],
-          "publisher": "Penguin Random House Australia Audio",
-          "release_date": "2018-10-30",
-          "runtime_min": 129,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "0143796232",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0143796232",
-              "type": "libex-import"
-            }
-          ],
-          "work": "double-down-diary-of-a-wimpy-kid-11"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "0143796232",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Double Down (Diary of a Wimpy Kid #11)"
     },
     "double-down-evie-rae": {
       "added_at": "2026-09-27",

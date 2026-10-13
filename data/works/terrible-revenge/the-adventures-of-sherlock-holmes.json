@@ -13,8 +13,12 @@
         }
       ],
       "genres": [
+        "classics",
+        "drama-plays",
+        "historical-fiction",
         "literary-fiction",
-        "mystery"
+        "mystery",
+        "short-stories"
       ],
       "id": "the-adventures-of-sherlock-holmes",
       "language": "en",
@@ -3882,6 +3886,84 @@
             {
               "imported_at": "2026-10-12",
               "ref": "B004UZHBI0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sherlock-holmes"
+        },
+        "full-cast-2000": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0TES6",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVNHYC",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1572687,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1586666,
+              "start_ms": 1572687,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1672719,
+              "start_ms": 3159353,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1670490,
+              "start_ms": 4832072,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1301060,
+              "start_ms": 6502562,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1307934,
+              "start_ms": 7803622,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1416928,
+              "start_ms": 9111556,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1689948,
+              "start_ms": 10528484,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51QkVSHYcIL.jpg",
+          "id": "full-cast-2000",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Monterey SoundWorks",
+          "release_date": "2000-07-19",
+          "runtime_min": 203,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0TES6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVNHYC",
               "type": "libex-import"
             }
           ],
@@ -10407,6 +10489,115 @@
           ],
           "work": "the-adventures-of-sherlock-holmes"
         },
+        "simon-bubb-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0785240128",
+              "region": "us"
+            },
+            {
+              "asin": "0785240128",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16207,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3228827,
+              "start_ms": 16207,
+              "title": "Adventure I: A Scandal in Bohemia"
+            },
+            {
+              "length_ms": 3199013,
+              "start_ms": 3245034,
+              "title": "Adventure II: The Red-Headed League"
+            },
+            {
+              "length_ms": 2407653,
+              "start_ms": 6444047,
+              "title": "Adventure III: A Case of Identity"
+            },
+            {
+              "length_ms": 3318317,
+              "start_ms": 8851700,
+              "title": "Adventure IV: The Boscombe Valley Mystery"
+            },
+            {
+              "length_ms": 2662748,
+              "start_ms": 12170017,
+              "title": "Adventure V: The Five Orange Pips"
+            },
+            {
+              "length_ms": 3272829,
+              "start_ms": 14832765,
+              "title": "Adventure VI: The Man with the Twisted Lip"
+            },
+            {
+              "length_ms": 2767121,
+              "start_ms": 18105594,
+              "title": "Adventure VII: The Adventure of the Blue Carbuncle"
+            },
+            {
+              "length_ms": 3586623,
+              "start_ms": 20872715,
+              "title": "Adventure VIII:  The Adventure of the Speckled Band"
+            },
+            {
+              "length_ms": 2892718,
+              "start_ms": 24459338,
+              "title": "Adventure IX: The Adventure of the Engineer's Thumb"
+            },
+            {
+              "length_ms": 2942943,
+              "start_ms": 27352056,
+              "title": "Adventure X: The Adventure of the Noble Bachelor"
+            },
+            {
+              "length_ms": 3383309,
+              "start_ms": 30294999,
+              "title": "Adventure XI: The Adventure of the Beryl Coronet"
+            },
+            {
+              "length_ms": 3368751,
+              "start_ms": 33678308,
+              "title": "Adventure XII: The Adventure of the Copper Beeches"
+            },
+            {
+              "length_ms": 34295,
+              "start_ms": 37047059,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81qLZ4CZFPL.jpg",
+          "id": "simon-bubb-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-bubb"
+          ],
+          "publisher": "Harper Curated Classics",
+          "release_date": "2021-04-13",
+          "runtime_min": 617,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0785240128",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "0785240128",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sherlock-holmes"
+        },
         "simon-hester-2021": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -10638,6 +10829,115 @@
             {
               "imported_at": "2026-10-12",
               "ref": "B004V18M8Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-adventures-of-sherlock-holmes"
+        },
+        "simon-vance-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1978676220",
+              "region": "us"
+            },
+            {
+              "asin": "1978676220",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1254109,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1238180,
+              "start_ms": 1254109,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 394181,
+              "start_ms": 2492289,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2852199,
+              "start_ms": 2886470,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2177195,
+              "start_ms": 5738669,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2996163,
+              "start_ms": 7915864,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2336159,
+              "start_ms": 10912027,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2900172,
+              "start_ms": 13248186,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2358172,
+              "start_ms": 16148358,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3040188,
+              "start_ms": 18506530,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2505200,
+              "start_ms": 21546718,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2499163,
+              "start_ms": 24051918,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2923206,
+              "start_ms": 26551081,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3446119,
+              "start_ms": 29474287,
+              "title": "Chapter 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/814CQRWX4TL.jpg",
+          "id": "simon-vance-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-vance"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-04-23",
+          "runtime_min": 548,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1978676220",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1978676220",
               "type": "libex-import"
             }
           ],
@@ -11026,244 +11326,24 @@
           "imported_at": "2026-08-01",
           "ref": "B0C5YFKZ8X",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Adventures of Sherlock Holmes"
-    },
-    "the-adventures-of-sherlock-holmes-amazonclassics-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "classics",
-        "mystery",
-        "short-stories"
-      ],
-      "id": "the-adventures-of-sherlock-holmes-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-vance-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1978676220",
-              "region": "us"
-            },
-            {
-              "asin": "1978676220",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1254109,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1238180,
-              "start_ms": 1254109,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 394181,
-              "start_ms": 2492289,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2852199,
-              "start_ms": 2886470,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2177195,
-              "start_ms": 5738669,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2996163,
-              "start_ms": 7915864,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2336159,
-              "start_ms": 10912027,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2900172,
-              "start_ms": 13248186,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2358172,
-              "start_ms": 16148358,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3040188,
-              "start_ms": 18506530,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2505200,
-              "start_ms": 21546718,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2499163,
-              "start_ms": 24051918,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2923206,
-              "start_ms": 26551081,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 3446119,
-              "start_ms": 29474287,
-              "title": "Chapter 14"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/814CQRWX4TL.jpg",
-          "id": "simon-vance-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-vance"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-04-23",
-          "runtime_min": 548,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1978676220",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1978676220",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-adventures-of-sherlock-holmes-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1978676220",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Adventures of Sherlock Holmes (AmazonClassics Edition)"
-    },
-    "the-adventures-of-sherlock-holmes-dramatized": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "mystery"
-      ],
-      "id": "the-adventures-of-sherlock-holmes-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2000": {
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0TES6",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVNHYC",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1572687,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1586666,
-              "start_ms": 1572687,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1672719,
-              "start_ms": 3159353,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1670490,
-              "start_ms": 4832072,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1301060,
-              "start_ms": 6502562,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1307934,
-              "start_ms": 7803622,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1416928,
-              "start_ms": 9111556,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1689948,
-              "start_ms": 10528484,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51QkVSHYcIL.jpg",
-          "id": "full-cast-2000",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Monterey SoundWorks",
-          "release_date": "2000-07-19",
-          "runtime_min": 203,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0TES6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVNHYC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-adventures-of-sherlock-holmes-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V0TES6",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0785240128",
+          "type": "libex-import"
         }
       ],
-      "title": "The Adventures of Sherlock Holmes (Dramatized)"
+      "title": "The Adventures of Sherlock Holmes"
     },
     "the-adventures-of-sherlock-holmes-ii": {
       "added_at": "2026-07-29",
@@ -11530,139 +11610,6 @@
         }
       ],
       "title": "The Adventures of Sherlock Holmes Illustrated"
-    },
-    "the-adventures-of-sherlock-holmes-seasons-edition-spring": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "mystery"
-      ],
-      "id": "the-adventures-of-sherlock-holmes-seasons-edition-spring",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-bubb-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "0785240128",
-              "region": "us"
-            },
-            {
-              "asin": "0785240128",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16207,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3228827,
-              "start_ms": 16207,
-              "title": "Adventure I: A Scandal in Bohemia"
-            },
-            {
-              "length_ms": 3199013,
-              "start_ms": 3245034,
-              "title": "Adventure II: The Red-Headed League"
-            },
-            {
-              "length_ms": 2407653,
-              "start_ms": 6444047,
-              "title": "Adventure III: A Case of Identity"
-            },
-            {
-              "length_ms": 3318317,
-              "start_ms": 8851700,
-              "title": "Adventure IV: The Boscombe Valley Mystery"
-            },
-            {
-              "length_ms": 2662748,
-              "start_ms": 12170017,
-              "title": "Adventure V: The Five Orange Pips"
-            },
-            {
-              "length_ms": 3272829,
-              "start_ms": 14832765,
-              "title": "Adventure VI: The Man with the Twisted Lip"
-            },
-            {
-              "length_ms": 2767121,
-              "start_ms": 18105594,
-              "title": "Adventure VII: The Adventure of the Blue Carbuncle"
-            },
-            {
-              "length_ms": 3586623,
-              "start_ms": 20872715,
-              "title": "Adventure VIII:  The Adventure of the Speckled Band"
-            },
-            {
-              "length_ms": 2892718,
-              "start_ms": 24459338,
-              "title": "Adventure IX: The Adventure of the Engineer's Thumb"
-            },
-            {
-              "length_ms": 2942943,
-              "start_ms": 27352056,
-              "title": "Adventure X: The Adventure of the Noble Bachelor"
-            },
-            {
-              "length_ms": 3383309,
-              "start_ms": 30294999,
-              "title": "Adventure XI: The Adventure of the Beryl Coronet"
-            },
-            {
-              "length_ms": 3368751,
-              "start_ms": 33678308,
-              "title": "Adventure XII: The Adventure of the Copper Beeches"
-            },
-            {
-              "length_ms": 34295,
-              "start_ms": 37047059,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81qLZ4CZFPL.jpg",
-          "id": "simon-bubb-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-bubb"
-          ],
-          "publisher": "Harper Curated Classics",
-          "release_date": "2021-04-13",
-          "runtime_min": 617,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "0785240128",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0785240128",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-adventures-of-sherlock-holmes-seasons-edition-spring"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0785240128",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Adventures of Sherlock Holmes (Seasons Edition--Spring)"
     },
     "the-adventures-of-sherlock-holmes-the-boscombe-valley-mystery": {
       "added_at": "2026-08-07",

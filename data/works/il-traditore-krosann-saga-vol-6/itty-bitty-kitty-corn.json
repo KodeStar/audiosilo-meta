@@ -4764,7 +4764,7 @@
       ],
       "title": "Ivanhoe (Shortbooks)"
     },
-    "ivanhoe-spanish-edition": {
+    "ivanhoe-walter-scott": {
       "added_at": "2026-07-29",
       "authors": [
         "walter-scott",
@@ -4782,14 +4782,69 @@
         }
       ],
       "genres": [
+        "action-adventure",
         "classics",
         "historical-fiction",
         "literary-fiction"
       ],
-      "id": "ivanhoe-spanish-edition",
+      "id": "ivanhoe-walter-scott",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "carlos-zambrano-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V5CLE0",
+              "region": "us"
+            },
+            {
+              "asin": "B004F3CN8U",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3739109,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 3750905,
+              "start_ms": 3739109,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 3296537,
+              "start_ms": 7490014,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81+7pO32PWL.jpg",
+          "id": "carlos-zambrano-2005",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carlos-zambrano"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2005-09-19",
+          "runtime_min": 179,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5CLE0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F3CN8U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ivanhoe-walter-scott"
+        },
         "juan-carlos-gustems-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5067,83 +5122,6 @@
               "type": "libex-import"
             }
           ],
-          "work": "ivanhoe-spanish-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8491054499",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ivanhoe (Spanish Edition)"
-    },
-    "ivanhoe-walter-scott": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "walter-scott"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "ivanhoe-walter-scott",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-zambrano-2005": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V5CLE0",
-              "region": "us"
-            },
-            {
-              "asin": "B004F3CN8U",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3739109,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 3750905,
-              "start_ms": 3739109,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 3296537,
-              "start_ms": 7490014,
-              "title": "Capítulo 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+7pO32PWL.jpg",
-          "id": "carlos-zambrano-2005",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-zambrano"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2005-09-19",
-          "runtime_min": 179,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V5CLE0",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F3CN8U",
-              "type": "libex-import"
-            }
-          ],
           "work": "ivanhoe-walter-scott"
         }
       },
@@ -5151,6 +5129,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002V5CLE0",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8491054499",
           "type": "libex-import"
         }
       ],

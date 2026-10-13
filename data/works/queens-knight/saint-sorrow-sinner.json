@@ -146,7 +146,8 @@
     "saint-thomas-aquinas": {
       "added_at": "2026-07-29",
       "authors": [
-        "g-k-chesterton"
+        "g-k-chesterton",
+        "chesterton-books"
       ],
       "genres": [
         "biography-memoir",
@@ -185,31 +186,7 @@
             }
           ],
           "work": "saint-thomas-aquinas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01868OMQA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Saint Thomas Aquinas"
-    },
-    "saint-thomas-aquinas-g-k-chesterton": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "g-k-chesterton",
-        "chesterton-books"
-      ],
-      "genres": [
-        "biography-memoir",
-        "religious-fiction"
-      ],
-      "id": "saint-thomas-aquinas-g-k-chesterton",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "guy-bethell-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -245,10 +222,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "saint-thomas-aquinas-g-k-chesterton"
+          "work": "saint-thomas-aquinas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01868OMQA",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07JK9TQ7G",
@@ -8524,7 +8506,11 @@
         "jason-dark"
       ],
       "genres": [
-        "fantasy"
+        "fantasy",
+        "horror",
+        "paranormal",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "sakuro-der-damon-john-sinclair-classics-5",
       "language": "de",
@@ -8634,33 +8620,7 @@
             }
           ],
           "work": "sakuro-der-damon-john-sinclair-classics-5"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00U1PDVO6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sakuro, der Dämon: John Sinclair Classics 5"
-    },
-    "sakuro-der-damon-john-sinclair-tonstudio-braun-klassiker-42": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "sakuro-der-damon-john-sinclair-tonstudio-braun-klassiker-42",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "div-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8807,17 +8767,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "sakuro-der-damon-john-sinclair-tonstudio-braun-klassiker-42"
+          "work": "sakuro-der-damon-john-sinclair-classics-5"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00U1PDVO6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01KVGM27Q",
           "type": "libex-import"
         }
       ],
-      "title": "Sakuro, der Dämon: John Sinclair - Tonstudio Braun Klassiker 42"
+      "title": "Sakuro, der Dämon: John Sinclair Classics 5"
     }
   }
 }

@@ -5228,12 +5228,411 @@
       "genres": [
         "classics",
         "hard-boiled",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "the-long-good-bye",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "elliott-gould-1999": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0QBD2",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVXFKI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 8832404,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61NSqKuFrkL.jpg",
+          "id": "elliott-gould-1999",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elliott-gould"
+          ],
+          "publisher": "Audio Literature",
+          "release_date": "1999-12-16",
+          "runtime_min": 147,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0QBD2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVXFKI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-long-good-bye"
+        },
+        "full-cast-2011": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B005XOK5PS",
+              "region": "us"
+            },
+            {
+              "asin": "B005XOHKRY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2426672,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2815837,
+              "start_ms": 2426672,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51Lzh8Ic77L.jpg",
+          "id": "full-cast-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "toby-stephens"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2011-10-21",
+          "runtime_min": 87,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B005XOK5PS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B005XOHKRY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-long-good-bye"
+        },
+        "ray-porter-2014": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B00QS99VHA",
+              "region": "us"
+            },
+            {
+              "asin": "B00QS9D56I",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 612496,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 823287,
+              "start_ms": 612496,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 697388,
+              "start_ms": 1435783,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 305017,
+              "start_ms": 2133171,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1230472,
+              "start_ms": 2438188,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 796955,
+              "start_ms": 3668660,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 774803,
+              "start_ms": 4465615,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 830856,
+              "start_ms": 5240418,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1042019,
+              "start_ms": 6071274,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 517433,
+              "start_ms": 7113293,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1373182,
+              "start_ms": 7630726,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 402727,
+              "start_ms": 9003908,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1708942,
+              "start_ms": 9406635,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 982576,
+              "start_ms": 11115577,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 851894,
+              "start_ms": 12098153,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1085719,
+              "start_ms": 12950047,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 628843,
+              "start_ms": 14035766,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 438950,
+              "start_ms": 14664609,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1216726,
+              "start_ms": 15103559,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 619369,
+              "start_ms": 16320285,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 807962,
+              "start_ms": 16939654,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1209435,
+              "start_ms": 17747616,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 728038,
+              "start_ms": 18957051,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1273522,
+              "start_ms": 19685089,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 600097,
+              "start_ms": 20958611,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 536149,
+              "start_ms": 21558708,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 400684,
+              "start_ms": 22094857,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 586629,
+              "start_ms": 22495541,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 754509,
+              "start_ms": 23082170,
+              "title": "Chapter 29"
+            },
+            {
+              "length_ms": 656428,
+              "start_ms": 23836679,
+              "title": "Chapter 30"
+            },
+            {
+              "length_ms": 659075,
+              "start_ms": 24493107,
+              "title": "Chapter 31"
+            },
+            {
+              "length_ms": 1385395,
+              "start_ms": 25152182,
+              "title": "Chapter 32"
+            },
+            {
+              "length_ms": 436767,
+              "start_ms": 26537577,
+              "title": "Chapter 33"
+            },
+            {
+              "length_ms": 837683,
+              "start_ms": 26974344,
+              "title": "Chapter 34"
+            },
+            {
+              "length_ms": 594570,
+              "start_ms": 27812027,
+              "title": "Chapter 35"
+            },
+            {
+              "length_ms": 615329,
+              "start_ms": 28406597,
+              "title": "Chapter 36"
+            },
+            {
+              "length_ms": 698038,
+              "start_ms": 29021926,
+              "title": "Chapter 37"
+            },
+            {
+              "length_ms": 851661,
+              "start_ms": 29719964,
+              "title": "Chapter 38"
+            },
+            {
+              "length_ms": 1018984,
+              "start_ms": 30571625,
+              "title": "Chapter 39"
+            },
+            {
+              "length_ms": 684060,
+              "start_ms": 31590609,
+              "title": "Chapter 40"
+            },
+            {
+              "length_ms": 532712,
+              "start_ms": 32274669,
+              "title": "Chapter 41"
+            },
+            {
+              "length_ms": 2312150,
+              "start_ms": 32807381,
+              "title": "Chapter 42"
+            },
+            {
+              "length_ms": 627914,
+              "start_ms": 35119531,
+              "title": "Chapter 43"
+            },
+            {
+              "length_ms": 958473,
+              "start_ms": 35747445,
+              "title": "Chapter 44"
+            },
+            {
+              "length_ms": 720469,
+              "start_ms": 36705918,
+              "title": "Chapter 45"
+            },
+            {
+              "length_ms": 397015,
+              "start_ms": 37426387,
+              "title": "Chapter 46"
+            },
+            {
+              "length_ms": 665763,
+              "start_ms": 37823402,
+              "title": "Chapter 47"
+            },
+            {
+              "length_ms": 1243289,
+              "start_ms": 38489165,
+              "title": "Chapter 48"
+            },
+            {
+              "length_ms": 579895,
+              "start_ms": 39732454,
+              "title": "Chapter 49"
+            },
+            {
+              "length_ms": 346395,
+              "start_ms": 40312349,
+              "title": "Chapter 50"
+            },
+            {
+              "length_ms": 568378,
+              "start_ms": 40658744,
+              "title": "Chapter 51"
+            },
+            {
+              "length_ms": 476799,
+              "start_ms": 41227122,
+              "title": "Chapter 52"
+            },
+            {
+              "length_ms": 542278,
+              "start_ms": 41703921,
+              "title": "Chapter 53"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81VcHrhl3XL.jpg",
+          "id": "ray-porter-2014",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ray-porter"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2014-12-09",
+          "runtime_min": 704,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B00QS99VHA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00QS9D56I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-long-good-bye"
+        },
         "scott-brick-2021": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -5244,6 +5643,14 @@
             },
             {
               "asin": "B09CQC58QV",
+              "region": "uk"
+            },
+            {
+              "asin": "0593215842",
+              "region": "us"
+            },
+            {
+              "asin": "0593215842",
               "region": "uk"
             }
           ],
@@ -5544,6 +5951,16 @@
               "imported_at": "2026-10-09",
               "ref": "B09CQC58QV",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-08",
+              "ref": "0593215842",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "0593215842",
+              "type": "libex-import"
             }
           ],
           "work": "the-long-good-bye"
@@ -5553,6 +5970,11 @@
         {
           "imported_at": "2026-08-07",
           "ref": "B09CQBFWS3",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B00QS99VHA",
           "type": "libex-import"
         }
       ],
@@ -6220,743 +6642,6 @@
       ],
       "title": "The Long Goodbye"
     },
-    "the-long-goodbye-raymond-chandler": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "raymond-chandler"
-      ],
-      "genres": [
-        "classics",
-        "hard-boiled",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "the-long-goodbye-raymond-chandler",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "elliott-gould-1999": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0QBD2",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVXFKI",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 8832404,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61NSqKuFrkL.jpg",
-          "id": "elliott-gould-1999",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "elliott-gould"
-          ],
-          "publisher": "Audio Literature",
-          "release_date": "1999-12-16",
-          "runtime_min": 147,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0QBD2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVXFKI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-long-goodbye-raymond-chandler"
-        },
-        "full-cast-2011": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B005XOK5PS",
-              "region": "us"
-            },
-            {
-              "asin": "B005XOHKRY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2426672,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2815837,
-              "start_ms": 2426672,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51Lzh8Ic77L.jpg",
-          "id": "full-cast-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast",
-            "toby-stephens"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2011-10-21",
-          "runtime_min": 87,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B005XOK5PS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B005XOHKRY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-long-goodbye-raymond-chandler"
-        },
-        "ray-porter-2014": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B00QS99VHA",
-              "region": "us"
-            },
-            {
-              "asin": "B00QS9D56I",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 612496,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 823287,
-              "start_ms": 612496,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 697388,
-              "start_ms": 1435783,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 305017,
-              "start_ms": 2133171,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1230472,
-              "start_ms": 2438188,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 796955,
-              "start_ms": 3668660,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 774803,
-              "start_ms": 4465615,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 830856,
-              "start_ms": 5240418,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1042019,
-              "start_ms": 6071274,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 517433,
-              "start_ms": 7113293,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1373182,
-              "start_ms": 7630726,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 402727,
-              "start_ms": 9003908,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1708942,
-              "start_ms": 9406635,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 982576,
-              "start_ms": 11115577,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 851894,
-              "start_ms": 12098153,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1085719,
-              "start_ms": 12950047,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 628843,
-              "start_ms": 14035766,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 438950,
-              "start_ms": 14664609,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1216726,
-              "start_ms": 15103559,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 619369,
-              "start_ms": 16320285,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 807962,
-              "start_ms": 16939654,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1209435,
-              "start_ms": 17747616,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 728038,
-              "start_ms": 18957051,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1273522,
-              "start_ms": 19685089,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 600097,
-              "start_ms": 20958611,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 536149,
-              "start_ms": 21558708,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 400684,
-              "start_ms": 22094857,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 586629,
-              "start_ms": 22495541,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 754509,
-              "start_ms": 23082170,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 656428,
-              "start_ms": 23836679,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 659075,
-              "start_ms": 24493107,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 1385395,
-              "start_ms": 25152182,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 436767,
-              "start_ms": 26537577,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 837683,
-              "start_ms": 26974344,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 594570,
-              "start_ms": 27812027,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 615329,
-              "start_ms": 28406597,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 698038,
-              "start_ms": 29021926,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 851661,
-              "start_ms": 29719964,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 1018984,
-              "start_ms": 30571625,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 684060,
-              "start_ms": 31590609,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 532712,
-              "start_ms": 32274669,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 2312150,
-              "start_ms": 32807381,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 627914,
-              "start_ms": 35119531,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 958473,
-              "start_ms": 35747445,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 720469,
-              "start_ms": 36705918,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 397015,
-              "start_ms": 37426387,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 665763,
-              "start_ms": 37823402,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 1243289,
-              "start_ms": 38489165,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 579895,
-              "start_ms": 39732454,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 346395,
-              "start_ms": 40312349,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 568378,
-              "start_ms": 40658744,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 476799,
-              "start_ms": 41227122,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 542278,
-              "start_ms": 41703921,
-              "title": "Chapter 53"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VcHrhl3XL.jpg",
-          "id": "ray-porter-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ray-porter"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2014-12-09",
-          "runtime_min": 704,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B00QS99VHA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00QS9D56I",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-long-goodbye-raymond-chandler"
-        },
-        "scott-brick-2021": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "0593215842",
-              "region": "us"
-            },
-            {
-              "asin": "0593215842",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 30237,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 671516,
-              "start_ms": 30237,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 969778,
-              "start_ms": 701753,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 823831,
-              "start_ms": 1671531,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 361224,
-              "start_ms": 2495362,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 1455098,
-              "start_ms": 2856586,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 937748,
-              "start_ms": 4311684,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 868802,
-              "start_ms": 5249432,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 970066,
-              "start_ms": 6118234,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 1122817,
-              "start_ms": 7088300,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 593251,
-              "start_ms": 8211117,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 1494829,
-              "start_ms": 8804368,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 481316,
-              "start_ms": 10299197,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1861397,
-              "start_ms": 10780513,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 1103859,
-              "start_ms": 12641910,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 943933,
-              "start_ms": 13745769,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 1161232,
-              "start_ms": 14689702,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 676687,
-              "start_ms": 15850934,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 475703,
-              "start_ms": 16527621,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 1319238,
-              "start_ms": 17003324,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 734609,
-              "start_ms": 18322562,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 936398,
-              "start_ms": 19057171,
-              "title": "Chapter Twenty-One"
-            },
-            {
-              "length_ms": 1366292,
-              "start_ms": 19993569,
-              "title": "Chapter Twenty-Two"
-            },
-            {
-              "length_ms": 829465,
-              "start_ms": 21359861,
-              "title": "Chapter Twenty-Three"
-            },
-            {
-              "length_ms": 1436382,
-              "start_ms": 22189326,
-              "title": "Chapter Twenty-Four"
-            },
-            {
-              "length_ms": 723387,
-              "start_ms": 23625708,
-              "title": "Chapter Twenty-Five"
-            },
-            {
-              "length_ms": 615524,
-              "start_ms": 24349095,
-              "title": "Chapter Twenty-Six"
-            },
-            {
-              "length_ms": 470320,
-              "start_ms": 24964619,
-              "title": "Chapter Twenty-Seven"
-            },
-            {
-              "length_ms": 721193,
-              "start_ms": 25434939,
-              "title": "Chapter Twenty-Eight"
-            },
-            {
-              "length_ms": 861906,
-              "start_ms": 26156132,
-              "title": "Chapter Twenty-Nine"
-            },
-            {
-              "length_ms": 746240,
-              "start_ms": 27018038,
-              "title": "Chapter Thirty"
-            },
-            {
-              "length_ms": 771311,
-              "start_ms": 27764278,
-              "title": "Chapter Thirty-One"
-            },
-            {
-              "length_ms": 1499665,
-              "start_ms": 28535589,
-              "title": "Chapter Thirty-Two"
-            },
-            {
-              "length_ms": 524207,
-              "start_ms": 30035254,
-              "title": "Chapter Thirty-Three"
-            },
-            {
-              "length_ms": 992913,
-              "start_ms": 30559461,
-              "title": "Chapter Thirty-Four"
-            },
-            {
-              "length_ms": 673145,
-              "start_ms": 31552374,
-              "title": "Chapter Thirty-Five"
-            },
-            {
-              "length_ms": 690837,
-              "start_ms": 32225519,
-              "title": "Chapter Thirty-Six"
-            },
-            {
-              "length_ms": 860370,
-              "start_ms": 32916356,
-              "title": "Chapter Thirty-Seven"
-            },
-            {
-              "length_ms": 939375,
-              "start_ms": 33776726,
-              "title": "Chapter Thirty-Eight"
-            },
-            {
-              "length_ms": 1155157,
-              "start_ms": 34716101,
-              "title": "Chapter Thirty-Nine"
-            },
-            {
-              "length_ms": 818135,
-              "start_ms": 35871258,
-              "title": "Chapter Forty"
-            },
-            {
-              "length_ms": 610572,
-              "start_ms": 36689393,
-              "title": "Chapter Forty-One"
-            },
-            {
-              "length_ms": 2635906,
-              "start_ms": 37299965,
-              "title": "Chapter Forty-Two"
-            },
-            {
-              "length_ms": 727689,
-              "start_ms": 39935871,
-              "title": "Chapter Forty-Three"
-            },
-            {
-              "length_ms": 1107580,
-              "start_ms": 40663560,
-              "title": "Chapter Forty-Four"
-            },
-            {
-              "length_ms": 904589,
-              "start_ms": 41771140,
-              "title": "Chapter Forty-Five"
-            },
-            {
-              "length_ms": 501929,
-              "start_ms": 42675729,
-              "title": "Chapter Forty-Six"
-            },
-            {
-              "length_ms": 802500,
-              "start_ms": 43177658,
-              "title": "Chapter Forty-Seven"
-            },
-            {
-              "length_ms": 1449910,
-              "start_ms": 43980158,
-              "title": "Chapter Forty-Eight"
-            },
-            {
-              "length_ms": 677983,
-              "start_ms": 45430068,
-              "title": "Chapter Forty-Nine"
-            },
-            {
-              "length_ms": 392440,
-              "start_ms": 46108051,
-              "title": "Chapter Fifty"
-            },
-            {
-              "length_ms": 643089,
-              "start_ms": 46500491,
-              "title": "Chapter Fifty-One"
-            },
-            {
-              "length_ms": 541276,
-              "start_ms": 47143580,
-              "title": "Chapter Fifty-Two"
-            },
-            {
-              "length_ms": 609708,
-              "start_ms": 47684856,
-              "title": "Chapter Fifty-Three"
-            },
-            {
-              "length_ms": 73410,
-              "start_ms": 48294564,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71XNcITj8rL.jpg",
-          "id": "scott-brick-2021",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "scott-brick"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2021-08-24",
-          "runtime_min": 805,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "0593215842",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0593215842",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-long-goodbye-raymond-chandler"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00QS99VHA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Long Goodbye"
-    },
     "the-long-goodnight": {
       "added_at": "2026-08-02",
       "authors": [
@@ -7544,149 +7229,6 @@
         }
       ],
       "title": "The Long Hard Road Out of Hell"
-    },
-    "the-long-haul-diary-of-a-wimpy-kid-9": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jeff-kinney"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age"
-      ],
-      "id": "the-long-haul-diary-of-a-wimpy-kid-9",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dan-russell-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "0143796216",
-              "region": "us"
-            },
-            {
-              "asin": "0143796216",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 572858,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 475939,
-              "start_ms": 572858,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 497185,
-              "start_ms": 1048797,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 483276,
-              "start_ms": 1545982,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 373400,
-              "start_ms": 2029258,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 322246,
-              "start_ms": 2402658,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 439089,
-              "start_ms": 2724904,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 511373,
-              "start_ms": 3163993,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 382989,
-              "start_ms": 3675366,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 384197,
-              "start_ms": 4058355,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 374793,
-              "start_ms": 4442552,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 354011,
-              "start_ms": 4817345,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 340149,
-              "start_ms": 5171356,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 332811,
-              "start_ms": 5511505,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 468091,
-              "start_ms": 5844316,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 167578,
-              "start_ms": 6312407,
-              "title": "Chapter 16"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91e4XbwbyLL.jpg",
-          "id": "dan-russell-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-russell"
-          ],
-          "publisher": "Penguin Random House Australia Audio",
-          "release_date": "2018-10-30",
-          "runtime_min": 107,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "0143796216",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0143796216",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-long-haul-diary-of-a-wimpy-kid-9"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "0143796216",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Long Haul (Diary of a Wimpy Kid #9)"
     },
     "the-long-haul-pursuit-of-hope": {
       "added_at": "2026-08-02",

@@ -366,6 +366,7 @@
       "genres": [
         "classics",
         "history",
+        "philosophy",
         "politics"
       ],
       "id": "el-ocaso-de-los-idolos",
@@ -379,134 +380,7 @@
             {
               "asin": "B0CWVRZ9G7",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vjlIh-klL.jpg",
-          "id": "geraldo-medina-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "geraldo-medina"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2024-03-04",
-          "runtime_min": 177,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CWVRZ9G7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-ocaso-de-los-idolos"
-        },
-        "joaquin-madrigal-2014": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07YX5QWTR",
-              "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 366364,
-              "start_ms": 0,
-              "title": "Capítulo 1"
             },
-            {
-              "length_ms": 632140,
-              "start_ms": 366364,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 466628,
-              "start_ms": 998504,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 122601,
-              "start_ms": 1465132,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 489941,
-              "start_ms": 1587733,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 614446,
-              "start_ms": 2077674,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 366411,
-              "start_ms": 2692120,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 444523,
-              "start_ms": 3058531,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 816832,
-              "start_ms": 3503054,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 456922,
-              "start_ms": 4319886,
-              "title": "Capítulo 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81k4ngL9ZAL.jpg",
-          "id": "joaquin-madrigal-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joaquin-madrigal"
-          ],
-          "publisher": "Alberich Ediciones Mexico",
-          "release_date": "2014-04-24",
-          "runtime_min": 79,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX5QWTR",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-ocaso-de-los-idolos"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX5QWTR",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El ocaso de los idolos"
-    },
-    "el-ocaso-de-los-idolos-the-dusk-of-the-idols": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "friedrich-nietzsche"
-      ],
-      "genres": [
-        "philosophy",
-        "politics"
-      ],
-      "id": "el-ocaso-de-los-idolos-the-dusk-of-the-idols",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "geraldo-medina-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B0CWW7JQSK",
               "region": "us"
@@ -525,41 +399,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B0CWVRZ9G7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B0CWW7JQSK",
               "type": "libex-import"
             }
           ],
-          "work": "el-ocaso-de-los-idolos-the-dusk-of-the-idols"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0CWW7JQSK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Ocaso De Los Idolos [The Dusk of the Idols]"
-    },
-    "el-ocaso-de-los-idolos-twilight-of-the-idols": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "friedrich-nietzsche"
-      ],
-      "genres": [
-        "classics",
-        "history",
-        "philosophy",
-        "politics"
-      ],
-      "id": "el-ocaso-de-los-idolos-twilight-of-the-idols",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "el-ocaso-de-los-idolos"
+        },
         "joaquin-madrigal-2014": {
           "abridged": true,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B07YX5QWTR",
+              "region": "es"
+            },
             {
               "asin": "B00JU6HKE4",
               "region": "us"
@@ -630,21 +488,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX5QWTR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00JU6HKE4",
               "type": "libex-import"
             }
           ],
-          "work": "el-ocaso-de-los-idolos-twilight-of-the-idols"
+          "work": "el-ocaso-de-los-idolos"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX5QWTR",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0CWW7JQSK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00JU6HKE4",
           "type": "libex-import"
         }
       ],
-      "title": "El ocaso de los idolos [Twilight of the Idols]"
+      "title": "El ocaso de los idolos"
     },
     "el-oceano-al-final-del-camino-the-ocean-at-the-end-of-the-lane": {
       "added_at": "2026-07-29",
@@ -12137,14 +12010,121 @@
         "esther-tusquets-guillen"
       ],
       "genres": [
+        "childrens",
         "classics",
         "literary-fiction",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "el-perro-de-los-baskerville",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "edson-matus-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B074XJKWV6",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 802807,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 1247655,
+              "start_ms": 802807,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 964510,
+              "start_ms": 2050462,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 1333150,
+              "start_ms": 3014972,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 1169496,
+              "start_ms": 4348122,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 1244636,
+              "start_ms": 5517618,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 1661899,
+              "start_ms": 6762254,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 894293,
+              "start_ms": 8424153,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 2080044,
+              "start_ms": 9318446,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 1245704,
+              "start_ms": 11398490,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 1552997,
+              "start_ms": 12644194,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 1641697,
+              "start_ms": 14197191,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 1094310,
+              "start_ms": 15838888,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 1461000,
+              "start_ms": 16933198,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 1330782,
+              "start_ms": 18394198,
+              "title": "Capítulo 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yL5aswpoL.jpg",
+          "id": "edson-matus-2017",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edson-matus"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2017-08-21",
+          "runtime_min": 328,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B074XJKWV6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-perro-de-los-baskerville"
+        },
         "jordi-salas-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -12277,162 +12257,7 @@
             }
           ],
           "work": "el-perro-de-los-baskerville"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085XX2MBF",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8491054197",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El perro de los Baskerville"
-    },
-    "el-perro-de-los-baskerville-arthur-conan-doyle": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "el-perro-de-los-baskerville-arthur-conan-doyle",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "edson-matus-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B074XJKWV6",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 802807,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 1247655,
-              "start_ms": 802807,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 964510,
-              "start_ms": 2050462,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 1333150,
-              "start_ms": 3014972,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 1169496,
-              "start_ms": 4348122,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1244636,
-              "start_ms": 5517618,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1661899,
-              "start_ms": 6762254,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 894293,
-              "start_ms": 8424153,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 2080044,
-              "start_ms": 9318446,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 1245704,
-              "start_ms": 11398490,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 1552997,
-              "start_ms": 12644194,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 1641697,
-              "start_ms": 14197191,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 1094310,
-              "start_ms": 15838888,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 1461000,
-              "start_ms": 16933198,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 1330782,
-              "start_ms": 18394198,
-              "title": "Capítulo 15"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91yL5aswpoL.jpg",
-          "id": "edson-matus-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "edson-matus"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2017-08-21",
-          "runtime_min": 328,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B074XJKWV6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-perro-de-los-baskerville-arthur-conan-doyle"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B074XJKWV6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El perro de los Baskerville"
-    },
-    "el-perro-de-los-baskerville-narracion-en-castellano-the-hound-of-the-baskervilles": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "el-perro-de-los-baskerville-narracion-en-castellano-the-hound-of-the-baskervilles",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
         "jose-coronado-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -12551,17 +12376,32 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-perro-de-los-baskerville-narracion-en-castellano-the-hound-of-the-baskervilles"
+          "work": "el-perro-de-los-baskerville"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085XX2MBF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8491054197",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B074XJKWV6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08JCWJBMQ",
           "type": "libex-import"
         }
       ],
-      "title": "El perro de los Baskerville (Narración en Castellano) [The Hound of the Baskervilles]"
+      "title": "El perro de los Baskerville"
     },
     "el-perro-de-terracota-comisario-montalbano-2-the-terra-cotta-dog-the-inspector-montalbano-mysteries": {
       "added_at": "2026-07-29",

@@ -944,6 +944,12 @@
       "authors": [
         "james-patterson"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "science-fiction"
+      ],
       "id": "max",
       "language": "en",
       "license": "CC0-1.0",
@@ -958,6 +964,18 @@
             },
             {
               "asin": "B079VXRG7M",
+              "region": "uk"
+            },
+            {
+              "asin": "B0032N4PT4",
+              "region": "us"
+            },
+            {
+              "asin": "B07BKVQXBC",
+              "region": "de"
+            },
+            {
+              "asin": "B004EXIZHE",
               "region": "uk"
             }
           ],
@@ -1393,148 +1411,7 @@
               "imported_at": "2026-10-09",
               "ref": "B079VXRG7M",
               "type": "libex-import"
-            }
-          ],
-          "work": "max"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/3393124-max",
-          "type": "community"
-        }
-      ],
-      "title": "Max",
-      "xref": {
-        "goodreads": "3393124"
-      }
-    },
-    "max-a-maximum-ride-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "max-a-maximum-ride-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jill-apple-2009": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0032N4PT4",
-              "region": "us"
             },
-            {
-              "asin": "B07BKVQXBC",
-              "region": "de"
-            },
-            {
-              "asin": "B004EXIZHE",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1482362,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1669515,
-              "start_ms": 1482362,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1095239,
-              "start_ms": 3151877,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1573849,
-              "start_ms": 4247116,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1137824,
-              "start_ms": 5820965,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1119573,
-              "start_ms": 6958789,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1324931,
-              "start_ms": 8078362,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1115069,
-              "start_ms": 9403293,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1450736,
-              "start_ms": 10518362,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1311324,
-              "start_ms": 11969098,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1630784,
-              "start_ms": 13280422,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1409498,
-              "start_ms": 14911206,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1045827,
-              "start_ms": 16320704,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1257732,
-              "start_ms": 17366531,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1253460,
-              "start_ms": 18624263,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 808147,
-              "start_ms": 19877723,
-              "title": "Chapter 16"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81VyG4jG0ZL.jpg",
-          "id": "jill-apple-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jill-apple"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2009-02-28",
-          "runtime_min": 344,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B0032N4PT4",
@@ -1551,17 +1428,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "max-a-maximum-ride-novel"
+          "work": "max"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/3393124-max",
+          "type": "community"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0032N4PT4",
           "type": "libex-import"
         }
       ],
-      "title": "Max: A Maximum Ride Novel"
+      "title": "Max",
+      "xref": {
+        "goodreads": "3393124"
+      }
     },
     "max-abaddon-and-the-crystal-king": {
       "added_at": "2026-08-01",

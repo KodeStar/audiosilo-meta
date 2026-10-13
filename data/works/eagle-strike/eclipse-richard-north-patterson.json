@@ -9126,6 +9126,43 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "nikki-garcia-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0B7X7NPWW",
+              "region": "es"
+            },
+            {
+              "asin": "B0B7X5Y1MK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913fzy-xFFL.jpg",
+          "id": "nikki-garcia-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nikki-garcia"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2023-03-21",
+          "runtime_min": 2752,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B7X7NPWW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B7X5Y1MK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ecos-del-pasado-an-echo-in-the-bone"
+        },
         "yopa-ponce-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9749,6 +9786,16 @@
           "imported_at": "2026-08-02",
           "ref": "B098XW7793",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B7X7NPWW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B7X5Y1MK",
+          "type": "libex-import"
         }
       ],
       "title": "Ecos del pasado [An Echo in the Bone]"
@@ -9822,108 +9869,6 @@
         }
       ],
       "title": "Ecos del pasado [Echoes of the Past]"
-    },
-    "ecos-del-pasado-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "fantasy",
-        "romance"
-      ],
-      "id": "ecos-del-pasado-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nikki-garcia-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0B7X7NPWW",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913fzy-xFFL.jpg",
-          "id": "nikki-garcia-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nikki-garcia"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2023-03-21",
-          "runtime_min": 2752,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0B7X7NPWW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "ecos-del-pasado-narracion-en-castellano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0B7X7NPWW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ecos del pasado (Narración en Castellano)"
-    },
-    "ecos-del-pasado-narracion-en-castellano-an-echo-in-the-bone": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "fantasy",
-        "romance"
-      ],
-      "id": "ecos-del-pasado-narracion-en-castellano-an-echo-in-the-bone",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nikki-garcia-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0B7X5Y1MK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/913fzy-xFFL.jpg",
-          "id": "nikki-garcia-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nikki-garcia"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2023-03-21",
-          "runtime_min": 2752,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0B7X5Y1MK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "ecos-del-pasado-narracion-en-castellano-an-echo-in-the-bone"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0B7X5Y1MK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Ecos del pasado (Narración en Castellano) [An Echo in the Bone]"
     },
     "ecoute-audio-le-francais-pour-les-vacances-4-2014": {
       "added_at": "2026-07-29",

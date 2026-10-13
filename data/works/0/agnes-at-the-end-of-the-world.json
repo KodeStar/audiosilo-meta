@@ -890,195 +890,6 @@
       ],
       "title": "Agnes Day"
     },
-    "agnes-gray": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "anne-bronte"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "literary-fiction",
-        "romance"
-      ],
-      "id": "agnes-gray",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "flo-gibson-2018": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B07LCT4SF3",
-              "region": "us"
-            },
-            {
-              "asin": "B07LCV2DNY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1591542,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 916723,
-              "start_ms": 1591542,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1430674,
-              "start_ms": 2508265,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1091848,
-              "start_ms": 3938939,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 816738,
-              "start_ms": 5030787,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 713827,
-              "start_ms": 5847525,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1927488,
-              "start_ms": 6561352,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 303809,
-              "start_ms": 8488840,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 537170,
-              "start_ms": 8792649,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 618533,
-              "start_ms": 9329819,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1899531,
-              "start_ms": 9948352,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 497324,
-              "start_ms": 11847883,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 901352,
-              "start_ms": 12345207,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1694127,
-              "start_ms": 13246559,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 867636,
-              "start_ms": 14940686,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 454042,
-              "start_ms": 15808322,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1338165,
-              "start_ms": 16262364,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1156725,
-              "start_ms": 17600529,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 402587,
-              "start_ms": 18757254,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 718332,
-              "start_ms": 19159841,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 779540,
-              "start_ms": 19878173,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 978535,
-              "start_ms": 20657713,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 473687,
-              "start_ms": 21636248,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 744617,
-              "start_ms": 22109935,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 733889,
-              "start_ms": 22854552,
-              "title": "Chapter 25"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/7140byovPrL.jpg",
-          "id": "flo-gibson-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "flo-gibson"
-          ],
-          "publisher": "Audio Book Contractors, LLC",
-          "release_date": "2018-12-18",
-          "runtime_min": 392,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B07LCT4SF3",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07LCV2DNY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "agnes-gray"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B07LCT4SF3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Agnes Gray"
-    },
     "agnes-grey": {
       "added_at": "2026-08-07",
       "authors": [
@@ -1093,7 +904,10 @@
       ],
       "genres": [
         "classics",
+        "historical-fiction",
+        "literary-fiction",
         "politics",
+        "romance",
         "social-sciences"
       ],
       "id": "agnes-grey",
@@ -1504,6 +1318,170 @@
           ],
           "work": "agnes-grey"
         },
+        "flo-gibson-2018": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B07LCT4SF3",
+              "region": "us"
+            },
+            {
+              "asin": "B07LCV2DNY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1591542,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 916723,
+              "start_ms": 1591542,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1430674,
+              "start_ms": 2508265,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1091848,
+              "start_ms": 3938939,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 816738,
+              "start_ms": 5030787,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 713827,
+              "start_ms": 5847525,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1927488,
+              "start_ms": 6561352,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 303809,
+              "start_ms": 8488840,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 537170,
+              "start_ms": 8792649,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 618533,
+              "start_ms": 9329819,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1899531,
+              "start_ms": 9948352,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 497324,
+              "start_ms": 11847883,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 901352,
+              "start_ms": 12345207,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1694127,
+              "start_ms": 13246559,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 867636,
+              "start_ms": 14940686,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 454042,
+              "start_ms": 15808322,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1338165,
+              "start_ms": 16262364,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1156725,
+              "start_ms": 17600529,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 402587,
+              "start_ms": 18757254,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 718332,
+              "start_ms": 19159841,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 779540,
+              "start_ms": 19878173,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 978535,
+              "start_ms": 20657713,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 473687,
+              "start_ms": 21636248,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 744617,
+              "start_ms": 22109935,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 733889,
+              "start_ms": 22854552,
+              "title": "Chapter 25"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/7140byovPrL.jpg",
+          "id": "flo-gibson-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "flo-gibson"
+          ],
+          "publisher": "Audio Book Contractors, LLC",
+          "release_date": "2018-12-18",
+          "runtime_min": 392,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B07LCT4SF3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07LCV2DNY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "agnes-grey"
+        },
         "louise-brealey-2020": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -1822,6 +1800,11 @@
         {
           "imported_at": "2026-08-07",
           "ref": "0241441447",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B07LCT4SF3",
           "type": "libex-import"
         }
       ],

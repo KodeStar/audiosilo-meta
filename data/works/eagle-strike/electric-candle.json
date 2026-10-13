@@ -6181,6 +6181,7 @@
         "historical-fiction",
         "literary-fiction",
         "mystery",
+        "police-procedural",
         "psychological-thriller",
         "thriller-suspense"
       ],
@@ -6188,6 +6189,43 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "stanley-townsend-2026": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0GR726RKP",
+              "region": "us"
+            },
+            {
+              "asin": "B0GR6DFXQL",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hsigtnQZL.jpg",
+          "id": "stanley-townsend-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stanley-townsend"
+          ],
+          "publisher": "Faber & Faber",
+          "release_date": "2026-04-23",
+          "runtime_min": 552,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GR726RKP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GR6DFXQL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "elegy-for-april"
+        },
         "timothy-dalton-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6666,32 +6704,7 @@
             }
           ],
           "work": "elegy-for-april"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003FKNCIY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Elegy for April"
-    },
-    "elegy-for-april-benjamin-black": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benjamin-black"
-      ],
-      "genres": [
-        "historical-fiction",
-        "literary-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "elegy-for-april-benjamin-black",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "timothy-dalton-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6844,72 +6857,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "elegy-for-april-benjamin-black"
+          "work": "elegy-for-april"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
+          "ref": "B003FKNCIY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
           "ref": "B00ELJQL72",
           "type": "libex-import"
-        }
-      ],
-      "title": "Elegy for April"
-    },
-    "elegy-for-april-john-banville": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-banville"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "elegy-for-april-john-banville",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "stanley-townsend-2026": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0GR726RKP",
-              "region": "us"
-            },
-            {
-              "asin": "B0GR6DFXQL",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hsigtnQZL.jpg",
-          "id": "stanley-townsend-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stanley-townsend"
-          ],
-          "publisher": "Faber & Faber",
-          "release_date": "2026-04-23",
-          "runtime_min": 552,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0GR726RKP",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0GR6DFXQL",
-              "type": "libex-import"
-            }
-          ],
-          "work": "elegy-for-april-john-banville"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0GR726RKP",

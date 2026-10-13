@@ -398,7 +398,8 @@
     "it-starts-with-us": {
       "added_at": "2026-07-17T09:08:56+00:00",
       "authors": [
-        "colleen-hoover"
+        "colleen-hoover",
+        "olivia-song"
       ],
       "genres": [
         "contemporary-romance",
@@ -658,37 +659,8 @@
             }
           ],
           "work": "it-starts-with-us"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B09SBP7MWN",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B09SBP7MWN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "It Starts with Us"
-    },
-    "it-starts-with-us-colleen-hoover": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "colleen-hoover",
-        "olivia-song"
-      ],
-      "genres": [
-        "contemporary-romance",
-        "romance"
-      ],
-      "id": "it-starts-with-us-colleen-hoover",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "colin-donnell-2022": {
+        "colin-donnell-2022-2": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
@@ -912,7 +884,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81KBjsLv-wL.jpg",
-          "id": "colin-donnell-2022",
+          "id": "colin-donnell-2022-2",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -943,10 +915,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "it-starts-with-us-colleen-hoover"
+          "work": "it-starts-with-us"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B09SBP7MWN",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B09SBP7MWN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09SVQCLJV",

@@ -10524,131 +10524,6 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
-        "wolfgang-pampel-2013": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00TZZGS5C",
-              "region": "us"
-            },
-            {
-              "asin": "B00GGPBOQM",
-              "region": "de"
-            },
-            {
-              "asin": "B00TZZURVI",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 266380,
-              "start_ms": 0,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 261735,
-              "start_ms": 266380,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 263802,
-              "start_ms": 528115,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 332370,
-              "start_ms": 791917,
-              "title": "Kapitel 4"
-            },
-            {
-              "length_ms": 262084,
-              "start_ms": 1124287,
-              "title": "Kapitel 5"
-            },
-            {
-              "length_ms": 350993,
-              "start_ms": 1386371,
-              "title": "Kapitel 6"
-            },
-            {
-              "length_ms": 321643,
-              "start_ms": 1737364,
-              "title": "Kapitel 7"
-            },
-            {
-              "length_ms": 352827,
-              "start_ms": 2059007,
-              "title": "Kapitel 8"
-            },
-            {
-              "length_ms": 377928,
-              "start_ms": 2411834,
-              "title": "Kapitel 9"
-            },
-            {
-              "length_ms": 259460,
-              "start_ms": 2789762,
-              "title": "Kapitel 10"
-            },
-            {
-              "length_ms": 296798,
-              "start_ms": 3049222,
-              "title": "Kapitel 11"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/916vXflFlgL.jpg",
-          "id": "wolfgang-pampel-2013",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "wolfgang-pampel"
-          ],
-          "publisher": "Lübbe Audio",
-          "release_date": "2013-11-06",
-          "runtime_min": 55,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00TZZGS5C",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00GGPBOQM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00TZZURVI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "das-leichenhaus-der-lady-l-john-sinclair-classics-4"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00TZZGS5C",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Das Leichenhaus der Lady L.: John Sinclair Classics 4"
-    },
-    "das-leichenhaus-der-lady-l-john-sinclair-tonstudio-braun-klassiker-41": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy"
-      ],
-      "id": "das-leichenhaus-der-lady-l-john-sinclair-tonstudio-braun-klassiker-41",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
         "div-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10795,17 +10670,125 @@
               "type": "libex-import"
             }
           ],
-          "work": "das-leichenhaus-der-lady-l-john-sinclair-tonstudio-braun-klassiker-41"
+          "work": "das-leichenhaus-der-lady-l-john-sinclair-classics-4"
+        },
+        "wolfgang-pampel-2013": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00TZZGS5C",
+              "region": "us"
+            },
+            {
+              "asin": "B00GGPBOQM",
+              "region": "de"
+            },
+            {
+              "asin": "B00TZZURVI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 266380,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 261735,
+              "start_ms": 266380,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 263802,
+              "start_ms": 528115,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 332370,
+              "start_ms": 791917,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 262084,
+              "start_ms": 1124287,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 350993,
+              "start_ms": 1386371,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 321643,
+              "start_ms": 1737364,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 352827,
+              "start_ms": 2059007,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 377928,
+              "start_ms": 2411834,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 259460,
+              "start_ms": 2789762,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 296798,
+              "start_ms": 3049222,
+              "title": "Kapitel 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/916vXflFlgL.jpg",
+          "id": "wolfgang-pampel-2013",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "wolfgang-pampel"
+          ],
+          "publisher": "Lübbe Audio",
+          "release_date": "2013-11-06",
+          "runtime_min": 55,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00TZZGS5C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00GGPBOQM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00TZZURVI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "das-leichenhaus-der-lady-l-john-sinclair-classics-4"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00TZZGS5C",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B01KVGLXS0",
           "type": "libex-import"
         }
       ],
-      "title": "Das Leichenhaus der Lady L.: John Sinclair - Tonstudio Braun Klassiker 41"
+      "title": "Das Leichenhaus der Lady L.: John Sinclair Classics 4"
     }
   }
 }

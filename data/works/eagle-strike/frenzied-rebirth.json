@@ -6769,6 +6769,81 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "dick-fredricks-2001": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA8UMM",
+              "region": "us"
+            },
+            {
+              "asin": "B004F37RBI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1818447,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 142849,
+              "start_ms": 1818447,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1069511,
+              "start_ms": 1961296,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 749912,
+              "start_ms": 3030807,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1604081,
+              "start_ms": 3780719,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 214320,
+              "start_ms": 5384800,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1722642,
+              "start_ms": 5599120,
+              "title": "Chapter 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/719gEEd-VpL.jpg",
+          "id": "dick-fredricks-2001",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dick-fredricks",
+            "jim-cymbala"
+          ],
+          "publisher": "Zondervan",
+          "release_date": "2001-10-26",
+          "runtime_min": 121,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA8UMM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F37RBI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fresh-wind-fresh-fire"
+        },
         "dick-fredricks-2004": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6844,99 +6919,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002V5J6AW",
           "type": "libex-import"
-        }
-      ],
-      "title": "Fresh Wind, Fresh Fire"
-    },
-    "fresh-wind-fresh-fire-jim-cymbala": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jim-cymbala"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "fresh-wind-fresh-fire-jim-cymbala",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dick-fredricks-2001": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA8UMM",
-              "region": "us"
-            },
-            {
-              "asin": "B004F37RBI",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1818447,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 142849,
-              "start_ms": 1818447,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1069511,
-              "start_ms": 1961296,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 749912,
-              "start_ms": 3030807,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1604081,
-              "start_ms": 3780719,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 214320,
-              "start_ms": 5384800,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1722642,
-              "start_ms": 5599120,
-              "title": "Chapter 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/719gEEd-VpL.jpg",
-          "id": "dick-fredricks-2001",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dick-fredricks",
-            "jim-cymbala"
-          ],
-          "publisher": "Zondervan",
-          "release_date": "2001-10-26",
-          "runtime_min": 121,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA8UMM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F37RBI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fresh-wind-fresh-fire-jim-cymbala"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002VA8UMM",

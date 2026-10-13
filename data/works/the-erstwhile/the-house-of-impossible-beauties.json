@@ -2461,7 +2461,8 @@
       ],
       "genres": [
         "classics",
-        "historical-fiction"
+        "historical-fiction",
+        "literary-fiction"
       ],
       "id": "the-house-of-mirth",
       "language": "en",
@@ -3212,30 +3213,7 @@
             }
           ],
           "work": "the-house-of-mirth"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B098FX67LD",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The House of Mirth"
-    },
-    "the-house-of-mirth-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "edith-wharton"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "the-house-of-mirth-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "susan-ericksen-2018": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -3423,17 +3401,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-house-of-mirth-amazonclassics-edition"
+          "work": "the-house-of-mirth"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B098FX67LD",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B07CSF8WTS",
           "type": "libex-import"
         }
       ],
-      "title": "The House of Mirth (AmazonClassics Edition)"
+      "title": "The House of Mirth"
     },
     "the-house-of-mondavi": {
       "added_at": "2026-07-29",
@@ -9261,7 +9244,10 @@
         "nathaniel-hawthorne"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "gothic",
+        "horror",
+        "literary-fiction"
       ],
       "id": "the-house-of-the-seven-gables",
       "language": "en",
@@ -9704,6 +9690,155 @@
           ],
           "work": "the-house-of-the-seven-gables"
         },
+        "buck-schirner-2017": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B076119NV1",
+              "region": "us"
+            },
+            {
+              "asin": "B07611Y1R4",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 427176,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3499432,
+              "start_ms": 427176,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1662270,
+              "start_ms": 3926608,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1875289,
+              "start_ms": 5588878,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1942302,
+              "start_ms": 7464167,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1937287,
+              "start_ms": 9406469,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1441262,
+              "start_ms": 11343756,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2343357,
+              "start_ms": 12785018,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2463312,
+              "start_ms": 15128375,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1668307,
+              "start_ms": 17591687,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1823277,
+              "start_ms": 19259994,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1858292,
+              "start_ms": 21083271,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1904268,
+              "start_ms": 22941563,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 3268347,
+              "start_ms": 24845831,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1652285,
+              "start_ms": 28114178,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2449333,
+              "start_ms": 29766463,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1721295,
+              "start_ms": 32215796,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 2161266,
+              "start_ms": 33937091,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2408327,
+              "start_ms": 36098357,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 2107257,
+              "start_ms": 38506684,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1262283,
+              "start_ms": 40613941,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1923470,
+              "start_ms": 41876224,
+              "title": "Chapter 22"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81UnGcVtk3L.jpg",
+          "id": "buck-schirner-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "buck-schirner"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2017-10-10",
+          "runtime_min": 729,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B076119NV1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07611Y1R4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-of-the-seven-gables"
+        },
         "susie-berneis-2014": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -9859,183 +9994,14 @@
           "imported_at": "2026-08-08",
           "ref": "B00QZ9UR4O",
           "type": "libex-import"
-        }
-      ],
-      "title": "The House of the Seven Gables"
-    },
-    "the-house-of-the-seven-gables-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "nathaniel-hawthorne"
-      ],
-      "genres": [
-        "classics",
-        "gothic",
-        "horror",
-        "literary-fiction"
-      ],
-      "id": "the-house-of-the-seven-gables-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "buck-schirner-2017": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B076119NV1",
-              "region": "us"
-            },
-            {
-              "asin": "B07611Y1R4",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 427176,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3499432,
-              "start_ms": 427176,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1662270,
-              "start_ms": 3926608,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1875289,
-              "start_ms": 5588878,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1942302,
-              "start_ms": 7464167,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1937287,
-              "start_ms": 9406469,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1441262,
-              "start_ms": 11343756,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2343357,
-              "start_ms": 12785018,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2463312,
-              "start_ms": 15128375,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1668307,
-              "start_ms": 17591687,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1823277,
-              "start_ms": 19259994,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1858292,
-              "start_ms": 21083271,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1904268,
-              "start_ms": 22941563,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 3268347,
-              "start_ms": 24845831,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1652285,
-              "start_ms": 28114178,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 2449333,
-              "start_ms": 29766463,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1721295,
-              "start_ms": 32215796,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 2161266,
-              "start_ms": 33937091,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 2408327,
-              "start_ms": 36098357,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 2107257,
-              "start_ms": 38506684,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1262283,
-              "start_ms": 40613941,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1923470,
-              "start_ms": 41876224,
-              "title": "Chapter 22"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81UnGcVtk3L.jpg",
-          "id": "buck-schirner-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "buck-schirner"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2017-10-10",
-          "runtime_min": 729,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B076119NV1",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07611Y1R4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-house-of-the-seven-gables-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B076119NV1",
           "type": "libex-import"
         }
       ],
-      "title": "The House of the Seven Gables (AmazonClassics Edition)"
+      "title": "The House of the Seven Gables"
     },
     "the-house-of-the-spirits": {
       "added_at": "2026-08-08",

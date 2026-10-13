@@ -1,18 +1,21 @@
 {
   "entries": {
-    "bloody-sunday-dramatized-adaptation": {
-      "added_at": "2026-07-25T17:12:12+01:00",
+    "bloody-sunday-william-w-johnstone": {
+      "added_at": "2026-07-29",
       "authors": [
         "william-w-johnstone",
         "j-a-johnstone"
       ],
       "genres": [
+        "action-adventure",
         "espionage",
+        "historical-fiction",
         "politics",
         "thriller-suspense",
-        "war-military-fiction"
+        "war-military-fiction",
+        "westerns"
       ],
-      "id": "bloody-sunday-dramatized-adaptation",
+      "id": "bloody-sunday-william-w-johnstone",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -74,39 +77,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "bloody-sunday-dramatized-adaptation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "1648803261",
-          "type": "audiosilo-books-import"
+          "work": "bloody-sunday-william-w-johnstone"
         },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1648803261",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Bloody Sunday [Dramatized Adaptation]"
-    },
-    "bloody-sunday-william-w-johnstone": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-w-johnstone",
-        "j-a-johnstone"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "thriller-suspense",
-        "westerns"
-      ],
-      "id": "bloody-sunday-william-w-johnstone",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "jack-garrett-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -149,6 +121,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00NQEVPYW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "1648803261",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1648803261",
           "type": "libex-import"
         }
       ],

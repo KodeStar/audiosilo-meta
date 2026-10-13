@@ -1468,7 +1468,9 @@
       ],
       "genres": [
         "fantasy",
+        "horror",
         "paranormal",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "achterbahn-ins-jenseits",
@@ -1581,33 +1583,7 @@
             }
           ],
           "work": "achterbahn-ins-jenseits"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00U2MYQU6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Achterbahn ins Jenseits"
-    },
-    "achterbahn-ins-jenseits-john-sinclair-3-remastered": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "achterbahn-ins-jenseits-john-sinclair-3-remastered",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "detlef-bierstedt-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1726,17 +1702,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "achterbahn-ins-jenseits-john-sinclair-3-remastered"
+          "work": "achterbahn-ins-jenseits"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00U2MYQU6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00U2MXVNY",
           "type": "libex-import"
         }
       ],
-      "title": "Achterbahn ins Jenseits (John Sinclair 3) [Remastered]"
+      "title": "Achterbahn ins Jenseits"
     },
     "achtnacht": {
       "added_at": "2026-07-29",
@@ -13611,6 +13592,9 @@
       ],
       "genres": [
         "business",
+        "economics",
+        "finance",
+        "history",
         "parenting-relationships",
         "self-help"
       ],
@@ -13654,31 +13638,7 @@
             }
           ],
           "work": "acres-of-diamonds-russell-conwell"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00YNIY0EW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Acres of Diamonds"
-    },
-    "acres-of-diamonds-russell-conwell-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "russell-conwell"
-      ],
-      "genres": [
-        "economics",
-        "finance",
-        "history"
-      ],
-      "id": "acres-of-diamonds-russell-conwell-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "joseph-pickering-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -13705,10 +13665,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "acres-of-diamonds-russell-conwell-2"
+          "work": "acres-of-diamonds-russell-conwell"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00YNIY0EW",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B07Q2HZLPR",

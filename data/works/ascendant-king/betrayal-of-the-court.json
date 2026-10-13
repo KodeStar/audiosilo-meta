@@ -4361,6 +4361,7 @@
       ],
       "genres": [
         "childrens",
+        "coming-of-age",
         "fantasy",
         "science-fiction",
         "young-adult"
@@ -4577,12 +4578,96 @@
             }
           ],
           "work": "betrayed-a-house-of-night-novel"
+        },
+        "edwina-wren-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZNE7O",
+              "region": "us"
+            },
+            {
+              "asin": "B004FTNO7I",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4574842,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4573356,
+              "start_ms": 4574842,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4505461,
+              "start_ms": 9148198,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4417271,
+              "start_ms": 13653659,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4595972,
+              "start_ms": 18070930,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4619842,
+              "start_ms": 22666902,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4627505,
+              "start_ms": 27286744,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3594402,
+              "start_ms": 31914249,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51cqQKJ8ofL.jpg",
+          "id": "edwina-wren-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edwina-wren"
+          ],
+          "publisher": "Bolinda Publishing Pty Ltd",
+          "release_date": "2008-12-04",
+          "runtime_min": 591,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZNE7O",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FTNO7I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "betrayed-a-house-of-night-novel"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B073JWDTQD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZNE7O",
           "type": "libex-import"
         }
       ],
@@ -7258,110 +7343,6 @@
         }
       ],
       "title": "Betrayed Honor"
-    },
-    "betrayed-house-of-night-series-book-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kristin-cast",
-        "p-c-cast"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "betrayed-house-of-night-series-book-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "edwina-wren-2008": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002UZNE7O",
-              "region": "us"
-            },
-            {
-              "asin": "B004FTNO7I",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4574842,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4573356,
-              "start_ms": 4574842,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4505461,
-              "start_ms": 9148198,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4417271,
-              "start_ms": 13653659,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4595972,
-              "start_ms": 18070930,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4619842,
-              "start_ms": 22666902,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4627505,
-              "start_ms": 27286744,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3594402,
-              "start_ms": 31914249,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51cqQKJ8ofL.jpg",
-          "id": "edwina-wren-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "edwina-wren"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2008-12-04",
-          "runtime_min": 591,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002UZNE7O",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FTNO7I",
-              "type": "libex-import"
-            }
-          ],
-          "work": "betrayed-house-of-night-series-book-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UZNE7O",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Betrayed: House of Night Series, Book 2"
     },
     "betrayed-in-blood": {
       "added_at": "2026-08-02",

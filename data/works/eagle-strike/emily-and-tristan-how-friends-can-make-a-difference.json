@@ -404,7 +404,8 @@
       "genres": [
         "classics",
         "literary-fiction",
-        "romance"
+        "romance",
+        "young-adult"
       ],
       "id": "emily-climbs",
       "language": "en",
@@ -569,6 +570,180 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B09V9MVLVK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "emily-climbs"
+        },
+        "jessie-leo-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0F3DKNDVW",
+              "region": "us"
+            },
+            {
+              "asin": "B0F3DNKC9C",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11842,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1844987,
+              "start_ms": 11842,
+              "title": "Writing Herself Out"
+            },
+            {
+              "length_ms": 2940598,
+              "start_ms": 1856829,
+              "title": "Salad Days"
+            },
+            {
+              "length_ms": 3139012,
+              "start_ms": 4797427,
+              "title": "In the Watches of the Night"
+            },
+            {
+              "length_ms": 2369085,
+              "start_ms": 7936439,
+              "title": "“As Ithers See Us”"
+            },
+            {
+              "length_ms": 1208320,
+              "start_ms": 10305524,
+              "title": "Half a Loaf"
+            },
+            {
+              "length_ms": 1778044,
+              "start_ms": 11513844,
+              "title": "Shrewsbury Beginnings"
+            },
+            {
+              "length_ms": 2247157,
+              "start_ms": 13291888,
+              "title": "Pot-pourri"
+            },
+            {
+              "length_ms": 1981683,
+              "start_ms": 15539045,
+              "title": "Not Proven"
+            },
+            {
+              "length_ms": 767210,
+              "start_ms": 17520728,
+              "title": "A Supreme Moment"
+            },
+            {
+              "length_ms": 2336995,
+              "start_ms": 18287938,
+              "title": "The Madness of an Hour"
+            },
+            {
+              "length_ms": 1631735,
+              "start_ms": 20624933,
+              "title": "Heights and Hollows"
+            },
+            {
+              "length_ms": 1418669,
+              "start_ms": 22256668,
+              "title": "At the Sign of the Haystack"
+            },
+            {
+              "length_ms": 1635056,
+              "start_ms": 23675337,
+              "title": "Haven"
+            },
+            {
+              "length_ms": 1171655,
+              "start_ms": 25310393,
+              "title": "The Woman Who Spanked the King"
+            },
+            {
+              "length_ms": 1171377,
+              "start_ms": 26482048,
+              "title": "“The Thing That Couldn’t”"
+            },
+            {
+              "length_ms": 2541725,
+              "start_ms": 27653425,
+              "title": "Driftwood"
+            },
+            {
+              "length_ms": 1276261,
+              "start_ms": 30195150,
+              "title": "“If a Body Kiss a Body”"
+            },
+            {
+              "length_ms": 1234419,
+              "start_ms": 31471411,
+              "title": "Circumstantial Evidence"
+            },
+            {
+              "length_ms": 2482677,
+              "start_ms": 32705830,
+              "title": "“Airy Voices”"
+            },
+            {
+              "length_ms": 1342531,
+              "start_ms": 35188507,
+              "title": "In the Old John House"
+            },
+            {
+              "length_ms": 1750923,
+              "start_ms": 36531038,
+              "title": "Thicker Than Water"
+            },
+            {
+              "length_ms": 1623353,
+              "start_ms": 38281961,
+              "title": "“Love Me, Love My Dog”"
+            },
+            {
+              "length_ms": 863410,
+              "start_ms": 39905314,
+              "title": "An Open Door"
+            },
+            {
+              "length_ms": 1519629,
+              "start_ms": 40768724,
+              "title": "A Valley of Vision"
+            },
+            {
+              "length_ms": 1753663,
+              "start_ms": 42288353,
+              "title": "April Love"
+            },
+            {
+              "length_ms": 13907,
+              "start_ms": 44042016,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/814qSooxloL.jpg",
+          "id": "jessie-leo-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jessie-leo"
+          ],
+          "publisher": "Jessie Leo Audio LLC",
+          "release_date": "2025-04-02",
+          "runtime_min": 734,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0F3DKNDVW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0F3DNKC9C",
               "type": "libex-import"
             }
           ],
@@ -1107,206 +1282,14 @@
           "imported_at": "2026-07-30",
           "ref": "B071WX8QZV",
           "type": "libex-import"
-        }
-      ],
-      "title": "Emily Climbs"
-    },
-    "emily-climbs-annotated": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "l-m-montgomery"
-      ],
-      "genres": [
-        "classics",
-        "young-adult"
-      ],
-      "id": "emily-climbs-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jessie-leo-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0F3DKNDVW",
-              "region": "us"
-            },
-            {
-              "asin": "B0F3DNKC9C",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 11842,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1844987,
-              "start_ms": 11842,
-              "title": "Writing Herself Out"
-            },
-            {
-              "length_ms": 2940598,
-              "start_ms": 1856829,
-              "title": "Salad Days"
-            },
-            {
-              "length_ms": 3139012,
-              "start_ms": 4797427,
-              "title": "In the Watches of the Night"
-            },
-            {
-              "length_ms": 2369085,
-              "start_ms": 7936439,
-              "title": "“As Ithers See Us”"
-            },
-            {
-              "length_ms": 1208320,
-              "start_ms": 10305524,
-              "title": "Half a Loaf"
-            },
-            {
-              "length_ms": 1778044,
-              "start_ms": 11513844,
-              "title": "Shrewsbury Beginnings"
-            },
-            {
-              "length_ms": 2247157,
-              "start_ms": 13291888,
-              "title": "Pot-pourri"
-            },
-            {
-              "length_ms": 1981683,
-              "start_ms": 15539045,
-              "title": "Not Proven"
-            },
-            {
-              "length_ms": 767210,
-              "start_ms": 17520728,
-              "title": "A Supreme Moment"
-            },
-            {
-              "length_ms": 2336995,
-              "start_ms": 18287938,
-              "title": "The Madness of an Hour"
-            },
-            {
-              "length_ms": 1631735,
-              "start_ms": 20624933,
-              "title": "Heights and Hollows"
-            },
-            {
-              "length_ms": 1418669,
-              "start_ms": 22256668,
-              "title": "At the Sign of the Haystack"
-            },
-            {
-              "length_ms": 1635056,
-              "start_ms": 23675337,
-              "title": "Haven"
-            },
-            {
-              "length_ms": 1171655,
-              "start_ms": 25310393,
-              "title": "The Woman Who Spanked the King"
-            },
-            {
-              "length_ms": 1171377,
-              "start_ms": 26482048,
-              "title": "“The Thing That Couldn’t”"
-            },
-            {
-              "length_ms": 2541725,
-              "start_ms": 27653425,
-              "title": "Driftwood"
-            },
-            {
-              "length_ms": 1276261,
-              "start_ms": 30195150,
-              "title": "“If a Body Kiss a Body”"
-            },
-            {
-              "length_ms": 1234419,
-              "start_ms": 31471411,
-              "title": "Circumstantial Evidence"
-            },
-            {
-              "length_ms": 2482677,
-              "start_ms": 32705830,
-              "title": "“Airy Voices”"
-            },
-            {
-              "length_ms": 1342531,
-              "start_ms": 35188507,
-              "title": "In the Old John House"
-            },
-            {
-              "length_ms": 1750923,
-              "start_ms": 36531038,
-              "title": "Thicker Than Water"
-            },
-            {
-              "length_ms": 1623353,
-              "start_ms": 38281961,
-              "title": "“Love Me, Love My Dog”"
-            },
-            {
-              "length_ms": 863410,
-              "start_ms": 39905314,
-              "title": "An Open Door"
-            },
-            {
-              "length_ms": 1519629,
-              "start_ms": 40768724,
-              "title": "A Valley of Vision"
-            },
-            {
-              "length_ms": 1753663,
-              "start_ms": 42288353,
-              "title": "April Love"
-            },
-            {
-              "length_ms": 13907,
-              "start_ms": 44042016,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/814qSooxloL.jpg",
-          "id": "jessie-leo-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jessie-leo"
-          ],
-          "publisher": "Jessie Leo Audio LLC",
-          "release_date": "2025-04-02",
-          "runtime_min": 734,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0F3DKNDVW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0F3DNKC9C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "emily-climbs-annotated"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0F3DKNDVW",
           "type": "libex-import"
         }
       ],
-      "title": "Emily Climbs (Annotated)"
+      "title": "Emily Climbs"
     },
     "emily-dennistoun": {
       "added_at": "2026-07-29",

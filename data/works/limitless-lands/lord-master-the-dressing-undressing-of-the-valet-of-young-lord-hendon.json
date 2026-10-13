@@ -5178,200 +5178,13 @@
       ],
       "genres": [
         "action-adventure",
+        "epic-fantasy",
+        "fantasy",
         "science-fiction",
+        "sword-sorcery",
         "young-adult"
       ],
       "id": "lord-of-goblins-vol-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "walt-allen-2020": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B08Q8TM1S7",
-              "region": "us"
-            },
-            {
-              "asin": "B08QB5DCM8",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18181,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 46277,
-              "start_ms": 18181,
-              "title": "Synopsis"
-            },
-            {
-              "length_ms": 415404,
-              "start_ms": 64458,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 1018496,
-              "start_ms": 479862,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1210734,
-              "start_ms": 1498358,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 883960,
-              "start_ms": 2709092,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1320007,
-              "start_ms": 3593052,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 792450,
-              "start_ms": 4913059,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 919742,
-              "start_ms": 5705509,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1843710,
-              "start_ms": 6625251,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1170935,
-              "start_ms": 8468961,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1007467,
-              "start_ms": 9639896,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 725809,
-              "start_ms": 10647363,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1827456,
-              "start_ms": 11373172,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 615352,
-              "start_ms": 13200628,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1119666,
-              "start_ms": 13815980,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 804130,
-              "start_ms": 14935646,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 850663,
-              "start_ms": 15739776,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 909781,
-              "start_ms": 16590439,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 859997,
-              "start_ms": 17500220,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 891297,
-              "start_ms": 18360217,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1697239,
-              "start_ms": 19251514,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 2659590,
-              "start_ms": 20948753,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1485125,
-              "start_ms": 23608343,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 30231,
-              "start_ms": 25093468,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81C2ib4KzML.jpg",
-          "id": "walt-allen-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "walt-allen"
-          ],
-          "publisher": "MoonQuill",
-          "release_date": "2020-12-11",
-          "runtime_min": 418,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B08Q8TM1S7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B08QB5DCM8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "lord-of-goblins-vol-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B08Q8TM1S7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lord of Goblins, Vol. 1"
-    },
-    "lord-of-goblins-vol-1-definitive-edition": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "michiel-werbrouck",
-        "hadi-bendakji"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "sword-sorcery"
-      ],
-      "id": "lord-of-goblins-vol-1-definitive-edition",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -5557,17 +5370,186 @@
               "type": "libex-import"
             }
           ],
-          "work": "lord-of-goblins-vol-1-definitive-edition"
+          "work": "lord-of-goblins-vol-1"
+        },
+        "walt-allen-2020": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B08Q8TM1S7",
+              "region": "us"
+            },
+            {
+              "asin": "B08QB5DCM8",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18181,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 46277,
+              "start_ms": 18181,
+              "title": "Synopsis"
+            },
+            {
+              "length_ms": 415404,
+              "start_ms": 64458,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 1018496,
+              "start_ms": 479862,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1210734,
+              "start_ms": 1498358,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 883960,
+              "start_ms": 2709092,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1320007,
+              "start_ms": 3593052,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 792450,
+              "start_ms": 4913059,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 919742,
+              "start_ms": 5705509,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1843710,
+              "start_ms": 6625251,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1170935,
+              "start_ms": 8468961,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1007467,
+              "start_ms": 9639896,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 725809,
+              "start_ms": 10647363,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1827456,
+              "start_ms": 11373172,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 615352,
+              "start_ms": 13200628,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1119666,
+              "start_ms": 13815980,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 804130,
+              "start_ms": 14935646,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 850663,
+              "start_ms": 15739776,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 909781,
+              "start_ms": 16590439,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 859997,
+              "start_ms": 17500220,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 891297,
+              "start_ms": 18360217,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1697239,
+              "start_ms": 19251514,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 2659590,
+              "start_ms": 20948753,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1485125,
+              "start_ms": 23608343,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 30231,
+              "start_ms": 25093468,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81C2ib4KzML.jpg",
+          "id": "walt-allen-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "walt-allen"
+          ],
+          "publisher": "MoonQuill",
+          "release_date": "2020-12-11",
+          "runtime_min": 418,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B08Q8TM1S7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B08QB5DCM8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "lord-of-goblins-vol-1"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B08Q8TM1S7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0C35M2NTC",
           "type": "libex-import"
         }
       ],
-      "title": "Lord of Goblins Vol. 1: Definitive Edition"
+      "title": "Lord of Goblins, Vol. 1"
     },
     "lord-of-goblins-vol-2": {
       "added_at": "2026-08-01",

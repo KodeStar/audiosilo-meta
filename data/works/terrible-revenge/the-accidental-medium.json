@@ -14199,7 +14199,9 @@
     "the-action-bible": {
       "added_at": "2026-08-02",
       "authors": [
-        "doug-mauss"
+        "doug-mauss",
+        "david-c-cook",
+        "sergio-cariello"
       ],
       "credits": [
         {
@@ -15459,6 +15461,33 @@
             }
           ],
           "work": "the-action-bible"
+        },
+        "todd-busteed-2010": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B0042LHXS0",
+              "region": "us"
+            }
+          ],
+          "id": "todd-busteed-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "todd-busteed"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2010",
+          "runtime_min": 620,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B0042LHXS0",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "the-action-bible"
         }
       },
       "sources": [
@@ -15466,6 +15495,11 @@
           "imported_at": "2026-08-02",
           "ref": "B09HCLSML3",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-09-24",
+          "ref": "B0042LHXS0",
+          "type": "audiosilo-books-import"
         }
       ],
       "title": "The Action Bible"

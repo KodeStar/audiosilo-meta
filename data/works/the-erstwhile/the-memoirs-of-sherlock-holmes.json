@@ -7,6 +7,7 @@
       ],
       "genres": [
         "classics",
+        "historical-fiction",
         "literary-fiction",
         "mystery",
         "short-stories"
@@ -98,6 +99,105 @@
             {
               "imported_at": "2026-10-12",
               "ref": "B079TT7WP7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-memoirs-of-sherlock-holmes"
+        },
+        "b-j-harrison-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B014B4HP6W",
+              "region": "us"
+            },
+            {
+              "asin": "B014B4KZKA",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3569929,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2533854,
+              "start_ms": 3569929,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2410417,
+              "start_ms": 6103783,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2823268,
+              "start_ms": 8514200,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2815466,
+              "start_ms": 11337468,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2679629,
+              "start_ms": 14152934,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2605047,
+              "start_ms": 16832563,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2755326,
+              "start_ms": 19437610,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2890466,
+              "start_ms": 22192936,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4716948,
+              "start_ms": 25083402,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2701084,
+              "start_ms": 29800350,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 62787,
+              "start_ms": 32501434,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81crNRnIs6L.jpg",
+          "id": "b-j-harrison-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2015-08-25",
+          "runtime_min": 542,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B014B4HP6W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B014B4KZKA",
               "type": "libex-import"
             }
           ],
@@ -7238,136 +7338,17 @@
           "imported_at": "2026-08-02",
           "ref": "B0CWSD1Y1J",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Memoirs of Sherlock Holmes",
-      "xref": {
-        "goodreads": "194373"
-      }
-    },
-    "the-memoirs-of-sherlock-holmes-classic-tales-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "the-memoirs-of-sherlock-holmes-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B014B4HP6W",
-              "region": "us"
-            },
-            {
-              "asin": "B014B4KZKA",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3569929,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2533854,
-              "start_ms": 3569929,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2410417,
-              "start_ms": 6103783,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2823268,
-              "start_ms": 8514200,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2815466,
-              "start_ms": 11337468,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2679629,
-              "start_ms": 14152934,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2605047,
-              "start_ms": 16832563,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2755326,
-              "start_ms": 19437610,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2890466,
-              "start_ms": 22192936,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4716948,
-              "start_ms": 25083402,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2701084,
-              "start_ms": 29800350,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 62787,
-              "start_ms": 32501434,
-              "title": "Chapter 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81crNRnIs6L.jpg",
-          "id": "b-j-harrison-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison"
-          ],
-          "publisher": "B.J. Harrison",
-          "release_date": "2015-08-25",
-          "runtime_min": 542,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B014B4HP6W",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B014B4KZKA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-memoirs-of-sherlock-holmes-classic-tales-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B014B4HP6W",
           "type": "libex-import"
         }
       ],
-      "title": "The Memoirs of Sherlock Holmes [Classic Tales Edition]"
+      "title": "The Memoirs of Sherlock Holmes",
+      "xref": {
+        "goodreads": "194373"
+      }
     },
     "the-memoirs-of-sherlock-holmes-the-adventure-of-the-crooked-man": {
       "added_at": "2026-09-28",

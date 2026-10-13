@@ -571,6 +571,8 @@
         "ulrich-gilga"
       ],
       "genres": [
+        "gothic",
+        "horror",
         "paranormal",
         "thriller-suspense"
       ],
@@ -716,33 +718,8 @@
             }
           ],
           "work": "die-hand-des-werwolfs"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0D31HRFTG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Die Hand des Werwolfs"
-    },
-    "die-hand-des-werwolfs-the-werewolfs-hand": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "ulrich-gilga"
-      ],
-      "genres": [
-        "gothic",
-        "horror",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "die-hand-des-werwolfs-the-werewolfs-hand",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lukas-speitling-2024": {
+        },
+        "lukas-speitling-2024-2": {
           "abridged": false,
           "added_at": "2026-08-01",
           "asin": [
@@ -848,7 +825,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81DCXZeaw7L.jpg",
-          "id": "lukas-speitling-2024",
+          "id": "lukas-speitling-2024-2",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -869,17 +846,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "die-hand-des-werwolfs-the-werewolfs-hand"
+          "work": "die-hand-des-werwolfs"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0D31HRFTG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CTJBLDSH",
           "type": "libex-import"
         }
       ],
-      "title": "Die Hand des Werwolfs [The Werewolf's Hand]"
+      "title": "Die Hand des Werwolfs"
     },
     "die-hand-oberons": {
       "added_at": "2026-08-02",

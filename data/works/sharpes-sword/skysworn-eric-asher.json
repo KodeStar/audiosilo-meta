@@ -5809,6 +5809,7 @@
       "genres": [
         "action-adventure",
         "classics",
+        "fantasy",
         "science-fiction"
       ],
       "id": "slan",
@@ -5934,32 +5935,7 @@
             }
           ],
           "work": "slan"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V1OPOS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Slan"
-    },
-    "slan-dramatized": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "a-e-van-vogt"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "slan-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "third-ear-radio-theater-2000": {
           "added_at": "2026-08-02",
           "asin": [
@@ -6007,17 +5983,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "slan-dramatized"
+          "work": "slan"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V1OPOS",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V8MTWQ",
           "type": "libex-import"
         }
       ],
-      "title": "Slan (Dramatized)"
+      "title": "Slan"
     },
     "slan-hunter": {
       "added_at": "2026-08-02",

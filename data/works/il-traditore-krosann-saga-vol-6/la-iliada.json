@@ -5697,12 +5697,54 @@
         }
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "classics"
       ],
       "id": "la-isla-del-tesoro",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "fonolibro-2008": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VA9KFI",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2779336,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 2837989,
+              "start_ms": 2779336,
+              "title": "Capítulo 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91KsffK5RaL.jpg",
+          "id": "fonolibro-2008",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "fonolibro"
+          ],
+          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
+          "release_date": "2008-02-06",
+          "runtime_min": 93,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VA9KFI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-isla-del-tesoro"
+        },
         "zack-gomez-rolls-2025": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5763,6 +5805,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0FBRZCN21",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VA9KFI",
           "type": "libex-import"
         }
       ],
@@ -6069,70 +6116,6 @@
         }
       ],
       "title": "La isla del tesoro"
-    },
-    "la-isla-del-tesoro-treasure-island": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-louis-stevenson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics"
-      ],
-      "id": "la-isla-del-tesoro-treasure-island",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "fonolibro-2008": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VA9KFI",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2779336,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 2837989,
-              "start_ms": 2779336,
-              "title": "Capítulo 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91KsffK5RaL.jpg",
-          "id": "fonolibro-2008",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "fonolibro"
-          ],
-          "publisher": "FonoLibro Inc. (Audiolibros - Audio Libros)",
-          "release_date": "2008-02-06",
-          "runtime_min": 93,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VA9KFI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-isla-del-tesoro-treasure-island"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VA9KFI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Isla del Tesoro [Treasure Island]"
     },
     "la-isla-misteriosa-the-mysterious-island": {
       "added_at": "2026-07-29",
@@ -13743,7 +13726,8 @@
         }
       ],
       "genres": [
-        "classics"
+        "classics",
+        "literary-fiction"
       ],
       "id": "la-letra-escarlata-the-scarlet-letter",
       "language": "es",
@@ -13785,30 +13769,7 @@
             }
           ],
           "work": "la-letra-escarlata-the-scarlet-letter"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09N9WM6VF",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La letra escarlata [The Scarlet Letter]"
-    },
-    "la-letra-escarlata-the-scarlet-letter-nathaniel-hawthorne": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "nathaniel-hawthorne"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "la-letra-escarlata-the-scarlet-letter-nathaniel-hawthorne",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "hernando-ivan-cano-2006": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -13861,17 +13822,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-letra-escarlata-the-scarlet-letter-nathaniel-hawthorne"
+          "work": "la-letra-escarlata-the-scarlet-letter"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09N9WM6VF",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1ODUE",
           "type": "libex-import"
         }
       ],
-      "title": "La Letra Escarlata [The Scarlet Letter]"
+      "title": "La letra escarlata [The Scarlet Letter]"
     },
     "la-lettera-rubata-il-cuore-rivelatore-la-verita-sul-caso-di-mr-valdemar": {
       "added_at": "2026-08-02",

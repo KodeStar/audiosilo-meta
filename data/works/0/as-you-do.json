@@ -209,6 +209,46 @@
           ],
           "work": "as-you-like-it"
         },
+        "laurence-olivier-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0036HXZI8",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2573375,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3055839,
+              "start_ms": 2573375,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/513yPs5Q7DL.jpg",
+          "id": "laurence-olivier-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "laurence-olivier"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2008-06-11",
+          "runtime_min": 93,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0036HXZI8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "as-you-like-it"
+        },
         "robin-schild-2025": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -339,71 +379,14 @@
           "imported_at": "2026-08-08",
           "ref": "B0DWG11BMC",
           "type": "libex-import"
-        }
-      ],
-      "title": "As You Like It"
-    },
-    "as-you-like-it-dramatised": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "drama-plays"
-      ],
-      "id": "as-you-like-it-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "laurence-olivier-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0036HXZI8",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2573375,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3055839,
-              "start_ms": 2573375,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/513yPs5Q7DL.jpg",
-          "id": "laurence-olivier-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laurence-olivier"
-          ],
-          "publisher": "Saland Publishing",
-          "release_date": "2008-06-11",
-          "runtime_min": 93,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0036HXZI8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "as-you-like-it-dramatised"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0036HXZI8",
           "type": "libex-import"
         }
       ],
-      "title": "As You Like It (Dramatised)"
+      "title": "As You Like It"
     },
     "as-you-think": {
       "added_at": "2026-07-29",

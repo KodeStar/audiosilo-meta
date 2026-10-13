@@ -6074,7 +6074,9 @@
       ],
       "genres": [
         "fantasy",
+        "horror",
         "paranormal",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "die-totenkopf-insel",
@@ -6187,33 +6189,7 @@
             }
           ],
           "work": "die-totenkopf-insel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00U2MV8CU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Die Totenkopf-Insel"
-    },
-    "die-totenkopf-insel-john-sinclair-2-remastered": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "die-totenkopf-insel-john-sinclair-2-remastered",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "detlef-bierstedt-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6317,17 +6293,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "die-totenkopf-insel-john-sinclair-2-remastered"
+          "work": "die-totenkopf-insel"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00U2MV8CU",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00U2MYG24",
           "type": "libex-import"
         }
       ],
-      "title": "Die Totenkopf-Insel (John Sinclair 2) [Remastered]"
+      "title": "Die Totenkopf-Insel"
     },
     "die-totenmaske-aus-atlantis": {
       "added_at": "2026-08-02",
