@@ -1,6 +1,8 @@
 package query
 
 import (
+	"maps"
+	"regexp"
 	"slices"
 	"strings"
 	"testing"
@@ -329,6 +331,28 @@ func TestTitleVolume(t *testing.T) {
 		got, ok := titleVolume(tc.title, []termForm{newTermForm(matchTerms(tc.series))})
 		if got != tc.want || ok != (tc.want != "") {
 			t.Errorf("titleVolume(%q, %q) = %q, %v; want %q", tc.title, tc.series, got, ok, tc.want)
+		}
+	}
+}
+
+// TestVolumeWordPattern pins the volume words every numbering shape reads
+// (leadNumberRE, the trailing volume cuts, titleVolumeRE): exactly the seven
+// volumeKeywords holds, with a "." only after vol/volume, and not "No.", which
+// volumeKeywords leaves out for lack of evidence.
+func TestVolumeWordPattern(t *testing.T) {
+	keys := slices.Sorted(maps.Keys(volumeKeywords))
+	if want := []string{"band", "book", "part", "teil", "tome", "vol", "volume"}; !slices.Equal(keys, want) {
+		t.Fatalf("volumeKeywords = %q, want %q", keys, want)
+	}
+	re := regexp.MustCompile(`(?i)^` + volumeWordPattern + `$`)
+	for _, w := range []string{"book", "Book", "vol", "Vol.", "volume", "Volume.", "part", "band", "Teil", "tome"} {
+		if !re.MatchString(w) {
+			t.Errorf("%q is not read as a volume word", w)
+		}
+	}
+	for _, w := range []string{"no", "No.", "nr", "Book.", "Tome.", "Part.", "books", "bk", "pt", "livre"} {
+		if re.MatchString(w) {
+			t.Errorf("%q is read as a volume word", w)
 		}
 	}
 }

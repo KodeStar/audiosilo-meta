@@ -354,6 +354,11 @@ func TestMatchSeriesNamedVolumeKeepsItsTitle(t *testing.T) {
 		{"a stated position", url.Values{
 			"title": {"Throne of Glass"}, "author": {"Sarah J. Maas"}, "series": {"Throne of Glass"}, "position": {"2"},
 		}, "throne-of-glass", "crown-of-midnight", 89, 44},
+		// A tied number naming ANOTHER volume than the one read does not
+		// make the name a numbering leftover.
+		{"a tied number for another volume", url.Values{
+			"title": {"02 - Throne of Glass", "Throne of Glass 1"}, "author": {"Sarah J. Maas"}, "series": {"Throne of Glass"},
+		}, "throne-of-glass", "crown-of-midnight", 89, 44},
 		{"a tied volume", url.Values{
 			"title":  {"FWM04 - He Who Fights With Monsters - Book 4", "He Who Fights with Monsters 4: A LitRPG Adventure"},
 			"author": {"Shirtaloon"}, "series": {"He Who Fights With Monsters"},
@@ -395,6 +400,37 @@ func TestMatchARealTitleOutranksAGenericRecord(t *testing.T) {
 	scores := matchScores(res)
 	if len(res) == 0 || res[0]["id"] != "crush-catastrophe" || scores["crush-catastrophe"] != 92 || scores["dork-diaries-12"] != 90 {
 		t.Errorf("crush-catastrophe %v, dork-diaries-12 %v; want 92 first and 90: %v", scores["crush-catastrophe"], scores["dork-diaries-12"], matchIDs(res))
+	}
+}
+
+// TestMatchAnOmnibusListedAtTheStatedRange: a generic omnibus title
+// ("Sellswords: Volume 1", the series' name and a number) listed at exactly the
+// stated range 1-3 is that range, not volume 1: the listing is not overruled by
+// the title's own number, so it scores 100 and the volume listed at 1 does not
+// lead it.
+func TestMatchAnOmnibusListedAtTheStatedRange(t *testing.T) {
+	work := func(id, title string) *model.Work {
+		return &model.Work{ID: id, Title: title, Language: "en", Authors: []string{"t-l-branson"}, License: "CC0-1.0"}
+	}
+	_, ts := newTestServerForCatalog(t, &model.Catalog{
+		People: []*model.Person{{ID: "t-l-branson", Name: "T.L. Branson", License: "CC0-1.0"}},
+		Works: []*model.Work{
+			work("sellswords-sword-for-hire", "Sellswords: Sword for Hire"),
+			work("sellswords-accidental-assassin", "Sellswords: Accidental Assassin"),
+			work("sellswords-volume-1", "Sellswords: Volume 1"),
+		},
+		Series: []*model.Series{{ID: "sellswords", Name: "Sellswords", License: "CC0-1.0", Works: []model.SeriesWork{
+			{Work: "sellswords-sword-for-hire", Position: "1"},
+			{Work: "sellswords-accidental-assassin", Position: "2"},
+			{Work: "sellswords-volume-1", Position: "1-3"},
+		}}},
+	})
+	res := matchJSON(t, ts.URL, url.Values{
+		"title": {"Sellswords: Volume 1"}, "author": {"T.L. Branson"}, "series": {"Sellswords"}, "position": {"1-3"},
+	})
+	scores := matchScores(res)
+	if len(res) == 0 || res[0]["id"] != "sellswords-volume-1" || scores["sellswords-volume-1"] != 100 {
+		t.Errorf("sellswords-volume-1 %v, want 100 and first: %v %v", scores["sellswords-volume-1"], matchIDs(res), scores)
 	}
 }
 

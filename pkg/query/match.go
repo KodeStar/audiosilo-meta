@@ -240,9 +240,11 @@ type matchFacts struct {
 	// the series' name ("He Who Fights with Monsters 4: ..." is volume 4), else
 	// the one its numbering carried ("Sharpe - 08 - Sharpe's Eagle" is volume 8).
 	position string
-	// tiedVolume is whether a title guess states a volume tied to the series'
-	// name (titleVolume, volumeOf): then a guess that is only the name is the
-	// leftover of that numbering and names no work titled after the series.
+	// tiedVolume is whether a title guess ties the volume the request reads
+	// to the series' name (titleVolume, volumeOf): then a guess that is only
+	// the name is the leftover of that numbering and names no work titled
+	// after the series. A tied number naming another volume ("Throne of Glass
+	// 1" beside "02 - Throne of Glass") does not count.
 	tiedVolume bool
 	runtime    int
 	// text is the free text's terms, nil when it says nothing identifying;
@@ -314,7 +316,8 @@ func readFacts(req matchRequest) *matchFacts {
 	// which is all a series named "7 Days" leaves of "7 Days: Book 1"; across
 	// guesses the first that states a number decides.
 	seen := map[string]bool{}
-	implied := ""
+	var implied string
+	var tiedNumbers []string
 	imply := func(to *string, n string) {
 		if p, ok := positionToken(n); ok && *to == "" {
 			*to = p
@@ -356,12 +359,15 @@ func readFacts(req matchRequest) *matchFacts {
 				f.titles = append(f.titles, g)
 			}
 		}
-		f.tiedVolume = f.tiedVolume || tied != ""
+		if tied != "" {
+			tiedNumbers = append(tiedNumbers, tied)
+		}
 		imply(&implied, cmp.Or(tied, prefix))
 	}
 	if f.position == "" {
 		f.position = implied
 	}
+	f.tiedVolume = slices.ContainsFunc(tiedNumbers, func(n string) bool { return positionsEqual(n, f.position) })
 	f.structured = len(req.titles) > 0 || len(f.authors) > 0 || len(f.series) > 0
 	if terms := matchTerms(req.text); informativeTitle(terms) {
 		f.text, f.textTitle = terms, newTitleGuess(terms)
@@ -928,6 +934,9 @@ func (f *matchFacts) structuredScore(c *candidate, v *scored, w wavg) float64 {
 		titleJudged = true
 		s := bestTitle(&h.termForm, c.titles, f.edit)
 		t = max(t, s)
+		// titles[0] is the work's own title: the exception is for the work
+		// TITLED the series' name, not one whose subtitle or colon half is it
+		// ("He Who Fights with Monsters: A LitRPG Adventure").
 		if !h.onlySeries || (!f.tiedVolume && len(c.titles) > 0 && sameWords(&h.termForm, &c.titles[0].termForm)) {
 			named = max(named, s)
 		}
@@ -1019,8 +1028,8 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreem
 		switch {
 		case positionsEqual(n, f.position):
 			agreement, elsewhere, value = seriesPosition, false, genericTitleValue
-			if named == 1 {
-				value = 1 // a guess spelled as the record is
+			if f.spelledAs(c) {
+				value = 1
 			}
 		case !listed:
 			agreement, elsewhere = seriesConflict, true
@@ -1030,6 +1039,15 @@ func (f *matchFacts) seriesVerdict(c *candidate, t, named float64) (seriesAgreem
 		value = 0
 	}
 	return agreement, value
+}
+
+// spelledAs reports whether a title guess naming more than the series is
+// spelled, word for word, as one of the forms c's title is compared in at full
+// weight (the title, with its subtitle, or without its own series tail).
+func (f *matchFacts) spelledAs(c *candidate) bool {
+	return slices.ContainsFunc(f.titles, func(g titleGuess) bool {
+		return !g.onlySeries && slices.ContainsFunc(c.titles, func(ft titleForm) bool { return ft.weight == 1 && ft.joined == g.joined })
+	})
 }
 
 // textFacts reads the typed text as the structured facts it states about one

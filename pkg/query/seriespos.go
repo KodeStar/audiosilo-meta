@@ -118,13 +118,19 @@ var volumeKeywords = map[string]bool{
 	"band": true, "teil": true, "tome": true,
 }
 
-// volumeWordPattern is volumeKeywords as a regexp alternation, longest first,
-// each word maybe abbreviated with a "." - the volume words matchscore.go's
-// numbering shapes read, so the vocabulary has one home.
+// volumeWordPattern is volumeKeywords as a regexp alternation, longest first -
+// the volume words matchscore.go's numbering shapes read, so the vocabulary has
+// one home. Only "vol"/"volume" take a trailing "." ("Vol. 2"), as the
+// patterns spelled it before they shared the list.
 var volumeWordPattern = func() string {
 	words := slices.Collect(maps.Keys(volumeKeywords))
 	slices.SortFunc(words, func(a, b string) int { return cmp.Or(len(b)-len(a), strings.Compare(a, b)) })
-	return `(?:` + strings.Join(words, "|") + `)\.?`
+	for i, w := range words {
+		if strings.HasPrefix(w, "vol") {
+			words[i] = w + `\.?`
+		}
+	}
+	return `(?:` + strings.Join(words, "|") + `)`
 }()
 
 // seriesPositionQuery is a query read as "<series name> [volume word] <number>".
