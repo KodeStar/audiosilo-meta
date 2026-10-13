@@ -7330,17 +7330,22 @@
     "white-nights-fyodor-dostoevsky": {
       "added_at": "2026-08-07",
       "authors": [
-        "constance-garnett",
         "fyodor-dostoevsky"
       ],
       "credits": [
         {
           "person": "constance-garnett",
           "role": "translator"
+        },
+        {
+          "person": "ronald-meyer",
+          "role": "translator"
         }
       ],
       "genres": [
+        "classics",
         "literary-fiction",
+        "romance",
         "short-stories"
       ],
       "id": "white-nights-fyodor-dostoevsky",
@@ -7500,39 +7505,7 @@
             }
           ],
           "work": "white-nights-fyodor-dostoevsky"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0BNW4SST8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "White Nights"
-    },
-    "white-nights-fyodor-dostoyevsky": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "fyodor-dostoevsky",
-        "ronald-meyer"
-      ],
-      "credits": [
-        {
-          "person": "ronald-meyer",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "romance",
-        "short-stories"
-      ],
-      "id": "white-nights-fyodor-dostoyevsky",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "luke-thompson-2025": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -7621,7 +7594,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "white-nights-fyodor-dostoyevsky"
+          "work": "white-nights-fyodor-dostoevsky"
         },
         "simon-hester-2018": {
           "abridged": false,
@@ -7700,10 +7673,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "white-nights-fyodor-dostoyevsky"
+          "work": "white-nights-fyodor-dostoevsky"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0BNW4SST8",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0DR35KP1J",

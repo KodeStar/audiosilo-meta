@@ -8248,30 +8248,7 @@
             }
           ],
           "work": "saint-joan"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B083SRL87D",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Saint Joan"
-    },
-    "saint-joan-bernard-shaw": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "george-bernard-shaw"
-      ],
-      "genres": [
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "saint-joan-bernard-shaw",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "amy-irving-2010": {
           "abridged": true,
           "added_at": "2026-08-08",
@@ -8346,31 +8323,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "saint-joan-bernard-shaw"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B0036ZRJGO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Saint Joan"
-    },
-    "saint-joan-dramatised": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "george-bernard-shaw"
-      ],
-      "genres": [
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "saint-joan-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "saint-joan"
+        },
         "siobhan-mckenna-2009": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -8443,17 +8397,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "saint-joan-dramatised"
+          "work": "saint-joan"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B083SRL87D",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0036ZRJGO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-07",
           "ref": "B0036GTEYI",
           "type": "libex-import"
         }
       ],
-      "title": "Saint Joan (Dramatised)"
+      "title": "Saint Joan"
     },
     "saint-joan-of-new-york": {
       "added_at": "2026-08-02",

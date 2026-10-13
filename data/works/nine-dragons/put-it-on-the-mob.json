@@ -5642,6 +5642,7 @@
         "george-bernard-shaw"
       ],
       "genres": [
+        "arts-entertainment",
         "classics",
         "drama-plays",
         "literary-fiction",
@@ -5705,6 +5706,63 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B07BGBX5JR",
+              "type": "libex-import"
+            }
+          ],
+          "work": "pygmalion"
+        },
+        "anton-lesser-2003": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V1OHBE",
+              "region": "us"
+            },
+            {
+              "asin": "B004EWUP2S",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4304608,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2801766,
+              "start_ms": 4304608,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2314937,
+              "start_ms": 7106374,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51M4x01mTnL.jpg",
+          "id": "anton-lesser-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anton-lesser",
+            "full-cast",
+            "geoffrey-palmer",
+            "lucy-whybrow"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2003-12-28",
+          "runtime_min": 156,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V1OHBE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EWUP2S",
               "type": "libex-import"
             }
           ],
@@ -5779,91 +5837,57 @@
             }
           ],
           "work": "pygmalion"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B07BGCQRH4",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002UUMNNK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pygmalion"
-    },
-    "pygmalion-bernard-shaw": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "george-bernard-shaw"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "pygmalion-bernard-shaw",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anton-lesser-2003": {
+        "full-cast-2011": {
           "abridged": false,
           "added_at": "2026-08-08",
           "asin": [
             {
-              "asin": "B002V1OHBE",
+              "asin": "B005MJZ8F6",
               "region": "us"
             },
             {
-              "asin": "B004EWUP2S",
+              "asin": "B005MJZN1U",
               "region": "uk"
             }
           ],
           "chapters": [
             {
-              "length_ms": 4304608,
+              "length_ms": 2632261,
               "start_ms": 0,
               "title": "Chapter 1"
             },
             {
-              "length_ms": 2801766,
-              "start_ms": 4304608,
+              "length_ms": 2590371,
+              "start_ms": 2632261,
               "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2314937,
-              "start_ms": 7106374,
-              "title": "Chapter 3"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/51M4x01mTnL.jpg",
-          "id": "anton-lesser-2003",
+          "cover_url": "https://m.media-amazon.com/images/I/517lyOdoflL.jpg",
+          "id": "full-cast-2011",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
-            "anton-lesser",
             "full-cast",
-            "geoffrey-palmer",
-            "lucy-whybrow"
+            "imelda-staunton",
+            "simon-cadell"
           ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2003-12-28",
-          "runtime_min": 156,
+          "publisher": "BBC Digital Audio",
+          "release_date": "2011-09-12",
+          "runtime_min": 86,
           "sources": [
             {
               "imported_at": "2026-08-08",
-              "ref": "B002V1OHBE",
+              "ref": "B005MJZ8F6",
               "type": "libex-import"
             },
             {
               "imported_at": "2026-10-09",
-              "ref": "B004EWUP2S",
+              "ref": "B005MJZN1U",
               "type": "libex-import"
             }
           ],
-          "work": "pygmalion-bernard-shaw"
+          "work": "pygmalion"
         },
         "mark-bowen-2025": {
           "abridged": false,
@@ -5952,90 +5976,32 @@
               "type": "libex-import"
             }
           ],
-          "work": "pygmalion-bernard-shaw"
+          "work": "pygmalion"
         }
       },
       "sources": [
         {
+          "imported_at": "2026-08-07",
+          "ref": "B07BGCQRH4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UUMNNK",
+          "type": "libex-import"
+        },
+        {
           "imported_at": "2026-08-08",
           "ref": "B0DWXHY9QJ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Pygmalion"
-    },
-    "pygmalion-classic-radio-theatre": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "george-bernard-shaw"
-      ],
-      "genres": [
-        "arts-entertainment"
-      ],
-      "id": "pygmalion-classic-radio-theatre",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2011": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B005MJZ8F6",
-              "region": "us"
-            },
-            {
-              "asin": "B005MJZN1U",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2632261,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2590371,
-              "start_ms": 2632261,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/517lyOdoflL.jpg",
-          "id": "full-cast-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast",
-            "imelda-staunton",
-            "simon-cadell"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2011-09-12",
-          "runtime_min": 86,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B005MJZ8F6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B005MJZN1U",
-              "type": "libex-import"
-            }
-          ],
-          "work": "pygmalion-classic-radio-theatre"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B005MJZ8F6",
           "type": "libex-import"
         }
       ],
-      "title": "Pygmalion (Classic Radio Theatre)"
+      "title": "Pygmalion"
     },
     "pygmalion-perfekt-unverliebt": {
       "added_at": "2026-07-29",

@@ -14481,6 +14481,15 @@
     "target": "pygmalion"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "pygmalion-classic-radio-theatre"
+    ],
+    "reason": "the same play by the same author: Classic Radio Theatre names the BBC radio production, which is a property of the recording, not of the work",
+    "target": "pygmalion"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -14488,15 +14497,6 @@
     ],
     "reason": "the same play: both are full-cast performances of Shaw's text, and Alistair McGowan is a performer in the BBC production, not a co-author",
     "target": "pygmalion"
-  },
-  {
-    "decision": "assert",
-    "op": "merge-works",
-    "others": [
-      "pygmalion-classic-radio-theatre"
-    ],
-    "reason": "the same play by the same author: Classic Radio Theatre names the BBC radio production, which is a property of the recording, not of the work",
-    "target": "pygmalion-bernard-shaw"
   },
   {
     "decision": "reject",
