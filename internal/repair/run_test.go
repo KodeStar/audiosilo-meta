@@ -203,6 +203,14 @@ func equalTrees(a, b map[string]string) bool {
 // human-queue refusals out of the ratio instead of counting them as composition
 // failures. Both are stated at the assertions.
 //
+// AN EMPTY CLASS IS A VALID OUTCOME. The duplicate-work campaign (#2642-#2649) applied
+// every non-advisory merge, so the real tree can legitimately hold none - the wave's
+// finished state, like a class that is all human-queue refusals. What still holds then
+// is what the run itself proves: Run refuses a tree that does not load and validate,
+// re-runs the audit over all of it, and plans nothing - and the dry run wrote nothing,
+// which is checked before any early exit. The composition assertions need a proposal to
+// judge, so they skip (visibly) rather than fail; the fixture suites cover the planner.
+//
 // It does not run under -race, for pkg/check's reason (TestRealDataTree): the fixtures
 // cover every code path, the real tree adds DATA coverage, and the load costs minutes
 // under the detector.
@@ -236,8 +244,10 @@ func TestRealTreeDryRunComposesAPlan(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if rep.Considered == 0 {
-		t.Fatal("no non-advisory merge proposal at all: is the tree short of duplicates?")
+	// Checked FIRST, so neither early exit below can skip it: a dry run's writes, if it
+	// made any, are done once Run returns.
+	if got := treeStat(t, dataDir); got != before {
+		t.Error("the dry run modified the real data tree")
 	}
 	if rep.BeyondLimit != 0 {
 		t.Errorf("%d proposals beyond a limit this run sets none of", rep.BeyondLimit)
@@ -257,6 +267,9 @@ func TestRealTreeDryRunComposesAPlan(t *testing.T) {
 			mechanicalRefusals = append(mechanicalRefusals, r)
 		}
 	}
+	if rep.Considered == 0 {
+		t.Skip("no non-advisory merge proposal on the real tree: the wave is finished, and the run loaded, audited and planned it cleanly")
+	}
 	actionable := rep.Considered - (len(rep.Refused) - len(mechanicalRefusals))
 	if actionable == 0 {
 		t.Skip("every remaining proposal in the class is a human-queue refusal: the mechanical wave is finished")
@@ -273,9 +286,6 @@ func TestRealTreeDryRunComposesAPlan(t *testing.T) {
 		if len(a.Notes) == 0 {
 			t.Errorf("applied %s carries no notes, so the report says nothing about what it did", a.Key)
 		}
-	}
-	if got := treeStat(t, dataDir); got != before {
-		t.Error("the dry run modified the real data tree")
 	}
 }
 
