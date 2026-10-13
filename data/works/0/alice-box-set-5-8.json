@@ -8120,8 +8120,7 @@
     "alice-in-wonderland-through-the-looking-glass": {
       "added_at": "2026-08-01",
       "authors": [
-        "lewis-carroll",
-        "eva-mason"
+        "lewis-carroll"
       ],
       "genres": [
         "action-adventure",
@@ -8451,7 +8450,50 @@
             }
           ],
           "work": "alice-in-wonderland-through-the-looking-glass"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00Z8BXVJ8",
+          "type": "libex-import"
         },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1645550354",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002V8MDFY",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Alice In Wonderland & Through the Looking Glass"
+    },
+    "alice-in-wonderland-through-the-looking-glass-lewis-carroll-2": {
+      "added_at": "2026-10-13",
+      "authors": [
+        "lewis-carroll",
+        "eva-mason"
+      ],
+      "credits": [
+        {
+          "person": "eva-mason",
+          "role": "adaptation"
+        }
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "classics",
+        "fantasy",
+        "literary-fiction"
+      ],
+      "id": "alice-in-wonderland-through-the-looking-glass-lewis-carroll-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
         "rebecca-k-reynolds-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8624,27 +8666,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "alice-in-wonderland-through-the-looking-glass"
+          "work": "alice-in-wonderland-through-the-looking-glass-lewis-carroll-2"
         }
       },
       "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00Z8BXVJ8",
-          "type": "libex-import"
-        },
         {
           "imported_at": "2026-08-02",
           "ref": "1645550354",
           "type": "libex-import"
         },
         {
-          "imported_at": "2026-08-08",
-          "ref": "B002V8MDFY",
+          "imported_at": "2026-10-09",
+          "ref": "1645550354",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-09",
+          "ref": "B0BQJPLRRR",
           "type": "libex-import"
         }
       ],
-      "title": "Alice In Wonderland & Through the Looking Glass"
+      "title": "Alice in Wonderland & Through the Looking Glass"
     },
     "alice-in-zombieland": {
       "added_at": "2026-08-02",

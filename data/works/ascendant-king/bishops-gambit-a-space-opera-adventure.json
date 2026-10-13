@@ -3649,125 +3649,6 @@
             }
           ],
           "work": "bitcoin"
-        },
-        "guy-swann-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0B77W3XSW",
-              "region": "us"
-            },
-            {
-              "asin": "B0B77TPJBZ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 48018,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 724091,
-              "start_ms": 48018,
-              "title": "Foreword"
-            },
-            {
-              "length_ms": 1226083,
-              "start_ms": 772109,
-              "title": "Prelude"
-            },
-            {
-              "length_ms": 1366076,
-              "start_ms": 1998192,
-              "title": "Chapter 1: Time"
-            },
-            {
-              "length_ms": 1394079,
-              "start_ms": 3364268,
-              "title": "Chapter 2: Alchemy"
-            },
-            {
-              "length_ms": 1798060,
-              "start_ms": 4758347,
-              "title": "Chapter 3: Ownership"
-            },
-            {
-              "length_ms": 1562076,
-              "start_ms": 6556407,
-              "title": "Chapter 4: Energy"
-            },
-            {
-              "length_ms": 2200810,
-              "start_ms": 8118483,
-              "title": "Chapter 5: Morality"
-            },
-            {
-              "length_ms": 1357461,
-              "start_ms": 10319293,
-              "title": "Chapter 6: Memetics"
-            },
-            {
-              "length_ms": 1248072,
-              "start_ms": 11676754,
-              "title": "Chapter 7: Symbiosis"
-            },
-            {
-              "length_ms": 2242049,
-              "start_ms": 12924826,
-              "title": "Chapter 8: Violence"
-            },
-            {
-              "length_ms": 1687115,
-              "start_ms": 15166875,
-              "title": "Chapter 9: Deflation"
-            },
-            {
-              "length_ms": 1376060,
-              "start_ms": 16853990,
-              "title": "Chapter 10: Adoption"
-            },
-            {
-              "length_ms": 1534072,
-              "start_ms": 18230050,
-              "title": "Chapter 11: Transition"
-            },
-            {
-              "length_ms": 55100,
-              "start_ms": 19764122,
-              "title": "About the Author"
-            },
-            {
-              "length_ms": 23056,
-              "start_ms": 19819222,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/817Gi1PcnBL.jpg",
-          "id": "guy-swann-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "guy-swann"
-          ],
-          "publisher": "Guy Swann",
-          "release_date": "2022-07-21",
-          "runtime_min": 330,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0B77W3XSW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0B77TPJBZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "bitcoin"
         }
       },
       "sources": [
@@ -6312,6 +6193,154 @@
         }
       ],
       "title": "Bitcoin: The Inverse of Clown World"
+    },
+    "bitcoin-knut-svanholm-2": {
+      "added_at": "2026-10-13",
+      "authors": [
+        "knut-svanholm"
+      ],
+      "genres": [
+        "economics",
+        "finance"
+      ],
+      "id": "bitcoin-knut-svanholm-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "guy-swann-2022": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0B77W3XSW",
+              "region": "us"
+            },
+            {
+              "asin": "B0B77TPJBZ",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 48018,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 724091,
+              "start_ms": 48018,
+              "title": "Foreword"
+            },
+            {
+              "length_ms": 1226083,
+              "start_ms": 772109,
+              "title": "Prelude"
+            },
+            {
+              "length_ms": 1366076,
+              "start_ms": 1998192,
+              "title": "Chapter 1: Time"
+            },
+            {
+              "length_ms": 1394079,
+              "start_ms": 3364268,
+              "title": "Chapter 2: Alchemy"
+            },
+            {
+              "length_ms": 1798060,
+              "start_ms": 4758347,
+              "title": "Chapter 3: Ownership"
+            },
+            {
+              "length_ms": 1562076,
+              "start_ms": 6556407,
+              "title": "Chapter 4: Energy"
+            },
+            {
+              "length_ms": 2200810,
+              "start_ms": 8118483,
+              "title": "Chapter 5: Morality"
+            },
+            {
+              "length_ms": 1357461,
+              "start_ms": 10319293,
+              "title": "Chapter 6: Memetics"
+            },
+            {
+              "length_ms": 1248072,
+              "start_ms": 11676754,
+              "title": "Chapter 7: Symbiosis"
+            },
+            {
+              "length_ms": 2242049,
+              "start_ms": 12924826,
+              "title": "Chapter 8: Violence"
+            },
+            {
+              "length_ms": 1687115,
+              "start_ms": 15166875,
+              "title": "Chapter 9: Deflation"
+            },
+            {
+              "length_ms": 1376060,
+              "start_ms": 16853990,
+              "title": "Chapter 10: Adoption"
+            },
+            {
+              "length_ms": 1534072,
+              "start_ms": 18230050,
+              "title": "Chapter 11: Transition"
+            },
+            {
+              "length_ms": 55100,
+              "start_ms": 19764122,
+              "title": "About the Author"
+            },
+            {
+              "length_ms": 23056,
+              "start_ms": 19819222,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/817Gi1PcnBL.jpg",
+          "id": "guy-swann-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "guy-swann"
+          ],
+          "publisher": "Guy Swann",
+          "release_date": "2022-07-21",
+          "runtime_min": 330,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0B77W3XSW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0B77TPJBZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "bitcoin-knut-svanholm-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0B77W3XSW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-09",
+          "ref": "B0B77TPJBZ",
+          "type": "libex-import"
+        }
+      ],
+      "subtitle": "Everything Divided by 21 Million",
+      "title": "Bitcoin"
     },
     "bitcoin-one-million": {
       "added_at": "2026-07-29",

@@ -1318,34 +1318,6 @@
             }
           ],
           "work": "magos"
-        },
-        "jean-paul-baeck-2020-2": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B082XCXRCT",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91BuNSvSh+L.jpg",
-          "id": "jean-paul-baeck-2020-2",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jean-paul-baeck"
-          ],
-          "publisher": "Eins A Medien GmbH",
-          "release_date": "2020-01-04",
-          "runtime_min": 797,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B082XCXRCT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "magos"
         }
       },
       "sources": [
@@ -2330,6 +2302,10 @@
             {
               "asin": "B082XCW3WC",
               "region": "us"
+            },
+            {
+              "asin": "B082XCXRCT",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -3173,6 +3149,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B082XCW3WC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B082XCXRCT",
               "type": "libex-import"
             }
           ],

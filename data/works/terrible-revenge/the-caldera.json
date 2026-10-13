@@ -15087,60 +15087,6 @@
             }
           ],
           "work": "the-call-of-the-wild"
-        },
-        "william-tulin-2020": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "1094253642",
-              "region": "us"
-            },
-            {
-              "asin": "B08KTWLGXX",
-              "region": "ca"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 28606,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 460196,
-              "start_ms": 28606,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 46090,
-              "start_ms": 488802,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91GqXF68IiL.jpg",
-          "id": "william-tulin-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "william-tulin"
-          ],
-          "publisher": "OrangeSky Audio",
-          "release_date": "2020-10-20",
-          "runtime_min": 8,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "1094253642",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B08KTWLGXX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-call-of-the-wild"
         }
       },
       "sources": [
@@ -15591,6 +15537,95 @@
         }
       ],
       "title": "The Call of the Wild Classic Children's Book"
+    },
+    "the-call-of-the-wild-jack-london": {
+      "added_at": "2026-10-13",
+      "authors": [
+        "jack-london"
+      ],
+      "genres": [
+        "action-adventure",
+        "biography-memoir",
+        "childrens",
+        "classics",
+        "historical-fiction",
+        "literary-fiction",
+        "nature",
+        "short-stories",
+        "young-adult"
+      ],
+      "id": "the-call-of-the-wild-jack-london",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "william-tulin-2020": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "1094253642",
+              "region": "us"
+            },
+            {
+              "asin": "B08KTWLGXX",
+              "region": "ca"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 28606,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 460196,
+              "start_ms": 28606,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 46090,
+              "start_ms": 488802,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91GqXF68IiL.jpg",
+          "id": "william-tulin-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-tulin"
+          ],
+          "publisher": "OrangeSky Audio",
+          "release_date": "2020-10-20",
+          "runtime_min": 8,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "1094253642",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B08KTWLGXX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-call-of-the-wild-jack-london"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1094253642",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B08KTWLGXX",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Call of the Wild"
     },
     "the-call-of-the-wild-white-fang": {
       "added_at": "2026-08-08",

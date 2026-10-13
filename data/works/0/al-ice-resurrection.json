@@ -13490,6 +13490,10 @@
             {
               "asin": "B0GY97WBFM",
               "region": "uk"
+            },
+            {
+              "asin": "B0GY9M4ZW3",
+              "region": "es"
             }
           ],
           "chapters": [
@@ -13602,6 +13606,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0GY97WBFM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GY9M4ZW3",
               "type": "libex-import"
             }
           ],
@@ -13749,34 +13758,6 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0H8QCS9ZP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alas-de-sangre-the-fourth-wing-version-dramatizada"
-        },
-        "carla-lopez-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GY9M4ZW3",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1yzqqIwfHL.jpg",
-          "id": "carla-lopez-2026",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carla-lopez"
-          ],
-          "publisher": "BookaVivo",
-          "release_date": "2026-06-30",
-          "runtime_min": 466,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GY9M4ZW3",
               "type": "libex-import"
             }
           ],

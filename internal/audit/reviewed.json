@@ -114,6 +114,14 @@
   {
     "decision": "assert",
     "op": "add-series-member",
+    "reason": "Audible B009KR7XK4 lists Das Kind at Sebastian Fitzek - Die Horspieltrilogie 1, beside Amokspiel 2 and Der Seelenbrecher 3",
+    "series": "sebastian-fitzek-die-horspieltrilogie",
+    "target": "das-kind",
+    "to": "1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
     "reason": "Dragon Brides, Volume 2 (B0CJ9BZTXH) is the set between Volume One (books 1-3) and Volume Three (books 7-9)",
     "series": "dragon-brides",
     "target": "dragon-brides-volume-2-intergalactic-dating-agency",
@@ -162,6 +170,38 @@
   {
     "decision": "assert",
     "op": "add-series-member",
+    "reason": "Master of the Senate is Volume III of The Years of Lyndon Johnson (Audible B002V1BMEE subtitle)",
+    "series": "the-years-of-lyndon-johnson",
+    "target": "master-of-the-senate",
+    "to": "3"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Audible B002VA98WI lists Part 1 of the 3-part recording at The Years of Lyndon Johnson 3.1, beside Parts 2 and 3",
+    "series": "the-years-of-lyndon-johnson",
+    "target": "master-of-the-senate-the-years-of-lyndon-johnson-volume-iii-part-1-of-a-3-part-recording",
+    "to": "3.1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Once in a Blue Moon is Simon R. Green's fifth Forest Kingdom novel, after Beyond the Blue Moon at 4",
+    "series": "forest-kingdom",
+    "target": "once-in-a-blue-moon",
+    "to": "5"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Audible B0BLRR43JF lists Pride High, Book 1: Red at Pride 1; books 2 to 6 already hold their slots",
+    "series": "pride",
+    "target": "pride-high-book-1",
+    "to": "1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
     "reason": "its chapters (B0CKM7B527) are Taste, Thirst, Throne and Tomb of Vampire, books 1 to 4, and the Kindle box set is numbered 1-4",
     "series": "kingdom-of-blood-and-ash",
     "target": "taste-of-vampire-a-dystopian-fantasy-romance",
@@ -170,10 +210,35 @@
   {
     "decision": "assert",
     "op": "add-series-member",
+    "reason": "the box set collects Books 4-6 (its title, Belt Boxset Book 2 on Audible B0DRPMGZQC)",
+    "series": "the-belt-series",
+    "target": "the-belt-books-4-6",
+    "to": "4-6"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
     "reason": "The Cardinal of the Kremlin (1988) follows Patriot Games (1987) in publication; the chronological variant already lists it",
     "series": "a-jack-ryan-novel-publication-order",
     "target": "the-cardinal-of-the-kremlin",
     "to": "3"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Audible B0CDCKPDDS lists The Friendship Fairies Volume 2 at books 3-5, after Volume 1 at 1-2",
+    "series": "the-friendship-fairies",
+    "target": "the-friendship-fairies-volume-2",
+    "to": "3-5"
+  },
+  {
+    "decision": "reject",
+    "field": "series",
+    "op": "add-series-member",
+    "reason": "the series numbers books, not volumes: Volume 1 holds books 1-2 and Audible B0CDCKPDDS lists Volume 2 at books 3-5",
+    "series": "the-friendship-fairies",
+    "target": "the-friendship-fairies-volume-2",
+    "to": "2"
   },
   {
     "decision": "assert",
@@ -189,6 +254,14 @@
     "reason": "The Lion, the Witch and the Wardrobe (1950) is the first Narnia book published; the preferred-order variant already lists it; refused while the BBC dramatisation holds slot 1, it converges once that asserted drop lands",
     "series": "the-chronicles-of-narnia-publication-order",
     "target": "the-lion-the-witch-and-the-wardrobe",
+    "to": "1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Audible B0B6CQFZZH lists C. Mantis's The Path of Ascension at its series 1, before books 4 to 12 already listed",
+    "series": "the-path-of-ascension",
+    "target": "the-path-of-ascension",
     "to": "1"
   },
   {
@@ -210,10 +283,66 @@
   {
     "decision": "assert",
     "op": "add-series-member",
+    "reason": "Audible lists both Volume 2 products (B07DD1FJF7, B0FCZK3YYC) at Sam Reilly 4-6",
+    "series": "sam-reilly",
+    "target": "the-sam-reilly-collection-volume-2",
+    "to": "4-6"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
     "reason": "Goodreads numbers The Stone Wolves 5.6 in the Galactic Football League, after The Reef and before The Gangster; Siglerpedia calls it the sixth novella",
     "series": "galactic-football-league",
     "target": "the-stone-wolves-galactic-football-league",
     "to": "5.6"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "the title states The World of Otome Games Is Tough for Mobs, Vol. 10; volumes 7 and 8 already sit in this series",
+    "series": "the-world-of-otome-games-is-tough-for-mobs",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-10",
+    "to": "10"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "the title states The World of Otome Games Is Tough for Mobs, Vol. 11; volumes 7 and 8 already sit in this series",
+    "series": "the-world-of-otome-games-is-tough-for-mobs",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-11",
+    "to": "11"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "the title states The World of Otome Games Is Tough for Mobs, Vol. 9; volumes 7 and 8 already sit in this series",
+    "series": "the-world-of-otome-games-is-tough-for-mobs",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-9",
+    "to": "9"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Nosy Crow lists Sophia and Rainbow as Unicorn Academy 1 (1839941405) and the title says #1",
+    "series": "unicorn-academy",
+    "target": "unicorn-academy-1-sophia-and-rainbow",
+    "to": "1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Nosy Crow lists Scarlett and Blaze as Unicorn Academy 2 (1839941413) and the title says #2",
+    "series": "unicorn-academy",
+    "target": "unicorn-academy-2-scarlett-and-blaze",
+    "to": "2"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Audible B083WPD3FL lists the Skyscore Vethake Horspiel Winnetou I at Grune Serie 5",
+    "series": "grune-serie",
+    "target": "winnetou-i-karl-may",
+    "to": "5"
   },
   {
     "decision": "reject",
@@ -369,6 +498,14 @@
   },
   {
     "decision": "assert",
+    "from": "9.5",
+    "op": "drop-membership",
+    "reason": "the novella decimals disagree with women-of-the-otherworld (9.3), whose numbering the fold keeps",
+    "series": "otherworld",
+    "target": "angelic"
+  },
+  {
+    "decision": "assert",
     "from": "1",
     "op": "drop-membership",
     "reason": "the series numbers the chronological order, where Beyond the Deepwoods is book 4 and already listed there; slot 1 is The Curse of the Gloamglozer",
@@ -385,6 +522,14 @@
   },
   {
     "decision": "assert",
+    "from": "0",
+    "op": "drop-membership",
+    "reason": "Tor's own listing (B0DTKSTF1Q) calls Brigands & Breadknives Legends & Lattes Book 3; Book 0 is Audible's series mislabel",
+    "series": "legends-lattes",
+    "target": "brigands-breadknives"
+  },
+  {
+    "decision": "assert",
     "from": "6",
     "op": "drop-membership",
     "reason": "Buckhorn Beginnings is the omnibus of Sawyer and Morgan, which the publisher's US and UK listings both number 1-2; slot 6 is a stray sequential number",
@@ -398,6 +543,14 @@
     "reason": "the author's current Pact Arcanum listing (the 2017 re-recordings) numbers Cathedral of the Sky 1.5 between Sunset 1 and Sunrise 2; 5 is its number on the 2012 listing, before the series was renumbered",
     "series": "pact-arcanum",
     "target": "cathedral-of-the-sky"
+  },
+  {
+    "decision": "assert",
+    "from": "10.5",
+    "op": "drop-membership",
+    "reason": "the novella decimals disagree with women-of-the-otherworld (10.4), whose numbering the fold keeps",
+    "series": "otherworld",
+    "target": "counterfeit-magic"
   },
   {
     "decision": "assert",
@@ -505,11 +658,27 @@
   },
   {
     "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "Rey Clark's books are his own Path of Ascension series (Audible B083V6ZKWY), now the-path-of-ascension-2; this series is C. Mantis's",
+    "series": "the-path-of-ascension",
+    "target": "fire-forged"
+  },
+  {
+    "decision": "assert",
     "from": "9",
     "op": "drop-membership",
     "reason": "One Audiobooks' complete Red Rain listing numbers First Light 5.5 between Blue Fire 5 and Operation Thunderbird 6; the 2025 self-published listing's 9 predates the renumbering and collides with nothing else",
     "series": "red-rain",
     "target": "first-light-red-rain"
+  },
+  {
+    "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "Rey Clark's books are his own Path of Ascension series (Audible B083V6ZKWY), now the-path-of-ascension-2; this series is C. Mantis's",
+    "series": "the-path-of-ascension",
+    "target": "flames-of-valor"
   },
   {
     "decision": "assert",
@@ -521,11 +690,35 @@
   },
   {
     "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "the second half of the Golden Son dramatization holds the slot of the whole novel; Golden Son itself sits at red-rising-saga 2",
+    "series": "red-rising",
+    "target": "golden-son-part-2-of-2-dramatized-adaptation"
+  },
+  {
+    "decision": "assert",
     "from": "0",
     "op": "drop-membership",
     "reason": "His True Mate is Six Pack Shifters book 1, as its own title and the Tantor listing state; slot 0 is a stray number",
     "series": "six-pack-shifters",
     "target": "his-true-mate"
+  },
+  {
+    "decision": "assert",
+    "from": "4",
+    "op": "drop-membership",
+    "reason": "its own title says Band 0 and Audible B0D31FXKT1 lists it at 0, where damonenjager-isaac-kane holds it",
+    "series": "damonenjager-isaac-kane-german-edition",
+    "target": "im-keller-des-ghouls"
+  },
+  {
+    "decision": "assert",
+    "from": "3",
+    "op": "drop-membership",
+    "reason": "Rey Clark's books are his own Path of Ascension series (Audible B083V6ZKWY), now the-path-of-ascension-2; this series is C. Mantis's",
+    "series": "the-path-of-ascension",
+    "target": "inferno-rising"
   },
   {
     "decision": "assert",
@@ -601,6 +794,14 @@
   },
   {
     "decision": "assert",
+    "from": "3.1",
+    "op": "drop-membership",
+    "reason": "the plain record now holds the whole Volume III (the abridged reading); Part 1 of the 3-part recording has its own record at 3.1",
+    "series": "the-years-of-lyndon-johnson",
+    "target": "master-of-the-senate"
+  },
+  {
+    "decision": "assert",
     "from": "9",
     "op": "drop-membership",
     "reason": "Messenger is the 74 min prequel novella the 2021 listing numbers 0.5; book 9 is a different, roughly 145 min volume, as the Books 1-11 omnibus (3575 min) and Collection 2: Books 7-10 (1199 min) runtimes show",
@@ -622,6 +823,14 @@
     "reason": "Nightshade Revenge is Alex Rider book 13 after Nightshade 12, as both listings and the Walker title state",
     "series": "alex-rider",
     "target": "nightshade-revenge"
+  },
+  {
+    "decision": "assert",
+    "from": "5",
+    "op": "drop-membership",
+    "reason": "the first half of the dramatization holds the slot of the whole novel; Once in a Blue Moon is Forest Kingdom 5",
+    "series": "forest-kingdom",
+    "target": "once-in-a-blue-moon-1-of-2-dramatized-adaptation"
   },
   {
     "decision": "assert",
@@ -654,6 +863,14 @@
     "reason": "Podium's Out Law: A Dresden Files Novella is numbered 18.5 on the Audible listing, after Twelve Months 18; 18.75 has no source",
     "series": "the-dresden-files",
     "target": "out-law"
+  },
+  {
+    "decision": "assert",
+    "from": "7",
+    "op": "drop-membership",
+    "reason": "Ren is The Man Behind the Monster, Dream Traveler Series: Ren book 1 on Audible B018YHNYFI, not book 7",
+    "series": "dream-traveler-series-ren",
+    "target": "ren"
   },
   {
     "decision": "reject",
@@ -706,6 +923,14 @@
     "reason": "Shawn O'Brien, Town Tamer is book 1 (its own bundle is numbered 1-3 and Manslaughter is book 2), so slot 2 is a misnumbering",
     "series": "shawn-obrien",
     "target": "shawn-obrien-town-tamer"
+  },
+  {
+    "decision": "assert",
+    "from": "3.5",
+    "op": "drop-membership",
+    "reason": "Sinner is The Wolves of Mercy Falls book 4 (Scholastic), which the fold keeps; 3.5 contradicts the title's Book 4",
+    "series": "shiver",
+    "target": "sinner"
   },
   {
     "decision": "assert",
@@ -789,6 +1014,14 @@
   },
   {
     "decision": "assert",
+    "from": "3-6",
+    "op": "drop-membership",
+    "reason": "the box set collects Books 4-6 (its title, and Belt Boxset Book 2 after The Complete Trilogy at 1-3); 3-6 is a malformed range",
+    "series": "the-belt-series",
+    "target": "the-belt-books-4-6"
+  },
+  {
+    "decision": "assert",
     "from": "4",
     "op": "drop-membership",
     "reason": "The Smoke Thieves is a trilogy and the Penguin title itself says Book 3; the UK listing's 4 is a slip, the US listing numbers the same multicast production 3",
@@ -834,6 +1067,14 @@
     "reason": "The Favorite is The Selection 2.6 on Goodreads, Marlee's novella set during The Elite, and the series already holds it there; Audible's 3.5 is its release-order number",
     "series": "the-selection",
     "target": "the-favorite-a-novella"
+  },
+  {
+    "decision": "assert",
+    "from": "3",
+    "op": "drop-membership",
+    "reason": "Audible gives Volume 3 no position and lists Volume 2 at books 3-5 (B0CDCKPDDS), so 3 cannot be right",
+    "series": "the-friendship-fairies",
+    "target": "the-friendship-fairies-volume-3"
   },
   {
     "decision": "assert",
@@ -885,11 +1126,27 @@
   },
   {
     "decision": "assert",
+    "from": "2-3",
+    "op": "drop-membership",
+    "reason": "a two-book series of the Iliad and the Odyssey has no slot 3, and the series already lists an Odyssey at 2",
+    "series": "iliad-odyssey",
+    "target": "the-odyssey"
+  },
+  {
+    "decision": "assert",
     "from": "1",
     "op": "drop-membership",
     "reason": "a retailer listing of abridged Star Wars film novelizations, not a series of its own; the novel sits in the Star Wars series",
     "series": "star-wars-abridged",
     "target": "the-phantom-menace-star-wars-episode-i"
+  },
+  {
+    "decision": "assert",
+    "from": "7-12",
+    "op": "drop-membership",
+    "reason": "Audible lists both Volume 2 products (B07DD1FJF7, B0FCZK3YYC) at Sam Reilly 4-6; 7-12 overlaps Volumes 3 and 4",
+    "series": "sam-reilly",
+    "target": "the-sam-reilly-collection-volume-2"
   },
   {
     "decision": "assert",
@@ -908,6 +1165,14 @@
     "target": "the-thirteenth-santa-a-novella"
   },
   {
+    "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "Audible B01G44EXSU lists The Trial at Women's Murder Club 15.5, where womens-murder-club holds it",
+    "series": "womens-murder-club-bookshots",
+    "target": "the-trial-a-bookshot"
+  },
+  {
     "decision": "reject",
     "field": "position",
     "from": "2",
@@ -921,11 +1186,75 @@
   },
   {
     "decision": "assert",
+    "from": "10",
+    "op": "drop-membership",
+    "reason": "The World of Otome Games is Tough for Mobs, Vol. 10 is a volume of the main series, not of the Otome Games Are Tough for Us, Too! spin-off",
+    "series": "trapped-in-a-dating-sim-otome-games-are-tough-for-us-too",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-10"
+  },
+  {
+    "decision": "assert",
+    "from": "11",
+    "op": "drop-membership",
+    "reason": "The World of Otome Games is Tough for Mobs, Vol. 11 is a volume of the main series, not of the Otome Games Are Tough for Us, Too! spin-off",
+    "series": "trapped-in-a-dating-sim-otome-games-are-tough-for-us-too",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-11"
+  },
+  {
+    "decision": "assert",
+    "from": "7",
+    "op": "drop-membership",
+    "reason": "The World of Otome Games is Tough for Mobs, Vol. 7 is a volume of the main series, not of the Otome Games Are Tough for Us, Too! spin-off",
+    "series": "trapped-in-a-dating-sim-otome-games-are-tough-for-us-too",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-7"
+  },
+  {
+    "decision": "assert",
+    "from": "8",
+    "op": "drop-membership",
+    "reason": "The World of Otome Games is Tough for Mobs, Vol. 8 is a volume of the main series, not of the Otome Games Are Tough for Us, Too! spin-off",
+    "series": "trapped-in-a-dating-sim-otome-games-are-tough-for-us-too",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-8"
+  },
+  {
+    "decision": "assert",
+    "from": "9",
+    "op": "drop-membership",
+    "reason": "The World of Otome Games is Tough for Mobs, Vol. 9 is a volume of the main series, not of the Otome Games Are Tough for Us, Too! spin-off",
+    "series": "trapped-in-a-dating-sim-otome-games-are-tough-for-us-too",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-9"
+  },
+  {
+    "decision": "assert",
+    "from": "2",
+    "op": "drop-membership",
+    "reason": "swapped with Scarlett and Blaze: Nosy Crow lists Sophia and Rainbow as Unicorn Academy 1 (1839941405) and the title says #1",
+    "series": "unicorn-academy",
+    "target": "unicorn-academy-1-sophia-and-rainbow"
+  },
+  {
+    "decision": "assert",
+    "from": "1",
+    "op": "drop-membership",
+    "reason": "swapped with Sophia and Rainbow: Nosy Crow lists Scarlett and Blaze as Unicorn Academy 2 (1839941413) and the title says #2",
+    "series": "unicorn-academy",
+    "target": "unicorn-academy-2-scarlett-and-blaze"
+  },
+  {
+    "decision": "assert",
     "from": "6",
     "op": "drop-membership",
     "reason": "Warrior of the Drowned Empire is book 4 on every other listing (Hodderscape and Seven Queens Press); book 5 is Traitor of the Drowned Empire, so the third listing's 6 is a slip",
     "series": "drowned-empire",
     "target": "warrior-of-the-drowned-empire-drowned-empire-book-6"
+  },
+  {
+    "decision": "assert",
+    "from": "5",
+    "op": "drop-membership",
+    "reason": "Grune Serie 5 is the Skyscore Vethake Horspiel (B083WPD3FL), which now sits on winnetou-i-karl-may with the earlier release of the same production",
+    "series": "grune-serie",
+    "target": "winnetou-i"
   },
   {
     "decision": "assert",
@@ -1407,6 +1736,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "tales-of-the-black-rose-guard"
+    ],
+    "reason": "the same series renamed: K.L. Bone's 2024 Tales of the Black Rose Guard edition of Black Rose 1, Princess of the Rose lists both names",
+    "target": "black-rose"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "blossom-street-abridged"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
@@ -1488,6 +1826,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "chief-inspector-gamache-three-pines"
+    ],
+    "reason": "the same series under two names: every Gamache novel at the same position in both, once the two A Better Man records are one",
+    "target": "chief-inspector-armand-gamache"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "christmas-hope-series-abridged"
     ],
     "reason": "the abridged spelling lists the same franchise's volumes at stated positions that fill free slots of this series in its publication order, each with a recording stating abridged, so the abridgement stays recorded on the recordings",
@@ -1555,6 +1902,15 @@
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
     "target": "d-c-detectives"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "damonenjager-isaac-kane-german-edition"
+    ],
+    "reason": "the same German series: the decorated spelling holds the omnibuses and parts of the same Ulrich Gilga books",
+    "target": "damonenjager-isaac-kane"
   },
   {
     "decision": "assert",
@@ -1776,6 +2132,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "divine-collector-a-progression-fantasy-harem-series"
+    ],
+    "reason": "the same series: the retail-decorated spelling holds only Divine Collector at 1",
+    "target": "divine-collector"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "the-doctor-series"
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
@@ -1825,6 +2190,15 @@
     ],
     "reason": "a named sub-series, not a second spelling: Linsey Hall's Huntress arc, the first of several in the Dragon's Gift world",
     "target": "dragons-gift"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "a-dream-traveler"
+    ],
+    "reason": "the same series: the 2019 A Dream Traveler re-release numbers Sarah Noffke's Ren books 1 to 7 as the original does",
+    "target": "dream-traveler-series-ren"
   },
   {
     "decision": "assert",
@@ -2050,6 +2424,15 @@
     ],
     "reason": "lists 5 of the canonical series' works at the same slots and fills its free slots with Broken at 7, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
     "target": "grant-county"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "shadow-and-bone"
+    ],
+    "reason": "the same trilogy: Shadow and Bone, Siege and Storm, Ruin and Rising and Demon in the Wood at the same positions in both",
+    "target": "grisha"
   },
   {
     "decision": "assert",
@@ -2529,6 +2912,15 @@
     "target": "left-behind"
   },
   {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "legends-and-lattes"
+    ],
+    "reason": "the same series under two names: Legends & Lattes 1 and Brigands & Breadknives 3 (Tor)",
+    "target": "legends-lattes"
+  },
+  {
     "decision": "reject",
     "op": "merge-series",
     "others": [
@@ -2938,6 +3330,24 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "red-queen-series"
+    ],
+    "reason": "the same series: the Series spelling's records were duplicates of Red Queen, Glass Sword and Broken Throne",
+    "target": "red-queen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "red-rising"
+    ],
+    "reason": "the same series: Pierce Brown's novels at the same positions in both, once Golden Son's dramatized Part 2 no longer holds the novel's slot 2",
+    "target": "red-rising-saga"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "redemption-abridged"
     ],
     "reason": "lists 3 of the canonical series' works at the same slots and fills its free slots with Return at 3, each holding the abridged recording the variant was named for; abridgement is a property of the recordings, not a series",
@@ -3271,6 +3681,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-boxcar-children-mysteries"
+    ],
+    "reason": "the same series: 171 shared books at the same positions, and the two slot clashes were one book spelled twice",
+    "target": "the-boxcar-children"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "love-in-bloom-the-bradens"
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
@@ -3566,6 +3985,15 @@
     "target": "the-pallisers"
   },
   {
+    "decision": "reject",
+    "op": "merge-series",
+    "others": [
+      "the-path-of-ascension-2"
+    ],
+    "reason": "two series of one name by different authors: C. Mantis's LitRPG The Path of Ascension and Rey Clark's The Path of Ascension (Flames of Valor, Fire Forged, Inferno Rising)",
+    "target": "the-path-of-ascension"
+  },
+  {
     "decision": "assert",
     "op": "merge-series",
     "others": [
@@ -3660,6 +4088,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "torch-light"
+    ],
+    "reason": "the same trilogy: the one-member spelling holds only Songlight at 1",
+    "target": "the-torch-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "underland-chronicles"
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
@@ -3682,6 +4119,15 @@
     ],
     "reason": "the abridged spelling lists Bring Up the Bodies at this series' slot 2 and adds the abridged Wolf Hall and Bring Up the Bodies omnibus at the free range 1-2",
     "target": "the-wolf-hall-trilogy"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "shiver"
+    ],
+    "reason": "the same quartet: Shiver, Linger, Forever and Sinner at the same positions once Sinner sits at 4",
+    "target": "the-wolves-of-mercy-falls"
   },
   {
     "decision": "assert",
@@ -3858,9 +4304,27 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "otherworld"
+    ],
+    "reason": "the same Kelley Armstrong series under its short name: every shared book at the same position, 13 and Thirteen one book",
+    "target": "women-of-the-otherworld"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "womens-murder-club-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots; The Trial is filed there with only its unabridged novella reading, so the name records no abridgement of it",
+    "target": "womens-murder-club"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "womens-murder-club-bookshots"
+    ],
+    "reason": "Audible's BookShots listing holds the Women's Murder Club novels at their own numbers; The Trial sits at 15.5 in the main series",
     "target": "womens-murder-club"
   },
   {
@@ -4029,6 +4493,15 @@
     "target": "22-seconds"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "25-alive-wmc-25"
+    ],
+    "reason": "one book: 25 Alive, Women's Murder Club 25, the Penguin and Little, Brown editions of January LaVoy's reading",
+    "target": "25-alive"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -4083,6 +4556,15 @@
     ],
     "reason": "the same memoir read by the author; Cecil Murphey is the credited co-writer and the longer 2015 christianaudio recording matches the expanded 10th anniversary edition, an edition of the same book",
     "target": "90-minutes-in-heaven"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "a-better-man-a-chief-inspector-gamache-novel"
+    ],
+    "reason": "one book: Gamache 15 in both spellings of the series, the Hodder and Macmillan editions of the same 2019 novel",
+    "target": "a-better-man"
   },
   {
     "decision": "reject",
@@ -4911,6 +5393,15 @@
     "target": "alice-in-wonderland-through-the-looking-glass"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "alice-in-wonderland-through-the-looking-glass"
+    ],
+    "reason": "the Classic Starts retelling by Eva Mason (Audible 1645550354), a different text from the readings of Carroll",
+    "target": "alice-in-wonderland-through-the-looking-glass-lewis-carroll-2"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -5276,6 +5767,42 @@
     "target": "apocalypse-cultivator"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "apocalypse-cultivator-book-2"
+    ],
+    "reason": "one book: Royal Guard's 2025 reissue of Warped Earth 2 (B0GD9B35QZ) with the same narrators and the same 435-minute reading",
+    "target": "apocalypse-cultivator-2-a-cultivation-fantasy-adventure-for-men-warped-earth"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "apocalypse-cultivator-book-3"
+    ],
+    "reason": "one book: Royal Guard's 2025 reissue of Warped Earth 3 with the same narrators and the same 461-minute reading",
+    "target": "apocalypse-cultivator-3"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "apocalypse-cultivator-book-4"
+    ],
+    "reason": "one book: Royal Guard's 2025 reissue of Warped Earth 4 with the same narrators and the same 425-minute reading",
+    "target": "apocalypse-cultivator-4"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "apocalypse-cultivator-book-5"
+    ],
+    "reason": "one book: Royal Guard's 2025 reissue of Warped Earth 5 with the same narrators and the same 501-minute reading",
+    "target": "apocalypse-cultivator-5"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -5366,6 +5893,15 @@
     ],
     "reason": "different volumes: positions 1 and 3 of arcane-pathfinder, and the title states Book 3",
     "target": "arcane-pathfinder"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "renegades-bk-2"
+    ],
+    "reason": "one book: Audible B07BKNX96W is Archenemies, Renegades Book 2, the same Bittner and Soler reading",
+    "target": "archenemies"
   },
   {
     "decision": "reject",
@@ -5582,6 +6118,24 @@
     "target": "atomic-mage"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "atomic-mage-book-2"
+    ],
+    "reason": "one book: Royal Guard's 2025 reissue of Atomic Mage 2 with the same narrators and the same 603-minute reading",
+    "target": "atomic-mage-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "atomic-mage-book-3"
+    ],
+    "reason": "one book: Royal Guard's 2025 reissue of Atomic Mage 3 with the same narrators and the same 601-minute reading",
+    "target": "atomic-mage-3"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -5788,6 +6342,15 @@
     "target": "beechwood-harbor-ghost-mysteries-boxed-set-book-1-3"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-beechwood-harbor-magic-mysteries-boxed-set-books-7-9"
+    ],
+    "reason": "one box set: Books 7-9 (Tantor 2021 and Roots & Wings 2026), the same Amanda Ronconi readings at 1062 and 1063 minutes",
+    "target": "beechwood-harbor-magic-mysteries-boxed-set-7-9"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -5923,6 +6486,24 @@
     ],
     "reason": "different books that all lost their subtitles: bitcoin-knut-svanholm (2024, with Luke de Wolf) is Bitcoin: The Inverse of Clown World, while bitcoin holds Svanholm's earlier solo books",
     "target": "bitcoin"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "bitcoin"
+    ],
+    "reason": "a different book: Bitcoin: Everything Divided by 21 Million (2022, B0B77W3XSW), not Bitcoin: Sovereignty Through Mathematics",
+    "target": "bitcoin-knut-svanholm-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "bitcoin-knut-svanholm"
+    ],
+    "reason": "different books: Everything Divided by 21 Million (2022) vs The Inverse of Clown World (2024, with Luke de Wolf)",
+    "target": "bitcoin-knut-svanholm-2"
   },
   {
     "decision": "assert",
@@ -6360,6 +6941,15 @@
     "target": "broken-souls"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "red-queen-bk-5"
+    ],
+    "reason": "one book: Broken Throne (2019, HarperAudio 0062913875), Red Queen 4.5, the full-cast collection",
+    "target": "broken-throne"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -6621,6 +7211,24 @@
     ],
     "reason": "different books: Publisher's Pack bundles of six different series by two authors, different narrators and runtimes; only the generic suffix matches",
     "target": "centauri-bliss-publishers-pack"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "change-of-command-dramatized-adaptation"
+    ],
+    "reason": "Part 2 of 2 of the GraphicAudio International Edition (B0F9YWWSSB, 311 min), apart from Part 1 and from the whole dramatization",
+    "target": "change-of-command-2-of-2-international-edition-dramatized-adaptation"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "change-of-command-international-edition-dramatized-adaptation"
+    ],
+    "reason": "Part 2 of 2 of the GraphicAudio International Edition (B0F9YWWSSB, 311 min), apart from Part 1 and from the whole dramatization",
+    "target": "change-of-command-2-of-2-international-edition-dramatized-adaptation"
   },
   {
     "decision": "reject",
@@ -6973,6 +7581,24 @@
     ],
     "reason": "the same novel by Dostoevsky: the decorations name the AmazonClassics, Audio Connoisseur and Trout Lake Media editions, which are properties of the recording, and the plain duplicate differs only in the spelling of the author's slug",
     "target": "crime-and-punishment"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "crime-and-punishment"
+    ],
+    "reason": "Stream Readers' 11-minute Key Insights summary (B0G4SM2969), not the novel",
+    "target": "crime-and-punishment-fyodor-dostoevsky"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "crime-and-punishment-fyodor-dostoyevsky"
+    ],
+    "reason": "Stream Readers' 11-minute Key Insights summary (B0G4SM2969), not the novel",
+    "target": "crime-and-punishment-fyodor-dostoevsky"
   },
   {
     "decision": "reject",
@@ -8525,6 +9151,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "don-quixote"
+    ],
+    "reason": "the empty English Don Quixote record (no recordings) duplicates the main English work",
+    "target": "don-quixote-miguel-de-cervantes"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "don-quixote-amazonclassics-edition",
       "don-quixote-james-harris",
       "don-quixote-miguel-cervantes"
@@ -9164,6 +9799,15 @@
     ],
     "reason": "Part 1 of 2 (805 min) and Part 2 of 2 (564 min) are split releases of the GraphicAudio drama, and the unnumbered record is not a third product but a conflation of one ASIN from each part",
     "target": "elantris-tenth-anniversary-authors-definitive-edition-dramatized-adaptation"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "elantris-tenth-anniversary-authors-definitive-edition-dramatized-adaptation"
+    ],
+    "reason": "the unnumbered record held the US ASINs of both parts (B0F1DLYWH3 Part 1, B0FF5DH4FH Part 2), now on the part records; it retires onto Part 1",
+    "target": "elantris-tenth-anniversary-authors-definitive-edition-part-1-of-2-dramatized-adaptation"
   },
   {
     "decision": "assert",
@@ -10045,6 +10689,15 @@
     "target": "gettysburg-address"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "gettysburg-address"
+    ],
+    "reason": "Simply Media's 97-minute study program on the Address, the Emancipation Proclamation and Pericles (B002V0Q5PG), not the two-minute speech",
+    "target": "gettysburg-address-abraham-lincoln"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -10052,6 +10705,15 @@
     ],
     "reason": "the same novel; the Isla Blair recording is the flagged abridgement and Kati Nicholl is its abridger, not a co-author",
     "target": "girl-with-a-pearl-earring"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "red-queen-bk-2"
+    ],
+    "reason": "one book: the HarperAudio edition of Glass Sword (B017C6QUPS), Red Queen 2, Amanda Dolan, 880 minutes",
+    "target": "glass-sword"
   },
   {
     "decision": "assert",
@@ -10226,6 +10888,24 @@
     ],
     "reason": "the same novel; Howard Jacobson is the introducer of the Audible Studios edition, not a co-author",
     "target": "great-expectations"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "great-expectations"
+    ],
+    "reason": "the Classic Starts retelling adapted by Deanna McFadden (Audible 1645552586), a different text",
+    "target": "great-expectations-charles-dickens-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "great-expectations-adaptation"
+    ],
+    "reason": "the Classic Starts retelling adapted by Deanna McFadden (Audible 1645552586), a different text",
+    "target": "great-expectations-charles-dickens-2"
   },
   {
     "decision": "reject",
@@ -11188,6 +11868,33 @@
     ],
     "reason": "Books 2, 3 and 4 are later volumes of the series, with their own runtimes, released as separate products",
     "target": "immortal-swordslinger"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "immortal-swordslinger-book-2"
+    ],
+    "reason": "one book: the 2025 Royal Guard edition of Immortal Swordslinger 2 (Audible lists it at the same slot), a second narration of the same novel",
+    "target": "immortal-swordslinger-2"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "immortal-swordslinger-book-3"
+    ],
+    "reason": "one book: the 2025 Royal Guard edition of Immortal Swordslinger 3 (Audible lists it at the same slot), a second narration of the same novel",
+    "target": "immortal-swordslinger-3"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "immortal-swordslinger-book-4"
+    ],
+    "reason": "one book: the 2025 Royal Guard edition of Immortal Swordslinger 4 (Audible lists it at the same slot), a second narration of the same novel",
+    "target": "immortal-swordslinger-4"
   },
   {
     "decision": "assert",
@@ -12170,6 +12877,33 @@
     "decision": "reject",
     "op": "merge-works",
     "others": [
+      "le-reveil-du-krea-kaos"
+    ],
+    "reason": "different products: Episode 1 of 3 of Les Legendaires tome 4 (B0GXF7HWTD), beside the whole tome and the other episodes",
+    "target": "le-reveil-du-krea-kaos-episode-1"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "le-reveil-du-krea-kaos-episode-3"
+    ],
+    "reason": "different products: Episode 1 of 3 of Les Legendaires tome 4 (B0GXF7HWTD), beside the whole tome and the other episodes",
+    "target": "le-reveil-du-krea-kaos-episode-1"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "le-reveil-du-krea-kaos"
+    ],
+    "reason": "different products: Episode 3 of 3 of Les Legendaires tome 4 (B0GXKRK3SF), beside the whole tome",
+    "target": "le-reveil-du-krea-kaos-episode-3"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
       "learn-french-with-short-stories-parallel-french-english-vocabulary-for-beginners-learn-french-with-t"
     ],
     "reason": "different volumes: positions 8 and 9 of learn-french-with-the-adventures-of-clara, and the titles state Book 8 and Book 9",
@@ -12800,6 +13534,15 @@
     ],
     "reason": "split release: parts 1, 2 and 3 of the 3-part Random House recording of Master of the Senate (positions 3.1, 3.2, 3.3), each its own record",
     "target": "master-of-the-senate"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "master-of-the-senate"
+    ],
+    "reason": "Part 1 of the 3-part Random House recording (B002VA98WI), a part vs the whole volume",
+    "target": "master-of-the-senate-the-years-of-lyndon-johnson-volume-iii-part-1-of-a-3-part-recording"
   },
   {
     "decision": "assert",
@@ -13732,6 +14475,15 @@
     ],
     "reason": "the Audible Original Oliver Twist is a full-cast adaptation scripted by Marty Ross (credited as writer) rather than Dickens's text, an adaptation by a different writer",
     "target": "oliver-twist"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "oliver-twist-adaptation"
+    ],
+    "reason": "different adaptations: Marty Ross's Audible Original drama vs Richard Rogers's Oxford Bookworms retelling",
+    "target": "oliver-twist-charles-dickens"
   },
   {
     "decision": "reject",
@@ -14921,6 +15673,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "red-queen-unabridged-part-1-chapter-01"
+    ],
+    "reason": "one book: the HarperAudio edition of Red Queen (B00RDB35II), Amanda Dolan, 763 minutes, filed under a track title",
+    "target": "red-queen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "release-the-dogs-of-war-dramatized-adaptation"
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
@@ -14980,6 +15741,16 @@
     ],
     "reason": "different collections: a books 1-3 box set (1031 min) and a books 1-4 box set (1535 min)",
     "target": "ren-series-boxed-set"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "ren",
+      "the-man-behind-the-monster"
+    ],
+    "reason": "one book: Ren: The Man Behind the Monster, Dream Traveler Series: Ren 1, in Tim Campbell's 2015, 2019 and 2026 releases (B018YHNYFI, B07XQLMBD7, B0GSXL8JV7)",
+    "target": "ren-the-man-behind-the-monster"
   },
   {
     "decision": "assert",
@@ -15166,6 +15937,24 @@
     "decision": "reject",
     "op": "merge-works",
     "others": [
+      "rites-of-the-starling-devney-perry"
+    ],
+    "reason": "Part 2 of 2 of the GraphicAudio dramatization (B0H3WWKJCW), apart from the novel and from Part 1",
+    "target": "rites-of-the-starling-2-of-2-dramatized-adaptation"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "rites-of-the-starling-dramatized-adaptation"
+    ],
+    "reason": "Part 2 of 2 of the GraphicAudio dramatization (B0H3WWKJCW), apart from the novel and from Part 1",
+    "target": "rites-of-the-starling-2-of-2-dramatized-adaptation"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
       "rites-of-the-starling-dramatized-adaptation"
     ],
     "reason": "a split release vs the whole: the GraphicAudio record (452 min, 2026-07-07) is Part 1 of 2 of the dramatization of the 17-hour novel; a part is not merged into the whole",
@@ -15290,6 +16079,15 @@
     ],
     "reason": "different work: the Capstone record (24 min) is a graphic-novel retelling by Martin Powell with its illustrators, not Shakespeare's text",
     "target": "romeo-and-juliet"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "romeo-and-juliet"
+    ],
+    "reason": "the Real Reads retelling adapted by Helen Street (Audible B00815RR52), a different text",
+    "target": "romeo-and-juliet-william-shakespeare-3"
   },
   {
     "decision": "assert",
@@ -15660,6 +16458,15 @@
     "target": "serpents-silver"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "seven-days-to-die-dramatized-adaptation"
+    ],
+    "reason": "Brian Hutchison's unabridged reading of Loner 6 (B009EVFB32), apart from the GraphicAudio dramatization",
+    "target": "seven-days-to-die"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -15981,6 +16788,33 @@
     ],
     "reason": "different selections: Sketches by Boz Volume 1 and Volume 2 are two parts of the Assembled Stories reading (705 and 674 min), distinct from each other and from the one-record collection",
     "target": "sketches-by-boz"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "sketches-by-boz"
+    ],
+    "reason": "different volumes: Peter Joyce's Sketches by Boz Volume 3 (B005C5GICW), Audible series position 3",
+    "target": "sketches-by-boz-volume-3"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "sketches-by-boz-volume-1"
+    ],
+    "reason": "different volumes: Peter Joyce's Sketches by Boz Volume 3 (B005C5GICW), Audible series position 3",
+    "target": "sketches-by-boz-volume-3"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "sketches-by-boz-volume-2"
+    ],
+    "reason": "different volumes: Peter Joyce's Sketches by Boz Volume 3 (B005C5GICW), Audible series position 3",
+    "target": "sketches-by-boz-volume-3"
   },
   {
     "decision": "assert",
@@ -17705,6 +18539,60 @@
     "target": "the-brothers-karamazov"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "brothers-karamazov"
+    ],
+    "reason": "Sweet Cherry's Easy Classics adapted and illustrated edition by Gemma Barder (B0GPFKDTRV), 54 minutes, a different text",
+    "target": "the-brothers-karamazov-fyodor-dostoevsky-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-brothers-karamazov"
+    ],
+    "reason": "Sweet Cherry's Easy Classics adapted and illustrated edition by Gemma Barder (B0GPFKDTRV), 54 minutes, a different text",
+    "target": "the-brothers-karamazov-fyodor-dostoevsky-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-brothers-karamazov-dramatized"
+    ],
+    "reason": "Sweet Cherry's Easy Classics adapted and illustrated edition by Gemma Barder (B0GPFKDTRV), 54 minutes, a different text",
+    "target": "the-brothers-karamazov-fyodor-dostoevsky-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-brothers-karamazov-fyodor-dostoyevsky"
+    ],
+    "reason": "Sweet Cherry's Easy Classics adapted and illustrated edition by Gemma Barder (B0GPFKDTRV), 54 minutes, a different text",
+    "target": "the-brothers-karamazov-fyodor-dostoevsky-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-brothers-karamazov-jimcin-recordings-edition"
+    ],
+    "reason": "Sweet Cherry's Easy Classics adapted and illustrated edition by Gemma Barder (B0GPFKDTRV), 54 minutes, a different text",
+    "target": "the-brothers-karamazov-fyodor-dostoevsky-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-brothers-karamazov-naxos-audiobooks-edition"
+    ],
+    "reason": "Sweet Cherry's Easy Classics adapted and illustrated edition by Gemma Barder (B0GPFKDTRV), 54 minutes, a different text",
+    "target": "the-brothers-karamazov-fyodor-dostoevsky-2"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -17768,6 +18656,24 @@
     ],
     "reason": "the same book by the same author: \"The Call of the Wild - Unabridged\" only adds an edition, production or narrator note to \"The Call of the Wild\", which is a property of the recording",
     "target": "the-call-of-the-wild"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-call-of-the-wild"
+    ],
+    "reason": "OrangeSky Audio's 8-minute new adaptation (its own blurb, 1094253642), a different text",
+    "target": "the-call-of-the-wild-jack-london"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-call-of-the-wild-adaptation"
+    ],
+    "reason": "OrangeSky Audio's 8-minute new adaptation (its own blurb, 1094253642), a different text",
+    "target": "the-call-of-the-wild-jack-london"
   },
   {
     "decision": "reject",
@@ -17928,6 +18834,15 @@
     ],
     "reason": "the Recorded Books record credits Cotton (joseph-cotton is a bad slug for Charles Cotton, as library catalogues credit Walton and Charles Cotton), so it is the expanded edition with a new co-author and stays distinct from the Walton-only record",
     "target": "the-compleat-angler"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "the-compleat-angler-izaak-walton-2"
+    ],
+    "reason": "one book: The Compleat Angler by Izaak Walton with Charles Cotton (the Recorded Books listing credited Cotton as Joseph Cotton), in its Naxos and Recorded Books readings",
+    "target": "the-compleat-angler-izaak-walton"
   },
   {
     "decision": "assert",
@@ -18141,6 +19056,15 @@
     ],
     "reason": "the same book by the same author: the decorated title names the dramatized full-cast production, which is a property of the recording, not of the work",
     "target": "the-detective"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "devils-badland-dramatized-adaptation"
+    ],
+    "reason": "Brian Hutchison's unabridged reading of Loner 2 (B00563ID3M), apart from the GraphicAudio dramatization",
+    "target": "the-devils-badland"
   },
   {
     "decision": "assert",
@@ -18478,6 +19402,15 @@
     "target": "the-game-of-life-and-how-to-play-it-florence-scovel-shinn"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-game-of-life-and-how-to-play-it-florence-scovel-shinn"
+    ],
+    "reason": "Mitch Horowitz's 47-minute Condensed Classics condensation, a rewritten text, as #2642 ruled for the series",
+    "target": "the-game-of-life-and-how-to-play-it-florence-scovel-shinn-2"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -18715,6 +19648,33 @@
     "target": "the-hound-of-the-baskervilles"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-hound-of-the-baskervilles"
+    ],
+    "reason": "Jim Weiss's 79-minute storytelling retelling (Well-Trained Mind Press B07VCMX4Z1), a different text",
+    "target": "the-hound-of-the-baskervilles-arthur-conan-doyle"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-hound-of-the-baskervilles-adaptation"
+    ],
+    "reason": "Jim Weiss's 79-minute storytelling retelling (Well-Trained Mind Press B07VCMX4Z1), a different text",
+    "target": "the-hound-of-the-baskervilles-arthur-conan-doyle"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-hound-of-the-baskervilles-dramatized"
+    ],
+    "reason": "Jim Weiss's 79-minute storytelling retelling (Well-Trained Mind Press B07VCMX4Z1), a different text",
+    "target": "the-hound-of-the-baskervilles-arthur-conan-doyle"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -18902,6 +19862,15 @@
       "the-jungle-book-amazonclassics-edition"
     ],
     "reason": "the same book by the same author: the Annotated Simon Holmes reading is an unabridged recording of The Jungle Book, and the decorated title names the edition",
+    "target": "the-jungle-book"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-jungle-book-by-rudyard-kipling"
+    ],
+    "reason": "one book: Kipling's The Jungle Book, the same 354-minute Simon Holmes reading in its 2021 release (B0955CP583, narrator misspelled Homes)",
     "target": "the-jungle-book"
   },
   {
@@ -19610,6 +20579,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "mystery-of-the-fortune-cookie"
+    ],
+    "reason": "one book: Boxcar Children 96, the two spellings of one title at the same slot of two spellings of one series",
+    "target": "the-mystery-in-the-fortune-cookie"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "mystery-in-the-snow"
     ],
     "reason": "the same Boxcar Children book, number 32 in both records; the series slugs the-boxcar-children and the-boxcar-children-mysteries are two names of one series, and the leading article is not a different title",
@@ -19623,6 +20601,15 @@
     ],
     "reason": "the same novel; Lucinda Hawksley is the introducer of the Audible edition (she also reads that part), not a co-author, and the runtimes are within 4%",
     "target": "the-mystery-of-edwin-drood-charles-dickens"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-mystery-of-blizzard-mountain"
+    ],
+    "reason": "one book: Boxcar Children 86, the two spellings of one title at the same slot of two spellings of one series",
+    "target": "the-mystery-on-blizzard-mountain"
   },
   {
     "decision": "assert",
@@ -19664,6 +20651,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "chronicles-of-a-piglin-book-4"
+    ],
+    "reason": "one book: Audible B0FJB14393 is The New Fakertown, Chronicles of a Piglin 4, the 2025 reissue of the same 129-minute reading",
+    "target": "the-new-fakertown"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "the-obesity-code-jason-fung"
     ],
     "reason": "the same book by the same author: one record lists Jason Fung under a second person id that the people wave merged, so the two now credit the same author",
@@ -19677,6 +20673,33 @@
     ],
     "reason": "the same epic by Homer in English; Stanley Lombardo is a translator, not a co-author, and the-odyssey holds the series memberships and most recordings",
     "target": "the-odyssey"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-odyssey"
+    ],
+    "reason": "the Real Reads retelling adapted by Beatrice Sampatakou (Audible B00SAE45IG), a different text",
+    "target": "the-odyssey-homer"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-odyssey-homer-2"
+    ],
+    "reason": "the Real Reads retelling adapted by Beatrice Sampatakou (Audible B00SAE45IG), a different text",
+    "target": "the-odyssey-homer"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-odyssey"
+    ],
+    "reason": "the Classic Starts retelling edited by Tania Zamorsky (Audible 1645552691), a different text",
+    "target": "the-odyssey-homer-2"
   },
   {
     "decision": "assert",
@@ -19832,6 +20855,15 @@
     ],
     "reason": "the same book; Mitch Horowitz is the editor/introducer of the Ascent Audio edition, not a co-author, and Sean Pratt's 477 minutes match the other unabridged readings",
     "target": "the-power-of-your-subconscious-mind-joseph-murphy"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-power-of-your-subconscious-mind-joseph-murphy"
+    ],
+    "reason": "Mitch Horowitz's 49-minute Condensed Classics condensation, a rewritten text, as #2642 ruled for the series",
+    "target": "the-power-of-your-subconscious-mind-joseph-murphy-2"
   },
   {
     "decision": "assert",
@@ -20238,6 +21270,15 @@
     ],
     "reason": "the same book; Mitch Horowitz is the editor of the Ascent edition and abridger of the Condensed Classics edition, not a co-author",
     "target": "the-secret-of-the-ages"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-secret-of-the-ages"
+    ],
+    "reason": "Mitch Horowitz's 45-minute Condensed Classics condensation, a rewritten text, as #2642 ruled for the series",
+    "target": "the-secret-of-the-ages-robert-collier-2"
   },
   {
     "decision": "reject",
@@ -21171,6 +22212,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "13"
+    ],
+    "reason": "one book: Kelley Armstrong's 13 (2012), Women of the Otherworld 13, in its Little, Brown and Penguin editions",
+    "target": "thirteen"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "this-charming-man-german-edition"
     ],
     "reason": "the same book: \"This Charming Man (German Edition)\" and \"This Charming Man - Sie sind hier. Sie haben Hunger. The Stranger Times fühlt ihnen auf den Zahn\" differ only by retailer decoration; both sit at 2 of the-stranger-times-gekurzt and its canonical series, by the same author",
@@ -21510,6 +22560,33 @@
     "target": "trapped-in-a-dating-sim"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "trapped-in-a-dating-sim"
+    ],
+    "reason": "different volumes: Vol. 1 and Vol. 10 of The World of Otome Games is Tough for Mobs",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-10"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "trapped-in-a-dating-sim"
+    ],
+    "reason": "different volumes: Vol. 1 and Vol. 11 of The World of Otome Games is Tough for Mobs",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-11"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "trapped-in-a-dating-sim"
+    ],
+    "reason": "different volumes: Vol. 1 and Vol. 9 of The World of Otome Games is Tough for Mobs",
+    "target": "trapped-in-a-dating-sim-the-world-of-otome-games-is-tough-for-mobs-vol-9"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -21564,6 +22641,87 @@
     ],
     "reason": "different works: Booktime Publishing's 69-minute retelling adapted for children is its own text",
     "target": "treasure-island-adapted-for-children"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island"
+    ],
+    "reason": "Jim Weiss's 62-minute retelling (Audible B0CPGPZF9X credits him as adaptor), a different text",
+    "target": "treasure-island-robert-louis-stevenson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-adaptation"
+    ],
+    "reason": "Jim Weiss's 62-minute retelling (Audible B0CPGPZF9X credits him as adaptor), a different text",
+    "target": "treasure-island-robert-louis-stevenson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-adapted-for-children"
+    ],
+    "reason": "Jim Weiss's 62-minute retelling (Audible B0CPGPZF9X credits him as adaptor), a different text",
+    "target": "treasure-island-robert-louis-stevenson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-dramatized-robert-louis-stevenson"
+    ],
+    "reason": "Jim Weiss's 62-minute retelling (Audible B0CPGPZF9X credits him as adaptor), a different text",
+    "target": "treasure-island-robert-louis-stevenson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-robert-louis-stevenson-2"
+    ],
+    "reason": "Jim Weiss's 62-minute retelling (Audible B0CPGPZF9X credits him as adaptor), a different text",
+    "target": "treasure-island-robert-louis-stevenson"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island"
+    ],
+    "reason": "OrangeSky Audio's 10-minute children's adaptation (1094253685), a different text",
+    "target": "treasure-island-robert-louis-stevenson-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-adaptation"
+    ],
+    "reason": "OrangeSky Audio's 10-minute children's adaptation (1094253685), a different text",
+    "target": "treasure-island-robert-louis-stevenson-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-adapted-for-children"
+    ],
+    "reason": "OrangeSky Audio's 10-minute children's adaptation (1094253685), a different text",
+    "target": "treasure-island-robert-louis-stevenson-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-dramatized-robert-louis-stevenson"
+    ],
+    "reason": "OrangeSky Audio's 10-minute children's adaptation (1094253685), a different text",
+    "target": "treasure-island-robert-louis-stevenson-2"
   },
   {
     "decision": "reject",

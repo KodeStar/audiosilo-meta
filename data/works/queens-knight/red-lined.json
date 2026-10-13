@@ -11547,10 +11547,12 @@
         "victoria-aveyard"
       ],
       "genres": [
+        "action-adventure",
         "dark-fantasy",
         "dystopian",
         "epic-fantasy",
         "fantasy",
+        "romance",
         "science-fiction",
         "urban-fantasy",
         "young-adult"
@@ -11569,6 +11571,14 @@
             },
             {
               "asin": "B00SC55VPE",
+              "region": "uk"
+            },
+            {
+              "asin": "B00RDB35II",
+              "region": "us"
+            },
+            {
+              "asin": "B079XQZ23Q",
               "region": "uk"
             }
           ],
@@ -11744,6 +11754,26 @@
               "imported_at": "2026-10-09",
               "ref": "B00SC55VPE",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B00RDB35II",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-17",
+              "ref": "B00RDB35II",
+              "type": "audible-lookup"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B00RDB35II",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079XQZ23Q",
+              "type": "libex-import"
             }
           ],
           "work": "red-queen"
@@ -11759,512 +11789,22 @@
           "imported_at": "2026-08-02",
           "ref": "B00SC60X7O",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B00RDB35II",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B00RDB35II",
+          "type": "libex-import"
         }
       ],
       "title": "Red Queen",
       "xref": {
         "goodreads": "22328546"
       }
-    },
-    "red-queen-bk-2": {
-      "added_at": "2026-07-17T09:08:56+00:00",
-      "authors": [
-        "victoria-aveyard"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "red-queen-bk-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-dolan-2016": {
-          "abridged": false,
-          "added_at": "2026-07-17T09:08:56+00:00",
-          "asin": [
-            {
-              "asin": "B017C6QUPS",
-              "region": "us"
-            },
-            {
-              "asin": "B079BP5TY2",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 11904,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1616419,
-              "start_ms": 11904,
-              "title": "One"
-            },
-            {
-              "length_ms": 1757193,
-              "start_ms": 1628323,
-              "title": "Two"
-            },
-            {
-              "length_ms": 1458678,
-              "start_ms": 3385516,
-              "title": "Three"
-            },
-            {
-              "length_ms": 1815197,
-              "start_ms": 4844194,
-              "title": "Four"
-            },
-            {
-              "length_ms": 1562749,
-              "start_ms": 6659391,
-              "title": "Five"
-            },
-            {
-              "length_ms": 1541991,
-              "start_ms": 8222140,
-              "title": "Six"
-            },
-            {
-              "length_ms": 1837859,
-              "start_ms": 9764131,
-              "title": "Seven"
-            },
-            {
-              "length_ms": 1820816,
-              "start_ms": 11601990,
-              "title": "Eight"
-            },
-            {
-              "length_ms": 1736945,
-              "start_ms": 13422806,
-              "title": "Nine"
-            },
-            {
-              "length_ms": 1746698,
-              "start_ms": 15159751,
-              "title": "Ten"
-            },
-            {
-              "length_ms": 2086824,
-              "start_ms": 16906449,
-              "title": "Eleven"
-            },
-            {
-              "length_ms": 1666264,
-              "start_ms": 18993273,
-              "title": "Twelve"
-            },
-            {
-              "length_ms": 1764252,
-              "start_ms": 20659537,
-              "title": "Thirteen"
-            },
-            {
-              "length_ms": 1862844,
-              "start_ms": 22423789,
-              "title": "Fourteen"
-            },
-            {
-              "length_ms": 3025978,
-              "start_ms": 24286633,
-              "title": "Fifteen"
-            },
-            {
-              "length_ms": 740949,
-              "start_ms": 27312611,
-              "title": "Sixteen"
-            },
-            {
-              "length_ms": 1639886,
-              "start_ms": 28053560,
-              "title": "Seventeen"
-            },
-            {
-              "length_ms": 1983216,
-              "start_ms": 29693446,
-              "title": "Eighteen"
-            },
-            {
-              "length_ms": 1455241,
-              "start_ms": 31676662,
-              "title": "Nineteen"
-            },
-            {
-              "length_ms": 2276670,
-              "start_ms": 33131903,
-              "title": "Twenty"
-            },
-            {
-              "length_ms": 1493043,
-              "start_ms": 35408573,
-              "title": "Twenty-One"
-            },
-            {
-              "length_ms": 1557827,
-              "start_ms": 36901616,
-              "title": "Twenty-Two"
-            },
-            {
-              "length_ms": 1862287,
-              "start_ms": 38459443,
-              "title": "Twenty-Three"
-            },
-            {
-              "length_ms": 1771961,
-              "start_ms": 40321730,
-              "title": "Twenty-Four"
-            },
-            {
-              "length_ms": 2486161,
-              "start_ms": 42093691,
-              "title": "Twenty-Five"
-            },
-            {
-              "length_ms": 1986885,
-              "start_ms": 44579852,
-              "title": "Twenty-Six"
-            },
-            {
-              "length_ms": 1639654,
-              "start_ms": 46566737,
-              "title": "Twenty-Seven"
-            },
-            {
-              "length_ms": 1839578,
-              "start_ms": 48206391,
-              "title": "Twenty-Eight"
-            },
-            {
-              "length_ms": 2204317,
-              "start_ms": 50045969,
-              "title": "Twenty-Nine"
-            },
-            {
-              "length_ms": 501703,
-              "start_ms": 52250286,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 26226,
-              "start_ms": 52751989,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51jhbsJNBwL._SL500_.jpg",
-          "id": "amanda-dolan-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-dolan"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2016",
-          "runtime_min": 880,
-          "sources": [
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B017C6QUPS",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B017C6QUPS",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B017C6QUPS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079BP5TY2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "red-queen-bk-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B017C6QUPS",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B017C6QUPS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Red Queen bk 2"
-    },
-    "red-queen-bk-5": {
-      "added_at": "2026-07-17T09:08:56+00:00",
-      "authors": [
-        "victoria-aveyard"
-      ],
-      "genres": [
-        "fantasy",
-        "romance",
-        "short-stories",
-        "young-adult"
-      ],
-      "id": "red-queen-bk-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-dolan-2019": {
-          "abridged": false,
-          "added_at": "2026-07-17T09:08:56+00:00",
-          "asin": [
-            {
-              "asin": "0062913875",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1220138,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1052421,
-              "start_ms": 1220138,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1283274,
-              "start_ms": 2272559,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 882822,
-              "start_ms": 3555833,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1162553,
-              "start_ms": 4438655,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1247863,
-              "start_ms": 5601208,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 904695,
-              "start_ms": 6849071,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 743386,
-              "start_ms": 7753766,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1065052,
-              "start_ms": 8497152,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3325120,
-              "start_ms": 9562204,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3317574,
-              "start_ms": 12887324,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3311583,
-              "start_ms": 16204898,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1313413,
-              "start_ms": 19516481,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 991793,
-              "start_ms": 20829894,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1205696,
-              "start_ms": 21821687,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1388553,
-              "start_ms": 23027383,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1412957,
-              "start_ms": 24415936,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 858743,
-              "start_ms": 25828893,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1078148,
-              "start_ms": 26687636,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 433028,
-              "start_ms": 27765784,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1045478,
-              "start_ms": 28198812,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 969479,
-              "start_ms": 29244290,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1471402,
-              "start_ms": 30213769,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1842340,
-              "start_ms": 31685171,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1189860,
-              "start_ms": 33527511,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1526526,
-              "start_ms": 34717371,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 969851,
-              "start_ms": 36243897,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 1967496,
-              "start_ms": 37213748,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 1831891,
-              "start_ms": 39181244,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 1512199,
-              "start_ms": 41013135,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 1471216,
-              "start_ms": 42525334,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 3256412,
-              "start_ms": 43996550,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 1430395,
-              "start_ms": 47252962,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 1163900,
-              "start_ms": 48683357,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 245806,
-              "start_ms": 49847257,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 505544,
-              "start_ms": 50093063,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 433144,
-              "start_ms": 50598607,
-              "title": "Chapter 37"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41nkc5toEEL._SL500_.jpg",
-          "id": "amanda-dolan-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-dolan",
-            "vikas-adam",
-            "charlie-thurston",
-            "erin-spencer",
-            "andi-arndt",
-            "jayne-entwistle",
-            "nick-podehl",
-            "emily-woo-zeller"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2019",
-          "runtime_min": 850,
-          "sources": [
-            {
-              "imported_at": "2026-07-17",
-              "ref": "0062913875",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "0062913875",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "0062913875",
-              "type": "libex-import"
-            }
-          ],
-          "work": "red-queen-bk-5"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "0062913875",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "0062913875",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Red Queen bk 5"
     },
     "red-queen-christina-henry": {
       "added_at": "2026-08-02",
@@ -12560,236 +12100,6 @@
         }
       ],
       "title": "Red Queen"
-    },
-    "red-queen-unabridged-part-1-chapter-01": {
-      "added_at": "2026-07-17T09:08:56+00:00",
-      "authors": [
-        "victoria-aveyard"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "romance",
-        "young-adult"
-      ],
-      "id": "red-queen-unabridged-part-1-chapter-01",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amanda-dolan-2015": {
-          "abridged": false,
-          "added_at": "2026-07-17T09:08:56+00:00",
-          "asin": [
-            {
-              "asin": "B00RDB35II",
-              "region": "us"
-            },
-            {
-              "asin": "B079XQZ23Q",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 46321,
-              "start_ms": 0,
-              "title": "Red Queen - Introduction"
-            },
-            {
-              "length_ms": 1388253,
-              "start_ms": 46321,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 931166,
-              "start_ms": 1434574,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1572896,
-              "start_ms": 2365740,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 1017660,
-              "start_ms": 3938636,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 1140099,
-              "start_ms": 4956296,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 1480504,
-              "start_ms": 6096395,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 1467802,
-              "start_ms": 7576899,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 1662943,
-              "start_ms": 9044701,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 904928,
-              "start_ms": 10707644,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 1318405,
-              "start_ms": 11612572,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 834873,
-              "start_ms": 12930977,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 1246540,
-              "start_ms": 13765850,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 2190547,
-              "start_ms": 15012390,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 2900358,
-              "start_ms": 17202937,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 1876218,
-              "start_ms": 20103295,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 1972302,
-              "start_ms": 21979513,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 1832542,
-              "start_ms": 23951815,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 1375735,
-              "start_ms": 25784357,
-              "title": "Chapter Eighteen"
-            },
-            {
-              "length_ms": 1485752,
-              "start_ms": 27160092,
-              "title": "Chapter Nineteen"
-            },
-            {
-              "length_ms": 1961784,
-              "start_ms": 28645844,
-              "title": "Chapter Twenty"
-            },
-            {
-              "length_ms": 1459281,
-              "start_ms": 30607628,
-              "title": "Chapter Twenty-One"
-            },
-            {
-              "length_ms": 2113782,
-              "start_ms": 32066909,
-              "title": "Chapter Twenty-Two"
-            },
-            {
-              "length_ms": 1610907,
-              "start_ms": 34180691,
-              "title": "Chapter Twenty-Three"
-            },
-            {
-              "length_ms": 1715002,
-              "start_ms": 35791598,
-              "title": "Chapter Twenty-Four"
-            },
-            {
-              "length_ms": 1754639,
-              "start_ms": 37506600,
-              "title": "Chapter Twenty-Five"
-            },
-            {
-              "length_ms": 1616039,
-              "start_ms": 39261239,
-              "title": "Chapter Twenty-Six"
-            },
-            {
-              "length_ms": 2385943,
-              "start_ms": 40877278,
-              "title": "Chapter Twenty-Seven"
-            },
-            {
-              "length_ms": 1666333,
-              "start_ms": 43263221,
-              "title": "Chapter Twenty-Eight"
-            },
-            {
-              "length_ms": 678811,
-              "start_ms": 44929554,
-              "title": "Epilogue"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41y6nsCKA-L._SL500_.jpg",
-          "id": "amanda-dolan-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amanda-dolan"
-          ],
-          "publisher": "HarperAudio",
-          "release_date": "2015",
-          "runtime_min": 763,
-          "sources": [
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B00RDB35II",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-17",
-              "ref": "B00RDB35II",
-              "type": "audible-lookup"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B00RDB35II",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079XQZ23Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "red-queen-unabridged-part-1-chapter-01"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B00RDB35II",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B00RDB35II",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Red Queen (Unabridged) Part 1, Chapter 01"
     }
   }
 }

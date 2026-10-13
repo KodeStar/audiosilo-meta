@@ -8757,6 +8757,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "coming-of-age",
         "fantasy",
         "law",
         "mystery"
@@ -8893,12 +8894,146 @@
             }
           ],
           "work": "the-new-fakertown"
+        },
+        "david-van-der-molen-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0FJB14393",
+              "region": "us"
+            },
+            {
+              "asin": "B0FJ9TR181",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16277,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 18552,
+              "start_ms": 16277,
+              "title": "Author's Note"
+            },
+            {
+              "length_ms": 58723,
+              "start_ms": 34829,
+              "title": "Disclaimer"
+            },
+            {
+              "length_ms": 580452,
+              "start_ms": 93552,
+              "title": "A Happy Reunion"
+            },
+            {
+              "length_ms": 623107,
+              "start_ms": 674004,
+              "title": "We Have Mail"
+            },
+            {
+              "length_ms": 781188,
+              "start_ms": 1297111,
+              "title": "Halebury’s New Request"
+            },
+            {
+              "length_ms": 622341,
+              "start_ms": 2078299,
+              "title": "The End of Fakertown"
+            },
+            {
+              "length_ms": 655081,
+              "start_ms": 2700640,
+              "title": "Fakertown Elects a New Mayor"
+            },
+            {
+              "length_ms": 553308,
+              "start_ms": 3355721,
+              "title": "A Town Hall for Fakertown"
+            },
+            {
+              "length_ms": 451349,
+              "start_ms": 3909029,
+              "title": "New Police Officers"
+            },
+            {
+              "length_ms": 328748,
+              "start_ms": 4360378,
+              "title": "Unexpected News for Halebury"
+            },
+            {
+              "length_ms": 710623,
+              "start_ms": 4689126,
+              "title": "A New Era"
+            },
+            {
+              "length_ms": 569608,
+              "start_ms": 5399749,
+              "title": "Trouble"
+            },
+            {
+              "length_ms": 787226,
+              "start_ms": 5969357,
+              "title": "Donna Zeferir"
+            },
+            {
+              "length_ms": 613726,
+              "start_ms": 6756583,
+              "title": "The Chauder Gang"
+            },
+            {
+              "length_ms": 345605,
+              "start_ms": 7370309,
+              "title": "The Truth"
+            },
+            {
+              "length_ms": 35131,
+              "start_ms": 7715914,
+              "title": "Rate & Review"
+            },
+            {
+              "length_ms": 21175,
+              "start_ms": 7751045,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cjteE+3qL.jpg",
+          "id": "david-van-der-molen-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-van-der-molen"
+          ],
+          "publisher": "Author's Republic",
+          "release_date": "2025-07-21",
+          "runtime_min": 129,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FJB14393",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FJ9TR181",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-new-fakertown"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B0C6YP6NZB",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FJB14393",
           "type": "libex-import"
         }
       ],
