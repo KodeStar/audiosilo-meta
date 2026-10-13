@@ -4577,6 +4577,14 @@
             {
               "asin": "B00JVS0JMG",
               "region": "uk"
+            },
+            {
+              "asin": "B0GNP5Q4QF",
+              "region": "us"
+            },
+            {
+              "asin": "B0GNP5KG21",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -4706,6 +4714,16 @@
               "imported_at": "2026-10-09",
               "ref": "B00JVS0JMG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0GNP5Q4QF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GNP5KG21",
+              "type": "libex-import"
             }
           ],
           "work": "holy-orders"
@@ -4763,68 +4781,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0GQZPNCWH",
           "type": "libex-import"
-        }
-      ],
-      "title": "Holy Orders"
-    },
-    "holy-orders-quirke-6": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benjamin-black"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery"
-      ],
-      "id": "holy-orders-quirke-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-keating-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0GNP5Q4QF",
-              "region": "us"
-            },
-            {
-              "asin": "B0GNP5KG21",
-              "region": "uk"
-            }
-          ],
-          "id": "john-keating-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-keating"
-          ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2014-05-08",
-          "runtime_min": 579,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0GNP5Q4QF",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0GNP5KG21",
-              "type": "libex-import"
-            }
-          ],
-          "work": "holy-orders-quirke-6"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0GNP5Q4QF",
           "type": "libex-import"
         }
       ],
-      "title": "Holy Orders: Quirke 6"
+      "title": "Holy Orders"
     },
     "holy-quran": {
       "added_at": "2026-07-29",
