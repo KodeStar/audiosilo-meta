@@ -1579,102 +1579,12 @@
       ],
       "genres": [
         "post-apocalyptic",
-        "religious-fiction",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "nicolae-the-rise-of-antichrist",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "frank-muller-2015": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00T56H15W",
-              "region": "us"
-            },
-            {
-              "asin": "B00T56AI0C",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 29465,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 392161,
-              "start_ms": 29465,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 9742993,
-              "start_ms": 421626,
-              "title": "Nicolae: The Rise of Antichrist"
-            },
-            {
-              "length_ms": 70519,
-              "start_ms": 10164619,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 28652,
-              "start_ms": 10235138,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hF7YYlXCL.jpg",
-          "id": "frank-muller-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "frank-muller"
-          ],
-          "publisher": "Tyndale House Publishers, Inc.",
-          "release_date": "2015-03-27",
-          "runtime_min": 170,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00T56H15W",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00T56AI0C",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nicolae-the-rise-of-antichrist"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00T56H15W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Nicolae: The Rise of Antichrist"
-    },
-    "nicolae-tim-lahaye": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye",
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "post-apocalyptic",
         "religion-spirituality",
         "religious-fiction",
         "science-fiction",
         "thriller-suspense"
       ],
-      "id": "nicolae-tim-lahaye",
+      "id": "nicolae-the-rise-of-antichrist",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1840,7 +1750,71 @@
               "type": "libex-import"
             }
           ],
-          "work": "nicolae-tim-lahaye"
+          "work": "nicolae-the-rise-of-antichrist"
+        },
+        "frank-muller-2015": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00T56H15W",
+              "region": "us"
+            },
+            {
+              "asin": "B00T56AI0C",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 29465,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 392161,
+              "start_ms": 29465,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 9742993,
+              "start_ms": 421626,
+              "title": "Nicolae: The Rise of Antichrist"
+            },
+            {
+              "length_ms": 70519,
+              "start_ms": 10164619,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 28652,
+              "start_ms": 10235138,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hF7YYlXCL.jpg",
+          "id": "frank-muller-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "frank-muller"
+          ],
+          "publisher": "Tyndale House Publishers, Inc.",
+          "release_date": "2015-03-27",
+          "runtime_min": 170,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00T56H15W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00T56AI0C",
+              "type": "libex-import"
+            }
+          ],
+          "work": "nicolae-the-rise-of-antichrist"
         },
         "jack-sondericker-2010": {
           "abridged": false,
@@ -1989,7 +1963,7 @@
               "type": "libex-import"
             }
           ],
-          "work": "nicolae-tim-lahaye"
+          "work": "nicolae-the-rise-of-antichrist"
         },
         "richard-ferrone-2003": {
           "abridged": false,
@@ -2143,10 +2117,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "nicolae-tim-lahaye"
+          "work": "nicolae-the-rise-of-antichrist"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00T56H15W",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0FYJBCYJV",
@@ -2158,7 +2137,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "Nicolae"
+      "title": "Nicolae: The Rise of Antichrist"
     },
     "nicolas": {
       "added_at": "2026-08-02",
