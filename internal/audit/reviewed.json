@@ -98,6 +98,14 @@
   {
     "decision": "assert",
     "op": "add-series-member",
+    "reason": "Capture Me: The Complete Trilogy (B01KW6JH5K, 1248 min) collects Capture Me, Bind Me and Claim Me",
+    "series": "capture-me",
+    "target": "capture-me-anna-zaires",
+    "to": "1-3"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
     "reason": "Clear and Present Danger (1989) precedes The Sum of All Fears (1991) in publication; the chronological variant already lists it",
     "series": "a-jack-ryan-novel-publication-order",
     "target": "clear-and-present-danger",
@@ -106,10 +114,74 @@
   {
     "decision": "assert",
     "op": "add-series-member",
+    "reason": "Dragon Brides, Volume 2 (B0CJ9BZTXH) is the set between Volume One (books 1-3) and Volume Three (books 7-9)",
+    "series": "dragon-brides",
+    "target": "dragon-brides-volume-2-intergalactic-dating-agency",
+    "to": "4-6"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Episodes 1-4 collects episodes 1 to 4, as its own title says, beside the 5-8 and 9-12 omnibuses at their ranges",
+    "series": "dragon-chameleon",
+    "target": "dragon-chameleon-episodes-1-4",
+    "to": "1-4"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "its own title and both Listening Library listings name Junie B. Jones 21 and 22, Cheater Pants and One-Man Band",
+    "series": "junie-b-jones",
+    "target": "junie-b-jones-collection-junie-b-jones-21-and-22",
+    "to": "21-22"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "its own title and both Listening Library listings name Junie B. Jones 23 and 24, Shipwrecked and Boo...and I Mean It!",
+    "series": "junie-b-jones",
+    "target": "junie-b-jones-collection-junie-b-jones-23-and-24",
+    "to": "23-24"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "The Complete Box Set (1977338526, 521 min) is Book 1 (242 min) and Book Two (278 min) of The Prepper Series",
+    "series": "the-prepper-series",
+    "target": "long-road-to-survival",
+    "to": "1-2"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "the listing (B0GR1YP9SK) holds the three Treasure Hunt novels, and its 1234 min is exactly parts 1 to 3 (318 + 438 + 478)",
+    "series": "der-schatz-der-heiligen-jungfrau",
+    "target": "lost-treasure-german-edition",
+    "to": "1-3"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "its chapters (B0CKM7B527) are Taste, Thirst, Throne and Tomb of Vampire, books 1 to 4, and the Kindle box set is numbered 1-4",
+    "series": "kingdom-of-blood-and-ash",
+    "target": "taste-of-vampire-a-dystopian-fantasy-romance",
+    "to": "1-4"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
     "reason": "The Cardinal of the Kremlin (1988) follows Patriot Games (1987) in publication; the chronological variant already lists it",
     "series": "a-jack-ryan-novel-publication-order",
     "target": "the-cardinal-of-the-kremlin",
     "to": "3"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "The Island: Complete Collection (B06XHR4LQZ, 1074 min) matches Fallen Earth parts 1 to 5 together (182 + 214 + 243 + 222 + 214 min)",
+    "series": "fallen-earth",
+    "target": "the-island-complete-collection",
+    "to": "1-5"
   },
   {
     "decision": "assert",
@@ -134,6 +206,14 @@
     "series": "kingsbridge-publication-order",
     "target": "the-pillars-of-the-earth",
     "to": "1"
+  },
+  {
+    "decision": "assert",
+    "op": "add-series-member",
+    "reason": "Goodreads numbers The Stone Wolves 5.6 in the Galactic Football League, after The Reef and before The Gangster; Siglerpedia calls it the sixth novella",
+    "series": "galactic-football-league",
+    "target": "the-stone-wolves-galactic-football-league",
+    "to": "5.6"
   },
   {
     "decision": "reject",
@@ -393,6 +473,14 @@
   },
   {
     "decision": "assert",
+    "from": "0",
+    "op": "drop-membership",
+    "reason": "Episodes 1-4 is the first omnibus, as its own title says; Audible's 0 numbers the omnibus sub-series, and the 5-8 and 9-12 omnibuses sit at their ranges",
+    "series": "dragon-chameleon",
+    "target": "dragon-chameleon-episodes-1-4"
+  },
+  {
+    "decision": "assert",
     "from": "2.8",
     "op": "drop-membership",
     "reason": "the canonical series lists Edgedancer at 2.5 with the same GraphicAudio recording; 2.8 is the dramatization's own release number",
@@ -446,6 +534,22 @@
     "reason": "Jingle Bells, Batman Smells! is Junie B. Jones #25, as its own title and the listing state; slot 26 is Aloha-ha-ha!'s",
     "series": "junie-b-jones",
     "target": "junie-b-jones-25-jingle-bells-batman-smells-p-s-so-does-may"
+  },
+  {
+    "decision": "assert",
+    "from": "22-23",
+    "op": "drop-membership",
+    "reason": "its own title and both Listening Library listings name Junie B. Jones 21 and 22 (Cheater Pants and One-Man Band, held at 21 and 22); 22-23 is shifted by one",
+    "series": "junie-b-jones",
+    "target": "junie-b-jones-collection-junie-b-jones-21-and-22"
+  },
+  {
+    "decision": "assert",
+    "from": "24-25",
+    "op": "drop-membership",
+    "reason": "its own title and both Listening Library listings name Junie B. Jones 23 and 24 (Shipwrecked and Boo...and I Mean It!, held at 23 and 24); 24-25 is shifted by one",
+    "series": "junie-b-jones",
+    "target": "junie-b-jones-collection-junie-b-jones-23-and-24"
   },
   {
     "decision": "assert",
@@ -4359,6 +4463,15 @@
     "target": "a-modest-proposal"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "a-modest-proposal-jonathan-swift"
+    ],
+    "reason": "an essay versus an anthology: Robert Blumenfeld's 554 min Audible Studios reading (B004JK1ZKQ) is 34 Swift pieces published under the bare title, the essay one of them",
+    "target": "a-modest-proposal"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -4683,6 +4796,16 @@
     "decision": "reject",
     "op": "merge-works",
     "others": [
+      "against-the-odds-1-of-2-dramatized-adaptation",
+      "against-the-odds-international-edition-dramatized-adaptation"
+    ],
+    "reason": "the GraphicAudio International Edition Part 1 of 2 (405 min) and 2 of 2 (379 min) are split releases of the dramatization, each kept apart from the 783 min whole",
+    "target": "against-the-odds-dramatized-adaptation"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
       "against-the-odds-international-edition-dramatized-adaptation"
     ],
     "reason": "the 379-minute International Edition record is one half (2 of 2) of the split GraphicAudio release, while the 783-minute record is the whole dramatization; a part is kept apart from the whole",
@@ -4795,6 +4918,15 @@
     ],
     "reason": "the same novel, book 3 of the series, at nearly the same length (660 vs 655 minutes); AL:ICE: Resurrection is the 2026 Tantor reissue title with a new narrator",
     "target": "alice-resurrection"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "alice-in-wonderland"
+    ],
+    "reason": "the same Lewis Carroll novel under its common short title: all 27 readings run 53 to 197 min, the unabridged ones 147 to 197 min, none long enough to also hold Through the Looking-Glass",
+    "target": "alices-adventures-in-wonderland"
   },
   {
     "decision": "assert",
@@ -9145,6 +9277,15 @@
     "target": "empire-of-silence"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "adaptation-a-post-apocalyptic-tale-of-dystopian-survival-empty-bodies-series-book-2"
+    ],
+    "reason": "the same Empty Bodies 2 reading: Andrew Tell at 298 min in both the 2015 listing (B0124F0ESG) and its 2024 re-release (B0DK5XL2NG)",
+    "target": "empty-bodies-2-adaptation"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -11591,12 +11732,12 @@
     "target": "just-mercy"
   },
   {
-    "decision": "reject",
+    "decision": "assert",
     "op": "merge-works",
     "others": [
       "just-so-stories-read-by-tony-robinson"
     ],
-    "reason": "just-so-stories-read-by-tony-robinson is held back: its title names Tony Robinson but its only recording is Jim Weiss's Well-Trained Mind Press version, so the record is internally inconsistent and may be Weiss's storytelling retelling rather than Kipling's text",
+    "reason": "a reading of Kipling's own text: Well-Trained Mind's Jim Weiss collection reads Kipling's words (B092SY761J, its summary says so), and the Read by Tony Robinson tag is a narrator note, a recording fact",
     "target": "just-so-stories"
   },
   {
@@ -12299,6 +12440,15 @@
     ],
     "reason": "the 2025 record (393 min, different narrator, no series) is a much longer product than Volume 1 (223 min), so it is a later volume or a combined edition, not a second reading of Volume 1",
     "target": "little-men-big-treasures"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "little-men-big-treasures"
+    ],
+    "reason": "the same book 1: Goodreads files the 2025 Tony Rao audio (B0G4NJPW3Z) under the same work as the 2017 book 1 editions that the 2020 Volume 1 reading follows",
+    "target": "little-men-big-treasures-volume-1"
   },
   {
     "decision": "reject",
@@ -15636,6 +15786,16 @@
     ],
     "reason": "different episodes: Sherwood Folge 2, 3, 4 and 5 hold positions 2 to 5 of the series and were released a month apart",
     "target": "sherwood-das-original-horspiel-zur-serie-sherwood-folge-2"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "shield-of-sparrows-2-of-2-dramatized-adaptation",
+      "shield-of-sparrows-dramatized-adaptation"
+    ],
+    "reason": "the GraphicAudio Part 1 of 2 (591 min) and 2 of 2 (499 min) are split releases of the dramatization, each kept apart from the book",
+    "target": "shield-of-sparrows-devney-perry"
   },
   {
     "decision": "reject",
@@ -19076,6 +19236,15 @@
     "decision": "reject",
     "op": "merge-works",
     "others": [
+      "the-little-match-girl-hans-christian-andersen-2"
+    ],
+    "reason": "a story versus a collection: Edward Miller's 80 min Audioliterature product (B01N6NYBEQ) has seven tracks of 3 to 21 min under the story's title, the story itself about 8 min",
+    "target": "the-little-match-girl-hans-christian-andersen"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
       "the-little-mermaid-hans-christian-andersen"
     ],
     "reason": "an adaptation by a different writer: the Audible Leigh-Anne Pinnock recording credits Dina Gregory, who wrote this retelling",
@@ -20379,6 +20548,15 @@
     "target": "the-temporal-travel-agency"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-things-our-fathers-saw-matthew-rozell-2"
+    ],
+    "reason": "the same volume 1, Voices of the Pacific Theater: the 2024 John Pirhalla reading (B0D3MBVFQ7, 392 min, Rozell series 1) tells the Okinawa and Pacific accounts of the 2017 reading (B06ZZCWDR3, 375 min)",
+    "target": "the-things-our-fathers-saw"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -20813,6 +20991,18 @@
     ],
     "reason": "the same novel; Quentin Blake is the illustrator, not a co-author, and Miranda Richardson's 268-minute reading appears on both",
     "target": "the-witches"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-5",
+      "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-6",
+      "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-7",
+      "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-8"
+    ],
+    "reason": "different volumes: positions 2 and 5 to 8 of witches-of-scotland, the later ones titled The Witches of Scotland Book 5 to 8 and released a month apart in 2024",
+    "target": "the-witches-of-scotland"
   },
   {
     "decision": "reject",
@@ -22464,11 +22654,786 @@
   },
   {
     "decision": "assert",
+    "from": "10 Cuentos [10 Stories]",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B093Y2TF6T) subtitles it Vol 2 and the series holds it at 2; volume 1 is titled 10 Cuentos, Vol 1 [10 Stories, Vol 1]",
+    "target": "10-cuentos-10-stories",
+    "to": "10 Cuentos, Vol 2 [10 Stories, Vol 2]"
+  },
+  {
+    "decision": "assert",
+    "from": "22 Immutable Laws of Branding",
+    "op": "retitle-work",
+    "reason": "HarperAudio's listings (B079TLFQCL, B00J53F4W2) and the book carry the leading article",
+    "target": "22-immutable-laws-of-branding",
+    "to": "The 22 Immutable Laws of Branding"
+  },
+  {
+    "decision": "assert",
+    "from": "25 Original Fairy Tales",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B01MU2YZO7) subtitles it The Original Fairy Tales of the Brothers Grimm 2, the form volumes 1 and 3 carry",
+    "target": "25-original-fairy-tales",
+    "to": "25 Original Fairy Tales: The Original Fairy Tales of the Brothers Grimm 2"
+  },
+  {
+    "decision": "assert",
+    "from": "33 Strategies of War",
+    "op": "retitle-work",
+    "reason": "HighBridge's 2007 listing (B002V8HKQ6) and the book carry the leading article",
+    "target": "33-strategies-of-war",
+    "to": "The 33 Strategies of War"
+  },
+  {
+    "decision": "assert",
+    "from": "48 Laws of Power",
+    "op": "retitle-work",
+    "reason": "HighBridge's 2007 listing (B002VA8IXS) and the book carry the leading article",
+    "target": "48-laws-of-power",
+    "to": "The 48 Laws of Power"
+  },
+  {
+    "decision": "assert",
+    "from": "A Court of Thorns and Roses: Das Reich der sieben Höfe-Reihe, Band 6",
+    "op": "retitle-work",
+    "reason": "Audible's current catalogue (B0H98YCR33) titles Band 6 A Court of Splintered Harmony, the title dtv keeps for the German edition; A Court of Thorns and Roses was the preorder placeholder",
+    "target": "a-court-of-thorns-and-roses-das-reich-der-sieben-hofe-reihe-band-6",
+    "to": "A Court of Splintered Harmony"
+  },
+  {
+    "decision": "assert",
+    "from": "A Court of Thorns and Roses: Das Reich der sieben Höfe-Reihe, Band 7",
+    "op": "retitle-work",
+    "reason": "Audible's current catalogue (B0H95B71S5) titles Band 7 A Court of Forgotten Melody, the title dtv keeps for the German edition; A Court of Thorns and Roses was the preorder placeholder",
+    "target": "a-court-of-thorns-and-roses-das-reich-der-sieben-hofe-reihe-band-7",
+    "to": "A Court of Forgotten Melody"
+  },
+  {
+    "decision": "assert",
+    "from": "A Man Called Trent",
+    "op": "retitle-work",
+    "reason": "Blackstone's listing (B00NP8N2YK) subtitles it A Western Duo and numbers it Kilkenny 1-2; the plain title belongs to the single novel at slot 2",
+    "target": "a-man-called-trent",
+    "to": "A Man Called Trent: A Western Duo"
+  },
+  {
+    "decision": "assert",
+    "from": "A Mist Valley Slice of Life Adventure",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CV8WSJ6G) subtitles it Blackwood Milk Farm, Book 4; book 3 carries the same form",
+    "target": "a-mist-valley-slice-of-life-adventure",
+    "to": "Blackwood Milk Farm: A Mist Valley Slice of Life Adventure, Book 4"
+  },
+  {
+    "decision": "assert",
+    "from": "Against the Odds \"International Edition\" [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "GraphicAudio's listing (B0F9YYKFXB) titles the 379 min product Against the Odds (2 of 2), the half the earlier review keeps apart from the whole; the Part 1 ASIN moves to its own work",
+    "target": "against-the-odds-international-edition-dramatized-adaptation",
+    "to": "Against the Odds (2 of 2) [Dramatized Adaptation]"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Against the Odds \"International Edition\" [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "stripping the brackets leaves the whole book's title on one half of the split GraphicAudio release; the asserted (2 of 2) title names the part",
+    "target": "against-the-odds-international-edition-dramatized-adaptation",
+    "to": "Against the Odds"
+  },
+  {
+    "decision": "assert",
+    "from": "Alex Cross's TRIAL",
+    "op": "retitle-work",
+    "reason": "the Cornerstone listings (B0032N8MO8, 147359295X) and the book spell Trial in title case; TRIAL is the US cover's typography",
+    "target": "alex-crosss-trial",
+    "to": "Alex Cross's Trial"
+  },
+  {
+    "decision": "assert",
+    "from": "Ana, La De Ingleside [Anne of Ingleside]",
+    "op": "retitle-work",
+    "reason": "the bracketed [Anne of Ingleside] is Audible's English gloss; both Audible Studios listings (B08JD3LY3V, B08VWL4XH9) name the book Ana, La De Ingleside, here in Spanish sentence case",
+    "target": "ana-la-de-ingleside-anne-of-ingleside",
+    "to": "Ana, la de Ingleside"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Ana, La De Ingleside [Anne of Ingleside]",
+    "op": "retitle-work",
+    "reason": "the asserted Ana, la de Ingleside drops the same English gloss and also sets Spanish sentence case",
+    "target": "ana-la-de-ingleside-anne-of-ingleside",
+    "to": "Ana, La De Ingleside"
+  },
+  {
+    "decision": "assert",
+    "from": "Ana Y La Casa De Sus Sueños [Anne's House of Dreams]",
+    "op": "retitle-work",
+    "reason": "the bracketed [Anne's House of Dreams] is Audible's English gloss; both Audible Studios listings (B08JD3PF3P, B08VWZC6S4) name the book Ana Y La Casa De Sus Sueños, here in Spanish sentence case",
+    "target": "ana-y-la-casa-de-sus-suenos-annes-house-of-dreams",
+    "to": "Ana y la casa de sus sueños"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Ana Y La Casa De Sus Sueños [Anne's House of Dreams]",
+    "op": "retitle-work",
+    "reason": "the asserted Ana y la casa de sus sueños drops the same English gloss and also sets Spanish sentence case",
+    "target": "ana-y-la-casa-de-sus-suenos-annes-house-of-dreams",
+    "to": "Ana Y La Casa De Sus Sueños"
+  },
+  {
+    "decision": "assert",
+    "from": "Angst über London: John Sinclair Sonderedition 3",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B078SY7ZP5, B01N01VWAW) title it Angst über London; John Sinclair Sonderedition 3 is the series number the membership already holds",
+    "target": "angst-uber-london-john-sinclair-sonderedition-3",
+    "to": "Angst über London"
+  },
+  {
+    "decision": "assert",
+    "from": "Apocalypse: Regression",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0D1J9T4BB) subtitles it Apocalypse: Regression, Book 3, the form the other volumes carry",
+    "target": "apocalypse-regression",
+    "to": "Apocalypse: Regression, Book 3"
+  },
+  {
+    "decision": "assert",
+    "from": "Arcane Knight Omnibus",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0D4FP1VPF) subtitles it Books 1-3; the 4-6 omnibus carries the same form",
+    "target": "arcane-knight-omnibus",
+    "to": "Arcane Knight Omnibus: Books 1-3"
+  },
+  {
+    "decision": "assert",
+    "from": "Artificial Jelly",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B09M51SXF4) titles it Artificial Jelly, Book 2",
+    "target": "artificial-jelly",
+    "to": "Artificial Jelly, Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Autumn",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0HK4WXQLS) subtitles it The Human Condition (Autumn series, Book 6); Aftermath is book 5",
+    "target": "autumn-david-moody",
+    "to": "Autumn: The Human Condition"
+  },
+  {
+    "decision": "assert",
+    "from": "Axe Druid Omnibus",
+    "op": "retitle-work",
+    "reason": "Mountaindale's listing (B0CVLG57X4) subtitles it Books 4-6; the 1-3 omnibus carries the same form",
+    "target": "axe-druid-omnibus",
+    "to": "Axe Druid Omnibus: Books 4-6"
+  },
+  {
+    "decision": "assert",
+    "from": "Bark: An Epic Superhero Fantasy Adventure Series",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B07MNJWRYY) subtitles it Episode 3: Descent Into Madness; the title is the series tagline",
+    "target": "bark-an-epic-superhero-fantasy-adventure-series",
+    "to": "Bark, Episode 3: Descent Into Madness"
+  },
+  {
+    "decision": "assert",
+    "from": "Binti: Binti, Book 2",
+    "op": "retitle-work",
+    "reason": "Tantor's listings (B078J4JSQR, B0793M3TBD) title book 2 Binti: Home",
+    "target": "binti-binti-book-2",
+    "to": "Binti: Home"
+  },
+  {
+    "decision": "assert",
+    "from": "Birth of the Fae: Locked Out of Heaven",
+    "op": "retitle-work",
+    "reason": "the 2024 third edition (B0D8M5WL9V) titles it Locked Out of Heaven with Birth of the Fae, Book One as the series; the membership holds the series",
+    "target": "birth-of-the-fae-locked-out-of-heaven",
+    "to": "Locked Out of Heaven"
+  },
+  {
+    "decision": "assert",
+    "from": "Bissig!: Bitte nicht öffnen 1",
+    "op": "retitle-work",
+    "reason": "both listings (B01IP553OE, B0CV42MLG5) title it Bissig! with Bitte nicht öffnen 1 as the series number",
+    "target": "bissig-bitte-nicht-offnen-1",
+    "to": "Bissig!"
+  },
+  {
+    "decision": "assert",
+    "from": "Bitcoin",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0DK9VJ2Z3) subtitles it The Inverse of Clown World",
+    "target": "bitcoin-knut-svanholm",
+    "to": "Bitcoin: The Inverse of Clown World"
+  },
+  {
+    "decision": "assert",
+    "from": "Body Language",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0865Y444D) subtitles it Discover How to Talk to Anyone and Read People's Emotions (Volume 3); volume 1 carries the same form",
+    "target": "body-language-judie-hassler",
+    "to": "Body Language: Discover How to Talk to Anyone and Read People's Emotions, Volume 3"
+  },
+  {
+    "decision": "assert",
+    "from": "Bruderschaft des Satans: John Sinclair Classics 21",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00T6D07N2, B06XZRVCZC) title it Bruderschaft des Satans; John Sinclair Classics 21 is the series number the membership holds",
+    "target": "bruderschaft-des-satans-john-sinclair-classics-21",
+    "to": "Bruderschaft des Satans"
+  },
+  {
+    "decision": "assert",
+    "from": "By Kids for Kids Story Time",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B082LRNSLM) subtitles it Beatrix Potter, Book 7 and numbers it 7",
+    "target": "by-kids-for-kids-story-time",
+    "to": "By Kids for Kids Story Time, Volume 7: Beatrix Potter"
+  },
+  {
+    "decision": "assert",
+    "from": "Capture Me",
+    "op": "retitle-work",
+    "reason": "Mozaika's listing (B01KW6JH5K) subtitles the 1248 min omnibus The Complete Trilogy; the plain title is book 1's",
+    "target": "capture-me-anna-zaires",
+    "to": "Capture Me: The Complete Trilogy"
+  },
+  {
+    "decision": "assert",
+    "from": "Cast in Time",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0HKTSDG7J) subtitles book 8 Archduke; book 6 is titled after Duke the same way",
+    "target": "cast-in-time",
+    "to": "Cast in Time: Archduke"
+  },
+  {
+    "decision": "assert",
+    "from": "Change of Command [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "the only catalogued Change of Command (Serrano Legacy 6): no plain twin exists to merge into, so the dramatized full-cast production, a property of the recording, comes off the title",
+    "target": "change-of-command-dramatized-adaptation",
+    "to": "Change of Command"
+  },
+  {
+    "decision": "assert",
+    "from": "Chicken Soup for the Soul",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (1705209343) subtitles it Running for Good: 101 Stories for Runners & Walkers to Get You Going; the bare title is the whole series",
+    "target": "chicken-soup-for-the-soul-amy-newmark",
+    "to": "Chicken Soup for the Soul: Running for Good: 101 Stories for Runners & Walkers to Get You Going"
+  },
+  {
+    "decision": "assert",
+    "from": "Chronicles of a Piglin",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0C2RJBKX8) subtitles book 3 Fugitives on the Loose, Book 3; the other volumes carry their own titles",
+    "target": "chronicles-of-a-piglin",
+    "to": "Fugitives on the Loose"
+  },
+  {
+    "decision": "assert",
+    "from": "Circus of the Dead",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B08FLYX7G7) subtitles the books 1-4 collection The Complete Series",
+    "target": "circus-of-the-dead",
+    "to": "Circus of the Dead: The Complete Series"
+  },
+  {
+    "decision": "assert",
+    "from": "Complicated Hearts",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B07C2CB6CG) subtitles it Complicated Hearts, Book 2; the duet's volumes carry no own titles",
+    "target": "complicated-hearts",
+    "to": "Complicated Hearts, Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Condemned",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0DKG3WT5S) numbers it Lord Valevsky: Last of the Line, Book 7; the other volumes are titled Condemned: Book N",
+    "target": "condemned-vasily-mahanenko",
+    "to": "Condemned: Book 7"
+  },
+  {
+    "decision": "assert",
+    "from": "Culpa mía [My Fault]",
+    "op": "retitle-work",
+    "reason": "the bracketed [My Fault] is Audible's English gloss; the 2025 listing (B0FTDM32WG) titles it Culpa mía",
+    "target": "culpa-mia-my-fault",
+    "to": "Culpa mía"
+  },
+  {
+    "decision": "assert",
+    "from": "Czas silnych istot 1: Gamedec 4.1",
+    "op": "retitle-work",
+    "reason": "both Storybox listings (B0168TFDEY, B0CND65D6C) title it Czas silnych istot 1; Gamedec 4.1 is the series number the membership holds",
+    "target": "czas-silnych-istot-1-gamedec-4-1",
+    "to": "Czas silnych istot 1"
+  },
+  {
+    "decision": "assert",
+    "from": "Dark Titan: War Zone",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0H4X4HBX3) subtitles book 5 Encounters, Book 5, and Goodreads (250369159) lists Dark Titan: War Zone: Encounters; book 4 is War Zone: Homefront",
+    "target": "dark-titan-war-zone-thomas-a-watson",
+    "to": "Dark Titan: War Zone: Encounters"
+  },
+  {
+    "decision": "assert",
+    "from": "Das Leichenhaus der Lady L.: John Sinclair Classics 4",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00GGPBOQM, B01KVGLXS0) title it Das Leichenhaus der Lady L.; John Sinclair Classics 4 is the series number the membership holds",
+    "target": "das-leichenhaus-der-lady-l-john-sinclair-classics-4",
+    "to": "Das Leichenhaus der Lady L."
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Das Leichenhaus der Lady L.: John Sinclair Classics 4",
+    "op": "retitle-work",
+    "reason": "the cut drops the abbreviation point of Lady L.; the asserted title keeps it",
+    "target": "das-leichenhaus-der-lady-l-john-sinclair-classics-4",
+    "to": "Das Leichenhaus der Lady L"
+  },
+  {
+    "decision": "assert",
+    "from": "Das Phantom der Operette: Die Darwin Chroniken, Band 7",
+    "op": "retitle-work",
+    "reason": "the Folge 7 blurb (B0FMY8JWG4) is the Royal Opera operetta story; Die Darwin Chroniken, Band 7 is the series number the membership holds",
+    "target": "das-phantom-der-operette-die-darwin-chroniken-band-7",
+    "to": "Das Phantom der Operette"
+  },
+  {
+    "decision": "assert",
+    "from": "Das Phantom der Operette: Die Darwin Chroniken - Folge 2",
+    "op": "retitle-work",
+    "reason": "the Folge 2 blurb (B0DZNRJ5V5, William Wilde and the painting) is Das Portrait des Adrian Stray, as lovereading lists it; Das Phantom der Operette is Folge 7's opera story, a listing slip",
+    "target": "das-phantom-der-operette-die-darwin-chroniken-folge-2",
+    "to": "Das Portrait des Adrian Stray"
+  },
+  {
+    "decision": "assert",
+    "from": "Das Rätsel der gläsernen Särge: John Sinclair Classics 8",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00GHFBRO0, B01L9HELLQ) title it Das Rätsel der gläsernen Särge; John Sinclair Classics 8 is the series number the membership holds",
+    "target": "das-ratsel-der-glasernen-sarge-john-sinclair-classics-8",
+    "to": "Das Rätsel der gläsernen Särge"
+  },
+  {
+    "decision": "assert",
+    "from": "Das schwarze Element: Das schwarze Element, Band 6",
+    "op": "retitle-work",
+    "reason": "LAUSCH's listing (B0FRMC7W7L) gives Band 6 no own title, only Das schwarze Element, Band 6; Band 5 (B0FF4HR5D8) is titled Das schwarze Element 5",
+    "target": "das-schwarze-element-das-schwarze-element-band-6",
+    "to": "Das schwarze Element 6"
+  },
+  {
+    "decision": "assert",
+    "from": "Das schwarze Element: Das schwarze Element, Folge 7",
+    "op": "retitle-work",
+    "reason": "LAUSCH's listing (B0G4LYLK54) gives the finale no own title, only Das schwarze Element, Folge 7; Band 5 (B0FF4HR5D8) is titled Das schwarze Element 5",
+    "target": "das-schwarze-element-das-schwarze-element-folge-7",
+    "to": "Das schwarze Element 7"
+  },
+  {
+    "decision": "assert",
+    "from": "Das Todeskabinett: John Sinclair Classics 32",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B077K2DW9V, B0747RP2SJ) title it Das Todeskabinett; John Sinclair Classics 32 is the series number the membership holds",
+    "target": "das-todeskabinett-john-sinclair-classics-32",
+    "to": "Das Todeskabinett"
+  },
+  {
+    "decision": "assert",
+    "from": "Day of Reckoning: A Duff MacCallister Western, Book 7",
+    "op": "retitle-work",
+    "reason": "Tantor (1977334415) and GraphicAudio (1648803482) title it Day of Reckoning; A Duff MacCallister Western, Book 7 is the series the memberships hold",
+    "target": "day-of-reckoning-a-duff-maccallister-western-book-7",
+    "to": "Day of Reckoning"
+  },
+  {
+    "decision": "assert",
+    "from": "Demigods Academy",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B09MDFWB5F) subtitles book 7 The Corpse King, Book 7; books 4-6 carry their own titles",
+    "target": "demigods-academy",
+    "to": "The Corpse King"
+  },
+  {
+    "decision": "assert",
+    "from": "Demon Hunter",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CWJCDVZR) subtitles book 5 Apotheosis; book 6 is Demon Hunter: Life Debt",
+    "target": "demon-hunter",
+    "to": "Demon Hunter: Apotheosis"
+  },
+  {
+    "decision": "assert",
+    "from": "Der Auserwählte",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0GWKNH8SN) subtitles it Eine LitRPG-Abenteuerserie, Buch 3; books 1 and 2 are titled Der Auserwählte (Buch N)",
+    "target": "der-auserwahlte",
+    "to": "Der Auserwählte (Buch 3)"
+  },
+  {
+    "decision": "assert",
+    "from": "Der Pfähler: John Sinclair Sonderedition 2",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00MMEJ62A, B01879GH4S) title it Der Pfähler; John Sinclair Sonderedition 2 is the series number the membership holds",
+    "target": "der-pfahler-john-sinclair-sonderedition-2",
+    "to": "Der Pfähler"
+  },
+  {
+    "decision": "assert",
+    "from": "Der Unheimliche von Dartmoor: John Sinclair Sonderedition 13",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (383878975X, B074H71F16) title it Der Unheimliche von Dartmoor; John Sinclair Sonderedition 13 is the series number the membership holds",
+    "target": "der-unheimliche-von-dartmoor-john-sinclair-sonderedition-13",
+    "to": "Der Unheimliche von Dartmoor"
+  },
+  {
+    "decision": "assert",
+    "from": "Desire: A LitRPG Adventure",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B07FB6WQXP) subtitles it Book 2; volume 3 is titled Desire: A LitRPG Adventure, Volume 3",
+    "target": "desire-a-litrpg-adventure",
+    "to": "Desire: A LitRPG Adventure, Volume 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Diary of a Piglin",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B09N5BHJR1) subtitles it Book Two: Under the Golden Sun; the plain title reads as book 1",
+    "target": "diary-of-a-piglin",
+    "to": "Diary of a Piglin, Book Two: Under the Golden Sun"
+  },
+  {
+    "decision": "assert",
+    "from": "Diary of a Wimpy Kid: Hard Luck (Book 8)",
+    "op": "retitle-work",
+    "reason": "Penguin's listings (B00GB8JC8G, 0143796208) title book 8 Hard Luck; the membership holds Diary of a Wimpy Kid 8",
+    "target": "diary-of-a-wimpy-kid-hard-luck-book-8",
+    "to": "Hard Luck"
+  },
+  {
+    "decision": "assert",
+    "from": "Diary of a Wimpy Kid: Old School (Book 10)",
+    "op": "retitle-work",
+    "reason": "Penguin's listings (B016N9Y638, 0143796224) title book 10 Old School; the membership holds Diary of a Wimpy Kid 10",
+    "target": "diary-of-a-wimpy-kid-old-school-book-10",
+    "to": "Old School"
+  },
+  {
+    "decision": "assert",
+    "from": "Diary of a Wimpy Kid: The Long Haul (Book 9)",
+    "op": "retitle-work",
+    "reason": "Penguin's listings (B00OVB7XUY, 0143796216) title book 9 The Long Haul; the membership holds Diary of a Wimpy Kid 9",
+    "target": "diary-of-a-wimpy-kid-the-long-haul-book-9",
+    "to": "The Long Haul"
+  },
+  {
+    "decision": "assert",
+    "from": "Die Blutorgel: John Sinclair Sonderedition 14",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (3838789768, B01HMWQVGA) title it Die Blutorgel; John Sinclair Sonderedition 14 is the series number the membership holds",
+    "target": "die-blutorgel-john-sinclair-sonderedition-14",
+    "to": "Die Blutorgel"
+  },
+  {
+    "decision": "assert",
+    "from": "Die Nacht des schwarzen Drachen: John Sinclair Classics 9",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00GGP9C0M, B01LY6BU2Y) title it Die Nacht des schwarzen Drachen; John Sinclair Classics 9 is the series number the membership holds",
+    "target": "die-nacht-des-schwarzen-drachen-john-sinclair-classics-9",
+    "to": "Die Nacht des schwarzen Drachen"
+  },
+  {
+    "decision": "assert",
+    "from": "Doktor Tod: John Sinclair Classics 20",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00NTWR7QG, B06XQ2DVTS) title it Doktor Tod; John Sinclair Classics 20 is the series number the membership holds",
+    "target": "doktor-tod-john-sinclair-classics-20",
+    "to": "Doktor Tod"
+  },
+  {
+    "decision": "assert",
+    "from": "Dr. Satanos: John Sinclair Classics 3",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00MADJ5FQ, B01J8CGXS8) title it Dr. Satanos; John Sinclair Classics 3 is the series number the membership holds",
+    "target": "dr-satanos-john-sinclair-classics-3",
+    "to": "Dr. Satanos"
+  },
+  {
+    "decision": "assert",
+    "from": "Dragon Chameleon",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B08996D5VS) subtitles episode 12 Color of Victory; the other episodes carry their own titles",
+    "target": "dragon-chameleon",
+    "to": "Dragon Chameleon: Color of Victory"
+  },
+  {
+    "decision": "assert",
+    "from": "Durstig!: Bitte nicht öffnen 3",
+    "op": "retitle-work",
+    "reason": "both listings (B07CVMDW43, B0CV42DNDV) title it Durstig! with Bitte nicht öffnen 3 as the series number",
+    "target": "durstig-bitte-nicht-offnen-3",
+    "to": "Durstig!"
+  },
+  {
+    "decision": "assert",
+    "from": "Ecos del pasado [An Echo in the Bone]",
+    "op": "retitle-work",
+    "reason": "the bracketed [An Echo in the Bone] is Audible's English gloss; the Castellano listing (B0B7X7NPWW) titles it Ecos del pasado",
+    "target": "ecos-del-pasado-an-echo-in-the-bone",
+    "to": "Ecos del pasado"
+  },
+  {
+    "decision": "assert",
+    "from": "Eine Woche voller Samstage: Das Sams, Band 1",
+    "op": "retitle-work",
+    "reason": "Oetinger's listings (B073JSGKFS, 3837366758) title it Eine Woche voller Samstage; Das Sams 1 is the series number the membership holds",
+    "target": "eine-woche-voller-samstage-das-sams-band-1",
+    "to": "Eine Woche voller Samstage"
+  },
+  {
+    "decision": "assert",
+    "from": "Elementals: Ice Wolves",
+    "op": "retitle-work",
+    "reason": "HarperAudio's 2020 listing (1460791614) titles it Ice Wolves with Elementals, Book 1 as the series, which the membership holds",
+    "target": "elementals-ice-wolves",
+    "to": "Ice Wolves"
+  },
+  {
+    "decision": "assert",
+    "from": "Elementals: Scorch Dragons",
+    "op": "retitle-work",
+    "reason": "Elementals is the series prefix the membership holds; HarperCollins Australia publishes book 2 as Scorch Dragons (ISBN 9781460755280), as book 1 is Ice Wolves",
+    "target": "elementals-scorch-dragons",
+    "to": "Scorch Dragons"
+  },
+  {
+    "decision": "assert",
+    "from": "Enigmas de los dioses del México antiguo (Edición décimo aniversario) [Enigmas of the Gods of Ancient Mexico (Tenth Anniversary Edition)]",
+    "op": "retitle-work",
+    "reason": "the bracketed English title is Audible's gloss and the anniversary note an edition fact; the Audible Studios listing (B0DJDLZDNJ) titles the compilation Enigmas de los dioses del México antiguo",
+    "target": "enigmas-de-los-dioses-del-mexico-antiguo-edicion-decimo-aniversario-enigmas-of-the-gods-of-ancient-m",
+    "to": "Enigmas de los dioses del México antiguo"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Enigmas de los dioses del México antiguo (Edición décimo aniversario) [Enigmas of the Gods of Ancient Mexico (Tenth Anniversary Edition)]",
+    "op": "retitle-work",
+    "reason": "the work is the trilogy compilation holding both the anniversary and the 2024 Audible Studios readings, so the edition note goes too, as asserted",
+    "target": "enigmas-de-los-dioses-del-mexico-antiguo-edicion-decimo-aniversario-enigmas-of-the-gods-of-ancient-m",
+    "to": "Enigmas de los dioses del México antiguo (Edición décimo aniversario)"
+  },
+  {
+    "decision": "assert",
+    "from": "Feuerblut: Das Erbe der Macht - Schattenchronik 2",
+    "op": "retitle-work",
+    "reason": "SAGA Egmont's listing (8726515148) titles Schattenchronik 2 Feuerblut, as Schattenchronik 1 is Das Erwachen; the series number is the membership",
+    "target": "feuerblut-das-erbe-der-macht-schattenchronik-2",
+    "to": "Feuerblut"
+  },
+  {
+    "decision": "assert",
+    "from": "Fit for Life",
+    "op": "retitle-work",
+    "reason": "Recorded Books' listing (1705025633) subtitles the 2021 reading A New Beginning, the follow-up book, not Fit for Life itself",
+    "target": "fit-for-life-harvey-diamond",
+    "to": "Fit for Life: A New Beginning"
+  },
+  {
+    "decision": "assert",
+    "from": "Green Ember",
+    "op": "retitle-work",
+    "reason": "Story Warren's listing (B0G6G4QDJK) subtitles it Helmer in the Dragon Tomb; the bare title names the whole Green Ember world",
+    "target": "green-ember",
+    "to": "Green Ember: Helmer in the Dragon Tomb"
+  },
+  {
+    "decision": "assert",
     "from": "Head On (Narrated by Wil Wheaton)",
     "op": "retitle-work",
     "reason": "John Scalzi's Head On holds both the Wil Wheaton and Amber Benson narrations, so the narrator credit is a recording fact, not the book's title; W-TITLE's fragment rule misreads the trailing On as a dangling connective (the Larry Csonka Head On is a different work by another author)",
     "target": "head-on-narrated-by-wil-wheaton",
     "to": "Head On"
+  },
+  {
+    "decision": "assert",
+    "from": "Hinter den Kulissen: Sherlock Holmes & Co 45",
+    "op": "retitle-work",
+    "reason": "Skyscore's listings (B07S4Q8PY6, B07S1PJ171) title it Hinter den Kulissen; Sherlock Holmes & Co 45 is the series number the membership holds",
+    "target": "hinter-den-kulissen-sherlock-holmes-co-45",
+    "to": "Hinter den Kulissen"
+  },
+  {
+    "decision": "assert",
+    "from": "I'm Sorry I Haven't A Clue",
+    "op": "retitle-work",
+    "reason": "BBC Audio's listing (B00546T2C2) titles it I'm Sorry I Haven't a Clue 13",
+    "target": "im-sorry-i-havent-a-clue-bbc",
+    "to": "I'm Sorry I Haven't a Clue 13"
+  },
+  {
+    "decision": "assert",
+    "from": "In Satans Diensten: John Sinclair Classics 23",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B01245X2H6, B06Y159WVN) title it In Satans Diensten; John Sinclair Classics 23 is the series number the membership holds",
+    "target": "in-satans-diensten-john-sinclair-classics-23",
+    "to": "In Satans Diensten"
+  },
+  {
+    "decision": "assert",
+    "from": "Infected Dead Series Boxed Set",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0CXTVPKK9) subtitles it Books 4-6; the 1-3 set carries the same form",
+    "target": "infected-dead-series-boxed-set",
+    "to": "Infected Dead Series Boxed Set, Books 4-6"
+  },
+  {
+    "decision": "assert",
+    "from": "Intergalactic Dating Agency",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B09T7BGV67) subtitles the books 1-3 set Dragon Brides, Volume One; Volume Three carries the same form, and the Volume 2 reading (B0CJ9BZTXH) moves to its own work",
+    "target": "intergalactic-dating-agency",
+    "to": "Dragon Brides, Volume One: Intergalactic Dating Agency"
+  },
+  {
+    "decision": "assert",
+    "from": "Jack: Young Repairman Jack, Book 3",
+    "op": "retitle-work",
+    "reason": "Tantor's UK listing (1705209440) titles book 3 Jack: Secret Vengeance",
+    "target": "jack-young-repairman-jack-book-3",
+    "to": "Jack: Secret Vengeance"
+  },
+  {
+    "decision": "assert",
+    "from": "Jack: Young Repairman Jack Series, Book 2",
+    "op": "retitle-work",
+    "reason": "Young Repairman Jack 2 is Jack: Secret Circles (Tor 2010; Goodreads), between Secret Histories and Secret Vengeance",
+    "target": "jack-young-repairman-jack-series-book-2",
+    "to": "Jack: Secret Circles"
+  },
+  {
+    "decision": "assert",
+    "from": "Jackal Among Snakes",
+    "op": "retitle-work",
+    "reason": "Mountaindale's listing (B0CQM8WLH8) subtitles it Book 2: A GameLit Fantasy; the other volumes are titled Jackal Among Snakes, Book N",
+    "target": "jackal-among-snakes",
+    "to": "Jackal Among Snakes, Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Joe Ledger",
+    "op": "retitle-work",
+    "reason": "Journalstone's listing (B0CP69N457) subtitles the anthology Unbreakable",
+    "target": "joe-ledger",
+    "to": "Joe Ledger: Unbreakable"
+  },
+  {
+    "decision": "assert",
+    "from": "Joe Ledger",
+    "op": "retitle-work",
+    "reason": "Macmillan's listing (B076MFQS9X) subtitles the anthology Unstoppable",
+    "target": "joe-ledger-jonathan-maberry",
+    "to": "Joe Ledger: Unstoppable"
+  },
+  {
+    "decision": "assert",
+    "from": "Journal D'Un Noob",
+    "op": "retitle-work",
+    "reason": "404 Éditions publishes tome 8 as Journal d'un noob, vol. 8: Héros (La Procure 1678608); the earlier tomes are titled Journal d'un noob (Guerrier) and so on",
+    "target": "journal-dun-noob",
+    "to": "Journal d'un noob (Héros)"
+  },
+  {
+    "decision": "assert",
+    "from": "La Biblia de la Criptomoneda [The Cryptocurrency Bible]",
+    "op": "retitle-work",
+    "reason": "Kazravan's listing (B0858FS7XT) subtitles the 197 min bundle 3 Libros en 1, which separates it from the 4 Libros en 1 bundle",
+    "target": "la-biblia-de-la-criptomoneda-the-cryptocurrency-bible",
+    "to": "La Biblia de la Criptomoneda: 3 Libros en 1"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "La Biblia de la Criptomoneda [The Cryptocurrency Bible]",
+    "op": "retitle-work",
+    "reason": "the bare title would match the 4 Libros en 1 bundle; the asserted title keeps the 3 Libros en 1 subtitle that tells them apart",
+    "target": "la-biblia-de-la-criptomoneda-the-cryptocurrency-bible",
+    "to": "La Biblia de la Criptomoneda"
+  },
+  {
+    "decision": "assert",
+    "from": "La Biblia de los Caídos",
+    "op": "retitle-work",
+    "reason": "the Audible Studios listing (B09ZLFJ17M) subtitles volume 9 Tomo 3 de los Testamentos del Gris y de Sombra",
+    "target": "la-biblia-de-los-caidos",
+    "to": "La Biblia de los Caídos: Tomo 3 de los Testamentos del Gris y de Sombra"
+  },
+  {
+    "decision": "assert",
+    "from": "La Biblia Dela Criptomoneda [The Bible Cryptocurrency]",
+    "op": "retitle-work",
+    "reason": "Kazravan's listing (B0859MZZY1) subtitles the 303 min bundle 4 Libros en 1, which separates it from the 3 Libros en 1 bundle",
+    "target": "la-biblia-dela-criptomoneda-the-bible-cryptocurrency",
+    "to": "La Biblia de la Criptomoneda: 4 Libros en 1"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "La Biblia Dela Criptomoneda [The Bible Cryptocurrency]",
+    "op": "retitle-work",
+    "reason": "the bare title would match the 3 Libros en 1 bundle and keeps the Dela typo; the asserted title keeps the 4 Libros en 1 subtitle",
+    "target": "la-biblia-dela-criptomoneda-the-bible-cryptocurrency",
+    "to": "La Biblia Dela Criptomoneda"
+  },
+  {
+    "decision": "assert",
+    "from": "Last Lord of the Fey",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0GZ4ZZFM1) subtitles book 2 Burgeoning",
+    "target": "last-lord-of-the-fey-serasstreams",
+    "to": "Last Lord of the Fey: Burgeoning"
+  },
+  {
+    "decision": "assert",
+    "from": "Learn in Your Car",
+    "op": "retitle-work",
+    "reason": "Penton's listing (B002V1OUBQ) subtitles the course German, Level 3, as the sibling courses are titled",
+    "target": "learn-in-your-car-henry-n-raymond",
+    "to": "Learn in Your Car: German, Level 3"
+  },
+  {
+    "decision": "assert",
+    "from": "Legends of Marithia",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B074DYV427) subtitles the books 1-3 omnibus War of Prophecies Trilogy",
+    "target": "legends-of-marithia",
+    "to": "Legends of Marithia: War of Prophecies Trilogy"
+  },
+  {
+    "decision": "assert",
+    "from": "Life Before Legend",
+    "op": "retitle-work",
+    "reason": "Penguin's 2012 ebook (ISBN 9781101622117, Goodreads 17235347) is titled Life Before Legend: Stories of the Criminal and the Prodigy; Episode 2 is the later split of June's story",
+    "target": "life-before-legend",
+    "to": "Life Before Legend: Stories of the Criminal and the Prodigy"
+  },
+  {
+    "decision": "assert",
+    "from": "Lilou: The Shadyside Chronicles",
+    "op": "retitle-work",
+    "reason": "the Kindle edition of Shadyside Chronicles 2 (Goodreads 211173094), with the audio's blurb, is titled Lilou: Twenty-Seven Generations of Magic",
+    "target": "lilou-the-shadyside-chronicles-alexandra-pugachevsky",
+    "to": "Lilou: Twenty-Seven Generations of Magic"
   },
   {
     "decision": "assert",
@@ -22480,11 +23445,790 @@
   },
   {
     "decision": "assert",
+    "from": "Long Road to Survival",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (1977338526) subtitles the 521 min omnibus of Book 1 (242 min) and Book Two (278 min) The Complete Box Set",
+    "target": "long-road-to-survival",
+    "to": "Long Road to Survival: The Complete Box Set"
+  },
+  {
+    "decision": "assert",
+    "from": "Lost Treasure (German Edition)",
+    "op": "retitle-work",
+    "reason": "OBO's listing (B0GR1YP9SK) titles the 1234 min exclusive of all three Treasure Hunt novels Lost Treasure, Der Schatz der heiligen Jungfrau; German Edition is a retailer note",
+    "target": "lost-treasure-german-edition",
+    "to": "Lost Treasure: Der Schatz der heiligen Jungfrau"
+  },
+  {
+    "decision": "assert",
     "from": "Massacre Canyon [Dramatized Adaptation]",
     "op": "retitle-work",
     "reason": "the only catalogued Massacre Canyon (Family Jensen 5): no plain twin exists to merge into, so the dramatized full-cast production, a property of the recording, comes off the title instead",
     "target": "massacre-canyon-dramatized-adaptation",
     "to": "Massacre Canyon"
+  },
+  {
+    "decision": "assert",
+    "from": "Mercury Rising",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B08P7WSXZ4) subtitles it Episodes 6-10; the other bundles carry the same form",
+    "target": "mercury-rising",
+    "to": "Mercury Rising: Episodes 6-10"
+  },
+  {
+    "decision": "assert",
+    "from": "Messenger’s Legacy (Novella)",
+    "op": "retitle-work",
+    "reason": "(Novella) is a form descriptor, not the title; GraphicAudio (1645419258) titles the same work Messenger's Legacy",
+    "target": "messengers-legacy-novella",
+    "to": "Messenger's Legacy"
+  },
+  {
+    "decision": "assert",
+    "from": "Midnight Fae Academy",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B08WW372B1) subtitles it Book Two; the other volumes carry the same form",
+    "target": "midnight-fae-academy",
+    "to": "Midnight Fae Academy: Book Two"
+  },
+  {
+    "decision": "assert",
+    "from": "Nephilim",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0D1YTKLMW) subtitles it A Behind Blue Eyes Origins Story, Volume 3",
+    "target": "nephilim-anna-mocikat",
+    "to": "Nephilim: A Behind Blue Eyes Origins Story, Volume 3"
+  },
+  {
+    "decision": "assert",
+    "from": "Nephilim",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0HHNTB3VJ) subtitles the 671 min bundle Schule der Killer-Cyborgs 1-3: Drei Bücher in Einem",
+    "target": "nephilim-anna-mocikat-2",
+    "to": "Nephilim: Schule der Killer-Cyborgs 1-3"
+  },
+  {
+    "decision": "assert",
+    "from": "New York Alpha",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0HJ818RLY) subtitles episode 17 Epilog 1: Weihnachten",
+    "target": "new-york-alpha",
+    "to": "New York Alpha: Epilog 1: Weihnachten"
+  },
+  {
+    "decision": "assert",
+    "from": "Nova Terra",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0H4RWBDQV) subtitles Titan 4 Wächter; books 2 and 3 are titled Nova Terra: Greymane and Nova Terra: Königsbrecher",
+    "target": "nova-terra",
+    "to": "Nova Terra: Wächter"
+  },
+  {
+    "decision": "assert",
+    "from": "Now I'm a Demon Lord! Happily Ever After with Monster Girls in My Dungeon",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0F22Y15S9) subtitles it Volume 2; volume 1 carries the same form",
+    "target": "now-im-a-demon-lord-happily-ever-after-with-monster-girls-in-my-dungeon",
+    "to": "Now I'm a Demon Lord! Happily Ever After with Monster Girls in My Dungeon, Volume 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Nüchtern auf einem alkoholisierten Planeten [Sober on an Alcoholic Planet]",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CKFNR2SC) subtitles volume 2 3 Nüchterne Schritte, where volume 1 (B0BXBL1HN1) is Ohne Alkohol leben; the bracket is Audible's English gloss",
+    "target": "nuchtern-auf-einem-alkoholisierten-planeten-sober-on-an-alcoholic-planet-sean-alexander",
+    "to": "Nüchtern auf einem alkoholisierten Planeten: 3 Nüchterne Schritte"
+  },
+  {
+    "decision": "assert",
+    "from": "Odditales",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0DVNF5GTT) subtitles it Volume 3; volume 1 carries the same form",
+    "target": "odditales",
+    "to": "Odditales: Volume 3"
+  },
+  {
+    "decision": "assert",
+    "from": "Oliver Twist (Spanish Edition)",
+    "op": "retitle-work",
+    "reason": "Spanish Edition is a retailer note; the Audible Studios product (B08BVT4FDY) is a 24 min condensed retelling of a 2004 Selector text, so it stays its own work beside the novel",
+    "target": "oliver-twist-spanish-edition-charles-dickens",
+    "to": "Oliver Twist"
+  },
+  {
+    "decision": "assert",
+    "from": "Othello",
+    "op": "retitle-work",
+    "reason": "SmartPass's listing (B0036MUN9M) subtitles the 668 min study guide Shakespeare Appreciated, its own series; the bare title is the play's",
+    "target": "othello-william-shakespeare",
+    "to": "Othello: Shakespeare Appreciated"
+  },
+  {
+    "decision": "assert",
+    "from": "Out of the Shadows: Shadowlands, Book 1",
+    "op": "retitle-work",
+    "reason": "the 2018 listing (B07HRZQXY8) titles it Out of the Shadows with Shadowlands, Book 1 as the series, which the membership holds",
+    "target": "out-of-the-shadows-shadowlands-book-1",
+    "to": "Out of the Shadows"
+  },
+  {
+    "decision": "assert",
+    "from": "PERRY RHODAN Zyklus: Mythos",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0F99BQNZW) subtitles this bundle Perry Rhodan 3010-3019; the other Mythos bundle holds 3030-3039",
+    "target": "perry-rhodan-zyklus-mythos-liza-grimm",
+    "to": "PERRY RHODAN Zyklus: Mythos (Perry Rhodan 3010-3019)"
+  },
+  {
+    "decision": "assert",
+    "from": "PERRY RHODAN Zyklus: Mythos",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0FH2FXMZB) subtitles this bundle Perry Rhodan 3030-3039; the other Mythos bundle holds 3010-3019",
+    "target": "perry-rhodan-zyklus-mythos-susan-schwartz",
+    "to": "PERRY RHODAN Zyklus: Mythos (Perry Rhodan 3030-3039)"
+  },
+  {
+    "decision": "assert",
+    "from": "Phoenix Heart",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0B2T7MGPB) subtitles Season Two episode 4 Pillar of Souls; episodes 1, 3 and 5 carry their own titles",
+    "target": "phoenix-heart",
+    "to": "Pillar of Souls"
+  },
+  {
+    "decision": "assert",
+    "from": "Player Reached The Top",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0HB6VG386) subtitles it Book 12; the other volumes carry the same form",
+    "target": "player-reached-the-top",
+    "to": "Player Reached the Top, Book 12"
+  },
+  {
+    "decision": "assert",
+    "from": "Pride High",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CL7WWFQH) subtitles it Book 3: Yellow; book 5 is Pride High, Book 5: Blue",
+    "target": "pride-high",
+    "to": "Pride High, Book 3: Yellow"
+  },
+  {
+    "decision": "assert",
+    "from": "Primordial World",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0FQ86LRPQ) numbers it The Primeval Series, Book 2; books 1 and 3 carry the same form",
+    "target": "primordial-world",
+    "to": "Primordial World: Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Professor and The Madman",
+    "op": "retitle-work",
+    "reason": "Harper's unabridged listing (B002V0KSVS) and the book carry the leading article",
+    "target": "professor-and-the-madman",
+    "to": "The Professor and the Madman"
+  },
+  {
+    "decision": "assert",
+    "from": "Promises",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (1515949990) titles it Promises, Part 3",
+    "target": "promises-a-e-via",
+    "to": "Promises, Part 3"
+  },
+  {
+    "decision": "assert",
+    "from": "Proper Care and Feeding of Marriage",
+    "op": "retitle-work",
+    "reason": "HarperAudio's listings (B002V8MDSQ, B004EW5KQ4) and the book carry the leading article",
+    "target": "proper-care-and-feeding-of-marriage",
+    "to": "The Proper Care and Feeding of Marriage"
+  },
+  {
+    "decision": "assert",
+    "from": "Railroad!",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B00U051ULS) subtitles it Volume Two: Dogs of War",
+    "target": "railroad",
+    "to": "Railroad! Volume Two: Dogs of War"
+  },
+  {
+    "decision": "assert",
+    "from": "Rapid French",
+    "op": "retitle-work",
+    "reason": "earworms' UK listing (B00CMR3JZ2) titles it Rapid French: Volume 3",
+    "target": "rapid-french",
+    "to": "Rapid French: Volume 3"
+  },
+  {
+    "decision": "assert",
+    "from": "Realm Between Series # , The Realm Between",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B09GL2DWPG) garbles the title as Realm Between Series # , The Realm Between and subtitles it A LitRPG Saga (Books 1-3); books 4-6 carry the same form",
+    "target": "realm-between-series-the-realm-between",
+    "to": "The Realm Between: Books 1-3"
+  },
+  {
+    "decision": "assert",
+    "from": "Reborn as a Space Mercenary: I Woke Up Piloting the Strongest Starship!",
+    "op": "retitle-work",
+    "reason": "Seven Seas' listing (B0CQMKWRRZ) subtitles it Light Novel, Vol. 5; volumes 9, 10 and 13 carry the same form",
+    "target": "reborn-as-a-space-mercenary-i-woke-up-piloting-the-strongest-starship",
+    "to": "Reborn as a Space Mercenary: I Woke Up Piloting the Strongest Starship! (Light Novel), Vol. 5"
+  },
+  {
+    "decision": "assert",
+    "from": "Rescate Accidentado [Salvage Trouble]",
+    "op": "retitle-work",
+    "reason": "the bracketed [Salvage Trouble] is Audible's English gloss; the Castellano listing (B0848HWHB7) titles it Rescate Accidentado",
+    "target": "rescate-accidentado-salvage-trouble",
+    "to": "Rescate Accidentado"
+  },
+  {
+    "decision": "assert",
+    "from": "Resistance: Dave vs. the Monsters",
+    "op": "retitle-work",
+    "reason": "Recorded Books (B00YI1CC30) and Bolinda (B010QV6L46) title it Resistance; Dave vs. the Monsters is the series the membership holds",
+    "target": "resistance-dave-vs-the-monsters",
+    "to": "Resistance"
+  },
+  {
+    "decision": "assert",
+    "from": "Ronin",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0GYM6R3PH) subtitles it The Minecraft Samurai, Book 6; books 2-9 carry the same form",
+    "target": "ronin",
+    "to": "Ronin: The Minecraft Samurai, Book 6"
+  },
+  {
+    "decision": "assert",
+    "from": "Rostig!: Bitte nicht öffnen 6",
+    "op": "retitle-work",
+    "reason": "both listings (3844927778, B0DMPLFVG2) title it Rostig! with Bitte nicht öffnen 6 as the series number",
+    "target": "rostig-bitte-nicht-offnen-6",
+    "to": "Rostig!"
+  },
+  {
+    "decision": "assert",
+    "from": "Rufus Rides a Catfish",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CWPYQ83G) subtitles the 655 min collection And Other Fables from the Farmstead",
+    "target": "rufus-rides-a-catfish",
+    "to": "Rufus Rides a Catfish: And Other Fables from the Farmstead"
+  },
+  {
+    "decision": "assert",
+    "from": "SAI: Secret Agents of the IlluminaRti",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B099MPX381) numbers it SAI 2; books 1 and 3 carry the same form",
+    "target": "sai-secret-agents-of-the-illuminarti",
+    "to": "SAI: Secret Agents of the IlluminaRti, Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Sakuro, der Dämon: John Sinclair Classics 5",
+    "op": "retitle-work",
+    "reason": "Lübbe's listings (B00MADJAF6, B01KVGM27Q) title it Sakuro, der Dämon; John Sinclair Classics 5 is the series number the membership holds",
+    "target": "sakuro-der-damon-john-sinclair-classics-5",
+    "to": "Sakuro, der Dämon"
+  },
+  {
+    "decision": "assert",
+    "from": "Saving Forever",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B00NT0P7E2) numbers it Saving Forever, Book 2; parts 1 and 4 are titled Saving Forever - Part N",
+    "target": "saving-forever-lexy-timms",
+    "to": "Saving Forever - Part 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Schleimig!: Bitte nicht öffnen 2",
+    "op": "retitle-work",
+    "reason": "both listings (B0725PZ97K, B0CV42H5B4) title it Schleimig! with Bitte nicht öffnen 2 as the series number",
+    "target": "schleimig-bitte-nicht-offnen-2",
+    "to": "Schleimig!"
+  },
+  {
+    "decision": "assert",
+    "from": "Selected Shorts",
+    "op": "retitle-work",
+    "reason": "Symphony Space's listing (B002UZMR2C) subtitles the volume Timeless Classics; the bare title names the whole programme",
+    "target": "selected-shorts",
+    "to": "Selected Shorts: Timeless Classics"
+  },
+  {
+    "decision": "assert",
+    "from": "Sex Chronicles",
+    "op": "retitle-work",
+    "reason": "Simon & Schuster's unabridged listing (B00B9FCYQS) and Zane's book carry the leading article",
+    "target": "sex-chronicles",
+    "to": "The Sex Chronicles"
+  },
+  {
+    "decision": "assert",
+    "from": "Shadowspell Academy: Year of the Chameleon",
+    "op": "retitle-work",
+    "reason": "the book is Year of the Chameleon 2 (Shadowspell Academy 5) on Goodreads (57041697) and Risingshadow; book 4 is Year of the Chameleon",
+    "target": "shadowspell-academy-year-of-the-chameleon-shannon-mayer",
+    "to": "Shadowspell Academy: Year of the Chameleon 2"
+  },
+  {
+    "decision": "assert",
+    "from": "Shield of Sparrows [Dramatized Adaptation]",
+    "op": "retitle-work",
+    "reason": "GraphicAudio's listing (B0FLLH35C1) titles the 591 min product Part 1 of 2, which the earlier review keeps apart from the whole; the Part 2 ASIN moves to its own work",
+    "target": "shield-of-sparrows-dramatized-adaptation",
+    "to": "Shield of Sparrows (1 of 2) [Dramatized Adaptation]"
+  },
+  {
+    "decision": "assert",
+    "from": "Shopping for a Billionaire",
+    "op": "retitle-work",
+    "reason": "the books 1-5 set (B01K2A9904, 927 min) is published as Shopping for a Billionaire Box Set One (Goodreads 24423835)",
+    "target": "shopping-for-a-billionaire",
+    "to": "Shopping for a Billionaire Box Set One"
+  },
+  {
+    "decision": "assert",
+    "from": "Small Unit Tactics",
+    "op": "retitle-work",
+    "reason": "the book is published as Small Unit Tactics: Volume #2 (Goodreads 54882035), after Small Unit Tactics: Volume #1",
+    "target": "small-unit-tactics",
+    "to": "Small Unit Tactics: Volume #2"
+  },
+  {
+    "decision": "assert",
+    "from": "Star Wars: Thrawn Ascendancy",
+    "op": "retitle-work",
+    "reason": "Random House's listing (0593215389) subtitles it Chaos Rising, Book 1; books 2 and 3 carry the same form",
+    "target": "star-wars-thrawn-ascendancy",
+    "to": "Star Wars: Thrawn Ascendancy (Book I: Chaos Rising)"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Star Wars: Thrawn Ascendancy",
+    "op": "retitle-work",
+    "reason": "Thrawn Ascendancy is a trilogy title, not book 1's; the asserted title names Book I: Chaos Rising as books 2 and 3 do",
+    "target": "star-wars-thrawn-ascendancy",
+    "to": "Thrawn Ascendancy"
+  },
+  {
+    "decision": "assert",
+    "from": "Starsea Collection",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B09P5125QV) subtitles it The Starsea Cycle, Books 1-3; the later collections carry the same form",
+    "target": "starsea-collection",
+    "to": "Starsea Collection: The Starsea Cycle, Books 1-3"
+  },
+  {
+    "decision": "assert",
+    "from": "Stonewiser",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B08XWGPYZZ) subtitles the books 1-3 omnibus The Complete Series",
+    "target": "stonewiser",
+    "to": "Stonewiser: The Complete Series"
+  },
+  {
+    "decision": "assert",
+    "from": "Stories of the Golden West",
+    "op": "retitle-work",
+    "reason": "Blackstone's listing (B00MAG7F1Y) numbers it A Western Trio, Book 5; books 3 and 7 carry the same form",
+    "target": "stories-of-the-golden-west",
+    "to": "Stories of the Golden West, Book 5"
+  },
+  {
+    "decision": "assert",
+    "from": "Story of the World, Vol. 2",
+    "op": "retitle-work",
+    "reason": "Well-Trained Mind's listings (B0CMF3L4YW, B0CTL2ZRBG) title it The Story of the World, Vol. 2 with History for the Classical Child: The Middle Ages",
+    "target": "story-of-the-world-vol-2",
+    "to": "The Story of the World, Vol. 2: History for the Classical Child: The Middle Ages"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Story of the World, Vol. 2",
+    "op": "retitle-work",
+    "reason": "the cut drops the volume number that tells volume 2 from the rest; the asserted title keeps it with its subtitle",
+    "target": "story-of-the-world-vol-2",
+    "to": "Story of the World"
+  },
+  {
+    "decision": "assert",
+    "from": "Stuck Inside Minecraft",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0947JQL5M) subtitles it Book 4; books 1-3 carry the same form",
+    "target": "stuck-inside-minecraft",
+    "to": "Stuck Inside Minecraft: Book 4"
+  },
+  {
+    "decision": "assert",
+    "from": "Surviving the Collapse:",
+    "op": "retitle-work",
+    "reason": "the prequel's Kindle edition (Goodreads 36242416, book 0, the Kate Holloway story the audio describes) is titled Surviving the Collapse: A Tale of Survival in a Powerless World; the listing's title ends in a bare colon",
+    "target": "surviving-the-collapse",
+    "to": "Surviving the Collapse: A Tale of Survival in a Powerless World"
+  },
+  {
+    "decision": "assert",
+    "from": "Taste of Vampire: A Dystopian Fantasy Romance",
+    "op": "retitle-work",
+    "reason": "the 2815 min product (B0CKM7B527) is books 1-4, its chapters Taste, Thirst, Throne and Tomb of Vampire; the Kindle box set (Goodreads 127317787) is titled Taste of Vampire: Kingdom of ash and blood complete series",
+    "target": "taste-of-vampire-a-dystopian-fantasy-romance",
+    "to": "Taste of Vampire: Kingdom of Ash and Blood Complete Series"
+  },
+  {
+    "decision": "reject",
+    "field": "title",
+    "from": "Taste of Vampire: A Dystopian Fantasy Romance",
+    "op": "retitle-work",
+    "reason": "the bare title reads as book 1; the 2815 min product is the books 1-4 box set, retitled as asserted",
+    "target": "taste-of-vampire-a-dystopian-fantasy-romance",
+    "to": "Taste of Vampire"
+  },
+  {
+    "decision": "assert",
+    "from": "Teen Villains",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CK2RNWY6) subtitles it Book 3; book 2 carries the same form",
+    "target": "teen-villains",
+    "to": "Teen Villains: Book 3"
+  },
+  {
+    "decision": "assert",
+    "from": "The 7 Habits of Highly Effective People & The 8th Habit (Special 3-Hour Abridgement)",
+    "op": "retitle-work",
+    "reason": "the work holds both the 3-hour and the 6-hour abridgements (B002V1NKLW, B002V9ZF8U), so the abridgement length is a recording fact, not the title",
+    "target": "the-7-habits-of-highly-effective-people-the-8th-habit-special-3-hour-abridgement",
+    "to": "The 7 Habits of Highly Effective People & The 8th Habit"
+  },
+  {
+    "decision": "assert",
+    "from": "The Angel of Rome",
+    "op": "retitle-work",
+    "reason": "Harper's listing (B09JR8DYYQ) subtitles the collection And Other Stories, the book's full title",
+    "target": "the-angel-of-rome-jess-walter",
+    "to": "The Angel of Rome and Other Stories"
+  },
+  {
+    "decision": "assert",
+    "from": "The Anime Trope System: Stone vs. Viper",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B088X3YWRW) subtitles it ATS, Book 15; books 1-3, 7 and 11 carry the same form",
+    "target": "the-anime-trope-system-stone-vs-viper",
+    "to": "The Anime Trope System: Stone vs. Viper, Book 15"
+  },
+  {
+    "decision": "assert",
+    "from": "The Base",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0DV62J12C) subtitles it Book 2: Spies, Lies and the Vanishing Game; book 1 is The Base, Book 1",
+    "target": "the-base",
+    "to": "The Base, Book 2: Spies, Lies and the Vanishing Game"
+  },
+  {
+    "decision": "assert",
+    "from": "The Children of Willesden Lane",
+    "op": "retitle-work",
+    "reason": "Hachette's listing (B07BTHSZH6) subtitles it A True Story of Hope and Survival During World War II (Young Readers Edition), an adapted text distinct from the original",
+    "target": "the-children-of-willesden-lane-mona-golabek",
+    "to": "The Children of Willesden Lane (Young Readers Edition)"
+  },
+  {
+    "decision": "assert",
+    "from": "The Coming of God of Death",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0HK72PQPB) subtitles it Book 9; the other volumes carry the same form",
+    "target": "the-coming-of-god-of-death",
+    "to": "The Coming of God of Death: Book 9"
+  },
+  {
+    "decision": "assert",
+    "from": "The Dark Healer",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0H8FQ8S2B) subtitles it Book 18; the other volumes carry the same form",
+    "target": "the-dark-healer",
+    "to": "The Dark Healer: Book 18"
+  },
+  {
+    "decision": "assert",
+    "from": "The Death of the Universe: Hard Science Fiction (Big Rip Series, Book 3)",
+    "op": "retitle-work",
+    "reason": "the author's site (hard-sf.com) and Goodreads (53502185) title Big Rip 3 Rebirth, its blurb the one the Tantor listing (1705215343) carries; The Death of the Universe is the trilogy title",
+    "target": "the-death-of-the-universe-hard-science-fiction-big-rip-series-book-3",
+    "to": "The Death of the Universe: Rebirth"
+  },
+  {
+    "decision": "assert",
+    "from": "The Doctor from Nowhere",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0GV576NWN) subtitles it Book Three; book 2 is The Doctor from Nowhere: Book Two",
+    "target": "the-doctor-from-nowhere",
+    "to": "The Doctor from Nowhere: Book Three"
+  },
+  {
+    "decision": "assert",
+    "from": "The Dragon Kings",
+    "op": "retitle-work",
+    "reason": "the books 1-5 set (Obsidian to The Kings) is published as The Dragon Kings: Box Set 1 (Goodreads 33858764)",
+    "target": "the-dragon-kings",
+    "to": "The Dragon Kings: Box Set 1"
+  },
+  {
+    "decision": "assert",
+    "from": "The Empire of Bones Saga",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B09SS7L93Z) subtitles the 1659 min omnibus Volume 4 (The Empire of Bones Saga Omnibuses)",
+    "target": "the-empire-of-bones-saga",
+    "to": "The Empire of Bones Saga: Volume 4"
+  },
+  {
+    "decision": "assert",
+    "from": "The Empress and the Archer",
+    "op": "retitle-work",
+    "reason": "Borgo's listing (B098Z1DJCR) subtitles it The Empress' Quest, Book 2; book 1 is The Empress and the Archer: The Empress' Quest",
+    "target": "the-empress-and-the-archer",
+    "to": "The Empress and the Archer: The Empress' Quest, Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "The Guardian's Speaker",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CMBTLNQ8) subtitles it Volume Five; the other volumes carry the same form",
+    "target": "the-guardians-speaker",
+    "to": "The Guardian's Speaker, Volume Five"
+  },
+  {
+    "decision": "assert",
+    "from": "The Island",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B06WWH5GSQ) subtitles Fallen Earth 5 Final Chapters; the 1074 min Complete Collection reading moves to its own work",
+    "target": "the-island",
+    "to": "The Island: Final Chapters"
+  },
+  {
+    "decision": "assert",
+    "from": "The Last Architect of Eterra",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0H42524C7) subtitles it The Eterra Cycle, Book 2; books 3 and 4 carry the same form",
+    "target": "the-last-architect-of-eterra",
+    "to": "The Last Architect of Eterra: The Eterra Cycle, Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "The Legend of Dave the Villager",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0BT414WW2) numbers it Dave the Villager, Book 16; volumes 2 and 14 carry the same form",
+    "target": "the-legend-of-dave-the-villager",
+    "to": "The Legend of Dave the Villager 16"
+  },
+  {
+    "decision": "assert",
+    "from": "The Light Seekers",
+    "op": "retitle-work",
+    "reason": "its own blurb (B00PUNA3W2) opens In Volume 2, and Goodreads (23884469) lists The Light Seekers 2; volume 1 is titled The Light Seekers - Immortal Destiny Volume 1",
+    "target": "the-light-seekers",
+    "to": "The Light Seekers - Immortal Destiny Volume 2"
+  },
+  {
+    "decision": "assert",
+    "from": "The McClane Apocalypse",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0765C5FRM) subtitles it Book Two; book 3 is The McClane Apocalypse: Book Three",
+    "target": "the-mcclane-apocalypse",
+    "to": "The McClane Apocalypse: Book Two"
+  },
+  {
+    "decision": "assert",
+    "from": "The Runaway Bunny",
+    "op": "retitle-work",
+    "reason": "GPR's 78 min album (B00AJMJ3R0) holds The Runaway Bunny, The Story of Babar and the Goodnight Moon lullaby, and library listings (Hoopla 11353057) title it so",
+    "target": "the-runaway-bunny",
+    "to": "The Runaway Bunny, Including The Story of Babar & Goodnight Moon"
+  },
+  {
+    "decision": "assert",
+    "from": "The Stone Wolves: (Galactic Football League)",
+    "op": "retitle-work",
+    "reason": "Empty Set's listing (B09G75P4KC) titles it The Stone Wolves with the series in parentheses, and GraphicAudio (B0CVLH7QFX) titles it The Stone Wolves",
+    "target": "the-stone-wolves-galactic-football-league",
+    "to": "The Stone Wolves"
+  },
+  {
+    "decision": "assert",
+    "from": "The Story of Mara (German Edition)",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0F8R8VJV8) subtitles volume 3 Verlorene Hoffnung; German Edition is a retailer note",
+    "target": "the-story-of-mara-german-edition",
+    "to": "The Story of Mara: Verlorene Hoffnung"
+  },
+  {
+    "decision": "assert",
+    "from": "The Temporal Travel Agency",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0F255WYF4) subtitles it Book 4: The Continuing Adventures of Max and Trixie; book 3 carries the same form",
+    "target": "the-temporal-travel-agency",
+    "to": "The Temporal Travel Agency, Book 4: The Continuing Adventures of Max and Trixie"
+  },
+  {
+    "decision": "assert",
+    "from": "The Things Our Fathers Saw",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0992J77LQ) subtitles volume 5 The Untold Stories of the World War II Generation (D-Day and Beyond, Volume 5)",
+    "target": "the-things-our-fathers-saw-matthew-rozell",
+    "to": "The Things Our Fathers Saw, Vol. 5: D-Day and Beyond"
+  },
+  {
+    "decision": "assert",
+    "from": "The Toren",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B07LB85P37) titles it The Toren, Book 3: Blood of Shadows",
+    "target": "the-toren",
+    "to": "The Toren, Book 3: Blood of Shadows"
+  },
+  {
+    "decision": "assert",
+    "from": "The Tree of Ages",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B07PX9CRNP) subtitles the 1024 min collection The Tree of Ages Series, Books 1 and 2",
+    "target": "the-tree-of-ages",
+    "to": "The Tree of Ages Series, Books 1 and 2"
+  },
+  {
+    "decision": "assert",
+    "from": "The Unwanted Undead Adventurer",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (B0GPT6451M) subtitles it Volume 7; the other volumes carry the same form",
+    "target": "the-unwanted-undead-adventurer",
+    "to": "The Unwanted Undead Adventurer: Volume 7"
+  },
+  {
+    "decision": "assert",
+    "from": "The Valley",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B0CDJ6Y4FT) subtitles it Book 2: Beyond the Valley",
+    "target": "the-valley",
+    "to": "The Valley, Book 2: Beyond the Valley"
+  },
+  {
+    "decision": "assert",
+    "from": "The Vampire Gift 1: Wards of Night",
+    "op": "retitle-work",
+    "reason": "the 2020 deluxe listing (B086LGL8S4) titles it Wards of Night with The Vampire Gift Series, Book 1 as the series, which the membership holds",
+    "target": "the-vampire-gift-1-wards-of-night",
+    "to": "Wards of Night"
+  },
+  {
+    "decision": "assert",
+    "from": "The Vampire's Club",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B07S6SVZB5) numbers it An M/M Vampire Romance, Book 2; books 3 and 6 are titled The Vampire's Club, Book N",
+    "target": "the-vampires-club",
+    "to": "The Vampire's Club, Book 2"
+  },
+  {
+    "decision": "assert",
+    "from": "The Vampire's Club (An M/M Vampire Romance)",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B084X64X2B) numbers it The Vampire's Club, Book 5; the parenthesis is a genre tag",
+    "target": "the-vampires-club-an-m-m-vampire-romance",
+    "to": "The Vampire's Club, Book 5"
+  },
+  {
+    "decision": "assert",
+    "from": "The Witches of Scotland: The Dream Dancers: Akashic Chronicles: The Witches of Scotland, Book 5",
+    "op": "retitle-work",
+    "reason": "Goodreads (163802770) and library records title it The Witches of Scotland Book 5, with no own title; the listing repeats the series names",
+    "target": "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-5",
+    "to": "The Witches of Scotland Book 5"
+  },
+  {
+    "decision": "assert",
+    "from": "The Witches of Scotland: The Dream Dancers: Akashic Chronicles: The Witches of Scotland, Book 6",
+    "op": "retitle-work",
+    "reason": "Goodreads (185249455) and library records title it The Witches of Scotland Book 6, with no own title; the listing repeats the series names",
+    "target": "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-6",
+    "to": "The Witches of Scotland Book 6"
+  },
+  {
+    "decision": "assert",
+    "from": "The Witches of Scotland: The Dream Dancers: Akashic Chronicles: The Witches of Scotland, Book 7",
+    "op": "retitle-work",
+    "reason": "Goodreads (199709387) and library records title it The Witches of Scotland Book 7, with no own title; the listing repeats the series names",
+    "target": "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-7",
+    "to": "The Witches of Scotland Book 7"
+  },
+  {
+    "decision": "assert",
+    "from": "The Witches of Scotland: The Dream Dancers: Akashic Chronicles: The Witches of Scotland, Book 8",
+    "op": "retitle-work",
+    "reason": "Goodreads (206000619) and library records title it The Witches of Scotland Book 8, with no own title; the listing repeats the series names",
+    "target": "the-witches-of-scotland-the-dream-dancers-akashic-chronicles-the-witches-of-scotland-book-8",
+    "to": "The Witches of Scotland Book 8"
+  },
+  {
+    "decision": "assert",
+    "from": "The Year's Best Dark Fantasy & Horror",
+    "op": "retitle-work",
+    "reason": "Tantor's listing (1705256481) titles it The Year's Best Dark Fantasy & Horror, Volume 1",
+    "target": "the-years-best-dark-fantasy-horror",
+    "to": "The Year's Best Dark Fantasy & Horror, Volume 1"
+  },
+  {
+    "decision": "assert",
+    "from": "Tied in Knots: Get Knotted!",
+    "op": "retitle-work",
+    "reason": "the 2nd edition listing (B0C1HRHVGQ) titles it Tied in Knots with Get Knotted! as the series, which the membership holds",
+    "target": "tied-in-knots-get-knotted",
+    "to": "Tied in Knots"
+  },
+  {
+    "decision": "assert",
+    "from": "Titan: UnderVerse Series, Book 4",
+    "op": "retitle-work",
+    "reason": "Tantor's listings (1666111287, B0BXVCV6VM) title it Titan; UnderVerse, Book 4 is the series the membership holds",
+    "target": "titan-underverse-series-book-4",
+    "to": "Titan"
+  },
+  {
+    "decision": "assert",
+    "from": "True Crime Stories",
+    "op": "retitle-work",
+    "reason": "LAK's listing (B0758832PL) subtitles the books 1-3 collection 3 True Crime Books Collection",
+    "target": "true-crime-stories",
+    "to": "True Crime Stories: 3 True Crime Books Collection"
+  },
+  {
+    "decision": "assert",
+    "from": "War: The Four Horsemen, Book 2",
+    "op": "retitle-work",
+    "reason": "Lavabrook (B07Y876D44) and GraphicAudio (B0FK7HHC3M) title it War; The Four Horsemen, Book 2 is the series the membership holds",
+    "target": "war-the-four-horsemen-book-2",
+    "to": "War"
+  },
+  {
+    "decision": "assert",
+    "from": "Will Travel for Trouble",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B07N8JWXCK) subtitles it Series Boxed Set, Books 1-3",
+    "target": "will-travel-for-trouble",
+    "to": "Will Travel for Trouble Series Boxed Set, Books 1-3"
+  },
+  {
+    "decision": "assert",
+    "from": "Will Travel for Trouble Series",
+    "op": "retitle-work",
+    "reason": "the Audible listing (B07VRQK134) subtitles it Books 10-12",
+    "target": "will-travel-for-trouble-series",
+    "to": "Will Travel for Trouble Series: Books 10-12"
+  },
+  {
+    "decision": "assert",
+    "from": "Zodiac Academy: The Awakening",
+    "op": "retitle-work",
+    "reason": "the Zodiac Academy prefix is the series the membership holds; the subtitle (B09489FTTS) and GraphicAudio's listing (B0D3R5RRMD) title the book The Awakening",
+    "target": "zodiac-academy-the-awakening",
+    "to": "The Awakening"
   },
   {
     "decision": "accept",

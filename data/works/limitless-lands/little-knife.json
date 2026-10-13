@@ -6886,178 +6886,17 @@
         "goodreads": "78950"
       }
     },
-    "little-men-big-treasures": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-edwards-holt"
-      ],
-      "genres": [
-        "action-adventure",
-        "coming-of-age",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "little-men-big-treasures",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "tony-rao-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G4NJPW3Z",
-              "region": "us"
-            },
-            {
-              "asin": "B0G4NP4MP3",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17855,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2390262,
-              "start_ms": 17855,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 1730165,
-              "start_ms": 2408117,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 1000965,
-              "start_ms": 4138282,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 1585830,
-              "start_ms": 5139247,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 775500,
-              "start_ms": 6725077,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 1319427,
-              "start_ms": 7500577,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 1599135,
-              "start_ms": 8820004,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 1298134,
-              "start_ms": 10419139,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 922552,
-              "start_ms": 11717273,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 706954,
-              "start_ms": 12639825,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 795167,
-              "start_ms": 13346779,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 2537383,
-              "start_ms": 14141946,
-              "title": "Chapter Twelve"
-            },
-            {
-              "length_ms": 1419157,
-              "start_ms": 16679329,
-              "title": "Chapter Thirteen"
-            },
-            {
-              "length_ms": 1359412,
-              "start_ms": 18098486,
-              "title": "Chapter Fourteen"
-            },
-            {
-              "length_ms": 1484219,
-              "start_ms": 19457898,
-              "title": "Chapter Fifteen"
-            },
-            {
-              "length_ms": 1789515,
-              "start_ms": 20942117,
-              "title": "Chapter Sixteen"
-            },
-            {
-              "length_ms": 778077,
-              "start_ms": 22731632,
-              "title": "Chapter Seventeen"
-            },
-            {
-              "length_ms": 73676,
-              "start_ms": 23509709,
-              "title": "About the Author"
-            },
-            {
-              "length_ms": 23729,
-              "start_ms": 23583385,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A17REqfY9BL.jpg",
-          "id": "tony-rao-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tony-rao"
-          ],
-          "publisher": "J. Edwards Holt",
-          "release_date": "2025-12-02",
-          "runtime_min": 393,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G4NJPW3Z",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0G4NP4MP3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "little-men-big-treasures"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G4NJPW3Z",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Little Men, Big Treasures"
-    },
     "little-men-big-treasures-volume-1": {
       "added_at": "2026-08-01",
       "authors": [
         "j-edwards-holt"
       ],
       "genres": [
+        "action-adventure",
+        "coming-of-age",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "young-adult"
       ],
       "id": "little-men-big-treasures-volume-1",
       "language": "en",
@@ -7291,12 +7130,156 @@
             }
           ],
           "work": "little-men-big-treasures-volume-1"
+        },
+        "tony-rao-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G4NJPW3Z",
+              "region": "us"
+            },
+            {
+              "asin": "B0G4NP4MP3",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17855,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2390262,
+              "start_ms": 17855,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 1730165,
+              "start_ms": 2408117,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 1000965,
+              "start_ms": 4138282,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 1585830,
+              "start_ms": 5139247,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 775500,
+              "start_ms": 6725077,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 1319427,
+              "start_ms": 7500577,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 1599135,
+              "start_ms": 8820004,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 1298134,
+              "start_ms": 10419139,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 922552,
+              "start_ms": 11717273,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 706954,
+              "start_ms": 12639825,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 795167,
+              "start_ms": 13346779,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 2537383,
+              "start_ms": 14141946,
+              "title": "Chapter Twelve"
+            },
+            {
+              "length_ms": 1419157,
+              "start_ms": 16679329,
+              "title": "Chapter Thirteen"
+            },
+            {
+              "length_ms": 1359412,
+              "start_ms": 18098486,
+              "title": "Chapter Fourteen"
+            },
+            {
+              "length_ms": 1484219,
+              "start_ms": 19457898,
+              "title": "Chapter Fifteen"
+            },
+            {
+              "length_ms": 1789515,
+              "start_ms": 20942117,
+              "title": "Chapter Sixteen"
+            },
+            {
+              "length_ms": 778077,
+              "start_ms": 22731632,
+              "title": "Chapter Seventeen"
+            },
+            {
+              "length_ms": 73676,
+              "start_ms": 23509709,
+              "title": "About the Author"
+            },
+            {
+              "length_ms": 23729,
+              "start_ms": 23583385,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A17REqfY9BL.jpg",
+          "id": "tony-rao-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tony-rao"
+          ],
+          "publisher": "J. Edwards Holt",
+          "release_date": "2025-12-02",
+          "runtime_min": 393,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G4NJPW3Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0G4NP4MP3",
+              "type": "libex-import"
+            }
+          ],
+          "work": "little-men-big-treasures-volume-1"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-01",
           "ref": "B08CYCBJV9",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G4NJPW3Z",
           "type": "libex-import"
         }
       ],
