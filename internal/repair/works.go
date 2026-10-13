@@ -150,7 +150,7 @@ func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry
 	lost, declined := mergeWorkFields(merged, lw, roles)
 	t.noteLost(lost, loser)
 	if len(declined) > 0 {
-		t.note("  authors: did not add %s from %s: credited on %s in a non-author role, and a credit is not authorship",
+		t.note("  authors: did not add %s from %s: the merged %s credits them in a non-author role, and a credit is not authorship",
 			joinList(declined), loser, target)
 	}
 	return nil

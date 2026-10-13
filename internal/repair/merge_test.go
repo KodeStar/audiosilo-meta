@@ -641,6 +641,17 @@ func TestMergeWorksDoesNotImportRoleCreditedAuthors(t *testing.T) {
 			wantDeclined: "tom-translator (editor, translator)",
 		},
 		{
+			// identityAuthors' FALLBACK: every survivor author is role-credited, so the
+			// whole list is its identity. The skip still leaves authors[] non-empty
+			// (the survivor's own are kept) and imports no second role-credited person.
+			name:         "every survivor author is role-credited",
+			target:       []workOpt{withAuthors("tom-translator"), withCredits("tom-translator", "translator")},
+			loser:        []workOpt{withAuthors("tom-translator", "neil-gaiman"), withCredits("neil-gaiman", "introduction")},
+			wantAuthors:  []string{"tom-translator"},
+			wantCredits:  []model.Credit{{Person: "neil-gaiman", Role: "introduction"}, {Person: "tom-translator", Role: "translator"}},
+			wantDeclined: "neil-gaiman (introduction)",
+		},
+		{
 			name:        "a genuine co-author with no credit is still unioned",
 			target:      []workOpt{withAuthors("jane-doe")},
 			loser:       []workOpt{withAuthors("jane-doe", "john-smith")},
@@ -691,7 +702,7 @@ func TestMergeWorksDoesNotImportRoleCreditedAuthors(t *testing.T) {
 			case tc.wantDeclined == "" && noteMentions(tx.notes, declinedNote):
 				t.Errorf("a decline was noted where nothing was declined: %v", tx.notes)
 			case tc.wantDeclined != "":
-				want := declinedNote + tc.wantDeclined + " from hammered-book-3: credited on hammered in a non-author role"
+				want := declinedNote + tc.wantDeclined + " from hammered-book-3: the merged hammered credits them in a non-author role"
 				if !noteMentions(tx.notes, want) {
 					t.Errorf("notes do not name the declined authors %q: %v", want, tx.notes)
 				}
