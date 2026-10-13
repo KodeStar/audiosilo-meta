@@ -522,10 +522,15 @@ func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 	}
 	w := workEntry(t, data, "hammered")
 
-	// authors: the identity rule matches NESTED author sets, so a loser may credit
-	// somebody the target does not - and that credit has to survive.
-	if want := []string{"jane-doe", "john-smith"}; !reflect.DeepEqual(w.Strs("authors"), want) {
-		t.Errorf("authors = %v, want %v (the target's order first)", w.Strs("authors"), want)
+	// authors: the loser's john-smith is credited by role (contributor), so the union
+	// does not import him as an author - the credit survives in credits[] instead, and
+	// the applied record names the skip (unionAuthors; the full matrix is
+	// TestMergeWorksDoesNotImportRoleCreditedAuthors).
+	if want := []string{"jane-doe"}; !reflect.DeepEqual(w.Strs("authors"), want) {
+		t.Errorf("authors = %v, want %v (a role-credited loser author is not imported)", w.Strs("authors"), want)
+	}
+	if want := "authors: did not add john-smith (contributor) from hammered-book-3"; !noteMentions(rep.Applied[0].Notes, want) {
+		t.Errorf("notes do not name the declined author %q: %v", want, rep.Applied[0].Notes)
 	}
 	// credits: unioned on (person, role) and in the importer's canonical order.
 	wantCredits := []model.Credit{
@@ -566,6 +571,180 @@ func TestMergeWorksUnionsEveryListAndFillsEveryGap(t *testing.T) {
 	// the database, and the mover's provenance survives in sources[].
 	if got := w.Str("added_at"); got != "2026-01-01" {
 		t.Errorf("work added_at = %q, want the survivor's own, untouched", got)
+	}
+}
+
+// A merge does not IMPORT a role-credited person as an author. A source that puts a
+// translator, an introducer, an illustrator or a foreword writer in its author column
+// leaves them in that record's authors[], and the union used to carry them onto a
+// survivor that credits them only by role - three real cases in one day's waves, each
+// hand-fixed. The first three rows are those shapes; the rest pin the rule's edges: a
+// credit stated only on the loser still counts (credits union first), a genuine
+// co-author with no credit is still unioned, and the survivor's own authors are never
+// removed, credited or not.
+func TestMergeWorksDoesNotImportRoleCreditedAuthors(t *testing.T) {
+	cases := []struct {
+		name         string
+		target       []workOpt
+		loser        []workOpt
+		wantAuthors  []string
+		wantCredits  []model.Credit
+		wantDeclined string // the note's list; "" = no note
+	}{
+		{
+			name: "translators (White Nights)",
+			target: []workOpt{withAuthors("fyodor-dostoyevsky"),
+				withCredits("constance-garnett", "translator", "ronald-meyer", "translator")},
+			loser:       []workOpt{withAuthors("fyodor-dostoyevsky", "constance-garnett", "ronald-meyer")},
+			wantAuthors: []string{"fyodor-dostoyevsky"},
+			wantCredits: []model.Credit{
+				{Person: "constance-garnett", Role: "translator"}, {Person: "ronald-meyer", Role: "translator"},
+			},
+			wantDeclined: "constance-garnett (translator), ronald-meyer (translator)",
+		},
+		{
+			name:         "introduction (A Fine and Private Place)",
+			target:       []workOpt{withAuthors("peter-s-beagle"), withCredits("neil-gaiman", "introduction")},
+			loser:        []workOpt{withAuthors("peter-s-beagle", "neil-gaiman")},
+			wantAuthors:  []string{"peter-s-beagle"},
+			wantCredits:  []model.Credit{{Person: "neil-gaiman", Role: "introduction"}},
+			wantDeclined: "neil-gaiman (introduction)",
+		},
+		{
+			name: "foreword and illustrator (12 Rules for Life)",
+			target: []workOpt{withAuthors("jordan-b-peterson"),
+				withCredits("ethan-van-sciver", "illustrator", "norman-doidge", "foreword")},
+			loser:       []workOpt{withAuthors("jordan-b-peterson", "norman-doidge", "ethan-van-sciver")},
+			wantAuthors: []string{"jordan-b-peterson"},
+			wantCredits: []model.Credit{
+				{Person: "ethan-van-sciver", Role: "illustrator"}, {Person: "norman-doidge", Role: "foreword"},
+			},
+			wantDeclined: "norman-doidge (foreword), ethan-van-sciver (illustrator)",
+		},
+		{
+			name:         "credited on the loser only",
+			target:       []workOpt{withAuthors("jane-doe")},
+			loser:        []workOpt{withAuthors("jane-doe", "tom-translator"), withCredits("tom-translator", "translator")},
+			wantAuthors:  []string{"jane-doe"},
+			wantCredits:  []model.Credit{{Person: "tom-translator", Role: "translator"}},
+			wantDeclined: "tom-translator (translator)",
+		},
+		{
+			name: "one person in two roles, credited across both records",
+			target: []workOpt{withAuthors("jane-doe"),
+				withCredits("tom-translator", "editor")},
+			loser:       []workOpt{withAuthors("jane-doe", "tom-translator"), withCredits("tom-translator", "translator")},
+			wantAuthors: []string{"jane-doe"},
+			wantCredits: []model.Credit{
+				{Person: "tom-translator", Role: "editor"}, {Person: "tom-translator", Role: "translator"},
+			},
+			wantDeclined: "tom-translator (editor, translator)",
+		},
+		{
+			// identityAuthors' FALLBACK: every survivor author is role-credited, so the
+			// whole list is its identity. The skip still leaves authors[] non-empty
+			// (the survivor's own are kept) and imports no second role-credited person.
+			name:         "every survivor author is role-credited",
+			target:       []workOpt{withAuthors("tom-translator"), withCredits("tom-translator", "translator")},
+			loser:        []workOpt{withAuthors("tom-translator", "neil-gaiman"), withCredits("neil-gaiman", "introduction")},
+			wantAuthors:  []string{"tom-translator"},
+			wantCredits:  []model.Credit{{Person: "neil-gaiman", Role: "introduction"}, {Person: "tom-translator", Role: "translator"}},
+			wantDeclined: "neil-gaiman (introduction)",
+		},
+		{
+			name:        "a genuine co-author with no credit is still unioned",
+			target:      []workOpt{withAuthors("jane-doe")},
+			loser:       []workOpt{withAuthors("jane-doe", "john-smith")},
+			wantAuthors: []string{"jane-doe", "john-smith"},
+		},
+		{
+			name:        "the survivor's own author credited on the survivor stays an author",
+			target:      []workOpt{withAuthors("jane-doe", "ed-editor"), withCredits("ed-editor", "editor")},
+			loser:       []workOpt{withAuthors("jane-doe", "ed-editor")},
+			wantAuthors: []string{"jane-doe", "ed-editor"},
+			wantCredits: []model.Credit{{Person: "ed-editor", Role: "editor"}},
+		},
+		{
+			name:        "the survivor's own author credited by the loser stays an author",
+			target:      []workOpt{withAuthors("jane-doe", "ed-editor")},
+			loser:       []workOpt{withAuthors("jane-doe"), withCredits("ed-editor", "editor")},
+			wantAuthors: []string{"jane-doe", "ed-editor"},
+			wantCredits: []model.Credit{{Person: "ed-editor", Role: "editor"}},
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			files := hammeredCluster(t)
+			files["works/ha/hammered/work.json"] = workJSON(t, "hammered", "Hammered", tc.target...)
+			files["works/ha/hammered-book-3/work.json"] = workJSON(t, "hammered-book-3",
+				"Hammered: The Druid Tales, Book 3", tc.loser...)
+			for _, p := range []string{"fyodor-dostoyevsky", "constance-garnett", "ronald-meyer", "peter-s-beagle",
+				"neil-gaiman", "jordan-b-peterson", "norman-doidge", "ethan-van-sciver", "tom-translator",
+				"john-smith", "ed-editor"} {
+				files["people/"+p[:2]+"/"+p+".json"] = personJSON(t, p, p)
+			}
+			// Directly through the planner: a reviewed assert, not the identity rule, is
+			// how two of the three real shapes reached a merge (the survivor credits by
+			// role whom the loser lists as an author, so their author sets do not nest).
+			rn, tx := planFixture(t, seedTree(t, files))
+			if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3")); err != nil {
+				t.Fatal(err)
+			}
+			w := tx.works.puts["hammered"]
+			if got := w.Strs("authors"); !reflect.DeepEqual(got, tc.wantAuthors) {
+				t.Errorf("authors = %v, want %v", got, tc.wantAuthors)
+			}
+			if got := w.Credits(); !reflect.DeepEqual(got, tc.wantCredits) {
+				t.Errorf("credits = %+v, want %+v", got, tc.wantCredits)
+			}
+			const declinedNote = "authors: did not add "
+			switch {
+			case tc.wantDeclined == "" && noteMentions(tx.notes, declinedNote):
+				t.Errorf("a decline was noted where nothing was declined: %v", tx.notes)
+			case tc.wantDeclined != "":
+				want := declinedNote + tc.wantDeclined + " from hammered-book-3: the merged hammered credits them in a non-author role"
+				if !noteMentions(tx.notes, want) {
+					t.Errorf("notes do not name the declined authors %q: %v", want, tx.notes)
+				}
+			}
+		})
+	}
+}
+
+// The credits the author union reads are the WHOLE cluster's, not the ones folded so
+// far: a credit only a later loser states still keeps an earlier loser's author column
+// from importing that person. Unioned per loser, the outcome turned on the losers' slug
+// order - the earlier loser's translator became an author beside his credit. Both
+// orders are run, so the rule cannot pass by the fixture's sort alone.
+func TestMergeWorksReadsTheWholeClustersCredits(t *testing.T) {
+	for _, tc := range []struct {
+		name, lister, crediter string
+	}{
+		{"the lister folds first", "hammered-book-3", "hammered-zz"},
+		{"the crediter folds first", "hammered-zz", "hammered-book-3"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			files := hammeredCluster(t)
+			delete(files, "works/ha/hammered-book-3/recordings/luke-daniels-2011.json")
+			files["works/ha/hammered/work.json"] = workJSON(t, "hammered", "Hammered")
+			files["works/"+tc.lister[:2]+"/"+tc.lister+"/work.json"] = workJSON(t, tc.lister, "Hammered",
+				withAuthors("jane-doe", "tom-translator"))
+			files["works/"+tc.crediter[:2]+"/"+tc.crediter+"/work.json"] = workJSON(t, tc.crediter, "Hammered",
+				withCredits("tom-translator", "translator"))
+			files["people/to/tom-translator.json"] = personJSON(t, "tom-translator", "tom-translator")
+			rn, tx := planFixture(t, seedTree(t, files))
+			if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3", "hammered-zz")); err != nil {
+				t.Fatal(err)
+			}
+			w := tx.works.puts["hammered"]
+			if got, want := w.Strs("authors"), []string{"jane-doe"}; !reflect.DeepEqual(got, want) {
+				t.Errorf("authors = %v, want %v (credits %+v)", got, want, w.Credits())
+			}
+			want := "authors: did not add tom-translator (translator) from " + tc.lister
+			if !noteMentions(tx.notes, want) {
+				t.Errorf("notes do not name the declined author %q: %v", want, tx.notes)
+			}
+		})
 	}
 }
 

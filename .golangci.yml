@@ -98,5 +98,6 @@ linters:
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeOrderingFields
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeSeriesFields
             - github.com/kodestar/audiosilo-meta/internal/repair.mergeWorkFields
+            - github.com/kodestar/audiosilo-meta/internal/repair.unionAuthors
     staticcheck:
       checks: ["all", "-ST1000", "-ST1003", "-ST1016", "-ST1020", "-ST1021", "-ST1022"]
