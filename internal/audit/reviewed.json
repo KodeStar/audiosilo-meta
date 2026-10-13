@@ -5847,6 +5847,15 @@
     "target": "circus-of-the-dead-book-thirteen"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "city-of-the-dead-a-maximum-ride-novel"
+    ],
+    "reason": "the same novel read by the same narrator at the same length; the Cornerstone Digital UK record omits the co-author the book carries",
+    "target": "city-of-the-dead-james-patterson"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -6174,6 +6183,15 @@
     ],
     "reason": "different books: two separate Captivating History titles on the topic from different imprints, 311 vs 187 minutes six months apart",
     "target": "cultural-revolution"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "cumbres-borrascosas-emily-bronte"
+    ],
+    "reason": "one Spanish Wuthering Heights: the two records differed only by which translation credits they listed as authors",
+    "target": "cumbres-borrascosas"
   },
   {
     "decision": "assert",
@@ -7576,6 +7594,15 @@
       "don-quixote-miguel-cervantes"
     ],
     "reason": "the same English Don Quixote by Cervantes: the AmazonClassics title only adds a retailer edition note and John Ormsby is its translator, not a co-author, and the plain Penguin and Audio Connoisseur readings are further recordings of the same book",
+    "target": "don-quixote-miguel-de-cervantes"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "don-quixote-james-harris"
+    ],
+    "reason": "different texts: James Harris's \"Adapted for the Contemporary Reader\" rewrite is its own work, not a translation of the novel",
     "target": "don-quixote-miguel-de-cervantes"
   },
   {
@@ -9827,6 +9854,15 @@
     "target": "holy-orders"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "holy-orders-quirke-6"
+    ],
+    "reason": "the same Quirke novel in the same John Keating reading (579 minutes); the Macmillan record credited the pen name and the real name of one author",
+    "target": "holy-orders"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -10492,6 +10528,60 @@
     "target": "jane-eyre"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "jane-eyre"
+    ],
+    "reason": "different works: jane-eyre-charlotte-bronte is Rachel Joyce's 133-minute BBC Radio 4 dramatisation, not a reading of the novel",
+    "target": "jane-eyre-charlotte-bronte"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "jane-eyre-adaptation"
+    ],
+    "reason": "different works: jane-eyre-charlotte-bronte is Rachel Joyce's 133-minute BBC Radio 4 dramatisation, not a reading of the novel",
+    "target": "jane-eyre-charlotte-bronte"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "jane-eyre-amazonclassics-edition"
+    ],
+    "reason": "different works: jane-eyre-charlotte-bronte is Rachel Joyce's 133-minute BBC Radio 4 dramatisation, not a reading of the novel",
+    "target": "jane-eyre-charlotte-bronte"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "jane-eyre-blackstone-edition"
+    ],
+    "reason": "different works: jane-eyre-charlotte-bronte is Rachel Joyce's 133-minute BBC Radio 4 dramatisation, not a reading of the novel",
+    "target": "jane-eyre-charlotte-bronte"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "jane-eyre-naxos-edition"
+    ],
+    "reason": "different works: jane-eyre-charlotte-bronte is Rachel Joyce's 133-minute BBC Radio 4 dramatisation, not a reading of the novel",
+    "target": "jane-eyre-charlotte-bronte"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "jane-eyre-rnib-edition"
+    ],
+    "reason": "different works: jane-eyre-charlotte-bronte is Rachel Joyce's 133-minute BBC Radio 4 dramatisation, not a reading of the novel",
+    "target": "jane-eyre-charlotte-bronte"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -10914,6 +11004,15 @@
     ],
     "reason": "a split release: partie 1 and partie 2 of tome 3 (positions 3.1 and 3.2) are separate audio products, kept apart",
     "target": "la-guerre-celeste-la-guilde-des-ombres-3-partie-1"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "la-isla-del-tesoro-robert-louis-stevenson"
+    ],
+    "reason": "one Spanish Treasure Island: the two records differed only by which translator they listed as an author",
+    "target": "la-isla-del-tesoro"
   },
   {
     "decision": "assert",
@@ -12516,6 +12615,15 @@
     "target": "nuchtern-auf-einem-alkoholisierten-planeten"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "nuchtern-auf-einem-alkoholisierten-planeten-sober-on-an-alcoholic-planet-sean-alexander"
+    ],
+    "reason": "different products: the 408-minute record is the books 1-2 bundle, the 203-minute one book 1 alone",
+    "target": "nuchtern-auf-einem-alkoholisierten-planeten-sean-alexander"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -12779,6 +12887,15 @@
     ],
     "reason": "the same novel by Anthony Trollope: the decorated title names the BBC Radio 4 Classic Serial dramatization, which is a property of the recording, not of the work",
     "target": "orley-farm"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "othello-william-shakespeare"
+    ],
+    "reason": "different products: the SmartPass record is a 668-minute study guide with commentary by Jonathan Lomas and Phil Viner, not a performance of the play",
+    "target": "othello"
   },
   {
     "decision": "reject",
@@ -15731,6 +15848,15 @@
     "target": "tangled-disney-press"
   },
   {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "tao-te-ching"
+    ],
+    "reason": "different texts: Stephen Mitchell's \"A New English Version\" is his own rendering, credited to him first on every listing",
+    "target": "tao-te-ching-lao-tzu"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -15862,6 +15988,42 @@
     "target": "that-boy"
   },
   {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "17th-suspect"
+    ],
+    "reason": "the same novel read by the same narrator at the same length; the Cornerstone Digital UK record omits the co-author the book carries",
+    "target": "the-17th-suspect"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "18th-abduction"
+    ],
+    "reason": "the same novel read by the same narrator at the same length; the Cornerstone Digital UK record omits the co-author the book carries",
+    "target": "the-18th-abduction"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "19th-christmas"
+    ],
+    "reason": "the same novel read by the same narrator at the same length; the Cornerstone Digital UK record omits the co-author the book carries",
+    "target": "the-19th-christmas"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "20th-victim"
+    ],
+    "reason": "the same novel read by the same narrator at the same length; the Cornerstone Digital UK record omits the co-author the book carries",
+    "target": "the-20th-victim"
+  },
+  {
     "decision": "assert",
     "op": "merge-works",
     "others": [
@@ -15896,6 +16058,15 @@
     ],
     "reason": "the same two-book compilation by the same author released the same day: the 3-hour and 6-hour labels name two abridged recordings, not two works",
     "target": "the-7-habits-of-highly-effective-people-the-8th-habit-special-3-hour-abridgement"
+  },
+  {
+    "decision": "accept",
+    "op": "merge-works",
+    "others": [
+      "8th-confession"
+    ],
+    "reason": "the same novel read by the same narrator at the same length; the Cornerstone Digital UK record omits the co-author the book carries",
+    "target": "the-8th-confession"
   },
   {
     "decision": "reject",
@@ -16432,6 +16603,15 @@
       "the-brothers-karamazov-dramatized"
     ],
     "reason": "the-brothers-karamazov-dramatized is the L.A. Theatre Works recording of David Fishelson's stage play adapted from the novel, a different work from the novel.",
+    "target": "the-brothers-karamazov"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-brothers-karamazov-fyodor-dostoevsky"
+    ],
+    "reason": "one English Brothers Karamazov: the Blackstone record differed only by listing translator Constance Garnett as an author",
     "target": "the-brothers-karamazov"
   },
   {
@@ -19418,6 +19598,15 @@
     "target": "the-trial"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "the-trial-james-patterson"
+    ],
+    "reason": "the same Women's Murder Club BookShot read by January LaVoy; the Cornerstone Digital UK record omits co-author Maxine Paetro",
+    "target": "the-trial-a-bookshot"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -20184,6 +20373,15 @@
     "target": "trapped-in-a-dating-sim"
   },
   {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "treasure-hunters-secret-of-the-forbidden-city"
+    ],
+    "reason": "the same novel read by the same narrator at the same length; the Cornerstone Digital UK record omits the co-author the book carries",
+    "target": "treasure-hunters-secret-of-the-forbidden-city-treasure-hunters-book-3"
+  },
+  {
     "decision": "reject",
     "op": "merge-works",
     "others": [
@@ -20202,6 +20400,33 @@
     ],
     "reason": "the same novel by Robert Louis Stevenson at 439 and 485 minutes; the decorations name the publisher edition (Alpha DVD, AmazonClassics), which is a property of the recording, not of the work",
     "target": "treasure-island"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island"
+    ],
+    "reason": "different works: Booktime Publishing's 69-minute retelling adapted for children is its own text",
+    "target": "treasure-island-adapted-for-children"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-adaptation"
+    ],
+    "reason": "different works: Booktime Publishing's 69-minute retelling adapted for children is its own text",
+    "target": "treasure-island-adapted-for-children"
+  },
+  {
+    "decision": "reject",
+    "op": "merge-works",
+    "others": [
+      "treasure-island-dramatized-robert-louis-stevenson"
+    ],
+    "reason": "different works: Booktime Publishing's 69-minute retelling adapted for children is its own text",
+    "target": "treasure-island-adapted-for-children"
   },
   {
     "decision": "reject",
