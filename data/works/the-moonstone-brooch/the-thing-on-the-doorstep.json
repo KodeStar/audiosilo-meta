@@ -3861,7 +3861,8 @@
     "the-things-our-fathers-saw": {
       "added_at": "2026-07-29",
       "authors": [
-        "matthew-a-rozell"
+        "matthew-a-rozell",
+        "matthew-rozell"
       ],
       "genres": [
         "education",
@@ -4001,12 +4002,54 @@
             }
           ],
           "work": "the-things-our-fathers-saw"
+        },
+        "john-pirhalla-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D3MBVFQ7",
+              "region": "us"
+            },
+            {
+              "asin": "B0D3MC4LR6",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/815RrAnFgUL.jpg",
+          "id": "john-pirhalla-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-pirhalla"
+          ],
+          "publisher": "MATTHEW A. ROZELL",
+          "release_date": "2024-05-08",
+          "runtime_min": 392,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D3MBVFQ7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0D3MC4LR6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-things-our-fathers-saw"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B06ZZCWDR3",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D3MBVFQ7",
           "type": "libex-import"
         }
       ],
@@ -4222,67 +4265,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Things Our Fathers Saw"
-    },
-    "the-things-our-fathers-saw-matthew-rozell-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "matthew-rozell"
-      ],
-      "genres": [
-        "history",
-        "military-history"
-      ],
-      "id": "the-things-our-fathers-saw-matthew-rozell-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-pirhalla-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0D3MBVFQ7",
-              "region": "us"
-            },
-            {
-              "asin": "B0D3MC4LR6",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/815RrAnFgUL.jpg",
-          "id": "john-pirhalla-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-pirhalla"
-          ],
-          "publisher": "MATTHEW A. ROZELL",
-          "release_date": "2024-05-08",
-          "runtime_min": 392,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0D3MBVFQ7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0D3MC4LR6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-things-our-fathers-saw-matthew-rozell-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0D3MBVFQ7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Things Our Fathers Saw"
+      "title": "The Things Our Fathers Saw, Vol. 5: D-Day and Beyond"
     },
     "the-things-our-fathers-saw-vol-2-the-war-in-the-air-from-the-depression-to-combat-the-untold-stories": {
       "added_at": "2026-07-29",

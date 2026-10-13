@@ -5495,12 +5495,66 @@
             }
           ],
           "work": "the-elephants-child"
+        },
+        "johnny-morris-2009": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1OAAM",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVMAVI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1230844,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91thxDq6iuL.jpg",
+          "id": "johnny-morris-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "johnny-morris"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2009-06-17",
+          "runtime_min": 20,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1OAAM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVMAVI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-elephants-child"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B01LWXKUBH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1OAAM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-09",
+          "ref": "B004EVMAVI",
           "type": "libex-import"
         }
       ],
