@@ -1055,6 +1055,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "dave-hooper"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language",
+    "target": "dave-vs-the-monsters"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "adventures-of-a-middle-school-zombie"
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
@@ -1131,6 +1140,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "devils-duet"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "8-bit-warrior-series"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language",
+    "target": "diary-of-an-8-bit-warrior"
   },
   {
     "decision": "assert",
@@ -1307,6 +1325,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "the-century"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language; the Spanish translations carried the English series name on one listing",
+    "target": "el-siglo-the-century"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "an-elvis-cole-and-joe-pike-novel-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
@@ -1383,6 +1410,15 @@
     ],
     "reason": "lists the same works at the same slots as the canonical series; abridgement is a property of the recordings, not a series",
     "target": "franz-eberhofer"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "the-vampire-accountant"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language",
+    "target": "fred-the-vampire-accountant"
   },
   {
     "decision": "assert",
@@ -1658,6 +1694,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "john-sinclair-remastered"
+    ],
+    "reason": "the Remastered releases are recordings of the same John Sinclair radio plays, whose works now sit at the same positions of the main series: a recording variant, not a series",
+    "target": "john-sinclair-horspiel"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "johnny-maxwell-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each with a recording stating abridged, so the abridgement stays recorded on the recordings; the other series in the audit group are separate translations or spellings and are not folded",
@@ -1815,6 +1860,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "la-saga-du-soleil-noir"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "serie-julio-cesar"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language",
+    "target": "la-verdadera-historia-de-julio-cesar"
   },
   {
     "decision": "assert",
@@ -2298,6 +2352,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "los-pilares-de-la-tierra-the-pillars-of-the-earth"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language; the bracketed English name is a retailer decoration",
+    "target": "saga-los-pilares-de-la-tierra"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "fargo-adventures-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots; books 3 to 10 are filed there with only their unabridged readings, and books 1 and 2 have abridged recordings",
@@ -2329,6 +2392,15 @@
     ],
     "reason": "the dramatized spelling lists only works this series already holds at the same slots; a dramatization is a property of the recordings, not a separate series",
     "target": "secret-projects"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "miren-triggs-spanish-edition"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language; the bracketed edition note is a retailer decoration",
+    "target": "serie-la-chica-de-nieve"
   },
   {
     "decision": "assert",
@@ -2523,6 +2595,15 @@
     "decision": "assert",
     "op": "merge-series",
     "others": [
+      "brainship"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language",
+    "target": "the-brain-and-brawn"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
       "the-cat-who-abridged"
     ],
     "reason": "the abridged spelling lists only works this series already holds at the same slots, each abridgement recorded on a recording, so the abridgement stays recorded on the recordings",
@@ -2663,6 +2744,15 @@
     ],
     "reason": "every work it lists sits at the same slot of this series: the same series under a second spelling",
     "target": "the-lorien-legacies"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-series",
+    "others": [
+      "greg-mandel"
+    ],
+    "reason": "the same series under two names: every book listed at the same position in both, by the same author, in the same language",
+    "target": "the-mandel-files"
   },
   {
     "decision": "assert",
