@@ -700,6 +700,43 @@ func TestMergeWorksDoesNotImportRoleCreditedAuthors(t *testing.T) {
 	}
 }
 
+// The credits the author union reads are the WHOLE cluster's, not the ones folded so
+// far: a credit only a later loser states still keeps an earlier loser's author column
+// from importing that person. Unioned per loser, the outcome turned on the losers' slug
+// order - the earlier loser's translator became an author beside his credit. Both
+// orders are run, so the rule cannot pass by the fixture's sort alone.
+func TestMergeWorksReadsTheWholeClustersCredits(t *testing.T) {
+	for _, tc := range []struct {
+		name, lister, crediter string
+	}{
+		{"the lister folds first", "hammered-book-3", "hammered-zz"},
+		{"the crediter folds first", "hammered-zz", "hammered-book-3"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			files := hammeredCluster(t)
+			delete(files, "works/ha/hammered-book-3/recordings/luke-daniels-2011.json")
+			files["works/ha/hammered/work.json"] = workJSON(t, "hammered", "Hammered")
+			files["works/"+tc.lister[:2]+"/"+tc.lister+"/work.json"] = workJSON(t, tc.lister, "Hammered",
+				withAuthors("jane-doe", "tom-translator"))
+			files["works/"+tc.crediter[:2]+"/"+tc.crediter+"/work.json"] = workJSON(t, tc.crediter, "Hammered",
+				withCredits("tom-translator", "translator"))
+			files["people/to/tom-translator.json"] = personJSON(t, "tom-translator", "tom-translator")
+			rn, tx := planFixture(t, seedTree(t, files))
+			if err := rn.mergeWorks(tx, mergeFinding("hammered", "hammered-book-3", "hammered-zz")); err != nil {
+				t.Fatal(err)
+			}
+			w := tx.works.puts["hammered"]
+			if got, want := w.Strs("authors"), []string{"jane-doe"}; !reflect.DeepEqual(got, want) {
+				t.Errorf("authors = %v, want %v (credits %+v)", got, want, w.Credits())
+			}
+			want := "authors: did not add tom-translator (translator) from " + tc.lister
+			if !noteMentions(tx.notes, want) {
+				t.Errorf("notes do not name the declined author %q: %v", want, tx.notes)
+			}
+		})
+	}
+}
+
 // One identifier stated in TWO marketplaces is two facts, and a merge keeps both. The
 // union keys on the (region, ASIN) pair - exactly pkg/check's own ASIN uniqueness key - so
 // it can neither mint a duplicate nor drop a stated region, which a by-value fold did.

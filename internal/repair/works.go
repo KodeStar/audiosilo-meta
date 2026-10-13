@@ -92,8 +92,21 @@ func (rn *runner) mergeWorks(t *txn, fd audit.Finding) error {
 	if err != nil {
 		return fmt.Errorf("work %q: %w", target, err)
 	}
+	// credits union across the WHOLE cluster before any loser folds: the author union
+	// reads them (unionAuthors), and a credit only a LATER loser states must still keep
+	// an earlier loser's author column from importing that person - unioned per loser,
+	// the outcome turned on the losers' slug order.
+	credits := merged.Credits()
+	for _, lw := range loserEntries {
+		credits = rawentry.UnionCredits(credits, lw.Credits())
+	}
+	rawentry.SetListOrDrop(merged, "credits", credits)
+	roles := make(map[string][]string, len(credits))
+	for _, c := range credits {
+		roles[c.Person] = append(roles[c.Person], c.Role)
+	}
 	for i, slug := range sorted {
-		if err := t.foldWork(target, slug, merged, recs, loserEntries[i]); err != nil {
+		if err := t.foldWork(target, slug, merged, recs, loserEntries[i], roles); err != nil {
 			return err
 		}
 	}
@@ -122,8 +135,9 @@ func (rn *runner) mergeWorks(t *txn, fd audit.Finding) error {
 	return t.refuseLinkFaults(target)
 }
 
-// foldWork folds one loser into the merged work entry and its recordings map.
-func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry, lw entry) error {
+// foldWork folds one loser into the merged work entry and its recordings map. roles is
+// the whole cluster's credits as person -> roles (see mergeWorks).
+func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry, lw entry, roles map[string][]string) error {
 	lrecs, err := lw.Recordings()
 	if err != nil {
 		return fmt.Errorf("work %q: %w", loser, err)
@@ -133,7 +147,7 @@ func (t *txn) foldWork(target, loser string, merged entry, recs map[string]entry
 			return err
 		}
 	}
-	lost, declined := mergeWorkFields(merged, lw)
+	lost, declined := mergeWorkFields(merged, lw, roles)
 	t.noteLost(lost, loser)
 	if len(declined) > 0 {
 		t.note("  authors: did not add %s from %s: credited on %s in a non-author role, and a credit is not authorship",
@@ -213,23 +227,28 @@ func sameRawMember(a, b entry, field string) bool { return string(a[field]) == s
 // credit somebody the target does not - the shape that put "June's Wild Flight"
 // beside "The Last Kids on Earth: June's Wild Flight" - and dropping them would lose
 // a credit the catalogue holds. The target's own order leads, since it is a billing
-// order. credits are unioned FIRST, on (person, role), because the author union reads
-// them - see unionAuthors.
-func mergeWorkFields(merged, lw entry) (lost []mergedFacts, declined []string) {
-	credits := rawentry.UnionCredits(merged.Credits(), lw.Credits())
-	rawentry.SetListOrDrop(merged, "credits", credits)
-	authors, declined := unionAuthors(merged.Strs("authors"), lw.Strs("authors"), credits)
+// order - minus the role-credited people, see unionAuthors. credits are not unioned
+// here: mergeWorks unions the whole cluster's first and passes them in as roles.
+func mergeWorkFields(merged, lw entry, roles map[string][]string) ([]mergedFacts, declinedAuthors) {
+	authors, declined := unionAuthors(merged.Strs("authors"), lw.Strs("authors"), roles)
 	rawentry.SetListOrDrop(merged, "authors", authors)
 	rawentry.SetListOrDrop(merged, "genres", rawentry.UnionGenres(merged.Strs("genres"), lw.Strs("genres")))
 	merged.Set("sources", rawentry.UnionSources(merged.Sources(), lw.Sources()))
-	lost = fillStrings(merged, lw, "subtitle", "language", "first_published", "description")
+	lost := fillStrings(merged, lw, "subtitle", "language", "first_published", "description")
 	return append(lost, fillXref(merged, lw)...), declined
 }
 
+// declinedAuthors are the loser authors the merge did not import because the merged
+// work credits them in a role, each rendered "slug (role, role)" for the applied
+// record's note. They are a LOSS - the author column's statement does not survive as
+// authorship - so this is a type TestLossHelpersAreLinted tracks beside mergedFacts,
+// and a call that discards it fails the linter rather than dropping the note.
+type declinedAuthors []string
+
 // unionAuthors is merge-works' author union: the target's authors in their own order,
-// then each loser author the target does not list - EXCEPT a person the merged work
-// credits in a role (credits is the already-unioned list, so a credit stated on either
-// record counts). Those are returned as declined, "slug (role, role)", for the note.
+// then each loser author the target does not list - EXCEPT a person roles names (the
+// whole cluster's credits, so a credit stated on any record of it counts). Those are
+// returned as declined, for the note.
 //
 // THE RULE, and why it is one-sided. A source that lists a translator, an introducer, an
 // illustrator or a foreword writer in its AUTHOR column puts them in authors[] (the
@@ -255,11 +274,7 @@ func mergeWorkFields(merged, lw entry) (lost []mergedFacts, declined []string) {
 // rule's containment check reads, which shrinks to what the records state as authorship.
 // Nothing has to be reconciled after: the post-write pkg/check load and any later audit
 // run judge the tree as written.
-func unionAuthors(target, loser []string, credits []model.Credit) (authors, declined []string) {
-	roles := make(map[string][]string, len(credits))
-	for _, c := range credits {
-		roles[c.Person] = append(roles[c.Person], c.Role)
-	}
+func unionAuthors(target, loser []string, roles map[string][]string) (authors []string, declined declinedAuthors) {
 	have := importer.ToSet(target)
 	authors = slices.Clone(target)
 	for _, a := range loser {
