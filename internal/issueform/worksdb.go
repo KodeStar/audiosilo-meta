@@ -185,7 +185,8 @@ func (w *worksDB) resolve(slug string) (survivor string, v workVerdict, err erro
 // It is the redirect table read backwards, so it walks rather than seeks: the
 // primary key is (kind, old_slug) and new_slug carries no index. That is a
 // deliberate non-issue rather than an oversight - the table is the count of
-// merges the project has ever applied (1,936 rows in the release this landed
+// merges the project has ever applied plus one retitle alias per retitle that left
+// its work off its new title's chain (1,936 rows in the release this landed
 // against, against 277k works), it is read ONCE per submission, and an index on
 // new_slug is an ordinary builder DDL addition with ZERO SchemaVersion movement
 // (build.go's own rule: the version covers what a reader may SELECT, never
@@ -376,7 +377,7 @@ func (c *composer) noteRetired(kind model.RedirectKind, from, to string) {
 		c.retiredNoted = map[string]bool{}
 	}
 	c.retiredNoted[key] = true
-	c.note("%s slug %q was retired by a merge onto %q; the submission is recorded against %q", kind, from, to, to)
+	c.note("%s slug %q is retired onto %q; the submission is recorded against %q", kind, from, to, to)
 }
 
 // noteJoined says that a series name the form gave joined a catalogued series
@@ -396,13 +397,15 @@ func (c *composer) noteJoined(given, slug, stored string) {
 	c.note("%s", importer.SeriesNameJoinsNote([]importer.SeriesNameJoin{j}))
 }
 
-// noteRekey reports that the submission named a slug a core merge has retired and
-// that the record is being composed under the surviving one. It is a NOTE rather
-// than a refusal - the bot is CHOOSING the key here, and choosing the tombstoned
-// spelling would produce a pull request the community repository's own key check
-// rejects with "re-key to ..." - but it is never silent: a maintainer reading the
-// pull request has to be able to see that the key is not the one the form said.
+// noteRekey reports that the submission named a slug the core tombstone table
+// retires (a merge retired it, or it is a retitle's alias - see model.Redirects)
+// and that the record is being composed under the surviving one. It is a NOTE
+// rather than a refusal - the bot is CHOOSING the key here, and choosing the
+// tombstoned spelling would produce a pull request the community repository's own
+// key check rejects with "re-key to ..." - but it is never silent: a maintainer
+// reading the pull request has to be able to see that the key is not the one the
+// form said.
 func (c *composer) noteRekey(from, to string) {
-	c.note("work %q has been retired by a core merge and now resolves to %q; the sidecar is composed under the surviving slug",
+	c.note("work %q is retired onto %q; the sidecar is composed under the surviving slug",
 		from, to)
 }

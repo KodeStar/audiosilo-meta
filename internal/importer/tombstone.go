@@ -12,9 +12,11 @@ import (
 // data/redirects.json): no writer here ever creates a record at a retired slug.
 //
 // A tombstone is a recorded human decision - a repair wave merged two records and
-// said the retired slug names the survivor - so a name that slugs onto one is a
-// name for the SURVIVOR, not an invitation to re-create the duplicate the merge
-// removed - and minting there fails metacheck's live-source rule for the WHOLE run.
+// said the retired slug names the survivor, or a reviewed retitle said the slug its
+// new title composes names the retitled work (the ALIAS, WorkTitleAlias) - so a
+// name that slugs onto one is a name for the SURVIVOR, not an invitation to
+// re-create the duplicate the merge removed (or mint the one the retitle would
+// invite) - and minting there fails metacheck's live-source rule for the WHOLE run.
 // Every lookup goes through model.Redirects.Survivor. internal/issueform applies
 // the same rule at the intake door (one candidate per family, except a series,
 // which it FINDS through this package's own resolution, SeriesAuthorIndex.Resolve).
@@ -63,7 +65,7 @@ func (p *planner) reportTombstoneRides() {
 		return
 	}
 	p.summary.Notes = append(p.summary.Notes, fmt.Sprintf(
-		"%d retired slug(s) resolved onto their survivors through %s (a merge retired them, so nothing is re-created there): %s",
+		"%d retired slug(s) resolved onto their survivors through %s (a merge or a retitle alias retired them, so nothing is minted there): %s",
 		len(lines), pack.RedirectsFile, strings.Join(lines, ", ")))
 }
 

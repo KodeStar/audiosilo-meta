@@ -357,6 +357,35 @@ func (t *txn) stageFor(f pack.Family) *stage {
 	panic("repair: no stage for family " + f.Root())
 }
 
+// heldLookup answers "is this slug taken in the run's view" for a slug-minting
+// walk (importer.FreeSeriesSlug, importer.WorkTitleAlias): a slug an earlier
+// proposal retired, or one the txn's stage of the family holds. A read error
+// answers false from then on (stopping the walk) and is kept in err for the
+// caller to return, whatever slug the walk ended on.
+type heldLookup struct {
+	t   *txn
+	f   pack.Family
+	err error
+}
+
+// heldIn is the txn's heldLookup over one family.
+func (t *txn) heldIn(f pack.Family) *heldLookup { return &heldLookup{t: t, f: f} }
+
+func (h *heldLookup) held(slug string) bool {
+	if _, retired := h.t.p.retiredBy(h.f, slug); retired {
+		return true
+	}
+	if h.err != nil {
+		return false
+	}
+	_, ok, err := h.t.stageFor(h.f).get(slug)
+	if err != nil {
+		h.err = err
+		return false
+	}
+	return ok
+}
+
 // tomb is a redirect a txn intends to record.
 type tomb struct {
 	kind model.RedirectKind
@@ -413,7 +442,7 @@ func (p *plan) retiredBy(f pack.Family, slug string) (string, bool) {
 }
 
 // redirect records a tombstone. It is validated at commit, through
-// redirects.Add over a copy of the table, so a refusal costs nothing.
+// redirects.Add, so a refusal costs nothing.
 func (t *txn) redirect(kind model.RedirectKind, from, to string) {
 	t.tombs = append(t.tombs, tomb{kind: kind, from: from, to: to})
 }
@@ -423,10 +452,17 @@ func (t *txn) redirect(kind model.RedirectKind, from, to string) {
 // committed beside a tombstone that was never recorded.
 func (t *txn) commit(key string) error {
 	// The copy is what makes a refused tombstone free of consequence, so it is taken
-	// only when there IS one: a wave of 20k retitles against a table of 50k entries
-	// would otherwise copy the whole table 20k times over for nothing.
+	// only when a refusal could leave something behind: redirects.Add makes every
+	// judgement before it writes, so ONE Add refused leaves the table as it was and
+	// needs no copy - which is every retitle's alias, and a wave of 20k retitles
+	// against a table of 50k entries would otherwise copy the whole table 20k times.
+	// A second Add can be refused after the first one wrote, so a merge's several
+	// tombstones are still validated over a copy.
 	if len(t.tombs) > 0 {
-		table := cloneRedirects(t.p.redirects)
+		table := t.p.redirects
+		if len(t.tombs) > 1 {
+			table = cloneRedirects(t.p.redirects)
+		}
 		for _, tb := range t.tombs {
 			if err := redirects.Add(table, tb.kind, tb.from, tb.to); err != nil {
 				return err

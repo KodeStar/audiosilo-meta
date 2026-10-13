@@ -105,10 +105,12 @@ a `"recordings"` map keyed by recording slug, so one book is one entry.
   *tombstone* table (`{"works": {"<retired-slug>": "<live-slug>"}, "people":
   ..., "series": ...}`). When a repair merges two records for one book, the
   retired slug is recorded there and the API answers it with a `301` at the
-  surviving record, so a URL or a stored id keeps working. You will not normally
-  touch it by hand: `metacheck` requires every source to be a slug the database
-  no longer holds, every target to be one it does, and no target to be a
-  redirect itself.
+  surviving record, so a URL or a stored id keeps working. A repair that
+  retitles a work can also record an ALIAS there: the slug its new title would
+  be imported at, pointing at the work, so the next import of that title finds
+  it instead of minting a duplicate. You will not normally touch it by hand:
+  `metacheck` requires every source to be a slug the database does not hold,
+  every target to be one it does, and no target to be a redirect itself.
 
 **You never have to work out which pack a record goes in.** Add your entry to
 roughly the right file - or the wrong one - and run `go run ./cmd/metafmt

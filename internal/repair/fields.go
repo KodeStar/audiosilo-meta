@@ -10,8 +10,10 @@ import (
 
 // fields.go applies the four single-field ops: retitle-work, restate-position,
 // add-series-member and fill-field. None of them touches a slug, so none of them
-// retires an id or needs a redirect - which is what makes them the small half of
-// this package.
+// retires an id - which is what makes them the small half of this package. One of
+// them may still RECORD a tombstone: a retitle whose new title composes a chain the
+// record is not on aliases that chain's free slug onto the record (retitleWork), so
+// the next import of the title finds the work instead of minting its duplicate.
 //
 // Every one of them re-reads the record and checks the proposal's FROM against what
 // the tree states now. That is the same rule the fresh-audit gate applies one level
@@ -38,6 +40,16 @@ var workScalarFields = map[string]bool{
 
 // retitleWork sets a work's title. The slug is untouched: it is identity, and W-TITLE
 // deliberately proposes no rename (F-HYGIENE lists the rename candidates instead).
+//
+// What the slug cannot follow, the tombstone table can. The importer FINDS an existing
+// work by composing its title's candidate chain, so a record left off the chain its new
+// title composes ("Messenger's Legacy" at messengers-legacy-novella) is one the next
+// import of that title misses - and mints a duplicate beside. So when the new title's
+// chain no longer reaches the record, the slug that import would mint at is recorded as
+// a tombstone onto it (importer.WorkTitleAlias): a retired work candidate is judged as
+// its survivor, so the import merges into the record exactly as it would have had the
+// record been created under its new title. The alias names no record that ever
+// existed, and that is fine - model.Redirects says why.
 func (rn *runner) retitleWork(t *txn, fd audit.Finding) error {
 	p := fd.Propose
 	if p.Field != "title" {
@@ -57,6 +69,24 @@ func (rn *runner) retitleWork(t *txn, fd audit.Finding) error {
 	next.Set("title", p.To)
 	t.works.put(p.Target, next)
 	t.note("retitled %s: %q -> %q", p.Target, p.From, p.To)
+	return t.aliasRetitle(p.Target, next)
+}
+
+// aliasRetitle records the retitle alias (see retitleWork) when the work's new title
+// composes a chain that no longer reaches it. Liveness is read through the txn, so a
+// slug an earlier proposal of the run retired reads as retired, not free.
+func (t *txn) aliasRetitle(slug string, e entry) error {
+	lookup := t.heldIn(pack.FamilyWorks)
+	w := &model.Work{ID: slug, Title: e.Str("title"), Authors: e.Strs("authors"), Credits: e.Credits()}
+	alias := importer.WorkTitleAlias(w, lookup.held, t.p.redirects)
+	if lookup.err != nil {
+		return lookup.err
+	}
+	if alias == "" {
+		return nil
+	}
+	t.redirect(model.RedirectWorks, alias, slug)
+	t.note("aliased %s -> %s: the slug an import of the new title would mint at, so that import finds the work", alias, slug)
 	return nil
 }
 

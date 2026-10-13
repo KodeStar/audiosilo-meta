@@ -57,6 +57,19 @@ func ValidRedirectKind(k RedirectKind) bool { return slices.Contains(redirectKin
 // duplicate records cannot simply drop the slug it retires - the id has to keep
 // resolving, or every consumer holding it is broken.
 //
+// It has ONE second use, for the importer rather than for consumers: a RETITLE
+// ALIAS. A work's slug never follows its title, so a retitle can leave the record
+// off the candidate chain its new title composes, and the importer - which finds
+// an existing work by composing that chain - would mint a duplicate beside it. The
+// retitle therefore records the slug that import would mint at as a tombstone onto
+// the record (internal/repair's retitleWork, importer.WorkTitleAlias), and a
+// retired work candidate is judged as its survivor. Such a source never held a
+// record. Nothing below asks that it did: the rules say what a source IS (never a
+// live id), and a 301 from a slug nobody ever held is harmless. One consequence for
+// a future RENAME pass (none exists): moving a record onto its own alias's source
+// has to drop that alias first, or the source turns live and Add refuses the
+// rename's tombstone as a cycle.
+//
 // WHAT MUST HOLD OF IT, and this is the property every reader depends on:
 // a source is never a live id, a target always is, and no target is itself a
 // source. Chains are COLLAPSED as they are written (pkg/redirects.Add repoints

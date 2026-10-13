@@ -85,7 +85,7 @@ func (c *composer) resolveLinkTarget(fam linkFamily, field, raw string) (string,
 		// Not noteRetired: its "the submission is recorded against" names the record a
 		// submission is filed under, and here that is the corrected record - the
 		// survivor is only what the link names.
-		c.note("%s slug %q was retired by a merge onto %q; %s names %q", fam.kind, ref, live, field, live)
+		c.note("%s slug %q is retired onto %q; %s names %q", fam.kind, ref, live, field, live)
 	}
 	return live, true
 }

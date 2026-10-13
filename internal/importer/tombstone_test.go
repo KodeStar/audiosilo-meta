@@ -295,7 +295,7 @@ func TestWorkTombstoneOfADifferentBookIsSteppedPast(t *testing.T) {
 	if !entryExists(t, dataDir, workAddr(want)) {
 		t.Errorf("no work at %q: a retired candidate for a different book is stepped past", want)
 	}
-	if !hasWarning(sum.Warnings, `work slug "the-thing" was retired by a merge onto "the-thing-special-edition"`) {
+	if !hasWarning(sum.Warnings, `work slug "the-thing" is retired onto "the-thing-special-edition"`) {
 		t.Errorf("no warning naming the retired slug: %v", sum.Warnings)
 	}
 	assertTreeValid(t, dataDir)

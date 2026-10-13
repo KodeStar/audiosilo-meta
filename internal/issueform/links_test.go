@@ -134,7 +134,7 @@ func TestCorrectTranslationOfResolvesARetiredSlug(t *testing.T) {
 	if got := linkSet(t, dir, "works/da/das-werk/work.json"); !slices.Equal(got, []string{"existing-work"}) {
 		t.Errorf("translation_of = %v, want the survivor existing-work", got)
 	}
-	if !anyContains(res.Messages, `works slug "old-existing" was retired by a merge onto "existing-work"`) {
+	if !anyContains(res.Messages, `works slug "old-existing" is retired onto "existing-work"`) {
 		t.Errorf("the verdict does not report the retired slug: %v", res.Messages)
 	}
 }
@@ -150,7 +150,7 @@ func TestCorrectSeriesTranslationOf(t *testing.T) {
 		if got := linkSet(t, dir, "series/di/die-serie.json"); !slices.Equal(got, []string{"existing-series"}) {
 			t.Errorf("translation_of = %v, want [existing-series]", got)
 		}
-		if !anyContains(res.Messages, `series slug "old-existing-series" was retired`) {
+		if !anyContains(res.Messages, `series slug "old-existing-series" is retired onto "existing-series"`) {
 			t.Errorf("the retired slug is not reported: %v", res.Messages)
 		}
 	})
@@ -232,7 +232,7 @@ func TestCorrectSeriesOrderingOf(t *testing.T) {
 		if got := linkField(t, dir, "series/sa/saga-rec.json", "ordering_of"); got != "saga-pub" {
 			t.Errorf("ordering_of = %v, want the survivor saga-pub", got)
 		}
-		if !anyContains(res.Messages, `series slug "old-saga-pub" was retired by a merge onto "saga-pub"`) {
+		if !anyContains(res.Messages, `series slug "old-saga-pub" is retired onto "saga-pub"`) {
 			t.Errorf("the retired slug is not reported: %v", res.Messages)
 		}
 	})

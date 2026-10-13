@@ -1,11 +1,22 @@
 package redirects
 
 import (
+	"maps"
 	"os"
+	"reflect"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
+
+// clone deep-copies a table, so a later comparison sees what Add wrote.
+func clone(r model.Redirects) model.Redirects {
+	out := make(model.Redirects, len(r))
+	for k, v := range r {
+		out[k] = maps.Clone(v)
+	}
+	return out
+}
 
 func read(t *testing.T, dir string) string {
 	t.Helper()
@@ -160,8 +171,17 @@ func TestAddRefusals(t *testing.T) {
 			if tc.setup != nil {
 				tc.setup(r)
 			}
+			// A tombstone already pointing at the source is what a successful Add
+			// would repoint, so it is the entry a refusal must leave alone.
+			r[model.RedirectWorks]["older"] = tc.from
+			before := clone(r)
 			if err := Add(r, tc.kind, tc.from, tc.to); err == nil {
 				t.Fatalf("Add(%s, %s -> %s) was accepted; table is now %v", tc.kind, tc.from, tc.to, r)
+			}
+			// internal/repair's commit records a lone tombstone straight into its
+			// plan's table, so a refused Add must write nothing at all.
+			if !reflect.DeepEqual(r, before) {
+				t.Errorf("a refused Add changed the table:\n got %v\nwant %v", r, before)
 			}
 		})
 	}
