@@ -8,6 +8,7 @@
       "genres": [
         "espionage",
         "politics",
+        "religion-spirituality",
         "religious-fiction",
         "science-fiction",
         "thriller-suspense"
@@ -244,12 +245,96 @@
             }
           ],
           "work": "soon"
+        },
+        "steve-sever-2004": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UUP0FS",
+              "region": "us"
+            },
+            {
+              "asin": "B004F2IQ50",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4498680,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4350166,
+              "start_ms": 4498680,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4541870,
+              "start_ms": 8848846,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3862639,
+              "start_ms": 13390716,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4140350,
+              "start_ms": 17253355,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4574285,
+              "start_ms": 21393705,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2356454,
+              "start_ms": 25967990,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1610257,
+              "start_ms": 28324444,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Yps79WpGL.jpg",
+          "id": "steve-sever-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steve-sever"
+          ],
+          "publisher": "Tyndale House Publishers",
+          "release_date": "2004-05-06",
+          "runtime_min": 498,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UUP0FS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F2IQ50",
+              "type": "libex-import"
+            }
+          ],
+          "work": "soon"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B004OAFSTA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UUP0FS",
           "type": "libex-import"
         }
       ],
@@ -434,112 +519,6 @@
         }
       ],
       "title": "Soon I Will Be Invincible"
-    },
-    "soon-jerry-jenkins": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jerry-jenkins"
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "religion-spirituality",
-        "religious-fiction",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "soon-jerry-jenkins",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "steve-sever-2004": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002UUP0FS",
-              "region": "us"
-            },
-            {
-              "asin": "B004F2IQ50",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4498680,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4350166,
-              "start_ms": 4498680,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4541870,
-              "start_ms": 8848846,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3862639,
-              "start_ms": 13390716,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4140350,
-              "start_ms": 17253355,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4574285,
-              "start_ms": 21393705,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2356454,
-              "start_ms": 25967990,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1610257,
-              "start_ms": 28324444,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Yps79WpGL.jpg",
-          "id": "steve-sever-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "steve-sever"
-          ],
-          "publisher": "Tyndale House Publishers",
-          "release_date": "2004-05-06",
-          "runtime_min": 498,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002UUP0FS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F2IQ50",
-              "type": "libex-import"
-            }
-          ],
-          "work": "soon-jerry-jenkins"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UUP0FS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Soon"
     },
     "soon-lois-murphy": {
       "added_at": "2026-07-29",

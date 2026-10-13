@@ -5706,6 +5706,15 @@
         "james-patterson",
         "ned-rust"
       ],
+      "genres": [
+        "action-adventure",
+        "dystopian",
+        "fantasy",
+        "parenting-relationships",
+        "science-fiction",
+        "sword-sorcery",
+        "young-adult"
+      ],
       "id": "the-gift-james-patterson",
       "language": "en",
       "license": "CC0-1.0",
@@ -6290,12 +6299,96 @@
             }
           ],
           "work": "the-gift-james-patterson"
+        },
+        "elijah-wood-2010-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00454MYTM",
+              "region": "us"
+            },
+            {
+              "asin": "B004NPG3XG",
+              "region": "de"
+            },
+            {
+              "asin": "B004EXJ6JK",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4090287,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4384949,
+              "start_ms": 4090287,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4162037,
+              "start_ms": 8475236,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3988120,
+              "start_ms": 12637273,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4265180,
+              "start_ms": 16625393,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4114389,
+              "start_ms": 20890573,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81O1iOrORfL.jpg",
+          "id": "elijah-wood-2010-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "elijah-wood",
+            "spencer-locke"
+          ],
+          "publisher": "Cornerstone Digital",
+          "release_date": "2010-11-04",
+          "runtime_min": 416,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00454MYTM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004NPG3XG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EXJ6JK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-gift-james-patterson"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B004CSV2FI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00454MYTM",
           "type": "libex-import"
         }
       ],

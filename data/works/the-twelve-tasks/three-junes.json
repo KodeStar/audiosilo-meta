@@ -4382,12 +4382,147 @@
       ],
       "genres": [
         "classics",
-        "comedy-humor"
+        "comedy-humor",
+        "literary-fiction"
       ],
       "id": "three-men-in-a-boat",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "b-j-harrison-2016": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B01DAH4W7G",
+              "region": "us"
+            },
+            {
+              "asin": "B01DAH6EV8",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1257035,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 775407,
+              "start_ms": 1257035,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 909340,
+              "start_ms": 2032442,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1277423,
+              "start_ms": 2941782,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1084279,
+              "start_ms": 4219205,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1407919,
+              "start_ms": 5303484,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1155982,
+              "start_ms": 6711403,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1454637,
+              "start_ms": 7867385,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1264884,
+              "start_ms": 9322022,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1222809,
+              "start_ms": 10586906,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1377826,
+              "start_ms": 11809715,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1539111,
+              "start_ms": 13187541,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1639097,
+              "start_ms": 14726652,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1422965,
+              "start_ms": 16365749,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1730630,
+              "start_ms": 17788714,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 514368,
+              "start_ms": 19519344,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 957405,
+              "start_ms": 20033712,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 878875,
+              "start_ms": 20991117,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1225038,
+              "start_ms": 21869992,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71Lls4TDIyL.jpg",
+          "id": "b-j-harrison-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B.J. Harrison",
+          "release_date": "2016-03-23",
+          "runtime_min": 384,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B01DAH4W7G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01DAH6EV8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "three-men-in-a-boat"
+        },
         "david-mccallion-2015": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4978,6 +5113,219 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B079T5D9VY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "three-men-in-a-boat"
+        },
+        "martin-jarvis-2004": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V5ITA0",
+              "region": "us"
+            },
+            {
+              "asin": "B004EWYEZ2",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4386435,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3690301,
+              "start_ms": 4386435,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4003677,
+              "start_ms": 8076736,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4562860,
+              "start_ms": 12080413,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3736741,
+              "start_ms": 16643273,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3283116,
+              "start_ms": 20380014,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51EMuXZELnL.jpg",
+          "id": "martin-jarvis-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "martin-jarvis"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2004-12-26",
+          "runtime_min": 394,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5ITA0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EWYEZ2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "three-men-in-a-boat"
+        },
+        "peter-coates-2024": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B0DCZPHZ9S",
+              "region": "us"
+            },
+            {
+              "asin": "B0DCZRWKLJ",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16810,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1301757,
+              "start_ms": 16810,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 800809,
+              "start_ms": 1318567,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 939665,
+              "start_ms": 2119376,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1267391,
+              "start_ms": 3059041,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1046360,
+              "start_ms": 4326432,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1353328,
+              "start_ms": 5372792,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1113257,
+              "start_ms": 6726120,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1413654,
+              "start_ms": 7839377,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1229217,
+              "start_ms": 9253031,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1195665,
+              "start_ms": 10482248,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1325812,
+              "start_ms": 11677913,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1470194,
+              "start_ms": 13003725,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1618314,
+              "start_ms": 14473919,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1411796,
+              "start_ms": 16092233,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1685838,
+              "start_ms": 17504029,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 494585,
+              "start_ms": 19189867,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 922552,
+              "start_ms": 19684452,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 898751,
+              "start_ms": 20607004,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1225595,
+              "start_ms": 21505755,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 22058,
+              "start_ms": 22731350,
+              "title": "Chapter 21"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91RIhUu71CL.jpg",
+          "id": "peter-coates-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "peter-coates"
+          ],
+          "publisher": "Strelbytskyy Multimedia Publishing",
+          "release_date": "2024-08-14",
+          "runtime_min": 379,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B0DCZPHZ9S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DCZRWKLJ",
               "type": "libex-import"
             }
           ],
@@ -6007,6 +6355,428 @@
           ],
           "work": "three-men-in-a-boat"
         },
+        "simon-hester-2020": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B0892S4YNC",
+              "region": "us"
+            },
+            {
+              "asin": "B0892SYJMM",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15743,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 72121,
+              "start_ms": 15743,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1298366,
+              "start_ms": 87864,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 814323,
+              "start_ms": 1386230,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 949603,
+              "start_ms": 2200553,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1338119,
+              "start_ms": 3150156,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1397841,
+              "start_ms": 4488275,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1183149,
+              "start_ms": 5886116,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1539204,
+              "start_ms": 7069265,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1325348,
+              "start_ms": 8608469,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1292004,
+              "start_ms": 9933817,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1414002,
+              "start_ms": 11225821,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1582347,
+              "start_ms": 12639823,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1638632,
+              "start_ms": 14222170,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1497594,
+              "start_ms": 15860802,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1806001,
+              "start_ms": 17358396,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 514275,
+              "start_ms": 19164397,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 966507,
+              "start_ms": 19678672,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 890067,
+              "start_ms": 20645179,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1264558,
+              "start_ms": 21535246,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 24288,
+              "start_ms": 22799804,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vRTmiA8hL.jpg",
+          "id": "simon-hester-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-hester"
+          ],
+          "publisher": "Jerome K Jerome",
+          "release_date": "2020-05-26",
+          "runtime_min": 380,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B0892S4YNC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0892SYJMM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "three-men-in-a-boat"
+        },
+        "simon-mattacks-2019": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "1799718980",
+              "region": "us"
+            },
+            {
+              "asin": "1799718980",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 133050,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1225131,
+              "start_ms": 133050,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 767117,
+              "start_ms": 1358181,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 884122,
+              "start_ms": 2125298,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1216098,
+              "start_ms": 3009420,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1001128,
+              "start_ms": 4225518,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1318127,
+              "start_ms": 5226646,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1084116,
+              "start_ms": 6544773,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1420132,
+              "start_ms": 7628889,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1210131,
+              "start_ms": 9049021,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1131136,
+              "start_ms": 10259152,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1293119,
+              "start_ms": 11390288,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1422106,
+              "start_ms": 12683407,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1536116,
+              "start_ms": 14105513,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1318127,
+              "start_ms": 15641629,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1623121,
+              "start_ms": 16959756,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 453114,
+              "start_ms": 18582877,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 912126,
+              "start_ms": 19035991,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 818131,
+              "start_ms": 19948117,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1241106,
+              "start_ms": 20766248,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 268050,
+              "start_ms": 22007354,
+              "title": "Chapter 21"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81DvIQHEU4L.jpg",
+          "id": "simon-mattacks-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-mattacks"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-09-03",
+          "runtime_min": 371,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "1799718980",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1799718980",
+              "type": "libex-import"
+            }
+          ],
+          "work": "three-men-in-a-boat"
+        },
+        "steven-crossley-2011": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B004P95AYI",
+              "region": "us"
+            },
+            {
+              "asin": "B004P8DTPG",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1360596,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 816739,
+              "start_ms": 1360596,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 968365,
+              "start_ms": 2177335,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1363290,
+              "start_ms": 3145700,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1108660,
+              "start_ms": 4508990,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1423615,
+              "start_ms": 5617650,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1203119,
+              "start_ms": 7041265,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1560009,
+              "start_ms": 8244384,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1378244,
+              "start_ms": 9804393,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1257361,
+              "start_ms": 11182637,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1376804,
+              "start_ms": 12439998,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1568740,
+              "start_ms": 13816802,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1699886,
+              "start_ms": 15385542,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1486681,
+              "start_ms": 17085428,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1761512,
+              "start_ms": 18572109,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 498022,
+              "start_ms": 20333621,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1040765,
+              "start_ms": 20831643,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 918303,
+              "start_ms": 21872408,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1250766,
+              "start_ms": 22790711,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91G7Wtg4cWL.jpg",
+          "id": "steven-crossley-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "steven-crossley"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2011-02-23",
+          "runtime_min": 400,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004P95AYI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004P8DTPG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "three-men-in-a-boat"
+        },
         "timothy-ackroyd-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6146,6 +6916,26 @@
         {
           "imported_at": "2026-08-07",
           "ref": "B0C6YPK5GK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "1799718980",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0892S4YNC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B01DAH4W7G",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0DCZPHZ9S",
           "type": "libex-import"
         }
       ],
@@ -6299,496 +7089,6 @@
         }
       ],
       "title": "Three Men in a Boat (Adaptation)"
-    },
-    "three-men-in-a-boat-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "jerome-k-jerome"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "three-men-in-a-boat-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-mattacks-2019": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "1799718980",
-              "region": "us"
-            },
-            {
-              "asin": "1799718980",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 133050,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1225131,
-              "start_ms": 133050,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 767117,
-              "start_ms": 1358181,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 884122,
-              "start_ms": 2125298,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1216098,
-              "start_ms": 3009420,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1001128,
-              "start_ms": 4225518,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1318127,
-              "start_ms": 5226646,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1084116,
-              "start_ms": 6544773,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1420132,
-              "start_ms": 7628889,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1210131,
-              "start_ms": 9049021,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1131136,
-              "start_ms": 10259152,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1293119,
-              "start_ms": 11390288,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1422106,
-              "start_ms": 12683407,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1536116,
-              "start_ms": 14105513,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1318127,
-              "start_ms": 15641629,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1623121,
-              "start_ms": 16959756,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 453114,
-              "start_ms": 18582877,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 912126,
-              "start_ms": 19035991,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 818131,
-              "start_ms": 19948117,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1241106,
-              "start_ms": 20766248,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 268050,
-              "start_ms": 22007354,
-              "title": "Chapter 21"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81DvIQHEU4L.jpg",
-          "id": "simon-mattacks-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-mattacks"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-09-03",
-          "runtime_min": 371,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "1799718980",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1799718980",
-              "type": "libex-import"
-            }
-          ],
-          "work": "three-men-in-a-boat-amazonclassics-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "1799718980",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Three Men in a Boat (AmazonClassics Edition)"
-    },
-    "three-men-in-a-boat-annotated": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "jerome-k-jerome"
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor"
-      ],
-      "id": "three-men-in-a-boat-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-hester-2020": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B0892S4YNC",
-              "region": "us"
-            },
-            {
-              "asin": "B0892SYJMM",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15743,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 72121,
-              "start_ms": 15743,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1298366,
-              "start_ms": 87864,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 814323,
-              "start_ms": 1386230,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 949603,
-              "start_ms": 2200553,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1338119,
-              "start_ms": 3150156,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1397841,
-              "start_ms": 4488275,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1183149,
-              "start_ms": 5886116,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1539204,
-              "start_ms": 7069265,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1325348,
-              "start_ms": 8608469,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1292004,
-              "start_ms": 9933817,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1414002,
-              "start_ms": 11225821,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1582347,
-              "start_ms": 12639823,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1638632,
-              "start_ms": 14222170,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1497594,
-              "start_ms": 15860802,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1806001,
-              "start_ms": 17358396,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 514275,
-              "start_ms": 19164397,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 966507,
-              "start_ms": 19678672,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 890067,
-              "start_ms": 20645179,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1264558,
-              "start_ms": 21535246,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 24288,
-              "start_ms": 22799804,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vRTmiA8hL.jpg",
-          "id": "simon-hester-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-hester"
-          ],
-          "publisher": "Jerome K Jerome",
-          "release_date": "2020-05-26",
-          "runtime_min": 380,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B0892S4YNC",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0892SYJMM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "three-men-in-a-boat-annotated"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B0892S4YNC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Three Men in a Boat (Annotated)"
-    },
-    "three-men-in-a-boat-classic-tales-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "jerome-k-jerome"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "three-men-in-a-boat-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2016": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B01DAH4W7G",
-              "region": "us"
-            },
-            {
-              "asin": "B01DAH6EV8",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1257035,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 775407,
-              "start_ms": 1257035,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 909340,
-              "start_ms": 2032442,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1277423,
-              "start_ms": 2941782,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1084279,
-              "start_ms": 4219205,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1407919,
-              "start_ms": 5303484,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1155982,
-              "start_ms": 6711403,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1454637,
-              "start_ms": 7867385,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1264884,
-              "start_ms": 9322022,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1222809,
-              "start_ms": 10586906,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1377826,
-              "start_ms": 11809715,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1539111,
-              "start_ms": 13187541,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1639097,
-              "start_ms": 14726652,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1422965,
-              "start_ms": 16365749,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1730630,
-              "start_ms": 17788714,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 514368,
-              "start_ms": 19519344,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 957405,
-              "start_ms": 20033712,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 878875,
-              "start_ms": 20991117,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1225038,
-              "start_ms": 21869992,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Lls4TDIyL.jpg",
-          "id": "b-j-harrison-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison"
-          ],
-          "publisher": "B.J. Harrison",
-          "release_date": "2016-03-23",
-          "runtime_min": 384,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B01DAH4W7G",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01DAH6EV8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "three-men-in-a-boat-classic-tales-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B01DAH4W7G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Three Men in a Boat [Classic Tales Edition]"
     },
     "three-men-in-a-boat-the-130th-birthday-celebration": {
       "added_at": "2026-08-08",
@@ -6962,376 +7262,6 @@
         }
       ],
       "title": "Three Men in a Boat: The 130th Birthday Celebration"
-    },
-    "three-men-in-a-boat-to-say-nothing-of-the-dog": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "jerome-k-jerome"
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor"
-      ],
-      "id": "three-men-in-a-boat-to-say-nothing-of-the-dog",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "martin-jarvis-2004": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V5ITA0",
-              "region": "us"
-            },
-            {
-              "asin": "B004EWYEZ2",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4386435,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3690301,
-              "start_ms": 4386435,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4003677,
-              "start_ms": 8076736,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4562860,
-              "start_ms": 12080413,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3736741,
-              "start_ms": 16643273,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3283116,
-              "start_ms": 20380014,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51EMuXZELnL.jpg",
-          "id": "martin-jarvis-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "martin-jarvis"
-          ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2004-12-26",
-          "runtime_min": 394,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V5ITA0",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EWYEZ2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "three-men-in-a-boat-to-say-nothing-of-the-dog"
-        },
-        "peter-coates-2024": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B0DCZPHZ9S",
-              "region": "us"
-            },
-            {
-              "asin": "B0DCZRWKLJ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16810,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1301757,
-              "start_ms": 16810,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 800809,
-              "start_ms": 1318567,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 939665,
-              "start_ms": 2119376,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1267391,
-              "start_ms": 3059041,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1046360,
-              "start_ms": 4326432,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1353328,
-              "start_ms": 5372792,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1113257,
-              "start_ms": 6726120,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1413654,
-              "start_ms": 7839377,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1229217,
-              "start_ms": 9253031,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1195665,
-              "start_ms": 10482248,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1325812,
-              "start_ms": 11677913,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1470194,
-              "start_ms": 13003725,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1618314,
-              "start_ms": 14473919,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1411796,
-              "start_ms": 16092233,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1685838,
-              "start_ms": 17504029,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 494585,
-              "start_ms": 19189867,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 922552,
-              "start_ms": 19684452,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 898751,
-              "start_ms": 20607004,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1225595,
-              "start_ms": 21505755,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 22058,
-              "start_ms": 22731350,
-              "title": "Chapter 21"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91RIhUu71CL.jpg",
-          "id": "peter-coates-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-coates"
-          ],
-          "publisher": "Strelbytskyy Multimedia Publishing",
-          "release_date": "2024-08-14",
-          "runtime_min": 379,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B0DCZPHZ9S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DCZRWKLJ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "three-men-in-a-boat-to-say-nothing-of-the-dog"
-        },
-        "steven-crossley-2011": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B004P95AYI",
-              "region": "us"
-            },
-            {
-              "asin": "B004P8DTPG",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1360596,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 816739,
-              "start_ms": 1360596,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 968365,
-              "start_ms": 2177335,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1363290,
-              "start_ms": 3145700,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1108660,
-              "start_ms": 4508990,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1423615,
-              "start_ms": 5617650,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1203119,
-              "start_ms": 7041265,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1560009,
-              "start_ms": 8244384,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1378244,
-              "start_ms": 9804393,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1257361,
-              "start_ms": 11182637,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1376804,
-              "start_ms": 12439998,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1568740,
-              "start_ms": 13816802,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1699886,
-              "start_ms": 15385542,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1486681,
-              "start_ms": 17085428,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1761512,
-              "start_ms": 18572109,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 498022,
-              "start_ms": 20333621,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1040765,
-              "start_ms": 20831643,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 918303,
-              "start_ms": 21872408,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1250766,
-              "start_ms": 22790711,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91G7Wtg4cWL.jpg",
-          "id": "steven-crossley-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "steven-crossley"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2011-02-23",
-          "runtime_min": 400,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B004P95AYI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004P8DTPG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "three-men-in-a-boat-to-say-nothing-of-the-dog"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0DCZPHZ9S",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Three Men in a Boat (To Say Nothing of the Dog)"
     },
     "three-men-on-the-bummel": {
       "added_at": "2026-07-29",

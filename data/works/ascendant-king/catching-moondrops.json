@@ -6932,12 +6932,184 @@
       "genres": [
         "epic-fantasy",
         "fantasy",
-        "lgbtq"
+        "lgbtq",
+        "romance",
+        "science-fiction",
+        "space-opera"
       ],
       "id": "cathedral-of-the-sky",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "greg-tremblay-2017": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0773T6NMT",
+              "region": "us"
+            },
+            {
+              "asin": "B0773T6ZDK",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14721,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 346349,
+              "start_ms": 14721,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 495885,
+              "start_ms": 361070,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 381643,
+              "start_ms": 856955,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 347092,
+              "start_ms": 1238598,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 428501,
+              "start_ms": 1585690,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 718518,
+              "start_ms": 2014191,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 262989,
+              "start_ms": 2732709,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 319971,
+              "start_ms": 2995698,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 424182,
+              "start_ms": 3315669,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 353315,
+              "start_ms": 3739851,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 558301,
+              "start_ms": 4093166,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 426272,
+              "start_ms": 4651467,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 854680,
+              "start_ms": 5077739,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 542975,
+              "start_ms": 5932419,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 555282,
+              "start_ms": 6475394,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 313284,
+              "start_ms": 7030676,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 897683,
+              "start_ms": 7343960,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 953086,
+              "start_ms": 8241643,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 669431,
+              "start_ms": 9194729,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 392464,
+              "start_ms": 9864160,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 903070,
+              "start_ms": 10256624,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 997251,
+              "start_ms": 11159694,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 302045,
+              "start_ms": 12156945,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 134351,
+              "start_ms": 12458990,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 53081,
+              "start_ms": 12593341,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91cYT4gTKpL.jpg",
+          "id": "greg-tremblay-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "greg-tremblay"
+          ],
+          "publisher": "Arshad Ahsanuddin",
+          "release_date": "2017-11-02",
+          "runtime_min": 210,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0773T6NMT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0773T6ZDK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cathedral-of-the-sky"
+        },
         "john-m-perry-2012": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -7118,203 +7290,14 @@
           "imported_at": "2026-08-01",
           "ref": "B00A4EGORU",
           "type": "libex-import"
-        }
-      ],
-      "title": "Cathedral of the Sky"
-    },
-    "cathedral-of-the-sky-pact-arcanum": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "arshad-ahsanuddin"
-      ],
-      "genres": [
-        "lgbtq",
-        "romance",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "cathedral-of-the-sky-pact-arcanum",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "greg-tremblay-2017": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0773T6NMT",
-              "region": "us"
-            },
-            {
-              "asin": "B0773T6ZDK",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14721,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 346349,
-              "start_ms": 14721,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 495885,
-              "start_ms": 361070,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 381643,
-              "start_ms": 856955,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 347092,
-              "start_ms": 1238598,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 428501,
-              "start_ms": 1585690,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 718518,
-              "start_ms": 2014191,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 262989,
-              "start_ms": 2732709,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 319971,
-              "start_ms": 2995698,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 424182,
-              "start_ms": 3315669,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 353315,
-              "start_ms": 3739851,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 558301,
-              "start_ms": 4093166,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 426272,
-              "start_ms": 4651467,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 854680,
-              "start_ms": 5077739,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 542975,
-              "start_ms": 5932419,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 555282,
-              "start_ms": 6475394,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 313284,
-              "start_ms": 7030676,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 897683,
-              "start_ms": 7343960,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 953086,
-              "start_ms": 8241643,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 669431,
-              "start_ms": 9194729,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 392464,
-              "start_ms": 9864160,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 903070,
-              "start_ms": 10256624,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 997251,
-              "start_ms": 11159694,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 302045,
-              "start_ms": 12156945,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 134351,
-              "start_ms": 12458990,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 53081,
-              "start_ms": 12593341,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91cYT4gTKpL.jpg",
-          "id": "greg-tremblay-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "greg-tremblay"
-          ],
-          "publisher": "Arshad Ahsanuddin",
-          "release_date": "2017-11-02",
-          "runtime_min": 210,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0773T6NMT",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0773T6ZDK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cathedral-of-the-sky-pact-arcanum"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0773T6NMT",
           "type": "libex-import"
         }
       ],
-      "title": "Cathedral of the Sky (Pact Arcanum)"
+      "title": "Cathedral of the Sky"
     },
     "cathedral-raymond-carver": {
       "added_at": "2026-08-08",

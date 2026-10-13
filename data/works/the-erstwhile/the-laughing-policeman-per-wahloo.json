@@ -1589,26 +1589,6 @@
       "authors": [
         "jim-butcher"
       ],
-      "id": "the-law",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/60653694-the-law",
-          "type": "community"
-        }
-      ],
-      "title": "The Law",
-      "xref": {
-        "goodreads": "60653694"
-      }
-    },
-    "the-law-a-dresden-files-novella-dresden-files-book-17-5": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "jim-butcher"
-      ],
       "genres": [
         "fantasy",
         "mystery",
@@ -1616,7 +1596,7 @@
         "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "the-law-a-dresden-files-novella-dresden-files-book-17-5",
+      "id": "the-law",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1819,17 +1799,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-law-a-dresden-files-novella-dresden-files-book-17-5"
+          "work": "the-law"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/60653694-the-law",
+          "type": "community"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B09Y286JK6",
           "type": "libex-import"
         }
       ],
-      "title": "The Law: A Dresden Files Novella (Dresden Files, Book 17.5)"
+      "title": "The Law",
+      "xref": {
+        "goodreads": "60653694"
+      }
     },
     "the-law-and-the-promise": {
       "added_at": "2026-07-29",

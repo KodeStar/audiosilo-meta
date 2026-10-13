@@ -1056,26 +1056,6 @@
       "authors": [
         "jim-butcher"
       ],
-      "id": "out-law",
-      "language": "en",
-      "license": "CC0-1.0",
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/240514365-out-law",
-          "type": "community"
-        }
-      ],
-      "title": "Out Law",
-      "xref": {
-        "goodreads": "240514365"
-      }
-    },
-    "out-law-a-dresden-files-novella": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "jim-butcher"
-      ],
       "genres": [
         "action-adventure",
         "fantasy",
@@ -1084,7 +1064,7 @@
         "thriller-suspense",
         "urban-fantasy"
       ],
-      "id": "out-law-a-dresden-files-novella",
+      "id": "out-law",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -1326,17 +1306,25 @@
               "type": "libex-import"
             }
           ],
-          "work": "out-law-a-dresden-files-novella"
+          "work": "out-law"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/240514365-out-law",
+          "type": "community"
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B0G4XLZ7R7",
           "type": "libex-import"
         }
       ],
-      "title": "Out Law: A Dresden Files Novella"
+      "title": "Out Law",
+      "xref": {
+        "goodreads": "240514365"
+      }
     },
     "out-loud": {
       "added_at": "2026-07-29",

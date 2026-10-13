@@ -5930,7 +5930,10 @@
       "genres": [
         "historical-fiction",
         "historical-romance",
-        "romance"
+        "history",
+        "romance",
+        "science-fiction",
+        "time-travel"
       ],
       "id": "once-upon-a-highland-legend",
       "language": "en",
@@ -6059,34 +6062,7 @@
             }
           ],
           "work": "once-upon-a-highland-legend"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00L2I31KU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Once Upon A Highland Legend"
-    },
-    "once-upon-a-highland-legend-guardians-of-the-stone-book-5": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "tanya-anne-crosby"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "history",
-        "romance",
-        "science-fiction",
-        "time-travel"
-      ],
-      "id": "once-upon-a-highland-legend-guardians-of-the-stone-book-5",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "james-gillies-2023": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6209,17 +6185,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "once-upon-a-highland-legend-guardians-of-the-stone-book-5"
+          "work": "once-upon-a-highland-legend"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00L2I31KU",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B0CLT4XHCR",
           "type": "libex-import"
         }
       ],
-      "title": "Once Upon a Highland Legend: Guardians of the Stone, Book 5"
+      "title": "Once Upon A Highland Legend"
     },
     "once-upon-a-kingdom": {
       "added_at": "2026-08-02",

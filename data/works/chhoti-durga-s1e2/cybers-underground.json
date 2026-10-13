@@ -15212,10 +15212,25 @@
       "authors": [
         "edmond-rostand"
       ],
+      "credits": [
+        {
+          "person": "anthony-burgess",
+          "role": "adaptation"
+        },
+        {
+          "person": "anthony-burgess",
+          "role": "translator"
+        }
+      ],
       "genres": [
+        "arts-entertainment",
         "classics",
         "drama-plays",
-        "literary-fiction"
+        "historical-fiction",
+        "historical-romance",
+        "literary-fiction",
+        "romance",
+        "writing-publishing"
       ],
       "id": "cyrano-de-bergerac",
       "language": "en",
@@ -15533,6 +15548,77 @@
           ],
           "work": "cyrano-de-bergerac"
         },
+        "devon-sorvari-2015": {
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B00Y1FQ7NO",
+              "region": "us"
+            },
+            {
+              "asin": "B00Y1FFY7Y",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1000152,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 323871,
+              "start_ms": 1000152,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2500789,
+              "start_ms": 1324023,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 952157,
+              "start_ms": 3824812,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1162437,
+              "start_ms": 4776969,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1170308,
+              "start_ms": 5939406,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81AKdTgOfVL.jpg",
+          "id": "devon-sorvari-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "devon-sorvari",
+            "gregory-itzin",
+            "hamish-linklater",
+            "jason-ritter"
+          ],
+          "publisher": "L.A. Theatre Works",
+          "release_date": "2015-05-22",
+          "runtime_min": 118,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B00Y1FQ7NO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00Y1FFY7Y",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cyrano-de-bergerac"
+        },
         "flo-gibson-2008": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -15636,30 +15722,7 @@
             }
           ],
           "work": "cyrano-de-bergerac"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002V1BRS0",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cyrano de Bergerac"
-    },
-    "cyrano-de-bergerac-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "edmond-rostand"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "cyrano-de-bergerac-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "full-cast-2000": {
           "abridged": true,
           "added_at": "2026-08-08",
@@ -15717,120 +15780,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "cyrano-de-bergerac-dramatized"
+          "work": "cyrano-de-bergerac"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-08",
-          "ref": "B002V5GSBM",
+          "ref": "B002V1BRS0",
           "type": "libex-import"
-        }
-      ],
-      "title": "Cyrano de Bergerac (Dramatized)"
-    },
-    "cyrano-de-bergerac-edmond-rostand": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "edmond-rostand"
-      ],
-      "credits": [
-        {
-          "person": "anthony-burgess",
-          "role": "adaptation"
         },
         {
-          "person": "anthony-burgess",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "arts-entertainment",
-        "classics",
-        "drama-plays",
-        "historical-fiction",
-        "historical-romance",
-        "literary-fiction",
-        "romance",
-        "writing-publishing"
-      ],
-      "id": "cyrano-de-bergerac-edmond-rostand",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "devon-sorvari-2015": {
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B00Y1FQ7NO",
-              "region": "us"
-            },
-            {
-              "asin": "B00Y1FFY7Y",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1000152,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 323871,
-              "start_ms": 1000152,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2500789,
-              "start_ms": 1324023,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 952157,
-              "start_ms": 3824812,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1162437,
-              "start_ms": 4776969,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1170308,
-              "start_ms": 5939406,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81AKdTgOfVL.jpg",
-          "id": "devon-sorvari-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "devon-sorvari",
-            "gregory-itzin",
-            "hamish-linklater",
-            "jason-ritter"
-          ],
-          "publisher": "L.A. Theatre Works",
-          "release_date": "2015-05-22",
-          "runtime_min": 118,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B00Y1FQ7NO",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00Y1FFY7Y",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cyrano-de-bergerac-edmond-rostand"
-        }
-      },
-      "sources": [
+          "imported_at": "2026-08-08",
+          "ref": "B002V5GSBM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B00Y1FQ7NO",

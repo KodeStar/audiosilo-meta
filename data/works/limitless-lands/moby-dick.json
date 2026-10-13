@@ -9,6 +9,7 @@
         "action-adventure",
         "childrens",
         "classics",
+        "drama-plays",
         "education",
         "literary-fiction"
       ],
@@ -4919,6 +4920,69 @@
           ],
           "work": "moby-dick"
         },
+        "f-murray-abraham-2008": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V5BGH8",
+              "region": "us"
+            },
+            {
+              "asin": "B004V3V6GO",
+              "region": "de"
+            },
+            {
+              "asin": "B004F446L6",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3380454,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3418627,
+              "start_ms": 3380454,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3176513,
+              "start_ms": 6799081,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/710-Rt7SInL.jpg",
+          "id": "f-murray-abraham-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "f-murray-abraham"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2008-06-17",
+          "runtime_min": 166,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V5BGH8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004V3V6GO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F446L6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moby-dick"
+        },
         "frank-muller-2008": {
           "abridged": false,
           "added_at": "2026-07-17T09:27:30+00:00",
@@ -5667,6 +5731,74 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B004FU9N0E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moby-dick"
+        },
+        "full-cast-2001": {
+          "abridged": true,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002UZZ91S",
+              "region": "us"
+            },
+            {
+              "asin": "B004UVZA3W",
+              "region": "de"
+            },
+            {
+              "asin": "B004EVRDP6",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1748695,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1761466,
+              "start_ms": 1748695,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1722596,
+              "start_ms": 3510161,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1710568,
+              "start_ms": 5232757,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41vtGGDhlEL.jpg",
+          "id": "full-cast-2001",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Monterey SoundWorks",
+          "release_date": "2001-02-02",
+          "runtime_min": 115,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002UZZ91S",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004UVZA3W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVRDP6",
               "type": "libex-import"
             }
           ],
@@ -11270,386 +11402,6 @@
           ],
           "work": "moby-dick"
         },
-        "tom-fria-2025": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0F8PF3MHB",
-              "region": "us"
-            },
-            {
-              "asin": "B0F8PGF7XD",
-              "region": "de"
-            },
-            {
-              "asin": "B0F8PCFZTP",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16927,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1012947,
-              "start_ms": 16927,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2550572,
-              "start_ms": 1029874,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2477963,
-              "start_ms": 3580446,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 485041,
-              "start_ms": 6058409,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 614934,
-              "start_ms": 6543450,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1296044,
-              "start_ms": 7158384,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1682610,
-              "start_ms": 8454428,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1617200,
-              "start_ms": 10137038,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 850895,
-              "start_ms": 11754238,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 235914,
-              "start_ms": 12605133,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 220891,
-              "start_ms": 12841047,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1047962,
-              "start_ms": 13061938,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 815995,
-              "start_ms": 14109900,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1523368,
-              "start_ms": 14925895,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1423267,
-              "start_ms": 16449263,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2077860,
-              "start_ms": 17872530,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 132934,
-              "start_ms": 19950390,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 21082,
-              "start_ms": 20083324,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lUFFML6pL.jpg",
-          "id": "tom-fria-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "tom-fria"
-          ],
-          "publisher": "Tom Fria",
-          "release_date": "2025-05-14",
-          "runtime_min": 334,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0F8PF3MHB",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0F8PGF7XD",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0F8PCFZTP",
-              "type": "libex-import"
-            }
-          ],
-          "work": "moby-dick"
-        },
-        "william-hootkins-2004": {
-          "abridged": false,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B0038GOF7C",
-              "region": "us"
-            },
-            {
-              "asin": "B007BPKMFA",
-              "region": "de"
-            },
-            {
-              "asin": "B007BPJGIO",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4699765,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4735663,
-              "start_ms": 4699765,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4742908,
-              "start_ms": 9435428,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4657041,
-              "start_ms": 14178336,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4768032,
-              "start_ms": 18835377,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 4734084,
-              "start_ms": 23603409,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4751778,
-              "start_ms": 28337493,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 4683233,
-              "start_ms": 33089271,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 4725586,
-              "start_ms": 37772504,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4763806,
-              "start_ms": 42498090,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 4755679,
-              "start_ms": 47261896,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 4766499,
-              "start_ms": 52017575,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 4759208,
-              "start_ms": 56784074,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 4768914,
-              "start_ms": 61543282,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 4757583,
-              "start_ms": 66312196,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 4562814,
-              "start_ms": 71069779,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 4638140,
-              "start_ms": 75632593,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 4385924,
-              "start_ms": 80270733,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 4732087,
-              "start_ms": 84656657,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91LBt4KFGEL.jpg",
-          "id": "william-hootkins-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "william-hootkins"
-          ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2004-12-26",
-          "runtime_min": 1489,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0038GOF7C",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B007BPKMFA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B007BPJGIO",
-              "type": "libex-import"
-            }
-          ],
-          "work": "moby-dick"
-        },
-        "william-hootkins-2006": {
-          "abridged": true,
-          "added_at": "2026-07-31T00:43:12+01:00",
-          "asin": [
-            {
-              "asin": "B002V5CPF0",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3360206,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3436414,
-              "start_ms": 3360206,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3567607,
-              "start_ms": 6796620,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3775332,
-              "start_ms": 10364227,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3709899,
-              "start_ms": 14139559,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3882794,
-              "start_ms": 17849458,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81rVCea1zBL.jpg",
-          "id": "william-hootkins-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "william-hootkins"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2006-04-19",
-          "runtime_min": 362,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B002V5CPF0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "moby-dick"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-17",
-          "ref": "B002V8L3RI",
-          "type": "audiosilo-books-import"
-        },
-        {
-          "imported_at": "2026-07-30",
-          "ref": "B002V8L3RI",
-          "type": "libex-import"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1645550427",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Moby-Dick"
-    },
-    "moby-dick-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "herman-melville"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "moby-dick-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "tim-campbell-2018": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -12381,196 +12133,388 @@
               "type": "libex-import"
             }
           ],
-          "work": "moby-dick-amazonclassics-edition"
+          "work": "moby-dick"
+        },
+        "tom-fria-2025": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0F8PF3MHB",
+              "region": "us"
+            },
+            {
+              "asin": "B0F8PGF7XD",
+              "region": "de"
+            },
+            {
+              "asin": "B0F8PCFZTP",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16927,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1012947,
+              "start_ms": 16927,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2550572,
+              "start_ms": 1029874,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2477963,
+              "start_ms": 3580446,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 485041,
+              "start_ms": 6058409,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 614934,
+              "start_ms": 6543450,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1296044,
+              "start_ms": 7158384,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1682610,
+              "start_ms": 8454428,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1617200,
+              "start_ms": 10137038,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 850895,
+              "start_ms": 11754238,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 235914,
+              "start_ms": 12605133,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 220891,
+              "start_ms": 12841047,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1047962,
+              "start_ms": 13061938,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 815995,
+              "start_ms": 14109900,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1523368,
+              "start_ms": 14925895,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1423267,
+              "start_ms": 16449263,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2077860,
+              "start_ms": 17872530,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 132934,
+              "start_ms": 19950390,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 21082,
+              "start_ms": 20083324,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81lUFFML6pL.jpg",
+          "id": "tom-fria-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-fria"
+          ],
+          "publisher": "Tom Fria",
+          "release_date": "2025-05-14",
+          "runtime_min": 334,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0F8PF3MHB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0F8PGF7XD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0F8PCFZTP",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moby-dick"
+        },
+        "william-hootkins-2004": {
+          "abridged": false,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B0038GOF7C",
+              "region": "us"
+            },
+            {
+              "asin": "B007BPKMFA",
+              "region": "de"
+            },
+            {
+              "asin": "B007BPJGIO",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4699765,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4735663,
+              "start_ms": 4699765,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4742908,
+              "start_ms": 9435428,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4657041,
+              "start_ms": 14178336,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4768032,
+              "start_ms": 18835377,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 4734084,
+              "start_ms": 23603409,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4751778,
+              "start_ms": 28337493,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 4683233,
+              "start_ms": 33089271,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 4725586,
+              "start_ms": 37772504,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4763806,
+              "start_ms": 42498090,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4755679,
+              "start_ms": 47261896,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4766499,
+              "start_ms": 52017575,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 4759208,
+              "start_ms": 56784074,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 4768914,
+              "start_ms": 61543282,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 4757583,
+              "start_ms": 66312196,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 4562814,
+              "start_ms": 71069779,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 4638140,
+              "start_ms": 75632593,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 4385924,
+              "start_ms": 80270733,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 4732087,
+              "start_ms": 84656657,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91LBt4KFGEL.jpg",
+          "id": "william-hootkins-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-hootkins"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2004-12-26",
+          "runtime_min": 1489,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0038GOF7C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B007BPKMFA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B007BPJGIO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moby-dick"
+        },
+        "william-hootkins-2006": {
+          "abridged": true,
+          "added_at": "2026-07-31T00:43:12+01:00",
+          "asin": [
+            {
+              "asin": "B002V5CPF0",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3360206,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3436414,
+              "start_ms": 3360206,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3567607,
+              "start_ms": 6796620,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3775332,
+              "start_ms": 10364227,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3709899,
+              "start_ms": 14139559,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3882794,
+              "start_ms": 17849458,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rVCea1zBL.jpg",
+          "id": "william-hootkins-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "william-hootkins"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2006-04-19",
+          "runtime_min": 362,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V5CPF0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moby-dick"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-17",
+          "ref": "B002V8L3RI",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V8L3RI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1645550427",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B07D42PMXN",
           "type": "libex-import"
-        }
-      ],
-      "title": "Moby Dick (AmazonClassics Edition)"
-    },
-    "moby-dick-classic-drama": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "herman-melville"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "moby-dick-classic-drama",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "f-murray-abraham-2008": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002V5BGH8",
-              "region": "us"
-            },
-            {
-              "asin": "B004V3V6GO",
-              "region": "de"
-            },
-            {
-              "asin": "B004F446L6",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3380454,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3418627,
-              "start_ms": 3380454,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3176513,
-              "start_ms": 6799081,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/710-Rt7SInL.jpg",
-          "id": "f-murray-abraham-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "f-murray-abraham"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2008-06-17",
-          "runtime_min": 166,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002V5BGH8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004V3V6GO",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F446L6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "moby-dick-classic-drama"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B002V5BGH8",
           "type": "libex-import"
-        }
-      ],
-      "title": "Moby Dick (Classic Drama)"
-    },
-    "moby-dick-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "herman-melville"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "moby-dick-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2001": {
-          "abridged": true,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002UZZ91S",
-              "region": "us"
-            },
-            {
-              "asin": "B004UVZA3W",
-              "region": "de"
-            },
-            {
-              "asin": "B004EVRDP6",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1748695,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1761466,
-              "start_ms": 1748695,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1722596,
-              "start_ms": 3510161,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1710568,
-              "start_ms": 5232757,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41vtGGDhlEL.jpg",
-          "id": "full-cast-2001",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Monterey SoundWorks",
-          "release_date": "2001-02-02",
-          "runtime_min": 115,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002UZZ91S",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004UVZA3W",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVRDP6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "moby-dick-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B002UZZ91S",
           "type": "libex-import"
         }
       ],
-      "title": "Moby Dick (Dramatized)"
+      "title": "Moby-Dick"
     }
   }
 }

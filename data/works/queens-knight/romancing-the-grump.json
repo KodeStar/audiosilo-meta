@@ -8499,6 +8499,73 @@
           ],
           "work": "romeo-and-juliet"
         },
+        "albert-finney-2011": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B00683JZF4",
+              "region": "us"
+            },
+            {
+              "asin": "B00683KGRU",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2141577,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2136700,
+              "start_ms": 2141577,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2672385,
+              "start_ms": 4278277,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1356928,
+              "start_ms": 6950662,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1690552,
+              "start_ms": 8307590,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WS4OJ5gGL.jpg",
+          "id": "albert-finney-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "albert-finney",
+            "claire-bloom",
+            "edith-evans",
+            "hilton-edwards"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2011-12-01",
+          "runtime_min": 166,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B00683JZF4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00683KGRU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "romeo-and-juliet"
+        },
         "andrew-scott-2005": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -9837,6 +9904,11 @@
           "imported_at": "2026-08-12",
           "ref": "B00815RR52",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B00683JZF4",
+          "type": "libex-import"
         }
       ],
       "title": "Romeo and Juliet",
@@ -10485,96 +10557,6 @@
         }
       ],
       "title": "Romeo and Juliet"
-    },
-    "romeo-and-juliet-dramatised": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "romeo-and-juliet-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "albert-finney-2011": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B00683JZF4",
-              "region": "us"
-            },
-            {
-              "asin": "B00683KGRU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2141577,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2136700,
-              "start_ms": 2141577,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2672385,
-              "start_ms": 4278277,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1356928,
-              "start_ms": 6950662,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1690552,
-              "start_ms": 8307590,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WS4OJ5gGL.jpg",
-          "id": "albert-finney-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "albert-finney",
-            "claire-bloom",
-            "edith-evans",
-            "hilton-edwards"
-          ],
-          "publisher": "Saland Publishing",
-          "release_date": "2011-12-01",
-          "runtime_min": 166,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B00683JZF4",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00683KGRU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "romeo-and-juliet-dramatised"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00683JZF4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Romeo and Juliet (Dramatised)"
     },
     "romeo-and-juliet-oregon-shakespeare-festival-audio-theater-dramatized": {
       "added_at": "2026-08-08",

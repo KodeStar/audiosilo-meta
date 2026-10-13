@@ -9731,12 +9731,12 @@
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
         "tim-lahaye",
-        "jerry-jenkins",
         "jerry-b-jenkins"
       ],
       "genres": [
         "literary-fiction",
         "post-apocalyptic",
+        "religion-spirituality",
         "religious-fiction",
         "science-fiction",
         "thriller-suspense"
@@ -10456,35 +10456,7 @@
             }
           ],
           "work": "apollyon-tim-lahaye"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-30",
-          "ref": "1581161298",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0GMRQXZS1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Apollyon"
-    },
-    "apollyon-tim-lahaye-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye",
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "apollyon-tim-lahaye-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "richard-ferrone-2003": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -10652,10 +10624,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "apollyon-tim-lahaye-2"
+          "work": "apollyon-tim-lahaye"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-30",
+          "ref": "1581161298",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GMRQXZS1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002VA37I4",

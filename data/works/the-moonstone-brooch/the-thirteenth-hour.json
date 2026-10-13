@@ -1661,8 +1661,10 @@
         "joanne-pence"
       ],
       "genres": [
+        "comedy-humor",
         "cozy-mystery",
-        "mystery"
+        "mystery",
+        "police-procedural"
       ],
       "id": "the-thirteenth-santa",
       "language": "en",
@@ -1752,31 +1754,7 @@
             }
           ],
           "work": "the-thirteenth-santa"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-10-03",
-          "ref": "B07879RCMG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Thirteenth Santa"
-    },
-    "the-thirteenth-santa-a-novella": {
-      "added_at": "2026-10-03",
-      "authors": [
-        "joanne-pence"
-      ],
-      "genres": [
-        "comedy-humor",
-        "mystery",
-        "police-procedural"
-      ],
-      "id": "the-thirteenth-santa-a-novella",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "kristi-burns-2021": {
           "abridged": false,
           "added_at": "2026-10-03",
@@ -1927,17 +1905,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-thirteenth-santa-a-novella"
+          "work": "the-thirteenth-santa"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-10-03",
+          "ref": "B07879RCMG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-10-03",
           "ref": "B091B77MZ5",
           "type": "libex-import"
         }
       ],
-      "title": "The Thirteenth Santa - A Novella"
+      "title": "The Thirteenth Santa"
     },
     "the-thirteenth-step": {
       "added_at": "2026-07-29",

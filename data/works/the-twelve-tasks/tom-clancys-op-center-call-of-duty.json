@@ -5561,6 +5561,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "annette-crosbie-2013": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B00CP7EVDS",
+              "region": "us"
+            },
+            {
+              "asin": "B00CP7EBZ6",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3418952,
+              "start_ms": 0,
+              "title": "Part 1"
+            },
+            {
+              "length_ms": 3411731,
+              "start_ms": 3418952,
+              "title": "Part 2"
+            },
+            {
+              "length_ms": 3419068,
+              "start_ms": 6830683,
+              "title": "Part 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hpApAenzL.jpg",
+          "id": "annette-crosbie-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "annette-crosbie",
+            "full-cast"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2013-05-09",
+          "runtime_min": 170,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B00CP7EVDS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00CP7EBZ6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tom-jones"
+        },
         "bill-homewood-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7730,87 +7785,14 @@
           "imported_at": "2026-08-07",
           "ref": "B00HQ1TR14",
           "type": "libex-import"
-        }
-      ],
-      "title": "Tom Jones"
-    },
-    "tom-jones-classic-serial": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "henry-fielding"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "tom-jones-classic-serial",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "annette-crosbie-2013": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B00CP7EVDS",
-              "region": "us"
-            },
-            {
-              "asin": "B00CP7EBZ6",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3418952,
-              "start_ms": 0,
-              "title": "Part 1"
-            },
-            {
-              "length_ms": 3411731,
-              "start_ms": 3418952,
-              "title": "Part 2"
-            },
-            {
-              "length_ms": 3419068,
-              "start_ms": 6830683,
-              "title": "Part 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hpApAenzL.jpg",
-          "id": "annette-crosbie-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "annette-crosbie",
-            "full-cast"
-          ],
-          "publisher": "BBC Digital Audio",
-          "release_date": "2013-05-09",
-          "runtime_min": 170,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B00CP7EVDS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00CP7EBZ6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tom-jones-classic-serial"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B00CP7EVDS",
           "type": "libex-import"
         }
       ],
-      "title": "Tom Jones (Classic Serial)"
+      "title": "Tom Jones"
     },
     "tom-jones-volume-2": {
       "added_at": "2026-07-29",

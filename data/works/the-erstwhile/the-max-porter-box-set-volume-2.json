@@ -8723,12 +8723,74 @@
         "thomas-hardy"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "writing-publishing"
       ],
       "id": "the-mayor-of-casterbridge",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-calder-2007": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V1NOH2",
+              "region": "us"
+            },
+            {
+              "asin": "B004F3L2A0",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3295376,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3284068,
+              "start_ms": 3295376,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3073347,
+              "start_ms": 6579444,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3075924,
+              "start_ms": 9652791,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61dism945UL.jpg",
+          "id": "david-calder-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-calder",
+            "janet-dale",
+            "john-nettles"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2007-08-31",
+          "runtime_min": 211,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V1NOH2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F3L2A0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-mayor-of-casterbridge"
+        },
         "simon-vance-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9263,93 +9325,14 @@
           "imported_at": "2026-08-08",
           "ref": "B002V0Q7H2",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Mayor of Casterbridge"
-    },
-    "the-mayor-of-casterbridge-dramatised": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "thomas-hardy"
-      ],
-      "genres": [
-        "classics",
-        "writing-publishing"
-      ],
-      "id": "the-mayor-of-casterbridge-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-calder-2007": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002V1NOH2",
-              "region": "us"
-            },
-            {
-              "asin": "B004F3L2A0",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3295376,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3284068,
-              "start_ms": 3295376,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3073347,
-              "start_ms": 6579444,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3075924,
-              "start_ms": 9652791,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61dism945UL.jpg",
-          "id": "david-calder-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-calder",
-            "janet-dale",
-            "john-nettles"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2007-08-31",
-          "runtime_min": 211,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002V1NOH2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F3L2A0",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-mayor-of-casterbridge-dramatised"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B002V1NOH2",
           "type": "libex-import"
         }
       ],
-      "title": "The Mayor of Casterbridge (Dramatised)"
+      "title": "The Mayor of Casterbridge"
     },
     "the-mayor-of-castro-street": {
       "added_at": "2026-07-29",
