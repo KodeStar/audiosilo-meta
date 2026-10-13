@@ -8714,7 +8714,8 @@
     "aschenputtel-kristina-ohlsson": {
       "added_at": "2026-07-29",
       "authors": [
-        "kristina-ohlsson"
+        "kristina-ohlsson",
+        "susanne-dahmann"
       ],
       "genres": [
         "mystery",
@@ -8872,28 +8873,8 @@
             }
           ],
           "work": "aschenputtel-kristina-ohlsson"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00627VZMM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Aschenputtel"
-    },
-    "aschenputtel-kristina-ohlsson-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "kristina-ohlsson",
-        "susanne-dahmann"
-      ],
-      "id": "aschenputtel-kristina-ohlsson-2",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "uve-teschner-2011": {
+        },
+        "uve-teschner-2011-2": {
           "abridged": true,
           "added_at": "2026-07-29",
           "asin": [
@@ -9188,7 +9169,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51aL2VbLL0L.jpg",
-          "id": "uve-teschner-2011",
+          "id": "uve-teschner-2011-2",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -9214,10 +9195,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "aschenputtel-kristina-ohlsson-2"
+          "work": "aschenputtel-kristina-ohlsson"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00627VZMM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00627W2JW",

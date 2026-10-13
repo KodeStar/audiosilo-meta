@@ -11235,12 +11235,197 @@
         "cozy-mystery",
         "mystery",
         "paranormal",
-        "romance"
+        "romance",
+        "thriller-suspense"
       ],
       "id": "the-librarians-vampire-assistant",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "sean-posvistak-2018": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B07FN9M5CX",
+              "region": "us"
+            },
+            {
+              "asin": "B07FN7C4MH",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14536,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 471597,
+              "start_ms": 14536,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 851151,
+              "start_ms": 486133,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 482325,
+              "start_ms": 1337284,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 807033,
+              "start_ms": 1819609,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 376581,
+              "start_ms": 2626642,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 618998,
+              "start_ms": 3003223,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 747079,
+              "start_ms": 3622221,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 623827,
+              "start_ms": 4369300,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 795005,
+              "start_ms": 4993127,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 515019,
+              "start_ms": 5788132,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 992514,
+              "start_ms": 6303151,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 962142,
+              "start_ms": 7295665,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 456829,
+              "start_ms": 8257807,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 407371,
+              "start_ms": 8714636,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 611846,
+              "start_ms": 9122007,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 913334,
+              "start_ms": 9733853,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 973752,
+              "start_ms": 10647187,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 948349,
+              "start_ms": 11620939,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 1194295,
+              "start_ms": 12569288,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 423857,
+              "start_ms": 13763583,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1067886,
+              "start_ms": 14187440,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 804757,
+              "start_ms": 15255326,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 978721,
+              "start_ms": 16060083,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 419863,
+              "start_ms": 17038804,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 356519,
+              "start_ms": 17458667,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 620251,
+              "start_ms": 17815186,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 413455,
+              "start_ms": 18435437,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 28839,
+              "start_ms": 18848892,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91X7lRbytqL.jpg",
+          "id": "sean-posvistak-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sean-posvistak"
+          ],
+          "publisher": "Paper & Silver, Inc.",
+          "release_date": "2018-07-18",
+          "runtime_min": 314,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07FN9M5CX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07FN7C4MH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-librarians-vampire-assistant"
+        },
         "sean-posvistak-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11430,6 +11615,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0GZ8G7RMN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B07FN9M5CX",
           "type": "libex-import"
         }
       ],
@@ -12189,215 +12379,6 @@
         }
       ],
       "title": "The Librarian's Vampire Assistant, Book 5"
-    },
-    "the-librarians-vampire-assistant-volume-1": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "mimi-jean-pamfiloff"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "mystery",
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "the-librarians-vampire-assistant-volume-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sean-posvistak-2018": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07FN9M5CX",
-              "region": "us"
-            },
-            {
-              "asin": "B07FN7C4MH",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 14536,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 471597,
-              "start_ms": 14536,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 851151,
-              "start_ms": 486133,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 482325,
-              "start_ms": 1337284,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 807033,
-              "start_ms": 1819609,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 376581,
-              "start_ms": 2626642,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 618998,
-              "start_ms": 3003223,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 747079,
-              "start_ms": 3622221,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 623827,
-              "start_ms": 4369300,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 795005,
-              "start_ms": 4993127,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 515019,
-              "start_ms": 5788132,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 992514,
-              "start_ms": 6303151,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 962142,
-              "start_ms": 7295665,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 456829,
-              "start_ms": 8257807,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 407371,
-              "start_ms": 8714636,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 611846,
-              "start_ms": 9122007,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 913334,
-              "start_ms": 9733853,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 973752,
-              "start_ms": 10647187,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 948349,
-              "start_ms": 11620939,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1194295,
-              "start_ms": 12569288,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 423857,
-              "start_ms": 13763583,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1067886,
-              "start_ms": 14187440,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 804757,
-              "start_ms": 15255326,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 978721,
-              "start_ms": 16060083,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 419863,
-              "start_ms": 17038804,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 356519,
-              "start_ms": 17458667,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 620251,
-              "start_ms": 17815186,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 413455,
-              "start_ms": 18435437,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 28839,
-              "start_ms": 18848892,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91X7lRbytqL.jpg",
-          "id": "sean-posvistak-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sean-posvistak"
-          ],
-          "publisher": "Paper & Silver, Inc.",
-          "release_date": "2018-07-18",
-          "runtime_min": 314,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07FN9M5CX",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07FN7C4MH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-librarians-vampire-assistant-volume-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07FN9M5CX",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Librarian's Vampire Assistant (Volume 1)"
     },
     "the-library": {
       "added_at": "2026-08-01",

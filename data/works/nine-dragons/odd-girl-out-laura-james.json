@@ -2497,6 +2497,7 @@
         "action-adventure",
         "horror",
         "occult",
+        "paranormal",
         "thriller-suspense"
       ],
       "id": "odd-thomas",
@@ -2891,30 +2892,7 @@
             }
           ],
           "work": "odd-thomas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002UZDT2E",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Odd Thomas"
-    },
-    "odd-thomas-an-odd-thomas-novel-odd-thomas-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dean-koontz"
-      ],
-      "genres": [
-        "paranormal",
-        "thriller-suspense"
-      ],
-      "id": "odd-thomas-an-odd-thomas-novel-odd-thomas-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "david-aaron-baker-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3316,17 +3294,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "odd-thomas-an-odd-thomas-novel-odd-thomas-book-1"
+          "work": "odd-thomas"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002UZDT2E",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0BRBMTPY6",
           "type": "libex-import"
         }
       ],
-      "title": "Odd Thomas: An Odd Thomas Novel (Odd Thomas, Book 1)"
+      "title": "Odd Thomas"
     },
     "odd-thomas-danish-edition": {
       "added_at": "2026-08-02",
@@ -6108,6 +6091,7 @@
       "genres": [
         "childrens",
         "comedy-humor",
+        "coming-of-age",
         "science-fiction"
       ],
       "id": "odds-ends",
@@ -6372,32 +6356,7 @@
             }
           ],
           "work": "odds-ends"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "1419738747",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Odds & Ends"
-    },
-    "odds-ends-amy-ignatow": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "amy-ignatow"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "science-fiction"
-      ],
-      "id": "odds-ends-amy-ignatow",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "nate-begle-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6665,10 +6624,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "odds-ends-amy-ignatow"
+          "work": "odds-ends"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "1419738747",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0G44Y96HM",

@@ -1531,6 +1531,10 @@
         "richard-graves"
       ],
       "genres": [
+        "biography-memoir",
+        "history",
+        "language",
+        "religion-spirituality",
         "travel"
       ],
       "id": "seven-years-in-tibet",
@@ -1685,32 +1689,7 @@
             }
           ],
           "work": "seven-years-in-tibet"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B007Q37URU",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Seven Years in Tibet"
-    },
-    "seven-years-in-tibet-heinrich-harrer": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "heinrich-harrer"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history",
-        "language",
-        "religion-spirituality"
-      ],
-      "id": "seven-years-in-tibet-heinrich-harrer",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "tim-pigott-smith-1999": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -1759,10 +1738,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "seven-years-in-tibet-heinrich-harrer"
+          "work": "seven-years-in-tibet"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B007Q37URU",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V5GYOI",

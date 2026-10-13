@@ -5880,6 +5880,8 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
+        "coming-of-age",
         "fantasy",
         "religious-fiction"
       ],
@@ -5887,6 +5889,43 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "idzi-dutkiewicz-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B648YKG2",
+              "region": "us"
+            },
+            {
+              "asin": "B0B64LDG1W",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91DnwK94oFL.jpg",
+          "id": "idzi-dutkiewicz-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "idzi-dutkiewicz"
+          ],
+          "publisher": "Grupo Nelson",
+          "release_date": "2023-10-03",
+          "runtime_min": 512,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B648YKG2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0B64LDG1W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-sobrino-del-mago"
+        },
         "idzi-dutkiewicz-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6035,72 +6074,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0CKZGNYK8",
           "type": "libex-import"
-        }
-      ],
-      "title": "El sobrino del mago"
-    },
-    "el-sobrino-del-mago-the-magicians-nephew": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "el-sobrino-del-mago-the-magicians-nephew",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "idzi-dutkiewicz-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0B648YKG2",
-              "region": "us"
-            },
-            {
-              "asin": "B0B64LDG1W",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91DnwK94oFL.jpg",
-          "id": "idzi-dutkiewicz-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "idzi-dutkiewicz"
-          ],
-          "publisher": "Grupo Nelson",
-          "release_date": "2023-10-03",
-          "runtime_min": 512,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B648YKG2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0B64LDG1W",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-sobrino-del-mago-the-magicians-nephew"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0B648YKG2",
           "type": "libex-import"
         }
       ],
-      "title": "El sobrino del mago [The Magician's Nephew]"
+      "title": "El sobrino del mago"
     },
     "el-socio-the-partner": {
       "added_at": "2026-07-29",

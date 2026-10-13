@@ -6866,6 +6866,65 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "aimee-lilly-2010": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B003XS29J6",
+              "region": "us"
+            },
+            {
+              "asin": "B004EW7Q1Q",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2840729,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2753422,
+              "start_ms": 2840729,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2996767,
+              "start_ms": 5594151,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2774970,
+              "start_ms": 8590918,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51UeGpn-bcL.jpg",
+          "id": "aimee-lilly-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aimee-lilly"
+          ],
+          "publisher": "Christian Audio",
+          "release_date": "2010-07-30",
+          "runtime_min": 189,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B003XS29J6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EW7Q1Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-covenant-beverly-lewis"
+        },
         "christina-moore-2008": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6970,6 +7029,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1CML6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003XS29J6",
           "type": "libex-import"
         }
       ],

@@ -3178,6 +3178,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "fantasy",
         "religious-fiction"
       ],
@@ -3322,33 +3323,8 @@
             }
           ],
           "work": "la-travesia-del-viajero-del-alba"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CKZF93S1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La travesía del Viajero del Alba"
-    },
-    "la-travesia-del-viajero-del-alba-the-voyage-of-the-dawn-treader": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "la-travesia-del-viajero-del-alba-the-voyage-of-the-dawn-treader",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "idzi-dutkiewicz-2023": {
+        },
+        "idzi-dutkiewicz-2023-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -3362,7 +3338,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81qs8Cv8KQL.jpg",
-          "id": "idzi-dutkiewicz-2023",
+          "id": "idzi-dutkiewicz-2023-2",
           "language": "es",
           "license": "CC0-1.0",
           "narrators": [
@@ -3383,17 +3359,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-travesia-del-viajero-del-alba-the-voyage-of-the-dawn-treader"
+          "work": "la-travesia-del-viajero-del-alba"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CKZF93S1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0B648Y7KV",
           "type": "libex-import"
         }
       ],
-      "title": "La travesía del Viajero del Alba [The Voyage of the Dawn Treader]"
+      "title": "La travesía del Viajero del Alba"
     },
     "la-traviata": {
       "added_at": "2026-07-29",
@@ -7308,6 +7289,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "fantasy",
         "religious-fiction"
       ],
@@ -7315,6 +7297,43 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "idzi-dutkiewicz-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0B646YLTY",
+              "region": "us"
+            },
+            {
+              "asin": "B0B647VC6V",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91bg0PG6NML.jpg",
+          "id": "idzi-dutkiewicz-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "idzi-dutkiewicz"
+          ],
+          "publisher": "Grupo Nelson",
+          "release_date": "2023-10-03",
+          "runtime_min": 544,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B646YLTY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0B647VC6V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-ultima-batalla"
+        },
         "idzi-dutkiewicz-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -7468,71 +7487,14 @@
           "imported_at": "2026-08-02",
           "ref": "B0CKWLYDM5",
           "type": "libex-import"
-        }
-      ],
-      "title": "La última batalla"
-    },
-    "la-ultima-batalla-the-last-battle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "la-ultima-batalla-the-last-battle",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "idzi-dutkiewicz-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0B646YLTY",
-              "region": "us"
-            },
-            {
-              "asin": "B0B647VC6V",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91bg0PG6NML.jpg",
-          "id": "idzi-dutkiewicz-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "idzi-dutkiewicz"
-          ],
-          "publisher": "Grupo Nelson",
-          "release_date": "2023-10-03",
-          "runtime_min": 544,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0B646YLTY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0B647VC6V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "la-ultima-batalla-the-last-battle"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0B646YLTY",
           "type": "libex-import"
         }
       ],
-      "title": "La última batalla [The Last Battle]"
+      "title": "La última batalla"
     },
     "la-ultima-bruja-the-last-witch": {
       "added_at": "2026-07-29",

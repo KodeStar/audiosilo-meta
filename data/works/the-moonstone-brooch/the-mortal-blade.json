@@ -11903,12 +11903,71 @@
       ],
       "genres": [
         "action-adventure",
-        "classics"
+        "classics",
+        "short-stories",
+        "thriller-suspense"
       ],
       "id": "the-most-dangerous-game",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "aaron-huffman-2022": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B0BM541FBZ",
+              "region": "us"
+            },
+            {
+              "asin": "B0BM53XYN7",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 45301,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3495114,
+              "start_ms": 45301,
+              "title": "The Most Dangerous Game"
+            },
+            {
+              "length_ms": 104303,
+              "start_ms": 3540415,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/812YaNuXtsL.jpg",
+          "id": "aaron-huffman-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aaron-huffman",
+            "carl-ritter",
+            "darrell-calk-jr",
+            "ryker-maddox"
+          ],
+          "publisher": "Kaiser & Tilly Publishing",
+          "release_date": "2022-11-14",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B0BM541FBZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0BM53XYN7",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-most-dangerous-game"
+        },
         "alan-munro-2012": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -12065,30 +12124,7 @@
             }
           ],
           "work": "the-most-dangerous-game"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00ADQR5I6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Most Dangerous Game"
-    },
-    "the-most-dangerous-game-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "richard-connell"
-      ],
-      "genres": [
-        "classics",
-        "thriller-suspense"
-      ],
-      "id": "the-most-dangerous-game-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "scott-merriman-2020": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -12122,97 +12158,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-most-dangerous-game-amazonclassics-edition"
+          "work": "the-most-dangerous-game"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-08",
+          "ref": "B00ADQR5I6",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
           "ref": "1799744736",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Most Dangerous Game (AmazonClassics Edition)"
-    },
-    "the-most-dangerous-game-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "richard-connell"
-      ],
-      "genres": [
-        "classics",
-        "short-stories"
-      ],
-      "id": "the-most-dangerous-game-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aaron-huffman-2022": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B0BM541FBZ",
-              "region": "us"
-            },
-            {
-              "asin": "B0BM53XYN7",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 45301,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 3495114,
-              "start_ms": 45301,
-              "title": "The Most Dangerous Game"
-            },
-            {
-              "length_ms": 104303,
-              "start_ms": 3540415,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/812YaNuXtsL.jpg",
-          "id": "aaron-huffman-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aaron-huffman",
-            "carl-ritter",
-            "darrell-calk-jr",
-            "ryker-maddox"
-          ],
-          "publisher": "Kaiser & Tilly Publishing",
-          "release_date": "2022-11-14",
-          "runtime_min": 60,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B0BM541FBZ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0BM53XYN7",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-most-dangerous-game-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0BM541FBZ",
           "type": "libex-import"
         }
       ],
-      "title": "The Most Dangerous Game (Dramatized)"
+      "title": "The Most Dangerous Game"
     },
     "the-most-dangerous-man-in-america": {
       "added_at": "2026-07-29",

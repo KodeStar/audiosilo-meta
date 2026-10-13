@@ -5486,9 +5486,11 @@
       ],
       "genres": [
         "historical-fiction",
+        "history",
         "literary-fiction",
         "philosophy",
-        "politics"
+        "politics",
+        "religion-spirituality"
       ],
       "id": "el-anticristo",
       "language": "es",
@@ -5851,32 +5853,7 @@
             }
           ],
           "work": "el-anticristo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07W13GQC1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Anticristo"
-    },
-    "el-anticristo-the-antichrist": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "friedrich-nietzsche"
-      ],
-      "genres": [
-        "history",
-        "philosophy",
-        "politics",
-        "religion-spirituality"
-      ],
-      "id": "el-anticristo-the-antichrist",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "joaquin-madrigal-2014": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -5953,17 +5930,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-anticristo-the-antichrist"
+          "work": "el-anticristo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07W13GQC1",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00K0PPL2M",
           "type": "libex-import"
         }
       ],
-      "title": "El anticristo [The Antichrist]"
+      "title": "El Anticristo"
     },
     "el-antiguo-libro-de-hechizos-nordicos-the-ancient-norse-spell-book": {
       "added_at": "2026-07-29",

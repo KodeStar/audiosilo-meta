@@ -10112,7 +10112,9 @@
       "genres": [
         "biography-memoir",
         "business",
-        "finance"
+        "classics",
+        "finance",
+        "historical-fiction"
       ],
       "id": "reminiscences-of-a-stock-operator",
       "language": "en",
@@ -10606,80 +10608,7 @@
             }
           ],
           "work": "reminiscences-of-a-stock-operator"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V5A3PE",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Reminiscences of a Stock Operator"
-    },
-    "reminiscences-of-a-stock-operator-harriman-definitive-editions-the-classic-novel-based-on-the-life-o": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "lefevre-edwin"
-      ],
-      "genres": [
-        "finance"
-      ],
-      "id": "reminiscences-of-a-stock-operator-harriman-definitive-editions-the-classic-novel-based-on-the-life-o",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "r-f-mccoy-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07V56SRNS",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91J7+7Fs7xL.jpg",
-          "id": "r-f-mccoy-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "r-f-mccoy"
-          ],
-          "publisher": "Harriman House Ltd",
-          "release_date": "2019-07-09",
-          "runtime_min": 690,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07V56SRNS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "reminiscences-of-a-stock-operator-harriman-definitive-editions-the-classic-novel-based-on-the-life-o"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07V56SRNS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Reminiscences of a Stock Operator (Harriman Definitive Editions): The Classic Novel Based on the Life of Legendary Stock Market Speculator Jesse Livermore"
-    },
-    "reminiscences-of-a-stock-operator-wiley-trading-audio": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edwin-lefevre"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction"
-      ],
-      "id": "reminiscences-of-a-stock-operator-wiley-trading-audio",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "uncredited-2013": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -11717,17 +11646,72 @@
               "type": "libex-import"
             }
           ],
-          "work": "reminiscences-of-a-stock-operator-wiley-trading-audio"
+          "work": "reminiscences-of-a-stock-operator"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V5A3PE",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00G972D44",
           "type": "libex-import"
         }
       ],
-      "title": "Reminiscences of a Stock Operator (Wiley Trading Audio)"
+      "title": "Reminiscences of a Stock Operator"
+    },
+    "reminiscences-of-a-stock-operator-harriman-definitive-editions-the-classic-novel-based-on-the-life-o": {
+      "added_at": "2026-07-29",
+      "authors": [
+        "lefevre-edwin"
+      ],
+      "genres": [
+        "finance"
+      ],
+      "id": "reminiscences-of-a-stock-operator-harriman-definitive-editions-the-classic-novel-based-on-the-life-o",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "r-f-mccoy-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07V56SRNS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91J7+7Fs7xL.jpg",
+          "id": "r-f-mccoy-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "r-f-mccoy"
+          ],
+          "publisher": "Harriman House Ltd",
+          "release_date": "2019-07-09",
+          "runtime_min": 690,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07V56SRNS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "reminiscences-of-a-stock-operator-harriman-definitive-editions-the-classic-novel-based-on-the-life-o"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07V56SRNS",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Reminiscences of a Stock Operator (Harriman Definitive Editions): The Classic Novel Based on the Life of Legendary Stock Market Speculator Jesse Livermore"
     },
     "reminiscences-of-my-life-in-camp-with-the-33d-united-states-colored-troops": {
       "added_at": "2026-07-29",

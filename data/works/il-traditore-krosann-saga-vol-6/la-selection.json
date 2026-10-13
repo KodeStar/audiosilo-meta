@@ -5085,6 +5085,7 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "classics",
         "fantasy",
         "religious-fiction"
       ],
@@ -5229,33 +5230,8 @@
             }
           ],
           "work": "la-silla-de-plata"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0CKZG5MKY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La silla de plata"
-    },
-    "la-silla-de-plata-the-silver-chair": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "c-s-lewis"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "la-silla-de-plata-the-silver-chair",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "idzi-dutkiewicz-2023": {
+        },
+        "idzi-dutkiewicz-2023-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -5269,7 +5245,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81K+2nog8XL.jpg",
-          "id": "idzi-dutkiewicz-2023",
+          "id": "idzi-dutkiewicz-2023-2",
           "language": "es",
           "license": "CC0-1.0",
           "narrators": [
@@ -5290,17 +5266,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-silla-de-plata-the-silver-chair"
+          "work": "la-silla-de-plata"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0CKZG5MKY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0B647FGDK",
           "type": "libex-import"
         }
       ],
-      "title": "La silla de plata [The Silver Chair]"
+      "title": "La silla de plata"
     },
     "la-silla-del-aguila-the-eagles-chair": {
       "added_at": "2026-07-29",

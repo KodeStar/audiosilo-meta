@@ -2660,83 +2660,6 @@
       ],
       "title": "Hamlet"
     },
-    "hamlet-dramatised": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "hamlet-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-gielgud-2010": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B004HGCY8E",
-              "region": "us"
-            },
-            {
-              "asin": "B004HGAVP2",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2232646,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1230054,
-              "start_ms": 2232646,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1155564,
-              "start_ms": 3462700,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81FlK4v63JL.jpg",
-          "id": "john-gielgud-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-gielgud",
-            "pamela-brown"
-          ],
-          "publisher": "Saland Publishing",
-          "release_date": "2010-12-29",
-          "runtime_min": 76,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B004HGCY8E",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004HGAVP2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hamlet-dramatised"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B004HGCY8E",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hamlet (Dramatised)"
-    },
     "hamlet-fully-dramatized-audio-edition": {
       "added_at": "2026-07-29",
       "authors": [
@@ -3689,104 +3612,6 @@
       ],
       "title": "Hamlet, Prince of Denmark: A Novel"
     },
-    "hamlet-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "william-shakespeare"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays"
-      ],
-      "id": "hamlet-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "marcos-chacon-2020": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B085CJV3L3",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 224235,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 276317,
-              "start_ms": 224235,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 297261,
-              "start_ms": 500552,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 328748,
-              "start_ms": 797813,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 290179,
-              "start_ms": 1126561,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 180720,
-              "start_ms": 1416740,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 210326,
-              "start_ms": 1597460,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 169227,
-              "start_ms": 1807786,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 478074,
-              "start_ms": 1977013,
-              "title": "Capítulo 9"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WAbUmF1XL.jpg",
-          "id": "marcos-chacon-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "marcos-chacon"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-03-04",
-          "runtime_min": 40,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B085CJV3L3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "hamlet-spanish-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B085CJV3L3",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Hamlet (Spanish Edition)"
-    },
     "hamlet-the-arkangel-shakespeare": {
       "added_at": "2026-08-08",
       "authors": [
@@ -4433,6 +4258,57 @@
             {
               "asin": "B085CK92D8",
               "region": "es"
+            },
+            {
+              "asin": "B085CJV3L3",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 224235,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 276317,
+              "start_ms": 224235,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 297261,
+              "start_ms": 500552,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 328748,
+              "start_ms": 797813,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 290179,
+              "start_ms": 1126561,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 180720,
+              "start_ms": 1416740,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 210326,
+              "start_ms": 1597460,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 169227,
+              "start_ms": 1807786,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 478074,
+              "start_ms": 1977013,
+              "title": "Capítulo 9"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81WAbUmF1XL.jpg",
@@ -4450,6 +4326,11 @@
               "imported_at": "2026-07-29",
               "ref": "B085CK92D8",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B085CJV3L3",
+              "type": "libex-import"
             }
           ],
           "work": "hamlet-william-shakespeare"
@@ -4459,6 +4340,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B085CK92D8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B085CJV3L3",
           "type": "libex-import"
         }
       ],
@@ -4765,12 +4651,72 @@
             }
           ],
           "work": "hamlet-william-shakespeare-2"
+        },
+        "john-gielgud-2010": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B004HGCY8E",
+              "region": "us"
+            },
+            {
+              "asin": "B004HGAVP2",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2232646,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1230054,
+              "start_ms": 2232646,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1155564,
+              "start_ms": 3462700,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FlK4v63JL.jpg",
+          "id": "john-gielgud-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-gielgud",
+            "pamela-brown"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2010-12-29",
+          "runtime_min": 76,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004HGCY8E",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004HGAVP2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hamlet-william-shakespeare-2"
         }
       },
       "sources": [
         {
           "imported_at": "2026-07-29",
           "ref": "B002V5D59U",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B004HGCY8E",
           "type": "libex-import"
         }
       ],

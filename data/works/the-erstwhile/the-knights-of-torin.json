@@ -9322,12 +9322,68 @@
             }
           ],
           "work": "the-kraken-wakes"
+        },
+        "full-cast-2007": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1LW1W",
+              "region": "us"
+            },
+            {
+              "asin": "B004F3ZP6M",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2681928,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2537570,
+              "start_ms": 2681928,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71662tGzWBL.jpg",
+          "id": "full-cast-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast",
+            "jonathan-cake",
+            "saira-todd"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2007-08-15",
+          "runtime_min": 86,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1LW1W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F3ZP6M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-kraken-wakes"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-08",
           "ref": "B004N6WYTC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1LW1W",
           "type": "libex-import"
         }
       ],

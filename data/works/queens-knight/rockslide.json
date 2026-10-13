@@ -8380,6 +8380,92 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "dan-russell-2018": {
+          "abridged": false,
+          "added_at": "2026-07-11T17:30:05+01:00",
+          "asin": [
+            {
+              "asin": "B07B3XKTG2",
+              "region": "uk"
+            },
+            {
+              "asin": "B07B3Y9PGX",
+              "region": "us"
+            },
+            {
+              "asin": "B07B3WDRBD",
+              "region": "de"
+            },
+            {
+              "asin": "0143796143",
+              "region": "us"
+            },
+            {
+              "asin": "0143796143",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2078510,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2420494,
+              "start_ms": 2078510,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1865769,
+              "start_ms": 4499004,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2552848,
+              "start_ms": 6364773,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61M5Pe5bzBL._SL500_.jpg",
+          "id": "dan-russell-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-russell"
+          ],
+          "publisher": "Puffin",
+          "release_date": "2018-03-29",
+          "runtime_min": 148,
+          "sources": [
+            {
+              "imported_at": "2026-07-11",
+              "ref": "B07B3XKTG2",
+              "type": "openaudible-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B07B3Y9PGX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-04",
+              "ref": "B07B3WDRBD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-08",
+              "ref": "0143796143",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "0143796143",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rodrick-rules"
+        },
         "ramon-de-ocampo-2009": {
           "abridged": false,
           "added_at": "2026-07-11T16:49:50+01:00",
@@ -8829,92 +8915,24 @@
           "imported_at": "2026-07-30",
           "ref": "B0036GRRY2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Rodrick Rules"
-    },
-    "rodrick-rules-diary-of-a-wimpy-kid-2": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "jeff-kinney"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age"
-      ],
-      "id": "rodrick-rules-diary-of-a-wimpy-kid-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dan-russell-2018": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "0143796143",
-              "region": "us"
-            },
-            {
-              "asin": "0143796143",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2057473,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2466168,
-              "start_ms": 2057473,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1888014,
-              "start_ms": 4523641,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2521106,
-              "start_ms": 6411655,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91aHpfoXOXL.jpg",
-          "id": "dan-russell-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-russell"
-          ],
-          "publisher": "Penguin Random House Australia Audio",
-          "release_date": "2018-10-30",
-          "runtime_min": 148,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "0143796143",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0143796143",
-              "type": "libex-import"
-            }
-          ],
-          "work": "rodrick-rules-diary-of-a-wimpy-kid-2"
-        }
-      },
-      "sources": [
+        },
+        {
+          "imported_at": "2026-07-11",
+          "ref": "B07B3XKTG2",
+          "type": "openaudible-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B07B3Y9PGX",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "0143796143",
           "type": "libex-import"
         }
       ],
-      "title": "Rodrick Rules (Diary of a Wimpy Kid #2)"
+      "title": "Rodrick Rules"
     },
     "rodrick-the-bold": {
       "added_at": "2026-07-29",

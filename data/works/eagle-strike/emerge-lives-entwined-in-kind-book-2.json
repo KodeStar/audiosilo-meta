@@ -3867,12 +3867,198 @@
         "john-birmingham"
       ],
       "genres": [
-        "science-fiction"
+        "action-adventure",
+        "classics",
+        "fantasy",
+        "horror",
+        "literary-fiction",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "emergence-dave-hooper-book-1",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "mark-zeisler-2015": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00WA1VYZM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15436,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1175190,
+              "start_ms": 15436,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1380333,
+              "start_ms": 1190626,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1004635,
+              "start_ms": 2570959,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1065192,
+              "start_ms": 3575594,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1089759,
+              "start_ms": 4640786,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1308073,
+              "start_ms": 5730545,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3013857,
+              "start_ms": 7038618,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1523926,
+              "start_ms": 10052475,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1714654,
+              "start_ms": 11576401,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1368863,
+              "start_ms": 13291055,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1353538,
+              "start_ms": 14659918,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1080657,
+              "start_ms": 16013456,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1609700,
+              "start_ms": 17094113,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2031189,
+              "start_ms": 18703813,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 283609,
+              "start_ms": 20735002,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1136849,
+              "start_ms": 21018611,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 541582,
+              "start_ms": 22155460,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1646341,
+              "start_ms": 22697042,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 435978,
+              "start_ms": 24343383,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1475721,
+              "start_ms": 24779361,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 912126,
+              "start_ms": 26255082,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1480783,
+              "start_ms": 27167208,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 493842,
+              "start_ms": 28647991,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 912126,
+              "start_ms": 29141833,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1137081,
+              "start_ms": 30053959,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 3081985,
+              "start_ms": 31191040,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 953365,
+              "start_ms": 34273025,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 2908578,
+              "start_ms": 35226390,
+              "title": "Chapter 28"
+            },
+            {
+              "length_ms": 742063,
+              "start_ms": 38134968,
+              "title": "Epilogue"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Crd6ER32L.jpg",
+          "id": "mark-zeisler-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "mark-zeisler"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2015-04-28",
+          "runtime_min": 647,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00WA1VYZM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "emergence-dave-hooper-book-1"
+        },
         "sean-mangan-2015": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -4068,216 +4254,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00YI8X8EK",
           "type": "libex-import"
-        }
-      ],
-      "title": "Emergence: Dave Hooper, Book 1"
-    },
-    "emergence-dave-vs-the-monsters": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "john-birmingham"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "fantasy",
-        "horror",
-        "literary-fiction",
-        "urban-fantasy"
-      ],
-      "id": "emergence-dave-vs-the-monsters",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "mark-zeisler-2015": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00WA1VYZM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15436,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1175190,
-              "start_ms": 15436,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1380333,
-              "start_ms": 1190626,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1004635,
-              "start_ms": 2570959,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1065192,
-              "start_ms": 3575594,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1089759,
-              "start_ms": 4640786,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1308073,
-              "start_ms": 5730545,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3013857,
-              "start_ms": 7038618,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1523926,
-              "start_ms": 10052475,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1714654,
-              "start_ms": 11576401,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1368863,
-              "start_ms": 13291055,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1353538,
-              "start_ms": 14659918,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1080657,
-              "start_ms": 16013456,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1609700,
-              "start_ms": 17094113,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2031189,
-              "start_ms": 18703813,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 283609,
-              "start_ms": 20735002,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1136849,
-              "start_ms": 21018611,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 541582,
-              "start_ms": 22155460,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1646341,
-              "start_ms": 22697042,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 435978,
-              "start_ms": 24343383,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1475721,
-              "start_ms": 24779361,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 912126,
-              "start_ms": 26255082,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1480783,
-              "start_ms": 27167208,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 493842,
-              "start_ms": 28647991,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 912126,
-              "start_ms": 29141833,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1137081,
-              "start_ms": 30053959,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 3081985,
-              "start_ms": 31191040,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 953365,
-              "start_ms": 34273025,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 2908578,
-              "start_ms": 35226390,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 742063,
-              "start_ms": 38134968,
-              "title": "Epilogue"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81Crd6ER32L.jpg",
-          "id": "mark-zeisler-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "mark-zeisler"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2015-04-28",
-          "runtime_min": 647,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00WA1VYZM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "emergence-dave-vs-the-monsters"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B00WA1VYZM",
           "type": "libex-import"
         }
       ],
-      "title": "Emergence: Dave vs. the Monsters"
+      "title": "Emergence: Dave Hooper, Book 1"
     },
     "emergence-david-sussillo": {
       "added_at": "2026-07-29",

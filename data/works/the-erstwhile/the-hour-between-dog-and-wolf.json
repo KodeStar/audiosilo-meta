@@ -4898,7 +4898,11 @@
         "a-a-milne"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "classics",
+        "coming-of-age",
+        "nature",
         "short-stories"
       ],
       "id": "the-house-at-pooh-corner",
@@ -5365,6 +5369,101 @@
             {
               "imported_at": "2026-10-10",
               "ref": "B079J44WT6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-house-at-pooh-corner"
+        },
+        "finty-williams-2010": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B003ILMJWA",
+              "region": "us"
+            },
+            {
+              "asin": "B004EW99F2",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 766026,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 746150,
+              "start_ms": 766026,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 776614,
+              "start_ms": 1512176,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 891228,
+              "start_ms": 2288790,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 953689,
+              "start_ms": 3180018,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 892482,
+              "start_ms": 4133707,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 964696,
+              "start_ms": 5026189,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 923411,
+              "start_ms": 5990885,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 849896,
+              "start_ms": 6914296,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 820871,
+              "start_ms": 7764192,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Yvkb4qPRL.jpg",
+          "id": "finty-williams-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "finty-williams",
+            "geoffrey-palmer",
+            "jane-horrocks",
+            "judi-dench",
+            "robert-daws",
+            "sandi-toksvig",
+            "stephen-fry"
+          ],
+          "publisher": "Hodder Children's Books",
+          "release_date": "2010-04-21",
+          "runtime_min": 143,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B003ILMJWA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EW99F2",
               "type": "libex-import"
             }
           ],
@@ -6079,6 +6178,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002V1O62Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003ILMJWA",
           "type": "libex-import"
         }
       ],

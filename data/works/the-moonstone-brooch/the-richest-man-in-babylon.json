@@ -1,134 +1,5 @@
 {
   "entries": {
-    "the-richest-man-in-babylon": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "george-s-clason",
-        "charles-conrad"
-      ],
-      "genres": [
-        "business",
-        "finance",
-        "history"
-      ],
-      "id": "the-richest-man-in-babylon",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "charles-conrad-2017": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B06XTY6F43",
-              "region": "us"
-            },
-            {
-              "asin": "B06XTXW2PM",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 17809,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 130983,
-              "start_ms": 17809,
-              "title": "Foreword"
-            },
-            {
-              "length_ms": 740089,
-              "start_ms": 148792,
-              "title": "1. The Man Who Desired Gold"
-            },
-            {
-              "length_ms": 1324094,
-              "start_ms": 888881,
-              "title": "2. The Richest Man in Babylon"
-            },
-            {
-              "length_ms": 2107280,
-              "start_ms": 2212975,
-              "title": "3. Seven Cures for a Lean Purse"
-            },
-            {
-              "length_ms": 1544057,
-              "start_ms": 4320255,
-              "title": "4. Meet the Goddess of Good Luck"
-            },
-            {
-              "length_ms": 1382516,
-              "start_ms": 5864312,
-              "title": "5. The Five Laws of Gold"
-            },
-            {
-              "length_ms": 1420689,
-              "start_ms": 7246828,
-              "title": "6. The Gold Lender of Babylon"
-            },
-            {
-              "length_ms": 429476,
-              "start_ms": 8667517,
-              "title": "7. The Walls of Babylon"
-            },
-            {
-              "length_ms": 1202561,
-              "start_ms": 9096993,
-              "title": "8. The Camel Trader of Babylon"
-            },
-            {
-              "length_ms": 1055579,
-              "start_ms": 10299554,
-              "title": "9. The Clay Tablets of Babylon"
-            },
-            {
-              "length_ms": 1960158,
-              "start_ms": 11355133,
-              "title": "10. The Luckiest Man in Babylon"
-            },
-            {
-              "length_ms": 20316,
-              "start_ms": 13315291,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81nxJ5tjY6L.jpg",
-          "id": "charles-conrad-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "charles-conrad"
-          ],
-          "publisher": "Best Success Books",
-          "release_date": "2017-03-28",
-          "runtime_min": 222,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B06XTY6F43",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B06XTXW2PM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-richest-man-in-babylon"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B06XTY6F43",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Richest Man in Babylon"
-    },
     "the-richest-man-in-babylon-charles-conrad": {
       "added_at": "2026-07-29",
       "authors": [
@@ -305,7 +176,8 @@
     "the-richest-man-in-babylon-george-s-clason": {
       "added_at": "2026-07-29",
       "authors": [
-        "george-s-clason"
+        "george-s-clason",
+        "charles-conrad"
       ],
       "genres": [
         "business",
@@ -350,6 +222,224 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0CMJX2BND",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-richest-man-in-babylon-george-s-clason"
+        },
+        "charles-conrad-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B06XTY6F43",
+              "region": "us"
+            },
+            {
+              "asin": "B06XTXW2PM",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 17809,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 130983,
+              "start_ms": 17809,
+              "title": "Foreword"
+            },
+            {
+              "length_ms": 740089,
+              "start_ms": 148792,
+              "title": "1. The Man Who Desired Gold"
+            },
+            {
+              "length_ms": 1324094,
+              "start_ms": 888881,
+              "title": "2. The Richest Man in Babylon"
+            },
+            {
+              "length_ms": 2107280,
+              "start_ms": 2212975,
+              "title": "3. Seven Cures for a Lean Purse"
+            },
+            {
+              "length_ms": 1544057,
+              "start_ms": 4320255,
+              "title": "4. Meet the Goddess of Good Luck"
+            },
+            {
+              "length_ms": 1382516,
+              "start_ms": 5864312,
+              "title": "5. The Five Laws of Gold"
+            },
+            {
+              "length_ms": 1420689,
+              "start_ms": 7246828,
+              "title": "6. The Gold Lender of Babylon"
+            },
+            {
+              "length_ms": 429476,
+              "start_ms": 8667517,
+              "title": "7. The Walls of Babylon"
+            },
+            {
+              "length_ms": 1202561,
+              "start_ms": 9096993,
+              "title": "8. The Camel Trader of Babylon"
+            },
+            {
+              "length_ms": 1055579,
+              "start_ms": 10299554,
+              "title": "9. The Clay Tablets of Babylon"
+            },
+            {
+              "length_ms": 1960158,
+              "start_ms": 11355133,
+              "title": "10. The Luckiest Man in Babylon"
+            },
+            {
+              "length_ms": 20316,
+              "start_ms": 13315291,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81nxJ5tjY6L.jpg",
+          "id": "charles-conrad-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charles-conrad"
+          ],
+          "publisher": "Best Success Books",
+          "release_date": "2017-03-28",
+          "runtime_min": 222,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B06XTY6F43",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B06XTXW2PM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-richest-man-in-babylon-george-s-clason"
+        },
+        "christa-lewis-2017": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B073HD64K1",
+              "region": "us"
+            },
+            {
+              "asin": "B073HF2G1P",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 28653,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 118979,
+              "start_ms": 28653,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 142896,
+              "start_ms": 147632,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 767837,
+              "start_ms": 290528,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1313831,
+              "start_ms": 1058365,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2327568,
+              "start_ms": 2372196,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1679406,
+              "start_ms": 4699764,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1491093,
+              "start_ms": 6379170,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1520721,
+              "start_ms": 7870263,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 443826,
+              "start_ms": 9390984,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1221648,
+              "start_ms": 9834810,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 608316,
+              "start_ms": 11056458,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1987396,
+              "start_ms": 11664774,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 780562,
+              "start_ms": 13652170,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 27771,
+              "start_ms": 14432732,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mSdr-rOJL.jpg",
+          "id": "christa-lewis-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christa-lewis"
+          ],
+          "publisher": "Dauphin Publications",
+          "release_date": "2017-07-03",
+          "runtime_min": 240,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B073HD64K1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B073HF2G1P",
               "type": "libex-import"
             }
           ],
@@ -1381,6 +1471,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "2291067613",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B073HD64K1",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B06XTY6F43",
           "type": "libex-import"
         }
       ],

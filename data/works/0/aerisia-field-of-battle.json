@@ -4107,31 +4107,7 @@
             }
           ],
           "work": "aesops-fables"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "1974937305",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Aesop's Fables"
-    },
-    "aesops-fables-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "aesop"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "fairy-tales-folklore"
-      ],
-      "id": "aesops-fables-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "scott-merriman-2019": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -5585,17 +5561,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "aesops-fables-amazonclassics-edition"
+          "work": "aesops-fables"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1974937305",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "1978676247",
           "type": "libex-import"
         }
       ],
-      "title": "Aesop's Fables (AmazonClassics Edition)"
+      "title": "Aesop's Fables"
     },
     "aesops-fables-bbc": {
       "added_at": "2026-07-25T17:12:12+01:00",

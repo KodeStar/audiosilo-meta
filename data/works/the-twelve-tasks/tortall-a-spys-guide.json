@@ -10558,6 +10558,10 @@
             {
               "asin": "B002V8H93U",
               "region": "us"
+            },
+            {
+              "asin": "B002V5GMEU",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -10607,6 +10611,11 @@
               "imported_at": "2026-07-29",
               "ref": "B002V8H93U",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V5GMEU",
+              "type": "libex-import"
             }
           ],
           "work": "total-quality-management"
@@ -10617,84 +10626,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002V8H93U",
           "type": "libex-import"
-        }
-      ],
-      "title": "Total Quality Management"
-    },
-    "total-quality-management-stephen-george": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "stephen-george"
-      ],
-      "genres": [
-        "business"
-      ],
-      "id": "total-quality-management-stephen-george",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lloyd-bochner-2009": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V5GMEU",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 33875,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2281131,
-              "start_ms": 33875,
-              "title": "Customer Focus"
-            },
-            {
-              "length_ms": 1917155,
-              "start_ms": 2315006,
-              "title": "Customer Contacts"
-            },
-            {
-              "length_ms": 2266151,
-              "start_ms": 4232161,
-              "title": "Design of Products and Services"
-            },
-            {
-              "length_ms": 2268000,
-              "start_ms": 6498312,
-              "title": "Process Management"
-            },
-            {
-              "length_ms": 60983,
-              "start_ms": 8766312,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Mu+KBXdAL.jpg",
-          "id": "lloyd-bochner-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lloyd-bochner"
-          ],
-          "publisher": "Phoenix Books",
-          "release_date": "2009-10-12",
-          "runtime_min": 146,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V5GMEU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "total-quality-management-stephen-george"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V5GMEU",

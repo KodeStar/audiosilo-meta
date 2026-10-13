@@ -4152,7 +4152,9 @@
     "ten-lessons-to-transform-your-marriage": {
       "added_at": "2026-07-29",
       "authors": [
-        "john-gottman-phd"
+        "john-gottman-phd",
+        "julie-schwartz-gottman-phd",
+        "joan-de-claire"
       ],
       "genres": [
         "health-wellness",
@@ -4165,6 +4167,87 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "anne-gartlan-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1CNTW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2844026,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2427414,
+              "start_ms": 2844026,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1759747,
+              "start_ms": 5271440,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1497594,
+              "start_ms": 7031187,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1580815,
+              "start_ms": 8528781,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1635985,
+              "start_ms": 10109596,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1529313,
+              "start_ms": 11745581,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1719623,
+              "start_ms": 13274894,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1356324,
+              "start_ms": 14994517,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1574127,
+              "start_ms": 16350841,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81CFRywcfnL.jpg",
+          "id": "anne-gartlan-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anne-gartlan",
+            "l-j-ganser"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2006-05-16",
+          "runtime_min": 298,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1CNTW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "ten-lessons-to-transform-your-marriage"
+        },
         "susan-denaker-2006": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -4646,118 +4729,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V8DEG6",
           "type": "libex-import"
-        }
-      ],
-      "title": "Ten Lessons To Transform Your Marriage"
-    },
-    "ten-lessons-to-transform-your-marriage-julie-schwartz-gottman-phd": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "julie-schwartz-gottman-phd",
-        "john-gottman-phd",
-        "joan-de-claire"
-      ],
-      "genres": [
-        "health-wellness",
-        "parenting-relationships",
-        "politics",
-        "psychology",
-        "social-sciences"
-      ],
-      "id": "ten-lessons-to-transform-your-marriage-julie-schwartz-gottman-phd",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anne-gartlan-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1CNTW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2844026,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2427414,
-              "start_ms": 2844026,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1759747,
-              "start_ms": 5271440,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1497594,
-              "start_ms": 7031187,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1580815,
-              "start_ms": 8528781,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1635985,
-              "start_ms": 10109596,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1529313,
-              "start_ms": 11745581,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1719623,
-              "start_ms": 13274894,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1356324,
-              "start_ms": 14994517,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1574127,
-              "start_ms": 16350841,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81CFRywcfnL.jpg",
-          "id": "anne-gartlan-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anne-gartlan",
-            "l-j-ganser"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2006-05-16",
-          "runtime_min": 298,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1CNTW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "ten-lessons-to-transform-your-marriage-julie-schwartz-gottman-phd"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1CNTW",
           "type": "libex-import"
         }
       ],
-      "title": "Ten Lessons to Transform Your Marriage"
+      "title": "Ten Lessons To Transform Your Marriage"
     },
     "ten-letters": {
       "added_at": "2026-07-29",

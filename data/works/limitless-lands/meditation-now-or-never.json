@@ -364,7 +364,8 @@
       "authors": [
         "marcus-aurelius",
         "george-long",
-        "duncan-steen"
+        "duncan-steen",
+        "meric-casaubon"
       ],
       "credits": [
         {
@@ -380,20 +381,28 @@
           "role": "translator"
         },
         {
+          "person": "gregory-hays",
+          "role": "translator"
+        },
+        {
           "person": "martin-hammond",
           "role": "translator"
         },
         {
-          "person": "gregory-hays",
+          "person": "meric-casaubon",
           "role": "translator"
         }
       ],
       "genres": [
+        "biography-memoir",
         "classics",
         "history",
         "mythology",
+        "parenting-relationships",
         "philosophy",
         "politics",
+        "religion-spirituality",
+        "self-help",
         "short-stories"
       ],
       "id": "meditations",
@@ -432,6 +441,125 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B01B6QKOS4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditations"
+        },
+        "braden-wright-2019": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "1978676468",
+              "region": "us"
+            },
+            {
+              "asin": "1978676468",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 68695,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2346665,
+              "start_ms": 68695,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 1615855,
+              "start_ms": 2415360,
+              "title": "The First Book"
+            },
+            {
+              "length_ms": 954107,
+              "start_ms": 4031215,
+              "title": "The Second Book"
+            },
+            {
+              "length_ms": 1400093,
+              "start_ms": 4985322,
+              "title": "The Third Book"
+            },
+            {
+              "length_ms": 2378094,
+              "start_ms": 6385415,
+              "title": "The Fourth Book"
+            },
+            {
+              "length_ms": 2339085,
+              "start_ms": 8763509,
+              "title": "The Fifth Book"
+            },
+            {
+              "length_ms": 2499094,
+              "start_ms": 11102594,
+              "title": "The Sixth Book"
+            },
+            {
+              "length_ms": 2549086,
+              "start_ms": 13601688,
+              "title": "The Seventh Book"
+            },
+            {
+              "length_ms": 2559094,
+              "start_ms": 16150774,
+              "title": "The Eighth Book"
+            },
+            {
+              "length_ms": 2259092,
+              "start_ms": 18709868,
+              "title": "The Ninth Book"
+            },
+            {
+              "length_ms": 2578111,
+              "start_ms": 20968960,
+              "title": "The Tenth Book"
+            },
+            {
+              "length_ms": 1957093,
+              "start_ms": 23547071,
+              "title": "The Eleventh Book"
+            },
+            {
+              "length_ms": 1582091,
+              "start_ms": 25504164,
+              "title": "The Twelfth Book"
+            },
+            {
+              "length_ms": 3376189,
+              "start_ms": 27086255,
+              "title": "Appendix"
+            },
+            {
+              "length_ms": 300038,
+              "start_ms": 30462444,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71yeJG2CbwL.jpg",
+          "id": "braden-wright-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "braden-wright"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-06-25",
+          "runtime_min": 512,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "1978676468",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1978676468",
               "type": "libex-import"
             }
           ],
@@ -1101,6 +1229,142 @@
             }
           ],
           "work": "meditations"
+        },
+        "tom-gallagher-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CTJ379M8",
+              "region": "us"
+            },
+            {
+              "asin": "B0CTJ22MLD",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Pfeyf72oL.jpg",
+          "id": "tom-gallagher-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-gallagher"
+          ],
+          "publisher": "Nightingale-Conant",
+          "release_date": "2024-01-30",
+          "runtime_min": 287,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CTJ379M8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CTJ22MLD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditations"
+        },
+        "wanda-mccaddon-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0035YJG3K",
+              "region": "us"
+            },
+            {
+              "asin": "B004F1XYTO",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1015687,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 794494,
+              "start_ms": 1015687,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 987638,
+              "start_ms": 1810181,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1504607,
+              "start_ms": 2797819,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1492486,
+              "start_ms": 4302426,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1533585,
+              "start_ms": 5794912,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1509483,
+              "start_ms": 7328497,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1582208,
+              "start_ms": 8837980,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1467966,
+              "start_ms": 10420188,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1529266,
+              "start_ms": 11888154,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1297810,
+              "start_ms": 13417420,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1107545,
+              "start_ms": 14715230,
+              "title": "Chapter 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51sY7yGDeEL.jpg",
+          "id": "wanda-mccaddon-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "wanda-mccaddon"
+          ],
+          "publisher": "Tantor Audio",
+          "release_date": "2010-01-26",
+          "runtime_min": 263,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0035YJG3K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F1XYTO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "meditations"
         }
       },
       "sources": [
@@ -1112,6 +1376,16 @@
         {
           "imported_at": "2026-07-29",
           "ref": "0241429668",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "1978676468",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0035YJG3K",
           "type": "libex-import"
         }
       ],
@@ -1183,157 +1457,6 @@
         }
       ],
       "title": "Meditations & Affirmations"
-    },
-    "meditations-amazonclassics-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "marcus-aurelius",
-        "meric-casaubon"
-      ],
-      "credits": [
-        {
-          "person": "meric-casaubon",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "history",
-        "philosophy",
-        "politics",
-        "religion-spirituality"
-      ],
-      "id": "meditations-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "braden-wright-2019": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "1978676468",
-              "region": "us"
-            },
-            {
-              "asin": "1978676468",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 68695,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2346665,
-              "start_ms": 68695,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 1615855,
-              "start_ms": 2415360,
-              "title": "The First Book"
-            },
-            {
-              "length_ms": 954107,
-              "start_ms": 4031215,
-              "title": "The Second Book"
-            },
-            {
-              "length_ms": 1400093,
-              "start_ms": 4985322,
-              "title": "The Third Book"
-            },
-            {
-              "length_ms": 2378094,
-              "start_ms": 6385415,
-              "title": "The Fourth Book"
-            },
-            {
-              "length_ms": 2339085,
-              "start_ms": 8763509,
-              "title": "The Fifth Book"
-            },
-            {
-              "length_ms": 2499094,
-              "start_ms": 11102594,
-              "title": "The Sixth Book"
-            },
-            {
-              "length_ms": 2549086,
-              "start_ms": 13601688,
-              "title": "The Seventh Book"
-            },
-            {
-              "length_ms": 2559094,
-              "start_ms": 16150774,
-              "title": "The Eighth Book"
-            },
-            {
-              "length_ms": 2259092,
-              "start_ms": 18709868,
-              "title": "The Ninth Book"
-            },
-            {
-              "length_ms": 2578111,
-              "start_ms": 20968960,
-              "title": "The Tenth Book"
-            },
-            {
-              "length_ms": 1957093,
-              "start_ms": 23547071,
-              "title": "The Eleventh Book"
-            },
-            {
-              "length_ms": 1582091,
-              "start_ms": 25504164,
-              "title": "The Twelfth Book"
-            },
-            {
-              "length_ms": 3376189,
-              "start_ms": 27086255,
-              "title": "Appendix"
-            },
-            {
-              "length_ms": 300038,
-              "start_ms": 30462444,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71yeJG2CbwL.jpg",
-          "id": "braden-wright-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "braden-wright"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-06-25",
-          "runtime_min": 512,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "1978676468",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1978676468",
-              "type": "libex-import"
-            }
-          ],
-          "work": "meditations-amazonclassics-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "1978676468",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Meditations (AmazonClassics Edition)"
     },
     "meditations-essential-stoic-wisdom-on-self-discipline-resilience-mental-clarity": {
       "added_at": "2026-07-29",

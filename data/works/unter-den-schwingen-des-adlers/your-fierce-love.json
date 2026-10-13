@@ -6101,20 +6101,59 @@
       ],
       "title": "Your Internet Cash Machine"
     },
-    "your-invisible-power": {
-      "added_at": "2026-08-01",
+    "your-invisible-power-genevieve-behrend": {
+      "added_at": "2026-07-29",
       "authors": [
+        "genevieve-behrend",
         "florence-scovel-shinn",
-        "hillary-hawkins",
-        "genevieve-behrend"
+        "hillary-hawkins"
       ],
       "genres": [
-        "religion-spirituality"
+        "parenting-relationships",
+        "religion-spirituality",
+        "self-help"
       ],
-      "id": "your-invisible-power",
+      "id": "your-invisible-power-genevieve-behrend",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "barry-j-peterson-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07B44C4P5",
+              "region": "us"
+            },
+            {
+              "asin": "B07B43WGQD",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91uSIh-YdbL.jpg",
+          "id": "barry-j-peterson-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "barry-j-peterson"
+          ],
+          "publisher": "Audio Enlightenment",
+          "release_date": "2018-03-01",
+          "runtime_min": 111,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07B44C4P5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07B43WGQD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "your-invisible-power-genevieve-behrend"
+        },
         "hillary-hawkins-2016": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -6264,67 +6303,6 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B01DV2H98E",
-              "type": "libex-import"
-            }
-          ],
-          "work": "your-invisible-power"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01DV2ZE5O",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Your Invisible Power"
-    },
-    "your-invisible-power-genevieve-behrend": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "genevieve-behrend"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "religion-spirituality",
-        "self-help"
-      ],
-      "id": "your-invisible-power-genevieve-behrend",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "barry-j-peterson-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07B44C4P5",
-              "region": "us"
-            },
-            {
-              "asin": "B07B43WGQD",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91uSIh-YdbL.jpg",
-          "id": "barry-j-peterson-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "barry-j-peterson"
-          ],
-          "publisher": "Audio Enlightenment",
-          "release_date": "2018-03-01",
-          "runtime_min": 111,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07B44C4P5",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07B43WGQD",
               "type": "libex-import"
             }
           ],
@@ -6513,6 +6491,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0036GRGAC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01DV2ZE5O",
           "type": "libex-import"
         }
       ],

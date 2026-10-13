@@ -7115,31 +7115,7 @@
             }
           ],
           "work": "tales-from-shakespeare"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003LS0FJO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tales from Shakespeare"
-    },
-    "tales-from-shakespeare-charles-lamb": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-lamb",
-        "mary-lamb"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "tales-from-shakespeare-charles-lamb",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "nadia-may-1999": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7282,10 +7258,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "tales-from-shakespeare-charles-lamb"
+          "work": "tales-from-shakespeare"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003LS0FJO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZMNSA",

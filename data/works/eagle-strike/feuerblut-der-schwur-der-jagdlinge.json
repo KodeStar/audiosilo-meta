@@ -3747,7 +3747,14 @@
     "feuernacht": {
       "added_at": "2026-07-29",
       "authors": [
-        "yrsa-sigurdardottir"
+        "yrsa-sigurdardottir",
+        "tina-flecken"
+      ],
+      "credits": [
+        {
+          "person": "tina-flecken",
+          "role": "translator"
+        }
       ],
       "genres": [
         "mystery"
@@ -3783,36 +3790,7 @@
             }
           ],
           "work": "feuernacht"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00L2FOX00",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Feuernacht"
-    },
-    "feuernacht-anwaltin-dora-gudmundsdottir-ermittelt-band-5": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "yrsa-sigurdardottir",
-        "tina-flecken"
-      ],
-      "credits": [
-        {
-          "person": "tina-flecken",
-          "role": "translator"
-        }
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "feuernacht-anwaltin-dora-gudmundsdottir-ermittelt-band-5",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "christiane-marx-2026": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -3848,17 +3826,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "feuernacht-anwaltin-dora-gudmundsdottir-ermittelt-band-5"
+          "work": "feuernacht"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00L2FOX00",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0FXM1D3KZ",
           "type": "libex-import"
         }
       ],
-      "title": "Feuernacht: Anwältin Dóra Gudmundsdóttir ermittelt, Band 5"
+      "title": "Feuernacht"
     },
     "feuersang-und-schattentraum": {
       "added_at": "2026-08-02",

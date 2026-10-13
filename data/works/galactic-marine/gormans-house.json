@@ -9504,7 +9504,9 @@
     "gott-bewahre": {
       "added_at": "2026-07-29",
       "authors": [
-        "john-niven"
+        "john-niven",
+        "jorn-ingwersen",
+        "stephan-glietsch"
       ],
       "genres": [
         "comedy-humor"
@@ -10035,32 +10037,8 @@
             }
           ],
           "work": "gott-bewahre"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TKMKO00",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Gott bewahre"
-    },
-    "gott-bewahre-john-niven": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-niven",
-        "jorn-ingwersen",
-        "stephan-glietsch"
-      ],
-      "genres": [
-        "comedy-humor"
-      ],
-      "id": "gott-bewahre-john-niven",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerd-koster-2011": {
+        },
+        "gerd-koster-2011-2": {
           "abridged": true,
           "added_at": "2026-07-29",
           "asin": [
@@ -10375,7 +10353,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/51dMy0ZZ0yL.jpg",
-          "id": "gerd-koster-2011",
+          "id": "gerd-koster-2011-2",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -10401,10 +10379,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "gott-bewahre-john-niven"
+          "work": "gott-bewahre"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TKMKO00",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B005NGM50E",

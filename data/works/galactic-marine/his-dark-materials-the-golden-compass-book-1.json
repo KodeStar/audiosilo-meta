@@ -9,12 +9,67 @@
         "action-adventure",
         "childrens",
         "fantasy",
-        "travel"
+        "short-stories",
+        "travel",
+        "young-adult"
       ],
       "id": "his-dark-materials-the-subtle-knife-book-2",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "emma-fielding-2005": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002VAENXC",
+              "region": "us"
+            },
+            {
+              "asin": "B004F3JCC0",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4374941,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4402829,
+              "start_ms": 4374941,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81I96FZgKHL.jpg",
+          "id": "emma-fielding-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-fielding",
+            "full-cast",
+            "jack-klaff",
+            "peter-marinker",
+            "ray-fearon"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2005-01-21",
+          "runtime_min": 146,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002VAENXC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F3JCC0",
+              "type": "libex-import"
+            }
+          ],
+          "work": "his-dark-materials-the-subtle-knife-book-2"
+        },
         "philip-pullman-2003": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -289,6 +344,11 @@
         {
           "imported_at": "2026-07-30",
           "ref": "B002UZHP1U",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002VAENXC",
           "type": "libex-import"
         }
       ],

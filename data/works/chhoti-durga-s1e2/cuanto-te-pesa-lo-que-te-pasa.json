@@ -9371,6 +9371,7 @@
       ],
       "genres": [
         "classics",
+        "fairy-tales-folklore",
         "fantasy",
         "romance",
         "short-stories"
@@ -9386,6 +9387,10 @@
             {
               "asin": "9873693149",
               "region": "es"
+            },
+            {
+              "asin": "B0747TLFW3",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -9485,6 +9490,11 @@
             {
               "imported_at": "2026-07-29",
               "ref": "9873693149",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0747TLFW3",
               "type": "libex-import"
             }
           ],
@@ -9713,145 +9723,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00JELPVOG",
           "type": "libex-import"
-        }
-      ],
-      "title": "Cuentos de Amor de Locura y de Muerte"
-    },
-    "cuentos-de-amor-de-locura-y-de-muerte-tales-of-love-madness-and-death": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "horacio-quiroga"
-      ],
-      "genres": [
-        "classics",
-        "fairy-tales-folklore",
-        "fantasy",
-        "romance"
-      ],
-      "id": "cuentos-de-amor-de-locura-y-de-muerte-tales-of-love-madness-and-death",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aldo-lumbia-2017": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0747TLFW3",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1527548,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 513672,
-              "start_ms": 1527548,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 494678,
-              "start_ms": 2041220,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 532201,
-              "start_ms": 2535898,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 345606,
-              "start_ms": 3068099,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 759525,
-              "start_ms": 3413705,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 1030037,
-              "start_ms": 4173230,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 814370,
-              "start_ms": 5203267,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 812884,
-              "start_ms": 6017637,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 405792,
-              "start_ms": 6830521,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 707976,
-              "start_ms": 7236313,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 601304,
-              "start_ms": 7944289,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 470158,
-              "start_ms": 8545593,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 730593,
-              "start_ms": 9015751,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 1735320,
-              "start_ms": 9746344,
-              "title": "Capítulo 15"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51KADK9kjvL.jpg",
-          "id": "aldo-lumbia-2017",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aldo-lumbia",
-            "franco-patino",
-            "jorge-mansilla",
-            "leonel-arias",
-            "maria-fernanda-rojas",
-            "martin-dobanton",
-            "mavi-lacovara"
-          ],
-          "publisher": "Audiolibros Colección",
-          "release_date": "2017-07-28",
-          "runtime_min": 191,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0747TLFW3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuentos-de-amor-de-locura-y-de-muerte-tales-of-love-madness-and-death"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0747TLFW3",
           "type": "libex-import"
         }
       ],
-      "title": "Cuentos de Amor, de Locura y de Muerte [Tales of Love, Madness, and Death]"
+      "title": "Cuentos de Amor de Locura y de Muerte"
     },
     "cuentos-de-andersen-the-tales-of-hans-christian-andersen": {
       "added_at": "2026-07-29",
@@ -10243,6 +10122,7 @@
         "fantasy",
         "gothic",
         "horror",
+        "paranormal",
         "romance",
         "short-stories"
       ],
@@ -10257,81 +10137,7 @@
             {
               "asin": "B07YX6S8T9",
               "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1420365,
-              "start_ms": 0,
-              "title": "Capítulo 1"
             },
-            {
-              "length_ms": 357402,
-              "start_ms": 1420365,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 1521000,
-              "start_ms": 1777767,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 1478043,
-              "start_ms": 3298767,
-              "title": "Capítulo 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71drXHO5OsL.jpg",
-          "id": "joaquin-madrigal-2014",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joaquin-madrigal"
-          ],
-          "publisher": "Alberich Ediciones Mexico",
-          "release_date": "2014-04-24",
-          "runtime_min": 79,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07YX6S8T9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cuentos-de-edgar-allan-poe"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07YX6S8T9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cuentos de Edgar Allan Poe"
-    },
-    "cuentos-de-edgar-allan-poe-stories-of-edgar-allan-poe": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edgar-allan-poe"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "gothic",
-        "horror",
-        "paranormal",
-        "romance",
-        "short-stories"
-      ],
-      "id": "cuentos-de-edgar-allan-poe-stories-of-edgar-allan-poe",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joaquin-madrigal-2014": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B00JU6ILLU",
               "region": "us"
@@ -10372,21 +10178,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B07YX6S8T9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B00JU6ILLU",
               "type": "libex-import"
             }
           ],
-          "work": "cuentos-de-edgar-allan-poe-stories-of-edgar-allan-poe"
+          "work": "cuentos-de-edgar-allan-poe"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07YX6S8T9",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00JU6ILLU",
           "type": "libex-import"
         }
       ],
-      "title": "Cuentos de Edgar Allan Poe [Stories of Edgar Allan Poe]"
+      "title": "Cuentos de Edgar Allan Poe"
     },
     "cuentos-de-edgar-allan-poe-tales-of-edgar-allan-poe": {
       "added_at": "2026-07-29",

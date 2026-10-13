@@ -8675,12 +8675,55 @@
             }
           ],
           "work": "shield-of-sparrows-devney-perry"
+        },
+        "jason-clarke-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0G5BDRQM9",
+              "region": "us"
+            },
+            {
+              "asin": "B0G5BB1RD9",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71H3FsuutUL.jpg",
+          "id": "jason-clarke-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jason-clarke",
+            "samantha-brentmoor"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2026-10-20",
+          "runtime_min": 1200,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0G5BDRQM9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0G5BB1RD9",
+              "type": "libex-import"
+            }
+          ],
+          "work": "shield-of-sparrows-devney-perry"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B0DQ63VF1Y",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0G5BDRQM9",
           "type": "libex-import"
         }
       ],
@@ -8823,68 +8866,6 @@
         }
       ],
       "title": "Shield of Sparrows [Dramatized Adaptation]"
-    },
-    "shield-of-sparrows-duet-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "devney-perry"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "romance"
-      ],
-      "id": "shield-of-sparrows-duet-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jason-clarke-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0G5BDRQM9",
-              "region": "us"
-            },
-            {
-              "asin": "B0G5BB1RD9",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71H3FsuutUL.jpg",
-          "id": "jason-clarke-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jason-clarke",
-            "samantha-brentmoor"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2026-10-20",
-          "runtime_min": 1200,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0G5BDRQM9",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0G5BB1RD9",
-              "type": "libex-import"
-            }
-          ],
-          "work": "shield-of-sparrows-duet-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0G5BDRQM9",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Shield of Sparrows (Duet Edition)"
     },
     "shield-of-storms": {
       "added_at": "2026-08-02",

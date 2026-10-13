@@ -6875,6 +6875,64 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "alex-jennings-2010": {
+          "abridged": false,
+          "added_at": "2026-07-30T14:42:56+01:00",
+          "asin": [
+            {
+              "asin": "B0036GMGVQ",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVS1G6",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3421600,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3408968,
+              "start_ms": 3421600,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3409711,
+              "start_ms": 6830568,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51XQVSimreL.jpg",
+          "id": "alex-jennings-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "alex-jennings",
+            "anna-chancellor",
+            "bill-paterson",
+            "kenneth-cranham",
+            "simon-russell-beale"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2010-01-05",
+          "runtime_min": 170,
+          "sources": [
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0036GMGVQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVS1G6",
+              "type": "libex-import"
+            }
+          ],
+          "work": "tinker-tailor-soldier-spy"
+        },
         "frederick-davidson-1999": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -7867,90 +7925,14 @@
           "imported_at": "2026-07-30",
           "ref": "B0D1WGQXNS",
           "type": "libex-import"
-        }
-      ],
-      "title": "Tinker Tailor Soldier Spy"
-    },
-    "tinker-tailor-soldier-spy-dramatised": {
-      "added_at": "2026-07-30T14:42:56+01:00",
-      "authors": [
-        "john-le-carre"
-      ],
-      "genres": [
-        "espionage",
-        "thriller-suspense"
-      ],
-      "id": "tinker-tailor-soldier-spy-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "alex-jennings-2010": {
-          "abridged": false,
-          "added_at": "2026-07-30T14:42:56+01:00",
-          "asin": [
-            {
-              "asin": "B0036GMGVQ",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVS1G6",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3421600,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3408968,
-              "start_ms": 3421600,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3409711,
-              "start_ms": 6830568,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51XQVSimreL.jpg",
-          "id": "alex-jennings-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "alex-jennings",
-            "anna-chancellor",
-            "bill-paterson",
-            "kenneth-cranham",
-            "simon-russell-beale"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2010-01-05",
-          "runtime_min": 170,
-          "sources": [
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0036GMGVQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVS1G6",
-              "type": "libex-import"
-            }
-          ],
-          "work": "tinker-tailor-soldier-spy-dramatised"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-30",
           "ref": "B0036GMGVQ",
           "type": "libex-import"
         }
       ],
-      "title": "Tinker Tailor Soldier Spy (Dramatised)"
+      "title": "Tinker Tailor Soldier Spy"
     },
     "tinker-wen-spencer": {
       "added_at": "2026-08-02",

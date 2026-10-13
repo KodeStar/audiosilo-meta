@@ -8740,7 +8740,8 @@
     "its-called-a-breakup-because-its-broken": {
       "added_at": "2026-07-29",
       "authors": [
-        "greg-behrendt"
+        "greg-behrendt",
+        "amiira-ruotola-behrendt"
       ],
       "genres": [
         "parenting-relationships",
@@ -8750,6 +8751,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amiira-ruotola-behrendt-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8N81C",
+              "region": "us"
+            },
+            {
+              "asin": "B079VG93KY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2991659,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2932448,
+              "start_ms": 2991659,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2890559,
+              "start_ms": 5924107,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/519W6nC49OL.jpg",
+          "id": "amiira-ruotola-behrendt-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amiira-ruotola-behrendt",
+            "greg-behrendt"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2005-09-27",
+          "runtime_min": 146,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8N81C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079VG93KY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "its-called-a-breakup-because-its-broken"
+        },
         "various-2005": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8990,88 +9046,14 @@
           "imported_at": "2026-07-29",
           "ref": "B002V5B5Y2",
           "type": "libex-import"
-        }
-      ],
-      "title": "It's Called A Breakup Because It's Broken"
-    },
-    "its-called-a-breakup-because-its-broken-greg-behrendt": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "greg-behrendt",
-        "amiira-ruotola-behrendt"
-      ],
-      "genres": [
-        "parenting-relationships",
-        "self-help"
-      ],
-      "id": "its-called-a-breakup-because-its-broken-greg-behrendt",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amiira-ruotola-behrendt-2005": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V8N81C",
-              "region": "us"
-            },
-            {
-              "asin": "B079VG93KY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2991659,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2932448,
-              "start_ms": 2991659,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2890559,
-              "start_ms": 5924107,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/519W6nC49OL.jpg",
-          "id": "amiira-ruotola-behrendt-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amiira-ruotola-behrendt",
-            "greg-behrendt"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2005-09-27",
-          "runtime_min": 146,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V8N81C",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079VG93KY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "its-called-a-breakup-because-its-broken-greg-behrendt"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8N81C",
           "type": "libex-import"
         }
       ],
-      "title": "It's Called a Breakup Because It's Broken"
+      "title": "It's Called A Breakup Because It's Broken"
     },
     "its-called-magic-susan": {
       "added_at": "2026-08-02",

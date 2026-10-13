@@ -9445,6 +9445,7 @@
       ],
       "genres": [
         "classics",
+        "coming-of-age",
         "literary-fiction"
       ],
       "id": "the-age-of-innocence",
@@ -10329,30 +10330,7 @@
             }
           ],
           "work": "the-age-of-innocence"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0844QQL6V",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Age of Innocence"
-    },
-    "the-age-of-innocence-annotated": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "edith-wharton"
-      ],
-      "genres": [
-        "classics",
-        "coming-of-age"
-      ],
-      "id": "the-age-of-innocence-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sierra-prasada-2022": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -10575,17 +10553,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-age-of-innocence-annotated"
+          "work": "the-age-of-innocence"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0844QQL6V",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0B5HV148F",
           "type": "libex-import"
         }
       ],
-      "title": "The Age of Innocence (Annotated)"
+      "title": "The Age of Innocence"
     },
     "the-age-of-insight": {
       "added_at": "2026-07-29",

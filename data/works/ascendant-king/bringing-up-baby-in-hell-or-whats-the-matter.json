@@ -5970,7 +5970,10 @@
         "action-adventure",
         "childrens",
         "classics",
+        "epic-fantasy",
         "fantasy",
+        "self-help",
+        "sword-sorcery",
         "young-adult"
       ],
       "id": "brisingr",
@@ -5988,6 +5991,18 @@
             {
               "asin": "B0032N2LR2",
               "region": "us"
+            },
+            {
+              "asin": "B002V0A444",
+              "region": "us"
+            },
+            {
+              "asin": "B004V0LUYA",
+              "region": "de"
+            },
+            {
+              "asin": "B004FTX5DQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -6317,6 +6332,26 @@
               "imported_at": "2026-07-30",
               "ref": "B0032N2LR2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B002V0A444",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B002V0A444",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004V0LUYA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FTX5DQ",
+              "type": "libex-import"
             }
           ],
           "work": "brisingr"
@@ -6434,6 +6469,16 @@
         {
           "imported_at": "2026-08-02",
           "ref": "0739368052",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V0A444",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-07-30",
+          "ref": "B002V0A444",
           "type": "libex-import"
         }
       ],

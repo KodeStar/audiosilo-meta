@@ -1878,6 +1878,69 @@
           ],
           "work": "los-tres-mosqueteros"
         },
+        "carlos-zambrano-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0K516",
+              "region": "us"
+            },
+            {
+              "asin": "B01CTEZU5O",
+              "region": "de"
+            },
+            {
+              "asin": "B01CTFZ0NU",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3012092,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 3009538,
+              "start_ms": 3012092,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 3522699,
+              "start_ms": 6021630,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81zqdagOc4L.jpg",
+          "id": "carlos-zambrano-2005",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carlos-zambrano"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2005-09-22",
+          "runtime_min": 158,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0K516",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01CTEZU5O",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01CTFZ0NU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "los-tres-mosqueteros"
+        },
         "joan-mora-2019": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5098,95 +5161,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0D1CCXTPX",
           "type": "libex-import"
-        }
-      ],
-      "title": "Los Tres Mosqueteros"
-    },
-    "los-tres-mosqueteros-the-three-musketeers": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "alexandre-dumas"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics"
-      ],
-      "id": "los-tres-mosqueteros-the-three-musketeers",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carlos-zambrano-2005": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0K516",
-              "region": "us"
-            },
-            {
-              "asin": "B01CTEZU5O",
-              "region": "de"
-            },
-            {
-              "asin": "B01CTFZ0NU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3012092,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 3009538,
-              "start_ms": 3012092,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 3522699,
-              "start_ms": 6021630,
-              "title": "Capítulo 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81zqdagOc4L.jpg",
-          "id": "carlos-zambrano-2005",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carlos-zambrano"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2005-09-22",
-          "runtime_min": 158,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0K516",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01CTEZU5O",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01CTFZ0NU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "los-tres-mosqueteros-the-three-musketeers"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V0K516",
           "type": "libex-import"
         }
       ],
-      "title": "Los Tres Mosqueteros [The Three Musketeers]"
+      "title": "Los Tres Mosqueteros"
     },
     "los-tres-mundos": {
       "added_at": "2026-07-29",

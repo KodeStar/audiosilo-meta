@@ -6180,10 +6180,12 @@
         }
       ],
       "genres": [
+        "arts-entertainment",
         "childrens",
         "classics",
         "fairy-tales-folklore",
-        "fantasy"
+        "fantasy",
+        "music"
       ],
       "id": "the-little-prince",
       "language": "en",
@@ -6552,6 +6554,43 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0GR16SW7K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-little-prince"
+        },
+        "gemma-saunders-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B071YPMXWW",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3439525,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ImFbkRXEL.jpg",
+          "id": "gemma-saunders-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gemma-saunders",
+            "natasha-pyne",
+            "stephen-thorne"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2017-09-07",
+          "runtime_min": 57,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B071YPMXWW",
               "type": "libex-import"
             }
           ],
@@ -7841,6 +7880,11 @@
           "imported_at": "2026-08-12",
           "ref": "B07FQSJPZD",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B071YPMXWW",
+          "type": "libex-import"
         }
       ],
       "title": "The Little Prince",
@@ -8295,68 +8339,6 @@
         }
       ],
       "title": "Маленький принц [The Little Prince]"
-    },
-    "the-little-prince-bbc-childrens-classics": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "antoine-de-saint-exupery"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "childrens",
-        "classics",
-        "music"
-      ],
-      "id": "the-little-prince-bbc-childrens-classics",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gemma-saunders-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B071YPMXWW",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3439525,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ImFbkRXEL.jpg",
-          "id": "gemma-saunders-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gemma-saunders",
-            "natasha-pyne",
-            "stephen-thorne"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2017-09-07",
-          "runtime_min": 57,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B071YPMXWW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-little-prince-bbc-childrens-classics"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B071YPMXWW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Little Prince (BBC Children's Classics)"
     },
     "the-little-princess": {
       "added_at": "2026-08-01",

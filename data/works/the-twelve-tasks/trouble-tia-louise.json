@@ -8041,6 +8041,14 @@
             {
               "asin": "B07CZY5FMM",
               "region": "uk"
+            },
+            {
+              "asin": "B005523Y10",
+              "region": "us"
+            },
+            {
+              "asin": "B00551XIL2",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8215,187 +8223,7 @@
               "imported_at": "2026-10-09",
               "ref": "B07CZY5FMM",
               "type": "libex-import"
-            }
-          ],
-          "work": "troubletwisters"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004YKSN2Y",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Troubletwisters"
-    },
-    "troubletwisters-book-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "garth-nix",
-        "sean-williams"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "troubletwisters-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "miriam-margolyes-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005523Y10",
-              "region": "us"
             },
-            {
-              "asin": "B00551XIL2",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2086266,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1278119,
-              "start_ms": 2086266,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1211339,
-              "start_ms": 3364385,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 793008,
-              "start_ms": 4575724,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1433972,
-              "start_ms": 5368732,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1371696,
-              "start_ms": 6802704,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1734995,
-              "start_ms": 8174400,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1565025,
-              "start_ms": 9909395,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 934046,
-              "start_ms": 11474420,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 702636,
-              "start_ms": 12408466,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 803457,
-              "start_ms": 13111102,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1158118,
-              "start_ms": 13914559,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 780841,
-              "start_ms": 15072677,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1413909,
-              "start_ms": 15853518,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1059805,
-              "start_ms": 17267427,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1126957,
-              "start_ms": 18327232,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1032916,
-              "start_ms": 19454189,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1067096,
-              "start_ms": 20487105,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 1248723,
-              "start_ms": 21554201,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1597022,
-              "start_ms": 22802924,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 917653,
-              "start_ms": 24399946,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1210688,
-              "start_ms": 25317599,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 2308992,
-              "start_ms": 26528287,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1418739,
-              "start_ms": 28837279,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 955176,
-              "start_ms": 30256018,
-              "title": "Chapter 25"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/510FA36cGtL.jpg",
-          "id": "miriam-margolyes-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "miriam-margolyes"
-          ],
-          "publisher": "Bolinda Publishing Pty Ltd",
-          "release_date": "2011-06-09",
-          "runtime_min": 520,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B005523Y10",
@@ -8407,17 +8235,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "troubletwisters-book-1"
+          "work": "troubletwisters"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004YKSN2Y",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B005523Y10",
           "type": "libex-import"
         }
       ],
-      "title": "Troubletwisters: Book 1"
+      "title": "Troubletwisters"
     },
     "troubletwisters-book-3": {
       "added_at": "2026-08-02",

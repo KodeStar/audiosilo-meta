@@ -9560,6 +9560,7 @@
       ],
       "genres": [
         "arts-entertainment",
+        "education",
         "history",
         "military-history",
         "politics",
@@ -9869,37 +9870,8 @@
             }
           ],
           "work": "the-monuments-men"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V0QHNQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Monuments Men"
-    },
-    "the-monuments-men-bret-witter": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "bret-witter",
-        "robert-edsel"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "education",
-        "history",
-        "military-history",
-        "politics",
-        "social-sciences",
-        "writing-publishing"
-      ],
-      "id": "the-monuments-men-bret-witter",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jeremy-davidson-2009": {
+        },
+        "jeremy-davidson-2009-2": {
           "abridged": true,
           "added_at": "2026-07-29",
           "asin": [
@@ -9941,7 +9913,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/913F8Uue4VL.jpg",
-          "id": "jeremy-davidson-2009",
+          "id": "jeremy-davidson-2009-2",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
@@ -9957,10 +9929,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-monuments-men-bret-witter"
+          "work": "the-monuments-men"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0QHNQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V0TIU0",

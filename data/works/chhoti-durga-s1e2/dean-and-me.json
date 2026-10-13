@@ -3,7 +3,8 @@
     "dean-and-me": {
       "added_at": "2026-07-29",
       "authors": [
-        "jerry-lewis"
+        "jerry-lewis",
+        "james-kaplan"
       ],
       "genres": [
         "arts-entertainment",
@@ -14,6 +15,70 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gregory-jbara-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8H8Q8",
+              "region": "us"
+            },
+            {
+              "asin": "B004EXAS88",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3993739,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3994157,
+              "start_ms": 3993739,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4032331,
+              "start_ms": 7987896,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4200583,
+              "start_ms": 12020227,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4097718,
+              "start_ms": 16220810,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71nUiTLI0sL.jpg",
+          "id": "gregory-jbara-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gregory-jbara"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2005-11-01",
+          "runtime_min": 338,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8H8Q8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EXAS88",
+              "type": "libex-import"
+            }
+          ],
+          "work": "dean-and-me"
+        },
         "stephen-hoye-2005": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -119,91 +184,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002V5A3NQ",
           "type": "libex-import"
-        }
-      ],
-      "title": "Dean and Me"
-    },
-    "dean-and-me-james-kaplan": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "james-kaplan",
-        "jerry-lewis"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir",
-        "comedy-humor"
-      ],
-      "id": "dean-and-me-james-kaplan",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gregory-jbara-2005": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V8H8Q8",
-              "region": "us"
-            },
-            {
-              "asin": "B004EXAS88",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3993739,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3994157,
-              "start_ms": 3993739,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4032331,
-              "start_ms": 7987896,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4200583,
-              "start_ms": 12020227,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4097718,
-              "start_ms": 16220810,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71nUiTLI0sL.jpg",
-          "id": "gregory-jbara-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gregory-jbara"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2005-11-01",
-          "runtime_min": 338,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V8H8Q8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EXAS88",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dean-and-me-james-kaplan"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V8H8Q8",

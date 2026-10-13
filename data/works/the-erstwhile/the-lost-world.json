@@ -8,6 +8,7 @@
       "genres": [
         "action-adventure",
         "classics",
+        "drama-plays",
         "fantasy",
         "historical-fiction",
         "literary-fiction",
@@ -1523,6 +1524,53 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B095J2RT2P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-lost-world"
+        },
+        "carol-boyd-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V59ZBM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3188379,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2964956,
+              "start_ms": 3188379,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3079918,
+              "start_ms": 6153335,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61RAhJ9+ZkL.jpg",
+          "id": "carol-boyd-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carol-boyd",
+            "francis-de-wolff",
+            "gerald-harper"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2008-08-12",
+          "runtime_min": 153,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V59ZBM",
               "type": "libex-import"
             }
           ],
@@ -3260,6 +3308,135 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B00UXTGB9M",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-lost-world"
+        },
+        "gary-furlong-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07BSMC1FW",
+              "region": "us"
+            },
+            {
+              "asin": "B07BSH9Y7R",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 92090,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 709184,
+              "start_ms": 92090,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 861182,
+              "start_ms": 801274,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 859185,
+              "start_ms": 1662456,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2029192,
+              "start_ms": 2521641,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1603152,
+              "start_ms": 4550833,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1122174,
+              "start_ms": 6153985,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1154171,
+              "start_ms": 7276159,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1561170,
+              "start_ms": 8430330,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2689196,
+              "start_ms": 9991500,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1624189,
+              "start_ms": 12680696,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1780181,
+              "start_ms": 14304885,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1863169,
+              "start_ms": 16085066,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1707178,
+              "start_ms": 17948235,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1714190,
+              "start_ms": 19655413,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1890197,
+              "start_ms": 21369603,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 2221174,
+              "start_ms": 23259800,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 290156,
+              "start_ms": 25480974,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81sGsM+58LL.jpg",
+          "id": "gary-furlong-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gary-furlong"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2018-03-30",
+          "runtime_min": 429,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07BSMC1FW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07BSH9Y7R",
               "type": "libex-import"
             }
           ],
@@ -5311,270 +5488,19 @@
           "imported_at": "2026-07-30",
           "ref": "B019CVW00U",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Lost World"
-    },
-    "the-lost-world-a-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "michael-crichton"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "science-fiction",
-        "short-stories",
-        "thriller-suspense"
-      ],
-      "id": "the-lost-world-a-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anthony-heald-2001": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V0KOHG",
-              "region": "us"
-            },
-            {
-              "asin": "B004EXHAUW",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1890429,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1872271,
-              "start_ms": 1890429,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1773772,
-              "start_ms": 3762700,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1675831,
-              "start_ms": 5536472,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1685397,
-              "start_ms": 7212303,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1684283,
-              "start_ms": 8897700,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1744097,
-              "start_ms": 10581983,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1549700,
-              "start_ms": 12326080,
-              "title": "Chapter 8"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71c8JnzEcBL.jpg",
-          "id": "anthony-heald-2001",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anthony-heald"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2001-02-01",
-          "runtime_min": 231,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V0KOHG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EXHAUW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-lost-world-a-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V0KOHG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Lost World: A Novel"
-    },
-    "the-lost-world-amazonclassics-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "fantasy",
-        "historical-fiction",
-        "literary-fiction",
-        "science-fiction"
-      ],
-      "id": "the-lost-world-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gary-furlong-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07BSMC1FW",
-              "region": "us"
-            },
-            {
-              "asin": "B07BSH9Y7R",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 92090,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 709184,
-              "start_ms": 92090,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 861182,
-              "start_ms": 801274,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 859185,
-              "start_ms": 1662456,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2029192,
-              "start_ms": 2521641,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1603152,
-              "start_ms": 4550833,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1122174,
-              "start_ms": 6153985,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1154171,
-              "start_ms": 7276159,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1561170,
-              "start_ms": 8430330,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2689196,
-              "start_ms": 9991500,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1624189,
-              "start_ms": 12680696,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1780181,
-              "start_ms": 14304885,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1863169,
-              "start_ms": 16085066,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1707178,
-              "start_ms": 17948235,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1714190,
-              "start_ms": 19655413,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1890197,
-              "start_ms": 21369603,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 2221174,
-              "start_ms": 23259800,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 290156,
-              "start_ms": 25480974,
-              "title": "Chapter 18"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81sGsM+58LL.jpg",
-          "id": "gary-furlong-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gary-furlong"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2018-03-30",
-          "runtime_min": 429,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07BSMC1FW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07BSH9Y7R",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-lost-world-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B07BSMC1FW",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V59ZBM",
+          "type": "libex-import"
         }
       ],
-      "title": "The Lost World (AmazonClassics Edition)"
+      "title": "The Lost World"
     },
     "the-lost-world-book-one": {
       "added_at": "2026-08-01",
@@ -5760,77 +5686,6 @@
         }
       ],
       "title": "The Lost World: Book Two"
-    },
-    "the-lost-world-dramatised": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "arthur-conan-doyle"
-      ],
-      "genres": [
-        "drama-plays",
-        "fantasy",
-        "science-fiction"
-      ],
-      "id": "the-lost-world-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carol-boyd-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V59ZBM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3188379,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2964956,
-              "start_ms": 3188379,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3079918,
-              "start_ms": 6153335,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61RAhJ9+ZkL.jpg",
-          "id": "carol-boyd-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carol-boyd",
-            "francis-de-wolff",
-            "gerald-harper"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2008-08-12",
-          "runtime_min": 153,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V59ZBM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-lost-world-dramatised"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V59ZBM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Lost World (Dramatised)"
     },
     "the-lost-world-lost-starship-series-book-22": {
       "added_at": "2026-08-02",
@@ -6447,6 +6302,85 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "anthony-heald-2001": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0KOHG",
+              "region": "us"
+            },
+            {
+              "asin": "B004EXHAUW",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1890429,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1872271,
+              "start_ms": 1890429,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1773772,
+              "start_ms": 3762700,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1675831,
+              "start_ms": 5536472,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1685397,
+              "start_ms": 7212303,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1684283,
+              "start_ms": 8897700,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1744097,
+              "start_ms": 10581983,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1549700,
+              "start_ms": 12326080,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71c8JnzEcBL.jpg",
+          "id": "anthony-heald-2001",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anthony-heald"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2001-02-01",
+          "runtime_min": 231,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0KOHG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EXHAUW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-lost-world-michael-crichton"
+        },
         "scott-brick-2007": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6921,6 +6855,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B002V1CO82",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V0KOHG",
           "type": "libex-import"
         }
       ],

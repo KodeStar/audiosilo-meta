@@ -5039,13 +5039,71 @@
         "charles-kingsley"
       ],
       "genres": [
+        "arts-entertainment",
         "childrens",
-        "classics"
+        "classics",
+        "music"
       ],
       "id": "the-water-babies",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "berlie-doherty-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B072BC9CQN",
+              "region": "us"
+            },
+            {
+              "asin": "B071RNK54K",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3407900,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3437389,
+              "start_ms": 3407900,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3433302,
+              "start_ms": 6845289,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61gRGJzzCCL.jpg",
+          "id": "berlie-doherty-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "berlie-doherty",
+            "julia-mckenzie",
+            "timothy-west"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2017-09-07",
+          "runtime_min": 171,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B072BC9CQN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B071RNK54K",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-water-babies"
+        },
         "cori-samuel-2017": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -5599,90 +5657,14 @@
           "imported_at": "2026-08-07",
           "ref": "B06VT41QRX",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Water-Babies"
-    },
-    "the-water-babies-bbc-childrens-classics": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "charles-kingsley"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "childrens",
-        "classics",
-        "music"
-      ],
-      "id": "the-water-babies-bbc-childrens-classics",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "berlie-doherty-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B072BC9CQN",
-              "region": "us"
-            },
-            {
-              "asin": "B071RNK54K",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3407900,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3437389,
-              "start_ms": 3407900,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3433302,
-              "start_ms": 6845289,
-              "title": "Chapter 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61gRGJzzCCL.jpg",
-          "id": "berlie-doherty-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "berlie-doherty",
-            "julia-mckenzie",
-            "timothy-west"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2017-09-07",
-          "runtime_min": 171,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B072BC9CQN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B071RNK54K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-water-babies-bbc-childrens-classics"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B072BC9CQN",
           "type": "libex-import"
         }
       ],
-      "title": "The Water Babies (BBC Children's Classics)"
+      "title": "The Water-Babies"
     },
     "the-water-blade": {
       "added_at": "2026-08-02",

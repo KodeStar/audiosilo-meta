@@ -4982,7 +4982,13 @@
         "f-scott-fitzgerald"
       ],
       "genres": [
-        "classics"
+        "classics",
+        "coming-of-age",
+        "historical-fiction",
+        "historical-romance",
+        "literary-fiction",
+        "mystery",
+        "romance"
       ],
       "id": "el-gran-gatsby",
       "language": "es",
@@ -5298,99 +5304,6 @@
           ],
           "work": "el-gran-gatsby"
         },
-        "various-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "8726285207",
-              "region": "us"
-            },
-            {
-              "asin": "B08FWYWZ4B",
-              "region": "es"
-            },
-            {
-              "asin": "8726285207",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2549271,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 2182188,
-              "start_ms": 2549271,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 1970700,
-              "start_ms": 4731459,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 2011358,
-              "start_ms": 6702159,
-              "title": "Capítulo 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Zlm6O2S9L.jpg",
-          "id": "various-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "various"
-          ],
-          "publisher": "Saga Egmont",
-          "release_date": "2020-08-20",
-          "runtime_min": 145,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "8726285207",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08FWYWZ4B",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "8726285207",
-              "type": "libex-import"
-            }
-          ],
-          "work": "el-gran-gatsby"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "8415384815",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El gran Gatsby"
-    },
-    "el-gran-gatsby-narracion-en-castellano": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "f-scott-fitzgerald"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "mystery",
-        "romance"
-      ],
-      "id": "el-gran-gatsby-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
         "jose-coronado-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5497,32 +5410,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-gran-gatsby-narracion-en-castellano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B093WRTXZ6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Gran Gatsby (Narración en Castellano)"
-    },
-    "el-gran-gatsby-the-great-gatsby": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "f-scott-fitzgerald"
-      ],
-      "genres": [
-        "classics",
-        "coming-of-age",
-        "literary-fiction"
-      ],
-      "id": "el-gran-gatsby-the-great-gatsby",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "el-gran-gatsby"
+        },
         "staff-audiolibros-coleccion-2017": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -5660,17 +5549,95 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-gran-gatsby-the-great-gatsby"
+          "work": "el-gran-gatsby"
+        },
+        "various-2020": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "8726285207",
+              "region": "us"
+            },
+            {
+              "asin": "B08FWYWZ4B",
+              "region": "es"
+            },
+            {
+              "asin": "8726285207",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2549271,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 2182188,
+              "start_ms": 2549271,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 1970700,
+              "start_ms": 4731459,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 2011358,
+              "start_ms": 6702159,
+              "title": "Capítulo 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Zlm6O2S9L.jpg",
+          "id": "various-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "various"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2020-08-20",
+          "runtime_min": 145,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "8726285207",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B08FWYWZ4B",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "8726285207",
+              "type": "libex-import"
+            }
+          ],
+          "work": "el-gran-gatsby"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "8415384815",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B093WRTXZ6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B075TJRHDY",
           "type": "libex-import"
         }
       ],
-      "title": "El Gran Gatsby [The Great Gatsby]"
+      "title": "El gran Gatsby"
     },
     "el-gran-juego-the-grandest-game": {
       "added_at": "2026-08-02",
@@ -18163,6 +18130,8 @@
         "h-p-lovecraft"
       ],
       "genres": [
+        "classics",
+        "gothic",
         "horror"
       ],
       "id": "el-horror-de-dunwich",
@@ -18248,31 +18217,7 @@
             }
           ],
           "work": "el-horror-de-dunwich"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "2291062891",
-          "type": "libex-import"
-        }
-      ],
-      "title": "El Horror de Dunwich"
-    },
-    "el-horror-de-dunwich-the-dunwich-horror": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "h-p-lovecraft"
-      ],
-      "genres": [
-        "classics",
-        "gothic",
-        "horror"
-      ],
-      "id": "el-horror-de-dunwich-the-dunwich-horror",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "joaquin-madrigal-2014": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -18356,17 +18301,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "el-horror-de-dunwich-the-dunwich-horror"
+          "work": "el-horror-de-dunwich"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "2291062891",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00K0MFNIM",
           "type": "libex-import"
         }
       ],
-      "title": "El horror de Dunwich [The Dunwich Horror]"
+      "title": "El Horror de Dunwich"
     },
     "el-huerto-de-emerson": {
       "added_at": "2026-07-29",

@@ -3642,6 +3642,8 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "coming-of-age",
+        "fairy-tales-folklore",
         "fantasy",
         "superhero"
       ],
@@ -3660,6 +3662,10 @@
             {
               "asin": "B09PHLXSHJ",
               "region": "uk"
+            },
+            {
+              "asin": "B09VYFDRBG",
+              "region": "us"
             }
           ],
           "chapters": [
@@ -3889,6 +3895,11 @@
               "imported_at": "2026-10-09",
               "ref": "B09PHLXSHJ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09VYFDRBG",
+              "type": "libex-import"
             }
           ],
           "work": "onyeka-and-the-academy-of-the-sun"
@@ -3899,56 +3910,7 @@
           "imported_at": "2026-08-02",
           "ref": "B09PHMHD8X",
           "type": "libex-import"
-        }
-      ],
-      "title": "Onyeka and the Academy of the Sun"
-    },
-    "onyeka-and-the-academy-of-the-sun-tola-okogwu": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "tola-okogwu"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "fairy-tales-folklore",
-        "superhero"
-      ],
-      "id": "onyeka-and-the-academy-of-the-sun-tola-okogwu",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "nneka-okoye-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09VYFDRBG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91IeT4uUxJL.jpg",
-          "id": "nneka-okoye-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "nneka-okoye"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2022-06-14",
-          "runtime_min": 457,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09VYFDRBG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "onyeka-and-the-academy-of-the-sun-tola-okogwu"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09VYFDRBG",

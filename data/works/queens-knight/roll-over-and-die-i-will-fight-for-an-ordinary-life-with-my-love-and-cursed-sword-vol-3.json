@@ -7111,7 +7111,8 @@
         "santiago-posteguillo"
       ],
       "genres": [
-        "historical-fiction"
+        "historical-fiction",
+        "history"
       ],
       "id": "roma-soy-yo",
       "language": "es",
@@ -7124,54 +7125,7 @@
             {
               "asin": "B09WH2M18L",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71+VA3179IL.jpg",
-          "id": "raul-llorens-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "raul-llorens"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2022-04-05",
-          "runtime_min": 1333,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09WH2M18L",
-              "type": "libex-import"
-            }
-          ],
-          "work": "roma-soy-yo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09WH2M18L",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Roma soy yo"
-    },
-    "roma-soy-yo-serie-julio-cesar-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "santiago-posteguillo"
-      ],
-      "genres": [
-        "historical-fiction",
-        "history"
-      ],
-      "id": "roma-soy-yo-serie-julio-cesar-1",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "raul-llorens-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B09WGZQKQB",
               "region": "us"
@@ -7664,7 +7618,7 @@
               "title": "Capítulo 97"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71hsZoJvVEL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/71+VA3179IL.jpg",
           "id": "raul-llorens-2022",
           "language": "es",
           "license": "CC0-1.0",
@@ -7677,21 +7631,31 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09WH2M18L",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09WGZQKQB",
               "type": "libex-import"
             }
           ],
-          "work": "roma-soy-yo-serie-julio-cesar-1"
+          "work": "roma-soy-yo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09WH2M18L",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09WGZQKQB",
           "type": "libex-import"
         }
       ],
-      "title": "Roma soy yo (Serie Julio César 1)"
+      "title": "Roma soy yo"
     },
     "roma-traicionada": {
       "added_at": "2026-07-29",

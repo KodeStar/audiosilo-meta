@@ -4373,7 +4373,8 @@
       "added_at": "2026-07-29",
       "authors": [
         "sherry-sontag",
-        "christopher-drew"
+        "christopher-drew",
+        "annette-l-drew"
       ],
       "genres": [
         "espionage",
@@ -4518,34 +4519,7 @@
             }
           ],
           "work": "blind-mans-bluff"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B01H42FHRM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Blind Man's Bluff"
-    },
-    "blind-mans-bluff-sherry-sontag": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "sherry-sontag",
-        "christopher-drew",
-        "annette-l-drew"
-      ],
-      "genres": [
-        "espionage",
-        "history",
-        "military-history",
-        "politics"
-      ],
-      "id": "blind-mans-bluff-sherry-sontag",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "tony-roberts-2007": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -4623,10 +4597,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "blind-mans-bluff-sherry-sontag"
+          "work": "blind-mans-bluff"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B01H42FHRM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZMUS8",

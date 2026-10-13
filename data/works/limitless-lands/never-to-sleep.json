@@ -9463,7 +9463,10 @@
         "action-adventure",
         "childrens",
         "fantasy",
-        "science-fiction"
+        "mystery",
+        "science-fiction",
+        "thriller-suspense",
+        "young-adult"
       ],
       "id": "nevermore",
       "language": "en",
@@ -9479,6 +9482,18 @@
             },
             {
               "asin": "B079H298HM",
+              "region": "uk"
+            },
+            {
+              "asin": "B008CS0WNW",
+              "region": "us"
+            },
+            {
+              "asin": "B008CRIZMI",
+              "region": "de"
+            },
+            {
+              "asin": "B008CRKHMO",
               "region": "uk"
             }
           ],
@@ -9994,179 +10009,7 @@
               "imported_at": "2026-10-09",
               "ref": "B079H298HM",
               "type": "libex-import"
-            }
-          ],
-          "work": "nevermore"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/11946245-nevermore",
-          "type": "community"
-        },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B008JG1WK4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Nevermore",
-      "xref": {
-        "goodreads": "11946245"
-      }
-    },
-    "nevermore-a-maximum-ride-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "childrens",
-        "mystery",
-        "science-fiction",
-        "thriller-suspense",
-        "young-adult"
-      ],
-      "id": "nevermore-a-maximum-ride-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-soler-2012": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B008CS0WNW",
-              "region": "us"
             },
-            {
-              "asin": "B008CRIZMI",
-              "region": "de"
-            },
-            {
-              "asin": "B008CRKHMO",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1885507,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1763974,
-              "start_ms": 1885507,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1014758,
-              "start_ms": 3649481,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1655629,
-              "start_ms": 4664239,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1471449,
-              "start_ms": 6319868,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1278769,
-              "start_ms": 7791317,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1286989,
-              "start_ms": 9070086,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1117298,
-              "start_ms": 10357075,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1089341,
-              "start_ms": 11474373,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1681218,
-              "start_ms": 12563714,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 885888,
-              "start_ms": 14244932,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1633292,
-              "start_ms": 15130820,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1000594,
-              "start_ms": 16764112,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1134063,
-              "start_ms": 17764706,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1024186,
-              "start_ms": 18898769,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 810191,
-              "start_ms": 19922955,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1406433,
-              "start_ms": 20733146,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1607657,
-              "start_ms": 22139579,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 864897,
-              "start_ms": 23747236,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 952575,
-              "start_ms": 24612133,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 2229440,
-              "start_ms": 25564708,
-              "title": "Chapter 21"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81lyckyfPoL.jpg",
-          "id": "rebecca-soler-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-soler"
-          ],
-          "publisher": "RH AudioGo",
-          "release_date": "2012-08-02",
-          "runtime_min": 463,
-          "sources": [
             {
               "imported_at": "2026-08-02",
               "ref": "B008CS0WNW",
@@ -10183,17 +10026,30 @@
               "type": "libex-import"
             }
           ],
-          "work": "nevermore-a-maximum-ride-novel"
+          "work": "nevermore"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/11946245-nevermore",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B008JG1WK4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B008CS0WNW",
           "type": "libex-import"
         }
       ],
-      "title": "Nevermore: A Maximum Ride Novel"
+      "title": "Nevermore",
+      "xref": {
+        "goodreads": "11946245"
+      }
     },
     "nevermore-cal-leandros-book-10": {
       "added_at": "2026-08-02",

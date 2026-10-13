@@ -3015,7 +3015,10 @@
         "g-k-chesterton"
       ],
       "genres": [
-        "mystery"
+        "classics",
+        "literary-fiction",
+        "mystery",
+        "psychological-thriller"
       ],
       "id": "the-man-who-was-thursday",
       "language": "en",
@@ -3801,31 +3804,7 @@
             }
           ],
           "work": "the-man-who-was-thursday"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B0BX4QKLCN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Man Who Was Thursday"
-    },
-    "the-man-who-was-thursday-annotated": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "g-k-chesterton"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "psychological-thriller"
-      ],
-      "id": "the-man-who-was-thursday-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "zachary-brewster-geisz-2018": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -3989,17 +3968,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-man-who-was-thursday-annotated"
+          "work": "the-man-who-was-thursday"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0BX4QKLCN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-07",
           "ref": "B07BBWRTHV",
           "type": "libex-import"
         }
       ],
-      "title": "The Man Who was Thursday (Annotated)"
+      "title": "The Man Who Was Thursday"
     },
     "the-man-who-was-thursday-centennial-edition": {
       "added_at": "2026-07-29",

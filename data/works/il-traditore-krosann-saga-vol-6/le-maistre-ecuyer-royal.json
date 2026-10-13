@@ -11128,7 +11128,8 @@
       "genres": [
         "classics",
         "fairy-tales-folklore",
-        "fantasy"
+        "fantasy",
+        "historical-fiction"
       ],
       "id": "le-morte-darthur",
       "language": "en",
@@ -14629,12 +14630,81 @@
             }
           ],
           "work": "le-morte-darthur"
+        },
+        "philip-madoc-2000": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B002VA3GHQ",
+              "region": "us"
+            },
+            {
+              "asin": "B004EWQBVW",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4600058,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3125521,
+              "start_ms": 4600058,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3550331,
+              "start_ms": 7725579,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1715420,
+              "start_ms": 11275910,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1307816,
+              "start_ms": 12991330,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91pVgyf0nvL.jpg",
+          "id": "philip-madoc-2000",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "philip-madoc"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2000-10-26",
+          "runtime_min": 238,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B002VA3GHQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EWQBVW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "le-morte-darthur"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-07",
           "ref": "B002V1CGGC",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B002VA3GHQ",
           "type": "libex-import"
         }
       ],

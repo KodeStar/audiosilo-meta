@@ -5762,11 +5762,16 @@
       "genres": [
         "childrens",
         "classics",
+        "drama-plays",
         "fairy-tales-folklore",
         "fantasy",
+        "ghost-stories",
         "horror",
         "literary-fiction",
-        "short-stories"
+        "politics",
+        "romance",
+        "short-stories",
+        "social-sciences"
       ],
       "id": "the-legend-of-sleepy-hollow",
       "language": "en",
@@ -5821,6 +5826,50 @@
           ],
           "work": "the-legend-of-sleepy-hollow"
         },
+        "b-j-harrison-2016": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B01JSE4PVS",
+              "region": "us"
+            },
+            {
+              "asin": "B01JSE6T0S",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4988761,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51fV-fPcU8L.jpg",
+          "id": "b-j-harrison-2016",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "b-j-harrison"
+          ],
+          "publisher": "B. J. Harrison",
+          "release_date": "2016-08-09",
+          "runtime_min": 83,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B01JSE4PVS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01JSE6T0S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-legend-of-sleepy-hollow"
+        },
         "bob-neufeld-2018": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -5870,6 +5919,70 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B07BBXF2XM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-legend-of-sleepy-hollow"
+        },
+        "chris-macdonnell-2019": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "1799718824",
+              "region": "us"
+            },
+            {
+              "asin": "1799718824",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1304079,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2131173,
+              "start_ms": 1304079,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1389157,
+              "start_ms": 3435252,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 252122,
+              "start_ms": 4824409,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 273159,
+              "start_ms": 5076531,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81DCQEzbQuL.jpg",
+          "id": "chris-macdonnell-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chris-macdonnell"
+          ],
+          "publisher": "Brilliance Audio",
+          "release_date": "2019-09-03",
+          "runtime_min": 89,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "1799718824",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1799718824",
               "type": "libex-import"
             }
           ],
@@ -6244,6 +6357,65 @@
           ],
           "work": "the-legend-of-sleepy-hollow"
         },
+        "the-st-charles-players-2000": {
+          "abridged": true,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002UUMR0Y",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVP970",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1570898,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1606170,
+              "start_ms": 1570898,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1601062,
+              "start_ms": 3177068,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1572942,
+              "start_ms": 4778130,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41cW4FzMwxL.jpg",
+          "id": "the-st-charles-players-2000",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "the-st-charles-players"
+          ],
+          "publisher": "Monterey SoundWorks",
+          "release_date": "2000-11-06",
+          "runtime_min": 105,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002UUMR0Y",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVP970",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-legend-of-sleepy-hollow"
+        },
         "tom-mison-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6304,332 +6476,24 @@
           "imported_at": "2026-08-07",
           "ref": "B07BBT5MPW",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Legend of Sleepy Hollow"
-    },
-    "the-legend-of-sleepy-hollow-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "washington-irving"
-      ],
-      "genres": [
-        "classics",
-        "horror",
-        "literary-fiction",
-        "politics",
-        "social-sciences"
-      ],
-      "id": "the-legend-of-sleepy-hollow-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chris-macdonnell-2019": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "1799718824",
-              "region": "us"
-            },
-            {
-              "asin": "1799718824",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1304079,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2131173,
-              "start_ms": 1304079,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1389157,
-              "start_ms": 3435252,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 252122,
-              "start_ms": 4824409,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 273159,
-              "start_ms": 5076531,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81DCQEzbQuL.jpg",
-          "id": "chris-macdonnell-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chris-macdonnell"
-          ],
-          "publisher": "Brilliance Audio",
-          "release_date": "2019-09-03",
-          "runtime_min": 89,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "1799718824",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1799718824",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-legend-of-sleepy-hollow-amazonclassics-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "1799718824",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Legend of Sleepy Hollow (AmazonClassics Edition)"
-    },
-    "the-legend-of-sleepy-hollow-and-rip-van-winkle": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "washington-irving"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "horror",
-        "romance"
-      ],
-      "id": "the-legend-of-sleepy-hollow-and-rip-van-winkle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bob-neufeld-2013": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B00NMNZEQM",
-              "region": "us"
-            },
-            {
-              "asin": "B00NMO3MQU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 417866,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 353686,
-              "start_ms": 417866,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 460220,
-              "start_ms": 771552,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 540514,
-              "start_ms": 1231772,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 326937,
-              "start_ms": 1772286,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 468254,
-              "start_ms": 2099223,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 220125,
-              "start_ms": 2567477,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 233361,
-              "start_ms": 2787602,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 508378,
-              "start_ms": 3020963,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 310126,
-              "start_ms": 3529341,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 510375,
-              "start_ms": 3839467,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 312773,
-              "start_ms": 4349842,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 174521,
-              "start_ms": 4662615,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 27585,
-              "start_ms": 4837136,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 438996,
-              "start_ms": 4864721,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 280265,
-              "start_ms": 5303717,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 444151,
-              "start_ms": 5583982,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 472108,
-              "start_ms": 6028133,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 480328,
-              "start_ms": 6500241,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 321085,
-              "start_ms": 6980569,
-              "title": "Chapter 20"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81tU-O1yANL.jpg",
-          "id": "bob-neufeld-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bob-neufeld"
-          ],
-          "publisher": "Spoken Realms",
-          "release_date": "2013-12-29",
-          "runtime_min": 121,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B00NMNZEQM",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00NMO3MQU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-legend-of-sleepy-hollow-and-rip-van-winkle"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00NMNZEQM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Legend of Sleepy Hollow and Rip Van Winkle"
-    },
-    "the-legend-of-sleepy-hollow-classic-tales-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "washington-irving"
-      ],
-      "genres": [
-        "classics",
-        "ghost-stories",
-        "horror",
-        "romance"
-      ],
-      "id": "the-legend-of-sleepy-hollow-classic-tales-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "b-j-harrison-2016": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B01JSE4PVS",
-              "region": "us"
-            },
-            {
-              "asin": "B01JSE6T0S",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4988761,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51fV-fPcU8L.jpg",
-          "id": "b-j-harrison-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "b-j-harrison"
-          ],
-          "publisher": "B. J. Harrison",
-          "release_date": "2016-08-09",
-          "runtime_min": 83,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B01JSE4PVS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01JSE6T0S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-legend-of-sleepy-hollow-classic-tales-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B01JSE4PVS",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002UUMR0Y",
+          "type": "libex-import"
         }
       ],
-      "title": "The Legend of Sleepy Hollow [Classic Tales Edition]"
+      "title": "The Legend of Sleepy Hollow"
     },
     "the-legend-of-sleepy-hollow-disney-books": {
       "added_at": "2026-07-29",
@@ -6708,92 +6572,6 @@
         }
       ],
       "title": "The Legend of Sleepy Hollow"
-    },
-    "the-legend-of-sleepy-hollow-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "washington-irving"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "fairy-tales-folklore",
-        "fantasy",
-        "horror",
-        "literary-fiction"
-      ],
-      "id": "the-legend-of-sleepy-hollow-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "the-st-charles-players-2000": {
-          "abridged": true,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002UUMR0Y",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVP970",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1570898,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1606170,
-              "start_ms": 1570898,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1601062,
-              "start_ms": 3177068,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1572942,
-              "start_ms": 4778130,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41cW4FzMwxL.jpg",
-          "id": "the-st-charles-players-2000",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "the-st-charles-players"
-          ],
-          "publisher": "Monterey SoundWorks",
-          "release_date": "2000-11-06",
-          "runtime_min": 105,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002UUMR0Y",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVP970",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-legend-of-sleepy-hollow-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002UUMR0Y",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Legend of Sleepy Hollow (Dramatized)"
     },
     "the-legend-of-sleepy-hollow-washington-irving": {
       "added_at": "2026-08-07",

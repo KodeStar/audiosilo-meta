@@ -2107,7 +2107,8 @@
       ],
       "genres": [
         "classics",
-        "drama-plays"
+        "drama-plays",
+        "literary-fiction"
       ],
       "id": "pride-and-prejudice-dramatized",
       "language": "en",
@@ -2186,31 +2187,7 @@
             }
           ],
           "work": "pride-and-prejudice-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B00ICUYRW2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Pride and Prejudice (Dramatized)"
-    },
-    "pride-and-prejudice-dramatized-jane-austen": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jane-austen"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "pride-and-prejudice-dramatized-jane-austen",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "elizabeth-laidlaw-2009": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2274,10 +2251,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "pride-and-prejudice-dramatized-jane-austen"
+          "work": "pride-and-prejudice-dramatized"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B00ICUYRW2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V1BOYC",

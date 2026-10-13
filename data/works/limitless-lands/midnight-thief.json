@@ -11423,144 +11423,15 @@
     "midsummer-mysteries": {
       "added_at": "2026-07-29",
       "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "mystery",
-        "short-stories"
-      ],
-      "id": "midsummer-mysteries",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "david-suchet-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BJS3QXDN",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22662,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1300363,
-              "start_ms": 22662,
-              "title": "The Blood-Stained Pavement"
-            },
-            {
-              "length_ms": 1155076,
-              "start_ms": 1323025,
-              "title": "The Double Clue"
-            },
-            {
-              "length_ms": 1683632,
-              "start_ms": 2478101,
-              "title": "Death on the Nile"
-            },
-            {
-              "length_ms": 3089182,
-              "start_ms": 4161733,
-              "title": "Harlequin’s Lane"
-            },
-            {
-              "length_ms": 1446765,
-              "start_ms": 7250915,
-              "title": "The Adventure of the Italian Nobleman"
-            },
-            {
-              "length_ms": 2660542,
-              "start_ms": 8697680,
-              "title": "Jane in Search of a Job"
-            },
-            {
-              "length_ms": 1928788,
-              "start_ms": 11358222,
-              "title": "The Disappearance of Mr Davenheim"
-            },
-            {
-              "length_ms": 1871040,
-              "start_ms": 13287010,
-              "title": "The Idol House of Astarte"
-            },
-            {
-              "length_ms": 2299797,
-              "start_ms": 15158050,
-              "title": "The Rajah’s Emerald"
-            },
-            {
-              "length_ms": 1578608,
-              "start_ms": 17457847,
-              "title": "The Oracle at Delphi"
-            },
-            {
-              "length_ms": 1756032,
-              "start_ms": 19036455,
-              "title": "The Adventure of the Sinister Stranger"
-            },
-            {
-              "length_ms": 3059693,
-              "start_ms": 20792487,
-              "title": "The Incredible Theft"
-            },
-            {
-              "length_ms": 2609830,
-              "start_ms": 23852180,
-              "title": "The Incredible Theft, continued"
-            },
-            {
-              "length_ms": 47925,
-              "start_ms": 26462010,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91H0fN75U1L.jpg",
-          "id": "david-suchet-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "david-suchet",
-            "hugh-fraser",
-            "joan-hickson"
-          ],
-          "publisher": "William Morrow Paperbacks",
-          "release_date": "2023-05-09",
-          "runtime_min": 441,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BJS3QXDN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "midsummer-mysteries"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BJS3QXDN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Midsummer Mysteries"
-    },
-    "midsummer-mysteries-agatha-christie": {
-      "added_at": "2026-07-29",
-      "authors": [
         "agatha-christie",
         "joan-hickson"
       ],
       "genres": [
         "mystery",
+        "short-stories",
         "thriller-suspense"
       ],
-      "id": "midsummer-mysteries-agatha-christie",
+      "id": "midsummer-mysteries",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -11677,10 +11548,122 @@
               "type": "libex-import"
             }
           ],
-          "work": "midsummer-mysteries-agatha-christie"
+          "work": "midsummer-mysteries"
+        },
+        "david-suchet-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BJS3QXDN",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22662,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1300363,
+              "start_ms": 22662,
+              "title": "The Blood-Stained Pavement"
+            },
+            {
+              "length_ms": 1155076,
+              "start_ms": 1323025,
+              "title": "The Double Clue"
+            },
+            {
+              "length_ms": 1683632,
+              "start_ms": 2478101,
+              "title": "Death on the Nile"
+            },
+            {
+              "length_ms": 3089182,
+              "start_ms": 4161733,
+              "title": "Harlequin’s Lane"
+            },
+            {
+              "length_ms": 1446765,
+              "start_ms": 7250915,
+              "title": "The Adventure of the Italian Nobleman"
+            },
+            {
+              "length_ms": 2660542,
+              "start_ms": 8697680,
+              "title": "Jane in Search of a Job"
+            },
+            {
+              "length_ms": 1928788,
+              "start_ms": 11358222,
+              "title": "The Disappearance of Mr Davenheim"
+            },
+            {
+              "length_ms": 1871040,
+              "start_ms": 13287010,
+              "title": "The Idol House of Astarte"
+            },
+            {
+              "length_ms": 2299797,
+              "start_ms": 15158050,
+              "title": "The Rajah’s Emerald"
+            },
+            {
+              "length_ms": 1578608,
+              "start_ms": 17457847,
+              "title": "The Oracle at Delphi"
+            },
+            {
+              "length_ms": 1756032,
+              "start_ms": 19036455,
+              "title": "The Adventure of the Sinister Stranger"
+            },
+            {
+              "length_ms": 3059693,
+              "start_ms": 20792487,
+              "title": "The Incredible Theft"
+            },
+            {
+              "length_ms": 2609830,
+              "start_ms": 23852180,
+              "title": "The Incredible Theft, continued"
+            },
+            {
+              "length_ms": 47925,
+              "start_ms": 26462010,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91H0fN75U1L.jpg",
+          "id": "david-suchet-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-suchet",
+            "hugh-fraser",
+            "joan-hickson"
+          ],
+          "publisher": "William Morrow Paperbacks",
+          "release_date": "2023-05-09",
+          "runtime_min": 441,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BJS3QXDN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "midsummer-mysteries"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BJS3QXDN",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "0008470952",

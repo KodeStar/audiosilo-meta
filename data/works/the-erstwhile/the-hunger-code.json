@@ -126,7 +126,10 @@
       ],
       "genres": [
         "action-adventure",
+        "childrens",
+        "coming-of-age",
         "dystopian",
+        "fantasy",
         "science-fiction",
         "young-adult"
       ],
@@ -134,6 +137,214 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "carolyn-mccormick-2008": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8MA2A",
+              "region": "us"
+            },
+            {
+              "asin": "B004V0T31M",
+              "region": "de"
+            },
+            {
+              "asin": "B004FUHOFA",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19117,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4630,
+              "start_ms": 19117,
+              "title": "Part 1: The Tributes"
+            },
+            {
+              "length_ms": 2081792,
+              "start_ms": 23747,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1450876,
+              "start_ms": 2105539,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1482501,
+              "start_ms": 3556415,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1449204,
+              "start_ms": 5038916,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1386789,
+              "start_ms": 6488120,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1426170,
+              "start_ms": 7874909,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1864887,
+              "start_ms": 9301079,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1198939,
+              "start_ms": 11165966,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1960739,
+              "start_ms": 12364905,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 6715,
+              "start_ms": 14325644,
+              "title": "Part II: The Game"
+            },
+            {
+              "length_ms": 1569641,
+              "start_ms": 14332359,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1461696,
+              "start_ms": 15902000,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1147252,
+              "start_ms": 17363696,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1398166,
+              "start_ms": 18510948,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1099976,
+              "start_ms": 19909114,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1317640,
+              "start_ms": 21009090,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1412888,
+              "start_ms": 22326730,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1196478,
+              "start_ms": 23739618,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1345875,
+              "start_ms": 24936096,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 6169,
+              "start_ms": 26281971,
+              "title": "Part III: The Victor"
+            },
+            {
+              "length_ms": 1708021,
+              "start_ms": 26288140,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1783710,
+              "start_ms": 27996161,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 1442006,
+              "start_ms": 29779871,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 1419575,
+              "start_ms": 31221877,
+              "title": "Chapter 22"
+            },
+            {
+              "length_ms": 1813107,
+              "start_ms": 32641452,
+              "title": "Chapter 23"
+            },
+            {
+              "length_ms": 1141818,
+              "start_ms": 34454559,
+              "title": "Chapter 24"
+            },
+            {
+              "length_ms": 1599205,
+              "start_ms": 35596377,
+              "title": "Chapter 25"
+            },
+            {
+              "length_ms": 1478693,
+              "start_ms": 37195582,
+              "title": "Chapter 26"
+            },
+            {
+              "length_ms": 1553906,
+              "start_ms": 38674275,
+              "title": "Chapter 27"
+            },
+            {
+              "length_ms": 50547,
+              "start_ms": 40228181,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81WjPoO8xOL.jpg",
+          "id": "carolyn-mccormick-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carolyn-mccormick"
+          ],
+          "publisher": "Scholastic Audio Books",
+          "release_date": "2008-10-01",
+          "runtime_min": 671,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8MA2A",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004V0T31M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FUHOFA",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-hunger-games"
+        },
         "tatiana-maslany-2018": {
           "abridged": false,
           "added_at": "2026-07-17T09:08:56+00:00",
@@ -377,245 +588,14 @@
           "imported_at": "2026-07-30",
           "ref": "B07HHH7L77",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Hunger Games"
-    },
-    "the-hunger-games-the-hunger-games-book-one": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "suzanne-collins"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "dystopian",
-        "fantasy",
-        "science-fiction",
-        "young-adult"
-      ],
-      "id": "the-hunger-games-the-hunger-games-book-one",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "carolyn-mccormick-2008": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V8MA2A",
-              "region": "us"
-            },
-            {
-              "asin": "B004V0T31M",
-              "region": "de"
-            },
-            {
-              "asin": "B004FUHOFA",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19117,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 4630,
-              "start_ms": 19117,
-              "title": "Part 1: The Tributes"
-            },
-            {
-              "length_ms": 2081792,
-              "start_ms": 23747,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1450876,
-              "start_ms": 2105539,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1482501,
-              "start_ms": 3556415,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1449204,
-              "start_ms": 5038916,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1386789,
-              "start_ms": 6488120,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1426170,
-              "start_ms": 7874909,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1864887,
-              "start_ms": 9301079,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1198939,
-              "start_ms": 11165966,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1960739,
-              "start_ms": 12364905,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 6715,
-              "start_ms": 14325644,
-              "title": "Part II: The Game"
-            },
-            {
-              "length_ms": 1569641,
-              "start_ms": 14332359,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1461696,
-              "start_ms": 15902000,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1147252,
-              "start_ms": 17363696,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1398166,
-              "start_ms": 18510948,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1099976,
-              "start_ms": 19909114,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1317640,
-              "start_ms": 21009090,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1412888,
-              "start_ms": 22326730,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1196478,
-              "start_ms": 23739618,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1345875,
-              "start_ms": 24936096,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 6169,
-              "start_ms": 26281971,
-              "title": "Part III: The Victor"
-            },
-            {
-              "length_ms": 1708021,
-              "start_ms": 26288140,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1783710,
-              "start_ms": 27996161,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 1442006,
-              "start_ms": 29779871,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 1419575,
-              "start_ms": 31221877,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 1813107,
-              "start_ms": 32641452,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 1141818,
-              "start_ms": 34454559,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 1599205,
-              "start_ms": 35596377,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 1478693,
-              "start_ms": 37195582,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 1553906,
-              "start_ms": 38674275,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 50547,
-              "start_ms": 40228181,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81WjPoO8xOL.jpg",
-          "id": "carolyn-mccormick-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "carolyn-mccormick"
-          ],
-          "publisher": "Scholastic Audio Books",
-          "release_date": "2008-10-01",
-          "runtime_min": 671,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V8MA2A",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004V0T31M",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FUHOFA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-hunger-games-the-hunger-games-book-one"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V8MA2A",
           "type": "libex-import"
         }
       ],
-      "title": "The Hunger Games (The Hunger Games, Book One)"
+      "title": "The Hunger Games"
     },
     "the-hunger-habit": {
       "added_at": "2026-07-29",

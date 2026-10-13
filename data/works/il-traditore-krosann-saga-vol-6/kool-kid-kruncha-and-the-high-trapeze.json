@@ -9760,9 +9760,12 @@
     "krabat-das-horspiel": {
       "added_at": "2026-07-29",
       "authors": [
-        "otfried-preussler"
+        "otfried-preussler",
+        "rainer-quade"
       ],
       "genres": [
+        "action-adventure",
+        "childrens",
         "classics",
         "dark-fantasy",
         "fantasy",
@@ -9780,6 +9783,10 @@
             {
               "asin": "B09DYH2TTY",
               "region": "us"
+            },
+            {
+              "asin": "B09DYDTL6B",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -10047,6 +10054,11 @@
               "imported_at": "2026-07-29",
               "ref": "B09DYH2TTY",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B09DYDTL6B",
+              "type": "libex-import"
             }
           ],
           "work": "krabat-das-horspiel"
@@ -10057,59 +10069,7 @@
           "imported_at": "2026-07-29",
           "ref": "B09DYH2TTY",
           "type": "libex-import"
-        }
-      ],
-      "title": "Krabat - Das Hörspiel"
-    },
-    "krabat-das-horspiel-otfried-preussler": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "otfried-preussler",
-        "rainer-quade"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "young-adult"
-      ],
-      "id": "krabat-das-horspiel-otfried-preussler",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "laura-maire-2021": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09DYDTL6B",
-              "region": "de"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91+nQdcMR1L.jpg",
-          "id": "laura-maire-2021",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laura-maire",
-            "max-mauff",
-            "michael-mendl",
-            "wanja-mues"
-          ],
-          "publisher": "Silberfisch",
-          "release_date": "2021-09-23",
-          "runtime_min": 180,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09DYDTL6B",
-              "type": "libex-import"
-            }
-          ],
-          "work": "krabat-das-horspiel-otfried-preussler"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09DYDTL6B",

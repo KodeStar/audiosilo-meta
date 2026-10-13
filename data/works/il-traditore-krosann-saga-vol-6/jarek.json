@@ -11287,7 +11287,8 @@
     "jawbreaker": {
       "added_at": "2026-07-29",
       "authors": [
-        "gary-berntsen"
+        "gary-berntsen",
+        "ralph-pezzullo"
       ],
       "genres": [
         "espionage",
@@ -11299,6 +11300,70 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "gary-berntsen-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0K2UK",
+              "region": "us"
+            },
+            {
+              "asin": "B004EXJEUQ",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4359314,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4131480,
+              "start_ms": 4359314,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4207363,
+              "start_ms": 8490794,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 4185815,
+              "start_ms": 12698157,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 4179174,
+              "start_ms": 16883972,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51rqqL85DhL.jpg",
+          "id": "gary-berntsen-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gary-berntsen"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2005-12-27",
+          "runtime_min": 350,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0K2UK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EXJEUQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "jawbreaker"
+        },
         "ralph-pezzullo-2005": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -11405,92 +11470,7 @@
           "imported_at": "2026-07-29",
           "ref": "B002VAA31I",
           "type": "libex-import"
-        }
-      ],
-      "title": "Jawbreaker"
-    },
-    "jawbreaker-ralph-pezzullo": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "ralph-pezzullo",
-        "gary-berntsen"
-      ],
-      "genres": [
-        "espionage",
-        "history",
-        "military-history",
-        "politics"
-      ],
-      "id": "jawbreaker-ralph-pezzullo",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gary-berntsen-2005": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0K2UK",
-              "region": "us"
-            },
-            {
-              "asin": "B004EXJEUQ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4359314,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4131480,
-              "start_ms": 4359314,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4207363,
-              "start_ms": 8490794,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 4185815,
-              "start_ms": 12698157,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 4179174,
-              "start_ms": 16883972,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51rqqL85DhL.jpg",
-          "id": "gary-berntsen-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gary-berntsen"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2005-12-27",
-          "runtime_min": 350,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0K2UK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EXJEUQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "jawbreaker-ralph-pezzullo"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002V0K2UK",

@@ -2612,6 +2612,51 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andreas-rothe-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "3837366758",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2573884,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 3106481,
+              "start_ms": 2573884,
+              "title": "Kapitel 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ExruJXhcL.jpg",
+          "id": "andreas-rothe-2019",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andreas-rothe",
+            "ingrid-riefer",
+            "kurt-vethake",
+            "michael-orth",
+            "peter-schiff",
+            "regine-mahler"
+          ],
+          "publisher": "Oetinger Media",
+          "release_date": "2019-03-06",
+          "runtime_min": 94,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "3837366758",
+              "type": "libex-import"
+            }
+          ],
+          "work": "eine-woche-voller-samstage-das-sams-band-1"
+        },
         "monty-arnold-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2709,29 +2754,7 @@
             }
           ],
           "work": "eine-woche-voller-samstage-das-sams-band-1"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B073JSGKFS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Eine Woche voller Samstage: Das Sams, Band 1"
-    },
-    "eine-woche-voller-samstage-sams-1": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "paul-maar"
-      ],
-      "genres": [
-        "childrens"
-      ],
-      "id": "eine-woche-voller-samstage-sams-1",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "ulrich-noethen-2012": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2884,85 +2907,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "eine-woche-voller-samstage-sams-1"
+          "work": "eine-woche-voller-samstage-das-sams-band-1"
         }
       },
       "sources": [
         {
+          "imported_at": "2026-08-02",
+          "ref": "B073JSGKFS",
+          "type": "libex-import"
+        },
+        {
           "imported_at": "2026-07-29",
           "ref": "B00TLBMAXE",
           "type": "libex-import"
-        }
-      ],
-      "title": "Eine Woche voller Samstage (Sams 1)"
-    },
-    "eine-woche-voller-samstage-sams-horspiel-1": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "paul-maar"
-      ],
-      "genres": [
-        "childrens",
-        "fantasy"
-      ],
-      "id": "eine-woche-voller-samstage-sams-horspiel-1",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andreas-rothe-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "3837366758",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2573884,
-              "start_ms": 0,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 3106481,
-              "start_ms": 2573884,
-              "title": "Kapitel 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ExruJXhcL.jpg",
-          "id": "andreas-rothe-2019",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andreas-rothe",
-            "ingrid-riefer",
-            "kurt-vethake",
-            "michael-orth",
-            "peter-schiff",
-            "regine-mahler"
-          ],
-          "publisher": "Oetinger Media",
-          "release_date": "2019-03-06",
-          "runtime_min": 94,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "3837366758",
-              "type": "libex-import"
-            }
-          ],
-          "work": "eine-woche-voller-samstage-sams-horspiel-1"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "3837366758",
           "type": "libex-import"
         }
       ],
-      "title": "Eine Woche voller Samstage: Sams Hörspiel 1"
+      "title": "Eine Woche voller Samstage: Das Sams, Band 1"
     },
     "eine-wunderbare-freundschaft": {
       "added_at": "2026-08-02",

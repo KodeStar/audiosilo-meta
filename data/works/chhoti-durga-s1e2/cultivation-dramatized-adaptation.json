@@ -9155,9 +9155,12 @@
       ],
       "genres": [
         "classics",
+        "gothic",
         "historical-fiction",
         "historical-romance",
+        "horror",
         "literary-fiction",
+        "psychological-thriller",
         "romance",
         "womens-fiction",
         "writing-publishing"
@@ -9166,6 +9169,223 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "aldo-lumbia-2013": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00C1065SI",
+              "region": "us"
+            },
+            {
+              "asin": "B00C102R0I",
+              "region": "de"
+            },
+            {
+              "asin": "B00C109BVQ",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 294615,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 166812,
+              "start_ms": 294615,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 453486,
+              "start_ms": 461427,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 277432,
+              "start_ms": 914913,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 444848,
+              "start_ms": 1192345,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 457480,
+              "start_ms": 1637193,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 546133,
+              "start_ms": 2094673,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 725206,
+              "start_ms": 2640806,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 448470,
+              "start_ms": 3366012,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 415451,
+              "start_ms": 3814482,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 393021,
+              "start_ms": 4229933,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 379089,
+              "start_ms": 4622954,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 250822,
+              "start_ms": 5002043,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 333531,
+              "start_ms": 5252865,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 302277,
+              "start_ms": 5586396,
+              "title": "Capítulo 15"
+            },
+            {
+              "length_ms": 412433,
+              "start_ms": 5888673,
+              "title": "Capítulo 16"
+            },
+            {
+              "length_ms": 371659,
+              "start_ms": 6301106,
+              "title": "Capítulo 17"
+            },
+            {
+              "length_ms": 513997,
+              "start_ms": 6672765,
+              "title": "Capítulo 18"
+            },
+            {
+              "length_ms": 385823,
+              "start_ms": 7186762,
+              "title": "Capítulo 19"
+            },
+            {
+              "length_ms": 497371,
+              "start_ms": 7572585,
+              "title": "Capítulo 20"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71fu0X2lqsL.jpg",
+          "id": "aldo-lumbia-2013",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aldo-lumbia",
+            "conseulo-pinto",
+            "franco-patino",
+            "leticia-pou",
+            "matilde-avila",
+            "miguel-duran",
+            "rolando-aguero"
+          ],
+          "publisher": "Audiolibros Colección",
+          "release_date": "2013-03-27",
+          "runtime_min": 134,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00C1065SI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00C102R0I",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00C109BVQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cumbres-borrascosas"
+        },
+        "laura-garcia-2006": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0PT80",
+              "region": "us"
+            },
+            {
+              "asin": "B004UWRX4K",
+              "region": "de"
+            },
+            {
+              "asin": "B004F3B7WI",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3659047,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 3644697,
+              "start_ms": 3659047,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 3723877,
+              "start_ms": 7303744,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IlUXNHrCL.jpg",
+          "id": "laura-garcia-2006",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "laura-garcia"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2006-03-24",
+          "runtime_min": 183,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0PT80",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004UWRX4K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F3B7WI",
+              "type": "libex-import"
+            }
+          ],
+          "work": "cumbres-borrascosas"
+        },
         "sol-de-la-barreda-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9455,6 +9675,11 @@
           "imported_at": "2026-07-29",
           "ref": "B0D95RPCYQ",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0PT80",
+          "type": "libex-import"
         }
       ],
       "title": "Cumbres borrascosas"
@@ -9730,250 +9955,6 @@
         }
       ],
       "title": "Cumbres borrascosas"
-    },
-    "cumbres-borrascosas-wuthering-heights": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "emily-bronte"
-      ],
-      "genres": [
-        "classics",
-        "gothic",
-        "horror",
-        "literary-fiction",
-        "psychological-thriller",
-        "romance"
-      ],
-      "id": "cumbres-borrascosas-wuthering-heights",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aldo-lumbia-2013": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00C1065SI",
-              "region": "us"
-            },
-            {
-              "asin": "B00C102R0I",
-              "region": "de"
-            },
-            {
-              "asin": "B00C109BVQ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 294615,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 166812,
-              "start_ms": 294615,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 453486,
-              "start_ms": 461427,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 277432,
-              "start_ms": 914913,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 444848,
-              "start_ms": 1192345,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 457480,
-              "start_ms": 1637193,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 546133,
-              "start_ms": 2094673,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 725206,
-              "start_ms": 2640806,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 448470,
-              "start_ms": 3366012,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 415451,
-              "start_ms": 3814482,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 393021,
-              "start_ms": 4229933,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 379089,
-              "start_ms": 4622954,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 250822,
-              "start_ms": 5002043,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 333531,
-              "start_ms": 5252865,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 302277,
-              "start_ms": 5586396,
-              "title": "Capítulo 15"
-            },
-            {
-              "length_ms": 412433,
-              "start_ms": 5888673,
-              "title": "Capítulo 16"
-            },
-            {
-              "length_ms": 371659,
-              "start_ms": 6301106,
-              "title": "Capítulo 17"
-            },
-            {
-              "length_ms": 513997,
-              "start_ms": 6672765,
-              "title": "Capítulo 18"
-            },
-            {
-              "length_ms": 385823,
-              "start_ms": 7186762,
-              "title": "Capítulo 19"
-            },
-            {
-              "length_ms": 497371,
-              "start_ms": 7572585,
-              "title": "Capítulo 20"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71fu0X2lqsL.jpg",
-          "id": "aldo-lumbia-2013",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aldo-lumbia",
-            "conseulo-pinto",
-            "franco-patino",
-            "leticia-pou",
-            "matilde-avila",
-            "miguel-duran",
-            "rolando-aguero"
-          ],
-          "publisher": "Audiolibros Colección",
-          "release_date": "2013-03-27",
-          "runtime_min": 134,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00C1065SI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00C102R0I",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00C109BVQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cumbres-borrascosas-wuthering-heights"
-        },
-        "laura-garcia-2006": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0PT80",
-              "region": "us"
-            },
-            {
-              "asin": "B004UWRX4K",
-              "region": "de"
-            },
-            {
-              "asin": "B004F3B7WI",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3659047,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 3644697,
-              "start_ms": 3659047,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 3723877,
-              "start_ms": 7303744,
-              "title": "Capítulo 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81IlUXNHrCL.jpg",
-          "id": "laura-garcia-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "laura-garcia"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-03-24",
-          "runtime_min": 183,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0PT80",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004UWRX4K",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F3B7WI",
-              "type": "libex-import"
-            }
-          ],
-          "work": "cumbres-borrascosas-wuthering-heights"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V0PT80",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Cumbres Borrascosas [Wuthering Heights]"
     },
     "cumbria": {
       "added_at": "2026-07-29",

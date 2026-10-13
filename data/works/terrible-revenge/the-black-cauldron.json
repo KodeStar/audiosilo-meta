@@ -6290,7 +6290,9 @@
       ],
       "genres": [
         "hard-boiled",
-        "mystery"
+        "historical-fiction",
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "the-black-eyed-blonde",
       "language": "en",
@@ -6307,60 +6309,7 @@
             {
               "asin": "B0799SYJYZ",
               "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81EBVtRI4AL.jpg",
-          "id": "dennis-boutsikaris-2014",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dennis-boutsikaris"
-          ],
-          "publisher": "Macmillan Audio",
-          "release_date": "2014-03-04",
-          "runtime_min": 473,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00H4DZ82G",
-              "type": "libex-import"
             },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0799SYJYZ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-black-eyed-blonde"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00H4DZ82G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Black-Eyed Blonde"
-    },
-    "the-black-eyed-blonde-benjamin-black": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "benjamin-black"
-      ],
-      "genres": [
-        "historical-fiction",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "the-black-eyed-blonde-benjamin-black",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "dennis-boutsikaris-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B00IO1F368",
               "region": "us"
@@ -6501,17 +6450,27 @@
               "title": "Chapter 25"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81JJhqh2BsL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81EBVtRI4AL.jpg",
           "id": "dennis-boutsikaris-2014",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "dennis-boutsikaris"
           ],
-          "publisher": "Macmillan Digital Audio",
-          "release_date": "2014-02-27",
+          "publisher": "Macmillan Audio",
+          "release_date": "2014-03-04",
           "runtime_min": 473,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00H4DZ82G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0799SYJYZ",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-29",
               "ref": "B00IO1F368",
@@ -6528,17 +6487,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-black-eyed-blonde-benjamin-black"
+          "work": "the-black-eyed-blonde"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00H4DZ82G",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00IO1F368",
           "type": "libex-import"
         }
       ],
-      "title": "The Black Eyed Blonde"
+      "title": "The Black-Eyed Blonde"
     },
     "the-black-eyed-queen": {
       "added_at": "2026-09-22",
@@ -8784,6 +8748,7 @@
         "parenting-relationships",
         "poetry",
         "self-help",
+        "social-sciences",
         "young-adult"
       ],
       "id": "the-black-flamingo",
@@ -8908,32 +8873,7 @@
             }
           ],
           "work": "the-black-flamingo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1444954938",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Black Flamingo"
-    },
-    "the-black-flamingo-dean-atta": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dean-atta"
-      ],
-      "genres": [
-        "lgbtq",
-        "self-help",
-        "social-sciences",
-        "young-adult"
-      ],
-      "id": "the-black-flamingo-dean-atta",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "dean-atta-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9042,10 +8982,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-black-flamingo-dean-atta"
+          "work": "the-black-flamingo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1444954938",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "0063003937",

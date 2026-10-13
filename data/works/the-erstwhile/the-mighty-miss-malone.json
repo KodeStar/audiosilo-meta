@@ -3305,6 +3305,7 @@
         "classics",
         "historical-fiction",
         "literary-fiction",
+        "psychological-thriller",
         "romance"
       ],
       "id": "the-mill-on-the-floss",
@@ -5026,31 +5027,7 @@
             }
           ],
           "work": "the-mill-on-the-floss"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0BT142YK7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Mill on the Floss"
-    },
-    "the-mill-on-the-floss-amazonclassics-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "george-eliot"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "psychological-thriller"
-      ],
-      "id": "the-mill-on-the-floss-amazonclassics-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rosalyn-landor-2020": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -5374,17 +5351,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-mill-on-the-floss-amazonclassics-edition"
+          "work": "the-mill-on-the-floss"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0BT142YK7",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "1799758745",
           "type": "libex-import"
         }
       ],
-      "title": "The Mill on the Floss (AmazonClassics Edition)"
+      "title": "The Mill on the Floss"
     },
     "the-mill-on-the-shore": {
       "added_at": "2026-07-29",

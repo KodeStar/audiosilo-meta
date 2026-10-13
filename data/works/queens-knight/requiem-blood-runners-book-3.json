@@ -11366,92 +11366,6 @@
       ],
       "title": "Resan för livet 4"
     },
-    "rescate-accidentado-narracion-en-castellano": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "j-s-morin"
-      ],
-      "genres": [
-        "science-fiction"
-      ],
-      "id": "rescate-accidentado-narracion-en-castellano",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "roger-vidal-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0848HWHB7",
-              "region": "us"
-            },
-            {
-              "asin": "B0848NSWHX",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18712,
-              "start_ms": 0,
-              "title": "Créditos Iniciales"
-            },
-            {
-              "length_ms": 5741392,
-              "start_ms": 18712,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 5642356,
-              "start_ms": 5760104,
-              "title": "Capítulo 1 (Continuación 1)"
-            },
-            {
-              "length_ms": 6328326,
-              "start_ms": 11402460,
-              "title": "Capítulo 1 (Continuación 2)"
-            },
-            {
-              "length_ms": 60434,
-              "start_ms": 17730786,
-              "title": "Créditos Finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91yD9FqKOyL.jpg",
-          "id": "roger-vidal-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "roger-vidal"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-01-28",
-          "runtime_min": 296,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0848HWHB7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0848NSWHX",
-              "type": "libex-import"
-            }
-          ],
-          "work": "rescate-accidentado-narracion-en-castellano"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0848HWHB7",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Rescate Accidentado (Narración en Castellano)"
-    },
     "rescate-accidentado-salvage-trouble": {
       "added_at": "2026-08-02",
       "authors": [
@@ -11707,12 +11621,81 @@
             }
           ],
           "work": "rescate-accidentado-salvage-trouble"
+        },
+        "roger-vidal-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0848HWHB7",
+              "region": "us"
+            },
+            {
+              "asin": "B0848NSWHX",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 18712,
+              "start_ms": 0,
+              "title": "Créditos Iniciales"
+            },
+            {
+              "length_ms": 5741392,
+              "start_ms": 18712,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 5642356,
+              "start_ms": 5760104,
+              "title": "Capítulo 1 (Continuación 1)"
+            },
+            {
+              "length_ms": 6328326,
+              "start_ms": 11402460,
+              "title": "Capítulo 1 (Continuación 2)"
+            },
+            {
+              "length_ms": 60434,
+              "start_ms": 17730786,
+              "title": "Créditos Finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91yD9FqKOyL.jpg",
+          "id": "roger-vidal-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "roger-vidal"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-01-28",
+          "runtime_min": 296,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0848HWHB7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0848NSWHX",
+              "type": "libex-import"
+            }
+          ],
+          "work": "rescate-accidentado-salvage-trouble"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
           "ref": "B085GK6MJ4",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0848HWHB7",
           "type": "libex-import"
         }
       ],

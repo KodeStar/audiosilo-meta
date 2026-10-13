@@ -9522,6 +9522,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "historical-romance",
         "romance"
       ],
       "id": "lord-john-y-un-asunto-privado",
@@ -9535,83 +9536,7 @@
             {
               "asin": "B08JQQ49KT",
               "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/812ECmRxufL.jpg",
-          "id": "arturo-mercado-jr-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "arturo-mercado-jr"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-11-18",
-          "runtime_min": 550,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08JQQ49KT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "lord-john-y-un-asunto-privado"
-        },
-        "josema-soler-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B08KYDY3QW",
-              "region": "es"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81yVSS7we2L.jpg",
-          "id": "josema-soler-2020",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "josema-soler"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2020-10-20",
-          "runtime_min": 636,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B08KYDY3QW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "lord-john-y-un-asunto-privado"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08JQQ49KT",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lord John y un Asunto Privado"
-    },
-    "lord-john-y-un-asunto-privado-lord-john-and-the-private-matter": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance"
-      ],
-      "id": "lord-john-y-un-asunto-privado-lord-john-and-the-private-matter",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "arturo-mercado-jr-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
+            },
             {
               "asin": "B08JRLP56W",
               "region": "us"
@@ -9742,39 +9667,25 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08JQQ49KT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08JRLP56W",
               "type": "libex-import"
             }
           ],
-          "work": "lord-john-y-un-asunto-privado-lord-john-and-the-private-matter"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B08JRLP56W",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lord John y un Asunto Privado [Lord John and the Private Matter]"
-    },
-    "lord-john-y-un-asunto-privado-narracion-en-castellano-lord-john-and-the-private-matter": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "diana-gabaldon"
-      ],
-      "genres": [
-        "historical-fiction",
-        "romance"
-      ],
-      "id": "lord-john-y-un-asunto-privado-narracion-en-castellano-lord-john-and-the-private-matter",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "lord-john-y-un-asunto-privado"
+        },
         "josema-soler-2020": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
+            {
+              "asin": "B08KYDY3QW",
+              "region": "es"
+            },
             {
               "asin": "B08KYH37J8",
               "region": "us"
@@ -9900,21 +9811,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B08KYDY3QW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B08KYH37J8",
               "type": "libex-import"
             }
           ],
-          "work": "lord-john-y-un-asunto-privado-narracion-en-castellano-lord-john-and-the-private-matter"
+          "work": "lord-john-y-un-asunto-privado"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08JQQ49KT",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B08JRLP56W",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B08KYH37J8",
           "type": "libex-import"
         }
       ],
-      "title": "Lord John y un Asunto Privado (Narración en Castellano) [Lord John and the Private Matter]"
+      "title": "Lord John y un Asunto Privado"
     },
     "lord-johns-dilemma": {
       "added_at": "2026-07-29",

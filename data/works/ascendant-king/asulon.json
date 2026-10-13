@@ -6594,6 +6594,7 @@
       ],
       "genres": [
         "historical-fiction",
+        "literary-fiction",
         "mystery",
         "short-stories"
       ],
@@ -6601,6 +6602,55 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "june-whitfield-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0042LDLOK",
+              "region": "us"
+            },
+            {
+              "asin": "B004V7S0FU",
+              "region": "de"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4058013,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4391776,
+              "start_ms": 4058013,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61N6fMBJN1L.jpg",
+          "id": "june-whitfield-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "june-whitfield"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2010-09-10",
+          "runtime_min": 140,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0042LDLOK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B004V7S0FU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "at-bertrams-hotel"
+        },
         "stephanie-cole-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6827,84 +6877,17 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/16333.At_Bertram_s_Hotel",
           "type": "community"
-        }
-      ],
-      "title": "At Bertram's Hotel",
-      "xref": {
-        "goodreads": "16333"
-      }
-    },
-    "at-bertrams-hotel-dramatised": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "agatha-christie"
-      ],
-      "genres": [
-        "literary-fiction",
-        "mystery"
-      ],
-      "id": "at-bertrams-hotel-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "june-whitfield-2010": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0042LDLOK",
-              "region": "us"
-            },
-            {
-              "asin": "B004V7S0FU",
-              "region": "de"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4058013,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4391776,
-              "start_ms": 4058013,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61N6fMBJN1L.jpg",
-          "id": "june-whitfield-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "june-whitfield"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2010-09-10",
-          "runtime_min": 140,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0042LDLOK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B004V7S0FU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "at-bertrams-hotel-dramatised"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0042LDLOK",
           "type": "libex-import"
         }
       ],
-      "title": "At Bertram's Hotel (Dramatised)"
+      "title": "At Bertram's Hotel",
+      "xref": {
+        "goodreads": "16333"
+      }
     },
     "at-blackwater-pond": {
       "added_at": "2026-07-29",

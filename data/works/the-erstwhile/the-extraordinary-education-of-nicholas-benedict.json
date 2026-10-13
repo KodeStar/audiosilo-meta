@@ -3,7 +3,8 @@
     "the-extraordinary-education-of-nicholas-benedict": {
       "added_at": "2026-07-25T19:18:21+01:00",
       "authors": [
-        "trenton-lee-stewart"
+        "trenton-lee-stewart",
+        "diana-sudyka"
       ],
       "genres": [
         "action-adventure",
@@ -204,41 +205,7 @@
             }
           ],
           "work": "the-extraordinary-education-of-nicholas-benedict"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "https://www.goodreads.com/book/show/13152282-the-extraordinary-education-of-nicholas-benedict",
-          "type": "community"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B007OX95KC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Extraordinary Education of Nicholas Benedict",
-      "xref": {
-        "goodreads": "13152282"
-      }
-    },
-    "the-extraordinary-education-of-nicholas-benedict-trenton-lee-stewart": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "trenton-lee-stewart",
-        "diana-sudyka"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "coming-of-age",
-        "mystery"
-      ],
-      "id": "the-extraordinary-education-of-nicholas-benedict-trenton-lee-stewart",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "del-roy-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -265,17 +232,30 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-extraordinary-education-of-nicholas-benedict-trenton-lee-stewart"
+          "work": "the-extraordinary-education-of-nicholas-benedict"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "https://www.goodreads.com/book/show/13152282-the-extraordinary-education-of-nicholas-benedict",
+          "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B007OX95KC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0B357KWM5",
           "type": "libex-import"
         }
       ],
-      "title": "The Extraordinary Education of Nicholas Benedict"
+      "title": "The Extraordinary Education of Nicholas Benedict",
+      "xref": {
+        "goodreads": "13152282"
+      }
     },
     "the-extraordinary-extraterrestrial-love-lives-of-doppelgangers": {
       "added_at": "2026-08-01",

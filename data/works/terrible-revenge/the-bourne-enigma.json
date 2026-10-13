@@ -738,7 +738,9 @@
         "robert-ludlum"
       ],
       "genres": [
+        "action-adventure",
         "espionage",
+        "mystery",
         "thriller-suspense"
       ],
       "id": "the-bourne-identity",
@@ -1161,37 +1163,7 @@
             }
           ],
           "work": "the-bourne-identity"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-25",
-          "ref": "B002V1OH6Y",
-          "type": "audiosilo-books-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B002V5D25M",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Bourne Identity"
-    },
-    "the-bourne-identity-jason-bourne-series-book-1": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "robert-ludlum"
-      ],
-      "genres": [
-        "action-adventure",
-        "espionage",
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "the-bourne-identity-jason-bourne-series-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "scott-brick-2012": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -1419,10 +1391,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-bourne-identity-jason-bourne-series-book-1"
+          "work": "the-bourne-identity"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-25",
+          "ref": "B002V1OH6Y",
+          "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B002V5D25M",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B007946HQQ",
@@ -1434,7 +1416,7 @@
           "type": "libex-import"
         }
       ],
-      "title": "The Bourne Identity: Jason Bourne Series, Book 1"
+      "title": "The Bourne Identity"
     },
     "the-bourne-imperative": {
       "added_at": "2026-07-25T17:12:12+01:00",

@@ -1711,7 +1711,8 @@
     "good-to-great-in-gods-eyes": {
       "added_at": "2026-07-29",
       "authors": [
-        "chip-ingram"
+        "chip-ingram",
+        "george-w-sarris"
       ],
       "genres": [
         "religion-spirituality"
@@ -1808,30 +1809,7 @@
             }
           ],
           "work": "good-to-great-in-gods-eyes"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00XBNTTDM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Good to Great in God's Eyes"
-    },
-    "good-to-great-in-gods-eyes-chip-ingram": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "chip-ingram",
-        "george-w-sarris"
-      ],
-      "genres": [
-        "religion-spirituality"
-      ],
-      "id": "good-to-great-in-gods-eyes-chip-ingram",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "george-w-sarris-2017": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1929,17 +1907,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "good-to-great-in-gods-eyes-chip-ingram"
+          "work": "good-to-great-in-gods-eyes"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00XBNTTDM",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B06XX2LBDR",
           "type": "libex-import"
         }
       ],
-      "title": "Good to Great in God's Eyes*"
+      "title": "Good to Great in God's Eyes"
     },
     "good-to-great-why-some-companies-make-the-leap-and-others-dont-by-jim-collins": {
       "added_at": "2026-07-29",
@@ -9639,12 +9622,51 @@
       ],
       "genres": [
         "arts-entertainment",
-        "biography-memoir"
+        "biography-memoir",
+        "history",
+        "military-history"
       ],
       "id": "goodbye-to-all-that",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "joel-schrank-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0D9PC3B72",
+              "region": "us"
+            },
+            {
+              "asin": "B0D9PBLKYK",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Tdko2QL2L.jpg",
+          "id": "joel-schrank-2024",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joel-schrank"
+          ],
+          "publisher": "Quill Publishing",
+          "release_date": "2024-07-19",
+          "runtime_min": 716,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0D9PC3B72",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0D9PBLKYK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "goodbye-to-all-that"
+        },
         "martin-jarvis-2008": {
           "abridged": true,
           "added_at": "2026-07-29",
@@ -9709,6 +9731,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0036GPKC8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0D9PC3B72",
           "type": "libex-import"
         }
       ],

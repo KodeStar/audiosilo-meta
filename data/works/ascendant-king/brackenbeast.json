@@ -6897,7 +6897,11 @@
         "john-medina"
       ],
       "genres": [
-        "parenting-relationships"
+        "childrens",
+        "health-wellness",
+        "parenting-relationships",
+        "psychology",
+        "science"
       ],
       "id": "brain-rules-for-baby",
       "language": "en",
@@ -6991,33 +6995,7 @@
             }
           ],
           "work": "brain-rules-for-baby"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B004AHGM7Y",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Brain Rules for Baby"
-    },
-    "brain-rules-for-baby-updated-and-expanded": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "john-medina"
-      ],
-      "genres": [
-        "childrens",
-        "health-wellness",
-        "parenting-relationships",
-        "psychology",
-        "science"
-      ],
-      "id": "brain-rules-for-baby-updated-and-expanded",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "john-medina-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7110,17 +7088,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "brain-rules-for-baby-updated-and-expanded"
+          "work": "brain-rules-for-baby"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B004AHGM7Y",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B00N52I58Y",
           "type": "libex-import"
         }
       ],
-      "title": "Brain Rules for Baby (Updated and Expanded)"
+      "title": "Brain Rules for Baby"
     },
     "brain-rules-updated-and-expanded": {
       "added_at": "2026-07-29",

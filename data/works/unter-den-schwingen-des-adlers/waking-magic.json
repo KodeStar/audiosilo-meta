@@ -8606,7 +8606,8 @@
     "walden": {
       "added_at": "2026-07-29",
       "authors": [
-        "henry-david-thoreau"
+        "henry-david-thoreau",
+        "american-renaissance-books"
       ],
       "genres": [
         "biography-memoir",
@@ -8762,6 +8763,159 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B004FUBWOO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "walden"
+        },
+        "daniel-adam-day-2018": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B07LFLVNR8",
+              "region": "us"
+            },
+            {
+              "asin": "B07LFCPTML",
+              "region": "de"
+            },
+            {
+              "asin": "B07LFP39WF",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 12538,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4849069,
+              "start_ms": 12538,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4990246,
+              "start_ms": 4861607,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2293574,
+              "start_ms": 9851853,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1498662,
+              "start_ms": 12145427,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2208357,
+              "start_ms": 13644089,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1304822,
+              "start_ms": 15852446,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1752131,
+              "start_ms": 17157268,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1500984,
+              "start_ms": 18909399,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 716382,
+              "start_ms": 20410383,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3392621,
+              "start_ms": 21126765,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 992142,
+              "start_ms": 24519386,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1627022,
+              "start_ms": 25511528,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1723152,
+              "start_ms": 27138550,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2127133,
+              "start_ms": 28861702,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1800150,
+              "start_ms": 30988835,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1288150,
+              "start_ms": 32788985,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1935151,
+              "start_ms": 34077135,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2614148,
+              "start_ms": 36012286,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1826156,
+              "start_ms": 38626434,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 27353,
+              "start_ms": 40452590,
+              "title": "Chapter 21"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1qv012P6zL.jpg",
+          "id": "daniel-adam-day-2018",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "daniel-adam-day"
+          ],
+          "publisher": "American Renaissance Books",
+          "release_date": "2018-12-20",
+          "runtime_min": 674,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B07LFLVNR8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07LFCPTML",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07LFP39WF",
               "type": "libex-import"
             }
           ],
@@ -9327,6 +9481,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B002V0PR7I",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B07LFLVNR8",
           "type": "libex-import"
         }
       ],
@@ -9922,185 +10081,6 @@
         }
       ],
       "title": "Walden and On the Duty of Civil Disobedience"
-    },
-    "walden-henry-david-thoreau": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "henry-david-thoreau",
-        "american-renaissance-books"
-      ],
-      "genres": [
-        "history",
-        "nature",
-        "science",
-        "sports"
-      ],
-      "id": "walden-henry-david-thoreau",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "daniel-adam-day-2018": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B07LFLVNR8",
-              "region": "us"
-            },
-            {
-              "asin": "B07LFCPTML",
-              "region": "de"
-            },
-            {
-              "asin": "B07LFP39WF",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 12538,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 4849069,
-              "start_ms": 12538,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4990246,
-              "start_ms": 4861607,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2293574,
-              "start_ms": 9851853,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1498662,
-              "start_ms": 12145427,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2208357,
-              "start_ms": 13644089,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1304822,
-              "start_ms": 15852446,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1752131,
-              "start_ms": 17157268,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1500984,
-              "start_ms": 18909399,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 716382,
-              "start_ms": 20410383,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3392621,
-              "start_ms": 21126765,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 992142,
-              "start_ms": 24519386,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1627022,
-              "start_ms": 25511528,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1723152,
-              "start_ms": 27138550,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 2127133,
-              "start_ms": 28861702,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1800150,
-              "start_ms": 30988835,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1288150,
-              "start_ms": 32788985,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1935151,
-              "start_ms": 34077135,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 2614148,
-              "start_ms": 36012286,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1826156,
-              "start_ms": 38626434,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 27353,
-              "start_ms": 40452590,
-              "title": "Chapter 21"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1qv012P6zL.jpg",
-          "id": "daniel-adam-day-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "daniel-adam-day"
-          ],
-          "publisher": "American Renaissance Books",
-          "release_date": "2018-12-20",
-          "runtime_min": 674,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B07LFLVNR8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07LFCPTML",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07LFP39WF",
-              "type": "libex-import"
-            }
-          ],
-          "work": "walden-henry-david-thoreau"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B07LFLVNR8",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Walden"
     },
     "walden-on-wheels": {
       "added_at": "2026-07-29",

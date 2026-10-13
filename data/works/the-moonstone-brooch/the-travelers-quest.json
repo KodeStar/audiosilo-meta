@@ -4433,167 +4433,16 @@
     "the-travels-of-marco-polo": {
       "added_at": "2026-07-29",
       "authors": [
-        "marco-polo"
-      ],
-      "genres": [
-        "history",
-        "science",
-        "travel"
-      ],
-      "id": "the-travels-of-marco-polo",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "walter-covell-2003": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002UUKPOO",
-              "region": "us"
-            },
-            {
-              "asin": "B004FTV50Q",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2468049,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2513142,
-              "start_ms": 2468049,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2556703,
-              "start_ms": 4981191,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2528653,
-              "start_ms": 7537894,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2511842,
-              "start_ms": 10066547,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 206890,
-              "start_ms": 12578389,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2302259,
-              "start_ms": 12785279,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2532554,
-              "start_ms": 15087538,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 2530650,
-              "start_ms": 17620092,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2517368,
-              "start_ms": 20150742,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 2503529,
-              "start_ms": 22668110,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2560418,
-              "start_ms": 25171639,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2593994,
-              "start_ms": 27732057,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2489086,
-              "start_ms": 30326051,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 2529071,
-              "start_ms": 32815137,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 2514071,
-              "start_ms": 35344208,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1868370,
-              "start_ms": 37858279,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1695985,
-              "start_ms": 39726649,
-              "title": "Chapter 18"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51dyhzc-ceL.jpg",
-          "id": "walter-covell-2003",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "walter-covell"
-          ],
-          "publisher": "Jimcin Recordings",
-          "release_date": "2003-05-09",
-          "runtime_min": 689,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002UUKPOO",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FTV50Q",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-travels-of-marco-polo"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002UUKPOO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Travels of Marco Polo"
-    },
-    "the-travels-of-marco-polo-marco-polo": {
-      "added_at": "2026-07-29",
-      "authors": [
         "marco-polo",
         "rustichello-da-pisa"
       ],
       "genres": [
         "history",
-        "politics"
+        "politics",
+        "science",
+        "travel"
       ],
-      "id": "the-travels-of-marco-polo-marco-polo",
+      "id": "the-travels-of-marco-polo",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -5734,10 +5583,144 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-travels-of-marco-polo-marco-polo"
+          "work": "the-travels-of-marco-polo"
+        },
+        "walter-covell-2003": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UUKPOO",
+              "region": "us"
+            },
+            {
+              "asin": "B004FTV50Q",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2468049,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2513142,
+              "start_ms": 2468049,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2556703,
+              "start_ms": 4981191,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2528653,
+              "start_ms": 7537894,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2511842,
+              "start_ms": 10066547,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 206890,
+              "start_ms": 12578389,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2302259,
+              "start_ms": 12785279,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2532554,
+              "start_ms": 15087538,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2530650,
+              "start_ms": 17620092,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 2517368,
+              "start_ms": 20150742,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 2503529,
+              "start_ms": 22668110,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 2560418,
+              "start_ms": 25171639,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 2593994,
+              "start_ms": 27732057,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2489086,
+              "start_ms": 30326051,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2529071,
+              "start_ms": 32815137,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2514071,
+              "start_ms": 35344208,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1868370,
+              "start_ms": 37858279,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1695985,
+              "start_ms": 39726649,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51dyhzc-ceL.jpg",
+          "id": "walter-covell-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "walter-covell"
+          ],
+          "publisher": "Jimcin Recordings",
+          "release_date": "2003-05-09",
+          "runtime_min": 689,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UUKPOO",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FTV50Q",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-travels-of-marco-polo"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002UUKPOO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1781982007",

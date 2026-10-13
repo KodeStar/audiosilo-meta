@@ -790,7 +790,11 @@
         "jason-dark"
       ],
       "genres": [
-        "fantasy"
+        "fantasy",
+        "horror",
+        "paranormal",
+        "science-fiction",
+        "urban-fantasy"
       ],
       "id": "doktor-tod-john-sinclair-classics-20",
       "language": "de",
@@ -918,33 +922,7 @@
             }
           ],
           "work": "doktor-tod-john-sinclair-classics-20"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00NU20TE2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Doktor Tod: John Sinclair Classics 20"
-    },
-    "doktor-tod-john-sinclair-tonstudio-braun-klassiker-72": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "doktor-tod-john-sinclair-tonstudio-braun-klassiker-72",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "div-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1091,17 +1069,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "doktor-tod-john-sinclair-tonstudio-braun-klassiker-72"
+          "work": "doktor-tod-john-sinclair-classics-20"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00NU20TE2",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B06XQ2DVTS",
           "type": "libex-import"
         }
       ],
-      "title": "Doktor Tod: John Sinclair - Tonstudio Braun Klassiker 72"
+      "title": "Doktor Tod: John Sinclair Classics 20"
     },
     "doktor-tods-hollenfahrt": {
       "added_at": "2026-08-02",

@@ -6991,6 +6991,114 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "ian-carmichael-2010": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0036PS51W",
+              "region": "us"
+            },
+            {
+              "asin": "B00FGHQ2GS",
+              "region": "au"
+            },
+            {
+              "asin": "B071VCSS4V",
+              "region": "ca"
+            },
+            {
+              "asin": "B07BB6YM2Z",
+              "region": "de"
+            },
+            {
+              "asin": "1408439735",
+              "region": "es"
+            },
+            {
+              "asin": "B07BB68SL6",
+              "region": "fr"
+            },
+            {
+              "asin": "B07DR619DF",
+              "region": "jp"
+            },
+            {
+              "asin": "B004EVO3ZO",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4348169,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 4427813,
+              "start_ms": 4348169,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4060567,
+              "start_ms": 8775982,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/518jpuA2otL.jpg",
+          "id": "ian-carmichael-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ian-carmichael"
+          ],
+          "publisher": "BBC Digital Audio",
+          "release_date": "2010-02-01",
+          "runtime_min": 213,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0036PS51W",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00FGHQ2GS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B071VCSS4V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07BB6YM2Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1408439735",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07BB68SL6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07DR619DF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVO3ZO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-five-red-herrings"
+        },
         "jonathan-keeble-2026": {
           "abridged": false,
           "added_at": "2026-10-04",
@@ -7217,6 +7325,11 @@
         {
           "imported_at": "2026-08-08",
           "ref": "B002V08F7C",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0036PS51W",
           "type": "libex-import"
         }
       ],

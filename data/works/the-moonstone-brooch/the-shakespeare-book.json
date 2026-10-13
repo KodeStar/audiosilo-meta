@@ -17248,6 +17248,7 @@
         "patrick-robinson"
       ],
       "genres": [
+        "espionage",
         "historical-fiction",
         "literary-fiction",
         "thriller-suspense"
@@ -17256,6 +17257,76 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "david-mccallum-2005": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V8L99U",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2794289,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2535898,
+              "start_ms": 2794289,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2708886,
+              "start_ms": 5330187,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2682787,
+              "start_ms": 8039073,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2653019,
+              "start_ms": 10721860,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2630496,
+              "start_ms": 13374879,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 2749243,
+              "start_ms": 16005375,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 2777246,
+              "start_ms": 18754618,
+              "title": "Chapter 8"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91dB9uIPOuL.jpg",
+          "id": "david-mccallum-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "david-mccallum"
+          ],
+          "publisher": "Harper",
+          "release_date": "2005-09-02",
+          "runtime_min": 358,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V8L99U",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-shark-mutiny"
+        },
         "george-guidall-2016": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -17361,6 +17432,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B01I27D7PW",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V8L99U",
           "type": "libex-import"
         }
       ],

@@ -5895,12 +5895,122 @@
         "action-adventure",
         "historical-fiction",
         "thriller-suspense",
+        "travel",
         "war-military-fiction"
       ],
       "id": "the-surgeons-mate",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "patrick-tull-2003": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V59T2M",
+              "region": "us"
+            },
+            {
+              "asin": "B079NN1P3V",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 19976,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 44629,
+              "start_ms": 19976,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 4828504,
+              "start_ms": 64605,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 4115662,
+              "start_ms": 4893109,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 3470979,
+              "start_ms": 9008771,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 5181509,
+              "start_ms": 12479750,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 4229713,
+              "start_ms": 17661259,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 4463153,
+              "start_ms": 21890972,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 3976877,
+              "start_ms": 26354125,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 5790648,
+              "start_ms": 30331002,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 7265777,
+              "start_ms": 36121650,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 5045289,
+              "start_ms": 43387427,
+              "title": "Chapter Ten"
+            },
+            {
+              "length_ms": 5831314,
+              "start_ms": 48432716,
+              "title": "Chapter Eleven"
+            },
+            {
+              "length_ms": 26593,
+              "start_ms": 54264030,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91VSpLnwZXL.jpg",
+          "id": "patrick-tull-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-tull"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2003-12-19",
+          "runtime_min": 904,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V59T2M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079NN1P3V",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-surgeons-mate"
+        },
         "ric-jerrom-2013": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6223,142 +6333,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00ARKIHGM",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Surgeon's Mate"
-    },
-    "the-surgeons-mate-aubrey-maturin-series-book-7": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "patrick-obrian"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "travel"
-      ],
-      "id": "the-surgeons-mate-aubrey-maturin-series-book-7",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "patrick-tull-2003": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V59T2M",
-              "region": "us"
-            },
-            {
-              "asin": "B079NN1P3V",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 19976,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 44629,
-              "start_ms": 19976,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 4828504,
-              "start_ms": 64605,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 4115662,
-              "start_ms": 4893109,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 3470979,
-              "start_ms": 9008771,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 5181509,
-              "start_ms": 12479750,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 4229713,
-              "start_ms": 17661259,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 4463153,
-              "start_ms": 21890972,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 3976877,
-              "start_ms": 26354125,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 5790648,
-              "start_ms": 30331002,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 7265777,
-              "start_ms": 36121650,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 5045289,
-              "start_ms": 43387427,
-              "title": "Chapter Ten"
-            },
-            {
-              "length_ms": 5831314,
-              "start_ms": 48432716,
-              "title": "Chapter Eleven"
-            },
-            {
-              "length_ms": 26593,
-              "start_ms": 54264030,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91VSpLnwZXL.jpg",
-          "id": "patrick-tull-2003",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "patrick-tull"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2003-12-19",
-          "runtime_min": 904,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V59T2M",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079NN1P3V",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-surgeons-mate-aubrey-maturin-series-book-7"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V59T2M",
           "type": "libex-import"
         }
       ],
-      "title": "The Surgeon's Mate: Aubrey/Maturin Series, Book 7"
+      "title": "The Surgeon's Mate"
     },
     "the-surgeons-wife": {
       "added_at": "2026-07-29",

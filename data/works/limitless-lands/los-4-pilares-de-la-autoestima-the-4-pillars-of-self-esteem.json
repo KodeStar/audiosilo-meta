@@ -8942,12 +8942,14 @@
     "los-cuentos-de-beedle-el-bardo-the-tales-of-beedle-the-bard": {
       "added_at": "2026-08-02",
       "authors": [
-        "j-k-rowling"
+        "j-k-rowling",
+        "gemma-rovira-rovira-ortega"
       ],
       "genres": [
         "childrens",
         "fairy-tales-folklore",
         "fantasy",
+        "science-fiction",
         "short-stories"
       ],
       "id": "los-cuentos-de-beedle-el-bardo-the-tales-of-beedle-the-bard",
@@ -9063,34 +9065,7 @@
             }
           ],
           "work": "los-cuentos-de-beedle-el-bardo-the-tales-of-beedle-the-bard"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1781106126",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Los cuentos de Beedle el bardo [The Tales of Beedle the Bard]"
-    },
-    "los-cuentos-de-beedle-el-bardo-the-tales-of-beedle-the-bard-j-k-rowling": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "j-k-rowling",
-        "gemma-rovira-rovira-ortega"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy",
-        "science-fiction",
-        "short-stories"
-      ],
-      "id": "los-cuentos-de-beedle-el-bardo-the-tales-of-beedle-the-bard-j-k-rowling",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "edson-ferrero-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9199,10 +9174,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "los-cuentos-de-beedle-el-bardo-the-tales-of-beedle-the-bard-j-k-rowling"
+          "work": "los-cuentos-de-beedle-el-bardo-the-tales-of-beedle-the-bard"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1781106126",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "1781105448",

@@ -853,8 +853,10 @@
       ],
       "genres": [
         "action-adventure",
+        "arts-entertainment",
         "childrens",
-        "classics"
+        "classics",
+        "music"
       ],
       "id": "five-children-and-it",
       "language": "en",
@@ -1647,6 +1649,57 @@
           ],
           "work": "five-children-and-it"
         },
+        "julia-mckenzie-2017": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B072BC8RDW",
+              "region": "us"
+            },
+            {
+              "asin": "B072L49L12",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2488436,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2760759,
+              "start_ms": 2488436,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91a-Nae1zeL.jpg",
+          "id": "julia-mckenzie-2017",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "julia-mckenzie",
+            "simon-carter",
+            "terry-molloy"
+          ],
+          "publisher": "BBC Audio",
+          "release_date": "2017-09-07",
+          "runtime_min": 87,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B072BC8RDW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B072L49L12",
+              "type": "libex-import"
+            }
+          ],
+          "work": "five-children-and-it"
+        },
         "lynda-bellingham-2012": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -2383,6 +2436,11 @@
           "imported_at": "2026-08-02",
           "ref": "109424435X",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B072BC8RDW",
+          "type": "libex-import"
         }
       ],
       "title": "Five Children and It"
@@ -2543,82 +2601,6 @@
         }
       ],
       "title": "Five Children and It (Adaptation)"
-    },
-    "five-children-and-it-bbc-childrens-classics": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "edith-nesbit"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "childrens",
-        "classics",
-        "music"
-      ],
-      "id": "five-children-and-it-bbc-childrens-classics",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "julia-mckenzie-2017": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B072BC8RDW",
-              "region": "us"
-            },
-            {
-              "asin": "B072L49L12",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2488436,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2760759,
-              "start_ms": 2488436,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91a-Nae1zeL.jpg",
-          "id": "julia-mckenzie-2017",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julia-mckenzie",
-            "simon-carter",
-            "terry-molloy"
-          ],
-          "publisher": "BBC Audio",
-          "release_date": "2017-09-07",
-          "runtime_min": 87,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B072BC8RDW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B072L49L12",
-              "type": "libex-import"
-            }
-          ],
-          "work": "five-children-and-it-bbc-childrens-classics"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B072BC8RDW",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Five Children and It (BBC Children's Classics)"
     },
     "five-children-on-the-western-front": {
       "added_at": "2026-07-29",

@@ -13198,6 +13198,7 @@
       "genres": [
         "literary-fiction",
         "magical-realism",
+        "nature",
         "occult"
       ],
       "id": "fifteen-dogs",
@@ -13282,30 +13283,7 @@
             }
           ],
           "work": "fifteen-dogs"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B01DV07G3Y",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Fifteen Dogs"
-    },
-    "fifteen-dogs-tenth-anniversary-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "andre-alexis"
-      ],
-      "genres": [
-        "magical-realism",
-        "nature"
-      ],
-      "id": "fifteen-dogs-tenth-anniversary-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "andre-alexis-2025": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -13403,17 +13381,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "fifteen-dogs-tenth-anniversary-edition"
+          "work": "fifteen-dogs"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B01DV07G3Y",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0FS84M5TV",
           "type": "libex-import"
         }
       ],
-      "title": "Fifteen Dogs (Tenth Anniversary Edition)"
+      "title": "Fifteen Dogs"
     },
     "fifteen-hours": {
       "added_at": "2026-08-02",

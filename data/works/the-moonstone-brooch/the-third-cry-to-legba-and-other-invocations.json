@@ -7458,88 +7458,13 @@
         "graham-greene"
       ],
       "genres": [
-        "espionage",
-        "thriller-suspense"
-      ],
-      "id": "the-third-man",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joseph-cotten-2009": {
-          "abridged": true,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B00333GLTK",
-              "region": "us"
-            },
-            {
-              "asin": "B004V47OMI",
-              "region": "de"
-            },
-            {
-              "asin": "B004F40Q8I",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3656307,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51OSGcwy6XL.jpg",
-          "id": "joseph-cotten-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joseph-cotten"
-          ],
-          "publisher": "Andrews UK Limited",
-          "release_date": "2009-02-16",
-          "runtime_min": 60,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B00333GLTK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004V47OMI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F40Q8I",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-third-man"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00333GLTK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Third Man"
-    },
-    "the-third-man-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "graham-greene"
-      ],
-      "genres": [
         "drama-plays",
+        "espionage",
         "historical-fiction",
         "literary-fiction",
         "thriller-suspense"
       ],
-      "id": "the-third-man-dramatized",
+      "id": "the-third-man",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -7709,17 +7634,75 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-third-man-dramatized"
+          "work": "the-third-man"
+        },
+        "joseph-cotten-2009": {
+          "abridged": true,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B00333GLTK",
+              "region": "us"
+            },
+            {
+              "asin": "B004V47OMI",
+              "region": "de"
+            },
+            {
+              "asin": "B004F40Q8I",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3656307,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51OSGcwy6XL.jpg",
+          "id": "joseph-cotten-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joseph-cotten"
+          ],
+          "publisher": "Andrews UK Limited",
+          "release_date": "2009-02-16",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B00333GLTK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004V47OMI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F40Q8I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-third-man"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B00333GLTK",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0036G4NQ2",
           "type": "libex-import"
         }
       ],
-      "title": "The Third Man (Dramatized)"
+      "title": "The Third Man"
     },
     "the-third-man-mani-sheriar": {
       "added_at": "2026-07-29",

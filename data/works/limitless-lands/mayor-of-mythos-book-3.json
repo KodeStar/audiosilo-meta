@@ -12782,12 +12782,123 @@
       ],
       "genres": [
         "action-adventure",
-        "classics"
+        "classics",
+        "drama-plays",
+        "literary-fiction"
       ],
       "id": "mcteague",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "amy-irving-2010": {
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B0036N9AT0",
+              "region": "us"
+            },
+            {
+              "asin": "B004FUIXVE",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3377550,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3312094,
+              "start_ms": 3377550,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3290360,
+              "start_ms": 6689644,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3263425,
+              "start_ms": 9980004,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3341351,
+              "start_ms": 13243429,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3319756,
+              "start_ms": 16584780,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 3300437,
+              "start_ms": 19904536,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3256598,
+              "start_ms": 23204973,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3369726,
+              "start_ms": 26461571,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3330670,
+              "start_ms": 29831297,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 3325236,
+              "start_ms": 33161967,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 3332574,
+              "start_ms": 36487203,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1678825,
+              "start_ms": 39819777,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71xwwqS87AL.jpg",
+          "id": "amy-irving-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "amy-irving",
+            "ed-begley-jr",
+            "edward-asner",
+            "hector-elizondo",
+            "helen-hunt",
+            "jobeth-williams",
+            "stacy-keach"
+          ],
+          "publisher": "L.A. Theatre Works",
+          "release_date": "2010-07-01",
+          "runtime_min": 691,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B0036N9AT0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FUIXVE",
+              "type": "libex-import"
+            }
+          ],
+          "work": "mcteague"
+        },
         "wolfram-kandinsky-2009": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -12943,142 +13054,14 @@
           "imported_at": "2026-08-08",
           "ref": "B002V0A598",
           "type": "libex-import"
-        }
-      ],
-      "title": "McTeague"
-    },
-    "mcteague-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "frank-norris"
-      ],
-      "genres": [
-        "action-adventure",
-        "drama-plays",
-        "literary-fiction"
-      ],
-      "id": "mcteague-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "amy-irving-2010": {
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B0036N9AT0",
-              "region": "us"
-            },
-            {
-              "asin": "B004FUIXVE",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3377550,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3312094,
-              "start_ms": 3377550,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3290360,
-              "start_ms": 6689644,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 3263425,
-              "start_ms": 9980004,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3341351,
-              "start_ms": 13243429,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3319756,
-              "start_ms": 16584780,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 3300437,
-              "start_ms": 19904536,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3256598,
-              "start_ms": 23204973,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3369726,
-              "start_ms": 26461571,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 3330670,
-              "start_ms": 29831297,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 3325236,
-              "start_ms": 33161967,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 3332574,
-              "start_ms": 36487203,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1678825,
-              "start_ms": 39819777,
-              "title": "Chapter 13"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71xwwqS87AL.jpg",
-          "id": "amy-irving-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "amy-irving",
-            "ed-begley-jr",
-            "edward-asner",
-            "hector-elizondo",
-            "helen-hunt",
-            "jobeth-williams",
-            "stacy-keach"
-          ],
-          "publisher": "L.A. Theatre Works",
-          "release_date": "2010-07-01",
-          "runtime_min": 691,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B0036N9AT0",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FUIXVE",
-              "type": "libex-import"
-            }
-          ],
-          "work": "mcteague-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B0036N9AT0",
           "type": "libex-import"
         }
       ],
-      "title": "McTeague (Dramatized)"
+      "title": "McTeague"
     },
     "mcu": {
       "added_at": "2026-07-29",

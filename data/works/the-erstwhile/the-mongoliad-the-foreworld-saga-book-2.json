@@ -1386,8 +1386,10 @@
       ],
       "genres": [
         "classics",
+        "fantasy",
         "gothic",
-        "horror"
+        "horror",
+        "romance"
       ],
       "id": "the-monk",
       "language": "en",
@@ -1599,6 +1601,101 @@
           ],
           "work": "the-monk"
         },
+        "jefferson-mays-2015": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B00U6U3Y9I",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3960395,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 6620427,
+              "start_ms": 3960395,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 4569780,
+              "start_ms": 10580822,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 5136765,
+              "start_ms": 15150602,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2992866,
+              "start_ms": 20287367,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3866819,
+              "start_ms": 23280233,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4218694,
+              "start_ms": 27147052,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3186428,
+              "start_ms": 31365746,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3065173,
+              "start_ms": 34552174,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4962522,
+              "start_ms": 37617347,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4323788,
+              "start_ms": 42579869,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 5840144,
+              "start_ms": 46903657,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 3165205,
+              "start_ms": 52743801,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81ekeCDictL.jpg",
+          "id": "jefferson-mays-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jefferson-mays"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2015-03-03",
+          "runtime_min": 931,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B00U6U3Y9I",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-monk"
+        },
         "nigel-carrington-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -1709,6 +1806,11 @@
         {
           "imported_at": "2026-08-07",
           "ref": "0241455278",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B00U6U3Y9I",
           "type": "libex-import"
         }
       ],
@@ -2575,126 +2677,6 @@
         }
       ],
       "title": "The Monk of Mokha"
-    },
-    "the-monk-recorded-books-edition": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "matthew-lewis"
-      ],
-      "genres": [
-        "fantasy",
-        "gothic",
-        "horror",
-        "romance"
-      ],
-      "id": "the-monk-recorded-books-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jefferson-mays-2015": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B00U6U3Y9I",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3960395,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 6620427,
-              "start_ms": 3960395,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 4569780,
-              "start_ms": 10580822,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 5136765,
-              "start_ms": 15150602,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2992866,
-              "start_ms": 20287367,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3866819,
-              "start_ms": 23280233,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 4218694,
-              "start_ms": 27147052,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 3186428,
-              "start_ms": 31365746,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 3065173,
-              "start_ms": 34552174,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 4962522,
-              "start_ms": 37617347,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 4323788,
-              "start_ms": 42579869,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 5840144,
-              "start_ms": 46903657,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 3165205,
-              "start_ms": 52743801,
-              "title": "Chapter 13"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81ekeCDictL.jpg",
-          "id": "jefferson-mays-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jefferson-mays"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2015-03-03",
-          "runtime_min": 931,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B00U6U3Y9I",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-monk-recorded-books-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B00U6U3Y9I",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Monk [Recorded Books Edition]"
     },
     "the-monk-tim-sullivan": {
       "added_at": "2026-07-29",

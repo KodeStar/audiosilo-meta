@@ -4723,7 +4723,8 @@
     "crosshairs": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "james-patterson"
+        "james-patterson",
+        "james-o-born"
       ],
       "genres": [
         "mystery",
@@ -4752,6 +4753,14 @@
             },
             {
               "asin": "B0CL57DPKM",
+              "region": "uk"
+            },
+            {
+              "asin": "B0CFC91XD9",
+              "region": "us"
+            },
+            {
+              "asin": "B0CFCJVR3X",
               "region": "uk"
             }
           ],
@@ -5373,6 +5382,16 @@
               "imported_at": "2026-10-09",
               "ref": "B0CL57DPKM",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CFC91XD9",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CFCJVR3X",
+              "type": "libex-import"
             }
           ],
           "work": "crosshairs"
@@ -5388,65 +5407,7 @@
           "imported_at": "2026-07-30",
           "ref": "B0CL559Z5P",
           "type": "libex-import"
-        }
-      ],
-      "title": "Crosshairs"
-    },
-    "crosshairs-james-patterson": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "james-patterson",
-        "james-o-born"
-      ],
-      "genres": [
-        "mystery",
-        "police-procedural",
-        "thriller-suspense"
-      ],
-      "id": "crosshairs-james-patterson",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "peter-giles-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CFC91XD9",
-              "region": "us"
-            },
-            {
-              "asin": "B0CFCJVR3X",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81D3IDcSQWL.jpg",
-          "id": "peter-giles-2024",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "peter-giles",
-            "will-collyer"
-          ],
-          "publisher": "Little, Brown & Company",
-          "release_date": "2024-02-12",
-          "runtime_min": 494,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CFC91XD9",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CFCJVR3X",
-              "type": "libex-import"
-            }
-          ],
-          "work": "crosshairs-james-patterson"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CFC91XD9",

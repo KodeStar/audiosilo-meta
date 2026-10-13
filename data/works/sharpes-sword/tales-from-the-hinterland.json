@@ -9087,7 +9087,8 @@
       "genres": [
         "childrens",
         "comedy-humor",
-        "coming-of-age"
+        "coming-of-age",
+        "nature"
       ],
       "id": "tales-of-a-fourth-grade-nothing",
       "language": "en",
@@ -9181,32 +9182,7 @@
             }
           ],
           "work": "tales-of-a-fourth-grade-nothing"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002V01FAQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Tales of a Fourth Grade Nothing"
-    },
-    "tales-of-a-fourth-grade-nothing-a-fudge-book-1": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "judy-blume"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor",
-        "coming-of-age",
-        "nature"
-      ],
-      "id": "tales-of-a-fourth-grade-nothing-a-fudge-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "judy-blume-2024": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -9304,17 +9280,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "tales-of-a-fourth-grade-nothing-a-fudge-book-1"
+          "work": "tales-of-a-fourth-grade-nothing"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002V01FAQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-07",
           "ref": "B0DM6NXWF4",
           "type": "libex-import"
         }
       ],
-      "title": "Tales of a Fourth Grade Nothing: A Fudge Book 1"
+      "title": "Tales of a Fourth Grade Nothing"
     },
     "tales-of-a-lombard-alchemist": {
       "added_at": "2026-08-01",

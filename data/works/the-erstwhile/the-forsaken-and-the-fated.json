@@ -11753,12 +11753,112 @@
         "espionage",
         "historical-fiction",
         "thriller-suspense",
+        "travel",
         "war-military-fiction"
       ],
       "id": "the-fortune-of-war",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "patrick-tull-2003": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V0A5Y8",
+              "region": "us"
+            },
+            {
+              "asin": "B079NPGQVC",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22000,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 126384,
+              "start_ms": 22000,
+              "title": "Author's Note"
+            },
+            {
+              "length_ms": 3942182,
+              "start_ms": 148384,
+              "title": "Chapter One"
+            },
+            {
+              "length_ms": 4427674,
+              "start_ms": 4090566,
+              "title": "Chapter Two"
+            },
+            {
+              "length_ms": 7335880,
+              "start_ms": 8518240,
+              "title": "Chapter Three"
+            },
+            {
+              "length_ms": 4014730,
+              "start_ms": 15854120,
+              "title": "Chapter Four"
+            },
+            {
+              "length_ms": 3605130,
+              "start_ms": 19868850,
+              "title": "Chapter Five"
+            },
+            {
+              "length_ms": 3557018,
+              "start_ms": 23473980,
+              "title": "Chapter Six"
+            },
+            {
+              "length_ms": 8412357,
+              "start_ms": 27030998,
+              "title": "Chapter Seven"
+            },
+            {
+              "length_ms": 4160551,
+              "start_ms": 35443355,
+              "title": "Chapter Eight"
+            },
+            {
+              "length_ms": 7843706,
+              "start_ms": 39603906,
+              "title": "Chapter Nine"
+            },
+            {
+              "length_ms": 18617,
+              "start_ms": 47447612,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91OuN5359VL.jpg",
+          "id": "patrick-tull-2003",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-tull"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2003-12-19",
+          "runtime_min": 790,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V0A5Y8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079NPGQVC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-fortune-of-war"
+        },
         "ric-jerrom-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12096,133 +12196,14 @@
           "imported_at": "2026-08-02",
           "ref": "B00AKIXMES",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Fortune of War"
-    },
-    "the-fortune-of-war-aubrey-maturin-series-book-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "patrick-obrian"
-      ],
-      "genres": [
-        "action-adventure",
-        "historical-fiction",
-        "travel",
-        "war-military-fiction"
-      ],
-      "id": "the-fortune-of-war-aubrey-maturin-series-book-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "patrick-tull-2003": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V0A5Y8",
-              "region": "us"
-            },
-            {
-              "asin": "B079NPGQVC",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22000,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 126384,
-              "start_ms": 22000,
-              "title": "Author's Note"
-            },
-            {
-              "length_ms": 3942182,
-              "start_ms": 148384,
-              "title": "Chapter One"
-            },
-            {
-              "length_ms": 4427674,
-              "start_ms": 4090566,
-              "title": "Chapter Two"
-            },
-            {
-              "length_ms": 7335880,
-              "start_ms": 8518240,
-              "title": "Chapter Three"
-            },
-            {
-              "length_ms": 4014730,
-              "start_ms": 15854120,
-              "title": "Chapter Four"
-            },
-            {
-              "length_ms": 3605130,
-              "start_ms": 19868850,
-              "title": "Chapter Five"
-            },
-            {
-              "length_ms": 3557018,
-              "start_ms": 23473980,
-              "title": "Chapter Six"
-            },
-            {
-              "length_ms": 8412357,
-              "start_ms": 27030998,
-              "title": "Chapter Seven"
-            },
-            {
-              "length_ms": 4160551,
-              "start_ms": 35443355,
-              "title": "Chapter Eight"
-            },
-            {
-              "length_ms": 7843706,
-              "start_ms": 39603906,
-              "title": "Chapter Nine"
-            },
-            {
-              "length_ms": 18617,
-              "start_ms": 47447612,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91OuN5359VL.jpg",
-          "id": "patrick-tull-2003",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "patrick-tull"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2003-12-19",
-          "runtime_min": 790,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V0A5Y8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079NPGQVC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-fortune-of-war-aubrey-maturin-series-book-6"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V0A5Y8",
           "type": "libex-import"
         }
       ],
-      "title": "The Fortune of War: Aubrey/Maturin Series, Book 6"
+      "title": "The Fortune of War"
     },
     "the-fortune-teller": {
       "added_at": "2026-08-02",

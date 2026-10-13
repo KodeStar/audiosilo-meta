@@ -2591,6 +2591,65 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "christopher-reeve-2008": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002UZLDH2",
+              "region": "us"
+            },
+            {
+              "asin": "B079VM1L55",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2608019,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2599985,
+              "start_ms": 2608019,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2688174,
+              "start_ms": 5208004,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2635651,
+              "start_ms": 7896178,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51OXEIekB1L.jpg",
+          "id": "christopher-reeve-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "christopher-reeve"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2008-09-15",
+          "runtime_min": 175,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002UZLDH2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079VM1L55",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fatal-vision"
+        },
         "fred-sanders-2018": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -2931,85 +2990,7 @@
           "imported_at": "2026-07-29",
           "ref": "B0793DND54",
           "type": "libex-import"
-        }
-      ],
-      "title": "Fatal Vision"
-    },
-    "fatal-vision-joe-mcginniss": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "joe-mcginniss"
-      ],
-      "genres": [
-        "biography-memoir",
-        "history",
-        "true-crime"
-      ],
-      "id": "fatal-vision-joe-mcginniss",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "christopher-reeve-2008": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002UZLDH2",
-              "region": "us"
-            },
-            {
-              "asin": "B079VM1L55",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2608019,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2599985,
-              "start_ms": 2608019,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2688174,
-              "start_ms": 5208004,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2635651,
-              "start_ms": 7896178,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51OXEIekB1L.jpg",
-          "id": "christopher-reeve-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "christopher-reeve"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2008-09-15",
-          "runtime_min": 175,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002UZLDH2",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079VM1L55",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fatal-vision-joe-mcginniss"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B002UZLDH2",

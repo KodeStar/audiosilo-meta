@@ -8437,6 +8437,45 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bruce-headlam-2023": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0CJS2B2T7",
+              "region": "us"
+            },
+            {
+              "asin": "B0CJS1S6BD",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91O0MpDndDL.jpg",
+          "id": "bruce-headlam-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bruce-headlam",
+            "malcolm-gladwell",
+            "paul-simon"
+          ],
+          "publisher": "Pushkin Industries",
+          "release_date": "2023-09-26",
+          "runtime_min": 345,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0CJS2B2T7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CJS1S6BD",
+              "type": "libex-import"
+            }
+          ],
+          "work": "miracle-and-wonder"
+        },
         "malcolm-gladwell-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -8594,72 +8633,14 @@
           "imported_at": "2026-07-30",
           "ref": "B09J1LS5C1",
           "type": "libex-import"
-        }
-      ],
-      "title": "Miracle and Wonder"
-    },
-    "miracle-and-wonder-special-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "malcolm-gladwell",
-        "bruce-headlam"
-      ],
-      "genres": [
-        "arts-entertainment",
-        "biography-memoir"
-      ],
-      "id": "miracle-and-wonder-special-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bruce-headlam-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0CJS2B2T7",
-              "region": "us"
-            },
-            {
-              "asin": "B0CJS1S6BD",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91O0MpDndDL.jpg",
-          "id": "bruce-headlam-2023",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bruce-headlam",
-            "malcolm-gladwell",
-            "paul-simon"
-          ],
-          "publisher": "Pushkin Industries",
-          "release_date": "2023-09-26",
-          "runtime_min": 345,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0CJS2B2T7",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CJS1S6BD",
-              "type": "libex-import"
-            }
-          ],
-          "work": "miracle-and-wonder-special-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0CJS2B2T7",
           "type": "libex-import"
         }
       ],
-      "title": "Miracle and Wonder (Special Edition)"
+      "title": "Miracle and Wonder"
     },
     "miracle-at-augusta": {
       "added_at": "2026-07-29",

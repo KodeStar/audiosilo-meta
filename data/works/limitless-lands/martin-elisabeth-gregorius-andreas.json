@@ -132,99 +132,12 @@
         "jose-hernandez"
       ],
       "genres": [
-        "poetry"
-      ],
-      "id": "martin-fierro",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "martin-de-renzo-2022": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B09RKMDBN2",
-              "region": "es"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15464,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 305412,
-              "start_ms": 15464,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 2998787,
-              "start_ms": 320876,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 6427074,
-              "start_ms": 3319663,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 6545983,
-              "start_ms": 9746737,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 6289031,
-              "start_ms": 16292720,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 29558,
-              "start_ms": 22581751,
-              "title": "Capítulo 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81N7CDQiEUL.jpg",
-          "id": "martin-de-renzo-2022",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "martin-de-renzo"
-          ],
-          "publisher": "Penguin Random House Audio",
-          "release_date": "2022-02-15",
-          "runtime_min": 376,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B09RKMDBN2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "martin-fierro"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B09RKMDBN2",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Martín Fierro"
-    },
-    "martin-fierro-martin-fierro": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jose-hernandez"
-      ],
-      "genres": [
         "classics",
         "epic-fantasy",
         "literary-fiction",
         "poetry"
       ],
-      "id": "martin-fierro-martin-fierro",
+      "id": "martin-fierro",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
@@ -361,38 +274,56 @@
               "type": "libex-import"
             }
           ],
-          "work": "martin-fierro-martin-fierro"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00BYIJLBQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Martín Fierro [Martin Fierro]"
-    },
-    "martin-fierro-spanish-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jose-hernandez"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "poetry"
-      ],
-      "id": "martin-fierro-spanish-edition",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "martin-fierro"
+        },
         "martin-de-renzo-2022": {
           "abridged": false,
           "added_at": "2026-07-29",
           "asin": [
             {
+              "asin": "B09RKMDBN2",
+              "region": "es"
+            },
+            {
               "asin": "B09RKN6ZL1",
               "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15464,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 305412,
+              "start_ms": 15464,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 2998787,
+              "start_ms": 320876,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 6427074,
+              "start_ms": 3319663,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 6545983,
+              "start_ms": 9746737,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 6289031,
+              "start_ms": 16292720,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 29558,
+              "start_ms": 22581751,
+              "title": "Capítulo 7"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81N7CDQiEUL.jpg",
@@ -408,21 +339,36 @@
           "sources": [
             {
               "imported_at": "2026-07-29",
+              "ref": "B09RKMDBN2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
               "ref": "B09RKN6ZL1",
               "type": "libex-import"
             }
           ],
-          "work": "martin-fierro-spanish-edition"
+          "work": "martin-fierro"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B09RKMDBN2",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00BYIJLBQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B09RKN6ZL1",
           "type": "libex-import"
         }
       ],
-      "title": "Martín Fierro (Spanish Edition)"
+      "title": "Martín Fierro"
     },
     "martin-gardner": {
       "added_at": "2026-09-24",

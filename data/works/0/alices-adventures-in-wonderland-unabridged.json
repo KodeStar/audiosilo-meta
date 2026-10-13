@@ -1972,12 +1972,402 @@
         "action-adventure",
         "childrens",
         "classics",
+        "coming-of-age",
         "fantasy"
       ],
       "id": "alicia-en-el-pais-de-las-maravillas",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "adelaida-espinoza-2006": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8LADK",
+              "region": "us"
+            },
+            {
+              "asin": "B004V5UCFI",
+              "region": "de"
+            },
+            {
+              "asin": "B004F39AV8",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2706471,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 2861813,
+              "start_ms": 2706471,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 2683902,
+              "start_ms": 5568284,
+              "title": "Capítulo 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61g7ZA00rjL.jpg",
+          "id": "adelaida-espinoza-2006",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "adelaida-espinoza"
+          ],
+          "publisher": "Yoyo USA, Inc",
+          "release_date": "2006-05-19",
+          "runtime_min": 137,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8LADK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004V5UCFI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F39AV8",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alicia-en-el-pais-de-las-maravillas"
+        },
+        "aislinn-derbez-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09KHLWYQF",
+              "region": "us"
+            },
+            {
+              "asin": "B09KHM7HWN",
+              "region": "de"
+            },
+            {
+              "asin": "B09KHLMK18",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16674,
+              "start_ms": 0,
+              "title": "Créditos Iniciales"
+            },
+            {
+              "length_ms": 147869,
+              "start_ms": 16674,
+              "title": "Epígrafe"
+            },
+            {
+              "length_ms": 924937,
+              "start_ms": 164543,
+              "title": "Capítulo 1. En la Madriguera del Conejo"
+            },
+            {
+              "length_ms": 905346,
+              "start_ms": 1089480,
+              "title": "Capítulo 2. El Charco de las Lágrimas"
+            },
+            {
+              "length_ms": 829138,
+              "start_ms": 1994826,
+              "title": "Capítulo 3. Una Carrera Loca y una Larga Historia"
+            },
+            {
+              "length_ms": 1175626,
+              "start_ms": 2823964,
+              "title": "Capítulo 4. La Casa del Conejo"
+            },
+            {
+              "length_ms": 1061871,
+              "start_ms": 3999590,
+              "title": "Capítulo 5. Consejos de una Oruga"
+            },
+            {
+              "length_ms": 1223343,
+              "start_ms": 5061461,
+              "title": "Capítulo 6. Cerdo y Pimienta"
+            },
+            {
+              "length_ms": 1233258,
+              "start_ms": 6284804,
+              "title": "Capítulo 7. Una Merienda de Locos"
+            },
+            {
+              "length_ms": 1210200,
+              "start_ms": 7518062,
+              "title": "Capítulo 8. El Croquet de la Reina"
+            },
+            {
+              "length_ms": 1162762,
+              "start_ms": 8728262,
+              "title": "Capítulo 9. La Historia de la Falsa Tortuga"
+            },
+            {
+              "length_ms": 1077730,
+              "start_ms": 9891024,
+              "title": "Capítulo 10. El Baile de la Langosta"
+            },
+            {
+              "length_ms": 933233,
+              "start_ms": 10968754,
+              "title": "Capítulo 11. ¿Quién Robó los Pasteles?"
+            },
+            {
+              "length_ms": 1131730,
+              "start_ms": 11901987,
+              "title": "Capítulo 12. La Declaración de Alicia"
+            },
+            {
+              "length_ms": 46797,
+              "start_ms": 13033717,
+              "title": "Créditos Finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81YC62emILL.jpg",
+          "id": "aislinn-derbez-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aislinn-derbez"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2021-12-03",
+          "runtime_min": 217,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09KHLWYQF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09KHM7HWN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B09KHLMK18",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alicia-en-el-pais-de-las-maravillas"
+        },
+        "aldo-lumbia-2013": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B00C1QR56I",
+              "region": "us"
+            },
+            {
+              "asin": "B00C1PQCZY",
+              "region": "de"
+            },
+            {
+              "asin": "B00C1PPRFU",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 450281,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 464863,
+              "start_ms": 450281,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 448331,
+              "start_ms": 915144,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 652759,
+              "start_ms": 1363475,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 361628,
+              "start_ms": 2016234,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 311240,
+              "start_ms": 2377862,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 375002,
+              "start_ms": 2689102,
+              "title": "Capítulo 7"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71xza7kU+ML.jpg",
+          "id": "aldo-lumbia-2013",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aldo-lumbia",
+            "ariel-cister",
+            "emma-ledo",
+            "matilde-avila",
+            "mora-montemurro",
+            "omar-lamadrid",
+            "rolando-aguero"
+          ],
+          "publisher": "Audiolibros Colección",
+          "release_date": "2013-03-27",
+          "runtime_min": 50,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B00C1QR56I",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00C1PQCZY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00C1PPRFU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alicia-en-el-pais-de-las-maravillas"
+        },
+        "graciela-lecube-1999": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V014UW",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVY58E",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 31811,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 703054,
+              "start_ms": 31811,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 608270,
+              "start_ms": 734865,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 224723,
+              "start_ms": 1343135,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 285002,
+              "start_ms": 1567858,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 320668,
+              "start_ms": 1852860,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 418052,
+              "start_ms": 2173528,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 284073,
+              "start_ms": 2591580,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 630561,
+              "start_ms": 2875653,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 465142,
+              "start_ms": 3506214,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 348717,
+              "start_ms": 3971356,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 149722,
+              "start_ms": 4320073,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 217339,
+              "start_ms": 4469795,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 272788,
+              "start_ms": 4687134,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 51177,
+              "start_ms": 4959922,
+              "title": "Capítulo 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/31-k7dwxwGL.jpg",
+          "id": "graciela-lecube-1999",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "graciela-lecube"
+          ],
+          "publisher": "Coral/ Nueva Onda",
+          "release_date": "1999-12-15",
+          "runtime_min": 83,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V014UW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVY58E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alicia-en-el-pais-de-las-maravillas"
+        },
         "inma-sancho-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2091,6 +2481,114 @@
           ],
           "work": "alicia-en-el-pais-de-las-maravillas"
         },
+        "joaquin-madrigal-2018": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B07DGL3KCT",
+              "region": "us"
+            },
+            {
+              "asin": "B07DGGS33G",
+              "region": "de"
+            },
+            {
+              "asin": "B07DGJHGFY",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 859370,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 816785,
+              "start_ms": 859370,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 717404,
+              "start_ms": 1676155,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 1057901,
+              "start_ms": 2393559,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 851197,
+              "start_ms": 3451460,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 1017406,
+              "start_ms": 4302657,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 976120,
+              "start_ms": 5320063,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 993303,
+              "start_ms": 6296183,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 925826,
+              "start_ms": 7289486,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 785995,
+              "start_ms": 8215312,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 560855,
+              "start_ms": 9001307,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 900841,
+              "start_ms": 9562162,
+              "title": "Capítulo 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71j60nh8S3L.jpg",
+          "id": "joaquin-madrigal-2018",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joaquin-madrigal"
+          ],
+          "publisher": "Alberich Ediciones Mexico",
+          "release_date": "2018-06-07",
+          "runtime_min": 174,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B07DGL3KCT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07DGGS33G",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B07DGJHGFY",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alicia-en-el-pais-de-las-maravillas"
+        },
         "karin-zavala-2022": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2187,6 +2685,129 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B09WZ9ZPFQ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alicia-en-el-pais-de-las-maravillas"
+        },
+        "luis-posada-2016": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B01JY85W42",
+              "region": "us"
+            },
+            {
+              "asin": "B01JY8K3O6",
+              "region": "de"
+            },
+            {
+              "asin": "B01JY8E04K",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 16509,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 102400,
+              "start_ms": 16509,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 732821,
+              "start_ms": 118909,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 720074,
+              "start_ms": 851730,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 646931,
+              "start_ms": 1571804,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 887838,
+              "start_ms": 2218735,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 766328,
+              "start_ms": 3106573,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 954967,
+              "start_ms": 3872901,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 896150,
+              "start_ms": 4827868,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 892157,
+              "start_ms": 5724018,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 928589,
+              "start_ms": 6616175,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 882985,
+              "start_ms": 7544764,
+              "title": "Capítulo 12"
+            },
+            {
+              "length_ms": 716776,
+              "start_ms": 8427749,
+              "title": "Capítulo 13"
+            },
+            {
+              "length_ms": 849409,
+              "start_ms": 9144525,
+              "title": "Capítulo 14"
+            },
+            {
+              "length_ms": 44651,
+              "start_ms": 9993934,
+              "title": "Capítulo 15"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91FjNPa8d3L.jpg",
+          "id": "luis-posada-2016",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "luis-posada"
+          ],
+          "publisher": "Penguin Random House Grupo Editorial",
+          "release_date": "2016-09-01",
+          "runtime_min": 167,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B01JY85W42",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01JY8K3O6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B01JY8E04K",
               "type": "libex-import"
             }
           ],
@@ -2487,6 +3108,124 @@
           ],
           "work": "alicia-en-el-pais-de-las-maravillas"
         },
+        "sol-montalvan-2023": {
+          "abridged": false,
+          "added_at": "2026-08-01",
+          "asin": [
+            {
+              "asin": "B0CPJX39VN",
+              "region": "us"
+            },
+            {
+              "asin": "B0CPJWW2F6",
+              "region": "de"
+            },
+            {
+              "asin": "B0CPJWL15N",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 25216,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1023605,
+              "start_ms": 25216,
+              "title": "CAPÍTULO 1"
+            },
+            {
+              "length_ms": 979673,
+              "start_ms": 1048821,
+              "title": "CAPÍTULO 2"
+            },
+            {
+              "length_ms": 895268,
+              "start_ms": 2028494,
+              "title": "CAPÍTULO 3"
+            },
+            {
+              "length_ms": 1159024,
+              "start_ms": 2923762,
+              "title": "CAPÍTULO 4"
+            },
+            {
+              "length_ms": 1001685,
+              "start_ms": 4082786,
+              "title": "CAPÍTULO 5"
+            },
+            {
+              "length_ms": 1230796,
+              "start_ms": 5084471,
+              "title": "CAPÍTULO 6"
+            },
+            {
+              "length_ms": 1230564,
+              "start_ms": 6315267,
+              "title": "CAPÍTULO 7"
+            },
+            {
+              "length_ms": 1127421,
+              "start_ms": 7545831,
+              "title": "CAPÍTULO 8"
+            },
+            {
+              "length_ms": 1228707,
+              "start_ms": 8673252,
+              "title": "CAPÍTULO 9"
+            },
+            {
+              "length_ms": 1156493,
+              "start_ms": 9901959,
+              "title": "CAPÍTULO 10"
+            },
+            {
+              "length_ms": 920299,
+              "start_ms": 11058452,
+              "title": "CAPÍTULO 11"
+            },
+            {
+              "length_ms": 1041856,
+              "start_ms": 11978751,
+              "title": "CAPÍTULO 12"
+            },
+            {
+              "length_ms": 37522,
+              "start_ms": 13020607,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819v0js-WDL.jpg",
+          "id": "sol-montalvan-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "sol-montalvan"
+          ],
+          "publisher": "Aubiblio Studios LLC",
+          "release_date": "2023-12-05",
+          "runtime_min": 217,
+          "sources": [
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B0CPJX39VN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CPJWW2F6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CPJWL15N",
+              "type": "libex-import"
+            }
+          ],
+          "work": "alicia-en-el-pais-de-las-maravillas"
+        },
         "sonia-roman-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2735,706 +3474,6 @@
             }
           ],
           "work": "alicia-en-el-pais-de-las-maravillas"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DKJYWXVM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Alicia en el país de las maravillas"
-    },
-    "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "fantasy"
-      ],
-      "id": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aislinn-derbez-2021": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B09KHLWYQF",
-              "region": "us"
-            },
-            {
-              "asin": "B09KHM7HWN",
-              "region": "de"
-            },
-            {
-              "asin": "B09KHLMK18",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16674,
-              "start_ms": 0,
-              "title": "Créditos Iniciales"
-            },
-            {
-              "length_ms": 147869,
-              "start_ms": 16674,
-              "title": "Epígrafe"
-            },
-            {
-              "length_ms": 924937,
-              "start_ms": 164543,
-              "title": "Capítulo 1. En la Madriguera del Conejo"
-            },
-            {
-              "length_ms": 905346,
-              "start_ms": 1089480,
-              "title": "Capítulo 2. El Charco de las Lágrimas"
-            },
-            {
-              "length_ms": 829138,
-              "start_ms": 1994826,
-              "title": "Capítulo 3. Una Carrera Loca y una Larga Historia"
-            },
-            {
-              "length_ms": 1175626,
-              "start_ms": 2823964,
-              "title": "Capítulo 4. La Casa del Conejo"
-            },
-            {
-              "length_ms": 1061871,
-              "start_ms": 3999590,
-              "title": "Capítulo 5. Consejos de una Oruga"
-            },
-            {
-              "length_ms": 1223343,
-              "start_ms": 5061461,
-              "title": "Capítulo 6. Cerdo y Pimienta"
-            },
-            {
-              "length_ms": 1233258,
-              "start_ms": 6284804,
-              "title": "Capítulo 7. Una Merienda de Locos"
-            },
-            {
-              "length_ms": 1210200,
-              "start_ms": 7518062,
-              "title": "Capítulo 8. El Croquet de la Reina"
-            },
-            {
-              "length_ms": 1162762,
-              "start_ms": 8728262,
-              "title": "Capítulo 9. La Historia de la Falsa Tortuga"
-            },
-            {
-              "length_ms": 1077730,
-              "start_ms": 9891024,
-              "title": "Capítulo 10. El Baile de la Langosta"
-            },
-            {
-              "length_ms": 933233,
-              "start_ms": 10968754,
-              "title": "Capítulo 11. ¿Quién Robó los Pasteles?"
-            },
-            {
-              "length_ms": 1131730,
-              "start_ms": 11901987,
-              "title": "Capítulo 12. La Declaración de Alicia"
-            },
-            {
-              "length_ms": 46797,
-              "start_ms": 13033717,
-              "title": "Créditos Finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81YC62emILL.jpg",
-          "id": "aislinn-derbez-2021",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aislinn-derbez"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2021-12-03",
-          "runtime_min": 217,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B09KHLWYQF",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09KHM7HWN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B09KHLMK18",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland"
-        },
-        "aldo-lumbia-2013": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B00C1QR56I",
-              "region": "us"
-            },
-            {
-              "asin": "B00C1PQCZY",
-              "region": "de"
-            },
-            {
-              "asin": "B00C1PPRFU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 450281,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 464863,
-              "start_ms": 450281,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 448331,
-              "start_ms": 915144,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 652759,
-              "start_ms": 1363475,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 361628,
-              "start_ms": 2016234,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 311240,
-              "start_ms": 2377862,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 375002,
-              "start_ms": 2689102,
-              "title": "Capítulo 7"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71xza7kU+ML.jpg",
-          "id": "aldo-lumbia-2013",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aldo-lumbia",
-            "ariel-cister",
-            "emma-ledo",
-            "matilde-avila",
-            "mora-montemurro",
-            "omar-lamadrid",
-            "rolando-aguero"
-          ],
-          "publisher": "Audiolibros Colección",
-          "release_date": "2013-03-27",
-          "runtime_min": 50,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B00C1QR56I",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00C1PQCZY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00C1PPRFU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland"
-        },
-        "graciela-lecube-1999": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V014UW",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVY58E",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 31811,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 703054,
-              "start_ms": 31811,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 608270,
-              "start_ms": 734865,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 224723,
-              "start_ms": 1343135,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 285002,
-              "start_ms": 1567858,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 320668,
-              "start_ms": 1852860,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 418052,
-              "start_ms": 2173528,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 284073,
-              "start_ms": 2591580,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 630561,
-              "start_ms": 2875653,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 465142,
-              "start_ms": 3506214,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 348717,
-              "start_ms": 3971356,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 149722,
-              "start_ms": 4320073,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 217339,
-              "start_ms": 4469795,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 272788,
-              "start_ms": 4687134,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 51177,
-              "start_ms": 4959922,
-              "title": "Capítulo 15"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/31-k7dwxwGL.jpg",
-          "id": "graciela-lecube-1999",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "graciela-lecube"
-          ],
-          "publisher": "Coral/ Nueva Onda",
-          "release_date": "1999-12-15",
-          "runtime_min": 83,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V014UW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVY58E",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland"
-        },
-        "joaquin-madrigal-2018": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B07DGL3KCT",
-              "region": "us"
-            },
-            {
-              "asin": "B07DGGS33G",
-              "region": "de"
-            },
-            {
-              "asin": "B07DGJHGFY",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 859370,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 816785,
-              "start_ms": 859370,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 717404,
-              "start_ms": 1676155,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 1057901,
-              "start_ms": 2393559,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 851197,
-              "start_ms": 3451460,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 1017406,
-              "start_ms": 4302657,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 976120,
-              "start_ms": 5320063,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 993303,
-              "start_ms": 6296183,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 925826,
-              "start_ms": 7289486,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 785995,
-              "start_ms": 8215312,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 560855,
-              "start_ms": 9001307,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 900841,
-              "start_ms": 9562162,
-              "title": "Capítulo 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71j60nh8S3L.jpg",
-          "id": "joaquin-madrigal-2018",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joaquin-madrigal"
-          ],
-          "publisher": "Alberich Ediciones Mexico",
-          "release_date": "2018-06-07",
-          "runtime_min": 174,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B07DGL3KCT",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07DGGS33G",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B07DGJHGFY",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland"
-        },
-        "luis-posada-2016": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B01JY85W42",
-              "region": "us"
-            },
-            {
-              "asin": "B01JY8K3O6",
-              "region": "de"
-            },
-            {
-              "asin": "B01JY8E04K",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 16509,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 102400,
-              "start_ms": 16509,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 732821,
-              "start_ms": 118909,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 720074,
-              "start_ms": 851730,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 646931,
-              "start_ms": 1571804,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 887838,
-              "start_ms": 2218735,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 766328,
-              "start_ms": 3106573,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 954967,
-              "start_ms": 3872901,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 896150,
-              "start_ms": 4827868,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 892157,
-              "start_ms": 5724018,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 928589,
-              "start_ms": 6616175,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 882985,
-              "start_ms": 7544764,
-              "title": "Capítulo 12"
-            },
-            {
-              "length_ms": 716776,
-              "start_ms": 8427749,
-              "title": "Capítulo 13"
-            },
-            {
-              "length_ms": 849409,
-              "start_ms": 9144525,
-              "title": "Capítulo 14"
-            },
-            {
-              "length_ms": 44651,
-              "start_ms": 9993934,
-              "title": "Capítulo 15"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91FjNPa8d3L.jpg",
-          "id": "luis-posada-2016",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "luis-posada"
-          ],
-          "publisher": "Penguin Random House Grupo Editorial",
-          "release_date": "2016-09-01",
-          "runtime_min": 167,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B01JY85W42",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01JY8K3O6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B01JY8E04K",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland"
-        },
-        "sol-montalvan-2023": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B0CPJX39VN",
-              "region": "us"
-            },
-            {
-              "asin": "B0CPJWW2F6",
-              "region": "de"
-            },
-            {
-              "asin": "B0CPJWL15N",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 25216,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 1023605,
-              "start_ms": 25216,
-              "title": "CAPÍTULO 1"
-            },
-            {
-              "length_ms": 979673,
-              "start_ms": 1048821,
-              "title": "CAPÍTULO 2"
-            },
-            {
-              "length_ms": 895268,
-              "start_ms": 2028494,
-              "title": "CAPÍTULO 3"
-            },
-            {
-              "length_ms": 1159024,
-              "start_ms": 2923762,
-              "title": "CAPÍTULO 4"
-            },
-            {
-              "length_ms": 1001685,
-              "start_ms": 4082786,
-              "title": "CAPÍTULO 5"
-            },
-            {
-              "length_ms": 1230796,
-              "start_ms": 5084471,
-              "title": "CAPÍTULO 6"
-            },
-            {
-              "length_ms": 1230564,
-              "start_ms": 6315267,
-              "title": "CAPÍTULO 7"
-            },
-            {
-              "length_ms": 1127421,
-              "start_ms": 7545831,
-              "title": "CAPÍTULO 8"
-            },
-            {
-              "length_ms": 1228707,
-              "start_ms": 8673252,
-              "title": "CAPÍTULO 9"
-            },
-            {
-              "length_ms": 1156493,
-              "start_ms": 9901959,
-              "title": "CAPÍTULO 10"
-            },
-            {
-              "length_ms": 920299,
-              "start_ms": 11058452,
-              "title": "CAPÍTULO 11"
-            },
-            {
-              "length_ms": 1041856,
-              "start_ms": 11978751,
-              "title": "CAPÍTULO 12"
-            },
-            {
-              "length_ms": 37522,
-              "start_ms": 13020607,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/819v0js-WDL.jpg",
-          "id": "sol-montalvan-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sol-montalvan"
-          ],
-          "publisher": "Aubiblio Studios LLC",
-          "release_date": "2023-12-05",
-          "runtime_min": 217,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B0CPJX39VN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CPJWW2F6",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CPJWL15N",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland"
         },
         "vanesa-amezquita-2021": {
           "abridged": false,
@@ -3543,106 +3582,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alice-in-wonderland"
+          "work": "alicia-en-el-pais-de-las-maravillas"
         }
       },
       "sources": [
         {
+          "imported_at": "2026-08-02",
+          "ref": "B0DKJYWXVM",
+          "type": "libex-import"
+        },
+        {
           "imported_at": "2026-08-01",
           "ref": "B0CPJX39VN",
           "type": "libex-import"
-        }
-      ],
-      "title": "Alicia en el país de las maravillas [Alice in Wonderland]"
-    },
-    "alicia-en-el-pais-de-las-maravillas-alices-adventures-in-wonderland": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lewis-carroll"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "fantasy"
-      ],
-      "id": "alicia-en-el-pais-de-las-maravillas-alices-adventures-in-wonderland",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "adelaida-espinoza-2006": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V8LADK",
-              "region": "us"
-            },
-            {
-              "asin": "B004V5UCFI",
-              "region": "de"
-            },
-            {
-              "asin": "B004F39AV8",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2706471,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 2861813,
-              "start_ms": 2706471,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 2683902,
-              "start_ms": 5568284,
-              "title": "Capítulo 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61g7ZA00rjL.jpg",
-          "id": "adelaida-espinoza-2006",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "adelaida-espinoza"
-          ],
-          "publisher": "Yoyo USA, Inc",
-          "release_date": "2006-05-19",
-          "runtime_min": 137,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V8LADK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004V5UCFI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F39AV8",
-              "type": "libex-import"
-            }
-          ],
-          "work": "alicia-en-el-pais-de-las-maravillas-alices-adventures-in-wonderland"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V8LADK",
           "type": "libex-import"
         }
       ],
-      "title": "Alicia en el Pais de las Maravillas [Alice's Adventures in Wonderland]"
+      "title": "Alicia en el país de las maravillas"
     },
     "alicia-en-el-pais-de-las-maravillas-lewis-carrol": {
       "added_at": "2026-08-02",

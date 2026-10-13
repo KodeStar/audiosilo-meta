@@ -4482,6 +4482,11 @@
       "authors": [
         "james-patterson"
       ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "science-fiction"
+      ],
       "id": "angel",
       "language": "en",
       "license": "CC0-1.0",
@@ -4496,6 +4501,18 @@
             },
             {
               "asin": "B079F22TQQ",
+              "region": "uk"
+            },
+            {
+              "asin": "B004KTE90E",
+              "region": "us"
+            },
+            {
+              "asin": "B004KTK4EE",
+              "region": "de"
+            },
+            {
+              "asin": "B004KTCPYQ",
               "region": "uk"
             }
           ],
@@ -4951,6 +4968,21 @@
               "imported_at": "2026-10-09",
               "ref": "B079F22TQQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004KTE90E",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004KTK4EE",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004KTCPYQ",
+              "type": "libex-import"
             }
           ],
           "work": "angel"
@@ -4961,6 +4993,11 @@
           "imported_at": "2026-07-25",
           "ref": "https://www.goodreads.com/book/show/7201913-angel",
           "type": "community"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004KTE90E",
+          "type": "libex-import"
         }
       ],
       "title": "Angel",
@@ -5712,478 +5749,6 @@
         }
       ],
       "title": "Angel 6.0: Pursuit"
-    },
-    "angel-a-maximum-ride-novel": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "james-patterson"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "science-fiction"
-      ],
-      "id": "angel-a-maximum-ride-novel",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-soler-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B004KTE90E",
-              "region": "us"
-            },
-            {
-              "asin": "B004KTK4EE",
-              "region": "de"
-            },
-            {
-              "asin": "B004KTCPYQ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 343145,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 214042,
-              "start_ms": 343145,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 197695,
-              "start_ms": 557187,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 339429,
-              "start_ms": 754882,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 319925,
-              "start_ms": 1094311,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 338408,
-              "start_ms": 1414236,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 241441,
-              "start_ms": 1752644,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 352293,
-              "start_ms": 1994085,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 221240,
-              "start_ms": 2346378,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 222819,
-              "start_ms": 2567618,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 173035,
-              "start_ms": 2790437,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 146704,
-              "start_ms": 2963472,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 270048,
-              "start_ms": 3110176,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 163747,
-              "start_ms": 3380224,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 121580,
-              "start_ms": 3543971,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 226859,
-              "start_ms": 3665551,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 214274,
-              "start_ms": 3892410,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 271952,
-              "start_ms": 4106684,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 247432,
-              "start_ms": 4378636,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 378996,
-              "start_ms": 4626068,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 196998,
-              "start_ms": 5005064,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 243531,
-              "start_ms": 5202062,
-              "title": "Chapter 22"
-            },
-            {
-              "length_ms": 235822,
-              "start_ms": 5445593,
-              "title": "Chapter 23"
-            },
-            {
-              "length_ms": 260110,
-              "start_ms": 5681415,
-              "title": "Chapter 24"
-            },
-            {
-              "length_ms": 467371,
-              "start_ms": 5941525,
-              "title": "Chapter 25"
-            },
-            {
-              "length_ms": 269305,
-              "start_ms": 6408896,
-              "title": "Chapter 26"
-            },
-            {
-              "length_ms": 235032,
-              "start_ms": 6678201,
-              "title": "Chapter 27"
-            },
-            {
-              "length_ms": 211023,
-              "start_ms": 6913233,
-              "title": "Chapter 28"
-            },
-            {
-              "length_ms": 319321,
-              "start_ms": 7124256,
-              "title": "Chapter 29"
-            },
-            {
-              "length_ms": 268655,
-              "start_ms": 7443577,
-              "title": "Chapter 30"
-            },
-            {
-              "length_ms": 393903,
-              "start_ms": 7712232,
-              "title": "Chapter 31"
-            },
-            {
-              "length_ms": 282587,
-              "start_ms": 8106135,
-              "title": "Chapter 32"
-            },
-            {
-              "length_ms": 174660,
-              "start_ms": 8388722,
-              "title": "Chapter 33"
-            },
-            {
-              "length_ms": 140666,
-              "start_ms": 8563382,
-              "title": "Chapter 34"
-            },
-            {
-              "length_ms": 263175,
-              "start_ms": 8704048,
-              "title": "Chapter 35"
-            },
-            {
-              "length_ms": 520870,
-              "start_ms": 8967223,
-              "title": "Chapter 36"
-            },
-            {
-              "length_ms": 228670,
-              "start_ms": 9488093,
-              "title": "Chapter 37"
-            },
-            {
-              "length_ms": 346302,
-              "start_ms": 9716763,
-              "title": "Chapter 38"
-            },
-            {
-              "length_ms": 337293,
-              "start_ms": 10063065,
-              "title": "Chapter 39"
-            },
-            {
-              "length_ms": 311844,
-              "start_ms": 10400358,
-              "title": "Chapter 40"
-            },
-            {
-              "length_ms": 407928,
-              "start_ms": 10712202,
-              "title": "Chapter 41"
-            },
-            {
-              "length_ms": 279893,
-              "start_ms": 11120130,
-              "title": "Chapter 42"
-            },
-            {
-              "length_ms": 181348,
-              "start_ms": 11400023,
-              "title": "Chapter 43"
-            },
-            {
-              "length_ms": 321596,
-              "start_ms": 11581371,
-              "title": "Chapter 44"
-            },
-            {
-              "length_ms": 304181,
-              "start_ms": 11902967,
-              "title": "Chapter 45"
-            },
-            {
-              "length_ms": 462541,
-              "start_ms": 12207148,
-              "title": "Chapter 46"
-            },
-            {
-              "length_ms": 288299,
-              "start_ms": 12669689,
-              "title": "Chapter 47"
-            },
-            {
-              "length_ms": 215295,
-              "start_ms": 12957988,
-              "title": "Chapter 48"
-            },
-            {
-              "length_ms": 232292,
-              "start_ms": 13173283,
-              "title": "Chapter 49"
-            },
-            {
-              "length_ms": 330466,
-              "start_ms": 13405575,
-              "title": "Chapter 50"
-            },
-            {
-              "length_ms": 254769,
-              "start_ms": 13736041,
-              "title": "Chapter 51"
-            },
-            {
-              "length_ms": 246828,
-              "start_ms": 13990810,
-              "title": "Chapter 52"
-            },
-            {
-              "length_ms": 337665,
-              "start_ms": 14237638,
-              "title": "Chapter 53"
-            },
-            {
-              "length_ms": 202850,
-              "start_ms": 14575303,
-              "title": "Chapter 54"
-            },
-            {
-              "length_ms": 174103,
-              "start_ms": 14778153,
-              "title": "Chapter 55"
-            },
-            {
-              "length_ms": 243717,
-              "start_ms": 14952256,
-              "title": "Chapter 56"
-            },
-            {
-              "length_ms": 364878,
-              "start_ms": 15195973,
-              "title": "Chapter 57"
-            },
-            {
-              "length_ms": 239723,
-              "start_ms": 15560851,
-              "title": "Chapter 58"
-            },
-            {
-              "length_ms": 262618,
-              "start_ms": 15800574,
-              "title": "Chapter 59"
-            },
-            {
-              "length_ms": 215853,
-              "start_ms": 16063192,
-              "title": "Chapter 60"
-            },
-            {
-              "length_ms": 208840,
-              "start_ms": 16279045,
-              "title": "Chapter 61"
-            },
-            {
-              "length_ms": 465096,
-              "start_ms": 16487885,
-              "title": "Chapter 62"
-            },
-            {
-              "length_ms": 232339,
-              "start_ms": 16952981,
-              "title": "Chapter 63"
-            },
-            {
-              "length_ms": 288113,
-              "start_ms": 17185320,
-              "title": "Chapter 64"
-            },
-            {
-              "length_ms": 290435,
-              "start_ms": 17473433,
-              "title": "Chapter 65"
-            },
-            {
-              "length_ms": 318717,
-              "start_ms": 17763868,
-              "title": "Chapter 66"
-            },
-            {
-              "length_ms": 324243,
-              "start_ms": 18082585,
-              "title": "Chapter 67"
-            },
-            {
-              "length_ms": 336922,
-              "start_ms": 18406828,
-              "title": "Chapter 68"
-            },
-            {
-              "length_ms": 256998,
-              "start_ms": 18743750,
-              "title": "Chapter 69"
-            },
-            {
-              "length_ms": 246828,
-              "start_ms": 19000748,
-              "title": "Chapter 70"
-            },
-            {
-              "length_ms": 162029,
-              "start_ms": 19247576,
-              "title": "Chapter 71"
-            },
-            {
-              "length_ms": 353268,
-              "start_ms": 19409605,
-              "title": "Chapter 72"
-            },
-            {
-              "length_ms": 300745,
-              "start_ms": 19762873,
-              "title": "Chapter 73"
-            },
-            {
-              "length_ms": 255559,
-              "start_ms": 20063618,
-              "title": "Chapter 74"
-            },
-            {
-              "length_ms": 172385,
-              "start_ms": 20319177,
-              "title": "Chapter 75"
-            },
-            {
-              "length_ms": 256766,
-              "start_ms": 20491562,
-              "title": "Chapter 76"
-            },
-            {
-              "length_ms": 326565,
-              "start_ms": 20748328,
-              "title": "Chapter 77"
-            },
-            {
-              "length_ms": 294708,
-              "start_ms": 21074893,
-              "title": "Chapter 78"
-            },
-            {
-              "length_ms": 375234,
-              "start_ms": 21369601,
-              "title": "Chapter 79"
-            },
-            {
-              "length_ms": 348160,
-              "start_ms": 21744835,
-              "title": "Chapter 80"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/815b3+JGpdL.jpg",
-          "id": "rebecca-soler-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-soler"
-          ],
-          "publisher": "Cornerstone Digital",
-          "release_date": "2011-03-03",
-          "runtime_min": 368,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B004KTE90E",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004KTK4EE",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004KTCPYQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "angel-a-maximum-ride-novel"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004KTE90E",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Angel: A Maximum Ride Novel"
     },
     "angel-abundance": {
       "added_at": "2026-07-29",

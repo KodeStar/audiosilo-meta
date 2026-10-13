@@ -15128,12 +15128,114 @@
       "genres": [
         "childrens",
         "classics",
-        "fairy-tales-folklore"
+        "fairy-tales-folklore",
+        "nature"
       ],
       "id": "o-sitio-do-picapau-amarelo",
       "language": "pt",
       "license": "CC0-1.0",
       "recordings": {
+        "clayton-heringer-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CJ5K8RDD",
+              "region": "us"
+            },
+            {
+              "asin": "B0CJ5J8MJT",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 619601,
+              "start_ms": 0,
+              "title": "Capítulo 1"
+            },
+            {
+              "length_ms": 290992,
+              "start_ms": 619601,
+              "title": "Capítulo 2"
+            },
+            {
+              "length_ms": 303995,
+              "start_ms": 910593,
+              "title": "Capítulo 3"
+            },
+            {
+              "length_ms": 784114,
+              "start_ms": 1214588,
+              "title": "Capítulo 4"
+            },
+            {
+              "length_ms": 466651,
+              "start_ms": 1998702,
+              "title": "Capítulo 5"
+            },
+            {
+              "length_ms": 447889,
+              "start_ms": 2465353,
+              "title": "Capítulo 6"
+            },
+            {
+              "length_ms": 365249,
+              "start_ms": 2913242,
+              "title": "Capítulo 7"
+            },
+            {
+              "length_ms": 289785,
+              "start_ms": 3278491,
+              "title": "Capítulo 8"
+            },
+            {
+              "length_ms": 291038,
+              "start_ms": 3568276,
+              "title": "Capítulo 9"
+            },
+            {
+              "length_ms": 413082,
+              "start_ms": 3859314,
+              "title": "Capítulo 10"
+            },
+            {
+              "length_ms": 505916,
+              "start_ms": 4272396,
+              "title": "Capítulo 11"
+            },
+            {
+              "length_ms": 629399,
+              "start_ms": 4778312,
+              "title": "Capítulo 12"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81D1rPVcuwL.jpg",
+          "id": "clayton-heringer-2023",
+          "language": "pt",
+          "license": "CC0-1.0",
+          "narrators": [
+            "clayton-heringer",
+            "juscelino-filho",
+            "paola-molinari"
+          ],
+          "publisher": "Tocalivros Clássicos",
+          "release_date": "2023-09-15",
+          "runtime_min": 89,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CJ5K8RDD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0CJ5J8MJT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "o-sitio-do-picapau-amarelo"
+        },
         "sandra-silverio-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15239,133 +15341,14 @@
           "imported_at": "2026-08-02",
           "ref": "8560125795",
           "type": "libex-import"
-        }
-      ],
-      "title": "O sítio do picapau amarelo"
-    },
-    "o-sitio-do-picapau-amarelo-the-yellow-woodpecker-site": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "monteiro-lobato"
-      ],
-      "genres": [
-        "childrens",
-        "nature"
-      ],
-      "id": "o-sitio-do-picapau-amarelo-the-yellow-woodpecker-site",
-      "language": "pt",
-      "license": "CC0-1.0",
-      "recordings": {
-        "clayton-heringer-2023": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CJ5K8RDD",
-              "region": "us"
-            },
-            {
-              "asin": "B0CJ5J8MJT",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 619601,
-              "start_ms": 0,
-              "title": "Capítulo 1"
-            },
-            {
-              "length_ms": 290992,
-              "start_ms": 619601,
-              "title": "Capítulo 2"
-            },
-            {
-              "length_ms": 303995,
-              "start_ms": 910593,
-              "title": "Capítulo 3"
-            },
-            {
-              "length_ms": 784114,
-              "start_ms": 1214588,
-              "title": "Capítulo 4"
-            },
-            {
-              "length_ms": 466651,
-              "start_ms": 1998702,
-              "title": "Capítulo 5"
-            },
-            {
-              "length_ms": 447889,
-              "start_ms": 2465353,
-              "title": "Capítulo 6"
-            },
-            {
-              "length_ms": 365249,
-              "start_ms": 2913242,
-              "title": "Capítulo 7"
-            },
-            {
-              "length_ms": 289785,
-              "start_ms": 3278491,
-              "title": "Capítulo 8"
-            },
-            {
-              "length_ms": 291038,
-              "start_ms": 3568276,
-              "title": "Capítulo 9"
-            },
-            {
-              "length_ms": 413082,
-              "start_ms": 3859314,
-              "title": "Capítulo 10"
-            },
-            {
-              "length_ms": 505916,
-              "start_ms": 4272396,
-              "title": "Capítulo 11"
-            },
-            {
-              "length_ms": 629399,
-              "start_ms": 4778312,
-              "title": "Capítulo 12"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81D1rPVcuwL.jpg",
-          "id": "clayton-heringer-2023",
-          "language": "pt",
-          "license": "CC0-1.0",
-          "narrators": [
-            "clayton-heringer",
-            "juscelino-filho",
-            "paola-molinari"
-          ],
-          "publisher": "Tocalivros Clássicos",
-          "release_date": "2023-09-15",
-          "runtime_min": 89,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CJ5K8RDD",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0CJ5J8MJT",
-              "type": "libex-import"
-            }
-          ],
-          "work": "o-sitio-do-picapau-amarelo-the-yellow-woodpecker-site"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CJ5K8RDD",
           "type": "libex-import"
         }
       ],
-      "title": "O Sítio do Picapau Amarelo [The Yellow Woodpecker Site]"
+      "title": "O sítio do picapau amarelo"
     },
     "o-tannenbaum": {
       "added_at": "2026-08-02",

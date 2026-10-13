@@ -13469,13 +13469,135 @@
       ],
       "genres": [
         "fantasy",
+        "horror",
         "paranormal",
+        "science-fiction",
         "urban-fantasy"
       ],
       "id": "im-nachtclub-der-vampire",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "detlef-bierstedt-2014": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00U2MZANS",
+              "region": "us"
+            },
+            {
+              "asin": "B00MNAV6SA",
+              "region": "de"
+            },
+            {
+              "asin": "B00U2NCEYU",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 414964,
+              "start_ms": 0,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 230249,
+              "start_ms": 414964,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 403563,
+              "start_ms": 645213,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 211162,
+              "start_ms": 1048776,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 129474,
+              "start_ms": 1259938,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 119049,
+              "start_ms": 1389412,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 119908,
+              "start_ms": 1508461,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 101657,
+              "start_ms": 1628369,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 384685,
+              "start_ms": 1730026,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 83336,
+              "start_ms": 2114711,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 222540,
+              "start_ms": 2198047,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 272115,
+              "start_ms": 2420587,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 241697,
+              "start_ms": 2692702,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 963605,
+              "start_ms": 2934399,
+              "title": "Kapitel 14"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/911Oop+BCNL.jpg",
+          "id": "detlef-bierstedt-2014",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "detlef-bierstedt",
+            "frank-glaubrecht",
+            "franziska-pigulla"
+          ],
+          "publisher": "Lübbe Audio",
+          "release_date": "2014-08-12",
+          "runtime_min": 64,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00U2MZANS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00MNAV6SA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00U2NCEYU",
+              "type": "libex-import"
+            }
+          ],
+          "work": "im-nachtclub-der-vampire"
+        },
         "frank-glaubrecht-2014": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -13588,6 +13710,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00U2KKEQ8",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00U2MZANS",
           "type": "libex-import"
         }
       ],
@@ -13859,152 +13986,6 @@
         }
       ],
       "title": "Im Nachtclub der Vampire / Die Totenkopf-Insel / Achterbahn ins Jenseits"
-    },
-    "im-nachtclub-der-vampire-john-sinclair-1-remastered": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jason-dark"
-      ],
-      "genres": [
-        "fantasy",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "urban-fantasy"
-      ],
-      "id": "im-nachtclub-der-vampire-john-sinclair-1-remastered",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "detlef-bierstedt-2014": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00U2MZANS",
-              "region": "us"
-            },
-            {
-              "asin": "B00MNAV6SA",
-              "region": "de"
-            },
-            {
-              "asin": "B00U2NCEYU",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 414964,
-              "start_ms": 0,
-              "title": "Kapitel 1"
-            },
-            {
-              "length_ms": 230249,
-              "start_ms": 414964,
-              "title": "Kapitel 2"
-            },
-            {
-              "length_ms": 403563,
-              "start_ms": 645213,
-              "title": "Kapitel 3"
-            },
-            {
-              "length_ms": 211162,
-              "start_ms": 1048776,
-              "title": "Kapitel 4"
-            },
-            {
-              "length_ms": 129474,
-              "start_ms": 1259938,
-              "title": "Kapitel 5"
-            },
-            {
-              "length_ms": 119049,
-              "start_ms": 1389412,
-              "title": "Kapitel 6"
-            },
-            {
-              "length_ms": 119908,
-              "start_ms": 1508461,
-              "title": "Kapitel 7"
-            },
-            {
-              "length_ms": 101657,
-              "start_ms": 1628369,
-              "title": "Kapitel 8"
-            },
-            {
-              "length_ms": 384685,
-              "start_ms": 1730026,
-              "title": "Kapitel 9"
-            },
-            {
-              "length_ms": 83336,
-              "start_ms": 2114711,
-              "title": "Kapitel 10"
-            },
-            {
-              "length_ms": 222540,
-              "start_ms": 2198047,
-              "title": "Kapitel 11"
-            },
-            {
-              "length_ms": 272115,
-              "start_ms": 2420587,
-              "title": "Kapitel 12"
-            },
-            {
-              "length_ms": 241697,
-              "start_ms": 2692702,
-              "title": "Kapitel 13"
-            },
-            {
-              "length_ms": 963605,
-              "start_ms": 2934399,
-              "title": "Kapitel 14"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/911Oop+BCNL.jpg",
-          "id": "detlef-bierstedt-2014",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "detlef-bierstedt",
-            "frank-glaubrecht",
-            "franziska-pigulla"
-          ],
-          "publisher": "Lübbe Audio",
-          "release_date": "2014-08-12",
-          "runtime_min": 64,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00U2MZANS",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00MNAV6SA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00U2NCEYU",
-              "type": "libex-import"
-            }
-          ],
-          "work": "im-nachtclub-der-vampire-john-sinclair-1-remastered"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00U2MZANS",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Im Nachtclub der Vampire (John Sinclair 1) [Remastered]"
     },
     "im-namen-des-admirals": {
       "added_at": "2026-08-02",

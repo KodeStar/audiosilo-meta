@@ -14770,30 +14770,8 @@
             }
           ],
           "work": "der-traumtanzer-hendrik-buchna"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B081HCPQ37",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Der Traumtänzer"
-    },
-    "der-traumtanzer-special-edition": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hendrik-buchna"
-      ],
-      "genres": [
-        "thriller-suspense"
-      ],
-      "id": "der-traumtanzer-special-edition",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eckart-dux-2019": {
+        },
+        "eckart-dux-2019-2": {
           "abridged": false,
           "added_at": "2026-08-02",
           "asin": [
@@ -15058,7 +15036,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81IOuZs4d8L.jpg",
-          "id": "eckart-dux-2019",
+          "id": "eckart-dux-2019-2",
           "language": "de",
           "license": "CC0-1.0",
           "narrators": [
@@ -15089,17 +15067,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "der-traumtanzer-special-edition"
+          "work": "der-traumtanzer-hendrik-buchna"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B081HCPQ37",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B081HCRD1R",
           "type": "libex-import"
         }
       ],
-      "title": "Der Traumtänzer [Special Edition]"
+      "title": "Der Traumtänzer"
     }
   }
 }

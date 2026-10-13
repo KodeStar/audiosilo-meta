@@ -8484,7 +8484,8 @@
     "driven-to-distraction": {
       "added_at": "2026-07-29",
       "authors": [
-        "edward-m-hallowell-m-d-m-d"
+        "edward-m-hallowell-m-d-m-d",
+        "john-j-ratey"
       ],
       "genres": [
         "health-wellness",
@@ -8498,6 +8499,50 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "edward-m-hallowell-m-d-m-d-2010": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0036HXYVG",
+              "region": "us"
+            },
+            {
+              "asin": "B079BH6SQS",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 7092721,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tgsLsK21L.jpg",
+          "id": "edward-m-hallowell-m-d-m-d-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "edward-m-hallowell-m-d-m-d"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2010-04-13",
+          "runtime_min": 118,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0036HXYVG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B079BH6SQS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "driven-to-distraction"
+        },
         "john-mcdonough-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -8623,79 +8668,14 @@
           "imported_at": "2026-07-29",
           "ref": "B00FRQFA8O",
           "type": "libex-import"
-        }
-      ],
-      "title": "Driven to Distraction"
-    },
-    "driven-to-distraction-edward-m-hallowell-m-d-m-d": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "edward-m-hallowell-m-d-m-d",
-        "john-j-ratey"
-      ],
-      "genres": [
-        "health-wellness",
-        "parenting-relationships",
-        "psychology",
-        "self-help"
-      ],
-      "id": "driven-to-distraction-edward-m-hallowell-m-d-m-d",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "edward-m-hallowell-m-d-m-d-2010": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0036HXYVG",
-              "region": "us"
-            },
-            {
-              "asin": "B079BH6SQS",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 7092721,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81tgsLsK21L.jpg",
-          "id": "edward-m-hallowell-m-d-m-d-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "edward-m-hallowell-m-d-m-d"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2010-04-13",
-          "runtime_min": 118,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0036HXYVG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B079BH6SQS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "driven-to-distraction-edward-m-hallowell-m-d-m-d"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0036HXYVG",
           "type": "libex-import"
         }
       ],
-      "title": "Driven To Distraction"
+      "title": "Driven to Distraction"
     },
     "driven-west": {
       "added_at": "2026-07-29",

@@ -6109,17 +6109,19 @@
       ],
       "title": "Sofie Metropolis"
     },
-    "sofies-welt": {
+    "sofies-welt-jostein-gaarder": {
       "added_at": "2026-07-29",
       "authors": [
-        "jostein-gaarder"
+        "jostein-gaarder",
+        "gabriele-haefs"
       ],
       "genres": [
         "classics",
         "coming-of-age",
+        "fantasy",
         "young-adult"
       ],
-      "id": "sofies-welt",
+      "id": "sofies-welt-jostein-gaarder",
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
@@ -6476,33 +6478,8 @@
               "type": "libex-import"
             }
           ],
-          "work": "sofies-welt"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00TPK3F76",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Sofies Welt"
-    },
-    "sofies-welt-jostein-gaarder": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "jostein-gaarder",
-        "gabriele-haefs"
-      ],
-      "genres": [
-        "classics",
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "sofies-welt-jostein-gaarder",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
+          "work": "sofies-welt-jostein-gaarder"
+        },
         "katharina-thalbach-2010": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7864,6 +7841,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B00TVO0X1W",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00TPK3F76",
           "type": "libex-import"
         }
       ],

@@ -10506,7 +10506,8 @@
       ],
       "genres": [
         "action-adventure",
-        "science-fiction"
+        "science-fiction",
+        "space-opera"
       ],
       "id": "red-hope",
       "language": "en",
@@ -10690,31 +10691,7 @@
             }
           ],
           "work": "red-hope"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01F2EM28G",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Red Hope"
-    },
-    "red-hope-book-1": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "john-dreese"
-      ],
-      "genres": [
-        "action-adventure",
-        "science-fiction",
-        "space-opera"
-      ],
-      "id": "red-hope-book-1",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "bob-reed-2021": {
           "abridged": false,
           "added_at": "2026-08-01",
@@ -11002,17 +10979,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "red-hope-book-1"
+          "work": "red-hope"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01F2EM28G",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-01",
           "ref": "B09GW49N21",
           "type": "libex-import"
         }
       ],
-      "title": "Red Hope: Book 1"
+      "title": "Red Hope"
     },
     "red-horizon": {
       "added_at": "2026-08-02",

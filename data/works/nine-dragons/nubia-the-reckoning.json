@@ -452,6 +452,14 @@
             {
               "asin": "B0CKFM7G4X",
               "region": "de"
+            },
+            {
+              "asin": "B0BXBL1HN1",
+              "region": "us"
+            },
+            {
+              "asin": "B0BXBMTYPN",
+              "region": "uk"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71y3SBBzpcL.jpg",
@@ -474,6 +482,16 @@
               "imported_at": "2026-07-29",
               "ref": "B0CKFM7G4X",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BXBL1HN1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0BXBMTYPN",
+              "type": "libex-import"
             }
           ],
           "work": "nuchtern-auf-einem-alkoholisierten-planeten"
@@ -483,6 +501,11 @@
         {
           "imported_at": "2026-07-29",
           "ref": "B0BXBKRYCM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0BXBL1HN1",
           "type": "libex-import"
         }
       ],
@@ -562,66 +585,6 @@
         }
       ],
       "title": "Nüchtern auf einem alkoholisierten Planeten"
-    },
-    "nuchtern-auf-einem-alkoholisierten-planeten-sober-on-a-drunken-planet": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "sean-alexander"
-      ],
-      "genres": [
-        "health-wellness",
-        "self-help"
-      ],
-      "id": "nuchtern-auf-einem-alkoholisierten-planeten-sober-on-a-drunken-planet",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ernst-marcus-thomas-2023": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BXBL1HN1",
-              "region": "us"
-            },
-            {
-              "asin": "B0BXBMTYPN",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71y3SBBzpcL.jpg",
-          "id": "ernst-marcus-thomas-2023",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ernst-marcus-thomas"
-          ],
-          "publisher": "Addicted2life Ltd",
-          "release_date": "2023-03-03",
-          "runtime_min": 204,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BXBL1HN1",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0BXBMTYPN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "nuchtern-auf-einem-alkoholisierten-planeten-sober-on-a-drunken-planet"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0BXBL1HN1",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Nüchtern auf einem alkoholisierten Planeten [Sober on a Drunken Planet]"
     },
     "nuchtern-auf-einem-alkoholisierten-planeten-sober-on-an-alcoholic-planet-sean-alexander": {
       "added_at": "2026-07-29",

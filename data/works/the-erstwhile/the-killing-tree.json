@@ -866,13 +866,16 @@
     "the-killings-at-kingfisher-hill": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "sophie-hannah"
+        "sophie-hannah",
+        "agatha-christie"
       ],
       "genres": [
+        "cozy-mystery",
         "historical-fiction",
         "mystery",
         "short-stories",
-        "thriller-suspense"
+        "thriller-suspense",
+        "womens-fiction"
       ],
       "id": "the-killings-at-kingfisher-hill",
       "language": "en",
@@ -888,6 +891,14 @@
             },
             {
               "asin": "0063003449",
+              "region": "uk"
+            },
+            {
+              "asin": "0008264570",
+              "region": "us"
+            },
+            {
+              "asin": "0008264570",
               "region": "uk"
             }
           ],
@@ -1013,6 +1024,16 @@
               "imported_at": "2026-10-09",
               "ref": "0063003449",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "0008264570",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "0008264570",
+              "type": "libex-import"
             }
           ],
           "work": "the-killings-at-kingfisher-hill"
@@ -1028,152 +1049,7 @@
           "imported_at": "2026-07-30",
           "ref": "0063003449",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Killings at Kingfisher Hill"
-    },
-    "the-killings-at-kingfisher-hill-agatha-christie": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "agatha-christie",
-        "sophie-hannah"
-      ],
-      "genres": [
-        "cozy-mystery",
-        "mystery",
-        "thriller-suspense",
-        "womens-fiction"
-      ],
-      "id": "the-killings-at-kingfisher-hill-agatha-christie",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "julian-rhind-tutt-2020": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "0008264570",
-              "region": "us"
-            },
-            {
-              "asin": "0008264570",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1952356,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1460279,
-              "start_ms": 1952356,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1344783,
-              "start_ms": 3412635,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1402903,
-              "start_ms": 4757418,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1717858,
-              "start_ms": 6160321,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 2012101,
-              "start_ms": 7878179,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 2183372,
-              "start_ms": 9890280,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 2147915,
-              "start_ms": 12073652,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1809995,
-              "start_ms": 14221567,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 2044006,
-              "start_ms": 16031562,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1922472,
-              "start_ms": 18075568,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 2133333,
-              "start_ms": 19998040,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 2087520,
-              "start_ms": 22131373,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 2176197,
-              "start_ms": 24218893,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 2716502,
-              "start_ms": 26395090,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 2668204,
-              "start_ms": 29111592,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 286464,
-              "start_ms": 31779796,
-              "title": "Chapter 17"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81xtsqB8jPL.jpg",
-          "id": "julian-rhind-tutt-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "julian-rhind-tutt"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2020-08-20",
-          "runtime_min": 534,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "0008264570",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "0008264570",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-killings-at-kingfisher-hill-agatha-christie"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "0008264570",

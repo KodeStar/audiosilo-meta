@@ -6749,6 +6749,7 @@
         "classics",
         "historical-fiction",
         "historical-romance",
+        "literary-fiction",
         "romance"
       ],
       "id": "lorna-doone",
@@ -7174,31 +7175,7 @@
             }
           ],
           "work": "lorna-doone"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B0921K6SSG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Lorna Doone"
-    },
-    "lorna-doone-naxos": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "r-d-blackmore"
-      ],
-      "genres": [
-        "classics",
-        "historical-fiction",
-        "literary-fiction"
-      ],
-      "id": "lorna-doone-naxos",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "jonathan-keeble-2011": {
           "abridged": false,
           "added_at": "2026-08-07",
@@ -7602,17 +7579,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "lorna-doone-naxos"
+          "work": "lorna-doone"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B0921K6SSG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-07",
           "ref": "B004M5N8HQ",
           "type": "libex-import"
         }
       ],
-      "title": "Lorna Doone [Naxos]"
+      "title": "Lorna Doone"
     },
     "lorna-mott-comes-home": {
       "added_at": "2026-07-29",

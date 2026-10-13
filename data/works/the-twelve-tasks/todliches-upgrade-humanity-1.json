@@ -6717,6 +6717,7 @@
         "dolores-redondo"
       ],
       "genres": [
+        "classics",
         "hard-boiled",
         "mystery",
         "thriller-suspense"
@@ -6725,6 +6726,113 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "ana-santos-2023": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0BWNN98FQ",
+              "region": "us"
+            },
+            {
+              "asin": "B0BWNPRWHY",
+              "region": "es"
+            },
+            {
+              "asin": "B0BWNNGHLS",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 15534,
+              "start_ms": 0,
+              "title": "Créditos iniciales"
+            },
+            {
+              "length_ms": 1795018,
+              "start_ms": 15534,
+              "title": "Episodio 1"
+            },
+            {
+              "length_ms": 1548283,
+              "start_ms": 1810552,
+              "title": "Episodio 2"
+            },
+            {
+              "length_ms": 1735621,
+              "start_ms": 3358835,
+              "title": "Episodio 3: Una punzada"
+            },
+            {
+              "length_ms": 1483592,
+              "start_ms": 5094456,
+              "title": "Episodio 4"
+            },
+            {
+              "length_ms": 1611209,
+              "start_ms": 6578048,
+              "title": "Episodio 5"
+            },
+            {
+              "length_ms": 1500264,
+              "start_ms": 8189257,
+              "title": "Episodio 6"
+            },
+            {
+              "length_ms": 1580141,
+              "start_ms": 9689521,
+              "title": "Episodio 7"
+            },
+            {
+              "length_ms": 2013262,
+              "start_ms": 11269662,
+              "title": "Episodio 8: Otra gardenia en el bolsillo"
+            },
+            {
+              "length_ms": 217872,
+              "start_ms": 13282924,
+              "title": "Créditos finales"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91zWNGFXZQL.jpg",
+          "id": "ana-santos-2023",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "ana-santos",
+            "carlos-blanco",
+            "fede-perez",
+            "maria-costas",
+            "marta-larralde",
+            "santi-romay",
+            "tono-casais",
+            "victor-dupla",
+            "xavier-estevez",
+            "xose-esperante"
+          ],
+          "publisher": "Audible Studios y Planeta Audio",
+          "release_date": "2023-02-24",
+          "runtime_min": 224,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BWNN98FQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0BWNPRWHY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0BWNNGHLS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "todo-esto-te-dare"
+        },
         "juan-magraner-2024": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7034,138 +7142,14 @@
           "imported_at": "2026-07-29",
           "ref": "B0D5HVZ7PD",
           "type": "libex-import"
-        }
-      ],
-      "title": "Todo esto te daré"
-    },
-    "todo-esto-te-dare-ficcion-sonora": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "dolores-redondo"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "todo-esto-te-dare-ficcion-sonora",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "ana-santos-2023": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0BWNN98FQ",
-              "region": "us"
-            },
-            {
-              "asin": "B0BWNPRWHY",
-              "region": "es"
-            },
-            {
-              "asin": "B0BWNNGHLS",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 15534,
-              "start_ms": 0,
-              "title": "Créditos iniciales"
-            },
-            {
-              "length_ms": 1795018,
-              "start_ms": 15534,
-              "title": "Episodio 1"
-            },
-            {
-              "length_ms": 1548283,
-              "start_ms": 1810552,
-              "title": "Episodio 2"
-            },
-            {
-              "length_ms": 1735621,
-              "start_ms": 3358835,
-              "title": "Episodio 3: Una punzada"
-            },
-            {
-              "length_ms": 1483592,
-              "start_ms": 5094456,
-              "title": "Episodio 4"
-            },
-            {
-              "length_ms": 1611209,
-              "start_ms": 6578048,
-              "title": "Episodio 5"
-            },
-            {
-              "length_ms": 1500264,
-              "start_ms": 8189257,
-              "title": "Episodio 6"
-            },
-            {
-              "length_ms": 1580141,
-              "start_ms": 9689521,
-              "title": "Episodio 7"
-            },
-            {
-              "length_ms": 2013262,
-              "start_ms": 11269662,
-              "title": "Episodio 8: Otra gardenia en el bolsillo"
-            },
-            {
-              "length_ms": 217872,
-              "start_ms": 13282924,
-              "title": "Créditos finales"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91zWNGFXZQL.jpg",
-          "id": "ana-santos-2023",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "ana-santos",
-            "carlos-blanco",
-            "fede-perez",
-            "maria-costas",
-            "marta-larralde",
-            "santi-romay",
-            "tono-casais",
-            "victor-dupla",
-            "xavier-estevez",
-            "xose-esperante"
-          ],
-          "publisher": "Audible Studios y Planeta Audio",
-          "release_date": "2023-02-24",
-          "runtime_min": 224,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BWNN98FQ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0BWNPRWHY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0BWNNGHLS",
-              "type": "libex-import"
-            }
-          ],
-          "work": "todo-esto-te-dare-ficcion-sonora"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0BWNN98FQ",
           "type": "libex-import"
         }
       ],
-      "title": "Todo esto te daré (Ficción sonora)"
+      "title": "Todo esto te daré"
     },
     "todo-final-es-un-comienzo-good-material": {
       "added_at": "2026-07-29",

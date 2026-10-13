@@ -4672,127 +4672,7 @@
             {
               "asin": "B0081TFG60",
               "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 31087,
-              "start_ms": 0,
-              "title": "Openning Credits"
             },
-            {
-              "length_ms": 38910,
-              "start_ms": 31087,
-              "title": "Publisher's Note"
-            },
-            {
-              "length_ms": 534465,
-              "start_ms": 69997,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 4847445,
-              "start_ms": 604462,
-              "title": "Chapter 1: Something to Drink?"
-            },
-            {
-              "length_ms": 5179908,
-              "start_ms": 5451907,
-              "title": "Chapter 2: Down on the Farm"
-            },
-            {
-              "length_ms": 3879033,
-              "start_ms": 10631815,
-              "title": "Chapter 3: Whatsoever a Man Soweth…"
-            },
-            {
-              "length_ms": 4934148,
-              "start_ms": 14510848,
-              "title": "Chapter 4: Above the Fruited Plain"
-            },
-            {
-              "length_ms": 3632159,
-              "start_ms": 19444996,
-              "title": "Chapter 5: For Amber Waves of Grain"
-            },
-            {
-              "length_ms": 2923532,
-              "start_ms": 23077155,
-              "title": "Chapter 6: From Sea to Shining Sea"
-            },
-            {
-              "length_ms": 6305611,
-              "start_ms": 26000687,
-              "title": "Chapter 7: A Carnival for Carnivores"
-            },
-            {
-              "length_ms": 4474671,
-              "start_ms": 32306298,
-              "title": "Chapter 8: Spice Is the Variety of Life"
-            },
-            {
-              "length_ms": 5613888,
-              "start_ms": 36780969,
-              "title": "Chapter 9: Galley Gear"
-            },
-            {
-              "length_ms": 3061562,
-              "start_ms": 42394857,
-              "title": "Chapter 10: A Few Lagniappes for the Insatiable Inquiring Mind"
-            },
-            {
-              "length_ms": 26645,
-              "start_ms": 45456419,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81u-PIUPGwL.jpg",
-          "id": "sean-runnette-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "sean-runnette"
-          ],
-          "publisher": "Tantor Audio",
-          "release_date": "2012-05-14",
-          "runtime_min": 757,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0081TFG60",
-              "type": "libex-import"
-            }
-          ],
-          "work": "what-einstein-kept-under-his-hat"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B0081TFG60",
-          "type": "libex-import"
-        }
-      ],
-      "title": "What Einstein Kept Under His Hat"
-    },
-    "what-einstein-kept-under-his-hat-robert-l-wolke": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "robert-l-wolke"
-      ],
-      "genres": [
-        "food-cooking",
-        "home-garden",
-        "science"
-      ],
-      "id": "what-einstein-kept-under-his-hat-robert-l-wolke",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "sean-runnette-2012": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
             {
               "asin": "B008B7OQF4",
               "region": "us"
@@ -4895,34 +4775,44 @@
               "title": "Chapter 19"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81oCxhrc6dL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81u-PIUPGwL.jpg",
           "id": "sean-runnette-2012",
           "language": "en",
           "license": "CC0-1.0",
           "narrators": [
             "sean-runnette"
           ],
-          "publisher": "Audible Studios",
-          "release_date": "2012-07-17",
+          "publisher": "Tantor Audio",
+          "release_date": "2012-05-14",
           "runtime_min": 757,
           "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0081TFG60",
+              "type": "libex-import"
+            },
             {
               "imported_at": "2026-07-29",
               "ref": "B008B7OQF4",
               "type": "libex-import"
             }
           ],
-          "work": "what-einstein-kept-under-his-hat-robert-l-wolke"
+          "work": "what-einstein-kept-under-his-hat"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B0081TFG60",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B008B7OQF4",
           "type": "libex-import"
         }
       ],
-      "title": "What Einstein Kept under His Hat"
+      "title": "What Einstein Kept Under His Hat"
     },
     "what-einstein-told-his-barber": {
       "added_at": "2026-07-29",
