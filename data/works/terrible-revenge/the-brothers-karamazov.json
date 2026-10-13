@@ -2366,131 +2366,6 @@
           ],
           "work": "the-brothers-karamazov"
         },
-        "dan-bottomley-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GPFKDTRV",
-              "region": "us"
-            },
-            {
-              "asin": "B0GPFRFQY4",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 210627,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 181394,
-              "start_ms": 210627,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 182787,
-              "start_ms": 392021,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 182833,
-              "start_ms": 574808,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 181998,
-              "start_ms": 757641,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 185063,
-              "start_ms": 939639,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 182950,
-              "start_ms": 1124702,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 183623,
-              "start_ms": 1307652,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 182601,
-              "start_ms": 1491275,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 180697,
-              "start_ms": 1673876,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 181185,
-              "start_ms": 1854573,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 183019,
-              "start_ms": 2035758,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 183902,
-              "start_ms": 2218777,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 185527,
-              "start_ms": 2402679,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 181789,
-              "start_ms": 2588206,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 183205,
-              "start_ms": 2769995,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 303762,
-              "start_ms": 2953200,
-              "title": "Chapter 17"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81hVGLMj7kL.jpg",
-          "id": "dan-bottomley-2026",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "dan-bottomley",
-            "gemma-barder"
-          ],
-          "publisher": "Sweet Cherry Publishing",
-          "release_date": "2026-02-23",
-          "runtime_min": 54,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GPFKDTRV",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0GPFRFQY4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-brothers-karamazov"
-        },
         "david-rintoul-2023": {
           "abridged": false,
           "added_at": "2026-08-08",
@@ -6036,7 +5911,14 @@
     "the-brothers-karamazov-dramatized": {
       "added_at": "2026-08-08",
       "authors": [
-        "fyodor-dostoevsky"
+        "fyodor-dostoevsky",
+        "david-fishelson"
+      ],
+      "credits": [
+        {
+          "person": "david-fishelson",
+          "role": "adaptation"
+        }
       ],
       "genres": [
         "drama-plays"
@@ -6188,6 +6070,169 @@
         }
       ],
       "title": "The Brothers Karamazov (Dramatized)"
+    },
+    "the-brothers-karamazov-fyodor-dostoevsky-2": {
+      "added_at": "2026-10-13",
+      "authors": [
+        "fyodor-dostoevsky",
+        "gemma-barder"
+      ],
+      "credits": [
+        {
+          "person": "gemma-barder",
+          "role": "adaptation"
+        }
+      ],
+      "genres": [
+        "classics",
+        "historical-fiction",
+        "literary-fiction",
+        "parenting-relationships",
+        "psychological-thriller"
+      ],
+      "id": "the-brothers-karamazov-fyodor-dostoevsky-2",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "dan-bottomley-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GPFKDTRV",
+              "region": "us"
+            },
+            {
+              "asin": "B0GPFRFQY4",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 210627,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 181394,
+              "start_ms": 210627,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 182787,
+              "start_ms": 392021,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 182833,
+              "start_ms": 574808,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 181998,
+              "start_ms": 757641,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 185063,
+              "start_ms": 939639,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 182950,
+              "start_ms": 1124702,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 183623,
+              "start_ms": 1307652,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 182601,
+              "start_ms": 1491275,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 180697,
+              "start_ms": 1673876,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 181185,
+              "start_ms": 1854573,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 183019,
+              "start_ms": 2035758,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 183902,
+              "start_ms": 2218777,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 185527,
+              "start_ms": 2402679,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 181789,
+              "start_ms": 2588206,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 183205,
+              "start_ms": 2769995,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 303762,
+              "start_ms": 2953200,
+              "title": "Chapter 17"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81hVGLMj7kL.jpg",
+          "id": "dan-bottomley-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "dan-bottomley",
+            "gemma-barder"
+          ],
+          "publisher": "Sweet Cherry Publishing",
+          "release_date": "2026-02-23",
+          "runtime_min": 54,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GPFKDTRV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GPFRFQY4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-brothers-karamazov-fyodor-dostoevsky-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GPFKDTRV",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-09",
+          "ref": "B0GPFRFQY4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Brothers Karamazov"
     },
     "the-brothers-karamazov-the-idiot-dramatized": {
       "added_at": "2026-07-29",

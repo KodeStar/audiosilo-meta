@@ -8211,52 +8211,33 @@
             }
           ],
           "work": "le-reveil-du-krea-kaos"
-        },
-        "cristelle-ledroit-2026-2": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GXKRK3SF",
-              "region": "us"
-            },
-            {
-              "asin": "B0GXKS7YKC",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1679079,
-              "start_ms": 0,
-              "title": "Le Réveil du Kréa-Kaos: Les Légendaires, Tome 4,  Episode 3"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91gwgkbQupL.jpg",
-          "id": "cristelle-ledroit-2026-2",
-          "language": "fr",
-          "license": "CC0-1.0",
-          "narrators": [
-            "cristelle-ledroit"
-          ],
-          "publisher": "Lizzie",
-          "release_date": "2026-04-30",
-          "runtime_min": 27,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GXKRK3SF",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0GXKS7YKC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "le-reveil-du-krea-kaos"
-        },
-        "cristelle-ledroit-2026-3": {
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GS6KQBHF",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Le Réveil du Kréa-Kaos"
+    },
+    "le-reveil-du-krea-kaos-episode-1": {
+      "added_at": "2026-10-13",
+      "authors": [
+        "patrick-sobral"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "le-reveil-du-krea-kaos-episode-1",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cristelle-ledroit-2026": {
           "abridged": true,
           "added_at": "2026-08-02",
           "asin": [
@@ -8281,7 +8262,7 @@
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91vx34dtUNL.jpg",
-          "id": "cristelle-ledroit-2026-3",
+          "id": "cristelle-ledroit-2026",
           "language": "fr",
           "license": "CC0-1.0",
           "narrators": [
@@ -8307,17 +8288,27 @@
               "type": "libex-import"
             }
           ],
-          "work": "le-reveil-du-krea-kaos"
+          "work": "le-reveil-du-krea-kaos-episode-1"
         }
       },
       "sources": [
         {
           "imported_at": "2026-08-02",
-          "ref": "B0GS6KQBHF",
+          "ref": "B0GXF7HWTD",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GXFCH7MK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-09",
+          "ref": "B0GXF4G2R3",
           "type": "libex-import"
         }
       ],
-      "title": "Le Réveil du Kréa-Kaos"
+      "title": "Le Réveil du Kréa-Kaos - Episode 1"
     },
     "le-reveil-du-krea-kaos-episode-2": {
       "added_at": "2026-08-02",
@@ -8386,6 +8377,80 @@
         }
       ],
       "title": "Le Réveil du Kréa-Kaos - Episode 2"
+    },
+    "le-reveil-du-krea-kaos-episode-3": {
+      "added_at": "2026-10-13",
+      "authors": [
+        "patrick-sobral"
+      ],
+      "genres": [
+        "action-adventure",
+        "childrens",
+        "fantasy",
+        "young-adult"
+      ],
+      "id": "le-reveil-du-krea-kaos-episode-3",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "cristelle-ledroit-2026": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GXKRK3SF",
+              "region": "us"
+            },
+            {
+              "asin": "B0GXKS7YKC",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1679079,
+              "start_ms": 0,
+              "title": "Le Réveil du Kréa-Kaos: Les Légendaires, Tome 4,  Episode 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gwgkbQupL.jpg",
+          "id": "cristelle-ledroit-2026",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "cristelle-ledroit"
+          ],
+          "publisher": "Lizzie",
+          "release_date": "2026-04-30",
+          "runtime_min": 27,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GXKRK3SF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0GXKS7YKC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "le-reveil-du-krea-kaos-episode-3"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0GXKRK3SF",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-09",
+          "ref": "B0GXKS7YKC",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Le Réveil du Kréa-Kaos - Episode 3"
     },
     "le-reveil-laurent-gounelle": {
       "added_at": "2026-07-29",
