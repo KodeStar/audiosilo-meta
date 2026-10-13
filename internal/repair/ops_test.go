@@ -17,7 +17,10 @@ import (
 // through the real detectors, plus every refusal branch.
 
 // retitle-work: a retailer's decoration comes off the TITLE and the slug is left
-// exactly as it was, because a slug is identity.
+// exactly as it was, because a slug is identity. The new title composes a chain the
+// record is not on (the-hobbit, the-hobbit-jane-doe, ...), so the slug an import of
+// it would mint at is aliased onto the record - the import finds the work instead
+// of minting its duplicate.
 func TestRetitleWorkChangesTheTitleAndNotTheSlug(t *testing.T) {
 	data := seedTree(t, map[string]string{
 		"works/th/the-hobbit-unabridged/work.json":                          workJSON(t, "the-hobbit-unabridged", "The Hobbit (Unabridged)"),
@@ -36,8 +39,52 @@ func TestRetitleWorkChangesTheTitleAndNotTheSlug(t *testing.T) {
 	if !entryExists(t, data, pack.FamilyWorks, "the-hobbit-unabridged") {
 		t.Error("the slug moved; a retitle must never rename a record")
 	}
-	if loadRedirects(t, data).Len() != 0 {
-		t.Error("a retitle recorded a tombstone; nothing was retired")
+	reds := loadRedirects(t, data)
+	if reds.Len() != 1 || reds[model.RedirectWorks]["the-hobbit"] != "the-hobbit-unabridged" {
+		t.Errorf("tombstones = %v, want exactly the alias the-hobbit -> the-hobbit-unabridged", reds)
+	}
+	if rep.Redirects != 1 {
+		t.Errorf("report counts %d tombstones, want the one alias", rep.Redirects)
+	}
+}
+
+// retitleTxn runs one retitle proposal against a seeded tree and returns the txn,
+// so a test can read the tombstones it staged.
+func retitleTxn(t *testing.T, files map[string]string, target, from, to string) *txn {
+	t.Helper()
+	rn, tx := planFixture(t, seedTree(t, files))
+	if err := rn.retitleWork(tx, audit.Finding{Key: target, Propose: audit.Proposal{
+		Op: audit.OpRetitle, Target: target, Field: "title", From: from, To: to,
+	}}); err != nil {
+		t.Fatal(err)
+	}
+	return tx
+}
+
+// A retitle that leaves the record on its new title's chain records no alias: an
+// import of the title already finds it.
+func TestRetitleOnItsChainRecordsNoAlias(t *testing.T) {
+	tx := retitleTxn(t, map[string]string{
+		"works/th/the-hobbit/work.json": workJSON(t, "the-hobbit", "The Hobbit (Unabridged)"),
+		"people/ja/jane-doe.json":       personJSON(t, "jane-doe", "Jane Doe"),
+	}, "the-hobbit", "The Hobbit (Unabridged)", "The Hobbit")
+	if len(tx.tombs) != 0 {
+		t.Errorf("tombstones = %+v, want none: the-hobbit is on the chain of %q", tx.tombs, "The Hobbit")
+	}
+}
+
+// The alias is the slug the import would MINT at, so a bare slug another book holds
+// is stepped past onto the author-suffixed candidate, as the importer's walk does.
+func TestRetitleAliasStepsPastAnOccupiedCandidate(t *testing.T) {
+	tx := retitleTxn(t, map[string]string{
+		"works/th/the-hobbit/work.json":            workJSON(t, "the-hobbit", "The Hobbit", withAuthors("john-roe")),
+		"works/th/the-hobbit-unabridged/work.json": workJSON(t, "the-hobbit-unabridged", "The Hobbit: Unabridged Draft"),
+		"people/ja/jane-doe.json":                  personJSON(t, "jane-doe", "Jane Doe"),
+		"people/jo/john-roe.json":                  personJSON(t, "john-roe", "John Roe"),
+	}, "the-hobbit-unabridged", "The Hobbit: Unabridged Draft", "The Hobbit")
+	want := []tomb{{kind: model.RedirectWorks, from: "the-hobbit-jane-doe", to: "the-hobbit-unabridged"}}
+	if !reflect.DeepEqual(tx.tombs, want) {
+		t.Errorf("tombstones = %+v, want %+v", tx.tombs, want)
 	}
 }
 

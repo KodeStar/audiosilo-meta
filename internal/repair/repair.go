@@ -514,9 +514,9 @@ func (rn *runner) apply(store *pack.Store) error {
 	rn.rep.Wrote = true
 	rn.rep.PacksWritten, rn.rep.PacksRemoved = written.Wrote, written.Deleted
 
-	// The tombstones go in AFTER the packs: a table naming a slug that was never
-	// retired is a problem pkg/check reports, and this order means a failed flush
-	// cannot leave one behind.
+	// The tombstones go in AFTER the packs: a table naming a slug the tree still
+	// holds (a merge's loser whose deletion never reached disk) is a problem
+	// pkg/check reports, and this order means a failed flush cannot leave one behind.
 	if rn.plan.tombs > 0 {
 		if err := redirects.Write(rn.opts.DataDir, rn.plan.redirects); err != nil {
 			return err

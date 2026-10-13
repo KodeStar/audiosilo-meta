@@ -2256,10 +2256,10 @@ func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string,
 	case model.IsReservedSlug(base):
 		warn("work slug %q is reserved for an API route; using %q for %q", base, slug, title)
 	case slug != base && retired && survivorHeld:
-		warn("work slug %q was retired by a merge onto %q, which this row does not match; using %q for %q",
+		warn("work slug %q is retired onto %q, which this row does not match; using %q for %q",
 			base, survivor, slug, title)
 	case slug != base && retired:
-		warn("work slug %q was retired by a merge onto %q, which the catalogue does not hold; using %q for %q",
+		warn("work slug %q is retired onto %q, which the catalogue does not hold; using %q for %q",
 			base, survivor, slug, title)
 	case slug != base:
 		warn("work slug %q taken by a different book; using %q for %q", base, slug, title)
@@ -2464,13 +2464,8 @@ func (p *planner) walkWorkChain(title string, chain workChain, authors workAutho
 		}
 		ws, via := p.workAt(cand.slug)
 		if ws == nil {
-			if via == "" { // free: neither live nor retired
-				if w.free == "" && !cand.probeOnly {
-					w.free = cand.slug
-				}
-				if w.free != "" && i >= len(chain.primary) {
-					break
-				}
+			if via == "" && chain.takeFree(i, cand, &w.free) { // free: neither live nor retired
+				break
 			}
 			continue
 		}
@@ -3851,6 +3846,19 @@ func newWorkChain(ts titleSlug, posSuffix string, authors workAuthors, probe pos
 	}
 	c.primary = primaryWorkCandidates(c.base, c.cut, authors, probe)
 	return c
+}
+
+// takeFree folds the i'th candidate, found FREE (neither live nor retired), into
+// first - the first slug a new work may be created at, which a probe-only
+// candidate never is - and reports whether the walk ends there: past the primaries
+// the first free slug ends the chain (primaryWorkCandidates says why). Every walk
+// that looks for the create slug asks it (walkWorkChain, WorkTitleAlias), so they
+// stop where the create path stops.
+func (c workChain) takeFree(i int, cand workCandidate, first *string) (stop bool) {
+	if *first == "" && !cand.probeOnly {
+		*first = cand.slug
+	}
+	return *first != "" && i >= len(c.primary)
 }
 
 // at is the chain's i'th candidate: a primary one, then the numbered collision

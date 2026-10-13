@@ -248,7 +248,7 @@ func (c *composer) gateWorkSlug(slug string, authorNames []string) (string, bool
 	}
 	lead := "a work already exists"
 	if live != slug {
-		lead = fmt.Sprintf("the work slug %q was retired by a merge onto the work", slug)
+		lead = fmt.Sprintf("the work slug %q is retired onto the work", slug)
 	}
 	c.failDuplicateWork(live, "its title", "%s at %s; use the Add a recording form to add another narration",
 		lead, c.entryLocation(pack.FamilyWorks, live, ""))

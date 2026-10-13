@@ -25,6 +25,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/redirects"
 	"golang.org/x/text/unicode/norm"
 )
 
@@ -242,11 +243,22 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // credits (entryWorkAuthors) rather than with authors[0] standing in for all of
 // them.
 //
+// "On the chain" is the importer's own reach, so it counts a candidate the slug
+// tombstone table retires ONTO the record: a retired work candidate is judged as
+// its survivor (tombstone.go), so an import composing it merges into the record.
+// That is how a RETITLED work stays reachable - its slug is identity and never
+// follows the title, so the reviewed-retitle pass records the slug its new title
+// composes as an alias onto it (importer.WorkTitleAlias, internal/repair's
+// retitleWork). A retitle of an apostrophe title ("Messenger's Legacy" at
+// messengers-legacy-novella) is in this test's scope by its characters alone, and
+// without the alias it fails here - correctly, since the next import of the title
+// would mint the duplicate.
+//
 // It deliberately does not demand that of every record: a work slug is composed,
-// so a record can be legitimately off-chain (the catalogue holds one whose title
-// was later corrected). Scoping the assertion to the characters a rule change
-// moved is what keeps this a proof of the two migrations rather than a standing
-// complaint about composed identity in general.
+// so a record can be legitimately off-chain (a hand-made address, or a serial
+// volume reached only by a claim this model does not carry). Scoping the assertion
+// to the characters a rule change moved is what keeps this a proof of the two
+// migrations rather than a standing complaint about composed identity in general.
 //
 // The SERIES arm asks the importer's real reach question, not the chain alone:
 // a series off its name's chain is current when SeriesAuthorIndex.Resolve over
@@ -258,6 +270,10 @@ func TestDataPeopleSlugsAreTransliterated(t *testing.T) {
 // series is off its chain.
 func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 	claims := dataSeriesClaims(t)
+	reds, err := redirects.Load(dataDir)
+	if err != nil {
+		t.Fatal(err)
+	}
 	walkEntries(t, "works", func(path, key string, e map[string]any) {
 		title := str(e, "title")
 		if !movedByTransliteration(title) && !movedByApostrophe(title) {
@@ -266,7 +282,7 @@ func TestDataWorkAndSeriesSlugsAreCurrent(t *testing.T) {
 		cands, _ := workCandidates(Slugify(cleanWorkTitle(title)),
 			entryWorkAuthors(e), claims[key])
 		for _, cand := range cands {
-			if cand.slug == key {
+			if to, _ := reds.Survivor(model.RedirectWorks, cand.slug); cand.slug == key || to == key {
 				return
 			}
 		}

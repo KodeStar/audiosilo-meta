@@ -205,23 +205,10 @@ func (rn *runner) splitSeries(t *txn, fd audit.Finding) error {
 		return refusef(CatStaleValue, "the members of %s that stay would derive %s, the language moving out", p.Target, got)
 	}
 	name := se.Str("name")
-	var lookupErr error
-	slug := importer.FreeSeriesSlug(name, func(slug string) bool {
-		if _, retired := t.p.retiredBy(pack.FamilySeries, slug); retired {
-			return true
-		}
-		if lookupErr != nil {
-			return false // stop the walk: the error is returned below, whatever slug it ends on
-		}
-		_, held, gerr := t.series.get(slug)
-		if gerr != nil {
-			lookupErr = gerr
-			return false
-		}
-		return held
-	}, t.p.redirects)
-	if lookupErr != nil {
-		return lookupErr
+	lookup := t.heldIn(pack.FamilySeries)
+	slug := importer.FreeSeriesSlug(name, lookup.held, t.p.redirects)
+	if lookup.err != nil {
+		return lookup.err
 	}
 	if slug == "" {
 		return refusef(CatMalformed, "the name %q slugs away to nothing, so the new series has no slug to be minted at", name)

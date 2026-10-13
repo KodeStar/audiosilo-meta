@@ -13,7 +13,8 @@
 // ITS ONE CALLER is internal/repair, the duplicate-merge pass this mechanism was
 // built ahead of: retiring a slug without a tombstone is what had to be made
 // impossible before any such pass ran, and every slug a merge retires is recorded
-// here in the same change. The chain collapse is what that caller actually needs -
+// here in the same change. The same pass also records a retitle's ALIAS here (see
+// model.Redirects). The chain collapse is what that caller actually needs -
 // waves land over each other, so today's target is tomorrow's source. The one
 // repair that predates the mechanism, internal/remediate's GraphicAudio fold, was
 // not retrofitted - it is a documented one-off that has done its work, so
@@ -153,7 +154,9 @@ func normalize(r model.Redirects) (model.Redirects, error) {
 // appear in the table (model.ValidRedirectSlug), a redirect from a slug that
 // already points somewhere else, and a target that collapses back onto from
 // (which would be a self-redirect, i.e. a cycle). Re-adding a redirect that is
-// already recorded is a no-op, so a repair pass is idempotent.
+// already recorded is a no-op, so a repair pass is idempotent. Every refusal is
+// decided before any redirect is written, so a refused Add leaves every entry of
+// r as it was (internal/repair's commit relies on that for a single tombstone).
 //
 // Whether from is really retired and to really exists are questions about the
 // CATALOGUE, which this package deliberately does not read; pkg/check answers

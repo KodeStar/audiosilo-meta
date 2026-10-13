@@ -77,7 +77,8 @@ func (l *loader) loadRedirects(aux []string) model.Redirects {
 }
 
 // checkRedirects enforces what a redirect must be: a TOMBSTONE for a slug the
-// database no longer holds, pointing directly at one it does.
+// database does not hold (a merge retired it, or - a retitle's alias - it never
+// held it; see model.Redirects), pointing directly at one it does.
 //
 // Five rules, each closing a way the table could stop resolving:
 //

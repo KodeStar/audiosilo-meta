@@ -303,8 +303,12 @@ func serialPositionSuffix(pos string) string {
 	if slug == "" {
 		return ""
 	}
-	return "book-" + slug
+	return serialTailPrefix + slug
 }
+
+// serialTailPrefix opens the serial pre-pass's position tail ("book-3"). It is
+// named because WorkTitleAlias reads the same shape back off a slug.
+const serialTailPrefix = "book-"
 
 // seriesScopedSuffix is serialPositionSuffix with the SERIES named too, for a
 // group whose rows claim positions in more than one series. Without it, "book
