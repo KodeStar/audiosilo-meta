@@ -5604,12 +5604,51 @@
         "sofia-guadarrama-collado"
       ],
       "genres": [
-        "historical-fiction"
+        "historical-fiction",
+        "thriller-suspense"
       ],
       "id": "enigmas-de-los-dioses-del-mexico-antiguo-edicion-decimo-aniversario-enigmas-of-the-gods-of-ancient-m",
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "arturo-mercado-jr-2024": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B0DJDLZDNJ",
+              "region": "us"
+            },
+            {
+              "asin": "B0DJDLMHG4",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81mZWtcXAuL.jpg",
+          "id": "arturo-mercado-jr-2024",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arturo-mercado-jr",
+            "daniel-cubillo"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2024-10-15",
+          "runtime_min": 2038,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B0DJDLZDNJ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DJDLMHG4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "enigmas-de-los-dioses-del-mexico-antiguo-edicion-decimo-aniversario-enigmas-of-the-gods-of-ancient-m"
+        },
         "rafael-serrano-2021": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -5654,70 +5693,14 @@
           "imported_at": "2026-07-29",
           "ref": "B09LNHCML2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Enigmas de los dioses del México antiguo (Edición décimo aniversario) [Enigmas of the Gods of Ancient Mexico (Tenth Anniversary Edition)]"
-    },
-    "enigmas-de-los-dioses-del-mexico-antiguo-enigmas-of-the-gods-of-ancient-mexico": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "sofia-guadarrama-collado"
-      ],
-      "genres": [
-        "historical-fiction",
-        "thriller-suspense"
-      ],
-      "id": "enigmas-de-los-dioses-del-mexico-antiguo-enigmas-of-the-gods-of-ancient-mexico",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
-        "arturo-mercado-jr-2024": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B0DJDLZDNJ",
-              "region": "us"
-            },
-            {
-              "asin": "B0DJDLMHG4",
-              "region": "uk"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81mZWtcXAuL.jpg",
-          "id": "arturo-mercado-jr-2024",
-          "language": "es",
-          "license": "CC0-1.0",
-          "narrators": [
-            "arturo-mercado-jr",
-            "daniel-cubillo"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2024-10-15",
-          "runtime_min": 2038,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B0DJDLZDNJ",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DJDLMHG4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "enigmas-de-los-dioses-del-mexico-antiguo-enigmas-of-the-gods-of-ancient-mexico"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-29",
           "ref": "B0DJDLZDNJ",
           "type": "libex-import"
         }
       ],
-      "title": "Enigmas de los dioses del México antiguo [Enigmas of the Gods of Ancient Mexico]"
+      "title": "Enigmas de los dioses del México antiguo (Edición décimo aniversario) [Enigmas of the Gods of Ancient Mexico (Tenth Anniversary Edition)]"
     },
     "enigmas-y-misterios-de-la-segunda-guerra-mundial": {
       "added_at": "2026-07-29",

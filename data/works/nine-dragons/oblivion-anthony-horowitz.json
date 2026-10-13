@@ -4448,167 +4448,10 @@
         "classics",
         "comedy-humor",
         "historical-fiction",
+        "literary-fiction",
         "psychological-thriller"
       ],
       "id": "oblomov",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "stefan-rudnicki-2019": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "1094001015",
-              "region": "us"
-            },
-            {
-              "asin": "1094001015",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1232840,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1792116,
-              "start_ms": 1232840,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 669547,
-              "start_ms": 3024956,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1093613,
-              "start_ms": 3694503,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 3039306,
-              "start_ms": 4788116,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 3605060,
-              "start_ms": 7827422,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1536650,
-              "start_ms": 11432482,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 388307,
-              "start_ms": 12969132,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 723951,
-              "start_ms": 13357439,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 520591,
-              "start_ms": 14081390,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 910988,
-              "start_ms": 14601981,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 632558,
-              "start_ms": 15512969,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 571953,
-              "start_ms": 16145527,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1229682,
-              "start_ms": 16717480,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1318591,
-              "start_ms": 17947162,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 1479111,
-              "start_ms": 19265753,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 703448,
-              "start_ms": 20744864,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 585700,
-              "start_ms": 21448312,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 669732,
-              "start_ms": 22034012,
-              "title": "Chapter 19"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Vg6XGrLyL.jpg",
-          "id": "stefan-rudnicki-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "stefan-rudnicki"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2019-06-25",
-          "runtime_min": 378,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "1094001015",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "1094001015",
-              "type": "libex-import"
-            }
-          ],
-          "work": "oblomov"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "1094001015",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Oblomov"
-    },
-    "oblomov-ivan-goncharov": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "ivan-goncharov"
-      ],
-      "genres": [
-        "classics",
-        "comedy-humor",
-        "literary-fiction"
-      ],
-      "id": "oblomov-ivan-goncharov",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -4894,10 +4737,149 @@
               "type": "libex-import"
             }
           ],
-          "work": "oblomov-ivan-goncharov"
+          "work": "oblomov"
+        },
+        "stefan-rudnicki-2019": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "1094001015",
+              "region": "us"
+            },
+            {
+              "asin": "1094001015",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1232840,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1792116,
+              "start_ms": 1232840,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 669547,
+              "start_ms": 3024956,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1093613,
+              "start_ms": 3694503,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3039306,
+              "start_ms": 4788116,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3605060,
+              "start_ms": 7827422,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1536650,
+              "start_ms": 11432482,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 388307,
+              "start_ms": 12969132,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 723951,
+              "start_ms": 13357439,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 520591,
+              "start_ms": 14081390,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 910988,
+              "start_ms": 14601981,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 632558,
+              "start_ms": 15512969,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 571953,
+              "start_ms": 16145527,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1229682,
+              "start_ms": 16717480,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1318591,
+              "start_ms": 17947162,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 1479111,
+              "start_ms": 19265753,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 703448,
+              "start_ms": 20744864,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 585700,
+              "start_ms": 21448312,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 669732,
+              "start_ms": 22034012,
+              "title": "Chapter 19"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Vg6XGrLyL.jpg",
+          "id": "stefan-rudnicki-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "stefan-rudnicki"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2019-06-25",
+          "runtime_min": 378,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "1094001015",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "1094001015",
+              "type": "libex-import"
+            }
+          ],
+          "work": "oblomov"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "1094001015",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-07",
           "ref": "B083JMPPT7",

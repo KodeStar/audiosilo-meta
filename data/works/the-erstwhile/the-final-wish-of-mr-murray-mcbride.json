@@ -9814,6 +9814,15 @@
         "james-patterson",
         "jill-dembowski"
       ],
+      "genres": [
+        "action-adventure",
+        "dystopian",
+        "fantasy",
+        "parenting-relationships",
+        "science-fiction",
+        "sword-sorcery",
+        "young-adult"
+      ],
       "id": "the-fire",
       "language": "en",
       "license": "CC0-1.0",
@@ -9828,6 +9837,18 @@
             },
             {
               "asin": "B079G67BCC",
+              "region": "uk"
+            },
+            {
+              "asin": "B005J5TGZQ",
+              "region": "us"
+            },
+            {
+              "asin": "B005J5TLII",
+              "region": "de"
+            },
+            {
+              "asin": "B005J5TNHM",
               "region": "uk"
             }
           ],
@@ -10329,6 +10350,21 @@
               "imported_at": "2026-10-09",
               "ref": "B079G67BCC",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005J5TGZQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B005J5TLII",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B005J5TNHM",
+              "type": "libex-import"
             }
           ],
           "work": "the-fire"
@@ -10338,6 +10374,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B00686T85S",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B005J5TGZQ",
           "type": "libex-import"
         }
       ],

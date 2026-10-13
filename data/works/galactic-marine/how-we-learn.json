@@ -5885,15 +5885,86 @@
       "authors": [
         "e-m-forster"
       ],
+      "credits": [
+        {
+          "person": "benjamin-demott",
+          "role": "introduction"
+        },
+        {
+          "person": "regina-marler",
+          "role": "afterword"
+        }
+      ],
       "genres": [
         "classics",
         "literary-fiction",
+        "parenting-relationships",
         "psychological-thriller"
       ],
       "id": "howards-end",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "emma-thompson-2009": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B002VA3O1E",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1753570,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2104192,
+              "start_ms": 1753570,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1869159,
+              "start_ms": 3857762,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1688137,
+              "start_ms": 5726921,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1691898,
+              "start_ms": 7415058,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1823927,
+              "start_ms": 9106956,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/710azZyrzOL.jpg",
+          "id": "emma-thompson-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-thompson"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2009-05-13",
+          "runtime_min": 182,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B002VA3O1E",
+              "type": "libex-import"
+            }
+          ],
+          "work": "howards-end"
+        },
         "nadia-may-1999": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -6419,96 +6490,7 @@
           "imported_at": "2026-08-07",
           "ref": "B0D2JM9PY3",
           "type": "libex-import"
-        }
-      ],
-      "title": "Howards End"
-    },
-    "howards-end-e-m-forster": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "e-m-forster"
-      ],
-      "credits": [
-        {
-          "person": "benjamin-demott",
-          "role": "introduction"
         },
-        {
-          "person": "regina-marler",
-          "role": "afterword"
-        }
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "parenting-relationships"
-      ],
-      "id": "howards-end-e-m-forster",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emma-thompson-2009": {
-          "abridged": true,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B002VA3O1E",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1753570,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2104192,
-              "start_ms": 1753570,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1869159,
-              "start_ms": 3857762,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1688137,
-              "start_ms": 5726921,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1691898,
-              "start_ms": 7415058,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1823927,
-              "start_ms": 9106956,
-              "title": "Chapter 6"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/710azZyrzOL.jpg",
-          "id": "emma-thompson-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emma-thompson"
-          ],
-          "publisher": "Penguin Audio",
-          "release_date": "2009-05-13",
-          "runtime_min": 182,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B002VA3O1E",
-              "type": "libex-import"
-            }
-          ],
-          "work": "howards-end-e-m-forster"
-        }
-      },
-      "sources": [
         {
           "imported_at": "2026-08-07",
           "ref": "B002VA3O1E",

@@ -5546,6 +5546,63 @@
           ],
           "work": "brave-new-world"
         },
+        "aldous-huxley-2012": {
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B008KM7WHY",
+              "region": "us"
+            },
+            {
+              "asin": "B008KM8DMC",
+              "region": "de"
+            },
+            {
+              "asin": "B008KM8V1A",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1835444,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1788772,
+              "start_ms": 1835444,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91ToqpsWzFL.jpg",
+          "id": "aldous-huxley-2012",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "aldous-huxley"
+          ],
+          "publisher": "ABN",
+          "release_date": "2012-07-13",
+          "runtime_min": 60,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B008KM7WHY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B008KM8DMC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B008KM8V1A",
+              "type": "libex-import"
+            }
+          ],
+          "work": "brave-new-world"
+        },
         "anton-lesser-2016": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -6081,89 +6138,14 @@
           "imported_at": "2026-07-30",
           "ref": "B002V1BVK4",
           "type": "libex-import"
-        }
-      ],
-      "title": "Brave New World"
-    },
-    "brave-new-world-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "aldous-huxley"
-      ],
-      "genres": [
-        "dystopian",
-        "science-fiction"
-      ],
-      "id": "brave-new-world-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "aldous-huxley-2012": {
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B008KM7WHY",
-              "region": "us"
-            },
-            {
-              "asin": "B008KM8DMC",
-              "region": "de"
-            },
-            {
-              "asin": "B008KM8V1A",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1835444,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1788772,
-              "start_ms": 1835444,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91ToqpsWzFL.jpg",
-          "id": "aldous-huxley-2012",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "aldous-huxley"
-          ],
-          "publisher": "ABN",
-          "release_date": "2012-07-13",
-          "runtime_min": 60,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B008KM7WHY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B008KM8DMC",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B008KM8V1A",
-              "type": "libex-import"
-            }
-          ],
-          "work": "brave-new-world-dramatized"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B008KM7WHY",
           "type": "libex-import"
         }
       ],
-      "title": "Brave New World (Dramatized)"
+      "title": "Brave New World"
     },
     "brave-new-world-guillem-balague": {
       "added_at": "2026-07-29",

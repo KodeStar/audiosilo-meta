@@ -9470,8 +9470,11 @@
         "jerry-b-jenkins"
       ],
       "genres": [
+        "espionage",
+        "politics",
         "religious-fiction",
-        "science-fiction"
+        "science-fiction",
+        "thriller-suspense"
       ],
       "id": "silenced-jerry-b-jenkins",
       "language": "en",
@@ -9675,33 +9678,7 @@
             }
           ],
           "work": "silenced-jerry-b-jenkins"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B004O9FBL6",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Silenced"
-    },
-    "silenced-jerry-jenkins": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "espionage",
-        "politics",
-        "religious-fiction",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "silenced-jerry-jenkins",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "steve-sever-2005": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -9914,10 +9891,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "silenced-jerry-jenkins"
+          "work": "silenced-jerry-b-jenkins"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B004O9FBL6",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V5D68U",

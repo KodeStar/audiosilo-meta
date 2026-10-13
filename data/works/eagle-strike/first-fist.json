@@ -8993,6 +8993,14 @@
             {
               "asin": "B0FLYN3LWW",
               "region": "es"
+            },
+            {
+              "asin": "B0DWCWSWBK",
+              "region": "us"
+            },
+            {
+              "asin": "B0DWCRZHHQ",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -9117,6 +9125,16 @@
               "imported_at": "2026-10-09",
               "ref": "B0FLYN3LWW",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DWCWSWBK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0DWCRZHHQ",
+              "type": "libex-import"
             }
           ],
           "work": "first-light-rachel-newhouse"
@@ -9126,6 +9144,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B0FLYNFQ87",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DWCWSWBK",
           "type": "libex-import"
         }
       ],
@@ -9389,132 +9412,6 @@
         }
       ],
       "title": "First Light"
-    },
-    "first-light-red-rain": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rachel-newhouse"
-      ],
-      "genres": [
-        "young-adult"
-      ],
-      "id": "first-light-red-rain",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "eric-burgher-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DWCWSWBK",
-              "region": "us"
-            },
-            {
-              "asin": "B0DWCRZHHQ",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 18157,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 674052,
-              "start_ms": 18157,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 897358,
-              "start_ms": 692209,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1189906,
-              "start_ms": 1589567,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1006167,
-              "start_ms": 2779473,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1022165,
-              "start_ms": 3785640,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 751374,
-              "start_ms": 4807805,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 435467,
-              "start_ms": 5559179,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1184496,
-              "start_ms": 5994646,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 651319,
-              "start_ms": 7179142,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1313552,
-              "start_ms": 7830461,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 155086,
-              "start_ms": 9144013,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 47948,
-              "start_ms": 9299099,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81oTpsjeKkL.jpg",
-          "id": "eric-burgher-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "eric-burgher"
-          ],
-          "publisher": "Rachel Newhouse",
-          "release_date": "2025-02-07",
-          "runtime_min": 155,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DWCWSWBK",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0DWCRZHHQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "first-light-red-rain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DWCWSWBK",
-          "type": "libex-import"
-        }
-      ],
-      "title": "First Light: Red Rain"
     },
     "first-light-shadowlands-book-1": {
       "added_at": "2026-08-02",

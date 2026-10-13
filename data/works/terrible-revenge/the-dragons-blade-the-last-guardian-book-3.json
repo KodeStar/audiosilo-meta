@@ -7874,7 +7874,9 @@
       "genres": [
         "childrens",
         "epic-fantasy",
-        "fantasy"
+        "fantasy",
+        "sword-sorcery",
+        "young-adult"
       ],
       "id": "the-dragons-mage",
       "language": "en",
@@ -8054,31 +8056,7 @@
             }
           ],
           "work": "the-dragons-mage"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00VMVE598",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Dragon's Mage"
-    },
-    "the-dragons-mage-advent-mage-cycle-book-6": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "honor-raconteur"
-      ],
-      "genres": [
-        "fantasy",
-        "sword-sorcery",
-        "young-adult"
-      ],
-      "id": "the-dragons-mage-advent-mage-cycle-book-6",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "mark-mcclain-wilson-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -8252,17 +8230,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-dragons-mage-advent-mage-cycle-book-6"
+          "work": "the-dragons-mage"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00VMVE598",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0H46KLM18",
           "type": "libex-import"
         }
       ],
-      "title": "The Dragon's Mage: Advent Mage Cycle, Book 6"
+      "title": "The Dragon's Mage"
     },
     "the-dragons-magical-bride": {
       "added_at": "2026-07-29",

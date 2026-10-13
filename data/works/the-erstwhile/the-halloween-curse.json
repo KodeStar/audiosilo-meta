@@ -962,6 +962,8 @@
       "genres": [
         "childrens",
         "classics",
+        "coming-of-age",
+        "fairy-tales-folklore",
         "fantasy",
         "horror",
         "paranormal"
@@ -1137,32 +1139,7 @@
             }
           ],
           "work": "the-halloween-tree"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B0FMHTFY2Q",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Halloween Tree"
-    },
-    "the-halloween-tree-dramatized": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "ray-bradbury"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "the-halloween-tree-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "uncredited-2008": {
           "added_at": "2026-08-08",
           "asin": [
@@ -1195,17 +1172,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-halloween-tree-dramatized"
+          "work": "the-halloween-tree"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0FMHTFY2Q",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-08",
           "ref": "B002V8H976",
           "type": "libex-import"
         }
       ],
-      "title": "The Halloween Tree (Dramatized)"
+      "title": "The Halloween Tree"
     },
     "the-halloween-warriors-part-4-and-5": {
       "added_at": "2026-08-01",

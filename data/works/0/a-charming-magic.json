@@ -7496,16 +7496,84 @@
         }
       ],
       "genres": [
+        "childrens",
         "classics",
+        "fantasy",
         "literary-fiction",
         "politics",
+        "religious-fiction",
         "short-stories",
-        "social-sciences"
+        "social-sciences",
+        "young-adult"
       ],
       "id": "a-christmas-carol",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "anton-lesser-2006": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V0PUVG",
+              "region": "us"
+            },
+            {
+              "asin": "B004EWSUZC",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2646935,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2584242,
+              "start_ms": 2646935,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3315670,
+              "start_ms": 5231177,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2112737,
+              "start_ms": 8546847,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 930470,
+              "start_ms": 10659584,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/61bfKbWK1cL.jpg",
+          "id": "anton-lesser-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "anton-lesser"
+          ],
+          "publisher": "Naxos AudioBooks",
+          "release_date": "2006-11-21",
+          "runtime_min": 193,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V0PUVG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EWSUZC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
         "b-j-harrison-2011": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -8007,6 +8075,86 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B00B02AFD4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
+        "charlton-griffin-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1A7MM",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1294698,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1682797,
+              "start_ms": 1294698,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1266045,
+              "start_ms": 2977495,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1268785,
+              "start_ms": 4243540,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1067050,
+              "start_ms": 5512325,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1127700,
+              "start_ms": 6579375,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1224667,
+              "start_ms": 7707075,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1340070,
+              "start_ms": 8931742,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 907389,
+              "start_ms": 10271812,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 953040,
+              "start_ms": 11179201,
+              "title": "Chapter 10"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81dQglktt8L.jpg",
+          "id": "charlton-griffin-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "charlton-griffin"
+          ],
+          "publisher": "Audio Connoisseur",
+          "release_date": "2008-12-01",
+          "runtime_min": 202,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1A7MM",
               "type": "libex-import"
             }
           ],
@@ -8754,6 +8902,97 @@
             {
               "imported_at": "2026-07-30",
               "ref": "229104348X",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
+        "devon-ryder-2025": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B0FPSRSKCN",
+              "region": "us"
+            },
+            {
+              "asin": "B0FPSS5MX8",
+              "region": "de"
+            },
+            {
+              "asin": "B0FPSSBXJH",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 30185,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2335857,
+              "start_ms": 30185,
+              "title": "Stave 1: Marley's Ghost"
+            },
+            {
+              "length_ms": 2167954,
+              "start_ms": 2366042,
+              "title": "Stave 2: The First of the Three Spirits"
+            },
+            {
+              "length_ms": 2852292,
+              "start_ms": 4533996,
+              "title": "Stave 3: The Second of the Three Spirits"
+            },
+            {
+              "length_ms": 1847217,
+              "start_ms": 7386288,
+              "title": "Stave 4: The Last of the Spirits"
+            },
+            {
+              "length_ms": 792357,
+              "start_ms": 9233505,
+              "title": "Stave 5: The End of It"
+            },
+            {
+              "length_ms": 41957,
+              "start_ms": 10025862,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1JlothNvfL.jpg",
+          "id": "devon-ryder-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "devon-ryder",
+            "gary-furlong",
+            "joe-arden",
+            "lucy-rivers",
+            "maxine-mitchell",
+            "sebastian-york",
+            "tieran-wilder",
+            "tim-paige",
+            "troy-duran"
+          ],
+          "publisher": "Blue Nose Publishing",
+          "release_date": "2025-09-21",
+          "runtime_min": 167,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B0FPSRSKCN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FPSS5MX8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B0FPSSBXJH",
               "type": "libex-import"
             }
           ],
@@ -10185,6 +10424,34 @@
           ],
           "work": "a-christmas-carol"
         },
+        "john-pether-2013": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B00CS50CJ4",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71iEtqRzhSL.jpg",
+          "id": "john-pether-2013",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "john-pether"
+          ],
+          "publisher": "Trout Lake Media",
+          "release_date": "2013-05-15",
+          "runtime_min": 208,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B00CS50CJ4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
         "jon-baum-2021": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -10361,6 +10628,135 @@
           ],
           "work": "a-christmas-carol"
         },
+        "kate-shrewsday-2015": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B00RY659PY",
+              "region": "us"
+            },
+            {
+              "asin": "B00RY6EVLW",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 9149,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 396690,
+              "start_ms": 9149,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2334859,
+              "start_ms": 405839,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2211051,
+              "start_ms": 2740698,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2819367,
+              "start_ms": 4951749,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1877658,
+              "start_ms": 7771116,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 794355,
+              "start_ms": 9648774,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 20666,
+              "start_ms": 10443129,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/41fAsWAhfNL.jpg",
+          "id": "kate-shrewsday-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kate-shrewsday"
+          ],
+          "publisher": "Kate Shrewsday",
+          "release_date": "2015-01-08",
+          "runtime_min": 174,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B00RY659PY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B00RY6EVLW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
+        "kip-allen-2008": {
+          "abridged": true,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B002V8H624",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1372206,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 662744,
+              "start_ms": 1372206,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1275240,
+              "start_ms": 2034950,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1163691,
+              "start_ms": 3310190,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71-9K9VYFpL.jpg",
+          "id": "kip-allen-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kip-allen"
+          ],
+          "publisher": "PC Treasures, Inc.",
+          "release_date": "2008-01-21",
+          "runtime_min": 74,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B002V8H624",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
         "kyle-m-2018": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -10512,6 +10908,50 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B06W532K4L",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
+        "lionel-barrymore-2010": {
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B003WRBHHI",
+              "region": "us"
+            },
+            {
+              "asin": "B004F1XJDA",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2746549,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91NHzPW9ipL.jpg",
+          "id": "lionel-barrymore-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lionel-barrymore",
+            "orson-welles"
+          ],
+          "publisher": "Saland Publishing",
+          "release_date": "2010-07-22",
+          "runtime_min": 45,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B003WRBHHI",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004F1XJDA",
               "type": "libex-import"
             }
           ],
@@ -10725,6 +11165,101 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B002V8MIUO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
+        "patrick-stewart-2006": {
+          "abridged": true,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V1AGEG",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2888934,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3543086,
+              "start_ms": 2888934,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81PEbIekRmL.jpg",
+          "id": "patrick-stewart-2006",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "patrick-stewart"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2006-10-03",
+          "runtime_min": 107,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V1AGEG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
+        "paul-albertson-2008": {
+          "abridged": false,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002V1A786",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 3120901,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2872959,
+              "start_ms": 3120901,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3811974,
+              "start_ms": 5993860,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2617957,
+              "start_ms": 9805834,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1119062,
+              "start_ms": 12423791,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91c8KN30rRL.jpg",
+          "id": "paul-albertson-2008",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "paul-albertson"
+          ],
+          "publisher": "Alpha DVD",
+          "release_date": "2008-07-11",
+          "runtime_min": 225,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002V1A786",
               "type": "libex-import"
             }
           ],
@@ -11409,6 +11944,76 @@
           ],
           "work": "a-christmas-carol"
         },
+        "simon-prebble-2007": {
+          "abridged": false,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "B002V1CF68",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 34605,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 31247,
+              "start_ms": 34605,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 2686317,
+              "start_ms": 65852,
+              "title": "Chapter One: Marley’s Ghost"
+            },
+            {
+              "length_ms": 2448498,
+              "start_ms": 2752169,
+              "title": "Chapter Two: The First of the Three Spirits"
+            },
+            {
+              "length_ms": 3066149,
+              "start_ms": 5200667,
+              "title": "Chapter Three: The Second of the Three Spirits"
+            },
+            {
+              "length_ms": 2174270,
+              "start_ms": 8266816,
+              "title": "Chapter Four: The Last of the Spirits"
+            },
+            {
+              "length_ms": 872630,
+              "start_ms": 10441086,
+              "title": "Chapter Five: The End of It"
+            },
+            {
+              "length_ms": 47855,
+              "start_ms": 11313716,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/513wS6tWSVL.jpg",
+          "id": "simon-prebble-2007",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "simon-prebble"
+          ],
+          "publisher": "Blackstone Audio, Inc.",
+          "release_date": "2007-12-31",
+          "runtime_min": 189,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "B002V1CF68",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
         "simon-vance-2011": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11745,6 +12350,65 @@
           ],
           "work": "a-christmas-carol"
         },
+        "the-st-charles-players-2001": {
+          "abridged": true,
+          "added_at": "2026-07-29",
+          "asin": [
+            {
+              "asin": "B002VACHXA",
+              "region": "us"
+            },
+            {
+              "asin": "B004EVRDR4",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 1668818,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1663199,
+              "start_ms": 1668818,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1661620,
+              "start_ms": 3332017,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1674437,
+              "start_ms": 4993637,
+              "title": "Chapter 4"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51lMkGMN3nL.jpg",
+          "id": "the-st-charles-players-2001",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "the-st-charles-players"
+          ],
+          "publisher": "Monterey SoundWorks",
+          "release_date": "2001-01-27",
+          "runtime_min": 111,
+          "sources": [
+            {
+              "imported_at": "2026-07-29",
+              "ref": "B002VACHXA",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004EVRDR4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
         "tim-curry-2016": {
           "abridged": false,
           "added_at": "2026-09-24",
@@ -11991,6 +12655,61 @@
         {
           "imported_at": "2026-08-07",
           "ref": "B0FT454VBJ",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1A786",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B00RY659PY",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V1A7MM",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002V1CF68",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B0FPSRSKCN",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B003WRBHHI",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002VACHXA",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B002V0PUVG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B002V8H624",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "B002V1AGEG",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-07-29",
+          "ref": "B00CS50CJ4",
           "type": "libex-import"
         }
       ],
@@ -12262,83 +12981,6 @@
         }
       ],
       "title": "A Christmas Carol (Adaptation)"
-    },
-    "a-christmas-carol-alpha-dvd-version": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "childrens"
-      ],
-      "id": "a-christmas-carol-alpha-dvd-version",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "paul-albertson-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1A786",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 3120901,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2872959,
-              "start_ms": 3120901,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3811974,
-              "start_ms": 5993860,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2617957,
-              "start_ms": 9805834,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1119062,
-              "start_ms": 12423791,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91c8KN30rRL.jpg",
-          "id": "paul-albertson-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "paul-albertson"
-          ],
-          "publisher": "Alpha DVD",
-          "release_date": "2008-07-11",
-          "runtime_min": 225,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1A786",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-alpha-dvd-version"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V1A786",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol [Alpha DVD Version]"
     },
     "a-christmas-carol-and-other-christmas-writings": {
       "added_at": "2026-08-07",
@@ -12702,414 +13344,6 @@
         }
       ],
       "title": "A Christmas Carol and The Night Before Christmas"
-    },
-    "a-christmas-carol-annotated": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "a-christmas-carol-annotated",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kate-shrewsday-2015": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B00RY659PY",
-              "region": "us"
-            },
-            {
-              "asin": "B00RY6EVLW",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 9149,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 396690,
-              "start_ms": 9149,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2334859,
-              "start_ms": 405839,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 2211051,
-              "start_ms": 2740698,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2819367,
-              "start_ms": 4951749,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1877658,
-              "start_ms": 7771116,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 794355,
-              "start_ms": 9648774,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 20666,
-              "start_ms": 10443129,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/41fAsWAhfNL.jpg",
-          "id": "kate-shrewsday-2015",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kate-shrewsday"
-          ],
-          "publisher": "Kate Shrewsday",
-          "release_date": "2015-01-08",
-          "runtime_min": 174,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B00RY659PY",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B00RY6EVLW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-annotated"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B00RY659PY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol (Annotated)"
-    },
-    "a-christmas-carol-audio-connoisseur-version": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "a-christmas-carol-audio-connoisseur-version",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "charlton-griffin-2008": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V1A7MM",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1294698,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1682797,
-              "start_ms": 1294698,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1266045,
-              "start_ms": 2977495,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1268785,
-              "start_ms": 4243540,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 1067050,
-              "start_ms": 5512325,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1127700,
-              "start_ms": 6579375,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1224667,
-              "start_ms": 7707075,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1340070,
-              "start_ms": 8931742,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 907389,
-              "start_ms": 10271812,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 953040,
-              "start_ms": 11179201,
-              "title": "Chapter 10"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81dQglktt8L.jpg",
-          "id": "charlton-griffin-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "charlton-griffin"
-          ],
-          "publisher": "Audio Connoisseur",
-          "release_date": "2008-12-01",
-          "runtime_min": 202,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V1A7MM",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-audio-connoisseur-version"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V1A7MM",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol [Audio Connoisseur Version]"
-    },
-    "a-christmas-carol-blackstone-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "a-christmas-carol-blackstone-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "simon-prebble-2007": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002V1CF68",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 34605,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 31247,
-              "start_ms": 34605,
-              "title": "Preface"
-            },
-            {
-              "length_ms": 2686317,
-              "start_ms": 65852,
-              "title": "Chapter One: Marley’s Ghost"
-            },
-            {
-              "length_ms": 2448498,
-              "start_ms": 2752169,
-              "title": "Chapter Two: The First of the Three Spirits"
-            },
-            {
-              "length_ms": 3066149,
-              "start_ms": 5200667,
-              "title": "Chapter Three: The Second of the Three Spirits"
-            },
-            {
-              "length_ms": 2174270,
-              "start_ms": 8266816,
-              "title": "Chapter Four: The Last of the Spirits"
-            },
-            {
-              "length_ms": 872630,
-              "start_ms": 10441086,
-              "title": "Chapter Five: The End of It"
-            },
-            {
-              "length_ms": 47855,
-              "start_ms": 11313716,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/513wS6tWSVL.jpg",
-          "id": "simon-prebble-2007",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "simon-prebble"
-          ],
-          "publisher": "Blackstone Audio, Inc.",
-          "release_date": "2007-12-31",
-          "runtime_min": 189,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002V1CF68",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-blackstone-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002V1CF68",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol (Blackstone Edition)"
-    },
-    "a-christmas-carol-blue-nose-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "a-christmas-carol-blue-nose-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "devon-ryder-2025": {
-          "abridged": false,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B0FPSRSKCN",
-              "region": "us"
-            },
-            {
-              "asin": "B0FPSS5MX8",
-              "region": "de"
-            },
-            {
-              "asin": "B0FPSSBXJH",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 30185,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 2335857,
-              "start_ms": 30185,
-              "title": "Stave 1: Marley's Ghost"
-            },
-            {
-              "length_ms": 2167954,
-              "start_ms": 2366042,
-              "title": "Stave 2: The First of the Three Spirits"
-            },
-            {
-              "length_ms": 2852292,
-              "start_ms": 4533996,
-              "title": "Stave 3: The Second of the Three Spirits"
-            },
-            {
-              "length_ms": 1847217,
-              "start_ms": 7386288,
-              "title": "Stave 4: The Last of the Spirits"
-            },
-            {
-              "length_ms": 792357,
-              "start_ms": 9233505,
-              "title": "Stave 5: The End of It"
-            },
-            {
-              "length_ms": 41957,
-              "start_ms": 10025862,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/A1JlothNvfL.jpg",
-          "id": "devon-ryder-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "devon-ryder",
-            "gary-furlong",
-            "joe-arden",
-            "lucy-rivers",
-            "maxine-mitchell",
-            "sebastian-york",
-            "tieran-wilder",
-            "tim-paige",
-            "troy-duran"
-          ],
-          "publisher": "Blue Nose Publishing",
-          "release_date": "2025-09-21",
-          "runtime_min": 167,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B0FPSRSKCN",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0FPSS5MX8",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B0FPSSBXJH",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-blue-nose-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B0FPSRSKCN",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol (Blue Nose Edition)"
     },
     "a-christmas-carol-by-charles-dickens": {
       "added_at": "2026-08-08",
@@ -13684,72 +13918,6 @@
       ],
       "title": "A Christmas Carol"
     },
-    "a-christmas-carol-dramatised": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "childrens"
-      ],
-      "id": "a-christmas-carol-dramatised",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "lionel-barrymore-2010": {
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B003WRBHHI",
-              "region": "us"
-            },
-            {
-              "asin": "B004F1XJDA",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2746549,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91NHzPW9ipL.jpg",
-          "id": "lionel-barrymore-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "lionel-barrymore",
-            "orson-welles"
-          ],
-          "publisher": "Saland Publishing",
-          "release_date": "2010-07-22",
-          "runtime_min": 45,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B003WRBHHI",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004F1XJDA",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-dramatised"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B003WRBHHI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol (Dramatised)"
-    },
     "a-christmas-carol-dramatized": {
       "added_at": "2026-08-07",
       "authors": [
@@ -13826,249 +13994,6 @@
       ],
       "title": "A Christmas Carol (Dramatized)"
     },
-    "a-christmas-carol-monterey-soundworks-version-dramatized": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "childrens",
-        "classics"
-      ],
-      "id": "a-christmas-carol-monterey-soundworks-version-dramatized",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "the-st-charles-players-2001": {
-          "abridged": true,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002VACHXA",
-              "region": "us"
-            },
-            {
-              "asin": "B004EVRDR4",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1668818,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1663199,
-              "start_ms": 1668818,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1661620,
-              "start_ms": 3332017,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1674437,
-              "start_ms": 4993637,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51lMkGMN3nL.jpg",
-          "id": "the-st-charles-players-2001",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "the-st-charles-players"
-          ],
-          "publisher": "Monterey SoundWorks",
-          "release_date": "2001-01-27",
-          "runtime_min": 111,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002VACHXA",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EVRDR4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-monterey-soundworks-version-dramatized"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002VACHXA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol [Monterey SoundWorks Version] (Dramatized)"
-    },
-    "a-christmas-carol-naxos-audiobooks-edition": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "classics",
-        "literary-fiction",
-        "religious-fiction"
-      ],
-      "id": "a-christmas-carol-naxos-audiobooks-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "anton-lesser-2006": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B002V0PUVG",
-              "region": "us"
-            },
-            {
-              "asin": "B004EWSUZC",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2646935,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2584242,
-              "start_ms": 2646935,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 3315670,
-              "start_ms": 5231177,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2112737,
-              "start_ms": 8546847,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 930470,
-              "start_ms": 10659584,
-              "title": "Chapter 5"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/61bfKbWK1cL.jpg",
-          "id": "anton-lesser-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "anton-lesser"
-          ],
-          "publisher": "Naxos AudioBooks",
-          "release_date": "2006-11-21",
-          "runtime_min": 193,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B002V0PUVG",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004EWSUZC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-naxos-audiobooks-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B002V0PUVG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol [Naxos AudioBooks Edition]"
-    },
-    "a-christmas-carol-pc-treasures-version": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "fantasy",
-        "young-adult"
-      ],
-      "id": "a-christmas-carol-pc-treasures-version",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kip-allen-2008": {
-          "abridged": true,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B002V8H624",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 1372206,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 662744,
-              "start_ms": 1372206,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1275240,
-              "start_ms": 2034950,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 1163691,
-              "start_ms": 3310190,
-              "title": "Chapter 4"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71-9K9VYFpL.jpg",
-          "id": "kip-allen-2008",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kip-allen"
-          ],
-          "publisher": "PC Treasures, Inc.",
-          "release_date": "2008-01-21",
-          "runtime_min": 74,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B002V8H624",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-pc-treasures-version"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B002V8H624",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol [PC Treasures Version]"
-    },
     "a-christmas-carol-radio-spirits-version-dramatized": {
       "added_at": "2026-07-29",
       "authors": [
@@ -14134,70 +14059,6 @@
         }
       ],
       "title": "A Christmas Carol (Radio Spirits Version - Dramatized)"
-    },
-    "a-christmas-carol-simon-schuster-edition": {
-      "added_at": "2026-08-08",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "a-christmas-carol-simon-schuster-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "patrick-stewart-2006": {
-          "abridged": true,
-          "added_at": "2026-08-08",
-          "asin": [
-            {
-              "asin": "B002V1AGEG",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2888934,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 3543086,
-              "start_ms": 2888934,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81PEbIekRmL.jpg",
-          "id": "patrick-stewart-2006",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "patrick-stewart"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2006-10-03",
-          "runtime_min": 107,
-          "sources": [
-            {
-              "imported_at": "2026-08-08",
-              "ref": "B002V1AGEG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-simon-schuster-edition"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-08",
-          "ref": "B002V1AGEG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol (Simon & Schuster Edition)"
     },
     "a-christmas-carol-the-unabridged-classic-narrated-by-chandler-craig": {
       "added_at": "2026-07-29",
@@ -14285,56 +14146,6 @@
         }
       ],
       "title": "A Christmas Carol: The Unabridged Classic Narrated by Chandler Craig"
-    },
-    "a-christmas-carol-trout-lake-media-edition-2": {
-      "added_at": "2026-07-29",
-      "authors": [
-        "charles-dickens"
-      ],
-      "genres": [
-        "classics"
-      ],
-      "id": "a-christmas-carol-trout-lake-media-edition-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "john-pether-2013": {
-          "abridged": false,
-          "added_at": "2026-07-29",
-          "asin": [
-            {
-              "asin": "B00CS50CJ4",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71iEtqRzhSL.jpg",
-          "id": "john-pether-2013",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "john-pether"
-          ],
-          "publisher": "Trout Lake Media",
-          "release_date": "2013-05-15",
-          "runtime_min": 208,
-          "sources": [
-            {
-              "imported_at": "2026-07-29",
-              "ref": "B00CS50CJ4",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-christmas-carol-trout-lake-media-edition-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-29",
-          "ref": "B00CS50CJ4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Christmas Carol (Trout Lake Media Edition 2)"
     }
   }
 }

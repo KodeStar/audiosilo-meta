@@ -4172,6 +4172,7 @@
       ],
       "genres": [
         "action-adventure",
+        "biography-memoir",
         "epic-fantasy",
         "fantasy",
         "romance",
@@ -4414,32 +4415,7 @@
             }
           ],
           "work": "the-last-legacy"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1250824389",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Last Legacy"
-    },
-    "the-last-legacy-the-world-of-the-narrows-book-3": {
-      "added_at": "2026-09-27",
-      "authors": [
-        "adrienne-young"
-      ],
-      "genres": [
-        "action-adventure",
-        "biography-memoir",
-        "romance",
-        "young-adult"
-      ],
-      "id": "the-last-legacy-the-world-of-the-narrows-book-3",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "suzy-jackson-2023": {
           "abridged": false,
           "added_at": "2026-09-27",
@@ -4671,17 +4647,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-last-legacy-the-world-of-the-narrows-book-3"
+          "work": "the-last-legacy"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1250824389",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-09-27",
           "ref": "B0C46W271H",
           "type": "libex-import"
         }
       ],
-      "title": "The Last Legacy: The World of the Narrows, Book 3"
+      "title": "The Last Legacy"
     },
     "the-last-legend-reborn-book-1": {
       "added_at": "2026-08-02",

@@ -12120,70 +12120,11 @@
       "genres": [
         "classics",
         "drama-plays",
-        "short-stories"
-      ],
-      "id": "prometheus-bound",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robin-field-2010": {
-          "abridged": false,
-          "added_at": "2026-08-07",
-          "asin": [
-            {
-              "asin": "B004672WHC",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 4341806,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81QWLPwa39L.jpg",
-          "id": "robin-field-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robin-field"
-          ],
-          "publisher": "Mission Audio",
-          "release_date": "2010-10-07",
-          "runtime_min": 72,
-          "sources": [
-            {
-              "imported_at": "2026-08-07",
-              "ref": "B004672WHC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "prometheus-bound"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-07",
-          "ref": "B004672WHC",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Prometheus Bound"
-    },
-    "prometheus-bound-aeschylus": {
-      "added_at": "2026-08-07",
-      "authors": [
-        "aeschylus"
-      ],
-      "genres": [
-        "classics",
-        "drama-plays",
         "history",
         "literary-fiction",
         "short-stories"
       ],
-      "id": "prometheus-bound-aeschylus",
+      "id": "prometheus-bound",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
@@ -12239,10 +12180,50 @@
               "type": "libex-import"
             }
           ],
-          "work": "prometheus-bound-aeschylus"
+          "work": "prometheus-bound"
+        },
+        "robin-field-2010": {
+          "abridged": false,
+          "added_at": "2026-08-07",
+          "asin": [
+            {
+              "asin": "B004672WHC",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 4341806,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81QWLPwa39L.jpg",
+          "id": "robin-field-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-field"
+          ],
+          "publisher": "Mission Audio",
+          "release_date": "2010-10-07",
+          "runtime_min": 72,
+          "sources": [
+            {
+              "imported_at": "2026-08-07",
+              "ref": "B004672WHC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "prometheus-bound"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-07",
+          "ref": "B004672WHC",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-07",
           "ref": "B07VRMV4BJ",

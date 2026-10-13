@@ -5076,7 +5076,8 @@
       "genres": [
         "historical-fiction",
         "historical-romance",
-        "romance"
+        "romance",
+        "westerns"
       ],
       "id": "leave-it-for-the-rain",
       "language": "en",
@@ -5285,32 +5286,7 @@
             }
           ],
           "work": "leave-it-for-the-rain"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B00P899HIO",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Leave It for the Rain"
-    },
-    "leave-it-for-the-rain-the-grayson-family-book-7": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "wendy-lindstrom"
-      ],
-      "genres": [
-        "historical-fiction",
-        "historical-romance",
-        "romance",
-        "westerns"
-      ],
-      "id": "leave-it-for-the-rain-the-grayson-family-book-7",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "julia-motyka-2025": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5513,17 +5489,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "leave-it-for-the-rain-the-grayson-family-book-7"
+          "work": "leave-it-for-the-rain"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B00P899HIO",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0DTLM9VK2",
           "type": "libex-import"
         }
       ],
-      "title": "Leave It for the Rain: The Grayson Family, Book 7"
+      "title": "Leave It for the Rain"
     },
     "leave-it-to-cleaver": {
       "added_at": "2026-07-29",

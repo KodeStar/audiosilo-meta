@@ -8031,7 +8031,10 @@
         "ghost-stories",
         "gothic",
         "horror",
-        "literary-fiction"
+        "literary-fiction",
+        "mystery",
+        "short-stories",
+        "young-adult"
       ],
       "id": "the-turn-of-the-screw",
       "language": "en",
@@ -8423,6 +8426,33 @@
               "imported_at": "2026-10-09",
               "ref": "B01ATU0JWY",
               "type": "libex-import"
+            }
+          ],
+          "work": "the-turn-of-the-screw"
+        },
+        "emma-thompson-2016-2": {
+          "abridged": false,
+          "added_at": "2026-09-24",
+          "asin": [
+            {
+              "asin": "B01MA1MLST",
+              "region": "us"
+            }
+          ],
+          "id": "emma-thompson-2016-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "emma-thompson"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2016",
+          "runtime_min": 281,
+          "sources": [
+            {
+              "imported_at": "2026-09-24",
+              "ref": "B01MA1MLST",
+              "type": "audiosilo-books-import"
             }
           ],
           "work": "the-turn-of-the-screw"
@@ -8843,6 +8873,66 @@
             }
           ],
           "work": "the-turn-of-the-screw"
+        },
+        "virginia-mckenna-2020": {
+          "abridged": true,
+          "added_at": "2026-08-08",
+          "asin": [
+            {
+              "asin": "0008439621",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 11586,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2537406,
+              "start_ms": 11586,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2776386,
+              "start_ms": 2548992,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 15092,
+              "start_ms": 5325378,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 25820,
+              "start_ms": 5340470,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 69775,
+              "start_ms": 5366290,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91aXPDmNMaL.jpg",
+          "id": "virginia-mckenna-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "virginia-mckenna"
+          ],
+          "publisher": "William Collins",
+          "release_date": "2020-09-10",
+          "runtime_min": 90,
+          "sources": [
+            {
+              "imported_at": "2026-08-08",
+              "ref": "0008439621",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-turn-of-the-screw"
         }
       },
       "sources": [
@@ -8850,55 +8940,19 @@
           "imported_at": "2026-08-07",
           "ref": "0241423260",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Turn of the Screw"
-    },
-    "the-turn-of-the-screw-soundtrack-edition": {
-      "added_at": "2026-09-24",
-      "authors": [
-        "henry-james"
-      ],
-      "id": "the-turn-of-the-screw-soundtrack-edition",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "emma-thompson-2016": {
-          "abridged": false,
-          "added_at": "2026-09-24",
-          "asin": [
-            {
-              "asin": "B01MA1MLST",
-              "region": "us"
-            }
-          ],
-          "id": "emma-thompson-2016",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "emma-thompson"
-          ],
-          "publisher": "Audible Studios",
-          "release_date": "2016",
-          "runtime_min": 281,
-          "sources": [
-            {
-              "imported_at": "2026-09-24",
-              "ref": "B01MA1MLST",
-              "type": "audiosilo-books-import"
-            }
-          ],
-          "work": "the-turn-of-the-screw-soundtrack-edition"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-09-24",
           "ref": "B01MA1MLST",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-08-08",
+          "ref": "0008439621",
+          "type": "libex-import"
         }
       ],
-      "title": "The Turn of the Screw [Soundtrack Edition]"
+      "title": "The Turn of the Screw"
     },
     "the-turn-the-hollows-begins-with-death": {
       "added_at": "2026-07-25T19:18:21+01:00",

@@ -3936,8 +3936,10 @@
         "jerry-b-jenkins"
       ],
       "genres": [
+        "fantasy",
         "literary-fiction",
         "post-apocalyptic",
+        "religion-spirituality",
         "religious-fiction",
         "science-fiction",
         "thriller-suspense"
@@ -4095,6 +4097,180 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B004DNAWE4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "glorious-appearing"
+        },
+        "richard-ferrone-2004": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002UZKKBW",
+              "region": "us"
+            },
+            {
+              "asin": "B004FUF358",
+              "region": "uk"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 22662,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 44048,
+              "start_ms": 22662,
+              "title": "Preface"
+            },
+            {
+              "length_ms": 416334,
+              "start_ms": 66710,
+              "title": "Introduction"
+            },
+            {
+              "length_ms": 576121,
+              "start_ms": 483044,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 1719490,
+              "start_ms": 1059165,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 1844988,
+              "start_ms": 2778655,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1907610,
+              "start_ms": 4623643,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2102127,
+              "start_ms": 6531253,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2028120,
+              "start_ms": 8633380,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1868083,
+              "start_ms": 10661500,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1831210,
+              "start_ms": 12529583,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1946906,
+              "start_ms": 14360793,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1687839,
+              "start_ms": 16307699,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1810850,
+              "start_ms": 17995538,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1828716,
+              "start_ms": 19806388,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1778270,
+              "start_ms": 21635104,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1874597,
+              "start_ms": 23413374,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 1861380,
+              "start_ms": 25287971,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 1949921,
+              "start_ms": 27149351,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 2367150,
+              "start_ms": 29099272,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 1848315,
+              "start_ms": 31466422,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 1983020,
+              "start_ms": 33314737,
+              "title": "Chapter 18"
+            },
+            {
+              "length_ms": 2234508,
+              "start_ms": 35297757,
+              "title": "Chapter 19"
+            },
+            {
+              "length_ms": 1842780,
+              "start_ms": 37532265,
+              "title": "Chapter 20"
+            },
+            {
+              "length_ms": 916410,
+              "start_ms": 39375045,
+              "title": "Chapter 21"
+            },
+            {
+              "length_ms": 16853,
+              "start_ms": 40291455,
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 30000,
+              "start_ms": 40308308,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81vhtXiW4zL.jpg",
+          "id": "richard-ferrone-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "richard-ferrone"
+          ],
+          "publisher": "Recorded Books",
+          "release_date": "2004-03-30",
+          "runtime_min": 672,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002UZKKBW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-09",
+              "ref": "B004FUF358",
               "type": "libex-import"
             }
           ],
@@ -4335,202 +4511,7 @@
           "imported_at": "2026-08-02",
           "ref": "B00T5786G4",
           "type": "libex-import"
-        }
-      ],
-      "title": "Glorious Appearing"
-    },
-    "glorious-appearing-tim-lahaye": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye",
-        "jerry-b-jenkins"
-      ],
-      "genres": [
-        "fantasy",
-        "religion-spirituality",
-        "religious-fiction",
-        "science-fiction"
-      ],
-      "id": "glorious-appearing-tim-lahaye",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "richard-ferrone-2004": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002UZKKBW",
-              "region": "us"
-            },
-            {
-              "asin": "B004FUF358",
-              "region": "uk"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 22662,
-              "start_ms": 0,
-              "title": "Opening Credits"
-            },
-            {
-              "length_ms": 44048,
-              "start_ms": 22662,
-              "title": "Preface"
-            },
-            {
-              "length_ms": 416334,
-              "start_ms": 66710,
-              "title": "Introduction"
-            },
-            {
-              "length_ms": 576121,
-              "start_ms": 483044,
-              "title": "Prologue"
-            },
-            {
-              "length_ms": 1719490,
-              "start_ms": 1059165,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 1844988,
-              "start_ms": 2778655,
-              "title": "Chapter 2"
-            },
-            {
-              "length_ms": 1907610,
-              "start_ms": 4623643,
-              "title": "Chapter 3"
-            },
-            {
-              "length_ms": 2102127,
-              "start_ms": 6531253,
-              "title": "Chapter 4"
-            },
-            {
-              "length_ms": 2028120,
-              "start_ms": 8633380,
-              "title": "Chapter 5"
-            },
-            {
-              "length_ms": 1868083,
-              "start_ms": 10661500,
-              "title": "Chapter 6"
-            },
-            {
-              "length_ms": 1831210,
-              "start_ms": 12529583,
-              "title": "Chapter 7"
-            },
-            {
-              "length_ms": 1946906,
-              "start_ms": 14360793,
-              "title": "Chapter 8"
-            },
-            {
-              "length_ms": 1687839,
-              "start_ms": 16307699,
-              "title": "Chapter 9"
-            },
-            {
-              "length_ms": 1810850,
-              "start_ms": 17995538,
-              "title": "Chapter 10"
-            },
-            {
-              "length_ms": 1828716,
-              "start_ms": 19806388,
-              "title": "Chapter 11"
-            },
-            {
-              "length_ms": 1778270,
-              "start_ms": 21635104,
-              "title": "Chapter 12"
-            },
-            {
-              "length_ms": 1874597,
-              "start_ms": 23413374,
-              "title": "Chapter 13"
-            },
-            {
-              "length_ms": 1861380,
-              "start_ms": 25287971,
-              "title": "Chapter 14"
-            },
-            {
-              "length_ms": 1949921,
-              "start_ms": 27149351,
-              "title": "Chapter 15"
-            },
-            {
-              "length_ms": 2367150,
-              "start_ms": 29099272,
-              "title": "Chapter 16"
-            },
-            {
-              "length_ms": 1848315,
-              "start_ms": 31466422,
-              "title": "Chapter 17"
-            },
-            {
-              "length_ms": 1983020,
-              "start_ms": 33314737,
-              "title": "Chapter 18"
-            },
-            {
-              "length_ms": 2234508,
-              "start_ms": 35297757,
-              "title": "Chapter 19"
-            },
-            {
-              "length_ms": 1842780,
-              "start_ms": 37532265,
-              "title": "Chapter 20"
-            },
-            {
-              "length_ms": 916410,
-              "start_ms": 39375045,
-              "title": "Chapter 21"
-            },
-            {
-              "length_ms": 16853,
-              "start_ms": 40291455,
-              "title": "Epilogue"
-            },
-            {
-              "length_ms": 30000,
-              "start_ms": 40308308,
-              "title": "End Credits"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81vhtXiW4zL.jpg",
-          "id": "richard-ferrone-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "richard-ferrone"
-          ],
-          "publisher": "Recorded Books",
-          "release_date": "2004-03-30",
-          "runtime_min": 672,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002UZKKBW",
-              "type": "libex-import"
-            },
-            {
-              "imported_at": "2026-10-09",
-              "ref": "B004FUF358",
-              "type": "libex-import"
-            }
-          ],
-          "work": "glorious-appearing-tim-lahaye"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002UZKKBW",
