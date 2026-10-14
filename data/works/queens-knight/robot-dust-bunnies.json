@@ -6403,6 +6403,10 @@
       "authors": [
         "ursula-le-guin"
       ],
+      "genres": [
+        "fantasy",
+        "science-fiction"
+      ],
       "id": "rocannons-world-ursula-le-guin",
       "language": "en",
       "license": "CC0-1.0",
@@ -6416,6 +6420,64 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3342698,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 988056,
+              "start_ms": 3342698,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 1939098,
+              "start_ms": 4330754,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 1650381,
+              "start_ms": 6269852,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 1369559,
+              "start_ms": 7920233,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2347445,
+              "start_ms": 9289792,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1893494,
+              "start_ms": 11637237,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1573245,
+              "start_ms": 13530731,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1478043,
+              "start_ms": 15103976,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 1433275,
+              "start_ms": 16582019,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 295497,
+              "start_ms": 18015294,
+              "title": "Chapter 11"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91TBTel7ZXL.jpg",
           "id": "stefan-rudnicki-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -6430,6 +6492,10 @@
               "imported_at": "2026-09-24",
               "ref": "B002V081EO",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V081EO",
+              "type": "libex-import"
             }
           ],
           "work": "rocannons-world-ursula-le-guin"
@@ -6440,6 +6506,10 @@
           "imported_at": "2026-09-24",
           "ref": "B002V081EO",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V081EO",
+          "type": "libex-import"
         }
       ],
       "title": "Rocannon's World"

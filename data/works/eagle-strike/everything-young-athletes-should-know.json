@@ -9899,6 +9899,10 @@
       "authors": [
         "n-t-wright"
       ],
+      "genres": [
+        "philosophy",
+        "religion-spirituality"
+      ],
       "id": "evil-and-the-justice-of-god",
       "language": "en",
       "license": "CC0-1.0",
@@ -9912,6 +9916,34 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3380965,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3401770,
+              "start_ms": 3380965,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2846720,
+              "start_ms": 6782735,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3110731,
+              "start_ms": 9629455,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3625378,
+              "start_ms": 12740186,
+              "title": "Chapter 5"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51aL2PQyABL.jpg",
           "id": "simon-vance-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -9926,6 +9958,10 @@
               "imported_at": "2026-09-24",
               "ref": "B002V0LZ2Y",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0LZ2Y",
+              "type": "libex-import"
             }
           ],
           "work": "evil-and-the-justice-of-god"
@@ -9936,6 +9972,10 @@
           "imported_at": "2026-09-24",
           "ref": "B002V0LZ2Y",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0LZ2Y",
+          "type": "libex-import"
         }
       ],
       "title": "Evil and the Justice of God"

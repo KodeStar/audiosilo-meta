@@ -9541,6 +9541,39 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3442730,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3102047,
+              "start_ms": 3442730,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3157682,
+              "start_ms": 6544777,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3189400,
+              "start_ms": 9702459,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3096381,
+              "start_ms": 12891859,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 3193347,
+              "start_ms": 15988240,
+              "title": "Chapter 6"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/519Y83MOuPL.jpg",
           "id": "uncredited-2005",
           "language": "en",
           "license": "CC0-1.0",
@@ -9555,6 +9588,10 @@
               "imported_at": "2026-09-24",
               "ref": "B002UZL3RC",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZL3RC",
+              "type": "libex-import"
             }
           ],
           "work": "six-easy-pieces-richard-p-feynman"
