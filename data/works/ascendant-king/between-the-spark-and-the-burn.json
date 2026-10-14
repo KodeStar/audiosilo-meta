@@ -9725,6 +9725,11 @@
       "authors": [
         "martha-wells"
       ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "short-stories"
+      ],
       "id": "between-worlds-martha-wells",
       "language": "en",
       "license": "CC0-1.0",
@@ -9770,6 +9775,49 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 24825,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2800927,
+              "start_ms": 24825,
+              "title": "The Potter’s Daughter"
+            },
+            {
+              "length_ms": 3786523,
+              "start_ms": 2825752,
+              "title": "Night at the Opera"
+            },
+            {
+              "length_ms": 5392834,
+              "start_ms": 6612275,
+              "title": "Holy Places"
+            },
+            {
+              "length_ms": 4080721,
+              "start_ms": 12005109,
+              "title": "Rites of Passage"
+            },
+            {
+              "length_ms": 4504856,
+              "start_ms": 16085830,
+              "title": "Houses of the Dead"
+            },
+            {
+              "length_ms": 1854275,
+              "start_ms": 20590686,
+              "title": "Reflections"
+            },
+            {
+              "length_ms": 28326,
+              "start_ms": 22444961,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XTWB6SvnL.jpg",
           "id": "samuel-roukin-2020",
           "language": "en",
           "license": "CC0-1.0",
@@ -9809,6 +9857,10 @@
           "imported_at": "2026-09-24",
           "ref": "1980098360",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1980098360",
+          "type": "libex-import"
         }
       ],
       "title": "Between Worlds"
