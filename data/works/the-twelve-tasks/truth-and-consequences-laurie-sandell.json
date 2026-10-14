@@ -3107,6 +3107,15 @@
       "authors": [
         "daniel-beamish"
       ],
+      "credits": [
+        {
+          "person": "dion-graham",
+          "role": "introduction"
+        }
+      ],
+      "genres": [
+        "literary-fiction"
+      ],
       "id": "truth-by-omission",
       "language": "en",
       "license": "CC0-1.0",
@@ -3120,6 +3129,99 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 704655,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 993814,
+              "start_ms": 704655,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 938202,
+              "start_ms": 1698469,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 2610967,
+              "start_ms": 2636671,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 2462870,
+              "start_ms": 5247638,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 1238250,
+              "start_ms": 7710508,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4192177,
+              "start_ms": 8948758,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 229227,
+              "start_ms": 13140935,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 2702988,
+              "start_ms": 13370162,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 4188531,
+              "start_ms": 16073150,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1470124,
+              "start_ms": 20261681,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 4283222,
+              "start_ms": 21731805,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 1685838,
+              "start_ms": 26015027,
+              "title": "Chapter 13"
+            },
+            {
+              "length_ms": 2332258,
+              "start_ms": 27700865,
+              "title": "Chapter 14"
+            },
+            {
+              "length_ms": 2616772,
+              "start_ms": 30033123,
+              "title": "Chapter 15"
+            },
+            {
+              "length_ms": 3274013,
+              "start_ms": 32649895,
+              "title": "Chapter 16"
+            },
+            {
+              "length_ms": 624454,
+              "start_ms": 35923908,
+              "title": "Chapter 17"
+            },
+            {
+              "length_ms": 478376,
+              "start_ms": 36548362,
+              "title": "Chapter 18"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91-7f17-qBL.jpg",
           "id": "dion-graham-2019",
           "language": "en",
           "license": "CC0-1.0",
@@ -3134,6 +3236,10 @@
               "imported_at": "2026-09-24",
               "ref": "1982544333",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "1982544333",
+              "type": "libex-import"
             }
           ],
           "work": "truth-by-omission"
@@ -3144,6 +3250,10 @@
           "imported_at": "2026-09-24",
           "ref": "1982544333",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "1982544333",
+          "type": "libex-import"
         }
       ],
       "title": "Truth, by Omission"
@@ -4748,6 +4858,52 @@
         }
       ],
       "title": "Truth in Sight"
+    },
+    "truth-in-the-dark": {
+      "added_at": "2026-10-14",
+      "authors": [
+        "amy-lane"
+      ],
+      "id": "truth-in-the-dark",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nick-j-russo-2015": {
+          "abridged": false,
+          "added_at": "2026-10-14",
+          "asin": [
+            {
+              "asin": "B015YJW8J2",
+              "region": "us"
+            }
+          ],
+          "id": "nick-j-russo-2015",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nick-j-russo"
+          ],
+          "publisher": "Dreamspinner Press LLC",
+          "release_date": "2015",
+          "runtime_min": 280,
+          "sources": [
+            {
+              "imported_at": "2026-10-14",
+              "ref": "B015YJW8J2",
+              "type": "audiosilo-books-import"
+            }
+          ],
+          "work": "truth-in-the-dark"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-14",
+          "ref": "B015YJW8J2",
+          "type": "audiosilo-books-import"
+        }
+      ],
+      "title": "Truth in the Dark"
     },
     "truth-in-treme": {
       "added_at": "2026-08-02",
