@@ -5,6 +5,10 @@
       "authors": [
         "william-goldman"
       ],
+      "genres": [
+        "childrens",
+        "comedy-humor"
+      ],
       "id": "the-princess-bride",
       "language": "en",
       "license": "CC0-1.0",
@@ -18,6 +22,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3395129,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3196830,
+              "start_ms": 3395129,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 2581827,
+              "start_ms": 6591959,
+              "title": "Chapter 3"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91WyHDVE+wL.jpg",
           "id": "rob-reiner-1999",
           "language": "en",
           "license": "CC0-1.0",
@@ -32,6 +54,10 @@
               "imported_at": "2026-09-24",
               "ref": "B002V0K2VE",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0K2VE",
+              "type": "libex-import"
             }
           ],
           "work": "the-princess-bride"
@@ -434,6 +460,10 @@
           "imported_at": "2026-07-25",
           "ref": "B09NLG87J7",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0K2VE",
+          "type": "libex-import"
         }
       ],
       "title": "The Princess Bride"

@@ -12615,6 +12615,11 @@
       "authors": [
         "cordwainer-smith"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "short-stories"
+      ],
       "id": "the-game-of-rat-and-dragon",
       "language": "en",
       "license": "CC0-1.0",
@@ -12628,6 +12633,14 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1966823,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/619crOGOwHL.jpg",
           "id": "matthew-wayne-selznick-2007",
           "language": "en",
           "license": "CC0-1.0",
@@ -12642,6 +12655,10 @@
               "imported_at": "2026-09-24",
               "ref": "B002UZKUNA",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZKUNA",
+              "type": "libex-import"
             }
           ],
           "work": "the-game-of-rat-and-dragon"
@@ -12652,6 +12669,10 @@
           "imported_at": "2026-09-24",
           "ref": "B002UZKUNA",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZKUNA",
+          "type": "libex-import"
         }
       ],
       "title": "The Game of Rat and Dragon"
