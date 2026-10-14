@@ -8522,6 +8522,14 @@
       "authors": [
         "jon-david-solomon"
       ],
+      "genres": [
+        "education",
+        "history",
+        "mythology",
+        "philosophy",
+        "politics",
+        "religion-spirituality"
+      ],
       "id": "classical-religions-and-myths-of-the-mediterranean-basin",
       "language": "en",
       "license": "CC0-1.0",
@@ -8535,6 +8543,74 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 677326,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 409461,
+              "start_ms": 677326,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 567449,
+              "start_ms": 1086787,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 976910,
+              "start_ms": 1654236,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 941801,
+              "start_ms": 2631146,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 428873,
+              "start_ms": 3572947,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 1228057,
+              "start_ms": 4001820,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 1008536,
+              "start_ms": 5229877,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 1190348,
+              "start_ms": 6238413,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 463192,
+              "start_ms": 7428761,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 1076570,
+              "start_ms": 7891953,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1224481,
+              "start_ms": 8968523,
+              "title": "Chapter 12"
+            },
+            {
+              "length_ms": 350807,
+              "start_ms": 10193004,
+              "title": "Chapter 13"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51QjcnL6gtL.jpg",
           "id": "ben-kingsley-2006",
           "language": "en",
           "license": "CC0-1.0",
@@ -8549,6 +8625,10 @@
               "imported_at": "2026-09-24",
               "ref": "B002V0A606",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002V0A606",
+              "type": "libex-import"
             }
           ],
           "work": "classical-religions-and-myths-of-the-mediterranean-basin"
@@ -8559,6 +8639,10 @@
           "imported_at": "2026-09-24",
           "ref": "B002V0A606",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002V0A606",
+          "type": "libex-import"
         }
       ],
       "title": "Classical Religions and Myths of the Mediterranean Basin"
