@@ -948,6 +948,11 @@
       "authors": [
         "robert-a-heinlein"
       ],
+      "genres": [
+        "action-adventure",
+        "science-fiction",
+        "space-opera"
+      ],
       "id": "orphans-of-the-sky",
       "language": "en",
       "license": "CC0-1.0",
@@ -961,6 +966,24 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 28904,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 7245908,
+              "start_ms": 28904,
+              "title": "Part 1: Universe"
+            },
+            {
+              "length_ms": 9668000,
+              "start_ms": 7274812,
+              "title": "Part 2: Common Sense"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81-bKPp9WEL.jpg",
           "id": "eric-michael-summerer-2009",
           "language": "en",
           "license": "CC0-1.0",
@@ -975,6 +998,10 @@
               "imported_at": "2026-09-24",
               "ref": "B002UZZE0E",
               "type": "audiosilo-books-import"
+            },
+            {
+              "ref": "B002UZZE0E",
+              "type": "libex-import"
             }
           ],
           "work": "orphans-of-the-sky"
@@ -985,6 +1012,10 @@
           "imported_at": "2026-09-24",
           "ref": "B002UZZE0E",
           "type": "audiosilo-books-import"
+        },
+        {
+          "ref": "B002UZZE0E",
+          "type": "libex-import"
         }
       ],
       "title": "Orphans of the Sky"
