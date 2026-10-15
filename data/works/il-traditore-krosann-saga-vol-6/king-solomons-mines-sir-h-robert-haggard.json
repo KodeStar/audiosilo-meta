@@ -5242,6 +5242,33 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "a-w-miller-2026": {
+          "abridged": false,
+          "added_at": "2026-10-15",
+          "asin": [
+            {
+              "asin": "B0HMW29D6B",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81Q+SCQ4g+L.jpg",
+          "id": "a-w-miller-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "a-w-miller"
+          ],
+          "publisher": "Tyndale Fiction",
+          "release_date": "2026-10-20",
+          "sources": [
+            {
+              "imported_at": "2026-10-15",
+              "ref": "B0HMW29D6B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "kingdom-come"
+        },
         "richard-ferrone-2007": {
           "abridged": false,
           "added_at": "2026-07-30T14:42:56+01:00",
@@ -5253,6 +5280,10 @@
             {
               "asin": "B077ZC4JJ7",
               "region": "uk"
+            },
+            {
+              "asin": "B079XBKYYN",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -5471,6 +5502,11 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B077ZC4JJ7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-15",
+              "ref": "B079XBKYYN",
               "type": "libex-import"
             }
           ],
