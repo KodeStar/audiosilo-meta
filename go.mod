@@ -4,9 +4,9 @@ go 1.26.0
 
 require (
 	github.com/dhowden/tag v0.0.0-20240417053706-3d75831295e8
-	github.com/klauspost/compress v1.20.1
+	github.com/klauspost/compress v1.20.3
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.3
-	golang.org/x/text v0.42.0
+	golang.org/x/text v0.43.0
 	modernc.org/sqlite v1.60.1
 )
 
