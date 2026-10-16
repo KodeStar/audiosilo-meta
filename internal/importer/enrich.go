@@ -360,7 +360,7 @@ func rowContradiction(b sourceBook, runtime runtimeEvidence, releaseDate string,
 // here unrefused, and it is another edition's date, never a correction of this
 // one's (#2518).
 func fillReleaseDate(raw map[string]any, val string, overwrite bool) bool {
-	if cur := coerceStr(raw["release_date"]); cur != "" && !strings.HasPrefix(val, cur) {
+	if cur := coerceStr(raw["release_date"]); cur != "" && (cur == val || !strings.HasPrefix(val, cur)) {
 		return false
 	}
 	return fillStr(raw, "release_date", val, overwrite)

@@ -414,6 +414,8 @@ func TestFillReleaseDate(t *testing.T) {
 		{"2024-06", "2024-06-04", true, "2024-06-04", true},
 		{"2024", "2024-06-04", false, "2024", false},
 		{"2024-06-04", "2024-07-01", false, "2024-06-04", false},
+		{"2024-06-04", "2024-06-04", true, "2024-06-04", false},
+		{"2024-06-04", "2024-06-04", false, "2024-06-04", false},
 	} {
 		raw := map[string]any{}
 		if tc.recorded != "" {

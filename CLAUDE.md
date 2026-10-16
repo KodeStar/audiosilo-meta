@@ -2131,7 +2131,8 @@ only with a value that EXTENDS it (a full date over the year it starts with), so
 a stated date never coarsens a recorded one and a regional re-release's date
 never moves it. A recording holds ONE release date, so a later exact-ASIN run of
 the merged edition stating its own date is a real disagreement: the guard flags
-it as a conflict on every such run and writes nothing. On the intake side (`internal/issueform/takeover.go`) an add-work or
+it as a conflict on every such run and writes nothing. On the intake side
+(`internal/issueform/takeover.go`) an add-work or
 add-recording submission naming a bulk-mirror-only recording BY ASIN is not a
 verdict but a TAKEOVER, and it is applied by the importer, not composed: the
 ASIN gate returns the planned takeover, and `importer.AttestAt` plans the form
