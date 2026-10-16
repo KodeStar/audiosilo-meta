@@ -250,9 +250,11 @@ func setStringOrDrop(o obj, key, value string) {
 
 // earlierDate returns the earlier of two partial dates ("2020", "2020-05",
 // "2020-05-01"), with the SPECIFIC spelling winning over a prefix of itself.
-// It is the importer's fillReleaseDate rule stated once more: a recorded value
+// It shares the precision half of the importer's fillReleaseDate rule: a value
 // that is a strict extension of the other states the same date more precisely,
-// so coarsening it would be a loss dressed up as agreement.
+// so coarsening it would be a loss dressed up as agreement. (Unlike
+// fillReleaseDate, which keeps the recorded value, two unrelated dates resolve
+// to the earlier here.)
 func earlierDate(a, b string) string {
 	switch {
 	case a == "":
