@@ -6323,6 +6323,10 @@
             {
               "asin": "B0D1S91T57",
               "region": "uk"
+            },
+            {
+              "asin": "B0D1SG9PF2",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -6536,6 +6540,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0D1S91T57",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-16",
+              "ref": "B0D1SG9PF2",
               "type": "libex-import"
             }
           ],
@@ -7455,6 +7464,58 @@
         }
       ],
       "title": "The Best of Les Brown Audio Collection"
+    },
+    "the-best-of-luck-the-huntresses-book-4": {
+      "added_at": "2026-10-16",
+      "authors": [
+        "sarah-m-eden"
+      ],
+      "genres": [
+        "historical-romance",
+        "history",
+        "romance"
+      ],
+      "id": "the-best-of-luck-the-huntresses-book-4",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "nancy-peterson-2026": {
+          "abridged": false,
+          "added_at": "2026-10-16",
+          "asin": [
+            {
+              "asin": "B0HN3HSCB4",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/819srBSg-TL.jpg",
+          "id": "nancy-peterson-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "nancy-peterson"
+          ],
+          "publisher": "Pineway Books",
+          "release_date": "2026-11-10",
+          "runtime_min": 547,
+          "sources": [
+            {
+              "imported_at": "2026-10-16",
+              "ref": "B0HN3HSCB4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-best-of-luck-the-huntresses-book-4"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-16",
+          "ref": "B0HN3HSCB4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "The Best of Luck (The Huntresses Book 4)"
     },
     "the-best-of-me": {
       "added_at": "2026-07-29",
