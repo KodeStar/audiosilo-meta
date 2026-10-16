@@ -184,12 +184,14 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	}
 	changed := false
 
-	// Runtime and release date reach here only in agreement (recordingContradicts
-	// refused the row otherwise), so an overwrite is a precision improvement -
-	// 601 minutes for a recorded 600, or a full date for a recorded year - never
-	// a re-statement of a different production. The one exception is a recorded
-	// preorder ESTIMATE, which that guard compares through its chapter timeline
-	// or at the estimate bound, and which correctEstimate judges below.
+	// The runtime reaches here only in agreement (recordingContradicts refused
+	// the row otherwise), so an overwrite is a precision improvement - 601
+	// minutes for a recorded 600 - never a re-statement of a different
+	// production. The one exception is a recorded preorder ESTIMATE, which that
+	// guard compares through its chapter timeline or at the estimate bound, and
+	// which correctEstimate judges below. The release date is NOT always in
+	// agreement here (the merge scope skips its guard), which is why
+	// fillReleaseDate takes only a value extending it.
 	if b.runtimeMin > 0 {
 		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || overwrite {
 			setDecoded(raw, "runtime_min", b.runtimeMin)
@@ -346,18 +348,19 @@ func rowContradiction(b sourceBook, runtime runtimeEvidence, releaseDate string,
 
 // fillReleaseDate is fillStr for release_date plus the PRECISION rule the field
 // needs, and it is where the overwrite posture stops short of a plain
-// replacement.
+// replacement: a recorded date is only ever replaced by one that EXTENDS it.
 //
 // A release date is recorded at whatever precision its source stated ("2015",
 // "2015-03", "2015-03-24"), and datesConflict deliberately reads a prefix as
 // agreement rather than a contradiction - so without this a user's year-only
 // "2019" would silently REPLACE a recorded "2019-05-04" and destroy a fact
-// nobody disputed. When the recorded value is a strict extension of the stated
-// one it stays, in every posture. The other direction (a full date over a
-// recorded year) is a precision improvement and still applies, which is exactly
-// what the overwrite posture is for.
+// nobody disputed. A full date over a recorded year it extends is a precision
+// improvement and still applies, which is exactly what the overwrite posture is
+// for. In the merge scope a date that does not extend the recorded one reaches
+// here unrefused, and it is another edition's date, never a correction of this
+// one's (#2518).
 func fillReleaseDate(raw map[string]any, val string, overwrite bool) bool {
-	if cur := coerceStr(raw["release_date"]); len(cur) > len(val) && strings.HasPrefix(cur, val) {
+	if cur := coerceStr(raw["release_date"]); cur != "" && !strings.HasPrefix(val, cur) {
 		return false
 	}
 	return fillStr(raw, "release_date", val, overwrite)

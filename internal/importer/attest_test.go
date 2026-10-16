@@ -502,6 +502,11 @@ func TestRecordWalksFromLibexSeedToUserAttestation(t *testing.T) {
 // The release-date guard therefore does not apply in the merge scope; the
 // runtime guard, which is what tells a re-release from a different production,
 // is applied upstream before a merge is considered.
+//
+// The edition's own date is NOT one of the facts that apply, though (issue
+// #2518, fillReleaseDate): "2020-01-09" does not extend the recorded "2019", so
+// it is another edition's date rather than this one's stated more precisely, and
+// the recorded value stays while the rest of the row wins.
 func TestUserImportMergeAppliesFactsWhenTheEditionDateDiffers(t *testing.T) {
 	dataDir := seedTierTree(t, nil) // the mirror seed records "2019", 600 min
 	row := `[{
@@ -529,8 +534,8 @@ func TestUserImportMergeAppliesFactsWhenTheEditionDateDiffers(t *testing.T) {
 	if rec.Publisher != "Lost Press" || rec.RuntimeMin != 605 {
 		t.Errorf("the merged row's facts must have won over the mirror's: %+v", rec)
 	}
-	if rec.ReleaseDate != "2020-01-09" {
-		t.Errorf("release_date = %q, want the attesting user's %q", rec.ReleaseDate, "2020-01-09")
+	if rec.ReleaseDate != "2019" {
+		t.Errorf("release_date = %q, want the recorded %q - the merged edition's date is not this one's", rec.ReleaseDate, "2019")
 	}
 	if rec.CoverURL != "https://m.media-amazon.com/images/I/user.jpg" {
 		t.Errorf("cover_url = %q, want the user's", rec.CoverURL)
@@ -544,24 +549,69 @@ func TestUserImportMergeAppliesFactsWhenTheEditionDateDiffers(t *testing.T) {
 		t.Errorf("sources = %v, want the user stamp appended", got)
 	}
 
-	// The disagreement is RESOLVED, not deferred: no later run recounts it. (The
-	// second run still does one thing, and it is not this one: a merge attests
-	// only the recording, so the work is stamped by the exact-ASIN skip that now
-	// matches the merged ASIN. That is a one-time follow-on - the run after it
-	// writes nothing at all, which is where convergence is asserted.)
-	second := runUserImport(t, dataDir, row)
-	if second.Conflicts != 0 || second.AttestedRecordings != 0 || second.MergedASINs != 0 {
-		t.Errorf("second run = %+v, want no conflict, no re-merge, no re-attestation", second)
-	}
+	// A recording holds ONE release_date, so a later run of the same row - now an
+	// exact-ASIN match on the merged edition - is a real disagreement with the
+	// recorded date: it is surfaced as a conflict on every run and never
+	// written, and the record (now user-attested) stays as the merge left it.
 	before := snapshotTree(t, dataDir)
-	third := runUserImport(t, dataDir, row)
-	if third.Conflicts != 0 || third.AttestedWorks != 0 || third.AttestedRecordings != 0 {
-		t.Errorf("third run = %+v, want a full no-op", third)
+	for i := range 2 {
+		again := runUserImport(t, dataDir, row)
+		if again.Conflicts != 1 || again.AttestedWorks != 0 || again.AttestedRecordings != 0 || again.MergedASINs != 0 {
+			t.Errorf("run %d = %+v, want the date flagged and nothing re-merged or re-attested", i+2, again)
+		}
+		assertTreeUnchanged(t, dataDir, before)
 	}
-	assertTreeUnchanged(t, dataDir, before)
 
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("attested tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// TestUserImportMergeKeepsTheRecordedReleaseDate is issue #2518: a user's
+// regional edition folding its ASIN into a mirror seed must never move the
+// recording's date. A less precise one ("2000" over "2024-06-04") would destroy
+// a fact, and one at the same precision ("2024-07-01") is that edition's own
+// re-release date, not a correction of this one's. Only a value that EXTENDS the
+// recorded one - the same date, stated more precisely - applies. The rest of the
+// row is still the attesting user's either way.
+func TestUserImportMergeKeepsTheRecordedReleaseDate(t *testing.T) {
+	for _, tc := range []struct{ name, recorded, stated, want string }{
+		{"a less precise date never replaces a recorded full date", "2024-06-04", "2000", "2024-06-04"},
+		{"a regional re-release date never replaces the recorded one", "2024-06-04", "2024-07-01", "2024-06-04"},
+		{"a less precise prefix never coarsens it", "2024-06-04", "2024", "2024-06-04"},
+		{"a full date extending a recorded year is a precision improvement", "2024", "2024-06-04", "2024-06-04"},
+		{"a more precise date of another year is still another edition's", "2000", "2024-06-04", "2000"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			seedRec := strings.Replace(tierRecording, `"release_date":"2019"`, `"release_date":"`+tc.recorded+`"`, 1)
+			dataDir := seedTierTree(t, map[string]string{tierRecRel: seedRec})
+			sum := runUserImport(t, dataDir, fmt.Sprintf(`[{
+			  "asin": "B0USER0001",
+			  "title_short": "The Lost Cartographer",
+			  "author": "Ada Mapmaker",
+			  "narrated_by": "Bea Reader",
+			  "language": "english",
+			  "region": "uk",
+			  "publisher": "Lost Press",
+			  "release_date": %q,
+			  "seconds": 36300
+			}]`, tc.stated))
+
+			if sum.MergedASINs != 1 || sum.AttestedRecordings != 1 || sum.Conflicts != 0 {
+				t.Fatalf("summary = %+v, want one merged ASIN, one attestation, no conflict", sum)
+			}
+			var rec recordingFile
+			readEntity(t, dataDir, tierRecRel, &rec)
+			if rec.ReleaseDate != tc.want {
+				t.Errorf("release_date = %q, want %q", rec.ReleaseDate, tc.want)
+			}
+			if rec.Publisher != "Lost Press" || len(rec.ASIN) != 2 {
+				t.Errorf("the rest of the merged row must still apply: %+v", rec)
+			}
+			if res := check.Load(dataDir); !res.OK() {
+				t.Fatalf("tree failed validation:\n%v", res.Problems)
+			}
+		})
 	}
 }
 

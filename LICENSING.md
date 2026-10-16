@@ -257,10 +257,12 @@ The rule, applied at **record** granularity (not per field):
    deliberate exception - the **ASIN merge**, where a user's regional re-release
    folds its ASIN into an existing recording. That match is inferred (same work,
    same narrators) and a regional edition legitimately carries its own date, so
-   the date is not treated as a disagreement there; the runtime guard, which is
-   what distinguishes a re-release from a different production, still decides
-   whether the merge happens at all. A stated date also never *coarsens* a
-   recorded one: a year-only export leaves a recorded full date alone. Identity
+   the date is not treated as a disagreement there - nor does it replace the
+   recorded date; the runtime guard, which is what distinguishes a re-release
+   from a different production, still decides whether the merge happens at all.
+   A recorded date is only ever replaced by one that *extends* it (a full date
+   over the year it starts with): a year-only export leaves a recorded full date
+   alone, and another edition's date never moves it. Identity
    is never rewritten by an import - a work's title and authors, a recording's
    narrators, and the ASIN/ISBN identifier sets are corrections (the "Correct
    data" form), not imports. `added_at` is a creation stamp, never a fact from

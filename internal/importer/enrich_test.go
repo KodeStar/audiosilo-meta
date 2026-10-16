@@ -347,6 +347,35 @@ func TestEnrichSkipsAContradictedRowEntirely(t *testing.T) {
 	}
 }
 
+// TestADifferingReleaseDateStillFlags pins that the release-date guard still
+// fires outside the merge scope (#2518): an enrichment row with a differing date
+// is a conflict whether the recording carries one ASIN or several, and so is a
+// user's exact-ASIN attestation of a multi-ASIN mirror seed. Nothing is written.
+func TestADifferingReleaseDateStillFlags(t *testing.T) {
+	const single = `{"asin":[{"asin":"B0LIBEX001","region":"uk"}],"id":"bea-reader","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"release_date":"2019-11-05","sources":[{"type":"user"}],"work":"the-lost-cartographer"}`
+	multi := strings.Replace(single, `"region":"uk"}`, `"region":"uk"},{"asin":"B0OTHER001","region":"us"}`, 1)
+	for name, rec := range map[string]string{"one ASIN": single, "several ASINs": multi} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := seedEnrichTree(t, map[string]string{recRel: rec})
+			before := snapshotTree(t, dataDir)
+			sum := runEnrich(t, dataDir, fullRow, false)
+			if !hasWarning(sum.Warnings, "release date 2024-03-01 conflicts with the recorded 2019-11-05") {
+				t.Errorf("want the date flagged, got %v", sum.Warnings)
+			}
+			assertTreeUnchanged(t, dataDir, before)
+		})
+	}
+	t.Run("user exact-ASIN attestation of several ASINs", func(t *testing.T) {
+		seedRec := strings.Replace(tierRecording, `"region":"us"}`, `"region":"us"},{"asin":"B0OTHER001","region":"uk"}`, 1)
+		dataDir := seedTierTree(t, map[string]string{tierRecRel: seedRec})
+		before := snapshotTree(t, dataDir)
+		if sum := runUserImport(t, dataDir, fmt.Sprintf(userRowDated, "2021-07-02")); sum.Conflicts != 1 || sum.AttestedRecordings != 0 {
+			t.Errorf("summary = %+v, want one conflict and no attestation", sum)
+		}
+		assertTreeUnchanged(t, dataDir, before)
+	})
+}
+
 func TestEnrichDoesNotWarnOnALessPreciseRecordedDate(t *testing.T) {
 	// The catalogue records release dates at whatever precision their source
 	// stated. A recorded "2024" and a row's "2024-03-01" are the same date, so
@@ -362,6 +391,39 @@ func TestEnrichDoesNotWarnOnALessPreciseRecordedDate(t *testing.T) {
 	readEntity(t, dataDir, recRel, &rec)
 	if rec.ReleaseDate != "2024" {
 		t.Errorf("release_date = %q, want the recorded value kept", rec.ReleaseDate)
+	}
+}
+
+// TestFillReleaseDate pins the precision rule in every posture: a recorded date
+// is only ever replaced by one that extends it (issue #2518), and an absent one
+// is filled in either posture.
+func TestFillReleaseDate(t *testing.T) {
+	for _, tc := range []struct {
+		recorded, stated string
+		overwrite        bool
+		want             string
+		changed          bool
+	}{
+		{"", "2024-06-04", false, "2024-06-04", true},
+		{"", "2024", true, "2024", true},
+		{"2024-06-04", "2000", true, "2024-06-04", false},
+		{"2024-06-04", "2024", true, "2024-06-04", false},
+		{"2024-06-04", "2024-07-01", true, "2024-06-04", false},
+		{"2000", "2024-06-04", true, "2000", false},
+		{"2024", "2024-06-04", true, "2024-06-04", true},
+		{"2024-06", "2024-06-04", true, "2024-06-04", true},
+		{"2024", "2024-06-04", false, "2024", false},
+		{"2024-06-04", "2024-07-01", false, "2024-06-04", false},
+	} {
+		raw := map[string]any{}
+		if tc.recorded != "" {
+			raw["release_date"] = tc.recorded
+		}
+		changed := fillReleaseDate(raw, tc.stated, tc.overwrite)
+		if got := coerceStr(raw["release_date"]); got != tc.want || changed != tc.changed {
+			t.Errorf("fillReleaseDate(%q <- %q, overwrite=%v) = %q, %v; want %q, %v",
+				tc.recorded, tc.stated, tc.overwrite, got, changed, tc.want, tc.changed)
+		}
 	}
 }
 
