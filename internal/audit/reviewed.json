@@ -8628,6 +8628,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "the-devils-legion-dramatized-adaptation"
+    ],
+    "reason": "one book: libex's Last Gunfighter listing (https://libexdb.com/series/B009UYOW6A/books) holds The Devil's Legion at 14 as George Guidall's unabridged reading (B002V5CVEU, 466 min) and the GraphicAudio dramatization (1648794866, 286 min), a recording of the same novel",
+    "target": "devils-legion"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "diamonds-are-forever-with-interview"
     ],
     "reason": "the same Fleming novel: the decorated record holds the same Damian Lewis 406-minute reading, and with Interview only names bonus material on the recording",
@@ -15783,6 +15792,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "renegades-dramatized-adaptation-the-last-gunfighter-book-12"
+    ],
+    "reason": "one book: libex's Last Gunfighter listing (https://libexdb.com/series/B009UYOW6A/books) holds Renegades at 12 as George Guidall's unabridged reading (B002V0QWFE, 589 min) and the GraphicAudio dramatization (1648794823, 365 min), a recording of the same novel",
+    "target": "renegades-william-johnstone"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "rescate-accidentado-narracion-en-castellano"
     ],
     "reason": "the same Spanish translation by the same author: a Castilian and a Latin-American narration of one book, the decorations naming the narration and the English original title",
@@ -17517,6 +17535,15 @@
     ],
     "reason": "different volumes: positions 1 and 3, and the second title states Part 3",
     "target": "succubus-summoner"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
+      "sudden-fury-dramatized-adaptation"
+    ],
+    "reason": "one book: libex's Last Gunfighter listing (https://libexdb.com/series/B009UYOW6A/books) holds Sudden Fury at 20 as George Guidall's unabridged reading (B004G7UJMC, 442 min) and the GraphicAudio dramatization (1648795145, 303 min), a recording of the same novel",
+    "target": "sudden-fury"
   },
   {
     "decision": "assert",
@@ -23554,6 +23581,15 @@
     "decision": "assert",
     "op": "merge-works",
     "others": [
+      "winter-kill-dramatized-adaptation-the-last-gunfighter-book-21"
+    ],
+    "reason": "one book: libex's Last Gunfighter listing (https://libexdb.com/series/B009UYOW6A/books) holds Winter Kill at 21 as George Guidall's unabridged reading (B0052TXF6K, 410 min) and the GraphicAudio dramatization (1648795161, 359 min), a recording of the same novel",
+    "target": "winter-kill-the-last-gunfighter"
+  },
+  {
+    "decision": "assert",
+    "op": "merge-works",
+    "others": [
       "wintersmith-discworld-novel-35"
     ],
     "reason": "the same novel; (Discworld Novel 35) is a retailer series decoration and the record holds the abridged Tony Robinson recording plus another ASIN of the 2023 full-cast production",
@@ -25379,6 +25415,15 @@
     "reason": "the Audible listing (B07VRQK134) subtitles it Books 10-12",
     "target": "will-travel-for-trouble-series",
     "to": "Will Travel for Trouble Series: Books 10-12"
+  },
+  {
+    "decision": "accept",
+    "field": "title",
+    "from": "Winter Kill: The Last Gunfighter",
+    "op": "retitle-work",
+    "reason": "the novel is Winter Kill, book 21 of the series it sits in; libex's Last Gunfighter listing (https://libexdb.com/series/B009UYOW6A/books) names the GraphicAudio edition Winter Kill and the suffix only restates the series",
+    "target": "winter-kill-the-last-gunfighter",
+    "to": "Winter Kill"
   },
   {
     "decision": "assert",
