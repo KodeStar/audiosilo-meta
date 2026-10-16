@@ -7329,6 +7329,10 @@
             {
               "asin": "B0H6QZ89Z2",
               "region": "uk"
+            },
+            {
+              "asin": "B0H6QZDM6C",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -7458,6 +7462,11 @@
               "imported_at": "2026-10-09",
               "ref": "B0H6QZ89Z2",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-16",
+              "ref": "B0H6QZDM6C",
+              "type": "libex-import"
             }
           ],
           "work": "space-station-halcyon"
@@ -7471,6 +7480,58 @@
         }
       ],
       "title": "Space Station Halcyon"
+    },
+    "space-station-halcyon-come-and-get-it": {
+      "added_at": "2026-10-16",
+      "authors": [
+        "matthew-c-lucas"
+      ],
+      "genres": [
+        "action-adventure",
+        "comedy-humor",
+        "science-fiction"
+      ],
+      "id": "space-station-halcyon-come-and-get-it",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "kyle-snyder-2026": {
+          "abridged": false,
+          "added_at": "2026-10-16",
+          "asin": [
+            {
+              "asin": "B0HN44YPJM",
+              "region": "de"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81JYE33--QL.jpg",
+          "id": "kyle-snyder-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "kyle-snyder"
+          ],
+          "publisher": "Sky Dog House",
+          "release_date": "2026-10-15",
+          "runtime_min": 299,
+          "sources": [
+            {
+              "imported_at": "2026-10-16",
+              "ref": "B0HN44YPJM",
+              "type": "libex-import"
+            }
+          ],
+          "work": "space-station-halcyon-come-and-get-it"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-16",
+          "ref": "B0HN44YPJM",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Space Station Halcyon: \"Come and Get It!\""
     },
     "space-station-seventh-grade": {
       "added_at": "2026-07-29",
