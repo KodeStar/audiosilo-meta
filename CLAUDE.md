@@ -43,14 +43,10 @@ trigger. The migration plan is the maintainer's, in the untracked
 
 ## Model routing (every session follows this)
 
-- **Fable (the main session) is the orchestrator only.** Task decomposition,
-  design taste, final QA. It never writes feature code directly; it may write
-  orchestration artifacts (this file, briefs, governance docs, commit messages).
-  Runs at high effort.
-- **Opus subagents do the implementation**, one per task, parallel when tasks
-  are disjoint. Each gets a self-contained brief and must leave the gate green.
-- **Token-hungry chores go to cheaper models** (Sonnet/Haiku): fact research,
-  bulk data sweeps, log triage.
+Work runs through the workspace `/ship` skill (`~/dev/audiosilo/.claude/skills/ship/`):
+the main session plans, decides and checks; fresh Opus agents (`ship-implementer`,
+`ship-reviewer`, `ship-verifier`) do the reading, writing, reviewing and live
+verification, so the large main context is never what reviews or edits code.
 
 ## Build / test / gate
 
