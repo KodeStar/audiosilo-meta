@@ -9767,6 +9767,10 @@
             {
               "asin": "B07QSXV9M3",
               "region": "uk"
+            },
+            {
+              "asin": "B07QS5GZP7",
+              "region": "de"
             }
           ],
           "chapters": [
@@ -9865,6 +9869,11 @@
             {
               "imported_at": "2026-10-06",
               "ref": "B07QSXV9M3",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-18",
+              "ref": "B07QS5GZP7",
               "type": "libex-import"
             }
           ],
@@ -14508,6 +14517,154 @@
         }
       ],
       "title": "Vengeance"
+    },
+    "vengeance-empire-xii": {
+      "added_at": "2026-10-18",
+      "authors": [
+        "anthony-riches"
+      ],
+      "genres": [
+        "action-adventure",
+        "historical-fiction",
+        "history"
+      ],
+      "id": "vengeance-empire-xii",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "saul-reichlin-2021": {
+          "abridged": false,
+          "added_at": "2026-10-18",
+          "asin": [
+            {
+              "asin": "B09K82BRZK",
+              "region": "de"
+            },
+            {
+              "asin": "B09K7ZQRZ4",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 14623,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1546964,
+              "start_ms": 14623,
+              "title": "Prologue"
+            },
+            {
+              "length_ms": 3542366,
+              "start_ms": 1561587,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3167085,
+              "start_ms": 5103953,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3299114,
+              "start_ms": 8271038,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3561128,
+              "start_ms": 11570152,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 5025216,
+              "start_ms": 15131280,
+              "title": "Chapter 5"
+            },
+            {
+              "length_ms": 2384759,
+              "start_ms": 20156496,
+              "title": "Chapter 6"
+            },
+            {
+              "length_ms": 4006997,
+              "start_ms": 22541255,
+              "title": "Chapter 7"
+            },
+            {
+              "length_ms": 3544409,
+              "start_ms": 26548252,
+              "title": "Chapter 8"
+            },
+            {
+              "length_ms": 3687259,
+              "start_ms": 30092661,
+              "title": "Chapter 9"
+            },
+            {
+              "length_ms": 3840092,
+              "start_ms": 33779920,
+              "title": "Chapter 10"
+            },
+            {
+              "length_ms": 4945409,
+              "start_ms": 37620012,
+              "title": "Chapter 11"
+            },
+            {
+              "length_ms": 1027018,
+              "start_ms": 42565421,
+              "title": "Historical Note"
+            },
+            {
+              "length_ms": 983725,
+              "start_ms": 43592439,
+              "title": "The Roman Army"
+            },
+            {
+              "length_ms": 34516,
+              "start_ms": 44576164,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81LHaNU-MDL.jpg",
+          "id": "saul-reichlin-2021",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "saul-reichlin"
+          ],
+          "publisher": "Hodder & Stoughton",
+          "release_date": "2021-11-11",
+          "runtime_min": 743,
+          "sources": [
+            {
+              "imported_at": "2026-10-18",
+              "ref": "B09K82BRZK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-18",
+              "ref": "B09K7ZQRZ4",
+              "type": "libex-import"
+            }
+          ],
+          "work": "vengeance-empire-xii"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-18",
+          "ref": "B09K82BRZK",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-18",
+          "ref": "B09K7ZQRZ4",
+          "type": "libex-import"
+        }
+      ],
+      "title": "Vengeance: Empire XII"
     },
     "vengeance-fracture-book-2": {
       "added_at": "2026-08-02",
