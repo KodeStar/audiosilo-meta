@@ -130,7 +130,7 @@ jobs:
         with:
           # .go-version holds the bare MINOR and check-latest resolves it to the
           # newest patch; go.mod's `go` line is a floor, not the toolchain
-          # (CLAUDE.md, the `.github/` entry).
+          # (PACKAGES.md, the `.github/` entry).
           go-version-file: .go-version
           check-latest: true
 
