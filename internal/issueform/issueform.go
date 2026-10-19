@@ -2,7 +2,7 @@
 // data-tree records a hand-authored pull request would carry. It parses the
 // rendered issue body (### <label> headings), composes work/recording/person/
 // series records (add-work, add-recording), applies a single-field correction
-// (correct-data), or places a community sidecar attachment (characters/recaps),
+// (correct-data) or a batch of them (correction-batch), or places a community sidecar attachment (characters/recaps),
 // deduplicating against the existing catalog. It reuses internal/importer's
 // building blocks (slug rules, ASIN normalization, name splitting) so a form
 // submission is indistinguishable from a direct edit, and returns a
@@ -47,14 +47,23 @@ const (
 
 // Result is the machine-readable outcome written to stdout by cmd/metaissue.
 // Template is the normalized routing template the submission was processed as
-// (add-work, add-recording, correct-data, characters, recaps, import); the
-// intake workflow reads it for the pull-request title/body and license layer.
+// (add-work, add-recording, correct-data, correction-batch, characters, recaps,
+// import); the intake workflow reads it for the pull-request title/body and license layer.
 type Result struct {
 	Status   Status   `json:"status"`
 	Template string   `json:"template,omitempty"`
 	License  string   `json:"license,omitempty"`
 	Files    []string `json:"files"`
 	Messages []string `json:"messages"`
+	// NeedsHuman is the part of an OK verdict a maintainer still has to apply:
+	// the correction-batch form applies what it can in one pull request and lists
+	// the rest here, so the intake workflow comments them on the issue and labels
+	// it data:needs-human after the pull request opens. Empty on every other
+	// template, and on a batch that applied everything.
+	NeedsHuman []string `json:"needs_human,omitempty"`
+	// Changes is the correction-batch form's per-change outcome, in submission
+	// order; absent on every other template.
+	Changes []ChangeResult `json:"changes,omitempty"`
 }
 
 // MarshalJSON owns the two WIRE guarantees, on the type rather than in any one
@@ -86,6 +95,9 @@ func (r Result) MarshalJSON() ([]byte, error) {
 	if head := wireMessages(r.Messages); !slices.Equal(head, r.Messages) {
 		w.Messages, w.AllMessages = head, r.Messages
 	}
+	// The remainder is rendered into an issue comment, so it is bounded the same
+	// way (it is at most maxBatchChanges lines by construction, each clipped).
+	w.NeedsHuman = wireMessages(r.NeedsHuman)
 	return json.Marshal(w)
 }
 
@@ -116,7 +128,7 @@ type Options struct {
 	// would be a second, staler opinion.
 	WorksDB string
 	// Template is the issue-form template id (add-work, add-recording,
-	// correct-data, characters, recaps, import). A leading "data:" and legacy
+	// correct-data, correction-batch, characters, recaps, import). A leading "data:" and legacy
 	// aliases are accepted.
 	Template string
 	// Body is the raw rendered issue-form markdown body.
@@ -228,6 +240,14 @@ type composer struct {
 	wrote    []string
 	messages []string
 	status   Status
+	// noop is set by failNoop, so a scoped correction (applyCorrection) can tell
+	// "already says that" apart from the other duplicate verdict, an identifier
+	// recorded on ANOTHER record, which is a disagreement for a maintainer.
+	noop bool
+	// needsHuman and changes are the correction-batch verdict's remainder and
+	// per-change outcomes (Result.NeedsHuman, Result.Changes).
+	needsHuman []string
+	changes    []ChangeResult
 }
 
 // Process turns one issue-form submission into records and returns the outcome.
@@ -346,6 +366,8 @@ func process(opts Options) Result {
 		c.addRecording(sections)
 	case "correct-data":
 		c.correctData(sections)
+	case "correction-batch":
+		c.correctBatch(sections)
 	case "characters":
 		c.addSidecar(sections, model.KindCharacters)
 	case "recaps":
@@ -357,12 +379,12 @@ func process(opts Options) Result {
 	// A terminal status (duplicate/needs-human/invalid) short-circuits: never
 	// write partial records for a submission we are not accepting.
 	if c.failed() {
-		return Result{Status: c.status, Messages: c.messages}
+		return Result{Status: c.status, Messages: c.messages, Changes: c.changes}
 	}
 	// A takeover wrote through the importer, which flushed and validated the tree
 	// itself - as the import template does - so there is nothing left to flush.
 	if len(c.wrote) > 0 {
-		return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages}
+		return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages, NeedsHuman: c.needsHuman, Changes: c.changes}
 	}
 	if c.queued == 0 {
 		return Result{Status: StatusInvalid, Messages: appendIfEmpty(c.messages, "nothing to write")}
@@ -374,7 +396,7 @@ func process(opts Options) Result {
 	if probs := c.validate(); len(probs) > 0 {
 		return Result{Status: StatusInvalid, Messages: append(c.messages, probs...)}
 	}
-	return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages}
+	return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages, NeedsHuman: c.needsHuman, Changes: c.changes}
 }
 
 // loadExisting seeds the dedup maps from the committed data tree.
@@ -698,6 +720,7 @@ func (c *composer) failDuplicateOf(ref recRef, how, asins, format string, args .
 // is the dominant population, routing every such no-op to a maintainer with an
 // untrue explanation would be the common case, not the edge.
 func (c *composer) failNoop(format string, args ...any) {
+	c.noop = true
 	c.fail(StatusDuplicate, format+" - nothing to change", args...)
 }
 
@@ -908,6 +931,8 @@ func normalizeTemplate(t string) string {
 		return "add-recording"
 	case "correct-data", "correction", "correct":
 		return "correct-data"
+	case "correction-batch", "corrections":
+		return "correction-batch"
 	case "add-characters", "characters":
 		return "characters"
 	case "add-recaps", "recaps":
@@ -925,12 +950,13 @@ func normalizeTemplate(t string) string {
 // (data:duplicate, data:needs-human, data:invalid) and the bare "data" label, so
 // a re-run's own labels can never be mistaken for a routing template.
 var routingTemplates = map[string]bool{
-	"add-work":      true,
-	"add-recording": true,
-	"correction":    true,
-	"characters":    true,
-	"recaps":        true,
-	"import":        true,
+	"add-work":         true,
+	"add-recording":    true,
+	"correction":       true,
+	"correction-batch": true,
+	"characters":       true,
+	"recaps":           true,
+	"import":           true,
 }
 
 // unknownTemplate is the one spelling of the unknown-template verdict, shared
@@ -955,7 +981,7 @@ var normalizedTemplates = func() map[string]bool {
 
 // TemplateFromLabels picks the intake routing template from an issue's label
 // names. A label routes when it is "data:<t>" for a known template <t> (add-work,
-// add-recording, correction, characters, recaps, import) OR - for issues opened
+// add-recording, correction, correction-batch, characters, recaps, import) OR - for issues opened
 // before the templates' labels were renamed to the data: namespace - the bare
 // legacy label name <t> against the same allowlist; the first routing label (in
 // the given order) wins. The bare "data" label and the outcome labels

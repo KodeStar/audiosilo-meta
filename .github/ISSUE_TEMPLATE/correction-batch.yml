@@ -1,0 +1,59 @@
+name: Correct several fields (batch)
+description: Several corrections to one book at once, as a JSON list. Usually filed by an AudioSilo Bridge; the single-field form is easier by hand.
+title: "[corrections] "
+labels: ["data", "data:correction-batch"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form carries up to 25 corrections to ONE book with one shared
+        source, as a JSON list. An AudioSilo Bridge files it for a server admin
+        who corrected a book's details; by hand, the **Correct data** form is
+        easier for a single field.
+
+        The bot applies a work's `title` and a recording's `release_date` and
+        `isbn` in one pull request. Everything else it accepts (a work's
+        `authors`, `series`, `series_index`, `more_series` and a recording's
+        `narrators`) is listed on this issue for a maintainer, evidence attached.
+        One change it cannot read at all (an unknown field, a value over 500
+        characters) refuses the whole issue.
+
+  - type: input
+    id: record
+    attributes:
+      label: Record
+      description: The book's page on meta.audiosilo.app. It is the record a change applies to when the change names none.
+      placeholder: https://meta.audiosilo.app/works/the-hobbit
+    validations:
+      required: true
+
+  - type: textarea
+    id: changes
+    attributes:
+      label: Changes
+      description: |
+        Version 1 JSON. `record` is optional per change (a recording is `data/works/<work>/recordings/<recording>`); `current` is what the record says now.
+      render: json
+      placeholder: |
+        {"v":1,"source":"hand-written","changes":[
+          {"record":"https://meta.audiosilo.app/works/the-hobbit","field":"title","current":"The Hobit","corrected":"The Hobbit"},
+          {"record":"data/works/the-hobbit/recordings/andy-serkis-2020","field":"release_date","current":"2021","corrected":"2020-09-17"}
+        ]}
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / source
+      description: How do you know? Link a store page, an authoritative listing, or your own library. At most 2,000 characters.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: cc0
+    attributes:
+      label: Public domain dedication
+      options:
+        - label: I dedicate these corrections to the public domain under CC0-1.0, and I have the right to do so.
+          required: true

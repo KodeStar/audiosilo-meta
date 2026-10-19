@@ -40,6 +40,9 @@ func TestFieldLabelsExistInTemplates(t *testing.T) {
 		{"correct-data.yml", []string{
 			fCorrectRecord, fCorrectField, fCorrectCorrected, fCorrectEvidence, fCC0,
 		}},
+		{"correction-batch.yml", []string{
+			fCorrectRecord, fBatchChanges, fCorrectEvidence, fCC0,
+		}},
 		{"import-library.yml", []string{
 			fImportType, fImportAttachment,
 		}},
@@ -127,6 +130,7 @@ func TestTemplateFromLabels(t *testing.T) {
 		{"add-work", []string{"data", "data:add-work"}, "add-work"},
 		{"add-recording", []string{"data:add-recording"}, "add-recording"},
 		{"correction", []string{"data", "data:correction"}, "correction"},
+		{"correction-batch", []string{"data", "data:correction-batch"}, "correction-batch"},
 		{"characters", []string{"data:characters"}, "characters"},
 		{"recaps", []string{"data:recaps"}, "recaps"},
 		{"import", []string{"data:import"}, "import"},

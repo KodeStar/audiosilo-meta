@@ -1,6 +1,9 @@
 package issueform
 
 import (
+	"bytes"
+	"encoding/json"
+
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -63,13 +66,19 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 	if !ok {
 		return
 	}
+	// summary is an existing recaps member holding ONLY a whole-book summary
+	// (in_short/ending, no chaptered list), which a submitted recap list fills
+	// rather than replaces (mergeIntoSummary).
+	var summary map[string]any
 	if !found {
 		entry = map[string]any{}
-	} else if _, taken := entry[names.member]; taken {
+	} else if member, taken := entry[names.member]; taken {
 		// Only this member blocks: the sibling sidecar sharing the entry is
 		// exactly what the read-modify-write below preserves.
-		c.failMemberTaken(names, workSlug)
-		return
+		if summary = summaryOnly(kind, member); summary == nil {
+			c.failMemberTaken(names, workSlug)
+			return
+		}
 	}
 	// AND under every RETIRED spelling of this work, which is the state a core
 	// merge actually leaves behind: the merge retires the work slug in one
@@ -110,6 +119,9 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		return
 	}
 	obj["work"] = workSlug
+	if summary != nil {
+		obj = c.mergeIntoSummary(summary, obj)
+	}
 
 	entry[names.member] = obj
 	c.putEntry(pack.FamilyWorksCommunity, workSlug, entry)
@@ -144,4 +156,78 @@ func (c *composer) attachmentBytes(block string, maxBytes int64) ([]byte, bool) 
 		return nil, false
 	}
 	return data, true
+}
+
+// recapSummaryFields are the recaps member's two whole-book summary fields.
+var recapSummaryFields = []string{"in_short", "ending"}
+
+// summaryOnly returns the existing member as a map when it is a RECAPS member
+// holding a whole-book summary and no chaptered recap list, else nil. That
+// member is not a sidecar the submission would replace: the list it lacks is
+// exactly what a recaps submission brings, so the two are merged.
+func summaryOnly(kind model.Kind, member any) map[string]any {
+	if kind != model.KindRecaps {
+		return nil
+	}
+	m, ok := member.(map[string]any)
+	if !ok {
+		return nil
+	}
+	if v, present := m["recaps"]; present {
+		if list, isList := v.([]any); !isList || len(list) > 0 {
+			return nil
+		}
+	}
+	for _, f := range recapSummaryFields {
+		if _, ok := m[f]; ok {
+			return m
+		}
+	}
+	return nil
+}
+
+// mergeIntoSummary fills a summary-only recaps member with a submitted recap
+// list. The community's summary is KEPT: a submission's own in_short/ending is
+// dropped when the member already states that field (an AudioSilo Bridge strips
+// them before sending in that case; a hand submission that still carries a
+// different one is told so). Sources are unioned, existing first, because the
+// summary's attribution is a CC BY-SA obligation the merge must not lose.
+func (c *composer) mergeIntoSummary(existing, submitted map[string]any) map[string]any {
+	for _, f := range recapSummaryFields {
+		old, ok := existing[f]
+		if !ok {
+			continue
+		}
+		if mine, sent := submitted[f]; sent && !sameJSON(mine, old) {
+			c.note("kept the community's existing %s for this work; the submitted one was not used", f)
+		}
+		submitted[f] = old
+	}
+	oldSources, _ := existing["sources"].([]any)
+	newSources, _ := submitted["sources"].([]any)
+	merged := append([]any{}, oldSources...)
+	for _, src := range newSources {
+		dup := false
+		for _, have := range merged {
+			if sameJSON(src, have) {
+				dup = true
+				break
+			}
+		}
+		if !dup {
+			merged = append(merged, src)
+		}
+	}
+	if len(merged) > 0 {
+		submitted["sources"] = merged
+	}
+	c.note("added the recap list to the work's existing summary-only recaps, keeping its summary")
+	return submitted
+}
+
+// sameJSON compares two decoded JSON values by their encoding.
+func sameJSON(a, b any) bool {
+	x, errA := json.Marshal(a)
+	y, errB := json.Marshal(b)
+	return errA == nil && errB == nil && bytes.Equal(x, y)
 }

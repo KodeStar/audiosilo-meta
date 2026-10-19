@@ -127,9 +127,18 @@ func (c *composer) correctData(s sections) {
 		c.fail(StatusInvalid, "the CC0 public-domain dedication checkbox is not ticked")
 		return
 	}
-	ref, ok := resolveRecordRef(s.get(fCorrectRecord))
+	c.correctOne(s.get(fCorrectRecord), s.get(fCorrectField), s.get(fCorrectCorrected), s.get(fCorrectEvidence))
+}
+
+// correctOne is the body of one field correction, shared by the single-field
+// form (correctData, which reports through the composer's verdict as it always
+// has) and the batch form (applyCorrection, which scopes that verdict to the one
+// change - compose_batch.go). It fails the run itself and writes nothing when the
+// correction cannot be applied, and queues the corrected entry when it can.
+func (c *composer) correctOne(reference, field, corrected, evidence string) {
+	ref, ok := resolveRecordRef(reference)
 	if !ok {
-		c.fail(StatusNeedsHuman, "could not resolve %q to a record in data/ - a maintainer will locate it", s.get(fCorrectRecord))
+		c.fail(StatusNeedsHuman, "could not resolve %q to a record in data/ - a maintainer will locate it", reference)
 		return
 	}
 	addr, ok := entryAddress(ref)
@@ -138,9 +147,7 @@ func (c *composer) correctData(s sections) {
 		return
 	}
 
-	fieldName := normalizeFieldName(s.get(fCorrectField))
-	corrected := s.get(fCorrectCorrected)
-	evidence := s.get(fCorrectEvidence)
+	fieldName := normalizeFieldName(field)
 	if fieldName == "" || corrected == "" || evidence == "" {
 		c.fail(StatusInvalid, "Field, Corrected value, and Evidence are all required")
 		return
