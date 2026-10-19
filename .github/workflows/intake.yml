@@ -30,9 +30,28 @@ name: intake
 # maintainer applying the routing label later - a `labeled` event, never an
 # `opened` or `edited` one - that admits it. The job-level `if` below narrows
 # `labeled` to genuine routing labels.
+#
+# The third door is `workflow_call`, from route.yml: an issue an AudioSilo Bridge
+# filed through the AudioSilo GitHub App arrives label-less for the reason above,
+# and route.yml labels it with GITHUB_TOKEN - which starts no workflow (GitHub's
+# recursion guard), so no `labeled` run follows. route.yml therefore calls this
+# workflow in the same run, passing the issue and the routing label it applied.
+# In a called run the event is still route.yml's (`issues`/`opened`), so the
+# issue payload below is that issue's; the label set in it predates the routing
+# label, which is why `template` is an input rather than read from the payload.
 on:
   issues:
     types: [edited, labeled]
+  workflow_call:
+    inputs:
+      issue_number:
+        description: The issue to compose; must be the issue whose `opened` event started the caller.
+        type: number
+        required: true
+      template:
+        description: The routing label the caller applied (data:add-work, data:correction-batch, ...).
+        type: string
+        required: true
   # A merge to main can leave an already-open intake PR conflicting in a pack
   # file, which only a data change can do - but the series-completion bot
   # (GOVERNANCE.md, "Series-completion bot") merges its own pull request ONLY
@@ -66,12 +85,17 @@ permissions: {}
 # queued behind a running intake would cancel a REAL run waiting behind it, and
 # the submission would sit there with no pull request and no comment. Skipped
 # events therefore get their own `-noop` group, ai-verify.yml's pattern. The
-# condition below is a VERBATIM copy of the intake job's `if` (its `issues`
-# half), so keeping the two in step is a matter of keeping them identical.
+# condition below is a VERBATIM copy of the intake job's `if` (its call and
+# `issues` halves), so keeping the two in step is a matter of keeping them
+# identical. A called run shares the issue's `run` group with a later edit's.
 concurrency:
   group: >-
     ${{ github.event_name == 'push' && 'intake-rebase' || format('intake-{0}-{1}', github.event.issue.number,
     (
+      (
+        inputs.issue_number > 0 &&
+        inputs.issue_number == github.event.issue.number
+      ) || github.event_name == 'issues' && (
       (
         github.event.action == 'edited' &&
         contains(join(github.event.issue.labels.*.name), 'data:')
@@ -81,7 +105,7 @@ concurrency:
         github.event.label.name != 'data:invalid' &&
         github.event.label.name != 'data:needs-human' &&
         github.event.label.name != 'data:duplicate'
-      )
+      ))
     ) && 'run' || 'noop') }}
   cancel-in-progress: false
 
@@ -104,10 +128,15 @@ jobs:
     # workflow's own outcome-labeling (the non-ok step below) would re-fire a
     # `labeled` run - a duplicate intake + duplicate comment - for every non-ok
     # verdict. A genuine routing label (data:add-work, data:add-recording, ...)
-    # starts with `data:` but is none of those outcomes. The concurrency group
-    # at the top of the file carries a verbatim copy of this condition.
+    # starts with `data:` but is none of those outcomes. A CALLED run (route.yml)
+    # is admitted for the issue that started its caller and no other: the steps
+    # read that issue from the event payload. The concurrency group at the top of
+    # the file carries a verbatim copy of this condition.
     if: >-
-      github.event_name == 'issues' && (
+      (
+        inputs.issue_number > 0 &&
+        inputs.issue_number == github.event.issue.number
+      ) || github.event_name == 'issues' && (
       (
         github.event.action == 'edited' &&
         contains(join(github.event.issue.labels.*.name), 'data:')
@@ -173,9 +202,16 @@ jobs:
         # only when libex names the SAME series. Best-effort and capped: a libex
         # outage leaves the warnings exactly as they are today, so it can never
         # fail an otherwise good submission.
+        #
+        # A called run (route.yml) routes on the label its caller applied
+        # (CALL_TEMPLATE), since the payload's label set predates it.
         env:
           LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
+          CALL_TEMPLATE: ${{ inputs.template }}
         run: |
+          if [ -n "$CALL_TEMPLATE" ]; then
+            LABELS="$(jq -cn --arg t "$CALL_TEMPLATE" '[$t]')"
+          fi
           go run ./cmd/metaissue --labels "$LABELS" --body issue-body.md --data data --profile core \
             --series-lookup > result.json || {
             echo '{"status":"invalid","files":[],"messages":["metaissue failed to run"]}' > result.json
@@ -255,6 +291,7 @@ jobs:
           } > pr-body.md
 
       - name: Open the pull request
+        id: cpr
         if: steps.run.outputs.status == 'ok'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
@@ -279,6 +316,33 @@ jobs:
             data
             bot-intake
           delete-branch: true
+
+      # A correction batch applies what it can and leaves the rest for a
+      # maintainer (issueform.Result.NeedsHuman): the pull request carries the
+      # applied part, and the remainder is commented here, with the
+      # data:needs-human label, so the issue stays in the maintainer's queue
+      # after the pull request merges. Every other template's ok verdict has no
+      # remainder, so this step is skipped for them.
+      - name: Comment the remainder and label the issue (partial)
+        if: steps.run.outputs.status == 'ok' && steps.cpr.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          PR: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          if [ "$(jq '.needs_human // [] | length' result.json)" -eq 0 ]; then
+            echo "nothing left for a maintainer"
+            exit 0
+          fi
+          {
+            echo "The bot applied what it could${PR:+ in #${PR}}. These changes need a **maintainer** - they can't be applied mechanically:"
+            echo
+            jq -r '.needs_human[] | "- " + .' result.json
+            echo
+            echo "_Posted by the intake bot._"
+          } > comment.md
+          gh issue comment "$ISSUE" --body-file comment.md
+          gh issue edit "$ISSUE" --add-label "data:needs-human" || true
 
       - name: Comment the outcome and label the issue (non-ok)
         if: steps.run.outputs.status != '' && steps.run.outputs.status != 'ok'

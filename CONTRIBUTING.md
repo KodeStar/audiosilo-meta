@@ -144,6 +144,11 @@ If you would rather not edit JSON, open an issue and pick a form:
 - **Add a work** - a new book plus its first recording.
 - **Add a recording** - another narration of a work that already exists.
 - **Correct data** - fix a field on an existing record.
+- **Correct several fields (batch)** - up to 25 corrections to one book with
+  one shared source, as a JSON list. An AudioSilo Bridge files this one for a
+  server admin who corrected a book; the bot applies a work's `title` and a
+  recording's `release_date` and `isbn` in one pull request and lists the rest
+  (authors, narrators, series) on the issue for a maintainer.
 - **Import a library** - attach an OpenAudible `books.json`, a Libation export,
   or a metascan folder scan
   and let us ingest the factual fields.
@@ -164,6 +169,17 @@ needs a human decision, or does not validate, the bot comments back on the issue
 explaining exactly what to fix instead of opening a pull request. Either way a
 maintainer still reviews before anything merges (see
 [GOVERNANCE.md](GOVERNANCE.md)).
+
+**Filed by an AudioSilo Bridge.** A server admin can sign their Bridge in to
+GitHub through the AudioSilo GitHub App and send corrections, and characters or
+recaps the Bridge generated, as issues under their own account. Such an issue
+carries no labels (GitHub drops them for non-collaborators), so the `route`
+workflow reads its title prefix (`[work] `, `[corrections] `), labels it and runs
+the intake bot exactly as for a hand-filed form. Two bounds apply first: the
+account must be at least 30 days old, and one account may have at most 25 open
+issues filed through the App here (50 in the community repository); past either,
+the issue is labelled `intake:held` and waits for a maintainer, with a comment
+saying why. Nothing is lost - a maintainer routes it by hand.
 
 **Spotted a wrong field?** Every work, person, and series page on
 [meta.audiosilo.app](https://meta.audiosilo.app) carries "edit on GitHub" and

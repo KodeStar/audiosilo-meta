@@ -1,0 +1,176 @@
+name: route
+
+# Routes an issue an AudioSilo Bridge filed through the AudioSilo GitHub App
+# (BRIDGE-PLAN.md Phase 2b) into the intake bot.
+#
+# Why this exists: the GitHub API silently drops the labels a non-collaborator
+# sets on a new issue, and an issue form's labels never apply to an API-filed
+# issue, so a Bridge's issue arrives label-less and intake.yml (which routes on
+# a `data:` label) would never see it. This workflow labels it with
+# GITHUB_TOKEN - which starts no workflow, GitHub's recursion guard - and so
+# calls intake.yml as a reusable workflow in the same run.
+#
+# Who gets routed: an issue whose `performed_via_github_app.id` is APP_ID below
+# and that carries no `data:` label yet (a collaborator's labels survive, and
+# their `labeled` event already runs intake). That id proves only that the issue
+# was filed with a token of this App, which anyone can obtain (the App is public
+# and device-flow sign-in needs no secret), so it is a ROUTING HINT, never trust:
+# intake.yml composes the body exactly as it would a hand-filed form, validating
+# everything, and a maintainer still reviews every pull request (GOVERNANCE.md).
+#
+# Abuse bounds (held, not refused - a maintainer decides): a submitter is held
+# with the `intake:held` label and a comment when their GitHub account is younger
+# than MIN_ACCOUNT_DAYS, when they already have more than CAP open App-filed
+# issues here (this one included), or when their numeric user id is listed in
+# .github/intake-denylist. A held issue is routed by a maintainer applying its
+# routing label by hand, which intake.yml's `labeled` trigger admits as usual.
+#
+# The template comes from the TITLE PREFIX, an allowlist: "[work] " is the
+# add-work form and "[corrections] " the correction-batch form. Any other prefix
+# is left alone for a maintainer.
+#
+# SECURITY: the title, body and login are untrusted. They reach `run:` only
+# through environment variables, never through `${{ }}` interpolation, and are
+# only compared, never executed. Nothing is checked out: the denylist is read
+# through the contents API. The workflow token is the only credential, with the
+# least each job needs.
+on:
+  issues:
+    types: [opened]
+
+permissions: {}
+
+env:
+  # The AudioSilo GitHub App (slug audiosilo-contributions). Matched against
+  # github.event.issue.performed_via_github_app.id; 0 would route nothing.
+  APP_ID: "5387686"
+  # Open App-filed issues one GitHub user may have here before the next is held.
+  CAP: "25"
+  # The youngest GitHub account whose App-filed issues are routed.
+  MIN_ACCOUNT_DAYS: "30"
+
+jobs:
+  route:
+    # Only App-filed issues (any App: the id is compared in the step, where the
+    # env constant is readable) that no `data:` label routes already.
+    if: >-
+      github.event.issue.performed_via_github_app.id > 0 &&
+      !contains(join(github.event.issue.labels.*.name), 'data:')
+    runs-on: ubuntu-latest
+    # A handful of API calls; observed well under a minute.
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    outputs:
+      decision: ${{ steps.classify.outputs.decision }}
+      label: ${{ steps.classify.outputs.label }}
+    steps:
+      - name: Classify the issue
+        id: classify
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FILED_BY_APP: ${{ github.event.issue.performed_via_github_app.id }}
+          # Untrusted: compared only.
+          TITLE: ${{ github.event.issue.title }}
+          LOGIN: ${{ github.event.issue.user.login }}
+          USER_ID: ${{ github.event.issue.user.id }}
+        run: |
+          set -euo pipefail
+          out() { echo "$1=$2" >> "$GITHUB_OUTPUT"; }
+          held() {
+            out decision held
+            printf '%s\n' "$1" > "$RUNNER_TEMP/held-reason"
+            echo "held: $1"
+            exit 0
+          }
+
+          if [ "$APP_ID" = "0" ] || [ "$FILED_BY_APP" != "$APP_ID" ]; then
+            echo "not filed through the AudioSilo App; nothing to route"
+            out decision skip
+            exit 0
+          fi
+
+          case "$TITLE" in
+            "[work] "*)        label="data:add-work" ;;
+            "[corrections] "*) label="data:correction-batch" ;;
+            *)
+              echo "no routing prefix on the title; left for a maintainer"
+              out decision skip
+              exit 0
+              ;;
+          esac
+          out label "$label"
+
+          # The denylist: numeric GitHub user ids, one per line, # comments.
+          # Missing file = nobody listed; any other read failure holds.
+          if deny="$(gh api -H "Accept: application/vnd.github.raw" \
+              "repos/${GITHUB_REPOSITORY}/contents/.github/intake-denylist?ref=${GITHUB_REF_NAME:-main}" 2> "$RUNNER_TEMP/deny.err")"; then
+            if printf '%s\n' "$deny" | sed 's/#.*//; s/[[:space:]]//g' | grep -qxF -- "$USER_ID"; then
+              held "this account is on the intake denylist"
+            fi
+          elif ! grep -q "404" "$RUNNER_TEMP/deny.err"; then
+            held "the intake denylist could not be read"
+          fi
+
+          if ! created="$(gh api "users/${LOGIN}" --jq .created_at)" \
+              || ! created_s="$(date -d "$created" +%s)"; then
+            held "the account's age could not be checked"
+          fi
+          age_days=$(( ( $(date +%s) - created_s ) / 86400 ))
+          if [ "$age_days" -lt "$MIN_ACCOUNT_DAYS" ]; then
+            held "the GitHub account is ${age_days} days old; issues filed through the AudioSilo App are routed automatically from ${MIN_ACCOUNT_DAYS} days"
+          fi
+
+          # Open issues (not pull requests) this user filed through the App,
+          # this one included.
+          if ! open="$(gh api --paginate "repos/${GITHUB_REPOSITORY}/issues?state=open&creator=${LOGIN}&per_page=100" \
+              | jq -s --argjson app "$APP_ID" '[.[][] | select(.pull_request == null and .performed_via_github_app.id == $app)] | length')"; then
+            held "the open-issue count could not be read"
+          fi
+          if [ "$open" -gt "$CAP" ]; then
+            held "this account has ${open} open issues filed through the AudioSilo App; more than ${CAP} wait for a maintainer"
+          fi
+
+          out decision route
+          echo "routing as ${label} (${open} open, account ${age_days} days old)"
+
+      - name: Apply the routing label
+        if: steps.classify.outputs.decision == 'route'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          LABEL: ${{ steps.classify.outputs.label }}
+        run: gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "data,${LABEL}"
+
+      - name: Hold the issue for a maintainer
+        if: steps.classify.outputs.decision == 'held'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "Thanks! This issue is **held for a maintainer** before the intake bot looks at it: $(cat "$RUNNER_TEMP/held-reason")."
+            echo
+            echo "Nothing is wrong with the submission itself, and nothing needs doing on your side; a maintainer will route it or explain."
+            echo
+            echo "_Posted by the intake bot._"
+          } > comment.md
+          gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "intake:held"
+          gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" --body-file comment.md
+
+  intake:
+    needs: route
+    if: needs.route.outputs.decision == 'route'
+    # The called workflow's jobs may use at most what this job grants: the
+    # intake job's own three (its rebase job never runs on an issues event).
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    uses: ./.github/workflows/intake.yml
+    with:
+      issue_number: ${{ github.event.issue.number }}
+      template: ${{ needs.route.outputs.label }}
+    # INTAKE_PAT, so the bot's pull request triggers CI (see intake.yml).
+    secrets: inherit
