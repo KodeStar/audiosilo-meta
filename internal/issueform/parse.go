@@ -142,15 +142,21 @@ func extractAttachment(block string) (url string, inline []byte, ok bool) {
 		}
 		return links[0][1], nil, true
 	}
-	trimmed := strings.TrimSpace(block)
 	// Tolerate a fenced code block around pasted JSON.
-	if strings.HasPrefix(trimmed, "```") {
-		trimmed = strings.TrimSpace(stripFence(trimmed))
-	}
+	trimmed := unfence(block)
 	if strings.HasPrefix(trimmed, "{") || strings.HasPrefix(trimmed, "[") {
 		return "", []byte(trimmed), true
 	}
 	return "", nil, false
+}
+
+// unfence trims a block and, when it is a fenced code block, strips the fence.
+func unfence(block string) string {
+	s := strings.TrimSpace(block)
+	if strings.HasPrefix(s, "```") {
+		s = strings.TrimSpace(stripFence(s))
+	}
+	return s
 }
 
 // stripFence removes a leading ```lang line and a trailing ``` line from a

@@ -127,20 +127,21 @@ func (c *composer) correctData(s sections) {
 		c.fail(StatusInvalid, "the CC0 public-domain dedication checkbox is not ticked")
 		return
 	}
-	c.correctOne(s.get(fCorrectRecord), s.get(fCorrectField), s.get(fCorrectCorrected), s.get(fCorrectEvidence))
-}
-
-// correctOne is the body of one field correction, shared by the single-field
-// form (correctData, which reports through the composer's verdict as it always
-// has) and the batch form (applyCorrection, which scopes that verdict to the one
-// change - compose_batch.go). It fails the run itself and writes nothing when the
-// correction cannot be applied, and queues the corrected entry when it can.
-func (c *composer) correctOne(reference, field, corrected, evidence string) {
-	ref, ok := resolveRecordRef(reference)
+	ref, ok := resolveRecordRef(s.get(fCorrectRecord))
 	if !ok {
-		c.fail(StatusNeedsHuman, "could not resolve %q to a record in data/ - a maintainer will locate it", reference)
+		c.fail(StatusNeedsHuman, "could not resolve %q to a record in data/ - a maintainer will locate it", s.get(fCorrectRecord))
 		return
 	}
+	c.correctOne(ref, s.get(fCorrectField), s.get(fCorrectCorrected), s.get(fCorrectEvidence))
+}
+
+// correctOne is the body of one field correction on a resolved record, shared by
+// the single-field form (correctData, which reports through the composer's
+// verdict as it always has) and the batch form (applyCorrection, which scopes
+// that verdict to the one change - compose_batch.go). It fails the run itself and
+// writes nothing when the correction cannot be applied, and queues the corrected
+// entry when it can.
+func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) {
 	addr, ok := entryAddress(ref)
 	if !ok {
 		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", ref.kind)
@@ -244,12 +245,9 @@ func (c *composer) misaddressedField(ref recordRef, field string) bool {
 	// submitter who pasted a retired slug's page URL was 301'd there and never
 	// learned it changed, and a suggestion built from the retired slug would
 	// list no recordings and point at a work the bot then cannot find.
-	work := ref.slug
-	if ref.kind == model.KindRecording {
-		work = ref.workSlug
-	}
+	work, live := c.liveWorkOf(ref)
 	merged := ""
-	if live := c.liveWorkSlug(work); live != "" && live != work {
+	if live != work {
 		merged = fmt.Sprintf(" (%q has been merged into %q)", work, live)
 		work = live
 	}
@@ -262,6 +260,20 @@ func (c *composer) misaddressedField(ref recordRef, field string) bool {
 			"Set Record to the work instead: %s%s", field, workPageURL(work), merged)
 	}
 	return true
+}
+
+// liveWorkOf names the work a work or recording reference lives under (the
+// recording's parent for a recording) and that work's live slug: the survivor
+// when a core merge retired it, else the work itself.
+func (c *composer) liveWorkOf(ref recordRef) (work, live string) {
+	work = ref.slug
+	if ref.kind == model.KindRecording {
+		work = ref.workSlug
+	}
+	if live = c.liveWorkSlug(work); live == "" {
+		live = work
+	}
+	return work, live
 }
 
 // siblingKind pairs the two record kinds that are one book from a reader's side.

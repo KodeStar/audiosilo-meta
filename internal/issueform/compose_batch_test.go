@@ -314,7 +314,7 @@ func TestApplyCorrectionScopesTheVerdict(t *testing.T) {
 	c := &composer{status: "", messages: []string{"before"}}
 	c.fail(StatusNeedsHuman, "outer")
 	status, msgs := c.status, len(c.messages)
-	outcome, got := c.applyCorrection("not a reference at all", "title", "x", "web")
+	outcome, got := c.applyCorrection(recordRef{}, "title", "x", "web")
 	if outcome != OutcomeNeedsHuman || len(got) != 1 {
 		t.Errorf("outcome = %q, messages = %v", outcome, got)
 	}
@@ -336,5 +336,19 @@ func TestBatchRoutesFromItsLabel(t *testing.T) {
 	}
 	if got := normalizeTemplate("correction"); got != "correct-data" {
 		t.Errorf("the single-field label moved: %q", got)
+	}
+}
+
+// TestBatchWorkFieldOnARetiredRecordingNamesTheSurvivor: the refusal for a work
+// field addressed to a recording hands out the work page the record lives under
+// now, not the retired slug's.
+func TestBatchWorkFieldOnARetiredRecordingNamesTheSurvivor(t *testing.T) {
+	dir := seedTree(t)
+	writeRedirects(t, dir, map[string]string{"retired-work": "existing-work"})
+	res := runBatch(t, dir, changesJSON(
+		change(recordingRef("retired-work", "john-smith-2020"), "title", "", "A Better Title"),
+	))
+	if res.Status != StatusInvalid || !anyContains(res.Messages, workPageURL("existing-work")) {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
 }

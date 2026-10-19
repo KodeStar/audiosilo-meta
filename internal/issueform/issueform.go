@@ -384,7 +384,7 @@ func process(opts Options) Result {
 	// A takeover wrote through the importer, which flushed and validated the tree
 	// itself - as the import template does - so there is nothing left to flush.
 	if len(c.wrote) > 0 {
-		return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages, NeedsHuman: c.needsHuman, Changes: c.changes}
+		return Result{Status: StatusOK, Files: c.fileList(), Messages: c.messages}
 	}
 	if c.queued == 0 {
 		return Result{Status: StatusInvalid, Messages: appendIfEmpty(c.messages, "nothing to write")}

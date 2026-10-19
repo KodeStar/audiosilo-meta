@@ -160,10 +160,7 @@ func (c *composer) correctBatch(s sections) {
 	}
 	plan, problems := c.planBatch(doc, s.get(fCorrectRecord))
 	if len(problems) > 0 {
-		c.fail(StatusInvalid, "the batch is refused as a whole, because %s - nothing was applied", countNoun(len(problems), "change is", "changes are")+" invalid")
-		for _, p := range problems {
-			c.note("%s", p)
-		}
+		c.refuseBatch(len(problems), problems)
 		return
 	}
 
@@ -194,8 +191,8 @@ func (c *composer) correctBatch(s sections) {
 	case invalid > 0:
 		// Only the invalid lines: nothing else was written, so an "applied" line
 		// beside them would be untrue.
-		c.messages, c.needsHuman = invalidLines, nil
-		c.failLead(StatusInvalid, "the batch is refused as a whole, because %s - nothing was applied", countNoun(invalid, "change is", "changes are")+" invalid")
+		c.messages, c.needsHuman = nil, nil
+		c.refuseBatch(invalid, invalidLines)
 	case applied > 0:
 		// ok: the composer's status stays unset, and process flushes and
 		// validates what was queued.
@@ -217,6 +214,13 @@ func (c *composer) failLead(status Status, format string, args ...any) {
 	c.messages = append(c.messages, rest...)
 }
 
+// refuseBatch fails the whole batch as invalid because n of its changes are,
+// with the reason first and then lines, the detail naming each bad change.
+func (c *composer) refuseBatch(n int, lines []string) {
+	c.fail(StatusInvalid, "the batch is refused as a whole, because %s invalid - nothing was applied", countNoun(n, "change is", "changes are"))
+	c.messages = append(c.messages, lines...)
+}
+
 // countNoun spells "1 change is" / "3 changes are".
 func countNoun(n int, one, many string) string {
 	if n == 1 {
@@ -228,10 +232,7 @@ func countNoun(n int, one, many string) string {
 // parseBatchDoc reads the Changes field: one JSON document, optionally fenced,
 // of the version this composer reads, with 1 to maxBatchChanges changes.
 func parseBatchDoc(block string) (batchDoc, error) {
-	raw := strings.TrimSpace(block)
-	if strings.HasPrefix(raw, "```") {
-		raw = strings.TrimSpace(stripFence(raw))
-	}
+	raw := unfence(block)
 	if raw == "" {
 		return batchDoc{}, fmt.Errorf("it is empty")
 	}
@@ -284,7 +285,7 @@ func (c *composer) planBatch(doc batchDoc, defaultRecord string) ([]plannedChang
 			bad("%q has no corrected value", ch.Field)
 			continue
 		}
-		if msg := boundedValue(map[string]string{"record": ch.Record, "current": ch.Current, "corrected": ch.Corrected}); msg != "" {
+		if msg := boundedValues([]namedValue{{"record", ch.Record}, {"current", ch.Current}, {"corrected", ch.Corrected}}); msg != "" {
 			bad("%s", msg)
 			continue
 		}
@@ -305,7 +306,8 @@ func (c *composer) planBatch(doc batchDoc, defaultRecord string) ([]plannedChang
 			p.ref, p.resolved = ref, true
 			if _, own := batchFields[ref.kind][ch.Field]; !own {
 				if ref.kind == model.KindRecording {
-					bad("%q is a work field, but %s is a recording - address the work instead (%s)", ch.Field, ch.Record, workPageURL(ref.workSlug))
+					_, live := c.liveWorkOf(ref)
+					bad("%q is a work field, but %s is a recording - address the work instead (%s)", ch.Field, ch.Record, workPageURL(live))
 					continue
 				}
 				// A recording field against a WORK is not a mapping bug: the filer
@@ -332,17 +334,19 @@ func (c *composer) planBatch(doc batchDoc, defaultRecord string) ([]plannedChang
 	return plan, problems
 }
 
-// boundedValue reports the first value that breaks the batch's bounds: over
+// namedValue is one value of a change, named for a refusal message.
+type namedValue struct{ name, v string }
+
+// boundedValues reports the first value that breaks the batch's bounds: over
 // maxBatchValueRunes, or carrying a control character (a newline in a title is
 // a mapping bug, and every value is echoed into a comment).
-func boundedValue(values map[string]string) string {
-	for _, name := range []string{"record", "current", "corrected"} {
-		v := values[name]
-		if n := utf8.RuneCountInString(v); n > maxBatchValueRunes {
-			return fmt.Sprintf("%s is %d characters long; the limit is %d", name, n, maxBatchValueRunes)
+func boundedValues(values []namedValue) string {
+	for _, nv := range values {
+		if n := utf8.RuneCountInString(nv.v); n > maxBatchValueRunes {
+			return fmt.Sprintf("%s is %d characters long; the limit is %d", nv.name, n, maxBatchValueRunes)
 		}
-		if strings.IndexFunc(v, unicode.IsControl) >= 0 {
-			return fmt.Sprintf("%s contains a control character", name)
+		if strings.IndexFunc(nv.v, unicode.IsControl) >= 0 {
+			return fmt.Sprintf("%s contains a control character", nv.name)
 		}
 	}
 	return ""
@@ -365,20 +369,20 @@ func batchFieldList() string {
 // applyBatchChange decides one planned change.
 func (c *composer) applyBatchChange(p plannedChange, evidence string) (Outcome, []string) {
 	if !p.resolved {
-		if ref, ok := resolveRecordRef(p.Record); ok && ref.kind == model.KindWork {
+		if p.ref.kind == model.KindWork {
 			return OutcomeNeedsHuman, []string{fmt.Sprintf("%q describes a recording, and this change names only the work - a maintainer will find the recording and apply %s",
 				p.Field, describeChange(p))}
 		}
 		return OutcomeNeedsHuman, []string{fmt.Sprintf("could not resolve %q to a work or recording - a maintainer will locate it and apply %s", p.Record, describeChange(p))}
 	}
-	record, notes := c.liveRecord(p)
+	ref, notes := c.liveRecord(p)
 	if p.mode == batchMaintainer {
 		return OutcomeNeedsHuman, append(notes, fmt.Sprintf("%q is not applied automatically - a maintainer will apply %s", p.Field, describeChange(p)))
 	}
 	if p.Field == "title" && c.titleSpellsSubtitle(p.ref, p.Corrected) {
 		return OutcomeUnchanged, append(notes, fmt.Sprintf("the record already says %q as a title and subtitle - nothing to change", p.Corrected))
 	}
-	outcome, msgs := c.applyCorrection(record, p.Field, p.Corrected, evidence)
+	outcome, msgs := c.applyCorrection(ref, p.Field, p.Corrected, evidence)
 	return outcome, append(notes, msgs...)
 }
 
@@ -390,25 +394,23 @@ func describeChange(p plannedChange) string {
 	return fmt.Sprintf("%q (it was %q)", p.Corrected, p.Current)
 }
 
-// liveRecord is the change's record reference with a RETIRED work slug followed
-// to its survivor, plus the note saying so. A server matched the book before a
-// core merge retired its slug and still holds the old id; the record it means
-// lives under the survivor now, and the bot is choosing where to write, so it
-// writes there (resolveWorkKey's rule for a sidecar key).
-func (c *composer) liveRecord(p plannedChange) (string, []string) {
-	work := p.ref.slug
-	if p.ref.kind == model.KindRecording {
-		work = p.ref.workSlug
+// liveRecord is the change's record with a RETIRED work slug followed to its
+// survivor, plus the note saying so. A server matched the book before a core
+// merge retired its slug and still holds the old id; the record it means lives
+// under the survivor now, and the bot is choosing where to write, so it writes
+// there (resolveWorkKey's rule for a sidecar key).
+func (c *composer) liveRecord(p plannedChange) (recordRef, []string) {
+	work, live := c.liveWorkOf(p.ref)
+	if live == work {
+		return p.ref, nil
 	}
-	live := c.liveWorkSlug(work)
-	if live == "" || live == work {
-		return p.Record, nil
+	ref := p.ref
+	if ref.kind == model.KindRecording {
+		ref.workSlug = live
+	} else {
+		ref.slug = live
 	}
-	note := fmt.Sprintf("%q has been merged into %q, so the change is applied there", work, live)
-	if p.ref.kind == model.KindRecording {
-		return recordingRef(live, p.ref.slug), []string{note}
-	}
-	return workPageURL(live), []string{note}
+	return ref, []string{fmt.Sprintf("%q has been merged into %q, so the change is applied there", work, live)}
 }
 
 // titleSpellsSubtitle reports whether a corrected title is the work's own title
@@ -429,10 +431,10 @@ func (c *composer) titleSpellsSubtitle(ref recordRef, corrected string) bool {
 // collects one outcome per change and decides its own verdict from them. A
 // change that fails writes nothing (correctOne queues its entry last), and one
 // that applies leaves its entry queued for the batch's one flush.
-func (c *composer) applyCorrection(record, field, corrected, evidence string) (Outcome, []string) {
+func (c *composer) applyCorrection(ref recordRef, field, corrected, evidence string) (Outcome, []string) {
 	status, n, noop := c.status, len(c.messages), c.noop
 	c.status, c.noop = "", false
-	c.correctOne(record, field, corrected, evidence)
+	c.correctOne(ref, field, corrected, evidence)
 	got, gotNoop := c.status, c.noop
 	msgs := slices.Clone(c.messages[n:])
 	c.status, c.messages, c.noop = status, c.messages[:n], noop
