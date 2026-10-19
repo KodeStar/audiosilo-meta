@@ -188,6 +188,8 @@ func TestBatchStructuralProblemsRefuseTheWhole(t *testing.T) {
 		"unknown field":       {changesJSON(change(batchWork, "title", "", "Fine"), change(batchWork, "genres", "", "fantasy")), `field "genres" is not one this form takes`},
 		"value too long":      {changesJSON(change(batchWork, "title", "", long)), "corrected is 501 characters long"},
 		"control character":   {changesJSON(change(batchWork, "title", "", "Two\nLines")), "control character"},
+		"bidi override":       {changesJSON(change(batchWork, "title", "", "Evil\u202eeltiT")), "bidirectional override"},
+		"bidi isolate":        {changesJSON(change(batchWork, "title", "", "A\u2067B")), "bidirectional override"},
 		"work field on a rec": {changesJSON(change(batchRec, "title", "", "Fine")), `"title" is a work field`},
 		"stated twice":        {changesJSON(change(batchWork, "title", "", "A"), change(batchWork, "title", "", "B")), "stated twice"},
 		"twice, two ways":     {changesJSON(change(batchWork, "title", "", "A"), change("data/works/existing-work", "title", "", "B")), "stated twice"},
@@ -437,5 +439,22 @@ func TestBatchDecodesCharacterReferences(t *testing.T) {
 	}
 	if work := readFile(t, dir, "works/ex/existing-work/work.json"); !strings.Contains(work, `"title": "Rizzoli & Isles"`) {
 		t.Errorf("the title was not decoded:\n%s", work)
+	}
+}
+
+// TestBatchBidiControls: a bidirectional override in the evidence refuses the
+// batch, while ZWJ and ZWNJ (legitimate in scripts and emoji) pass.
+func TestBatchBidiControls(t *testing.T) {
+	if !isBidiControl('\u202e') || !isBidiControl('\u2066') || isBidiControl('\u200d') || isBidiControl('\u200c') {
+		t.Fatal("isBidiControl draws the wrong line")
+	}
+	dir := seedTree(t)
+	body := batchBody(batchWork, changesJSON(change(batchWork, "title", "", "Fine")), "Audible \u202elisting", true)
+	if res := Process(Options{DataDir: dir, Template: "correction-batch", Body: body, Date: "2026-10-19"}); res.Status != StatusInvalid || !anyContains(res.Messages, "bidirectional override") {
+		t.Errorf("a bidi override in the evidence passed: status = %q, messages = %v", res.Status, res.Messages)
+	}
+	res := runBatch(t, dir, changesJSON(change(batchWork, "title", "", "Mi\u200cr\u200dror")))
+	if res.Status != StatusOK {
+		t.Fatalf("ZWJ/ZWNJ refused: status = %q, messages = %v", res.Status, res.Messages)
 	}
 }

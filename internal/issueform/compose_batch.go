@@ -155,6 +155,10 @@ func (c *composer) correctBatch(s sections) {
 		c.fail(StatusInvalid, "Evidence / source is %d characters long; the limit is %d", n, maxBatchEvidenceRunes)
 		return
 	}
+	if strings.IndexFunc(evidence, isBidiControl) >= 0 {
+		c.fail(StatusInvalid, "Evidence / source contains a bidirectional override character")
+		return
+	}
 	doc, err := parseBatchDoc(s.raw(fBatchChanges))
 	if err != nil {
 		c.fail(StatusInvalid, "the Changes block could not be read: %v", err)
@@ -380,6 +384,15 @@ func (c *composer) planBatch(doc batchDoc, defaultRecord string) ([]plannedChang
 	return plan, problems
 }
 
+// isBidiControl reports the bidirectional embedding, override and isolate
+// controls (U+202A-U+202E, U+2066-U+2069): they reorder how a value displays on
+// the issue and in review, so the text a maintainer reads is not the text
+// written. Other format characters (ZWJ, ZWNJ) are legitimate in scripts and
+// emoji and stay allowed.
+func isBidiControl(r rune) bool {
+	return (r >= 0x202A && r <= 0x202E) || (r >= 0x2066 && r <= 0x2069)
+}
+
 // namedValue is one value of a change, named for a refusal message.
 type namedValue struct{ name, v string }
 
@@ -393,6 +406,9 @@ func boundedValues(values []namedValue) string {
 		}
 		if strings.IndexFunc(nv.v, unicode.IsControl) >= 0 {
 			return fmt.Sprintf("%s contains a control character", nv.name)
+		}
+		if strings.IndexFunc(nv.v, isBidiControl) >= 0 {
+			return fmt.Sprintf("%s contains a bidirectional override character", nv.name)
 		}
 	}
 	return ""
