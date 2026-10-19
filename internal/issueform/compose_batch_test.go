@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"maps"
+	"slices"
 	"strings"
 	"testing"
 
@@ -189,8 +190,11 @@ func TestBatchStructuralProblemsRefuseTheWhole(t *testing.T) {
 		"control character":   {changesJSON(change(batchWork, "title", "", "Two\nLines")), "control character"},
 		"work field on a rec": {changesJSON(change(batchRec, "title", "", "Fine")), `"title" is a work field`},
 		"stated twice":        {changesJSON(change(batchWork, "title", "", "A"), change(batchWork, "title", "", "B")), "stated twice"},
+		"twice, two ways":     {changesJSON(change(batchWork, "title", "", "A"), change("data/works/existing-work", "title", "", "B")), "stated twice"},
 		"no corrected value":  {changesJSON(change(batchWork, "title", "x", "")), "has no corrected value"},
 		"unknown key":         {`{"v":1,"source":"x","changes":[{"field":"title","corrected":"A","why":"x"}]}`, "unknown field"},
+		"repeated key":        {`{"v":1,"source":"x","changes":[{"field":"title","corrected":"A","corrected":"B"}]}`, "duplicate key"},
+		"key in another case": {`{"v":1,"source":"x","changes":[{"field":"title","corrected":"A","Corrected":"B"}]}`, "unknown field"},
 		"wrong version":       {`{"v":2,"source":"x","changes":[{"field":"title","corrected":"A"}]}`, "version 2"},
 		"no changes":          {`{"v":1,"source":"x","changes":[]}`, "lists no changes"},
 		"two documents":       {`{"v":1,"changes":[{"field":"title","corrected":"A"}]} {}`, "more than one JSON value"},
@@ -209,8 +213,8 @@ func TestBatchStructuralProblemsRefuseTheWhole(t *testing.T) {
 			if !anyContains(res.Messages, c.want) {
 				t.Errorf("messages do not say %q: %v", c.want, res.Messages)
 			}
-			if anyContains(res.Messages, "applied ") {
-				t.Errorf("a refused batch reports a change as applied: %v", res.Messages)
+			if anyContains(res.Messages, "applied ") || slices.Contains(outcomes(res), OutcomeApplied) {
+				t.Errorf("a refused batch reports a change as applied: %v, outcomes %v", res.Messages, outcomes(res))
 			}
 			if len(res.Files) != 0 || len(res.NeedsHuman) != 0 || !maps.Equal(before, testpack.Snapshot(t, dir)) {
 				t.Errorf("a refused batch wrote or listed a remainder: files %v, needs_human %v", res.Files, res.NeedsHuman)
@@ -296,12 +300,17 @@ func TestBatchFollowsARetiredWorkSlug(t *testing.T) {
 	res := runBatch(t, dir, changesJSON(
 		change("https://meta.audiosilo.app/works/retired-work", "title", "", "A Better Title"),
 		change(recordingRef("retired-work", "john-smith-2020"), "release_date", "", "2020"),
+		change("https://meta.audiosilo.app/works/retired-work", "authors", "", "Jane Doe, John Smith"),
 	))
-	if res.Status != StatusOK || fmt.Sprint(outcomes(res)) != fmt.Sprint([]Outcome{OutcomeApplied, OutcomeApplied}) {
+	if res.Status != StatusOK || fmt.Sprint(outcomes(res)) != fmt.Sprint([]Outcome{OutcomeApplied, OutcomeApplied, OutcomeNeedsHuman}) {
 		t.Fatalf("status = %q, outcomes = %v, messages = %v", res.Status, outcomes(res), res.Messages)
 	}
 	if !anyContains(res.Messages, `"retired-work" has been merged into "existing-work"`) {
 		t.Errorf("the merge is not noted: %v", res.Messages)
+	}
+	// The remainder names the survivor too, without saying the change was made.
+	if !anyContains(res.NeedsHuman, `"retired-work" has been merged into "existing-work", so the change goes there`) {
+		t.Errorf("the remainder does not name the survivor: %v", res.NeedsHuman)
 	}
 	if work := readFile(t, dir, "works/ex/existing-work/work.json"); !strings.Contains(work, "A Better Title") {
 		t.Errorf("the survivor was not corrected:\n%s", work)
@@ -350,5 +359,83 @@ func TestBatchWorkFieldOnARetiredRecordingNamesTheSurvivor(t *testing.T) {
 	))
 	if res.Status != StatusInvalid || !anyContains(res.Messages, workPageURL("existing-work")) {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+}
+
+// TestBatchStampsARecordOnce: the changes of one batch share one evidence text and
+// one date, so a record several of them touch carries that source once.
+func TestBatchStampsARecordOnce(t *testing.T) {
+	dir := seedTree(t)
+	res := runBatch(t, dir, changesJSON(
+		change(batchRec, "release_date", "", "2020-03-04"),
+		change(batchRec, "isbn", "", "9781473647633"),
+		change(batchRec, "isbn", "", "9780261103344"),
+	))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	rec := readFile(t, dir, "works/ex/existing-work/recordings/john-smith-2020.json")
+	if n := strings.Count(rec, `"ref": "Audible listing"`); n != 1 {
+		t.Errorf("the batch's source is stamped %d times:\n%s", n, rec)
+	}
+}
+
+// TestBatchStatedTwiceThroughARetiredSlug: a retired slug and its survivor are
+// one record, so the same field on both is stated twice.
+func TestBatchStatedTwiceThroughARetiredSlug(t *testing.T) {
+	dir := seedTree(t)
+	writeRedirects(t, dir, map[string]string{"retired-work": "existing-work"})
+	res := runBatch(t, dir, changesJSON(
+		change(batchWork, "title", "", "First Title"),
+		change("https://meta.audiosilo.app/works/retired-work", "title", "", "Second Title"),
+	))
+	if res.Status != StatusInvalid || !anyContains(res.Messages, "stated twice") {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+}
+
+// TestBatchOneISBNOnTwoRecordings: an ISBN a batch already gave one recording is
+// another recording's to gain no more than a catalogued one is - that change is
+// a maintainer's, and its siblings still apply, rather than the whole batch
+// failing validation after the write.
+func TestBatchOneISBNOnTwoRecordings(t *testing.T) {
+	dir := t.TempDir()
+	seed := seedFiles()
+	seed["works/ex/existing-work/recordings/jane-doe-2021.json"] = `{
+  "abridged": true,
+  "asin": [{"asin": "B000000002", "region": "us"}],
+  "id": "jane-doe-2021",
+  "language": "en",
+  "license": "CC0-1.0",
+  "narrators": ["jane-doe"],
+  "runtime_min": 200,
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "work": "existing-work"
+}`
+	testpack.Seed(t, dir, seed)
+	res := runBatch(t, dir, changesJSON(
+		change(batchWork, "title", "", "A Better Title"),
+		change(batchRec, "isbn", "", "9781473647633"),
+		change(recordingRef("existing-work", "jane-doe-2021"), "isbn", "", "9781473647633"),
+	))
+	want := []Outcome{OutcomeApplied, OutcomeApplied, OutcomeNeedsHuman}
+	if res.Status != StatusOK || fmt.Sprint(outcomes(res)) != fmt.Sprint(want) {
+		t.Fatalf("status = %q, outcomes = %v, messages = %v", res.Status, outcomes(res), res.Messages)
+	}
+	if len(res.NeedsHuman) != 1 || !strings.Contains(res.NeedsHuman[0], "already recorded") {
+		t.Errorf("needs_human = %v", res.NeedsHuman)
+	}
+}
+
+// TestBatchDecodesCharacterReferences: a value is read as GitHub shows it, as the
+// single-field form reads one, so an escaped title is not written escaped.
+func TestBatchDecodesCharacterReferences(t *testing.T) {
+	dir := seedTree(t)
+	res := runBatch(t, dir, changesJSON(change(batchWork, "title", "", "Rizzoli &amp; Isles")))
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if work := readFile(t, dir, "works/ex/existing-work/work.json"); !strings.Contains(work, `"title": "Rizzoli & Isles"`) {
+		t.Errorf("the title was not decoded:\n%s", work)
 	}
 }

@@ -22,8 +22,10 @@ name: route
 # with the `intake:held` label and a comment when their GitHub account is younger
 # than MIN_ACCOUNT_DAYS, when they already have more than CAP open App-filed
 # issues here (this one included), or when their numeric user id is listed in
-# .github/intake-denylist. A held issue is routed by a maintainer applying its
-# routing label by hand, which intake.yml's `labeled` trigger admits as usual.
+# .github/intake-denylist. A routing label the workflow cannot apply (an API
+# failure, or the label missing from the repository) holds the issue too, since
+# nothing re-runs this workflow. A held issue is routed by a maintainer applying
+# its routing label by hand, which intake.yml's `labeled` trigger admits as usual.
 #
 # The template comes from the TITLE PREFIX, an allowlist: "[work] " is the
 # add-work form and "[corrections] " the correction-batch form. Any other prefix
@@ -63,7 +65,8 @@ jobs:
       contents: read
       issues: write
     outputs:
-      decision: ${{ steps.classify.outputs.decision }}
+      # The apply step has the last word: a label it could not apply holds.
+      decision: ${{ steps.apply.outputs.decision || steps.classify.outputs.decision }}
       label: ${{ steps.classify.outputs.label }}
     steps:
       - name: Classify the issue
@@ -103,13 +106,15 @@ jobs:
           out label "$label"
 
           # The denylist: numeric GitHub user ids, one per line, # comments.
-          # Missing file = nobody listed; any other read failure holds.
+          # Missing file = nobody listed; any other read failure holds. grep
+          # reads the whole list (no -q): stopping at a match would leave sed to
+          # die of SIGPIPE on a long one, which pipefail turns into "not listed".
           if deny="$(gh api -H "Accept: application/vnd.github.raw" \
               "repos/${GITHUB_REPOSITORY}/contents/.github/intake-denylist?ref=${GITHUB_REF_NAME:-main}" 2> "$RUNNER_TEMP/deny.err")"; then
-            if printf '%s\n' "$deny" | sed 's/#.*//; s/[[:space:]]//g' | grep -qxF -- "$USER_ID"; then
+            if printf '%s\n' "$deny" | sed 's/#.*//; s/[[:space:]]//g' | grep -xF -- "$USER_ID" > /dev/null; then
               held "this account is on the intake denylist"
             fi
-          elif ! grep -q "404" "$RUNNER_TEMP/deny.err"; then
+          elif ! grep -qF "(HTTP 404)" "$RUNNER_TEMP/deny.err"; then
             held "the intake denylist could not be read"
           fi
 
@@ -136,15 +141,24 @@ jobs:
           echo "routing as ${label} (${open} open, account ${age_days} days old)"
 
       - name: Apply the routing label
+        id: apply
         if: steps.classify.outputs.decision == 'route'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE: ${{ github.event.issue.number }}
           LABEL: ${{ steps.classify.outputs.label }}
-        run: gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "data,${LABEL}"
+        run: |
+          if gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "data,${LABEL}"; then
+            echo "decision=route" >> "$GITHUB_OUTPUT"
+          else
+            printf '%s\n' "the routing label ${LABEL} could not be applied" > "$RUNNER_TEMP/held-reason"
+            echo "decision=held" >> "$GITHUB_OUTPUT"
+          fi
 
+      # The comment goes first: it is what tells the submitter, so a label that
+      # cannot be applied must not take it down too (and still fails the run).
       - name: Hold the issue for a maintainer
-        if: steps.classify.outputs.decision == 'held'
+        if: steps.classify.outputs.decision == 'held' || steps.apply.outputs.decision == 'held'
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE: ${{ github.event.issue.number }}
@@ -156,8 +170,8 @@ jobs:
             echo
             echo "_Posted by the intake bot._"
           } > comment.md
-          gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "intake:held"
           gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" --body-file comment.md
+          gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "intake:held"
 
   intake:
     needs: route
@@ -172,5 +186,7 @@ jobs:
     with:
       issue_number: ${{ github.event.issue.number }}
       template: ${{ needs.route.outputs.label }}
-    # INTAKE_PAT, so the bot's pull request triggers CI (see intake.yml).
-    secrets: inherit
+    # INTAKE_PAT, so the bot's pull request triggers CI (see intake.yml), and no
+    # other secret.
+    secrets:
+      INTAKE_PAT: ${{ secrets.INTAKE_PAT }}

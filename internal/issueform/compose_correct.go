@@ -420,6 +420,10 @@ func (c *composer) correctISBN(addr entryAddr, record map[string]any, corrected 
 	i, recorded, found := findISBNEntry(arr, key)
 	if !found {
 		record["isbn"] = append(arr, stated)
+		// Claimed for the rest of this run, so a later change of the same batch
+		// adding it to another recording meets the gate above instead of failing
+		// the whole batch at validation.
+		c.isbnRec[key] = self
 		if stated.Region == "" {
 			return fmt.Sprintf("added ISBN %s (region unstated)", stated.ISBN), true
 		}
@@ -702,8 +706,15 @@ func coerceFieldValue(kind fieldKind, raw string) (any, bool) {
 }
 
 // appendSource appends a source object to an existing (possibly nil) sources
-// array read from a raw record.
+// array read from a raw record, unless the array already holds that entry: the
+// whole-entry rule of rawentry.UnionSources, so the changes of one batch, which
+// share an evidence text and a date, stamp a record once.
 func appendSource(existing any, src map[string]any) []any {
 	arr, _ := existing.([]any)
+	for _, s := range arr {
+		if m, ok := s.(map[string]any); ok && m["type"] == src["type"] && m["ref"] == src["ref"] && m["imported_at"] == src["imported_at"] {
+			return arr
+		}
+	}
 	return append(arr, src)
 }

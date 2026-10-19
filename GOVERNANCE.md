@@ -131,14 +131,16 @@ Two automations sit in front of the human review step. Neither bypasses it.
   abuse bounds hold an issue (`intake:held` plus a comment) instead of routing
   it: an account younger than 30 days, more than 25 open App-filed issues from
   one account (50 on the community repository), or a user id listed in
-  `.github/intake-denylist`. A maintainer releases a held issue by applying its
+  `.github/intake-denylist` - and so does a routing label the workflow could
+  not apply. A maintainer releases a held issue by applying its
   routing label by hand; blocking the account or setting interaction limits are
   the stronger tools.
 
   The **correction-batch** form carries up to 25 corrections to one book. Only
   a work's `title` and a recording's `release_date` and `isbn` are applied by the
-  bot; the rest of the batch is commented on the issue, which keeps the
-  `data:needs-human` label after the pull request with the applied part opens.
+  bot; the rest of the batch is commented on the issue, which takes the
+  `data:needs-human` label, and the pull request with the applied part
+  references the issue without closing it.
   One change the bot cannot read refuses the whole issue.
 
   The two **sidecar** forms (Add characters, Add recaps) moved to

@@ -37,8 +37,10 @@ name: intake
 # recursion guard), so no `labeled` run follows. route.yml therefore calls this
 # workflow in the same run, passing the issue and the routing label it applied.
 # In a called run the event is still route.yml's (`issues`/`opened`), so the
-# issue payload below is that issue's; the label set in it predates the routing
-# label, which is why `template` is an input rather than read from the payload.
+# issue payload below is that issue's AS OPENED: its label set predates the
+# routing label, which is why `template` is an input rather than read from the
+# payload, and its body predates any edit, which is why a called run reads the
+# body through the API instead.
 on:
   issues:
     types: [edited, labeled]
@@ -52,6 +54,10 @@ on:
         description: The routing label the caller applied (data:add-work, data:correction-batch, ...).
         type: string
         required: true
+    secrets:
+      INTAKE_PAT:
+        description: The pull-request token (see the create-pull-request step); optional, as on the other doors.
+        required: false
   # A merge to main can leave an already-open intake PR conflicting in a pack
   # file, which only a data change can do - but the series-completion bot
   # (GOVERNANCE.md, "Series-completion bot") merges its own pull request ONLY
@@ -170,7 +176,18 @@ jobs:
         env:
           # Untrusted: written verbatim, never interpolated into a command.
           BODY: ${{ github.event.issue.body }}
-        run: printf '%s' "$BODY" > issue-body.md
+          # A called run reads the body as it is NOW, not route.yml's `opened`
+          # payload: an edit made before the routing label landed was skipped (no
+          # data: label yet), and one made since must not be overwritten by the
+          # text it replaced. The payload is the fallback if the read fails.
+          CALLED: ${{ inputs.issue_number }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$CALLED" ] && gh api "repos/${GITHUB_REPOSITORY}/issues/${CALLED}" > "$RUNNER_TEMP/issue.json"; then
+            jq -j '.body // ""' "$RUNNER_TEMP/issue.json" > issue-body.md
+          else
+            printf '%s' "$BODY" > issue-body.md
+          fi
 
       - name: Compose records (metaissue)
         id: run
@@ -285,7 +302,14 @@ jobs:
               for m in "${msgs[@]}"; do echo "- ${m}"; done
               echo
             fi
-            echo "Closes #${ISSUE} on merge."
+            # A correction batch that left changes for a maintainer keeps its
+            # issue open after this merges (the partial step below comments them
+            # there), so it is referenced without a closing keyword.
+            if [ "$(jq '.needs_human // [] | length' result.json)" -gt 0 ]; then
+              echo "Applies part of #${ISSUE}; the rest stays open there for a maintainer."
+            else
+              echo "Closes #${ISSUE} on merge."
+            fi
             echo
             echo "> Composed by the intake bot. A maintainer still reviews and approves before merge."
           } > pr-body.md

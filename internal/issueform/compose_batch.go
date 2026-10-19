@@ -4,12 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"maps"
 	"slices"
 	"strings"
 	"unicode"
 	"unicode/utf8"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Field labels for correction-batch.yml. Record and Evidence share the
@@ -190,8 +192,8 @@ func (c *composer) correctBatch(s sections) {
 	switch {
 	case invalid > 0:
 		// Only the invalid lines: nothing else was written, so an "applied" line
-		// beside them would be untrue.
-		c.messages, c.needsHuman = nil, nil
+		// (or outcome) beside them would be untrue.
+		c.messages, c.needsHuman, c.changes = nil, nil, nil
 		c.refuseBatch(invalid, invalidLines)
 	case applied > 0:
 		// ok: the composer's status stays unset, and process flushes and
@@ -236,6 +238,15 @@ func parseBatchDoc(block string) (batchDoc, error) {
 	if raw == "" {
 		return batchDoc{}, fmt.Errorf("it is empty")
 	}
+	// DisallowUnknownFields still matches a key in any case and keeps the last of
+	// two, so "corrected" twice, or beside "Corrected", would drop a value the
+	// issue page shows: both are refused as an unknown key is.
+	if err := pack.CheckNoDuplicateKeys([]byte(raw)); err != nil {
+		return batchDoc{}, err
+	}
+	if err := checkBatchKeySpelling(raw); err != nil {
+		return batchDoc{}, err
+	}
 	dec := json.NewDecoder(strings.NewReader(raw))
 	dec.DisallowUnknownFields()
 	var doc batchDoc
@@ -257,6 +268,30 @@ func parseBatchDoc(block string) (batchDoc, error) {
 	return doc, nil
 }
 
+// batchKeys are the keys of a version-1 document and of each of its changes,
+// spelled exactly.
+var batchKeys = [2][]string{{"v", "source", "changes"}, {"record", "field", "current", "corrected"}}
+
+// checkBatchKeySpelling refuses a key not spelled exactly as batchKeys has it. A
+// document that is not an object holding a list of change objects is left to
+// the decoder, whose error says why.
+func checkBatchKeySpelling(raw string) error {
+	var top map[string]json.RawMessage
+	if json.Unmarshal([]byte(raw), &top) != nil {
+		return nil
+	}
+	var changes []map[string]json.RawMessage
+	_ = json.Unmarshal(top["changes"], &changes)
+	for i, obj := range append([]map[string]json.RawMessage{top}, changes...) {
+		for _, k := range slices.Sorted(maps.Keys(obj)) {
+			if !slices.Contains(batchKeys[min(i, 1)], k) {
+				return fmt.Errorf("unknown field %q", k)
+			}
+		}
+	}
+	return nil
+}
+
 // planBatch checks every change's STRUCTURE - known field, bounded values, a
 // field the addressed kind of record carries, no change stated twice - and
 // returns the plan, or every problem found. It reads no record: what a change
@@ -269,13 +304,15 @@ func (c *composer) planBatch(doc batchDoc, defaultRecord string) ([]plannedChang
 		bad := func(format string, args ...any) {
 			problems = append(problems, fmt.Sprintf("change %d: ", i+1)+fmt.Sprintf(format, args...))
 		}
-		ch.Record = strings.TrimSpace(ch.Record)
+		// Values are read as every other form field is (formValue): a title
+		// escaped as "Rizzoli &amp; Isles" is the title "Rizzoli & Isles".
+		ch.Record = formValue(ch.Record)
 		if ch.Record == "" {
 			ch.Record = defaultRecord
 		}
 		ch.Field = strings.TrimSpace(ch.Field)
-		ch.Corrected = strings.TrimSpace(ch.Corrected)
-		ch.Current = strings.TrimSpace(ch.Current)
+		ch.Corrected = formValue(ch.Corrected)
+		ch.Current = formValue(ch.Current)
 
 		if ch.Record == "" {
 			bad("names no record, and the form's Record field is empty")
@@ -301,12 +338,21 @@ func (c *composer) planBatch(doc batchDoc, defaultRecord string) ([]plannedChang
 		}
 
 		p := plannedChange{batchChange: ch, mode: mode}
+		// target names the record the change lands on, so "stated twice" sees one
+		// record however it is spelled - a page URL, a data path, a retired slug
+		// liveRecord follows to its survivor - and falls back to the reference
+		// itself when it resolves to nothing this form addresses.
+		target := ch.Record
 		ref, ok := resolveRecordRef(ch.Record)
 		if ok && (ref.kind == model.KindWork || ref.kind == model.KindRecording) {
 			p.ref, p.resolved = ref, true
+			_, live := c.liveWorkOf(ref)
+			target = string(ref.kind) + "\x00" + live
+			if ref.kind == model.KindRecording {
+				target += "\x00" + ref.slug
+			}
 			if _, own := batchFields[ref.kind][ch.Field]; !own {
 				if ref.kind == model.KindRecording {
-					_, live := c.liveWorkOf(ref)
 					bad("%q is a work field, but %s is a recording - address the work instead (%s)", ch.Field, ch.Record, workPageURL(live))
 					continue
 				}
@@ -320,7 +366,7 @@ func (c *composer) planBatch(doc batchDoc, defaultRecord string) ([]plannedChang
 		// The same field of the same record twice is two answers to one
 		// question - except the additive isbn, where two different ISBNs are two
 		// facts.
-		key := ch.Record + "\x00" + ch.Field
+		key := target + "\x00" + ch.Field
 		if ch.Field == "isbn" {
 			key += "\x00" + ch.Corrected
 		}
@@ -410,7 +456,7 @@ func (c *composer) liveRecord(p plannedChange) (recordRef, []string) {
 	} else {
 		ref.slug = live
 	}
-	return ref, []string{fmt.Sprintf("%q has been merged into %q, so the change is applied there", work, live)}
+	return ref, []string{fmt.Sprintf("%q has been merged into %q, so the change goes there", work, live)}
 }
 
 // titleSpellsSubtitle reports whether a corrected title is the work's own title
