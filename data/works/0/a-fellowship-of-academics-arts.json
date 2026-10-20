@@ -8715,6 +8715,10 @@
             {
               "asin": "B0CF7G7P8V",
               "region": "es"
+            },
+            {
+              "asin": "B0CF7NBYYL",
+              "region": "in"
             }
           ],
           "chapters": [
@@ -8873,6 +8877,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0CF7G7P8V",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-20",
+              "ref": "B0CF7NBYYL",
               "type": "libex-import"
             }
           ],
@@ -9065,6 +9074,34 @@
             {
               "imported_at": "2026-10-07",
               "ref": "B0CDND8TPK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "a-fighting-man-of-mars"
+        },
+        "tom-weiss-2023-2": {
+          "abridged": true,
+          "added_at": "2026-10-20",
+          "asin": [
+            {
+              "asin": "B0CDMZ7QTB",
+              "region": "in"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91h7SH7LYQL.jpg",
+          "id": "tom-weiss-2023-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tom-weiss"
+          ],
+          "publisher": "Spoken Realms",
+          "release_date": "2023-08-03",
+          "runtime_min": 510,
+          "sources": [
+            {
+              "imported_at": "2026-10-20",
+              "ref": "B0CDMZ7QTB",
               "type": "libex-import"
             }
           ],
