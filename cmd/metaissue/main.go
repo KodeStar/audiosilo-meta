@@ -9,7 +9,7 @@
 //	          [--profile all|core|community] [--works-db meta.sqlite] [--series-lookup]
 //
 // --template is the issue-form template id (add-work, add-recording,
-// correct-data, characters, recaps, import; a leading "data:" is accepted so a
+// correct-data, correction-batch, characters, recaps, import; a leading "data:" is accepted so a
 // routing label can be passed verbatim). --labels is the JSON array of the
 // issue's label names (github.event.issue.labels.*.name); the routing template
 // is derived from its data:<template> label, so the intake workflow does not
@@ -43,6 +43,10 @@
 //
 //	{"status":"ok"|"duplicate"|"needs-human"|"invalid","files":[...],"messages":[...]}
 //
+// A correction-batch verdict adds "changes" (one outcome per change) and, on an
+// ok verdict that left some for a maintainer, "needs_human" (the remainder the
+// workflow comments on the issue).
+//
 // SECURITY: the issue body and any attachment are untrusted data. Nothing in a
 // submission is executed; attachments are fetched HTTPS-only from GitHub's
 // user-attachment hosts with a size cap. The CLI exits 0 whenever it produced a
@@ -67,7 +71,7 @@ var dateRE = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
 
 func main() {
 	data := flag.String("data", "data", "path to the data directory")
-	template := flag.String("template", "", "issue-form template id (add-work, add-recording, correct-data, characters, recaps, import)")
+	template := flag.String("template", "", "issue-form template id (add-work, add-recording, correct-data, correction-batch, characters, recaps, import)")
 	labelsJSON := flag.String("labels", "", "JSON array of the issue's label names; the routing template is derived from its data:<template> label (overrides --template)")
 	bodyPath := flag.String("body", "-", "path to the rendered issue-form body, or - for stdin")
 	date := flag.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")

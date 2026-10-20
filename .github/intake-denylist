@@ -1,0 +1,5 @@
+# Intake denylist (route.yml): numeric GitHub user ids, one per line.
+# An issue filed through the AudioSilo GitHub App by a listed account is held
+# with the intake:held label for a maintainer instead of being routed to the
+# intake bot. Find an id with: gh api users/<login> --jq .id
+# Text after # is a comment.

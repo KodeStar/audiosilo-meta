@@ -109,8 +109,8 @@ which, rather than closed as a duplicate.
 Two automations sit in front of the human review step. Neither bypasses it.
 
 - **Issue-form intake → bot pull request.** A data issue-form submission (Add a
-  work, Add a recording, Correct data, Import a library) is routed by its
-  `data:*` label to the `intake` workflow, which runs
+  work, Add a recording, Correct data, Correct several fields, Import a
+  library) is routed by its `data:*` label to the `intake` workflow, which runs
   `cmd/metaissue` to compose the same canonical records a hand-authored pull
   request would carry, deduplicating against the catalog. On success it opens a
   `bot-intake` pull request on branch `intake/issue-<n>` crediting the submitter
@@ -119,6 +119,29 @@ Two automations sit in front of the human review step. Neither bypasses it.
   The bot only *drafts* the change - it runs the same untrusted-data-only,
   no-fork-execution security model as the rest of CI (`intake.yml` treats the
   issue body and attachments strictly as data).
+
+  **Issues filed through the AudioSilo GitHub App** (by an AudioSilo Bridge, on
+  behalf of the server admin who signed it in) arrive without labels, so
+  `route.yml` routes them: an issue whose `performed_via_github_app.id` is the
+  App's and whose title starts `[work] ` or `[corrections] ` is labelled with
+  the workflow token and composed by `intake.yml`, called as a reusable
+  workflow in the same run. The App id only says which tool filed the issue -
+  anyone can sign in to a public App - so it is a routing hint, never trust: the
+  body is validated like any form and the merge policy below is unchanged. The
+  abuse bounds hold an issue (`intake:held` plus a comment) instead of routing
+  it: an account younger than 30 days, more than 25 open App-filed issues from
+  one account (50 on the community repository), or a user id listed in
+  `.github/intake-denylist` - and so does a routing label the workflow could
+  not apply. A maintainer releases a held issue by applying its
+  routing label by hand; blocking the account or setting interaction limits are
+  the stronger tools.
+
+  The **correction-batch** form carries up to 25 corrections to one book. Only
+  a work's `title` and a recording's `release_date` and `isbn` are applied by the
+  bot; the rest of the batch is commented on the issue, which takes the
+  `data:needs-human` label, and the pull request with the applied part
+  references the issue without closing it.
+  One change the bot cannot read refuses the whole issue.
 
   The two **sidecar** forms (Add characters, Add recaps) moved to
   [audiosilo-meta-community](https://github.com/KodeStar/audiosilo-meta-community)

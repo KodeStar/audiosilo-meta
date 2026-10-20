@@ -72,8 +72,14 @@ func parseBody(body string) sections {
 // from a retailer page often arrives escaped ("Rizzoli &amp; Isles"). Decoded
 // with the importer's own rule, so a form and a bulk source cannot mint two
 // slugs for one title.
-func (s sections) get(label string) string {
-	return strings.TrimSpace(importer.DecodeHTMLEntities(s.raw(label)))
+func (s sections) get(label string) string { return formValue(s.raw(label)) }
+
+// formValue is one value read the way get reads a field: trimmed, with its HTML
+// character references decoded. The correction-batch form's Changes values are
+// read through it too (they arrive inside a JSON document, read raw), so one
+// correction reads the same whichever form carried it.
+func formValue(v string) string {
+	return strings.TrimSpace(importer.DecodeHTMLEntities(v))
 }
 
 // raw returns the trimmed value for a field label exactly as the body carries
@@ -142,15 +148,21 @@ func extractAttachment(block string) (url string, inline []byte, ok bool) {
 		}
 		return links[0][1], nil, true
 	}
-	trimmed := strings.TrimSpace(block)
 	// Tolerate a fenced code block around pasted JSON.
-	if strings.HasPrefix(trimmed, "```") {
-		trimmed = strings.TrimSpace(stripFence(trimmed))
-	}
+	trimmed := unfence(block)
 	if strings.HasPrefix(trimmed, "{") || strings.HasPrefix(trimmed, "[") {
 		return "", []byte(trimmed), true
 	}
 	return "", nil, false
+}
+
+// unfence trims a block and, when it is a fenced code block, strips the fence.
+func unfence(block string) string {
+	s := strings.TrimSpace(block)
+	if strings.HasPrefix(s, "```") {
+		s = strings.TrimSpace(stripFence(s))
+	}
+	return s
 }
 
 // stripFence removes a leading ```lang line and a trailing ``` line from a

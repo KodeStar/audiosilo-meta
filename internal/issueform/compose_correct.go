@@ -132,15 +132,23 @@ func (c *composer) correctData(s sections) {
 		c.fail(StatusNeedsHuman, "could not resolve %q to a record in data/ - a maintainer will locate it", s.get(fCorrectRecord))
 		return
 	}
+	c.correctOne(ref, s.get(fCorrectField), s.get(fCorrectCorrected), s.get(fCorrectEvidence))
+}
+
+// correctOne is the body of one field correction on a resolved record, shared by
+// the single-field form (correctData, which reports through the composer's
+// verdict as it always has) and the batch form (applyCorrection, which scopes
+// that verdict to the one change - compose_batch.go). It fails the run itself and
+// writes nothing when the correction cannot be applied, and queues the corrected
+// entry when it can.
+func (c *composer) correctOne(ref recordRef, field, corrected, evidence string) {
 	addr, ok := entryAddress(ref)
 	if !ok {
 		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", ref.kind)
 		return
 	}
 
-	fieldName := normalizeFieldName(s.get(fCorrectField))
-	corrected := s.get(fCorrectCorrected)
-	evidence := s.get(fCorrectEvidence)
+	fieldName := normalizeFieldName(field)
 	if fieldName == "" || corrected == "" || evidence == "" {
 		c.fail(StatusInvalid, "Field, Corrected value, and Evidence are all required")
 		return
@@ -237,12 +245,9 @@ func (c *composer) misaddressedField(ref recordRef, field string) bool {
 	// submitter who pasted a retired slug's page URL was 301'd there and never
 	// learned it changed, and a suggestion built from the retired slug would
 	// list no recordings and point at a work the bot then cannot find.
-	work := ref.slug
-	if ref.kind == model.KindRecording {
-		work = ref.workSlug
-	}
+	work, live := c.liveWorkOf(ref)
 	merged := ""
-	if live := c.liveWorkSlug(work); live != "" && live != work {
+	if live != work {
 		merged = fmt.Sprintf(" (%q has been merged into %q)", work, live)
 		work = live
 	}
@@ -255,6 +260,20 @@ func (c *composer) misaddressedField(ref recordRef, field string) bool {
 			"Set Record to the work instead: %s%s", field, workPageURL(work), merged)
 	}
 	return true
+}
+
+// liveWorkOf names the work a work or recording reference lives under (the
+// recording's parent for a recording) and that work's live slug: the survivor
+// when a core merge retired it, else the work itself.
+func (c *composer) liveWorkOf(ref recordRef) (work, live string) {
+	work = ref.slug
+	if ref.kind == model.KindRecording {
+		work = ref.workSlug
+	}
+	if live = c.liveWorkSlug(work); live == "" {
+		live = work
+	}
+	return work, live
 }
 
 // siblingKind pairs the two record kinds that are one book from a reader's side.
@@ -401,6 +420,10 @@ func (c *composer) correctISBN(addr entryAddr, record map[string]any, corrected 
 	i, recorded, found := findISBNEntry(arr, key)
 	if !found {
 		record["isbn"] = append(arr, stated)
+		// Claimed for the rest of this run, so a later change of the same batch
+		// adding it to another recording meets the gate above instead of failing
+		// the whole batch at validation.
+		c.isbnRec[key] = self
 		if stated.Region == "" {
 			return fmt.Sprintf("added ISBN %s (region unstated)", stated.ISBN), true
 		}
@@ -683,8 +706,15 @@ func coerceFieldValue(kind fieldKind, raw string) (any, bool) {
 }
 
 // appendSource appends a source object to an existing (possibly nil) sources
-// array read from a raw record.
+// array read from a raw record, unless the array already holds that entry: the
+// whole-entry rule of rawentry.UnionSources, so the changes of one batch, which
+// share an evidence text and a date, stamp a record once.
 func appendSource(existing any, src map[string]any) []any {
 	arr, _ := existing.([]any)
+	for _, s := range arr {
+		if m, ok := s.(map[string]any); ok && m["type"] == src["type"] && m["ref"] == src["ref"] && m["imported_at"] == src["imported_at"] {
+			return arr
+		}
+	}
 	return append(arr, src)
 }
