@@ -2856,6 +2856,10 @@
       "authors": [
         "e-w-hornung"
       ],
+      "genres": [
+        "classics",
+        "literary-fiction"
+      ],
       "id": "raffles",
       "language": "en",
       "license": "CC0-1.0",
@@ -2885,6 +2889,7 @@
               "region": "uk"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1nH+iYWFGL.jpg",
           "id": "david-rintoul-2013",
           "language": "en",
           "license": "CC0-1.0",
@@ -2919,6 +2924,11 @@
               "imported_at": "2026-10-07",
               "ref": "B00GNJHATG",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-23",
+              "ref": "B00GNJI6MQ",
+              "type": "libex-import"
             }
           ],
           "work": "raffles"
@@ -2929,6 +2939,11 @@
           "imported_at": "2026-09-24",
           "ref": "B00GNJI6MQ",
           "type": "audiosilo-books-import"
+        },
+        {
+          "imported_at": "2026-10-23",
+          "ref": "B00GNJI6MQ",
+          "type": "libex-import"
         }
       ],
       "title": "Raffles"
