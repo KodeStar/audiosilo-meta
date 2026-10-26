@@ -8707,6 +8707,14 @@
             {
               "asin": "B0G2QLDRYM",
               "region": "us"
+            },
+            {
+              "asin": "B0G2QL33F7",
+              "region": "de"
+            },
+            {
+              "asin": "B0G2QLR266",
+              "region": "uk"
             }
           ],
           "chapters": [
@@ -8986,7 +8994,7 @@
           ],
           "publisher": "Bloomsbury Archer",
           "release_date": "2026-08-13",
-          "runtime_min": 600,
+          "runtime_min": 773,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -8996,6 +9004,16 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0G2QLDRYM",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0G2QL33F7",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0G2QLR266",
               "type": "libex-import"
             }
           ],
@@ -9010,6 +9028,133 @@
         }
       ],
       "title": "To Dance with Death"
+    },
+    "to-dance-with-death-a-dance-of-lies-vol-2": {
+      "added_at": "2026-10-26",
+      "authors": [
+        "louise-malagoli",
+        "brittney-arena"
+      ],
+      "credits": [
+        {
+          "person": "louise-malagoli",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "dark-fantasy",
+        "fantasy"
+      ],
+      "id": "to-dance-with-death-a-dance-of-lies-vol-2",
+      "language": "fr",
+      "license": "CC0-1.0",
+      "recordings": {
+        "arnaud-masclet-2026": {
+          "abridged": false,
+          "added_at": "2026-10-26",
+          "asin": [
+            {
+              "asin": "B0HNNNZBWH",
+              "region": "de"
+            },
+            {
+              "asin": "B0HNNWM9T2",
+              "region": "au"
+            },
+            {
+              "asin": "B0HNNM65W1",
+              "region": "br"
+            },
+            {
+              "asin": "B0HNNT6S2N",
+              "region": "ca"
+            },
+            {
+              "asin": "B0HNNQG62Z",
+              "region": "fr"
+            },
+            {
+              "asin": "B0HNNT42P6",
+              "region": "jp"
+            },
+            {
+              "asin": "B0HNNW5ZHP",
+              "region": "us"
+            },
+            {
+              "asin": "B0HNNS9J9Z",
+              "region": "uk"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91npWponR0L.jpg",
+          "id": "arnaud-masclet-2026",
+          "language": "fr",
+          "license": "CC0-1.0",
+          "narrators": [
+            "arnaud-masclet",
+            "kaina-blada"
+          ],
+          "publisher": "Audiolib",
+          "release_date": "2026-11-12",
+          "runtime_min": 825,
+          "sources": [
+            {
+              "imported_at": "2026-10-24",
+              "ref": "B0HNNNZBWH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0HNNWM9T2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0HNNM65W1",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0HNNT6S2N",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0HNNQG62Z",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0HNNT42P6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0HNNW5ZHP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-26",
+              "ref": "B0HNNS9J9Z",
+              "type": "libex-import"
+            }
+          ],
+          "work": "to-dance-with-death-a-dance-of-lies-vol-2"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-24",
+          "ref": "B0HNNNZBWH",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-10-26",
+          "ref": "B0HNNWM9T2",
+          "type": "libex-import"
+        }
+      ],
+      "title": "To Dance with Death: A Dance of Lies, Vol. 2"
     },
     "to-dance-with-the-devil": {
       "added_at": "2026-08-02",
