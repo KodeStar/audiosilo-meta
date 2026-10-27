@@ -97,12 +97,13 @@ type bucket struct {
 // changes no answer and keeps the map to the clients of the last minutes.
 const sweepEvery = time.Minute
 
+// newRateLimiter wants the rate and burst New has validated (validateRateLimit).
 func newRateLimiter(rate float64, burst int, trusted []netip.Prefix, now func() time.Time) *rateLimiter {
 	if now == nil {
 		now = time.Now
 	}
 	return &rateLimiter{
-		rate: rate, burst: float64(max(burst, 1)), trusted: trusted, now: now,
+		rate: rate, burst: float64(burst), trusted: trusted, now: now,
 		buckets: map[netip.Addr]*bucket{}, lastSweep: now(),
 	}
 }

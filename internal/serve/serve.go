@@ -48,12 +48,13 @@ type Config struct {
 
 	// RateLimit is the API's per-client request rate (requests a second, a
 	// token bucket of RateBurst; see ratelimit.go). Zero is no limit - the zero
-	// Config, which the tests build on - and RateBurst is then unread; with a
-	// limit, RateBurst must be at least 1. New refuses a negative or non-finite
-	// rate and a limit with no burst rather than guessing what was meant.
-	// metaserve's flags default to DefaultRateLimit and DefaultRateBurst. TrustedProxies are the proxies whose
-	// X-Forwarded-For names the client; empty means the connection's address is
-	// the client, which behind a proxy makes every request one client.
+	// Config, which the tests build on; New refuses any other value
+	// validateRateLimit rejects. metaserve's flags default to DefaultRateLimit
+	// and DefaultRateBurst.
+	//
+	// TrustedProxies are the proxies whose X-Forwarded-For names the client;
+	// empty means the connection's address is the client, which behind a proxy
+	// makes every request one client.
 	RateLimit      float64
 	RateBurst      int
 	TrustedProxies []netip.Prefix
