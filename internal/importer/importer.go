@@ -1484,7 +1484,30 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// The row's author slugs, split into the list the record stores and the
 	// subset work identity is matched on (workidentity.go). Resolving them here
 	// is what creates their person records, exactly as creditSlugs did.
-	authors := p.rowWorkAuthors(authorCredits, warn)
+	//
+	// A LibriVox row decides its work FIRST, on the read-only author set (the
+	// same slugs the create path mints), because an attach to a catalogued work
+	// records none of the row's credits: a translator the work does not name
+	// would otherwise be created and credited nowhere (librivoxRowAuthors).
+	var authors workAuthors
+	var walk workWalk
+	var unrecorded []LibrivoxUnrecordedCredit
+	if b.lv != nil {
+		authors = p.rowWorkAuthorsRO(authorCredits)
+		if route.walk != nil {
+			walk = *route.walk
+		} else {
+			walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+		}
+		if walk.ws == nil {
+			authors = p.rowWorkAuthors(authorCredits, warn)
+		} else {
+			unrecorded = p.librivoxRowAuthors(b, walk.ws, authorCredits, warn)
+		}
+	} else {
+		authors = p.rowWorkAuthors(authorCredits, warn)
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+	}
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
 
 	// The book's genre claims are mapped from the source's own strings onto this
@@ -1498,12 +1521,6 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
-	var walk workWalk
-	if route.walk != nil {
-		walk = *route.walk
-	} else {
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
-	}
 	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
@@ -1520,6 +1537,9 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	if p.landedRec != "" {
+		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, unrecorded...)
+	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);
 	// a no-op for a work loaded from disk, and for the row that created it.

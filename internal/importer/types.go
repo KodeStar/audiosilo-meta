@@ -524,6 +524,13 @@ type Summary struct {
 	LibrivoxVariantsAttached int
 	LibrivoxFallbackSlugs    int
 	LibrivoxWorklist         []LibrivoxWorklistEntry
+	// LibrivoxUnrecordedCredits is every author or translator credit a landed
+	// LibriVox row states that the run did not record, in row order: the row
+	// attached to a work that does not name the person, and a create run never
+	// edits a catalogued work's credits. A person such a credit would have
+	// created is not created (an orphan record), so these are kept for
+	// recording-level credits (meta#2752) to pick up.
+	LibrivoxUnrecordedCredits []LibrivoxUnrecordedCredit
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from

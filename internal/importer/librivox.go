@@ -39,6 +39,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -649,6 +650,90 @@ func (p *planner) stampLibrivoxPeople() {
 			}
 		}
 	}
+}
+
+// LibrivoxUnrecordedCredit is one author or translator credit a landed LibriVox
+// row stated that its work does not record (Summary.LibrivoxUnrecordedCredits).
+type LibrivoxUnrecordedCredit struct {
+	Project int `json:"librivox_id"`
+	// AuthorID is the person's librivox_author_id, 0 when the row states none.
+	AuthorID int      `json:"librivox_author_id,omitempty"`
+	Name     string   `json:"name"`
+	Roles    []string `json:"roles,omitempty"`
+	// Work is the work the row's recording landed on.
+	Work string `json:"work"`
+	// Created says the person record exists (the catalogue or the run already
+	// held it); false means the run withheld it rather than mint an orphan.
+	Created bool `json:"created"`
+}
+
+// String is the credit as the import report prints it, one line:
+//
+//	2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created
+func (c LibrivoxUnrecordedCredit) String() string {
+	var b strings.Builder
+	fmt.Fprintf(&b, "%d %q (", c.Project, c.Name)
+	if len(c.Roles) > 0 {
+		b.WriteString(strings.Join(c.Roles, ", "))
+	} else {
+		b.WriteString("author")
+	}
+	if c.AuthorID > 0 {
+		fmt.Fprintf(&b, ", librivox_author_id %d", c.AuthorID)
+	}
+	fmt.Fprintf(&b, ") -> %s", c.Work)
+	if !c.Created {
+		b.WriteString(", person not created")
+	}
+	return b.String()
+}
+
+// librivoxRowAuthors creates the people of a LibriVox row that ATTACHES to ws
+// (a work the walk found) - but only those the run will credit there: a person
+// ws already names, or a role-credited person (a translator) when ws is a work
+// THIS run created, onto which mergeCreatedWorkFacts adds the row's role
+// credits. Anyone else would be a record credited nowhere: a create run never
+// edits a catalogued work's credit list, and the row's recording credits only
+// its readers. Each such credit is returned for the run's report (and its
+// person, when it would be new, is not created). Identity authors always
+// qualify (matchWork admits only a work whose credit list holds them); the
+// per-person test covers every attach route alike - the ordinary walk, a
+// spelling variant and a work created earlier in the run.
+func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []credit, warn func(string, ...any)) []LibrivoxUnrecordedCredit {
+	_, runCreated := p.runCredits[ws.slug]
+	var out []LibrivoxUnrecordedCredit
+	for _, c := range credits {
+		r := p.resolvePerson(c.name)
+		if ws.all[r.slug] || (runCreated && len(c.roles) > 0 && !r.fellBack) {
+			p.getOrCreatePerson(c.name, warn)
+			continue
+		}
+		out = append(out, LibrivoxUnrecordedCredit{
+			Project:  b.lv.id,
+			AuthorID: p.librivoxAuthorIDOf(b, r.slug),
+			Name:     c.name,
+			Roles:    slices.Clone(c.roles),
+			Work:     ws.slug,
+			Created:  !r.create,
+		})
+	}
+	return out
+}
+
+// librivoxAuthorIDOf is the librivox_author_id of the row's author or
+// translator credit resolving to slug (through the same per-credit cleaning
+// librivoxCreditSlug uses), or 0.
+func (p *planner) librivoxAuthorIDOf(b sourceBook, slug string) int {
+	for _, c := range b.lv.credits {
+		if c.kind != librivoxAuthor {
+			continue
+		}
+		names := creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
+		if len(names) == 1 && p.resolvePerson(names[0]).slug == slug {
+			return c.id
+		}
+	}
+	return 0
 }
 
 // workCreditsPerson reports whether work names person: in its authors, or in a
