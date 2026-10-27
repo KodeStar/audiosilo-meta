@@ -51,16 +51,21 @@ import (
 // What comes back differs from LibriVox's answer in the facts the mirror does
 // not keep, by design (LICENSING.md, facts only): description is always "",
 // url_project and url_other are "", coverart_pdf and coverart_thumbnail are null,
-// a section's id is "" and its section_number is its 1-based position, genres are
-// this project's vocabulary (never LibriVox's taxonomy verbatim) with an empty id,
-// an author's first_name/last_name are the stored name split at its last word,
-// and dob/dod are years or "" (LibriVox's "alive" is not a year). Per-section
-// readers are not stored: a recording with ONE narrator names that reader on
-// every section, a multi-reader recording names none. Everything else - ids,
-// titles, the language name, copyright_year, URLs, runtimes, section titles,
-// files and playtimes, author and translator ids and years - is LibriVox's
-// value as the mirror stored it, and the golden test compares each one with the
-// real LibriVox responses in the importer's fixture.
+// a section's id is "" and its section_number is its 1-based position (LibriVox
+// numbers some projects from 0), a section's language is the project's language,
+// genres are this project's vocabulary (never LibriVox's taxonomy verbatim) with
+// an empty id, an author's first_name/last_name are the stored name split at its
+// last word, and dob/dod are years or "" (LibriVox's "alive" is not a year). The
+// title is the catalogue work's title, so a project attached to an existing work
+// reads in that work's spelling and case, without "(version N)". Translators are
+// the work's translator credits: a project attached to a catalogued work lists
+// that work's translators, which may differ from LibriVox's and carry no LibriVox
+// id or years. Per-section readers are not stored: a recording with ONE narrator
+// names that reader on every section, a multi-reader recording names none.
+// Everything else - ids, the language name, copyright_year, URLs, runtimes,
+// section titles, files and playtimes, author ids and years - is LibriVox's value
+// as the mirror stored it, and the golden test compares each one with the real
+// LibriVox responses in the importer's fixture.
 //
 // No results is LibriVox's 404 {"error": "Audiobooks could not be found"}, which
 // is also every answer of an artifact older than librivoxSchemaVersion (it holds
