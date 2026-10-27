@@ -2,10 +2,12 @@ package serve
 
 import (
 	"encoding/json"
+	"math"
 	"net/http"
 	"net/http/httptest"
 	"net/netip"
 	"strconv"
+	"strings"
 	"testing"
 	"time"
 
@@ -265,6 +267,76 @@ func TestNoRateLimitWhenOff(t *testing.T) {
 	for i := range 60 {
 		if resp := get(t, ts.URL+"/api/v1/stats", nil); resp.StatusCode != http.StatusOK {
 			t.Fatalf("request %d with the limit off = %d", i+1, resp.StatusCode)
+		}
+	}
+}
+
+// TestDefaultsHoldAnAudioSiloBulkMatch pins the defaults to the client they are
+// sized for (see DefaultRateLimit): a shipped AudioSilo server that opens with a
+// console Series page's few hundred lookups, then runs a bulk match at its fast
+// case (2 workers x 4 requests per 90 ms, about 89 a second) for ten minutes,
+// is never refused. A client at twice that rate is, so the limit still binds.
+func TestDefaultsHoldAnAudioSiloBulkMatch(t *testing.T) {
+	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
+	l := newRateLimiter(DefaultRateLimit, DefaultRateBurst, nil, clock.now)
+	server := netip.MustParseAddr("203.0.113.7")
+	for i := range 300 {
+		if ok, _ := l.allow(server); !ok {
+			t.Fatalf("Series page lookup %d refused", i+1)
+		}
+	}
+	const perBook, roundTrips, workers = 4, 3, 2
+	step := 30 * time.Millisecond * roundTrips / (perBook * workers) // one request every ~11 ms
+	for i := range int(10 * time.Minute / step) {
+		clock.t = clock.t.Add(step)
+		if ok, _ := l.allow(server); !ok {
+			t.Fatalf("bulk match request %d (at %v) refused", i+1, time.Duration(i)*step)
+		}
+	}
+
+	scraper := netip.MustParseAddr("198.51.100.9")
+	refused := false
+	for range int(time.Minute / (step / 2)) {
+		clock.t = clock.t.Add(step / 2)
+		if ok, _ := l.allow(scraper); !ok {
+			refused = true
+			break
+		}
+	}
+	if !refused {
+		t.Error("a client at twice the bulk match's rate was never refused")
+	}
+}
+
+// TestRateLimitConfigIsExplicit pins Config's rule: 0 turns the limit off
+// whatever the burst, and a negative or non-finite rate, or a limit with no
+// burst, is refused at startup rather than silently defaulted.
+func TestRateLimitConfigIsExplicit(t *testing.T) {
+	for _, tc := range []struct {
+		rate  float64
+		burst int
+		ok    bool
+	}{
+		{0, 0, true},
+		{0, 5, true},
+		{1, 1, true},
+		{DefaultRateLimit, DefaultRateBurst, true},
+		{1, 0, false},
+		{1, -3, false},
+		{-1, 10, false},
+		{math.NaN(), 10, false},
+		{math.Inf(1), 10, false},
+	} {
+		err := validateRateLimit(tc.rate, tc.burst)
+		if (err == nil) != tc.ok {
+			t.Errorf("validateRateLimit(%g, %d) = %v, want ok %v", tc.rate, tc.burst, err, tc.ok)
+		}
+	}
+	// And New applies it: a limit with a zero burst never starts.
+	for _, cfg := range []Config{{RateLimit: 5, RateBurst: 0}, {RateLimit: -1, RateBurst: 10}} {
+		cfg.Logger = artifacttest.QuietLogger()
+		if _, err := New(cfg); err == nil || !strings.Contains(err.Error(), "rate") {
+			t.Errorf("New(rate %g, burst %d) = %v, want a rate-limit error", cfg.RateLimit, cfg.RateBurst, err)
 		}
 	}
 }

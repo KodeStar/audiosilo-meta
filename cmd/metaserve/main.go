@@ -30,9 +30,10 @@ func main() {
 	interval := flag.Duration("interval", time.Hour, "poll interval")
 	cache := flag.String("cache", "./cache", "directory for downloaded artifacts")
 	rateLimit := flag.Float64("rate-limit", envFloat("METASERVE_RATE_LIMIT", serve.DefaultRateLimit),
-		"API requests a second per client (a token bucket); 0 disables the limit (env METASERVE_RATE_LIMIT)")
-	rateBurst := flag.Int("rate-burst", int(envFloat("METASERVE_RATE_BURST", serve.DefaultRateBurst)),
-		"the bucket's size: how many requests a client may make at once (env METASERVE_RATE_BURST)")
+		"API requests a second per client (a token bucket); 0 turns the limit off, a negative value is refused (env METASERVE_RATE_LIMIT)")
+	rateBurst := flag.Int("rate-burst", envInt("METASERVE_RATE_BURST", serve.DefaultRateBurst),
+		"the bucket's size: how many requests a client may make at once; at least 1 while the limit is on, "+
+			"0 is refused rather than defaulted (env METASERVE_RATE_BURST)")
 	trustedProxies := flag.String("trusted-proxy", os.Getenv("METASERVE_TRUSTED_PROXIES"),
 		"comma-separated proxy addresses or CIDR prefixes whose X-Forwarded-For names the client; "+
 			"behind a reverse proxy, name it, or every request counts as one client (env METASERVE_TRUSTED_PROXIES)")
@@ -74,6 +75,21 @@ func main() {
 		fmt.Fprintln(os.Stderr, "metaserve:", err)
 		os.Exit(1)
 	}
+}
+
+// envInt is envFloat for a whole number: a value that is not an integer
+// (including "2.5") is reported and falls back to def.
+func envInt(name string, def int) int {
+	raw := os.Getenv(name)
+	if raw == "" {
+		return def
+	}
+	v, err := strconv.Atoi(raw)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaserve: %s=%q is not a whole number; using %d\n", name, raw, def)
+		return def
+	}
+	return v
 }
 
 // envFloat is a flag's default read from the environment: the variable's value

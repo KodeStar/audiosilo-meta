@@ -233,8 +233,12 @@ Superseded artifacts are pruned from the cache after each hot-swap. Set
 
 Rate limit and caching: every API route (`/api/v1/*` and `/abs/search`, not
 `/healthz`) wears a per-client token bucket - `--rate-limit` requests a second
-(env `METASERVE_RATE_LIMIT`, default 10, `0` turns it off) with a burst of
-`--rate-burst` (env `METASERVE_RATE_BURST`, default 30). Past it a client gets
+(env `METASERVE_RATE_LIMIT`, default 100, `0` turns it off) with a burst of
+`--rate-burst` (env `METASERVE_RATE_BURST`, default 400; at least 1 while the
+limit is on - a burst of `0`, or a negative rate, is refused at startup rather
+than defaulted). The defaults are sized so an AudioSilo server's bulk match,
+which does not pace itself, never trips them (the arithmetic is in
+`internal/serve/ratelimit.go`). Past it a client gets
 429 with `Retry-After`. The client is the connection's address, or, when that
 address is one of `--trusted-proxy` (env `METASERVE_TRUSTED_PROXIES`, a
 comma-separated list of addresses and CIDR prefixes), the rightmost

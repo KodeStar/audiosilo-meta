@@ -1059,8 +1059,11 @@ names no section reader.
 route wears `Server.public` = gzip(CORS(limit(h))), so the limit is inside CORS
 and a browser can read a 429's `Retry-After` (corsMW exposes it); `/healthz` does not. The limiter
 is a per-client-address token bucket (an IPv6 address keyed as its /64, `bucketKey`; `Config.RateLimit`/`RateBurst`, metaserve
-`--rate-limit 10 --rate-burst 30` and their `METASERVE_*` env twins; zero is off,
-which is the zero Config every test builds on), idle full buckets swept each
+`--rate-limit 100 --rate-burst 400` and their `METASERVE_*` env twins, sized from
+audiosilo-server internal/meta's concurrency so a bulk match never trips it and
+pinned by TestDefaultsHoldAnAudioSiloBulkMatch; a rate of zero is off, which is the
+zero Config every test builds on, and New refuses a negative or non-finite rate or
+a limit with a burst under 1 (`validateRateLimit`) rather than defaulting it), idle full buckets swept each
 minute. The client is the connection's address, or - only when that is one of
 `Config.TrustedProxies` (`--trusted-proxy`) - the rightmost `X-Forwarded-For`
 hop that is not itself a trusted proxy, so a spoofed header from anywhere else

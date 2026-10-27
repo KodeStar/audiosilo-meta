@@ -44,8 +44,10 @@ services:
     # `command:` APPENDS flags to that, e.g. a faster poll cadence:
     # command: ["--interval", "15m"]
     environment:
-      # The API is rate limited per client (10 requests a second, burst 30;
-      # METASERVE_RATE_LIMIT / METASERVE_RATE_BURST, 0 turns it off). The client
+      # The API is rate limited per client (100 requests a second, burst 400,
+      # sized so an AudioSilo server's bulk match never trips it;
+      # METASERVE_RATE_LIMIT / METASERVE_RATE_BURST; a rate of 0 turns it off,
+      # a burst of 0 with the limit on is refused at startup). The client
       # is the connection's address unless that address is a trusted proxy, and
       # behind the reverse proxy every connection comes from the proxy: from
       # 127.0.0.1 or the compose network's gateway (a private address). Trusting

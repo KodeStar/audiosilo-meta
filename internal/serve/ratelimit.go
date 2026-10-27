@@ -2,6 +2,7 @@ package serve
 
 import (
 	"fmt"
+	"math"
 	"net"
 	"net/http"
 	"net/netip"
@@ -28,13 +29,50 @@ import (
 // so keying the full address would hand every one of its addresses a fresh
 // bucket - the same "name a fresh address" escape, by a different route.
 
-// Defaults for metaserve's flags (cmd/metaserve): ten requests a second per
-// client with a burst of thirty is far beyond what a person browsing or an app
-// syncing needs, and well inside what a scraper looping over the API wants.
+// Defaults for metaserve's flags (cmd/metaserve), sized so that a shipped
+// AudioSilo server never trips them. Its community client (audiosilo-server
+// internal/meta) is the heaviest legitimate caller, does not pace itself and
+// treats a 429 as a hard error (five in a row stop a bulk match), so the limit
+// must sit above what it does at full speed:
+//
+//   - In flight at once, at most about a dozen: a bulk match's 2 workers each
+//     with one works/match, work and series reads sharing a bound of 4
+//     (maxConcurrentWorkFetches), the console's identifier lookups another 4
+//     (maxConcurrentLookups), and a player's one /meta per opened book.
+//   - Sustained, a bulk match is the long one: per book one works/match, then
+//     its best 2 works together, then their series facts - about 4 requests in
+//     3 round trips per worker. With a round trip (network plus answer) as
+//     short as 30 ms that is 2 x 4 / 0.09 s, about 90 requests a second, for
+//     as long as the library lasts; at a more usual 60 ms+ it is under 50.
+//   - Bursty, a console Series page asks about every matched book of a few
+//     dozen cards at once, a few hundred lookups 4 at a time.
+//
+// So 100 a second holds the bulk match's fast case with headroom, and a burst
+// of 400 absorbs a Series page or a match run starting while a page loads. A
+// scraper looping flat out on one address wants far more than that; past it
+// the catalogue's bulk route is the release artifact. A server sharing the
+// host or LAN with a private metaserve (round trips of a millisecond or two)
+// can outrun any sane limit: that deployment turns it off (--rate-limit 0).
 const (
-	DefaultRateLimit = 10
-	DefaultRateBurst = 30
+	DefaultRateLimit = 100
+	DefaultRateBurst = 400
 )
+
+// validateRateLimit is Config's rule for the limit (see Config.RateLimit): 0
+// turns it off, whatever the burst; a limit needs a finite positive rate and a
+// burst of at least 1. A burst of 0 is refused, not defaulted: it reads as "no
+// slack" and would otherwise quietly become some other number.
+func validateRateLimit(rate float64, burst int) error {
+	switch {
+	case rate == 0:
+		return nil
+	case math.IsNaN(rate) || math.IsInf(rate, 0) || rate < 0:
+		return fmt.Errorf("serve: rate limit %g: want a positive number of requests a second, or 0 to turn the limit off", rate)
+	case burst < 1:
+		return fmt.Errorf("serve: rate burst %d: want at least 1 while the rate limit is on (rate 0 turns it off)", burst)
+	}
+	return nil
+}
 
 // rateLimiter is a set of token buckets keyed by client address.
 type rateLimiter struct {

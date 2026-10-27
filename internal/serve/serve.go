@@ -47,9 +47,11 @@ type Config struct {
 	Logger        *log.Logger   // nil => log.Default()
 
 	// RateLimit is the API's per-client request rate (requests a second, a
-	// token bucket of RateBurst; see ratelimit.go). Zero or less is no limit -
-	// the zero Config, which the tests build on; metaserve's flags default to
-	// DefaultRateLimit and DefaultRateBurst. TrustedProxies are the proxies whose
+	// token bucket of RateBurst; see ratelimit.go). Zero is no limit - the zero
+	// Config, which the tests build on - and RateBurst is then unread; with a
+	// limit, RateBurst must be at least 1. New refuses a negative or non-finite
+	// rate and a limit with no burst rather than guessing what was meant.
+	// metaserve's flags default to DefaultRateLimit and DefaultRateBurst. TrustedProxies are the proxies whose
 	// X-Forwarded-For names the client; empty means the connection's address is
 	// the client, which behind a proxy makes every request one client.
 	RateLimit      float64
@@ -187,9 +189,12 @@ func New(cfg Config) (*Server, error) {
 			return nil, fmt.Errorf("serve: METASERVE_WEBHOOK_SECRET must be at least %d bytes", minWebhookSecretBytes)
 		}
 	}
+	if err := validateRateLimit(cfg.RateLimit, cfg.RateBurst); err != nil {
+		return nil, err
+	}
 	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}}
 	if cfg.RateLimit > 0 {
-		s.limiter = newRateLimiter(cfg.RateLimit, cmp.Or(cfg.RateBurst, DefaultRateBurst), cfg.TrustedProxies, nil)
+		s.limiter = newRateLimiter(cfg.RateLimit, cfg.RateBurst, cfg.TrustedProxies, nil)
 	}
 	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
