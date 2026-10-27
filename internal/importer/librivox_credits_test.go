@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -245,5 +246,29 @@ func TestLibrivoxQualifierRE(t *testing.T) {
 		if got := strings.TrimSpace(librivoxQualifierRE.ReplaceAllString(in, "")); got != want {
 			t.Errorf("%q -> %q, want %q", in, got, want)
 		}
+	}
+}
+
+func TestLibrivoxAttachToAWorkCreditingTheTranslator(t *testing.T) {
+	// A catalogued work that names the translator in its stored credits only
+	// (not its authors): the credit is the work's already, so nothing is
+	// reported, and the person is keyed by the project's LibriVox id.
+	dataDir := t.TempDir()
+	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
+	seedTree(t, dataDir, map[string]string{
+		personAddr("ian-johnston"): testpack.PersonJSON(t, "ian-johnston", "Ian Johnston"),
+		workAddr("metamorphosis"): testpack.WithField(t,
+			testpack.WorkJSON(t, "metamorphosis", "Metamorphosis", testpack.WithAuthors("franz-kafka")),
+			"credits", []model.Credit{{Person: "ian-johnston", Role: model.RoleTranslator}}),
+	})
+	sum := runLibrivox(t, librivoxFixture, dataDir, mustLibrivoxIDs("527"))
+	if sum.NewWorks != 0 || sum.NewRecordings != 1 || len(sum.LibrivoxUnrecordedCredits) != 0 {
+		t.Fatalf("works/recordings/unrecorded = %d/%d/%+v\nwarnings: %v",
+			sum.NewWorks, sum.NewRecordings, sum.LibrivoxUnrecordedCredits, sum.Warnings)
+	}
+	var p lvPerson
+	readEntity(t, dataDir, personAddr("ian-johnston"), &p)
+	if p.AuthorID != 1019 {
+		t.Errorf("ian-johnston = %+v; want librivox_author_id 1019", p)
 	}
 }

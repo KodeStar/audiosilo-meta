@@ -690,9 +690,9 @@ func (c LibrivoxUnrecordedCredit) String() string {
 
 // librivoxRowAuthors creates the people of a LibriVox row that ATTACHES to ws
 // (a work the walk found) - but only those the run will credit there: a person
-// ws already names, or a role-credited person (a translator) when ws is a work
-// THIS run created, onto which mergeCreatedWorkFacts adds the row's role
-// credits. Anyone else would be a record credited nowhere: a create run never
+// ws already names (in its authors or its stored credits), or a role-credited
+// person (a translator) when ws is a work THIS run created, onto which
+// mergeCreatedWorkFacts adds the row's role credits. Anyone else would be a record credited nowhere: a create run never
 // edits a catalogued work's credit list, and the row's recording credits only
 // its readers. Each such credit is returned for the run's report (and its
 // person, when it would be new, is not created). Identity authors always
@@ -704,7 +704,7 @@ func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []cred
 	var out []LibrivoxUnrecordedCredit
 	for _, c := range credits {
 		r := p.resolvePerson(c.name)
-		if ws.all[r.slug] || (runCreated && len(c.roles) > 0 && !r.fellBack) {
+		if ws.all[r.slug] || ws.credited[r.slug] || (runCreated && len(c.roles) > 0 && !r.fellBack) {
 			p.getOrCreatePerson(c.name, warn)
 			continue
 		}
@@ -736,11 +736,11 @@ func (p *planner) librivoxAuthorIDOf(b sourceBook, slug string) int {
 	return 0
 }
 
-// workCreditsPerson reports whether work names person: in its authors, or in a
-// role credit this run recorded on it (mergeCreatedWorkFacts adds a later row's
+// workCreditsPerson reports whether work names person: in its authors, in a
+// catalogued work's stored credits, or in a role credit this run recorded on it (mergeCreatedWorkFacts adds a later row's
 // credits to a work the run created without touching its authors).
 func (p *planner) workCreditsPerson(work, person string) bool {
-	if ws := p.works[work]; ws != nil && ws.all[person] {
+	if ws := p.works[work]; ws != nil && (ws.all[person] || ws.credited[person]) {
 		return true
 	}
 	for c := range p.runCredits[work] {

@@ -154,6 +154,10 @@ type workState struct {
 	// identity IS its whole list) and a role-qualified row recognize each other.
 	authors map[string]bool
 	all     map[string]bool
+	// credited is the people a catalogued work's stored credits[] name (a
+	// translator a record lists there and not in its authors); nil for a work
+	// this run created, whose credits are runCredits.
+	credited map[string]bool
 	// lang is the work's language. A work is language-scoped: a translated
 	// edition is a different work from its original, and merging them makes the
 	// work's own language a lie for half its recordings. Empty = unknown, which
@@ -1200,6 +1204,10 @@ func (p *planner) loadExisting() {
 		ws.userSourced = hasUserLibrarySource(w)
 		for _, c := range w.Credits {
 			p.authorPeople[c.Person] = true
+			if ws.credited == nil {
+				ws.credited = map[string]bool{}
+			}
+			ws.credited[c.Person] = true
 		}
 		for _, a := range w.Authors {
 			p.authorPeople[a] = true
