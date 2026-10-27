@@ -13548,7 +13548,34 @@
               "region": "jp"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71R3cYpzMBL.jpg",
+          "chapters": [
+            {
+              "length_ms": 22970,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 6180704,
+              "start_ms": 22970,
+              "title": "Chapter 1: Pinnacle"
+            },
+            {
+              "length_ms": 9248947,
+              "start_ms": 6203674,
+              "title": "Chapter 2: The Tribulations of a King"
+            },
+            {
+              "length_ms": 10661349,
+              "start_ms": 15452621,
+              "title": "Chapter 3: Dragon King"
+            },
+            {
+              "length_ms": 75649,
+              "start_ms": 26113970,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/913MTm1SKWL.jpg",
           "id": "kyle-tait-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -13597,6 +13624,11 @@
             {
               "imported_at": "2026-10-07",
               "ref": "B0H6N9QS6C",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H6N8BRVJ",
               "type": "libex-import"
             }
           ],

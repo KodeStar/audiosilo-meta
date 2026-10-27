@@ -444,137 +444,167 @@
           ],
           "chapters": [
             {
-              "length_ms": 2278503,
+              "length_ms": 46970,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 31000,
+              "start_ms": 46970,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 498000,
+              "start_ms": 77970,
+              "title": "Letter 1: To Mrs. Saville, England, Saint Petersburg, December 11th, 17—"
+            },
+            {
+              "length_ms": 535000,
+              "start_ms": 575970,
+              "title": "Letter 2: To Mrs. Saville, England, Archangel, March 28th, 17—"
+            },
+            {
+              "length_ms": 127000,
+              "start_ms": 1110970,
+              "title": "Letter 3: To Mrs. Saville, England, July 7th, 17—"
+            },
+            {
+              "length_ms": 1040533,
+              "start_ms": 1237970,
+              "title": "Letter 4: To Mrs. Saville, England, August 5th, 17—"
             },
             {
               "length_ms": 711157,
               "start_ms": 2278503,
-              "title": "Chapter 2"
+              "title": "Chapter 1"
             },
             {
               "length_ms": 909688,
               "start_ms": 2989660,
-              "title": "Chapter 3"
+              "title": "Chapter 2"
             },
             {
               "length_ms": 1064588,
               "start_ms": 3899348,
-              "title": "Chapter 4"
+              "title": "Chapter 3"
             },
             {
               "length_ms": 1051980,
               "start_ms": 4963936,
-              "title": "Chapter 5"
+              "title": "Chapter 4"
             },
             {
               "length_ms": 939177,
               "start_ms": 6015916,
-              "title": "Chapter 6"
+              "title": "Chapter 5"
             },
             {
               "length_ms": 1085254,
               "start_ms": 6955093,
-              "title": "Chapter 7"
+              "title": "Chapter 6"
             },
             {
               "length_ms": 1448600,
               "start_ms": 8040347,
-              "title": "Chapter 8"
+              "title": "Chapter 7"
             },
             {
               "length_ms": 1267205,
               "start_ms": 9488947,
-              "title": "Chapter 9"
+              "title": "Chapter 8"
             },
             {
               "length_ms": 924339,
               "start_ms": 10756152,
-              "title": "Chapter 10"
+              "title": "Chapter 9"
             },
             {
               "length_ms": 969897,
               "start_ms": 11680491,
-              "title": "Chapter 11"
+              "title": "Chapter 10"
             },
             {
               "length_ms": 1398700,
               "start_ms": 12650388,
-              "title": "Chapter 12"
+              "title": "Chapter 11"
             },
             {
               "length_ms": 991863,
               "start_ms": 14049088,
-              "title": "Chapter 13"
+              "title": "Chapter 12"
             },
             {
               "length_ms": 972521,
               "start_ms": 15040951,
-              "title": "Chapter 14"
+              "title": "Chapter 13"
             },
             {
               "length_ms": 753626,
               "start_ms": 16013472,
-              "title": "Chapter 15"
+              "title": "Chapter 14"
             },
             {
               "length_ms": 1394474,
               "start_ms": 16767098,
-              "title": "Chapter 16"
+              "title": "Chapter 15"
             },
             {
               "length_ms": 1370372,
               "start_ms": 18161572,
-              "title": "Chapter 17"
+              "title": "Chapter 16"
             },
             {
               "length_ms": 783162,
               "start_ms": 19531944,
-              "title": "Chapter 18"
+              "title": "Chapter 17"
             },
             {
               "length_ms": 1115625,
               "start_ms": 20315106,
-              "title": "Chapter 19"
+              "title": "Chapter 18"
             },
             {
               "length_ms": 1016314,
               "start_ms": 21430731,
-              "title": "Chapter 20"
+              "title": "Chapter 19"
             },
             {
               "length_ms": 1373204,
               "start_ms": 22447045,
-              "title": "Chapter 21"
+              "title": "Chapter 20"
             },
             {
               "length_ms": 1474490,
               "start_ms": 23820249,
-              "title": "Chapter 22"
+              "title": "Chapter 21"
             },
             {
               "length_ms": 1412516,
               "start_ms": 25294739,
-              "title": "Chapter 23"
+              "title": "Chapter 22"
             },
             {
               "length_ms": 1040068,
               "start_ms": 26707255,
-              "title": "Chapter 24"
+              "title": "Chapter 23"
             },
             {
               "length_ms": 1304334,
               "start_ms": 27747323,
-              "title": "Chapter 25"
+              "title": "Chapter 24"
             },
             {
-              "length_ms": 2338968,
+              "length_ms": 2264000,
               "start_ms": 29051657,
-              "title": "Chapter 26"
+              "title": "Walton (In Continuation): August 26th, 17—"
+            },
+            {
+              "length_ms": 74968,
+              "start_ms": 31315657,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81fKwCOMT6L.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81PhHF32zRL.jpg",
           "id": "anthony-heald-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -585,7 +615,7 @@
           ],
           "publisher": "Blackstone Publishing",
           "release_date": "2026-08-11",
-          "runtime_min": 510,
+          "runtime_min": 523,
           "sources": [
             {
               "imported_at": "2026-07-30",
@@ -600,6 +630,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0GTWPGDM4",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GTWKW2Z3",
               "type": "libex-import"
             }
           ],

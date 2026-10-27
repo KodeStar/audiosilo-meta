@@ -13145,6 +13145,33 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 3875874,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 3535888,
+              "start_ms": 3875874,
+              "title": "Chapter 2"
+            },
+            {
+              "length_ms": 3437203,
+              "start_ms": 7411762,
+              "title": "Chapter 3"
+            },
+            {
+              "length_ms": 3773498,
+              "start_ms": 10848965,
+              "title": "Chapter 4"
+            },
+            {
+              "length_ms": 3414748,
+              "start_ms": 14622463,
+              "title": "Chapter 5"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/91baGgXJP1L.jpg",
           "id": "full-cast-2026",
           "language": "en",
@@ -13153,11 +13180,16 @@
             "full-cast"
           ],
           "publisher": "GraphicAudio",
-          "release_date": "2026-08-28",
-          "runtime_min": 300,
+          "release_date": "2026-08-31",
+          "runtime_min": 301,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0GYT16VQ6",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0GYT16VQ6",
               "type": "libex-import"
             }

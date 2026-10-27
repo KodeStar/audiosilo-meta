@@ -15051,8 +15051,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 1320239,
+              "length_ms": 19553,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1300686,
+              "start_ms": 19553,
               "title": "Chapter 1"
             },
             {
@@ -15156,12 +15161,17 @@
               "title": "Chapter 21"
             },
             {
-              "length_ms": 1168589,
+              "length_ms": 1115202,
               "start_ms": 25058386,
               "title": "Chapter 22"
+            },
+            {
+              "length_ms": 53387,
+              "start_ms": 26173588,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71xE0WhoAHL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/816vjwJ-xcL.jpg",
           "id": "gm-hakim-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -15170,7 +15180,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-09-08",
-          "runtime_min": 480,
+          "runtime_min": 436,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -15185,6 +15195,11 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B0H1JF4VVP",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H1JC2T78",
               "type": "libex-import"
             }
           ],

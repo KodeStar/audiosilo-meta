@@ -12832,8 +12832,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 846738,
+              "length_ms": 27756,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 818982,
+              "start_ms": 27756,
               "title": "Chapter 1"
             },
             {
@@ -12937,12 +12942,17 @@
               "title": "Chapter 21"
             },
             {
-              "length_ms": 1452894,
+              "length_ms": 1390643,
               "start_ms": 30881902,
               "title": "Chapter 22"
+            },
+            {
+              "length_ms": 62251,
+              "start_ms": 32272545,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71daVz98qvL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91-VwSFZUML.jpg",
           "id": "hannibal-hills-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -12951,7 +12961,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-25",
-          "runtime_min": 495,
+          "runtime_min": 538,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -12966,6 +12976,11 @@
             {
               "imported_at": "2026-10-06",
               "ref": "B0GPRXBYBT",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GPRFHYP3",
               "type": "libex-import"
             }
           ],

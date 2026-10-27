@@ -3265,7 +3265,7 @@
           ],
           "publisher": "DK",
           "release_date": "2026-09-29",
-          "runtime_min": 577,
+          "runtime_min": 576,
           "sources": [
             {
               "imported_at": "2026-07-29",
@@ -3290,6 +3290,11 @@
             {
               "imported_at": "2026-10-14",
               "ref": "B0H6RTN2N8",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H2PJBXW4",
               "type": "libex-import"
             }
           ],
@@ -6850,8 +6855,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 1276191,
+              "length_ms": 17080,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1259111,
+              "start_ms": 17080,
               "title": "Chapter 1"
             },
             {
@@ -7050,9 +7060,14 @@
               "title": "Chapter 40"
             },
             {
-              "length_ms": 560552,
+              "length_ms": 505593,
               "start_ms": 24702531,
               "title": "Chapter 41"
+            },
+            {
+              "length_ms": 54959,
+              "start_ms": 25208124,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91e5uid0ZFL.jpg",
@@ -7109,6 +7124,11 @@
             {
               "imported_at": "2026-10-07",
               "ref": "B0GVVYYZDZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GVVYZMGK",
               "type": "libex-import"
             }
           ],

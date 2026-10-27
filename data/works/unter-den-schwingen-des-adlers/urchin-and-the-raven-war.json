@@ -9932,6 +9932,11 @@
               "imported_at": "2026-10-20",
               "ref": "B0GYYRZD1J",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GYYZ6CPR",
+              "type": "libex-import"
             }
           ],
           "work": "us-deadly-few-die-us-dark-few-reihe-band-2"
@@ -9945,7 +9950,189 @@
               "region": "us"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/91MrX6eRKwL.jpg",
+          "chapters": [
+            {
+              "length_ms": 22179,
+              "start_ms": 0,
+              "title": "Vorspann"
+            },
+            {
+              "length_ms": 40000,
+              "start_ms": 22179,
+              "title": "Hinweis der Autorin"
+            },
+            {
+              "length_ms": 32046,
+              "start_ms": 62179,
+              "title": "Triggerwarnung"
+            },
+            {
+              "length_ms": 206402,
+              "start_ms": 94225,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 1230771,
+              "start_ms": 300627,
+              "title": "Kapitel 1"
+            },
+            {
+              "length_ms": 1921030,
+              "start_ms": 1531398,
+              "title": "Kapitel 2"
+            },
+            {
+              "length_ms": 766582,
+              "start_ms": 3452428,
+              "title": "Kapitel 3"
+            },
+            {
+              "length_ms": 1671207,
+              "start_ms": 4219010,
+              "title": "Kapitel 4"
+            },
+            {
+              "length_ms": 1284666,
+              "start_ms": 5890217,
+              "title": "Kapitel 5"
+            },
+            {
+              "length_ms": 1128464,
+              "start_ms": 7174883,
+              "title": "Kapitel 6"
+            },
+            {
+              "length_ms": 2308153,
+              "start_ms": 8303347,
+              "title": "Kapitel 7"
+            },
+            {
+              "length_ms": 1541943,
+              "start_ms": 10611500,
+              "title": "Kapitel 8"
+            },
+            {
+              "length_ms": 1073665,
+              "start_ms": 12153443,
+              "title": "Kapitel 9"
+            },
+            {
+              "length_ms": 1528543,
+              "start_ms": 13227108,
+              "title": "Kapitel 10"
+            },
+            {
+              "length_ms": 1533303,
+              "start_ms": 14755651,
+              "title": "Kapitel 11"
+            },
+            {
+              "length_ms": 1559960,
+              "start_ms": 16288954,
+              "title": "Kapitel 12"
+            },
+            {
+              "length_ms": 2093159,
+              "start_ms": 17848914,
+              "title": "Kapitel 13"
+            },
+            {
+              "length_ms": 2040728,
+              "start_ms": 19942073,
+              "title": "Kapitel 14"
+            },
+            {
+              "length_ms": 684569,
+              "start_ms": 21982801,
+              "title": "Kapitel 15"
+            },
+            {
+              "length_ms": 688958,
+              "start_ms": 22667370,
+              "title": "Kapitel 16"
+            },
+            {
+              "length_ms": 1480431,
+              "start_ms": 23356328,
+              "title": "Kapitel 17"
+            },
+            {
+              "length_ms": 951761,
+              "start_ms": 24836759,
+              "title": "Kapitel 18"
+            },
+            {
+              "length_ms": 1035144,
+              "start_ms": 25788520,
+              "title": "Kapitel 19"
+            },
+            {
+              "length_ms": 1267668,
+              "start_ms": 26823664,
+              "title": "Kapitel 20"
+            },
+            {
+              "length_ms": 1252668,
+              "start_ms": 28091332,
+              "title": "Kapitel 21"
+            },
+            {
+              "length_ms": 1676920,
+              "start_ms": 29344000,
+              "title": "Kapitel 22"
+            },
+            {
+              "length_ms": 1253388,
+              "start_ms": 31020920,
+              "title": "Kapitel 23"
+            },
+            {
+              "length_ms": 1360966,
+              "start_ms": 32274308,
+              "title": "Kapitel 24"
+            },
+            {
+              "length_ms": 1142048,
+              "start_ms": 33635274,
+              "title": "Kapitel 25"
+            },
+            {
+              "length_ms": 1634148,
+              "start_ms": 34777322,
+              "title": "Kapitel 26"
+            },
+            {
+              "length_ms": 1568830,
+              "start_ms": 36411470,
+              "title": "Kapitel 27"
+            },
+            {
+              "length_ms": 1147319,
+              "start_ms": 37980300,
+              "title": "Kapitel 28"
+            },
+            {
+              "length_ms": 1231979,
+              "start_ms": 39127619,
+              "title": "Kapitel 29"
+            },
+            {
+              "length_ms": 1093309,
+              "start_ms": 40359598,
+              "title": "Kapitel 30"
+            },
+            {
+              "length_ms": 1486446,
+              "start_ms": 41452907,
+              "title": "Kapitel 31"
+            },
+            {
+              "length_ms": 55866,
+              "start_ms": 42939353,
+              "title": "Abspann"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91xB7TL0d8L.jpg",
           "id": "zina-laus-2026",
           "language": "de",
           "license": "CC0-1.0",
@@ -9954,10 +10141,15 @@
           ],
           "publisher": "cbj audio",
           "release_date": "2026-10-12",
-          "runtime_min": 500,
+          "runtime_min": 716,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0GYZ2F6RG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0GYZ2F6RG",
               "type": "libex-import"
             }
@@ -10995,222 +11187,222 @@
             {
               "length_ms": 25309,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Intro Credits"
             },
             {
               "length_ms": 572766,
               "start_ms": 25309,
-              "title": "Chapter 2"
+              "title": "Story Reminder"
             },
             {
               "length_ms": 1116856,
               "start_ms": 598075,
-              "title": "Chapter 3"
+              "title": "Chapter 1"
             },
             {
               "length_ms": 915028,
               "start_ms": 1714931,
-              "title": "Chapter 4"
+              "title": "Chapter 2"
             },
             {
               "length_ms": 825515,
               "start_ms": 2629959,
-              "title": "Chapter 5"
+              "title": "Chapter 3"
             },
             {
               "length_ms": 806382,
               "start_ms": 3455474,
-              "title": "Chapter 6"
+              "title": "Chapter 4"
             },
             {
               "length_ms": 690398,
               "start_ms": 4261856,
-              "title": "Chapter 7"
+              "title": "Chapter 5"
             },
             {
               "length_ms": 611079,
               "start_ms": 4952254,
-              "title": "Chapter 8"
+              "title": "Chapter 6"
             },
             {
               "length_ms": 1615992,
               "start_ms": 5563333,
-              "title": "Chapter 9"
+              "title": "Chapter 7"
             },
             {
               "length_ms": 829718,
               "start_ms": 7179325,
-              "title": "Chapter 10"
+              "title": "Chapter 8"
             },
             {
               "length_ms": 1662339,
               "start_ms": 8009043,
-              "title": "Chapter 11"
+              "title": "Chapter 9"
             },
             {
               "length_ms": 567309,
               "start_ms": 9671382,
-              "title": "Chapter 12"
+              "title": "Chapter 10"
             },
             {
               "length_ms": 1211222,
               "start_ms": 10238691,
-              "title": "Chapter 13"
+              "title": "Chapter 11"
             },
             {
               "length_ms": 859695,
               "start_ms": 11449913,
-              "title": "Chapter 14"
+              "title": "Chapter 12"
             },
             {
               "length_ms": 828720,
               "start_ms": 12309608,
-              "title": "Chapter 15"
+              "title": "Chapter 13"
             },
             {
               "length_ms": 818085,
               "start_ms": 13138328,
-              "title": "Chapter 16"
+              "title": "Chapter 14"
             },
             {
               "length_ms": 933093,
               "start_ms": 13956413,
-              "title": "Chapter 17"
+              "title": "Chapter 15"
             },
             {
               "length_ms": 1049727,
               "start_ms": 14889506,
-              "title": "Chapter 18"
+              "title": "Chapter 16"
             },
             {
               "length_ms": 1054905,
               "start_ms": 15939233,
-              "title": "Chapter 19"
+              "title": "Chapter 17"
             },
             {
               "length_ms": 873627,
               "start_ms": 16994138,
-              "title": "Chapter 20"
+              "title": "Chapter 18"
             },
             {
               "length_ms": 989495,
               "start_ms": 17867765,
-              "title": "Chapter 21"
+              "title": "Chapter 19"
             },
             {
               "length_ms": 1176369,
               "start_ms": 18857260,
-              "title": "Chapter 22"
+              "title": "Chapter 20"
             },
             {
               "length_ms": 1013713,
               "start_ms": 20033629,
-              "title": "Chapter 23"
+              "title": "Chapter 21"
             },
             {
               "length_ms": 791173,
               "start_ms": 21047342,
-              "title": "Chapter 24"
+              "title": "Chapter 22"
             },
             {
               "length_ms": 1007792,
               "start_ms": 21838515,
-              "title": "Chapter 25"
+              "title": "Chapter 23"
             },
             {
               "length_ms": 1572223,
               "start_ms": 22846307,
-              "title": "Chapter 26"
+              "title": "Chapter 24"
             },
             {
               "length_ms": 1402392,
               "start_ms": 24418530,
-              "title": "Chapter 27"
+              "title": "Chapter 25"
             },
             {
               "length_ms": 1598043,
               "start_ms": 25820922,
-              "title": "Chapter 28"
+              "title": "Chapter 26"
             },
             {
               "length_ms": 888023,
               "start_ms": 27418965,
-              "title": "Chapter 29"
+              "title": "Chapter 27"
             },
             {
               "length_ms": 1017986,
               "start_ms": 28306988,
-              "title": "Chapter 30"
+              "title": "Chapter 28"
             },
             {
               "length_ms": 646072,
               "start_ms": 29324974,
-              "title": "Chapter 31"
+              "title": "Chapter 29"
             },
             {
               "length_ms": 956011,
               "start_ms": 29971046,
-              "title": "Chapter 32"
+              "title": "Chapter 30"
             },
             {
               "length_ms": 1273846,
               "start_ms": 30927057,
-              "title": "Chapter 33"
+              "title": "Chapter 31"
             },
             {
               "length_ms": 1400952,
               "start_ms": 32200903,
-              "title": "Chapter 34"
+              "title": "Chapter 32"
             },
             {
               "length_ms": 1692618,
               "start_ms": 33601855,
-              "title": "Chapter 35"
+              "title": "Chapter 33"
             },
             {
               "length_ms": 1145533,
               "start_ms": 35294473,
-              "title": "Chapter 36"
+              "title": "Chapter 34"
             },
             {
               "length_ms": 618417,
               "start_ms": 36440006,
-              "title": "Chapter 37"
+              "title": "Chapter 35"
             },
             {
               "length_ms": 1152197,
               "start_ms": 37058423,
-              "title": "Chapter 38"
+              "title": "Chapter 36"
             },
             {
               "length_ms": 1765297,
               "start_ms": 38210620,
-              "title": "Chapter 39"
+              "title": "Chapter 37"
             },
             {
               "length_ms": 1516959,
               "start_ms": 39975917,
-              "title": "Chapter 40"
+              "title": "Chapter 38"
             },
             {
               "length_ms": 1004402,
               "start_ms": 41492876,
-              "title": "Chapter 41"
+              "title": "Chapter 39"
             },
             {
               "length_ms": 1312856,
               "start_ms": 42497278,
-              "title": "Chapter 42"
+              "title": "Chapter 40"
             },
             {
               "length_ms": 958287,
               "start_ms": 43810134,
-              "title": "Chapter 43"
+              "title": "Chapter 41"
             },
             {
               "length_ms": 66547,
               "start_ms": 44768421,
-              "title": "Chapter 44"
+              "title": "Outro Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91hk8AY4Y9L.jpg",
@@ -11232,6 +11424,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0H6PJRWBR",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H6P3SQLW",
               "type": "libex-import"
             }
           ],

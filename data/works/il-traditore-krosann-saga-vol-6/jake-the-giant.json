@@ -3982,6 +3982,58 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 16114,
+              "start_ms": 0,
+              "title": "Vorspann"
+            },
+            {
+              "length_ms": 322478,
+              "start_ms": 16114,
+              "title": "Prolog"
+            },
+            {
+              "length_ms": 6804269,
+              "start_ms": 338592,
+              "title": "Erster Fall: Der fünfte Fahrgast"
+            },
+            {
+              "length_ms": 7218119,
+              "start_ms": 7142861,
+              "title": "Zweiter Fall: Das Pendelmetronom"
+            },
+            {
+              "length_ms": 5426239,
+              "start_ms": 14360980,
+              "title": "Dritter Fall: Der mysteriöse Tod des Eduard Kaminsky"
+            },
+            {
+              "length_ms": 5443306,
+              "start_ms": 19787219,
+              "title": "Vierter Fall: Die spurlos Verschwundene"
+            },
+            {
+              "length_ms": 5280488,
+              "start_ms": 25230525,
+              "title": "Fünfter Fall: Das Mosaik des Todes"
+            },
+            {
+              "length_ms": 5370672,
+              "start_ms": 30511013,
+              "title": "Sechster Fall: Finale in der Hofburg"
+            },
+            {
+              "length_ms": 867334,
+              "start_ms": 35881685,
+              "title": "Epilog"
+            },
+            {
+              "length_ms": 21129,
+              "start_ms": 36749019,
+              "title": "Abspann"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/91ZtTSGb1eL.jpg",
           "id": "achim-buch-2026",
           "language": "de",
@@ -3990,8 +4042,8 @@
             "achim-buch"
           ],
           "publisher": "der Hörverlag",
-          "release_date": "2026-08-17",
-          "runtime_min": 600,
+          "release_date": "2026-09-28",
+          "runtime_min": 612,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -4006,6 +4058,11 @@
             {
               "imported_at": "2026-10-04",
               "ref": "B0GYPNP15K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GYPR511G",
               "type": "libex-import"
             }
           ],

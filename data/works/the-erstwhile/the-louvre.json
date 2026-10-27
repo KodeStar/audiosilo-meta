@@ -1730,8 +1730,18 @@
           ],
           "chapters": [
             {
-              "length_ms": 1543127,
+              "length_ms": 18403,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 12806,
+              "start_ms": 18403,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 1511918,
+              "start_ms": 31209,
               "title": "Chapter 1"
             },
             {
@@ -1875,12 +1885,17 @@
               "title": "Chapter 29"
             },
             {
-              "length_ms": 670080,
+              "length_ms": 613753,
               "start_ms": 32678030,
               "title": "Chapter 30"
+            },
+            {
+              "length_ms": 56327,
+              "start_ms": 33291783,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71yQg9VZ5JL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/71thwHHO3cL.jpg",
           "id": "gary-furlong-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -1890,10 +1905,15 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-11",
-          "runtime_min": 465,
+          "runtime_min": 555,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0GRCYK6YH",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0GRCYK6YH",
               "type": "libex-import"
             }

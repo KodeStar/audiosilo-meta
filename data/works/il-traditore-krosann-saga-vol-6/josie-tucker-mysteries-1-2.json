@@ -2236,6 +2236,16 @@
         "saboten",
         "agathe-franck"
       ],
+      "credits": [
+        {
+          "person": "agathe-franck",
+          "role": "translator"
+        },
+        {
+          "person": "saboten",
+          "role": "illustrator"
+        }
+      ],
       "genres": [
         "childrens"
       ],
@@ -2252,6 +2262,88 @@
               "region": "de"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 1123635,
+              "start_ms": 0,
+              "title": "Chapitre 1"
+            },
+            {
+              "length_ms": 605112,
+              "start_ms": 1123635,
+              "title": "Chapitre 2"
+            },
+            {
+              "length_ms": 341077,
+              "start_ms": 1728747,
+              "title": "Chapitre 3"
+            },
+            {
+              "length_ms": 634090,
+              "start_ms": 2069824,
+              "title": "Chapitre 4"
+            },
+            {
+              "length_ms": 433098,
+              "start_ms": 2703914,
+              "title": "Chapitre 5"
+            },
+            {
+              "length_ms": 434097,
+              "start_ms": 3137012,
+              "title": "Chapitre 6"
+            },
+            {
+              "length_ms": 303113,
+              "start_ms": 3571109,
+              "title": "Chapitre 7"
+            },
+            {
+              "length_ms": 848085,
+              "start_ms": 3874222,
+              "title": "Chapitre 8"
+            },
+            {
+              "length_ms": 1447067,
+              "start_ms": 4722307,
+              "title": "Chapitre 9"
+            },
+            {
+              "length_ms": 28096,
+              "start_ms": 6169374,
+              "title": "Chapitre 10"
+            },
+            {
+              "length_ms": 421093,
+              "start_ms": 6197470,
+              "title": "Chapitre 11"
+            },
+            {
+              "length_ms": 502108,
+              "start_ms": 6618563,
+              "title": "Chapitre 12"
+            },
+            {
+              "length_ms": 312099,
+              "start_ms": 7120671,
+              "title": "Chapitre 13"
+            },
+            {
+              "length_ms": 202083,
+              "start_ms": 7432770,
+              "title": "Chapitre 14"
+            },
+            {
+              "length_ms": 989100,
+              "start_ms": 7634853,
+              "title": "Chapitre 15"
+            },
+            {
+              "length_ms": 503408,
+              "start_ms": 8623953,
+              "title": "Chapitre 16"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/8171pc-LIaL.jpg",
           "id": "thomas-dormoy-2026",
           "language": "fr",
@@ -2261,10 +2353,15 @@
           ],
           "publisher": "Lizzie",
           "release_date": "2026-10-08",
-          "runtime_min": 600,
+          "runtime_min": 151,
           "sources": [
             {
               "imported_at": "2026-09-22",
+              "ref": "B0H72F72CL",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0H72F72CL",
               "type": "libex-import"
             }

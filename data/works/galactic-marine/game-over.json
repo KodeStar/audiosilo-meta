@@ -3881,8 +3881,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 1879097,
+              "length_ms": 23659,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1855438,
+              "start_ms": 23659,
               "title": "Chapter 1"
             },
             {
@@ -4036,12 +4041,17 @@
               "title": "Chapter 31"
             },
             {
-              "length_ms": 1947108,
+              "length_ms": 1894490,
               "start_ms": 44895603,
               "title": "Chapter 32"
+            },
+            {
+              "length_ms": 52618,
+              "start_ms": 46790093,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71Vqm8wVlZL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91X9ylHGMDL.jpg",
           "id": "tim-lounibos-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -4050,7 +4060,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-25",
-          "runtime_min": 810,
+          "runtime_min": 780,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -4060,6 +4070,11 @@
             {
               "imported_at": "2026-10-06",
               "ref": "B0GXGTHXDB",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GXGRD6X4",
               "type": "libex-import"
             }
           ],
@@ -4233,7 +4248,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-10-13",
-          "runtime_min": 480,
+          "runtime_min": 487,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -4248,6 +4263,11 @@
             {
               "imported_at": "2026-10-10",
               "ref": "B0GZ4FVRLQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GZ4VZFRD",
               "type": "libex-import"
             }
           ],

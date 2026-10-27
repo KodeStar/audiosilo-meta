@@ -6611,8 +6611,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 3280050,
+              "length_ms": 21581,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 3258469,
+              "start_ms": 21581,
               "title": "Chapter 1"
             },
             {
@@ -6686,9 +6691,14 @@
               "title": "Chapter 15"
             },
             {
-              "length_ms": 2000839,
+              "length_ms": 1942120,
               "start_ms": 32281742,
               "title": "Chapter 16"
+            },
+            {
+              "length_ms": 58719,
+              "start_ms": 34223862,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81aPP+qe4cL.jpg",
@@ -6710,6 +6720,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0G5H6RPCG",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0G5JFMY1M",
               "type": "libex-import"
             }
           ],
