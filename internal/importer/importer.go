@@ -1474,7 +1474,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		return
 	}
 	ident := p.rowIdentityOf(b, workTitle)
-	if (route.walk == nil || route.guard) &&
+	if route.walk == nil &&
 		p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
 		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonIdentityDuplicate)
 		p.noteLostSeriesClaims(b, -1, nil)
@@ -1505,9 +1505,6 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
 	}
 	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
-	if b.lv != nil {
-		p.indexLibrivoxWork(ws)
-	}
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
 	// recording's serial guard and the series placement read a stated volume
@@ -2352,6 +2349,7 @@ func (p *planner) mergeOrCreate(walk workWalk, authors workAuthors, lang string,
 		ws.runRecGenres = map[string][]string{}
 	}
 	p.works[slug] = ws
+	p.indexLibrivoxWork(ws)
 	// added_at is stamped here and only here for a work: this is the branch that
 	// CREATES one. A merge onto an existing work, and every enrichment backfill,
 	// leave the field as they found it.

@@ -116,9 +116,9 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	}
 	fmt.Printf("librivox: %d projects selected by --ids %s; %d LibriVox ids recorded on people\n",
 		sum.LibrivoxProjects, strings.TrimSpace(*idsFlag), sum.LibrivoxIDsStamped)
-	if sum.LibrivoxVariantsAttached+sum.LibrivoxFallbackSlugs > 0 {
-		fmt.Printf("librivox: %d attached to a work whose title differs only by an article or punctuation; %d new works at librivox-<id> (title slugs to nothing)\n",
-			sum.LibrivoxVariantsAttached, sum.LibrivoxFallbackSlugs)
+	// The spelling-variant attachments are a run note (printSummary prints it).
+	if n := sum.LibrivoxFallbackSlugs; n > 0 {
+		fmt.Printf("librivox: %d new %s at librivox-<id> (title slugs to nothing)\n", n, plural(n, "work", "works"))
 	}
 	printSummary(sum, *dryRun, importer.ModeCreate)
 	if !*dryRun {

@@ -39,7 +39,6 @@ import (
 	"slices"
 	"strconv"
 	"strings"
-	"unicode"
 
 	"golang.org/x/text/unicode/norm"
 
@@ -129,13 +128,7 @@ func librivoxTitleKey(title string) string {
 	if k := strings.ReplaceAll(model.SlugifyWhole(t), "-", ""); k != "" {
 		return k
 	}
-	var b strings.Builder
-	for _, r := range norm.NFD.String(t) {
-		if unicode.IsLetter(r) || unicode.IsDigit(r) {
-			b.WriteRune(unicode.ToLower(r))
-		}
-	}
-	return b.String()
+	return foldToLetters(norm.NFD.String(t))
 }
 
 // dropLibrivoxArticle removes one leading article: a librivoxArticles word
@@ -155,19 +148,18 @@ func dropLibrivoxArticle(t string) string {
 	return t
 }
 
-// LibrivoxWorkSlug is the work slug a project whose title slugs to nothing is
+// librivoxWorkSlug is the work slug a project whose title slugs to nothing is
 // created at.
-func LibrivoxWorkSlug(project int) string { return "librivox-" + strconv.Itoa(project) }
+func librivoxWorkSlug(project int) string { return "librivox-" + strconv.Itoa(project) }
 
 // librivoxRoute is where routeLibrivox sends a row: a decided walk, a skip, or
-// (the zero value) the ordinary path, which is every non-LibriVox row's.
+// (the zero value) the ordinary path - resolveWork and the duplicate-identity
+// guard, exactly as for every non-LibriVox row.
 type librivoxRoute struct {
-	// walk is the decided walk: a work to attach to (walk.ws), or a slug to
-	// create at (walk.free). nil = the ordinary path decides.
+	// walk is the decided walk, set only for the two decisions the ordinary
+	// path cannot make: a spelling variant to attach to (walk.ws), or a
+	// `librivox-<id>` slug to create at (walk.free). nil = the ordinary path.
 	walk *workWalk
-	// guard says the duplicate-identity guard still applies to the walk: the
-	// ordinary walk found nothing and neither did the spelling-variant rule.
-	guard bool
 	// skip says the row is on the worklist and must be dropped.
 	skip bool
 }
@@ -181,17 +173,13 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	}
 	authors := p.rowWorkAuthorsRO(credits)
 	unslugged := slugOfTitle(workTitle).fellBack
-	var walk workWalk
-	if !unslugged {
-		walk = p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim)
-		if walk.ws != nil {
-			return librivoxRoute{walk: &walk}
-		}
+	if !unslugged && p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws != nil {
+		return librivoxRoute{}
 	}
 
 	matched, partial := p.librivoxCandidates(workTitle, lang, authors)
 	switch {
-	case len(matched) == 1 && !authors.set()[model.UnslugPersonID]:
+	case len(matched) == 1 && !slices.Contains(authors.identity, model.UnslugPersonID):
 		p.summary.LibrivoxVariantsAttached++
 		if len(p.lv.variantExamples) < maxWarnExamples {
 			p.lv.variantExamples = append(p.lv.variantExamples,
@@ -207,9 +195,9 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	}
 
 	if !unslugged {
-		return librivoxRoute{walk: &walk, guard: true}
+		return librivoxRoute{}
 	}
-	slug := LibrivoxWorkSlug(b.lv.id)
+	slug := librivoxWorkSlug(b.lv.id)
 	if ws, via := p.workAt(slug); ws != nil || via != "" {
 		var held []LibrivoxCandidate
 		if ws != nil {
@@ -232,8 +220,12 @@ func (p *planner) librivoxCandidates(workTitle, lang string, authors workAuthors
 	if key == "" {
 		return nil, nil
 	}
+	slugs := p.librivoxTitleIndex()[key]
+	if len(slugs) == 0 {
+		return nil, nil
+	}
 	rowAll := authors.allSet()
-	for _, slug := range p.librivoxTitleIndex()[key] {
+	for _, slug := range slugs {
 		ws := p.works[slug]
 		if ws == nil || !langCompatible(ws.lang, lang) {
 			continue
@@ -254,21 +246,29 @@ func (p *planner) librivoxCandidates(workTitle, lang string, authors workAuthors
 
 // librivoxTitleIndex is the run's spelling-variant index, key -> work slugs in
 // slug order: every work the planner holds, built on first use (a LibriVox run
-// only), and kept current as the run creates works (indexLibrivoxWork).
+// only), and kept current as the run creates works (indexLibrivoxWork, called
+// where a work is created).
 func (p *planner) librivoxTitleIndex() map[string][]string {
 	if p.lv.titles == nil {
-		p.lv.titles = map[string][]string{}
+		titles := map[string][]string{}
 		for _, ws := range p.works {
-			p.indexLibrivoxWork(ws)
+			if key := librivoxTitleKey(ws.title); key != "" {
+				titles[key] = append(titles[key], ws.slug)
+			}
 		}
+		for _, slugs := range titles {
+			slices.Sort(slugs)
+		}
+		p.lv.titles = titles
 	}
 	return p.lv.titles
 }
 
-// indexLibrivoxWork adds a work to the spelling-variant index once it exists. A
-// no-op before the index is built (the build reads every work then).
+// indexLibrivoxWork adds a work the run created to the spelling-variant index.
+// A no-op before the index is built (the build reads every work then), so a run
+// with no LibriVox row never pays for it.
 func (p *planner) indexLibrivoxWork(ws *workState) {
-	if p.lv.titles == nil || ws == nil {
+	if p.lv.titles == nil {
 		return
 	}
 	key := librivoxTitleKey(ws.title)
@@ -291,8 +291,7 @@ func candidatesOf(works []*workState) []LibrivoxCandidate {
 	return out
 }
 
-// noteLibrivoxWorklist puts a skipped LibriVox row on the run's worklist and
-// counts it as skipped.
+// noteLibrivoxWorklist puts a skipped LibriVox row on the run's worklist.
 func (p *planner) noteLibrivoxWorklist(b sourceBook, title, reason string, candidates []LibrivoxCandidate) {
 	p.summary.LibrivoxWorklist = append(p.summary.LibrivoxWorklist, LibrivoxWorklistEntry{
 		Project:    b.lv.id,

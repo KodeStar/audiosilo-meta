@@ -93,7 +93,7 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 	sum := importer.Summary{LibrivoxWorklist: []importer.LibrivoxWorklistEntry{{
 		Project: 527, Title: "The Metamorphosis", Authors: []string{"Franz Kafka"}, Reason: importer.LibrivoxSeveralWorks,
 		Candidates: []importer.LibrivoxCandidate{{Work: "metamorphosis", Title: "Metamorphosis"}, {Work: "metamorphosis-2", Title: "Metamorphosis"}},
-	}}, LibrivoxVariantsAttached: 2}
+	}}, LibrivoxFallbackSlugs: 2}
 	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
 	out := captureStdout(t, func() {
 		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run"}, run); code != 0 {
@@ -101,7 +101,7 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		}
 	})
 	for _, want := range []string{
-		"librivox: 2 attached to a work whose title differs only by an article or punctuation; 0 new works at librivox-<id>",
+		"librivox: 2 new works at librivox-<id> (title slugs to nothing)",
 		"librivox worklist: 1 project skipped for a person to resolve",
 		`  527 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"`,
 	} {
