@@ -390,8 +390,9 @@ title marker is stripped first):
 3. otherwise, when the title with its trailing parenthetical or bracketed
    qualifiers removed is a work's title under rule 2 ("Frankenstein (1818)",
    "Black Beauty (The Autobiography of a Horse)" by the same author), the
-   project goes to the worklist as `differently-spelled-title`, never attached:
-   the qualifier can as well be a volume ("King in Yellow (part 1)");
+   project goes to the worklist as `differently-spelled-title` (`several-works`
+   when more than one work matches), never attached: the qualifier can as well
+   be a volume ("King in Yellow (part 1)");
 4. otherwise a new work. A work by a different author under the same title is a
    different book, so it gets a work of its own.
 

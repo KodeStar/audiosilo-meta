@@ -622,12 +622,12 @@ func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 // stampLibrivoxPeople writes each landed row's LibriVox ids onto the people its
 // credits resolved to: a reader's onto one of the recording's narrators, an
 // author's or translator's onto one of the work's credited people (its authors,
-// or a role credit this run added to a work it created - a second translation's
-// translator). A credit that resolves to nobody the row's records name (a
-// translator of a work the row only attached to, which records no new credits)
-// is left unstamped. A person that already carries a DIFFERENT id in that
-// namespace keeps it - two LibriVox ids whose names are one person here - and the
-// run warns naming both.
+// a catalogued work's stored credits, or a role credit this run added to a work
+// it created - a second translation's translator). A credit that resolves to
+// nobody the row's records name (a translator of a work the row only attached
+// to, which records no new credits) is left unstamped. A person that already
+// carries a DIFFERENT id in that namespace keeps it - two LibriVox ids whose
+// names are one person here - and the run warns naming both.
 func (p *planner) stampLibrivoxPeople() {
 	for _, l := range p.lv.landed {
 		for _, c := range l.facts.credits {
@@ -693,13 +693,15 @@ func (c LibrivoxUnrecordedCredit) String() string {
 // (a work the walk found) - but only those the run will credit there: a person
 // ws already names (in its authors or its stored credits), or a role-credited
 // person (a translator) when ws is a work THIS run created, onto which
-// mergeCreatedWorkFacts adds the row's role credits. Anyone else would be a record credited nowhere: a create run never
-// edits a catalogued work's credit list, and the row's recording credits only
-// its readers. Each such credit is returned for the run's report (and its
-// person, when it would be new, is not created). Identity authors always
-// qualify (matchWork admits only a work whose credit list holds them); the
-// per-person test covers every attach route alike - the ordinary walk, a
-// spelling variant and a work created earlier in the run.
+// mergeCreatedWorkFacts adds the row's role credits. Anyone else would be a
+// record credited nowhere: a create run never edits a catalogued work's credit
+// list, and the row's recording credits only its readers. Each such credit is
+// returned for the run's report (and its person, when it would be new, is not
+// created; PersonExists is settled once the run has planned every row,
+// settleLibrivoxUnrecorded). Identity authors always qualify (matchWork admits
+// only a work whose credit list holds them); the per-person test covers every
+// attach route alike - the ordinary walk, a spelling variant and a work created
+// earlier in the run.
 func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []credit, warn func(string, ...any)) []LibrivoxUnrecordedCredit {
 	_, runCreated := p.runCredits[ws.slug]
 	var out []LibrivoxUnrecordedCredit
@@ -710,27 +712,43 @@ func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []cred
 			continue
 		}
 		out = append(out, LibrivoxUnrecordedCredit{
-			Project:      b.lv.id,
-			AuthorID:     p.librivoxAuthorIDOf(b, r.slug),
-			Name:         c.name,
-			Roles:        slices.Clone(c.roles),
-			Work:         ws.slug,
-			PersonExists: !r.create,
+			Project:  b.lv.id,
+			AuthorID: p.librivoxAuthorIDOf(b, c.name, r),
+			Name:     c.name,
+			Roles:    slices.Clone(c.roles),
+			Work:     ws.slug,
 		})
 	}
 	return out
 }
 
+// settleLibrivoxUnrecorded sets each unrecorded credit's PersonExists from the
+// planner as the run left it: the row's own reader, or a later row's new work,
+// can create the person after the credit was withheld. A name that slugs away
+// to nothing never has a record of its own (the catch-all is not it).
+func (p *planner) settleLibrivoxUnrecorded() {
+	for i := range p.summary.LibrivoxUnrecordedCredits {
+		c := &p.summary.LibrivoxUnrecordedCredits[i]
+		r := p.resolvePerson(c.Name)
+		c.PersonExists = !r.create && !r.fellBack
+	}
+}
+
 // librivoxAuthorIDOf is the librivox_author_id of the row's author or
-// translator credit resolving to slug (through librivoxCreditNames, the
-// cleaning librivoxCreditSlug uses), or 0.
-func (p *planner) librivoxAuthorIDOf(b sourceBook, slug string) int {
+// translator credit named name (r its resolution), or 0: the credit whose name
+// cleans to it (librivoxCreditNames, the cleaning librivoxCreditSlug uses) or
+// resolves to the same person. A name that slugs away to nothing matches by
+// name alone - every such name resolves to the one catch-all record.
+func (p *planner) librivoxAuthorIDOf(b sourceBook, name string, r personResolution) int {
 	for _, c := range b.lv.credits {
 		if c.kind != librivoxAuthor {
 			continue
 		}
 		names := p.librivoxCreditNames(c)
-		if len(names) == 1 && p.resolvePerson(names[0]).slug == slug {
+		if len(names) != 1 {
+			continue
+		}
+		if names[0] == name || (!r.fellBack && p.resolvePerson(names[0]).slug == r.slug) {
 			return c.id
 		}
 	}
@@ -738,8 +756,9 @@ func (p *planner) librivoxAuthorIDOf(b sourceBook, slug string) int {
 }
 
 // workCreditsPerson reports whether work names person: in its authors, in a
-// catalogued work's stored credits, or in a role credit this run recorded on it (mergeCreatedWorkFacts adds a later row's
-// credits to a work the run created without touching its authors).
+// catalogued work's stored credits, or in a role credit this run recorded on it
+// (mergeCreatedWorkFacts adds a later row's credits to a work the run created
+// without touching its authors).
 func (p *planner) workCreditsPerson(work, person string) bool {
 	if ws := p.works[work]; ws != nil && ws.names(person) {
 		return true

@@ -93,7 +93,9 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 	sum := importer.Summary{LibrivoxWorklist: []importer.LibrivoxWorklistEntry{{
 		Project: 527, Title: "The Metamorphosis", Authors: []string{"Franz Kafka"}, Reason: importer.LibrivoxSeveralWorks,
 		Candidates: []importer.LibrivoxCandidate{{Work: "metamorphosis", Title: "Metamorphosis"}, {Work: "metamorphosis-2", Title: "Metamorphosis"}},
-	}}, LibrivoxFallbackSlugs: 2}
+	}}, LibrivoxFallbackSlugs: 2, LibrivoxUnrecordedCredits: []importer.LibrivoxUnrecordedCredit{{
+		Project: 2027, AuthorID: 9876, Name: "Amy Coulter", Roles: []string{"translator"}, Work: "siddhartha",
+	}}}
 	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
 	out := captureStdout(t, func() {
 		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run"}, run); code != 0 {
@@ -104,6 +106,8 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		"librivox: 2 new works at librivox-<id> (non-Latin or unsluggable title)",
 		"librivox worklist: 1 project skipped for a person to resolve",
 		`  527 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"`,
+		"librivox credits not recorded: 1 (",
+		`  2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created`,
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("no %q in:\n%s", want, out)

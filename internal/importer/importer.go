@@ -886,6 +886,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
 	p.reportLibrivoxVariants()
+	p.settleLibrivoxUnrecorded()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
@@ -2612,6 +2613,9 @@ func (p *planner) walkWorkChain(title string, chain workChain, authors workAutho
 // reuse the guard's walk: it resolves again with the author set the create path
 // actually minted, so an in-row difference between the read-only and the created
 // resolution can never make the create path act on an answer it did not reach.
+// The one exception is a LibriVox row, which walks on the read-only set and mints
+// only afterwards (an attach creates only the people its work credits): that
+// rests on resolvePerson's own guarantee that the two resolutions name one slug.
 //
 // The row's resolved title is walked first; that is where the overwhelming
 // majority of works are. When it holds no match, the FULL title's chain is walked

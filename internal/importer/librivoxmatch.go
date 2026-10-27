@@ -372,9 +372,7 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 	}
 	var authors *workAuthors
 	for t := workTitle; ; {
-		// trailingParenRE is the package's one trailing-qualifier locator
-		// ("(1818)", "(The Autobiography of a Horse)", "[Forsyte Saga Vol. 1]").
-		stripped := strings.TrimSpace(trailingParenRE.ReplaceAllString(t, ""))
+		stripped := stripTrailingQualifier(t)
 		if stripped == t || stripped == "" {
 			return false
 		}
@@ -404,6 +402,13 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 			return true
 		}
 	}
+}
+
+// stripTrailingQualifier is t without its last trailing parenthetical or
+// bracketed qualifier ("(1818)", "(The Autobiography of a Horse)", "[Forsyte
+// Saga Vol. 1]"), trimmed: trailingParenRE is the package's one locator.
+func stripTrailingQualifier(t string) string {
+	return strings.TrimSpace(trailingParenRE.ReplaceAllString(t, ""))
 }
 
 // librivoxFallback is a row rules 1-3 left undecided: the ordinary path, or for

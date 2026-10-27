@@ -3,7 +3,6 @@ package importer
 import (
 	"reflect"
 	"slices"
-	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -243,7 +242,7 @@ func TestLibrivoxQualifierStrip(t *testing.T) {
 		"Anna Karenina, Book 1":                         "Anna Karenina, Book 1",
 		"(1818)":                                        "",
 	} {
-		if got := strings.TrimSpace(trailingParenRE.ReplaceAllString(in, "")); got != want {
+		if got := stripTrailingQualifier(in); got != want {
 			t.Errorf("%q -> %q, want %q", in, got, want)
 		}
 	}
@@ -270,5 +269,41 @@ func TestLibrivoxAttachToAWorkCreditingTheTranslator(t *testing.T) {
 	readEntity(t, dataDir, personAddr("ian-johnston"), &p)
 	if p.AuthorID != 1019 {
 		t.Errorf("ian-johnston = %+v; want librivox_author_id 1019", p)
+	}
+}
+
+func TestLibrivoxUnrecordedUnsluggableTranslatorsKeepTheirOwnIDs(t *testing.T) {
+	// Two translators whose names slug away to nothing both resolve to the one
+	// catch-all record: each is reported with its own LibriVox id, matched by
+	// name, and neither is said to exist.
+	dataDir := t.TempDir()
+	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
+	pr := fixtureProject(t, 527)
+	pr.Translators = []LibrivoxPerson{{ID: 5001, FirstName: "Иван", LastName: "Петров"}, {ID: 5002, FirstName: "Пётр", LastName: "Иванов"}}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	want := []LibrivoxUnrecordedCredit{
+		{Project: 527, AuthorID: 5001, Name: "Иван Петров", Roles: []string{model.RoleTranslator}, Work: "metamorphosis"},
+		{Project: 527, AuthorID: 5002, Name: "Пётр Иванов", Roles: []string{model.RoleTranslator}, Work: "metamorphosis"},
+	}
+	if !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	}
+}
+
+func TestLibrivoxUnrecordedTranslatorWhoReadsExists(t *testing.T) {
+	// The translator also reads the project: the reader credit creates the
+	// record, so the withheld translator credit names a person that exists.
+	dataDir := t.TempDir()
+	seedKafka(t, dataDir, "franz-kafka", "Franz Kafka")
+	pr := fixtureProject(t, 527)
+	for i := range pr.Sections {
+		pr.Sections[i].Readers = []LibrivoxReader{{ReaderID: 77, DisplayName: "Ian Johnston"}}
+	}
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if !entryExists(t, dataDir, personAddr("ian-johnston")) {
+		t.Fatal("the reader was not created")
+	}
+	if want := []LibrivoxUnrecordedCredit{ianJohnston("metamorphosis", true)}; !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
 	}
 }
