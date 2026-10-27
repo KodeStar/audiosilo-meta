@@ -225,15 +225,26 @@ func isASCIIDigit(c byte) bool { return c >= '0' && c <= '9' }
 // letters, digits and marks, lower-cased, with only the generic combining
 // diacritics (model.IsCombiningMark: a Greek accent, a Cyrillic breve) folded
 // away. A script's OWN marks stay - a Devanagari vowel sign, the kana voicing
-// mark - since dropping them spells another word ("कमला" is not "कमल").
+// mark - since dropping them spells another word ("कमला" is not "कमल"). As in
+// joinSlugWords, one separator is kept between two numbers, so "Том 1, 2" and
+// "Том 12" stay apart.
 func librivoxScriptKey(t string) string {
 	var b strings.Builder
+	afterDigit, gap := false, false
 	for _, r := range norm.NFD.String(strings.ToLower(t)) {
-		if model.IsCombiningMark(r) {
-			continue
-		}
-		if unicode.IsLetter(r) || unicode.IsDigit(r) || unicode.IsMark(r) {
+		switch {
+		case model.IsCombiningMark(r):
+		case unicode.IsDigit(r):
+			if afterDigit && gap {
+				b.WriteByte('-')
+			}
 			b.WriteRune(r)
+			afterDigit, gap = true, false
+		case unicode.IsLetter(r) || unicode.IsMark(r):
+			b.WriteRune(r)
+			afterDigit, gap = false, false
+		default:
+			gap = true
 		}
 	}
 	return b.String()

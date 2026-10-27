@@ -302,6 +302,7 @@ func TestLibrivoxTitleKey(t *testing.T) {
 		{"Une Vie", "Vie"}, // only the listed articles
 		{"Война и мир", "Анна Каренина"},
 		{"Poems Vol. 1, 2", "Poems Vol. 12"}, // two numbers are not one
+		{"Том 1, 2", "Том 12"},               // in a non-Latin title too
 		{"कमल", "कमला"},                      // a vowel sign spells another word
 		{"こころ", "ごころ"},                       // and so does the kana voicing mark
 	}
@@ -435,7 +436,7 @@ func TestLibrivoxNonLatinTitle(t *testing.T) {
 		"Война и мир":                   true,
 		"論語":                            true,
 		"Сборник стихов 001":            true,
-		"The Война и мир":               true,  // 3 Latin letters of 12
+		"The Война и мир":               true,  // judged once the article is dropped
 		"Anna Karenina (Анна Каренина)": false, // exactly half: not MORE than half
 		"Metamorphosis":                 false,
 		"Les Misérables":                false, // accented Latin is Latin
