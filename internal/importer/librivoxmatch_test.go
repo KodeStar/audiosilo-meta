@@ -341,13 +341,12 @@ func byAuthor(t *testing.T, id int, title, lang string, author LibrivoxPerson, t
 }
 
 func TestLibrivoxOrdinaryWalkNeverAttachesOnTheCatchAllPerson(t *testing.T) {
-	// Two "Childhood"s by two Cyrillic-named authors both credit the catch-all
-	// person: the second is not a recording of the first (author-unmatched).
-	// Neither is a third by the first author again: sharing her translator is
-	// not sharing a real author, so it is refused as well. Nor are a
-	// Cyrillic-named Chekhov and Dostoevsky under one title, both translated by
-	// Garnett. A row whose authors share a real (Latin-named) author with the
-	// work, beside the catch-all one, attaches.
+	// Agreement on the catch-all person alone is author-unmatched:
+	//   - Gorky's "Childhood" is not a recording of Tolstoy's;
+	//   - nor is Tolstoy's again: a shared translator is not a shared author;
+	//   - nor Dostoevsky's "The Stories" of Chekhov's, both by Garnett.
+	// Two "Letters" that share a real (Latin-named) author beside the
+	// catch-all one attach.
 	tolstoy := LibrivoxPerson{ID: 6100, FirstName: "Лев", LastName: "Толстой"}
 	gorky := LibrivoxPerson{ID: 6101, FirstName: "Максим", LastName: "Горький"}
 	wiener := LibrivoxPerson{ID: 6102, FirstName: "Leo", LastName: "Wiener"}

@@ -295,11 +295,10 @@ type librivoxRoute struct {
 // credits are resolved and its chain walked only when the key holds a work - the
 // duplicate-identity guard's own gate, for the same reason.
 //
-// A rule-1 hit whose author agreement rests on the catch-all person (no real
-// author the row and the work share besides model.UnslugPersonID; a shared
-// translator does not count) decides nothing
-// either: two "Childhood"s by two Cyrillic-named authors both credit that one
-// record, so the hit is an author-unmatched worklist row, never an attach. Such
+// A rule-1 hit whose author agreement rests on the catch-all person
+// (restsOnCatchAll) decides nothing either: two "Childhood"s by two
+// Cyrillic-named authors both credit that one record, so the hit is an
+// author-unmatched worklist row, never an attach. Such
 // a row is the one case probed even when the index holds nothing, since a chain
 // hit need not share the key (a full or qualified title's walk).
 func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) librivoxRoute {
