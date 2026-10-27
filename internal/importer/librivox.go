@@ -15,7 +15,9 @@ package importer
 //     identity author set, language), so a project attaches to an existing work
 //     only when those agree and otherwise creates one. LibriVox's own repeat
 //     marker, a trailing "(version 2)", is stripped first: it numbers LibriVox
-//     projects of one text, not works.
+//     projects of one text, not works. A title that slugs to nothing (a script
+//     Slugify folds away) is refused (refuseUnsluggedLibrivox), never filed
+//     under the shared "untitled" fallback.
 //   - Its PEOPLE are keyed by LibriVox id. Before any census reads a name, a
 //     reader or author id the catalogue already holds is spelled the way that
 //     person is catalogued (keyLibrivoxCredits), so a reader renamed on
@@ -31,6 +33,7 @@ package importer
 import (
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -354,14 +357,20 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 // the row's author list (mapping.go's role vocabulary reads it).
 const librivoxTranslatorSuffix = " (Translator)"
 
-// httpsOrEmpty is the URL as stated when it is an https URL, else "": every URL
-// field the schema gives a LibriVox recording is https only.
+// httpsOrEmpty is the URL as stated when it is an https URL the schema accepts,
+// else "": every URL field the schema gives a LibriVox recording is https only
+// and format-checked as a URI (`$defs/https_url`), so a value url.Parse refuses
+// (a stray "%" escape, a control character) is dropped here rather than written
+// and then failing the post-import validation of the whole tranche.
 func httpsOrEmpty(u string) string {
 	u = strings.TrimSpace(u)
-	if strings.HasPrefix(u, "https://") {
-		return u
+	if !strings.HasPrefix(u, "https://") {
+		return ""
 	}
-	return ""
+	if parsed, err := url.Parse(u); err != nil || !parsed.IsAbs() || parsed.Host == "" {
+		return ""
+	}
+	return u
 }
 
 // archiveIDRE is the schema's archive_id pattern.
@@ -468,6 +477,23 @@ func (p *planner) dedupeByLibrivox(b sourceBook) bool {
 	return true
 }
 
+// refuseUnsluggedLibrivox refuses a LibriVox row whose work title slugs to
+// nothing (a script Slugify folds entirely: Cyrillic, Greek, CJK...). The shared
+// planner files such a title under the "untitled" fallback, so every one of them
+// by the same unsluggable author - who falls back to the catch-all person - would
+// land as a recording of ONE work: War and Peace and Anna Karenina as one book.
+// The mirror takes every language, which makes that the common case rather than
+// the edge, so the row is a reported skip instead (never a guess, like an unknown
+// language); a slug rule that reads its script is a re-import of its id range.
+// false for any other row, and for a row with no title (addBook's own refusal).
+func (p *planner) refuseUnsluggedLibrivox(b sourceBook, workTitle string, warn func(string, ...any)) bool {
+	if b.lv == nil || workTitle == "" || !slugOfTitle(workTitle).fellBack {
+		return false
+	}
+	warn("title %q has no slug (its script is not one the slug rule reads); skipped rather than filed under \"untitled\" beside every other such title", workTitle)
+	return true
+}
+
 // keyLibrivoxCredits spells every LibriVox credit whose id is already known the
 // way it is known, BEFORE the censuses and the planner read a name: a catalogued
 // id takes its person's catalogued name, and an id this batch states twice takes
@@ -530,11 +556,13 @@ func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 
 // stampLibrivoxPeople writes each landed row's LibriVox ids onto the people its
 // credits resolved to: a reader's onto one of the recording's narrators, an
-// author's or translator's onto one of the work's credited people. A credit that
-// resolves to nobody the row's records name (a translator of a work the row only
-// attached to, which records no new credits) is left unstamped. A person that
-// already carries a DIFFERENT id in that namespace keeps it - two LibriVox ids
-// whose names are one person here - and the run warns naming both.
+// author's or translator's onto one of the work's credited people (its authors,
+// or a role credit this run added to a work it created - a second translation's
+// translator). A credit that resolves to nobody the row's records name (a
+// translator of a work the row only attached to, which records no new credits)
+// is left unstamped. A person that already carries a DIFFERENT id in that
+// namespace keeps it - two LibriVox ids whose names are one person here - and the
+// run warns naming both.
 func (p *planner) stampLibrivoxPeople() {
 	for _, l := range p.lv.landed {
 		for _, c := range l.facts.credits {
@@ -548,10 +576,8 @@ func (p *planner) stampLibrivoxPeople() {
 			if c.kind == librivoxReader && !l.narrators[slug] {
 				continue
 			}
-			if c.kind == librivoxAuthor {
-				if ws := p.works[l.work]; ws == nil || !ws.all[slug] {
-					continue
-				}
+			if c.kind == librivoxAuthor && !p.workCreditsPerson(l.work, slug) {
+				continue
 			}
 			p.stampLibrivoxID(slug, c, l.facts.id)
 			if p.fatal != nil {
@@ -561,9 +587,27 @@ func (p *planner) stampLibrivoxPeople() {
 	}
 }
 
+// workCreditsPerson reports whether work names person: in its authors, or in a
+// role credit this run recorded on it (mergeCreatedWorkFacts adds a later row's
+// credits to a work the run created without touching its authors).
+func (p *planner) workCreditsPerson(work, person string) bool {
+	if ws := p.works[work]; ws != nil && ws.all[person] {
+		return true
+	}
+	for c := range p.runCredits[work] {
+		if c.Person == person {
+			return true
+		}
+	}
+	return false
+}
+
 // librivoxCreditSlug is the person a credit's name resolves to, through the same
 // cleaning and resolution the planner used for the row, or ok=false when it
-// cleans to nothing or to more than one name, or resolves to no live record.
+// cleans to nothing or to more than one name, resolves to no live record, or
+// slugs away to nothing: such a name lands on the shared catch-all person
+// (model.UnslugPersonID), and one LibriVox id stamped there would claim that every
+// unsluggable credit is that one reader or author.
 func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 	var names []string
 	if c.kind == librivoxReader {
@@ -574,16 +618,22 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 	if len(names) != 1 {
 		return "", false
 	}
-	return p.livePerson(p.resolvePerson(names[0]).slug)
+	r := p.resolvePerson(names[0])
+	if r.fellBack {
+		return "", false
+	}
+	return p.livePerson(r.slug)
 }
 
 // stampLibrivoxID records one id on one person, appending the row's provenance
-// when it does so. An id the record already carries is a no-op.
+// when it does so. An id the record already carries is a no-op. Its warnings are
+// about one row, so they join the per-row tier (labelled as bookLabel labels a
+// LibriVox row), not the run-level lines Summary.RowWarnings leaves out.
 func (p *planner) stampLibrivoxID(slug string, c librivoxCredit, project int) {
 	k := librivoxKey{c.kind, c.id}
 	if owner, ok := p.lv.people[k]; ok {
 		if owner != slug {
-			p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+			p.rowWarnings = append(p.rowWarnings, fmt.Sprintf(
 				"librivox %d: %s %d (%q) is already on person %q, not on %q; not recorded twice",
 				project, c.kind.field(), c.id, c.name, owner, slug))
 		}
@@ -594,7 +644,7 @@ func (p *planner) stampLibrivoxID(slug string, c librivoxCredit, project int) {
 		return
 	}
 	if have, ok := raw[c.kind.field()]; ok {
-		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+		p.rowWarnings = append(p.rowWarnings, fmt.Sprintf(
 			"librivox %d: person %q already carries %s %v; %s %d (%q) not recorded",
 			project, slug, c.kind.field(), have, c.kind.field(), c.id, c.name))
 		return

@@ -181,13 +181,16 @@ func (f *LibrivoxFetcher) Fetch(ctx context.Context, dir string, maxPages int) (
 		if err := writeManifest(dir, m); err != nil {
 			return res, err
 		}
+		// Kept in step with the manifest just committed, so a run that stops on a
+		// later page (an interrupt, a give-up) still reports where the snapshot
+		// stands rather than where this call started.
+		res.NextOffset, res.Complete, res.TotalProjects = m.NextOffset, m.Complete, m.Projects
 		done := ""
 		if m.Complete {
 			done = "; catalogue complete"
 		}
 		f.logf("librivox fetch: offset %d: %d projects (%d in snapshot)%s", m.NextOffset-n, n, m.Projects, done)
 	}
-	res.NextOffset, res.Complete, res.TotalProjects = m.NextOffset, m.Complete, m.Projects
 	return res, nil
 }
 

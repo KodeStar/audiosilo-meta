@@ -1386,8 +1386,9 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// so the skip is where the trust-tier attestation happens (attest.go); for a
 	// libex run attestExisting is a no-op and the skip is exactly what it was.
 	// A LibriVox row has no ASIN: it dedups on its project id instead, and
-	// never on its title (librivox.go).
-	if p.dedupeByLibrivox(b) {
+	// never on its title (librivox.go). One whose title slugs to nothing is
+	// refused rather than filed under the shared "untitled" fallback.
+	if p.dedupeByLibrivox(b) || p.refuseUnsluggedLibrivox(b, workTitle, warn) {
 		return
 	}
 	if p.dedupeByASIN(asin) {

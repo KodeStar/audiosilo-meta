@@ -240,6 +240,31 @@ func TestLibrivoxFetchBacksOff(t *testing.T) {
 	}
 }
 
+func TestLibrivoxFetchReportsProgressWhenItStops(t *testing.T) {
+	// The first page lands, the second fails for good: the result still says
+	// where the snapshot stands (what the CLI prints after an interrupt), not
+	// where the call started.
+	feed := newFakeFeed(t)
+	srv := httptest.NewServer(feed)
+	defer srv.Close()
+	f, _ := testFetcher(srv, 2)
+	f.MaxRetries = 0
+	spacing := f.Sleep
+	f.Sleep = func(ctx context.Context, d time.Duration) error {
+		feed.mu.Lock()
+		feed.failures = append(feed.failures, fakeFailure{status: 500})
+		feed.mu.Unlock()
+		return spacing(ctx, d)
+	}
+	res, err := f.Fetch(context.Background(), t.TempDir(), 0)
+	if err == nil {
+		t.Fatal("the failing page was not reported")
+	}
+	if res.PagesFetched != 1 || res.NextOffset != 2 || res.TotalProjects != 2 || res.Complete {
+		t.Errorf("result = %+v; want the one landed page reflected", res)
+	}
+}
+
 func TestLibrivoxFetchGivesUpResumably(t *testing.T) {
 	feed := newFakeFeed(t)
 	for range 10 {

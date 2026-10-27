@@ -342,9 +342,12 @@ marker is stripped first), or under a new work. Readers are the narrators,
 translators are `translator` credits, sections are chapters (`start_ms`
 cumulative from each playtime, the section's file as `audio_url`), the language
 name maps to a code (an unknown language is a reported skip, never a guess) and
-genres map onto the vocabulary where one fits. People are keyed by
-`librivox_reader_id` / `librivox_author_id`: a known id resolves to its
-catalogued person whatever the feed now calls them.
+genres map onto the vocabulary where one fits. A title in a script the slug
+rule cannot read (Cyrillic, Greek, CJK) is a reported skip too, rather than
+being filed under the shared "untitled" fallback with every other such title.
+People are keyed by `librivox_reader_id` / `librivox_author_id`: a known id
+resolves to its catalogued person whatever the feed now calls them (a name that
+slugs to nothing lands on the catch-all person, which is never given an id).
 
 ## Audiobookshelf
 
