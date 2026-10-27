@@ -146,7 +146,7 @@ func (p *planner) resolveExistingWork(b sourceBook) (ws *workState, titleHit boo
 	// nothing: admitRecordingFacts refuses the row later anyway, and this
 	// resolver must not start reporting language problems for the rows the mode
 	// deliberately says nothing about.
-	rowLang, _ := mapLanguage(b.str("language"))
+	rowLang, _ := b.language()
 	for _, title := range workTitleCandidates(b) {
 		ts := slugOfTitle(title)
 		// A RETIRED bare slug enters the chain too: the create path judges it as

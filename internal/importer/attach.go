@@ -57,7 +57,7 @@ func (p *planner) attachCandidate(b sourceBook, seriesName, occupant string, ref
 	if ws == nil || !ref.seqOK || !p.titleCouldName(b, ws) {
 		return nil
 	}
-	lang, ok := mapLanguage(b.str("language"))
+	lang, ok := b.language()
 	if !ok || lang == "" || ws.lang != lang || len(rowNarratorNamesIn(creditContext{}, b)) == 0 {
 		return nil
 	}
@@ -121,7 +121,7 @@ func (p *planner) attachFor(ctx creditContext, b sourceBook, workTitle string) (
 		return nil, occupant
 	}
 	authors := p.rowWorkAuthorsROIn(ctx, rowAuthorCreditsIn(ctx, b))
-	lang, _ := mapLanguage(b.str("language"))
+	lang, _ := b.language()
 	if len(authors.identity) == 0 {
 		return nil, occupant
 	}

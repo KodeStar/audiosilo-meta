@@ -1,0 +1,634 @@
+package importer
+
+// librivox.go is the LibriVox adapter: a snapshot of LibriVox's audiobooks feed
+// (librivoxfetch.go writes one) becomes sourceBooks for the shared runBooks
+// planner, under LICENSING.md's public-domain exception.
+//
+// What a LibriVox row is, against the planner's other sources:
+//
+//   - Its identity is the PROJECT ID (recording.librivox_id), never its title and
+//     never an ASIN (it has none). A row whose id the catalogue already holds is
+//     a skip (dedupeByLibrivox), and a row is always a recording of its own: two
+//     projects are two productions, so addRecording never merges one into a
+//     same-narrator sibling.
+//   - Its WORK is found by the planner's ordinary identity walk (title chain,
+//     identity author set, language), so a project attaches to an existing work
+//     only when those agree and otherwise creates one. LibriVox's own repeat
+//     marker, a trailing "(version 2)", is stripped first: it numbers LibriVox
+//     projects of one text, not works.
+//   - Its PEOPLE are keyed by LibriVox id. Before any census reads a name, a
+//     reader or author id the catalogue already holds is spelled the way that
+//     person is catalogued (keyLibrivoxCredits), so a reader renamed on
+//     LibriVox, or reread from a later snapshot, never mints a second record;
+//     after planning, the ids of the rows that landed are stamped onto the
+//     people they resolved to (stampLibrivoxPeople).
+//   - Sections are chapters: start_ms cumulative from each section's playtime,
+//     the section's archive.org file as the chapter's audio_url. One section
+//     without a playtime makes the timeline unknowable past it, so the whole
+//     chapter list is omitted (buildChapters' all-or-nothing rule).
+//   - Facts only (LICENSING.md): no description is read at all.
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+	"regexp"
+	"sort"
+	"strconv"
+	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
+)
+
+// LibrivoxPublisher is the publisher of record every LibriVox recording carries:
+// LibriVox produces and releases the recording, which is a fact about every
+// project in its catalogue.
+const LibrivoxPublisher = "LibriVox"
+
+// lvInt is an integer LibriVox states either as a JSON number or as a string of
+// digits (its feed does both: "id":"527" beside "totaltimesecs":9265). Anything
+// else reads as 0, which every caller treats as "not stated".
+type lvInt int
+
+func (n *lvInt) UnmarshalJSON(b []byte) error {
+	s := strings.Trim(strings.TrimSpace(string(b)), `"`)
+	if s == "" || s == "null" {
+		*n = 0
+		return nil
+	}
+	v, err := strconv.Atoi(strings.TrimSpace(s))
+	if err != nil {
+		*n = 0
+		return nil
+	}
+	*n = lvInt(v)
+	return nil
+}
+
+// LibrivoxPerson is an author or translator as LibriVox's feed states one.
+type LibrivoxPerson struct {
+	ID        lvInt  `json:"id"`
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+}
+
+// name is the person's display name: first and last joined, trimmed (the
+// pseudo-author "Various" has an empty first name).
+func (a LibrivoxPerson) name() string {
+	return strings.TrimSpace(strings.TrimSpace(a.FirstName) + " " + strings.TrimSpace(a.LastName))
+}
+
+// LibrivoxReader is one reader of a section.
+type LibrivoxReader struct {
+	ReaderID    lvInt  `json:"reader_id"`
+	DisplayName string `json:"display_name"`
+}
+
+// LibrivoxSection is one audio file of a project.
+type LibrivoxSection struct {
+	SectionNumber lvInt            `json:"section_number"`
+	Title         string           `json:"title"`
+	ListenURL     string           `json:"listen_url"`
+	Playtime      lvInt            `json:"playtime"`
+	Readers       []LibrivoxReader `json:"readers"`
+}
+
+// LibrivoxGenre is one genre LibriVox files a project under.
+type LibrivoxGenre struct {
+	Name string `json:"name"`
+}
+
+// LibrivoxProject is one entry of LibriVox's audiobooks feed (extended=1,
+// coverart=1), the fields this importer reads and nothing else: in particular
+// not `description`, which LICENSING.md keeps out.
+type LibrivoxProject struct {
+	ID            lvInt             `json:"id"`
+	Title         string            `json:"title"`
+	Language      string            `json:"language"`
+	URLRSS        string            `json:"url_rss"`
+	URLZipFile    string            `json:"url_zip_file"`
+	URLLibrivox   string            `json:"url_librivox"`
+	URLIArchive   string            `json:"url_iarchive"`
+	TotalTimeSecs lvInt             `json:"totaltimesecs"`
+	CoverArtJPG   string            `json:"coverart_jpg"`
+	Authors       []LibrivoxPerson  `json:"authors"`
+	Translators   []LibrivoxPerson  `json:"translators"`
+	Genres        []LibrivoxGenre   `json:"genres"`
+	Sections      []LibrivoxSection `json:"sections"`
+}
+
+// librivoxPage is one response body of the feed: {"books": [...]}.
+type librivoxPage struct {
+	Books []LibrivoxProject `json:"books"`
+}
+
+// parseLibrivoxPage decodes one response body. A body with no "books" key is an
+// error: the feed answers "no results" with {"error": ...} and a 404, which the
+// fetcher reads as the end of the catalogue and never stores as a page.
+func parseLibrivoxPage(body []byte) ([]LibrivoxProject, error) {
+	var probe map[string]json.RawMessage
+	if err := json.Unmarshal(body, &probe); err != nil {
+		return nil, fmt.Errorf("not a LibriVox feed page: %w", err)
+	}
+	if _, ok := probe["books"]; !ok {
+		return nil, fmt.Errorf("not a LibriVox feed page: no \"books\" key")
+	}
+	var page librivoxPage
+	if err := json.Unmarshal(body, &page); err != nil {
+		return nil, fmt.Errorf("not a LibriVox feed page: %w", err)
+	}
+	return page.Books, nil
+}
+
+// The snapshot layout (written by LibrivoxFetcher.Fetch, read here):
+//
+//	<snapshot>/manifest.json            the fetch's resume state (librivoxManifest)
+//	<snapshot>/pages/<name>.json        one feed response body each, verbatim
+//
+// The reader needs only pages/: every *.json file under it is a {"books": [...]}
+// body, read in name order. A project id seen twice keeps its LAST copy (a
+// later page is a later reading), which never happens in a fetch that ran to
+// completion but makes a hand-assembled snapshot unambiguous.
+const (
+	librivoxPagesDir     = "pages"
+	librivoxManifestFile = "manifest.json"
+)
+
+// ReadLibrivoxSnapshot reads every project a snapshot holds, sorted by id.
+func ReadLibrivoxSnapshot(dir string) ([]LibrivoxProject, error) {
+	pagesDir := filepath.Join(dir, librivoxPagesDir)
+	entries, err := os.ReadDir(pagesDir)
+	if err != nil {
+		return nil, fmt.Errorf("read LibriVox snapshot %s: %w", dir, err)
+	}
+	byID := map[int]LibrivoxProject{}
+	for _, e := range entries {
+		if e.IsDir() || !strings.HasSuffix(e.Name(), ".json") {
+			continue
+		}
+		path := filepath.Join(pagesDir, e.Name())
+		body, err := os.ReadFile(path)
+		if err != nil {
+			return nil, err
+		}
+		books, err := parseLibrivoxPage(body)
+		if err != nil {
+			return nil, fmt.Errorf("%s: %w", path, err)
+		}
+		for _, b := range books {
+			byID[int(b.ID)] = b
+		}
+	}
+	out := make([]LibrivoxProject, 0, len(byID))
+	for _, b := range byID {
+		out = append(out, b)
+	}
+	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
+	return out, nil
+}
+
+// LibrivoxIDs is a set of project-id ranges, the `--ids` selection an import
+// takes: "527", "1-2000", "5000-" (open-ended), or a comma-separated union.
+type LibrivoxIDs struct {
+	spans [][2]int // inclusive; hi 0 = open-ended
+}
+
+// ParseLibrivoxIDs parses an --ids value.
+func ParseLibrivoxIDs(s string) (LibrivoxIDs, error) {
+	var ids LibrivoxIDs
+	if strings.TrimSpace(s) == "" {
+		return ids, fmt.Errorf("--ids is empty; name a project id or range (527, 1-2000, 5000-)")
+	}
+	for _, part := range strings.Split(s, ",") {
+		part = strings.TrimSpace(part)
+		lo, hi, isRange := strings.Cut(part, "-")
+		l, err := strconv.Atoi(strings.TrimSpace(lo))
+		if err != nil || l < 1 {
+			return LibrivoxIDs{}, fmt.Errorf("--ids %q: %q is not a project id or range", s, part)
+		}
+		h := l
+		if isRange {
+			if strings.TrimSpace(hi) == "" {
+				h = 0
+			} else if h, err = strconv.Atoi(strings.TrimSpace(hi)); err != nil || h < l {
+				return LibrivoxIDs{}, fmt.Errorf("--ids %q: %q is not a project id or range", s, part)
+			}
+		}
+		ids.spans = append(ids.spans, [2]int{l, h})
+	}
+	return ids, nil
+}
+
+// Has reports whether id is selected.
+func (s LibrivoxIDs) Has(id int) bool {
+	for _, sp := range s.spans {
+		if id >= sp[0] && (sp[1] == 0 || id <= sp[1]) {
+			return true
+		}
+	}
+	return false
+}
+
+// RunLibrivox imports the projects of the snapshot at snapshotDir whose ids are
+// selected into opts.DataDir, through the shared planner. Only the create mode
+// exists for this source.
+func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, error) {
+	if opts.Mode != ModeCreate {
+		return Summary{}, fmt.Errorf("a LibriVox import creates only; it has no %s mode", opts.Mode.runName())
+	}
+	projects, err := ReadLibrivoxSnapshot(snapshotDir)
+	if err != nil {
+		return Summary{}, err
+	}
+	var books []sourceBook
+	var parseWarnings []string
+	for _, pr := range projects {
+		if !ids.Has(int(pr.ID)) {
+			continue
+		}
+		b, warning := librivoxBook(pr)
+		if warning != "" {
+			parseWarnings = append(parseWarnings, warning)
+			continue
+		}
+		books = append(books, b)
+	}
+	sum, err := runBooks(books, sourceLibrivox, opts, nil, func(p *planner) {
+		p.genres = librivoxGenreTable()
+		p.summary.Warnings = append(p.summary.Warnings, parseWarnings...)
+	})
+	sum.LibrivoxProjects = len(books) + len(parseWarnings)
+	return sum, err
+}
+
+// librivoxVersionRE is LibriVox's repeat-recording marker: a trailing
+// "(version 2)" numbering the second project of one text. It names a project,
+// not a work, so it never reaches the work identity.
+var librivoxVersionRE = regexp.MustCompile(`(?i)\s*\(\s*version\s+\d+\s*\)\s*$`)
+
+// librivoxTitle is a project's work title: LibriVox's own, its version marker
+// stripped.
+func librivoxTitle(t string) string {
+	return strings.TrimSpace(librivoxVersionRE.ReplaceAllString(strings.TrimSpace(t), ""))
+}
+
+// librivoxBook converts one project into the planner's sourceBook. A project the
+// planner could not address at all (no id) is refused here with a warning; every
+// other refusal - no reader, no author, an unknown language - is the planner's
+// own, so it is worded and counted like every other source's.
+func librivoxBook(pr LibrivoxProject) (sourceBook, string) {
+	id := int(pr.ID)
+	if id <= 0 {
+		return sourceBook{}, fmt.Sprintf("LibriVox project %q has no id; skipped", pr.Title)
+	}
+	facts := &librivoxFacts{id: id, archiveID: archiveIDOf(pr.URLIArchive)}
+	links := model.RecordingLinks{
+		Librivox: httpsOrEmpty(pr.URLLibrivox),
+		Zip:      httpsOrEmpty(pr.URLZipFile),
+		RSS:      httpsOrEmpty(pr.URLRSS),
+	}
+	if links != (model.RecordingLinks{}) {
+		facts.links = &links
+	}
+
+	raw := rawBook{
+		"title":     librivoxTitle(pr.Title),
+		"language":  strings.TrimSpace(pr.Language),
+		"publisher": LibrivoxPublisher,
+	}
+	if cover := httpsOrEmpty(pr.CoverArtJPG); cover != "" {
+		raw["image_url"] = cover
+	}
+	b := sourceBook{raw: raw, lv: facts}
+	if code, ok := librivoxLanguage(pr.Language); ok {
+		b.lang = code
+	}
+	if secs := int(pr.TotalTimeSecs); secs > 0 {
+		b.runtimeMin = max(1, (secs+30)/60)
+	}
+
+	// Authors first, then translators: the translator rides the author list with
+	// the role qualifier the shared credit parser reads, which is how every
+	// source states a role (a translator credit, never part of the work's
+	// identity author set).
+	for _, a := range pr.Authors {
+		if name := a.name(); name != "" {
+			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxAuthor, id: int(a.ID), name: name, index: len(b.authors)})
+			b.authors = append(b.authors, name)
+		}
+	}
+	for _, t := range pr.Translators {
+		if name := t.name(); name != "" {
+			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxAuthor, id: int(t.ID), name: name, index: len(b.authors), suffix: librivoxTranslatorSuffix})
+			b.authors = append(b.authors, name+librivoxTranslatorSuffix)
+		}
+	}
+
+	sections := append([]LibrivoxSection(nil), pr.Sections...)
+	sort.SliceStable(sections, func(i, j int) bool { return sections[i].SectionNumber < sections[j].SectionNumber })
+	seenReader := map[string]bool{}
+	var start int64
+	chapters := make([]rawChapter, 0, len(sections))
+	for _, s := range sections {
+		for _, r := range s.Readers {
+			name := strings.TrimSpace(r.DisplayName)
+			key := strconv.Itoa(int(r.ReaderID)) + "\x00" + name
+			if name == "" || seenReader[key] {
+				continue
+			}
+			seenReader[key] = true
+			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxReader, id: int(r.ReaderID), name: name, index: len(b.narrators)})
+			b.narrators = append(b.narrators, name)
+		}
+		length := int64(s.Playtime) * 1000
+		ch := rawChapter{
+			"title":           strings.TrimSpace(s.Title),
+			"start_offset_ms": json.Number(strconv.FormatInt(start, 10)),
+			"length_ms":       json.Number(strconv.FormatInt(length, 10)),
+		}
+		if u := httpsOrEmpty(s.ListenURL); u != "" {
+			ch["audio_url"] = u
+		}
+		chapters = append(chapters, ch)
+		start += length
+	}
+	if len(chapters) > 0 {
+		b.chapters = chapters
+	}
+	for _, g := range pr.Genres {
+		if name := strings.TrimSpace(g.Name); name != "" {
+			b.genres = append(b.genres, genreClaim{name: name})
+		}
+	}
+	return b, ""
+}
+
+// librivoxTranslatorSuffix is the role qualifier a translator's name carries in
+// the row's author list (mapping.go's role vocabulary reads it).
+const librivoxTranslatorSuffix = " (Translator)"
+
+// httpsOrEmpty is the URL as stated when it is an https URL, else "": every URL
+// field the schema gives a LibriVox recording is https only.
+func httpsOrEmpty(u string) string {
+	u = strings.TrimSpace(u)
+	if strings.HasPrefix(u, "https://") {
+		return u
+	}
+	return ""
+}
+
+// archiveIDRE is the schema's archive_id pattern.
+var archiveIDRE = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]*$`)
+
+// archiveIDOf reads the Internet Archive item identifier off a project's
+// url_iarchive ("https://www.archive.org/details/<id>"), "" when it states none.
+func archiveIDOf(u string) string {
+	_, rest, ok := strings.Cut(strings.TrimSpace(u), "archive.org/details/")
+	if !ok {
+		return ""
+	}
+	id, _, _ := strings.Cut(rest, "/")
+	id, _, _ = strings.Cut(id, "?")
+	if !archiveIDRE.MatchString(id) {
+		return ""
+	}
+	return id
+}
+
+// librivoxKind is which LibriVox id namespace a credit's id is in.
+type librivoxKind int
+
+const (
+	librivoxReader librivoxKind = iota
+	librivoxAuthor
+)
+
+// field is the person-record field the namespace's ids are stored in.
+func (k librivoxKind) field() string {
+	if k == librivoxReader {
+		return "librivox_reader_id"
+	}
+	return "librivox_author_id"
+}
+
+// librivoxCredit is one person a LibriVox row credits: the namespace and id,
+// the name the row spells them by, and where that name sits in the row's
+// narrator (reader) or author list, with the role qualifier that rides it there.
+type librivoxCredit struct {
+	kind   librivoxKind
+	id     int
+	name   string
+	index  int
+	suffix string
+}
+
+// librivoxFacts is what a LibriVox row carries beyond the shared sourceBook
+// fields: its identity, its publication facts, and its credits' ids.
+type librivoxFacts struct {
+	id        int
+	archiveID string
+	links     *model.RecordingLinks
+	credits   []librivoxCredit
+}
+
+// librivoxState is a LibriVox run's planner state. The zero value is every
+// other run's, and nothing in it is read unless a row carries librivoxFacts.
+type librivoxState struct {
+	// ids is the project ids the catalogue holds, plus those this run landed.
+	ids map[int]bool
+	// people maps a (namespace, id) the catalogue holds to the person slug
+	// carrying it.
+	people map[librivoxKey]string
+	// landed is the rows whose recording this run created, in row order, with
+	// what the stamp checks a resolved person against.
+	landed []librivoxLanding
+}
+
+// librivoxKey is one LibriVox id in its namespace.
+type librivoxKey struct {
+	kind librivoxKind
+	id   int
+}
+
+// librivoxLanding is a row that landed: its facts, the work it landed on and the
+// recording's narrator slugs.
+type librivoxLanding struct {
+	facts     *librivoxFacts
+	work      string
+	narrators map[string]bool
+}
+
+// librivoxIDs is the planner's project-id set, made on first use.
+func (p *planner) librivoxIDs() map[int]bool {
+	if p.lv.ids == nil {
+		p.lv.ids = map[int]bool{}
+	}
+	return p.lv.ids
+}
+
+// loadLibrivoxPerson indexes a catalogued person's LibriVox ids.
+func (p *planner) loadLibrivoxPerson(person *model.Person) {
+	for _, k := range []librivoxKey{{librivoxReader, person.LibrivoxReaderID}, {librivoxAuthor, person.LibrivoxAuthorID}} {
+		if k.id == 0 {
+			continue
+		}
+		if p.lv.people == nil {
+			p.lv.people = map[librivoxKey]string{}
+		}
+		p.lv.people[k] = person.ID
+	}
+}
+
+// dedupeByLibrivox is the LibriVox twin of dedupeByASIN: a row whose project id
+// the catalogue (or this run) already holds is a skip. false for any other row.
+func (p *planner) dedupeByLibrivox(b sourceBook) bool {
+	if b.lv == nil || !p.librivoxIDs()[b.lv.id] {
+		return false
+	}
+	p.summary.Skipped++
+	return true
+}
+
+// keyLibrivoxCredits spells every LibriVox credit whose id is already known the
+// way it is known, BEFORE the censuses and the planner read a name: a catalogued
+// id takes its person's catalogued name, and an id this batch states twice takes
+// the name its first row gave it. A person slug is derived from the name, so
+// this is what makes the id - not the spelling - the person's key.
+//
+// It runs after runBooks' entity decode, so the names it compares and the ones
+// it writes are both decoded.
+func (p *planner) keyLibrivoxCredits(books []sourceBook) {
+	batch := map[librivoxKey]string{}
+	for i := range books {
+		b := &books[i]
+		if b.lv == nil {
+			continue
+		}
+		for j := range b.lv.credits {
+			c := &b.lv.credits[j]
+			c.name = decodeField(c.name)
+			if c.id <= 0 {
+				continue
+			}
+			k := librivoxKey{c.kind, c.id}
+			name := c.name
+			if slug, ok := p.lv.people[k]; ok && p.people[slug] != "" {
+				name = p.people[slug]
+			} else if first, ok := batch[k]; ok {
+				name = first
+			} else {
+				batch[k] = name
+			}
+			c.name = name
+			list := b.authors
+			if c.kind == librivoxReader {
+				list = b.narrators
+			}
+			list[c.index] = name + c.suffix
+		}
+	}
+}
+
+// applyLibrivoxRecording puts a LibriVox row's identity and publication facts on
+// the recording addRecording is creating, and remembers the landing for the
+// people stamp. For every other row it only makes sure no chapter carries an
+// audio_url, which pkg/check allows on a LibriVox recording alone (a source
+// whose chapter rows happen to hold the key must not write a record the
+// post-import check refuses).
+func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
+	if b.lv == nil {
+		for i := range rec.Chapters {
+			rec.Chapters[i].AudioURL = ""
+		}
+		return
+	}
+	rec.LibrivoxID = b.lv.id
+	rec.ArchiveID = b.lv.archiveID
+	rec.Links = b.lv.links
+	p.librivoxIDs()[b.lv.id] = true
+	p.lv.landed = append(p.lv.landed, librivoxLanding{facts: b.lv, work: rec.Work, narrators: ToSet(rec.Narrators)})
+}
+
+// stampLibrivoxPeople writes each landed row's LibriVox ids onto the people its
+// credits resolved to: a reader's onto one of the recording's narrators, an
+// author's or translator's onto one of the work's credited people. A credit that
+// resolves to nobody the row's records name (a translator of a work the row only
+// attached to, which records no new credits) is left unstamped. A person that
+// already carries a DIFFERENT id in that namespace keeps it - two LibriVox ids
+// whose names are one person here - and the run warns naming both.
+func (p *planner) stampLibrivoxPeople() {
+	for _, l := range p.lv.landed {
+		for _, c := range l.facts.credits {
+			if c.id <= 0 {
+				continue
+			}
+			slug, ok := p.librivoxCreditSlug(c)
+			if !ok {
+				continue
+			}
+			if c.kind == librivoxReader && !l.narrators[slug] {
+				continue
+			}
+			if c.kind == librivoxAuthor {
+				if ws := p.works[l.work]; ws == nil || !ws.all[slug] {
+					continue
+				}
+			}
+			p.stampLibrivoxID(slug, c, l.facts.id)
+			if p.fatal != nil {
+				return
+			}
+		}
+	}
+}
+
+// librivoxCreditSlug is the person a credit's name resolves to, through the same
+// cleaning and resolution the planner used for the row, or ok=false when it
+// cleans to nothing or to more than one name, or resolves to no live record.
+func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
+	var names []string
+	if c.kind == librivoxReader {
+		names = rowNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
+	} else {
+		names = creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
+	}
+	if len(names) != 1 {
+		return "", false
+	}
+	return p.livePerson(p.resolvePerson(names[0]).slug)
+}
+
+// stampLibrivoxID records one id on one person, appending the row's provenance
+// when it does so. An id the record already carries is a no-op.
+func (p *planner) stampLibrivoxID(slug string, c librivoxCredit, project int) {
+	k := librivoxKey{c.kind, c.id}
+	if owner, ok := p.lv.people[k]; ok {
+		if owner != slug {
+			p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+				"librivox %d: %s %d (%q) is already on person %q, not on %q; not recorded twice",
+				project, c.kind.field(), c.id, c.name, owner, slug))
+		}
+		return
+	}
+	raw := p.entryRaw(pack.FamilyPeople, slug)
+	if raw == nil {
+		return
+	}
+	if have, ok := raw[c.kind.field()]; ok {
+		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+			"librivox %d: person %q already carries %s %v; %s %d (%q) not recorded",
+			project, slug, c.kind.field(), have, c.kind.field(), c.id, c.name))
+		return
+	}
+	raw[c.kind.field()] = c.id
+	srcArr, _ := raw["sources"].([]any)
+	raw["sources"] = appendSourceUnique(srcArr, OutSource{Type: p.sourceType, Ref: strconv.Itoa(project), ImportedAt: p.importDate})
+	p.putEntry(pack.FamilyPeople, slug, raw)
+	if p.lv.people == nil {
+		p.lv.people = map[librivoxKey]string{}
+	}
+	p.lv.people[k] = slug
+	p.summary.LibrivoxIDsStamped++
+}

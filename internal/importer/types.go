@@ -313,8 +313,8 @@ type Summary struct {
 	NewRecordings int
 	NewPeople     int
 	NewSeries     int
-	// Skipped counts books skipped because their ASIN already exists in the
-	// catalog (already-present).
+	// Skipped counts books skipped because their ASIN (for a LibriVox row, its
+	// project id) already exists in the catalog (already-present).
 	Skipped int
 	// MergedASINs counts re-release ASINs merged into an existing recording (a
 	// same-work, same-narrator entry whose only new fact was another ASIN),
@@ -513,6 +513,11 @@ type Summary struct {
 	// RunLevelWarnings is how many leading Warnings are run-level; the rest are
 	// per-row (RowWarnings).
 	RunLevelWarnings int
+	// LibrivoxProjects counts the snapshot projects a LibriVox run selected
+	// (its --ids), and LibrivoxIDsStamped the LibriVox reader and author ids it
+	// recorded on people (librivox.go). Both 0 for every other source.
+	LibrivoxProjects   int
+	LibrivoxIDsStamped int
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from

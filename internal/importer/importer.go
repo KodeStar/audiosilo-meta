@@ -15,6 +15,7 @@ import (
 	"regexp"
 	"slices"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -471,12 +472,21 @@ type planner struct {
 	// else bookWarn did.
 	conflictWarnings []string
 	rowWarnings      []string
+	// lv is a LibriVox run's state (librivox.go): the project ids the catalogue
+	// holds, the people keyed by LibriVox id, the credits of the rows that
+	// landed. The zero value is every other run's.
+	lv librivoxState
 }
 
 // setSource points the planner's provenance stamp at the row being planned. Every
 // record a row creates or changes carries it (see stampSource).
 func (p *planner) setSource(asin string, b sourceBook) {
-	p.curSource = OutSource{Type: p.sourceType, Ref: asin, ImportedAt: p.statementDay(b)}
+	ref := asin
+	if b.lv != nil {
+		// A LibriVox row has no ASIN; its identity is the project id.
+		ref = strconv.Itoa(b.lv.id)
+	}
+	p.curSource = OutSource{Type: p.sourceType, Ref: ref, ImportedAt: p.statementDay(b)}
 	p.curRefresh = false
 }
 
@@ -618,6 +628,25 @@ type sourceBook struct {
 	// chain as a merge target, so a work catalogued under its qualified title alone
 	// ("Lonely Book: International Edition", no plain twin) stays reachable.
 	qualifiedTitle string
+	// lang is the row's language CODE when its parser resolved one itself (a
+	// LibriVox row maps LibriVox's language names through its own table,
+	// librivoxlang.go), read by language() ahead of raw's language word. ""
+	// for every other source, which keeps mapLanguage's reading exactly.
+	lang string
+	// lv is a LibriVox row's identity and publication facts (librivox.go); nil
+	// for every other source. Its presence is what switches on the LibriVox
+	// rules: dedup on the project id, never a merge into a sibling recording.
+	lv *librivoxFacts
+}
+
+// language is the row's language code: the parser's own resolution when it made
+// one (lang), else the raw word through mapLanguage. ok is false for a row whose
+// language is unknown, which every caller treats as mapLanguage's refusal.
+func (s sourceBook) language() (string, bool) {
+	if s.lang != "" {
+		return s.lang, true
+	}
+	return mapLanguage(s.str("language"))
 }
 
 // str is a convenience passthrough to the underlying raw entry.
@@ -809,6 +838,9 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 		p.setEvidenceRuntime(&books[i])
 	}
 	p.loadExisting()
+	// A LibriVox row's credits are keyed by LibriVox id before any census reads
+	// their names (librivox.go); a no-op for every other source.
+	p.keyLibrivoxCredits(books)
 	if p.mode.plansRows() {
 		p.credits = p.creditContextOf(books)
 	}
@@ -850,6 +882,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportDuplicateIdentities()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
+	p.stampLibrivoxPeople()
 	if p.fatal != nil {
 		return p.fatal
 	}
@@ -1149,6 +1182,7 @@ func (p *planner) loadExisting() {
 	p.redirects = cat.Redirects
 	for _, person := range cat.People {
 		p.people[person.ID] = person.Name
+		p.loadLibrivoxPerson(person)
 	}
 	for _, w := range cat.Works {
 		ws := &workState{
@@ -1171,6 +1205,9 @@ func (p *planner) loadExisting() {
 		for _, r := range w.Recordings {
 			for _, n := range r.Narrators {
 				p.narratorPeople[n] = true
+			}
+			if r.LibrivoxID != 0 {
+				p.librivoxIDs()[r.LibrivoxID] = true
 			}
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),
@@ -1347,6 +1384,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// the one place a USER's own library meets a record the libex mirror seeded,
 	// so the skip is where the trust-tier attestation happens (attest.go); for a
 	// libex run attestExisting is a no-op and the skip is exactly what it was.
+	// A LibriVox row has no ASIN: it dedups on its project id instead, and
+	// never on its title (librivox.go).
+	if p.dedupeByLibrivox(b) {
+		return
+	}
 	if p.dedupeByASIN(asin) {
 		p.attestExisting(b, asin)
 		return
@@ -1538,7 +1580,7 @@ func (p *planner) dedupeByASIN(asin string) bool {
 // work, while recordings-only resolves the work FIRST, so a row for a book the
 // catalogue does not hold is never warned about at all.
 func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames []string, ok bool) {
-	lang, ok = mapLanguage(b.str("language"))
+	lang, ok = b.language()
 	if !ok {
 		warn("unknown language %q; skipped", b.str("language"))
 		p.summary.Skips = appendSkip(p.summary.Skips, NormalizeASIN(b.str("asin")), reasonLanguage)
@@ -2737,7 +2779,7 @@ func (p *planner) batchClaimsIn(ctx creditContext, books []sourceBook) ([]nameCl
 		asin := NormalizeASIN(b.str("asin"))
 		// The row's language as the create path maps it: a word the importer
 		// does not know is an unknown language, which the resolution never judges.
-		lang, _ := mapLanguage(b.str("language"))
+		lang, _ := b.language()
 		row := SeriesRowFor(creditNamesOf(b.authorCredits), []string{b.str("title"), b.str("title_short")}, b.str("publisher"), lang,
 			func(name string) string { return p.resolvePersonIn(ctx, name).slug })
 		places, work := p.claimPlacesIn(ctx, *b, asin)
@@ -2788,7 +2830,7 @@ func (p *planner) claimPlacesIn(ctx creditContext, b sourceBook, asin string) (p
 		if asin != "" && p.asins[asin] {
 			return false, ""
 		}
-		lang, ok := mapLanguage(b.str("language"))
+		lang, ok := b.language()
 		if !ok || len(rowNarratorNamesIn(ctx, b)) == 0 || len(b.authorCredits) == 0 {
 			return false, ""
 		}
@@ -2866,7 +2908,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	matches, freeSlug := sameNarratorRecs(ws, base, narrSet)
 	slug := freeSlug
 	claims := rowSeriesClaims(b, title)
-	if len(matches) > 0 {
+	// A LibriVox project is always a recording of its own: two projects are two
+	// productions however alike their readers (a solo reader's version 1 and
+	// version 3), and its identity is the project id it carries, never a
+	// same-narrator sibling's.
+	if len(matches) > 0 && b.lv == nil {
 		if asin == "" {
 			// Nothing new to add (same production, no new ASIN). The row's genres
 			// are still that production's tagging, so the vote counts them there
@@ -2965,6 +3011,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, title, asin, lang st
 	if chs := buildChapters(b.chapterRows(), warn); chs != nil {
 		rec.Chapters = chs
 	}
+	p.applyLibrivoxRecording(&rec, b)
 	// Stamped only on this branch, which is the one that CREATES a recording;
 	// the ASIN merge above returns before reaching it.
 	rec.AddedAt = p.importDate
@@ -3727,7 +3774,13 @@ func buildChapters(raw []rawChapter, warn func(string, ...any)) []outChapter {
 		if title == "" {
 			title = fmt.Sprintf("Chapter %d", i+1)
 		}
-		out = append(out, outChapter{Title: title, StartMS: start, LengthMS: length})
+		ch := outChapter{Title: title, StartMS: start, LengthMS: length}
+		// A section's own audio file (only a LibriVox row states one), https
+		// only, as the schema requires.
+		if u := strings.TrimSpace(rc.str("audio_url")); strings.HasPrefix(u, "https://") {
+			ch.AudioURL = u
+		}
+		out = append(out, ch)
 	}
 	if out[0].StartMS != 0 {
 		warn("chapters do not start at 0; chapters omitted")
@@ -4021,6 +4074,9 @@ func NormalizeASIN(s string) string {
 }
 
 func bookLabel(b sourceBook) string {
+	if b.lv != nil {
+		return "librivox " + strconv.Itoa(b.lv.id)
+	}
 	if a := strings.TrimSpace(b.str("asin")); a != "" {
 		return a
 	}
