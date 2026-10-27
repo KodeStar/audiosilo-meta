@@ -387,7 +387,10 @@ type planner struct {
 	curSource  OutSource
 	// curRefresh reports whether the row curSource stamps REFRESHED the
 	// recording it matched: only that stamp is let past the source
-	// deduplication (restates, refresh.go). setSource resets it per row.
+	// deduplication (restates, refresh.go). It is PER ROW - setSource resets it
+	// for every row - and one row reaches one recording (its ASIN's, through
+	// applyToRecording), so it can never leak onto another; the work and series
+	// the same row stamps carry no release date, which restates also checks.
 	curRefresh bool
 	// identity is the run's NORMALIZED WORK IDENTITY index over the catalogue as
 	// loaded - the create path's duplicate guard (dupidentity.go). nil in every

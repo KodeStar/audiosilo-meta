@@ -271,10 +271,10 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	var conflicts bytes.Buffer
 	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
-		estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true)))
+		capturedAfterRelease(estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true))))
 
 	if sum.EnrichedRecordings != 1 || sum.RefreshedRuntimes != 1 {
-		t.Fatalf("summary = %+v, want 1 enriched recording / 1 estimate replaced", sum)
+		t.Fatalf("summary = %+v, want 1 enriched recording / 1 refreshed runtime", sum)
 	}
 	if hasWarning(sum.Warnings, "conflicts with the recorded") || conflicts.Len() != 0 {
 		t.Errorf("a corrected estimate was reported as a contradiction: %v / %s", sum.Warnings, conflicts.String())
@@ -294,7 +294,7 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 	// A second identical run is a byte-level no-op: the value is already there.
 	before := snapshotTree(t, dataDir)
 	again := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
-		estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true)))
+		capturedAfterRelease(estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true))))
 	if again.RefreshedRuntimes != 0 || again.EnrichedRecordings != 0 {
 		t.Errorf("re-run changed something: %+v", again)
 	}
@@ -434,6 +434,12 @@ func readRecordingRaw(t *testing.T, dataDir string) (string, map[string]any) {
 	return estRecAddr, raw
 }
 
+// capturedAfterRelease is a row as libex last wrote it after the release (its
+// updatedAt): a row stating no capture day never refreshes (redates).
+func capturedAfterRelease(row string) string {
+	return strings.Replace(row, `"region":`, `"updatedAt":"2026-10-05T10:00:00+00:00","region":`, 1)
+}
+
 // estRowCaptured is estRow as libex last wrote it on day (its updatedAt).
 func estRowCaptured(asin, region string, minutes int, day string) string {
 	return strings.Replace(estRow(asin, region, minutes, "unabridged", ""), `"region":`,
@@ -485,7 +491,7 @@ func TestAChapterlessEstimateKeepsARuntimeBoundOnTheMerge(t *testing.T) {
 func TestAnOwnASINRuntimeIsHeldOnlyToTheSanityFloor(t *testing.T) {
 	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
-		estRow(estUSASIN, "us", 300, "unabridged", ""))
+		capturedAfterRelease(estRow(estUSASIN, "us", 300, "unabridged", "")))
 	if sum.EnrichedRecordings != 1 || sum.RefreshedRuntimes != 1 || sum.RefreshedRecordings != 1 {
 		t.Errorf("summary = %+v, want the own ASIN's released runtime to replace the estimate", sum)
 	}
@@ -690,7 +696,7 @@ func TestAnEnrichmentStatingNoRuntimeKeepsTheEstimate(t *testing.T) {
 
 	var conflicts bytes.Buffer
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
-		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
+		capturedAfterRelease(estRow(estUSASIN, "us", estReleasedLen, "unabridged", "")))
 	if sum.RefreshedRuntimes != 1 || conflicts.Len() != 0 {
 		t.Errorf("summary = %+v, conflicts %q; want the released runtime to replace the estimate", sum, conflicts.String())
 	}
@@ -705,7 +711,8 @@ func TestAnEnrichmentStatingNoRuntimeKeepsTheEstimate(t *testing.T) {
 // the released runtime is a contradiction. sources[] records when a statement
 // was made, not what it stated, so nothing short of a schema change tells this
 // stamp from a measurement. If this test starts failing because the estimate
-// survives, the gap has been closed: update the header and CLAUDE.md.
+// survives, the gap has been closed: update estimate.go's header and the
+// PACKAGES.md sentence on it.
 //
 // The REFRESH (refresh.go) closes it for the recording's own ASIN: the merge's
 // stamp is a NEW ref, not a restatement, so the record still awaits its
@@ -729,7 +736,7 @@ func TestAMergeStatingNoRuntimeEndsTheEstimate(t *testing.T) {
 
 	var conflicts bytes.Buffer
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
-		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
+		capturedAfterRelease(estRow(estUSASIN, "us", estReleasedLen, "unabridged", "")))
 	if sum.RefreshedRecordings != 1 || sum.RefreshedRuntimes != 1 || conflicts.Len() != 0 {
 		t.Errorf("summary = %+v, conflicts %q; want the own ASIN's released row to refresh the record", sum, conflicts.String())
 	}

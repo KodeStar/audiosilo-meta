@@ -209,7 +209,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if awaiting {
 		before = readRefreshFields(raw)
 	}
-	p.curRefresh = refresh
+	p.curRefresh = refresh // per row: setSource resets it (importer.go)
 	replace := overwrite || refresh
 	changed := refresh
 

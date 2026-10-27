@@ -263,23 +263,23 @@ func TestSelectRefreshTargetsPicksReleasedPreorderEraRecordings(t *testing.T) {
 	rec := func(id, asin, release string, sources []model.Source) *model.Recording {
 		r := &model.Recording{ID: id, ReleaseDate: release, Sources: sources}
 		if asin != "" {
-			r.ASIN = []model.ASIN{{Region: "us", ASIN: asin}, {Region: "uk", ASIN: "B9" + asin}}
+			r.ASIN = []model.ASIN{{Region: "us", ASIN: asin}, {Region: "uk", ASIN: "B0UK" + asin[4:]}}
 		}
 		return r
 	}
 	cat := &model.Catalog{Works: []*model.Work{{ID: "w", Recordings: []*model.Recording{
-		rec("released", "B2", "2026-09-08", mirror("2026-08-02")),
-		rec("released-today", "B1", "2026-10-07", mirror("2026-08-02")),
-		rec("still-preorder", "B3", "2026-11-01", mirror("2026-08-02")),
-		rec("catalogued-after-release", "B4", "2026-09-08", mirror("2026-09-20")),
-		rec("attested", "B5", "2026-09-08", append(mirror("2026-08-02"), model.Source{Type: model.SourceUser, ImportedAt: "2026-08-05"})),
+		rec("released", "B0TARGET02", "2026-09-08", mirror("2026-08-02")),
+		rec("released-today", "B0TARGET01", "2026-10-07", mirror("2026-08-02")),
+		rec("still-preorder", "B0TARGET03", "2026-11-01", mirror("2026-08-02")),
+		rec("catalogued-after-release", "B0TARGET04", "2026-09-08", mirror("2026-09-20")),
+		rec("attested", "B0TARGET05", "2026-09-08", append(mirror("2026-08-02"), model.Source{Type: model.SourceUser, ImportedAt: "2026-08-05"})),
 		rec("no-asin", "", "2026-09-08", mirror("2026-08-02")),
 	}}}}
 	got := SelectRefreshTargets(cat, "2026-10-07")
 	if len(got) != 2 || got[0].Recording != "released-today" || got[1].Recording != "released" {
 		t.Fatalf("targets = %+v, want released-today then released (by ASIN)", got)
 	}
-	if got[1].ASIN != "B2" || !got[1].NeedChapters {
+	if got[1].ASIN != "B0TARGET02" || !got[1].NeedChapters {
 		t.Errorf("target = %+v, want its first ASIN, asking for chapters", got[1])
 	}
 }
@@ -611,5 +611,65 @@ func TestAStaleRowNeverMovesTheReleaseDate(t *testing.T) {
 	}
 	if got := readEstRecording(t, dataDir).ReleaseDate; got != estRelease {
 		t.Errorf("release date = %s, want the recorded %s", got, estRelease)
+	}
+}
+
+// The intended narrowing: a still-ESTIMATED record (every statement before its
+// release, so the merge's stamp has not ended the estimate) enriched from a
+// released row of a MERGED, non-first ASIN is not corrected on --enrich - only
+// the ASIN merge's correctEstimate corrects from another ASIN, and the refresh
+// reads the first ASIN alone.
+func TestAnEstimateIsNotCorrectedOnEnrichFromAMergedASIN(t *testing.T) {
+	sources := `[{"imported_at":"2026-08-02","ref":"B0EST00001","type":"libex-import"},{"imported_at":"2026-08-05","ref":"B0EST00002","type":"libex-import"}]`
+	rec := testpack.WithField(t, estRecording(t, "2026-08-02", sources, ""), "asin",
+		[]map[string]string{{"asin": estUSASIN, "region": "us"}, {"asin": estUKASIN, "region": "uk"}})
+	dataDir := seedEstimateTree(t, testpack.WithField(t, rec, "cover_url", refreshOldCover))
+	if _, raw := readRecordingRaw(t, dataDir); !rawRuntimeEstimated(raw) {
+		t.Fatalf("the seed's estimate has ended: %v", raw["sources"])
+	}
+	var conflicts bytes.Buffer
+	sum := refreshEnrich(t, dataDir, &conflicts, refreshRow(t, map[string]any{"asin": estUKASIN, "region": "uk", "chapters": nil}))
+	if sum.RefreshedRecordings != 0 || sum.EstimatesReplaced != 0 || sum.RefreshedRuntimes != 0 || conflicts.Len() != 0 {
+		t.Fatalf("summary = %+v, conflicts %q; want the merged ASIN's row neither refreshing nor correcting", sum, conflicts.String())
+	}
+	if got := readEstRecording(t, dataDir); got.RuntimeMin != estEstimate || got.CoverURL != refreshOldCover {
+		t.Errorf("recording = runtime %d, cover %s; want the estimate and the cover kept", got.RuntimeMin, got.CoverURL)
+	}
+	if _, raw := readRecordingRaw(t, dataDir); !rawRuntimeEstimated(raw) || !rawAwaitingRefresh(raw) {
+		t.Errorf("the record left the estimate or the preorder era: %v", raw["sources"])
+	}
+}
+
+// A malformed imported_at is compared as written, never sliced past its end.
+func TestAwaitingRefreshToleratesAMalformedStatementDate(t *testing.T) {
+	for _, day := range []string{"2026-08-0", "not-a-date-at-all", "2026-08-02Tgarbage"} {
+		src := []model.Source{{Type: model.SourceLibexImport, Ref: "B1", ImportedAt: day}}
+		for _, release := range []string{estRelease, "2026-09", "2026"} {
+			_ = awaitingRefresh(release, "", "B1", src) // must not panic
+		}
+	}
+}
+
+// A row of the first ASIN that does not STATE its capture day (no updatedAt -
+// the run's date would stand in for it) replaces no release date, unreleased or
+// released: it neither moves the date nor refreshes.
+func TestARowWithNoCaptureDayNeverRedates(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		row  map[string]any
+	}{
+		{"an unreleased row", map[string]any{"updatedAt": nil, "releaseDate": "2026-11-20T00:00:00+00:00", "productState": "AVAILABLE_FOR_PREORDER", "chapters": nil}},
+		{"a released row", map[string]any{"updatedAt": nil, "releaseDate": "2026-09-15T00:00:00+00:00"}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), "")
+			sum := refreshEnrich(t, dataDir, nil, refreshRow(t, tc.row))
+			if sum.MovedPreorderDates != 0 || sum.RefreshedRecordings != 0 {
+				t.Errorf("summary = %+v, want no date moved and no refresh", sum)
+			}
+			if got := readEstRecording(t, dataDir); got.ReleaseDate != estRelease || got.CoverURL != refreshOldCover {
+				t.Errorf("recording = released %s, cover %s; want both kept", got.ReleaseDate, got.CoverURL)
+			}
+		})
 	}
 }

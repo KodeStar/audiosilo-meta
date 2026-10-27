@@ -1407,8 +1407,8 @@ before its release date, and its FIRST ASIN (`asin[0]`) not stated on or after i
 (deliberately not `runtimeEstimated`: a regional ASIN merged after the release
 stamps a new ref that ends the runtime's estimate status but refreshed nothing -
 801 of the 1,342 such recordings on 2026-10-27) - met on `--enrich` by a row of
-that FIRST ASIN only (`redates`: captured no earlier than the record's newest
-statement of it; any other ASIN's row is ordinary enrichment, since a regional
+that FIRST ASIN only (`redates`: STATING its capture day, libex's `updatedAt`, no
+earlier than the record's newest statement of it; any other ASIN's row is ordinary enrichment, since a regional
 cover differs and a mis-merged ASIN would overwrite runtime and chapters past
 the floor) with a full release
 date on or before its capture day and, where the row carries one, libex
@@ -1449,10 +1449,10 @@ asked when the recording has none or the fetched listing is released as of its
 `FillTarget.RefreshChapters`), then the enrichment; the fetched row
 now keeps libex's `updatedAt` and `productState` (`libexFillRowKeys`). Measured
 2026-10-27: see refresh.go's header. A
-merged regional row stating NO runtime still ends the estimate (for the guards;
-the refresh still reads such a record as preorder-era)
-uncorrected - the one gap sources[] cannot close without a schema change,
-measured rare and pinned in the file. Series
+merged regional row stating NO runtime still ends the estimate for the guards -
+the gap sources[] cannot close without a schema change, measured rare and pinned
+in the file - but no longer leaves it uncorrected: the record stays preorder-era,
+so the first ASIN's released row refreshes it. Series
 positions accept omnibus ranges (`"1-3.5"`), spelled with or without whitespace
 around the dash (`NormalizeSequence` tolerates it on INPUT and removes it on the
 way to the canonical value, so what is stored still satisfies the schema's

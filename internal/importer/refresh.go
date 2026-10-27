@@ -44,8 +44,8 @@ import (
 // all.
 //
 // WHICH row: a bulk-mirror run's ENRICHMENT row (scopeFill) of the recording's
-// FIRST ASIN, captured no earlier than any statement the record holds of that
-// ASIN (redates) - the listing it was catalogued from, the same product, which
+// FIRST ASIN, stating its capture day (updatedAt) no earlier than any statement
+// the record holds of that ASIN (redates) - the listing it was catalogued from, the same product, which
 // is why no estimate bound reads its runtime as identity. A row of any other
 // ASIN on it - a regional edition merged since - is ordinary enrichment: it
 // carries its own marketplace's cover and date, and an ASIN merged onto the
@@ -146,7 +146,11 @@ func awaitingRefresh(release, addedAt, firstASIN string, sources []model.Source)
 	before := func(stated string) bool {
 		day := stated
 		if len(day) > len(release) {
-			day = model.TimeKey(day)[:len(release)]
+			// TimeKey normalizes a timestamp to its UTC day; a value it cannot
+			// parse comes back as it is, and is compared as written.
+			if k := model.TimeKey(day); len(k) >= len(release) {
+				day = k[:len(release)]
+			}
 		}
 		return stated != "" && release > day
 	}
@@ -180,7 +184,8 @@ func rawAwaitingRefresh(raw map[string]any) bool {
 
 // rawFirstASIN is a decoded recording's FIRST ASIN (asin[0]), the one it was
 // catalogued under and the only one a refresh or a moved date is read from;
-// "" when it carries none.
+// "" when it carries none. recordingFirstASIN is the same rule over a loaded
+// recording.
 func rawFirstASIN(raw map[string]any) string {
 	arr, _ := raw["asin"].([]any)
 	if len(arr) == 0 {
@@ -188,6 +193,14 @@ func rawFirstASIN(raw map[string]any) string {
 	}
 	first, _ := arr[0].(map[string]any)
 	return NormalizeASIN(coerceStr(first["asin"]))
+}
+
+// recordingFirstASIN is rawFirstASIN over a loaded recording.
+func recordingFirstASIN(r *model.Recording) string {
+	if len(r.ASIN) == 0 {
+		return ""
+	}
+	return NormalizeASIN(r.ASIN[0].ASIN)
 }
 
 // restates reports whether this run's stamp on raw is a refresh's RESTATEMENT,
@@ -200,14 +213,17 @@ func (p *planner) restates(raw map[string]any) bool {
 
 // redates reports whether row b speaks for the preorder-era recording raw's
 // listing (the header's FIRST ASIN paragraph) - the condition for a refresh and
-// for a moved release date alike: a row of its FIRST ASIN, captured (rowDay) no
-// earlier than any statement the record holds of that ASIN.
+// for a moved release date alike: a row of its FIRST ASIN that STATES the day it
+// was captured (a libex row's updatedAt) and was captured no earlier than any
+// statement the record holds of that ASIN. A row stating no capture day would be
+// judged by the run's date, which says nothing about how fresh its listing is,
+// so it replaces nothing.
 func (p *planner) redates(raw map[string]any, b sourceBook) bool {
 	asin := NormalizeASIN(b.str("asin"))
-	if asin == "" || asin != rawFirstASIN(raw) {
+	if asin == "" || asin != rawFirstASIN(raw) || b.capturedAt == "" {
 		return false
 	}
-	day := p.rowDay(b)
+	day := b.capturedAt
 	for _, s := range rawSources(raw) {
 		if k := model.TimeKey(s.ImportedAt); s.Ref == asin && len(k) >= len(day) && k[:len(day)] > day {
 			return false
@@ -346,11 +362,7 @@ func (p *planner) reportRefreshes() {
 // since a release most often corrects or first supplies the table.
 func SelectRefreshTargets(cat *model.Catalog, day string) []FillTarget {
 	return selectTargets(cat, func(r *model.Recording) (FillTarget, bool) {
-		first := ""
-		if len(r.ASIN) > 0 {
-			first = r.ASIN[0].ASIN
-		}
-		ok := !releasedAfter(r.ReleaseDate, day) && awaitingRefresh(r.ReleaseDate, r.AddedAt, first, r.Sources)
+		ok := !releasedAfter(r.ReleaseDate, day) && awaitingRefresh(r.ReleaseDate, r.AddedAt, recordingFirstASIN(r), r.Sources)
 		return FillTarget{NeedCover: r.CoverURL == "", NeedChapters: len(r.Chapters) == 0, RefreshChapters: true}, ok
 	})
 }
