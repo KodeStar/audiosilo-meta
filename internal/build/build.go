@@ -27,13 +27,17 @@ import (
 // table (the spoiler-free per-work description) arrived; bumped to 7 when the
 // LANGUAGES layer arrived - the translations table (translation_of links, works
 // and series), three series columns (the DERIVED language, ordering and
-// ordering_of) and search_fts.language.
+// ordering_of) and search_fts.language; bumped to 8 when the LIBRIVOX layer
+// arrived - the recordings' LibriVox and publication columns (librivox_id,
+// archive_id, the four links, copyright_year, added_at), chapters.audio_url,
+// the people's LibriVox ids and life years, and the work_credits and
+// recording_sources tables.
 //
 // It versions what a reader may SELECT, so it is bumped only when a table or
 // column appears. Adding an index is invisible to every reader (the same rows
 // come back, faster), so the index additions below did not bump it - an older
 // artifact without them still serves correctly, just more slowly.
-const SchemaVersion = 7
+const SchemaVersion = 8
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -58,6 +62,10 @@ CREATE TABLE work_isbns (work_id TEXT NOT NULL, isbn TEXT NOT NULL);
 CREATE INDEX idx_work_isbns_isbn ON work_isbns(isbn);
 CREATE TABLE work_genres (work_id TEXT NOT NULL, genre TEXT NOT NULL);
 CREATE INDEX idx_work_genres_work ON work_genres(work_id);
+-- schema_version 8: a work's role credits (translator, editor, ...), in the
+-- record's order. The LibriVox feed reads its translators from here.
+CREATE TABLE work_credits (work_id TEXT NOT NULL, person_id TEXT NOT NULL, role TEXT NOT NULL, ord INTEGER NOT NULL);
+CREATE INDEX idx_work_credits_work ON work_credits(work_id);
 -- The stats languages census (GROUP BY language, read once per snapshot at
 -- load) walks this as a covering index. It is deliberately the language alone:
 -- works/latest orders by (added_at IS NULL), which no index column can serve. The
@@ -75,8 +83,30 @@ CREATE TABLE recordings (
   publisher    TEXT,
   cover_url    TEXT,
   license      TEXT NOT NULL,
+  -- schema_version 8 (the LibriVox layer), appended so no column moves. NULL
+  -- for every recording that states none - all but the LibriVox ones today.
+  librivox_id    INTEGER,
+  archive_id     TEXT,
+  link_librivox  TEXT,
+  link_zip       TEXT,
+  link_rss       TEXT,
+  link_text      TEXT,
+  copyright_year INTEGER,
+  -- When the recording entered the database: the record's added_at, else its
+  -- newest sources[].imported_at (addedAt's rule for works). The LibriVox feed's
+  -- since reads it.
+  added_at       TEXT,
   PRIMARY KEY (work_id, id)
 );
+-- lookup?librivox_id= and the LibriVox feed (its id filter, and its pages in
+-- project-id order) read this. Partial: only a LibriVox recording carries an id,
+-- and every read names librivox_id in a comparison, which implies NOT NULL.
+CREATE INDEX idx_recordings_librivox ON recordings(librivox_id) WHERE librivox_id IS NOT NULL;
+-- One row per (recording, source type) its sources[] name, deduplicated: what
+-- the API's ?source= filter joins through. (type, work_id) leads so the filter's
+-- "works with a recording of this source" is a covering range read.
+CREATE TABLE recording_sources (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, type TEXT NOT NULL);
+CREATE INDEX idx_recording_sources_type ON recording_sources(type, work_id, recording_id);
 CREATE TABLE recording_narrators (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_recording_narrators_person ON recording_narrators(person_id);
 -- Every GET /works/{id} and every search hit reads these three tables per
@@ -111,6 +141,8 @@ CREATE TABLE chapters (
   title        TEXT NOT NULL,
   start_ms     INTEGER NOT NULL,
   length_ms    INTEGER NOT NULL,
+  -- schema_version 8: the section's own audio file (a LibriVox chapter).
+  audio_url    TEXT,
   PRIMARY KEY (work_id, recording_id, idx)
 );
 
@@ -122,7 +154,13 @@ CREATE TABLE people (
   wikidata    TEXT,
   openlibrary TEXT,
   audible     TEXT,
-  license     TEXT NOT NULL
+  license     TEXT NOT NULL,
+  -- schema_version 8: LibriVox ids and the stated life years (signed, BC
+  -- negative), NULL when the record states none.
+  librivox_reader_id INTEGER,
+  librivox_author_id INTEGER,
+  birth_year         INTEGER,
+  death_year         INTEGER
 );
 
 CREATE TABLE series (
@@ -391,12 +429,14 @@ type stmts struct {
 	workAuthor *sql.Stmt
 	workISBN   *sql.Stmt
 	workGenre  *sql.Stmt
+	workCredit *sql.Stmt
 	workFTS    *sql.Stmt
 
 	recording   *sql.Stmt
 	recNarrator *sql.Stmt
 	recASIN     *sql.Stmt
 	recISBN     *sql.Stmt
+	recSource   *sql.Stmt
 	chapter     *sql.Stmt
 
 	series       *sql.Stmt
@@ -435,20 +475,22 @@ func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
 		dst   **sql.Stmt
 		query string
 	}{
-		{&s.person, `INSERT INTO people(id, name, sort_name, description, wikidata, openlibrary, audible, license) VALUES(?,?,?,?,?,?,?,?)`},
+		{&s.person, `INSERT INTO people(id, name, sort_name, description, wikidata, openlibrary, audible, license, librivox_reader_id, librivox_author_id, birth_year, death_year) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)`},
 		{&s.personFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('person', ?, ?, '', '')`},
 
 		{&s.work, `INSERT INTO works(id, title, subtitle, language, first_published, description, added_at, wikidata, openlibrary, goodreads, license) VALUES(?,?,?,?,?,?,?,?,?,?,?)`},
 		{&s.workAuthor, `INSERT INTO work_authors(work_id, person_id, ord) VALUES(?,?,?)`},
 		{&s.workISBN, `INSERT INTO work_isbns(work_id, isbn) VALUES(?,?)`},
 		{&s.workGenre, `INSERT INTO work_genres(work_id, genre) VALUES(?,?)`},
+		{&s.workCredit, `INSERT INTO work_credits(work_id, person_id, role, ord) VALUES(?,?,?,?)`},
 		{&s.workFTS, `INSERT INTO search_fts(kind, id, title, names, language) VALUES('work', ?, ?, ?, ?)`},
 
-		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license) VALUES(?,?,?,?,?,?,?,?,?)`},
+		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year, added_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`},
+		{&s.recSource, `INSERT INTO recording_sources(work_id, recording_id, type) VALUES(?,?,?)`},
 		{&s.recNarrator, `INSERT INTO recording_narrators(work_id, recording_id, person_id, ord) VALUES(?,?,?,?)`},
 		{&s.recASIN, `INSERT INTO recording_asins(region, asin, work_id, recording_id) VALUES(?,?,?,?)`},
 		{&s.recISBN, `INSERT INTO recording_isbns(work_id, recording_id, isbn) VALUES(?,?,?)`},
-		{&s.chapter, `INSERT INTO chapters(work_id, recording_id, idx, title, start_ms, length_ms) VALUES(?,?,?,?,?,?)`},
+		{&s.chapter, `INSERT INTO chapters(work_id, recording_id, idx, title, start_ms, length_ms, audio_url) VALUES(?,?,?,?,?,?,?)`},
 
 		{&s.series, `INSERT INTO series(id, name, wikidata, goodreads, license, language, ordering, ordering_of) VALUES(?,?,?,?,?,?,?,?)`},
 		{&s.seriesWork, `INSERT INTO series_works(series_id, work_id, position) VALUES(?,?,?)`},
@@ -486,6 +528,7 @@ func insertPeople(st *stmts, people []*model.Person) error {
 		}
 		if _, err := st.person.Exec(
 			p.ID, p.Name, nullStr(p.SortName), nullStr(p.Description), nullStr(wiki), nullStr(ol), nullStr(aud), p.License,
+			nullInt(p.LibrivoxReaderID), nullInt(p.LibrivoxAuthorID), nullInt(p.BirthYear), nullInt(p.DeathYear),
 		); err != nil {
 			return err
 		}
@@ -526,6 +569,11 @@ func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, ser
 				return err
 			}
 		}
+		for i, c := range w.Credits {
+			if _, err := st.workCredit.Exec(w.ID, c.Person, c.Role, i); err != nil {
+				return err
+			}
+		}
 
 		var names []string
 		for _, a := range w.Authors {
@@ -555,10 +603,28 @@ func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, ser
 }
 
 func insertRecording(st *stmts, workID string, r *model.Recording) error {
+	var links model.RecordingLinks
+	if r.Links != nil {
+		links = *r.Links
+	}
 	if _, err := st.recording.Exec(
 		workID, r.ID, boolInt(r.Abridged), r.Language, nullInt(r.RuntimeMin), nullStr(r.ReleaseDate), nullStr(r.Publisher), nullStr(r.CoverURL), r.License,
+		nullInt(r.LibrivoxID), nullStr(r.ArchiveID), nullStr(links.Librivox), nullStr(links.Zip), nullStr(links.RSS), nullStr(links.Text),
+		nullInt(r.CopyrightYear), addedAtOf(r.AddedAt, r.Sources),
 	); err != nil {
 		return err
+	}
+	// The source types, each once and in sorted order (sources[] may name one
+	// type twice: two imports of one record), so the rows are deterministic.
+	types := make([]string, 0, len(r.Sources))
+	for _, src := range r.Sources {
+		types = append(types, src.Type)
+	}
+	slices.Sort(types)
+	for _, t := range slices.Compact(types) {
+		if _, err := st.recSource.Exec(workID, r.ID, t); err != nil {
+			return err
+		}
 	}
 	for i, n := range r.Narrators {
 		if _, err := st.recNarrator.Exec(workID, r.ID, n, i); err != nil {
@@ -588,7 +654,7 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 	// accrues ahead of its readers, exactly as work credits do. Adding a table
 	// for it is a later change, with the SchemaVersion bump that implies.
 	for i, ch := range r.Chapters {
-		if _, err := st.chapter.Exec(workID, r.ID, i, ch.Title, ch.StartMS, ch.LengthMS); err != nil {
+		if _, err := st.chapter.Exec(workID, r.ID, i, ch.Title, ch.StartMS, ch.LengthMS, nullStr(ch.AudioURL)); err != nil {
 			return err
 		}
 	}
@@ -772,12 +838,16 @@ func appendName(names []string, n string) []string {
 // entries'): the importer and the intake bot stamp added_at at creation, and the
 // storage migration backfilled it from that history one final time. The
 // imported_at fallback stays for records that carry neither.
-func addedAt(w *model.Work) any {
-	if w.AddedAt != "" {
-		return w.AddedAt
+func addedAt(w *model.Work) any { return addedAtOf(w.AddedAt, w.Sources) }
+
+// addedAtOf is addedAt's rule over any record's added_at and sources: a
+// recording's column is resolved by it too.
+func addedAtOf(stated string, sources []model.Source) any {
+	if stated != "" {
+		return stated
 	}
 	newest, newestKey := "", ""
-	for _, s := range w.Sources {
+	for _, s := range sources {
 		if s.ImportedAt == "" {
 			continue
 		}

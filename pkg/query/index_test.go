@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/artifacttest"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // queryPlan returns the EXPLAIN QUERY PLAN steps for query.
@@ -72,6 +73,14 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 	// index form - the majority form is a deliberate scan (see its comment).
 	latestOne, latestOneArgs := snap.latestCandidatesQuery(langFilter{"de"}, 200)
 	latestTwo, latestTwoArgs := snap.latestCandidatesQuery(langFilter{"de", "fr"}, 200)
+	latestSrc, latestSrcArgs := snap.latestCandidatesQueryWith(nil, model.SourceLibrivox, 200)
+	latestSrcLang, latestSrcLangArgs := snap.latestCandidatesQueryWith(langFilter{"de"}, model.SourceLibrivox, 200)
+	searchSrc, searchSrcArgs := ftsSearchQueryWith(kindAny, `"kafka"*`, 20, nil, model.SourceLibrivox)
+	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50})
+	feedFiltered, feedFilteredArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
+		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true})
+	feedPrefix, feedPrefixArgs := librivoxFeedQuery(librivoxFeedParams{limit: 500, offset: 10,
+		title: textMatch{value: "meta", prefix: true}, author: textMatch{value: "kaf", prefix: true}, genre: textMatch{value: "short", prefix: true}})
 
 	const (
 		work      = "project-hail-mary"
@@ -168,6 +177,19 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 		// index serves - see its comment.
 		{"latest candidates, one language", latestOne, latestOneArgs},
 		{"latest candidates, two languages", latestTwo, latestTwoArgs},
+		// The LibriVox layer (schema_version 8): works/latest under ?source=
+		// (through idx_recording_sources_type, then the works primary key), the
+		// source arm on a search, lookup?librivox_id= and the LibriVox feed's page
+		// in each of its filter shapes - each a walk of idx_recordings_librivox
+		// with per-row probes through a work's own indexes, never a scan of the
+		// people, genre or works tables.
+		{"latest candidates, source", latestSrc, latestSrcArgs},
+		{"latest candidates, source and language", latestSrcLang, latestSrcLangArgs},
+		{"search, source", searchSrc, searchSrcArgs},
+		{"lookup by librivox_id", librivoxLookupSQL, []any{527}},
+		{"librivox feed page", feedAll, feedAllArgs},
+		{"librivox feed page, filtered", feedFiltered, feedFilteredArgs},
+		{"librivox feed page, prefixes", feedPrefix, feedPrefixArgs},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -214,6 +236,14 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"members of the matched series", seriesIDs, seriesMembersByIDSQL, []any{matchCandidatesMax}},
 		{"match: titles", ids, matchWorksSQL, nil},
 		{"match: recording runtimes", ids, matchRuntimesSQL, nil},
+		// The LibriVox layer: the boosts' source filter and the feed page's five
+		// batches, each over up to a page (500) of works.
+		{"works with a source", ids, worksWithSourceSQL, []any{model.SourceLibrivox}},
+		{"librivox feed: authors", ids, lvAuthorsSQL, nil},
+		{"librivox feed: translators", ids, lvTranslatorsSQL, nil},
+		{"librivox feed: genres", ids, lvGenresSQL, nil},
+		{"librivox feed: chapters", ids, lvChaptersSQL, nil},
+		{"librivox feed: readers", ids, lvReadersSQL, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {

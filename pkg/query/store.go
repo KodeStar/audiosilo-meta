@@ -25,7 +25,7 @@ type DB struct {
 	tag           string // release tag this artifact came from ("" for a local --db)
 	path          string // on-disk path of the artifact
 	stats         Stats  // precomputed once, at load
-	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5, work_descriptions in v6, translations + the series ordering columns in v7
+	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4, redirects in v5, work_descriptions in v6, translations + the series ordering columns in v7, the LibriVox layer in v8
 
 	// The GUIDE PAGE counts, settled at load (see loadStats). They are what the
 	// two guide sitemap families are sharded and windowed by, and they are
@@ -187,13 +187,13 @@ type LanguageCount struct {
 
 // MaxSchemaVersion is the newest artifact schema_version this code understands:
 // internal/build.SchemaVersion, which TestMaxSchemaVersionIsTheBuilders pins it
-// to, and the newest of the version gates below (languagesSchemaVersion). An
+// to, and the newest of the version gates below (librivoxSchemaVersion). An
 // artifact NEWER than it still opens and serves (every optional read is gated
 // with >=); the consumer that embeds this package (a mirror-mode AudioSilo
 // server) shows that its copy is newer than it understands. Artifact schema
 // changes must therefore stay ADDITIVE - new tables and columns - because such
 // consumers lag.
-const MaxSchemaVersion = 7
+const MaxSchemaVersion = 8
 
 // Open opens the artifact at path read-only and runs the load-time integrity
 // checks (loadStats: a schema_version claim without the tables it implies is a
@@ -343,6 +343,17 @@ func (s *DB) loadStats() error {
 			return fmt.Errorf("%s: languages census: %w", s.path, err)
 		}
 		st.Languages = langs
+	}
+	// The LIBRIVOX layer, on the same precedent: a version 8 claim without the
+	// columns and tables it names fails the LOAD, naming the claim, rather than
+	// 500ing every work page (whose recordings read the new columns).
+	if s.schemaVersion >= librivoxSchemaVersion {
+		for _, shape := range librivoxShapeSQL {
+			if _, err := s.db.Exec(shape); err != nil {
+				return fmt.Errorf("%s: artifact schema_version %d requires the LibriVox layer: %w",
+					s.path, s.schemaVersion, err)
+			}
+		}
 	}
 	s.stats = st
 	return nil
