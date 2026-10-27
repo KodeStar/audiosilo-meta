@@ -343,30 +343,55 @@ func byAuthor(t *testing.T, id int, title, lang string, author LibrivoxPerson, t
 func TestLibrivoxOrdinaryWalkNeverAttachesOnTheCatchAllPerson(t *testing.T) {
 	// Two "Childhood"s by two Cyrillic-named authors both credit the catch-all
 	// person: the second is not a recording of the first (author-unmatched).
-	// A third, by the first author again and sharing her translator, agrees on a
-	// real person and attaches.
+	// Neither is a third by the first author again: sharing her translator is
+	// not sharing a real author, so it is refused as well. Nor are a
+	// Cyrillic-named Chekhov and Dostoevsky under one title, both translated by
+	// Garnett. A row whose authors share a real (Latin-named) author with the
+	// work, beside the catch-all one, attaches.
 	tolstoy := LibrivoxPerson{ID: 6100, FirstName: "Лев", LastName: "Толстой"}
 	gorky := LibrivoxPerson{ID: 6101, FirstName: "Максим", LastName: "Горький"}
 	wiener := LibrivoxPerson{ID: 6102, FirstName: "Leo", LastName: "Wiener"}
+	chekhov := LibrivoxPerson{ID: 6103, FirstName: "Антон", LastName: "Чехов"}
+	dostoevsky := LibrivoxPerson{ID: 6104, FirstName: "Фёдор", LastName: "Достоевский"}
+	garnett := LibrivoxPerson{ID: 6105, FirstName: "Constance", LastName: "Garnett"}
+	maude := LibrivoxPerson{ID: 6106, FirstName: "Aylmer", LastName: "Maude"}
+	coauthored := func(id int) LibrivoxProject {
+		p := byAuthor(t, id, "Letters", "English", tolstoy)
+		p.Authors = append(p.Authors, maude)
+		return p
+	}
 	snap := writeSnapshot(t,
 		byAuthor(t, 99900, "Childhood", "English", tolstoy, wiener),
 		byAuthor(t, 99901, "Childhood", "English", gorky),
 		byAuthor(t, 99902, "Childhood (version 2)", "English", tolstoy, wiener),
+		byAuthor(t, 99903, "The Stories", "English", chekhov, garnett),
+		byAuthor(t, 99904, "The Stories", "English", dostoevsky, garnett),
+		coauthored(99905),
+		coauthored(99906),
 	)
 	dataDir := t.TempDir()
 	sum := runLibrivox(t, snap, dataDir, allLibrivox)
-	if sum.NewWorks != 1 || sum.NewRecordings != 2 {
-		t.Fatalf("works/recordings = %d/%d, want 1/2\nworklist: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
+	if sum.NewWorks != 3 || sum.NewRecordings != 4 {
+		t.Fatalf("works/recordings = %d/%d, want 3/4\nworklist: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
 	}
+	childhood := []LibrivoxCandidate{{"childhood", "Childhood"}}
 	want := []LibrivoxWorklistEntry{{
 		Project: 99901, Title: "Childhood", Authors: []string{"Максим Горький"},
-		Reason: LibrivoxAuthorUnmatched, Candidates: []LibrivoxCandidate{{"childhood", "Childhood"}},
+		Reason: LibrivoxAuthorUnmatched, Candidates: childhood,
+	}, {
+		Project: 99902, Title: "Childhood", Authors: []string{"Лев Толстой", "Leo Wiener (Translator)"},
+		Reason: LibrivoxAuthorUnmatched, Candidates: childhood,
+	}, {
+		Project: 99904, Title: "The Stories", Authors: []string{"Фёдор Достоевский", "Constance Garnett (Translator)"},
+		Reason: LibrivoxAuthorUnmatched, Candidates: []LibrivoxCandidate{{"the-stories", "The Stories"}},
 	}}
 	if !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
 		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
 	}
-	if got := recSlugsOf(t, dataDir, "childhood"); len(got) != 2 {
-		t.Errorf("childhood recordings = %v, want the first and third projects", got)
+	for slug, n := range map[string]int{"childhood": 1, "the-stories": 1, "letters": 2} {
+		if got := recSlugsOf(t, dataDir, slug); len(got) != n {
+			t.Errorf("%s recordings = %v, want %d", slug, got, n)
+		}
 	}
 	mustValidate(t, dataDir)
 

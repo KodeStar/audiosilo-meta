@@ -365,7 +365,8 @@ librivox worklist: 2 projects skipped for a person to resolve (re-import the ids
 The reasons: `several-works` (two or more works qualify under rule 2),
 `author-unmatched` (a work carries the title but its authors only partly agree,
 or the agreement rests on the catch-all person a name in an unsluggable script
-falls back to), `differently-spelled-title` (the duplicate-identity guard holds
+falls back to: no real author is shared, and a shared translator does not
+count), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
 apart) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--conflicts` rows for these projects

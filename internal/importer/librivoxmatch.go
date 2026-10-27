@@ -190,14 +190,17 @@ func anyUnsluggedCredit(credits []credit) bool {
 }
 
 // restsOnCatchAll reports whether a work's author agreement with a row rests
-// only on the catch-all person: the row's identity authors include it, and no
-// other person the row credits is credited on the work.
+// on the catch-all person: the row's identity authors include it, and none of
+// the row's OTHER identity authors is an author of the work. A shared
+// translator or other role-credited person is not enough: a Cyrillic-named
+// Chekhov and a Cyrillic-named Dostoevsky both translated by Constance Garnett
+// are still two authors on one catch-all record.
 func restsOnCatchAll(authors workAuthors, ws *workState) bool {
 	if !slices.Contains(authors.identity, model.UnslugPersonID) {
 		return false
 	}
-	for _, a := range authors.all {
-		if a != model.UnslugPersonID && ws.all[a] {
+	for _, a := range authors.identity {
+		if a != model.UnslugPersonID && ws.authors[a] {
 			return false
 		}
 	}
@@ -292,8 +295,9 @@ type librivoxRoute struct {
 // credits are resolved and its chain walked only when the key holds a work - the
 // duplicate-identity guard's own gate, for the same reason.
 //
-// A rule-1 hit whose author agreement rests ONLY on the catch-all person (every
-// author the row and the work share is model.UnslugPersonID) decides nothing
+// A rule-1 hit whose author agreement rests on the catch-all person (no real
+// author the row and the work share besides model.UnslugPersonID; a shared
+// translator does not count) decides nothing
 // either: two "Childhood"s by two Cyrillic-named authors both credit that one
 // record, so the hit is an author-unmatched worklist row, never an attach. Such
 // a row is the one case probed even when the index holds nothing, since a chain
