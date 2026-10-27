@@ -12,6 +12,7 @@ func TestTierOfSource(t *testing.T) {
 		want       SourceTier
 	}{
 		{"libex-import", TierBulkMirror},
+		{"librivox", TierBulkMirror},
 		{"user", TierUserLibrary},
 		{"openaudible-import", TierUserLibrary},
 		{"libation-import", TierUserLibrary},
@@ -41,6 +42,8 @@ func TestBulkMirrorOnly(t *testing.T) {
 		want    bool
 	}{
 		{"libex only", []Source{{Type: "libex-import", Ref: "B0AAA"}}, true},
+		{"librivox only", []Source{{Type: "librivox", Ref: "527"}}, true},
+		{"librivox then a user hand edit", []Source{{Type: "librivox", Ref: "527"}, {Type: "user"}}, false},
 		{
 			"libex only, several entries",
 			[]Source{{Type: "libex-import", Ref: "B0AAA"}, {Type: "libex-import", Ref: "B0BBB"}},

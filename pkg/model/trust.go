@@ -56,10 +56,12 @@ const (
 	SourceLibationImport       = "libation-import"
 	SourceAudiosiloBooksImport = "audiosilo-books-import" // metascan scans and the site's /import
 
-	// The bulk-mirror tier. Today this is exactly libex-import, which is why the
-	// policy is written as "libex-only" in the docs; a second mirror source would
-	// join the table below and nothing else would change.
+	// The bulk-mirror tier: libex-import (the retail-catalogue mirror, which is
+	// why the policy is written as "libex-only" in the docs) and librivox (the
+	// public-domain LibriVox catalogue, LICENSING.md's one named exception to
+	// "never an unbounded mirror"). A user hand edit outranks both.
 	SourceLibexImport = "libex-import"
+	SourceLibrivox    = "librivox"
 
 	// The reference tier: crosswalks and lookups, which carry no policy.
 	SourceAudibleLookup = "audible-lookup"
@@ -78,6 +80,7 @@ const (
 // "deliberately inert" distinguishable from "nobody has classified this yet".
 var sourceTiers = map[string]SourceTier{
 	SourceLibexImport: TierBulkMirror,
+	SourceLibrivox:    TierBulkMirror,
 
 	SourceUser:                 TierUserLibrary,
 	SourceOpenAudibleImport:    TierUserLibrary,

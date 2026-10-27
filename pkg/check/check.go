@@ -466,6 +466,7 @@ func load(lst *pack.Listing, rdr *pack.Reader, opts LoadOptions) (Result, *pathI
 	checkUniqueness(cat, recs, idx, add)
 	checkRegionalPublishers(recs, add)
 	checkChapters(recs, add)
+	checkLibrivox(cat, recs, idx, add)
 	checkSeriesPositions(cat, idx, add)
 	checkGenresSorted(cat, idx, add)
 	checkCreditPairs(cat, idx, add)

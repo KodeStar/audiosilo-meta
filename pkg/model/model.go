@@ -78,8 +78,14 @@ type Person struct {
 	SortName    string      `json:"sort_name,omitempty"`
 	Description string      `json:"description,omitempty"`
 	Xref        *PersonXref `json:"xref,omitempty"`
-	License     string      `json:"license"`
-	Sources     []Source    `json:"sources"`
+	// LibrivoxReaderID / LibrivoxAuthorID are the person's LibriVox catalogue
+	// ids (two namespaces: a reader and an author are numbered apart). A
+	// LibriVox import keys people on them, so a rerun never mints a second
+	// record; pkg/check holds each unique across the dataset. 0 = none.
+	LibrivoxReaderID int      `json:"librivox_reader_id,omitempty"`
+	LibrivoxAuthorID int      `json:"librivox_author_id,omitempty"`
+	License          string   `json:"license"`
+	Sources          []Source `json:"sources"`
 }
 
 // Contributor roles: the controlled vocabulary of
@@ -259,6 +265,19 @@ type Chapter struct {
 	Title    string `json:"title"`
 	StartMS  int64  `json:"start_ms"`
 	LengthMS int64  `json:"length_ms"`
+	// AudioURL is the audio file this chapter IS, for a recording published as
+	// one file per section (a LibriVox section's archive.org MP3). pkg/check
+	// requires the recording's LibrivoxID beside it.
+	AudioURL string `json:"audio_url,omitempty"`
+}
+
+// RecordingLinks is where a recording is published, each URL as its source
+// stated it (https only): the catalogue page, a zip of every file, the podcast
+// feed. Only a LibriVox recording carries them today.
+type RecordingLinks struct {
+	Librivox string `json:"librivox,omitempty"`
+	Zip      string `json:"zip,omitempty"`
+	RSS      string `json:"rss,omitempty"`
 }
 
 // Recording is a specific narration/production of a work.
@@ -278,6 +297,13 @@ type Recording struct {
 	ISBN       []ISBNRef         `json:"isbn,omitempty"`
 	CoverURL   string            `json:"cover_url,omitempty"`
 	Chapters   []Chapter         `json:"chapters,omitempty"`
+	// LibrivoxID is the LibriVox project id this recording IS (0 = not a
+	// LibriVox recording): the identity a LibriVox import deduplicates on,
+	// unique across the dataset. ArchiveID is the Internet Archive item holding
+	// its files, Links where it is published.
+	LibrivoxID int             `json:"librivox_id,omitempty"`
+	ArchiveID  string          `json:"archive_id,omitempty"`
+	Links      *RecordingLinks `json:"links,omitempty"`
 	// AddedAt is when the recording entered the database, in the same two
 	// accepted shapes as Work.AddedAt.
 	AddedAt string   `json:"added_at,omitempty"`

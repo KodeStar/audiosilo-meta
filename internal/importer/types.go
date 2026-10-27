@@ -29,6 +29,7 @@ const (
 	sourceOpenAud  = model.SourceOpenAudibleImport
 	sourceLibation = model.SourceLibationImport
 	sourceLibex    = model.SourceLibexImport
+	sourceLibrivox = model.SourceLibrivox
 )
 
 // OutSource is a record's provenance stamp (type/ref/imported_at).
@@ -83,6 +84,9 @@ type outChapter struct {
 	Title    string `json:"title"`
 	StartMS  int64  `json:"start_ms"`
 	LengthMS int64  `json:"length_ms"`
+	// AudioURL is the section's own audio file (a LibriVox archive.org MP3);
+	// only a LibriVox recording states one (pkg/check requires librivox_id).
+	AudioURL string `json:"audio_url,omitempty"`
 }
 
 type outRecording struct {
@@ -98,6 +102,12 @@ type outRecording struct {
 	ISBN        []string     `json:"isbn,omitempty"`
 	CoverURL    string       `json:"cover_url,omitempty"`
 	Chapters    []outChapter `json:"chapters,omitempty"`
+	// LibrivoxID / ArchiveID / Links are a LibriVox recording's identity, its
+	// Internet Archive item and where it is published (librivox.go); every other
+	// source leaves them empty.
+	LibrivoxID int                   `json:"librivox_id,omitempty"`
+	ArchiveID  string                `json:"archive_id,omitempty"`
+	Links      *model.RecordingLinks `json:"links,omitempty"`
 	// AddedAt is stamped only on a recording the run CREATES; see outWork.
 	AddedAt string      `json:"added_at,omitempty"`
 	License string      `json:"license"`
@@ -299,8 +309,8 @@ type Summary struct {
 	NewRecordings int
 	NewPeople     int
 	NewSeries     int
-	// Skipped counts books skipped because their ASIN already exists in the
-	// catalog (already-present).
+	// Skipped counts books skipped because their ASIN (for a LibriVox row, its
+	// project id) already exists in the catalog (already-present).
 	Skipped int
 	// MergedASINs counts re-release ASINs merged into an existing recording (a
 	// same-work, same-narrator entry whose only new fact was another ASIN),
@@ -499,6 +509,11 @@ type Summary struct {
 	// RunLevelWarnings is how many leading Warnings are run-level; the rest are
 	// per-row (RowWarnings).
 	RunLevelWarnings int
+	// LibrivoxProjects counts the snapshot projects a LibriVox run selected
+	// (its --ids), and LibrivoxIDsStamped the LibriVox reader and author ids it
+	// recorded on people (librivox.go). Both 0 for every other source.
+	LibrivoxProjects   int
+	LibrivoxIDsStamped int
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from

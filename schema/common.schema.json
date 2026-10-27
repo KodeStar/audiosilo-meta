@@ -56,6 +56,7 @@
             "libation-import",
             "audiosilo-books-import",
             "libex-import",
+            "librivox",
             "audible-lookup",
             "openlibrary",
             "wikidata",
@@ -71,6 +72,17 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         }
       }
+    },
+    "https_url": {
+      "description": "An absolute https URL. Format-checked as a URI and required to start with https://, stored as the source stated it.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "librivox_id": {
+      "description": "A LibriVox catalogue id (a project id on a recording, a reader or author id on a person), as LibriVox's API states it. One namespace per field; pkg/check holds each unique across the dataset.",
+      "type": "integer",
+      "minimum": 1
     },
     "sources": {
       "type": "array",

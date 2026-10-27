@@ -209,10 +209,45 @@ copyright status of the individual rows. The import posture is therefore
   date - a fact the source states - and are corrected like any other fact when
   the announcement and reality part company.
 
-Wholesale mirroring of a third-party catalogue remains out of bounds. Every
+Wholesale mirroring of a third-party catalogue remains out of bounds, with the
+one exception the next section names. Every
 imported record is stamped with a typed `sources[]` entry naming its origin, so
 the retraction promise below covers an entire source at once - and so a record's
-origin can be ranked, which is what the next section is about.
+origin can be ranked, which is what the section after it is about.
+
+## The public-domain exception: LibriVox
+
+[LibriVox](https://librivox.org) is the **one named exception** to "never an
+unbounded mirror". The project mirrors LibriVox's whole catalogue, every
+language, under source type `librivox`. The exception rests on two facts that
+hold for LibriVox and for no catalogue we otherwise import from:
+
+- **The recordings are in the public domain.** LibriVox volunteers release every
+  recording into the public domain, and the texts they read are public-domain
+  texts. There is no rightsholder whose market a catalogue of them could take
+  from.
+- **The catalogue states facts about them.** What we take is the factual record
+  of each project - who wrote it, who read it, what it is called, how long each
+  section runs and where the files are - which is what this database is.
+
+The purpose is to carry load LibriVox's volunteer server cannot: its API now
+caps and asks clients to slow down, and a full mirror is the only thing that
+lets an application stop calling it. The mirror is fetched politely (`limit=100`,
+five seconds between requests, a User-Agent naming meta.audiosilo.app and a
+contact address, backing off on `429`/`5xx`), from a local snapshot that is never
+committed, and lands in reviewed tranches by project-id range.
+
+**Facts only.** A LibriVox record carries the title, the authors, the readers
+(as narrators), the translators (as `translator` credits), the language, the
+runtime, the sections (as chapters, each with its `audio_url`), the genres
+mapped onto our vocabulary, the LibriVox ids and the archive.org identifier and
+links. It never carries the project `description`: it is often quoted from
+Wikipedia ("Summary from Wikipedia"), so it is neither ours to relicense nor
+CC0. The audio and the cover art stay on archive.org; we hold URLs.
+
+**The exception names LibriVox only.** It is not a general licence to mirror
+another catalogue, public-domain or otherwise: a second source would need its
+own section here, argued on its own facts, before any tooling points at it.
 
 ## Trust tiers and the user-overwrite rule
 
@@ -228,7 +263,7 @@ The ordering, over the `sources[]` entry `type`:
 |---|---|---|
 | **User library** | `user` (issue forms and hand edits), `openaudible-import`, `libation-import`, `audiosilo-books-import` (metascan folder scans, the site's `/import`) | May overwrite a bulk-mirror-only record |
 | Reference | `audible-lookup`, `openlibrary`, `wikidata`, `inventaire`, `community`, anything unclassified | No overwrite authority; its presence also means a record is not mirror-only |
-| **Bulk mirror** | `libex-import` | Overwritable by the tier above |
+| **Bulk mirror** | `libex-import`, `librivox` (the public-domain exception above) | Overwritable by the tier above: a user hand edit outranks either |
 
 The rule, applied at **record** granularity (not per field):
 

@@ -43,6 +43,14 @@
         }
       }
     },
+    "librivox_reader_id": {
+      "description": "This person's LibriVox reader id. A LibriVox import keys readers on it, so a rerun (or a reader renamed on LibriVox) never mints a second record. Unique across the dataset (pkg/check).",
+      "$ref": "common.schema.json#/$defs/librivox_id"
+    },
+    "librivox_author_id": {
+      "description": "This person's LibriVox author id (a separate namespace from reader ids). Unique across the dataset (pkg/check).",
+      "$ref": "common.schema.json#/$defs/librivox_id"
+    },
     "license": {
       "$ref": "common.schema.json#/$defs/license"
     },
