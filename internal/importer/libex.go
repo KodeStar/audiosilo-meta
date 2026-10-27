@@ -746,12 +746,7 @@ func creditIdentifies(name string) bool {
 	// Judged DECODED, as the import will read it: an escaped Cyrillic name
 	// ("&#1040;&#1085;&#1085;&#1072;") slugs to its digits, and only its decoded
 	// form reveals the name that would fall back to the catch-all.
-	for _, c := range sourceCredits([]string{DecodeHTMLEntities(name)}, "", creditCensus{}) {
-		if _, fellBack := personSlug(c.name); fellBack {
-			return false
-		}
-	}
-	return true
+	return !anyUnsluggedCredit(sourceCredits([]string{DecodeHTMLEntities(name)}, "", creditCensus{}))
 }
 
 // ---------------------------------------------------------------------------

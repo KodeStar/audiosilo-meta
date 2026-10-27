@@ -11,13 +11,15 @@ package importer
 //     a skip (dedupeByLibrivox), and a row is always a recording of its own: two
 //     projects are two productions, so addRecording never merges one into a
 //     same-narrator sibling.
-//   - Its WORK is found by the planner's ordinary identity walk (title chain,
-//     identity author set, language), so a project attaches to an existing work
-//     only when those agree and otherwise creates one. LibriVox's own repeat
-//     marker, a trailing "(version 2)", is stripped first: it numbers LibriVox
-//     projects of one text, not works. A title that slugs to nothing (a script
-//     Slugify folds away) is refused (refuseUnsluggedLibrivox), never filed
-//     under the shared "untitled" fallback.
+//   - Its WORK is found by librivoxmatch.go's rule (routeLibrivox): the
+//     planner's ordinary identity walk (title chain, identity author set,
+//     language) first, then the one work by the same authors whose title differs
+//     only by a leading article or punctuation; an ambiguous match is a skip on
+//     the run's worklist, and otherwise the row creates a work. LibriVox's own
+//     repeat marker, a trailing "(version 2)", is stripped first: it numbers
+//     LibriVox projects of one text, not works. A non-Latin title (it slugs to
+//     nothing, or most of its letters are not Latin script) never walks a slug
+//     chain: its new work is created at `librivox-<project id>`.
 //   - Its PEOPLE are keyed by LibriVox id. Before any census reads a name, a
 //     reader or author id the catalogue already holds is spelled the way that
 //     person is catalogued (keyLibrivoxCredits), so a reader renamed on
@@ -442,6 +444,10 @@ type librivoxState struct {
 	// landed is the rows whose recording this run created, in row order, with
 	// what the stamp checks a resolved person against.
 	landed []librivoxLanding
+	// titles is the spelling-variant index (librivoxmatch.go), built on first
+	// use; variantExamples names a few rows it attached, for the run's note.
+	titles          map[string][]string
+	variantExamples []string
 }
 
 // librivoxKey is one LibriVox id in its namespace.
@@ -474,23 +480,6 @@ func (p *planner) dedupeByLibrivox(b sourceBook) bool {
 		return false
 	}
 	p.summary.Skipped++
-	return true
-}
-
-// refuseUnsluggedLibrivox refuses a LibriVox row whose work title slugs to
-// nothing (a script Slugify folds entirely: Cyrillic, Greek, CJK...). The shared
-// planner files such a title under the "untitled" fallback, so every one of them
-// by the same unsluggable author - who falls back to the catch-all person - would
-// land as a recording of ONE work: War and Peace and Anna Karenina as one book.
-// The mirror takes every language, which makes that the common case rather than
-// the edge, so the row is a reported skip instead (never a guess, like an unknown
-// language); a slug rule that reads its script is a re-import of its id range.
-// false for any other row, and for a row with no title (addBook's own refusal).
-func (p *planner) refuseUnsluggedLibrivox(b sourceBook, workTitle string, warn func(string, ...any)) bool {
-	if b.lv == nil || workTitle == "" || !slugOfTitle(workTitle).fellBack {
-		return false
-	}
-	warn("title %q has no slug (its script is not one the slug rule reads); skipped rather than filed under \"untitled\" beside every other such title", workTitle)
 	return true
 }
 

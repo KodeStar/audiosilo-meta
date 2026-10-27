@@ -116,9 +116,29 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 	}
 	fmt.Printf("librivox: %d projects selected by --ids %s; %d LibriVox ids recorded on people\n",
 		sum.LibrivoxProjects, strings.TrimSpace(*idsFlag), sum.LibrivoxIDsStamped)
+	// The spelling-variant attachments are a run note (printSummary prints it).
+	if n := sum.LibrivoxFallbackSlugs; n > 0 {
+		fmt.Printf("librivox: %d new %s at librivox-<id> (non-Latin or unsluggable title)\n", n, plural(n, "work", "works"))
+	}
 	printSummary(sum, *dryRun, importer.ModeCreate)
 	if !*dryRun {
 		fmt.Printf("  %d pack files written\n", len(sum.Files))
 	}
+	printLibrivoxWorklist(sum.LibrivoxWorklist)
 	return 0
+}
+
+// printLibrivoxWorklist prints the projects the run skipped for a person to
+// resolve, one line each (importer.LibrivoxWorklistEntry.String): the project
+// id, its title and authors, the reason code and the catalogued works it names.
+// Nothing when the run skipped none.
+func printLibrivoxWorklist(entries []importer.LibrivoxWorklistEntry) {
+	if len(entries) == 0 {
+		return
+	}
+	fmt.Printf("librivox worklist: %d %s skipped for a person to resolve (re-import the ids once settled):\n",
+		len(entries), plural(len(entries), "project", "projects"))
+	for _, e := range entries {
+		fmt.Println("  " + e.String())
+	}
 }

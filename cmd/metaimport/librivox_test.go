@@ -88,3 +88,25 @@ func TestLibrivoxFetchWritesASnapshot(t *testing.T) {
 		t.Errorf("snapshot = %v, %v", projects, err)
 	}
 }
+
+func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
+	sum := importer.Summary{LibrivoxWorklist: []importer.LibrivoxWorklistEntry{{
+		Project: 527, Title: "The Metamorphosis", Authors: []string{"Franz Kafka"}, Reason: importer.LibrivoxSeveralWorks,
+		Candidates: []importer.LibrivoxCandidate{{Work: "metamorphosis", Title: "Metamorphosis"}, {Work: "metamorphosis-2", Title: "Metamorphosis"}},
+	}}, LibrivoxFallbackSlugs: 2}
+	run := func(string, importer.LibrivoxIDs, importer.Options) (importer.Summary, error) { return sum, nil }
+	out := captureStdout(t, func() {
+		if code := runLibrivoxImport([]string{"--from", librivoxFixture, "--ids", "527", "--dry-run"}, run); code != 0 {
+			t.Errorf("exit = %d", code)
+		}
+	})
+	for _, want := range []string{
+		"librivox: 2 new works at librivox-<id> (non-Latin or unsluggable title)",
+		"librivox worklist: 1 project skipped for a person to resolve",
+		`  527 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"`,
+	} {
+		if !strings.Contains(out, want) {
+			t.Errorf("no %q in:\n%s", want, out)
+		}
+	}
+}

@@ -199,6 +199,12 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 	// recorded, and both titles. `field` names WHICH disagreement this is, so a
 	// worklist holding runtime and release-date rows stays sortable.
 	p.recordConflict(b, RecRef{Work: match.work}, conflictFieldWorkIdentity, match.title, workTitle)
+	// A LibriVox row is also listed on the run's own worklist, which names it
+	// by its project id (it has no ASIN for the conflict row to carry).
+	if b.lv != nil {
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxDifferentlySpelled,
+			[]LibrivoxCandidate{{Work: match.work, Title: match.title}})
+	}
 	return true
 }
 
