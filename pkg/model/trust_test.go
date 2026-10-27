@@ -106,10 +106,33 @@ func TestSourceTiersCoverSchemaEnum(t *testing.T) {
 	if len(enum) == 0 {
 		t.Fatal("no source-type enum found in the schema")
 	}
+	inEnum := map[string]bool{}
 	for _, tp := range enum {
+		inEnum[tp] = true
 		if _, ok := sourceTiers[tp]; !ok {
 			t.Errorf("schema source type %q is not classified in pkg/model/trust.go - "+
 				"add it to sourceTiers (TierReference if it should carry no policy)", tp)
+		}
+	}
+	// The other direction: KnownSourceType answers from sourceTiers, so a type
+	// the table holds and the schema does not would be a filter value no record
+	// can carry.
+	for tp := range sourceTiers {
+		if !inEnum[tp] {
+			t.Errorf("sourceTiers classifies %q, which the schema's source-type enum does not name", tp)
+		}
+	}
+}
+
+func TestKnownSourceType(t *testing.T) {
+	for _, tp := range []string{SourceLibrivox, SourceLibexImport, SourceUser, SourceCommunity} {
+		if !KnownSourceType(tp) {
+			t.Errorf("KnownSourceType(%q) = false", tp)
+		}
+	}
+	for _, tp := range []string{"", "LibriVox", "audible", "librivox "} {
+		if KnownSourceType(tp) {
+			t.Errorf("KnownSourceType(%q) = true", tp)
 		}
 	}
 }

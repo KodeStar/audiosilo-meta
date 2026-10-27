@@ -79,6 +79,15 @@
       "format": "uri",
       "pattern": "^https://"
     },
+    "signed_year": {
+      "description": "A calendar year as a source stated it: a signed integer, negative for a year BC. There is no year 0, so 0 is refused rather than read as unknown - an unstated year is an absent field.",
+      "type": "integer",
+      "minimum": -9999,
+      "maximum": 9999,
+      "not": {
+        "const": 0
+      }
+    },
     "librivox_id": {
       "description": "A LibriVox catalogue id (a project id on a recording, a reader or author id on a person), as LibriVox's API states it. One namespace per field; pkg/check holds each unique across the dataset.",
       "type": "integer",

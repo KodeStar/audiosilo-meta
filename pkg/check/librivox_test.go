@@ -23,13 +23,20 @@ func librivoxRecording(id int, chapters string) string {
 		`,"license":"CC0-1.0","links":{"librivox":"https://librivox.org/the-metamorphosis-by-franz-kafka/","rss":"https://librivox.org/rss/527","zip":"https://archive.org/compress/metamorphosis_librivox/formats=64KBPS MP3&file=/metamorphosis_librivox.zip"},"narrators":["narrator-one"],"sources":[{"imported_at":"2026-10-27","ref":"527","type":"librivox"}],"work":"book-one"}`
 }
 
+// withLibrivoxExtras adds the L2 facts (copyright_year, links.text) to a
+// librivoxRecording, keeping the canonical key order.
+func withLibrivoxExtras(rec string) string {
+	rec = strings.Replace(rec, `,"id":"rec-one"`, `,"copyright_year":1915,"id":"rec-one"`, 1)
+	return strings.Replace(rec, `"rss":"https://librivox.org/rss/527"`, `"rss":"https://librivox.org/rss/527","text":"https://www.kafka.org/index.php?id=162,170,0,0,1,0"`, 1)
+}
+
 const lvChapters = `[{"audio_url":"https://www.archive.org/download/metamorphosis_librivox/metamorphosis_1_kafka_64kb.mp3","length_ms":2992000,"start_ms":0,"title":"I"},{"audio_url":"https://www.archive.org/download/metamorphosis_librivox/metamorphosis_2_kafka_64kb.mp3","length_ms":3231000,"start_ms":2992000,"title":"II"}]`
 
 func TestLibrivoxFieldsValid(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
-	files[lvRecRel] = librivoxRecording(527, lvChapters)
-	files[lvAuthorRel] = `{"id":"author-one","librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"librivox","ref":"527"}]}`
+	files[lvRecRel] = withLibrivoxExtras(librivoxRecording(527, lvChapters))
+	files[lvAuthorRel] = `{"birth_year":1883,"death_year":1924,"id":"author-one","librivox_author_id":100,"license":"CC0-1.0","name":"Author One","sources":[{"type":"librivox","ref":"527"}]}`
 	// A reader id and an author id are two namespaces: the same number on two
 	// people is not a collision.
 	files[lvNarrRel] = `{"id":"narrator-one","librivox_reader_id":100,"license":"CC0-1.0","name":"Narrator One","sources":[{"type":"librivox"}]}`
@@ -41,6 +48,14 @@ func TestLibrivoxFieldsValid(t *testing.T) {
 	rec := res.Catalog.Works[0].Recordings[0]
 	if rec.LibrivoxID != 527 || rec.ArchiveID != "metamorphosis_librivox" || rec.Links == nil || rec.Links.RSS != "https://librivox.org/rss/527" {
 		t.Errorf("recording LibriVox fields did not load: %+v links %+v", rec, rec.Links)
+	}
+	if rec.CopyrightYear != 1915 || rec.Links.Text != "https://www.kafka.org/index.php?id=162,170,0,0,1,0" {
+		t.Errorf("copyright_year / links.text did not load: %d %q", rec.CopyrightYear, rec.Links.Text)
+	}
+	for _, p := range res.Catalog.People {
+		if p.ID == "author-one" && (p.BirthYear != 1883 || p.DeathYear != 1924) {
+			t.Errorf("birth/death years did not load: %d %d", p.BirthYear, p.DeathYear)
+		}
 	}
 	if len(rec.Chapters) != 2 || !strings.HasSuffix(rec.Chapters[1].AudioURL, "metamorphosis_2_kafka_64kb.mp3") {
 		t.Errorf("chapter audio_url did not load: %+v", rec.Chapters)
@@ -82,7 +97,7 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 			want: "does not match pattern",
 		},
 		{
-			name: "links names only librivox, zip and rss",
+			name: "links names only librivox, zip, rss and text",
 			mutate: func(f map[string]string) {
 				f[lvRecRel] = strings.Replace(librivoxRecording(527, lvChapters), `"links":{`, `"links":{"forum":"https://forum.librivox.org/x",`, 1)
 			},
@@ -125,6 +140,48 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 				f[lvNarrRel] = `{"id":"narrator-one","license":"CC0-1.0","name":"Narrator One","sources":[{"type":"librivox-import"}]}`
 			},
 			want: "sources",
+		},
+		{
+			name: "copyright_year is an integer",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withLibrivoxExtras(librivoxRecording(527, lvChapters)), `"copyright_year":1915`, `"copyright_year":"1915"`, 1)
+			},
+			want: "copyright_year",
+		},
+		{
+			name: "copyright_year is never 0",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withLibrivoxExtras(librivoxRecording(527, lvChapters)), `"copyright_year":1915`, `"copyright_year":0`, 1)
+			},
+			want: "copyright_year",
+		},
+		{
+			name: "links.text must be https",
+			mutate: func(f map[string]string) {
+				f[lvRecRel] = strings.Replace(withLibrivoxExtras(librivoxRecording(527, lvChapters)), `"text":"https://www.kafka.org`, `"text":"http://www.kafka.org`, 1)
+			},
+			want: "does not match pattern",
+		},
+		{
+			name: "birth_year is never 0",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"birth_year":0,"id":"author-one","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "birth_year",
+		},
+		{
+			name: "death_year is a year, not a word",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"death_year":"alive","id":"author-one","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "death_year",
+		},
+		{
+			name: "death_year before birth_year",
+			mutate: func(f map[string]string) {
+				f[lvAuthorRel] = `{"birth_year":1924,"death_year":1883,"id":"author-one","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "death_year 1883 is before birth_year 1924",
 		},
 		{
 			name: "audio_url without librivox_id",
@@ -175,5 +232,17 @@ func TestLibrivoxRuleViolations(t *testing.T) {
 			}
 			t.Errorf("no problem contained %q; problems:\n%s", c.want, joinProblems(res.Problems))
 		})
+	}
+}
+
+// TestLifeYearsBC: negative years are years BC, so a death in -348 after a
+// birth in -428 is in order.
+func TestLifeYearsBC(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files[lvAuthorRel] = `{"birth_year":-428,"death_year":-348,"id":"author-one","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("BC life years should validate, got:\n%s", joinProblems(res.Problems))
 	}
 }

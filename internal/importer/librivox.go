@@ -64,11 +64,15 @@ func (n *lvInt) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-// LibrivoxPerson is an author or translator as LibriVox's feed states one.
+// LibrivoxPerson is an author or translator as LibriVox's feed states one. DOB
+// and DOD are free text there ("1883", "alive", ""); librivoxYear reads the ones
+// that are years.
 type LibrivoxPerson struct {
 	ID        lvInt  `json:"id"`
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`
+	DOB       string `json:"dob"`
+	DOD       string `json:"dod"`
 }
 
 // name is the person's display name: first and last joined, trimmed (the
@@ -103,7 +107,9 @@ type LibrivoxGenre struct {
 type LibrivoxProject struct {
 	ID            lvInt             `json:"id"`
 	Title         string            `json:"title"`
+	URLTextSource string            `json:"url_text_source"`
 	Language      string            `json:"language"`
+	CopyrightYear string            `json:"copyright_year"`
 	URLRSS        string            `json:"url_rss"`
 	URLZipFile    string            `json:"url_zip_file"`
 	URLLibrivox   string            `json:"url_librivox"`
@@ -274,10 +280,12 @@ func librivoxTitle(t string) string {
 // source's.
 func librivoxBook(pr LibrivoxProject) sourceBook {
 	facts := &librivoxFacts{id: int(pr.ID), archiveID: archiveIDOf(pr.URLIArchive)}
+	facts.copyrightYear, _ = librivoxYear(pr.CopyrightYear)
 	links := model.RecordingLinks{
 		Librivox: httpsOrEmpty(pr.URLLibrivox),
 		Zip:      httpsOrEmpty(pr.URLZipFile),
 		RSS:      httpsOrEmpty(pr.URLRSS),
+		Text:     httpsOrEmpty(pr.URLTextSource),
 	}
 	if links != (model.RecordingLinks{}) {
 		facts.links = &links
@@ -305,13 +313,13 @@ func librivoxBook(pr LibrivoxProject) sourceBook {
 	// identity author set).
 	for _, a := range pr.Authors {
 		if name := a.name(); name != "" {
-			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxAuthor, id: int(a.ID), name: name, index: len(b.authors)})
+			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxAuthor, id: int(a.ID), name: name, index: len(b.authors), life: lifeYearsOf(a)})
 			b.authors = append(b.authors, name)
 		}
 	}
 	for _, t := range pr.Translators {
 		if name := t.name(); name != "" {
-			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxAuthor, id: int(t.ID), name: name, index: len(b.authors), suffix: librivoxTranslatorSuffix})
+			facts.credits = append(facts.credits, librivoxCredit{kind: librivoxAuthor, id: int(t.ID), name: name, index: len(b.authors), suffix: librivoxTranslatorSuffix, life: lifeYearsOf(t)})
 			b.authors = append(b.authors, name+librivoxTranslatorSuffix)
 		}
 	}
@@ -373,6 +381,47 @@ func httpsOrEmpty(u string) string {
 	return u
 }
 
+// librivoxYearRE is a year as LibriVox's free-text year fields state one: a
+// signed number ("1883", "-428"), or a number marked BC ("428 BC", "428 BCE").
+var librivoxYearRE = regexp.MustCompile(`(?i)^(-?\d{1,4})(?:\s*(B\.?C\.?(?:E\.?)?))?$`)
+
+// librivoxYear reads one of LibriVox's year fields (copyright_year, an author's
+// dob or dod) as a signed year, negative BC. Anything that is not plainly a year
+// - "", "alive", "c. 1500", "0" (LibriVox's "not stated"), a negative number
+// that also says BC - reads as ok=false and is never written: a year is a fact
+// or it is absent, never a guess.
+func librivoxYear(s string) (int, bool) {
+	m := librivoxYearRE.FindStringSubmatch(strings.TrimSpace(s))
+	if m == nil {
+		return 0, false
+	}
+	y, err := strconv.Atoi(m[1])
+	if err != nil || y == 0 {
+		return 0, false
+	}
+	if m[2] != "" {
+		if y < 0 {
+			return 0, false
+		}
+		y = -y
+	}
+	return y, true
+}
+
+// lifeYears is a person's stated birth and death years (0 = not stated).
+type lifeYears struct{ birth, death int }
+
+// lifeYearsOf reads an author's dob and dod. A pair whose death precedes its
+// birth is dropped whole: one of the two is wrong and nothing says which.
+func lifeYearsOf(p LibrivoxPerson) lifeYears {
+	b, _ := librivoxYear(p.DOB)
+	d, _ := librivoxYear(p.DOD)
+	if b != 0 && d != 0 && d < b {
+		return lifeYears{}
+	}
+	return lifeYears{birth: b, death: d}
+}
+
 // archiveIDRE is the schema's archive_id pattern.
 var archiveIDRE = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]*$`)
 
@@ -416,15 +465,19 @@ type librivoxCredit struct {
 	name   string
 	index  int
 	suffix string
+	// life is an author's or translator's stated birth and death years (a
+	// reader states none), written with the id (stampLibrivoxID).
+	life lifeYears
 }
 
 // librivoxFacts is what a LibriVox row carries beyond the shared sourceBook
 // fields: its identity, its publication facts, and its credits' ids.
 type librivoxFacts struct {
-	id        int
-	archiveID string
-	links     *model.RecordingLinks
-	credits   []librivoxCredit
+	id            int
+	archiveID     string
+	links         *model.RecordingLinks
+	copyrightYear int
+	credits       []librivoxCredit
 	// audioURLs is each section's archive.org file in chapter order ("" when it
 	// states none). Only applyLibrivoxRecording puts them on chapters, so no
 	// other source's chapter rows can ever carry one.
@@ -545,6 +598,7 @@ func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 	rec.LibrivoxID = b.lv.id
 	rec.ArchiveID = b.lv.archiveID
 	rec.Links = b.lv.links
+	rec.CopyrightYear = b.lv.copyrightYear
 	if len(rec.Chapters) == len(b.lv.audioURLs) {
 		for i := range rec.Chapters {
 			rec.Chapters[i].AudioURL = b.lv.audioURLs[i]
@@ -625,6 +679,25 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 	return p.livePerson(r.slug)
 }
 
+// stampLifeYears writes an author's stated birth and death years onto the person
+// being stamped, only when the record states NEITHER: a year another source (or
+// a hand edit) wrote is never overwritten, and adding one half beside the other
+// half's existing value could pair a death with a birth it precedes.
+func stampLifeYears(raw map[string]any, life lifeYears) {
+	if _, has := raw["birth_year"]; has {
+		return
+	}
+	if _, has := raw["death_year"]; has {
+		return
+	}
+	if life.birth != 0 {
+		raw["birth_year"] = life.birth
+	}
+	if life.death != 0 {
+		raw["death_year"] = life.death
+	}
+}
+
 // stampLibrivoxID records one id on one person, appending the row's provenance
 // when it does so. An id the record already carries is a no-op. Its warnings are
 // about one row, so they join the per-row tier (labelled as bookLabel labels a
@@ -650,6 +723,7 @@ func (p *planner) stampLibrivoxID(slug string, c librivoxCredit, project int) {
 		return
 	}
 	raw[c.kind.field()] = c.id
+	stampLifeYears(raw, c.life)
 	srcArr, _ := raw["sources"].([]any)
 	raw["sources"] = appendSourceUnique(srcArr, OutSource{Type: p.sourceType, Ref: strconv.Itoa(project), ImportedAt: p.importDate})
 	p.putEntry(pack.FamilyPeople, slug, raw)
