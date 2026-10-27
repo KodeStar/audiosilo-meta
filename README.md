@@ -71,7 +71,10 @@ project exists.
   chapters). One work, many recordings. A production released in several
   marketplaces stays *one* recording: an ISBN may be written as
   `{"isbn": ..., "region": ...}` when the region is known, and `publishers[]`
-  records the other regions' imprints beside the publisher of record.
+  records the other regions' imprints beside the publisher of record. A LibriVox
+  recording also carries its project id (`librivox_id`), its archive.org item
+  (`archive_id`), `links` (catalogue page, zip, RSS) and an `audio_url` per
+  chapter (one per LibriVox section).
 - **Person** - a human shared across roles (author on works, narrator on
   recordings; can be both).
 - **Series** - a named series with an ordered list of member works (string
@@ -306,6 +309,42 @@ filenames alone), and a multi-file folder with no signal either way is counted
 in the summary so you know where to check for collections. The JSON goes to
 stdout by default (or `-o <file>`); a human-readable summary goes to stderr.
 Pass `-ffprobe ""` to skip ffprobe enrichment.
+
+## Importing LibriVox (metaimport librivox)
+
+LibriVox's catalogue is mirrored here under [LICENSING.md's public-domain
+exception](LICENSING.md#the-public-domain-exception-librivox) - facts only, never
+the project descriptions. It is two steps:
+
+```sh
+# 1) Fetch a local snapshot of LibriVox's audiobooks feed. Polite by design:
+#    100 projects a page, 5 s between requests, a User-Agent naming
+#    meta.audiosilo.app, Retry-After honoured on 429/5xx. Resumable: rerun the
+#    same command after an interrupt. The snapshot is never committed.
+go run ./cmd/metaimport librivox fetch --out ~/librivox-snapshot [--max-pages N]
+
+# 2) Import a tranche of it by project-id range (offline; --dry-run first).
+go run ./cmd/metaimport librivox import --from ~/librivox-snapshot --ids 1-2000 --dry-run
+```
+
+A snapshot is a directory: `manifest.json` (the fetch's resume state: feed,
+query, limit, next offset, page and project counts, complete or not) and
+`pages/offset-NNNNNNN.json`, each one feed response body verbatim. The importer
+reads every `pages/*.json` and needs nothing else, so a hand-assembled snapshot
+(the test fixtures are one) works too.
+
+What an import does: a project whose `librivox_id` is already catalogued is
+skipped (identity is the project id, never the title), so a rerun changes
+nothing. Otherwise it becomes a new recording - never merged into another
+recording - under the work the importer's ordinary identity walk finds (same
+title, same identity authors, same language; LibriVox's "(version 2)" title
+marker is stripped first), or under a new work. Readers are the narrators,
+translators are `translator` credits, sections are chapters (`start_ms`
+cumulative from each playtime, the section's file as `audio_url`), the language
+name maps to a code (an unknown language is a reported skip, never a guess) and
+genres map onto the vocabulary where one fits. People are keyed by
+`librivox_reader_id` / `librivox_author_id`: a known id resolves to its
+catalogued person whatever the feed now calls them.
 
 ## Audiobookshelf
 

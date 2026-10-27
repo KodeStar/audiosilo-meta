@@ -490,7 +490,10 @@ it, `pkg/check` and every writer now refuse it loudly.
 - **recording** - a member of its work entry's recordings map: a specific
   narration/production, with narrators, abridged (**optional**: absence =
   unknown, so importers omit it rather than guess), runtime_min, release_date,
-  publisher, region-scoped `asin[]`, `isbn[]`, cover_url, chapters. One work,
+  publisher, region-scoped `asin[]`, `isbn[]`, cover_url, chapters, and for a
+  LibriVox project `librivox_id` (its identity, unique), `archive_id`, `links`
+  and a per-chapter `audio_url` (LICENSING.md's public-domain exception;
+  `metaimport librivox`). One work,
   many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own
   ASINs). It keeps its own `id`, `work` backref, `license` and `sources`, so its
   bytes are the same as when it was a file of its own.
