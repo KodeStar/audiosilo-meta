@@ -191,8 +191,9 @@ func anyUnsluggedCredit(credits []credit) bool {
 
 // restsOnCatchAll reports whether a work's author agreement with a row rests
 // on the catch-all person: the row's identity authors include it, and none of
-// the row's OTHER identity authors is an author of the work. A shared
-// translator or other role-credited person is not enough: a Cyrillic-named
+// the row's other INDIVIDUAL identity authors (individualAuthor) is an author
+// of the work. A shared translator or other role-credited person is not
+// enough, nor is a shared collective such as Anonymous: a Cyrillic-named
 // Chekhov and a Cyrillic-named Dostoevsky both translated by Constance Garnett
 // are still two authors on one catch-all record.
 func restsOnCatchAll(authors workAuthors, ws *workState) bool {
@@ -200,7 +201,7 @@ func restsOnCatchAll(authors workAuthors, ws *workState) bool {
 		return false
 	}
 	for _, a := range authors.identity {
-		if a != model.UnslugPersonID && ws.authors[a] {
+		if individualAuthor(a) && ws.authors[a] {
 			return false
 		}
 	}

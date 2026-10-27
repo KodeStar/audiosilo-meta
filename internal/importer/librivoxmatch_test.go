@@ -404,6 +404,65 @@ func TestLibrivoxOrdinaryWalkNeverAttachesOnTheCatchAllPerson(t *testing.T) {
 	}
 }
 
+func TestLibrivoxCatchAllAgreementIgnoresACollectiveCoAuthor(t *testing.T) {
+	// "Anonymous" beside the catch-all names nobody either: two "Folk Tales" by
+	// two Cyrillic-named authors, each co-credited to Anonymous, are not one work.
+	afanasyev := LibrivoxPerson{ID: 6120, FirstName: "Александр", LastName: "Афанасьев"}
+	khudyakov := LibrivoxPerson{ID: 6121, FirstName: "Иван", LastName: "Худяков"}
+	anon := LibrivoxPerson{ID: 6122, LastName: "Anonymous"}
+	withAnon := func(id int, author LibrivoxPerson) LibrivoxProject {
+		p := byAuthor(t, id, "Folk Tales", "English", author)
+		p.Authors = append(p.Authors, anon)
+		return p
+	}
+	snap := writeSnapshot(t, withAnon(99930, afanasyev), withAnon(99931, khudyakov))
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 {
+		t.Fatalf("works/recordings = %d/%d, want 1/1\nworklist: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
+	}
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Project != 99931 || sum.LibrivoxWorklist[0].Reason != LibrivoxAuthorUnmatched {
+		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxSpellingVariantNeverAttachesOnASharedTranslator(t *testing.T) {
+	// Rule 2's single match is held to the same test as the ordinary walk: two
+	// Cyrillic-titled "Детство"s by two Cyrillic-named authors, both translated
+	// by Leo Wiener, agree only on the catch-all person and the translator.
+	tolstoy := LibrivoxPerson{ID: 6110, FirstName: "Лев", LastName: "Толстой"}
+	gorky := LibrivoxPerson{ID: 6111, FirstName: "Максим", LastName: "Горький"}
+	wiener := LibrivoxPerson{ID: 6112, FirstName: "Leo", LastName: "Wiener"}
+	snap := writeSnapshot(t,
+		byAuthor(t, 99920, "Детство", "Russian", tolstoy, wiener),
+		byAuthor(t, 99921, "Детство (version 2)", "Russian", gorky, wiener),
+	)
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.LibrivoxVariantsAttached != 0 {
+		t.Fatalf("works/recordings/variants = %d/%d/%d, want 1/1/0\nworklist: %v\nwarnings: %v",
+			sum.NewWorks, sum.NewRecordings, sum.LibrivoxVariantsAttached, sum.LibrivoxWorklist, sum.Warnings)
+	}
+	want := []LibrivoxWorklistEntry{{
+		Project: 99921, Title: "Детство", Authors: []string{"Максим Горький", "Leo Wiener (Translator)"},
+		Reason: LibrivoxAuthorUnmatched, Candidates: []LibrivoxCandidate{{"librivox-99920", "Детство"}},
+	}}
+	if !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
+		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
+	}
+	mustValidate(t, dataDir)
+
+	before := testpack.Snapshot(t, dataDir)
+	again := runLibrivox(t, snap, dataDir, allLibrivox)
+	if again.NewWorks+again.NewRecordings+again.NewPeople != 0 || len(again.Files) != 0 || !reflect.DeepEqual(again.LibrivoxWorklist, want) {
+		t.Errorf("rerun = %+v", again)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("rerun changed the tree")
+	}
+}
+
 func TestLibrivoxMostlyNonLatinTitlesKeyOnTheirOwnScript(t *testing.T) {
 	// "Сборник стихов 001" slugs to "001" and "The Война и мир" to "the": read
 	// through the slug rule they would join the catalogued "001" and "The" by
