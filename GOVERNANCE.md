@@ -286,6 +286,28 @@ larger cap, or the same automation pointed at
 (whose review bar is prose a human has to judge, which is why the repositories
 split) is a change to this document first and a change to the bot second.
 
+## The LibriVox lane (stub)
+
+A second automated lane, planned (LIBRIVOX-PLAN.md phase L4, in
+audiosilo-meta-sync) and **not running yet**. It keeps the LibriVox mirror
+current under [LICENSING.md's public-domain
+exception](LICENSING.md#the-public-domain-exception-librivox), which is the
+whole of its licence. Its invariant, written here before any code exists:
+
+- it adds only `librivox`-sourced works, people and recordings;
+- it never adds a series;
+- it never edits a record another source owns (a work or person it did not
+  create is reached only to attach a new LibriVox recording or stamp a LibriVox
+  id, as the importer does);
+- it reads LibriVox's `since` from its own cursor (the last successful run's
+  midnight UTC), which in practice is one request per run.
+
+The series-completion bot's "never adds a series, never a mirror" invariant above
+is unchanged by this lane. The backfill that seeds the mirror is not this lane:
+it lands as human-reviewed tranches (`metaimport librivox import --ids <range>`,
+about 2,000 projects per pull request) under the ordinary merge policy. The
+lane's review, cap and merge rules are written here when L4 is built.
+
 ## The steward (the maintainer's reviewer)
 
 The maintainer's review of data pull requests and data issues is carried out by

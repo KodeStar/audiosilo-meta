@@ -29,6 +29,7 @@ const (
 	sourceOpenAud  = model.SourceOpenAudibleImport
 	sourceLibation = model.SourceLibationImport
 	sourceLibex    = model.SourceLibexImport
+	sourceLibrivox = model.SourceLibrivox
 )
 
 // OutSource is a record's provenance stamp (type/ref/imported_at).
@@ -46,9 +47,13 @@ type OutPerson struct {
 	// Omitted on every ordinary record: an absent kind means "an individual, or
 	// unclassified", and nothing infers it. The one kind a writer sets by itself
 	// is `synthetic`, on the canonical AI-narration record (synthetic.go).
-	Kind    string      `json:"kind,omitempty"`
-	License string      `json:"license"`
-	Sources []OutSource `json:"sources"`
+	Kind string `json:"kind,omitempty"`
+	// LibrivoxReaderID / LibrivoxAuthorID are the LibriVox ids a LibriVox
+	// import keys the person on (librivox.go); 0 everywhere else.
+	LibrivoxReaderID int         `json:"librivox_reader_id,omitempty"`
+	LibrivoxAuthorID int         `json:"librivox_author_id,omitempty"`
+	License          string      `json:"license"`
+	Sources          []OutSource `json:"sources"`
 }
 
 type outWork struct {
@@ -83,6 +88,9 @@ type outChapter struct {
 	Title    string `json:"title"`
 	StartMS  int64  `json:"start_ms"`
 	LengthMS int64  `json:"length_ms"`
+	// AudioURL is the section's own audio file (a LibriVox archive.org MP3);
+	// only a LibriVox recording states one (pkg/check requires librivox_id).
+	AudioURL string `json:"audio_url,omitempty"`
 }
 
 type outRecording struct {
@@ -98,6 +106,12 @@ type outRecording struct {
 	ISBN        []string     `json:"isbn,omitempty"`
 	CoverURL    string       `json:"cover_url,omitempty"`
 	Chapters    []outChapter `json:"chapters,omitempty"`
+	// LibrivoxID / ArchiveID / Links are a LibriVox recording's identity, its
+	// Internet Archive item and where it is published (librivox.go); every other
+	// source leaves them empty.
+	LibrivoxID int                   `json:"librivox_id,omitempty"`
+	ArchiveID  string                `json:"archive_id,omitempty"`
+	Links      *model.RecordingLinks `json:"links,omitempty"`
 	// AddedAt is stamped only on a recording the run CREATES; see outWork.
 	AddedAt string      `json:"added_at,omitempty"`
 	License string      `json:"license"`

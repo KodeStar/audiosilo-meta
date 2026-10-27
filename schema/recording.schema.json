@@ -129,7 +129,37 @@
           "length_ms": {
             "type": "integer",
             "exclusiveMinimum": 0
+          },
+          "audio_url": {
+            "description": "The audio file this chapter IS, for a recording published as one file per section (LibriVox: the archive.org MP3). Only a LibriVox recording carries it today, so pkg/check requires librivox_id beside it.",
+            "$ref": "common.schema.json#/$defs/https_url"
           }
+        }
+      }
+    },
+    "librivox_id": {
+      "description": "The LibriVox project id this recording IS. The identity a LibriVox import deduplicates on (never the title); unique across the dataset (pkg/check).",
+      "$ref": "common.schema.json#/$defs/librivox_id"
+    },
+    "archive_id": {
+      "description": "The Internet Archive item identifier holding this recording's files (archive.org/details/<archive_id>).",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "links": {
+      "description": "Where the recording is published, as the source stated each URL: its catalogue page (librivox), a zip of every file (zip) and its podcast feed (rss). https only.",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "librivox": {
+          "$ref": "common.schema.json#/$defs/https_url"
+        },
+        "zip": {
+          "$ref": "common.schema.json#/$defs/https_url"
+        },
+        "rss": {
+          "$ref": "common.schema.json#/$defs/https_url"
         }
       }
     },
