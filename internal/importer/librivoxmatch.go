@@ -28,9 +28,9 @@ package importer
 //     or whose letters are mostly in such a script (librivoxNonLatinTitle),
 //     never walks a slug chain: the shared "untitled" one would file every such
 //     title by one author as one work, and a Latin or number fragment's chain
-//     would file it beside an unrelated book. It is matched by rule 2 alone (its key keeps the
-//     letters of its own script), and otherwise creates a new work at
-//     `librivox-<project id>`, titled as LibriVox writes it.
+//     would file it beside an unrelated book. It is matched by rule 2 alone
+//     (its key keeps the letters of its own script), and otherwise creates a
+//     new work at `librivox-<project id>`, titled as LibriVox writes it.
 //
 // A work by a DIFFERENT author under the same title is a different book: rule 1
 // walks past it and rule 2 does not list it, so the row creates a work of its
@@ -62,8 +62,9 @@ const (
 	// found the row's book under a title this rule does not read as the same
 	// (a subtitle or a decoration apart).
 	LibrivoxDifferentlySpelled = "differently-spelled-title"
-	// LibrivoxFallbackTaken: the row's title is non-Latin (librivoxNonLatinTitle) and its
-	// `librivox-<id>` work slug is already taken (or retired) by another record.
+	// LibrivoxFallbackTaken: the row's title is non-Latin (librivoxNonLatinTitle)
+	// and its `librivox-<id>` work slug is already taken (or retired) by another
+	// record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
 )
 
@@ -124,31 +125,46 @@ var librivoxArticles = map[string]bool{
 // dropped (never the only word), then case, punctuation, spacing and diacritics
 // folded away over the WHOLE title (no slug cap, so two long titles that differ
 // only near their end stay apart). The one separator kept is the one between two
-// numbers, so "Vol. 1, 2" and "Vol. 12" stay apart as their slugs do. A title in
-// a script the slug rule cannot write keys by its own letters, digits and marks
-// (librivoxScriptKey), so it still meets its own spelling. "" for a title with
-// no letter or digit at all.
+// numbers, so "Vol. 1, 2" and "Vol. 12" stay apart as their slugs do. A
+// non-Latin title (librivoxNonLatinTitle) keys by its own letters, digits and
+// marks (librivoxScriptKey), so it still meets its own spelling. "" for a title
+// with no letter or digit at all.
 func librivoxTitleKey(title string) string {
+	key, _ := librivoxTitleKeyOf(title)
+	return key
+}
+
+// librivoxTitleKeyOf is librivoxTitleKey together with whether the title is
+// non-Latin, both judged after the one article drop, so the index and the
+// routing can never read one title two ways ("The 論語" is non-Latin).
+func librivoxTitleKeyOf(title string) (key string, nonLatin bool) {
 	t := dropLibrivoxArticle(strings.TrimSpace(title))
-	if librivoxNonLatinTitle(t) {
-		return librivoxScriptKey(t)
+	if mostlyNonLatinLetters(t) {
+		return librivoxScriptKey(t), true
 	}
-	return joinSlugWords(model.SlugifyWhole(t))
+	if s := model.SlugifyWhole(t); s != "" {
+		return joinSlugWords(s), false
+	}
+	return librivoxScriptKey(t), true
 }
 
 // librivoxNonLatinTitle reports whether a title is read in its own script
-// rather than through the slug rule: it slugs to nothing, or MORE THAN HALF of
-// its letters are not Latin script (digits, punctuation, spaces and marks are
-// not counted). The slug rule keeps only a non-Latin title's Latin and digit
-// fragments, so "Сборник стихов 001" would walk as "001" and "The Война и мир"
-// as "the", each beside unrelated works; read by its own letters it keys as
-// itself and, matching nothing, gets `librivox-<id>`. A title exactly half
-// Latin ("Anna Karenina (Анна Каренина)") stays on the slug rule: its Latin
-// half is a whole title.
-func librivoxNonLatinTitle(t string) bool {
-	if slugOfTitle(t).fellBack {
-		return true
-	}
+// rather than through the slug rule: once its leading article is dropped, it
+// slugs to nothing, or MORE THAN HALF of its letters are not Latin script
+// (mostlyNonLatinLetters). The slug rule keeps only a non-Latin title's Latin
+// and digit fragments, so "Сборник стихов 001" would walk as "001" and
+// "The Война и мир" as "the", each beside unrelated works; read by its own
+// letters it keys as itself and, matching nothing, gets `librivox-<id>`. A
+// title exactly half Latin ("Anna Karenina (Анна Каренина)") stays on the slug
+// rule: its Latin half is a whole title.
+func librivoxNonLatinTitle(title string) bool {
+	_, nonLatin := librivoxTitleKeyOf(title)
+	return nonLatin
+}
+
+// mostlyNonLatinLetters reports whether more than half of t's letters are not
+// Latin script; digits, punctuation, spaces and marks are not counted.
+func mostlyNonLatinLetters(t string) bool {
 	var letters, latin int
 	for _, r := range t {
 		if !unicode.IsLetter(r) {
@@ -205,7 +221,7 @@ func joinSlugWords(slug string) string {
 
 func isASCIIDigit(c byte) bool { return c >= '0' && c <= '9' }
 
-// librivoxScriptKey is the key of a title the slug rule cannot write: its
+// librivoxScriptKey is the key of a non-Latin title (librivoxNonLatinTitle): its
 // letters, digits and marks, lower-cased, with only the generic combining
 // diacritics (model.IsCombiningMark: a Greek accent, a Cyrillic breve) folded
 // away. A script's OWN marks stay - a Devanagari vowel sign, the kana voicing
@@ -275,21 +291,22 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
-	// Judged after the article drop, as the key is, so the two always agree
-	// ("The 論語" is a non-Latin title).
-	nonLatin := librivoxNonLatinTitle(dropLibrivoxArticle(strings.TrimSpace(workTitle)))
-	slugs := p.librivoxTitleIndex()[librivoxTitleKey(workTitle)]
-	if len(slugs) > 0 || (!nonLatin && anyUnsluggedCredit(credits)) {
-		authors := p.rowWorkAuthorsRO(credits)
-		if !nonLatin {
-			if ws := p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws; ws != nil {
-				if restsOnCatchAll(authors, ws) {
-					p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf([]*workState{ws}))
-					return librivoxRoute{skip: true}
-				}
-				return librivoxRoute{}
+	key, nonLatin := librivoxTitleKeyOf(workTitle)
+	slugs := p.librivoxTitleIndex()[key]
+	if len(slugs) == 0 && (nonLatin || !anyUnsluggedCredit(credits)) {
+		return p.librivoxFallback(b, workTitle, nonLatin)
+	}
+	authors := p.rowWorkAuthorsRO(credits)
+	if !nonLatin {
+		if ws := p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws; ws != nil {
+			if restsOnCatchAll(authors, ws) {
+				p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf([]*workState{ws}))
+				return librivoxRoute{skip: true}
 			}
+			return librivoxRoute{}
 		}
+	}
+	if len(slugs) > 0 {
 		matched, partial := p.librivoxCandidates(slugs, lang, authors)
 		switch {
 		case len(matched) == 1 && !restsOnCatchAll(authors, matched[0]):
@@ -307,7 +324,13 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 			return librivoxRoute{skip: true}
 		}
 	}
+	return p.librivoxFallback(b, workTitle, nonLatin)
+}
 
+// librivoxFallback is a row rules 1-3 left undecided: the ordinary path, or for
+// a non-Latin title (rule 4) its `librivox-<id>` slug, a worklist skip when
+// another record already holds that slug.
+func (p *planner) librivoxFallback(b sourceBook, workTitle string, nonLatin bool) librivoxRoute {
 	if !nonLatin {
 		return librivoxRoute{}
 	}

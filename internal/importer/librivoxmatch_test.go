@@ -174,10 +174,7 @@ func TestLibrivoxNonLatinTitlesGetTheProjectSlug(t *testing.T) {
 	// any spelling variant. A Cyrillic-named author falls back to the catch-all
 	// person, so a title match resting on that person decides nothing.
 	project := func(id int, title, lang, first, last string) LibrivoxProject {
-		p := fixtureProject(t, 527)
-		p.ID, p.Title, p.Language, p.Translators = lvInt(id), title, lang, nil
-		p.Authors = []LibrivoxPerson{{ID: lvInt(6000 + id%100), FirstName: first, LastName: last}}
-		return p
+		return byAuthor(t, id, title, lang, LibrivoxPerson{ID: lvInt(6000 + id%100), FirstName: first, LastName: last})
 	}
 	unslugAuthor := func(id int, title string) LibrivoxProject {
 		p := project(id, title, "Russian", "Лев", "Толстой")
@@ -333,11 +330,11 @@ func TestLibrivoxWorklistEntryString(t *testing.T) {
 }
 
 // byAuthor is fixture project 527 under another id and title, by one author
-// (no translator) and read by David Barnes.
+// (translators as given) and read by David Barnes.
 func byAuthor(t *testing.T, id int, title, lang string, author LibrivoxPerson, translators ...LibrivoxPerson) LibrivoxProject {
 	t.Helper()
-	p := fixtureProject(t, 527)
-	p.ID, p.Title, p.Language = lvInt(id), title, lang
+	p := retitled(t, id, title)
+	p.Language = lang
 	p.Authors, p.Translators = []LibrivoxPerson{author}, translators
 	return p
 }
