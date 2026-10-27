@@ -61,7 +61,8 @@ import (
 // the work's translator credits: a project attached to a catalogued work lists
 // that work's translators, which may differ from LibriVox's; a translator's
 // LibriVox id and years come from the person record, so they appear once the
-// importer has stamped that person (an attach stamps only people the work names). Per-section readers are not stored: a recording with ONE narrator
+// importer has stamped that person (an attach stamps only people the work
+// names). Per-section readers are not stored: a recording with ONE narrator
 // names that reader on every section, a multi-reader recording names none.
 // Everything else - ids, the language name, copyright_year, URLs, runtimes,
 // section titles, files and playtimes, author ids and years - is LibriVox's value
