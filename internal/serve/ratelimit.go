@@ -58,6 +58,9 @@ const (
 	DefaultRateBurst = 400
 )
 
+// maxRefillSeconds is the longest refill time (burst/rate) a time.Duration holds.
+const maxRefillSeconds = float64(math.MaxInt64) / float64(time.Second)
+
 // validateRateLimit is Config's rule for the limit (see Config.RateLimit): 0
 // turns it off, whatever the burst; a limit needs a finite positive rate and a
 // burst of at least 1. A burst of 0 is refused, not defaulted: it reads as "no
@@ -70,6 +73,10 @@ func validateRateLimit(rate float64, burst int) error {
 		return fmt.Errorf("serve: rate limit %g: want a positive number of requests a second, or 0 to turn the limit off", rate)
 	case burst < 1:
 		return fmt.Errorf("serve: rate burst %d: want at least 1 while the rate limit is on (rate 0 turns it off)", burst)
+	case float64(burst)/rate >= maxRefillSeconds:
+		// The sweep's refill time (burst/rate) and Retry-After are Durations; past
+		// this they overflow, and a wrapped refill time sweeps every bucket.
+		return fmt.Errorf("serve: rate limit %g with burst %d: a bucket would take longer than %g seconds to refill", rate, burst, maxRefillSeconds)
 	}
 	return nil
 }

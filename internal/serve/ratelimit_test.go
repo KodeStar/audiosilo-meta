@@ -326,6 +326,8 @@ func TestRateLimitConfigIsExplicit(t *testing.T) {
 		{-1, 10, false},
 		{math.NaN(), 10, false},
 		{math.Inf(1), 10, false},
+		{1e-9, DefaultRateBurst, false},
+		{math.SmallestNonzeroFloat64, 1, false},
 	} {
 		err := validateRateLimit(tc.rate, tc.burst)
 		if (err == nil) != tc.ok {

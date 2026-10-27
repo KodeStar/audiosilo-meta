@@ -80,29 +80,26 @@ func main() {
 // envInt is envFloat for a whole number: a value that is not an integer
 // (including "2.5") is reported and falls back to def.
 func envInt(name string, def int) int {
-	raw := os.Getenv(name)
-	if raw == "" {
-		return def
-	}
-	v, err := strconv.Atoi(raw)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "metaserve: %s=%q is not a whole number; using %d\n", name, raw, def)
-		return def
-	}
-	return v
+	return envNumber(name, def, strconv.Atoi, "a whole number")
 }
 
 // envFloat is a flag's default read from the environment: the variable's value
 // when it parses as a number, else def. An unparsable value is reported, not
 // ignored, so a typo in a deployment's environment is visible at boot.
 func envFloat(name string, def float64) float64 {
+	return envNumber(name, def, func(s string) (float64, error) { return strconv.ParseFloat(s, 64) }, "a number")
+}
+
+// envNumber is envInt's and envFloat's one body: the parsed variable, or def
+// (reported when the variable is set but does not parse as what).
+func envNumber[T int | float64](name string, def T, parse func(string) (T, error), what string) T {
 	raw := os.Getenv(name)
 	if raw == "" {
 		return def
 	}
-	v, err := strconv.ParseFloat(raw, 64)
+	v, err := parse(raw)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "metaserve: %s=%q is not a number; using %g\n", name, raw, def)
+		fmt.Fprintf(os.Stderr, "metaserve: %s=%q is not %s; using %v\n", name, raw, what, def)
 		return def
 	}
 	return v
