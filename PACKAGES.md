@@ -1057,8 +1057,8 @@ names no section reader.
 
 **The RATE LIMIT and CACHE HEADERS (internal/serve ratelimit.go, cache.go).** Every API
 route wears `Server.public` = gzip(CORS(limit(h))), so the limit is inside CORS
-and a browser can read a 429's `Retry-After`; `/healthz` does not. The limiter
-is a per-client-address token bucket (`Config.RateLimit`/`RateBurst`, metaserve
+and a browser can read a 429's `Retry-After` (corsMW exposes it); `/healthz` does not. The limiter
+is a per-client-address token bucket (an IPv6 address keyed as its /64, `bucketKey`; `Config.RateLimit`/`RateBurst`, metaserve
 `--rate-limit 10 --rate-burst 30` and their `METASERVE_*` env twins; zero is off,
 which is the zero Config every test builds on), idle full buckets swept each
 minute. The client is the connection's address, or - only when that is one of

@@ -23,7 +23,10 @@ import (
 // that address is one of Config.TrustedProxies - the rightmost X-Forwarded-For
 // entry that is not itself a trusted proxy. A forwarded header from anywhere
 // else is a value the client chose, so it is never read: trusting it would let
-// every request name a fresh address and never be limited.
+// every request name a fresh address and never be limited. An IPv6 client's
+// bucket is its /64 (bucketKey): one subscriber is routinely handed a whole /64,
+// so keying the full address would hand every one of its addresses a fresh
+// bucket - the same "name a fresh address" escape, by a different route.
 
 // Defaults for metaserve's flags (cmd/metaserve): ten requests a second per
 // client with a burst of thirty is far beyond what a person browsing or an app
@@ -136,7 +139,7 @@ func (l *rateLimiter) clientAddr(r *http.Request) (netip.Addr, bool) {
 		hops = append(hops, strings.Split(v, ",")...)
 	}
 	for i := len(hops) - 1; i >= 0; i-- {
-		hop, err := netip.ParseAddr(strings.TrimSpace(hops[i]))
+		hop, err := parseHop(hops[i])
 		if err != nil {
 			// A hop that is not an address ends what can be read: the entries to
 			// its left were written by whoever wrote it.
@@ -150,6 +153,33 @@ func (l *rateLimiter) clientAddr(r *http.Request) (netip.Addr, bool) {
 	return remote, true
 }
 
+// parseHop reads one X-Forwarded-For entry: a bare address, or one a proxy wrote
+// with its port or in brackets ("203.0.113.7:51234", "[2001:db8::1]:443",
+// "[2001:db8::1]"). Refusing those would end the chain at the first such hop and
+// key every client behind that proxy on the proxy's own address.
+func parseHop(s string) (netip.Addr, error) {
+	s = strings.TrimSpace(s)
+	if a, err := netip.ParseAddr(strings.TrimSuffix(strings.TrimPrefix(s, "["), "]")); err == nil {
+		return a, nil
+	}
+	ap, err := netip.ParseAddrPort(s)
+	if err != nil {
+		return netip.Addr{}, err
+	}
+	return ap.Addr(), nil
+}
+
+// bucketKey is the address a client's bucket is keyed on: an IPv4 address as
+// itself, an IPv6 address as its /64 (see the file comment).
+func bucketKey(addr netip.Addr) netip.Addr {
+	if addr.Is6() && !addr.Is4In6() {
+		if p, err := addr.Prefix(64); err == nil {
+			return p.Addr()
+		}
+	}
+	return addr
+}
+
 // middleware answers 429 with Retry-After to a client past its bucket. The body
 // is the API's error envelope, and Cache-Control: no-store keeps a shared cache
 // from serving one client's refusal to another.
@@ -157,7 +187,7 @@ func (l *rateLimiter) middleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		addr, ok := l.clientAddr(r)
 		if ok {
-			if allowed, wait := l.allow(addr); !allowed {
+			if allowed, wait := l.allow(bucketKey(addr)); !allowed {
 				h := w.Header()
 				h.Set("Retry-After", httpx.RetryAfter(wait))
 				h.Set("Cache-Control", "no-store")

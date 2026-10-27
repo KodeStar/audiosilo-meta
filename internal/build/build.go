@@ -651,8 +651,9 @@ func insertRecording(st *stmts, workID string, r *model.Recording) error {
 		}
 	}
 	// r.Publishers is deliberately NOT built into the artifact yet: the data
-	// accrues ahead of its readers, exactly as work credits do. Adding a table
-	// for it is a later change, with the SchemaVersion bump that implies.
+	// accrues ahead of its readers, as work credits did until schema_version 8
+	// gave them work_credits. Adding a table for it is a later change, with the
+	// SchemaVersion bump that implies.
 	for i, ch := range r.Chapters {
 		if _, err := st.chapter.Exec(workID, r.ID, i, ch.Title, ch.StartMS, ch.LengthMS, nullStr(ch.AudioURL)); err != nil {
 			return err

@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"encoding/json"
 	"testing"
 )
 
@@ -95,6 +96,23 @@ func TestLibrivoxYear(t *testing.T) {
 		if got, ok := librivoxYear(in); ok {
 			t.Errorf("librivoxYear(%q) = %d, want not a year", in, got)
 		}
+	}
+}
+
+// TestLibrivoxYearFieldsDecodeEitherType: the feed states some numbers bare and
+// some quoted (lvInt's reason), so a year field arriving as a JSON number - or
+// null - reads as text rather than failing the decode of its whole page.
+func TestLibrivoxYearFieldsDecodeEitherType(t *testing.T) {
+	var pr LibrivoxProject
+	raw := `{"id":"527","copyright_year":1915,"authors":[{"id":"100","dob":1883,"dod":null}]}`
+	if err := json.Unmarshal([]byte(raw), &pr); err != nil {
+		t.Fatalf("decode: %v", err)
+	}
+	if pr.CopyrightYear != "1915" || len(pr.Authors) != 1 || pr.Authors[0].DOB != "1883" || pr.Authors[0].DOD != "" {
+		t.Errorf("decoded = %q %+v", pr.CopyrightYear, pr.Authors)
+	}
+	if got := lifeYearsOf(pr.Authors[0]); got != (lifeYears{birth: 1883}) {
+		t.Errorf("life = %+v", got)
 	}
 }
 

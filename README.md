@@ -238,7 +238,8 @@ Rate limit and caching: every API route (`/api/v1/*` and `/abs/search`, not
 429 with `Retry-After`. The client is the connection's address, or, when that
 address is one of `--trusted-proxy` (env `METASERVE_TRUSTED_PROXIES`, a
 comma-separated list of addresses and CIDR prefixes), the rightmost
-`X-Forwarded-For` entry that is not itself a trusted proxy. **Behind a reverse
+`X-Forwarded-For` entry that is not itself a trusted proxy (an IPv6 client
+counts as its /64). **Behind a reverse
 proxy, name it there**, or every request counts as the proxy and shares one
 bucket; a forwarded header from anywhere else is never read. The shipped
 `docker-compose.yml` already trusts the loopback and private ranges (its port is

@@ -151,6 +151,15 @@ export function slug(value: string): string {
 }
 
 /**
+ * operationAnchor is an operation's in-page anchor. A path served with and
+ * without its trailing slash (the LibriVox feed documents both spellings) would
+ * slug to one anchor, so the slashed one says so.
+ */
+export function operationAnchor(method: string, path: string): string {
+  return slug(`${method}-${path}`) + (path.length > 1 && path.endsWith('/') ? '-slash' : '')
+}
+
+/**
  * resolveRef follows a local JSON pointer ("#/components/schemas/WorkCard").
  * A non-local or dangling ref returns undefined rather than throwing: a page
  * that renders one shape as empty beats a build that fails on a typo in prose.
@@ -441,7 +450,7 @@ export function groupOperations(spec: OpenAPISpec): RenderedGroup[] {
       const rendered: RenderedOperation = {
         method: method.toUpperCase(),
         path,
-        anchor: slug(`${method}-${path}`),
+        anchor: operationAnchor(method, path),
         summary: op.summary ?? '',
         description: paragraphs(op.description),
         params: renderParams(spec, op.parameters ?? []),

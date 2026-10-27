@@ -413,13 +413,23 @@ func lvGenresSQL(ph string) string {
 	return `SELECT work_id, genre FROM work_genres WHERE work_id IN (` + ph + `) ORDER BY work_id, genre`
 }
 
+// The chapters and readers are read for the page's LIBRIVOX recordings only,
+// driven from the works' recordings so no other recording's rows are read: a
+// public-domain classic often carries a dozen retail recordings beside its
+// LibriVox one, each with its own chapter list, and none of them is on the page.
+// CROSS JOIN is SQLite's join-order pin: left to its own plan (no sqlite_stat1)
+// the planner drives from chapters through the transitive work_id constraint,
+// reading every recording's chapters and filtering after.
 func lvChaptersSQL(ph string) string {
-	return `SELECT work_id, recording_id, title, length_ms, audio_url FROM chapters WHERE work_id IN (` + ph + `) ORDER BY work_id, recording_id, idx`
+	return `SELECT r.work_id, r.id, c.title, c.length_ms, c.audio_url FROM recordings r ` +
+		`CROSS JOIN chapters c ON c.work_id = r.work_id AND c.recording_id = r.id ` +
+		`WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, c.idx`
 }
 
 func lvReadersSQL(ph string) string {
-	return `SELECT rn.work_id, rn.recording_id, p.name, p.librivox_reader_id FROM recording_narrators rn ` +
-		`JOIN people p ON p.id = rn.person_id WHERE rn.work_id IN (` + ph + `) ORDER BY rn.work_id, rn.recording_id, rn.ord`
+	return `SELECT r.work_id, r.id, p.name, p.librivox_reader_id FROM recordings r ` +
+		`CROSS JOIN recording_narrators rn ON rn.work_id = r.work_id AND rn.recording_id = r.id ` +
+		`JOIN people p ON p.id = rn.person_id WHERE r.work_id IN (` + ph + `) AND r.librivox_id IS NOT NULL ORDER BY r.work_id, r.id, rn.ord`
 }
 
 // librivoxFeedFacts reads the page's per-work and per-recording facts. The

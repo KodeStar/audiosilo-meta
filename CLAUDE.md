@@ -521,7 +521,7 @@ it, `pkg/check` and every writer now refuse it loudly.
   recording", never "which marketplace"; SchemaVersion is unmoved and a reader
   that ever needs the region is a later schema_version change. `publishers[]` is
   deliberately not in the artifact either - the data accrues ahead of its
-  readers, as work credits do. The region vocabulary is one shared def
+  readers, as work credits did until schema_version 8's `work_credits`. The region vocabulary is one shared def
   (`common.schema.json#/$defs/region`), reached by `asin[]`, the region-scoped
   ISBN and `publishers[]` alike, with drift guards on both Go mirrors
   (`internal/importer` `marketplaces`, `internal/issueform` `regionAliases`).

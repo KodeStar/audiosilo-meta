@@ -64,6 +64,27 @@ func (n *lvInt) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// lvText is a free-text field LibriVox may state as a JSON string or, as it
+// does with the integers lvInt reads, as a bare number ("copyright_year": 1915):
+// either reads as its text, and null or any other value as "" (not stated), so
+// one oddly typed year never fails the decode of a whole page.
+type lvText string
+
+func (t *lvText) UnmarshalJSON(b []byte) error {
+	var s string
+	if json.Unmarshal(b, &s) == nil {
+		*t = lvText(s)
+		return nil
+	}
+	var n json.Number
+	if json.Unmarshal(b, &n) == nil {
+		*t = lvText(n.String())
+		return nil
+	}
+	*t = ""
+	return nil
+}
+
 // LibrivoxPerson is an author or translator as LibriVox's feed states one. DOB
 // and DOD are free text there ("1883", "alive", ""); librivoxYear reads the ones
 // that are years.
@@ -71,8 +92,8 @@ type LibrivoxPerson struct {
 	ID        lvInt  `json:"id"`
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`
-	DOB       string `json:"dob"`
-	DOD       string `json:"dod"`
+	DOB       lvText `json:"dob"`
+	DOD       lvText `json:"dod"`
 }
 
 // name is the person's display name: first and last joined, trimmed (the
@@ -109,7 +130,7 @@ type LibrivoxProject struct {
 	Title         string            `json:"title"`
 	URLTextSource string            `json:"url_text_source"`
 	Language      string            `json:"language"`
-	CopyrightYear string            `json:"copyright_year"`
+	CopyrightYear lvText            `json:"copyright_year"`
 	URLRSS        string            `json:"url_rss"`
 	URLZipFile    string            `json:"url_zip_file"`
 	URLLibrivox   string            `json:"url_librivox"`
@@ -280,7 +301,7 @@ func librivoxTitle(t string) string {
 // source's.
 func librivoxBook(pr LibrivoxProject) sourceBook {
 	facts := &librivoxFacts{id: int(pr.ID), archiveID: archiveIDOf(pr.URLIArchive)}
-	facts.copyrightYear, _ = librivoxYear(pr.CopyrightYear)
+	facts.copyrightYear, _ = librivoxYear(string(pr.CopyrightYear))
 	links := model.RecordingLinks{
 		Librivox: httpsOrEmpty(pr.URLLibrivox),
 		Zip:      httpsOrEmpty(pr.URLZipFile),
@@ -414,8 +435,8 @@ type lifeYears struct{ birth, death int }
 // lifeYearsOf reads an author's dob and dod. A pair whose death precedes its
 // birth is dropped whole: one of the two is wrong and nothing says which.
 func lifeYearsOf(p LibrivoxPerson) lifeYears {
-	b, _ := librivoxYear(p.DOB)
-	d, _ := librivoxYear(p.DOD)
+	b, _ := librivoxYear(string(p.DOB))
+	d, _ := librivoxYear(string(p.DOD))
 	if b != 0 && d != 0 && d < b {
 		return lifeYears{}
 	}

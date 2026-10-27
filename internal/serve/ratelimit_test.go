@@ -93,6 +93,11 @@ func TestRateLimiterClientAddr(t *testing.T) {
 		{"a garbage hop ends the chain", "10.1.2.3:5000", []string{"198.51.100.1, nonsense"}, "10.1.2.3"},
 		{"ipv4-mapped proxy", "[::ffff:172.17.0.1]:5000", []string{"198.51.100.1"}, "198.51.100.1"},
 		{"ipv6 client", "[2001:db8::1]:5000", nil, "2001:db8::1"},
+		// A proxy that writes the client's port, or brackets an IPv6 hop, still
+		// names the client rather than ending the chain at the proxy.
+		{"hop with a port", "10.1.2.3:5000", []string{"198.51.100.1:51234"}, "198.51.100.1"},
+		{"bracketed ipv6 hop with a port", "10.1.2.3:5000", []string{"[2001:db8::7]:443"}, "2001:db8::7"},
+		{"bracketed ipv6 hop", "10.1.2.3:5000", []string{"[2001:db8::7]"}, "2001:db8::7"},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			r := httptest.NewRequest(http.MethodGet, "/api/v1/stats", nil)
@@ -105,6 +110,32 @@ func TestRateLimiterClientAddr(t *testing.T) {
 				t.Errorf("clientAddr = %v %v, want %s", got, ok, tc.want)
 			}
 		})
+	}
+}
+
+// TestBucketKey: an IPv6 client is limited as its /64, so cycling the addresses
+// of one subscriber's prefix buys no fresh bucket; IPv4 stays per address.
+func TestBucketKey(t *testing.T) {
+	for in, want := range map[string]string{
+		"203.0.113.7":           "203.0.113.7",
+		"2001:db8:1:2:aaaa::1":  "2001:db8:1:2::",
+		"2001:db8:1:2:bbbb::ff": "2001:db8:1:2::",
+		"2001:db8:1:3::1":       "2001:db8:1:3::",
+		"::ffff:198.51.100.9":   "::ffff:198.51.100.9",
+		"fe80::1:2:3:4%eth0":    "fe80::",
+	} {
+		if got := bucketKey(netip.MustParseAddr(in)); got.String() != want {
+			t.Errorf("bucketKey(%s) = %s, want %s", in, got, want)
+		}
+	}
+	clock := &fakeClock{t: time.Date(2026, 10, 27, 12, 0, 0, 0, time.UTC)}
+	l := newRateLimiter(1, 1, nil, clock.now)
+	if ok, _ := l.allow(bucketKey(netip.MustParseAddr("2001:db8:1:2::1"))); !ok {
+		t.Fatal("first request refused")
+	}
+	// Denied: another address in the same /64 is the same client.
+	if ok, _ := l.allow(bucketKey(netip.MustParseAddr("2001:db8:1:2::2"))); ok {
+		t.Error("a second address of one /64 bought a fresh bucket")
 	}
 }
 
@@ -191,6 +222,10 @@ func TestRateLimitAnswers429WithRetryAfter(t *testing.T) {
 		// CORS wraps the limit, so a browser can read the 429.
 		if resp.Header.Get("Access-Control-Allow-Origin") != "*" {
 			t.Errorf("429 without CORS: %v", resp.Header)
+		}
+		// Retry-After is not CORS-safelisted, so it must be exposed explicitly.
+		if resp.Header.Get("Access-Control-Expose-Headers") != "Retry-After" {
+			t.Errorf("429 does not expose Retry-After to a cross-origin script: %v", resp.Header)
 		}
 		var body map[string]string
 		if err := json.NewDecoder(resp.Body).Decode(&body); err != nil || body["error"] == "" {

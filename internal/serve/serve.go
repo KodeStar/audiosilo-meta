@@ -486,6 +486,10 @@ func corsMW(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		h := w.Header()
 		h.Set("Access-Control-Allow-Origin", "*")
+		// Retry-After is not a CORS-safelisted response header: without this a
+		// script on another origin sees a 429 (or a cold boot's 503) but cannot
+		// read how long to wait.
+		h.Set("Access-Control-Expose-Headers", "Retry-After")
 		h.Add("Vary", "Origin")
 		if r.Method == http.MethodOptions {
 			h.Set("Access-Control-Allow-Methods", "GET, OPTIONS")
