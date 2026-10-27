@@ -8,6 +8,7 @@ import (
 	"strings"
 	"testing"
 
+	meta "github.com/kodestar/audiosilo-meta"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -64,7 +65,7 @@ func fixtureProject(t *testing.T, id int) LibrivoxProject {
 func writeSnapshot(t *testing.T, projects ...LibrivoxProject) string {
 	t.Helper()
 	dir := t.TempDir()
-	body, err := json.Marshal(librivoxPage{Books: projects})
+	body, err := json.Marshal(librivoxPage{Books: &projects})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -469,5 +470,30 @@ func TestOnlyALibrivoxRowWritesAChapterAudioURL(t *testing.T) {
 	}
 	if raw := rawEntity(t, dataDir, "works/ch/chaptered/recordings/nadia-vox-2023.json"); strings.Contains(string(raw), "audio_url") {
 		t.Errorf("a non-LibriVox recording carries audio_url: %s", raw)
+	}
+}
+
+// TestArchiveIDPatternIsTheSchemas is the drift guard between archiveIDRE and
+// recording.schema.json's archive_id pattern: an id the importer keeps must be
+// one metacheck accepts.
+func TestArchiveIDPatternIsTheSchemas(t *testing.T) {
+	raw, err := meta.SchemaFS.ReadFile("schema/recording.schema.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Properties map[string]struct {
+			Pattern string `json:"pattern"`
+		} `json:"properties"`
+	}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	want := doc.Properties["archive_id"].Pattern
+	if want == "" {
+		t.Fatal("schema archive_id states no pattern; the drift guard would pass vacuously")
+	}
+	if got := archiveIDRE.String(); got != want {
+		t.Errorf("archiveIDRE = %q, the schema's = %q", got, want)
 	}
 }

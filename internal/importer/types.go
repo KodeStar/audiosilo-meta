@@ -47,13 +47,9 @@ type OutPerson struct {
 	// Omitted on every ordinary record: an absent kind means "an individual, or
 	// unclassified", and nothing infers it. The one kind a writer sets by itself
 	// is `synthetic`, on the canonical AI-narration record (synthetic.go).
-	Kind string `json:"kind,omitempty"`
-	// LibrivoxReaderID / LibrivoxAuthorID are the LibriVox ids a LibriVox
-	// import keys the person on (librivox.go); 0 everywhere else.
-	LibrivoxReaderID int         `json:"librivox_reader_id,omitempty"`
-	LibrivoxAuthorID int         `json:"librivox_author_id,omitempty"`
-	License          string      `json:"license"`
-	Sources          []OutSource `json:"sources"`
+	Kind    string      `json:"kind,omitempty"`
+	License string      `json:"license"`
+	Sources []OutSource `json:"sources"`
 }
 
 type outWork struct {

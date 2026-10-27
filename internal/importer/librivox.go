@@ -53,15 +53,9 @@ const LibrivoxPublisher = "LibriVox"
 type lvInt int
 
 func (n *lvInt) UnmarshalJSON(b []byte) error {
-	s := strings.Trim(strings.TrimSpace(string(b)), `"`)
-	if s == "" || s == "null" {
-		*n = 0
-		return nil
-	}
-	v, err := strconv.Atoi(strings.TrimSpace(s))
+	v, err := strconv.Atoi(strings.TrimSpace(strings.Trim(strings.TrimSpace(string(b)), `"`)))
 	if err != nil {
-		*n = 0
-		return nil
+		v = 0
 	}
 	*n = lvInt(v)
 	return nil
@@ -119,27 +113,24 @@ type LibrivoxProject struct {
 	Sections      []LibrivoxSection `json:"sections"`
 }
 
-// librivoxPage is one response body of the feed: {"books": [...]}.
+// librivoxPage is one response body of the feed: {"books": [...]}. Books is a
+// pointer so one decode tells a missing key from an empty list.
 type librivoxPage struct {
-	Books []LibrivoxProject `json:"books"`
+	Books *[]LibrivoxProject `json:"books"`
 }
 
 // parseLibrivoxPage decodes one response body. A body with no "books" key is an
 // error: the feed answers "no results" with {"error": ...} and a 404, which the
 // fetcher reads as the end of the catalogue and never stores as a page.
 func parseLibrivoxPage(body []byte) ([]LibrivoxProject, error) {
-	var probe map[string]json.RawMessage
-	if err := json.Unmarshal(body, &probe); err != nil {
-		return nil, fmt.Errorf("not a LibriVox feed page: %w", err)
-	}
-	if _, ok := probe["books"]; !ok {
-		return nil, fmt.Errorf("not a LibriVox feed page: no \"books\" key")
-	}
 	var page librivoxPage
 	if err := json.Unmarshal(body, &page); err != nil {
 		return nil, fmt.Errorf("not a LibriVox feed page: %w", err)
 	}
-	return page.Books, nil
+	if page.Books == nil {
+		return nil, fmt.Errorf("not a LibriVox feed page: no \"books\" key")
+	}
+	return *page.Books, nil
 }
 
 // The snapshot layout (written by LibrivoxFetcher.Fetch, read here):
@@ -158,6 +149,13 @@ const (
 
 // ReadLibrivoxSnapshot reads every project a snapshot holds, sorted by id.
 func ReadLibrivoxSnapshot(dir string) ([]LibrivoxProject, error) {
+	return readLibrivoxSnapshot(dir, nil)
+}
+
+// readLibrivoxSnapshot is ReadLibrivoxSnapshot keeping only the projects keep
+// selects (every project when keep is nil), so a tranche import holds only its
+// own projects rather than the whole catalogue.
+func readLibrivoxSnapshot(dir string, keep func(id int) bool) ([]LibrivoxProject, error) {
 	pagesDir := filepath.Join(dir, librivoxPagesDir)
 	entries, err := os.ReadDir(pagesDir)
 	if err != nil {
@@ -178,7 +176,9 @@ func ReadLibrivoxSnapshot(dir string) ([]LibrivoxProject, error) {
 			return nil, fmt.Errorf("%s: %w", path, err)
 		}
 		for _, b := range books {
-			byID[int(b.ID)] = b
+			if keep == nil || keep(int(b.ID)) {
+				byID[int(b.ID)] = b
+			}
 		}
 	}
 	out := make([]LibrivoxProject, 0, len(byID))
@@ -238,28 +238,19 @@ func RunLibrivox(snapshotDir string, ids LibrivoxIDs, opts Options) (Summary, er
 	if opts.Mode != ModeCreate {
 		return Summary{}, fmt.Errorf("a LibriVox import creates only; it has no %s mode", opts.Mode.runName())
 	}
-	projects, err := ReadLibrivoxSnapshot(snapshotDir)
+	// ParseLibrivoxIDs admits no id below 1, so every selected project has one.
+	projects, err := readLibrivoxSnapshot(snapshotDir, ids.Has)
 	if err != nil {
 		return Summary{}, err
 	}
-	var books []sourceBook
-	var parseWarnings []string
+	books := make([]sourceBook, 0, len(projects))
 	for _, pr := range projects {
-		if !ids.Has(int(pr.ID)) {
-			continue
-		}
-		b, warning := librivoxBook(pr)
-		if warning != "" {
-			parseWarnings = append(parseWarnings, warning)
-			continue
-		}
-		books = append(books, b)
+		books = append(books, librivoxBook(pr))
 	}
 	sum, err := runBooks(books, sourceLibrivox, opts, nil, func(p *planner) {
 		p.genres = librivoxGenreTable()
-		p.summary.Warnings = append(p.summary.Warnings, parseWarnings...)
 	})
-	sum.LibrivoxProjects = len(books) + len(parseWarnings)
+	sum.LibrivoxProjects = len(books)
 	return sum, err
 }
 
@@ -274,16 +265,12 @@ func librivoxTitle(t string) string {
 	return strings.TrimSpace(librivoxVersionRE.ReplaceAllString(strings.TrimSpace(t), ""))
 }
 
-// librivoxBook converts one project into the planner's sourceBook. A project the
-// planner could not address at all (no id) is refused here with a warning; every
-// other refusal - no reader, no author, an unknown language - is the planner's
-// own, so it is worded and counted like every other source's.
-func librivoxBook(pr LibrivoxProject) (sourceBook, string) {
-	id := int(pr.ID)
-	if id <= 0 {
-		return sourceBook{}, fmt.Sprintf("LibriVox project %q has no id; skipped", pr.Title)
-	}
-	facts := &librivoxFacts{id: id, archiveID: archiveIDOf(pr.URLIArchive)}
+// librivoxBook converts one selected project (its id is at least 1) into the
+// planner's sourceBook. Every refusal - no reader, no author, an unknown
+// language - is the planner's own, so it is worded and counted like every other
+// source's.
+func librivoxBook(pr LibrivoxProject) sourceBook {
+	facts := &librivoxFacts{id: int(pr.ID), archiveID: archiveIDOf(pr.URLIArchive)}
 	links := model.RecordingLinks{
 		Librivox: httpsOrEmpty(pr.URLLibrivox),
 		Zip:      httpsOrEmpty(pr.URLZipFile),
@@ -348,9 +335,7 @@ func librivoxBook(pr LibrivoxProject) (sourceBook, string) {
 			"start_offset_ms": json.Number(strconv.FormatInt(start, 10)),
 			"length_ms":       json.Number(strconv.FormatInt(length, 10)),
 		}
-		if u := httpsOrEmpty(s.ListenURL); u != "" {
-			ch["audio_url"] = u
-		}
+		facts.audioURLs = append(facts.audioURLs, httpsOrEmpty(s.ListenURL))
 		chapters = append(chapters, ch)
 		start += length
 	}
@@ -362,7 +347,7 @@ func librivoxBook(pr LibrivoxProject) (sourceBook, string) {
 			b.genres = append(b.genres, genreClaim{name: name})
 		}
 	}
-	return b, ""
+	return b
 }
 
 // librivoxTranslatorSuffix is the role qualifier a translator's name carries in
@@ -431,6 +416,10 @@ type librivoxFacts struct {
 	archiveID string
 	links     *model.RecordingLinks
 	credits   []librivoxCredit
+	// audioURLs is each section's archive.org file in chapter order ("" when it
+	// states none). Only applyLibrivoxRecording puts them on chapters, so no
+	// other source's chapter rows can ever carry one.
+	audioURLs []string
 }
 
 // librivoxState is a LibriVox run's planner state. The zero value is every
@@ -460,31 +449,19 @@ type librivoxLanding struct {
 	narrators map[string]bool
 }
 
-// librivoxIDs is the planner's project-id set, made on first use.
-func (p *planner) librivoxIDs() map[int]bool {
-	if p.lv.ids == nil {
-		p.lv.ids = map[int]bool{}
-	}
-	return p.lv.ids
-}
-
 // loadLibrivoxPerson indexes a catalogued person's LibriVox ids.
 func (p *planner) loadLibrivoxPerson(person *model.Person) {
 	for _, k := range []librivoxKey{{librivoxReader, person.LibrivoxReaderID}, {librivoxAuthor, person.LibrivoxAuthorID}} {
-		if k.id == 0 {
-			continue
+		if k.id != 0 {
+			p.lv.people[k] = person.ID
 		}
-		if p.lv.people == nil {
-			p.lv.people = map[librivoxKey]string{}
-		}
-		p.lv.people[k] = person.ID
 	}
 }
 
 // dedupeByLibrivox is the LibriVox twin of dedupeByASIN: a row whose project id
 // the catalogue (or this run) already holds is a skip. false for any other row.
 func (p *planner) dedupeByLibrivox(b sourceBook) bool {
-	if b.lv == nil || !p.librivoxIDs()[b.lv.id] {
+	if b.lv == nil || !p.lv.ids[b.lv.id] {
 		return false
 	}
 	p.summary.Skipped++
@@ -532,22 +509,22 @@ func (p *planner) keyLibrivoxCredits(books []sourceBook) {
 }
 
 // applyLibrivoxRecording puts a LibriVox row's identity and publication facts on
-// the recording addRecording is creating, and remembers the landing for the
-// people stamp. For every other row it only makes sure no chapter carries an
-// audio_url, which pkg/check allows on a LibriVox recording alone (a source
-// whose chapter rows happen to hold the key must not write a record the
-// post-import check refuses).
+// the recording addRecording is creating (each section's audio file on its
+// chapter, when buildChapters kept the list), and remembers the landing for the
+// people stamp. A no-op for every other row.
 func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 	if b.lv == nil {
-		for i := range rec.Chapters {
-			rec.Chapters[i].AudioURL = ""
-		}
 		return
 	}
 	rec.LibrivoxID = b.lv.id
 	rec.ArchiveID = b.lv.archiveID
 	rec.Links = b.lv.links
-	p.librivoxIDs()[b.lv.id] = true
+	if len(rec.Chapters) == len(b.lv.audioURLs) {
+		for i := range rec.Chapters {
+			rec.Chapters[i].AudioURL = b.lv.audioURLs[i]
+		}
+	}
+	p.lv.ids[b.lv.id] = true
 	p.lv.landed = append(p.lv.landed, librivoxLanding{facts: b.lv, work: rec.Work, narrators: ToSet(rec.Narrators)})
 }
 
@@ -626,9 +603,6 @@ func (p *planner) stampLibrivoxID(slug string, c librivoxCredit, project int) {
 	srcArr, _ := raw["sources"].([]any)
 	raw["sources"] = appendSourceUnique(srcArr, OutSource{Type: p.sourceType, Ref: strconv.Itoa(project), ImportedAt: p.importDate})
 	p.putEntry(pack.FamilyPeople, slug, raw)
-	if p.lv.people == nil {
-		p.lv.people = map[librivoxKey]string{}
-	}
 	p.lv.people[k] = slug
 	p.summary.LibrivoxIDsStamped++
 }

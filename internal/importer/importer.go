@@ -816,6 +816,7 @@ func newPlanner(store *pack.Store, sourceType string, opts Options) *planner {
 		loadedPositions:    opts.AttachEditions,
 		regenRecs:          regenRecsFor(opts.Mode),
 		rowsAsOf:           opts.RowsAsOf,
+		lv:                 librivoxState{ids: map[int]bool{}, people: map[librivoxKey]string{}},
 	}
 }
 
@@ -1207,7 +1208,7 @@ func (p *planner) loadExisting() {
 				p.narratorPeople[n] = true
 			}
 			if r.LibrivoxID != 0 {
-				p.librivoxIDs()[r.LibrivoxID] = true
+				p.lv.ids[r.LibrivoxID] = true
 			}
 			ri := &recInfo{
 				narrators: ToSet(r.Narrators),
@@ -3774,13 +3775,7 @@ func buildChapters(raw []rawChapter, warn func(string, ...any)) []outChapter {
 		if title == "" {
 			title = fmt.Sprintf("Chapter %d", i+1)
 		}
-		ch := outChapter{Title: title, StartMS: start, LengthMS: length}
-		// A section's own audio file (only a LibriVox row states one), https
-		// only, as the schema requires.
-		if u := strings.TrimSpace(rc.str("audio_url")); strings.HasPrefix(u, "https://") {
-			ch.AudioURL = u
-		}
-		out = append(out, ch)
+		out = append(out, outChapter{Title: title, StartMS: start, LengthMS: length})
 	}
 	if out[0].StartMS != 0 {
 		warn("chapters do not start at 0; chapters omitted")
