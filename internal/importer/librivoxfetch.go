@@ -14,7 +14,8 @@ package importer
 //   - a User-Agent naming meta.audiosilo.app and a contact address;
 //   - 429 and 5xx back off: Retry-After when the server sends one (seconds or
 //     an HTTP date), else an exponential wait from BackoffBase capped at
-//     MaxBackoff, for at most MaxRetries tries before the run stops - resumably;
+//     MaxBackoff, for at most MaxRetries retries (MaxRetries+1 requests per
+//     page) before the run stops - resumably;
 //   - RESUMABLE: every page is written atomically before the manifest records
 //     it, so a killed run resumes at the first page it had not finished.
 //
