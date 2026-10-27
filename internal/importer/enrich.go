@@ -171,9 +171,9 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestMerged && !overwrite {
 		return true
 	}
-	// A preorder-era record meeting a released row of its own ASIN is REFRESHED
-	// (refresh.go): the overwrite posture for runtime, cover, chapters and -
-	// from a row of the listing its date came from (redate) - release date,
+	// A preorder-era record meeting a released row of its FIRST ASIN (redate,
+	// the listing it was catalogued from) is REFRESHED (refresh.go): the
+	// overwrite posture for runtime, cover, chapters and release date,
 	// written by the fill block below, with the contradiction guard skipped - a
 	// corrected runtime and a moved date are what the refresh is for, and it has
 	// judged the runtime itself. The record is written whatever changed, since

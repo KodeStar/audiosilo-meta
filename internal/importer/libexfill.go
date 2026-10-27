@@ -441,7 +441,7 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 // libexRecordReleased reports whether a fetched record is a RELEASED listing by
 // the rule the refresh reads (planner.rowReleased): its release date on or
 // before the day libex last wrote it (day, the run's date, where it does not
-// say), and its
+// say; no full day is no verdict, as rowReleased reads it), and its
 // productState AVAILABLE where stated.
 func libexRecordReleased(rec map[string]any, day string) bool {
 	str := func(k string) string { s, _ := rec[k].(string); return s }
@@ -450,7 +450,7 @@ func libexRecordReleased(rec map[string]any, day string) bool {
 	}
 	rd := isoDatePart(str("releaseDate"))
 	state := str("productState")
-	return datePattern.MatchString(rd) && !releasedAfter(rd, day) && (state == "" || state == releasedProductState)
+	return datePattern.MatchString(rd) && len(day) == len("2006-01-02") && !releasedAfter(rd, day) && (state == "" || state == releasedProductState)
 }
 
 // fillChapters fetches the chapters payload for one target and attaches it to

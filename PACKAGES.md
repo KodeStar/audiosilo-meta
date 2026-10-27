@@ -1420,8 +1420,8 @@ runtime must clear a sanity floor (a fifth of the recorded estimate; measured
 corrections run 0.247x-2.52x) and agree within 10% with the row's chapter list,
 else with the recorded one (`judgeOwnASINRuntime`; the merge's twin is
 `judgeMergedRuntime`); a chapter list THINNER than a recorded table (one
-chapter, or under half as many, `thinnerChapters`) is never written, the other
-fields still refresh; and the run's day must be on or after the release date
+chapter, or under half as many, `thinnerChapters`) is never written, nor is it
+the runtime's evidence (the kept table is), the other fields still refresh; and the run's day must be on or after the release date
 the record carries once written, or its stamp would end nothing and be appended
 again on every run. A row failing any of that is ordinary enrichment.
 Narrators, abridged, publisher, `asin[]`, ISBNs and the work stay as enrichment

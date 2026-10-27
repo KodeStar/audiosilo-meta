@@ -426,6 +426,21 @@ func TestARefreshKeepsARecordedTableOverAThinnerOne(t *testing.T) {
 	}
 }
 
+// A runtime is judged against the table the record will KEEP: a one-chapter row
+// refused as thinner is not the evidence, so a runtime only it agrees with is
+// withheld rather than written beside a recorded table that refutes it.
+func TestAThinnerRowListIsNotTheRuntimeEvidence(t *testing.T) {
+	one := json.RawMessage(`[{"title":"Whole Book","startOffsetMs":0,"lengthMs":` + fmt.Sprint(estReleasedLen*60000) + `}]`)
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), estChapters(estEstimate, false))
+	sum := refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{"chapters": one}))
+	if sum.RefreshedRecordings != 0 || sum.RefreshedRuntimes != 0 {
+		t.Fatalf("summary = %+v, want no refresh on a runtime the kept table refutes", sum)
+	}
+	if got := readEstRecording(t, dataDir); got.RuntimeMin != estEstimate || len(got.Chapters) != 14 {
+		t.Errorf("recording = runtime %d, %d chapters; want %d and the recorded 14", got.RuntimeMin, len(got.Chapters), estEstimate)
+	}
+}
+
 // estChaptersOf is a row chapter list of n equal chapters totalling minutes.
 func estChaptersOf(minutes, n int) string {
 	var parts []string

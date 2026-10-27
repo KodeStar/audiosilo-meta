@@ -494,6 +494,9 @@ func TestLibexRecordReleasedFallsBackToTheRunDate(t *testing.T) {
 	if !libexRecordReleased(rec, "2026-10-27") {
 		t.Errorf("not released as of 2026-10-27, want released")
 	}
+	if libexRecordReleased(rec, "") {
+		t.Errorf("released with no run date, want no verdict")
+	}
 	rec["updatedAt"] = "2026-09-15T10:00:00+00:00"
 	if libexRecordReleased(rec, "2026-10-27") {
 		t.Errorf("a record libex last wrote before its release read as released")

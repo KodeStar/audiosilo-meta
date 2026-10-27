@@ -217,9 +217,9 @@ func (p *planner) redates(raw map[string]any, b sourceBook) bool {
 }
 
 // judgeRefresh decides whether row b refreshes the preorder-era recording raw:
-// a released row with a full date, stating a credible runtime, whose stamp ends
-// the era - the run's day on or after the release date the record carries once
-// written (the row's where it redates the record, else the recorded one).
+// a row of its FIRST ASIN (redate, p.redates), released, with a full date,
+// stating a credible runtime, whose stamp ends the era - the run's day on or
+// after the row's release date, the one the record carries once written.
 // withheld (with the evidence that refuted the runtime) is a released candidate
 // whose runtime the judgement refused - the caller notes it as a kept estimate
 // once the ordinary path has let the row through.
@@ -239,11 +239,15 @@ func (p *planner) judgeRefresh(raw map[string]any, b sourceBook, redate bool) (r
 // ASIN, the same product, so no estimate bound reads the stated runtime as
 // identity: it stands unless it is broken (refreshRuntimeCredible) or a chapter
 // TIMELINE refutes it - the row's own list, else the recorded one, within 10%.
-// The recorded runtime itself is never the evidence: one a merge already
-// corrected is still not what the released listing is judged against.
+// A row list THINNER than the recorded table (thinnerChapters) is not the
+// evidence: the refresh keeps the recorded table, so the runtime must agree
+// with the timeline the record will carry, not with a placeholder that agrees
+// with itself. The recorded runtime itself is never the evidence: one a merge
+// already corrected is still not what the released listing is judged against.
 func judgeOwnASINRuntime(raw map[string]any, b sourceBook) (ok bool, against runtimeEvidence) {
 	stated := b.runtimeMin
-	if rowChapters := rowChapterEvidence(b); len(rowChapters) > 0 {
+	recordedChapters, _ := raw["chapters"].([]any)
+	if rowChapters := rowChapterEvidence(b); len(rowChapters) > 0 && !thinnerChapters(len(rowChapters), len(recordedChapters)) {
 		against = runtimeEvidence{min: chapterMinutes(rowChapters)}
 	} else {
 		tl, has := rawChapterMinutes(raw["chapters"])
