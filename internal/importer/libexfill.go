@@ -33,6 +33,12 @@ import (
 // rule, same runtime/date contradiction guard, same libex-import provenance, so
 // a fetched row can do nothing an operator's row could not.
 //
+// The same fetch serves the POST-RELEASE REFRESH (refresh.go): with
+// --released-preorders the selection is SelectRefreshTargets - the preorder-era
+// recordings whose release date has passed - instead of the gaps, every target
+// asks for its chapters payload, and the enrichment those rows go through is the
+// one that refreshes them.
+//
 // The live service is the source rather than a dump because a dump is a
 // point-in-time mirror of libex's own database and the recent ASINs are exactly
 // the ones missing from it - all three ASINs our dump lacked for the #1405
@@ -47,10 +53,16 @@ const LibexBase = "https://libexdb.com"
 // superset of them, so projecting it down to exactly these keys yields a row
 // indistinguishable from a dump row - which is what lets the fetched rows go
 // through the ordinary enrichment path with no special case anywhere in it.
+//
+// productState and updatedAt are the two a live record adds that the parse
+// layer reads beyond the dump's: when libex last wrote the record (the capture
+// day the preorder-estimate rule judges "released" by) and whether the product
+// is on sale yet (the post-release refresh, refresh.go). A dump row simply
+// lacks them, which every reader takes as "not stated".
 var libexFillRowKeys = []string{
 	"asin", "authors", "bookFormat", "chapters", "genres", "imageUrl",
-	"language", "lengthMinutes", "narrators", "publisher", "region",
-	"releaseDate", "series", "subtitle", "title",
+	"language", "lengthMinutes", "narrators", "productState", "publisher", "region",
+	"releaseDate", "series", "subtitle", "title", "updatedAt",
 }
 
 // FillTarget is one recording the catalogue can have filled: an ASIN, and what
@@ -130,16 +142,13 @@ func UserLibraryOnly(targets []FillTarget, cat *model.Catalog) []FillTarget {
 	return out
 }
 
-// SelectFillTargetsIn is SelectFillTargets restricted to a set of work ids -
-// what the intake path uses, so a run triggered by one import fills that
-// import's records rather than walking the whole catalogue.
-func SelectFillTargetsIn(cat *model.Catalog, works map[string]bool) []FillTarget {
-	if len(works) == 0 {
-		return nil
-	}
-	all := SelectFillTargets(cat)
-	out := all[:0:0]
-	for _, t := range all {
+// RestrictToWorks keeps the targets in a set of work ids - what the intake path
+// uses, so a run triggered by one import fills that import's records rather than
+// walking the whole catalogue, and what --works applies to either selection
+// (SelectFillTargets, SelectRefreshTargets).
+func RestrictToWorks(targets []FillTarget, works map[string]bool) []FillTarget {
+	out := targets[:0:0]
+	for _, t := range targets {
 		if works[t.Work] {
 			out = append(out, t)
 		}

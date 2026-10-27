@@ -129,18 +129,18 @@ func TestSelectFillTargetsPicksOnlyTheGaps(t *testing.T) {
 	}
 }
 
-func TestSelectFillTargetsInRestrictsToTheGivenWorks(t *testing.T) {
+func TestRestrictToWorksKeepsTheGivenWorks(t *testing.T) {
 	cat := &model.Catalog{Works: []*model.Work{
 		{ID: "wanted", Recordings: []*model.Recording{
 			{ID: "r", ASIN: []model.ASIN{{Region: "us", ASIN: "B1"}}}}},
 		{ID: "other", Recordings: []*model.Recording{
 			{ID: "r", ASIN: []model.ASIN{{Region: "us", ASIN: "B2"}}}}},
 	}}
-	got := SelectFillTargetsIn(cat, map[string]bool{"wanted": true})
+	got := RestrictToWorks(SelectFillTargets(cat), map[string]bool{"wanted": true})
 	if len(got) != 1 || got[0].Work != "wanted" {
 		t.Fatalf("restricted select = %+v, want only the wanted work", got)
 	}
-	if n := len(SelectFillTargetsIn(cat, nil)); n != 0 {
+	if n := len(RestrictToWorks(SelectFillTargets(cat), nil)); n != 0 {
 		t.Errorf("an empty work set selected %d targets, want 0", n)
 	}
 }
@@ -149,7 +149,8 @@ const liveRecord = `{"asin":"B0LIVE","title":"A Book","subtitle":"Sub","language
 "bookFormat":"unabridged","lengthMinutes":300,"publisher":"Pub","region":"us",
 "releaseDate":"2020-01-01T00:00:00+00:00","imageUrl":"https://m.media-amazon.com/images/I/x.jpg",
 "authors":[{"name":"Author One","updatedAt":null}],"narrators":[{"name":"Narrator One","updatedAt":null}],
-"series":[],"genres":[],"description":"dropped","rating":4.5,"isVvab":false}`
+"series":[],"genres":[],"description":"dropped","rating":4.5,"isVvab":false,
+"productState":"AVAILABLE","updatedAt":"2026-10-27T04:24:18.183370+00:00"}`
 
 func TestFetchRowsProjectsToTheExportRowShape(t *testing.T) {
 	srv := libexFillServer(t, &libexFill{records: map[string]string{"B0LIVE": liveRecord}})

@@ -464,8 +464,11 @@ func TestEstimateRuntimesHaveTheirOwnBound(t *testing.T) {
 	}
 }
 
-// A chapterless estimate keeps a runtime bound: a released row of a clearly
-// different length is another production, on the merge and on enrichment.
+// A chapterless estimate keeps a runtime bound on the merge: a released row of
+// a clearly different length is another production. A row of the recording's
+// OWN ASIN is the same product, so enrichment holds it to no bound but the
+// refresh's sanity floor (refresh.go): 300 against 840 is a correction, and a
+// value under a fifth of the estimate is refused as the contradiction it was.
 func TestAChapterlessEstimateKeepsARuntimeBound(t *testing.T) {
 	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
@@ -478,9 +481,19 @@ func TestAChapterlessEstimateKeepsARuntimeBound(t *testing.T) {
 	}
 
 	dataDir = seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
+		estRow(estUSASIN, "us", 300, "unabridged", ""))
+	if sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 1 || sum.RefreshedRecordings != 1 {
+		t.Errorf("summary = %+v, want the own ASIN's released runtime to replace the estimate", sum)
+	}
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != 300 {
+		t.Errorf("runtime = %d, want the released 300", rec.RuntimeMin)
+	}
+
+	dataDir = seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	var conflicts bytes.Buffer
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
-		estRow(estUSASIN, "us", 300, "unabridged", ""))
+		estRow(estUSASIN, "us", 150, "unabridged", ""))
 	if sum.EnrichedRecordings != 0 || sum.EstimatesReplaced != 0 || conflicts.Len() == 0 {
 		t.Errorf("summary = %+v, conflicts %q; want the row refused as a contradiction", sum, conflicts.String())
 	}

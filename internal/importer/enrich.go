@@ -28,10 +28,13 @@ import (
 //
 // The field-application core below (applyToRecording / applyToWork) is shared
 // with the trust-tier attestation the create and ASIN-merge paths perform, so
-// "the existing value always wins" has exactly one documented exception, in one
-// place: a USER-library run meeting a record that is still bulk-mirror-only
-// overwrites it (attest.go, LICENSING.md). Enrichment itself is a libex mode, so
-// it never takes that branch - p.userTier is false for the whole run.
+// "the existing value always wins" has exactly two documented exceptions, each
+// in one place: a USER-library run meeting a record that is still
+// bulk-mirror-only overwrites it (attest.go, LICENSING.md), and a released row
+// of a PREORDER-ERA recording's own ASIN refreshes the facts a preorder listing
+// only estimated - runtime, cover, chapters, release date (refresh.go).
+// Enrichment itself is a libex mode, so it never takes the first branch -
+// p.userTier is false for the whole run.
 //
 // Every changed record gets one provenance stamp (appendSourceUnique, so a
 // second pass never double-stamps), and a record whose facts were all already
@@ -168,8 +171,25 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestMerged && !overwrite {
 		return true
 	}
-	if p.recordingContradicts(b, ref, raw, scope) {
+	// A preorder-era record meeting a released row of its own ASIN is REFRESHED
+	// (refresh.go): its runtime, cover, chapters and release date are replaced
+	// before anything below fills, and the contradiction guard does not run - a
+	// corrected runtime and a moved date are what the refresh is for, and it has
+	// judged the runtime itself. The record is written whatever changed, since
+	// the refresh's stamp is what ends its preorder era.
+	var refreshed bool
+	var withheld func()
+	if scope == scopeFill && !overwrite {
+		refreshed, withheld = p.refreshRecording(raw, ref, b)
+	}
+	if !refreshed && p.recordingContradicts(b, ref, raw, scope) {
 		return false
+	}
+	// A refresh whose runtime the judgement withheld is reported as a kept
+	// estimate only for a row the guard let through: a refused row is already
+	// reported as the contradiction it is.
+	if withheld != nil {
+		withheld()
 	}
 	// An exact-ASIN row about a record it may not overwrite has already had its
 	// say: a disagreement was flagged just above, and its agreeing facts are
@@ -182,24 +202,18 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestExact && !overwrite {
 		return true
 	}
-	changed := false
+	changed := refreshed
 
 	// The runtime reaches here only in agreement (recordingContradicts refused
-	// the row otherwise), so an overwrite is a precision improvement - 601
-	// minutes for a recorded 600 - never a re-statement of a different
-	// production. The one exception is a recorded preorder ESTIMATE, which that
-	// guard compares through its chapter timeline or at the estimate bound, and
-	// which correctEstimate judges below. The release date is NOT always in
-	// agreement here (the merge scope skips its guard), which is why
+	// the row otherwise, and a refresh has already written the row's), so an
+	// overwrite is a precision improvement - 601 minutes for a recorded 600 -
+	// never a re-statement of a different production. A recorded preorder
+	// ESTIMATE is replaced only by the refresh above. The release date is NOT
+	// always in agreement here (the merge scope skips its guard), which is why
 	// fillReleaseDate takes only a value extending it.
 	if b.runtimeMin > 0 {
 		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || overwrite {
 			setDecoded(raw, "runtime_min", b.runtimeMin)
-			changed = true
-		} else if scope == scopeFill && p.correctEstimate(raw, ref, b) {
-			// The one replacement of a recorded value outside the trust-tier
-			// overwrite: the recorded runtime was a preorder listing's estimate
-			// and this row states the released one (estimate.go).
 			changed = true
 		}
 	}

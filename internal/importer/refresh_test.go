@@ -1,0 +1,328 @@
+package importer
+
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	"os"
+	"path/filepath"
+	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
+
+// The refresh fixture is the estimate fixture (estimate_test.go) with a
+// placeholder cover: a recording the mirror catalogued on 2026-08-02 from a
+// preorder listing released 2026-09-08 at an estimated 840 minutes, met on
+// 2026-10-07 by rows libex last wrote on 2026-10-05.
+const (
+	refreshOldCover = "https://m.media-amazon.com/images/I/placeholder.jpg"
+	refreshNewCover = "https://m.media-amazon.com/images/I/released.jpg"
+	refreshCaptured = "2026-10-05T10:00:00.123456+00:00"
+)
+
+// refreshRecording seeds the preorder-era recording with its placeholder cover;
+// chapters is a recorded chapter list ("" for none), sources its provenance.
+func refreshSeed(t *testing.T, sources, chapters string) string {
+	t.Helper()
+	return seedEstimateTree(t, testpack.WithField(t, estRecording(t, "2026-08-02", sources, chapters), "cover_url", refreshOldCover))
+}
+
+// refreshRow is a RELEASED libex row of the fixture's own ASIN - the released
+// runtime, a new cover, a chapter list agreeing with the runtime, productState
+// AVAILABLE, written after the release - with fields overridden (a nil value
+// drops the field).
+func refreshRow(t *testing.T, overrides map[string]any) string {
+	t.Helper()
+	row := map[string]any{
+		"asin": estUSASIN, "title": "A Bird Among Wolves", "region": "us", "language": "english",
+		"bookFormat": "unabridged", "publisher": "Wolf Press",
+		"releaseDate": estRelease + "T00:00:00+00:00", "lengthMinutes": estReleasedLen,
+		"authors":   []any{map[string]any{"name": "Ada Mapmaker"}},
+		"narrators": []any{map[string]any{"name": "Bea Reader"}},
+		"imageUrl":  refreshNewCover, "updatedAt": refreshCaptured, "productState": "AVAILABLE",
+		"chapters": json.RawMessage(estChapters(estReleasedLen, true)),
+	}
+	for k, v := range overrides {
+		if v == nil {
+			delete(row, k)
+		} else {
+			row[k] = v
+		}
+	}
+	out, err := json.Marshal(row)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return string(out)
+}
+
+func refreshEnrich(t *testing.T, dataDir string, conflicts *bytes.Buffer, rows ...string) Summary {
+	t.Helper()
+	opts := Options{ImportDate: estRunDate, Mode: ModeEnrich}
+	if conflicts != nil {
+		opts.Conflicts = conflicts
+	}
+	return runLibexWith(t, dataDir, opts, rows...)
+}
+
+func chapterTotal(rec recordingFile) int {
+	var ms int64
+	for _, c := range rec.Chapters {
+		ms += c.LengthMS
+	}
+	return msToMinutes(ms)
+}
+
+// A released row of the recording's own ASIN replaces the runtime, the cover,
+// the chapters and a moved release date, and nothing else; its stamp ends the
+// preorder era, so the same row again is a byte-level no-op and a later row is
+// ordinary fill-absent enrichment.
+func TestARefreshReplacesTheReleasedFacts(t *testing.T) {
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), "")
+	var conflicts bytes.Buffer
+	row := refreshRow(t, map[string]any{"releaseDate": "2026-09-15T00:00:00+00:00", "publisher": "Another Imprint"})
+	sum := refreshEnrich(t, dataDir, &conflicts, row)
+
+	if sum.RefreshedRecordings != 1 || sum.RefreshedRuntimes != 1 || sum.RefreshedCovers != 1 ||
+		sum.RefreshedChapters != 1 || sum.RefreshedReleaseDates != 1 || sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 1 {
+		t.Fatalf("summary = %+v, want one refresh replacing all four fields", sum)
+	}
+	if conflicts.Len() != 0 || hasWarning(sum.Warnings, "conflicts with the recorded") {
+		t.Errorf("a refresh was reported as a contradiction: %v / %s", sum.Warnings, conflicts.String())
+	}
+	if !hasNote(sum.Notes, "refreshed 1 released preorder recording") {
+		t.Errorf("notes = %v, want the refresh note", sum.Notes)
+	}
+	rec := readEstRecording(t, dataDir)
+	if rec.RuntimeMin != estReleasedLen || rec.CoverURL != refreshNewCover || chapterTotal(rec) != estReleasedLen || rec.ReleaseDate != "2026-09-15" {
+		t.Errorf("recording = runtime %d, cover %s, chapters %d min, released %s; want the row's", rec.RuntimeMin, rec.CoverURL, chapterTotal(rec), rec.ReleaseDate)
+	}
+	// Everything else stays as enrichment leaves it: the recorded publisher wins.
+	if rec.Publisher != "Wolf Press" || len(rec.Narrators) != 1 || rec.Narrators[0] != "bea-reader" || len(rec.ASIN) != 1 {
+		t.Errorf("recording = publisher %q, narrators %v, asins %v; want them untouched", rec.Publisher, rec.Narrators, rec.ASIN)
+	}
+	if _, raw := readRecordingRaw(t, dataDir); rawRuntimeEstimated(raw) {
+		t.Fatalf("a refreshed record is still preorder-era: %v", raw["sources"])
+	}
+
+	before := snapshotTree(t, dataDir)
+	again := refreshEnrich(t, dataDir, nil, row)
+	if again.RefreshedRecordings != 0 || again.EnrichedRecordings != 0 {
+		t.Errorf("re-run = %+v, want nothing refreshed a second time", again)
+	}
+	assertTreeUnchanged(t, dataDir, before)
+
+	// A later row is ordinary enrichment: a recorded cover is never replaced.
+	later := refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{
+		"imageUrl": "https://m.media-amazon.com/images/I/later.jpg", "releaseDate": "2026-09-15T00:00:00+00:00"}))
+	if later.RefreshedRecordings != 0 {
+		t.Errorf("summary = %+v, want no second refresh", later)
+	}
+	if got := readEstRecording(t, dataDir).CoverURL; got != refreshNewCover {
+		t.Errorf("cover = %s, want the refreshed one kept", got)
+	}
+}
+
+// A released row confirming every recorded value still refreshes: its stamp is
+// the post-release statement, so the record leaves the preorder era instead of
+// being selected again on every run.
+func TestARefreshConfirmingEveryValueEndsThePreorderEra(t *testing.T) {
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), estChapters(estEstimate, false))
+	sum := refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{
+		"lengthMinutes": estEstimate, "imageUrl": refreshOldCover, "chapters": json.RawMessage(estChapters(estEstimate, true)),
+	}))
+	if sum.RefreshedRecordings != 1 || sum.EnrichedRecordings != 1 ||
+		sum.RefreshedRuntimes+sum.RefreshedCovers+sum.RefreshedChapters+sum.RefreshedReleaseDates != 0 {
+		t.Fatalf("summary = %+v, want one refresh replacing nothing", sum)
+	}
+	if _, raw := readRecordingRaw(t, dataDir); rawRuntimeEstimated(raw) {
+		t.Errorf("a confirming refresh left the record preorder-era: %v", raw["sources"])
+	}
+}
+
+// Each field, allowed and denied.
+func TestARefreshReplacesEachFieldOnlyOnItsOwnRule(t *testing.T) {
+	malformed := json.RawMessage(`[{"title":"One","startOffsetMs":5000,"lengthMs":60000}]`)
+	for _, tc := range []struct {
+		name      string
+		recorded  string // the seeded chapter list, "" for none
+		row       map[string]any
+		refreshed bool
+		conflict  bool
+		runtime   int
+		cover     string
+		chapters  int // the chapter total the recording ends with, 0 for none
+		release   string
+	}{
+		{"runtime: the own ASIN's runtime replaces beyond the merge's estimate bound",
+			"", map[string]any{"lengthMinutes": 1900, "chapters": nil, "imageUrl": refreshOldCover},
+			true, false, 1900, refreshOldCover, 0, estRelease},
+		{"runtime: under a fifth of the estimate is broken, and refused as a contradiction",
+			"", map[string]any{"lengthMinutes": 150, "chapters": nil},
+			false, true, estEstimate, refreshOldCover, 0, estRelease},
+		{"runtime: a recorded chapter list refuting the stated runtime withholds the refresh",
+			estChapters(estEstimate, false), map[string]any{"chapters": nil},
+			false, true, estEstimate, refreshOldCover, estEstimate, estRelease},
+		{"cover: a new https cover replaces the placeholder",
+			"", map[string]any{"lengthMinutes": estEstimate, "chapters": nil},
+			true, false, estEstimate, refreshNewCover, 0, estRelease},
+		{"cover: an http cover is no cover, and the placeholder stays",
+			"", map[string]any{"imageUrl": "http://m.media-amazon.com/images/I/released.jpg"},
+			true, false, estReleasedLen, refreshOldCover, estReleasedLen, estRelease},
+		{"chapters: the row's list replaces a recorded one",
+			estChapters(estEstimate, false), map[string]any{"lengthMinutes": 845, "chapters": json.RawMessage(estChapters(845, true))},
+			true, false, 845, refreshNewCover, 845, estRelease},
+		{"chapters: a malformed list replaces nothing",
+			estChapters(estEstimate, false), map[string]any{"lengthMinutes": 845, "chapters": malformed},
+			true, false, 845, refreshNewCover, estEstimate, estRelease},
+		{"chapters: a list contradicting its own runtime withholds the refresh",
+			"", map[string]any{"chapters": json.RawMessage(estChapters(estEstimate, true))},
+			false, false, estEstimate, refreshOldCover, estEstimate, estRelease},
+		{"release date: a moved full date replaces the recorded one",
+			"", map[string]any{"releaseDate": "2026-09-01T00:00:00+00:00"},
+			true, false, estReleasedLen, refreshNewCover, estReleasedLen, "2026-09-01"},
+		{"release date: a year-only date restates it and replaces nothing",
+			"", map[string]any{"releaseDate": "2026"},
+			true, false, estReleasedLen, refreshNewCover, estReleasedLen, estRelease},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), tc.recorded)
+			var conflicts bytes.Buffer
+			sum := refreshEnrich(t, dataDir, &conflicts, refreshRow(t, tc.row))
+			if got := sum.RefreshedRecordings == 1; got != tc.refreshed {
+				t.Errorf("refreshed = %v, want %v (summary %+v)", got, tc.refreshed, sum)
+			}
+			if got := conflicts.Len() > 0; got != tc.conflict {
+				t.Errorf("conflict = %v, want %v (%s)", got, tc.conflict, conflicts.String())
+			}
+			rec := readEstRecording(t, dataDir)
+			if rec.RuntimeMin != tc.runtime || rec.CoverURL != tc.cover || chapterTotal(rec) != tc.chapters || rec.ReleaseDate != tc.release {
+				t.Errorf("recording = runtime %d, cover %s, chapters %d min, released %s; want %d, %s, %d, %s",
+					rec.RuntimeMin, rec.CoverURL, chapterTotal(rec), rec.ReleaseDate, tc.runtime, tc.cover, tc.chapters, tc.release)
+			}
+		})
+	}
+}
+
+// The predicate, denied: a record a non-mirror source attested, a row that is
+// not released (captured before its release date, or still for preorder), a row
+// of an ASIN the recording does not carry, and a record catalogued after its
+// release. Each is ordinary enrichment, so the placeholder cover - which
+// fill-absent never replaces - is the witness that no refresh ran.
+func TestARefreshNeedsAPreorderEraRecordAndAReleasedRowOfItsOwnASIN(t *testing.T) {
+	attested := `[{"imported_at":"2026-08-02","ref":"B0EST00001","type":"libex-import"},{"imported_at":"2026-08-05","ref":"library.json","type":"user"}]`
+	for _, tc := range []struct {
+		name    string
+		sources string
+		row     map[string]any
+	}{
+		{"a user-attested record", attested, map[string]any{"lengthMinutes": 870, "chapters": nil}},
+		{"a row captured before its release", estMirrorSource("2026-08-02"), map[string]any{"updatedAt": "2026-09-01T10:00:00+00:00", "chapters": nil}},
+		{"a row still for preorder past its date", estMirrorSource("2026-08-02"), map[string]any{"productState": "AVAILABLE_FOR_PREORDER", "chapters": nil}},
+		{"a row of an ASIN the catalogue does not hold", estMirrorSource("2026-08-02"), map[string]any{"asin": "B0EST00009"}},
+		{"a record catalogued after its release", estMirrorSource("2026-09-20"), map[string]any{"lengthMinutes": 870, "chapters": nil}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := refreshSeed(t, tc.sources, "")
+			sum := refreshEnrich(t, dataDir, nil, refreshRow(t, tc.row))
+			if sum.RefreshedRecordings != 0 {
+				t.Errorf("summary = %+v, want no refresh", sum)
+			}
+			if rec := readEstRecording(t, dataDir); rec.CoverURL != refreshOldCover || rec.RuntimeMin != estEstimate {
+				t.Errorf("recording = cover %s, runtime %d; want the recorded %s and %d", rec.CoverURL, rec.RuntimeMin, refreshOldCover, estEstimate)
+			}
+		})
+	}
+}
+
+// A released row of ANOTHER ASIN merged into the recording is the ASIN merge,
+// not a refresh: its runtime corrects the estimate within the estimate bound
+// (correctEstimate), and the cover, the chapters and the release date are not
+// its to replace.
+func TestAMergedRegionalRowRefreshesNothing(t *testing.T) {
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), "")
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate}, refreshRow(t, map[string]any{
+		"asin": estUKASIN, "region": "uk", "releaseDate": "2026-09-15T00:00:00+00:00", "chapters": nil}))
+	if sum.MergedASINs != 1 || sum.EstimatesReplaced != 1 || sum.RefreshedRecordings != 0 {
+		t.Fatalf("summary = %+v, want a merge correcting the estimate and no refresh", sum)
+	}
+	rec := readEstRecording(t, dataDir)
+	if rec.RuntimeMin != estReleasedLen || rec.CoverURL != refreshOldCover || rec.ReleaseDate != estRelease {
+		t.Errorf("recording = runtime %d, cover %s, released %s; want the runtime corrected and the rest kept", rec.RuntimeMin, rec.CoverURL, rec.ReleaseDate)
+	}
+}
+
+func TestSelectRefreshTargetsPicksReleasedPreorderEraRecordings(t *testing.T) {
+	mirror := func(day string) []model.Source {
+		return []model.Source{{Type: model.SourceLibexImport, ImportedAt: day}}
+	}
+	rec := func(id, asin, release string, sources []model.Source) *model.Recording {
+		r := &model.Recording{ID: id, ReleaseDate: release, Sources: sources}
+		if asin != "" {
+			r.ASIN = []model.ASIN{{Region: "us", ASIN: asin}, {Region: "uk", ASIN: "B9" + asin}}
+		}
+		return r
+	}
+	cat := &model.Catalog{Works: []*model.Work{{ID: "w", Recordings: []*model.Recording{
+		rec("released", "B2", "2026-09-08", mirror("2026-08-02")),
+		rec("released-today", "B1", "2026-10-07", mirror("2026-08-02")),
+		rec("still-preorder", "B3", "2026-11-01", mirror("2026-08-02")),
+		rec("catalogued-after-release", "B4", "2026-09-08", mirror("2026-09-20")),
+		rec("attested", "B5", "2026-09-08", append(mirror("2026-08-02"), model.Source{Type: model.SourceUser, ImportedAt: "2026-08-05"})),
+		rec("no-asin", "", "2026-09-08", mirror("2026-08-02")),
+	}}}}
+	got := SelectRefreshTargets(cat, "2026-10-07")
+	if len(got) != 2 || got[0].Recording != "released-today" || got[1].Recording != "released" {
+		t.Fatalf("targets = %+v, want released-today then released (by ASIN)", got)
+	}
+	if got[1].ASIN != "B2" || !got[1].NeedChapters {
+		t.Errorf("target = %+v, want its first ASIN, asking for chapters", got[1])
+	}
+}
+
+// End to end, as `libex-fill --released-preorders` runs it: the selection, the
+// mirror record and its chapters payload, and the enrichment that refreshes.
+func TestReleasedPreordersAreRefreshedFromTheMirror(t *testing.T) {
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), "")
+	record := refreshRow(t, map[string]any{"chapters": nil, "description": "dropped"})
+	payload := `{"isAccurate":true,"runtimeLengthMs":58200000,"chapters":` + estChapters(estReleasedLen, true) + `}`
+	f := &libexFill{records: map[string]string{estUSASIN: record}, chapters: map[string]string{estUSASIN: payload}}
+	srv := libexFillServer(t, f)
+
+	cat, err := LoadCatalogForFill(dataDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	targets := SelectRefreshTargets(cat, estRunDate)
+	if len(targets) != 1 {
+		t.Fatalf("targets = %+v, want the one released preorder", targets)
+	}
+	var rows bytes.Buffer
+	rep, err := fillClient(t, srv).FetchRows(context.Background(), targets, &rows)
+	if err != nil || rep.Fetched != 1 || rep.ChaptersFetched != 1 {
+		t.Fatalf("fetch = %+v, %v; want the record and its chapters", rep, err)
+	}
+	if !f.saw("/db/book/" + estUSASIN) {
+		t.Errorf("the mirror was never asked; saw %v", f.paths())
+	}
+	rowsPath := filepath.Join(t.TempDir(), "rows.ndjson")
+	if err := os.WriteFile(rowsPath, rows.Bytes(), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	sum, err := RunLibex(rowsPath, Options{DataDir: dataDir, ImportDate: estRunDate, Mode: ModeEnrich})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.RefreshedRecordings != 1 || sum.RefreshedCovers != 1 || sum.RefreshedChapters != 1 {
+		t.Fatalf("summary = %+v, want the refresh", sum)
+	}
+	cat, err = LoadCatalogForFill(dataDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if n := len(SelectRefreshTargets(cat, estRunDate)); n != 0 {
+		t.Errorf("%d targets after the refresh, want none: a refreshed record is not selected again", n)
+	}
+}

@@ -446,6 +446,13 @@ type planner struct {
 		kept                           int
 		replacedExamples, keptExamples []string
 	}
+	// refreshed counts the post-release refreshes and the fields they replaced,
+	// with a few examples, for the summary and the aggregated note
+	// (refresh.go, reportRefreshes).
+	refreshed struct {
+		recordings, runtimes, covers, chapters, releaseDates int
+		examples                                             []string
+	}
 	// mode is the planning pass this run was asked for. It is kept only so a
 	// conflict worklist row can name the run that wrote it; the pass itself is
 	// selected once, by runBooks' switch.
@@ -573,8 +580,12 @@ type sourceBook struct {
 	// capturedAt is the UTC day the source captured the row (a libex row's
 	// updatedAt), "" when it does not say; read through planner.rowDay.
 	capturedAt string
-	abridged   *bool        // tri-state: nil = the source did not state it
-	genres     []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
+	// productState is a libex row's productState ("AVAILABLE",
+	// "AVAILABLE_FOR_PREORDER", ...), "" when it does not say; read by the
+	// post-release refresh (refresh.go).
+	productState string
+	abridged     *bool        // tri-state: nil = the source did not state it
+	genres       []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
 	// vocabGenres are genres ALREADY in this project's vocabulary, which no export
 	// states: only a hand submission does (Attest - an issue form validates its
 	// genres against the schema enum), so there is nothing to map. Read by
@@ -833,6 +844,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportLostSeriesClaims()
 	p.reportSeriesPositionLookups()
 	p.reportEstimates()
+	p.reportRefreshes()
 	p.reportDuplicateIdentities()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
