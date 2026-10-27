@@ -24,27 +24,33 @@ import (
 //
 // WHICH record: a PREORDER-ERA one (awaitingRefresh) - bulk-mirror-only, FIRST
 // stated before its release date (its earliest dated source; added_at where no
-// source is dated), and not yet RESTATED: no source ref recorded twice with one
-// of the two dated on or after the release. That is deliberately NOT
+// source is dated), and not yet RESTATED: its FIRST ASIN (asin[0], the one it
+// was catalogued under and the only one a refresh is read from) not stated on
+// or after the release. That is deliberately NOT
 // estimate.go's runtimeEstimated, which asks whether EVERY statement predates
 // the release: an ASIN merge of a regional edition after the release stamps a
 // new ref dated after it, which ends the runtime's estimate status (and the
 // merge corrects the runtime within its bound) but replaced no cover, chapter
 // list or date. Measured on main 3c35c2532b at 2026-10-27: 1,302 bulk-mirror
 // recordings with an ASIN were first stated before a release that has passed,
-// 505 of them still estimates by runtimeEstimated and 797 ended by such a
+// 505 of them still estimates by runtimeEstimated and 801 ended by such a
 // post-release stamp alone - the region-fill waves and the sync bot's regional
 // attachments - which the estimate predicate would have left unrefreshed for
-// good. 40 more carry a restatement already: an enrichment of their own ASIN
+// good. 36 more carry a restatement already: an enrichment of their first ASIN
 // after release under the earlier correctEstimate rule, which corrected the
 // runtime and filled only what was absent; they read as refreshed. A record any
 // non-mirror source attested (a user library, an intake form, a hand edit
 // citing one) is never refreshed, as it is never overwritten by the mirror at
 // all.
 //
-// WHICH row: a bulk-mirror run's ENRICHMENT row (scopeFill) matched by ASIN, so
-// it is about one of the recording's own ASINs by construction - the same
-// product, which is why no estimate bound reads its runtime as identity. It must
+// WHICH row: a bulk-mirror run's ENRICHMENT row (scopeFill) of the recording's
+// FIRST ASIN, captured no earlier than any statement the record holds of that
+// ASIN (redates) - the listing it was catalogued from, the same product, which
+// is why no estimate bound reads its runtime as identity. A row of any other
+// ASIN on it - a regional edition merged since - is ordinary enrichment: it
+// carries its own marketplace's cover and date, and an ASIN merged onto the
+// wrong production would overwrite runtime and chapters past a floor that
+// cannot see it, so a wrong value is worse than a stale one. It must
 // be RELEASED (rowReleased: its date on or before the day it was captured, and
 // libex productState AVAILABLE where stated) with a FULL release date (a
 // year-only one says too little), and state a CREDIBLE runtime
@@ -60,8 +66,8 @@ import (
 // WHAT it replaces: the refresh is the OVERWRITE posture for four fields -
 // runtime_min, cover_url (an https one), chapters (a list that builds; the
 // judgement has found it agrees with the runtime, and libex-fill attaches only a
-// payload passing acceptChapters) and release_date (from a row of the listing
-// it came from only, below) - written by enrichment's own fill block
+// payload passing acceptChapters; never a THINNER one over a recorded table,
+// thinnerChapters) and release_date - written by enrichment's own fill block
 // (applyToRecording), with the contradiction guard skipped.
 // Narrators, abridged, publisher, asin[], isbn[] and the work stay as
 // enrichment leaves them: publisher and ISBNs fill-absent, the rest untouched.
@@ -69,9 +75,8 @@ import (
 // HOW it ends: the refresh always writes, even when the row confirms every
 // value, and its stamp is always APPENDED, past the source deduplication
 // (restates) - the RESTATEMENT, the row's ASIN dated the run's day, on or after
-// the release. Where that ref was not yet recorded (a merged regional ASIN
-// refreshing the record) it is recorded twice from then on, which is the
-// marker. A later row is therefore ordinary enrichment again (fill-absent, fully
+// the release, which is the marker awaitingRefresh reads. A later row is
+// therefore ordinary enrichment again (fill-absent, fully
 // guarded), and neither a re-run nor libex-fill --released-preorders selects the
 // record a second time. Only a refresh's stamp restates: an ordinary enrichment
 // of a preorder-era record is deduplicated, so a row that refreshed nothing
@@ -86,9 +91,8 @@ import (
 // (Summary.MovedPreorderDates; nothing else changes, and its stamp is
 // deduplicated, so the record stays preorder-era for the released row that
 // follows). A regional edition merged since carries its own marketplace's date,
-// never a correction of this one's (fillReleaseDate, #2518) - it may refresh the
-// runtime, cover and chapters of the one production, never the date, and the
-// guard still reads the date against it - and an older row of the first ASIN (a
+// never a correction of this one's (fillReleaseDate, #2518) - the guard still
+// reads the date against it - and an older row of the first ASIN (a
 // dump captured before the sync bot's last statement) would roll a fresher date
 // back. A coarser date keeps the extend-only rule (fillReleaseDate).
 // Measured in the dry run: 11 of the first 200 released-by-date recordings had
@@ -115,15 +119,26 @@ func refreshRuntimeCredible(recorded, stated int) bool {
 	return stated > 0 && (recorded <= 0 || stated*refreshFloorDivisor >= recorded)
 }
 
+// thinnerChapters reports whether a row's chapter list of row entries is a
+// DEGENERATE replacement for a recorded table of recorded entries, which a
+// refresh never writes: a single chapter, or fewer than half as many, in place
+// of a table of several. A listing that collapses its chapters (a one-chapter
+// placeholder, a part-level table) agrees with its own runtime just as well, so
+// only the count can tell, and a wrong table is worse than a stale one.
+func thinnerChapters(row, recorded int) bool {
+	return recorded > 1 && (row == 1 || row*2 < recorded)
+}
+
 // isFullDate reports whether s is a full YYYY-MM-DD date.
 func isFullDate(s string) bool {
 	return len(s) == len("2006-01-02") && datePattern.MatchString(s)
 }
 
 // awaitingRefresh is THE preorder-era test (see the header): bulk-mirror-only,
-// first stated before its release date, and not yet restated on or after it.
-func awaitingRefresh(release, addedAt string, sources []model.Source) bool {
-	if release == "" || len(release) > len("2006-01-02") || !datePattern.MatchString(release) || !model.BulkMirrorOnly(sources) {
+// first stated before its release date, and its FIRST ASIN (firstASIN, the one
+// a refresh is read from) not yet stated on or after it.
+func awaitingRefresh(release, addedAt, firstASIN string, sources []model.Source) bool {
+	if firstASIN == "" || release == "" || len(release) > len("2006-01-02") || !datePattern.MatchString(release) || !model.BulkMirrorOnly(sources) {
 		return false
 	}
 	// before reports whether a statement's day precedes the release at the
@@ -147,16 +162,12 @@ func awaitingRefresh(release, addedAt string, sources []model.Source) bool {
 	if !before(first) {
 		return false
 	}
-	// A restatement: a type + ref recorded twice, one of the two on or after the
-	// release. Sources are a handful, so a pairwise scan.
-	for i, s := range sources {
-		if s.ImportedAt == "" || before(s.ImportedAt) {
-			continue
-		}
-		for j, o := range sources {
-			if j != i && o.Type == s.Type && o.Ref == s.Ref {
-				return false
-			}
+	// The restatement: the first ASIN stated on or after the release - only a
+	// refresh's stamp, which is read from that ASIN alone. A merged regional
+	// ASIN's stamp is another ref and ends nothing.
+	for _, s := range sources {
+		if s.Ref == firstASIN && s.ImportedAt != "" && !before(s.ImportedAt) {
+			return false
 		}
 	}
 	return true
@@ -164,7 +175,19 @@ func awaitingRefresh(release, addedAt string, sources []model.Source) bool {
 
 // rawAwaitingRefresh is awaitingRefresh over a recording held as decoded JSON.
 func rawAwaitingRefresh(raw map[string]any) bool {
-	return awaitingRefresh(coerceStr(raw["release_date"]), coerceStr(raw["added_at"]), rawSources(raw))
+	return awaitingRefresh(coerceStr(raw["release_date"]), coerceStr(raw["added_at"]), rawFirstASIN(raw), rawSources(raw))
+}
+
+// rawFirstASIN is a decoded recording's FIRST ASIN (asin[0]), the one it was
+// catalogued under and the only one a refresh or a moved date is read from;
+// "" when it carries none.
+func rawFirstASIN(raw map[string]any) string {
+	arr, _ := raw["asin"].([]any)
+	if len(arr) == 0 {
+		return ""
+	}
+	first, _ := arr[0].(map[string]any)
+	return NormalizeASIN(coerceStr(first["asin"]))
 }
 
 // restates reports whether this run's stamp on raw is a refresh's RESTATEMENT,
@@ -175,16 +198,13 @@ func (p *planner) restates(raw map[string]any) bool {
 	return p.curRefresh && rawAwaitingRefresh(raw)
 }
 
-// redates reports whether row b may replace the preorder-era recording raw's
-// release date (the header's RELEASE DATE paragraph): a row of its FIRST ASIN,
-// captured (rowDay) no earlier than any statement the record holds of that ASIN.
+// redates reports whether row b speaks for the preorder-era recording raw's
+// listing (the header's FIRST ASIN paragraph) - the condition for a refresh and
+// for a moved release date alike: a row of its FIRST ASIN, captured (rowDay) no
+// earlier than any statement the record holds of that ASIN.
 func (p *planner) redates(raw map[string]any, b sourceBook) bool {
 	asin := NormalizeASIN(b.str("asin"))
-	arr, _ := raw["asin"].([]any)
-	if asin == "" || len(arr) == 0 {
-		return false
-	}
-	if first, _ := arr[0].(map[string]any); NormalizeASIN(coerceStr(first["asin"])) != asin {
+	if asin == "" || asin != rawFirstASIN(raw) {
 		return false
 	}
 	day := p.rowDay(b)
@@ -205,14 +225,10 @@ func (p *planner) redates(raw map[string]any, b sourceBook) bool {
 // once the ordinary path has let the row through.
 func (p *planner) judgeRefresh(raw map[string]any, b sourceBook, redate bool) (refresh, withheld bool, against runtimeEvidence) {
 	rd := b.str("release_date")
-	if b.runtimeMin <= 0 || !isFullDate(rd) || !p.rowReleased(b) {
+	if !redate || b.runtimeMin <= 0 || !isFullDate(rd) || !p.rowReleased(b) {
 		return false, false, runtimeEvidence{}
 	}
-	release := coerceStr(raw["release_date"])
-	if redate {
-		release = rd
-	}
-	if day := p.curSource.ImportedAt; len(day) != len("2006-01-02") || releasedAfter(release, day) {
+	if day := p.curSource.ImportedAt; len(day) != len("2006-01-02") || releasedAfter(rd, day) {
 		return false, false, runtimeEvidence{}
 	}
 	ok, against := judgeOwnASINRuntime(raw, b)
@@ -326,7 +342,11 @@ func (p *planner) reportRefreshes() {
 // since a release most often corrects or first supplies the table.
 func SelectRefreshTargets(cat *model.Catalog, day string) []FillTarget {
 	return selectTargets(cat, func(r *model.Recording) (FillTarget, bool) {
-		ok := !releasedAfter(r.ReleaseDate, day) && awaitingRefresh(r.ReleaseDate, r.AddedAt, r.Sources)
+		first := ""
+		if len(r.ASIN) > 0 {
+			first = r.ASIN[0].ASIN
+		}
+		ok := !releasedAfter(r.ReleaseDate, day) && awaitingRefresh(r.ReleaseDate, r.AddedAt, first, r.Sources)
 		return FillTarget{NeedCover: r.CoverURL == "", NeedChapters: len(r.Chapters) == 0, RefreshChapters: true}, ok
 	})
 }

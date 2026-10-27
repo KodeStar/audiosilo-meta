@@ -465,11 +465,8 @@ func TestEstimateRuntimesHaveTheirOwnBound(t *testing.T) {
 }
 
 // A chapterless estimate keeps a runtime bound on the merge: a released row of
-// a clearly different length is another production. A row of the recording's
-// OWN ASIN is the same product, so enrichment holds it to no bound but the
-// refresh's sanity floor (refresh.go): 300 against 840 is a correction, and a
-// value under a fifth of the estimate is refused as the contradiction it was.
-func TestAChapterlessEstimateKeepsARuntimeBound(t *testing.T) {
+// a clearly different length is another production.
+func TestAChapterlessEstimateKeepsARuntimeBoundOnTheMerge(t *testing.T) {
 	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
 		estRow(estUKASIN, "uk", 300, "unabridged", ""))
@@ -479,9 +476,15 @@ func TestAChapterlessEstimateKeepsARuntimeBound(t *testing.T) {
 	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estEstimate || len(rec.ASIN) != 1 {
 		t.Errorf("the estimate changed: runtime %d, asins %v", rec.RuntimeMin, rec.ASIN)
 	}
+}
 
-	dataDir = seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
-	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
+// A row of the recording's FIRST ASIN is the same product, so enrichment holds
+// its runtime to no estimate bound but the refresh's sanity floor (refresh.go):
+// 300 against 840 is a correction, and a value under a fifth of the estimate is
+// refused as the contradiction it was.
+func TestAnOwnASINRuntimeIsHeldOnlyToTheSanityFloor(t *testing.T) {
+	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
+	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
 		estRow(estUSASIN, "us", 300, "unabridged", ""))
 	if sum.EnrichedRecordings != 1 || sum.RefreshedRuntimes != 1 || sum.RefreshedRecordings != 1 {
 		t.Errorf("summary = %+v, want the own ASIN's released runtime to replace the estimate", sum)

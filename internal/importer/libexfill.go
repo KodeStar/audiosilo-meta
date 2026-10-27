@@ -174,14 +174,20 @@ type LibexClient struct {
 	// person and the live path proxies to Audible, so a fill run is deliberately
 	// polite rather than fast.
 	Pause time.Duration
+	// Day is the run's date (YYYY-MM-DD): a fetched record stating no updatedAt
+	// is judged released or not as of it (libexRecordReleased), the day the
+	// enrichment that follows reads it as captured.
+	Day string
 }
 
-// NewLibexClient returns a client with the defaults a fill run uses.
+// NewLibexClient returns a client with the defaults a fill run uses; Day is
+// today, for a caller that sets no run date.
 func NewLibexClient() *LibexClient {
 	return &LibexClient{
 		BaseURL: LibexBase,
 		HTTP:    &http.Client{Timeout: 30 * time.Second},
 		Pause:   250 * time.Millisecond,
+		Day:     time.Now().UTC().Format("2006-01-02"),
 	}
 }
 
@@ -418,7 +424,7 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 			continue
 		}
 		row := libexFillRow(rec)
-		if (t.NeedChapters || t.RefreshChapters && libexRecordReleased(rec)) && chapterListOf(rec) == nil {
+		if (t.NeedChapters || t.RefreshChapters && libexRecordReleased(rec, c.Day)) && chapterListOf(rec) == nil {
 			if err := pace(); err != nil {
 				return rep, err
 			}
@@ -434,11 +440,11 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 
 // libexRecordReleased reports whether a fetched record is a RELEASED listing by
 // the rule the refresh reads (planner.rowReleased): its release date on or
-// before the day libex last wrote it (today where it does not say), and its
+// before the day libex last wrote it (day, the run's date, where it does not
+// say), and its
 // productState AVAILABLE where stated.
-func libexRecordReleased(rec map[string]any) bool {
+func libexRecordReleased(rec map[string]any, day string) bool {
 	str := func(k string) string { s, _ := rec[k].(string); return s }
-	day := time.Now().UTC().Format("2006-01-02")
 	if t := model.TimeKey(str("updatedAt")); len(t) >= 10 && datePattern.MatchString(t[:10]) {
 		day = t[:10]
 	}

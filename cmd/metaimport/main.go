@@ -758,6 +758,7 @@ func runLibexFill(args []string) int {
 
 	client := importer.NewLibexClient()
 	client.BaseURL = *base
+	client.Day = day
 	rep, err := client.FetchRows(context.Background(), targets, rows)
 	if cerr := rows.Close(); err == nil && cerr != nil {
 		err = cerr

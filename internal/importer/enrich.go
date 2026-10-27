@@ -252,9 +252,10 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// timeline, so it is written only when the record has none (or the tier
 	// grants overwrite, or the row refreshes it) AND the row's own chapter rows
 	// build cleanly. Merging two sources' chapter tables would produce a timeline
-	// neither source states.
+	// neither source states. A refresh never trades a recorded table for a
+	// THINNER one (thinnerChapters): the row's other fields still refresh.
 	if existing, _ := raw["chapters"].([]any); len(existing) == 0 || replace {
-		if chs := buildChapters(b.chapterRows(), warn); len(chs) > 0 {
+		if chs := buildChapters(b.chapterRows(), warn); len(chs) > 0 && (overwrite || !thinnerChapters(len(chs), len(existing))) {
 			setDecoded(raw, "chapters", chs)
 			changed = true
 		}

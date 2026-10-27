@@ -4,8 +4,10 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
@@ -337,12 +339,14 @@ func TestAwaitingRefreshReadsTheFirstStatementAndTheRestatement(t *testing.T) {
 		want    bool
 	}{
 		{"catalogued from the preorder listing", "", []model.Source{src(mirror, "B1", "2026-08-02")}, true},
-		{"a regional ASIN merged after the release is a new ref, not a restatement", "",
+		{"a regional ASIN merged after the release ends nothing", "",
 			[]model.Source{src(mirror, "B1", "2026-08-02"), src(mirror, "B2", "2026-10-06")}, true},
-		{"the own ASIN restated after the release", "",
+		{"the first ASIN restated after the release", "",
 			[]model.Source{src(mirror, "B1", "2026-08-02"), src(mirror, "B1", "2026-10-06")}, false},
-		{"a merged ref restated after the release", "",
-			[]model.Source{src(mirror, "B1", "2026-08-02"), src(mirror, "B2", "2026-10-06"), src(mirror, "B2", "2026-10-07")}, false},
+		{"a merged ref restated after the release ends nothing either", "",
+			[]model.Source{src(mirror, "B1", "2026-08-02"), src(mirror, "B2", "2026-10-06"), src(mirror, "B2", "2026-10-07")}, true},
+		{"the first ASIN stated after the release under a later ref order", "",
+			[]model.Source{src(mirror, "B2", "2026-08-02"), src(mirror, "B1", "2026-10-06")}, false},
 		{"a ref recorded twice before the release is no restatement", "",
 			[]model.Source{src(mirror, "B1", "2026-08-02"), src(mirror, "B1", "2026-09-01")}, true},
 		{"first stated after the release", "", []model.Source{src(mirror, "B1", "2026-09-20")}, false},
@@ -350,28 +354,90 @@ func TestAwaitingRefreshReadsTheFirstStatementAndTheRestatement(t *testing.T) {
 		{"undated sources fall back to added_at", "2026-08-02", []model.Source{src(mirror, "B1", "")}, true},
 		{"undated sources and a later added_at", "2026-09-20", []model.Source{src(mirror, "B1", "")}, false},
 	} {
-		if got := awaitingRefresh(estRelease, tc.added, tc.sources); got != tc.want {
+		if got := awaitingRefresh(estRelease, tc.added, "B1", tc.sources); got != tc.want {
 			t.Errorf("%s: awaitingRefresh = %v, want %v", tc.name, got, tc.want)
 		}
 	}
+	if awaitingRefresh(estRelease, "", "", []model.Source{src(mirror, "B1", "2026-08-02")}) {
+		t.Errorf("a recording with no ASIN awaits a refresh nothing can deliver")
+	}
 }
 
-// A refresh through an ASIN first recorded AFTER the release (a merged regional
-// edition) still leaves the restatement: its stamp is appended past the source
-// deduplication, so the record stops awaiting.
-func TestARefreshThroughAMergedASINRestatesIt(t *testing.T) {
+// Only a row of the recording's FIRST ASIN refreshes it: a regional edition
+// merged since is a separate listing (its own cover, and possibly a mis-merge
+// a 1/5 floor would not catch), so its released row is ordinary enrichment and
+// ends nothing; the first ASIN's released row then refreshes and ends the era.
+func TestOnlyTheFirstASINRefreshes(t *testing.T) {
 	sources := `[{"imported_at":"2026-08-02","ref":"B0EST00001","type":"libex-import"},{"imported_at":"2026-09-20","ref":"B0EST00002","type":"libex-import"}]`
 	rec := testpack.WithField(t, estRecording(t, "2026-08-02", sources, ""), "asin",
 		[]map[string]string{{"asin": estUSASIN, "region": "us"}, {"asin": estUKASIN, "region": "uk"}})
 	dataDir := seedEstimateTree(t, testpack.WithField(t, rec, "cover_url", refreshOldCover))
-	sum := refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{"asin": estUKASIN, "region": "uk"}))
-	if sum.RefreshedRecordings != 1 || sum.RefreshedCovers != 1 {
-		t.Fatalf("summary = %+v, want the merged ASIN's released row to refresh", sum)
+
+	sum := refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{"asin": estUKASIN, "region": "uk", "chapters": nil}))
+	if sum.RefreshedRecordings != 0 {
+		t.Fatalf("summary = %+v, want a merged ASIN's released row not to refresh", sum)
 	}
-	_, raw := readRecordingRaw(t, dataDir)
-	if rawAwaitingRefresh(raw) {
-		t.Errorf("the record still awaits a refresh: %v", raw["sources"])
+	got := readEstRecording(t, dataDir)
+	if got.CoverURL != refreshOldCover || got.RuntimeMin != estEstimate {
+		t.Errorf("recording = cover %s, runtime %d; want neither replaced by the merged ASIN", got.CoverURL, got.RuntimeMin)
 	}
+	if _, raw := readRecordingRaw(t, dataDir); !rawAwaitingRefresh(raw) {
+		t.Fatalf("a merged ASIN's row ended the preorder era: %v", raw["sources"])
+	}
+
+	sum = refreshEnrich(t, dataDir, nil, refreshRow(t, nil))
+	if sum.RefreshedRecordings != 1 || sum.RefreshedCovers != 1 || sum.RefreshedRuntimes != 1 {
+		t.Fatalf("summary = %+v, want the first ASIN's released row to refresh", sum)
+	}
+	if _, raw := readRecordingRaw(t, dataDir); rawAwaitingRefresh(raw) {
+		t.Errorf("the refresh did not end the preorder era: %v", raw["sources"])
+	}
+}
+
+// A refresh never trades a recorded chapter table for a degenerate one - a
+// single chapter, or under half as many - while its other fields still refresh
+// and the era still ends.
+func TestARefreshKeepsARecordedTableOverAThinnerOne(t *testing.T) {
+	one := json.RawMessage(`[{"title":"Whole Book","startOffsetMs":0,"lengthMs":` + fmt.Sprint(estReleasedLen*60000) + `}]`)
+	for _, tc := range []struct {
+		name     string
+		recorded string
+		row      json.RawMessage
+		want     int // chapters the recording ends with
+	}{
+		{"one chapter over a table", estChapters(estReleasedLen, false), one, 17},
+		{"under half the chapters", estChapters(estReleasedLen, false), json.RawMessage(estChaptersOf(estReleasedLen, 8)), 17},
+		{"half the chapters or more replaces", estChapters(estReleasedLen, false), json.RawMessage(estChaptersOf(estReleasedLen, 9)), 9},
+		{"one chapter over none fills", "", one, 1},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), tc.recorded)
+			sum := refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{"chapters": tc.row}))
+			if sum.RefreshedRecordings != 1 || sum.RefreshedCovers != 1 {
+				t.Fatalf("summary = %+v, want the row's other fields refreshed", sum)
+			}
+			if got := readEstRecording(t, dataDir); len(got.Chapters) != tc.want || got.CoverURL != refreshNewCover {
+				t.Errorf("recording = %d chapters, cover %s; want %d and the new cover", len(got.Chapters), got.CoverURL, tc.want)
+			}
+			if _, raw := readRecordingRaw(t, dataDir); rawAwaitingRefresh(raw) {
+				t.Errorf("the refresh did not end the preorder era: %v", raw["sources"])
+			}
+		})
+	}
+}
+
+// estChaptersOf is a row chapter list of n equal chapters totalling minutes.
+func estChaptersOf(minutes, n int) string {
+	var parts []string
+	each := minutes * 60000 / n
+	for i := 0; i < n; i++ {
+		length := each
+		if i == n-1 {
+			length = minutes*60000 - each*(n-1)
+		}
+		parts = append(parts, fmt.Sprintf(`{"title":"Part %d","startOffsetMs":%d,"lengthMs":%d}`, i+1, i*each, length))
+	}
+	return "[" + strings.Join(parts, ",") + "]"
 }
 
 // A MOVED PREORDER DATE: an unreleased row of the recording's own ASIN listing a
@@ -482,8 +548,8 @@ func TestARefreshWaitsForAStampThatEndsTheEra(t *testing.T) {
 
 // The release date belongs to the listing the recording was catalogued under:
 // a merged regional edition's row carries its own marketplace's date, so it
-// never moves it - unreleased, the guard reads the date against it as before;
-// released, it refreshes the runtime and the cover and keeps the date.
+// never moves it: the guard reads the date against it, released or not, and a
+// released one refreshes nothing either (TestOnlyTheFirstASINRefreshes).
 func TestARegionalRowNeverMovesTheReleaseDate(t *testing.T) {
 	sources := `[{"imported_at":"2026-08-02","ref":"B0EST00001","type":"libex-import"},{"imported_at":"2026-08-03","ref":"B0EST00002","type":"libex-import"}]`
 	seed := func(t *testing.T) string {
@@ -505,13 +571,14 @@ func TestARegionalRowNeverMovesTheReleaseDate(t *testing.T) {
 	}
 
 	dataDir = seed(t)
-	sum = refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{
+	conflicts.Reset()
+	sum = refreshEnrich(t, dataDir, &conflicts, refreshRow(t, map[string]any{
 		"asin": estUKASIN, "region": "uk", "releaseDate": "2026-09-15T00:00:00+00:00"}))
-	if sum.RefreshedRecordings != 1 || sum.RefreshedReleaseDates != 0 {
-		t.Fatalf("summary = %+v, want a refresh keeping the date", sum)
+	if sum.RefreshedRecordings != 0 || sum.MovedPreorderDates != 0 || conflicts.Len() == 0 {
+		t.Fatalf("summary = %+v, conflicts %q; want the released regional row refused on its date", sum, conflicts.String())
 	}
-	if rec := readEstRecording(t, dataDir); rec.ReleaseDate != estRelease || rec.RuntimeMin != estReleasedLen || rec.CoverURL != refreshNewCover {
-		t.Errorf("recording = released %s, runtime %d, cover %s; want the date kept and the rest refreshed", rec.ReleaseDate, rec.RuntimeMin, rec.CoverURL)
+	if rec := readEstRecording(t, dataDir); rec.ReleaseDate != estRelease || rec.RuntimeMin != estEstimate || rec.CoverURL != refreshOldCover {
+		t.Errorf("recording = released %s, runtime %d, cover %s; want it untouched", rec.ReleaseDate, rec.RuntimeMin, rec.CoverURL)
 	}
 }
 

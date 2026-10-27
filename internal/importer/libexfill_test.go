@@ -483,3 +483,19 @@ func TestFetchRowsRefreshesChaptersOnlyForAReleasedListing(t *testing.T) {
 		})
 	}
 }
+
+// A record stating no updatedAt is judged as of the run's date (Day), the day
+// the enrichment reads it as captured - never the wall clock.
+func TestLibexRecordReleasedFallsBackToTheRunDate(t *testing.T) {
+	rec := map[string]any{"releaseDate": "2026-10-01T00:00:00+00:00", "productState": "AVAILABLE"}
+	if libexRecordReleased(rec, "2026-09-01") {
+		t.Errorf("released as of 2026-09-01, want not yet")
+	}
+	if !libexRecordReleased(rec, "2026-10-27") {
+		t.Errorf("not released as of 2026-10-27, want released")
+	}
+	rec["updatedAt"] = "2026-09-15T10:00:00+00:00"
+	if libexRecordReleased(rec, "2026-10-27") {
+		t.Errorf("a record libex last wrote before its release read as released")
+	}
+}

@@ -245,7 +245,7 @@ func (p *planner) recordingPosture(raw map[string]any, scope applyScope) (overwr
 	sources := rawSources(raw)
 	overwrite = p.overwritesSources(sources)
 	awaiting = scope == scopeFill && !overwrite && p.mirrorTier &&
-		awaitingRefresh(coerceStr(raw["release_date"]), coerceStr(raw["added_at"]), sources)
+		awaitingRefresh(coerceStr(raw["release_date"]), coerceStr(raw["added_at"]), rawFirstASIN(raw), sources)
 	return overwrite, awaiting
 }
 

@@ -1403,10 +1403,14 @@ runtime replaces it on the ASIN merge (`correctEstimate`) unless the timeline or
 that bound refutes the stated value. **A released row of the recording's OWN
 ASIN REFRESHES it** (`refresh.go`, which states the rule and the measurement):
 a PREORDER-ERA recording - `awaitingRefresh`: bulk-mirror-only, FIRST stated
-before its release date, and no source ref RESTATED on or after it (deliberately
-not `runtimeEstimated`: a regional ASIN merged after the release stamps a new ref
-that ends the runtime's estimate status but refreshed nothing - 797 of the 1,302
-such recordings on 2026-10-27) - met on `--enrich` by a row with a full release
+before its release date, and its FIRST ASIN (`asin[0]`) not stated on or after it
+(deliberately not `runtimeEstimated`: a regional ASIN merged after the release
+stamps a new ref that ends the runtime's estimate status but refreshed nothing -
+801 of the 1,342 such recordings on 2026-10-27) - met on `--enrich` by a row of
+that FIRST ASIN only (`redates`: captured no earlier than the record's newest
+statement of it; any other ASIN's row is ordinary enrichment, since a regional
+cover differs and a mis-merged ASIN would overwrite runtime and chapters past
+the floor) with a full release
 date on or before its capture day and, where the row carries one, libex
 `productState` `AVAILABLE` (`rowReleased`, the one definition of released the
 merge reads too) is the OVERWRITE posture for runtime, https cover, chapter list
@@ -1415,7 +1419,9 @@ block writes them), with no contradiction guard and no estimate bound: the
 runtime must clear a sanity floor (a fifth of the recorded estimate; measured
 corrections run 0.247x-2.52x) and agree within 10% with the row's chapter list,
 else with the recorded one (`judgeOwnASINRuntime`; the merge's twin is
-`judgeMergedRuntime`), and the run's day must be on or after the release date
+`judgeMergedRuntime`); a chapter list THINNER than a recorded table (one
+chapter, or under half as many, `thinnerChapters`) is never written, the other
+fields still refresh; and the run's day must be on or after the release date
 the record carries once written, or its stamp would end nothing and be appended
 again on every run. A row failing any of that is ordinary enrichment.
 Narrators, abridged, publisher, `asin[]`, ISBNs and the work stay as enrichment
@@ -1424,13 +1430,12 @@ source deduplication (`stampSource` via `restates`): the restatement ends the
 preorder era even when the row confirms every value, so a re-run is a no-op and
 a later row ordinary fill-absent; an ordinary enrichment cannot end it. A
 preorder-era record's release date is estimate evidence for the listing it came
-from (`redates`): a row of the recording's FIRST ASIN captured no earlier than
-the record's newest statement of that ASIN is not read by the guard's date half,
-and a full date it states replaces it (in a non-refresh,
+from (`redates`): the guard's date half does not read it against such a row, and
+a full date it states replaces it (in a non-refresh,
 `Summary.MovedPreorderDates` - a postponement - with the record still
 preorder-era; a coarser date keeps the extend-only rule). A merged regional
-ASIN's row refreshes the runtime, cover and chapters but never the date (its
-marketplace's own, #2518), and the guard still reads the date against it.
+ASIN's row never moves the date (its marketplace's own, #2518), and the guard
+still reads the date against it.
 Counted as
 `Summary.Refreshed{Recordings,Runtimes,Covers,Chapters,ReleaseDates}` from a
 before/after compare (a refreshed runtime is not also `EstimatesReplaced`, which
@@ -1439,7 +1444,8 @@ is the merge's).
 the catalogue: `SelectRefreshTargets` (the preorder-era recordings released by
 D, first ASIN each, through `SelectFillTargets`' walker), the mirror record
 (`/db/book/{asin}`, live fallback) and its chapters payload (`acceptChapters`;
-asked when the recording has none or the fetched listing is released,
+asked when the recording has none or the fetched listing is released as of its
+`updatedAt`, else the run's `--date` (`LibexClient.Day`),
 `FillTarget.RefreshChapters`), then the enrichment; the fetched row
 now keeps libex's `updatedAt` and `productState` (`libexFillRowKeys`). Measured
 2026-10-27: see refresh.go's header. A
