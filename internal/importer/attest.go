@@ -232,8 +232,9 @@ func (p *planner) overwrites(raw map[string]any) bool {
 	return p.userTier && model.BulkMirrorOnly(rawSources(raw))
 }
 
-// rawSources reads a decoded record's sources[] array (type and imported_at,
-// the two facts the trust tier and the preorder-estimate rule read). A
+// rawSources reads a decoded record's sources[] array (type, ref and
+// imported_at: the trust tier reads the type, the preorder-estimate rule the
+// date, and the refresh's restatement marker all three). A
 // malformed entry yields an empty type, which pkg/model ranks as reference tier
 // - so a record we cannot fully read is never classified as overwritable.
 func rawSources(raw map[string]any) []model.Source {
@@ -241,7 +242,7 @@ func rawSources(raw map[string]any) []model.Source {
 	out := make([]model.Source, 0, len(arr))
 	for _, s := range arr {
 		m, _ := s.(map[string]any)
-		out = append(out, model.Source{Type: coerceStr(m["type"]), ImportedAt: coerceStr(m["imported_at"])})
+		out = append(out, model.Source{Type: coerceStr(m["type"]), Ref: coerceStr(m["ref"]), ImportedAt: coerceStr(m["imported_at"])})
 	}
 	return out
 }

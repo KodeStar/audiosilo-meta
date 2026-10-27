@@ -84,13 +84,16 @@ func TestLibexFillReleasedPreordersDryRun(t *testing.T) {
 func TestPrintSummaryRefreshLine(t *testing.T) {
 	out := captureStdout(t, func() {
 		printSummary(importer.Summary{EnrichedRecordings: 3, RefreshedRecordings: 3, RefreshedRuntimes: 2,
-			RefreshedCovers: 1, RefreshedChapters: 3, RefreshedReleaseDates: 0}, true, importer.ModeEnrich)
+			RefreshedCovers: 1, RefreshedChapters: 3, RefreshedReleaseDates: 0, MovedPreorderDates: 2}, true, importer.ModeEnrich)
 	})
 	if !strings.Contains(out, "refreshed 3 released preorder recordings: 2 runtimes, 1 covers, 3 chapter lists, 0 release dates replaced") {
 		t.Errorf("summary missing the refresh line: %q", out)
 	}
+	if !strings.Contains(out, "moved 2 preorder release dates to the date libex now lists") {
+		t.Errorf("summary missing the moved-date line: %q", out)
+	}
 	out = captureStdout(t, func() { printSummary(importer.Summary{EnrichedRecordings: 1}, false, importer.ModeEnrich) })
-	if strings.Contains(out, "refreshed") {
+	if strings.Contains(out, "refreshed") || strings.Contains(out, "moved") {
 		t.Errorf("a run that refreshed nothing printed a refresh line: %q", out)
 	}
 }

@@ -450,8 +450,8 @@ type planner struct {
 	// with a few examples, for the summary and the aggregated note
 	// (refresh.go, reportRefreshes).
 	refreshed struct {
-		recordings, runtimes, covers, chapters, releaseDates int
-		examples                                             []string
+		recordings, runtimes, covers, chapters, releaseDates, movedDates int
+		examples, movedExamples                                          []string
 	}
 	// mode is the planning pass this run was asked for. It is kept only so a
 	// conflict worklist row can name the run that wrote it; the pass itself is

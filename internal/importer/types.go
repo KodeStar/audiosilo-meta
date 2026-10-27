@@ -331,6 +331,10 @@ type Summary struct {
 	RefreshedCovers       int
 	RefreshedChapters     int
 	RefreshedReleaseDates int
+	// MovedPreorderDates counts the preorder-era recordings whose release date
+	// an UNRELEASED row of their own ASIN moved (refresh.go); each is also an
+	// EnrichedRecordings one.
+	MovedPreorderDates int
 	// AttestedWorks / AttestedRecordings count the bulk-mirror-only records a
 	// USER-library run took over: the row's stated facts overwrote the mirror's
 	// and the run's source entry was appended, so the record is user-attested

@@ -112,7 +112,10 @@ import (
 // runtime is refused as a contradiction (TestAMergeStatingNoRuntimeEndsTheEstimate
 // pins it). Closing it means recording which statement stated the runtime - a
 // schema change - or dating a post-release statement before the release, which
-// would be false provenance. It is measured as rare: every one of the 526 live
+// would be false provenance. The post-release REFRESH (refresh.go) closes it in
+// practice for the recording's own ASIN: it reads its own predicate, which a
+// merge's new ref does not end, so the first released row of an own ASIN still
+// replaces the runtime the guards read as measured. It is measured as rare: every one of the 526 live
 // libex records above states a runtime, and 131 of the tree's 289,427
 // bulk-mirror-only recordings (77 of them released) were catalogued from a row
 // stating none.
@@ -374,7 +377,9 @@ func (p *planner) correctEstimate(raw map[string]any, ref RecRef, b sourceBook) 
 //   - neither carries one: on the merge (sameASIN false, an INFERRED match) the
 //     stated runtime stands within estimateTolerancePct of the estimate; for the
 //     recording's own ASIN (sameASIN true - the same product, so no bound reads
-//     identity) it stands unless it is broken (refreshRuntimeCredible).
+//     identity) it stands unless it is broken (refreshRuntimeCredible). The own
+//     ASIN reads only the two chapter TIMELINES, never the recorded runtime as
+//     identity, so a runtime a merge already corrected does not withhold it.
 //
 // The evidence is the header's measurement: a preorder listing usually already
 // carries the real chapter table, and dropping a correct timeline for a runtime
@@ -392,6 +397,13 @@ func judgeReleasedRuntime(raw map[string]any, b sourceBook, sameASIN bool) (rowC
 	}
 	if !sameASIN {
 		return rowChapters, against, sameRuntime(against, runtimeEvidence{min: stated})
+	}
+	// The own ASIN reads chapter TIMELINES only: a recorded runtime a merge has
+	// already corrected (no longer an estimate) is still not what this product's
+	// released listing is judged against.
+	if len(rowChapters) == 0 {
+		tl, ok := rawChapterMinutes(raw["chapters"])
+		against = runtimeEvidence{min: tl, estimate: !ok}
 	}
 	recorded, _ := coerceInt(raw["runtime_min"])
 	if !refreshRuntimeCredible(int(recorded), stated) {

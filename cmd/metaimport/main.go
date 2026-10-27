@@ -576,6 +576,10 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 			s.RefreshedRecordings, plural(s.RefreshedRecordings, "recording", "recordings"),
 			s.RefreshedRuntimes, s.RefreshedCovers, s.RefreshedChapters, s.RefreshedReleaseDates)
 	}
+	if s.MovedPreorderDates > 0 {
+		fmt.Printf("  moved %d preorder release %s to the date libex now lists\n",
+			s.MovedPreorderDates, plural(s.MovedPreorderDates, "date", "dates"))
+	}
 	// Printed only when a run refused one (--attach-editions), and on a
 	// line of its own: the create summary line's shape is parsed by the sync bot.
 	if s.SkippedOccupied > 0 {

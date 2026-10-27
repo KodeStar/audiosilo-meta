@@ -177,13 +177,28 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// corrected runtime and a moved date are what the refresh is for, and it has
 	// judged the runtime itself. The record is written whatever changed, since
 	// the refresh's stamp is what ends its preorder era.
+	//
+	// An UNRELEASED row of its own ASIN moves its release date instead
+	// (movedPreorderDate): the guard's date half reads the moved date, and it is
+	// written only once the guard has let the row through.
 	var refreshed bool
 	var withheld func()
+	var moved string
 	if scope == scopeFill && !overwrite {
 		refreshed, withheld = p.refreshRecording(raw, ref, b)
+		if !refreshed {
+			moved = p.movedPreorderDate(raw, b)
+		}
 	}
-	if !refreshed && p.recordingContradicts(b, ref, raw, scope) {
+	recordedDate := coerceStr(raw["release_date"])
+	if moved != "" {
+		recordedDate = moved
+	}
+	if !refreshed && p.recordingContradicts(b, ref, raw, recordedDate, scope) {
 		return false
+	}
+	if moved != "" {
+		p.moveReleaseDate(raw, ref, moved)
 	}
 	// A refresh whose runtime the judgement withheld is reported as a kept
 	// estimate only for a row the guard let through: a refused row is already
@@ -202,7 +217,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestExact && !overwrite {
 		return true
 	}
-	changed := refreshed
+	changed := refreshed || moved != ""
 
 	// The runtime reaches here only in agreement (recordingContradicts refused
 	// the row otherwise, and a refresh has already written the row's), so an
@@ -254,7 +269,11 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if !changed && !overwrite {
 		return true
 	}
-	p.stampSource(raw)
+	if refreshed {
+		p.stampRestatement(raw)
+	} else {
+		p.stampSource(raw)
+	}
 	p.putWorkEntry(ref.Work, entry)
 	// A later row of the run compares with what the record now says: a filled or
 	// replaced runtime, a chapter list, the stamp that ends an estimate.
@@ -301,8 +320,11 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // later run. The runtime half - the fact that actually distinguishes a
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
-func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, scope applyScope) bool {
-	c, contradicts := rowContradiction(b, rawKnownRuntime(raw), coerceStr(raw["release_date"]), scope)
+//
+// releaseDate is the recorded date the row is compared with: the record's own,
+// or the moved preorder date the row is about to write (refresh.go).
+func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, releaseDate string, scope applyScope) bool {
+	c, contradicts := rowContradiction(b, rawKnownRuntime(raw), releaseDate, scope)
 	if !contradicts {
 		return false
 	}

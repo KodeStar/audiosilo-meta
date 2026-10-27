@@ -703,6 +703,11 @@ func TestAnEnrichmentStatingNoRuntimeKeepsTheEstimate(t *testing.T) {
 // was made, not what it stated, so nothing short of a schema change tells this
 // stamp from a measurement. If this test starts failing because the estimate
 // survives, the gap has been closed: update the header and CLAUDE.md.
+//
+// The REFRESH (refresh.go) closes it for the recording's own ASIN: the merge's
+// stamp is a NEW ref, not a restatement, so the record still awaits its
+// refresh and a released row of its own ASIN replaces the runtime the guards
+// now read as measured.
 func TestAMergeStatingNoRuntimeEndsTheEstimate(t *testing.T) {
 	dataDir := seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeCreate},
@@ -715,14 +720,18 @@ func TestAMergeStatingNoRuntimeEndsTheEstimate(t *testing.T) {
 		t.Fatalf("the merged stamp no longer ends the estimate - the gap is closed: %v", raw["sources"])
 	}
 
+	if !rawAwaitingRefresh(raw) {
+		t.Fatalf("a merge's new ref was read as the restatement that ends the preorder era: %v", raw["sources"])
+	}
+
 	var conflicts bytes.Buffer
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
-	if sum.EstimatesReplaced != 0 || conflicts.Len() == 0 {
-		t.Errorf("summary = %+v, conflicts %q; want the released row refused against the locked estimate", sum, conflicts.String())
+	if sum.RefreshedRecordings != 1 || sum.EstimatesReplaced != 1 || conflicts.Len() != 0 {
+		t.Errorf("summary = %+v, conflicts %q; want the own ASIN's released row to refresh the record", sum, conflicts.String())
 	}
-	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estEstimate {
-		t.Errorf("runtime = %d, want the estimate %d kept", rec.RuntimeMin, estEstimate)
+	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
+		t.Errorf("runtime = %d, want the released %d", rec.RuntimeMin, estReleasedLen)
 	}
 }
 
