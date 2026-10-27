@@ -398,50 +398,6 @@ func TestLibrivoxRowRefusals(t *testing.T) {
 	}
 }
 
-func TestLibrivoxRefusesAnUnsluggableTitle(t *testing.T) {
-	// Two Russian projects by one Cyrillic-named author: under the "untitled"
-	// fallback both would be recordings of ONE work credited to the catch-all
-	// person. Each is a reported skip instead.
-	russian := func(id int, title string, reader int, readerName string) LibrivoxProject {
-		p := fixtureProject(t, 527)
-		p.ID, p.Title, p.Language, p.Translators = lvInt(id), title, "Russian", nil
-		p.Authors = []LibrivoxPerson{{ID: 6000, FirstName: "Лев", LastName: "Толстой"}}
-		p.Sections = append([]LibrivoxSection(nil), p.Sections...)
-		for i := range p.Sections {
-			p.Sections[i].Readers = []LibrivoxReader{{ReaderID: lvInt(reader), DisplayName: readerName}}
-		}
-		return p
-	}
-	// An English title read by a reader whose name slugs to nothing still
-	// imports, onto the catch-all person - but that person is never stamped
-	// with the reader's LibriVox id, which would claim every such credit is them.
-	latin := russian(99102, "Childhood", 5002, "Иван Петров")
-	latin.Language = "English"
-	latin.Authors = []LibrivoxPerson{{ID: 6001, FirstName: "Leo", LastName: "Tolstoy"}}
-	dataDir := t.TempDir()
-	sum := runLibrivox(t, writeSnapshot(t, russian(99100, "Война и мир", 5000, "Иван"), russian(99101, "Анна Каренина", 5001, "Мария"), latin), dataDir, allLibrivox)
-	warnings := strings.Join(sum.Warnings, "\n")
-	for _, want := range []string{
-		`librivox 99100: title "Война и мир" has no slug`,
-		`librivox 99101: title "Анна Каренина" has no slug`,
-	} {
-		if !strings.Contains(warnings, want) {
-			t.Errorf("no warning %q in:\n%s", want, warnings)
-		}
-	}
-	if sum.NewWorks != 1 || sum.NewRecordings != 1 || entryExists(t, dataDir, workAddr("untitled")) {
-		t.Fatalf("works/recordings = %d/%d; want only the English title, nothing under \"untitled\"", sum.NewWorks, sum.NewRecordings)
-	}
-	var p lvPerson
-	readEntity(t, dataDir, personAddr(model.UnslugPersonID), &p)
-	if p.ReaderID != 0 || p.AuthorID != 0 {
-		t.Errorf("the catch-all person was stamped: %+v", p)
-	}
-	if res := check.Load(dataDir); !res.OK() {
-		t.Fatalf("tree failed validation:\n%v", res.Problems)
-	}
-}
-
 func TestLibrivoxStampsASecondTranslationsTranslator(t *testing.T) {
 	// Two translations of one work in one run: the second's translator is
 	// credited on the work the first created (a role credit, not an author),

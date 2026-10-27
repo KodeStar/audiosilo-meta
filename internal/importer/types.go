@@ -514,6 +514,15 @@ type Summary struct {
 	// recorded on people (librivox.go). Both 0 for every other source.
 	LibrivoxProjects   int
 	LibrivoxIDsStamped int
+	// LibrivoxVariantsAttached counts the LibriVox rows attached to a work whose
+	// title differs from theirs only by a leading article or punctuation, and
+	// LibrivoxFallbackSlugs the works created at `librivox-<id>` for a title that
+	// slugs to nothing (librivoxmatch.go). LibrivoxWorklist is every LibriVox row
+	// the run skipped for a person to resolve, in row order: re-importing the
+	// project id once its work is settled lands it. All zero for other sources.
+	LibrivoxVariantsAttached int
+	LibrivoxFallbackSlugs    int
+	LibrivoxWorklist         []LibrivoxWorklistEntry
 	// Notes are aggregated lines about what a run DID, where the doing is a
 	// decision a reader should see rather than something that went wrong -
 	// today, the AI-narration fold (synthetic.go). They are kept apart from

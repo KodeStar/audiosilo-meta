@@ -881,6 +881,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportEstimates()
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
+	p.reportLibrivoxVariants()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
@@ -1386,9 +1387,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// so the skip is where the trust-tier attestation happens (attest.go); for a
 	// libex run attestExisting is a no-op and the skip is exactly what it was.
 	// A LibriVox row has no ASIN: it dedups on its project id instead, and
-	// never on its title (librivox.go). One whose title slugs to nothing is
-	// refused rather than filed under the shared "untitled" fallback.
-	if p.dedupeByLibrivox(b) || p.refuseUnsluggedLibrivox(b, workTitle, warn) {
+	// never on its title (librivox.go).
+	if p.dedupeByLibrivox(b) {
 		return
 	}
 	if p.dedupeByASIN(asin) {
@@ -1464,8 +1464,18 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// under a differently-spelled title is dropped and reported rather than minting a
 	// second work (dupidentity.go). It skips rather than merging, on purpose - a
 	// refused row is re-importable, a wrong merge is not.
+	//
+	// A LibriVox row's work is decided by librivoxmatch.go first: an attach, a
+	// `librivox-<id>` slug for a title that slugs to nothing, a worklist skip,
+	// or the ordinary walk - which alone the guard still judges.
+	route := p.routeLibrivox(b, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim)
+	if route.skip {
+		p.noteLostSeriesClaims(b, -1, nil)
+		return
+	}
 	ident := p.rowIdentityOf(b, workTitle)
-	if p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
+	if (route.walk == nil || route.guard) &&
+		p.refuseDuplicateIdentity(b, ident, workTitle, b.str("title"), posSuffix, lang, authorCredits, claim) {
 		p.summary.Skips = appendSkip(p.summary.Skips, asin, reasonIdentityDuplicate)
 		p.noteLostSeriesClaims(b, -1, nil)
 		return
@@ -1488,8 +1498,16 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
-	walk := p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+	var walk workWalk
+	if route.walk != nil {
+		walk = *route.walk
+	} else {
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+	}
 	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
+	if b.lv != nil {
+		p.indexLibrivoxWork(ws)
+	}
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
 	// recording's serial guard and the series placement read a stated volume

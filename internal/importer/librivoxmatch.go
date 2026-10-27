@@ -1,0 +1,314 @@
+package importer
+
+// librivoxmatch.go is the LibriVox import's WORK rule (meta#2743), on top of the
+// planner's ordinary identity walk. It decides, for one LibriVox row the
+// admission tests let through, which work its recording lands on:
+//
+//  1. THE ORDINARY WALK FIRST. A title whose slug chain holds a work by the same
+//     authors in a compatible language is that work, exactly as for every other
+//     source (resolveWork).
+//  2. SPELLING VARIANTS. Otherwise the row attaches to the one work whose title
+//     agrees with its own once a leading article (English, French, German,
+//     Spanish, Italian, Dutch: librivoxArticles) and punctuation, case and
+//     diacritics are set aside (librivoxTitleKey) - "The Metamorphosis" and
+//     "Metamorphosis" by Franz Kafka are one book - when that work is by the
+//     same authors (matchWork) in a compatible language. LibriVox's catalogue is
+//     public-domain texts whose titles differ from a retailer's mostly by exactly
+//     that, so the duplicate-identity guard's "skip, never merge" would keep a
+//     large share of the mirror out for want of an article.
+//  3. STILL AMBIGUOUS IS A WORKLIST SKIP. Two or more such works (several-works),
+//     or a work whose authors only partly agree with the row's or whose agreement
+//     rests on the catch-all person an unsluggable name falls back to
+//     (author-unmatched), decide nothing: the row is skipped and listed in
+//     Summary.LibrivoxWorklist for a person to resolve, never guessed. So is a
+//     row the duplicate-identity guard refuses (differently-spelled-title: a
+//     coarser match, a subtitle or decoration apart, which this rule does not
+//     read as the same title).
+//  4. NON-LATIN TITLES. A title that slugs to nothing (Cyrillic, Greek, CJK...)
+//     never walks the shared "untitled" chain, which would file every such title
+//     by one author as one work. It is matched by rule 2 alone (its key keeps the
+//     letters of its own script), and otherwise creates a new work at
+//     `librivox-<project id>`, titled as LibriVox writes it.
+//
+// A work by a DIFFERENT author under the same title is a different book: rule 1
+// walks past it and rule 2 does not list it, so the row creates a work of its
+// own, as decision 4 of LIBRIVOX-PLAN.md says.
+
+import (
+	"fmt"
+	"slices"
+	"strconv"
+	"strings"
+	"unicode"
+
+	"golang.org/x/text/unicode/norm"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
+
+// The worklist reasons (LibrivoxWorklistEntry.Reason). Stable codes: a person
+// working through a tranche's list sorts and filters on them.
+const (
+	// LibrivoxSeveralWorks: two or more catalogued works by the row's authors
+	// carry its title once articles and punctuation are set aside.
+	LibrivoxSeveralWorks = "several-works"
+	// LibrivoxAuthorUnmatched: a work carries the row's title, but its authors
+	// only partly agree with the row's, or the agreement rests on the catch-all
+	// person a name in an unsluggable script falls back to.
+	LibrivoxAuthorUnmatched = "author-unmatched"
+	// LibrivoxDifferentlySpelled: the duplicate-identity guard (dupidentity.go)
+	// found the row's book under a title this rule does not read as the same
+	// (a subtitle or a decoration apart).
+	LibrivoxDifferentlySpelled = "differently-spelled-title"
+	// LibrivoxFallbackTaken: the row's title slugs to nothing and its
+	// `librivox-<id>` work slug is already taken (or retired) by another record.
+	LibrivoxFallbackTaken = "fallback-slug-taken"
+)
+
+// LibrivoxWorklistEntry is one LibriVox project a run skipped for a person to
+// resolve: re-importing its id once the catalogue says which work it is (or
+// that it is a new one) lands it.
+type LibrivoxWorklistEntry struct {
+	Project    int                 `json:"librivox_id"`
+	Title      string              `json:"title"`
+	Authors    []string            `json:"authors"`
+	Reason     string              `json:"reason"`
+	Candidates []LibrivoxCandidate `json:"candidates"`
+}
+
+// LibrivoxCandidate is a catalogued work a worklist entry names.
+type LibrivoxCandidate struct {
+	Work  string `json:"work"`
+	Title string `json:"title"`
+}
+
+// String is the entry as the import report prints it, one line:
+//
+//	527 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"
+func (e LibrivoxWorklistEntry) String() string {
+	var b strings.Builder
+	fmt.Fprintf(&b, "%d %q", e.Project, e.Title)
+	if len(e.Authors) > 0 {
+		b.WriteString(" by " + strings.Join(e.Authors, ", "))
+	}
+	b.WriteString(" [" + e.Reason + "]")
+	for i, c := range e.Candidates {
+		if i == 0 {
+			b.WriteString(": ")
+		} else {
+			b.WriteString("; ")
+		}
+		fmt.Fprintf(&b, "%s %q", c.Work, c.Title)
+	}
+	return b.String()
+}
+
+// librivoxArticles are the leading articles librivoxTitleKey sets aside: the
+// English ones and the common French, German, Spanish, Italian and Dutch ones
+// (the elided French "l'" is handled beside them). Read whatever the row's
+// language: the match also needs the same authors and a compatible language, so
+// an article read in the wrong language costs nothing a title by the same author
+// could confuse.
+var librivoxArticles = map[string]bool{
+	"the": true, "a": true, "an": true,
+	"le": true, "la": true, "les": true,
+	"der": true, "die": true, "das": true,
+	"el": true, "los": true, "las": true,
+	"il": true, "lo": true,
+	"de": true, "het": true, "een": true,
+}
+
+// librivoxTitleKey is a title's spelling-variant key: one leading article
+// dropped (never the only word), then case, punctuation, spacing and diacritics
+// folded away over the WHOLE title (no slug cap, so two long titles that differ
+// only near their end stay apart). A title in a script the slug rule cannot
+// write keys by its own letters and digits, lower-cased, so it still meets its
+// own spelling. "" for a title with no letter or digit at all.
+func librivoxTitleKey(title string) string {
+	t := dropLibrivoxArticle(strings.TrimSpace(title))
+	if k := strings.ReplaceAll(model.SlugifyWhole(t), "-", ""); k != "" {
+		return k
+	}
+	var b strings.Builder
+	for _, r := range norm.NFD.String(t) {
+		if unicode.IsLetter(r) || unicode.IsDigit(r) {
+			b.WriteRune(unicode.ToLower(r))
+		}
+	}
+	return b.String()
+}
+
+// dropLibrivoxArticle removes one leading article: a librivoxArticles word
+// followed by a space, or an elided "l'" (either apostrophe) followed by a
+// letter. A title that is only its article keeps it.
+func dropLibrivoxArticle(t string) string {
+	lower := strings.ToLower(t)
+	for _, elided := range []string{"l'", "l’"} {
+		if rest, ok := strings.CutPrefix(lower, elided); ok && strings.TrimSpace(rest) != "" {
+			return strings.TrimSpace(t[len(elided):])
+		}
+	}
+	word, rest, ok := strings.Cut(t, " ")
+	if ok && librivoxArticles[strings.ToLower(word)] && strings.TrimSpace(rest) != "" {
+		return strings.TrimSpace(rest)
+	}
+	return t
+}
+
+// LibrivoxWorkSlug is the work slug a project whose title slugs to nothing is
+// created at.
+func LibrivoxWorkSlug(project int) string { return "librivox-" + strconv.Itoa(project) }
+
+// librivoxRoute is where routeLibrivox sends a row: a decided walk, a skip, or
+// (the zero value) the ordinary path, which is every non-LibriVox row's.
+type librivoxRoute struct {
+	// walk is the decided walk: a work to attach to (walk.ws), or a slug to
+	// create at (walk.free). nil = the ordinary path decides.
+	walk *workWalk
+	// guard says the duplicate-identity guard still applies to the walk: the
+	// ordinary walk found nothing and neither did the spelling-variant rule.
+	guard bool
+	// skip says the row is on the worklist and must be dropped.
+	skip bool
+}
+
+// routeLibrivox applies the rules in this file's header to one LibriVox row. It
+// only reads (the authors are resolved read-only), so a skipped row leaves no
+// person behind. The zero route for every other row.
+func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) librivoxRoute {
+	if b.lv == nil {
+		return librivoxRoute{}
+	}
+	authors := p.rowWorkAuthorsRO(credits)
+	unslugged := slugOfTitle(workTitle).fellBack
+	var walk workWalk
+	if !unslugged {
+		walk = p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim)
+		if walk.ws != nil {
+			return librivoxRoute{walk: &walk}
+		}
+	}
+
+	matched, partial := p.librivoxCandidates(workTitle, lang, authors)
+	switch {
+	case len(matched) == 1 && !authors.set()[model.UnslugPersonID]:
+		p.summary.LibrivoxVariantsAttached++
+		if len(p.lv.variantExamples) < maxWarnExamples {
+			p.lv.variantExamples = append(p.lv.variantExamples,
+				fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title))
+		}
+		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]}}
+	case len(matched) > 1:
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
+		return librivoxRoute{skip: true}
+	case len(matched)+len(partial) > 0:
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf(slices.Concat(matched, partial)))
+		return librivoxRoute{skip: true}
+	}
+
+	if !unslugged {
+		return librivoxRoute{walk: &walk, guard: true}
+	}
+	slug := LibrivoxWorkSlug(b.lv.id)
+	if ws, via := p.workAt(slug); ws != nil || via != "" {
+		var held []LibrivoxCandidate
+		if ws != nil {
+			held = candidatesOf([]*workState{ws})
+		}
+		p.noteLibrivoxWorklist(b, workTitle, LibrivoxFallbackTaken, held)
+		return librivoxRoute{skip: true}
+	}
+	p.summary.LibrivoxFallbackSlugs++
+	return librivoxRoute{walk: &workWalk{title: workTitle, chain: workChain{base: slug}, free: slug}}
+}
+
+// librivoxCandidates are the works (catalogued or created by this run) whose
+// title shares workTitle's spelling-variant key, in a compatible language:
+// matched holds those whose authors agree with the row's (matchWork), partial
+// those whose credit list shares a person with the row's without agreeing. Each
+// in slug order.
+func (p *planner) librivoxCandidates(workTitle, lang string, authors workAuthors) (matched, partial []*workState) {
+	key := librivoxTitleKey(workTitle)
+	if key == "" {
+		return nil, nil
+	}
+	rowAll := authors.allSet()
+	for _, slug := range p.librivoxTitleIndex()[key] {
+		ws := p.works[slug]
+		if ws == nil || !langCompatible(ws.lang, lang) {
+			continue
+		}
+		if matchWork(ws, authors) != matchNone {
+			matched = append(matched, ws)
+			continue
+		}
+		for person := range rowAll {
+			if ws.all[person] {
+				partial = append(partial, ws)
+				break
+			}
+		}
+	}
+	return matched, partial
+}
+
+// librivoxTitleIndex is the run's spelling-variant index, key -> work slugs in
+// slug order: every work the planner holds, built on first use (a LibriVox run
+// only), and kept current as the run creates works (indexLibrivoxWork).
+func (p *planner) librivoxTitleIndex() map[string][]string {
+	if p.lv.titles == nil {
+		p.lv.titles = map[string][]string{}
+		for _, ws := range p.works {
+			p.indexLibrivoxWork(ws)
+		}
+	}
+	return p.lv.titles
+}
+
+// indexLibrivoxWork adds a work to the spelling-variant index once it exists. A
+// no-op before the index is built (the build reads every work then).
+func (p *planner) indexLibrivoxWork(ws *workState) {
+	if p.lv.titles == nil || ws == nil {
+		return
+	}
+	key := librivoxTitleKey(ws.title)
+	if key == "" {
+		return
+	}
+	slugs := p.lv.titles[key]
+	i, found := slices.BinarySearch(slugs, ws.slug)
+	if !found {
+		p.lv.titles[key] = slices.Insert(slugs, i, ws.slug)
+	}
+}
+
+// candidatesOf names works for a worklist entry.
+func candidatesOf(works []*workState) []LibrivoxCandidate {
+	out := make([]LibrivoxCandidate, 0, len(works))
+	for _, ws := range works {
+		out = append(out, LibrivoxCandidate{Work: ws.slug, Title: ws.title})
+	}
+	return out
+}
+
+// noteLibrivoxWorklist puts a skipped LibriVox row on the run's worklist and
+// counts it as skipped.
+func (p *planner) noteLibrivoxWorklist(b sourceBook, title, reason string, candidates []LibrivoxCandidate) {
+	p.summary.LibrivoxWorklist = append(p.summary.LibrivoxWorklist, LibrivoxWorklistEntry{
+		Project:    b.lv.id,
+		Title:      title,
+		Authors:    slices.Clone(b.authors),
+		Reason:     reason,
+		Candidates: candidates,
+	})
+}
+
+// reportLibrivoxVariants is the run's one note about the rows rule 2 attached,
+// with a few examples: a decision a reviewer of the tranche should see.
+func (p *planner) reportLibrivoxVariants() {
+	if n := p.summary.LibrivoxVariantsAttached; n > 0 {
+		p.summary.Notes = append(p.summary.Notes, withExamples(
+			fmt.Sprintf("%d LibriVox project(s) attached to a work by the same authors whose title differs only by a leading article or punctuation", n),
+			p.lv.variantExamples))
+	}
+}

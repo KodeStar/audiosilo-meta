@@ -336,15 +336,48 @@ reads every `pages/*.json` and needs nothing else, so a hand-assembled snapshot
 What an import does: a project whose `librivox_id` is already catalogued is
 skipped (identity is the project id, never the title), so a rerun changes
 nothing. Otherwise it becomes a new recording - never merged into another
-recording - under the work the importer's ordinary identity walk finds (same
-title, same identity authors, same language; LibriVox's "(version 2)" title
-marker is stripped first), or under a new work. Readers are the narrators,
-translators are `translator` credits, sections are chapters (`start_ms`
-cumulative from each playtime, the section's file as `audio_url`), the language
-name maps to a code (an unknown language is a reported skip, never a guess) and
-genres map onto the vocabulary where one fits. A title in a script the slug
-rule cannot read (Cyrillic, Greek, CJK) is a reported skip too, rather than
-being filed under the shared "untitled" fallback with every other such title.
+recording - under the work these rules find, in order (LibriVox's "(version 2)"
+title marker is stripped first):
+
+1. the importer's ordinary identity walk: same title, same identity authors,
+   same language;
+2. otherwise the ONE work by the same authors, in the same language, whose title
+   differs only by a leading article or punctuation, case and accents ("The
+   Metamorphosis" and "Metamorphosis" by Franz Kafka). The articles set aside
+   are the English the/a/an, French le/la/les/l', German der/die/das, Spanish
+   el/los/las, Italian il/lo and Dutch de/het/een;
+3. otherwise a new work. A work by a different author under the same title is a
+   different book, so it gets a work of its own.
+
+A match the rules cannot settle is never guessed: the project is skipped and
+listed in the import report's **worklist**, one line per project with its id,
+title, authors, a reason code and the catalogued works involved:
+
+```
+librivox worklist: 2 projects skipped for a person to resolve (re-import the ids once settled):
+  99502 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"
+  99503 "Metamorphosis: A Novella" by Franz Kafka [differently-spelled-title]: metamorphosis "Metamorphosis"
+```
+
+The reasons: `several-works` (two or more works qualify under rule 2),
+`author-unmatched` (a work carries the title but its authors only partly agree,
+or the agreement rests on the catch-all person a name in an unsluggable script
+falls back to), `differently-spelled-title` (the duplicate-identity guard holds
+the book under a title rule 2 does not read as the same, such as a subtitle
+apart) and `fallback-slug-taken` (below). Once a person has settled the work,
+re-importing the project's id lands it. `--conflicts` rows for these projects
+carry `librivox_id`, since they have no ASIN.
+
+Readers are the narrators, translators are `translator` credits, sections are
+chapters (`start_ms` cumulative from each playtime, the section's file as
+`audio_url`), the language name maps to a code (an unknown language is a
+reported skip, never a guess) and genres map onto the vocabulary where one fits.
+A title in a script the slug rule cannot read (Cyrillic, Greek, CJK) never
+shares the "untitled" fallback: it is matched by rule 2 (its key keeps its own
+letters, so a second project of the same title by the same author attaches),
+and otherwise its new work is created at `librivox-<project id>`, titled as
+LibriVox writes it (`fallback-slug-taken` when that slug is already used).
+
 People are keyed by `librivox_reader_id` / `librivox_author_id`: a known id
 resolves to its catalogued person whatever the feed now calls them (a name that
 slugs to nothing lands on the catch-all person, which is never given an id).

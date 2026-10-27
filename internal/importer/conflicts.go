@@ -57,6 +57,9 @@ type Conflict struct {
 	// ASIN is the row's own identifier - the one that matched the record, on
 	// every path that can reach a contradiction.
 	ASIN string `json:"asin"`
+	// LibrivoxID is a LibriVox row's project id, its identifier in place of an
+	// ASIN; absent from every other source's rows.
+	LibrivoxID int `json:"librivox_id,omitempty"`
 	// Work / Recording address the record whose value was kept. A recording has
 	// no identity of its own, so it takes both (see RecRef).
 	Work      string `json:"work"`
@@ -93,6 +96,7 @@ func (p *planner) recordConflict(b sourceBook, ref RecRef, field string, recorde
 	line, err := json.Marshal(Conflict{
 		Run:        p.mode.runName(),
 		ASIN:       NormalizeASIN(b.str("asin")),
+		LibrivoxID: librivoxIDOf(b),
 		Work:       ref.Work,
 		Recording:  ref.Rec,
 		Field:      field,
@@ -125,4 +129,12 @@ func (p *planner) noteConflictLogFailure(err error) {
 	p.conflicts = nil
 	p.summary.Warnings = append(p.summary.Warnings,
 		fmt.Sprintf("conflict worklist: %v; the remaining conflicts of this run were not recorded", err))
+}
+
+// librivoxIDOf is a LibriVox row's project id, 0 for every other row.
+func librivoxIDOf(b sourceBook) int {
+	if b.lv == nil {
+		return 0
+	}
+	return b.lv.id
 }
