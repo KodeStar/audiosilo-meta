@@ -340,7 +340,10 @@ recording - under the work these rules find, in order (LibriVox's "(version 2)"
 title marker is stripped first):
 
 1. the importer's ordinary identity walk: same title, same identity authors,
-   same language;
+   same language - except that a hit whose authors agree only through the
+   catch-all person (every name that slugs to nothing, such as two different
+   Cyrillic-named authors, lands on that one record) is `author-unmatched`
+   rather than an attach;
 2. otherwise the ONE work by the same authors, in the same language, whose title
    differs only by a leading article or punctuation, case and accents ("The
    Metamorphosis" and "Metamorphosis" by Franz Kafka). The articles set aside
@@ -372,11 +375,16 @@ Readers are the narrators, translators are `translator` credits, sections are
 chapters (`start_ms` cumulative from each playtime, the section's file as
 `audio_url`), the language name maps to a code (an unknown language is a
 reported skip, never a guess) and genres map onto the vocabulary where one fits.
-A title in a script the slug rule cannot read (Cyrillic, Greek, CJK) never
-shares the "untitled" fallback: it is matched by rule 2 (its key keeps its own
-letters, so a second project of the same title by the same author attaches),
-and otherwise its new work is created at `librivox-<project id>`, titled as
-LibriVox writes it (`fallback-slug-taken` when that slug is already used).
+A **non-Latin title** - one that slugs to nothing, or one where more than half
+of its letters are not Latin script (digits, punctuation and spaces are not
+counted; the leading article is dropped first) - never walks a slug chain,
+which would file it under the shared "untitled" fallback or under its Latin or
+number fragment ("Сборник стихов 001" as "001"). It is matched by rule 2 alone
+(its key keeps its own letters, so a second project of the same title by the
+same author attaches, and "The Война и мир" meets "Война и мир"), and otherwise
+its new work is created at `librivox-<project id>`, titled as LibriVox writes
+it (`fallback-slug-taken` when that slug is already used). A title exactly half
+Latin ("Anna Karenina (Анна Каренина)") stays on the slug rule.
 
 People are keyed by `librivox_reader_id` / `librivox_author_id`: a known id
 resolves to its catalogued person whatever the feed now calls them (a name that

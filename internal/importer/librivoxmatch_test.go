@@ -331,3 +331,123 @@ func TestLibrivoxWorklistEntryString(t *testing.T) {
 		t.Errorf("bare entry = %s", got)
 	}
 }
+
+// byAuthor is fixture project 527 under another id and title, by one author
+// (no translator) and read by David Barnes.
+func byAuthor(t *testing.T, id int, title, lang string, author LibrivoxPerson, translators ...LibrivoxPerson) LibrivoxProject {
+	t.Helper()
+	p := fixtureProject(t, 527)
+	p.ID, p.Title, p.Language = lvInt(id), title, lang
+	p.Authors, p.Translators = []LibrivoxPerson{author}, translators
+	return p
+}
+
+func TestLibrivoxOrdinaryWalkNeverAttachesOnTheCatchAllPerson(t *testing.T) {
+	// Two "Childhood"s by two Cyrillic-named authors both credit the catch-all
+	// person: the second is not a recording of the first (author-unmatched).
+	// A third, by the first author again and sharing her translator, agrees on a
+	// real person and attaches.
+	tolstoy := LibrivoxPerson{ID: 6100, FirstName: "Лев", LastName: "Толстой"}
+	gorky := LibrivoxPerson{ID: 6101, FirstName: "Максим", LastName: "Горький"}
+	wiener := LibrivoxPerson{ID: 6102, FirstName: "Leo", LastName: "Wiener"}
+	snap := writeSnapshot(t,
+		byAuthor(t, 99900, "Childhood", "English", tolstoy, wiener),
+		byAuthor(t, 99901, "Childhood", "English", gorky),
+		byAuthor(t, 99902, "Childhood (version 2)", "English", tolstoy, wiener),
+	)
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 {
+		t.Fatalf("works/recordings = %d/%d, want 1/2\nworklist: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxWorklist, sum.Warnings)
+	}
+	want := []LibrivoxWorklistEntry{{
+		Project: 99901, Title: "Childhood", Authors: []string{"Максим Горький"},
+		Reason: LibrivoxAuthorUnmatched, Candidates: []LibrivoxCandidate{{"childhood", "Childhood"}},
+	}}
+	if !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
+		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
+	}
+	if got := recSlugsOf(t, dataDir, "childhood"); len(got) != 2 {
+		t.Errorf("childhood recordings = %v, want the first and third projects", got)
+	}
+	mustValidate(t, dataDir)
+
+	before := testpack.Snapshot(t, dataDir)
+	again := runLibrivox(t, snap, dataDir, allLibrivox)
+	if again.NewWorks+again.NewRecordings+again.NewPeople != 0 || len(again.Files) != 0 || !reflect.DeepEqual(again.LibrivoxWorklist, want) {
+		t.Errorf("rerun = %+v", again)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("rerun changed the tree")
+	}
+}
+
+func TestLibrivoxMostlyNonLatinTitlesKeyOnTheirOwnScript(t *testing.T) {
+	// "Сборник стихов 001" slugs to "001" and "The Война и мир" to "the": read
+	// through the slug rule they would join the catalogued "001" and "The" by
+	// the same author. Read by their own letters they get librivox-<id>, and
+	// "The Война и мир" is "Война и мир" once its article is dropped. A title
+	// whose letters are half Latin stays on the slug rule.
+	tolstoy := LibrivoxPerson{ID: 6200, FirstName: "Leo", LastName: "Tolstoy"}
+	dataDir := t.TempDir()
+	seedWorks(t, dataDir, map[string][]string{
+		"001": {"001", "leo-tolstoy"},
+		"the": {"The", "leo-tolstoy"},
+	})
+	snap := writeSnapshot(t,
+		byAuthor(t, 99910, "Сборник стихов 001", "Russian", tolstoy),
+		byAuthor(t, 99911, "Война и мир", "Russian", tolstoy),
+		byAuthor(t, 99912, "The Война и мир", "Russian", tolstoy),
+		byAuthor(t, 99913, "Anna Karenina (Анна Каренина)", "Russian", tolstoy),
+	)
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.NewWorks != 3 || sum.NewRecordings != 4 || sum.LibrivoxFallbackSlugs != 2 || len(sum.LibrivoxWorklist) != 0 {
+		t.Fatalf("works/recordings/fallback = %d/%d/%d\nworklist: %v\nwarnings: %v",
+			sum.NewWorks, sum.NewRecordings, sum.LibrivoxFallbackSlugs, sum.LibrivoxWorklist, sum.Warnings)
+	}
+	for _, slug := range []string{"001", "the"} {
+		if got := recSlugsOf(t, dataDir, slug); !reflect.DeepEqual(got, []string{"se"}) {
+			t.Errorf("%s gained %v", slug, got)
+		}
+	}
+	var w lvWork
+	readEntity(t, dataDir, workAddr("librivox-99910"), &w)
+	if w.Title != "Сборник стихов 001" {
+		t.Errorf("librivox-99910 = %+v", w)
+	}
+	if got := recSlugsOf(t, dataDir, "librivox-99911"); len(got) != 2 {
+		t.Errorf("Война и мир recordings = %v, want both projects", got)
+	}
+	if entryExists(t, dataDir, workAddr("librivox-99913")) || !entryExists(t, dataDir, workAddr("anna-karenina")) {
+		t.Error("a half-Latin title left the slug rule")
+	}
+	mustValidate(t, dataDir)
+
+	before := testpack.Snapshot(t, dataDir)
+	again := runLibrivox(t, snap, dataDir, allLibrivox)
+	if again.NewWorks+again.NewRecordings+again.NewPeople+again.LibrivoxFallbackSlugs != 0 || len(again.Files) != 0 || again.Skipped != 4 {
+		t.Errorf("rerun = %+v", again)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("rerun changed the tree")
+	}
+}
+
+func TestLibrivoxNonLatinTitle(t *testing.T) {
+	for title, want := range map[string]bool{
+		"Война и мир":                   true,
+		"論語":                            true,
+		"Сборник стихов 001":            true,
+		"The Война и мир":               true,  // 3 Latin letters of 12
+		"Anna Karenina (Анна Каренина)": false, // exactly half: not MORE than half
+		"Metamorphosis":                 false,
+		"Les Misérables":                false, // accented Latin is Latin
+		"1984":                          false,
+		"Ab Вой":                        true,
+		"Abc Во":                        false,
+	} {
+		if got := librivoxNonLatinTitle(title); got != want {
+			t.Errorf("librivoxNonLatinTitle(%q) = %v, want %v", title, got, want)
+		}
+	}
+}

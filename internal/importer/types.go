@@ -516,8 +516,8 @@ type Summary struct {
 	LibrivoxIDsStamped int
 	// LibrivoxVariantsAttached counts the LibriVox rows attached to a work whose
 	// title differs from theirs only by a leading article or punctuation, and
-	// LibrivoxFallbackSlugs the works created at `librivox-<id>` for a title that
-	// slugs to nothing (librivoxmatch.go). LibrivoxWorklist is every LibriVox row
+	// LibrivoxFallbackSlugs the works created at `librivox-<id>` for a non-Latin
+	// title (librivoxmatch.go). LibrivoxWorklist is every LibriVox row
 	// the run skipped for a person to resolve, in row order: re-importing the
 	// project id once its work is settled lands it. All zero for other sources.
 	LibrivoxVariantsAttached int

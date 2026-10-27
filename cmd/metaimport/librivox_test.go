@@ -101,7 +101,7 @@ func TestLibrivoxImportPrintsTheWorklist(t *testing.T) {
 		}
 	})
 	for _, want := range []string{
-		"librivox: 2 new works at librivox-<id> (title slugs to nothing)",
+		"librivox: 2 new works at librivox-<id> (non-Latin title)",
 		"librivox worklist: 1 project skipped for a person to resolve",
 		`  527 "The Metamorphosis" by Franz Kafka [several-works]: metamorphosis "Metamorphosis"; metamorphosis-2 "Metamorphosis"`,
 	} {

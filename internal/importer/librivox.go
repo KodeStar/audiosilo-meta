@@ -17,9 +17,9 @@ package importer
 //     only by a leading article or punctuation; an ambiguous match is a skip on
 //     the run's worklist, and otherwise the row creates a work. LibriVox's own
 //     repeat marker, a trailing "(version 2)", is stripped first: it numbers
-//     LibriVox projects of one text, not works. A title that slugs to nothing (a
-//     script Slugify folds away) never walks the shared "untitled" chain: its
-//     new work is created at `librivox-<project id>`.
+//     LibriVox projects of one text, not works. A non-Latin title (it slugs to
+//     nothing, or most of its letters are not Latin script) never walks a slug
+//     chain: its new work is created at `librivox-<project id>`.
 //   - Its PEOPLE are keyed by LibriVox id. Before any census reads a name, a
 //     reader or author id the catalogue already holds is spelled the way that
 //     person is catalogued (keyLibrivoxCredits), so a reader renamed on

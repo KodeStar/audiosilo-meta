@@ -24,9 +24,11 @@ package importer
 //     row the duplicate-identity guard refuses (differently-spelled-title: a
 //     coarser match, a subtitle or decoration apart, which this rule does not
 //     read as the same title).
-//  4. NON-LATIN TITLES. A title that slugs to nothing (Cyrillic, Greek, CJK...)
-//     never walks the shared "untitled" chain, which would file every such title
-//     by one author as one work. It is matched by rule 2 alone (its key keeps the
+//  4. NON-LATIN TITLES. A title that slugs to nothing (Cyrillic, Greek, CJK...),
+//     or whose letters are mostly in such a script (librivoxNonLatinTitle),
+//     never walks a slug chain: the shared "untitled" one would file every such
+//     title by one author as one work, and a Latin or number fragment's chain
+//     would file it beside an unrelated book. It is matched by rule 2 alone (its key keeps the
 //     letters of its own script), and otherwise creates a new work at
 //     `librivox-<project id>`, titled as LibriVox writes it.
 //
@@ -60,7 +62,7 @@ const (
 	// found the row's book under a title this rule does not read as the same
 	// (a subtitle or a decoration apart).
 	LibrivoxDifferentlySpelled = "differently-spelled-title"
-	// LibrivoxFallbackTaken: the row's title slugs to nothing and its
+	// LibrivoxFallbackTaken: the row's title is non-Latin (librivoxNonLatinTitle) and its
 	// `librivox-<id>` work slug is already taken (or retired) by another record.
 	LibrivoxFallbackTaken = "fallback-slug-taken"
 )
@@ -128,10 +130,62 @@ var librivoxArticles = map[string]bool{
 // no letter or digit at all.
 func librivoxTitleKey(title string) string {
 	t := dropLibrivoxArticle(strings.TrimSpace(title))
-	if k := joinSlugWords(model.SlugifyWhole(t)); k != "" {
-		return k
+	if librivoxNonLatinTitle(t) {
+		return librivoxScriptKey(t)
 	}
-	return librivoxScriptKey(t)
+	return joinSlugWords(model.SlugifyWhole(t))
+}
+
+// librivoxNonLatinTitle reports whether a title is read in its own script
+// rather than through the slug rule: it slugs to nothing, or MORE THAN HALF of
+// its letters are not Latin script (digits, punctuation, spaces and marks are
+// not counted). The slug rule keeps only a non-Latin title's Latin and digit
+// fragments, so "Сборник стихов 001" would walk as "001" and "The Война и мир"
+// as "the", each beside unrelated works; read by its own letters it keys as
+// itself and, matching nothing, gets `librivox-<id>`. A title exactly half
+// Latin ("Anna Karenina (Анна Каренина)") stays on the slug rule: its Latin
+// half is a whole title.
+func librivoxNonLatinTitle(t string) bool {
+	if slugOfTitle(t).fellBack {
+		return true
+	}
+	var letters, latin int
+	for _, r := range t {
+		if !unicode.IsLetter(r) {
+			continue
+		}
+		letters++
+		if unicode.Is(unicode.Latin, r) {
+			latin++
+		}
+	}
+	return 2*(letters-latin) > letters
+}
+
+// anyUnsluggedCredit reports whether any credit's name slugs to nothing, i.e.
+// resolves to the catch-all person: a cheap test before resolving the credits.
+func anyUnsluggedCredit(credits []credit) bool {
+	for _, c := range credits {
+		if _, fellBack := personSlug(c.name); fellBack {
+			return true
+		}
+	}
+	return false
+}
+
+// restsOnCatchAll reports whether a work's author agreement with a row rests
+// only on the catch-all person: the row's identity authors include it, and no
+// other person the row credits is credited on the work.
+func restsOnCatchAll(authors workAuthors, ws *workState) bool {
+	if !slices.Contains(authors.identity, model.UnslugPersonID) {
+		return false
+	}
+	for _, a := range authors.all {
+		if a != model.UnslugPersonID && ws.all[a] {
+			return false
+		}
+	}
+	return true
 }
 
 // joinSlugWords drops a slug's hyphens ("monte-cristo" and "montecristo" are one
@@ -186,8 +240,8 @@ func dropLibrivoxArticle(t string) string {
 	return t
 }
 
-// librivoxWorkSlug is the work slug a project whose title slugs to nothing is
-// created at.
+// librivoxWorkSlug is the work slug a project with a non-Latin title
+// (librivoxNonLatinTitle) is created at when no work matches it.
 func librivoxWorkSlug(project int) string { return "librivox-" + strconv.Itoa(project) }
 
 // librivoxRoute is where routeLibrivox sends a row: a decided walk, a skip, or
@@ -210,19 +264,35 @@ type librivoxRoute struct {
 // leaves rules 1-3 nothing to decide (the ordinary path, or rule 4), so the row's
 // credits are resolved and its chain walked only when the key holds a work - the
 // duplicate-identity guard's own gate, for the same reason.
+//
+// A rule-1 hit whose author agreement rests ONLY on the catch-all person (every
+// author the row and the work share is model.UnslugPersonID) decides nothing
+// either: two "Childhood"s by two Cyrillic-named authors both credit that one
+// record, so the hit is an author-unmatched worklist row, never an attach. Such
+// a row is the one case probed even when the index holds nothing, since a chain
+// hit need not share the key (a full or qualified title's walk).
 func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) librivoxRoute {
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
-	unslugged := slugOfTitle(workTitle).fellBack
-	if slugs := p.librivoxTitleIndex()[librivoxTitleKey(workTitle)]; len(slugs) > 0 {
+	// Judged after the article drop, as the key is, so the two always agree
+	// ("The 論語" is a non-Latin title).
+	nonLatin := librivoxNonLatinTitle(dropLibrivoxArticle(strings.TrimSpace(workTitle)))
+	slugs := p.librivoxTitleIndex()[librivoxTitleKey(workTitle)]
+	if len(slugs) > 0 || (!nonLatin && anyUnsluggedCredit(credits)) {
 		authors := p.rowWorkAuthorsRO(credits)
-		if !unslugged && p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws != nil {
-			return librivoxRoute{}
+		if !nonLatin {
+			if ws := p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws; ws != nil {
+				if restsOnCatchAll(authors, ws) {
+					p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf([]*workState{ws}))
+					return librivoxRoute{skip: true}
+				}
+				return librivoxRoute{}
+			}
 		}
 		matched, partial := p.librivoxCandidates(slugs, lang, authors)
 		switch {
-		case len(matched) == 1 && !slices.Contains(authors.identity, model.UnslugPersonID):
+		case len(matched) == 1 && !restsOnCatchAll(authors, matched[0]):
 			p.summary.LibrivoxVariantsAttached++
 			if len(p.lv.variantExamples) < maxWarnExamples {
 				p.lv.variantExamples = append(p.lv.variantExamples,
@@ -238,7 +308,7 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 		}
 	}
 
-	if !unslugged {
+	if !nonLatin {
 		return librivoxRoute{}
 	}
 	slug := librivoxWorkSlug(b.lv.id)
