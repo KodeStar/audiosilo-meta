@@ -31,7 +31,7 @@ func orphanPeople(t *testing.T, dataDir string) []string {
 // project attaches to a catalogued Metamorphosis that does not name him.
 func ianJohnston(work string, created bool) LibrivoxUnrecordedCredit {
 	return LibrivoxUnrecordedCredit{Project: 527, AuthorID: 1019, Name: "Ian Johnston",
-		Roles: []string{model.RoleTranslator}, Work: work, Created: created}
+		Roles: []string{model.RoleTranslator}, Work: work, PersonExists: created}
 }
 
 func TestLibrivoxAttachCreatesNoUncreditedTranslator(t *testing.T) {
@@ -234,7 +234,7 @@ func TestLibrivoxTrailingQualifierLeavesOtherTitlesAlone(t *testing.T) {
 	}
 }
 
-func TestLibrivoxQualifierRE(t *testing.T) {
+func TestLibrivoxQualifierStrip(t *testing.T) {
 	for in, want := range map[string]string{
 		"Frankenstein; or The Modern Prometheus (1818)": "Frankenstein; or The Modern Prometheus",
 		"Man of Property (Forsyte Saga Vol. 1)":         "Man of Property",
@@ -243,7 +243,7 @@ func TestLibrivoxQualifierRE(t *testing.T) {
 		"Anna Karenina, Book 1":                         "Anna Karenina, Book 1",
 		"(1818)":                                        "",
 	} {
-		if got := strings.TrimSpace(librivoxQualifierRE.ReplaceAllString(in, "")); got != want {
+		if got := strings.TrimSpace(trailingParenRE.ReplaceAllString(in, "")); got != want {
 			t.Errorf("%q -> %q, want %q", in, got, want)
 		}
 	}

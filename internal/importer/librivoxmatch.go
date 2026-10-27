@@ -44,7 +44,6 @@ package importer
 
 import (
 	"fmt"
-	"regexp"
 	"slices"
 	"strconv"
 	"strings"
@@ -358,10 +357,6 @@ func (p *planner) librivoxUndecided(b sourceBook, workTitle, fullTitle, posSuffi
 	return p.librivoxFallback(b, workTitle, nonLatin)
 }
 
-// librivoxQualifierRE is one trailing parenthetical or bracketed qualifier:
-// "(1818)", "(The Autobiography of a Horse)", "[Forsyte Saga Vol. 1]".
-var librivoxQualifierRE = regexp.MustCompile(`\s*(\([^()]*\)|\[[^\[\]]*\])\s*$`)
-
 // librivoxQualifiedTwin is rule 5 (meta#2743 follow-up): a row about to create
 // a work whose title, with its trailing parenthetical or bracketed qualifiers
 // removed one at a time, is a work's title by the same authors (rule 2's key and
@@ -377,7 +372,9 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 	}
 	var authors *workAuthors
 	for t := workTitle; ; {
-		stripped := strings.TrimSpace(librivoxQualifierRE.ReplaceAllString(t, ""))
+		// trailingParenRE is the package's one trailing-qualifier locator
+		// ("(1818)", "(The Autobiography of a Horse)", "[Forsyte Saga Vol. 1]").
+		stripped := strings.TrimSpace(trailingParenRE.ReplaceAllString(t, ""))
 		if stripped == t || stripped == "" {
 			return false
 		}
@@ -400,7 +397,7 @@ func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posS
 		matched = slices.DeleteFunc(matched, func(ws *workState) bool { return restsOnCatchAll(*authors, ws) })
 		switch {
 		case len(matched) == 1:
-			p.noteIdentityDuplicate(b, workTitle, matched[0].slug, matched[0].title, "")
+			p.noteIdentityDuplicate(b, workTitle, duplicateIdentityMatch{work: matched[0].slug, title: matched[0].title})
 			return true
 		case len(matched) > 1:
 			p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))

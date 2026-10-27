@@ -662,9 +662,10 @@ type LibrivoxUnrecordedCredit struct {
 	Roles    []string `json:"roles,omitempty"`
 	// Work is the work the row's recording landed on.
 	Work string `json:"work"`
-	// Created says the person record exists (the catalogue or the run already
-	// held it); false means the run withheld it rather than mint an orphan.
-	Created bool `json:"created"`
+	// PersonExists says the person record exists (the catalogue or the run
+	// already held it); false means the run withheld it rather than mint an
+	// orphan.
+	PersonExists bool `json:"person_exists"`
 }
 
 // String is the credit as the import report prints it, one line:
@@ -682,7 +683,7 @@ func (c LibrivoxUnrecordedCredit) String() string {
 		fmt.Fprintf(&b, ", librivox_author_id %d", c.AuthorID)
 	}
 	fmt.Fprintf(&b, ") -> %s", c.Work)
-	if !c.Created {
+	if !c.PersonExists {
 		b.WriteString(", person not created")
 	}
 	return b.String()
@@ -704,31 +705,31 @@ func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []cred
 	var out []LibrivoxUnrecordedCredit
 	for _, c := range credits {
 		r := p.resolvePerson(c.name)
-		if ws.all[r.slug] || ws.credited[r.slug] || (runCreated && len(c.roles) > 0 && !r.fellBack) {
+		if ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack) {
 			p.getOrCreatePerson(c.name, warn)
 			continue
 		}
 		out = append(out, LibrivoxUnrecordedCredit{
-			Project:  b.lv.id,
-			AuthorID: p.librivoxAuthorIDOf(b, r.slug),
-			Name:     c.name,
-			Roles:    slices.Clone(c.roles),
-			Work:     ws.slug,
-			Created:  !r.create,
+			Project:      b.lv.id,
+			AuthorID:     p.librivoxAuthorIDOf(b, r.slug),
+			Name:         c.name,
+			Roles:        slices.Clone(c.roles),
+			Work:         ws.slug,
+			PersonExists: !r.create,
 		})
 	}
 	return out
 }
 
 // librivoxAuthorIDOf is the librivox_author_id of the row's author or
-// translator credit resolving to slug (through the same per-credit cleaning
-// librivoxCreditSlug uses), or 0.
+// translator credit resolving to slug (through librivoxCreditNames, the
+// cleaning librivoxCreditSlug uses), or 0.
 func (p *planner) librivoxAuthorIDOf(b sourceBook, slug string) int {
 	for _, c := range b.lv.credits {
 		if c.kind != librivoxAuthor {
 			continue
 		}
-		names := creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
+		names := p.librivoxCreditNames(c)
 		if len(names) == 1 && p.resolvePerson(names[0]).slug == slug {
 			return c.id
 		}
@@ -740,7 +741,7 @@ func (p *planner) librivoxAuthorIDOf(b sourceBook, slug string) int {
 // catalogued work's stored credits, or in a role credit this run recorded on it (mergeCreatedWorkFacts adds a later row's
 // credits to a work the run created without touching its authors).
 func (p *planner) workCreditsPerson(work, person string) bool {
-	if ws := p.works[work]; ws != nil && (ws.all[person] || ws.credited[person]) {
+	if ws := p.works[work]; ws != nil && ws.names(person) {
 		return true
 	}
 	for c := range p.runCredits[work] {
@@ -758,12 +759,7 @@ func (p *planner) workCreditsPerson(work, person string) bool {
 // (model.UnslugPersonID), and one LibriVox id stamped there would claim that every
 // unsluggable credit is that one reader or author.
 func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
-	var names []string
-	if c.kind == librivoxReader {
-		names = rowNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
-	} else {
-		names = creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
-	}
+	names := p.librivoxCreditNames(c)
 	if len(names) != 1 {
 		return "", false
 	}
@@ -772,6 +768,23 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 		return "", false
 	}
 	return p.livePerson(r.slug)
+}
+
+// librivoxCreditNames is the names one LibriVox credit cleans to, through the
+// same per-credit cleaning the planner applied to the row: a reader's as a
+// narrator credit, an author's or translator's (its role suffix included) as an
+// author credit.
+func (p *planner) librivoxCreditNames(c librivoxCredit) []string {
+	if c.kind == librivoxReader {
+		return rowNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
+	}
+	return creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
+}
+
+// names reports whether the work's own record names person: in its authors or
+// in a catalogued work's stored credits[].
+func (ws *workState) names(person string) bool {
+	return ws.all[person] || slices.ContainsFunc(ws.storedCredits, func(c model.Credit) bool { return c.Person == person })
 }
 
 // stampLifeYears writes an author's stated birth and death years onto the person

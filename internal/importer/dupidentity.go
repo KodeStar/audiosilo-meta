@@ -189,32 +189,31 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 		}
 	}
 
-	p.noteIdentityDuplicate(b, workTitle, match.work, match.title, match.series)
+	p.noteIdentityDuplicate(b, workTitle, match)
 	return true
 }
 
 // noteIdentityDuplicate is the bookkeeping of a row refused because the
-// catalogue already holds its book (work, titled title, cleaned against series
-// when that is not "") under a differently-spelled title: the count and examples
-// the run's warning reports, the conflict row and, for a LibriVox row, the
-// differently-spelled-title worklist entry. The guard above and the LibriVox
+// catalogue already holds its book (match) under a differently-spelled title:
+// the count and examples the run's warning reports, the conflict row and, for a
+// LibriVox row, the differently-spelled-title worklist entry. The guard above and the LibriVox
 // trailing-qualifier rule (librivoxmatch.go) both refuse through it.
-func (p *planner) noteIdentityDuplicate(b sourceBook, workTitle, work, title, series string) {
+func (p *planner) noteIdentityDuplicate(b sourceBook, workTitle string, match duplicateIdentityMatch) {
 	p.summary.SkippedDuplicateIdentity++
 	if len(p.dupIdentityExamples) < maxWarnExamples {
 		p.dupIdentityExamples = append(p.dupIdentityExamples,
-			fmt.Sprintf("%q -> %q (%q%s)", workTitle, work, title, againstSeries(series)))
+			fmt.Sprintf("%q -> %q (%q%s)", workTitle, match.work, match.title, againstSeries(match.series)))
 	}
 	// The durable, machine-readable twin of the warning, in the same worklist the
 	// contradiction guards write to: run, ASIN, the work whose identity was already
 	// recorded, and both titles. `field` names WHICH disagreement this is, so a
 	// worklist holding runtime and release-date rows stays sortable.
-	p.recordConflict(b, RecRef{Work: work}, conflictFieldWorkIdentity, title, workTitle)
+	p.recordConflict(b, RecRef{Work: match.work}, conflictFieldWorkIdentity, match.title, workTitle)
 	// A LibriVox row is also listed on the run's own worklist, which names it
 	// by its project id (it has no ASIN for the conflict row to carry).
 	if b.lv != nil {
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxDifferentlySpelled,
-			[]LibrivoxCandidate{{Work: work, Title: title}})
+			[]LibrivoxCandidate{{Work: match.work, Title: match.title}})
 	}
 }
 
