@@ -39,6 +39,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"unicode"
 
 	"golang.org/x/text/unicode/norm"
 
@@ -120,15 +121,52 @@ var librivoxArticles = map[string]bool{
 // librivoxTitleKey is a title's spelling-variant key: one leading article
 // dropped (never the only word), then case, punctuation, spacing and diacritics
 // folded away over the WHOLE title (no slug cap, so two long titles that differ
-// only near their end stay apart). A title in a script the slug rule cannot
-// write keys by its own letters and digits, lower-cased, so it still meets its
-// own spelling. "" for a title with no letter or digit at all.
+// only near their end stay apart). The one separator kept is the one between two
+// numbers, so "Vol. 1, 2" and "Vol. 12" stay apart as their slugs do. A title in
+// a script the slug rule cannot write keys by its own letters, digits and marks
+// (librivoxScriptKey), so it still meets its own spelling. "" for a title with
+// no letter or digit at all.
 func librivoxTitleKey(title string) string {
 	t := dropLibrivoxArticle(strings.TrimSpace(title))
-	if k := strings.ReplaceAll(model.SlugifyWhole(t), "-", ""); k != "" {
+	if k := joinSlugWords(model.SlugifyWhole(t)); k != "" {
 		return k
 	}
-	return foldToLetters(norm.NFD.String(t))
+	return librivoxScriptKey(t)
+}
+
+// joinSlugWords drops a slug's hyphens ("monte-cristo" and "montecristo" are one
+// spelling) except one between two digits, the only thing telling "vol-1-2"
+// from "vol-12".
+func joinSlugWords(slug string) string {
+	var b strings.Builder
+	b.Grow(len(slug))
+	for i := 0; i < len(slug); i++ {
+		if slug[i] == '-' && (i == 0 || i == len(slug)-1 || !isASCIIDigit(slug[i-1]) || !isASCIIDigit(slug[i+1])) {
+			continue
+		}
+		b.WriteByte(slug[i])
+	}
+	return b.String()
+}
+
+func isASCIIDigit(c byte) bool { return c >= '0' && c <= '9' }
+
+// librivoxScriptKey is the key of a title the slug rule cannot write: its
+// letters, digits and marks, lower-cased, with only the generic combining
+// diacritics (model.IsCombiningMark: a Greek accent, a Cyrillic breve) folded
+// away. A script's OWN marks stay - a Devanagari vowel sign, the kana voicing
+// mark - since dropping them spells another word ("कमला" is not "कमल").
+func librivoxScriptKey(t string) string {
+	var b strings.Builder
+	for _, r := range norm.NFD.String(strings.ToLower(t)) {
+		if model.IsCombiningMark(r) {
+			continue
+		}
+		if unicode.IsLetter(r) || unicode.IsDigit(r) || unicode.IsMark(r) {
+			b.WriteRune(r)
+		}
+	}
+	return b.String()
 }
 
 // dropLibrivoxArticle removes one leading article: a librivoxArticles word
@@ -167,31 +205,37 @@ type librivoxRoute struct {
 // routeLibrivox applies the rules in this file's header to one LibriVox row. It
 // only reads (the authors are resolved read-only), so a skipped row leaves no
 // person behind. The zero route for every other row.
+//
+// The spelling-variant index is probed FIRST: a title whose key names no work
+// leaves rules 1-3 nothing to decide (the ordinary path, or rule 4), so the row's
+// credits are resolved and its chain walked only when the key holds a work - the
+// duplicate-identity guard's own gate, for the same reason.
 func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) librivoxRoute {
 	if b.lv == nil {
 		return librivoxRoute{}
 	}
-	authors := p.rowWorkAuthorsRO(credits)
 	unslugged := slugOfTitle(workTitle).fellBack
-	if !unslugged && p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws != nil {
-		return librivoxRoute{}
-	}
-
-	matched, partial := p.librivoxCandidates(workTitle, lang, authors)
-	switch {
-	case len(matched) == 1 && !slices.Contains(authors.identity, model.UnslugPersonID):
-		p.summary.LibrivoxVariantsAttached++
-		if len(p.lv.variantExamples) < maxWarnExamples {
-			p.lv.variantExamples = append(p.lv.variantExamples,
-				fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title))
+	if slugs := p.librivoxTitleIndex()[librivoxTitleKey(workTitle)]; len(slugs) > 0 {
+		authors := p.rowWorkAuthorsRO(credits)
+		if !unslugged && p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, authors, lang, claim).ws != nil {
+			return librivoxRoute{}
 		}
-		return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]}}
-	case len(matched) > 1:
-		p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
-		return librivoxRoute{skip: true}
-	case len(matched)+len(partial) > 0:
-		p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf(slices.Concat(matched, partial)))
-		return librivoxRoute{skip: true}
+		matched, partial := p.librivoxCandidates(slugs, lang, authors)
+		switch {
+		case len(matched) == 1 && !slices.Contains(authors.identity, model.UnslugPersonID):
+			p.summary.LibrivoxVariantsAttached++
+			if len(p.lv.variantExamples) < maxWarnExamples {
+				p.lv.variantExamples = append(p.lv.variantExamples,
+					fmt.Sprintf("%d %q -> %q (%q)", b.lv.id, workTitle, matched[0].slug, matched[0].title))
+			}
+			return librivoxRoute{walk: &workWalk{title: workTitle, ws: matched[0]}}
+		case len(matched) > 1:
+			p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
+			return librivoxRoute{skip: true}
+		case len(matched)+len(partial) > 0:
+			p.noteLibrivoxWorklist(b, workTitle, LibrivoxAuthorUnmatched, candidatesOf(slices.Concat(matched, partial)))
+			return librivoxRoute{skip: true}
+		}
 	}
 
 	if !unslugged {
@@ -210,20 +254,12 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	return librivoxRoute{walk: &workWalk{title: workTitle, chain: workChain{base: slug}, free: slug}}
 }
 
-// librivoxCandidates are the works (catalogued or created by this run) whose
-// title shares workTitle's spelling-variant key, in a compatible language:
-// matched holds those whose authors agree with the row's (matchWork), partial
-// those whose credit list shares a person with the row's without agreeing. Each
-// in slug order.
-func (p *planner) librivoxCandidates(workTitle, lang string, authors workAuthors) (matched, partial []*workState) {
-	key := librivoxTitleKey(workTitle)
-	if key == "" {
-		return nil, nil
-	}
-	slugs := p.librivoxTitleIndex()[key]
-	if len(slugs) == 0 {
-		return nil, nil
-	}
+// librivoxCandidates sorts the works under one spelling-variant key (slugs, in
+// slug order; catalogued or created by this run) that are in a compatible
+// language: matched holds those whose authors agree with the row's (matchWork),
+// partial those whose credit list shares a person with the row's without
+// agreeing. Each in slug order.
+func (p *planner) librivoxCandidates(slugs []string, lang string, authors workAuthors) (matched, partial []*workState) {
 	rowAll := authors.allSet()
 	for _, slug := range slugs {
 		ws := p.works[slug]

@@ -289,6 +289,8 @@ func TestLibrivoxTitleKey(t *testing.T) {
 		{"Candide, ou l'Optimisme", "Candide ou L’optimisme"},
 		{"ВОЙНА И МИР", "война и мир"},
 		{"Ὀδύσσεια", "Οδυσσεια"},
+		{"Re-Creation", "Recreation"},
+		{"Vol. 1-2", "Vol 1 2"},
 	}
 	for _, p := range same {
 		if a, b := librivoxTitleKey(p[0]), librivoxTitleKey(p[1]); a == "" || a != b {
@@ -302,6 +304,9 @@ func TestLibrivoxTitleKey(t *testing.T) {
 		{"Short Story Collection Vol. 001", "Short Story Collection Vol. 002"},
 		{"Une Vie", "Vie"}, // only the listed articles
 		{"Война и мир", "Анна Каренина"},
+		{"Poems Vol. 1, 2", "Poems Vol. 12"}, // two numbers are not one
+		{"कमल", "कमला"},                      // a vowel sign spells another word
+		{"こころ", "ごころ"},                       // and so does the kana voicing mark
 	}
 	for _, p := range apart {
 		if a, b := librivoxTitleKey(p[0]), librivoxTitleKey(p[1]); a == b {
