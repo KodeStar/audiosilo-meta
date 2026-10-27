@@ -324,15 +324,16 @@ type Summary struct {
 	// since the refresh's stamp is what ends the state. RefreshedRuntimes,
 	// RefreshedCovers, RefreshedChapters and RefreshedReleaseDates count the
 	// fields it replaced; a refreshed recording is also an EnrichedRecordings
-	// one, and a replaced runtime over a recorded one also an EstimatesReplaced
-	// one.
+	// one, but a refreshed runtime is never an EstimatesReplaced one (that is
+	// the ASIN merge's correction).
 	RefreshedRecordings   int
 	RefreshedRuntimes     int
 	RefreshedCovers       int
 	RefreshedChapters     int
 	RefreshedReleaseDates int
 	// MovedPreorderDates counts the preorder-era recordings whose release date
-	// an UNRELEASED row of their own ASIN moved (refresh.go); each is also an
+	// a row of their first ASIN moved without refreshing them - an unreleased
+	// row, or a released one the refresh refused (refresh.go); each is also an
 	// EnrichedRecordings one.
 	MovedPreorderDates int
 	// AttestedWorks / AttestedRecordings count the bulk-mirror-only records a

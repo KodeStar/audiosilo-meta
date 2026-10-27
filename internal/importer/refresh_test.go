@@ -450,3 +450,84 @@ func TestAMovedPreorderDateNeedsAPreorderEraRecordAndAFullDate(t *testing.T) {
 		})
 	}
 }
+
+// A released row whose stamp would be dated before its release (a run dated the
+// day before the row was captured - a sync cycle crossing UTC midnight) is no
+// refresh: its stamp would end nothing and be appended again on every run. Its
+// date moves the record, and the run dated on or after it refreshes once.
+func TestARefreshWaitsForAStampThatEndsTheEra(t *testing.T) {
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), "")
+	row := refreshRow(t, map[string]any{"releaseDate": "2026-10-08T00:00:00+00:00", "updatedAt": "2026-10-08T00:05:00+00:00"})
+	for range 2 {
+		sum := refreshEnrich(t, dataDir, nil, row) // dated estRunDate, 2026-10-07
+		if sum.RefreshedRecordings != 0 {
+			t.Fatalf("summary = %+v, want no refresh from a run dated before the release", sum)
+		}
+	}
+	_, raw := readRecordingRaw(t, dataDir)
+	if srcs, _ := raw["sources"].([]any); len(srcs) != 1 || coerceStr(raw["release_date"]) != "2026-10-08" {
+		t.Fatalf("recording = released %v, sources %v; want the date moved and no stamp appended", raw["release_date"], raw["sources"])
+	}
+
+	sum := runLibexWith(t, dataDir, Options{ImportDate: "2026-10-08", Mode: ModeEnrich}, row)
+	if sum.RefreshedRecordings != 1 {
+		t.Fatalf("summary = %+v, want the refresh once the run reaches the release", sum)
+	}
+	before := snapshotTree(t, dataDir)
+	if again := runLibexWith(t, dataDir, Options{ImportDate: "2026-10-09", Mode: ModeEnrich}, row); again.RefreshedRecordings != 0 {
+		t.Errorf("re-run = %+v, want no second refresh", again)
+	}
+	assertTreeUnchanged(t, dataDir, before)
+}
+
+// The release date belongs to the listing the recording was catalogued under:
+// a merged regional edition's row carries its own marketplace's date, so it
+// never moves it - unreleased, the guard reads the date against it as before;
+// released, it refreshes the runtime and the cover and keeps the date.
+func TestARegionalRowNeverMovesTheReleaseDate(t *testing.T) {
+	sources := `[{"imported_at":"2026-08-02","ref":"B0EST00001","type":"libex-import"},{"imported_at":"2026-08-03","ref":"B0EST00002","type":"libex-import"}]`
+	seed := func(t *testing.T) string {
+		rec := testpack.WithField(t, estRecording(t, "2026-08-02", sources, ""), "asin",
+			[]map[string]string{{"asin": estUSASIN, "region": "us"}, {"asin": estUKASIN, "region": "uk"}})
+		return seedEstimateTree(t, testpack.WithField(t, rec, "cover_url", refreshOldCover))
+	}
+
+	dataDir := seed(t)
+	var conflicts bytes.Buffer
+	sum := runLibexWith(t, dataDir, Options{ImportDate: "2026-08-10", Mode: ModeEnrich, Conflicts: &conflicts}, refreshRow(t, map[string]any{
+		"asin": estUKASIN, "region": "uk", "releaseDate": "2026-10-01T00:00:00+00:00", "productState": "AVAILABLE_FOR_PREORDER",
+		"updatedAt": "2026-08-09T00:00:00+00:00", "chapters": nil}))
+	if sum.MovedPreorderDates != 0 || conflicts.Len() == 0 {
+		t.Errorf("summary = %+v, conflicts %q; want the regional date refused, not moved", sum, conflicts.String())
+	}
+	if got := readEstRecording(t, dataDir).ReleaseDate; got != estRelease {
+		t.Errorf("release date = %s, want the recorded %s", got, estRelease)
+	}
+
+	dataDir = seed(t)
+	sum = refreshEnrich(t, dataDir, nil, refreshRow(t, map[string]any{
+		"asin": estUKASIN, "region": "uk", "releaseDate": "2026-09-15T00:00:00+00:00"}))
+	if sum.RefreshedRecordings != 1 || sum.RefreshedReleaseDates != 0 {
+		t.Fatalf("summary = %+v, want a refresh keeping the date", sum)
+	}
+	if rec := readEstRecording(t, dataDir); rec.ReleaseDate != estRelease || rec.RuntimeMin != estReleasedLen || rec.CoverURL != refreshNewCover {
+		t.Errorf("recording = released %s, runtime %d, cover %s; want the date kept and the rest refreshed", rec.ReleaseDate, rec.RuntimeMin, rec.CoverURL)
+	}
+}
+
+// A row of the first ASIN captured before the record's newest statement of it
+// (an old dump fed to --enrich after the sync bot catalogued the preorder) is
+// stale: it cannot roll the date back, and the guard reads the date against it.
+func TestAStaleRowNeverMovesTheReleaseDate(t *testing.T) {
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), "")
+	var conflicts bytes.Buffer
+	sum := runLibexWith(t, dataDir, Options{ImportDate: "2026-08-10", Mode: ModeEnrich, Conflicts: &conflicts}, refreshRow(t, map[string]any{
+		"releaseDate": "2026-08-20T00:00:00+00:00", "productState": "AVAILABLE_FOR_PREORDER",
+		"updatedAt": "2026-07-01T00:00:00+00:00", "chapters": nil}))
+	if sum.MovedPreorderDates != 0 || conflicts.Len() == 0 {
+		t.Errorf("summary = %+v, conflicts %q; want the stale date refused, not moved", sum, conflicts.String())
+	}
+	if got := readEstRecording(t, dataDir).ReleaseDate; got != estRelease {
+		t.Errorf("release date = %s, want the recorded %s", got, estRelease)
+	}
+}

@@ -49,16 +49,20 @@ import (
 // libex productState AVAILABLE where stated) with a FULL release date (a
 // year-only one says too little), and state a CREDIBLE runtime
 // (judgeOwnASINRuntime): over the sanity floor, and agreeing within 10% with the
-// row's own chapter list, else with the recorded one, where either exists. A row
-// failing any of that is no refresh: it goes down the ordinary path, the
-// runtime half of the contradiction guard included, and the record stays
-// preorder-era for a later row.
+// row's own chapter list, else with the recorded one, where either exists. Its
+// stamp must also END the era: the run's day on or after the release date the
+// record carries once written (a run dated before it - a sync cycle crossing
+// UTC midnight, an explicit older --date - would append a stamp that ends
+// nothing, again on every run). A row failing any of that is no refresh: it
+// goes down the ordinary path, the runtime half of the contradiction guard
+// included, and the record stays preorder-era for a later row.
 //
 // WHAT it replaces: the refresh is the OVERWRITE posture for four fields -
 // runtime_min, cover_url (an https one), chapters (a list that builds; the
 // judgement has found it agrees with the runtime, and libex-fill attaches only a
-// payload passing acceptChapters) and release_date - written by enrichment's
-// own fill block (applyToRecording), with the contradiction guard skipped.
+// payload passing acceptChapters) and release_date (from a row of the listing
+// it came from only, below) - written by enrichment's own fill block
+// (applyToRecording), with the contradiction guard skipped.
 // Narrators, abridged, publisher, asin[], isbn[] and the work stay as
 // enrichment leaves them: publisher and ISBNs fill-absent, the rest untouched.
 //
@@ -73,12 +77,20 @@ import (
 // of a preorder-era record is deduplicated, so a row that refreshed nothing
 // cannot end the era.
 //
-// A preorder-era record's RELEASE DATE is estimate evidence, as its runtime is:
-// the contradiction guard does not read it, and a FULL date any own-ASIN row
-// states replaces it - a released row's in the refresh, any other's as a MOVED
-// PREORDER DATE (Summary.MovedPreorderDates; nothing else changes, and its stamp
-// is deduplicated, so the record stays preorder-era for the released row that
-// follows). A coarser date keeps the extend-only rule (fillReleaseDate).
+// A preorder-era record's RELEASE DATE is estimate evidence, as its runtime is,
+// for the one listing it came from (redates): a row of the recording's FIRST
+// ASIN, the one it was catalogued under, captured no earlier than the newest
+// statement the record holds of that ASIN. The contradiction guard does not
+// read the date against such a row, and a FULL date it states replaces it - a
+// released row's in the refresh, any other's as a MOVED PREORDER DATE
+// (Summary.MovedPreorderDates; nothing else changes, and its stamp is
+// deduplicated, so the record stays preorder-era for the released row that
+// follows). A regional edition merged since carries its own marketplace's date,
+// never a correction of this one's (fillReleaseDate, #2518) - it may refresh the
+// runtime, cover and chapters of the one production, never the date, and the
+// guard still reads the date against it - and an older row of the first ASIN (a
+// dump captured before the sync bot's last statement) would roll a fresher date
+// back. A coarser date keeps the extend-only rule (fillReleaseDate).
 // Measured in the dry run: 11 of the first 200 released-by-date recordings had
 // been POSTPONED, libex listing a later date the catalogue never took, so they
 // showed as released and every such row was refused as a contradiction.
@@ -163,13 +175,44 @@ func (p *planner) restates(raw map[string]any) bool {
 	return p.curRefresh && rawAwaitingRefresh(raw)
 }
 
+// redates reports whether row b may replace the preorder-era recording raw's
+// release date (the header's RELEASE DATE paragraph): a row of its FIRST ASIN,
+// captured (rowDay) no earlier than any statement the record holds of that ASIN.
+func (p *planner) redates(raw map[string]any, b sourceBook) bool {
+	asin := NormalizeASIN(b.str("asin"))
+	arr, _ := raw["asin"].([]any)
+	if asin == "" || len(arr) == 0 {
+		return false
+	}
+	if first, _ := arr[0].(map[string]any); NormalizeASIN(coerceStr(first["asin"])) != asin {
+		return false
+	}
+	day := p.rowDay(b)
+	for _, s := range rawSources(raw) {
+		if k := model.TimeKey(s.ImportedAt); s.Ref == asin && len(k) >= len(day) && k[:len(day)] > day {
+			return false
+		}
+	}
+	return true
+}
+
 // judgeRefresh decides whether row b refreshes the preorder-era recording raw:
-// a released row with a full date, stating a credible runtime. withheld (with
-// the evidence that refuted the runtime) is a released candidate whose runtime
-// the judgement refused - the caller notes it as a kept estimate once the
-// ordinary path has let the row through.
-func (p *planner) judgeRefresh(raw map[string]any, b sourceBook) (refresh, withheld bool, against runtimeEvidence) {
-	if b.runtimeMin <= 0 || !isFullDate(b.str("release_date")) || !p.rowReleased(b) {
+// a released row with a full date, stating a credible runtime, whose stamp ends
+// the era - the run's day on or after the release date the record carries once
+// written (the row's where it redates the record, else the recorded one).
+// withheld (with the evidence that refuted the runtime) is a released candidate
+// whose runtime the judgement refused - the caller notes it as a kept estimate
+// once the ordinary path has let the row through.
+func (p *planner) judgeRefresh(raw map[string]any, b sourceBook, redate bool) (refresh, withheld bool, against runtimeEvidence) {
+	rd := b.str("release_date")
+	if b.runtimeMin <= 0 || !isFullDate(rd) || !p.rowReleased(b) {
+		return false, false, runtimeEvidence{}
+	}
+	release := coerceStr(raw["release_date"])
+	if redate {
+		release = rd
+	}
+	if day := p.curSource.ImportedAt; len(day) != len("2006-01-02") || releasedAfter(release, day) {
 		return false, false, runtimeEvidence{}
 	}
 	ok, against := judgeOwnASINRuntime(raw, b)
@@ -217,7 +260,8 @@ func jsonOf(v any) string {
 func (p *planner) countRefresh(ref RecRef, before refreshFields, raw map[string]any, refreshed bool) {
 	after := readRefreshFields(raw)
 	if !refreshed {
-		if after.release != before.release {
+		// A precision fill of a coarser recorded date (fillReleaseDate) is no move.
+		if datesConflict(before.release, after.release) {
 			p.summary.MovedPreorderDates++
 			if len(p.refreshed.movedExamples) < maxWarnExamples {
 				p.refreshed.movedExamples = append(p.refreshed.movedExamples,
@@ -253,23 +297,21 @@ func (p *planner) countRefresh(ref RecRef, before refreshFields, raw map[string]
 // moved preorder dates.
 func (p *planner) reportRefreshes() {
 	s := &p.summary
-	if n := s.MovedPreorderDates; n > 0 {
-		owner := "their"
+	owner := func(n int) string {
 		if n == 1 {
-			owner = "its"
+			return "its"
 		}
+		return "their"
+	}
+	if n := s.MovedPreorderDates; n > 0 {
 		s.Notes = append(s.Notes, withExamples(fmt.Sprintf(
 			"moved %d preorder release %s to the date a row of %s own ASIN states",
-			n, plural(n, "date"), owner), p.refreshed.movedExamples))
+			n, plural(n, "date"), owner(n)), p.refreshed.movedExamples))
 	}
 	if n := s.RefreshedRecordings; n > 0 {
-		owner := "their"
-		if n == 1 {
-			owner = "its"
-		}
 		s.Notes = append(s.Notes, withExamples(fmt.Sprintf(
 			"refreshed %d released preorder %s from a row of %s own ASIN: %d %s, %d %s, %d %s, %d %s replaced",
-			n, plural(n, "recording"), owner,
+			n, plural(n, "recording"), owner(n),
 			s.RefreshedRuntimes, plural(s.RefreshedRuntimes, "runtime"), s.RefreshedCovers, plural(s.RefreshedCovers, "cover"),
 			s.RefreshedChapters, plural(s.RefreshedChapters, "chapter list"), s.RefreshedReleaseDates, plural(s.RefreshedReleaseDates, "release date")),
 			p.refreshed.examples))

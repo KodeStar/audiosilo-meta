@@ -1415,16 +1415,23 @@ block writes them), with no contradiction guard and no estimate bound: the
 runtime must clear a sanity floor (a fifth of the recorded estimate; measured
 corrections run 0.247x-2.52x) and agree within 10% with the row's chapter list,
 else with the recorded one (`judgeOwnASINRuntime`; the merge's twin is
-`judgeMergedRuntime`). A row failing any of that is ordinary enrichment.
+`judgeMergedRuntime`), and the run's day must be on or after the release date
+the record carries once written, or its stamp would end nothing and be appended
+again on every run. A row failing any of that is ordinary enrichment.
 Narrators, abridged, publisher, `asin[]`, ISBNs and the work stay as enrichment
 leaves them. The refresh always writes, and its stamp is the ONE that passes the
 source deduplication (`stampSource` via `restates`): the restatement ends the
 preorder era even when the row confirms every value, so a re-run is a no-op and
 a later row ordinary fill-absent; an ordinary enrichment cannot end it. A
-preorder-era record's release date is estimate evidence: the guard's date half
-does not read it, and a full date ANY own-ASIN row states replaces it (in a
-non-refresh, `Summary.MovedPreorderDates` - a postponement - with the record
-still preorder-era; a coarser date keeps the extend-only rule). Counted as
+preorder-era record's release date is estimate evidence for the listing it came
+from (`redates`): a row of the recording's FIRST ASIN captured no earlier than
+the record's newest statement of that ASIN is not read by the guard's date half,
+and a full date it states replaces it (in a non-refresh,
+`Summary.MovedPreorderDates` - a postponement - with the record still
+preorder-era; a coarser date keeps the extend-only rule). A merged regional
+ASIN's row refreshes the runtime, cover and chapters but never the date (its
+marketplace's own, #2518), and the guard still reads the date against it.
+Counted as
 `Summary.Refreshed{Recordings,Runtimes,Covers,Chapters,ReleaseDates}` from a
 before/after compare (a refreshed runtime is not also `EstimatesReplaced`, which
 is the merge's).
