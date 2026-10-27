@@ -1,6 +1,7 @@
 package query
 
 import (
+	"cmp"
 	"context"
 	"database/sql"
 	"fmt"
@@ -9,6 +10,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/httpx"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -159,18 +161,14 @@ func parseLibrivoxFeed(q url.Values) (librivoxFeedParams, error) {
 	p.extended = phpFlag(strings.TrimSpace(q.Get("extended")))
 	p.coverart = phpFlag(strings.TrimSpace(q.Get("coverart")))
 	p.desc = strings.TrimSpace(q.Get("sort_order")) == "desc"
-	var names []string
 	for _, v := range append(q["fields"], q["fields[]"]...) {
 		for _, f := range strings.Split(strings.Trim(strings.TrimSpace(v), "{}"), ",") {
 			if f = strings.TrimSpace(f); f != "" {
-				names = append(names, f)
+				if p.fields == nil {
+					p.fields = map[string]bool{}
+				}
+				p.fields[f] = true
 			}
-		}
-	}
-	if len(names) > 0 {
-		p.fields = map[string]bool{}
-		for _, f := range names {
-			p.fields[f] = true
 		}
 	}
 	return p, nil
@@ -223,8 +221,10 @@ func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
 		args = append(args, p.id)
 	}
 	if p.hasSince {
-		query += ` AND r.added_at IS NOT NULL AND CAST(strftime('%s', substr(r.added_at, 1, 10)) AS INTEGER) >= ?`
-		args = append(args, p.since)
+		// The day a recording was added on or after the first day that starts at
+		// or after since: a plain comparison against its YYYY-MM-DD prefix.
+		query += ` AND r.added_at >= ?`
+		args = append(args, sinceDay(p.since))
 	}
 	if p.title.value != "" {
 		if p.title.prefix {
@@ -244,7 +244,7 @@ func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
 			match, arg = lastNameSQL+` LIKE ? ESCAPE '\'`, likeEscape(p.author.value)+"%"
 		}
 		query += ` AND EXISTS (SELECT 1 FROM work_authors wa JOIN people p ON p.id = wa.person_id WHERE wa.work_id = r.work_id AND ` + match +
-			` AND NOT EXISTS (SELECT 1 FROM work_credits wc WHERE wc.work_id = wa.work_id AND wc.person_id = wa.person_id AND wc.role = '` + model.RoleTranslator + `'))`
+			` AND ` + notTranslatorArm + `)`
 		args = append(args, arg)
 	}
 	if p.genre.value != "" {
@@ -269,6 +269,9 @@ func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
 	return query + order + ` LIMIT ? OFFSET ?`, append(args, p.limit, p.offset)
 }
 
+// librivoxGenres is model.LibrivoxGenres, copied once.
+var librivoxGenres = model.LibrivoxGenres()
+
 // librivoxGenreSlugs resolves a genre parameter to the vocabulary values it
 // names: a LibriVox genre name through the importer's own table
 // (model.LibrivoxGenres) or a vocabulary value as itself, case-insensitively.
@@ -277,7 +280,7 @@ func librivoxFeedQuery(p librivoxFeedParams) (string, []any) {
 func librivoxGenreSlugs(m textMatch) (slugs []string, like string) {
 	v := strings.ToLower(m.value)
 	set := map[string]bool{}
-	for name, slug := range model.LibrivoxGenres() {
+	for name, slug := range librivoxGenres {
 		if name == v || (m.prefix && strings.HasPrefix(name, v)) {
 			set[slug] = true
 		}
@@ -331,7 +334,7 @@ type lvReader struct {
 // batched over the page's works (librivoxFeedFacts), so a 500-book page is a
 // fixed number of queries.
 func (s *DB) librivoxFeed(ctx context.Context, p librivoxFeedParams) ([]map[string]any, error) {
-	if !s.hasSourceTable() {
+	if !s.hasLibrivoxLayer() {
 		return nil, nil
 	}
 	query, args := librivoxFeedQuery(p)
@@ -347,7 +350,7 @@ func (s *DB) librivoxFeed(ctx context.Context, p librivoxFeedParams) ([]map[stri
 	for _, r := range page {
 		workIDs = append(workIDs, r.workID)
 	}
-	facts, err := s.librivoxFeedFacts(ctx, workIDs)
+	facts, err := s.librivoxFeedFacts(ctx, workIDs, p.extended)
 	if err != nil {
 		return nil, err
 	}
@@ -389,15 +392,20 @@ type lvFacts struct {
 	readers     map[recKey][]lvReader
 }
 
+// notTranslatorArm keeps a work_authors row (wa) whose person the work does not
+// also credit as its translator: the authors list carries a translator too (an
+// identity author AND a credit), and LibriVox's authors are its authors alone.
+const notTranslatorArm = `NOT EXISTS (SELECT 1 FROM work_credits wc WHERE wc.work_id = wa.work_id AND wc.person_id = wa.person_id AND wc.role = '` + model.RoleTranslator + `')`
+
 // The feed's batched reads, each over a page's work ids (eachChunk). A work's
 // people come in their record order; chapters in timeline order.
 func lvAuthorsSQL(ph string) string {
-	return `SELECT wa.work_id, p.id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM work_authors wa ` +
-		`JOIN people p ON p.id = wa.person_id WHERE wa.work_id IN (` + ph + `) ORDER BY wa.work_id, wa.ord`
+	return `SELECT wa.work_id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM work_authors wa ` +
+		`JOIN people p ON p.id = wa.person_id WHERE wa.work_id IN (` + ph + `) AND ` + notTranslatorArm + ` ORDER BY wa.work_id, wa.ord`
 }
 
 func lvTranslatorsSQL(ph string) string {
-	return `SELECT wc.work_id, p.id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM work_credits wc ` +
+	return `SELECT wc.work_id, p.name, p.librivox_author_id, p.birth_year, p.death_year FROM work_credits wc ` +
 		`JOIN people p ON p.id = wc.person_id WHERE wc.role = '` + model.RoleTranslator + `' AND wc.work_id IN (` + ph + `) ORDER BY wc.work_id, wc.ord`
 }
 
@@ -414,13 +422,16 @@ func lvReadersSQL(ph string) string {
 		`JOIN people p ON p.id = rn.person_id WHERE rn.work_id IN (` + ph + `) ORDER BY rn.work_id, rn.recording_id, rn.ord`
 }
 
-func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string) (*lvFacts, error) {
+// librivoxFeedFacts reads the page's per-work and per-recording facts. The
+// translators, genres and readers appear only on an extended page, so a plain
+// one does not read them.
+func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string, extended bool) (*lvFacts, error) {
 	f := &lvFacts{
 		authors: map[string][]lvPerson{}, translators: map[string][]lvPerson{}, genres: map[string][]string{},
 		chapters: map[recKey][]lvChapter{}, readers: map[recKey][]lvReader{},
 	}
-	translatorIDs := map[string]map[string]bool{} // work -> person ids credited as translator
-	people := func(sqlOf func(string) string, each func(work, id string, p lvPerson)) error {
+	// each runs one batched read over the page's works, handing every row to scan.
+	each := func(sqlOf func(string) string, scan func(*sql.Rows) error) error {
 		return eachChunk(workIDs, func(ph string, args []any) error {
 			rows, err := s.db.QueryContext(ctx, sqlOf(ph), args...)
 			if err != nil {
@@ -428,89 +439,69 @@ func (s *DB) librivoxFeedFacts(ctx context.Context, workIDs []string) (*lvFacts,
 			}
 			defer func() { _ = rows.Close() }()
 			for rows.Next() {
-				var work, id string
-				var p lvPerson
-				var lvID, birth, death sql.NullInt64
-				if err := rows.Scan(&work, &id, &p.name, &lvID, &birth, &death); err != nil {
+				if err := scan(rows); err != nil {
 					return err
 				}
-				p.librivoxID, p.birthYear, p.deathYear = int(lvID.Int64), int(birth.Int64), int(death.Int64)
-				each(work, id, p)
 			}
 			return rows.Err()
 		})
 	}
-	// Translators first: the authors read leaves them out (see librivoxFeedQuery).
-	if err := people(lvTranslatorsSQL, func(work, id string, p lvPerson) {
-		f.translators[work] = append(f.translators[work], p)
-		if translatorIDs[work] == nil {
-			translatorIDs[work] = map[string]bool{}
+	people := func(into map[string][]lvPerson) func(*sql.Rows) error {
+		return func(rows *sql.Rows) error {
+			var work string
+			var p lvPerson
+			var lvID, birth, death sql.NullInt64
+			if err := rows.Scan(&work, &p.name, &lvID, &birth, &death); err != nil {
+				return err
+			}
+			p.librivoxID, p.birthYear, p.deathYear = int(lvID.Int64), int(birth.Int64), int(death.Int64)
+			into[work] = append(into[work], p)
+			return nil
 		}
-		translatorIDs[work][id] = true
+	}
+	if err := each(lvAuthorsSQL, people(f.authors)); err != nil {
+		return nil, err
+	}
+	if err := each(lvChaptersSQL, func(rows *sql.Rows) error {
+		var k recKey
+		var c lvChapter
+		var audio sql.NullString
+		if err := rows.Scan(&k.work, &k.rec, &c.title, &c.lengthMS, &audio); err != nil {
+			return err
+		}
+		c.audioURL = audio.String
+		f.chapters[k] = append(f.chapters[k], c)
+		return nil
 	}); err != nil {
 		return nil, err
 	}
-	if err := people(lvAuthorsSQL, func(work, id string, p lvPerson) {
-		if !translatorIDs[work][id] {
-			f.authors[work] = append(f.authors[work], p)
+	if !extended {
+		return f, nil
+	}
+	if err := each(lvTranslatorsSQL, people(f.translators)); err != nil {
+		return nil, err
+	}
+	if err := each(lvGenresSQL, func(rows *sql.Rows) error {
+		var work, genre string
+		if err := rows.Scan(&work, &genre); err != nil {
+			return err
 		}
+		f.genres[work] = append(f.genres[work], genre)
+		return nil
 	}); err != nil {
 		return nil, err
 	}
-	err := eachChunk(workIDs, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, lvGenresSQL(ph), args...)
-		if err != nil {
+	if err := each(lvReadersSQL, func(rows *sql.Rows) error {
+		var k recKey
+		var rd lvReader
+		var id sql.NullInt64
+		if err := rows.Scan(&k.work, &k.rec, &rd.name, &id); err != nil {
 			return err
 		}
-		pairs, err := scanPairs(rows, func(work, genre string) [2]string { return [2]string{work, genre} })
-		for _, pr := range pairs {
-			f.genres[pr[0]] = append(f.genres[pr[0]], pr[1])
-		}
-		return err
-	})
-	if err != nil {
-		return nil, err
-	}
-	err = eachChunk(workIDs, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, lvChaptersSQL(ph), args...)
-		if err != nil {
-			return err
-		}
-		defer func() { _ = rows.Close() }()
-		for rows.Next() {
-			var k recKey
-			var c lvChapter
-			var audio sql.NullString
-			if err := rows.Scan(&k.work, &k.rec, &c.title, &c.lengthMS, &audio); err != nil {
-				return err
-			}
-			c.audioURL = audio.String
-			f.chapters[k] = append(f.chapters[k], c)
-		}
-		return rows.Err()
-	})
-	if err != nil {
-		return nil, err
-	}
-	err = eachChunk(workIDs, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, lvReadersSQL(ph), args...)
-		if err != nil {
-			return err
-		}
-		defer func() { _ = rows.Close() }()
-		for rows.Next() {
-			var k recKey
-			var rd lvReader
-			var id sql.NullInt64
-			if err := rows.Scan(&k.work, &k.rec, &rd.name, &id); err != nil {
-				return err
-			}
-			rd.readerID = int(id.Int64)
-			f.readers[k] = append(f.readers[k], rd)
-		}
-		return rows.Err()
-	})
-	if err != nil {
+		rd.readerID = int(id.Int64)
+		f.readers[k] = append(f.readers[k], rd)
+		return nil
+	}); err != nil {
 		return nil, err
 	}
 	return f, nil
@@ -531,17 +522,14 @@ func librivoxBook(r lvRow, f *lvFacts, p librivoxFeedParams) map[string]any {
 	} else {
 		secs = r.runtimeMin * 60
 	}
-	language := model.LibrivoxLanguageName(r.language)
-	if language == "" {
-		language = r.language
-	}
+	language := cmp.Or(model.LibrivoxLanguageName(r.language), r.language)
 	book := map[string]any{
 		"id":              strconv.Itoa(r.librivoxID),
 		"title":           r.title,
 		"description":     "",
 		"url_text_source": r.linkText,
 		"language":        language,
-		"copyright_year":  yearString(r.copyrightYear, "0"),
+		"copyright_year":  intOr(r.copyrightYear, "0"),
 		"num_sections":    strconv.Itoa(len(chapters)),
 		"url_rss":         r.linkRSS,
 		"url_zip_file":    r.linkZip,
@@ -586,13 +574,9 @@ func librivoxPeople(ps []lvPerson) []map[string]string {
 	out := make([]map[string]string, 0, len(ps))
 	for _, p := range ps {
 		first, last := splitLastWord(p.name)
-		id := ""
-		if p.librivoxID != 0 {
-			id = strconv.Itoa(p.librivoxID)
-		}
 		out = append(out, map[string]string{
-			"id": id, "first_name": first, "last_name": last,
-			"dob": yearString(p.birthYear, ""), "dod": yearString(p.deathYear, ""),
+			"id": intOr(p.librivoxID, ""), "first_name": first, "last_name": last,
+			"dob": intOr(p.birthYear, ""), "dod": intOr(p.deathYear, ""),
 		})
 	}
 	return out
@@ -604,11 +588,7 @@ func librivoxPeople(ps []lvPerson) []map[string]string {
 func librivoxSections(chapters []lvChapter, narrators []lvReader, language string) []map[string]any {
 	readers := []map[string]string{}
 	if len(narrators) == 1 {
-		id := ""
-		if narrators[0].readerID != 0 {
-			id = strconv.Itoa(narrators[0].readerID)
-		}
-		readers = append(readers, map[string]string{"reader_id": id, "display_name": narrators[0].name})
+		readers = append(readers, map[string]string{"reader_id": intOr(narrators[0].readerID, ""), "display_name": narrators[0].name})
 	}
 	out := make([]map[string]any, 0, len(chapters))
 	for i, c := range chapters {
@@ -637,12 +617,36 @@ func splitLastWord(name string) (first, last string) {
 	return strings.TrimSpace(name[:i]), name[i+1:]
 }
 
-// yearString is a signed year as LibriVox spells one, or none when unstated.
-func yearString(y int, none string) string {
+// intOr is a number as LibriVox spells one (a signed year, an id), or none when
+// unstated (zero).
+func intOr(y int, none string) string {
 	if y == 0 {
 		return none
 	}
 	return strconv.Itoa(y)
+}
+
+// sinceDay is the first calendar day (UTC, YYYY-MM-DD) whose midnight is at or
+// after the UNIX time since: a record added on that day or later counts, which
+// is LibriVox's day-granular comparison. Out-of-range times clamp to a day
+// before or after every stored date.
+func sinceDay(since int64) string {
+	const day = 24 * 60 * 60
+	if since > 253402300799 { // past 9999-12-31T23:59:59Z, and clear of overflow
+		return "9999-99-99"
+	}
+	d := since / day
+	if since%day > 0 {
+		d++
+	}
+	t := time.Unix(d*day, 0).UTC()
+	switch {
+	case t.Year() < 1:
+		return "0000-00-00"
+	case t.Year() > 9999:
+		return "9999-99-99"
+	}
+	return t.Format(time.DateOnly)
 }
 
 // clockTime renders seconds as LibriVox's totaltime, H:MM:SS.

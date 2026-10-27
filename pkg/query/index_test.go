@@ -71,11 +71,11 @@ func TestServeLookupsAreIndexed(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, artifacttest.Fixture()))
 	// Minority languages of an all-English fixture, so worksPredicate takes the
 	// index form - the majority form is a deliberate scan (see its comment).
-	latestOne, latestOneArgs := snap.latestCandidatesQuery(langFilter{"de"}, 200)
-	latestTwo, latestTwoArgs := snap.latestCandidatesQuery(langFilter{"de", "fr"}, 200)
-	latestSrc, latestSrcArgs := snap.latestCandidatesQueryWith(nil, model.SourceLibrivox, 200)
-	latestSrcLang, latestSrcLangArgs := snap.latestCandidatesQueryWith(langFilter{"de"}, model.SourceLibrivox, 200)
-	searchSrc, searchSrcArgs := ftsSearchQueryWith(kindAny, `"kafka"*`, 20, nil, model.SourceLibrivox)
+	latestOne, latestOneArgs := snap.latestCandidatesQuery(langFilter{"de"}, "", 200)
+	latestTwo, latestTwoArgs := snap.latestCandidatesQuery(langFilter{"de", "fr"}, "", 200)
+	latestSrc, latestSrcArgs := snap.latestCandidatesQuery(nil, model.SourceLibrivox, 200)
+	latestSrcLang, latestSrcLangArgs := snap.latestCandidatesQuery(langFilter{"de"}, model.SourceLibrivox, 200)
+	searchSrc, searchSrcArgs := ftsSearchQuery(kindAny, `"kafka"*`, 20, nil, model.SourceLibrivox)
 	feedAll, feedAllArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50})
 	feedFiltered, feedFilteredArgs := librivoxFeedQuery(librivoxFeedParams{limit: 50, id: 527, since: 1, hasSince: true,
 		title: textMatch{value: "Metamorphosis"}, author: textMatch{value: "Kafka"}, genre: textMatch{value: "Short Stories"}, desc: true})
@@ -238,7 +238,7 @@ func TestBatchLookupsAreIndexed(t *testing.T) {
 		{"match: recording runtimes", ids, matchRuntimesSQL, nil},
 		// The LibriVox layer: the boosts' source filter and the feed page's five
 		// batches, each over up to a page (500) of works.
-		{"works with a source", ids, worksWithSourceSQL, []any{model.SourceLibrivox}},
+		{"works with a source", ids, func(ph string) string { return worksAdmittedSQL(ph, workHasSourceArm) }, []any{model.SourceLibrivox}},
 		{"librivox feed: authors", ids, lvAuthorsSQL, nil},
 		{"librivox feed: translators", ids, lvTranslatorsSQL, nil},
 		{"librivox feed: genres", ids, lvGenresSQL, nil},

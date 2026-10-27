@@ -609,3 +609,23 @@ func TestLibrivoxFeedQueries(t *testing.T) {
 		}
 	}
 }
+
+// TestSinceDay pins the since cutoff: the first UTC day starting at or after the
+// time, clamped beyond the four-digit years.
+func TestSinceDay(t *testing.T) {
+	for _, tc := range []struct {
+		since int64
+		want  string
+	}{
+		{1793059200, "2026-10-27"}, // exactly midnight
+		{1793059201, "2026-10-28"}, // a second later: the next day
+		{-1, "1970-01-01"},
+		{-1 << 62, "0000-00-00"},
+		{1 << 62, "9999-99-99"},
+		{253402300799, "9999-99-99"}, // 9999-12-31T23:59:59Z rounds past the last day
+	} {
+		if got := sinceDay(tc.since); got != tc.want {
+			t.Errorf("sinceDay(%d) = %q, want %q", tc.since, got, tc.want)
+		}
+	}
+}

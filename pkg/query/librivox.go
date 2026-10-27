@@ -61,44 +61,9 @@ func sourceParam(w http.ResponseWriter, q url.Values) (string, bool) {
 	return "", false
 }
 
-// hasSourceTable reports whether this artifact can answer a source filter at all.
-func (s *DB) hasSourceTable() bool { return s.schemaVersion >= librivoxSchemaVersion }
-
-// worksWithSourceSQL keeps the ids of a set that have a recording of one source
-// type: the boosts' filter, as worksInLanguagesSQL is for a language.
-func worksWithSourceSQL(ph string) string {
-	return `SELECT DISTINCT work_id FROM recording_sources WHERE work_id IN (` + ph + `) AND type = ?`
-}
-
-// worksWithSource filters ids to the works with a recording of source type src,
-// preserving their order. "" keeps every id.
-func (s *DB) worksWithSource(ctx context.Context, ids []string, src string) ([]string, error) {
-	if src == "" || len(ids) == 0 {
-		return ids, nil
-	}
-	keep := map[string]bool{}
-	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, worksWithSourceSQL(ph), append(args, src)...)
-		if err != nil {
-			return err
-		}
-		kept, err := scanIDs(rows)
-		for _, id := range kept {
-			keep[id] = true
-		}
-		return err
-	})
-	if err != nil {
-		return nil, err
-	}
-	out := make([]string, 0, len(ids))
-	for _, id := range ids {
-		if keep[id] {
-			out = append(out, id)
-		}
-	}
-	return out, nil
-}
+// hasLibrivoxLayer reports whether this artifact carries the LibriVox layer
+// (librivoxSchemaVersion): the source filter, the LibriVox columns and the feed.
+func (s *DB) hasLibrivoxLayer() bool { return s.schemaVersion >= librivoxSchemaVersion }
 
 // ---- lookup?librivox_id= ------------------------------------------------------
 
@@ -120,7 +85,7 @@ func parseLibrivoxID(raw string) (int, error) {
 // result shape, or nil when the artifact holds none (an artifact older than
 // librivoxSchemaVersion holds none by construction).
 func (s *DB) lookupLibrivox(ctx context.Context, id int) (*lookupResult, error) {
-	if !s.hasSourceTable() {
+	if !s.hasLibrivoxLayer() {
 		return nil, nil
 	}
 	var workID, rid string

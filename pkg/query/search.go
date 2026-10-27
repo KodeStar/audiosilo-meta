@@ -486,14 +486,11 @@ const (
 // The predicate lets a row with NO language through (predicate's unknownPasses):
 // a person row carries an empty language on the combined search, and so does a
 // series whose members tie - an unknown side is never judged.
-func ftsSearchQuery(kind searchKind, match string, limit int, lang langFilter) (string, []any) {
-	return ftsSearchQueryWith(kind, match, limit, lang, "")
-}
-
-// ftsSearchQueryWith is ftsSearchQuery with a source filter (librivox.go): a
-// non-empty src keeps only WORK rows with a recording of that source type, so on
-// the combined search it also scopes the page to works. "" adds nothing.
-func ftsSearchQueryWith(kind searchKind, match string, limit int, lang langFilter, src string) (string, []any) {
+//
+// A non-empty src (librivox.go) keeps only WORK rows with a recording of that
+// source type, so on the combined search it also scopes the page to works. ""
+// adds nothing.
+func ftsSearchQuery(kind searchKind, match string, limit int, lang langFilter, src string) (string, []any) {
 	query, args := searchSelectSQL, []any{match}
 	if kind != kindAny {
 		query += searchKindArm
@@ -548,24 +545,20 @@ const workIDsInFTSSQL = `SELECT id FROM search_fts WHERE search_fts MATCH ? AND 
 // included. Each boost probe applies the filter INSIDE its own bounded window
 // (boostedWorks), so same-titled or same-named records in other languages cannot
 // crowd the reader's own out of it; the ids are then put through
-// worksInLanguages as well, because a series-volume boost resolves a SERIES by
+// worksAdmitted as well, because a series-volume boost resolves a SERIES by
 // its derived language and a member at that position may still be in another
 // one - a boosted work outside the filter is dropped before mergeHits rather than
 // leading a page the reader asked to exclude it from.
-func (s *DB) search(ctx context.Context, kind searchKind, q string, limit int, lang langFilter) ([]any, error) {
-	return s.searchWith(ctx, kind, q, limit, lang, "")
-}
-
-// searchWith is search with a source filter (librivox.go; "" for none). A
-// filtered page holds works only, so the exact-series pull, which places a
-// SERIES, does not run on it; the boosts are kept to the works the filter admits.
-// An artifact with no recording_sources table answers a filtered request with
-// an empty page.
-func (s *DB) searchWith(ctx context.Context, kind searchKind, q string, limit int, lang langFilter, src string) ([]any, error) {
-	if src != "" && !s.hasSourceTable() {
+//
+// src is a source filter (librivox.go; "" for none). A filtered page holds works
+// only, so the exact-series pull, which places a SERIES, does not run on it; the
+// boosts are kept to the works the filter admits. An artifact with no
+// recording_sources table answers a filtered request with an empty page.
+func (s *DB) search(ctx context.Context, kind searchKind, q string, limit int, lang langFilter, src string) ([]any, error) {
+	if src != "" && !s.hasLibrivoxLayer() {
 		return []any{}, nil
 	}
-	page, err := s.searchPageWith(ctx, kind, q, limit, lang, src)
+	page, err := s.searchPage(ctx, kind, q, limit, lang, src)
 	if err != nil {
 		return nil, err
 	}
@@ -577,23 +570,15 @@ func (s *DB) searchWith(ctx context.Context, kind searchKind, q string, limit in
 
 // searchPage is search's page before the exact-series ranking: the FTS hits
 // with the work boosts merged in, composed into their result shapes.
-func (s *DB) searchPage(ctx context.Context, kind searchKind, q string, limit int, lang langFilter) ([]any, error) {
-	return s.searchPageWith(ctx, kind, q, limit, lang, "")
-}
-
-// searchPageWith is searchPage with a source filter ("" for none).
-func (s *DB) searchPageWith(ctx context.Context, kind searchKind, q string, limit int, lang langFilter, src string) ([]any, error) {
-	hits, err := s.ftsHitsWith(ctx, kind, ftsQuery(q), limit, lang, src)
+func (s *DB) searchPage(ctx context.Context, kind searchKind, q string, limit int, lang langFilter, src string) ([]any, error) {
+	hits, err := s.ftsHits(ctx, kind, ftsQuery(q), limit, lang, src)
 	if err != nil {
 		return nil, err
 	}
 	var boosted []string
 	if kind == kindAny || kind == kindWork {
 		boosted = s.boostedWorks(ctx, q, lang)
-		if boosted, err = s.worksInLanguages(ctx, boosted, lang); err != nil {
-			return nil, err
-		}
-		if boosted, err = s.worksWithSource(ctx, boosted, src); err != nil {
+		if boosted, err = s.worksAdmitted(ctx, boosted, lang, src); err != nil {
 			return nil, err
 		}
 	}
@@ -608,13 +593,8 @@ func (s *DB) searchPageWith(ctx context.Context, kind searchKind, q string, limi
 // The hits are collected FIRST so the whole page's cards, names and summaries
 // can be resolved in one batch each (see results) rather than inside the scan
 // loop. lang is already live (DB.liveLang); nil is no filter.
-func (s *DB) ftsHits(ctx context.Context, kind searchKind, match string, limit int, lang langFilter) ([]searchHit, error) {
-	return s.ftsHitsWith(ctx, kind, match, limit, lang, "")
-}
-
-// ftsHitsWith is ftsHits with a source filter ("" for none).
-func (s *DB) ftsHitsWith(ctx context.Context, kind searchKind, match string, limit int, lang langFilter, src string) ([]searchHit, error) {
-	query, args := ftsSearchQueryWith(kind, match, limit, lang, src)
+func (s *DB) ftsHits(ctx context.Context, kind searchKind, match string, limit int, lang langFilter, src string) ([]searchHit, error) {
+	query, args := ftsSearchQuery(kind, match, limit, lang, src)
 	rows, err := s.db.QueryContext(ctx, query, args...)
 	if err != nil {
 		return nil, err

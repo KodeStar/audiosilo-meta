@@ -307,7 +307,7 @@ func TestSearchInitialisms(t *testing.T) {
 
 	// The series-position boost too - and here the plain FTS page is empty, so
 	// the boost is the ONLY source of the answer.
-	hits, err := snap.ftsHits(t.Context(), kindAny, ftsQuery("N.E.R.D.S. 2"), 20, nil)
+	hits, err := snap.ftsHits(t.Context(), kindAny, ftsQuery("N.E.R.D.S. 2"), 20, nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -686,7 +686,7 @@ func TestSearchPossessivesWithoutApostrophe(t *testing.T) {
 
 	// The bug, pinned on the fixture: the expression the builder used to emit
 	// matches nothing at all.
-	if hits, err := snap.ftsHits(t.Context(), kindAny, `"enders" "game"*`, 20, nil); err != nil || len(hits) != 0 {
+	if hits, err := snap.ftsHits(t.Context(), kindAny, `"enders" "game"*`, 20, nil, ""); err != nil || len(hits) != 0 {
 		t.Fatalf("the fixture no longer reproduces the bug: %v %v", hits, err)
 	}
 

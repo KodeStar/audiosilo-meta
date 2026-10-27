@@ -142,7 +142,7 @@ func resultIDs(t *testing.T, results []any) []string {
 
 func searchIDs(t *testing.T, snap *DB, q string) []string {
 	t.Helper()
-	res, err := snap.search(t.Context(), kindAny, q, 20, nil)
+	res, err := snap.search(t.Context(), kindAny, q, 20, nil, "")
 	if err != nil {
 		t.Fatalf("search(%q): %v", q, err)
 	}
@@ -266,7 +266,7 @@ func TestSearchNumericTitlesNotRegressed(t *testing.T) {
 // combined one.
 func scopedIDs(t *testing.T, snap *DB, kind searchKind, q string) []string {
 	t.Helper()
-	res, err := snap.search(t.Context(), kind, q, 20, nil)
+	res, err := snap.search(t.Context(), kind, q, 20, nil, "")
 	if err != nil {
 		t.Fatalf("search(%s, %q): %v", kind, q, err)
 	}

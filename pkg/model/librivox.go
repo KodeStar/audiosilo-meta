@@ -9,6 +9,7 @@ package model
 // have written.
 
 import (
+	"maps"
 	"strings"
 	"unicode"
 )
@@ -153,19 +154,11 @@ var librivoxGenres = map[string]string{
 // LibrivoxLanguages returns a copy of the LibriVox language-name table
 // (librivoxLanguages): lowercased names LibriVox states that the shared word
 // table (LanguageWords) does not hold, each mapped to a schema language tag.
-func LibrivoxLanguages() map[string]string { return copyTable(librivoxLanguages) }
+func LibrivoxLanguages() map[string]string { return maps.Clone(librivoxLanguages) }
 
 // LibrivoxGenres returns a copy of the LibriVox genre-name table (librivoxGenres):
 // lowercased LibriVox genre names mapped onto this project's genre vocabulary.
-func LibrivoxGenres() map[string]string { return copyTable(librivoxGenres) }
-
-func copyTable(m map[string]string) map[string]string {
-	out := make(map[string]string, len(m))
-	for k, v := range m {
-		out[k] = v
-	}
-	return out
-}
+func LibrivoxGenres() map[string]string { return maps.Clone(librivoxGenres) }
 
 // librivoxLanguageNames is the reverse of the two tables a LibriVox language name
 // is resolved through (librivoxLanguages, then languageWords): a tag back to the

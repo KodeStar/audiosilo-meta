@@ -347,7 +347,7 @@ func (s *DB) loadStats() error {
 	// The LIBRIVOX layer, on the same precedent: a version 8 claim without the
 	// columns and tables it names fails the LOAD, naming the claim, rather than
 	// 500ing every work page (whose recordings read the new columns).
-	if s.schemaVersion >= librivoxSchemaVersion {
+	if s.hasLibrivoxLayer() {
 		for _, shape := range librivoxShapeSQL {
 			if _, err := s.db.Exec(shape); err != nil {
 				return fmt.Errorf("%s: artifact schema_version %d requires the LibriVox layer: %w",

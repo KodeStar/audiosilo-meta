@@ -456,7 +456,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 		return err
 	}
 	if facts.text != nil {
-		hits, err := s.ftsHits(ctx, kindWork, ftsQuery(req.text), matchTextWindow, nil)
+		hits, err := s.ftsHits(ctx, kindWork, ftsQuery(req.text), matchTextWindow, nil, "")
 		if err != nil {
 			return nil, err
 		}
@@ -487,7 +487,7 @@ func (s *DB) match(ctx context.Context, req matchRequest) ([]matchResult, error)
 				return nil, err
 			}
 		}
-		hits, err := s.ftsHits(ctx, kindWork, ftsPhrase(g.probe), matchTitleWindow, nil)
+		hits, err := s.ftsHits(ctx, kindWork, ftsPhrase(g.probe), matchTitleWindow, nil, "")
 		if err != nil {
 			return nil, err
 		}

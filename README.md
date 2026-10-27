@@ -240,7 +240,9 @@ address is one of `--trusted-proxy` (env `METASERVE_TRUSTED_PROXIES`, a
 comma-separated list of addresses and CIDR prefixes), the rightmost
 `X-Forwarded-For` entry that is not itself a trusted proxy. **Behind a reverse
 proxy, name it there**, or every request counts as the proxy and shares one
-bucket; a forwarded header from anywhere else is never read. A 200 that states
+bucket; a forwarded header from anywhere else is never read. The shipped
+`docker-compose.yml` already trusts the loopback and private ranges (its port is
+published on loopback only, so only the host's proxy can reach it). A 200 that states
 no `Cache-Control` of its own gets `public, max-age=600`, or `public,
 max-age=60` on the searches and `works/match`.
 

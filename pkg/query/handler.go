@@ -362,7 +362,7 @@ func (s *handler) handleLatest(w http.ResponseWriter, r *http.Request, snap *DB)
 	if !ok {
 		return
 	}
-	cards, err := snap.latestWorksWith(limit, lang, src)
+	cards, err := snap.latestWorks(limit, lang, src)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -617,7 +617,7 @@ func (s *handler) searchHandler(kind searchKind) dataHandler {
 				return
 			}
 		}
-		results, err := snap.searchWith(r.Context(), kind, q, limit, lang, src)
+		results, err := snap.search(r.Context(), kind, q, limit, lang, src)
 		if err != nil {
 			s.fail(w, r, err)
 			return

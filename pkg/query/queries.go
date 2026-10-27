@@ -46,14 +46,11 @@ const latestCandidatesSQL = `SELECT id FROM works` + latestOrderSQL
 // admits - through idx_works_language for a minority language, so it sorts only
 // its own rows, and by one read of the table for a majority (worksPredicate has
 // the measurement).
-func (s *DB) latestCandidatesQuery(lang langFilter, fetch int) (string, []any) {
-	return s.latestCandidatesQueryWith(lang, "", fetch)
-}
-
-// latestCandidatesQueryWith is latestCandidatesQuery with a source filter
-// (librivox.go; "" for none): the works with a recording of that source type,
-// reached through idx_recording_sources_type, then by primary key.
-func (s *DB) latestCandidatesQueryWith(lang langFilter, src string, fetch int) (string, []any) {
+//
+// src is a source filter (librivox.go; "" for none): the works with a recording
+// of that source type, reached through idx_recording_sources_type, then by
+// primary key.
+func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (string, []any) {
 	if src == "" {
 		if len(lang) == 0 {
 			return latestCandidatesSQL, []any{fetch}
@@ -96,21 +93,18 @@ const latestSeriesCap = 2
 //
 // lang (already live) narrows phase one to the works in the languages it names,
 // so the cap and the page are taken over those alone (latestCandidatesQuery).
-func (s *DB) latestWorks(limit int, lang langFilter) ([]*WorkCard, error) {
-	return s.latestWorksWith(limit, lang, "")
-}
-
-// latestWorksWith is latestWorks over the works a source filter admits ("" for
-// none); an artifact with no recording_sources table answers it with no works.
-func (s *DB) latestWorksWith(limit int, lang langFilter, src string) ([]*WorkCard, error) {
-	if src != "" && !s.hasSourceTable() {
+//
+// src narrows it to the works a source filter admits ("" for none); an artifact
+// with no recording_sources table answers a filtered request with no works.
+func (s *DB) latestWorks(limit int, lang langFilter, src string) ([]*WorkCard, error) {
+	if src != "" && !s.hasLibrivoxLayer() {
 		return []*WorkCard{}, nil
 	}
 	fetch := limit * 4
 	if fetch < 200 {
 		fetch = 200
 	}
-	query, args := s.latestCandidatesQueryWith(lang, src, fetch)
+	query, args := s.latestCandidatesQuery(lang, src, fetch)
 	rows, err := s.db.Query(query, args...)
 	if err != nil {
 		return nil, err
@@ -809,7 +803,7 @@ func (s *DB) workISBNs(workID string) ([]string, error) {
 // construction means no future recordingDetail surface can silently omit them
 // (omitempty would hide the gap).
 func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
-	librivox := s.schemaVersion >= librivoxSchemaVersion
+	librivox := s.hasLibrivoxLayer()
 	rows, err := s.db.Query(recordingsOfSQL(librivox), workID)
 	if err != nil {
 		return nil, err
@@ -958,7 +952,7 @@ func chaptersOfSQL(librivox bool) string {
 }
 
 func (s *DB) chapters(workID, rid string) ([]ChapterOut, error) {
-	librivox := s.schemaVersion >= librivoxSchemaVersion
+	librivox := s.hasLibrivoxLayer()
 	rows, err := s.db.Query(chaptersOfSQL(librivox), workID, rid)
 	if err != nil {
 		return nil, err

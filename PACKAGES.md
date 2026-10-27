@@ -47,7 +47,7 @@ pkg/query           PUBLIC: the read side of the artifact and the JSON API over 
 pkg/query/querytest PUBLIC test support: `Build(tb, dir)` writes a small real artifact (the shared fixture, compiled by internal/build, deterministic, <1 MiB) plus constants naming its facts (an ASIN/ISBN that look up, a missing ASIN, a numerically ordered series, a chaptered recording, a retired slug, the community layer) - for downstream tests against true metaserve behaviour; `public_test.go` checks every constant through `NewHandler`
 pkg/release         PUBLIC: the GitHub DATA-release fetcher, the ONE implementation of the asset contract - `LatestData(ctx, etag)` (newest non-draft, non-prerelease release carrying meta.sqlite.gz by max published_at, conditional; the caller keeps the ETag), `DownloadData` (gz streamed through gunzip into a temp file beside the destination, verified against meta.sqlite.gz.sha256, fsynced, renamed; bounded by `DecompressBound`, stall-guarded, allowlisted hosts via internal/ghhost) and the pieces metaserve's patch and cache paths need (`ReadDigest`, `DownloadAsset`, `InstallVerified`, `VerifyFile`). Shared by metaserve's poller and mirror-mode AudioSilo servers
 pkg/release/releasetest PUBLIC test support (imported only by tests, here and downstream: audiosilo-server's mirror-mode tests publish their data releases on it): the ONE fake of GitHub's releases API (ETag/304, hit counts, the User-Agent of every request, failing/down/throttled/hung knobs, a redirect route) and the checksum/gzip helpers, shared by pkg/release's and internal/serve's suites. It must not import pkg/release (that package's internal tests import it), so asset names are literals pinned by `TestReleasetestNamesTheContract`
-internal/serve      metaserve: serves pkg/query's handler for the API routes (registering `query.Routes` in front of it behind its CORS + gzip + per-client rate limit and default Cache-Control, ratelimit.go) and adds what is its own - the snapshot hot swap and its refcounted retirement, the GitHub-release poller over pkg/release (with the binary-delta and cache-volume paths, github.go), the release webhook, the OpenAPI document, the server-rendered HTML ENTITY PAGES (html.go/shell.go/jsonld.go/guides.go: /works|people|series/{id} injected into the built Astro shells) and the SITEMAPS over them (sitemap.go: /sitemap-index.xml + /sitemaps/<family>-<n>.xml, rendered from pkg/query's page families); the schema_version 7 LANGUAGES reads (translation links, series language/ordering/family, the primary-first series choice, the stats census) are described with the rest of the server below
+internal/serve      metaserve: serves pkg/query's handler for the API routes (registering `query.Routes` in front of it behind its CORS + gzip + per-client rate limit, ratelimit.go, and default Cache-Control, cache.go) and adds what is its own - the snapshot hot swap and its refcounted retirement, the GitHub-release poller over pkg/release (with the binary-delta and cache-volume paths, github.go), the release webhook, the OpenAPI document, the server-rendered HTML ENTITY PAGES (html.go/shell.go/jsonld.go/guides.go: /works|people|series/{id} injected into the built Astro shells) and the SITEMAPS over them (sitemap.go: /sitemap-index.xml + /sitemaps/<family>-<n>.xml, rendered from pkg/query's page families); the schema_version 7 LANGUAGES reads (translation links, series language/ordering/family, the primary-first series choice, the stats census) are described with the rest of the server below
 internal/httpx      the response helpers pkg/query and internal/serve share - a LEAF: the JSON writers and error envelope, the one fixed 500 (`Fail`/`InternalErrMsg`), the no-artifact 503 (`WriteNoArtifact`) and Retry-After rendering, the If-None-Match comparisons, the validator digest and the XML renderer - so the two packages answering on one server cannot spell any of it twice
 internal/artifacttest test support (imported only by tests and pkg/query/querytest): the fixture catalogues, the facts they are built from (querytest's public constants alias them), the deterministic artifact builders (`Build`, `Altered`, `Downgraded`, `Golden`) and the HTTP helpers (`GetJSON`, `GetNoFollow(With)`, `QuietLogger`) pkg/query's and internal/serve's suites share, so the suite that tests the query layer and the one that tests the server on it build from one fixture
 schema/             JSON Schemas (the contract), embedded via schema.go; the four pack-*.schema.json wrappers are load-bearing (pkg/check validates every entry and entry key through its family's wrapper fragments); redirects.schema.json is the one whole-DOCUMENT schema (the tombstone table is a file, not an entry)
@@ -978,7 +978,7 @@ FTS query, so each probe applies the filter INSIDE its own bounded window
 (`exactTitleQuery`, `seriesMatching` - the exact-title window is 20 rows and the
 series one 3, so filtering afterwards let a franchise's other-language records
 crowd the reader's own out of the boost; with no filter both issue exactly their
-old SQL), and the ids then also go through `worksInLanguages` (a primary-key
+old SQL), and the ids then also go through `worksAdmitted` (a primary-key
 read, only when a boost fired under a live filter) before `mergeHits`, since a
 series judged by its derived language can hold a member in another - a page
 never carries a work outside the filter. `parseLangFilter` bounds the RAW item
@@ -1041,7 +1041,7 @@ recording_id)`. loadStats proves the claim (`librivoxShapeSQL`), so a version 8
 artifact without them fails to open, as for 5-7. pkg/query reads it as: the
 `?source=` filter (librivox.go: `sourceParam` 400s an unknown type through
 `model.KnownSourceType`; `worksWithSourceArm` inside the FTS query and
-`latestCandidatesQueryWith`, `worksWithSource` over the boosts; the combined
+`latestCandidatesQuery`, `workHasSourceArm` in `worksAdmitted` over the boosts; the combined
 search turns works-only; an older artifact answers an empty list, never the
 unfiltered one), `lookup?librivox_id=` (read only when `asin` and `isbn` are
 absent), the RecordingDetail fields, `ChapterOut.AudioURL` and a leading free
@@ -1055,7 +1055,7 @@ deliberately left: a project's `(version N)` title and per-section readers are
 not stored, so `title=` matches the work title and a multi-reader recording
 names no section reader.
 
-**The RATE LIMIT and CACHE HEADERS (internal/serve ratelimit.go).** Every API
+**The RATE LIMIT and CACHE HEADERS (internal/serve ratelimit.go, cache.go).** Every API
 route wears `Server.public` = gzip(CORS(limit(h))), so the limit is inside CORS
 and a browser can read a 429's `Retry-After`; `/healthz` does not. The limiter
 is a per-client-address token bucket (`Config.RateLimit`/`RateBurst`, metaserve

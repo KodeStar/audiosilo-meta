@@ -297,7 +297,7 @@ func TestLatestCapsAnOrderingFamilyAsOneSeries(t *testing.T) {
 		}
 	}
 	snap := openTestDB(t, artifacttest.Build(t, cat))
-	cards, err := snap.latestWorks(12, nil)
+	cards, err := snap.latestWorks(12, nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}

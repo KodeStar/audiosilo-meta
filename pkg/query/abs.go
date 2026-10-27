@@ -268,7 +268,7 @@ func (s *DB) absWorkSearch(ctx context.Context, query string, limit int, lang la
 	if limit <= 0 {
 		limit = absMaxMatches
 	}
-	hits, err := s.ftsHits(ctx, kindWork, ftsQuery(query), limit, lang)
+	hits, err := s.ftsHits(ctx, kindWork, ftsQuery(query), limit, lang, "")
 	if err != nil {
 		return nil, err
 	}

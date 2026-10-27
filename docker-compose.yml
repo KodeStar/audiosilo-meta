@@ -43,14 +43,29 @@ services:
     #   metaserve --site /app/site --poll --cache /data/cache
     # `command:` APPENDS flags to that, e.g. a faster poll cadence:
     # command: ["--interval", "15m"]
-    #
-    # Optional: enable immediate refreshes from the release workflow. Configure
-    # the same 32+ byte value as the repository secret
-    # METASERVE_WEBHOOK_SECRET, and set METASERVE_WEBHOOK_URL there to the public
-    # https://.../hooks/github/release endpoint. Never commit the value here.
-    # environment:
-    #   METASERVE_WEBHOOK_SECRET: ${METASERVE_WEBHOOK_SECRET}
-    #   GITHUB_TOKEN: ghp_... # optional higher polling rate limit
+    environment:
+      # The API is rate limited per client (10 requests a second, burst 30;
+      # METASERVE_RATE_LIMIT / METASERVE_RATE_BURST, 0 turns it off). The client
+      # is the connection's address unless that address is a trusted proxy, and
+      # behind the reverse proxy every connection comes from the proxy: from
+      # 127.0.0.1 or the compose network's gateway (a private address). Trusting
+      # the loopback and private ranges lets the limit read the proxy's
+      # X-Forwarded-For instead, so each visitor gets their own bucket rather
+      # than the whole site sharing one. Safe here because the port above is
+      # published on loopback only, so nothing outside this host can connect.
+      # The proxy must send X-Forwarded-For (nginx: proxy_set_header
+      # X-Forwarded-For $proxy_add_x_forwarded_for). If another proxy or CDN
+      # sits in front of it, add that CDN's ranges too, or rewrite the header at
+      # the host proxy (nginx real_ip), or the CDN's edges become the clients.
+      METASERVE_TRUSTED_PROXIES: "127.0.0.0/8,::1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,fc00::/7"
+      #
+      # Optional: enable immediate refreshes from the release workflow. Configure
+      # the same 32+ byte value as the repository secret
+      # METASERVE_WEBHOOK_SECRET, and set METASERVE_WEBHOOK_URL there to the
+      # public https://.../hooks/github/release endpoint. Never commit the value
+      # here.
+      # METASERVE_WEBHOOK_SECRET: ${METASERVE_WEBHOOK_SECRET}
+      # GITHUB_TOKEN: ghp_... # optional higher polling rate limit
 
 volumes:
   meta-cache:
