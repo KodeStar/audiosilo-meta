@@ -4271,6 +4271,61 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "arctura": {
+          "added_at": "2026-10-27",
+          "archive_id": "childs_garden_verses_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/childs_garden_verses_librivox/cgv_1_stevenson_64kb.mp3",
+              "length_ms": 2461000,
+              "start_ms": 0,
+              "title": "A Child’s Garden of Verses"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/childs_garden_verses_librivox/cgv_2_stevenson_64kb.mp3",
+              "length_ms": 883000,
+              "start_ms": 2461000,
+              "title": "The Child Alone"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/childs_garden_verses_librivox/cgv_3_stevenson_64kb.mp3",
+              "length_ms": 690000,
+              "start_ms": 3344000,
+              "title": "Garden Days"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/childs_garden_verses_librivox/cgv_4_stevenson_64kb.mp3",
+              "length_ms": 516000,
+              "start_ms": 4034000,
+              "title": "Envoys"
+            }
+          ],
+          "copyright_year": 1885,
+          "cover_url": "https://archive.org/download/childs_garden_verses_librivox/Childs_Garden_Verses_1107.jpg",
+          "id": "arctura",
+          "language": "en",
+          "librivox_id": 793,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/a-childs-garden-of-verses-by-robert-louis-stevenson/",
+            "rss": "https://librivox.org/rss/793",
+            "text": "https://www.gutenberg.org/etext/136",
+            "zip": "https://archive.org/compress/childs_garden_verses_librivox/formats=64KBPS MP3&file=/childs_garden_verses_librivox.zip"
+          },
+          "narrators": [
+            "arctura"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 76,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "793",
+              "type": "librivox"
+            }
+          ],
+          "work": "a-childs-garden-of-verses"
+        },
         "uncredited-2013": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -9672,6 +9727,67 @@
           ],
           "work": "a-christmas-carol"
         },
+        "glen-hallstrom": {
+          "added_at": "2026-10-27",
+          "archive_id": "christmascarol_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/christmascarol_librivox/christmas_carol_stave01_dickens_gmh_64kb.mp3",
+              "length_ms": 2315000,
+              "start_ms": 0,
+              "title": "Stave 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/christmascarol_librivox/christmas_carol_stave02_dickens_gmh_64kb.mp3",
+              "length_ms": 2112000,
+              "start_ms": 2315000,
+              "title": "Stave 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/christmascarol_librivox/christmas_carol_stave03_dickens_gmh_64kb.mp3",
+              "length_ms": 2762000,
+              "start_ms": 4427000,
+              "title": "Stave 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/christmascarol_librivox/christmas_carol_stave04_dickens_gmh_64kb.mp3",
+              "length_ms": 1882000,
+              "start_ms": 7189000,
+              "title": "Stave 4"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/christmascarol_librivox/christmas_carol_stave05_dickens_gmh_64kb.mp3",
+              "length_ms": 754000,
+              "start_ms": 9071000,
+              "title": "Stave 5"
+            }
+          ],
+          "copyright_year": 1843,
+          "cover_url": "https://archive.org/download/christmascarol_librivox/Christmas_Carol_1002.jpg",
+          "id": "glen-hallstrom",
+          "language": "en",
+          "librivox_id": 685,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/a-christmas-carol-by-charles-dickens-2/",
+            "rss": "https://librivox.org/rss/685",
+            "text": "https://www.gutenberg.org/etext/46",
+            "zip": "https://archive.org/compress/christmascarol_librivox/formats=64KBPS MP3&file=/christmascarol_librivox.zip"
+          },
+          "narrators": [
+            "glen-hallstrom"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 164,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "685",
+              "type": "librivox"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
         "glenn-schadt-2026": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -11223,6 +11339,71 @@
               "imported_at": "2026-10-09",
               "ref": "B004F1XJDA",
               "type": "libex-import"
+            }
+          ],
+          "work": "a-christmas-carol"
+        },
+        "mark-bradford": {
+          "added_at": "2026-10-27",
+          "archive_id": "A_Christmas_Carol",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/A_Christmas_Carol/A_Christmas_Carol_Preface_and_Stave_1_Dickens_64kb.mp3",
+              "length_ms": 2679000,
+              "start_ms": 0,
+              "title": "Preface and Stave 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/A_Christmas_Carol/A_Christmas_Carol_Stave_2_Dickens_64kb.mp3",
+              "length_ms": 2654000,
+              "start_ms": 2679000,
+              "title": "Stave 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/A_Christmas_Carol/A_Christmas_Carol_Stave_3_Dickens_64kb.mp3",
+              "length_ms": 2674000,
+              "start_ms": 5333000,
+              "title": "Stave 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/A_Christmas_Carol/A_Christmas_Carol_Stave_4_Dickens_64kb.mp3",
+              "length_ms": 2529000,
+              "start_ms": 8007000,
+              "title": "Stave 4"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/A_Christmas_Carol/A_Christmas_Carol_Stave_5_Dickens_64kb.mp3",
+              "length_ms": 1126000,
+              "start_ms": 10536000,
+              "title": "Stave 5"
+            }
+          ],
+          "copyright_year": 1843,
+          "cover_url": "https://archive.org/download/A_Christmas_Carol/Christmas_Carol_1108.jpg",
+          "id": "mark-bradford",
+          "language": "en",
+          "librivox_id": 140,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/a-christmas-carol-by-charles-dickens/",
+            "rss": "https://librivox.org/rss/140",
+            "text": "https://www.gutenberg.org/etext/46",
+            "zip": "https://archive.org/compress/A_Christmas_Carol/formats=64KBPS MP3&file=/A_Christmas_Carol.zip"
+          },
+          "narrators": [
+            "mark-bradford",
+            "kara-shallenberg-1969-2023",
+            "kristen-mcquillin",
+            "hugh-mcguire",
+            "bill-stackpole"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 194,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "140",
+              "type": "librivox"
             }
           ],
           "work": "a-christmas-carol"

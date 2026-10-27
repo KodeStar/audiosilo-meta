@@ -1139,6 +1139,79 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "felix": {
+          "added_at": "2026-10-27",
+          "archive_id": "schimmelreiter_storm_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/schimmelreiter_storm_librivox/storm_schimmelreiter_01_64kb.mp3",
+              "length_ms": 2367000,
+              "start_ms": 0,
+              "title": "Teil 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/schimmelreiter_storm_librivox/storm_schimmelreiter_02_64kb.mp3",
+              "length_ms": 2363000,
+              "start_ms": 2367000,
+              "title": "Teil 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/schimmelreiter_storm_librivox/storm_schimmelreiter_03_64kb.mp3",
+              "length_ms": 1744000,
+              "start_ms": 4730000,
+              "title": "Teil 3"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/schimmelreiter_storm_librivox/storm_schimmelreiter_04_64kb.mp3",
+              "length_ms": 2492000,
+              "start_ms": 6474000,
+              "title": "Teil 4"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/schimmelreiter_storm_librivox/storm_schimmelreiter_05_64kb.mp3",
+              "length_ms": 2290000,
+              "start_ms": 8966000,
+              "title": "Teil 5"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/schimmelreiter_storm_librivox/storm_schimmelreiter_06_64kb.mp3",
+              "length_ms": 2325000,
+              "start_ms": 11256000,
+              "title": "Teil 6"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/schimmelreiter_storm_librivox/storm_schimmelreiter_07_64kb.mp3",
+              "length_ms": 1862000,
+              "start_ms": 13581000,
+              "title": "Teil 7"
+            }
+          ],
+          "copyright_year": 1888,
+          "cover_url": "https://archive.org/download/schimmelreiter_storm_librivox/schimmelreiter_1002.jpg",
+          "id": "felix",
+          "language": "de",
+          "librivox_id": 173,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/der-schimmelreiter-by-theodor-storm/",
+            "rss": "https://librivox.org/rss/173",
+            "text": "https://www.projekt-gutenberg.org/storm/schimmel/schimmel.html",
+            "zip": "https://archive.org/compress/schimmelreiter_storm_librivox/formats=64KBPS MP3&file=/schimmelreiter_storm_librivox.zip"
+          },
+          "narrators": [
+            "felix"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 257,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "173",
+              "type": "librivox"
+            }
+          ],
+          "work": "der-schimmelreiter"
+        },
         "georg-elmenhorst-2026": {
           "abridged": false,
           "added_at": "2026-08-02",

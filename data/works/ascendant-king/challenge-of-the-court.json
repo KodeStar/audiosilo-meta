@@ -5787,6 +5787,65 @@
       ],
       "title": "Chamber Divers"
     },
+    "chamber-music": {
+      "added_at": "2026-10-27",
+      "authors": [
+        "james-joyce"
+      ],
+      "genres": [
+        "poetry"
+      ],
+      "id": "chamber-music",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "annie-coleman-rothenberg": {
+          "added_at": "2026-10-27",
+          "archive_id": "chamber_music_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/chamber_music_librivox/chamber_music_joyce_apc_64kb.mp3",
+              "length_ms": 1545000,
+              "start_ms": 0,
+              "title": "Strings in the earth and air"
+            }
+          ],
+          "copyright_year": 1907,
+          "cover_url": "https://archive.org/download/chamber_music_librivox/Chamber_Music_1107.jpg",
+          "id": "annie-coleman-rothenberg",
+          "language": "en",
+          "librivox_id": 467,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/chamber-music-by-james-joyce/",
+            "rss": "https://librivox.org/rss/467",
+            "text": "https://www.gutenberg.org/etext/2817",
+            "zip": "https://archive.org/compress/chamber_music_librivox/formats=64KBPS MP3&file=/chamber_music_librivox.zip"
+          },
+          "narrators": [
+            "annie-coleman-rothenberg"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 26,
+          "sources": [
+            {
+              "imported_at": "2026-10-27",
+              "ref": "467",
+              "type": "librivox"
+            }
+          ],
+          "work": "chamber-music"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-27",
+          "ref": "467",
+          "type": "librivox"
+        }
+      ],
+      "title": "Chamber Music"
+    },
     "chambers-of-death": {
       "added_at": "2026-07-29",
       "authors": [
