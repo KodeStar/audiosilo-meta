@@ -163,7 +163,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if raw == nil {
 		return false
 	}
-	overwrite := p.overwrites(raw)
+	overwrite, awaiting := p.recordingPosture(raw, scope)
 	// A merged-in row is a DIFFERENT edition of the same production, so on a
 	// record it may not overwrite it has nothing to say: its regional release
 	// date legitimately differs, and reporting that as a conflict would flag an
@@ -172,39 +172,25 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 		return true
 	}
 	// A preorder-era record meeting a released row of its own ASIN is REFRESHED
-	// (refresh.go): its runtime, cover, chapters and release date are replaced
-	// before anything below fills, and the contradiction guard does not run - a
-	// corrected runtime and a moved date are what the refresh is for, and it has
-	// judged the runtime itself. The record is written whatever changed, since
-	// the refresh's stamp is what ends its preorder era.
-	//
-	// An UNRELEASED row of its own ASIN moves its release date instead
-	// (movedPreorderDate): the guard's date half reads the moved date, and it is
-	// written only once the guard has let the row through.
-	var refreshed bool
-	var withheld func()
-	var moved string
-	if scope == scopeFill && !overwrite {
-		refreshed, withheld = p.refreshRecording(raw, ref, b)
-		if !refreshed {
-			moved = p.movedPreorderDate(raw, b)
-		}
+	// (refresh.go): the overwrite posture for runtime, cover, chapters and
+	// release date, written by the fill block below, with the contradiction
+	// guard skipped - a corrected runtime and a moved date are what the refresh
+	// is for, and it has judged the runtime itself. The record is written
+	// whatever changed, since the refresh's stamp is what ends its preorder era.
+	var refresh, withheld bool
+	var against runtimeEvidence
+	if awaiting {
+		refresh, withheld, against = p.judgeRefresh(raw, b)
 	}
-	recordedDate := coerceStr(raw["release_date"])
-	if moved != "" {
-		recordedDate = moved
-	}
-	if !refreshed && p.recordingContradicts(b, ref, raw, recordedDate, scope) {
+	if !refresh && p.recordingContradicts(b, ref, raw, awaiting, scope) {
 		return false
-	}
-	if moved != "" {
-		p.moveReleaseDate(raw, ref, moved)
 	}
 	// A refresh whose runtime the judgement withheld is reported as a kept
 	// estimate only for a row the guard let through: a refused row is already
 	// reported as the contradiction it is.
-	if withheld != nil {
-		withheld()
+	if withheld {
+		recorded, _ := coerceInt(raw["runtime_min"])
+		p.noteKeptEstimate(ref, int(recorded), b.runtimeMin, against)
 	}
 	// An exact-ASIN row about a record it may not overwrite has already had its
 	// say: a disagreement was flagged just above, and its agreeing facts are
@@ -217,23 +203,35 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestExact && !overwrite {
 		return true
 	}
-	changed := refreshed || moved != ""
+	var before refreshFields
+	if awaiting {
+		before = readRefreshFields(raw)
+	}
+	p.curRefresh = refresh
+	replace := overwrite || refresh
+	changed := refresh
 
 	// The runtime reaches here only in agreement (recordingContradicts refused
-	// the row otherwise, and a refresh has already written the row's), so an
-	// overwrite is a precision improvement - 601 minutes for a recorded 600 -
-	// never a re-statement of a different production. A recorded preorder
-	// ESTIMATE is replaced only by the refresh above. The release date is NOT
-	// always in agreement here (the merge scope skips its guard), which is why
-	// fillReleaseDate takes only a value extending it.
+	// the row otherwise), so an overwrite is a precision improvement - 601
+	// minutes for a recorded 600 - never a re-statement of a different
+	// production; a refresh's has been judged by judgeOwnASINRuntime instead. The
+	// release date is NOT always in agreement here (the merge scope skips its
+	// guard), which is why fillReleaseDate takes only a value extending it - and
+	// a preorder-era record's date is estimate evidence, which a full date of its
+	// own ASIN replaces (refresh.go).
 	if b.runtimeMin > 0 {
-		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || overwrite {
+		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || replace {
 			setDecoded(raw, "runtime_min", b.runtimeMin)
 			changed = true
 		}
 	}
 
-	if rd := b.str("release_date"); datePattern.MatchString(rd) && fillReleaseDate(raw, rd, overwrite) {
+	if rd := b.str("release_date"); awaiting && isFullDate(rd) {
+		if coerceStr(raw["release_date"]) != rd {
+			raw["release_date"] = rd
+			changed = true
+		}
+	} else if datePattern.MatchString(rd) && fillReleaseDate(raw, rd, overwrite) {
 		changed = true
 	}
 
@@ -244,15 +242,16 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 		changed = true
 	}
 
-	if img := b.str("image_url"); strings.HasPrefix(img, "https://") && fillStr(raw, "cover_url", img, overwrite) {
+	if img := b.str("image_url"); strings.HasPrefix(img, "https://") && fillStr(raw, "cover_url", img, replace) {
 		changed = true
 	}
 
 	// Chapters are all-or-nothing: a recording's chapter list is one coherent
 	// timeline, so it is written only when the record has none (or the tier
-	// grants overwrite) AND the row's own chapter rows build cleanly. Merging two
-	// sources' chapter tables would produce a timeline neither source states.
-	if existing, _ := raw["chapters"].([]any); len(existing) == 0 || overwrite {
+	// grants overwrite, or the row refreshes it) AND the row's own chapter rows
+	// build cleanly. Merging two sources' chapter tables would produce a timeline
+	// neither source states.
+	if existing, _ := raw["chapters"].([]any); len(existing) == 0 || replace {
 		if chs := buildChapters(b.chapterRows(), warn); len(chs) > 0 {
 			setDecoded(raw, "chapters", chs)
 			changed = true
@@ -266,14 +265,13 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 		changed = true
 	}
 
+	if awaiting {
+		p.countRefresh(ref, before, raw, refresh)
+	}
 	if !changed && !overwrite {
 		return true
 	}
-	if refreshed {
-		p.stampRestatement(raw)
-	} else {
-		p.stampSource(raw)
-	}
+	p.stampSource(raw)
 	p.putWorkEntry(ref.Work, entry)
 	// A later row of the run compares with what the record now says: a filled or
 	// replaced runtime, a chapter list, the stamp that ends an estimate.
@@ -321,9 +319,14 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // re-release from a different production - is applied upstream by
 // runtimesCompatible before a merge is considered at all, so nothing is lost.
 //
-// releaseDate is the recorded date the row is compared with: the record's own,
-// or the moved preorder date the row is about to write (refresh.go).
-func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, releaseDate string, scope applyScope) bool {
+// For a preorder-era record (awaiting, refresh.go) the recorded release date is
+// estimate evidence, as its runtime is: the date half does not read it, and a
+// full date the row states replaces it instead.
+func (p *planner) recordingContradicts(b sourceBook, ref RecRef, raw map[string]any, awaiting bool, scope applyScope) bool {
+	releaseDate := coerceStr(raw["release_date"])
+	if awaiting {
+		releaseDate = ""
+	}
 	c, contradicts := rowContradiction(b, rawKnownRuntime(raw), releaseDate, scope)
 	if !contradicts {
 		return false

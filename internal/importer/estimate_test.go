@@ -273,7 +273,7 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 	sum := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true)))
 
-	if sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 1 {
+	if sum.EnrichedRecordings != 1 || sum.RefreshedRuntimes != 1 {
 		t.Fatalf("summary = %+v, want 1 enriched recording / 1 estimate replaced", sum)
 	}
 	if hasWarning(sum.Warnings, "conflicts with the recorded") || conflicts.Len() != 0 {
@@ -295,7 +295,7 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 	before := snapshotTree(t, dataDir)
 	again := runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", estChapters(estReleasedLen, true)))
-	if again.EstimatesReplaced != 0 || again.EnrichedRecordings != 0 {
+	if again.RefreshedRuntimes != 0 || again.EnrichedRecordings != 0 {
 		t.Errorf("re-run changed something: %+v", again)
 	}
 	assertTreeUnchanged(t, dataDir, before)
@@ -305,7 +305,7 @@ func TestEnrichReplacesAPreorderEstimate(t *testing.T) {
 	var conflicts2 bytes.Buffer
 	later := runLibexWith(t, dataDir, Options{ImportDate: "2026-10-08", Mode: ModeEnrich, Conflicts: &conflicts2},
 		estRow(estUSASIN, "us", 300, "unabridged", ""))
-	if later.EstimatesReplaced != 0 || conflicts2.Len() == 0 {
+	if later.RefreshedRuntimes != 0 || conflicts2.Len() == 0 {
 		t.Errorf("summary = %+v, conflicts %q; want the contradicting row refused", later, conflicts2.String())
 	}
 	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
@@ -483,7 +483,7 @@ func TestAChapterlessEstimateKeepsARuntimeBound(t *testing.T) {
 	dataDir = seedEstimateTree(t, estRecording(t, "2026-08-02", estMirrorSource("2026-08-02"), ""))
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
 		estRow(estUSASIN, "us", 300, "unabridged", ""))
-	if sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 1 || sum.RefreshedRecordings != 1 {
+	if sum.EnrichedRecordings != 1 || sum.RefreshedRuntimes != 1 || sum.RefreshedRecordings != 1 {
 		t.Errorf("summary = %+v, want the own ASIN's released runtime to replace the estimate", sum)
 	}
 	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != 300 {
@@ -538,7 +538,7 @@ func TestAStalePreorderRowCorrectsNothing(t *testing.T) {
 	// A row captured after the release corrects it.
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich},
 		estRowCaptured(estUSASIN, "us", estReleasedLen, "2026-10-05"))
-	if sum.EstimatesReplaced != 1 {
+	if sum.RefreshedRuntimes != 1 {
 		t.Errorf("summary = %+v, want the released row to replace the estimate", sum)
 	}
 	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
@@ -688,7 +688,7 @@ func TestAnEnrichmentStatingNoRuntimeKeepsTheEstimate(t *testing.T) {
 	var conflicts bytes.Buffer
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
-	if sum.EstimatesReplaced != 1 || conflicts.Len() != 0 {
+	if sum.RefreshedRuntimes != 1 || conflicts.Len() != 0 {
 		t.Errorf("summary = %+v, conflicts %q; want the released runtime to replace the estimate", sum, conflicts.String())
 	}
 	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {
@@ -727,7 +727,7 @@ func TestAMergeStatingNoRuntimeEndsTheEstimate(t *testing.T) {
 	var conflicts bytes.Buffer
 	sum = runLibexWith(t, dataDir, Options{ImportDate: estRunDate, Mode: ModeEnrich, Conflicts: &conflicts},
 		estRow(estUSASIN, "us", estReleasedLen, "unabridged", ""))
-	if sum.RefreshedRecordings != 1 || sum.EstimatesReplaced != 1 || conflicts.Len() != 0 {
+	if sum.RefreshedRecordings != 1 || sum.RefreshedRuntimes != 1 || conflicts.Len() != 0 {
 		t.Errorf("summary = %+v, conflicts %q; want the own ASIN's released row to refresh the record", sum, conflicts.String())
 	}
 	if rec := readEstRecording(t, dataDir); rec.RuntimeMin != estReleasedLen {

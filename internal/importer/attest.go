@@ -188,7 +188,7 @@ func (p *planner) attest(a Attestation, asin string, opts Options) (Summary, err
 	// The submission's own entry, not setSource's: a run stamps the row's ASIN as
 	// its ref, where a hand submission's provenance is what the submitter cited.
 	p.curSource = a.Source
-	p.curStatesRuntime = b.runtimeMin > 0
+	p.curRefresh = false
 	p.attestExisting(b, asin)
 	if p.fatal != nil {
 		return p.result(), p.fatal
@@ -229,7 +229,24 @@ func (p *planner) attestOnMerge(b sourceBook, ref RecRef, warn func(string, ...a
 // records? Both halves must hold - a user-library run, and a record whose every
 // provenance entry is bulk-mirror tier.
 func (p *planner) overwrites(raw map[string]any) bool {
-	return p.userTier && model.BulkMirrorOnly(rawSources(raw))
+	return p.overwritesSources(rawSources(raw))
+}
+
+func (p *planner) overwritesSources(sources []model.Source) bool {
+	return p.userTier && model.BulkMirrorOnly(sources)
+}
+
+// recordingPosture is the per-record decision applyToRecording makes once,
+// before anything is applied: overwrite (the trust tier, above) or, failing
+// that, awaiting - a bulk-mirror ENRICHMENT row meeting a PREORDER-ERA
+// recording (refresh.go), which a released row of its own ASIN refreshes and
+// whose release date is estimate evidence. Both read one decode of sources[].
+func (p *planner) recordingPosture(raw map[string]any, scope applyScope) (overwrite, awaiting bool) {
+	sources := rawSources(raw)
+	overwrite = p.overwritesSources(sources)
+	awaiting = scope == scopeFill && !overwrite && p.mirrorTier &&
+		awaitingRefresh(coerceStr(raw["release_date"]), coerceStr(raw["added_at"]), sources)
+	return overwrite, awaiting
 }
 
 // rawSources reads a decoded record's sources[] array (type, ref and

@@ -73,6 +73,10 @@ type FillTarget struct {
 	Recording    string
 	NeedCover    bool
 	NeedChapters bool
+	// RefreshChapters asks for the chapters payload of a RELEASED listing even
+	// where the recording has a chapter list (SelectRefreshTargets): a release
+	// most often corrects the table a preorder listing carried.
+	RefreshChapters bool
 }
 
 // SelectFillTargets returns the recordings that carry an ASIN but lack a cover,
@@ -81,25 +85,31 @@ type FillTarget struct {
 // Sorted by ASIN so a run's fetch order - and therefore its output, its rate
 // limiting and its --limit truncation - does not depend on map iteration.
 func SelectFillTargets(cat *model.Catalog) []FillTarget {
+	return selectTargets(cat, func(r *model.Recording) (FillTarget, bool) {
+		t := FillTarget{NeedCover: r.CoverURL == "", NeedChapters: len(r.Chapters) == 0}
+		return t, t.NeedCover || t.NeedChapters
+	})
+}
+
+// selectTargets is the selection walker both selections share: every recording
+// want keeps, named by its first non-empty ASIN (one is enough to identify the
+// recording; a regional sibling would fetch the same production twice), sorted
+// by ASIN so a run's fetch order - and therefore its output, its rate limiting
+// and its --limit truncation - does not depend on map iteration.
+func selectTargets(cat *model.Catalog, want func(*model.Recording) (FillTarget, bool)) []FillTarget {
 	var out []FillTarget
 	for _, w := range cat.Works {
 		for _, r := range w.Recordings {
-			needCover := r.CoverURL == ""
-			needChapters := len(r.Chapters) == 0
-			if !needCover && !needChapters {
+			t, ok := want(r)
+			if !ok {
 				continue
 			}
 			for _, a := range r.ASIN {
-				if a.ASIN == "" {
-					continue
+				if a.ASIN != "" {
+					t.ASIN, t.Work, t.Recording = a.ASIN, w.ID, r.ID
+					out = append(out, t)
+					break
 				}
-				out = append(out, FillTarget{
-					ASIN: a.ASIN, Work: w.ID, Recording: r.ID,
-					NeedCover: needCover, NeedChapters: needChapters,
-				})
-				// One ASIN is enough to identify the recording; a regional
-				// sibling would fetch the same production twice.
-				break
 			}
 		}
 	}
@@ -408,7 +418,7 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 			continue
 		}
 		row := libexFillRow(rec)
-		if t.NeedChapters && chapterListOf(rec) == nil {
+		if (t.NeedChapters || t.RefreshChapters && libexRecordReleased(rec)) && chapterListOf(rec) == nil {
 			if err := pace(); err != nil {
 				return rep, err
 			}
@@ -420,6 +430,21 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 		rep.Fetched++
 	}
 	return rep, nil
+}
+
+// libexRecordReleased reports whether a fetched record is a RELEASED listing by
+// the rule the refresh reads (planner.rowReleased): its release date on or
+// before the day libex last wrote it (today where it does not say), and its
+// productState AVAILABLE where stated.
+func libexRecordReleased(rec map[string]any) bool {
+	str := func(k string) string { s, _ := rec[k].(string); return s }
+	day := time.Now().UTC().Format("2006-01-02")
+	if t := model.TimeKey(str("updatedAt")); len(t) >= 10 && datePattern.MatchString(t[:10]) {
+		day = t[:10]
+	}
+	rd := isoDatePart(str("releaseDate"))
+	state := str("productState")
+	return datePattern.MatchString(rd) && !releasedAfter(rd, day) && (state == "" || state == releasedProductState)
 }
 
 // fillChapters fetches the chapters payload for one target and attaches it to

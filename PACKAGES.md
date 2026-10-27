@@ -1407,25 +1407,33 @@ before its release date, and no source ref RESTATED on or after it (deliberately
 not `runtimeEstimated`: a regional ASIN merged after the release stamps a new ref
 that ends the runtime's estimate status but refreshed nothing - 797 of the 1,302
 such recordings on 2026-10-27) - met on `--enrich` by a row with a full release
-date on or before its capture day (`rowReleased`) and, where the row carries one,
-libex `productState` `AVAILABLE`, takes the row's runtime, https cover, chapter
-list and release date, with no contradiction guard and no estimate bound:
-the runtime must clear a sanity floor (a fifth of the recorded estimate; measured
+date on or before its capture day and, where the row carries one, libex
+`productState` `AVAILABLE` (`rowReleased`, the one definition of released the
+merge reads too) is the OVERWRITE posture for runtime, https cover, chapter list
+and release date (`recordingPosture` beside `overwrites`; the existing fill
+block writes them), with no contradiction guard and no estimate bound: the
+runtime must clear a sanity floor (a fifth of the recorded estimate; measured
 corrections run 0.247x-2.52x) and agree within 10% with the row's chapter list,
-else with the recorded one (`judgeReleasedRuntime`, shared with the merge). A
-row failing any of that is ordinary enrichment. Narrators, abridged, publisher,
-`asin[]`, ISBNs and the work stay as enrichment leaves them. The refresh always
-writes and APPENDS its stamp past the source deduplication (`stampRestatement`):
-the restatement ends the preorder era even when the row confirms every value, so
-a re-run is a no-op and a later row ordinary fill-absent. An UNRELEASED row of an
-own ASIN listing a different full date MOVES a preorder-era record's release date
-and nothing else (`movedPreorderDate`, `Summary.MovedPreorderDates`; the guard's
-date half reads the moved date, its runtime half still refuses), dated before the
-new release so the record stays preorder-era. Counted as `Summary.Refreshed{Recordings,Runtimes,Covers,Chapters,ReleaseDates}`.
+else with the recorded one (`judgeOwnASINRuntime`; the merge's twin is
+`judgeMergedRuntime`). A row failing any of that is ordinary enrichment.
+Narrators, abridged, publisher, `asin[]`, ISBNs and the work stay as enrichment
+leaves them. The refresh always writes, and its stamp is the ONE that passes the
+source deduplication (`stampSource` via `restates`): the restatement ends the
+preorder era even when the row confirms every value, so a re-run is a no-op and
+a later row ordinary fill-absent; an ordinary enrichment cannot end it. A
+preorder-era record's release date is estimate evidence: the guard's date half
+does not read it, and a full date ANY own-ASIN row states replaces it (in a
+non-refresh, `Summary.MovedPreorderDates` - a postponement - with the record
+still preorder-era; a coarser date keeps the extend-only rule). Counted as
+`Summary.Refreshed{Recordings,Runtimes,Covers,Chapters,ReleaseDates}` from a
+before/after compare (a refreshed runtime is not also `EstimatesReplaced`, which
+is the merge's).
 `metaimport libex-fill --released-preorders [--date D] [--dry-run]` runs it over
 the catalogue: `SelectRefreshTargets` (the preorder-era recordings released by
-D, first ASIN each), the mirror record (`/db/book/{asin}`, live fallback) and
-its chapters payload (`acceptChapters`), then the enrichment; the fetched row
+D, first ASIN each, through `SelectFillTargets`' walker), the mirror record
+(`/db/book/{asin}`, live fallback) and its chapters payload (`acceptChapters`;
+asked when the recording has none or the fetched listing is released,
+`FillTarget.RefreshChapters`), then the enrichment; the fetched row
 now keeps libex's `updatedAt` and `productState` (`libexFillRowKeys`). Measured
 2026-10-27: see refresh.go's header. A
 merged regional row stating NO runtime still ends the estimate (for the guards;

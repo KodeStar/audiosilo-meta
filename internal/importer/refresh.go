@@ -1,10 +1,8 @@
 package importer
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
-	"sort"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -47,42 +45,43 @@ import (
 // WHICH row: a bulk-mirror run's ENRICHMENT row (scopeFill) matched by ASIN, so
 // it is about one of the recording's own ASINs by construction - the same
 // product, which is why no estimate bound reads its runtime as identity. It must
-// be RELEASED: a full release date on or before the day it was captured
-// (rowReleased; a year-only date says too little), and its productState, where the row carries one, AVAILABLE -
-// a libex record still AVAILABLE_FOR_PREORDER past its date has not been
-// corrected yet. And it must state a CREDIBLE runtime (judgeReleasedRuntime with
-// sameASIN): over the sanity floor, and agreeing within 10% with the row's own
-// chapter list, else with the recorded one, where either exists. A row failing
-// any of that is no refresh: it goes down the ordinary path, contradiction guard
-// included, exactly as before this rule, and the record stays preorder-era for a
-// later row.
+// be RELEASED (rowReleased: its date on or before the day it was captured, and
+// libex productState AVAILABLE where stated) with a FULL release date (a
+// year-only one says too little), and state a CREDIBLE runtime
+// (judgeOwnASINRuntime): over the sanity floor, and agreeing within 10% with the
+// row's own chapter list, else with the recorded one, where either exists. A row
+// failing any of that is no refresh: it goes down the ordinary path, the
+// runtime half of the contradiction guard included, and the record stays
+// preorder-era for a later row.
 //
-// WHAT it replaces: runtime_min (the stated one), cover_url (the row's https
-// cover), chapters (the row's list, which the judgement has just found to agree
-// with the stated runtime - and libex-fill attaches only a payload passing
-// acceptChapters) and release_date (the row's full date: a moved preorder date
-// is not a contradiction for such a record). Narrators, abridged, publisher,
-// asin[], isbn[] and the work stay as enrichment leaves them: publisher and
-// ISBNs fill-absent, the rest untouched.
+// WHAT it replaces: the refresh is the OVERWRITE posture for four fields -
+// runtime_min, cover_url (an https one), chapters (a list that builds; the
+// judgement has found it agrees with the runtime, and libex-fill attaches only a
+// payload passing acceptChapters) and release_date - written by enrichment's
+// own fill block (applyToRecording), with the contradiction guard skipped.
+// Narrators, abridged, publisher, asin[], isbn[] and the work stay as
+// enrichment leaves them: publisher and ISBNs fill-absent, the rest untouched.
 //
 // HOW it ends: the refresh always writes, even when the row confirms every
-// value, and its stamp is always APPENDED, past the source deduplication - it is
-// the RESTATEMENT, the row's ASIN dated the run's day, on or after the release.
-// Where that ref was not yet recorded (a merged regional ASIN refreshing the
-// record) it is recorded twice from then on, which is the marker. A later row is
-// therefore ordinary enrichment again (fill-absent, fully guarded), and neither
-// a re-run nor libex-fill --released-preorders selects the record a second time.
+// value, and its stamp is always APPENDED, past the source deduplication
+// (restates) - the RESTATEMENT, the row's ASIN dated the run's day, on or after
+// the release. Where that ref was not yet recorded (a merged regional ASIN
+// refreshing the record) it is recorded twice from then on, which is the
+// marker. A later row is therefore ordinary enrichment again (fill-absent, fully
+// guarded), and neither a re-run nor libex-fill --released-preorders selects the
+// record a second time. Only a refresh's stamp restates: an ordinary enrichment
+// of a preorder-era record is deduplicated, so a row that refreshed nothing
+// cannot end the era.
 //
-// A MOVED PREORDER DATE is the one thing an UNRELEASED row of the recording's
-// own ASIN changes (movedPreorderDate): a full release date, still after the
-// day the row was captured, differing from the recorded one, on a preorder-era
-// record. It replaces release_date and nothing else, and the row's date half of
-// the contradiction guard reads the moved date (the runtime half still decides).
-// The row is a preorder row, so its stamp is dated before the new release
-// (statementDay) and the record stays preorder-era - and its runtime an estimate
-// - for the released row that follows. Measured in the same dry run: 11 of the
-// first 200 released-by-date recordings had been POSTPONED, libex listing a
-// later date the catalogue never took, so they showed as released.
+// A preorder-era record's RELEASE DATE is estimate evidence, as its runtime is:
+// the contradiction guard does not read it, and a FULL date any own-ASIN row
+// states replaces it - a released row's in the refresh, any other's as a MOVED
+// PREORDER DATE (Summary.MovedPreorderDates; nothing else changes, and its stamp
+// is deduplicated, so the record stays preorder-era for the released row that
+// follows). A coarser date keeps the extend-only rule (fillReleaseDate).
+// Measured in the dry run: 11 of the first 200 released-by-date recordings had
+// been POSTPONED, libex listing a later date the catalogue never took, so they
+// showed as released and every such row was refused as a contradiction.
 
 // refreshFloorDivisor is the SANITY FLOOR of a refresh: a released runtime under
 // a fifth of the recorded estimate is a broken value, not a correction, whatever
@@ -98,59 +97,54 @@ import (
 // refuses a stated value the timeline does not carry.
 const refreshFloorDivisor = 5
 
-// releasedProductState is libex's productState for a product on sale.
-const releasedProductState = "AVAILABLE"
-
 // refreshRuntimeCredible is the sanity floor: recorded is the recording's
 // runtime (0 when it records none, which no floor reads).
 func refreshRuntimeCredible(recorded, stated int) bool {
 	return stated > 0 && (recorded <= 0 || stated*refreshFloorDivisor >= recorded)
 }
 
-// refreshCandidate reports whether row b may refresh raw before its runtime is
-// judged: a bulk-mirror enrichment row stating a runtime, released, about a
-// preorder-era record.
-func (p *planner) refreshCandidate(raw map[string]any, b sourceBook) bool {
-	if !p.mirrorTier || b.runtimeMin <= 0 || len(b.str("release_date")) != len(fullDate) || !p.rowReleased(b) {
-		return false
-	}
-	if b.productState != "" && b.productState != releasedProductState {
-		return false
-	}
-	return rawAwaitingRefresh(raw)
+// isFullDate reports whether s is a full YYYY-MM-DD date.
+func isFullDate(s string) bool {
+	return len(s) == len("2006-01-02") && datePattern.MatchString(s)
 }
-
-// fullDate is a full release date's layout (its length is what is read).
-const fullDate = "2006-01-02"
 
 // awaitingRefresh is THE preorder-era test (see the header): bulk-mirror-only,
 // first stated before its release date, and not yet restated on or after it.
 func awaitingRefresh(release, addedAt string, sources []model.Source) bool {
-	if release == "" || !model.BulkMirrorOnly(sources) {
+	if release == "" || len(release) > len("2006-01-02") || !datePattern.MatchString(release) || !model.BulkMirrorOnly(sources) {
 		return false
 	}
-	first := ""
-	stated := map[model.Source]int{} // type + ref -> entries
-	restated := map[model.Source]bool{}
+	// before reports whether a statement's day precedes the release at the
+	// release's own precision (releasedAfter, the release validated above).
+	before := func(stated string) bool {
+		day := stated
+		if len(day) > len(release) {
+			day = model.TimeKey(day)[:len(release)]
+		}
+		return stated != "" && release > day
+	}
+	first, firstKey := addedAt, ""
 	for _, s := range sources {
-		if s.ImportedAt != "" && (first == "" || model.TimeKey(s.ImportedAt) < model.TimeKey(first)) {
-			first = s.ImportedAt
+		if s.ImportedAt == "" {
+			continue
 		}
-		key := model.Source{Type: s.Type, Ref: s.Ref}
-		stated[key]++
-		if s.ImportedAt != "" && !releasedAfter(release, s.ImportedAt) {
-			restated[key] = true
+		if k := model.TimeKey(s.ImportedAt); firstKey == "" || k < firstKey {
+			first, firstKey = s.ImportedAt, k
 		}
 	}
-	if first == "" {
-		first = addedAt
-	}
-	if !releasedAfter(release, first) {
+	if !before(first) {
 		return false
 	}
-	for key := range restated {
-		if stated[key] > 1 {
-			return false
+	// A restatement: a type + ref recorded twice, one of the two on or after the
+	// release. Sources are a handful, so a pairwise scan.
+	for i, s := range sources {
+		if s.ImportedAt == "" || before(s.ImportedAt) {
+			continue
+		}
+		for j, o := range sources {
+			if j != i && o.Type == s.Type && o.Ref == s.Ref {
+				return false
+			}
 		}
 	}
 	return true
@@ -161,147 +155,136 @@ func rawAwaitingRefresh(raw map[string]any) bool {
 	return awaitingRefresh(coerceStr(raw["release_date"]), coerceStr(raw["added_at"]), rawSources(raw))
 }
 
-// movedPreorderDate returns the full release date an UNRELEASED row of the
-// recording's own ASIN moves a preorder-era record to, or "" (see the header).
-func (p *planner) movedPreorderDate(raw map[string]any, b sourceBook) string {
-	rd := b.str("release_date")
-	if !p.mirrorTier || len(rd) != len(fullDate) || !datePattern.MatchString(rd) ||
-		!releasedAfter(rd, p.rowDay(b)) || rd == coerceStr(raw["release_date"]) || !rawAwaitingRefresh(raw) {
-		return ""
+// restates reports whether this run's stamp on raw is a refresh's RESTATEMENT,
+// which stampSource writes past the source deduplication: the row refreshed the
+// recording (curRefresh) and raw is that preorder-era recording - a work or a
+// series stamped by the same row carries no release date and is never one.
+func (p *planner) restates(raw map[string]any) bool {
+	return p.curRefresh && rawAwaitingRefresh(raw)
+}
+
+// judgeRefresh decides whether row b refreshes the preorder-era recording raw:
+// a released row with a full date, stating a credible runtime. withheld (with
+// the evidence that refuted the runtime) is a released candidate whose runtime
+// the judgement refused - the caller notes it as a kept estimate once the
+// ordinary path has let the row through.
+func (p *planner) judgeRefresh(raw map[string]any, b sourceBook) (refresh, withheld bool, against runtimeEvidence) {
+	if b.runtimeMin <= 0 || !isFullDate(b.str("release_date")) || !p.rowReleased(b) {
+		return false, false, runtimeEvidence{}
 	}
-	return rd
+	ok, against := judgeOwnASINRuntime(raw, b)
+	return ok, !ok, against
 }
 
-// stampRestatement appends the refresh's stamp past the source deduplication:
-// it is the restatement awaitingRefresh reads as "refreshed".
-func (p *planner) stampRestatement(raw map[string]any) {
-	srcArr, _ := raw["sources"].([]any)
-	raw["sources"] = append(srcArr, sourceMap(p.curSource))
-}
-
-// refreshRecording is the refresh of one record by one row, or nothing: it
-// reports whether the row refreshed raw (and the caller then skips the
-// contradiction guard - a moved date and a corrected runtime are what the
-// refresh is for - and writes the record whatever changed). A candidate whose
-// runtime the judgement withholds is left to the ordinary path, with withheld
-// set to the note that reports it as a kept estimate, for the caller to call if
-// that path does not refuse the row.
-func (p *planner) refreshRecording(raw map[string]any, ref RecRef, b sourceBook) (refreshed bool, withheld func()) {
-	if !p.refreshCandidate(raw, b) {
-		return false, nil
+// judgeOwnASINRuntime is judgeMergedRuntime's twin for the recording's OWN
+// ASIN, the same product, so no estimate bound reads the stated runtime as
+// identity: it stands unless it is broken (refreshRuntimeCredible) or a chapter
+// TIMELINE refutes it - the row's own list, else the recorded one, within 10%.
+// The recorded runtime itself is never the evidence: one a merge already
+// corrected is still not what the released listing is judged against.
+func judgeOwnASINRuntime(raw map[string]any, b sourceBook) (ok bool, against runtimeEvidence) {
+	stated := b.runtimeMin
+	if rowChapters := rowChapterEvidence(b); len(rowChapters) > 0 {
+		against = runtimeEvidence{min: chapterMinutes(rowChapters)}
+	} else {
+		tl, has := rawChapterMinutes(raw["chapters"])
+		against = runtimeEvidence{min: tl, estimate: !has}
 	}
 	recorded, _ := coerceInt(raw["runtime_min"])
-	rowChapters, against, ok := judgeReleasedRuntime(raw, b, true)
-	if !ok {
-		return false, func() { p.noteKeptEstimate(ref, int(recorded), b.runtimeMin, against) }
+	if !refreshRuntimeCredible(int(recorded), stated) {
+		return false, against
 	}
-	var fields []string
-	if int(recorded) != b.runtimeMin {
-		if recorded > 0 {
-			p.replaceEstimate(raw, ref, int(recorded), b.runtimeMin)
-		} else {
-			setDecoded(raw, "runtime_min", b.runtimeMin)
+	return against.estimate || runtimesCompatible(against.min, stated), against
+}
+
+// refreshFields is a preorder-era recording's four refreshable fields as JSON,
+// read before and after the fill block so the counters say what really changed.
+type refreshFields struct{ runtime, cover, chapters, release string }
+
+func readRefreshFields(raw map[string]any) refreshFields {
+	return refreshFields{jsonOf(raw["runtime_min"]), coerceStr(raw["cover_url"]), jsonOf(raw["chapters"]), coerceStr(raw["release_date"])}
+}
+
+// jsonOf is a decoded value's JSON - comparable whether it was decoded with
+// UseNumber (a pack) or holds setDecoded's float64s.
+func jsonOf(v any) string {
+	out, _ := json.Marshal(v)
+	return string(out)
+}
+
+// countRefresh counts what a refresh, or a moved preorder date, changed on the
+// recording ref, from its fields before the fill block and raw after it.
+func (p *planner) countRefresh(ref RecRef, before refreshFields, raw map[string]any, refreshed bool) {
+	after := readRefreshFields(raw)
+	if !refreshed {
+		if after.release != before.release {
+			p.summary.MovedPreorderDates++
+			if len(p.refreshed.movedExamples) < maxWarnExamples {
+				p.refreshed.movedExamples = append(p.refreshed.movedExamples,
+					fmt.Sprintf("%s/%s %s -> %s", ref.Work, ref.Rec, before.release, after.release))
+			}
 		}
-		p.refreshed.runtimes++
-		fields = append(fields, "runtime")
+		return
 	}
-	if img := b.str("image_url"); strings.HasPrefix(img, "https://") && coerceStr(raw["cover_url"]) != img {
-		raw["cover_url"] = img
-		p.refreshed.covers++
-		fields = append(fields, "cover")
+	p.summary.RefreshedRecordings++
+	var fields []string
+	for _, f := range []struct {
+		name    string
+		n       *int
+		changed bool
+	}{
+		{"runtime", &p.summary.RefreshedRuntimes, after.runtime != before.runtime},
+		{"cover", &p.summary.RefreshedCovers, after.cover != before.cover},
+		{"chapters", &p.summary.RefreshedChapters, after.chapters != before.chapters},
+		{"release date", &p.summary.RefreshedReleaseDates, after.release != before.release},
+	} {
+		if f.changed {
+			*f.n++
+			fields = append(fields, f.name)
+		}
 	}
-	if len(rowChapters) > 0 && !sameDecoded(raw["chapters"], decodedForm("chapters", rowChapters)) {
-		setDecoded(raw, "chapters", rowChapters)
-		p.refreshed.chapters++
-		fields = append(fields, "chapters")
-	}
-	// The refresh row states a FULL date (refreshCandidate).
-	if rd := b.str("release_date"); coerceStr(raw["release_date"]) != rd {
-		raw["release_date"] = rd
-		p.refreshed.releaseDates++
-		fields = append(fields, "release date")
-	}
-	p.refreshed.recordings++
 	if len(fields) > 0 && len(p.refreshed.examples) < maxWarnExamples {
 		p.refreshed.examples = append(p.refreshed.examples,
 			fmt.Sprintf("%s/%s %s", ref.Work, ref.Rec, strings.Join(fields, ", ")))
 	}
-	return true, nil
 }
 
-// sameDecoded reports whether two decoded JSON values say the same thing. They
-// are compared as their JSON (a map's keys sorted), because a pack is decoded
-// with UseNumber while setDecoded's form holds float64s.
-func sameDecoded(a, b any) bool {
-	ja, errA := json.Marshal(a)
-	jb, errB := json.Marshal(b)
-	return errA == nil && errB == nil && bytes.Equal(ja, jb)
-}
-
-// moveReleaseDate writes a moved preorder date and counts it.
-func (p *planner) moveReleaseDate(raw map[string]any, ref RecRef, moved string) {
-	if len(p.refreshed.movedExamples) < maxWarnExamples {
-		p.refreshed.movedExamples = append(p.refreshed.movedExamples,
-			fmt.Sprintf("%s/%s %s -> %s", ref.Work, ref.Rec, coerceStr(raw["release_date"]), moved))
-	}
-	raw["release_date"] = moved
-	p.refreshed.movedDates++
-}
-
-// reportRefreshes appends the run's one aggregated note about the refresh.
+// reportRefreshes appends the run's aggregated notes about the refresh and the
+// moved preorder dates.
 func (p *planner) reportRefreshes() {
-	r := p.refreshed
-	p.summary.RefreshedRecordings = r.recordings
-	p.summary.RefreshedRuntimes = r.runtimes
-	p.summary.RefreshedCovers = r.covers
-	p.summary.RefreshedChapters = r.chapters
-	p.summary.RefreshedReleaseDates = r.releaseDates
-	p.summary.MovedPreorderDates = r.movedDates
-	if r.movedDates > 0 {
-		p.summary.Notes = append(p.summary.Notes, withExamples(fmt.Sprintf(
-			"moved %d preorder release %s to the date an unreleased row of %s own ASIN states",
-			r.movedDates, plural(r.movedDates, "date"), pick(r.movedDates, "its", "their")), r.movedExamples))
+	s := &p.summary
+	if n := s.MovedPreorderDates; n > 0 {
+		owner := "their"
+		if n == 1 {
+			owner = "its"
+		}
+		s.Notes = append(s.Notes, withExamples(fmt.Sprintf(
+			"moved %d preorder release %s to the date a row of %s own ASIN states",
+			n, plural(n, "date"), owner), p.refreshed.movedExamples))
 	}
-	if r.recordings == 0 {
-		return
+	if n := s.RefreshedRecordings; n > 0 {
+		owner := "their"
+		if n == 1 {
+			owner = "its"
+		}
+		s.Notes = append(s.Notes, withExamples(fmt.Sprintf(
+			"refreshed %d released preorder %s from a row of %s own ASIN: %d %s, %d %s, %d %s, %d %s replaced",
+			n, plural(n, "recording"), owner,
+			s.RefreshedRuntimes, plural(s.RefreshedRuntimes, "runtime"), s.RefreshedCovers, plural(s.RefreshedCovers, "cover"),
+			s.RefreshedChapters, plural(s.RefreshedChapters, "chapter list"), s.RefreshedReleaseDates, plural(s.RefreshedReleaseDates, "release date")),
+			p.refreshed.examples))
 	}
-	p.summary.Notes = append(p.summary.Notes, withExamples(fmt.Sprintf(
-		"refreshed %d released preorder %s from a row of %s own ASIN: %d %s, %d %s, %d %s, %d %s replaced",
-		r.recordings, plural(r.recordings, "recording"), pick(r.recordings, "its", "their"),
-		r.runtimes, plural(r.runtimes, "runtime"), r.covers, plural(r.covers, "cover"),
-		r.chapters, plural(r.chapters, "chapter list"), r.releaseDates, plural(r.releaseDates, "release date")),
-		r.examples))
-}
-
-// pick is one or many by n.
-func pick(n int, one, many string) string {
-	if n == 1 {
-		return one
-	}
-	return many
 }
 
 // SelectRefreshTargets returns the PREORDER-ERA recordings (awaitingRefresh)
 // whose release date has passed by day (YYYY-MM-DD, at the release date's own
-// precision): the recordings a released row would refresh. Each is named by its
-// first ASIN - one released row ends the state - and asks for its chapter list,
-// since a preorder listing's table is what a release most often corrects or
-// first supplies. Sorted by ASIN, as SelectFillTargets is, so --limit truncates
-// deterministically.
+// precision): the recordings a released row would refresh, named by their first
+// ASIN - one released row ends the state. Each asks for its chapter list when
+// it has none, and for a released listing's in any case (RefreshChapters),
+// since a release most often corrects or first supplies the table.
 func SelectRefreshTargets(cat *model.Catalog, day string) []FillTarget {
-	var out []FillTarget
-	for _, w := range cat.Works {
-		for _, r := range w.Recordings {
-			if len(r.ASIN) == 0 || r.ASIN[0].ASIN == "" || releasedAfter(r.ReleaseDate, day) ||
-				!awaitingRefresh(r.ReleaseDate, r.AddedAt, r.Sources) {
-				continue
-			}
-			out = append(out, FillTarget{
-				ASIN: r.ASIN[0].ASIN, Work: w.ID, Recording: r.ID,
-				NeedCover: r.CoverURL == "", NeedChapters: true,
-			})
-		}
-	}
-	sort.Slice(out, func(i, j int) bool { return out[i].ASIN < out[j].ASIN })
-	return out
+	return selectTargets(cat, func(r *model.Recording) (FillTarget, bool) {
+		ok := !releasedAfter(r.ReleaseDate, day) && awaitingRefresh(r.ReleaseDate, r.AddedAt, r.Sources)
+		return FillTarget{NeedCover: r.CoverURL == "", NeedChapters: len(r.Chapters) == 0, RefreshChapters: true}, ok
+	})
 }

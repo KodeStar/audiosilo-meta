@@ -22,7 +22,7 @@ const (
 	refreshCaptured = "2026-10-05T10:00:00.123456+00:00"
 )
 
-// refreshRecording seeds the preorder-era recording with its placeholder cover;
+// refreshSeed seeds the preorder-era recording with its placeholder cover;
 // chapters is a recorded chapter list ("" for none), sources its provenance.
 func refreshSeed(t *testing.T, sources, chapters string) string {
 	t.Helper()
@@ -86,7 +86,7 @@ func TestARefreshReplacesTheReleasedFacts(t *testing.T) {
 	sum := refreshEnrich(t, dataDir, &conflicts, row)
 
 	if sum.RefreshedRecordings != 1 || sum.RefreshedRuntimes != 1 || sum.RefreshedCovers != 1 ||
-		sum.RefreshedChapters != 1 || sum.RefreshedReleaseDates != 1 || sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 1 {
+		sum.RefreshedChapters != 1 || sum.RefreshedReleaseDates != 1 || sum.EnrichedRecordings != 1 || sum.EstimatesReplaced != 0 {
 		t.Fatalf("summary = %+v, want one refresh replacing all four fields", sum)
 	}
 	if conflicts.Len() != 0 || hasWarning(sum.Warnings, "conflicts with the recorded") {
@@ -405,23 +405,44 @@ func TestAnUnreleasedRowMovesAPreorderDate(t *testing.T) {
 	}
 }
 
+// A row released by its date but still listed for preorder is no refresh, yet
+// its full date is the own ASIN's and moves the preorder-era record's.
+func TestAPreorderListingPastItsDateMovesTheDateOnly(t *testing.T) {
+	dataDir := refreshSeed(t, estMirrorSource("2026-08-02"), "")
+	var conflicts bytes.Buffer
+	sum := refreshEnrich(t, dataDir, &conflicts, refreshRow(t, map[string]any{
+		"releaseDate": "2026-09-15T00:00:00+00:00", "productState": "AVAILABLE_FOR_PREORDER", "chapters": nil}))
+	if sum.MovedPreorderDates != 1 || sum.RefreshedRecordings != 0 || conflicts.Len() != 0 {
+		t.Fatalf("summary = %+v, conflicts %q; want the date moved and no refresh", sum, conflicts.String())
+	}
+	rec := readEstRecording(t, dataDir)
+	if rec.ReleaseDate != "2026-09-15" || rec.RuntimeMin != estEstimate || rec.CoverURL != refreshOldCover {
+		t.Errorf("recording = released %s, runtime %d, cover %s; want only the date moved", rec.ReleaseDate, rec.RuntimeMin, rec.CoverURL)
+	}
+	if _, raw := readRecordingRaw(t, dataDir); !rawAwaitingRefresh(raw) {
+		t.Errorf("a row that refreshed nothing ended the preorder era: %v", raw["sources"])
+	}
+}
+
 func TestAMovedPreorderDateNeedsAPreorderEraRecordAndAFullDate(t *testing.T) {
 	attested := `[{"imported_at":"2026-08-02","ref":"B0EST00001","type":"libex-import"},{"imported_at":"2026-08-05","ref":"library.json","type":"user"}]`
 	for _, tc := range []struct {
 		name, sources, release string
 		minutes                int
+		conflict               bool
 	}{
-		{"a user-attested record keeps its date and refuses the row", attested, "2026-11-20T00:00:00+00:00", estEstimate},
-		{"a coarser date keeps the extend-only rule", estMirrorSource("2026-08-02"), "2026-11", estEstimate},
-		{"the runtime half of the guard still refuses the row", estMirrorSource("2026-08-02"), "2026-11-20T00:00:00+00:00", 2000},
+		{"a user-attested record keeps its date and refuses the row", attested, "2026-11-20T00:00:00+00:00", estEstimate, true},
+		// The date is estimate evidence, so no contradiction - and no full date to take.
+		{"a coarser date keeps the extend-only rule", estMirrorSource("2026-08-02"), "2026-11", estEstimate, false},
+		{"the runtime half of the guard still refuses the row", estMirrorSource("2026-08-02"), "2026-11-20T00:00:00+00:00", 2000, true},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			dataDir := refreshSeed(t, tc.sources, "")
 			var conflicts bytes.Buffer
 			sum := refreshEnrich(t, dataDir, &conflicts, refreshRow(t, map[string]any{
 				"releaseDate": tc.release, "lengthMinutes": tc.minutes, "chapters": nil}))
-			if sum.MovedPreorderDates != 0 || conflicts.Len() == 0 {
-				t.Errorf("summary = %+v, conflicts %q; want the row refused and no date moved", sum, conflicts.String())
+			if sum.MovedPreorderDates != 0 || (conflicts.Len() > 0) != tc.conflict {
+				t.Errorf("summary = %+v, conflicts %q; want no date moved, conflict %v", sum, conflicts.String(), tc.conflict)
 			}
 			if rec := readEstRecording(t, dataDir); rec.ReleaseDate != estRelease {
 				t.Errorf("release date = %s, want the recorded %s", rec.ReleaseDate, estRelease)

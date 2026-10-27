@@ -568,18 +568,6 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	if s.GenreWorks > 0 {
 		fmt.Printf("  added genres to %d already-attested works\n", s.GenreWorks)
 	}
-	// Printed only when a released row refreshed a preorder-era recording
-	// (internal/importer/refresh.go), on a line of its own so the enrichment
-	// line keeps its shape. The refreshed recordings are inside its count.
-	if s.RefreshedRecordings > 0 {
-		fmt.Printf("  refreshed %d released preorder %s: %d runtimes, %d covers, %d chapter lists, %d release dates replaced\n",
-			s.RefreshedRecordings, plural(s.RefreshedRecordings, "recording", "recordings"),
-			s.RefreshedRuntimes, s.RefreshedCovers, s.RefreshedChapters, s.RefreshedReleaseDates)
-	}
-	if s.MovedPreorderDates > 0 {
-		fmt.Printf("  moved %d preorder release %s to the date libex now lists\n",
-			s.MovedPreorderDates, plural(s.MovedPreorderDates, "date", "dates"))
-	}
 	// Printed only when a run refused one (--attach-editions), and on a
 	// line of its own: the create summary line's shape is parsed by the sync bot.
 	if s.SkippedOccupied > 0 {
@@ -714,9 +702,9 @@ func runLibexFill(args []string) int {
 		usage()
 		return 2
 	}
-	day := *date
-	if day == "" {
-		day = time.Now().UTC().Format("2006-01-02")
+	day, ok := runDate(*date)
+	if !ok {
+		return 2
 	}
 
 	cat, err := importer.LoadCatalogForFill(*dataDir)

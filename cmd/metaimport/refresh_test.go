@@ -8,7 +8,6 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
 
@@ -56,7 +55,7 @@ func TestLibexFillReleasedPreordersDryRun(t *testing.T) {
 	for _, want := range []string{
 		"1 released preorder-era recording to refresh",
 		"chapters: 1 attached",
-		"refreshed 1 released preorder recording: 1 runtimes, 1 covers, 1 chapter lists, 0 release dates replaced",
+		"refreshed 1 released preorder recording from a row of its own ASIN: 1 runtime, 1 cover, 1 chapter list, 0 release dates replaced",
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("output missing %q:\n%s", want, out)
@@ -78,22 +77,5 @@ func TestLibexFillReleasedPreordersDryRun(t *testing.T) {
 	})
 	if !strings.Contains(out, "nothing to refresh") {
 		t.Errorf("output = %q, want nothing to refresh before the release", out)
-	}
-}
-
-func TestPrintSummaryRefreshLine(t *testing.T) {
-	out := captureStdout(t, func() {
-		printSummary(importer.Summary{EnrichedRecordings: 3, RefreshedRecordings: 3, RefreshedRuntimes: 2,
-			RefreshedCovers: 1, RefreshedChapters: 3, RefreshedReleaseDates: 0, MovedPreorderDates: 2}, true, importer.ModeEnrich)
-	})
-	if !strings.Contains(out, "refreshed 3 released preorder recordings: 2 runtimes, 1 covers, 3 chapter lists, 0 release dates replaced") {
-		t.Errorf("summary missing the refresh line: %q", out)
-	}
-	if !strings.Contains(out, "moved 2 preorder release dates to the date libex now lists") {
-		t.Errorf("summary missing the moved-date line: %q", out)
-	}
-	out = captureStdout(t, func() { printSummary(importer.Summary{EnrichedRecordings: 1}, false, importer.ModeEnrich) })
-	if strings.Contains(out, "refreshed") || strings.Contains(out, "moved") {
-		t.Errorf("a run that refreshed nothing printed a refresh line: %q", out)
 	}
 }

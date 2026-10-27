@@ -459,3 +459,27 @@ func TestUserLibraryOnlyBoundsTheAutomaticPass(t *testing.T) {
 		t.Errorf("unbounded select = %d, want both", n)
 	}
 }
+
+// A refresh target asks for a released listing's chapters even where the
+// recording has a list, and not for a listing still on preorder.
+func TestFetchRowsRefreshesChaptersOnlyForAReleasedListing(t *testing.T) {
+	released := strings.Replace(liveRecord, `"releaseDate":"2020-01-01T00:00:00+00:00"`, `"releaseDate":"2026-10-01T00:00:00+00:00"`, 1)
+	preorder := strings.Replace(released, `"productState":"AVAILABLE"`, `"productState":"AVAILABLE_FOR_PREORDER"`, 1)
+	future := strings.Replace(released, `"releaseDate":"2026-10-01T00:00:00+00:00"`, `"releaseDate":"2026-11-01T00:00:00+00:00"`, 1)
+	for _, tc := range []struct {
+		name, record string
+		want         bool
+	}{
+		{"released", released, true},
+		{"still for preorder", preorder, false},
+		{"released after libex last wrote it", future, false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			f := &libexFill{records: map[string]string{"B0LIVE": tc.record}, chapters: map[string]string{"B0LIVE": chapterPayload(300, true)}}
+			_, rep := fetchOneRow(t, libexFillServer(t, f), FillTarget{ASIN: "B0LIVE", RefreshChapters: true})
+			if got := f.saw("/db/book/B0LIVE/chapters"); got != tc.want {
+				t.Errorf("asked for chapters = %v, want %v (report %+v)", got, tc.want, rep)
+			}
+		})
+	}
+}
