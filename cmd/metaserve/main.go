@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 	"time"
 
@@ -28,19 +29,35 @@ func main() {
 	repo := flag.String("repo", release.DefaultRepo, "GitHub owner/name to poll")
 	interval := flag.Duration("interval", time.Hour, "poll interval")
 	cache := flag.String("cache", "./cache", "directory for downloaded artifacts")
+	rateLimit := flag.Float64("rate-limit", envFloat("METASERVE_RATE_LIMIT", serve.DefaultRateLimit),
+		"API requests a second per client (a token bucket); 0 disables the limit (env METASERVE_RATE_LIMIT)")
+	rateBurst := flag.Int("rate-burst", int(envFloat("METASERVE_RATE_BURST", serve.DefaultRateBurst)),
+		"the bucket's size: how many requests a client may make at once (env METASERVE_RATE_BURST)")
+	trustedProxies := flag.String("trusted-proxy", os.Getenv("METASERVE_TRUSTED_PROXIES"),
+		"comma-separated proxy addresses or CIDR prefixes whose X-Forwarded-For names the client; "+
+			"behind a reverse proxy, name it, or every request counts as one client (env METASERVE_TRUSTED_PROXIES)")
 	flag.Parse()
 
+	proxies, err := serve.ParseTrustedProxies(*trustedProxies)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaserve:", err)
+		os.Exit(2)
+	}
+
 	cfg := serve.Config{
-		Addr:          *addr,
-		DBPath:        *db,
-		Site:          *site,
-		SiteURL:       *siteURL,
-		Poll:          *poll,
-		Repo:          *repo,
-		Interval:      *interval,
-		CacheDir:      *cache,
-		Token:         os.Getenv("GITHUB_TOKEN"),
-		WebhookSecret: os.Getenv("METASERVE_WEBHOOK_SECRET"),
+		Addr:           *addr,
+		DBPath:         *db,
+		Site:           *site,
+		SiteURL:        *siteURL,
+		Poll:           *poll,
+		Repo:           *repo,
+		Interval:       *interval,
+		CacheDir:       *cache,
+		Token:          os.Getenv("GITHUB_TOKEN"),
+		WebhookSecret:  os.Getenv("METASERVE_WEBHOOK_SECRET"),
+		RateLimit:      *rateLimit,
+		RateBurst:      *rateBurst,
+		TrustedProxies: proxies,
 	}
 
 	srv, err := serve.New(cfg)
@@ -57,4 +74,20 @@ func main() {
 		fmt.Fprintln(os.Stderr, "metaserve:", err)
 		os.Exit(1)
 	}
+}
+
+// envFloat is a flag's default read from the environment: the variable's value
+// when it parses as a number, else def. An unparsable value is reported, not
+// ignored, so a typo in a deployment's environment is visible at boot.
+func envFloat(name string, def float64) float64 {
+	raw := os.Getenv(name)
+	if raw == "" {
+		return def
+	}
+	v, err := strconv.ParseFloat(raw, 64)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "metaserve: %s=%q is not a number; using %g\n", name, raw, def)
+		return def
+	}
+	return v
 }

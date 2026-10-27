@@ -137,8 +137,9 @@ go run ./cmd/metabuild -o meta.sqlite
 ## Running the API server
 
 `metaserve` is a read-only JSON API over the compiled artifact - FTS search,
-work/person/series detail, chapter lists, and ASIN/ISBN lookup. All data is
-public, so there is no auth; the API sends permissive CORS.
+work/person/series detail, chapter lists, ASIN/ISBN/LibriVox lookup and a
+LibriVox-shaped feed. All data is public, so there is no auth; the API sends
+permissive CORS, is rate limited per client and states a `Cache-Control`.
 
 The query code and the API handler are the public Go package `pkg/query`
 (`query.Open` + `query.NewHandler`), and the release fetcher is `pkg/release`, so
@@ -160,8 +161,25 @@ curl 'localhost:8080/api/v1/lookup?asin=B08G9PRS1K'
 
 Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 `works/latest?limit=`, `works/{id}`, `works/{id}/recordings/{rid}/chapters`,
-`people/{id}`, `series/{id}`, `lookup?asin=|isbn=`, `coverage`,
-`coverage/works`, `coverage/series-gaps`, plus `/healthz`.
+`people/{id}`, `series/{id}`, `lookup?asin=|isbn=|librivox_id=`, `coverage`,
+`coverage/works`, `coverage/series-gaps`, `librivox/audiobooks`, plus `/healthz`.
+
+The LibriVox layer (artifact schema version 8). `search`, `works/search` and
+`works/latest` take `?source=librivox` (any source type of the schema), which
+keeps only works with a recording from that source - a typo is a 400, never an
+empty list. A LibriVox recording on `works/{id}` carries `librivox_id`,
+`archive_id`, `links` (`librivox`, `zip`, `rss`, `text`) and `copyright_year`,
+leads its `purchase_links` with a free `librivox` link, and its chapters carry
+`audio_url`. `lookup?librivox_id=52` resolves a project id.
+`librivox/audiobooks` (and `librivox/audiobooks/`) answers LibriVox's own
+audiobooks feed - `id`, `since`, `title`, `author`, `genre` (exact, or a prefix
+with a leading `^`), `extended`, `coverart`, `fields`, `limit` (default 50, at
+most 500), `offset`, `sort_order`, JSON only - in LibriVox's JSON shape, so a
+LibriVox app can switch by changing its base URL. It differs where the mirror
+keeps no fact (empty descriptions, our genre vocabulary, a reader named only for
+a one-narrator recording, `since` meaning "reached the mirror since"); the API
+docs list each difference. Anyone wanting the whole catalogue should download
+`meta.sqlite.gz` from the newest data release rather than page the feed.
 
 Work-detail recordings also carry `purchase_links` - non-affiliate Audible and
 Libro.fm URLs derived at response time from recording ASINs and 13-digit
@@ -212,6 +230,19 @@ is verified against that release's published checksum and adopted as is. With
 and the poller still runs a refresh at startup (not just once per `--interval`).
 Superseded artifacts are pruned from the cache after each hot-swap. Set
 `GITHUB_TOKEN` to raise the API rate limit.
+
+Rate limit and caching: every API route (`/api/v1/*` and `/abs/search`, not
+`/healthz`) wears a per-client token bucket - `--rate-limit` requests a second
+(env `METASERVE_RATE_LIMIT`, default 10, `0` turns it off) with a burst of
+`--rate-burst` (env `METASERVE_RATE_BURST`, default 30). Past it a client gets
+429 with `Retry-After`. The client is the connection's address, or, when that
+address is one of `--trusted-proxy` (env `METASERVE_TRUSTED_PROXIES`, a
+comma-separated list of addresses and CIDR prefixes), the rightmost
+`X-Forwarded-For` entry that is not itself a trusted proxy. **Behind a reverse
+proxy, name it there**, or every request counts as the proxy and shares one
+bucket; a forwarded header from anywhere else is never read. A 200 that states
+no `Cache-Control` of its own gets `public, max-age=600`, or `public,
+max-age=60` on the searches and `works/match`.
 
 For immediate production refreshes, set `METASERVE_WEBHOOK_SECRET` to a random
 value of at least 32 bytes while keeping `--poll` enabled. This registers

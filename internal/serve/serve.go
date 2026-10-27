@@ -17,6 +17,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/netip"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -44,6 +45,16 @@ type Config struct {
 	Token         string        // optional GITHUB_TOKEN for a higher rate limit
 	WebhookSecret string        // optional HMAC secret for release refresh webhooks
 	Logger        *log.Logger   // nil => log.Default()
+
+	// RateLimit is the API's per-client request rate (requests a second, a
+	// token bucket of RateBurst; see ratelimit.go). Zero or less is no limit -
+	// the zero Config, which the tests build on; metaserve's flags default to
+	// DefaultRateLimit and DefaultRateBurst. TrustedProxies are the proxies whose
+	// X-Forwarded-For names the client; empty means the connection's address is
+	// the client, which behind a proxy makes every request one client.
+	RateLimit      float64
+	RateBurst      int
+	TrustedProxies []netip.Prefix
 
 	// swapGrace is how long an old snapshot is kept open after a swap so that
 	// in-flight requests finish on it. Overridable for tests; default 60s.
@@ -93,6 +104,10 @@ type Server struct {
 
 	site *siteHandler
 	mux  http.Handler
+
+	// limiter is the API's per-client token bucket, nil when Config.RateLimit
+	// is off.
+	limiter *rateLimiter
 
 	// shells is the marker split of the built entity shells, done once at
 	// construction (see loadShells). Empty when no site directory is configured,
@@ -173,6 +188,9 @@ func New(cfg Config) (*Server, error) {
 		}
 	}
 	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}}
+	if cfg.RateLimit > 0 {
+		s.limiter = newRateLimiter(cfg.RateLimit, cmp.Or(cfg.RateBurst, DefaultRateBurst), cfg.TrustedProxies, nil)
+	}
 	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
 		s.gh = s.newGHClient(cfg.Repo, cfg.apiBase)
@@ -352,10 +370,12 @@ type route struct {
 
 // specPath is the route's OpenAPI path key - its pattern minus the method.
 // ServeMux spells a wildcard "{id}", exactly as OpenAPI templates one, so the
-// two path vocabularies are already the same.
+// two path vocabularies are already the same. The one ServeMux spelling OpenAPI
+// has no form for is the "{$}" end anchor, which pins a trailing-slash path to
+// itself: its path key is the bare trailing slash it anchors.
 func (r route) specPath() string {
 	_, path, _ := strings.Cut(r.pattern, " ")
-	return path
+	return strings.TrimSuffix(path, "{$}")
 }
 
 // routes is the API surface, in registration order. It exists as DATA because it
@@ -374,11 +394,12 @@ func (r route) specPath() string {
 // has no spec entry (see buildMux).
 func (s *Server) routes() []route {
 	var rs []route
-	pub := s.public(s.query)
 	for _, qr := range query.Routes() {
-		h := pub
-		if qr.Pattern == query.HealthzPattern {
-			h = s.query
+		h := s.query
+		if qr.Pattern != query.HealthzPattern {
+			// Each API route's successful answers carry its default Cache-Control
+			// (cacheMaxAgeFor) unless its handler stated one.
+			h = s.public(cacheMW(cacheMaxAgeFor(qr.Pattern), s.query))
 		}
 		rs = append(rs, route{qr.Pattern, h})
 	}
@@ -435,9 +456,13 @@ func (s *Server) buildMux() http.Handler {
 }
 
 // public is the middleware stack every publicly reachable handler wears: CORS,
-// because browsers call this API directly, and gzip. One spelling of it, so no
-// route can pick up half the stack.
+// because browsers call this API directly, gzip, and the per-client rate limit
+// when one is configured. One spelling of it, so no route can pick up half the
+// stack. The limit sits INSIDE CORS so a browser can read a 429's Retry-After.
 func (s *Server) public(h http.Handler) http.Handler {
+	if s.limiter != nil {
+		h = s.limiter.middleware(h)
+	}
 	return gzipMW(corsMW(h))
 }
 
