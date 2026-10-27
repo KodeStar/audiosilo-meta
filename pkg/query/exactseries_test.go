@@ -60,7 +60,7 @@ func TestExactSeriesNameRanksThePrimaryFirst(t *testing.T) {
 	// The fixture's premise: WITHOUT the rule the primary is not first, because
 	// identical names tie in bm25. A fixture where it already was would make the
 	// assertions below vacuous.
-	plain, err := db.ftsHits(context.Background(), kindSeries, ftsQuery("harry potter"), 20, nil)
+	plain, err := db.ftsHits(context.Background(), kindSeries, ftsQuery("harry potter"), 20, nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -83,7 +83,7 @@ func TestExactSeriesNameRanksThePrimaryFirst(t *testing.T) {
 // exactly what they were: the lift reorders series rows and nothing else.
 func TestExactSeriesNameLeavesWorksAlone(t *testing.T) {
 	db, ts := newTestServerForCatalog(t, artifacttest.SameNamedSeries())
-	plain, err := db.ftsHits(context.Background(), kindAny, ftsQuery("harry potter"), 20, nil)
+	plain, err := db.ftsHits(context.Background(), kindAny, ftsQuery("harry potter"), 20, nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -134,7 +134,7 @@ func TestSameNamedSeriesLeadWithThePrimaryWhileTyping(t *testing.T) {
 	ctx := context.Background()
 	for _, q := range []string{"harry", "potter", "harry pot", "Harry Pott"} {
 		for _, kind := range []searchKind{kindAny, kindSeries} {
-			plain, err := db.searchPage(ctx, kind, q, 20, nil)
+			plain, err := db.searchPage(ctx, kind, q, 20, nil, "")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -142,7 +142,7 @@ func TestSameNamedSeriesLeadWithThePrimaryWhileTyping(t *testing.T) {
 			if first := firstSeries(plain); first == hpPrimary {
 				t.Fatalf("plain %q %q page leads with the primary: the fixture no longer shows the bug", kind, q)
 			}
-			got, err := db.search(ctx, kind, q, 20, nil)
+			got, err := db.search(ctx, kind, q, 20, nil, "")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -202,14 +202,14 @@ func TestSeriesRankingLeavesAPageWithoutAGroupAlone(t *testing.T) {
 		db := openTestDB(t, artifacttest.Build(t, tc.cat()))
 		for _, q := range tc.queries {
 			for _, kind := range []searchKind{kindAny, kindSeries} {
-				want, err := db.searchPage(ctx, kind, q, 20, nil)
+				want, err := db.searchPage(ctx, kind, q, 20, nil, "")
 				if err != nil {
 					t.Fatal(err)
 				}
 				if hasSameNamedGroup(want) {
 					t.Fatalf("searchPage(%q, %q) holds a same-named group: not a no-group page", kind, q)
 				}
-				got, err := db.search(ctx, kind, q, 20, nil)
+				got, err := db.search(ctx, kind, q, 20, nil, "")
 				if err != nil {
 					t.Fatal(err)
 				}
@@ -466,7 +466,7 @@ func TestSmallWindowPullsTheSameNamedPrimary(t *testing.T) {
 	} {
 		for _, kind := range []searchKind{kindAny, kindSeries} {
 			// The premise: the window holds no primary before the pull.
-			plain, err := db.searchPage(ctx, kind, "harry potter", limit, nil)
+			plain, err := db.searchPage(ctx, kind, "harry potter", limit, nil, "")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -513,7 +513,7 @@ func TestSmallWindowPullObeysTheLanguageFilter(t *testing.T) {
 	ctx := context.Background()
 	for limit := 1; limit <= 3; limit++ {
 		for _, kind := range []searchKind{kindAny, kindSeries} {
-			page, err := db.searchPage(ctx, kind, "harry potter", limit, langFilter{"de"})
+			page, err := db.searchPage(ctx, kind, "harry potter", limit, langFilter{"de"}, "")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -552,7 +552,7 @@ func TestSmallWindowDoesNotPullADifferentlyNamedPrimary(t *testing.T) {
 		"the saga (chronological order)": "saga-chronological",
 	} {
 		for _, kind := range []searchKind{kindAny, kindSeries} {
-			page, err := db.searchPage(ctx, kind, q, 1, nil)
+			page, err := db.searchPage(ctx, kind, q, 1, nil, "")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -584,7 +584,7 @@ func TestOrdinaryPagesPlanNoPrimaryRead(t *testing.T) {
 		for _, q := range tc.queries {
 			for _, kind := range []searchKind{kindAny, kindSeries} {
 				for _, lang := range []langFilter{nil, {"de"}, {"en"}} {
-					page, err := db.searchPage(ctx, kind, q, 20, lang)
+					page, err := db.searchPage(ctx, kind, q, 20, lang, "")
 					if err != nil {
 						t.Fatal(err)
 					}
@@ -601,7 +601,7 @@ func TestOrdinaryPagesPlanNoPrimaryRead(t *testing.T) {
 // serves the ranked page as it came rather than failing the search.
 func TestPullDegradesToTheRankedPage(t *testing.T) {
 	db := openTestDB(t, artifacttest.Build(t, artifacttest.SameNamedSeries()))
-	page, err := db.searchPage(context.Background(), kindSeries, "harry potter", 1, nil)
+	page, err := db.searchPage(context.Background(), kindSeries, "harry potter", 1, nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}

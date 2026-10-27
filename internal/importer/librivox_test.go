@@ -155,6 +155,7 @@ func TestLibrivoxImportFixtures(t *testing.T) {
 		Librivox: "https://librivox.org/the-metamorphosis-by-franz-kafka/",
 		Zip:      "https://archive.org/compress/metamorphosis_librivox/formats=64KBPS MP3&file=/metamorphosis_librivox.zip",
 		RSS:      "https://librivox.org/rss/527",
+		Text:     "https://www.kafka.org/index.php?id=162,170,0,0,1,0",
 	}
 	if r.LibrivoxID != 527 || r.ArchiveID != "metamorphosis_librivox" || !reflect.DeepEqual(r.Links, wantLinks) {
 		t.Errorf("recording identity = %d %q %+v", r.LibrivoxID, r.ArchiveID, r.Links)

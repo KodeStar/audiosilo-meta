@@ -126,20 +126,20 @@ func TestParseLangFilter(t *testing.T) {
 // language issues EXACTLY the SQL it always did - the two constants, with their
 // arguments - so the filter costs an unfiltered search nothing.
 func TestFTSSearchQueryWithoutAFilterIsUnchanged(t *testing.T) {
-	q, args := ftsSearchQuery(kindAny, `"x"*`, 20, nil)
+	q, args := ftsSearchQuery(kindAny, `"x"*`, 20, nil, "")
 	if q != searchSQL || len(args) != 2 {
 		t.Errorf("unscoped, unfiltered = %q %v", q, args)
 	}
-	q, args = ftsSearchQuery(kindWork, `"x"*`, 20, nil)
+	q, args = ftsSearchQuery(kindWork, `"x"*`, 20, nil, "")
 	if q != searchKindSQL || len(args) != 3 {
 		t.Errorf("scoped, unfiltered = %q %v", q, args)
 	}
-	if q, _ := (&DB{}).latestCandidatesQuery(nil, 200); q != latestCandidatesSQL {
+	if q, _ := (&DB{}).latestCandidatesQuery(nil, "", 200); q != latestCandidatesSQL {
 		t.Errorf("latest, unfiltered = %q", q)
 	}
 	// And a filtered query binds exactly as many arguments as it has markers.
 	for _, kind := range []searchKind{kindAny, kindWork} {
-		q, args := ftsSearchQuery(kind, `"x"*`, 20, langFilter{"de", "en"})
+		q, args := ftsSearchQuery(kind, `"x"*`, 20, langFilter{"de", "en"}, "")
 		if n := strings.Count(q, "?"); n != len(args) {
 			t.Errorf("%q filtered: %d markers, %d args", kind, n, len(args))
 		}
@@ -485,10 +485,10 @@ func TestLanguageFilteredQueriesUseTheLanguageIndex(t *testing.T) {
 
 	// The boosts' filter reads the ids it was handed by primary key.
 	pred, predArgs := langFilter{"de"}.predicate("language", false)
-	plan := queryPlan(t, snap, worksInLanguagesSQL("?,?", pred), append([]any{"book-one", "buch-zwei"}, predArgs...)...)
+	plan := queryPlan(t, snap, worksAdmittedSQL("?,?", pred), append([]any{"book-one", "buch-zwei"}, predArgs...)...)
 	assertNoFullScan(t, plan)
 	if joined := strings.Join(plan, " | "); !strings.Contains(joined, "INDEX sqlite_autoindex_works_1 (id=?)") {
-		t.Errorf("worksInLanguages does not read works by id: %s", joined)
+		t.Errorf("worksAdmitted does not read works by id: %s", joined)
 	}
 
 	for _, tc := range []struct {
@@ -501,7 +501,7 @@ func TestLanguageFilteredQueriesUseTheLanguageIndex(t *testing.T) {
 		{langFilter{"de", "en"}, false}, // 9 of 11
 		{langFilter{"en", "fr"}, false}, // 6 of 11
 	} {
-		q, args := snap.latestCandidatesQuery(tc.f, 200)
+		q, args := snap.latestCandidatesQuery(tc.f, "", 200)
 		where, wargs, _ := snap.coverageWhere(filterMissing, "", tc.f)
 		for name, plan := range map[string][]string{
 			"works/latest":   queryPlan(t, snap, q, args...),

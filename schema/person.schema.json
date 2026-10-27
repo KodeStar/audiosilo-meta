@@ -51,6 +51,14 @@
       "description": "This person's LibriVox author id (a separate namespace from reader ids). Unique across the dataset (pkg/check).",
       "$ref": "common.schema.json#/$defs/librivox_id"
     },
+    "birth_year": {
+      "description": "The year this person was born, as a source stated it (LibriVox: an author's dob). Negative for a year BC; a value the source states but that is not a year (\"alive\", \"c. 1500\") is never written.",
+      "$ref": "common.schema.json#/$defs/signed_year"
+    },
+    "death_year": {
+      "description": "The year this person died, as a source stated it (LibriVox: an author's dod). Negative for a year BC; never before birth_year (pkg/check).",
+      "$ref": "common.schema.json#/$defs/signed_year"
+    },
     "license": {
       "$ref": "common.schema.json#/$defs/license"
     },

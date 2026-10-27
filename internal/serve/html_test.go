@@ -855,6 +855,7 @@ func TestPurchaseLabel(t *testing.T) {
 		{query.PurchaseLink{Retailer: "audible", Region: "uk"}, "Audible (UK)"},
 		{query.PurchaseLink{Retailer: "audible"}, "Audible"},
 		{query.PurchaseLink{Retailer: "libro-fm"}, "Libro.fm"},
+		{query.PurchaseLink{Retailer: "librivox", Free: true}, "LibriVox"},
 		{query.PurchaseLink{Retailer: "some-shop"}, "some-shop"},
 		// The marketplace suffix is not audible-only: two regions of one
 		// retailer must never read as identical labels.

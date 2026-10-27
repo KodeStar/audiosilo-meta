@@ -205,6 +205,12 @@ func (s *handler) routes() []route {
 		{pattern: "GET /api/v1/coverage", handler: s.gate(s.handleCoverage)},
 		{pattern: "GET /api/v1/coverage/works", handler: s.gate(s.handleCoverageWorks)},
 		{pattern: "GET /api/v1/coverage/series-gaps", handler: s.gate(s.handleCoverageSeriesGaps)},
+		// The LibriVox-shaped feed (librivoxfeed.go): LibriVox's own audiobooks
+		// feed, parameters and shape, from the mirror. Both spellings, because
+		// LibriVox documents its URL with the trailing slash (".../audiobooks/?id=52")
+		// and an app that swaps only the base URL keeps it.
+		{pattern: "GET " + LibrivoxFeedPath, handler: s.gate(s.handleLibrivoxFeed)},
+		{pattern: "GET " + LibrivoxFeedPath + "/{$}", handler: s.gate(s.handleLibrivoxFeed)},
 		// Audiobookshelf custom metadata provider (ABS appends /search to the
 		// configured base URL). Outside /api/v1.
 		{pattern: "GET /abs/search", handler: s.gate(s.handleABSSearch)},
@@ -352,7 +358,11 @@ func (s *handler) handleLatest(w http.ResponseWriter, r *http.Request, snap *DB)
 	if !ok {
 		return
 	}
-	cards, err := snap.latestWorks(limit, lang)
+	src, ok := sourceParam(w, q)
+	if !ok {
+		return
+	}
+	cards, err := snap.latestWorks(limit, lang, src)
 	if err != nil {
 		s.fail(w, r, err)
 		return
@@ -598,7 +608,16 @@ func (s *handler) searchHandler(kind searchKind) dataHandler {
 		if !ok {
 			return
 		}
-		results, err := snap.search(r.Context(), kind, q, limit, lang)
+		// ?source= filters works, so only the scopes that hold works read it; the
+		// people and series scopes leave it unread like any parameter they do
+		// not take.
+		var src string
+		if kind == kindAny || kind == kindWork {
+			if src, ok = sourceParam(w, params); !ok {
+				return
+			}
+		}
+		results, err := snap.search(r.Context(), kind, q, limit, lang, src)
 		if err != nil {
 			s.fail(w, r, err)
 			return
@@ -668,11 +687,25 @@ func (s *handler) handleLookup(w http.ResponseWriter, r *http.Request, snap *DB)
 	q := r.URL.Query()
 	asin := strings.TrimSpace(q.Get("asin"))
 	isbn := strings.TrimSpace(q.Get("isbn"))
-	if asin == "" && isbn == "" {
-		httpx.WriteErr(w, http.StatusBadRequest, "asin or isbn is required")
+	lvRaw := strings.TrimSpace(q.Get("librivox_id"))
+	if asin == "" && isbn == "" && lvRaw == "" {
+		httpx.WriteErr(w, http.StatusBadRequest, "asin, isbn or librivox_id is required")
 		return
 	}
-	res, err := snap.lookup(r.Context(), asin, isbn)
+	var res *lookupResult
+	var err error
+	if asin == "" && isbn == "" {
+		// A LibriVox project id, asked alone: an ASIN or an ISBN beside it
+		// keeps the lookup it always was.
+		id, perr := parseLibrivoxID(lvRaw)
+		if perr != nil {
+			httpx.WriteErr(w, http.StatusBadRequest, perr.Error())
+			return
+		}
+		res, err = snap.lookupLibrivox(r.Context(), id)
+	} else {
+		res, err = snap.lookup(r.Context(), asin, isbn)
+	}
 	if err != nil {
 		s.fail(w, r, err)
 		return

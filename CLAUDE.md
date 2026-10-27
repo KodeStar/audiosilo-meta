@@ -521,7 +521,7 @@ it, `pkg/check` and every writer now refuse it loudly.
   recording", never "which marketplace"; SchemaVersion is unmoved and a reader
   that ever needs the region is a later schema_version change. `publishers[]` is
   deliberately not in the artifact either - the data accrues ahead of its
-  readers, as work credits do. The region vocabulary is one shared def
+  readers, as work credits did until schema_version 8's `work_credits`. The region vocabulary is one shared def
   (`common.schema.json#/$defs/region`), reached by `asin[]`, the region-scoped
   ISBN and `publishers[]` alike, with drift guards on both Go mirrors
   (`internal/importer` `marketplaces`, `internal/issueform` `regionAliases`).
@@ -646,12 +646,15 @@ recaps sidecar carries at least one of the two fields; work genres landed in
 spoiler-free description landed in **schema_version 6** as
 `work_descriptions(work_id, text, license)`, one row per work carrying the
 member, the primary key doubling as the lookup index; the LANGUAGES layer landed
-in **schema_version 7** (the current version) as the `translations(kind, id,
+in **schema_version 7** as the `translations(kind, id,
 target)` table - every work and series `translation_of` link, `kind` the family
 spelling as in `redirects`, `id` always the translation - plus three `series`
 columns (`language`, DERIVED at build through `model.SeriesLanguage` and NULL on
 a tie, `ordering`, `ordering_of`), `search_fts.language` as its LAST column and
-`idx_works_language(language)`; character `ord`/recap
+`idx_works_language(language)`; the LIBRIVOX layer landed in **schema_version 8**
+(the current version: recording LibriVox columns, `chapters.audio_url`, people
+LibriVox ids and life years, `work_credits`, `recording_sources`; PACKAGES.md
+"The LIBRIVOX layer"); character `ord`/recap
 position order preserved, deterministic), and `metaserve` returns
 them inline on `GET /works/{id}`
 (`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`/
@@ -659,15 +662,16 @@ them inline on `GET /works/{id}`
 serve queries degrade gracefully if the tables are absent (a newer binary
 briefly serving an older release): characters/recaps gate on schema_version >= 2,
 the recap summary on >= 3, genres on >= 4, the slug redirects on >= 5, the
-community description on >= 6 and the languages layer on >= 7, so a
+community description on >= 6, the languages layer on >= 7 and the LibriVox
+layer on >= 8, so a
 table's absence is "no data" (for redirects: a retired slug 404s as it did before
 the mechanism existed), not a 500. The redirect, description and languages gates
 are asked ONCE at load rather than per request - those tables are EMPTY in every
 release until their first record lands, and all sit on ordinary 200 paths (the
 description on every work page, both guide pages and every ABS candidate; the
 translations and the ordering family on every work and series page) - so an
-artifact that CLAIMS version 5, 6 or 7 without its table (for 7: the
-translations table or the series ordering columns) fails to open, with an
+artifact that CLAIMS version 5, 6, 7 or 8 without its table (for 7: the
+translations table or the series ordering columns; for 8: `librivoxShapeSQL`) fails to open, with an
 error naming that claim; the builder writes the version and the table together,
 so the combination is a corrupt file rather than an old one. **Authoring the expressive
 layer is documented in the COMMUNITY repository's `AUTHORING.md`** (the reusable

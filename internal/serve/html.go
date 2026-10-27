@@ -817,6 +817,8 @@ func purchaseLabel(l query.PurchaseLink) string {
 		name = "Audible"
 	case "libro-fm":
 		name = "Libro.fm"
+	case "librivox":
+		name = "LibriVox"
 	}
 	if l.Region != "" {
 		return name + " (" + strings.ToUpper(l.Region) + ")"

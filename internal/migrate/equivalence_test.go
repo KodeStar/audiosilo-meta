@@ -74,6 +74,21 @@ func TestArtifactEquivalenceAcrossTheMigration(t *testing.T) {
 	if !res.OK() {
 		t.Fatalf("the converted tree does not validate:\n%s", problems(res))
 	}
+	// The artifact gained recordings.added_at in schema_version 8, long after
+	// the retired path stopped running: release.yml's walk dated works only, so
+	// the PRE side has no recording dates to put there. The proof is about what
+	// the artifact held when the migration ran, so the recordings' backfilled
+	// dates are set aside for the comparison (both sides then fall back to
+	// sources[].imported_at alike) and checked on their own: the migration must
+	// have dated every recording.
+	for _, w := range res.Catalog.Works {
+		for _, r := range w.Recordings {
+			if r.AddedAt == "" {
+				t.Errorf("recording %s/%s carries no added_at after the backfill", w.ID, r.ID)
+			}
+			r.AddedAt = ""
+		}
+	}
 	post := filepath.Join(t.TempDir(), "post.sqlite")
 	if err := build.Build(res.Catalog, post, builtAt); err != nil {
 		t.Fatal(err)

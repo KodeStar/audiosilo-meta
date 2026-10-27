@@ -203,26 +203,41 @@ func (s *DB) langFilterFor(raw string, kind searchKind) (langFilter, error) {
 	return s.liveLang(f, kind), nil
 }
 
-// worksInLanguagesSQL keeps the ids of a set that a language predicate admits,
-// over the works primary key. It is what the search boosts are filtered with:
-// they resolve works OUTSIDE the FTS query, so its predicate never saw them.
-func worksInLanguagesSQL(ph, pred string) string {
+// worksAdmittedSQL keeps the ids of a set that a predicate admits, over the
+// works primary key. It is what the search boosts are filtered with: they
+// resolve works OUTSIDE the FTS query, so its predicates never saw them.
+func worksAdmittedSQL(ph, pred string) string {
 	return `SELECT id FROM works WHERE id IN (` + ph + `) AND ` + pred
 }
 
-// worksInLanguages filters ids to the works f (already live) admits, preserving
-// their order. It costs one primary-key read per id and runs only when a boost
-// fired under a filter - a handful of ids on a rare path.
-func (s *DB) worksInLanguages(ctx context.Context, ids []string, f langFilter) ([]string, error) {
-	if f == nil || len(ids) == 0 {
+// workHasSourceArm is a source filter (librivox.go) over a handful of works read
+// by primary key: one probe of idx_recording_sources_type per id, where
+// worksWithSourceArm, which drives a list, would read the source's whole range.
+const workHasSourceArm = `EXISTS (SELECT 1 FROM recording_sources rs WHERE rs.type = ? AND rs.work_id = works.id)`
+
+// worksAdmitted filters ids to the works f (already live) and the source filter
+// src ("" for none) admit, preserving their order. It costs one primary-key read
+// per id and runs only when a boost fired under a filter - a handful of ids on a
+// rare path.
+func (s *DB) worksAdmitted(ctx context.Context, ids []string, f langFilter, src string) ([]string, error) {
+	if (f == nil && src == "") || len(ids) == 0 {
 		return ids, nil
 	}
 	// The plain predicate, not worksPredicate: this reads a handful of ids by
 	// primary key, so which index the language test could use does not arise.
-	pred, predArgs := f.predicate("language", false)
+	var preds []string
+	var predArgs []any
+	if f != nil {
+		pred, args := f.predicate("language", false)
+		preds, predArgs = append(preds, pred), append(predArgs, args...)
+	}
+	if src != "" {
+		preds, predArgs = append(preds, workHasSourceArm), append(predArgs, src)
+	}
+	query := func(ph string) string { return worksAdmittedSQL(ph, strings.Join(preds, " AND ")) }
 	keep := map[string]bool{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.QueryContext(ctx, worksInLanguagesSQL(ph, pred), append(args, predArgs...)...)
+		rows, err := s.db.QueryContext(ctx, query(ph), append(args, predArgs...)...)
 		if err != nil {
 			return err
 		}

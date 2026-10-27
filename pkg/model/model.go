@@ -82,10 +82,16 @@ type Person struct {
 	// ids (two namespaces: a reader and an author are numbered apart). A
 	// LibriVox import keys people on them, so a rerun never mints a second
 	// record; pkg/check holds each unique across the dataset. 0 = none.
-	LibrivoxReaderID int      `json:"librivox_reader_id,omitempty"`
-	LibrivoxAuthorID int      `json:"librivox_author_id,omitempty"`
-	License          string   `json:"license"`
-	Sources          []Source `json:"sources"`
+	LibrivoxReaderID int `json:"librivox_reader_id,omitempty"`
+	LibrivoxAuthorID int `json:"librivox_author_id,omitempty"`
+	// BirthYear / DeathYear are the years the person was born and died, as a
+	// source stated them (today LibriVox's author dob/dod): a signed year, a
+	// negative one BC, 0 = not stated. There is no year 0, so the zero value
+	// can never be a real year; pkg/check holds DeathYear >= BirthYear.
+	BirthYear int      `json:"birth_year,omitempty"`
+	DeathYear int      `json:"death_year,omitempty"`
+	License   string   `json:"license"`
+	Sources   []Source `json:"sources"`
 }
 
 // Contributor roles: the controlled vocabulary of
@@ -273,11 +279,13 @@ type Chapter struct {
 
 // RecordingLinks is where a recording is published, each URL as its source
 // stated it (https only): the catalogue page, a zip of every file, the podcast
-// feed. Only a LibriVox recording carries them today.
+// feed, and the text the recording reads from (LibriVox's url_text_source).
+// Only a LibriVox recording carries them today.
 type RecordingLinks struct {
 	Librivox string `json:"librivox,omitempty"`
 	Zip      string `json:"zip,omitempty"`
 	RSS      string `json:"rss,omitempty"`
+	Text     string `json:"text,omitempty"`
 }
 
 // Recording is a specific narration/production of a work.
@@ -304,6 +312,11 @@ type Recording struct {
 	LibrivoxID int             `json:"librivox_id,omitempty"`
 	ArchiveID  string          `json:"archive_id,omitempty"`
 	Links      *RecordingLinks `json:"links,omitempty"`
+	// CopyrightYear is the year of the text's copyright as the source stated it
+	// (LibriVox's copyright_year): a signed year, negative BC, 0 = not stated.
+	// A fact about the recorded TEXT edition, kept on the recording and never
+	// written onto Work.FirstPublished, which another source may own.
+	CopyrightYear int `json:"copyright_year,omitempty"`
 	// AddedAt is when the recording entered the database, in the same two
 	// accepted shapes as Work.AddedAt.
 	AddedAt string   `json:"added_at,omitempty"`

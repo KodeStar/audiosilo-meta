@@ -719,7 +719,7 @@ func TestMatchReadsHonourTheContext(t *testing.T) {
 			return err
 		},
 		"ftsHits": func(ctx context.Context) error {
-			_, err := snap.ftsHits(ctx, kindWork, ftsQuery("sharpe"), matchTextWindow, nil)
+			_, err := snap.ftsHits(ctx, kindWork, ftsQuery("sharpe"), matchTextWindow, nil, "")
 			return err
 		},
 		"exactTitleHits": func(ctx context.Context) error {

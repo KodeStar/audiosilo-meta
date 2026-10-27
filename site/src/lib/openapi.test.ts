@@ -4,6 +4,7 @@ import {
   deref,
   groupOperations,
   inlineSegments,
+  operationAnchor,
   paragraphs,
   paramConstraints,
   resolveRef,
@@ -298,6 +299,12 @@ describe('the shipped spec', () => {
   it('renders every operation into a declared group', () => {
     expect(groups.length).toBeGreaterThan(0)
     expect(groups.map((g) => g.name)).not.toContain('Other')
+  })
+  it('gives a trailing-slash twin its own anchor', () => {
+    expect(operationAnchor('get', '/api/v1/librivox/audiobooks')).toBe('get-api-v1-librivox-audiobooks')
+    expect(operationAnchor('get', '/api/v1/librivox/audiobooks/')).toBe(
+      'get-api-v1-librivox-audiobooks-slash',
+    )
   })
   it('produces unique anchors', () => {
     const anchors = groups.flatMap((g) => g.operations.map((o) => o.anchor))

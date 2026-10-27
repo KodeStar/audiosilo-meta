@@ -46,12 +46,25 @@ const latestCandidatesSQL = `SELECT id FROM works` + latestOrderSQL
 // admits - through idx_works_language for a minority language, so it sorts only
 // its own rows, and by one read of the table for a majority (worksPredicate has
 // the measurement).
-func (s *DB) latestCandidatesQuery(lang langFilter, fetch int) (string, []any) {
-	if len(lang) == 0 {
-		return latestCandidatesSQL, []any{fetch}
+//
+// src is a source filter (librivox.go; "" for none): the works with a recording
+// of that source type, reached through idx_recording_sources_type, then by
+// primary key.
+func (s *DB) latestCandidatesQuery(lang langFilter, src string, fetch int) (string, []any) {
+	if src == "" {
+		if len(lang) == 0 {
+			return latestCandidatesSQL, []any{fetch}
+		}
+		pred, args := s.worksPredicate(lang, "language")
+		return `SELECT id FROM works WHERE ` + pred + latestOrderSQL, append(args, fetch)
 	}
-	pred, args := s.worksPredicate(lang, "language")
-	return `SELECT id FROM works WHERE ` + pred + latestOrderSQL, append(args, fetch)
+	query, args := `SELECT id FROM works WHERE `+worksWithSourceArm, []any{src}
+	if len(lang) > 0 {
+		pred, predArgs := lang.predicate("language", false)
+		query += ` AND ` + pred
+		args = append(args, predArgs...)
+	}
+	return query + latestOrderSQL, append(args, fetch)
 }
 
 // latestSeriesCap is the per-series diversity cap for the latest-works list: a
@@ -80,12 +93,18 @@ const latestSeriesCap = 2
 //
 // lang (already live) narrows phase one to the works in the languages it names,
 // so the cap and the page are taken over those alone (latestCandidatesQuery).
-func (s *DB) latestWorks(limit int, lang langFilter) ([]*WorkCard, error) {
+//
+// src narrows it to the works a source filter admits ("" for none); an artifact
+// with no recording_sources table answers a filtered request with no works.
+func (s *DB) latestWorks(limit int, lang langFilter, src string) ([]*WorkCard, error) {
+	if src != "" && !s.hasLibrivoxLayer() {
+		return []*WorkCard{}, nil
+	}
 	fetch := limit * 4
 	if fetch < 200 {
 		fetch = 200
 	}
-	query, args := s.latestCandidatesQuery(lang, fetch)
+	query, args := s.latestCandidatesQuery(lang, src, fetch)
 	rows, err := s.db.Query(query, args...)
 	if err != nil {
 		return nil, err
@@ -155,6 +174,15 @@ type RecordingDetail struct {
 	PurchaseLinks []PurchaseLink `json:"purchase_links,omitempty"`
 	CoverURL      string         `json:"cover_url,omitempty"`
 	ChapterCount  int            `json:"chapter_count"`
+	// The LibriVox layer (librivoxSchemaVersion), each omitted when the
+	// recording states none - every recording but a LibriVox one today:
+	// its project id, its Internet Archive item, where it is published (the
+	// catalogue page, the zip, the podcast feed, the source text) and the
+	// copyright year of the text it reads (signed, negative BC).
+	LibrivoxID    int                   `json:"librivox_id,omitempty"`
+	ArchiveID     string                `json:"archive_id,omitempty"`
+	Links         *model.RecordingLinks `json:"links,omitempty"`
+	CopyrightYear int                   `json:"copyright_year,omitempty"`
 }
 
 type ASINRef struct {
@@ -387,6 +415,16 @@ const descriptionSchemaVersion = 6
 // of those gates on this version, and an artifact CLAIMING it without the table
 // or the columns fails to open (loadStats, the redirects precedent).
 const languagesSchemaVersion = 7
+
+// librivoxSchemaVersion is the artifact schema_version that first carried the
+// LIBRIVOX layer: the recordings' librivox_id, archive_id, link_* (librivox,
+// zip, rss, text), copyright_year and added_at columns, chapters.audio_url, the
+// people's LibriVox ids and life years, and the work_credits and
+// recording_sources tables. A newer binary serving an older release degrades to
+// "no data" - no LibriVox fields on a recording, a ?source= filter that matches
+// nothing, an empty LibriVox feed - and an artifact CLAIMING it without them
+// fails to open (loadStats, the redirects precedent).
+const librivoxSchemaVersion = 8
 
 const (
 	// anyRedirectSQL asks whether the tombstone table holds anything, once per
@@ -765,8 +803,8 @@ func (s *DB) workISBNs(workID string) ([]string, error) {
 // construction means no future recordingDetail surface can silently omit them
 // (omitempty would hide the gap).
 func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
-	rows, err := s.db.Query(
-		`SELECT id, abridged, runtime_min, release_date, publisher, cover_url FROM recordings WHERE work_id=? ORDER BY id`, workID)
+	librivox := s.hasLibrivoxLayer()
+	rows, err := s.db.Query(recordingsOfSQL(librivox), workID)
 	if err != nil {
 		return nil, err
 	}
@@ -775,9 +813,13 @@ func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
 	for rows.Next() {
 		var rd RecordingDetail
 		var abridged int
-		var runtime sql.NullInt64
-		var release, publisher, cover sql.NullString
-		if err := rows.Scan(&rd.ID, &abridged, &runtime, &release, &publisher, &cover); err != nil {
+		var runtime, lvID, copyright sql.NullInt64
+		var release, publisher, cover, archive, lvLink, zip, rss, text sql.NullString
+		dst := []any{&rd.ID, &abridged, &runtime, &release, &publisher, &cover}
+		if librivox {
+			dst = append(dst, &lvID, &archive, &lvLink, &zip, &rss, &text, &copyright)
+		}
+		if err := rows.Scan(dst...); err != nil {
 			return nil, err
 		}
 		rd.Abridged = abridged != 0
@@ -785,6 +827,12 @@ func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
 		rd.ReleaseDate = release.String
 		rd.Publisher = publisher.String
 		rd.CoverURL = cover.String
+		rd.LibrivoxID = int(lvID.Int64)
+		rd.ArchiveID = archive.String
+		rd.CopyrightYear = int(copyright.Int64)
+		if links := (model.RecordingLinks{Librivox: lvLink.String, Zip: zip.String, RSS: rss.String, Text: text.String}); links != (model.RecordingLinks{}) {
+			rd.Links = &links
+		}
 		recs = append(recs, rd)
 	}
 	if err := rows.Err(); err != nil {
@@ -801,7 +849,7 @@ func (s *DB) recordingsBase(workID string) ([]RecordingDetail, error) {
 		if recs[i].ISBN, err = s.recordingISBNs(workID, rid); err != nil {
 			return nil, err
 		}
-		recs[i].PurchaseLinks = derivedPurchaseLinks(recs[i].ASIN, recs[i].ISBN)
+		recs[i].PurchaseLinks = append(librivoxPurchaseLinks(recs[i]), derivedPurchaseLinks(recs[i].ASIN, recs[i].ISBN)...)
 	}
 	return recs, nil
 }
@@ -818,6 +866,16 @@ func (s *DB) recordingsOf(workID string) ([]RecordingDetail, error) {
 		}
 	}
 	return recs, nil
+}
+
+// recordingsOfSQL reads a work's recordings, with the LibriVox columns from
+// librivoxSchemaVersion on (an older artifact has none of them to name).
+func recordingsOfSQL(librivox bool) string {
+	cols := `id, abridged, runtime_min, release_date, publisher, cover_url`
+	if librivox {
+		cols += `, librivox_id, archive_id, link_librivox, link_zip, link_rss, link_text, copyright_year`
+	}
+	return `SELECT ` + cols + ` FROM recordings WHERE work_id=? ORDER BY id`
 }
 
 // The per-recording queries. GET /works/{id} runs all three once per recording,
@@ -878,11 +936,24 @@ type ChapterOut struct {
 	Title    string `json:"title"`
 	StartMS  int64  `json:"start_ms"`
 	LengthMS int64  `json:"length_ms"`
+	// AudioURL is the chapter's own audio file, for a recording published one
+	// file per section (a LibriVox chapter's archive.org MP3); omitted otherwise.
+	AudioURL string `json:"audio_url,omitempty"`
+}
+
+// chaptersOfSQL reads one recording's chapters, with the audio_url column from
+// librivoxSchemaVersion on.
+func chaptersOfSQL(librivox bool) string {
+	cols := `title, start_ms, length_ms`
+	if librivox {
+		cols += `, audio_url`
+	}
+	return `SELECT ` + cols + ` FROM chapters WHERE work_id=? AND recording_id=? ORDER BY idx`
 }
 
 func (s *DB) chapters(workID, rid string) ([]ChapterOut, error) {
-	rows, err := s.db.Query(
-		`SELECT title, start_ms, length_ms FROM chapters WHERE work_id=? AND recording_id=? ORDER BY idx`, workID, rid)
+	librivox := s.hasLibrivoxLayer()
+	rows, err := s.db.Query(chaptersOfSQL(librivox), workID, rid)
 	if err != nil {
 		return nil, err
 	}
@@ -890,9 +961,15 @@ func (s *DB) chapters(workID, rid string) ([]ChapterOut, error) {
 	out := []ChapterOut{}
 	for rows.Next() {
 		var c ChapterOut
-		if err := rows.Scan(&c.Title, &c.StartMS, &c.LengthMS); err != nil {
+		var audio sql.NullString
+		dst := []any{&c.Title, &c.StartMS, &c.LengthMS}
+		if librivox {
+			dst = append(dst, &audio)
+		}
+		if err := rows.Scan(dst...); err != nil {
 			return nil, err
 		}
+		c.AudioURL = audio.String
 		out = append(out, c)
 	}
 	return out, rows.Err()

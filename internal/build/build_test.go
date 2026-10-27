@@ -167,7 +167,7 @@ func triples(t *testing.T, db *sql.DB, query string) [][3]string {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":     "7",
+		"schema_version":     "8",
 		"built_at":           "2026-07-11T00:00:00Z",
 		"count_works":        "2",
 		"count_recordings":   "2",
@@ -628,32 +628,15 @@ func TestBuildNarratorOrder(t *testing.T) {
 	}
 }
 
-// TestBuildIgnoresWorkCredits pins the artifact's side of the additive
-// contributor-credits change: the builder reads a catalog carrying credits
-// without error, and writes NOTHING for them - no table, and no schema_version
-// bump (TestBuildMeta pins the version). Surfacing credits in the artifact
-// and the API is a later, separate change; until then a consumer sees exactly
-// what it saw before, which is what makes the schema addition safe to ship
-// ahead of its readers.
-func TestBuildIgnoresWorkCredits(t *testing.T) {
+// TestBuildWorkCredits pins the work_credits table schema_version 8 added: one
+// row per role credit, in the record's order. (Until then the builder wrote
+// nothing for credits; the LibriVox feed's translators are what surfaced them.)
+func TestBuildWorkCredits(t *testing.T) {
 	db := buildFixture(t)
-
-	// The work built normally despite carrying credits.
-	var title string
-	if err := db.QueryRow(`SELECT title FROM works WHERE id=?`, "project-hail-mary").Scan(&title); err != nil {
-		t.Fatalf("work with credits did not build: %v", err)
-	}
-	if title != "Project Hail Mary" {
-		t.Errorf("title = %q", title)
-	}
-
-	// No credits table was invented along the way.
-	var n int
-	if err := db.QueryRow(`SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name LIKE '%credit%'`).Scan(&n); err != nil {
-		t.Fatal(err)
-	}
-	if n != 0 {
-		t.Errorf("the builder created %d credit table(s); the artifact is unchanged this round", n)
+	got := triples(t, db, `SELECT work_id, person_id, role FROM work_credits ORDER BY work_id, ord`)
+	want := [][3]string{{"project-hail-mary", "andy-weir", model.RoleTranslator}}
+	if !slices.Equal(got, want) {
+		t.Errorf("work_credits = %v, want %v", got, want)
 	}
 }
 

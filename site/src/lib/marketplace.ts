@@ -85,6 +85,9 @@ export function retailerLabel(retailer: string, region?: string): string {
     case 'libro-fm':
       name = 'Libro.fm'
       break
+    case 'librivox':
+      name = 'LibriVox'
+      break
   }
   return region ? `${name} (${region.toUpperCase()})` : name
 }

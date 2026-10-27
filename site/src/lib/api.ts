@@ -139,6 +139,8 @@ export interface PurchaseLink {
   region?: string
   url: string
   availability: string
+  /** Present only when true: a recording free to listen to (LibriVox). */
+  free?: boolean
 }
 
 export interface Recording {

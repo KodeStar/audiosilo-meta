@@ -147,7 +147,7 @@
       "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
     },
     "links": {
-      "description": "Where the recording is published, as the source stated each URL: its catalogue page (librivox), a zip of every file (zip) and its podcast feed (rss). https only.",
+      "description": "Where the recording is published, as the source stated each URL: its catalogue page (librivox), a zip of every file (zip), its podcast feed (rss) and the text it reads from (text). https only.",
       "type": "object",
       "additionalProperties": false,
       "minProperties": 1,
@@ -160,8 +160,16 @@
         },
         "rss": {
           "$ref": "common.schema.json#/$defs/https_url"
+        },
+        "text": {
+          "description": "The text the recording reads from, as the source states it (LibriVox: url_text_source).",
+          "$ref": "common.schema.json#/$defs/https_url"
         }
       }
+    },
+    "copyright_year": {
+      "description": "The copyright year of the text this recording reads, as the source stated it (LibriVox: copyright_year; its 0, meaning unstated, is never written). Negative for a year BC. A fact about the recorded text, deliberately not the work's first_published, which another source may own.",
+      "$ref": "common.schema.json#/$defs/signed_year"
     },
     "added_at": {
       "description": "When this recording entered the database. Stamped at creation by the importer and the intake bot as a plain date; records dated by the one-time git-history backfill carry that commit's full timestamp verbatim. Optional, since records predating the field carry none.",

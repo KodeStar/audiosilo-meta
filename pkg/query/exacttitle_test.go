@@ -131,7 +131,7 @@ func TestExactTitleBoost(t *testing.T) {
 func TestExactTitleBoostFixesTheRanking(t *testing.T) {
 	snap := openTestDB(t, artifacttest.Build(t, exactTitleCatalog()))
 
-	hits, err := snap.ftsHits(t.Context(), kindWork, ftsQuery("spare"), 20, nil)
+	hits, err := snap.ftsHits(t.Context(), kindWork, ftsQuery("spare"), 20, nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -187,7 +187,7 @@ func TestExactTitleMisses(t *testing.T) {
 
 	// And the page a miss produces is exactly the FTS page, hit for hit.
 	const q = "spare room"
-	hits, err := snap.ftsHits(t.Context(), kindAny, ftsQuery(q), 20, nil)
+	hits, err := snap.ftsHits(t.Context(), kindAny, ftsQuery(q), 20, nil, "")
 	if err != nil {
 		t.Fatal(err)
 	}

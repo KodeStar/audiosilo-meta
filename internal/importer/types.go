@@ -105,9 +105,10 @@ type outRecording struct {
 	// LibrivoxID / ArchiveID / Links are a LibriVox recording's identity, its
 	// Internet Archive item and where it is published (librivox.go); every other
 	// source leaves them empty.
-	LibrivoxID int                   `json:"librivox_id,omitempty"`
-	ArchiveID  string                `json:"archive_id,omitempty"`
-	Links      *model.RecordingLinks `json:"links,omitempty"`
+	LibrivoxID    int                   `json:"librivox_id,omitempty"`
+	ArchiveID     string                `json:"archive_id,omitempty"`
+	Links         *model.RecordingLinks `json:"links,omitempty"`
+	CopyrightYear int                   `json:"copyright_year,omitempty"`
 	// AddedAt is stamped only on a recording the run CREATES; see outWork.
 	AddedAt string      `json:"added_at,omitempty"`
 	License string      `json:"license"`

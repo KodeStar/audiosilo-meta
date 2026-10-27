@@ -94,6 +94,15 @@ var sourceTiers = map[string]SourceTier{
 	SourceCommunity:     TierReference,
 }
 
+// KnownSourceType reports whether t is a sources[].type the schema's enum names
+// (sourceTiers holds every one - TestSourceTiersCoverSchemaEnum). The API's
+// source filter reads it, so an unknown value is a 400 rather than a filter that
+// silently matches nothing.
+func KnownSourceType(t string) bool {
+	_, ok := sourceTiers[t]
+	return ok
+}
+
 // TierOfSource ranks one sources[] entry type. An unrecognized type is
 // TierReference (see the constant): unknown means "not classified", never
 // "overwritable".
