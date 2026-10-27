@@ -33,6 +33,12 @@ import (
 // rule, same runtime/date contradiction guard, same libex-import provenance, so
 // a fetched row can do nothing an operator's row could not.
 //
+// The same fetch serves the POST-RELEASE REFRESH (refresh.go): with
+// --released-preorders the selection is SelectRefreshTargets - the preorder-era
+// recordings whose release date has passed - instead of the gaps, every target
+// asks for its chapters payload, and the enrichment those rows go through is the
+// one that refreshes them.
+//
 // The live service is the source rather than a dump because a dump is a
 // point-in-time mirror of libex's own database and the recent ASINs are exactly
 // the ones missing from it - all three ASINs our dump lacked for the #1405
@@ -47,10 +53,16 @@ const LibexBase = "https://libexdb.com"
 // superset of them, so projecting it down to exactly these keys yields a row
 // indistinguishable from a dump row - which is what lets the fetched rows go
 // through the ordinary enrichment path with no special case anywhere in it.
+//
+// productState and updatedAt are the two a live record adds that the parse
+// layer reads beyond the dump's: when libex last wrote the record (the capture
+// day the preorder-estimate rule judges "released" by) and whether the product
+// is on sale yet (the post-release refresh, refresh.go). A dump row simply
+// lacks them, which every reader takes as "not stated".
 var libexFillRowKeys = []string{
 	"asin", "authors", "bookFormat", "chapters", "genres", "imageUrl",
-	"language", "lengthMinutes", "narrators", "publisher", "region",
-	"releaseDate", "series", "subtitle", "title",
+	"language", "lengthMinutes", "narrators", "productState", "publisher", "region",
+	"releaseDate", "series", "subtitle", "title", "updatedAt",
 }
 
 // FillTarget is one recording the catalogue can have filled: an ASIN, and what
@@ -61,6 +73,10 @@ type FillTarget struct {
 	Recording    string
 	NeedCover    bool
 	NeedChapters bool
+	// RefreshChapters asks for the chapters payload of a RELEASED listing even
+	// where the recording has a chapter list (SelectRefreshTargets): a release
+	// most often corrects the table a preorder listing carried.
+	RefreshChapters bool
 }
 
 // SelectFillTargets returns the recordings that carry an ASIN but lack a cover,
@@ -69,25 +85,31 @@ type FillTarget struct {
 // Sorted by ASIN so a run's fetch order - and therefore its output, its rate
 // limiting and its --limit truncation - does not depend on map iteration.
 func SelectFillTargets(cat *model.Catalog) []FillTarget {
+	return selectTargets(cat, func(r *model.Recording) (FillTarget, bool) {
+		t := FillTarget{NeedCover: r.CoverURL == "", NeedChapters: len(r.Chapters) == 0}
+		return t, t.NeedCover || t.NeedChapters
+	})
+}
+
+// selectTargets is the selection walker both selections share: every recording
+// want keeps, named by its first non-empty ASIN (one is enough to identify the
+// recording; a regional sibling would fetch the same production twice), sorted
+// by ASIN so a run's fetch order - and therefore its output, its rate limiting
+// and its --limit truncation - does not depend on map iteration.
+func selectTargets(cat *model.Catalog, want func(*model.Recording) (FillTarget, bool)) []FillTarget {
 	var out []FillTarget
 	for _, w := range cat.Works {
 		for _, r := range w.Recordings {
-			needCover := r.CoverURL == ""
-			needChapters := len(r.Chapters) == 0
-			if !needCover && !needChapters {
+			t, ok := want(r)
+			if !ok {
 				continue
 			}
 			for _, a := range r.ASIN {
-				if a.ASIN == "" {
-					continue
+				if a.ASIN != "" {
+					t.ASIN, t.Work, t.Recording = a.ASIN, w.ID, r.ID
+					out = append(out, t)
+					break
 				}
-				out = append(out, FillTarget{
-					ASIN: a.ASIN, Work: w.ID, Recording: r.ID,
-					NeedCover: needCover, NeedChapters: needChapters,
-				})
-				// One ASIN is enough to identify the recording; a regional
-				// sibling would fetch the same production twice.
-				break
 			}
 		}
 	}
@@ -130,16 +152,13 @@ func UserLibraryOnly(targets []FillTarget, cat *model.Catalog) []FillTarget {
 	return out
 }
 
-// SelectFillTargetsIn is SelectFillTargets restricted to a set of work ids -
-// what the intake path uses, so a run triggered by one import fills that
-// import's records rather than walking the whole catalogue.
-func SelectFillTargetsIn(cat *model.Catalog, works map[string]bool) []FillTarget {
-	if len(works) == 0 {
-		return nil
-	}
-	all := SelectFillTargets(cat)
-	out := all[:0:0]
-	for _, t := range all {
+// RestrictToWorks keeps the targets in a set of work ids - what the intake path
+// uses, so a run triggered by one import fills that import's records rather than
+// walking the whole catalogue, and what --works applies to either selection
+// (SelectFillTargets, SelectRefreshTargets).
+func RestrictToWorks(targets []FillTarget, works map[string]bool) []FillTarget {
+	out := targets[:0:0]
+	for _, t := range targets {
 		if works[t.Work] {
 			out = append(out, t)
 		}
@@ -155,14 +174,20 @@ type LibexClient struct {
 	// person and the live path proxies to Audible, so a fill run is deliberately
 	// polite rather than fast.
 	Pause time.Duration
+	// Day is the run's date (YYYY-MM-DD): a fetched record stating no updatedAt
+	// is judged released or not as of it (libexRecordReleased), the day the
+	// enrichment that follows reads it as captured.
+	Day string
 }
 
-// NewLibexClient returns a client with the defaults a fill run uses.
+// NewLibexClient returns a client with the defaults a fill run uses; Day is
+// today, for a caller that sets no run date.
 func NewLibexClient() *LibexClient {
 	return &LibexClient{
 		BaseURL: LibexBase,
 		HTTP:    &http.Client{Timeout: 30 * time.Second},
 		Pause:   250 * time.Millisecond,
+		Day:     time.Now().UTC().Format("2006-01-02"),
 	}
 }
 
@@ -399,7 +424,7 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 			continue
 		}
 		row := libexFillRow(rec)
-		if t.NeedChapters && chapterListOf(rec) == nil {
+		if (t.NeedChapters || t.RefreshChapters && libexRecordReleased(rec, c.Day)) && chapterListOf(rec) == nil {
 			if err := pace(); err != nil {
 				return rep, err
 			}
@@ -411,6 +436,21 @@ func (c *LibexClient) FetchRows(ctx context.Context, targets []FillTarget, w io.
 		rep.Fetched++
 	}
 	return rep, nil
+}
+
+// libexRecordReleased reports whether a fetched record is a RELEASED listing by
+// the rule the refresh reads (planner.rowReleased): its release date on or
+// before the day libex last wrote it (day, the run's date, where it does not
+// say; no full day is no verdict, as rowReleased reads it), and its
+// productState AVAILABLE where stated.
+func libexRecordReleased(rec map[string]any, day string) bool {
+	str := func(k string) string { s, _ := rec[k].(string); return s }
+	if t := model.TimeKey(str("updatedAt")); len(t) >= 10 && datePattern.MatchString(t[:10]) {
+		day = t[:10]
+	}
+	rd := isoDatePart(str("releaseDate"))
+	state := str("productState")
+	return datePattern.MatchString(rd) && len(day) == len("2006-01-02") && !releasedAfter(rd, day) && (state == "" || state == releasedProductState)
 }
 
 // fillChapters fetches the chapters payload for one target and attaches it to

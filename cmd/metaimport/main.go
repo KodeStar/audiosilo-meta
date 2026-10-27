@@ -88,7 +88,16 @@
 // apply (roughly 6GB of live heap for libex's 1.06M-row dump), so the
 // recommended input is still a pre-filtered row set: the libex-select output, or
 // rows filtered to catalogued ASINs at export time. Feeding the raw dump needs a
-// machine sized for it.
+// machine sized for it. The one replacement it makes is the POST-RELEASE
+// REFRESH: a recording catalogued from a preorder listing, met by a released row
+// of its own ASIN, takes that row's runtime, cover, chapters and release date
+// (internal/importer/refresh.go).
+//
+// libex-fill selects the rows itself and fetches them from the libex service:
+// by default the user-library recordings missing a cover or chapters;
+// --released-preorders instead selects every preorder-era recording whose
+// release date has passed (by --date) and refreshes it. With --dry-run it is the
+// count of what a refresh would change, per field, without writing.
 //
 // --recordings-only (libex only) switches to adding ALTERNATE NARRATIONS to
 // works the catalogue already holds: a row is resolved to an existing work by
@@ -643,7 +652,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only | --relocate | --regenerate-genres --rows-as-of YYYY-MM-DD [--genre-changes <path>]] [--existing-series-only] [--attach-editions] [--skipped <path>]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N] [--attach-editions] [--refusals <path>] [--attachments <path>] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers] [--dry-run]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex-fill  [--data data] [--works a,b] [--limit N] [--all-tiers | --released-preorders] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --conflicts <path> appends one NDJSON row per refused contradiction (a durable worklist).")
 	fmt.Fprintln(os.Stderr, "  --series-lookup (user-library sources) fills a series position the export did not state by")
@@ -665,7 +674,9 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "    with newer provenance is not judged; --genre-changes <path> writes one NDJSON line per changed work.")
 	fmt.Fprintln(os.Stderr, "  libex-fill looks up the recordings that carry an ASIN but no cover (or no chapters) and")
 	fmt.Fprintln(os.Stderr, "    enriches them from the live libex service. It covers USER-LIBRARY imports only unless")
-	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids.")
+	fmt.Fprintln(os.Stderr, "    --all-tiers is given; --works limits it further to those work ids. --released-preorders instead")
+	fmt.Fprintln(os.Stderr, "    selects the preorder-era recordings whose release date has passed (by --date, default today)")
+	fmt.Fprintln(os.Stderr, "    and refreshes their runtime, cover, chapters and release date from the released listing.")
 }
 
 // runLibexFill parses the flags for the libex-fill subcommand and runs it.
@@ -686,8 +697,13 @@ func runLibexFill(args []string) int {
 	conflicts := fs.String("conflicts", "", "append one NDJSON row per refused contradiction")
 	base := fs.String("libex", importer.LibexBase, "libex base URL")
 	allTiers := fs.Bool("all-tiers", false, "also fill bulk-mirror-seeded records (default: user-library imports only)")
+	released := fs.Bool("released-preorders", false, "refresh the preorder-era recordings whose release date has passed, instead of filling gaps")
 	if err := fs.Parse(args); err != nil {
 		usage()
+		return 2
+	}
+	day, ok := runDate(*date)
+	if !ok {
 		return 2
 	}
 
@@ -698,26 +714,38 @@ func runLibexFill(args []string) int {
 	}
 
 	var targets []importer.FillTarget
-	if strings.TrimSpace(*works) == "" {
+	switch {
+	case *released:
+		// A preorder-era record is bulk-mirror-only by definition, so the
+		// user-library bound would select nothing: --all-tiers is implied.
+		targets = importer.SelectRefreshTargets(cat, day)
+	case !*allTiers:
+		targets = importer.UserLibraryOnly(importer.SelectFillTargets(cat), cat)
+	default:
 		targets = importer.SelectFillTargets(cat)
-	} else {
+	}
+	if strings.TrimSpace(*works) != "" {
 		set := map[string]bool{}
 		for _, w := range strings.Split(*works, ",") {
 			if w = strings.TrimSpace(w); w != "" {
 				set[w] = true
 			}
 		}
-		targets = importer.SelectFillTargetsIn(cat, set)
+		targets = importer.RestrictToWorks(targets, set)
 	}
-	if !*allTiers {
-		targets = importer.UserLibraryOnly(targets, cat)
+	if *released {
+		fmt.Printf("libex-fill: %d released preorder-era %s to refresh\n", len(targets), plural(len(targets), "recording", "recordings"))
 	}
 	if *limit > 0 && len(targets) > *limit {
-		fmt.Fprintf(os.Stderr, "metaimport: %d recordings need filling; --limit stops after %d\n", len(targets), *limit)
+		fmt.Fprintf(os.Stderr, "metaimport: %d recordings selected; --limit stops after %d\n", len(targets), *limit)
 		targets = targets[:*limit]
 	}
 	if len(targets) == 0 {
-		fmt.Println("libex-fill: nothing to fill (every ASIN-bearing recording already has a cover and chapters)")
+		if *released {
+			fmt.Println("libex-fill: nothing to refresh (no preorder-era recording has reached its release date)")
+		} else {
+			fmt.Println("libex-fill: nothing to fill (every ASIN-bearing recording already has a cover and chapters)")
+		}
 		return 0
 	}
 
@@ -730,6 +758,7 @@ func runLibexFill(args []string) int {
 
 	client := importer.NewLibexClient()
 	client.BaseURL = *base
+	client.Day = day
 	rep, err := client.FetchRows(context.Background(), targets, rows)
 	if cerr := rows.Close(); err == nil && cerr != nil {
 		err = cerr
@@ -747,7 +776,7 @@ func runLibexFill(args []string) int {
 		return 0
 	}
 
-	opts := importer.Options{DataDir: *dataDir, ImportDate: *date, DryRun: *dryRun, Mode: importer.ModeEnrich}
+	opts := importer.Options{DataDir: *dataDir, ImportDate: day, DryRun: *dryRun, Mode: importer.ModeEnrich}
 	if *conflicts != "" {
 		f, err := os.OpenFile(*conflicts, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o644)
 		if err != nil {

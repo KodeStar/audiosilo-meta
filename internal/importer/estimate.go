@@ -36,9 +36,12 @@ import (
 //     evidence, so it reads an estimate's minutes at the 10% rule
 //     (rowProduction.sameProductionAs). The abridged guard, the series-position
 //     guard and the narrator set still decide as before.
-//  2. CORRECTION: a released row stating a runtime REPLACES a recorded estimate,
-//     on the ASIN merge and on --enrich (correctEstimate), unless the chapter
-//     timeline - or, with none, the estimate bound - refutes the stated value.
+//  2. CORRECTION: a released row stating a runtime REPLACES a recorded estimate.
+//     On the ASIN merge (correctEstimate, a row of ANOTHER ASIN) unless the
+//     chapter timeline - or, with none, the estimate bound - refutes the stated
+//     value (judgeMergedRuntime). A row of the recording's OWN ASIN is the
+//     post-release REFRESH instead (refresh.go), which reads its own predicate
+//     and replaces more than the runtime.
 //
 // WHICH runtimes are estimates is decided by provenance and dates, never by the
 // value itself:
@@ -47,9 +50,9 @@ import (
 //     (nothing is ever relaxed for a record a user attested) and its
 //     release_date is LATER than every dated statement the mirror made about
 //     it: each sources[].imported_at (added_at only where no source is dated).
-//     A post-release stamp - an ASIN merge or enrichment by a released row -
-//     ENDS the state (stampSource writes it even where its ref is already
-//     recorded, see endsEstimate, but only for a row that states a runtime);
+//     A post-release stamp ENDS the state: an ASIN merge's (a new ref), or a
+//     refresh's (stampSource writes it even where its ref is already recorded,
+//     see restates);
 //   - a ROW's runtime is an estimate iff the run is a bulk-mirror run and the
 //     row's release date is later than the day the row was CAPTURED (rowDay): a
 //     libex row's own updatedAt, else --rows-as-of, else the run's date. A
@@ -103,7 +106,10 @@ import (
 // runtime is refused as a contradiction (TestAMergeStatingNoRuntimeEndsTheEstimate
 // pins it). Closing it means recording which statement stated the runtime - a
 // schema change - or dating a post-release statement before the release, which
-// would be false provenance. It is measured as rare: every one of the 526 live
+// would be false provenance. The post-release REFRESH (refresh.go) closes it in
+// practice for the recording's own ASIN: it reads its own predicate, which a
+// merge's new ref does not end, so the first released row of an own ASIN still
+// replaces the runtime the guards read as measured. It is measured as rare: every one of the 526 live
 // libex records above states a runtime, and 131 of the tree's 289,427
 // bulk-mirror-only recordings (77 of them released) were catalogued from a row
 // stating none.
@@ -240,23 +246,6 @@ func syncRecInfo(ri *recInfo, raw map[string]any) {
 	}
 }
 
-// endsEstimate reports whether this run's stamp on raw is the post-release
-// statement that ends its estimate state: the row states a runtime (the one a
-// correction judged - correctEstimate runs before every stamp it can end), the
-// recording is still an estimate, and the stamp itself is dated on or after the
-// release (a row captured before release is dated its capture day, setSource,
-// so it ends nothing). stampSource then writes the stamp even where an entry of
-// the same type and ref is already recorded. A row stating no runtime said
-// nothing about the estimate, so its stamp is deduplicated as usual and the
-// estimate stays correctable (the header's open gap is the merge of a NEW ref,
-// which no deduplication touches). Once written, the recording is no estimate,
-// so a later stamp of the run - or a re-run - is deduplicated as usual and
-// sources[] never grows by repetition.
-func (p *planner) endsEstimate(raw map[string]any) bool {
-	day := p.curSource.ImportedAt
-	return p.curStatesRuntime && len(day) == 10 && rawRuntimeEstimated(raw) && !releasedAfter(coerceStr(raw["release_date"]), day)
-}
-
 // rowDay is the day a row's statement was CAPTURED, which is what decides
 // whether the row knew the release: a libex row's own updatedAt (the day libex
 // last wrote it - a row not written since before its release still holds the
@@ -281,8 +270,8 @@ func (p *planner) rowEstimate(b sourceBook) bool {
 // statementDay is the imported_at a row's provenance carries: the run's date,
 // except that a preorder row captured before the run is dated its capture day -
 // the statement it records was made before the release, and dating it after
-// would end the estimate state of the recording it is stamped on (endsEstimate,
-// runtimeEstimated) on a value nobody has corrected.
+// would end the estimate state of the recording it is stamped on
+// (runtimeEstimated) on a value nobody has corrected.
 func (p *planner) statementDay(b sourceBook) string {
 	if day := p.rowDay(b); day < p.importDate && p.rowEstimate(b) {
 		return day
@@ -308,62 +297,44 @@ func (p *planner) setEvidenceRuntime(b *sourceBook) {
 	}
 }
 
-// rowReleased reports whether the row's own release date had passed when the
-// row was captured (rowDay) - the condition for its runtime to replace a
-// recorded estimate. A row stating no date, or with no capture day, has not
-// shown that it has.
+// rowReleased reports whether the row is a RELEASED listing - the condition for
+// its runtime to replace a recorded estimate, on the merge and in the refresh:
+// its own release date had passed when it was captured (rowDay), and its libex
+// productState, where it carries one, is AVAILABLE (a record still
+// AVAILABLE_FOR_PREORDER past its date has not been corrected yet). A row
+// stating no date, or with no capture day, has not shown that it is.
 func (p *planner) rowReleased(b sourceBook) bool {
 	rd, day := b.str("release_date"), p.rowDay(b)
-	return rd != "" && datePattern.MatchString(rd) && len(day) == 10 && !releasedAfter(rd, day)
+	return rd != "" && datePattern.MatchString(rd) && len(day) == 10 && !releasedAfter(rd, day) &&
+		(b.productState == "" || b.productState == releasedProductState)
 }
 
-// correctEstimate is the CORRECTION half: a released row stating a runtime
+// releasedProductState is libex's productState for a product on sale.
+const releasedProductState = "AVAILABLE"
+
+// correctEstimate is the CORRECTION half on the ASIN MERGE: a released row of
+// ANOTHER ASIN, which the merge judged the same production, stating a runtime
 // replaces a recorded estimate (asked of raw before anything this run stamps on
 // it). It reports whether raw changed. The replacement is withheld when the
-// stated runtime is not the same production's by sameRuntime against the best
-// evidence there is:
+// stated runtime is not the same production's by judgeMergedRuntime. A row of
+// the recording's OWN ASIN is the post-release REFRESH instead (refresh.go).
 //
-//   - the row carries a clean chapter list: it is the post-release timeline. If
-//     it agrees (within 10%) with the stated runtime both replace the recorded
-//     ones; if it contradicts its own row's runtime nothing is replaced;
-//   - the row carries none: a recorded chapter list that agrees with the stated
-//     runtime stays; one that contradicts it keeps the recorded runtime too;
-//   - neither carries one: the stated runtime replaces the estimate when it is
-//     within estimateTolerancePct of it, and is withheld otherwise.
-//
-// The evidence is the header's measurement: a preorder listing usually already
-// carries the real chapter table, and dropping a correct timeline for a runtime
-// it refutes would replace a fact with a guess. A replacement is reported in the
-// run's aggregated note, a withheld one in its own; neither is a contradiction,
-// so neither reaches the conflict worklist.
+// A replacement is reported in the run's aggregated note, a withheld one in its
+// own; neither is a contradiction, so neither reaches the conflict worklist.
 func (p *planner) correctEstimate(raw map[string]any, ref RecRef, b sourceBook) bool {
 	stated := b.runtimeMin
 	if stated <= 0 || !p.rowReleased(b) {
 		return false
 	}
-	// No recorded runtime is no estimate to replace: enrichment fills an absent
-	// one itself, and a merged regional row never fills one.
+	// No recorded runtime is no estimate to replace: a merged regional row never
+	// fills one.
 	recorded, _ := coerceInt(raw["runtime_min"])
 	if recorded <= 0 || int(recorded) == stated || !rawRuntimeEstimated(raw) {
 		return false
 	}
-	// Evidence only, like setEvidenceRuntime: the fill and create paths warn
-	// about a malformed table, so this read stays silent.
-	rowChapters := buildChapters(b.chapterRows(), func(string, ...any) {})
-	against := rawKnownRuntime(raw) // the recorded timeline, else the estimate itself
-	if len(rowChapters) > 0 {
-		against = runtimeEvidence{min: chapterMinutes(rowChapters)}
-	}
-	if !sameRuntime(against, runtimeEvidence{min: stated}) {
-		p.estimates.kept++
-		if len(p.estimates.keptExamples) < maxWarnExamples {
-			evidence := fmt.Sprintf("chapters %d", against.min)
-			if against.estimate {
-				evidence = "no chapters"
-			}
-			p.estimates.keptExamples = append(p.estimates.keptExamples,
-				fmt.Sprintf("%s/%s kept %d (stated %d, %s)", ref.Work, ref.Rec, recorded, stated, evidence))
-		}
+	rowChapters, against, ok := judgeMergedRuntime(raw, b)
+	if !ok {
+		p.noteKeptEstimate(ref, int(recorded), stated, against)
 		return false
 	}
 	setDecoded(raw, "runtime_min", stated)
@@ -376,6 +347,54 @@ func (p *planner) correctEstimate(raw map[string]any, ref RecRef, b sourceBook) 
 			fmt.Sprintf("%s/%s %d -> %d", ref.Work, ref.Rec, recorded, stated))
 	}
 	return true
+}
+
+// rowChapterEvidence is the row's own chapter list as a judgement reads it:
+// silent, because the fill and create paths warn about a malformed table.
+func rowChapterEvidence(b sourceBook) []outChapter {
+	return buildChapters(b.chapterRows(), func(string, ...any) {})
+}
+
+// judgeMergedRuntime is the merge's judgement of a released row's stated
+// runtime against a recorded preorder estimate. It returns the row's own chapter
+// list (nil when it states none that builds), the evidence the runtime was
+// judged against, and whether the stated runtime stands, by the best evidence
+// there is:
+//
+//   - the row carries a clean chapter list: it is the post-release timeline. If
+//     it agrees (within 10%) with the stated runtime both stand; if it
+//     contradicts its own row's runtime neither does;
+//   - the row carries none: a recorded chapter list must agree with the stated
+//     runtime (within 10%) - one that contradicts it keeps the recorded runtime;
+//   - neither carries one: the stated runtime stands within
+//     estimateTolerancePct of the estimate (the match is INFERRED).
+//
+// The evidence is the header's measurement: a preorder listing usually already
+// carries the real chapter table, and dropping a correct timeline for a runtime
+// it refutes would replace a fact with a guess. The refresh's own-ASIN twin is
+// judgeOwnASINRuntime.
+func judgeMergedRuntime(raw map[string]any, b sourceBook) (rowChapters []outChapter, against runtimeEvidence, ok bool) {
+	rowChapters = rowChapterEvidence(b)
+	if len(rowChapters) > 0 {
+		against = runtimeEvidence{min: chapterMinutes(rowChapters)}
+	} else {
+		against = rawKnownRuntime(raw) // the recorded timeline, else the estimate itself
+	}
+	return rowChapters, against, sameRuntime(against, runtimeEvidence{min: b.runtimeMin})
+}
+
+// noteKeptEstimate counts an estimate a released row restated and the
+// judgement withheld, naming a few for the run's note.
+func (p *planner) noteKeptEstimate(ref RecRef, recorded, stated int, against runtimeEvidence) {
+	p.estimates.kept++
+	if len(p.estimates.keptExamples) < maxWarnExamples {
+		evidence := fmt.Sprintf("chapters %d", against.min)
+		if against.estimate {
+			evidence = "no chapters"
+		}
+		p.estimates.keptExamples = append(p.estimates.keptExamples,
+			fmt.Sprintf("%s/%s kept %d (stated %d, %s)", ref.Work, ref.Rec, recorded, stated, evidence))
+	}
 }
 
 // setDecoded stores v under key in a decoded record in the form a fresh decode

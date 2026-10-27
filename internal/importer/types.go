@@ -319,6 +319,23 @@ type Summary struct {
 	// replaced is also an EnrichedRecordings one, and a merge also a MergedASINs
 	// one. The run's notes name a few, and those a chapter timeline kept.
 	EstimatesReplaced int
+	// RefreshedRecordings counts the PREORDER-ERA recordings a released row of
+	// one of their own ASINs refreshed (refresh.go) - every one of them written,
+	// since the refresh's stamp is what ends the state. RefreshedRuntimes,
+	// RefreshedCovers, RefreshedChapters and RefreshedReleaseDates count the
+	// fields it replaced; a refreshed recording is also an EnrichedRecordings
+	// one, but a refreshed runtime is never an EstimatesReplaced one (that is
+	// the ASIN merge's correction).
+	RefreshedRecordings   int
+	RefreshedRuntimes     int
+	RefreshedCovers       int
+	RefreshedChapters     int
+	RefreshedReleaseDates int
+	// MovedPreorderDates counts the preorder-era recordings whose release date
+	// a row of their first ASIN moved without refreshing them - an unreleased
+	// row, or a released one the refresh refused (refresh.go); each is also an
+	// EnrichedRecordings one.
+	MovedPreorderDates int
 	// AttestedWorks / AttestedRecordings count the bulk-mirror-only records a
 	// USER-library run took over: the row's stated facts overwrote the mirror's
 	// and the run's source entry was appended, so the record is user-attested

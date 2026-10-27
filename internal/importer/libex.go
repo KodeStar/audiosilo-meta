@@ -394,6 +394,7 @@ func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp
 	if day := model.TimeKey(e.str("updatedAt")); len(day) >= 10 && datePattern.MatchString(day[:10]) {
 		sb.capturedAt = day[:10]
 	}
+	sb.productState = e.str("productState")
 	if img := e.str("imageUrl"); img != "" {
 		if strings.HasPrefix(img, "https://") {
 			raw["image_url"] = img

@@ -129,18 +129,18 @@ func TestSelectFillTargetsPicksOnlyTheGaps(t *testing.T) {
 	}
 }
 
-func TestSelectFillTargetsInRestrictsToTheGivenWorks(t *testing.T) {
+func TestRestrictToWorksKeepsTheGivenWorks(t *testing.T) {
 	cat := &model.Catalog{Works: []*model.Work{
 		{ID: "wanted", Recordings: []*model.Recording{
 			{ID: "r", ASIN: []model.ASIN{{Region: "us", ASIN: "B1"}}}}},
 		{ID: "other", Recordings: []*model.Recording{
 			{ID: "r", ASIN: []model.ASIN{{Region: "us", ASIN: "B2"}}}}},
 	}}
-	got := SelectFillTargetsIn(cat, map[string]bool{"wanted": true})
+	got := RestrictToWorks(SelectFillTargets(cat), map[string]bool{"wanted": true})
 	if len(got) != 1 || got[0].Work != "wanted" {
 		t.Fatalf("restricted select = %+v, want only the wanted work", got)
 	}
-	if n := len(SelectFillTargetsIn(cat, nil)); n != 0 {
+	if n := len(RestrictToWorks(SelectFillTargets(cat), nil)); n != 0 {
 		t.Errorf("an empty work set selected %d targets, want 0", n)
 	}
 }
@@ -149,7 +149,8 @@ const liveRecord = `{"asin":"B0LIVE","title":"A Book","subtitle":"Sub","language
 "bookFormat":"unabridged","lengthMinutes":300,"publisher":"Pub","region":"us",
 "releaseDate":"2020-01-01T00:00:00+00:00","imageUrl":"https://m.media-amazon.com/images/I/x.jpg",
 "authors":[{"name":"Author One","updatedAt":null}],"narrators":[{"name":"Narrator One","updatedAt":null}],
-"series":[],"genres":[],"description":"dropped","rating":4.5,"isVvab":false}`
+"series":[],"genres":[],"description":"dropped","rating":4.5,"isVvab":false,
+"productState":"AVAILABLE","updatedAt":"2026-10-27T04:24:18.183370+00:00"}`
 
 func TestFetchRowsProjectsToTheExportRowShape(t *testing.T) {
 	srv := libexFillServer(t, &libexFill{records: map[string]string{"B0LIVE": liveRecord}})
@@ -456,5 +457,48 @@ func TestUserLibraryOnlyBoundsTheAutomaticPass(t *testing.T) {
 	// limitation of the selector.
 	if n := len(SelectFillTargets(cat)); n != 2 {
 		t.Errorf("unbounded select = %d, want both", n)
+	}
+}
+
+// A refresh target asks for a released listing's chapters even where the
+// recording has a list, and not for a listing still on preorder.
+func TestFetchRowsRefreshesChaptersOnlyForAReleasedListing(t *testing.T) {
+	released := strings.Replace(liveRecord, `"releaseDate":"2020-01-01T00:00:00+00:00"`, `"releaseDate":"2026-10-01T00:00:00+00:00"`, 1)
+	preorder := strings.Replace(released, `"productState":"AVAILABLE"`, `"productState":"AVAILABLE_FOR_PREORDER"`, 1)
+	future := strings.Replace(released, `"releaseDate":"2026-10-01T00:00:00+00:00"`, `"releaseDate":"2026-11-01T00:00:00+00:00"`, 1)
+	for _, tc := range []struct {
+		name, record string
+		want         bool
+	}{
+		{"released", released, true},
+		{"still for preorder", preorder, false},
+		{"released after libex last wrote it", future, false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			f := &libexFill{records: map[string]string{"B0LIVE": tc.record}, chapters: map[string]string{"B0LIVE": chapterPayload(300, true)}}
+			_, rep := fetchOneRow(t, libexFillServer(t, f), FillTarget{ASIN: "B0LIVE", RefreshChapters: true})
+			if got := f.saw("/db/book/B0LIVE/chapters"); got != tc.want {
+				t.Errorf("asked for chapters = %v, want %v (report %+v)", got, tc.want, rep)
+			}
+		})
+	}
+}
+
+// A record stating no updatedAt is judged as of the run's date (Day), the day
+// the enrichment reads it as captured - never the wall clock.
+func TestLibexRecordReleasedFallsBackToTheRunDate(t *testing.T) {
+	rec := map[string]any{"releaseDate": "2026-10-01T00:00:00+00:00", "productState": "AVAILABLE"}
+	if libexRecordReleased(rec, "2026-09-01") {
+		t.Errorf("released as of 2026-09-01, want not yet")
+	}
+	if !libexRecordReleased(rec, "2026-10-27") {
+		t.Errorf("not released as of 2026-10-27, want released")
+	}
+	if libexRecordReleased(rec, "") {
+		t.Errorf("released with no run date, want no verdict")
+	}
+	rec["updatedAt"] = "2026-09-15T10:00:00+00:00"
+	if libexRecordReleased(rec, "2026-10-27") {
+		t.Errorf("a record libex last wrote before its release read as released")
 	}
 }
