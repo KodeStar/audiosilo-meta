@@ -9976,7 +9976,114 @@
               "region": "us"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/717bVwRX0HL.jpg",
+          "chapters": [
+            {
+              "length_ms": 20760,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 43163,
+              "start_ms": 20760,
+              "title": "Argument"
+            },
+            {
+              "length_ms": 859672,
+              "start_ms": 63923,
+              "title": "Sendra"
+            },
+            {
+              "length_ms": 937877,
+              "start_ms": 923595,
+              "title": "Nyr"
+            },
+            {
+              "length_ms": 1264442,
+              "start_ms": 1861472,
+              "title": "Sendra"
+            },
+            {
+              "length_ms": 985315,
+              "start_ms": 3125914,
+              "title": "Nyr"
+            },
+            {
+              "length_ms": 721629,
+              "start_ms": 4111229,
+              "title": "Lyn"
+            },
+            {
+              "length_ms": 908898,
+              "start_ms": 4832858,
+              "title": "Nyr"
+            },
+            {
+              "length_ms": 428593,
+              "start_ms": 5741756,
+              "title": "Sendra"
+            },
+            {
+              "length_ms": 962258,
+              "start_ms": 6170349,
+              "title": "Lyn"
+            },
+            {
+              "length_ms": 753324,
+              "start_ms": 7132607,
+              "title": "Nyr"
+            },
+            {
+              "length_ms": 707790,
+              "start_ms": 7885931,
+              "title": "Lyn"
+            },
+            {
+              "length_ms": 671172,
+              "start_ms": 8593721,
+              "title": "Sendra"
+            },
+            {
+              "length_ms": 375675,
+              "start_ms": 9264893,
+              "title": "Lyn"
+            },
+            {
+              "length_ms": 897288,
+              "start_ms": 9640568,
+              "title": "Nyr"
+            },
+            {
+              "length_ms": 826305,
+              "start_ms": 10537856,
+              "title": "Sendra"
+            },
+            {
+              "length_ms": 1106593,
+              "start_ms": 11364161,
+              "title": "Nyr"
+            },
+            {
+              "length_ms": 580359,
+              "start_ms": 12470754,
+              "title": "Lyn"
+            },
+            {
+              "length_ms": 1132808,
+              "start_ms": 13051113,
+              "title": "Nyr"
+            },
+            {
+              "length_ms": 846491,
+              "start_ms": 14183921,
+              "title": "Everyone"
+            },
+            {
+              "length_ms": 45595,
+              "start_ms": 15030412,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81JCMHliaHL.jpg",
           "id": "john-lee-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -9985,10 +10092,15 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-09-01",
-          "runtime_min": 420,
+          "runtime_min": 251,
           "sources": [
             {
               "imported_at": "2026-07-30",
+              "ref": "B0H6N7S6ZV",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0H6N7S6ZV",
               "type": "libex-import"
             }

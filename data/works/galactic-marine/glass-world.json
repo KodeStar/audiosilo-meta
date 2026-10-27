@@ -862,6 +862,163 @@
               "region": "us"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 17484,
+              "start_ms": 0,
+              "title": "001 Vorspann"
+            },
+            {
+              "length_ms": 22291,
+              "start_ms": 17484,
+              "title": "002 Triggerwarnung"
+            },
+            {
+              "length_ms": 28119,
+              "start_ms": 39775,
+              "title": "003 Widmung"
+            },
+            {
+              "length_ms": 1362383,
+              "start_ms": 67894,
+              "title": "004 Prolog"
+            },
+            {
+              "length_ms": 1814011,
+              "start_ms": 1430277,
+              "title": "008 Chapter 1"
+            },
+            {
+              "length_ms": 1030709,
+              "start_ms": 3244288,
+              "title": "014 Chapter 2"
+            },
+            {
+              "length_ms": 1473024,
+              "start_ms": 4274997,
+              "title": "017 Chapter 3"
+            },
+            {
+              "length_ms": 1785241,
+              "start_ms": 5748021,
+              "title": "022 Chapter 4"
+            },
+            {
+              "length_ms": 1758259,
+              "start_ms": 7533262,
+              "title": "028 Chapter 5"
+            },
+            {
+              "length_ms": 2234755,
+              "start_ms": 9291521,
+              "title": "033 Chapter 6"
+            },
+            {
+              "length_ms": 1650193,
+              "start_ms": 11526276,
+              "title": "040 Chapter 7"
+            },
+            {
+              "length_ms": 1332382,
+              "start_ms": 13176469,
+              "title": "045 Chapter 8"
+            },
+            {
+              "length_ms": 1405665,
+              "start_ms": 14508851,
+              "title": "049 Chapter 9"
+            },
+            {
+              "length_ms": 2493727,
+              "start_ms": 15914516,
+              "title": "053 Chapter 10"
+            },
+            {
+              "length_ms": 2160776,
+              "start_ms": 18408243,
+              "title": "061 Chapter 11"
+            },
+            {
+              "length_ms": 1628739,
+              "start_ms": 20569019,
+              "title": "068 Chapter 12"
+            },
+            {
+              "length_ms": 1721501,
+              "start_ms": 22197758,
+              "title": "073 Chapter 13"
+            },
+            {
+              "length_ms": 2663419,
+              "start_ms": 23919259,
+              "title": "078 Chapter 14"
+            },
+            {
+              "length_ms": 1283527,
+              "start_ms": 26582678,
+              "title": "086 Chapter 15"
+            },
+            {
+              "length_ms": 1942997,
+              "start_ms": 27866205,
+              "title": "090 Chapter 16"
+            },
+            {
+              "length_ms": 1263163,
+              "start_ms": 29809202,
+              "title": "096 Chapter 17"
+            },
+            {
+              "length_ms": 1905519,
+              "start_ms": 31072365,
+              "title": "100 Chapter 18"
+            },
+            {
+              "length_ms": 1423497,
+              "start_ms": 32977884,
+              "title": "106 Chapter 19"
+            },
+            {
+              "length_ms": 1243124,
+              "start_ms": 34401381,
+              "title": "111 Chapter 20"
+            },
+            {
+              "length_ms": 1376848,
+              "start_ms": 35644505,
+              "title": "115 Chapter 21"
+            },
+            {
+              "length_ms": 1252808,
+              "start_ms": 37021353,
+              "title": "120 Chapter 22"
+            },
+            {
+              "length_ms": 1600642,
+              "start_ms": 38274161,
+              "title": "124 Chapter 23"
+            },
+            {
+              "length_ms": 1115623,
+              "start_ms": 39874803,
+              "title": "129 Chapter 24"
+            },
+            {
+              "length_ms": 622572,
+              "start_ms": 40990426,
+              "title": "133 Chapter 25"
+            },
+            {
+              "length_ms": 856792,
+              "start_ms": 41612998,
+              "title": "135 Chapter 26"
+            },
+            {
+              "length_ms": 53985,
+              "start_ms": 42469790,
+              "title": "138 Abspann"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/91tFxhVaREL.jpg",
           "id": "lena-tiemann-2026",
           "language": "de",
@@ -871,10 +1028,15 @@
           ],
           "publisher": "Random House Audio",
           "release_date": "2026-09-28",
-          "runtime_min": 900,
+          "runtime_min": 708,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0GYYFZSZZ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0GYYFZSZZ",
               "type": "libex-import"
             }

@@ -5307,7 +5307,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71tWVa7UhAL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91Sq0ZSX06L.jpg",
           "id": "julienne-irons-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -5361,6 +5361,11 @@
             {
               "imported_at": "2026-10-07",
               "ref": "B0GP93V87K",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GP9MFLN9",
               "type": "libex-import"
             }
           ],
@@ -7780,129 +7785,139 @@
           ],
           "chapters": [
             {
-              "length_ms": 263429,
+              "length_ms": 20970,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 242459,
+              "start_ms": 20970,
+              "title": "Prologue"
             },
             {
               "length_ms": 758804,
               "start_ms": 263429,
-              "title": "Chapter 2"
+              "title": "Chapter 1"
             },
             {
               "length_ms": 810864,
               "start_ms": 1022233,
-              "title": "Chapter 3"
+              "title": "Chapter 2"
             },
             {
               "length_ms": 257207,
               "start_ms": 1833097,
-              "title": "Chapter 4"
+              "title": "Chapter 3"
             },
             {
               "length_ms": 1267902,
               "start_ms": 2090304,
-              "title": "Chapter 5"
+              "title": "Chapter 4"
             },
             {
               "length_ms": 1667657,
               "start_ms": 3358206,
-              "title": "Chapter 6"
+              "title": "Chapter 5"
             },
             {
               "length_ms": 660909,
               "start_ms": 5025863,
-              "title": "Chapter 7"
+              "title": "Chapter 6"
             },
             {
               "length_ms": 1455705,
               "start_ms": 5686772,
-              "title": "Chapter 8"
+              "title": "Chapter 7"
             },
             {
               "length_ms": 703402,
               "start_ms": 7142477,
-              "title": "Chapter 9"
+              "title": "Chapter 8"
             },
             {
               "length_ms": 878434,
               "start_ms": 7845879,
-              "title": "Chapter 10"
+              "title": "Chapter 9"
             },
             {
               "length_ms": 1046337,
               "start_ms": 8724313,
-              "title": "Chapter 11"
+              "title": "Chapter 10"
             },
             {
               "length_ms": 1387996,
               "start_ms": 9770650,
-              "title": "Chapter 12"
+              "title": "Chapter 11"
             },
             {
               "length_ms": 1487238,
               "start_ms": 11158646,
-              "title": "Chapter 13"
+              "title": "Chapter 12"
             },
             {
               "length_ms": 1738710,
               "start_ms": 12645884,
-              "title": "Chapter 14"
+              "title": "Chapter 13"
             },
             {
               "length_ms": 1182801,
               "start_ms": 14384594,
-              "title": "Chapter 15"
+              "title": "Chapter 14"
             },
             {
               "length_ms": 1070416,
               "start_ms": 15567395,
-              "title": "Chapter 16"
+              "title": "Chapter 15"
             },
             {
               "length_ms": 806823,
               "start_ms": 16637811,
-              "title": "Chapter 17"
+              "title": "Chapter 16"
             },
             {
               "length_ms": 1009487,
               "start_ms": 17444634,
-              "title": "Chapter 18"
+              "title": "Chapter 17"
             },
             {
               "length_ms": 1331130,
               "start_ms": 18454121,
-              "title": "Chapter 19"
+              "title": "Chapter 18"
             },
             {
               "length_ms": 759664,
               "start_ms": 19785251,
-              "title": "Chapter 20"
+              "title": "Chapter 19"
             },
             {
               "length_ms": 772899,
               "start_ms": 20544915,
-              "title": "Chapter 21"
+              "title": "Chapter 20"
             },
             {
               "length_ms": 1977480,
               "start_ms": 21317814,
-              "title": "Chapter 22"
+              "title": "Chapter 21"
             },
             {
               "length_ms": 949278,
               "start_ms": 23295294,
-              "title": "Chapter 23"
+              "title": "Chapter 22"
             },
             {
               "length_ms": 471968,
               "start_ms": 24244572,
-              "title": "Chapter 24"
+              "title": "Chapter 23"
             },
             {
-              "length_ms": 300976,
+              "length_ms": 242000,
               "start_ms": 24716540,
-              "title": "Chapter 25"
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 58976,
+              "start_ms": 24958540,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81-hthiHK3L.jpg",
@@ -7914,10 +7929,15 @@
           ],
           "publisher": "Blackstone Publishing",
           "release_date": "2026-08-18",
-          "runtime_min": 450,
+          "runtime_min": 416,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0FKC1ZMR5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0FKC1ZMR5",
               "type": "libex-import"
             }

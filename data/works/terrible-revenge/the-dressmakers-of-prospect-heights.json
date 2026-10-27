@@ -6646,8 +6646,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 2311894,
+              "length_ms": 34253,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2277641,
+              "start_ms": 34253,
               "title": "Chapter 1"
             },
             {
@@ -6746,12 +6751,17 @@
               "title": "Chapter 20"
             },
             {
-              "length_ms": 1875567,
+              "length_ms": 1819257,
               "start_ms": 30848211,
               "title": "Chapter 21"
+            },
+            {
+              "length_ms": 56310,
+              "start_ms": 32667468,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71mPo5SO8fL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91MXRwqmOxL.jpg",
           "id": "ray-greenley-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -6760,7 +6770,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-18",
-          "runtime_min": 510,
+          "runtime_min": 545,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -6780,6 +6790,11 @@
             {
               "imported_at": "2026-10-06",
               "ref": "B0GPSFJF2L",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GPT1PWYY",
               "type": "libex-import"
             }
           ],

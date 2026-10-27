@@ -1551,8 +1551,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 715499,
+              "length_ms": 21056,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 694443,
+              "start_ms": 21056,
               "title": "Chapter 1"
             },
             {
@@ -1776,12 +1781,17 @@
               "title": "Chapter 45"
             },
             {
-              "length_ms": 668037,
+              "length_ms": 619069,
               "start_ms": 34876722,
               "title": "Chapter 46"
+            },
+            {
+              "length_ms": 48968,
+              "start_ms": 35495791,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71VK91y3ynL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91891QPYDyL.jpg",
           "id": "tee-quillin-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -1790,10 +1800,15 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-18",
-          "runtime_min": 495,
+          "runtime_min": 592,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0GV56HJNS",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0GV56HJNS",
               "type": "libex-import"
             }

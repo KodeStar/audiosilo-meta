@@ -2869,8 +2869,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 1206252,
+              "length_ms": 23970,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1182282,
+              "start_ms": 23970,
               "title": "Chapter 1"
             },
             {
@@ -3014,9 +3019,14 @@
               "title": "Chapter 29"
             },
             {
-              "length_ms": 1344829,
+              "length_ms": 1292000,
               "start_ms": 33321992,
               "title": "Chapter 30"
+            },
+            {
+              "length_ms": 52829,
+              "start_ms": 34613992,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/71Alf51FNmL.jpg",
@@ -3028,7 +3038,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-10-20",
-          "runtime_min": 600,
+          "runtime_min": 577,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -3043,6 +3053,11 @@
             {
               "imported_at": "2026-10-10",
               "ref": "B0H2NLRGR2",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H2N8FDBQ",
               "type": "libex-import"
             }
           ],
@@ -9956,6 +9971,12 @@
       "authors": [
         "sam-feuerbach"
       ],
+      "credits": [
+        {
+          "person": "tim-casey",
+          "role": "translator"
+        }
+      ],
       "genres": [
         "action-adventure",
         "fantasy"
@@ -10142,6 +10163,7 @@
           ],
           "publisher": "Audible Originals",
           "release_date": "2026-08-06",
+          "runtime_min": 715,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -10156,6 +10178,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0H8549JYW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H8512JPG",
               "type": "libex-import"
             }
           ],

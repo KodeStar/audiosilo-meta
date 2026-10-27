@@ -685,8 +685,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 2240701,
+              "length_ms": 22970,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 2217731,
+              "start_ms": 22970,
               "title": "Chapter 1"
             },
             {
@@ -780,12 +785,17 @@
               "title": "Chapter 19"
             },
             {
-              "length_ms": 1416578,
+              "length_ms": 1353000,
               "start_ms": 31135929,
               "title": "Chapter 20"
+            },
+            {
+              "length_ms": 63578,
+              "start_ms": 32488929,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71l8kk3fLHL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91np1xAdRbL.jpg",
           "id": "gareth-richards-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -794,7 +804,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-25",
-          "runtime_min": 555,
+          "runtime_min": 542,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -809,6 +819,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0GZ4N9XWD",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GZ4RZ4WH",
               "type": "libex-import"
             }
           ],
@@ -5349,7 +5364,7 @@
               "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71QrNFiGfEL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/91BRKlCYfZL.jpg",
           "id": "neil-hellegers-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -5358,7 +5373,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-09-15",
-          "runtime_min": 765,
+          "runtime_min": 737,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -5373,6 +5388,11 @@
             {
               "imported_at": "2026-10-11",
               "ref": "B0H37Y5PTX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H3821SHY",
               "type": "libex-import"
             }
           ],

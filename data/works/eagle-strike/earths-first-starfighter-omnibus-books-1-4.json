@@ -6113,97 +6113,107 @@
           ],
           "chapters": [
             {
-              "length_ms": 1500472,
+              "length_ms": 18249,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1482223,
+              "start_ms": 18249,
+              "title": "Prologue"
             },
             {
               "length_ms": 1095610,
               "start_ms": 1500472,
-              "title": "Chapter 2"
+              "title": "Chapter 1"
             },
             {
               "length_ms": 1174674,
               "start_ms": 2596082,
-              "title": "Chapter 3"
+              "title": "Chapter 2"
             },
             {
               "length_ms": 868960,
               "start_ms": 3770756,
-              "title": "Chapter 4"
+              "title": "Chapter 3"
             },
             {
               "length_ms": 1420480,
               "start_ms": 4639716,
-              "title": "Chapter 5"
+              "title": "Chapter 4"
             },
             {
               "length_ms": 1410240,
               "start_ms": 6060196,
-              "title": "Chapter 6"
+              "title": "Chapter 5"
             },
             {
               "length_ms": 1120246,
               "start_ms": 7470436,
-              "title": "Chapter 7"
+              "title": "Chapter 6"
             },
             {
               "length_ms": 1396517,
               "start_ms": 8590682,
-              "title": "Chapter 8"
+              "title": "Chapter 7"
             },
             {
               "length_ms": 2172226,
               "start_ms": 9987199,
-              "title": "Chapter 9"
+              "title": "Chapter 8"
             },
             {
               "length_ms": 839865,
               "start_ms": 12159425,
-              "title": "Chapter 10"
+              "title": "Chapter 9"
             },
             {
               "length_ms": 985292,
               "start_ms": 12999290,
-              "title": "Chapter 11"
+              "title": "Chapter 10"
             },
             {
               "length_ms": 1083675,
               "start_ms": 13984582,
-              "title": "Chapter 12"
+              "title": "Chapter 11"
             },
             {
               "length_ms": 1229194,
               "start_ms": 15068257,
-              "title": "Chapter 13"
+              "title": "Chapter 12"
             },
             {
               "length_ms": 1192553,
               "start_ms": 16297451,
-              "title": "Chapter 14"
+              "title": "Chapter 13"
             },
             {
               "length_ms": 1252298,
               "start_ms": 17490004,
-              "title": "Chapter 15"
+              "title": "Chapter 14"
             },
             {
               "length_ms": 709369,
               "start_ms": 18742302,
-              "title": "Chapter 16"
+              "title": "Chapter 15"
             },
             {
               "length_ms": 567704,
               "start_ms": 19451671,
-              "title": "Chapter 17"
+              "title": "Chapter 16"
             },
             {
-              "length_ms": 667108,
+              "length_ms": 620820,
               "start_ms": 20019375,
-              "title": "Chapter 18"
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 46288,
+              "start_ms": 20640195,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71aPkRdwqsL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81QDBA90i3L.jpg",
           "id": "david-brenin-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -6212,7 +6222,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-10-15",
-          "runtime_min": 330,
+          "runtime_min": 344,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -6227,6 +6237,11 @@
             {
               "imported_at": "2026-10-10",
               "ref": "B0GPSRGCZY",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GPSVRJZ2",
               "type": "libex-import"
             }
           ],

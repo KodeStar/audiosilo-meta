@@ -2966,7 +2966,134 @@
               "region": "us"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/81+WBcjhbkL.jpg",
+          "chapters": [
+            {
+              "length_ms": 18682,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 14455,
+              "start_ms": 18682,
+              "title": "Epigraph"
+            },
+            {
+              "length_ms": 2183067,
+              "start_ms": 33137,
+              "title": "1"
+            },
+            {
+              "length_ms": 2220919,
+              "start_ms": 2216204,
+              "title": "2"
+            },
+            {
+              "length_ms": 2091305,
+              "start_ms": 4437123,
+              "title": "3"
+            },
+            {
+              "length_ms": 2265106,
+              "start_ms": 6528428,
+              "title": "4"
+            },
+            {
+              "length_ms": 1946157,
+              "start_ms": 8793534,
+              "title": "5"
+            },
+            {
+              "length_ms": 2249293,
+              "start_ms": 10739691,
+              "title": "6"
+            },
+            {
+              "length_ms": 1588778,
+              "start_ms": 12988984,
+              "title": "7"
+            },
+            {
+              "length_ms": 2260276,
+              "start_ms": 14577762,
+              "title": "8"
+            },
+            {
+              "length_ms": 1869786,
+              "start_ms": 16838038,
+              "title": "9"
+            },
+            {
+              "length_ms": 2370269,
+              "start_ms": 18707824,
+              "title": "10"
+            },
+            {
+              "length_ms": 1914438,
+              "start_ms": 21078093,
+              "title": "11"
+            },
+            {
+              "length_ms": 2225330,
+              "start_ms": 22992531,
+              "title": "12"
+            },
+            {
+              "length_ms": 2733917,
+              "start_ms": 25217861,
+              "title": "13"
+            },
+            {
+              "length_ms": 1702951,
+              "start_ms": 27951778,
+              "title": "14"
+            },
+            {
+              "length_ms": 1823137,
+              "start_ms": 29654729,
+              "title": "15"
+            },
+            {
+              "length_ms": 1637726,
+              "start_ms": 31477866,
+              "title": "16"
+            },
+            {
+              "length_ms": 2278527,
+              "start_ms": 33115592,
+              "title": "17"
+            },
+            {
+              "length_ms": 2888864,
+              "start_ms": 35394119,
+              "title": "18"
+            },
+            {
+              "length_ms": 2073309,
+              "start_ms": 38282983,
+              "title": "19"
+            },
+            {
+              "length_ms": 1650126,
+              "start_ms": 40356292,
+              "title": "20"
+            },
+            {
+              "length_ms": 1361548,
+              "start_ms": 42006418,
+              "title": "21"
+            },
+            {
+              "length_ms": 1203531,
+              "start_ms": 43367966,
+              "title": "22"
+            },
+            {
+              "length_ms": 55221,
+              "start_ms": 44571497,
+              "title": "End Credits"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81FnoK7KQiL.jpg",
           "id": "eric-jason-martin-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -2975,10 +3102,15 @@
           ],
           "publisher": "Blackstone Publishing",
           "release_date": "2026-08-18",
-          "runtime_min": 660,
+          "runtime_min": 743,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0FVJBS22Q",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0FVJBS22Q",
               "type": "libex-import"
             }

@@ -3025,8 +3025,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 1528383,
+              "length_ms": 19078,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1509305,
+              "start_ms": 19078,
               "title": "Chapter 1"
             },
             {
@@ -3235,12 +3240,17 @@
               "title": "Chapter 42"
             },
             {
-              "length_ms": 1116925,
+              "length_ms": 1068781,
               "start_ms": 44717316,
               "title": "Chapter 43"
+            },
+            {
+              "length_ms": 48144,
+              "start_ms": 45786097,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71E8xWqCQYL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81A8zwXZ3YL.jpg",
           "id": "rachel-leblang-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -3249,10 +3259,15 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-25",
-          "runtime_min": 600,
+          "runtime_min": 763,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0GV54HLW5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0GV54HLW5",
               "type": "libex-import"
             }

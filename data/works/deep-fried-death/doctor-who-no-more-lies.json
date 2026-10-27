@@ -4587,6 +4587,23 @@
               "region": "uk"
             }
           ],
+          "chapters": [
+            {
+              "length_ms": 55123,
+              "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 4415970,
+              "start_ms": 55123,
+              "title": "Shard of Life"
+            },
+            {
+              "length_ms": 44628,
+              "start_ms": 4471093,
+              "title": "Closing Credits"
+            }
+          ],
           "cover_url": "https://m.media-amazon.com/images/I/91adq7a7V9L.jpg",
           "id": "david-troughton-2026",
           "language": "en",
@@ -4596,7 +4613,7 @@
           ],
           "publisher": "BBC Digital Audio",
           "release_date": "2026-10-01",
-          "runtime_min": 70,
+          "runtime_min": 75,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -4606,6 +4623,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0H1HJVZ3M",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0H1HXT1C7",
               "type": "libex-import"
             }
           ],

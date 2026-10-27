@@ -233,116 +233,127 @@
           ],
           "chapters": [
             {
-              "length_ms": 93877,
+              "length_ms": 22203,
               "start_ms": 0,
-              "title": "Chapter 1"
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 13338,
+              "start_ms": 22203,
+              "title": "Warning"
+            },
+            {
+              "length_ms": 58336,
+              "start_ms": 35541,
+              "title": "Dedication"
             },
             {
               "length_ms": 67639,
               "start_ms": 93877,
-              "title": "Chapter 2"
+              "title": "Prologue: In Which It Is Strongly Advised That You Do Not Board This Ship"
             },
             {
               "length_ms": 527603,
               "start_ms": 161516,
-              "title": "Chapter 3"
+              "title": "1. The Sneak Night Attack Lesson"
             },
             {
               "length_ms": 260597,
               "start_ms": 689119,
-              "title": "Chapter 4"
+              "title": "2. This Is a Ship You Really Really Don’t Want to Board"
             },
             {
               "length_ms": 661931,
               "start_ms": 949716,
-              "title": "Chapter 5"
+              "title": "3. A Big Surprise on the Ship of Disaster. I Mean, What Did You Expect, When You Attack a Ship Calling Itself That?"
             },
             {
               "length_ms": 361859,
               "start_ms": 1611647,
-              "title": "Chapter 6"
+              "title": "4. “It’s Me, Your Little Sister Gladioli!”"
             },
             {
               "length_ms": 340311,
               "start_ms": 1973506,
-              "title": "Chapter 7"
+              "title": "5. The Small Nervous-Looking Man in the Big Helmet"
             },
             {
               "length_ms": 518060,
               "start_ms": 2313817,
-              "title": "Chapter 8"
+              "title": "6. Aunt Gladioli Takes Over the Viking and Dragon Training School"
             },
             {
               "length_ms": 405257,
               "start_ms": 2831877,
-              "title": "Chapter 9"
+              "title": "7. A Chat with a Puggle"
             },
             {
               "length_ms": 225256,
               "start_ms": 3237134,
-              "title": "Chapter 10"
+              "title": "8. Preparations for the Sneak Night Attack"
             },
             {
               "length_ms": 210187,
               "start_ms": 3462390,
-              "title": "Chapter 11"
+              "title": "9. Sneak Night Attack"
             },
             {
               "length_ms": 238190,
               "start_ms": 3672577,
-              "title": "Chapter 12"
+              "title": "10. An Unexpected Hitchhiker"
             },
             {
               "length_ms": 182810,
               "start_ms": 3910767,
-              "title": "Chapter 13"
+              "title": "11. When a Great Plan Goes Horribly Wrong"
             },
             {
               "length_ms": 621017,
               "start_ms": 4093577,
-              "title": "Chapter 14"
+              "title": "12. A Deadly Conversation with a Seadragon"
             },
             {
               "length_ms": 108692,
               "start_ms": 4714594,
-              "title": "Chapter 15"
+              "title": "13. “We Will Return, I Promise”"
             },
             {
               "length_ms": 292408,
               "start_ms": 4823286,
-              "title": "Chapter 16"
+              "title": "14. Return to Berk"
             },
             {
               "length_ms": 437069,
               "start_ms": 5115694,
-              "title": "Chapter 17"
+              "title": "15. A Difficult Conversation with a Danger-Brute"
             },
             {
               "length_ms": 362068,
               "start_ms": 5552763,
-              "title": "Chapter 18"
+              "title": "16. A Banquet on the Beach"
             },
             {
               "length_ms": 258321,
               "start_ms": 5914831,
-              "title": "Chapter 19"
+              "title": "Epilogue"
             },
             {
               "length_ms": 514507,
               "start_ms": 6173152,
-              "title": "Chapter 20"
+              "title": "Dragon Profiles"
             },
             {
               "length_ms": 829463,
               "start_ms": 6687659,
-              "title": "Chapter 21"
+              "title": "Learning to Speak Dragonese"
             },
             {
               "length_ms": 165418,
               "start_ms": 7517122,
-              "title": "Chapter 22"
+              "title": "Closing Credits"
             }
           ],
+          "cover_url": "https://m.media-amazon.com/images/I/91bPdNzvfhL.jpg",
           "id": "david-tennant-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -351,10 +362,15 @@
           ],
           "publisher": "Little, Brown Young Readers",
           "release_date": "2026-08-11",
-          "runtime_min": 360,
+          "runtime_min": 127,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0G7L5KX84",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0G7L5KX84",
               "type": "libex-import"
             }

@@ -8313,8 +8313,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 988844,
+              "length_ms": 17999,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 970845,
+              "start_ms": 17999,
               "title": "Chapter 1"
             },
             {
@@ -8368,12 +8373,17 @@
               "title": "Chapter 11"
             },
             {
-              "length_ms": 683269,
+              "length_ms": 626690,
               "start_ms": 12531384,
               "title": "Chapter 12"
+            },
+            {
+              "length_ms": 56579,
+              "start_ms": 13158074,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71vTsN7NzgL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81Z75R3tTbL.jpg",
           "id": "margaret-strom-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -8382,10 +8392,15 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-25",
-          "runtime_min": 180,
+          "runtime_min": 220,
           "sources": [
             {
               "imported_at": "2026-08-02",
+              "ref": "B0H6N3M3DQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
               "ref": "B0H6N3M3DQ",
               "type": "libex-import"
             }

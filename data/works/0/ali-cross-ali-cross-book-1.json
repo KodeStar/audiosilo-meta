@@ -10670,8 +10670,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 1720296,
+              "length_ms": 19970,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 1700326,
+              "start_ms": 19970,
               "title": "Chapter 1"
             },
             {
@@ -10820,12 +10825,17 @@
               "title": "Chapter 30"
             },
             {
-              "length_ms": 253212,
+              "length_ms": 207000,
               "start_ms": 37371805,
-              "title": "Chapter 31"
+              "title": "Epilogue"
+            },
+            {
+              "length_ms": 46212,
+              "start_ms": 37578805,
+              "title": "End Credits"
             }
           ],
-          "cover_url": "https://m.media-amazon.com/images/I/71TLV1eCyYL.jpg",
+          "cover_url": "https://m.media-amazon.com/images/I/81loipM3deL.jpg",
           "id": "daniel-thomas-may-2026",
           "language": "en",
           "license": "CC0-1.0",
@@ -10834,7 +10844,7 @@
           ],
           "publisher": "Tantor Media",
           "release_date": "2026-08-25",
-          "runtime_min": 630,
+          "runtime_min": 626,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -10849,6 +10859,11 @@
             {
               "imported_at": "2026-10-09",
               "ref": "B0GV58D64D",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GV55D1X4",
               "type": "libex-import"
             }
           ],

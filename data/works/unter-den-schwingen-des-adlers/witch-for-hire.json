@@ -6695,8 +6695,13 @@
           ],
           "chapters": [
             {
-              "length_ms": 952226,
+              "length_ms": 16150,
               "start_ms": 0,
+              "title": "Opening Credits"
+            },
+            {
+              "length_ms": 936076,
+              "start_ms": 16150,
               "title": "Chapter 1"
             },
             {
@@ -6840,9 +6845,14 @@
               "title": "Chapter 29"
             },
             {
-              "length_ms": 784601,
+              "length_ms": 739316,
               "start_ms": 28190101,
               "title": "Chapter 30"
+            },
+            {
+              "length_ms": 45285,
+              "start_ms": 28929417,
+              "title": "End Credits"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81jOXUde8+L.jpg",
@@ -6854,7 +6864,7 @@
           ],
           "publisher": "Blackstone Publishing",
           "release_date": "2026-09-08",
-          "runtime_min": 480,
+          "runtime_min": 482,
           "sources": [
             {
               "imported_at": "2026-08-02",
@@ -6874,6 +6884,11 @@
             {
               "imported_at": "2026-10-11",
               "ref": "B0GQJTJQVN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-10-27",
+              "ref": "B0GQJPGX44",
               "type": "libex-import"
             }
           ],
