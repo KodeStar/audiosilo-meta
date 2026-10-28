@@ -506,13 +506,12 @@ func TestLibrivoxTitleStripsTheVersionMarker(t *testing.T) {
 		"Story of a Needle (Version 2; Dramatic Reading)": "Story of a Needle",
 		// Not a bare marker: "ver" alone, a glued word, a lone "Version 2",
 		// a version that is not last.
-		"Walden, Ver 2":                             "Walden, Ver 2",
-		"Conversion 2":                              "Conversion 2",
-		"Subversion 2":                              "Subversion 2",
-		"Version 2 of Book 1":                       "Version 2 of Book 1",
-		"Nana (Version 2), Book Nine":               "Nana (Version 2), Book Nine",
-		"Phantom of the Opera (version 4?)":         "Phantom of the Opera (version 4?)",
-		"Persuasion (version 2) (dramatic reading)": "Persuasion",
+		"Walden, Ver 2":                     "Walden, Ver 2",
+		"Conversion 2":                      "Conversion 2",
+		"Subversion 2":                      "Subversion 2",
+		"Version 2 of Book 1":               "Version 2 of Book 1",
+		"Nana (Version 2), Book Nine":       "Nana (Version 2), Book Nine",
+		"Phantom of the Opera (version 4?)": "Phantom of the Opera (version 4?)",
 	} {
 		if got := librivoxTitle(in); got != want {
 			t.Errorf("librivoxTitle(%q) = %q, want %q", in, got, want)

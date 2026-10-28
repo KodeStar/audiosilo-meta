@@ -18,11 +18,11 @@ package importer
 //     the run's worklist, and otherwise the row creates a work. LibriVox's own
 //     repeat markers, a trailing "(version 2)", "(ver 2)", "(ver. 2)",
 //     "(Dramatic Reading)" or a bare ", Version 2" (stacked or combined,
-//     librivoxTitle), are stripped
-//     first: they name LibriVox projects of one text, not works, so such a row
-//     is another recording of the plain-titled work. A non-Latin title (it slugs to
-//     nothing, or most of its letters are not Latin script) never walks a slug
-//     chain: its new work is created at `librivox-<project id>`.
+//     librivoxTitle), are stripped first: they name LibriVox projects of one
+//     text, not works, so such a row is another recording of the plain-titled
+//     work. A non-Latin title (it slugs to nothing, or most of its letters are
+//     not Latin script) never walks a slug chain: its new work is created at
+//     `librivox-<project id>`.
 //   - Its PEOPLE are keyed by LibriVox id. Before any census reads a name, a
 //     reader or author id the catalogue already holds is spelled the way that
 //     person is catalogued (keyLibrivoxCredits), so a reader renamed on
