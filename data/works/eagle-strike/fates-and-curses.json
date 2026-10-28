@@ -15997,6 +15997,83 @@
       ],
       "title": "Father of the Mountain"
     },
+    "father-sergius": {
+      "added_at": "2026-10-28",
+      "authors": [
+        "leo-tolstoy",
+        "aylmer-maude",
+        "louise-maude"
+      ],
+      "credits": [
+        {
+          "person": "aylmer-maude",
+          "role": "translator"
+        },
+        {
+          "person": "louise-maude",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "short-stories"
+      ],
+      "id": "father-sergius",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "james-e-carson": {
+          "added_at": "2026-10-28",
+          "archive_id": "fathersergius_1108_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/fathersergius_1108_librivox/fathersergius_01_tolstoy_64kb.mp3",
+              "length_ms": 3714000,
+              "start_ms": 0,
+              "title": "Section 01"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/fathersergius_1108_librivox/fathersergius_02_tolstoy_64kb.mp3",
+              "length_ms": 3237000,
+              "start_ms": 3714000,
+              "title": "Section 02"
+            }
+          ],
+          "copyright_year": 1898,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt23/father_sergius_1210.jpg",
+          "id": "james-e-carson",
+          "language": "en",
+          "librivox_id": 5782,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/father-sergius-by-leo-tolstoy/",
+            "rss": "https://librivox.org/rss/5782",
+            "text": "https://www.gutenberg.org/ebooks/985",
+            "zip": "https://archive.org/compress/fathersergius_1108_librivox/formats=64KBPS MP3&file=/fathersergius_1108_librivox.zip"
+          },
+          "narrators": [
+            "james-e-carson"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 116,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "5782",
+              "type": "librivox"
+            }
+          ],
+          "work": "father-sergius"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5782",
+          "type": "librivox"
+        }
+      ],
+      "title": "Father Sergius"
+    },
     "father-sergius-and-other-stories": {
       "added_at": "2026-08-02",
       "authors": [
@@ -17213,6 +17290,86 @@
           "imported_at": "2026-08-08",
           "ref": "B0752WW32F",
           "type": "libex-import"
+        }
+      ],
+      "title": "Fatherland"
+    },
+    "fatherland-sir-henry-parkes": {
+      "added_at": "2026-10-28",
+      "authors": [
+        "sir-henry-parkes"
+      ],
+      "genres": [
+        "poetry"
+      ],
+      "id": "fatherland-sir-henry-parkes",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "chris-caron": {
+          "added_at": "2026-10-28",
+          "archive_id": "fatherland_1101_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_cc_64kb.mp3",
+              "length_ms": 96000,
+              "start_ms": 0,
+              "title": "Fatherland - Read by CC"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_dl_64kb.mp3",
+              "length_ms": 102000,
+              "start_ms": 96000,
+              "title": "Fatherland - Read by DL"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_ghs_64kb.mp3",
+              "length_ms": 104000,
+              "start_ms": 198000,
+              "title": "Fatherland - Read by GHS"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/fatherland_1101_librivox/fatherland_parkes_llw_64kb.mp3",
+              "length_ms": 115000,
+              "start_ms": 302000,
+              "title": "Fatherland - Read by LLW"
+            }
+          ],
+          "copyright_year": 1918,
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt28/Fatherland_1301.jpg",
+          "id": "chris-caron",
+          "language": "en",
+          "librivox_id": 5145,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/fatherland-by-sir-henry-parkes/",
+            "rss": "https://librivox.org/rss/5145",
+            "text": "https://www.bartleby.com/249/4.html",
+            "zip": "https://archive.org/compress/fatherland_1101_librivox/formats=64KBPS MP3&file=/fatherland_1101_librivox.zip"
+          },
+          "narrators": [
+            "chris-caron",
+            "david-lawrence",
+            "algy-pug",
+            "leonard-wilson-1930-2024"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 7,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "5145",
+              "type": "librivox"
+            }
+          ],
+          "work": "fatherland-sir-henry-parkes"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5145",
+          "type": "librivox"
         }
       ],
       "title": "Fatherland"

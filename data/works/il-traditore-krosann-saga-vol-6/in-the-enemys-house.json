@@ -2565,6 +2565,55 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bob-gonzalez": {
+          "added_at": "2026-10-28",
+          "archive_id": "in_the_fog_1112_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/in_the_fog_1112_librivox/inthefog_01_davis_64kb.mp3",
+              "length_ms": 2459000,
+              "start_ms": 0,
+              "title": "Chapter 01"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/in_the_fog_1112_librivox/inthefog_02_davis_64kb.mp3",
+              "length_ms": 2554000,
+              "start_ms": 2459000,
+              "title": "Chapter 02"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/in_the_fog_1112_librivox/inthefog_03_davis_64kb.mp3",
+              "length_ms": 2682000,
+              "start_ms": 5013000,
+              "title": "Chapter 03"
+            }
+          ],
+          "copyright_year": 1901,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt13/In_the_Fog_1211.jpg",
+          "id": "bob-gonzalez",
+          "language": "en",
+          "librivox_id": 5797,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/in-the-fog-by-richard-harding-davis/",
+            "rss": "https://librivox.org/rss/5797",
+            "text": "https://www.gutenberg.org/ebooks/7884",
+            "zip": "https://archive.org/compress/in_the_fog_1112_librivox/formats=64KBPS MP3&file=/in_the_fog_1112_librivox.zip"
+          },
+          "narrators": [
+            "bob-gonzalez"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 128,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "5797",
+              "type": "librivox"
+            }
+          ],
+          "work": "in-the-fog"
+        },
         "nathan-edwards-2024": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -5809,6 +5858,76 @@
         }
       ],
       "title": "In the Garden of the North American Martyrs"
+    },
+    "in-the-gardens": {
+      "added_at": "2026-10-28",
+      "authors": [
+        "uri-nissan-gnessin"
+      ],
+      "genres": [
+        "short-stories"
+      ],
+      "id": "in-the-gardens",
+      "language": "he",
+      "license": "CC0-1.0",
+      "recordings": {
+        "omri-lernau": {
+          "added_at": "2026-10-28",
+          "archive_id": "inthegardens_1203_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/inthegardens_1203_librivox/inthegardens_1_gnessin_64kb.mp3",
+              "length_ms": 615000,
+              "start_ms": 0,
+              "title": "01 - In the Gardens, Part 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/inthegardens_1203_librivox/inthegardens_2_gnessin_64kb.mp3",
+              "length_ms": 643000,
+              "start_ms": 615000,
+              "title": "02 - In the Gardens, Part 2"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/inthegardens_1203_librivox/inthegardens_3_gnessin_64kb.mp3",
+              "length_ms": 788000,
+              "start_ms": 1258000,
+              "title": "03 - In the Gardens, Part 3"
+            }
+          ],
+          "cover_url": "https://archive.org/download/LibrivoxCdCoverArt18/ingardens_1205.jpg",
+          "id": "omri-lernau",
+          "language": "he",
+          "librivox_id": 5860,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/in-the-gardens-by-uri-nissan-gnessin/",
+            "rss": "https://librivox.org/rss/5860",
+            "text": "https://benyehuda.org/gnessin/baganim.html",
+            "zip": "https://archive.org/compress/inthegardens_1203_librivox/formats=64KBPS MP3&file=/inthegardens_1203_librivox.zip"
+          },
+          "narrators": [
+            "omri-lernau"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 34,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "5860",
+              "type": "librivox"
+            }
+          ],
+          "work": "in-the-gardens"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "5860",
+          "type": "librivox"
+        }
+      ],
+      "title": "בגנים In the Gardens"
     },
     "in-the-ghost-shadows": {
       "added_at": "2026-07-29",
