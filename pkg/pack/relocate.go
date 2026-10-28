@@ -6,6 +6,7 @@ import (
 	"path"
 	"sort"
 
+	"github.com/kodestar/audiosilo-meta/internal/parallel"
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 )
 
@@ -275,7 +276,17 @@ func (s *Store) pendingFrom(fs *familySurvey) (Pending, error) {
 		}
 	}
 
-	for i, ref := range t.Packs() {
+	// Each authoritative pack is rendered once below for its size, the other
+	// half of a survey's cost; the renders are independent (one *File per path,
+	// each memoizing its own bytes), so they are warmed on the worker pool and
+	// the loop finds them done. An error is not kept here: the loop's own Size
+	// call meets it again and returns it in pack order.
+	packs := t.Packs()
+	parallel.Do(len(packs), func(i int) {
+		_, _ = fs.files[packs[i].Path()].Size()
+	})
+
+	for i, ref := range packs {
 		file := fs.files[ref.Path()]
 		lo, hi, _ := t.Range(i)
 		for _, slug := range file.Slugs() {

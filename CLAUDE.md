@@ -192,8 +192,9 @@ never noticed (ai-verify read only the metadiff summary). Two halves:
   base against the head, so the two lists can differ on a stale branch; both run
   the HEAD's metacheck (its reviewed.json, its pkg/check), so the list is
   trustworthy for a data-only pull request and one that also edits those can hide
-  its own advisories (a code change, reviewed by a maintainer anyway). Cost: a second whole-tree metacheck in `check` (~1-2 min on a data
-  PR) and two in ai-verify (beside a model call that dominates).
+  its own advisories (a code change, reviewed by a maintainer anyway). Cost: a second whole-tree metacheck, on its own runner beside the first
+  (check.yml's `advisories` job, ~1-2 min on a data PR), and two in ai-verify
+  (beside a model call that dominates).
 
 The same prevention-plus-census shape covers RECORDING-VARIANT SERIES - a retailer
 listing each production of a serial as a series ("Harry Potter (Narrated by Stephen
@@ -227,10 +228,23 @@ slot is not exempt.
 
 **Before a change is done, all of the above must pass.** CI
 (`.github/workflows/check.yml`) gates THE WHOLE of it on every PR and push to
-main, in five jobs: `changes` (which of the others the diff can move),
-`check` (build, vet, `go test -race`, metacheck, metafmt, and on a data pull request
-the advisories it introduces in the job summary - never a failure), `lint`
-(`golangci-lint run`), `vuln` (`govulncheck ./...`) and `site`. The race
+main, in parallel jobs: `changes` (which of the others the diff can move),
+`build` (build + vet), `test` (`go test -race`, three shards partitioned by
+`.github/scripts/go-test-shard.sh`, every package in exactly one), `metacheck`,
+`metafmt`, `advisories` (on a pull request, the base half of the advisory delta -
+never a failure), `lint` (`golangci-lint run`), `vuln` (`govulncheck ./...`),
+`site`, and **`check`, the VERDICT**: it needs build, test, metacheck, metafmt and
+advisories, passes only when every one but advisories concluded `success`
+(`.github/scripts/check-verdict.sh`), prints the advisories a data pull request
+introduces in its job summary, and ends its log with the failing jobs' captured
+output. The NAME `check` is load-bearing - branch protection requires it, and
+audiosilo-meta-sync's merge gate waits for `check`, `compose`, `site` and `verify`
+and hands the tail of a failed check's log to its resolver - which is why the
+split kept one job of that name instead of renaming the work. It was one
+sequential job until 2026-10 (716 s on the LibriVox tranche 1 PR); build, lint,
+vuln and site check out a sparse tree without data/ (data/ is its own module, so
+`./...` never reaches it), and metafmt parses and renders on every core
+(`internal/parallel`). The race
 detector, the linter and the vulnerability scan are recent arrivals: all three
 were documented here and run by hand, so the green baseline this file promises
 rested on somebody remembering. The linter SET is pinned too, by the committed
@@ -716,6 +730,7 @@ keep this index in step (one line per topic).
   - `internal/sqlitedsn`
   - `internal/ghhost`
   - `internal/unionfind`
+  - `internal/parallel`
   - `internal/atomicfile`
   - `internal/reportdir`
   - `internal/remediate`

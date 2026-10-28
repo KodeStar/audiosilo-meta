@@ -68,24 +68,160 @@ jobs:
           PR: ${{ github.event.pull_request.number }}
         run: bash .github/scripts/pr-changes.sh
 
-  check:
+  # THE GATE IS SPREAD OVER PARALLEL JOBS, and `check` (below) is the one that
+  # waits for them all and gives the verdict.
+  #
+  # It used to be one job: build, vet, `go test -race`, metacheck, metafmt and the
+  # advisory delta in sequence, ~10-12 minutes on a pull request carrying both
+  # code and a large data change (716 s on the LibriVox tranche 1, #2763) and
+  # growing with the tree. Now each is its own runner: build+vet, three test
+  # shards, metacheck, metafmt and the advisory base, so the wall time is the
+  # slowest of them rather than their sum. Nothing was dropped: every step the
+  # old job ran runs, over the same tree, under the same gating.
+  #
+  # The jobs that only need Go code (build, lint, vuln) and the site check out a
+  # SPARSE, blobless tree without data/ - its 1.7 GB is most of every full
+  # checkout's ~2 minutes, and data/ is its own module (data/go.mod), so `./...`
+  # never reaches it. The test shards, metacheck, metafmt and the advisory base
+  # read data/ and check out the whole tree.
+  #
+  # Each gated step tees its output to a log that is uploaded when the job fails,
+  # and `check` prints those logs last (.github/scripts/check-verdict.sh says why:
+  # the sync bot reads the tail of the failed `check` log as its evidence).
+  build:
     runs-on: ubuntu-latest
     needs: changes
-    # Observed up to ~18 minutes with the Go gate (the -race suite plus a
-    # whole-tree metacheck and metafmt), and the tree only grows; a data pull
-    # request adds a second metacheck over its base (~1-2 minutes, the advisory
-    # step below). About twice that: a hang is caught inside the hour instead of
-    # at GitHub's six.
-    timeout-minutes: 40
+    # Build and vet alone, without the data checkout: observed ~1 minute.
+    timeout-minutes: 15
+    steps:
+      - name: Checkout (no data/)
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: |
+            /*
+            !/data/
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+          persist-credentials: false
+
+      - name: Set up Go
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (PACKAGES.md, the `.github/` entry).
+          go-version-file: .go-version
+          check-latest: true
+
+      # Go steps only: a data-and-prose diff skips them (see the changes job).
+      - name: Build and vet
+        if: needs.changes.outputs.go == 'true'
+        run: |
+          set -o pipefail
+          { go build ./... && go vet ./...; } 2>&1 | tee "$RUNNER_TEMP/build.log"
+
+      # failure() || cancelled(): a job that hit its timeout is cancelled, and its
+      # log is the only evidence of where it hung.
+      - name: Keep the log for the verdict
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: check-log-build
+          path: ${{ runner.temp }}/build.log
+          retention-days: 3
+          if-no-files-found: ignore
+
+  # `go test -race ./...`, in three shards. .github/scripts/go-test-shard.sh
+  # partitions `go list ./...` so every package runs in exactly one shard
+  # (scripts/gotestshard_test.go pins that, and that this matrix names shards 1
+  # to N and passes N as strategy.job-total), balanced on measured per-package
+  # times. -race, as the documented gate
+  # is. Every real-data test skips under the detector (race_{on,off}_test.go in
+  # pkg/check, pkg/canonical, internal/importer and internal/repair) - the
+  # fixture suites cover the concurrent code and the real tree is data coverage,
+  # validated by metacheck/metafmt below - so the suite stays inside a few
+  # minutes. The real-data tests themselves run without -race in real-data.yml.
+  # The checkout is the whole tree at depth 2: internal/recorddiff's
+  # TestAgainstTheRealCheckout reads HEAD~1..HEAD of data/ through git.
+  test:
+    runs-on: ubuntu-latest
+    needs: changes
+    strategy:
+      # Every shard reports, so a failure's evidence is complete.
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    # The whole -race suite in one job was observed up to ~5 minutes plus a
+    # ~2 minute checkout; a shard is a third of it. About twice the old whole.
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+
+      - name: Set up Go
+        if: needs.changes.outputs.go == 'true'
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (PACKAGES.md, the `.github/` entry).
+          go-version-file: .go-version
+          check-latest: true
+
+      # The count is the matrix's own size, so the list above is its one source.
+      - name: Test (shard ${{ matrix.shard }} of ${{ strategy.job-total }})
+        if: needs.changes.outputs.go == 'true'
+        env:
+          SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ strategy.job-total }}
+        # The shard's selection is in the log too: a `go list` or partition
+        # failure is as much this shard's evidence as a failing test. The file is
+        # named per shard because `check` merges every log into one directory.
+        run: |
+          set -o pipefail
+          {
+            go list ./... | bash .github/scripts/go-test-shard.sh "$SHARD" "$SHARDS" > "$RUNNER_TEMP/packages.txt" &&
+              echo "shard $SHARD of $SHARDS: $(wc -l < "$RUNNER_TEMP/packages.txt") packages" &&
+              xargs go test -race < "$RUNNER_TEMP/packages.txt"
+          } 2>&1 | tee "$RUNNER_TEMP/test-$SHARD.log"
+
+      - name: Keep the log for the verdict
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: check-log-test-${{ matrix.shard }}
+          path: ${{ runner.temp }}/test-${{ matrix.shard }}.log
+          retention-days: 3
+          if-no-files-found: ignore
+
+  # --profile core is what this repository's data root now IS: works, people,
+  # series and redirects.json, with the CC BY-SA layer living in
+  # KodeStar/audiosilo-meta-community. It is passed explicitly rather than
+  # changed as a flag default, because the tools still serve a whole-database
+  # tree ("all") and a community-only one. The teeth are the file accounting:
+  # under `core` a works-community/ directory that reappears here - a bad
+  # merge, a stray revert, a misdirected contribution - is an unrecognized
+  # location and a RED check, instead of a family silently re-adopted.
+  # The advisory keys are this tree's half of the advisory delta `check` prints;
+  # the flag changes nothing about the check itself. NOT gated on the diff:
+  # metacheck and metafmt are the data's own check.
+  metacheck:
+    runs-on: ubuntu-latest
+    needs: changes
+    # Observed ~2 minutes of checkout plus ~1.5-2.5 minutes of metacheck over
+    # 283k works; the tree grows. About twice that.
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-          # Two commits: on a pull request the checkout is GitHub's test MERGE
-          # commit, and its first parent is the base the advisory step below
-          # compares against. On a push the second commit is simply unused.
-          fetch-depth: 2
 
       - name: Set up Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
@@ -96,65 +232,226 @@ jobs:
           go-version-file: .go-version
           check-latest: true
 
-      # Go steps only: a data-and-prose diff skips them (see the changes job).
-      # Set up Go above is unconditional - metacheck and metafmt are `go run`.
-      - name: Build
-        if: needs.changes.outputs.go == 'true'
-        run: go build ./...
-
-      - name: Vet
-        if: needs.changes.outputs.go == 'true'
-        run: go vet ./...
-
-      - name: Test
-        if: needs.changes.outputs.go == 'true'
-        # -race, as the documented gate is. Every real-data test skips under
-        # the detector (race_{on,off}_test.go in pkg/check, pkg/canonical,
-        # internal/importer and internal/repair) - the fixture suites cover the
-        # concurrent code and the real tree is data coverage, validated by
-        # metacheck/metafmt below - so the suite stays inside a few minutes.
-        # The real-data tests themselves run without -race in real-data.yml.
-        run: go test -race ./...
-
-      # --profile core is what this repository's data root now IS: works, people,
-      # series and redirects.json, with the CC BY-SA layer living in
-      # KodeStar/audiosilo-meta-community. It is passed explicitly rather than
-      # changed as a flag default, because the tools still serve a whole-database
-      # tree ("all") and a community-only one. The teeth are the file accounting:
-      # under `core` a works-community/ directory that reappears here - a bad
-      # merge, a stray revert, a misdirected contribution - is an unrecognized
-      # location and a RED check, instead of a family silently re-adopted.
-      # The advisory keys are this tree's half of the advisory delta below; the
-      # flag changes nothing about the check itself.
       - name: Validate data (metacheck)
-        run: go run ./cmd/metacheck --profile core --advisory-keys "$RUNNER_TEMP/advisories-head.txt"
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/advisories"
+          go run ./cmd/metacheck --profile core --advisory-keys "$RUNNER_TEMP/advisories/head.txt" 2>&1 | tee "$RUNNER_TEMP/metacheck.log"
+
+      # The head half of the advisory delta, for `check`. Written whatever the
+      # tree's problems (metacheck's contract), and never a failure.
+      - name: Hand on the advisory keys
+        if: always() && github.event_name == 'pull_request'
+        continue-on-error: true
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: advisories-head
+          path: ${{ runner.temp }}/advisories/head.txt
+          retention-days: 3
+          if-no-files-found: ignore
+
+      - name: Keep the log for the verdict
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: check-log-metacheck
+          path: ${{ runner.temp }}/metacheck.log
+          retention-days: 3
+          if-no-files-found: ignore
+
+  metafmt:
+    runs-on: ubuntu-latest
+    needs: changes
+    # Observed ~2 minutes of checkout plus ~1.5-2.5 minutes of metafmt before it
+    # parsed and rendered on every core (pkg/canonical, pkg/pack through
+    # internal/parallel); now well under a minute. About twice the old whole.
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (PACKAGES.md, the `.github/` entry).
+          go-version-file: .go-version
+          check-latest: true
 
       - name: Check canonical formatting (metafmt)
-        run: go run ./cmd/metafmt --check --profile core
+        run: |
+          set -o pipefail
+          go run ./cmd/metafmt --check --profile core 2>&1 | tee "$RUNNER_TEMP/metafmt.log"
 
-      # THE ADVISORIES THIS PULL REQUEST INTRODUCES, in the job summary: the same
-      # metacheck over the BASE (the merge commit's first parent), and what the
-      # merged tree names that the base did not (.github/scripts/advisory-delta.sh
-      # says why and what counts; ai-verify.yml hands the same list to the model).
-      # NEVER A FAILURE, twice over: the advisories are not a gate (the sync bot
-      # auto-merges on green CI), and `continue-on-error` keeps a broken comparison
-      # from turning the required check red. Pull requests only - a push to main
-      # has no "introduced by" - and a pull request touching no data/ skips it, since
-      # the same binary over the same data names the same advisories.
+      - name: Keep the log for the verdict
+        if: failure() || cancelled()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: check-log-metafmt
+          path: ${{ runner.temp }}/metafmt.log
+          retention-days: 3
+          if-no-files-found: ignore
+
+  # THE ADVISORIES THIS PULL REQUEST INTRODUCES, the base half: the same
+  # metacheck over the BASE (the merge commit's first parent), whose keys `check`
+  # compares with the head's from the metacheck job (.github/scripts/
+  # advisory-delta.sh says why and what counts; ai-verify.yml hands the same
+  # list to the model). Its own runner so the second whole-tree metacheck runs
+  # beside the first instead of after it.
+  # NEVER A FAILURE, twice over: the advisories are not a gate (the sync bot
+  # auto-merges on green CI), so EVERY step continues on error, each with its own
+  # timeout inside the job's, and `check` never counts this job. The job's own
+  # conclusion must stay green too, not only the verdict: audiosilo-meta-sync's
+  # failedCheck reads every check run on a head, required or not, so a red
+  # `advisories` run would be re-run and then handed to its resolver as
+  # evidence against the data. Pull requests only - a push to main has no
+  # "introduced by" - and a pull request touching no data/ says so instead,
+  # since the same binary over the same data names the same advisories.
+  advisories:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: github.event_name == 'pull_request'
+    # Observed ~2 minutes of fetching plus ~1.5-2.5 minutes of metacheck. The
+    # step timeouts below (25 minutes in all) leave this room for the job's
+    # setup and post steps, so the job-level one, which would end the job red,
+    # never fires.
+    timeout-minutes: 30
+    steps:
+      # No data/ in the working tree: the base's data/ is read from git
+      # (advisory-delta.sh's `git archive`, the `git diff` below), never from
+      # disk. A sparse checkout is always BLOBLESS (actions/checkout adds
+      # `filter: blob:none` to any sparse-checkout given no filter), so `git
+      # archive` fetches the base's data/ blobs on demand - one batched,
+      # anonymous fetch from origin, which works because this repository is
+      # public and is about the size of the full checkout's data/ download.
+      - name: Checkout (no data/ on disk)
+        continue-on-error: true
+        timeout-minutes: 5
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: |
+            /*
+            !/data/
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+          # Two commits: the checkout is GitHub's test MERGE commit, and its
+          # first parent is the base compared against.
+          fetch-depth: 2
+
+      - name: Set up Go
+        continue-on-error: true
+        timeout-minutes: 5
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          # .go-version holds the bare MINOR and check-latest resolves it to the
+          # newest patch; go.mod's `go` line is a floor, not the toolchain
+          # (PACKAGES.md, the `.github/` entry).
+          go-version-file: .go-version
+          check-latest: true
+
+      - name: Advisory keys of the base
+        continue-on-error: true
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/advisories"
+          if git diff --quiet HEAD^1 HEAD -- data/; then
+            echo "No data change, so no advisory can be new."
+            echo "base and head hold the same data/" > "$RUNNER_TEMP/advisories/no-data-change"
+            exit 0
+          fi
+          go build -o "$RUNNER_TEMP/metacheck" ./cmd/metacheck
+          bash .github/scripts/advisory-delta.sh keys "$RUNNER_TEMP/metacheck" HEAD^1 "$RUNNER_TEMP/advisories/base.txt"
+
+      - name: Hand on the advisory keys
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 3
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: advisories-base
+          path: ${{ runner.temp }}/advisories/
+          retention-days: 3
+          if-no-files-found: ignore
+
+  # THE VERDICT, under the name everything downstream reads: branch protection
+  # requires `check`, and audiosilo-meta-sync merges its pull requests once
+  # `check`, `compose`, `site` and `verify` are green. It needs every job of the
+  # gate above and passes only when each concluded `success`
+  # (.github/scripts/check-verdict.sh); `advisories` is waited for, for the
+  # summary, and never counted. `always()`, NOT `!cancelled()`: in a cancelled
+  # run `!cancelled()` SKIPS this job, and a skipped job reports as passing - to
+  # branch protection (a skipped required check does not block a merge) and to
+  # audiosilo-meta-sync (its OKConclusion accepts `skipped`). Under `always()` a
+  # cancelled run's verdict runs, reads its needs as `cancelled`, and fails.
+  check:
+    runs-on: ubuntu-latest
+    needs: [changes, build, test, metacheck, metafmt, advisories]
+    if: ${{ always() }}
+    # Two downloads and a comparison; observed well under a minute.
+    timeout-minutes: 10
+    steps:
+      # The checkout and the verdict carry `always()` as well, so no reading of
+      # a cancelled run can skip them and leave a job that concluded green
+      # having run nothing; a verdict that cannot find its script still fails.
+      - name: Checkout the scripts
+        if: always()
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .github/scripts
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+          persist-credentials: false
+
+      # merge-multiple, so every file lands directly under `path` whatever the
+      # pattern matched: without it download-artifact gives each artifact its
+      # own <name>/ directory ONLY when more than one matches, and a lone match
+      # is extracted flat - so the layout would depend on how many jobs had
+      # uploaded. The file names are unique across the artifacts (head.txt,
+      # base.txt, no-data-change; <job>.log, test-<shard>.log), so none
+      # overwrites another.
+      - name: Fetch the advisory keys
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: advisories-*
+          merge-multiple: true
+          path: ${{ runner.temp }}/advisories
+
+      # The advisories this pull request introduces, in this job's summary: what
+      # the merged tree names that the base did not. NEVER A FAILURE
+      # (continue-on-error), as before the split.
       - name: Advisories this pull request introduces
         if: github.event_name == 'pull_request'
         continue-on-error: true
         run: |
           set -euo pipefail
-          if git diff --quiet HEAD^1 HEAD -- data/; then
+          dir="$RUNNER_TEMP/advisories"
+          if [ -f "$dir/no-data-change" ]; then
             echo "No data change, so no advisory can be new."
             exit 0
           fi
-          go build -o "$RUNNER_TEMP/metacheck" ./cmd/metacheck
-          bash .github/scripts/advisory-delta.sh keys "$RUNNER_TEMP/metacheck" HEAD^1 "$RUNNER_TEMP/advisories-base.txt"
-          bash .github/scripts/advisory-delta.sh diff "$RUNNER_TEMP/advisories-base.txt" "$RUNNER_TEMP/advisories-head.txt" > "$RUNNER_TEMP/advisories-new.txt"
+          bash .github/scripts/advisory-delta.sh diff "$dir/base.txt" "$dir/head.txt" > "$RUNNER_TEMP/advisories-new.txt"
           bash .github/scripts/advisory-delta.sh summary "$RUNNER_TEMP/advisories-new.txt" >> "$GITHUB_STEP_SUMMARY"
           cat "$RUNNER_TEMP/advisories-new.txt"
+
+      - name: Fetch the failed jobs' logs
+        continue-on-error: true
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: check-log-*
+          merge-multiple: true
+          path: ${{ runner.temp }}/logs
+
+      - name: Verdict
+        if: always()
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: bash .github/scripts/check-verdict.sh "$RUNNER_TEMP/logs" advisories
 
   # The other half of the documented gate (CLAUDE.md): `golangci-lint run`.
   # It was documented and run by hand but never by CI, so the green baseline the
@@ -165,15 +462,21 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     needs: changes
-    # Observed up to ~5 minutes.
+    # Observed up to ~5 minutes, most of it the full checkout this no longer
+    # makes.
     timeout-minutes: 15
     # Every step is gated, so a data-and-prose diff reports this job green
     # without checking anything out - the required check still reports.
     steps:
-      - name: Checkout
+      - name: Checkout (no data/)
         if: needs.changes.outputs.go == 'true'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          sparse-checkout: |
+            /*
+            !/data/
+          sparse-checkout-cone-mode: false
+          filter: blob:none
           persist-credentials: false
 
       - name: Set up Go
@@ -198,13 +501,19 @@ jobs:
   vuln:
     runs-on: ubuntu-latest
     needs: changes
-    # Observed up to ~5 minutes.
+    # Observed up to ~5 minutes, most of it the full checkout this no longer
+    # makes.
     timeout-minutes: 15
     steps:
-      - name: Checkout
+      - name: Checkout (no data/)
         if: needs.changes.outputs.go == 'true'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          sparse-checkout: |
+            /*
+            !/data/
+          sparse-checkout-cone-mode: false
+          filter: blob:none
           persist-credentials: false
 
       - name: Set up Go
@@ -304,12 +613,20 @@ jobs:
   # once it does. No `paths:` filter - a required check must always report.
   site:
     runs-on: ubuntu-latest
-    # Observed up to ~6 minutes (a cold yarn install dominates).
+    # Observed up to ~6 minutes, the full checkout it no longer makes and a cold
+    # yarn install dominating.
     timeout-minutes: 15
     steps:
-      - name: Checkout
+      # No data/: the site reads none of it (its pages call the API), and the
+      # data tree was most of this job's time.
+      - name: Checkout (no data/)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          sparse-checkout: |
+            /*
+            !/data/
+          sparse-checkout-cone-mode: false
+          filter: blob:none
           persist-credentials: false
 
       - name: Check for site/

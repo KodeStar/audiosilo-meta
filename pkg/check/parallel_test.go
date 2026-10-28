@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"runtime"
 	"strings"
-	"sync/atomic"
 	"testing"
 )
 
@@ -24,7 +23,7 @@ import (
 // pinWorkers fixes GOMAXPROCS for the duration of a test whose point is that the
 // pool actually RAN, and restores it afterwards.
 //
-// It is not a nicety: at GOMAXPROCS=1 parallelDo takes the goroutine-free path,
+// It is not a nicety: at GOMAXPROCS=1 parallel.Do takes the goroutine-free path,
 // so on a one-CPU runner a concurrency test gets ZERO race-detector coverage
 // while still passing. Measured - a deliberately injected cache-fill in
 // readPack goes uncaught at GOMAXPROCS=1 and is caught at 8.
@@ -216,61 +215,5 @@ func TestParallelLoadIsDeterministic(t *testing.T) {
 		if got := renderResult(Load(dir)); got != want {
 			t.Fatalf("load at GOMAXPROCS=%d differs:\n--- want ---\n%s\n--- got ---\n%s", procs, want, got)
 		}
-	}
-}
-
-// TestParallelDoRaisesAWorkerPanic pins the one thing parallelDo does NOT omit.
-// A panic on a worker goroutine cannot be recovered by the caller and would kill
-// the process; the sequential walk this pool replaced propagated it up Load's
-// own stack, and pkg/check is public API, so a consumer that recovers around a
-// load has to keep being able to. Both paths are covered, because the
-// single-worker one is a plain loop with no recover in it at all.
-func TestParallelDoRaisesAWorkerPanic(t *testing.T) {
-	for _, procs := range []int{1, 8} {
-		t.Run(fmt.Sprintf("GOMAXPROCS=%d", procs), func(t *testing.T) {
-			pinWorkers(t, procs)
-
-			var ran atomic.Int64
-			got := func() (v any) {
-				defer func() { v = recover() }()
-				parallelDo(64, func(i int) {
-					ran.Add(1)
-					if i == 7 {
-						panic("boom")
-					}
-				})
-				return nil
-			}()
-			if got == nil {
-				t.Fatal("a panicking worker did not reach the caller")
-			}
-			if procs == 1 {
-				// The sequential path panics straight out, unwrapped.
-				if got != "boom" {
-					t.Fatalf("recovered %#v, want the original panic value", got)
-				}
-				return
-			}
-			wp, ok := got.(*workerPanic)
-			if !ok {
-				t.Fatalf("recovered %#v, want a *workerPanic", got)
-			}
-			if wp.Value != "boom" {
-				t.Errorf("Value = %#v, want the original panic value", wp.Value)
-			}
-			// The worker's own stack is the whole reason for the wrapper: a bare
-			// re-panic would report the coordinator and lose it.
-			if !strings.Contains(string(wp.Stack), "TestParallelDoRaisesAWorkerPanic") {
-				t.Errorf("the captured stack is not the worker's:\n%s", wp.Stack)
-			}
-			if !strings.Contains(wp.String(), "boom") {
-				t.Errorf("String() does not print the value: %s", wp.String())
-			}
-			// The pool drains rather than abandoning the indexes in flight, so a
-			// caller that recovers is not looking at half-written results.
-			if n := ran.Load(); n < 8 {
-				t.Errorf("only %d of 64 indexes ran: the pool abandoned its work", n)
-			}
-		})
 	}
 }

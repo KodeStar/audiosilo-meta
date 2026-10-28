@@ -18,6 +18,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/kodestar/audiosilo-meta/internal/parallel"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 	"github.com/santhosh-tekuri/jsonschema/v6"
@@ -79,7 +80,7 @@ func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []stri
 	l.checkPackBounds(def, tree)
 
 	results := make([]packResult, tree.Len())
-	parallelDo(len(results), func(i int) {
+	parallel.Do(len(results), func(i int) {
 		results[i] = l.loadPack(def, tree, i)
 	})
 

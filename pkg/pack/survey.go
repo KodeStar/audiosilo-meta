@@ -63,6 +63,11 @@ func (s *Store) survey(def FamilyDef) (*familySurvey, error) {
 		return nil, err
 	}
 
+	// Parsing is nearly all of a survey's cost and every file parses on its own,
+	// so the family is parsed on the worker pool first; the classification below
+	// then reads it from the cache, in listing order, exactly as it always did.
+	s.reader.prefetch(rels)
+
 	fs := &familySurvey{def: def, files: map[string]*File{}}
 	var cands []surveyed
 	for _, rel := range rels {
