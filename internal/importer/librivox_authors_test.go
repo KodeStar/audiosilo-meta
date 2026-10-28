@@ -55,8 +55,7 @@ func TestGradeAuthorSpelling(t *testing.T) {
 		{"Poul William Anderson", "Poul Anderson", spellingVariant},
 		{"Henry Brooks Adams", "Henry Adams", spellingVariant},
 		{"Saint Justin Martyr", "Justin Martyr", spellingVariant},
-		{"Francis Parkman Jr.", "Francis Parkman", spellingVariant},
-		{"Horatio Alger Jr.", "Horatio Alger", spellingVariant},
+		{"John Smith Jr.", "John Henry Smith Jr.", spellingVariant},
 		{"Elizabeth Cleghorn Gaskell", "Elizabeth Gaskell", spellingVariant},
 		{"Pierre Choderlos de Laclos", "Pierre-Ambroise-François Choderlos de Laclos", spellingVariant},
 		{"Harriet Jacobs", "Harriet Ann Jacobs", spellingVariant},
@@ -74,6 +73,9 @@ func TestGradeAuthorSpelling(t *testing.T) {
 		{"Jacob & Wilhelm Grimm", "The Brothers Grimm", spellingLoose},
 		{"Homer", "Winslow Homer", spellingLoose},
 		{"Alexander Dumas Jr.", "Alexander Dumas Sr.", spellingLoose},
+		{"Francis Parkman Jr.", "Francis Parkman", spellingLoose},
+		{"Horatio Alger Jr.", "Horatio Alger", spellingLoose},
+		{"Henry James", "Henry James Sr.", spellingLoose},
 		// Apart: another surname.
 		{"James H. Schmitz", "Marie James", spellingApart},
 		{"James H. Schmitz", "James Kerr", spellingApart},
@@ -103,9 +105,10 @@ func TestLibrivoxAuthorVariantAttaches(t *testing.T) {
 		person, personName   string
 		first, last, newSlug string
 	}{
-		"more words":         {"This Country of Ours, Part 2", "This Country of Ours, Part 2", "henrietta-marshall", "Henrietta Marshall", "Henrietta Elizabeth", "Marshall", "henrietta-elizabeth-marshall"},
-		"fewer words":        {"Uncle Silas", "Uncle Silas", "joseph-sheridan-le-fanu", "Joseph Sheridan Le Fanu", "Sheridan", "Le Fanu", "sheridan-le-fanu"},
-		"suffix and article": {"Oregon Trail", "The Oregon Trail", "francis-parkman", "Francis Parkman", "Francis", "Parkman Jr.", "francis-parkman-jr"},
+		"more words":     {"This Country of Ours, Part 2", "This Country of Ours, Part 2", "henrietta-marshall", "Henrietta Marshall", "Henrietta Elizabeth", "Marshall", "henrietta-elizabeth-marshall"},
+		"fewer words":    {"Uncle Silas", "Uncle Silas", "joseph-sheridan-le-fanu", "Joseph Sheridan Le Fanu", "Sheridan", "Le Fanu", "sheridan-le-fanu"},
+		"article":        {"Education of Henry Adams", "The Education of Henry Adams", "henry-adams", "Henry Adams", "Henry Brooks", "Adams", "henry-brooks-adams"},
+		"suffix on both": {"Ragged Dick", "Ragged Dick", "horatio-alger-jr", "Horatio Alger Jr.", "Horatio Thomas", "Alger Jr.", "horatio-thomas-alger-jr"},
 	} {
 		t.Run(name, func(t *testing.T) {
 			dataDir := t.TempDir()
@@ -163,33 +166,33 @@ func TestLibrivoxAuthorVariantWithACoAuthor(t *testing.T) {
 	mustValidate(t, dataDir)
 }
 
-func TestLibrivoxAuthorVariantKeepsAnotherIDsPerson(t *testing.T) {
-	// The catalogued person already carries another LibriVox author id: the
-	// project still attaches and credits them, the id is not written twice and
-	// the run says so.
+func TestLibrivoxAuthorVariantRefusesAnotherIDsPerson(t *testing.T) {
+	// The catalogued person already carries another LibriVox author id than the
+	// project's: LibriVox keeps them as two people, so the spelling decides
+	// nothing - an author-spelling worklist row that writes nothing. (A person
+	// with no author id is TestLibrivoxAuthorVariantAttaches.)
 	dataDir := t.TempDir()
 	files := authoredWorkFiles(t, map[string][]string{"the-work": {"Uncle Silas", "sheridan-le-fanu", "Sheridan Le Fanu"}})
 	files[personAddr("sheridan-le-fanu")] = testpack.WithField(t, files[personAddr("sheridan-le-fanu")], "librivox_author_id", 42)
 	seedTree(t, dataDir, files)
-	sum := runLibrivox(t, writeSnapshot(t, byAuthor(t, 99802, "Uncle Silas", "English", lvAuthor(7003, "Joseph Sheridan", "Le Fanu"))), dataDir, allLibrivox)
-	if sum.NewWorks != 0 || sum.LibrivoxAuthorVariants != 1 {
-		t.Fatalf("works/variants = %d/%d", sum.NewWorks, sum.LibrivoxAuthorVariants)
+	before := testpack.Snapshot(t, dataDir)
+	snap := writeSnapshot(t, byAuthor(t, 99802, "Uncle Silas", "English", lvAuthor(7003, "Joseph Sheridan", "Le Fanu")))
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	want := []LibrivoxWorklistEntry{{Project: 99802, Title: "Uncle Silas", Authors: []string{"Joseph Sheridan Le Fanu"},
+		Reason: LibrivoxAuthorSpelling, Candidates: []LibrivoxCandidate{{"the-work", "Uncle Silas"}}}}
+	if sum.NewWorks+sum.NewRecordings+sum.LibrivoxAuthorVariants != 0 || !reflect.DeepEqual(sum.LibrivoxWorklist, want) {
+		t.Fatalf("works/recordings/variants = %d/%d/%d, worklist = %+v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxAuthorVariants, sum.LibrivoxWorklist)
 	}
-	var p lvPerson
-	readEntity(t, dataDir, personAddr("sheridan-le-fanu"), &p)
-	if p.AuthorID != 42 {
-		t.Errorf("person = %+v", p)
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("a worklist row changed the tree")
 	}
-	if !strings.Contains(strings.Join(sum.Warnings, "\n"), `already carries librivox_author_id 42; librivox_author_id 7003`) {
-		t.Errorf("no warning about the second id: %v", sum.Warnings)
-	}
-	mustValidate(t, dataDir)
 }
 
 func TestLibrivoxAuthorVariantDenied(t *testing.T) {
 	// Another surname is another author (a new work, no worklist row); a looser
-	// likeness - an initial, another given name, a one-word name, Saint and St -
-	// is an author-spelling worklist row and writes nothing; two works the row's
+	// likeness - an initial, another given name, a one-word name, Saint and St,
+	// a Jr. on one name only - is an author-spelling worklist row and writes
+	// nothing; two works the row's
 	// author is a spelling of, or one beside a looser likeness, decide nothing.
 	cases := map[string]struct {
 		works    map[string][]string
@@ -217,6 +220,11 @@ func TestLibrivoxAuthorVariantDenied(t *testing.T) {
 			works: map[string][]string{"sketches": {"Sketches", "winslow-homer", "Winslow Homer"}},
 			last:  "Homer", reason: LibrivoxAuthorSpelling,
 			want: []LibrivoxCandidate{{"sketches", "Sketches"}},
+		},
+		"a suffix on one name only": {
+			works: map[string][]string{"the-oregon-trail": {"The Oregon Trail", "francis-parkman", "Francis Parkman"}},
+			first: "Francis", last: "Parkman Jr.", reason: LibrivoxAuthorSpelling,
+			want: []LibrivoxCandidate{{"the-oregon-trail", "The Oregon Trail"}},
 		},
 		"saint and st": {
 			works: map[string][]string{"the-interior-castle": {"The Interior Castle", "st-teresa-of-avila", "St Teresa of Ávila"}},
@@ -324,26 +332,26 @@ func TestLibrivoxAuthorVariantKeysTheIDForTheBatch(t *testing.T) {
 	// creates its work crediting that person too, not a second record, and the
 	// person is keyed by the id.
 	dataDir := t.TempDir()
-	seedAuthoredWorks(t, dataDir, map[string][]string{"the-oregon-trail": {"The Oregon Trail", "francis-parkman", "Francis Parkman"}})
-	parkman := lvAuthor(7030, "Francis", "Parkman, Jr.")
+	seedAuthoredWorks(t, dataDir, map[string][]string{"the-education-of-henry-adams": {"The Education of Henry Adams", "henry-adams", "Henry Adams"}})
+	adams := lvAuthor(7030, "Henry Brooks", "Adams")
 	snap := writeSnapshot(t,
-		byAuthor(t, 99830, "Montcalm and Wolfe", "English", parkman),
-		byAuthor(t, 99831, "Oregon Trail", "English", parkman),
+		byAuthor(t, 99830, "Mont-Saint-Michel and Chartres", "English", adams),
+		byAuthor(t, 99831, "Education of Henry Adams", "English", adams),
 	)
 	sum := runLibrivox(t, snap, dataDir, allLibrivox)
-	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.LibrivoxAuthorVariants != 2 || entryExists(t, dataDir, personAddr("francis-parkman-jr")) {
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.LibrivoxAuthorVariants != 2 || entryExists(t, dataDir, personAddr("henry-brooks-adams")) {
 		t.Fatalf("works/recordings/variants = %d/%d/%d\nnotes: %v\nwarnings: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxAuthorVariants, sum.Notes, sum.Warnings)
 	}
 	var w lvWork
-	readEntity(t, dataDir, workAddr("montcalm-and-wolfe"), &w)
-	if !reflect.DeepEqual(w.Authors, []string{"francis-parkman"}) {
+	readEntity(t, dataDir, workAddr("mont-saint-michel-and-chartres"), &w)
+	if !reflect.DeepEqual(w.Authors, []string{"henry-adams"}) {
 		t.Errorf("new work authors = %v", w.Authors)
 	}
-	if got := recSlugsOf(t, dataDir, "the-oregon-trail"); len(got) != 2 {
+	if got := recSlugsOf(t, dataDir, "the-education-of-henry-adams"); len(got) != 2 {
 		t.Errorf("recordings = %v", got)
 	}
 	var p lvPerson
-	readEntity(t, dataDir, personAddr("francis-parkman"), &p)
+	readEntity(t, dataDir, personAddr("henry-adams"), &p)
 	if p.AuthorID != 7030 {
 		t.Errorf("person = %+v", p)
 	}
@@ -364,27 +372,30 @@ func TestLibrivoxAuthorVariantKeysTheIDForTheBatch(t *testing.T) {
 
 func TestLibrivoxAuthorVariantLeavesAnIDOffAKeyedPerson(t *testing.T) {
 	// The catalogued person already carries another author id, so the batch
-	// rule stands down: the attaching project still joins their work, and the
-	// id's other project keeps its own person, as before (which, created
-	// first, the attaching project's credit then names and keeps).
+	// rule stands down: the id's other project keeps its own person, as
+	// before, and the same-titled project, its author a spelling of a person
+	// LibriVox keys apart, is an author-spelling worklist row.
 	dataDir := t.TempDir()
-	files := authoredWorkFiles(t, map[string][]string{"the-oregon-trail": {"The Oregon Trail", "francis-parkman", "Francis Parkman"}})
-	files[personAddr("francis-parkman")] = testpack.WithField(t, files[personAddr("francis-parkman")], "librivox_author_id", 42)
+	files := authoredWorkFiles(t, map[string][]string{"the-education-of-henry-adams": {"The Education of Henry Adams", "henry-adams", "Henry Adams"}})
+	files[personAddr("henry-adams")] = testpack.WithField(t, files[personAddr("henry-adams")], "librivox_author_id", 42)
 	seedTree(t, dataDir, files)
-	parkman := lvAuthor(7031, "Francis", "Parkman, Jr.")
+	adams := lvAuthor(7031, "Henry Brooks", "Adams")
 	sum := runLibrivox(t, writeSnapshot(t,
-		byAuthor(t, 99840, "Montcalm and Wolfe", "English", parkman),
-		byAuthor(t, 99841, "Oregon Trail", "English", parkman),
+		byAuthor(t, 99840, "Mont-Saint-Michel and Chartres", "English", adams),
+		byAuthor(t, 99841, "Education of Henry Adams", "English", adams),
 	), dataDir, allLibrivox)
-	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.LibrivoxAuthorVariants != 1 {
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.LibrivoxAuthorVariants != 0 {
 		t.Fatalf("works/recordings/variants = %d/%d/%d\nnotes: %v", sum.NewWorks, sum.NewRecordings, sum.LibrivoxAuthorVariants, sum.Notes)
 	}
+	if len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Project != 99841 || sum.LibrivoxWorklist[0].Reason != LibrivoxAuthorSpelling {
+		t.Errorf("worklist = %+v", sum.LibrivoxWorklist)
+	}
 	var w lvWork
-	readEntity(t, dataDir, workAddr("montcalm-and-wolfe"), &w)
-	if !reflect.DeepEqual(w.Authors, []string{"francis-parkman-jr"}) {
+	readEntity(t, dataDir, workAddr("mont-saint-michel-and-chartres"), &w)
+	if !reflect.DeepEqual(w.Authors, []string{"henry-brooks-adams"}) {
 		t.Errorf("new work authors = %v", w.Authors)
 	}
-	if got := recSlugsOf(t, dataDir, "the-oregon-trail"); len(got) != 2 {
+	if got := recSlugsOf(t, dataDir, "the-education-of-henry-adams"); len(got) != 1 {
 		t.Errorf("recordings = %v", got)
 	}
 	mustValidate(t, dataDir)
@@ -451,26 +462,26 @@ func TestLibrivoxAuthorVariantNeverRekeysACataloguedSpelling(t *testing.T) {
 	// LibriVox's spelling is itself a catalogued person, with no LibriVox id
 	// yet: the batch rule stands down, so the id's other project credits that
 	// person and the id is stamped there - one same-titled work by a longer
-	// spelling ("Henry James Sr.", the father) never moves every project of
-	// the id onto another record. The attaching project keeps its credit too.
+	// spelling never moves every project of the id onto another record. The
+	// attaching project keeps its credit too.
 	dataDir := t.TempDir()
-	files := authoredWorkFiles(t, map[string][]string{"substance-and-shadow": {"Substance and Shadow", "henry-james-sr", "Henry James Sr."}})
-	files[personAddr("henry-james")] = testpack.PersonJSON(t, "henry-james", "Henry James")
+	files := authoredWorkFiles(t, map[string][]string{"frankenstein": {"Frankenstein", "mary-wollstonecraft-shelley", "Mary Wollstonecraft Shelley"}})
+	files[personAddr("mary-shelley")] = testpack.PersonJSON(t, "mary-shelley", "Mary Shelley")
 	seedTree(t, dataDir, files)
-	james := lvAuthor(7060, "Henry", "James")
+	shelley := lvAuthor(7060, "Mary", "Shelley")
 	sum := runLibrivox(t, writeSnapshot(t,
-		byAuthor(t, 99860, "Substance and Shadow", "English", james),
-		byAuthor(t, 99861, "The Turn of the Screw", "English", james),
+		byAuthor(t, 99860, "Frankenstein", "English", shelley),
+		byAuthor(t, 99861, "The Last Man", "English", shelley),
 	), dataDir, allLibrivox)
 	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.NewPeople != 1 || sum.LibrivoxAuthorVariants != 1 {
 		t.Fatalf("works/recordings/people (the reader alone)/variants = %d/%d/%d/%d\nnotes: %v", sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.LibrivoxAuthorVariants, sum.Notes)
 	}
 	var w lvWork
-	readEntity(t, dataDir, workAddr("the-turn-of-the-screw"), &w)
-	if !reflect.DeepEqual(w.Authors, []string{"henry-james"}) {
+	readEntity(t, dataDir, workAddr("the-last-man"), &w)
+	if !reflect.DeepEqual(w.Authors, []string{"mary-shelley"}) {
 		t.Errorf("new work authors = %v", w.Authors)
 	}
-	for slug, id := range map[string]int{"henry-james": 7060, "henry-james-sr": 0} {
+	for slug, id := range map[string]int{"mary-shelley": 7060, "mary-wollstonecraft-shelley": 0} {
 		var p lvPerson
 		readEntity(t, dataDir, personAddr(slug), &p)
 		if p.AuthorID != id {
@@ -484,8 +495,8 @@ func TestLibrivoxAuthorVariantPairingIgnoresAuthorOrder(t *testing.T) {
 	// "John Smith" is a spelling of both of the work's authors, so the row is
 	// loose whichever of its authors it lists first: never an attach.
 	for name, order := range map[string][2]LibrivoxPerson{
-		"spelling of both first": {lvAuthor(7070, "John", "Smith"), lvAuthor(7071, "John Paul", "Smith Jr.")},
-		"spelling of both last":  {lvAuthor(7071, "John Paul", "Smith Jr."), lvAuthor(7070, "John", "Smith")},
+		"spelling of both first": {lvAuthor(7070, "John", "Smith"), lvAuthor(7071, "Paul John", "Smith")},
+		"spelling of both last":  {lvAuthor(7071, "Paul John", "Smith"), lvAuthor(7070, "John", "Smith")},
 	} {
 		t.Run(name, func(t *testing.T) {
 			dataDir := t.TempDir()
