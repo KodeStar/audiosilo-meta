@@ -154,6 +154,10 @@ type workState struct {
 	// identity IS its whole list) and a role-qualified row recognize each other.
 	authors map[string]bool
 	all     map[string]bool
+	// storedCredits is a catalogued work's credits[] as loaded (a translator a
+	// record lists there and not in its authors), read by names; nil for a work
+	// this run created, whose credits are runCredits.
+	storedCredits []model.Credit
 	// lang is the work's language. A work is language-scoped: a translated
 	// edition is a different work from its original, and merging them makes the
 	// work's own language a lie for half its recordings. Empty = unknown, which
@@ -882,6 +886,7 @@ func (p *planner) run(books []sourceBook, opts Options) error {
 	p.reportRefreshes()
 	p.reportDuplicateIdentities()
 	p.reportLibrivoxVariants()
+	p.settleLibrivoxUnrecorded()
 	p.reportTombstoneRides()
 	p.reportSeriesNameJoins()
 	p.stampLibrivoxPeople()
@@ -1196,6 +1201,8 @@ func (p *planner) loadExisting() {
 			lang:     w.Language,
 			recs:     map[string]*recInfo{},
 			genres:   w.Genres,
+
+			storedCredits: w.Credits,
 		}
 		ws.userSourced = hasUserLibrarySource(w)
 		for _, c := range w.Credits {
@@ -1482,9 +1489,35 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	}
 
 	// The row's author slugs, split into the list the record stores and the
-	// subset work identity is matched on (workidentity.go). Resolving them here
-	// is what creates their person records, exactly as creditSlugs did.
-	authors := p.rowWorkAuthors(authorCredits, warn)
+	// subset work identity is matched on (workidentity.go). Resolving them with
+	// rowWorkAuthors is what creates their person records, exactly as
+	// creditSlugs did.
+	//
+	// A LibriVox row decides its work FIRST, on the read-only author set (the
+	// same slugs the create path mints), because an attach to a catalogued work
+	// records none of the row's credits: a translator the work does not name
+	// would otherwise be created and credited nowhere (librivoxRowAuthors). A
+	// LibriVox row that creates its work then mints them like any other.
+	var authors workAuthors
+	if b.lv != nil {
+		authors = p.rowWorkAuthorsRO(authorCredits)
+	} else {
+		authors = p.rowWorkAuthors(authorCredits, warn)
+	}
+	var walk workWalk
+	if route.walk != nil {
+		walk = *route.walk
+	} else {
+		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
+	}
+	var unrecorded []LibrivoxUnrecordedCredit
+	if b.lv != nil {
+		if walk.ws == nil {
+			authors = p.rowWorkAuthors(authorCredits, warn)
+		} else {
+			unrecorded = p.librivoxRowAuthors(b, walk.ws, authorCredits, warn)
+		}
+	}
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
 
 	// The book's genre claims are mapped from the source's own strings onto this
@@ -1498,12 +1531,6 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// raw for the same reason too - resolving them is wasted work on every row
 	// that merges.
 	facts := &workFacts{genres: b.genres, credits: authorCredits}
-	var walk workWalk
-	if route.walk != nil {
-		walk = *route.walk
-	} else {
-		walk = p.resolveWork(workTitle, b.str("title"), b.qualifiedTitle, posSuffix, authors, lang, claim)
-	}
 	ws := p.getOrCreateWork(walk, authors, lang, facts, warn)
 	// The title the row was RESOLVED by - its own, or its full title when the
 	// work was found or created on the full title's chain - is the one the
@@ -1520,6 +1547,9 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 		p.rememberIdentity(ident, ws.slug, workTitle)
 	}
 	p.addRecording(ws, b, resolvedTitle, asin, lang, narratorSlugs, warn)
+	if p.landedRec != "" {
+		p.summary.LibrivoxUnrecordedCredits = append(p.summary.LibrivoxUnrecordedCredits, unrecorded...)
+	}
 	// A row of this run landing on a work the run created adds what it states
 	// (credits, genres - the recording vote reads the recording it landed on);
 	// a no-op for a work loaded from disk, and for the row that created it.
@@ -2583,6 +2613,9 @@ func (p *planner) walkWorkChain(title string, chain workChain, authors workAutho
 // reuse the guard's walk: it resolves again with the author set the create path
 // actually minted, so an in-row difference between the read-only and the created
 // resolution can never make the create path act on an answer it did not reach.
+// The one exception is a LibriVox row, which walks on the read-only set and mints
+// only afterwards (an attach creates only the people its work credits): that
+// rests on resolvePerson's own guarantee that the two resolutions name one slug.
 //
 // The row's resolved title is walked first; that is where the overwhelming
 // majority of works are. When it holds no match, the FULL title's chain is walked

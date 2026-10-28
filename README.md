@@ -387,8 +387,22 @@ title marker is stripped first):
    Metamorphosis" and "Metamorphosis" by Franz Kafka). The articles set aside
    are the English the/a/an, French le/la/les/l', German der/die/das, Spanish
    el/los/las, Italian il/lo and Dutch de/het/een;
-3. otherwise a new work. A work by a different author under the same title is a
+3. otherwise, when the title with its trailing parenthetical or bracketed
+   qualifiers removed is a work's title under rule 2 ("Frankenstein (1818)",
+   "Black Beauty (The Autobiography of a Horse)" by the same author), the
+   project goes to the worklist as `differently-spelled-title` (`several-works`
+   when more than one work matches), never attached: the qualifier can as well
+   be a volume ("King in Yellow (part 1)");
+4. otherwise a new work. A work by a different author under the same title is a
    different book, so it gets a work of its own.
+
+A project that attaches to a work already in the catalogue adds its recording
+(and its readers) only: a create run never edits a catalogued work's credits, so
+an author or translator that work does not name is not recorded there, and no
+person record is created for them (it would be credited nowhere). The import
+report lists each such credit (project id, name, role, `librivox_author_id`,
+work) under `librivox credits not recorded`, for recording-level credits to
+pick up later (meta#2752).
 
 A match the rules cannot settle is never guessed: the project is skipped and
 listed in the import report's **worklist**, one line per project with its id,
@@ -406,7 +420,7 @@ or the agreement rests on the catch-all person a name in an unsluggable script
 falls back to: no real author is shared, and a shared translator does not
 count), `differently-spelled-title` (the duplicate-identity guard holds
 the book under a title rule 2 does not read as the same, such as a subtitle
-apart) and `fallback-slug-taken` (below). Once a person has settled the work,
+apart, or rule 3's trailing qualifier) and `fallback-slug-taken` (below). Once a person has settled the work,
 re-importing the project's id lands it. `--conflicts` rows for these projects
 carry `librivox_id`, since they have no ASIN.
 

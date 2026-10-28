@@ -125,7 +125,22 @@ func runLibrivoxImport(args []string, run func(string, importer.LibrivoxIDs, imp
 		fmt.Printf("  %d pack files written\n", len(sum.Files))
 	}
 	printLibrivoxWorklist(sum.LibrivoxWorklist)
+	printLibrivoxUnrecorded(sum.LibrivoxUnrecordedCredits)
 	return 0
+}
+
+// printLibrivoxUnrecorded prints the author and translator credits of landed
+// projects that their work does not record (importer.LibrivoxUnrecordedCredit):
+// kept for recording-level credits (meta#2752). Nothing when there are none.
+func printLibrivoxUnrecorded(credits []importer.LibrivoxUnrecordedCredit) {
+	if len(credits) == 0 {
+		return
+	}
+	fmt.Printf("librivox credits not recorded: %d (the project attached to a work that does not name them; for recording-level credits, meta#2752):\n",
+		len(credits))
+	for _, c := range credits {
+		fmt.Println("  " + c.String())
+	}
 }
 
 // printLibrivoxWorklist prints the projects the run skipped for a person to

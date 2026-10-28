@@ -59,8 +59,10 @@ import (
 // title is the catalogue work's title, so a project attached to an existing work
 // reads in that work's spelling and case, without "(version N)". Translators are
 // the work's translator credits: a project attached to a catalogued work lists
-// that work's translators, which may differ from LibriVox's and carry no LibriVox
-// id or years. Per-section readers are not stored: a recording with ONE narrator
+// that work's translators, which may differ from LibriVox's; a translator's
+// LibriVox id and years come from the person record, so they appear once the
+// importer has stamped that person (an attach stamps only people the work
+// names). Per-section readers are not stored: a recording with ONE narrator
 // names that reader on every section, a multi-reader recording names none.
 // Everything else - ids, the language name, copyright_year, URLs, runtimes,
 // section titles, files and playtimes, author ids and years - is LibriVox's value

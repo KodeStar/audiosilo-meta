@@ -189,6 +189,16 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 		}
 	}
 
+	p.noteIdentityDuplicate(b, workTitle, match)
+	return true
+}
+
+// noteIdentityDuplicate is the bookkeeping of a row refused because the
+// catalogue already holds its book (match) under a differently-spelled title:
+// the count and examples the run's warning reports, the conflict row and, for a
+// LibriVox row, the differently-spelled-title worklist entry. The guard above and the LibriVox
+// trailing-qualifier rule (librivoxmatch.go) both refuse through it.
+func (p *planner) noteIdentityDuplicate(b sourceBook, workTitle string, match duplicateIdentityMatch) {
 	p.summary.SkippedDuplicateIdentity++
 	if len(p.dupIdentityExamples) < maxWarnExamples {
 		p.dupIdentityExamples = append(p.dupIdentityExamples,
@@ -205,7 +215,6 @@ func (p *planner) refuseDuplicateIdentity(b sourceBook, ident rowIdentity, workT
 		p.noteLibrivoxWorklist(b, workTitle, LibrivoxDifferentlySpelled,
 			[]LibrivoxCandidate{{Work: match.work, Title: match.title}})
 	}
-	return true
 }
 
 // conflictFieldWorkIdentity is the Conflict.Field value a refused duplicate row

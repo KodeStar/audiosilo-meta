@@ -31,6 +31,12 @@ package importer
 //     would file it beside an unrelated book. It is matched by rule 2 alone
 //     (its key keeps the letters of its own script), and otherwise creates a
 //     new work at `librivox-<project id>`, titled as LibriVox writes it.
+//  5. A TRAILING QUALIFIER IS A WORKLIST SKIP. A Latin title about to create a
+//     work, which rule 2 would match once its trailing parenthetical or
+//     bracketed qualifiers are removed ("Frankenstein (1818)", "Black Beauty
+//     (The Autobiography of a Horse)"), is listed differently-spelled-title
+//     (several-works for more than one match), never attached: the qualifier
+//     can as well be a volume ("King in Yellow (part 1)"). librivoxQualifiedTwin.
 //
 // A work by a DIFFERENT author under the same title is a different book: rule 1
 // walks past it and rule 2 does not list it, so the row creates a work of its
@@ -309,7 +315,7 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 	key, nonLatin := librivoxTitleKeyOf(workTitle)
 	slugs := p.librivoxTitleIndex()[key]
 	if len(slugs) == 0 && (nonLatin || !anyUnsluggedCredit(credits)) {
-		return p.librivoxFallback(b, workTitle, nonLatin)
+		return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
 	}
 	authors := p.rowWorkAuthorsRO(credits)
 	if !nonLatin {
@@ -339,7 +345,70 @@ func (p *planner) routeLibrivox(b sourceBook, workTitle, fullTitle, posSuffix, l
 			return librivoxRoute{skip: true}
 		}
 	}
+	return p.librivoxUndecided(b, workTitle, fullTitle, posSuffix, lang, credits, claim, nonLatin)
+}
+
+// librivoxUndecided is a row rules 1-3 left undecided. A Latin title first
+// meets rule 5 (librivoxQualifiedTwin); otherwise it is librivoxFallback's.
+func (p *planner) librivoxUndecided(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim, nonLatin bool) librivoxRoute {
+	if !nonLatin && p.librivoxQualifiedTwin(b, workTitle, fullTitle, posSuffix, lang, credits, claim) {
+		return librivoxRoute{skip: true}
+	}
 	return p.librivoxFallback(b, workTitle, nonLatin)
+}
+
+// librivoxQualifiedTwin is rule 5 (meta#2743 follow-up): a row about to create
+// a work whose title, with its trailing parenthetical or bracketed qualifiers
+// removed one at a time, is a work's title by the same authors (rule 2's key and
+// author test) is refused onto the worklist - differently-spelled-title for one
+// such work, several-works for more - and never attached: the qualifier may be
+// an edition ("(1818)", "(Lippincott)"), a subtitle or a series note, but just
+// as well a volume ("(part 1)"), which only a person can tell apart. A row the
+// ordinary walk resolves to a work, a row the serial pre-pass suffixed, and a
+// "Part N" stated outside brackets ("Anna Karenina, Book 1") are untouched.
+func (p *planner) librivoxQualifiedTwin(b sourceBook, workTitle, fullTitle, posSuffix, lang string, credits []credit, claim *seriesClaim) bool {
+	if posSuffix != "" {
+		return false
+	}
+	var authors *workAuthors
+	for t := workTitle; ; {
+		stripped := stripTrailingQualifier(t)
+		if stripped == t || stripped == "" {
+			return false
+		}
+		t = stripped
+		key, nonLatin := librivoxTitleKeyOf(t)
+		slugs := p.librivoxTitleIndex()[key]
+		if nonLatin || len(slugs) == 0 {
+			continue
+		}
+		if authors == nil {
+			a := p.rowWorkAuthorsRO(credits)
+			// The ordinary walk answers first: a row it resolves to a work is
+			// that work's recording, as rule 1 says.
+			if p.resolveWork(workTitle, fullTitle, b.qualifiedTitle, posSuffix, a, lang, claim).ws != nil {
+				return false
+			}
+			authors = &a
+		}
+		matched, _ := p.librivoxCandidates(slugs, lang, *authors)
+		matched = slices.DeleteFunc(matched, func(ws *workState) bool { return restsOnCatchAll(*authors, ws) })
+		switch {
+		case len(matched) == 1:
+			p.noteIdentityDuplicate(b, workTitle, duplicateIdentityMatch{work: matched[0].slug, title: matched[0].title})
+			return true
+		case len(matched) > 1:
+			p.noteLibrivoxWorklist(b, workTitle, LibrivoxSeveralWorks, candidatesOf(matched))
+			return true
+		}
+	}
+}
+
+// stripTrailingQualifier is t without its last trailing parenthetical or
+// bracketed qualifier ("(1818)", "(The Autobiography of a Horse)", "[Forsyte
+// Saga Vol. 1]"), trimmed: trailingParenRE is the package's one locator.
+func stripTrailingQualifier(t string) string {
+	return strings.TrimSpace(trailingParenRE.ReplaceAllString(t, ""))
 }
 
 // librivoxFallback is a row rules 1-3 left undecided: the ordinary path, or for

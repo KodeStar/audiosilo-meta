@@ -39,6 +39,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -621,12 +622,12 @@ func (p *planner) applyLibrivoxRecording(rec *outRecording, b sourceBook) {
 // stampLibrivoxPeople writes each landed row's LibriVox ids onto the people its
 // credits resolved to: a reader's onto one of the recording's narrators, an
 // author's or translator's onto one of the work's credited people (its authors,
-// or a role credit this run added to a work it created - a second translation's
-// translator). A credit that resolves to nobody the row's records name (a
-// translator of a work the row only attached to, which records no new credits)
-// is left unstamped. A person that already carries a DIFFERENT id in that
-// namespace keeps it - two LibriVox ids whose names are one person here - and the
-// run warns naming both.
+// a catalogued work's stored credits, or a role credit this run added to a work
+// it created - a second translation's translator). A credit that resolves to
+// nobody the row's records name (a translator of a work the row only attached
+// to, which records no new credits) is left unstamped. A person that already
+// carries a DIFFERENT id in that namespace keeps it - two LibriVox ids whose
+// names are one person here - and the run warns naming both.
 func (p *planner) stampLibrivoxPeople() {
 	for _, l := range p.lv.landed {
 		for _, c := range l.facts.credits {
@@ -651,11 +652,115 @@ func (p *planner) stampLibrivoxPeople() {
 	}
 }
 
-// workCreditsPerson reports whether work names person: in its authors, or in a
-// role credit this run recorded on it (mergeCreatedWorkFacts adds a later row's
-// credits to a work the run created without touching its authors).
+// LibrivoxUnrecordedCredit is one author or translator credit a landed LibriVox
+// row stated that its work does not record (Summary.LibrivoxUnrecordedCredits).
+type LibrivoxUnrecordedCredit struct {
+	Project int `json:"librivox_id"`
+	// AuthorID is the person's librivox_author_id, 0 when the row states none.
+	AuthorID int      `json:"librivox_author_id,omitempty"`
+	Name     string   `json:"name"`
+	Roles    []string `json:"roles,omitempty"`
+	// Work is the work the row's recording landed on.
+	Work string `json:"work"`
+	// PersonExists says the person record exists (the catalogue or the run
+	// already held it); false means the run withheld it rather than mint an
+	// orphan.
+	PersonExists bool `json:"person_exists"`
+}
+
+// String is the credit as the import report prints it, one line:
+//
+//	2027 "Amy Coulter" (translator, librivox_author_id 9876) -> siddhartha, person not created
+func (c LibrivoxUnrecordedCredit) String() string {
+	var b strings.Builder
+	fmt.Fprintf(&b, "%d %q (", c.Project, c.Name)
+	if len(c.Roles) > 0 {
+		b.WriteString(strings.Join(c.Roles, ", "))
+	} else {
+		b.WriteString("author")
+	}
+	if c.AuthorID > 0 {
+		fmt.Fprintf(&b, ", librivox_author_id %d", c.AuthorID)
+	}
+	fmt.Fprintf(&b, ") -> %s", c.Work)
+	if !c.PersonExists {
+		b.WriteString(", person not created")
+	}
+	return b.String()
+}
+
+// librivoxRowAuthors creates the people of a LibriVox row that ATTACHES to ws
+// (a work the walk found) - but only those the run will credit there: a person
+// ws already names (in its authors or its stored credits), or a role-credited
+// person (a translator) when ws is a work THIS run created, onto which
+// mergeCreatedWorkFacts adds the row's role credits. Anyone else would be a
+// record credited nowhere: a create run never edits a catalogued work's credit
+// list, and the row's recording credits only its readers. Each such credit is
+// returned for the run's report (and its person, when it would be new, is not
+// created; PersonExists is settled once the run has planned every row,
+// settleLibrivoxUnrecorded). Identity authors always qualify (matchWork admits
+// only a work whose credit list holds them); the per-person test covers every
+// attach route alike - the ordinary walk, a spelling variant and a work created
+// earlier in the run.
+func (p *planner) librivoxRowAuthors(b sourceBook, ws *workState, credits []credit, warn func(string, ...any)) []LibrivoxUnrecordedCredit {
+	_, runCreated := p.runCredits[ws.slug]
+	var out []LibrivoxUnrecordedCredit
+	for _, c := range credits {
+		r := p.resolvePerson(c.name)
+		if ws.names(r.slug) || (runCreated && len(c.roles) > 0 && !r.fellBack) {
+			p.getOrCreatePerson(c.name, warn)
+			continue
+		}
+		out = append(out, LibrivoxUnrecordedCredit{
+			Project:  b.lv.id,
+			AuthorID: p.librivoxAuthorIDOf(b, c.name, r),
+			Name:     c.name,
+			Roles:    slices.Clone(c.roles),
+			Work:     ws.slug,
+		})
+	}
+	return out
+}
+
+// settleLibrivoxUnrecorded sets each unrecorded credit's PersonExists from the
+// planner as the run left it: the row's own reader, or a later row's new work,
+// can create the person after the credit was withheld. A name that slugs away
+// to nothing never has a record of its own (the catch-all is not it).
+func (p *planner) settleLibrivoxUnrecorded() {
+	for i := range p.summary.LibrivoxUnrecordedCredits {
+		c := &p.summary.LibrivoxUnrecordedCredits[i]
+		r := p.resolvePerson(c.Name)
+		c.PersonExists = !r.create && !r.fellBack
+	}
+}
+
+// librivoxAuthorIDOf is the librivox_author_id of the row's author or
+// translator credit named name (r its resolution), or 0: the credit whose name
+// cleans to it (librivoxCreditNames, the cleaning librivoxCreditSlug uses) or
+// resolves to the same person. A name that slugs away to nothing matches by
+// name alone - every such name resolves to the one catch-all record.
+func (p *planner) librivoxAuthorIDOf(b sourceBook, name string, r personResolution) int {
+	for _, c := range b.lv.credits {
+		if c.kind != librivoxAuthor {
+			continue
+		}
+		names := p.librivoxCreditNames(c)
+		if len(names) != 1 {
+			continue
+		}
+		if names[0] == name || (!r.fellBack && p.resolvePerson(names[0]).slug == r.slug) {
+			return c.id
+		}
+	}
+	return 0
+}
+
+// workCreditsPerson reports whether work names person: in its authors, in a
+// catalogued work's stored credits, or in a role credit this run recorded on it
+// (mergeCreatedWorkFacts adds a later row's credits to a work the run created
+// without touching its authors).
 func (p *planner) workCreditsPerson(work, person string) bool {
-	if ws := p.works[work]; ws != nil && ws.all[person] {
+	if ws := p.works[work]; ws != nil && ws.names(person) {
 		return true
 	}
 	for c := range p.runCredits[work] {
@@ -673,12 +778,7 @@ func (p *planner) workCreditsPerson(work, person string) bool {
 // (model.UnslugPersonID), and one LibriVox id stamped there would claim that every
 // unsluggable credit is that one reader or author.
 func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
-	var names []string
-	if c.kind == librivoxReader {
-		names = rowNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
-	} else {
-		names = creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
-	}
+	names := p.librivoxCreditNames(c)
 	if len(names) != 1 {
 		return "", false
 	}
@@ -687,6 +787,23 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 		return "", false
 	}
 	return p.livePerson(r.slug)
+}
+
+// librivoxCreditNames is the names one LibriVox credit cleans to, through the
+// same per-credit cleaning the planner applied to the row: a reader's as a
+// narrator credit, an author's or translator's (its role suffix included) as an
+// author credit.
+func (p *planner) librivoxCreditNames(c librivoxCredit) []string {
+	if c.kind == librivoxReader {
+		return rowNarratorNamesIn(p.credits, sourceBook{narrators: []string{c.name}})
+	}
+	return creditNamesOf(rowAuthorCreditsIn(p.credits, sourceBook{authors: []string{c.name + c.suffix}}))
+}
+
+// names reports whether the work's own record names person: in its authors or
+// in a catalogued work's stored credits[].
+func (ws *workState) names(person string) bool {
+	return ws.all[person] || slices.ContainsFunc(ws.storedCredits, func(c model.Credit) bool { return c.Person == person })
 }
 
 // stampLifeYears writes an author's stated birth and death years onto the person
