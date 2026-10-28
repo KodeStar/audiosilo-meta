@@ -202,8 +202,8 @@ func ASIN(seed string) string {
 	return string(out)
 }
 
-// PersonJSON renders a minimal valid person. The id must be model.PersonSlug(name) or
-// pkg/check refuses it.
+// PersonJSON renders a minimal valid person. The id must be model.PersonSlug(name)
+// (or another form model.PersonIDMatches accepts) or pkg/check refuses it.
 func PersonJSON(t testing.TB, id, name string) string {
 	t.Helper()
 	return mustJSON(t, map[string]any{

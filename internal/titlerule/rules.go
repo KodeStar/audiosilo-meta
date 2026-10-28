@@ -722,7 +722,8 @@ func isASCIIWordByte(c byte) bool {
 // punctuation is not an identity.
 //
 // Removing the hyphens is what makes it COARSER than a slug, which matters: a
-// person's id already IS model.PersonSlug(name) (pkg/check enforces it), so
+// person's id already IS the slug of their name (model.PersonIDMatches, which
+// pkg/check enforces), so
 // grouping people by their slug would find nothing by construction, while "A.B.
 // Kovacs" (a-b-kovacs) and "AB Kovacs" (ab-kovacs) meet here.
 //

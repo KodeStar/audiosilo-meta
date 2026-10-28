@@ -563,6 +563,11 @@ it, `pkg/check` and every writer now refuse it loudly.
   canonical every AI-narration credit folds onto
   (`internal/importer/synthetic.go`) - its kind is not somebody's
   classification, it is what the credit said.
+  A person's id is the slug of their name (`model.PersonSlug`, pkg/check's
+  person-slug rule) with ONE exception: a LibriVox reader whose name another
+  reader id already holds is `<name slug>-librivox-<reader id>`
+  (`model.LibrivoxReaderSlug`), legal only on a record carrying that
+  `librivox_reader_id` - both forms are asked through `model.PersonIDMatches`.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position. Optional `translation_of` (the work's slug set and rules one

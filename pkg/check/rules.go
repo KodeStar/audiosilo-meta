@@ -432,10 +432,15 @@ func normISBN(s string) string { return strings.ToUpper(s) }
 // it with - so the rule can never drift from the minting it polices. That also
 // covers the one record whose id is legitimately not its name's slug: the
 // shared catch-all a fully-folding name falls back to.
+//
+// The one other legal form, a LibriVox reader's disambiguated id, is stated on
+// model.PersonIDMatches. The plain slug's holder is deliberately not required to
+// exist: a merge that retires it must not turn every reader disambiguated off it
+// red.
 func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	for _, p := range cat.People {
-		want, _ := model.PersonSlug(p.Name)
-		if p.ID != want {
+		if !model.PersonIDMatches(p.ID, p.Name, p.LibrivoxReaderID) {
+			want, _ := model.PersonSlug(p.Name)
 			add(idx.person[p], "person id %q does not match its name %q (want %q); the slug of the name IS the identity", p.ID, p.Name, want)
 		}
 	}

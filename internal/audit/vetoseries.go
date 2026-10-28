@@ -225,6 +225,9 @@ func samePersonSpelling(ix *index, a, b string) bool {
 	if pa == nil || pb == nil {
 		return false // an id with no record is only ever itself
 	}
+	if distinctLibrivoxReader(pa, pb) {
+		return false // two LibriVox accounts, kept apart on purpose
+	}
 	if importer.MarkedNameKey(pa.Name) == importer.MarkedNameKey(pb.Name) {
 		return true
 	}

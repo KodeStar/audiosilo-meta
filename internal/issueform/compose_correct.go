@@ -579,14 +579,33 @@ func (c *composer) publisherFreeOfRegionalImprint(addr entryAddr, record map[str
 // submitter their correction was invalid when it is simply beyond automation:
 // left to fall through, the write lands and the metacheck rule reports its own
 // message under the contributor-fault verdict.
-func (c *composer) renameableInPlace(addr entryAddr, _ map[string]any, value any) (any, bool) {
+//
+// A LibriVox reader at their disambiguated id (model.LibrivoxReaderSlug) keeps
+// it through a respelling that slugs the same, which is why the test is
+// model.PersonIDMatches over the record's own reader id - the call
+// checkPersonSlug asks - rather than PersonSlug alone.
+func (c *composer) renameableInPlace(addr entryAddr, record map[string]any, value any) (any, bool) {
 	name, _ := value.(string)
-	want, _ := model.PersonSlug(name)
-	if want == addr.slug {
+	if model.PersonIDMatches(addr.slug, name, librivoxReaderIDOf(record)) {
 		return value, true
 	}
+	want, _ := model.PersonSlug(name)
 	c.fail(StatusNeedsHuman, "renaming %s to %q changes its id to %q - a person's id IS the slug of their name, so the record has to move and every work crediting it has to be rewritten; a maintainer will do it", addr.label(c), name, want)
 	return nil, false
+}
+
+// librivoxReaderIDOf is a person record's librivox_reader_id, 0 when it states
+// none (the record is decoded with UseNumber, so the value is a json.Number).
+func librivoxReaderIDOf(record map[string]any) int {
+	n, ok := record["librivox_reader_id"].(json.Number)
+	if !ok {
+		return 0
+	}
+	id, err := n.Int64()
+	if err != nil {
+		return 0
+	}
+	return int(id)
 }
 
 // seriesNameFreeOfRecordingQualifier judges a series `name` correction: a name ending

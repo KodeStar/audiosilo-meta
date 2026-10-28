@@ -44,7 +44,7 @@
       }
     },
     "librivox_reader_id": {
-      "description": "This person's LibriVox reader id. A LibriVox import keys readers on it, so a rerun (or a reader renamed on LibriVox) never mints a second record. Unique across the dataset (pkg/check).",
+      "description": "This person's LibriVox reader id. A LibriVox import keys readers on it, so a rerun (or a reader renamed on LibriVox) never mints a second record. Unique across the dataset (pkg/check). A reader whose name another reader id already holds has the id <name slug>-librivox-<this id>, which pkg/check accepts only on the record carrying this id.",
       "$ref": "common.schema.json#/$defs/librivox_id"
     },
     "librivox_author_id": {

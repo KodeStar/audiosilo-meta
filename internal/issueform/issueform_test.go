@@ -712,6 +712,35 @@ func TestCorrectDataPersonNameChangingTheSlug(t *testing.T) {
 	}
 }
 
+// TestCorrectDataLibrivoxReaderNameKeepingTheSlug: a LibriVox reader at their
+// disambiguated id (model.LibrivoxReaderSlug) takes a respelling that slugs the
+// same in place, as any person does; a respelling that slugs differently is
+// still a rename for a maintainer.
+func TestCorrectDataLibrivoxReaderNameKeepingTheSlug(t *testing.T) {
+	for _, tc := range []struct {
+		corrected string
+		want      Status
+	}{
+		{"Martína", StatusOK},
+		{"Martine", StatusNeedsHuman},
+	} {
+		t.Run(tc.corrected, func(t *testing.T) {
+			dir := seedTree(t)
+			testpack.Seed(t, dir, map[string]string{
+				"people/ma/martina-librivox-634.json": `{"id":"martina-librivox-634","librivox_reader_id":634,"license":"CC0-1.0","name":"Martina","sources":[{"type":"librivox","ref":"91002","imported_at":"2026-10-28"}]}`,
+			})
+			body := correctBody("data/people/ma/martina-librivox-634.json", "name", tc.corrected, "the reader's LibriVox page", true)
+			res := Process(Options{DataDir: dir, Template: "correct-data", Body: body})
+			if res.Status != tc.want {
+				t.Fatalf("status = %q, want %q; messages = %v", res.Status, tc.want, res.Messages)
+			}
+			if res := check.Load(dir); !res.OK() {
+				t.Fatalf("tree failed validation after the correction:\n%v", res.Problems)
+			}
+		})
+	}
+}
+
 func TestCorrectDataRecordNotFound(t *testing.T) {
 	dir := seedTree(t)
 	body := correctBody("data/works/zz/ghost/work.json", "title", "New Title", "web", true)

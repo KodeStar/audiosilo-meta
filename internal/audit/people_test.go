@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
@@ -138,5 +139,40 @@ func TestMarkedNameKeyIsTheImportersRule(t *testing.T) {
 		if got := importer.MarkedNameKey(c.a) == importer.MarkedNameKey(c.b); got != c.same {
 			t.Errorf("MarkedNameKey(%q) == MarkedNameKey(%q) is %v, want %v", c.a, c.b, got, c.same)
 		}
+	}
+}
+
+// readerFixture is peopleFixture's people with LibriVox reader ids: each person
+// is (slug, name, reader id), 0 for none.
+func readerFixture(t testing.TB, people ...[3]any) map[string]string {
+	t.Helper()
+	out := map[string]string{"people/na/nate-narrator.json": personJSON(t, "nate-narrator", "Nate Narrator")}
+	for i, p := range people {
+		slug, name, reader := p[0].(string), p[1].(string), p[2].(int)
+		rec := personJSON(t, slug, name)
+		if reader != 0 {
+			rec = testpack.WithField(t, rec, "librivox_reader_id", reader)
+		}
+		out["people/xx/"+slug+".json"] = rec
+		id := "book-" + string(rune('a'+i))
+		out["works/xx/"+id+"/work.json"] = workJSON(t, id, "Book "+strings.ToUpper(string(rune('A'+i))), withAuthors(slug))
+		out["works/xx/"+id+"/recordings/r-"+id+".json"] = recJSON(t, "r-"+id, id)
+	}
+	return out
+}
+
+// Two LibriVox accounts with one display name are two people on purpose (the
+// import mints `martina-librivox-634` beside `martina`), so P-DUP is silent on
+// them; a same-named person carrying NO reader id is still a pair to review.
+func TestPersonDupSkipsDistinctLibrivoxReaders(t *testing.T) {
+	rep := runFixture(t, readerFixture(t,
+		[3]any{"martina", "Martina", 844}, [3]any{"martina-librivox-634", "Martina", 634}))
+	if got := classOf(t, rep, ClassPersonDup); len(got) != 0 {
+		t.Errorf("two reader ids were reported as one person: %+v", got)
+	}
+	rep = runFixture(t, readerFixture(t,
+		[3]any{"martina", "Martina", 0}, [3]any{"martina-librivox-634", "Martina", 634}))
+	if got := classOf(t, rep, ClassPersonDup); len(got) != 1 {
+		t.Errorf("a person without a reader id must stay reported, got %+v", got)
 	}
 }

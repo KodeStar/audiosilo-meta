@@ -104,7 +104,7 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 	if !ok {
 		return
 	}
-	narratorSlugs := p.creditSlugs(narratorNames, warn)
+	narratorSlugs := p.rowNarratorSlugs(b, narratorNames, warn)
 	// addRecording registers the ASIN itself, only once it landed on a recording.
 	p.addRecording(ws, b, firstNonEmpty(b.str("title_short"), b.str("title")), asin, lang, narratorSlugs, warn)
 }

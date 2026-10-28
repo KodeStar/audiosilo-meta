@@ -370,7 +370,7 @@ func posSuffixSlugs(base string, c positionClaim) []suffixedSlug {
 		if tail == "" {
 			continue
 		}
-		slug, cut := boundedSlugTail(base, "-"+tail)
+		slug, cut := model.BoundedSlugTailCut(base, "-"+tail)
 		if slug == base || slices.ContainsFunc(out, func(s suffixedSlug) bool { return s.slug == slug }) {
 			continue
 		}
