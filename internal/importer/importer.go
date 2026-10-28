@@ -1090,7 +1090,7 @@ func (p *planner) planCreate(books []sourceBook) {
 	suffixes := p.serialPositionSuffixes(books, titles)
 	// A LibriVox author id that is a catalogued author spelled with more or
 	// fewer words is that person for the whole batch (librivoxauthors.go).
-	p.keyLibrivoxAuthorVariants(books, titles)
+	p.keyLibrivoxAuthorVariants(books, titles, suffixes)
 	for i, b := range books {
 		asin := NormalizeASIN(b.str("asin"))
 		p.setSource(asin, b)

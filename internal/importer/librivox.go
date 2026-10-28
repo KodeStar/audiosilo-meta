@@ -1086,11 +1086,11 @@ func (p *planner) librivoxCreditSlug(c librivoxCredit) (string, bool) {
 			return p.livePerson(slug)
 		}
 	}
-	names := p.librivoxCreditNames(c)
-	if len(names) != 1 {
+	name := p.soleCreditName(c)
+	if name == "" {
 		return "", false
 	}
-	r := p.resolvePerson(names[0])
+	r := p.resolvePerson(name)
 	if r.fellBack {
 		return "", false
 	}

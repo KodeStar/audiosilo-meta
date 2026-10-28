@@ -364,8 +364,9 @@ func TestLibrivoxAuthorVariantKeysTheIDForTheBatch(t *testing.T) {
 
 func TestLibrivoxAuthorVariantLeavesAnIDOffAKeyedPerson(t *testing.T) {
 	// The catalogued person already carries another author id, so the batch
-	// rule stands down: the attaching project still credits them, and the id's
-	// other project keeps its own person, as before.
+	// rule stands down: the attaching project still joins their work, and the
+	// id's other project keeps its own person, as before (which, created
+	// first, the attaching project's credit then names and keeps).
 	dataDir := t.TempDir()
 	files := authoredWorkFiles(t, map[string][]string{"the-oregon-trail": {"The Oregon Trail", "francis-parkman", "Francis Parkman"}})
 	files[personAddr("francis-parkman")] = testpack.WithField(t, files[personAddr("francis-parkman")], "librivox_author_id", 42)
@@ -385,6 +386,135 @@ func TestLibrivoxAuthorVariantLeavesAnIDOffAKeyedPerson(t *testing.T) {
 	}
 	if got := recSlugsOf(t, dataDir, "the-oregon-trail"); len(got) != 2 {
 		t.Errorf("recordings = %v", got)
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxAuthorVariantKeepsAHeldIDsCredit(t *testing.T) {
+	// The project's author id is already on a catalogued person (an earlier
+	// tranche keyed it) who is not the work's author: the project still joins
+	// the same-titled work by the shorter spelling, but its credit stays that
+	// person's - never respelled onto the work's author, which would put one id
+	// on two records (t2's "already on person ..." warnings). The id's other
+	// project credits the same person.
+	dataDir := t.TempDir()
+	files := authoredWorkFiles(t, map[string][]string{"the-work": {"Uncle Silas", "sheridan-le-fanu", "Sheridan Le Fanu"}})
+	files[personAddr("joseph-sheridan-le-fanu")] = testpack.WithField(t,
+		testpack.PersonJSON(t, "joseph-sheridan-le-fanu", "Joseph Sheridan Le Fanu"), "librivox_author_id", 94)
+	seedTree(t, dataDir, files)
+	lefanu := lvAuthor(94, "Joseph Sheridan", "Le Fanu")
+	snap := writeSnapshot(t,
+		byAuthor(t, 99850, "Uncle Silas", "English", lefanu),
+		byAuthor(t, 99851, "Carmilla", "English", lefanu),
+	)
+	sum := runLibrivox(t, snap, dataDir, allLibrivox)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.NewPeople != 1 || sum.LibrivoxAuthorVariants != 1 {
+		t.Fatalf("works/recordings/people (the reader alone)/variants = %d/%d/%d/%d\nnotes: %v\nwarnings: %v",
+			sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.LibrivoxAuthorVariants, sum.Notes, sum.Warnings)
+	}
+	if got := recSlugsOf(t, dataDir, "the-work"); len(got) != 2 {
+		t.Errorf("recordings = %v", got)
+	}
+	if w := strings.Join(sum.Warnings, "\n"); strings.Contains(w, "not recorded") {
+		t.Errorf("an id was refused: %s", w)
+	}
+	want := []LibrivoxUnrecordedCredit{{Project: 99850, AuthorID: 94, Name: "Joseph Sheridan Le Fanu", Work: "the-work", PersonExists: true}}
+	if !reflect.DeepEqual(sum.LibrivoxUnrecordedCredits, want) {
+		t.Errorf("unrecorded = %+v, want %+v", sum.LibrivoxUnrecordedCredits, want)
+	}
+	if note := strings.Join(sum.Notes, "\n"); !strings.Contains(note, `99850 "Uncle Silas": "Joseph Sheridan Le Fanu" kept (a person record) -> "the-work"`) {
+		t.Errorf("no note naming the kept credit: %s", note)
+	}
+	var w lvWork
+	readEntity(t, dataDir, workAddr("carmilla"), &w)
+	if !reflect.DeepEqual(w.Authors, []string{"joseph-sheridan-le-fanu"}) {
+		t.Errorf("carmilla authors = %v", w.Authors)
+	}
+	var p lvPerson
+	readEntity(t, dataDir, personAddr("sheridan-le-fanu"), &p)
+	if p.AuthorID != 0 {
+		t.Errorf("the work's author was keyed: %+v", p)
+	}
+	mustValidate(t, dataDir)
+
+	before := testpack.Snapshot(t, dataDir)
+	again := runLibrivox(t, snap, dataDir, allLibrivox)
+	if again.NewWorks+again.NewRecordings+again.NewPeople+again.LibrivoxIDsStamped != 0 || len(again.Files) != 0 || again.Skipped != 2 {
+		t.Errorf("rerun = %+v", again)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("rerun changed the tree")
+	}
+}
+
+func TestLibrivoxAuthorVariantNeverRekeysACataloguedSpelling(t *testing.T) {
+	// LibriVox's spelling is itself a catalogued person, with no LibriVox id
+	// yet: the batch rule stands down, so the id's other project credits that
+	// person and the id is stamped there - one same-titled work by a longer
+	// spelling ("Henry James Sr.", the father) never moves every project of
+	// the id onto another record. The attaching project keeps its credit too.
+	dataDir := t.TempDir()
+	files := authoredWorkFiles(t, map[string][]string{"substance-and-shadow": {"Substance and Shadow", "henry-james-sr", "Henry James Sr."}})
+	files[personAddr("henry-james")] = testpack.PersonJSON(t, "henry-james", "Henry James")
+	seedTree(t, dataDir, files)
+	james := lvAuthor(7060, "Henry", "James")
+	sum := runLibrivox(t, writeSnapshot(t,
+		byAuthor(t, 99860, "Substance and Shadow", "English", james),
+		byAuthor(t, 99861, "The Turn of the Screw", "English", james),
+	), dataDir, allLibrivox)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.NewPeople != 1 || sum.LibrivoxAuthorVariants != 1 {
+		t.Fatalf("works/recordings/people (the reader alone)/variants = %d/%d/%d/%d\nnotes: %v", sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.LibrivoxAuthorVariants, sum.Notes)
+	}
+	var w lvWork
+	readEntity(t, dataDir, workAddr("the-turn-of-the-screw"), &w)
+	if !reflect.DeepEqual(w.Authors, []string{"henry-james"}) {
+		t.Errorf("new work authors = %v", w.Authors)
+	}
+	for slug, id := range map[string]int{"henry-james": 7060, "henry-james-sr": 0} {
+		var p lvPerson
+		readEntity(t, dataDir, personAddr(slug), &p)
+		if p.AuthorID != id {
+			t.Errorf("%s = %+v, want librivox_author_id %d", slug, p, id)
+		}
+	}
+	mustValidate(t, dataDir)
+}
+
+func TestLibrivoxAuthorVariantPairingIgnoresAuthorOrder(t *testing.T) {
+	// "John Smith" is a spelling of both of the work's authors, so the row is
+	// loose whichever of its authors it lists first: never an attach.
+	for name, order := range map[string][2]LibrivoxPerson{
+		"spelling of both first": {lvAuthor(7070, "John", "Smith"), lvAuthor(7071, "John Paul", "Smith Jr.")},
+		"spelling of both last":  {lvAuthor(7071, "John Paul", "Smith Jr."), lvAuthor(7070, "John", "Smith")},
+	} {
+		t.Run(name, func(t *testing.T) {
+			dataDir := t.TempDir()
+			seedAuthoredWorks(t, dataDir, map[string][]string{"letters": {"Letters", "john-henry-smith", "John Henry Smith", "john-paul-smith", "John Paul Smith"}})
+			pr := byAuthor(t, 99870, "Letters", "English", order[0])
+			pr.Authors = append(pr.Authors, order[1])
+			sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+			if sum.LibrivoxAuthorVariants != 0 || len(sum.LibrivoxWorklist) != 1 || sum.LibrivoxWorklist[0].Reason != LibrivoxAuthorSpelling {
+				t.Errorf("variants = %d, worklist = %+v", sum.LibrivoxAuthorVariants, sum.LibrivoxWorklist)
+			}
+		})
+	}
+}
+
+func TestLibrivoxUnsluggableCoAuthorBesideASelfTranslator(t *testing.T) {
+	// The author left once an unsluggable co-author is dropped also translated
+	// the book: an author credit without a role still names them, so the row
+	// lands on them rather than going to the worklist.
+	pr := byAuthor(t, 99880, "Gitanjali", "English", lvAuthor(7080, "Rabindranath", "Tagore"), lvAuthor(7080, "Rabindranath", "Tagore"))
+	pr.Authors = append(pr.Authors, lvAuthor(6100, "Йордан", "Йовков"))
+	dataDir := t.TempDir()
+	sum := runLibrivox(t, writeSnapshot(t, pr), dataDir, allLibrivox)
+	if sum.NewWorks != 1 || len(sum.LibrivoxWorklist) != 0 {
+		t.Fatalf("works = %d, worklist = %+v", sum.NewWorks, sum.LibrivoxWorklist)
+	}
+	var w lvWork
+	readEntity(t, dataDir, workAddr("gitanjali"), &w)
+	if !reflect.DeepEqual(w.Authors, []string{"rabindranath-tagore"}) {
+		t.Errorf("authors = %v", w.Authors)
 	}
 	mustValidate(t, dataDir)
 }
