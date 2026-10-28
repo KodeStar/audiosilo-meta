@@ -1396,7 +1396,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle, posSuffix string) {
 	// libex run attestExisting is a no-op and the skip is exactly what it was.
 	// A LibriVox row has no ASIN: it dedups on its project id instead, and
 	// never on its title (librivox.go).
-	if p.dedupeByLibrivox(b) {
+	if p.dedupeByLibrivox(b, warn) {
 		return
 	}
 	if p.dedupeByASIN(asin) {
@@ -2032,10 +2032,16 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 // Ocampo") are one credit - listing the slug twice would emit a record whose
 // narrators/authors array repeats itself.
 func (p *planner) creditSlugs(names []string, warn func(string, ...any)) []string {
+	return dedupeSlugs(names, func(_ int, name string) string { return p.getOrCreatePerson(name, warn) })
+}
+
+// dedupeSlugs is creditSlugs' loop over any per-credit resolver (i the name's
+// index): every name resolved, each slug kept once, in first-seen order.
+func dedupeSlugs(names []string, resolve func(i int, name string) string) []string {
 	out := make([]string, 0, len(names))
 	seen := make(map[string]bool, len(names))
-	for _, name := range names {
-		slug := p.getOrCreatePerson(name, warn)
+	for i, name := range names {
+		slug := resolve(i, name)
 		if seen[slug] {
 			continue
 		}
@@ -3952,7 +3958,7 @@ func newWorkChain(ts titleSlug, posSuffix string, authors workAuthors, probe pos
 	c := workChain{base: ts.slug, cut: ts.cut, first: authors.first()}
 	if posSuffix != "" {
 		var cut bool
-		c.base, cut = boundedSlugTail(c.base, "-"+posSuffix)
+		c.base, cut = model.BoundedSlugTailCut(c.base, "-"+posSuffix)
 		c.cut = c.cut || cut
 		c.suffixed = true
 		probe = positionClaim{}
@@ -4090,7 +4096,7 @@ func workSlugAt(base, firstAuthor string, i int) (slug string, cut bool) {
 		numeric = fmt.Sprintf("-%d", i)
 	}
 	credit := "-" + firstAuthor
-	if slug, ok := wordBoundedSlugTail(base, credit+numeric); ok {
+	if slug, ok := model.WordBoundedSlugTail(base, credit+numeric); ok {
 		return slug, len(base)+len(credit)+len(numeric) > model.MaxSlugLen
 	}
 	// TrimRight so a credit cut mid-hyphen cannot meet the numeric suffix as a
@@ -4098,7 +4104,7 @@ func workSlugAt(base, firstAuthor string, i int) (slug string, cut bool) {
 	if half := (model.MaxSlugLen - len(numeric)) / 2; len(credit) > half {
 		credit = strings.TrimRight(credit[:half], "-")
 	}
-	return boundedSlugTail(base, credit+numeric)
+	return model.BoundedSlugTailCut(base, credit+numeric)
 }
 
 // AuthorSuffixedWorkSlug is the FIRST disambiguated work-slug candidate -

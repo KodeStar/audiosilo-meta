@@ -1122,16 +1122,6 @@ func Slugify(s string) string { return model.Slugify(s) }
 // definitions.
 func BoundedSlugTail(base, tail string) string { return model.BoundedSlugTail(base, tail) }
 
-// boundedSlugTail is model.BoundedSlugTailCut: BoundedSlugTail reporting whether
-// it had to SHORTEN base (workCandidate.shortened reads it).
-func boundedSlugTail(base, tail string) (string, bool) { return model.BoundedSlugTailCut(base, tail) }
-
-// wordBoundedSlugTail is model.WordBoundedSlugTail, BoundedSlugTail's
-// whole-words half.
-func wordBoundedSlugTail(base, tail string) (string, bool) {
-	return model.WordBoundedSlugTail(base, tail)
-}
-
 // NumberedSlugAt is the numeric collision-suffix formula shared by the recording
 // and series candidate chains: base for the first candidate, then base-2,
 // base-3, ... with the suffix bounded to MaxSlugLen. Every walker of a chain

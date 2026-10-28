@@ -601,11 +601,11 @@ func librivoxReaderIDOf(record map[string]any) int {
 	if !ok {
 		return 0
 	}
-	id, err := strconv.Atoi(n.String())
+	id, err := n.Int64()
 	if err != nil {
 		return 0
 	}
-	return id
+	return int(id)
 }
 
 // seriesNameFreeOfRecordingQualifier judges a series `name` correction: a name ending

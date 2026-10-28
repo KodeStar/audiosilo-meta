@@ -155,6 +155,9 @@ func TestSamePersonSpellingToleratesOneNameSpelledTwoWays(t *testing.T) {
 	for id, name := range names {
 		people = append(people, &model.Person{ID: id, Name: name, License: "CC0-1.0"})
 	}
+	people = append(people,
+		&model.Person{ID: "martina", Name: "Martina", License: "CC0-1.0", LibrivoxReaderID: 844},
+		&model.Person{ID: "martina-librivox-634", Name: "Martina", License: "CC0-1.0", LibrivoxReaderID: 634})
 	ix := newIndex(&model.Catalog{People: people})
 
 	cases := []struct {
@@ -171,6 +174,7 @@ func TestSamePersonSpellingToleratesOneNameSpelledTwoWays(t *testing.T) {
 		{"rachel-rene-russell", "rachel-renee-russell", true, "one edit over the length floor"},
 		{"jon-ray", "jan-ray", false, "short names one edit apart are two people"},
 		{"cheree-alsop", "nobody-at-all", false, "an id with no record is only itself"},
+		{"martina", "martina-librivox-634", false, "two LibriVox reader ids are two people"},
 	}
 	for _, c := range cases {
 		if got := samePersonSpelling(ix, c.a, c.b); got != c.want {

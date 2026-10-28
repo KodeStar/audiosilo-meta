@@ -132,7 +132,7 @@ func detectPersonEdit1(ix *index, f *findings, keys []personKeys) {
 				if g[i].folded == g[j].folded {
 					continue // an exact fold match is pDupTight's business
 				}
-				if !titlerule.OneEditApart(g[i].folded, g[j].folded) || distinctLibrivoxReaders(g[i:i+1], g[j:j+1]) {
+				if !titlerule.OneEditApart(g[i].folded, g[j].folded) || distinctLibrivoxReader(g[i].person, g[j].person) {
 					continue
 				}
 				a, b := g[i].person, g[j].person
@@ -154,21 +154,26 @@ func detectPersonEdit1(ix *index, f *findings, keys []personKeys) {
 	}
 }
 
-// distinctLibrivoxReaders reports whether every person in the groups carries a
-// LibriVox reader id and no two carry the same one: two LibriVox accounts, which
-// the import keeps as two people on purpose (model.LibrivoxReaderSlug - "Martina"
-// and `martina-librivox-634`), so a name match between them is not a duplicate to
-// review. Any member without a reader id keeps the group reported.
-func distinctLibrivoxReaders(groups ...[]personKeys) bool {
-	seen := map[int]bool{}
-	for _, g := range groups {
-		for _, k := range g {
-			id := k.person.LibrivoxReaderID
-			if id == 0 || seen[id] {
-				return false
-			}
-			seen[id] = true
+// distinctLibrivoxReader reports whether a and b carry two different LibriVox
+// reader ids: two LibriVox accounts, which the import keeps as two people on
+// purpose (model.LibrivoxReaderSlug - "Martina" and `martina-librivox-634`), so a
+// name match between them is not a duplicate to review. Every person-pair rule of
+// the audit asks it (P-DUP, samePersonSpelling).
+func distinctLibrivoxReader(a, b *model.Person) bool {
+	return a.LibrivoxReaderID != 0 && b.LibrivoxReaderID != 0 && a.LibrivoxReaderID != b.LibrivoxReaderID
+}
+
+// distinctLibrivoxReaders is distinctLibrivoxReader over a whole group: every
+// member carries a reader id and no two carry the same one. Any member without a
+// reader id keeps the group reported.
+func distinctLibrivoxReaders(group []personKeys) bool {
+	seen := make(map[int]bool, len(group))
+	for _, k := range group {
+		id := k.person.LibrivoxReaderID
+		if id == 0 || seen[id] {
+			return false
 		}
+		seen[id] = true
 	}
 	return len(seen) >= 2
 }

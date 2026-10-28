@@ -595,23 +595,14 @@ func (p *planner) rowNarratorSlugs(b sourceBook, names []string, warn func(strin
 			byIndex[c.index] = c
 		}
 	}
-	out := make([]string, 0, len(names))
-	seen := make(map[string]bool, len(names))
-	for i, name := range names {
-		slug := ""
+	return dedupeSlugs(names, func(i int, name string) string {
 		if c, ok := byIndex[i]; ok {
-			slug = p.librivoxReaderSlug(c, name, b.lv.id, warn)
+			if slug := p.librivoxReaderSlug(c, name, b.lv.id, warn); slug != "" {
+				return slug
+			}
 		}
-		if slug == "" {
-			slug = p.getOrCreatePerson(name, warn)
-		}
-		if seen[slug] {
-			continue
-		}
-		seen[slug] = true
-		out = append(out, slug)
-	}
-	return out
+		return p.getOrCreatePerson(name, warn)
+	})
 }
 
 // librivoxReaderSlug resolves one reader credit (name its cleaned name) by its
@@ -685,11 +676,11 @@ func (p *planner) librivoxReaderResolved(slug string, r personResolution) string
 
 // dedupeByLibrivox is the LibriVox twin of dedupeByASIN: a row whose project id
 // the catalogue (or this run) already holds is a skip. false for any other row.
-func (p *planner) dedupeByLibrivox(b sourceBook) bool {
+func (p *planner) dedupeByLibrivox(b sourceBook, warn func(string, ...any)) bool {
 	if b.lv == nil || !p.lv.ids[b.lv.id] {
 		return false
 	}
-	p.splitHeldLibrivoxReaders(b)
+	p.splitHeldLibrivoxReaders(b, warn)
 	p.summary.Skipped++
 	return true
 }
@@ -709,21 +700,23 @@ func (p *planner) dedupeByLibrivox(b sourceBook) bool {
 // is (nothing says it is not this reader). When the row also credits the holder
 // under the same name (two readers called "Martina" on one project) the holder's
 // credit stays and this reader's is added after it.
-func (p *planner) splitHeldLibrivoxReaders(b sourceBook) {
+func (p *planner) splitHeldLibrivoxReaders(b sourceBook, warn func(string, ...any)) {
 	ref, ok := p.lv.held[b.lv.id]
 	if !ok {
 		return
 	}
 	ws := p.works[ref.Work]
-	if ws == nil || ws.recs[ref.Rec] == nil {
+	if ws == nil {
 		return
 	}
 	ri := ws.recs[ref.Rec]
+	if ri == nil {
+		return
+	}
 	names := p.rowNarratorNames(b)
 	if len(names) != len(b.narrators) {
 		return
 	}
-	warn := p.bookWarn(b)
 	for _, c := range b.lv.credits {
 		if c.kind != librivoxReader || c.id <= 0 {
 			continue
@@ -739,10 +732,13 @@ func (p *planner) splitHeldLibrivoxReaders(b sourceBook) {
 			}
 		}
 		slug := p.librivoxReaderSlug(c, name, b.lv.id, warn)
-		if slug == "" || slug == r.slug {
+		if slug == "" {
 			continue
 		}
 		keep := p.rowCreditsHolder(b, names, c, r.slug)
+		if keep && ri.narrators[slug] {
+			continue // both readers already credited: a rerun of a split project
+		}
 		p.moveHeldNarrator(ref, r.slug, slug, keep)
 		if p.fatal != nil {
 			return
@@ -773,34 +769,24 @@ func (p *planner) rowCreditsHolder(b sourceBook, names []string, moved librivoxC
 // by to in place, or, with keep, to is inserted right after from. A list already
 // naming to only loses from (or, with keep, is left as it is).
 func (p *planner) moveHeldNarrator(ref RecRef, from, to string, keep bool) {
-	entry := p.workEntryRaw(ref.Work)
-	if entry == nil {
-		return
-	}
-	recs, _ := entry["recordings"].(map[string]any)
-	rec, _ := recs[ref.Rec].(map[string]any)
-	list, _ := rec["narrators"].([]any)
+	entry, rec := p.recordingRaw(ref.Work, ref.Rec)
 	if rec == nil {
-		p.fatal = fmt.Errorf("librivox: recording %s/%s is in the catalogue but not in its work entry", ref.Work, ref.Rec)
 		return
 	}
-	has := slices.ContainsFunc(list, func(v any) bool { return v == to })
+	list, _ := rec["narrators"].([]any)
+	has := slices.Contains(list, any(to))
 	out := make([]any, 0, len(list)+1)
 	for _, v := range list {
 		if v != from {
 			out = append(out, v)
 			continue
 		}
-		if keep || has {
-			if keep {
-				out = append(out, v)
-			}
-			if !has {
-				out = append(out, to)
-			}
-			continue
+		if keep {
+			out = append(out, v)
 		}
-		out = append(out, to)
+		if !has {
+			out = append(out, to)
+		}
 	}
 	rec["narrators"] = out
 	p.putWorkEntry(ref.Work, entry)

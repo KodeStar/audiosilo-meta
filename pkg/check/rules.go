@@ -433,14 +433,10 @@ func normISBN(s string) string { return strings.ToUpper(s) }
 // covers the one record whose id is legitimately not its name's slug: the
 // shared catch-all a fully-folding name falls back to.
 //
-// The one other legal form is a LibriVox reader's disambiguated id
-// (model.LibrivoxReaderSlug: `martina-librivox-634`), the id a reader takes when
-// another person already holds their name's plain slug. It is accepted only on a
-// record carrying exactly that librivox_reader_id (model.PersonIDMatches), so it
-// is reachable from the record's own facts - the LibriVox import resolves a
-// reader by id before it slugs a name - and moves with Slugify like the plain
-// form does. The plain slug's holder is deliberately not required to exist: a
-// merge that retires it must not turn every reader disambiguated off it red.
+// The one other legal form, a LibriVox reader's disambiguated id, is stated on
+// model.PersonIDMatches. The plain slug's holder is deliberately not required to
+// exist: a merge that retires it must not turn every reader disambiguated off it
+// red.
 func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	for _, p := range cat.People {
 		if !model.PersonIDMatches(p.ID, p.Name, p.LibrivoxReaderID) {

@@ -208,12 +208,24 @@ func TestLibrivoxRerunKeepsTheHoldersOwnCredit(t *testing.T) {
 	dataDir := t.TempDir()
 	seedFoldedMartina(t, dataDir, "martina")
 	both := readProject(t, 91002, LibrivoxReader{ReaderID: 844, DisplayName: "Martina"}, LibrivoxReader{ReaderID: 634, DisplayName: "Martina"})
-	runLibrivox(t, writeSnapshot(t, both), dataDir, allLibrivox)
+	snap := writeSnapshot(t, both)
+	if sum := runLibrivox(t, snap, dataDir, allLibrivox); sum.LibrivoxReadersMoved != 1 {
+		t.Errorf("moved %d, want 1", sum.LibrivoxReadersMoved)
+	}
 	if got := lvNarrators(t, dataDir, "metamorphosis", "martina-2"); !reflect.DeepEqual(got, []string{"martina", "martina-librivox-634"}) {
 		t.Errorf("narrators = %v", got)
 	}
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+
+	// Both readers are credited now, so a second rerun moves nothing.
+	before := testpack.Snapshot(t, dataDir)
+	if again := runLibrivox(t, snap, dataDir, allLibrivox); again.LibrivoxReadersMoved != 0 || len(again.Files) != 0 {
+		t.Errorf("second rerun moved %d, wrote %v; want a no-op", again.LibrivoxReadersMoved, again.Files)
+	}
+	if after := testpack.Snapshot(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Error("second rerun changed the tree")
 	}
 }
 
