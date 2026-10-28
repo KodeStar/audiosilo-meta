@@ -7262,6 +7262,49 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "hans-hafen": {
+          "added_at": "2026-10-28",
+          "archive_id": "lenz_hh_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/lenz_hh_librivox/lenz_1_buechner_64kb.mp3",
+              "length_ms": 3179000,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lenz_hh_librivox/lenz_2_buechner_64kb.mp3",
+              "length_ms": 2123000,
+              "start_ms": 3179000,
+              "title": "Chapter 2"
+            }
+          ],
+          "copyright_year": 1839,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt16/lenz_1204.jpg",
+          "id": "hans-hafen",
+          "language": "de",
+          "librivox_id": 4204,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/lenz-by-georg-buechner-2/",
+            "rss": "https://librivox.org/rss/4204",
+            "text": "https://www.zeno.org/Literatur/M/Büchner,+Georg/Erzählung/Lenz",
+            "zip": "https://archive.org/compress/lenz_hh_librivox/formats=64KBPS MP3&file=/lenz_hh_librivox.zip"
+          },
+          "narrators": [
+            "hans-hafen"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 88,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "4204",
+              "type": "librivox"
+            }
+          ],
+          "work": "lenz"
+        },
         "maximilian-laprell-2014": {
           "abridged": false,
           "added_at": "2026-07-29",
@@ -7321,6 +7364,49 @@
               "imported_at": "2026-10-09",
               "ref": "B00NNSFOU2",
               "type": "libex-import"
+            }
+          ],
+          "work": "lenz"
+        },
+        "rolf-kaiser": {
+          "added_at": "2026-10-28",
+          "archive_id": "lenz_rk_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/lenz_rk_librivox/lenz_01_buechner_64kb.mp3",
+              "length_ms": 2430000,
+              "start_ms": 0,
+              "title": "Teil 1"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/lenz_rk_librivox/lenz_02_buechner_64kb.mp3",
+              "length_ms": 2546000,
+              "start_ms": 2430000,
+              "title": "Teil 2"
+            }
+          ],
+          "copyright_year": 1839,
+          "cover_url": "https://www.archive.org/download/librivox_cd_covers/lenz.jpg",
+          "id": "rolf-kaiser",
+          "language": "de",
+          "librivox_id": 2993,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/lenz-by-georg-buchner/",
+            "rss": "https://librivox.org/rss/2993",
+            "text": "https://www.zeno.org/Literatur/M/Büchner,+Georg/Erzählung/Lenz",
+            "zip": "https://archive.org/compress/lenz_rk_librivox/formats=64KBPS MP3&file=/lenz_rk_librivox.zip"
+          },
+          "narrators": [
+            "rolf-kaiser"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 83,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "2993",
+              "type": "librivox"
             }
           ],
           "work": "lenz"

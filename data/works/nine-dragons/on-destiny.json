@@ -10529,6 +10529,80 @@
         }
       ],
       "title": "On Intelligence"
+    },
+    "on-interpretation": {
+      "added_at": "2026-10-28",
+      "authors": [
+        "aristotle",
+        "octavius-freire-owen"
+      ],
+      "credits": [
+        {
+          "person": "octavius-freire-owen",
+          "role": "translator"
+        }
+      ],
+      "genres": [
+        "classics",
+        "education",
+        "language"
+      ],
+      "id": "on-interpretation",
+      "language": "en",
+      "license": "CC0-1.0",
+      "recordings": {
+        "geoffrey-edwards": {
+          "added_at": "2026-10-28",
+          "archive_id": "on_interpretation_1005_librivox",
+          "chapters": [
+            {
+              "audio_url": "https://www.archive.org/download/on_interpretation_1005_librivox/oninterpretation_1_aristotle_64kb.mp3",
+              "length_ms": 2286000,
+              "start_ms": 0,
+              "title": "1 - Chapters 1-10"
+            },
+            {
+              "audio_url": "https://www.archive.org/download/on_interpretation_1005_librivox/oninterpretation_2_aristotle_64kb.mp3",
+              "length_ms": 1952000,
+              "start_ms": 2286000,
+              "title": "2 - Chapters 11-14"
+            }
+          ],
+          "copyright_year": 1853,
+          "cover_url": "https://www.archive.org/download/LibrivoxCdCoverArt6/on_interpretation_1101.jpg",
+          "id": "geoffrey-edwards",
+          "language": "en",
+          "librivox_id": 4262,
+          "license": "CC0-1.0",
+          "links": {
+            "librivox": "https://librivox.org/on-interpretation-by-aristotle/",
+            "rss": "https://librivox.org/rss/4262",
+            "text": "https://www.archive.org/details/organonorlogica00porpgoog",
+            "zip": "https://archive.org/compress/on_interpretation_1005_librivox/formats=64KBPS MP3&file=/on_interpretation_1005_librivox.zip"
+          },
+          "narrators": [
+            "geoffrey-edwards"
+          ],
+          "publisher": "LibriVox",
+          "runtime_min": 71,
+          "sources": [
+            {
+              "imported_at": "2026-10-28",
+              "ref": "4262",
+              "type": "librivox"
+            }
+          ],
+          "work": "on-interpretation"
+        }
+      },
+      "sources": [
+        {
+          "imported_at": "2026-10-28",
+          "ref": "4262",
+          "type": "librivox"
+        }
+      ],
+      "title": "On Interpretation"
     }
   }
 }
